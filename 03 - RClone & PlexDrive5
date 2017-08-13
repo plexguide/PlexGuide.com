@@ -45,7 +45,7 @@ screen sudo plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt
 ## PlexDrive - RC.Local startup script
 cd /opt && sudo nano plexd.sh
 
-# copy and paste this below inside the file --------------------
+Start Copy ###############################
 
 #!/bin/bash
 
@@ -63,9 +63,10 @@ plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
 
 exit 0;
 
-# Stop copying and end at exit 0;
-# Press CTRL +X and hit enter
-# Editing the rc.local script to assist with the script you just created for bootup
+End Copy ###############################
+
+# Press CTRL +X
+# Edit rc.local script to assist with script bootup
 cd /etc && sudo nano rc.local
 
 # Place the information below above "exit 0"
