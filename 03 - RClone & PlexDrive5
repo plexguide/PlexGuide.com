@@ -1,7 +1,5 @@
 ################# Google Drive API ################# START
-### Required for both RClone & PlexDrive5
-### Credit: @Balazer on Github
-
+### Required for both RClone & PlexDrive5 - Credit: @Balazer on Github
 # http://console.developers.google.com
 # Select project or create a new project
 # Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
@@ -18,16 +16,15 @@
 ### Required for Plex to read without triggering 24 hour ban
 sudo apt update
 
-### Incase fuse in not installed
+# Incase fuse in not installed
 sudo apt install fuse
 
-### Create a Temporary Folder
-cd ~ && mdkir Downloads && cd Downloads
-
-### Visit PlexDrive GitHub incase of more updates
+# create a temporary folder
+# cd ~ && mdkir Downloads && cd Downloads
+# visit PlexDrive GitHub incase of more updates
 sudo wget https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
 
-### Commands to rename and move PlexDrive5 to the correction location; sets proper permissions
+# Commands to rename and move PlexDrive5 to the correction location; sets proper permissions
 mv plexdrive-linux-amd64 plexdrive5
 sudo mv plexdrive5 /usr/local/bin/
 cd /usr/local/bin/
@@ -35,11 +32,11 @@ sudo chown root:root /usr/local/bin/plexdrive5
 sudo chmod 755 /usr/local/bin/plexdrive5
 sudo mkdir /mnt/plexdrive5 && sudo chmod 755 /mnt/plexdrive5
 
-### Execute PlexDrive 5; takes awhile to complete; do not shutdown
+# Execute PlexDrive 5; takes awhile to complete; do not shutdown
 screen sudo plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
 
-### Press CTRL+A then C to create new terminal session to continue
-### Revert to PlexDrive status; CTRL+A 0
+# Press CTRL+A then C to create new terminal session to continue
+# Revert to PlexDrive status; CTRL+A 0
 
 ### PlexDrive - RC.Local startup script
 cd /opt && sudo nano plexd.sh
@@ -62,55 +59,55 @@ plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
 exit 0;
 ##### Copy #### END
 
-### Press CTRL+X; then Enter. Editing rc.local to boot up plexdrive and rclone script
+# Press CTRL+X; then Enter. Editing rc.local to boot up plexdrive and rclone script
 cd /etc && sudo nano rc.local
 
-### Place the line below above "exit 0"
+# Place the line below above "exit 0"
 sh /opt/plexd.sh &
 sh /opt/rclone.sh &
-### Press CTRL+X and then ENTER to save
+# Press CTRL+X and then ENTER to save
 
-### Assign permissions so you script can execute
+# Assign permissions so you script can execute
 sudo chown root /etc/rc.local
 sudo chmod 755 /etc/rc.local
 sudo chmod 755 /opt/plexd.sh
 sudo chown root /opt/plexd.sh
 sudo /etc/init.d/rc.local start
-### Do NOT reboot your system until PlexDrive is done scanning
+# Do NOT reboot your system until PlexDrive is done scanning
 ################# PlexDrive5 ################# END
 
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
 
-### Install unzip
+# Install unzip
 sudo apt install unzip
 
-### Download RClone and Rename
+# Download RClone and Rename
 cd ~ && cd Downloads
 curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 unzip rclone-current-linux-amd64.zip
 cd rclone-*-linux-amd64
 
-### Move RClone to Bin for fututure execution
+# Move RClone to Bin for fututure execution
 sudo cp rclone /usr/bin/
 sudo chown root:root /usr/bin/rclone
 sudo chmod 755 /usr/bin/rclone
 
-### Updates Man Pages
+# Updates Man Pages
 sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 
-### Deletes uncessary files
+# Deletes uncessary files
 cd ..
 sudo rm -r rclone*
 
-### Sets file permissions for RClone folder
+# Sets file permissions for RClone folder
 sudo mkdir /mnt/rclone
 sudo chmod 755 /mnt/rclone
 sudo chown root /mnt/rclone
 
-### Configure RClone config as Root 
+# Configure RClone config as Root 
 sudo su
 rclone config
 
@@ -124,15 +121,15 @@ rclone config
 # Y < If asking all is ok?
 # Q < to quit
 
-### Go back to your username
+# Go back to your username
 exit
 
-### Editing the fuse.conf file
+# Editing the fuse.conf file
 sudo nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other
 # Press CTRL+X and then save
 
-### Create RClone Startup Script
+# Create RClone Startup Script
 sudo nano /opt/rclone.sh
 
 ##### Copy #### START
@@ -142,13 +139,12 @@ sudo rm -r /mnt/rclone/zilch
 sudo rclone mount --allow-other gdrive: /mnt/rclone
 
 ##### Copy #### END
-### Press CTRL+X; then Enter
+# Press CTRL+X; then Enter
 
-### File permissions
+# File permissions
 sudo chmod 755 /opt/rclone.sh
 sudo chown root /opt/rclone.sh
 exit
-###
 ################# RClone ################# END
 
 ################# Final Notes ################# START
