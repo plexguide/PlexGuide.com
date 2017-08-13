@@ -29,6 +29,30 @@
 # [Click Create]
 ################# MYSQL Container ################# END
 
+################# PHP Limits (Optional) ################# START
+### This only applies if your uploading themes or files and you receive an exceed error message
+# Go to http://ipv4address:9000 (your portainer install)
+# [Click] Containers > [Click] Wordpress > [Click] >_Console
+apt-get upgrade
+agt-get install nano
+cd /usr/local/etc/php/conf.d/
+
+nano php.ini
+##### Copy #### START
+file_uploads = On
+memory_limit = 100M
+upload_max_filesize = 100M
+post_max_size = 100M
+max_execution_time = 600
+##### Copy #### END
+
+### Moving a copy to previous directory
+cp php.ini ..
+
+### Reboot server and attempt to upload larger files
+
+################# PHP Limits (Opitonal ################# START
+
 ################# Final Notes ################# START
 # Visit http://ipv4address and you should see wordpress loadup
 # Follow the Wizard and create a USER & PW you can memorize
