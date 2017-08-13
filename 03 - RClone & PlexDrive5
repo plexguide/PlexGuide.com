@@ -1,0 +1,83 @@
+## Your Google Drive API #################
+# Required for both RClone & PlexDrive5
+# Credit: @Balazer on Github
+
+# 1. http://console.developers.google.com
+# 2. Select project or create a new project
+# 3. Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
+# 4. Click "Credentails" in the left-side panel (not "Go to Credentials" which is a Wizard)
+# 5. Then "Create credenntials"
+# 6. Then "OAuth client ID"
+# 7. Prompted to set OAuth consent screen product name.
+# 8. Choose application type as "other" and then click "Create"
+  # a. If you do not select other, will not work (Reported By PogMoThoin22 @ reddit)
+# 9. It w ill then show you a client ID and client secret
+
+## Installing PlexDrive 5 ###################
+# Required for Plex to read without triggering 24 hour ban
+
+sudo apt update
+
+# Incase fuse in not installed
+sudo apt install fuse
+
+# To create a temporary DL folder
+cd ~ && mdkir Downloads && cd Downloads
+
+# Visit his webpage for any more up-to-date links, current as of writing
+sudo wget https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
+
+# Series of commands download the file, move to your bin, and then sets permissons
+mv plexdrive-linux-amd64 plexdrive5
+sudo mv plexdrive5 /usr/local/bin/
+cd /usr/local/bin/
+sudo chown root:root /usr/local/bin/plexdrive5
+sudo chmod 755 /usr/local/bin/plexdrive5
+sudo mkdir /mnt/plexdrive5 && sudo chmod 755 /mnt/plexdrive5
+
+# PlexDrive5 is faster, but still takes awhile over PlexDrive4 to scan your google drive
+# Do not shutdown your server until complete
+screen sudo plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
+
+# Press CTRL+A then C to create a new session
+# To check on your PlexDrive status, anytime press CTRL+A then 0
+
+## PlexDrive - RC.Local startup script
+cd /opt && sudo nano plexd.sh
+
+# copy and paste this below inside the file --------------------
+
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          plexd.sh
+# Required-Start:    $local_fs $network
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: plexd.sh
+# Description:       plexdrive5
+### END INIT INFO
+
+plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
+
+exit 0;
+
+# Stop copying and end at exit 0;
+# Press CTRL +X and hit enter
+# Editing the rc.local script to assist with the script you just created for bootup
+cd /etc && sudo nano rc.local
+
+# Place the information below above "exit 0"
+sh /opt/plexd.sh
+# Press CTRL+X and then ENTER to save
+
+# Assign permissions so you script can execute
+sudo chown root /etc/rc.local
+sudo chmod 755 /etc/rc.local
+sudo chmod 755 /opt/plexd.sh
+sudo chown root /opt/plexd.sh
+sudo /etc/init.d/rc.local start
+# Note: do not reboot your system until PLEXDrive is done.
+
+## Installing RClone #########################
