@@ -1,6 +1,7 @@
 ################# YML Writeup ################# START
 # Save/Set this file location: /etc/docker-compose.yml 
 # Execute Script Command: cd /opt && sudo docker-compose -f docker-compose.yml up -d
+# Quick delete and replace command: sudo rm -r docker-compose.yml && sudo nano docker-compose.yml 
 # The spacing in script is important or it will fail
  
 ---
@@ -72,9 +73,9 @@ services:
 # important for providing time; don’t fully understand it
      - /etc/localtime:/etc/localtime:ro
 # this location is used to FORCE uploads of your tv shows to your google drive
-     - /mnt/rclone-d/zilch/tv:/tv
+     - /mnt/rclone/zilch/tv:/tv
 # this is just a test directory; not needed
-     - /mnt/rclone-d/zilch/test:/test
+     - /mnt/rclone/zilch/test:/test
 # directory to store downloads of downloaded files
      - /mnt/sabtv/downloads/complete:/sabcomplete
 # store a backup copy of nzbs; to prevent duplicates
