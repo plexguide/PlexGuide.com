@@ -1,24 +1,27 @@
-*** Google Directories ***
-1. Go to Google Drive and create root folder called zilch.
-2. Create two subfolders: movies & zilch
-3. The entire guide depends root folder setup.
+################# Google Directories ################# START
+### Building the foundational layout
+# Go to Google Drive and create root folder called zilch.
+# Create two subfolders: movies & zilch
+# The entire guide depends root folder setup.
+################# Google Directories ################# END
 
-*** Installing Ubuntu ***
-1. Download and install Ubuntu 16.04 on your local, remote, or virutal machine.
-2. IP Address
-  a.  Configure or set the IP Address
-  b.  Cannot remember? Type "ifconfig"
-  c.  (IF) VMware: Use bridge mode and control via your router or direct assignment
-3. Utilizing command line.
-  a. If not installed, install SSH on your machine.
-  b. If accessing through a GUI, you open terminal or install SSH and access from another machine.
-  c. On Windows - Utilize a program called putty
-    1) Download:  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-    2) In the mainbox, type in your main IP address and then keep port as 22
-  d. On a MAC - Utilize a program called terminal 
-    1) Example Type: ssh username@youripaddress
-4. Connect to your system.
-  a. Cannot access? 
-    1) Ensure that your IP Address is correct, including port number.
-    2) Firewall can be a choke point.
-    3) You should not have to configure anything out of the ordinary.
+################# Ubuntu Setup ################# START
+# Download and install Ubuntu 16.04 on your local, remote, or virutal machine.
+# IP Address
+#  - Configure or set the IP Address
+#  - Cannot remember? Type "ifconfig"
+#  - (IF) VMware: Use bridge mode and control via your router or direct assignment
+# Utilizing command line.
+#  - If not installed, install SSH on your machine.
+#  - If accessing through a GUI, you open terminal or install SSH and access from another machine.
+#  - On Windows - Utilize a program called putty
+#   - Download:  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+#   - In the mainbox, type in your main IP address and then keep port as 22
+#   - On a MAC - Utilize a program called terminal 
+#   - Example Type: ssh username@youripaddress
+# Connect to your system.
+#  - Cannot access? 
+#  - Ensure that your IP Address is correct, including port number.
+#  - Firewall can be a choke point.
+#   - You should not have to configure anything out of the ordinary.
+################# Ubuntu Setup ################# START
