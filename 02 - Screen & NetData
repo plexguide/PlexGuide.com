@@ -1,0 +1,9 @@
+## Install Screen
+# Enables to carry multiple terminal sessions
+sudo apt update
+sudo apt install screen
+
+## Install NetData
+# After install, visit http://ipv4address:19999
+sudo apt-get install curl
+bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
