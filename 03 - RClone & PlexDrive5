@@ -1,33 +1,33 @@
-## Your Google Drive API #################
-# Required for both RClone & PlexDrive5
-# Credit: @Balazer on Github
+################# Google Drive API ################# START
+### Required for both RClone & PlexDrive5
+### Credit: @Balazer on Github
 
-# 1. http://console.developers.google.com
-# 2. Select project or create a new project
-# 3. Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
-# 4. Click "Credentails" in the left-side panel (not "Go to Credentials" which is a Wizard)
-# 5. Then "Create credenntials"
-# 6. Then "OAuth client ID"
-# 7. Prompted to set OAuth consent screen product name.
-# 8. Choose application type as "other" and then click "Create"
-  # a. If you do not select other, will not work (Reported By PogMoThoin22 @ reddit)
-# 9. It w ill then show you a client ID and client secret
+# http://console.developers.google.com
+# Select project or create a new project
+# Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
+# Click "Credentails" in the left-side panel (not "Go to Credentials" which is a Wizard)
+# Then "Create credenntials"
+# Then "OAuth client ID"
+# Prompted to set OAuth consent screen product name.
+# Choose application type as "other" and then click "Create"
+#   If you do not select other, will not work (Reported By PogMoThoin22 @ reddit)
+# Will then show you a client ID and client secret
+################# Google Drive API ################# END
 
-## Installing PlexDrive 5 ###################
-# Required for Plex to read without triggering 24 hour ban
-
+################# PlexDrive5 ################# START
+### Required for Plex to read without triggering 24 hour ban
 sudo apt update
 
-# Incase fuse in not installed
+### Incase fuse in not installed
 sudo apt install fuse
 
-# To create a temporary DL folder
+### Create a Temporary Folder
 cd ~ && mdkir Downloads && cd Downloads
 
-# Visit his webpage for any more up-to-date links, current as of writing
+### Visit PlexDrive GitHub incase of more updates
 sudo wget https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
 
-# Series of commands download the file, move to your bin, and then sets permissons
+### Commands to rename and move PlexDrive5 to the correction location; sets proper permissions
 mv plexdrive-linux-amd64 plexdrive5
 sudo mv plexdrive5 /usr/local/bin/
 cd /usr/local/bin/
@@ -35,18 +35,16 @@ sudo chown root:root /usr/local/bin/plexdrive5
 sudo chmod 755 /usr/local/bin/plexdrive5
 sudo mkdir /mnt/plexdrive5 && sudo chmod 755 /mnt/plexdrive5
 
-# PlexDrive5 is faster, but still takes awhile over PlexDrive4 to scan your google drive
-# Do not shutdown your server until complete
+### Execute PlexDrive 5; takes awhile to complete; do not shutdown
 screen sudo plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
 
-# Press CTRL+A then C to create a new session
-# To check on your PlexDrive status, anytime press CTRL+A then 0
+### Press CTRL+A then C to create new terminal session to continue
+### Revert to PlexDrive status; CTRL+A 0
 
-## PlexDrive - RC.Local startup script
+### PlexDrive - RC.Local startup script
 cd /opt && sudo nano plexd.sh
 
-Start Copy ###############################
-
+##### Copy #### START
 #!/bin/bash
 
 ### BEGIN INIT INFO
@@ -62,61 +60,61 @@ Start Copy ###############################
 plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
 
 exit 0;
+##### Copy #### END
 
-End Copy ###############################
-
-# Press CTRL +X
-# Edit rc.local script to assist with script bootup
+### Press CTRL+X; then Enter. Editing rc.local to boot up plexdrive and rclone script
 cd /etc && sudo nano rc.local
 
-# Place the information below above "exit 0"
-sh /opt/plexd.sh
-# Press CTRL+X and then ENTER to save
+### Place the line below above "exit 0"
+sh /opt/plexd.sh &
+sh /opt/rclone.sh &
+### Press CTRL+X and then ENTER to save
 
-# Assign permissions so you script can execute
+### Assign permissions so you script can execute
 sudo chown root /etc/rc.local
 sudo chmod 755 /etc/rc.local
 sudo chmod 755 /opt/plexd.sh
 sudo chown root /opt/plexd.sh
 sudo /etc/init.d/rc.local start
-# Note: do not reboot your system until PLEXDrive is done.
+### Do NOT reboot your system until PlexDrive is done scanning
+################# PlexDrive5 ################# END
 
-## Installing RClone #########################
-# RClone is this process is utilized to take your downloaded files and push them to your Google Drive
+################# RClone ################# START
+### RClone is utilized to move files automatically to your Google Drive
 
-# installing unzip
+### Install unzip
 sudo apt install unzip
 
-# downloads the rclone file and rename
+### Download RClone and Rename
 cd ~ && cd Downloads
 curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 unzip rclone-current-linux-amd64.zip
 cd rclone-*-linux-amd64
 
-# moves rclone to your bin file for executing
+### Move RClone to Bin for fututure execution
 sudo cp rclone /usr/bin/
 sudo chown root:root /usr/bin/rclone
 sudo chmod 755 /usr/bin/rclone
 
-# updates the man (help) pages
+### Updates Man Pages
 sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 
-# deletes uncessary files
+### Deletes uncessary files
 cd ..
 sudo rm -r rclone*
 
-# sets file permissions for the rclone folder
+### Sets file permissions for RClone folder
 sudo mkdir /mnt/rclone-d
 sudo chmod 755 /mnt/rclone-d
 sudo chown root /mnt/rclone-d
 
-# switching to root for rclone config 
+### Configure RClone config as Root 
 sudo su
 rclone config
 
-## Follow the proper order (For RClone 1.37, just use common sense if there are new changes)
+### Configuring RClone
 # N < For New remote
 # gdrive < for the name
 # 8 < For Google Drive (double check the number select incase)
@@ -126,46 +124,35 @@ rclone config
 # Y < If asking all is ok?
 # Q < to quit
 
-# going back to your username
+### Go back to your username
 exit
 
-# editing the fuse.conf file
+### Editing the fuse.conf file
 sudo nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other
 # Press CTRL+X and then save
 
-## RClone Startup Script
+### Create RClone Startup Script
+sudo nano /opt/rclone.sh
 
-# Making the script and storing under opt
-sudo nano /opt/rclonemount.sh
-
-# Copy the following information below into the Script
-
-Start Copy ###############################
-
+##### Copy #### START
 #!/bin/bash
 
 sudo rm -r /mnt/rclone-d/zilch
 sudo rclone mount --allow-other gdrive: /mnt/rclone-d
 
-# End Copy ################################
-# Press CTRL+X and Enter
+##### Copy #### END
+### Press CTRL+X; then Enter
 
-# Editing Crontab for startup as root
-sudo su
-crontab -e 
-# Press [2] if asked
-
-# Place this information as the last line in crontab
-@reboot /bin/bash /opt/rclonemount.sh
-# Press CTRL+X and save
-
-# File permissions
-sudo chmod 755 /opt/rclonemount.sh
-sudo chown root /opt/rclonemount.sh
+### File permissions
+sudo chmod 755 /opt/rclone.sh
+sudo chown root /opt/rclone.sh
 exit
+###
+################# RClone ################# END
 
-# WARNING ##
+################# Final Notes ################# START
 # Do not proceed any further until PlexDrive is done scanning
 # Once completed, reboot your system
 # Check your /mnt/plexdrive5 and /mnt/rclone-d to ensure that information loads up (blank if you have nothing)
+################# Final Notes ################# End
