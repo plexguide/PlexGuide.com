@@ -1,2 +1,2 @@
 # The-Awesome-Plex-Server
-Follow the chapthers
+Follow the Chapters for Instaling
