@@ -81,3 +81,90 @@ sudo /etc/init.d/rc.local start
 # Note: do not reboot your system until PLEXDrive is done.
 
 ## Installing RClone #########################
+# RClone is this process is utilized to take your downloaded files and push them to your Google Drive
+
+# installing unzip
+sudo apt install unzip
+
+# downloads the rclone file and rename
+cd ~ && cd Downloads
+curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+unzip rclone-current-linux-amd64.zip
+cd rclone-*-linux-amd64
+
+# moves rclone to your bin file for executing
+sudo cp rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+
+# updates the man (help) pages
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+
+# deletes uncessary files
+cd ..
+sudo rm -r rclone*
+
+# sets file permissions for the rclone folder
+sudo mkdir /mnt/rclone-d
+sudo chmod 755 /mnt/rclone-d
+sudo chown root /mnt/rclone-d
+
+# switching to root for rclone config 
+sudo su
+rclone config
+
+## Follow the proper order (For RClone 1.37, just use common sense if there are new changes)
+# N < For New remote
+# gdrive < for the name
+# 8 < For Google Drive (double check the number select incase)
+# Enter Your Google ID
+# Enter Your Goole Secret
+# N < for headless machine
+# Y < If asking all is ok?
+# Q < to quit
+
+# going back to your username
+exit
+
+# editing the fuse.conf file
+sudo nano /etc/fuse.conf
+# remove the (#) symbol before user_allow_other
+# Press CTRL+X and then save
+
+## RClone Startup Script
+
+# Making the script and storing under opt
+sudo nano /opt/rclonemount.sh
+
+# Copy the following information below into the Script
+
+Start Copy ###############################
+
+#!/bin/bash
+
+sudo rm -r /mnt/rclone-d/zilch
+sudo rclone mount --allow-other gdrive: /mnt/rclone-d
+
+# End Copy ################################
+# Press CTRL+X and Enter
+
+# Editing Crontab for startup as root
+sudo su
+crontab -e 
+# Press [2] if asked
+
+# Place this information as the last line in crontab
+@reboot /bin/bash /opt/rclonemount.sh
+# Press CTRL+X and save
+
+# File permissions
+sudo chmod 755 /opt/rclonemount.sh
+sudo chown root /opt/rclonemount.sh
+exit
+
+# WARNING ##
+# Do not proceed any further until PlexDrive is done scanning
+# Once completed, reboot your system
+# Check your /mnt/plexdrive5 and /mnt/rclone-d to ensure that information loads up (blank if you have nothing)
