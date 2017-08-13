@@ -106,9 +106,9 @@ cd ..
 sudo rm -r rclone*
 
 ### Sets file permissions for RClone folder
-sudo mkdir /mnt/rclone-d
-sudo chmod 755 /mnt/rclone-d
-sudo chown root /mnt/rclone-d
+sudo mkdir /mnt/rclone
+sudo chmod 755 /mnt/rclone
+sudo chown root /mnt/rclone
 
 ### Configure RClone config as Root 
 sudo su
@@ -138,8 +138,8 @@ sudo nano /opt/rclone.sh
 ##### Copy #### START
 #!/bin/bash
 
-sudo rm -r /mnt/rclone-d/zilch
-sudo rclone mount --allow-other gdrive: /mnt/rclone-d
+sudo rm -r /mnt/rclone/zilch
+sudo rclone mount --allow-other gdrive: /mnt/rclone
 
 ##### Copy #### END
 ### Press CTRL+X; then Enter
@@ -154,5 +154,5 @@ exit
 ################# Final Notes ################# START
 # Do not proceed any further until PlexDrive is done scanning
 # Once completed, reboot your system
-# Check your /mnt/plexdrive5 and /mnt/rclone-d to ensure that information loads up (blank if you have nothing)
+# Check your /mnt/plexdrive5 and /mnt/rclone to ensure that information loads up (blank if you have nothing)
 ################# Final Notes ################# End
