@@ -5,7 +5,7 @@
 #### Result:  They reboot and both containers should see the RCLONE Script
 
 ### PlexDrive - RC.Local startup script
-sudo /opt/nano postyml.sh
+sudo nano /opt/postyml.sh
 
 ##### Copy #### START
 #!/bin/bash
