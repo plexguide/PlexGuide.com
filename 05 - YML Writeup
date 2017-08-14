@@ -159,10 +159,9 @@ services:
  muximux:
    image:  linuxserver/muximux
    container_name: muximux
-   ports:
 # If you want your ip or domain to load this directly, change the 8005 to 80 (80:80).
 # If you plan on creating a web-interface; leave as 8005; port 80 is reserved for your website
-# Changing the ports will not affect or break any other programs
+   ports:
      - 8015:80
    volumes:
      - /opt/appdata/muximux/config:/config
@@ -170,6 +169,8 @@ services:
    environment:
      - PUID=1001
      - PGID=1001
+   restart:
+     always
 ################# YML Writeup ################# END
  
 ################# Final Notes ################# Start
