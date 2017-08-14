@@ -20,7 +20,7 @@ sudo nano /opt/postyml.sh
 # Description:       postyml-fix
 ### END INIT INFO
 
-x=15
+x=30
 while [ $x -gt 0 ]
 do
     sleep 1s
@@ -29,7 +29,7 @@ do
     x=$(( $x - 1 ))
 done
 docker restart couchpotato
-docker restart sonarr
+docker restart sonar
 
 exit 0;
 ##### Copy #### END
