@@ -89,8 +89,8 @@ sh /opt/rclone.sh &
 # Assign permissions so you script can execute
 sudo chown root /etc/rc.local
 sudo chmod 755 /etc/rc.local
-sudo chmod 755 /opt/plexd.sh
-sudo chown root /opt/plexd.sh
+sudo chmod 755 /opt/plexd4.sh
+sudo chown root /opt/plexd4.sh
 sudo /etc/init.d/rc.local start
 # Do NOT reboot your system until PlexDrive is done scanning
 ################# PlexDrive4 ################# END
