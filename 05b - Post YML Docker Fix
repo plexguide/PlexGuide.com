@@ -1,7 +1,7 @@
 ################# Post YML Fix ################# START
 #### Problem:  Couch and Sonnar are unable to see the Google Drive via RCLONE
-#### Reason:  RClone loads up mores slowl and containers are too fast
-#### Answer:  Force a reboot of those two containers after 20 seconds
+#### Reason:  RClone loads up mores slowly and the docker containers load too fast
+#### Answer:  Force a reboot of those two containers after 25 seconds
 #### Result:  They reboot and both containers should see the RCLONE Script
 y
 ### PlexDrive - RC.Local startup script
