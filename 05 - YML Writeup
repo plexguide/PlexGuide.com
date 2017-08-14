@@ -139,13 +139,13 @@ services:
 # couchpotato configuration data
      - /opt/appdata/couch:/couch
 # directory to where movies are uploaded via RClone
-     - /mnt/rclone-d/zilch/movies:/movies
+     - /mnt/rclone/zilch/movies:/movies
 # used just for couchpotato to scan on what you have; no API Bans
      - /mnt/plexdrive5/zilch/movies:/couchscans
 # downloaded movie storage
      - /mnt/sabmovies/downloads/complete:/sabcomplete
 # this is just a test directory; not needed
-     - /mnt/rclone-d/zilch/test2:/test2
+     - /mnt/rclone/zilch/test2:/test2
 # this is just a test directory; not needed
      - /mnt/sabmovies/watch:/blackhole
    environment:
