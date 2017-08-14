@@ -13,12 +13,14 @@ services:
    volumes:
      - /opt/appdata/plex:/config
      - /mnt:/shows
+# problems with plexdrive5, change it to a 4 (if you installed legacy plexdrive4); does not force plex to rescan all over again 
+     - /mnt/plexdrive5/zilch/:/media
    network_mode: host
 # ensures this container starts up when required to
    restart: always
    environment:
-     - PUID=1001
-     - PGID=1001
+     - PUID=0
+     - PGID=0
  portainer:
    image: portainer/portainer
    container_name: portainer
