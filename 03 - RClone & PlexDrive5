@@ -14,6 +14,7 @@
 
 ################# PlexDrive5 ################# START
 ### Required for Plex to read without triggering 24 hour ban
+
 sudo apt update
 
 # Incase fuse in not installed
@@ -39,18 +40,18 @@ screen sudo plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt
 # Revert to PlexDrive status; CTRL+A 0
 
 ### PlexDrive - RC.Local startup script
-cd /opt && sudo nano plexd.sh
+cd /opt && sudo nano plex5.sh
 
 ##### Copy #### START
 #!/bin/bash
 
 ### BEGIN INIT INFO
-# Provides:          plexd.sh
+# Provides:          plex5.sh
 # Required-Start:    $local_fs $network
 # Required-Stop:     $local_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: plexd.sh
+# Short-Description: plex5.sh
 # Description:       plexdrive5
 ### END INIT INFO
 
@@ -63,15 +64,15 @@ exit 0;
 cd /etc && sudo nano rc.local
 
 # Place the line below above "exit 0"
-sh /opt/plexd.sh &
+sh /opt/plex5.sh &
 sh /opt/rclone.sh &
 # Press CTRL+X and then ENTER to save
 
 # Assign permissions so you script can execute
 sudo chown root /etc/rc.local
 sudo chmod 755 /etc/rc.local
-sudo chmod 755 /opt/plexd.sh
-sudo chown root /opt/plexd.sh
+sudo chmod 755 /opt/plex5.sh
+sudo chown root /opt/plex5.sh
 sudo /etc/init.d/rc.local start
 # Do NOT reboot your system until PlexDrive is done scanning
 ################# PlexDrive5 ################# END
