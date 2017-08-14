@@ -49,7 +49,7 @@ sudo chmod 755 /usr/local/bin/plexdrive4
 sudo mkdir /mnt/plexdrive4 && sudo chmod 755 /mnt/plexdrive4
 
 # Execute PlexDrive 4; takes awhile to complete; do not shutdown
-plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
+screen sudo plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 
 # Press CTRL+A then C to create new terminal session to continue
 # Revert to PlexDrive status; CTRL+A 0
