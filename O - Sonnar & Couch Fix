@@ -4,8 +4,6 @@
 ### Answer:  Force a reboot of those two containers after 20 seconds
 ### Result:  They reboot and both containers should see the RCLONE Script
 
-
-
 #!/bin/bash
 x=20
 while [ $x -gt 0 ]
