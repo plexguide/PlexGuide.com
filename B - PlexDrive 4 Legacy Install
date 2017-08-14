@@ -71,6 +71,7 @@ cd /opt && sudo nano plex4.sh
 # Description:       plexdrive4
 ### END INIT INFO
 
+sudo service mongod start
 plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 
 exit 0;
