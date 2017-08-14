@@ -1,13 +1,18 @@
 Transmission Basics (VPN, Usenet, Torrents)
 
 Intro:  So this guide is written up for UseNet purposes only.  The programs are capable of incorporating torrents which is something you will have to iron out on your own, but I will provide some basic information about each service and make some recommendations for FYI purposes.
+
 VPN:  A VPN is a virtual private network that is typically encrypted and utilized either to change the location of a service being provided, to hide/and or conceal information, and/or to prevent the interception of information.  From the TRIAD, it provides confidentiality to a limited extent (depends on your provider)
+
 Learn more about VPN’s: https://www.youtube.com/watch?v=K9bhbEm7JAk
  
+
 Utilizing USENET
 
 VPN:   USENET does not require a VPN.  Typically if you select port 443 or 563 as your transmission ports, you information is already encrypted.  A VPN does add an extra layer of security, but it can slow down your connection speeds, and create problems unless you're an expert in configuring it in whatever you're trying to do.
+
 USENET has been utilizing since a long time ago back in the day.  It was very confusing, the software was very clunky, the speeds severely capped along with bandwidth usage, and it required a-lot of manual work to get it going.  Some of you reading this were maybe pros back in the day 2001-ish; even prior to that.  Anyways, due to how complicated USENET was, many people chose to use services such as Napster, LimeWire, Kazza and then Torrents as end-state.
+
 One day, a buddy mentioned USENET in 2015 and stated that usenet was unlimited and the speeds were insanely fast with 900mb (90MB) downloads.  Recalling seeing SABNZBD from my limited experience, there was an option to utilize Torrents or USENET.  Wondering why USENET was still around, the USENET option was selected and the speeds were incredibly fast; including the automation use of the software (once configured properly - 3 weeks of learning on that apsect).
 What Does USENET Require?:  So the requirements are little more complicated that what torrenting requires.  With USENET, you require the following:
 Managing Programs:
@@ -26,5 +31,7 @@ Once you have a server, you configure it within SABNZBD.  SABNZBD then will down
 
 The management program in this case tells Sonarr that XY&Z.mp4 is done.  The management program (Sonarr/Radarr/CouchPotato) then takes the file, renames it, and then moves it to the location of your choice.  It’s great due to the fact that you do not have to move the files yourself.  When you installed rclone earlier,the management programs will automatically place the files in rclone’s upload path.  Basically, your downloaded files are pushed to the cloud automatically.
 Utilizing Torrents
+
 Basic Info:  Torrents are the easiest route to go, but are complicated through the use of automations.  Torrents are not always around, your information is exposed, and it carries a-lot of risk.  Most people select torrents because they are well known, easy to use, and technically free.  What a-lot of people do not realize is that your ip-address is fully displayed for the world to see.  So if you're using torrents, figure out to adapt the programs (not my area), and use a VPN when possible.  If using a VPN, I would use: PIA (Private Internet Access).  PIA is cheap, do not hassle you about multiple collections, take paypal, and I’ve had no problem over the years and being overseas.  Just remember that with any VPN, they can snoop on you.  The free VPN’s, be most wary of.
+
 Learn More About Torrents: https://www.youtube.com/watch?v=OFswNCU5CKA
