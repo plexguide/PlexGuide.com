@@ -1,9 +1,9 @@
 ################# Post YML Fix ################# START
 #### Problem:  Couch and Sonnar are unable to see the Google Drive via RCLONE
-#### Reason:  RClone loads up mores slowly, so the containers are too fast
+#### Reason:  RClone loads up mores slowl and containers are too fast
 #### Answer:  Force a reboot of those two containers after 20 seconds
 #### Result:  They reboot and both containers should see the RCLONE Script
-
+y
 ### PlexDrive - RC.Local startup script
 sudo nano /opt/postyml.sh
 
@@ -20,7 +20,7 @@ sudo nano /opt/postyml.sh
 # Description:       postyml-fix
 ### END INIT INFO
 
-x=30
+x=25
 while [ $x -gt 0 ]
 do
     sleep 1s
