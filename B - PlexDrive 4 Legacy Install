@@ -28,6 +28,7 @@ sudo service mongod start
 ################# PlexDrive4 ################# START
 ### Required for Plex to read files without triggering 24 hour ban
 ### PlexDrive 4 requires consumes some diskspace overtime; 12GB on average
+### Guide is written for PlexDrive5; change 5 to a 4 in other parts of the guide for usage
 
 # Prevents problems
 sudo apt-get update
