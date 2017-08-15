@@ -2,7 +2,9 @@
 
 Want to access the old guide with picutres? http://doc.plexguide.com (Warning Semi Dated)
 
-This guide will enable you to run a plex service, create and run many mass services at once, and download and upload through USENET.  Fully works solo on automated server with minimimal maintence.  This incorporates the full power of Docker. 
+This guide will enable you to run a plex service, create and run many mass services at once, and download and upload through USENET.  Fully works solo my automated server with minimimal maintence.  This incorporates the full power of Docker.  
+
+Note: Recommend to install PlexDrive 4 and 5.  Wrote up guy that allow easy install of both. PD4 right now is working 100x better than PD5.  The YML is written up so all you have to do is change a number and your Plex won't even notice (it's a good thing).
 
 The Following Items Will Be Installed:
 
