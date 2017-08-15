@@ -4,7 +4,7 @@ Want to access the old guide with picutres? http://doc.plexguide.com (Warning Se
 
 This guide will enable you to run a plex service, create and run many mass services at once, and download and upload through USENET.  Fully works solo my automated server with minimimal maintence.  This incorporates the full power of Docker.  
 
-In regards to encryption, this document servers as a baseline and fully works.  If you want to use encrytion, SSL, and etc; you will have to generate your own solutions.  If you have a solution and wish to share it, I will add it.
+In regards to encryption, this document serves as a baseline and fully works.  If you want to use encrytion, SSL, and etc; you will have to generate your own solutions.  If you have a solution and wish to share it, I will add it.
 
 Note: Recommend to install PlexDrive 4 and 5.  Wrote up guy that allow easy install of both. PD4 right now is working 100x better than PD5.  The YML is written up so all you have to do is change a number and your Plex won't even notice (it's a good thing).
 
