@@ -4,7 +4,7 @@
 ################# Information ################# START
 # Creating a web interface makes it easier for your vistors to utilize your Plex Services
 # Demo Image: [Not Here Yet]
-# Uses Docker Images: MySQL & Wordpress
+# Uses Docker Images: MariaDB & Wordpress
 ################# Information ################# END
 
 ################# MYSQL Container ################# START
@@ -13,10 +13,9 @@
 # [Click] Settings
 # Custom Templates: Ensure that it is off
 # [Click] App Templates
-# [Click] MySQL
+# [Click] MariaDB 
+#  - Do not use MYSQL, your wordpress will timeout after 15 minutes everytime
 # Root Password: enter one; keep it for the WordPress install
-# [Click] Show Advanced Options
-# Port Mapping Host: Add 3306
 # [Click Create]
 ################# MYSQL Container ################# END
 
@@ -25,7 +24,7 @@
 # Visit http://youripv4address:9000
 # [Click] App Templates
 # [Click] WordPress
-# MySQL database host: Select the MYSQL container your created
+# MySQL database host: Select the MYSQL container your created from MariaDB
 # Database Password: One you saved (root password) from above MYSQL install
 # [Click] Show Advanced Options
 # Port Mapping Host: Add 80
@@ -35,7 +34,7 @@
 ################# PHP Limits (Optional) ################# START
 ### This only applies if your uploading themes or files and you receive an exceed error message
 # Go to http://ipv4address:9000 (your portainer install)
-# [Click] Containers > [Click] Wordpress > [Click] >_Console
+# [Click] Containers > [Click] Wordpress > [Click] >_Console [Click] Connect
 apt-get upgrade
 agt-get install nano
 cd /usr/local/etc/php/conf.d/
@@ -59,4 +58,5 @@ cp php.ini ..
 # Visit http://ipv4address and you should see wordpress loadup
 # Follow the Wizard and create a USER & PW you can memorize
 # Customize easily by installing templates
+#  - If template does not upload do to exceed size message, follow instructions above
 ################# Final Notes ################# END
