@@ -10,9 +10,8 @@ The Following Items Will Be Installed:
 
   - Plex & PlexyPy & Ombi
   - RClone & PlexDrive 5 xor 4
-  - Docker and Docker Compose
-  - Portainer
-  - SABNZBD - 2 Instances of
+  - Docker, Docker Compose, and Portainer
+  - Sonarr & CouchPotato + 2 Instances of SABNZBD; one for each
   - NetData & MuxiMux
 
 The Awesome Plex Server Is Based on the USE OF:
