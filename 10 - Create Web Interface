@@ -35,23 +35,27 @@
 ### This only applies if your uploading themes or files and you receive an exceed error message
 # Go to http://ipv4address:9000 (your portainer install)
 # [Click] Containers > [Click] Wordpress > [Click] >_Console [Click] Connect
-apt-get upgrade
+apt-get update
 agt-get install nano
-cd /usr/local/etc/php/conf.d/
 
+cd /usr/local/etc/php/conf.d/
 nano php.ini
+
 ##### Copy #### START
 file_uploads = On
-memory_limit = 100M
-upload_max_filesize = 100M
-post_max_size = 100M
+memory_limit = 64M
+upload_max_filesize = 64M
+post_max_size = 64M
 max_execution_time = 600
 ##### Copy #### END
 
 ### Move a copy to previous directory
 cp php.ini ..
 
-### Reboot server and attempt to upload larger files
+# [Click] Disconnect up Top
+# [Click] Container List on Left or the Server Icon (3rd/4th on Down)
+# Look for your Wordpress Container
+# [Click] and Restart
 ################# PHP Limits (Opitonal) ################# START
 
 ################# Final Notes ################# START
@@ -59,4 +63,6 @@ cp php.ini ..
 # Follow the Wizard and create a USER & PW you can memorize
 # Customize easily by installing templates
 #  - If template does not upload do to exceed size message, follow instructions above
+# Recommend Template: Evolve ($39) https://theme4press.com/evolve-multipurpose-wordpress-theme/
+#  - If install evolve, you need to follow the php limit instructions above
 ################# Final Notes ################# END
