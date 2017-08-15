@@ -33,6 +33,7 @@
 
 ################# PHP Limits (Optional) ################# START
 ### This only applies if your uploading themes or files and you receive an exceed error message
+### Recommend to do this step anyways
 # Go to http://ipv4address:9000 (your portainer install)
 # [Click] Containers > [Click] Wordpress > [Click] >_Console [Click] Connect
 apt-get update
