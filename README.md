@@ -1,16 +1,37 @@
-# The Awesome Plex Server
-http://doc.plexguide.com - Until the GITHUB Transition is complete  (more stuff and pictures)
+# The Awesome Plex  Server
 
-DESIGNED FOR:  Ubuntu 16.04 & Google Drive + USENET
+Want to access the old guide with picutres? http://doc.plexguide.com (Warning Semi Dated)
 
-Wanted: If you have tips for security, please message me on Reddit or note on one the forums.  Info such as iptables, fixing bad commands, and etc will help.  Send a PM on Reddit to Admin9705.
+This guide will enable you to run a plex service, create and run many mass services at once, and download and upload through USENET.  Fully works solo on automated server with minimimal maintence.  This incorporates the full power of Docker.
 
-Disclosure: Links provided are direct links (not referrals and etc).  Suggestions made are based on extensive experience; not due to a bias preference.  This guide is just to help out noobs like me and you, but it’s always good to DOCUMENT everything you do; especially LINUX (you’ll spend hours backtracking a simple lost command).  
+The Following Items Will Be Installed:
 
-Guide is NOT for the old-timers whose goal is to criticize without offering a solution.  Offer solutions - you were a noob once!
+  - Plex & PlexyPy & Ombi
+  - RClone & PlexDrive 5 xor 4
+  - Docker and Docker Compose
+  - Portainer
+  - SABNZBD - 2 Instances of
+  - NetData & MuxiMux
 
-WARNING:  This is not designed for Torrents.  It’s designed for USENET.  Read my extensive FAQ [here].  If you fail to do so or understand what USENET is, you will download nothing.  USENET is much faster.  Again, read the USENET info.
+The Awesome Plex Server Is Based on the USE OF:
 
-What You Will Install:  Plex, PlexDrive 5, RClone v1.36, Sonnar, Portainer, Docker, Screen, & NetData, SABNZBD, CouchPotato
+  - Ubuntu 16.04
+  - Google Drive (G-Suite)
+  - If Downloading - USENET
 
-Note:  Radarr info will be put in Guide 3.2 - Taking a break for awhile. Couchpotato works great for scanning a current massive library that you own.  Radarr is not.
+# Who It's Written For:
+
+  - For Noobs and Novice Noobs like me
+  - For those who just want to learned and improve their setup
+
+
+Not For:
+  - Cranky Linux Experts
+  - Closed Minded Individuals
+  - Non-Solution Oriented Anti-Team Personality Types
+
+Feel free to point out issues, suggestions, and even testing this guide and adding to it.  Full credit will be given.  All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
+
+### Contact
+
+* [Admin9705] - Reddit
