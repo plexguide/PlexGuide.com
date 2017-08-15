@@ -19,6 +19,7 @@ The Awesome Plex Server Is Based on the USE OF:
   - Ubuntu 16.04
   - Google Drive (G-Suite)
   - If Downloading - USENET
+  - Remote Server; works for local also (use dyndns and a ddwrt router to access your service outside of your local server)
 
 # Who It's Written For:
 
