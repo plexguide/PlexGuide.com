@@ -84,7 +84,7 @@ exit 0;
 cd /etc && sudo nano rc.local
 
 # Place the line below above "exit 0"
-# You may have PlexDrive 4 & 5; if removing 5; do not add the 1st line below "plex5.sh"
+# You may have PlexDrive 4 & 5 or just plexdrive 4
 sh /opt/plex5.sh &
 sh /opt/plex4.sh &
 sh /opt/rclone.sh &
