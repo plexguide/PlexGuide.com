@@ -11,7 +11,7 @@
 # Port 32400:32400  Plex
 # Port 8181:8181    PlexPy
 # Port 9000:9000    Portainer
-# Port 7878:7878    Radarr
+# Port 7878:7878    Radarr << Not Written Yet
 # Port 8989:8989    Sonarr
 # Port 8090:8090    SABNZBD-TV
 # Port 8095:8095    SABNZBD-Movies
