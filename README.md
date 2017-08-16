@@ -45,7 +45,7 @@ Take the guide and write up the set of instructions and send a link.  I'll post 
 * [Admin9705] - Reddit
 
 ### Possible Encryption Solutions:
-Note, I do not use services; use rd.local so be aware you will have to ensure you modify what you need for encryption
+Note, I do not use services; use rd.local so be aware you will have to ensure you modify to ensure everything works properly.
 
 https://github.com/dweidenfeld/plexdrive/blob/master/TUTORIAL.md - PlexDrive Encyrption Turtorial (Suggested: Lin584 Reddit) 
 
