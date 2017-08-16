@@ -5,6 +5,7 @@
 # The entire guide depends on this setup
 #  - googledrive:zilch/movies
    - googledrive:zilch/tv
+# Startups do not uses service (problematic), they use rc.local (good for older linux distros)
 ################# Google Directories ################# END
 
 ################# Ubuntu Setup ################# START
