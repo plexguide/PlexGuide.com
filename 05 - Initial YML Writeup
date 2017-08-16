@@ -1,5 +1,6 @@
 ################# YML Writeup ################# START
-# Save/Set this file location: /etc/docker-compose.yml 
+# Save/Set this file location by using this initial commmand: sudo nano /etc/docker-compose.yml 
+#  - you can copy and paste this whole file in to the docker-compose.yml file with no problems.
 # Execute Script Command: cd /opt && sudo docker-compose -f docker-compose.yml up -d
 # Quick delete and replace command: cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml 
 # The spacing in script is important or it will fail
