@@ -1,8 +1,10 @@
 ################# Google Directories ################# START
 ### Building the foundational layout
 # Go to Google Drive and create root folder called zilch.
-# Create two subfolders: movies & zilch
-# The entire guide depends root folder setup.
+# Create two subfolders: movies & tv
+# The entire guide depends on this setup
+#  - googledrive:zilch/movies
+   - googledrive:zilch/tv
 ################# Google Directories ################# END
 
 ################# Ubuntu Setup ################# START
