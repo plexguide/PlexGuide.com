@@ -2,7 +2,7 @@
 
 Want to access the old guide with pictures? http://doc.plexguide.com (Warning Semi Dated / good for pictures / bad for install)
 
-This guide will enable you to run a plex service, create and run many mass programs at once, and download-upload utilizing USENET.  This fully works on my server with minimimal maintence.  This incorporates the full power of Docker.  
+This guide will enable you to run a plex service, create and run many mass programs at once, and download-upload utilizing USENET.  This fully works on my server with minimimal maintence.  Incorporates the full power of Docker.  
 
 Encryption & Security: This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
 
