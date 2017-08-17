@@ -45,7 +45,7 @@
 # Wizard Mode - You can start filling or do later
 #  - Username: (remember it)
 #  - Password: (remember it)
-#  - Port: leave this only; you will only mess up due to using docker
+#  - Port: leave this alone; it will mess up due to docker use
 #  - Dark Theme: Turn it on, trust me
 #  - Directory: /blackhole/
 #  - Use For: usnet
