@@ -4,9 +4,9 @@ Want to access the old guide with pictures? http://doc.plexguide.com (Warning Se
 
 This guide will enable you to run a plex service, create and run many mass programs at once, and download-upload utilizing USENET.  This fully works on my server with minimimal maintence.  This incorporates the full power of Docker.  
 
-In regards to encryption, this document serves as a baseline and fully works.  If you want to use encrytion, SSL, and etc; you will have to GENERATE YOUR OWN SOLUTIONS.  If you have a solution and wish to share it, I will add it.  Go to the bottom of this README.
+Encryption & Security: This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
 
-Note: Recommend to install PlexDrive 4 and 5.  Wrote up this guide that allows an easy install of both. PD4 right now is working 100x better than PD5 in my use (and another confirmed by a user who did the same).  The YML is written up so all you have to do is change a number and your Plex won't even notice (it's a good thing).
+Recommend to install PlexDrive 4 and 5.  Wrote up this guide that allows an easy install of both. PD4 right now is working 100x better than PD5 in my use (and another confirmed by a user who did the same).  The YML is written up so all you have to do is change a number and your Plex won't even notice (it's a good thing).
 
 The Following Items Will Be Installed:
 
@@ -44,9 +44,8 @@ Take the guide and write up the set of instructions and send a link.  I'll post 
 
 * [Admin9705] - Reddit
 
-### Possible Encryption Solutions:
-Note, I do not use services; use rd.local so be aware you will have to ensure you modify to ensure everything works properly.
+### Security Solutions:
 
-https://github.com/dweidenfeld/plexdrive/blob/master/TUTORIAL.md - PlexDrive Encyrption Turtorial (Suggested: Lin584 Reddit) 
+https://github.com/dweidenfeld/plexdrive/blob/master/TUTORIAL.md - PlexDrive Encyrption (Lin584 - Reddit) 
 
 
