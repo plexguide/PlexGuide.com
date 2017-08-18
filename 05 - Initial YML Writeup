@@ -151,7 +151,7 @@ services:
      - /mnt/sabmovies/downloads/complete:/sabcomplete
 # this is just a test directory; not needed
      - /mnt/rclone/zilch/test2:/test2
-# this is just a test directory; not needed
+# this is where couch will drop nzb files for sab-movies to pick up
      - /mnt/sabmovies/watch:/blackhole
    environment:
      - PUID=0
