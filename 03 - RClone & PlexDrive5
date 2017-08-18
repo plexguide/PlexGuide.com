@@ -1,6 +1,6 @@
 ##### HOT NOTE ##### 
 ### I would recommend using PlexDrive 4 over 5 due to performance (big time).
-### I would recommend installing both.  To install 4; follow PlexDrive 4 Legacy instructions on main page.
+### I would recommend installing both.  To install 4 after this; follow PlexDrive 4 Legacy instructions on main page (next section).
 ### To make it easy for you, I setup the docker YML where you can switch between 4 and 5 without plex forcing a rescan.
 ### Method is great because you are able to judge for yourself between the two. View the YML file to see the comment.
 ### Legacy PlexDrive 4 instructions are written up to include the 5 setup and they will not interfere with each other.
