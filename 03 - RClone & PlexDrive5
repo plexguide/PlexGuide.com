@@ -144,7 +144,9 @@ sudo nano /opt/rclone.sh
 #!/bin/bash
 
 sudo rm -r /mnt/rclone/zilch
-sudo rclone mount --allow-other gdrive: /mnt/rclone
+## --bwlimit is to limit speeds to prevent ban
+sudo /usr/bin/rclone --bwlimit 8650k --size-only mount gdrive: /mnt/rclone
+## old command - /usr/bin/rclone mount --allow-other gdrive: /mnt/rclone
 
 ##### Copy #### END
 # Press CTRL+X; then Enter
