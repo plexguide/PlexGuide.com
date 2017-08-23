@@ -38,7 +38,6 @@ exit 0;
 sudo nano /etc/rc.local
 
 # Place the line below above "exit 0"
-sh /opt/plex5.sh & 
 sh /opt/postyml.sh &
 # Press CTRL+X and then ENTER to save
 
