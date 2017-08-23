@@ -85,9 +85,8 @@ cd /etc && sudo nano rc.local
 
 # Place the line below above "exit 0"
 # You may have PlexDrive 4 & 5 or just plexdrive 4
-sh /opt/plex5.sh &
 sh /opt/plex4.sh &
-sh /opt/rclone.sh &
+# add above exit 0; it's ok if you have other stuff there, just put above exit 0
 # Press CTRL+X and then ENTER to save
 
 # Assign permissions so you script can execute
