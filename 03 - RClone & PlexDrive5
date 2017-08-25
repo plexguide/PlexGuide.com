@@ -154,10 +154,8 @@ sudo chown root /opt/rclone.sh
 ################# RClone ################# END
 
 ################# Final Notes ################# START
-# Continue only to install PlexDrive 4 - Goto PlexDrive4 Instruction and Ignore the Rest Below
-# I would recommend PlexDrive 4 over 5.
-
-# If you do not install PLEXDRIVE 5, type the following below to view status
+# I would install PlexDrive4 still.  Do not install PlexDrive4 or GO any further until PlexDrive is done; you will mess things up
+# Type command below
 exit
 # When DONE, reboot your system and test that rclone and plexdrive mounted
 # Press CTRL+A and then C (new terminal session)
