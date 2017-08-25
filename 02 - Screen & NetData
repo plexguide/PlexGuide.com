@@ -1,6 +1,10 @@
+################# Update System ################# START
+### Ensures that you have the lastest updates
+sudo apt update
+################# Install Screen ################# END
+
 ################# Install Screen ################# START
 ### Enables to carry multiple terminal sessions
-sudo apt update
 sudo apt install screen
 ################# Install Screen ################# END
 
@@ -8,5 +12,6 @@ sudo apt install screen
 ### Provides detailed server information
 sudo apt-get install curl
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
+# Press "Y" to accept when prompted
 # Visit http://ipv4address:19999
 ################# Google Directories ################# END
