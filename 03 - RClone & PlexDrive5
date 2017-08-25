@@ -1,22 +1,24 @@
 ##### HOT NOTE ##### 
-### I would recommend using PlexDrive 4 over 5 due to performance (big time).
-### I would recommend installing both.  To install 4 after this; follow PlexDrive 4 Legacy instructions on main page (next section).
-### To make it easy for you, I setup the docker YML where you can switch between 4 and 5 without plex forcing a rescan.
-### Method is great because you are able to judge for yourself between the two. View the YML file to see the comment.
-### Legacy PlexDrive 4 instructions are written up to include the 5 setup and they will not interfere with each other.
+### PlexDrive 4 over 5 Recommendation
+# I would recommend using PlexDrive 4 over 5 due to performance (big time)
+# I would recommend installing both.  To install PlexDrive 4 after this; follow PlexDrive 4 Legacy instructions (next section)
+# To make it easy for you, I setup the docker YML where you can switch between PD4 and PD5 without plex forcing a rescan
+# In the YML (later), you'll see the 5... change it to a 4.  The upside is you have both.  Rerun the YML execute command IF CHANGING
+# Legacy PlexDrive 4 instructions are written so you PD4 and PD5 DO NOT interfere with one another
 
 ################# Google Drive API ################# START
 ### Required for both RClone & PlexDrive5 
+# This part is only required if you DO NOT have your Google Drive API credentials
 # http://console.developers.google.com
 # Select project or create a new project
 # Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
 # Click "Credentails" in the left-side panel (not "Go to Credentials" which is a Wizard)
-# Then "Create credenntials"
+# Then "Create credentials"
 # Then "OAuth client ID"
 # Prompted to set OAuth consent screen product name.
 # Choose application type as "other" and then click "Create"
-#   If you do not select other, will not work (Reported By PogMoThoin22 @ reddit)
-# Will then show you a client ID and client secret
+#   If you fail to select "other", it will not work (Reported By PogMoThoin22 @ reddit)
+# Will show your client ID and client secret
 ################# Google Drive API ################# END
 
 ################# PlexDrive5 ################# START
@@ -28,49 +30,41 @@ sudo apt update
 sudo apt install fuse
 
 # create a temporary folder
-# cd ~ && mdkir Downloads && cd Downloads
-# visit PlexDrive GitHub incase of more updates
+cd /tmp
+# check to for the newest update and replace link below if required: https://github.com/dweidenfeld/plexdrive/releases
 sudo wget https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
 
 # Commands to rename and move PlexDrive5 to the correction location; sets proper permissions
-mv plexdrive-linux-amd64 plexdrive5
+sudo mv plexdrive-linux-amd64 plexdrive5
 sudo mv plexdrive5 /usr/local/bin/
 cd /usr/local/bin/
 sudo chown root:root /usr/local/bin/plexdrive5
 sudo chmod 755 /usr/local/bin/plexdrive5
 sudo mkdir /mnt/plexdrive5 && sudo chmod 755 /mnt/plexdrive5
+cd ~
 
 # Execute PlexDrive 5; takes awhile to complete; do not shutdown
+# The screen CMD will not work if you failed to install SCREEN
 screen sudo plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
 
 # Press CTRL+A then C to create new terminal session to continue
 # Revert to PlexDrive status; CTRL+A 0
+# If you want to see your WINDOW numbers, press CTRL+A W and look below
+#   To get to any other windows, you would press CTRL+A (and the corresponding number)
 
 ### PlexDrive - RC.Local startup script
 cd /opt && sudo nano plex5.sh
 
 ##### Copy #### START
 #!/bin/bash
-
-### BEGIN INIT INFO
-# Provides:          plex5.sh
-# Required-Start:    $local_fs $network
-# Required-Stop:     $local_fs
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: plex5.sh
-# Description:       plexdrive5
-### END INIT INFO
-
 plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
-
-exit 0;
 ##### Copy #### END
 
-# Press CTRL+X; then Enter. Editing rc.local to boot up plexdrive and rclone script
+# Press CTRL+X; then Enter to Save. 
+# Editing rc.local to boot up plexdrive5 and rclone script
 cd /etc && sudo nano rc.local
 
-# Place the line below above "exit 0"
+# Place the lines below above "exit 0"
 sh /opt/plex5.sh &
 sh /opt/rclone.sh &
 # Press CTRL+X and then ENTER to save
@@ -91,9 +85,9 @@ sudo /etc/init.d/rc.local start
 sudo apt install unzip
 
 # Download RClone and Rename
-cd ~ && cd Downloads
-curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
-unzip rclone-current-linux-amd64.zip
+cd /tmp
+sudo curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+sudo unzip rclone-current-linux-amd64.zip
 cd rclone-*-linux-amd64
 
 # Move RClone to Bin for fututure execution
@@ -126,6 +120,10 @@ rclone config
 # Enter Your Google ID
 # Enter Your Goole Secret
 # N < for headless machine
+# Enter Your Verification Code
+#   Note: If you copy and paste by SELECTING and CLICK the RIGHT Mouse button, it will work; but then you will see it repeat
+#   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
+# N < Configure this as a team drive?
 # Y < If asking all is ok?
 # Q < to quit
 
@@ -146,19 +144,26 @@ sudo nano /opt/rclone.sh
 sudo rm -r /mnt/rclone/zilch
 ## --bwlimit is to limit speeds to prevent ban
 sudo /usr/bin/rclone --bwlimit 8650k --size-only mount gdrive: /mnt/rclone
-## old command - /usr/bin/rclone mount --allow-other gdrive: /mnt/rclone
-
 ##### Copy #### END
+
 # Press CTRL+X; then Enter
 
 # File permissions
 sudo chmod 755 /opt/rclone.sh
 sudo chown root /opt/rclone.sh
-exit
 ################# RClone ################# END
 
 ################# Final Notes ################# START
-# Do not proceed any further until PlexDrive is done scanning
-# Once completed, reboot your system
-# Check your /mnt/plexdrive5 and /mnt/rclone to ensure that information loads up (blank if you have nothing)
+# Continue only to install PLEXDRIVE 4 - Goto PlexDrive4 Instruction and Ignore the Rest Below
+
+# If you do not install PLEXDRIVE 5, type the following below to view status
+exit
+# When it's done, reboot your system to test that rclone and plexdrive mounted
+sudo reboot
+cd /mnt/rclone && dir
+## you should see your stuff for rclone, next test is plexdrive (note, if you have nothing in your google drive, it will be blank)
+cd /mnt/plexdrive5 && dir
+## you should see your stuff plexdrive (note, if you have nothing in your google drive, it will be blank)
+# I would put something in your google drive if you have nothing to test
+# If you have something in your google drive and either shows up blanks, it's because your configs were wrong or startup script is wrong
 ################# Final Notes ################# End
