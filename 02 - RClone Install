@@ -46,11 +46,8 @@ rclone config
 # Y < If asking all is ok?
 # Q < to quit
 
-# Go back to your username
-exit
-
 # Editing the fuse.conf file
-sudo nano /etc/fuse.conf
+nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other
 # Press CTRL+X and then save
 
@@ -81,6 +78,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
 sudo systemctl status rclone.service
+
+# Go back to your username
+exit
 ################# RClone ################# END
 
 ################# Final Notes ################# START
