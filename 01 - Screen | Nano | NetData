@@ -6,7 +6,12 @@ sudo apt update
 ################# Install Nano ################# START
 ### You may have already; but just incase
 sudo apt install nano
-################# Install Screen ################# END
+################# Install Nano ################# END
+
+################# Install MANDB ################# START
+### You may have already; but just incase
+sudo apt install nano
+################# Install MANDB ################# END
 
 ################# Install Screen ################# START
 ### Enables to carry multiple terminal sessions
