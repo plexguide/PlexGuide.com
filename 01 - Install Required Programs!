@@ -8,6 +8,11 @@ sudo apt update
 sudo apt install nano
 ################# Install Nano ################# END
 
+################# Install Fuse ################# START
+### You may have already; but just incase
+sudo apt install fuse
+################# Install Fuse ################# END
+
 ################# Install MANDB ################# START
 ### You may have already; but just incase
 sudo apt install nano
