@@ -63,7 +63,7 @@ After=multi-user.target
 [Service]
 User=root
 Group=root
-ExecStart=/usr/bin/rclone mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --$
+ExecStart=/usr/bin/rclone mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
 ExecStop=/bin/fusermount -uz gdrive: /mnt/rclone
 Restart=on-abort
 
