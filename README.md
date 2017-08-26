@@ -2,11 +2,15 @@
 
 Want to access the old guide with pictures? http://doc.plexguide.com (Warning Semi Dated / good for pictures / bad for install)
 
-This guide will enable you to run a plex service, create and run many mass programs at once, and download-upload utilizing USENET.  This fully works on my server with minimimal maintence.  Incorporates the full power of Docker.  
+This guide will enable you to run a plex service, create and run many mass programs at once, and download-upload utilizing USENET.  This fully works on my server with minimimal maintence.  Incorporates the full power of Docker (you'll like it if you get VMWare).  
+
+Why Docker?  I didn't understand what Docker was until I some research.  Basically, think of Docker as manager program that create mini vm's in what's known as containers.  Each container runs within it's own environment with all the dependices installed.  If lets say plex goes down; you do not have to reboot the entire server; your reboot only the container called plex.  You can manage your containers when you install portainer.
 
 Encryption & Security: This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
 
 Recommend to install PlexDrive 4 and 5.  Wrote up this guide that allows an easy install of both. PD4 right now is working 100x better than PD5 in my use (and another confirmed by a user who did the same).  The YML is written up so all you have to do is change a number and your Plex won't even notice (it's a good thing).
+
+Why 2 instances of SAB?  You could just do one, but it's much easier to have two.  One for movies and one for tv shows.  It prevents one from backlogging on too many movies or too many tv shows and if one goes down, the other is still up and running.  Trust me on this.
 
 The Following Items Will Be Installed:
 
