@@ -1,0 +1,89 @@
+################# RClone ################# START
+### RClone is utilized to move files automatically to your Google Drive
+
+# Install unzip
+sudo apt install unzip
+
+# Download RClone and Rename
+cd /tmp
+sudo curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+sudo unzip rclone-current-linux-amd64.zip
+cd rclone-*-linux-amd64
+
+# Move RClone to Bin for fututure execution
+sudo cp rclone /usr/bin/
+sudo chown root:root /usr/bin/rclone
+sudo chmod 755 /usr/bin/rclone
+
+# Updates Man Pages
+sudo mkdir -p /usr/local/share/man/man1
+sudo cp rclone.1 /usr/local/share/man/man1/
+sudo mandb
+
+# Deletes uncessary files
+cd ..
+sudo rm -r rclone*
+
+# Sets file permissions for RClone folder
+sudo mkdir /mnt/rclone
+sudo chmod 755 /mnt/rclone
+sudo chown root /mnt/rclone
+
+# Configure RClone config as Root 
+sudo su
+rclone config
+
+### Configuring RClone
+# N < For New remote
+# gdrive < for the name
+# 8 < For Google Drive (double check the number select incase)
+# Enter Your Google ID
+# Enter Your Goole Secret
+# N < for headless machine
+# Enter Your Verification Code
+#   Note: If you copy and paste by SELECTING and CLICK the RIGHT Mouse button, it will work; but then you will see it repeat
+#   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
+# N < Configure this as a team drive?
+# Y < If asking all is ok?
+# Q < to quit
+
+# Go back to your username
+exit
+
+# Editing the fuse.conf file
+sudo nano /etc/fuse.conf
+# remove the (#) symbol before user_allow_other
+# Press CTRL+X and then save
+
+# Create RClone Startup Script
+sudo nano /opt/rclone.sh
+
+##### Copy #### START
+#!/bin/bash
+
+sudo rm -r /mnt/rclone/zilch
+## --bwlimit is to limit speeds to prevent ban
+sudo /usr/bin/rclone --bwlimit 8650k --size-only mount gdrive: /mnt/rclone
+##### Copy #### END
+
+# Press CTRL+X; then Enter
+
+# File permissions
+sudo chmod 755 /opt/rclone.sh
+sudo chown root /opt/rclone.sh
+################# RClone ################# END
+
+################# Final Notes ################# START
+# I would install PlexDrive4 still.  Do not install PlexDrive4 or GO any further until PlexDrive is done; you will mess things up
+# Type command below
+exit
+# When DONE, reboot your system and test that rclone and plexdrive mounted
+# Press CTRL+A and then C (new terminal session)
+sudo reboot
+cd /mnt/rclone && dir
+## you should see your stuff for rclone, next test is plexdrive (note, if you have nothing in your google drive, it will be blank)
+cd /mnt/plexdrive5 && dir
+## you should see your stuff plexdrive (note, if you have nothing in your google drive, it will be blank)
+# I would put something in your google drive if you have nothing to test
+# If you have something in your google drive and either shows up blanks, it's because your configs were wrong or startup script is wrong
+################# Final Notes ################# End
