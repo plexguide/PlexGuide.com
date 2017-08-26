@@ -59,16 +59,6 @@ cd /opt && sudo nano plex4.sh
 ##### Copy #### START
 #!/bin/bash
 
-### BEGIN INIT INFO
-# Provides:          plex4.sh
-# Required-Start:    $local_fs $network
-# Required-Stop:     $local_fs
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: plex4.sh
-# Description:       plexdrive4
-### END INIT INFO
-
 sudo service mongod start
 plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 
