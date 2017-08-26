@@ -15,7 +15,7 @@ sudo apt install fuse
 
 ################# Install MANDB ################# START
 ### You may have already; but just incase
-sudo apt install nano
+sudo apt install man-db
 ################# Install MANDB ################# END
 
 ################# Install Screen ################# START
