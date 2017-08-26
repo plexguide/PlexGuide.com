@@ -14,10 +14,9 @@ services:
    volumes:
      - /opt/appdata/plex:/config
      - /mnt:/shows
-# problems with plexdrive5? If installed PlexDrive4 (per my instructions), change the 5 below to a 4 and rerun the YML
-# when mounting shows in plex, use /media/tv and /media/movie; not /plexdrive5/tv or /plexdrive4/tv
-#  - if using the info above, if you switch the 4 or 5; plex DOES NOT rescan all your stuff; that's a good thing
-     - /mnt/plexdrive5/zilch/:/media
+# Recommend PlexDrive 4 over 5 (performance and doesn't stop)
+# If you installed PlexDrive 5... change "plexdrive4" to "plexdrive5"
+     - /mnt/plexdrive4/zilch/:/media
    network_mode: host
 # ensures this container starts up when required to
    restart: always
