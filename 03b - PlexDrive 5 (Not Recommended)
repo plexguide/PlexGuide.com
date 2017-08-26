@@ -1,11 +1,3 @@
-##### HOT NOTE ##### 
-### PlexDrive 4 over 5 Recommendation
-# I would recommend using PlexDrive 4 over 5 due to performance (big time)
-# I would recommend installing both.  To install PlexDrive 4 after this; follow PlexDrive 4 Legacy instructions (next section)
-# To make it easy for you, I setup the docker YML where you can switch between PD4 and PD5 without plex forcing a rescan
-# In the YML (later), you'll see the 5... change it to a 4.  The upside is you have both.  Rerun the YML execute command IF CHANGING
-# Legacy PlexDrive 4 instructions are written so you PD4 and PD5 DO NOT interfere with one another
-
 ################# Google Drive API ################# START
 ### Required for both RClone & PlexDrive5 
 # This part is only required if you DO NOT have your Google Drive API credentials
