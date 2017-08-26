@@ -11,7 +11,7 @@ Recommend to install PlexDrive 4 and 5.  Wrote up this guide that allows an easy
 The Following Items Will Be Installed:
 
   - Plex & PlexyPy & Ombi
-  - RClone & PlexDrive 5 xor 4
+  - RClone & PlexDrive 4 (Can with 5; avoid)
   - Docker, Docker Compose, and Portainer
   - Sonarr & CouchPotato + 2 Instances of SABNZBD; one for each
   - NetData & MuxiMux
