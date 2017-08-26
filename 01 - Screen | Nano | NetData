@@ -3,14 +3,19 @@
 sudo apt update
 ################# Install Screen ################# END
 
+################# Install Nano ################# START
+### You may have already; but just incase
+sudo apt install nano
+################# Install Screen ################# END
+
 ################# Install Screen ################# START
 ### Enables to carry multiple terminal sessions
 sudo apt install screen
 ################# Install Screen ################# END
 
 ################# Install NetData ################# START
-### Provides detailed server information
-sudo apt-get install curl
+### Provides detailed sersver information
+sudo apt install curl
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 # Press "Y" to accept when prompted
 # Visit http://ipv4address:19999
