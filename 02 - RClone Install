@@ -73,16 +73,7 @@ sudo chown root /opt/rclone.sh
 ################# RClone ################# END
 
 ################# Final Notes ################# START
-# I would install PlexDrive4 still.  Do not install PlexDrive4 or GO any further until PlexDrive is done; you will mess things up
-# Type command below
-exit
-# When DONE, reboot your system and test that rclone and plexdrive mounted
-# Press CTRL+A and then C (new terminal session)
-sudo reboot
 cd /mnt/rclone && dir
-## you should see your stuff for rclone, next test is plexdrive (note, if you have nothing in your google drive, it will be blank)
-cd /mnt/plexdrive5 && dir
-## you should see your stuff plexdrive (note, if you have nothing in your google drive, it will be blank)
-# I would put something in your google drive if you have nothing to test
+# Something should come up - make sure you have something in your google drive to see/test it.
 # If you have something in your google drive and either shows up blanks, it's because your configs were wrong or startup script is wrong
 ################# Final Notes ################# End
