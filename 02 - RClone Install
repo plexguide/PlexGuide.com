@@ -21,8 +21,7 @@ sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 
 # Deletes uncessary files
-cd ..
-sudo rm -r rclone*
+cd .. && sudo rm -r rclone*
 
 # Sets file permissions for RClone folder
 sudo mkdir /mnt/rclone
