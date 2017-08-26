@@ -28,3 +28,17 @@
 #  - Firewall can be a choke point.
 #   - You should not have to configure anything out of the ordinary.
 ################# Ubuntu Setup ################# START
+
+################# How To Make a New Sudo User with a username in home ################# START
+# if you are a USER that you do not want to be or do not have sudo access, type the following below; if root already... ignore
+su root
+# Add User: Subsitute the word "username" below of the user you want to be"
+useradd -m -d /home/username username 
+# To add your user to the sudo group; bad day if you forget - gives admin rights basically
+usermod -aG sudo username
+# to change/add the password of the user you created
+passwd username
+# to switch to the sudo user
+su username
+## this is who you should login as now in the future
+################# How To Make a New Sudo User with a username in home ################# END
