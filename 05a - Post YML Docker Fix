@@ -20,7 +20,7 @@ sudo nano /opt/postyml.sh
 # Description:       postyml-fix
 ### END INIT INFO
 
-x=25
+x=20
 while [ $x -gt 0 ]
 do
     sleep 1s
