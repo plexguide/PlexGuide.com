@@ -50,6 +50,8 @@ cd /opt && sudo nano plex5.sh
 ##### Copy #### START
 #!/bin/bash
 plexdrive5 mount -v 3 -o allow_other,read_only --chunk-size=30M /mnt/plexdrive5
+
+exit 0;
 ##### Copy #### END
 
 # Press CTRL+X; then Enter to Save. 
