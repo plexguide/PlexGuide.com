@@ -55,8 +55,8 @@ sudo nano /etc/fuse.conf
 # Press CTRL+X and then save
 
 ### create rclone service
-
 sudo nano /etc/systemd/system/rclone.service
+### Copy the info inbetween from start to end into the file
 
 ##### START COPY #####
 [Unit]
@@ -74,6 +74,9 @@ Restart=on-abort
 WantedBy=multi-user.target
 ##### END COPY #####
 
+# Press CTRL+X and then Yes to save
+
+### Start and enable the service
 sudo systemctl daemon-reload
 sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
