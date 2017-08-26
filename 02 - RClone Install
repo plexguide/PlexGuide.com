@@ -54,25 +54,34 @@ sudo nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other
 # Press CTRL+X and then save
 
-# Create RClone Startup Script
-sudo nano /opt/rclone.sh
+### create rclone service
 
-##### Copy #### START
-#!/bin/bash
+sudo nano /etc/systemd/system/rclone.service
 
-sudo rm -r /mnt/rclone/zilch
-## --bwlimit is to limit speeds to prevent ban
-sudo /usr/bin/rclone --bwlimit 8650k --size-only mount gdrive: /mnt/rclone
-##### Copy #### END
+##### START COPY #####
+[Unit]
+Description=rclonemount
+After=multi-user.target
 
-# Press CTRL+X; then Enter
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/rclone mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --$
+ExecStop=/bin/fusermount -uz gdrive: /mnt/rclone
+Restart=on-abort
 
-# File permissions
-sudo chmod 755 /opt/rclone.sh
-sudo chown root /opt/rclone.sh
+[Install]
+WantedBy=multi-user.target
+##### END COPY #####
+
+sudo systemctl daemon-reload
+sudo systemctl enable rclone.service
+sudo systemctl start rclone.service
+sudo systemctl status rclone.service
 ################# RClone ################# END
 
 ################# Final Notes ################# START
+### Test by following the line below
 cd /mnt/rclone && dir
 # Something should come up - make sure you have something in your google drive to see/test it.
 # If you have something in your google drive and either shows up blanks, it's because your configs were wrong or startup script is wrong
