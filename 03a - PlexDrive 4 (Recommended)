@@ -69,6 +69,12 @@ Restart=on-abort
 WantedBy=multi-user.target
 ##### Copy #### END
 
+# Now enable the service
+sudo systemctl daemon-reload
+sudo systemctl enable plexdrive4.service
+sudo systemctl start plexdrive4.service
+sudo systemctl status plexdrive4.service
+
 # You should get a GREEN Light
 # Now go back to your plexdrive4 status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
 # Do NOT do ANYTHING AFTER THIS!!! Let it finish!!!
