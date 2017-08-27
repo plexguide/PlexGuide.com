@@ -48,6 +48,11 @@ Take the guide and write up the set of instructions and send a link.  I'll post 
 
 * [Admin9705] - Reddit
 
+### Requested Help
+  - Typos or something does not make sense
+  - Cleaning up code
+  - Using APIs instead of blackhole (cannot get past docker limitation on this; it's regarding importing of files)
+
 ### Additional Solutions
 Installing LAMP Stack: https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04
 
