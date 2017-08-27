@@ -29,7 +29,8 @@ do
     x=$(( $x - 1 ))
 done
 docker restart couchpotato
-docker restart sonar
+docker restart sonarr
+docker restart plex
 
 exit 0;
 ##### Copy #### END
