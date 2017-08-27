@@ -55,15 +55,13 @@ nano /etc/fuse.conf
 sudo nano /etc/systemd/system/rclone.service
 ### Copy the info inbetween from start to end into the file
 
-##### START COPY #####
+##### START COPY ##### Note: ExecStart Line is ONE WHOLE LINE, it's wrapping
 [Unit]
 Description=rclonemount
 After=multi-user.target
 
 [Service]
-User=root
-Group=root
-ExecStart=/usr/bin/rclone mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
 ExecStop=/bin/fusermount -uz gdrive: /mnt/rclone
 Restart=on-abort
 
