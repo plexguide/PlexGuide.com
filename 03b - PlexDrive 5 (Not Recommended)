@@ -16,11 +16,6 @@
 ################# PlexDrive5 ################# START
 ### Required for Plex to read without triggering 24 hour ban
 
-sudo apt update
-
-# Incase fuse in not installed
-sudo apt install fuse
-
 # create a temporary folder
 cd /tmp
 # check to for the newest update and replace link below if required: https://github.com/dweidenfeld/plexdrive/releases
