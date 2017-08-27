@@ -68,7 +68,7 @@
 #  - USENET Blackhole Option:  Turn this one on
 #   - Name: Blackhole
 #   - Enable: Yes
-#   - Nzb Folder: /blackholes/
+#   - Nzb Folder: /blackhole/
 #   - Watch Folder: /sabcomplete/
 #   - [Click] save changes at the top right
 # - General Tab:
