@@ -32,7 +32,7 @@
 #   - Name: Blackhole
 #   - Enable: Yes
 #   - Nzb Folder: /blackhole/
-#   - Watch Folder: /sabcomplete/
+#   - Watch Folder: /downloads/
 #   - [Click] save changes at the top right
 # - General Tab:
 #  - Security:
@@ -41,13 +41,12 @@
 #   - Password: remember it
 #  - Automatic: On
 #  - [Click] save changes at top right
-# Series Icon: [Click] at the top
-#  - If your plexdrive is fully working, items will comes up (wait)
-#  - [Click] + Add Season
-#  - [Click] Important Existing Series on Disk (only applies if you have stuff on your G-Drive)
-#  - [Click] and sthen scroll down and click the [TV] icon folder
-#   - Let it load, can take awhile if you have shows, if not; proceeds
-#  - [Click] Ok at the very bottom
+# Movies Icon: [Click] at the topt)
+#  - [Click] + Add Movies
+#  - [Click] Important Existing Series on Disk (can take awhile) (only applies if you have stuff on your G-Drive)
+#  - [Click] and then scroll down and click the [OK]
+#   - Let it load, can take awhile if you have many, if not; proceed
+#  - From here, explore and start finding your movies.
 # http://ipv4address:8095 (for SABNZBD)
-# http://ipv4address:7978 (for Radarr)
+# http://ipv4address:7878 (for Radarr)
 ################# Sonarr ################# END
