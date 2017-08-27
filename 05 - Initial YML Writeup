@@ -144,8 +144,9 @@ services:
      - /opt/appdata/couch:/couch
 # directory to where movies are uploaded via RClone
      - /mnt/rclone/zilch/movies:/movies
-# used just for couchpotato to scan on what you have; no API Bans
-     - /mnt/plexdrive5/zilch/movies:/couchscans
+# used just for couchpotato to scan on what you have; no API Bans 
+# if using plexdrive5, change the 4 to a 5
+     - /mnt/plexdrive4/zilch/movies:/couchscans
 # downloaded movie storage
      - /mnt/sabmovies/downloads/complete:/sabcomplete
 # this is just a test directory; not needed
