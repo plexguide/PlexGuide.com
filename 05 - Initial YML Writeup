@@ -78,8 +78,6 @@ services:
      - /etc/localtime:/etc/localtime:ro
 # this location is used to FORCE uploads of your tv shows to your google drive
      - /mnt/rclone/zilch/tv:/tv
-# this is just a test directory; not needed
-     - /mnt/rclone/zilch/test:/test
 # directory to store downloads of downloaded files
      - /mnt/sabtv/downloads/complete:/sabcomplete
 # store a backup copy of nzbs; to prevent duplicates
@@ -149,8 +147,6 @@ services:
      - /mnt/plexdrive4/zilch/movies:/couchscans
 # downloaded movie storage
      - /mnt/sabmovies/downloads/complete:/sabcomplete
-# this is just a test directory; not needed
-     - /mnt/rclone/zilch/test2:/test2
 # this is where couch will drop nzb files for sab-movies to pick up
      - /mnt/sabmovies/watch:/blackhole
    environment:
@@ -159,6 +155,27 @@ services:
 # ensures this container starts up when required to
    restart:
      always
+ radarr:
+   image:  linuxserver/radarr
+   container_name: radarr
+   ports:
+     - 7878:7878
+   volumes:
+# configuration data
+     - /opt/appdata/radarr:/config
+# directory to where movies are uploaded via RClone
+     - /mnt/rclone/zilch/movies:/movies
+# used just for couchpotato to scan on what you have; no API Bans 
+# downloaded movie storage
+     - /mnt/sabmovies/downloads/complete:/downloads
+# this is where couch will drop nzb files for sab-movies to pick up
+     - /mnt/sabmovies/watch:/blackhole
+   environment:
+     - PUID=0
+     - PGID=0
+# ensures this container starts up when required to
+   restart:
+     always     
  muximux:
    image:  linuxserver/muximux
    container_name: muximux
