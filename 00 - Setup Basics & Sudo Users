@@ -33,12 +33,14 @@
 # if you are a USER that you do not want to be or do not have sudo access, type the following below; if root already... ignore
 su root
 # Add User: Subsitute the word "username" below of the user you want to be"
-useradd -m -d /home/username username 
+useradd -m -d /home/YOUR_USERNAME YOUR_USERNAME
 # To add your user to the sudo group; bad day if you forget - gives admin rights basically
-usermod -aG sudo username
+usermod -aG sudo YOUR_USERNAME
 # to change/add the password of the user you created
-passwd username
+passwd YOUR_USERNAME
 # to switch to the sudo user
-su username
+su YOUR_USERNAME
 ## this is who you should login as now in the future
+## execute command below to get the correct prompt when you login; forget then you have to type su username everytime
+sudo usermod -s /bin/bash YOUR_USERNAME
 ################# How To Make a New Sudo User with a username in home ################# END
