@@ -56,7 +56,22 @@ screen sudo plexdrive4 --uid=1001 --gid=1001 -o -v 2 --refresh-interval=1m /mnt/
 # Press CTRL+A then C to create new terminal session to continue
 # Revert to PlexDrive status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
 
-### PlexDrive Service Scriipt
+### Make a script for the Service Startup
+# Why? Because a folder has to be removed on bootup; if not... the plexdrive script never brings up plexdrive properly
+sudo nano /mnt/rclone
+
+##### Copy #### START
+#!/bin/bash
+
+sudo service mongod start
+sudo rm -r /mnt/plexdrive4/zilch
+plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
+
+exit 0;
+##### Copy #### END
+
+### PlexDrive Service Script
+# Now you are creating the plexdrive service
 sudo nano /etc/systemd/system/plexdrive4.service
 
 ##### Copy #### START
@@ -65,8 +80,8 @@ Description=plexdrive4
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/local/bin/plexdrive4 -o -v 2 --refresh-interval=1m
-ExecStop=/bin/fusermount -uz /mnt/plexdrive4
+ExecStart=/bin/bash /opt/plexdrive4.sh
+ExecStop=/bin/bash /opt/plexdrive4.sh
 Restart=on-abort
 
 [Install]
