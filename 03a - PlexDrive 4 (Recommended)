@@ -47,40 +47,30 @@ sudo mkdir /mnt/plexdrive4 && sudo chmod 755 /mnt/plexdrive4
 cd ~
 
 # Execute PlexDrive 4; takes awhile to complete; do not shutdown
-screen sudo plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
-
-####################### WARNING - DO NOTHING ELSE UNTIL ITS DONE #############################################
+screen sudo plexdrive4 --uid=1001 --gid=1001 -o -v 2 --refresh-interval=1m /mnt/plexdrive4
 
 # Press CTRL+A then C to create new terminal session to continue
-# Revert to PlexDrive status; CTRL+A 0
+# Revert to PlexDrive status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
 
-### PlexDrive - RC.Local startup script
+### PlexDrive Service Scriipt
 cd /opt && sudo nano plex4.sh
 
 ##### Copy #### START
-#!/bin/bash
+[Unit]
+Description=plexdrive4
+After=multi-user.target
 
-sudo service mongod start
-plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
+[Service]
+ExecStart=/usr/local/bin/plexdrive4 -o -v 2 --refresh-interval=1m
+ExecStop=/bin/fusermount -uz /mnt/plexdrive4
+Restart=on-abort
 
-exit 0;
+[Install]
+WantedBy=multi-user.target
 ##### Copy #### END
 
-# Press CTRL+X; then Enter. Editing rc.local to boot up plexdrive and rclone script
-cd /etc && sudo nano rc.local
-
-# Place the line below above "exit 0"
-# You may have PlexDrive 4 & 5 or just plexdrive 4
-sh /opt/plex4.sh &
-# add above exit 0; it's ok if you have other stuff there, just put above exit 0
-# Press CTRL+X and then ENTER to save
-
-# Assign permissions so you script can execute
-sudo chown root /etc/rc.local
-sudo chmod 755 /etc/rc.local
-sudo chmod 755 /opt/plex4.sh
-sudo chown root /opt/plex4.sh
-sudo /etc/init.d/rc.local start
-# Do NOT reboot your system until PlexDrive is done scanning
-# Do Not do anything else until PlexDrive is done scanning
+# You should get a GREEN Light
+# Now go back to your plexdrive4 status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
+# Do NOT do ANYTHING AFTER THIS!!! Let it finish!!!
+# Tip:  What I learned is the speed is based on your HD speeds; an SSD is super fast; regular HD can take many hours :D
 ################# PlexDrive4 ################# END
