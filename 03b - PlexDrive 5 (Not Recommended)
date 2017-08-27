@@ -60,7 +60,6 @@ cd /etc && sudo nano rc.local
 
 # Place the lines below above "exit 0"
 sh /opt/plex5.sh &
-sh /opt/rclone.sh &
 # Press CTRL+X and then ENTER to save
 
 # Assign permissions so you script can execute
