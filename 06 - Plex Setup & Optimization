@@ -22,7 +22,7 @@
 # Open your browser (Chrome best choice)
 #  - Type: http://localhost:6969/web or (if you forget the web part, you will get a whole bunch of XML garbage)
 #  - You will now be able to setup PLEX
-#  - Double check by opening a new window or tab and type http://ipv4address:32400
+#  - Double check by opening a new window or tab and type http://ipv4address:32400/web
 ################# PLEX SETUP ################# END
 
 ################# PLEX Optimization ################# START
