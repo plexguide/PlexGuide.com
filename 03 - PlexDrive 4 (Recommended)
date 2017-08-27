@@ -80,7 +80,7 @@ sudo systemctl start plexdrive4.service
 sudo systemctl status plexdrive4.service
 
 # You should get a GREEN Light
-# Now go back to your plexdrive4 status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
+# Now go back to your plexdrive4 status; CTRL+A then 0 <---- check on it <<<< HOT <<< When stops moving, you'll know
 # Do NOT do ANYTHING AFTER THIS!!! Let it finish!!!
 # Tip:  What I learned is the speed is based on your HD speeds; an SSD is super fast; regular HD can take many hours :D
 ################# PlexDrive4 ################# END
