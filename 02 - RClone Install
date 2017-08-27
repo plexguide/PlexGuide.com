@@ -51,6 +51,20 @@ nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other
 # Press CTRL+X and then save
 
+### create script for the service
+sudo nano /opt/rclone.sh
+
+##### START COPY #####
+#!/bin/bash
+
+sudo rm -r /mnt/rclone/*
+sudo rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
+
+exit 0;
+##### END COPY #####
+
+
+
 ### create rclone service
 sudo nano /etc/systemd/system/rclone.service
 ### Copy the info inbetween from start to end into the file
@@ -61,12 +75,13 @@ Description=rclonemount
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
-ExecStop=/bin/fusermount -uz gdrive: /mnt/rclone
+ExecStart=/bin/bash /opt/rclone.sh
+ExecStop=/bin/bash /opt/rclone.sh
 Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
+
 ##### END COPY #####
 
 # Press CTRL+X and then Yes to save
@@ -78,6 +93,7 @@ sudo systemctl start rclone.service
 sudo systemctl status rclone.service
 
 # Go back to your username - if you get stuck; you can reboot and test with the following lines below
+# You can avoid the reboot and open a second terminal and see if the following below executes
 exit
 ################# RClone ################# END
 
