@@ -77,7 +77,7 @@ sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
 sudo systemctl status rclone.service
 
-# Go back to your username
+# Go back to your username - if you get stuck; you can reboot and test with the following lines below
 exit
 ################# RClone ################# END
 
