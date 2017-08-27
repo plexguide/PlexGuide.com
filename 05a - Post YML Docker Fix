@@ -37,14 +37,36 @@ exit 0;
 # Press CTRL+X; then Enter. Editing rc.local to add postyml fix
 sudo nano /etc/rc.local
 
-# Place the line below above "exit 0"
+# Place the line below above "exit 0" | If your missing the rc.local script and it shows new; then goto the very bottom
 sh /opt/postyml.sh &
 # Press CTRL+X and then ENTER to save
 
-# Assign permissions so you script can execute
+# Assign permissions so your script can execute
 sudo chown root /etc/rc.local
 sudo chmod 755 /etc/rc.local
 sudo chmod 755 /opt/postyml.sh
 sudo chown root /opt/postyml.sh
 sudo /etc/init.d/rc.local start
 ################# Post YML FIX ################# END
+
+################# Only for Missing rc.local ###################### START
+########################### Make the script look like this, then resume above at # Assign permissions so ...
+
+
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+sh /opt/postyml.sh &
+
+exit 0
+################# Only for Missing rc.local ###################### END
