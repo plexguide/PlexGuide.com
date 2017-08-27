@@ -141,7 +141,7 @@ services:
      - 5050:5050
    volumes:
 # couchpotato configuration data
-     - /opt/appdata/couch:/couch
+     - /opt/appdata/couch:/config
 # directory to where movies are uploaded via RClone
      - /mnt/rclone/zilch/movies:/movies
 # used just for couchpotato to scan on what you have; no API Bans 
