@@ -17,21 +17,21 @@
 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 
-# Copy Entire String - May have to push right if view is cutoff (do what I do, double click the line below and right click copy)
+# Copy Entire String - The next line is ONE WHOLE LINE, it's wrapping
 echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
 sudo apt-get update
 sudo apt-get install -y mongodb-org
-sudo service mongod start
+sudo systemctl daemon-reload
+sudo systemctl enable mongod
+sudo systemctl start mongod
+sudo systemctl status mongod
 ################# MongoDB ################# START
 
 ################# PlexDrive4 ################# START
 ### Required for Plex to read files without triggering 24 hour ban
 ### PlexDrive 4 requires consumes some diskspace overtime; 12GB on average
 ### Guide is written for PlexDrive5; change 5 to a 4 in other parts of the guide for usage
-
-# Incase fuse in not installed
-sudo apt install fuse
 
 # create a temporary folder
 cd /tmp
