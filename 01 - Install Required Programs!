@@ -1,9 +1,9 @@
 ################# Update System ################# START
-sudo apt update && sudo apt install nano && sudo apt install fuse && sudo apt install man-db && sudo apt install screen
+sudo apt update && sudo apt install nano && sudo apt install fuse && sudo apt install man-db && sudo apt install screen && sudo apt install curl
 ################# Update System ################# END
 
 ################# Install NetData ################# START
-### Provides detailed sersver information
+### Provides detailed server information
 sudo apt install curl
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 # Press "Y" to accept when prompted
