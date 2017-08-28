@@ -31,13 +31,13 @@
 ### Configuring TV Shows 
 # [Click] Add Library
 # [Click] TV Shows
-# [Type] Add Folders to Your Library: /media/tv 
+# [Type] Add Folders to Your Library: /media/tv    <<< You will never be able to select it; type it and hit ok
 # [Click] Ok
 
 ### Configuring Movies 
 # [Click] Add Library
 # [Click] TV Shows
-# [Type] Add Folders to Your Library: /media/movies
+# [Type] Add Folders to Your Library: /media/movies     <<< You will never be able to select it; type it and hit ok
 # [Click] Ok
 
 ### Configure Server Settings
