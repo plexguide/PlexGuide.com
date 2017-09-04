@@ -30,7 +30,7 @@ The Awesome Plex Server Is Based on the USE OF:
 # Who It's Written For:
 
   - For Noobs and Novice Noobs like me
-  - For those who just want to learned and improve their setup
+  - For those who just want to learn and/or improve their setup
 
 
 Not For:
