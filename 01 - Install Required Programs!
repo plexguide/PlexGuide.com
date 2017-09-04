@@ -3,9 +3,9 @@ sudo apt update && sudo apt install nano && sudo apt install fuse && sudo apt in
 ################# Update System ################# END
 
 ################# Install NetData ################# START
-### Provides detailed server information
+### Provides detailed information for your server | useful to determine chokepoints
 sudo apt install curl
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 # Press "Y" to accept when prompted
 # Visit http://ipv4address:19999
-################# Google Directories ################# END
+################# Install NetData ################# END
