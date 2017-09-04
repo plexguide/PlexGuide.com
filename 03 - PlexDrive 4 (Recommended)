@@ -65,7 +65,7 @@ sudo nano /opt/plexdrive4.sh
 
 sudo service mongod start
 sudo rm -r /mnt/plexdrive4/zilch
-plexdrive4 --uid=1002 --gid=1002 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
+plexdrive4 --uid=1001 --gid=1001 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 
 exit 0;
 ##### Copy #### END
