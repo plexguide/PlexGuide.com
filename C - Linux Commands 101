@@ -10,8 +10,8 @@ sudo su ----- Switch to root
 exit ----- Return to your regular user (prior to being root user)
 clear ----- Clear the current screen
 sudo bash myscript.sh ----- Execute the bash script called myscript.sh in current directory
-chomd myscript.sh 777 ------ Allow all permissions for all groups (bad practice)
-chomd +x myscript.sh ----- Allows the script to be executed when called upon
+chmod myscript.sh 777 ------ Allow all permissions for all groups (bad practice)
+chmod +x myscript.sh ----- Allows the script to be executed when called upon
 sudo reboot ----- Reboot your server
 sudo docker rm -f portainer ----- an example of moving a specific container by names
 ############# LINUX 101 Commands ############## END
