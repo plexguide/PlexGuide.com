@@ -4,7 +4,7 @@ Want to access the old guide with pictures? http://doc.plexguide.com (Warning Se
 
 This guide will enable you to run a plex service, create and run many mass programs at once, and download-upload utilizing USENET.  This fully works on my server with minimimal maintence.  Incorporates the full power of Docker (you'll like it if you get VMWare).  
 
-Why Docker?  I didn't understand what Docker was until I some research.  Basically, think of Docker as manager program that create mini vm's in what's known as containers.  Each container runs within it's own environment with all the dependices installed.  If lets say plex goes down; you do not have to reboot the entire server; your reboot only the container called plex.  You can manage your containers when you install portainer.
+Why Docker?  I didn't understand what Docker was until I did some research.  Basically, think of Docker as manager program that create mini vm's in what's known as containers.  Each container runs within it's own environment with all the dependices installed.  If lets say plex goes down; you do not have to reboot the entire server; your reboot only the container called plex.  You can manage your containers when you install portainer.
 
 Encryption & Security: This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
 
