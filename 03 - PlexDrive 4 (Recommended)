@@ -70,6 +70,10 @@ plexdrive4 --uid=1001 --gid=1001 -o allow_other -v 2 --refresh-interval=1m /mnt/
 exit 0;
 ##### Copy #### END
 
+### Permissions for the Script
+sudo chown root:root /opt/plexdrive4.sh
+sudo chmod 755 /opt/plexdrive4.sh
+
 ### PlexDrive Service Script
 # Now you are creating the plexdrive service
 sudo nano /etc/systemd/system/plexdrive4.service
