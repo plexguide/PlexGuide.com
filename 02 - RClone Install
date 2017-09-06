@@ -96,7 +96,7 @@ sudo systemctl status rclone.service
 
 # Go back to your username - if you get stuck; you can reboot and test with the following lines below
 # You can avoid the reboot and open a second terminal and see if the following below executes
-exit
+exit && exit
 ################# RClone ################# END
 
 ################# Final Notes ################# START
