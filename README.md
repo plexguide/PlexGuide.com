@@ -10,6 +10,8 @@ Encryption & Security: This guide is written as a baseline.  Security is always 
 
 Recommend to install PlexDrive 4.  Wrote up this guide that allows an easy install of both. PD4 right now is working 100x better than PD5 in my use (and another confirmed by a user who did the same).  The YML is written up so all you have to do is change a number and your Plex won't even notice (it's a good thing).
 
+Note: This guide is written for a SUDO USER, not ROOT (which may cause some headaches).  The very first portion of the guides you on how to create a SUDO user.
+
 Why 2 instances of SAB?  You could just do one, but it's much easier to have two.  One for movies and one for tv shows.  It prevents one from backlogging on too many movies or too many tv shows and if one goes down, the other is still up and running.  Trust me on this.
 
 The Following Items Will Be Installed:
