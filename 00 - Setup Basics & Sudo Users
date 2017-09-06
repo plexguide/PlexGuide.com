@@ -46,5 +46,7 @@ su YOUR_USERNAME
 sudo usermod -s /bin/bash YOUR_USERNAME
 ## Now switch to your username
 su YOUR_USERNAME
+## Switch to your home folder below
+cd ~
 ## Now you should see YOUR_USERNAME@whateveryourserveris instead of root
 ################# How To Make a New Sudo User with a username in home ################# END
