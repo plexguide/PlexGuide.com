@@ -104,4 +104,5 @@ exit && exit
 cd /mnt/rclone && dir
 # Something should come up - make sure you have something in your google drive to see/test it.
 # If you have something in your google drive and either shows up blanks, it's because your configs were wrong or startup script is wrong
+# I RECOMMEND **** that you REBOOT and run the same CMD again to make sure your folders come up!
 ################# Final Notes ################# End
