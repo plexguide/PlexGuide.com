@@ -62,6 +62,10 @@ sudo rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /
 exit 0;
 ##### END COPY #####
 
+### Permissions for the Script
+sudo chown root:root /opt/rclone.sh
+sudo chmod 755 /opt/rclone.sh
+
 ### create rclone service
 # You are now creating the service that will allow it to restart
 sudo nano /etc/systemd/system/rclone.service
