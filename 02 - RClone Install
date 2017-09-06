@@ -33,12 +33,12 @@ sudo su
 rclone config
 
 ### Configuring RClone
-# N < For New remote
+# N < For New remote 
 # gdrive < for the name
 # 8 < For Google Drive (double check the number select incase)
 # Enter Your Google ID
 # Enter Your Goole Secret
-# N < for headless machine
+# N < for headless machine #### NOTE: if your on a VM or the actual machine with an interface (GUI), select Y.  
 # Enter Your Verification Code
 #   Note: If you copy and paste by SELECTING and CLICK the RIGHT Mouse button, it will work; but then you will see it repeat
 #   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
