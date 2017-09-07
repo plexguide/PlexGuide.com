@@ -1,1 +1,13 @@
+## These are notes to incorporate once testing is done
+## Purpose is to change how data is written via rclone
+## This methods prevents the upload ban and utilizes a DATA MOVE rather than a direct write
 
+## To install fuse
+sudo apt-get install unionfs-fuse
+
+## future directory for sonarr, radarr, and couch potato to write to
+unionfs /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
+
+## command to move data
+## need to incorporate a script and cron job to ensure it keeps acting starting every hour if not running
+rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
