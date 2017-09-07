@@ -5,6 +5,13 @@
 ## Purpose is to change how data is written via rclone
 ## This methods prevents the upload ban and utilizes a DATA MOVE rather than a direct write
 
+## create additonal folders
+mkdir rclone-union && mkdir rclone-move
+
+## permissions for future
+chmod 755 rclone-move
+chmod 755 rclone-union
+
 ## To install fuse
 sudo apt-get install unionfs-fuse
 
