@@ -1,3 +1,5 @@
+## Run rclone config again and create a LOCAL STORAGE, I just called it local
+
 ## These are notes to incorporate once testing is done
 ## Purpose is to change how data is written via rclone
 ## This methods prevents the upload ban and utilizes a DATA MOVE rather than a direct write
