@@ -197,3 +197,4 @@ services:
 # Save/Set this file location: /opt/docker-compose.yml 
 # Execute Script Command: cd /opt && sudo docker-compose -f docker-compose.yml up -d
 ################# Final Notes ################# END
+### IGNORE THIS - for testing: rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
