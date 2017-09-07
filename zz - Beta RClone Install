@@ -6,6 +6,9 @@
 # Install unzip
 sudo apt install unzip
 
+# Install UnionFS-Fuse
+sudo apt-get install unionfs-fuse
+
 # Download RClone and Rename
 cd /tmp
 sudo curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
@@ -26,9 +29,9 @@ sudo mandb
 cd .. && sudo rm -r rclone*
 
 # Sets file permissions for RClone folder
-sudo mkdir /mnt/rclone
-sudo chmod 755 /mnt/rclone
-sudo chown root /mnt/rclone
+sudo mkdir /mnt/rclone && sudo /mnt/mkdir rclone-union && mkdir /mnt/rclone-move
+sudo chmod 755 /mnt/rclone && sudo chmod 755 /mnt/rclone-union && sudo chmod 755 /mnt/rclone-move
+sudo chown root /mnt/rclone && sudo chown root /mnt/rclone-union && sudo chown root /mnt/rclone-move
 
 # Configure RClone config as Root 
 sudo su
