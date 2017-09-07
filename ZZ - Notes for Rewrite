@@ -1,5 +1,3 @@
-## glitch in notes - working
-
 ## These are notes to incorporate once testing is done
 ## Purpose is to change how data is written via rclone
 ## This methods prevents the upload ban and utilizes a DATA MOVE rather than a direct write
@@ -18,7 +16,7 @@ ls /mnt/rclone-move
 ## should see the file, that's good if there
 
 ## Now check to see if you see it in unionfs
-ls /mnt/rclone-union
+ls /mnt/rclone-union/zilch
 ## if that file is there, that's great also
 
 ## command to move data
@@ -26,5 +24,5 @@ ls /mnt/rclone-union
 rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
 
 ## to see if data moved
-ls /mnt/rclone
+ls /mnt/rclone/zilch
 ## if the file is there, everything worked great! the directory your looking at is purely the cloud drive - meaning data moved.
