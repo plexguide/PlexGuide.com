@@ -1,3 +1,5 @@
+## glitch in notes - working
+
 ## These are notes to incorporate once testing is done
 ## Purpose is to change how data is written via rclone
 ## This methods prevents the upload ban and utilizes a DATA MOVE rather than a direct write
