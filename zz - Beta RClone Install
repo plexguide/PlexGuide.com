@@ -100,6 +100,51 @@ sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
 sudo systemctl status rclone.service
 
+################## UnionFS Portion
+
+### create script for the service
+sudo nano /opt/unionfs.sh
+
+##### START COPY #####
+#!/bin/bash
+
+unionfs /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union &
+
+exit 0;
+##### END COPY #####
+
+### Permissions for the Script
+sudo chown root:root /opt/unionfs.sh
+sudo chmod 755 /opt/unionfs.sh
+
+### create rclone service
+# You are now creating the service that will allow it to restart
+sudo nano /etc/systemd/system/unionfs.service
+### Copy the info inbetween from start to end into the file
+
+##### START COPY ##### Note: ExecStart Line is ONE WHOLE LINE, it's wrapping
+[Unit]
+Description=unionfs mount
+After=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /opt/unionfs.sh
+ExecStop=/bin/bash /opt/unionfs.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+##### END COPY #####
+
+# Press CTRL+X and then Yes to save
+
+### Start and enable the service
+sudo systemctl daemon-reload
+sudo systemctl enable unionfs.service
+sudo systemctl start unionfs.service
+sudo systemctl status unionfs.service
+
 # Go back to your username - if you get stuck; you can reboot and test with the following lines below
 # You can avoid the reboot and open a second terminal and see if the following below executes
 exit && exit
