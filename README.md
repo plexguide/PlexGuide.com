@@ -1,6 +1,6 @@
 # The Awesome Plex  Server
 
-Thanks any direct contributors: @Deiteq 
+Thank you to the following direct contributors: Deiteq 
 
 
 Want to access the old guide with pictures? http://doc.plexguide.com (Warning Semi Dated / good for pictures / bad for install)
