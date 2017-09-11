@@ -1,9 +1,6 @@
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
 
-# Install unzip
-sudo apt install unzip
-
 # Download RClone and Rename
 cd /tmp
 sudo curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
