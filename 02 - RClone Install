@@ -1,5 +1,16 @@
+## WARNING - This is not ready and will not help you ## Warning
+## after installing all of the instructions below, run this below
+rclone move --bwlimit 8M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
+
+# Data should move now, need to create some sort of cron to get this to work in intervals
+# When you run the CMD above, you must RUN it as ROOT and to see the rclone-move and rclone-union, you must be root
+# Trying to work on how to see as a regular user
+
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
+
+# Install UnionFS-Fuse
+sudo apt-get install unionfs-fuse
 
 # Download RClone and Rename
 cd /tmp
@@ -21,9 +32,9 @@ sudo mandb
 cd .. && sudo rm -r rclone*
 
 # Sets file permissions for RClone folder
-sudo mkdir /mnt/rclone
-sudo chmod 755 /mnt/rclone
-sudo chown root /mnt/rclone
+sudo mkdir /mnt/rclone && sudo /mnt/mkdir rclone-union && mkdir /mnt/rclone-move
+sudo chmod 755 /mnt/rclone && sudo chmod 755 /mnt/rclone-union && sudo chmod 755 /mnt/rclone-move
+sudo chown root /mnt/rclone && sudo chown root /mnt/rclone-union && sudo chown root /mnt/rclone-move
 
 # Configure RClone config as Root 
 sudo su
@@ -41,6 +52,11 @@ rclone config
 #   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
 # N < Configure this as a team drive?
 # Y < If asking all is ok?
+# N < For New remote
+# local < for the name
+# 10 < For a Local Drive
+# /mnt/rclone-move
+# Y < Is asking all is ok?
 # Q < to quit
 
 # Editing the fuse.conf file
@@ -54,7 +70,7 @@ sudo nano /opt/rclone.sh
 ##### START COPY #####
 #!/bin/bash
 
-sudo rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
+sudo rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only &
 
 exit 0;
 ##### END COPY #####
@@ -90,9 +106,55 @@ sudo systemctl daemon-reload
 sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
 sudo systemctl status rclone.service
+# Press CTRL + C to exit the status message
 
-# Go back to your username - if you get stuck; you can reboot and test with the following lines below
-# You can avoid the reboot and open a second terminal and see if the following below executes
+################## UnionFS Portion
+
+### create script for the service
+sudo nano /opt/unionfs.sh
+
+##### START COPY #####
+#!/bin/bash
+
+unionfs /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union &
+
+exit 0;
+##### END COPY #####
+
+### Permissions for the Script
+sudo chown root:root /opt/unionfs.sh
+sudo chmod 755 /opt/unionfs.sh
+
+### create rclone service
+# You are now creating the service that will allow it to restart
+sudo nano /etc/systemd/system/unionfs.service
+### Copy the info inbetween from start to end into the file
+
+##### START COPY ##### Note: ExecStart Line is ONE WHOLE LINE, it's wrapping
+[Unit]
+Description=unionfs mount
+After=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /opt/unionfs.sh
+ExecStop=/bin/bash /opt/unionfs.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+##### END COPY #####
+
+# Press CTRL+X and then Yes to save
+
+### Start and enable the service
+sudo systemctl daemon-reload
+sudo systemctl enable unionfs.service
+sudo systemctl start unionfs.service
+sudo systemctl status unionfs.service
+# Press CTRL + C to exit the status message
+
+# Going back to your username
 exit && exit
 ################# RClone ################# END
 
@@ -101,6 +163,6 @@ exit && exit
 cd /mnt/rclone && dir
 # Something should come up - make sure you have something in your google drive to see/test it.
 # If you have something in your google drive and either shows up blanks, it's because your configs were wrong or startup script is wrong
-# I RECOMMEND **** that you REBOOT and run the same CMD again to make sure your folders come up!
+# YOU MUST REBOOT and run the same CMD again to make sure your folders come up!
 sudo reboot
 ################# Final Notes ################# End
