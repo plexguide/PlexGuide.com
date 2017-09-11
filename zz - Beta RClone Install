@@ -63,7 +63,6 @@ sudo nano /opt/rclone.sh
 #!/bin/bash
 
 sudo rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only &
-unionfs /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union &
 
 exit 0;
 ##### END COPY #####
