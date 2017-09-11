@@ -98,6 +98,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
 sudo systemctl status rclone.service
+# Press CTRL + C to exit the status message
 
 ################## UnionFS Portion
 
@@ -146,9 +147,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable unionfs.service
 sudo systemctl start unionfs.service
 sudo systemctl status unionfs.service
+# Press CTRL + C to exit the status message
 
-# Go back to your username - if you get stuck; you can reboot and test with the following lines below
-# You can avoid the reboot and open a second terminal and see if the following below executes
+# Going back to your username
 exit && exit
 ################# RClone ################# END
 
