@@ -49,6 +49,11 @@ rclone config
 #   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
 # N < Configure this as a team drive?
 # Y < If asking all is ok?
+# N < For New remote
+# local < for the name
+# 10 < For a Local Drive
+# /mnt/rclone-move
+# Y < Is asking all is ok?
 # Q < to quit
 
 # Editing the fuse.conf file
