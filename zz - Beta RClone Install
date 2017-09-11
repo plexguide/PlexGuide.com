@@ -1,10 +1,13 @@
 ## WARNING - This is not ready and will not help you ## Warning
+## after install, run this below
+rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
+
+# Data should move now, need to create some sort of cron to get this to work in intervals
+# When you run the CMD above, you must RUN it as ROOT and to see the rclone-move and rclone-union, you must be root
+# Trying to work on how to see as a regular user
 
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
-
-# Install unzip
-sudo apt install unzip
 
 # Install UnionFS-Fuse
 sudo apt-get install unionfs-fuse
