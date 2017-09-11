@@ -102,6 +102,9 @@ sudo systemctl status rclone.service
 
 ################## UnionFS Portion
 
+### Make rclone move folder
+sudo mkdir /mnt/rclone-move
+
 ### create script for the service
 sudo nano /opt/unionfs.sh
 
