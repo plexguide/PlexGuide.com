@@ -57,7 +57,6 @@ screen sudo plexdrive4 --uid=1001 --gid=1001 -o -v 2 --refresh-interval=1m /mnt/
 # Revert to PlexDrive status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
 
 ### Make a script for the Service Startup
-# Why? Because a folder has to be removed on bootup; if not... the plexdrive script never brings up plexdrive properly
 sudo nano /opt/plexdrive4.sh
 
 ##### Copy #### START
