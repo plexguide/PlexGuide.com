@@ -1,6 +1,7 @@
 # The Awesome Plex  Server
 
 Thank you to the following direct contributors: Deiteq 
+
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
 Want to access the old guide with pictures? http://doc.plexguide.com (Warning Semi Dated / good for pictures / bad for install)
