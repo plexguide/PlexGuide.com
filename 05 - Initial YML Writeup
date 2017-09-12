@@ -11,7 +11,6 @@ services:
  plex:
    image: plexinc/pms-docker
    container_name: plex
-   version: latest
    volumes:
      - /opt/appdata/plex:/config
      - /mnt:/shows
