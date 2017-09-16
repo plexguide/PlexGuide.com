@@ -77,7 +77,7 @@ services:
 # important for providing time; don’t fully understand it
      - /etc/localtime:/etc/localtime:ro
 # this location is used to FORCE uploads of your tv shows to your google drive
-     - /mnt/rclone-union/zilch/tv:/tv
+     - /mnt/rclone/zilch/tv:/tv
 # directory to store downloads of downloaded files
      - /mnt/sabtv/downloads/complete:/sabcomplete
 # store a backup copy of nzbs; to prevent duplicates
@@ -141,8 +141,9 @@ services:
 # couchpotato configuration data
      - /opt/appdata/couch:/config
 # directory to where movies are uploaded via RClone
-     - /mnt/rclone-union/zilch/movies:/movies
+     - /mnt/rclone/zilch/movies:/movies
 # used just for couchpotato to scan on what you have; no API Bans 
+# if using plexdrive5, change the 4 to a 5
      - /mnt/plexdrive4/zilch/movies:/couchscans
 # downloaded movie storage
      - /mnt/sabmovies/downloads/complete:/sabcomplete
@@ -163,7 +164,7 @@ services:
 # configuration data
      - /opt/appdata/radarr:/config
 # directory to where movies are uploaded via RClone
-     - /mnt/rclone-union/zilch/movies:/movies
+     - /mnt/rclone/zilch/movies:/movies
 # used just for couchpotato to scan on what you have; no API Bans 
 # downloaded movie storage
      - /mnt/sabmovies/downloads/complete:/downloads
