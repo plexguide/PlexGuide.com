@@ -37,13 +37,15 @@
 #  - Automatic: On
 #  - [Click] save changes at top right
 # Series Icon: [Click] at the top
-#  - If your plexdrive is fully working, items will comes up (wait)
 #  - [Click] + Add Season
-#  - [Click] Important Existing Series on Disk (only applies if you have stuff on your G-Drive)
-#  - [Click] and sthen scroll down and click the [TV] icon folder
-#   - Let it load, can take awhile if you have shows, if not; proceeds
-#  - [Click] Ok at the very bottom
-# In the future if you have shows already and you click import, click the TV Folder under RECENT
+#  - Type a show
+#  - [Click] On Path, click (Add a Path) or something to that effect
+#  - [Type] /tv/zilch/tv
+#  - [Click] Folder icon (browser) 
+#  - Let it load, can take awhile if you have shows, if not; proceeds
+#  - [Scroll] down to the bottom and click [OK]
+# Note 1: You will not have to this next time; your folder will automatically come up.
+# Note 2: If you have shows already in /zilch/tv on your Google Drive; click import and then click the TV Folder under RECENT
 # Start importanting or naming items and you should see stuff stuff downloading
 # http://ipv4address:8090
 ################# Sonarr ################# END
