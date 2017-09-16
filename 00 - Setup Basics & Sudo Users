@@ -31,7 +31,7 @@
 
 ################# How To Make a New Sudo User with a username in home ################# START
 # START as root, type the following below; if root already... ignore the step below:
-su root
+sudo su
 # Add User: Subsitute the word "username" below of the user you want to be"
 # Note you will do your username twice in the step below; with a space inbetween
 useradd -m -d /home/YOUR_USERNAME YOUR_USERNAME
