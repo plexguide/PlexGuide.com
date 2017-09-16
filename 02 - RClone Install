@@ -147,18 +147,18 @@ sudo nano /opt/rclone-move.sh
 
 rclone move --bwlimit 8M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
 ##### Copy #### END
-
 # Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
+
 sudo su
 crontab -e
 
 # Add to very bottom line: 
  */5 * * * * /bin/bash /opt/rclone-move.sh >/dev/null 2>&1
-
 # Press CTRL+X and set the permissions and return as USER
+
 sudo chmod 755 /opt/rclone-move.sh
 sudo chown root /opt/rclone-move.sh
-exit
+exit && exit
 
 ### Note: Requires a Reboot for this to start working
 ################# RClone Move - CronJob ################# END
