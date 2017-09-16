@@ -52,7 +52,7 @@ sudo mkdir /mnt/plexdrive4 && sudo chmod 755 /mnt/plexdrive4
 cd ~
 
 # Execute PlexDrive 4; takes awhile to complete; do not shutdown
-screen sudo plexdrive4 --uid=1001 --gid=1001 -o -v 2 --refresh-interval=1m /mnt/plexdrive4
+screen sudo plexdrive4 --uid=1001 --gid=1001 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 
 # Press CTRL+A then C to create new terminal session to continue
 # Revert to PlexDrive status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
