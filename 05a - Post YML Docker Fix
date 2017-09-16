@@ -38,8 +38,10 @@ exit 0;
 # Press CTRL+X; then Enter. Editing rc.local to add postyml fix
 sudo nano /etc/rc.local
 
-# Place the line below above "exit 0" | If your missing the rc.local script and it shows new; then goto the very bottom
+# If your missing the rc.local script and it shows new; then goto the very bottom
+# Place the next line to the very bottom.
 sh /opt/postyml.sh &
+exit 0
 # Press CTRL+X and then ENTER to save
 
 # Assign permissions so your script can execute
