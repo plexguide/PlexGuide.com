@@ -31,6 +31,7 @@ sudo systemctl enable mongod
 sudo systemctl start mongod
 sudo systemctl status mongod
 ################# MongoDB ################# END
+## Press CTRL+C to exit and keep going
 
 ################# PlexDrive4 ################# START
 ### Required for Plex to read files without triggering 24 hour ban
