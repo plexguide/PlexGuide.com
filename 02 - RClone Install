@@ -115,7 +115,7 @@ sudo nano /opt/unionfs.sh
 ##### START COPY #####
 #!/bin/bash
 
-unionfs /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
+unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
 
 exit 0;
 ##### END COPY #####
