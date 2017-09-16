@@ -77,7 +77,7 @@ services:
 # important for providing time; don’t fully understand it
      - /etc/localtime:/etc/localtime:ro
 # this location is used to FORCE uploads of your tv shows to your google drive
-     - /mnt/rclone-union/zilch/tv:/tv
+     - /mnt/rclone-union:/tv
 # directory to store downloads of downloaded files
      - /mnt/sabtv/downloads/complete:/sabcomplete
 # store a backup copy of nzbs; to prevent duplicates
