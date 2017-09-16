@@ -1,6 +1,6 @@
 ################# SABNZBD - TV ################# START
 ### SAB for TV - http://ipv4address:8090
-### Wizard Mode - You can start filling or do later
+### Wizard Mode - You can start filling or do later; note type http://ipv4address:8090 (if you get a timeout; might see 8080)
 ### Configuration
 # [Click] Gear Icon (Upper Right) > [Click] Gear Icon (Upper Left)
 # General Area
