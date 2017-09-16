@@ -163,8 +163,6 @@ exit
 ### Note: Requires a Reboot for this to start working
 ################# RClone Move - CronJob ################# END
 
-
-
 ################# Final Notes ################# START
 ### Test by following the line below
 cd /mnt/rclone && dir
