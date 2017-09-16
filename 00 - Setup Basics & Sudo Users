@@ -44,8 +44,6 @@ su YOUR_USERNAME
 ## this is who you should login as now in the future
 ## execute command below to get the correct prompt when you login; forget then you have to type su username everytime
 sudo usermod -s /bin/bash YOUR_USERNAME
-## Now switch to your username
-su YOUR_USERNAME
 ## Switch to your home folder below
 cd ~
 ## Now you should see YOUR_USERNAME@whateveryourserveris instead of root
