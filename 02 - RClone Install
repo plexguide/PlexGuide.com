@@ -115,7 +115,7 @@ sudo systemctl status rclone.service
 # Press CTRL+X; then Enter. Editing rc.local to add postyml fix
 sudo nano /etc/rc.local
 
-START ########################### If empty, copy & paste.  If not, add last two lines at the bottom 
+START ########################### If empty, copy & paste.  If not, make it look like this (last two lines important)
 #!/bin/sh -e
 #
 # rc.local
@@ -130,8 +130,8 @@ START ########################### If empty, copy & paste.  If not, add last two 
 # By default this script does nothing.
 
 unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
-
 exit 0
+
 END ########################### 
 
 ## Enable It
