@@ -1,9 +1,12 @@
 ################# INSTALL SONARR ################# START
-sudo apt-get install libmono-cil-dev
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
-sudo echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
-sudo apt-get update
-sudo apt-get install nzbdrone 
+sudo apt-get install python git -y
+sudo mkdir /opt/couchpotato
+cd /opt/couchpotato/
+sudo git clone https://github.com/RuudBurger/CouchPotatoServer.git
+
+
+
+
 
 # Creating a service for Sonnar
 sudo nano /etc/systemd/system/sonarr.service
