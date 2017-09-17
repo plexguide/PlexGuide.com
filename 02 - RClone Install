@@ -48,40 +48,29 @@ nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other
 # Press CTRL+X and then save
 
-### create script for the service
-sudo nano /opt/rclone.sh
-
-##### START COPY #####
-#!/bin/bash
-
-sudo rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --config /root/.config/rclone/rclone.conf --bwlimit 8650k --size-only
-
-exit 0;
-##### END COPY #####
-
-### Permissions for the Script
-sudo chown root:root /opt/rclone.sh
-sudo chmod 755 /opt/rclone.sh
-
 ### create rclone service
 # You are now creating the service that will allow it to restart
 sudo nano /etc/systemd/system/rclone.service
 
 ##### START COPY #####
+
 [Unit]
-Description=rclonemount
-After=multi-user.target
+Description=RClone Daemon
+After=network.target
 
 [Service]
-ExecStart=/bin/bash /opt/rclone.sh
-ExecStop=/bin/bash /opt/rclone.sh
-Restart=on-abort
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone5 --bwlimit 8650k --size-only
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 
 ##### END COPY #####
-
 # Press CTRL+X and then Yes to save
 
 ### Start and enable the service
