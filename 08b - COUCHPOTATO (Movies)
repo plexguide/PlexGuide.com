@@ -1,3 +1,41 @@
+################# INSTALL SONARR ################# START
+sudo apt-get install libmono-cil-dev
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
+sudo echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
+sudo apt-get update
+sudo apt-get install nzbdrone 
+
+# Creating a service for Sonnar
+sudo nano /etc/systemd/system/sonarr.service
+
+####### COPY ###### START
+[Unit]
+Description=Sonarr Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/mono /opt/NzbDrone/NzbDrone.exe -nobrowser &
+TimeoutStopSec=20
+KillMode=process 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+####### COPY ###### START
+# Press CTRL+X to exit and save
+
+# Start the Sonnar Service
+sudo systemctl daemon-reload
+sudo systemctl enable sonarr.service
+sudo systemctl start sonarr.service
+sudo systemctl status sonarr.service
+# Press CTRL+C to exit status message
+# To test, goto your http://ipv4address:8989
+################# SONNAR SERVICE ################# END
+
 ################# CouchPotato ################# START
 ### You can install both Couch and Radarr
 ### CouchPotato - http://ipv4address:5050
