@@ -1,8 +1,9 @@
 ################# INSTALL SABNZBD ################# START
-
-
-
-
+sudo apt install sabnzbdplus
+sudo add-apt-repository ppa:jcfp/nobetas
+sudo apt update
+sudo apt install sabnzbdplus
+sabnzbdplus -d -s ipv4address:8090 --browser 0
 ################# INSTALL SABNZBD ################# END
 
 ################# SABNZBD - TV ################# START
