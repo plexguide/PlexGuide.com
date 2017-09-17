@@ -145,7 +145,7 @@ sudo nano /opt/rclone-move.sh
 ##### Copy #### START
 #!/bin/bash
 
-rclone move --bwlimit 8M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
+rclone move --bwlimit 8M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
 ##### Copy #### END
 # Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
 
