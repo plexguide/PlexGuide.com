@@ -4,7 +4,7 @@ Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
 Welcome to the Awesome Plex Server V3 (BETA)
 
-# What Your Installing:
+#### What Your Installing:
   - APACHE, CouchPotato, NetData, PlexDrive4, Plex, PlexPy, Muximux, MYSQL Radarr, SABNZBD, Sonarr, & Wordpress
 
 # Who It's Written For:
