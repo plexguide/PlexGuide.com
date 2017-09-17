@@ -1,3 +1,41 @@
+################# INSTALL SONARR ################# START
+sudo apt update && sudo install libmono-cil-dev curl mediainfo
+
+cd /opt
+sudo wget $( curl -s https://api.github.com/repos/Radarr/Radarr/releases | grep linux.tar.gz | grep browser_download_url | head -1 | cut -d \" -f 4 )
+sudo tar -xvzf Radarr.develop.*.linux.tar.gz
+
+# Creating a service for Sonnar
+sudo nano /etc/systemd/system/radarr.service
+
+####### COPY ###### START
+[Unit]
+Description=Radarr Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/mono /opt/Radarr/Radarr.exe --nobrowser &
+TimeoutStopSec=20
+KillMode=process 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+####### COPY ###### START
+# Press CTRL+X to exit and save
+
+# Start the Sonnar Service
+sudo systemctl daemon-reload
+sudo systemctl enable radarr.service
+sudo systemctl start radarr.service
+sudo systemctl status radarr.service
+# Press CTRL+C to exit status message
+# To test, goto your http://ipv4address:8989
+################# SONNAR SERVICE ################# END
+
 ################# Sonarr ################# START
 ### Radarr - http://ipv4address:7878
 # Settings: Click in the upper right
