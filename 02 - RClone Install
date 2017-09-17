@@ -45,7 +45,7 @@ sudo nano /etc/systemd/system/rclone.service
 
 [Unit]
 Description=RClone Daemon
-After=network.target
+After=multi-user.target
 
 [Service]
 Type=simple
@@ -54,7 +54,7 @@ Group=root
 ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
