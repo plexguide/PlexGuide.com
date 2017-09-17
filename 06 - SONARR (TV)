@@ -61,12 +61,18 @@ sudo systemctl status sonarr.service
 #   - [Click] save changes at top right
 # - Indexers Tab: You will need at least one provider. See root area for a file called "Indexers".
 # - Download Client Tab:
-#  - USENET Blackhole Option:  Turn this one on
-#   - Name: Blackhole
-#   - Enable: Yes
-#   - Nzb Folder: /blackhole/
-#   - Watch Folder: /sabcomplete/
-#   - [Click] save changes at the top right
+#  - SABNZBD:  Turn this one on
+#   - Name: SABNZBD
+#   - Host: Domain or IPV4 Address
+#   - Port: 8090
+#   - API Key: Goto SABNZBD - http://YOURIP-Domain:8090/sabnzbd/config/general/ and get the API KEY
+#   - Username: If you made a username in SAB, then put it here; otherwise leave blank
+#   - Password: If you made a password in SAB, then put it here; otherwise leave blank
+#   - Category: TV
+#   - Recent Priority: Hight
+#   - Older Priority: Normal or Low (if you love TV downloads more than movies; make normal)
+#   - [Click] Test - if having problems, check your IP, port, username and etc.  Trust me, it's you.
+#   - [Click] Save - if all is well
 # - General Tab:
 #  - Security:
 #   - Authentication: Forms (Login PAGe)
