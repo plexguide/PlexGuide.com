@@ -1,26 +1,18 @@
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
 
-# Download RClone and Rename
+# Installing RClone (Note: You can copy and paste the entire block below)
 cd /tmp
 sudo curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 sudo unzip rclone-current-linux-amd64.zip
 cd rclone-*-linux-amd64
-
-# Move RClone to Bin for fututure execution
 sudo cp rclone /usr/bin/
 sudo chown root:root /usr/bin/rclone
 sudo chmod 755 /usr/bin/rclone
-
-# Updates Man Pages
 sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
-
-# Deletes uncessary files
 cd .. && sudo rm -r rclone*
-
-# Sets file permissions for RClone folder
 sudo mkdir /mnt/rclone
 sudo chmod 755 /mnt/rclone
 sudo chown root /mnt/rclone
