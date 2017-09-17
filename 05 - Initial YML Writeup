@@ -15,6 +15,7 @@ services:
      - /opt/appdata/plex:/config
      - /mnt:/shows
      - /mnt/plexdrive4/zilch/:/media
+     - /mnt/plexdrive4/zilch/:/media2
    network_mode: host
 # ensures this container starts up when required to
    restart: always
