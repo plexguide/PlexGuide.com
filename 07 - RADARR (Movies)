@@ -23,7 +23,7 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-####### COPY ###### START
+####### COPY ###### END
 # Press CTRL+X to exit and save
 
 # Start the Sonnar Service
