@@ -6,11 +6,13 @@
 # Select Linux
 # Click [Choose Distribution]
 # When you [HOVER] over the Ubuntu 64 version, [RIGHT CLICK] and COPY the Address in a notepad or something
+
 # Bring up terminal
 cd /tmp & sudo wget (the address you copied)
 # Example: cd /tmp && sudo wget https://downloads.plex.tv/plex-media-server/1.9.0.4252-d07c1f408/plexmediaserver_1.9.0.4252-d07c1f408_amd64.deb
 # Note: If you get an address not found, it's because most likely you didn't copy the ENTIRE ADDRESS
-### Installing Plex
+
+# Installing Plex
 sudo dpkg -i plex (Then [PRESS] the TAB key, will out the entire thing and then [PRESS ENTER])
 ################# PLEX Install ################# END
 
