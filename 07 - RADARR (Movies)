@@ -32,7 +32,7 @@ sudo systemctl enable radarr.service
 sudo systemctl start radarr.service
 sudo systemctl status radarr.service
 # Press CTRL+C to exit status message
-# To test, goto your http://ipv4address:8989
+# To test, goto your http://ipv4address:7878
 ################# SONNAR SERVICE ################# END
 
 ################# Sonarr ################# START
