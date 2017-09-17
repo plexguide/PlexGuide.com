@@ -7,11 +7,13 @@ Welcome to the Awesome Plex Server V3 (BETA)
 #### What's Installing?
 
 Ready:      CouchPotato, NetData, PlexDrive4, Plex, Radarr, SABNZBD, Sonarr
+
 Not Ready:  APACHE,  PlexPy, Muximux, MYSQL , & Wordpress
+
 Future:     Torrent Intergration & Security
 
 #### What's Required?
-  - Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If your new to all of this, it's fine!
+Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If your new to all of this, it's fine!
 
 **Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
 
