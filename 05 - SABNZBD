@@ -1,10 +1,18 @@
 ################# INSTALL SABNZBD ################# START
+### Building Your Folders
+sudo mkdir /mnt/sab
+sudo mkdir /mnt/sab/nzb
+sudo mkdir /mnt/sab/downloads
+sudo mkdir /mnt/sab/downloads/complete
+sudo mkdir /mnt/sab/downloads/incomplete
+
+### Installing SABNZBD Software
 sudo apt install sabnzbdplus
 sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt update
 sudo apt install sabnzbdplus
 
-# Creating a service for SABNZBD
+### Creating a service for SABNZBD
 sudo nano /etc/systemd/system/sabnzbd.service
 
 ####### COPY ########### Start - Warning: Change the IPV4 address down below!!!!!
