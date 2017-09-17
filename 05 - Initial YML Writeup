@@ -14,8 +14,6 @@ services:
    volumes:
      - /opt/appdata/plex:/config
      - /mnt:/shows
-# Recommend PlexDrive 4 over 5 (performance and doesn't stop)
-# If you installed PlexDrive 5... change "plexdrive4" to "plexdrive5"
      - /mnt/plexdrive4/zilch/:/media
    network_mode: host
 # ensures this container starts up when required to
