@@ -4,14 +4,31 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
 sudo echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
 sudo apt-get update
 sudo apt-get install nzbdrone 
-################# INSTALL SONARR ################# END
 
-################# SONNAR SERVICE ################# START
-sudo apt-get install libmono-cil-dev
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
-sudo echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
-sudo apt-get update
-sudo apt-get install nzbdrone 
+# Creating a service for Sonnar
+sudo nano /etc/systemd/system/sonarr.service
+
+[Unit]
+Description=Sonarr Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/mono /opt/NzbDrone/NzbDrone.exe -nobrowser &
+TimeoutStopSec=20
+KillMode=process 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl enable sonarr.service
+sudo systemctl start sonarr.service
+sudo systemctl status sonarr.service
+# Press CTRL+C to exit status message
 ################# SONNAR SERVICE ################# END
 
 ################# Sonarr ################# START
