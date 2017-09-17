@@ -66,9 +66,8 @@ sudo chmod 755 /opt/rclone.sh
 ### create rclone service
 # You are now creating the service that will allow it to restart
 sudo nano /etc/systemd/system/rclone.service
-### Copy the info inbetween from start to end into the file
 
-##### START COPY ##### Note: ExecStart Line is ONE WHOLE LINE, it's wrapping
+##### START COPY #####
 [Unit]
 Description=rclonemount
 After=multi-user.target
@@ -90,10 +89,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable rclone.service
 sudo systemctl start rclone.service
 sudo systemctl status rclone.service
-
-# Go back to your username - if you get stuck; you can reboot and test with the following lines below
-# You can avoid the reboot and open a second terminal and see if the following below executes
-exit && exit
+# Press CTRL + C to exit the status message
 ################# RClone ################# END
 
 ################# Final Notes ################# START
