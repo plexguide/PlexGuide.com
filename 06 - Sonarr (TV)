@@ -8,6 +8,7 @@ sudo apt-get install nzbdrone
 # Creating a service for Sonnar
 sudo nano /etc/systemd/system/sonarr.service
 
+####### COPY ###### START
 [Unit]
 Description=Sonarr Daemon
 After=network.target
@@ -23,15 +24,19 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
+####### COPY ###### START
+# Press CTRL+X to exit and save
 
+# Start the Sonnar Service
 sudo systemctl daemon-reload
 sudo systemctl enable sonarr.service
 sudo systemctl start sonarr.service
 sudo systemctl status sonarr.service
 # Press CTRL+C to exit status message
+# To test, goto your http://ipv4address:8989
 ################# SONNAR SERVICE ################# END
 
-################# Sonarr ################# START
+################# SONNAR CONFIGURE START ################# START
 ### Sonnar - http://ipv4address:8989
 # Settings: Click in the upper right
 # - Advanced Settings: Turn on, far right, flip on and [Click] save
@@ -78,5 +83,4 @@ sudo systemctl status sonarr.service
 #  - [Click] Ok at the very bottom
 # In the future if you have shows already and you click import, click the TV Folder under RECENT
 # Start importanting or naming items and you should see stuff stuff downloading
-# http://ipv4address:8090
-################# Sonarr ################# END
+################# SONNAR CONFIGURE ################# END
