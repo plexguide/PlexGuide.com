@@ -30,7 +30,7 @@ WantedBy=multi-user.target
 ####### COPY ###### END
 # Press CTRL+X to exit and save
 
-# Start the Sonnar Service
+# Start the Couch Service
 sudo systemctl daemon-reload
 sudo systemctl enable couch.service
 sudo systemctl start couch.service
