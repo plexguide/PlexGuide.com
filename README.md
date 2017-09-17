@@ -2,7 +2,7 @@
 
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-Welcome to the Awesome Plex Server V3 (BETA)
+# Welcome to the Awesome Plex Server V3 (BETA)
 
 #### What's Installing?
 
