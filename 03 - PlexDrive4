@@ -1,17 +1,3 @@
-################# Google Drive API ################# START
-### Required for both RClone & PlexDrive - Credit: @Balazer on Github
-# http://console.developers.google.com
-# Select project or create a new project
-# Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
-# Click "Credentails" in the left-side panel (not "Go to Credentials" which is a Wizard)
-# Then "Create credenntials"
-# Then "OAuth client ID"
-# Prompted to set OAuth consent screen product name.
-# Choose application type as "other" and then click "Create"
-#  - If you DO NOT SELECT other, the API is useless and will not work (Reported By PogMoThoin22 @ reddit)
-# Will then show you a client ID and client secret
-################# Google Drive API ################# END
-
 ################# MongoDB ################# START
 ### Required for PlexDrive to Operate
 https://github.com/Admin9705/The-Awesome-Plex-Server
