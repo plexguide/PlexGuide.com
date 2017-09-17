@@ -37,6 +37,14 @@ sudo systemctl status sabnzbd.service
 # Testing: Goto http://ipv4address:8090 and make sure it's working!
 ################# INSTALL SABNZBD ################# END
 
+################# SABNZBD Additional Requirements ################# START
+# Install other required items for SABNZBD
+sudo add-apt-repository ppa:jcfp/sab-addons
+sudo apt-get update
+sudo apt-get install par2-tbb
+sudo apt-get install par2-mt
+################# SABNZBD Additional Requirements ################# END
+
 ################# SABNZBD - TV ################# START
 ### SAB for TV - http://ipv4address:8090
 ### Wizard Mode - You can start filling or do later
