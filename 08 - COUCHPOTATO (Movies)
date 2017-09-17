@@ -1,41 +1,45 @@
-################# INSTALL SONARR ################# START
+################# COUCHPOTATO INSTALL ################# START
 sudo apt-get install python git -y
 sudo mkdir /opt/couchpotato
 cd /opt/couchpotato/
 sudo git clone https://github.com/RuudBurger/CouchPotatoServer.git
 
+# Setting permissions for CouchPotato
+sudo chown root:root /opt/couchpotato/CouchPotatoServer/CouchPotato.py	
+sudo chmod 755 /opt/couchpotato/CouchPotatoServer/CouchPotato.py	
+
 # Creating a service for Sonnar
-sudo nano /etc/systemd/system/sonarr.service
+sudo nano /etc/systemd/system/couch.service
 
 ####### COPY ###### START
 [Unit]
-Description=Sonarr Daemon
+Description=CouchPotato Daemon
 After=network.target
 
 [Service]
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/mono /opt/NzbDrone/NzbDrone.exe -nobrowser &
+ExecStart=/opt/couchpotato/CouchPotatoServer/CouchPotato.py
 TimeoutStopSec=20
-KillMode=process 
+KillMode=process
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-####### COPY ###### START
+####### COPY ###### END
 # Press CTRL+X to exit and save
 
 # Start the Sonnar Service
 sudo systemctl daemon-reload
-sudo systemctl enable sonarr.service
-sudo systemctl start sonarr.service
-sudo systemctl status sonarr.service
+sudo systemctl enable couch.service
+sudo systemctl start couch.service
+sudo systemctl status couch.service
 # Press CTRL+C to exit status message
 # To test, goto your http://ipv4address:8989
-################# SONNAR SERVICE ################# END
+################# INSTALL COUCHPOTATO ################# END
 
-################# CouchPotato ################# START
+################# COUCHPOTATO CONFIG ################# START
 ### You can install both Couch and Radarr
 ### CouchPotato - http://ipv4address:5050
 # Wizard Mode - You can start filling or do later
