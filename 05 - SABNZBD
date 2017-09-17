@@ -85,6 +85,11 @@ sudo apt-get install python-sabyenc
 #  - [Click] Test Server
 #   - [Fails] Something stupid. Either the SSL, wrong port, wrong username, and etc
 #   - [Passes] Click the (Add Server) and then click the checkmark box at the top
+# Categories Area
+#  - For TV, paste/type this in the folder path: tv
+#  - [Hit Save to the Right]
+#  - For Movies, paste/type this in the folder path: movies
+#  - [Hit Save to the Right]
 # Switches Area
 #  - Detect Duplicate Downloads:  Fail Job (Move to History)
 #  - Action when encrypted Rar is downloaded: Abort
