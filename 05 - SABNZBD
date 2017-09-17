@@ -1,9 +1,11 @@
 ################# INSTALL SABNZBD ################# START
-### Building Your Folders
+### Building Your Folders (Can Copy & Paste the 7 Lines)
 sudo mkdir /mnt/sab
 sudo mkdir /mnt/sab/nzb
 sudo mkdir /mnt/sab/downloads
 sudo mkdir /mnt/sab/downloads/complete
+sudo mkdir /mnt/sab/downloads/complete/tv
+sudo mkdir /mnt/sab/downloads/complete/movies
 sudo mkdir /mnt/sab/downloads/incomplete
 
 ### Installing SABNZBD Software
@@ -66,12 +68,11 @@ sudo apt-get install python-sabyenc
 #  - External Internet Access: Full Web Interface - Only External Access...
 #  - [Click] Save changes and click the folder icon at the top
 # Folder Area
-#  - Temporary Download Folder: /incomplete
+#  - Temporary Download Folder: /mnt/sab/downloads/incomplete
 #  - Minimum Free Space: 100GB (whatever is best for you)
-#  - Completed Download Folder: /complete
+#  - Completed Download Folder: /mnt/sab/downloads/complete
 #  - Permissions for completed downloads: 777
-#  - Watched Folder: /watch
-#  - .nzb Backup Folder: /nzb
+#  - .nzb Backup Folder: /mnt/sab/nzb
 #  - [Click] Save changes and click the double arrow icons at the top
 # Servers Area
 #  - Host: The name the service provides you; not what you think it is
