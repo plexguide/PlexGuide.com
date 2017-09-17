@@ -35,16 +35,13 @@ rclone config
 # Y < If asking all is ok?
 # Q < to quit
 
-# Editing the fuse.conf file
 nano /etc/fuse.conf
-# remove the (#) symbol before user_allow_other
-# Press CTRL+X and then save
+# remove the (#) symbol before user_allow_other; then press CTRL+X and then save
 
-### create rclone service
-# You are now creating the service that will allow it to restart
+### Create RClone Service
 sudo nano /etc/systemd/system/rclone.service
 
-##### START COPY #####
+####
 
 [Unit]
 Description=RClone Daemon
