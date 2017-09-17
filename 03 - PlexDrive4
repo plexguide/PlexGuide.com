@@ -1,6 +1,5 @@
 ################# MongoDB ################# START
 ### Required for PlexDrive to Operate
-https://github.com/Admin9705/The-Awesome-Plex-Server
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 
 # Copy Entire String - The next line is ONE WHOLE LINE, it's wrapping
@@ -14,6 +13,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable mongod
 sudo systemctl start mongod
 sudo systemctl status mongod
+# Press CTRL+C to escape
 ################# MongoDB ################# END
 
 ################# PlexDrive4 ################# START
