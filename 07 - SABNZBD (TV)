@@ -1,5 +1,9 @@
-### Prior to setting up, you must make the folders or you will get "CANNOT WRITE ERRORS" with Sonnar
-sudo mkdir /mnt/rclone && sudo mkdir /mnt/rclone/tv
+################# INSTALL SABNZBD ################# START
+
+
+
+
+################# INSTALL SABNZBD ################# END
 
 ################# SABNZBD - TV ################# START
 ### SAB for TV - http://ipv4address:8090
