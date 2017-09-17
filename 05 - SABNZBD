@@ -16,8 +16,7 @@ After=network.target
 Type=simple
 User=root
 Group=root
-###### Change the ipv4address in the line below!!! If you forget, you'll be stumped forever #####
-ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --ipv4address:8090 --browser 0 & 
+ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server ipv4address/domain:8090 --daemon & 
 ExecStop=/usr/bin/pkill sabnzbdplus
 Restart=always
 SyslogIdentifier=SABnzbd Usenet Client
@@ -33,6 +32,7 @@ sudo systemctl enable sabnzbd.service
 sudo systemctl start sabnzbd.service
 sudo systemctl status sabnzbd.service
 
+# Lesson Learned: If you screw it up, run "sudo system stop sabnzbd.service"... make changes, and then run the 4 lines above again
 # Press CTRL+C to escape the service message
 # Testing: Goto http://ipv4address:8090 and make sure it's working!
 ################# INSTALL SABNZBD ################# END
