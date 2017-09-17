@@ -1,10 +1,8 @@
-# The Awesome Plex  Server
+# The Awesome Plex Server V3 (Very Early Beta)
 
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-Need the old link for your STABLE current setup? https://github.com/Admin9705/The-Awesome-Plex-Server/tree/master
-
-#### Welcome to the Version 3 (Very Super BETA | Use old link above if you want stability)
+Need the old link for a STABLE setup? https://github.com/Admin9705/The-Awesome-Plex-Server/tree/master
 
 #### What's Installing?
 
