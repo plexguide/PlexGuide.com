@@ -3,7 +3,37 @@ sudo apt install sabnzbdplus
 sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt update
 sudo apt install sabnzbdplus
-sabnzbdplus -d -s ipv4address:8090 --browser 0
+
+sudo nano /etc/systemd/system/sabnzbd.service
+
+####### COPY ########### Start - Warning: Change the IPV4 address down below!!!!!
+[Unit]
+Description=SABnzbd Usenet Client
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+###### Change the ipv4address in the line below!!! If you forget, you'll be stumped forever #####
+ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --ipv4address:8090 --browser 0 & 
+ExecStop=/usr/bin/pkill sabnzbdplus
+Restart=always
+SyslogIdentifier=SABnzbd Usenet Client
+
+[Install]
+WantedBy=multi-user.target
+####### COPY ########### End - Warning: Change the IPV4 address up above!!!!!
+# Press CTRL+X and [Enter to Save]
+
+# Enable and start the service
+sudo systemctl daemon-reload
+sudo systemctl enable sabnzbd.service
+sudo systemctl start sabnzbd.service
+sudo systemctl status sabnzbd.service
+
+# Press CTRL+C to escape the service message
+# Testing: Goto http://ipv4address:8090 and make sure it's working!
 ################# INSTALL SABNZBD ################# END
 
 ################# SABNZBD - TV ################# START
