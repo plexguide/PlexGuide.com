@@ -7,13 +7,13 @@ Welcome to the Awesome Plex Server V3 (BETA)
 #### What Your Installing:
   - APACHE, CouchPotato, NetData, PlexDrive4, Plex, PlexPy, Muximux, MYSQL Radarr, SABNZBD, Sonarr, & Wordpress
 
-# Who It's Written For:
+#### Who It's Written For:
   - Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project)
 
-# Who It's Written For:
+#### Who It's Written For:
   - For Noobs and Novice Noobs like me & for those who just want to learn and/or improve their setup
 
-# Not For:
+#### Not For:
   - Cranky Linux Experts, Closed Minded Individuals, Non-Solution Oriented Anti-Team Personality Types
 
 Encryption & Security: This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
@@ -22,7 +22,7 @@ Note: This guide is written for a SUDO USER, not ROOT (which may cause some head
 
 Feel free to point out issues, suggestions, and even testing this guide and adding to it.  Full credit will be given.  All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
 
-# Want to Help?:
+## Want to Help?:
 Take the guide and write up the set of instructions and send a link.  I'll post the credit to you (and test of course).
 
 ### Contact
