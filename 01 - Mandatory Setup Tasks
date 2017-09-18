@@ -1,5 +1,6 @@
 ################# Update System ################# START
 sudo apt update && sudo apt install nano && sudo apt install fuse && sudo apt install man-db && sudo apt install screen && sudo apt install unzip
+sudo apt-get install software-properties-common
 ################# Update System ################# END
 
 ################# Install NetData ################# START
