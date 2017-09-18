@@ -6,6 +6,10 @@
 # Future Edits:  cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml (then copy this entire file into it)
 #     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d    
 # The spacing below in this script is important / it will fail
+# Once executed, access the following services
+# Portainer: http://ipv4address/domain:9000
+# PlexPy:    http://ipv4address/domain:8181
+# Muximux:   http://ipv4address/domain:8015
 ################# Starting Notes ################# END
 
 ################# YML Writeup ################# Start
