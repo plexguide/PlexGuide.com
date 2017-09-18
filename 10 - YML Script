@@ -31,8 +31,6 @@ services:
  plexpy:
    image: linuxserver/plexpy
    container_name: plexpy
-   depends_on:
-     - plex
    volumes:
      - /opt/appdata/plexpy:/config
      - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
