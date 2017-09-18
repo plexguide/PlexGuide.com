@@ -1,3 +1,4 @@
+### Note: Recommend to use Internet Explorer for Folder Selections to prevent selection cutoffs.
 ################# COUCHPOTATO INSTALL ################# START
 sudo apt-get install python git -y
 sudo mkdir /opt/couchpotato
