@@ -15,12 +15,6 @@ curl -sSL https://get.docker.com | sh
 sudo apt install docker-compose
 ################# Installing Docker & Compose  ################# END
 
-################# Additional Info ################# START
-# If having problems with network issues, install docker following the guide below:
-#  - https://www.google.com/url?q=https://www.ostechnix.com/install-docker-ubuntu/ 
-# Instructions to execute the YML is located in the first lines of the YML writeup
-# - save the YML as /opt/docker-compose.yml (sudo nano /opt/docker-compose.yml)
-################# Additional Info ################# END
 
 
 
