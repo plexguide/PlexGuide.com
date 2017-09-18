@@ -10,7 +10,7 @@ sudo nano /etc/systemd/system/radarr.service
 ####### COPY ###### START
 [Unit]
 Description=Radarr Daemon
-After=network.target
+After=multi-user.target
 
 [Service]
 Type=simple
@@ -19,7 +19,7 @@ Group=root
 ExecStart=/usr/bin/mono /opt/Radarr/Radarr.exe --nobrowser &
 TimeoutStopSec=20
 KillMode=process 
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
