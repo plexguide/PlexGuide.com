@@ -64,13 +64,18 @@ sudo systemctl status radarr.service
 #    - SDTV
 #   - [Click] save changes at top right
 # - Indexers Tab: You will need at least one provider. See root area for a file called "Indexers".
-# - Download Client Tab:
-#  - USENET Blackhole Option:  Turn this one on
-#   - Name: Blackhole
-#   - Enable: Yes
-#   - Nzb Folder: /blackhole/
-#   - Watch Folder: /downloads/
-#   - [Click] save changes at the top right
+#  - SABNZBD:  Turn this one on
+#   - Name: SABNZBD
+#   - Host: Domain or IPV4 Address
+#   - Port: 8090
+#   - API Key: Goto SABNZBD - http://YOURIP-Domain:8090/sabnzbd/config/general/ and get the API KEY
+#   - Username: If you made a username in SAB, then put it here; otherwise leave blank
+#   - Password: If you made a password in SAB, then put it here; otherwise leave blank
+#   - Category: movies
+#   - Recent Priority: Hight
+#   - Older Priority: Normal or Low (if you love Movie downloads more than TV downloads; make normal)
+#   - [Click] Test - if having problems, check your IP, port, username and etc.  Trust me, it's you.
+#   - [Click] Save - if all is well
 # - General Tab:
 #  - Security:
 #   - Authentication: Forms (Login Page)
@@ -85,6 +90,5 @@ sudo systemctl status radarr.service
 #  - Let it load, can take awhile if you have many, if not; proceed
 #  - Once loaded, click the green check.  After this, your good in setting your movie location (where they currently are)
 #  - From here, explore and start finding your movies.
-# http://ipv4address:8095 (for SABNZBD)
 # http://ipv4address:7878 (for Radarr)
 ################# Sonarr ################# END
