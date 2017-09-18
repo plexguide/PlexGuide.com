@@ -54,7 +54,7 @@ sudo apt-get update
 sudo apt-get install par2-tbb
 sudo apt-get install par2-mt
 sudo apt-get install python-sabyenc
-# Goto SABNZBD, click 3 ticks in upper right corner and select reboot; errors about missing items should go away
+sudo systemctl restart sabnzbd.service
 ################# SABNZBD Additional Requirements ################# END
 
 ################# SABNZBD - TV ################# START
