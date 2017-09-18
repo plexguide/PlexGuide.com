@@ -1,4 +1,4 @@
-# The Awesome Plex Server V3 (Very Early Beta)
+# The Awesome Plex Server V3
 
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
