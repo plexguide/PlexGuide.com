@@ -20,7 +20,7 @@ sudo nano /etc/systemd/system/sabnzbd.service
 ####### COPY ########### Start - Warning: Change the IPV4 address down below!!!!!
 [Unit]
 Description=SABnzbd Usenet Client
-After=network.target
+After=multi-user.target
 
 [Service]
 Type=simple
