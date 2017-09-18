@@ -14,7 +14,7 @@ sudo nano /etc/systemd/system/couch.service
 ####### COPY ###### START
 [Unit]
 Description=CouchPotato Daemon
-After=network.target
+After=multi-user.target
 
 [Service]
 Type=simple
@@ -23,7 +23,7 @@ Group=root
 ExecStart=/opt/couchpotato/CouchPotatoServer/CouchPotato.py
 TimeoutStopSec=20
 KillMode=process
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
