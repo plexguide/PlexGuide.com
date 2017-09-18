@@ -6,9 +6,9 @@ Need the old link for a STABLE setup? https://github.com/Admin9705/The-Awesome-P
 
 #### What's Installing?
 
-Ready:      CouchPotato, NetData, PlexDrive4, Plex, Radarr, SABNZBD, Sonarr
+Ready:      CouchPotato, Docker, NetData, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 
-Not Ready:  APACHE,  PlexPy, Muximux, MYSQL , & Wordpress
+Not Ready:  APACHE, CouchPotato, MYSQL, & Wordpress
 
 Future:     Torrent Intergration & Security
 
