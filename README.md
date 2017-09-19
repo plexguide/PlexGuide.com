@@ -8,7 +8,7 @@ Need the old link for a STABLE setup? https://github.com/Admin9705/The-Awesome-P
 
 Ready:      CouchPotato, Docker, NetData, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 
-Not Ready:  APACHE, CouchPotato, MYSQL, & Wordpress
+Not Ready:  APACHE, Ombi, MYSQL, & Wordpress
 
 Future:     Torrent Intergration & Security
 
