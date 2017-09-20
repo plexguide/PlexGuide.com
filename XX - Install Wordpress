@@ -73,3 +73,4 @@ sudo nano/var/www/html/wp-config.php
 ### Finishing Up
 # Now type your http://ipv4address|domain
 # You should now see a wordpress install
+# If you receive a CONNECTION ERROR, double check your password, username, and database name; trust me... I had to redo twice
