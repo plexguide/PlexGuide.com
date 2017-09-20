@@ -74,3 +74,10 @@ sudo nano/var/www/html/wp-config.php
 # Now type your http://ipv4address|domain
 # You should now see a wordpress install
 # If you receive a CONNECTION ERROR, double check your password, username, and database name; trust me... I had to redo twice
+# For wordpress, create a strong username and password! Trust me, I was hacked in 2006 with weak info (luckly the site wasn't started)
+
+# Upgrade Wordpress - Wordpress will not upgrade for security reasons, so if you need to ever upgrade run this line
+sudo chown -R www-data /var/www/html
+
+# Once done, lock it back down - Tip: Change YOURUSERNAME
+sudo chown -R YOURUSERNAME /var/www/html
