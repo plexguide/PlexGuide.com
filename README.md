@@ -29,11 +29,5 @@ Take the guide and write up the set of instructions and send a link.  I'll post 
 
 #### Contact  - [Admin9705] - Reddit
 
-### Solutions for PlexDrive and RClone
-https://github.com/madslundt/docker-cloud-media-scripts - Asked author for idea to incorporte his ideas to make the process easier.  PlexDrive and RClone are mainly the last two items; which are not dockered.
-
-#### Additional Solutions
-Installing LAMP Stack: https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04
-
 #### Security Solutions:
 https://github.com/dweidenfeld/plexdrive/blob/master/TUTORIAL.md - PlexDrive Encyrption (Lin584 - Reddit) 
