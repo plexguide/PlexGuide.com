@@ -23,10 +23,10 @@ sudo systemctl status mongod
 cd /tmp
 sudo wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
 sudo mv plexdrive-linux-amd64 plexdrive4
-sudo mv plexdrive4 /usr/local/bin/
-cd /usr/local/bin/
-sudo chown root:root /usr/local/bin/plexdrive4
-sudo chmod 755 /usr/local/bin/plexdrive4
+sudo mv plexdrive4 /usr/bin/
+cd /usr/bin/
+sudo chown root:root /usr/bin/plexdrive4
+sudo chmod 755 /usr/bin/plexdrive4
 sudo mkdir /mnt/plexdrive4 && sudo chmod 755 /mnt/plexdrive4
 cd ~
 
