@@ -82,7 +82,7 @@ sudo chown -R www-data /var/www/html
 # Once done, lock it back down - Tip: Change YOURUSERNAME
 sudo chown -R YOURUSERNAME /var/www/html
 
-Recommended Theme: https://theme4press.com/ (You get your moneys worth an adapts via mobile and tons of options)
+Recommended Theme: https://theme4press.com/ (.evolve Plus) (You get your moneys worth an adapts via mobile and tons of options)
 
 ################# PHP Limits (Opitonal) ################# START
 # If you are uploading a theme and receive an exceed error size, the next steps are for you.
