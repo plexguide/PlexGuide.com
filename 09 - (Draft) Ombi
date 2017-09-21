@@ -4,5 +4,19 @@
 sudo mkdir /opt/Ombi
 
 ## Download the latest stable version and unzip files to location
-sudo wget {release zip file url}
+
+#### SELECT only ONE to DOWNLOAD!!! ### START
+
+# Master Release
+sudo wget https://github.com/tidusjar/Ombi/releases/download/v2.2.1/Ombi.zip
+
+# Early Access 
+sudo wget https://ci.appveyor.com/api/buildjobs/bpbd7olow6ipl745/artifacts/Ombi.zip
+
+# Developer Version
+sudo wget https://ci.appveyor.com/api/buildjobs/0s9th9l5c0you5c1/artifacts/Ombi.zip
+
+#### SELECT only ONE to DOWNLOAD!!! ### END
+
 sudo unzip Ombi.zip -d /opt/Ombi
+
