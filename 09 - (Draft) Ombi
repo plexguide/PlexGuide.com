@@ -1,5 +1,3 @@
-## Working Rewrite
-
 ## Creating initial directory
 sudo mkdir /opt/Ombi
 
@@ -32,3 +30,36 @@ sudo apt-get update
 sudo apt-get install mono-complete 
 Installing Mono ########################### END
 
+################# OMBI SERVICE ################# START
+# Creating a service for Sonnar
+sudo nano /etc/systemd/system/ombi.service
+
+####### COPY ###### START
+[Unit]
+Description=Ombi Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/mono /opt/Ombi/Release/Ombi.exe
+TimeoutStopSec=20
+KillMode=process 
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+####### COPY ###### END
+
+# Press CTRL+X to exit and save
+
+# Start the Sonnar Service
+sudo systemctl daemon-reload
+sudo systemctl enable ombi.service
+sudo systemctl start ombi.service
+sudo systemctl status ombi.service
+# Press CTRL+C to exit status message
+# To test, goto your http://ipv4address:3579
+################# OMBI SERVICE ################# END
