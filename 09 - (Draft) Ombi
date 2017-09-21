@@ -1,1 +1,8 @@
 ## Working Rewrite
+
+## Creating initial directory
+sudo mkdir /opt/Ombi
+
+## Download the latest stable version and unzip files to location
+sudo wget {release zip file url}
+sudo unzip Ombi.zip -d /opt/Ombi
