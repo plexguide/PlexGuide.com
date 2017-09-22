@@ -41,6 +41,7 @@ ls /mnt/rclone/zilch
 ### Create RClone Service
 sudo nano /etc/systemd/system/unionfs.service
 
+# Note: You can change out /mnt/plexdrive4 to /mnt/rclone --- I recommend PD4 to prevent google API bans
 ##### START COPY #####
 
 [Unit]
@@ -51,7 +52,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
+ExecStart=/usr/bin/unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/plexdrive4=RO /mnt/rclone-union
 TimeoutStopSec=20
 KillMode=process
 Restart=always
