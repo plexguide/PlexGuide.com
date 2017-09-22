@@ -6,9 +6,9 @@ Need the old link for a STABLE setup? https://github.com/Admin9705/The-Awesome-P
 
 #### What's Installing?
 
-Ready:      CouchPotato, Docker, NetData, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
+Ready:      CouchPotato, Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 
-Not Ready:  Ombi
+Not Ready:  rclone-move & cronjob (typed, but not intergrated) - direct rclone mount works; not ideal without bandwidth controls
 
 Future:     Torrent Intergration & Security
 
