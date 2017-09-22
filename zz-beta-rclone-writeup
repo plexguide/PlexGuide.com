@@ -69,3 +69,59 @@ sudo systemctl start unionfs.service
 sudo systemctl status unionfs.service
 # Press CTRL + C to exit the status message
 ################# RClone ################# END
+
+################## UnionFS Portion ###################### START
+# Press CTRL+X; then Enter. Editing rc.local to add postyml fix
+sudo nano /etc/rc.local
+
+START ########################### If empty, copy & paste.  If not, make it look like this (last two lines important)
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
+exit 0
+
+END ########################### 
+
+## Enable It
+sudo /etc/init.d/rc.local start
+################# UnionFS ################# END
+
+################# RClone Move - CronJob ################# START
+### Move's Downloaded Files every 59 minutes (syncs)
+# Warning: Do not do too early, will resync the same file 2x / 3x
+
+# Create the Script
+sudo nano /opt/rclone-move.sh
+
+##### Copy #### START
+#!/bin/bash
+
+rclone move --bwlimit 8M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
+##### Copy #### END
+# Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
+
+sudo su
+crontab -e
+
+# Add to very bottom line: 
+ */59 * * * * /bin/bash /opt/rclone-move.sh >/dev/null 2>&1
+# Press CTRL+X and set the permissions and return as USER
+
+sudo chmod 755 /opt/rclone-move.sh
+sudo chown root /opt/rclone-move.sh
+exit && exit
+
+### Note: Requires a Reboot for this to start working
+################# RClone Move - CronJob ################# END
+
