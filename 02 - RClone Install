@@ -2,10 +2,10 @@
 ### RClone is utilized to move files automatically to your Google Drive
 
 ## create additonal folders
-mkdir /mnt/rclone-union && mkdir /mnt/rclone-move && mkdir /mnt/rclone-move/tv && mkdir /mnt/rclone-movies
+sudo mkdir /mnt/rclone-union && sudo mkdir /mnt/rclone-move && sudo mkdir /mnt/rclone-move/tv && sudo mkdir /mnt/rclone-movies
 
 ## permissions for future
-chmod 755 rclone-move && chmod 755 rclone-union
+sudo chmod 755 rclone-move && sudo chmod 755 rclone-union
 
 ## To install fuse
 sudo apt-get install unionfs-fuse
