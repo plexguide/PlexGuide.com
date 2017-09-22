@@ -132,6 +132,9 @@ rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 1
 ##### Copy #### END
 # Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
 
+# Script permissions
+sudo chmod 755 /opt/rclone-move.sh
+
 ### Create the CRONJOB
 sudo su
 crontab -e
@@ -144,5 +147,7 @@ sudo chmod 755 /opt/rclone-move.sh
 sudo chown root /opt/rclone-move.sh
 exit && exit
 
-### Note: Requires a Reboot for this to start working
+sudo service cron restart
+
+### Note: Above should start the cron job, but would reboot entire system and check if mounts work starting up
 ################# RClone Move - CronJob ################# END
