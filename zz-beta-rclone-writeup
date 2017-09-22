@@ -28,6 +28,8 @@ ls /mnt/rclone-move
 ls /mnt/rclone-union/zilch
 ## if that file is there, that's great also
 
+## AS ROOT, you need to config RCLONE and use OPTION 10 to create local
+
 ## command to move data
 ## need to incorporate a script and cron job to ensure it keeps acting starting every hour if not running
 rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
