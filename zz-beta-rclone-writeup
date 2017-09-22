@@ -30,7 +30,7 @@ ls /mnt/rclone-union/zilch
 
 ## command to move data
 ## need to incorporate a script and cron job to ensure it keeps acting starting every hour if not running
-rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/zilch/
+rclone move --bwlimit 10M --tpslimit 8 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
 
 ## to see if data moved, give it one minute before checking
 ls /mnt/rclone/zilch
