@@ -15,7 +15,7 @@ chmod 755 rclone-move && chmod 755 rclone-union
 sudo apt-get install unionfs-fuse
 
 ## future directory for sonarr, radarr, and couch potato to write to
-unionfs -o allow_root,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
+sudo unionfs -o allow_root,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
 
 ## Create a test write file
 touch /mnt/rclone-union/zzz.file1
