@@ -68,7 +68,7 @@ sudo nano /var/www/html/wp-config.php
 # Scroll down several lines until you see tons of define lines, delete the default crap and paste each one of your values in
 # Now scroll back up and enter your configuration information; the ones you REMEMBERED from your MYSQL setup
 # Change only DB_NAME, DB_USER, and DB_PASSWORD only!
-# Press CTRL+X and Save
+# Press CTRL+X and Save 
 
 ### Finishing Up
 # Now type your http://ipv4address|domain
