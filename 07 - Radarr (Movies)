@@ -86,6 +86,7 @@ sudo systemctl status radarr.service
 # Movies Icon: [Click] at the topt)
 #  - [Click] + Add Movies
 #  - [Click] Important Existing Series on Disk (can take awhile) (only applies if you have stuff on your G-Drive)
+#  - [Location] If existing on disk, should be /mnt/rclone-union/zilch/movies/
 #  - [Click] and then scroll down and click the [OK]
 #  - Let it load, can take awhile if you have many, if not; proceed
 #  - Once loaded, click the green check.  After this, your good in setting your movie location (where they currently are)
