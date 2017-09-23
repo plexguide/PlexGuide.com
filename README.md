@@ -2,7 +2,7 @@
 
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-Need the old link for a STABLE setup? https://github.com/Admin9705/The-Awesome-Plex-Server/tree/master
+Need the old link for the older setup? https://github.com/Admin9705/The-Awesome-Plex-Server/tree/master
 
 #### What's Installing?
 
