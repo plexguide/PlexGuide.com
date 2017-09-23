@@ -59,7 +59,7 @@ sudo systemctl status couch.service
 #  - Newznab:  You will need at least one provider. See root area for a file called "Indexers".
 #  - Rename Movies: On
 #   - Cleanup: Check the BOX [ON]
-#   - To: /mnt/rclone/zilch/movies                         (note: this may take awhile to load up)
+#   - To: /mnt/rclone-union/zilch/movies/                  (note: this may take awhile to load up)
 #   - From: /mnt/sab/downloads/complete/movies/            (note: blank? it's because you need to wait for 1st load up to finish)
 #   - Ready to Start: Press the Button at the very bottom
 # Additonal Configuration and Information
