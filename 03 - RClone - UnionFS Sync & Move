@@ -5,7 +5,7 @@
 sudo mkdir /mnt/rclone-union && sudo mkdir /mnt/rclone-move && sudo mkdir /mnt/rclone-move/tv && sudo mkdir /mnt/rclone-movies
 
 ## permissions for future
-sudo chmod 755 rclone-move && sudo chmod 755 rclone-union
+sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
 
 ## To install fuse
 sudo apt-get install unionfs-fuse
