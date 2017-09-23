@@ -28,6 +28,7 @@
 #   - You should not have to configure anything out of the ordinary.
 ################# Ubuntu Setup ################# START
 
+### Follow bottom portion if you ARE ROOT and DO NOT HAVE a REGULAR USER ACCOUNT or NO SUDO ACCOUNT
 ################# How To Make a New Sudo User with a username in home ################# START
 # START as root, type the following below; if root already... ignore the step below:
 su root
