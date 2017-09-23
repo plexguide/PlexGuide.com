@@ -83,7 +83,7 @@ sudo systemctl status sonarr.service
 # Series Icon: [Click] at the top
 #  - Either click Import (if you have shows) or Add Series (if you don't or want more)
 #  - If your rclone is working, then when you add a path... it
-#  - Should be: /mnt/rclone/zilch/tv/ (May Take a Minute)
+#  - Should be: /mnt/rclone-union/zilch/tv/ (May Take a Minute)
 #  - [Click] Ok at the very bottom
 # In the future if you have shows already and you click import, click the TV Folder under RECENT
 ################# SONNAR CONFIGURE ################# END
