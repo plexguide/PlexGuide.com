@@ -1,5 +1,5 @@
 ################# INSTALL SABNZBD ################# START
-### Building Your Folders (Copy & Paste the 7 Lines Below)
+### Building Your Folders (Copy & Paste the following 7 Lines Below)
 sudo mkdir /mnt/sab
 sudo mkdir /mnt/sab/nzb
 sudo mkdir /mnt/sab/downloads
@@ -13,8 +13,6 @@ sudo mkdir /mnt/sab/downloads/incomplete
 sudo apt install sabnzbdplus
 sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt update
-sudo apt install sabnzbdplus
-
 ### Creating a service for SABNZBD
 sudo nano /etc/systemd/system/sabnzbd.service
 
