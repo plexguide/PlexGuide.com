@@ -13,8 +13,11 @@ Future:     Torrent Intergration & Security
 #### What's Required?
 Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If your new to all of this, it's fine!
 
-#### Why the Changes?
-Docker is great, but it's a pain for this setup.  The problem with docker is that there are permission issues, path issues, update issues... on and on.  It's hard to troubleshoot items also.  In my first go around prior to Docker, I had problems restarting programs and did not understand how to utilize service correctly; well all of that is now fixed.  Now having the ability to reboot the programs and all of them enabled with services, this is no longer and issue.
+#### Changes from Last Write-Up
+ - Less Docker Use
+ - UnionFS and bwlimits assist to prevent Google Upload Ban
+ - Enables use of server with less disk space due to rclone syncing over prior dependence on rclone mount
+ - All services work and no more use of rc.local or cronjobs
 
 **Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
 
