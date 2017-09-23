@@ -1,5 +1,5 @@
 ################# INSTALL SABNZBD ################# START
-### Building Your Folders (Can Copy & Paste the 7 Lines)
+### Building Your Folders (Copy & Paste the 7 Lines Below)
 sudo mkdir /mnt/sab
 sudo mkdir /mnt/sab/nzb
 sudo mkdir /mnt/sab/downloads
@@ -27,7 +27,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server ipv4address/domain:8090 --browser 0 & 
+ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server ipv4address/domain:8090 --browser 0 &
 ExecStop=/usr/bin/pkill sabnzbdplus
 Restart=always
 SyslogIdentifier=SABnzbd Usenet Client
