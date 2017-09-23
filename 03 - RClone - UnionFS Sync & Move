@@ -49,7 +49,10 @@ rclone config
 # Y < Is asking all is ok?
 # Q < to quit
 
-nano /etc/fuse.conf
+# back to your user
+exit && exit
+
+sudo nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other; then press CTRL+X and then save
 
 ### Create RClone Service
