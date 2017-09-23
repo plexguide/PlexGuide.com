@@ -16,13 +16,12 @@ sudo systemctl reload apache2
 
 ------------------ APACHE LAMP
 
-Install mysql
-
+# Install MYQL
 sudo apt-get install mysql-server
 # type a password for root - mysql and remember it!
 
 # secure your install
-mysql_secure_installation
+sudo mysql_secure_installation
 
 ------------------- Install PHP
 
