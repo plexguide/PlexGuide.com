@@ -173,38 +173,3 @@ sudo systemctl start move.service
 sudo systemctl status move.service
 # Press CTRL + C to exit the status message
 ################# RClone Move Service ################# END
-
-################# RClone Move - CronJob ################# START
-### Move's Downloaded Files every 30 minutes (syncs)
-# Note: If your upload truly sucks, change the 30 min to 59 minutes
-# Warning: Do not do too early, will resync the same file 2x / 3x
-
-# Create the SCRIPT the CMD
-sudo nano /opt/rclone-move.sh
-
-##### Copy #### START
-#!/bin/bash
-
-rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
-##### Copy #### END
-# Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
-
-# Script permissions
-sudo chmod 755 /opt/rclone-move.sh
-
-### Create the CRONJOB
-sudo su
-crontab -e
-
-# Add to very bottom line: 
- */30 * * * * /bin/bash /opt/rclone-move.sh >/dev/null 2>&1
-# Press CTRL+X and set the permissions and return as USER
-
-sudo chmod 755 /opt/rclone-move.sh
-sudo chown root /opt/rclone-move.sh
-exit && exit
-
-sudo service cron restart
-
-### Note: Above should start the cron job, but would reboot entire system and check if mounts work starting up
-################# RClone Move - CronJob ################# END
