@@ -9,6 +9,7 @@ sudo mkdir /mnt/sab/downloads/complete/movies
 sudo mkdir /mnt/sab/downloads/incomplete
 
 ### Installing SABNZBD Software
+# Warning, add each line on-by-one : Mass copy will result in service errors
 sudo apt install sabnzbdplus
 sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt update
