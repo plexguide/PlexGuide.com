@@ -24,7 +24,7 @@ Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If yo
 *Feel free* to point out issues, suggestions, and even testing this guide and adding to it.  Full credit will be given.  All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
 
 #### Want to Help?:
-Take the guide and write up the set of instructions and send a link.  I'll post the credit to you (and test of course).
+Take the guide and write up the set of instructions and send a link or SEND A push request to make it easier!
 
 #### Contact  - [Admin9705] - Reddit
 
