@@ -1,6 +1,6 @@
 Warning: Old Version Unsupported / Use V3
 
-# The Awesome Plex  Server
+# The Awesome Plex Server (Outdated Version)
 
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
