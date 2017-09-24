@@ -6,9 +6,7 @@ Need the old link for the older setup? https://github.com/Admin9705/The-Awesome-
 
 #### What's Installing?
 
-Installs:      CouchPotato, Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
-
-Future:     Torrent Intergration & Security
+CouchPotato, Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 
 #### What's Required?
 Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If your new to all of this, it's fine!
