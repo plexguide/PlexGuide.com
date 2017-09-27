@@ -48,6 +48,23 @@ rclone config
 # /mnt/rclone-move
 # Y < Is asking all is ok?
 # Q < to quit
+#### If wanting to use an encrypted folder instead ####
+rclone config
+# N < For New remote 
+# crypt < for the name
+# 5 < For Encrypt/Decrypt (double check the number select incase)
+# /mnt/plexdrive4/encrypt (encrypt being the rclone encrypted folder within your gdrive)
+# 2 < Encrypt standard
+# Y < type your own password (make up a secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use) 
+# Y < type your own salt password (make up a different secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use)
+# Should see something like this:-
+[crypt]
+remote = /mnt/plexdrive4/encrypt
+filename_encryption = standard
+password = *** ENCRYPTED ***
+password2 = *** ENCRYPTED ***
+# Y < If asking all is ok?
+# Q < to quit
 
 # back to your user
 exit && exit
@@ -58,7 +75,7 @@ sudo nano /etc/fuse.conf
 ### Create RClone Service
 sudo nano /etc/systemd/system/rclone.service
 
-##### START COPY #####
+##### START COPY ##### #### For encrypted version change gdrive: to crypt:
 
 [Unit]
 Description=RClone Daemon
@@ -76,7 +93,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 
-##### END COPY #####
+##### END COPY ##### #### For encrypted version change gdrive: to crypt:
 # Press CTRL+X and then Yes to save
 
 ### Start and enable the service
@@ -89,9 +106,10 @@ sudo systemctl status rclone.service
 
 ################# UNIONFS ################# START
 ### Create UnionFS Service
+### Note: For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
 sudo nano /etc/systemd/system/unionfs.service
 
-##### START COPY #####
+##### START COPY ##### #### For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
 
 [Unit]
 Description=UnionFS Daemon
@@ -109,7 +127,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 
-##### END COPY #####
+##### END COPY ##### #### For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
 # Press CTRL+X and then Yes to save
 
 ### Start and enable the service
@@ -123,9 +141,10 @@ sudo systemctl status unionfs.service
 ################# Move Service ################# START
 ### Create Script ### Inspired by aj1252 - rclone forum
 # Create the SCRIPT the CMD
+### Note: For encrypted version change gdrive:/ to crypt:/
 sudo nano /opt/rclone-move.sh
 
-######## Copy ####### START
+######## Copy ####### START #### For encrypted version change gdrive:/ to crypt:/
 #!/bin/bash
 
 while true
@@ -136,7 +155,7 @@ rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 1
 sleep 270
 done
 
-######## Copy ####### END
+######## Copy ####### END #### For encrypted version change gdrive:/ to crypt:/
 # Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
 
 # Script permissions
