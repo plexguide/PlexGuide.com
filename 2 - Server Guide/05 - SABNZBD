@@ -97,6 +97,7 @@ sudo systemctl restart sabnzbd.service
 #  - Action when encrypted Rar is downloaded: Abort
 #  - Action when unwanted extension is detected: Abort
 #  - Unwanted etensions: exe, com, bat, sh
+#  - Direct Unpack:  Check [ON]
 #  - Ignore any Folders inside archives:  Check the Box - [ON]
 #  - On failure, try alternative NZB:  Check the BOX [ON]
 #  - Ignore Samples:  Check the BOX [ON]
