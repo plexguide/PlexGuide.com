@@ -136,7 +136,7 @@ sleep 270
 done
 
 ######## Copy ####### END
-# Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
+# Press CTRL+X and ENTER 
 
 # Script permissions
 sudo chmod 755 /opt/rclone-move.sh
