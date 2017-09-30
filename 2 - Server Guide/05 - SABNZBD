@@ -62,6 +62,8 @@ sudo systemctl restart sabnzbd.service
 ### Wizard Mode - You can start filling or do later
 ### Configuration
 # [Click] Gear Icon (Upper Right) > [Click] Gear Icon (Upper Left)
+# SAnzbd Web Server Area
+#  - Web Interface: Glitter - Night (forces to get rid of old interface if you have it)
 # General Area
 #  - SABnzbd Username: (remember it)
 #  - SABnzbd Password: (remember it)
