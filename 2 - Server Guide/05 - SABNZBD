@@ -13,6 +13,7 @@ sudo mkdir /mnt/sab/downloads/incomplete
 sudo apt install sabnzbdplus
 sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt update
+sudo apt install sabnzbdplus
 ### Creating a service for SABNZBD
 sudo nano /etc/systemd/system/sabnzbd.service
 
