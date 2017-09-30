@@ -76,7 +76,7 @@ sudo systemctl status couch.service
 #    - Figure this out and will save you time.  Setup incorrectly, you'll download a whole bunch of crazyiness (optional)
 #   - Manage Tab:
 #    - Movie Folder: (If you cannot see, use internet explorer)
-#     - hit back and look for (couchscans)
+#     - /mnt/rclone-union/zilch/movies/
 #   - Full Library Refresh: 96 Hours
 #   - Cleanup After: Keep off if your movie source goes down alot.  Normally on.
 ################# CouchPotato ################# END
