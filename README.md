@@ -1,5 +1,7 @@
 # The Awesome Plex Server V3
 
+#### Thanks also DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
+
 Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
 Need the old link for the older setup? https://github.com/Admin9705/The-Awesome-Plex-Server/tree/master
