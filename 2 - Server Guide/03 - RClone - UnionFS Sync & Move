@@ -116,8 +116,6 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable unionfs.service
 sudo systemctl start unionfs.service
-sudo systemctl status unionfs.service
-# Press CTRL + C to exit the status message
 ################# UNIONFS ################# END
 
 ################# Move Service ################# START
