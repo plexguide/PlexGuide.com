@@ -53,13 +53,13 @@ sudo dpkg -i plex (Then [PRESS] the TAB key, will out the entire thing and then 
 ### Configuring TV Shows 
 # [Click] Add Library
 # [Click] TV Shows
-# [Type] Add Folders to Your Library: /media/tv    <<< You will never be able to select it; type it and hit ok
+# [Type] Add Folders to Your Library: /mnt/plexdrive4/zilch/tv     <<< You will never be able to select it; type it and hit ok
 # [Click] Ok
 
 ### Configuring Movies 
 # [Click] Add Library
 # [Click] Films
-# [Type] Add Folders to Your Library: /media/movies     <<< You will never be able to select it; type it and hit ok
+# [Type] Add Folders to Your Library: /mnt/plexdrive4/zilch/movies     <<< You will never be able to select it; type it and hit ok
 # [Click] Ok
 
 ### Configure Server Settings

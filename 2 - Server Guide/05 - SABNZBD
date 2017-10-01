@@ -13,6 +13,7 @@ sudo mkdir /mnt/sab/downloads/incomplete
 sudo apt install sabnzbdplus
 sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt update
+sudo apt install sabnzbdplus
 ### Creating a service for SABNZBD
 sudo nano /etc/systemd/system/sabnzbd.service
 
@@ -61,6 +62,8 @@ sudo systemctl restart sabnzbd.service
 ### Wizard Mode - You can start filling or do later
 ### Configuration
 # [Click] Gear Icon (Upper Right) > [Click] Gear Icon (Upper Left)
+# SAnzbd Web Server Area
+#  - Web Interface: Glitter - Night (forces to get rid of old interface if you have it)
 # General Area
 #  - SABnzbd Username: (remember it)
 #  - SABnzbd Password: (remember it)
@@ -94,6 +97,7 @@ sudo systemctl restart sabnzbd.service
 #  - Action when encrypted Rar is downloaded: Abort
 #  - Action when unwanted extension is detected: Abort
 #  - Unwanted etensions: exe, com, bat, sh
+#  - Direct Unpack:  Check [ON]
 #  - Ignore any Folders inside archives:  Check the Box - [ON]
 #  - On failure, try alternative NZB:  Check the BOX [ON]
 #  - Ignore Samples:  Check the BOX [ON]

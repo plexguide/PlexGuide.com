@@ -2,7 +2,7 @@
 ### RClone is utilized to move files automatically to your Google Drive
 
 ## create additonal folders
-sudo mkdir /mnt/rclone-union && sudo mkdir /mnt/rclone-move && sudo mkdir /mnt/rclone-move/tv && sudo mkdir /mnt/rclone-movies
+sudo mkdir /mnt/rclone-union && sudo mkdir /mnt/rclone-move && sudo mkdir /mnt/rclone-move/tv && sudo mkdir /mnt/rclone-move/movies
 
 ## permissions for future
 sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
@@ -109,6 +109,7 @@ sudo systemctl status rclone.service
 ### Note: For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
 sudo nano /etc/systemd/system/unionfs.service
 
+
 ##### START COPY ##### #### For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
 
 [Unit]
@@ -119,7 +120,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/rclone-move=RW:/mnt/plexdrive4=RO /mnt/rclone-union
+ExecStart=/usr/bin/unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/plexdrive4=RO /mnt/rclone-union
 TimeoutStopSec=20
 KillMode=process
 Restart=always
@@ -134,8 +135,6 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable unionfs.service
 sudo systemctl start unionfs.service
-sudo systemctl status unionfs.service
-# Press CTRL + C to exit the status message
 ################# UNIONFS ################# END
 
 ################# Move Service ################# START
@@ -156,7 +155,7 @@ sleep 270
 done
 
 ######## Copy ####### END #### For encrypted version change gdrive:/ to crypt:/
-# Press CTRL+X and ENTER; creating a CRONJOB as ROOT 
+# Press CTRL+X and ENTER 
 
 # Script permissions
 sudo chmod 755 /opt/rclone-move.sh
