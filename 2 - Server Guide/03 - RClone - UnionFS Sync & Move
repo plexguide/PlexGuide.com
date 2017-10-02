@@ -71,7 +71,7 @@ Group=root
 ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
-Restart=always
+RemainAfterExit=yes
  
 [Install]
 WantedBy=multi-user.target
