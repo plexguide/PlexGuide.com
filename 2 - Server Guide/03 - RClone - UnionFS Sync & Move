@@ -88,7 +88,7 @@ sudo systemctl status rclone.service
 ################# RClone ################# END
 
 ################# UNIONFS ################# START
-### Create UnionFS Service
+### Create UnionFS Service ### Thanks @Alasano for fixing the startup script
 sudo nano /etc/systemd/system/unionfs.service
  
 ##### START COPY #####
@@ -104,7 +104,7 @@ Group=root
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/rclone-move=RW:/mnt/plexdrive4=RO /mnt/rclone-union
 TimeoutStopSec=20
 KillMode=process
-Restart=always
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
@@ -117,6 +117,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable unionfs.service
 sudo systemctl start unionfs.service
+sudo systemctl status unionfs.service
 ################# UNIONFS ################# END
 
 ################# Move Service ################# START
