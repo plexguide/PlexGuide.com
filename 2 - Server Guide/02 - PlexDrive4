@@ -52,7 +52,7 @@ Type=simple
 ExecStart=/usr/bin/plexdrive4 --uid=1001 --gid=1001 --fuse-options=allow_other --refresh-interval=1m /mnt/plexdrive4
 TimeoutStopSec=20
 KillMode=process
-Restart=always
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
