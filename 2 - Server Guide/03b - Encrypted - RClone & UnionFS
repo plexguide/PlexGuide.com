@@ -48,6 +48,11 @@ filename_encryption = standard
 password = *** ENCRYPTED ***
 password2 = *** ENCRYPTED ***
 # Y < If asking all is ok?
+# N < For New remote
+# local < for the name
+# 10 < For a Local Drive
+# /mnt/rclone-move
+# Y < If asking all is ok?
 # Q < to quit
 
 # back to your user
@@ -69,7 +74,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --bwlimit 8650k --size-only
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/rclone --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -91,7 +96,7 @@ sudo systemctl status rclone.service
 ################# UNIONFS ################# START
 sudo nano /etc/systemd/system/unionfs.service
 
-##### START COPY ##### #### For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
+##### START COPY ##### 
 
 [Unit]
 Description=UnionFS Daemon
@@ -101,7 +106,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/plexdrive4=RO /mnt/rclone-union
+ExecStart=/usr/bin/unionfs -o allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -109,7 +114,7 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 
-##### END COPY ##### #### For encrypted version change :/mnt/plexdrive4=RO to :/mnt/rclone=RO
+##### END COPY #####
 # Press CTRL+X and then Yes to save
 
 ### Start and enable the service
@@ -122,21 +127,20 @@ sudo systemctl status unionfs.service
 ################# Move Service ################# START
 ### Create Script ### Inspired by aj1252 - rclone forum
 # Create the SCRIPT the CMD
-### Note: For encrypted version change gdrive:/ to crypt:/
 sudo nano /opt/rclone-move.sh
 
-######## Copy ####### START #### For encrypted version change gdrive:/ to crypt:/
+######## Copy ####### START 
 #!/bin/bash
 
 while true
 do
 # Purpose of sleep starting is so rclone has time to startup and kick in
 sleep 30
-rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
+rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move crypt:/
 sleep 270
 done
 
-######## Copy ####### END #### For encrypted version change gdrive:/ to crypt:/
+######## Copy ####### END 
 # Press CTRL+X and ENTER 
 
 # Script permissions
