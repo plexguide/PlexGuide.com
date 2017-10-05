@@ -25,15 +25,42 @@ sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 cd .. && sudo rm -r rclone*
-sudo mkdir /mnt/rclone
-sudo chmod 755 /mnt/rclone
-sudo chown root /mnt/rclone
+sudo mkdir /mnt/rclone /mnt/rclone-crypt
+sudo chmod 755 /mnt/rclone && sudo chmod 755 /mnt/rclone-crypt
+sudo chown root /mnt/rclone && sudo chown root /mnt/rclone-crypt
 
 # Configure RClone config as Root 
 sudo su
 rclone config
 
 ### Configuring RClone
+# N < For New remote 
+# gdrive < for the name
+# 8 < For Google Drive (double check the number select incase)
+# Enter Your Google ID
+# Enter Your Goole Secret
+# N < for headless machine #### NOTE: if your on a VM or the actual machine with an interface (GUI), select Y.  
+# Enter Your Verification Code
+#   Note: If you copy and paste by SELECTING and CLICK the RIGHT Mouse button, it will work; but then you will see it repeat
+#   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
+# N < Configure this as a team drive?
+# Y < If asking all is ok?
+### This encrypted mount will be used for the rclone-move.sh found later in these instructions
+# N < For New remote 
+# gcrypt < for the name
+# 5 < For Encrypt/Decrypt (double check the number select incase)
+# gdrive:/encrypt (encrypt being the rclone encrypted folder within your gdrive)
+# 2 < Encrypt standard
+# Y < type your own password (make up a secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use) 
+# Y < type your own salt password (make up a different secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use)
+# Should see something like this:-
+[gcrypt]
+remote = gdrive:/encrypt
+filename_encryption = standard
+password = *** ENCRYPTED ***
+password2 = *** ENCRYPTED ***
+# Y < If asking all is ok?
+### This encrypted mount will be for unionfs.service to avoid bans
 # N < For New remote 
 # crypt < for the name
 # 5 < For Encrypt/Decrypt (double check the number select incase)
@@ -61,7 +88,7 @@ exit && exit
 sudo nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other; then press CTRL+X and then save
 
-### Create RClone Service
+### Create RClone Service for unionfs.service
 sudo nano /etc/systemd/system/rclone.service
 
 ##### START COPY #####
@@ -92,6 +119,38 @@ sudo systemctl start rclone.service
 sudo systemctl status rclone.service
 # Press CTRL + C to exit the status message
 ################# RClone ################# END
+
+### Create encrypted RClone Service for rclone-move.sh
+sudo nano /etc/systemd/system/rclone-crypt.service
+
+##### START COPY #####
+
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/rclone-crypt --bwlimit 8650k --size-only
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+ 
+[Install]
+WantedBy=multi-user.target
+
+##### END COPY #####
+# Press CTRL+X and then Yes to save
+
+### Start and enable the service
+sudo systemctl daemon-reload
+sudo systemctl enable rclone-crypt.service
+sudo systemctl start rclone-crypt.service
+sudo systemctl status rclone-crypt.service
+# Press CTRL + C to exit the status message
+################# RClone Crypt ################# END
 
 ################# UNIONFS ################# START
 sudo nano /etc/systemd/system/unionfs.service
@@ -136,7 +195,7 @@ while true
 do
 # Purpose of sleep starting is so rclone has time to startup and kick in
 sleep 30
-rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move crypt:/
+rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
 sleep 270
 done
 
