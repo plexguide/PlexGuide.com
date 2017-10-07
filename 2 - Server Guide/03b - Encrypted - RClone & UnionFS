@@ -66,8 +66,8 @@ password2 = *** ENCRYPTED ***
 # 5 < For Encrypt/Decrypt (double check the number select incase)
 # /mnt/plexdrive4/encrypt (encrypt being the rclone encrypted folder within your gdrive)
 # 2 < Encrypt standard
-# Y < type your own password (make up a secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use) 
-# Y < type your own salt password (make up a different secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use)
+# Y < type your own password (use the same password as above for gcrypt) 
+# Y < type your own salt password (use the same SALT password as above for gcrypt)
 # Should see something like this:-
 [crypt]
 remote = /mnt/plexdrive4/encrypt
