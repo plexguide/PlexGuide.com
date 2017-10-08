@@ -11,6 +11,10 @@
 # PlexPy:    http://ipv4address/domain:8181
 # Muximux:   http://ipv4address/domain:8015
 # Emby:      http://ipv4address/domain:8096
+#
+# Whenever you need to update Emby just use the following without '#' :-
+# sudo docker exec -ti emby update
+#
 ################# Starting Notes ################# END
 
 ################# YML Writeup ################# Start
@@ -85,5 +89,9 @@ services:
 # 1st Time - Type: nano /opt/docker-compose.yml (then copy this entire file into it)
 #     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d
 # Future Edits:  cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml (then copy this entire file into it)
-#     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d    
+#     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d 
+#
+# Whenever you need to update Emby just use the following without '#' :-
+# sudo docker exec -ti emby update
+#
 ################# Final Notes ################# END
