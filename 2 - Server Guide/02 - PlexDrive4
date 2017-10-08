@@ -8,7 +8,7 @@ echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb
 sudo apt-get update
 sudo apt-get install -y mongodb-org
 
-# Enable Service
+# Enable Service (Copy and Paste All 4 Lines Below)
 sudo systemctl daemon-reload
 sudo systemctl enable mongod
 sudo systemctl start mongod
