@@ -15,21 +15,32 @@
 #  - (IF) VMware: Use bridge mode and control via your router or direct assignment
 # Utilizing command line.
 #  - If not installed, install SSH on your machine.
-#  - If accessing through a GUI, you open terminal or install SSH and access from another machine.
-#  - On Windows - Utilize a program called putty
-#   - Download:  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-#   - In the mainbox, type in your main IP address and then keep port as 22
-#   - On a MAC - Utilize a program called terminal 
-#   - Example Type: ssh username@youripaddress
-# Connect to your system.
-#  - Cannot access? 
+
+#### Install SSH ### Required For Remote Access #### START
+
+sudo apt-get install openssh-server 
+sudo service ssh status
+
+# Press CTRL + C to Exit
+
+#### Install SSH ### Required For Remote Access #### END
+
+### Using Windows - Utilize a program called putty
+# - Download:  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+# - In the mainbox, type in your main IP address and then keep port as 22
+
+### Using MAC/Linux - Utilize a built in program called Terminal
+# - Goto Applications or search for terminal
+# - Example Type: ssh username@youripaddress
+
+### Cannot access? 
 #  - Ensure that your IP Address is correct, including port number.
 #  - Firewall can be a choke point.
 #   - You should not have to configure anything out of the ordinary.
-################# Ubuntu Setup ################# START
+################# Ubuntu Setup ################# END
 
-### Follow bottom portion if you ARE ROOT and DO NOT HAVE a REGULAR USER ACCOUNT or NO SUDO ACCOUNT
-################# How To Make a New Sudo User with a username in home ################# START
+### Follow bottom portion ONLY if you ARE ROOT and DO NOT HAVE a SUDO User Account
+################# How To Make a New Sudo User ################# START
 # START as root, type the following below; if root already... ignore the step below:
 su root
 
@@ -52,4 +63,4 @@ sudo usermod -s /bin/bash YOUR_USERNAME
 
 ## Switch to your home folder below
 cd ~ 
-################# How To Make a New Sudo User with a username in home ################# END
+################# How To Make a New Sudo User ################# END
