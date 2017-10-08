@@ -4,8 +4,11 @@
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
 
-## create additonal folders
-sudo mkdir /mnt/rclone-union && sudo mkdir /mnt/rclone-move && sudo mkdir /mnt/rclone-move/tv && sudo mkdir /mnt/rclone-move/movies
+## create additonal folders (Copy & Paste All 4 Lines Below)
+sudo mkdir /mnt/rclone-union
+sudo mkdir /mnt/rclone-move
+sudo mkdir /mnt/rclone-move/tv
+sudo mkdir /mnt/rclone-move/movies
 
 ## permissions for future
 sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
