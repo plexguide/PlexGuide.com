@@ -9,6 +9,7 @@ sudo apt-get install nzbdrone
 sudo nano /etc/systemd/system/sonarr.service
 
 ####### COPY ###### START
+
 [Unit]
 Description=Sonarr Daemon
 After=multi-user.target
@@ -24,7 +25,9 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-####### COPY ###### START
+
+####### COPY ###### END
+
 # Press CTRL+X to exit and save
 
 # Start the Sonnar Service
