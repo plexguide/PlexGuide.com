@@ -17,7 +17,7 @@ sudo apt install sabnzbdplus
 ### Creating a service for SABNZBD
 sudo nano /etc/systemd/system/sabnzbd.service
 
-####### COPY ########### Start - Warning: Change the IPV4 address down below!!!!!
+####### COPY ########### Start - WARNING: Change the IPV4 address - 127.0.0.1 below!!!!!!!
 [Unit]
 Description=SABnzbd Usenet Client
 After=multi-user.target
@@ -26,7 +26,8 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server ipv4address/domain:8090 --browser 0 &
+# WARNING WARNING WARNING WARNING - Change 127.0.0.1 to your IP Address; if not... can only access only machine directly
+ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 127.0.0.1:8090 --browser 0 &
 ExecStop=/usr/bin/pkill sabnzbdplus
 Restart=always
 SyslogIdentifier=SABnzbd Usenet Client
