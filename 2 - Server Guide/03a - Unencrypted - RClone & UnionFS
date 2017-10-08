@@ -50,7 +50,7 @@ rclone config
 # Y < If asking all is ok?
 # N < For New remote
 # local < for the name
-# 10 < For a Local Drive
+# 11 < For a Local Drive
 # /mnt/rclone-move
 # Y < Is asking all is ok?
 # Q < to quit
