@@ -36,10 +36,10 @@ sudo chown root /mnt/rclone
 sudo su
 rclone config
 
-### Configuring RClone
+### Configuring RClone ### Version 1.38
 # N < For New remote 
 # gdrive < for the name
-# 8 < For Google Drive (double check the number select incase)
+# 9 < For Google Drive (double check the number select incase)
 # Enter Your Google ID
 # Enter Your Goole Secret
 # N < for headless machine #### NOTE: if your on a VM or the actual machine with an interface (GUI), select Y.  
