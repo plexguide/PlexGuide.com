@@ -29,12 +29,13 @@ WantedBy=multi-user.target
 ####### COPY ###### END
 
 # Press CTRL+X to exit and save
+# Start the Sonnar Service (Can Copy & Paste All 4 Lines Below)
 
-# Start the Sonnar Service
 sudo systemctl daemon-reload
 sudo systemctl enable sonarr.service
 sudo systemctl start sonarr.service
 sudo systemctl status sonarr.service
+
 # Press CTRL+C to exit status message
 # To test, goto your http://ipv4address:8989
 ################# SONNAR SERVICE ################# END
