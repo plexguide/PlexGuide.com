@@ -19,7 +19,7 @@ sudo systemctl status mongod
 ################# PlexDrive4 ################# START
 ### Required for Plex to prevent 24HR API Download Ban
 
-# Install PlexDrive (can copy entire block)
+# Install PlexDrive (Copy and Paste All Lines Below)
 cd /tmp
 sudo wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
 sudo mv plexdrive-linux-amd64 plexdrive4
@@ -60,7 +60,7 @@ WantedBy=multi-user.target
 ##### END COPY #####
 # Press CTRL+X and then Yes to save
 
-### Start and enable the service
+### Start and enable the service (Copy and Paste All 4 Lines Below)
 sudo systemctl daemon-reload
 sudo systemctl enable plexdrive4.service
 sudo systemctl start plexdrive4.service
@@ -70,6 +70,7 @@ sudo systemctl status plexdrive4.service
 
 ################# Tips ################# END
 # You should get a GREEN Light
-# I would do a reboot to make sure your /mnt/plexdrive4 works! If you didn't finish the scan, you may have issues
+# I would let it JUST finish before doing ANYTHING! The screen command allows it to finish incase you close terminal
+# I would do a reboot AFTER to make sure your /mnt/plexdrive4 works! If you didn't finish the scan, you may have issues
 # Tip:  What I learned is the speed is based on your HD speeds; an SSD is super fast; regular HD can take many hours :D
 ################# Tips ################# END
