@@ -10,6 +10,11 @@
 # Portainer: http://ipv4address/domain:9000
 # PlexPy:    http://ipv4address/domain:8181
 # Muximux:   http://ipv4address/domain:8015
+# Emby:      http://ipv4address/domain:8096
+#
+# Whenever you need to update Emby just use the following without '#' :-
+# sudo docker exec -ti emby update
+#
 ################# Starting Notes ################# END
 
 ################# YML Writeup ################# Start
@@ -44,8 +49,8 @@ services:
  muximux:
    image:  linuxserver/muximux
    container_name: muximux
-# If you want your ip or domain to load this directly, change the 8005 to 80 (80:80).
-# If you plan on creating a web-interface; leave as 8005; port 80 is reserved for your website
+# If you want your ip or domain to load this directly, change the 8015 to 80 (80:80).
+# If you plan on creating a web-interface; leave as 8015; port 80 is reserved for your website
    ports:
      - 8015:80
    volumes:
@@ -56,6 +61,26 @@ services:
      - PGID=1001
    restart:
      always
+
+ emby:
+        image: emby/embyserver
+        container_name: emby
+        # net: host
+        ports:
+            - 8096:8096
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /opt/appdata/embyserver:/config
+            - /mnt:/shows
+            - /mnt/rclone-union/:/media
+        environment:
+            - VIRTUAL_PORT=8096
+            - VIRTUAL_HOST=emby.htpc
+            - AUTO_UPDATES_ON=true
+            - PUID=0
+            - PGID=0
+        restart: always
+
 ################# YML Writeup ################# END
  
 ################# Final Notes ################# Start
@@ -64,5 +89,9 @@ services:
 # 1st Time - Type: nano /opt/docker-compose.yml (then copy this entire file into it)
 #     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d
 # Future Edits:  cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml (then copy this entire file into it)
-#     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d    
+#     Execute YML Script: cd /opt && sudo docker-compose -f docker-compose.yml up -d 
+#
+# Whenever you need to update Emby just use the following without '#' :-
+# sudo docker exec -ti emby update
+#
 ################# Final Notes ################# END
