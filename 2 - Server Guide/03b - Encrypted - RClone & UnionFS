@@ -4,8 +4,11 @@
 ################# RClone ################# START
 ### RClone is utilized to move files automatically to your Google Drive
 
-## create additonal folders
-sudo mkdir /mnt/rclone-union && sudo mkdir /mnt/rclone-move && sudo mkdir /mnt/rclone-move/tv && sudo mkdir /mnt/rclone-move/movies
+## create additonal folders (Copy & Paste All 4 Lines Below)
+sudo mkdir /mnt/rclone-union
+sudo mkdir /mnt/rclone-move
+sudo mkdir /mnt/rclone-move/tv
+sudo mkdir /mnt/rclone-move/movies
 
 ## permissions for future
 sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
@@ -33,10 +36,10 @@ sudo chown root /mnt/rclone && sudo chown root /mnt/rclone-crypt
 sudo su
 rclone config
 
-### Configuring RClone
+### Configuring RClone ### Version 1.38
 # N < For New remote 
 # gdrive < for the name
-# 8 < For Google Drive (double check the number select incase)
+# 9 < For Google Drive (double check the number select incase)
 # Enter Your Google ID
 # Enter Your Goole Secret
 # N < for headless machine #### NOTE: if your on a VM or the actual machine with an interface (GUI), select Y.  
@@ -48,7 +51,7 @@ rclone config
 ### This encrypted mount will be used for the rclone-move.sh found later in these instructions
 # N < For New remote 
 # gcrypt < for the name
-# 5 < For Encrypt/Decrypt (double check the number select incase)
+# 6 < For Encrypt/Decrypt (double check the number select incase)
 # gdrive:/encrypt (encrypt being the rclone encrypted folder within your gdrive)
 # 2 < Encrypt standard
 # Y < type your own password (make up a secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use) 
@@ -63,7 +66,7 @@ password2 = *** ENCRYPTED ***
 ### This encrypted mount will be for unionfs.service to avoid bans
 # N < For New remote 
 # crypt < for the name
-# 5 < For Encrypt/Decrypt (double check the number select incase)
+# 6 < For Encrypt/Decrypt (double check the number select incase)
 # /mnt/plexdrive4/encrypt (encrypt being the rclone encrypted folder within your gdrive)
 # 2 < Encrypt standard
 # Y < type your own password (use the same password as above for gcrypt) 
@@ -77,13 +80,13 @@ password2 = *** ENCRYPTED ***
 # Y < If asking all is ok?
 # N < For New remote
 # local < for the name
-# 10 < For a Local Drive
+# 11 < For a Local Drive
 # /mnt/rclone-move
 # Y < If asking all is ok?
 # Q < to quit
 
-# back to your user
-exit && exit
+# back to your username
+su [YOURUSERNAME]
 
 sudo nano /etc/fuse.conf
 # remove the (#) symbol before user_allow_other; then press CTRL+X and then save
@@ -153,6 +156,7 @@ sudo systemctl status rclone-crypt.service
 ################# RClone Crypt ################# END
 
 ################# UNIONFS ################# START
+### Create UnionFS Service ### Thanks @Alasano for fixing the startup script
 sudo nano /etc/systemd/system/unionfs.service
 
 ##### START COPY ##### 
@@ -172,6 +176,7 @@ RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
+
 
 ##### END COPY #####
 # Press CTRL+X and then Yes to save
@@ -195,7 +200,8 @@ while true
 do
 # Purpose of sleep starting is so rclone has time to startup and kick in
 sleep 30
-rclone move --bwlimit 10M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
+# Anything above 8M will result in a google ban if uploading above 8M for 24 hours
+rclone move --bwlimit 8M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
 sleep 270
 done
 
