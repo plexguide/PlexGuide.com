@@ -1,6 +1,10 @@
 ### Purpose & Reasoning
 # Allows you to run PLEX on Windows and enables PLEX to scan against a networked/mapped Linux Drive
-# You can run two plex servers; one on your Windows machine & Linux; upside is you have two! You can disable or not run linux one
+# You can run two plex servers; one on your Windows machine & Linux; upside is you have two! 
+# You can disable or not run linux one
+
+### VMWare ESXI?
+# If your running ESXI, your smart enough to read through this and adjust accordingly.  Will work
 
 ### Why this?
 # So if you run a linux emulator, you'll notice you'll never get your TRUE processing power
