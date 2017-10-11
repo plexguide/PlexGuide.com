@@ -28,7 +28,7 @@ sudo systemctl smbd status
 # Press CTRL + C to exit
 
 ### Goto Your Windows Machine - Windows 10 ###
-# Type in Search: This PC (Basically you need to view all of your Disk, Win 8.1 & Older; Goto Computer)
+# Type in Search: This PC (Basically you need to get to the computer view - seeing all disks, Win 8.1 & Older; Goto Computer)
 
 ### Method 1 ### Create a Mapped Drive (Letter Drive)
 # Click Computer Tab (Up Top)
