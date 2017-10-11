@@ -1,0 +1,50 @@
+### Purpose
+# This allows your linux vm's to autostart when your logged in.
+
+###### Basic Directions
+1. Create a folder at C: and call it vmstart (C:/vmstart)
+2. Windows 10 - Up top, click view and ensure [File Name Extensions] are checked
+3. Goto C:/vmstart and right click... new text file
+4. Open that text file and make the following two lines below (view: How mine is setup)
+
+Example:
+### Warning, goto the path below and make sure VM Workstation is installed there, if not, change it out to where you installed IT!!!!
+cd "C:\Program Files (x86)\VMware\VMware Workstation"
+### Warning, make sure your location of your VM file is correct; look at mine as a demo
+vmware -x "location-of-your-vm\name-of-your-vm.vmx"
+
+How mine is setup:
+cd "C:\Program Files (x86)\VMware\VMware Workstation"
+vmware -x "D:\vm-download\Ubuntu 64-bit.vmx"
+
+5. Save the text item
+6. Right click and rename and change the .txt to .bat
+
+### So now you create your FIRST PROGRAM! Now you have to make sure it starts when your machine starts
+##### Startup Directions
+
+1. Windows 10 - Type: Task Scheduler
+2. Up top, click [ACTION] and click [Create Task]
+3. Name: Type a service name such as vmware-plexdrive
+4. User: Leave as is and make sure you have admin priv - if not; select a USER that has ADMIN Privledges
+5. Click: Run whether user is logged on or Not
+6. Click: Run with highest privileges
+7. Bottom: Configure for Windows 10
+8. Click Tab [Triggers]
+9a. New: At log on 
+   Uncheck: Stop task if it runs...
+   Checked: Enabled
+9b. New: At startup
+   Uncheck: Stop task if it runs...
+   Checked: Enabled
+10. Click Tab [Actions]
+    Click [New]
+    Action Select: Start a program
+    Program/Script: Select where your .bat file is (the program you created)
+    Click [Ok]
+11. Click Tab [Settings]
+    Uncheck: Stop the task if it...
+12. Click [OK]
+13. Reboot Your System
+14. Wait about a minute, takes a hot minute for your VM to load.
+15. Bring up putty and type your IP and port 22 and you should get a prompt; if so... it works!
