@@ -7,11 +7,13 @@
 3. Goto C:/vmstart and right click... new text file
 4. Open that text file and make the following two lines below (view: How mine is setup)
 
-Example:
-### Warning, goto the path below and make sure VM Workstation is installed there, if not, change it out to where you installed IT!!!!
-cd "C:\Program Files (x86)\VMware\VMware Workstation"
+Warnings!!!!
+### Change of <PATH> and make sure VM Workstation is installed there, if not, change it out to where you installed IT!!!!
 ### Warning, make sure your location of your VM file is correct; look at mine as a demo
-vmware -x "location-of-your-vm\name-of-your-vm.vmx"
+
+Example:
+cd "<path-of-vmware-install>\VMware Workstation"
+vmware -x "<path-of-your-vm>\name-of-your-vm.vmx"
 
 How mine is setup:
 cd "C:\Program Files (x86)\VMware\VMware Workstation"
