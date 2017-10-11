@@ -9,3 +9,9 @@
 ### Requirements
 Windows & VM Workstation 
 Know how to create a linux emualator
+
+### What you need to do!
+# Run VM Workstation
+# Create a UBUNTU 16.04 emulator
+# Install Server Guide stuff from part 2 stuff.  You can ignore linux plex setup if you want
+# Ensure you assign a STATIC IP Address to your LINUX machine - You need for your networked share
