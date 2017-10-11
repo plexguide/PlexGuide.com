@@ -1,7 +1,5 @@
 ### SMB Share ##################
 ### Purpose
-# Want to see your plexdrive from Windows? Maybe want to just share so you can RUN PLEX on your windows machine & ..
-# .. scan against your linux emulator or linux pc on a network?
 # Can be configured for Linux to Linux also; guide will help you establish SMB Share
 
 ### Install SMBClient on CPU
