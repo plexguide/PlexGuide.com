@@ -165,6 +165,7 @@ Group=root
 ExecStart=/bin/bash /opt/rclone-move.sh
 TimeoutStopSec=20
 KillMode=process
+RemainAfterExit=yes
 Restart=always
 
 [Install]
