@@ -29,7 +29,7 @@ Group=root
 # WARNING WARNING WARNING WARNING - Change 127.0.0.1 to your IP Address; if not... can only access only machine directly
 ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 127.0.0.1:8090 --browser 0 &
 ExecStop=/usr/bin/pkill sabnzbdplus
-Restart=always
+RemainAfterExit=yes
 SyslogIdentifier=SABnzbd Usenet Client
 
 [Install]
