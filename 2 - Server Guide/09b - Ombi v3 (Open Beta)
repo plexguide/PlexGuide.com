@@ -35,7 +35,7 @@ WantedBy=multi-user.target
 
 # Press CTRL+X to exit and save
 
-# Start the Ombi v3 Service
+### Start the Ombi v3 Service
 
 sudo systemctl daemon-reload
 sudo systemctl enable ombi.service
