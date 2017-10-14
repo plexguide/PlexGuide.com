@@ -36,11 +36,25 @@ WantedBy=multi-user.target
 # Press CTRL+X to exit and save
 
 # Start the Ombi v3 Service
+
 sudo systemctl daemon-reload
 sudo systemctl enable ombi.service
 sudo systemctl start ombi.service
 sudo systemctl status ombi.service
+
 # Press CTRL+C to exit status message
 # To test, goto your http://ipv4address:5000 (Give it up-to 3 minutes)
 # To see status of it loading, type: sudo systemctl status ombi.service (or ombi3.service)
-################# OMBI SERVICE ################# EN
+################# OMBI SERVICE ################# END
+
+################# Update to Newest Ombi (If Ombi fails to update)
+sudo systemctl stop ombi.service
+sudo rm -r /opt/Ombi/
+sudo mkdir /opt/Ombi && cd /opt/Ombi
+sudo wget https://ci.appveyor.com/api/buildjobs/6nx945bn7d9nnirg/artifacts/linux.tar.gz
+sudo tar -xzf linux.tar.gz
+sudo chmod 755 Ombi
+sudo systemctl start ombi.service
+sudo systemctl status ombi.service
+
+# Press CTRL+C to exit status message
