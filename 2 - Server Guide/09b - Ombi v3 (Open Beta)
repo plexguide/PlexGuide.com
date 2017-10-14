@@ -47,7 +47,7 @@ sudo systemctl status ombi.service
 # To see status of it loading, type: sudo systemctl status ombi.service (or ombi3.service)
 ################# OMBI SERVICE ################# END
 
-###### DO NOT RUN YET, required to backup your previous configs (will update)
+###### DO NOT RUN YET, will WIPE ALL of OMBI, have to figure how to backup your configs first!!!
 ################# Update to Newest Ombi (If Ombi fails to update)
 sudo systemctl stop ombi.service
 sudo rm -r /opt/Ombi/
