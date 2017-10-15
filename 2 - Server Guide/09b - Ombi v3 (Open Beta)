@@ -48,11 +48,14 @@ sudo systemctl status ombi.service
 ################# OMBI SERVICE ################# END
 
 ################# Update to Newest Ombi (If Ombi fails to update)
+# Goto https://ci.appveyor.com/project/tidusjar/requestplex/branch/DotNetCore/artifacts
+# Right click the Linux.tar.gz (copy and paste - you need it for wget below)
+
 sudo cp /opt/Ombi/Ombi.db /tmp/
 sudo systemctl stop ombi.service
 sudo rm -r /opt/Ombi/
 sudo mkdir /opt/Ombi && cd /opt/Ombi
-sudo wget https://ci.appveyor.com/api/buildjobs/6nx945bn7d9nnirg/artifacts/linux.tar.gz
+sudo wget <copied link>
 sudo tar -xzf linux.tar.gz
 sudo rm - r /opt/Ombi/Ombi.db
 sudo cp /tmp/Ombi.db /opt/Ombi/Ombi.db
