@@ -58,7 +58,8 @@ sudo mkdir /opt/Ombi && cd /opt/Ombi
 sudo wget <copied link>
 sudo tar -xzf linux.tar.gz
 sudo rm - r /opt/Ombi/Ombi.db
-sudo cp /tmp/Ombi.db /opt/Ombi/Ombi.db
+cd /tmp
+sudo cp Ombi.db /opt/Ombi/Ombi.db
 sudo rm -r /tmp/Ombi.db
 sudo chmod 755 Ombi
 sudo systemctl start ombi.service
