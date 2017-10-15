@@ -11,13 +11,14 @@ Learn more about VPN’s: https://www.youtube.com/watch?v=K9bhbEm7JAk
 ### Question? VPN required for USENET?
 USENET does not require a VPN.  If you select port 443 or 563 as your transmission port, the information will be encrypted.  A VPN adds an extra layer of security, but can potentially slow down your connection speeds.
 
-USENET has been utilized for a long time; before the use of torrents.  It was very confusing, the software was very clunky, the speeds were severely capped along with bandwidth caps, and it required a-lot of manual work to get it going. Anyways, due to how complicated USENET was, many people chose to use services such as Napster, LimeWire, Kazza and now through the use of Torrents.
+USENET was utilized long before torrents.  It was very confusing, the software to download-repair-and reproduce a file was clunky, the speeds were capped, and required tons manual processing. As a result people chose to rely on the use of torrents due to simplicty and being completely free.
 
 With USENET, you can achieve over 1 GIG speeds with 0 sharing (unlike torrents) in downloading material.
 
 The programs utilized are the following:
 
 Sonarr - TV Shows
+
 Radarr - Movies (New and appears to have same common design of Sonarr, so learning curve is easier.  Small bugs, can crash)
 CouchPotato - Movies (existed longer than Radarr, but the complicated v3 interface is something left to be desired)
 SABNZBD or NZBGET:  I recommend SABNZBD.  With NZBGET, many of files got lost or the program would just stop or crash.  I tried it over the years, but it’s ok. See the debate of the two on reddit.   
@@ -34,7 +35,7 @@ Tip: If utilizing a REMOTE SERVER and you get a timeout, it’s because the News
 
 Next, SABNZBD will download the pieces of the file using the TREASURE MAP (NZB Indexer / NZB File) from the beginning and start downloading all of the files (like how utorrent works).  Once downloaded, SABNZBD will store the file to a particular location and then notify the management program (Sonarr,Radarr,CouchPotato) that the file is now downloaded.
 
-he management program (Sonarr/Radarr/CouchPotato) takes the completed file, renames it, and moves it to the location of your choice.  It’s great in that you do not have to move the files yourself (and it prevents garbage files from being uploaded).  When you install rclone,the management programs will automatically place the files in rclone’s upload path.  Basically, your downloaded files are pushed to the cloud automatically.
+The management program (Sonarr/Radarr/CouchPotato) takes the completed file, renames it, and moves it to your selected location of choice.  When installing RClone, the management programs will automatically place the files in rclone’s upload path.  Basically, your downloaded files are pushed to the cloud automatically.
 
 # Utilizing Torrents
 
