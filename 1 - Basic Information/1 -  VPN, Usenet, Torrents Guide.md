@@ -1,21 +1,21 @@
 Transmission Basics (VPN, Usenet, Torrents)
 
-Intro:  This guide is written for the use of newsgroups only.  You can add torrents, but those solutions must be your own till I catch up to it (which I would highly advise against).
+Intro:  This guide is written for the use of newsgroups only.  You can add torrents, but those solutions will require your own modifications (shouldn't be too hard)
 
-VPN:  A VPN is a virtual private network that is typically encrypted and utilized either to change the location of a service being provided, to hide/and or conceal information, and/or to prevent the interception of information.  From the TRIAD, it provides confidentiality to a limited extent (depends on your provider)
+VPN:  A VPN is a virtual private network that is typically encrypted and utilized either to change the location of a service being provided, to hide/and or conceal information, and/or to prevent the interception of information.  From the CIA TRIAD perspective, VPNs provide confidentiality to a limited extent (depends on your provider).  Avoid free ones; any VPN provider has the ability to read all of your information!
 
 Learn more about VPN’s: https://www.youtube.com/watch?v=K9bhbEm7JAk
 
 # Utilizing USENET
 
 ### Question? VPN required for USENET?
-USENET does not require a VPN.  Typically if you select port 443 or 563 as your transmission ports, you information is already encrypted.  A VPN does add an extra layer of security, but it can slow down your connection speeds.
+USENET does not require a VPN.  If you select port 443 or 563 as your transmission port, the information will be encrypted.  A VPN adds an extra layer of security, but can potentially slow down your connection speeds.
 
-USENET has been utilizing since a long time ago back in the day.  It was very confusing, the software was very clunky, the speeds severely capped along with bandwidth usage, and it required a-lot of manual work to get it going.  Some of you reading this were maybe pros back in the day 2001-ish; even prior to that.  Anyways, due to how complicated USENET was, many people chose to use services such as Napster, LimeWire, Kazza and then Torrents as end-state.
+USENET has been utilized for a long time; before the use of torrents.  It was very confusing, the software was very clunky, the speeds were severely capped along with bandwidth caps, and it required a-lot of manual work to get it going. Anyways, due to how complicated USENET was, many people chose to use services such as Napster, LimeWire, Kazza and now through the use of Torrents.
 
-With USENET, you can achieve over 1 GIG speeds with 0 sharing (unlike torrents)
+With USENET, you can achieve over 1 GIG speeds with 0 sharing (unlike torrents) in downloading material.
 
-The programs you will use are for the following:
+The programs utilized are the following:
 
 Sonarr - TV Shows
 Radarr - Movies (New and appears to have same common design of Sonarr, so learning curve is easier.  Small bugs, can crash)
