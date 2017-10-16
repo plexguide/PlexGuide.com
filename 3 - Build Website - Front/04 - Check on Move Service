@@ -1,0 +1,23 @@
+### Will create a service on this later; one script is executed - goto http://ipaddress.com/move.txt or http://domain-name/move.txt
+
+
+cd /var/www/html
+sudo nano move.sh
+
+######## Copy ####### START
+#!/bin/bash
+
+while true
+do
+#
+sudo systemctl status move > move.txt
+sleep 5
+done
+
+######## Copy ####### END
+
+# Press CTRL + X to save
+
+sudo screen bash move.sh
+
+# Now goto http://ipaddress-or-domain/move.txt - Refresh browser every 5 seconds and you'll see the countdown
