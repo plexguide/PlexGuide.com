@@ -24,6 +24,7 @@ Group=root
 ExecStart=/opt/couchpotato/CouchPotatoServer/CouchPotato.py
 TimeoutStopSec=20
 KillMode=process
+RemainAfterExit=yes
 Restart=always
 
 [Install]
