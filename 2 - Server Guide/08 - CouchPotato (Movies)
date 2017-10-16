@@ -60,7 +60,7 @@ sudo systemctl status couch.service
 #  - Rename Movies: On
 #   - Cleanup: Check the BOX [ON]
 #   - To: /mnt/rclone-union/zilch/movies/                  (note: this may take awhile to load up)
-#   - From: /mnt/sab/complete/movies/           (note: blank? it's because you need to wait for 1st load up to finish)
+#   - From: /mnt/sab/complete/movies/                      (note: blank? it's because you need to wait for 1st load up to finish)
 #   - Ready to Start: Press the Button at the very bottom
 # Additonal Configuration and Information
 #   - Goto Settings
