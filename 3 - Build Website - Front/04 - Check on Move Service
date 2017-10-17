@@ -1,5 +1,6 @@
-### Will create a service on this later; one script is executed - goto http://ipaddress.com/move.txt or http://domain-name/move.txt
-
+### Will create a service on this later; one script is executed
+### Goto http://ipaddress.com/move.txt or http://domain-name/move.txt afterwards
+### This requires the apache install from prior
 
 cd /var/www/html
 sudo nano move.sh
