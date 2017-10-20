@@ -44,3 +44,66 @@ The management program (Sonarr/Radarr/CouchPotato) takes the completed file, ren
 Basic Info:  Torrents are the easiest route to go, but are complicated through the use of automations.  Torrents are not always around, your information is exposed, and it carries a-lot of risk.  Most people select torrents because they are well known, easy to use, and technically free.  What a-lot of people do not realize is that your ip-address is fully displayed for the world to see.  So if you're using torrents, figure out to adapt the programs (not my area), and use a VPN when possible.  If using a VPN, I would use: PIA (Private Internet Access).  PIA is cheap, do not hassle you about multiple collections, take paypal, and I’ve had no problem over the years and being overseas.  Just remember that with any VPN, they can snoop on you.  The free VPN’s, be most wary of.
 
 Learn More About Torrents: https://www.youtube.com/watch?v=OFswNCU5CKA
+
+I would recommend the following as Plex Servers (All from Personal Experience)
+
+Dedicated Servers:
+PROS: More horsepower, more diskspace, better control, better bandwidth
+CONS: Costs more
+
+1. http://wholesaleinternet.com
+  * Server Dual Xeon 2670 (16core/32thread)
+  * RAM 32GB - 96GB
+  * Solid State Drives
+  * Costs: $69-$99
+  * 100TB up and down dedicated bandwidth
+  * PROS:
+    - Bandwidth:  Reach 150 MB (1.5gpbs speeds)
+    - It's dual core server for under $100
+    - Easy to use
+    - Takes Paypal
+    - NOT BANNED by indexers or anybody else
+    - (Great for US Customers) You pay in dollars
+  * CONS:
+    - Slightly less options
+    - DO NOT PICK CUSTOM servers!!! If you do, you'll have to put in tickets to hard reboot
+2. Online.net
+  * Xeons Processors
+  * RAM 32+
+  * Solid State & HD Drives
+  * Costs: Nutty costs for dual core, single core Xeons around $29-99; 8-15 for ATOMS (do not recommend)
+  * Bandwidth: Unlimited, reached 90 MB speeds (.9gbps)
+  * PROS:
+    - Sales: Super cheap on sales
+    - Interface: Very good with lots of options
+    - Bandwidth: Top notch
+    - NOT BANNED by indexers or anybody else
+  * CONS:
+    - If you do not cancel by the 20th of the month, they bill you next month
+    - Requires identity verification
+    - Only takes Credit Cards
+    - (Bad for US Customers) EURO GOES up, so does your costs
+3. Hetzner.de
+  * Xeon, Desktop, and AMD Processors
+  * RAM - All types
+  * Solid State & HD Drives
+  * Costs: $20+
+  * 30TB outgoing bandwidth, unlimited incoming
+  * PROS
+    - Bandwidth unlimited incoming is great; to balance against the 30TB outgoing
+    - Takes Paypal
+    - Can use auctioned servers or custom
+    - Customer service is very fast
+    - Can setup servers and not pay for 14 days and cancel, great for newbs
+  * CONS
+    - Interface can be semi-confusing (worst if all brand new to everything)
+    - Half download companies ban HETZNER due to abuse such as Giganews and Supernews; several others
+    - Bandwidth good, but never reach the highest speeds; still good
+    - Customer server packages get pricy
+
+VPS Servers:
+PROS: Cheaper
+CONS: Less horsepower, less diskspace, semi-ok control, semi-ok bandwidth
+
+I have not used one because of plex server processing requirements, but http://online.net and http://hetzner.de offer VPS
+
