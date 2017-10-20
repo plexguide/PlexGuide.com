@@ -45,9 +45,11 @@ Basic Info:  Torrents are the easiest route to go, but are complicated through t
 
 Learn More About Torrents: https://www.youtube.com/watch?v=OFswNCU5CKA
 
-I would recommend the following as Plex Servers (All from Personal Experience)
+# Recommend Plex Servers (Go Dedicated & Avoid VPS)
 
-Dedicated Servers:
+I would recommend the following based on personal experience
+
+#### Dedicated Servers
 PROS: More horsepower, more diskspace, better control, better bandwidth
 CONS: Costs more
 
@@ -101,7 +103,7 @@ CONS: Costs more
     - Bandwidth good, but never reach the highest speeds; still good
     - Customer server packages get pricy
 
-VPS Servers:
+#### VPS Servers
 PROS: Cheaper
 CONS: Less horsepower, less diskspace, semi-ok control, semi-ok bandwidth
 
