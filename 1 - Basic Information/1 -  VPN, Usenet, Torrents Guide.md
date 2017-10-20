@@ -1,8 +1,10 @@
-Transmission Basics (VPN, Usenet, Torrents)
+# Transmission Basics (VPN, Usenet, Torrents)
 
-Intro:  This guide is written for the use of newsgroups only.  You can add torrents, but those solutions will require your own modifications (shouldn't be too hard)
+#### Intro
+This guide is written for the use of newsgroups only.  You can add torrents, but those solutions will require your own modifications (shouldn't be too hard)
 
-VPN:  A VPN is a virtual private network that is typically encrypted and utilized either to change the location of a service being provided, to hide/and or conceal information, and/or to prevent the interception of information.  From the CIA TRIAD perspective, VPNs provide confidentiality to a limited extent (depends on your provider).  Avoid free ones; any VPN provider has the ability to read all of your information!
+#### VPN
+A VPN is a virtual private network that is typically encrypted and utilized either to change the location of a service being provided, to hide/and or conceal information, and/or to prevent the interception of information.  From the CIA TRIAD perspective, VPNs provide confidentiality to a limited extent (depends on your provider).  Avoid free ones; any VPN provider has the ability to read all of your information!
 
 Learn more about VPN’s: https://www.youtube.com/watch?v=K9bhbEm7JAk
 
