@@ -2,11 +2,10 @@
 ### Building Your Folders (Copy & Paste the following 7 Lines Below)
 sudo mkdir /mnt/sab
 sudo mkdir /mnt/sab/nzb
-sudo mkdir /mnt/sab/downloads
-sudo mkdir /mnt/sab/downloads/complete
-sudo mkdir /mnt/sab/downloads/complete/tv
-sudo mkdir /mnt/sab/downloads/complete/movies
-sudo mkdir /mnt/sab/downloads/incomplete
+sudo mkdir /mnt/sab/complete
+sudo mkdir /mnt/sab/complete/tv
+sudo mkdir /mnt/sab/complete/movies
+sudo mkdir /mnt/sab/incomplete
 
 ### Installing SABNZBD Software (Recommended)
 # Warning, add each line on-by-one : Mass copy will result in service errors
@@ -79,9 +78,9 @@ sudo systemctl restart sabnzbd.service
 #  - External Internet Access: Full Web Interface - Only External Access...
 #  - [Click] Save changes and click the folder icon at the top
 # Folder Area
-#  - Temporary Download Folder: /mnt/sab/downloads/incomplete
+#  - Temporary Download Folder: /mnt/sab/incomplete
 #  - Minimum Free Space: 100GB (whatever is best for you)
-#  - Completed Download Folder: /mnt/sab/downloads/complete
+#  - Completed Download Folder: /mnt/sab/complete
 #  - Permissions for completed downloads: 777
 #  - .nzb Backup Folder: /mnt/sab/nzb
 #  - [Click] Save changes and click the double arrow icons at the top
