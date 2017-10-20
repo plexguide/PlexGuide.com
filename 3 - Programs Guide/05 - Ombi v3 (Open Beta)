@@ -3,10 +3,13 @@
 # Please donate to Jamie - https://www.paypal.me/PlexRequestsNet
 # https://github.com/tidusjar/Ombi
 
+# Goto https://ci.appveyor.com/project/tidusjar/requestplex/branch/DotNetCore/artifacts
+# Right click the Linux.tar.gz (copy and paste - you need it for wget below)
+
 ### Create Directory, downloading Ombi and Unzipping to Proper Location
 sudo apt-get install libunwind8
 sudo mkdir /opt/Ombi && cd /opt/Ombi
-sudo wget https://ci.appveyor.com/api/buildjobs/6nx945bn7d9nnirg/artifacts/linux.tar.gz
+sudo wget <going to link from above>
 sudo tar -xzf linux.tar.gz
 sudo chmod 755 Ombi
 
