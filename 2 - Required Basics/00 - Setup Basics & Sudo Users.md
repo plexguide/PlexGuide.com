@@ -26,15 +26,16 @@ sudo service ssh status
 - Download:  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 - In the mainbox, type in your main IP address and then keep port as 22
 
-## Using MAC/Linux - 
+## Using MAC/Linux
 - Utilize a built in program called Terminal
 - Goto Applications or search for terminal
-  - Example type: ssh username@youripaddress
+  - Example type: ssh username@youripaddress-or-domain
 
 ## Troubleshooting Tips for Access
 - Ensure that your IP Address is correct, including port number.
 - Firewall can be a choke point.
 - You should not have to configure anything out of the ordinary.
+- Your network setup can be a problem.
 
 ## Create a SUDO User
 - Only Required if you DO NOT have a SUDO USER Acccount
