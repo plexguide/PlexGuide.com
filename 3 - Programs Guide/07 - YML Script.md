@@ -15,7 +15,8 @@ cd /opt && sudo docker-compose -f docker-compose.yml up -d
 cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml
 ```
 
-## YML Writeup (Copy this below - The spacing below in this script is important / it will fail) 
+## YML Writeup 
+Copy this below - The spacing below in this script is important / it will fail if you add or take away spaces
 ```sh
 ---
 version: '2'
