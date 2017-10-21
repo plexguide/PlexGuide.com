@@ -1,11 +1,6 @@
 # YML Script
 The location of this YML file: /opt/
 
-
-
-
-
-
 ## 1st Time Instructions
 - Establishing location of script and creating file for first time.  Copy this below into the script!
 
@@ -15,13 +10,9 @@ cd /opt && sudo docker-compose -f docker-compose.yml up -d
 
 ## Future Instructions
 - Do this ONLY if you make changes and rerun this script below again. It wipes the old script and allows you to paste again.  Did it to speed up things for you.
+
+```sh
 cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml
-```sh
-
-```
-
-```sh
-cd /opt && sudo docker-compose -f docker-compose.yml up -d
 ```
 
 ## YML Writeup (Copy this below - The spacing below in this script is important / it will fail) 
