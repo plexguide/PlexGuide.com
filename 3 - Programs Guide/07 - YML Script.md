@@ -4,9 +4,7 @@ The location of this YML file: /opt/
 
 
 
-## To Update Emby (Futurewise)
-- Whenever you need to update Emby just use the following without '#' :-
-sudo docker exec -ti emby update
+
 
 ## 1st Time Instructions
 - Establishing location of script and creating file for first time.  Copy this below into the script!
@@ -98,3 +96,7 @@ services:
  - PlexPy:    http://ipv4address/domain:8181
  - Muximux:   http://ipv4address/domain:8015
  - Emby:      http://ipv4address/domain:8096
+
+## To Update Emby (Futurewise)
+- Whenever you need to update Emby just use the following without '#' :-
+sudo docker exec -ti emby update
