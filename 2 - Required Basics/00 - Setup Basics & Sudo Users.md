@@ -1,5 +1,5 @@
 # Building the Foundational Layout
-Go to Google Drive and create root folder called zilch.  I called it zilch in order for it to be the LAST FOLDER when accessing Google Drive.  If you do anything other than ZILCH, it may cause some headaches.  You'll will have to remember to rename everything.
+Go to Google Drive and create root folder called zilch.  I called it ZILCH in order for it to be the LAST FOLDER when accessing Google Drive.  If you do anything other than ZILCH, it may cause some headaches.  You'll will have to remember to rename everything.
 Create two subfolders: movies & tv
 The entire guide depends on this setup
 - googledrive:zilch/movies
