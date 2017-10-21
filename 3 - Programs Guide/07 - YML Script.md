@@ -1,13 +1,7 @@
 # YML Script
 The location of this YML file: /opt/
 
-1st Time - Type: sudo nano /opt/docker-compose.yml (then copy this entire file into it)
-     Execute YML Script: 
- Future Edits:   (then copy this entire file into it)
-     Execute YML Script:    
 
-
-# The spacing below in this script is important / it will fail
 
 
 ## To Update Emby (Futurewise)
@@ -32,7 +26,7 @@ cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml
 cd /opt && sudo docker-compose -f docker-compose.yml up -d
 ```
 
-## YML Writeup (Copy this below)
+## YML Writeup (Copy this below - The spacing below in this script is important / it will fail) 
 ```sh
 ---
 version: '2'
