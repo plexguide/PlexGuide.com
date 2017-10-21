@@ -1,19 +1,28 @@
-### Version Maintained by Deiteq
-### Difference:  This version encrypts your data so it's private only to you.  Good for security!
-### Warning:     Only choose EITHER 03A or 03B
-################# RClone ################# START
-### RClone is utilized to move files automatically to your Google Drive
+# Encrypted - RClone, UnionFS & Move
+- Maintained By
+  - Deiteq
+- WARNING
+  - Chose Either 03A or 03B
+- RClone
+  - Mounts your Google Drive (not used as primary due to API Bans)
+- UnionFS
+  - Moves multiple drives
+- Move
+  - Made to sync files from your local drive to your google drive
 
-## create additonal folders (Copy & Paste All 4 Lines Below)
+## Setting Up & Installing RClone
+
+```sh
+### Creating Folders
 sudo mkdir /mnt/rclone-union
 sudo mkdir /mnt/rclone-move
 sudo mkdir /mnt/rclone-move/tv
 sudo mkdir /mnt/rclone-move/movies
 
-## permissions for future
+### Chaning Permissions
 sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
 
-## To install fuse
+## To Install Fuse
 sudo apt-get install unionfs-fuse
 
 # Installing RClone (Note: You can copy and paste the entire block below)
