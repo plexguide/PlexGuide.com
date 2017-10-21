@@ -79,7 +79,7 @@ sudo systemctl enable plexdrive4.service
 sudo systemctl start plexdrive4.service
 sudo systemctl status plexdrive4.service
 ```
-# Press CTRL + C to exit the status message
+- Press CTRL + C to exit the status message
 
 ## Final Tips
 - You should get a GREEN Light on the service
