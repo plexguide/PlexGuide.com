@@ -168,12 +168,18 @@ sudo systemctl status rclone-crypt.service
 # Press CTRL + C to exit the status message
 ################# RClone Crypt ################# END
 
-################# UNIONFS ################# START
-### Create UnionFS Service ### Thanks @Alasano for fixing the startup script
+## Establishing unionfs.service
+
+- Merges your local drive and plexdrive to create a secondary drive
+- Required for Sonarr & Radarr
+
+```sh
 sudo nano /etc/systemd/system/unionfs.service
+```
 
-##### START COPY ##### 
+- Copy and paste the following below for the unionfs.service
 
+```sh
 [Unit]
 Description=UnionFS Daemon
 After=multi-user.target
@@ -189,24 +195,32 @@ RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
+```
 
+- Press CTRL+X and then Yes to save
 
-##### END COPY #####
-# Press CTRL+X and then Yes to save
-
-### Start and enable the service
+### Start and enable unionfs.service
+```sh
 sudo systemctl daemon-reload
 sudo systemctl enable unionfs.service
 sudo systemctl start unionfs.service
 sudo systemctl status unionfs.service
-################# UNIONFS ################# END
+```
 
-################# Move Service ################# START
-### Create Script ### Inspired by aj1252 - rclone forum
-# Create the SCRIPT the CMD
+## Establishing the move.service
+
+- This results in your files being upload from your local drive to google drive
+- Do not increase the bwlimit past 10M. 8M is a safe number to prevent a Google Upload Drive API Ban.
+
+### Create a Script
+
+```sh
 sudo nano /opt/rclone-move.sh
+```
 
-######## Copy ####### START 
+- Copy and paste the following into the script
+
+```sh
 #!/bin/bash
 
 while true
@@ -214,20 +228,30 @@ do
 # Purpose of sleep starting is so rclone has time to startup and kick in
 sleep 30
 # Anything above 8M will result in a google ban if uploading above 8M for 24 hours
-rclone move --bwlimit 8M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
+rclone move --bwlimit 8M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
 sleep 270
 done
+```
 
-######## Copy ####### END 
-# Press CTRL+X and ENTER 
+- Press CTRL+X and ENTER 
 
-# Script permissions
+### Script permissions
+
+- Allows the script to execute when called upon by the move.serivce
+
+```sh
 sudo chmod 755 /opt/rclone-move.sh
+```
 
-### Create UnionFS Service
+## Create move.service
+- Helps move your files from your local drive to your Google Drive
+
+```sh
 sudo nano /etc/systemd/system/move.service
+```
+- Copy and paste the following into the move.service
 
-##### START COPY #####
+```sh
 
 [Unit]
 Description=Move Service Daemon
@@ -240,18 +264,22 @@ Group=root
 ExecStart=/bin/bash /opt/rclone-move.sh
 TimeoutStopSec=20
 KillMode=process
+RemainAfterExit=yes
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+```
 
-##### END COPY #####
-# Press CTRL+X and then Yes to save
+- Press CTRL+X and then Yes to save
 
-### Start and enable the service
+### Start and enable the move.service
+
+```sh
 sudo systemctl daemon-reload
 sudo systemctl enable move.service
 sudo systemctl start move.service
 sudo systemctl status move.service
-# Press CTRL + C to exit the status message
-################# RClone Move Service ################# END
+```
+
+- Press CTRL + C to exit the status message
