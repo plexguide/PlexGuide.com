@@ -23,7 +23,8 @@ sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
 ## To Install Fuse
 sudo apt-get install unionfs-fuse
 
-# Installing RClone (Note: You can copy and paste the entire block below)
+## Installing RClone (Can Copy Entire and Execute Entire Mini Block Below)
+
 cd /tmp
 sudo curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 sudo unzip rclone-current-linux-amd64.zip
@@ -35,13 +36,17 @@ sudo mkdir -p /usr/local/share/man/man1
 sudo cp rclone.1 /usr/local/share/man/man1/
 sudo mandb
 cd .. && sudo rm -r rclone*
-sudo mkdir /mnt/rclone /mnt/rclone-crypt
-sudo chmod 755 /mnt/rclone && sudo chmod 755 /mnt/rclone-crypt
-sudo chown root /mnt/rclone && sudo chown root /mnt/rclone-crypt
+sudo mkdir /mnt/rclone
+sudo chmod 755 /mnt/rclone
+sudo chown root /mnt/rclone
+```
 
-# Configure RClone config as Root 
+Configure RClone config as Root 
+
+```sh
 sudo su
 rclone config
+```
 
 ### Configuring RClone ### Version 1.38
 # N < For New remote 
