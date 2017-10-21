@@ -36,4 +36,4 @@ sudo chown root /opt/freeram.sh
 exit
 ```
 
-Reboot! The script will kick in every 30 minutes
+- Reboot! The script will kick in every 30 minutes
