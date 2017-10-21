@@ -79,7 +79,7 @@ sudo nano /etc/fuse.conf
 ```
 - remove the (#) symbol before user_allow_other; then press CTRL+X and then save
 
-### Create RClone Service
+### Create rclone.service
 
 ```sh
 sudo nano /etc/systemd/system/rclone.service
@@ -107,7 +107,7 @@ WantedBy=multi-user.target
 
 - Press CTRL+X and then Yes to save
 
-### Start and enable the service
+### Start and enable the rclone.service
 
 ```sh
 sudo systemctl daemon-reload
@@ -119,6 +119,9 @@ sudo systemctl status rclone.service
 - Press CTRL + C to exit the status message
 
 ## Establishing UnionFS.service
+
+- Merges your local drive and plexdrive to create a secondary drive
+- Required for Sonarr & Radarr
 
 ```sh
 sudo nano /etc/systemd/system/unionfs.service
@@ -146,8 +149,7 @@ WantedBy=multi-user.target
 
 - Press CTRL+X and then Yes to save
 
-### Start and enable the service
-
+### Start and enable unionfs.service
 ```sh
 sudo systemctl daemon-reload
 sudo systemctl enable unionfs.service
@@ -155,7 +157,7 @@ sudo systemctl start unionfs.service
 sudo systemctl status unionfs.service
 ```
 
-## Establishg the Move Service
+## Establishing the move.service
 
 - This results in your files being upload from your local drive to google drive
 - Do not increase the bwlimit past 10M. 8M is a safe number to prevent a Google Upload Drive API Ban.
@@ -191,14 +193,13 @@ done
 sudo chmod 755 /opt/rclone-move.sh
 ```
 
-## Create UnionFS Service
-- Allows to merge your plexdrive and local drive
-- Required for Sonnar and Radarr
+## Create move.service
+- Helps move your files from your local drive to your Google Drive
 
 ```sh
 sudo nano /etc/systemd/system/move.service
 ```
-- Copy and paste the following into the unionfs.service
+- Copy and paste the following into the move.service
 
 ```sh
 
@@ -222,7 +223,7 @@ WantedBy=multi-user.target
 
 - Press CTRL+X and then Yes to save
 
-### Start and enable the unionfs.service
+### Start and enable the move.service
 
 ```sh
 sudo systemctl daemon-reload
