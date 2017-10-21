@@ -9,7 +9,7 @@ Provide some quick info regarding docker
 - Create mass programs with mass installs from the execution of a YML file
 - Does not offer a GUI, but Portainer does
 
-## Installing Docker
+## Installing Docker & Compose
 
 ```sh
 curl -sSL https://get.docker.com | sh
