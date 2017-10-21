@@ -90,4 +90,7 @@ services:
 
 ## To Update Emby (Futurewise)
 - Whenever you need to update Emby just use the following without '#' :-
+
+```sh
 sudo docker exec -ti emby update
+```
