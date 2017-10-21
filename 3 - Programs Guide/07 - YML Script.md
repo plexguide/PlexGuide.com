@@ -1,5 +1,5 @@
 # YML Script
-The location of this YML file: /opt/
+Note: The location of where you will set the YML file is at: /opt/
 
 ## 1st Time Instructions
 - Establishing location of script and creating file for first time.  Copy this below into the script!
