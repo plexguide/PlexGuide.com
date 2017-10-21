@@ -1,9 +1,14 @@
 # Unencrypted - RClone, UnionFS & Move
 WARNING: Chose Either 03A or 03B
 
-- RClone:  Mounts your Google Drive (not used as primary due to API Bans)
-- UnionFS: Moves multiple drives
-- Move:    Made to sync files from your local drive to your google drive
+- RClone
+ - Mounts your Google Drive (not used as primary due to API Bans)
+
+- UnionFS
+  - Moves multiple drives
+
+- Move
+  - Made to sync files from your local drive to your google drive
 
 ## Setting Up & Installing RClone
 
