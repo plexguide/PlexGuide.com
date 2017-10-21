@@ -118,7 +118,7 @@ sudo systemctl status rclone.service
 
 - Press CTRL + C to exit the status message
 
-## Establishing UnionFS.service
+## Establishing unionfs.service
 
 - Merges your local drive and plexdrive to create a secondary drive
 - Required for Sonarr & Radarr
