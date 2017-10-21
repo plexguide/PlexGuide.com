@@ -1,8 +1,7 @@
 # Encrypted - RClone, UnionFS & Move
-- Maintained By
-  - Deiteq
-- WARNING
-  - Chose Either 03A or 03B
+Maintained By - Deiteq
+WARNING - Chose Either 03A or 03B
+
 - RClone
   - Mounts your Google Drive (not used as primary due to API Bans)
 - UnionFS
