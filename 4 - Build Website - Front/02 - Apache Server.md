@@ -31,13 +31,15 @@ sudo apt-get install mysql-server
 sudo mysql_secure_installation
 ```
 
-## Install PHP
-
+## PHP
+Installing PHP
 ```sh
 sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
+```
 
-# If a user requests a directory from the server, Apache will first look for a file called index.html.
-# We want to prefer PHP files (for wordpress), so we'll make Apache look for an index.php file first.
+If a user requests a directory from the server, Apache will first look for a file called index.html. We want to prefer PHP files (for wordpress), so we'll make Apache look for an index.php file first.
+
+```sh
 sudo nano /etc/apache2/mods-enabled/dir.conf
 ```
 
