@@ -90,8 +90,9 @@ curl -s https://api.wordpress.org/secret-key/1.1/salt/
 # Take the output and copy into a wordpad and then type
 sudo nano /var/www/html/wp-config.php
 
-# Scroll down several lines until you see tons of define lines, delete the default crap and paste each one of your values in
-# Now scroll back up and enter your configuration information; the ones you REMEMBERED from your MYSQL setup
+# Scroll down several lines until you see tons of define lines
+# Delete the default crap and paste each one of your values in
+# Now scroll back up and enter your configuration information; ones you REMEMBERED from the MYSQL setup
 # Change only DB_NAME, DB_USER, and DB_PASSWORD only!
 ```
 
