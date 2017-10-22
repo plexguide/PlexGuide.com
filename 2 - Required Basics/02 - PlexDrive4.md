@@ -79,6 +79,9 @@ sudo systemctl enable plexdrive4.service
 sudo systemctl start plexdrive4.service
 sudo systemctl status plexdrive4.service
 ```
+
+![N](https://image.ibb.co/cVBFFm/Snip20171021_2.png)
+
 - Press CTRL + C to exit the status message
 
 ## Final Tips
