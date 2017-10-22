@@ -19,7 +19,10 @@ sudo chmod 755 Ombi
 ## Create Ombi Service
 
 ### Creating a service for Sonnar
+
+```sh
 sudo nano /etc/systemd/system/ombi.service
+```
 
 - Copy & Paste the Information Below
 
@@ -44,7 +47,6 @@ WantedBy=multi-user.target
 ```
 
 - Press CTRL+X to exit and save
-
 - Start the Ombi v3 Service
 
 ```sh
