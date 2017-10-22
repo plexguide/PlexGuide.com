@@ -16,13 +16,52 @@ sudo mkdir myprettyfolder
 ### Makes a directory called myprettyfolder (example)
 ```
 
-sudo rm -r file.txt ----- Removes a file in the current directory called file.txt
-sudo rm -r fi* ----- Removes all files that start with fi in the current directory
-sudo su ----- Switch to root
-exit ----- Return to your regular user (prior to being root user)
-clear ----- Clear the current screen
-sudo bash myscript.sh ----- Execute the bash script called myscript.sh in current directory
-chmod myscript.sh 777 ------ Allow all permissions for all groups (bad practice)
-chmod +x myscript.sh ----- Allows the script to be executed when called upon
-sudo reboot ----- Reboot your server
-sudo docker rm -f portainer ----- an example of moving a specific container by names
+```sh
+sudo rm -r file.txt 
+### Removes a file in the current directory called file.txt
+```
+
+```sh
+sudo rm -r fi*
+### Removes all files that start with fi in the current directory
+```
+
+```sh
+sudo su
+### Switch to root
+```
+
+```sh
+exit
+### Return to your regular user (prior to being root user)
+```
+
+```sh
+clear
+### Clear the current screen
+```
+
+```sh
+sudo bash myscript.sh
+### Execute the bash script called myscript.sh in current directory
+```
+
+```sh
+chmod myscript.sh 777
+### Allow all permissions for all groups (bad practice)
+```
+
+```sh
+chmod +x myscript.sh
+### Allows the script to be executed when called upon
+```
+
+```sh
+sudo reboot
+### Reboot your server
+```
+
+```sh
+sudo docker rm -f portainer
+### An example of moving a specific container by names
+```
