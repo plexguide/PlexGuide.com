@@ -2,9 +2,10 @@
 A simple program to make a dynamic interface including the ability to create themes
 
 ## Establishing MYSQL Database
-- Log in to mysql root
 
 ```sh
+# Log in to mysql root
+
 mysql -u root -p
 # Enter the root password for MYSQL; not your SSH login
 
