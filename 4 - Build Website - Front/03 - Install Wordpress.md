@@ -47,9 +47,9 @@ sudo nano /etc/apache2/apache2.conf
 ```
 
 - Press CTRL+X to save
-- Enable rewrite module
 
 ```sh
+# Enable rewrite module
 sudo a2enmod rewrite
 
 # Check for errors, should say [OK]
