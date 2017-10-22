@@ -36,14 +36,11 @@ sudo mkdir /mnt/plexdrive4 && sudo chmod 755 /mnt/plexdrive4
 cd ~
 ```
 ### Execute PlexDrive
-Let Plex4 Run! Do not do anything else unless completed. If your skilled, you can continue due to screen; but you've been warned!
+Let Plex4 Run! Do not do anything else unless completed!
 
 ```sh
 sudo screen plexdrive4 --uid=1001 --gid=1001 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 ```
-- Press CTRL+A then C to create new terminal session to continue
-- Revert to PlexDrive status; CTRL+A then 0 <---- check on it after you follow the steps below (will put a reminder)
-- Once done, create this service below; I don't know what happens if you skip the stuff above and just create the service
 
 ### Creating a service for PlexDrive4
 
