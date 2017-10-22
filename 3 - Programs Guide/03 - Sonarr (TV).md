@@ -88,9 +88,10 @@ sudo systemctl status sonarr.service
     - [Click] Save - if all is well
 - General Tab:
   - Security:
-    - Authentication: Forms (Login PAGe)
-  - Username: remember it
-  - Password: remember it
+    - Authentication: 
+    - Forms (Login PaGe)
+      - Username: remember it
+      - Password: remember it
   - Automatic: On
   - [Click] save changes at top right
   - Series Icon: [Click] at the top
