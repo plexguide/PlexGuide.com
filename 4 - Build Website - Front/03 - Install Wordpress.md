@@ -105,7 +105,7 @@ sudo nano /var/www/html/wp-config.php
   - Trust me... I had to redo twice
 - Create a strong username and password!
 
-## Upgrade Wordpress - 
+## Upgrade Wordpress 
 
 ```sh
 # Wordpress will not upgrade for security reasons, so if you need to ever upgrade run this line
