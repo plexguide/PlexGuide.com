@@ -101,8 +101,9 @@ sudo nano /var/www/html/wp-config.php
 ## Finishing Up
 - Now type your http://ipv4address|domain
 - You should now see a wordpress install
-- If you receive a CONNECTION ERROR, double check your password, username, and database name; trust me... I had to redo twice
-- For wordpress, create a strong username and password!
+- If you receive a CONNECTION ERROR, double check your password, username, and database name
+  - Trust me... I had to redo twice
+- Create a strong username and password!
 
 ## Upgrade Wordpress - 
 
@@ -113,10 +114,11 @@ sudo chown -R www-data /var/www/html
 # Once done, lock it back down - Tip: Change YOURUSERNAME
 sudo chown -R YOURUSERNAME /var/www/html
 
-# Recommended Theme: https://theme4press.com/ (.evolve Plus) (You get your moneys worth an adapts via mobile and tons of options)
 ```
 
-## (Opitional - Recommend) Change PHP Limits
+- Recommended Theme: https://theme4press.com/ (.evolve Plus) (You get your moneys worth an adapts via mobile and tons of options)
+
+## (Optional - Recommend) Change PHP Limits
 - If you are uploading a theme and receive an exceed error size, the next steps are for you.
 
 ```sh
@@ -127,9 +129,8 @@ sudo nano /var/www/html/wp-config.php
 # add this to very bottom: define('FS_METHOD', 'direct');
 ```
 
-- Note, once you uploaded this, comment it out by adding a #in front of define; it's good for security.
-- Note, if you need to upload again in future, remove the # and repeat the process
-
+- Once you upload this, comment it out by adding a #in front of define; it's good for security.
+- If you need to upload again in future, remove the # and repeat the process
 
 ## Final Notes
 
