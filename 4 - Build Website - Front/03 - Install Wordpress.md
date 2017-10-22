@@ -81,9 +81,8 @@ sudo find /var/www/html -type d -exec chmod g+s {} \;
 sudo chmod g+w /var/www/html/wp-content
 sudo chmod -R g+w /var/www/html/wp-content/themes
 sudo chmod -R g+w /var/www/html/wp-content/plugins
-```
 
-### Securing your Config File
+# Securing your Config File
 # Type the following to generate SALT values (it's security stuff)
 curl -s https://api.wordpress.org/secret-key/1.1/salt/
 
@@ -93,21 +92,27 @@ sudo nano /var/www/html/wp-config.php
 # Scroll down several lines until you see tons of define lines, delete the default crap and paste each one of your values in
 # Now scroll back up and enter your configuration information; the ones you REMEMBERED from your MYSQL setup
 # Change only DB_NAME, DB_USER, and DB_PASSWORD only!
-# Press CTRL+X and Save 
+```
 
-### Finishing Up
-# Now type your http://ipv4address|domain
-# You should now see a wordpress install
-# If you receive a CONNECTION ERROR, double check your password, username, and database name; trust me... I had to redo twice
-# For wordpress, create a strong username and password! Trust me, I was hacked in 2006 with weak info (luckly the site wasn't started)
+- Press CTRL+X and Save 
 
-# Upgrade Wordpress - Wordpress will not upgrade for security reasons, so if you need to ever upgrade run this line
+## Finishing Up
+- Now type your http://ipv4address|domain
+- You should now see a wordpress install
+- If you receive a CONNECTION ERROR, double check your password, username, and database name; trust me... I had to redo twice
+- For wordpress, create a strong username and password!
+
+## Upgrade Wordpress - 
+
+```sh
+# Wordpress will not upgrade for security reasons, so if you need to ever upgrade run this line
 sudo chown -R www-data /var/www/html
 
 # Once done, lock it back down - Tip: Change YOURUSERNAME
 sudo chown -R YOURUSERNAME /var/www/html
 
-Recommended Theme: https://theme4press.com/ (.evolve Plus) (You get your moneys worth an adapts via mobile and tons of options)
+# Recommended Theme: https://theme4press.com/ (.evolve Plus) (You get your moneys worth an adapts via mobile and tons of options)
+```
 
 ## (Opitional - Recommend) Change PHP Limits
 - If you are uploading a theme and receive an exceed error size, the next steps are for you.
