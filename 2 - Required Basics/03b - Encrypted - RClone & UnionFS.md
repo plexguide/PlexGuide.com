@@ -49,54 +49,72 @@ sudo su
 rclone config
 ```
 
-### Configuring RClone ### Version 1.38
-# N < For New remote 
-# gdrive < for the name
-# 9 < For Google Drive (double check the number select incase)
-# Enter Your Google ID
-# Enter Your Goole Secret
-# N < for headless machine #### NOTE: if your on a VM or the actual machine with an interface (GUI), select Y.  
-# Enter Your Verification Code
-#   Note: If you copy and paste by SELECTING and CLICK the RIGHT Mouse button, it will work; but then you will see it repeat
-#   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
-# N < Configure this as a team drive?
-# Y < If asking all is ok?
-### This encrypted mount will be used for the rclone-move.sh found later in these instructions
-# N < For New remote 
-# gcrypt < for the name
-# 6 < For Encrypt/Decrypt (double check the number select incase)
-# gdrive:/encrypt (encrypt being the rclone encrypted folder within your gdrive)
-# 2 < Encrypt standard
-# Y < type your own password (make up a secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use) 
-# Y < type your own salt password (make up a different secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use)
-# Should see something like this:-
+## Configuring RClone
+May change due to version | Currently for version 1.38
+
+- N < For New remote 
+- gdrive < for the name
+- 9 < For Google Drive (double check the number select incase)
+- Enter Your Google ID
+- Enter Your Goole Secret
+- N < for headless machine #### NOTE: if your on a VM or the actual machine with an interface (GUI), select Y.  
+- Enter Your Verification Code
+-   Note: If you copy and paste by SELECTING and CLICK the RIGHT Mouse button, it will work; but then you will see it repeat
+-   Note: Hold the DEL button to del the extra crap and then paste into a browser to get the verfication code
+- N < Configure this as a team drive?
+- Y < If asking all is ok?
+
+```sh
+This encrypted mount will be used for the rclone-move.sh found later in these instructions
+```
+
+- N < For New remote 
+- gcrypt < for the name
+- 6 < For Encrypt/Decrypt (double check the number select incase)
+- gdrive:/encrypt (encrypt being the rclone encrypted folder within your gdrive)
+- 2 < Encrypt standard
+- Y < type your own password (make up a secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use) 
+- Y < type your own salt password (make up a different secure one and write it down somewhere safe otherwise use the one from before if you already created it for whichever original encrypted folder you want to use)
+- Should see something like this:
+
+```sh
 [gcrypt]
 remote = gdrive:/encrypt
 filename_encryption = standard
 password = *** ENCRYPTED ***
 password2 = *** ENCRYPTED ***
-# Y < If asking all is ok?
+```
+
+- Y < If asking all is ok?
+
+```sh
 ### This encrypted mount will be for unionfs.service to avoid bans
-# N < For New remote 
-# crypt < for the name
-# 6 < For Encrypt/Decrypt (double check the number select incase)
-# /mnt/plexdrive4/encrypt (encrypt being the rclone encrypted folder within your gdrive)
-# 2 < Encrypt standard
-# Y < type your own password (use the same password as above for gcrypt) 
-# Y < type your own salt password (use the same SALT password as above for gcrypt)
-# Should see something like this:-
+```
+
+- N < For New remote 
+- crypt < for the name
+- 6 < For Encrypt/Decrypt (double check the number select incase)
+- /mnt/plexdrive4/encrypt (encrypt being the rclone encrypted folder within your gdrive)
+- 2 < Encrypt standard
+- Y < type your own password (use the same password as above for gcrypt) 
+- Y < type your own salt password (use the same SALT password as above for gcrypt)
+- Should see something like this:
+
+```sh
 [crypt]
 remote = /mnt/plexdrive4/encrypt
 filename_encryption = standard
 password = *** ENCRYPTED ***
 password2 = *** ENCRYPTED ***
-# Y < If asking all is ok?
-# N < For New remote
-# local < for the name
-# 11 < For a Local Drive
-# /mnt/rclone-move
-# Y < If asking all is ok?
-# Q < to quit
+```
+
+- Y < If asking all is ok?
+- N < For New remote
+- local < for the name
+- 11 < For a Local Drive
+- /mnt/rclone-move
+- Y < If asking all is ok?
+- Q < to quit
 
 # back to your username
 su [YOURUSERNAME]
