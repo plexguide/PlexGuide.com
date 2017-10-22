@@ -1,5 +1,6 @@
 # Build a Web Front
 
+## Establishing MYSQL Database
 - Log in to mysql root
 
 ```sh
@@ -21,7 +22,7 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 
-- Add important MYSQL extensions
+### Add important MYSQL extensions
 
 ```sh
 sudo apt-get update
@@ -29,7 +30,7 @@ sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
 sudo systemctl restart apache2
 ```
 
-- Enable .htaccess overrides
+### Enable .htaccess overrides
 
 ```sh
 sudo nano /etc/apache2/apache2.conf
@@ -44,7 +45,6 @@ sudo nano /etc/apache2/apache2.conf
 ```
 
 - Press CTRL+X to save
-
 - Enable rewrite module
 
 ```sh
@@ -57,7 +57,7 @@ sudo apache2ctl configtest
 sudo systemctl restart apache2sudo systemctl restart apache2
 ```
 
-## Download Wordpress to TMP Folder for Install
+## Installing WordPress
 
 ```sh
 # Can copy and paste the entire block
@@ -108,24 +108,26 @@ sudo chown -R YOURUSERNAME /var/www/html
 
 Recommended Theme: https://theme4press.com/ (.evolve Plus) (You get your moneys worth an adapts via mobile and tons of options)
 
-################# PHP Limits (Opitonal) ################# START
-# If you are uploading a theme and receive an exceed error size, the next steps are for you.
+## (Opitional - Recommend) Change PHP Limits
+- If you are uploading a theme and receive an exceed error size, the next steps are for you.
 
+```sh
 sudo nano /var/www/html/.htaccess
 # add this line above </IfModule>: php_value upload_max_filesize 100M
 
 sudo nano /var/www/html/wp-config.php
 # add this to very bottom: define('FS_METHOD', 'direct');
+```
 
-# Note, once you uploaded this, comment it out by adding a #in front of define; it's good for security.
-# Note, if you need to upload again in future, remove the # and repeat the process
-################# PHP Limits (Opitonal) ################# START
+- Note, once you uploaded this, comment it out by adding a #in front of define; it's good for security.
+- Note, if you need to upload again in future, remove the # and repeat the process
 
-################# Final Notes ################# START
-# Visit http://ipv4address and you should see wordpress loadup
-# Follow the Wizard and create a USER & PW you can memorize
-# Customize easily by installing templates
-#  - If template does not upload do to exceed size message, follow instructions above
-# Recommend Template: Evolve ($39) https://theme4press.com/evolve-multipurpose-wordpress-theme/
-#  - If install evolve, you need to follow the php limit instructions above
-################# Final Notes ################# END
+
+## Final Notes
+
+- Visit http://ipv4address and you should see wordpress loadup
+- Follow the Wizard and create a USER & PW you can memorize
+- Customize easily by installing templates
+  - If template does not upload do to exceed size message, follow instructions above
+  - Recommend Template: Evolve ($39) https://theme4press.com/evolve-multipurpose-wordpress-theme/
+- If install evolve, you need to follow the php limit instructions above
