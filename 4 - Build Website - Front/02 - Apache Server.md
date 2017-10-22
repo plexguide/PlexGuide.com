@@ -41,21 +41,23 @@ sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
 sudo nano /etc/apache2/mods-enabled/dir.conf
 ```
 
-You will see: 
+You will see
+
 ```sh
 <IfModule mod_dir.c>
     DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
 </IfModule>
 ```
 
-Make sure it looks like this now:
+Make sure it looks like this now
+
 ```sh
 <IfModule mod_dir.c>
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 </IfModule>
 ```
 
-- Reload the server to ensure that it works
+Reload the server to ensure that it works
 
 ```sh
 # reload the apache server
