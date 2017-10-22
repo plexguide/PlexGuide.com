@@ -1,36 +1,45 @@
-ROUGH DRAFT
+# Install an Apache server
+This will allow you to build a website on top of your IP or domain.
 
+## Basic Install
+
+```sh
 sudo apt-get update
 sudo apt-get install apache2
 
 # Verify System Install
 sudo systemctl status apache2
+```
 
+### Tips
 
-# Tip - Find out your IP Address
-hostname -I
+- Find out your IP Address
+  - hostname -I
 
-# Tip - Run this command after making configuration changes
-sudo systemctl reload apache2
+- Run this command after making configuration changes
+  - sudo systemctl reload apache2
 
+## Install Apache Lamp
 
------------------- APACHE LAMP
+### Install MYSQL
 
-# Install MYQL
+```sh
 sudo apt-get install mysql-server
-# type a password for root - mysql and remember it!
+# Type a password for root-mysql and remember it! You need it for the next guide
 
 # secure your install
 sudo mysql_secure_installation
+```
 
-------------------- Install PHP
+## Install PHP
 
+```sh
 sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
 
-# Currently, if a user requests a directory from the server, Apache will first look for a file called index.html.
-# We want to prefer PHP files, so we'll make Apache look for an index.php file first.
-
+# If a user requests a directory from the server, Apache will first look for a file called index.html.
+# We want to prefer PHP files (for wordpress), so we'll make Apache look for an index.php file first.
 sudo nano /etc/apache2/mods-enabled/dir.conf
+```
 
 You will see: 
 <IfModule mod_dir.c>
@@ -42,5 +51,9 @@ Make sure it looks like this now
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 </IfModule>
 
+```sh
+
+```sh
 # reload the apache server
 sudo systemctl restart apache2
+```
