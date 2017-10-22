@@ -42,16 +42,18 @@ sudo nano /etc/apache2/mods-enabled/dir.conf
 ```
 
 You will see: 
+```sh
 <IfModule mod_dir.c>
     DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
 </IfModule>
+```
 
-Make sure it looks like this now
+Make sure it looks like this now:
+```sh
 <IfModule mod_dir.c>
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 </IfModule>
-
-```sh
+```
 
 ```sh
 # reload the apache server
