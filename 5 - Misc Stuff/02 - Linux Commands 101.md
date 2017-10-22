@@ -6,8 +6,16 @@ cd /home/$USER
 ### Takes you to the current user’s home directory
 ```
 
-~ ----- Takes you to the current user’s home directory
-sudo mkdir myprettyfolder ----- Makes a directory called myprettyfolder (example)
+```sh
+~ 
+### Takes you to the current user’s home directory
+```
+
+```sh
+sudo mkdir myprettyfolder
+### Makes a directory called myprettyfolder (example)
+```
+
 sudo rm -r file.txt ----- Removes a file in the current directory called file.txt
 sudo rm -r fi* ----- Removes all files that start with fi in the current directory
 sudo su ----- Switch to root
