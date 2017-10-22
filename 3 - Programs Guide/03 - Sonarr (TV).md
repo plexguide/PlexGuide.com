@@ -86,7 +86,7 @@ sudo systemctl status sonarr.service
     - Older Priority: Normal or Low (if you love TV downloads more than movies; make normal)
     - [Click] Test - if having problems, check your IP, port, username and etc.  Trust me, it's you.
     - [Click] Save - if all is well
-  - General Tab:
+General Tab:
   - Security:
   - Authentication: Forms (Login PAGe)
   - Usern  ame: remember it
