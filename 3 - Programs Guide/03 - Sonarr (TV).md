@@ -12,7 +12,9 @@ sudo apt-get install nzbdrone
 ```
 
 ### Creating a service for Sonnar
+```sh
 sudo nano /etc/systemd/system/sonarr.service
+```
 
 - Copy and Paste the Information Below
 
