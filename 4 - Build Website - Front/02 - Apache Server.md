@@ -55,6 +55,8 @@ Make sure it looks like this now:
 </IfModule>
 ```
 
+- Reload the server to ensure that it works
+
 ```sh
 # reload the apache server
 sudo systemctl restart apache2
