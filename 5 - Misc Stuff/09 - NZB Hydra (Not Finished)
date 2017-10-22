@@ -1,0 +1,14 @@
+# NZB Hydra
+
+## Install
+
+```sh
+sudo apt-get update
+sudo apt-get install python2.7 git-core -y
+sudo git clone https://github.com/theotherp/nzbhydra /opt/nzbhydra
+sudo chown -R root:root /opt/nzbhydra
+sudo python /opt/nzbhydra/nzbhydra.py --nobrowser
+
+
+
+
