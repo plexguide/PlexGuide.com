@@ -65,7 +65,7 @@ May change due to version | Currently for version 1.38
 - Y < If asking all is ok?
 
 ```sh
-This encrypted mount will be used for the rclone-move.sh found later in these instructions
+### This encrypted mount will be used for the rclone-move.sh found later in these instructions
 ```
 
 - N < For New remote 
@@ -116,49 +116,28 @@ password2 = *** ENCRYPTED ***
 - Y < If asking all is ok?
 - Q < to quit
 
-# back to your username
+### Back to your username
+
+```sh
 su [YOURUSERNAME]
+```
 
+### Allow multiple connections for fuse
+
+```sh
 sudo nano /etc/fuse.conf
-# remove the (#) symbol before user_allow_other; then press CTRL+X and then save
+```
+- remove the (#) symbol before user_allow_other; then press CTRL+X and then save
 
-### Create RClone Service for unionfs.service
+### Create rclone.service
+
+```sh
 sudo nano /etc/systemd/system/rclone.service
+```
 
-##### START COPY #####
+- Copy the following below into the Nano Edit for rclone.service
 
-[Unit]
-Description=RClone Daemon
-After=multi-user.target
-
-[Service]
-Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/rclone --bwlimit 8650k --size-only
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
- 
-[Install]
-WantedBy=multi-user.target
-
-##### END COPY #####
-# Press CTRL+X and then Yes to save
-
-### Start and enable the service
-sudo systemctl daemon-reload
-sudo systemctl enable rclone.service
-sudo systemctl start rclone.service
-sudo systemctl status rclone.service
-# Press CTRL + C to exit the status message
-################# RClone ################# END
-
-### Create encrypted RClone Service for rclone-move.sh
-sudo nano /etc/systemd/system/rclone-crypt.service
-
-##### START COPY #####
-
+```sh
 [Unit]
 Description=RClone Daemon
 After=multi-user.target
@@ -174,17 +153,18 @@ RemainAfterExit=yes
  
 [Install]
 WantedBy=multi-user.target
+```
 
-##### END COPY #####
-# Press CTRL+X and then Yes to save
+### Start and enable the rclone.service
 
-### Start and enable the service
+```sh
 sudo systemctl daemon-reload
-sudo systemctl enable rclone-crypt.service
-sudo systemctl start rclone-crypt.service
-sudo systemctl status rclone-crypt.service
-# Press CTRL + C to exit the status message
-################# RClone Crypt ################# END
+sudo systemctl enable rclone.service
+sudo systemctl start rclone.service
+sudo systemctl status rclone.service
+```
+
+- Press CTRL + C to exit the status message
 
 ## Establishing unionfs.service
 
