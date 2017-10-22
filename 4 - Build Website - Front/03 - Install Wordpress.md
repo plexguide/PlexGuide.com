@@ -1,4 +1,5 @@
-# Build a Web Front
+# Installing Wordpress
+A simple program to make a dynamic interface including the ability to create themes
 
 ## Establishing MYSQL Database
 - Log in to mysql root
