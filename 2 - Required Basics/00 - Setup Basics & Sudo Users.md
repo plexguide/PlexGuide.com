@@ -11,7 +11,7 @@ Download and install Ubuntu 16.04 on your local, remote, or virutal machine.
 #### Obtaining the IP Address
 - Configure or set the IP Address
 - Cannot remember? Type "ifconfig"
-- (IF) VMware: Use bridge mode and control via your router or direct assignment
+- (IF) VMware: Use bridge mode and assign an IP via mac address or in the OS, assign a STATIC IP address!
 
 ## Install SSH
 
