@@ -56,7 +56,8 @@ sudo a2enmod rewrite
 sudo apache2ctl configtest
 
 # Restart the APACHE server due to configuration changes
-sudo systemctl restart apache2sudo systemctl restart apache2
+sudo systemctl restart apache2
+sudo systemctl restart apache2
 ```
 
 ## Installing WordPress
