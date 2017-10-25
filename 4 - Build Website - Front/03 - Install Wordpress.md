@@ -126,12 +126,12 @@ sudo chown -R YOURUSERNAME /var/www/html
 
 ```sh
 sudo nano /var/www/html/.htaccess
-- add this line to very bottom line:
-  - php_value upload_max_filesize 100M
+# add this line to very bottom line:
+php_value upload_max_filesize 100M
 
 sudo nano /var/www/html/wp-config.php
-- add this to very bottom
-  - define('FS_METHOD', 'direct');
+# add this to very bottom
+define('FS_METHOD', 'direct');
 ```
 
 - Once you upload this, comment it out by adding a #in front of define; it's good for security.
