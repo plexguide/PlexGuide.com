@@ -82,6 +82,7 @@ sudo find /var/www/html -type d -exec chmod g+s {} \;
 sudo chmod g+w /var/www/html/wp-content
 sudo chmod -R g+w /var/www/html/wp-content/themes
 sudo chmod -R g+w /var/www/html/wp-content/plugins
+sudo chmod -R 755 /var/www/html/
 
 # Securing your Config File
 # Type the following to generate SALT values (it's security stuff)
