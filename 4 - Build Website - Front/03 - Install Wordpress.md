@@ -80,11 +80,11 @@ sudo cp -a /tmp/wordpress/. /var/www/html
 sudo chown -R YOURUSERNAME:www-data /var/www/html
 sudo find /var/www/html -type d -exec chmod g+s {} \;
 sudo chmod g+w /var/www/html/wp-content
-sudo chmod -R g+w /var/www/html/wp-content/themes
-sudo chmod -R g+w /var/www/html/wp-content/plugins
 sudo chmod -R 755 /var/www/html/
 cd /var/www/html/wp-content/
-sudo chmod -R g+w uploads/
+sudo chmod -R 777 uploads
+sudo chmod -R 777 themes
+sudo chmod -R 777 upgrades
 
 # Securing your Config File
 # Type the following to generate SALT values (it's security stuff)
