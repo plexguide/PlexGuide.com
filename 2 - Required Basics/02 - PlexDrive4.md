@@ -39,7 +39,7 @@ cd ~
 Let Plex4 Run! Do not do anything else unless completed!
 
 ```sh
-sudo screen plexdrive4 --uid=1001 --gid=1001 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
+sudo screen plexdrive4 --uid=0 --gid=0 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
 ```
 
 ### Creating a service for PlexDrive4
@@ -57,7 +57,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=1001 --gid=1001 --fuse-options=allow_other --refresh-interval=1m /mnt/plexdrive4
+ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 --fuse-options=allow_other --refresh-interval=1m /mnt/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
