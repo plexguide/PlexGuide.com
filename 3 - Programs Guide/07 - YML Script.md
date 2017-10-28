@@ -22,9 +22,6 @@ cd /opt && sudo docker-compose -f docker-compose.yml up -d
 cd /opt && sudo rm -r docker-compose.yml && sudo nano docker-compose.yml
 ```
 
-## Note About If You Want Emby
-If you want emby installed, please remove the # symbols
-
 ## YML Writeup 
 Copy this below - The spacing below in this script is important / it will fail if you add or take away spaces
 ```sh
