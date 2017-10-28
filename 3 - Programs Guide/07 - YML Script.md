@@ -1,7 +1,14 @@
 # YML Script
 Note: The location of where you will set the YML file is at: /opt/
 
-## 1st Time Instructions
+## Create the Script
+```sh
+cd /opt && sudo nano docker-compose.yml up -d
+
+# Ensure to copy everything in the YML write up below and THEN execute the instructions!
+```
+
+## 1st Time Execution of the Instructions!
 - Establishing location of script and creating file for first time.  Copy this below into the script!
 
 ```sh
