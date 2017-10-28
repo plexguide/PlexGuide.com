@@ -62,6 +62,16 @@ sudo reboot
 ```
 
 ```sh
+sudo systemctl status sonarr
+### Check on the service called 'Sonarr'
+```
+
+```sh
+sudo systemctl restart sonarr
+### Restarts the service called 'Sonarr'
+```
+
+```sh
 sudo docker rm -f portainer
 ### An example of moving a specific container by names
 ```
