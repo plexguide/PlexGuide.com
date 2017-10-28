@@ -14,7 +14,7 @@ sudo mkdir /mnt/plexdrive5 && sudo chmod 755 /mnt/plexdrive5
 cd ~
 ```
 ### Execute PlexDrive
-Let Plex4 Run! Do not do anything else unless completed!
+Let Plex5 Run! Do not do anything else unless completed!
 
 ```sh
 sudo screen plexdrive5 mount --uid=0 --gid=0 -o allow_other -v2 --max-chunks=200 /mnt/plexdrive5
@@ -30,7 +30,7 @@ sudo nano /etc/systemd/system/plexdrive5.service
 
 ```sh
 [Unit]
-Description=PlexDrive4 Service
+Description=PlexDrive5 Service
 After=multi-user.target
 
 [Service]
@@ -62,6 +62,6 @@ sudo systemctl status plexdrive5.service
 ## Final Tips
 - You should get a GREEN Light on the service
 - I would let it JUST finish before doing ANYTHING! The screen command allows it to finish incase you close terminal
-- I would do a reboot AFTER to make sure your /mnt/plexdrive4 works! If you didn't finish the scan, you may have issues
+- I would do a reboot AFTER to make sure your /mnt/plexdrive5 works! If you didn't finish the scan, you may have issues
 - What I learned is the speed is based on your HD speeds; an SSD is super fast; regular HD can take many hours :D
 
