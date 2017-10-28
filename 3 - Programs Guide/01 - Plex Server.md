@@ -25,8 +25,7 @@ sudo wget https://downloads.plex.tv/plex-media-server/1.9.3.4290-9798172d4/plexm
 ## Installing Plex
 
 ```sh
-sudo dpkg -i plex 
-### Then [PRESS] the TAB key, will out the entire thing and then [PRESS ENTER]
+sudo dpkg -i plex*
 ```
 
 ## Plex Setup
