@@ -36,4 +36,8 @@ In addition, the following are also good to know:
   - Mistake #1: You can install scripts or run stuff under your user name, but it's not ideal.  It's what I did at first
   - Mistake #2: Understand how to change the permissions of folders outside of /home to execute
 
+## Random Note
+
+https://uguu.se - To post backups for wget
+
 More will be added later
