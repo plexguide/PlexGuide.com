@@ -112,7 +112,7 @@ password2 = *** ENCRYPTED ***
 - N < For New remote
 - local < for the name
 - 11 < For a Local Drive
-- /mnt/rclone-move
+- (ignore the question about long file names or 1) type this exactly: /mnt/rclone-move
 - Y < If asking all is ok?
 - Q < to quit
 
