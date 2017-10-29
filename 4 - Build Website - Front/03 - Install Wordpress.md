@@ -84,7 +84,7 @@ sudo chmod -R 755 /var/www/html/
 cd /var/www/html/wp-content/
 sudo chmod -R 777 uploads
 sudo chmod -R 777 themes
-sudo chmod -R 777 upgrades
+###sudo chmod -R 777 upgrade
 
 # Securing your Config File
 # Type the following to generate SALT values (it's security stuff)
