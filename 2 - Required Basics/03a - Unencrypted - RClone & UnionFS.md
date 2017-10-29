@@ -65,7 +65,7 @@ May change due to version | Currently for version 1.38
 - N < For New remote
 - local < for the name
 - 11 < For a Local Drive
-- /mnt/rclone-move
+- (ignore the question about long file names or 1) type this exactly: /mnt/rclone-move
 - Y < Is asking all is ok?
 - Q < to quit
 
