@@ -76,7 +76,7 @@ sudo rm - r /opt/Ombi/Ombi.db
 cd /tmp
 sudo cp Ombi.db /opt/Ombi/Ombi.db
 sudo rm -r /tmp/Ombi.db
-sudo chmod 755 Ombi
+sudo chmod 755 /opt/Ombi
 sudo systemctl start ombi.service
 sudo systemctl status ombi.service
 ```
