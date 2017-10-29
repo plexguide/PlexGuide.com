@@ -30,7 +30,9 @@ Take the guide and write up the set of instructions and send a link or SEND A pu
 
 #### Contact  - [Admin9705] - Reddit
 
-## Good News for Windows Users! 
+## Semi Good News for Windows Users! 
 So prior to building all of this, there was NO good solution running a G-Suite / Windows Plex Server due to API Bans. http://www.netdrive.net now released version 3 and I purchased an upgraded license and it works with 0 API bans.  It creates a network or drive that mounts your gsuite to your windows machine!  I had plex scan and 0 issues with API bans.  You make the drive writeable and readable.  I would recommend that it's just used for PLEX.  If using for Couch/Sonnar/Radarr; you can... but do so with light downloading because the cache will overwhelm your drive if backlogged and there are no bandwidth limit controls (750GB per day upload is the only issue).  So, I run a linux version (Awesome Plex Server) that does all of the work and a secondary plex server with netdrive! If you had netdrive 2, it was somewhat buggy and slow, but they truly revamped everything! There is a one month trial. I received nothing for this and just wrote this as FYI because it works (it is not an affiliate, nor commission thing).  
 
-Do not use the MAC version yet (it's disconnects alot - plus they tell you on the page it's a BETA for now in regards to a MAC).
+- Windows Issue 1: May disconnect if you you have radarr/couch/sonnar pointing to it.
+
+- MAC version: Do not use at all.  Disconnects very easily.
