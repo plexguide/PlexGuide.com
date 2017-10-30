@@ -1,3 +1,6 @@
+![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
+
 # Extra Tips
 I will use this area to put some lessons learned and something that I wish I would have known prior
 
