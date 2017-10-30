@@ -21,6 +21,8 @@ bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 - Press "Y" to accept when prompted
 - Visit http://ipv4address:19999
 
+![N](https://image.ibb.co/iuXNLm/Snip20171029_11.png)
+
 ## Google Drive API
 Required for both RClone & PlexDrive - Credit: @Balazer on Github
 
