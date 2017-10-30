@@ -1,3 +1,6 @@
+![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
+
 # Godaddy Domain Pointing Instructions
 - Normally used in situations in having a DEDICATED IP ADDRESS!!!
 
