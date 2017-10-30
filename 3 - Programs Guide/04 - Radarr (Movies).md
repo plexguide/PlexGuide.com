@@ -1,5 +1,7 @@
 # Install Sonnar
 
+![N](https://image.ibb.co/etHuY6/Snip20171029_13.png)
+
 ```sh
 sudo apt update && sudo install libmono-cil-dev curl mediainfo
 cd /opt
