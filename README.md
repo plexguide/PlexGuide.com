@@ -1,5 +1,7 @@
 # PlexGuide.com - The Awesome Plex Server V3
 
+![N](https://preview.ibb.co/f2xKY6/Snip20171029_21.png)
+
 Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 
 - Type http://PlexGuide.com to come back to this page!!!
