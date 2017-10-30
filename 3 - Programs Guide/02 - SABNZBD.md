@@ -1,6 +1,6 @@
 # Install SABNZBD
 
-![N](https://image.ibb.co/eTqWD6/Snip20171029_12.png" alt="Snip20171029_12)
+![N](https://image.ibb.co/eTqWD6/Snip20171029_12.png)
 
 ## Building Your Folders
 
