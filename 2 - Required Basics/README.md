@@ -16,6 +16,8 @@ A program that has the capability to mount a drive with read and write capabilit
 
 ### UnionFS
 
+![N](http://icons.iconarchive.com/icons/hopstarter/hard-drive/72/Device-Hard-Drive-Mac-icon.png)
+
 A program that merges multiple directories into one directory.  The problem that you will run into is that you will attempt to have SONARR and RADARR read your PlexDrive.  The only problem is that PlexDrive is a read-only directory.  When your files download, you will not have the ability to upload your files.  To get around that, UNIONFS will take your plexdrive read only directory and your local drive create a directory to trick Sonarr and Radarr to not only read files, but result the downloading of files to your local drive.  Since the files stay on your local drive, a move service will sync the files from your local drive to your google drive.  Basically, your putting up a cloak and dagger, moving the files, and deleting of your local drive in the end.  Think about it; remember that plexdrive is a read-only merged with your local? Well, your files that got upload now are part of plexdrive which again is scanned by Raddar and Sonarr as complete.
 
 ### Encryption or No Encryption
