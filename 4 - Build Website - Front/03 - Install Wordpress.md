@@ -1,3 +1,6 @@
+![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
+
 # Installing Wordpress
 A simple program to make a dynamic interface including the ability to create themes.  Note, you had to follow the 02 steps (one prior)
 
