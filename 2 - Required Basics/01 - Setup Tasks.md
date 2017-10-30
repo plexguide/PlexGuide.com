@@ -1,3 +1,5 @@
+![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
 # Setup Tasks
 Ensures that you install the necessary programs required before hand.  Skipping this part may result in numerous headaches.
 
