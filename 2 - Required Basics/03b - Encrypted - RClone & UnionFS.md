@@ -233,7 +233,6 @@ do
 sleep 30
 # Anything above 8M will result in a google ban if uploading above 8M for 24 hours
 rclone move --bwlimit 8M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
-sleep 270
 done
 ```
 
