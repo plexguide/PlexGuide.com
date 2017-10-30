@@ -1,8 +1,9 @@
-# The Awesome Plex Server V3
+# PlexGuide.com - The Awesome Plex Server V3
 
 Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 
-### Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
+- Type http://PlexGuide.com to come back to this page!!!
+- Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
 #### What's Installing?
 
