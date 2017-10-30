@@ -1,6 +1,8 @@
 # Sonarr
 - Program that manages and downloads TV shows
 
+![N](https://image.ibb.co/nkfnmR/Snip20171029_14.png)
+
 ## Install Sonarr
 ```sh
 ### Copy each line one by one
