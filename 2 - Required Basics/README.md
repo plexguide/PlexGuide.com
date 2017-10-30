@@ -8,6 +8,8 @@ Is a read-only file system that enables plex to scan your google drive without r
 
 ### RClone
 
+![N](https://camo.githubusercontent.com/f77b6479ad8f227f62675fe0c761e4eb207c561d/68747470733a2f2f72636c6f6e652e6f72672f696d672f72636c6f6e652d313230783132302e706e67)
+
 A program that has the capability to mount a drive with read and write capabilities.  The question asked, why not just use Plex to read an rclone directory.  The answer is that it will result in a 24 API ban.  RClone servers it purpose her to sync your downloaded files to your google drive by utilizing the sync command.  A move/sync service will be created to ensure that you transfer no more than 750GB per day.  A larger upload will result in a 24 API UPLOAD ban and will require you to reboot your server.  
 
 ### UnionFS
