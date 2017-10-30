@@ -170,6 +170,8 @@ sudo systemctl status rclone.service
 
 ## Establishing unionfs.service
 
+![N](http://icons.iconarchive.com/icons/hopstarter/hard-drive/72/Device-Hard-Drive-Mac-icon.png)
+
 - Merges your local drive and plexdrive to create a secondary drive
 - Required for Sonarr & Radarr
 
