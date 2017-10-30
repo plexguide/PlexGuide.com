@@ -32,11 +32,3 @@ Deiteq is maintaing the 03B version for RClone & UnionFS Encrytpion! Thanks!
 Take the guide and write up the set of instructions and send a link or SEND A pull request to make it easier!
 
 #### Contact  - [Admin9705] - Reddit
-
-## NetDrive for Windows (Still issues, but program is showing promise)
-
-So prior to building all of this, there was NO good solution running a G-Suite / Windows Plex Server due to API Bans. http://www.netdrive.net now released version 3 and I purchased an upgraded license and it works with 0 API bans.  It creates a network or drive that mounts your gsuite to your windows machine!  I had plex scan and 0 issues with API bans.  You make the drive writeable and readable.  I would recommend that it's just used for PLEX.  If using for Couch/Sonnar/Radarr; you can... but do so with light downloading because the cache will overwhelm your drive if backlogged and there are no bandwidth limit controls (750GB per day upload is the only issue).  So, I run a linux version (Awesome Plex Server) that does all of the work and a secondary plex server with netdrive! If you had netdrive 2, it was somewhat buggy and slow, but they truly revamped everything! There is a one month trial. I received nothing for this and just wrote this as FYI because it works (it is not an affiliate, nor commission thing).  
-
-- Windows Issue 1#: May disconnect if you you have radarr/couch/sonnar pointing to it.
-
-- MAC version: Do not use at all.  Disconnects very easily.
