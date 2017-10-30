@@ -1,3 +1,5 @@
+![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
 # Linux 101 Commands
 Written for SUDO Users; if ROOT... remove "sudo"
 
