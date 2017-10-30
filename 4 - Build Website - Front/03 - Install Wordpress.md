@@ -1,6 +1,8 @@
 # Installing Wordpress
 A simple program to make a dynamic interface including the ability to create themes.  Note, you had to follow the 02 steps (one prior)
 
+![N](https://thumb.ibb.co/m3XBD6/Snip20171029_17.png)
+
 ## Establishing MYSQL Database
 
 ```sh
