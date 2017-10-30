@@ -1,3 +1,7 @@
+# First Welcome to PlexGuide.com!
+
+![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
 # Transmission Basics (VPN, Usenet, Torrents)
 
 #### Intro
