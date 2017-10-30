@@ -1,6 +1,11 @@
 # PlexDrive4
 Establishes a read-only file system to prevent API bans with plex.  PD4 is used over 5 due to better stability.
 
+![N](https://github.com/dweidenfeld/plexdrive/raw/master/logo/banner.png)
+
+## Author Info
+https://github.com/dweidenfeld/plexdrive
+
 ## MangoDB
 Database program utilized by PlexDrive4
 
