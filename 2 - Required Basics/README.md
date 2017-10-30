@@ -4,6 +4,8 @@ This section is mandatory to execute.  Basically, you are establishing plexdrive
 
 ### PlexDrive4 
 
+![N](https://github.com/dweidenfeld/plexdrive/raw/master/logo/banner.png)
+
 Is a read-only file system that enables plex to scan your google drive without resulting in an API ban.  PlexDrive4 is utilized over PlexDrive5 due to stability.  PlexDrive4 caches files to your hard drive instead of RAM over PlexDrive5.  When you establish your PlexDrive, ensure that you let it FINISH scanning before anything else.  This process can take a few minutes or over the course of several hours.
 
 ### RClone
