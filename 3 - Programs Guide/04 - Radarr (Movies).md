@@ -12,7 +12,7 @@ sudo wget $( curl -s https://api.github.com/repos/Radarr/Radarr/releases | grep 
 sudo tar -xvzf Radarr.develop.*.linux.tar.gz
 ```
 
-# Creating a service for Sonnar
+# Creating a service for Radarr
 ```sh
 sudo nano /etc/systemd/system/radarr.service
 ```
@@ -39,7 +39,7 @@ WantedBy=multi-user.target
 
 - Press CTRL+X to exit and save
 
-## Start the Sonnar Service
+## Start the Radarr Service
 ```sh
 sudo systemctl daemon-reload
 sudo systemctl enable radarr.service
