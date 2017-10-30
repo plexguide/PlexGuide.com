@@ -18,8 +18,6 @@ WARNING: Chose Either 03A or 03B
 ### Creating Folders
 sudo mkdir /mnt/rclone-union
 sudo mkdir /mnt/rclone-move
-sudo mkdir /mnt/rclone-move/tv
-sudo mkdir /mnt/rclone-move/movies
 
 ### Chaning Permissions
 sudo chmod 755 /mnt/rclone-move && sudo chmod 755 /mnt/rclone-union
