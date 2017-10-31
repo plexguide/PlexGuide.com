@@ -1,7 +1,7 @@
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
 
-# Install Sonnar
+# Install Radarr
 
 ![N](https://image.ibb.co/etHuY6/Snip20171029_13.png)
 
