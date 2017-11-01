@@ -20,7 +20,7 @@ Note:  As changes are made, files will be removed.  If not removed, continue to 
 - Installs SSH
 - Installs Dependiences 
 - Installs NetData 
-- (Pending) Installs Plex
+- Installs Plex (Public)
 - (Pending) Installs SABNZBD
 
 # Manual Method
