@@ -76,5 +76,5 @@ else
     echo 
 fi
 
-bash plex.sh
-bash sabnzbd.sh
+bash plex.sh;
+bash sabnzbd.sh;
