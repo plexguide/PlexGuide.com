@@ -99,3 +99,5 @@ else
     echo Not Installed - Plex Media Server
     echo 
 fi
+ 
+bash /sabnzbd.sh
