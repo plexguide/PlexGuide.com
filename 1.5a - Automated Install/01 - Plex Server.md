@@ -2,7 +2,7 @@
 
 # Plex Install
 
-## Downloading Plex
+## Downloading Plex Upgrade (Skip If Your Good to Plex Setup Below)
 - Goto https://www.plex.tv/downloads/
 - Push the download button (or scroll to the bottom)
 - Pick your version if you have PLEX PASS
