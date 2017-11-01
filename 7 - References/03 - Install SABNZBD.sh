@@ -1,3 +1,5 @@
+## Missing variable quesiton for IP
+
 ################# Install SABNZBD
 
 echo -n "Do you want to SABNZBD? (y/n)? "
@@ -24,7 +26,35 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install par2-tbb
     yes | apt-get install par2-mt
     yes | apt-get install python-sabyenc
-    echo Installed SABNZBD
+
+    ## Installing the SABNZBD Service
+    cd /etc/systemd/system/
+    sudo systemctl stop sabnzbd
+    rm -r sabnzbd.service
+    touch sabnzbd.service
+    echo [Unit] >> sabnzbd.service
+    echo Description=SABnzbd Usenet Client >> sabnzbd.service
+    echo After=multi-user.target >> sabnzbd.service
+    echo >> sabnzbd.service
+    echo [Service] >> sabnzbd.service
+    echo Type=simple  >> sabnzbd.service
+    echo User=root >> sabnzbd.service
+    echo Group=root >> sabnzbd.service
+    echo >> sabnzbd.service
+    echo ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 127.0.0.1:8090 --browser 0 \& >> sabnzbd.service
+    echo ExecStop=/usr/bin/pkill sabnzbdplus >> sabnzbd.service
+    echo RemainAfterExit=yes >> sabnzbd.service
+    echo SyslogIdentifier=SABnzbd Usenet Client >> sabnzbd.service
+    echo >> sabnzbd.service
+    echo [Install]  >> sabnzbd.service
+    echo WantedBy=multi-user.target >> sabnzbd.service
+    
+    ## Enabling and Starting the SABNZBD.service
+    systemctl daemon-reload
+    sudo systemctl enable sabnzbd.service
+    sudo systemctl start sabnzbd.service
+
+    echo Installed SABNZBD and SABNZBD service
     echo 
     echo To utilize SABNZBD, use Port 8090 with IP Address; hostname -I;
     echo
@@ -34,5 +64,3 @@ else
     echo Not Installed - SABNZBD
     echo 
 fi
-
-## Missing to install service
