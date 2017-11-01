@@ -3,8 +3,11 @@
 # Automated Method
 
 ```
-sudo apt-get install curl
-cd /tmp && wget 107.150.32.90/install.sh
+sudo apt rm -r /tmp/plexguide
+sudo apt-get install unzip
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
+sudo unzip /tmp/Version-3.5.zip
+sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
 sudo bash install.sh
 ```
 
