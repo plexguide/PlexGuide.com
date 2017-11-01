@@ -9,7 +9,6 @@
 sudo apt-get install curl
 cd /tmp && wget 107.150.32.90/install.sh
 sudo bash install.sh
-~ 
 ```
 
 # Manual Method
