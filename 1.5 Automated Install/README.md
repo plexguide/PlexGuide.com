@@ -21,7 +21,7 @@ Note:  As changes are made, files will be removed.  If not removed, continue to 
 - Installs Dependiences 
 - Installs NetData 
 - Installs Plex (Public)
-- (Pending) Installs SABNZBD
+- Installs SABNZBD
 
 # Manual Method
 From Version 3: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-3/
