@@ -7,7 +7,7 @@
 
 ```
 sudo apt-get install curl
-cd /tmp && wget plex.one/install.sh
+cd /tmp && wget 107.150.32.90/install.sh
 sudo bash install.sh
 ~ 
 ```
