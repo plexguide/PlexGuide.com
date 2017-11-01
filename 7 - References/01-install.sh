@@ -100,4 +100,4 @@ else
     echo 
 fi
  
-bash /sabnzbd.sh
+bash sabnzbd.sh
