@@ -1,5 +1,6 @@
 ####### Agree to Install Plex Server
 
+clear
 echo -n "Do you Agree to Install the Awesome Plex Server (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
