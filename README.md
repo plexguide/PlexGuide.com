@@ -1,6 +1,13 @@
-# PlexGuide.com - The Awesome Plex Server V3
+# PlexGuide.com - The Awesome Plex Server V3.5
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+
+# What's up with Version 3.5?
+
+Version 3.5 will be completed to 4.0 when finished.  Version 3.5 will START to incorporate some programming.  Now you don't have to type everything in.  It will speed up things for you!  If you want to view Version 3 for learning purposes (because you have to do it all, please click here: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
+
+New Changes
+- Installs SSH, all dependicies requires, and NetData with prompts now
 
 Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 
