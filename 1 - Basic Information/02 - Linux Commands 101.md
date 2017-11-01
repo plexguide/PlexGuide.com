@@ -7,7 +7,7 @@ Written for SUDO Users; if ROOT... remove "sudo"
 cd /home/$USER
 ### Takes you to the current user’s home directory
 ```
-
+ 
 ```sh
 ~ 
 ### Takes you to the current user’s home directory
