@@ -1,41 +1,15 @@
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-# Setup Tasks
-Ensures that you install the necessary programs required before hand.  Skipping this part may result in numerous headaches.
+Choose Either Automated or Manual Method
 
-## Update System & Install Required Programs
+# Automated Method
 
-```sh
-sudo apt update && sudo apt install nano && sudo apt install fuse
-sudo apt install man-db && sudo apt install screen && sudo apt install unzip
-sudo apt-get install python
-sudo apt-get install software-properties-common
+```
+sudo apt-get install curl
+cd /tmp && wget plex.one/install.sh
+sudo bash install.sh
+~ 
 ```
 
-## Install NetData
-Provides detailed information for your server | useful to determine chokepoints
-
-```sh
-sudo apt install curl
-bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
-```
-
-- Press "Y" to accept when prompted
-- Visit http://ipv4address:19999
-
-![N](https://image.ibb.co/iuXNLm/Snip20171029_11.png)
-
-## Google Drive API
-Required for both RClone & PlexDrive - Credit: @Balazer on Github
-
-- http://console.developers.google.com
-- Select project or create a new project
-- Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
-- Click "Credentails" in the left-side panel (not "Go to Credentials" which is a Wizard)
-- Then "Create credenntials"
-- Then "OAuth client ID"
-- Prompted to set OAuth consent screen product name.
-- Choose application type as "other" and then click "Create"
-- If you DO NOT SELECT other, the API is useless and will not work (Reported By PogMoThoin22 @ reddit)
-- Will then show you a client ID and client secret
-- Keep this somewhere secure; you need it for RClone and PlexDrive
+# Manual Method
+From Version 3: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-3/2%20-%20Required%20Basics/01%20-%20Setup%20Tasks.md
