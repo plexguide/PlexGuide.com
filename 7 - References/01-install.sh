@@ -1,6 +1,6 @@
 ################### Install Required Programs
 
-echo -n "Do you agree to Install - The Awesome Plex Server (y/n)? "
+echo -n "Do you Agree to Install the Awesome Plex Server (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
