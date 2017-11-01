@@ -23,7 +23,7 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo Install Aborted! You failed to agree to the install
+    echo Install Aborted - You failed to agree to the install
     exit
     echo 
 fi
