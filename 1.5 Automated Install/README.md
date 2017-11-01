@@ -3,6 +3,7 @@
 # Automated Method
 
 ```
+cd ~
 sudo apt rm -r /tmp/plexguide
 sudo apt rm -r /tmp/Version-*
 sudo apt-get install unzip
