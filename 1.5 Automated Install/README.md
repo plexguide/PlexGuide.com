@@ -3,9 +3,9 @@
 # Automated Method
 
 ```
-cd ~
-sudo rm -r /tmp/plexguide
-sudo rm -r /tmp/Version-*
+cd /tmp
+sudo rm -r plexguide
+sudo rm -r Version-*
 sudo apt-get install unzip
 sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
 sudo unzip /tmp/Version-3.5.zip
