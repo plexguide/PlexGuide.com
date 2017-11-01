@@ -1,6 +1,7 @@
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-Choose Either Automated or Manual Method
+- Choose Either Automated or Manual Method
+- Install required dependencies and NetData
 
 # Automated Method
 
