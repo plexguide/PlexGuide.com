@@ -54,6 +54,7 @@ if echo "$answer" | grep -iq "^y" ;then
     sudo systemctl enable sabnzbd.service
     sudo systemctl start sabnzbd.service
 
+    clear
     echo Installed SABNZBD and SABNZBD service
     echo 
     echo To utilize SABNZBD, use Port 8090 with IP Address; hostname -I;
@@ -64,3 +65,6 @@ else
     echo Not Installed - SABNZBD
     echo 
 fi
+
+echo
+echo "Please finish the rest of the manual portions!"
