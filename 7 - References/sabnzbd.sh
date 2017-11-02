@@ -1,7 +1,7 @@
 ## Missing variable quesiton for IP
 
 ################# Install SABNZBD
-
+clear
 echo -n "Do you want to SABNZBD? (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
@@ -55,9 +55,7 @@ if echo "$answer" | grep -iq "^y" ;then
     sudo systemctl start sabnzbd.service
 
     clear
-    echo Installed SABNZBD and SABNZBD service
-    echo 
-    echo To utilize SABNZBD, use Port 8090 with IP Address; hostname -I;
+    echo Installed SABNZBD - To utilize SABNZBD, goto Port 8090 with IP Address; hostname -I;
     echo
 else
     echo No
