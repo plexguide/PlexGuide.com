@@ -53,6 +53,7 @@ read_options(){
                 bash plex.sh
                 bash sabnzbd.sh
 		bash docker.sh
+		bash ombi.sh
                 ;;
 		2) 
 		bash mass2.sh
