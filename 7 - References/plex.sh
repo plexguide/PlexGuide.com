@@ -11,9 +11,7 @@ if echo "$answer" | grep -iq "^y" ;then
     curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
     yes | apt-get update    
     yes | apt-get install plexmediaserver
-    echo Installed NetData
-    echo 
-    echo To utilize NetData, use Port 19999 with IP Address; hostname -I;
+    echo Installed Plex - Use Port 32400 with IP Address; hostname -I;
     echo
 else
     echo No
