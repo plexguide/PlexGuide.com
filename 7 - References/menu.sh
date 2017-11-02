@@ -36,7 +36,8 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install: Plex"
 	echo "2. Install: NetData"
-	echo "3. Exit"
+	echo "3. Install: SSH
+	echo "4. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
