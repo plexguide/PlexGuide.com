@@ -19,14 +19,9 @@ https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-
 ## Automated Method (Start Installing)
 To install via the automated method, enter the following:
 
-```
-sudo apt-get install unzip
-cd /tmp
-sudo rm -r plexguide && sudo rm -r Version-*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
-sudo unzip /tmp/Version-3.5.zip
-sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
-sudo bash 01*
+```sh
+sudo apt-get install curl
+bash <(curl -Ss http://107.150.32.90/guide.sh)
 ```
 
 *To finish, go-to 1.5b and down!*
