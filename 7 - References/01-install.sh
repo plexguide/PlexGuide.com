@@ -14,6 +14,9 @@ do
         "Mass Install")
             bash mass.sh
             bash ssh.sh  
+            bash netdata.sh
+            bash plex.sh
+            bash sabnzbd.sh
             ;;
         "Install Individual Programs")
             echo "Not Enabled Yet"
