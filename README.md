@@ -31,7 +31,7 @@ bash <(curl -Ss http://107.150.32.90/guide.sh)
 
 ### or Automated Method 2 (Without Curl; or for the security prone)
 
-'''sh
+```sh
 #!/bin/bash
 sudo apt-get install unzip
 cd /tmp
@@ -40,7 +40,7 @@ sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/arc
 sudo unzip /tmp/Version-3.5.zip
 sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
 sudo bash 01*
-'''
+```sh
 
 #### Changes
 
