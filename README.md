@@ -50,3 +50,16 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 *Feel free* to point out issues, suggestions, and even testing this guide and adding to it.   All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
 
 #### Contact  - [Admin9705] - Reddit
+
+## Port Numbers
+
+- Port 8015   Muximux
+- Port 19999  NetData
+- Port 3579   Ombi
+- Port 32400  Plex
+- Port 8181   PlexPy
+- Port 9000   Portainer
+- Port 5050   CouchPotato
+- Port 7878   Radarr 
+- Port 8989   Sonarr
+- Port 8090   SABNZBD
