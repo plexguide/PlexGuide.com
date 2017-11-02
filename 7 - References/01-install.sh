@@ -52,6 +52,7 @@ read_options(){
                 bash netdata.sh
                 bash plex.sh
                 bash sabnzbd.sh
+		bash docker.sh
                 ;;
 		2) 
 		bash mass2.sh
