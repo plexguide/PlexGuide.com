@@ -1,4 +1,5 @@
 #!/bin/bash
+
 clear
 echo "Welcome to the Awesome Plex Server ~ PlexGuide.com"
 echo
@@ -6,17 +7,17 @@ echo "Warning: Only Select Mass Install for a Clean Server!"
 echo
 
 PS3='Please Make a Choice: '
-options=("1. Mass Install" "2. Install Individual Program" "3. Update Individual Programs" "Quit")
+options=("Mass Install" "Install Individual Program" "Update Individual Programs" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "1. Mass Install")
+        "Mass Install")
             bash 01-install.sh
             ;;
-        "2. Install Individual Programs")
+        "Install Individual Programs")
             echo "Not Enabled Yet"
             ;;
-        "3. Update Individual Programs")
+        "Update Individual Programs")
             echo "Not Enabled Yet"
             ;;
         "Quit")
