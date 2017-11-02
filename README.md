@@ -32,11 +32,11 @@ Note:  As changes are made, files will be removed.  If not removed, continue to 
 
 - Menu Interface Added
 - Mass Install (Clean Server) or Individual Installs
-- Installs Plex, SSH, SABNZBD, NetData, Dependiencies
+- Installs Plex, SSH, SABNZBD, NetData, Dependiencies, Docker, PlexPy, Muximux, Portainer
 
 #### Next:
 
-- Sonarr, Radarr, Docker & Containers
+- Sonarr, Radarr, Ombi, RClone, PlexDrive
 
 ## Thanks & Social Contacts
 
