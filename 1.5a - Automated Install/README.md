@@ -17,11 +17,16 @@ sudo bash 01*
 
 Note:  As changes are made, files will be removed.  If not removed, continue to follow the rest of the guide or go with the old manual method at the bottom.
 
+- Menu Interface Added
+- Mass Install (Clean Server) or Individual Installs
 - Installs SSH
 - Installs Dependiences 
 - Installs NetData 
 - Installs Plex (Public)
 - Installs SABNZBD
 
-# Manual Method
-From Version 3: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-3/
+Next:
+
+- Sonarr
+- Radarr
+- Docker & Containers
