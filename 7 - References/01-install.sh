@@ -7,7 +7,7 @@ echo "Warning: Only Select Mass Install for a Clean Server!"
 echo
 
 PS3='Please Make a Choice: '
-options=("Mass Install" "Install Individual Program" "Update Individual Programs" "Quit")
+options=("Mass Install" "Install Individual Programs" "Update Individual Programs" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
