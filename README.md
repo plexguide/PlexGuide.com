@@ -16,7 +16,10 @@ Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PRO
 Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
 https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
-## Automated Method (Start Installing)
+## Installing Automated
+Pick either 1 or 2.  They are the same exact thing.  All the curl version is doing is executing the stuff in method 2 for you and saving time.
+
+### Automated Method 1 (Simple)
 To install via the automated method, enter the following:
 
 ```sh
@@ -25,6 +28,21 @@ bash <(curl -Ss http://107.150.32.90/guide.sh)
 ```
 
 *To finish, go-to 1.5b and down!*
+
+### or Automated Method 2 (Without Curl; or for the security prone)
+
+'''sh
+#!/bin/bash
+
+sudo apt-get install unzip
+cd /tmp
+sudo rm -r plexguide && sudo rm -r Version-*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/ar$
+sudo unzip /tmp/Version-3.5.zip
+sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
+sudo bash 01*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
+'''
 
 #### Changes
 
