@@ -2,15 +2,21 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-# What's up with Version 3.5?
+## Mission Statement
+To build an automated setup through ease of use to ensure that you are maintaing a steady and uncomplicated server; while maintaing your media up-to-date through the use of USENET.
+
+## What's Installing & What Required
+- Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
+- Google Drive, Ubunt 16.04 and USENET Indexers and Servers
+
+## What's up with Version 3.5?
 Version 3.5 will become 4.0 when finished.  Version 3.5 is STARTNIG to incorporate PROGRAMMING.  Now you don't have to type 
 
-# View Version 3 (Manual Process - Great Learning)
+## View Version 3 (Manual Process - Great Learning)
 Version 3 will be maintained! It's what Version 3.5 is based from!
 https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
-# Automated Method
-
+### Automated Method
 To install via the automated method, enter the following:
 
 ```
@@ -23,7 +29,7 @@ sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
 sudo bash 01*
 ```
 
-## Changes
+#### Changes
 
 Note:  As changes are made, files will be removed.  If not removed, continue to follow the rest of the guide or go with the old manual method at the bottom.
 
@@ -31,7 +37,7 @@ Note:  As changes are made, files will be removed.  If not removed, continue to 
 - Mass Install (Clean Server) or Individual Installs
 - Installs Plex, SSH, SABNZBD, NetData, Dependiencies
 
-## Next:
+#### Next:
 
 - Sonarr, Radarr, Docker & Containers
 
@@ -41,19 +47,6 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 
 - Type http://PlexGuide.com to come back to this page!!!
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
-
-#### What's Installing?
-
-CouchPotato, Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
-
-#### What's Required?
-Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If your new to all of this, it's fine!
-
-#### Changes from Last Write-Up
- - Less Docker Use
- - UnionFS and bwlimits assist to prevent Google Upload Ban
- - Enables use of server with less disk space due to rclone syncing over prior dependence on rclone mount
- - All services work and no more use of rc.local or cronjobs
 
 **Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management. Deiteq is maintaing the 03B version for RClone & UnionFS Encrytpion! Thanks!
 
