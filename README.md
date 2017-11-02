@@ -10,7 +10,7 @@ To build an automated setup through ease of use to ensure that you are maintaing
 - Google Drive, Ubunt 16.04 and USENET Indexers and Servers
 
 #### What's up with Version 3.5?
-Version 3.5 will become 4.0 when finished.  Version 3.5 is STARTNIG to incorporate PROGRAMMING.  Now you don't have to type everything manually.  You'll notice the folders above in a start of transition.  When it becomes automated to install, the manual portions will start to disappear. 
+Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PROGRAMMING.  Now you don't have to type everything manually.  You'll notice the folders above in a start of transition.  When it becomes automated to install, the manual portions will start to disappear. 
 
 #### View Version 3 (Manual Process - Great Learning)
 Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
