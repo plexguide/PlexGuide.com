@@ -34,8 +34,8 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Mass Install - Only on a CLEAN Server!"
-	echo "2. Individual Install"
+	echo "1. Install - Mass Programs (Only for a New Server)"
+	echo "2. Install - Individual Programs"
 	echo "3. Exit"
 }
 # read input from the keyboard and take a action
