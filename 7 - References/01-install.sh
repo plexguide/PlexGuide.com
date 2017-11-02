@@ -29,11 +29,14 @@ two(){
 # function to display menus
 show_menus() {
 	clear
+	echo Welcome to the Awesome Plex Server - PlexGuide.com
+	echo Note: About Mass Install ~ Only Install on a CLEAN SERVER and only ONCE!!!
+	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Set Terminal"
-	echo "2. Reset Terminal"
+	echo "1. Mass Install"
+	echo "2. Individual Install"
 	echo "3. Exit"
 }
 # read input from the keyboard and take a action
@@ -51,7 +54,9 @@ read_options(){
             bash plex.sh
             bash sabnzbd.sh
         ;;
-		2) two ;;
+		2) 
+		echo "Not Ready Yet"
+		;;
 		3) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
