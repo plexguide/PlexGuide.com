@@ -2,23 +2,22 @@
 # Bash Menu Script Example
 
 PS3='Please enter your choice: '
-options=("Option 1" "Option 2" "Option 3" "Quit")
+options=("Silly" "Option 2" "Option 3" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Install:  - Everything (Only Run Once on a Clean Machine")
-            clear
-            bash mass.sh
+        "Silly")
+            bash
             ;;
-        "Install:  - Programs")
-            echo "This option does not work yet"
+        "Option 2")
+            echo "you chose choice 2"
             ;;
-        "Uninstall - Programs")
-            echo "This option does not work yet"
+        "Option 3")
+            echo "you chose choice 3"
             ;;
         "Quit")
             break
             ;;
-        *) echo Invalid Selection;;
+        *) echo invalid option;;
     esac
 done
