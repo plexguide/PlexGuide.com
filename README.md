@@ -2,18 +2,18 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-## Mission Statement
+### Mission Statement
 To build an automated setup through ease of use to ensure that you are maintaing a steady and uncomplicated server; while maintaing your media up-to-date through the use of USENET.
 
-## What's Installing & What Required
+### What's Installing & What Required
 - Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 - Google Drive, Ubunt 16.04 and USENET Indexers and Servers
 
-## What's up with Version 3.5?
+#### What's up with Version 3.5?
 Version 3.5 will become 4.0 when finished.  Version 3.5 is STARTNIG to incorporate PROGRAMMING.  Now you don't have to type 
 
-## View Version 3 (Manual Process - Great Learning)
-Version 3 will be maintained! It's what Version 3.5 is based from!
+#### View Version 3 (Manual Process - Great Learning)
+Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
 https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
 ### Automated Method
