@@ -27,8 +27,6 @@ sudo apt-get install curl
 bash <(curl -Ss http://107.150.32.90/guide.sh)
 ```
 
-*To finish, go-to 1.5b and down!*
-
 ### or Automated Method 2 (Without Curl; or for the security prone)
 
 ```sh
@@ -41,6 +39,8 @@ sudo unzip /tmp/Version-3.5.zip
 sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
 sudo bash 01*
 ```
+
+*To finish, go-to 1.5b and down!*
 
 #### Changes
 
