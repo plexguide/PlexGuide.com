@@ -12,7 +12,7 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Mass Install")
-            bash 01-install.sh
+            bash mass.sh
             ;;
         "Install Individual Programs")
             echo "Not Enabled Yet"
