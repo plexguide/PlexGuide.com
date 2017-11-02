@@ -52,7 +52,10 @@ read_options(){
 		2) 
 		   bash netdata.sh
        ;;
-		3) exit 0;;
+                3) 
+		   bash ssh.sh
+       ;;
+		4) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
