@@ -54,6 +54,7 @@ read_options(){
                 bash sabnzbd.sh
                 ;;
 		2) 
+		bash mass.sh
 		bash menu.sh
 		;;
 		3) exit 0;;
