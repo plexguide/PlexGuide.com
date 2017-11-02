@@ -1,0 +1,13 @@
+---
+version: '2'
+services:
+ portainer:
+   image: lsiodev/ombi-preview
+   container_name: ombi3
+   volumes:
+     - /opt/appdata/ombi3:/config
+   ports:
+     - 3579:3579
+# ensures this container starts up when required to
+   restart:
+     always
