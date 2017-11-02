@@ -47,14 +47,14 @@ read_options(){
 	read -p "Enter choice [ 1 - 3] " choice
 	case $choice in
 		1) 
-            bash mass.sh
-            bash ssh.sh  
-            bash netdata.sh
-            bash plex.sh
-            bash sabnzbd.sh
-        ;;
+                bash mass.sh
+                bash ssh.sh  
+                bash netdata.sh
+                bash plex.sh
+                bash sabnzbd.sh
+                ;;
 		2) 
-		echo "Not Ready Yet"
+		bash menu.sh
 		;;
 		3) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
