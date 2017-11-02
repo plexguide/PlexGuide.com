@@ -36,7 +36,7 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install: Plex"
 	echo "2. Install: NetData"
-	echo "3. Install: SSH
+	echo "3. Install: SSH"
 	echo "4. Exit"
 }
 # read input from the keyboard and take a action
@@ -45,7 +45,7 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3] " choice
+	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1) 
        bash plex.sh
