@@ -23,6 +23,6 @@ do
         "Quit")
             break
             ;;
-        *) echo An Invalid Option;;
+        *) echo invalid option;;
     esac
 done
