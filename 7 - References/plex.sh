@@ -1,5 +1,5 @@
 ################# Install Plex
-
+clear
 echo -n "Do you want to Plex? (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
