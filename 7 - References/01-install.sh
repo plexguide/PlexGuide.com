@@ -1,23 +1,27 @@
 #!/bin/bash
-# Bash Menu Script Example
+clear
+echo "Welcome to the Awesome Plex Server ~ PlexGuide.com"
+echo
+echo "Warning: Only Select Mass Install for a Clean Server!"
+echo
 
-PS3='Please enter your choice: '
-options=("Silly" "Option 2" "Option 3" "Quit")
+PS3='Please Make a Choice: '
+options=("1. Mass Install" "2. Install Individual Program" "3. Update Individual Programs" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Silly")
-            bash
+        "1. Mass Install")
+            bash 01-install.sh
             ;;
-        "Option 2")
-            echo "you chose choice 2"
+        "2. Install Individual Programs")
+            echo "Not Enabled Yet"
             ;;
-        "Option 3")
-            echo "you chose choice 3"
+        "3. Update Individual Programs")
+            echo "Not Enabled Yet"
             ;;
         "Quit")
             break
             ;;
-        *) echo invalid option;;
+        *) echo An Invalid Option;;
     esac
 done
