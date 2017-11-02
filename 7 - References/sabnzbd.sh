@@ -63,6 +63,3 @@ else
     echo Not Installed - SABNZBD
     echo 
 fi
-
-echo
-echo "Please finish the rest of the manual portions!"
