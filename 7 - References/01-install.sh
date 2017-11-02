@@ -13,7 +13,7 @@ do
     case $opt in
         "Mass Install")
             bash mass.sh
-            bass ssh.sh  
+            bash ssh.sh  
             ;;
         "Install Individual Programs")
             echo "Not Enabled Yet"
