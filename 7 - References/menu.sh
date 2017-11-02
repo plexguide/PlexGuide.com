@@ -37,7 +37,7 @@ show_menus() {
 	echo "1. Install: Plex"
 	echo "2. Install: NetData"
 	echo "3. Install: SSH"
-	echo "4. Install: Docker | PlexPy | Mumimux | Portainer
+	echo "4. Install: Docker | PlexPy | Mumimux | Portainer"
 	echo "5. Exit"
 }
 # read input from the keyboard and take a action
