@@ -16,7 +16,7 @@ Version 3.5 will become 4.0 when finished.  Version 3.5 is STARTNIG to incorpora
 Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
 https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
-### Automated Method
+## Automated Method (Start Installing)
 To install via the automated method, enter the following:
 
 ```
@@ -28,6 +28,8 @@ sudo unzip /tmp/Version-3.5.zip
 sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
 sudo bash 01*
 ```
+
+*To finish, go-to 1.5b and down!*
 
 #### Changes
 
