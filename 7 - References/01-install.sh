@@ -30,12 +30,11 @@ two(){
 show_menus() {
 	clear
 	echo Welcome to the Awesome Plex Server - PlexGuide.com
-	echo Note: About Mass Install ~ Only Install on a CLEAN SERVER and only ONCE!!!
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Mass Install"
+	echo "1. Mass Install - Only on a CLEAN Server!"
 	echo "2. Individual Install"
 	echo "3. Exit"
 }
