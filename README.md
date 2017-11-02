@@ -3,11 +3,39 @@
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
 # What's up with Version 3.5?
+Version 3.5 will become 4.0 when finished.  Version 3.5 is STARTNIG to incorporate PROGRAMMING.  Now you don't have to type 
 
-Version 3.5 will be completed to 4.0 when finished.  Version 3.5 will START to incorporate some programming.  Now you don't have to type everything in.  It will speed up things for you!  If you want to view Version 3 for learning purposes (because you have to do it all, please click here: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
+# View Version 3 (Manual Process - Great Learning)
+Version 3 will be maintained! It's what Version 3.5 is based from!
+https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
-New Changes
-- Installs SSH, all dependicies requires, and NetData with prompts now
+# Automated Method
+
+To install via the automated method, enter the following:
+
+```
+sudo apt-get install unzip
+cd /tmp
+sudo rm -r plexguide && sudo rm -r Version-*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
+sudo unzip /tmp/Version-3.5.zip
+sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
+sudo bash 01*
+```
+
+## Changes
+
+Note:  As changes are made, files will be removed.  If not removed, continue to follow the rest of the guide or go with the old manual method at the bottom.
+
+- Menu Interface Added
+- Mass Install (Clean Server) or Individual Installs
+- Installs Plex, SSH, SABNZBD, NetData, Dependiencies
+
+## Next:
+
+- Sonarr, Radarr, Docker & Containers
+
+## Thanks & Social Contacts
 
 Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 
@@ -27,15 +55,8 @@ Google Drive (G-Suite), Ubuntu 16.04, USENET (torrents a future project).  If yo
  - Enables use of server with less disk space due to rclone syncing over prior dependence on rclone mount
  - All services work and no more use of rc.local or cronjobs
 
-**Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management.  If you wish to take portions of the guide, re-write; submit it to me (I'll test and credit the portion).  If you only make suggestions, I'll post links at the bottom of the readme.  Ensure that when you read these solutions, that you modify your paths accordingly (including how it is ran).
+**Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management. Deiteq is maintaing the 03B version for RClone & UnionFS Encrytpion! Thanks!
 
-Deiteq is maintaing the 03B version for RClone & UnionFS Encrytpion! Thanks!
-
-**Note:** This guide is written for a SUDO USER, not ROOT (which may cause some headaches).  The very first portion of the guides you on how to create a SUDO user.
-
-*Feel free* to point out issues, suggestions, and even testing this guide and adding to it.  Full credit will be given.  All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
-
-#### Want to Help?:
-Take the guide and write up the set of instructions and send a link or SEND A pull request to make it easier!
+*Feel free* to point out issues, suggestions, and even testing this guide and adding to it.   All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
 
 #### Contact  - [Admin9705] - Reddit
