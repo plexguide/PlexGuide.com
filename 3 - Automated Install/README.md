@@ -1,6 +1,6 @@
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-Automated Method
+# Automated Method
 
 ```sh
 yes | sudo apt-get install unzip

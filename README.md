@@ -17,7 +17,18 @@ Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PRO
 
 ## Installing Automated
 
-View Folder #3 (Automated Install) for snippet to run.  Ensure to read Folder 1 & 2 (which will become automated later)
+Ensure to read folder 1 for understanding and execute actions in folder 2 prior (will be automated later)
+
+# Automated Method
+
+```sh
+yes | sudo apt-get install unzip
+cd /tmp
+sudo rm -r plexguide && sudo rm -r Version-*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
+sudo unzip /tmp/Version-3.5.zip
+sudo mv PlexGuide.com* plexguide && cd plexguide && cd scr* && sudo bash main-m*
+```
 
 #### View Version 3 (Manual Process - Great Learning)
 Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
