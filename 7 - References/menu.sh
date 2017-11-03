@@ -61,7 +61,7 @@ read_options(){
                 4)
 		   bash docker.sh
        ;;
-                4)
+                5)
 		   bash ombi.sh
        ;;
 		6) exit 0;;
