@@ -47,7 +47,7 @@ read_options(){
 	read -p "Enter choice [ 1 - 3] " choice
 	case $choice in
 		1) 
-        bash dep.sh
+        bash /tmp/plex*/s*/ma*/dep.sh
         bash ssh.sh  
         bash netdata.sh
         bash plex.sh
