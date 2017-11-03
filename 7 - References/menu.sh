@@ -59,10 +59,10 @@ read_options(){
 		   bash ssh.sh
        ;;
                 4)
-		   bash docker.sh
+		   bash ombi.sh
        ;;
                 5)
-		   bash ombi.sh
+		   bash docker.sh
        ;;
 		6) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
