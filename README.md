@@ -19,7 +19,7 @@ Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PRO
 
 Ensure to read folder 1 for understanding and execute actions in folder 2 prior (will be automated later)
 
-# Automated Method
+### Automated Method
 
 ```sh
 yes | sudo apt-get install unzip
@@ -30,8 +30,10 @@ sudo unzip /tmp/Version-3.5.zip
 sudo mv PlexGuide.com* plexguide && cd plexguide && cd scr* && sudo bash main-m*
 ```
 
-#### View Version 3 (Manual Process - Great Learning)
-Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
+#### Manual Method (Version 3)
+
+Learn the process or add to it!
+
 https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
 ## Thanks & Social Contacts
