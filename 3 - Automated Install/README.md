@@ -22,7 +22,7 @@ cd /tmp
 sudo rm -r plexguide && sudo rm -r Version-*
 sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
 sudo unzip /tmp/Version-3.5.zip
-sudo mv PlexGuide.com* plexguide && cd plexguide && cd 7*
+sudo mv PlexGuide.com* plexguide && cd plexguide && cd scr*
 sudo bash 01*
 ```
 
