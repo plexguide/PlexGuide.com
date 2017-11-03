@@ -37,8 +37,9 @@ show_menus() {
 	echo "1. Install: Plex"
 	echo "2. Install: NetData"
 	echo "3. Install: SSH"
-	echo "4. Install: Docker | PlexPy | Mumimux | Portainer"
-	echo "5. Exit"
+	echo "4. Install: Ombi v3 (Beta)"
+	echo "5. Install: Docker | PlexPy | Mumimux | Portainer"
+	echo "6. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -46,7 +47,7 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 5] " choice
+	read -p "Enter choice [ 1 - 6] " choice
 	case $choice in
 		1) 
        bash plex.sh
@@ -60,7 +61,10 @@ read_options(){
                 4)
 		   bash docker.sh
        ;;
-		5) exit 0;;
+                4)
+		   bash ombi.sh
+       ;;
+		6) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
