@@ -52,10 +52,10 @@ read_options(){
         bash netdata.sh
         bash plex.sh
         bash sabnzbd.sh
+        bash sonarr.sh
         bash radarr.sh
 		bash docker.sh
 		bash ombi.sh
-		bash sonarr.sh
                 ;;
 		2) 
 		bash dep2.sh
