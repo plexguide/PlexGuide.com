@@ -54,6 +54,7 @@ read_options(){
                 bash sabnzbd.sh
 		bash docker.sh
 		bash ombi.sh
+		bash sonarr.sh
                 ;;
 		2) 
 		bash mass2.sh
