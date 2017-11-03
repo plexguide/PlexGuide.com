@@ -47,10 +47,10 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6] " choice
+	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
 		1) 
-       bash plex.sh
+                   bash plex.sh
        ;;
 		2) 
 		   bash netdata.sh
