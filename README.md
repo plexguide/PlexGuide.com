@@ -17,7 +17,7 @@ Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PRO
 
 ## Installing Automated
 
-Ensure to read folder 1 for understanding and execute actions in folder 2 prior (will be automated later)
+Ensure to read folder 1 for understanding and execute actions in folder 2 prior (will be automated later). Also, you will have a choice on what you want to install.
 
 ### Automated Method
 
@@ -41,7 +41,7 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 - Type http://PlexGuide.com to come back to this page!!!
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-**Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management. Deiteq is maintaing the 03B version for RClone & UnionFS Encrytpion! Thanks!
+**Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management. Deiteq is maintaining the RClone & UnionFS Encrytpion! Thanks!
 
 *Feel free* to point out issues, suggestions, and even testing this guide and adding to it.   All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
 
