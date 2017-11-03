@@ -25,7 +25,7 @@ Ensure to read folder 1 for understanding and execute actions in folder 2 prior 
 sudo apt-get install git
 sudo rm -r /tmp/plexg* 2>/dev/null
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/plexguide
-sudo rm -r sudo bash /tmp/plex*/s*/ma*
+sudo bash /tmp/plex*/s*/ma*
 ```
 
 #### Manual Method (Version 3)
