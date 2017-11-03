@@ -47,19 +47,19 @@ read_options(){
 	read -p "Enter choice [ 1 - 3] " choice
 	case $choice in
 		1) 
-        bash mass.sh
-        bash ssh.sh  
-        bash netdata.sh
-        bash plex.sh
-        bash sabnzbd.sh
-        bash radarr.sh
-		bash docker.sh
-		bash ombi.sh
-		bash sonarr.sh
+        bash /programs/dep.sh
+        bash /programs/ssh.sh  
+        bash /programs/netdata.sh
+        bash /programs/plex.sh
+        bash /programs/sabnzbd.sh
+        bash /programs/radarr.sh
+		bash /programs/docker.sh
+		bash /programs/ombi.sh
+		bash /programs/sonarr.sh
                 ;;
 		2) 
-		bash mass2.sh
-		bash menu.sh
+		bash dep2.sh
+		bash individual-menu.sh
 		;;
 		3) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2

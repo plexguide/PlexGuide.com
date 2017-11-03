@@ -52,25 +52,25 @@ read_options(){
 	read -p "Enter choice [ 1 - 7 ] " choice
 	case $choice in
 		1) 
-           bash plex.sh
+           bash /programs/plex.sh
        ;;
 		2) 
-		   bash netdata.sh
+		   bash /programs/netdata.sh
        ;;
         3) 
-		   bash ssh.sh
+		   bash /programs/ssh.sh
        ;;
         4)
-		   bash ombi.sh
+		   bash /programs/ombi.sh
        ;;
         5)
-		   bash sonarr.sh	
+		   bash /programs/sonarr.sh	
        ;;
         6)
-		   bash radarr.sh	
+		   bash /programs/radarr.sh	
        ;;
         7)
-		   bash docker.sh
+		   bash /programs/docker.sh
        ;;
 		8) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
