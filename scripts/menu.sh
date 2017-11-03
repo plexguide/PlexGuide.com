@@ -39,8 +39,9 @@ show_menus() {
 	echo "3. Install: SSH"
 	echo "4. Install: Ombi v3 (Beta)"
 	echo "5. Install: Sonarr"
-	echo "6. Install: Docker | PlexPy | Mumimux | Portainer"
-	echo "7. Exit"
+	echo "6. Install: Radarr"
+	echo "7. Install: Docker | PlexPy | Mumimux | Portainer"
+	echo "8. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -51,24 +52,27 @@ read_options(){
 	read -p "Enter choice [ 1 - 7 ] " choice
 	case $choice in
 		1) 
-                   bash plex.sh
+           bash plex.sh
        ;;
 		2) 
 		   bash netdata.sh
        ;;
-                3) 
+        3) 
 		   bash ssh.sh
        ;;
-                4)
+        4)
 		   bash ombi.sh
        ;;
-                5)
-		   bash sonarr.sh	   
+        5)
+		   bash sonarr.sh	
        ;;
-                6)
+        6)
+		   bash radarr.sh	
+       ;;
+        7)
 		   bash docker.sh
        ;;
-		7) exit 0;;
+		8) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }

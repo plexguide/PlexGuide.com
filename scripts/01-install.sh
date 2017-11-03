@@ -47,11 +47,12 @@ read_options(){
 	read -p "Enter choice [ 1 - 3] " choice
 	case $choice in
 		1) 
-                bash mass.sh
-                bash ssh.sh  
-                bash netdata.sh
-                bash plex.sh
-                bash sabnzbd.sh
+        bash mass.sh
+        bash ssh.sh  
+        bash netdata.sh
+        bash plex.sh
+        bash sabnzbd.sh
+        bash radarr.sh
 		bash docker.sh
 		bash ombi.sh
 		bash sonarr.sh
