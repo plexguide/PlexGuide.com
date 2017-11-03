@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -n "Do you want to install Ombi v3 (Required Docker Install)? (y/n)"
+echo -n "Do you want to install Ombi v3? (y/n)"
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
