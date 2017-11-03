@@ -59,6 +59,7 @@ read_options(){
 		bash ombi.sh
                 ;;
 		2) 
+        cd /tmp/plexguide/scripts/
 		bash dep2.sh
 		bash individual-menu.sh
 		;;
