@@ -3,12 +3,10 @@
 # Automated Method
 
 ```sh
-yes | sudo apt-get install unzip
-cd /tmp
-sudo rm -r plexguide && sudo rm -r Version-*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
-sudo unzip /tmp/Version-3.5.zip
-sudo mv PlexGuide.com* plexguide && cd plexguide && cd scr* && sudo bash main-m*
+sudo apt-get install git
+sudo rm -r /tmp/plexg* 2>/dev/null
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/plexguide
+sudo rm -r sudo bash /tmp/plex*/s*/ma*
 ```
 
 # Manual Method
