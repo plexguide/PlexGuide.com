@@ -2,57 +2,26 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-### Mission Statement
+## Mission Statement
 To build an automated setup through ease of use to ensure that you are maintaing a steady and uncomplicated server; while maintaing your media up-to-date through the use of USENET.
+
+## Purpose
+The script install plex and many other programs for simplistic use.  The script follows the logic of the manual method (s you can study and learn).  This was made as a result of poor plexcloud performance and Google API bans.  This enables you to have an automated server that upload and downloads with your Google Drive mounted.  Basically, you eliminate all of the hard-drives that are sitting around and you can play from multiple plex servers with the same google mount!
 
 ### What's Installing & What Required
 - Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 - Google Drive, Ubunt 16.04 and USENET Indexers and Servers
 
 #### What's up with Version 3.5?
-Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PROGRAMMING.  Now you don't have to type everything manually.  You'll notice the folders above in a start of transition.  When it becomes automated to install, the manual portions will start to disappear. 
+Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PROGRAMMING.
+
+## Installing Automated
+
+View Folder #3 (Automated Install) for snippet to run.  Ensure to read Folder 1 & 2 (which will become automated later)
 
 #### View Version 3 (Manual Process - Great Learning)
 Version 3 will be maintained! It's what Version 3.5 is based from! It's an entire MANUAL guide, check it out!
 https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
-
-## Installing Automated
-Pick either 1 or 2.  They are the same exact thing.  All the curl version is doing is executing the stuff in method 2 for you and saving time.
-
-### Automated Method 1 (Simple)
-To install via the automated method, enter the following:
-
-```sh
-sudo apt-get install curl
-bash <(curl -Ss http://107.150.32.90/guide.sh)
-```
-
-### or Automated Method 2 (Without Curl; or for the security prone)
-
-```sh
-#!/bin/bash
-sudo apt-get install unzip
-cd /tmp
-sudo rm -r plexguide && sudo rm -r Version-*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
-sudo unzip /tmp/Version-3.5.zip
-sudo mv PlexGuide.com* plexguide && cd plexguide && cd scr*
-sudo bash 01*
-```
-
-*To finish, go-to 1.5b and down!*
-
-#### Changes
-
-Note:  As changes are made, files will be removed.  If not removed, continue to follow the rest of the guide or go with the old manual method at the bottom.
-
-- Menu Interface Added
-- Mass Install (Clean Server) or Individual Installs
-- Installs Plex, SSH, SABNZBD, NetData, Dependiencies, Docker, PlexPy, Muximux, Portainer
-
-#### Next:
-
-- Sonarr, Radarr, Ombi, RClone, PlexDrive
 
 ## Thanks & Social Contacts
 

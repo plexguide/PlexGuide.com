@@ -1,29 +1,15 @@
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-# Automated Method
-Both are the same thing.  Only pick 1 for install.  Number 1 just saves you some time.  Guide.sh contains the exact code of method 2.
-
-### Automated Method 1 (Simple)
-To install via the automated method, enter the following:
+Automated Method
 
 ```sh
-sudo apt-get install curl
-bash <(curl -Ss http://107.150.32.90/guide.sh)
-```
-
-*To finish, go-to 1.5b and down!*
-
-### or Automated Method 2 (Without Curl; For for the security prone)
-
-```sh
-#!/bin/bash
-sudo apt-get install unzip
+yes | sudo apt-get install unzip
 cd /tmp
-sudo rm -r plexguide && sudo rm -r Version-*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
-sudo unzip /tmp/Version-3.5.zip
-sudo mv PlexGuide.com* plexguide && cd plexguide && cd scr*
-sudo bash 01*
+rm -r plexguide && sudo rm -r Version-*
+wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-3.5.zip /tmp
+unzip /tmp/Version-3.5.zip
+mv PlexGuide.com* plexguide && cd plexguide && cd scr*
+bash 01*
 ```
 
 # Manual Method
