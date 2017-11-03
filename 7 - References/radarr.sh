@@ -9,6 +9,7 @@ if echo "$answer" | grep -iq "^y" ;then
    apt update && sudo install libmono-cil-dev curl mediainfo
    wget $( curl -s https://api.github.com/repos/Radarr/Radarr/releases | grep linux.tar.gz | grep browser_download_url | head -1 | cut -d \" -f 4 )
    tar -xvzf Radarr.develop.*.linux.tar.gz
+   rm -r /opt/Radarr
    mv Radarr /opt 
    mv radarr.service /etc/systemd/system/ 
    systemctl daemon-reload
