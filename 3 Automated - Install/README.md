@@ -13,7 +13,7 @@ bash <(curl -Ss http://107.150.32.90/guide.sh)
 
 *To finish, go-to 1.5b and down!*
 
-### or Automated Method 2 (Without Curl; or for the security prone)
+### or Automated Method 2 (Without Curl; For for the security prone)
 
 ```sh
 #!/bin/bash
