@@ -63,7 +63,7 @@ read_options(){
 		   bash ombi.sh
        ;;
                 5)
-		   bash ombi.sh	   
+		   bash sonarr.sh	   
        ;;
                 6)
 		   bash docker.sh
