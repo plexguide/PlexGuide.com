@@ -1,6 +1,4 @@
 ################# Install NetData
-clear
-
 echo -n "Do you want to install NetData? Free Server Analytics! (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo

@@ -41,7 +41,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo User=root >> sabnzbd.service
     echo Group=root >> sabnzbd.service
     echo >> sabnzbd.service
-    echo ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 127.0.0.1:8090 --browser 0 \& >> sabnzbd.service
+    echo ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 0.0.0.0:8090 --browser 0 \& >> sabnzbd.service
     echo ExecStop=/usr/bin/pkill sabnzbdplus >> sabnzbd.service
     echo RemainAfterExit=yes >> sabnzbd.service
     echo SyslogIdentifier=SABnzbd Usenet Client >> sabnzbd.service

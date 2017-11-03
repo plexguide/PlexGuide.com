@@ -1,5 +1,4 @@
 ############## Ask About SSH Install
-
 echo -n "Do you want to install SSH on your Server (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
