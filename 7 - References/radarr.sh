@@ -14,6 +14,7 @@ if echo "$answer" | grep -iq "^y" ;then
    systemctl daemon-reload
    systemctl enable radarr.service
    systemctl start radarr.service
+   rm -r Radarr.d*
 else
     echo No
     clear
