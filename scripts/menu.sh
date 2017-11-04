@@ -60,10 +60,11 @@ read_options(){
         cd /opt/plexguide/scripts/
         bash upgrade.sh
         clear
-        echo You are required to restart the program. Restart the program after by typing: plexguide
+        echo You are required to restart the program. 
+        echo Restart the program afterwards by typing:  plexguide
         echo 
-        echo Press any key ... 
         read -n 1 -s -r -p "Press any key to continue"
+        clear
         exit 0;;
         4)
         exit 0;;
