@@ -20,7 +20,7 @@ The script installs plex and other programs to create simplistic use.  The scrip
 ## Guide Order
 (Note: The folders will start to go away as the wiki is built)
 
-- 1. Folder 1: FYI reading material
+- 1. Folder 1: FYI reading material.
 - 2. Folder 2: Manual Required Processes! (Read & Follow - will be automated)
 - 3. Execute the following below:
 
@@ -31,9 +31,9 @@ sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Serve
 sudo bash /tmp/plex*/s*/ma*
 ```
 
-- 4. Read the wiki pages on *** how *** to configure your programs accordingly
+- 4. Read the wiki pages to configure your programs accordingly!
   - http://wiki.plexguide.com
-- 5. Folder 5: (Opitional) Build a website front end for your server
+- 5. Folder 5: (Opitional) Build a website front end for your server.
 
 ## Thanks & Social Contacts
 
