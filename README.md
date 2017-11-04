@@ -43,7 +43,8 @@ To Execute PlexGuide in the future, type:
 plexguide
 ```
 
-*FYI*, 
+*FYI*
+
 The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select option #3 and the newest files will download for the newest options and updates.
 
 - 4. Read the wiki pages to configure your programs accordingly!
