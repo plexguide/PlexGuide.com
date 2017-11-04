@@ -65,7 +65,6 @@ read_options(){
         echo Press any key ... 
         bash continue.sh
         exit 0;;
-        ;;
         4)
         exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
