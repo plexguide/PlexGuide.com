@@ -26,8 +26,9 @@ The script installs plex and other programs to create simplistic use.  The scrip
 (Note: The folders will start to go away as the wiki is built)
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
-- **2.** Folder 1: Required Processes! (Read & Follow It - It will be automated)
-- **3.** Execute the following below:
+- **2.** Obtain your Google API Key at http://googleapi.plexguide.com
+- **3.** Folder 1: Required Processes! (Read & Follow It - It will be automated)
+- **4.** Execute the following below:
 
 Install GIT
 ```sh
@@ -49,8 +50,8 @@ plexguide
 
 The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select option #3 and the newest files will download for the newest options and updates.
 
-- **4.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **5.** Folder 5: (Optional) Build a website front end for your server.
+- **5.** Configure your programs accordingly with >> http://wiki.plexguide.com
+- **6.** Folder 5: (Optional) Build a website front end for your server.
 
 ## Thanks & Social Contacts
 
