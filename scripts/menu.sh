@@ -36,7 +36,8 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install - Mass Programs (Only for a New Server)"
 	echo "2. Install - Individual Programs"
-	echo "3. Exit"
+	echo "3. Update PlexGuide"
+	echo "4. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -44,7 +45,7 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3] " choice
+	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1)
         cd /tmp/plexguide/scripts/
@@ -56,6 +57,10 @@ read_options(){
 		bash individual-menu.sh
 		;;
 		3) exit 0;;
+        4)
+        cd upgrade.sh
+        bash continue.sh
+        ;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
