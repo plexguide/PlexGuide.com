@@ -24,7 +24,7 @@ The script installs plex and other programs to create simplistic use.  The scrip
 (Note: The folders will start to go away as the wiki is built)
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
-- **2.** Folder 2: Manual Required Processes! (Read & Follow - will be automated)
+- **2.** Folder 1: Required Processes! (Read & Follow It - It will be automated)
 - **3.** Execute the following below:
 
 Install GIT
