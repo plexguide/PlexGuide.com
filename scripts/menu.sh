@@ -63,7 +63,7 @@ read_options(){
         echo You are required to restart the program. 
         echo Restart the program afterwards by typing:  plexguide
         echo 
-        read -n 1 -s -r -p "Press any key to continue"
+        read -n 1 -s -r -p "Press any key to continue "
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
