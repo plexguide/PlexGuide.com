@@ -12,10 +12,14 @@ The script installs plex and other programs to create simplistic use.  The scrip
 - Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 - Google Drive, Ubunt 16.04 and USENET Indexers and Servers
 
-#### What's up with Version 3.5?
-Version 3.5 will become 4.0 when finished.  Version 3.5 is now incorporating PROGRAMMING.
+#### Version Information
+- Version 4   - When programming phase is complete
+- Version 3.5 - Current project. Partially manual and partially automated
+- Version 3   - Prior project. No programming was involved. 
+  - To learn the entire manual process, visit: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
-## Installing Automated
+
+## 
 
 Ensure to read folder 1 for understanding and execute actions in folder 2 prior (will be automated later). Also, you will have a choice on what you want to install.
 
@@ -30,9 +34,7 @@ sudo bash /tmp/plex*/s*/ma*
 
 #### Manual Method (Version 3)
 
-Learn the process or add to it!
 
-https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
 ## Thanks & Social Contacts
 
