@@ -23,7 +23,7 @@ The script installs plex and other programs to create simplistic use.  The scrip
 ## Guide Order
 (Note: The folders will start to go away as the wiki is built)
 
-- **1.** Folder 1: FYI reading material.
+- **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Folder 2: Manual Required Processes! (Read & Follow - will be automated)
 - **3.** Execute the following below:
 
