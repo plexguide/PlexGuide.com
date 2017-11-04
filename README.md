@@ -23,9 +23,9 @@ The script installs plex and other programs to create simplistic use.  The scrip
 ## Guide Order
 (Note: The folders will start to go away as the wiki is built)
 
-- 1. Folder 1: FYI reading material.
-- 2. Folder 2: Manual Required Processes! (Read & Follow - will be automated)
-- 3. Execute the following below:
+- **1.** Folder 1: FYI reading material.
+- **2.** Folder 2: Manual Required Processes! (Read & Follow - will be automated)
+- **3.** Execute the following below:
 
 Install GIT
 ```sh
@@ -43,13 +43,12 @@ To Execute PlexGuide in the future, type:
 plexguide
 ```
 
-*FYI*
+***FYI***
 
 The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select option #3 and the newest files will download for the newest options and updates.
 
-- 4. Read the wiki pages to configure your programs accordingly!
-  - http://wiki.plexguide.com
-- 5. Folder 5: (Opitional) Build a website front end for your server.
+- **4.** Configure your programs accordingly with >> http://wiki.plexguide.com
+- **5.** Folder 5: (Opitional) Build a website front end for your server.
 
 ## Thanks & Social Contacts
 
