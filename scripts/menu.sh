@@ -48,15 +48,16 @@ read_options(){
 	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1)
-        cd /tmp/plexguide/scripts/
+        cd /opt/plexguide/scripts/
         bash mass.sh
                 ;;
 		2) 
-        cd /tmp/plexguide/scripts/
+        cd /opt/plexguide/scripts/
 		bash dep2.sh
 		bash individual-menu.sh
 		;;
 		3) 
+        cd /opt/plexguide/scripts/
         cd upgrade.sh
         bash continue.sh
         ;;
