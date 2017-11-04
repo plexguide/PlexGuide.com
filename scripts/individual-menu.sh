@@ -29,7 +29,7 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the Awesome Plex Server - PlexGuide.com
+	echo Welcome to the PlexGuide.com - Installer
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " I-N-D-I-V-I-D-U-A-L"
@@ -41,9 +41,10 @@ show_menus() {
 	echo "5.  Install: Sonarr"
 	echo "6.  Install: Radarr"
 	echo "7.  Install: SABNZBD"
-	echo "8.  Install: Docker | PlexPy | Mumimux | Portainer"
-	echo "9.  Install: Emby (Requires Docker)"
-	echo "10. Exit"
+	echo "8.  Install: Docker & Portainer"
+	echo "9.  Docker : Emby      (Requires Docker)"
+	echo "10. Docker : PlexyPy   (Requires Docker)"
+	echo "11. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -89,7 +90,11 @@ read_options(){
 		   bash emby.sh
 		   bash continue.sh
        ;;
-		10) exit 0;;
+        10)
+		   bash plexpy.sh
+		   bash continue.sh
+       ;;
+		11) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }

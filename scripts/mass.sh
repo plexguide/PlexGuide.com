@@ -10,3 +10,5 @@
         bash radarr.sh
 	bash docker.sh
 	bash ombi.sh
+        bash emby.sh
+        bash plexpy.sh
