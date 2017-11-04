@@ -58,7 +58,7 @@ read_options(){
 		;;
 		3) 
         cd /opt/plexguide/scripts/
-        cd upgrade.sh
+        bash upgrade.sh
         bash continue.sh
         ;;
         4)
