@@ -15,7 +15,10 @@ The script installs plex and other programs to create simplistic use.  The scrip
 
 ### What's Installing & What Required
 - Installing: Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
-- Required: Google Drive, Ubunt 16.04 and USENET Indexers and Servers
+- Highly Required: Google Drive, Ubunt 16.04 and USENET Indexers and Servers
+
+#### Note
+You can install without using Google Drive and without USENET, but you will have to make some of your own adjustments
 
 ## Guide Order
 (Note: The folders will start to go away as the wiki is built)
