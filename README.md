@@ -15,7 +15,7 @@ The script installs plex and other programs to create simplistic use.  The scrip
 ### Version Information
 - V4   - When programming phase is complete
 - V3.5 - *** Current project *** Partially manual and partially automated
-- V3   - No programming, learn about the manual process @ https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
+- V3   - No programming, learn about the manual process @ http://manual.plexguide.com
 
 ## Guide Order
 (Note: The folders will start to go away as the wiki is built)
