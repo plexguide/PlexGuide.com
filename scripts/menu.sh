@@ -29,7 +29,7 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the PlexGuide Installer v3.5 - 0005
+	echo Welcome to the PlexGuide Installer v3.5 - 4 NOV
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
