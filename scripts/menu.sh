@@ -63,7 +63,7 @@ read_options(){
         echo You are required to restart the program. Restart the program after by typing: plexguide
         echo 
         echo Press any key ... 
-        bash continue.sh
+        read -n 1 -s -r -p "Press any key to continue"
         exit 0;;
         4)
         exit 0;;
