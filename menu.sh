@@ -48,15 +48,7 @@ read_options(){
 	case $choice in
 		1)
         cd /tmp/plexguide/scripts/
-        bash dep.sh
-        bash ssh.sh  
-        bash netdata.sh
-        bash plex.sh
-        bash sabnzbd.sh
-        bash sonarr.sh
-        bash radarr.sh
-		bash docker.sh
-		bash ombi.sh
+        bash mass.sh
                 ;;
 		2) 
         cd /tmp/plexguide/scripts/
