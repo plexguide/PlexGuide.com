@@ -18,12 +18,11 @@ The script installs plex and other programs to create simplistic use.  The scrip
 - V3   - No programming, learn about the manual process @ https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
 ## Guide Order
+(Note: The folders will start to go away as the wiki is built)
 
-- Folder 1: FYI reading material
-- Folder 2: Manual Required Processes! (Read & Follow - will be automated)
-- Execute the following below:
-
-### Automated Method
+- 1. Folder 1: FYI reading material
+- 2. Folder 2: Manual Required Processes! (Read & Follow - will be automated)
+- 3. Execute the following below:
 
 ```sh
 sudo apt-get install git
@@ -32,8 +31,9 @@ sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Serve
 sudo bash /tmp/plex*/s*/ma*
 ```
 
-- Read the wiki pages on *** how *** to configure your programs accordingly: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Main-Page
-- Folder 5: (Opitional) Build a website front end for your server
+- 4. Read the wiki pages on *** how *** to configure your programs accordingly
+  - http://wiki.plexguide.com
+- 5. Folder 5: (Opitional) Build a website front end for your server
 
 ## Thanks & Social Contacts
 
