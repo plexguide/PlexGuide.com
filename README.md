@@ -12,11 +12,11 @@ The script installs plex and other programs to create simplistic use.  The scrip
 - Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
 - Google Drive, Ubunt 16.04 and USENET Indexers and Servers
 
-#### Version Information
+### Version Information
 - V4   - When programming phase is complete
 - V3.5 - Current project. Partially manual and partially automated
 - V3   - Prior project. No programming was involved. Learn the entire process from the link below!
- - https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
+  - https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
 
 ## 
