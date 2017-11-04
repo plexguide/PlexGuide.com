@@ -6,7 +6,7 @@
 sudo apt-get install git
 sudo rm -r /tmp/plexg* 2>/dev/null
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/plexguide
-sudo bash /tmp/plex*/s*/ma*
+sudo bash /tmp/plex*/m*
 ```
 
 # Manual Method
