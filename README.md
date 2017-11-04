@@ -26,7 +26,7 @@ The script installs plex and other programs to create simplistic use.  The scrip
 
 ```sh
 sudo apt-get install git
-sudo rm -r /tmp/plexg* 2>/dev/nu*
+sudo rm -r /opt/plexg* 2>/dev/nu*
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
 sudo bash /opt/plexg*/m*
 ```
