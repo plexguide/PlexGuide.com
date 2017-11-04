@@ -29,7 +29,7 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the PlexGuide Installer v3.5 - 4 NOV
+	echo Welcome to the PlexGuide.com Installer v3.5 - 4 NOV
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
@@ -68,6 +68,8 @@ read_options(){
         echo Remember, restart by typing:  plexguide
         exit 0;;
         4)
+        clear
+        echo Remember, restart by typing:  plexguide
         exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
