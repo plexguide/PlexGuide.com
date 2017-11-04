@@ -41,7 +41,7 @@ show_menus() {
 	echo "5.  Install: Sonarr"
 	echo "6.  Install: Radarr"
 	echo "7.  Install: SABNZBD"
-	echo "8.  Install: Docker & Portainer"
+	echo "8.  Install: DOCKER & Portainer"
 	echo "9.  Docker : Emby      (Requires Docker)"
 	echo "10. Docker : PlexyPy   (Requires Docker)"
 	echo "11. Docker : Muximux   (Requires Docker)"
