@@ -1,4 +1,3 @@
-rm -r /opt/plexg* 2>/dev/nu*
-cd /opt/plexguide/scripts
-mv upgrade /tmp
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+mv upgrade2.sh /tmp
+cd /tmp
+bash /tmp/upgrade2.sh
