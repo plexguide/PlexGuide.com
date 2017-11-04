@@ -2,6 +2,9 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
+## Manual Process and Manual Guide (for Learning)
+http://manual.plexguide.com
+
 ## Mission Statement
 To build an automated setup through ease of use to ensure that you are maintaing a steady and uncomplicated server; while maintaing your media up-to-date through the use of USENET.
 
@@ -39,6 +42,9 @@ To Execute PlexGuide in the future, type:
 ```sh
 plexguide
 ```
+
+*FYI*, 
+The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select option #3 and the newest files will download for the newest options and updates.
 
 - 4. Read the wiki pages to configure your programs accordingly!
   - http://wiki.plexguide.com
