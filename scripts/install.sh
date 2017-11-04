@@ -1,6 +1,8 @@
 #!/bin/bash
 
-mv /opt/plexguide/tasks/plexguide /bin/
+cd /opt/plexguide/tasks/
+mv plexguide /bin
+cd /opt/plexguide
 sudo rm -r install.sh
 
 
