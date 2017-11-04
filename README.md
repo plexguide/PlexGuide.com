@@ -14,13 +14,8 @@ To build an automated setup through ease of use to ensure that you are maintaing
 The script installs plex and other programs to create simplistic use.  The script follows the logic of the manual methods, which you can study and learn).  This was made as a result of poor plexcloud performance and Google API bans.  This enables you to have an automated server that upload and downloads with your Google Drive mounted.  Basically, you eliminate all of the hard-drives that are sitting around and you can play from multiple plex servers with the same google mount!
 
 ### What's Installing & What Required
-- Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
-- Google Drive, Ubunt 16.04 and USENET Indexers and Servers
-
-### Version Information
-- V4   - When programming phase is complete
-- V3.5 - *** Current project *** Partially manual and partially automated
-- V3   - No programming, learn about the manual process @ http://manual.plexguide.com
+- Installing: Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
+- Required: Google Drive, Ubunt 16.04 and USENET Indexers and Servers
 
 ## Guide Order
 (Note: The folders will start to go away as the wiki is built)
@@ -60,9 +55,15 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 - Type http://PlexGuide.com to come back to this page!!!
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-## Contact  - [Admin9705] - Reddit
+### Contact  - [Admin9705] - Reddit
 
-## Port Numbers
+### Version Information
+- V4   - When programming phase is complete
+- V3.5 - *** Current project *** Partially manual and partially automated
+- V3   - No programming, learn about the manual process @ http://manual.plexguide.com
+
+
+### Port Numbers
 
 - Port 8015   Muximux
 - Port 19999  NetData
