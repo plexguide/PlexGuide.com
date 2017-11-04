@@ -86,7 +86,7 @@ read_options(){
 		   bash continue.sh
        ;;
         9)
-		   bash docker.sh
+		   bash emby.sh
 		   bash continue.sh
        ;;
 		10) exit 0;;
