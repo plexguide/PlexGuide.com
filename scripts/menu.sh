@@ -56,11 +56,12 @@ read_options(){
 		bash dep2.sh
 		bash individual-menu.sh
 		;;
-		3) exit 0;;
-        4)
+		3) 
         cd upgrade.sh
         bash continue.sh
         ;;
+        4)
+        exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
