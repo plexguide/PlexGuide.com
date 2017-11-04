@@ -1,4 +1,4 @@
-# PlexGuide.com - The Awesome Plex Server V3.5
+# PlexGuide.com - V3.5
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
