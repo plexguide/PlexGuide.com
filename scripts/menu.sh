@@ -65,6 +65,7 @@ read_options(){
         echo 
         read -n 1 -s -r -p "Press any key to continue"
         clear
+        echo Remember, restart by typing:  plexguide
         exit 0;;
         4)
         exit 0;;
