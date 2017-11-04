@@ -37,11 +37,11 @@ show_menus() {
 	echo "1.  Install: Plex"
 	echo "2.  Install: NetData"
 	echo "3.  Install: SSH"
-	echo "4.  Install: Ombi v3 (Beta)"
-	echo "5.  Install: Sonarr"
-	echo "6.  Install: Radarr"
-	echo "7.  Install: SABNZBD"
-	echo "8.  Install: DOCKER & Portainer"
+	echo "4.  Install: Sonarr"
+	echo "5.  Install: Radarr"
+	echo "6.  Install: SABNZBD"
+	echo "7.  Install: DOCKER & Portainer"
+	echo "8   Docker : Ombi v3   (Requires Docker)"
 	echo "9.  Docker : Emby      (Requires Docker)"
 	echo "10. Docker : PlexyPy   (Requires Docker)"
 	echo "11. Docker : Muximux   (Requires Docker)"
@@ -68,23 +68,23 @@ read_options(){
 		   bash continue.sh
        ;;
         4)
-		   bash ombi.sh
-		   bash continue.sh
-       ;;
-        5)
 		   bash sonarr.sh
 		   bash continue.sh	
        ;;
-        6)
+        5)
 		   bash radarr.sh
 		   bash continue.sh	
        ;;
-        7)
+        6)
            bash sabnzbd.sh
 		   bash continue.sh
        ;;
-        8)
+        7)
 		   bash docker.sh
+		   bash continue.sh
+       ;;
+        8)
+		   bash ombi.sh
 		   bash continue.sh
        ;;
         9)

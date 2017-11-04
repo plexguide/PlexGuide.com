@@ -1,0 +1,18 @@
+---
+version: '2'
+services:
+ muximux:
+   image:  lsiodev/ombi-preview
+   container_name: ombiv3
+# If you want your ip or domain to load this directly, change the 8015 to 80 (80:80).
+# If you plan on creating a web-interface; leave as 8015; port 80 is reserved for your website
+   ports:
+     - 3579:5000
+   volumes:
+     - /opt/appdata/ombiv3:/config
+     - /etc/localtime:/etc/localtime:us
+   environment:
+     - PUID=0
+     - PGID=0
+   restart:
+     always
