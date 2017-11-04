@@ -29,7 +29,7 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the PlexGuide Installer v3.5 - 0004
+	echo Welcome to the PlexGuide Installer v3.5 - 0005
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
@@ -59,7 +59,12 @@ read_options(){
 		3) 
         cd /opt/plexguide/scripts/
         bash upgrade.sh
+        clear
+        echo You are required to restart the program. Restart the program after by typing: plexguide
+        echo 
+        echo Press any key ... 
         bash continue.sh
+        exit 0;;
         ;;
         4)
         exit 0;;
