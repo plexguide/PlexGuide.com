@@ -24,11 +24,21 @@ The script installs plex and other programs to create simplistic use.  The scrip
 - 2. Folder 2: Manual Required Processes! (Read & Follow - will be automated)
 - 3. Execute the following below:
 
+Install GIT
 ```sh
 sudo apt-get install git
+```
+
+To Install PlexGuide
+```sh
 sudo rm -r /opt/plexg* 2>/dev/nu*
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-sudo bash /opt/plexg*/m*
+sudo bash /opt/plexg*/ins*
+```
+
+To Execute PlexGuide just type
+```sh
+plexguide
 ```
 
 - 4. Read the wiki pages to configure your programs accordingly!
