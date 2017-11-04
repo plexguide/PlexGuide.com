@@ -17,10 +17,11 @@ The script installs plex and other programs to create simplistic use.  The scrip
 - V3.5 - *** Current project *** Partially manual and partially automated
 - V3   - No programming, learn about the manual process @ https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/tree/Version-3
 
+## Guide Order
 
-## 
-
-Ensure to read folder 1 for understanding and execute actions in folder 2 prior (will be automated later). Also, you will have a choice on what you want to install.
+- Folder 1: FYI reading material
+- Folder 2: Manual Required Processes! (Read & Follow - will be automated)
+- Execute the following below:
 
 ### Automated Method
 
@@ -31,9 +32,8 @@ sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Serve
 sudo bash /tmp/plex*/s*/ma*
 ```
 
-#### Manual Method (Version 3)
-
-
+- Read the wiki pages on *** how *** to configure your programs accordingly: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Main-Page
+- Folder 5: (Opitional) Build a website front end for your server
 
 ## Thanks & Social Contacts
 
@@ -42,11 +42,7 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 - Type http://PlexGuide.com to come back to this page!!!
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-**Encryption & Security:** This guide is written as a baseline.  Security is always important and security always comes in the form of risk management. Deiteq is maintaining the RClone & UnionFS Encrytpion! Thanks!
-
-*Feel free* to point out issues, suggestions, and even testing this guide and adding to it.   All I care about is putting together some information that's scattered all over the web and making life easier through an automated setup.
-
-#### Contact  - [Admin9705] - Reddit
+## Contact  - [Admin9705] - Reddit
 
 ## Port Numbers
 
