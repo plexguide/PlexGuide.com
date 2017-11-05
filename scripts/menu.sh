@@ -30,6 +30,8 @@ two(){
 show_menus() {
 	clear
 	echo "Welcome to the PlexGuide.com Installer v3.5 - 5 NOV"
+	echo
+	echo "Note: It will always prompt you for installs on each program"
 	echo 
 	echo "Google Drive Only: If you are mounting your google drive,"
 	echo "you must install part 1 first (plexdrive4). http://plexdrive.plexguide.com"
@@ -40,7 +42,7 @@ show_menus() {
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install PlexDrive4 "
-	echo "2. Mass Program Install"
+	echo "2. Mass Program Install (For Brand New Server)"
 	echo "3. Individual Program Install"
 	echo "4. Update this PlexGuide.com Program"
 	echo "5. Exit"
