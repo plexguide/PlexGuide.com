@@ -36,13 +36,16 @@ show_menus() {
     echo "If you are having errors, bad pages, or didn't let the"
     echo "install finish, but cannot get it to start; select option #3"
     echo "This will allow you to run Option [1] again"
+    echo
+    echo "I highly recommend you check on http://plexdrive.plexguide.com"
+    echo "before starting the entire process"
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " P-L-E-X-D-R-I-V-E-4"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install PlexDrive"
 	echo "2. Enable PlexDrive Service"
-	echo "3. Delete Current PlexDrive Tokens (Not Working)"
+	echo "3. Delete Current PlexDrive Tokens"
 	echo "4. Exit"
 }
 # read input from the keyboard and take a action

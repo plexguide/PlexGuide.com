@@ -29,12 +29,17 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the PlexGuide.com Installer v3.5 - 5 NOV
+	echo "Welcome to the PlexGuide.com Installer v3.5 - 5 NOV"
+	echo 
+	echo "Google Drive Only: If you are mounting your google drive,"
+	echo "you must install part 1 first (plexdrive4). http://plexdrive.plexguide.com"
 	echo
+	echo "Non-Google Drive setup, skip part 1"
+    echo	
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install PlexDrive4 (Somwhat Ready / Recommend Manual Install)"
+	echo "1. Install PlexDrive4 "
 	echo "2. Mass Program Install"
 	echo "3. Individual Program Install"
 	echo "4. Update this PlexGuide.com Program"
