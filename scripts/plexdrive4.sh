@@ -60,6 +60,7 @@ EOF
     systemctl enable plexdrive4.service
 
 ## Display 2nd Warning Message
+clear
 cat << EOF
 WINDOWS USERS ONLY: When you copy and paste information from the terminal,
 utilize CTRL + Insert to copy.  Do not use CTRL + C or copy and right click
@@ -75,6 +76,7 @@ come back to this menu again and select option [2] to ENABLE the plexdrive4
 service.  If you forget, you will never see your items mount at
 /mnt/plexdrive4 until YOU REBOOT
 EOF
+    echo
     bash continue.sh
     clear
     cd /tmp
