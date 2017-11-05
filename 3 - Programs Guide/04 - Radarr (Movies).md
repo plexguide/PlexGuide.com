@@ -78,7 +78,7 @@ sudo systemctl status radarr.service
     - WEBDL-480p
     - SDTV
     - [Click] save changes at top right
-- Indexers Tab: You will need at least one provider. See root area for a file called "Indexers".
+- Indexers Tab: You will need at least one provider.
   - SABNZBD:  Turn this one on
     - Name: SABNZBD
     - Host: Domain or IPV4 Address
