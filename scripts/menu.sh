@@ -29,7 +29,7 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo "Welcome to the PlexGuide.com Installer v3.5 - 5 NOV III"
+	echo "Welcome to the PlexGuide.com Installer v3.5 - 5 NOV IV"
 	echo
 	echo "Note: It will always prompt you for installs on each program"
 	echo

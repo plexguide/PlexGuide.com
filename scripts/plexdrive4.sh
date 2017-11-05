@@ -7,10 +7,10 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
-    echo "Very Important - Once PlexDrive is running (blue letters)"
-    echo "whatever you do, do not shut down the computer until"
-    echo "PlexDrive4 completes the scan."
-    echo
+    cat << EOF
+    Very Important - Once PlexDrive is running (blue letters) whatever you do, do not shut down the computer until PlexDrive4 completes the scan.
+EOF
+    echo ""
     echo "You should see all your folders under /mnt/plexdrive4."
     echo "when complete.  You can complete other tasks by OPENING UP"
     echo "a second/another console-terminal window. Ensure that you have"
