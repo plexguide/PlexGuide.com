@@ -63,8 +63,13 @@ read_options(){
 		2)
         systemctl restart plexdrive4
         ;;
+        echo
+        echo "PlexDrive4 Service started/restarted"
+        echo
+        read -n 1 -s -r -p "Press any key to continue"
 		3)
         rm -r /root/.plexdrive
+        echo
         echo "Tokens Removed"
         echo
         read -n 1 -s -r -p "Press any key to continue"
