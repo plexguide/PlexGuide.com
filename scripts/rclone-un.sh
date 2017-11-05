@@ -61,14 +61,15 @@ EOF
 
 ## Create the RClone Service
 tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
-## Create the PlexDrive4 Service
 [Unit]
-Description=PlexDrive4 Service
+Description=RClone Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 --fuse-options=allow_other --refresh-interval=1m /mnt/plexdrive4
+User=root
+Group=root
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
