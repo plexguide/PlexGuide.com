@@ -43,6 +43,7 @@ bash continue.sh
 bash rclone-config.sh
 
 ## Copying the config from the local folder to the root folder
+
 sudo mkdir /root/.config && sudo mkdir /root/.config/rclone 2>dev/null
 sudo cp ~/.config/rclone/rclone.conf /root/.config/rclone 2>dev/null
 
@@ -144,4 +145,3 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable move.service
 sudo systemctl start move.service
-bash continue.sh
