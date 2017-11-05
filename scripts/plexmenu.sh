@@ -62,7 +62,7 @@ read_options(){
         bash plexdrive-service-move.sh
         ;;
 		3) 
-        sudo rm -r /root/.plexdrive
+        rm -r /root/.plexdrive
         echo "Tokens Removed"
         echo
 		;;
