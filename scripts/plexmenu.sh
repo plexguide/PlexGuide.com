@@ -57,16 +57,16 @@ read_options(){
 	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1)
-		cd /opt/plexguide/scripts/
-		bash plexguide.sh
-		;;
+		    cd /opt/plexguide/scripts/
+		    bash plexguide.sh
+		    ;;
 		2)
         systemctl restart plexdrive4
-        ;;
         echo
         echo "PlexDrive4 Service started/restarted"
         echo
         read -n 1 -s -r -p "Press any key to continue"
+        ;;
 		3)
         rm -r /root/.plexdrive
         echo
@@ -74,7 +74,7 @@ read_options(){
         echo
         read -n 1 -s -r -p "Press any key to continue"
         clear
-		;;
+		      ;;
         4)
         clear
         echo Remember, restart by typing:  plexguide
