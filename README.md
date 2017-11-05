@@ -25,7 +25,7 @@ You can install without using Google Drive and without USENET, but you will have
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Folder 1: Required Processes! (Read & Follow It - It will be automated)
+- **3.** Folder 1: Required Processes!(Pick an Rclone Version) (Read & Follow It - It will be automated)
 - **4.** Execute the following below:
 
 Install GIT
@@ -50,8 +50,8 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 
 - **5.** When you execute the program, if using G-Drive, execute Part 1. Other storage reasons, not needed.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
-- **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **7.** Folder 5: (Optional) Build a website front end for your server.
+- **7.** Configure your programs accordingly with >> http://wiki.plexguide.com
+- **8.** Folder 2 (Optional) Build a website front end for your server.
 
 ## Thanks & Social Contacts
 
@@ -66,7 +66,6 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 - V4   - When programming phase is complete
 - V3.5 - *** Current project *** Partially manual and partially automated
 - V3   - No programming, learn about the manual process @ http://manual.plexguide.com
-
 
 ### Port Numbers
 
