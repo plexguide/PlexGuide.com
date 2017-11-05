@@ -48,7 +48,7 @@ sudo cp ~/.config/rclone/rclone.conf /root/.config/rclone 2>dev/null
 
 ## Replace Fuse by removing the # from user_allow_toerh
 rm -r /etc/fuse.conf
-tee "/etc/fuse" > /dev/null <<EOF
+tee "/etc/fuse.conf" > /dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
 
 # Set the maximum number of FUSE mounts allowed to non-root users.
