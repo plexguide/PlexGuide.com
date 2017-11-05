@@ -40,7 +40,7 @@ echo
 cd /opt/plexguide/scripts/
 bash continue.sh
 
-rclone config
+bash rclone-config.sh
 
 ## Copying the config from the local folder to the root folder
 sudo mkdir /root/.config && sudo mkdir /root/.config/rclone 2>dev/null
