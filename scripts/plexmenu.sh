@@ -1,5 +1,5 @@
 #!/bin/bash
-# A menu driven shell script sample template 
+# A menu driven shell script sample template
 ## ----------------------------------
 # Step #1: Define variables
 # ----------------------------------
@@ -7,7 +7,7 @@ EDITOR=vim
 PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
- 
+
 # ----------------------------------
 # Step #2: User defined function
 # ----------------------------------
@@ -19,13 +19,13 @@ one(){
 	echo "one() called"
         pause
 }
- 
+
 # do something in two()
 two(){
 	echo "two() called"
         pause
 }
- 
+
 # function to display menus
 show_menus() {
 	clear
@@ -40,11 +40,11 @@ show_menus() {
     echo "I highly recommend you check on http://plexdrive.plexguide.com"
     echo "before starting the entire process"
 	echo
-	echo "~~~~~~~~~~~~~~~~~~~~~"	
+	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo " P-L-E-X-D-R-I-V-E-4"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install PlexDrive"
-	echo "2. Enable PlexDrive Service"
+	echo "2. Service: Start/Restart PlexDrive Service"
 	echo "3. Delete Current PlexDrive Tokens"
 	echo "4. Exit"
 }
@@ -61,10 +61,9 @@ read_options(){
 		bash plexdrive4.sh
 		;;
 		2)
-        cd /opt/plexguide/scripts/
-        bash plexdrive-service-move.sh
+        systemctl restart plexdrive4
         ;;
-		3) 
+		3)
         rm -r /root/.plexdrive
         echo "Tokens Removed"
         echo
@@ -78,21 +77,18 @@ read_options(){
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
- 
+
 # ----------------------------------------------
 # Step #3: Trap CTRL+C, CTRL+Z and quit singles
 # ----------------------------------------------
 trap '' SIGINT SIGQUIT SIGTSTP
- 
+
 # -----------------------------------
 # Step #4: Main logic - infinite loop
 # ------------------------------------
 while true
 do
- 
+
 	show_menus
 	read_options
 done
-
-
-            
