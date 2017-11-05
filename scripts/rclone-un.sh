@@ -31,7 +31,9 @@ echo "Quick Instructions - Write Down or goto website"
 echo "[N] New Remote, [9] Google, Enter Info, Verify, Ok, and Continue"
 echo "[N] New Remote, [11] Local, Type /mnt/rclone-move, Ok, and Quit"
 echo
+
 bash continue.sh
+
 rclone config
 
 ## Copying the config from the local folder to the root folder
