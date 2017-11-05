@@ -29,16 +29,17 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the PlexGuide.com Installer v3.5 - 5 NOV
+	echo "Note: Enable PlexDrive Service AFTER PlexDrive Installs"
+	echo "If you do this before or after, you may have problems"
+	echo "with PlexDrive eveytime that you reboot"
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
-	echo " M A I N - M E N U"
+	echo " P-L-E-X-D-R-I-V-E-4"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install PlexDrive4 (Mandatory First)"
-	echo "2. Mass Program Install"
-	echo "3. Individual Program Install"
-	echo "4. Update this PlexGuide.com Program"
-	echo "5. Exit"
+	echo "1. Install PlexDrive"
+	echo "2. Enable PlexDrive Service"
+	echo "3. Delete Current PlexDrive Tokens (Not Working)"
+	echo "4. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -46,33 +47,23 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 5] " choice
+	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1)
 		cd /opt/plexguide/scripts/
-		bash plexmenu.sh
+		bash plexdrive4.sh
 		;;
 		2)
-        cd /opt/plexguide/scripts/
-        bash mass.sh
+        cd /opt/plexguide/scripts/plexdrive-service-move.sh
+        echo
+        echo "Does Nothing Yet"
         ;;
 		3) 
         cd /opt/plexguide/scripts/
-		bash dep2.sh
-		bash individual-menu.sh
+        echo "Does Nothing Yet"
+        echo
 		;;
-		4) 
-        cd /opt/plexguide/scripts/
-        bash upgrade.sh
-        clear
-        echo You are required to restart the program. 
-        echo Restart the program afterwards by typing:  plexguide
-        echo 
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-        echo Remember, restart by typing:  plexguide
-        exit 0;;
-        5)
+        4)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
