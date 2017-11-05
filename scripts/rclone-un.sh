@@ -26,10 +26,10 @@ chown root /mnt/rclone
 clear
 echo "Warning: You are going to make two rclone directories.  Please go"
 echo "to http://rclone.plexguide.com for instructions"
-
+ 
 echo "Quick Instructions - Write Down or goto website"
-echo "[N] New Remote, [9] Google, Enter Info, Verify, Ok, and continue"
-echo "[N] New Remote, [11] Local, Type /mnt/rclone-move, Ok, and quit"
+echo "[N] New Remote, [9] Google, Enter Info, Verify, Ok, and Continue"
+echo "[N] New Remote, [11] Local, Type /mnt/rclone-move, Ok, and Quit"
 echo
 bash continue.sh
 rclone config
