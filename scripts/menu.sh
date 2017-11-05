@@ -84,7 +84,7 @@ read_options(){
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
-        6)
+    6)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
