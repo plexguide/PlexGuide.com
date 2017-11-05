@@ -12,9 +12,12 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "PlexDrive4 completes the scan."
     echo
     echo "You should see all your folders under /mnt/plexdrive4."
-    echo "when complete.  You can complete other tasks, by OPENING UP"
-    echo "a second console-terminal window and ensure that you have"
+    echo "when complete.  You can complete other tasks by OPENING UP"
+    echo "a second/another console-terminal window. Ensure that you have"
     echo "your Google Secret/Password ready for this action!"
+    echo
+    echo "Obtain Google Information at http://googleapi.plexguide.com"
+    echo "More PlexDrive information at http://plexdrive.plexguide.com"
     echo
     read -n 1 -s -r -p "Press any key to continue"
     clear
@@ -28,16 +31,16 @@ if echo "$answer" | grep -iq "^y" ;then
     systemctl enable mongod
     systemctl start mongod
     clear
-    echo "Important for WINDOWS Users: When you have to copy and paste"
-    echo "from terminal, USE CTRL + Insert.  DO NOT use CTRL +C or right "
-    echo "click on terminal.  If you mess it up, select OPTION 3 on the main"
-    echo "menu and start with Option [1] again"
+    echo "WINDOWS USERS ONLY: When you copy and paste from terminal,"
+    echo "USE CTRL + Insert.  DO NOT use CTRL +C or right click on terminal."
+    echo "If you mess it up, select OPTION 3 on the main"
+    echo "menu and start with Option [1] again."
     echo
     echo "Again, when you see the BLUE Letters moving until it nearly stops"
     echo "leave this window terminal open.  When it's complete, close it and"
     echo "come back to the same menu and select Option [2] about the plexdrive"
-    echo "service. If you forget, you'll never have content at /mnt/plexdrive4"
-    echo "until you do so!"
+    echo "service. If you forget, you will never have content at /mnt/plexdrive4"
+    echo "you enable the service!"
     echo
     echo "If at anytime the program gets stuck, Press CTRL+Z ([3]delete keys and rerun)"
     echo
@@ -51,7 +54,7 @@ if echo "$answer" | grep -iq "^y" ;then
     chown root:root /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
     mkdir /mnt/plexdrive4 2>dev/null
-    chmod 755 /mnt/plexdrive4
+    chmod 755 /mnt/plexdrive4 2>dev/null
     plexdrive4 --uid=0 --gid=0 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
     clear
     cd /opt/plexguide/scripts
