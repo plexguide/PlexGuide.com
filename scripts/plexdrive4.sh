@@ -8,12 +8,13 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
     echo "Very Important - Once PlexDrive is running (blue letters)"
-    echo "make sure to press CTRL+C. Whatever you do, do not shut"
-    echo "down the computer until PlexDrive4 completed the scan."
+    echo "whatever you do, do not shut down the computer until"
+    echo " PlexDrive4 completes the scan."
     echo
     echo "You should see all your folders under /mnt/plexdrive4."
-    echo "Again, press CTRL + C once it's running the scan to "
-    echo "continue onward."
+    echo "when complete.  You can do other things, by OPENING UP"
+    echo "a second console-terminal window. Ensure that you have"
+    echo "your Google Secret/Password ready"
     echo
     read -n 1 -s -r -p "Press any key to continue"
     clear
