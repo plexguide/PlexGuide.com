@@ -13,13 +13,6 @@ Build an automated setup to ensure that you are maintaing a steady and reliable 
 ## Purpose
 Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive. 
 
-### What's Installing & What Required
-- Can Install: Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr, Wordpress
-- Highly Recommended: Google Drive, Ubuntu 16.04 and USENET Indexers and Servers
-
-#### Note
-You can install without using Google Drive and without USENET, but you will have to make some of your own adjustments
-
 ## Guide Order
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
@@ -62,7 +55,7 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - V3.5 - *** Current project *** Partially manual and partially automated
 - V3   - No programming, learn about the manual process @ http://manual.plexguide.com
 
-### Port Numbers
+### What You Can Install
 
 - Port 8015   Muximux
 - Port 19999  NetData
@@ -74,3 +67,6 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - Port 7878   Radarr 
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
+- Port 80     Wordpress
+
+*In Addition* - Docker, PlexDrive, RClone, UnionFS
