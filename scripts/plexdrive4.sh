@@ -24,9 +24,9 @@ if echo "$answer" | grep -iq "^y" ;then
     apt-get install -y mongodb-org
     
     ## Enable Mongod Service
-    sudo systemctl daemon-reload
-    sudo systemctl enable mongod
-    sudo systemctl start mongod
+    systemctl daemon-reload
+    systemctl enable mongod
+    systemctl start mongod
     clear
     echo "Important for WINDOWS Users: When you have to copy and paste"
     echo "from terminal, USE CTRL + Insert.  DO NOT use CTRL +C or right "
