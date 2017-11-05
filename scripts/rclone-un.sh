@@ -32,6 +32,7 @@ echo "[N] New Remote, [9] Google, Enter Info, Verify, Ok, and Continue"
 echo "[N] New Remote, [11] Local, Type /mnt/rclone-move, Ok, and Quit"
 echo
 
+cd /opt/plexguide/scripts/
 bash continue.sh
 
 rclone config
