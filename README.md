@@ -1,6 +1,6 @@
 # PlexGuide.com - The Awesome Plex Server V3
 
-*** Note:*** This is the older version.  This guide will be maintained for educational purposes and allowing users to compare this version against future versions to see where aspects are related.
+*** Note:*** This is the older version - All manual installation.  This guide will be maintained for educational purposes and allowing users to compare this version against future versions to see where aspects are related.
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
