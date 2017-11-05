@@ -8,14 +8,14 @@
 http://manual.plexguide.com
 
 ## Mission Statement
-To build an automated setup through ease of use to ensure that you are maintaing a steady and uncomplicated server; while maintaing your media up-to-date through the use of USENET.
+Build an automated setup to ensure that you are maintaing a steady and reliable server, while maintaing your media is up-to-date (especially through the use of USENET - speed and security over torrents).
 
 ## Purpose
-The script installs plex and other programs to create simplistic use.  The script follows the logic of the manual methods, which you can study and learn).  This was made as a result of poor plexcloud performance and Google API bans.  This enables you to have an automated server that upload and downloads with your Google Drive mounted.  Basically, you eliminate all of the hard-drives that are sitting around and you can play from multiple plex servers with the same google mount!
+Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive. 
 
 ### What's Installing & What Required
-- Installing: Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
-- Highly Required: Google Drive, Ubunt 16.04 and USENET Indexers and Servers
+- Can Install: Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr, Wordpress
+- Highly Recommended: Google Drive, Ubuntu 16.04 and USENET Indexers and Servers
 
 #### Note
 You can install without using Google Drive and without USENET, but you will have to make some of your own adjustments
@@ -50,8 +50,7 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 
 - **5.** When you execute the program, if using G-Drive, execute Part 1. Other storage reasons, not needed.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
-- **7.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **8.** (Optional) Folder 2 (Going Away) and http://wiki.plexguide.com - Build a website front end for your server.
+- **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
 
 ## Thanks & Social Contacts
 
