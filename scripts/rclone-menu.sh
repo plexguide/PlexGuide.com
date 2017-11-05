@@ -49,11 +49,9 @@ read_options(){
 	case $choice in
 		1)
 		cd /opt/plexguide/scripts/
-		bash plexdrive4.sh
 		;;
 		2)
         cd /opt/plexguide/scripts/
-        bash plexdrive-service-move.sh
         ;;
 		3) 
         rm -r /root/.plexdrive
