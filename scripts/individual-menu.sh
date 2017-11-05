@@ -45,7 +45,8 @@ show_menus() {
 	echo "9.  Docker : PlexyPy   (Requires Docker)"
 	echo "10. Docker : NetData   (Requires Docker)"
 	echo "11. Docker : Muximux   (Requires Docker)"
-	echo "12. Exit"
+	echo "12. Docker : Wordpress (Requires Docker) << TESTING"
+	echo "13. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -53,7 +54,7 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 12 ] " choice
+	read -p "Enter choice [ 1 - 13 ] " choice
 	case $choice in
 		1) 
            bash plex.sh
@@ -99,7 +100,11 @@ read_options(){
 		   bash muximux.sh
 		   bash continue.sh
        ;;
-		12) exit 0;;
+        12)
+		   bash wordpress.sh
+		   bash continue.sh
+       ;;
+		13) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
