@@ -8,7 +8,8 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
     cat << EOF
-    Very Important - Once PlexDrive is running (blue letters) whatever you do, do not shut down the computer until PlexDrive4 completes the scan.
+Very Important: Once PlexDrive is running (blue letters) whatever you do,
+do not shut down the computer until PlexDrive4 completes the scan.
 EOF
     echo ""
     echo "You should see all your folders under /mnt/plexdrive4."
