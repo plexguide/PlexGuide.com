@@ -55,8 +55,7 @@ read_options(){
 		;;
 		2)
         cd /opt/plexguide/scripts/
-        echo
-        bash pledrive-service-move.sh
+        bash plexdrive-service-move.sh
         ;;
 		3) 
         cd /opt/plexguide/scripts/
