@@ -58,7 +58,7 @@ read_options(){
 	case $choice in
 		1)
 		cd /opt/plexguide/scripts/
-		bash plexdrive4.sh
+		bash plexguide.sh
 		;;
 		2)
         systemctl restart plexdrive4
