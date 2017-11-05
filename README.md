@@ -8,24 +8,16 @@
 http://manual.plexguide.com
 
 ## Mission Statement
-To build an automated setup through ease of use to ensure that you are maintaing a steady and uncomplicated server; while maintaing your media up-to-date through the use of USENET.
+Build an automated setup to ensure that you are maintaing a steady and reliable server, while maintaing your media is up-to-date (especially through the use of USENET - speed and security over torrents).
 
 ## Purpose
-The script installs plex and other programs to create simplistic use.  The script follows the logic of the manual methods, which you can study and learn).  This was made as a result of poor plexcloud performance and Google API bans.  This enables you to have an automated server that upload and downloads with your Google Drive mounted.  Basically, you eliminate all of the hard-drives that are sitting around and you can play from multiple plex servers with the same google mount!
-
-### What's Installing & What Required
-- Installing: Docker, NetData, Ombi, PlexDrive4, Plex, PlexPy, Muximux, Radarr, SABNZBD, Sonarr
-- Highly Required: Google Drive, Ubunt 16.04 and USENET Indexers and Servers
-
-#### Note
-You can install without using Google Drive and without USENET, but you will have to make some of your own adjustments
+Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive. 
 
 ## Guide Order
-(Note: The folders will start to go away as the wiki is built)
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Folder 1: Required Processes! (Pick an Rclone Version) (Read & Follow It - It will be automated)
+- **3.** Folder 1: Required Processes! (Pick an Rclone Version) (Read & Follow It - It will become automated)
 - **4.** Execute the following below:
 
 Install GIT
@@ -50,24 +42,20 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 
 - **5.** When you execute the program, if using G-Drive, execute Part 1. Other storage reasons, not needed.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
-- **7.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **8.** (Optional) Folder 2 (Going Away) and http://wiki.plexguide.com - Build a website front end for your server.
+- **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
 
 ## Thanks & Social Contacts
 
-Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
-
-- Type http://PlexGuide.com to come back to this page!!!
+- Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
-
-### Contact  - [Admin9705] - Reddit
+- Reddit Contact  - [Admin9705] - Reddit
 
 ### Version Information
 - V4   - When programming phase is complete
 - V3.5 - *** Current project *** Partially manual and partially automated
 - V3   - No programming, learn about the manual process @ http://manual.plexguide.com
 
-### Port Numbers
+### What You Can Install
 
 - Port 8015   Muximux
 - Port 19999  NetData
@@ -79,3 +67,6 @@ Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs
 - Port 7878   Radarr 
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
+- Port 80     Wordpress
+
+*In Addition* - Docker, PlexDrive, RClone, UnionFS
