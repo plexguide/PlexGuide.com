@@ -56,7 +56,7 @@ read_options(){
 		2)
         cd /opt/plexguide/scripts/plexdrive-service-move.sh
         echo
-        echo "Does Nothing Yet"
+        bash pledrive-service-move.sh
         ;;
 		3) 
         cd /opt/plexguide/scripts/
