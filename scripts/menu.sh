@@ -43,10 +43,10 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install: PlexDrive 4"
 	echo "2. Install: RClone (Not Operational Yet)"
-	echo "2. Install: New Server Setup"
-	echo "3. Install: Programs Individually"
-	echo "4. Update : PlexGuide Program"
-	echo "5. Exit"
+	echo "3. Install: New Server Setup"
+	echo "4. Install: Programs Individually"
+	echo "5. Update : PlexGuide Program"
+	echo "6. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
