@@ -25,7 +25,7 @@ You can install without using Google Drive and without USENET, but you will have
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Folder 1: Required Processes!(Pick an Rclone Version) (Read & Follow It - It will be automated)
+- **3.** Folder 1: Required Processes! (Pick an Rclone Version) (Read & Follow It - It will be automated)
 - **4.** Execute the following below:
 
 Install GIT
