@@ -34,7 +34,7 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install PlexDrive4 (Mandatory First)"
+	echo "1. Install PlexDrive4 (Somwhat Ready / Recommend Manual Install)"
 	echo "2. Mass Program Install"
 	echo "3. Individual Program Install"
 	echo "4. Update this PlexGuide.com Program"

@@ -33,6 +33,10 @@ show_menus() {
 	echo "If you do this before or after, you may have problems"
 	echo "with PlexDrive eveytime that you reboot"
 	echo
+    echo "If you are having errors, bad pages, or didn't let the"
+    echo "install finish, but cannot get it to start; select option #3"
+    echo "This will allow you to run Option [1] again"
+	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " P-L-E-X-D-R-I-V-E-4"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
@@ -58,8 +62,8 @@ read_options(){
         bash plexdrive-service-move.sh
         ;;
 		3) 
-        cd /opt/plexguide/scripts/
-        echo "Does Nothing Yet"
+        sudo rm -r /root/.plexdrive
+        echo "Tokens Removed"
         echo
 		;;
         4)
