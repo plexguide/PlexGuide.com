@@ -78,7 +78,7 @@ sudo systemctl status sonarr.service
      - SDTV
      - Unknown
   - [Click] save changes at top right
-- Indexers Tab: You will need at least one provider. See root area for a file called "Indexers".
+- Indexers Tab: You will need at least one provider.
   - Download Client Tab:
     - SABNZBD:  Turn this one on
     - Name: SABNZBD
