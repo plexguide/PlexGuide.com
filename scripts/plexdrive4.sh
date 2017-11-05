@@ -36,8 +36,8 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "If you mess it up, select OPTION 3 on the main"
     echo "menu and start with Option [1] again."
     echo
-    echo "Again, when you see the BLUE Letters moving until it nearly stops"
-    echo "leave this window terminal open.  When it's complete, close it and"
+    echo "Again, when you see blue numbers about Processed, Deleted, Updated,"
+    echo "leave this terminal window open.  When it's complete, close it and"
     echo "come back to the same menu and select Option [2] about the plexdrive"
     echo "service. If you forget, you will never have content at /mnt/plexdrive4"
     echo "you enable the service!"
