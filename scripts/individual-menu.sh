@@ -42,8 +42,8 @@ show_menus() {
 	echo "6.  Install: DOCKER & Portainer"
 	echo "7   Docker : Ombi v3   (Requires Docker)"
 	echo "8.  Docker : Emby      (Requires Docker)"
-	echo "9. Docker : PlexyPy   (Requires Docker)"
-	echo "10. Docker : NetData   (Requires Docker"
+	echo "9.  Docker : PlexyPy   (Requires Docker)"
+	echo "10. Docker : NetData   (Requires Docker)"
 	echo "11. Docker : Muximux   (Requires Docker)"
 	echo "12. Exit"
 }
