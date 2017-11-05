@@ -54,12 +54,9 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 
 ## Thanks & Social Contacts
 
-Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
-
-- Type http://PlexGuide.com to come back to this page!!!
+- Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
-
-### Contact  - [Admin9705] - Reddit
+- Reddit Contact  - [Admin9705] - Reddit
 
 ### Version Information
 - V4   - When programming phase is complete
