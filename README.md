@@ -21,11 +21,10 @@ Installs Plex and other programs. This was made as a result of poor plexcloud pe
 You can install without using Google Drive and without USENET, but you will have to make some of your own adjustments
 
 ## Guide Order
-(Note: The folders will start to go away as the wiki is built)
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Folder 1: Required Processes! (Pick an Rclone Version) (Read & Follow It - It will be automated)
+- **3.** Folder 1: Required Processes! (Pick an Rclone Version) (Read & Follow It - It will become automated)
 - **4.** Execute the following below:
 
 Install GIT
