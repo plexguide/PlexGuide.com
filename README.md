@@ -1,5 +1,7 @@
 # PlexGuide.com - The Awesome Plex Server V3
 
+*** Note:*** This is the older version.  This guide will be maintained for educational purposes and allowing users to compare this version against future versions to see where aspects are related.
+
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
 Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
