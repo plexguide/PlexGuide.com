@@ -12,3 +12,4 @@
         bash netdata.sh
         bash plexpy.sh
         bash muximux.sh
+        bash wordpress.sh

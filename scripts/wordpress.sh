@@ -14,4 +14,5 @@ else
     clear
     echo Not Installed - Wordpress
     echo 
+    
 fi
