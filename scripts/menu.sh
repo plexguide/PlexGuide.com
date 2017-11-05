@@ -51,6 +51,7 @@ read_options(){
 		1)
 		cd /opt/plexguide/scripts/
 		bash plexguide4.sh
+		;;
 		2)
         cd /opt/plexguide/scripts/
         bash mass.sh
