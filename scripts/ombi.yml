@@ -10,7 +10,7 @@ services:
      - 3579:3579
    volumes:
      - /opt/appdata/ombiv3:/config
-     - /etc/localtime:/etc/localtime:us
+     - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=0
      - PGID=0
