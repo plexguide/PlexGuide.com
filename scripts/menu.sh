@@ -29,15 +29,16 @@ two(){
 # function to display menus
 show_menus() {
 	clear
-	echo Welcome to the PlexGuide.com Installer v3.5 - 4 NOV
+	echo Welcome to the PlexGuide.com Installer v3.5 - 5 NOV
 	echo
 	echo "~~~~~~~~~~~~~~~~~~~~~"	
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install - Mass Programs (Only for a New Server)"
-	echo "2. Install - Individual Programs"
-	echo "3. Update PlexGuide"
-	echo "4. Exit"
+	echo "1. Install PlexDrive4 (Mandatory First)"
+	echo "2. Mass Program Install"
+	echo "3. Individual Program Install"
+	echo "4. Update this PlexGuide.com Program"
+	echo "5. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -45,18 +46,21 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 4] " choice
+	read -p "Enter choice [ 1 - 5] " choice
 	case $choice in
 		1)
+		cd /opt/plexguide/scripts/
+		bash plexguide4.sh
+		2)
         cd /opt/plexguide/scripts/
         bash mass.sh
                 ;;
-		2) 
+		3) 
         cd /opt/plexguide/scripts/
 		bash dep2.sh
 		bash individual-menu.sh
 		;;
-		3) 
+		4) 
         cd /opt/plexguide/scripts/
         bash upgrade.sh
         clear
@@ -67,7 +71,7 @@ read_options(){
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
-        4)
+        5)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
