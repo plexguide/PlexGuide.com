@@ -43,8 +43,6 @@ sudo apt install sabnzbdplus
 sudo nano /etc/systemd/system/sabnzbd.service
 ```
 
-- Copy & Paste the info below.  CHANGE THE 127.0.0.1 to your IPADDRESS or DOMAIN
-
 ```sh
 [Unit]
 Description=SABnzbd Usenet Client
@@ -55,7 +53,7 @@ Type=simple
 User=root
 Group=root
 
-ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 127.0.0.1:8090 --browser 0 &
+ExecStart=/usr/bin/python -OO /usr/bin/sabnzbdplus --server 0.0.0.0:8090 --browser 0 &
 ExecStop=/usr/bin/pkill sabnzbdplus
 RemainAfterExit=yes
 SyslogIdentifier=SABnzbd Usenet Client
