@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -n "Do you want to install Docker | Mumimux | Portainer (y/n)? "
+echo -n "Do you want to install Docker & Portainer (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -12,6 +12,6 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo Not Installed - Docker | Mumimux | Portainer
+    echo Not Installed - Docker and Portainer
     echo 
 fi
