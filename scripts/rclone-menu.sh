@@ -54,16 +54,7 @@ read_options(){
         cd /opt/plexguide/scripts/
         ;;
 		3) 
-        rm -r /root/.plexdrive
-        echo "Tokens Removed"
-        echo
-        read -n 1 -s -r -p "Press any key to continue"
-        clear
-		;;
-        4)
-        clear
-        echo Remember, restart by typing:  plexguide
-        exit 0;;
+		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
