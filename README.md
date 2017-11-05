@@ -2,7 +2,7 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-![N](https://image.ibb.co/b75Hcb/Snip20171104_27.png")
+![N](https://preview.ibb.co/g52mLw/Snip20171105_30.png")
 
 ## Manual Process and Manual Guide (for Learning)
 http://manual.plexguide.com
