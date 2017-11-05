@@ -1,5 +1,5 @@
 #!/bin/bash
-# A menu driven shell script sample template 
+# Main Menu for PlexGuide
 ## ----------------------------------
 # Step #1: Define variables
 # ----------------------------------
@@ -7,7 +7,7 @@ EDITOR=vim
 PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
- 
+
 # ----------------------------------
 # Step #2: User defined function
 # ----------------------------------
@@ -19,26 +19,26 @@ one(){
 	echo "one() called"
         pause
 }
- 
+
 # do something in two()
 two(){
 	echo "two() called"
         pause
 }
- 
+
 # function to display menus
 show_menus() {
 	clear
 	echo "Welcome to the PlexGuide.com Installer v3.5 - 5 NOV III"
 	echo
 	echo "Note: It will always prompt you for installs on each program"
-	echo 
+	echo
 	echo "Google Drive Only: If you are mounting your google drive,"
 	echo "you must install part 1 first (plexdrive4). http://plexdrive.plexguide.com"
 	echo
 	echo "Non-Google Drive setup, skip part 1"
-    echo	
-	echo "~~~~~~~~~~~~~~~~~~~~~"	
+    echo
+	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo " M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install: PlexDrive 4"
@@ -68,18 +68,18 @@ read_options(){
         cd /opt/plexguide/scripts/
         bash mass.sh
         ;;
-		4) 
+		4)
         cd /opt/plexguide/scripts/
 		bash dep2.sh
 		bash individual-menu.sh
 		;;
-		5) 
+		5)
         cd /opt/plexguide/scripts/
         bash upgrade.sh
         clear
-        echo You are required to restart the program. 
+        echo You are required to restart the program.
         echo Restart the program afterwards by typing:  plexguide
-        echo 
+        echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
         echo Remember, restart by typing:  plexguide
@@ -91,21 +91,18 @@ read_options(){
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
- 
+
 # ----------------------------------------------
 # Step #3: Trap CTRL+C, CTRL+Z and quit singles
 # ----------------------------------------------
 trap '' SIGINT SIGQUIT SIGTSTP
- 
+
 # -----------------------------------
 # Step #4: Main logic - infinite loop
 # ------------------------------------
 while true
 do
- 
+
 	show_menus
 	read_options
 done
-
-
-            
