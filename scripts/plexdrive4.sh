@@ -22,6 +22,12 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     apt-get update
     apt-get install -y mongodb-org
+    
+    ## Enable Mongod Service
+    sudo systemctl daemon-reload
+    sudo systemctl enable mongod
+    sudo systemctl start mongod
+    
     cd /tmp
     wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
     mv plexdrive-linux-amd64 plexdrive4
