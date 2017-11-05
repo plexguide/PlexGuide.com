@@ -144,3 +144,4 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable move.service
 sudo systemctl start move.service
+bash continue.sh
