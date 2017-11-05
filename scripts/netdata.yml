@@ -2,7 +2,7 @@
 version: '2'
 services:
  netdata:
-   image: titpetric/netdata
+   image: titpetric/netdata:latest
    container_name: netdata
    volumes:
      - /sys:/host/sys:ro

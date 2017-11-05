@@ -35,15 +35,15 @@ show_menus() {
 	echo " I-N-D-I-V-I-D-U-A-L"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1.  Install: Plex"
-	echo "2.  Install: NetData"
-	echo "3.  Install: SSH"
-	echo "4.  Install: Sonarr"
-	echo "5.  Install: Radarr"
-	echo "6.  Install: SABNZBD"
-	echo "7.  Install: DOCKER & Portainer"
-	echo "8   Docker : Ombi v3   (Requires Docker)"
-	echo "9.  Docker : Emby      (Requires Docker)"
-	echo "10. Docker : PlexyPy   (Requires Docker)"
+	echo "2.  Install: SSH"
+	echo "3.  Install: Sonarr"
+	echo "4.  Install: Radarr"
+	echo "5.  Install: SABNZBD"
+	echo "6.  Install: DOCKER & Portainer"
+	echo "7   Docker : Ombi v3   (Requires Docker)"
+	echo "8.  Docker : Emby      (Requires Docker)"
+	echo "9. Docker : PlexyPy   (Requires Docker)"
+	echo "10. Docker : NetData   (Requires Docker"
 	echo "11. Docker : Muximux   (Requires Docker)"
 	echo "12. Exit"
 }
@@ -59,40 +59,40 @@ read_options(){
            bash plex.sh
            bash continue.sh
        ;;
-		2) 
-		   bash netdata.sh
-		   bash continue.sh
-       ;;
-        3) 
+        2) 
 		   bash ssh.sh
 		   bash continue.sh
        ;;
-        4)
+        3)
 		   bash sonarr.sh
 		   bash continue.sh	
        ;;
-        5)
+        4)
 		   bash radarr.sh
 		   bash continue.sh	
        ;;
-        6)
+        5)
            bash sabnzbd.sh
 		   bash continue.sh
        ;;
-        7)
+        6)
 		   bash docker.sh
 		   bash continue.sh
        ;;
-        8)
+        7)
 		   bash ombi.sh
 		   bash continue.sh
        ;;
-        9)
+        8)
 		   bash emby.sh
 		   bash continue.sh
        ;;
-        10)
+        9)
 		   bash plexpy.sh
+		   bash continue.sh
+       ;;
+		10) 
+		   bash netdata.sh
 		   bash continue.sh
        ;;
         11)
