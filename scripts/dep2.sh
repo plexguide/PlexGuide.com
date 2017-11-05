@@ -7,9 +7,7 @@
     yes | apt-get install screen
     yes | apt-get install unzip
     yes | apt-get install python
-    yes | apt-get install software-properties-common    
+    yes | apt-get install curl   
     clear
-    echo Installed Required Programs
-    echo 
-    echo Installed update, nano, fuse, man-db, screen, unzip, python, curl
+    echo Installed: an update, nano, fuse, man-db, screen, unzip, python, curl
     echo
