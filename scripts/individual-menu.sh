@@ -45,7 +45,7 @@ show_menus() {
 	echo "9.  Docker : PlexyPy   (Requires Docker)"
 	echo "10. Docker : NetData   (Requires Docker)"
 	echo "11. Docker : Muximux   (Requires Docker)"
-	echo "12. Docker : Wordpress (Requires Docker) << TESTING"
+	echo "12. Docker : Wordpress (Requires Docker)"
 	echo "13. Exit"
 }
 # read input from the keyboard and take a action
