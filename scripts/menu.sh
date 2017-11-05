@@ -55,7 +55,7 @@ read_options(){
 		2)
         cd /opt/plexguide/scripts/
         bash mass.sh
-                ;;
+        ;;
 		3) 
         cd /opt/plexguide/scripts/
 		bash dep2.sh
