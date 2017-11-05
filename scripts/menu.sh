@@ -43,8 +43,8 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Install: PlexDrive 4"
 	echo "2. Install: RClone (Not Operational Yet)"
-	echo "3. Install: New Server Setup"
-	echo "4. Install: Programs Individually"
+	echo "3. Install: Programs Individually"
+	echo "4. Install: Programs Mass Install (New Server)"
 	echo "5. Update : PlexGuide Program"
 	echo "6. Exit"
 }
@@ -57,22 +57,22 @@ read_options(){
 	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
 		1)
-		cd /opt/plexguide/scripts/
-		bash plexmenu.sh
-		;;
+		    cd /opt/plexguide/scripts/
+		    bash plexmenu.sh
+		    ;;
 		2)
         cd /opt/plexguide/scripts/
         bash rclone-menu.sh
         ;;
 		3)
         cd /opt/plexguide/scripts/
-        bash mass.sh
+        bash dep2.sh
+        bash individual-menu.sh
         ;;
 		4)
         cd /opt/plexguide/scripts/
-		bash dep2.sh
-		bash individual-menu.sh
-		;;
+        bash mass.sh
+		    ;;
 		5)
         cd /opt/plexguide/scripts/
         bash upgrade.sh
