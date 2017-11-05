@@ -8,7 +8,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     sudo docker-compose -f netdata.yml up -d
     clear
-    echo Installed Ombi - Use Port 19999 with IP Address; hostname -I;
+    echo Installed NetData - Use Port 19999 with IP Address; hostname -I;
     echo
 else
     echo No
