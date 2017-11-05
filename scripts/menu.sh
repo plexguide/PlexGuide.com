@@ -50,7 +50,7 @@ read_options(){
 	case $choice in
 		1)
 		cd /opt/plexguide/scripts/
-		bash plexdrive.sh
+		bash plexdrive4.sh
 		;;
 		2)
         cd /opt/plexguide/scripts/
