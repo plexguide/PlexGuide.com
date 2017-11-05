@@ -22,7 +22,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     apt-get update
     apt-get install -y mongodb-org
-    
+
     ## Enable Mongod Service
     systemctl daemon-reload
     systemctl enable mongod
@@ -38,6 +38,9 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "come back to the same menu and select Option [2] about the plexdrive"
     echo "service. If you forget, you'll never have content at /mnt/plexdrive4"
     echo "until you do so!"
+    echo
+    echo "If at anytime the program gets stuck, Press CTRL+Z ([3]delete keys and rerun)"
+    echo
     bash continue.sh
     clear
     cd /tmp
@@ -58,5 +61,5 @@ else
     echo No
     clear
     echo Not Installed - PlexDrive
-    echo 
+    echo
 fi
