@@ -49,6 +49,7 @@ read_options(){
 	case $choice in
 		1)
 		cd /opt/plexguide/scripts/
+		bash rclone-menu.sh
 		;;
 		2)
         cd /opt/plexguide/scripts/
