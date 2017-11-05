@@ -51,7 +51,7 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - **5.** When you execute the program, if using G-Drive, execute Part 1. Other storage reasons, not needed.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
 - **7.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **8.** Folder 2 (Optional) Build a website front end for your server.
+- **8.** (Optional) Folder 2 (Going Away) and http://wiki.plexguide.com - Build a website front end for your server.
 
 ## Thanks & Social Contacts
 
