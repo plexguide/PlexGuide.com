@@ -1,0 +1,21 @@
+---
+version: '2'
+services:
+ emby:
+        image: emby/embyserver
+        container_name: emby
+        # net: host
+        ports:
+            - 8096:8096
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /opt/appdata/embyserver:/config
+            - /mnt:/shows
+            - /mnt/rclone-union/:/media
+        environment:
+            - VIRTUAL_PORT=8096
+            - VIRTUAL_HOST=emby.htpc
+            - AUTO_UPDATES_ON=true
+            - PUID=0
+            - PGID=0
+        restart: always

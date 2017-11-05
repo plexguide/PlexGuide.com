@@ -1,0 +1,15 @@
+---
+version: '2'
+services:
+ portainer:
+   image: portainer/portainer
+   container_name: portainer
+   command: --templates http://templates/templates.json
+   volumes:
+     - /opt/appdata/portainer:/data
+     - /var/run/docker.sock:/var/run/docker.sock
+   ports:
+     - 9000:9000
+# ensures this container starts up when required to
+   restart:
+     always

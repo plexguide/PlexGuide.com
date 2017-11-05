@@ -1,0 +1,16 @@
+---
+version: '2'
+services:
+ plexpy:
+   image: linuxserver/plexpy
+   container_name: plexpy
+   volumes:
+     - /opt/appdata/plexpy:/config
+     - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
+   ports:
+     - 8181:8181
+# ensures this container starts up when required to
+   restart: always
+   environment:
+     - PUID=1001    
+     - PGID=1001
