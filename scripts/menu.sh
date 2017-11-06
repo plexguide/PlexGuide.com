@@ -36,7 +36,7 @@ Using Google Drive? Part 1 and 2 are required.
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 ~~~~~~~~~~~~~~~~~~~~~
-  M A I N - M E N U"
+  M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
 1. Install: PlexDrive 4                    <<< Google Drive Only
 2. Install: RClone (Not Operational Yet)   <<< Google Drive Only
