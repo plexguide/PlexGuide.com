@@ -1,5 +1,5 @@
 #!/bin/bash
-# A menu driven shell script sample template 
+# A menu driven shell script sample template
 ## ----------------------------------
 # Step #1: Define variables
 # ----------------------------------
@@ -7,7 +7,7 @@ EDITOR=vim
 PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
- 
+
 # ----------------------------------
 # Step #2: User defined function
 # ----------------------------------
@@ -19,19 +19,19 @@ one(){
 	echo "one() called"
         pause
 }
- 
+
 # do something in two()
 two(){
 	echo "two() called"
         pause
 }
- 
+
 # function to display menus
 show_menus() {
 	clear
 	echo Welcome to the PlexGuide.com - Installer
 	echo
-	echo "~~~~~~~~~~~~~~~~~~~~~"	
+	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo " I-N-D-I-V-I-D-U-A-L"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "1.  Install: Plex"
@@ -46,7 +46,8 @@ show_menus() {
 	echo "10. Docker : NetData   (Requires Docker)"
 	echo "11. Docker : Muximux   (Requires Docker)"
 	echo "12. Docker : Wordpress (Requires Docker)"
-	echo "13. Exit"
+  echo "13. Docker : NGINX     (Not Ready)"
+	echo "14. Exit"
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -56,21 +57,21 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 13 ] " choice
 	case $choice in
-		1) 
+		1)
            bash plex.sh
            bash continue.sh
        ;;
-        2) 
+        2)
 		   bash ssh.sh
 		   bash continue.sh
        ;;
         3)
 		   bash sonarr.sh
-		   bash continue.sh	
+		   bash continue.sh
        ;;
         4)
 		   bash radarr.sh
-		   bash continue.sh	
+		   bash continue.sh
        ;;
         5)
            bash sabnzbd.sh
@@ -92,7 +93,7 @@ read_options(){
 		   bash plexpy.sh
 		   bash continue.sh
        ;;
-		10) 
+		   10)
 		   bash netdata.sh
 		   bash continue.sh
        ;;
@@ -104,22 +105,26 @@ read_options(){
 		   bash wordpress.sh
 		   bash continue.sh
        ;;
-		13) exit 0;;
+       13)
+     bash ngnix.sh
+     bash continue.sh
+      ;;
+		14) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
- 
+
 # ----------------------------------------------
 # Step #3: Trap CTRL+C, CTRL+Z and quit singles
 # ----------------------------------------------
 trap '' SIGINT SIGQUIT SIGTSTP
- 
+
 # -----------------------------------
 # Step #4: Main logic - infinite loop
 # ------------------------------------
 while true
 do
- 
+
 	show_menus
 	read_options
 done
