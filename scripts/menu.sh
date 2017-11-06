@@ -43,7 +43,7 @@ Written By: Github Admin9705 & Deiteq
 3. Install: Programs Individually
 4. Install: Programs Mass Install (New Server)
 5. Update : PlexGuide Program
-6. Exit"
+6. Exit
 EOF
 }
 # read input from the keyboard and take a action
