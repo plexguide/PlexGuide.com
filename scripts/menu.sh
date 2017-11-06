@@ -28,7 +28,7 @@ two(){
 
 # function to display menus
 show_menus() {
-echo << eof
+cat << EOF
 Welcome PlexGuide Installer 3.5 - 6 Nov
 
 Using Google Drive? Part 1 and 2 are required.
@@ -43,7 +43,7 @@ Written By: Github Admin9705 & Deiteq
 4. Install: Programs Mass Install (New Server)
 5. Update : PlexGuide Program
 6. Exit"
-eof
+EOF
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
