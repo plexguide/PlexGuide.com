@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Must Be Root
-if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root"
-   read -n 1 -s -r -p "Press any key to continue"
-   exit 1
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  read -n 1 -s -r -p "Press any key to continue"
+  exit
 fi
+
 
 ## Making the directories and setting the permissions
 mkdir /mnt/rclone-union 1>&2
