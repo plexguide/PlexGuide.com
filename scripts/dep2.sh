@@ -9,7 +9,7 @@
     yes | apt-get install fail2ban
     yes | apt-get install ufw
     yes | apt-get install python
-    yes | apt-get install curl   
+    yes | apt-get install curl
     clear
-    echo Installed: an update, nano, fuse, man-db, screen, unzip, fail2ban, ufw, python, curl
+    echo "Installed basic programs for this script to run"
     echo
