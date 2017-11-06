@@ -36,7 +36,7 @@ chown root /mnt/rclone
 clear
 cat << EOF
 Warning: You are going to make two rclone directories. Please visit
-http://rclone.plexguide.com for a copy of the rclone instructions or
+http://unrclone.plexguide.com for a copy of the rclone instructions or
 follow the quick instructions below.
 
 Google Drive
