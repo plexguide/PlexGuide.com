@@ -42,7 +42,7 @@ plexguide
 
 The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select option #3 and the newest files will download for the newest options and updates.
 
-- **5.** When you execute the program, if using G-Drive, execute Part 1. Other storage reasons, not needed.
+- **5.** When you execute the program, if using G-Drive, start with installing PlexDrive.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
 - **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
 
