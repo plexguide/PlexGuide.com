@@ -5,8 +5,8 @@ if [[ $EUID -eq 0 ]]; then
 fi
 bash continue.sh
 ## Making the directories and setting the permissions
-mkdir /mnt/rclone-union
-mkdir /mnt/rclone-move
+mkdir /mnt/rclone-union 1>&2
+mkdir /mnt/rclone-move  1>&2
 chmod 755 /mnt/rclone-move
 chmod 755 /mnt/rclone-union
 
