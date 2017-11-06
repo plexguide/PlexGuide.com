@@ -30,10 +30,10 @@ two(){
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide Installer 3.5 - 6 Nov
+Welcome PlexGuide.com Installer 3.5 - 6 Nov
 
 Using Google Drive? Part 1 and 2 are required.
-Written By: Github Admin9705 & Deiteq
+Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U"
