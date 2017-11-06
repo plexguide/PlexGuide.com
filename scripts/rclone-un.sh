@@ -4,10 +4,10 @@
   ##bash continue.sh
   #exit 0
 #fi
-bash continue.sh
+
 ## Making the directories and setting the permissions
-mkdir /mnt/rclone-union 1>&2
-mkdir /mnt/rclone-move  1>&2
+mkdir /mnt/rclone-union
+mkdir /mnt/rclone-move
 chmod 755 /mnt/rclone-move
 chmod 755 /mnt/rclone-union
 
