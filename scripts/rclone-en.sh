@@ -64,8 +64,8 @@ bash rclone-config.sh
 
 ## Copying the config from the local folder to the root folder
 ## rm -r /root/.config/rclone
-mkdir /root/.config && sudo mkdir /root/.config/rclone /dev/null 2>&1 &
-cp ~/.config/rclone/rclone.conf /root/.config/rclone /dev/null 2>&1 &
+## mkdir /root/.config && sudo mkdir /root/.config/rclone /dev/null 2>&1 &
+## cp ~/.config/rclone/rclone.conf /root/.config/rclone /dev/null 2>&1 &
 
 ## Replace Fuse by removing the # from user_allow_toerh
 rm -r /etc/fuse.conf
