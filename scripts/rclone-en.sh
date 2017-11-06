@@ -44,13 +44,13 @@ follow the quick instructions below.
 Google Drive
 [N] New Remote [9] Google, Enter Info, Verify, Ok, and then continue
 
-Encrypted Drive
-[N] New Remote [6] Encrypt/Decrypt, Name it crypt, enter Info, Verify, Ok, and then continue
-type /mnt/plexdrive4/encrypt, OK, and then quit
+Encrypted Drive for unionfs
+[N] New Remote, Name it crypt, [6] Encrypt/Decrypt, type /mnt/plexdrive4/encrypt, [2] Standard, [Y] Own password, 
+enter password Info, Verify, [Y] for OK, and then continue
 
-Encrypted Drive
-[N] New Remote [6] Encrypt/Decrypt, Name it gcrypt, enter Info, Verify, Ok, and then continue
-type gdrive:\encrypt, OK, and then quit
+Encrypted Drive for rclone-move.sh
+[N] New Remote, Name it gcrypt, [6] Encrypt/Decrypt, type gdrive:\encrypt, enter same password info as before, 
+Verify, OK, and then continue
 
 Local Drive
 [N] New Remote [11] Local, ignore the longfile name info,
