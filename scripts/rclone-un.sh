@@ -3,7 +3,7 @@ if [[ $EUID -eq 0 ]]; then
   echo "You must be ROOT to run the RCLONE Script" 1>&2
   exit 0
 fi
-
+bash continue.sh
 ## Making the directories and setting the permissions
 mkdir /mnt/rclone-union
 mkdir /mnt/rclone-move
