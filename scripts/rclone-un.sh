@@ -1,5 +1,5 @@
 ## Must Be root
-if [[ $EUID -eq 0 ]]; then
+if [[ $UID -eq 0 ]]; then
   echo "You must be ROOT to run the RCLONE Script" 1>&2
   echo
   read -n 1 -s -r -p "Press any key to continue"
