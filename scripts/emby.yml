@@ -16,6 +16,6 @@ services:
             - VIRTUAL_PORT=8096
             - VIRTUAL_HOST=emby.htpc
             - AUTO_UPDATES_ON=true
-            - PUID=0
-            - PGID=0
+            - PUID=1001
+            - PGID=1001
         restart: always
