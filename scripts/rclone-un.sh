@@ -1,3 +1,9 @@
+## Must Be root
+if [[ $EUID eq 0 ]]; then
+  echo "This script must NOT be run as root" 1>&2
+  exit 1
+fi
+
 ## Making the directories and setting the permissions
 mkdir /mnt/rclone-union
 mkdir /mnt/rclone-move
@@ -43,9 +49,6 @@ bash continue.sh
 bash rclone-config.sh
 
 ## Copying the config from the local folder to the root folder
-## rm -r /root/.config/rclone
-rm -r /root/.config/rclone; mkdir /root/.config/rclone
-cp -rf ~/.config/rclone/rclone.conf /root/.config/rclone
 
 ## Replace Fuse by removing the # from user_allow_toerh
 rm -r /etc/fuse.conf
