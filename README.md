@@ -45,6 +45,7 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - **5.** When you execute the program, if using G-Drive, start with installing PlexDrive.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
 - **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
+- **7.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
 
 ## Thanks & Social Contacts
 
