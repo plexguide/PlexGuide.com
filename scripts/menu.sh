@@ -28,6 +28,7 @@ two(){
 
 # function to display menus
 show_menus() {
+clear
 cat << EOF
 Welcome PlexGuide Installer 3.5 - 6 Nov
 
