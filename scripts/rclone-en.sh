@@ -45,7 +45,7 @@ bash continue.sh
 bash rclone-config.sh
 
 ## Copying the config from the local folder to the root folder
-
+rm -r /root/.config/rclone
 mkdir /root/.config && sudo mkdir /root/.config/rclone
 cp ~/.config/rclone/rclone.conf /root/.config/rclone
 
