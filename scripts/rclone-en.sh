@@ -13,6 +13,9 @@ mkdir /mnt/rclone-move 1>&2
 chmod 755 /mnt/rclone-move
 chmod 755 /mnt/rclone-union
 
+## Install unzip
+sudo apt-get install unzip -y
+
 ## Installing rclone
 cd /tmp
 curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
