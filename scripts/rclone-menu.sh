@@ -52,8 +52,9 @@ read_options(){
 		bash rclone-un.sh
 		;;
 		2)
-        cd /opt/plexguide/scripts/
-        ;;
+                cd /opt/plexguide/scripts/
+		bash rclone-en.sh
+                ;;
 		3) 
 		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
