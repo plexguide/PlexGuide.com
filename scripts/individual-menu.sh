@@ -106,7 +106,7 @@ read_options(){
 		   bash continue.sh
        ;;
        13)
-     bash ngnix.sh
+     bash nginx.sh
      bash continue.sh
       ;;
 		14) exit 0;;
