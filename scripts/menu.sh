@@ -28,25 +28,22 @@ two(){
 
 # function to display menus
 show_menus() {
-	clear
-	echo "Welcome to the PlexGuide.com Installer v3.5 - 5 NOV VI"
-	echo
-	echo "Note: It will always prompt you for installs on each program"
-	echo
-	echo "Google Drive Only: If you are mounting your google drive,"
-	echo "you must install part 1 first (plexdrive4). http://plexdrive.plexguide.com"
-	echo
-	echo "Non-Google Drive setup, skip part 1"
-    echo
-	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo " M A I N - M E N U"
-	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install: PlexDrive 4"
-	echo "2. Install: RClone (Not Operational Yet)"
-	echo "3. Install: Programs Individually"
-	echo "4. Install: Programs Mass Install (New Server)"
-	echo "5. Update : PlexGuide Program"
-	echo "6. Exit"
+echo << eof
+Welcome PlexGuide Installer 3.5 - 6 Nov
+
+Using Google Drive? Part 1 and 2 are required.
+Written By: Github Admin9705 & Deiteq
+
+~~~~~~~~~~~~~~~~~~~~~
+  M A I N - M E N U"
+~~~~~~~~~~~~~~~~~~~~~
+1. Install: PlexDrive 4                    <<< Google Drive Only
+2. Install: RClone (Not Operational Yet)   <<< Google Drive Only
+3. Install: Programs Individually
+4. Install: Programs Mass Install (New Server)
+5. Update : PlexGuide Program
+6. Exit"
+eof
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
