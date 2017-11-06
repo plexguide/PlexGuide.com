@@ -4,8 +4,9 @@
 
 ![N](https://preview.ibb.co/bP2Wnb/Snip20171105_31.png")
 
-## Manual Process and Manual Guide (for Learning)
-http://manual.plexguide.com
+## Manual Process and Manual Guide (for Learning) & Thanks
+- http://manual.plexguide.com 
+- Thanks also Alasano, DaveFTW84 and Deiteq (most for encryption)! Your motivation helps all of us noobs :D
 
 ## Mission Statement
 Build an automated setup to ensure that you are maintaing a steady and reliable server, while maintaing your media is up-to-date (especially through the use of USENET - speed and security over torrents).
@@ -47,9 +48,8 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
 - **7.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
 
-## Thanks & Social Contacts
+## Social Contacts
 
-- Thanks also Alasano, DaveFTW84 and Deiteq! Your motivation helps all of us noobs :D
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 - Reddit Contact  - [Admin9705] - Reddit
 
