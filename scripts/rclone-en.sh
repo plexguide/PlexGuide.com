@@ -1,8 +1,15 @@
-THIS IS ALL BASELINE from the UNERYPTED, THIS HAS NOT BEEN TOUCHED
+#!/bin/bash
+
+# Must Be Root
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  read -n 1 -s -r -p "Press any key to continue"
+  exit
+fi
 
 ## Making the directories and setting the permissions
-mkdir /mnt/rclone-union
-mkdir /mnt/rclone-move
+mkdir /mnt/rclone-union 1>&2
+mkdir /mnt/rclone-move 1>&2
 chmod 755 /mnt/rclone-move
 chmod 755 /mnt/rclone-union
 
@@ -27,12 +34,20 @@ chown root /mnt/rclone
 ## Warning
 clear
 cat << EOF
-Warning: You are going to make two rclone directories. Please visit
-http://rclone.plexguide.com for a copy of the rclone instructions or
+Warning: You are going to make three rclone directories. Please visit
+http://enrclone.plexguide.com for a copy of the rclone instructions or
 follow the quick instructions below.
 
 Google Drive
 [N] New Remote [9] Google, Enter Info, Verify, Ok, and then continue
+
+Encrypted Drive
+[N] New Remote [6] Encrypt/Decrypt, Name it crypt, enter Info, Verify, Ok, and then continue
+type /mnt/plexdrive4/encrypt, OK, and then quit
+
+Encrypted Drive
+[N] New Remote [6] Encrypt/Decrypt, Name it gcrypt, enter Info, Verify, Ok, and then continue
+type gdrive:\encrypt, OK, and then quit
 
 Local Drive
 [N] New Remote [11] Local, ignore the longfile name info,
@@ -72,7 +87,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/rclone --bwlimit 8650k --size-only
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/rclone --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -96,7 +111,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/rclone-move=RW:/mnt/plexdrive4=RO /mnt/rclone-union
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -119,7 +134,7 @@ do
 # Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
 sleep 3600
 # Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
 done
 EOF
 chmod 755 /opt/rclone-move.sh
