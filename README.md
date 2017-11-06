@@ -30,7 +30,7 @@ sudo apt-get install git
 To Install PlexGuide
 ```sh
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-sudo bash /opt/plexg*/s*/ins*
+sudo bash /opt/plexg*/sc*/ins*
 ```
 
 To Execute PlexGuide in the future, type:
