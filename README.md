@@ -17,7 +17,9 @@ Installs Plex and other programs. This was made as a result of poor plexcloud pe
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Folder 1: Required Processes! (Pick an Rclone Version) (Read & Follow It - It will become automated)
+- **3.** Execute Manual RClone Portion (Working to Automated, somewhat tricky) (Select Only 1)
+     **a.** Unencrypted RClone: http://unrclone.plexguide.com
+     **b.** Encrypted RClone  : http://enrclone.plexguide.com
 - **4.** Execute the following below:
 
 Install GIT
