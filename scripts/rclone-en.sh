@@ -34,7 +34,7 @@ chown root /mnt/rclone
 ## Warning
 clear
 cat << EOF
-Warning: You are going to make three rclone directories. Please visit
+Warning: You are going to make four rclone directories. Please visit
 http://enrclone.plexguide.com for a copy of the rclone instructions or
 follow the quick instructions below.
 
