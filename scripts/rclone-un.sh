@@ -1,7 +1,8 @@
 ## Must Be root
 if [[ $EUID -eq 0 ]]; then
   echo "You must be ROOT to run the RCLONE Script" 1>&2
-  bash continue.sh
+  echo
+  read -n 1 -s -r -p "Press any key to continue"
   exit 0
 fi
 
