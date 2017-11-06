@@ -17,7 +17,7 @@ Installs Plex and other programs. This was made as a result of poor plexcloud pe
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Execute Manual RClone Portion (Working to Automated, somewhat tricky) (Select Only 1)
+- **3.** Execute Manual RClone Portion (Working to Automate, somewhat tricky to program) **(Select Only 1)**
     - **a.** Unencrypted RClone: http://unrclone.plexguide.com
     - **b.** Encrypted RClone  : http://enrclone.plexguide.com
 - **4.** Execute the following below:
@@ -30,7 +30,7 @@ sudo apt-get install git
 To Install PlexGuide
 ```sh
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-sudo bash /opt/plexg*/ins*
+sudo bash /opt/plexg*/s*/ins*
 ```
 
 To Execute PlexGuide in the future, type:
