@@ -2,7 +2,8 @@
 version: '2'
 services:
  rutorrent:
-   image: rutorrent
+   image: linuxserver/rutorrent
+   container_name: plexpy
    ports:
      - "8085:80"
      - "5005:5000"
