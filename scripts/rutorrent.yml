@@ -6,6 +6,9 @@ services:
    container_name: rutorrent
    ports:
      - "8085:80"
+     - "5000:5005"
+     - "51413:51413"
+     - "6881/udp:6881/udp"
    volumes:
      - /opt/appdata/rclone/config:/config
      - /mnt/rclone/downloads:/downloads
