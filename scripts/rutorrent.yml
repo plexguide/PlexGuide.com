@@ -2,7 +2,7 @@
 version: '2'
 services:
  rutorrent:
-   image: linuxserver/rutorrent
+   image:  linuxserver/rutorrent
    container_name: rutorrent
    ports:
      - "8085:80"
