@@ -10,7 +10,6 @@ if echo "$answer" | grep -iq "^y" ;then
     clear
     echo Installed Rutorrent - Use Port XX with IP Address; hostname -I;
     echo
-    continue.sh
 else
     echo No
     clear
