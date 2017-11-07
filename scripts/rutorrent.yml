@@ -1,0 +1,18 @@
+---
+version: '2'
+services:
+ web:
+   image: rutorrent
+   ports:
+     - "8085:80"
+     - "5005:5000"
+     - "51413:51413"
+     - "6881/udp:6881/udp"
+   volumes:
+     - /opt/appdata/rclone/config:/config
+     - /mnt/rclone/downloads:/downloads
+   environment:
+     - PUID=1001
+     - PGID=1001
+   restart:
+     always

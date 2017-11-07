@@ -28,26 +28,26 @@ two(){
 
 # function to display menus
 show_menus() {
-	clear
-	echo Welcome to the PlexGuide.com - Installer
-	echo
-	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo " I-N-D-I-V-I-D-U-A-L"
-	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1.  Install: Plex"
-	echo "2.  Install: SSH"
-	echo "3.  Install: Sonarr"
-	echo "4.  Install: Radarr"
-	echo "5.  Install: SABNZBD"
-	echo "6.  Install: DOCKER & Portainer"
-	echo "7   Docker : Ombi v3   (Requires Docker)"
-	echo "8.  Docker : Emby      (Requires Docker)"
-	echo "9.  Docker : PlexyPy   (Requires Docker)"
-	echo "10. Docker : NetData   (Requires Docker)"
-	echo "11. Docker : Muximux   (Requires Docker)"
-	echo "12. Docker : Wordpress (Requires Docker)"
-  echo "13. Docker : NGINX     (Not Ready)"
-	echo "14. Exit"
+clear
+cat << EOF
+
+Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
+
+1.  Install: Plex
+2.  Install: SSH
+3.  Install: Sonarr
+4.  Install: Radarr
+5.  Install: SABNZBD
+6.  Install: DOCKER & Portainer
+7   Docker : Ombi v3   (Requires Docker)
+8.  Docker : Emby      (Requires Docker)
+9.  Docker : PlexyPy   (Requires Docker)
+10. Docker : NetData   (Requires Docker)
+11. Docker : Muximux   (Requires Docker)
+12. Docker : Wordpress (Requires Docker)
+13. Docker : RuTorrent (Requires Docker)
+14. Exit
+EOF
 }
 # read input from the keyboard and take a action
 # invoke the one() when the user select 1 from the menu option.
@@ -55,7 +55,7 @@ show_menus() {
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 13 ] " choice
+	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
 		1)
            bash plex.sh
@@ -106,7 +106,7 @@ read_options(){
 		   bash continue.sh
        ;;
        13)
-     bash nginx.sh
+     bash rutorrent.sh
      bash continue.sh
       ;;
 		14) exit 0;;
