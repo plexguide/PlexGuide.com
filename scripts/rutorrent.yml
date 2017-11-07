@@ -5,9 +5,9 @@ services:
    image:  linuxserver/rutorrent
    container_name: rutorrent
    ports:
-     - "8085:80/tcp"
+     - "8085:80"
      - "6881:6881/udp"
-     - "5000:5000/tcp"
+     - "5000:5000"
      - "51413:51413"
    volumes:
      - /opt/appdata/rclone/config:/config
