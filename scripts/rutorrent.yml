@@ -1,7 +1,7 @@
 ---
 version: '2'
 services:
- web:
+ rutorrent:
    image: rutorrent
    ports:
      - "8085:80"
