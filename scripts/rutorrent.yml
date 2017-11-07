@@ -5,6 +5,7 @@ services:
    image:  linuxserver/rutorrent
    container_name: rutorrent
    ports:
+     - "8085:80/tcp"
      - "49123:49123/tcp"
      - "49123:49123/udp"
      - "6881:6881/udp"
