@@ -5,14 +5,14 @@
 ![N](https://preview.ibb.co/bP2Wnb/Snip20171105_31.png")
 
 ## Manual Process and Manual Guide (for Learning) & Thanks
-- http://manual.plexguide.com 
+- http://manual.plexguide.com
 - Thanks also Alasano, DaveFTW84 and Deiteq (most for encryption)! Your motivation helps all of us noobs :D
 
 ## Mission Statement
 Build an automated setup to ensure that you are maintaing a steady and reliable server, while maintaing your media is up-to-date (especially through the use of USENET - speed and security over torrents).
 
 ## Purpose
-Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive. 
+Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive.
 
 ## Guide Order
 
@@ -66,8 +66,8 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - Port 32400  Plex
 - Port 8181   PlexPy
 - Port 9000   Portainer
-- Port 5050   CouchPotato
-- Port 7878   Radarr 
+- Port 7878   Radarr
+- Port 8085   RuTorrent
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
 - Port 80     Wordpress
