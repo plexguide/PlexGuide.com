@@ -45,7 +45,7 @@ Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
 10. Docker : NetData   (Requires Docker)
 11. Docker : Muximux   (Requires Docker)
 12. Docker : Wordpress (Requires Docker)
-13. Docker : RuTorrent (Requires Docker) [Works Somewhat - Acts Firewalled]
+13. Docker : RuTorrent (Requires Docker)
 14. Exit
 EOF
 }
