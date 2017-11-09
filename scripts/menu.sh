@@ -56,7 +56,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6 ] " choice
+	read -p "Enter choice [ 1 - 9 ] " choice
 	case $choice in
 		1)
 		    cd /opt/plexguide/scripts/
@@ -80,6 +80,7 @@ read_options(){
     echo *** This Area is Not Ready ***
     echo
     read -n 1 -s -r -p "Press any key to continue "
+    clear
     ;;
 		5)
         cd /opt/plexguide/scripts/
@@ -101,12 +102,14 @@ read_options(){
         echo *** This Area is Not Ready ***
         echo
         read -n 1 -s -r -p "Press any key to continue "
+        clear
         ;;
      8)
         clear
         echo *** This Area is Not Ready ***
         echo
         read -n 1 -s -r -p "Press any key to continue "
+        clear
         ;;
     9)
         clear
