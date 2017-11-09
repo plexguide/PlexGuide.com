@@ -6,8 +6,8 @@
     yes | apt-get install man-db
     yes | apt-get install screen
     yes | apt-get install unzip
-    yes | apt-get install fail2ban
-    yes | apt-get install ufw
+## yes | apt-get install fail2ban ## install disabled until configured properly
+## yes | apt-get install ufw ## install disabled until configured properly
     yes | apt-get install python
     yes | apt-get install curl
     clear
