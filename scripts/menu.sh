@@ -30,7 +30,7 @@ two(){
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer 3.5 - 9 Nov
+Welcome PlexGuide.com Installer 3.5 - 9 Nov II
 
 Using Google Drive? Part 1 and 2 are required.
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
@@ -59,7 +59,6 @@ read_options(){
 	case $choice in
 		1)
 		    bash /opt/plexguide/scripts/plexmenu.sh
-		
 		    ;;
 		2)
     clear
