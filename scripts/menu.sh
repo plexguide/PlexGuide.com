@@ -39,13 +39,14 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
   M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
 1. Install: For Google Drive - PlexDrive 4
-2. Install: For Google Drive - RClone  * Not Ready *
+2. Install: For Google Drive - RClone       * Not Ready *
 3. Install: Individual Programs
-4. Update : Individual Programs        * Not Ready *
+4. Update : Individual Programs             * Not Ready *
 5. Update : PlexGuide Program
 6. New CPU: Mass Program Install
-7. Manual : Non-Docker Installs        * Not Ready *
-8. Exit
+7. Manual : Non-Docker Installs             * Not Ready *
+8. Secure : Lock Down & Secure the Server   * Not Ready *
+9. Exit
 
 EOF
 }
@@ -75,9 +76,11 @@ read_options(){
         bash individual-menu.sh
         ;;
 		4)
-        cd /opt/plexguide/scripts/
-        bash mass.sh
-		    ;;
+    clear
+    echo *** This Area is Not Ready ***
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    ;;
 		5)
         cd /opt/plexguide/scripts/
         bash upgrade.sh
@@ -99,7 +102,13 @@ read_options(){
         echo
         read -n 1 -s -r -p "Press any key to continue "
         ;;
-    8)
+     8)
+        clear
+        echo *** This Area is Not Ready ***
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        ;;
+    9)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
