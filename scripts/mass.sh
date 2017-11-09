@@ -13,3 +13,4 @@
         bash plexpy.sh
         bash muximux.sh
         bash wordpress.sh
+        bash rutorrent.sh
