@@ -38,12 +38,14 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
-1. Install: PlexDrive 4                    <<< Google Drive Only
-2. Install: RClone (Not Operational Yet)   <<< Google Drive Only
-3. Install: Programs Individually
-4. Install: Programs Mass Install (New Server)
+1. Install: For Google Drive - PlexDrive 4
+2. Install: For Google Drive - RClone       * Not Ready *
+3. Install: Individual Programs
+4. Update : Individual Programs             * Not Ready *
 5. Update : PlexGuide Program
-6. Exit
+6. New CPU: Mass Program Install
+7. Secure : Lock Down & Secure the Server   * Not Ready *
+8. Exit
 
 EOF
 }
@@ -53,13 +55,18 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6 ] " choice
+	read -p "Enter choice [ 1 - 9 ] " choice
 	case $choice in
 		1)
 		    bash /opt/plexguide/scripts/plexmenu.sh
 		
 		    ;;
 		2)
+    clear
+    echo "*** This Area is Not Ready - Use @ Your Own Risk ***"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
         cd /opt/plexguide/scripts/
         bash rclone-menu.sh
         ;;
@@ -69,9 +76,12 @@ read_options(){
         bash individual-menu.sh
         ;;
 		4)
-        cd /opt/plexguide/scripts/
-        bash mass.sh
-		    ;;
+    clear
+    echo "*** This Area is Not Ready ***"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
+    ;;
 		5)
         cd /opt/plexguide/scripts/
         bash upgrade.sh
@@ -84,6 +94,17 @@ read_options(){
         echo Remember, restart by typing:  plexguide
         exit 0;;
     6)
+        cd /opt/plexguide/scripts/
+        bash mass.sh
+    		;;
+     7)
+        clear
+        echo "*** This Area is Not Ready ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+        ;;
+    8)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
