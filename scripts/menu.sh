@@ -44,9 +44,8 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 4. Update : Individual Programs             * Not Ready *
 5. Update : PlexGuide Program
 6. New CPU: Mass Program Install
-7. Manual : Non-Docker Installs             * Not Ready *
-8. Secure : Lock Down & Secure the Server   * Not Ready *
-9. Exit
+7. Secure : Lock Down & Secure the Server   * Not Ready *
+8. Exit
 
 EOF
 }
@@ -97,21 +96,14 @@ read_options(){
         cd /opt/plexguide/scripts/
         bash mass.sh
     		;;
-    7)
+     7)
         clear
         echo "*** This Area is Not Ready ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
         ;;
-     8)
-        clear
-        echo "*** This Area is Not Ready ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-        ;;
-    9)
+    8)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
