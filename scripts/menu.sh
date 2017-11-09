@@ -56,8 +56,8 @@ read_options(){
 	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
 		1)
-		    cd /opt/plexguide/scripts/
-		    bash plexmenu.sh
+		    bash /opt/plexguide/scripts/plexmenu.sh
+		
 		    ;;
 		2)
         cd /opt/plexguide/scripts/
