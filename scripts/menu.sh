@@ -62,12 +62,13 @@ read_options(){
 		    bash plexmenu.sh
 		    ;;
 		2)
+    clear
+    echo "*** This Area is Not Ready - Use @ Your Own Risk ***"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
         cd /opt/plexguide/scripts/
         bash rclone-menu.sh
-        clear
-        echo *** This Area is Not Ready - Use at Your Own Risk ***
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
         ;;
 		3)
         cd /opt/plexguide/scripts/
