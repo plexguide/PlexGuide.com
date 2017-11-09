@@ -77,7 +77,7 @@ read_options(){
         ;;
 		4)
     clear
-    echo *** This Area is Not Ready ***
+    echo "*** This Area is Not Ready ***"
     echo
     read -n 1 -s -r -p "Press any key to continue "
     clear
@@ -99,14 +99,14 @@ read_options(){
     		;;
     7)
         clear
-        echo *** This Area is Not Ready ***
+        echo "*** This Area is Not Ready ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
         ;;
      8)
         clear
-        echo *** This Area is Not Ready ***
+        echo "*** This Area is Not Ready ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
