@@ -64,7 +64,6 @@ read_options(){
 		2)
         cd /opt/plexguide/scripts/
         bash rclone-menu.sh
-        ;;
         clear
         echo *** This Area is Not Ready - Use at Your Own Risk ***
         echo
