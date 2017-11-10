@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -n 1 -s -r -p "Press any key to continue "
+
 
 echo -n "Do you want to Upgrade (y/n)?"
 old_stty_cfg=$(stty -g)
@@ -21,3 +21,5 @@ else
     echo Not Installed - Ombi
     echo 
 fi
+
+read -n 1 -s -r -p "Press any key to continue "
