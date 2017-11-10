@@ -2,7 +2,7 @@
 version: '2'
 services:
  ombi:
-   image:  lsiodev/ombi-preview
+   image:  lsiodev/ombi-preview:latest
    container_name: ombi
 # If you want your ip or domain to load this directly, change the 8015 to 80 (80:80).
 # If you plan on creating a web-interface; leave as 8015; port 80 is reserved for your website
