@@ -67,37 +67,37 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 8 ] " choice
 	case $choice in
-		1)
-		bash /opt/plexguide/scripts/menus/plexmenu.sh
-		    ;;
-		2)
-    clear
-    echo "*** This Area is Not Ready - Use @ Your Own Risk ***"
-    echo
-    read -n 1 -s -r -p "Press any key to continue "
-    clear
+	1)
+	   bash /opt/plexguide/scripts/menus/plexmenu.sh
+	   ;;
+	2)
+        clear
+        echo "*** This Area is Not Ready - Use @ Your Own Risk ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
         bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
-		3)
+	3)
         bash /opt/plexguide/scripts/menus/individual-menu.sh
         ;;
-		4)
-    clear
-    echo "*** This Area is Not Ready ***"
-    echo
-    read -n 1 -s -r -p "Press any key to continue "
-    bash /opt/plexguide/scripts/menu/upgrade.sh
-    clear
-    ;;
-		5)
+	4)
+        clear
+        echo "*** This Area is Not Ready ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        bash /opt/plexguide/scripts/menu/upgrade-menu.sh
+        clear
+        ;;
+	5)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
-     6)
+    6)
         bash /opt/plexguide/scripts/docker-no/mass.sh
-    		;;
-     7)
+    	;;
+    7)
         clear
         echo "*** This Area is Not Ready ***"
         echo
