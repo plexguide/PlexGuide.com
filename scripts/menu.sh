@@ -86,11 +86,11 @@ read_options(){
     echo "*** This Area is Not Ready ***"
     echo
     read -n 1 -s -r -p "Press any key to continue "
-    bash /opt/plexguide/scripts/docker/upgrade.sh
+    bash /opt/plexguide/scripts/menu/upgrade.sh
     clear
     ;;
 		5)
-        bash /opt/plexguide/scripts/menu/upgrade.sh
+        bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
