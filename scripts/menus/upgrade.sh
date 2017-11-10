@@ -31,13 +31,13 @@ if [ -e "$file" ]
 then
     clear
 else
-    touch /opt/plexguide/scripts/docker/tmp
-    chmod 755 /opt/plexguide/scripts/docker/tmp
+    touch /opt/plexguide/tmp.txt
+    chmod 755 /opt/plexguide//tmp.txt
 fi
 
 #set path for docker items
 UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
-TMP-PATH="/opt/plexguide/scripts/docker/tmp.txt"
+TMP-PATH="/opt/plexguide/tmp.txt"
 
 # function to display menus
 show_menus() {
@@ -48,7 +48,7 @@ EOF
 
 cat << EOF
 
-Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
+Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 
 1.  Install: SSH
 2.  Install: Sonarr
