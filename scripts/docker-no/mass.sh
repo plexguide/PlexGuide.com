@@ -3,7 +3,6 @@
 #set path for docker items
 VARMENU1="/opt/plexguide/scripts/docker-no/"
 
-        bash "$VARMENU1"dep.sh
         bash "$VARMENU1"ssh.sh  
         bash "$VARMENU1"plex.sh
         bash "$VARMENU1"sabnzbd.sh
