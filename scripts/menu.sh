@@ -26,6 +26,16 @@ two(){
         pause
 }
 
+#check to see if /var/plexguide/dep exists - if not, install dependencies
+
+file="/var/plexguide/dep"
+if [ -e "$file" ]
+then
+    bash /opt/plexguide/docker-no/dep.sh
+else
+    ## nothing happens
+fi
+
 # function to display menus
 show_menus() {
 clear
@@ -69,7 +79,6 @@ read_options(){
         bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
 		3)
-        bash /opt/plexguide/scripts/docker-no/dep2.sh
         bash /opt/plexguide/scripts/menus/individual-menu.sh
         ;;
 		4)
@@ -82,14 +91,9 @@ read_options(){
 		5)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
-        echo You are required to restart the program.
-        echo Restart the program afterwards by typing:  plexguide
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
-    6)
+     6)
         bash /opt/plexguide/scripts/docker-no/mass.sh
     		;;
      7)

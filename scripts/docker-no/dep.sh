@@ -1,7 +1,7 @@
 ####### Agree to Install Plex Server
 
 clear
-echo -n "Do you Agree to Install the Awesome Plex Server (y/n)? "
+echo -n "Do you Agree to utilize the PlexGuide Program (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -18,15 +18,14 @@ if echo "$answer" | grep -iq "^y" ;then
 ## yes | apt-get install ufw ## install disabled until configured properly
     yes | apt-get install python
     yes | apt-get install software-properties-common    
+    touch /var/plexguide/dep
     clear
-    echo Installed Required Programs
-    echo 
-    echo Installed update, nano, fuse, man-db, screen, unzip, python, curl
+    echo "Installed Required Dependicies"
     echo
 else
     echo No
     clear
-    echo Install Aborted - You failed to agree to the install
+    echo "Install Aborted - You Failed to Agree to Install"
+    echo
     exit
-    echo 
 fi
