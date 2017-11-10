@@ -90,7 +90,7 @@ read_options(){
     clear
     ;;
 		5)
-        bash /opt/plexguide/scripts/docker-no/upgrade.sh
+        bash /opt/plexguide/scripts/menu/upgrade.sh
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;

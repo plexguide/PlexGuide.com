@@ -26,18 +26,19 @@ two(){
         pause
 }
 
-file="/opt/plexguide/scripts/docker/tmp.txt"
+file="/opt/plexguide/tmp.txt"
 if [ -e "$file" ]
 then
-    clear
+    touch /opt/plexguide/tmp.txt
+    chmod 755 /opt/plexguide/tmp.txt
 else
     touch /opt/plexguide/tmp.txt
-    chmod 755 /opt/plexguide//tmp.txt
+    chmod 755 /opt/plexguide/tmp.txt
 fi
 
 #set path for docker items
 UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
-TMP-PATH="/opt/plexguide/tmp.txt"
+## TMP-PATH="/opt/plexguide/tmp.txt"
 
 # function to display menus
 show_menus() {
@@ -95,9 +96,9 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
         6)
-           echo ymlprogram ombi > $TMP-PATH
-           echo ymldisplay Ombi >> $TMP-PATH
-           echo ymlport 3579 >> $TMP-PATH
+           echo ymlprogram ombi > /opt/plexguide/tmp.txt
+           echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
+           echo ymlport 3579 >> /opt/plexguide/tmp.txt
 		   "$UPGRADEPATH"
 		   bash "$VARMENU1"continue.sh
        ;;
