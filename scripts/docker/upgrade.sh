@@ -1,8 +1,7 @@
 #!/bin/bash
 
 
-
-echo -n "Do you want to Upgrade (y/n)?"
+echo -n Do you want to Upgrade "$YMLDISPLAY"(y/n) 
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -12,7 +11,7 @@ if echo "$answer" | grep -iq "^y" ;then
     docker stop "$YMLPROGRAM"
     docker rm "$YMLPROGRAM"
     docker-compose -f /opt/plexguide/scripts/docker/"$YMLPROGRAM".yml up -d
-    clear
+    echo
     echo Upgraded "$YMLDISPLAY" - Use Port "$YMLPORT" with IP Address; hostname -I;
     echo
 else
