@@ -30,7 +30,7 @@ two(){
 VARMENU1="/opt/plexguide/scripts/docker/"
 
 #set path for non-docker items
-VARMENU2="/opt/plexguide/scripts/non-docker/"
+VARMENU2="/opt/plexguide/scripts/docker-no/"
 
 # function to display menus
 show_menus() {
@@ -100,8 +100,8 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
 		   10)
-		   bash /opt/plexguide/scripts/docker/netdata.sh
-		   bash /opt/plexguide/scripts/docker/continue.sh
+		   bash "$VARMENU1"netdata.sh
+		   bash "$VARMENU1"continue.sh
        ;;
         11)
 		   bash "$VARMENU1"muximux.sh
@@ -112,8 +112,8 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
        13)
-     bash "$VARMENU1"rutorrent.sh
-     bash "$VARMENU1"continue.sh
+     	   bash "$VARMENU1"rutorrent.sh
+           bash "$VARMENU1"continue.sh
       ;;
 		14) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
