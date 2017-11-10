@@ -1,5 +1,7 @@
 #!/bin/bash
 
+read -n 1 -s -r -p "Press any key to continue "
+
 echo -n Do you want to Upgrade "$YMLDISPLAY" (y/n)
 old_stty_cfg=$(stty -g)
 stty raw -echo
