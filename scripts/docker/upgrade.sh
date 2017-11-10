@@ -1,5 +1,7 @@
 #!/bin/bash
-
+YMLPROGRAM=$(awk '/ymlprogram/{print $2}' tmp)
+YMLDISPLAY=$(awk '/ymlprogram/{print $2}' tmp)
+YMLPORT=$(awk '/ymlport/{print $2}' tmp)
 
 echo -n Do you want to Upgrade "$YMLDISPLAY"(y/n) 
 old_stty_cfg=$(stty -g)
@@ -17,7 +19,7 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo Not Installed - Ombi
+    echo Not Installed - $YMLDISPALY
     echo 
 fi
 

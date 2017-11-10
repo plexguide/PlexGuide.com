@@ -85,9 +85,9 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
         6)
-           declare -g YMLPROGRAM="ombi"
-           declare -g YMLDISPLAY="Ombi"
-           declare -g YMLPORT=3579
+           echo ymlprogram ombi > tmp
+           echo ymldisplay Ombi >> tmp
+           echo ymlport 3579 >> tmp
 		   "$UPGRADEPATH"
 		   bash "$VARMENU1"continue.sh
        ;;
