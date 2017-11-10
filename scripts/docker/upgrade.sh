@@ -1,7 +1,7 @@
 #!/bin/bash
-YMLPROGRAM=$(awk '/ymlprogram/{print $2}' tmp)
-YMLDISPLAY=$(awk '/ymlprogram/{print $2}' tmp)
-YMLPORT=$(awk '/ymlport/{print $2}' tmp)
+YMLPROGRAM=$(awk '/ymlprogram/{print $2}' /opt/plexguide/scripts/docker/tmp.txt)
+YMLDISPLAY=$(awk '/ymlprogram/{print $2}' /opt/plexguide/scripts/docker/tmp.txt)
+YMLPORT=$(awk '/ymlport/{print $2}' /opt/plexguide/scripts/docker/tmp.txt)
 
 echo -n "Do you want to Upgrade "$YMLDISPLAY"(y/n)"
 old_stty_cfg=$(stty -g)

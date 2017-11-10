@@ -26,7 +26,7 @@ two(){
         pause
 }
 
-file="/opt/plexguide/scripts/docker/tmp"
+file="/opt/plexguide/scripts/docker/tmp.txt"
 if [ -e "$file" ]
 then
     clear
@@ -37,7 +37,7 @@ fi
 
 #set path for docker items
 UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
-TMP-PATH="/opt/plexguide/scripts/docker/tmp"
+TMP-PATH="/opt/plexguide/scripts/docker/tmp.txt"
 
 # function to display menus
 show_menus() {
