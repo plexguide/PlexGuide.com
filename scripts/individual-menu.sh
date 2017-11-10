@@ -26,6 +26,9 @@ two(){
         pause
 }
 
+#set path for docker items
+VARMENU1="/opt/plexguide/scripts/docker/"
+
 # function to display menus
 show_menus() {
 clear
@@ -98,8 +101,8 @@ read_options(){
 		   bash /opt/plexguide/scripts/docker/continue.sh
        ;;
         11)
-		   bash muximux.sh
-		   bash continue.sh
+		   bash "$VARMENU1"muximux.sh
+		   bash "$VARMENU1"continue.sh
        ;;
         12)
 		   bash wordpress.sh
