@@ -26,18 +26,18 @@ two(){
         pause
 }
 
-file="/opt/plexguide/tmp.txt"
-if [ -e "$file" ]
-then
-    touch /opt/plexguide/tmp.txt
-    chmod 755 /opt/plexguide/tmp.txt
-else
-    touch /opt/plexguide/tmp.txt
-    chmod 755 /opt/plexguide/tmp.txt
-fi
+#file="/opt/plexguide/tmp.txt"
+#if [ -e "$file" ]
+#then
+#    touch /opt/plexguide/tmp.txt
+#    chmod 755 /opt/plexguide/tmp.txt
+#else
+#    touch /opt/plexguide/tmp.txt
+#    chmod 755 /opt/plexguide/tmp.txt
+#fi
 
 #set path for docker items
-UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
+# UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
 ## TMP-PATH="/opt/plexguide/tmp.txt"
 
 # function to display menus
@@ -75,62 +75,63 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
-        1)
-		   bash "$VARMENU2"ssh.sh
-		   bash "$VARMENU2"continue.sh
-       ;;
-        2)
-		   bash "$VARMENU2"sonarr.sh
-		   bash "$VARMENU2"continue.sh
-       ;;
-        3)
-		   bash "$VARMENU2"radarr.sh
-		   bash "$VARMENU2"continue.sh
-       ;;
-        4)
-           bash "$VARMENU2"sabnzbd.sh
-		   bash "$VARMENU2"continue.sh
-       ;;
-        5)
-		   bash "$VARMENU1"docker.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-        6)
-           echo ymlprogram ombi > /opt/plexguide/tmp.txt
-           echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
-           echo ymlport 3579 >> /opt/plexguide/tmp.txt
-		   "$UPGRADEPATH"
-		   bash "$VARMENU1"continue.sh
-       ;;
-        7)
-		   bash "$VARMENU1"plex.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-        8)
-		   bash "$VARMENU1"emby.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-        9)
-		   bash "$VARMENU1"plexpy.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-		   10)
-		   bash "$VARMENU1"netdata.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-        11)
-		   bash "$VARMENU1"muximux.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-        12)
-		   bash "$VARMENU1"wordpress.sh
-		   bash "$VARMENU1"continue.sh
-       ;;
-       13)
-     	   bash "$VARMENU1"rutorrent.sh
-           bash "$VARMENU1"continue.sh
-      ;;
-		14) exit 0;;
+  1)
+		bash "$VARMENU2"ssh.sh
+		bash "$VARMENU2"continue.sh
+    ;;
+  2)
+		bash "$VARMENU2"sonarr.sh
+		bash "$VARMENU2"continue.sh
+    ;;
+  3)
+		bash "$VARMENU2"radarr.sh
+		bash "$VARMENU2"continue.sh
+    ;;
+  4)
+    bash "$VARMENU2"sabnzbd.sh
+		bash "$VARMENU2"continue.sh
+    ;;
+  5)
+		bash "$VARMENU1"docker.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+  6)
+    echo ymlprogram ombi > /opt/plexguide/tmp.txt
+    echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
+    echo ymlport 3579 >> /opt/plexguide/tmp.txt
+		"$UPGRADEPATH"
+		bash "$VARMENU1"continue.sh
+    ;;
+  7)
+		bash "$VARMENU1"plex.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+  8)
+		bash "$VARMENU1"emby.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+  9)
+		bash "$VARMENU1"plexpy.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+	10)
+		bash "$VARMENU1"netdata.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+  11)
+		bash "$VARMENU1"muximux.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+  12)
+		bash "$VARMENU1"wordpress.sh
+		bash "$VARMENU1"continue.sh
+    ;;
+  13)
+    bash "$VARMENU1"rutorrent.sh
+    bash "$VARMENU1"continue.sh
+    ;;
+	14) 
+    exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
