@@ -18,18 +18,14 @@ display_result() {
 while true; do
   exec 3>&1
   selection=$(dialog \
-    --backtitle "Version - 9 Nov" \
-    --title "PlexGuide.com Installer" \
+    --backtitle "System Information" \
+    --title "Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 8 \
-    "1" "Install: PlexDrive4" \
-    "2" "Install: RClone               (Not Ready)" \
-    "3" "Install: Individual Programs " \
-    "4" "Upgrade: Individual Programs  (Not Ready)" \
-    "5" "Update : PlexGuide Program" \
-    "6" "New CPU: Mass Install Programs" \
-    "7" "Secure : Lock Down Server     (Not Ready)" \
+    --menu "Please select:" $HEIGHT $WIDTH 4 \
+    "1" "Display System Information" \
+    "2" "Display Disk Space" \
+    "3" "Display Home Space Utilization" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
