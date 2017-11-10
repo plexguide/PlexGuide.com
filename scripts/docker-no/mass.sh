@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 #set path for docker items
-VARMENU1="/opt/plexguide/scripts/docker/"
+VARMENU1="/opt/plexguide/scripts/docker-no/"
 
         bash "$VARMENU1"dep.sh
         bash "$VARMENU1"ssh.sh  
@@ -12,7 +12,7 @@ VARMENU1="/opt/plexguide/scripts/docker/"
 
 
 #set path for non-docker items
-VARMENU2="/opt/plexguide/scripts/docker-no/"
+VARMENU2="/opt/plexguide/scripts/docker"
         
 	bash "$VARMENU2"docker.sh
         bash "$VARMENU2"ombi.sh
