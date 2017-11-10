@@ -85,9 +85,9 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
         6)
-           export YMLPROGRAM=ombi
-           export YMLDISPLAY=Ombi
-           export YMLPORT="3579"
+           declare -g YMLPROGRAM="ombi"
+           declare -g YMLDISPLAY="Ombi"
+           declare -g YMLPORT="3579"
 		   "$UPGRADEPATH"
 		   bash "$VARMENU1"continue.sh
        ;;
