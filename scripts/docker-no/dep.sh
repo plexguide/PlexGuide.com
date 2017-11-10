@@ -17,8 +17,9 @@ if echo "$answer" | grep -iq "^y" ;then
 ## yes | apt-get install fail2ban ## install disabled until configured properly
 ## yes | apt-get install ufw ## install disabled until configured properly
     yes | apt-get install python
-    yes | apt-get install software-properties-common    
-    touch /var/plexguide/dep
+    yes | apt-get install software-properties-common
+    mkdir /var/plexguide 
+    touch /var/plexguide/dep.yes
     clear
     echo "Installed Required Dependicies"
     echo
