@@ -37,7 +37,7 @@ two(){
 #fi
 
 #set path for docker items
-# UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
+UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
 ## TMP-PATH="/opt/plexguide/tmp.txt"
 
 # function to display menus
