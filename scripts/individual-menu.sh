@@ -94,8 +94,8 @@ read_options(){
 		   bash continue.sh
        ;;
 		   10)
-		   bash netdata.sh
-		   bash continue.sh
+		   bash /opt/plexguide/scripts/docker/netdata.sh
+		   bash /opt/plexguide/scripts/docker/continue.sh
        ;;
         11)
 		   bash muximux.sh
