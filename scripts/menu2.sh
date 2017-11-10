@@ -18,8 +18,8 @@ display_result() {
 while true; do
   exec 3>&1
   selection=$(dialog \
-    --backtitle "System Information" \
-    --title "Menu" \
+    --backtitle "Version 9 Nov" \
+    --title "PlexGuide.com Installer" \
     --clear \
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 8 \
