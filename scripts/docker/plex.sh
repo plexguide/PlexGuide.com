@@ -8,7 +8,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     sudo docker-compose -f plex.yml up -d
     clear
-    echo Installed NetData - Use Port 32400n with IP Address; hostname -I;
+    echo Installed Plex - Use Port 32400 with IP Address; hostname -I;
     echo
 else
     echo No
