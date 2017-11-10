@@ -55,10 +55,10 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ] " choice
+	read -p "Enter choice [ 1 - 8 ] " choice
 	case $choice in
 		1)
-		    bash /opt/plexguide/scripts/plexmenu.sh
+		bash /opt/plexguide/scripts/menus/plexmenu.sh
 		    ;;
 		2)
     clear
@@ -66,13 +66,11 @@ read_options(){
     echo
     read -n 1 -s -r -p "Press any key to continue "
     clear
-        cd /opt/plexguide/scripts/
-        bash rclone-menu.sh
+        bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
 		3)
-        cd /opt/plexguide/scripts/
-        bash dep2.sh
-        bash individual-menu.sh
+        bash /opt/plexguide/scripts/docker-no/dep2.sh
+        bash /opt/plexguide/scripts/docker-no/individual-menu.sh
         ;;
 		4)
     clear
@@ -82,8 +80,7 @@ read_options(){
     clear
     ;;
 		5)
-        cd /opt/plexguide/scripts/
-        bash upgrade.sh
+        bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo You are required to restart the program.
         echo Restart the program afterwards by typing:  plexguide
@@ -93,8 +90,7 @@ read_options(){
         echo Remember, restart by typing:  plexguide
         exit 0;;
     6)
-        cd /opt/plexguide/scripts/
-        bash mass.sh
+        bash /opt/plexguide/scripts/docker-no/mass.sh
     		;;
      7)
         clear

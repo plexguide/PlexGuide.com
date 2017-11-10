@@ -29,6 +29,9 @@ two(){
 #set path for docker items
 VARMENU1="/opt/plexguide/scripts/docker/"
 
+#set path for non-docker items
+VARMENU2="/opt/plexguide/scripts/non-docker/"
+
 # function to display menus
 show_menus() {
 clear
@@ -61,40 +64,40 @@ read_options(){
 	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
 		1)
-           bash /opt/plexguide/scripts/docker/plex.sh
-           bash /opt/plexguide/scripts/docker/continue.sh
+           bash "$VARMENU2"plex.sh
+           bash "$VARMENU2"continue.sh
        ;;
         2)
-		   bash ssh.sh
-		   bash continue.sh
+		   bash "$VARMENU2"ssh.sh
+		   bash "$VARMENU2"continue.sh
        ;;
         3)
-		   bash /opt/plexguide/scripts/docker/sonarr.sh
-		   bash /opt/plexguide/scripts/docker/continue.sh
+		   bash "$VARMENU2"sonarr.sh
+		   bash "$VARMENU2"continue.sh
        ;;
         4)
-		   bash radarr.sh
-		   bash continue.sh
+		   bash "$VARMENU2"radarr.sh
+		   bash "$VARMENU2"continue.sh
        ;;
         5)
-           bash sabnzbd.sh
-		   bash continue.sh
+           bash "$VARMENU2"sabnzbd.sh
+		   bash "$VARMENU2"continue.sh
        ;;
         6)
-		   bash docker.sh
-		   bash continue.sh
+		   bash "$VARMENU1"docker.sh
+		   bash "$VARMENU1"continue.sh
        ;;
         7)
-		   bash ombi.sh
-		   bash continue.sh
+		   bash "$VARMENU1"ombi.sh
+		   bash "$VARMENU1"continue.sh
        ;;
         8)
-		   bash emby.sh
-		   bash continue.sh
+		   bash "$VARMENU1"emby.sh
+		   bash "$VARMENU1"continue.sh
        ;;
         9)
-		   bash plexpy.sh
-		   bash continue.sh
+		   bash "$VARMENU1"plexpy.sh
+		   bash "$VARMENU1"continue.sh
        ;;
 		   10)
 		   bash /opt/plexguide/scripts/docker/netdata.sh
@@ -105,12 +108,12 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
         12)
-		   bash wordpress.sh
-		   bash continue.sh
+		   bash "$VARMENU1"wordpress.sh
+		   bash "$VARMENU1"continue.sh
        ;;
        13)
-     bash rutorrent.sh
-     bash continue.sh
+     bash "$VARMENU1"rutorrent.sh
+     bash "$VARMENU1"continue.sh
       ;;
 		14) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2

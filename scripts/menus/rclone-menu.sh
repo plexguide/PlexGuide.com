@@ -48,12 +48,10 @@ read_options(){
 	read -p "Enter choice [ 1 - 3] " choice
 	case $choice in
 		1)
-		cd /opt/plexguide/scripts/
-		bash rclone-un.sh
+		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
 		;;
 		2)
-                cd /opt/plexguide/scripts/
-		bash rclone-en.sh
+		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
                 ;;
 		3) 
 		exit 0;;
