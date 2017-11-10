@@ -33,7 +33,7 @@ if [ -e "$file" ]
 then
     clear
 else
-    bash /opt/plexguide/docker-no/dep.sh
+    bash /opt/plexguide/scripts/docker-no/dep.sh
 fi
 
 # function to display menus
