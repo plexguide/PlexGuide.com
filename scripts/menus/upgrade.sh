@@ -28,6 +28,7 @@ two(){
 
 #set path for docker items
 UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
+TMP-PATH="/opt/plexguide/scripts/docker/tmp"
 
 # function to display menus
 show_menus() {
@@ -85,9 +86,9 @@ read_options(){
 		   bash "$VARMENU1"continue.sh
        ;;
         6)
-           echo ymlprogram ombi > tmp
-           echo ymldisplay Ombi >> tmp
-           echo ymlport 3579 >> tmp
+           echo ymlprogram ombi > $TMP-PATH
+           echo ymldisplay Ombi >> $TMP-PATH
+           echo ymlport 3579 >> $TMP-PATH
 		   "$UPGRADEPATH"
 		   bash "$VARMENU1"continue.sh
        ;;
