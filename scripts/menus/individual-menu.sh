@@ -39,13 +39,13 @@ cat << EOF
 
 Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
 
-1.  Install: Plex
-2.  Install: SSH
-3.  Install: Sonarr
-4.  Install: Radarr
-5.  Install: SABNZBD
-6.  Install: DOCKER & Portainer
-7   Docker : Ombi v3   (Requires Docker)
+1.  Install: SSH
+2.  Install: Sonarr
+3.  Install: Radarr
+4.  Install: SABNZBD
+5.  Install: DOCKER & Portainer
+6.  Docker : Ombi v3   (Requires Docker)
+7.  Docker : Plex      (Requires Docker)
 8.  Docker : Emby      (Requires Docker)
 9.  Docker : PlexyPy   (Requires Docker)
 10. Docker : NetData   (Requires Docker)
@@ -63,32 +63,32 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
-		1)
-           bash "$VARMENU2"plex.sh
-           bash "$VARMENU2"continue.sh
-       ;;
-        2)
+        1)
 		   bash "$VARMENU2"ssh.sh
 		   bash "$VARMENU2"continue.sh
        ;;
-        3)
+        2)
 		   bash "$VARMENU2"sonarr.sh
 		   bash "$VARMENU2"continue.sh
        ;;
-        4)
+        3)
 		   bash "$VARMENU2"radarr.sh
 		   bash "$VARMENU2"continue.sh
        ;;
-        5)
+        4)
            bash "$VARMENU2"sabnzbd.sh
 		   bash "$VARMENU2"continue.sh
        ;;
-        6)
+        5)
 		   bash "$VARMENU1"docker.sh
 		   bash "$VARMENU1"continue.sh
        ;;
-        7)
+        6)
 		   bash "$VARMENU1"ombi.sh
+		   bash "$VARMENU1"continue.sh
+       ;;
+        7)
+		   bash "$VARMENU1"plex.sh
 		   bash "$VARMENU1"continue.sh
        ;;
         8)

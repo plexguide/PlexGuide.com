@@ -1,0 +1,16 @@
+---
+version: '2'
+services:
+ plex:
+   image: plexinc/pms-docker
+   container_name: plex
+   volumes:
+     - /opt/plex/database:/config
+     - /opt/plex/transcode:/transcode
+     - /mnt/plexdrive4:/data
+   ports:
+     - 32400:32400
+   restart: always
+   environment:
+     - PUID=1001    
+     - PGID=1001
