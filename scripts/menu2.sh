@@ -92,10 +92,5 @@ while true; do
         read -n 1 -s -r -p "Press any key to continue "
         clear
         ;;
-    8)
-        clear
-        echo Remember, restart by typing:  plexguide
-        exit 0;;
-        *) echo -e "${RED}Error...${STD}" && sleep 2
     esac
 done
