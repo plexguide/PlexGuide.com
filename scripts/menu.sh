@@ -70,7 +70,7 @@ read_options(){
         ;;
 		3)
         bash /opt/plexguide/scripts/docker-no/dep2.sh
-        bash /opt/plexguide/scripts/docker-no/individual-menu.sh
+        bash /opt/plexguide/scripts/menus/individual-menu.sh
         ;;
 		4)
     clear
