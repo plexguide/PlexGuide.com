@@ -3,7 +3,7 @@ YMLPROGRAM=$(awk '/ymlprogram/{print $2}' tmp)
 YMLDISPLAY=$(awk '/ymlprogram/{print $2}' tmp)
 YMLPORT=$(awk '/ymlport/{print $2}' tmp)
 
-echo -n Do you want to Upgrade "$YMLDISPLAY"(y/n) 
+echo -n "Do you want to Upgrade "$YMLDISPLAY"(y/n)"
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
