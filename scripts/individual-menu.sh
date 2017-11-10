@@ -66,8 +66,8 @@ read_options(){
 		   bash continue.sh
        ;;
         3)
-		   bash sonarr.sh
-		   bash continue.sh
+		   bash /opt/plexguide/scripts/docker/sonarr.sh
+		   bash /opt/plexguide/scripts/docker/continue.sh
        ;;
         4)
 		   bash radarr.sh
