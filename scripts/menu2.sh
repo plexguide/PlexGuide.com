@@ -22,7 +22,7 @@ while true; do
     --title "PlexGuide.com Installer" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 16 \
+    --menu "Please select:" $HEIGHT $WIDTH 8 \
     "1" "Install: PlexDrive4" \
     "2" "Install: RClone               (Not Ready)" \
     "3" "Install: Individual Programs " \
