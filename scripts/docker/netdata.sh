@@ -6,7 +6,7 @@ answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
-    sudo docker-compose -f netdata.yml up -d
+    sudo docker-compose -f /opt/plexguide/scripts/docker/netdata.yml up -d
     clear
     echo Installed NetData - Use Port 19999 with IP Address; hostname -I;
     echo
