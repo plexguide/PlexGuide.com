@@ -58,8 +58,8 @@ read_options(){
 	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
 		1)
-           bash plex.sh
-           bash continue.sh
+           bash /opt/plexguide/scripts/docker/plex.sh
+           bash /opt/plexguide/scripts/docker/continue.sh
        ;;
         2)
 		   bash ssh.sh
