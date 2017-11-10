@@ -26,6 +26,15 @@ two(){
         pause
 }
 
+file="/opt/plexguide/scripts/docker/tmp"
+if [ -e "$file" ]
+then
+    clear
+else
+    touch /opt/plexguide/scripts/docker/tmp
+    chmod 755 /opt/plexguide/scripts/docker/tmp
+fi
+
 #set path for docker items
 UPGRADEPATH="bash /opt/plexguide/scripts/docker/upgrade.sh"
 TMP-PATH="/opt/plexguide/scripts/docker/tmp"
