@@ -35,6 +35,10 @@ VARMENU2="/opt/plexguide/scripts/docker-no/"
 # function to display menus
 show_menus() {
 clear
+
+EOF 
+
+
 cat << EOF
 
 Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
@@ -43,7 +47,7 @@ Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
 2.  Install: Sonarr
 3.  Install: Radarr
 4.  Install: SABNZBD
-5.  Install: DOCKER & Portainer
+5.  Install: DOCKER - Portainer
 6.  Docker : Ombi v3   (Requires Docker)
 7.  Docker : Plex      (Requires Docker)
 8.  Docker : Emby      (Requires Docker)
