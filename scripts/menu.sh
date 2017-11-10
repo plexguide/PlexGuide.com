@@ -31,9 +31,9 @@ two(){
 file="/var/plexguide/dep"
 if [ -e "$file" ]
 then
-    bash /opt/plexguide/docker-no/dep.sh
-else
     clear
+else
+    bash /opt/plexguide/docker-no/dep.sh
 fi
 
 # function to display menus
