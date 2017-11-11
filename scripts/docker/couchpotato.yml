@@ -1,0 +1,17 @@
+---
+version: '2'
+services:
+ couchpotato:
+   image: couchpotato/couchpotato
+   container_name: couchpotato
+   ports:
+     - 5050:5050
+   volumes:
+     - /opt/couchpotato:/config
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - PUID=0
+     - PGID=0
+   restart:
+     always
