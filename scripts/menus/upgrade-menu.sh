@@ -41,7 +41,7 @@ Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 4.  Install: SABNZBD
 5.  Install: DOCKER - Portainer
 6.  Upgrade: Ombi v3   
-7.  Docker : Plex   
+7.  Upgrade: Plex   
 8.  Docker : Emby      
 9.  Docker : PlexyPy 
 10. Docker : NetData  
@@ -84,38 +84,48 @@ read_options(){
     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
     echo ymlport 3579 >> /opt/plexguide/tmp.txt
 		bash /opt/plexguide/scripts/docker/upgrade-programs.sh
-		bash "$VARMENU1"continue.sh
     ;;
   7)
     echo ymlprogram plex > /opt/plexguide/tmp.txt
     echo ymldisplay Plex >> /opt/plexguide/tmp.txt
     echo ymlport 32400 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker/upgrade-programs.sh
-		bash "$VARMENU1"continue.sh
     ;;
   8)
-		bash "$VARMENU1"emby.sh
-		bash "$VARMENU1"continue.sh
+    echo ymlprogram emby > /opt/plexguide/tmp.txt
+    echo ymldisplay Emby >> /opt/plexguide/tmp.txt
+    echo ymlport 8096 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   9)
-		bash "$VARMENU1"plexpy.sh
-		bash "$VARMENU1"continue.sh
+    echo ymlprogram plexpy > /opt/plexguide/tmp.txt
+    echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
+    echo ymlport 8181 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
 	10)
-		bash "$VARMENU1"netdata.sh
-		bash "$VARMENU1"continue.sh
+    echo ymlprogram netdata > /opt/plexguide/tmp.txt
+    echo ymldisplay NetData >> /opt/plexguide/tmp.txt
+    echo ymlport 19999 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   11)
-		bash "$VARMENU1"muximux.sh
-		bash "$VARMENU1"continue.sh
+    echo ymlprogram muximux > /opt/plexguide/tmp.txt
+    echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
+    echo ymlport 8015 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   12)
-		bash "$VARMENU1"wordpress.sh
-		bash "$VARMENU1"continue.sh
+    echo ymlprogram wordpress > /opt/plexguide/tmp.txt
+    echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
+    echo ymlport 80 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   13)
-    bash "$VARMENU1"rutorrent.sh
-    bash "$VARMENU1"continue.sh
+    echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
+    echo ymldisplay RuTorrent >> /opt/plexguide/tmp.txt
+    echo ymlport 8085 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
 	14) 
     exit 0;;
