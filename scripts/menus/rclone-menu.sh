@@ -69,7 +69,7 @@ read_options(){
 	3)
 		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
         ;;
-	5)
+	4)
 		clear
 		ls /mnt/rclone
 		echo
