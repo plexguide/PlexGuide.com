@@ -79,6 +79,7 @@ read_options(){
     echo ymldisplay Emby >> /opt/plexguide/tmp.txt
     echo ymlport 8096 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
    4)
     echo ymlprogram hydra > /opt/plexguide/tmp.txt
     echo ymldisplay Hydra >> /opt/plexguide/tmp.txt
