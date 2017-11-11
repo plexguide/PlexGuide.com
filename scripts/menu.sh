@@ -71,9 +71,6 @@ read_options(){
 	case $choice in
 	1)
         clear
-        echo "*** This Area is Not Ready ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
 	    bash /opt/plexguide/scripts/menus/rclone-menu.sh
 	    ;;
     2)

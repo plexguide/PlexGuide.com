@@ -53,7 +53,7 @@ read_options(){
 	1)
 		bash /opt/plexguide/scripts/docker-no/rclone-basic.sh
         clear
-        echo "*** RClone Pre-Instlal Complete ***"
+        echo "*** RClone Pre-Install Complete ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
