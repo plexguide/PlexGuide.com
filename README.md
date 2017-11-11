@@ -4,8 +4,7 @@
 
 ![N](https://preview.ibb.co/j0Vexb/Snip20171111_4.png)
 
-## Manual Process and Manual Guide (for Learning) & Thanks
-- http://manual.plexguide.com
+## Thanks & Reddit Link
 - Thanks also Alasano, DaveFTW84 and Deiteq (most for encryption)! Your motivation helps all of us noobs :D
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
