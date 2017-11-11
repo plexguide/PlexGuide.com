@@ -84,13 +84,13 @@ sudo systemctl enable unionfs.service
 ## Create the Move Script
 tee "/opt/rclone-move.sh" > /dev/null <<EOF
 #!/bin/bash
-sleep 30
+sleep 60
 while true
 do
 # Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
-sleep 1800
 # Anything above 9M will result in a google ban if uploading above 9M for 24 hours
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gdrive:/
+sleep 900
 done
 EOF
 chmod 755 /opt/rclone-move.sh
@@ -145,11 +145,11 @@ sudo systemctl enable rclone-en.service
 ## Create the Move Script
 tee "/opt/rclone-move-en.sh" > /dev/null <<EOF
 #!/bin/bash
-sleep 30
+sleep t0
 while true
 do
-sleep 1800
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
+sleep 900
 done
 EOF
 chmod 755 /opt/rclone-move-en.sh

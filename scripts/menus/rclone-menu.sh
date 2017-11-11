@@ -33,7 +33,8 @@ clear
 cat << EOF
 Note: Ensure that you run the Pre-Install [1] prior to anything else.
 
-Only Install one version of RClone; encrypted or unencrypted.
+Only Install one version of RClone; encrypted or unencrypted. If you
+switch; you can and I mitgated everything but reboot if making a switch.
 
 For Test/Troubleshooting, use this to see if rclone and unionfs work.
 Have at least one item in your google drive.  If you see it, it works!
