@@ -99,9 +99,9 @@ Q < to quit
 
 EOF
 
-bash /opt/plexguide/scripts/docker-no/continue.sh
+bash /opt/plexguide/script/docker-no/rclone-config.sh
 
-rclone config
+bash /opt/plexguide/scripts/docker-no/continue.sh
 
 # disable the unencrypted services to prevent a clash
 systemctl disable rclone
