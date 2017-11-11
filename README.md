@@ -4,16 +4,17 @@
 
 ![N](https://preview.ibb.co/j0Vexb/Snip20171111_4.png)
 
-## Manual Process and Manual Guide (for Learning) & Thanks
-- http://manual.plexguide.com
+## Thanks & Reddit Link
 - Thanks also Alasano, DaveFTW84 and Deiteq (most for encryption)! Your motivation helps all of us noobs :D
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
-## Mission Statement
-Build an automated setup to ensure that you are maintaing a steady and reliable server, while maintaing your media is up-to-date (especially through the use of USENET - speed and security over torrents).
+## Mission Statement & Purpose
 
-## Purpose
-Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive.
+Establish an automated server that mounts your google drive for storage, while utilizing various tools and Plex as a front-end.  The purpose of this program was to combat the poor performance of the PlexCloud and issues in regards to the Google API Bans.  
+
+## Required
+
+UB 16.04+ & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
 
 ## Guide Order - For 3.5 Automated Install
 
@@ -54,9 +55,8 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - Reddit Contact  - [Admin9705] - Reddit
 
 ### Version Information
-- V4   - When programming phase is complete
-- V3.5 - *** Current project *** Partially manual and partially automated
-- V3   - No programming, learn about the manual process @ http://manual.plexguide.com
+- V4   / When automations are complete
+- V3.5 / *** Current project *** Partially manual and partially automated
 
 ### What You Can Install
 
