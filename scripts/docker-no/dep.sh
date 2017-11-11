@@ -22,15 +22,17 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install curl
     yes | apt-get install openssh-server
 
+    # This prevents this installer from running again
+    mkdir /var/plexguide 
+    touch /var/plexguide/dep.yes
+    
     # Install Docker
     curl -sSL https://get.docker.com | sh
     curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
     docker-compose -f /opt/plexguide/scripts/docker/docker-compose.yml up -d
 
-    # This prevents this installer from running again
-    mkdir /var/plexguide 
-    touch /var/plexguide/dep.yes
+
     clear
     echo "Installed Required Dependicies"
     echo
