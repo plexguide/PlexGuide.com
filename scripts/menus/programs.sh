@@ -33,21 +33,23 @@ clear
 
 cat << EOF
 
-Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ PlexGuide.com Installer/Upgrader
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.  Upgrade: Sonarr
-2.  Upgrade: SABNZBD
-3.  Install: Radarr
-4.  Install: SABNZBD
+1.  Sonarr
+2.  SABNZBD
+3.  Radarr
+4.  EMPTY
 5.  EMPTY
-6.  Upgrade: Ombi v3   
-7.  Upgrade: Plex   
-8.  Upgrade: Emby      
-9.  Upgrade: PlexyPy 
-10. Upgrade: NetData  
-11. Upgrade: Muximux
-12. Upgrade: Wordpress 
-13. Upgrade: RuTorrent 
+6.  Ombi v3   
+7.  Plex   
+8.  Emby      
+9.  PlexyPy 
+10. NetData  
+11. Muximux
+12. Wordpress 
+13. RuTorrent 
 14. Exit
 EOF
 }
@@ -72,21 +74,20 @@ read_options(){
     bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   3)
-		bash "$VARMENU2"radarr.sh
-		bash "$VARMENU2"continue.sh
+    clear   
     ;;
   4)
     bash "$VARMENU2"sabnzbd.sh
-		bash "$VARMENU2"continue.sh
+	bash "$VARMENU2"continue.sh
     ;;
   5)
-		clear
+	clear
     ;;
   6)
     echo ymlprogram ombi > /opt/plexguide/tmp.txt
     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
     echo ymlport 3579 >> /opt/plexguide/tmp.txt
-		bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+	bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   7)
     echo ymlprogram plex > /opt/plexguide/tmp.txt

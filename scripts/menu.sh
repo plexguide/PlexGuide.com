@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer 3.5 - 10 Nov
+Welcome PlexGuide.com Installer 3.5 - 11 Nov
 
 Using Google Drive? Part 1 and 2 are required.
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
@@ -48,56 +48,39 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
-1. Install: For Google Drive - PlexDrive 4
-2. Install: For Google Drive - RClone       * Not Ready *
-3. Install: Individual Programs
-4. Update : Individual Programs            
-5. Update : PlexGuide Program
-6. New CPU: Mass Program Install
-7. Secure : Lock Down & Secure the Server   * Not Ready *
-8. Exit
+1. Google Drive Only: PlexDrive4 & (RClone << * Not Ready *)
+2. Install & Upgrade: Individual Program 
+3. PlexGuide Program: Upgrade this Program
+4. Secure the Server: * Not Ready *
+5. Exit
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ] " choice
+	read -p "Enter choice [ 1 - 5 ] " choice
 	case $choice in
 	1)
-	   bash /opt/plexguide/scripts/menus/plexmenu.sh
-	   ;;
+	    bash /opt/plexguide/scripts/menus/plexmenu.sh
+	    ;;
 	2)
+        bash /opt/plexguide/scripts/menus/programs.sh
         clear
-        echo "*** This Area is Not Ready - Use @ Your Own Risk ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-        bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
 	3)
-        bash /opt/plexguide/scripts/menus/individual-menu.sh
-        ;;
-	4)
-        bash /opt/plexguide/scripts/menus/upgrade-menu.sh
-        clear
-        ;;
-	5)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
-    6)
-        bash /opt/plexguide/scripts/docker-no/mass.sh
-    	;;
-    7)
+    4)
         clear
         echo "*** This Area is Not Ready ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
         ;;
-    8)
+    5)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
