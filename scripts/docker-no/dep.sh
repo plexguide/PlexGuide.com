@@ -37,7 +37,7 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo "Install Aborted - You Failed to Agree to Install"
+    echo "Install Aborted - You Failed to Agree"
     echo
     exit 0;;
     exit
