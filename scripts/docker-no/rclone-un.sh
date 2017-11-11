@@ -67,7 +67,11 @@ systemctl enable move
 systemctl start unionfs
 systemctl start rclone
 systemctl start move
-system
+
+# for some reason, this fixes an issue i had to do this again
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+systemctl stop rclone
+systemctl start rclone
 
 clear
 cat << EOF
