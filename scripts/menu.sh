@@ -41,17 +41,22 @@ show_menus() {
 clear
 cat << EOF
 Welcome PlexGuide.com Installer 3.5 - 11 Nov
-
-Using Google Drive? Part 1 and 2 are required.
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
+
+The Unlimited Storage comes from Google G-Suite, which is $10 a month.
+
+Plans:
+Version 6: Security - NGINX, Reverse Proxies & VPNs
+Version 5: Enable use without Google Drive & Custom Ports
+Version 4: Finish Programming and Guide Modifications
 
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
-1. Google Drive Only: PlexDrive4 & (RClone << * Not Ready *)
-2. Install & Upgrade: Individual Program 
-3. PlexGuide Program: Upgrade this Program
-4. Secure the Server: * Not Ready *
+1. Google Drive Only:  PlexDrive4 & (RClone << * Not Ready *)
+2. Install & Upgrade:  Individual Programs 
+3. PlexGuide Program:  Upgrade this Program
+4. Secure the Server:  * Not Ready *
 5. Exit
 
 EOF
