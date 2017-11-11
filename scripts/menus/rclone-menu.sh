@@ -79,10 +79,13 @@ read_options(){
         clear
 		;;
 	5)
+		touch /mnt/rclone-move/uniontest.txt
 		clear
 		ls /mnt/rclone-union
 		echo
         echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
+        echo "Note 1: You should at least see uniontest.txt"
+        echo "Note 2: Once you finish the PLEXDRIVE4 setup, you should see the rest"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
