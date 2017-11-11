@@ -34,7 +34,7 @@ Warning: Write this down and follow the order
 
 * [N]  New Remote 
 * [11] Local 
-* [Type] /mnt/rclone-move (ignore the longfile info, just type this <<)
+* [Type] /mnt/rclone-move (ignore the longfile prompt, just type this)
 * Verify
 * Ok
 * Quit
