@@ -8,6 +8,7 @@ Note: You are making TWO directories for rclone.  One is local and the
 other is for googledrive. It is highly recommended for you to goto 
 http://unrclone.plexguide.com if your very new to rclone! Write these 
 instructions down below for each new directory!
+
 EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
@@ -22,6 +23,7 @@ Warning: Write this down and follow the order
 * Verify
 * Ok
 * Continue
+
 EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
@@ -36,7 +38,8 @@ Warning: Write this down and follow the order
 * Verify
 * Ok
 * Quit
-EOF
+
+OF
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
 clear
