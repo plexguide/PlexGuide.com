@@ -20,6 +20,7 @@ if echo "$answer" | grep -iq "^y" ;then
     ## yes | apt-get install ufw ## install disabled until configured properly
     yes | apt-get install python
     yes | apt-get install curl
+    yes | apt-get install openssh-server
 
     # Install Docker
     curl -sSL https://get.docker.com | sh
@@ -38,5 +39,6 @@ else
     clear
     echo "Install Aborted - You Failed to Agree to Install"
     echo
+    exit 0;;
     exit
 fi

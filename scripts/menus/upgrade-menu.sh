@@ -35,7 +35,7 @@ cat << EOF
 
 Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 
-1.  Install: SSH
+1.  EMPTY
 2.  Install: Sonarr
 3.  Install: Radarr
 4.  Install: SABNZBD
@@ -60,8 +60,7 @@ read_options(){
 	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
   1)
-		bash "$VARMENU2"ssh.sh
-		bash "$VARMENU2"continue.sh
+    clear
     ;;
   2)
 		bash "$VARMENU2"sonarr.sh

@@ -51,7 +51,7 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 1. Install: For Google Drive - PlexDrive 4
 2. Install: For Google Drive - RClone       * Not Ready *
 3. Install: Individual Programs
-4. Update : Individual Programs             * Not Ready *
+4. Update : Individual Programs            
 5. Update : PlexGuide Program
 6. New CPU: Mass Program Install
 7. Secure : Lock Down & Secure the Server   * Not Ready *
