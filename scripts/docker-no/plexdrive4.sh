@@ -11,12 +11,11 @@ if echo "$answer" | grep -iq "^y" ;then
 # Dispalys First Warning Message
 cat << EOF
 CRITICAL: Once PlexDrive starts the scan, DO NOT shut down your computer
-until the scan is complete.
+AND do NOT CLOSE THIS TERMINAL WINDOW until the scan is complete.
 
 Completed: Once completed, you must reboot the server to ensure that 
 everything is working.  If it works, you should see some of your Google
-Drive Items by typing: cd /opt/plexdrive4 & ls
-
+Drive Items by typing: cd mnt/plexdrive4 & ls
 EOF
 echo
 read -n 1 -s -r -p "Press any key to continue"
@@ -84,8 +83,9 @@ EOF
     cd /usr/bin/
     chown root:root /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
-    mkdir /mnt/plexdrive4 2>dev/null
-    chmod 755 /mnt/plexdrive4 2>dev/null
+    mkdir /mnt/plexdrive4
+    chmod 755 /mnt/plexdrive4
+    clear
     plexdrive4 --uid=0 --gid=0 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
     clear
     cd /opt/plexguide/scripts
