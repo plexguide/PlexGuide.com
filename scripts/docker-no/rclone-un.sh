@@ -52,6 +52,8 @@ systemctl enable move
 # disable the encrypted services to prevent a clash
 systemctl disable rclone-en
 systemctl disable move-en
+systemctl stop rclone-en
+systemctl stop move-en
 
 # stop current services
 systemctl stop unionfs

@@ -110,6 +110,8 @@ systemctl enable move-en
 # disable the unencrypted services to prevent a clash
 systemctl disable rclone
 systemctl disable move
+systemctl stop rclone
+systemctl stop move
 
 # stop current services
 systemctl stop unionfs
