@@ -65,13 +65,13 @@ read_options(){
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
     echo ymlport 8989 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   2)
     echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
     echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
     echo ymlport 8090 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   3)
     clear   
@@ -87,49 +87,49 @@ read_options(){
     echo ymlprogram ombi > /opt/plexguide/tmp.txt
     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
     echo ymlport 3579 >> /opt/plexguide/tmp.txt
-	bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   7)
     echo ymlprogram plex > /opt/plexguide/tmp.txt
     echo ymldisplay Plex >> /opt/plexguide/tmp.txt
     echo ymlport 32400 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   8)
     echo ymlprogram emby > /opt/plexguide/tmp.txt
     echo ymldisplay Emby >> /opt/plexguide/tmp.txt
     echo ymlport 8096 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   9)
     echo ymlprogram plexpy > /opt/plexguide/tmp.txt
     echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
     echo ymlport 8181 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
 	10)
     echo ymlprogram netdata > /opt/plexguide/tmp.txt
     echo ymldisplay NetData >> /opt/plexguide/tmp.txt
     echo ymlport 19999 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   11)
     echo ymlprogram muximux > /opt/plexguide/tmp.txt
     echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
     echo ymlport 8015 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   12)
     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
     echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   13)
     echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
     echo ymldisplay RuTorrent >> /opt/plexguide/tmp.txt
     echo ymlport 8085 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
 	14) 
     exit 0;;
