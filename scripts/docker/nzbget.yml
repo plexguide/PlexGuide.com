@@ -1,13 +1,13 @@
 ---
 version: '2'
 services:
- sabnzbd:
-   image: sabnzbd/sabnzbd
-   container_name: sabnzbd
+ nzbget:
+   image: linuxserver/nzbget
+   container_name: nzbget
    ports:
-     - 8090:8080
+     - 6789:6789
    volumes:
-     - /opt/sabnzbd:/datadir
+     - /opt/nzbget:/config
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:

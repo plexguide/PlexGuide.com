@@ -37,20 +37,21 @@ cat << EOF
  PlexGuide.com Installer/Upgrader
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1.  Sonarr
-2.  SABNZBD
-3.  Radarr
-4.  CouchPotato
-5.  EMPTY
-6.  Ombi v3   
-7.  Plex   
-8.  Emby      
-9.  PlexyPy 
-10. NetData  
-11. Muximux
-12. Wordpress 
-13. RuTorrent 
-14. Exit
+1.  Sonarr        | TV Show requeseting program; more organized
+2.  SABNZBD       | USENET Downloading Program
+3.  Radarr        | Movie requesting program; newer less mature program
+4.  CouchPotato   | Movie requesting program; older outdated program
+5.  Organizr      | Self-managed site interface to control your programs
+6.  Ombi v3       | Enables users to request media 
+7.  Plex          | Sharing media program; the reason we are here
+8.  Emby          | Alternative to PLEX and less restrictive
+9.  PlexyPy       | Provides detailed analytics about the PLEX Users
+10. NetData       | Statistical tool
+11. Muximux       | Self-managed site interface to control your programs   
+12. Wordpress     | Create a website for users to interact with
+13. RuTorrent     | Torrent Downloading Program (No-Guide)
+14. NZBGET        | USENET Downloading Program (No-Guide) 
+15. Exit
 EOF
 }
 # read input from the keyboard and take a action
@@ -59,7 +60,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 14 ] " choice
+	read -p "Enter choice [ 1 - 15 ] " choice
 	case $choice in
   1)
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
@@ -86,7 +87,10 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh 
     ;;
   5)
-	clear
+    echo ymlprogram organizr > /opt/plexguide/tmp.txt
+    echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
+    echo ymlport 8020 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh 
     ;;
   6)
     echo ymlprogram ombi > /opt/plexguide/tmp.txt
@@ -136,7 +140,13 @@ read_options(){
     echo ymlport 8085 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-	14) 
+  14)
+    echo ymlprogram nzbget > /opt/plexguide/tmp.txt
+    echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
+    echo ymlport 6789 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
+  15) 
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
