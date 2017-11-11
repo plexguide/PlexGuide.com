@@ -74,7 +74,10 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   3)
-    clear   
+    echo ymlprogram radarr > /opt/plexguide/tmp.txt
+    echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
+    echo ymlport 7878 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh  
     ;;
   4)
     bash "$VARMENU2"sabnzbd.sh
