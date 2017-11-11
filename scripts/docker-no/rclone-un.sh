@@ -16,7 +16,10 @@ Local Drive
 type /mnt/rclone-move, OK, and then quit
 EOF
 echo
-cd /opt/plexguide/scripts/
-bash continue.sh
 
-bash rclone-config.sh
+bash /opt/plexguide/scripts/docker-no/continue.sh
+clear
+
+rclone config
+
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
