@@ -125,6 +125,11 @@ systemctl restart clone-en
 systemctl restart move-en
 system
 
+echo
+echo "Service Info FYI"
+echo
+bash /opt/plexguide/scripts/docker-no/continue.sh
+
 clear
 cat << EOF
 NOTE: You installed the unencrypted version for the RClone data transport! If you
