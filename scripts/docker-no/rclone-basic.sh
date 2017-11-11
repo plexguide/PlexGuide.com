@@ -56,7 +56,6 @@ EOF
 
 ## Enable RClone Service
 sudo systemctl daemon-reload
-sudo systemctl enable rclone.service
 
 ## Create the UnionFS Service
 tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
@@ -79,7 +78,6 @@ EOF
 
 ## Enable RClone Service
 sudo systemctl daemon-reload
-sudo systemctl enable unionfs.service
 
 ## Create the Move Script
 tee "/opt/rclone-move.sh" > /dev/null <<EOF
@@ -116,7 +114,6 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
-sudo systemctl enable move.service
 
 ####################################### Encrypted Service
 ## Create the RClone Service
@@ -140,7 +137,6 @@ EOF
 
 ## Enable RClone Service
 sudo systemctl daemon-reload
-sudo systemctl enable rclone-en.service
 
 ## Create the Move Script
 tee "/opt/rclone-move-en.sh" > /dev/null <<EOF
@@ -175,4 +171,3 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
-sudo systemctl enable move-en.service
