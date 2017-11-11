@@ -39,15 +39,15 @@ Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 2.  Install: Sonarr
 3.  Install: Radarr
 4.  Install: SABNZBD
-5.  Install: DOCKER - Portainer
+5.  EMPTY
 6.  Upgrade: Ombi v3   
 7.  Upgrade: Plex   
-8.  Docker : Emby      
-9.  Docker : PlexyPy 
-10. Docker : NetData  
-11. Docker : Muximux
-12. Docker : Wordpress 
-13. Docker : RuTorrent 
+8.  Upgrade: Emby      
+9.  Upgrade: PlexyPy 
+10. Upgrade: NetData  
+11. Upgrade: Muximux
+12. Upgrade: Wordpress 
+13. Upgrade: RuTorrent 
 14. Exit
 EOF
 }
@@ -76,8 +76,7 @@ read_options(){
 		bash "$VARMENU2"continue.sh
     ;;
   5)
-		bash "$VARMENU1"docker.sh
-		bash "$VARMENU1"continue.sh
+		clear
     ;;
   6)
     echo ymlprogram ombi > /opt/plexguide/tmp.txt

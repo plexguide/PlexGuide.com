@@ -44,15 +44,15 @@ Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer
 2.  Install: Sonarr
 3.  Install: Radarr
 4.  Install: SABNZBD
-5.  Install: DOCKER - Portainer
-6.  Docker : Ombi v3   (Requires Docker)
-7.  Docker : Plex      (Requires Docker)
-8.  Docker : Emby      (Requires Docker)
-9.  Docker : PlexyPy   (Requires Docker)
-10. Docker : NetData   (Requires Docker)
-11. Docker : Muximux   (Requires Docker)
-12. Docker : Wordpress (Requires Docker)
-13. Docker : RuTorrent (Requires Docker)
+5.  EMPTY
+6.  Docker : Ombi v3
+7.  Docker : Plex   
+8.  Docker : Emby    
+9.  Docker : PlexyPy
+10. Docker : NetData 
+11. Docker : Muximux  
+12. Docker : Wordpress
+13. Docker : RuTorrent
 14. Exit
 EOF
 }
