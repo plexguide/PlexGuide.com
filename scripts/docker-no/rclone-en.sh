@@ -122,7 +122,7 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 # turn services back on
 systemctl restart unionfs
 systemctl restart clone-en
-systemctl stop move-en
+systemctl restart move-en
 system
 
 clear

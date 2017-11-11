@@ -64,7 +64,7 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 # turn services back on
 systemctl restart unionfs
 systemctl restart clone
-systemctl stop move
+systemctl restart move
 system
 
 clear
