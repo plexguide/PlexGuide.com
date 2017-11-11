@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer 3.5 - 11 Nov
+Welcome PlexGuide.com Installer 3.5 - 11 Nov II
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
@@ -55,11 +55,12 @@ Version 4: Finish Programming and Guide Modifications
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
-1. Google Drive Only:  PlexDrive4 & (RClone << * Not Ready *)
-2. Install & Upgrade:  Individual Programs 
-3. PlexGuide Program:  Upgrade this Program
-4. Secure the Server:  * Not Ready *
-5. Exit
+1. RClone Install    :  Media Syncs to Google Drive
+2. PlexDrive4 Install:  Prevent G-Drive Plex Scan Bans
+3. Install & Upgrade :  Server Programs & Tools
+4. PlexGuide Program :  Upgrade This Program 
+5. Secure the Server :  * Not Ready *
+6. Exit
 
 EOF
 }
@@ -69,25 +70,33 @@ read_options(){
 	read -p "Enter choice [ 1 - 5 ] " choice
 	case $choice in
 	1)
-	    bash /opt/plexguide/scripts/menus/plexmenu.sh
+        clear
+        echo "*** This Area is Not Ready ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+	    bash /opt/plexguide/scripts/menus/rclone-menu.sh
 	    ;;
-	2)
+    2)
+        clear
+        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
+        ;;
+	3)
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
-	3)
+	4)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-    4)
+    5)
         clear
         echo "*** This Area is Not Ready ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
         ;;
-    5)
+    6)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
