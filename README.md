@@ -20,10 +20,7 @@ UB 16.04+ & Google Drive (https://gsuite.google.com) (ignore 5 user requirements
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Execute Manual RClone Portion (Working to Automate, somewhat tricky to program) **(Select Only 1)**
-    - **a.** Unencrypted RClone: http://unrclone.plexguide.com
-    - **b.** Encrypted RClone  : http://enrclone.plexguide.com
-- **4.** Execute the following below:
+- **3.** Execute the following below:
 
 Install GIT
 ```sh
@@ -43,12 +40,12 @@ plexguide
 
 ***FYI***
 
-The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select option #3 and the newest files will download for the newest options and updates.
+The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select the update option and the newest files will download for the newest features and fixes.
 
-- **5.** When you execute the program, if using G-Drive, start with installing PlexDrive.
+- **4.** When you execute the program, if using G-Drive, start with installing PlexDrive.
   - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
-- **6.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **7.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
+- **5.** Configure your programs accordingly with >> http://wiki.plexguide.com
+- **6.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
 
 ## Social Contacts
 
