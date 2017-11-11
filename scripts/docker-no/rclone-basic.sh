@@ -143,7 +143,7 @@ EOF
 
 ## Enable RClone Service
 sudo systemctl daemon-reload
-sudo systemctl enable rclone.-enservice
+sudo systemctl enable rclone-en.service
 sudo systemctl start rclone-en.service
 
 ## Create the Move Script
