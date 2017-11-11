@@ -36,7 +36,7 @@ cat << EOF
 Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 
 1.  Upgrade: Sonarr
-2.  EMPTY
+2.  Upgrade: SABNZBD
 3.  Install: Radarr
 4.  Install: SABNZBD
 5.  EMPTY
