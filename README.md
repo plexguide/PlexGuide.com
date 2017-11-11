@@ -53,9 +53,8 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - Reddit Contact  - [Admin9705] - Reddit
 
 ### Version Information
-- V4   - When programming phase is complete
-- V3.5 - *** Current project *** Partially manual and partially automated
-- V3   - No programming, learn about the manual process @ http://manual.plexguide.com
+- V4   / When automations are complete
+- V3.5 / *** Current project *** Partially manual and partially automated
 
 ### What You Can Install
 
