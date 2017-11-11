@@ -15,10 +15,10 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install python
     yes | apt-get install curl
     yes | apt-get install openssh-server
-    
+    yes | apt-get install unionfs-fuse
     #Prevents this script from running again
     mkdir /var/plexguide 
-    touch /var/plexguide/dep.yes
+    touch /var/plexguide/dep2.yes
     
     #Install Docker
     curl -sSL https://get.docker.com | sh
