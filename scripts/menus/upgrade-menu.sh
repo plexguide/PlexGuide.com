@@ -87,7 +87,7 @@ read_options(){
 		bash "$VARMENU1"continue.sh
     ;;
   7)
-    echo ymlprogram plex > opt/plexguide/tmp.txt
+    echo ymlprogram plex > /opt/plexguide/tmp.txt
     echo ymldisplay Plex >> /opt/plexguide/tmp.txt
     echo ymlport 32400 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker/upgrade-programs.sh
