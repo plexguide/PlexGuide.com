@@ -14,6 +14,14 @@ Enter Your Google Secret
 Y < for GUI Interface (much easier if using a Graphical Interface)
 N < for headless machine (if using only Terminal)
 
+Enter Your Verification Code
+
+Windows Users: Use CTRL+Insert (for copy) and Shift+Insert (for Paste)
+Do anything else, you will mess it up 
+
+N < Configure this as a team drive?
+Y < If asking all is ok?
+
 EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
