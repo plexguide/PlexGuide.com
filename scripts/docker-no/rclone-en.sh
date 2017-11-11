@@ -103,15 +103,27 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 
 rclone config
 
-systemctl stop rclone
-systemctl stop unionfs
-systemctl stop move
+# ensure that the encrypted services are on
+systemctl enable rclone-en
+systemctl enable move-en
 
+# disable the unencrypted services to prevent a clash
+systemctl disable rclone
+systemctl disable move
+
+# stop current services
+systemctl stop unionfs
+systemctl stop clone-en
+systemctl stop move-en
+
+# copy rclone config from sudo user to root, which is the target
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
-systemctl restart rclone
+# turn services back on
 systemctl restart unionfs
-systemctl restart move
+systemctl restart clone-en
+systemctl stop move-en
+system
 
 clear
 cat << EOF

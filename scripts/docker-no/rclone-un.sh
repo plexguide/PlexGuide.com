@@ -45,19 +45,31 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 
 rclone config
 
-systemctl stop rclone
+# ensure that the unencrypted services are on
+systemctl enable rclone
+systemctl enable move
+
+# disable the encrypted services to prevent a clash
+systemctl disable rclone-en
+systemctl disable move-en
+
+# stop current services
 systemctl stop unionfs
+systemctl stop clone
 systemctl stop move
 
+# copy rclone config from sudo user to root, which is the target
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
-systemctl restart rclone
+# turn services back on
 systemctl restart unionfs
-systemctl restart move
+systemctl restart clone
+systemctl stop move
+system
 
 clear
 cat << EOF
-NOTE: You installed the unencrypted version for the RClone data transport! If you
+NOTE: You installed the encrypted version for the RClone data transport! If you
 messed anything up, select [2] and run through again.  Also check:
 http://unrclone.plexguide.com and or post on http://reddit.plexguide.com
 
