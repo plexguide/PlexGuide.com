@@ -13,6 +13,6 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo Not Installed - Ombi
+    echo Not Installed - Sonarr
     echo 
 fi
