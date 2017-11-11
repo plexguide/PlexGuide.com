@@ -33,7 +33,10 @@ clear
 cat << EOF
 Note: Ensure that you run the Pre-Install [1] prior to anything else.
 
-Only Install one version of RClone; encrypted or unencrypted
+Only Install one version of RClone; encrypted or unencrypted.
+
+For Test/Troubleshooting, use this to see if rclone and unionfs work.
+Have at least one item in your google drive.  If you see it, it works!
 
 ~~~~~~~~~~~~~~~~~~~~
   RClone Installer
@@ -41,14 +44,16 @@ Only Install one version of RClone; encrypted or unencrypted
 1. RClone Preinstall  :  Enables Services & UnionFS
 2. Unencrypted Install:  Utilize the unencrypted version of RClone
 3. Encrypted Install  :  Utilize the encrypted version of RClone
-4. Exit
+4. RClone Mount Test  :  Check if the RClone mount works
+5. UnionFS Mount Test :  Check if the UnionFS mount works  
+6. Exit
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 4 ] " choice
+	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
 	1)
 		bash /opt/plexguide/scripts/docker-no/rclone-basic.sh
@@ -64,7 +69,25 @@ read_options(){
 	3)
 		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
         ;;
-	4) 
+	5)
+		clear
+		ls /mnt/rclone
+		echo
+        echo "*** RClone: Your Google Drive - If empty, that's not good ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+		;;
+	5)
+		clear
+		ls /mnt/rclone-union
+		echo
+        echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+		;;
+	6) 
 		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
