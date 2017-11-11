@@ -40,7 +40,7 @@ cat << EOF
 1.  Sonarr
 2.  SABNZBD
 3.  Radarr
-4.  EMPTY
+4.  CouchPotato
 5.  EMPTY
 6.  Ombi v3   
 7.  Plex   
@@ -80,8 +80,10 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh  
     ;;
   4)
-    bash "$VARMENU2"sabnzbd.sh
-	bash "$VARMENU2"continue.sh
+    echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
+    echo ymldisplay CouchPotato >> /opt/plexguide/tmp.txt
+    echo ymlport 5050 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh 
     ;;
   5)
 	clear

@@ -43,7 +43,8 @@ cat << EOF
 Welcome PlexGuide.com Installer 3.5 - 11 Nov
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
-The Unlimited Storage comes from Google G-Suite, which is $10 a month.
+The Unlimited Storage comes from Google G-Suite, which is 10 (US Dollars) a month.
+Please READ the Wiki at http://wiki.plexguide.com (It will help you!)
 
 Plans:
 Version 6: Security - NGINX, Reverse Proxies & VPNs
@@ -76,7 +77,7 @@ read_options(){
 	3)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
-        echo Remember, restart by typing:  plexguide
+        echo Remember, restart by typing: plexguide
         exit 0;;
     4)
         clear
