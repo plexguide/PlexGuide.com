@@ -31,22 +31,22 @@ two(){
 show_menus() {
 clear
 cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- PlexGuide.com Installer/Upgrader
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ PlexGuide.com Installer/Upgrader (** Works - No Guide Yet)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Plex          | Sharing media program - * The Reason We Are Here *
-2.  CouchPotato   | (No Guide) Movie requesting program; older program
-3.  Emby          | (No Guide) Alternative to PLEX and less restrictive
-4.  Hydra         | (No Guide) Meta search for NZB indexers
-5.  NetData       | Statistical Tool for the Server
-6.  Muximux       | (No Guide) Site Interface to control your programs 
-7.  NZBGET        | (No Guide) USENET Downloading Program
-8.  Ombi v3       | (No Guide) Enables users to request media 
-9.  Organizr      | (No Guide) Site Interface to control your programs
-10. PlexPy        | (No Guide) Provides analytics about your PLEX Users
+2.  CouchPotato   | ** Movie requesting program; older program
+3.  Emby          | ** Alternative to PLEX and less restrictive
+4.  Hydra         | ** Meta search for NZB indexers
+5.  NetData       | ** Statistical Tool for the Server
+6.  Muximux       | ** Site Interface to control your programs 
+7.  NZBGET        | ** USENET Downloading Program
+8.  Ombi v3       | ** Enables users to request media 
+9.  Organizr      | ** Site Interface to control your programs
+10. PlexPy        | ** Provides analytics about your PLEX Users
 11. Radarr        | Movie requesting program; newer less mature program
-12. RuTorrent     | (No Guide) Torrent Downloading Program
+12. RuTorrent     | ** Torrent Downloading Program
 13. SABNZBD       | USENET Downloading Program
 14. Sonarr        | TV Show requeseting program; more organized 
 15. Wordpress     | Create a website for users to interact with

@@ -1,168 +1,73 @@
 #!/bin/bash
 
-# Must Be Root
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  read -n 1 -s -r -p "Press any key to continue"
-  exit
-fi
-
-## Making the directories and setting the permissions
-mkdir /mnt/rclone-union 1>&2
-mkdir /mnt/rclone-move 1>&2
-chmod 755 /mnt/rclone-move
-chmod 755 /mnt/rclone-union
-
-## Install unzip
-sudo apt-get install unzip -y
-
-## Installing rclone
-cd /tmp
-curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
-unzip rclone-current-linux-amd64.zip
-cd rclone-*-linux-amd64
-cp rclone /usr/bin/
-chown root:root /usr/bin/rclone
-chmod 755 /usr/bin/rclone
-mkdir -p /usr/local/share/man/man1
-cp rclone.1 /usr/local/share/man/man1/
-mandb
-cd .. && sudo rm -r rclone*
-
-## Making rclone directory
-mkdir /mnt/rclone
-chmod 755 /mnt/rclone
-chown root /mnt/rclone
-
-## Warning
 clear
 cat << EOF
-Warning: You are going to make four rclone directories. Please visit
-http://enrclone.plexguide.com for a copy of the rclone instructions or
-follow the quick instructions below.
+Directory 1 (For Google Drive)
+WARNING: Write this down and follow the order
 
-Google Drive
-[N] New Remote [9] Google, Enter Info, Verify, Ok, and then continue
+N < For New remote
+gdrive < for the name
+9 < For Google Drive (double check the number select incase)
+Enter Your Google ID
+Enter Your Google Secret
 
-Encrypted Drive for unionfs
-[N] New Remote, Name it crypt, [6] Encrypt/Decrypt, type /mnt/plexdrive4/encrypt, [2] Standard, [Y] Own password, 
-enter password Info, Verify, [Y] for OK, and then continue
+Y < for GUI Interface (much easier if using a Graphical Interface)
+N < for headless machine (if using only Terminal)
 
-Encrypted Drive for rclone-move.sh
-[N] New Remote, Name it gcrypt, [6] Encrypt/Decrypt, type gdrive:\encrypt, enter same password info as before, 
-Verify, OK, and then continue
+Enter Your Verification Code
 
-Local Drive
-[N] New Remote [11] Local, ignore the longfile name info,
-type /mnt/rclone-move, OK, and then quit
+Windows Users: Use CTRL+Insert (for copy) and Shift+Insert (for Paste)
+Do anything else, you will mess it up 
+
+N < Configure this as a team drive?
+Y < If asking all is ok?
+
 EOF
-echo
-cd /opt/plexguide/scripts/
-bash continue.sh
+bash /opt/plexguide/scripts/docker-no/continue.sh
 
-bash rclone-config.sh
+cat << EOF
+Directory 2 (Local Drive)
+WARNING: Write this down and follow the order
 
-## Copying the config from the local folder to the root folder
-## rm -r /root/.config/rclone
-## mkdir /root/.config && sudo mkdir /root/.config/rclone /dev/null 2>&1 &
-## cp ~/.config/rclone/rclone.conf /root/.config/rclone /dev/null 2>&1 &
+N < For New remote
+local < for the name
+11 < For a Local Drive
 
-## Replace Fuse by removing the # from user_allow_toerh
-rm -r /etc/fuse.conf
-tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
+Ignore this part about ... long file names, UNC, and selecting [1])
+>>> Just type this exactly: /mnt/rclone-move and then press [ENTER]
 
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
+Y < Is asking all is ok?
+Q < to quit
 
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
 EOF
 
-## Create the RClone Service
-tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
-[Unit]
-Description=RClone Daemon
-After=multi-user.target
+bash /opt/plexguide/scripts/docker-no/continue.sh
 
-[Service]
-Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/rclone --bwlimit 8650k --size-only
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
+rclone config
 
-[Install]
-WantedBy=multi-user.target
+systemctl stop rclone
+systemctl stop unionfs
+systemctl stop move
+
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+
+systemctl restart rclone
+systemctl restart unionfs
+systemctl restart move
+
+clear
+cat << EOF
+NOTE: You installed the unencrypted version for the RClone data transport! If you
+messed anything up, select [2] and run through again.  Also check:
+http://unrclone.plexguide.com and or post on http://reddit.plexguide.com
+
+HOW TO CHECK: In order to check if everything is working, have 1 item at least in 
+your google Drive
+
+1. Type: /mnt/rclone (and then you should see some item from your g-drive there)
+2. Type: /mnt/rclone-union (and you should see the same g-drive stuff there)
+
+Verifying that 1 and 2 are important due to this is how your data will sync!
+
 EOF
-
-## Enable RClone Service
-sudo systemctl daemon-reload
-sudo systemctl enable rclone.service
-sudo systemctl start rclone.service
-
-## Create the UnionFS Service
-tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
-[Unit]
-Description=UnionFS Daemon
-After=multi-user.target
-
-[Service]
-Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-## Enable RClone Service
-sudo systemctl daemon-reload
-sudo systemctl enable unionfs.service
-sudo systemctl start unionfs.service
-
-## Create the Move Script
-tee "/opt/rclone-move.sh" > /dev/null <<EOF
-#!/bin/bash
-sleep 30
-while true
-do
-# Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
-sleep 3600
-# Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
-done
-EOF
-chmod 755 /opt/rclone-move.sh
-
-## Create the Move Service
-tee "/etc/systemd/system/move.service" > /dev/null <<EOF
-[Unit]
-Description=Move Service Daemon
-After=multi-user.target
-
-[Service]
-Type=simple
-User=root
-Group=root
-ExecStart=/bin/bash /opt/rclone-move.sh
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable move.service
-sudo systemctl start move.service
-bash
+bash /opt/plexguide/scripts/docker-no/continue.sh
