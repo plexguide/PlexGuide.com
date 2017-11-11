@@ -1,0 +1,17 @@
+---
+version: '2'
+services:
+ sabnzbd:
+   image: sabnzbd/sabnzbd
+   container_name: sabnzbd
+   ports:
+     - 8080:8090
+   volumes:
+     - /opt/sabnzbd:/datadir
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - PUID=0
+     - PGID=0
+   restart:
+     always

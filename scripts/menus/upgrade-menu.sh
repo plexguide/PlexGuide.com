@@ -66,7 +66,10 @@ read_options(){
     bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   2)
-    clear
+    echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
+    echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+    echo ymlport 8090 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   3)
 		bash "$VARMENU2"radarr.sh
