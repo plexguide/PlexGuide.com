@@ -35,8 +35,8 @@ cat << EOF
 
 Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 
-1.  EMPTY
-2.  Install: Sonarr
+1.  Upgrade: Sonarr
+2.  EMPTY
 3.  Install: Radarr
 4.  Install: SABNZBD
 5.  EMPTY
@@ -60,11 +60,13 @@ read_options(){
 	read -p "Enter choice [ 1 - 14 ] " choice
 	case $choice in
   1)
-    clear
+    echo ymlprogram sonarr > /opt/plexguide/tmp.txt
+    echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
+    echo ymlport 8989 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
     ;;
   2)
-		bash "$VARMENU2"sonarr.sh
-		bash "$VARMENU2"continue.sh
+    clear
     ;;
   3)
 		bash "$VARMENU2"radarr.sh
