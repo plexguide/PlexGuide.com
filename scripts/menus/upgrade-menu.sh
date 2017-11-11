@@ -26,25 +26,10 @@ two(){
         pause
 }
 
-#file="/opt/plexguide/tmp.txt"
-#if [ -e "$file" ]
-#then
-#    touch /opt/plexguide/tmp.txt
-#    chmod 755 /opt/plexguide/tmp.txt
-#else
-#    touch /opt/plexguide/tmp.txt
-#    chmod 755 /opt/plexguide/tmp.txt
-#fi
-
-
-TMP-PATH="/opt/plexguide"
 
 # function to display menus
 show_menus() {
 clear
-
-EOF 
-
 
 cat << EOF
 
@@ -55,14 +40,14 @@ Welcome to the PlexGuide.com > U-P-D-A-T-E Installer
 3.  Install: Radarr
 4.  Install: SABNZBD
 5.  Install: DOCKER - Portainer
-6.  Upgrade: Ombi v3   (Requires Docker)
-7.  Docker : Plex      (Requires Docker)
-8.  Docker : Emby      (Requires Docker)
-9.  Docker : PlexyPy   (Requires Docker)
-10. Docker : NetData   (Requires Docker)
-11. Docker : Muximux   (Requires Docker)
-12. Docker : Wordpress (Requires Docker)
-13. Docker : RuTorrent (Requires Docker)
+6.  Upgrade: Ombi v3   
+7.  Docker : Plex   
+8.  Docker : Emby      
+9.  Docker : PlexyPy 
+10. Docker : NetData  
+11. Docker : Muximux
+12. Docker : Wordpress 
+13. Docker : RuTorrent 
 14. Exit
 EOF
 }
@@ -95,14 +80,17 @@ read_options(){
 		bash "$VARMENU1"continue.sh
     ;;
   6)
-    echo ymlprogram ombi > $"TMP-PATH"/tmp.txt
+    echo ymlprogram ombi > opt/plexguide/tmp.txt
     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
     echo ymlport 3579 >> /opt/plexguide/tmp.txt
 		bash /opt/plexguide/scripts/docker/upgrade-programs.sh
 		bash "$VARMENU1"continue.sh
     ;;
   7)
-		bash "$VARMENU1"plex.sh
+    echo ymlprogram plex > opt/plexguide/tmp.txt
+    echo ymldisplay Plex >> /opt/plexguide/tmp.txt
+    echo ymlport 32400 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker/upgrade-programs.sh
 		bash "$VARMENU1"continue.sh
     ;;
   8)

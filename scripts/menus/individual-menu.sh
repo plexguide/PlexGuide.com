@@ -36,9 +36,6 @@ VARMENU2="/opt/plexguide/scripts/docker-no/"
 show_menus() {
 clear
 
-EOF 
-
-
 cat << EOF
 
 Welcome to the PlexGuide.com > I-N-D-I-V-I-D-U-A-L Installer

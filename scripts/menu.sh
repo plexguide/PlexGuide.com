@@ -82,10 +82,6 @@ read_options(){
         bash /opt/plexguide/scripts/menus/individual-menu.sh
         ;;
 	4)
-        clear
-        echo "*** This Area is Not Ready ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/upgrade-menu.sh
         clear
         ;;
