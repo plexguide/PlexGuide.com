@@ -18,7 +18,7 @@ mandb
 cd .. && sudo rm -r rclone*
 
 ## Making rclone directory
-mkdir /mnt/rclone
+mkdir /mnt/rclone 2>/dev/null
 chmod 755 /mnt/rclone
 chown root /mnt/rclone
 
