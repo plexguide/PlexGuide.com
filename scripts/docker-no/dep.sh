@@ -1,8 +1,4 @@
-####### Agree to Install Plex Server
-
 clear
-echo "Dependicies & Docker are Required to be Installed"
-echo 
 echo -n "Do you Agree to Install the PlexGuide.com Installer (y/n)?"
 old_stty_cfg=$(stty -g)
 stty raw -echo
