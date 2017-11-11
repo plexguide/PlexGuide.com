@@ -64,9 +64,9 @@ systemctl enable rclone
 systemctl enable move
 
 # turn services back on
-systemctl restart unionfs
-systemctl restart rclone
-systemctl restart move
+systemctl start unionfs
+systemctl start rclone
+systemctl start move
 system
 
 clear
