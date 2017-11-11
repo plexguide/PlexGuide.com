@@ -34,10 +34,8 @@ cat << EOF
 PLEASE READ the PlexDrive Section @ http://wiki.plexguide.com
 Have the Google Tokens ready! @ http://plexdrive.plexguide.com
 
-WARNING Windows Users!
-
 Having issues because you did not follow directions or mistyped?
-Please check your PlexDrive4 Status, Restart and if your still 
+Please check your PlexDrive4 Status and Restart. If your still 
 having issues, please delete your CURRENT TOKENS and start again!
 
 ~~~~~~~~~~~~~~~~~~~~~~~~	
@@ -56,7 +54,7 @@ read_options(){
 	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1)
-		    bash /opt/scripts/docker-no/plexdrive4.sh
+		    bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
 		    ;;
 		2)
         	systemctl restart plexdrive4
