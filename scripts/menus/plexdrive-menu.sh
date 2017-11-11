@@ -28,57 +28,55 @@ two(){
 
 # function to display menus
 show_menus() {
-	clear
-	echo "Note: Enable PlexDrive Service AFTER PlexDrive Installs"
-	echo "If you do this before or after, you may have problems"
-	echo "with PlexDrive eveytime that you reboot"
-	echo
-    echo "If you are having errors, bad pages, or didn't let the"
-    echo "install finish, but cannot get it to start; select option #3"
-    echo "This will allow you to run Option [1] again"
-    echo
-    echo "I highly recommend you check on http://plexdrive.plexguide.com"
-    echo "before starting the entire process"
-	echo
-	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo " P-L-E-X-D-R-I-V-E-4"
-	echo "~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install PlexDrive"
-	echo "2. Service: Start/Restart PlexDrive Service"
-	echo "3. Delete Current PlexDrive Tokens"
-	echo "4. Exit"
+
+clear
+cat << EOF
+PLEASE READ the PlexDrive Section @ http://wiki.plexguide.com
+Have the Google Tokens ready! @ http://plexdrive.plexguide.com
+
+WARNING Windows Users!
+
+Having issues because you did not follow directions or mistyped?
+Please check your PlexDrive4 Status, Restart and if your still 
+having issues, please delete your CURRENT TOKENS and start again!
+
+~~~~~~~~~~~~~~~~~~~~~~~~	
+  PLEXDRIVE4 Installer
+~~~~~~~~~~~~~~~~~~~~~~~~
+1. Install PlexDrive:  Read Instructions Prior
+2. Troubleshooting  :  Restart PlexDrive4 Status
+3. Troubleshooting  :  Delete PlexDrive4 Tokens
+4. Exit
+
+EOF
 }
-# read input from the keyboard and take a action
-# invoke the one() when the user select 1 from the menu option.
-# invoke the two() when the user select 2 from the menu option.
-# Exit when user the user select 3 form the menu option.
+
 read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 4] " choice
 	case $choice in
 		1)
-		    cd /opt/plexguide/scripts/
-		    bash plexdrive4.sh
+		    bash /opt/scripts/docker-no/plexdrive4.sh
 		    ;;
 		2)
-        systemctl restart plexdrive4
-        echo
-        echo "PlexDrive4 Service started/restarted"
-        echo
-        read -n 1 -s -r -p "Press any key to continue"
-        ;;
+        	systemctl restart plexdrive4
+       		echo
+        	echo "PlexDrive4 Service started/restarted"
+       	    echo
+        	read -n 1 -s -r -p "Press any key to continue"
+        	;;
 		3)
-        rm -r /root/.plexdrive
-        echo
-        echo "Tokens Removed"
-        echo
-        read -n 1 -s -r -p "Press any key to continue"
-        clear
-		      ;;
+       		rm -r /root/.plexdrive
+        	echo
+        	echo "Tokens Removed"
+        	echo
+        	read -n 1 -s -r -p "Press any key to continue"
+        	clear
+		    ;;
         4)
-        clear
-        echo Remember, restart by typing:  plexguide
-        exit 0;;
+        	clear
+        	echo Remember, restart by typing:  plexguide
+        	exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
