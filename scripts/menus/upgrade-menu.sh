@@ -36,7 +36,7 @@ two(){
 #    chmod 755 /opt/plexguide/tmp.txt
 #fi
 
-set path for docker items
+
 TMP-PATH="/opt/plexguide/tmp.txt"
 
 # function to display menus
