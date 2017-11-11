@@ -5,20 +5,6 @@ cat << EOF
 Directory 1 (For Google Drive)
 WARNING: Write this down and follow the order
 
-* [N] New Remote 
-* [9] Google, 
-* Enter Info, 
-* Verify
-* Ok
-* Continue
-
-EOF
-bash /opt/plexguide/scripts/docker-no/continue.sh
-
-cat << EOF
-Directory 2 (Local Drive)
-WARNING: Write this down and follow the order
-
 N < For New remote
 gdrive < for the name
 9 < For Google Drive (double check the number select incase)
@@ -27,6 +13,13 @@ Enter Your Google Secret
 
 Y < for GUI Interface (much easier if using a Graphical Interface)
 N < for headless machine (if using only Terminal)
+
+EOF
+bash /opt/plexguide/scripts/docker-no/continue.sh
+
+cat << EOF
+Directory 2 (Local Drive)
+WARNING: Write this down and follow the order
 
 N < For New remote
 local < for the name
