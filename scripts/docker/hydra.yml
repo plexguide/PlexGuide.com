@@ -1,0 +1,17 @@
+---
+version: '2'
+services:
+ hydra:
+   image: linuxserver/hydra
+   container_name: hydra
+   ports:
+     - 5075:5075
+   volumes:
+     - /opt/hydra:/config
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - PUID=0
+     - PGID=0
+   restart:
+     always
