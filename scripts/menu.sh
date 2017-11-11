@@ -59,10 +59,7 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 EOF
 }
-# read input from the keyboard and take a action
-# invoke the one() when the user select 1 from the menu option.
-# invoke the two() when the user select 2 from the menu option.
-# Exit when user the user select 3 form the menu option.
+
 read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 8 ] " choice

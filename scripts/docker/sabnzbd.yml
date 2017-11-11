@@ -5,7 +5,7 @@ services:
    image: sabnzbd/sabnzbd
    container_name: sabnzbd
    ports:
-     - 8080:8090
+     - 8090:8080
    volumes:
      - /opt/sabnzbd:/datadir
      - /:/yourcomputer
