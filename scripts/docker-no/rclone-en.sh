@@ -113,7 +113,7 @@ systemctl disable move
 
 # stop current services
 systemctl stop unionfs
-systemctl stop clone-en
+systemctl stop rclone-en
 systemctl stop move-en
 
 # copy rclone config from sudo user to root, which is the target
@@ -121,7 +121,7 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 # turn services back on
 systemctl restart unionfs
-systemctl restart clone-en
+systemctl restart rclone-en
 systemctl restart move-en
 system
 
