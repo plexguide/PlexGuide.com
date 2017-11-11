@@ -41,9 +41,10 @@ having issues, please delete your CURRENT TOKENS and start again!
 ~~~~~~~~~~~~~~~~~~~~~~~~	
   PLEXDRIVE4 Installer
 ~~~~~~~~~~~~~~~~~~~~~~~~
-1. Install PlexDrive:  Read Instructions Prior
-2. Troubleshooting  :  Restart PlexDrive4 Status
-3. Troubleshooting  :  Delete PlexDrive4 Tokens
+1. Install PlexDrive   :  Read Instructions Prior
+2. Troubleshooting     :  Restart PlexDrive4 Status
+3. Troubleshooting     :  Delete PlexDrive4 Tokens
+4. PlexDrive Mount Test:
 4. Exit
 
 EOF
@@ -51,7 +52,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 4] " choice
+	read -p "Enter choice [ 1 - 5 ] " choice
 	case $choice in
 		1)
 		    bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
@@ -70,8 +71,19 @@ read_options(){
         	echo
         	read -n 1 -s -r -p "Press any key to continue"
         	clear
-		    ;;
-        4)
+		      ;;
+   4)
+        clear
+        ls /mnt/plexdrive4
+        echo
+        echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
+        echo "Note 1: Must have at least 1 item in your Google Drive for the test"
+        echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+    ;;
+    5)
         	clear
         	echo Remember, restart by typing:  plexguide
         	exit 0;;
