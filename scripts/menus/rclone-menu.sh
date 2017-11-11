@@ -28,32 +28,43 @@ two(){
  
 # function to display menus
 show_menus() {
-	clear
-	echo "Note: Install only one version of Rclone"
-	echo "This is NOT WORKING YET - Only TESTING"
-	echo
-	echo "~~~~~~~~~~~~~~~~~~~~"	
-	echo "    R-C-L-O-N-E"
-	echo "~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Install: RClone - Unencrypted"
-	echo "2. Install: RClone - Encrypted"
-	echo "3. Exit"
+
+clear
+cat << EOF
+Note: Ensure that you run the Pre-Install [1] prior to anything else.
+
+Only Install one version of RClone; encrypted or unencrypted
+
+~~~~~~~~~~~~~~~~~~~~
+  RClone Installer
+~~~~~~~~~~~~~~~~~~~~
+1. RClone Preinstall  :  Enables Services & UnionFS
+2. Unencrypted Install:  Utilize the unencrypted version of RClone
+3. Encrypted Install  :  Utilize the encrypted version of RClone
+4. Exit
+
+EOF
 }
-# read input from the keyboard and take a action
-# invoke the one() when the user select 1 from the menu option.
-# invoke the two() when the user select 2 from the menu option.
-# Exit when user the user select 3 form the menu option.
+
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3] " choice
+	read -p "Enter choice [ 1 - 4 ] " choice
 	case $choice in
-		1)
-		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
+	1)
+		bash /opt/plexguide/scripts/docker-no/rclone-basic.sh
+        clear
+        echo "*** RClone Pre-Instlal Complete ***"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
 		;;
-		2)
+	2)
+		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
+        ;;
+	3)
 		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
-                ;;
-		3) 
+        ;;
+	4) 
 		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
