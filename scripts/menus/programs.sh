@@ -38,16 +38,16 @@ cat << EOF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Plex          | Sharing media program - * The Reason We Are Here *
-2.  CouchPotato   | Movie requesting program; older outdated program
-3.  Emby          | Alternative to PLEX and less restrictive
+2.  CouchPotato   | (No Guide) Movie requesting program; older outdated program
+3.  Emby          | (No Guide) Alternative to PLEX and less restrictive
 4.  NetData       | Statistical Tool for the Server
-5.  Muximux       | Self-managed site interface to control your programs 
-6.  NZBGET        | USENET Downloading Program (No-Guide) 
-7.  Ombi v3       | Enables users to request media 
-8.  Organizr      | Self-managed site interface to control your programs
-9.  PlexyPy       | Provides detailed analytics about the PLEX Users
+5.  Muximux       | (No Guide) Site Interface to control your programs 
+6.  NZBGET        | (No Guide) * USENET Downloading Program
+7.  Ombi v3       | (No Guide) * Enables users to request media 
+8.  Organizr      | (No Guide) * Site Interface to control your programs
+9.  PlexyPy       | (No Guide) * Provides detailed analytics about the PLEX Users
 10. Radarr        | Movie requesting program; newer less mature program
-11. RuTorrent     | Torrent Downloading Program (No-Guide)
+11. RuTorrent     | (No Guide) * Torrent Downloading Program
 12. SABNZBD       | USENET Downloading Program
 13. Sonarr        | TV Show requeseting program; more organized 
 14. Wordpress     | Create a website for users to interact with
