@@ -8,7 +8,7 @@ services:
      - 8989:8989
    volumes:
      - /opt/sonarr:/config
-     - /:/
+     - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=0
