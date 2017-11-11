@@ -38,7 +38,7 @@ cat << EOF
 1.  Plex          | Sharing media program - * The Reason We Are Here *
 2.  CouchPotato   | (No Guide) Movie requesting program; older program
 3.  Emby          | (No Guide) Alternative to PLEX and less restrictive
-4.  Hydra         | (No Guide) NZBHydra is a meta search for NZB indexers
+4.  Hydra         | (No Guide) Meta search for NZB indexers
 5.  NetData       | Statistical Tool for the Server
 6.  Muximux       | (No Guide) Site Interface to control your programs 
 7.  NZBGET        | (No Guide) USENET Downloading Program
