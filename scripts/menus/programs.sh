@@ -38,7 +38,6 @@ cat << EOF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Plex          | Sharing media program - * The Reason We Are Here *
-
 2.  CouchPotato   | Movie requesting program; older outdated program
 3.  Emby          | Alternative to PLEX and less restrictive
 4.  NetData       | Statistical Tool for the Server
@@ -53,6 +52,7 @@ cat << EOF
 13. Sonarr        | TV Show requeseting program; more organized 
 14. Wordpress     | Create a website for users to interact with
 15. Exit
+
 EOF
 }
 # read input from the keyboard and take a action
