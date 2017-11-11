@@ -2,11 +2,12 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-![N](https://preview.ibb.co/bP2Wnb/Snip20171105_31.png")
+![N](https://preview.ibb.co/j0Vexb/Snip20171111_4.png)
 
 ## Manual Process and Manual Guide (for Learning) & Thanks
 - http://manual.plexguide.com
 - Thanks also Alasano, DaveFTW84 and Deiteq (most for encryption)! Your motivation helps all of us noobs :D
+- Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 
 ## Mission Statement
 Build an automated setup to ensure that you are maintaing a steady and reliable server, while maintaing your media is up-to-date (especially through the use of USENET - speed and security over torrents).
@@ -14,7 +15,7 @@ Build an automated setup to ensure that you are maintaing a steady and reliable 
 ## Purpose
 Installs Plex and other programs. This was made as a result of poor plexcloud performance and Google API bans. This allows you to maintain an automated server that uploads and downloads your files through the use of a mounted google drive.
 
-## Guide Order
+## Guide Order - For 3.5 Automated Install
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
@@ -50,7 +51,6 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 
 ## Social Contacts
 
-- Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 - Reddit Contact  - [Admin9705] - Reddit
 
 ### Version Information
