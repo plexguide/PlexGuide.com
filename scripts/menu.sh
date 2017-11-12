@@ -45,12 +45,10 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
 Please READ the Wiki at http://wiki.plexguide.com (It will help you!)
-Please feel free to contribute to this project or wiki! 
+Please feel free to contribute to this project or wiki!
 
-Plans:
-Version 6: Security - NGINX, Reverse Proxies & VPNs
-Version 5: Enable use without Google Drive & Custom Ports
-Version 4: Finish Programming and Guide Modifications
+Plans: Security, NGINX, VPNs, Custom Ports
+Focus: Bugs - Please Report!
 
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
@@ -58,7 +56,7 @@ Version 4: Finish Programming and Guide Modifications
 1. RClone Install    :  Media Syncs to Google Drive
 2. PlexDrive4 Install:  Prevent G-Drive Plex Scan Bans
 3. Install & Upgrade :  Server Programs & Tools
-4. PlexGuide Program :  Upgrade This Program 
+4. PlexGuide Program :  Upgrade This Program
 5. Secure the Server :  * Not Ready *
 6. Exit
 
