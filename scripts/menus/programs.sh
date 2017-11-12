@@ -40,15 +40,15 @@ cat << EOF
 3.  Emby          | ** Alternative to PLEX and less restrictive
 4.  Hydra         | ** Meta search for NZB indexers
 5.  NetData       | ** Statistical Tool for the Server
-6.  Muximux       | ** Site Interface to control your programs 
+6.  Muximux       | ** Site Interface to control your programs
 7.  NZBGET        | ** USENET Downloading Program
-8.  Ombi v3       | ** Enables users to request media 
+8.  Ombi v3       | ** Enables users to request media
 9.  Organizr      | ** Site Interface to control your programs
 10. PlexPy        | ** Provides analytics about your PLEX Users
 11. Radarr        | Movie requesting program; newer less mature program
 12. RuTorrent     | ** Torrent Downloading Program
 13. SABNZBD       | USENET Downloading Program
-14. Sonarr        | TV Show requeseting program; more organized 
+14. Sonarr        | TV Show requeseting program; more organized
 15. Wordpress     | Create a website for users to interact with
 16. Exit
 
@@ -63,16 +63,14 @@ read_options(){
 	read -p "Enter choice [ 1 - 16 ] " choice
 	case $choice in
   1)
-    echo ymlprogram plex > /opt/plexguide/tmp.txt
-    echo ymldisplay Plex >> /opt/plexguide/tmp.txt
-    echo ymlport 32400 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
+  clear
+  bash /opt/plexguide/scripts/menus/plexsub-menu.sh
+  ;;
   2)
     echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
     echo ymldisplay CouchPotato >> /opt/plexguide/tmp.txt
     echo ymlport 5050 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh 
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   3)
     echo ymlprogram emby > /opt/plexguide/tmp.txt
@@ -114,7 +112,7 @@ read_options(){
     echo ymlprogram organizr > /opt/plexguide/tmp.txt
     echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
     echo ymlport 8020 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh 
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   10)
     echo ymlprogram plexpy > /opt/plexguide/tmp.txt
@@ -126,7 +124,7 @@ read_options(){
     echo ymlprogram radarr > /opt/plexguide/tmp.txt
     echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
     echo ymlport 7878 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh  
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   12)
     echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
@@ -152,7 +150,7 @@ read_options(){
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  16) 
+  16)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

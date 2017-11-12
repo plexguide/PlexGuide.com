@@ -1,0 +1,17 @@
+---
+version: '2'
+services:
+ plex:
+   image: plexinc/pms-docker:pass
+   container_name: plexpass
+   volumes:
+     - /opt/plex/database:/config
+     - /opt/plex/transcode:/transcode
+     - /mnt/plexdrive4:/plexdrive4
+     - /:/yourcomputer
+   ports:
+     - 32400:32400
+   restart: always
+   environment:
+     - PUID=0
+     - PGID=0

@@ -2,8 +2,8 @@
 version: '2'
 services:
  plex:
-   image: plexinc/pms-docker
-   container_name: plex
+   image: plexinc/pms-docker:public
+   container_name: plexpublic
    volumes:
      - /opt/plex/database:/config
      - /opt/plex/transcode:/transcode
