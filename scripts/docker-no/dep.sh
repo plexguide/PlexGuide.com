@@ -21,6 +21,23 @@ if echo "$answer" | grep -iq "^y" ;then
     mkdir /mnt/plexdrive4
     chmod 755 /mnt/plexdrive4
 
+    mkdir /mnt/sab
+    chmod 777 /mnt/sab
+
+    mkdir /mnt/sab/incomplete
+    chmod 777 /mnt/sab/incomplete
+
+    mkdir /mnt/sab/complete
+    chmod 777 /mnt/sab/complete
+
+    mkdir /mnt/sab/complete/tv 
+    chmod 777 /mnt/sab/complete/tv
+
+    mkdir /mnt/sab/complete/movies
+    chmod 777 /mnt/sab/complete/movies
+
+    mkdir /mnt/sab/nzb
+    chmod 777 /mnt/sab/nzb
 
     #Prevents this script from running again
     mkdir /var/plexguide 
