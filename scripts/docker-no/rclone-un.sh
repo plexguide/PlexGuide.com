@@ -60,7 +60,7 @@ systemctl stop move
 for i in `seq 1 5`;
 do
 chmod 777 ~/.config/rclone/rclone.conf
-sudo cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+sudo mv ~/.config/rclone/rclone.conf /root/.config/rclone/
 sleep 1
 done
 
