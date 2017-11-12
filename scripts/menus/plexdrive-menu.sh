@@ -35,17 +35,17 @@ PLEASE READ the PlexDrive Section @ http://wiki.plexguide.com
 Have the Google Tokens ready! @ http://plexdrive.plexguide.com
 
 Having issues because you did not follow directions or mistyped?
-Please check your PlexDrive4 Status and Restart. If your still 
+Please check your PlexDrive4 Status and Restart. If your still
 having issues, please delete your CURRENT TOKENS and start again!
 
-~~~~~~~~~~~~~~~~~~~~~~~~	
+~~~~~~~~~~~~~~~~~~~~~~~~
   PLEXDRIVE4 Installer
 ~~~~~~~~~~~~~~~~~~~~~~~~
 1. Install PlexDrive   :  Read Instructions Prior
 2. Troubleshooting     :  Restart PlexDrive4 Status
 3. Troubleshooting     :  Delete PlexDrive4 Tokens
-4. PlexDrive Mount Test:
-4. Exit
+4. PlexDrive Mount Test:  Verify your PlexDrive Install
+5. Exit
 
 EOF
 }
