@@ -48,11 +48,14 @@ The program has a built-in update manager that you can execute.  At anytime, jus
            - Recommended info for encrypted rclone  : http://enrclone.plexguide.com
 - **5.** [2] Configure PlexDrive - More info at >> http://plexdrive.plexguide.com          
 - **6.** [3] Configure your programs accordingly with >> http://wiki.plexguide.com
-          - Note: Configuring Plex on a remote machine? Visit:
-          
+          - Note: Configuring Plex on a remote machine? Visit: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide
           - Programs to avoid: RuTorrent, Wordpress & NZBGET (requires fixes and guides) 
 - **7.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
           - Ensure that when you setup portainer, select REMOTE!
+          
+## Final Note
+
+See issues or have solutions? Please post in discussion or the REDDIT.  Sometimes other are aware of problems and allows to keep track.  Help make this program better!
 
 ## Social Contacts
 
@@ -63,15 +66,20 @@ The program has a built-in update manager that you can execute.  At anytime, jus
 - V3.5 / *** Current project *** Partially manual and partially automated
 
 ### What You Can Install
+[$$] = No Important, so not ideal to setup until complete
 
+- Port 5050   CouchPotato [$$]
+- Port 8096   Emby [$$]
+- Port 5075   Hydra [$$]
 - Port 8015   Muximux
 - Port 19999  NetData
-- Port 3579   Ombi
+- Port 3579   Ombiv3
+- Port 8020   Organizer
 - Port 32400  Plex
 - Port 8181   PlexPy
 - Port 9000   Portainer
 - Port 7878   Radarr
-- Port 8085   RuTorrent
+- Port 8085   RuTorrent [$$]
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
 - Port 80     Wordpress
