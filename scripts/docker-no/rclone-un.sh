@@ -17,7 +17,7 @@ N < for headless machine (if using only Terminal)
 Enter Your Verification Code
 
 Windows Users: Use CTRL+Insert (for copy) and Shift+Insert (for Paste)
-Do anything else, you will mess it up 
+Do anything else, you will mess it up
 
 N < Configure this as a team drive?
 Y < If asking all is ok?
@@ -92,12 +92,12 @@ systemctl start move
 
 clear
 cat << EOF
-NOTE: You installed the encrypted version for the RClone data transport! If you
-messed anything up, select [2] and run through again.  Also check:
+NOTE: You installed the unencrypted version for the RClone data transport!
+If you messed anything up, select [2] and run through again.  Also check:
 http://unrclone.plexguide.com and or post on http://reddit.plexguide.com
 
-HOW TO CHECK: In order to check if everything is working, have 1 item at least in 
-your google Drive
+HOW TO CHECK: In order to check if everything is working, have 1 item at least
+in your google Drive
 
 1. Type: /mnt/rclone (and then you should see some item from your g-drive there)
 2. Type: /mnt/rclone-union (and you should see the same g-drive stuff there)
