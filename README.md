@@ -18,7 +18,7 @@ UB 16.04+ & Google Drive (https://gsuite.google.com) (ignore 5 user requirements
 
 ## Guide Order - For 4.0 Automated Install
 
-- **1.** Read http://wiki.plexguide.com for basic information and understanding
+- **1.** Read http://wiki.plexguide.com for basic information and then set up your Google Drive Layout: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
 - **3.** Execute the following below:
 
