@@ -42,10 +42,17 @@ plexguide
 
 The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select the update option and the newest files will download for the newest features and fixes.
 
-- **4.** When you execute the program, if using G-Drive, start with installing PlexDrive.
-  - Follow http://plexdrive.plexguide.com for more information! I would highly ... highly recommend it!
-- **5.** Configure your programs accordingly with >> http://wiki.plexguide.com
-- **6.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
+- **4.** Execute the program follow the steps as followed
+        - [1] RClone:
+           - Recommended info for unencrypted rclone: http://unrclone.plexguide.com 
+           - Recommended info for encrypted rclone  : http://enrclone.plexguide.com
+- **5.** [2] Configure PlexDrive - More info at >> http://plexdrive.plexguide.com          
+- **6.** [3] Configure your programs accordingly with >> http://wiki.plexguide.com
+          - Note: Configuring Plex on a remote machine? Visit:
+          
+          - Programs to avoid: RuTorrent, Wordpress & NZBGET (requires fixes and guides) 
+- **7.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
+          - Ensure that when you setup portainer, select REMOTE!
 
 ## Social Contacts
 
