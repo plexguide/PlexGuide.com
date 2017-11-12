@@ -16,7 +16,7 @@ Establish an automated server that mounts your google drive for storage, while u
 
 UB 16.04+ & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
 
-## Guide Order - For 3.5 Automated Install
+## Guide Order - For 4.0 Automated Install
 
 - **1.** Read http://wiki.plexguide.com for basic information and understanding
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
