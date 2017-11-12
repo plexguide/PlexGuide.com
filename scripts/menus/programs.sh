@@ -49,8 +49,9 @@ cat << EOF
 12. RuTorrent     | ** Torrent Downloading Program
 13. SABNZBD       | USENET Downloading Program
 14. Sonarr        | TV Show requeseting program; more organized
-15. Wordpress     | Create a website for users to interact with
-16. Exit
+15. Wordpress     | Create a website for users to interact
+16. NGINX-Proxy   | ** TESTING
+17. Exit
 
 EOF
 }
@@ -151,6 +152,12 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   16)
+    echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
+    echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
+    echo ymlport 80 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
+  17)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
