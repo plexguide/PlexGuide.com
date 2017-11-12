@@ -2,7 +2,7 @@
 version: '2'
 services:
  plex:
-   image: plexinc/pms-docker:pass
+   image: plexinc/pms-docker:plexpass
    container_name: plexpass
    volumes:
      - /opt/plex/database:/config
