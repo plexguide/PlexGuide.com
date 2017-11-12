@@ -66,6 +66,11 @@ read_options(){
 		;;
 	2)
 		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
+		for i in `seq 1 5`;
+		do
+		cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+		sleep 1
+		done
         bash /opt/plexguide/scripts/docker-no/rclone-un2.sh
 		;;
 	3)
