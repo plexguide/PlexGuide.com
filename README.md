@@ -1,4 +1,4 @@
-# PlexGuide.com - V3.5
+# PlexGuide.com - Version 4
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
@@ -62,8 +62,7 @@ See issues or have solutions? Please post in discussion or the REDDIT.  Sometime
 - Reddit Contact  - [Admin9705] - Reddit
 
 ### Version Information
-- V4   / When automations are complete
-- V3.5 / *** Current project *** Partially manual and partially automated
+- V4 / Stay on V4 until programming bugs are knocked out!
 
 ### What You Can Install
 [$$] = No Important, so not ideal to setup until complete
