@@ -55,7 +55,7 @@ The program has a built-in update manager that you can execute.  At anytime, jus
           
 ## Final Note
 
-See issues or have solutions? Please post in discussion or the REDDIT.  Sometimes other are aware of problems and allows to keep track.  Help make this program better!
+See issues or have solutions? Please post in discussion or REDDIT.  Sometimes other are aware of a problem and it allows us to keep track.  Help make this program better!
 
 ## Social Contacts
 
