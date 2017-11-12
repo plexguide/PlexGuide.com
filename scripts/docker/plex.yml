@@ -7,10 +7,11 @@ services:
    volumes:
      - /opt/plex/database:/config
      - /opt/plex/transcode:/transcode
-     - /mnt/plexdrive4:/data
+     - /mnt/plexdrive4:/plexdrive4
+     - /:/yourcomputer
    ports:
      - 32400:32400
    restart: always
    environment:
-     - PUID=1001    
+     - PUID=1001
      - PGID=1001
