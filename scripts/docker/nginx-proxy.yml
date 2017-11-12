@@ -1,10 +1,10 @@
 ---
 version: '2'
 nginx-proxy:
-        image: jwilder/nginx-proxy:latest
-        container_name: nginx-proxy
-        volumes:
-            - /var/run/docker.sock:/tmp/docker.sock:ro
-        ports:
-            - 80:80
-        restart: always
+ image: jwilder/nginx-proxy:latest
+   container_name: nginx-proxy
+   volumes:
+     - /var/run/docker.sock:/tmp/docker.sock:ro
+   ports:
+     - 80:80
+   restart: always
