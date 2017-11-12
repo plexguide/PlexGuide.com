@@ -13,5 +13,5 @@ services:
      - 32400:32400
    restart: always
    environment:
-     - PUID=0
-     - PGID=0
+     - PUID=1001
+     - PGID=1001
