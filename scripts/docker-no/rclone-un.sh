@@ -57,10 +57,9 @@ systemctl stop rclone
 systemctl stop move
 
 # copy rclone config from sudo user to root, which is the target
-for i in `seq 1 5`;
+for i in `seq 1 20`;
 do
-chmod 777 ~/.config/rclone/rclone.conf
-sudo mv ~/.config/rclone/rclone.conf /root/.config/rclone/
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 sleep 1
 done
 
