@@ -16,6 +16,12 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install curl
     yes | apt-get install openssh-server
     yes | apt-get install unionfs-fuse
+
+    #important folders
+    mkdir /mnt/plexdrive4
+    chmod 755 /mnt/plexdrive4
+
+
     #Prevents this script from running again
     mkdir /var/plexguide 
     touch /var/plexguide/dep2.yes

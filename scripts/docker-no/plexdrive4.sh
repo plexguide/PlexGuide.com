@@ -83,8 +83,6 @@ EOF
     cd /usr/bin/
     chown root:root /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
-    mkdir /mnt/plexdrive4
-    chmod 755 /mnt/plexdrive4
     clear
     plexdrive4 --uid=0 --gid=0 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
     clear

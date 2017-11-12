@@ -65,6 +65,7 @@ systemctl start unionfs
 systemctl start rclone
 systemctl start move
 
+####################################################### REPEAT 2 WORK
 # disable the encrypted services to prevent a clash
 systemctl disable rclone-en
 systemctl disable move-en
@@ -77,11 +78,7 @@ systemctl stop rclone
 systemctl stop move
 
 # copy rclone config from sudo user to root, which is the target
-for i in `seq 1 5`;
-do
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/
-sleep 1
-done
 
 # ensure that the unencrypted services are on
 systemctl enable rclone
