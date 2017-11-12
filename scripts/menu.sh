@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer 3.5 - 11 Nov II
+Welcome PlexGuide.com Installer V4 - Nov 12
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
