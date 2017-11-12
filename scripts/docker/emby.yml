@@ -10,7 +10,7 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /opt/appdata/embyserver:/config
-            - /mnt:/shows
+            - /:/yourcomputer
             - /mnt/rclone-union/:/media
         environment:
             - VIRTUAL_PORT=8096

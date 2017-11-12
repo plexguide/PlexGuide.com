@@ -8,10 +8,10 @@ services:
     ports:
       - 80:80
     environment:
-      WORDPRESS_DB_PASSWORD: mySuperStrongPassword1357924680!@$#%^*&andSome
+      WORDPRESS_DB_PASSWORD: mySuperStrong4857!#(*)
 
   mysql:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: MysupeRstrongPassworD1358924680!@$#%^&*SomeMore
+      MYSQL_ROOT_PASSWORD: MysupeRstrongPa48@*!%*()
