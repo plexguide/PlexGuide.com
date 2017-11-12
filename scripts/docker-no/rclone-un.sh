@@ -104,5 +104,7 @@ in your google Drive
 
 Verifying that 1 and 2 are important due to this is how your data will sync!
 
+To make it easy, you can also use the CHECKING TOOLS built in!
+
 EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh

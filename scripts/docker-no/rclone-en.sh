@@ -19,7 +19,7 @@ N < for headless machine (if using only Terminal)
 Enter Your Verification Code
 
 Windows Users: Use CTRL+Insert (for copy) and Shift+Insert (for Paste)
-Do anything else, you will mess it up 
+Do anything else, you will mess it up
 
 N < Configure this as a team drive?
 Y < If asking all is ok?
@@ -63,7 +63,7 @@ WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 N < For New remote
 crypt < for the name
 6 < For Encrypt/Decrypt (double check the number select incase)
-/mnt/plexdrive4/encrypt 
+/mnt/plexdrive4/encrypt
 2 < Encrypt standard
 Y < type your own password (write it, secure it and do not lose it)
 Y < type your own salt password (write it, secure it, make different)
@@ -152,17 +152,19 @@ systemctl restart move-en
 
 clear
 cat << EOF
-NOTE: You installed the unencrypted version for the RClone data transport! If you
+NOTE: You installed the encrypted version for the RClone data transport! If you
 messed anything up, select [2] and run through again.  Also check:
 http://enrclone.plexguide.com and or post on http://reddit.plexguide.com
 
-HOW TO CHECK: In order to check if everything is working, have 1 item at least in 
-your google Drive
+HOW TO CHECK: In order to check if everything is working, have 1 item at least
+in your google Drive
 
 1. Type: /mnt/rclone (and then you should see some item from your g-drive there)
 2. Type: /mnt/rclone-union (and you should see the same g-drive stuff there)
 
 Verifying that 1 and 2 are important due to this is how your data will sync!
+
+To make this easy, you can also use the checking tools built in!
 
 EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
