@@ -13,9 +13,10 @@ cat << EOF
 CRITICAL: Once PlexDrive starts the scan, DO NOT shut down your computer
 AND do NOT CLOSE THIS TERMINAL WINDOW until the scan is complete.
 
-Completed: Once completed, you must reboot the server to ensure that 
+Completed: Once completed, you must reboot the server to ensure that
 everything is working.  If it works, you should see some of your Google
-Drive Items by typing: cd mnt/plexdrive4 & ls
+Drive Items by typing: cd mnt/plexdrive4 & ls or you can come back to THIS
+menu and use the PlexDrive Verification Tool.
 EOF
 echo
 read -n 1 -s -r -p "Press any key to continue"
@@ -59,9 +60,9 @@ systemctl enable plexdrive4.service
 clear
 cat << EOF
 WINDOWS USERS Only: When copying information to your terminal winodw,
-PRESS [CTRL+Insert].  Do not use CTRL+C; this will result in messing up 
+PRESS [CTRL+Insert].  Do not use CTRL+C; this will result in messing up
 things.  This then will require you to DELETE your PLEXDRIVE tokens and
-restart the process again.   
+restart the process again.
 
 ALL USERS: Anytime you mess things up or have problems, press CTRL + Z or X
 to break out.  Come back again, select Option 3 to remove previous keys and
