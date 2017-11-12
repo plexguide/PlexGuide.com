@@ -11,11 +11,11 @@ services:
             - /etc/localtime:/etc/localtime:ro
             - /opt/appdata/embyserver:/config
             - /:/yourcomputer
-            - /mnt/rclone-union/:/media
+            - /mnt/plexdrive4:/plexdrive4
         environment:
             - VIRTUAL_PORT=8096
             - VIRTUAL_HOST=emby.htpc
             - AUTO_UPDATES_ON=true
-            - PUID=1001
-            - PGID=1001
+            - PUID=0
+            - PGID=0
         restart: always
