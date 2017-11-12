@@ -52,6 +52,7 @@ read_options(){
 	case $choice in
 		1)
       docker rm plexpass
+      clear
       echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
       echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
@@ -59,6 +60,7 @@ read_options(){
       ;;
 		2)
       docker rm plexpublic
+      clear
       echo ymlprogram plexpass > /opt/plexguide/tmp.txt
       echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
