@@ -2,7 +2,7 @@
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
 
-![N](https://preview.ibb.co/j0Vexb/Snip20171111_4.png)
+![N](https://i.imgur.com/xolIUR4.png)
 
 ## Thanks & Reddit Link
 - Thanks also Alasano, DaveFTW84 and Deiteq (most for encryption)! Your motivation helps all of us noobs :D
