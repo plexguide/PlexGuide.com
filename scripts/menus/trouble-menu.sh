@@ -89,7 +89,7 @@ read_options(){
       4)
     		clear
     		systemctl status move >> /opt/plexgudie/move.log
-        cat move.log
+        cat /opt/plexguide/move.log
     		echo
         echo "*** View the Log ***"
         echo "Remember, there is a sleep function of 30 minutes after done"
