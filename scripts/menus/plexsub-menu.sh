@@ -53,6 +53,7 @@ read_options(){
 		1)
       docker rm plexpass
       clear
+      touch /var/plexguide/plex.public
       echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
       echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
@@ -61,6 +62,7 @@ read_options(){
 		2)
       docker rm plexpublic
       clear
+      touch /var/plexguide/plex.pass
       echo ymlprogram plexpass > /opt/plexguide/tmp.txt
       echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
