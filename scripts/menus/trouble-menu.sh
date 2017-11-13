@@ -34,8 +34,8 @@ cat << EOF
 Notes:
 [1]   Only run after you installed PlexDrive
 [2-3] Only run after you installed rclone
-[4]   Only run after having your download programs and programs configured
-[5]   Run only as a last resort
+[4-5] Only run after having your download programs and programs configured
+[6]   Run only as a last resort
 
 ~~~~~~~~~~~~~~~~~~~~
 Troubleshooting Menu
@@ -43,9 +43,10 @@ Troubleshooting Menu
 1. PlexDrive Mount Test:  Verify your PlexDrive Install
 2. RClone Mount Test   :  Check if the RClone mount works
 3. UnionFS Mount Test  :  Check if the UnionFS mount works
-4. File Sync Checker   :  Check Service to verify File Sync
-5. Force Main Reinstall:  Forces Important Scripts to Re-Install
-6. Exit
+4. File Sync Checker UN:  (Unenrcypt RClone) Verify File Sync
+5. File Sync Checker EN:  (Enrcypted RClone) Verify File Sync
+6. Force Main Reinstall:  Forces Important Scripts to Re-Install
+7. Exit
 
 EOF
 }
@@ -107,7 +108,28 @@ read_options(){
         read -n 1 -s -r -p "Press any key to continue "
         clear
     		;;
-    5)
+        5)
+          ## create log file if does not exist
+          if [ -e "/opt/plexguide/move-en.log" ]
+          then
+            echo "Log exists"
+          else
+            touch /opt/plexguide/move-en.log
+          fi
+
+          ## obtains move.service info and puts into a log to displayed to the user
+          clear
+          systemctl status move > /opt/plexguide/move-en.log
+          cat /opt/plexguide/move-en.log
+          echo
+          echo "*** View the Log ***"
+          echo "Remember, there is a sleep function of 30 minutes after done"
+          echo "If you have tons of stuff downloaded, you should see some activity"
+          echo
+          read -n 1 -s -r -p "Press any key to continue "
+          clear
+          ;;
+    6)
       clear
       rm -r /var/plexguide/dep*
       echo
@@ -115,7 +137,7 @@ read_options(){
       echo
       read -n 1 -s -r -p "Press any key to continue "
         ;;
-    6)
+    7)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
