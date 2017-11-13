@@ -87,6 +87,15 @@ read_options(){
       clear
   		;;
       4)
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/move.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/move.log
+        fi
+
+        ## obtains move.service info and puts into a log to displayed to the user
     		clear
     		systemctl status move >> /opt/plexgudie/move.log
         cat /opt/plexguide/move.log
