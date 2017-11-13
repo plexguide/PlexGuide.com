@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Nov 13
+Welcome PlexGuide.com Installer V4 - Nov 13 II
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
@@ -56,7 +56,7 @@ Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 2. PlexDrive4 Install:  Prevent G-Drive Plex Scan Bans
 3. Install & Upgrade :  Server Programs & Tools
 4. PlexGuide Program :  Upgrade This Program
-5. Secure the Server :  * Not Ready *
+5. Troubleshooting?  :  Hope this helps!
 6. Exit
 
 EOF
@@ -70,7 +70,7 @@ read_options(){
         clear
 	    bash /opt/plexguide/scripts/menus/rclone-menu.sh
 	    ;;
-    2)
+  2)
         clear
         bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
         ;;
@@ -83,14 +83,11 @@ read_options(){
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-    5)
-        clear
-        echo "*** This Area is Not Ready ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
+  5)
+        bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-    6)
+  6)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
