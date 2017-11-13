@@ -156,7 +156,9 @@ WantedBy=multi-user.target
 EOF
 
 ## Enable UnionFS Service
-sudo systemctl daemon-reload
+systemctl daemon-reload
+systemctl enable unionfs
+systemctl start unionfs
 
 ## Create the Move Script
 tee "/opt/rclone-move-en.sh" > /dev/null <<EOF
