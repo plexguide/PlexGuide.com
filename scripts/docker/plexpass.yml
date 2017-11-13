@@ -14,5 +14,5 @@ services:
    privileged: true
    restart: always
    environment:
-     - PUID=1001
-     - PGID=1001
+     - PUID=0
+     - PGID=0
