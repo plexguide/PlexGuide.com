@@ -7,7 +7,7 @@ services:
    ports:
      - 6789:6789
    volumes:
-     - /opt/nzbget:/config
+     - /opt/appdata/nzbget:/config
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:

@@ -7,7 +7,7 @@ services:
    ports:
      - 7878:7878
    volumes:
-     - /opt/radarr:/config
+     - /opt/appdata/radarr:/config
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:

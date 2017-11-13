@@ -7,7 +7,7 @@ services:
    ports:
      - 8020:80
    volumes:
-     - /opt/organizr:/config
+     - /opt/appdata/organizr:/config
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=1001
