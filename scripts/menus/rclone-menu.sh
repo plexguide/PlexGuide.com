@@ -42,7 +42,7 @@ Have at least one item in your google drive.  If you see it, it works!
 ~~~~~~~~~~~~~~~~
 RClone Installer
 ~~~~~~~~~~~~~~~~
-1. RClone Preinstal    :  Enables Services & UnionFS
+1. RClone Preinstall   :  Enables Services & UnionFS
                           *****************************************
 2. Unencrypted Install :  Utilize the unencrypted version of RClone
 3. Encrypted Install   :  Utilize the encrypted version of RClone
