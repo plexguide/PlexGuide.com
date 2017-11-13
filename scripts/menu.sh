@@ -45,10 +45,9 @@ Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
 Please READ the Wiki at http://wiki.plexguide.com (It will help you!)
-Please feel free to contribute to this project or wiki!
 
-Plans: Security, NGINX, VPNs, Custom Ports
-Focus: Bugs - Please Report!
+Plans : Security, NGINX, VPNs, Custom Ports
+Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U

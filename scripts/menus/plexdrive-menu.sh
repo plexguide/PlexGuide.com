@@ -76,7 +76,7 @@ read_options(){
         clear
         ls /mnt/plexdrive4
         echo
-        echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
+        echo "*** PlexDrive: Your Google Drive - If empty, that's not good ***"
         echo "Note 1: Must have at least 1 item in your Google Drive for the test"
         echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
         echo
