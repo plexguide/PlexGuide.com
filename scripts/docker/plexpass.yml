@@ -11,8 +11,4 @@ services:
      - /:/yourcomputer
    ports:
      - 32400:32400
-   privileged: true
    restart: always
-   environment:
-     - PUID=0
-     - PGID=0
