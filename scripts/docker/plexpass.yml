@@ -7,7 +7,7 @@ services:
    volumes:
      - /opt/plex/database:/config
      - /opt/plex/transcode:/transcode
-     - /mnt/plexdrive4:/plexdrive4:plexdrive4
+     - /mnt/plexdrive4:/plexdrive4
      - /:/yourcomputer
    ports:
      - 32400:32400
