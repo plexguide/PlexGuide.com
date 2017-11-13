@@ -5,7 +5,7 @@ clear
 cat << EOF
 Maintained By - Deiteq
 Directory 1 (For Google Drive)
-WARNING: Write this down and follow the order or http://enrclone.plexguide.com
+WARNING: Write this down and follow the order or http://unrclone.plexguide.com
 
 N < For New remote
 gdrive < for the name
@@ -23,9 +23,12 @@ Do anything else, you will mess it up
 
 N < Configure this as a team drive?
 Y < If asking all is ok?
+Q < to quit
 
 EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
+
+rclone config
 
 ####### For Encryption Part 1
 cat << EOF
@@ -39,7 +42,7 @@ gcrypt < for the name
 gdrive:/encrypt (encrypt being the rclone encrypted folder within your gdrive)
 2 < Encrypt standard
 Y < type your own password (write it, secure it and do not lose it)
-Y < type your own salt password (write it, secure it, make different from before)
+Y < type your own salt password (write it, secure it, make different)
 Should see something like this:
 
 [gcrypt]
@@ -49,14 +52,16 @@ password = *** ENCRYPTED ***
 password2 = *** ENCRYPTED ***
 
 Y < Is asking all is ok?
-
+Q < To quit
 EOF
 
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
+rclone config
+
 ####### For Encryption Part 2
-Maintained By - Deiteq
 cat << EOF
+Maintained By - Deiteq
 Part II Encryption
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
@@ -65,8 +70,8 @@ crypt < for the name
 6 < For Encrypt/Decrypt (double check the number select incase)
 /mnt/plexdrive4/encrypt
 2 < Encrypt standard
-Y < type your own password (use same as before for gcrypt)
-Y < type your own salt password (use same as before for gcrypt salt)
+Y < type your own password (write it, secure it and do not lose it)
+Y < type your own salt password (write it, secure it, make different)
 Should see something like this:
 
 [crypt]
@@ -76,10 +81,13 @@ password = *** ENCRYPTED ***
 password2 = *** ENCRYPTED ***
 
 Y < Is asking all is ok?
+Q < To quit
 
 EOF
 
 bash /opt/plexguide/scripts/docker-no/continue.sh
+
+rclone config
 
 ##### For Encryption Part II
 cat << EOF
@@ -95,7 +103,7 @@ Ignore this part about ... long file names, UNC, and selecting [1])
 >>> Just type this exactly: /mnt/rclone-move and then press [ENTER]
 
 Y < Is asking all is ok?
-Q < to quit
+Q < To quit
 
 EOF
 
