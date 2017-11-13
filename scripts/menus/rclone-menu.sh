@@ -57,7 +57,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6 ] " choice
+	read -p "Enter choice [ 1 - 7 ] " choice
 	case $choice in
 	1)
 		bash /opt/plexguide/scripts/docker-no/rclone-basic.sh
