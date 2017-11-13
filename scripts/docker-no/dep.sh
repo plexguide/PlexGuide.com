@@ -114,6 +114,5 @@ else
     echo No
     clear
     echo "Install Aborted - You Failed to Agree"
-    exit 0;;
     echo
 fi
