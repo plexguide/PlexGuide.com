@@ -56,18 +56,7 @@ tee "/opt/plexfix.sh" > /dev/null <<EOF
 
 #!/bin/bash
 
-file="/var/plexguide/plex.public"
-if [ -e "$file" ]
-then
-  docker stop plexpublic
-  docker rm plexpublic
-  docker-compose -f /opt/plexguide/scripts/docker/plexpublic.yml up -d
-else
-  echo "tuna"
-fi
-
-file="/var/plexguide/plex.pass"
-if [ -e "$file" ]
+if [ -e "/var/plexguide/plex.pass" ]
 then
   docker stop plexpass
   docker rm plexpass
