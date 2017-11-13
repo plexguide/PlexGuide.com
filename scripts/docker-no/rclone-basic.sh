@@ -82,7 +82,7 @@ sudo systemctl daemon-reload
 ## Create the Move Script
 tee "/opt/rclone-move.sh" > /dev/null <<EOF
 #!/bin/bash
-sleep 60
+sleep 30
 while true
 do
 # Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
@@ -163,7 +163,7 @@ systemctl start unionfs
 ## Create the Move Script
 tee "/opt/rclone-move-en.sh" > /dev/null <<EOF
 #!/bin/bash
-sleep t0
+sleep 30
 while true
 do
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/rclone-move gcrypt:/
