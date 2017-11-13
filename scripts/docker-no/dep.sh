@@ -63,6 +63,7 @@ then
   docker rm plexpublic
   docker-compose -f /opt/plexguide/scripts/docker/plexpublic.yml up -d
 else
+  echo "popcorn"
 fi
 
 file="/var/plexguide/plex.pass"
@@ -73,6 +74,7 @@ then
   touch /var/plexguide/plex.pass
   docker-compose -f /opt/plexguide/scripts/docker/plexpass.yml up -d
 else
+  echo "popcorn"
 fi
 
 EOF
