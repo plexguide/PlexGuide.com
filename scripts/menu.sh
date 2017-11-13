@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Nov 13 II
+Welcome PlexGuide.com Installer V4 - Nov 13 III
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
@@ -52,11 +52,11 @@ Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
 ~~~~~~~~~~~~~~~~~~~~~
-1. RClone Install    :  Media Syncs to Google Drive
-2. PlexDrive4 Install:  Prevent G-Drive Plex Scan Bans
-3. Install & Upgrade :  Server Programs & Tools
-4. PlexGuide Program :  Upgrade This Program
-5. Troubleshooting?  :  Hope this helps!
+1. Install - Rlcone   :  Media Syncs to Google Drive
+2. Install - PlexDrive:  Prevent G-Drive Plex Scan Bans
+3. Install & Update   :  Server Programs & Tools
+4. Update PlexGuie    :  Upgrade this Program (Newest Updates & Fixes)
+5. Troubleshooting 101:  Hope this helps!
 6. Exit
 
 EOF
