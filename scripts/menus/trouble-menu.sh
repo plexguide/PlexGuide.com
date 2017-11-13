@@ -34,7 +34,8 @@ cat << EOF
 Notes:
 [1]   Only run after you installed PlexDrive
 [2-3] Only run after you installed rclone
-[4]   Run only as a last resort
+[4]   Only run after having your download programs and programs configured
+[5]   Run only as a last resort
 
 ~~~~~~~~~~~~~~~~~~~~
 Troubleshooting Menu
@@ -51,7 +52,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 5 ] " choice
+	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
   	1)
       clear
