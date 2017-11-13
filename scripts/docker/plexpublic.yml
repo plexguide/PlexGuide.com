@@ -5,9 +5,9 @@ services:
    image: plexinc/pms-docker:public
    container_name: plexpublic
    volumes:
-     - /opt/plex/database:/config:shared \
+     - /opt/plex/database:/config:shared
      - /opt/plex/transcode:/transcode
-     - /mnt/plexdrive4:/plexdrive4:shared \
+     - /mnt/plexdrive4:/plexdrive4:share
      - /:/yourcomputer
    ports:
      - 32400:32400
