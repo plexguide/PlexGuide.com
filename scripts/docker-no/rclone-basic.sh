@@ -22,7 +22,7 @@ mkdir /mnt/rclone 2>/dev/null
 chmod 755 /mnt/rclone
 chown root /mnt/rclone
 
-## Replace Fuse by removing the # from user_allow_toerh
+## Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf
 tee "/etc/fuse.conf" > /dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
@@ -76,7 +76,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
-## Enable RClone Service
+## Enable UnionFS Service
 sudo systemctl daemon-reload
 
 ## Create the Move Script
@@ -136,6 +136,26 @@ WantedBy=multi-user.target
 EOF
 
 ## Enable RClone Service
+sudo systemctl daemon-reload
+
+## Create the UnionFS Service
+tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
+[Unit]
+Description=UnionFS Daemon
+After=multi-user.target
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/rclone-move=RW:/mnt/rclone=RO /mnt/rclone-union
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
+EOF
+
+## Enable UnionFS Service
 sudo systemctl daemon-reload
 
 ## Create the Move Script
