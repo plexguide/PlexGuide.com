@@ -1,5 +1,5 @@
 clear
-echo -n "Do you Agree to Install the PlexGuide.com Installer (y/n)?"
+echo -n "Do you Agree to Install/Update the PlexGuide.com Installer (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -41,17 +41,79 @@ if echo "$answer" | grep -iq "^y" ;then
 
     #Prevents this script from running again
     mkdir /var/plexguide
-    touch /var/plexguide/dep3.yes
+    touch /var/plexguide/dep4.yes
 
-    #Install Docker
-    curl -sSL https://get.docker.com | sh
-    curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-    chmod +x /usr/local/bin/docker-compose
-    docker-compose -f /opt/plexguide/scripts/docker/docker-compose.yml up -d
+    # Install Docker and Docker Composer / Checks to see if is installed also
+    file="/usr/sbin/docker"
+    if [ -e "$file" ]
+    then
+      echo "Docker Is Installed"
+    else
+      #Install Docker
+      curl -sSL https://get.docker.com | sh
+      curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+      chmod +x /usr/local/bin/docker-compose
+      docker-compose -f /opt/plexguide/scripts/docker/docker-compose.yml up -d
+    fi
+
+############################################# Install a Post-Docker Fix ###################### START
+
+## Create the Post-Docker Fix Script
+tee "/opt/dockerfix.sh" > /dev/null <<EOF
+#!/bin/bash
+
+x=20
+while [ $x -gt 0 ]
+do
+    sleep 1s
+    clear
+    echo "$x seconds until reboot"
+    x=$(( $x - 1 ))
+done
+docker restart rutorrent
+docker restart emby
+docker restart nzbget
+docker restart radarr
+docker restart couchpotato
+docker restart sonarr
+docker restart plexpass
+docker restart plexpublic
+
+exit 0;
+EOF
+
+chmod 755 /opt/dockerfix.sh
+
+## Create the Post-Docker Fix Service
+tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
+    [Unit]
+    Description=Move Service Daemon
+    After=multi-user.target
+
+    [Service]
+    Type=simple
+    User=root
+    Group=root
+    ExecStart=/bin/bash /opt/dockerfix.sh
+    TimeoutStopSec=20
+    KillMode=process
+    RemainAfterExit=yes
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable dockerfix
+systemctl start dockerfix
+
+############################################# Install a Post-Docker Fix ###################### END
 
 else
     echo No
     clear
     echo "Install Aborted - You Failed to Agree"
+    exit 0;;
     echo
 fi
