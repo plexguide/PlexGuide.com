@@ -49,60 +49,6 @@ if echo "$answer" | grep -iq "^y" ;then
     chmod +x /usr/local/bin/docker-compose
     docker-compose -f /opt/plexguide/scripts/docker/docker-compose.yml up -d
 
-########################################################### Work around for Plex Docker ### Start
-
-## Create the PlexFix Script
-tee "/opt/plexfix.sh" > /dev/null <<EOF
-
-#!/bin/bash
-
-if [ -e "/var/plexguide/plex.pass" ]
-then
-  docker stop plexpass
-  docker rm plexpass
-  docker-compose -f /opt/plexguide/scripts/docker/plexpass.yml up -d
-else
-  echo "plex-pass-failed"
-fi
-
-if [ -e "/var/plexguide/plex.public" ]
-then
-  docker stop plexpublic
-  docker rm plexpublic
-  docker-compose -f /opt/plexguide/scripts/docker/plexpublic.yml up -d
-else
-  echo "plexpublic failed"
-fi
-
-EOF
-chmod 755 /opt/plexfix.sh
-
-## Create the PlexFix Script
-tee "/etc/systemd/system/plexfix.service" > /dev/null <<EOF
-[Unit]
-Description=Move Service Daemon
-After=multi-user.target
-
-[Service]
-Type=simple
-User=root
-Group=root
-ExecStart=/bin/bash /opt/plexfix.sh
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-systemctl daemon-reload
-systemctl enable plexfix
-systemctl start plexfix
-
-########################################################### Work around for Plex Docker ### Start
-
 else
     echo No
     clear
