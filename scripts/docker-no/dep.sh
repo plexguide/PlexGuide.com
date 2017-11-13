@@ -59,22 +59,20 @@ tee "/opt/plexfix.sh" > /dev/null <<EOF
 file="/var/plexguide/plex.public"
 if [ -e "$file" ]
 then
+  docker stop plexpublic
   docker rm plexpublic
-  clear
   docker-compose -f /opt/plexguide/scripts/docker/plexpublic.yml up -d
 else
-    clear
 fi
 
 file="/var/plexguide/plex.pass"
 if [ -e "$file" ]
 then
-  docker rm plexpublic
+  docker stop plexpass
+  docker rm plexpass
   touch /var/plexguide/plex.pass
-  clear
   docker-compose -f /opt/plexguide/scripts/docker/plexpass.yml up -d
 else
-    clear
 fi
 
 EOF
