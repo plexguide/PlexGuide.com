@@ -42,14 +42,15 @@ Have at least one item in your google drive.  If you see it, it works!
 ~~~~~~~~~~~~~~~~
 RClone Installer
 ~~~~~~~~~~~~~~~~
-1. RClone Preinstall  :  Enables Services & UnionFS
-                         *****************************************
-2. Unencrypted Install:  Utilize the unencrypted version of RClone
-3. Encrypted Install  :  Utilize the encrypted version of RClone
-                         *****************************************
-4. RClone Mount Test  :  Check if the RClone mount works
-5. UnionFS Mount Test :  Check if the UnionFS mount works
-6. Exit
+1. RClone Preinstal    :  Enables Services & UnionFS
+                          *****************************************
+2. Unencrypted Install :  Utilize the unencrypted version of RClone
+3. Encrypted Install   :  Utilize the encrypted version of RClone
+                          *****************************************
+4. RClone Mount Test UN:  [Unencrypt] Check Unenrcypt RClone Mount
+5. RClone Mount Test EN:  [Encrypted] Check Encrypted RClone Mount
+6. UnionFS Mount Test  :  Check if the UnionFS mount works
+7. Exit
 
 EOF
 }
@@ -76,12 +77,21 @@ read_options(){
 		clear
 		ls /mnt/rclone
 		echo
-        echo "*** RClone: Your Google Drive - If empty, that's not good ***"
+        echo "*** Unencrypted RClone: Your Google Drive - If empty, that's not good ***"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
 		;;
-	5)
+    5)
+  		clear
+  		ls /mnt/rclone
+  		echo
+          echo "*** This checker does not work yet for encrypted ***"
+          echo
+          read -n 1 -s -r -p "Press any key to continue "
+          clear
+  		;;
+	6)
 		touch /mnt/rclone-move/uniontest.txt
 		clear
 		ls /mnt/rclone-union
@@ -89,11 +99,10 @@ read_options(){
         echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
         echo "Note 1: You should at least see uniontest.txt"
         echo "Note 2: Once you finish the PLEXDRIVE4 setup, you should see the rest"
-        echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
 		;;
-	6)
+	7)
 		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
