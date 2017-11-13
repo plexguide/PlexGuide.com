@@ -42,8 +42,9 @@ Troubleshooting Menu
 1. PlexDrive Mount Test:  Verify your PlexDrive Install
 2. RClone Mount Test   :  Check if the RClone mount works
 3. UnionFS Mount Test  :  Check if the UnionFS mount works
-4. Force Main Reinstall:  Forces Important Scripts to Re-Install
-5. Exit
+4. File Sync Checker   :  Check Service to verify File Sync
+5. Force Main Reinstall:  Forces Important Scripts to Re-Install
+6. Exit
 
 EOF
 }
@@ -84,7 +85,18 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
   		;;
-    4)
+      4)
+    		clear
+    		systemctl status move
+    		echo
+        echo "*** View the Log ***"
+        echo "Remember, there is a sleep function of 30 minutes after done"
+        echo "If you have tons of stuff downloaded, you should see some activity"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+    		;;
+    5)
       clear
       rm -r /var/plexguide/dep*
       echo
@@ -92,7 +104,7 @@ read_options(){
       echo
       read -n 1 -s -r -p "Press any key to continue "
         ;;
-    5)
+    6)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
