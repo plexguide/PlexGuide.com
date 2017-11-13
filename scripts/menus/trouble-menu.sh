@@ -86,7 +86,7 @@ read_options(){
   		;;
     4)
       clear
-      rm -r /var/plexdrive/dep*
+      rm -r /var/plexguide/dep*
       echo
       echo "*** Exit and Update, and restart the program ***"
       echo
