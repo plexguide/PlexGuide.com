@@ -5,9 +5,9 @@ services:
    image: plexinc/pms-docker:plexpass
    container_name: plexpass
    volumes:
-     - /opt/plex/database:/config:shared
+     - /opt/plex/database:/config
      - /opt/plex/transcode:/transcode
-     - /mnt/plexdrive4:/plexdrive4:shared
+     - /mnt/plexdrive4:/plexdrive4:plexdrive4
      - /:/yourcomputer
    ports:
      - 32400:32400
