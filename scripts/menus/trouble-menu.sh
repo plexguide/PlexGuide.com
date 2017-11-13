@@ -97,7 +97,7 @@ read_options(){
 
         ## obtains move.service info and puts into a log to displayed to the user
     		clear
-    		systemctl status move >> /opt/plexguide/move.log
+    		systemctl status move > /opt/plexguide/move.log
         cat /opt/plexguide/move.log
     		echo
         echo "*** View the Log ***"
