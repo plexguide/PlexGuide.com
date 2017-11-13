@@ -5,7 +5,7 @@ clear
 cat << EOF
 Maintained By - Deiteq
 Directory 1 (For Google Drive)
-WARNING: Write this down and follow the order or http://unrclone.plexguide.com
+WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
 N < For New remote
 gdrive < for the name
@@ -28,8 +28,8 @@ EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
 ####### For Encryption Part 1
-Maintained By - Deiteq
 cat << EOF
+Maintained By - Deiteq
 Part I Encryption
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
@@ -39,7 +39,7 @@ gcrypt < for the name
 gdrive:/encrypt (encrypt being the rclone encrypted folder within your gdrive)
 2 < Encrypt standard
 Y < type your own password (write it, secure it and do not lose it)
-Y < type your own salt password (write it, secure it, make different)
+Y < type your own salt password (write it, secure it, make different from before)
 Should see something like this:
 
 [gcrypt]
@@ -65,8 +65,8 @@ crypt < for the name
 6 < For Encrypt/Decrypt (double check the number select incase)
 /mnt/plexdrive4/encrypt
 2 < Encrypt standard
-Y < type your own password (write it, secure it and do not lose it)
-Y < type your own salt password (write it, secure it, make different)
+Y < type your own password (use same as before for gcrypt)
+Y < type your own salt password (use same as before for gcrypt salt)
 Should see something like this:
 
 [crypt]
