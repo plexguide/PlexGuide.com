@@ -12,10 +12,11 @@ services:
             - /opt/appdata/embyserver:/config
             - /:/yourcomputer
             - /mnt/plexdrive4:/plexdrive4
+            - /mnt/rclone-union:/rclone-union
         environment:
             - VIRTUAL_PORT=8096
             - VIRTUAL_HOST=emby.htpc
             - AUTO_UPDATES_ON=true
-            - PUID=0
-            - PGID=0
+            - PUID=1000
+            - PGID=1000
         restart: always
