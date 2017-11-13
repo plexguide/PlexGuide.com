@@ -61,10 +61,7 @@ if [ -e "$file" ]
 then
   docker rm plexpublic
   clear
-  echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
-  echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
-  echo ymlport 32400 >> /opt/plexguide/tmp.txt
-  bash /opt/plexguide/scripts/docker-no/program-installer.sh
+  docker-compose -f /opt/plexguide/scripts/docker/plexpublic.yml up -d
 else
     clear
 fi
@@ -75,10 +72,7 @@ then
   docker rm plexpublic
   touch /var/plexguide/plex.pass
   clear
-  echo ymlprogram plexpass > /opt/plexguide/tmp.txt
-  echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
-  echo ymlport 32400 >> /opt/plexguide/tmp.txt
-  bash /opt/plexguide/scripts/docker-no/program-installer.sh
+  docker-compose -f /opt/plexguide/scripts/docker/plexpass.yml up -d
 else
     clear
 fi
