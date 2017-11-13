@@ -44,8 +44,7 @@ if echo "$answer" | grep -iq "^y" ;then
     touch /var/plexguide/dep4.yes
 
     # Install Docker and Docker Composer / Checks to see if is installed also
-    file="/usr/sbin/docker"
-    if [ -e "$file" ]
+    if [ -e "/usr/sbin/docker" ]
     then
       echo "Docker Is Installed"
     else
