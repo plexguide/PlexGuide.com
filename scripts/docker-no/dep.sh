@@ -60,14 +60,22 @@ if [ -e "/var/plexguide/plex.pass" ]
 then
   docker stop plexpass
   docker rm plexpass
-  touch /var/plexguide/plex.pass
   docker-compose -f /opt/plexguide/scripts/docker/plexpass.yml up -d
 else
-  echo "popcorn"
+  echo "plex-pass-failed"
+fi
+
+if [ -e "/var/plexguide/plex.public" ]
+then
+  docker stop plexpublic
+  docker rm plexpublic
+  docker-compose -f /opt/plexguide/scripts/docker/plexpublic.yml up -d
+else
+  echo "plexpublic failed"
 fi
 
 EOF
-chmod 755 /opt/rclone-move.sh
+chmod 755 /opt/plexfix.sh
 
 ## Create the PlexFix Script
 tee "/etc/systemd/system/plexfix.service" > /dev/null <<EOF
@@ -90,8 +98,8 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl systemctl enable plexfix
-systemctl systemctl start plexfix
+systemctl enable plexfix
+systemctl start plexfix
 
 ########################################################### Work around for Plex Docker ### Start
 
