@@ -12,3 +12,6 @@ services:
    ports:
      - 32400:32400
    restart: always
+   environment:
+     - PUID=1001
+     - PGID=1001

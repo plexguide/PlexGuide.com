@@ -30,7 +30,7 @@ if echo "$answer" | grep -iq "^y" ;then
     mkdir /mnt/sab/complete
     chmod 777 /mnt/sab/complete
 
-    mkdir /mnt/sab/complete/tv 
+    mkdir /mnt/sab/complete/tv
     chmod 777 /mnt/sab/complete/tv
 
     mkdir /mnt/sab/complete/movies
@@ -40,15 +40,78 @@ if echo "$answer" | grep -iq "^y" ;then
     chmod 777 /mnt/sab/nzb
 
     #Prevents this script from running again
-    mkdir /var/plexguide 
-    touch /var/plexguide/dep2.yes
-    
+    mkdir /var/plexguide
+    touch /var/plexguide/dep3.yes
+
     #Install Docker
     curl -sSL https://get.docker.com | sh
     curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
     docker-compose -f /opt/plexguide/scripts/docker/docker-compose.yml up -d
-    
+
+########################################################### Work around for Plex Docker ### Start
+
+## Create the PlexFix Script
+tee "/opt/plexfix.sh" > /dev/null <<EOF
+
+#!/bin/bash
+
+file="/var/plexguide/plex.public"
+if [ -e "$file" ]
+then
+  docker rm plexpublic
+  clear
+  echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
+  echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
+  echo ymlport 32400 >> /opt/plexguide/tmp.txt
+  bash /opt/plexguide/scripts/docker-no/program-installer.sh
+else
+    clear
+fi
+
+file="/var/plexguide/plex.pass"
+if [ -e "$file" ]
+then
+  docker rm plexpublic
+  touch /var/plexguide/plex.pass
+  clear
+  echo ymlprogram plexpass > /opt/plexguide/tmp.txt
+  echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
+  echo ymlport 32400 >> /opt/plexguide/tmp.txt
+  bash /opt/plexguide/scripts/docker-no/program-installer.sh
+else
+    clear
+fi
+
+EOF
+chmod 755 /opt/rclone-move.sh
+
+## Create the PlexFix Script
+tee "/etc/systemd/system/plexfix.service" > /dev/null <<EOF
+[Unit]
+Description=Move Service Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/bin/bash /opt/plexfix.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl systemctl enable plexfix
+systemctl systemctl start plexfix
+
+########################################################### Work around for Plex Docker ### Start
+
 else
     echo No
     clear
