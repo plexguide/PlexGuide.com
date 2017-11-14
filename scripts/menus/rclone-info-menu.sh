@@ -222,7 +222,7 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
     3)
 
 bash /opt/plexguide/scripts/menus/rclone-menu.sh
-
+      ;;
     4)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
