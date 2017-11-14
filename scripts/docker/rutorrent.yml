@@ -11,7 +11,7 @@ services:
      - "51413:51413"
    volumes:
      - /opt/appdata/rclone/config:/config
-     - /mnt/rclone/downloads:/downloads
+     - /mnt/rutorrent/downloads:/downloads
      - /:/yourcomputer
    environment:
      - PUID=1001
