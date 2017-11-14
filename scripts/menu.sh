@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Nov 13 III
+Welcome PlexGuide.com Installer V4 - Nov 14
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
@@ -68,7 +68,7 @@ read_options(){
 	case $choice in
 	1)
         clear
-	    bash /opt/plexguide/scripts/menus/rclone-menu.sh
+	    bash /opt/plexguide/scripts/menus/rclone-info-menu.sh
 	    ;;
   2)
         clear
