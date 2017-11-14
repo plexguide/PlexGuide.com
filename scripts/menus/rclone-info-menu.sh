@@ -163,8 +163,9 @@ EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
 ####### For Encryption Part III
-Maintained By - Deiteq
+
 cat << EOF
+Maintained By - Deiteq
 Part II Encryption
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
