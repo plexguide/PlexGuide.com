@@ -113,7 +113,7 @@ EOF
     clear
     cat << EOF
 Maintained By - Deiteq
-Directory 1 (For Google Drive)
+Part I of IV (For Google Drive)
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
 N < For New remote
@@ -139,7 +139,7 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 ####### For Encryption Part II
 cat << EOF
 Maintained By - Deiteq
-Part I Encryption
+Part II of IV
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
 N < For New remote
@@ -166,7 +166,7 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 
 cat << EOF
 Maintained By - Deiteq
-Part II Encryption
+Part III of IV
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
 N < For New remote
@@ -193,7 +193,7 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 ##### For Encryption Part IV
 cat << EOF
 Maintained By - Deiteq
-Local Drive
+Part IV of IV
 WARNING: Write this down and follow the order or http://enrclone.plexguide.com
 
 N < For New remote
