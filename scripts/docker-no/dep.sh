@@ -114,4 +114,8 @@ else
     clear
     echo "Install Aborted - You Failed to Agree"
     echo
+    echo "You will be able to browse the program, but doing anything will cause"
+    echo "problems! Good luck!"
+    echo
+    bash /opt/plexguide/scripts/docker-no/continue.sh
 fi
