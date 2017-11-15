@@ -48,7 +48,7 @@ RClone Installer
 3. Encrypted Install   :  Utilize the encrypted version of RClone
                           *****************************************
 4. RClone Mount Test UN:  [Unencrypt] Check Unenrcypt RClone Mount
-5. RClone Mount Test EN:  [Encrypted] Check Encrypted RClone Mount
+5. RClone Mount Test EN:  ** Not Working Yet **
 6. UnionFS Mount Test  :  Check if the UnionFS mount works
 7. Exit
 

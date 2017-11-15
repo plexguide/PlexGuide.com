@@ -44,7 +44,7 @@ Troubleshooting Menu
 2. RClone Mount Test   :  Check if the RClone mount works
 3. UnionFS Mount Test  :  Check if the UnionFS mount works
 4. File Sync Checker UN:  (Unenrcypt RClone) Verify File Sync
-5. File Sync Checker EN:  (Enrcypted RClone) Verify File Sync
+5. File Sync Checker EN:  ** Not Working Yet **
 6. Force Main Reinstall:  Forces Important Scripts to Re-Install
 7. Exit
 
@@ -53,7 +53,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6 ] " choice
+	read -p "Enter choice [ 1 - 7 ] " choice
 	case $choice in
   	1)
       clear
