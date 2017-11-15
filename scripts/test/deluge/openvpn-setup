@@ -1,7 +1,7 @@
 !#/bin/bash
 
 # Move the PIA VPN files
-`mv Open Configuration Files/Germany.ovpn delugevpn/config/openvpn/ca.ovpn`
+`mv Open Configuration Files/Germany.ovpn delugevpn/config/openvpn/germany.ovpn`
 `mv Open Configuration Files/ca.rsa.2048.crt delugevpn/config/openvpn/ca.rsa.2048.crt`
 `mv Open Configuration Files/crl.rsa.2048.pem delugevpn/config/openvpn/crl.rsa.2048.pem`
 
