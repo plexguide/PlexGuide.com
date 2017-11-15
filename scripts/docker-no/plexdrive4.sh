@@ -71,6 +71,8 @@ press option [1] to restart the process.
 FINAL NOTE: Leave this terminal window open UNTIL the action is complete.
 If you fail to do this, you will have to repeat the process again.  If you
 are impatient, PLEASE open a SECOND terminal window to do other things.
+Look for a message like this:-
+[PLEXDRIVE4] [2017-11-15 14:51] INFO   : First cache build process finished!
 
 EOF
 
