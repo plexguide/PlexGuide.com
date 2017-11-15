@@ -59,7 +59,7 @@ if echo "$answer" | grep -iq "^y" ;then
 ############################################# Install a Post-Docker Fix ###################### START
 
 ## Create the Post-Docker Fix Script
-tee "/opt/dockerfix.sh" > /dev/null <<EOF
+tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
 #!/bin/bash
 
 x=20
@@ -94,7 +94,7 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     Type=simple
     User=root
     Group=root
-    ExecStart=/bin/bash /opt/dockerfix.sh
+    ExecStart=/bin/bash /opt/plexguide/scripts/dockerfix.sh
     TimeoutStopSec=20
     KillMode=process
     RemainAfterExit=yes
