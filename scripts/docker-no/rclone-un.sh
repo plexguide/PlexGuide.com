@@ -58,8 +58,8 @@ http://unrclone.plexguide.com and or post on http://reddit.plexguide.com
 HOW TO CHECK: In order to check if everything is working, have 1 item at least
 in your google Drive
 
-1. Type: /mnt/rclone (and then you should see some item from your g-drive there)
-2. Type: /mnt/rclone-union (and you should see the same g-drive stuff there)
+1. Type: /mnt/gdrive (and then you should see some item from your g-drive there)
+2. Type: /mnt/unionfs (and you should see the same g-drive stuff there)
 
 Verifying that 1 and 2 are important due to this is how your data will sync!
 

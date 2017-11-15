@@ -38,20 +38,13 @@ To Execute PlexGuide in the future, type:
 plexguide
 ```
 
-***FYI***
-
-The program has a built-in update manager that you can execute.  At anytime, just type: plexguide.  Select the update option and the newest files will download for the newest features and fixes.
-
-- **4.** Execute the program follow the steps as followed
-        - [1] RClone:
-           - Recommended info for unencrypted rclone: http://unrclone.plexguide.com 
-           - Recommended info for encrypted rclone  : http://enrclone.plexguide.com
-- **5.** [2] Configure PlexDrive - More info at >> http://plexdrive.plexguide.com          
-- **6.** [3] Configure your programs accordingly with >> http://wiki.plexguide.com
-          - Note: Configuring Plex on a remote machine? Visit: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide
-          - Programs to avoid: RuTorrent, Wordpress & NZBGET (requires fixes and guides) 
-- **7.** Configure Docker Programs /w Portainer - Visit http://youripaddress:9000 and select LOCAL (most cases) Now you can manage them!
-          - Ensure that when you setup portainer, select REMOTE!
+- **4.** Configure RClone
+  -  Unencrypt rclone @ http://unrclone.plexguide.com 
+  -  Encrypted rclone @ http://enrclone.plexguide.com
+- **5.** Configure PlexDrive @ http://plexdrive.plexguide.com          
+- **6.** Configure Your Supporting Programs @ http://wiki.plexguide.com
+- **7.** Configure Plex @ http://plex.plexguide.com
+- **8.** Configure Containers with Portainer: http://portainer.plexguide.com
           
 ## Final Note
 
@@ -61,15 +54,11 @@ See issues or have solutions? Please post in discussion or REDDIT.  Sometimes ot
 
 - Reddit Contact  - [Admin9705] - Reddit
 
-### Version Information
-- V4 / Stay on V4 until programming bugs are knocked out!
-
 ### What You Can Install
-[$$] = No Important, so not ideal to setup until complete
 
-- Port 5050   CouchPotato [$$]
-- Port 8096   Emby [$$]
-- Port 5075   Hydra [$$]
+- Port 5050   CouchPotato
+- Port 8096   Emby 
+- Port 5075   Hydra
 - Port 8015   Muximux
 - Port 19999  NetData
 - Port 3579   Ombiv3
@@ -78,9 +67,9 @@ See issues or have solutions? Please post in discussion or REDDIT.  Sometimes ot
 - Port 8181   PlexPy
 - Port 9000   Portainer
 - Port 7878   Radarr
-- Port 8085   RuTorrent [$$]
+- Port 8085   RuTorrent 
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
 - Port 80     Wordpress
 
-*In Addition* - Docker, PlexDrive, RClone, UnionFS
+*In Addition Installs* - Docker, PlexDrive, RClone, UnionFS
