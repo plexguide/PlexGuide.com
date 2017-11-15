@@ -160,8 +160,8 @@ systemctl daemon-reload
 systemctl enable unionfs
 systemctl start unionfs
 
-## Create the Move Script
-tee "/opt/plexguide/scripts/rclone-move-en.sh" > /dev/null <<EOF
+## Create the Encrypted Move Script
+tee "/opt/plexguide/scripts/move-en.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
 while true
@@ -170,9 +170,9 @@ rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15
 sleep 900
 done
 EOF
-chmod 755 /opt/plexguide/scripts/rclone-move-en.sh
+chmod 755 /opt/plexguide/scripts/move-en.sh
 
-## Create the Move Service
+## Create the Encrypted Move Service
 tee "/etc/systemd/system/move-en.service" > /dev/null <<EOF
 [Unit]
 Description=Move Service Daemon
@@ -182,7 +182,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/bin/bash /opt/plexguide/scripts/rclone-move-en.sh
+ExecStart=/bin/bash /opt/plexguide/scripts/move-en.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
