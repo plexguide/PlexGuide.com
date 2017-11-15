@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#mkdir -p /opt/appdata/delugevpn
-#mkdir -p /opt/appdata/delugevpn/config/openvpn
+mkdir -p /opt/appdata/delugevpn
+mkdir -p /opt/appdata/delugevpn/config/openvpn
 
 # Move the PIA VPN files
 `mv '/opt/plexguide/scripts/test/deluge/delugevpn.yml' /opt/plexguide/scripts/docker`
@@ -17,3 +17,5 @@
   # sudo chmod +x /opt/plexguide/scripts/test/deluge/openvpn-setup.sh
   # cd /opt/plexguide/scripts/test/deluge/
   # sudo ./openvpn-setup.sh
+  
+  # password is deluge
