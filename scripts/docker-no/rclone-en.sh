@@ -24,9 +24,9 @@ systemctl enable rclone-en
 systemctl enable move-en
 
 # turn services back on
-systemctl restart unionfs
-systemctl restart rclone-en
-systemctl restart move-en
+systemctl start unionfs
+systemctl start rclone-en
+systemctl start move-en
 
 ######################### REPEATS TO MAKE IT WORK
 # disable the unencrypted services to prevent a clash
@@ -48,9 +48,9 @@ systemctl enable rclone-en
 systemctl enable move-en
 
 # turn services back on
-systemctl restart unionfs
-systemctl restart rclone-en
-systemctl restart move-en
+systemctl start unionfs
+systemctl start rclone-en
+systemctl start move-en
 
 clear
 cat << EOF
