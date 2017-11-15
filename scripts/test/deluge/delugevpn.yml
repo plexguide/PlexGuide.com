@@ -1,3 +1,5 @@
+# Note: Please replace all user variables in the above command defined by <> with the correct values.
+
 ---
 version: '2'
 services:
