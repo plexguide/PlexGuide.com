@@ -75,7 +75,7 @@ read_options(){
         ;;
 	4)
 		clear
-		ls /mnt/rclone
+		ls /mnt/gdrive
 		echo
         echo "*** Unencrypted RClone: Your Google Drive - If empty, that's not good ***"
         echo
@@ -84,7 +84,7 @@ read_options(){
 		;;
     5)
   		clear
-  		ls /mnt/rclone
+  		ls /mnt/gdrive
   		echo
           echo "*** This checker does not work yet for encrypted ***"
           echo
@@ -92,9 +92,9 @@ read_options(){
           clear
   		;;
 	6)
-		touch /mnt/rclone-move/uniontest.txt
+		touch /mnt/move/uniontest.txt
 		clear
-		ls /mnt/rclone-union
+		ls /mnt/unionfs
 		echo
         echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
         echo "Note 1: You should at least see uniontest.txt"
