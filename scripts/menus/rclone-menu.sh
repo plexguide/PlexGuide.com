@@ -60,7 +60,7 @@ read_options(){
 	read -p "Enter choice [ 1 - 7 ] " choice
 	case $choice in
 	1)
-		bash /opt/plexguide/scripts/docker-no/rclone-basic.sh
+		bash /opt/plexguide/scripts/docker-no/rclone-preinstall.sh
         clear
         echo "*** RClone Pre-Install Complete ***"
         echo
