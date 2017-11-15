@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #mkdir -p /opt/appdata/delugevpn
 #mkdir -p /opt/appdata/delugevpn/config/openvpn
@@ -14,3 +14,4 @@
 
   # use http://iknowwhatyoudownload.com to check if there your ip is leaked after using deluge
   # using https://github.com/binhex/arch-delugevpn as original source
+  # sudo chmod +x /opt/plexguide/scripts/test/deluge/openvpn-setup.sh
