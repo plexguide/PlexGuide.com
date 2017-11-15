@@ -41,10 +41,10 @@ if echo "$answer" | grep -iq "^y" ;then
 
     #Prevents this script from running again
     mkdir /var/plexguide
-    touch /var/plexguide/dep4.yes
+    touch /var/plexguide/dep5.yes
 
     # Install Docker and Docker Composer / Checks to see if is installed also
-    if [ -e "/usr/sbin/docker" ]
+    if [ -e "/var/plexguide/docker.yes" ]
     then
       echo "Docker Is Installed"
     else
@@ -53,6 +53,7 @@ if echo "$answer" | grep -iq "^y" ;then
       curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
+      touch /var/plexguide/docker.yes
     fi
 
 ############################################# Install a Post-Docker Fix ###################### START

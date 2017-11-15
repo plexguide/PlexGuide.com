@@ -91,7 +91,7 @@ local < for the name
 11 < For a Local Drive
 
 Ignore this part about ... long file names, UNC, and selecting [1])
->>> Just type this exactly: /mnt/rclone-move and then press [ENTER]
+>>> Just type this exactly: /mnt/move and then press [ENTER]
 
 Y < Is asking all is ok?
 Q < to quit
@@ -201,7 +201,7 @@ local < for the name
 11 < For a Local Drive
 
 Ignore this part about ... long file names, UNC, and selecting [1])
->>> Just type this exactly: /mnt/rclone-move and then press [ENTER]
+>>> Just type this exactly: /mnt/move and then press [ENTER]
 
 Y < Is asking all is ok?
 Q < to quit
