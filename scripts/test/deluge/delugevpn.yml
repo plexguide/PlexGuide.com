@@ -22,7 +22,7 @@ services:
      - VPN_USER=<pia username>
      - VPN_PASS=<pia password>
      - VPN_PROV=pia
-     - VPN_REMOTE=<choose regional gateway (e.g. ca.privateinternetaccess.com)>
+     - VPN_REMOTE=france.privateinternetaccess.com
    #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
@@ -32,6 +32,6 @@ services:
    #  - UMASK=<umask for created files>
      - PUID=1001
      - PGID=1001
-   restart: always
+   restart: unless-stopped
 
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
