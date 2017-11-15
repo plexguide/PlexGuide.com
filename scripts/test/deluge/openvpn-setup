@@ -5,4 +5,4 @@
 `mv ca.rsa.2048.crt delugevpn/config/openvpn/ca.rsa.2048.crt`
 `mv crl.rsa.2048.pem delugevpn/config/openvpn/crl.rsa.2048.pem`
 
- mediabox/crl.rsa.2048.pem 
+  
