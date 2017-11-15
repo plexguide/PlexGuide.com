@@ -6,3 +6,4 @@
 `mv crl.rsa.2048.pem delugevpn/config/openvpn/crl.rsa.2048.pem`
 
   # use http://http://iknowwhatyoudownload.com to check if there your ip is leaked after using deluge
+ # using https://github.com/binhex/arch-delugevpn as original source
