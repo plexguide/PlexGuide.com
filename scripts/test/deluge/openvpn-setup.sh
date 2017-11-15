@@ -4,9 +4,11 @@
 #mkdir -p /opt/appdata/delugevpn/config/openvpn
 
 # Move the PIA VPN files
-`mv 'Open Configuration Files/France.ovpn' /opt/appdata/delugevpn/config/openvpn/france.ovpn`
-`mv 'Open Configuration Files/ca.rsa.2048.crt' /opt/appdata/delugevpn/config/openvpn/ca.rsa.2048.crt`
-`mv 'Open Configuration Files/crl.rsa.2048.pem' /opt/appdata/delugevpn/config/openvpn/crl.rsa.2048.pem`
+`mv '/opt/plexguide/scripts/test/deluge/delugevpn.yml' /opt/plexguide/scripts/docker`
+# `mv '/opt/plexguide/scripts/test/deluge/Open Configuration Files/' /opt/appdata/delugevpn/config/openvpn/`
+`mv '/opt/plexguide/scripts/test/deluge/Open Configuration Files/France.ovpn' /opt/appdata/delugevpn/config/openvpn/france.ovpn`
+`mv '/opt/plexguide/scripts/test/deluge/Open Configuration Files/ca.rsa.2048.crt' /opt/appdata/delugevpn/config/openvpn/ca.rsa.2048.crt`
+`mv '/opt/plexguide/scripts/test/deluge/Open Configuration Files/crl.rsa.2048.pem' /opt/appdata/delugevpn/config/openvpn/crl.rsa.2048.pem`
 
  /sbin/modprobe iptable_mangle
 
