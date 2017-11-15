@@ -22,13 +22,16 @@ services:
      - VPN_USER=<pia username>
      - VPN_PASS=<pia password>
      - VPN_PROV=pia
+     - VPN_REMOTE=<choose regional gateway (e.g. ca.privateinternetaccess.com)>
    #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
-     - LAN_NETWORK=<lan ipv4 network/cidr notation (example: 192.168.1.0/24)>
+     - LAN_NETWORK=<lan ipv4 network/cidr notation (e.g. 192.168.1.0/24)>
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
    #  - UMASK=<umask for created files>
      - PUID=1001
      - PGID=1001
    restart: always
+
+# Note: Please replace all user variables in the above command defined by <> with the correct values.
