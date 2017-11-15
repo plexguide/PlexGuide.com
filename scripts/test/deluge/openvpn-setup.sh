@@ -1,7 +1,7 @@
 !#/bin/bash
 
-#mkdir -p delugevpn
-#mkdir -p delugevpn/config/openvpn
+#mkdir -p /opt/appdata/delugevpn
+#mkdir -p /opt/appdata/delugevpn/config/openvpn
 
 # Move the PIA VPN files
 `mv 'Open Configuration Files/France.ovpn' /opt/appdata/delugevpn/config/openvpn/france.ovpn`
