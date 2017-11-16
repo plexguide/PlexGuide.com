@@ -42,14 +42,14 @@ Have at least one item in your google drive.  If you see it, it works!
 ~~~~~~~~~~~~~~~~
 RClone Installer
 ~~~~~~~~~~~~~~~~
-1. RClone Preinstall   :  Enables Services & UnionFS
-                          *****************************************
-2. Unencrypted Install :  Utilize the unencrypted version of RClone
-3. Encrypted Install   :  Utilize the encrypted version of RClone
-                          *****************************************
-4. RClone Mount Test UN:  [Unencrypt] Check Unenrcypt RClone Mount
-5. RClone Mount Test EN:  ** Not Working Yet **
-6. UnionFS Mount Test  :  Check if the UnionFS mount works
+1. RClone Preinstall   :   Enables Services & UnionFS
+                           *****************************************
+2. Unencrypted Install :   Utilize the unencrypted version of RClone
+3. Encrypted Install   :   Utilize the encrypted version of RClone
+                           *****************************************
+4. Unencrypt Mount Check:  Select Only if you ran the Unencrypt Install
+5. Encrypted Mount Check:  Select Only if you ran the Encrypted Install
+6. UnionFS Mount Test  :   Verify the
 7. Exit
 
 EOF
@@ -61,47 +61,50 @@ read_options(){
 	case $choice in
 	1)
 		bash /opt/plexguide/scripts/docker-no/rclone-preinstall.sh
-        clear
-        echo "*** RClone Pre-Install Complete ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
+    clear
+    echo "*** RClone Pre-Install Complete ***"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
 		;;
 	2)
 		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
 		;;
 	3)
 		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
-        ;;
+    ;;
 	4)
-		clear
-		ls /mnt/gdrive
-		echo
-        echo "*** Unencrypted RClone: Your Google Drive - If empty, that's not good ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-		;;
-    5)
-  		clear
-  		ls /mnt/gdrive
-  		echo
-          echo "*** This checker does not work yet for encrypted ***"
-          echo "Note 1: Once you finish the PLEXDRIVE4 setup, you should see the rest"
-          echo
-          read -n 1 -s -r -p "Press any key to continue "
-          clear
-  		;;
+    touch /mnt/gdrive/gdrivetest-unencrypted.txt
+    clear
+    ls /mnt/gdrive
+    echo
+    echo "*** RClone Unencrypt: Your Google Drive - If empty, that's not good ***"
+    echo "Note 1: You should at least see gdrivetest-unecrypted.txt"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
+	  ;;
+  5)
+    touch /mnt/gdrive/gdrivetest-encrypted.txt
+    clear
+    ls /mnt/gdrive
+    echo
+    echo "*** RClone Encrypted Your Google Drive - If empty, that's not good ***"
+    echo "Note 1: You should at least see gdrivetest-encrypted.txt"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
+  	;;
 	6)
 		touch /mnt/move/uniontest.txt
 		clear
 		ls /mnt/unionfs
 		echo
-        echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
-        echo "Note 1: You should at least see uniontest.txt"
-        echo "Note 2: Once you finish the PLEXDRIVE4 setup, you should see the rest"
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
+    echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
+    echo "Note 1: You should at least see uniontest.txt"
+    echo "Note 2: Once you finish the PLEXDRIVE4 setup, you should see the rest"
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
 		;;
 	7)
 		exit 0;;

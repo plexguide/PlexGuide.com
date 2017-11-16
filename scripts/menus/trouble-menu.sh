@@ -32,19 +32,21 @@ show_menus() {
 clear
 cat << EOF
 Notes:
-[1]   Only run after you installed PlexDrive
-[2-3] Only run after you installed rclone
-[4-5] Only run after having your download programs and programs configured
-[6]   Run only as a last resort
+[1]   Works Only - After PlexDrive compelted the entire scan
+[2-5] Works Only - After RClone is Configured
+[6]   Run - To reinstall important start up files only (last resort)
 
 ~~~~~~~~~~~~~~~~~~~~
 Troubleshooting Menu
 ~~~~~~~~~~~~~~~~~~~~
-1. PlexDrive Mount Test:  Verify your PlexDrive Install
-2. RClone Mount Test   :  Check if the RClone mount works
-3. UnionFS Mount Test  :  Check if the UnionFS mount works
-4. File Sync Checker UN:  (Unenrcypt RClone) Verify File Sync
-5. File Sync Checker EN:  ** Not Working Yet **
+1. PlexDrive Mount Test:  Veryify that PlexDrive is Working
+                          **************************************
+2. RClone Mount Test   :  Verify - Google Drive is Mounted
+3. UnionFS Mount Test  :  Verify - UnionFS is Operational
+                          **************************************
+4. RClone Uncrypt Check:  View status of the Unencrypted SYNC
+5. RClone Encrypt Check:  View status of the Encrypted SYNC
+                          **************************************
 6. Force Main Reinstall:  Forces Important Scripts to Re-Install
 7. Exit
 
@@ -67,10 +69,12 @@ read_options(){
       clear
       ;;
   	2)
-  		clear
-  		ls /mnt/gdrive
+      touch /mnt/gdrive/gdrivetest.txt
+      clear
+      ls /mnt/gdrive
   		echo
       echo "*** RClone: Your Google Drive - If empty, that's not good ***"
+      echo "Note 1: You should at least see gdrivetest.txt"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
@@ -82,7 +86,7 @@ read_options(){
   		echo
       echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
       echo "Note 1: You should at least see uniontest.txt"
-      echo "Note 2: Once you finish the PLEXDRIVE4 setup, you should see the rest"
+      echo "Note 2: Once PLEXDRIVE4 is setup, you should see the rest"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
