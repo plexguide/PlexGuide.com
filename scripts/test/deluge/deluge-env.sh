@@ -20,8 +20,9 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 #lannet=
 
 # Get Private Internet Access Info
-read -p "What is your PIA Username?: " piauname
-read -s -p "What is your PIA Password? (Will not be echoed): " piapass
+read -p "What is your PIA Username?: " pia_username
+read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
+read -p "What Remote server do you want to use?: " vpn_remote_choice
 printf "\n\n"
 
 # Get info needed for PLEX Official image
@@ -33,11 +34,31 @@ if [ -z "$pmstag" ]; then
 fi
 
 # Get the info for the style of Portainer to use
-read -p "Which style of Portainer do you want to use? By default 'No Auth' will be used. (noauth, auth): " portainerstyle
-if [ -z "$portainerstyle" ]; then
-   portainerstyle=--no-auth
-elif [ $portainerstyle == "noauth" ]; then
-   portainerstyle=--no-auth
-elif [ $portainerstyle == "auth" ]; then
-   portainerstyle= 
-fi 
+##read -p "Which style of Portainer do you want to use? By default 'No Auth' will be used. (noauth, auth): " portainerstyle
+##if [ -z "$portainerstyle" ]; then
+##   portainerstyle=--no-auth
+##elif [ $portainerstyle == "noauth" ]; then
+##   portainerstyle=--no-auth
+##elif [ $portainerstyle == "auth" ]; then
+##   portainerstyle= 
+##fi 
+
+# Create the .env file
+echo "Creating the .env file with the values we have gathered"
+printf "\n"
+echo "LOCALUSER=$localuname" >> .env
+echo "HOSTNAME=$thishost" >> .env
+echo "IP_ADDRESS=$locip" >> .env
+echo "PUID=$PUID" >> .env
+echo "PGID=$PGID" >> .env
+echo "PWD=$PWD" >> .env
+echo "VPN_USER=$pia_username" >> .env
+echo "VPN_PASS=$pia_password" >> .env
+echo "VPN_REMOTE=$vpn_remote_choice" >> .env
+echo "CIDR_ADDRESS=$lannet" >> .env
+echo "TZ=$time_zone" >> .env
+echo "PMSTAG=$pmstag" >> .env
+echo "PMSTOKEN=$pmstoken" >> .env
+##echo "PORTAINERSTYLE=$portainerstyle" >> .env
+echo ".env file creation complete"
+printf "\n\n"
