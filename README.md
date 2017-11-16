@@ -1,4 +1,4 @@
-Written By Admin9705 & Deiteq 
+Written By Admin9705 & Deiteq - Software is free to copy, use, and be written distributed however you deem fit! (Ask just for credit)
 
 # PlexGuide.com - Version 4
 
