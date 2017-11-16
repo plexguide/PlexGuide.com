@@ -3,7 +3,11 @@
 mkdir -p /opt/appdata/delugevpn
 mkdir -p /opt/appdata/delugevpn/config/openvpn
 
+ chmod +x /opt/plexguide/scripts/test/deluge/deluge-env.sh
+ ./deluge-env.sh
+
 # Move the PIA VPN files
+`mv '/opt/plexguide/scripts/test/deluge/.env' /opt/plexguide/scripts/docker`
 `mv '/opt/plexguide/scripts/test/deluge/delugevpn.yml' /opt/plexguide/scripts/docker`
 `mv '/opt/plexguide/scripts/test/deluge/OpenVPN/*' /opt/appdata/delugevpn/config/openvpn`
 #`mv '/opt/plexguide/scripts/test/deluge/OpenVPN/France.ovpn' /opt/appdata/delugevpn/config/openvpn/france.ovpn`
