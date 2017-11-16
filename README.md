@@ -6,7 +6,7 @@
 
 ## Contact Link
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
-- Reddit Contacts - Admin9705 and/or Deiteq
+- Written By Admin9705 and Deiteq
 
 ## Mission Statement & Purpose
 
