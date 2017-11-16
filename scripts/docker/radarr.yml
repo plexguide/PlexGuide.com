@@ -9,6 +9,7 @@ services:
    volumes:
      - /opt/appdata/radarr:/config
      - /:/yourcomputer
+     - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=0

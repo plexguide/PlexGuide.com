@@ -10,9 +10,9 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /opt/appdata/embyserver:/config
-            - /:/yourcomputer
             - /mnt/plexdrive4:/plexdrive4
-            - /mnt/rclone-union:/rclone-union
+            - /mnt/unionfs:/unionfs
+            - /:/yourcomputer
         environment:
             - VIRTUAL_PORT=8096
             - VIRTUAL_HOST=emby.htpc

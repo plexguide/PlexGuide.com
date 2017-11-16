@@ -9,6 +9,7 @@ services:
    volumes:
      - /opt/appdata/sonarr:/config
      - /:/yourcomputer
+     - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=0
