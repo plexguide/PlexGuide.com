@@ -61,7 +61,8 @@ See issues or have solutions? Please post in discussion or REDDIT.  Sometimes ot
 - Port 5075   Hydra
 - Port 8015   Muximux
 - Port 19999  NetData
-- Port 3579   Ombiv3
+- Port 6789   NZBGET
+- Port 3579   Ombi v3
 - Port 8020   Organizer
 - Port 32400  Plex
 - Port 8181   PlexPy
