@@ -1,7 +1,3 @@
-By Admin9705 & Deiteq
-
-Plexguide is Free to copy, use, and be written distributed however you deem fit! (We just ask for credit)
-
 # PlexGuide.com - Version 4
 
 ![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
