@@ -10,7 +10,7 @@
 
 ## Mission Statement & Purpose
 
-Establish an automated server that mounts your google drive for storage, while utilizing various tools and Plex as a front-end.  The purpose of this program was to combat the poor performance of the PlexCloud and issues in regards to the Google API Bans.  
+Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
 
 ## Required
 
