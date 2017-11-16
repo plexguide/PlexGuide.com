@@ -22,7 +22,7 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Get Private Internet Access Info
 read -p "What is your PIA Username?: " pia_username
 read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-read -p "What Remote server do you want to use?: " vpn_remote_choice
+read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
 printf "\n\n"
 
 # Get info needed for PLEX Official image
