@@ -1,5 +1,3 @@
-# Note: Please replace all user variables in the above command defined by <> with the correct values.
-
 ---
 version: '2'
 services:
@@ -9,10 +7,10 @@ services:
    cap_add:
      - NET_ADMIN
    ports:
-     - "8112:8112"
-     - "8118:8118"
-     - "58846:58846"
-     - "58946:58946"
+     - '${IP_ADDRESS}:8112:8112'
+     - '${IP_ADDRESS}:8118:8118'
+     - '${IP_ADDRESS}:58846:58846'
+     - '${IP_ADDRESS}:58946:58946'
    volumes:
      - /opt/appdata/delugevpn/config:/config
      - /mnt/delugevpn/downloads:/downloads
@@ -21,19 +19,19 @@ services:
      - /mnt/unionfs:/data
    environment:
      - VPN_ENABLED=yes
-     - VPN_USER=<pia username>
-     - VPN_PASS=<pia password>
+     - VPN_USER=${PIA_USERNAME}
+     - VPN_PASS=${PIA_PASSWORD}
      - VPN_PROV=pia
-     - VPN_REMOTE=france.privateinternetaccess.com
+     - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
    #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
-     - LAN_NETWORK=<lan ipv4 network/cidr notation (e.g. 192.168.1.0/24)>
+     - LAN_NETWORK=${CIDR_ADDRESS}
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
    #  - UMASK=<umask for created files>
-     - PUID=1001
-     - PGID=1001
+     - PUID=${PUID}
+     - PGID=${PGID}
    restart: unless-stopped
 
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
