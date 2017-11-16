@@ -10,8 +10,7 @@ Plexguide is Free to copy, use, and be written distributed however you deem fit!
 
 ## Contact Link
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
-  - Reddit Contact - Admin9705 
-  - Reddit Contact - Deiteq
+  - Reddit Contacts - Admin9705 and/or Deiteq
 
 ## Mission Statement & Purpose
 
