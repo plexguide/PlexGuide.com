@@ -39,7 +39,7 @@ Please visit http://wiki.plexguide.com for any tutorial information.  It is
 recommended to view the following guides:
 
 *** Unencrypt RClone - http://unrclone.plexguide.com
-*** Encrypted  RClone - http://enrclone.plexguide.com
+*** Encrypted RClone - http://enrclone.plexguide.com
 
 Note, ensure that you conducted install [1] RClone Pre-Install.  Forgetting to
 do so will cause some grief.

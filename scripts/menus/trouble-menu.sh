@@ -41,8 +41,8 @@ Troubleshooting Menu
 ~~~~~~~~~~~~~~~~~~~~
 1. PlexDrive Mount Test:  Veryify that PlexDrive is Working
                           **************************************
-2. RClone Mount Test   :  Verify - Google Drive is Mounted
-3. UnionFS Mount Test  :  Verify - UnionFS is Operational
+2. RClone Mount Test   :  Verify Google Drive is Mounted
+3. UnionFS Mount Test  :  Verify UnionFS is Operational
                           **************************************
 4. RClone Uncrypt Check:  View status of the Unencrypted SYNC
 5. RClone Encrypt Check:  View status of the Encrypted SYNC

@@ -49,7 +49,7 @@ RClone Installer
                            *****************************************
 4. Unencrypt Mount Check:  Select Only if you ran the Unencrypt Install
 5. Encrypted Mount Check:  Select Only if you ran the Encrypted Install
-6. UnionFS Mount Test  :   Verify the
+6. UnionFS Mount Test  :   Verify UnionFS is operational
 7. Exit
 
 EOF
