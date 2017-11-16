@@ -38,12 +38,12 @@ cat << EOF
 2.  CouchPotato   | ** Movie requesting program; older program
 3.  Emby          | ** Alternative to PLEX and less restrictive
 4.  Hydra         | ** Meta search for NZB indexers
-5.  NetData       | ** Statistical Tool for the Server
+5.  NetData       | Statistical Tool for the Server
 6.  Muximux       | ** Site Interface to control your programs
 7.  NZBGET        | ** USENET Downloading Program
 8.  Ombi v3       | ** Enables users to request media
 9.  Organizr      | ** Site Interface to control your programs
-10. PlexPy        | ** Provides analytics about your PLEX Users
+10. PlexPy        | Provides analytics about your PLEX Users
 11. Portainer     | Manage your Docker Containers | Installed By Default
 12. Radarr        | Movie requesting program; newer less mature program
 13. RuTorrent     | ** Torrent Downloading Program
