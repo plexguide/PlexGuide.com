@@ -42,14 +42,14 @@ Have at least one item in your google drive.  If you see it, it works!
 ~~~~~~~~~~~~~~~~
 RClone Installer
 ~~~~~~~~~~~~~~~~
-1. RClone Preinstall   :   Enables Services & UnionFS
+1. RClone Preinstall    :  Enables Services & UnionFS
                            *****************************************
-2. Unencrypted Install :   Utilize the unencrypted version of RClone
-3. Encrypted Install   :   Utilize the encrypted version of RClone
+2. Unencrypted Install  :  Utilize the unencrypted version of RClone
+3. Encrypted Install    :  Utilize the encrypted version of RClone
                            *****************************************
 4. Unencrypt Mount Check:  Select Only if you ran the Unencrypt Install
 5. Encrypted Mount Check:  Select Only if you ran the Encrypted Install
-6. UnionFS Mount Test  :   Verify UnionFS is operational
+6. UnionFS Mount Test   :  Verify UnionFS is operational
 7. Exit
 
 EOF
