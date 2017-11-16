@@ -51,7 +51,8 @@ cat << EOF
 15. Sonarr        | TV Show requeseting program; more organized
 16. Wordpress     | Create a website for users to interact
 17. NGINX-Proxy   | ** TESTING
-18. Exit
+18. DelugeVPN     | ** TESTING
+19. Exit
 
 EOF
 }
@@ -164,6 +165,12 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   18)
+    echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
+    echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
+    echo ymlport 8112 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
+  19)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
