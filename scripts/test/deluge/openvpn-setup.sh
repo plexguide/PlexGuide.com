@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p /opt/appdata/delugevpn
-mkdir -p /opt/appdata/delugevpn/config/openvpn
+mkdir -p /opt/appdata/delugevpn/config
 
 # Move the PIA VPN files
 `mv '/opt/plexguide/scripts/test/deluge/delugevpn.yml' /opt/plexguide/scripts/docker`
