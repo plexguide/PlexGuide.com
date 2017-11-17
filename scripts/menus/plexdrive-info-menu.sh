@@ -32,7 +32,7 @@ show_menus() {
 clear
 cat << EOF
 ~~~~~~~~~~~~~~~~~~~~~~~~
-    RCLONE TUTORIAL
+   PLEXDRIVE TUTORIAL
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please visit http://wiki.plexguide.com for any tutorial information.  It is
@@ -117,7 +117,7 @@ EOF
 - Ensure that you do not let this program close or shutdown until finished
 - You can open another terminal window; do not close this one
 - Goto http://plexdrive.plexguide.com to how it looks when completed
-    
+
 WINDOWS USERS Only: When copying information to your terminal winodw,
 PRESS [CTRL+Insert].  Do not use CTRL+C; this will result in messing up
 things.  This then will require you to DELETE your PLEXDRIVE tokens and
