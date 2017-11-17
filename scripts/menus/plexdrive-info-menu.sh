@@ -59,7 +59,7 @@ read_options(){
     clear
     cat << EOF
 Google API Guide (Page 1 of 1)
-http://googleapi.plexguid.com  | WARNING: Write this down and follow the order
+http://googleapi.plexguide.com  | WARNING: Write this down and follow the order
 
 * Select project or create a new project
 * Under Overview, Google APs, Google Apps APIs; click "Drive API", then enable
@@ -89,8 +89,11 @@ EOF
 		2)
 # PlexDrive4
     cat << EOF
+clear
+Google API Guide (Page 1 of 1)
+http://plexdrive4.plexguide.com  | WARNING: Write this down and follow the order
+
 - Ensure that you obtained your Google API Secret & Password
-  http://googleapi.plexguide.com
 - Ensure that you do not let this program close or shutdown until finished
 - You can open another terminal window; do not close this one
 - Goto http://plexdrive.plexguide.com to how it looks when completed
