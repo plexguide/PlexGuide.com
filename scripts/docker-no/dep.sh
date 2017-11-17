@@ -21,8 +21,8 @@ if echo "$answer" | grep -iq "^y" ;then
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
 
-  mkdir /mnt/plexguide-startup
-  chmod 755 /mnt/plexguide-startup
+  mkdir /opt/plexguide-startup
+  chmod 755 /opt/plexguide-startup
 
   mkdir /mnt/sab
   chmod 777 /mnt/sab
