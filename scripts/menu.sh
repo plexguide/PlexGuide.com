@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Version Nov 16
+Welcome PlexGuide.com Installer V4 - Version Nov 17
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
@@ -72,7 +72,7 @@ read_options(){
         ;;
   2)
         clear
-        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
+        bash /opt/plexguide/scripts/menus/plexdrive-info-menu.sh
         ;;
 	3)
         bash /opt/plexguide/scripts/menus/programs.sh
