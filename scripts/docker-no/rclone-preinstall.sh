@@ -22,6 +22,10 @@ mkdir /mnt/gdrive 2>/dev/null
 chmod 755 /mnt/gdrive
 chown root /mnt/gdrive
 
+## Make Place for Starup SCripts
+mkdir /opt/plexguide-startup 2>/dev/null
+chmod 755 /opt/plexguide-startup 2>/dev/null
+
 ## Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf
 tee "/etc/fuse.conf" > /dev/null <<EOF
