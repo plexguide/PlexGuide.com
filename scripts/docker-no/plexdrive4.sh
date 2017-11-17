@@ -77,7 +77,7 @@ Look for a message like this:-
 EOF
 
     echo
-    bash continue.sh
+    read -n 1 -s -r -p "Press any key to continue"
     clear
     cd /tmp
     wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
