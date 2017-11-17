@@ -21,6 +21,9 @@ if echo "$answer" | grep -iq "^y" ;then
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
 
+  mkdir /mnt/plexguide-startup
+  chmod 755 /mnt/plexguide-startup
+
   mkdir /mnt/sab
   chmod 777 /mnt/sab
 
@@ -41,7 +44,7 @@ if echo "$answer" | grep -iq "^y" ;then
 
     #Prevents this script from running again
     mkdir /var/plexguide
-    touch /var/plexguide/dep5.yes
+    touch /var/plexguide/dep6.yes
 
     # Install Docker and Docker Composer / Checks to see if is installed also
     if [ -e "/var/plexguide/docker.yes" ]
