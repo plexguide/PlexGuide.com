@@ -90,7 +90,7 @@ EOF
 # PlexDrive4
 clear
     cat << EOF
-Google API Guide (Page 1 of 1)
+PlexDrive4 Guide (Page 1 of 1)
 http://plexdrive4.plexguide.com  | WARNING: Write this down and follow the order
 
 - Ensure that you obtained your Google API Secret & Password
@@ -113,7 +113,6 @@ EOF
 
 # Final Note
     cat << EOF
-
 PlexDrive 4 Install
 http://plexdrive.plexguide.com
 
