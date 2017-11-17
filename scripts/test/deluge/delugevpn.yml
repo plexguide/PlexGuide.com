@@ -7,10 +7,10 @@ services:
    cap_add:
      - NET_ADMIN
    ports:
-     - '${IP_ADDRESS}:8112:8112'
-     - '${IP_ADDRESS}:8118:8118'
-     - '${IP_ADDRESS}:58846:58846'
-     - '${IP_ADDRESS}:58946:58946'
+     - '8112:8112'
+     - '8118:8118'
+     - '58846:58846'
+     - ${IP_ADDRESS}:58946:58946
    volumes:
      - /opt/appdata/delugevpn/config:/config
      - /mnt/delugevpn/downloads:/downloads
