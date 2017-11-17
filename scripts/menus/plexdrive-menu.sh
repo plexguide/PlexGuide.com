@@ -41,7 +41,7 @@ having issues, please delete your CURRENT TOKENS and start again!
 ~~~~~~~~~~~~~~~~~~~~~~~~
   PLEXDRIVE4 Installer
 ~~~~~~~~~~~~~~~~~~~~~~~~
-1. Install PlexDrive   :  Read Instructions Prior
+1. Install PlexDrive   :  Pay Attention and Have Your Google API Info Ready
 2. Troubleshooting     :  Restart PlexDrive4 Status
 3. Troubleshooting     :  Delete PlexDrive4 Tokens
 4. PlexDrive Mount Test:  Verify your PlexDrive Install
