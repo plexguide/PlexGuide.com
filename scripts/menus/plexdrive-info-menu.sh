@@ -88,8 +88,8 @@ EOF
       ;;
 		2)
 # PlexDrive4
-    cat << EOF
 clear
+    cat << EOF
 Google API Guide (Page 1 of 1)
 http://plexdrive4.plexguide.com  | WARNING: Write this down and follow the order
 
