@@ -122,7 +122,7 @@ EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
       ;;
     3)
-bash /opt/plexguide/scripts/menus/rclone-menu.sh
+bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
       ;;
     4)
       exit 0;;
