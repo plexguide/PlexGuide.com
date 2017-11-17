@@ -58,30 +58,6 @@ read_options(){
 		1)
     clear
     cat << EOF
-Directory 1 (For Google Drive)
-WARNING: Write this down and follow the order
-
-N < For New remote
-gdrive < for the name
-9 < For Google Drive (double check the number select incase)
-Enter Your Google ID
-Enter Your Google Secret
-
-Y < for GUI Interface (much easier if using a Graphical Interface)
-N < for headless machine (if using only Terminal)
-
-Enter Your Verification Code
-
-Windows Users: Use CTRL+Insert (for copy) and Shift+Insert (for Paste)
-Do anything else, you will mess it up
-
-N < Configure this as a team drive?
-Y < If asking all is ok?
-
-EOF
-    bash /opt/plexguide/scripts/docker-no/continue.sh
-
-    cat << EOF
 Google API Guide (Page 1 of 1)
 http://googleapi.plexguid.com  | WARNING: Write this down and follow the order
 
@@ -100,17 +76,18 @@ http://googleapi.plexguid.com  | WARNING: Write this down and follow the order
 EOF
     bash /opt/plexguide/scripts/docker-no/continue.sh
 
-    ##### Final Note for Encrypted
+# Final Note
         cat << EOF
-PlexGuide.com
-http://unrclone.plexguide.com
+Google API Install
+http://googleapi.plexguide.com
 
 You can visit this area again.  Visiting the website is highly encouraged!
+
 EOF
     bash /opt/plexguide/scripts/docker-no/continue.sh
       ;;
 		2)
-    # PlexGuide
+# PlexDrive4
     cat << EOF
 - Ensure that you obtained your Google API Secret & Password
   http://googleapi.plexguide.com
@@ -127,16 +104,19 @@ ALL USERS: Anytime you mess things up or have problems, press CTRL + Z or X
 to break out.  Come back again, select Option 3 to remove previous keys and
 press option [1] to restart the process.
 
-FINAL NOTE: If you mess something up, delete the KEYS and restart again.  This
-is how the completed message should look like:
-
-[PLEXDRIVE4] [2017-11-15 14:51] INFO   : First cache build process finished!
-
-[Scroll Up to Read Entire Message]
 EOF
     read -n 1 -s -r -p "Press any key to continue"
     clear
 
+# Final Note
+    cat << EOF
+
+PlexDrive 4 Install
+http://plexdrive.plexguide.com
+
+You can visit this area again.  Visiting the website is highly encouraged!
+
+EOF
 bash /opt/plexguide/scripts/docker-no/continue.sh
       ;;
     3)
