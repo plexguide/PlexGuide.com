@@ -1,7 +1,7 @@
 ---
 version: '2'
 services:
- sonarr:
+ sickrage:
    image: linuxserver/sickrage
    container_name: sickrage
    ports:

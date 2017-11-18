@@ -1,7 +1,7 @@
 ---
 version: '2'
 services:
- sonarr:
+ headphones:
    image: linuxserver/headphones
    container_name: headphones
    ports:
