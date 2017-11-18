@@ -1,0 +1,18 @@
+---
+version: '2'
+services:
+ sonarr:
+   image: linuxserver/sickrage
+   container_name: sickrage
+   ports:
+     - 8081:8081
+   volumes:
+     - /opt/appdata/sonarr:/config
+     - /:/yourcomputer
+     - /mnt/unionfs:/unionfs
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - PUID=0
+     - PGID=0
+   restart:
+     always

@@ -30,9 +30,7 @@ two(){
 show_menus() {
 clear
 cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-PlexGuide.com Installer/Upgrader (** No Guide Yet)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PlexGuide.com Installer/Upgrader ( No Guide Yet)
 
 1.  Plex          | Sharing media program - * The Reason We Are Here *
 2.  CouchPotato   | ** Movie requesting program; older program
@@ -48,11 +46,12 @@ PlexGuide.com Installer/Upgrader (** No Guide Yet)
 12. Radarr        | Movie requesting program; newer less mature program
 13. RuTorrent     | ** Torrent Downloading Program
 14. SABNZBD       | USENET Downloading Program
-15. Sonarr        | TV Show requeseting program; more organized
-16. Wordpress     | Create a website for users to interact
-17. NGINX-Proxy   | ** TESTING
-18. DelugeVPN     | ** TESTING
-19. Exit
+15. SickRage      | ** TV Show requesting program
+16. Sonarr        | TV Show requesting program (Recommended)
+17. Wordpress     | Create a website for users to interact
+18. NGINX-Proxy   | ** TESTING
+19. DelugeVPN     | ** TESTING
+20. Exit
 
 EOF
 }
@@ -141,34 +140,42 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   14)
-  clear
-  bash /opt/plexguide/scripts/menus/sabsub-menu.sh
+    echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
+    echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+    echo ymlport 8090 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   15)
+    echo ymlprogram sickrage > /opt/plexguide/tmp.txt
+    echo ymldisplay SickRage >> /opt/plexguide/tmp.txt
+    echo ymlport 8081:8081 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+  16)
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
     echo ymlport 8989 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  16)
+  17)
     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
     echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  17)
+  18)
     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  18)
+  19)
     echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
     echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
     echo ymlport 8112 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  19)
+  20)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
