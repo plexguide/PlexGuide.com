@@ -31,16 +31,14 @@ show_menus() {
 
 clear
 cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~~
-   PLEX SERVER SELECT
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+  SABNZBD SELECT
+~~~~~~~~~~~~~~~~~~
 
-Note, if you install the PlexPass version and do not have PlexPass, it will
-just revert to the normal version. If your installing this on a REMOTE
-computer, please visit http://wiki.plexguide.com so you access the server!
+Note, you change back and forth between these two anytime
 
-1. Install Latest Plex Server (Public - Stable)
-2. Install Latest Plex Server (Pass - Unstable)
+1. Install Latest SABNZBD (Stable Release)
+2. Install Latest SABNZBD (Beta Release)
 3. Exit
 
 EOF
@@ -51,19 +49,19 @@ read_options(){
 	read -p "Enter choice [ 1 - 3 ] " choice
 	case $choice in
 		1)
-      docker rm plexpass
+      docker rm sabnzbd-beta
       clear
-      echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
-      echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
-      echo ymlport 32400 >> /opt/plexguide/tmp.txt
+      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
+      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+      echo ymlport 8090 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
 		2)
-      docker rm plexpublic
+      docker rm sabnzbd
       clear
-      echo ymlprogram plexpass > /opt/plexguide/tmp.txt
-      echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
-      echo ymlport 32400 >> /opt/plexguide/tmp.txt
+      echo ymlprogram sabnzbd-beta > /opt/plexguide/tmp.txt
+      echo ymldisplay SABNZBD Beta >> /opt/plexguide/tmp.txt
+      echo ymlport 8090 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
     3)

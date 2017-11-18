@@ -31,7 +31,7 @@ show_menus() {
 clear
 cat << EOF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- PlexGuide.com Installer/Upgrader (** Works - No Guide Yet)
+PlexGuide.com Installer/Upgrader (** No Guide Yet)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Plex          | Sharing media program - * The Reason We Are Here *
@@ -141,10 +141,8 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   14)
-    echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-    echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-    echo ymlport 8090 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+  clear
+  bash /opt/plexguide/scripts/menus/plexsub-menu.sh
     ;;
   15)
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
