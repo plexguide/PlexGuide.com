@@ -4,7 +4,7 @@
 
 ![N](https://i.imgur.com/xolIUR4.png)
 
-## Contact Link
+#### Contact Link
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 - Written By Admin9705 and Deiteq
 
@@ -18,7 +18,7 @@
 
 Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
 
-## Required
+### Required
 
 UB 16.04+ & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
 
