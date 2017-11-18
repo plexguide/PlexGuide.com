@@ -8,8 +8,8 @@ services:
      - 8090:8080
    volumes:
      - /opt/appdata/sabnzbd:/conifg
-     - /mnt/sab/complete:complete
-     - /mnt/sab/incomplete:incomplete
+     - /mnt/sab/complete/:complete
+     - /mnt/sab/incomplete/:incomplete
      - /mnt/sab/nzb/:backup
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
