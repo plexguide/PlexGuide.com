@@ -49,10 +49,11 @@ PlexGuide.com Installer/Upgrader (**No Guide Yet)
 15. SABNZBD       | USENET Downloading Program
 16. SickRage      | ** TV Show requesting program
 17. Sonarr        | TV Show requesting program (Recommended)
-18. Wordpress     | Create a website for users to interact
-19. NGINX-Proxy   | ** TESTING
-20. DelugeVPN     | ** TESTING
-21. Exit
+18. Transmission  | ** Torrent Downloading Program
+19. Wordpress     | Create a website for users to interact
+20. NGINX-Proxy   | ** TESTING
+21. DelugeVPN     | ** TESTING
+22. Exit
 
 EOF
 }
@@ -157,7 +158,7 @@ read_options(){
     echo ymldisplay SickRage >> /opt/plexguide/tmp.txt
     echo ymlport 8081:8081 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      ;;
+    ;;
   17)
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
@@ -165,24 +166,30 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   18)
+    echo ymlprogram transmission > /opt/plexguide/tmp.txt
+    echo ymldisplay Transmission >> /opt/plexguide/tmp.txt
+    echo ymlport 9091 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
+  19)
     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
     echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  19)
+  20)
     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  20)
+  21)
     echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
     echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
     echo ymlport 8112 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  21)
+  22)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
