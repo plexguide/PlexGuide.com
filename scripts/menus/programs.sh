@@ -35,23 +35,24 @@ PlexGuide.com Installer/Upgrader ( No Guide Yet)
 1.  Plex          | Sharing media program - * The Reason We Are Here *
 2.  CouchPotato   | ** Movie requesting program; older program
 3.  Emby          | ** Alternative to PLEX and less restrictive
-4.  Hydra         | ** Meta search for NZB indexers
-5.  NetData       | Statistical Tool for the Server
-6.  Muximux       | ** Site Interface to control your programs
-7.  NZBGET        | ** USENET Downloading Program
-8.  Ombi v3       | ** Enables users to request media
-9.  Organizr      | ** Site Interface to control your programs
-10. PlexPy        | Provides analytics about your PLEX Users
-11. Portainer     | Manage your Docker Containers | Installed By Default
-12. Radarr        | Movie requesting program; newer less mature program
-13. RuTorrent     | ** Torrent Downloading Program
-14. SABNZBD       | USENET Downloading Program
-15. SickRage      | ** TV Show requesting program
-16. Sonarr        | TV Show requesting program (Recommended)
-17. Wordpress     | Create a website for users to interact
-18. NGINX-Proxy   | ** TESTING
-19. DelugeVPN     | ** TESTING
-20. Exit
+4.  Headphones    | Music requesting program
+5.  Hydra         | ** Meta search for NZB indexers
+6.  NetData       | Statistical Tool for the Server
+7.  Muximux       | ** Site Interface to control your programs
+8.  NZBGET        | ** USENET Downloading Program
+9.  Ombi v3       | ** Enables users to request media
+10.  Organizr      | ** Site Interface to control your programs
+11. PlexPy        | Provides analytics about your PLEX Users
+12. Portainer     | Manage your Docker Containers | Installed By Default
+13. Radarr        | Movie requesting program; newer less mature program
+14. RuTorrent     | ** Torrent Downloading Program
+15. SABNZBD       | USENET Downloading Program
+16. SickRage      | ** TV Show requesting program
+17. Sonarr        | TV Show requesting program (Recommended)
+18. Wordpress     | Create a website for users to interact
+19. NGINX-Proxy   | ** TESTING
+20. DelugeVPN     | ** TESTING
+21. Exit
 
 EOF
 }
@@ -79,103 +80,109 @@ read_options(){
     echo ymlport 8096 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   4)
+  4)
+    echo ymlprogram headphones > /opt/plexguide/tmp.txt
+    echo ymldisplay Headphones >> /opt/plexguide/tmp.txt
+    echo ymlport 8150 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+   5)
     echo ymlprogram hydra > /opt/plexguide/tmp.txt
     echo ymldisplay Hydra >> /opt/plexguide/tmp.txt
     echo ymlport 5075 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   5)
+   6)
     echo ymlprogram netdata > /opt/plexguide/tmp.txt
     echo ymldisplay NetData >> /opt/plexguide/tmp.txt
     echo ymlport 19999 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   6)
+   7)
     echo ymlprogram muximux > /opt/plexguide/tmp.txt
     echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
     echo ymlport 8015 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   7)
+   8)
     echo ymlprogram nzbget > /opt/plexguide/tmp.txt
     echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
     echo ymlport 6789 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   8)
+   9)
     echo ymlprogram ombi > /opt/plexguide/tmp.txt
     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
     echo ymlport 3579 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   9)
+  10)
     echo ymlprogram organizr > /opt/plexguide/tmp.txt
     echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
     echo ymlport 8020 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  10)
+  11)
     echo ymlprogram plexpy > /opt/plexguide/tmp.txt
     echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
     echo ymlport 8181 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  11)
+  12)
     echo ymlprogram portainer > /opt/plexguide/tmp.txt
     echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
     echo ymlport 9000 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  12)
+  13)
     echo ymlprogram radarr > /opt/plexguide/tmp.txt
     echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
     echo ymlport 7878 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  13)
+  14)
     echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
     echo ymldisplay RuTorrent >> /opt/plexguide/tmp.txt
     echo ymlport 8085 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  14)
+  15)
     echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
     echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
     echo ymlport 8090 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  15)
+  16)
     echo ymlprogram sickrage > /opt/plexguide/tmp.txt
     echo ymldisplay SickRage >> /opt/plexguide/tmp.txt
     echo ymlport 8081:8081 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-  16)
+  17)
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
     echo ymlport 8989 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  17)
+  18)
     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
     echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  18)
+  19)
     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
     echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  19)
+  20)
     echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
     echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
     echo ymlport 8112 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  20)
+  21)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

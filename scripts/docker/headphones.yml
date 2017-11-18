@@ -2,12 +2,12 @@
 version: '2'
 services:
  sonarr:
-   image: linuxserver/sickrage
-   container_name: sickrage
+   image: linuxserver/headphones
+   container_name: headphones
    ports:
-     - 8081:8081
+     - 8150:8181
    volumes:
-     - /opt/appdata/sickrage:/config
+     - /opt/appdata/headphones:/config
      - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
