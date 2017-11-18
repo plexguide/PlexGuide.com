@@ -50,6 +50,7 @@ read_options(){
 	case $choice in
 		1)
       docker rm sabnzbd-beta
+      docker rm sabnzbd
       clear
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
@@ -58,6 +59,7 @@ read_options(){
       ;;
 		2)
       docker rm sabnzbd
+      docker rm sabnzbd-beta
       clear
       echo ymlprogram sabnzbd-beta > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD Beta >> /opt/plexguide/tmp.txt
