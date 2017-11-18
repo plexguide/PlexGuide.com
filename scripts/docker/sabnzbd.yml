@@ -9,7 +9,7 @@ services:
    volumes:
      - /opt/appdata/sabnzbd:/conifg
      - /mnt/sab/complete:/complete
-     - /mnt/sab/incomplete/:incomplete
+     - /mnt/sab/incomplete:/incomplete
      - /mnt/sab/nzb:/nzb
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
