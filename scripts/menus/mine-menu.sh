@@ -48,7 +48,7 @@ cat << EOF
 2. Allow Mining of 4 Threads    :  2 Cores
 3. Use My Entire Processor!     :  Really Sure? Only if your not using it!
 4. Turn of All Mining Operations:  TURN IT OFF!
-. Exit
+5. Exit
 
 EOF
 
@@ -218,8 +218,11 @@ echo "All Miners are Off Per Your Request!"
 echo
 read -n 1 -s -r -p "Press any key to continue"
 ;;
+5)
+  exit 0;;
+*) echo -e "${RED}Error...${STD}" && sleep 2
+esac
 }
-
 # ----------------------------------------------
 # Step #3: Trap CTRL+C, CTRL+Z and quit singles
 # ----------------------------------------------
