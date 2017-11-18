@@ -1,6 +1,6 @@
 # PlexGuide.com - Version 4
 
-![N](https://preview.ibb.co/gdXE0m/Snip20171029_22.png)
+![N](https://i.imgur.com/P0Tn5FN.png)
 
 ![N](https://i.imgur.com/xolIUR4.png)
 
