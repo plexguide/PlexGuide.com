@@ -85,7 +85,7 @@ read_options(){
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-  6)    bash/opt/plexguide/scripts/donate/mine-menu.sh
+  6)    bash/opt/plexguide/scripts/menus/mine-menu.sh
         clear
         ;;
   7)
