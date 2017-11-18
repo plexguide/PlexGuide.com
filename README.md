@@ -8,6 +8,12 @@
 - Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
 - Written By Admin9705 and Deiteq
 
+## Want to Donate? Everybit Helps!
+
+Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
+Ethereum: 0xe40ED5eA14e20e7dc4595FdE195526d36308cF04
+LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
+
 ## Mission Statement & Purpose
 
 Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
