@@ -142,7 +142,7 @@ read_options(){
     ;;
   14)
   clear
-  bash /opt/plexguide/scripts/menus/plexsub-menu.sh
+  bash /opt/plexguide/scripts/menus/sabsub-menu.sh
     ;;
   15)
     echo ymlprogram sonarr > /opt/plexguide/tmp.txt

@@ -52,7 +52,7 @@ Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 1. Install - RClone   :  Media Syncs to Google Drive
 2. Install - PlexDrive:  Prevent G-Drive Plex Scan Bans
                          *********************************************
-3. Install & Update   :  Programs & Tools (PlexPy, SABNZBD & More!)
+3. Server Programs    :  Programs & Tools (PlexPy, SABNZBD & More!)
 4. Update PlexGuide   :  Upgrade this Program (Newest Updates & Fixes)
                          *********************************************
 5. Troubleshooting    :  Tools To Assist You!
