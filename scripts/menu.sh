@@ -54,16 +54,14 @@ Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 3. Install & Update   :  Server Programs & Tools
 4. Update PlexGuide   :  Upgrade this Program (Newest Updates & Fixes)
 5. Troubleshooting 101:  Hope this helps!
-                         ----------------------------------------------
-6. Donate By Mining   :  (READ) Can donate a little processing power :D
-7. Exit
+6. Exit
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 7 ] " choice
+	read -p "Enter choice [ 1 - 6 ] " choice
 	case $choice in
 	1)
         clear
@@ -86,10 +84,7 @@ read_options(){
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-  6)    bash /opt/plexguide/scripts/menus/mine-menu.sh
-        clear
-        ;;
-  7)
+  6)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
