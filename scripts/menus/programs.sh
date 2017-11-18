@@ -30,18 +30,18 @@ two(){
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer/Upgrader ( No Guide Yet)
+PlexGuide.com Installer/Upgrader (**No Guide Yet)
 
 1.  Plex          | Sharing media program - * The Reason We Are Here *
 2.  CouchPotato   | ** Movie requesting program; older program
 3.  Emby          | ** Alternative to PLEX and less restrictive
-4.  Headphones    | Music requesting program
+4.  Headphones    | ** Music requesting program
 5.  Hydra         | ** Meta search for NZB indexers
 6.  NetData       | Statistical Tool for the Server
 7.  Muximux       | ** Site Interface to control your programs
 8.  NZBGET        | ** USENET Downloading Program
 9.  Ombi v3       | ** Enables users to request media
-10.  Organizr      | ** Site Interface to control your programs
+10. Organizr      | ** Site Interface to control your programs
 11. PlexPy        | Provides analytics about your PLEX Users
 12. Portainer     | Manage your Docker Containers | Installed By Default
 13. Radarr        | Movie requesting program; newer less mature program
