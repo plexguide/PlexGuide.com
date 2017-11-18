@@ -2,12 +2,15 @@
 version: '2'
 services:
  sabnzbd:
-   image: sabnzbd/sabnzbd
+   image: linuxserver/sabnzbd
    container_name: sabnzbd
    ports:
      - 8090:8080
    volumes:
-     - /opt/appdata/sabnzbd:/datadir
+     - /opt/appdata/sabnzbd:/conifg
+     - /mnt/sab/complete:complete
+     - /mnt/sab/incomplete:incomplete
+     - /mnt/sab/nzb/:backup
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:
