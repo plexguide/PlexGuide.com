@@ -10,7 +10,7 @@ services:
      - /opt/appdata/sabnzbd:/conifg
      - /mnt/sab/complete:/complete
      - /mnt/sab/incomplete/:incomplete
-     - /mnt/sab/nzb/:backup
+     - /mnt/sab/nzb:/backup
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:
