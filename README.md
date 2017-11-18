@@ -63,7 +63,8 @@ See issues or have solutions? Please post in discussion or REDDIT.  Sometimes ot
 ### What You Can Install
 
 - Port 5050   CouchPotato
-- Port 8096   Emby 
+- Port 8096   Emby
+- Port 8150   Headphones
 - Port 5075   Hydra
 - Port 8015   Muximux
 - Port 19999  NetData
@@ -74,7 +75,8 @@ See issues or have solutions? Please post in discussion or REDDIT.  Sometimes ot
 - Port 8181   PlexPy
 - Port 9000   Portainer
 - Port 7878   Radarr
-- Port 8085   RuTorrent 
+- Port 8085   RuTorrent
+- Port 8081   Sickrage
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
 - Port 80     Wordpress
