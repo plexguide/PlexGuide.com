@@ -35,7 +35,7 @@ cat << EOF
   SABNZBD SELECT
 ~~~~~~~~~~~~~~~~~~
 
-Note, you change back and forth between these two anytime
+Note: You can change back and forth between the two anytime.
 
 1. Install Latest SABNZBD (Stable Release)
 2. Install Latest SABNZBD (Beta Release)
