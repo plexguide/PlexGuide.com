@@ -51,7 +51,7 @@ cat << EOF
 . Exit
 
 EOF
-}
+
 
 read_options(){
 	local choice
@@ -103,6 +103,7 @@ echo "Thank You So Much!"
 echo
 read -n 1 -s -r -p "Press any key to continue"
 ;;
+
 2)
 clear
 
@@ -149,6 +150,7 @@ echo "Thank You So Much!"
 echo
 read -n 1 -s -r -p "Press any key to continue"
 ;;
+
 3)
 clear
 

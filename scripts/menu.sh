@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Version Nov 18
+Welcome PlexGuide.com Installer V4 - Version Nov 19
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
 Plans : Security, NGINX, VPNs, Custom Ports
@@ -54,6 +54,7 @@ Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 3. Install & Update   :  Server Programs & Tools
 4. Update PlexGuide   :  Upgrade this Program (Newest Updates & Fixes)
 5. Troubleshooting 101:  Hope this helps!
+                         ----------------------------------------------
 6. Donate By Mining   :  (READ) Can donate a little processing power :D
 7. Exit
 
@@ -62,7 +63,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6 ] " choice
+	read -p "Enter choice [ 1 - 7 ] " choice
 	case $choice in
 	1)
         clear
