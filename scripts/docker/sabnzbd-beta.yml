@@ -1,0 +1,20 @@
+---
+version: '2'
+services:
+ sabnzbd:
+   image: linuxserver/sabnzbd:unstable
+   container_name: sabnzbd
+   ports:
+     - 8090:8080
+   volumes:
+     - /opt/appdata/sabnzbd:/conifg
+     - /mnt/sab/complete:/complete
+     - /mnt/sab/incomplete:/incomplete
+     - /mnt/sab/nzb:/nzb
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - PUID=0
+     - PGID=0
+   restart:
+     always
