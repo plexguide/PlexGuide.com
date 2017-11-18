@@ -40,11 +40,8 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Version Nov 17
+Welcome PlexGuide.com Installer V4 - Version Nov 18
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
-
-Unlimited Storage comes from Google G-Suite, 10 (US Dollars) a Month.
-Please READ the Wiki at http://wiki.plexguide.com (It will help you!)
 
 Plans : Security, NGINX, VPNs, Custom Ports
 Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
@@ -57,7 +54,8 @@ Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
 3. Install & Update   :  Server Programs & Tools
 4. Update PlexGuide   :  Upgrade this Program (Newest Updates & Fixes)
 5. Troubleshooting 101:  Hope this helps!
-6. Exit
+6. Donate By Mining   :  (READ) Can donate a little processing power :D
+7. Exit
 
 EOF
 }
@@ -87,7 +85,10 @@ read_options(){
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-  6)
+  6)    bash/opt/plexguide/scripts/donate/mine-menu.sh
+        clear
+        ;;
+  7)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
