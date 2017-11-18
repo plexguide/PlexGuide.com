@@ -5,7 +5,7 @@
 ![N](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo.PNG)
 
 #### Contact Link
-- Reddit Link (Great for Discussion): https://www.reddit.com/r/AwesomePlex/
+- Reddit Link (Great for Discussion): http://reddit.plexguide.com
 - Written By Admin9705 and Deiteq
 
 #### Want to Donate? Everybit Helps!
