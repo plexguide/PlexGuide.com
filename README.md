@@ -1,6 +1,6 @@
 # PlexGuide.com - Version 4
 
-![N](https://i.imgur.com/P0Tn5FN.png)
+![N](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide.PNG)
 
 ![N](https://i.imgur.com/xolIUR4.png)
 
