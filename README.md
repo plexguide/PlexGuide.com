@@ -30,11 +30,13 @@ UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user r
   - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
   - [Require: SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
   - [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
-  - [Disk Space Warning!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
-  - [Optional - Extra Reading](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki)
+  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
   
-- Install & Configure By Viewing: 
-  - [Plex Guide Installation Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
+- [2] PlexGuide Install: 
+  - [Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
+  
+- [3] Configuration Instructions:
+  -
 
 ## Final Note
 
