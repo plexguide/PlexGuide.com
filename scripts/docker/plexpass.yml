@@ -4,7 +4,8 @@ services:
  plex:
    image: plexinc/pms-docker:plexpass
    container_name: plexpass
-   network: host
+   network:
+     - host
    volumes:
      - /opt/plex/database:/config
      - /opt/plex/transcode:/transcode
