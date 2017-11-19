@@ -28,7 +28,7 @@ two(){
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 
-file="/var/plexguide/dep6.yes"
+file="/var/plexguide/dep7.yes"
 if [ -e "$file" ]
 then
     clear

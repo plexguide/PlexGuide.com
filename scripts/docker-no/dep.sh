@@ -45,14 +45,13 @@ if echo "$answer" | grep -iq "^y" ;then
 
 #Prevents this script from running again
     mkdir /var/plexguide
-    touch /var/plexguide/dep6.yes
+    touch /var/plexguide/dep7.yes
 
 # Install Docker and Docker Composer / Checks to see if is installed also
 clear
 echo "Note, if you get a message about docker is install and the 20 sec sleep"
 echo "warning, just ignore it and let the 20 seconds go by."
 echo
-
       curl -sSL https://get.docker.com | sh
       curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
@@ -64,7 +63,7 @@ echo
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
 #!/bin/bash
 
-x=20
+x=30
 while [ $x -gt 0 ]
 do
     sleep 1s
