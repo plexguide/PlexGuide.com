@@ -11,7 +11,12 @@ services:
      - /mnt/unionfs:/unionfs
      - /:/yourcomputer
    ports:
-     - 32400:32400
+     - "32400:32400"
+     - "32400:32400/udp"
+     - "32469:32469"
+     - "32469:32469/udp"
+     - "5353:5353/udp"
+     - "1900:1900/udp"
    restart: always
    environment:
      - PUID=1000
