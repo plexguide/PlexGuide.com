@@ -34,7 +34,7 @@ A. Preparation
 B. [PlexGuide Easy Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
   
 C. Configuration
- 1. Install & Follow Instructions for either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://unrclone.plexguide.com)   
+ 1. Install & Configure Either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://unrclone.plexguide.com)   
  2. [Configure PlexDrive](http://plexdrive.plexguide.com)
  3. [Configure Plex](http://plex.plexguide.com)
  4. [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
