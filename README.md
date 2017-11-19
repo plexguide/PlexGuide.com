@@ -27,6 +27,9 @@ UB 16/17 & Google Drive (https://gsuite.google.com)
   
 - Ignore the 5 User Requirement; you will get anxiety. Unlimited works with 1 account; don't ask, just listen!
 
+## Really New To Linux?
+It's ok! If you mess up something, reinstall and try again.  See if what you did was a mistake or a bug.  If so, document it and post in the issues.  When known, we update the guides to help others!  Remember, you only learn through frustration... but alot has been eliminated for you to make your life easier.  
+
 ## Preparation, Installation & Configuration 
 Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
 
