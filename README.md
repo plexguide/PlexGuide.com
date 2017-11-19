@@ -26,21 +26,22 @@ UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user r
 
 - Entire PlexGuide Wiki @ http://wiki.plexguide.com
 
-Preparation
+A. Preparation
  1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
  2. [Require: SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
-  [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
-  [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
+ 3. [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
+ 4. [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
+ 
+B. [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
   
-- [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
-  
-- Select and Follow One Version of the RClone Instructions
-  - Unencrypt RClone @ http://unrclone.plexguide.com 
-  - Encrypted RClone @ http://enrclone.plexguide.com
-- PlexDrive - http://plexdrive.plexguide.com
-- Plex - http://plex.plexguide.com
-- Supporting Programs *RIGHT HAND SIDE* @ http://wiki.plexguide.com
-- Portainer: http://portainer.plexguide.com
+C. Configuration
+ 1. Select and Follow One Version of the RClone Instructions:
+   - Unencrypt RClone @ http://unrclone.plexguide.com 
+   - Encrypted RClone @ http://enrclone.plexguide.com
+ 2. PlexDrive - http://plexdrive.plexguide.com
+ 3. Plex - http://plex.plexguide.com
+ 4. Supporting Programs *RIGHT HAND SIDE* @ http://wiki.plexguide.com
+ 5. Portainer: http://portainer.plexguide.com
 
 ## Final Note
 
