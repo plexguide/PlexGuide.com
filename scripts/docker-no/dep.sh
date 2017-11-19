@@ -42,22 +42,21 @@ if echo "$answer" | grep -iq "^y" ;then
   mkdir /mnt/sab/nzb
   chmod 777 /mnt/sab/nzb
 
-    #Prevents this script from running again
+#Prevents this script from running again
     mkdir /var/plexguide
     touch /var/plexguide/dep6.yes
 
-    # Install Docker and Docker Composer / Checks to see if is installed also
-    if [ -e "/var/plexguide/docker.yes" ]
-    then
-      echo "Docker Is Installed"
-    else
-      #Install Docker
+# Install Docker and Docker Composer / Checks to see if is installed also
+clear
+echo "Note, if you get a message about docker is install and the 20 sec sleep"
+echo "warning, just ignore it and let the 20 seconds go by."
+echo
+
       curl -sSL https://get.docker.com | sh
       curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
       touch /var/plexguide/docker.yes
-    fi
 
 ############################################# Install a Post-Docker Fix ###################### START
 
