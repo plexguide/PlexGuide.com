@@ -22,23 +22,19 @@ Build an operational-automated server that mounts your Google Drive, while utili
 
 UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
 
-## Preparation & Installation
+## Preparation, Installation & Configuration
 - Prepare by Viewing:
   - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
   - [Access Via SSH](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
   - [Disk Space Warning!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
   - [Optional - Extra Reading](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki)
   
-- Install By Viewing: 
+- Install & Configure By Viewing: 
   - [Plex Guide Installation Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
 
 ## Final Note
 
 See issues or have solutions? Please post in discussion or REDDIT.  Sometimes other are aware of a problem and it allows us to keep track.  Help make this program better!
-
-## Social Contacts
-
-
 
 ### What You Can Install
 
