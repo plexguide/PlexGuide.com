@@ -43,7 +43,7 @@ cat << EOF
 Welcome PlexGuide.com Installer V4 - Version Nov 19
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
-Social: (Slack - plexguide.slack.com) or (Reddit - plexguide.reddit.com)
+Social: (Slack - plexguidecom.slack.com) or (Reddit - plexguide.reddit.com)
 
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U
