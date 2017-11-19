@@ -25,13 +25,13 @@ UB 16/17 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements;
 ## Preparation, Installation & Configuration 
 Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
 
-A. Preparation
+**A. Preparation:**
  1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
  2. [Require: SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
  3. [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  4. [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
  
-B. Install Instructions:
+**B. Install Instructions:**
 
 Install GIT (You may need to start with: sudo)
 ```sh
@@ -49,7 +49,7 @@ To Execute PlexGuide in the future, type:
 plexguide
 ```
   
-C. Configuration
+**C. Configuration**
  1. Install & Configure Either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://unrclone.plexguide.com)   
  2. [Configure PlexDrive](http://plexdrive.plexguide.com)
  3. [Configure Plex](http://plex.plexguide.com)
