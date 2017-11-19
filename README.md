@@ -36,8 +36,8 @@ B. [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-T
   
 C. Configuration
  1. Select and Follow One Version of the RClone Instructions:
-   - Unencrypt RClone @ http://unrclone.plexguide.com 
-   - Encrypted RClone @ http://enrclone.plexguide.com
+  a. Unencrypt RClone @ http://unrclone.plexguide.com 
+  b. Encrypted RClone @ http://enrclone.plexguide.com
  2. PlexDrive - http://plexdrive.plexguide.com
  3. Plex - http://plex.plexguide.com
  4. Supporting Programs *RIGHT HAND SIDE* @ http://wiki.plexguide.com
