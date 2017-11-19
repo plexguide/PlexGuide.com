@@ -26,23 +26,20 @@ UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user r
 
 - Entire PlexGuide Wiki @ http://wiki.plexguide.com
 
-- Reading Preparation:
-
-  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
-  - [Require: SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
-  - [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
-  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
+- [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
+- [Require: SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
+- [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
+- [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
   
 - [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
   
-- Configuration Instructions:
-  - Select and Follow One Version of the RClone Instructions
-    -  Unencrypt rclone @ http://unrclone.plexguide.com 
-    -  Encrypted rclone @ http://enrclone.plexguide.com
-  - PlexDrive - http://plexdrive.plexguide.com
-  - Plex - http://plex.plexguide.com
-  - Supporting Programs on RIGHT HAND SIDE @ http://wiki.plexguide.com
-  - Portainer: http://portainer.plexguide.com
+- Select and Follow One Version of the RClone Instructions
+  - Unencrypt RClone @ http://unrclone.plexguide.com 
+  - Encrypted RClone @ http://enrclone.plexguide.com
+- PlexDrive - http://plexdrive.plexguide.com
+- Plex - http://plex.plexguide.com
+- Supporting Programs *RIGHT HAND SIDE* @ http://wiki.plexguide.com
+- Portainer: http://portainer.plexguide.com
 
 ## Final Note
 
