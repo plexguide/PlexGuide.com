@@ -33,15 +33,15 @@ Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
  
 **B. Install Instructions:**
 
-Install GIT (You may need to start with: sudo)
+Install GIT
 ```sh
-apt-get install git
+sudo apt-get install git
 ```
 
-To Install PlexGuide (You may need to start with: sudo)
+To Install PlexGuide
 ```sh
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-bash /opt/plexg*/sc*/ins*
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+sudo bash /opt/plexg*/sc*/ins*
 ```
 
 To Execute PlexGuide in the future, type:
