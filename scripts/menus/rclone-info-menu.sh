@@ -43,7 +43,6 @@ recommended to view the following guides:
 *** Encrypted RClone - http://enrclone.plexguide.com
 
 Not reading or following the guides will cause you some grief!
-WARNING: Ensure to run the RClone-Preinstall before installing either or.
 
 1. I read and/or bookmarked the guides! Let me Install RClone!
 2. Exit
@@ -53,7 +52,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 4 ] " choice
+	read -p "Enter choice [ 1 - 2 ] " choice
 	case $choice in
     1)
 bash /opt/plexguide/scripts/menus/rclone-menu.sh
