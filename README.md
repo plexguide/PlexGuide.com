@@ -79,6 +79,7 @@ See issues or have solutions? Please post in discussion or REDDIT.  Sometimes ot
 - Port 8081   Sickrage
 - Port 8989   Sonarr
 - Port 8090   SABNZBD
+- Port 9091   Transmission
 - Port 80     Wordpress
 
 *In Addition Installs* - Docker, PlexDrive, RClone, UnionFS
