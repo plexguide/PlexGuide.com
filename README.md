@@ -28,7 +28,7 @@ UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user r
 - **2.** Obtain your Google API Key at http://googleapi.plexguide.com
 - **3.** Execute the following below:
 
-If running on Debian (Not Ubuntu):
+If running on Debian (Not Ubuntu) (May Need to be root or start with su):
 ```su
 apt-get install sudo
 ```
