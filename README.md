@@ -21,7 +21,7 @@ Build an operational-automated server that mounts your Google Drive, while utili
 ### Required
 
 UB 16/17 & Google Drive (https://gsuite.google.com)
-- Never ever buy an EBay Account! Buy your own. Seller accounts get shut down all the time (poof there goes all your data)
+- Never ever buy a Google Account throught ebay! Buy your own. Seller accounts get shut down all the time (poof there goes all your data)
   - [Article 1](https://community.ebay.com/t5/Bidding-Buying/Seller-of-Google-Drive-Unlimited-Storage-problem/td-p/27058292)
   - [Article 2](https://www.reddit.com/r/PleX/comments/6crdjv/google_is_disabling_certain_gsuites_accounts/)
   
