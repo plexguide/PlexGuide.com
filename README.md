@@ -32,7 +32,8 @@ A. Preparation
  3. [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  4. [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
  
-B. [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
+B. PlexGuide Easy Install
+ 1. [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
   
 C. Configuration
  1. Select and Follow One Version of the RClone Instructions:
