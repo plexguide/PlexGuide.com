@@ -20,21 +20,44 @@ Build an operational-automated server that mounts your Google Drive, while utili
 
 ### Required
 
-UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
+UB 16/17 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
 
-## Preparation, Installation & Configuration
-- Prepare by Viewing:
-  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
-  - [If Required - Access Via SSH](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
-  - [Disk Space Warning!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
-  - [Optional - Extra Reading](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki)
+## Preparation, Installation & Configuration 
+Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
+
+**A. Preparation:**
+ 1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
+ 2. [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
+ 3. [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
+ 4. [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
+ 
+**B. Install Instructions:**
+
+Install GIT
+```sh
+sudo apt-get install git
+```
+
+To Install PlexGuide
+```sh
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+sudo bash /opt/plexg*/sc*/ins*
+```
+
+To Execute PlexGuide in the future, type:
+```sh
+plexguide
+```
   
-- Install & Configure By Viewing: 
-  - [Plex Guide Installation Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
+**C. Configuration**
+ 1. Install & Configure Either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://unrclone.plexguide.com)   
+ 2. [Configure PlexDrive](http://plexdrive.plexguide.com)
+ 3. [Configure Plex](http://plex.plexguide.com)
+ 4. [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
+ 5. [Configure Portainer](http://portainer.plexguide.com)
 
 ## Final Note
-
-See issues or have solutions? Please post in discussion or REDDIT.  Sometimes other are aware of a problem and it allows us to keep track.  Help make this program better!
+See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or [REDDIT](http://reddit.plexguide.com).  Your feedback helps us and you!
 
 ### What You Can Install
 
