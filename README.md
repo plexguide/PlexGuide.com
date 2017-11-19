@@ -24,7 +24,7 @@ UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user r
 
 ## Prep & Install Guide
 - Prepare the install by viewing the following: aaa, bbb, ccc
-- Install the PlexGuide by following: [Install Guide]
+- Install the PlexGuide by following: [Install Guide](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
 
 ## Final Note
 
