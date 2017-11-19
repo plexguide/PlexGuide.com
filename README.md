@@ -20,7 +20,10 @@ Build an operational-automated server that mounts your Google Drive, while utili
 
 ### Required
 
-UB 16/17 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
+UB 16/17 & Google Drive (https://gsuite.google.com)
+- First, never ever buy an EBay Account! Buy your own. Seller accounts get shut down all the time (poof there goes all your data)
+  - No To EBay Accounts
+- Ignore the 5 User Requirement; you will get anxiety. Unlimited works with 1 account; don't ask, just listen!
 
 ## Preparation, Installation & Configuration 
 Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
