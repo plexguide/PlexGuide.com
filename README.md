@@ -20,7 +20,7 @@ Build an operational-automated server that mounts your Google Drive, while utili
 
 ### Required
 
-UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
+UB 16/17 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
 
 ## Preparation, Installation & Configuration 
 Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
