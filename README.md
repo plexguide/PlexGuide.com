@@ -35,10 +35,10 @@ B. [PlexGuide Easy Install Instructions](https://github.com/Admin9705/PlexGuide.
   
 C. Configuration
  1. Install & Follow Instructions for either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://unrclone.plexguide.com)   
- 2. PlexDrive - http://plexdrive.plexguide.com
- 3. Plex - http://plex.plexguide.com
- 4. Supporting Programs *RIGHT HAND SIDE* @ http://wiki.plexguide.com
- 5. Portainer: http://portainer.plexguide.com
+ 2. [Configure PlexDrive](http://plexdrive.plexguide.com)
+ 3. [Configure Plex](http://plex.plexguide.com)
+ 4. [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
+ 5. [Configure Portainer](http://portainer.plexguide.com)
 
 ## Final Note
 
