@@ -31,7 +31,23 @@ A. Preparation
  3. [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  4. [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
  
-B. [PlexGuide Easy Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
+B. Install Instructions:
+
+Install GIT (You may need to start with: sudo)
+```sh
+apt-get install git
+```
+
+To Install PlexGuide (You may need to start with: sudo)
+```sh
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+bash /opt/plexg*/sc*/ins*
+```
+
+To Execute PlexGuide in the future, type:
+```sh
+plexguide
+```
   
 C. Configuration
  1. Install & Configure Either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://unrclone.plexguide.com)   
