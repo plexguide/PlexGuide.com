@@ -40,10 +40,11 @@ fi
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Version Nov 19
+Welcome PlexGuide.com Installer V4 - Version Nov 20
 Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
 
-Social: (Slack - plexguidecom.slack.com) or (Reddit - plexguide.reddit.com)
+Programs have been updated to reflect priority.  If you want to contribue to
+the project, please let us know! http://reddit.plexguide.com
 
 ~~~~~~~~~~~~~~~~~~~~~
   M A I N - M E N U

@@ -30,30 +30,33 @@ two(){
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer/Upgrader (**No Guide Yet)
+PlexGuide.com Installer/Upgrader (** = No Guide Yet)
 
+===== Confirmed Working Programs =======================================
 1.  Plex          | Sharing media program - * The Reason We Are Here *
-2.  CouchPotato   | ** Movie requesting program; older program
-3.  Emby          | ** Alternative to PLEX and less restrictive
-4.  Headphones    | ** Music requesting program
-5.  Hydra         | ** Meta search for NZB indexers
-6.  NetData       | Statistical Tool for the Server
-7.  Muximux       | ** Site Interface to control your programs
-8.  NZBGET        | ** USENET Downloading Program
-9.  Ombi v3       | ** Enables users to request media
-10. Organizr      | ** Site Interface to control your programs
-11. PlexPy        | Provides analytics about your PLEX Users
-12. Portainer     | Manage your Docker Containers | Installed By Default
-13. Radarr        | Movie requesting program; newer less mature program
-14. RuTorrent     | ** Torrent Downloading Program
-15. SABNZBD       | USENET Downloading Program
-16. SickRage      | ** TV Show requesting program
-17. Sonarr        | TV Show requesting program (Recommended)
-18. Transmission  | ** Torrent Downloading Program
-19. Wordpress     | Create a website for users to interact
+2.  NetData       | Statistical Tool for the Server
+3.  Muximux       | ** Site Interface to control your programs
+4.  Ombi v3       | ** Enables users to request media
+5.  Organizr      | ** Site Interface to control your programs
+6.  PlexPy        | Provides analytics about your PLEX Users
+7.  Portainer     | Manage your Docker Containers | Installed By Default
+8.  Radarr        | Movie requesting program; newer less mature program
+9.  SABNZBD       | USENET Downloading Program
+10. Sonarr        | TV Show requesting program (Recommended)
+11. Wordpress     | Create a website for users to interact
+===== Programs Below are Being Tested or a Low Focus - Avoid Them ======
+12. CouchPotato   | ** TESTING
+13. Emby          | ** TESTING
+14. Headphones    | ** TESTING
+15. Hydra         | ** TESTING
+16. NZBGET        | ** TESTING
+17. RuTorrent     | ** TESTING
+18. SickRage      | ** TESTING
+19. Transmission  | ** TESTING
 20. NGINX-Proxy   | ** TESTING
 21. DelugeVPN     | ** TESTING
-22. Exit
+=========================================================================
+22. Exit                               (Scroll Up To Set The Entire List)
 
 EOF
 }
@@ -65,116 +68,116 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 22 ] " choice
 	case $choice in
-  1)
-  clear
-  bash /opt/plexguide/scripts/menus/plexsub-menu.sh
-  ;;
-  2)
-    echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
-    echo ymldisplay CouchPotato >> /opt/plexguide/tmp.txt
-    echo ymlport 5050 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  3)
-    echo ymlprogram emby > /opt/plexguide/tmp.txt
-    echo ymldisplay Emby >> /opt/plexguide/tmp.txt
-    echo ymlport 8096 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  4)
+    1)
+     clear
+     bash /opt/plexguide/scripts/menus/plexsub-menu.sh
+     ;;
+    2)
+     echo ymlprogram netdata > /opt/plexguide/tmp.txt
+     echo ymldisplay NetData >> /opt/plexguide/tmp.txt
+     echo ymlport 19999 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    3)
+     echo ymlprogram muximux > /opt/plexguide/tmp.txt
+     echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
+     echo ymlport 8015 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    4)
+     echo ymlprogram ombi > /opt/plexguide/tmp.txt
+     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
+     echo ymlport 3579 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    5)
+     echo ymlprogram organizr > /opt/plexguide/tmp.txt
+     echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
+     echo ymlport 8020 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    6)
+     echo ymlprogram plexpy > /opt/plexguide/tmp.txt
+     echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
+     echo ymlport 8181 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    7)
+     echo ymlprogram portainer > /opt/plexguide/tmp.txt
+     echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
+     echo ymlport 9000 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+     8)
+      echo ymlprogram radarr > /opt/plexguide/tmp.txt
+      echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
+      echo ymlport 7878 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+      9)
+      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
+      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+      echo ymlport 8090 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+      10)
+        echo ymlprogram sonarr > /opt/plexguide/tmp.txt
+        echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
+        echo ymlport 8989 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        ;;
+      11)
+        echo ymlprogram wordpress > /opt/plexguide/tmp.txt
+        echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
+        echo ymlport 80 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        ;;
+      12)
+        echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
+        echo ymldisplay CouchPotato >> /opt/plexguide/tmp.txt
+        echo ymlport 5050 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        ;;
+      13)
+      echo ymlprogram emby > /opt/plexguide/tmp.txt
+      echo ymldisplay Emby >> /opt/plexguide/tmp.txt
+      echo ymlport 8096 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+      14)
     echo ymlprogram headphones > /opt/plexguide/tmp.txt
     echo ymldisplay Headphones >> /opt/plexguide/tmp.txt
     echo ymlport 8150 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-   5)
+      15)
     echo ymlprogram hydra > /opt/plexguide/tmp.txt
     echo ymldisplay Hydra >> /opt/plexguide/tmp.txt
     echo ymlport 5075 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   6)
-    echo ymlprogram netdata > /opt/plexguide/tmp.txt
-    echo ymldisplay NetData >> /opt/plexguide/tmp.txt
-    echo ymlport 19999 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-   7)
-    echo ymlprogram muximux > /opt/plexguide/tmp.txt
-    echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
-    echo ymlport 8015 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-   8)
+   16)
     echo ymlprogram nzbget > /opt/plexguide/tmp.txt
     echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
     echo ymlport 6789 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-   9)
-    echo ymlprogram ombi > /opt/plexguide/tmp.txt
-    echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
-    echo ymlport 3579 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  10)
-    echo ymlprogram organizr > /opt/plexguide/tmp.txt
-    echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
-    echo ymlport 8020 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  11)
-    echo ymlprogram plexpy > /opt/plexguide/tmp.txt
-    echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
-    echo ymlport 8181 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  12)
-    echo ymlprogram portainer > /opt/plexguide/tmp.txt
-    echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
-    echo ymlport 9000 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  13)
-    echo ymlprogram radarr > /opt/plexguide/tmp.txt
-    echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
-    echo ymlport 7878 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  14)
+  17)
     echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
     echo ymldisplay RuTorrent >> /opt/plexguide/tmp.txt
     echo ymlport 8085 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  15)
-    echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-    echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-    echo ymlport 8090 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  16)
+  18)
     echo ymlprogram sickrage > /opt/plexguide/tmp.txt
     echo ymldisplay SickRage >> /opt/plexguide/tmp.txt
     echo ymlport 8081:8081 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-  17)
-    echo ymlprogram sonarr > /opt/plexguide/tmp.txt
-    echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
-    echo ymlport 8989 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  18)
+  19)
     echo ymlprogram transmission > /opt/plexguide/tmp.txt
     echo ymldisplay Transmission >> /opt/plexguide/tmp.txt
     echo ymlport 9091 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  19)
-    echo ymlprogram wordpress > /opt/plexguide/tmp.txt
-    echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
-    echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   20)
