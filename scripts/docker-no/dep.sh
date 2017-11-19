@@ -16,6 +16,7 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install curl
     yes | apt-get install openssh-server
     yes | apt-get install unionfs-fuse
+    yes | apt-get install dirmngr
 
     #important folders
   mkdir /mnt/plexdrive4
@@ -56,7 +57,6 @@ echo
       curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
-      touch /var/plexguide/docker.yes
 
 ############################################# Install a Post-Docker Fix ###################### START
 
