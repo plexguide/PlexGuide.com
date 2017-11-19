@@ -21,41 +21,6 @@ Build an operational-automated server that mounts your Google Drive, while utili
 ### Required
 
 UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user requirements; unlimited works with 1 user)
-
-## Guide Order - For 4.0 Automated Install
-
-- **1.** Read http://wiki.plexguide.com for basic information and then set up your Google Drive Layout: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout
-- **2.** Obtain your Google API Key at http://googleapi.plexguide.com
-- **3.** Execute the following below:
-
-If running on Debian (Not Ubuntu) (May Need to be root or start with su):
-```su
-apt-get install sudo
-```
-
-Install GIT (You may need to start with: sudo)
-```sh
-apt-get install git
-```
-
-To Install PlexGuide (You may need to start with: sudo)
-```sh
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-bash /opt/plexg*/sc*/ins*
-```
-
-To Execute PlexGuide in the future, type:
-```sh
-plexguide
-```
-
-- **4.** Configure RClone
-  -  Unencrypt rclone @ http://unrclone.plexguide.com 
-  -  Encrypted rclone @ http://enrclone.plexguide.com
-- **5.** Configure PlexDrive @ http://plexdrive.plexguide.com          
-- **6.** Configure Your Supporting Programs @ http://wiki.plexguide.com
-- **7.** Configure Plex @ http://plex.plexguide.com
-- **8.** Configure Containers with Portainer: http://portainer.plexguide.com
           
 ## Final Note
 
