@@ -32,11 +32,16 @@ UB 16/17 or Debian 9 & Google Drive (https://gsuite.google.com) (ignore 5 user r
   - [Require: A SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
   - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
   
-- [2] PlexGuide Install: 
-  - [Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
+- [2] [PlexGuide Install Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Install-Guide)
   
 - [3] Configuration Instructions:
-  -
+  - Configure RClone
+    -  Unencrypt rclone @ http://unrclone.plexguide.com 
+    -  Encrypted rclone @ http://enrclone.plexguide.com
+- **3.** Configure PlexDrive @ http://plexdrive.plexguide.com          
+- **4.** Configure Your Supporting Programs @ http://wiki.plexguide.com
+- **5.** Configure Plex @ http://plex.plexguide.com
+- **6.** Configure Containers with Portainer: http://portainer.plexguide.com
 
 ## Final Note
 
