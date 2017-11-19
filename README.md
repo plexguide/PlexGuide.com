@@ -41,8 +41,7 @@ C. Configuration
  5. [Configure Portainer](http://portainer.plexguide.com)
 
 ## Final Note
-
-See issues or have solutions? Please post in discussion or REDDIT.  Sometimes other are aware of a problem and it allows us to keep track.  Help make this program better!
+See issues or have solutions? Please post your [Issues - Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or [REDDIT](http://reddit.plexguide.com).  Your feedback helps us and you!
 
 ### What You Can Install
 
