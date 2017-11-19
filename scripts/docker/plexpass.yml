@@ -4,8 +4,6 @@ services:
  plex:
    image: plexinc/pms-docker:plexpass
    container_name: plexpass
-   network:
-     - host
    volumes:
      - /opt/plex/database:/config
      - /opt/plex/transcode:/transcode
@@ -13,12 +11,17 @@ services:
      - /mnt/unionfs:/unionfs
      - /:/yourcomputer
    ports:
-     - "32400:32400"
-     - "32400:32400/udp"
-     - "32469:32469"
-     - "32469:32469/udp"
-     - "5353:5353/udp"
+     - "127.0.0.1:32400:32400/tcp"
+     - "3005:3005/tcp"
+     - "8324:8324/tcp"
+     - "32469:32469/tcp"
      - "1900:1900/udp"
+     - "32410:32410/udp"
+     - "32412:32412/udp"
+     - "32413:32413/udp"
+     - "32414:32414/udp"
+     - "33400:33400/tcp"
+     - "33443:33443/tcp"
    restart: always
    environment:
      - PUID=1000
