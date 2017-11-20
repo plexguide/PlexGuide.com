@@ -33,7 +33,8 @@ UB 16/17 & Google Drive (https://gsuite.google.com)
 It's ok! If you mess up something, reinstall and try again.  See if what you did was a mistake or a bug.  If so, document it and post in the issues.  When known, we update the guides to help others!  Remember, you only learn through frustration... but alot has been eliminated for you to make your life easier.  
 
 ## Preparation, Installation & Configuration 
-Note: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
+Note 1: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
+Note 2: Do you know that if you log on to GitHub, you can edit the wiki pages?! Yes, you can make correctons or expand upon it AUTOMATICALLY. IF you make updates, it will save us a lot of time!
 
 **A. Preparation:**
  1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
