@@ -4,9 +4,11 @@
 
 ![N](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo.PNG)
 
-#### Contact Link
-- Reddit Link (Great for Discussion): http://reddit.plexguide.com
+#### Info
 - Written By Admin9705 and Deiteq
+- Reddit Link (Great for Discussion): http://reddit.plexguide.com
+  - If you have issues, it's better to post them in the ISSUES block for tracking purposes!
+- Visit New PlexDrive 4 Plus Project at: http://plus.plexguide.com
 
 #### Want to Donate? Everybit Helps!
 
