@@ -14,4 +14,4 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: MysupeRstrng!@#
+      MYSQL_ROOT_PASSWORD: mySuperStrP!$$
