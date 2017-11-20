@@ -1,17 +1,15 @@
-version: '3.1'
+version: '2'
 
-services:
-
-  wordpress:
+web:
     image: wordpress
-    restart: always
+    links:
+     - mysql
+    environment:
+     - WORDPRESS_DB_PASSWORD=password
     ports:
-      - 8080:80
-    environment:
-      WORDPRESS_DB_PASSWORD: mySuperStrP!$$
-
-  mysql:
+     - "8080:80"
+mysql:
     image: mysql:5.7
-    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: mySuperStrP!$$
+     - MYSQL_ROOT_PASSWORD=password
+     - MYSQL_DATABASE=wordpress
