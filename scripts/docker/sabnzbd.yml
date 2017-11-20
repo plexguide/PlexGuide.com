@@ -7,7 +7,7 @@ services:
    ports:
      - 8090:8080
    volumes:
-     - /opt/appdata/sabnzbd:/conifg
+     - /opt/appdata/sabnzbd:/config
      - /mnt/sab/complete:/complete
      - /mnt/sab/incomplete:/incomplete
      - /mnt/sab/nzb:/nzb
