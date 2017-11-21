@@ -41,23 +41,20 @@ echo "IP Address: " hostname -I
 show_menus() {
 clear
 cat << EOF
-Welcome PlexGuide.com Installer V4 - Version Nov 20
-Written By: Admin9705 & Deiteq at Github (PlexGuide.com)
+PlexGuide.com Installer V4 - Version Nov 21
+Written By: Admin9705 & Deiteq
 
-Programs have been updated to reflect priority.  If you want to contribue to
-the project, please let us know! http://reddit.plexguide.com
+Want to help? Visit http://wiki.plexguide.com and assist in writing or updating
+our guides! Just login to GitHub and you have permissions to edit!
 
-~~~~~~~~~~~~~~~~~~~~~
-  M A I N - M E N U
-~~~~~~~~~~~~~~~~~~~~~
+               ****************** Google Drive ********************
+1. RClone   :  Media Syncs to Google Drive
+2. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
-1. Install - RClone   :  Media Syncs to Google Drive
-2. Install - PlexDrive:  Prevent G-Drive Plex Scan Bans
-                         *********************************************
-3. Server Programs    :  Programs & Tools (Plex, SABNZBD & More!)
-4. Update PlexGuide   :  Upgrade this Program (Newest Updates & Fixes)
-                         *********************************************
-5. Troubleshooting    :  Tools To Assist You!
+               ********************* Server ***********************
+3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
+4. Update   :  Update PlexGuide for New Features & Fixes
+5. Tools    :  Troubleshoot Problems & Provides Helpful Information
 6. Exit
 EOF
 
