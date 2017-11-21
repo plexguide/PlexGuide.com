@@ -43,9 +43,8 @@ clear
 cat << EOF
 PlexGuide.com Installer V4 (17.11.21) | Written By: Admin9705 & Deiteq
 
-Want to help? Visit http://wiki.plexguide.com and assist in writing or
-updating our guides.  Just login with your GitHub Account!
-
+ASSIST US: Visit http://wiki.plexguide.com and you can write, edit, and
+improve the Guides.  Just login with your GitHub Account!
 
 GOOGLE DRIVE ******************************************************
 1. RClone   :  Media Syncs to Google Drive
@@ -66,7 +65,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ]; Type [8] to Exit" choice
+	read -p "Enter choice [ 1 - 8 ];  Type [8] to Exit! " choice
 	case $choice in
 	1)
         clear
