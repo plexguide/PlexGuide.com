@@ -41,8 +41,7 @@ echo "IP Address: " hostname -I
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V4 - Version Nov 21
-Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.11.21) | Written By: Admin9705 & Deiteq
 
 Want to help? Visit http://wiki.plexguide.com and assist in writing or updating
 our guides! Just login to GitHub and you have permissions to edit!
@@ -53,9 +52,11 @@ our guides! Just login to GitHub and you have permissions to edit!
 
                ********************* Server ***********************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. Update   :  Update PlexGuide for New Features & Fixes
+4. Updates  :  Update PlexGuide for New Features & Fixes
 5. Tools    :  Troubleshoot Problems & Provides Helpful Information
-6. Exit
+6. Backup   :  ** NOT FUNCTIONAL YET - Backup Program Data
+7. Restore  :  ** NOT FUNCTIONAL YET - Restore Program Data
+8. Exit
 EOF
 
 }
