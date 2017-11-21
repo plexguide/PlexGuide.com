@@ -46,18 +46,18 @@ PlexGuide.com Installer V4 (17.11.21) | Written By: Admin9705 & Deiteq
 Want to help? Visit http://wiki.plexguide.com and assist in writing or
 updating our guides.  Just login with your GitHub Account!
 
-               ****************** GOOGLE DRIVE ********************
+               ** GOOGLE DRIVE ************************************
 1. RClone   :  Media Syncs to Google Drive
 2. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
-               ****************** SERVER **************************
+               ** SERVER ******************************************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. Updates  :  Update PlexGuide for New Features & Fixes
-5. Tools    :  Troubleshoot Problems & Provides Helpful Information
+4. Tools    :  Troubleshoot Problems & Provides Helpful Information
+5. Updates  :  Update PlexGuide for New Features & Fixes
 
-               ****************** DATA ****************************
-6. Backup   :  ** NOT FUNCTIONAL YET - Backup Program Data
-7. Restore  :  ** NOT FUNCTIONAL YET - Restore Program Data
+               ** DATA ********************************************
+6. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
+7. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
 8. Exit
 
@@ -81,16 +81,16 @@ read_options(){
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
-	4)
+  4)
+        bash /opt/plexguide/scripts/menus/trouble-menu.sh
+        clear
+        ;;
+  5)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-  5)
-        bash /opt/plexguide/scripts/menus/trouble-menu.sh
-        clear
-        ;;
-  6)
+  8)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
