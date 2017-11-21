@@ -36,6 +36,7 @@ else
     bash /opt/plexguide/scripts/docker-no/dep.sh
 fi
 
+echo "IP Address: " hostname -I
 # function to display menus
 show_menus() {
 clear
@@ -58,8 +59,8 @@ the project, please let us know! http://reddit.plexguide.com
                          *********************************************
 5. Troubleshooting    :  Tools To Assist You!
 6. Exit
-
 EOF
+
 }
 
 read_options(){
