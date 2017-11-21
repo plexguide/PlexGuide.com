@@ -46,20 +46,19 @@ PlexGuide.com Installer V4 (17.11.21) | Written By: Admin9705 & Deiteq
 Want to help? Visit http://wiki.plexguide.com and assist in writing or
 updating our guides.  Just login with your GitHub Account!
 
-               ** GOOGLE DRIVE ************************************
+
+GOOGLE DRIVE ******************************************************
 1. RClone   :  Media Syncs to Google Drive
 2. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
-               ** SERVER ******************************************
+SERVER ************************************************************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
 4. Tools    :  Troubleshoot Problems & Provides Helpful Information
 5. Updates  :  Update PlexGuide for New Features & Fixes
 
-               ** DATA ********************************************
+DATA **************************************************************
 6. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
 7. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
-
-8. Exit
 
 EOF
 
@@ -67,7 +66,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ] " choice
+	read -p "Enter choice [ 1 - 8 ]; Type [8] to Exit" choice
 	case $choice in
 	1)
         clear
