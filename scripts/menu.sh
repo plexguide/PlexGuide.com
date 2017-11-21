@@ -58,6 +58,7 @@ updating our guides.  Just login with your GitHub Account!
                ****************** DATA ****************************
 6. Backup   :  ** NOT FUNCTIONAL YET - Backup Program Data
 7. Restore  :  ** NOT FUNCTIONAL YET - Restore Program Data
+
 8. Exit
 
 EOF
@@ -66,7 +67,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 6 ] " choice
+	read -p "Enter choice [ 1 - 8 ] " choice
 	case $choice in
 	1)
         clear
