@@ -31,7 +31,7 @@ echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.env
 echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.env
 echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.env
 echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.env
-echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.env
+#echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.env
 echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.env
 echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.env
 
@@ -90,7 +90,7 @@ read_options(){
     echo "VPN_REMOTE=$vpn_remote_choice" >> /opt/plexguide/scripts/docker/.env
     clear
     touch /var/plexguide/pia-vpn-set.yes
-    echo "Your PlexToken is Installed for the Easy Setup!"
+    echo "Your PIA info has been Installed for the Easy Setup!"
     echo
     read -n 1 -s -r -p "Press any key to continue "
     ;;
@@ -103,11 +103,12 @@ read_options(){
         echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
         echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
         echo ymlport 8112 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/openvpn-setup.sh
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
       else
         echo
-        echo "Are you Special? You need to setup your PIA account info first!!!"
+        echo "Are you Special? You need to setup your PIA account details first!!!"
         echo
         read -n 1 -s -r -p "Press any key to continue "
       fi
