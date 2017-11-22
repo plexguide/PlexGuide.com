@@ -20,18 +20,18 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 #lannet=
 
 # Get Private Internet Access Info
-read -p "What is your PIA Username?: " pia_username
-read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
-printf "\n\n"
+#read -p "What is your PIA Username?: " pia_username
+#read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
+#read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
+#printf "\n\n"
 
 # Get info needed for PLEX Official image
-read -p "Which PLEX release do you want to run? By default 'public' will be used. (latest, public, plexpass): " pmstag
-read -p "If you have PLEXPASS what is your Claim Token: (Optional) " pmstoken
+#read -p "Which PLEX release do you want to run? By default 'public' will be used. (latest, public, plexpass): " pmstag
+#read -p "If you have PLEXPASS what is your Claim Token: (Optional) " pmstoken
 # If not set - set PMS Tag to Public:
-if [ -z "$pmstag" ]; then 
-   pmstag=public 
-fi
+#if [ -z "$pmstag" ]; then
+#   pmstag=public
+#fi
 
 # Get the info for the style of Portainer to use
 ##read -p "Which style of Portainer do you want to use? By default 'No Auth' will be used. (noauth, auth): " portainerstyle
@@ -40,25 +40,25 @@ fi
 ##elif [ $portainerstyle == "noauth" ]; then
 ##   portainerstyle=--no-auth
 ##elif [ $portainerstyle == "auth" ]; then
-##   portainerstyle= 
-##fi 
+##   portainerstyle=
+##fi
 
 # Create the .env file
 echo "Creating the .env file with the values we have gathered"
 printf "\n"
-echo "LOCALUSER=$localuname" >> .env
-echo "HOSTNAME=$thishost" >> .env
-echo "IP_ADDRESS=$locip" >> .env
-echo "PUID=$PUID" >> .env
-echo "PGID=$PGID" >> .env
-echo "PWD=$PWD" >> .env
-echo "VPN_USER=$pia_username" >> .env
-echo "VPN_PASS=$pia_password" >> .env
-echo "VPN_REMOTE=$vpn_remote_choice" >> .env
-echo "CIDR_ADDRESS=$lannet" >> .env
-echo "TZ=$time_zone" >> .env
-echo "PMSTAG=$pmstag" >> .env
-echo "PMSTOKEN=$pmstoken" >> .env
+echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.env
+echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.env
+echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.env
+echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.env
+echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.env
+echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.env
+#echo "VPN_USER=$pia_username" >> .env
+#echo "VPN_PASS=$pia_password" >> .env
+#echo "VPN_REMOTE=$vpn_remote_choice" >> .env
+echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.env
+echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.env
+#echo "PMSTAG=$pmstag" >> .env
+#echo "PMSTOKEN=$pmstoken" >> .env
 ##echo "PORTAINERSTYLE=$portainerstyle" >> .env
 echo ".env file creation complete"
 printf "\n\n"
