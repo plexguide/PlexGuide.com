@@ -55,7 +55,7 @@ read_options(){
     echo "Visit http://plex.tv/claim"
     echo
     read -p "What is your Plex Claim Token? " pmstoken
-    echo "PMSTOKEN=$pmstoken" >> /opt/plexguide/scripts/docker/.plex-env
+    echo "PMSTOKEN=$pmstoken" >> /opt/.environments/.plex-env
     clear
     touch /var/plexguide/plextoken.yes
     echo "Your PlexToken is Installed for the Easy Setup!"
