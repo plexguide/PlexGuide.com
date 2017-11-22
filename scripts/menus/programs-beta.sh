@@ -51,7 +51,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 11];  Type [11] to Exit! " choice
+	read -p "Enter choice [ 1 - 11 ];  Type [11] to Exit! " choice
 	case $choice in
      1)
         echo ymlprogram couchpotato > /opt/plexguide/tmp.txt

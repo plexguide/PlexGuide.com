@@ -66,7 +66,7 @@ DELUGEVPN
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Note, make sure that you have an account with PIA before installing otherwise
-it won't work! Please visit https://www.privateinternetaccess.com to join.
+it will not work! Please visit https://www.privateinternetaccess.com to join.
 
 Currently only 8 PIA servers support port forwarding.
 Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland, Sweden,
