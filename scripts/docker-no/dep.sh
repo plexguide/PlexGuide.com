@@ -7,8 +7,8 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
-    file="/var/plexguide/basics.yes"
-    if [ -e "$file" ]
+
+    if [ -e "/var/plexguide/basics.yes" ]
     then
         clear
     else
@@ -30,7 +30,7 @@ if echo "$answer" | grep -iq "^y" ;then
     wget https://minergate.com/download/deb-cli -O minergate-cli.deb
     dpkg -i minergate-cli.deb
 ## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
-   fi    
+   fi
 #important folders
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
