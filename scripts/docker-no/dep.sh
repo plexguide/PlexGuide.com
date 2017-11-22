@@ -56,6 +56,9 @@ clear
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
+  #Adding basic environment file
+  bash /opt/plexguide/scripts/basic-env.sh
+
 # Install Docker and Docker Composer / Checks to see if is installed also
 clear
 echo "Note, if you get a message about docker is install and the 20 sec sleep"
