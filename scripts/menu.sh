@@ -42,7 +42,7 @@ show_menus() {
 clear
 echo "Your IP Address: " hostname -I | hostname -I | awk '{print $1}'
 cat << EOF
-PlexGuide.com Installer V4 (17.11.21-2) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.11.22) | Written By: Admin9705 & Deiteq
 ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
 
 GOOGLE DRIVE ******************************************************
