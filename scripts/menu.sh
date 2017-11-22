@@ -51,13 +51,14 @@ GOOGLE DRIVE ******************************************************
 
 SERVER ************************************************************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. Tools    :  Troubleshoot Problems & Provides Helpful Information
-5. Updates  :  Update PlexGuide for New Features & Fixes
-6. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
-7. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
+4. BETA BETA:  Install Working Beta Programs! No Guides, YMLs Work!
+5. Tools    :  Troubleshoot Problems & Provides Helpful Information
+6. Updates  :  Update PlexGuide for New Features & Fixes
+7. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
+8. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
 DONATE (Off By Default - You can turn this off or on anytime) *****
-8. Donate   :  NOT FUNCTIONAL - Utilize a little CPU to mine coins.
+9. Donate   :  NOT FUNCTIONAL - Utilize a little CPU to mine coins.
 
 
 EOF
@@ -66,7 +67,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
 	case $choice in
 	1)
         clear
@@ -80,16 +81,20 @@ read_options(){
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
-  4)
-        bash /opt/plexguide/scripts/menus/trouble-menu.sh
+    4)
+        bash /opt/plexguide/scripts/menus/programs-beta.sh
         clear
         ;;
   5)
+        bash /opt/plexguide/scripts/menus/trouble-menu.sh
+        clear
+        ;;
+  6)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-  9)
+  10)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;

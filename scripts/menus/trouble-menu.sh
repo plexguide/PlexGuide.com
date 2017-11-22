@@ -31,31 +31,24 @@ show_menus() {
 
 clear
 cat << EOF
-Notes:
-[1]   Works Only - After PlexDrive compelted the entire scan
-[2-5] Works Only - After RClone is Configured
-[6]   Run - To reinstall important start up files only (last resort)
+Tools & Troubleshooting 101 Menu
 
-~~~~~~~~~~~~~~~~~~~~
-Troubleshooting Menu
-~~~~~~~~~~~~~~~~~~~~
-1. PlexDrive Mount Test:  Veryify that PlexDrive is Working
-                          **************************************
-2. RClone Mount Test   :  Verify Google Drive is Mounted
-3. UnionFS Mount Test  :  Verify UnionFS is Operational
-                          **************************************
-4. RClone Uncrypt Check:  View status of the Unencrypted SYNC
-5. RClone Encrypt Check:  View status of the Encrypted SYNC
-                          **************************************
-6. Force Main Reinstall:  Forces Important Scripts to Re-Install
-7. Exit
+1. PlexDrive Test  :  Veryify that PlexDrive is Working                   
+2. RClone Test     :  Verify Google Drive is Mounted
+3. UnionFS Test    :  Verify UnionFS is Operational                     
+4. Uncrypted Move  :  View status of the Unencrypted SYNC
+5. Encrypted Move  :  View status of the Encrypted SYNC
+6. Start Re-Install:  Forces Main Basic Reinstall
+                      ***********************************
+7. Docker          :  Force Reinstall of Docker
+8. Portainer       :  Force Reinstall of Portainer
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 7 ] " choice
+	read -p "Enter choice [ 1 - 8 ];  Type [9] to Exit! " choice
 	case $choice in
   	1)
       clear
@@ -142,6 +135,23 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
         ;;
     7)
+      # Install Docker and Docker Composer / Checks to see if is installed also
+      clear
+      echo "Note, if you get a message about docker is install and the 20 sec sleep"
+      echo "warning, just ignore it and let the 20 seconds go by."
+      echo
+      curl -sSL https://get.docker.com | sh
+      curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+      chmod +x /usr/local/bin/docker-compose
+      docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
+      ############################################# Install a Post-Docker Fix ###################### START
+    8)
+     echo ymlprogram portainer > /opt/plexguide/tmp.txt
+     echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
+     echo ymlport 9000 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    9)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
