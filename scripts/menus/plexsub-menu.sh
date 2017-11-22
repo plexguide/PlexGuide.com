@@ -52,7 +52,9 @@ read_options(){
 	read -p "Enter choice [ 1 - 3 ] " choice
 	case $choice in
     1)
-    read -p "What is your Plex Claim Token (http://plex.tv/claim)? " pmstoken
+    echo "Goto http://plex.tv/claim"
+    echo
+    read -p "What is your Plex Claim Token? " pmstoken
     echo "PMSTOKEN=$pmstoken" >> /opt/plexguide/scripts/docker/.env
     clear 
     touch /var/plexguide/plextoken.yes
