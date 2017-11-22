@@ -8,6 +8,8 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
+bash /opt/plexguide/scripts/openvpn-setup.sh
+
 # Get local Username
 #localuname=`id -u -n`
 # Get PUID
@@ -32,7 +34,7 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 #echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "LAN_NETWORK=$lannet" >> /opt/appdata/delugevpn/config/.deluge-env
+echo "LAN_NETWORK=$lannet" >> /opt/.environments/.deluge-env
 #echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
@@ -82,7 +84,6 @@ Default is set to Switzerland
 EOF
 }
 
-bash /opt/plexguide/scripts/openvpn-setup.sh
 
 read_options(){
 	local choice
@@ -93,10 +94,10 @@ read_options(){
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "VPN_USER=$pia_username" >> /opt/appdata/delugevpn/config/.deluge-env
+    echo "VPN_USER=$pia_username" >> /opt/.environments/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-    echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/config/.deluge-env
+    echo "VPN_PASS=$pia_password" >> /opt/.environments/.deluge-env
     echo
 
 
