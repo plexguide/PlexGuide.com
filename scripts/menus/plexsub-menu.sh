@@ -61,7 +61,7 @@ read_options(){
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 		2)
-      file="/var/plexguide/dep8.yes"
+      file="/var/plexguide/plextoken.yes"
       if [ -e "$file" ]
       then
         docker rm plexpass
