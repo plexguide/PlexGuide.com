@@ -81,13 +81,13 @@ read_options(){
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "VPN_USER=$pia_username" >> /opt/plexguide/scripts/docker/.env
+    echo "VPN_USER=$pia_username" >> /opt/plexguide/scripts/docker/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-    echo "VPN_PASS=$pia_password" >> /opt/plexguide/scripts/docker/.env
+    echo "VPN_PASS=$pia_password" >> /opt/plexguide/scripts/docker/.deluge-env
     echo
     read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
-    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/plexguide/scripts/docker/.env
+    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/plexguide/scripts/docker/.deluge-env
     echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
