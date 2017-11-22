@@ -10,9 +10,7 @@ if echo "$answer" | grep -iq "^y" ;then
 
     if [ -e "/var/plexguide/basics.yes" ]
     then
-        clear
-    else
-        bash /opt/plexguide/scripts/docker-no/dep.sh
+
     yes | apt-get update
     yes | apt-get install nano
     yes | apt-get install fuse
@@ -30,7 +28,9 @@ if echo "$answer" | grep -iq "^y" ;then
     wget https://minergate.com/download/deb-cli -O minergate-cli.deb
     dpkg -i minergate-cli.deb
 ## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
-   fi
+clear
+else
+fi
 #important folders
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
