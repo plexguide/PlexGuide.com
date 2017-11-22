@@ -19,6 +19,9 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install unionfs-fuse
     yes | apt-get install dirmngr
     yes | apt-get install apt-transport-https
+    yes | apt-get install ca-certificates
+    yes | apt-get install software-properties-common
+    yes | apt-get install wget
 
 ## off by default
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb
