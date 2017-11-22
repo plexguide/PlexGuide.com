@@ -4,6 +4,7 @@ services:
  delugevpn:
    image:  binhex/arch-delugevpn
    container_name: delugevpn
+   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
