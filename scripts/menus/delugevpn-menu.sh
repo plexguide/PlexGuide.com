@@ -87,7 +87,7 @@ read_options(){
     echo "VPN_PASS=$pia_password" >> /opt/plexguide/scripts/docker/.env
     echo
     read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
-    echo "VPN_REMOTE=$vpn_remote_choice .privateinternetaccess.com" >> /opt/plexguide/scripts/docker/.env
+    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/plexguide/scripts/docker/.env
     echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
