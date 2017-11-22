@@ -73,6 +73,8 @@ it won't work! Please visit https://www.privateinternetaccess.com to join.
 EOF
 }
 
+bash /opt/plexguide/scripts/openvpn-setup.sh
+
 read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 3 ] " choice
@@ -107,7 +109,6 @@ read_options(){
         echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
         echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
         echo ymlport 8112 >> /opt/plexguide/tmp.txt
-        bash /opt/plexguide/scripts/openvpn-setup.sh
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
       else
