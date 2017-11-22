@@ -39,9 +39,10 @@ Note, if you install the PlexPass version and do not have PlexPass, it will
 just revert to the normal version. If your installing this on a REMOTE
 computer, please visit http://wiki.plexguide.com so you access the server!
 
-1. Install Latest Plex Server (Public - Stable)
-2. Install Latest Plex Server (Pass - Unstable)
-3. Exit
+1. TESTING // CLAIM Plex Server
+2. Install Latest Plex Server (Public - Stable)
+3. Install Latest Plex Server (Pass - Unstable)
+4. Exit
 
 EOF
 }
@@ -50,7 +51,11 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 3 ] " choice
 	case $choice in
-		1)
+    1)
+    read -p "What is your Plex Claim Token (http://plex.tv/claim)? " pmstoken
+    echo "PMSTOKEN=$pmstoken" >> /opt/plexguide/scripts/docker/.env
+
+		2)
       docker rm plexpass
       docker rm plexpublic
       clear
@@ -59,7 +64,7 @@ read_options(){
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-		2)
+		3)
       docker rm plexpublic
       docker rm plexpass
       clear
@@ -68,7 +73,7 @@ read_options(){
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-    3)
+    4)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
