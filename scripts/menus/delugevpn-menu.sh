@@ -26,14 +26,14 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Custom CIDR (comment out the line above if using this)
 # Uncomment the line below and enter your CIDR info so the line looks like: lannet=xxx.xxx.xxx.0/24
 #lannet=
-echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.env
-echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.env
-echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.env
-echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.env
-echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.env
-#echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.env
-echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.env
-echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.env
+echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
 # Step #2: User defined function

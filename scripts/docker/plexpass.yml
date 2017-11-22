@@ -25,7 +25,7 @@ services:
      - "33443:33443/tcp"
    restart: always
    env_file:
-     - /opt/plexguide/scripts/docker/.env
+     - /opt/plexguide/scripts/docker/.plex-env
    environment:
      - PUID=1000
      - PGID=1000
