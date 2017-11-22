@@ -92,7 +92,6 @@ read_options(){
         else
           touch /opt/plexguide/move.log
         fi
-
         ## obtains move.service info and puts into a log to displayed to the user
     		clear
     		systemctl status move > /opt/plexguide/move.log
@@ -145,6 +144,7 @@ read_options(){
       chmod +x /usr/local/bin/docker-compose
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
       ############################################# Install a Post-Docker Fix ###################### START
+    ;;
     8)
      echo ymlprogram portainer > /opt/plexguide/tmp.txt
      echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
