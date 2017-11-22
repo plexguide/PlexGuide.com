@@ -90,10 +90,14 @@ read_options(){
     echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
     echo "Currently only 8 PIA servers support port forwarding."
-    echo "(Please choose one: ca-toronto, ca, nl, swiss, sweden, france, ro or israel)"
-    read -p "What Remote server do you want to use? : " vpn_remote_choice
-    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/delugevpn/config/.deluge-env
-    echo
+    echo "Choices are: CA Montreal, CA Toronto, Netherlands,"
+    echo " Switzerland, Sweden, France, Romania or Israel."
+    echo "Default is set to Switzerland"
+    echo "(To change edit move-ovpn.sh)"
+
+  #  read -p "What Remote server do you want to use? : " vpn_remote_choice
+  #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/delugevpn/config/.deluge-env
+  #  echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
     echo "Your PIA info has been Installed for the Easy Setup!"
