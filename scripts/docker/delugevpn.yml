@@ -22,10 +22,10 @@ services:
      - /opt/plexguide/scripts/docker/.env
    environment:
      - VPN_ENABLED=yes
-     - VPN_USER=${PIA_USERNAME}
-     - VPN_PASS=${PIA_PASSWORD}
+#     - VPN_USER=${PIA_USERNAME}
+#     - VPN_PASS=${PIA_PASSWORD}
      - VPN_PROV=pia
-     - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
+#     - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
    #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
