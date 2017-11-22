@@ -1,6 +1,6 @@
 #!/bin/bash
 
-`mv /opt/appdata/delugevpn/config/Remotes/ca.rsa2048.crt /opt/appdata/delugevpn/config/openvpn/`
+`mv /opt/appdata/delugevpn/config/Remotes/ca.rsa.2048.crt /opt/appdata/delugevpn/config/openvpn/`
 `mv /opt/appdata/delugevpn/config/Remotes/crl.rsa.2048.pem /opt/appdata/delugevpn/config/openvpn/`
 
 ## Uncomment remote server that you want to use.
