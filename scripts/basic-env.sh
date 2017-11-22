@@ -46,7 +46,7 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Create the .env file
 echo "Creating the .env file with the values we have gathered"
 printf "\n"
-echo "LOCALUSER=$localuname" >> /opt./environments/.env
+echo "LOCALUSER=$localuname" >> /opt/.environments/.env
 echo "HOSTNAME=$thishost" >> /opt/.environments/.env
 echo "IP_ADDRESS=$locip" >> /opt/.environments/.env
 echo "PUID=$PUID" >> /opt/.environments/.env
