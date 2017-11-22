@@ -7,10 +7,6 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
-
-    if [ -e "/var/plexguide/basics.yes" ]
-    then
-
     yes | apt-get update
     yes | apt-get install nano
     yes | apt-get install fuse
@@ -29,8 +25,6 @@ if echo "$answer" | grep -iq "^y" ;then
     dpkg -i minergate-cli.deb
 ## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
 clear
-else
-fi
 #important folders
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
