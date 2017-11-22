@@ -55,6 +55,7 @@ read_options(){
     read -p "What is your Plex Claim Token (http://plex.tv/claim)? " pmstoken
     echo "PMSTOKEN=$pmstoken" >> /opt/plexguide/scripts/docker/.env
     clear 
+    touch /var/plexguide/plextoken.yes
     echo "Your PlexToken is Installed for the Easy Setup!"
     echo
     touch /
@@ -71,10 +72,11 @@ read_options(){
         echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
-          clear
-        else
-          clear
-        fi
+        clear
+      else
+        echo "Special? You need to setup your PLEXTOKEN FIRST!!!"
+        echo
+      fi
       ;;
 		3)
       docker rm plexpublic
