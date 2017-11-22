@@ -9,31 +9,32 @@ RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
 # Get local Username
-localuname=`id -u -n`
+#localuname=`id -u -n`
 # Get PUID
-PUID=`id -u $localuname`
+#PUID=`id -u $localuname`
 # Get GUID
-PGID=`id -g $localuname`
+#PGID=`id -g $localuname`
 # Get Hostname
-thishost=`hostname`
+#thishost=`hostname`
 # Get IP Address
-locip=`hostname -I | awk '{print $1}'`
+#locip=`hostname -I | awk '{print $1}'`
 # Get Time Zone
-time_zone=`cat /etc/timezone`
+#time_zone=`cat /etc/timezone`
 
 # CIDR - this assumes a 255.255.255.0 netmask - If your config is different use the custom CIDR line
 lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Custom CIDR (comment out the line above if using this)
 # Uncomment the line below and enter your CIDR info so the line looks like: lannet=xxx.xxx.xxx.0/24
 #lannet=
-echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.env
-echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.env
-echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.env
-echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.env
-echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.env
-echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.env
-echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.env
-echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.env
+#echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "LAN_NETWORK=$lannet" >> /opt/appdata/delugevpn/config/.deluge-env
+#echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
 # Step #2: User defined function
@@ -65,12 +66,23 @@ DELUGEVPN
 Note, make sure that you have an account with PIA before installing otherwise
 it won't work! Please visit https://www.privateinternetaccess.com to join.
 
+Currently only 8 PIA servers support port forwarding.
+Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland, Sweden,
+ France, Romania or Israel
+
+Default is set to Switzerland
+(To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh before install)
+
+
 1. TESTING // PIA VPN details
 2. Install DelugeVPN
 3. Exit
 
+
 EOF
 }
+
+bash /opt/plexguide/scripts/openvpn-setup.sh
 
 read_options(){
 	local choice
@@ -81,16 +93,19 @@ read_options(){
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "VPN_USER=$pia_username" >> /opt/plexguide/scripts/docker/.env
+    echo "VPN_USER=$pia_username" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-    echo "VPN_PASS=$pia_password" >> /opt/plexguide/scripts/docker/.env
+    echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
-    read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
-    echo "VPN_REMOTE=$vpn_remote_choice" >> /opt/plexguide/scripts/docker/.env
+
+
+  #  read -p "What Remote server do you want to use? : " vpn_remote_choice
+  #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/delugevpn/config/.deluge-env
+  #  echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
-    echo "Your PlexToken is Installed for the Easy Setup!"
+    echo "Your PIA info has been Installed for the Easy Setup!"
     echo
     read -n 1 -s -r -p "Press any key to continue "
     ;;
@@ -107,7 +122,7 @@ read_options(){
         clear
       else
         echo
-        echo "Are you Special? You need to setup your PIA account info first!!!"
+        echo "Are you Special? You need to setup your PIA account details first!!!"
         echo
         read -n 1 -s -r -p "Press any key to continue "
       fi

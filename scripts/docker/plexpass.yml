@@ -24,8 +24,10 @@ services:
      - "33400:33400/tcp"
      - "33443:33443/tcp"
    restart: always
+   env_file:
+     - /opt/plexguide/scripts/docker/.plex-env
    environment:
      - PUID=1000
      - PGID=1000
-     - PLEX_CLAIM=${PMSTOKEN}
+#     - PLEX_CLAIM=${PMSTOKEN}
    network_mode: "host"
