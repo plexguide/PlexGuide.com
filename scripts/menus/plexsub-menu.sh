@@ -61,19 +61,19 @@ read_options(){
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 		2)
-if [ -e "opt/plexguide/scripts/docker-no/plex-token" ]
-then
-      docker rm plexpass
-      docker rm plexpublic
-      clear
-      echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
-      echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
-      echo ymlport 32400 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      if [ -e "opt/plexguide/scripts/docker-no/plex-token" ]
+      then
+        docker rm plexpass
+        docker rm plexpublic
+        clear
+        echo ymlprogram plexpublic > /opt/plexguide/tmp.txt
+        echo ymldisplay Plex Public >> /opt/plexguide/tmp.txt
+        echo ymlport 32400 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
           clear
-else
-    bash 
-fi
+        else
+          clear
+        fi
       ;;
 		3)
       docker rm plexpublic
