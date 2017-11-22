@@ -50,6 +50,9 @@ clear
   mkdir /mnt/sab/nzb
   chmod 777 /mnt/sab/nzb
 
+  mkdir /opt/.environments
+  chmod 777 /opt/.environments
+
 #Prevents this script from running again
   mkdir /var/plexguide
   touch /var/plexguide/dep8.yes
