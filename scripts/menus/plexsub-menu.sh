@@ -31,25 +31,24 @@ show_menus() {
 
 clear
 cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~~
-   PLEX SERVER SELECT
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+PLEX SERVER SELECT
+~~~~~~~~~~~~~~~~~~
 
 Note, if you install the PlexPass version and do not have PlexPass, it will
 just revert to the normal version. If your installing this on a REMOTE
 computer, please visit http://wiki.plexguide.com so you access the server!
 
-1. TESTING // CLAIM Plex Server
+1. CLAIM Your Plex Server << Must be Done First
 2. Install Latest Plex Server (Public - Stable)
 3. Install Latest Plex Server (Pass - Unstable)
-4. Exit
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3 ] " choice
+	read -p "Enter choice [ 1 - 4 ];  Type [4] to Exit!  " choice
 	case $choice in
     1)
     clear
@@ -83,13 +82,23 @@ read_options(){
       fi
       ;;
 		3)
-      docker rm plexpublic
-      docker rm plexpass
-      clear
-      echo ymlprogram plexpass > /opt/plexguide/tmp.txt
-      echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
-      echo ymlport 32400 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      file="/var/plexguide/plextoken.yes"
+      if [ -e "$file" ]
+      then
+        docker rm plexpublic
+        docker rm plexpass
+        clear
+        echo ymlprogram plexpass > /opt/plexguide/tmp.txt
+        echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
+        echo ymlport 32400 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        clear
+      else
+        echo
+        echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+      fi
       ;;
     4)
       exit 0;;
