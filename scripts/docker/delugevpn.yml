@@ -17,6 +17,8 @@ services:
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs:/data
+  env_file:
+      - /opt/plexguide/scripts/docker/.env
    environment:
      - VPN_ENABLED=yes
      - VPN_USER=${PIA_USERNAME}
