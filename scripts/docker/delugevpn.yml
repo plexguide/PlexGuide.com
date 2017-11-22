@@ -19,7 +19,7 @@ services:
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs:/data
    env_file:
-      - /opt/plexguide/scripts/docker/.env
+     - /opt/plexguide/scripts/docker/.env
    environment:
      - VPN_ENABLED=yes
      - VPN_USER=${PIA_USERNAME}
@@ -29,12 +29,12 @@ services:
    #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
-     - LAN_NETWORK=${CIDR_ADDRESS}
+#     - LAN_NETWORK=${CIDR_ADDRESS}
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
    #  - UMASK=<umask for created files>
-     - PUID=${PUID}
-     - PGID=${PGID}
+     - PUID=1000
+     - PGID=1000
    restart: unless-stopped
 
 # Note: Please replace all user variables in the above command defined by <> with the correct values.

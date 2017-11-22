@@ -25,10 +25,7 @@ services:
      - "33443:33443/tcp"
    restart: always
    environment:
-     - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
-     - ALLOWED_NETWORKS=${CIDR_ADDRESS}
      - PUID=1000
      - PGID=1000
      - PLEX_CLAIM=${PMSTOKEN}
-   hostname: ${HOSTNAME}
    network_mode: "host"
