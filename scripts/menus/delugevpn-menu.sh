@@ -32,7 +32,7 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 #echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "LAN_NETWORK=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "LAN_NETWORK=$lannet" >> /opt/appdata/delugevpn/config/.deluge-env
 #echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
@@ -85,11 +85,12 @@ read_options(){
     echo "VPN_USER=$pia_username" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-    echo "VPN_PASS=$pia_password" >> /opt/plexguide/scripts/docker/.deluge-env
+    echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
-    read "Currently only 8 PIA servers support port forwarding."
-    read -p "What Remote server do you want to use? (e.g ca-toronto, ca, nl, swiss, sweden, france, ro or israel): " vpn_remote_choice
-    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/plexguide/scripts/docker/.deluge-env
+    echo "Currently only 8 PIA servers support port forwarding."
+    echo "(Please choose one: ca-toronto, ca, nl, swiss, sweden, france, ro or israel)"
+    read -p "What Remote server do you want to use? : " vpn_remote_choice
+    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
