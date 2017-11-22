@@ -28,7 +28,7 @@ two(){
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 
-file="/var/plexguide/dep7.yes"
+file="/var/plexguide/dep8.yes"
 if [ -e "$file" ]
 then
     clear
@@ -36,10 +36,11 @@ else
     bash /opt/plexguide/scripts/docker-no/dep.sh
 fi
 
-echo "IP Address: " hostname -I
+
 # function to display menus
 show_menus() {
 clear
+echo "Your IP Address: " | hostname -I
 cat << EOF
 PlexGuide.com Installer V4 (17.11.21-2) | Written By: Admin9705 & Deiteq
 ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
