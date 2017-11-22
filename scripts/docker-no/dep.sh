@@ -60,7 +60,7 @@ clear
   touch /var/plexguide/basics.yes
 
   #Adding basic environment file
-  chmod +x bash /opt/plexguide/scripts/basic-env.sh
+#  chmod +x bash /opt/plexguide/scripts/basic-env.sh
   bash /opt/plexguide/scripts/basic-env.sh
 
 # Install Docker and Docker Composer / Checks to see if is installed also
