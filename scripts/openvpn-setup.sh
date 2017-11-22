@@ -7,6 +7,7 @@ mkdir -p /opt/appdata/delugevpn/config
 `mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/Remotes`
 #`mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/`
 
+ chmod +x /opt/plexguide/scripts/test/deluge/move-ovpn.sh
  bash /opt/plexguide/scripts/test/deluge/move-ovpn.sh
 
  /sbin/modprobe iptable_mangle
