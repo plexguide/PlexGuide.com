@@ -54,7 +54,7 @@ read_options(){
     1)
     read -p "What is your Plex Claim Token (http://plex.tv/claim)? " pmstoken
     echo "PMSTOKEN=$pmstoken" >> /opt/plexguide/scripts/docker/.env
-
+    ;;
 		2)
       docker rm plexpass
       docker rm plexpublic
