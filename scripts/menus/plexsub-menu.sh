@@ -83,13 +83,23 @@ read_options(){
       fi
       ;;
 		3)
-      docker rm plexpublic
-      docker rm plexpass
-      clear
-      echo ymlprogram plexpass > /opt/plexguide/tmp.txt
-      echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
-      echo ymlport 32400 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      file="/var/plexguide/plextoken.yes"
+      if [ -e "$file" ]
+      then
+        docker rm plexpublic
+        docker rm plexpass
+        clear
+        echo ymlprogram plexpass > /opt/plexguide/tmp.txt
+        echo ymldisplay Plex Pass >> /opt/plexguide/tmp.txt
+        echo ymlport 32400 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        clear
+      else
+        echo
+        echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+      fi
       ;;
     4)
       exit 0;;
