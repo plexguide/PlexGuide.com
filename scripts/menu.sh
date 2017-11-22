@@ -42,7 +42,7 @@ show_menus() {
 clear
 cat << EOF
 PlexGuide.com Installer V4 (17.11.21-2) | Written By: Admin9705 & Deiteq
-ASSIST US: Visit http://wiki.plexguide.com and write and edit the Wiki
+ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
 
 GOOGLE DRIVE ******************************************************
 1. RClone   :  Media Syncs to Google Drive
