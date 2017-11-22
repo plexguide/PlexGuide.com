@@ -56,7 +56,7 @@ PlexGuide.com Installer/Upgrader (** = No Guide Yet)
 20. NGINX-Proxy   | ** TESTING
 21. DelugeVPN     | ** TESTING
 =========================================================================
-22. Exit                               (Scroll Up To Set The Entire List)
+22. Exit                               (Scroll Up To See The Entire List)
 
 EOF
 }
@@ -187,10 +187,8 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   21)
-    echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
-    echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
-    echo ymlport 8112 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    clear
+    bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
     ;;
   22)
     exit 0;;
