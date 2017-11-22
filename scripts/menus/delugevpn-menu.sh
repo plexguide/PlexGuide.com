@@ -88,6 +88,7 @@ read_options(){
     echo
     read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
     echo "VPN_REMOTE=$vpn_remote_choice" >> /opt/plexguide/scripts/docker/.env
+    echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
     echo "Your PIA info has been Installed for the Easy Setup!"
