@@ -3,11 +3,9 @@
 mkdir -p /opt/appdata/delugevpn
 mkdir -p /opt/appdata/delugevpn/config
 
-
-
 # Move the PIA VPN files
-#`mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/openvpn`
-`mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/`
+`mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/openvpn`
+#`mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/`
 
  /sbin/modprobe iptable_mangle
 

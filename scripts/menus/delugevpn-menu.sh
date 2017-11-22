@@ -26,15 +26,15 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Custom CIDR (comment out the line above if using this)
 # Uncomment the line below and enter your CIDR info so the line looks like: lannet=xxx.xxx.xxx.0/24
 #lannet=
-echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
 echo "LAN_NETWORK=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
 # Step #2: User defined function
@@ -82,12 +82,13 @@ read_options(){
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "VPN_USER=$pia_username" >> /opt/plexguide/scripts/docker/.deluge-env
+    echo "VPN_USER=$pia_username" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
     echo "VPN_PASS=$pia_password" >> /opt/plexguide/scripts/docker/.deluge-env
     echo
-    read -p "What Remote server do you want to use? (e.g france): " vpn_remote_choice
+    read "Currently only 8 PIA servers support port forwarding."
+    read -p "What Remote server do you want to use? (e.g ca-toronto, ca, nl, swiss, sweden, france, ro or israel): " vpn_remote_choice
     echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/plexguide/scripts/docker/.deluge-env
     echo
     clear
