@@ -27,5 +27,4 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - PLEX_CLAIM=${PMSTOKEN}
    network_mode: "host"
