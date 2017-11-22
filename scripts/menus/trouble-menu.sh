@@ -48,7 +48,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
 	case $choice in
   	1)
       clear
