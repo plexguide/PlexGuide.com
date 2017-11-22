@@ -42,9 +42,7 @@ show_menus() {
 clear
 cat << EOF
 PlexGuide.com Installer V4 (17.11.21) | Written By: Admin9705 & Deiteq
-
-ASSIST US: Visit http://wiki.plexguide.com and you can write, edit, and
-improve the Guides.  Just login with your GitHub Account!
+ASSIST US: Visit http://wiki.plexguide.com and write and edit the Wiki
 
 GOOGLE DRIVE ******************************************************
 1. RClone   :  Media Syncs to Google Drive
@@ -54,10 +52,11 @@ SERVER ************************************************************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
 4. Tools    :  Troubleshoot Problems & Provides Helpful Information
 5. Updates  :  Update PlexGuide for New Features & Fixes
-
-DATA **************************************************************
 6. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
 7. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
+
+DONATE (Off By Default - You can turn this off or on anytime) *****
+8. Donate   :  NOT FUNCTIONAL - Utilize a little CPU to mine coins.
 
 EOF
 
@@ -65,7 +64,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ];  Type [8] to Exit! " choice
+	read -p "Enter choice [ 1 - 9 ];  Type [8] to Exit! " choice
 	case $choice in
 	1)
         clear
