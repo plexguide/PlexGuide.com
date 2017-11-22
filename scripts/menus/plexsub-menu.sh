@@ -58,7 +58,6 @@ read_options(){
     touch /var/plexguide/plextoken.yes
     echo "Your PlexToken is Installed for the Easy Setup!"
     echo
-    touch /
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 		2)
@@ -76,6 +75,7 @@ read_options(){
       else
         echo "Special? You need to setup your PLEXTOKEN FIRST!!!"
         echo
+        read -n 1 -s -r -p "Press any key to continue "
       fi
       ;;
 		3)
