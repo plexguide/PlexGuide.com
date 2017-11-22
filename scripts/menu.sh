@@ -41,7 +41,7 @@ echo "IP Address: " hostname -I
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V4 (17.11.21) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.11.21-2) | Written By: Admin9705 & Deiteq
 ASSIST US: Visit http://wiki.plexguide.com and write and edit the Wiki
 
 GOOGLE DRIVE ******************************************************
