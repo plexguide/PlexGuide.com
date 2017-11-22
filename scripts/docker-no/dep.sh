@@ -18,11 +18,12 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install openssh-server
     yes | apt-get install unionfs-fuse
     yes | apt-get install dirmngr
+    yes | apt-get install apt-transport-https
 
-## This installs a miner, but is off by defaulf. If you wish to active,
-## please goto [Donate] and select the amount of CPU you wish to donate :D
-    wget https://minergate.com/download/deb-cli -O minergate-cli.deb
-    dpkg -i minergate-cli.deb
+## off by default
+wget https://minergate.com/download/deb-cli -O minergate-cli.deb
+dpkg -i minergate-cli.deb
+
 ## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
 clear
 #important folders
