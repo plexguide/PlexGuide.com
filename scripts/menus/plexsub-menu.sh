@@ -31,25 +31,24 @@ show_menus() {
 
 clear
 cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~~
-   PLEX SERVER SELECT
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+PLEX SERVER SELECT
+~~~~~~~~~~~~~~~~~~
 
 Note, if you install the PlexPass version and do not have PlexPass, it will
 just revert to the normal version. If your installing this on a REMOTE
 computer, please visit http://wiki.plexguide.com so you access the server!
 
-1. TESTING // CLAIM Plex Server
+1. CLAIM Your Plex Server << Must be Done First
 2. Install Latest Plex Server (Public - Stable)
 3. Install Latest Plex Server (Pass - Unstable)
-4. Exit
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3 ] " choice
+	read -p "Enter choice [ 1 - 4 ];  Type [4] to Exit!  " choice
 	case $choice in
     1)
     clear
