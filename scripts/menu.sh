@@ -58,13 +58,14 @@ SERVER ************************************************************
 DONATE (Off By Default - You can turn this off or on anytime) *****
 8. Donate   :  NOT FUNCTIONAL - Utilize a little CPU to mine coins.
 
+
 EOF
 
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [8] to Exit! " choice
+	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
 	case $choice in
 	1)
         clear
