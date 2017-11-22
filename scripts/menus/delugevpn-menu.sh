@@ -9,17 +9,17 @@ RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
 # Get local Username
-localuname=`id -u -n`
+#localuname=`id -u -n`
 # Get PUID
-PUID=`id -u $localuname`
+#PUID=`id -u $localuname`
 # Get GUID
-PGID=`id -g $localuname`
+#PGID=`id -g $localuname`
 # Get Hostname
-thishost=`hostname`
+#thishost=`hostname`
 # Get IP Address
-locip=`hostname -I | awk '{print $1}'`
+#locip=`hostname -I | awk '{print $1}'`
 # Get Time Zone
-time_zone=`cat /etc/timezone`
+#time_zone=`cat /etc/timezone`
 
 # CIDR - this assumes a 255.255.255.0 netmask - If your config is different use the custom CIDR line
 lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
@@ -65,11 +65,14 @@ DELUGEVPN
 
 Note, make sure that you have an account with PIA before installing otherwise
 it won't work! Please visit https://www.privateinternetaccess.com to join.
+
 Currently only 8 PIA servers support port forwarding.
 Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland, Sweden,
- France, Romania or Israel.
+ France, Romania or Israel
+
 Default is set to Switzerland
 (To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh)
+
 
 1. TESTING // PIA VPN details
 2. Install DelugeVPN
