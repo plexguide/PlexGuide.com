@@ -71,7 +71,7 @@ Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland, Sweden,
  France, Romania or Israel
 
 Default is set to Switzerland
-(To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh)
+(To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh before install)
 
 
 1. TESTING // PIA VPN details
