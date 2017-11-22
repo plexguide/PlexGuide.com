@@ -7,6 +7,8 @@ mkdir -p /opt/appdata/delugevpn/config
 `mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/Remotes`
 #`mv '/opt/plexguide/scripts/openvpn' /opt/appdata/delugevpn/config/`
 
+ bash /opt/plexguide/scripts/test/deluge/move-ovpn.sh
+
  /sbin/modprobe iptable_mangle
 
   # use http://iknowwhatyoudownload.com to check if there your ip is leaked after using deluge

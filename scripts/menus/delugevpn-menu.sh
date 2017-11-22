@@ -65,10 +65,16 @@ DELUGEVPN
 
 Note, make sure that you have an account with PIA before installing otherwise
 it won't work! Please visit https://www.privateinternetaccess.com to join.
+Currently only 8 PIA servers support port forwarding.
+Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland, Sweden,
+ France, Romania or Israel.
+Default is set to Switzerland
+(To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh)
 
 1. TESTING // PIA VPN details
 2. Install DelugeVPN
 3. Exit
+
 
 EOF
 }
@@ -89,11 +95,7 @@ read_options(){
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
     echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/config/.deluge-env
     echo
-    echo "Currently only 8 PIA servers support port forwarding."
-    echo "Choices are: CA Montreal, CA Toronto, Netherlands,"
-    echo " Switzerland, Sweden, France, Romania or Israel."
-    echo "Default is set to Switzerland"
-    echo "(To change edit move-ovpn.sh)"
+
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
   #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/delugevpn/config/.deluge-env
