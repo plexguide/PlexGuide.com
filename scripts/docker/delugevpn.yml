@@ -19,7 +19,7 @@ services:
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs:/data
    env_file:
-     - /opt/plexguide/scripts/docker/.deluge-env
+  #   - /opt/plexguide/scripts/docker/.deluge-env
      - /opt/appdata/delugevpn/config/.deluge-env
    environment:
      - VPN_ENABLED=yes
