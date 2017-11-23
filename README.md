@@ -7,8 +7,7 @@
 #### Info
 - Written By Admin9705 and Deiteq
 - Reddit Link (Great for Discussion): http://reddit.plexguide.com
-- Visit the New PlexDrive 4 Plus Project at: http://plus.plexguide.com
-- **Note:** If you have issues, please post them in ISSUES for better tracking.
+- **Note:** If you have issues, please post them in ISSUES for **BETTER** Tracking.
 
 #### Want to Donate? Everybit Helps!
 
