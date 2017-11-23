@@ -112,7 +112,7 @@ read_options(){
     bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
     ;;
   11)
-  echo ymlprogram PlexDrive> /opt/plexguide/tmp.txt
+  echo ymlprogram plexguide> /opt/plexguide/tmp.txt
   echo ymldisplay PlexDrive >> /opt/plexguide/tmp.txt
   echo ymlport No Port >> /opt/plexguide/tmp.txt
   bash /opt/plexguide/scripts/docker-no/program-installer.sh
