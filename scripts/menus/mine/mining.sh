@@ -87,6 +87,7 @@ read_options(){
     6)
         clear
         bash /opt/plexguide/scripts/menus/mine/stop.sh
+        ;;
     7)
         clear
         exit 0;;
