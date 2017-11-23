@@ -66,31 +66,29 @@ read_options(){
 	case $choice in
 	1)
         clear
-	      bash /opt/plexguide/scripts/menus/mine/1.sh
+	    bash /opt/plexguide/scripts/menus/mine/1.sh
         ;;
     2)
         clear
-        bash bash /opt/plexguide/scripts/menus/mine/2.sh
+        bash /opt/plexguide/scripts/menus/mine/2.sh
         ;;
 	3)
-        bash /opt/plexguide/scripts/menus/programs.sh
         clear
+        bash /opt/plexguide/scripts/menus/mine/4.sh
         ;;
     4)
-        bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
+        bash /opt/plexguide/scripts/menus/mine/8.sh
         ;;
     5)
-        bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
-        echo Remember, restart by typing: plexguide
+        bash /opt/plexguide/scripts/menus/mine/max.sh
         ;;
     6)
         clear
-        ;;
+        bash /opt/plexguide/scripts/menus/mine/stop.sh
     7)
         clear
-        echo Remember, restart by typing:  plexguide
         exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

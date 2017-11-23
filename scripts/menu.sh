@@ -58,7 +58,7 @@ SERVER ************************************************************
 8. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
 DONATE (Off By Default - You can turn this off or on anytime) *****
-9. Donate   :  NOT FUNCTIONAL - Utilize a little CPU to mine coins.
+9. Donate   :  Works >>> Help Utilize a little CPU to mine coins.
 
 
 EOF
