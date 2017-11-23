@@ -42,6 +42,7 @@ PlexGuide.com BETA Installer ~ BETA ~ BETA ~ BETA ~ BETA ~ BETA
 8   Transmission  | ** TESTING
 9.  NGINX-Proxy   | ** TESTING
 10. DelugeVPN     | ** TESTING
+11. PlexDrive     | ** DO NOT MESS WITH! SUPER BETA
 
 EOF
 }
@@ -51,7 +52,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 11 ];  Type [11] to Exit! " choice
+	read -p "Enter choice [ 1 - 12 ];  Type [11] to Exit! " choice
 	case $choice in
      1)
         echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
@@ -104,7 +105,6 @@ read_options(){
   9)
     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
-    echo ymlport 80 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   10)
@@ -112,6 +112,11 @@ read_options(){
     bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
     ;;
   11)
+  echo ymlprogram PlexDrive> /opt/plexguide/tmp.txt
+  echo ymldisplay PlexDrive >> /opt/plexguide/tmp.txt
+  echo ymlport No Port >> /opt/plexguide/tmp.txt
+  bash /opt/plexguide/scripts/docker-no/program-installer.sh
+  12)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
