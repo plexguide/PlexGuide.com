@@ -33,9 +33,9 @@ clear
 cat << EOF
 Tools & Troubleshooting 101 Menu
 
-1. PlexDrive Test  :  Veryify that PlexDrive is Working                   
+1. PlexDrive Test  :  Veryify that PlexDrive is Working
 2. RClone Test     :  Verify Google Drive is Mounted
-3. UnionFS Test    :  Verify UnionFS is Operational                     
+3. UnionFS Test    :  Verify UnionFS is Operational
 4. Uncrypted Move  :  View status of the Unencrypted SYNC
 5. Encrypted Move  :  View status of the Encrypted SYNC
 6. Start Re-Install:  Forces Main Basic Reinstall
@@ -129,7 +129,7 @@ read_options(){
       clear
       rm -r /var/plexguide/dep*
       echo
-      echo "*** Exit and Update, and restart the program ***"
+      echo "*** Exit this menu and Update, then restart the program ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
         ;;
