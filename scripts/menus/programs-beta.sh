@@ -116,6 +116,7 @@ read_options(){
   echo ymldisplay PlexDrive >> /opt/plexguide/tmp.txt
   echo ymlport No Port >> /opt/plexguide/tmp.txt
   bash /opt/plexguide/scripts/docker-no/program-installer.sh
+  ;;
   12)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2

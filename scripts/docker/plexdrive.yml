@@ -1,18 +1,23 @@
 ---
 version: '2'
 services:
- ombi:
-   image:  lsiodev/ombi-preview
-   container_name: ombi
+ plexdrive4:
+   image: madslundt/docker-cloud-media-scripts
+   container_name: plexdrive4
 # If you want your ip or domain to load this directly, change the 8015 to 80 (80:80).
 # If you plan on creating a web-interface; leave as 8015; port 80 is reserved for your website
-   ports:
-     - 3579:3579
    volumes:
-     - /opt/appdata/ombiv3:/config
-     - /etc/localtime:/etc/localtime:ro
+     - /opt/appdata/plexdrive4:/config
+     - /media:/local-media:shared
+     - /mnt/external/media:/local-decrypt:shared
    environment:
      - PUID=0
      - PGID=0
    restart:
      always
+  privileged: true
+   devices:
+     - /dev/fuse
+   cap_add:
+     - MKNOD
+     - SYS_ADMIN
