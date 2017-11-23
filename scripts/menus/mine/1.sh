@@ -11,7 +11,7 @@ rm -r /opt/appdata/plexguide/mine.sh
 
 ## Remember, processors are multithread, so 2 threads is 1 processor
 ## Create the Mine Script
-tee "/opt/appdata/plexguide/mine.1sh" > /dev/null <<EOF
+tee "/opt/appdata/plexguide/mine1.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 15
 minergate-cli -user user@dunn.cloud -xmr 2
