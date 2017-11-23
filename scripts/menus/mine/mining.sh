@@ -42,23 +42,19 @@ show_menus() {
 clear
 echo "Your IP Address: " | hostname -I
 cat << EOF
-PlexGuide.com Installer V4 (17.11.21-2) | Written By: Admin9705 & Deiteq
-ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
+Helping mining coins with a small amount of CPU helps out.  By default, 
+this is off.  To see how it impacts your server, install NETDATA and
+visit http://ipv4:19999!  Thanks for dropping by!
 
 GOOGLE DRIVE ******************************************************
-1. RClone   :  Media Syncs to Google Drive
-2. PlexDrive:  Prevent G-Drive Plex Scan Bans
+1. Allow the use of 1 CPUs
+2. Allow the use of 2 CPUs
+3. Allow the use of 4 CPUs
+4. Allow the use of 8 CPUs
+5. Max It Out (Only select if your sure about this)
 
-SERVER ************************************************************
-3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. Tools    :  Troubleshoot Problems & Provides Helpful Information
-5. Updates  :  Update PlexGuide for New Features & Fixes
-6. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
-7. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
-
-DONATE (Off By Default - You can turn this off or on anytime) *****
-8. Donate   :  NOT FUNCTIONAL - Utilize a little CPU to mine coins.
-
+TURN OFF ************************************************************
+6. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
 
 EOF
 
@@ -66,13 +62,13 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 7 ];  Type [7] to Exit! " choice
 	case $choice in
 	1)
         clear
-	      bash /opt/plexguide/scripts/menus/rclone-info-menu.sh
+	      bash /opt/plexguide/scripts/menus/mine/1.sh
         ;;
-  2)
+    2)
         clear
         bash /opt/plexguide/scripts/menus/plexdrive-info-menu.sh
         ;;
@@ -80,16 +76,19 @@ read_options(){
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
-  4)
+    4)
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-  5)
+    5)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
-        exit 0;;
-  9)
+        ;;
+    6)
+        clear
+        ;;
+    7)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;

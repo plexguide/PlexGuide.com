@@ -94,6 +94,11 @@ read_options(){
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
+    9)
+        bash /opt/plexguide/scripts/menus/mine/mining.sh
+        clear
+        ;; 
+
   10)
         clear
         echo Remember, restart by typing:  plexguide
