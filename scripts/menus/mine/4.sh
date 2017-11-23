@@ -40,6 +40,7 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
+sudo systemctl enable mine4
 sudo systemctl start mine4
 
 echo Thank you for enabling 4 Processors for Mining!

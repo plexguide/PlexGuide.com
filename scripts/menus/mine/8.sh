@@ -40,6 +40,7 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
+sudo systemctl enable mine8
 sudo systemctl start mine8
 
 echo Thank you for enabling 8 Processors for Mining!

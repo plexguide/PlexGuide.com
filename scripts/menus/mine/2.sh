@@ -40,6 +40,7 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
+sudo systemctl enable mine2
 sudo systemctl start mine2
 
 echo Thank you for enabling 2 Processors for Mining!

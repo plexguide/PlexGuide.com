@@ -40,6 +40,7 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
+sudo systemctl enable max
 sudo systemctl start max
 
 echo Thank you for enabling MAX Processors for Mining!
