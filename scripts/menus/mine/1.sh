@@ -1,3 +1,6 @@
+# make appdirectory if missing
+mkdir /opt/appdata/plexguide 1>/dev/null 2>&1
+
 systemctl stop mine1 1>/dev/null 2>&1
 systemctl stop mine2 1>/dev/null 2>&1
 systemctl stop mine4
