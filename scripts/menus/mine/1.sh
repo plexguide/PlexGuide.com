@@ -37,4 +37,9 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
-sudy systemctl start mine1
+sudo systemctl start mine1
+
+echo
+echo Thank you for enabling 1 Processor for Mining!
+echo
+read -n 1 -s -r -p "Press any key to continue "
