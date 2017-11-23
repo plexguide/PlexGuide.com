@@ -7,20 +7,20 @@ systemctl stop mine4 1>/dev/null 2>&1
 systemctl stop mine8 1>/dev/null 2>&1
 systemctl stop minemax 1>/dev/null 2>&1
 
-rm -r /opt/appdata/plexguide/mine1.sh
+rm -r /opt/appdata/plexguide/mine2.sh
 
 ## Remember, processors are multithread, so 2 threads is 1 processor
 ## Create the Mine Script
-tee "/opt/appdata/plexguide/mine1.sh" > /dev/null <<EOF
+tee "/opt/appdata/plexguide/mine2.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 15
-minergate-cli -user user@dunn.cloud -xmr 2
+minergate-cli -user user@dunn.cloud -xmr 4
 done
 EOF
-chmod 755 /opt/appdata/plexguide/mine1.sh
+chmod 755 /opt/appdata/plexguide/mine2.sh
 
 ## Create the Encrypted Move Service
-tee "/etc/systemd/system/mine1.service" > /dev/null <<EOF
+tee "/etc/systemd/system/mine2.service" > /dev/null <<EOF
 [Unit]
 Description=Mine Service Daemon
 After=multi-user.target
@@ -29,7 +29,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/bin/bash /opt/appdata/plexguide/mine1.sh
+ExecStart=/bin/bash /opt/appdata/plexguide/mine2.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -42,6 +42,6 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl start mine1
 
-echo Thank you for enabling 1 Processor for Mining!
+echo Thank you for enabling 2 Processors for Mining!
 echo
 read -n 1 -s -r -p "Press any key to continue "

@@ -70,7 +70,7 @@ read_options(){
         ;;
     2)
         clear
-        bash /opt/plexguide/scripts/menus/plexdrive-info-menu.sh
+        bash bash /opt/plexguide/scripts/menus/mine/2.sh
         ;;
 	3)
         bash /opt/plexguide/scripts/menus/programs.sh
