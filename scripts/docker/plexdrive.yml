@@ -15,7 +15,7 @@ services:
      - PGID=0
    restart:
      always
-  privileged: true
+   privileged: true
    devices:
      - /dev/fuse
    cap_add:
