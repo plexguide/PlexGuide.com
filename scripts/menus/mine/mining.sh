@@ -42,19 +42,19 @@ show_menus() {
 clear
 echo "Your IP Address: " | hostname -I
 cat << EOF
-Helping mining coins with a small amount of CPU helps out.  By default, 
+Helping mining coins with a small amount of CPU helps out.  By default,
 this is off.  To see how it impacts your server, install NETDATA and
 visit http://ipv4:19999!  Thanks for dropping by!
 
 GOOGLE DRIVE ******************************************************
-1. Allow the use of 1 CPUs
-2. Allow the use of 2 CPUs
-3. Allow the use of 4 CPUs
-4. Allow the use of 8 CPUs
+1. Allow the use of 1 CPU Core
+2. Allow the use of 2 CPU Cores < Like an i3
+3. Allow the use of 4 CPU Cores < Like an i7
+4. Allow the use of 8 CPU Cores < Like an Xeon
 5. Max It Out (Only select if your sure about this)
 
 TURN OFF ************************************************************
-6. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
+6. Programs :  Turn off the mining!
 
 EOF
 
