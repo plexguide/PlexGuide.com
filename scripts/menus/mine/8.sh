@@ -7,7 +7,7 @@ systemctl stop mine4 1>/dev/null 2>&1
 systemctl stop mine8 1>/dev/null 2>&1
 systemctl stop minemax 1>/dev/null 2>&1
 
-rm -r /opt/appdata/plexguide/mine8.sh
+rm -r /opt/appdata/plexguide/mine8.sh 1>/dev/null 2>&1
 
 ## Remember, processors are multithread, so 2 threads is 1 processor
 ## Create the Mine Script
