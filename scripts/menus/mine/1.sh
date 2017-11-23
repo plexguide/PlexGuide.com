@@ -1,5 +1,5 @@
-systemctl stop mine1
-systemctl stop mine2
+systemctl stop mine1 1>/dev/null 2>&1
+systemctl stop mine2 1>/dev/null 2>&1
 systemctl stop mine4
 systemctl stop mine8
 systemctl stop minemax
@@ -8,7 +8,7 @@ rm -r /opt/appdata/plexguide/mine.sh
 
 ## Remember, processors are multithread, so 2 threads is 1 processor
 ## Create the Mine Script
-tee "/opt/appdata/plexguide/mine.sh" > /dev/null <<EOF
+tee "/opt/appdata/plexguide/mine.1sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 15
 minergate-cli -user user@dunn.cloud -xmr 2
