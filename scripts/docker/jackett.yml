@@ -15,7 +15,7 @@ services:
    env_file:
     - /opt/.environments/.env
    environment:
-     - PUID=0
-     - PGID=0
+     - PUID=1001
+     - PGID=1001
    restart:
      always
