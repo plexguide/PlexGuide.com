@@ -14,10 +14,10 @@ services:
      - 58946:58946
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /mnt/delugevpn/downloads:/downloads
+     - /mnt/delugevpn/downloads:/data
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
-     - /mnt/unionfs:/data
+     - /mnt/unionfs/completed:/completed
    env_file:
      - /opt/.environments/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env

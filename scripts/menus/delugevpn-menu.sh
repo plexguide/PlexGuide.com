@@ -69,8 +69,8 @@ Note, make sure that you have an account with PIA before installing otherwise
 it will not work! Please visit https://www.privateinternetaccess.com to join.
 
 Currently only 8 PIA servers support port forwarding.
-Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland, Sweden,
- France, Romania or Israel
+Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland,
+             Sweden, France, Romania or Israel.
 
 Default is set to Switzerland
 (To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh before install)
@@ -82,7 +82,7 @@ Default is set to Switzerland
 
 
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
-to check for leaks! ***
+    to check for leaks! ***
 
 EOF
 }

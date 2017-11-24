@@ -12,7 +12,9 @@ mkdir -p /opt/appdata/delugevpn/config
 
  /sbin/modprobe iptable_mangle
 
-  # use http://iknowwhatyoudownload.com to check if there your ip is leaked after using deluge
-  # using https://github.com/binhex/arch-delugevpn as original source
+# Use http://iknowwhatyoudownload.com to check if your IP is leaked after using
+# deluge or use TorGuard's Check My Torrent IP Tool.
+
+    # Using https://github.com/binhex/arch-delugevpn as original source
 
   # when opening delugevpn in a web browser the password is deluge
