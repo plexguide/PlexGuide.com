@@ -88,8 +88,8 @@ read_options(){
         	echo Remember, restart by typing:  plexguide
         	exit 0;;
     6)
-         bash /opt/plexguide/scripts/docker-no/plexdrive4-alt.sh
-         ;;
+          bash /opt/plexguide/scripts/docker-no/plexdrive4-alt.sh
+          ;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }

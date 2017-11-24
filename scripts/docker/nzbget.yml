@@ -9,6 +9,10 @@ services:
    volumes:
      - /opt/appdata/nzbget:/config
      - /:/yourcomputer
+     - /mnt/sab/complete:/complete
+     - /mnt/sab/incomplete:/incomplete
+     - /mnt/sab/nzb:/nzb
+     - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=0

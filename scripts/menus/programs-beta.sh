@@ -43,6 +43,7 @@ PlexGuide.com BETA Installer ~ BETA ~ BETA ~ BETA ~ BETA ~ BETA
 9.  NGINX-Proxy   | ** TESTING
 10. DelugeVPN     | ** TESTING
 11. PlexDrive     | ** DO NOT MESS WITH! SUPER BETA
+12. Jackett       | ** TESTING
 
 EOF
 }
@@ -52,7 +53,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 12 ];  Type [12] to Exit! " choice
+	read -p "Enter choice [ 1 - 13 ];  Type [13] to Exit! " choice
 	case $choice in
      1)
         echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
@@ -118,6 +119,12 @@ read_options(){
   bash /opt/plexguide/scripts/docker-no/program-installer.sh
   ;;
   12)
+  echo ymlprogram jackett > /opt/plexguide/tmp.txt
+  echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
+  echo ymlport 9117 >> /opt/plexguide/tmp.txt
+  bash /opt/plexguide/scripts/docker-no/program-installer.sh
+  ;;
+  13)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
