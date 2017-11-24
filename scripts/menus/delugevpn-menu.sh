@@ -81,6 +81,9 @@ Default is set to Switzerland
 3. Exit
 
 
+*** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
+to check for leaks! ***
+
 EOF
 }
 
@@ -107,6 +110,10 @@ read_options(){
     clear
     touch /var/plexguide/pia-vpn-set.yes
     echo "Your PIA info has been Installed for the Easy Setup!"
+    echo
+    echo "Remember to use http://iknowwhatyoudownload.com  "
+    echo "to check if your IP is leaked after using deluge or use "
+    echo "TorGuard's Check My Torrent IP Tool."
     echo
     read -n 1 -s -r -p "Press any key to continue "
     ;;
