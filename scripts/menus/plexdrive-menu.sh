@@ -55,8 +55,8 @@ read_options(){
 	read -p "Enter choice [ 1 - 5 ] " choice
 	case $choice in
 		1)
-		    bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
-		    ;;
+		      bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
+		      ;;
 		2)
         	systemctl restart plexdrive4
        		echo
@@ -72,21 +72,24 @@ read_options(){
         	read -n 1 -s -r -p "Press any key to continue"
         	clear
 		      ;;
-   4)
-        clear
-        ls /mnt/plexdrive4
-        echo
-        echo "*** PlexDrive: Your Google Drive - If empty, that's not good ***"
-        echo "Note 1: Must have at least 1 item in your Google Drive for the test"
-        echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-    ;;
+    4)
+          clear
+          ls /mnt/plexdrive4
+          echo
+          echo "*** PlexDrive: Your Google Drive - If empty, that's not good ***"
+          echo "Note 1: Must have at least 1 item in your Google Drive for the test"
+          echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
+          echo
+          read -n 1 -s -r -p "Press any key to continue "
+          clear
+          ;;
     5)
         	clear
         	echo Remember, restart by typing:  plexguide
         	exit 0;;
+    6)
+         bash /opt/plexguide/scripts/docker-no/plexdrive4-alt.sh
+         ;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
