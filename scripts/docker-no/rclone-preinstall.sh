@@ -23,8 +23,8 @@ chmod 755 /mnt/gdrive
 chown root /mnt/gdrive
 
 ## Make Place for Starup SCripts
-mkdir /opt/plexguide-startup 2>/dev/null
-chmod 755 /opt/plexguide-startup 2>/dev/null
+mkdir /opt/appdata/plexguide 2>/dev/null
+chmod 755 /opt/appdata/plexguide 2>/dev/null
 
 ## Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf
@@ -84,7 +84,7 @@ EOF
 sudo systemctl daemon-reload
 
 ## Create the Move Script
-tee "/opt/plexguide-startup/move.sh" > /dev/null <<EOF
+tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
 while true
@@ -95,7 +95,7 @@ rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15
 sleep 900
 done
 EOF
-chmod 755 /opt/plexguide-startup/move.sh
+chmod 755 /opt/appdata/plexguide/move.sh
 
 ## Create the Move Service
 tee "/etc/systemd/system/move.service" > /dev/null <<EOF
@@ -107,7 +107,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/bin/bash /opt/plexguide-startup/move.sh
+ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -165,7 +165,7 @@ systemctl enable unionfs
 systemctl start unionfs
 
 ## Create the Encrypted Move Script
-tee "/opt/plexguide-startup/move-en.sh" > /dev/null <<EOF
+tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
 while true
@@ -174,7 +174,7 @@ rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15
 sleep 900
 done
 EOF
-chmod 755 /opt/plexguide-startup/move-en.sh
+chmod 755 /opt/appdata/plexguide/move-en.sh
 
 ## Create the Encrypted Move Service
 tee "/etc/systemd/system/move-en.service" > /dev/null <<EOF
@@ -186,7 +186,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/bin/bash /opt/plexguide-startup/move-en.sh
+ExecStart=/bin/bash /opt/appdata/plexguide/move-en.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
