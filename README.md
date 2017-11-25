@@ -13,7 +13,7 @@
 - Reddit Link (Great for Discussion): http://reddit.plexguide.com
 - **Note:** If you have issues, please post them in ISSUES for **BETTER** Tracking.
 
-#### Want to Donate? Everybit Helps!
+### Want to Donate? Everybit Helps!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - Ethereum: 0xe40ED5eA14e20e7dc4595FdE195526d36308cF04
