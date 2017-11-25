@@ -2,7 +2,7 @@
 
 ![N](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide.PNG)
 
-![N](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo.PNG)
+![N](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo2.PNG)
 
 #### Info
 - Written By Admin9705 and Deiteq
