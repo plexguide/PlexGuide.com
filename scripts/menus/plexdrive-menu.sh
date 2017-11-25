@@ -66,6 +66,7 @@ read_options(){
         	;;
 		3)
        		rm -r /root/.plexdrive
+          rm -r ~/.plexdrive
         	echo
         	echo "Tokens Removed"
         	echo

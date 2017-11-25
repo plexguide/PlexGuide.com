@@ -49,6 +49,11 @@ systemctl stop rclone
 systemctl start rclone
 systemctl start move
 
+# set variable to remember what version of rclone user installed
+mkdir /var /var/plexguide /var/plexguide/rclone 1>/dev/null 2>&1
+touch /var/plexguide/rclone/un 1>/dev/null 2>&1
+rm -r /var/plexguide/rclone/en
+
 clear
 cat << EOF
 NOTE: You installed the unencrypted version for the RClone data transport!

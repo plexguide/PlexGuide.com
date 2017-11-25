@@ -52,6 +52,11 @@ systemctl start unionfs
 systemctl start rclone-en
 systemctl start move-en
 
+# set variable to remember what version of rclone user installed
+mkdir /var /var/plexguide /var/plexguide/rclone 1>/dev/null 2>&1
+touch /var/plexguide/rclone/en 1>/dev/null 2>&1
+rm -r /var/plexguide/rclone/un
+
 clear
 cat << EOF
 NOTE: You installed the encrypted version for the RClone data transport! If you
