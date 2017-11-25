@@ -69,7 +69,7 @@ clear
 
 # Install Docker and Docker Composer / Checks to see if is installed also
 clear
-echo "Note, if you get a message about docker is install and the 20 sec sleep"
+echo "Note, if you get a message about docker already installed and the 20 sec sleep"
 echo "warning, just ignore it and let the 20 seconds go by."
 echo
 curl -sSL https://get.docker.com | sh
