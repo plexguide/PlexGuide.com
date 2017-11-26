@@ -24,6 +24,8 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install unzip 1>/dev/null 2>&1
     echo "Python"
     yes | apt-get install python 1>/dev/null 2>&1
+    echo "Python Bridge Utils"
+    yes | apt-get install git python bridge-utils
     echo "Curl"
     yes | apt-get install curl 1>/dev/null 2>&1
     echo "OpenSSH Server"
