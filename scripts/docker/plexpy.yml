@@ -12,7 +12,7 @@ services:
      - PUID=1001    
      - PGID=1001
      - VIRTUAL_HOST=plexpy.plex.one
-     - VIRTUAL_PORT=8181
+#     - VIRTUAL_PORT=8181
 networks:
   default:
     external:
