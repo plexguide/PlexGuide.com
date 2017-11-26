@@ -97,8 +97,8 @@ chmod +x /usr/local/bin/docker-compose
 echo ""
 echo "Created PlexGuide Network"
 
-+## Creates PlexGuide Network
- +docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
+## Creates PlexGuide Network
+docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
  echo ""
  echo "Installing Portainer (Please Wait)"
