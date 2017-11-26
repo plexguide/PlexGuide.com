@@ -6,6 +6,6 @@ services:
    container_name: nginx-proxy
    volumes:
      - /var/run/docker.sock:/tmp/docker.sock:ro
-  ports:
-  - 81:80
-  restart: always
+   ports:
+     - 81:80
+   restart: always
