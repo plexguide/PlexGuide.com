@@ -1,0 +1,8 @@
+---
+version: '2'
+  docker_network:
+    name: plexguide
+    ipam_options:
+      subnet: '172.18.0.0/16'
+      gateway: '172.18.0.254'
+      iprange: '172.18.0.0/24'
