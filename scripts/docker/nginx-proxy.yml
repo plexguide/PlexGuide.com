@@ -5,7 +5,11 @@ services:
    image: jwilder/nginx-proxy:latest
    container_name: nginx-proxy
    volumes:
-     - /var/run/docker.sock:/tmp/docker.sock:ro
+     - ./mysite.template:/etc/nginx/conf.d/mysite.template
    ports:
-     - 81:80
+     - 8080:80
+   environment:
+     - NGINX_HOST=foobar.com
+     - NGINX_PORT=80
+   command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
    restart: always
