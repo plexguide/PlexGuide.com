@@ -31,6 +31,7 @@ show_menus() {
 clear
 cat << EOF
 PlexGuide.com BETA Installer ~ BETA ~ BETA ~ BETA ~ BETA ~ BETA
+Warning: NO SUPPORT! QUESTIONS WILL BE IGNORED!
 
 1.  CouchPotato   | ** TESTING
 2.  Emby          | ** TESTING
