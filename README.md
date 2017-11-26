@@ -48,18 +48,18 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
  
 **D. Install Instructions:**
 
-***Install GIT***
+*Install GIT*
 ```sh
 sudo apt-get install git
 ```
 
-***Install PlexGuide***
+*Install PlexGuide*
 ```sh
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
 ```
 
-***Execute PlexGuide AnyTime Futurewise***
+*Execute PlexGuide AnyTime Futurewise*
 ```sh
 plexguide
 ```
