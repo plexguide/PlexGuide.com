@@ -29,7 +29,7 @@ UB 16/17 & Google Drive (https://gsuite.google.com)
 - ***Never*** buy an EBay Google Account! Buy your own. Sellers own your information and **YOU DO NOT CONTROL IT**
   - [Article 1](https://community.ebay.com/t5/Bidding-Buying/Seller-of-Google-Drive-Unlimited-Storage-problem/td-p/27058292) | [Article 2](https://www.reddit.com/r/PleX/comments/6crdjv/google_is_disabling_certain_gsuites_accounts/)
   
-- Ignore the 5 User Requirement on EBay; I know... you will get anxiety. Unlimited works with 1 account; don't ask, just listen!
+- Ignore the 5 User Requiment; it works with 1... trust me!
 
 ### Structured For
 
