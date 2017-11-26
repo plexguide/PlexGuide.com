@@ -31,8 +31,12 @@ UB 16/17 & Google Drive (https://gsuite.google.com)
   
 - Ignore the 5 User Requirement on EBay; I know... you will get anxiety. Unlimited works with 1 account; don't ask, just listen!
 
+### Structured For
+
+PlexGuide is structured and confirmed to work on Dedicated Server, VPS, VMWare (using Ubuntu from the main site) and is set to be used on a NEW SERVER.  If you are attempting anything other than this, you can test... but may have issues.  Support for anything other than this will be ignored.  
+
 ### Really New To Linux?
-It's ok! If you mess up something, reinstall and try again.  See if what you did was a mistake or a bug.  If so, document it and post in the issues.  When known, we update the guides to help others!  Remember, you only learn through frustration... but alot has been eliminated for you to make your life easier.  
+It's ok! If you mess up something, reinstall and try again.  See what if your actions was a mistake or a bug.  If so, document it and post in the issues.  When known, we update the guides to help others!  Remember, you only learn through frustration... but alot has been eliminated for you to make your life easier.  
 
 ### Preparation, Installation & Configuration 
 Note 1: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
