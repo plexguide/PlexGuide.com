@@ -10,9 +10,7 @@ services:
      - /var/run/docker.sock:/var/run/docker.sock
    ports:
      - 9000:9000
-# ensures this container starts up when required to
    restart:
      always
    networks:
-      name: plexguide
-      ipv4_address: 172.24.0.5
+      - plexguide
