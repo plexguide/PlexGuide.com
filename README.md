@@ -22,11 +22,7 @@
 ### Mission Statement & Purpose
 
 Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
-
-### Structured For
-
-PlexGuide is structured and confirmed to work on Dedicated Server, VPS, VMWare (using Ubuntu from the main site) and is set to be used on a NEW SERVER.  If you are attempting anything other than this, you can test... but may have issues.  Support for anything other than this will be ignored.  
-
+ 
 ### Really New To Linux?
 It's ok! If you mess up something, reinstall and try again.  See what if your actions was a mistake or a bug.  If so, document it and post in the issues.  When known, we update the guides to help others!  Remember, you only learn through frustration... but alot has been eliminated for you to make your life easier.  
 
