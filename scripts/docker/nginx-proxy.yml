@@ -1,7 +1,11 @@
-- name: Stop and remove any existing container
-  docker_container:
-    name: nginx-proxy
-    state: absent
+---
+- name: "Get gforce uid"
+  shell: "id -u gforce"
+  register: uid
+
+- name: "Get gforce gid"
+  shell: "id -g gforce"
+  register: gid
 
 - name: Stop and remove any existing letsencrypt container
   docker_container:
