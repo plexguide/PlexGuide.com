@@ -28,13 +28,10 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
 
 ### Required Prior
 
-- GSuite Google Drive (https://gsuite.google.com) 
-  - Ignore the 5 Users Requirement; Trust Me on This
-  - ***Never*** buy an EBay Google Account! Sellers own your information and ***YOU DO NOT CONTROL IT***!
 - Server
   - Dedicated (Pending Recommendations Link)
   - VPS (Pending Recommendations Link)
-  - Home via Ubuntu or VMWare ESXI / Fusion / Workstation (you'll need a DD-WRT Router and Duck DNS)
+  - 
 - Domain Name
   - Purchased Domain through (https://godaddy.com) 
     - Guide to Configure Your Domain to your IPV4 Address
@@ -44,13 +41,20 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
 1. Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
 2. With a GITHUB login, did you know that you can edit our wiki pages?! Yes, you can make correctons, add snapshots or expand on anytopic. IF you make an update, you'll save us time and help others! Some users have already helped us!
 
-**A. Preparation:**
+**A. Pre-Preparation:**
+ 1. Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
+ 2. Have one type of Server Ready!
+   - Dedicated
+   - VPS
+   - Home Solution via Ubuntu or VMWare ESXI / Fusion / Workstation (Need a DD-WRT Router and Duck DNS)
+
+**B. Preparation:**
  1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
  2. [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
  3. [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  4. [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
  
-**B. Install Instructions:**
+**C. Install Instructions:**
 
 Install GIT
 ```sh
@@ -68,7 +72,7 @@ To Execute PlexGuide in the future, type:
 plexguide
 ```
   
-**C. Configuration**
+**D. Configuration**
  1. Install & Configure Either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://enrclone.plexguide.com)   
  2. [Configure PlexDrive](http://plexdrive.plexguide.com)
  3. [Configure Plex](http://plex.plexguide.com)
