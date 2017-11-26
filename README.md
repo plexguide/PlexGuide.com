@@ -34,12 +34,13 @@ Build an operational-automated server that mounts your Google Drive, while utili
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Have a Dedicated, VPS, or Home Solution Ready!
 
-*Either a Free or Paid Domain*
+*(Optional, but Super Highly Recommended) - Either a Free or Paid Domain*
 - Paid Domains
     - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - Alternate Services - As long as you know how to configure it
 - Free Domains
     - [FreeNom.com](https://freenom.com) - Visit the [PlexGuide FreeNom Wiki](http://null)
+- This ***will become mandatory*** in Version 5 for better Security
   
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
