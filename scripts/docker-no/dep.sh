@@ -25,7 +25,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "Python"
     yes | apt-get install python 1>/dev/null 2>&1
     echo "Python Bridge Utils"
-    yes | apt-get install git python bridge-utils
+    yes | apt-get install git python bridge-utils 1>/dev/null 2>&1
     echo "Curl"
     yes | apt-get install curl 1>/dev/null 2>&1
     echo "OpenSSH Server"
@@ -81,6 +81,18 @@ dpkg -i minergate-cli.deb 1>/dev/null 2>&1
   ## location for startup scripts
   mkdir -p /opt/appdata/plexguide
   chmod 755 /opt/appdata/plexguide
+
+  ## location for move and unionfs
+  mkdir -p /mnt/unionfs
+  mkdir -p /mnt/move
+  chmod 755 /mnt/move
+  chmod 755 /mnt/unionfs
+
+echo ""
+echo "Installing RClone & Service (Please Wait)"
+
+#Installing RClone and Service
+  bash /opt/plexguide/scripts/docker-no/rclone-preinstall.sh
 
 #Prevents this script from running again
   mkdir -p /var/plexguide

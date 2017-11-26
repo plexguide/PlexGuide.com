@@ -1,34 +1,30 @@
-## Making the directories and setting the permissions
-mkdir -p /mnt/unionfs
-mkdir -p /mnt/move
-chmod 755 /mnt/move
-chmod 755 /mnt/unionfs
+#!/bin/bash
 
 ## Installing rclone
-cd /tmp
-curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
-unzip rclone-current-linux-amd64.zip
-cd rclone-*-linux-amd64
-cp rclone /usr/bin/
-chown root:root /usr/bin/rclone
-chmod 755 /usr/bin/rclone
-mkdir -p /usr/local/share/man/man1
-cp rclone.1 /usr/local/share/man/man1/
-mandb
-cd .. && sudo rm -r rclone*
+  cd /tmp
+  curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip 1>/dev/null 2>&1
+  unzip rclone-current-linux-amd64.zip 1>/dev/null 2>&1
+  cd rclone-*-linux-amd64
+  cp rclone /usr/bin/ 1>/dev/null 2>&1
+  chown root:root /usr/bin/rclone 1>/dev/null 2>&1
+  chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+  mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
+  cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
+  mandb 1>/dev/null 2>&1
+  cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
+  cd ~
 
-
-## Replace Fuse by removing the # from user_allow_other
-rm -r /etc/fuse.conf
+## RClone - Replace Fuse by removing the # from user_allow_other
+rm -r /etc/fuse.conf  1>/dev/null 2>&1
 tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
+  # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
 
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
+  # Set the maximum number of FUSE mounts allowed to non-root users.
+  # The default is 1000.
+  #mount_max = 1000
 
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
+  # Allow non-root users to specify the allow_other or allow_root mount options.
+  user_allow_other
 EOF
 
 ## Create the RClone Service
@@ -76,6 +72,7 @@ EOF
 sudo systemctl daemon-reload
 
 ## Create the Move Script
+rm -r /opt/appdata/plexguide/move.sh
 tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
@@ -84,7 +81,7 @@ do
 # Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
 # Anything above 9M will result in a google ban if uploading above 9M for 24 hours
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
-sleep 900
+sleep 600
 done
 EOF
 chmod 755 /opt/appdata/plexguide/move.sh
@@ -143,7 +140,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/gdrive=RO /mnt/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
