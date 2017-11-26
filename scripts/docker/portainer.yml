@@ -13,3 +13,7 @@ services:
 # ensures this container starts up when required to
    restart:
      always
+networks:
+  default:
+    external:
+      name: plexguide

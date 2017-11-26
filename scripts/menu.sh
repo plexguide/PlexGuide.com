@@ -28,7 +28,7 @@ two(){
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 
-file="/var/plexguide/dep8.yes"
+file="/var/plexguide/dep9.yes"
 if [ -e "$file" ]
 then
     clear
@@ -42,7 +42,7 @@ show_menus() {
 clear
 echo "Your IP Address: " hostname -I | hostname -I | awk '{print $1}'
 cat << EOF
-PlexGuide.com Installer V4 (17.11.22-3) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.11.26) | Written By: Admin9705 & Deiteq
 ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
 
 GOOGLE DRIVE ******************************************************
@@ -97,7 +97,7 @@ read_options(){
     9)
         bash /opt/plexguide/scripts/menus/mine/mining.sh
         clear
-        ;; 
+        ;;
 
   10)
         clear

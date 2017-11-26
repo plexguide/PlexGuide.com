@@ -59,7 +59,7 @@ clear
 
 #Prevents this script from running again
   mkdir /var/plexguide
-  touch /var/plexguide/dep8.yes
+  touch /var/plexguide/dep9.yes
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
@@ -75,6 +75,9 @@ echo
 curl -sSL https://get.docker.com | sh
 curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+
++## Creates PlexGuide Network
+ +docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide
 
 ## Installs Portainer
 docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
