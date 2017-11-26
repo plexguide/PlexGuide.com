@@ -5,7 +5,7 @@ services:
    image: linuxserver/sabnzbd:unstable
    container_name: sabnzbd
    ports:
-     - "127.0.0.1:8090:8080"
+     - "8090:8080"
    volumes:
      - /opt/appdata/sabnzbd:/config
      - /mnt/sab/complete:/complete
