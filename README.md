@@ -28,7 +28,8 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
 
 ### Required Prior
 
-- GSuite Google Drive (https://gsuite.google.com) - (Ignore the 5 Users Requirements; Trust Me on This)
+- GSuite Google Drive (https://gsuite.google.com) 
+  - Ignore the 5 Users Requirement; Trust Me on This
   - ***Never*** buy an EBay Google Account! Sellers own your information and ***YOU DO NOT CONTROL IT***!
 - Server
   - Dedicated (Pending Recommendations Link)
