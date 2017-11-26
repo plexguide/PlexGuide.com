@@ -127,6 +127,7 @@ read_options(){
   ;;
   13)
   docker-compose -f /opt/plexguide/scripts/docker/network.yml up -d
+  ;;
   14)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
