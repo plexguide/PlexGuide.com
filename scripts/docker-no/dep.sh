@@ -7,29 +7,51 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
+    clear
+    echo "Dependency Programs Being Installed:"
+    echo ""
+    echo "Screen"
     yes | apt-get install screen 1>/dev/null 2>&1
+    echo "System Update"
     yes | apt-get update 1>/dev/null 2>&1
+    echo "Nano"
     yes | apt-get install nano 1>/dev/null 2>&1
+    echo "Fuse"
     yes | apt-get install fuse 1>/dev/null 2>&1
+    echo "Man-DB"
     yes | apt-get install man-db 1>/dev/null 2>&1
+    echo "Unzip"
     yes | apt-get install unzip 1>/dev/null 2>&1
+    echo "Python"
     yes | apt-get install python 1>/dev/null 2>&1
+    echo "Curl"
     yes | apt-get install curl 1>/dev/null 2>&1
+    echo "OpenSSH Server"
     yes | apt-get install openssh-server 1>/dev/null 2>&1
+    echo "UnionFS Fuse"
     yes | apt-get install unionfs-fuse 1>/dev/null 2>&1
+    echo "DirMngr"
     yes | apt-get install dirmngr 1>/dev/null 2>&1
+    echo "Apt Transport HTTPS"
     yes | apt-get install apt-transport-https 1>/dev/null 2>&1
+    echo "CA Certificates"
     yes | apt-get install ca-certificates 1>/dev/null 2>&1
+    echo ""
+    echo "Software Properties Common"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
+    echo "WGet"
     yes | apt-get install wget 1>/dev/null 2>&1
 
+echo ""
+echo "Installing Support Programs & Making Directories"
 ## off by default
-wget https://minergate.com/download/deb-cli -O minergate-cli.deb
-dpkg -i minergate-cli.deb
+wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
+dpkg -i minergate-cli.deb 1>/dev/null 2>&1
 
 ## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
 clear
 #important folders
+
   mkdir /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
 
@@ -67,22 +89,29 @@ clear
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
   bash /opt/plexguide/scripts/basic-env.sh
 
+  echo ""
+  echo "Installing Docker & Docker Compose (This May Take Awhile - Standyby)"
 # Install Docker and Docker Composer / Checks to see if is installed also
-clear
-echo "Note, if you get a message about docker already installed and the 20 sec sleep"
-echo "warning, just ignore it and let the 20 seconds go by."
-echo
 curl -sSL https://get.docker.com | sh
 curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
+echo ""
+echo "Created PlexGuide Network"
+
 +## Creates PlexGuide Network
  +docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide
+
+ echo ""
+ echo "Installing Portainer (This May Take Awhile - Standby)"
 
 ## Installs Portainer
 docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
 
 ############################################# Install a Post-Docker Fix ###################### START
+
+echo ""
+echo "Finishing Up!"
 
 ## Create the Post-Docker Fix Script
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
