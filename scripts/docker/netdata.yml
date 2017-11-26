@@ -8,7 +8,7 @@ services:
      - /sys:/host/sys:ro
      - /proc:/host/proc:ro
   ports:
-     - "19999:19999"
+     - 19999:19999
    restart: always
    environment:
      - PUID=1001    
