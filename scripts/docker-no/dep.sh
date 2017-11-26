@@ -8,7 +8,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
     clear
-    echo "Dependency Programs Being Installed:"
+    echo "Programs & Updates Installed:"
     echo ""
     echo "Screen"
     yes | apt-get install screen 1>/dev/null 2>&1
@@ -36,14 +36,13 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install apt-transport-https 1>/dev/null 2>&1
     echo "CA Certificates"
     yes | apt-get install ca-certificates 1>/dev/null 2>&1
-    echo ""
     echo "Software Properties Common"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "WGet"
     yes | apt-get install wget 1>/dev/null 2>&1
 
 echo ""
-echo "Installing Support Programs & Making Directories"
+echo "Installing Supporting Programs - Directories & Permissions"
 ## off by default
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
 dpkg -i minergate-cli.deb 1>/dev/null 2>&1
@@ -92,21 +91,21 @@ clear
   echo ""
   echo "Installing Docker & Docker Compose (This May Take Awhile - Standyby)"
 # Install Docker and Docker Composer / Checks to see if is installed also
-curl -sSL https://get.docker.com | sh
-curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
+curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
 chmod +x /usr/local/bin/docker-compose
 
 echo ""
 echo "Created PlexGuide Network"
 
 +## Creates PlexGuide Network
- +docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide
+ +docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
  echo ""
  echo "Installing Portainer (This May Take Awhile - Standby)"
 
 ## Installs Portainer
-docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
+docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
