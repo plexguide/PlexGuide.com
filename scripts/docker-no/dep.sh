@@ -70,6 +70,12 @@ dpkg -i minergate-cli.deb 1>/dev/null 2>&1
   mkdir -p /mnt/sab/nzb
   chmod 777 /mnt/sab/nzb
 
+  mkdir -p /mnt/move/tv
+  chmod 777 /mnt/move/tv
+
+  mkdir -p /mnt/move/movies
+  chmod 777 /mnt/move/movies
+
   mkdir -p /opt/.environments 
   chmod 777 /opt/.environments
 
