@@ -16,5 +16,4 @@ services:
    networks:
       plexguide:
         ipv4_address: 172.24.0.5
-          external:
-            name: plexguide
+          external: plexguide
