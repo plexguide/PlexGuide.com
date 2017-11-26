@@ -42,11 +42,14 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
 2. With a GITHUB login, did you know that you can edit our wiki pages?! Yes, you can make correctons, add snapshots or expand on anytopic. IF you make an update, you'll save us time and help others! Some users have already helped us!
 
 **A. Pre-Preparation:**
- 1. Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
- 2. Have one type of Server Ready!
-   - Dedicated
-   - VPS
-   - Home Solution via Ubuntu or VMWare ESXI / Fusion / Workstation (Need a DD-WRT Router and Duck DNS)
+1. Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
+2. Have a Dedicated, VPS, or Home Solution Ready!
+3. Own a Domain Name 
+  - test
+  
+- Domains
+  - Paid
+  - Free
 
 **B. Preparation:**
  1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
