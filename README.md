@@ -36,7 +36,7 @@ Build an operational-automated server that mounts your Google Drive, while utili
 
 *Either a Free or Paid Domain*
 - Paid Domains
-    - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](http://null)
+    - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - Alternate Services - As long as you know how to configure it
 - Free Domains
     - [FreeNom.com](https://freenom.com) - Visit the [PlexGuide FreeNom Wiki](http://null)
