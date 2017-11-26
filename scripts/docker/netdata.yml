@@ -14,3 +14,7 @@ services:
    environment:
      - PUID=1001    
      - PGID=1001
+networks:
+  default:
+    external:
+      name: plexguide

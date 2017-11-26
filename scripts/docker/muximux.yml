@@ -16,3 +16,7 @@ services:
      - PGID=1001
    restart:
      always
+networks:
+  default:
+    external:
+      name: plexguide

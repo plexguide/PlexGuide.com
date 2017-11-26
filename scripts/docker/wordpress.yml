@@ -16,3 +16,7 @@ services:
       - my-wpdb:mysql
     environment:
       WORDPRESS_DB_PASSWORD: SUPERSTrongWp@$$
+networks:
+  default:
+    external:
+      name: plexguide
