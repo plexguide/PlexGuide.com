@@ -35,6 +35,10 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
   - Dedicated (Pending Recommendations Link)
   - VPS (Pending Recommendations Link)
   - Home via Ubuntu or VMWare ESXI / Fusion / Workstation (you'll need a DD-WRT Router and Duck DNS)
+- Domain Name
+  - Purchased Domain through (https://godaddy.com) 
+    - Guide to Configure Your Domain to your IPV4 Address
+  - Free Domain through http://freenom.com
 
 ### Preparation, Installation & Configuration 
 1. Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
