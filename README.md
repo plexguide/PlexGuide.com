@@ -65,7 +65,9 @@ plexguide
 ```
   
 **E. Configuration**
- - Install & Configure Either the [RClone Unencrypted Version](http://unrclone.plexguide.com) or the [RClone Encrypted Version](http://enrclone.plexguide.com)   
+ - Install & Configure (Select Only One)
+   - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
+   - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com)
  - [Configure Plex](http://plex.plexguide.com)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
