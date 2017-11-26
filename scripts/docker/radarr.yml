@@ -5,15 +5,17 @@ services:
    image: linuxserver/radarr
    container_name: radarr
    ports:
-     - 7878:7878
+     - "127.0.0.1:7878:7878"
    volumes:
      - /opt/appdata/radarr:/config
      - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
-     - PUID=0
+     - PUID=0   
      - PGID=0
+     - VIRTUAL_HOST=radarr.*
+     - VIRTUAL_PORT=7878
    restart:
      always
 networks:

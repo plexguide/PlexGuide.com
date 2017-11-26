@@ -10,10 +10,9 @@ services:
    restart: always
    ports:
      - "127.0.0.1:8181:8181"
-     - "192.168.1.0:8181:8181"
    environment:
-     - PUID=1001    
-     - PGID=1001
+     - PUID=1000   
+     - PGID=1000
      - VIRTUAL_HOST=plexpy.*
      - VIRTUAL_PORT=8181
 networks:

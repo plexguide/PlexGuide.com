@@ -4,9 +4,8 @@ services:
  emby:
         image: emby/embyserver
         container_name: emby
-        # net: host
         ports:
-            - 8096:8096
+            - "127.0.0.1:8096:8096"
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /opt/appdata/embyserver:/config
@@ -15,7 +14,7 @@ services:
             - /:/yourcomputer
         environment:
             - VIRTUAL_PORT=8096
-            - VIRTUAL_HOST=emby.htpc
+            - VIRTUAL_HOST=emby.*
             - AUTO_UPDATES_ON=true
             - PUID=1000
             - PGID=1000

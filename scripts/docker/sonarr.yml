@@ -5,7 +5,7 @@ services:
    image: linuxserver/sonarr
    container_name: sonarr
    ports:
-     - 8989:8989
+     - "127.0.0.1:8989:8989"
    volumes:
      - /opt/appdata/sonarr:/config
      - /:/yourcomputer
@@ -14,6 +14,8 @@ services:
    environment:
      - PUID=0
      - PGID=0
+     - VIRTUAL_HOST=sonarr.*
+     - VIRTUAL_PORT=8181
    restart:
      always
 networks:

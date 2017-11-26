@@ -14,8 +14,8 @@ services:
      - /mnt/rutorrent/downloads:/downloads
      - /:/yourcomputer
    environment:
-     - PUID=1001
-     - PGID=1001
+     - PUID=1000
+     - PGID=1000
    restart:
      always
 networks:

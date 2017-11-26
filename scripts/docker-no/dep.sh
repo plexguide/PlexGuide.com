@@ -113,10 +113,13 @@ docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/nu
 ## Installs Portainer
 docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
+
 ############################################# Install a Post-Docker Fix ###################### START
 
 echo ""
 echo "Finishing Up!"
+
+
 
 ## Create the Post-Docker Fix Script
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
@@ -142,7 +145,7 @@ docker restart plexpublic
 exit 0;
 EOF
 
-chmod 755 /opt/dockerfix.sh
+chmod 755 /opt/appdata/plexguide/dockerfix.sh
 
 ## Create the Post-Docker Fix Service
 tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
@@ -154,7 +157,7 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     Type=simple
     User=root
     Group=root
-    ExecStart=/bin/bash /opt/plexguide/scripts/dockerfix.sh
+    ExecStart=/bin/bash /opt/appdata/plexguide/dockerfix.sh
     TimeoutStopSec=20
     KillMode=process
     RemainAfterExit=yes

@@ -9,13 +9,14 @@ services:
      - /opt/appdata/portainer:/data
      - /var/run/docker.sock:/var/run/docker.sock
    ports:
-     - 9000:9000
+     - "127.0.0.1:9000:9000"
    restart:
      always
-networks:
-  default:
-    external:
-      name: plexguide
+   environment:
+     - PUID=1000   
+     - PGID=1000
+     - VIRTUAL_HOST=portainer.*
+     - VIRTUAL_PORT=9000
 networks:
   default:
     external:

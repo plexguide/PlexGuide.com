@@ -5,9 +5,9 @@ services:
    image: linuxserver/sabnzbd:unstable
    container_name: sabnzbd
    ports:
-     - 8090:8080
+     - "127.0.0.1:8090:8080"
    volumes:
-     - /opt/appdata/sabnzbd:/conifg
+     - /opt/appdata/sabnzbd:/config
      - /mnt/sab/complete:/complete
      - /mnt/sab/incomplete:/incomplete
      - /mnt/sab/nzb:/nzb
@@ -16,6 +16,8 @@ services:
    environment:
      - PUID=0
      - PGID=0
+     - VIRTUAL_HOST=sabnzbd.*
+     - VIRTUAL_PORT=8080
    restart:
      always
 networks:
