@@ -1,6 +1,6 @@
 ## Making the directories and setting the permissions
-mkdir /mnt/unionfs 1>&2
-mkdir /mnt/move 1>&2
+mkdir -p /mnt/unionfs
+mkdir -p /mnt/move
 chmod 755 /mnt/move
 chmod 755 /mnt/unionfs
 
@@ -17,14 +17,6 @@ cp rclone.1 /usr/local/share/man/man1/
 mandb
 cd .. && sudo rm -r rclone*
 
-## Making rclone directory
-mkdir /mnt/gdrive 2>/dev/null
-chmod 755 /mnt/gdrive
-chown root /mnt/gdrive
-
-## Make Place for Starup SCripts
-mkdir /opt/appdata/plexguide 2>/dev/null
-chmod 755 /opt/appdata/plexguide 2>/dev/null
 
 ## Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf

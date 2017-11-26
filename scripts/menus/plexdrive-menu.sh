@@ -86,7 +86,7 @@ read_options(){
           ;;
     5)
         	clear
-        	echo Remember, restart by typing:  plexguide
+        	echo Remember, restart by typing: plexguide
         	exit 0;;
     6)
           bash /opt/plexguide/scripts/docker-no/plexdrive4-alt.sh

@@ -47,48 +47,53 @@ echo "Installing Supporting Programs - Directories & Permissions (Please Wait)"
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
 dpkg -i minergate-cli.deb 1>/dev/null 2>&1
 
-## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
-#important folders
 
-  mkdir /mnt/plexdrive4 1>/dev/null 2>&1
+## Create Directory Structure - Goal is to move everything here
+
+  mkdir -p /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
 
-  mkdir /opt/plexguide-startup 1>/dev/null 2>&1
+  mkdir -p /opt/plexguide-startup
   chmod 755 /opt/plexguide-startup
 
-  mkdir /mnt/sab 1>/dev/null 2>&1
-  chmod 777 /mnt/sab
-
-  mkdir /mnt/sab/incomplete 1>/dev/null 2>&1
+  mkdir -p /mnt/sab/incomplete
   chmod 777 /mnt/sab/incomplete
 
-  mkdir /mnt/sab/complete 1>/dev/null 2>&1
-  chmod 777 /mnt/sab/complete
-
-  mkdir /mnt/sab/complete/tv 1>/dev/null 2>&1
+  mkdir -p /mnt/sab/complete/tv
   chmod 777 /mnt/sab/complete/tv
 
-  mkdir /mnt/sab/complete/movies 1>/dev/null 2>&1
+  mkdir -p /mnt/sab/complete/movies
   chmod 777 /mnt/sab/complete/movies
 
-  mkdir /mnt/sab/nzb 1>/dev/null 2>&1
+  mkdir -p /mnt/sab/nzb
   chmod 777 /mnt/sab/nzb
 
-  mkdir /opt/.environments 1>/dev/null 2>&1
+  mkdir -p /opt/.environments 
   chmod 777 /opt/.environments
 
+  ## location for rclone
+  mkdir -p /mnt/gdrive
+  chmod 755 /mnt/gdrive
+  chown root /mnt/gdrive
+
+  ## location for startup scripts
+  mkdir -p /opt/appdata/plexguide
+  chmod 755 /opt/appdata/plexguide
+
 #Prevents this script from running again
-  mkdir /var/plexguide 1>/dev/null 2>&1
+  mkdir -p /var/plexguide
   touch /var/plexguide/dep9.yes
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
-  #Adding basic environment file
+#Adding basic environment file
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
+
   bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
   echo ""
   echo "Installing Docker & Docker Compose (Please Standyby)"
+  
 # Install Docker and Docker Composer / Checks to see if is installed also
 curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
 curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
