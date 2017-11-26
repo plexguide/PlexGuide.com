@@ -94,7 +94,7 @@ dpkg -i minergate-cli.deb 1>/dev/null 2>&1
   chmod 755 /mnt/move
   chmod 755 /mnt/unionfs
 
-echo "2. Installing RClone & Service (Please Wait)"
+echo "2. Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
   bash /opt/plexguide/scripts/docker-no/rclone-preinstall.sh
