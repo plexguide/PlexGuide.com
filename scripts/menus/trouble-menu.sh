@@ -130,7 +130,7 @@ read_options(){
       clear
       rm -r /var/plexguide/dep*
       echo
-      echo "*** Exit this menu and Update, then restart the program ***"
+      echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
         ;;
