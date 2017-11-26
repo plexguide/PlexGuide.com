@@ -13,4 +13,4 @@ services:
    restart:
      always
    networks:
-      - plexguide
+     ipv4_address: 172.18.0.25
