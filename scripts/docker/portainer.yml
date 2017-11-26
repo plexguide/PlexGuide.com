@@ -13,3 +13,6 @@ services:
 # ensures this container starts up when required to
    restart:
      always
+   networks:
+      plexguide:
+        ipv4_address: 172.24.0.5
