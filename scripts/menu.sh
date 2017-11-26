@@ -42,24 +42,25 @@ show_menus() {
 clear
 echo "Your IP Address: " hostname -I | hostname -I | awk '{print $1}'
 cat << EOF
-PlexGuide.com Installer V4 (17.11.26) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.11.27) | Written By: Admin9705 & Deiteq
 ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
 
+PLEASE DONATE LITTLE CPU POWER ************************************
+1. Donate   :  Works >>> Help Utilize a little CPU to mine coins.
+
 GOOGLE DRIVE ******************************************************
-1. RClone   :  Media Syncs to Google Drive
-2. PlexDrive:  Prevent G-Drive Plex Scan Bans
+2. RClone   :  Media Syncs to Google Drive
+3. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
-SERVER ************************************************************
-3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. BETA BETA:  Install Working Beta Programs! No Guides, YMLs Work!
-5. Tools    :  Troubleshoot Problems & Provides Helpful Information
-6. Updates  :  Update PlexGuide for New Features & Fixes
-7. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
-8. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
+PROGRAMS **********************************************************
+4. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
+5. BETA BETA:  Install Working Beta Programs! No Guides, YMLs Work!
 
-DONATE (Off By Default - You can turn this off or on anytime) *****
-9. Donate   :  Works >>> Help Utilize a little CPU to mine coins.
-
+TOOLS & T-SHOOT ***************************************************
+6. Tools    :  Troubleshoot Problems & Provides Helpful Information
+7. Updates  :  Update PlexGuide for New Features & Fixes
+8. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
+9. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
 EOF
 
@@ -69,35 +70,35 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
 	case $choice in
-	1)
+    1)
+        bash /opt/plexguide/scripts/menus/mine/mining.sh
+        clear
+        ;;
+	2)
         clear
 	      bash /opt/plexguide/scripts/menus/rclone-info-menu.sh
         ;;
-  2)
+    3)
         clear
         bash /opt/plexguide/scripts/menus/plexdrive-info-menu.sh
         ;;
-	3)
+	4)
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
-    4)
+    5)
         bash /opt/plexguide/scripts/menus/programs-beta.sh
         clear
         ;;
-  5)
+    6)
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-  6)
+    7)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-    9)
-        bash /opt/plexguide/scripts/menus/mine/mining.sh
-        clear
-        ;;
     10)
         clear
         echo Remember, restart by typing:  plexguide

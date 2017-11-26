@@ -26,21 +26,9 @@ two(){
         pause
 }
 
-#check to see if /var/plexguide/dep exists - if not, install dependencies
-
-file="/var/plexguide/dep8.yes"
-if [ -e "$file" ]
-then
-    clear
-else
-    bash /opt/plexguide/scripts/docker-no/dep.sh
-fi
-
-
 # function to display menus
 show_menus() {
 clear
-echo "Your IP Address: " | hostname -I
 cat << EOF
 Helping mining coins with a small amount of CPU helps out.  By default,
 this is off.  To see how it impacts your server, install NETDATA and

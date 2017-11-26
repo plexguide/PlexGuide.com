@@ -131,13 +131,10 @@ docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/nu
 ## Installs Portainer
 docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
-
 ############################################# Install a Post-Docker Fix ###################### START
 
 echo ""
 echo "Finishing Up!"
-
-
 
 ## Create the Post-Docker Fix Script
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
@@ -215,16 +212,16 @@ Pre-Install Checks Complete!!!
 If your kind enough to DONATE; please enable a tiny amount of CPU to mine
 a-bit of coins.  You can turn this on or off (off by default) at anytime and,
 if you allow it; you can allow a certain amount of your CPU to be utilized! It
-helps motivate the team in the end!
+helps motivate us!
 
-If you wish to contribute your skills (for the lack of ours), please let us
-know anytime.  If you spot any issues, please post the ISSUES portion of
-Github.  Understand we'll do our best to respond - we have our lives too! 
+If you wish to contribute your skills (for the lack of ours); please let us
+know anytime.  If you spot any issues, please post in the ISSUES portion of
+GitHub.  Understand we'll do our best to respond - we have our lives too! 
 Just know that this project is meant to make your life easier, while at the
 same time; we are learning and having fun!
 
 Thank You!
-PlexGuide.com Team
+The PlexGuide.com Team
 
 EOF
 read -n 1 -s -r -p "Press any key to continue"
