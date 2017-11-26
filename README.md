@@ -8,7 +8,7 @@
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo2.PNG" alt="PlexGuide.com Logo"/>
 </p>
 
-#### Basic information
+### Basic information
 - Written By Admin9705 and Deiteq
 - Reddit Link (Great for Discussion): http://reddit.plexguide.com
 
