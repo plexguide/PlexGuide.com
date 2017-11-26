@@ -42,54 +42,53 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install wget 1>/dev/null 2>&1
 
 echo ""
-echo "Installing Supporting Programs - Directories & Permissions"
+echo "Installing Supporting Programs - Directories & Permissions (Please Wait)"
 ## off by default
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
 dpkg -i minergate-cli.deb 1>/dev/null 2>&1
 
 ## Example of execution CMD is minergate-cli -user <YOUR@EMAIL.KAPPA> -bcn 4
-clear
 #important folders
 
-  mkdir /mnt/plexdrive4
+  mkdir /mnt/plexdrive4 1>/dev/null 2>&1
   chmod 755 /mnt/plexdrive4
 
-  mkdir /opt/plexguide-startup
+  mkdir /opt/plexguide-startup 1>/dev/null 2>&1
   chmod 755 /opt/plexguide-startup
 
-  mkdir /mnt/sab
+  mkdir /mnt/sab 1>/dev/null 2>&1
   chmod 777 /mnt/sab
 
-  mkdir /mnt/sab/incomplete
+  mkdir /mnt/sab/incomplete 1>/dev/null 2>&1
   chmod 777 /mnt/sab/incomplete
 
-  mkdir /mnt/sab/complete
+  mkdir /mnt/sab/complete 1>/dev/null 2>&1
   chmod 777 /mnt/sab/complete
 
-  mkdir /mnt/sab/complete/tv
+  mkdir /mnt/sab/complete/tv 1>/dev/null 2>&1
   chmod 777 /mnt/sab/complete/tv
 
-  mkdir /mnt/sab/complete/movies
+  mkdir /mnt/sab/complete/movies 1>/dev/null 2>&1
   chmod 777 /mnt/sab/complete/movies
 
-  mkdir /mnt/sab/nzb
+  mkdir /mnt/sab/nzb 1>/dev/null 2>&1
   chmod 777 /mnt/sab/nzb
 
-  mkdir /opt/.environments
+  mkdir /opt/.environments 1>/dev/null 2>&1
   chmod 777 /opt/.environments
 
 #Prevents this script from running again
-  mkdir /var/plexguide
+  mkdir /var/plexguide 1>/dev/null 2>&1
   touch /var/plexguide/dep9.yes
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
   #Adding basic environment file
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
-  bash /opt/plexguide/scripts/basic-env.sh
+  bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
   echo ""
-  echo "Installing Docker & Docker Compose (This May Take Awhile - Standyby)"
+  echo "Installing Docker & Docker Compose (Please Standyby)"
 # Install Docker and Docker Composer / Checks to see if is installed also
 curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
 curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
@@ -102,7 +101,7 @@ echo "Created PlexGuide Network"
  +docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
  echo ""
- echo "Installing Portainer (This May Take Awhile - Standby)"
+ echo "Installing Portainer (Please Wait)"
 
 ## Installs Portainer
 docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
@@ -174,3 +173,28 @@ else
     echo
     bash /opt/plexguide/scripts/docker-no/continue.sh
 fi
+
+clear
+cat << EOF
+~~~~~~~~~~~~~~
+  QUICK NOTE
+~~~~~~~~~~~~~~
+
+Pre-Install Checks Complete!!!
+
+If your kind enough to DONATE; please enable a tiny amount of CPU to mine
+a-bit of coins.  You can turn this on or off (off by default) at anytime and,
+if you allow it; you can allow a certain amount of your CPU to be utilized! It
+helps motivate the team in the end!
+
+If you wish to contribute your skills (for the lack of ours), please let us
+know anytime.  If you spot any issues, please post the ISSUES portion of
+Github.  Understand we'll do our best to respond - we have our lives too! 
+Just know that this project is meant to make your life easier, while at the
+same time; we are learning and having fun!
+
+Thank You!
+PlexGuide.com Team
+
+EOF
+read -n 1 -s -r -p "Press any key to continue"
