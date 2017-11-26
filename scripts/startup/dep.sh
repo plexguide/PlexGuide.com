@@ -119,11 +119,13 @@ curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
 curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
 chmod +x /usr/local/bin/docker-compose
 
+echo ""
 echo "Created PlexGuide Network"
 
 ## Creates PlexGuide Network
 docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
+ echo ""
  echo "Installing Portainer (Please Wait)"
 
 ## Installs Portainer
@@ -135,8 +137,10 @@ docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 
 echo ""
 echo "Finishing Up!"
 
+
+
 ## Create the Post-Docker Fix Script
-tee "/opt/appdata/plexguide/dockerfix.sh" > /dev/null <<EOF
+tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
 #!/bin/bash
 
 x=30
@@ -185,7 +189,8 @@ systemctl daemon-reload
 systemctl enable dockerfix
 systemctl start dockerfix
 
-read -n 1 -s -r -p "Press any key to continue"
+clear
+read -n 1 -s -r -p "Press any key to continue "
 ############################################# Install a Post-Docker Fix ###################### END
 
 else

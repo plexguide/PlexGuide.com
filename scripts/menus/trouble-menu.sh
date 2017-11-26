@@ -38,8 +38,9 @@ Tools & Troubleshooting 101 Menu
 3. UnionFS Test    :  Verify UnionFS is Operational
 4. Uncrypted Move  :  View status of the Unencrypted SYNC
 5. Encrypted Move  :  View status of the Encrypted SYNC
-6. Start Re-Install:  Forces Main Basic Reinstall
-                      ***********************************
+                      **************************************
+6. Start Re-Install:  Forces Startup Reinstall (Last Resort)
+                      **************************************
 7. Docker          :  Force Reinstall of Docker
 8. Portainer       :  Force Reinstall of Portainer
 
@@ -132,6 +133,7 @@ read_options(){
       echo "*** Exit this menu and Update, then restart the program ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
+      exit 0
         ;;
     7)
       # Install Docker and Docker Composer / Checks to see if is installed also
