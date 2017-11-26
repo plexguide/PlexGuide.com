@@ -69,30 +69,7 @@ plexguide
  3. [Configure Plex](http://plex.plexguide.com)
  4. [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  5. [Configure Portainer](http://portainer.plexguide.com)
+ 6. [Port Numbers Reminder](http://wiki.plexguide.com)
 
 ### Final Note
 See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or [REDDIT](http://reddit.plexguide.com).  Your feedback helps us and you!
-
-### Port Numbers for Programs
-
-- Port 5050   CouchPotato
-- Port 8096   Emby
-- Port 8150   Headphones
-- Port 5075   Hydra
-- Port 8015   Muximux
-- Port 19999  NetData
-- Port 6789   NZBGET
-- Port 3579   Ombi v3
-- Port 8020   Organizer
-- Port 32400  Plex
-- Port 8181   PlexPy
-- Port 9000   Portainer
-- Port 7878   Radarr
-- Port 8085   RuTorrent
-- Port 8081   Sickrage
-- Port 8989   Sonarr
-- Port 8090   SABNZBD
-- Port 9091   Transmission
-- Port 80     Wordpress
-
-*In Addition Installs* - Docker, PlexDrive, RClone, UnionFS
