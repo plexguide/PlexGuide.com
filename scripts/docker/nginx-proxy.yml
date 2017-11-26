@@ -3,7 +3,7 @@ version: '2'
 services:
  nginx-proxy:
    image: jwilder/nginx-proxy:latest
-   container_name: nginx-proxy
+   container_name: nginx
    volumes:
      - ./mysite.template:/etc/nginx/conf.d/mysite.template
    ports:
