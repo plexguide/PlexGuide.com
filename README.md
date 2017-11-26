@@ -69,7 +69,7 @@ plexguide
  3. [Configure Plex](http://plex.plexguide.com)
  4. [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  5. [Configure Portainer](http://portainer.plexguide.com)
- 6. [Port Numbers Reminder](http://wiki.plexguide.com)
+ 6. [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
 ### Final Note
 See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or [REDDIT](http://reddit.plexguide.com).  Your feedback helps us and you!
