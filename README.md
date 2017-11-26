@@ -9,8 +9,8 @@
 </p>
 
 ### Basic Information
-- Written By Admin9705 and Deiteq
-- Reddit Link (Great for Discussion): http://reddit.plexguide.com
+- Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
+- Reddit Discussion Link: http://reddit.plexguide.com
 
 ### Want to Donate? Everybit Helps!
 
