@@ -23,20 +23,21 @@
 
 Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
 
-### Required
-
-UB 16/17 & Google Drive (https://gsuite.google.com)
-- ***Never*** buy an EBay Google Account! Buy your own. Sellers own your information and **YOU DO NOT CONTROL IT**
-  - [Article 1](https://community.ebay.com/t5/Bidding-Buying/Seller-of-Google-Drive-Unlimited-Storage-problem/td-p/27058292) | [Article 2](https://www.reddit.com/r/PleX/comments/6crdjv/google_is_disabling_certain_gsuites_accounts/)
-  
-- Ignore the 5 User Requiment; it works with 1... trust me!
-
 ### Structured For
 
 PlexGuide is structured and confirmed to work on Dedicated Server, VPS, VMWare (using Ubuntu from the main site) and is set to be used on a NEW SERVER.  If you are attempting anything other than this, you can test... but may have issues.  Support for anything other than this will be ignored.  
 
 ### Really New To Linux?
 It's ok! If you mess up something, reinstall and try again.  See what if your actions was a mistake or a bug.  If so, document it and post in the issues.  When known, we update the guides to help others!  Remember, you only learn through frustration... but alot has been eliminated for you to make your life easier.  
+
+### Required Prior
+
+- GSuite Google Drive (https://gsuite.google.com) - (Ignore the 5 Users Requirements; Trust Me on This)
+  - ***Never*** buy an EBay Google Account! Buy your own! Sellers own your information and **YOU DO NOT CONTROL IT**!
+- Server
+  - Dedicated (Pending Recommendations Link)
+  - VPS (Pending Recommendations Link)
+  - Home via Ubuntu or VMWare ESXI / Fusion / Workstation (you'll need a DD-WRT Router and Duck DNS)
 
 ### Preparation, Installation & Configuration 
 Note 1: Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
