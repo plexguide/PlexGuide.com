@@ -1,9 +1,9 @@
 ---
 version: '2'
 services:
- netdata:
+ nginx:
    image: jwilder/nginx-proxy
-   container_name: netdata
+   container_name: nginx
    volumes:
      - /etc/localtime:/etc/localtime:ro
      - /opt/nginx-proxy:/etc/nginx/certs:ro
