@@ -7,21 +7,21 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
-    yes | apt-get install screen
-    yes | screen apt-get update
-    yes | screen apt-get install nano
-    yes | screen apt-get install fuse
-    yes | screen apt-get install man-db
-    yes | screen apt-get install unzip
-    yes | screen apt-get install python
-    yes | screen apt-get install curl
-    yes | screen apt-get install openssh-server
-    yes | screen apt-get install unionfs-fuse
-    yes | screen apt-get install dirmngr
-    yes | screen apt-get install apt-transport-https
-    yes | screen apt-get install ca-certificates
-    yes | screen apt-get install software-properties-common
-    yes | screen apt-get install wget
+    yes | apt-get install screen 1>/dev/null 2>&1
+    yes | apt-get update 1>/dev/null 2>&1
+    yes | apt-get install nano 1>/dev/null 2>&1
+    yes | apt-get install fuse 1>/dev/null 2>&1
+    yes | apt-get install man-db 1>/dev/null 2>&1
+    yes | apt-get install unzip 1>/dev/null 2>&1
+    yes | apt-get install python 1>/dev/null 2>&1
+    yes | apt-get install curl 1>/dev/null 2>&1
+    yes | apt-get install openssh-server 1>/dev/null 2>&1
+    yes | apt-get install unionfs-fuse 1>/dev/null 2>&1
+    yes | apt-get install dirmngr 1>/dev/null 2>&1
+    yes | apt-get install apt-transport-https 1>/dev/null 2>&1
+    yes | apt-get install ca-certificates 1>/dev/null 2>&1
+    yes | apt-get install software-properties-common 1>/dev/null 2>&1
+    yes | apt-get install wget 1>/dev/null 2>&1
 
 ## off by default
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb
