@@ -44,7 +44,7 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install wget 1>/dev/null 2>&1
 
 echo ""
-echo "Installing Supporting Programs - Directories & Permissions (Please Wait)"
+echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 ## off by default
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
 dpkg -i minergate-cli.deb 1>/dev/null 2>&1
@@ -94,8 +94,7 @@ dpkg -i minergate-cli.deb 1>/dev/null 2>&1
   chmod 755 /mnt/move
   chmod 755 /mnt/unionfs
 
-echo ""
-echo "Installing RClone & Service (Please Wait)"
+echo "2. Installing RClone & Service (Please Wait)"
 
 #Installing RClone and Service
   bash /opt/plexguide/scripts/docker-no/rclone-preinstall.sh
@@ -111,30 +110,26 @@ echo "Installing RClone & Service (Please Wait)"
 
   bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
-  echo ""
-  echo "Installing Docker & Docker Compose (Please Standyby)"
+echo "3. Installing Docker & Docker Compose (Please Standyby)"
   
 # Install Docker and Docker Composer / Checks to see if is installed also
 curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
 curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
 chmod +x /usr/local/bin/docker-compose
 
-echo ""
-echo "Created PlexGuide Network"
+echo "4. Created the PlexGuide Network for Docker"
 
 ## Creates PlexGuide Network
 docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
- echo ""
- echo "Installing Portainer (Please Wait)"
+echo "5. Installing Portainer (Please Wait)"
 
 ## Installs Portainer
 docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-echo ""
-echo "Finishing Up!"
+echo "6. Finishing Up!"
 
 ## Create the Post-Docker Fix Script
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
@@ -186,17 +181,16 @@ systemctl daemon-reload
 systemctl enable dockerfix
 systemctl start dockerfix
 
-clear
-read -n 1 -s -r -p "Press any key to continue "
+read -n 1 -s -r -p "Finished - Press any key to continue "
 ############################################# Install a Post-Docker Fix ###################### END
 
 else
     echo No
     clear
-    echo "Install Aborted - You Failed to Agree"
+    echo "Install Aborted - You Failed to Agree to Install the Program!"
     echo
-    echo "You will be able to browse the program, but doing anything will cause"
-    echo "problems! Good luck!"
+    echo "You will be able to browse the programs but doing anything will cause"
+    echo "problems! Good Luck!"
     echo
     bash /opt/plexguide/scripts/docker-no/continue.sh
 fi
