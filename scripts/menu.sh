@@ -33,7 +33,7 @@ if [ -e "$file" ]
 then
     clear
 else
-    bash /opt/plexguide/scripts/startup/dep.sh
+    bash /opt/plexguide/scripts/docker-no/dep.sh
 fi
 
 
@@ -98,8 +98,7 @@ read_options(){
         bash /opt/plexguide/scripts/menus/mine/mining.sh
         clear
         ;;
-
-  10)
+    10)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;

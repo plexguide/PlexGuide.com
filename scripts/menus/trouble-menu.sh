@@ -133,7 +133,7 @@ read_options(){
       echo "*** Exit this menu and Update, then restart the program ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
-      exit 0
+      exit 0;;
         ;;
     7)
       # Install Docker and Docker Composer / Checks to see if is installed also
