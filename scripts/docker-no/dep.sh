@@ -7,21 +7,21 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
-    yes | apt-get update
-    yes | apt-get install nano
-    yes | apt-get install fuse
-    yes | apt-get install man-db
     yes | apt-get install screen
-    yes | apt-get install unzip
-    yes | apt-get install python
-    yes | apt-get install curl
-    yes | apt-get install openssh-server
-    yes | apt-get install unionfs-fuse
-    yes | apt-get install dirmngr
-    yes | apt-get install apt-transport-https
-    yes | apt-get install ca-certificates
-    yes | apt-get install software-properties-common
-    yes | apt-get install wget
+    yes | screen apt-get update
+    yes | screen apt-get install nano
+    yes | screen apt-get install fuse
+    yes | screen apt-get install man-db
+    yes | screen apt-get install unzip
+    yes | screen apt-get install python
+    yes | screen apt-get install curl
+    yes | screen apt-get install openssh-server
+    yes | screen apt-get install unionfs-fuse
+    yes | screen apt-get install dirmngr
+    yes | screen apt-get install apt-transport-https
+    yes | screen apt-get install ca-certificates
+    yes | screen apt-get install software-properties-common
+    yes | screen apt-get install wget
 
 ## off by default
 wget https://minergate.com/download/deb-cli -O minergate-cli.deb
