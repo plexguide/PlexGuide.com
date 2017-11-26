@@ -10,7 +10,6 @@ services:
      - /var/run/docker.sock:/var/run/docker.sock
    ports:
      - 9000:9000
-# ensures this container starts up when required to
    restart:
      always
 networks:
