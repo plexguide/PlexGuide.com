@@ -15,4 +15,4 @@ services:
      always
    networks:
       name: plexguide
-        ipv4_address: 172.24.0.5
+      ipv4_address: 172.24.0.5
