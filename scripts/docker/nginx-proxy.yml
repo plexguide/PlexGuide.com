@@ -18,5 +18,5 @@ services:
      - PUID=1000
      - PGID=1000
    networks:
-      plexguide:
-        ipv4_address: 172.18.0.25
+      name: plexguide
+      ipv4_address: 172.18.0.25
