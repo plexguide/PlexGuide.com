@@ -45,8 +45,8 @@ cat << EOF
 PlexGuide.com Installer V4 (17.11.27) | Written By: Admin9705 & Deiteq
 ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
 
-PLEASE DONATE LITTLE CPU POWER ************************************
-1. Donate   :  Works >>> Help Utilize a little CPU to mine coins.
+DONATE A LITTLE-BIT OF CPU POWER **********************************
+1. Donate   :  Works >>> Help Us Utilize a little CPU to Mine Coins
 
 GOOGLE DRIVE ******************************************************
 2. RClone   :  Media Syncs to Google Drive
@@ -57,8 +57,8 @@ PROGRAMS **********************************************************
 5. BETA BETA:  Install Working Beta Programs! No Guides, YMLs Work!
 
 TOOLS & T-SHOOT ***************************************************
-6. Tools    :  Troubleshoot Problems & Provides Helpful Information
-7. Updates  :  Update PlexGuide for New Features & Fixes
+6. Updates  :  Update PlexGuide for New Features & Fixes
+7. Tools    :  Troubleshoot Problems & Provides Helpful Information
 8. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
 9. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
@@ -91,14 +91,14 @@ read_options(){
         clear
         ;;
     6)
-        bash /opt/plexguide/scripts/menus/trouble-menu.sh
-        clear
-        ;;
-    7)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
+    7)
+        bash /opt/plexguide/scripts/menus/trouble-menu.sh
+        clear
+        ;;
     10)
         clear
         echo Remember, restart by typing:  plexguide
