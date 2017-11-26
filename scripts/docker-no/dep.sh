@@ -8,7 +8,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
     clear
-    echo "Programs & Updates Installed:"
+    echo "Welcome to the PlexGuide.com Installer"
     echo ""
     echo "Screen"
     yes | apt-get install screen 1>/dev/null 2>&1
@@ -161,6 +161,8 @@ systemctl daemon-reload
 systemctl enable dockerfix
 systemctl start dockerfix
 
+clear
+read -n 1 -s -r -p "Press any key to continue "
 ############################################# Install a Post-Docker Fix ###################### END
 
 else
