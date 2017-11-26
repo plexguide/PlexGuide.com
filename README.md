@@ -38,7 +38,7 @@ It's ok! If you mess up something, reinstall and try again.  See what if your ac
 
 ### Preparation, Installation & Configuration 
 1. Follow up the entire PlexGuide Wiki @ http://wiki.plexguide.com
-2. With a GITHUB login, you can edit our wiki pages?! Yes, you can make correctons, add snapshots or expand on anytopic. IF you make an update, you'll save us time and help others!
+2. With a GITHUB login, did you know that you can edit our wiki pages?! Yes, you can make correctons, add snapshots or expand on anytopic. IF you make an update, you'll save us time and help others! Some users have already helped us!
 
 **A. Preparation:**
  1. [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
