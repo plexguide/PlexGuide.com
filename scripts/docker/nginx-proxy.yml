@@ -1,38 +1,17 @@
 ---
-- name: "Get gforce uid"
-  shell: "id -u gforce"
-  register: uid
-
-- name: "Get gforce gid"
-  shell: "id -g gforce"
-  register: gid
-
-- name: Stop and remove any existing letsencrypt container
-  docker_container:
-    name: letsencrypt
-    state: absent
-
-- name: Create and start container
-  docker_container:
-    name: nginx-proxy
-    image: "jwilder/nginx-proxy"
-    pull: yes
-    published_ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/nginx-proxy:/etc/nginx/certs:ro"
-      - "/var/run/docker.sock:/tmp/docker.sock:ro"
-      - "/etc/nginx/vhost.d"
-      - "/usr/share/nginx/html"
-      - "/opt/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
-    labels:
-      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
-    networks:
-      - name: cloudbox
-        ipv4_address: 172.18.0.6
-        aliases:
-          - nginx-proxy
-    restart_policy: always
-    state: started
+version: '2'
+services:
+ netdata:
+   image: jwilder/nginx-proxy
+   container_name: netdata
+   volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - /opt/nginx-proxy:/etc/nginx/certs:ro
+     - /var/run/docker.sock:/tmp/docker.sock:ro
+   ports:
+     - "80:80"
+     - "443:443"
+   restart: always
+   environment:
+     - PUID=1000
+     - PGID=1000
