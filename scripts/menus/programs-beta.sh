@@ -44,8 +44,7 @@ Warning: NO SUPPORT! QUESTIONS WILL BE IGNORED!
 9.  DelugeVPN     | ** TESTING
 10. PlexDrive     | ** DO NOT MESS WITH! SUPER BETA
 11. Jackett       | ** TESTING
-12. Network       | ** Testing
-13. LetsEncrypt   | ** Testing
+12. LetsEncrypt   | ** Testing
 
 EOF
 }
@@ -55,7 +54,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 14 ];  Type [14] to Exit! " choice
+	read -p "Enter choice [ 1 - 13 ];  Type [13] to Exit! " choice
 	case $choice in
      1)
         echo ymlprogram couchpotato > /opt/plexguide/tmp.txt
@@ -127,9 +126,6 @@ read_options(){
   bash /opt/plexguide/scripts/docker-no/program-installer.sh
   ;;
   13)
-  docker-compose -f /opt/plexguide/scripts/docker/network.yml up -d
-  ;;
-  14)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
