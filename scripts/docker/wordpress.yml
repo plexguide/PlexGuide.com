@@ -11,11 +11,13 @@ services:
     volumes:
       - ./:/var/www/html
     ports:
-      - "80:80"
+      - "8200:80"
     links:
       - my-wpdb:mysql
     environment:
       WORDPRESS_DB_PASSWORD: SUPERSTrongWp@$$
+      - VIRTUAL_HOST=portainer.*
+      - VIRTUAL_PORT=80
 networks:
   default:
     external:
