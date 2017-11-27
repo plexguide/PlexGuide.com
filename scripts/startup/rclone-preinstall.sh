@@ -72,7 +72,7 @@ EOF
 sudo systemctl daemon-reload
 
 ## Create the Move Script
-rm -r /opt/appdata/plexguide/move.sh
+rm -r /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
 tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
@@ -150,8 +150,8 @@ EOF
 
 ## Enable UnionFS Service
 systemctl daemon-reload
-systemctl enable unionfs
-systemctl start unionfs
+systemctl enable unionfs 1>/dev/null 2>&1
+systemctl start unionfs 1>/dev/null 2>&1
 
 ## Create the Encrypted Move Script
 tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
