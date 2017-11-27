@@ -33,16 +33,17 @@ cat << EOF
 PlexGuide.com Installer/Upgrader
 
 ===== Confirmed Working Programs ===================================
-1.  Plex       | Sharing media program - * The Reason We Are Here *
-2.  NetData    | Statistical Tool for the Server
-3.  Muximux    | ** Site Interface to control your programs
-4.  Ombi v3    | ** Enables users to request media
-5.  Organizr   | ** Site Interface to control your programs
-6.  PlexPy     | Provides analytics about your PLEX Users
-7.  Radarr     | Movie requesting program; newer less mature program
-8.  SABNZBD    | USENET Downloading Program
-9.  Sonarr     | TV Show requesting program (Recommended)
-10. Wordpress  | Create a website for users to interact
+1.  Plex       | Sharing media Program - * The Reason We Are Here *
+2.  Emby       | Sharing Media Program - Secondary Alternative
+3.  NetData    | Statistical Tool for the Server
+4.  Muximux    | ** Site Interface to control your programs
+5.  Ombi v3    | ** Enables users to request media
+6.  Organizr   | ** Site Interface to control your programs
+7.  PlexPy     | Provides analytics about your PLEX Users
+8.  Radarr     | Movie requesting program; newer less mature program
+9.  SABNZBD    | USENET Downloading Program
+10. Sonarr     | TV Show requesting program (Recommended)
+11. Wordpress  | Create a website for users to interact
 
 EOF
 }
@@ -52,8 +53,14 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 11 ];  Type [11] to Exit! " choice
+	read -p "Enter choice [ 1 - 12 ];  Type [12] to Exit! " choice
 	case $choice in
+    1)
+     echo ymlprogram emby > /opt/plexguide/tmp.txt
+     echo ymldisplay Emby >> /opt/plexguide/tmp.txt
+     echo ymlport 8096 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
     1)
      clear
      bash /opt/plexguide/scripts/menus/plexsub-menu.sh

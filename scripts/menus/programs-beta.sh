@@ -33,14 +33,13 @@ cat << EOF
 PlexGuide.com BETA Installer ~ BETA ~ BETA ~ BETA ~ BETA ~ BETA
 Warning: NO SUPPORT! QUESTIONS WILL BE IGNORED!
 
-1.  Emby          | ** TESTING
-2.  Headphones    | ** TESTING
-3.  Hydra         | ** TESTING
-4.  RuTorrent     | ** TESTING
-5   Transmission  | ** TESTING
-6.  DelugeVPN     | ** TESTING
-7.  Jackett       | ** TESTING
-8.  LetsEncrypt   | ** Testing
+1.  Headphones    | ** TESTING
+2.  Hydra         | ** TESTING
+3.  RuTorrent     | ** TESTING
+4   Transmission  | ** TESTING
+5.  DelugeVPN     | ** TESTING
+6.  Jackett       | ** TESTING
+7.  LetsEncrypt   | ** TESTIGN
 
 EOF
 }
@@ -50,7 +49,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 13 ];  Type [13] to Exit! " choice
+	read -p "Enter choice [ 1 - 8 ];  Type [8] to Exit! " choice
 	case $choice in
   1)
     echo ymlprogram emby > /opt/plexguide/tmp.txt
