@@ -32,18 +32,19 @@ clear
 cat << EOF
 PlexGuide.com Installer/Upgrader
 
-===== Confirmed Working Programs ===================================
+===== Confirmed Working Programs ==================================
 1.  Plex       | Sharing media Program - * The Reason We Are Here *
+===================================================================
 2.  Emby       | Sharing Media Program - Secondary Alternative
 3.  NetData    | Statistical Tool for the Server
-4.  Muximux    | ** Site Interface to control your programs
-5.  Ombi v3    | ** Enables users to request media
-6.  Organizr   | ** Site Interface to control your programs
-7.  PlexPy     | Provides analytics about your PLEX Users
-8.  Radarr     | Movie requesting program; newer less mature program
+4.  Muximux    | Unified Site Interface
+5.  Ombi v3    | Allows Users to Request Media
+6.  Organizr   | Site Interface to Control Your Programs
+7.  PlexPy     | Analytic Information - Server & Users
+8.  Radarr     | Movie Request Program
 9.  SABNZBD    | USENET Downloading Program
-10. Sonarr     | TV Show requesting program (Recommended)
-11. Wordpress  | Create a website for users to interact
+10. Sonarr     | TV Request Program
+11. Wordpress  | Create a Website for Users to (DOWN**)
 
 EOF
 }
@@ -56,15 +57,15 @@ read_options(){
 	read -p "Enter choice [ 1 - 12 ];  Type [12] to Exit! " choice
 	case $choice in
     1)
-     echo ymlprogram emby > /opt/plexguide/tmp.txt
-     echo ymldisplay Emby >> /opt/plexguide/tmp.txt
-     echo ymlport 8096 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-    1)
      clear
      bash /opt/plexguide/scripts/menus/plexsub-menu.sh
      ;;
+     2)
+      echo ymlprogram emby > /opt/plexguide/tmp.txt
+      echo ymldisplay Emby >> /opt/plexguide/tmp.txt
+      echo ymlport 8096 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
     2)
      echo ymlprogram netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NetData >> /opt/plexguide/tmp.txt
