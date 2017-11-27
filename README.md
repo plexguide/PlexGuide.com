@@ -27,7 +27,7 @@ Build an operational-automated server that mounts your Google Drive, while utili
 ### Preparation, Installation & Configuration 
 
 **A. Quick Notes:**
-- Lightly checked the PlexGuide Wiki @ http://wiki.plexguide.com
+- Lightly check the PlexGuide Wiki @ http://wiki.plexguide.com
 - With a GITHUB login, did you know that you can edit our wiki pages?! Yes, you can make correctons, add snapshots or expand on anytopic. IF you make an update, you'll save us time and help others! Some users have already helped us!
 
 **B. Pre-Preparation:**
@@ -39,7 +39,7 @@ Build an operational-automated server that mounts your Google Drive, while utili
     - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - Alternate Services - As long as you know how to configure it
 - Free Domains
-    - [FreeNom.com](https://freenom.com) - Visit the [PlexGuide FreeNom Wiki](http://null)
+    - [FreeNom.com](http://freenom.com) - Visit the [PlexGuide FreeNom Wiki](http://null)
 - This ***will become mandatory*** in Version 5 for better Security
   
 **C. Preparation:**
