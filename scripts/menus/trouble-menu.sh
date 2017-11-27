@@ -50,7 +50,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
 	case $choice in
   	1)
       clear
@@ -154,8 +154,10 @@ read_options(){
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
     9)
-     docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d
-     ;;
+    echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
+    echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
     10)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
