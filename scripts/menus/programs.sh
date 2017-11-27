@@ -66,61 +66,61 @@ read_options(){
       echo ymlport 8096 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-    2)
+    3)
      echo ymlprogram netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    3)
+    4)
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    4)
+    5)
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    5)
+    6)
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    6)
+    7)
      echo ymlprogram plexpy > /opt/plexguide/tmp.txt
      echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     7)
+     8)
       echo ymlprogram radarr > /opt/plexguide/tmp.txt
       echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
       echo ymlport 7878 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-      8)
+      9)
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
       echo ymlport 8090 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-      9)
+      10)
         echo ymlprogram sonarr > /opt/plexguide/tmp.txt
         echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
         echo ymlport 8989 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         ;;
-      10)
+      11)
         echo ymlprogram wordpress > /opt/plexguide/tmp.txt
         echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
         echo ymlport 80 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         ;;
-      11)
+      12)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
