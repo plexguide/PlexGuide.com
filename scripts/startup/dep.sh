@@ -77,7 +77,7 @@ dpkg -i minergate-cli.deb 1>/dev/null 2>&1
   mkdir -p /mnt/move/movies
   chmod 777 /mnt/move/movies
 
-  mkdir -p /opt/.environments 
+  mkdir -p /opt/.environments
   chmod 777 /opt/.environments
 
   ## location for rclone
@@ -102,7 +102,7 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 #Prevents this script from running again
   mkdir -p /var/plexguide
-  touch /var/plexguide/dep9.yes
+  touch /var/plexguide/dep10.yes
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
@@ -115,7 +115,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait"
   bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
   echo "4. Installing Docker & Docker Compose (Please Standyby)"
-  
+
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
@@ -164,7 +164,7 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   exit 0;
 EOF
 
-  chmod 755 /opt/appdata/plexguide/dockerfix.sh
+  chmod 755 /opt/plexguide/scripts/dockerfix.sh
 
 ## Create the Post-Docker Fix Service
 tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
@@ -187,8 +187,8 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
 EOF
 
   systemctl daemon-reload
-  systemctl enable dockerfix
-  systemctl start dockerfix
+  systemctl enable dockerfix 1>/dev/null 2>&1
+  systemctl start dockerfix 1>/dev/null 2>&1
 
   read -n 1 -s -r -p "Finished - Press any key to continue "
 ############################################# Install a Post-Docker Fix ###################### END
@@ -219,7 +219,7 @@ helps motivate us!
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of
-GitHub.  Understand we'll do our best to respond - we have our lives too! 
+GitHub.  Understand we'll do our best to respond - we have our lives too!
 Just know that this project is meant to make your life easier, while at the
 same time; we are learning and having fun!
 
