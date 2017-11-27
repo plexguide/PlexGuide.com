@@ -39,7 +39,12 @@ Note, if you install the PlexPass version and do not have PlexPass, it will
 just revert to the normal version. If your installing this on a REMOTE
 computer, please visit http://wiki.plexguide.com so you access the server!
 
-1. NOT WORKING YET - CLAIM Plex Server - Follow the Plex PlexGuide to Access
+The token should work, but if doesn't please let us know.  Need people to
+test it out.  If doesn't work, follow the plex guide on how to SSH to set up
+your server.  If it works, you should be able to access your server without
+the SSH
+
+1. CLAIM Plex Server - Report If the Token doesn't work
 2. Install Latest Plex Server (Public - Stable)
 3. Install Latest Plex Server (Pass - Unstable)
 
@@ -63,9 +68,9 @@ read_options(){
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 		2)
-      ## file="/var/plexguide/plextoken.yes"
-      ## if [ -e "$file" ]
-      ## then
+        file="/var/plexguide/plextoken.yes"
+        if [ -e "$file" ]
+        then
         docker rm plexpass
         docker rm plexpublic
         clear
@@ -74,17 +79,17 @@ read_options(){
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
-      ## else
-      ##  echo
-      ##  echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
-      ##  echo
-      ##  read -n 1 -s -r -p "Press any key to continue "
-      ##fi
+        else
+        echo
+        echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        fi
       ;;
 		3)
-      ## file="/var/plexguide/plextoken.yes"
-      ## if [ -e "$file" ]
-      ## then
+        file="/var/plexguide/plextoken.yes"
+        if [ -e "$file" ]
+        then
         docker rm plexpublic
         docker rm plexpass
         clear
@@ -93,12 +98,12 @@ read_options(){
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
-      ## else
-        ## echo
-        ## echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
-        ## echo
-        ## read -n 1 -s -r -p "Press any key to continue "
-      ## fi
+        else
+        echo
+        echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        fi
       ;;
     4)
       exit 0;;
