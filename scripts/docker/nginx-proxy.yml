@@ -21,7 +21,3 @@ networks:
   default:
     external:
       name: plexguide
-networks:
-  default:
-    external:
-      name: plexguide

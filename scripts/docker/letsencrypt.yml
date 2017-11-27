@@ -1,0 +1,19 @@
+---
+version: '2'
+services:
+ letsencrypt:
+   image: jrcs/letsencrypt-nginx-proxy-companion
+   container_name: letsencrypt
+   volumes:
+     - "/etc/localtime:/etc/localtime:ro"
+     - "/opt/nginx-proxy:/etc/nginx/certs:rw"
+     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+   restart: always
+   environment:
+     - PUID=1000
+     - PGID=1000
+     - DEBUG=true
+networks:
+  default:
+    external:
+      name: plexguide
