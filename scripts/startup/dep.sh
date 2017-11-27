@@ -7,6 +7,7 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
+###################### Install Depdency Programs ###############
     clear
     echo "Welcome to the PlexGuide.com Installer"
     echo ""
@@ -94,10 +95,10 @@ dpkg -i minergate-cli.deb 1>/dev/null 2>&1
   chmod 755 /mnt/move
   chmod 755 /mnt/unionfs
 
-echo "2. Installing RClone & Services (Please Wait)"
+echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
-  bash /opt/plexguide/scripts/docker-no/rclone-preinstall.sh
+  bash /opt/plexguide/scripts/startup/rclone-preinstall.sh
 
 #Prevents this script from running again
   mkdir -p /var/plexguide
@@ -105,57 +106,65 @@ echo "2. Installing RClone & Services (Please Wait)"
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
-#Adding basic environment file
+echo "3. Pre-Installing PlexDrive & Services (Please Wait"
+
+
+#  Adding basic environment file ################################
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
 
   bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
-echo "3. Installing Docker & Docker Compose (Please Standyby)"
+  echo "4. Installing Docker & Docker Compose (Please Standyby)"
   
 # Install Docker and Docker Composer / Checks to see if is installed also
-curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
-curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
-chmod +x /usr/local/bin/docker-compose
+  curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
+  curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
+  chmod +x /usr/local/bin/docker-compose
 
-echo "4. Created the PlexGuide Network for Docker"
+  echo "5. Created the PlexGuide Network for Docker"
 
-## Creates PlexGuide Network
-docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
+# Creates PlexGuide Network
+  docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
-echo "5. Installing Portainer (Please Wait)"
+  echo "6. Installing Portainer for Docker (Please Wait)"
 
-## Installs Portainer
-docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
+# Installs Portainer
+  docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-echo "6. Finishing Up!"
+echo "7. Installed NGINX-Proxy - A Docker Container (Please Wait)"
+echo ""
+
+# Install NGINX-Proxy
+  docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d 1>/dev/null 2>&1
 
 ## Create the Post-Docker Fix Script
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
-#!/bin/bash
+  #!/bin/bash
 
-x=30
-while [ $x -gt 0 ]
-do
+  x=30
+  while [ $x -gt 0 ]
+  do
     sleep 1s
     clear
     echo "$x seconds until reboot"
     x=$(( $x - 1 ))
-done
-docker restart rutorrent
-docker restart emby
-docker restart nzbget
-docker restart radarr
-docker restart couchpotato
-docker restart sonarr
-docker restart plexpass
-docker restart plexpublic
+  done
 
-exit 0;
+  docker restart rutorrent
+  docker restart emby
+  docker restart nzbget
+  docker restart radarr
+  docker restart couchpotato
+  docker restart sonarr
+  docker restart plexpass
+  docker restart plexpublic
+
+  exit 0;
 EOF
 
-chmod 755 /opt/appdata/plexguide/dockerfix.sh
+  chmod 755 /opt/appdata/plexguide/dockerfix.sh
 
 ## Create the Post-Docker Fix Service
 tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
@@ -177,11 +186,11 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     WantedBy=multi-user.target
 EOF
 
-systemctl daemon-reload
-systemctl enable dockerfix
-systemctl start dockerfix
+  systemctl daemon-reload
+  systemctl enable dockerfix
+  systemctl start dockerfix
 
-read -n 1 -s -r -p "Finished - Press any key to continue "
+  read -n 1 -s -r -p "Finished - Press any key to continue "
 ############################################# Install a Post-Docker Fix ###################### END
 
 else

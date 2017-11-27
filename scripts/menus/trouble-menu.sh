@@ -41,8 +41,9 @@ Tools & Troubleshooting 101 Menu
                       **************************************
 6. Start Re-Install:  Forces Startup Reinstall (Last Resort)
                       **************************************
-7. Docker          :  Force Reinstall of Docker
-8. Portainer       :  Force Reinstall of Portainer
+7. Docker          :  Force Reinstall Docker
+8. Portainer       :  Force Reinstall Portainer
+9. NGINX-Proxy     :  Force Reinstall NGINX-Proxy
 
 EOF
 }
@@ -153,6 +154,9 @@ read_options(){
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
     9)
+     docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d
+     ;;
+    10)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
