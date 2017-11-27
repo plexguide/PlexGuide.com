@@ -16,7 +16,7 @@ services:
       - my-wpdb:mysql
     environment:
       WORDPRESS_DB_PASSWORD: SUPERSTrongWp@$$
-      - VIRTUAL_HOST=portainer.*
+      - VIRTUAL_HOST=plex.one
       - VIRTUAL_PORT=80
 networks:
   default:
