@@ -155,7 +155,7 @@ sudo systemctl daemon-reload
 systemctl enable rclone-encrypt 1>/dev/null 2>&1
 systemctl start rclone-encrypt 1>/dev/null 2>&1
 
-## Create the UnionFS Service for for plexdrive encrypted mount point
+## Create the UnionFS Service for the plexdrive encrypted mount point
 tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
 [Unit]
 Description=UnionFS Daemon
