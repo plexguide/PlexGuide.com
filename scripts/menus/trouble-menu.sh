@@ -130,6 +130,7 @@ read_options(){
     6)
       clear
       rm -r /var/plexguide/dep*
+      # bash /opt/plexguide/scripts/test/reinstall-rclone.sh
       echo
       echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
       echo
