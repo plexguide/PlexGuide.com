@@ -9,9 +9,9 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /opt/appdata/embyserver:/config
-            - /mnt/plexdrive4/tv:/plexdrive4
-            - /mnt/unionfs/tv:/unionfs
-            - /mnt/plexdrive4/tv:/old
+            - /mnt/plexdrive4/:/plexdrive4
+            - /mnt/unionfs:/unionfs
+          #  - /mnt/plexdrive4/tv:/old
             - /:/yourcomputer
         environment:
             - VIRTUAL_PORT=8096
