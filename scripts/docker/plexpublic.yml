@@ -32,7 +32,7 @@ services:
      - VIRTUAL_HOST=plex.*
      - VIRTUAL_PORT=32400
   #   - PLEX_CLAIM=${PMSTOKEN}
-   network_mode: "host"
+#   network_mode: "host"
 networks:
   default:
     external:
