@@ -67,7 +67,7 @@ plexguide
 ```
   
 **E. Configuration**
- - WARNING: If Docker refuses to install, go to Tools and force the reinstall. If that fails; there is a good chance you are running an older version of UBUNTU or using a VPS service that runs and outdated kernal.  As a final test, install manually [here](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
+ - WARNING: If Docker refuses to install, go to Tools and force the reinstall. If that fails; there is a good chance you are running an older version of UBUNTU or using a VPS service that runs and outdated kernal. [Manual Install Incase](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
  - Install & Configure (Select Only One)
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
