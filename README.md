@@ -67,8 +67,6 @@ plexguide
 ```
   
 **E. Configuration**
- - WARNING: If Docker refuses to install, go to Tools and force the reinstall. If that fails; there is a good chance you are running an older version of UBUNTU or using a VPS service that runs and outdated kernal. 
-   - [Manual Docker Install Incase](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
  - Install & Configure (Select Only One)
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
@@ -81,4 +79,6 @@ plexguide
 **F. Final Notes**
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com). 
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
-- Your Feedback Helps Us and You!
+- Your Feedback Helps Us and You! 
+- WARNING: If Docker refuses to install, go to Tools and force the reinstall. If that fails; there is a good chance you are running an older version of UBUNTU or using a VPS service that runs and outdated kernal. 
+   - [Manual Docker Install Incase](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
