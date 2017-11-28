@@ -11,6 +11,7 @@ services:
             - /opt/appdata/embyserver:/config
             - /mnt/plexdrive4/:/plexdrive4
             - /mnt/unionfs:/unionfs
+            - /mnt/encrypt:/encrypt
           #  - /mnt/plexdrive4/tv:/old
             - /:/yourcomputer
         environment:
