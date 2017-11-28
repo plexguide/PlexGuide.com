@@ -120,6 +120,8 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
+#Installing MongoDB for PlexDrive
+  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh
 
 #  Adding basic environment file ################################
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
