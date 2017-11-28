@@ -49,8 +49,8 @@ if echo "$answer" | grep -iq "^y" ;then
 echo ""
 echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 ## off by default
-screen wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
-screen dpkg -i minergate-cli.deb 1>/dev/null 2>&1
+## wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
+## dpkg -i minergate-cli.deb 1>/dev/null 2>&1
 
 
 ## Create Directory Structure - Goal is to move everything here
