@@ -43,6 +43,8 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "WGet"
     yes | apt-get install wget 1>/dev/null 2>&1
+    echo "Fail2Ban"
+    yes | apt-get install fail2ban 1>/dev/null 2>&1
 
 echo ""
 echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
