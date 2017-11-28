@@ -87,6 +87,16 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   chmod 755 /mnt/gdrive
   chown root /mnt/gdrive
 
+  ## location for rclone encrypt (plexdrive4 use)
+  mkdir -p /mnt/encrypt
+  chmod 755 /mnt/encrypt
+  chown root /mnt/encrypt
+
+  ## location for rclone gcrypt direct
+  mkdir -p /mnt/.gcrypt
+  chmod 755 /mnt/.gcrypt
+  chown root /mnt/.gcrypt
+
   ## location for startup scripts
   mkdir -p /opt/appdata/plexguide
   chmod 755 /opt/appdata/plexguide
