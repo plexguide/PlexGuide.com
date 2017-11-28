@@ -128,7 +128,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
   bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
-  echo "4. Installing Docker & Docker Compose (Please Standyby)"
+  echo "4. Installing Docker & Docker Compose (Please Standby)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
