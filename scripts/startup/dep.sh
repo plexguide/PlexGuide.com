@@ -108,7 +108,7 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
   touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
-echo "3. Pre-Installing PlexDrive & Services (Please Wait"
+echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 
 #  Adding basic environment file ################################
