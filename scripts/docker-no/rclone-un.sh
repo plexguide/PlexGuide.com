@@ -8,7 +8,7 @@ rclone config
 systemctl disable rclone-en
 systemctl disable move-en
 systemctl stop rclone-en
-systemctl stop rclone-encrypt
+#systemctl stop rclone-encrypt
 systemctl stop move-en
 
 # stop current services
@@ -29,10 +29,10 @@ systemctl start move
 ####################################################### REPEAT 2 WORK
 # disable the encrypted services to prevent a clash
 systemctl disable rclone-en
-systemctl disable rclone-encrypt
+#systemctl disable rclone-encrypt
 systemctl disable move-en
 systemctl stop rclone-en
-systemctl stop rclone-encrypt
+#systemctl stop rclone-encrypt
 systemctl stop move-en
 
 # stop current services
@@ -50,7 +50,6 @@ systemctl enable move
 
 # turn services back on
 systemctl start unionfs
-systemctl stop rclone
 systemctl start rclone
 systemctl start move
 
