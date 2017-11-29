@@ -88,8 +88,6 @@ read_options(){
         #read -n 1 -s -r -p "Press any key to continue "
         fi
       ;;
-      3)
-        exit 0;;
       4)
       clear
       echo "Visit http://plex.tv/claim"
@@ -102,6 +100,8 @@ read_options(){
       echo
       read -n 1 -s -r -p "Press any key to continue "
       ;;
+      3)
+        exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
