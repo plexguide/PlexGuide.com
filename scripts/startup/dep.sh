@@ -51,8 +51,6 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 ## off by default
 ## wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
 ## dpkg -i minergate-cli.deb 1>/dev/null 2>&1
-
-
 ## Create Directory Structure - Goal is to move everything here
 
   mkdir -p /mnt/plexdrive4
@@ -114,14 +112,12 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 #Prevents this script from running again
   mkdir -p /var/plexguide
-  touch /var/plexguide/dep10.yes
-  touch /var/plexguide/miner.no
   touch /var/plexguide/basics.yes
 
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
-  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh
+  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
 
 #  Adding basic environment file ################################
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
@@ -133,7 +129,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
-  chmod +x /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
   echo "5. Created the PlexGuide Network for Docker"
 
