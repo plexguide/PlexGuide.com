@@ -49,7 +49,6 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 3 ];  Type [3] to Exit!  " choice
 	case $choice in
-
 		1)
         #file="/var/plexguide/plextoken.yes"
         #if [ -e "$file" ]
@@ -100,9 +99,9 @@ read_options(){
       #echo
       #read -n 1 -s -r -p "Press any key to continue "
       #;;
-        exit 0;;
-		*) echo -e "${RED}Error...${STD}" && sleep 2
-	esac
+      exit 0;;
+  		*) echo -e "${RED}Error...${STD}" && sleep 2
+  	esac
 }
 
 # ----------------------------------------------
