@@ -41,21 +41,22 @@ fi
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V4 (17.11.28) | Written By: Admin9705 & Deiteq
-ASSIST US: Visit http://wiki.plexguide.com - Update & Edit our Wiki
+PlexGuide.com Installer V4 (17.11.29) | Written By: Admin9705 & Deiteq
+ASSIST US: Visit http://wiki.plexguide.com - Update & Edit the Wiki
 
-DONATE A LITTLE-BIT OF CPU POWER **********************************
-1. Donate   :  Works >>> Help Us Utilize a little CPU to Mine Coins
+DONATION ASSISTANCE INFORMATION *************************************
+1. Donate   :  Help Us Utilize a little CPU to Mine Coins
+>>> Visit http://hexabot.us to compound 20% Weekly on Your Coins! <<<
 
-GOOGLE DRIVE ******************************************************
+GOOGLE DRIVE ********************************************************
 2. RClone   :  Media Syncs to Google Drive
 3. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
-PROGRAMS **********************************************************
+PROGRAMS ************************************************************
 4. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
 5. BETA BETA:  Install Working Beta Programs! No Guides, YMLs Work!
 
-TOOLS & T-SHOOT ***************************************************
+TOOLS & T-SHOOT *****************************************************
 6. Updates  :  Update PlexGuide for New Features & Fixes
 7. Tools    :  Troubleshoot Problems & Provides Helpful Information
 8. Backup   :  NOT FUNCTIONAL YET - Backup Program Data

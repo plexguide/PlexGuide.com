@@ -212,12 +212,13 @@ cat << EOF
   QUICK NOTE
 ~~~~~~~~~~~~~~
 
-Pre-Install Checks Complete!!!
+Pre-Install / Re-Install Complete!
 
-If your kind enough to DONATE; please enable a tiny amount of CPU to mine
-a-bit of coins.  You can turn this on or off (off by default) at anytime and,
-if you allow it; you can allow a certain amount of your CPU to be utilized! It
-helps motivate us!
+If your kind enough to donate any cpu power for mining, you can turn it on
+the main menu.  Also, you can visit http://hexabot.us to increase your coins
+(bitcoin, dash, and litecoin) by 20 percent weekly.  Signing up helps, but
+honestly, I use and the stuff really works.  Understand the little made helps
+motivate us to focus more on the project!
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of

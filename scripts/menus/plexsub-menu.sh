@@ -39,38 +39,21 @@ Note, if you install the PlexPass version and do not have PlexPass, it will
 just revert to the normal version. If your installing this on a REMOTE
 computer, please visit http://wiki.plexguide.com so you access the server!
 
-The token should work, but if doesn't please let us know.  Need people to
-test it out.  If doesn't work, follow the plex guide on how to SSH to set up
-your server.  If it works, you should be able to access your server without
-the SSH
-
-1. CLAIM Plex Server - Report If the Token doesn't work
-2. Install Latest Plex Server (Public - Stable)
-3. Install Latest Plex Server (Pass - Unstable)
+1. Install Latest Plex Server (Public - Stable)
+2. Install Latest Plex Server (Pass - Unstable)
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 4 ];  Type [4] to Exit!  " choice
+	read -p "Enter choice [ 1 - 3 ];  Type [3] to Exit!  " choice
 	case $choice in
-    1)
-    clear
-    echo "Visit http://plex.tv/claim"
-    echo
-    read -p "What is your Plex Claim Token? " pmstoken
-    echo "PMSTOKEN=$pmstoken" >> /opt/.environments/.plex-env
-    clear
-    touch /var/plexguide/plextoken.yes
-    echo "Your PlexToken is Installed for the Easy Setup!"
-    echo
-    read -n 1 -s -r -p "Press any key to continue "
-    ;;
-		2)
-        file="/var/plexguide/plextoken.yes"
-        if [ -e "$file" ]
-        then
+
+		1)
+        #file="/var/plexguide/plextoken.yes"
+        #if [ -e "$file" ]
+        #then
         docker rm plexpass
         docker rm plexpublic
         clear
@@ -79,17 +62,17 @@ read_options(){
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
-        else
-        echo
-        echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
+        #else
+        #echo
+        #echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
+        #echo
+        #read -n 1 -s -r -p "Press any key to continue "
         fi
       ;;
-		3)
-        file="/var/plexguide/plextoken.yes"
-        if [ -e "$file" ]
-        then
+		2)
+        #file="/var/plexguide/plextoken.yes"
+        #if [ -e "$file" ]
+        #then
         docker rm plexpublic
         docker rm plexpass
         clear
@@ -99,14 +82,26 @@ read_options(){
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
         else
-        echo
-        echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
+        #echo
+        #echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
+        #echo
+        #read -n 1 -s -r -p "Press any key to continue "
         fi
       ;;
-    4)
-      exit 0;;
+      3)
+        exit 0;;
+      4)
+      clear
+      echo "Visit http://plex.tv/claim"
+      echo
+      read -p "What is your Plex Claim Token? " pmstoken
+      echo "PMSTOKEN=$pmstoken" >> /opt/.environments/.plex-env
+      clear
+      touch /var/plexguide/plextoken.yes
+      echo "Your PlexToken is Installed for the Easy Setup!"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
