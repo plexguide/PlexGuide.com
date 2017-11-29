@@ -17,7 +17,6 @@
 ### Want to Donate? Everybit Helps!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
-- Ethereum: 0xe40ED5eA14e20e7dc4595FdE195526d36308cF04
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
 http://HexaBot.us - You can also help by signing up to invest any of your coins. Personally use (compounds interest).
