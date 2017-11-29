@@ -87,9 +87,9 @@ read_options(){
         #read -n 1 -s -r -p "Press any key to continue "
         ##fi
       ;;
-      4)
-      exit 0;;
       3)
+      exit 0;;
+      4)
       clear
       echo "Visit http://plex.tv/claim"
       echo
