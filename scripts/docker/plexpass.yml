@@ -33,6 +33,16 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=plex.*
      - VIRTUAL_PORT=32400
+     - VIRTUAL_PORT=3005
+     - VIRTUAL_PORT=8324
+     - VIRTUAL_PORT=32469
+     - VIRTUAL_PORT=1900
+     - VIRTUAL_PORT=32410
+     - VIRTUAL_PORT=32412
+     - VIRTUAL_PORT=32413
+     - VIRTUAL_PORT=32414
+     - VIRTUAL_PORT=33400
+     - VIRTUAL_PORT=33443
      - VERSION=latest
 #    - PLEX_CLAIM=${PMSTOKEN}
 #   network_mode: "host"
