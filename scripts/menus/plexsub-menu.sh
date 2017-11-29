@@ -89,6 +89,7 @@ read_options(){
       ;;
       4)
       exit 0;;
+      3)
       clear
       echo "Visit http://plex.tv/claim"
       echo
