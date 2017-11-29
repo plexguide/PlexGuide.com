@@ -12,9 +12,9 @@
 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
-- Slack Autoinvite Link: http://invite.plexguide.com and Slack Channel @ http://slack.plexguide.com (Preferred Communication)
-- Reddit Discussion Link: http://reddit.plexguide.com (Secondary Communication)
-- Telegram Communication: Username - PlexGuide (Emergency - Tritary Communication)
+- Slack Autoinvite: http://invite.plexguide.com and Slack # @ http://slack.plexguide.com (Preferred)
+- Reddit Discussion Link: http://reddit.plexguide.com (Secondary)
+- Telegram Communication: Username - **PlexGuide** (Tritary)
 
 ### Want to Donate? Everybit Helps!
 
