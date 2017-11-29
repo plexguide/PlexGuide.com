@@ -33,24 +33,25 @@ clear
 cat << EOF
 Tools & Troubleshooting 101 Menu
 
-1. PlexDrive Test  :  Veryify that PlexDrive is Working
-2. RClone Test     :  Verify Google Drive is Mounted
-3. UnionFS Test    :  Verify UnionFS is Operational
-4. Uncrypted Move  :  View status of the Unencrypted SYNC
-5. Encrypted Move  :  View status of the Encrypted SYNC
+1. PlexDrive Test       :  Veryify that PlexDrive is Working
+2. RClone Test          :  Verify Google Drive is Mounted
+3. RClone Encrypt Test  :  Verify Encrypted Google Drive is Mounted
+4. UnionFS Test         :  Verify UnionFS is Operational
+5. Uncrypted Move       :  View status of the Unencrypted SYNC
+6. Encrypted Move       :  View status of the Encrypted SYNC
                       **************************************
-6. Start Re-Install:  Forces Startup Reinstall (Last Resort)
+7. Start Re-Install:  Forces Startup Reinstall (Last Resort)
                       **************************************
-7. Docker          :  Force Reinstall Docker
-8. Portainer       :  Force Reinstall Portainer
-9. NGINX-Proxy     :  Force Reinstall NGINX-Proxy
+8. Docker          :  Force Reinstall Docker
+9. Portainer       :  Force Reinstall Portainer
+10. NGINX-Proxy     :  Force Reinstall NGINX-Proxy
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
+	read -p "Enter choice [ 1 - 11 ];  Type [11] to Exit! " choice
 	case $choice in
   	1)
       clear
@@ -74,7 +75,18 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
   		;;
-  	3)
+      3)
+        touch /mnt/.gcrypt/gdrivetest.txt
+        clear
+        ls /mnt/.gcrypt
+    		echo
+        echo "*** RClone: Your Google Drive - If empty, that's not good ***"
+        echo "Note 1: You should at least see gdrivetest.txt"
+        echo
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+    		;;
+  	4)
   		touch /mnt/move/uniontest.txt
   		clear
   		ls /mnt/unionfs
@@ -86,7 +98,7 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
   		;;
-      4)
+      5)
         ## create log file if does not exist
         if [ -e "/opt/plexguide/move.log" ]
         then
@@ -106,7 +118,7 @@ read_options(){
         read -n 1 -s -r -p "Press any key to continue "
         clear
     		;;
-        5)
+        6)
           ## create log file if does not exist
           if [ -e "/opt/plexguide/move-en.log" ]
           then
@@ -127,17 +139,17 @@ read_options(){
           read -n 1 -s -r -p "Press any key to continue "
           clear
           ;;
-    6)
+    7)
       clear
       rm -r /var/plexguide/dep*
-      # bash /opt/plexguide/scripts/test/reinstall-rclone.sh
+       bash /opt/plexguide/scripts/test/reinstall-rclone.sh
       # bash /opt/plexguide/scripts/test/reinstall-plexdrive.sh
       echo
       echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
         ;;
-    7)
+    8)
       # Install Docker and Docker Composer / Checks to see if is installed also
       clear
       echo "Note, if you get a message about docker is install and the 20 sec sleep"
@@ -149,18 +161,18 @@ read_options(){
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
       ############################################# Install a Post-Docker Fix ###################### START
     ;;
-    8)
+    9)
      echo ymlprogram portainer > /opt/plexguide/tmp.txt
      echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
      echo ymlport 9000 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    9)
+    10)
     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
-    10)
+    11)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

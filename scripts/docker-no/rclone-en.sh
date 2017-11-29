@@ -13,7 +13,9 @@ systemctl disable move
 
 # stop current services
 systemctl stop unionfs
+systemctl stop unionfs-encrypt
 systemctl stop rclone-en
+systemctl stop rclone-encrypt
 systemctl stop move-en
 
 # copy rclone config from sudo user to root, which is the target
@@ -21,11 +23,13 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 # ensure that the encrypted services are on
 systemctl enable rclone-en
+systemctl enable rclone-encrypt
 systemctl enable move-en
 
 # turn services back on
-systemctl start unionfs
+systemctl start unionfs-encrypt
 systemctl start rclone-en
+systemctl start rclone-encrypt
 systemctl start move-en
 
 ######################### REPEATS TO MAKE IT WORK
@@ -37,7 +41,9 @@ systemctl disable move
 
 # stop current services
 systemctl stop unionfs
+systemctl stop unionfs-encrypt
 systemctl stop rclone-en
+systemctl stop rclone-encrypt
 systemctl stop move-en
 
 # copy rclone config from sudo user to root, which is the target
@@ -45,11 +51,13 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 # ensure that the encrypted services are on
 systemctl enable rclone-en
+systemctl enable rclone-encrypt
 systemctl enable move-en
 
 # turn services back on
-systemctl start unionfs
+systemctl start unionfs-encrypt
 systemctl start rclone-en
+systemctl start rclone-encrypt
 systemctl start move-en
 
 # set variable to remember what version of rclone user installed
