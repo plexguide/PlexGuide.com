@@ -88,19 +88,18 @@ read_options(){
         #read -n 1 -s -r -p "Press any key to continue "
         fi
       ;;
-      4)
-      clear
-      echo "Visit http://plex.tv/claim"
-      echo
-      read -p "What is your Plex Claim Token? " pmstoken
-      echo "PMSTOKEN=$pmstoken" >> /opt/.environments/.plex-env
-      clear
-      touch /var/plexguide/plextoken.yes
-      echo "Your PlexToken is Installed for the Easy Setup!"
-      echo
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
       3)
+      #clear
+      #echo "Visit http://plex.tv/claim"
+      #echo
+      #read -p "What is your Plex Claim Token? " pmstoken
+      #echo "PMSTOKEN=$pmstoken" >> /opt/.environments/.plex-env
+      #clear
+      #touch /var/plexguide/plextoken.yes
+      #echo "Your PlexToken is Installed for the Easy Setup!"
+      #echo
+      #read -n 1 -s -r -p "Press any key to continue "
+      #;;
         exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
