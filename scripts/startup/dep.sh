@@ -223,10 +223,9 @@ cat << EOF
 Pre-Install / Re-Install Complete!
 
 If your kind enough to donate any cpu power for mining, you can turn it on
-the main menu.  Also, you can visit http://hexabot.us to increase your coins
-(bitcoin, dash, and litecoin) by 20 percent weekly.  Signing up helps, but
-honestly, I use and the stuff really works.  Understand the little made helps
-motivate us to focus more on the project!
+from the main menu.  You can also visit http://hexabot.us to compound your
+coin value (bitcoin, dash, and litecoin) by 20 percent weekly.  Signing up
+helps and it actually works. I personally use it!
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of
