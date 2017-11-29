@@ -20,7 +20,7 @@
 - Ethereum: 0xe40ED5eA14e20e7dc4595FdE195526d36308cF04
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
-You can also help by signing up to invest in any of your coins with compounding interest (personally use) at http://hexabot.us
+http://HexaBot.us - You can also help by signing up to invest any of your coins. Personally use (compounds interest).
 
 ### Mission Statement & Purpose
 
