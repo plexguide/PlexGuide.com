@@ -12,6 +12,7 @@ systemctl stop move-en
 
 # stop current services
 systemctl stop unionfs
+systemctl stop unionfs-encrypt
 systemctl stop rclone
 systemctl stop move
 
@@ -33,6 +34,7 @@ systemctl stop move-en
 
 # stop current services
 systemctl stop unionfs
+systemctl stop unionfs-encrypt
 systemctl stop rclone
 systemctl stop move
 

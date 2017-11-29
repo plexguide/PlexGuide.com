@@ -13,6 +13,7 @@ systemctl disable move
 
 # stop current services
 systemctl stop unionfs
+systemctl stop unionfs-encrypt
 systemctl stop rclone-en
 systemctl stop move-en
 
@@ -24,7 +25,7 @@ systemctl enable rclone-en
 systemctl enable move-en
 
 # turn services back on
-systemctl start unionfs
+systemctl start unionfs-encrypt
 systemctl start rclone-en
 systemctl start move-en
 
@@ -37,6 +38,7 @@ systemctl disable move
 
 # stop current services
 systemctl stop unionfs
+systemctl stop unionfs-encrypt
 systemctl stop rclone-en
 systemctl stop move-en
 
@@ -48,7 +50,7 @@ systemctl enable rclone-en
 systemctl enable move-en
 
 # turn services back on
-systemctl start unionfs
+systemctl start unionfs-encrypt
 systemctl start rclone-en
 systemctl start move-en
 
