@@ -2,6 +2,7 @@
 version: '2'
 services:
  plex:
+#   image: linuxserver/plex
    image: plexinc/pms-docker:plexpass
    container_name: plexpass
    volumes:
@@ -10,6 +11,7 @@ services:
      - /mnt/plexdrive4:/plexdrive4
      - /mnt/unionfs:/unionfs
      - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
    ports:
      - "32400:32400"
      - "32400:32400/udp"
@@ -31,8 +33,10 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=plex.*
      - VIRTUAL_PORT=32400
+     - VERSION=latest
 #    - PLEX_CLAIM=${PMSTOKEN}
-   network_mode: "host"
+#   network_mode: "host"
+  # privileged: true
 networks:
   default:
     external:

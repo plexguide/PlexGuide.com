@@ -72,9 +72,9 @@ read_options(){
     clear
 	  ;;
     4)
-    touch /mnt/gdrive/gdrivetest-encrypted.txt
+    touch /mnt/.gcrypt/gdrivetest-encrypted.txt
     clear
-    ls /mnt/gdrive
+    ls /mnt/encrypt
     echo
     echo "*** RClone Encrypted Your Google Drive - If empty, that's not good ***"
     echo "Note 1: You should at least see gdrivetest-encrypted.txt"

@@ -8,6 +8,8 @@
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo2.PNG" alt="PlexGuide.com Logo"/>
 </p>
 
+---------------------------------------------------------------------- 
+
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - Reddit Discussion Link: http://reddit.plexguide.com
@@ -15,8 +17,9 @@
 ### Want to Donate? Everybit Helps!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
-- Ethereum: 0xe40ED5eA14e20e7dc4595FdE195526d36308cF04
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
+
+http://HexaBot.us - You can also help by signing up to invest any of your coins. Personally use (compounds interest).
 
 ### Mission Statement & Purpose
 

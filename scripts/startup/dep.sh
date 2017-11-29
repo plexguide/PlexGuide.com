@@ -87,6 +87,16 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   chmod 755 /mnt/gdrive
   chown root /mnt/gdrive
 
+  ## location for rclone encrypt (plexdrive4 use)
+  mkdir -p /mnt/encrypt
+  chmod 755 /mnt/encrypt
+  chown root /mnt/encrypt
+
+  ## location for rclone gcrypt direct
+  mkdir -p /mnt/.gcrypt
+  chmod 755 /mnt/.gcrypt
+  chown root /mnt/.gcrypt
+
   ## location for startup scripts
   mkdir -p /opt/appdata/plexguide
   chmod 755 /opt/appdata/plexguide
@@ -110,13 +120,15 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
+#Installing MongoDB for PlexDrive
+  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh
 
 #  Adding basic environment file ################################
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
 
   bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
 
-  echo "4. Installing Docker & Docker Compose (Please Standyby)"
+  echo "4. Installing Docker & Docker Compose (Please Standby)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1

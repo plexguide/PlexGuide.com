@@ -47,6 +47,8 @@ having issues, please delete your CURRENT TOKENS and start again!
 4. PlexDrive Mount Test:  Verify your PlexDrive Install
 5. Exit
 
+
+*** Don't forget to reboot server after first cache build is complete! ***
 EOF
 }
 

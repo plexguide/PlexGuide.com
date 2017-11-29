@@ -109,7 +109,7 @@ EOF
 sudo systemctl daemon-reload
 
 ####################################### Encrypted Service
-## Create the RClone Service
+## Create the RClone Service for plexdrive4 mount point
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
 Description=RClone Daemon
@@ -119,7 +119,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/gdrive --bwlimit 8650k --size-only
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -131,7 +131,31 @@ EOF
 ## Enable RClone Service
 sudo systemctl daemon-reload
 
-## Create the UnionFS Service
+## Create the RClone Service for a direct gdrive encrypted mount point
+tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+## Enable RClone Service
+sudo systemctl daemon-reload
+systemctl enable rclone-encrypt 1>/dev/null 2>&1
+systemctl start rclone-encrypt 1>/dev/null 2>&1
+
+## Create the UnionFS Service for the plexdrive encrypted mount point
 tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
 [Unit]
 Description=UnionFS Daemon
@@ -140,7 +164,7 @@ After=multi-user.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
