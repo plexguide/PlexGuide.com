@@ -17,7 +17,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 --fuse-options=allow_other allow_non_empty_mount --refresh-interval=1m /mnt/plexdrive4
+ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 -o allow_other,allow_non_empty_mount --refresh-interval=1m /mnt/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
