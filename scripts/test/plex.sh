@@ -44,10 +44,9 @@ echo "PMS_TOKEN=$pms_token" >> .env
 echo ".env file creation complete"
 printf "\n\n"
 
+ cp .env /opt/.environments/.plex-env
+#sudo cp .env /opt/plexguide/scripts/docker/.env
 cat /opt/.environments/.plex-env >> /opt/plexguide/scripts/docker/.env
-
-sudo cp .env /opt/.environments/.plex-env
-sudo cp .env /opt/plexguide/scripts/docker/.env
 
 printf "Setup Complete - Open a browser and go to: \n\n"
 printf "http://$local_ip OR http://$this_host \n"
