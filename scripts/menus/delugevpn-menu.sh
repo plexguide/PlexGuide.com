@@ -19,23 +19,23 @@ bash /opt/plexguide/scripts/delugevpn/openvpn-setup.sh
 # Get Hostname
 #thishost=`hostname`
 # Get IP Address
-#locip=`hostname -I | awk '{print $1}'`
+local_ip=`hostname -I | awk '{print $1}'`
 # Get Time Zone
 #time_zone=`cat /etc/timezone`
 
 # CIDR - this assumes a 255.255.255.0 netmask - If your config is different use the custom CIDR line
-lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
+lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Custom CIDR (comment out the line above if using this)
 # Uncomment the line below and enter your CIDR info so the line looks like: lannet=xxx.xxx.xxx.0/24
-#lannet=
-#echo "LOCALUSER=$localuname" >> /opt/plexguide/scripts/docker/.deluge-env
-#echo "HOSTNAME=$thishost" >> /opt/plexguide/scripts/docker/.deluge-env
-#echo "IP_ADDRESS=$locip" >> /opt/plexguide/scripts/docker/.deluge-env
+#lan_net=
+#echo "LOCAL_USER=$local_uname" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "HOSTNAME=$this_host" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "IP_ADDRESS=$local_ip" >> /opt/.environments/.deluge-env
 #echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
-#echo "LAN_NETWORK=$lannet" >> /opt/.environments/.deluge-env
-echo "CIDR_ADDRESS=$lannet" >> /opt/.environments/.deluge-env
+#echo "LAN_NETWORK=$lan_net" >> /opt/.environments/.deluge-env
+echo "CIDR_ADDRESS=$lan_net" >> /opt/.environments/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
@@ -73,7 +73,7 @@ Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland,
              Sweden, France, Romania or Israel.
 
 Default is set to Switzerland
-(To change edit /opt/plexguide/scripts/test/deluge/move-ovpn.sh before install)
+(To change edit /opt/plexguide/scripts/delugevpn/move-ovpn.sh before install)
 
 
 1. TESTING // PIA VPN details

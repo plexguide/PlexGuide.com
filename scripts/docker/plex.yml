@@ -3,7 +3,7 @@ version: '2'
 services:
     plex:
         container_name: plex
-        image: plexinc/pms-docker:${PMSTAG}
+        image: plexinc/pms-docker:${PMS_TAG}
         restart: unless-stopped
         network_mode: "host"
         ports:
@@ -19,11 +19,13 @@ services:
 #        env_file:
  #           - /opt/.environments/.plex-env
         environment:
-            - PLEX_CLAIM=${PMSTOKEN}
+            - PLEX_CLAIM=${PMS_TOKEN}
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
-            - PLEX_UID=${PUID}
-            - PLEX_GID=${PGID}
+  #          - PLEX_UID=${PUID}
+  #          - PLEX_GID=${PGID}
+            - PUID=1000
+            - PGID=1000
         hostname: ${HOSTNAME}
         volumes:
             - /opt/plex/database:/config

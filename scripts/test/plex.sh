@@ -1,46 +1,46 @@
 #!/bin/bash
 # Get local Username
-localuname=`id -u -n`
+local_username=`id -u -n`
 # Get PUID
 PUID=`id -u $localuname`
 # Get GUID
 PGID=`id -g $localuname`
 # Get Hostname
-thishost=`hostname`
+this_host=`hostname`
 # Get IP Address
-locip=`hostname -I | awk '{print $1}'`
+local_ip=`hostname -I | awk '{print $1}'`
 # Get Time Zone
 time_zone=`cat /etc/timezone`
 # CIDR - this assumes a 255.255.255.0 netmask - If your config is different use the custom CIDR line
-lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
+lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Custom CIDR (comment out the line above if using this) Uncomment the line below and enter your CIDR info so the line looks like: lannet=xxx.xxx.xxx.0/24
-#lannet=
+#lan_net=
 
 
 # Get info needed for PLEX Official image
-read -p "Which PLEX release do you want to run? By default 'public' will be used. (latest, public, plexpass): " pmstag
-read -p "If you have PLEXPASS what is your Claim Token: (Optional) " pmstoken
+read -p "Which PLEX release do you want to run? By default 'public' will be used. (latest, public, plexpass): " pms_tag
+read -p "If you have PLEXPASS what is your Claim Token: (Optional) " pms_token
 # If not set - set PMS Tag to Public:
-if [ -z "$pmstag" ]; then
-   pmstag=public
+if [ -z "$pms_tag" ]; then
+   pms_tag=public
 fi
 
 
 # Create the .env file
 echo "Creating the .env file with the values we have gathered"
 printf "\n"
-echo "LOCALUSER=$localuname" >> .env
-echo "HOSTNAME=$thishost" >> .env
-echo "IP_ADDRESS=$locip" >> .env
+echo "LOCAL_USER=$local_username" >> .env
+echo "HOSTNAME=$this_host" >> .env
+echo "IP_ADDRESS=$local_ip" >> .env
 echo "PUID=$PUID" >> .env
 echo "PGID=$PGID" >> .env
 echo "PWD=$PWD" >> .env
 #echo "PIAUNAME=$piauname" >> .env
 #echo "PIAPASS=$piapass" >> .env
-echo "CIDR_ADDRESS=$lannet" >> .env
+echo "CIDR_ADDRESS=$lan_net" >> .env
 echo "TZ=$time_zone" >> .env
-echo "PMSTAG=$pmstag" >> .env
-echo "PMSTOKEN=$pmstoken" >> .env
+echo "PMS_TAG=$pms_tag" >> .env
+echo "PMS_TOKEN=$pms_token" >> .env
 echo ".env file creation complete"
 printf "\n\n"
 
@@ -50,4 +50,4 @@ sudo cp .env /opt/.environments/.plex-env
 sudo cp .env /opt/plexguide/scripts/docker/.env
 
 printf "Setup Complete - Open a browser and go to: \n\n"
-printf "http://$locip OR http://$thishost \n"
+printf "http://$local_ip OR http://$this_host \n"
