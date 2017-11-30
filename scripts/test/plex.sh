@@ -2,9 +2,9 @@
 # Get local Username
 local_username=`id -u -n`
 # Get PUID
-PUID=`id -u $localuname`
+PUID=`id -u $local_username`
 # Get GUID
-PGID=`id -g $localuname`
+PGID=`id -g $local_username`
 # Get Hostname
 this_host=`hostname`
 # Get IP Address
