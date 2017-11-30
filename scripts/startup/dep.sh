@@ -122,7 +122,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 #  Adding basic environment file ################################
 #  chmod +x bash /opt/plexguide/scripts/basic-env.sh
 
-  bash /opt/plexguide/scripts/basic-env.sh 1>/dev/null 2>&1
+#  bash /opt/plexguide/scripts/test/basic-env.sh 1>/dev/null 2>&1
 
   echo "4. Installing Docker & Docker Compose (Please Standby)"
 
