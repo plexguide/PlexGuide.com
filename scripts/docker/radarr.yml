@@ -12,13 +12,9 @@ services:
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
-     - PUID=0   
+     - PUID=0
      - PGID=0
      - VIRTUAL_HOST=radarr.*
      - VIRTUAL_PORT=7878
    restart:
      always
-networks:
-  default:
-    external:
-      name: plexguide

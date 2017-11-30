@@ -33,8 +33,4 @@ services:
      - PUID=1000
      - PGID=1000
    restart: unless-stopped
-networks:
-  default:
-    external:
-      name: plexguide
 # Note: Please replace all user variables in the above command defined by <> with the correct values.

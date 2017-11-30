@@ -16,7 +16,3 @@ services:
      - VIRTUAL_PORT=80
    restart:
      always
-networks:
-  default:
-    external:
-      name: plexguide

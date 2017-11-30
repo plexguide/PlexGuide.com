@@ -13,11 +13,7 @@ services:
    restart:
      always
    environment:
-     - PUID=1000   
+     - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=portainer.*
      - VIRTUAL_PORT=9000
-networks:
-  default:
-    external:
-      name: plexguide

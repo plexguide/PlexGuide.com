@@ -13,7 +13,3 @@ services:
      - PUID=1000
      - PGID=1000
      - DEBUG=true
-networks:
-  default:
-    external:
-      name: plexguide
