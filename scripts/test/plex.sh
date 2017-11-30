@@ -35,8 +35,8 @@ echo "IP_ADDRESS=$locip" >> .env
 echo "PUID=$PUID" >> .env
 echo "PGID=$PGID" >> .env
 echo "PWD=$PWD" >> .env
-echo "PIAUNAME=$piauname" >> .env
-echo "PIAPASS=$piapass" >> .env
+#echo "PIAUNAME=$piauname" >> .env
+#echo "PIAPASS=$piapass" >> .env
 echo "CIDR_ADDRESS=$lannet" >> .env
 echo "TZ=$time_zone" >> .env
 echo "PMSTAG=$pmstag" >> .env
@@ -44,6 +44,7 @@ echo "PMSTOKEN=$pmstoken" >> .env
 echo ".env file creation complete"
 printf "\n\n"
 
+cat /opt/.environments/.plex-env >> /opt/plexguide/scripts/docker/.env
 
 sudo cp .env /opt/.environments/.plex-env
 sudo cp .env /opt/plexguide/scripts/docker/.env

@@ -34,8 +34,8 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 #echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "LAN_NETWORK=$lannet" >> /opt/.environments/.deluge-env
-#echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
+#echo "LAN_NETWORK=$lannet" >> /opt/.environments/.deluge-env
+echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
@@ -102,6 +102,7 @@ read_options(){
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
     echo "VPN_PASS=$pia_password" >> /opt/.environments/.deluge-env
     echo
+    cat /opt/.environments/.deluge-env >> /opt/plexguide/scripts/docker/.env
 
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
