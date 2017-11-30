@@ -17,7 +17,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 --fuse-options=allow_other --refresh-interval=1m /mnt/plexdrive4
+ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 --fuse-options=allow_other allow_non_empty_mount --refresh-interval=1m /mnt/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -39,11 +39,9 @@ systemctl enable plexdrive4.service
     chown root:root /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
     clear
-    plexdrive4 --uid=0 --gid=0 -o allow_other -v 2 --refresh-interval=1m /mnt/plexdrive4
+    plexdrive4 --uid=0 --gid=0 -o allow_other nonempty -v 2 --refresh-interval=1m /mnt/plexdrive4
     clear
-    cd /opt/plexguide/scripts
-    echo Installed PlexDrive; hostname -I;
-    echo
+    ## USER Will Have To Reboot Once PlexDrive Is Finished!
 else
     echo No
     clear
