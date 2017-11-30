@@ -21,7 +21,3 @@ services:
    cap_add:
      - MKNOD
      - SYS_ADMIN
-networks:
-  default:
-    external:
-      name: plexguide

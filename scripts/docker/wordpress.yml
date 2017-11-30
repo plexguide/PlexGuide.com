@@ -18,7 +18,3 @@ services:
       WORDPRESS_DB_PASSWORD: SUPERSTrongWp@$$
       - VIRTUAL_HOST=plex.one
       - VIRTUAL_PORT=80
-networks:
-  default:
-    external:
-      name: plexguide

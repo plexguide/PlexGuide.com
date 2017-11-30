@@ -2,7 +2,7 @@
 version: '2'
 services:
  sabnzbd:
-   image: linuxserver/sabnzbd:unstable
+   image: linuxserver/sabnzbd
    container_name: sabnzbd
    ports:
      - "8090:8080"
@@ -20,3 +20,7 @@ services:
      - VIRTUAL_PORT=8080
    restart:
      always
+networks:
+  default:
+    external:
+      name: plexguide
