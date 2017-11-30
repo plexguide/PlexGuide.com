@@ -39,7 +39,8 @@ Warning: NO SUPPORT! QUESTIONS WILL BE IGNORED!
 4   Transmission  | ** TESTING
 5.  DelugeVPN     | ** TESTING
 6.  Jackett       | ** TESTING
-7.  LetsEncrypt   | ** TESTIGN
+7.  LetsEncrypt   | ** TESTING
+8.  TestPlex      | ** TESTING
 
 EOF
 }
@@ -49,26 +50,27 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ];  Type [8] to Exit! " choice
+	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
 	case $choice in
+
   1)
-    echo ymlprogram emby > /opt/plexguide/tmp.txt
-    echo ymldisplay Emby >> /opt/plexguide/tmp.txt
-    echo ymlport 8096 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  2)
     echo ymlprogram headphones > /opt/plexguide/tmp.txt
     echo ymldisplay Headphones >> /opt/plexguide/tmp.txt
     echo ymlport 8150 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-  3)
+  2)
     echo ymlprogram hydra > /opt/plexguide/tmp.txt
     echo ymldisplay Hydra >> /opt/plexguide/tmp.txt
     echo ymlport 5075 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
+    3)
+      echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
+      echo ymldisplay RuTorrent >> /opt/plexguide/tmp.txt
+      echo ymlport 8085 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
   4)
     echo ymlprogram transmission > /opt/plexguide/tmp.txt
     echo ymldisplay Transmission >> /opt/plexguide/tmp.txt
@@ -91,6 +93,10 @@ read_options(){
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
   8)
+    clear
+    bash /opt/plexguide/scripts/test/plex-menu.sh
+    ;;
+  9)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
