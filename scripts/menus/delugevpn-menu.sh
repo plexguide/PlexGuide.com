@@ -35,7 +35,7 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "LAN_NETWORK=$lannet" >> /opt/.environments/.deluge-env
-echo "CIDR_ADDRESS=$lannet" >> /opt/plexguide/scripts/docker/.deluge-env
+echo "CIDR_ADDRESS=$lannet" >> /opt/.environments/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
