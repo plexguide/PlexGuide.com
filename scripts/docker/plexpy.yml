@@ -15,4 +15,4 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=plexpy.*
      - VIRTUAL_PORT=8181
-e
+
