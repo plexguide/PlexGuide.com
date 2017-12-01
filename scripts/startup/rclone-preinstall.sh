@@ -70,8 +70,6 @@ EOF
 
 ## Enable UnionFS Service
 sudo systemctl daemon-reload
-systemctl enable unionfs 1>/dev/null 2>&1
-systemctl start unionfs 1>/dev/null 2>&1
 
 ## Create the Move Script
 rm -r /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
@@ -154,8 +152,6 @@ EOF
 
 ## Enable RClone Service
 sudo systemctl daemon-reload
-systemctl enable rclone-encrypt 1>/dev/null 2>&1
-systemctl start rclone-encrypt 1>/dev/null 2>&1
 
 ## Create the UnionFS Service for the plexdrive encrypted mount point
 tee "/etc/systemd/system/unionfs-encrypt.service" > /dev/null <<EOF
