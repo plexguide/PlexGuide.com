@@ -18,6 +18,9 @@ clear
 
 rclone config
 
+# copy rclone config from sudo user to root, which is the target
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+
 ## RClone - Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf  1>/dev/null 2>&1
 tee "/etc/fuse.conf" > /dev/null <<EOF
@@ -127,8 +130,6 @@ systemctl stop unionfs-encrypt
 systemctl stop rclone
 systemctl stop move
 
-# copy rclone config from sudo user to root, which is the target
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 # ensure that the unencrypted services are on
 systemctl enable rclone
