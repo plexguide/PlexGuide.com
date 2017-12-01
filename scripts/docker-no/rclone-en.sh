@@ -3,8 +3,6 @@
 ## For Google Drive
 clear
 
-rclone config
-
 ## Installing rclone
   cd /tmp
   curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip 1>/dev/null 2>&1
@@ -18,6 +16,8 @@ rclone config
   mandb 1>/dev/null 2>&1
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
   cd ~
+
+rclone config
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf  1>/dev/null 2>&1
