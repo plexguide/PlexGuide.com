@@ -8,8 +8,15 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
 ###################### Install Depdency Programs ###############
-    clear
-    echo "Welcome to the PlexGuide.com Installer"
+    file="/var/plexguide/basics.yes"
+    if [ -e "$file" ]
+    then
+        clear
+        echo ">>> Welcome to the PlexGuide Update! You will Not Lose your Data!"
+    else
+        clear
+        ech ">>> Welcome to the PlexGuide First Time Install!"
+    fi
     echo ""
     echo "Screen"
     yes | apt-get install screen 1>/dev/null 2>&1
