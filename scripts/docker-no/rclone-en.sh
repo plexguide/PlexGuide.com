@@ -61,7 +61,7 @@ systemctl start rclone-encrypt
 systemctl start move-en
 
 # set variable to remember what version of rclone user installed
-mkdir /var /var/plexguide /var/plexguide/rclone 1>/dev/null 2>&1
+mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un
 
