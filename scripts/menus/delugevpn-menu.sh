@@ -34,8 +34,8 @@ echo "IP_ADDRESS=$local_ip" >> /opt/.environments/.deluge-env
 #echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
-#echo "LAN_NETWORK=$lan_net" >> /opt/.environments/.deluge-env
-echo "CIDR_ADDRESS=$lan_net" >> /opt/.environments/.deluge-env
+echo "LAN_NETWORK=$lan_net" >> /opt/.environments/.deluge-env
+#echo "CIDR_ADDRESS=$lan_net" >> /opt/.environments/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
 # ----------------------------------
