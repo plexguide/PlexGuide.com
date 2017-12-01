@@ -1,5 +1,18 @@
+file="/var/plexguide/basics.yes"
+if [ -e "$file" ]
+then
+    clear
+    echo ">>> Welcome to the PlexGuide Update! You will Not Lose your Data!"
+    echo ""
+    echo ""
+else
+    clear
+    echo ">>> Welcome to the PlexGuide First Time Install!"
+    echo ""
+    echo ""
+fi
 clear
-echo -n "Do you Agree to Install/Update the PlexGuide.com Installer (y/n)? "
+echo -n "Do you consent to allow PlexGuide to Install/Upgrade (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -8,16 +21,8 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
 ###################### Install Depdency Programs ###############
-    file="/var/plexguide/basics.yes"
-    if [ -e "$file" ]
-    then
-        clear
-        echo ">>> Welcome to the PlexGuide Update! You will Not Lose your Data!"
-    else
-        clear
-        ech ">>> Welcome to the PlexGuide First Time Install!"
-    fi
-    echo ""
+
+    clear
     echo "Screen"
     yes | apt-get install screen 1>/dev/null 2>&1
     echo "System Update"
