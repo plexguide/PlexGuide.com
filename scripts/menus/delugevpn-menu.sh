@@ -97,6 +97,8 @@ read_options(){
     echo "to check if your IP is leaked after using deluge or use "
     echo "TorGuard's Check My Torrent IP Tool."
     echo
+    echo "*** The default password is deluge ***"
+    echo
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 		2)
