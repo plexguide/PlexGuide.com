@@ -151,8 +151,8 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-echo "7. Installed NGINX-Proxy - A Docker Container (Please Wait)"
-echo ""
+  echo "7. Installed NGINX-Proxy - A Docker Container (Please Wait)"
+  echo ""
 
 # Install NGINX-Proxy
   docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d 1>/dev/null 2>&1
@@ -230,10 +230,11 @@ cat << EOF
 
 Pre-Install / Re-Install Complete!
 
-If your kind enough to donate any cpu power for mining, you can turn it on
-from the main menu.  You can also visit http://hexabot.us to compound your
-coin value (bitcoin, dash, and litecoin) by 20 percent weekly.  Signing up
-helps and it actually works. I personally use it!
+If your kind enough or have a minute, You can also visit http://hexabot.us
+to compound your coin value (bitcoin, dash, and litecoin) by 20 percent weekly.
+I personally use it and it's working great! If you need to purchase coin,
+please visit http://coin.plexguide.com. Signing up helps us out and would not
+be recommended if we did not use it!
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of
