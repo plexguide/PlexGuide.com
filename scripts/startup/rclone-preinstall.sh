@@ -217,19 +217,19 @@ then
     echo ">>> Running Encrypted RClone"
     echo ""
 else
-    systemctl enable unionfs
-    systemctl enable rclone
-    systemctl enable move
-    systemctl start unionfs
-    systemctl start rclone
-    systemctl start move
+    systemctl enable unionfs 1>/dev/null 2>&1
+    systemctl enable rclone 1>/dev/null 2>&1
+    systemctl enable move 1>/dev/null 2>&1
+    systemctl start unionfs 1>/dev/null 2>&1
+    systemctl start rclone 1>/dev/null 2>&1
+    systemctl start move 1>/dev/null 2>&1
 
-    systemctl disable unionfs-encrypt
-    systemctl disable rclone-en
-    systemctl disable move-en
-    systemctl stop unionfs-encrypt
-    systemctl stop rclone-en
-    systemctl stop move-en
+    systemctl disable unionfs-encrypt 1>/dev/null 2>&1
+    systemctl disable rclone-en 1>/dev/null 2>&1
+    systemctl disable move-en 1>/dev/null 2>&1
+    systemctl stop unionfs-encrypt 1>/dev/null 2>&1
+    systemctl stop rclone-en 1>/dev/null 2>&1
+    systemctl stop move-en 1>/dev/null 2>&1
 fi
 
 ##################### If Running Encrypted RClone, Turn This On
