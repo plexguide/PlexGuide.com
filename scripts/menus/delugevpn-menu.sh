@@ -18,23 +18,19 @@ bash /opt/plexguide/scripts/delugevpn/openvpn-setup.sh
 #PGID=`id -g $localuname`
 # Get Hostname
 #thishost=`hostname`
-# Get IP Address
-local_ip=`hostname -I | awk '{print $1}'`
+
 # Get Time Zone
 #time_zone=`cat /etc/timezone`
 
-# CIDR - this assumes a 255.255.255.0 netmask - If your config is different use the custom CIDR line
-lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
+
 # Custom CIDR (comment out the line above if using this)
 # Uncomment the line below and enter your CIDR info so the line looks like: lannet=xxx.xxx.xxx.0/24
 #lan_net=
 #echo "LOCAL_USER=$local_uname" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "HOSTNAME=$this_host" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "IP_ADDRESS=$local_ip" >> /opt/.environments/.deluge-env
 #echo "PUID=$PUID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PGID=$PGID" >> /opt/plexguide/scripts/docker/.deluge-env
 #echo "PWD=$PWD" >> /opt/plexguide/scripts/docker/.deluge-env
-echo "LAN_NETWORK=$lan_net" >> /opt/.environments/.deluge-env
 #echo "CIDR_ADDRESS=$lan_net" >> /opt/.environments/.deluge-env
 #echo "TZ=$time_zone" >> /opt/plexguide/scripts/docker/.deluge-env
 
@@ -94,6 +90,13 @@ read_options(){
 	case $choice in
     1)
     rm /opt/.environments/.deluge-env
+    # Get IP Address
+    local_ip=`hostname -I | awk '{print $1}'`
+    # CIDR - this assumes a 255.255.255.0 netmask - If your config is different use the custom CIDR line
+    lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
+    echo "IP_ADDRESS=$local_ip" >> /opt/.environments/.deluge-env
+    echo "LAN_NETWORK=$lan_net" >> /opt/.environments/.deluge-env
+
     clear
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
