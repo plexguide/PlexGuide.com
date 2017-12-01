@@ -211,10 +211,9 @@ sudo systemctl daemon-reload
 
 ###################### If Running Unencrypted RClone, Turn This On
 
-file="/var/plexguide/rclone/un"
+file="/var/plexguide/rclone/en"
 if [ -e "$file" ]
 then
-    echo ""
     echo ">>> Running Encrypted RClone"
     echo ""
 else
@@ -234,7 +233,7 @@ else
 fi
 
 ##################### If Running Encrypted RClone, Turn This On
-file="/var/plexguide/rclone/en"
+file="/var/plexguide/rclone/un"
 if [ -e "$file" ]
 then
     echo ">>> Running Unencrypted RClone"
