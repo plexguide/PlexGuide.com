@@ -57,6 +57,8 @@ Default is set to Switzerland
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
     to check for leaks! ***
 
+
+
 EOF
 }
 
@@ -94,8 +96,8 @@ read_options(){
     echo "Your PIA info has been Installed for the Easy Setup!"
     echo
     echo "Remember to use http://iknowwhatyoudownload.com  "
-    echo "to check if your IP is leaked after using deluge or use "
-    echo "TorGuard's Check My Torrent IP Tool."
+    echo "to check if your IP is leaked after using deluge or "
+    echo "use TorGuard's Check My Torrent IP Tool."
     echo
     echo
     echo "       *** THE DEFAULT PASSWORD IS deluge ***        "
