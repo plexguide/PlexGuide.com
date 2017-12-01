@@ -49,7 +49,7 @@ Default is set to Switzerland
 (To change edit /opt/plexguide/scripts/delugevpn/move-ovpn.sh before install)
 
 
-1. TESTING // PIA VPN details
+1. PIA VPN details
 2. Install DelugeVPN
 3. Exit
 
