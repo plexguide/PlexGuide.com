@@ -208,3 +208,49 @@ WantedBy=multi-user.target
 EOF
 
 sudo systemctl daemon-reload
+
+###################### If Running Unencrypted RClone, Turn This On
+
+file="/var/plexguide/rclone/un"
+if [ -e "$file" ]
+then
+    echo ""
+    echo ">>> Running Encrypted RClone"
+    echo ""
+else
+    systemctl enable unionfs
+    systemctl enable rclone
+    systemctl enable move
+    systemctl start unionfs
+    systemctl start rclone
+    systemctl start move
+
+    systemctl disable unionfs-encrypt
+    systemctl disable rclone-en
+    systemctl disable move-en
+    systemctl stop unionfs-encrypt
+    systemctl stop rclone-en
+    systemctl stop move-en
+fi
+
+##################### If Running Encrypted RClone, Turn This On
+file="/var/plexguide/rclone/en"
+if [ -e "$file" ]
+then
+    echo ">>> Running Unencrypted RClone"
+    echo ""
+else
+  systemctl disable unionfs 1>/dev/null 2>&1
+  systemctl disable rclone 1>/dev/null 2>&1
+  systemctl disable move 1>/dev/null 2>&1
+  systemctl stop unionfs 1>/dev/null 2>&1
+  systemctl stop rclone 1>/dev/null 2>&1
+  systemctl stop move 1>/dev/null 2>&1
+
+  systemctl enable unionfs-encrypt 1>/dev/null 2>&1
+  systemctl enable rclone-en 1>/dev/null 2>&1
+  systemctl enable move-en 1>/dev/null 2>&1
+  systemctl start unionfs-encrypt 1>/dev/null 2>&1
+  systemctl start rclone-en 1>/dev/null 2>&1
+  systemctl start move-en 1>/dev/null 2>&1
+fi
