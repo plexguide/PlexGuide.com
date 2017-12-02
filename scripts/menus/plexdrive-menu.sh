@@ -31,6 +31,26 @@ show_menus() {
 
 clear
 cat << EOF
+~~~~~~~~~~~~~~~~~~~~~~~~
+   PLEXDRIVE WARNING
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please visit http://wiki.plexguide.com for any tutorial information.  It is
+recommended to view the following guides for PlexDrive:
+
+*** GoogleAPI  - http://googleapi.plexguide.com
+*** PlexDrive4 - http://plexdrive.plexguide.com
+
+Not reading or following the guides will cause you some grief!
+
+
+EOF
+}
+
+bash /opt/plexguide/scripts/docker-no/continue.sh
+
+clear
+cat << EOF
 PLEASE READ the PlexDrive Section @ http://wiki.plexguide.com
 Have the Google Tokens ready! @ http://plexdrive.plexguide.com
 

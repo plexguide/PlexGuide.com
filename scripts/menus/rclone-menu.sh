@@ -31,6 +31,27 @@ show_menus() {
 
 clear
 cat << EOF
+~~~~~~~~~~~~~~~~~~~~~~~
+    RCLONE WARNING
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Please visit http://wiki.plexguide.com for any tutorial information.  It is
+recommended to view the following guides:
+
+*** GoogleAPI        - http://googleapi.plexguide.com
+*** Unencrypt RClone - http://unrclone.plexguide.com
+*** Encrypted RClone - http://enrclone.plexguide.com
+
+Not reading or following the guides will cause you some grief!
+
+
+EOF
+}
+
+bash /opt/plexguide/scripts/docker-no/continue.sh
+
+clear
+cat << EOF
 Only Install one version of RClone; encrypted or unencrypted. If you
 switch; you can and I mitgated everything but reboot if making a switch.
 

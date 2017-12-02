@@ -73,11 +73,11 @@ read_options(){
 	case $choice in
 	1)
         clear
-	      bash /opt/plexguide/scripts/menus/rclone-info-menu.sh
+	      bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
     2)
         clear
-        bash /opt/plexguide/scripts/menus/plexdrive-info-menu.sh
+        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
         ;;
 	3)
         bash /opt/plexguide/scripts/menus/programs.sh
