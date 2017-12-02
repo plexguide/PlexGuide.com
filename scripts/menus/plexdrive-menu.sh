@@ -45,7 +45,6 @@ Not reading or following the guides will cause you some grief!
 
 
 EOF
-}
 
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
