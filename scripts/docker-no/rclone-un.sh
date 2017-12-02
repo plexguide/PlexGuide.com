@@ -16,13 +16,15 @@ clear
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
   cd ~
 
+## Executes RClone Config
 rclone config
 
 # copy rclone config from sudo user to root, which is the target
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+  cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
-rm -r /etc/fuse.conf  1>/dev/null 2>&1
+  rm -r /etc/fuse.conf  1>/dev/null 2>&1
+
 tee "/etc/fuse.conf" > /dev/null <<EOF
   # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
 
@@ -53,9 +55,6 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
-## Enable RClone Service
-sudo systemctl daemon-reload
-
 ## Create the UnionFS Service
 tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
 [Unit]
@@ -75,8 +74,6 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
-## Enable UnionFS Service
-sudo systemctl daemon-reload
 
 ## Create the Move Script
 rm -r /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
@@ -113,29 +110,21 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
+###### Ensure Changes Are Reflected
 sudo systemctl daemon-reload
 
-####################################################### REPEAT 2 WORK
-# disable the encrypted services to prevent a clash
-systemctl disable rclone-en
-#systemctl disable rclone-encrypt
-systemctl disable move-en
-systemctl stop rclone-en
-#systemctl stop rclone-encrypt
-systemctl stop move-en
-
-# stop current services
-systemctl stop unionfs
-systemctl stop unionfs-encrypt
-systemctl stop rclone
-systemctl stop move
-
+#stop encrypted services
+systemctl disable rclone-en 1>/dev/null 2>&1
+systemctl disable move-en 1>/dev/null 2>&1
+systemctl disable unionfs-encrypt 1>/dev/null 2>&1
+systemctl stop rclone-en 1>/dev/null 2>&1
+systemctl stop move-en 1>/dev/null 2>&1
+systemctl stop unionfs-encrypt 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
 systemctl enable rclone
 systemctl enable move
-
-# turn services back on
+systemctl enable unionfs
 systemctl start unionfs
 systemctl start rclone
 systemctl start move
@@ -145,9 +134,10 @@ mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/un 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/en 1>/dev/null 2>&1
 
-
+# pauses
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
+# sets a message
 clear
 cat << EOF
 NOTE: You installed the unencrypted version for the RClone data transport!
@@ -165,4 +155,6 @@ Verifying that 1 and 2 are important due to this is how your data will sync!
 To make it easy, you can also use the CHECKING TOOLS built in!
 
 EOF
+
+# pauses
 bash /opt/plexguide/scripts/docker-no/continue.sh
