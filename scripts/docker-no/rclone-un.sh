@@ -158,5 +158,4 @@ To make it easy, you can also use the CHECKING TOOLS built in!
 
 EOF
 
-# pauses
-# bash /opt/plexguide/scripts/docker-no/continue.sh
+bash /opt/plexguide/scripts/docker-no/continue.sh

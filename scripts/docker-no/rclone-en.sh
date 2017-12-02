@@ -150,6 +150,8 @@ mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
 
+bash /opt/plexguide/scripts/docker-no/continue.sh
+
 clear
 cat << EOF
 NOTE: You installed the encrypted version for the RClone data transport! If you
