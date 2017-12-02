@@ -147,7 +147,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
   echo "5. Created the PlexGuide Network for Docker"
 
 # Creates PlexGuide Network
-# docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
+  docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
   echo "6. Installing Portainer for Docker (Please Wait)"
 
