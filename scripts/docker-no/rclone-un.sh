@@ -117,9 +117,11 @@ sudo systemctl daemon-reload
 systemctl disable rclone-en 1>/dev/null 2>&1
 systemctl disable move-en 1>/dev/null 2>&1
 systemctl disable unionfs-encrypt 1>/dev/null 2>&1
+systemctl disable rclone-encrypt 1>/dev/null 2>&1
 systemctl stop rclone-en 1>/dev/null 2>&1
 systemctl stop move-en 1>/dev/null 2>&1
 systemctl stop unionfs-encrypt 1>/dev/null 2>&1
+systemctl stop rclone-encrypt 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
 systemctl enable rclone 1>/dev/null 2>&1
@@ -157,4 +159,4 @@ To make it easy, you can also use the CHECKING TOOLS built in!
 EOF
 
 # pauses
-bash /opt/plexguide/scripts/docker-no/continue.sh
+# bash /opt/plexguide/scripts/docker-no/continue.sh
