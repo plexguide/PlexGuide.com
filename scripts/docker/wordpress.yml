@@ -5,7 +5,7 @@ services:
     ports:
       - "8081:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: SUPERSTrongWp@$$
+      - MYSQL_ROOT_PASSWORD=SUPERSTrongWp@$$
   my-wp:
     image: wordpress
     volumes:
@@ -15,6 +15,6 @@ services:
     links:
       - my-wpdb:mysql
     environment:
-      WORDPRESS_DB_PASSWORD: SUPERSTrongWp@$$
       - VIRTUAL_HOST=plex.one
       - VIRTUAL_PORT=80
+      - WORDPRESS_DB_PASSWORD=SUPERSTrongWp@$$
