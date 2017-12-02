@@ -122,12 +122,12 @@ systemctl stop move-en 1>/dev/null 2>&1
 systemctl stop unionfs-encrypt 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
-systemctl enable rclone
-systemctl enable move
-systemctl enable unionfs
-systemctl start unionfs
-systemctl start rclone
-systemctl start move
+systemctl enable rclone 1>/dev/null 2>&1
+systemctl enable move 1>/dev/null 2>&1
+systemctl enable unionfs 1>/dev/null 2>&1
+systemctl start unionfs 1>/dev/null 2>&1 
+systemctl start rclone 1>/dev/null 2>&1
+systemctl start move 1>/dev/null 2>&1
 
 # set variable to remember what version of rclone user installed
 mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
