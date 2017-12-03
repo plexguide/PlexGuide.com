@@ -31,115 +31,32 @@ show_menus() {
 
 clear
 cat << EOF
-Tools & Troubleshooting 101 Menu
+Troubleshooting 101 Menu - Be aware that if you select option 
+[1], you will not lose your data.  It completely uninstalls 
+Docker and removes all containers.  From there, it will execute
+option [2] and reinstall everything.  All you have to do is 
+recreate your containers.  Data is not lost.  It is preserved in
+/opt/appdata!  Enjoy!
 
-1. PlexDrive Test       :  Veryify that PlexDrive is Working
-2. RClone Test          :  Verify Google Drive is Mounted
-3. RClone Encrypt Test  :  Verify Encrypted Google Drive is Mounted
-4. UnionFS Test         :  Verify UnionFS is Operational
-5. Uncrypted Move       :  View status of the Unencrypted SYNC
-6. Encrypted Move       :  View status of the Encrypted SYNC
-                      **************************************
-7. Start Re-Install:  Forces Startup Reinstall (Last Resort)
-                      **************************************
-8. Docker          :  Force Reinstall Docker
-9. Portainer       :  Force Reinstall Portainer
-10. NGINX-Proxy     :  Force Reinstall NGINX-Proxy
+1. Remove Containers:  No Data Loss! Just Recreate Cotainers
+                       *************************************
+2. Force PreInstall :  Forces Startup PreInstall
+                       *************************************
+3. Docker           :  Force Reinstall Docker
+4. Portainer        :  Force Reinstall Portainer
+5. NGINX-Proxy      :  Force Reinstall NGINX-Proxy
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 11 ];  Type [11] to Exit! " choice
+	read -p "Enter choice [ 1 - 6 ];  Type [6] to Exit! " choice
 	case $choice in
-  	1)
-      clear
-      ls /mnt/plexdrive4
-      echo
-      echo "*** PlexDrive4: Your Google Drive - If empty, that's not good ***"
-      echo "Note 1: Must have at least 1 item in your Google Drive for the test"
-      echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
-      echo
+    1)
+      echo "Not Setup Yet"
       read -n 1 -s -r -p "Press any key to continue "
-      clear
-      ;;
-  	2)
-      touch /mnt/gdrive/gdrivetest.txt
-      clear
-      ls /mnt/gdrive
-  		echo
-      echo "*** RClone: Your Google Drive - If empty, that's not good ***"
-      echo "Note 1: You should at least see gdrivetest.txt"
-      echo
-      read -n 1 -s -r -p "Press any key to continue "
-      clear
-  		;;
-      3)
-        touch /mnt/.gcrypt/gdrivetest.txt
-        clear
-        ls /mnt/.gcrypt
-    		echo
-        echo "*** RClone: Your Google Drive - If empty, that's not good ***"
-        echo "Note 1: You should at least see gdrivetest.txt"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-    		;;
-  	4)
-  		touch /mnt/move/uniontest.txt
-  		clear
-  		ls /mnt/unionfs
-  		echo
-      echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
-      echo "Note 1: You should at least see uniontest.txt"
-      echo "Note 2: Once PLEXDRIVE4 is setup, you should see the rest"
-      echo
-      read -n 1 -s -r -p "Press any key to continue "
-      clear
-  		;;
-      5)
-        ## create log file if does not exist
-        if [ -e "/opt/plexguide/move.log" ]
-        then
-          echo "Log exists"
-        else
-          touch /opt/plexguide/move.log
-        fi
-        ## obtains move.service info and puts into a log to displayed to the user
-    		clear
-    		systemctl status move > /opt/plexguide/move.log
-        cat /opt/plexguide/move.log
-    		echo
-        echo "*** View the Log ***"
-        echo "Remember, there is a sleep function of 30 minutes after done"
-        echo "If you have tons of stuff downloaded, you should see some activity"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-    		;;
-        6)
-          ## create log file if does not exist
-          if [ -e "/opt/plexguide/move-en.log" ]
-          then
-            echo "Log exists"
-          else
-            touch /opt/plexguide/move-en.log
-          fi
-
-          ## obtains move.service info and puts into a log to displayed to the user
-          clear
-          systemctl status move-en > /opt/plexguide/move-en.log
-          cat /opt/plexguide/move-en.log
-          echo
-          echo "*** View the Log ***"
-          echo "Remember, there is a sleep function of 30 minutes after done"
-          echo "If you have tons of stuff downloaded, you should see some activity"
-          echo
-          read -n 1 -s -r -p "Press any key to continue "
-          clear
-          ;;
-    7)
+    2)
       clear
       rm -r /var/plexguide/dep*
       echo
@@ -147,8 +64,7 @@ read_options(){
       echo
       read -n 1 -s -r -p "Press any key to continue "
         ;;
-    8)
-      # Install Docker and Docker Composer / Checks to see if is installed also
+    3)
       clear
       echo "Note, if you get a message about docker is installed and the 20 sec sleep"
       echo "warning, just ignore it and let the 20 seconds go by."
@@ -157,20 +73,19 @@ read_options(){
       curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
       chmod +x /usr/local/bin/docker-compose
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
-      ############################################# Install a Post-Docker Fix ###################### START
-    ;;
-    9)
+      ;;
+    4)
      echo ymlprogram portainer > /opt/plexguide/tmp.txt
      echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
      echo ymlport 9000 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    10)
-    echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
-    echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-    11)
+    5)
+     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
+     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    6)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

@@ -42,26 +42,29 @@ fi
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V4 (17.12.02) | Written By: Admin9705 & Deiteq
-ASSIST US: Visit http://wiki.plexguide.com - Update & Edit the Wiki
+PlexGuide.com Installer V4 (17.12.03) | Written By: Admin9705 & Deiteq
 
-DONATION ASSISTANCE INFORMATION *************************************
->>> Visit http://hexabot.us to Compound Weekly on Bit & Lite Coins! <<<
->>> Buy coins to Start investing at http://coin.plexguide.com <<<
+DONATION ASSISTANCE INFORMATION **************************************
+>>>>> Visit http://hexabot.us to compound your BTC & LTC 22% Weekly!
+>>>>> Visit http://coin.plexguide.com to purchase BitCoin & LitCoins!
 
-GOOGLE DRIVE ********************************************************
+GOOGLE DRIVE *********************************************************
 1. RClone   :  Media Syncs to Google Drive
 2. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
-PROGRAMS ************************************************************
+PROGRAMS *************************************************************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. BETA BETA:  Install Working Beta Programs! No Guides, YMLs Work!
+4. **BETA** :  Install Working Beta Programs! No Guides, YMLs Work!
+5. Updates  :  Update PlexGuide for the newest features & bugfixes!
 
-TOOLS & T-SHOOT *****************************************************
-5. Updates  :  Update PlexGuide for New Features & Fixes
-6. Tools    :  Troubleshoot Problems & Provides Helpful Information
-7. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
-8. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
+INFO & T-SHOOT *******************************************************
+
+6. Info View:  View System Information to Assist You
+7. T-Shoot  :  Troubleshoot Problems & Provides Helpful Information
+
+SYSTEM BACKUP & RESTORE **********************************************
+8. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
+9. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
 EOF
 
@@ -69,7 +72,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
 	case $choice in
 	1)
         clear
@@ -93,10 +96,14 @@ read_options(){
         echo Remember, restart by typing: plexguide
         exit 0;;
     6)
+        bash /opt/plexguide/scripts/menus/info-menu.sh
+        clear
+        ;;  
+    7)
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
-    9)
+    10)
         clear
         echo Remember, restart by typing:  plexguide
         exit 0;;
