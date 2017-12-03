@@ -9,7 +9,7 @@ services:
      - /opt/nginx-proxy:/etc/nginx2/certs:ro
      - /var/run/docker.sock:/tmp/docker.sock:ro
      - /etc/nginx2/vhost.d
-     - /usr/share/nginx2/html
+     - /usr/share/nginx/html
    ports:
      - "80:80"
      - "443:443"
