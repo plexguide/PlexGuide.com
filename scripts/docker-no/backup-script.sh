@@ -10,7 +10,7 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     docker stop "$YMLPROGRAM"
-    -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM"
+    sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM"
     rclone copy /tmp/"$YMLPROGRAM" gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M
     rm /tmp/"$YMLPROGRAM"  
     docker start "$YMLPROGRAM"
