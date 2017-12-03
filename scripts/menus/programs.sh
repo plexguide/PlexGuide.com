@@ -38,14 +38,14 @@ PlexGuide.com Installer/Upgrader
 2.  Emby       | Sharing Media Program - Secondary Alternative
 3.  NetData    | Statistical Tool for the Server
 4.  NZBGET     | USENET Downloading Program
-4.  Muximux    | Unified Site Interface
-5.  Ombi v3    | Allows Users to Request Media
-6.  Organizr   | Site Interface to Control Your Programs
-7.  PlexPy     | Analytic Information - Server & Users
-8.  Radarr     | Movie Request Program
-9.  SABNZBD    | USENET Downloading Program
-10. Sonarr     | TV Request Program
-11. Wordpress  | Create a Website for Users to (DOWN**)
+5.  Muximux    | Unified Site Interface
+6.  Ombi v3    | Allows Users to Request Media
+7.  Organizr   | Site Interface to Control Your Programs
+8.  PlexPy     | Analytic Information - Server & Users
+9.  Radarr     | Movie Request Program
+10. SABNZBD    | USENET Downloading Program
+11. Sonarr     | TV Request Program
+12. Wordpress  | Create a Website for Users to (DOWN**)
 
 EOF
 }
@@ -55,7 +55,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 12 ];  Type [12] to Exit! " choice
+	read -p "Enter choice [ 1 - 13 ];  Type [13] to Exit! " choice
 	case $choice in
     1)
      clear
@@ -74,54 +74,60 @@ read_options(){
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
     4)
+     echo ymlprogram nzbget > /opt/plexguide/tmp.txt
+     echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
+     echo ymlport 6789 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    5)
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    5)
+    6)
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    6)
+    7)
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    7)
+    8)
      echo ymlprogram plexpy > /opt/plexguide/tmp.txt
      echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     8)
-      echo ymlprogram radarr > /opt/plexguide/tmp.txt
-      echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
-      echo ymlport 7878 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      ;;
-      9)
-      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-      echo ymlport 8090 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      ;;
-      10)
-        echo ymlprogram sonarr > /opt/plexguide/tmp.txt
-        echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
-        echo ymlport 8989 >> /opt/plexguide/tmp.txt
-        bash /opt/plexguide/scripts/docker-no/program-installer.sh
-        ;;
-      11)
-        echo ymlprogram wordpress > /opt/plexguide/tmp.txt
-        echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
-        echo ymlport 80 >> /opt/plexguide/tmp.txt
-        bash /opt/plexguide/scripts/docker-no/program-installer.sh
-        ;;
-      12)
+    9)
+     echo ymlprogram radarr > /opt/plexguide/tmp.txt
+     echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
+     echo ymlport 7878 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    10)
+     echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
+     echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+     echo ymlport 8090 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+    11)
+     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
+     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
+     echo ymlport 8989 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+     12)
+     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
+     echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
+     echo ymlport 80 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+     13)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
