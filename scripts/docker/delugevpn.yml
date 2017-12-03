@@ -29,8 +29,8 @@ services:
      - VPN_DEVICE_TYPE=tun
      - STRONG_CERTS=no
      - LAN_NETWORK=${CIDR_ADDRESS}
-     - VPN_USER=${PIA_USERNAME}
-     - VPN_PASS=${PIA_PASSWORD}
+#     - VPN_USER=${PIA_USERNAME}
+#     - VPN_PASS=${PIA_PASSWORD}
 #     - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
 #     - PUID=${PUID}
 #     - PGID=${PGID}

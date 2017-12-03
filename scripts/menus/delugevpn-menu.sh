@@ -80,7 +80,7 @@ read_options(){
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "PIA_USERNAME=$pia_username" >> /opt/.environments/.deluge-env
+    echo "VPN_USER=$pia_username" >> /opt/.environments/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
     echo "VPN_PASS=$pia_password" >> /opt/.environments/.deluge-env
