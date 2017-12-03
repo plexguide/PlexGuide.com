@@ -62,7 +62,7 @@ INFO & T-SHOOT *******************************************************
 7. T-Shoot  :  Troubleshoot Problems & Provides Helpful Information
 
 SYSTEM BACKUP & RESTORE **********************************************
-8. Backup   :  NOT FUNCTIONAL YET - Backup Program Data
+8. Backup   :  Backup Your Program Data
 9. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
 
 EOF
