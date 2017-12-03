@@ -11,8 +11,8 @@ services:
         environment:
             - PUID=${PUID}
             - PGID=${PGID}
-        env_file:
-            - /opt/.environments/.uhttpd-env
+    #    env_file:
+  #          - /opt/.environments/.uhttpd-env
         volumes:
             - '/opt/appdata/www:/www'
 networks:
