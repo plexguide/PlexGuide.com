@@ -51,6 +51,7 @@ read_options(){
 	case $choice in
 		1)
     clear
+    rm /opt/.environments/.plex-env
     bash /opt/plexguide/scripts/test/plex.sh
     ;;
 		2)
