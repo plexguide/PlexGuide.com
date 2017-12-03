@@ -102,6 +102,10 @@ read_options(){
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
         ;;
+    8)
+        bash /opt/plexguide/scripts/menus/backup.sh
+        clear
+        ;;
     10)
         clear
         echo Remember, restart by typing:  plexguide
