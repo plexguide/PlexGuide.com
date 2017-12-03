@@ -21,9 +21,7 @@ if echo "$answer" | grep -iq "^y" ;then
     docker start "$YMLPROGRAM" 1>/dev/null 2>&1
     echo "4. Restarting Your Docker Program"
     echo ""
-    ls -la /gdrive/Backup/"$YMLPROGRAM"
     echo "Finished - Check Your Google Drive for the Backup Incase!"
-
 else
     echo No
     clear
