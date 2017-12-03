@@ -82,8 +82,8 @@ read_options(){
     read -p "What is your PIA Username?: " pia_username
     echo "PIA_USERNAME=$pia_username" >> /opt/.environments/.deluge-env
     echo
-    read -s -p "What is your PIA Password? (Will not be echoed): " vpn_pass
-    echo "VPN_PASS=$vpn_pass" >> /opt/.environments/.deluge-env
+    read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
+    echo "VPN_PASS=$pia_password" >> /opt/.environments/.deluge-env
     echo
     cat /opt/.environments/.deluge-env >> /opt/plexguide/scripts/docker/.env
 
