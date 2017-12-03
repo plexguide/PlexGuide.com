@@ -11,12 +11,12 @@ services:
     volumes:
       - ./:/var/www/html
     ports:
-      - "8200:80"
+      - 8200:85
     links:
       - my-wpdb:mysql
     environment:
       - VIRTUAL_HOST=plex.one
-      - VIRTUAL_PORT=80
+      - VIRTUAL_PORT=85
       - WORDPRESS_DB_PASSWORD=SUPERSTrongWp@$$
 networks:
   plexguide:
