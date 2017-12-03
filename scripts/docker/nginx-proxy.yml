@@ -15,8 +15,8 @@ services:
      - "443:443"
    restart: always
    environment:
-     - PUID=1000
-     - PGID=1000
+     - PUID=0
+     - PGID=0
 networks:
   default:
     external:
