@@ -34,3 +34,5 @@ services:
 #    - PLEX_CLAIM=${PMSTOKEN}
 #   network_mode: "host"
   # privileged: true
+networks:
+  plexguide:
