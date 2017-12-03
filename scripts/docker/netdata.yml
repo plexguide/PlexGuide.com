@@ -15,3 +15,7 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=netdata.*
      - VIRTUAL_PORT=19999
+networks:
+  default:
+    external:
+      name: plexguide
