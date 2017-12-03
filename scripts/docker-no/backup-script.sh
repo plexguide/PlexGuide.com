@@ -9,9 +9,10 @@ answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
+    mkdir -p /gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM"
     sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM"
-    rclone copy /tmp/"$YMLPROGRAM" gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M
+    rclone copy /tmp/"$YMLPROGRAM".tar.bz2 gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M
     rm /tmp/"$YMLPROGRAM".tar.bz2
     docker start "$YMLPROGRAM"
 else
