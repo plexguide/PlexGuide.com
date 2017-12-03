@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: "Open Sans", sans-serif;
+}
+</style>
+</head>
+<a href="https://cash.me/$TomMorgan" target="_blank"><img src="https://img.shields.io/badge/Donate-SquareCash-brightgreen.svg"></a><br />
+<body>
+<h1>Welcome to Mediabox!</h1>
+<h3><u>Basic Information & Configuration</u></h3>
+The <b><u>Couchpotato</b></u> container is available at: <a href="http://locip:5050" target="_blank">locip:5050</a><br />
+The <b><u>DelugeVPN</b></u> container is available at: <a href="http://locip:8112" target="_blank">locip:8112</a> -- Default Password is: deluge<br />
+A <b><u>PRIVOXY proxy</b></u> service is available at: <a href="http://locip:8118" target="_blank">locip:8118</a><br />
+The <b><u>Deluge daemon</b></u> port available at: <a href="http://locip:58846" target="_blank">locip:58846</a> -- (For Couchpotato)<br />
+The <b><u>PLEX</b></u> container is available at: <a href="http://locip:32400/web" target="_blank">locip:32400/web</a><br />
+The <b><u>PlexPy</b></u> container is available at: <a href="http://locip:8181" target="_blank">locip:8181</a><br />
+The <b><u>Radarr</b></u> container is available at: <a href="http://locip:7878" target="_blank">locip:7878</a><br />
+The <b><u>Sickrage</b></u> container is available at: <a href="http://locip:8081" target="_blank">locip:8081</a><br />
+The <b><u>Ombi</b></u> container is available at: <a href="http://locip:3579" target="_blank">locip:3579</a><br />
+The <b><u>Portainer</b></u> container is available at: <a href="http://locip:9000" target="_blank">locip:9000</a> -- Select Local for the Endpoint to Manage<br />
+The <b><u>Minio</b></u> (file browser) container is available at: <a href="http://locip:9009" target="_blank">locip:9009</a> -- Initial Login: minio / minio123 <br />
+The <b><u>NetData</b></u> system monitoring container is available at: <a href="http://locip:19999" target="_blank">locip:19999</a><br />
+The <b><u>Duplicati</b></u> backup software container is available at: <a href="http://locip:8200" target="_blank">locip:8200</a><br />
+<li>This sotware is useful for making backups of your config files etc. so that if you need to redeploy Mediabox - you can bring back in files that already have all your personal tweaks.</li>
+<br />
+<h3><u>Manual Configuration steps:</u></h3>
+<b><u>Couchpotato:</u></b><br />
+As you go through the Couchpotato Setup Wizard use these settings:<br />
+<ul>
+<li> Turn on Deluge -- Click the "slider" to the right of the Deluge option<br />
+<li> Host: locip:58846<br />
+<li> Username: daemonun<br />
+<li> Password: daemonpass<br />
+<li> Directory: [Leave Blank]<br />
+<li> Label: [Leave Blank]<br />
+</ul>
+After the Wizard is complete:<br />
+<ul>
+<li> Click on the "gear" icon and select "Settings"<br />
+<li> Go to > Downloaders > Deluge > & click the "Test Deluge" button to verify the connection.<br />
+<li> Go to > Renamer - and turn it on > Click the "slider" to the right<br />
+<li>In the From field: /downloads<br />
+<li>In the To field: /movies<br />
+</ul>
+<br />
+<b><u>Sickrage</u></b><br />
+<ul>
+<li>Click on the settings "gear" icon<br />
+<li>Go to > General > Misc > Show root directories<br />
+<li>Click "New" - Select "tv" -- Click "Save Changes"<br />
+<li>At the top right - Select Post Processing<br />
+<li>On the Post Processing Tab - Go to Post Processing Dir<br />
+<li>Click Browse > Select "downloads"-- Click "Save Changes"<br />
+<li>Click on the settings "gear" icon<br />
+<li>Go to > Search Settings > Torrent Search (Tab)<br />
+<li>Check the box for Enable Torrent Search Providers<br />
+<li>For the "Send .torrent files to" dropdown select: Deluge (via WebUI)<br />
+<li>For "Torrent host:port" use: http://locip:8112<br />
+<li>For client password use: deluge (unless you have changed it)<br />
+<li>After the settings are in Click the "Test Connection" button to see if it works -- Click "Save Changes"<br />
+</ul>
+<b><u>Radarr</u></b><br />
+<ul>
+<li>Click on the Settings icon<br />
+<li>Clock on the Download Client Tab<br />
+<li>Click on the + sign to add a download client<br />
+<li>Under the "Torrent" section Select Deluge<br />
+<li>Enter these settings:<br />
+    * Name: Deluge<br />
+    * Enable: Yes<br />
+    * Host: locip<br />
+    * Port: 8112<br />
+    * Password: deluge (unless you have changed it)<br />
+    * Category: blank<br />
+    * Use SSL: No<br />
+</ul>
+<b><u>PLEX</u></b><br />
+When adding libraries to PLEX use these settings:<br />
+<ul>
+<li>Movies = /data/movies<br />
+<li>TV = /data/tvshows<br />
+</ul>
+<h3>Mediabox Management Containers</h3>
+<b><u>Portainer</u></b><br />
+To help you manage your Mediabox Docker containers Portainer is available.<br />
+Portainer is a Docker Management UI to help you work with the containers etc.<br />
+When you first launch Portianer select "Local" as the Docker Endpoint to Manage.<br />
+If you notice the <b><u>Minio</u></b> container reporting as "Unhealthy" in Portainer from the commandline on your Mediabox server run this:<br />
+<code>$ docker exec minio sed -i "s/404/403/g" /usr/bin/healthcheck.sh</code><br />
+OR <br>
+From the Minio console in Portainer (Select /bin/sh) run just this: <code>sed -i "s/404/403/g" /usr/bin/healthcheck.sh</code>
+<br /><br />
+<b><u>Watchtower</u></b><br />
+The Watchtower container will monitor the Portainer container, if there is an update to the Portaner base image<br />
+Watchtower will download that image, gracefully stop Portainer, and re-launch it with the new image.<br />
+The other containers are generally built to install the latest version of the program they run whenever they are restarted.<br />
+So, for example, to update Deluge (which will let you know if you are behind) use Portainer to "Restart" the DelugeVPN container and it will update.<br />
+<h1>Troubleshooting</h1>
+If you are having issues with Mediabox or any of your continers please take look at the settings being used.<br />
+Below are the variables in your .env file:
+<div>
+<iframe src="env.txt" frameborder="0" height="450" width="50%"></iframe>
+</div>
+If you enjoy the project -- Fuel it with some caffeine :)<br />
+<a href="https://cash.me/$TomMorgan" target="_blank"><img src="https://img.shields.io/badge/Donate-SquareCash-brightgreen.svg"></a><br />
+</body>
+</html>

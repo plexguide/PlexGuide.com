@@ -23,21 +23,21 @@ printf "\n\n"
 printf "Configuring Deluge daemon access - UHTTPD index file - Permissions \n\n"
 
 # Configure DelugeVPN: Set Daemon access on, delete the core.conf~ file
-`while [ ! -f delugevpn/config/core.conf ]; do sleep 1; done`
+`while [ ! -f /opt/appdata/delugevpn/config/core.conf ]; do sleep 1; done`
 `docker stop delugevpn > /dev/null 2>&1`
-`rm delugevpn/config/core.conf~ > /dev/null 2>&1`
-`sed -i 's/"allow_remote": false,/"allow_remote": true,/g'  delugevpn/config/core.conf`
-`sed -i 's/"move_completed": false,/"move_completed": true,/g'  delugevpn/config/core.conf`
+`rm /opt/appdata/delugevpn/config/core.conf~ > /dev/null 2>&1`
+`sed -i 's/"allow_remote": false,/"allow_remote": true,/g'  /opt/appdata/delugevpn/config/core.conf`
+`sed -i 's/"move_completed": false,/"move_completed": true,/g'  /opt/appdata/delugevpn/config/core.conf`
 `docker start delugevpn > /dev/null 2>&1`
 
 # Push the Deluge Daemon Access info the to Auth file
-`echo $daemonun:$daemonpass:10 >> ./delugevpn/config/auth`
+`echo $daemonun:$daemonpass:10 >> /opt/appdata//delugevpn/config/auth`
 
 # Configure UHTTPD settings and Index file
 `docker stop uhttpd > /dev/null 2>&1`
-`mv index.html www/index.html`
-`sed -i "s/local_ip/$locip/g" www/index.html`
-`sed -i "s/daemonun/$daemonun/g" www/index.html`
-`sed -i "s/daemonpass/$daemonpass/g" www/index.html`
-`cp .env www/env.txt`
+`mv index.html /opt/appdata/www/index.html`
+`sed -i "s/local_ip/$locip/g" /opt/appdata/www/index.html`
+`sed -i "s/daemonun/$daemonun/g" /opt/appdata/www/index.html`
+`sed -i "s/daemonpass/$daemonpass/g" /opt/appdata/www/index.html`
+`cp .env /opt/appdata/www/env.txt`
 `docker start uhttpd > /dev/null 2>&1`
