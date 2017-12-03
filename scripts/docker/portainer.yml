@@ -17,3 +17,5 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=portainer.*
      - VIRTUAL_PORT=9000
+networks:
+  plexguide:

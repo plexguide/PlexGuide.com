@@ -34,3 +34,5 @@ services:
      - PGID=1000
    restart: unless-stopped
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
+networks:
+  plexguide:

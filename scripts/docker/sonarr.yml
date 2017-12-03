@@ -18,3 +18,5 @@ services:
      - VIRTUAL_PORT=8181
    restart:
      always
+networks:
+  plexguide:

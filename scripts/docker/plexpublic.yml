@@ -1,8 +1,7 @@
 ---
 version: '2'
 services:
- plex:
-#   image: linuxserver/plex
+ plexpublic:
    image: plexinc/pms-docker:public
    container_name: plexpublic
    volumes:
@@ -34,3 +33,5 @@ services:
   #   - PLEX_CLAIM=${PMSTOKEN}
 #   network_mode: "host"
   # privileged: true
+networks:
+  plexguide:
