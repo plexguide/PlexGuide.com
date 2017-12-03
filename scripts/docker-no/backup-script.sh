@@ -12,7 +12,7 @@ if echo "$answer" | grep -iq "^y" ;then
     docker stop "$YMLPROGRAM"
     sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM"
     rclone copy /tmp/"$YMLPROGRAM" gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M
-    rm /tmp/"$YMLPROGRAM"  
+    rm /tmp/"$YMLPROGRAM".tar.bz2
     docker start "$YMLPROGRAM"
 else
     echo No
