@@ -1,12 +1,12 @@
 version: "2"
 services:
-  my-wpdb:
+  my-wpdb2:
     image: mariadb
     ports:
       - "8081:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=SUPERSTrongWp@$$
-  my-wp:
+  my-wp2:
     image: wordpress
     volumes:
       - ./:/var/www/html
@@ -15,7 +15,7 @@ services:
     links:
       - my-wpdb:mysql
     environment:
-      - VIRTUAL_HOST=hexabotreviews.com
+      - VIRTUAL_HOST=*
       - VIRTUAL_PORT=80
       - WORDPRESS_DB_PASSWORD=SUPERSTrongWp@$$
 networks:
