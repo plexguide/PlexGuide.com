@@ -34,7 +34,8 @@ PlexGuide.com Backup - BETA PHASE - Do NOT USE
 
 1. OMBIv3
 2. NZBGET
-2. SABNZBD
+3. PLEX
+4. SABNZBD
 
 EOF
 }
@@ -44,7 +45,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3 ];  Type [3] to Exit! " choice
+	read -p "Enter choice [ 1 - 5 ];  Type [5] to Exit! " choice
 	case $choice in
      1)
       echo ymlprogram ombiv3 > /opt/plexguide/tmp.txt
@@ -57,11 +58,16 @@ read_options(){
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
      3)
+      echo ymlprogram plex > /opt/plexguide/tmp.txt
+      echo ymldisplay PLEX >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      ;;
+     4)
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
-     4)
+     5)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
