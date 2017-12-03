@@ -34,7 +34,7 @@ cat << EOF
 Tools & Troubleshooting 101 Menu
 
 Basic Checks ***********************************************
-1. HD Space      :
+1. HD Space      :  View HD Stats
 2. PlexDrive     :  Veryify that PlexDrive is Working
 
 Uncrypted Tests ********************************************
@@ -51,7 +51,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 11 ];  Type [11] to Exit! " choice
+	read -p "Enter choice [ 1 - 8 ];  Type [8] to Exit! " choice
 	case $choice in
     1)
       clear
