@@ -8,7 +8,7 @@ services:
      - /etc/localtime:/etc/localtime:ro
      - /opt/nginx-proxy:/etc/nginx2/certs:ro
      - /var/run/docker.sock:/tmp/docker.sock:ro
-     - /etc/nginx2/vhost.d
+     - /etc/nginx/vhost.d
      - /usr/share/nginx/html
    ports:
      - "80:80"
