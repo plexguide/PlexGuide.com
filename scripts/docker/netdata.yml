@@ -16,6 +16,4 @@ services:
      - VIRTUAL_HOST=netdata.*
      - VIRTUAL_PORT=19999
 networks:
-  default:
-    external:
-      name: plexguide
+  plexguide:
