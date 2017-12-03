@@ -30,6 +30,7 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
+     - VIRTUAL_HOST=plex.*
 #    - PLEX_CLAIM=${PMSTOKEN}
 #   network_mode: "host"
   # privileged: true
