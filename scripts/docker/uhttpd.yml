@@ -1,0 +1,19 @@
+---
+version: '2'
+services:
+    uhttpd:
+        image: fnichol/uhttpd
+        container_name: uhttpd
+        restart: unless-stopped
+        network_mode: "bridge"
+        ports:
+            - '${IP_ADDRESS}:80:80'
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+        env_file:
+            - /opt/.environments/.deluge-env
+        volumes:
+            - '/opt/appdata/www:/www'
+networks:
+  plexguide:
