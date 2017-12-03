@@ -58,7 +58,6 @@ PROGRAMS *************************************************************
 5. Updates  :  Update PlexGuide for the newest features & bugfixes!
 
 INFO & T-SHOOT *******************************************************
-
 6. Info View:  View System Information to Assist You
 7. T-Shoot  :  Troubleshoot Problems & Provides Helpful Information
 
