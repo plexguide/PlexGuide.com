@@ -32,7 +32,7 @@ clear
 cat << EOF
 PlexGuide.com Backup - BETA PHASE - Do NOT USE
 
-1. TEST 
+1. SABNZBD Backup 
 2. TEST II
 
 EOF
@@ -46,9 +46,9 @@ read_options(){
 	read -p "Enter choice [ 1 - 3 ];  Type [3] to Exit! " choice
 	case $choice in
      1)
-    sudo -s tar -cvjf /tmp/$(hostname).$(date +%F).tar.bz2 /opt/appdata/sabnzbd
-    sudo rclone copy /tmp/$(hostname).* gdrive:/Backup -v --checksum --drive-chunk-size=64M
-    sudo rm /tmp/$(hostname).*   
+      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
+      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/backup-script.sh
      ;;
      2)
       echo ymlprogram emby > /opt/plexguide/tmp.txt
