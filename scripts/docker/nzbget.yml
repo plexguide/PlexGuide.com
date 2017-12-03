@@ -9,9 +9,7 @@ services:
    volumes:
      - /opt/appdata/nzbget:/config
      - /:/yourcomputer
-     - /mnt/nzbget/complete:/complete
-     - /mnt/nzbget/incomplete:/incomplete
-     - /mnt/nzbget/nzb:/nzb
+     - /mnt/nzbget/downloads:/downloads
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
