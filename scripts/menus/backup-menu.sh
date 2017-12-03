@@ -51,10 +51,9 @@ read_options(){
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
      ;;
      2)
-      echo ymlprogram emby > /opt/plexguide/tmp.txt
-      echo ymldisplay Emby >> /opt/plexguide/tmp.txt
-      echo ymlport 8096 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      echo ymlprogram nzbget > /opt/plexguide/tmp.txt
+      echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
      3)
     exit 0;;
