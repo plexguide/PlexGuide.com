@@ -74,6 +74,12 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   mkdir -p /mnt/sab/incomplete
   chmod 777 /mnt/sab/incomplete
 
+  mkdir -p /mnt/nzbget
+  chmod 777 /mnt/nzbget/incomplete
+
+  mkdir -p /mnt/nzbget
+  chmod 777 /mnt/nzbget/complete
+
   mkdir -p /mnt/sab/complete/tv
   chmod 777 /mnt/sab/complete/tv
 

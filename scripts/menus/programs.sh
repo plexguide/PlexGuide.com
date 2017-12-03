@@ -37,6 +37,7 @@ PlexGuide.com Installer/Upgrader
 ===================================================================
 2.  Emby       | Sharing Media Program - Secondary Alternative
 3.  NetData    | Statistical Tool for the Server
+4.  NZBGET     | USENET Downloading Program
 4.  Muximux    | Unified Site Interface
 5.  Ombi v3    | Allows Users to Request Media
 6.  Organizr   | Site Interface to Control Your Programs

@@ -17,9 +17,9 @@ services:
    environment:
      - PUID=0
      - PGID=0
+     - VIRTUAL_HOST=nzbget.*
+     - VIRTUAL_PORT=6789
    restart:
      always
 networks:
-  default:
-    external:
-      name: plexguide
+  plexguide:
