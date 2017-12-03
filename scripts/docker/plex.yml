@@ -28,8 +28,8 @@ services:
             - PGID=1000
         hostname: ${HOSTNAME}
         volumes:
-            - /opt/plex/database:/config
-            - /opt/plex/transcode:/transcode
+            - /opt/appdata/plex/database:/config
+            - /opt/appdata/plex/transcode:/transcode
             - /mnt/plexdrive4:/plexdrive4
             - /mnt/unionfs:/unionfs
             - /:/yourcomputer
