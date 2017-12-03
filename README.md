@@ -38,14 +38,6 @@ Build an operational-automated server that mounts your Google Drive, while utili
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Have a Dedicated, VPS, or Home Solution Ready!
-
-*(Optional, but Super Highly Recommended) - Either a Free or Paid Domain*
-- Paid Domains
-    - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
-    - Alternate Services - As long as you know how to configure it
-- Free Domains
-    - [FreeNom.com](http://freenom.com) - Visit the [PlexGuide FreeNom Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
-- This ***will become mandatory*** in Version 5 for better Security
   
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
@@ -80,6 +72,14 @@ plexguide
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](http://portainer.plexguide.com)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
+
+*(Optional, but Super Highly Recommended) - Either a Free or Paid Domain*
+- Paid Domains
+    - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
+    - Alternate Services - As long as you know how to configure it
+- Free Domains
+    - [FreeNom.com](http://freenom.com) - Visit the [PlexGuide FreeNom Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
+- This ***will become mandatory*** in Version 5 for better Security
 
 **F. Final Notes**
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com). 
