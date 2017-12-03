@@ -56,6 +56,7 @@ read_options(){
     1)
       echo "Not Setup Yet"
       read -n 1 -s -r -p "Press any key to continue "
+      ;;
     2)
       clear
       rm -r /var/plexguide/dep*

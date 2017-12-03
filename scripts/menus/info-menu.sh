@@ -57,6 +57,7 @@ read_options(){
       clear
       echo "Not Operational Yet"
       read -n 1 -s -r -p "Press any key to continue "  
+      ;;
   	2)
       clear
       ls /mnt/plexdrive4
