@@ -103,7 +103,7 @@ read_options(){
         clear
         ;;
     8)
-        bash /opt/plexguide/scripts/menus/backup.sh
+        bash /opt/plexguide/scripts/menus/backup-menu.sh
         clear
         ;;
     10)
