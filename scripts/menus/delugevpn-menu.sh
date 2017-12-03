@@ -87,7 +87,6 @@ read_options(){
     echo
     cat /opt/.environments/.deluge-env >> /opt/plexguide/scripts/docker/.env
 
-        bash /opt/plexguide/scripts/delugevpn/daemon.sh
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
   #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/.environments/.deluge-env
@@ -120,6 +119,8 @@ read_options(){
         echo ymlprogram uhttpd > /opt/plexguide/tmp.txt
         echo ymldisplay UHTTPD >> /opt/plexguide/tmp.txt
         echo ymlport 80 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/delugevpn/daemon.sh
+
         clear
       else
         echo
