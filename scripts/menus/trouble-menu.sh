@@ -54,7 +54,17 @@ read_options(){
 	read -p "Enter choice [ 1 - 6 ];  Type [6] to Exit! " choice
 	case $choice in
     1)
-      echo "Not Setup Yet"
+      echo "Uninstall Docker"
+      echo 
+      apt-get purge docker-ce
+      rm -rf /var/lib/docker
+      clear
+      read -n 1 -s -r -p "Docker Uninstalled - All Containers Removed"
+      rm -r /var/plexguide/dep*
+      clear
+      echo ""
+      echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
+      echo
       read -n 1 -s -r -p "Press any key to continue "
       ;;
     2)
