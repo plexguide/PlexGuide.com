@@ -11,7 +11,7 @@ echo "IP_ADDRESS=$local_ip" >> .env
 echo "PUID=$PUID" >> .env
 echo "PGID=$PGID" >> .env
 
-cat .env >> /opt/.environments/.deluge-env
+cat .env >> /opt/.environments/.uhttpd-env
 
 # Let's configure the access to the Deluge Daemon for CouchPotato
 echo "CouchPotato requires access to the Deluge daemon port and needs credentials set."

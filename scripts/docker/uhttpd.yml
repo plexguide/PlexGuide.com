@@ -12,7 +12,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         env_file:
-            - /opt/.environments/.deluge-env
+            - /opt/.environments/.uhttpd-env
         volumes:
             - '/opt/appdata/www:/www'
 networks:
