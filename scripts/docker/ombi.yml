@@ -18,3 +18,5 @@ services:
      - VIRTUAL_PORT=3579
    restart:
      always
+networks:
+  plexguide:

@@ -34,3 +34,5 @@ services:
             - /mnt/unionfs:/unionfs
             - /:/yourcomputer
             - /etc/localtime:/etc/localtime:ro
+networks:
+  plexguide:

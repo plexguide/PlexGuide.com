@@ -21,3 +21,5 @@ services:
             - PUID=1000
             - PGID=1000
         restart: always
+networks:
+  plexguide:
