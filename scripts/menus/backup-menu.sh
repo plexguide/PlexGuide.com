@@ -60,6 +60,7 @@ read_options(){
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      ;;
      4)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
