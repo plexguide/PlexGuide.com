@@ -14,10 +14,6 @@ if echo "$answer" | grep -iq "^y" ;then
     rclone copy /tmp/$(hostname).* gdrive:/Backup -v --checksum --drive-chunk-size=64M
     rm /tmp/$(hostname).*   
     docker start "$YMLPROGRAM"
-    docker-compose -f /opt/plexguide/scripts/docker/"$YMLPROGRAM".yml up -d
-    echo
-    echo Upgraded "$YMLDISPLAY" - Now is on your Google Drive!
-    echo
 else
     echo No
     clear
