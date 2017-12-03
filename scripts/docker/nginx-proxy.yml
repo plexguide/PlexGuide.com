@@ -6,7 +6,7 @@ services:
    container_name: nginx
    volumes:
      - /etc/localtime:/etc/localtime:ro
-     - /opt/nginx-proxy:/etc/nginx2/certs:ro
+     - /opt/nginx-proxy:/etc/nginx/certs:ro
      - /var/run/docker.sock:/tmp/docker.sock:ro
      - /etc/nginx/vhost.d
      - /usr/share/nginx/html
