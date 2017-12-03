@@ -5,8 +5,8 @@ services:
    image: plexinc/pms-docker:plexpass
    container_name: plexpass
    volumes:
-     - /opt/plex/database:/config
-     - /opt/plex/transcode:/transcode
+     - /opt/appdata/plex/database:/config
+     - /opt/appdata/plex/transcode:/transcode
      - /mnt/plexdrive4:/plexdrive4
      - /mnt/unionfs:/unionfs
      - /:/yourcomputer
