@@ -60,25 +60,20 @@ if echo "$answer" | grep -iq "^y" ;then
 
 echo ""
 echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
-## off by default
-## wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
-## dpkg -i minergate-cli.deb 1>/dev/null 2>&1
+
+
 ## Create Directory Structure - Goal is to move everything here
 
+################### For PlexDrive
   mkdir -p /mnt/plexdrive4
   chmod 755 /mnt/plexdrive4
 
   mkdir -p /opt/plexguide-startup
   chmod 755 /opt/plexguide-startup
 
+################### For SAB
   mkdir -p /mnt/sab/incomplete
   chmod 777 /mnt/sab/incomplete
-
-  mkdir -p /mnt/nzbget
-  chmod 777 /mnt/nzbget/incomplete
-
-  mkdir -p /mnt/nzbget
-  chmod 777 /mnt/nzbget/complete
 
   mkdir -p /mnt/sab/complete/tv
   chmod 777 /mnt/sab/complete/tv
@@ -89,6 +84,20 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   mkdir -p /mnt/sab/nzb
   chmod 777 /mnt/sab/nzb
 
+#################### For NZBGET
+  mkdir -p /mnt/nzbget/incomplete
+  chmod 777 /mnt/nzbget/incomplete
+
+  mkdir -p /mnt/nzbget/complete/tv
+  chmod 777 /mnt/nzbget/complete/tv
+
+  mkdir -p /mnt/nzbget/complete/movies
+  chmod 777 /mnt/nzbget/complete/movies
+
+  mkdir -p /mnt/nzbget/sab
+  chmod 777 /mnt/nzbget/sab
+
+##################### For Move Service
   mkdir -p /mnt/move/tv
   chmod 777 /mnt/move/tv
 
