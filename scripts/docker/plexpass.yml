@@ -1,7 +1,7 @@
 ---
 version: '2'
 services:
- plexpass:
+ plex:
    image: plexinc/pms-docker:plexpass
    container_name: plexpass
    volumes:
