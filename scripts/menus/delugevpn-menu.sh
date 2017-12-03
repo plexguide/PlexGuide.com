@@ -119,6 +119,8 @@ read_options(){
         echo ymlprogram uhttpd > /opt/plexguide/tmp.txt
         echo ymldisplay UHTTPD >> /opt/plexguide/tmp.txt
         echo ymlport 80 >> /opt/plexguide/tmp.txt
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        clear
         bash /opt/plexguide/scripts/delugevpn/daemon.sh
 
         clear
