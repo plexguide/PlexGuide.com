@@ -6,17 +6,17 @@ services:
    container_name: nginx
    volumes:
      - /etc/localtime:/etc/localtime:ro
-     - /opt/nginx-proxy:/etc/nginx/certs:ro
+     - /opt/nginx-proxy:/etc/nginx2/certs:ro
      - /var/run/docker.sock:/tmp/docker.sock:ro
-     - /etc/nginx/vhost.d
-     - /usr/share/nginx/html
+     - /etc/nginx2/vhost.d
+     - /usr/share/nginx2/html
    ports:
      - "80:80"
      - "443:443"
    restart: always
    environment:
-     - PUID=0
-     - PGID=0
+     - PUID=1000
+     - PGID=1000
 networks:
   default:
     external:
