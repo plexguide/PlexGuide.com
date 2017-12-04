@@ -13,7 +13,7 @@ services:
     ports:
       - 8200:80
     links:
-      - my-wpdb:mysql
+      - my-wpdb2:mysql
     environment:
       - VIRTUAL_HOST=*
       - VIRTUAL_PORT=80
