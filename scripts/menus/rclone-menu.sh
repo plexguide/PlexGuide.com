@@ -51,11 +51,8 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 
 clear
 cat << EOF
-Only Install one version of RClone; encrypted or unencrypted. If you
-switch; you can and I mitgated everything but reboot if making a switch.
-
-For Test/Troubleshooting, use this to see if rclone and unionfs work.
-Have at least one item in your google drive.  If you see it, it works!
+Note: Only Install one version of RClone; encrypted or unencrypted. If you
+switch; you can. I mitgated everything but reboot if making a switch.
 
 ~~~~~~~~~~~~~~~~
 RClone Installer
@@ -65,14 +62,12 @@ RClone Installer
                            *****************************************
 3. Unencrypt Mount Check:  Select Only if you ran the Unencrypt Install
 4. Encrypted Mount Check:  Select Only if you ran the Encrypted Install
-5. UnionFS Mount Test   :  Verify UnionFS is operational
-
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter Choice [ 1 - 6 ];  Type [6] to Exit! " choice
+	read -p "Enter Choice [ 1 - 5 ];  Type [5] to Exit! " choice
 	case $choice in
 	1)
 		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
@@ -103,17 +98,6 @@ read_options(){
     clear
   	;;
 	5)
-		touch /mnt/move/uniontest.txt
-		clear
-		ls /mnt/unionfs
-		echo
-    echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
-    echo "Note 1: You should at least see uniontest.txt"
-    echo "Note 2: Once you finish the PLEXDRIVE4 setup, you should see the rest"
-    read -n 1 -s -r -p "Press any key to continue "
-    clear
-		;;
-	6)
 		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
