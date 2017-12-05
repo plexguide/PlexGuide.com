@@ -40,8 +40,8 @@ services:
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
    #  - UMASK=<umask for created files>
-#     - PUID=0
-#     - PGID=0
+#     - PUID=1000
+#     - PGID=1000
    restart: unless-stopped
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address.
