@@ -18,8 +18,11 @@ services:
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
    environment:
+     - VIRTUAL_PORT=8112
+     - VIRTUAL_HOST=deluge.*     
      - UMASK=000
      - PUID=1000
      - PGID=1000
-restart: unless-stopped
-     plexguide:
+   restart: unless-stopped
+networks:
+  plexguide:

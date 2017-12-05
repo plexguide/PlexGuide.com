@@ -19,7 +19,7 @@ lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 
 # Get info needed for PLEX Official image
 read -p "Which PLEX release do you want to run? By default 'public' will be used. (latest, public, plexpass): " pms_tag
-read -p "If you have PLEXPASS what is your Claim Token: (Optional) " pms_token
+read -p "If you have PLEXPASS what is your Claim Token: (Visit http://plex.tv/claim) " pms_token
 # If not set - set PMS Tag to Public:
 if [ -z "$pms_tag" ]; then
    pms_tag=public

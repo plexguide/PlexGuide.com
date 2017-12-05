@@ -4,7 +4,7 @@ services:
  delugevpn:
    image:  binhex/arch-delugevpn
    container_name: delugevpn
-   network_mode: "bridge"
+#   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
@@ -22,6 +22,8 @@ services:
      - /opt/.environments/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env
    environment:
+     - VIRTUAL_PORT=8112
+     - VIRTUAL_HOST=delugevpn.*
      - VPN_ENABLED=yes
      - VPN_PROV=pia
      - VPN_PORT=1198

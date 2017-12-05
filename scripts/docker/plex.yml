@@ -5,7 +5,7 @@ services:
         container_name: plex
         image: plexinc/pms-docker:${PMS_TAG}
         restart: unless-stopped
-        network_mode: "host"
+#        network_mode: "host"
         ports:
             - '${IP_ADDRESS}:32400:32400/tcp'
             - '${IP_ADDRESS}:3005:3005/tcp'
@@ -19,6 +19,8 @@ services:
 #        env_file:
  #           - /opt/.environments/.plex-env
         environment:
+            - VIRTUAL_PORT=32400
+            - VIRTUAL_HOST=plex.*
             - PLEX_CLAIM=${PMS_TOKEN}
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
