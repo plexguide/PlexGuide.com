@@ -21,6 +21,5 @@ services:
      - UMASK=000
      - PUID=1000
      - PGID=1000
-   restart: unless-stopped
-   networks:
+restart: unless-stopped
      plexguide:
