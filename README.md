@@ -20,8 +20,6 @@
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
-http://HexaBot.us - You can also help by signing up to invest any of your coins. Personally use (compounds interest).
-
 ### Mission Statement & Purpose
 
 Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
