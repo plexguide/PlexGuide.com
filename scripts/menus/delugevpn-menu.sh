@@ -117,6 +117,9 @@ read_options(){
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         bash /opt/plexguide/scripts/delugevpn/move-ovpn.sh
         clear
+        sudo usermod -aG docker nobody
+      #  sudo usermod -aG docker $USER
+
     #    echo ymlprogram uhttpd > /opt/plexguide/tmp.txt
     #    echo ymldisplay UHTTPD >> /opt/plexguide/tmp.txt
     #    echo ymlport 80 >> /opt/plexguide/tmp.txt
