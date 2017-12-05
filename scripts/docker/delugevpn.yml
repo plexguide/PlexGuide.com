@@ -18,8 +18,8 @@ services:
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
-#   env_file:
-#     - /opt/.environments/.deluge-env
+   env_file:
+     - /opt/.environments/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env
    environment:
      - VPN_ENABLED=yes
