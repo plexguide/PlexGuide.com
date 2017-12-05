@@ -61,7 +61,6 @@ if echo "$answer" | grep -iq "^y" ;then
 echo ""
 echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 
-
 ## Create Directory Structure - Goal is to move everything here
 
 ################### For PlexDrive
