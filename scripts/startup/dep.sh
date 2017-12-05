@@ -243,18 +243,19 @@ else
 fi
 
 clear
+
+#If your kind enough or have a minute, You can also visit http://hexabot.us
+#to compound your coin value (bitcoin, dash, and litecoin) by 20 percent weekly.
+#I personally use it and it's working great! If you need to purchase coin,
+#please visit http://coin.plexguide.com. Signing up helps us out and would not
+#be recommended if we did not use it!
+
 cat << EOF
 ~~~~~~~~~~~~~~
   QUICK NOTE
 ~~~~~~~~~~~~~~
 
 Pre-Install / Re-Install Complete!
-
-If your kind enough or have a minute, You can also visit http://hexabot.us
-to compound your coin value (bitcoin, dash, and litecoin) by 20 percent weekly.
-I personally use it and it's working great! If you need to purchase coin,
-please visit http://coin.plexguide.com. Signing up helps us out and would not
-be recommended if we did not use it!
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of
