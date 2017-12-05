@@ -1,0 +1,26 @@
+---
+version: '2'
+services:
+ delugevpn:
+   image:  binhex/arch-deluge
+   container_name: deluge
+#   network_mode: "bridge"
+#   cap_add:
+#     - NET_ADMIN
+   ports:
+     - 8112:8112
+     - 58846:58846
+     - 58946:58946
+   volumes:
+     - /opt/appdata/deluge/config:/config
+     - /mnt/deluge/downloads:/data
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+     - /mnt/unionfs/completed:/completed
+   environment:
+     - UMASK=000
+     - PUID=1000
+     - PGID=1000
+   restart: unless-stopped
+   networks:
+     plexguide:

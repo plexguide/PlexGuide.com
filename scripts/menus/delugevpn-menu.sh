@@ -111,8 +111,8 @@ read_options(){
       then
         docker rm delugevpn
         clear
-        echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
-        echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
+        echo ymlprogram deluge > /opt/plexguide/tmp.txt
+        echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
         echo ymlport 8112 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         bash /opt/plexguide/scripts/delugevpn/move-ovpn.sh
