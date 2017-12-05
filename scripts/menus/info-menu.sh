@@ -35,30 +35,38 @@ Tools & Troubleshooting 101 Menu
 
 Basic Checks ***********************************************
 1. HD Space      :  View HD Stats
-2. PlexDrive     :  Veryify that PlexDrive is Working
+2. Containers    :  View Space Containers Are Using
+3. PlexDrive     :  Veryify that PlexDrive is Working
 
 Uncrypted Tests ********************************************
-3. RClone Test   :  Verify Google Drive is Mounted
-4. UN-SYNC (Move):  View status of the Unencrypted SYNC
-5. UN-UnionFS    :  Verify UnionFS is Operational
+4. RClone Test   :  Verify Google Drive is Mounted
+5. UN-SYNC (Move):  View status of the Unencrypted SYNC
+6. UN-UnionFS    :  Verify UnionFS is Operational
 
 Encrypted Tests ********************************************
-6. EN-RClone     :  Verify Encrypted Google Drive is Mounted
-7. EN-SYNC (Move):  View status of the Encrypted SYNC
+7. EN-RClone     :  Verify Encrypted Google Drive is Mounted
+8. EN-SYNC (Move):  View status of the Encrypted SYNC
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 8 ];  Type [8] to Exit! " choice
+	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
 	case $choice in
     1)
       clear
-      echo "Not Operational Yet"
+      dh -f
+      echo ""
       read -n 1 -s -r -p "Press any key to continue "  
       ;;
-  	2)
+      2)
+        clear
+        docker ps -s
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue "
+        ;;
+  	3)
       clear
       ls /mnt/plexdrive4
       echo
@@ -69,7 +77,7 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
       ;;
-  	3)
+  	4)
       touch /mnt/gdrive/gdrivetest.txt
       clear
       ls /mnt/gdrive
@@ -80,7 +88,7 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
   		;;
-      4)
+      5)
         ## create log file if does not exist
         if [ -e "/opt/plexguide/move.log" ]
         then
@@ -101,7 +109,7 @@ read_options(){
         clear
     		;;
 
-    5)
+    6)
       touch /mnt/move/uniontest.txt
       clear
       ls /mnt/unionfs
@@ -113,7 +121,7 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
       ;;
-        6)
+        7)
         touch /mnt/.gcrypt/gdrivetest.txt
         clear
         ls /mnt/.gcrypt
@@ -124,7 +132,7 @@ read_options(){
         read -n 1 -s -r -p "Press any key to continue "
         clear
         ;;
-        7)
+        8)
           ## create log file if does not exist
           if [ -e "/opt/plexguide/move-en.log" ]
           then
@@ -145,7 +153,7 @@ read_options(){
           read -n 1 -s -r -p "Press any key to continue "
           clear
           ;;
-        8)
+        9)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
