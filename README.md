@@ -12,7 +12,7 @@
 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
-- Slack Autoinvite: http://invite.plexguide.com and Slack # @ http://slack.plexguide.com (Preferred)
+- Slack Autoinvite: http://invite.plexguide.com and Slack # @ http://slack.plexguidecom.com (Preferred)
 - Reddit Discussion Link: http://reddit.plexguide.com (Secondary)
 
 ### Want to Donate? Everybit Helps!
