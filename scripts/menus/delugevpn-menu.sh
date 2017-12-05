@@ -45,7 +45,7 @@ Currently only 8 PIA servers support port forwarding.
 Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland,
              Sweden, France, Romania or Israel.
 
-Default is set to Switzerland
+Default is set to Netherlands
 (To change edit /opt/plexguide/scripts/delugevpn/move-ovpn.sh before install)
 
 

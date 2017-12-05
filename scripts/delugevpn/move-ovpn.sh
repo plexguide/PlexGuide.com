@@ -7,8 +7,8 @@
 
 #`mv /opt/appdata/delugevpn/config/Remotes/CA\ Montreal.ovpn /opt/appdata/delugevpn/config/openvpn/`
 #`mv /opt/appdata/delugevpn/config/Remotes/CA\ Toronto.ovpn /opt/appdata/delugevpn/config/openvpn/`
-#`mv /opt/appdata/delugevpn/config/Remotes/Netherlands.ovpn /opt/appdata/delugevpn/config/openvpn/`
-`mv /opt/appdata/delugevpn/config/Remotes/Switzerland.ovpn /opt/appdata/delugevpn/config/openvpn/`
+`mv /opt/appdata/delugevpn/config/Remotes/Netherlands.ovpn /opt/appdata/delugevpn/config/openvpn/`
+#`mv /opt/appdata/delugevpn/config/Remotes/Switzerland.ovpn /opt/appdata/delugevpn/config/openvpn/`
 #`mv /opt/appdata/delugevpn/config/Remotes/Sweden.ovpn /opt/appdata/delugevpn/config/openvpn/`
 #`mv /opt/appdata/delugevpn/config/Remotes/France.ovpn /opt/appdata/delugevpn/config/openvpn/`
 #`mv /opt/appdata/delugevpn/config/Remotes/Romania.ovpn /opt/appdata/delugevpn/config/openvpn/`
