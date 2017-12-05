@@ -5,7 +5,6 @@ services:
    image: jwilder/nginx-proxy
    container_name: nginx
    volumes:
-      - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/nginx-proxy:/etc/nginx/certs:ro"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
