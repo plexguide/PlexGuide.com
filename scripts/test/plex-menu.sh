@@ -52,6 +52,7 @@ read_options(){
 		1)
     clear
     rm /opt/.environments/.plex-env
+    clear
     bash /opt/plexguide/scripts/test/plex.sh
     ;;
 		2)
