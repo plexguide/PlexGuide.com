@@ -257,7 +257,7 @@ cat << EOF
 Pre-Install / Re-Install Complete!
 
 WARNING: If this is your first upgrade since 12/3/2017, you must do the
-falling or you have to restart a new plex container.  The Plex container
+following or you have to restart a new plex container.  The Plex container
 data should have been in appdata.  This command should fix it.  Ensure to
 stop your PLEX Container via Portainer at http://ipv4:9000. Once you complete
 the following: REBOOT YOUR SERVER! Recommend!
