@@ -28,13 +28,13 @@ two(){
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 
-file="/var/plexguide/dep12.yes"
+file="/var/plexguide/dep13.yes"
 if [ -e "$file" ]
 then
     clear
 else
     bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep12.yes
+    touch /var/plexguide/dep13.yes
 fi
 
 
@@ -97,7 +97,7 @@ read_options(){
     6)
         bash /opt/plexguide/scripts/menus/info-menu.sh
         clear
-        ;;  
+        ;;
     7)
         bash /opt/plexguide/scripts/menus/trouble-menu.sh
         clear
