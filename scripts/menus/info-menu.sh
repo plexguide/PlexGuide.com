@@ -56,9 +56,9 @@ read_options(){
 	case $choice in
     1)
       clear
-      dh -f
+      df -h
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "  
+      read -n 1 -s -r -p "Press any key to continue "
       ;;
       2)
         clear
