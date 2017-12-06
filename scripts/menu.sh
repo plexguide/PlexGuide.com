@@ -37,16 +37,15 @@ else
     touch /var/plexguide/dep13.yes
 fi
 
-
+#DONATION ASSISTANCE INFORMATION **************************************
+#>>>>> Visit http://hexabot.us to compound your BTC & LTC 22% Weekly!
+#>>>>> Visit http://coin.plexguide.com to purchase BitCoin & LitCoins!
 # function to display menus
 show_menus() {
 clear
 cat << EOF
 PlexGuide.com Installer V4 (17.12.06) | Written By: Admin9705 & Deiteq
-
-DONATION ASSISTANCE INFORMATION **************************************
->>>>> Visit http://hexabot.us to compound your BTC & LTC 22% Weekly!
->>>>> Visit http://coin.plexguide.com to purchase BitCoin & LitCoins!
+Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
 
 GOOGLE DRIVE *********************************************************
 1. RClone   :  Media Syncs to Google Drive
