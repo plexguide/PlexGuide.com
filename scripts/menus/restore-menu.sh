@@ -30,7 +30,7 @@ two(){
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Backup PlexGuide
+PlexGuide.com - RESTORE
 
 Data is being unzipped, copied from Google to your /opt/appdata/!
 WARNING! Restoring Plex & Downloading can take awhile! Do Not Close!

@@ -42,7 +42,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V4 (17.12.03) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.12.06) | Written By: Admin9705 & Deiteq
 
 DONATION ASSISTANCE INFORMATION **************************************
 >>>>> Visit http://hexabot.us to compound your BTC & LTC 22% Weekly!

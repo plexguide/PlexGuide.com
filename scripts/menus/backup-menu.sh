@@ -30,7 +30,7 @@ two(){
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Backup PlexGuide
+PlexGuide.com - BACKUP
 
 Data is being zipped and copied from appdata to your Google Drive!
 WARNING! Backing Up Plex & Uploading can take awhile! Do Not Close!
