@@ -16,6 +16,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "1. Stopping Your Docker Program"
     echo "2. Make a directory for "$YMLDISPLAY"" 
     mkdir -p /opt/appdata/"$YMLPROGRAM"
+    mkdir -p /tmp/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
     echo "3. Copying Files From Your Google Drive > Server"
     rclone copy gdrive:/Backup/"$YMLPROGRAM".tar.bz2 /tmp/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 
