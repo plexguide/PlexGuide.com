@@ -56,7 +56,7 @@ read_options(){
 	case $choice in
     1)
       clear
-      df -h
+      df -h --total
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;

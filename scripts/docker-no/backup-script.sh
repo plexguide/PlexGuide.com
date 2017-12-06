@@ -10,9 +10,9 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
-    rm -r /mnt/gdrive/Backup/"$YMLPROGRAM"
+    rm -r /mnt/gdrive/Backup/"$YMLPROGRAM" 1>/dev/null 2>&1
     echo "1. Stopping Your Docker Program"
-    echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY"" 
+    echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY""
     mkdir -p /gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
     sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM" 1>/dev/null 2>&1
@@ -27,7 +27,7 @@ else
     echo No
     clear
     echo Not Backed Up! - $YMLDISPALY
-    echo 
+    echo
 fi
 
 read -n 1 -s -r -p "Press any key to continue "
