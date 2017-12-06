@@ -179,6 +179,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
   docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d 1>/dev/null 2>&1
 
 ## Create the Post-Docker Fix Script
+rm -r /opt/plexguide/scripts/dockerfix.sh 1>/dev/null 2>&1
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
 
@@ -199,6 +200,7 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   docker restart sonarr
   docker restart plexpass
   docker restart plexpublic
+  docker restart sabnzbd
 
   exit 0;
 EOF
