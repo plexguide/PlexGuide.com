@@ -18,8 +18,8 @@ if echo "$answer" | grep -iq "^y" ;then
     mkdir -p /opt/appdata/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
     echo "3. Copying Files From Your Google Drive > Server"
-    rclone copy gdrive:/Backup/"$YMLPROGRAM"/"$YMLPROGRAM".tar.bz2 /tmp --checksum --drive-chunk-size=64M -v
-    tar -xvf /tmp/"$YMLPROGRAM".tar.bz2 -C /tmp
+    rclone copy gdrive:/Backup/"$YMLPROGRAM"/"$YMLPROGRAM".zip /tmp --checksum --drive-chunk-size=64M -v
+    unzip /tmp/"$YMLPROGRAM".zip 
     #rm /tmp/"$YMLPROGRAM".tar.bz2
     docker start "$YMLPROGRAM" 1>/dev/null 2>&1
     echo "4. Restarted Your Docker Program"
