@@ -15,10 +15,13 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY""
     mkdir -p /gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
-    sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM" 1>/dev/null 2>&1
+    # sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM" 1>/dev/null 2>&1
+    zip -r /tmp/"$YMLPROGRAM".zip /opt/appdata/"$YMLPROGRAM"
     echo "3. Copy Files to Your Google Drive"
-    rclone copy /tmp/"$YMLPROGRAM".tar.bz2 gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
-    rm /tmp/"$YMLPROGRAM".tar.bz2
+    # rclone copy /tmp/"$YMLPROGRAM".tar.bz2 gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
+    rclone copy /tmp/"$YMLPROGRAM".zip gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
+    rm /tmp/"$YMLPROGRAM".zip
+    #rm /tmp/"$YMLPROGRAM".tar.bz2
     docker start "$YMLPROGRAM" 1>/dev/null 2>&1
     echo "4. Restarting Your Docker Program"
     echo ""
