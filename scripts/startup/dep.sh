@@ -35,6 +35,8 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install man-db 1>/dev/null 2>&1
     echo "Unzip"
     yes | apt-get install unzip 1>/dev/null 2>&1
+    echo "Zip"
+    yes | apt-get install zip 1>/dev/null 2>&1
     echo "Python"
     yes | apt-get install python 1>/dev/null 2>&1
     echo "Python Bridge Utils"
