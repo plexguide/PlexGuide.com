@@ -12,7 +12,7 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
-    rm -r /appdata/"$YMLPROGRAM"
+    rm -r /opt/appdata/"$YMLPROGRAM"
     echo "1. Stopping Your Docker Program"
     echo "2. Make a directory for "$YMLDISPLAY"" 
     mkdir -p /opt/appdata/"$YMLPROGRAM"
