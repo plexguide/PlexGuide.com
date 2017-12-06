@@ -142,7 +142,6 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
   mkdir -p /var/plexguide
   touch /var/plexguide/basics.yes
 
-
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
@@ -179,7 +178,6 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
   docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d 1>/dev/null 2>&1
 
 ## Create the Post-Docker Fix Script
-rm -r /opt/plexguide/scripts/dockerfix.sh 1>/dev/null 2>&1
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
 
@@ -202,6 +200,7 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   docker restart plexpublic
   docker restart sabnzbd
 
+  echo "Test"
   exit 0;
 EOF
 
