@@ -53,22 +53,22 @@ read_options(){
      1)
       echo ymlprogram ombiv3 > /opt/plexguide/tmp.txt
       echo ymldisplay OMBIV3 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      bash /opt/plexguide/scripts/docker-no/restore-script.sh
      ;;
      2)
       echo ymlprogram nzbget > /opt/plexguide/tmp.txt
       echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      bash /opt/plexguide/scripts/docker-no/restore-script.sh
       ;;
      3)
       echo ymlprogram plex > /opt/plexguide/tmp.txt
       echo ymldisplay PLEX >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      bash /opt/plexguide/scripts/docker-no/restore-script.sh
       ;;
      4)
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      bash /opt/plexguide/scripts/docker-no/restore-script.sh
       ;;
      5)
     exit 0;;
