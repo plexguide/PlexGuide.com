@@ -23,7 +23,11 @@
 ### Mission Statement & Purpose
 
 Build an operational-automated server that mounts your Google Drive, while utilizing various tools and Plex.  Purpose is to combat the poor performance of the Plex Cloud and issues in regards to the Google API Bans.  
- 
+
+### Access BETA MENU
+
+When the program starts, Type 99 as an option and you will select a BETA MENU
+
 ----------------------------------------------------------------------
 
 ### Preparation, Installation & Configuration 
