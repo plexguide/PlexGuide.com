@@ -171,7 +171,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "7. Remove NGINX-Proxy Container if it exist (Please Wait)"
+    echo "7. Removing NGINX-Proxy Container if it Exists (Please Wait)"
     docker stop nginx-proxy 1>/dev/null 2>&1
     docker rm nginx-proxy 1>/dev/null 2>&1
 
@@ -187,15 +187,13 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
     x=$(( $x - 1 ))
   done
 
-  docker restart rutorrent
-  docker restart emby
-  docker restart nzbget
-  docker restart radarr
-  docker restart couchpotato
-  docker restart sonarr
-  docker restart plexpass
-  docker restart plexpublic
-  docker restart sabnzbd
+  docker restart emby 1>/dev/null 2>&1
+  docker restart nzbget 1>/dev/null 2>&1
+  docker restart radarr 1>/dev/null 2>&1
+  docker restart sonarr 1>/dev/null 2>&1
+  docker restart plexpass 1>/dev/null 2>&1
+  docker restart plexpublic 1>/dev/null 2>&1
+  docker restart sabnzbd 1>/dev/null 2>&1
   
   exit 0;
 EOF
@@ -225,6 +223,16 @@ EOF
   systemctl daemon-reload
   systemctl enable dockerfix 1>/dev/null 2>&1
   systemctl start dockerfix 1>/dev/null 2>&1
+
+  echo "8. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
+
+  docker restart emby 1>/dev/null 2>&1
+  docker restart nzbget 1>/dev/null 2>&1
+  docker restart radarr 1>/dev/null 2>&1
+  docker restart sonarr 1>/dev/null 2>&1
+  docker restart plexpass 1>/dev/null 2>&1
+  docker restart plexpublic 1>/dev/null 2>&1
+  docker restart sabnzbd 1>/dev/null 2>&1
 
   echo ""
   read -n 1 -s -r -p "Finished - Press any key to continue "
