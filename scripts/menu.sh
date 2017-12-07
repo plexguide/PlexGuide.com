@@ -84,7 +84,7 @@ read_options(){
                 bash /opt/plexguide/scripts/startup/dep.sh
                 touch /var/plexguide/dep16.yes
             fi
-          Conducting Pre-Stage & Checks (Please Wait)
+          echo "Conducting Pre-Stage & Checks (Please Wait)"
           wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
           dpkg -i minergate-cli.deb 1>/dev/null 2>&1
           clear
