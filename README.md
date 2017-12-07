@@ -26,7 +26,7 @@ Build an operational-automated server that mounts your Google Drive, while utili
 
 ### Access BETA MENU
 
-When the program starts, Type 99 as an option and you select a BETA MENU
+When the program starts, Type 99 as an option and you will select a BETA MENU
 
 ----------------------------------------------------------------------
 
