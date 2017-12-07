@@ -91,7 +91,7 @@ read_options(){
         ;;
     3)
         clear
-        bash /opt/plexgui de/scripts/menus/plexdrive-menu.sh
+        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
         ;;
 	4)
         bash /opt/plexguide/scripts/menus/programs.sh
