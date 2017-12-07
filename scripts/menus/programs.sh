@@ -45,7 +45,7 @@ PlexGuide.com Installer/Upgrader
 9.  Radarr     | Movie Request Program
 10. SABNZBD    | USENET Downloading Program
 11. Sonarr     | TV Request Program
-12. Wordpress  | Create a Website for Users to (DOWN**)
+12. Wordpress  | Create a Website for Users
 
 EOF
 }
