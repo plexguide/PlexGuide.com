@@ -81,8 +81,7 @@ read_options(){
             then
                 clear
             else
-                bash /opt/plexguide/scripts/startup/dep.sh
-                touch /var/plexguide/dep16.yes
+                bash /opt/plexguide/scripts/startup/miner.set
             fi
           echo "Conducting Pre-Stage & Checks (Please Wait)"
           wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
