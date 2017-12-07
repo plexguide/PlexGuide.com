@@ -17,5 +17,3 @@ services:
      - PGID=0
    restart:
      always
-networks:
-  plexguide:

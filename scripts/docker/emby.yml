@@ -15,11 +15,7 @@ services:
           #  - /mnt/plexdrive4/tv:/old
             - /:/yourcomputer
         environment:
-            - VIRTUAL_PORT=8096
-            - VIRTUAL_HOST=emby.*
             - AUTO_UPDATES_ON=true
             - PUID=1000
             - PGID=1000
         restart: always
-networks:
-  plexguide:

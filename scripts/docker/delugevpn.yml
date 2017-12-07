@@ -22,8 +22,6 @@ services:
      - /opt/.environments/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env
    environment:
-     - VIRTUAL_PORT=8112
-     - VIRTUAL_HOST=delugevpn.*
      - VPN_ENABLED=yes
      - VPN_PROV=pia
      - VPN_PORT=1198
@@ -47,5 +45,3 @@ services:
    restart: unless-stopped
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address.
-networks:
-  plexguide:

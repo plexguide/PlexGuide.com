@@ -13,7 +13,3 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=netdata.*
-     - VIRTUAL_PORT=19999
-networks:
-  plexguide:

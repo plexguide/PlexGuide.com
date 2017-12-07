@@ -16,9 +16,5 @@ services:
    environment:
      - PUID=0
      - PGID=0
-     - VIRTUAL_HOST=sab.*
-     - VIRTUAL_PORT=8080
    restart:
      always
-networks:
-  plexguide:

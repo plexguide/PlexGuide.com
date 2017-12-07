@@ -14,9 +14,5 @@ services:
    environment:
      - PUID=0
      - PGID=0
-     - VIRTUAL_HOST=sonarr.*
-     - VIRTUAL_PORT=8181
    restart:
      always
-networks:
-  plexguide:

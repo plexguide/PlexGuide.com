@@ -14,9 +14,5 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=requests.*
-     - VIRTUAL_PORT=3579
    restart:
      always
-networks:
-  plexguide:

@@ -18,5 +18,3 @@ services:
      - PGID=1000
    restart:
      always
-networks:
-  plexguide:
