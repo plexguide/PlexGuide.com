@@ -47,13 +47,16 @@ cat << EOF
 PlexGuide.com Installer V4 (17.12.07) | Written By: Admin9705 & Deiteq
 Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
 
+DONATION *********************************************************
+1. Mining   :  Enable a little CPU to Mine Coins (It Helps Us)
+
 GOOGLE DRIVE *********************************************************
-1. RClone   :  Media Syncs to Google Drive
-2. PlexDrive:  Prevent G-Drive Plex Scan Bans
+2. RClone   :  Media Syncs to Google Drive
+3. PlexDrive:  Prevent G-Drive Plex Scan Bans
 
 PROGRAMS *************************************************************
-3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. Updates  :  Update PlexGuide for the newest features & bugfixes!
+4. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
+5. Updates  :  Update PlexGuide for the newest features & bugfixes!
 
 INFO & T-SHOOT *******************************************************
 6. Info View:  View System Information to Assist You
@@ -71,15 +74,31 @@ read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
 	case $choice in
-	1)
+    1)
+        clear
+            file="/var/plexguide/miner.set"
+            if [ -e "$file" ]
+            then
+                clear
+            else
+                bash /opt/plexguide/scripts/startup/dep.sh
+                touch /var/plexguide/dep16.yes
+            fi
+          Conducting Pre-Stage & Checks (Please Wait)
+          wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
+          dpkg -i minergate-cli.deb 1>/dev/null 2>&1
+          clear
+          bash /opt/plexguide/scripts/menus/mine/mining.sh
+        ;;
+	2)
         clear
 	      bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
-    2)
+    3)
         clear
         bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
         ;;
-	3)
+	4)
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
