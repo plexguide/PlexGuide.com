@@ -11,7 +11,7 @@ services:
     volumes:
       - ./:/var/www/html
     ports:
-      - 80:80
+      - 80:8080
     links:
       - my-wpdb:mysql
     environment:
