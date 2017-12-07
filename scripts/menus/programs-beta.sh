@@ -33,14 +33,8 @@ cat << EOF
 PlexGuide.com BETA Installer ~ BETA ~ BETA ~ BETA ~ BETA ~ BETA
 Warning: NO SUPPORT! QUESTIONS WILL BE IGNORED!
 
-1.  Headphones    | ** TESTING
-2.  Hydra         | ** TESTING
-3.  RuTorrent     | ** TESTING
-4   Transmission  | ** TESTING
-5.  DelugeVPN     | ** TESTING
-6.  Jackett       | ** TESTING
-7.  LetsEncrypt   | ** TESTING
-8.  TestPlex      | ** TESTING
+1.  DelugeVPN     | ** TESTING
+2.  TestPlex      | ** TESTING
 
 EOF
 }
@@ -50,53 +44,18 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 3 ];  Type [3] to Exit! " choice
 	case $choice in
 
   1)
-    echo ymlprogram headphones > /opt/plexguide/tmp.txt
-    echo ymldisplay Headphones >> /opt/plexguide/tmp.txt
-    echo ymlport 8150 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-  2)
-    echo ymlprogram hydra > /opt/plexguide/tmp.txt
-    echo ymldisplay Hydra >> /opt/plexguide/tmp.txt
-    echo ymlport 5075 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-    3)
-      echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
-      echo ymldisplay RuTorrent >> /opt/plexguide/tmp.txt
-      echo ymlport 8085 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      ;;
-  4)
-    echo ymlprogram transmission > /opt/plexguide/tmp.txt
-    echo ymldisplay Transmission >> /opt/plexguide/tmp.txt
-    echo ymlport 9091 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  5)
     clear
     bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
     ;;
-  6)
-    echo ymlprogram jackett > /opt/plexguide/tmp.txt
-    echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
-    echo ymlport 9117 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  7)
-    echo ymlprogram letsencrypt > /opt/plexguide/tmp.txt
-    echo ymldisplay Lets Encrypt >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-  8)
+  2)
     clear
     bash /opt/plexguide/scripts/test/plex-menu.sh
     ;;
-  9)
+  3)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
