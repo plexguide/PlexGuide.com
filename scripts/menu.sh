@@ -28,19 +28,15 @@ two(){
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 
-file="/var/plexguide/dep16.yes"
+file="/var/plexguide/dep17.yes"
 if [ -e "$file" ]
 then
     clear
 else
     bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep16.yes
+    touch /var/plexguide/dep17.yes
 fi
 
-#DONATION ASSISTANCE INFORMATION **************************************
-#>>>>> Visit http://hexabot.us to compound your BTC & LTC 22% Weekly!
-#>>>>> Visit http://coin.plexguide.com to purchase BitCoin & LitCoins!
-# function to display menus
 show_menus() {
 clear
 cat << EOF
