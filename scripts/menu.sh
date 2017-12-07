@@ -44,7 +44,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V4 (17.12.06) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V4 (17.12.07) | Written By: Admin9705 & Deiteq
 Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
 
 GOOGLE DRIVE *********************************************************
@@ -53,8 +53,7 @@ GOOGLE DRIVE *********************************************************
 
 PROGRAMS *************************************************************
 3. Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!
-4. **BETA** :  Install Working Beta Programs! No Guides, YMLs Work!
-5. Updates  :  Update PlexGuide for the newest features & bugfixes!
+4. Updates  :  Update PlexGuide for the newest features & bugfixes!
 
 INFO & T-SHOOT *******************************************************
 6. Info View:  View System Information to Assist You
@@ -84,10 +83,6 @@ read_options(){
         bash /opt/plexguide/scripts/menus/programs.sh
         clear
         ;;
-    4)
-        bash /opt/plexguide/scripts/menus/programs-beta.sh
-        clear
-        ;;
     5)
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
@@ -107,6 +102,10 @@ read_options(){
         ;;
     9)
         bash /opt/plexguide/scripts/menus/restore-menu.sh
+        clear
+        ;;
+    99)
+        bash /opt/plexguide/scripts/menus/programs-beta.sh
         clear
         ;;
     10)
