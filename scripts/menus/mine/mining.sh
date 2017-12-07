@@ -36,13 +36,13 @@ visit http://ipv4:19999!  Thanks for dropping by!
 
 CPU Power ***********************************************************
 1. Allow the use of 1 CPU Core
-2. Allow the use of 2 CPU Cores < Like an i3
-3. Allow the use of 4 CPU Cores < Like an i7
-4. Allow the use of 8 CPU Cores < Like an Xeon
+2. Allow the use of 2 CPU Cores 
+3. Allow the use of 4 CPU Cores 
+4. Allow the use of 8 CPU Cores
 5. Max It Out (Only select if your sure about this)
 
 TURN OFF ************************************************************
-6. Programs :  Turn off the mining!
+6. Disable :  Turn off the mining!
 
 EOF
 
