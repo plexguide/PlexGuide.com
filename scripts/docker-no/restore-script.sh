@@ -12,24 +12,27 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
-    rm -r /opt/appdata/"$YMLPROGRAM"
+    rm -r /opt/appdata/"$YMLPROGRAM" 1>/dev/null 2>&1
     echo "1. Stopping Your Docker Program"
-    echo "2. Make a directory for "$YMLDISPLAY"" 
+    echo "2. Make a directory for "$YMLDISPLAY""
     mkdir -p /opt/appdata/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
     echo "3. Copying Files From Your Google Drive > Server"
-    rclone copy gdrive:/Backup/"$YMLPROGRAM"/"$YMLPROGRAM".tar.bz2 /tmp --checksum --drive-chunk-size=64M -v
-    tar -xvf /tmp/"$YMLPROGRAM".tar.bz2 -C /opt/appdata/"$YMLPROGRAM"
-    #rm /tmp/"$YMLPROGRAM".tar.bz2
-    docker start "$YMLPROGRAM" 1>/dev/null 2>&1
-    echo "4. Restarting Your Docker Program"
     echo ""
-    echo "Finished - Check the program to see if it worked!"
+    rclone copy gdrive:/Backup/"$YMLPROGRAM"/"$YMLPROGRAM".zip /tmp --checksum --drive-chunk-size=64M -v
+    unzip /tmp/"$YMLPROGRAM".zip -d /
+    rm -r /tmp/"$YMLPROGRAM".tar.bz2 
+    docker start "$YMLPROGRAM" 1>/dev/null 2>&1
+    echo ""
+    echo "4. Restarted Your Docker Program"
+    echo ""
+    echo "Finished - Check the Folder Manually or Program!"
+    echo
 else
     echo No
     clear
     echo Not Restored Up! - "$YMLDISPALY"
-    echo 
+    echo
 fi
 
 read -n 1 -s -r -p "Press any key to continue "

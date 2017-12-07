@@ -10,16 +10,18 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
-    rm -r /mnt/gdrive/Backup/"$YMLPROGRAM"
+    rm -r /mnt/gdrive/Backup/"$YMLPROGRAM" 1>/dev/null 2>&1
     echo "1. Stopping Your Docker Program"
-    echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY"" 
+    echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY""
+    echo ""
     mkdir -p /gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
-    sudo -s tar -cvjf /tmp/"$YMLPROGRAM".tar.bz2 /opt/appdata/"$YMLPROGRAM" 1>/dev/null 2>&1
+    zip -r /tmp/"$YMLPROGRAM".zip /opt/appdata/"$YMLPROGRAM"
     echo "3. Copy Files to Your Google Drive"
-    rclone copy /tmp/"$YMLPROGRAM".tar.bz2 gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
-    rm /tmp/"$YMLPROGRAM".tar.bz2
+    rclone copy /tmp/"$YMLPROGRAM".zip gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
+    rm /tmp/"$YMLPROGRAM".zip
     docker start "$YMLPROGRAM" 1>/dev/null 2>&1
+    echo ""
     echo "4. Restarting Your Docker Program"
     echo ""
     echo "Finished - Check Your Google Drive for the Backup Incase!"
@@ -27,7 +29,7 @@ else
     echo No
     clear
     echo Not Backed Up! - $YMLDISPALY
-    echo 
+    echo
 fi
 
 read -n 1 -s -r -p "Press any key to continue "

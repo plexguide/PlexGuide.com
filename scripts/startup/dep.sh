@@ -35,6 +35,8 @@ if echo "$answer" | grep -iq "^y" ;then
     yes | apt-get install man-db 1>/dev/null 2>&1
     echo "Unzip"
     yes | apt-get install unzip 1>/dev/null 2>&1
+    echo "Zip"
+    yes | apt-get install zip 1>/dev/null 2>&1
     echo "Python"
     yes | apt-get install python 1>/dev/null 2>&1
     echo "Python Bridge Utils"
@@ -140,7 +142,6 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
   mkdir -p /var/plexguide
   touch /var/plexguide/basics.yes
 
-
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
@@ -197,7 +198,9 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   docker restart sonarr
   docker restart plexpass
   docker restart plexpublic
+  docker restart sabnzbd
 
+  echo "Test"
   exit 0;
 EOF
 

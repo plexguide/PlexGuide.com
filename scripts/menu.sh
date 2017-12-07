@@ -28,13 +28,13 @@ two(){
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 
-file="/var/plexguide/dep13.yes"
+file="/var/plexguide/dep15.yes"
 if [ -e "$file" ]
 then
     clear
 else
     bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep13.yes
+    touch /var/plexguide/dep15.yes
 fi
 
 #DONATION ASSISTANCE INFORMATION **************************************
@@ -60,9 +60,9 @@ INFO & T-SHOOT *******************************************************
 6. Info View:  View System Information to Assist You
 7. T-Shoot  :  Troubleshoot Problems & Provides Helpful Information
 
-SYSTEM BACKUP & RESTORE **********************************************
-8. Backup   :  Backup Your Program Data
-9. Restore  :  NOT FUNCTIONAL YET - Restore Program Data
+SYSTEM BACKUP & RESTORE - RCLONE MUST BE SETUP ***********************
+8. Backup   :  Backup Docker Program Data to Your Google Drive
+9. Restore  :  Restore Program Data From Your Google Drive
 
 EOF
 
