@@ -70,14 +70,6 @@ plexguide
  - [Configure Portainer](http://portainer.plexguide.com)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
-*(Optional, but Super Highly Recommended) - Either a Free or Paid Domain*
-- Paid Domains
-    - [GoDaddy.com](https://godaddy.com) - Visit the [PlexGuide GoDaddy Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
-    - Alternate Services - As long as you know how to configure it
-- Free Domains
-    - [FreeNom.com](http://freenom.com) - Visit the [PlexGuide FreeNom Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
-- This ***will become mandatory*** in Version 5 for better Security
-
 **F. Final Notes**
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com). 
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
