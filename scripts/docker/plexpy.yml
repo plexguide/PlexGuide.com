@@ -13,4 +13,3 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-network_mode: "host"
