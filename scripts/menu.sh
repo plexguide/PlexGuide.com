@@ -83,8 +83,8 @@ read_options(){
             else
                 touch /var/plexguide/miner.set
                 echo "Conducting Pre-Stage & Checks (Please Wait)"
-                wget https://minergate.com/download/deb-cli -O minergate-cli.deb 
-                yes | dpkg -i minergate-cli.deb 
+                wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
+                yes | dpkg -i minergate-cli.deb 1>/dev/null 2>&1
                 clear
             fi
           bash /opt/plexguide/scripts/menus/mine/mining.sh
