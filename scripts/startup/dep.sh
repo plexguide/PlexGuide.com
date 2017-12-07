@@ -1,4 +1,4 @@
-file="/var/plexguide/basics.yes"
+ file="/var/plexguide/basics.yes"
 if [ -e "$file" ]
 then
     clear
@@ -171,11 +171,11 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-  echo "7. Installed NGINX-Proxy - A Docker Container (Please Wait)"
-  echo ""
+  # echo "7. NGINX-Proxy - A Docker Container (Please Wait)"
+  # echo ""
 
 # Install NGINX-Proxy
-  docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d 1>/dev/null 2>&1
+  # docker-compose -f /opt/plexguide/scripts/docker/nginx-proxy.yml up -d 1>/dev/null 2>&1
 
 ## Create the Post-Docker Fix Script
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
@@ -199,8 +199,7 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   docker restart plexpass
   docker restart plexpublic
   docker restart sabnzbd
-
-  echo "Test"
+  
   exit 0;
 EOF
 
@@ -259,11 +258,11 @@ cat << EOF
 
 Pre-Install / Re-Install Complete!
 
-WARNING: If this is your first upgrade since 12/3/2017, you must do the
-following or you have to restart a new plex container.  The Plex container
-data should have been in appdata.  This command should fix it.  Ensure to
-stop your PLEX Container via Portainer at http://ipv4:9000. Once you complete
-the following: REBOOT YOUR SERVER! Recommend!
+WARNING 1: You must recreate all your containers, no data loss! NGINX-Proxy
+has been removed and is causing endless problems :D 
+WARNING 2: If this is your first upgrade since 12/3/2017, you must do the
+following or you have to restart a new plex container.  You will not lose your
+data. 
 
 sudo mv /opt/plex /opt/appdata
 
