@@ -9,6 +9,8 @@
 </p>
 
 ---------------------------------------------------------------------- 
+### View V5 Beta
+https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md
 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
