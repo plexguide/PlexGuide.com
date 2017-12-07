@@ -9,6 +9,9 @@
 </p>
 
 ---------------------------------------------------------------------- 
+### BETA 5 FOCUS 
+
+To create a user & eliminate root as a source
 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
@@ -48,14 +51,15 @@ When the program starts, Type 99 as an option and you will select a BETA MENU
  
 **D. Install Instructions:**
 
-*Install GIT*
+*Install Supporting Programs*
 ```sh
-sudo apt-get install git
+sudo apt-get wget
+sudo apt-get unzip
 ```
 
 *Install PlexGuide*
 ```sh
-sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
 ```
 
