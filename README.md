@@ -14,6 +14,7 @@
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - Slack Autoinvite: http://invite.plexguide.com and Slack # @ https://plexguidecom.slack.com (Preferred)
 - Reddit Discussion Link: http://reddit.plexguide.com (Secondary)
+- For Ubuntu 16.04 / 17.04 ONLY!!!!
 
 ### Want to Donate? Everybit Helps!
 
