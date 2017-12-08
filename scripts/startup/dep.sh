@@ -225,6 +225,9 @@ EOF
   systemctl start dockerfix 1>/dev/null 2>&1
 
   echo "8. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
+  
+  #test
+  bash /opt/ple*/sc*/st*/be*
 
   docker restart emby 1>/dev/null 2>&1
   docker restart nzbget 1>/dev/null 2>&1
