@@ -74,39 +74,39 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### For SAB
   mkdir -p /mnt/sab/incomplete
-  chmod 777 /mnt/sab/incomplete
+  chmod 755 /mnt/sab/incomplete
 
   mkdir -p /mnt/sab/complete/tv
-  chmod 777 /mnt/sab/complete/tv
+  chmod 755 /mnt/sab/complete/tv
 
   mkdir -p /mnt/sab/complete/movies
-  chmod 777 /mnt/sab/complete/movies
+  chmod 755 /mnt/sab/complete/movies
 
   mkdir -p /mnt/sab/nzb
-  chmod 777 /mnt/sab/nzb
+  chmod 755 /mnt/sab/nzb
 
 #################### For NZBGET
   mkdir -p /mnt/nzbget/incomplete
-  chmod 777 /mnt/nzbget/incomplete
+  chmod 755 /mnt/nzbget/incomplete
 
   mkdir -p /mnt/nzbget/complete/tv
-  chmod 777 /mnt/nzbget/complete/tv
+  chmod 755 /mnt/nzbget/complete/tv
 
   mkdir -p /mnt/nzbget/complete/movies
-  chmod 777 /mnt/nzbget/complete/movies
+  chmod 755 /mnt/nzbget/complete/movies
 
   mkdir -p /mnt/nzbget/sab
-  chmod 777 /mnt/nzbget/sab
+  chmod 755 /mnt/nzbget/sab
 
 ##################### For Move Service
   mkdir -p /mnt/move/tv
-  chmod 777 /mnt/move/tv
+  chmod 755 /mnt/move/tv
 
   mkdir -p /mnt/move/movies
-  chmod 777 /mnt/move/movies
+  chmod 755 /mnt/move/movies
 
   mkdir -p /opt/.environments
-  chmod 777 /opt/.environments
+  chmod 755 /opt/.environments
 
   ## location for rclone
   mkdir -p /mnt/gdrive
