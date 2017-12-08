@@ -47,11 +47,11 @@ sudo apt-get unzip
 
 *Install PlexGuide*
 ```sh
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip -d /tmp
-sudo unzip /opt/Version-5.zip -d /opt/
-sudo mv /opt/PlexG* plexguide
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip /tmp
+sudo unzip /tmp/Version-5.zip -d /opt/
+sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
-sudo rm -r /opt/Version-5.zip
+sudo rm -r /tmp/Version-5.zip
 ```
 
 *Execute PlexGuide AnyTime Futurewise*
