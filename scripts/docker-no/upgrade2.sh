@@ -1,3 +1,3 @@
 sudo rm -r /opt/plexg* 2>/dev/nu*
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-bash /opt/plexg*/ins*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip /opt/plexguide
+sudo bash /opt/plexg*/sc*/ins*
