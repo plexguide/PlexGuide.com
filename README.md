@@ -7,6 +7,7 @@
 ---------------------------------------------------------------------- 
 ### BETA 5 FOCUS 
 
+NOT READY TO INSTALL FOR PRACTICAL USE
 STATUS >>> 1% Complete
 
 To create a user & eliminate root as a source
@@ -47,6 +48,7 @@ sudo apt-get wget
 sudo apt-get unzip
 ```
 
+NOT READY FOR PRACTICAL USE! YOU WILL BREAK YOUR STUFF; FOR VM TESTING
 *Install PlexGuide*
 ```sh
 sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip /tmp
