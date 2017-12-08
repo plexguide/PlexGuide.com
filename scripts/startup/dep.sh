@@ -226,7 +226,7 @@ EOF
 
   echo "8. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
   
-  #test
+  #testing - note, install menu
   bash /opt/ple*/sc*/st*/be*
 
   docker restart emby 1>/dev/null 2>&1
