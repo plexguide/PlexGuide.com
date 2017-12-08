@@ -40,7 +40,7 @@ fi
 show_menus() {
 clear
 cat << EOF
-PlexGuide.com Installer V5 (17.12.08-2) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V5 (17.12.08-3) | Written By: Admin9705 & Deiteq
 Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
 
 DONATION *********************************************************
