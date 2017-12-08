@@ -7,6 +7,8 @@
 ---------------------------------------------------------------------- 
 ### BETA 5 FOCUS 
 
+STATUS >>> 1% Complete
+
 To create a user & eliminate root as a source
 
 ### Basic Information
