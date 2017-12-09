@@ -42,7 +42,7 @@ After=multi-user.target
 [Service]
 Type=simple
 User=plexguide
-Group=plexguide
+Group=1000
 ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
@@ -61,7 +61,7 @@ After=multi-user.target
 [Service]
 Type=simple
 User=plexguide
-Group=plexguide
+Group=1000
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
@@ -96,7 +96,7 @@ After=multi-user.target
 [Service]
 Type=simple
 User=plexguide
-Group=plexguide
+Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20
 KillMode=process
