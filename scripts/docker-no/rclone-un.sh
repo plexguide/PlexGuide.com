@@ -36,6 +36,16 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   user_allow_other
 EOF
 
+####################################### RCLONE
+
+## Create the RClone Script
+tee "/opt/appdata/plexguide/rclone-un.sh" > /dev/null <<EOF
+#!/bin/bash
+
+rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+EOF
+chmod 755 /opt/appdata/plexguide/rclone-un.sh.sh
+
 ## Create the RClone Service
 tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
 [Unit]
@@ -44,9 +54,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+User=plexguide
+Group=1000
+ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -54,6 +64,8 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 EOF
+
+######################################## UNIONFS
 
 ## Create the UnionFS Service
 tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
