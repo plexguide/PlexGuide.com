@@ -16,6 +16,12 @@ clear
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
   cd ~
 
+## Supporting Folders
+mkdir -p /home/plexguide/move
+mkdir -p /home/plexguide/gdrive
+mkdir -p /home/plexguide/scripts
+mkdir -p /home/plexguide/unionfs
+
 ## Executes RClone Config
 sudo rclone config
 
