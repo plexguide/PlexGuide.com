@@ -44,7 +44,7 @@ EOF
 ## Create the RClone Script
 tee "/opt/appdata/plexguide/scripts/rclone-un.sh" > /dev/null <<EOF
 #!/bin/bash
-sudo rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /home/plexguide/.config/rclone/rclone.conf
 chmod 755 /opt/appdata/plexguide/scripts/rclone-un.sh
