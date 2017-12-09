@@ -56,7 +56,7 @@ EOF
 # Exit when user the user select 3 form the menu option.
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 13 ];  Type [13] to Exit! " choice
+	read -p "Enter choice [ 1 - 14 ];  Type [14] to Exit! " choice
 	case $choice in
     1)
      clear
