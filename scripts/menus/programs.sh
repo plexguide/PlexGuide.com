@@ -121,6 +121,7 @@ read_options(){
      echo ymldisplay Sickrage >> /opt/plexguide/tmp.txt
      echo ymlport 8081 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
     12)
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
