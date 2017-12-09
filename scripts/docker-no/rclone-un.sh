@@ -58,7 +58,7 @@ After=multi-user.target
 [Service]
 Type=simple
 User=plexguide
-Group=6000
+Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/scripts/rclone-un.sh
 TimeoutStopSec=20
 KillMode=process
