@@ -39,12 +39,12 @@ EOF
 ####################################### RCLONE
 
 ## Create the RClone Script
-tee "/opt/appdata/plexguide/rclone-un.sh" > /dev/null <<EOF
+tee "/home/plexguide/scripts/rclone-un.sh" > /dev/null <<EOF
 #!/bin/bash
 
 rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 EOF
-chmod 755 /opt/appdata/plexguide/rclone-un.sh
+chmod 755 /home/plexguide/scripts/rclone-un.sh
 
 ## Create the RClone Service
 tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
@@ -56,7 +56,7 @@ After=multi-user.target
 Type=simple
 User=plexguide
 Group=1000
-ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
+ExecStart=/bin/bash /home/plexguide/scripts/rclone-un.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -75,9 +75,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/plexdrive4=RO home/plexguide/unionfs
+User=plexguide
+Group=1000
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/plexdrive4=RO /home/plexguide/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -86,21 +86,21 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
+######################################## MOVE SERVICE
 
 ## Create the Move Script
-rm -r /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
-tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
+rm -r /home/plexguide/scripts/move.sh 1>/dev/null 2>&1
+tee "/home/plexguide/scripts/move.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
 while true
 do
-# Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
-# Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
+# Script kicks in every 10 minutes (loop) and aynthing above 9M may result in a Google Upload Ban
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/home/plexguide/move gdrive:/
 sleep 600
 done
 EOF
-chmod 755 /opt/appdata/plexguide/move.sh
+chmod 755 /home/plexguide/scripts/move.sh
 
 ## Create the Move Service
 tee "/etc/systemd/system/move.service" > /dev/null <<EOF
@@ -110,9 +110,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
+User=plexguide
+Group=1000
+ExecStart=/bin/bash /home/plexguide/scripts/move.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
