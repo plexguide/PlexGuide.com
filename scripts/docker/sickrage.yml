@@ -1,8 +1,8 @@
----
+    ---
 version: '2'
 services:
  sickrage:
-   image: linuxserver/sonarr
+   image: linuxserver/sickrage
    container_name: sickrage
    ports:
      - "8081:8081"
