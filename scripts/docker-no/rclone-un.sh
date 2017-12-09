@@ -139,11 +139,11 @@ systemctl stop unionfs-encrypt 1>/dev/null 2>&1
 systemctl stop rclone-encrypt 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
-systemctl enable rclone 1>/dev/null 2>&1
+systemctl enable rclone-un 1>/dev/null 2>&1
 systemctl enable move 1>/dev/null 2>&1
 systemctl enable unionfs 1>/dev/null 2>&1
 systemctl start unionfs 1>/dev/null 2>&1 
-systemctl start rclone 1>/dev/null 2>&1
+systemctl start rclone-un 1>/dev/null 2>&1
 systemctl start move 1>/dev/null 2>&1
 
 # set variable to remember what version of rclone user installed
