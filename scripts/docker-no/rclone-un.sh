@@ -17,7 +17,7 @@ clear
   cd ~
 
 ## Executes RClone Config
-rclone config
+sudo rclone config
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
   rm -r /etc/fuse.conf  1>/dev/null 2>&1
