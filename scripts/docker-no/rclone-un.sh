@@ -19,14 +19,11 @@ clear
 ## Supporting Folders
 mkdir -p /home/plexguide/move
 mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/scripts
 mkdir -p /home/plexguide/unionfs
+mkdir -p /opt/appdata/plexguide/scripts
 
 ## Executes RClone Config
 sudo rclone config
-
-# copy rclone config from sudo user to root, which is the target
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf  1>/dev/null 2>&1
@@ -45,9 +42,8 @@ EOF
 ####################################### RCLONE
 
 ## Create the RClone Script
-tee "/home/plexguide/scripts/rclone-un.sh" > /dev/null <<EOF
+tee "/opt/appdata/plexguide/scripts/rclone-un.sh" > /dev/null <<EOF
 #!/bin/bash
-
 rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /home/plexguide/scripts/rclone-un.sh
@@ -62,7 +58,7 @@ After=multi-user.target
 Type=simple
 User=plexguide
 Group=1000
-ExecStart=/bin/bash /home/plexguide/scripts/rclone-un.sh
+ExecStart=/bin/bash /opt/appdata/plexguide/scripts/rclone-un.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -95,8 +91,8 @@ EOF
 ######################################## MOVE SERVICE
 
 ## Create the Move Script
-rm -r /home/plexguide/scripts/move.sh 1>/dev/null 2>&1
-tee "/home/plexguide/scripts/move.sh" > /dev/null <<EOF
+rm -r /opt/appdata/plexguide/scripts/move.sh 1>/dev/null 2>&1
+tee "/opt/appdata/plexguide/scripts/move.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
 while true
@@ -106,7 +102,7 @@ rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15
 sleep 600
 done
 EOF
-chmod 755 /home/plexguide/scripts/move.sh
+chmod 755 /opt/appdata/plexguide/scripts/move.sh
 
 ## Create the Move Service
 tee "/etc/systemd/system/move.service" > /dev/null <<EOF
@@ -118,7 +114,7 @@ After=multi-user.target
 Type=simple
 User=plexguide
 Group=1000
-ExecStart=/bin/bash /home/plexguide/scripts/move.sh
+ExecStart=/bin/bash /opt/appdata/plexguide/scripts/move.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
