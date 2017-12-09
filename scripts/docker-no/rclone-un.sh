@@ -19,9 +19,6 @@ clear
 ## Executes RClone Config
 rclone config
 
-# copy rclone config from sudo user to root, which is the target
-  cp ~/.config/rclone/rclone.conf /root/.config/rclone/
-
 ## RClone - Replace Fuse by removing the # from user_allow_other
   rm -r /etc/fuse.conf  1>/dev/null 2>&1
 
@@ -44,8 +41,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
+User=plexguide
+Group=plexguide
 ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
@@ -63,8 +60,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
+User=plexguide
+Group=plexguide
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
@@ -98,8 +95,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
+User=plexguide
+Group=plexguide
 ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20
 KillMode=process
