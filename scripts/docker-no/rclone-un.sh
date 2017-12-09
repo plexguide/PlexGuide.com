@@ -41,7 +41,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=plexdrive
+User=plexguide
 Group=root
 ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 TimeoutStopSec=20
