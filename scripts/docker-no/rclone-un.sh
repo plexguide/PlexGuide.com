@@ -44,8 +44,9 @@ EOF
 ## Create the RClone Script
 tee "/opt/appdata/plexguide/scripts/rclone-un.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+sudo rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 EOF
+chmod 755 /home/plexguide/.config/rclone/rclone.conf
 chmod 755 /opt/appdata/plexguide/scripts/rclone-un.sh
 
 ## Create the RClone Service
@@ -57,7 +58,7 @@ After=multi-user.target
 [Service]
 Type=simple
 User=plexguide
-Group=1000
+Group=6000
 ExecStart=/bin/bash /opt/appdata/plexguide/scripts/rclone-un.sh
 TimeoutStopSec=20
 KillMode=process
