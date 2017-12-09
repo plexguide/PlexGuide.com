@@ -44,8 +44,9 @@ PlexGuide.com Installer/Upgrader
 8.  PlexPy     | Analytic Information - Server & Users
 9.  Radarr     | Movie Request Program
 10. SABNZBD    | USENET Downloading Program
-11. Sonarr     | TV Request Program
-12. Wordpress  | Create a Website for Users
+11. Sickrage   | TV Request Program
+12. Sonarr     | TV Request Program
+13. Wordpress  | Create a Website for Users
 
 EOF
 }
@@ -116,18 +117,23 @@ read_options(){
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
     11)
+     echo ymlprogram sickrage > /opt/plexguide/tmp.txt
+     echo ymldisplay Sickrage >> /opt/plexguide/tmp.txt
+     echo ymlport 8081 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    12)
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     12)
+     13)
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
      echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
      echo ymlport 80 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     13)
+     14)
     exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
