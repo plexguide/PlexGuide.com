@@ -49,14 +49,14 @@ EOF
 chmod 755 /opt/appdata/plexguide/scripts/rclone-un.sh
 
 ## Create the RClone Service
-tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
+tee "/etc/systemd/system/rclone-un.service" > /dev/null <<EOF
 [Unit]
 Description=RClone Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
-User=plexguide
+User=6000
 Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/scripts/rclone-un.sh
 TimeoutStopSec=20
