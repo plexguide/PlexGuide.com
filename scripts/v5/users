@@ -1,5 +1,10 @@
 
+echo "CouchPotato requires access to the Deluge daemon port and needs credentials set."
+echo ""
+read -p "Create a [USERNAME]: " username
+read -p "Create a [PASSWORD]: " password
+printf "\n\n"
 
-useradd -m -s /bin/bash test30
-echo -e "plexguide\nplexguide\n" | passwd test30
-usermod -aG sudo test30
+useradd -m -s /bin/bash $username -u 6000 
+echo -e ""$password"\n"$password"\n" | passwd $username
+## usermod -aG sudo $username
