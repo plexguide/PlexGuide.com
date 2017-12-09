@@ -43,7 +43,7 @@ After=multi-user.target
 Type=simple
 User=plexguide
 Group=1000
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: ~/gdrive --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -62,7 +62,7 @@ After=multi-user.target
 Type=simple
 User=plexguide
 Group=1000
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty ~/move=RW:~/plexdrive4=RO ~/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
