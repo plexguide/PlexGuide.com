@@ -2,6 +2,14 @@
 
 clear
 
+## 
+
+## Supporting Folders
+mkdir -p /home/plexguide/move
+mkdir -p /home/plexguide/gdrive
+mkdir -p /home/plexguide/unionfs
+mkdir -p /opt/appdata/plexguide/
+
 ## Installing rclone
   cd /tmp
   curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip 1>/dev/null 2>&1
@@ -16,34 +24,41 @@ clear
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
   cd ~
 
+############################################# RCLONE
 ## Executes RClone Config
 rclone config
 
 # copy rclone config from sudo user to root, which is the target
-  cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
-## RClone - Replace Fuse by removing the # from user_allow_other
-  rm -r /etc/fuse.conf  1>/dev/null 2>&1
-
+# allows others to access fuse
 tee "/etc/fuse.conf" > /dev/null <<EOF
-  # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
-  # Set the maximum number of FUSE mounts allowed to non-root users.
-  # The default is 1000.
-  #mount_max = 1000
-  # Allow non-root users to specify the allow_other or allow_root mount options.
-  user_allow_other
+# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
+# Set the maximum number of FUSE mounts allowed to non-root users.
+# The default is 1000.
+#mount_max = 1000
+# Allow non-root users to specify the allow_other or allow_root mount options.
+allow_other
 EOF
 
-## Create the RClone Service
+## RClone Script
+tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
+#!/bin/bash
+# Anything above 9M will result in a google ban if uploading above 9M for 24 hours
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
+EOF
+chmod 755 /opt/appdata/plexguide/rclone.sh
+
+## RClone Server
 tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
 [Unit]
 Description=RClone Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
+User=plexguide
+Group=1000
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -51,6 +66,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
+######################################### UNIONFS
 ## Create the UnionFS Service
 tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
 [Unit]
@@ -76,7 +92,7 @@ tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
 sleep 30
 while true
 do
-# Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
+# Purpose of sleep starting is so rclone has time to startup and kick in every 10 minutes
 # Anything above 9M will result in a google ban if uploading above 9M for 24 hours
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
 sleep 600
