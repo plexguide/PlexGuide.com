@@ -2,13 +2,12 @@
 
 clear
 
-## 
-
 ## Supporting Folders
 mkdir -p /home/plexguide/move
 mkdir -p /home/plexguide/gdrive
 mkdir -p /home/plexguide/unionfs
-mkdir -p /opt/appdata/plexguide/
+mkdir -p /opt/appdata/plexguide
+mkdir -p /opt/plexguide/plexdrive4
 
 ## Installing rclone
   cd /tmp
@@ -38,7 +37,12 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 user_allow_other
 EOF
 
+## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
+chown -R plexguide:1000 /home/plexguide/gdrive
+chown -R plexguide:1000 /home/plexguide/move
+chown -R plexguide:1000 /home/plexguide/unionfs
+chown -R plexguide:1000 /home/plexguide/plexdrive4
 
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
@@ -72,9 +76,9 @@ Description=UnionFS Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
+User=plexguide
+Group=1000
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/plexdrive4=RO /home/plexguide/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -84,15 +88,13 @@ EOF
 
 
 ## Create the Move Script
-rm -r /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
 tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
 #!/bin/bash
 sleep 30
 while true
 do
-# Purpose of sleep starting is so rclone has time to startup and kick in every 10 minutes
-# Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
+## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/home/plexguide/move gdrive:/
 sleep 600
 done
 EOF
@@ -105,8 +107,8 @@ Description=Move Service Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=root
-Group=root
+User=plexguide
+Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20
 KillMode=process
@@ -149,14 +151,6 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 clear
 cat << EOF
 NOTE: You installed the unencrypted version for the RClone data transport!
-If you messed anything up, select [2] and run through again.  Also check:
-http://unrclone.plexguide.com and or post on http://reddit.plexguide.com
-HOW TO CHECK: In order to check if everything is working, have 1 item at least
-in your google Drive
-1. Type: /mnt/gdrive (and then you should see some item from your g-drive there)
-2. Type: /mnt/unionfs (and you should see the same g-drive stuff there)
-Verifying that 1 and 2 are important due to this is how your data will sync!
-To make it easy, you can also use the CHECKING TOOLS built in!
-EOF
+If you messed anything up, select [2] and run through again.  
 
 bash /opt/plexguide/scripts/docker-no/continue.sh
