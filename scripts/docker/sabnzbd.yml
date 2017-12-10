@@ -11,6 +11,7 @@ services:
      - /home/plexguide/sab/complete:/complete
      - /home/plexguide/sab/incomplete:/incomplete
      - /home/plexguide/sab/nzb:/nzb
+     - /home/plexguide/sab/admin:/admin
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:

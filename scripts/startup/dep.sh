@@ -71,6 +71,10 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   chmod 755 /opt/plexguide-startup
 
 ################### For SAB
+
+  mkdir -p /home/plexguide/sab/admin
+  chown -R plexguide:1000 /home/plexguide/sab/admin
+
   mkdir -p /home/plexguide/sab/incomplete
   chown -R plexguide:1000 /home/plexguide/sab/incomplete
 
