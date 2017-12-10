@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /var/plexguide
+
 file="/var/plexguide/plexguide.user"
 if [ -e "$file" ]
 then
