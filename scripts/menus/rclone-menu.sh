@@ -40,7 +40,7 @@ RCLONE INSTALLERS ********************************************************
 **************************************************************************
 
 Please visit http://wiki.plexguide.com for any tutorial information. It is
-recommended to view the following guides to save YOU SOME GRIEF!!!
+recommended to view the following guides and save YOU SOME GRIEF!!!
 
   ^ GoogleAPI        - http://googleapi.plexguide.com
   ^ Unencrypt RClone - http://unrclone.plexguide.com
