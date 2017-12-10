@@ -5,7 +5,7 @@
 
 ![N](https://image.ibb.co/nkfnmR/Snip20171029_14.png)
 
-## Install Sonarr
+## Install Sonarr 
 ```sh
 ### Copy each line one by one
 sudo apt-get install libmono-cil-dev
