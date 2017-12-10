@@ -6,9 +6,13 @@ then
     clear
 else
 cat << EOF
+clear
 ~~~~~~~~~~~~~~~~~~
   PlexGuide User
 ~~~~~~~~~~~~~~~~~~
+
+Welcome to PlexGuide.com! Before you install the program, we will assist
+you in making a user named: plexguide
 
 You are creating a user name known as (plexguide) with sudo permissions!  
 
