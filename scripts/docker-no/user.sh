@@ -21,8 +21,8 @@ You are creating a user name known as (plexguide) with sudo permissions!
 Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE. You can still 
 use the old menu!
 
-Encryption Note: If using encrypted method, DO NOT ACCEPT THE UPGRADE unless
-your helping us test!  You can still use the old menu! 
+ENCRYPTION USERS WARNING! If using encrypted method, do not upgrade. Create the 
+user as required, but when asking for upgrade; select NO. Encryption needs work!
 
 EOF
 

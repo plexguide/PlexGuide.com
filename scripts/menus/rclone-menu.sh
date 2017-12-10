@@ -36,7 +36,7 @@ switch; you can. I mitgated everything but reboot if making a switch.
 
 RCLONE INSTALLERS ********************************************************
 1. Unencrypted Install  :  Utilize the unencrypted version of RClone     *
-2. Encrypted Install    :  Utilize the encrypted version of RClone       *
+2. Encrypted Install    :  NOT WORKING YET FOR v5 - No OPTION FOR IT     *
 **************************************************************************
 
 Please visit http://wiki.plexguide.com for any tutorial information. It is
@@ -58,7 +58,7 @@ read_options(){
 		bash /opt/plexguide/scripts/docker-no/rclone-un.sh
 		;;
 	2)
-		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
+		## bash /opt/plexguide/scripts/docker-no/rclone-en.sh
   		;;
 	3)
 		exit 0;;

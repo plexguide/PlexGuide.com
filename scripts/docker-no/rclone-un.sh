@@ -156,5 +156,6 @@ clear
 cat << EOF
 NOTE: You installed the unencrypted version for the RClone data transport!
 If you messed anything up, select [2] and run through again.  
+EOF
 
 bash /opt/plexguide/scripts/docker-no/continue.sh

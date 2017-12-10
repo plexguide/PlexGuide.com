@@ -5,7 +5,8 @@ clear
 ## Supporting Folders
 mkdir -p /home/plexguide/move
 mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/unionfs
+mkdir -p /home/plexguide/unionfs/tv
+mkdir -p /home/plexguide/unionfs/movies
 mkdir -p /opt/appdata/plexguide
 mkdir -p /home/plexguide/plexdrive4
 mkdir -p /home/plexguide/encrypt
@@ -29,8 +30,6 @@ mkdir -p /home/plexguide/encrypt
 rclone config
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
-rm -r /etc/fuse.conf  1>/dev/null 2>&1
-
 tee "/etc/fuse.conf" > /dev/null <<EOF
   # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
 
@@ -41,6 +40,9 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   # Allow non-root users to specify the allow_other or allow_root mount options.
   user_allow_other
 EOF
+
+## Copying to /home/plexguide incase
+cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone
 
 ## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
@@ -165,21 +167,11 @@ rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
 
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
+# sets a message
 clear
 cat << EOF
-NOTE: You installed the encrypted version for the RClone data transport! If you
-messed anything up, select [3] and run through again.  Also check:
-http://enrclone.plexguide.com and or post on http://reddit.plexguide.com
-
-HOW TO CHECK: In order to check if everything is working, have 1 item at least
-in your google Drive
-
-1. Type: /mnt/gdrive (and then you should see some item from your g-drive there)
-2. Type: /mnt/unionfs (and you should see the same g-drive stuff there)
-
-Verifying that 1 and 2 are important due to this is how your data will sync!
-
-To make this easy, you can also use the checking tools built in!
-
+NOTE: You installed the encrypted version for the RClone data transport!
+If you messed anything up, select [2] and run through again.  
 EOF
+
 bash /opt/plexguide/scripts/docker-no/continue.sh
