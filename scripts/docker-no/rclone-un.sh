@@ -38,6 +38,8 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 allow_other
 EOF
 
+chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
+
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
