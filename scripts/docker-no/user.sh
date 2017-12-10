@@ -22,6 +22,10 @@ You are creating a user name known as (plexguide) with sudo permissions!
 - Recommend to login with user (plexguide) instead of root futurewise!
 - This entire program (permisisons) RUNS from the user: plexguide
 
+Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE and use
+the menu.  For the latest, you will need to START with a clean image and
+start fresh! 
+
 EOF
 
 #### (Not Used) read -p "Create a [USERNAME]: " username
