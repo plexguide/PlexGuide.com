@@ -132,7 +132,7 @@ services:
 # ensures this container starts up when required to
    restart:
      always
- couchpotato:
+ couchpotato: 
    image:  linuxserver/couchpotato
    container_name: couchpotato
    ports:
