@@ -98,11 +98,11 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   mkdir -p /home/plexguide/nzbget/incomplete
   chown -R plexguide:1000 /home/plexguide/nzbget/incomplete
 
-  mkdir -p /home/plexguide/nzbget/complete/tv
-  chown -R plexguide:1000 /home/plexguide/nzbget/complete/tv
+  mkdir -p /home/plexguide/nzbget/completed/tv
+  chown -R plexguide:1000 /home/plexguide/nzbget/completed/tv
 
-  mkdir -p /home/plexguide/nzbget/complete/movies
-  chown -R plexguide:1000 /home/plexguide/nzbget/complete/movies
+  mkdir -p /home/plexguide/nzbget/completed/movies
+  chown -R plexguide:1000 /home/plexguide/nzbget/completed/movies
 
   mkdir -p /home/plexguide/nzbget/nzb
   chown -R plexguide:1000 /home/plexguide/nzbget/nzb
