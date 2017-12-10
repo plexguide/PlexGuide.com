@@ -43,7 +43,7 @@ chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
+rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
 
