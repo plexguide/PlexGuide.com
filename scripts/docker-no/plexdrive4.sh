@@ -36,7 +36,7 @@ After=multi-user.target
 Type=simple
 User=6000
 Group=1000
-ExecStart=/usr/bin/plexdrive4 -o allow_other,allow_non_empty_mount --refresh-interval=1m /home/plexguide/plexdrive4
+ExecStart=/usr/bin/plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount --refresh-interval=1m /home/plexguide/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
