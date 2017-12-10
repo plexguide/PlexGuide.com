@@ -9,7 +9,7 @@ services:
    volumes:
      - /opt/appdata/nzbget:/config
      - /:/yourcomputer
-     - /home/plexguide/nzbget/complete:/complete
+     - /home/plexguide/nzbget/complete:/completed
      - /home/plexguide/nzbget/incomplete:/incomplete
      - /home/plexguide/nzbget/nzb:/nzb
      - /home/plexguide/nzbget/tmp:/tmp
