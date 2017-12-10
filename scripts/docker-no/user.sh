@@ -1,0 +1,38 @@
+#!/bin/bash
+
+file="/var/plexguide/plexguide.user"
+if [ -e "$file" ]
+then
+    clear
+else
+cat << EOF
+~~~~~~~~~~~~~~~~~~
+  PlexGuide User
+~~~~~~~~~~~~~~~~~~
+
+You are creating a user name known as (plexguide) with sudo permissions!  
+
+- Do Not Forget Your Password (If you do, use root to change)
+- Recommend to login with user (plexguide) instead of root futurewise!
+- This entire program (permisisons) RUNS from the user: plexguide
+
+EOF
+
+#### (Not Used) read -p "Create a [USERNAME]: " username
+read -p "Create a [PASSWORD] for [user - plexguide]: " password
+printf "\n\n"
+
+useradd -m -s /bin/bash plexguide -u 6000 -g 1000
+echo -e ""$password"\n"$password"\n" | passwd plexguide
+usermod -aG sudo plexguide
+touch /var/plexguide/plexguide.
+
+cat << EOF
+
+You created the user: plexguide
+
+EOF
+
+read -n 1 -s -r -p "Press any key to continue"
+
+fi

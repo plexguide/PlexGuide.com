@@ -27,6 +27,7 @@ two(){
 }
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
+bash /opt/plexguide/scripts/docker-no/user.sh
 
 file="/var/plexguide/dep17.yes"
 if [ -e "$file" ]
