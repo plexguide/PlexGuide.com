@@ -52,7 +52,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter Choice [ 1 - 3];  Type [3] to Exit! " choice
+	read -p "Enter Choice [ 1 - 3 ];  Type [3] to Exit! " choice
 	case $choice in
 	1)
 		bash /opt/plexguide/scripts/docker-no/rclone-un.sh

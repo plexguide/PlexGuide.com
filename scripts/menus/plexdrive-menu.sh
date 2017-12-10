@@ -64,7 +64,6 @@ having issues, please delete your CURRENT TOKENS and start again!
 2. Troubleshooting     :  Restart PlexDrive4 Status
 3. Troubleshooting     :  Delete PlexDrive4 Tokens
 4. PlexDrive Mount Test:  Verify your PlexDrive Install
-5. Exit
 
 *** Do not forget to reboot server after first cache build is complete! ***
 EOF
@@ -72,7 +71,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 5 ] " choice
+	read -p "Enter choice [ 1 - 4 ] " choice
 	case $choice in
 		1)
 		      bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
@@ -85,7 +84,7 @@ read_options(){
         	read -n 1 -s -r -p "Press any key to continue"
         	;;
 		3)
-       		rm -r /root/.plexdrive
+       		rm -r /home/plexguide/.plexdrive
           rm -r ~/.plexdrive
         	echo
         	echo "Tokens Removed"
