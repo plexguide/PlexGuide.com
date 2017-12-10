@@ -5,7 +5,8 @@ clear
 ## Supporting Folders
 mkdir -p /home/plexguide/move
 mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/unionfs
+mkdir -p /home/plexguide/unionfs/tv
+mkdir -p /home/plexguide/unionfs/movies
 mkdir -p /opt/appdata/plexguide
 mkdir -p /home/plexguide/plexdrive4
 
