@@ -28,9 +28,6 @@ mkdir -p /opt/appdata/plexguide/
 ## Executes RClone Config
 rclone config
 
-# copy rclone config from sudo user to root, which is the target
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/
-
 # allows others to access fuse
 tee "/etc/fuse.conf" > /dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
@@ -45,7 +42,7 @@ EOF
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
 # Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/home/plexguide/move gdrive:/
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
 
