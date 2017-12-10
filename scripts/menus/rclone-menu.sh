@@ -45,7 +45,10 @@ recommended to view the following guides to save YOU SOME GRIEF!!!
 *** GoogleAPI        - http://googleapi.plexguide.com
 *** Unencrypt RClone - http://unrclone.plexguide.com
 *** Encrypted RClone - http://enrclone.plexguide.com
-                        
+ 
+EOF
+}
+
 read_options(){
 	local choice
 	read -p "Enter Choice [ 1 - 3];  Type [3] to Exit! " choice
