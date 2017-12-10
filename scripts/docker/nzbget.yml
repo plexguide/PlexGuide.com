@@ -9,7 +9,11 @@ services:
    volumes:
      - /opt/appdata/nzbget:/config
      - /:/yourcomputer
-     - /home/plexguide/nzbget/downloads:/downloads
+     - /home/plexguide/nzbget/complete:/complete
+     - /home/plexguide/nzbget/incomplete:/incomplete
+     - /home/plexguide/nzbget/nzb:/nzb
+     - /home/plexguide/nzbget/tmp:/tmp
+     - /home/plexguide/nzbget/scripts:/scripts
      - /home/plexguide/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:

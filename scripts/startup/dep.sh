@@ -88,52 +88,19 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   chown -R plexguide:1000 /home/plexguide/sab/nzb
 
 #################### For NZBGET
-  mkdir -p /mnt/nzbget/incomplete
-  chmod 777 /mnt/nzbget/incomplete
+  mkdir -p /home/plexguide/nzbget/incomplete
+  chown -R plexguide:1000 /home/plexguide/nzbget/incomplete
 
-  mkdir -p /mnt/nzbget/complete/tv
-  chmod 777 /mnt/nzbget/complete/tv
+  mkdir -p /home/plexguide/nzbget/complete/tv
+  chown -R plexguide:1000 /home/plexguide/nzbget/complete/tv
 
-  mkdir -p /mnt/nzbget/complete/movies
-  chmod 777 /mnt/nzbget/complete/movies
+  mkdir -p /home/plexguide/nzbget/complete/movies
+  chown -R plexguide:1000 /home/plexguide/nzbget/complete/movies
 
-  mkdir -p /mnt/nzbget/sab
-  chmod 777 /mnt/nzbget/sab
+  mkdir -p /home/plexguide/nzbget/sab
+  chown -R plexguide:1000 /home/plexguide/nzbget/sab
 
-##################### For Move Service
-  mkdir -p /mnt/move/tv
-  chmod 777 /mnt/move/tv
-
-  mkdir -p /mnt/move/movies
-  chmod 777 /mnt/move/movies
-
-  mkdir -p /opt/.environments
-  chmod 777 /opt/.environments
-
-  ## location for rclone
-  mkdir -p /mnt/gdrive
-  chmod 755 /mnt/gdrive
-  chown root /mnt/gdrive
-
-  ## location for rclone encrypt (plexdrive4 use)
-  mkdir -p /mnt/encrypt
-  chmod 755 /mnt/encrypt
-  chown root /mnt/encrypt
-
-  ## location for rclone gcrypt direct
-  mkdir -p /mnt/.gcrypt
-  chmod 755 /mnt/.gcrypt
-  chown root /mnt/.gcrypt
-
-  ## location for startup scripts
-  mkdir -p /opt/appdata/plexguide
-  chmod 755 /opt/appdata/plexguide
-
-  ## location for move and unionfs
-  mkdir -p /mnt/unionfs
-  mkdir -p /mnt/move
-  chmod 755 /mnt/move
-  chmod 755 /mnt/unionfs
+######################################################### For RCLONE
 
 echo "2. Pre-Installing RClone & Services (Please Wait)"
 
