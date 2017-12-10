@@ -6,8 +6,8 @@ clear
 mkdir -p /home/plexguide/move
 mkdir -p /home/plexguide/gdrive
 mkdir -p /home/plexguide/unionfs
+mkdir -p /home/plexguide/plexdrive4
 mkdir -p /opt/appdata/plexguide
-mkdir -p /opt/plexguide/plexdrive4
 
 ## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/gdrive
