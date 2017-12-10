@@ -81,10 +81,10 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   mkdir -p /home/plexguide/sab/incomplete
   chown -R plexguide:1000 /home/plexguide/sab/incomplete
 
-  mkdir -p /home/plexguide/sab/tv
+  mkdir -p /home/plexguide/sab/complete/tv
   chown -R plexguide:1000 /home/plexguide/sab/complete/tv
 
-  mkdir -p /home/plexguide/sab/movies
+  mkdir -p /home/plexguide/sab/complete/movies
   chown -R plexguide:1000 /home/plexguide/sab/complete/movies
 
   mkdir -p /home/plexguide/sab/nzb
@@ -121,8 +121,8 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
   bash /opt/plexguide/scripts/startup/rclone-preinstall.sh
 
 #Lets the System Know that Script Ran Once
-  mkdir -p /var/plexguide
   touch /var/plexguide/basics.yes
+  touch /var/plexguide/version.5
 
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
@@ -144,7 +144,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
   echo "5. Created the PlexGuide Network for Docker"
 
 # Creates PlexGuide Network
-  docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
+# docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
 
   echo "6. Installing Portainer for Docker (Please Wait)"
 
@@ -240,13 +240,9 @@ cat << EOF
 
 Pre-Install / Re-Install Complete!
 
-WARNING 1: You must recreate all your containers, no data loss! NGINX-Proxy
-has been removed and is causing endless problems :D 
-WARNING 2: If this is your first upgrade since 12/3/2017, you must do the
-following or you have to restart a new plex container.  You will not lose your
-data. 
-
-sudo mv /opt/plex /opt/appdata
+<Donation Info> If your enjoying the programming, donating coin or enabling 
+mininig helps up go a long way.  If you enable mining, you can choose how 
+many cores  are allocated. Any amount would be helpful! <Donation Info>  
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of
