@@ -11,7 +11,7 @@ services:
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:
-     - PUID=0
-     - PGID=0
+     - PUID=6000
+     - PGID=1000
    restart:
      always

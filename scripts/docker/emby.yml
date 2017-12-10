@@ -9,9 +9,9 @@ services:
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /opt/appdata/embyserver:/config
-            - /mnt/plexdrive4/:/plexdrive4
-            - /mnt/unionfs:/unionfs
-            - /mnt/encrypt:/encrypt
+            - /home/plexguide/plexdrive4/:/plexdrive4
+            - /home/plexguide/unionfs:/unionfs
+            - /home/plexguide/encrypt:/encrypt
           #  - /mnt/plexdrive4/tv:/old
             - /:/yourcomputer
         environment:

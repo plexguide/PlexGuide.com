@@ -14,10 +14,10 @@ services:
      - '${IP_ADDRESS}:58946:58946'
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /mnt/delugevpn/downloads:/data
+     - /home/plexguide/delugevpn/downloads:/data
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
-     - /mnt/unionfs/completed:/completed
+     - /home/plexguide/unionfs/completed:/completed
    env_file:
      - /opt/.environments/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env

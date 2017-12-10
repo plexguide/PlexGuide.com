@@ -9,13 +9,13 @@ services:
    volumes:
      - /opt/appdata/jackett:/config
      - /:/yourcomputer
-     - /mnt/delugevpn/downloads:/downloads
-     - /mnt/unionfs:/unionfs
+     - /home/plexguide/delugevpn/downloads:/downloads
+     - /home/plexguide/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    env_file:
     - /opt/.environments/.env
    environment:
-     - PUID=1001
-     - PGID=1001
+     - PUID=6000
+     - PGID=1000
    restart:
      always

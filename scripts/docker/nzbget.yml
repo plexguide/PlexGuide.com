@@ -9,11 +9,11 @@ services:
    volumes:
      - /opt/appdata/nzbget:/config
      - /:/yourcomputer
-     - /mnt/nzbget/downloads:/downloads
-     - /mnt/unionfs:/unionfs
+     - /home/plexguide/nzbget/downloads:/downloads
+     - /home/plexguide/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
-     - PUID=0
-     - PGID=0
+     - PUID=6000
+     - PGID=1000
    restart:
      always
