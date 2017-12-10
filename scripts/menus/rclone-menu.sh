@@ -46,8 +46,6 @@ recommended to view the following guides to save YOU SOME GRIEF!!!
 *** Unencrypt RClone - http://unrclone.plexguide.com
 *** Encrypted RClone - http://enrclone.plexguide.com
                         
-}
-
 read_options(){
 	local choice
 	read -p "Enter Choice [ 1 - 3];  Type [3] to Exit! " choice
@@ -57,7 +55,7 @@ read_options(){
 		;;
 	2)
 		bash /opt/plexguide/scripts/docker-no/rclone-en.sh
-  	;;
+  		;;
 	3)
 		exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
