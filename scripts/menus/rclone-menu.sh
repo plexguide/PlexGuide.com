@@ -33,17 +33,18 @@ cat << EOF
 Note: Only Install one version of RClone; encrypted or unencrypted. If you
 switch; you can. I mitgated everything but reboot if making a switch.
 
+
 RCLONE INSTALLERS *****************************************************
 1. Unencrypted Install  :  Utilize the unencrypted version of RClone
 2. Encrypted Install    :  Utilize the encrypted version of RClone
 
-
 Please visit http://wiki.plexguide.com for any tutorial information. It is
 recommended to view the following guides to save YOU SOME GRIEF!!!
 
-*** GoogleAPI        - http://googleapi.plexguide.com
-*** Unencrypt RClone - http://unrclone.plexguide.com
-*** Encrypted RClone - http://enrclone.plexguide.com
+	*** GoogleAPI        - http://googleapi.plexguide.com
+	*** Unencrypt RClone - http://unrclone.plexguide.com
+	*** Encrypted RClone - http://enrclone.plexguide.com
+ 
  
 EOF
 
