@@ -43,8 +43,7 @@ chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
-# Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/home/plexguide/move gdrive:/
+rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
 
