@@ -25,8 +25,8 @@ answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
-    clear
 
+clear
 ## Create the PlexDrive4 Service
 tee "/etc/systemd/system/plexdrive4.service" > /dev/null <<EOF
 [Unit]
@@ -56,7 +56,7 @@ systemctl enable plexdrive4.service
     chown root:root /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
     clear
-    plexdrive4 --uid=0 --gid=0-o allow_other nonempty -v 2 --refresh-interval=1m /home/plexguide/plexdrive4
+    plexdrive4 --uid=0 --gid=0 -o allow_other nonempty -v 2 --refresh-interval=1m /home/plexguide/plexdrive4
     clear
     ## USER Will Have To Reboot Once PlexDrive Is Finished!
 else
