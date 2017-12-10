@@ -35,7 +35,7 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 # The default is 1000.
 #mount_max = 1000
 # Allow non-root users to specify the allow_other or allow_root mount options.
-allow_other
+user_allow_other
 EOF
 
 chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
