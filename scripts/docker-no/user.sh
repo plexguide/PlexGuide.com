@@ -5,8 +5,8 @@ if [ -e "$file" ]
 then
     clear
 else
-cat << EOF
 clear
+cat << EOF
 ~~~~~~~~~~~~~~~~~~
   PlexGuide User
 ~~~~~~~~~~~~~~~~~~
@@ -30,6 +30,7 @@ useradd -m -s /bin/bash plexguide -u 6000 -g 1000
 echo -e ""$password"\n"$password"\n" | passwd plexguide
 usermod -aG sudo plexguide
 touch /var/plexguide/plexguide.user
+
 
 cat << EOF
 
