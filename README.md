@@ -8,7 +8,7 @@
 ### BETA 5 FOCUS 
 
 NOT READY TO INSTALL FOR PRACTICAL USE
-STATUS >>> 5% Complete
+STATUS >>> 20% Complete
 
 To create a user & eliminate root as a source
 
