@@ -39,7 +39,7 @@ user_allow_other
 EOF
 
 ## Copying to /home/plexguide incase
-cp ~/.config/rclone/rclone.conf /home/plexguide/.config/
+cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone
 
 ## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
