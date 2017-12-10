@@ -29,7 +29,7 @@ printf "\n\n"
 useradd -m -s /bin/bash plexguide -u 6000 -g 1000
 echo -e ""$password"\n"$password"\n" | passwd plexguide
 usermod -aG sudo plexguide
-touch /var/plexguide/plexguide.
+touch /var/plexguide/plexguide.user
 
 cat << EOF
 
