@@ -66,24 +66,22 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 ## Create Directory Structure - Goal is to move everything here
 
 ################### For PlexDrive
-  mkdir -p /mnt/plexdrive4
-  chmod 755 /mnt/plexdrive4
 
   mkdir -p /opt/plexguide-startup
   chmod 755 /opt/plexguide-startup
 
 ################### For SAB
-  mkdir -p /mnt/sab/incomplete
-  chmod 777 /mnt/sab/incomplete
+  mkdir -p /home/plexguide/sab/incomplete
+  chown -R plexguide:1000 /home/plexguide/sab/incomplete
 
-  mkdir -p /mnt/sab/complete/tv
-  chmod 777 /mnt/sab/complete/tv
+  mkdir -p /home/plexguide/sab/complete/tv
+  chown -R plexguide:1000 /home/plexguide/sab/complete/tv
 
-  mkdir -p /mnt/sab/complete/movies
-  chmod 777 /mnt/sab/complete/movies
+  mkdir -p /home/plexguide/sab/complete/movies
+  chown -R plexguide:1000 /home/plexguide/sab/complete/movies
 
-  mkdir -p /mnt/sab/nzb
-  chmod 777 /mnt/sab/nzb
+  mkdir -p /home/plexguide/sab/nzb
+  chown -R plexguide:1000 /home/plexguide/sab/nzb
 
 #################### For NZBGET
   mkdir -p /mnt/nzbget/incomplete

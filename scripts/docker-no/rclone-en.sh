@@ -2,6 +2,14 @@
 
 clear
 
+## Supporting Folders
+mkdir -p /home/plexguide/move
+mkdir -p /home/plexguide/gdrive
+mkdir -p /home/plexguide/unionfs
+mkdir -p /opt/appdata/plexguide
+mkdir -p /home/plexguide/plexdrive4
+mkdir -p /home/plexguide/encrypt
+
 ## Installing rclone
   cd /tmp
   curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip 1>/dev/null 2>&1
@@ -16,12 +24,9 @@ clear
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
   cd ~
 
+############################################# RCLONE
 ## Excutes the RClone Config
 rclone config
-
-# copy rclone config from sudo user to root, which is the target
-  cp ~/.config/rclone/rclone.conf /root/.config/rclone/
-
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
 rm -r /etc/fuse.conf  1>/dev/null 2>&1
@@ -37,6 +42,14 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   user_allow_other
 EOF
 
+## Assigning Permissions to PlexGuide
+chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
+chown -R plexguide:1000 /home/plexguide/gdrive
+chown -R plexguide:1000 /home/plexguide/move
+chown -R plexguide:1000 /home/plexguide/unionfs
+chown -R plexguide:1000 /home/plexguide/plexdrive4
+chown -R plexguide:1000 /home/plexguide/encrypt
+
 ####################################### Encrypted Service
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
@@ -45,9 +58,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
+User=plexguide
+Group=1000
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /home/plexguide/encrypt --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -64,9 +77,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
+User=plexguide
+Group=1000
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -82,9 +95,9 @@ Description=UnionFS Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=root
-Group=root
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
+User=plexguide
+Group=1000
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/encrypt=RO /home/plexguide/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -98,7 +111,7 @@ tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 sleep 30
 while true
 do
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gcrypt:/
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/home/plexguide/move gcrypt:/
 sleep 900
 done
 EOF
@@ -112,8 +125,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=root
-Group=root
+User=plexguide
+Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/move-en.sh
 TimeoutStopSec=20
 KillMode=process
