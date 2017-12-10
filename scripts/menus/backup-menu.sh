@@ -72,14 +72,17 @@ read_options(){
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      ;;
      5)
       echo ymlprogram sonarr > /opt/plexguide/tmp.txt
       echo ymldisplay SONARR >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      ;;
      6)
       echo ymlprogram radarr > /opt/plexguide/tmp.txt
       echo ymldisplay RADARR >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      ;;
      7)
       echo ymlprogram emby > /opt/plexguide/tmp.txt
       echo ymldisplay EMBY >> /opt/plexguide/tmp.txt
