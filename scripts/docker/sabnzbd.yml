@@ -9,7 +9,7 @@ services:
    volumes:
      - /opt/appdata/sabnzbd:/config
      - /home/plexguide/sab/complete:/complete
-     - /home/plexguide/incomplete:/incomplete
+     - /home/plexguide/sab/incomplete:/incomplete
      - /home/plexguide/sab/nzb:/nzb
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
