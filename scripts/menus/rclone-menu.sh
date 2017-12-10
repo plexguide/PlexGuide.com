@@ -1,27 +1,5 @@
 #!/bin/bash
 
-clear
-cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~
-    RCLONE WARNING
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Please visit http://wiki.plexguide.com for any tutorial information.  It is
-recommended to view the following guides:
-
-*** GoogleAPI        - http://googleapi.plexguide.com
-*** Unencrypt RClone - http://unrclone.plexguide.com
-*** Encrypted RClone - http://enrclone.plexguide.com
-
-Not reading or following the guides will cause you some grief!
-
-
-EOF
-
-bash /opt/plexguide/scripts/docker-no/continue.sh
-
-
-
 # A menu driven shell script sample template
 ## ----------------------------------
 # Step #1: Define variables
@@ -59,7 +37,15 @@ switch; you can. I mitgated everything but reboot if making a switch.
 RCLONE INSTALLERS *****************************************************
 1. Unencrypted Install  :  Utilize the unencrypted version of RClone
 2. Encrypted Install    :  Utilize the encrypted version of RClone
-                           
+
+
+Please visit http://wiki.plexguide.com for any tutorial information.  It is
+recommended to view the following guides to save YOU SOME GRIEF!!!
+
+*** GoogleAPI        - http://googleapi.plexguide.com
+*** Unencrypt RClone - http://unrclone.plexguide.com
+*** Encrypted RClone - http://enrclone.plexguide.com
+                        
 }
 
 read_options(){
