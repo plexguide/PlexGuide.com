@@ -13,6 +13,7 @@ services:
      - /home/plexguide/nzbget/incomplete:/incomplete
      - /home/plexguide/nzbget/nzb:/nzb
      - /home/plexguide/nzbget/tmp:/tmp
+     - /home/plexguide/nzbget/queue:/queue
      - /home/plexguide/nzbget/scripts:/scripts
      - /home/plexguide/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro

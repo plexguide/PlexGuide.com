@@ -72,33 +72,40 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### For SAB
 
-  mkdir -p /home/plexguide/sab/admin
-  chown -R plexguide:1000 /home/plexguide/sab/admin
+  mkdir -p /home/plexguide
+  chown -R plexguide:1000 /home/plexguide
 
-  mkdir -p /home/plexguide/sab/incomplete
-  chown -R plexguide:1000 /home/plexguide/sab/incomplete
+  ## mkdir -p /home/plexguide/sab/admin
+  ## chown -R plexguide:1000 /home/plexguide/sab/admin
 
-  mkdir -p /home/plexguide/sab/complete/tv
-  chown -R plexguide:1000 /home/plexguide/sab/complete/tv
+  ## mkdir -p /home/plexguide/sab/incomplete
+  ## chown -R plexguide:1000 /home/plexguide/sab/incomplete
 
-  mkdir -p /home/plexguide/sab/complete/movies
-  chown -R plexguide:1000 /home/plexguide/sab/complete/movies
+  ## mkdir -p /home/plexguide/sab/complete/tv
+  ## chown -R plexguide:1000 /home/plexguide/sab/complete/tv
 
-  mkdir -p /home/plexguide/sab/nzb
-  chown -R plexguide:1000 /home/plexguide/sab/nzb
+  ## mkdir -p /home/plexguide/sab/complete/movies
+  ## chown -R plexguide:1000 /home/plexguide/sab/complete/movies
+
+  ## mkdir -p /home/plexguide/sab/nzb
+  ## chown -R plexguide:1000 /home/plexguide/sab/nzb
 
 #################### For NZBGET
-  mkdir -p /home/plexguide/nzbget/incomplete
-  chown -R plexguide:1000 /home/plexguide/nzbget/incomplete
 
-  mkdir -p /home/plexguide/nzbget/complete/tv
-  chown -R plexguide:1000 /home/plexguide/nzbget/complete/tv
+  mkdir -p /home/plexguide/nzbget
+  chown -R plexguide:1000 /home/plexguide/nzbget
 
-  mkdir -p /home/plexguide/nzbget/complete/movies
-  chown -R plexguide:1000 /home/plexguide/nzbget/complete/movies
+  ## mkdir -p /home/plexguide/nzbget/incomplete
+  ## chown -R plexguide:1000 /home/plexguide/nzbget/incomplete
 
-  mkdir -p /home/plexguide/nzbget/sab
-  chown -R plexguide:1000 /home/plexguide/nzbget/sab
+  ## mkdir -p /home/plexguide/nzbget/complete/tv
+  ## chown -R plexguide:1000 /home/plexguide/nzbget/complete/tv
+
+  ## mkdir -p /home/plexguide/nzbget/complete/movies
+  ## chown -R plexguide:1000 /home/plexguide/nzbget/complete/movies
+
+  ## mkdir -p /home/plexguide/nzbget/sab
+  ## chown -R plexguide:1000 /home/plexguide/nzbget/sab
 
 ######################################################### For RCLONE
 
