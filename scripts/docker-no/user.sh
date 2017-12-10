@@ -9,10 +9,6 @@ then
 else
 clear
 cat << EOF
-~~~~~~~~~~~~~~~~~~
-  PlexGuide User
-~~~~~~~~~~~~~~~~~~
-
 Welcome to PlexGuide.com! Before you install the program, we will assist
 you in making a user named: plexguide
 
@@ -22,9 +18,11 @@ You are creating a user name known as (plexguide) with sudo permissions!
 - Recommend to login with user (plexguide) instead of root futurewise!
 - This entire program (permisisons) RUNS from the user: plexguide
 
-Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE and use
-the menu.  For the latest, you will need to START with a clean image and
-start fresh! 
+Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE. You can still 
+use the old menu!
+
+Encryption Note: If using encrypted method, DO NOT ACCEPT THE UPGRADE unless
+your helping us test!  You can still use the old menu! 
 
 EOF
 
