@@ -98,7 +98,7 @@ tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 sleep 30
 while true
 do
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gcrypt:/
+rclone move --bwlimit 9M --tpslimit 5 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
 sleep 900
 done
 EOF

@@ -84,7 +84,7 @@ while true
 do
 # Purpose of sleep starting is so rclone has time to startup and kick in (1HR, you can change)
 # Anything above 9M will result in a google ban if uploading above 9M for 24 hours
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/mnt/move gdrive:/
+rclone move --bwlimit 9M --tpslimit 5 --max-size 99G --log-level INFO --stats 15s /mnt/move gdrive:/
 sleep 600
 done
 EOF
