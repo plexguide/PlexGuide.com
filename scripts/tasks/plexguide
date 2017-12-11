@@ -1,3 +1,4 @@
 #!/bin/bash
 
 sudo bash /opt/plex*/scri*/menu.sh
+chown -R plexguide:1000 /opt/plex*/scri*/menu.sh 1>/dev/null 2>&1 
