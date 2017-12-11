@@ -50,6 +50,8 @@ if [[ $EUID != 6000 ]]; then
    echo "Note: Being user (plexguide) prevents issues!"
    echo ""
    exit 
+ else
+    clear
 fi
 
 show_menus() {
