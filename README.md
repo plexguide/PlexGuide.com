@@ -41,7 +41,6 @@
 sudo apt-get install git
 ```
 
-NOT READY FOR PRACTICAL USE! YOU WILL BREAK YOUR STUFF; FOR VM TESTING
 *Install PlexGuide*
 ```sh
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
