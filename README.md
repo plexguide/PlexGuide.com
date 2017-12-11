@@ -51,6 +51,12 @@ sudo bash /opt/plexg*/sc*/ins*
 ```sh
 plexguide
 ```
+-- IMPORTANT --
+1. When you start plexguide, you will create a password for a user known as: plexguide
+2. The program will then exit
+3. To switch to the user (plexguide), type: su plexguide
+4. Now type: plexguide 
+5. In the future, you can SSH or start the program as PlexGuide with the username (plexguide)
   
 **E. Configuration**
  - Install & Configure (Select Only One)
