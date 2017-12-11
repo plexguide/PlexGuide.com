@@ -86,8 +86,7 @@ read_options(){
         	read -n 1 -s -r -p "Press any key to continue"
         	;;
 		3)
-       		rm -r /home/plexguide/.plexdrive
-          rm -r ~/.plexdrive
+       		rm -r /root/.plexdrive
         	echo
         	echo "Tokens Removed"
         	echo
