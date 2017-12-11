@@ -26,12 +26,12 @@ two(){
         pause
 }
 
-actuid=6000 #user1 uid
+#actuid=6000 #user1 uid
 #actuid=`id user1 | sed 's/uid=\([0-9]*\).*/\1/g'`
 
-NOTAU=64
+#NOTAU=64
 
-[ $UID -ne $actuid ] && echo "You are not user: plexguide" && exit $NOTAU || echo "Thank you for logging in as: plexguide"
+#[ $UID -ne $actuid ] && echo "You are not user: plexguide" && exit $NOTAU || echo "Thank you for logging in as: plexguide"
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
