@@ -2,16 +2,6 @@
 
 clear
 
-## Supporting Folders
-mkdir -p /home/plexguide/move
-mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/unionfs
-mkdir -p /home/plexguide/plexdrive4
-mkdir -p /opt/appdata/plexguide
-
-## Assigning Permissions to PlexGuide
-chown -R plexguide:1000 /home/plexguide/plexdrive4
-
 ################# Install Plex
 echo "READ >> AFTER IT FINISHES, YOU MUST REBOOT!!! <<< READ"
 echo ""

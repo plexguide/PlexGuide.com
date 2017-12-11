@@ -69,7 +69,7 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
   chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/plexdrive4.sh
   chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-un.sh
-#  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-en.sh
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-en.sh
 
 ################### For PlexDrive
 
@@ -79,45 +79,64 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 ################### For SAB
 
   mkdir -p /home/plexguide
-  chown -R plexguide:1000 /home/plexguide
+  chown -R plexguide:1000 /home/plexguide 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/sab/admin
-  chown -R plexguide:1000 /home/plexguide/sab/admin
+  chown -R plexguide:1000 /home/plexguide/sab/admin 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/sab/incomplete
-  chown -R plexguide:1000 /home/plexguide/sab/incomplete
+  chown -R plexguide:1000 /home/plexguide/sab/incomplete 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/sab/complete/tv
-  chown -R plexguide:1000 /home/plexguide/sab/complete/tv
+  chown -R plexguide:1000 /home/plexguide/sab/complete/tv 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/sab/complete/movies
-  chown -R plexguide:1000 /home/plexguide/sab/complete/movies
+  chown -R plexguide:1000 /home/plexguide/sab/complete/movies 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/sab/nzb
-  chown -R plexguide:1000 /home/plexguide/sab/nzb
+  chown -R plexguide:1000 /home/plexguide/sab/nzb 1>/dev/null 2>&1
+
+  chown -R plexguide:1000 /home/plexguide/sab/admin
 
 #################### For NZBGET
 
   mkdir -p /home/plexguide/nzbget
-  chown -R plexguide:1000 /home/plexguide/nzbget
+  chown -R plexguide:1000 /home/plexguide/nzbget 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/nzbget/incomplete
-  chown -R plexguide:1000 /home/plexguide/nzbget/incomplete
+  chown -R plexguide:1000 /home/plexguide/nzbget/incomplete 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/nzbget/completed/tv
-  chown -R plexguide:1000 /home/plexguide/nzbget/completed/tv
+  chown -R plexguide:1000 /home/plexguide/nzbget/completed/tv 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/nzbget/completed/movies
-  chown -R plexguide:1000 /home/plexguide/nzbget/completed/movies
+  chown -R plexguide:1000 /home/plexguide/nzbget/completed/movies 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/nzbget/nzb
-  chown -R plexguide:1000 /home/plexguide/nzbget/nzb
+  chown -R plexguide:1000 /home/plexguide/nzbget/nzb 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/nzbget/tmp
-  chown -R plexguide:1000 /home/plexguide/nzbget/tmp
+  chown -R plexguide:1000 /home/plexguide/nzbget/tmp 1>/dev/null 2>&1
 
   mkdir -p /home/plexguide/nzbget/queue
-  chown -R plexguide:1000 /home/plexguide/nzbget/queue
+  chown -R plexguide:1000 /home/plexguide/nzbget/queue 1>/dev/null 2>&1
+
+  chown -R plexguide:1000 /home/plexguide/nzbget 1>/dev/null 2>&1
+########################################################### RClone
+
+mkdir -p /home/plexguide/move
+mkdir -p /home/plexguide/gdrive
+mkdir -p /home/plexguide/unionfs
+mkdir -p /home/plexguide/plexdrive4
+mkdir -p /opt/appdata/plexguide
+mkdir -p /home/plexguide/plexdrive4
+
+chown -R plexguide:1000 /home/plexguide/plexdrive4 1>/dev/null 2>&1
+chown -R plexguide:1000 /home/plexguide/gdrive 1>/dev/null 2>&1
+chown -R plexguide:1000 /home/plexguide/move 1>/dev/null 2>&1
+chown -R plexguide:1000 /home/plexguide/unionfs 1>/dev/null 2>&1
+chown -R plexguide:1000 /home/plexguide/plexdrive4 1>/dev/null 2>&1
+
 
 ######################################################### For RCLONE
 

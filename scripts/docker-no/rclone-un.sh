@@ -2,14 +2,6 @@
 
 clear
 
-## Supporting Folders
-mkdir -p /home/plexguide/move
-mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/unionfs/tv
-mkdir -p /home/plexguide/unionfs/movies
-mkdir -p /opt/appdata/plexguide
-mkdir -p /home/plexguide/plexdrive4
-
 ## Installing rclone
   cd /tmp
   curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip 1>/dev/null 2>&1
@@ -46,10 +38,6 @@ cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
 
 ## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
-chown -R plexguide:1000 /home/plexguide/gdrive
-chown -R plexguide:1000 /home/plexguide/move
-chown -R plexguide:1000 /home/plexguide/unionfs
-chown -R plexguide:1000 /home/plexguide/plexdrive4
 
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
