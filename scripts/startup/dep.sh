@@ -67,9 +67,9 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### chown
 
-  # chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/plexdrive4.sh
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-un.sh
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-en.sh
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/plexdrive4.sh 1>/dev/null 2>&1
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-un.sh 1>/dev/null 2>&1
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-en.sh 1>/dev/null 2>&1
 
 ################### For PlexDrive
 
