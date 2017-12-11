@@ -33,7 +33,7 @@ cat << EOF
 Note: Only Install one version of RClone; encrypted or unencrypted. If you
 switch; you can. I mitgated everything but reboot if making a switch.
 
-
+			>>> WARNING WARNING - RUN as USER: plexguide <<<
 RCLONE INSTALLERS ********************************************************
 1. Unencrypted Install  :  Utilize the unencrypted version of RClone     *
 2. Encrypted Install    :  NOT WORKING YET FOR v5 - No OPTION FOR IT     *

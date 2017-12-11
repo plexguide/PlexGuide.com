@@ -240,6 +240,8 @@ cat << EOF
 
 Pre-Install / Re-Install Complete!
 
+>>> WARNING WARNING - RUN as USER: plexguide <<<
+
 <Donation Info> If your enjoying the programming, donating coin or enabling 
 mininig helps up go a long way.  If you enable mining, you can choose how 
 many cores  are allocated. Any amount would be helpful! <Donation Info>  

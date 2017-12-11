@@ -35,6 +35,8 @@ cat << EOF
    PLEXDRIVE WARNING
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+>>> WARNING WARNING - RUN as USER: plexguide <<<
+
 Please visit http://wiki.plexguide.com for any tutorial information.  It is
 recommended to view the following guides for PlexDrive:
 

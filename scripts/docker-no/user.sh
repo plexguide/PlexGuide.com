@@ -40,8 +40,11 @@ cat << EOF
 
 You created the user: plexguide
 
-EOF
+You need to run the program as plexguide! When you exit type the following:
+su plexguide 
 
+EOF
 read -n 1 -s -r -p "Press any key to continue"
 
+exit
 fi
