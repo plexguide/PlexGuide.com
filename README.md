@@ -1,17 +1,10 @@
-# PlexGuide.com - BETA Version 5
+# PlexGuide.com - Version 5
 
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide.PNG" alt="PlexGuide.com Logo"/>
 </p>
 
 ---------------------------------------------------------------------- 
-### BETA 5 FOCUS 
-
-NOT READY TO INSTALL FOR PRACTICAL USE
-STATUS >>> 20% Complete
-
-To create a user & eliminate root as a source
-
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - Slack Autoinvite: http://invite.plexguide.com and Slack # @ https://plexguidecom.slack.com (Preferred)
@@ -44,19 +37,14 @@ To create a user & eliminate root as a source
 
 *Install Supporting Programs*
 ```sh
-sudo apt-get wget
-sudo apt-get unzip
+sudo apt-get install git
 ```
 
 NOT READY FOR PRACTICAL USE! YOU WILL BREAK YOUR STUFF; FOR VM TESTING
 *Install PlexGuide*
 ```sh
-sudo rm -r /opt/plexg* 2>/dev/nu*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip -P /tmp
-sudo unzip /tmp/Version-5.zip -d /opt/
-sudo mv /opt/PlexG* /opt/plexguide
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
-sudo rm -r /tmp/Version-5.zip
 ```
 
 *Execute PlexGuide AnyTime Futurewise*
