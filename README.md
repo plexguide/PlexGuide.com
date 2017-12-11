@@ -37,6 +37,8 @@ When the program runs, always login as the user plexguide (you will create later
  - [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
  
+If RUNNING PD4, do not upgrade yet. Working out PlexDrive Bug! 
+ 
 **D. Install Instructions:**
 
 *Install Supporting Programs*
