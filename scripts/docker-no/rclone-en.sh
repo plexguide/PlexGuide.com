@@ -156,7 +156,7 @@ systemctl enable move-en 1>/dev/null 2>&1
 systemctl enable unionfs-encrypt 1>/dev/null 2>&1
 systemctl enable rclone-encrypt 1>/dev/null 2>&1
 systemctl start unionfs-encrypt 1>/dev/null 2>&1 
-systemctl start rclone-en 1>/dev/null 2>&
+systemctl start rclone-en 1>/dev/null 2>&1
 systemctl start rclone-encrypt 1>/dev/null 2>&1
 systemctl start move-en 1>/dev/null 2>&1
 
