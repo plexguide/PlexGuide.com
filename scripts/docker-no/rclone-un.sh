@@ -143,6 +143,8 @@ systemctl start unionfs 1>/dev/null 2>&1
 systemctl start rclone 1>/dev/null 2>&1
 systemctl start move 1>/dev/null 2>&1
 
+
+systemctl restart rclone 1>/dev/null 2>&1
 # set variable to remember what version of rclone user installed
 mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/un 1>/dev/null 2>&1
