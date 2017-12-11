@@ -105,15 +105,7 @@ mkdir -p /home/plexguide/plexdrive4
 mkdir -p /opt/appdata/plexguide
 mkdir -p /home/plexguide/plexdrive4
 
-echo "Test Flag"
-
-# chown -R plexguide:1000 /home/plexguide/gdrive 1>/dev/null 2>&1
-chown -R plexguide:1000 /home/plexguide/move 1>/dev/null 2>&1
-chown -R plexguide:1000 /home/plexguide/move-en 1>/dev/null 2>&1
-# chown -R plexguide:1000 /home/plexguide/unionfs 1>/dev/null 2>&1
-# chown -R plexguide:1000 /home/plexguide/plexdrive4 1>/dev/null 2>&1
-
-
+chown -R plexguide:1000 /home/plexguide/sab/*
 ######################################################### For RCLONE
 
 echo "2. Pre-Installing RClone & Services (Please Wait)"
