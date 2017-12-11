@@ -1,12 +1,4 @@
-# PlexGuide.com - Version 4
-
-<p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide.PNG" alt="PlexGuide.com Logo"/>
-</p>
-
-<p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-4/scripts/plexguide-demo3.1.PNG" alt="PlexGuide.com Logo"/>
-</p>
+# PlexGuide.com - Legacy Version 4
 
 --------------------------------------------------------------------
 
@@ -51,13 +43,18 @@ When the program starts, Type 99 as an option and you will select a BETA MENU
 
 *Install GIT*
 ```sh
-sudo apt-get install git
+sudo apt-get wget
+sudo apt-get unzip
 ```
 
 *Install PlexGuide*
 ```sh
-sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+sudo rm -r /opt/plexg* 2>/dev/nu*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip -P /tmp
+sudo unzip /tmp/Version-5.zip -d /opt/
+sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
+sudo rm -r /tmp/Version-5.zip
 ```
 
 *Execute PlexGuide AnyTime Futurewise*
