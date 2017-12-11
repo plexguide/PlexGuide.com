@@ -56,7 +56,7 @@ plexguide
  - Install & Configure (Select Only One)
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
- - [Configure PlexDrive](http://plexdrive.plexguide.com)
+ - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot Server!
  - [Configure Plex](http://plex.plexguide.com)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](http://portainer.plexguide.com)
