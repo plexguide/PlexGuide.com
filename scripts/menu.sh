@@ -41,20 +41,6 @@ fi
 ##clear screen
 clear
 
-if [ $EUID != 6000 ] 
-then
-   echo "Welcome to PlexGuide! You ARE NOT USER: plexguide"
-   echo ""
-   echo "Please type: su plexguide"
-   echo ""
-   echo "Note: You can SSH in with plexguide directly!"
-   echo "Note: Being user (plexguide) prevents issues!"
-   echo ""
-   exit 
- else
-    clear
-fi
-
 show_menus() {
 cat << EOF
 PlexGuide.com Installer V5 (17.12.11) | Written By: Admin9705 & Deiteq
