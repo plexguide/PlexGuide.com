@@ -64,7 +64,7 @@ sudo bash /opt/plexg*/sc*/ins*
 ```sh
 plexguide
 ```
-  
+   
 **E. Configuration**
  - Install & Configure (Select Only One)
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
