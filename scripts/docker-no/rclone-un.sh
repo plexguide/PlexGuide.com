@@ -38,6 +38,9 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 user_allow_other
 EOF
 
+## Make RClone Directory incase
+mkdir -p /home/plexguide/.config/rclone
+
 ## Copying to /home/plexguide incase
 cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
 
