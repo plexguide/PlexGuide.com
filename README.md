@@ -17,6 +17,9 @@
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
 ----------------------------------------------------------------------
+### WARNING WARNING WARNING ###
+
+When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues.  I'm looking for solutions in the mean time to dummy proof it.
 
 ### Preparation, Installation & Configuration 
 
@@ -51,6 +54,12 @@ sudo bash /opt/plexg*/sc*/ins*
 ```sh
 plexguide
 ```
+-- IMPORTANT --
+1. When you start plexguide, you will create a password for a user known as: plexguide
+2. The program will then exit
+3. To switch to the user (plexguide), type: su plexguide
+4. Now type: plexguide 
+5. In the future, you can SSH or start the program as PlexGuide with the username (plexguide)
   
 **E. Configuration**
  - Install & Configure (Select Only One)
