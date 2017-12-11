@@ -42,7 +42,12 @@ fi
 clear
 
 if [[ $EUID -ne 6000 ]]; then
-   echo "You are not user plexguide!" 
+   echo "Welcome to PlexGuide! You ARE NOT USER: plexguide"
+   echo ""
+   echo "Please type: su plexguide"
+   echo ""
+   echo "Note: You can SSH in with plexguide directly!"
+   echo "Note: Being user (plexguide) prevents issues!"
    echo ""
    exit 
 fi
