@@ -21,9 +21,9 @@
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
 ----------------------------------------------------------------------
-### WARNING WARNING WARNING ###
+### WARNING ###
 
-When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues.  I'm looking for solutions in the mean time to dummy proof it.
+When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues; I confirmed that it works as another user... but just incase. 
 
 ### Preparation, Installation & Configuration 
 
@@ -40,9 +40,7 @@ When the program runs, always login as the user plexguide (you will create later
  - [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
  - [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
- 
-If RUNNING PD4, do not upgrade yet. Working out PlexDrive Bug! 
- 
+  
 **D. Install Instructions:**
 
 *Install Supporting Programs*
