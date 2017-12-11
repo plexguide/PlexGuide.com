@@ -50,7 +50,7 @@ systemctl enable plexdrive4.service
     mv plexdrive-linux-amd64 plexdrive4
     mv plexdrive4 /usr/bin/
     cd /usr/bin/
-    chown root:root /usr/bin/plexdrive4
+    chown plexguide:1000 /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
     clear
     plexdrive4 --uid=6000 --gid=1000 -o allow_other nonempty -v 2 --refresh-interval=1m /home/plexguide/plexdrive4
