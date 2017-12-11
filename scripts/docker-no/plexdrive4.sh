@@ -34,7 +34,7 @@ Description=PlexDrive4 Service
 After=multi-user.target
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 -o allow_other,allow_non_empty_mount --refresh-interval=1m /home/plexguide/plexdrive4
+ExecStart=/usr/bin/plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount --refresh-interval=1m /home/plexguide/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
