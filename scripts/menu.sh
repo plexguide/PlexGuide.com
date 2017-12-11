@@ -41,7 +41,7 @@ fi
 ##clear screen
 clear
 
-if [ "$EUID" != "6000" ] 
+if [ $EUID != 6000 ] 
 then
    echo "Welcome to PlexGuide! You ARE NOT USER: plexguide"
    echo ""
