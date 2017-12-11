@@ -38,6 +38,11 @@ else
     touch /var/plexguide/dep17.yes
 fi
 
+if [[ $EUID -ne 6000 ]]; then
+   echo "You are not user plexguide!" 
+   exit 
+fi
+
 show_menus() {
 clear
 cat << EOF
