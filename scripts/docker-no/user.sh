@@ -35,13 +35,15 @@ echo -e ""$password"\n"$password"\n" | passwd plexguide
 usermod -aG sudo plexguide
 touch /var/plexguide/plexguide.user
 
+clear
 
 cat << EOF
-
-You created the user: plexguide
+********* READ READ READ *********
+You Created the user: plexguide
 
 You need to run the program as plexguide! When you exit type the following:
-su plexguide 
+1. su plexguide << change to user plexguide
+2. plexguide << start the program
 
 EOF
 read -n 1 -s -r -p "Press any key to continue"
