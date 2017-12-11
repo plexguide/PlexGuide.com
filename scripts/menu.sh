@@ -38,13 +38,16 @@ else
     touch /var/plexguide/dep17.yes
 fi
 
+##clear screen
+clear
+
 if [[ $EUID -ne 6000 ]]; then
    echo "You are not user plexguide!" 
+   echo ""
    exit 
 fi
 
 show_menus() {
-clear
 cat << EOF
 PlexGuide.com Installer V5 (17.12.11) | Written By: Admin9705 & Deiteq
 Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
