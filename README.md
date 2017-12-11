@@ -50,11 +50,11 @@ sudo apt-get unzip
 *Install PlexGuide*
 ```sh
 sudo rm -r /opt/plexg* 2>/dev/nu*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Version-5.zip -P /tmp
-sudo unzip /tmp/Version-5.zip -d /opt/
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/Legacy-V4.zip -P /tmp
+sudo unzip /tmp/Legacy-V4.zip -d /opt/
 sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
-sudo rm -r /tmp/Version-5.zip
+sudo rm -r /tmp/Legacy-V4.zip
 ```
 
 *Execute PlexGuide AnyTime Futurewise*
