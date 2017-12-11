@@ -4,6 +4,10 @@
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide.PNG" alt="PlexGuide.com Logo"/>
 </p>
 
+<p align="center">
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-demo3.1.PNG" alt="PlexGuide.com Logo"/>
+</p>
+
 ---------------------------------------------------------------------- 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
