@@ -40,6 +40,7 @@ fi
 
 ##clear screen
 clear
+su plexguide
 
 show_menus() {
 cat << EOF
