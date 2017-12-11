@@ -67,9 +67,7 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### chown
 
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/plexdrive4.sh
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-un.sh
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-en.sh
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
 
 ################### For PlexDrive
 
@@ -79,49 +77,25 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 ################### For SAB
 
   mkdir -p /home/plexguide
-  chown -R plexguide:1000 /home/plexguide
-
   mkdir -p /home/plexguide/sab/admin
-  chown -R plexguide:1000 /home/plexguide/sab/admin
-
   mkdir -p /home/plexguide/sab/incomplete
-  chown -R plexguide:1000 /home/plexguide/sab/incomplete
-
   mkdir -p /home/plexguide/sab/complete/tv
-  chown -R plexguide:1000 /home/plexguide/sab/complete/tv
-
   mkdir -p /home/plexguide/sab/complete/movies
-  chown -R plexguide:1000 /home/plexguide/sab/complete/movies
-
   mkdir -p /home/plexguide/sab/nzb
-  chown -R plexguide:1000 /home/plexguide/sab/nzb
 
-  chown -R plexguide:1000 /home/plexguide/sab/admin
+  chown -R plexguide:1000 /home/plexguide/sab/*
 
 #################### For NZBGET
 
   mkdir -p /home/plexguide/nzbget
-  chown -R plexguide:1000 /home/plexguide/nzbget
-
   mkdir -p /home/plexguide/nzbget/incomplete
-  chown -R plexguide:1000 /home/plexguide/nzbget/incomplete
-
   mkdir -p /home/plexguide/nzbget/completed/tv
-  chown -R plexguide:1000 /home/plexguide/nzbget/completed/tv
-
   mkdir -p /home/plexguide/nzbget/completed/movies
-  chown -R plexguide:1000 /home/plexguide/nzbget/completed/movies
-
   mkdir -p /home/plexguide/nzbget/nzb
-  chown -R plexguide:1000 /home/plexguide/nzbget/nzb
-
   mkdir -p /home/plexguide/nzbget/tmp
-  chown -R plexguide:1000 /home/plexguide/nzbget/tmp
-
   mkdir -p /home/plexguide/nzbget/queue
-  chown -R plexguide:1000 /home/plexguide/nzbget/queue
 
-  chown -R plexguide:1000 /home/plexguide/nzbget
+  chown -R plexguide:1000 /home/plexguide/nzbget*
 ########################################################### RClone
 
 mkdir -p /home/plexguide/move
