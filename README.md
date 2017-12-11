@@ -4,6 +4,10 @@
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide.PNG" alt="PlexGuide.com Logo"/>
 </p>
 
+<p align="center">
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-demo3.1.PNG" alt="PlexGuide.com Logo"/>
+</p>
+
 ---------------------------------------------------------------------- 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
@@ -17,9 +21,9 @@
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
 ----------------------------------------------------------------------
-### WARNING WARNING WARNING ###
+### WARNING ###
 
-When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues.  I'm looking for solutions in the mean time to dummy proof it.
+When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues; I confirmed that it works as another user... but just incase. 
 
 ### Preparation, Installation & Configuration 
 
@@ -36,7 +40,7 @@ When the program runs, always login as the user plexguide (you will create later
  - [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
  - [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
- 
+  
 **D. Install Instructions:**
 
 *Install Supporting Programs*

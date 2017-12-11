@@ -16,7 +16,7 @@ mkdir -p /home/plexguide/plexdrive4
   unzip rclone-current-linux-amd64.zip 1>/dev/null 2>&1
   cd rclone-*-linux-amd64
   cp rclone /usr/bin/ 1>/dev/null 2>&1
-  chown root:root /usr/bin/rclone 1>/dev/null 2>&1
+  chown plexguide:1000 /usr/bin/rclone 1>/dev/null 2>&1
   chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
   mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
@@ -37,6 +37,9 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 # Allow non-root users to specify the allow_other or allow_root mount options.
 user_allow_other
 EOF
+
+## Make RClone Directory incase
+mkdir -p /home/plexguide/.config/rclone
 
 ## Copying to /home/plexguide incase
 cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
@@ -139,7 +142,7 @@ systemctl stop rclone-encrypt 1>/dev/null 2>&1
 systemctl enable rclone 1>/dev/null 2>&1
 systemctl enable move 1>/dev/null 2>&1
 systemctl enable unionfs 1>/dev/null 2>&1
-systemctl start unionfs 1>/dev/null 2>&1 
+systemctl start unionfs 1>/dev/null 2>&1
 systemctl start rclone 1>/dev/null 2>&1
 systemctl start move 1>/dev/null 2>&1
 
@@ -157,7 +160,7 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 clear
 cat << EOF
 NOTE: You installed the unencrypted version for the RClone data transport!
-If you messed anything up, select [2] and run through again.  
+If you messed anything up, select [2] and run through again.
 EOF
 
 bash /opt/plexguide/scripts/docker-no/continue.sh

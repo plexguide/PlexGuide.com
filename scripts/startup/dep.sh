@@ -65,6 +65,12 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ## Create Directory Structure - Goal is to move everything here
 
+################### chown
+
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/plexdrive4.sh
+  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-un.sh
+#  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/rclone-en.sh
+
 ################### For PlexDrive
 
   mkdir -p /opt/plexguide-startup
@@ -176,7 +182,7 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   docker restart plexpass 1>/dev/null 2>&1
   docker restart plexpublic 1>/dev/null 2>&1
   docker restart sabnzbd 1>/dev/null 2>&1
-  
+
   exit 0;
 EOF
 
@@ -242,9 +248,9 @@ Pre-Install / Re-Install Complete!
 
 >>> WARNING WARNING - RUN as USER: plexguide <<<
 
-<Donation Info> If your enjoying the programming, donating coin or enabling 
-mininig helps up go a long way.  If you enable mining, you can choose how 
-many cores  are allocated. Any amount would be helpful! <Donation Info>  
+<Donation Info> If your enjoying the programming, donating coin or enabling
+mininig helps up go a long way.  If you enable mining, you can choose how
+many cores  are allocated. Any amount would be helpful! <Donation Info>
 
 If you wish to contribute your skills (for the lack of ours); please let us
 know anytime.  If you spot any issues, please post in the ISSUES portion of

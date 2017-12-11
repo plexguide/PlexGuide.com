@@ -41,7 +41,9 @@ Basic Checks ***********************************************
 Uncrypted Tests ********************************************
 4. RClone Test   :  Verify Google Drive is Mounted
 5. UN-SYNC (Move):  View status of the Unencrypted SYNC
-6. UN-UnionFS    :  Verify UnionFS is Operational
+
+UnionFS Test ***********************************************
+6. UnionFS    :  Verify UnionFS is Operational
 
 Encrypted Tests ********************************************
 7. EN-RClone     :  Verify Encrypted Google Drive is Mounted

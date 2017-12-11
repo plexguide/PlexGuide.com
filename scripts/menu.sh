@@ -53,7 +53,6 @@ cat << EOF
 PlexGuide.com Installer V5 (17.12.11) | Written By: Admin9705 & Deiteq
 Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
 
-         >>> WARNING WARNING - RUN as USER: plexguide <<<
 DONATION *********************************************************
 1. Mining   :  Enable a little CPU to Mine Coins (It Helps Us)
 
