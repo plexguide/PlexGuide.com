@@ -44,8 +44,7 @@ recreate your containers.  Data is not lost.  It is preserved in
                        *************************************
 3. Docker           :  Force Reinstall Docker
 4. Portainer        :  Force Reinstall Portainer
-5. NGINX-Proxy      :  Force Reinstall NGINX-Proxy
-6. User: plexguide  :  Force recreation and password change
+5. User: plexguide  :  Force recreation and password change
 
 EOF
 }
@@ -102,11 +101,6 @@ read_options(){
       exit
         ;;
     6)
-     echo ymlprogram nginx-proxy> /opt/plexguide/tmp.txt
-     echo ymldisplay nginx-proxy >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-    7)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
