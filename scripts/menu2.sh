@@ -74,7 +74,7 @@ whiptail --title "Operative Systems" --menu "Make your choice" 17 90 10 \
     "7)" "T-Shoot  :  Troubleshoot Problems & Provides Helpful Information" \
     "8)" "Backup   :  Backup Docker Program Data to Your Google Drive" \
     "9)" "Restore  :  Restore Program Data From Your Google Drive" \
-    "10)" "[ Exit ]   "  3>&2 2>&1 1>&3   
+    "10)" "Exit  "  3>&2 2>&1 1>&3   
 )
 
 result=$(whoami)
@@ -101,9 +101,8 @@ case $CHOICE in
         ;;
 
     "3)")   
-            p=$(ps ax | wc -l)
-                t=$(ps amx | wc -l)
-        result="Number of processes $p\nNumber os threads $t"
+        clear
+        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
         ;;
 
     "4)")   
