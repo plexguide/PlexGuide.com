@@ -108,7 +108,6 @@ then
     mkdir -p /home/plexguide/move
 else
     chown -R plexguide:1000 /home/plexguide/
-    bash /opt/plexguide/scripts/startup/dep.sh
     touch /var/plexguide/chown.yes
 fi
 chown -R plexguide:1000 /home/plexguide/*
