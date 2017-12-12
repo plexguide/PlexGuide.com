@@ -3,14 +3,6 @@ clear
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "Example Dialog" --yesno "This is an example of a yes/no box." 8 78) then
 
-echo -n "Do you consent to allow PlexGuide to Install/Upgrade (y/n)? "
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-    echo Yes;
-
 ###################### Install Depdency Programs ###############
 
     clear
