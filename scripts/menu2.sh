@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
@@ -65,15 +65,15 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "PlexGuide.com Installer | By Admin9705 & Deiteq" --menu "Make your choice" 16 100 9 \
-    "1) " "Donation Mining:  Enable a little CPU Power to Mine Coins (Helps Us) ."   \
-    "2) " "RClone         :  ." \
-    "3) " "PlexDrive      :  ." \
-    "4) " "Programs       :  ." \
-    "5) " "Updates        :  ." \
-    "6) " "Info View      :  ." \
-    "7) " "T-Shoot        :  ." \
-    "8) " "Backup         :  ." \
-    "9) " "Restore        :  ." \
+    "1) " "Donation Mining:  Enable a little CPU Power to Mine Coins (Helps Us)"   \
+    "2) " "RClone         :  " \
+    "3) " "PlexDrive      :  " \
+    "4) " "Programs       :  " \
+    "5) " "Updates        :  " \
+    "6) " "Info View      :  " \
+    "7) " "T-Shoot        :  " \
+    "8) " "Backup         :  " \
+    "9) " "Restore        :  " \
     "10)" "Exit Plexguide"  3>&2 2>&1 1>&3   
 )
 
