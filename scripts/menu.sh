@@ -46,7 +46,7 @@ else
 fi
 
 ## ensure folders follow plexguide
-chown -R plexguide:1000 /home/plexguide/
+bash /opt/plexguide/scripts/startup/owner.sh
 chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
 
 ##clear screen
