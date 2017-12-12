@@ -71,9 +71,11 @@ whiptail --title "Operative Systems" --menu "Make your choice" 16 100 9 \
     "4)" "Number of context switches in the last secound." \
     "5)" "How much time used in kernel mode and in user mode in the last secound." \
     "6)" "Number of interupts in the last secound." \
-    "9)" "End script"  3>&2 2>&1 1>&3   
+    "7)" "Number of interupts in the last secound." \
+    "8)" "Number of interupts in the last secound." \
+    "9)" "Number of interupts in the last secound." \
+    "10)" "End script"  3>&2 2>&1 1>&3   
 )
-
 
 result=$(whoami)
 case $CHOICE in
