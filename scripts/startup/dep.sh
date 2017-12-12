@@ -158,7 +158,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
 
-  x=45
+  x=20
   while [ $x -gt 0 ]
   do
     sleep 1s
