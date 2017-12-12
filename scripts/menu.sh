@@ -45,6 +45,9 @@ else
     touch /var/plexguide/dep18.yes
 fi
 
+## ensure folders follow plexguide
+chown -R plexguide:1000 /home/plexguide/*
+
 ##clear screen
 clear
 
