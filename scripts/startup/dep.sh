@@ -110,7 +110,7 @@ else
     chown -R plexguide:1000 /home/plexguide/
     touch /var/plexguide/chown.yes
 fi
-chown -R plexguide:1000 /home/plexguide/*
+chown -R plexguide:1000 /home/plexguide/
 ######################################################### For RCLONE
 
 echo "2. Pre-Installing RClone & Services (Please Wait)"
