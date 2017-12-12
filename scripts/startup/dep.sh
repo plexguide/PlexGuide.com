@@ -193,9 +193,7 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     ExecStart=/bin/bash /opt/appdata/plexguide/dockerfix.sh
     TimeoutStopSec=20
     KillMode=process
-    RemainAfterExit=yes
-    Restart=always
-
+  
     [Install]
     WantedBy=multi-user.target
 EOF
