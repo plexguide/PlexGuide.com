@@ -158,7 +158,7 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
 
-  x=30
+  x=45
   while [ $x -gt 0 ]
   do
     sleep 1s
@@ -193,7 +193,7 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     ExecStart=/bin/bash /opt/appdata/plexguide/dockerfix.sh
     TimeoutStopSec=20
     KillMode=process
-  
+    RemainAfterExit=yes
     [Install]
     WantedBy=multi-user.target
 EOF
