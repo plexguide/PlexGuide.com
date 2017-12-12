@@ -65,16 +65,16 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Operative Systems" --menu "Make your choice" 17 90 10 \
-    "1)" "Mining   :"   \
-    "2)" "RClone   :"  \
-    "3)" "PlexDrive:" \
-    "4)" "Programs :" \
-    "5)" "Updates  :" \
-    "6)" "Info View:" \
-    "7)" "T-Shoot  :" \
-    "8)" "Backup   :" \
-    "9)" "Restore  :" \
-    "10)" "Exit PlexGuide"  3>&2 2>&1 1>&3   
+    "1)" "Donation :  Enable a little CPU to Mine Coins (It Helps Us)"   \
+    "2)" "RClone   :  Media Syncs to Google Drive"  \
+    "3)" "PlexDrive:  Prevent G-Drive Plex Scan Bans" \
+    "4)" "Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!" \
+    "5)" "Updates  :  Update PlexGuide for the newest features & bugfixes!" \
+    "6)" "Info View:  View System Information to Assist You" \
+    "7)" "T-Shoot  :  Troubleshoot Problems & Provides Helpful Information" \
+    "8)" "Backup   :  Backup Docker Program Data to Your Google Drive" \
+    "9)" "Restore  :  Restore Program Data From Your Google Drive" \
+    "10)" "[ Exit ]   "  3>&2 2>&1 1>&3   
 )
 
 result=$(whoami)
