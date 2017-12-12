@@ -65,15 +65,15 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Operative Systems" --menu "Make your choice" 16 100 9 \
-    "1)" "The name of this script."   \
-    "2)" "Time since last boot."  \
-    "3)" "Number of processes and threads." \
-    "4)" "Number of context switches in the last secound." \
-    "5)" "How much time used in kernel mode and in user mode in the last secound." \
-    "6)" "Number of interupts in the last secound." \
-    "7)" "Number of interupts in the last secound." \
-    "8)" "Number of interupts in the last secound." \
-    "9)" "Number of interupts in the last secound." \
+    "1)" "Mining"   \
+    "2)" "RClone"  \
+    "3)" "PlexDrive" \
+    "4)" "Programs" \
+    "5)" "Updates" \
+    "6)" "Info View" \
+    "7)" "T-Shoot" \
+    "8)" "Backup" \
+    "9)" "Restore" \
     "10)" "End script"  3>&2 2>&1 1>&3   
 )
 
