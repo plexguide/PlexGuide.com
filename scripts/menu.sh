@@ -64,7 +64,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Operative Systems" --menu "Make your choice" 17 90 10 \
+whiptail --title "PlexGuide.com - v5.17.12.12 (By Admin9705 & Deiteq)" --menu "Make your choice" 17 90 10 \
     "1)" "Donation :  Enable a little CPU to Mine Coins (It Helps Us)"   \
     "2)" "RClone   :  Media Syncs to Google Drive"  \
     "3)" "PlexDrive:  Prevent G-Drive Plex Scan Bans" \
