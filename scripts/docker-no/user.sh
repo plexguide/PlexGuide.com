@@ -12,16 +12,16 @@ cat << EOF
 Welcome to PlexGuide.com! Before you install the program, we will assist
 you in making a user named: plexguide
 
-You are creating a user name known as (plexguide) with sudo permissions!  
+You are creating a user name known as (plexguide) with sudo permissions!
 
 - Do Not Forget Your Password (If you do, use root to change)
 - Recommend to login with user (plexguide) instead of root futurewise!
 - This entire program (permisisons) RUNS from the user: plexguide
 
-Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE. You can still 
+Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE. You can still
 use the old menu!
 
-ENCRYPTION USERS WARNING! If using encrypted method, do not upgrade. Create the 
+ENCRYPTION USERS WARNING! If using encrypted method, do not upgrade. Create the
 user as required, but when asking for upgrade; select NO. Encryption needs work!
 
 EOF
@@ -41,7 +41,7 @@ cat << EOF
 ********* READ READ READ *********
 You Created the user: plexguide
 
-You need to run the program as plexguide! When you exit type the following:
+In the future, run as the user (plexguide)
 1. su plexguide << change to user plexguide
 2. plexguide << start the program
 
