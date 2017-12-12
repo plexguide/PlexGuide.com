@@ -1,7 +1,24 @@
+ file="/var/plexguide/basics.yes"
+if [ -e "$file" ]
+then
+    clear
+    echo ">>> Welcome to the PlexGuide Update! You will Not Lose your Data!"
+    echo ""
+    echo ""
+else
+    clear
+    echo ">>> Welcome to the PlexGuide First Time Install!"
+    echo ""
+    echo ""
+fi
 clear
-
-# If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
-if (whiptail --title "Example Dialog" --yesno "This is an example of a yes/no box." 8 78) then
+echo -n "Do you consent to allow PlexGuide to Install/Upgrade (y/n)? "
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+    echo Yes;
 
 ###################### Install Depdency Programs ###############
 
@@ -193,6 +210,8 @@ EOF
 ############################################# Install a Post-Docker Fix ###################### END
 
 else
+    echo No
+    clear
     echo "Install Aborted - You Failed to Agree to Install the Program!"
     echo
     echo "You will be able to browse the programs but doing anything will cause"
