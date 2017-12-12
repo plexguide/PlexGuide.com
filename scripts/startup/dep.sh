@@ -157,25 +157,18 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
-
-  x=20
-  while [ $x -gt 0 ]
+  sleep 30
+  while true
   do
-    sleep 1s
-    clear
-    echo "$x seconds until reboot"
-    x=$(( $x - 1 ))
+    docker restart emby 1>/dev/null 2>&1
+    docker restart nzbget 1>/dev/null 2>&1
+    docker restart radarr 1>/dev/null 2>&1
+    docker restart sonarr 1>/dev/null 2>&1
+    docker restart plexpass 1>/dev/null 2>&1
+    docker restart plexpublic 1>/dev/null 2>&1
+    docker restart sabnzbd 1>/dev/null 2>&1
+  sleep 6000000000000000000000000
   done
-
-  docker restart emby 1>/dev/null 2>&1
-  docker restart nzbget 1>/dev/null 2>&1
-  docker restart radarr 1>/dev/null 2>&1
-  docker restart sonarr 1>/dev/null 2>&1
-  docker restart plexpass 1>/dev/null 2>&1
-  docker restart plexpublic 1>/dev/null 2>&1
-  docker restart sabnzbd 1>/dev/null 2>&1
-
-  exit 0;
 EOF
 
   chmod 755 /opt/plexguide/scripts/dockerfix.sh
@@ -185,7 +178,6 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     [Unit]
     Description=Move Service Daemon
     After=multi-user.target
-
     [Service]
     Type=simple
     User=root
@@ -194,6 +186,7 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     TimeoutStopSec=20
     KillMode=process
     RemainAfterExit=yes
+    Restart=always
     [Install]
     WantedBy=multi-user.target
 EOF
