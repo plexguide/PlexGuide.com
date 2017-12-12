@@ -101,8 +101,9 @@ case $CHOICE in
         ;;
 
     "3)")   
-        clear
-        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
+            p=$(ps ax | wc -l)
+                t=$(ps amx | wc -l)
+        result="Number of processes $p\nNumber os threads $t"
         ;;
 
     "4)")   
