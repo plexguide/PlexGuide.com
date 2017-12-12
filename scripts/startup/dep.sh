@@ -102,15 +102,15 @@ mkdir -p /home/plexguide/plexdrive4
 mkdir -p /opt/appdata/plexguide
 mkdir -p /home/plexguide/plexdrive4
 
-file="/var/plexguide/chown.yes"
-if [ -e "$file" ]
-then
-    mkdir -p /home/plexguide/move
-else
-    chown -R plexguide:1000 /home/plexguide/
-    touch /var/plexguide/chown.yes
-fi
-chown -R plexguide:1000 /home/plexguide/
+#file="/var/plexguide/chown.yes"
+#if [ -e "$file" ]
+#then
+#    mkdir -p /home/plexguide/move
+#else
+#    chown -R plexguide:1000 /home/plexguide/
+#    touch /var/plexguide/chown.yes
+#fi
+bash /opt/plexguide/scripts/startup/owner.sh
 ######################################################### For RCLONE
 
 echo "2. Pre-Installing RClone & Services (Please Wait)"
