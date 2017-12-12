@@ -83,8 +83,6 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   mkdir -p /home/plexguide/sab/complete/movies
   mkdir -p /home/plexguide/sab/nzb
 
-  chown -R plexguide:1000 /home/plexguide/sab/*
-
 #################### For NZBGET
 
   mkdir -p /home/plexguide/nzbget
@@ -95,7 +93,6 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
   mkdir -p /home/plexguide/nzbget/tmp
   mkdir -p /home/plexguide/nzbget/queue
 
-  chown -R plexguide:1000 /home/plexguide/nzbget*
 ########################################################### RClone
 
 mkdir -p /home/plexguide/move

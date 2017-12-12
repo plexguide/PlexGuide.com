@@ -36,13 +36,13 @@ two(){
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
 
-file="/var/plexguide/dep17.yes"
+file="/var/plexguide/dep18.yes"
 if [ -e "$file" ]
 then
     clear
 else
     bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep17.yes
+    touch /var/plexguide/dep18.yes
 fi
 
 ##clear screen
@@ -50,7 +50,7 @@ clear
 
 show_menus() {
 cat << EOF
-PlexGuide.com Installer V5 (17.12.11) | Written By: Admin9705 & Deiteq
+PlexGuide.com Installer V5 (17.12.12) | Written By: Admin9705 & Deiteq
 Visit http://wiki.plexguide.com <<< You can edit and improve the Wiki!
 
 DONATION *********************************************************
