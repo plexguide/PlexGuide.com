@@ -21,13 +21,10 @@ Description=PlexDrive4 Service
 After=multi-user.target
 [Service]
 Type=simple
-ExecStart=plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m /home/plexguide/plexdrive4
+ExecStart=/usr/bin/plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/home/plexguide/.plexdrive /home/plexguide/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
 EOF
 
 ## Enables the PlexDrive Service
@@ -43,7 +40,7 @@ systemctl enable plexdrive4.service
     chown plexguide:1000 /usr/bin/plexdrive4
     chmod 755 /usr/bin/plexdrive4
     clear
-    plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m /home/plexguide/plexdrive4
+    plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/home/plexguide/.plexdrive /home/plexguide/plexdrive4
     clear
     ## USER Will Have To Reboot Once PlexDrive Is Finished!
 else
