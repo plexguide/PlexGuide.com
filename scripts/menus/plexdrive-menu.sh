@@ -1,131 +1,94 @@
-#!/bin/bash
-# A menu driven shell script sample template
-## ----------------------------------
-# Step #1: Define variables
-# ----------------------------------
-EDITOR=vim
-PASSWD=/etc/passwd
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
+ #!/bin/bash
 
-# ----------------------------------
-# Step #2: User defined function
-# ----------------------------------
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
+#check to see if /var/plexguide/dep exists - if not, install dependencies
+bash /opt/plexguide/scripts/docker-no/user.sh
 
-one(){
-	echo "one() called"
-        pause
-}
+file="/var/plexguide/dep19.yes"
+if [ -e "$file" ]
+then
+    clear
+else
+    bash /opt/plexguide/scripts/startup/dep.sh
+    touch /var/plexguide/dep19.yes
+fi
 
-# do something in two()
-two(){
-	echo "two() called"
-        pause
-}
+## ensure folders follow plexguide
+bash /opt/plexguide/scripts/startup/owner.sh
+chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
 
-# function to display menus
-show_menus() {
-
+##clear screen
 clear
-cat << EOF
-~~~~~~~~~~~~~~~~~~~~~~~~
-   PLEXDRIVE WARNING
-~~~~~~~~~~~~~~~~~~~~~~~~
 
->>> WARNING WARNING - RUN as USER: plexguide <<<
-
-Please visit http://wiki.plexguide.com for any tutorial information.  It is
-recommended to view the following guides for PlexDrive:
-
-*** GoogleAPI  - http://googleapi.plexguide.com
-*** PlexDrive4 - http://plexdrive.plexguide.com
-
-Not reading or following the guides will cause you some grief!
-
-
-EOF
-
-bash /opt/plexguide/scripts/docker-no/continue.sh
-
-clear
-cat << EOF
-PLEASE READ the PlexDrive Section @ http://wiki.plexguide.com
-Have the Google Tokens ready! @ http://plexdrive.plexguide.com
-
-Having issues because you did not follow directions or mistyped?
-Please check your PlexDrive4 Status and Restart. If your still
-having issues, please delete your CURRENT TOKENS and start again!
-
-~~~~~~~~~~~~~~~~~~~~~~~~
-  PLEXDRIVE4 Installer
-~~~~~~~~~~~~~~~~~~~~~~~~
-1. Install PlexDrive   :  Pay Attention and Have Your Google API Info Ready
-2. Troubleshooting     :  Restart PlexDrive4 Status
-3. Troubleshooting     :  Delete PlexDrive4 Tokens
-4. PlexDrive Mount Test:  Verify your PlexDrive Install
-
-*** Do not forget to reboot server after first cache build is complete! ***
-EOF
+function contextSwitch {
+    {
+    ctxt1=$(grep ctxt /proc/stat | awk '{print $2}')
+        echo 50
+    sleep 1
+        ctxt2=$(grep ctxt /proc/stat | awk '{print $2}')
+        ctxt=$(($ctxt2 - $ctxt1))
+        result="Number os context switches in the last secound: $ctxt"
+    echo $result > result
+    } | whiptail --gauge "Getting data ..." 6 60 0
 }
 
-read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 5 ]; Select [5] to Exit " choice
-	case $choice in
-		1)
-		      bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
-		      ;;
-		2)
-        	systemctl restart plexdrive4
-       		echo
-        	echo "PlexDrive4 Service started/restarted"
-       	    echo
-        	read -n 1 -s -r -p "Press any key to continue"
-        	;;
-		3)
-       		rm -r /root/.plexdrive
-        	echo
-        	echo "Tokens Removed"
-        	echo
-        	read -n 1 -s -r -p "Press any key to continue"
-        	clear
-		      ;;
-    4)
-          clear
-          ls /mnt/plexdrive4
-          echo
-          echo "*** PlexDrive: Your Google Drive - If empty, that's not good ***"
-          echo "Note 1: Must have at least 1 item in your Google Drive for the test"
-          echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
-          echo
-          read -n 1 -s -r -p "Press any key to continue "
-          clear
-          ;;
-    5)
-        	clear
-        	echo Remember, restart by typing: plexguide
-        	exit 0;;
-    6)
-          bash /opt/plexguide/scripts/docker-no/plexdrive4-alt.sh
-          ;;
-		*) echo -e "${RED}Error...${STD}" && sleep 2
-	esac
+
+function userKernelMode {
+    {   
+    raw=( $(grep "cpu " /proc/stat) )
+        userfirst=$((${raw[1]} + ${raw[2]}))
+        kernelfirst=${raw[3]}
+    echo 50
+        sleep 1
+    raw=( $(grep "cpu " /proc/stat) )
+        user=$(( $((${raw[1]} + ${raw[2]})) - $userfirst ))
+    echo 90
+        kernel=$(( ${raw[3]} - $kernelfirst ))
+        sum=$(($kernel + $user))
+        result="Percentage of last sekund in usermode: \
+        $((( $user*100)/$sum ))% \
+        \nand in kernelmode: $((($kernel*100)/$sum ))%"
+    echo $result > result
+    echo 100
+    } | whiptail --gauge "Getting data ..." 6 60 0
+} 
+
+function interupts {
+    {
+    ints=$(vmstat 1 2 | tail -1 | awk '{print $11}')
+        result="Number of interupts in the last secound:  $ints"
+    echo 100
+    echo $result > result
+    } | whiptail --gauge "Getting data ..." 6 60 50
 }
 
-# ----------------------------------------------
-# Step #3: Trap CTRL+C, CTRL+Z and quit singles
-# ----------------------------------------------
-trap '' SIGINT SIGQUIT SIGTSTP
-
-# -----------------------------------
-# Step #4: Main logic - infinite loop
-# ------------------------------------
-while true
+while [ 1 ]
 do
+CHOICE=$(
+whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 80 3 \
+    "1)" "Install PlexDrive:   Mounts a REQUIRED Read-Only Google Drive"   \
+    "2)" "Remove PD Tokens :   Troubleshooting for Bad PlexDrive Install"  \
+    "3)" "Exit  "  3>&2 2>&1 1>&3   
+)
 
-	show_menus
-	read_options
+result=$(whoami)
+case $CHOICE in
+    "1)")   
+        bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
+        ;;
+
+    "2)")   
+        rm -r /home/plexguide/.plexdrive
+        echo
+        echo "Tokens Removed - Try PlexDrive Install Again"
+        echo
+        read -n 1 -s -r -p "Press any key to continue"
+        clear
+        ;;
+
+    "3)") 
+        clear
+        exit 0
+        ;;
+esac
 done
+exit
