@@ -37,16 +37,5 @@ touch /var/plexguide/plexguide.user
 
 clear
 
-cat << EOF
-********* READ READ READ *********
-You Created the user: plexguide
-
-In the future, run as the user (plexguide)
-1. su plexguide << change to user plexguide
-2. plexguide << start the program
-
-EOF
-read -n 1 -s -r -p "Press any key to continue"
-
 exit
 fi
