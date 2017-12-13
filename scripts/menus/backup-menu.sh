@@ -64,7 +64,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 80 3 \
+whiptail --title "PlexDrive Menu" --menu "Make your choice" 15 30 8 \
     "1)" "OMBIv3"   \
     "2)" "NZBGet"  \
     "3)" "Plex"  \
