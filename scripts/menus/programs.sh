@@ -1,149 +1,173 @@
-#!/bin/bash
-## ----------------------------------
-# Step #1: Define variables
-# ----------------------------------
-EDITOR=vim
-PASSWD=/etc/passwd
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
+ #!/bin/bash
 
-# ----------------------------------
-# Step #2: User defined function#
-# ----------------------------------
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
+#check to see if /var/plexguide/dep exists - if not, install dependencies
+bash /opt/plexguide/scripts/docker-no/user.sh
 
-one(){
-	echo "one() called"
-        pause
-}
+file="/var/plexguide/dep19.yes"
+if [ -e "$file" ]
+then
+    clear
+else
+    bash /opt/plexguide/scripts/startup/dep.sh
+    touch /var/plexguide/dep19.yes
+fi
 
-# do something in two()
-two(){
-	echo "two() called"
-        pause
-}
+## ensure folders follow plexguide
+bash /opt/plexguide/scripts/startup/owner.sh
+chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
 
-
-# function to display menus
-show_menus() {
+##clear screen
 clear
-cat << EOF
-PlexGuide.com Installer/Upgrader
 
-===== Confirmed Working Programs ==================================
-1.  Plex       | Sharing media Program - * The Reason We Are Here *
-===================================================================
-2.  Emby       | Sharing Media Program - Secondary Alternative
-3.  NetData    | Statistical Tool for the Server
-4.  NZBGET     | USENET Downloading Program
-5.  Muximux    | Unified Site Interface
-6.  Ombi v3    | Allows Users to Request Media
-7.  Organizr   | Site Interface to Control Your Programs
-8.  PlexPy     | Analytic Information - Server & Users
-9.  Radarr     | Movie Request Program
-10. SABNZBD    | USENET Downloading Program
-11. Sonarr     | TV Request Program
-12. Wordpress  | Create a Website for Users
-
-EOF
+function contextSwitch {
+    {
+    ctxt1=$(grep ctxt /proc/stat | awk '{print $2}')
+        echo 50
+    sleep 1
+        ctxt2=$(grep ctxt /proc/stat | awk '{print $2}')
+        ctxt=$(($ctxt2 - $ctxt1))
+        result="Number os context switches in the last secound: $ctxt"
+    echo $result > result
+    } | whiptail --gauge "Getting data ..." 6 60 0
 }
-# read input from the keyboard and take a action
-# invoke the one() when the user select 1 from the menu option.
-# invoke the two() when the user select 2 from the menu option.
-# Exit when user the user select 3 form the menu option.
-read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 13 ];  Type [13] to Exit! " choice
-	case $choice in
-    1)
+
+
+function userKernelMode {
+    {   
+    raw=( $(grep "cpu " /proc/stat) )
+        userfirst=$((${raw[1]} + ${raw[2]}))
+        kernelfirst=${raw[3]}
+    echo 50
+        sleep 1
+    raw=( $(grep "cpu " /proc/stat) )
+        user=$(( $((${raw[1]} + ${raw[2]})) - $userfirst ))
+    echo 90
+        kernel=$(( ${raw[3]} - $kernelfirst ))
+        sum=$(($kernel + $user))
+        result="Percentage of last sekund in usermode: \
+        $((( $user*100)/$sum ))% \
+        \nand in kernelmode: $((($kernel*100)/$sum ))%"
+    echo $result > result
+    echo 100
+    } | whiptail --gauge "Getting data ..." 6 60 0
+} 
+
+function interupts {
+    {
+    ints=$(vmstat 1 2 | tail -1 | awk '{print $11}')
+        result="Number of interupts in the last secound:  $ints"
+    echo 100
+    echo $result > result
+    } | whiptail --gauge "Getting data ..." 6 60 50
+}
+
+while [ 1 ]
+do
+CHOICE=$(
+whiptail --title "Restore Menu" --menu "Make your choice" 15 21 8 \
+    "1)" "Plex"   \
+    "2)" "Emby"  \
+    "3)" "Netdata"  \
+    "4)" "NZBGET"  \
+    "5)" "Muximux"  \
+    "6)" "OMBIv3"  \
+    "7)" "Organizr"  \
+    "8)" "PlexPy"  \
+    "9)" "Radarr"  \
+    "10)" "SABNZBD"  \
+    "11)" "Sonarr"  \
+    "12)" "Wordpress"  \
+    "13)" "Exit  "  3>&2 2>&1 1>&3   
+)
+
+result=$(whoami)
+case $CHOICE in
+    "1)")   
      clear
      bash /opt/plexguide/scripts/menus/plexsub-menu.sh
      ;;
-     2)
+
+    "2)")   
       echo ymlprogram emby > /opt/plexguide/tmp.txt
       echo ymldisplay Emby >> /opt/plexguide/tmp.txt
       echo ymlport 8096 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
-    3)
+
+    "3)")   
      echo ymlprogram netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    4)
+
+    "4)")   
      echo ymlprogram nzbget > /opt/plexguide/tmp.txt
      echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
      echo ymlport 6789 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    5)
+
+    "5)")   
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    6)
+
+    "6)")   
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    7)
+
+    "7)")   
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    8)
+
+    "8)")   
      echo ymlprogram plexpy > /opt/plexguide/tmp.txt
      echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    9)
+
+    "9)")   
      echo ymlprogram radarr > /opt/plexguide/tmp.txt
      echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    10)
+
+    "10)")   
      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
      echo ymlport 8090 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-    11)
+
+    "11)")   
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     12)
-     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
-     echo ymldisplay WordPress >> /opt/plexguide/tmp.txt
-     echo ymlport 80 >> /opt/plexguide/tmp.txt
+
+    "12)")   
+     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
+     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
+     echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     13)
-    exit 0;;
-		*) echo -e "${RED}Error...${STD}" && sleep 2
-	esac
-}
 
-# ----------------------------------------------
-# Step #3: Trap CTRL+C, CTRL+Z and quit singles
-# ----------------------------------------------
-trap '' SIGINT SIGQUIT SIGTSTP
-
-# -----------------------------------
-# Step #4: Main logic - infinite loop
-# ------------------------------------
-while true
-do
-
-	show_menus
-	read_options
+    "13)") 
+        clear
+        exit 0
+        ;;
+esac
 done
+exit
