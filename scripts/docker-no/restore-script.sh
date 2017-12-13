@@ -21,7 +21,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo ""
     rclone copy gdrive:/Backup/"$YMLPROGRAM"/"$YMLPROGRAM".zip /tmp --checksum --drive-chunk-size=64M -v
     unzip /tmp/"$YMLPROGRAM".zip -d /
-    rm -r /tmp/"$YMLPROGRAM".tar.bz2 
+    rm -r /tmp/"$YMLPROGRAM".zip
     docker start "$YMLPROGRAM" 1>/dev/null 2>&1
     echo ""
     echo "4. Restarted Your Docker Program"
