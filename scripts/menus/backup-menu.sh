@@ -64,7 +64,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Backup Menu" --menu "Make your choice" 15 20 8 \
+whiptail --title "Backup Menu" --menu "Make your choice" 15 21 8 \
     "1)" "OMBIv3"   \
     "2)" "NZBGet"  \
     "3)" "Plex"  \
