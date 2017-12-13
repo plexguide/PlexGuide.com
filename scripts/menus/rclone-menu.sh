@@ -51,7 +51,7 @@ do
 CHOICE=$(
 whiptail --title "RClone Menu" --menu "Make your choice" 10 80 3 \
     "1)" "Unencrypted RClone Install"   \
-    "2)" "Encrypted RClone Install"  \
+    "2)" "Encrypted RClone Install --- TESTING"  \
     "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -62,7 +62,7 @@ case $CHOICE in
         ;;
 
     "2)")
-        ## bash /opt/plexguide/scripts/docker-no/rclone-en.sh
+        bash /opt/plexguide/scripts/docker-no/rclone-en.sh
         ;;
 
     "3)")
