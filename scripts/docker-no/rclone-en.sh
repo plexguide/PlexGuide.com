@@ -216,6 +216,9 @@ systemctl start move-en 1>/dev/null 2>&1
 
 
 systemctl restart rclone 1>/dev/null 2>&1
+systemctl restart rclone-encrypt 1>/dev/null 2>&1
+systemctl restart rclone-en 1>/dev/null 2>&1
+
 # set variable to remember what version of rclone user installed
 mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/en 1>/dev/null 2>&1
