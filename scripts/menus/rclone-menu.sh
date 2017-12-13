@@ -2,22 +2,6 @@
  #!/bin/bash
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
-bash /opt/plexguide/scripts/docker-no/user.sh
-
-file="/var/plexguide/dep19.yes"
-if [ -e "$file" ]
-then
-    clear
-else
-    bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep19.yes
-fi
-
-## ensure folders follow plexguide
-bash /opt/plexguide/scripts/startup/owner.sh
-chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
-
-##clear screen
 clear
 
 function contextSwitch {
@@ -34,7 +18,7 @@ function contextSwitch {
 
 
 function userKernelMode {
-    {   
+    {
     raw=( $(grep "cpu " /proc/stat) )
         userfirst=$((${raw[1]} + ${raw[2]}))
         kernelfirst=${raw[3]}
@@ -51,7 +35,7 @@ function userKernelMode {
     echo $result > result
     echo 100
     } | whiptail --gauge "Getting data ..." 6 60 0
-} 
+}
 
 function interupts {
     {
@@ -68,20 +52,20 @@ CHOICE=$(
 whiptail --title "RClone Menu" --menu "Make your choice" 10 80 3 \
     "1)" "Unencrypted RClone Install"   \
     "2)" "Encrypted RClone Install"  \
-    "3)" "Exit  "  3>&2 2>&1 1>&3   
+    "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
-    "1)")   
+    "1)")
         bash /opt/plexguide/scripts/docker-no/rclone-un.sh
         ;;
 
-    "2)")   
+    "2)")
         ## bash /opt/plexguide/scripts/docker-no/rclone-en.sh
         ;;
 
-    "3)") 
+    "3)")
         clear
         exit 0
         ;;
