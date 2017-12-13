@@ -56,6 +56,7 @@ whiptail --title "Restore Menu" --menu "Make your choice" 16 25 9 \
     "6)" "Radarr"  \
     "7)" "Emby"  \
     "8)" "PlexDrive"  \
+    #    "10)" "RClone"  \
     "9)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -107,7 +108,10 @@ case $CHOICE in
     bash /opt/plexguide/scripts/docker-no/restore-script-plexdrive.sh
     clear
     ;;
-
+    #      "10)")
+    #      bash /opt/plexguide/scripts/docker-no/backup-script-plexdrive.sh
+    #      clear
+    #      ;;
     "9)")
         clear
         exit 0
