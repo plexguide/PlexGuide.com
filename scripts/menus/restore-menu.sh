@@ -109,7 +109,7 @@ case $CHOICE in
     clear
     ;;
     #      "10)")
-    #      bash /opt/plexguide/scripts/docker-no/backup-script-plexdrive.sh
+    #      bash /opt/plexguide/scripts/test/restore-script-rclone.sh
     #      clear
     #      ;;
     "9)")
