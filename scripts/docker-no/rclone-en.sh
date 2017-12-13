@@ -41,16 +41,15 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   user_allow_other
 EOF
 
+## Make RClone Directory incase
+mkdir -p /home/plexguide/.config/rclone
+
 ## Copying to /home/plexguide incase
-cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone
+cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
 
 ## Assigning Permissions to PlexGuide
-#chown -R plexguide:1000 /home/plexguide/.config/rclone
-#chown -R plexguide:1000 /home/plexguide/.gcrypt
-#chown -R plexguide:1000 /home/plexguide/move
-#chown -R plexguide:1000 /home/plexguide/unionfs
-#chown -R plexguide:1000 /home/plexguide/plexdrive4
-#chown -R plexguide:1000 /home/plexguide/encrypt
+chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
+
 
 ####################################### Encrypted Service
 
@@ -145,12 +144,12 @@ EOF
 sudo systemctl daemon-reload
 
 #stop unencrypted services
-systemctl disable rclone 1>/dev/null 2>&1
-systemctl disable move 1>/dev/null 2>&1
-systemctl disable unionfs 1>/dev/null 2>&1
 systemctl stop rclone 1>/dev/null 2>&1
 systemctl stop move 1>/dev/null 2>&1
 systemctl stop unionfs 1>/dev/null 2>&1
+systemctl disable rclone 1>/dev/null 2>&1
+systemctl disable move 1>/dev/null 2>&1
+systemctl disable unionfs 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
 systemctl enable rclone-en 1>/dev/null 2>&1
@@ -162,11 +161,14 @@ systemctl start rclone-en 1>/dev/null 2>&1
 systemctl start rclone-encrypt 1>/dev/null 2>&1
 systemctl start move-en 1>/dev/null 2>&1
 
+
+systemctl restart rclone 1>/dev/null 2>&1
 # set variable to remember what version of rclone user installed
 mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
 
+# pauses
 bash /opt/plexguide/scripts/docker-no/continue.sh
 
 # sets a message
