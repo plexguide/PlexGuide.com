@@ -65,8 +65,8 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 80 3 \
-    "1)" "Install PlexDrive:   Mounts a REQUIRED Read-Only Google Drive"   \
-    "2)" "Remove PD Tokens :   Troubleshooting for Bad PlexDrive Install"  \
+    "1)" "Unencrypted RClone Install"   \
+    "2)" "Encrypted RClone Install"  \
     "3)" "Exit  "  3>&2 2>&1 1>&3   
 )
 
