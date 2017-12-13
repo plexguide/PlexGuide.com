@@ -64,20 +64,25 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "RClone Menu" --menu "Make your choice" 10 80 3 \
-    "1)" "Unencrypt Install:  Utilized unencrypted version of RClone"   \
-    "2)" "Encrypted Install:  Disabled Until Fixed"  \
+whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 80 3 \
+    "1)" "Install PlexDrive:   Mounts a REQUIRED Read-Only Google Drive"   \
+    "2)" "Remove PD Tokens :   Troubleshooting for Bad PlexDrive Install"  \
     "3)" "Exit  "  3>&2 2>&1 1>&3   
 )
 
 result=$(whoami)
 case $CHOICE in
     "1)")   
-        bash /opt/plexguide/scripts/docker-no/rclone-un.sh
+        bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
         ;;
 
     "2)")   
-        ## bash /opt/plexguide/scripts/docker-no/rclone-en.sh
+        rm -r /home/plexguide/.plexdrive
+        echo
+        echo "Tokens Removed - Try PlexDrive Install Again"
+        echo
+        read -n 1 -s -r -p "Press any key to continue"
+        clear
         ;;
 
     "3)") 
