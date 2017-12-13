@@ -10,11 +10,11 @@ stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
-    rm -r /mnt/gdrive/Backup/"$YMLPROGRAM" 1>/dev/null 2>&1
+    rm -r /home/plexguide/gdrive/Backup/"$YMLPROGRAM" 1>/dev/null 2>&1
     echo "1. Stopping Your Docker Program"
     echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY""
     echo ""
-    mkdir -p /gdrive/Backup/"$YMLPROGRAM"
+    mkdir -p /home/plexguide/gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
     zip -r /tmp/"$YMLPROGRAM".zip /opt/appdata/"$YMLPROGRAM"
     echo "3. Copy Files to Your Google Drive"
