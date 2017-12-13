@@ -34,3 +34,6 @@ chown plexguide:1000 /home/plexguide/sab/nzb 1>/dev/null 2>&1
 chown plexguide:1000 /home/plexguide/unionfs 1>/dev/null 2>&1
 chown plexguide:1000 /home/plexguide/tv 1>/dev/null 2>&1
 chown plexguide:1000 /home/plexguide/movies 1>/dev/null 2>&1
+
+chown plexguide:1000 /home/plexguide/.config/* 1>/dev/null 2>&1
+chown plexguide:1000 /home/plexguide/.plexdrive* 1>/dev/null 2>&1

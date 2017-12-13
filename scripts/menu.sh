@@ -13,8 +13,8 @@ else
 fi
 
 ## ensure folders follow plexguide
+
 bash /opt/plexguide/scripts/startup/owner.sh
-chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
 
 ##clear screen
 clear
