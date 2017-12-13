@@ -65,8 +65,8 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "RClone Menu" --menu "Make your choice" 10 80 3 \
-    "1)" "Unencrypt Install:  Utilized unencrypted version of RClone"   \
-    "2)" "Encrypted Install:  Disabled Until Fixed"  \
+    "1)" "Unencrypted RClone Install"   \
+    "2)" "Encrypted RClone Install"  \
     "3)" "Exit  "  3>&2 2>&1 1>&3   
 )
 
