@@ -48,7 +48,9 @@ mkdir -p /home/plexguide/.config/rclone
 cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
 
 ## Assigning Permissions to PlexGuide
-chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
+chown -R plexguide:1000 /home/plexguide/.config/rclone
+chown -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
+chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 
 
 ####################################### Encrypted Service
