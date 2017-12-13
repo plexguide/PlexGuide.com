@@ -52,6 +52,8 @@ chown -R plexguide:1000 /home/plexguide/.config/rclone
 chown -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 
+chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
+chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 
 ####################################### Encrypted Service
 
@@ -116,7 +118,7 @@ tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 sleep 30
 while true
 do
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s local:/home/plexguide/move gcrypt:/
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /home/plexguide/move gcrypt:/
 sleep 900
 done
 EOF
