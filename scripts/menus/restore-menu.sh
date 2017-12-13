@@ -33,7 +33,7 @@ function contextSwitch {
 
 
 function userKernelMode {
-    {   
+    {
     raw=( $(grep "cpu " /proc/stat) )
         userfirst=$((${raw[1]} + ${raw[2]}))
         kernelfirst=${raw[3]}
@@ -50,7 +50,7 @@ function userKernelMode {
     echo $result > result
     echo 100
     } | whiptail --gauge "Getting data ..." 6 60 0
-} 
+}
 
 function interupts {
     {
@@ -72,54 +72,60 @@ whiptail --title "Restore Menu" --menu "Make your choice" 15 21 8 \
     "5)" "Sonarr"  \
     "6)" "Radarr"  \
     "7)" "Emby"  \
-    "8)" "Exit  "  3>&2 2>&1 1>&3   
+    "8)" "PlexDrive"  \
+    "9)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
-    "1)")   
+    "1)")
       echo ymlprogram ombiv3 > /opt/plexguide/tmp.txt
       echo ymldisplay OMBIV3 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/restore-script.sh
         ;;
 
-    "2)")   
+    "2)")
       echo ymlprogram nzbget > /opt/plexguide/tmp.txt
       echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/restore-script.sh
       ;;
 
-    "3)")   
+    "3)")
       echo ymlprogram plex > /opt/plexguide/tmp.txt
       echo ymldisplay PLEX >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/restore-script.sh
       ;;
 
-    "4)")   
+    "4)")
       echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
       echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/restore-script.sh
       ;;
 
-    "5)")   
+    "5)")
       echo ymlprogram sonarr > /opt/plexguide/tmp.txt
       echo ymldisplay SONARR >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
 
-    "6)")   
+    "6)")
       echo ymlprogram radarr > /opt/plexguide/tmp.txt
       echo ymldisplay RADARR >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
 
-    "7)")   
+    "7)")
       echo ymlprogram emby > /opt/plexguide/tmp.txt
       echo ymldisplay EMBY >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
 
-    "8)") 
+    "8)")
+    bash /opt/plexguide/scripts/docker-no/restore-script-plexdrive.sh
+    clear
+    ;;
+
+    "9)")
         clear
         exit 0
         ;;
