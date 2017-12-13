@@ -16,15 +16,20 @@ if echo "$answer" | grep -iq "^y" ;then
 clear
 ## Create the PlexDrive4 Service
 tee "/etc/systemd/system/plexdrive4.service" > /dev/null <<EOF
+
 [Unit]
 Description=PlexDrive4 Service
 After=multi-user.target
+
 [Service]
 Type=simple
 ExecStart=/usr/bin/plexdrive4 --uid=6000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/home/plexguide/.plexdrive /home/plexguide/plexdrive4
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
 EOF
 
 ## Enables the PlexDrive Service
