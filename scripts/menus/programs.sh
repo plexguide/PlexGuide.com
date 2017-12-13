@@ -141,8 +141,8 @@ case $CHOICE in
      ;;
 
     "12)")
-     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
-     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
+     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
+     echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
