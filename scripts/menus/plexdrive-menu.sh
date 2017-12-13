@@ -1,21 +1,4 @@
  #!/bin/bash
-
-#check to see if /var/plexguide/dep exists - if not, install dependencies
-bash /opt/plexguide/scripts/docker-no/user.sh
-
-file="/var/plexguide/dep19.yes"
-if [ -e "$file" ]
-then
-    clear
-else
-    bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep19.yes
-fi
-
-## ensure folders follow plexguide
-bash /opt/plexguide/scripts/startup/owner.sh
-chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
-
 ##clear screen
 clear
 
@@ -33,7 +16,7 @@ function contextSwitch {
 
 
 function userKernelMode {
-    {   
+    {
     raw=( $(grep "cpu " /proc/stat) )
         userfirst=$((${raw[1]} + ${raw[2]}))
         kernelfirst=${raw[3]}
@@ -50,7 +33,7 @@ function userKernelMode {
     echo $result > result
     echo 100
     } | whiptail --gauge "Getting data ..." 6 60 0
-} 
+}
 
 function interupts {
     {
@@ -67,16 +50,16 @@ CHOICE=$(
 whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 80 3 \
     "1)" "PlexDrive Install"   \
     "2)" "Remove PlexDrive Tokens"  \
-    "3)" "Exit  "  3>&2 2>&1 1>&3   
+    "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
-    "1)")   
+    "1)")
         bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
         ;;
 
-    "2)")   
+    "2)")
         rm -r /home/plexguide/.plexdrive
         echo
         echo "Tokens Removed - Try PlexDrive Install Again"
@@ -85,7 +68,7 @@ case $CHOICE in
         clear
         ;;
 
-    "3)") 
+    "3)")
         clear
         exit 0
         ;;
