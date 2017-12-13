@@ -3,12 +3,12 @@
 clear
 
 ## Supporting Folders
-mkdir -p /home/plexguide/move
+#mkdir -p /home/plexguide/move
 mkdir -p /home/plexguide/.gcrypt
-mkdir -p /home/plexguide/unionfs/tv
-mkdir -p /home/plexguide/unionfs/movies
-mkdir -p /opt/appdata/plexguide
-mkdir -p /home/plexguide/plexdrive4
+#mkdir -p /home/plexguide/unionfs/tv
+#mkdir -p /home/plexguide/unionfs/movies
+#mkdir -p /opt/appdata/plexguide
+#mkdir -p /home/plexguide/plexdrive4
 mkdir -p /home/plexguide/encrypt
 
 ## Installing rclone
@@ -17,7 +17,7 @@ mkdir -p /home/plexguide/encrypt
   unzip rclone-current-linux-amd64.zip 1>/dev/null 2>&1
   cd rclone-*-linux-amd64
   cp rclone /usr/bin/ 1>/dev/null 2>&1
-  chown root:root /usr/bin/rclone 1>/dev/null 2>&1
+  chown plexguide:1000 /usr/bin/rclone 1>/dev/null 2>&1
   chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
   mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
@@ -45,14 +45,16 @@ EOF
 cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone
 
 ## Assigning Permissions to PlexGuide
-chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
-chown -R plexguide:1000 /home/plexguide/.gcrypt
-chown -R plexguide:1000 /home/plexguide/move
-chown -R plexguide:1000 /home/plexguide/unionfs
-chown -R plexguide:1000 /home/plexguide/plexdrive4
-chown -R plexguide:1000 /home/plexguide/encrypt
+#chown -R plexguide:1000 /home/plexguide/.config/rclone
+#chown -R plexguide:1000 /home/plexguide/.gcrypt
+#chown -R plexguide:1000 /home/plexguide/move
+#chown -R plexguide:1000 /home/plexguide/unionfs
+#chown -R plexguide:1000 /home/plexguide/plexdrive4
+#chown -R plexguide:1000 /home/plexguide/encrypt
 
 ####################################### Encrypted Service
+
+## Create the RClone service for plexdrive4 encrypted mount point
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
 Description=RClone Daemon
@@ -155,7 +157,7 @@ systemctl enable rclone-en 1>/dev/null 2>&1
 systemctl enable move-en 1>/dev/null 2>&1
 systemctl enable unionfs-encrypt 1>/dev/null 2>&1
 systemctl enable rclone-encrypt 1>/dev/null 2>&1
-systemctl start unionfs-encrypt 1>/dev/null 2>&1 
+systemctl start unionfs-encrypt 1>/dev/null 2>&1
 systemctl start rclone-en 1>/dev/null 2>&1
 systemctl start rclone-encrypt 1>/dev/null 2>&1
 systemctl start move-en 1>/dev/null 2>&1
@@ -171,7 +173,7 @@ bash /opt/plexguide/scripts/docker-no/continue.sh
 clear
 cat << EOF
 NOTE: You installed the encrypted version for the RClone data transport!
-If you messed anything up, select [2] and run through again.  
+If you messed anything up, select [2] and run through again.
 EOF
 
 bash /opt/plexguide/scripts/docker-no/continue.sh
