@@ -55,6 +55,29 @@ chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 
+## RClone Script
+tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
+#!/bin/bash
+rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+EOF
+chmod 755 /opt/appdata/plexguide/rclone.sh
+
+## RClone Server
+tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+[Service]
+Type=simple
+User=plexguide
+Group=1000
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
+EOF
 
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
@@ -180,11 +203,13 @@ systemctl disable move 1>/dev/null 2>&1
 systemctl disable unionfs 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
+systemctl enable rclone 1>/dev/null 2>&1
 systemctl enable rclone-en 1>/dev/null 2>&1
 systemctl enable move-en 1>/dev/null 2>&1
 systemctl enable unionfs-encrypt 1>/dev/null 2>&1
 systemctl enable rclone-encrypt 1>/dev/null 2>&1
 systemctl start unionfs-encrypt 1>/dev/null 2>&1
+systemctl start rclone 1>/dev/null 2>&1
 systemctl start rclone-en 1>/dev/null 2>&1
 systemctl start rclone-encrypt 1>/dev/null 2>&1
 systemctl start move-en 1>/dev/null 2>&1
