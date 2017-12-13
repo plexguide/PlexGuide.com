@@ -154,7 +154,7 @@ tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   done
 EOF
 
-  chmod 755 /opt/plexguide/scripts/dockerfix.s
+  chmod 755 /opt/plexguide/scripts/dockerfix.sh
 
 ## Create the Post-Docker Fix Service
 tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
