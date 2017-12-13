@@ -165,7 +165,7 @@ tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
     Type=simple
     User=root
     Group=root
-    ExecStart=/bin/bash /opt/appdata/plexguide/dockerfix.sh
+    ExecStart=/bin/bash /opt/appdata/plexguide/scripts/dockerfix.sh
     TimeoutStopSec=20
     KillMode=process
     RemainAfterExit=yes
