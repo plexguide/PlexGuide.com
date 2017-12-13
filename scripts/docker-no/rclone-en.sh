@@ -55,6 +55,30 @@ chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 
+
+## RClone Script
+tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
+#!/bin/bash
+rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
+EOF
+chmod 755 /opt/appdata/plexguide/rclone.sh
+
+## RClone Server
+tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+[Service]
+Type=simple
+User=plexguide
+Group=1000
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone-encrypt.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
+EOF
 ####################################### Encrypted Service
 
 ## Create the RClone service for plexdrive4 encrypted mount point
@@ -76,24 +100,24 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
-## Create the RClone Service for a direct gdrive encrypted mount point
-tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
-[Unit]
-Description=RClone Daemon
-After=multi-user.target
+#### Create the RClone Service for a direct gdrive encrypted mount point
+##tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
+##[Unit]
+##Description=RClone Daemon
+##After=multi-user.target
 
-[Service]
-Type=simple
-User=plexguide
-Group=1000
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
+##[Service]
+##Type=simple
+##User=plexguide
+##Group=1000
+##ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
+##TimeoutStopSec=20
+##KillMode=process
+##RemainAfterExit=yes
 
-[Install]
-WantedBy=multi-user.target
-EOF
+##[Install]
+##WantedBy=multi-user.target
+##EOF
 
 ## Create the UnionFS Service for the plexdrive encrypted mount point
 tee "/etc/systemd/system/unionfs-encrypt.service" > /dev/null <<EOF
