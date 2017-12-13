@@ -61,7 +61,7 @@ tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
 rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
 EOF
-chmod 755 /opt/appdata/plexguide/rclone.sh
+chmod 755 /opt/appdata/plexguide/rclone-encrypt.sh
 
 ## RClone Server
 tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
