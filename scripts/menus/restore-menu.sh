@@ -1,22 +1,5 @@
  #!/bin/bash
 
-#check to see if /var/plexguide/dep exists - if not, install dependencies
-bash /opt/plexguide/scripts/docker-no/user.sh
-
-file="/var/plexguide/dep19.yes"
-if [ -e "$file" ]
-then
-    clear
-else
-    bash /opt/plexguide/scripts/startup/dep.sh
-    touch /var/plexguide/dep19.yes
-fi
-
-## ensure folders follow plexguide
-bash /opt/plexguide/scripts/startup/owner.sh
-chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
-
-##clear screen
 clear
 
 function contextSwitch {
