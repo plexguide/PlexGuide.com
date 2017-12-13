@@ -50,9 +50,10 @@ mkdir -p /home/plexguide/.config/rclone
 echo hang 1
 ## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/.config/rclone
+echo hang1b
 chown -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
-
+echo hang1c
 chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 echo hang2
