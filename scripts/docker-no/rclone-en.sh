@@ -56,14 +56,14 @@ chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 
 chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
-
+echo 1
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
 rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
-
+echo 2
 ## RClone Server
 tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
 [Unit]
@@ -80,7 +80,7 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 EOF
-
+echo 3
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
@@ -105,7 +105,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 ####################################### Encrypted Service
-
+echo 4
 ## Create the RClone service for plexdrive4 encrypted mount point
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
@@ -124,7 +124,7 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 EOF
-
+echo 5
 #### Create the RClone Service for a direct gdrive encrypted mount point
 ##tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
 ##[Unit]
@@ -160,7 +160,7 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 EOF
-
+echo 6
 ## Create the Encrypted Move Script
 tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 #!/bin/bash
@@ -192,7 +192,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
-
+echo 7
 ###### Ensure Changes Are Reflected
 sudo systemctl daemon-reload
 
@@ -203,7 +203,7 @@ systemctl stop unionfs 1>/dev/null 2>&1
 systemctl disable rclone 1>/dev/null 2>&1
 systemctl disable move 1>/dev/null 2>&1
 systemctl disable unionfs 1>/dev/null 2>&1
-
+echo 8
 # ensure that the unencrypted services are on
 systemctl enable rclone 1>/dev/null 2>&1
 systemctl enable rclone-en 1>/dev/null 2>&1
@@ -216,7 +216,7 @@ systemctl start rclone-en 1>/dev/null 2>&1
 systemctl start rclone-encrypt 1>/dev/null 2>&1
 systemctl start move-en 1>/dev/null 2>&1
 
-
+echo 9
 systemctl restart rclone 1>/dev/null 2>&1
 systemctl restart rclone-encrypt 1>/dev/null 2>&1
 systemctl restart rclone-en 1>/dev/null 2>&1
@@ -225,10 +225,10 @@ systemctl restart rclone-en 1>/dev/null 2>&1
 mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
-
+echo 10
 # pauses
 bash /opt/plexguide/scripts/docker-no/continue.sh
-
+echo 11
 # sets a message
 clear
 cat << EOF
