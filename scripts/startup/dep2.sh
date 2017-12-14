@@ -9,31 +9,42 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 
     clear
 
-    sudo bash -c 'apt-get -y install update >/dev/null 2>&1 & disown'
 
+    yes | apt-get install update 1>/dev/null 2>&1 & disown
+    sleep .1
+    
     {
         for ((i = 0 ; i <= 100 ; i+=1)); do
-            sleep 0.3
+            sleep 0.2
             echo $i
         done
     } | whiptail --gauge "[ 1 of 5 ] Updating Your System" 6 50 0
 
-    sudo bash -c 'apt-get -y install curl >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install apt-transport-https >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install ca-certificates >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install nano >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install fuse >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install man-db >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install unzip >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install zip >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install python >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install openssh-server >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install unions-fuse >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install dirmngr >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install software-properties-common >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install fail2ban >/dev/null 2>&1 & disown'
-
-
+    yes | apt-get install curl 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install apt-transport-https 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install nano 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install fuse 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install man-db 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install unzip 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install zip 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install python 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install openssh-server 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install unions-fuse 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install dirmngr 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install software-properties-common 1>/dev/null 2>&1 & disown
+    sleep .1
+    yes | apt-get install fail2ban 1>/dev/null 2>&1 & disown
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -42,17 +53,18 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     done
 } | whiptail --gauge "[ 2 of 5 ] Installing Dependencies" 6 50 0
 
-sudo bash -c '/opt/plexguide/scripts/startup/directories.sh >/dev/null 2>&1 & disown'
+bash '/opt/plexguide/scripts/startup/directories.sh' 1>/dev/null 2>&1 & disown
 
 #Installing RClone and Service
-sudo bash -c '/opt/plexguide/scripts/startup/rclone-preinstall.sh >/dev/null 2>&1 & disown'
+bash '/opt/plexguide/scripts/startup/rclone-preinstall.sh' 1>/dev/null 2>&1 & disown
 
 #Lets the System Know that Script Ran Once
-  touch /var/plexguide/basics.yes 1>/dev/null 2>&1
-  touch /var/plexguide/version.5 1>/dev/null 2>&1
+
+touch '/var/plexguide/basics.yes' 1>/dev/null 2>&1 & disown
+touch '/var/plexguide/version.5' 1>/dev/null 2>&1 & disown
 
 #Installing MongoDB for PlexDrive
-sudo bash -c '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh >/dev/null 2>&1 & disown'
+sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -61,7 +73,7 @@ sudo bash -c '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh >/dev/null 
     done
 } | whiptail --gauge "[ 3 of 5 ] Pre-Installing RClone & PlexDrive" 6 50 0
 
-sudo bash -c '/opt/plexguide/scripts/startup/docker.sh >/dev/null 2>&1 & disown'
+bash '/opt/plexguide/scripts/startup/docker.sh' 1>/dev/null 2>&1 & disown
 
   {
       for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -70,11 +82,12 @@ sudo bash -c '/opt/plexguide/scripts/startup/docker.sh >/dev/null 2>&1 & disown'
       done
   } | whiptail --gauge "[ 4 of 5 ] Installing Docker" 6 50 0
 
-sudo bash -c '/opt/plexguide/scripts/startup/postdocker.sh >/dev/null 2>&1 & disown'
+bash '/opt/plexguide/scripts/startup/postdocker.sh' 1>/dev/null 2>&1 & disown
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
-        sleep 0.1
+        sleep 0
+        .1
         echo $i
     done
 } | whiptail --gauge "[ 5 of 5 ] Finishing PlexGuide Install" 6 50 0
