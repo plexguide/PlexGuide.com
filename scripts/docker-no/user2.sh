@@ -19,12 +19,12 @@ ENCRYPTION USERS WARNING! If using encrypted method, do not upgrade. Create the
 user as required, but when asking for upgrade; select NO. Encryption needs work!" 8 78
 
 
-PASSWORD=$(whiptail --passwordbox "Create a Password for the User: plexguide" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
+password=$(whiptail --passwordbox "Create a Password for the User: plexguide" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
                                                                         # A trick to swap stdout and stderr.
 # Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-    echo "User selected Ok and entered " password
+    echo "User selected Ok and entered " $password
 else
     echo "User selected Cancel."
 fi
