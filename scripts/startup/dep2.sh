@@ -9,40 +9,29 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 
     clear
 
+    sudo bash -c 'apt-get -y install update >/dev/null 2>&1 & disown'
 
-    sudo bash -c 'apt-get -y install screen >/dev/null 2>&1 & disown'
+    {
+        for ((i = 0 ; i <= 100 ; i+=1)); do
+            sleep 0.5
+            echo $i
+        done
+    } | whiptail --gauge "[ 1 of 6 ] Updating Your System" 6 50 0
+
+    sudo bash -c 'apt-get -y install curl >/dev/null 2>&1 & disown'
+    sudo bash -c 'apt-get -y install apt-transport-https >/dev/null 2>&1 & disown'
+    sudo bash -c 'apt-get -y install ca-certificates >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install nano >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install fuse >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install man-db >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install unzip >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install zip >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install python >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install git >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install curl >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install openssh-server >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install sleuthkit >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install unions-fuse >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install dirmngr >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install apt-transport-https >/dev/null 2>&1 & disown'
-    sudo bash -c 'apt-get -y install ca-certificates >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install software-properties-common >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install fail2ban >/dev/null 2>&1 & disown'
-
-    {
-        for ((i = 0 ; i <= 100 ; i+=1)); do
-            sleep 0.3
-            echo $i
-        done
-    } | whiptail --gauge "Please wait while we are sleeping..." 6 50 0
-
-echo ""
-echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
-
-## Create Directory Structure - Goal is to move everything here
-
-################### chown
-
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
 
 ################### For PlexDrive
 
@@ -86,6 +75,14 @@ mkdir -p /home/plexguide/plexdrive4
 #    touch /var/plexguide/chown.yes
 #fi
 bash /opt/plexguide/scripts/startup/owner.sh
+
+{
+    for ((i = 0 ; i <= 100 ; i+=1)); do
+        sleep 0.3
+        echo $i
+    done
+} | whiptail --gauge "[ 2 of 6]." 6 50 0
+
 ######################################################### For RCLONE
 
 echo "2. Pre-Installing RClone & Services (Please Wait)"
