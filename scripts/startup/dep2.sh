@@ -29,7 +29,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     sudo bash -c 'apt-get -y install fail2ban >/dev/null 2>&1 & disown'
 
     {
-        for ((i = 0 ; i <= 100 ; i+=5)); do
+        for ((i = 0 ; i <= 100 ; i+=1)); do
             sleep 0.1
             echo $i
         done
