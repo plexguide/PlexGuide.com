@@ -65,7 +65,7 @@ case $CHOICE in
     bash /opt/plexguide/scripts/menus/restore-menu.sh
     ;;
 
-    "4)")
+    "3)")
         clear
         exit 0
         ;;
