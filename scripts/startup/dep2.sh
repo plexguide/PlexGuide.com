@@ -94,13 +94,7 @@ sudo bash -c '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh >/dev/null 
     done
 } | whiptail --gauge "[ 3 of 6] Pre-Installing RClone & PlexDrive" 6 50 0
 
-# Install Docker and Docker Composer / Checks to see if is installed also
-  curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
-  curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
-  chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
-
-# Installs Portainer
-  docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
+sudo bash -c '/opt/plexguide/scripts/startup/docker.sh >/dev/null 2>&1 & disown'
 
   {
       for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -109,61 +103,14 @@ sudo bash -c '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh >/dev/null 
       done
   } | whiptail --gauge "[ 4 of 6] Installing Docker" 6 50 0
 
-############################################# Install a Post-Docker Fix ###################### START
+sudo bash -c '/opt/plexguide/scripts/startup/postdocker.sh >/dev/null 2>&1 & disown'
 
-tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
-  #!/bin/bash
-  sleep 30
-  while true
-  do
-    docker restart emby 1>/dev/null 2>&1
-    docker restart nzbget 1>/dev/null 2>&1
-    docker restart radarr 1>/dev/null 2>&1
-    docker restart sonarr 1>/dev/null 2>&1
-    docker restart plexpass 1>/dev/null 2>&1
-    docker restart plexpublic 1>/dev/null 2>&1
-    docker restart sabnzbd 1>/dev/null 2>&1
-  sleep 6000000000000000000000000
-  done
-EOF
-
-  chmod 755 /opt/plexguide/scripts/dockerfix.sh
-
-## Create the Post-Docker Fix Service
-tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
-    [Unit]
-    Description=Move Service Daemon
-    After=multi-user.target
-    [Service]
-    Type=simple
-    User=root
-    Group=root
-    ExecStart=/bin/bash /opt/plexguide/scripts/dockerfix.sh
-    TimeoutStopSec=20
-    KillMode=process
-    RemainAfterExit=yes
-    Restart=always
-    [Install]
-    WantedBy=multi-user.target
-EOF
-
-  systemctl daemon-reload
-  systemctl enable dockerfix 1>/dev/null 2>&1
-  systemctl start dockerfix 1>/dev/null 2>&1
-
-  echo "8. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
-
-  docker restart emby 1>/dev/null 2>&1
-  docker restart nzbget 1>/dev/null 2>&1
-  docker restart radarr 1>/dev/null 2>&1
-  docker restart sonarr 1>/dev/null 2>&1
-  docker restart plexpass 1>/dev/null 2>&1
-  docker restart plexpublic 1>/dev/null 2>&1
-  docker restart sabnzbd 1>/dev/null 2>&1
-
-  echo ""
-  read -n 1 -s -r -p "Finished - Press any key to continue "
-############################################# Install a Post-Docker Fix ###################### END
+{
+    for ((i = 0 ; i <= 100 ; i+=1)); do
+        sleep 0.1
+        echo $i
+    done
+} | whiptail --gauge "[ 5 of 6] Finishing Install" 6 50 0
 
 else
     echo "Install Aborted - You Failed to Agree to Install the Program!"
