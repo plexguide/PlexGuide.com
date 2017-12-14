@@ -94,7 +94,7 @@ case $CHOICE in
 
     "2)")
         clear
-        bash /opt/plexguide/scripts/menus/rclone-menu.sh
+        bash /opt/plexguide/scripts/menus/rclone-pd-select.sh
         ;;
 
     "3)")
