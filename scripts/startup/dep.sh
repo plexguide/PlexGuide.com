@@ -78,8 +78,7 @@ bash '/opt/plexguide/scripts/startup/owner.sh' 1>/dev/null 2>&1 & disown
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
-        sleep 0
-        .1
+        sleep .1
         echo $i
     done
 } | whiptail --gauge "[ 5 of 5 ] Finishing PlexGuide Install" 6 50 0
