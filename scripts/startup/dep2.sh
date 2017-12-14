@@ -1,3 +1,4 @@
+
 clear
 
 ## FutureNotes: sudo bash -c 'apt-get -y install sleuthkit >/dev/null 2>&1 & disown'
@@ -6,9 +7,7 @@ clear
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 78) then
 
 ###################### Install Depdency Programs ###############
-
     clear
-
 
     yes | apt-get update 1>/dev/null 2>&1 & disown
     sleep .1
@@ -73,6 +72,14 @@ sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
     done
 } | whiptail --gauge "[ 3 of 5 ] Pre-Installing RClone & PlexDrive" 6 50 0
 
+# Install Docker and Docker Composer / Checks to see if is installed also
+  curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1 1>/dev/null 2>&1 & disown
+  curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1 & disown
+  chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1 & disown
+
+# Installs Portainer
+  docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1 & disown
+
 bash '/opt/plexguide/scripts/startup/docker.sh' 1>/dev/null 2>&1 & disown
 
   {
@@ -109,8 +116,6 @@ cat << EOF
 ~~~~~~~~~~~~~~
 
 Pre-Install / Re-Install Complete!
-
->>> WARNING WARNING - RUN as USER: plexguide <<<
 
 <Donation Info> If your enjoying the programming, donating coin or enabling
 mininig helps up go a long way.  If you enable mining, you can choose how
