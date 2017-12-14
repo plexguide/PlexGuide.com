@@ -16,7 +16,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
             sleep 0.3
             echo $i
         done
-    } | whiptail --gauge "[ 1 of 6 ] Updating Your System" 6 50 0
+    } | whiptail --gauge "[ 1 of 5 ] Updating Your System" 6 50 0
 
     sudo bash -c 'apt-get -y install curl >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install apt-transport-https >/dev/null 2>&1 & disown'
@@ -33,49 +33,16 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     sudo bash -c 'apt-get -y install software-properties-common >/dev/null 2>&1 & disown'
     sudo bash -c 'apt-get -y install fail2ban >/dev/null 2>&1 & disown'
 
-################### For PlexDrive
 
-  mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
-  chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
-
-################### For SAB
-
-  mkdir -p /home/plexguide 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/sab/admin 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/sab/incomplete 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/sab/complete/tv 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/sab/complete/movies 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/sab/nzb 1>/dev/null 2>&1
-
-#################### For NZBGET
-
-  mkdir -p /home/plexguide/nzbget 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/nzbget/incomplete 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/nzbget/completed/tv 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/nzbget/completed/movies 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/nzbget/nzb 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/nzbget/tmp 1>/dev/null 2>&1
-  mkdir -p /home/plexguide/nzbget/queue 1>/dev/null 2>&1
-
-########################################################### RClone
-
-mkdir -p /home/plexguide/move 1>/dev/null 2>&1
-mkdir -p /home/plexguide/gdrive 1>/dev/null 2>&1
-mkdir -p /home/plexguide/unionfs 1>/dev/null 2>&1
-mkdir -p /home/plexguide/plexdrive4 1>/dev/null 2>&1
-mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
-mkdir -p /home/plexguide/plexdrive4 1>/dev/null 2>&1
-
-bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
         sleep 0.2
         echo $i
     done
-} | whiptail --gauge "[ 2 of 6] Installing Dependencies" 6 50 0
+} | whiptail --gauge "[ 2 of 5 ] Installing Dependencies" 6 50 0
 
-
+sudo bash -c '/opt/plexguide/scripts/startup/directories.sh >/dev/null 2>&1 & disown'
 
 #Installing RClone and Service
 sudo bash -c '/opt/plexguide/scripts/startup/rclone-preinstall.sh >/dev/null 2>&1 & disown'
@@ -92,7 +59,7 @@ sudo bash -c '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh >/dev/null 
         sleep 0.1
         echo $i
     done
-} | whiptail --gauge "[ 3 of 6] Pre-Installing RClone & PlexDrive" 6 50 0
+} | whiptail --gauge "[ 3 of 5 ] Pre-Installing RClone & PlexDrive" 6 50 0
 
 sudo bash -c '/opt/plexguide/scripts/startup/docker.sh >/dev/null 2>&1 & disown'
 
@@ -101,7 +68,7 @@ sudo bash -c '/opt/plexguide/scripts/startup/docker.sh >/dev/null 2>&1 & disown'
           sleep 0.5
           echo $i
       done
-  } | whiptail --gauge "[ 4 of 6] Installing Docker" 6 50 0
+  } | whiptail --gauge "[ 4 of 5 ] Installing Docker" 6 50 0
 
 sudo bash -c '/opt/plexguide/scripts/startup/postdocker.sh >/dev/null 2>&1 & disown'
 
@@ -110,7 +77,7 @@ sudo bash -c '/opt/plexguide/scripts/startup/postdocker.sh >/dev/null 2>&1 & dis
         sleep 0.1
         echo $i
     done
-} | whiptail --gauge "[ 5 of 6] Finishing Install" 6 50 0
+} | whiptail --gauge "[ 5 of 5 ] Finishing PlexGuide Install" 6 50 0
 
 else
     echo "Install Aborted - You Failed to Agree to Install the Program!"
