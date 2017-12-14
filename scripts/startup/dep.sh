@@ -10,7 +10,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 
     {
         for ((i = 0 ; i <= 100 ; i+=1)); do
-            sleep 0.2
+            sleep 0.3
             echo $i
         done
     } | whiptail --gauge "[ 1 of 5 ] Updating Your System" 6 50 0
@@ -79,7 +79,7 @@ bash '/opt/plexguide/scripts/startup/owner.sh' 1>/dev/null 2>&1 & disown
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
         sleep 0
-        .05
+        .1
         echo $i
     done
 } | whiptail --gauge "[ 5 of 5 ] Finishing PlexGuide Install" 6 50 0
