@@ -24,7 +24,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     yes | apt-get install zip 1>/dev/null 2>&1 & disown
     yes | apt-get install python 1>/dev/null 2>&1 & disown
     yes | apt-get install openssh-server 1>/dev/null 2>&1 & disown
-    yes | apt-get install unions-fuse 1>/dev/null 2>&1 & disown
+    yes | apt-get install unionfs-fuse 1>/dev/null 2>&1 & disown
     yes | apt-get install dirmngr 1>/dev/null 2>&1 & disown
     yes | apt-get install software-properties-common 1>/dev/null 2>&1 & disown
     yes | apt-get install fail2ban 1>/dev/null 2>&1 & disown
