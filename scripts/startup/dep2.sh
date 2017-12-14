@@ -80,11 +80,9 @@ sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
 # Installs Portainer
   docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1 & disown
 
-bash '/opt/plexguide/scripts/startup/docker.sh' 1>/dev/null 2>&1 & disown
-
   {
       for ((i = 0 ; i <= 100 ; i+=1)); do
-          sleep 0.5
+          sleep 0.6
           echo $i
       done
   } | whiptail --gauge "[ 4 of 5 ] Installing Docker" 6 50 0
@@ -94,7 +92,7 @@ bash '/opt/plexguide/scripts/startup/postdocker.sh' 1>/dev/null 2>&1 & disown
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
         sleep 0
-        .1
+        .05
         echo $i
     done
 } | whiptail --gauge "[ 5 of 5 ] Finishing PlexGuide Install" 6 50 0
