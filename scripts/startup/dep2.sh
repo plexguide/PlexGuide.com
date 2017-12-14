@@ -1,13 +1,10 @@
 
 clear
 
-## FutureNotes: sudo bash -c 'apt-get -y install sleuthkit >/dev/null 2>&1 & disown'
-
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 78) then
 
-###################### Install Depdency Programs ###############
-    clear
+###################### Install Depdency Programs ##########################################
 
     yes | apt-get update 1>/dev/null 2>&1 & disown
     sleep .1
@@ -52,6 +49,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     done
 } | whiptail --gauge "[ 2 of 5 ] Installing Dependencies" 6 50 0
 
+###################### Rre-Install ##########################################
 bash '/opt/plexguide/scripts/startup/directories.sh' 1>/dev/null 2>&1 & disown
 
 #Installing RClone and Service
@@ -72,7 +70,7 @@ sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
     done
 } | whiptail --gauge "[ 3 of 5 ] Pre-Installing RClone & PlexDrive" 6 50 0
 
-# Install Docker and Docker Composer / Checks to see if is installed also
+###################### Install Docker ##########################################
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1 1>/dev/null 2>&1 & disown
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1 & disown
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1 & disown
@@ -87,6 +85,7 @@ sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
       done
   } | whiptail --gauge "[ 4 of 5 ] Installing Docker" 6 50 0
 
+###################### Finishing Up ##########################################
 bash '/opt/plexguide/scripts/startup/postdocker.sh' 1>/dev/null 2>&1 & disown
 
 {
