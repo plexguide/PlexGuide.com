@@ -61,7 +61,7 @@ touch '/var/plexguide/basics.yes' 1>/dev/null 2>&1 & disown
 touch '/var/plexguide/version.5' 1>/dev/null 2>&1 & disown
 
 #Installing MongoDB for PlexDrive
-sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
+bash '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh' 1>/dev/null 2>&1 & disown
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -80,7 +80,7 @@ sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
 
   {
       for ((i = 0 ; i <= 100 ; i+=1)); do
-          sleep 0.6
+          sleep 0.4
           echo $i
       done
   } | whiptail --gauge "[ 4 of 5 ] Installing Docker" 6 50 0
