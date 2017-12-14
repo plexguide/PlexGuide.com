@@ -33,7 +33,7 @@ function contextSwitch {
 
 
 function userKernelMode {
-    {   
+    {
     raw=( $(grep "cpu " /proc/stat) )
         userfirst=$((${raw[1]} + ${raw[2]}))
         kernelfirst=${raw[3]}
@@ -50,7 +50,7 @@ function userKernelMode {
     echo $result > result
     echo 100
     } | whiptail --gauge "Getting data ..." 6 60 0
-} 
+}
 
 function interupts {
     {
@@ -65,21 +65,18 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "PlexGuide.com - v5.17.12.12 (By Admin9705 & Deiteq)" --menu "Make your choice" 17 90 10 \
-    "1)" "Donation :  Enable a little CPU to Mine Coins (It Helps Us)"   \
-    "2)" "RClone   :  Media Syncs to Google Drive"  \
-    "3)" "PlexDrive:  Prevent G-Drive Plex Scan Bans" \
-    "4)" "Programs :  Install Plex, Couch, NetData, Radarr, Sonarr & More!" \
-    "5)" "Updates  :  Update PlexGuide for the newest features & bugfixes!" \
-    "6)" "Info View:  View System Information to Assist You" \
-    "7)" "T-Shoot  :  Troubleshoot Problems & Provides Helpful Information" \
-    "8)" "Backup   :  Backup Docker Program Data to Your Google Drive" \
-    "9)" "Restore  :  Restore Program Data From Your Google Drive" \
-    "10)" "Exit  "  3>&2 2>&1 1>&3   
+    "1)" "Donation (Mine Coins - Help Us!)"   \
+    "2)" "RClone & PlexDrive"  \
+    "3)" "Supproting Programs" \
+    "4)" "Info & Troubleshoot" \
+    "5)" "Backup & Restore" \
+    "6)" "Update PlexGuide" \
+    "7)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
-    "1)")   
+    "1)")
        clear
             file="/var/plexguide/miner.set"
             if [ -e "$file" ]
@@ -95,48 +92,33 @@ case $CHOICE in
           bash /opt/plexguide/scripts/menus/mine/mining.sh
         ;;
 
-    "2)")   
+    "2)")
         clear
         bash /opt/plexguide/scripts/menus/rclone-menu.sh
         ;;
 
-    "3)")   
+    "3)")
         clear
-        bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
-        ;;
-
-    "4)")   
         bash /opt/plexguide/scripts/menus/programs.sh
-        clear
         ;;
 
-    "5)")   
+    "4)")
+        clear
+        bash /opt/plexguide/scripts/menus/help-select.sh
+        ;;
+
+    "5)")
+        clear
+        bash /opt/plexguide/scripts/menus/rclone-menu.sh
+        ;;
+
+    "6)")
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
 
-    "6)")   
-        bash /opt/plexguide/scripts/menus/info-menu.sh
-        clear
-        ;;
-
-    "7)")   
-        bash /opt/plexguide/scripts/menus/trouble-menu.sh
-        clear
-        ;;
-
-    "8)")   
-        bash /opt/plexguide/scripts/menus/backup-menu.sh
-        clear
-        ;;
-
-    "9)")   
-        bash /opt/plexguide/scripts/menus/restore-menu.sh
-        clear
-        ;;
-
-    "10)") 
+    "7)")
         clear
         echo Remember, restart by typing:  plexguide
         exit
