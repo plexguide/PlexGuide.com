@@ -8,27 +8,28 @@ then
     clear
 else
 clear
-cat << EOF
-Welcome to PlexGuide.com! Before you install the program, we will assist
+
+whiptail --title "Important" --msgbox "Welcome to PlexGuide.com! Before you install the program, we will assist
 you in making a user named: plexguide
 
-You are creating a user name known as (plexguide) with sudo permissions!
-
-- Do Not Forget Your Password (If you do, use root to change)
-- Recommend to login with user (plexguide) instead of root futurewise!
-- This entire program (permisisons) RUNS from the user: plexguide
-
-Version 4 Users: Create the user, and DO NOT ACCEPT THE UPGRADE. You can still
-use the old menu!
+- You are creating a user name known as (plexguide) with sudo permissions!
+- Do Not Forget Your Password (Use Troubleshoot To Change)
 
 ENCRYPTION USERS WARNING! If using encrypted method, do not upgrade. Create the
-user as required, but when asking for upgrade; select NO. Encryption needs work!
+user as required, but when asking for upgrade; select NO. Encryption needs work!" 8 78
 
-EOF
 
-#### (Not Used) read -p "Create a [USERNAME]: " username
-read -p "Create a [PASSWORD] for [user - plexguide]: " password
-printf "\n\n"
+password=$(whiptail --passwordbox "Create a Password for the User: plexguide" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
+                                                                        # A trick to swap stdout and stderr.
+# Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+    echo "User selected Ok and entered " $password
+else
+    echo "User selected Cancel."
+fi
+
+echo "(Exit status was $exitstatus)"
 
 useradd -m -s /bin/bash plexguide -u 6000 -g 1000
 echo -e ""$password"\n"$password"\n" | passwd plexguide
