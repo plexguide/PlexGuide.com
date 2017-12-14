@@ -87,6 +87,7 @@ sudo bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 2>&1 & disown
 
 ###################### Finishing Up ##########################################
 bash '/opt/plexguide/scripts/startup/postdocker.sh' 1>/dev/null 2>&1 & disown
+bash '/opt/plexguide/scripts/startup/owner.sh' 1>/dev/null 2>&1 & disown
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
