@@ -13,7 +13,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 
     {
         for ((i = 0 ; i <= 100 ; i+=1)); do
-            sleep 0.5
+            sleep 0.3
             echo $i
         done
     } | whiptail --gauge "[ 1 of 6 ] Updating Your System" 6 50 0
@@ -35,97 +35,81 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 
 ################### For PlexDrive
 
-  mkdir -p /opt/plexguide-startup
-  chmod 755 /opt/plexguide-startup
+  mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
+  chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
 
 ################### For SAB
 
-  mkdir -p /home/plexguide
-  mkdir -p /home/plexguide/sab/admin
-  mkdir -p /home/plexguide/sab/incomplete
-  mkdir -p /home/plexguide/sab/complete/tv
-  mkdir -p /home/plexguide/sab/complete/movies
-  mkdir -p /home/plexguide/sab/nzb
+  mkdir -p /home/plexguide 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/sab/admin 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/sab/incomplete 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/sab/complete/tv 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/sab/complete/movies 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/sab/nzb 1>/dev/null 2>&1
 
 #################### For NZBGET
 
-  mkdir -p /home/plexguide/nzbget
-  mkdir -p /home/plexguide/nzbget/incomplete
-  mkdir -p /home/plexguide/nzbget/completed/tv
-  mkdir -p /home/plexguide/nzbget/completed/movies
-  mkdir -p /home/plexguide/nzbget/nzb
-  mkdir -p /home/plexguide/nzbget/tmp
-  mkdir -p /home/plexguide/nzbget/queue
+  mkdir -p /home/plexguide/nzbget 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/nzbget/incomplete 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/nzbget/completed/tv 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/nzbget/completed/movies 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/nzbget/nzb 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/nzbget/tmp 1>/dev/null 2>&1
+  mkdir -p /home/plexguide/nzbget/queue 1>/dev/null 2>&1
 
 ########################################################### RClone
 
-mkdir -p /home/plexguide/move
-mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/unionfs
-mkdir -p /home/plexguide/plexdrive4
-mkdir -p /opt/appdata/plexguide
-mkdir -p /home/plexguide/plexdrive4
+mkdir -p /home/plexguide/move 1>/dev/null 2>&1
+mkdir -p /home/plexguide/gdrive 1>/dev/null 2>&1
+mkdir -p /home/plexguide/unionfs 1>/dev/null 2>&1
+mkdir -p /home/plexguide/plexdrive4 1>/dev/null 2>&1
+mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
+mkdir -p /home/plexguide/plexdrive4 1>/dev/null 2>&1
 
-#file="/var/plexguide/chown.yes"
-#if [ -e "$file" ]
-#then
-#    mkdir -p /home/plexguide/move
-#else
-#    chown -R plexguide:1000 /home/plexguide/
-#    touch /var/plexguide/chown.yes
-#fi
-bash /opt/plexguide/scripts/startup/owner.sh
+bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
-        sleep 0.3
+        sleep 0.2
         echo $i
     done
-} | whiptail --gauge "[ 2 of 6]." 6 50 0
+} | whiptail --gauge "[ 2 of 6] Installing Dependencies" 6 50 0
 
-######################################################### For RCLONE
 
-echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
-  bash /opt/plexguide/scripts/startup/rclone-preinstall.sh
+sudo bash -c '/opt/plexguide/scripts/startup/rclone-preinstall.sh >/dev/null 2>&1 & disown'
 
 #Lets the System Know that Script Ran Once
-  touch /var/plexguide/basics.yes
-  touch /var/plexguide/version.5
-
-echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
+  touch /var/plexguide/basics.yes 1>/dev/null 2>&1
+  touch /var/plexguide/version.5 1>/dev/null 2>&1
 
 #Installing MongoDB for PlexDrive
-  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
+sudo bash -c '/opt/plexguide/scripts/startup/plexdrive-preinstall.sh >/dev/null 2>&1 & disown'
 
-#  Adding basic environment file ################################
-#  chmod +x bash /opt/plexguide/scripts/basic-env.sh
-
-#  bash /opt/plexguide/scripts/test/basic-env.sh 1>/dev/null 2>&1
-
-  echo "4. Installing Docker & Docker Compose (Please Standby)"
+{
+    for ((i = 0 ; i <= 100 ; i+=1)); do
+        sleep 0.1
+        echo $i
+    done
+} | whiptail --gauge "[ 3 of 6] Pre-Installing RClone & PlexDrive" 6 50 0
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
-  echo "5. Created the PlexGuide Network for Docker"
-
-# Creates PlexGuide Network
-# docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
-
-  echo "6. Installing Portainer for Docker (Please Wait)"
-
 # Installs Portainer
   docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
-############################################# Install a Post-Docker Fix ###################### START
+  {
+      for ((i = 0 ; i <= 100 ; i+=1)); do
+          sleep 0.5
+          echo $i
+      done
+  } | whiptail --gauge "[ 4 of 6] Installing Docker" 6 50 0
 
-    echo "7. Removing NGINX-Proxy Container if it Exists (Please Wait)"
-    docker stop nginx-proxy 1>/dev/null 2>&1
-    docker rm nginx-proxy 1>/dev/null 2>&1
+############################################# Install a Post-Docker Fix ###################### START
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
