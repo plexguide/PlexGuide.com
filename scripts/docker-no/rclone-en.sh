@@ -41,7 +41,7 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   # Allow non-root users to specify the allow_other or allow_root mount options.
   user_allow_other
 EOF
-
+echo 0
 ## Make RClone Directory incase
 mkdir -p /home/plexguide/.config/rclone
 
@@ -50,10 +50,10 @@ mkdir -p /home/plexguide/.config/rclone
 
 ## Assigning Permissions to PlexGuide
 chown -R plexguide:1000 /home/plexguide/.config/rclone
-
+echo 0a
 chown -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
-
+echo 0b
 chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 echo 1
