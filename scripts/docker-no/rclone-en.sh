@@ -55,6 +55,7 @@ chown -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 chmod 777 -R plexguide:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
 echo 0b
 chown -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
+echo 0b2
 chmod 777 -R plexguide:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
 echo 1
 ## RClone Script
