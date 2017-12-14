@@ -10,9 +10,9 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     clear
 
 
-    yes | apt-get install update 1>/dev/null 2>&1 & disown
+    yes | apt-get update 1>/dev/null 2>&1 & disown
     sleep .1
-    
+
     {
         for ((i = 0 ; i <= 100 ; i+=1)); do
             sleep 0.2
