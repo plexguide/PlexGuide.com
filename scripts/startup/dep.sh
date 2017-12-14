@@ -7,7 +7,6 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 ###################### Install Depdency Programs ##########################################
 
     yes | apt-get update 1>/dev/null 2>&1 & disown
-    sleep .1
 
     {
         for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -17,29 +16,17 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     } | whiptail --gauge "[ 1 of 5 ] Updating Your System" 6 50 0
 
     yes | apt-get install curl 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install apt-transport-https 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install nano 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install fuse 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install man-db 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install unzip 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install zip 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install python 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install openssh-server 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install unions-fuse 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install dirmngr 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install software-properties-common 1>/dev/null 2>&1 & disown
-    sleep .1
     yes | apt-get install fail2ban 1>/dev/null 2>&1 & disown
 
 {
