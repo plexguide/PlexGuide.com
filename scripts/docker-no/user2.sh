@@ -24,7 +24,7 @@ PASSWORD=$(whiptail --passwordbox "Create a Password for the User: plexguide" 8 
 # Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-    echo "User selected Ok and entered " $password
+    echo "User selected Ok and entered " password
 else
     echo "User selected Cancel."
 fi
