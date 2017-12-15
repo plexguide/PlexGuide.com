@@ -11,6 +11,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
     rm -r /mnt/gdrive/Backup/"$YMLPROGRAM" 1>/dev/null 2>&1
+    echo ""
     echo "1. Stopping Your Docker Program"
     echo "2. Compressing & Zipping Your Backup Request for "$YMLDISPLAY""
     echo ""
@@ -25,6 +26,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "4. Restarting Your Docker Program"
     echo ""
     echo "Finished - Check Your Google Drive for the Backup Incase!"
+    echo ""
 else
     echo No
     clear
