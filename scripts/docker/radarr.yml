@@ -9,9 +9,9 @@ services:
    volumes:
      - /opt/appdata/radarr:/config
      - /:/yourcomputer
-     - /home/plexguide/unionfs:/unionfs
-     - /home/plexguide/sab/complete:/complete
-     - /home/plexguide/nzbget/completed:/completed
+     - /mnt/unionfs:/unionfs
+     - /mnt/sab/complete:/complete
+     - /mnt/nzbget/completed:/completed
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=1000

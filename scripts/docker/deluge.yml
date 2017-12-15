@@ -13,10 +13,10 @@ services:
      - 58946:58946
    volumes:
      - /opt/appdata/deluge/config:/config
-     - /home/plexguide/deluge/downloads:/data
+     - /mnt/deluge/downloads:/data
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
-     - /home/plexguide/unionfs/completed:/completed
+     - /mnt/unionfs/completed:/completed
    environment:
      - UMASK=000
      - PUID=1000

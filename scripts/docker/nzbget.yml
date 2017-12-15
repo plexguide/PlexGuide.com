@@ -9,13 +9,13 @@ services:
    volumes:
      - /opt/appdata/nzbget:/config
      - /:/yourcomputer
-     - /home/plexguide/nzbget/completed:/completed
-     - /home/plexguide/nzbget/incomplete:/incomplete
-     - /home/plexguide/nzbget/nzb:/nzb
-     - /home/plexguide/nzbget/tmp:/tmp
-     - /home/plexguide/nzbget/queue:/queue
-     - /home/plexguide/nzbget/scripts:/scripts
-     - /home/plexguide/unionfs:/unionfs
+     - /mnt/nzbget/completed:/completed
+     - /mnt/nzbget/incomplete:/incomplete
+     - /mnt/nzbget/nzb:/nzb
+     - /mnt/nzbget/tmp:/tmp
+     - /mnt/nzbget/queue:/queue
+     - /mnt/nzbget/scripts:/scripts
+     - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=1000

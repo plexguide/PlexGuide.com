@@ -9,8 +9,8 @@ services:
    volumes:
      - /opt/appdata/jackett:/config
      - /:/yourcomputer
-     - /home/plexguide/delugevpn/downloads:/downloads
-     - /home/plexguide/unionfs:/unionfs
+     - /mnt/delugevpn/downloads:/downloads
+     - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    env_file:
     - /opt/.environments/.env

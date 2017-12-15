@@ -8,10 +8,10 @@ services:
      - "8090:8080"
    volumes:
      - /opt/appdata/sabnzbd:/config
-     - /home/plexguide/sab/complete:/complete
-     - /home/plexguide/sab/incomplete:/incomplete
-     - /home/plexguide/sab/nzb:/nzb
-     - /home/plexguide/sab/admin:/admin
+     - /mnt/sab/complete:/complete
+     - /mnt/sab/incomplete:/incomplete
+     - /mnt/sab/nzb:/nzb
+     - /mnt/sab/admin:/admin
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    environment:
