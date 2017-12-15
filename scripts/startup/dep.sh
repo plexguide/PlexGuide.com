@@ -122,21 +122,14 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
-  echo "5. Created the PlexGuide Network for Docker"
-
-# Creates PlexGuide Network
-# docker network create --driver=bridge --subnet=172.24.0.0/16 plexguide 1>/dev/null 2>&1
-
-  echo "6. Installing Portainer for Docker (Please Wait)"
+  echo "4. Installing Portainer for Docker (Please Wait)"
 
 # Installs Portainer
   docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "7. Removing NGINX-Proxy Container if it Exists (Please Wait)"
-    docker stop nginx-proxy 1>/dev/null 2>&1
-    docker rm nginx-proxy 1>/dev/null 2>&1
+    echo "5. Finishing Up"
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
@@ -209,8 +202,6 @@ cat << EOF
 ~~~~~~~~~~~~~~
 
 Pre-Install / Re-Install Complete!
-
->>> WARNING WARNING - RUN as USER: plexguide <<<
 
 <Donation Info> If your enjoying the programming, donating coin or enabling
 mininig helps up go a long way.  If you enable mining, you can choose how
