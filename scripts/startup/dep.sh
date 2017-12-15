@@ -50,7 +50,7 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### chown
 
-  chown -R plexguide:1000 /opt/plexguide/scripts/docker-no/*
+  chown -R 1000:1000 /opt/plexguide/scripts/docker-no/*
 
 ################### For PlexDrive
 
@@ -90,7 +90,7 @@ mkdir -p /mnt/plexdrive4
 #then
 #    mkdir -p /mnt/move
 #else
-#    chown -R plexguide:1000 /mnt/
+#    chown -R 1000:1000 /mnt/
 #    touch /var/plexguide/chown.yes
 #fi
 bash /opt/plexguide/scripts/startup/owner.sh
