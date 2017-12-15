@@ -72,7 +72,8 @@ whiptail --title "PlexGuide.com - v5.0004 (Admin9705 & Deiteq)" --menu "Make you
     "4)" "Info & Troubleshoot" \
     "5)" "Backup & Restore" \
     "6)" "Update PlexGuide" \
-    "7)" "Exit  "  3>&2 2>&1 1>&3
+    "7)" "NGINX (BETA TESTING)" \
+    "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -118,8 +119,14 @@ case $CHOICE in
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-
+    
     "7)")
+        clear
+        bash /opt/plexguide/scripts/menus/nginx-programs.sh
+        ;;
+
+
+    "8)")
         clear
         echo Remember, restart by typing:  plexguide
         exit

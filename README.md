@@ -13,7 +13,11 @@
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - Slack Autoinvite: http://invite.plexguide.com and Slack # @ https://plexguidecom.slack.com (Preferred)
 - Reddit Discussion Link: http://reddit.plexguide.com (Secondary)
-- UBUNTU 16.04 & 17.04 Only !!! Not for Server (.10) versions!
+- **UBUNTU 16.04 & 17.04** Only !!! Not for Server (.10) versions!
+
+### Awesome Beta Testers & Contributers!
+
+- [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), imes, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK,
 
 ### Want to Donate? Everybit Helps!
 

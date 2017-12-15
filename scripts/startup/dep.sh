@@ -122,14 +122,14 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
-  echo "4. Installing Portainer for Docker (Please Wait)"
+  echo "5. Installing Portainer for Docker (Please Wait)"
 
 # Installs Portainer
   docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "5. Finishing Up"
+    echo "6. Finishing Up"
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
@@ -171,7 +171,7 @@ EOF
   systemctl enable dockerfix 1>/dev/null 2>&1
   systemctl start dockerfix 1>/dev/null 2>&1
 
-  echo "8. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
+  echo "7. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
 
   docker restart emby 1>/dev/null 2>&1
   docker restart nzbget 1>/dev/null 2>&1

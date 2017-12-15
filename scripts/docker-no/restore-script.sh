@@ -13,6 +13,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
     clear
     rm -r /opt/appdata/"$YMLPROGRAM" 1>/dev/null 2>&1
+    echo ""
     echo "1. Stopping Your Docker Program"
     echo "2. Make a directory for "$YMLDISPLAY""
     mkdir -p /opt/appdata/"$YMLPROGRAM"
@@ -27,7 +28,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo "4. Restarted Your Docker Program"
     echo ""
     echo "Finished - Check the Folder Manually or Program!"
-    echo
+    echo ""
 else
     echo No
     clear
