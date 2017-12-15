@@ -3,14 +3,14 @@
 clear
 
 ## Supporting Folders
-#mkdir -p /home/plexguide/move
-mkdir -p /home/plexguide/.gcrypt
-#mkdir -p /home/plexguide/gdrive
-#mkdir -p /home/plexguide/unionfs/tv
-#mkdir -p /home/plexguide/unionfs/movies
+#mkdir -p /mnt/move
+mkdir -p /mnt/.gcrypt
+#mkdir -p /mnt/gdrive
+#mkdir -p /mnt/unionfs/tv
+#mkdir -p /mnt/unionfs/movies
 #mkdir -p /opt/appdata/plexguide
-#mkdir -p /home/plexguide/plexdrive4
-mkdir -p /home/plexguide/encrypt
+#mkdir -p /mnt/plexdrive4
+mkdir -p /mnt/encrypt
 
 ## Installing rclone
   cd /tmp
@@ -42,25 +42,19 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   user_allow_other
 EOF
 
-## Make RClone Directory incase
-mkdir -p /home/plexguide/.config/rclone
+## Copying to /mnt incase
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
-## Copying to /home/plexguide incase
-#cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
+chown -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
+chmod 777 -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
 
-## Assigning Permissions to PlexGuide
-chown -R 1000:1000 /home/plexguide/.config/rclone
-
-chown -R 1000:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
-chmod 777 -R 1000:1000 /home/plexguide/encrypt  1>/dev/null 2>&1
-
-chown -R 1000:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
-chmod 777 -R 1000:1000 /home/plexguide/.gcrypt  1>/dev/null 2>&1
+chown -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
+chmod 777 -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
 echo 1
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
 echo 2
@@ -84,7 +78,7 @@ echo 3
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
+rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
 EOF
 chmod 755 /opt/appdata/plexguide/rclone-encrypt.sh
 
@@ -116,7 +110,7 @@ After=multi-user.target
 Type=simple
 User=1000
 Group=1000
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /home/plexguide/encrypt --bwlimit 8650k --size-only
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -135,7 +129,7 @@ echo 5
 ##Type=simple
 ##User=plexguide
 ##Group=1000
-##ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /home/plexguide/.gcrypt --bwlimit 8650k --size-only
+##ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
 ##TimeoutStopSec=20
 ##KillMode=process
 ##RemainAfterExit=yes
@@ -153,7 +147,7 @@ After=multi-user.target
 Type=simple
 User=1000
 Group=1000
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/encrypt=RO /home/plexguide/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -167,7 +161,7 @@ tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 sleep 30
 while true
 do
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /home/plexguide/move gcrypt:/
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
 sleep 900
 done
 EOF

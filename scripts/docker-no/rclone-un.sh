@@ -30,19 +30,13 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 user_allow_other
 EOF
 
-## Make RClone Directory incase
-mkdir -p /home/plexguide/.config/rclone
-
-## Copying to /home/plexguide incase
-cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
-
-## Assigning Permissions to PlexGuide
-chown -R 1000:1000 /home/plexguide/.config/rclone/rclone.conf
+## Copying to /mnt incase
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/
 
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /home/plexguide/gdrive --bwlimit 8650k --size-only
+rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
 
@@ -73,7 +67,7 @@ After=multi-user.target
 Type=simple
 User=1000
 Group=1000
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/plexdrive4=RO /home/plexguide/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -89,7 +83,7 @@ sleep 30
 while true
 do
 ## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /home/plexguide/move gdrive:/
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /mnt/move gdrive:/
 sleep 600
 done
 EOF
