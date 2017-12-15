@@ -47,107 +47,115 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 20 23 13 \
-    "1)" "Not Ready - Plex"   \
-    "2)" "Not Ready - Emby"  \
-    "3)" "Not Ready - Netdata"  \
-    "4)" "Not Ready - NZBGET"  \
-    "5)" "Not Ready - Muximux"  \
-    "6)" "Not Ready - OMBIv3"  \
-    "7)" "Not Ready - Organizr"  \
-    "8)" "Not Ready - PlexPy"  \
-    "9)" "Not Ready - Radarr"  \
-    "10)" "Not Ready - SABNZBD"  \
-    "11)" "Sonarr"  \
-    "12)" "Not Ready - Wordpress"  \
-    "13)" "Exit  "  3>&2 2>&1 1>&3
+whiptail --title "Install Menu" --menu "Make your choice" 20 35 13 \
+    "1)" "NGINX - Required First"  \
+    "2)" "Not Ready - Plex"   \
+    "3)" "Not Ready - Emby"  \
+    "4)" "Not Ready - Netdata"  \
+    "5)" "Not Ready - NZBGET"  \
+    "6)" "Not Ready - Muximux"  \
+    "7)" "Not Ready - OMBIv3"  \
+    "8)" "Not Ready - Organizr"  \
+    "9)" "Not Ready - PlexPy"  \
+    "10)" "Not Ready - Radarr"  \
+    "11)" "Not Ready - SABNZBD"  \
+    "12)" "Sonarr"  \
+    "13)" "Not Ready - Wordpress"  \
+    "14)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
     "1)")
+     echo ymlprogram nginx-proxy > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Proxy >> /opt/plexguide/tmp.txt
+     echo ymlport 8989 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+
+    "2)")
      clear
      bash /opt/plexguide/scripts/menus/plexsub-menu.sh
      ;;
 
-    "2)")
+    "3)")
       echo ymlprogram emby > /opt/plexguide/tmp.txt
       echo ymldisplay Emby >> /opt/plexguide/tmp.txt
       echo ymlport 8096 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
 
-    "3)")
+    "4)")
      echo ymlprogram netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "4)")
+    "5)")
      echo ymlprogram nzbget > /opt/plexguide/tmp.txt
      echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
      echo ymlport 6789 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "5)")
+    "6)")
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "6)")
+    "7)")
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "7)")
+    "8)")
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "8)")
+    "9)")
      echo ymlprogram plexpy > /opt/plexguide/tmp.txt
      echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "9)")
+    "10)")
      echo ymlprogram radarr > /opt/plexguide/tmp.txt
      echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "10)")
+    "11)")
      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
      echo ymlport 8090 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "11)")
+    "12)")
      echo ymlprogram nginx-sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "12)")
+    "13)")
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
      echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "13)")
+    "14)")
         clear
         exit 0
         ;;
