@@ -119,16 +119,15 @@ case $CHOICE in
         clear
         echo Remember, restart by typing: plexguide
         exit 0;;
-    
+
     "7)")
         clear
         bash /opt/plexguide/scripts/menus/nginx-programs.sh
         ;;
 
-
     "8)")
         clear
-        echo Remember, restart by typing:  plexguide
+        echo "Remember, restart by typing:  plexguide"
         exit
         ;;
 esac
