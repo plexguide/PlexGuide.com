@@ -12,6 +12,7 @@ services:
      - /mnt/nzbget/completed:/completed
      - /mnt/nzbget/incomplete:/incomplete
      - /mnt/nzbget/nzb:/nzb
+     - /mnt/nzbget/log:/log
      - /mnt/nzbget/tmp:/tmp
      - /mnt/nzbget/queue:/queue
      - /mnt/nzbget/scripts:/scripts
