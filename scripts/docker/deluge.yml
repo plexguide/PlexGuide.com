@@ -17,8 +17,8 @@ services:
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /home/plexguide/unionfs/completed:/completed
-   environment:  
+   environment:
      - UMASK=000
-     - PUID=6000
+     - PUID=1000
      - PGID=1000
    restart: unless-stopped

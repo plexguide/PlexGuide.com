@@ -31,9 +31,9 @@ fi
 
 echo "(Exit status was $exitstatus)"
 
-useradd -m -s /bin/bash plexguide -u 6000 -g 1000
+useradd -m -s /bin/bash plexguide
 echo -e ""$password"\n"$password"\n" | passwd plexguide
-usermod -aG sudo plexguide
+usermod -aG plexguide
 touch /var/plexguide/plexguide.user
 
 clear

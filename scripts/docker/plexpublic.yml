@@ -28,7 +28,7 @@ services:
    #env_file:
     # - /opt/.environments/.plex-env
    environment:
-     - PUID=6000
+     - PUID=1000
      - PGID=1000
   #   - PLEX_CLAIM=${PMSTOKEN}
    network_mode: "host"

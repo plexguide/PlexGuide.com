@@ -8,7 +8,7 @@ clear
   unzip rclone-current-linux-amd64.zip 1>/dev/null 2>&1
   cd rclone-*-linux-amd64
   cp rclone /usr/bin/ 1>/dev/null 2>&1
-  chown plexguide:1000 /usr/bin/rclone 1>/dev/null 2>&1
+  chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
   chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
   mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
@@ -37,7 +37,7 @@ mkdir -p /home/plexguide/.config/rclone
 cp ~/.config/rclone/rclone.conf /home/plexguide/.config/rclone/
 
 ## Assigning Permissions to PlexGuide
-chown -R plexguide:1000 /home/plexguide/.config/rclone/rclone.conf
+chown -R 1000:1000 /home/plexguide/.config/rclone/rclone.conf
 
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
@@ -53,7 +53,7 @@ Description=RClone Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=plexguide
+User=1000
 Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
 TimeoutStopSec=20
@@ -71,7 +71,7 @@ Description=UnionFS Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=plexguide
+User=1000
 Group=1000
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /home/plexguide/move=RW:/home/plexguide/plexdrive4=RO /home/plexguide/unionfs
 TimeoutStopSec=20
@@ -102,7 +102,7 @@ Description=Move Service Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=plexguide
+User=1000
 Group=1000
 ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20

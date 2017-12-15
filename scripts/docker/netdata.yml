@@ -11,5 +11,5 @@ services:
      - 19999:19999
    restart: always
    environment:
-     - PUID=6000
+     - PUID=1000
      - PGID=1000

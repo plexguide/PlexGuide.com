@@ -11,5 +11,5 @@ services:
    ports:
      - 8181:8181
    environment:
-     - PUID=6000
+     - PUID=1000
      - PGID=1000
