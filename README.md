@@ -17,7 +17,7 @@
 
 ### Awesome Beta Testers & Contributers!
 
-- (AugusDogus)[https://github.com/AugusDogus], bate, cocainbiceps, imes, simon021, SpencerUK,
+- [AugusDogus](https://github.com/AugusDogus), bate, cocainbiceps, imes, simon021, SpencerUK,
 
 ### Want to Donate? Everybit Helps!
 
