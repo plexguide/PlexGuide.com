@@ -129,7 +129,6 @@ case $CHOICE in
         clear
         echo "Remember, restart by typing:  plexguide"
         exit 0;;
-        ;;
 esac
 done
 exit
