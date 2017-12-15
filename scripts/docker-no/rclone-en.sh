@@ -67,8 +67,8 @@ Description=RClone Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=1000
-Group=1000
+User=0
+Group=0
 ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
 TimeoutStopSec=20
 KillMode=process
@@ -91,8 +91,8 @@ Description=RClone Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=1000
-Group=1000
+User=0
+Group=0
 ExecStart=/bin/bash /opt/appdata/plexguide/rclone-encrypt.sh
 TimeoutStopSec=20
 KillMode=process
@@ -110,8 +110,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=1000
-Group=1000
+User=0
+Group=0
 ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
 TimeoutStopSec=20
 KillMode=process

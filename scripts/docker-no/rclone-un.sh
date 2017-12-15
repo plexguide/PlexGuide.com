@@ -67,8 +67,8 @@ Description=UnionFS Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=1000
-Group=1000
+User=0
+Group=0
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
