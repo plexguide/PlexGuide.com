@@ -30,8 +30,10 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 user_allow_other
 EOF
 
+mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
+
 ## Copying to /mnt incase
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF

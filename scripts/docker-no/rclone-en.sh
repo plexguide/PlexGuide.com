@@ -42,8 +42,10 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   user_allow_other
 EOF
 
+mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
+
 ## Copying to /mnt incase
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
 chown -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
 chmod 777 -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
