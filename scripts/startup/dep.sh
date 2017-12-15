@@ -59,38 +59,38 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### For SAB
 
-  mkdir -p /home/plexguide
-  mkdir -p /home/plexguide/sab/admin
-  mkdir -p /home/plexguide/sab/incomplete
-  mkdir -p /home/plexguide/sab/complete/tv
-  mkdir -p /home/plexguide/sab/complete/movies
-  mkdir -p /home/plexguide/sab/nzb
+  mkdir -p /mnt
+  mkdir -p /mnt/sab/admin
+  mkdir -p /mnt/sab/incomplete
+  mkdir -p /mnt/sab/complete/tv
+  mkdir -p /mnt/sab/complete/movies
+  mkdir -p /mnt/sab/nzb
 
 #################### For NZBGET
 
-  mkdir -p /home/plexguide/nzbget
-  mkdir -p /home/plexguide/nzbget/incomplete
-  mkdir -p /home/plexguide/nzbget/completed/tv
-  mkdir -p /home/plexguide/nzbget/completed/movies
-  mkdir -p /home/plexguide/nzbget/nzb
-  mkdir -p /home/plexguide/nzbget/tmp
-  mkdir -p /home/plexguide/nzbget/queue
+  mkdir -p /mnt/nzbget
+  mkdir -p /mnt/nzbget/incomplete
+  mkdir -p /mnt/nzbget/completed/tv
+  mkdir -p /mnt/nzbget/completed/movies
+  mkdir -p /mnt/nzbget/nzb
+  mkdir -p /mnt/nzbget/tmp
+  mkdir -p /mnt/nzbget/queue
 
 ########################################################### RClone
 
-mkdir -p /home/plexguide/move
-mkdir -p /home/plexguide/gdrive
-mkdir -p /home/plexguide/unionfs
-mkdir -p /home/plexguide/plexdrive4
+mkdir -p /mnt/move
+mkdir -p /mnt/gdrive
+mkdir -p /mnt/unionfs
+mkdir -p /mnt/plexdrive4
 mkdir -p /opt/appdata/plexguide
-mkdir -p /home/plexguide/plexdrive4
+mkdir -p /mnt/plexdrive4
 
 #file="/var/plexguide/chown.yes"
 #if [ -e "$file" ]
 #then
-#    mkdir -p /home/plexguide/move
+#    mkdir -p /mnt/move
 #else
-#    chown -R plexguide:1000 /home/plexguide/
+#    chown -R plexguide:1000 /mnt/
 #    touch /var/plexguide/chown.yes
 #fi
 bash /opt/plexguide/scripts/startup/owner.sh
