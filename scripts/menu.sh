@@ -72,7 +72,7 @@ whiptail --title "PlexGuide.com - v5.0004 (Admin9705 & Deiteq)" --menu "Make you
     "4)" "Info & Troubleshoot" \
     "5)" "Backup & Restore" \
     "6)" "Update PlexGuide" \
-    "7)" "NGINX Beta - Beta" \
+    "7)" "NGINX (BETA TESTING)" \
     "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 

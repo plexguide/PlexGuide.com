@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 20 35 13 \
+whiptail --title "Install Menu" --menu "Make your choice" 21 35 14 \
     "1)" "NGINX - Required First"  \
     "2)" "Not Ready - Plex"   \
     "3)" "Not Ready - Emby"  \
