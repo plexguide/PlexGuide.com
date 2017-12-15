@@ -117,7 +117,7 @@ case $CHOICE in
     "6)")
         bash /opt/plexguide/scripts/docker-no/upgrade.sh
         clear
-        echo Remember, restart by typing: plexguide
+        echo "Remember, restart by typing: plexguide"
         exit 0;;
 
     "7)")
