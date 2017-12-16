@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 21 35 14 \
+whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "1)" "NGINX - Required First"  \
     "2)" "Not Ready - Plex"   \
     "3)" "Not Ready - Emby"  \
@@ -61,7 +61,8 @@ whiptail --title "Install Menu" --menu "Make your choice" 21 35 14 \
     "11)" "Not Ready - SABNZBD"  \
     "12)" "Sonarr"  \
     "13)" "Not Ready - Wordpress"  \
-    "14)" "Exit  "  3>&2 2>&1 1>&3
+    "14)" "Apache"  \
+    "15)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -156,6 +157,13 @@ case $CHOICE in
      ;;
 
     "14)")
+     echo ymlprogram nginx-apache > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Apache >> /opt/plexguide/tmp.txt
+     echo ymlport 80 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+
+    "15)")
         clear
         exit 0
         ;;
