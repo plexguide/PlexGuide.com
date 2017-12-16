@@ -16,7 +16,7 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=sabnzbd.*
-     - VIRTUAL_PORT=8080
+     - VIRTUAL_HOST=sonarr.*
+     - VIRTUAL_PORT=8989
    restart:
      always
