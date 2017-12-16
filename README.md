@@ -17,7 +17,7 @@
 
 ### Awesome Beta Testers & Contributers!
 
-- [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood (For the motivation to start programming), imes, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK,
+- [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK,
 
 ### Want to Donate? Everybit Helps!
 
