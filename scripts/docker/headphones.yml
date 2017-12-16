@@ -5,14 +5,14 @@ services:
    image: linuxserver/headphones
    container_name: headphones
    ports:
-     - 8150:8181
+     - 8282:8181
    volumes:
      - /opt/appdata/headphones:/config
      - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
-     - PUID=0
-     - PGID=0
+     - PUID=1000
+     - PGID=1000
    restart:
      always

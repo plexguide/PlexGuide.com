@@ -47,20 +47,21 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 20 23 13 \
+whiptail --title "Install Menu" --menu "Make your choice" 21 23 14 \
     "1)" "Plex"   \
     "2)" "Emby"  \
-    "3)" "Netdata"  \
-    "4)" "NZBGET"  \
-    "5)" "Muximux"  \
-    "6)" "OMBIv3"  \
-    "7)" "Organizr"  \
-    "8)" "PlexPy"  \
-    "9)" "Radarr"  \
-    "10)" "SABNZBD"  \
-    "11)" "Sonarr"  \
-    "12)" "Wordpress"  \
-    "13)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Headphones"  \
+    "4)" "Netdata"  \
+    "5)" "NZBGET"  \
+    "6)" "Muximux"  \
+    "7)" "OMBIv3"  \
+    "8)" "Organizr"  \
+    "9)" "PlexPy"  \
+    "10)" "Radarr"  \
+    "11)" "SABNZBD"  \
+    "12)" "Sonarr"  \
+    "13)" "Wordpress"  \
+    "14)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -78,76 +79,83 @@ case $CHOICE in
       ;;
 
     "3)")
+     echo ymlprogram headphones > /opt/plexguide/tmp.txt
+     echo ymldisplay Headphones >> /opt/plexguide/tmp.txt
+     echo ymlport 8282 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+
+    "4)")
      echo ymlprogram netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "4)")
+    "5)")
      echo ymlprogram nzbget > /opt/plexguide/tmp.txt
      echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
      echo ymlport 6789 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "5)")
+    "6)")
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "6)")
+    "7)")
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "7)")
+    "8)")
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "8)")
+    "9)")
      echo ymlprogram plexpy > /opt/plexguide/tmp.txt
      echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "9)")
+    "10)")
      echo ymlprogram radarr > /opt/plexguide/tmp.txt
      echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "10)")
+    "11)")
      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
      echo ymlport 8090 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "11)")
+    "12)")
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "12)")
+    "13)")
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
      echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "13)")
+    "14)")
         clear
         exit 0
         ;;
