@@ -1,5 +1,11 @@
 #!/bin/bash
 
+############################################################### FOLDERS
+
+mkdir -p /mnt/move/music 1>/dev/null 2>&1
+
+
+############################################################### PERMISSIONS
 chown 1000:1000 /mnt/ 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/gdrive 1>/dev/null 2>&1
