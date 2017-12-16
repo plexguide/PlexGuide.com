@@ -2,7 +2,7 @@
 version: '2'
 services:
  nginx-radarr:
-   image: linuxserver/sonarr
+   image: linuxserver/radarr
    container_name: nginx-radarr
    ports:
      - "7878:7878"
