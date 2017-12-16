@@ -34,5 +34,3 @@ mkdir -p /mnt/unionfs 1>/dev/null 2>&1
 mkdir -p /mnt/plexdrive4 1>/dev/null 2>&1
 mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
 mkdir -p /mnt/plexdrive4 1>/dev/null 2>&1
-
-bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
