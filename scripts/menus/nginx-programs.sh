@@ -57,7 +57,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 21 35 14 \
     "7)" "Not Ready - OMBIv3"  \
     "8)" "Not Ready - Organizr"  \
     "9)" "Not Ready - PlexPy"  \
-    "10)" "Not Ready - Radarr"  \
+    "10)" "Radarr"  \
     "11)" "Not Ready - SABNZBD"  \
     "12)" "Sonarr"  \
     "13)" "Not Ready - Wordpress"  \
@@ -128,8 +128,8 @@ case $CHOICE in
      ;;
 
     "10)")
-     echo ymlprogram radarr > /opt/plexguide/tmp.txt
-     echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-radarr > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
