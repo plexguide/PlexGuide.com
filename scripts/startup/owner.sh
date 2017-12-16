@@ -5,26 +5,32 @@ chown 1000:1000 /mnt/ 1>/dev/null 2>&1
 chown 1000:1000 /mnt/gdrive 1>/dev/null 2>&1
 chown 1000:1000 /mnt/gdrive/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/gdrive/movies 1>/dev/null 2>&1
+chown 1000:1000 /mnt/gdrive/music 1>/dev/null 2>&1
 
 chmod 777 /mnt/gdrive 1>/dev/null 2>&1
 chmod 777 /mnt/gdrive/tv 1>/dev/null 2>&1
 chmod 777 /mnt/gdrive/movies 1>/dev/null 2>&1
+chmod 777 /mnt/gdrive/music 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/.grcypt 1>/dev/null 2>&1
 chown 1000:1000 /mnt/.grcypt/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/.grcypt/movies 1>/dev/null 2>&1
+chown 1000:1000 /mnt/.grcypt/music 1>/dev/null 2>&1
 
 chmod 777 /mnt/.grcypt 1>/dev/null 2>&1
 chmod 777 /mnt/.grcypt/tv 1>/dev/null 2>&1
 chmod 777 /mnt/.grcypt/movies 1>/dev/null 2>&1
+chmod 777 /mnt/.grcypt/music 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/move 1>/dev/null 2>&1
 chown 1000:1000 /mnt/move/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/move/movies 1>/dev/null 2>&1
+chown 1000:1000 /mnt/move/music 1>/dev/null 2>&1
 
 chmod 777 /mnt/move 1>/dev/null 2>&1
 chmod 777 /mnt/move/tv 1>/dev/null 2>&1
 chmod 777 /mnt/move/movies 1>/dev/null 2>&1
+chmod 777 /mnt/move/music 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/nzbget 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/completed 1>/dev/null 2>&1
