@@ -12,6 +12,7 @@
   mkdir -p /mnt/sab/incomplete 1>/dev/null 2>&1
   mkdir -p /mnt/sab/complete/tv 1>/dev/null 2>&1
   mkdir -p /mnt/sab/complete/movies 1>/dev/null 2>&1
+  mkdir -p /mnt/sab/complete/music 1>/dev/null 2>&1
   mkdir -p /mnt/sab/nzb 1>/dev/null 2>&1
 
 #################### For NZBGET
@@ -20,6 +21,7 @@
   mkdir -p /mnt/nzbget/incomplete 1>/dev/null 2>&1
   mkdir -p /mnt/nzbget/completed/tv 1>/dev/null 2>&1
   mkdir -p /mnt/nzbget/completed/movies 1>/dev/null 2>&1
+  mkdir -p /mnt/nzbget/completed/music 1>/dev/null 2>&1
   mkdir -p /mnt/nzbget/nzb 1>/dev/null 2>&1
   mkdir -p /mnt/nzbget/tmp 1>/dev/null 2>&1
   mkdir -p /mnt/nzbget/queue 1>/dev/null 2>&1
