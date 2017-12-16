@@ -1,9 +1,7 @@
 #!/bin/bash
 
 ############################################################### FOLDERS
-
 mkdir -p /mnt/move/music 1>/dev/null 2>&1
-
 
 ############################################################### PERMISSIONS
 chown 1000:1000 /mnt/ 1>/dev/null 2>&1
@@ -59,16 +57,19 @@ chmod 777 /mnt/nzbget/tmp 1>/dev/null 2>&1
 chown 1000:1000 /mnt/plexdrive4 1>/dev/null 2>&1
 chown 1000:1000 /mnt/plexdrive4/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/plexdrive4/movies 1>/dev/null 2>&1
+chown 1000:1000 /mnt/plexdrive4/music 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/encrypt 1>/dev/null 2>&1
 chown 1000:1000 /mnt/encrypt/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/encrypt/movies 1>/dev/null 2>&1
+chown 1000:1000 /mnt/encrypt/music 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/sab 1>/dev/null 2>&1
 chown 1000:1000 /mnt/sab/admin 1>/dev/null 2>&1
 chown 1000:1000 /mnt/sab/complete 1>/dev/null 2>&1
 chown 1000:1000 /mnt/sab/complete/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/sab/complete/movies 1>/dev/null 2>&1
+chown 1000:1000 /mnt/sab/complete/music 1>/dev/null 2>&1
 chown 1000:1000 /mnt/sab/incomplete 1>/dev/null 2>&1
 chown 1000:1000 /mnt/sab/nzb 1>/dev/null 2>&1
 
@@ -76,6 +77,7 @@ chmod 777 /mnt/sab/ 1>/dev/null 2>&1
 chmod 777 /mnt/sab/complete 1>/dev/null 2>&1
 chmod 777 /mnt/sab/complete/tv  1>/dev/null 2>&1
 chmod 777 /mnt/sab/complete/movies  1>/dev/null 2>&1
+chmod 777 /mnt/sab/complete/music  1>/dev/null 2>&1
 chmod 777 /mnt/sab/complete/incomplete  1>/dev/null 2>&1
 chmod 777 /mnt/sab/complete/nzb  1>/dev/null 2>&1
 

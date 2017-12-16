@@ -11,6 +11,8 @@ services:
      - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
+     - /mnt/sab/complete:/complete
+     - /mnt/nzbget/completed:/completed
    environment:
      - PUID=1000
      - PGID=1000
