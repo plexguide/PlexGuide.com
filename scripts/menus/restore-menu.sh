@@ -88,19 +88,19 @@ case $CHOICE in
    "5)")
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay SONARR >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/backup-script.sh
+     bash /opt/plexguide/scripts/docker-no/restore-script.sh
      ;;
 
    "6)")
      echo ymlprogram radarr > /opt/plexguide/tmp.txt
      echo ymldisplay RADARR >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/backup-script.sh
+     bash /opt/plexguide/scripts/docker-no/restore-script.sh
      ;;
 
    "7)")
      echo ymlprogram emby > /opt/plexguide/tmp.txt
      echo ymldisplay EMBY >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/backup-script.sh
+     bash /opt/plexguide/scripts/docker-no/restore-script.sh
      ;;
 
    "8)")
