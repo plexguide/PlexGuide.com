@@ -5,7 +5,7 @@ services:
    image: linuxserver/headphones
    container_name: headphones
    ports:
-     - 8282:8181
+     - 8181:8181
    volumes:
      - /opt/appdata/headphones:/config
      - /:/yourcomputer
