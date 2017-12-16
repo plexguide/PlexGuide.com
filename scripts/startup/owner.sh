@@ -90,3 +90,5 @@ chown 1000:1000 /mnt/.plexdrive* 1>/dev/null 2>&1
 
 chmod 777 /mnt/.config/* 1>/dev/null 2>&1
 chmod 777 /mnt/.plexdrive*  1>/dev/null 2>&1
+
+bash /opt/plexguide/scripts/startup/directories.sh
