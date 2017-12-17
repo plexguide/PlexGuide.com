@@ -9,11 +9,13 @@ services:
    volumes:
      - /opt/appdata/jackett:/config
      - /:/yourcomputer
-     - /mnt/delugevpn/downloads:/downloads
+     - /mnt/deluge/temp:/temp
+     - /mnt/deluge/downloaded:/downloaded
+     - /mnt/deluge/torrent:/torrent
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
-   env_file:
-    - /opt/.environments/.env
+   #env_file:
+    #- /opt/.environments/.env
    environment:
      - PUID=1000
      - PGID=1000

@@ -61,7 +61,8 @@ whiptail --title "Install Menu" --menu "Make your choice" 20 23 13 \
     "11)" "Sonarr"  \
     "12)" "Wordpress"  \
     "13)" "Deluge"  \
-    "14)" "Exit  "  3>&2 2>&1 1>&3
+    "14)" "Jackett"  \
+    "15)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -156,6 +157,13 @@ case $CHOICE in
       ;;
 
      "14)")
+      echo ymlprogram jackett > /opt/plexguide/tmp.txt
+      echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
+      echo ymlport 9117 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+
+     "15)")
       clear
       exit 0
       ;;
