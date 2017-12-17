@@ -60,7 +60,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 20 23 13 \
     "10)" "SABNZBD"  \
     "11)" "Sonarr"  \
     "12)" "Wordpress"  \
-    "13)" "Deluge"
+    "13)" "Deluge"  \
     "14)" "Exit  "  3>&2 2>&1 1>&3
 )
 
