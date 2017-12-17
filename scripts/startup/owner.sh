@@ -1,10 +1,21 @@
 #!/bin/bash
 
-############################################################### FOLDERS
-
 ############################################################### PERMISSIONS
 chown 1000:1000 /mnt/ 1>/dev/null 2>&1
 
+############################################################### Deluge
+
+chown 1000:1000 /mnt/deluge 1>/dev/null 2>&1
+chown 1000:1000 /mnt/deluge/temp 1>/dev/null 2>&1
+chown 1000:1000 /mnt/deluge/downloaded 1>/dev/null 2>&1
+chown 1000:1000 /mnt/deluge/torrent 1>/dev/null 2>&1
+
+chmod 777 /mnt/deluge 1>/dev/null 2>&1
+chmod 777 /mnt/deluge/temp 1>/dev/null 2>&1
+chmod 777 /mnt/deluge/downloaded 1>/dev/null 2>&1
+chmod 777 /mnt/deluge/torrent 1>/dev/null 2>&1
+
+############################################################### Other
 chown 1000:1000 /mnt/gdrive 1>/dev/null 2>&1
 chown 1000:1000 /mnt/gdrive/tv 1>/dev/null 2>&1
 chown 1000:1000 /mnt/gdrive/movies 1>/dev/null 2>&1
