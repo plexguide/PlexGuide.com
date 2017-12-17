@@ -15,6 +15,7 @@ services:
      - /opt/appdata/deluge/config:/config
      - /mnt/deluge/temp:/temp
      - /mnt/deluge/downloaded:/downloaded
+     - /mnt/deluge/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
