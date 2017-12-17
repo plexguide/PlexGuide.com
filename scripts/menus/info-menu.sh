@@ -70,7 +70,7 @@ read_options(){
         ;;
   	3)
       clear
-      ls /home/plexguide/plexdrive4
+      ls /mnt/plexdrive4
       echo
       echo "*** PlexDrive4: Your Google Drive - If empty, that's not good ***"
       echo "Note 1: Must have at least 1 item in your Google Drive for the test"
@@ -80,9 +80,9 @@ read_options(){
       clear
       ;;
   	4)
-      touch /home/plexguide/gdrive/gdrivetest.txt
+      touch /mnnt/gdrive/gdrivetest.txt
       clear
-      ls /home/plexguide/gdrive
+      ls /mnt/gdrive
   		echo
       echo "*** RClone: Your Google Drive - If empty, that's not good ***"
       echo "Note 1: You should at least see gdrivetest.txt"
@@ -112,9 +112,9 @@ read_options(){
     		;;
 
     6)
-      touch /home/plexguide/move/uniontest.txt
+      touch /mnt/move/uniontest.txt
       clear
-      ls /home/plexguide/unionfs
+      ls /mnt/unionfs
       echo
       echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
       echo "Note 1: You should at least see uniontest.txt"
@@ -124,9 +124,9 @@ read_options(){
       clear
       ;;
         7)
-        touch /home/plexguide/.gcrypt/gdrivetest.txt
+        touch /mnt/.gcrypt/gdrivetest.txt
         clear
-        ls /home/plexguide/.gcrypt
+        ls /mnt/.gcrypt
         echo
         echo "*** RClone: Your Google Drive - If empty, that's not good ***"
         echo "Note 1: You should at least see gdrivetest.txt"
