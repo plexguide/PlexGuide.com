@@ -13,7 +13,7 @@ services:
      - "58946:58946"
    volumes:
      - /opt/appdata/deluge/config:/config
-     - /mnt/deluge/downloads:/home/nobody/Downloads
+     - /mnt/deluge/downloads:/downloads
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
