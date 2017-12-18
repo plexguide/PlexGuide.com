@@ -4,8 +4,6 @@
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
 
-
-
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/capture5.PNG?raw=true" alt="PlexGuide.com Preview"/>
 </p>
@@ -16,7 +14,7 @@
 - **UBUNTU 16.04 & 17.04** Only !!! Not for Server (.10) versions!
 
 ## Social 
-- [Visit the PlexGuide Discord Channel](https://discord.gg/mg7bVnw) <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true" alt="PlexGuide.com Logo"/>
+- [Visit the PlexGuide Discord Channel](https://discord.gg/mg7bVnw)    <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true" alt="PlexGuide.com Logo"/>
 - Reddit Discussion Link: http://reddit.plexguide.com
 
 ### Awesome Beta Testers & Contributers!
