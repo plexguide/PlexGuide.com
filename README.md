@@ -17,7 +17,6 @@
 ## Social 
 
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true" alt="PlexGuide.com Logo"/> Visit us on Discord: [PlexGuide Discord](https://discord.gg/mg7bVnw)
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true" alt="PlexGuide.com Logo"/> PlexGuide Discord Channel: 
 - Reddit Discussion Link: http://reddit.plexguide.com (Secondary)
 - **UBUNTU 16.04 & 17.04** Only !!! Not for Server (.10) versions!
 
