@@ -14,7 +14,7 @@
 - **UBUNTU 16.04 & 17.04** Only !!! Not for Server (.10) versions!
 
 ## Social 
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw)   [logo:] https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) ![alt text](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true "Logo")
 - Reddit Discussion Link: http://reddit.plexguide.com
 - Slack is now discontinued!
 
@@ -28,9 +28,6 @@
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
 ----------------------------------------------------------------------
-### WARNING ###
-
-When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues; I confirmed that it works as another user... but just incase. 
 
 ### Preparation, Installation & Configuration 
 
