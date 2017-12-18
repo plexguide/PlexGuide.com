@@ -49,7 +49,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "SABNZBD Install" --menu "Make your choice" 10 25 3 \
+whiptail --title "SABNZBD NGINX" --menu "Make your choice" 10 25 3 \
     "1)" "SABNZBD - Stable"   \
     "2)" "SABNZBD - Beta"  \
     "3)" "Exit  "  3>&2 2>&1 1>&3

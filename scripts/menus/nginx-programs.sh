@@ -136,16 +136,15 @@ case $CHOICE in
      ;;
 
     "11)")
-     echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-     echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-     echo ymlport 8090 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-
-    "12)")
      clear
      bash /opt/plexguide/scripts/menus/sabsub-nginx-menu.sh
      ;;
+
+    "12)")
+     echo ymlprogram nginx-sonarr > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Sonarr >> /opt/plexguide/tmp.txt
+     echo ymlport 8989 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
 
     "13)")
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
