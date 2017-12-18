@@ -88,7 +88,7 @@ read_options(){
     cat /opt/appdata/delugevpn/.deluge-env >> /opt/plexguide/scripts/docker/.env
     bash /opt/plexguide/scripts/delugevpn/basic-env.sh
     cat /opt/appdata/.env >> /opt/appdata/delugevpn/.deluge-env
-
+    bash /opt/plexguide/scripts/delugevpn/vpnowners.sh
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
   #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/.environments/.deluge-env

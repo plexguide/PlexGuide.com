@@ -4,7 +4,6 @@
 chown 1000:1000 /mnt/ 1>/dev/null 2>&1
 
 ############################################################### Deluge
-# bash /opt/plexguide/scripts/delugevpn/vpnowners.sh
 chown 1000:1000 /mnt/deluge 1>/dev/null 2>&1
 chown 1000:1000 /mnt/deluge/temp 1>/dev/null 2>&1
 chown 1000:1000 /mnt/deluge/downloaded 1>/dev/null 2>&1
