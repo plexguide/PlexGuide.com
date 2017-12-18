@@ -10,7 +10,7 @@ else
 clear
 
 whiptail --title "Important" --msgbox "Welcome to the PlexGuide.com Installer.  If you have questions,
-please read the wikis or join our #Slack Channel." 8 78
+please read the Wikis or join our #Discord Channel." 8 78
 
 password=plexguide123
 useradd -m -s /bin/bash plexguide
