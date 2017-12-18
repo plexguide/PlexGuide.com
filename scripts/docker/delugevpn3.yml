@@ -14,11 +14,11 @@ services:
      - 58946:58946
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /home/plexguide/delugevpn/downloads:/downloaded
+     - /mnt/delugevpn/downloads:/downloaded
      - /mnt/deluge/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
-     - /home/plexguide/unionfs/completed:/completed
+     - /mnt/unionfs/completed:/completed
    env_file:
      - /opt/appdata/delugevpn/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env
