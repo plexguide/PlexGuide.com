@@ -89,7 +89,6 @@ read_options(){
     cat /opt/appdata/delugevpn/.deluge-env >> /opt/plexguide/scripts/docker/.env
     bash /opt/plexguide/scripts/delugevpn/basic-env.sh
     cat /opt/appdata/.env >> /opt/appdata/delugevpn/.deluge-env
-    bash /opt/plexguide/scripts/delugevpn/vpnowners.sh
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
   #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/.environments/.deluge-env
@@ -112,16 +111,7 @@ read_options(){
       file="/var/plexguide/pia-vpn-set.yes"
       if [ -e "$file" ]
       then
-        docker rm delugevpn
-#        docker rm deluge
-        clear
-        echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
-        echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
-        echo ymlport 8112 >> /opt/plexguide/tmp.txt
-        bash /opt/plexguide/scripts/docker-no/program-installer.sh
-        bash /opt/plexguide/scripts/delugevpn/move-ovpn.sh
-        clear
-        sudo usermod -aG docker nobody
+        bash /opt/plexguide/scripts/delugevpn/deluge.sh
       #  sudo usermod -aG docker $USER
 
     #    echo ymlprogram uhttpd > /opt/plexguide/tmp.txt

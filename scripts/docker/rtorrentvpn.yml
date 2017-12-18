@@ -13,9 +13,9 @@ services:
      - 8118:8118
      - 3000:3000
    volumes:
-     - /opt/appdata/delugevpn/config:/config
-     - /mnt/delugevpn/downloads:/downloaded
-     - /mnt/deluge/torrent:/torrent
+     - /opt/appdata/rtorrentvpn/config:/config
+     - /mnt/rtorrentvpn/downloads:/downloaded
+     - /mnt/rtorrentvpn/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed

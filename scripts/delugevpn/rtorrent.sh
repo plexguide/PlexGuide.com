@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bash /opt/plexguide/scripts/delugevpn/rtorrentowners.sh
+
 docker rm rtorrentvpn
 #        docker rm delugevpn
 clear
