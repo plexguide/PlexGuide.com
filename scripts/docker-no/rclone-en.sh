@@ -47,11 +47,11 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
-chown -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
-chmod 777 -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
+#chown -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
+#chmod 777 -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
 
-chown -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
-chmod 777 -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
+#chown -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
+#chmod 777 -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
 echo 1
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
@@ -147,8 +147,8 @@ Description=UnionFS Daemon
 After=multi-user.target
 [Service]
 Type=simple
-User=1000
-Group=1000
+User=0
+Group=0
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
