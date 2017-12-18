@@ -162,6 +162,7 @@ RemainAfterExit=yes
 [Install]
 WantedBy=multi-user.target
 EOF
+
 echo 6
 ## Create the Encrypted Move Script
 tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
@@ -169,6 +170,7 @@ tee "/opt/appdata/plexguide/move-en.sh" > /dev/null <<EOF
 sleep 30
 while true
 do
+## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
 sleep 900
 done

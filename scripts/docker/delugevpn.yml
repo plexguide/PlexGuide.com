@@ -4,14 +4,14 @@ services:
  delugevpn:
    image:  binhex/arch-delugevpn
    container_name: delugevpn
-#   network_mode: "bridge"
+   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
-     - '${IP_ADDRESS}:8112:8112'
-     - '${IP_ADDRESS}:8118:8118'
-     - '${IP_ADDRESS}:58846:58846'
-     - '${IP_ADDRESS}:58946:58946'
+     - 8112:8112
+     - 8118:8118
+     - 58846:58846
+     - 58946:58946
    volumes:
      - /opt/appdata/delugevpn/config:/config
      - /mnt/delugevpn/downloads:/downloaded
@@ -21,20 +21,9 @@ services:
      - /mnt/unionfs/completed:/completed
    env_file:
      - /opt/appdata/delugevpn/.deluge-env
-  #   - /opt/appdata/delugevpn/config/.deluge-env
    environment:
      - VPN_ENABLED=yes
      - VPN_PROV=pia
-     - VPN_PORT=1198
-     - VPN_PROTOCOL=udp
-     - VPN_DEVICE_TYPE=tun
-     - STRONG_CERTS=no
-     - LAN_NETWORK=${CIDR_ADDRESS}
-#     - VPN_USER=${PIA_USERNAME}
-#     - VPN_PASS=${PIA_PASSWORD}
-#     - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
-     - PUID=${PUID}
-     - PGID=${PGID}
    #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
