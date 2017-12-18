@@ -51,7 +51,8 @@ Default is set to Netherlands
 
 1. PIA VPN details
 2. Install DelugeVPN
-3. Exit
+3. Install rTorrentVPN
+4. Exit
 
 
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
@@ -65,7 +66,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3 ] " choice
+	read -p "Enter choice [ 1 - 4 ] " choice
 	case $choice in
     1)
     rm /opt/appdata/delugevpn/.deluge-env
@@ -139,6 +140,19 @@ read_options(){
       fi
       ;;
     3)
+    file="/var/plexguide/pia-vpn-set.yes"
+    if [ -e "$file" ]
+    then
+     bash /opt/plexguide/scripts/delugevpn/rtorrent.sh
+     clear
+    else
+     echo
+     echo "Are you Special? You need to setup your PIA account details first!!!"
+     echo
+     read -n 1 -s -r -p "Press any key to continue "
+   fi
+   ;;
+    4)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
