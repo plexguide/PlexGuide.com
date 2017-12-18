@@ -68,7 +68,7 @@ read_options(){
 	read -p "Enter choice [ 1 - 3 ] " choice
 	case $choice in
     1)
-    rm /opt/.environments/.deluge-env
+    rm /opt/appdata/delugevpn/.deluge-env
     # Get IP Address
     local_ip=`hostname -I | awk '{print $1}'`
     # CIDR - this assumes a 255.255.255.0 netmask
