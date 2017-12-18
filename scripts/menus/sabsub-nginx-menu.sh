@@ -58,21 +58,21 @@ whiptail --title "SABNZBD NGINX" --menu "Make your choice" 10 25 3 \
 result=$(whoami)
 case $CHOICE in
     "1)")
-      docker rm sabnzbd-beta
-      docker rm sabnzbd
+      docker rm nginx-sabnzbd-beta
+      docker rm nginx-sabnzbd
       clear
-      echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-      echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
+      echo ymlprogram nginx-sabnzbd > /opt/plexguide/tmp.txt
+      echo ymldisplay NGINX SABNZBD >> /opt/plexguide/tmp.txt
       echo ymlport 8090 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
 
     "2)")
-      docker rm sabnzbd
-      docker rm sabnzbd-beta
+      docker rm nginx-sabnzbd
+      docker rm nginx-sabnzbd-beta
       clear
-      echo ymlprogram sabnzbd-beta > /opt/plexguide/tmp.txt
-      echo ymldisplay SABNZBD Beta >> /opt/plexguide/tmp.txt
+      echo ymlprogram nginx-sabnzbd-beta > /opt/plexguide/tmp.txt
+      echo ymldisplay NGINX SABNZBD Beta >> /opt/plexguide/tmp.txt
       echo ymlport 8090 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
