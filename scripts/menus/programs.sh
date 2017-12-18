@@ -161,6 +161,7 @@ case $CHOICE in
       echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
       echo ymlport 9117 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#      bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
       ;;
 
      "15)")
