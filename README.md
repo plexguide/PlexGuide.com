@@ -28,9 +28,6 @@
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
 ----------------------------------------------------------------------
-### WARNING ###
-
-When the program runs, always login as the user plexguide (you will create later). If you run the program as another user and setup rclone, plexdrive, and unionfs; you may run into issues; I confirmed that it works as another user... but just incase. 
 
 ### Preparation, Installation & Configuration 
 
