@@ -11,9 +11,12 @@
 ---------------------------------------------------------------------- 
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
-- Slack Autoinvite: http://invite.plexguide.com and Slack # @ https://plexguidecom.slack.com (Preferred)
-- Reddit Discussion Link: http://reddit.plexguide.com (Secondary)
 - **UBUNTU 16.04 & 17.04** Only !!! Not for Server (.10) versions!
+
+## Social 
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw)    <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true" alt="PlexGuide.com Logo"/>
+- Reddit Discussion Link: http://reddit.plexguide.com
+- Slack is now discontinued!
 
 ### Awesome Beta Testers & Contributers!
 
