@@ -102,6 +102,12 @@ WantedBy=multi-user.target
 EOF
 ####################################### Encrypted Service
 echo 4
+## RClone Script
+tee "/opt/appdata/plexguide/rclone-en.sh" > /dev/null <<EOF
+#!/bin/bash
+rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
+EOF
+chmod 755 /opt/appdata/plexguide/rclone-en.sh
 ## Create the RClone service for plexdrive4 encrypted mount point
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
@@ -112,7 +118,7 @@ After=multi-user.target
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone-en.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
