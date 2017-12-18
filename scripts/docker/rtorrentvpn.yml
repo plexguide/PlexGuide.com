@@ -4,7 +4,7 @@ services:
  rtorrentvpn:
    image:  binhex/arch-rtorrentvpn
    container_name: rtorrentvpn
-   network_mode: "bridge"
+#   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
@@ -13,7 +13,7 @@ services:
      - 8118:8118
      - 3000:3000
    volumes:
-     - /opt/appdata/rtorrentvpn/config:/config
+     - /opt/appdata/delugevpn/config:/config
      - /mnt/rtorrentvpn/downloads:/downloaded
      - /mnt/rtorrentvpn/torrent:/torrent
      - /:/yourcomputer

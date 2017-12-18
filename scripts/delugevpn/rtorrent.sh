@@ -3,7 +3,7 @@
 bash /opt/plexguide/scripts/delugevpn/rtorrentowners.sh
 
 docker rm rtorrentvpn
-        docker rm delugevpn
+docker rm delugevpn
 clear
 echo ymlprogram rtorrentvpn > /opt/plexguide/tmp.txt
 echo ymldisplay rTorrentVPN >> /opt/plexguide/tmp.txt
