@@ -14,7 +14,8 @@ services:
      - 58946:58946
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /home/plexguide/delugevpn/downloads:/data
+     - /home/plexguide/delugevpn/downloads:/downloaded
+     - /mnt/deluge/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /home/plexguide/unionfs/completed:/completed

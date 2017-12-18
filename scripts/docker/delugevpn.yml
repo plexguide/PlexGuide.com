@@ -14,7 +14,8 @@ services:
      - '${IP_ADDRESS}:58946:58946'
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /mnt/delugevpn/downloads:/data
+     - /mnt/delugevpn/downloads:/downloaded
+     - /mnt/deluge/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
