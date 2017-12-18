@@ -46,17 +46,17 @@ lannet=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 # Create the .env file
 echo "Creating the .env file with the values we have gathered"
 printf "\n"
-echo "LOCALUSER=$localuname" >> /opt/.environments/.env
-echo "HOSTNAME=$thishost" >> /opt/.environments/.env
-echo "IP_ADDRESS=$locip" >> /opt/.environments/.env
-echo "PUID=$PUID" >> /opt/.environments/.env
-echo "PGID=$PGID" >> /opt/.environments/.env
-echo "PWD=$PWD" >> /opt/.environments/.env
+echo "LOCALUSER=$localuname" >> /opt/appdata/.env
+echo "HOSTNAME=$thishost" >> /opt/appdata/.env
+echo "IP_ADDRESS=$locip" >> /opt/appdata/.env
+echo "PUID=$PUID" >> /opt/appdata/.env
+echo "PGID=$PGID" >> /opt/appdata/.env
+echo "PWD=$PWD" >> /opt/appdata/.env
 #echo "VPN_USER=$pia_username" >> .env
 #echo "VPN_PASS=$pia_password" >> .env
 #echo "VPN_REMOTE=$vpn_remote_choice" >> .env
-echo "LAN_NETWORK=$lannet" >> /opt/.environments/.env
-echo "TZ=$time_zone" >> /opt/.environments/.env
+echo "LAN_NETWORK=$lannet" >> /opt/appdata/.env
+echo "TZ=$time_zone" >> /opt/appdata/.env
 #echo "PMSTAG=$pmstag" >> .env
 #echo "PMSTOKEN=$pmstoken" >> .env
 ##echo "PORTAINERSTYLE=$portainerstyle" >> .env

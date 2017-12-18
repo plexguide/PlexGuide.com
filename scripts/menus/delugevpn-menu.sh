@@ -86,6 +86,8 @@ read_options(){
     echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/.deluge-env
     echo
     cat /opt/appdata/delugevpn/.deluge-env >> /opt/plexguide/scripts/docker/.env
+    bash /opt/plexguide/scripts/delugevpn/basic-env.sh
+    cat /opt/appdata/.env >> /opt/appdata/delugevpn/.deluge-env
 
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
@@ -110,7 +112,7 @@ read_options(){
       if [ -e "$file" ]
       then
         docker rm delugevpn
-        docker rm deluge
+#        docker rm deluge
         clear
         echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
         echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
