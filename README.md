@@ -1,7 +1,7 @@
 # PlexGuide.com - Version 5
 
 <p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo3.png" alt="PlexGuide.com Logo"/>
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo4.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
 
 <p align="center">
