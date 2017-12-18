@@ -183,8 +183,8 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=1000
-Group=1000
+User=0
+Group=0
 ExecStart=/bin/bash /opt/appdata/plexguide/move-en.sh
 TimeoutStopSec=20
 KillMode=process
