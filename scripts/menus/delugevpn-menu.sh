@@ -73,19 +73,19 @@ read_options(){
     local_ip=`hostname -I | awk '{print $1}'`
     # CIDR - this assumes a 255.255.255.0 netmask
     lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
-    echo "IP_ADDRESS=$local_ip" >> /opt/.environments/.deluge-env
-    echo "LAN_NETWORK=$lan_net" >> /opt/.environments/.deluge-env
+    echo "IP_ADDRESS=$local_ip" >> /opt/appdata/delugevpn/.deluge-env
+    echo "LAN_NETWORK=$lan_net" >> /opt/appdata/delugevpn/.deluge-env
 
     clear
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "VPN_USER=$pia_username" >> /opt/.environments/.deluge-env
+    echo "VPN_USER=$pia_username" >> /opt/appdata/delugevpn/.deluge-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-    echo "VPN_PASS=$pia_password" >> /opt/.environments/.deluge-env
+    echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/.deluge-env
     echo
-    cat /opt/.environments/.deluge-env >> /opt/plexguide/scripts/docker/.env
+    cat /opt/appdata/delugevpn/.deluge-env >> /opt/plexguide/scripts/docker/.env
 
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
@@ -110,6 +110,7 @@ read_options(){
       if [ -e "$file" ]
       then
         docker rm delugevpn
+        docker rm deluge
         clear
         echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
         echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt

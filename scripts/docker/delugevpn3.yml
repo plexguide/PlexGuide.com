@@ -20,7 +20,7 @@ services:
      - /etc/localtime:/etc/localtime:ro
      - /home/plexguide/unionfs/completed:/completed
    env_file:
-     - /opt/.environments/.deluge-env
+     - /opt/appdata/delugevpn/.deluge-env
   #   - /opt/appdata/delugevpn/config/.deluge-env
    environment:
      - VPN_ENABLED=yes
