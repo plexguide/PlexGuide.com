@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+ nginx-sabnzbd-beta:
+   image: linuxserver/sabnzbd:unstable
+   container_name: nginx-sabnzbd-beta
+   ports:
+     - "8090:8080"
+   volumes:
+     - /opt/appdata/sabnzbd:/config
+     - /mnt/sab/complete:/complete
+     - /mnt/sab/incomplete:/incomplete
+     - /mnt/sab/nzb:/nzb
+     - /mnt/sab/admin:/admin
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+   environment:
+     - PUID=1000
+     - PGID=1000
+     - VIRTUAL_HOST=sab.*
+     - VIRTUAL_PORT=8090
+   restart:
+     always

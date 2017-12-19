@@ -51,7 +51,8 @@ Default is set to Netherlands
 
 1. PIA VPN details
 2. Install DelugeVPN
-3. Exit
+3. Install rTorrentVPN
+4. Exit
 
 
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
@@ -65,7 +66,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3 ] " choice
+	read -p "Enter choice [ 1 - 4 ] " choice
 	case $choice in
     1)
     rm /opt/appdata/delugevpn/.deluge-env
@@ -89,7 +90,6 @@ read_options(){
     bash /opt/plexguide/scripts/delugevpn/basic-env.sh
     cat /opt/appdata/.env >> /opt/appdata/delugevpn/.deluge-env
 
-
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
   #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/.environments/.deluge-env
   #  echo
@@ -111,16 +111,7 @@ read_options(){
       file="/var/plexguide/pia-vpn-set.yes"
       if [ -e "$file" ]
       then
-        docker rm delugevpn
-#        docker rm deluge
-        clear
-        echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
-        echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
-        echo ymlport 8112 >> /opt/plexguide/tmp.txt
-        bash /opt/plexguide/scripts/docker-no/program-installer.sh
-        bash /opt/plexguide/scripts/delugevpn/move-ovpn.sh
-        clear
-        sudo usermod -aG docker nobody
+        bash /opt/plexguide/scripts/delugevpn/deluge.sh
       #  sudo usermod -aG docker $USER
 
     #    echo ymlprogram uhttpd > /opt/plexguide/tmp.txt
@@ -139,6 +130,19 @@ read_options(){
       fi
       ;;
     3)
+    file="/var/plexguide/pia-vpn-set.yes"
+    if [ -e "$file" ]
+    then
+     bash /opt/plexguide/scripts/delugevpn/rtorrent.sh
+     clear
+    else
+     echo
+     echo "Are you Special? You need to setup your PIA account details first!!!"
+     echo
+     read -n 1 -s -r -p "Press any key to continue "
+   fi
+   ;;
+    4)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

@@ -129,10 +129,8 @@ case $CHOICE in
      ;;
 
     "10)")
-     echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-     echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-     echo ymlport 8090 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     clear
+     bash /opt/plexguide/scripts/menus/sabsub-menu.sh
      ;;
 
     "11)")

@@ -172,7 +172,7 @@ while true
 do
 ## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
 rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
-sleep 900
+sleep 600
 done
 EOF
 chmod 755 /opt/appdata/plexguide/move-en.sh

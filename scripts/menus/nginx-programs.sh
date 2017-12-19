@@ -51,7 +51,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "1)" "NGINX - Required First"  \
     "2)" "Not Ready - Plex"   \
     "3)" "Not Ready - Emby"  \
-    "4)" "Not Ready - Netdata"  \
+    "4)" "Netdata"  \
     "5)" "Not Ready - NZBGET"  \
     "6)" "Not Ready - Muximux"  \
     "7)" "Not Ready - OMBIv3"  \
@@ -87,8 +87,8 @@ case $CHOICE in
       ;;
 
     "4)")
-     echo ymlprogram netdata > /opt/plexguide/tmp.txt
-     echo ymldisplay NetData >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-netdata > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
@@ -136,10 +136,8 @@ case $CHOICE in
      ;;
 
     "11)")
-     echo ymlprogram sabnzbd > /opt/plexguide/tmp.txt
-     echo ymldisplay SABNZBD >> /opt/plexguide/tmp.txt
-     echo ymlport 8090 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     clear
+     bash /opt/plexguide/scripts/menus/sabsub-nginx-menu.sh
      ;;
 
     "12)")
@@ -148,7 +146,7 @@ case $CHOICE in
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-
+     
     "13)")
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
      echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
