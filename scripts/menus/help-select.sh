@@ -67,8 +67,9 @@ case $CHOICE in
     ;;
 
     "3)")
-    clear
-    ;;
+      clear
+      bash /opt/plexguide/scripts/menus/status-menu.sh
+      ;;
 
     "4)")
         clear
