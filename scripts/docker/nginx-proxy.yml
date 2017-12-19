@@ -18,3 +18,23 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=whoami.local
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: plexpy
+    depends_on:
+      - nginx
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/nginx-proxy:/etc/nginx/certs:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    ports:
+      - 27029:8181
+    links:
+      - letsencrypt-nginx-proxy-companion
+    restart: always
+    environment:
+     - PUID=1000
+     - PGID=1000
+
+
