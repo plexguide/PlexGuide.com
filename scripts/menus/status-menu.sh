@@ -221,7 +221,7 @@ read_options(){
           ;;
         9)
           clear
-          bash /opt/plexguide/scripts/menus/restart-menu.#!/bin/sh
+          bash /opt/plexguide/scripts/menus/restart-menu.sh
           ;;
         10)
       exit 0;;
