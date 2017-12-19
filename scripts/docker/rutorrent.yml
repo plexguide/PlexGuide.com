@@ -7,7 +7,7 @@ services:
    ports:
      - "8999:80"
      - "51413:51413"
-     - "6881:6881"
+     - "6881/udp:6881/udp"
      - "5000:5000"
    volumes:
      - /opt/appdata/rutorrent/:/config
