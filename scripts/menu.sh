@@ -65,15 +65,16 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0008 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+whiptail --title "PlexGuide.com - v5.0009 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
    "1)" "Donation (Mine Coins - Help Us!)"   \
    "2)" "RClone & PlexDrive"  \
-   "3)" "Supporting Programs" \
+   "3)" "Main Progrms" \
    "4)" "Info & Troubleshoot" \
    "5)" "Backup & Restore" \
    "6)" "Update PlexGuide" \
    "7)" "NGINX Beta - Beta" \
-   "8)" "Exit  "  3>&2 2>&1 1>&3
+   "8)" "Torrents - Beta" \
+   "9)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -125,8 +126,12 @@ case $CHOICE in
        bash /opt/plexguide/scripts/menus/nginx-programs.sh
        ;;
 
+    "8)")
+       clear
+       bash /opt/plexguide/scripts/menus/nginx-programs.sh
+       ;;
 
-   "8)")
+   "9)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
