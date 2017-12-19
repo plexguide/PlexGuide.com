@@ -3,9 +3,9 @@
 bash /opt/plexguide/scripts/delugevpn/rtorrentowners.sh
 
 docker rm rtorrentvpn
-clear
-docker rm delugevpn
-clear
+
+#docker rm delugevpn
+
 echo ymlprogram rtorrentvpn > /opt/plexguide/tmp.txt
 echo ymldisplay rTorrentVPN >> /opt/plexguide/tmp.txt
 echo ymlport 9080 >> /opt/plexguide/tmp.txt
