@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 20 26 13 \
+whiptail --title "Install Menu" --menu "Make your choice" 19 26 12 \
     "1)" "Plex"   \
     "2)" "Emby"  \
     "3)" "Netdata"  \
@@ -61,8 +61,9 @@ whiptail --title "Install Menu" --menu "Make your choice" 20 26 13 \
     "11)" "Sonarr"  \
     "12)" "Wordpress"  \
     "13)" "Deluge - Test"  \
-    "14)" "Jackett - Test"  \
-    "15)" "Exit  "  3>&2 2>&1 1>&3
+    "14)" "DelugeVPN - Test"  \
+    "15)" "Jackett - Test"  \
+    "16)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -152,17 +153,24 @@ case $CHOICE in
       echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
       echo ymlport 8112 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
-#      bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
       ;;
 
-     "14)")
+      "14)")
+       echo ymlprogram deluge > /opt/plexguide/tmp.txt
+       echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
+       echo ymlport 8112 >> /opt/plexguide/tmp.txt
+       bash /opt/plexguide/scripts/docker-no/program-installer.sh
+       bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
+       ;;
+
+     "15)")
       echo ymlprogram jackett > /opt/plexguide/tmp.txt
       echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
       echo ymlport 9117 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
 
-     "15)")
+     "16)")
       clear
       exit 0
       ;;
