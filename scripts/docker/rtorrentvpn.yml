@@ -14,7 +14,7 @@ services:
      - 3000:3000
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /mnt/rtorrentvpn/downloads:/downloaded
+     - /mnt/rutorrents/downloads:/downloads
      - /mnt/rtorrentvpn/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro

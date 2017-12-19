@@ -4,7 +4,7 @@ services:
  delugevpn:
    image:  binhex/arch-delugevpn
    container_name: delugevpn
-   network_mode: "bridge"
+#   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
@@ -14,7 +14,8 @@ services:
      - 58946:58946
    volumes:
      - /opt/appdata/delugevpn/config:/config
-     - /mnt/delugevpn/downloads:/downloaded
+     - /mnt/deluge/temp:/temp
+     - /mnt/deluge/downloaded:/downloaded
      - /mnt/deluge/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
