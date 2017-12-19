@@ -128,7 +128,7 @@ case $CHOICE in
 
     "8)")
        clear
-       bash /opt/plexguide/scripts/menus/nginx-programs.sh
+       bash /opt/plexguide/scripts/menus/programs-torrent.sh
        ;;
 
    "9)")
