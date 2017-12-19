@@ -66,9 +66,9 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "PlexGuide.com - v5.0009 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
-   "1)" "Donation (Mine Coins - Help Us!)"   \
+   "1)" "Donation: Mine Coins - Help Us!"   \
    "2)" "RClone & PlexDrive"  \
-   "3)" "Main Programs" \
+   "3)" "Programs: Main" \
    "4)" "Info & Troubleshoot" \
    "5)" "Backup & Restore" \
    "6)" "PlexGuide: Update" \
