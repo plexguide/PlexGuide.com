@@ -12,6 +12,8 @@
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - **UBUNTU 16.04 & 17.04** Only !!! Not for Server (.10) versions!
+- This is built for **USENET**; not for torrents.  The Wikis will help you understand USNET if required.
+- If anyone wants to take torrent portion of the project, please let us know!
 
 ## Social 
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) ![alt text](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true "Logo")
