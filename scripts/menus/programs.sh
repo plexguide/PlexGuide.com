@@ -161,7 +161,9 @@ case $CHOICE in
       echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
       echo ymlport 8112 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      python /opt/plexguide/tasks/setup.py bdist_egg
+      yes | apt-get install -y python-setuptools 1>/dev/null 2>&1
+      python /opt/plexguide/scripts/tasks/seedtime/setup.py bdist_egg
+      mv /opt/plexguide/scripts/tasks/seedtime/dist/SeedTime-2* /opt/appdata/deluge/config/plugins
       ;;
 
       "15)")
