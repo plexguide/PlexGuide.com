@@ -35,7 +35,7 @@ show_menus() {
 clear
 cat << EOF
 ~~~~~~~~~~~~~~~~~~~~~~~~
-DELUGEVPN
+VPN Torrents
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Note, make sure that you have an account with PIA before installing otherwise
@@ -58,7 +58,8 @@ Default is set to Netherlands
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
     to check for leaks! ***
 
-
+Please visit https://github.com/binhex/ for further info if you want to use
+a different VPN provider.
 
 EOF
 }
