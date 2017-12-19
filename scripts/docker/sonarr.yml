@@ -13,7 +13,7 @@ services:
      - /mnt/sab/complete:/complete
      - /mnt/nzbget/completed:/completed
      - /mnt/deluge/downloaded:/downloaded
-     - /mnt/rutorrents/downloads/incoming:/incoming
+     - /mnt/rutorrents/downloads/incoming:/downloads
      - /etc/localtime:/etc/localtime:ro
    environment:
      - PUID=1000

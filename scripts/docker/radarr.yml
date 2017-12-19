@@ -12,7 +12,7 @@ services:
      - /mnt/unionfs:/unionfs
      - /mnt/sab/complete:/complete
      - /mnt/nzbget/completed:/completed
-     - /mnt/rutorrents/downloads/incoming:/incoming
+     - /mnt/rutorrents/downloads/incoming:/downloads
      - /mnt/deluge/downloaded:/downloaded
      - /etc/localtime:/etc/localtime:ro
    environment:
