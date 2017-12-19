@@ -34,18 +34,22 @@ cat << EOF
 Service Status Checks
 
 Plexdrive Test *********************************************************
+
 1. Plexdrive4      :  View status of the Plexdrive4 service
 
 RClone Tests - Can use all 3 for Encrypted *****************************
+
 2. RClone          :  View status of the RClone Unencrypted service
 3. RClone-En       :  View status of the Plexdrive4 Encrypted service
 4. RClone-Encrypt  :  View status of the RClone Encrypted service
 
 UnionFS Tests - Only use 1 *********************************************
+
 5. UnionFS         :  View status of the Unencrypted service
 6. UnionFS-Encrypt :  View status of the Encrypted service
 
 Move Tests - Only use 1 ************************************************
+
 7. Move            :  View status of the Unencrypted SYNC service
 8. Move-Encrypt    :  View status of the Encrypted SYNC service
 

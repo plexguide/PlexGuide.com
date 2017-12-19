@@ -50,7 +50,7 @@ CHOICE=$(
 whiptail --title "Make A Selection" --menu "Make your choice" 12 40 5 \
     "1)" "Information"   \
     "2)" "Troubleshooting"  \
-    "3)" "View Service Status (Not Working)"  \
+    "3)" "View Service Status"  \
     "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
