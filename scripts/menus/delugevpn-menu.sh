@@ -35,7 +35,7 @@ show_menus() {
 clear
 cat << EOF
 ~~~~~~~~~~~~~~~~~~~~~~~~
-DELUGEVPN
+VPN Torrents
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Note, make sure that you have an account with PIA before installing otherwise
@@ -58,7 +58,8 @@ Default is set to Netherlands
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
     to check for leaks! ***
 
-
+Please visit https://github.com/binhex/ for further info if you want to use
+a different VPN provider.
 
 EOF
 }
@@ -111,6 +112,7 @@ read_options(){
       file="/var/plexguide/pia-vpn-set.yes"
       if [ -e "$file" ]
       then
+        docker rm rtorrentvpn
         bash /opt/plexguide/scripts/delugevpn/deluge.sh
       #  sudo usermod -aG docker $USER
 
@@ -120,7 +122,6 @@ read_options(){
     #    bash /opt/plexguide/scripts/docker-no/program-installer.sh
     #    clear
     #    bash /opt/plexguide/scripts/delugevpn/daemon.sh
-
         clear
       else
         echo
@@ -133,8 +134,9 @@ read_options(){
     file="/var/plexguide/pia-vpn-set.yes"
     if [ -e "$file" ]
     then
-     bash /opt/plexguide/scripts/delugevpn/rtorrent.sh
-     clear
+      docker rm delugevpn
+      bash /opt/plexguide/scripts/delugevpn/rtorrent.sh
+      clear
     else
      echo
      echo "Are you Special? You need to setup your PIA account details first!!!"
