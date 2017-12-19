@@ -161,6 +161,7 @@ case $CHOICE in
       echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
       echo ymlport 8112 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      python /opt/plexguide/tasks/setup.py bdist_egg
       ;;
 
       "15)")
