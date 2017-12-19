@@ -11,8 +11,7 @@ services:
      - "5000:5000"
    volumes:
      - /opt/appdata/rutorrent/:/config
-     - /mnt/rutorrents/downloads:/downloaded
-     - /mnt/rutorrents/torrent:/torrent
+     - /mnt/rutorrents/downloads:/downloads
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
