@@ -60,7 +60,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 26 12 \
     "10)" "SABNZBD"  \
     "11)" "Sonarr"  \
     "12)" "Wordpress"  \
-    "13)" "RuTor - Test"  \
+    "13)" "RuTorrent - Test"  \
     "14)" "Deluge - Test"  \
     "15)" "VPN Torrent - Test"  \
     "16)" "Jackett - Test"  \
