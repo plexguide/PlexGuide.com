@@ -33,25 +33,25 @@ clear
 cat << EOF
 Service Status Checks
 
-Plexdrive Test *********************************************************
+Plexdrive Test - Can use both for Encrypted *******************************
 
-1. Plexdrive4      :  View status of the Plexdrive4 service
+1. Plexdrive4           :  View status of the Plexdrive4 service
+2. Plexdrive4-Encrypt   :  View status of the Plexdrive4 Encrypted service
 
-RClone Tests - Can use all 3 for Encrypted *****************************
+RClone Tests - Can use both for Encrypted *********************************
 
-2. RClone          :  View status of the RClone Unencrypted service
-3. RClone-En       :  View status of the Plexdrive4 Encrypted service
-4. RClone-Encrypt  :  View status of the RClone Encrypted service
+3. RClone               :  View status of the RClone Unencrypted service
+4. RClone-Encrypt       :  View status of the RClone Encrypted service
 
-UnionFS Tests - Only use 1 *********************************************
+UnionFS Tests - Only use 1 ************************************************
 
-5. UnionFS         :  View status of the Unencrypted service
-6. UnionFS-Encrypt :  View status of the Encrypted service
+5. UnionFS              :  View status of the Unencrypted service
+6. UnionFS-Encrypt      :  View status of the Encrypted service
 
-Move Tests - Only use 1 ************************************************
+Move Tests - Only use 1 ***************************************************
 
-7. Move            :  View status of the Unencrypted SYNC service
-8. Move-Encrypt    :  View status of the Encrypted SYNC service
+7. Move                 :  View status of the Unencrypted SYNC service
+8. Move-Encrypt         :  View status of the Encrypted SYNC service
 
 EOF
 }
@@ -69,54 +69,48 @@ read_options(){
         touch /opt/plexguide/plexdrive4.log
       fi
 
-      ## obtains move.service info and puts into a log to displayed to the user
+      ## obtains plexdrive4.service info and puts into a log to be displayed to the user
       clear
       systemctl status plexdrive4 > /opt/plexguide/plexdrive4.log
       cat /opt/plexguide/plexdrive4.log
       echo
       echo "*** View the Log ***"
-      echo "Remember, there is a sleep function of 30 minutes after done"
-      echo "If you have tons of stuff downloaded, you should see some activity"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       ;;
       2)
         ## create log file if does not exist
-        if [ -e "/opt/plexguide/rclone.log" ]
+        if [ -e "/opt/plexguide/rclone-en.log" ]
         then
           echo "Log exists"
         else
           touch /opt/plexguide/rclone.log
         fi
 
-        ## obtains move.service info and puts into a log to displayed to the user
+        ## obtains rclone-en.service info and puts into a log to be displayed to the user
         clear
-        systemctl status rclone > /opt/plexguide/rclone.log
-        cat /opt/plexguide/rclone.log
+        systemctl status rclone-en > /opt/plexguide/rclone-en.log
+        cat /opt/plexguide/rclone-en.log
         echo
         echo "*** View the Log ***"
-        echo "Remember, there is a sleep function of 30 minutes after done"
-        echo "If you have tons of stuff downloaded, you should see some activity"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         ;;
   	3)
       ## create log file if does not exist
-      if [ -e "/opt/plexguide/rclone-en.log" ]
+      if [ -e "/opt/plexguide/rclone.log" ]
       then
         echo "Log exists"
       else
-        touch /opt/plexguide/rclone-en.log
+        touch /opt/plexguide/rclone.log
       fi
 
-      ## obtains move.service info and puts into a log to displayed to the user
+      ## obtains rclone.service info and puts into a log to be displayed to the user
       clear
-      systemctl status rclone-en > /opt/plexguide/rclone-en.log
-      cat /opt/plexguide/rclone-en.log
+      systemctl status rclone > /opt/plexguide/rclone.log
+      cat /opt/plexguide/rclone.log
       echo
       echo "*** View the Log ***"
-      echo "Remember, there is a sleep function of 30 minutes after done"
-      echo "If you have tons of stuff downloaded, you should see some activity"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
@@ -130,14 +124,12 @@ read_options(){
         touch /opt/plexguide/rclone-encrypt.log
       fi
 
-      ## obtains move.service info and puts into a log to displayed to the user
+      ## obtains rclone-encrypt.service info and puts into a log to be displayed to the user
       clear
       systemctl status rclone-encrypt > /opt/plexguide/rclone-encrypt.log
       cat /opt/plexguide/rclone-encrypt.log
       echo
       echo "*** View the Log ***"
-      echo "Remember, there is a sleep function of 30 minutes after done"
-      echo "If you have tons of stuff downloaded, you should see some activity"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
@@ -151,14 +143,12 @@ read_options(){
           touch /opt/plexguide/unionfs.log
         fi
 
-        ## obtains move.service info and puts into a log to displayed to the user
+        ## obtains unionfs.service info and puts into a log to be displayed to the user
         clear
         systemctl status unionfs > /opt/plexguide/unionfs.log
         cat /opt/plexguide/unionfs.log
         echo
         echo "*** View the Log ***"
-        echo "Remember, there is a sleep function of 30 minutes after done"
-        echo "If you have tons of stuff downloaded, you should see some activity"
         echo
         read -n 1 -s -r -p "Press any key to continue "
         clear
@@ -173,14 +163,12 @@ read_options(){
         touch /opt/plexguide/unionfs-encrypt.log
       fi
 
-      ## obtains move.service info and puts into a log to displayed to the user
+      ## obtains unionfs-encrypt.service info and puts into a log to be displayed to the user
       clear
       systemctl status unionfs-encrypt > /opt/plexguide/unionfs-encrypt.log
       cat /opt/plexguide/unionfs-encrypt.log
       echo
       echo "*** View the Log ***"
-      echo "Remember, there is a sleep function of 30 minutes after done"
-      echo "If you have tons of stuff downloaded, you should see some activity"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
@@ -194,7 +182,7 @@ read_options(){
             touch /opt/plexguide/move.log
           fi
 
-          ## obtains move.service info and puts into a log to displayed to the user
+          ## obtains move.service info and puts into a log to be displayed to the user
           clear
           systemctl status move > /opt/plexguide/move.log
           cat /opt/plexguide/move.log
@@ -215,7 +203,7 @@ read_options(){
             touch /opt/plexguide/move-en.log
           fi
 
-          ## obtains move.service info and puts into a log to displayed to the user
+          ## obtains move-en.service info and puts into a log to be displayed to the user
           clear
           systemctl status move-en > /opt/plexguide/move-en.log
           cat /opt/plexguide/move-en.log
