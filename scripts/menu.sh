@@ -65,7 +65,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0009 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+whiptail --title "PlexGuide.com - v5.0010 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
    "1)" "Donation: Mine Coins - Help Us!"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs: Main" \
@@ -126,7 +126,7 @@ case $CHOICE in
        bash /opt/plexguide/scripts/menus/nginx-programs.sh
        ;;
 
-    "8)")
+   "8)")
        clear
        bash /opt/plexguide/scripts/menus/programs-torrent.sh
        ;;
