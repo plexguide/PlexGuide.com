@@ -20,7 +20,9 @@ else
     echo No
     clear
     echo Not Installed - $YMLDISPALY
-    echo 
+    echo
 fi
 
+## ensure folders follow plexguide
+bash /opt/plexguide/scripts/startup/owner.sh
 read -n 1 -s -r -p "Press any key to continue "
