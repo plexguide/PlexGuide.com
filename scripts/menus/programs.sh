@@ -60,10 +60,11 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 26 12 \
     "10)" "SABNZBD"  \
     "11)" "Sonarr"  \
     "12)" "Wordpress"  \
-    "13)" "Deluge - Test"  \
-    "14)" "DelugeVPN - Test"  \
-    "15)" "Jackett - Test"  \
-    "16)" "Exit  "  3>&2 2>&1 1>&3
+    "13)" "RuTor - Test"  \
+    "14)" "Deluge - Test"  \
+    "15)" "DelugeVPN - Test"  \
+    "16)" "Jackett - Test"  \
+    "17)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -149,13 +150,20 @@ case $CHOICE in
      ;;
 
      "13)")
+      echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
+      echo ymldisplay RUTorrent >> /opt/plexguide/tmp.txt
+      echo ymlport 8999 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
+
+     "14)")
       echo ymlprogram deluge > /opt/plexguide/tmp.txt
       echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
       echo ymlport 8112 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
 
-      "14)")
+      "15)")
        echo ymlprogram deluge > /opt/plexguide/tmp.txt
        echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
        echo ymlport 8112 >> /opt/plexguide/tmp.txt
@@ -163,14 +171,14 @@ case $CHOICE in
        bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
        ;;
 
-     "15)")
+     "16)")
       echo ymlprogram jackett > /opt/plexguide/tmp.txt
       echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
       echo ymlport 9117 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
 
-     "16)")
+     "17)")
       clear
       exit 0
       ;;
