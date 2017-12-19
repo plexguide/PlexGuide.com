@@ -11,13 +11,13 @@ services:
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
    ports:
-     - "80:80"
-     - "443:443"
+      - "80:80"
+      - "443:443"
    restart: always
    environment:
-     - PUID=1000
-     - PGID=1000
-     - VIRTUAL_HOST=whoami.local
+      - PUID=1000
+      - PGID=1000
+      - VIRTUAL_HOST=whoami.local
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -34,7 +34,7 @@ services:
       - letsencrypt-nginx-proxy-companion
     restart: always
     environment:
-     - PUID=1000
-     - PGID=1000
+      - PUID=1000
+      - PGID=1000
 
 
