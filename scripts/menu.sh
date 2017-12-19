@@ -8,14 +8,14 @@ if [ -e "$file" ]
 then
    clear
 else
-   bash /opt/plexguide/scripts/startup/dep.sh
-   rm -r dep*
-   touch /var/plexguide/dep21.yes
+   bash /opt/plexguide/scripts/startup/dep.sh 1>/dev/null 2>&1
+   rm -r dep* 1>/dev/null 2>&1
+   touch /var/plexguide/dep21.yes 1>/dev/null 2>&1
 fi
 
 ## ensure folders follow plexguide
 
-bash /opt/plexguide/scripts/startup/owner.sh
+bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 
 ##clear screen
 clear
@@ -116,7 +116,7 @@ case $CHOICE in
        ;;
 
    "6)")
-       bash /opt/plexguide/scripts/docker-no/upgrade.sh
+       bash /opt/plexguide/scripts/docker-no/upgrade.sh 
        clear
        echo Remember, restart by typing: plexguide
        exit 0;;

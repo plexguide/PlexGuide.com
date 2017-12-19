@@ -50,12 +50,12 @@ echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait
 
 ################### chown
 
-  chown -R 1000:1000 /opt/plexguide/scripts/docker-no/*
+  chown -R 1000:1000 /opt/plexguide/scripts/docker-no/* 1>/dev/null 2>&1
 
 ################### For PlexDrive
 
-  mkdir -p /opt/plexguide-startup
-  chmod 755 /opt/plexguide-startup
+  mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
+  chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
 
 ################### For SAB
 
@@ -93,17 +93,17 @@ mkdir -p /mnt/plexdrive4
 #    chown -R 1000:1000 /mnt/
 #    touch /var/plexguide/chown.yes
 #fi
-bash /opt/plexguide/scripts/startup/owner.sh
+bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 ######################################################### For RCLONE
 
 echo "2. Pre-Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
-  bash /opt/plexguide/scripts/startup/rclone-preinstall.sh
+  bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
 
 #Lets the System Know that Script Ran Once
-  touch /var/plexguide/basics.yes
-  touch /var/plexguide/version.5
+  touch /var/plexguide/basics.yes 1>/dev/null 2>&1
+  touch /var/plexguide/version.5 1>/dev/null 2>&1
 
 echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
