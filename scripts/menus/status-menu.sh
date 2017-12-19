@@ -33,32 +33,36 @@ clear
 cat << EOF
 Service Status Checks
 
-Plexdrive Test - Can use both for Encrypted *******************************
+Plexdrive Test - Can use both for Encrypted ********************************
 
-1. Plexdrive4           :  View status of the Plexdrive4 service
-2. Plexdrive4-Encrypt   :  View status of the Plexdrive4 Encrypted service
+1. Plexdrive4           :   View status of the Plexdrive4 service
+2. Plexdrive4-Encrypt   :   View status of the Plexdrive4 Encrypted service
 
-RClone Tests - Can use both for Encrypted *********************************
+RClone Tests - Can use both for Encrypted **********************************
 
-3. RClone               :  View status of the RClone Unencrypted service
-4. RClone-Encrypt       :  View status of the RClone Encrypted service
+3. RClone               :   View status of the RClone Unencrypted service
+4. RClone-Encrypt       :   View status of the RClone Encrypted service
 
-UnionFS Tests - Only use 1 ************************************************
+UnionFS Tests - Only use 1 *************************************************
 
-5. UnionFS              :  View status of the Unencrypted service
-6. UnionFS-Encrypt      :  View status of the Encrypted service
+5. UnionFS              :   View status of the Unencrypted service
+6. UnionFS-Encrypt      :   View status of the Encrypted service
 
-Move Tests - Only use 1 ***************************************************
+Move Tests - Only use 1 ****************************************************
 
-7. Move                 :  View status of the Unencrypted SYNC service
-8. Move-Encrypt         :  View status of the Encrypted SYNC service
+7. Move                 :   View status of the Unencrypted SYNC service
+8. Move-Encrypt         :   View status of the Encrypted SYNC service
+
+Restart Services - For any issues found above ******************************
+
+9. Restart Menu         :   Here you can restart the services that need it!
 
 EOF
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ];  Type [9] to Exit! " choice
+	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
 	case $choice in
     1)
       ## create log file if does not exist
@@ -216,6 +220,10 @@ read_options(){
           clear
           ;;
         9)
+          clear
+          bash /opt/plexguide/scripts/menus/restart-menu.#!/bin/sh
+          ;;
+        10)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
