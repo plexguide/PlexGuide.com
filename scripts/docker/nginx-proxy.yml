@@ -31,7 +31,7 @@ services:
     ports:
       - "27029:8181"
     links:
-      - letsencrypt-nginx-proxy-companion
+      - nginx
     restart: always
     environment:
       - PUID=1000
