@@ -58,7 +58,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "8)" "Not Ready - Organizr"  \
     "9)" "Not Ready - PlexPy"  \
     "10)" "Radarr"  \
-    "11)" "Not Ready - SABNZBD"  \
+    "11)" "SABNZBD"  \
     "12)" "Sonarr"  \
     "13)" "Not Ready - Wordpress"  \
     "14)" "Apache"  \
