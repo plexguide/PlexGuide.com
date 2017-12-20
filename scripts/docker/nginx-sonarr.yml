@@ -5,7 +5,7 @@ services:
    image: linuxserver/sonarr
    container_name: nginx-sonarr
    ports:
-     - 
+     - "127.0.0.1:8989:8080"
    volumes:
      - /opt/appdata/sonarr:/config
      - /:/yourcomputer

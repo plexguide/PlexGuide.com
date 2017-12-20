@@ -5,7 +5,7 @@ services:
    image: linuxserver/radarr
    container_name: nginx-radarr
    ports:
-     - "127.0.0.1:8080:7878"
+     - "127.0.0.1:7878:8080"
    volumes:
      - /opt/appdata/radarr:/config
      - /:/yourcomputer
