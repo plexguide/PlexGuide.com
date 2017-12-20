@@ -7,8 +7,8 @@ mkdir -p /opt/appdata/vpn/config
 `mv '/opt/plexguide/scripts/torrentvpn/openvpn' /opt/appdata/vpn/config/Remotes`
 
 # move original setup files to new loctaion
- bash /opt/plexguide/scripts/torrentvpn/move-old.sh
  bash /opt/plexguide/scripts/torrentvpn/move-ovpn.sh
+ rm -R /opt/appdata/delugevpn
 
  /sbin/modprobe iptable_mangle
 
