@@ -3,13 +3,7 @@
 clear
 
 ## Supporting Folders
-#mkdir -p /mnt/move
 mkdir -p /mnt/.gcrypt
-#mkdir -p /mnt/gdrive
-#mkdir -p /mnt/unionfs/tv
-#mkdir -p /mnt/unionfs/movies
-#mkdir -p /opt/appdata/plexguide
-#mkdir -p /mnt/plexdrive4
 mkdir -p /mnt/encrypt
 
 ## Installing rclone
@@ -27,7 +21,7 @@ mkdir -p /mnt/encrypt
   cd ~
 
 ############################################# RCLONE
-## Excutes the RClone Config
+## Excutes RClone Config
 rclone config
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
@@ -46,12 +40,6 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-
-#chown -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
-#chmod 777 -R 1000:1000 /mnt/encrypt  1>/dev/null 2>&1
-
-#chown -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
-#chmod 777 -R 1000:1000 /mnt/.gcrypt  1>/dev/null 2>&1
 echo 1
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
@@ -127,24 +115,6 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 echo 5
-#### Create the RClone Service for a direct gdrive encrypted mount point
-##tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
-##[Unit]
-##Description=RClone Daemon
-##After=multi-user.target
-
-##[Service]
-##Type=simple
-##User=plexguide
-##Group=1000
-##ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
-##TimeoutStopSec=20
-##KillMode=process
-##RemainAfterExit=yes
-
-##[Install]
-##WantedBy=multi-user.target
-##EOF
 
 ## Create the UnionFS Service for the plexdrive encrypted mount point
 tee "/etc/systemd/system/unionfs-encrypt.service" > /dev/null <<EOF

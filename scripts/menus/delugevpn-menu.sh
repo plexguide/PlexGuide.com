@@ -99,11 +99,9 @@ read_options(){
     echo "Your PIA info has been Installed for the Easy Setup!"
     echo
     echo "Remember to use http://iknowwhatyoudownload.com  "
-    echo "to check if your IP is leaked after using deluge or "
+    echo "to check if your IP is leaked after using torrents or "
     echo "use TorGuard's Check My Torrent IP Tool."
     echo
-    echo
-    echo "       *** THE DEFAULT PASSWORD IS deluge ***        "
     echo
     echo
     read -n 1 -s -r -p "Press any key to continue "
