@@ -8,10 +8,10 @@ services:
      - /sys:/host/sys:ro
      - /proc:/host/proc:ro
    ports:
-     - "127.0.0.1:19999:19999"
+     - "19999:19999"
    restart: always
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=netdata.*.*
+     - VIRTUAL_HOST=netdata.*
      - VIRTUAL_PORT=19999
