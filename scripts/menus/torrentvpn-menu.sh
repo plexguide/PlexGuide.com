@@ -99,7 +99,7 @@ read_options(){
   #  echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
-    echo "Your PIA info has been Installed for the Easy Setup!"
+    echo "Your PIA info has been Installed for Easy Setup!"
     echo
     echo "Remember to use http://iknowwhatyoudownload.com  "
     echo "to check if your IP is leaked after using torrents or "
@@ -113,7 +113,7 @@ read_options(){
       file="/var/plexguide/pia-vpn-set.yes"
       if [ -e "$file" ]
       then
-        docker rm rtorrentvpn
+      #  docker rm -f rtorrentvpn
         bash /opt/plexguide/scripts/torrentvpn/deluge.sh
 
         clear
@@ -128,10 +128,9 @@ read_options(){
     file="/var/plexguide/pia-vpn-set.yes"
     if [ -e "$file" ]
     then
-      docker rm delugevpn
+    #  docker rm -f delugevpn
       bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
       clear
-      echo "Flood is enabled by default - use port 3000"
       echo
     else
      echo
