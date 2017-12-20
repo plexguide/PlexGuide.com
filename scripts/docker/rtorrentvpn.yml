@@ -14,8 +14,8 @@ services:
      - 3000:3000
    volumes:
      - /opt/appdata/vpn/config:/config
-     - /mnt/torrentvpn/downloaded:/downloaded
-     - /mnt/torrentvpn/torrent:/torrent
+     - /mnt/torrentvpn/downloaded:/downloads
+     - /mnt/torrentvpn/.torrent:/torrents
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
