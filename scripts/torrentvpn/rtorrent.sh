@@ -10,7 +10,8 @@ echo ymlprogram rtorrentvpn > /opt/plexguide/tmp.txt
 echo ymldisplay rTorrentVPN >> /opt/plexguide/tmp.txt
 echo ymlport 3000 >> /opt/plexguide/tmp.txt
 echo
-echo "    *****  Flood is enabled by default - use port 3000  *****     "
+echo
+echo "    *****  Flood GUI is enabled by default - use port 3000  *****     "
 echo
 echo
 bash /opt/plexguide/scripts/docker-no/program-installer.sh
