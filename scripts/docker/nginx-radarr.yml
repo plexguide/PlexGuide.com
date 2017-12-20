@@ -2,10 +2,10 @@
 version: '2'
 services:
  nginx-radarr:
-   image: linuxserver/radarr
+   image: hotio/suitarr
    container_name: nginx-radarr
    ports:
-     - "127.0.0.1:7878:8080"
+     - "127.0.0.1:7878:7878"
    volumes:
      - /opt/appdata/radarr:/config
      - /:/yourcomputer
@@ -17,7 +17,7 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=radarr.hexabotreviews.com
-     - VIRTUAL_PORT=8080
+     - VIRTUAL_PORT=7878
      - LETSENCRYPT_HOST=radarr.hexabotreviews.com
      - LETSENCRYPT_EMAIL=user@dunn.cloud
    restart:
