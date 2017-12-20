@@ -16,7 +16,7 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=radarr.*.*
+     - VIRTUAL_HOST=radarr.*
      - VIRTUAL_PORT=7878
    restart:
      always
