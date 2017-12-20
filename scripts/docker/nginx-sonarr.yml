@@ -6,6 +6,7 @@ services:
    container_name: nginx-sonarr
    ports:
      - "8989:8989"
+     - "9898:9898"
    volumes:
      - /opt/appdata/sonarr:/config
      - /:/yourcomputer
@@ -18,7 +19,7 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=sonarr.hexabotreviews.com
-     - VIRTUAL_PORT=8989
+     - VIRTUAL_PORT=9898
      - LETSENCRYPT_HOST=sonarr.hexabotreviews.com
      - LETSENCRYPT_EMAIL=user@dunn.cloud
    restart:
