@@ -20,7 +20,7 @@ services:
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: plexpy
+    container_name: letsencrypt
     depends_on:
       - nginx
     volumes:
