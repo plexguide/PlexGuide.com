@@ -5,7 +5,7 @@ services:
    image: linuxserver/radarr
    container_name: nginx-radarr
    ports:
-     - "7878:7878"
+     - "127.0.0.1:8080:7878"
    volumes:
      - /opt/appdata/radarr:/config
      - /:/yourcomputer
@@ -16,7 +16,9 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=radarr.*
-     - VIRTUAL_PORT=7878
+     - VIRTUAL_HOST=radarr.hexabotreviews.com
+     - VIRTUAL_PORT=8080
+     - LETSENCRYPT_HOST=radarr.hexabotreviews.com
+     - LETSENCRYPT_EMAIL=user@dunn.cloud
    restart:
      always
