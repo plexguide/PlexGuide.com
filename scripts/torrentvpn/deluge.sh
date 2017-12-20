@@ -2,9 +2,9 @@
 
 bash /opt/plexguide/scripts/torrentvpn/vpnowners.sh
 
-docker rm delugevpn
+docker rm -f delugevpn
 
-#docker rm rtorrentvpn
+docker rm -f rtorrentvpn
 
 echo ymlprogram delugevpn > /opt/plexguide/tmp.txt
 echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
