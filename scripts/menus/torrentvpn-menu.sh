@@ -8,8 +8,7 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
-# move original setup files to new loctaion
-bash /opt/plexguide/scripts/torrentvpn/move-old.sh
+
 # create and move openvpn setup files to vpn directory
 bash /opt/plexguide/scripts/torrentvpn/openvpn-setup.sh
 
