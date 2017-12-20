@@ -2,7 +2,7 @@
 version: '2'
 services:
  nginx-sonarr:
-   image: linuxserver/sonarr
+   image: hotio/suitarr
    container_name: nginx-sonarr
    ports:
      - "127.0.0.1:8989:8080"
@@ -17,6 +17,7 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
+     - APP=sonarr
      - VIRTUAL_HOST=sonarr.hexabotreviews.com
      - VIRTUAL_PORT=8080
      - LETSENCRYPT_HOST=sonarr.hexabotreviews.com
