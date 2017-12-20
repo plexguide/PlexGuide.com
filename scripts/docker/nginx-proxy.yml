@@ -17,7 +17,6 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - VIRTUAL_HOST=whoami.local
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
