@@ -17,6 +17,7 @@ services:
      - /mnt/torrentvpn/temp:/temp
      - /mnt/torrentvpn/downloaded:/downloads
      - /mnt/torrentvpn/.torrent:/torrents
+     - /mnt/torrentvpn/.watched:/watched
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
