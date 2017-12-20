@@ -2,7 +2,7 @@
 Reference : https://nerdily.org/2017/upgrading-fail2ban-to-a-permanent-banhammer/
 
 
-If this is a fresh server then if you wait an hour or so, this will show you a list of IP's that have been trying to access your server
+On a fresh server if you wait an hour or so, this will show you a list of IP's that have been trying to access your server :-
 ```sh
 sudo cat /var/log/fail2ban.log
 ```
