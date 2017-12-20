@@ -16,9 +16,7 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=radarr.hexabotreviews.com
+     - VIRTUAL_HOST=radarr.*.*
      - VIRTUAL_PORT=7878
-     - LETSENCRYPT_HOST=radarr.hexabotreviews.com
-     - LETSENCRYPT_EMAIL=user@dunn.cloud
    restart:
      always
