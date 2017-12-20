@@ -14,10 +14,11 @@ services:
      - 3000:3000
    volumes:
      - /opt/appdata/vpn/config:/config
-     - /mnt/torrentvpn/temp:/temp
-     - /mnt/torrentvpn/downloaded:/downloads
+     - /mnt/torrentvpn/temp:/data/incomplete
+     - /mnt/torrentvpn/downloaded:/data/completed
      - /mnt/torrentvpn/.torrent:/torrents
-     - /mnt/torrentvpn/.watched:/watched
+     - /mnt/torrentvpn/.watched:/data/watched
+    # - /mnt/torrentvpn/.session:/config/rtorrent/session
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
