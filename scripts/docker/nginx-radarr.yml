@@ -2,7 +2,7 @@
 version: '2'
 services:
  nginx-radarr:
-   image: hotio/suitarr
+   image: linuxserver/radarr
    container_name: nginx-radarr
    ports:
      - "127.0.0.1:7878:7878"
