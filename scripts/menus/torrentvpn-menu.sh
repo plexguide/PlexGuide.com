@@ -8,6 +8,9 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
+# move original setup files to new loctaion
+bash /opt/plexguide/scripts/torrentvpn/move-old.sh
+# create and move openvpn setup files to vpn directory
 bash /opt/plexguide/scripts/torrentvpn/openvpn-setup.sh
 
 
@@ -46,7 +49,7 @@ Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland,
              Sweden, France, Romania or Israel.
 
 Default is set to Netherlands
-(To change edit /opt/plexguide/scripts/delugevpn/move-ovpn.sh before install)
+(To change edit /opt/plexguide/scripts/torrentvpn/move-ovpn.sh before install)
 
 
 1. PIA VPN details
