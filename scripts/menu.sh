@@ -8,14 +8,14 @@ if [ -e "$file" ]
 then
    clear
 else
-   bash /opt/plexguide/scripts/startup/dep.sh 1>/dev/null 2>&1
-   rm -r dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep21.yes 1>/dev/null 2>&1
+   bash /opt/plexguide/scripts/startup/dep.sh
+   rm -r dep*
+   touch /var/plexguide/dep21.yes
 fi
 
 ## ensure folders follow plexguide
 
-bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/startup/owner.sh
 
 ##clear screen
 clear
@@ -65,15 +65,15 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0010 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
-   "1)" "Donation: Mine Coins - Help Us!"   \
+whiptail --title "PlexGuide.com - v5.0011 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+   "1)" "Donation - Mine Coins - Help Us!"   \
    "2)" "RClone & PlexDrive"  \
-   "3)" "Programs: Main" \
+   "3)" "Programs - Main" \
    "4)" "Info & Troubleshoot" \
    "5)" "Backup & Restore" \
-   "6)" "PlexGuide: Update" \
-   "7)" "Beta: NGINX" \
-   "8)" "Beta: Torrents" \
+   "6)" "PlexGuide - Update" \
+   "7)" "Beta - NGINX " \
+   "8)" "Beta - Torrents" \
    "9)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -116,7 +116,7 @@ case $CHOICE in
        ;;
 
    "6)")
-       bash /opt/plexguide/scripts/docker-no/upgrade.sh 
+       bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
        echo Remember, restart by typing: plexguide
        exit 0;;
@@ -126,7 +126,7 @@ case $CHOICE in
        bash /opt/plexguide/scripts/menus/nginx-programs.sh
        ;;
 
-   "8)")
+    "8)")
        clear
        bash /opt/plexguide/scripts/menus/programs-torrent.sh
        ;;
