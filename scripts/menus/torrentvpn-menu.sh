@@ -130,6 +130,8 @@ read_options(){
       docker rm delugevpn
       bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
       clear
+      echo "Flood is enabled by default - use port 3000"
+      echo
     else
      echo
      echo "Are you Special? You need to setup your PIA account details first!!!"
