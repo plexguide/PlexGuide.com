@@ -49,7 +49,7 @@ read_options(){
 
   1)
     clear
-    bash /opt/plexguide/scripts/menus/delugevpn-menu.sh
+    bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh
     ;;
   2)
     clear

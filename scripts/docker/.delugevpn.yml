@@ -13,16 +13,15 @@ services:
      - '${IP_ADDRESS}:58846:58846'
      - '${IP_ADDRESS}:58946:58946'
    volumes:
-     - /opt/appdata/delugevpn/config:/config
-     - /mnt/deluge/temp:/temp
-     - /mnt/deluge/downloaded:/downloaded
-     - /mnt/deluge/torrent:/torrent
+     - /opt/appdata/vpn/config:/config
+     - /mnt/torrentvpn/temp:/temp
+     - /mnt/torrentvpn/downloaded:/downloaded
+     - /mnt/torrentvpn/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
    env_file:
-     - /opt/appdata/delugevpn/.deluge-env
-  #   - /opt/appdata/delugevpn/config/.deluge-env
+     - /opt/appdata/vpn/.vpn-env
    environment:
      - VPN_ENABLED=yes
      - VPN_PROV=pia

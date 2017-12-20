@@ -1,13 +1,12 @@
 #!/bin/bash
 
-mkdir -p /opt/appdata/delugevpn
-mkdir -p /opt/appdata/delugevpn/config
+mkdir -p /opt/appdata/vpn
+mkdir -p /opt/appdata/vpn/config
 
 # Move the PIA VPN files
-`mv '/opt/plexguide/scripts/delugevpn/openvpn' /opt/appdata/delugevpn/config/Remotes`
+`mv '/opt/plexguide/scripts/torrentvpn/openvpn' /opt/appdata/vpn/config/Remotes`
 
-# chmod +x /opt/plexguide/scripts/test/deluge/move-ovpn.sh
- bash /opt/plexguide/scripts/delugevpn/move-ovpn.sh
+ bash /opt/plexguide/scripts/torrentvpn/move-ovpn.sh
 
  /sbin/modprobe iptable_mangle
 

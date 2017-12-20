@@ -13,14 +13,14 @@ services:
      - 8118:8118
      - 3000:3000
    volumes:
-     - /opt/appdata/delugevpn/config:/config
-     - /mnt/rutorrents/downloads:/downloads
-     - /mnt/rtorrentvpn/torrent:/torrent
+     - /opt/appdata/vpn/config:/config
+     - /mnt/torrentvpn/downloaded:/downloaded
+     - /mnt/torrentvpn/torrent:/torrent
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
    env_file:
-     - /opt/appdata/delugevpn/.deluge-env
+     - /opt/appdata/vpn/.vpn-env
    environment:
      - VPN_ENABLED=yes
      - VPN_PROV=pia

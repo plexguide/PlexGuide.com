@@ -8,7 +8,7 @@ PASSWD=/etc/passwd
 RED='\033[0;41;30m'
 STD='\033[0;0;39m'
 
-bash /opt/plexguide/scripts/delugevpn/openvpn-setup.sh
+bash /opt/plexguide/scripts/torrentvpn/openvpn-setup.sh
 
 
 # ----------------------------------
@@ -70,29 +70,29 @@ read_options(){
 	read -p "Enter choice [ 1 - 4 ] " choice
 	case $choice in
     1)
-    rm /opt/appdata/delugevpn/.deluge-env
+    rm /opt/appdata/vpn/.vpn-env
     # Get IP Address
     local_ip=`hostname -I | awk '{print $1}'`
     # CIDR - this assumes a 255.255.255.0 netmask
     lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
-    echo "IP_ADDRESS=$local_ip" >> /opt/appdata/delugevpn/.deluge-env
-    echo "LAN_NETWORK=$lan_net" >> /opt/appdata/delugevpn/.deluge-env
+    echo "IP_ADDRESS=$local_ip" >> /opt/appdata/vpn/.vpn-env
+    echo "LAN_NETWORK=$lan_net" >> /opt/appdata/vpn/.vpn-env
 
     clear
     echo "Visit https://www.privateinternetaccess.com for account details. "
     echo
     read -p "What is your PIA Username?: " pia_username
-    echo "VPN_USER=$pia_username" >> /opt/appdata/delugevpn/.deluge-env
+    echo "VPN_USER=$pia_username" >> /opt/appdata/vpn/.vpn-env
     echo
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
-    echo "VPN_PASS=$pia_password" >> /opt/appdata/delugevpn/.deluge-env
+    echo "VPN_PASS=$pia_password" >> /opt/appdata/vpn/.vpn-env
     echo
-    cat /opt/appdata/delugevpn/.deluge-env >> /opt/plexguide/scripts/docker/.env
-    bash /opt/plexguide/scripts/delugevpn/basic-env.sh
-    cat /opt/appdata/.env >> /opt/appdata/delugevpn/.deluge-env
+    cat /opt/appdata/vpn/.vpn-env >> /opt/plexguide/scripts/docker/.env
+    bash /opt/plexguide/scripts/torrentvpn/basic-env.sh
+    cat /opt/appdata/.env >> /opt/appdata/vpn/.vpn-env
 
   #  read -p "What Remote server do you want to use? : " vpn_remote_choice
-  #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/.environments/.deluge-env
+  #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/vpn/.vpn-env
   #  echo
     clear
     touch /var/plexguide/pia-vpn-set.yes
@@ -111,15 +111,8 @@ read_options(){
       if [ -e "$file" ]
       then
         docker rm rtorrentvpn
-        bash /opt/plexguide/scripts/delugevpn/deluge.sh
-      #  sudo usermod -aG docker $USER
+        bash /opt/plexguide/scripts/torrentvpn/deluge.sh
 
-    #    echo ymlprogram uhttpd > /opt/plexguide/tmp.txt
-    #    echo ymldisplay UHTTPD >> /opt/plexguide/tmp.txt
-    #    echo ymlport 80 >> /opt/plexguide/tmp.txt
-    #    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    #    clear
-    #    bash /opt/plexguide/scripts/delugevpn/daemon.sh
         clear
       else
         echo
@@ -133,7 +126,7 @@ read_options(){
     if [ -e "$file" ]
     then
       docker rm delugevpn
-      bash /opt/plexguide/scripts/delugevpn/rtorrent.sh
+      bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
       clear
     else
      echo
