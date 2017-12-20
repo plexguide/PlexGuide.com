@@ -70,6 +70,7 @@ EOF
 read_options(){
 	local choice
 	read -p "Enter choice [ 1 - 4 ] " choice
+  echo
 	case $choice in
     1)
     rm /opt/appdata/vpn/.vpn-env
