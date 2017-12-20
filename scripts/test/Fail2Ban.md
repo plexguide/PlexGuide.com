@@ -1,4 +1,7 @@
-If this is a fresh server then if you wait an hour or so then this will show you a list of IP's that have been trying to access your server
+### These are some settings found to perform a BanHammer on those who want to hack into your server via SSH.
+
+
+If this is a fresh server then if you wait an hour or so, this will show you a list of IP's that have been trying to access your server
 ```sh
 sudo cat /var/log/fail2ban.log
 ```
@@ -22,7 +25,7 @@ Find :-
 ```sh
 actionstart = <iptables> -N f2b-<name>
 ```
-And add at end:-
+And add at the end of the block:-
 ```sh
      cat /etc/fail2ban/persistent.bans | awk '/^fail2ban-<name>/ {print $2}' \
      | while read IP; do iptables -I fail2ban-<name> 1 -s $IP -j <blocktype>; done
@@ -31,7 +34,7 @@ Find :-
 ```sh
 actionban = <iptables> -I f2b-<name> 1 -s <ip> -j <blocktype>
 ```
-And add at end:-
+And add at the end of the block:-
 ```sh
      echo "fail2ban-<name> <ip>" >> /etc/fail2ban/persistent.bans
 ```
