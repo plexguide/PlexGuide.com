@@ -13,7 +13,7 @@ services:
      - 8118:8118
      - 3000:3000
    volumes:
-     - /opt/appdata/vpn/config:/config
+     - /opt/appdata/vpn/rtorrent/config:/config
      - /mnt/torrentvpn/temp:/data/incomplete
      - /mnt/torrentvpn/downloaded:/data/completed
      - /mnt/torrentvpn/.torrent:/torrents

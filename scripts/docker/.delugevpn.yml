@@ -13,7 +13,7 @@ services:
      - '${IP_ADDRESS}:58846:58846'
      - '${IP_ADDRESS}:58946:58946'
    volumes:
-     - /opt/appdata/vpn/config:/config
+     - /opt/appdata/vpn/deluge/config:/config
      - /mnt/torrentvpn/temp:/data/incomplete
      - /mnt/torrentvpn/downloaded:/data/completed
      - /mnt/torrentvpn/.torrent:/data/torrents
