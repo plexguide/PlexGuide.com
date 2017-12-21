@@ -3,6 +3,7 @@
 mkdir -p /opt/appdata/vpn
 mkdir -p /opt/appdata/vpn/rtorrent
 mkdir -p /opt/appdata/vpn/rtorrent/config
+mkdir -p /opt/appdata/vpn/rtorrent/config/openvpn
 
 # Move the PIA VPN files
 `mv '/opt/plexguide/scripts/torrentvpn/openvpn' /opt/appdata/vpn/rtorrent/config/Remotes`
