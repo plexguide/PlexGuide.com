@@ -9,7 +9,7 @@ then
    clear
 else
    bash /opt/plexguide/scripts/startup/dep.sh
-   rm -r dep*
+   rm -r /var/plexguide/dep* 1>/dev/null 2>&1
    touch /var/plexguide/dep21.yes
 fi
 
