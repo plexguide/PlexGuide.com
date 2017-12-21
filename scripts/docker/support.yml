@@ -6,10 +6,6 @@ services:
    container_name: support
    ports:
      - "45560:45560"
-   volumes:
-     - /opt/appdata/support:/support
-   restart:
-     on-failure
    environment:
      - PUID=1000
      - PGID=1000
