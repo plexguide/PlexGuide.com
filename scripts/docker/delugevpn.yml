@@ -14,10 +14,10 @@ services:
      - 58946:58946
    volumes:
      - /opt/appdata/vpn/config:/config
-     - /mnt/torrentvpn/temp:/temp
-     - /mnt/torrentvpn/downloaded:/downloads
-     - /mnt/torrentvpn/.torrent:/torrents
-     - /mnt/torrentvpn/.watched:/watched
+     - /mnt/torrentvpn/temp:/data/incomplete
+     - /mnt/torrentvpn/downloaded:/data/completed
+     - /mnt/torrentvpn/.torrent:/data/torrents
+     - /mnt/torrentvpn/.watched:/data/watched
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
