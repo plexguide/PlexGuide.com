@@ -1,0 +1,14 @@
+---
+version: '2'
+services:
+ support:
+   image: admin9705/support
+   container_name: support
+   command: --templates http://templates/templates.json
+   ports:
+     - "5999:5999"
+   restart:
+     always
+   environment:
+     - PUID=1000
+     - PGID=1000
