@@ -5,7 +5,7 @@ services:
    image: admin9705/support
    container_name: support
    ports:
-     - "12000:12000"
+     - "45560:45560"
    volumes:
      - /opt/appdata/support:/support
    restart:
