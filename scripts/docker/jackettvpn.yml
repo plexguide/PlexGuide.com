@@ -3,7 +3,7 @@ version: '2'
 services:
  couchpotato:
    image: linuxserver/jackett
-   container_name: jackett
+   container_name: jackettvpn
    ports:
      - 9117:9117
    volumes:
