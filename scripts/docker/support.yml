@@ -2,7 +2,7 @@
 version: '2'
 services:
  support:
-   image: admin9705/support:latest
+   image: admin9705/support
    container_name: support
    ports:
      - "45560:45560"
