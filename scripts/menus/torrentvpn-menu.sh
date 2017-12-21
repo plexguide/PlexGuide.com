@@ -54,8 +54,8 @@ Default is set to Netherlands
 1. PIA VPN details
 2. Install DelugeVPN
 3. Install rTorrentVPN
-4. Exit
-
+4. Install JackettVPN
+5. Exit
 
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
     to check for leaks! ***
@@ -70,7 +70,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 4 ] " choice
+	read -p "Enter choice [ 1 - 5 ] " choice
   echo
 	case $choice in
     1)
@@ -141,6 +141,12 @@ read_options(){
    fi
    ;;
     4)
+    echo ymlprogram jackettvpn > /opt/plexguide/tmp.txt
+    echo ymldisplay JackettVPN >> /opt/plexguide/tmp.txt
+    echo ymlport 9117 >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ;;
+    5)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

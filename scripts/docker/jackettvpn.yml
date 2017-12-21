@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+ couchpotato:
+   image: linuxserver/jackett
+   container_name: jackettvpn
+   ports:
+     - 9117:9117
+   volumes:
+     - /opt/appdata/jackett:/config
+     - /:/yourcomputer
+     - /mnt/torrentvpn/temp:/data/incomplete
+     - /mnt/torrentvpn/downloaded:/data/completed
+     - /mnt/torrentvpn/torrent:/data/torrents
+     - /mnt/unionfs:/unionfs
+     - /etc/localtime:/etc/localtime:ro
+   #env_file:
+    #- /opt/.environments/.env
+   environment:
+     - PUID=1000
+     - PGID=1000
+   restart:
+     always
