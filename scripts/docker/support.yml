@@ -2,7 +2,7 @@
 version: '2'
 services:
  support:
-   image: admin9705/support
+   image: admin9705/support:latest
    container_name: support
    ports:
      - "45560:45560"
@@ -10,3 +10,5 @@ services:
      - PUID=1000
      - PGID=1000
    tty: true
+   restart:
+     always
