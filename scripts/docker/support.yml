@@ -9,7 +9,7 @@ services:
    volumes:
      - /opt/appdata/support:/support
    restart:
-     always
+     on-failure
    environment:
      - PUID=1000
      - PGID=1000
