@@ -10,7 +10,7 @@ STD='\033[0;0;39m'
 
 
 # create and move openvpn setup files to vpn directory
-bash /opt/plexguide/scripts/torrentvpn/openvpn-setup.sh
+#bash /opt/plexguide/scripts/torrentvpn/openvpn-setup.sh
 
 
 # ----------------------------------

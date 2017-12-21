@@ -1,13 +1,14 @@
 #!/bin/bash
 
 mkdir -p /opt/appdata/vpn
-mkdir -p /opt/appdata/vpn/config
+mkdir -p /opt/appdata/vpn/rtorrent
+mkdir -p /opt/appdata/vpn/rtorrent/config
 
 # Move the PIA VPN files
-`mv '/opt/plexguide/scripts/torrentvpn/openvpn' /opt/appdata/vpn/config/Remotes`
+`mv '/opt/plexguide/scripts/torrentvpn/openvpn' /opt/appdata/vpn/rtorrent/config/Remotes`
 
 # move original setup files to new loctaion
- bash /opt/plexguide/scripts/torrentvpn/move-ovpn.sh
+ bash /opt/plexguide/scripts/torrentvpn/move-ovpnr.sh
  rm -R /opt/appdata/delugevpn
 
  /sbin/modprobe iptable_mangle
