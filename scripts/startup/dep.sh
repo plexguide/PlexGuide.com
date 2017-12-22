@@ -181,12 +181,12 @@ EOF
   docker restart plexpublic 1>/dev/null 2>&1
   docker restart sabnzbd 1>/dev/null 2>&1
 
-  echo ""
-  read -n 1 -s -r -p "Finished - Press any key to continue "
-
   echo "8. Donation Information - (Please Wait)"
 
   bash /opt/plexguide/scripts/menus/donate-menu.sh
+  read -n 1 -s -r -p "Finished - Press any key to continue "
+
+
 ############################################# Install a Post-Docker Fix ###################### END
 
 else
