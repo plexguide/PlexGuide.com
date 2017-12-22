@@ -115,7 +115,7 @@ case $CHOICE in
 
     "8)")
      clear
-     bash /opt/plexguide/scripts/menus/plexpysub-menu.sh
+     bash /opt/plexguide/scripts/menus/plexpy-tautulli.sh
      ;;
 
     "9)")
