@@ -138,10 +138,8 @@ case $CHOICE in
      ;;
 
     "12)")
-     echo ymlprogram tautulli > /opt/plexguide/tmp.txt
-     echo ymldisplay Tautulli >> /opt/plexguide/tmp.txt
-     echo ymlport 8181 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     clear
+     bash /opt/plexguide/scripts/menus/plexpy-tautulli.sh
      ;;
 
     "13)")
