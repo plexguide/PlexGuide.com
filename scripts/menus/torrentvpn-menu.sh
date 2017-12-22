@@ -81,11 +81,11 @@ read_options(){
     rm /opt/appdata/.env
 
     # Get IP Address
-    local_ip=`hostname -I | awk '{print $1}'`
+    ##local_ip=`hostname -I | awk '{print $1}'`
     # CIDR - this assumes a 255.255.255.0 netmask
-    lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
-    echo "IP_ADDRESS=$local_ip" >> /opt/appdata/vpn/.vpn-env
-    echo "LAN_NETWORK=$lan_net" >> /opt/appdata/vpn/.vpn-env
+    ##lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
+    ##echo "IP_ADDRESS=$local_ip" >> /opt/appdata/vpn/.vpn-env
+    ##echo "LAN_NETWORK=$lan_net" >> /opt/appdata/vpn/.vpn-env
 
     clear
     echo "Visit https://www.privateinternetaccess.com for account details. "
@@ -96,13 +96,18 @@ read_options(){
     read -s -p "What is your PIA Password? (Will not be echoed): " pia_password
     echo "VPN_PASS=$pia_password" >> /opt/appdata/vpn/.vpn-env
     echo
+    echo
+#    read "Remote server choices are: ca, ca-toronto, nl, swiss, "
+#    read "                           sweden, france, ro & israel"
+#    echo
+#    read -p "What Remote server do you want to use? : " vpn_remote_choice
+#    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/vpn/.vpn-env
+#    echo
     cat /opt/appdata/vpn/.vpn-env >> /opt/plexguide/scripts/docker/.env
     bash /opt/plexguide/scripts/torrentvpn/basic-env.sh
     cat /opt/appdata/.env >> /opt/appdata/vpn/.vpn-env
 
-  #  read -p "What Remote server do you want to use? : " vpn_remote_choice
-  #  echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/vpn/.vpn-env
-  #  echo
+
     clear
     touch /var/plexguide/pia-vpn-set.yes
     echo "Your PIA info has been Installed for Easy Setup!"
