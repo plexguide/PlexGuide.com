@@ -3,14 +3,14 @@
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
 
-file="/var/plexguide/dep21.yes"
+file="/var/plexguide/dep22.yes"
 if [ -e "$file" ]
 then
    clear
 else
    bash /opt/plexguide/scripts/startup/dep.sh
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep21.yes
+   touch /var/plexguide/dep22.yes
 fi
 
 ## ensure folders follow plexguide

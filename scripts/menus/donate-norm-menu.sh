@@ -9,7 +9,6 @@ if (whiptail --title "PlexGuide Donation Selection" --yesno "Will you Donate you
     whiptail --title "Donation Status - Yes" --msgbox "Thank you for helping and support the Team!" 8 84
     rm -r /var/plexguide/donation* 1>/dev/null 2>&1
     touch /var/plexguide/donation.yes 1>/dev/null 2>&1
-
      echo ymlprogram support > /opt/plexguide/tmp.txt
      echo ymldisplay Support >> /opt/plexguide/tmp.txt
      echo ymlport 0000 >> /opt/plexguide/tmp.txt
