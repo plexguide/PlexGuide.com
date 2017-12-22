@@ -11,5 +11,5 @@ whiptail --title "Donation Option Info" --msgbox "Would you be kind enough to TU
 if (whiptail --title "PlexGuide Donation" --yesno "Will you Donate your Unused CPU Power to Assist Us?" 8 78) then
     echo "User selected Yes, exit status was $?."
 else
-    echo "User selected No, exit status was $?."
+    whiptail --title "Donation Status - No" --msgbox "We understand! If you change your mind, please visit or donation menu anytime!" 12 84
 fi
