@@ -206,24 +206,5 @@ fi
 clear
 
 cat << EOF
-~~~~~~~~~~~~~~
-  QUICK NOTE
-~~~~~~~~~~~~~~
 
-Pre-Install / Re-Install Complete!
-
-<Donation Info> If your enjoying the programming, donating coin or enabling
-mininig helps up go a long way.  If you enable mining, you can choose how
-many cores  are allocated. Any amount would be helpful! <Donation Info>
-
-If you wish to contribute your skills (for the lack of ours); please let us
-know anytime.  If you spot any issues, please post in the ISSUES portion of
-GitHub.  Understand we'll do our best to respond - we have our lives too!
-Just know that this project is meant to make your life easier, while at the
-same time; we are learning and having fun!
-
-Thank You!
-The PlexGuide.com Team
-
-EOF
-read -n 1 -s -r -p "Press any key to continue"
+whiptail --title "Final Note" --msgbox "If you wish to contribute your skills (for the lack of ours); please reach us anytime.  If you spot any issues, please visit our DISCORD channel for the fastest help and/or you can post in the issues section or REDDIT.  We’ll do our best to respond - we have our lives also!  Just know that this project is meant to make your life easier, while at the same time; we are all learning and about having fun!  A website and forum will be coming soon!" 12 84

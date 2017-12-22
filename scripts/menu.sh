@@ -66,7 +66,7 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "PlexGuide.com - v5.0011 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
-   "1)" "Donation - Mine Coins - Help Us!"   \
+   "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs - Main" \
    "4)" "Info & Troubleshoot" \
@@ -80,19 +80,8 @@ whiptail --title "PlexGuide.com - v5.0011 (Admin9705 & Deiteq)" --menu "Make you
 result=$(whoami)
 case $CHOICE in
    "1)")
-      clear
-           file="/var/plexguide/miner.set"
-           if [ -e "$file" ]
-           then
-               clear
-           else
-               touch /var/plexguide/miner.set
-               echo "Conducting Pre-Stage & Checks (Please Wait)"
-               wget https://minergate.com/download/deb-cli -O minergate-cli.deb 1>/dev/null 2>&1
-               yes | dpkg -i minergate-cli.deb 1>/dev/null 2>&1
-               clear
-           fi
-         bash /opt/plexguide/scripts/menus/mine/mining.sh
+       clear
+       bash /opt/plexguide/scripts/menus/mine/donate-norm-menu.sh
        ;;
 
    "2)")
