@@ -114,10 +114,8 @@ case $CHOICE in
      ;;
 
     "8)")
-     echo ymlprogram plexpy > /opt/plexguide/tmp.txt
-     echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
-     echo ymlport 8181 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     clear
+     bash /opt/plexguide/scripts/menus/plexpysub-menu.sh
      ;;
 
     "9)")
