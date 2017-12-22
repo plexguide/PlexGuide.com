@@ -5,6 +5,7 @@ whiptail --title "Donation Option Info" --msgbox "Would you be kind enough to TU
 
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Donation" --yesno "Will you Donate your Unused CPU Power to Assist Us?" 8 78) then
+    
     whiptail --title "Donation Status - Yes" --msgbox "Thank you for helping and support the Team!" 8 84
     rm -r /var/plexguide/donation* 1>/dev/null 2>&1
     touch /var/plexguide/donation.yes 1>/dev/null 2>&1
@@ -12,8 +13,8 @@ if (whiptail --title "PlexGuide Donation" --yesno "Will you Donate your Unused C
      echo ymlprogram support > /opt/plexguide/tmp.txt
      echo ymldisplay Support >> /opt/plexguide/tmp.txt
      echo ymlport 0000 >> /opt/plexguide/tmp.txt
-     echo "Setting up PlexGuide Donations - Thank You"
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     echo "Setting up PlexGuide Donations - Thank You"
 
 else
     whiptail --title "Donation Status - No" --msgbox "We understand! If you change your mind, please visit our donation menu anytime!" 8 84
