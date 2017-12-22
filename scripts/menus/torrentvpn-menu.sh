@@ -79,6 +79,8 @@ read_options(){
     1)
     #rm /opt/appdata/vpn/.vpn-env
     rm /opt/appdata/.env
+    mkdir -p /opt/appdata/vpn
+    mkdir -p /opt/appdata/vpn/config
 
     # Get IP Address
     ##local_ip=`hostname -I | awk '{print $1}'`
