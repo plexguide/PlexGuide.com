@@ -4,10 +4,9 @@
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 clear
 
-whiptail --title "Example Dialog" --infobox "This is an example of an info box." 8 78
+echo "Welcome to Bash $BASH_VERSION" > test_textbox
 
-
-
+whiptail --textbox donate-info 12 80
 
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Donation" --yesno "Do You Wish to Donate Unused CPU Power to Help Us?" 8 78) then
