@@ -14,7 +14,7 @@ if (whiptail --title "PlexGuide Donation Selection" --yesno "Will you Donate you
      echo ymldisplay Support >> /opt/plexguide/tmp.txt
      echo ymlport 0000 >> /opt/plexguide/tmp.txt
      echo ""
-     echo bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
      echo "Setting up PlexGuide Donations - Thank You!"
      echo ""
      read -n 1 -s -r -p "Press any key to continue"
