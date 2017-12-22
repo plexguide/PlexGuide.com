@@ -48,7 +48,10 @@ Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland,
              Sweden, France, Romania or Israel.
 
 Default is set to Netherlands
-(To change edit /opt/plexguide/scripts/torrentvpn/move-ovpn.sh before install)
+  (To change edit /opt/plexguide/scripts/torrentvpn/move-ovpn-deluge.sh
+      or -rtorrent.sh before install otherwise choose another in
+      /opt/appdata/vpn/config/openvpn and replace netherlands.ovpn
+      in /opt/appdata/vpn/deluge or /rtorrent depending on install)
 
 
 1. PIA VPN details
@@ -75,6 +78,8 @@ read_options(){
 	case $choice in
     1)
     rm /opt/appdata/vpn/.vpn-env
+    rm /opt/appdata/.env
+
     # Get IP Address
     local_ip=`hostname -I | awk '{print $1}'`
     # CIDR - this assumes a 255.255.255.0 netmask
