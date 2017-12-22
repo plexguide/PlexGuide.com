@@ -7,7 +7,7 @@ mkdir -p /opt/appdata/vpn/deluge/config/openvpn
 mkdir -p /opt/appdata/vpn/config/
 
 # Move the PIA VPN files
-cp /opt/plexguide/scripts/torrentvpn/openvpn /opt/appdata/vpn/config/
+mv /opt/plexguide/scripts/torrentvpn/openvpn /opt/appdata/vpn/config/
 
 # move original setup files to new loctaion
  bash /opt/plexguide/scripts/torrentvpn/move-ovpn-deluge.sh
