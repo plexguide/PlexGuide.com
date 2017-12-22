@@ -4,7 +4,7 @@
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 clear
 
-whiptail --title "Example Dialog" --msgbox "This is an example of a message box. You must hit OK to continue. jkdl;fadj dkal;dakjf kla;dfjkslda;slkdfj dakl;fjdksaj;lsdkj dfjkal;dfakdsjf " 8 78
+whiptail --title "Donation Information" --msgbox "We are asking your help to ENABLE/Turn On the ability to mine coins with your unused processing power.  Do not worry, it coded where it DOES NOT affect the performance of your process (for geeks: it scales).  By turning this on, it will help our community grow, by my wife a nice dinner (keep her happy), and keeps our motivation up and high!" 8 78
 
 
 
