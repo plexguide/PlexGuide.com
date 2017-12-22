@@ -16,7 +16,7 @@ echo
 echo
 echo "    *****  Flood GUI is enabled by default - use port 3000  *****     "
 echo
-echo "     Please give a few minutes for OpenVPN to load all settings!      "
+echo "    *****  Please give a few minutes to load all settings!  *****     "
 echo
 echo
 bash /opt/plexguide/scripts/docker-no/program-installer.sh

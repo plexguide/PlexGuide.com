@@ -14,9 +14,9 @@ echo ymldisplay DelugeVPN >> /opt/plexguide/tmp.txt
 echo ymlport 8112 >> /opt/plexguide/tmp.txt
 echo
 echo
-echo "          *****  Default password is: deluge  *****          "
+echo "            *****  Default password is: deluge  *****          "
 echo
-echo " Please give a few minutes for OpenVPN to load all settings! "
+echo "   *****  Please give a few minutes to load all settings! *****"
 echo
 echo
 bash /opt/plexguide/scripts/docker-no/program-installer.sh
