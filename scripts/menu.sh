@@ -81,7 +81,7 @@ result=$(whoami)
 case $CHOICE in
    "1)")
        clear
-       bash /opt/plexguide/scripts/menus/mine/donate-norm-menu.sh
+       bash /opt/plexguide/scripts/menus/donate-norm-menu.sh
        ;;
 
    "2)")

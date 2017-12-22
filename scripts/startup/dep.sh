@@ -85,14 +85,6 @@ mkdir -p /mnt/plexdrive4
 mkdir -p /opt/appdata/plexguide
 mkdir -p /mnt/plexdrive4
 
-#file="/var/plexguide/chown.yes"
-#if [ -e "$file" ]
-#then
-#    mkdir -p /mnt/move
-#else
-#    chown -R 1000:1000 /mnt/
-#    touch /var/plexguide/chown.yes
-#fi
 bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 ######################################################### For RCLONE
 
