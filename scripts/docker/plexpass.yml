@@ -27,6 +27,7 @@ services:
    restart: always
   # env_file:
   #   - /opt/.environments/.plex-env
+   cpu_shares: 1024
    environment:
      - PUID=1000
      - PGID=1000

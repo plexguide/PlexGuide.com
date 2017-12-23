@@ -8,6 +8,7 @@ services:
      - /opt/appdata/plexpy:/config
      - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
    restart: always
+   cpu_shares: 256
    ports:
      - 8181:8181
    environment:
