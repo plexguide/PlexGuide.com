@@ -62,7 +62,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 32 12 \
     "12)" "Tautulli"  \
     "13)" "Wordpress"  \
     "14)" "Mylar - Test"  \
-    "15)" "Headphones - Test"
+    "15)" "Headphones - Test"  \
     "16)" "Exit  "  3>&2 2>&1 1>&3
 )
 
