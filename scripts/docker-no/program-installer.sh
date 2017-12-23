@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 YMLPROGRAM=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
 YMLDISPLAY=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
 YMLPORT=$(awk '/ymlport/{print $2}' /opt/plexguide/tmp.txt)

@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 80 3 \
+whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 40 3 \
     "1)" "PlexDrive Install"   \
     "2)" "Remove PlexDrive Tokens"  \
     "3)" "Exit  "  3>&2 2>&1 1>&3
@@ -60,7 +60,8 @@ case $CHOICE in
         ;;
 
     "2)")
-        rm -r /home/plexguide/.plexdrive
+        rm -r /root/plexguide/.plexdrive 1>/dev/null 2>&1
+        rm -r ~/plexguide/.plexdrive 1>/dev/null 2>&1
         echo
         echo "Tokens Removed - Try PlexDrive Install Again"
         echo

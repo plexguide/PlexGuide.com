@@ -62,7 +62,7 @@ case $CHOICE in
         echo ymlport 8181 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
-        exit 0;;
+        
     "2)")
         clear
         echo ymlprogram tautulli > /opt/plexguide/tmp.txt
@@ -70,7 +70,6 @@ case $CHOICE in
         echo ymlport 8181 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
-        exit 0;;
 
     "3)")
         clear
