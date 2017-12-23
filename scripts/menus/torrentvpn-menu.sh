@@ -187,7 +187,7 @@ read_options(){
        bash /opt/plexguide/scripts/docker-no/program-installer.sh
         ;;
     8)
-    bash /opt/plexguide/scripts/test/plex-menu.#!/bin/sh
+    bash /opt/plexguide/scripts/test/plex-menu.sh
     ;;
     9)
       exit 0;;
