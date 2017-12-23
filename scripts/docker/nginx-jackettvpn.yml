@@ -1,18 +1,18 @@
 ---
 version: '2.2'
 services:
- nginx-jackett:
+ nginx-jackettvpn:
    image: linuxserver/jackett
-   container_name: nginx-jackett
+   container_name: nginx-jackettvpn
    ports:
      - "9117:9117"
 #     - "127.0.0.1:9117:9117"
    volumes:
      - /opt/appdata/jackett:/config
      - /:/yourcomputer
-     - /mnt/deluge/temp:/temp
-     - /mnt/deluge/downloaded:/downloaded
-     - /mnt/deluge/torrent:/torrent
+     - /mnt/torrentvpn/temp:/data/incomplete
+     - /mnt/torrentvpn/downloaded:/data/completed
+     - /mnt/torrentvpn/torrent:/data/torrents
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    #env_file:

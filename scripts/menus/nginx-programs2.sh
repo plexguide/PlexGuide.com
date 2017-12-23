@@ -64,7 +64,8 @@ whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "14)" "Apache"  \
     "15)" "Testing - DelugeVPN"  \
     "16)" "Testing - rTorrentVPN"  \
-    "17)" "Exit  "  3>&2 2>&1 1>&3
+    "17)" "Testing - Jackett"  \
+    "18)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -178,6 +179,12 @@ case $CHOICE in
       ;;
 
     "17)")
+       echo ymlprogram nginx-jackettvpn> /opt/plexguide/tmp.txt
+       echo ymldisplay NGINX JackettVPN >> /opt/plexguide/tmp.txt
+       echo ymlport 9117 >> /opt/plexguide/tmp.txt
+       bash /opt/plexguide/scripts/docker-no/program-installer.sh
+        ;;
+    "18)")
         clear
         exit 0
         ;;
