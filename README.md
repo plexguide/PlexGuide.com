@@ -49,6 +49,11 @@
 
 **D. Install Instructions:**
 
+*Recommened First to Prevent Issues*
+```sh
+sudo apt-get update -y && apt-get upgrade -y
+```
+
 *Install Supporting Programs*
 ```sh
 sudo apt-get install git
