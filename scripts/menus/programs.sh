@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 19 26 12 \
+whiptail --title "Install Menu" --menu "Make your choice" 19 28 12 \
     "1)" "Plex"   \
     "2)" "Emby"  \
     "3)" "Netdata"  \
@@ -61,7 +61,8 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 26 12 \
     "11)" "Sonarr"  \
     "12)" "Tautulli"  \
     "13)" "Wordpress"  \
-    "14)" "Exit  "  3>&2 2>&1 1>&3
+    "14)" "Myler - Test"  \
+    "15)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -150,6 +151,13 @@ case $CHOICE in
      ;;
 
      "14)")
+     echo ymlprogram myler > /opt/plexguide/tmp.txt
+     echo ymldisplay MYLER >> /opt/plexguide/tmp.txt
+     echo ymlport 8099 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+
+     "15)")
       clear
       exit 0
       ;;
