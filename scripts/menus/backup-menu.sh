@@ -56,7 +56,7 @@ whiptail --title "Backup Menu" --menu "Make your choice" 16 25 9 \
     "6)" "Radarr"  \
     "7)" "Emby"  \
     "8)" "PlexDrive"  \
-    "9)" "PlexDrive"  \
+    "9)" "Tautulli"  \
     "10)" "Exit  "  3>&2 2>&1 1>&3
 )
 
