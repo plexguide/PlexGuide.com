@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  organizr:
    image: lsiocommunity/organizr
@@ -12,5 +12,6 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
+   cpu_shares: 128
    restart:
      always

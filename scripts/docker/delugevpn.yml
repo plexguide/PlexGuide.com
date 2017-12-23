@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  delugevpn:
    image:  binhex/arch-delugevpn
@@ -23,6 +23,7 @@ services:
      - /mnt/unionfs/completed:/completed
    env_file:
      - /opt/appdata/vpn/.vpn-env
+   cpu_shares: 256
    environment:
      - VPN_ENABLED=yes
      - VPN_PROV=pia

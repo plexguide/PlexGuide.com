@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  nginx-netdata:
    image: titpetric/netdata:latest
@@ -10,6 +10,7 @@ services:
    ports:
      - "19999:19999"
    restart: always
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000

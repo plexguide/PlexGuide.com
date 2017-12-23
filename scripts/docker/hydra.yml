@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  hydra:
    image: linuxserver/hydra
@@ -10,6 +10,7 @@ services:
      - /opt/appdata/hydra:/config
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000

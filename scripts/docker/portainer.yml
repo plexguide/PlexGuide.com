@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  portainer:
    image: portainer/portainer
@@ -12,6 +12,7 @@ services:
      - "9000:9000"
    restart:
      always
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000

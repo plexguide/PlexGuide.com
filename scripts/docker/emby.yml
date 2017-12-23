@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  emby:
         image: emby/embyserver
@@ -14,6 +14,7 @@ services:
             - /mnt/encrypt:/encrypt
           #  - /mnt/plexdrive4/tv:/old
             - /:/yourcomputer
+        cpu_shares: 1024
         environment:
             - AUTO_UPDATES_ON=true
             - PUID=1000

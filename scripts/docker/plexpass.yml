@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  plex:
    image: plexinc/pms-docker:plexpass

@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  nginx-radarr:
    image: linuxserver/radarr
@@ -18,5 +18,6 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=radarr.*
      - VIRTUAL_PORT=7878
+   cpu_shares: 256
    restart:
      always

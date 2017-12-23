@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  sabnzbd:
    image: linuxserver/sabnzbd:unstable
@@ -14,6 +14,7 @@ services:
      - /mnt/sab/admin:/admin
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000

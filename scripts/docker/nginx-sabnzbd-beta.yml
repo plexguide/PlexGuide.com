@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  nginx-sabnzbd-beta:
    image: linuxserver/sabnzbd:unstable
@@ -19,5 +19,6 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=sab.*
      - VIRTUAL_PORT=8090
+   cpu_shares: 256
    restart:
      always

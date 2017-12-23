@@ -1,4 +1,4 @@
-version: "2"
+version: "2.2"
 services:
   my-wpdb:
     image: mariadb
@@ -12,6 +12,7 @@ services:
       - ./:/var/www/html
     ports:
       - "80:80"
+    cpu_shares: 256
     links:
       - my-wpdb:mysql
     environment:

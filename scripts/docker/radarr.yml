@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  radarr:
    image: linuxserver/radarr
@@ -15,6 +15,7 @@ services:
      - /mnt/rutorrents/downloads/incoming:/downloads
      - /mnt/deluge/downloaded:/downloaded
      - /etc/localtime:/etc/localtime:ro
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000

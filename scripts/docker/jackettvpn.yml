@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  couchpotato:
    image: linuxserver/jackett
@@ -16,6 +16,7 @@ services:
      - /etc/localtime:/etc/localtime:ro
    #env_file:
     #- /opt/.environments/.env
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000

@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '2.2'
 services:
  delugevpn:
    image:  binhex/arch-deluge
@@ -19,6 +19,7 @@ services:
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000
