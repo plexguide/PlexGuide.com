@@ -47,14 +47,16 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
-    "1)" "View HardDrive Space"   \
-    "2)" "View Container Sizes"  \
-    "3)" "Verify PlexDrive"  \
-    "4)" "Verify UnionFS"  \
-    "5)" "Verify UN-RClone"  \
-    "6)" "Verify EN-RClone"  \
-    "7)" "Exit  "  3>&2 2>&1 1>&3
+whiptail --title "Information Menu" --menu "Make your choice" 16 34 9 \
+    "1)" "Unencrypt: PlexDrive4"   \
+    "2)" "Unencrypt: RClone"  \
+    "3)" "Unencrypt: UnionFS"  \
+    "4)" "Unencrypt: Move"  \
+    "5)" "Encrypted: PlexDrive4"  \
+    "6)" "Encrypted: RClone"  \
+    "7)" "Encrypted: UnionFS"  \
+    "8)" "Encrypted: Move"  \
+    "9)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
