@@ -97,8 +97,9 @@ case $CHOICE in
      ;;
 
     "5)")
-     echo ymlprogram nzbget > /opt/plexguide/tmp.txt
-     echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
+    docker rm -f nzbget
+     echo ymlprogram nginx-nzbget > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX-NZBGET >> /opt/plexguide/tmp.txt
      echo ymlport 6789 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
