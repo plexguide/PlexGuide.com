@@ -80,8 +80,8 @@ case $CHOICE in
      ;;
 
     "3)")
-      echo ymlprogram emby > /opt/plexguide/tmp.txt
-      echo ymldisplay Emby >> /opt/plexguide/tmp.txt
+      echo ymlprogram nginx-emby > /opt/plexguide/tmp.txt
+      echo ymldisplay NGINX Emby >> /opt/plexguide/tmp.txt
       echo ymlport 8096 >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/program-installer.sh
       ;;
@@ -94,8 +94,8 @@ case $CHOICE in
      ;;
 
     "5)")
-     echo ymlprogram nzbget > /opt/plexguide/tmp.txt
-     echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-nzbget > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX NZBGET >> /opt/plexguide/tmp.txt
      echo ymlport 6789 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
@@ -146,7 +146,7 @@ case $CHOICE in
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
-     
+
     "13)")
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
      echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
