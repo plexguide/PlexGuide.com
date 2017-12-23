@@ -5,7 +5,7 @@ services:
    image: shiggins8/tautulli
    container_name: tautulli
    volumes:
-     - /opt/appdata/plexpy:/config
+     - /opt/appdata/tautulli:/config
      - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
    restart: always
    cpu_shares: 256
