@@ -11,5 +11,6 @@ services:
      - PGID=1000
      - cpu-shares=1
    tty: true
+   cpu_shares: 1
    restart:
      always
