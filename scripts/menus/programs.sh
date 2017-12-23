@@ -61,7 +61,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 28 12 \
     "11)" "Sonarr"  \
     "12)" "Tautulli"  \
     "13)" "Wordpress"  \
-    "14)" "Myler - Test"  \
+    "14)" "Mylar - Test"  \
     "15)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -151,8 +151,8 @@ case $CHOICE in
      ;;
 
      "14)")
-     echo ymlprogram myler > /opt/plexguide/tmp.txt
-     echo ymldisplay MYLER >> /opt/plexguide/tmp.txt
+     echo ymlprogram mylar > /opt/plexguide/tmp.txt
+     echo ymldisplay MYLAR >> /opt/plexguide/tmp.txt
      echo ymlport 8099 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
