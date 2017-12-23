@@ -198,5 +198,3 @@ fi
 clear
 
 cat << EOF
-
-whiptail --title "Final Note" --msgbox "If you wish to contribute your skills (for the lack of ours); please reach us anytime.  If you spot any issues, please visit our DISCORD channel for the fastest help and/or you can post in the issues section or REDDIT.  We’ll do our best to respond - we have our lives also!  Just know that this project is meant to make your life easier, while at the same time; we are all learning and about having fun!  A website and forum will be coming soon!" 12 84
