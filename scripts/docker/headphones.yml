@@ -11,8 +11,9 @@ services:
      - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
-     - /mnt/sab/complete:/complete
-     - /mnt/nzbget/completed:/completed
+   volumes_from:
+     - nzbget:nzbget:rw
+     - sabnzbd:sabnzbd:rw
    environment:
      - PUID=1000
      - PGID=1000
