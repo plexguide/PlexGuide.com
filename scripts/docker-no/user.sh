@@ -5,14 +5,13 @@ mkdir -p /var/plexguide
 file="/var/plexguide/plexguide.user"
 if [ -e "$file" ]
 then
-    clear
+    echo ""
 else
 clear
 
 whiptail --title "Important" --msgbox "Welcome to the PlexGuide.com Installer.  If you have questions,
 please read the Wikis or join our #Discord Channel." 8 78
-
-clear
+touch /var/plexguide/plexguide.user
 
 exit
 fi
