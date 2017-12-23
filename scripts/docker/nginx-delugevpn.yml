@@ -1,24 +1,27 @@
 ---
 version: '2.2'
 services:
- rtorrentvpn:
-   image:  binhex/arch-rtorrentvpn
-   container_name: rtorrentvpn
+ nginx-delugevpn:
+   image:  binhex/arch-delugevpn
+   container_name: nginx-delugevpn
 #   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
-     - 9080:9080
-     - 9443:9443
+     - 8112:8112
      - 8118:8118
-     - 3000:3000
+     - 58846:58846
+     - 58946:58946
+     - "127.0.0.1:8112:8112"
+     - "127.0.0.1:8118:8118"
+     - "127.0.0.1:58846:58846"
+     - "127.0.0.1:58946:58946"
    volumes:
-     - /opt/appdata/vpn/rtorrent/config:/config
+     - /opt/appdata/vpn/deluge/config:/config
      - /mnt/torrentvpn/temp:/data/incomplete
      - /mnt/torrentvpn/downloaded:/data/completed
-     - /mnt/torrentvpn/.torrent:/torrents
+     - /mnt/torrentvpn/.torrent:/data/torrents
      - /mnt/torrentvpn/.watched:/data/watched
-    # - /mnt/torrentvpn/.session:/config/rtorrent/session
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
      - /mnt/unionfs/completed:/completed
@@ -28,17 +31,17 @@ services:
    environment:
      - VPN_ENABLED=yes
      - VPN_PROV=pia
-   #  - VPN_OPTIONS=<additional openvpn cli options>
   #   - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
+   #  - VPN_OPTIONS=<additional openvpn cli options>
      - STRICT_PORT_FORWARD=yes
      - ENABLE_PRIVOXY=yes
-     - ENABLE_FLOOD=yes
-     - ENABLE_AUTODL_IRSSI=yes
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
    #  - UMASK=<umask for created files>
      - PUID=1000
      - PGID=1000
+     - VIRTUAL_HOST=delugevpn.*
+     - VIRTUAL_PORT=8112
    restart: unless-stopped
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address.

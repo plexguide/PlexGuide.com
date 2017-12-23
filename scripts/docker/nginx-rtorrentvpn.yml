@@ -1,17 +1,21 @@
 ---
 version: '2.2'
 services:
- rtorrentvpn:
+ nginx-rtorrentvpn:
    image:  binhex/arch-rtorrentvpn
-   container_name: rtorrentvpn
+   container_name: nginx-rtorrentvpn
 #   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
    ports:
-     - 9080:9080
-     - 9443:9443
-     - 8118:8118
-     - 3000:3000
+     - "9080:9080"
+     - "9443:9443"
+     - "8118:8118"
+     - "3000:3000"
+     - "127.0.0.1:9080:9080"
+     - "127.0.0.1:9443:9443"
+     - "127.0.0.1:8118:8118"
+     - "127.0.0.1:3000:3000"
    volumes:
      - /opt/appdata/vpn/rtorrent/config:/config
      - /mnt/torrentvpn/temp:/data/incomplete
@@ -39,6 +43,8 @@ services:
    #  - UMASK=<umask for created files>
      - PUID=1000
      - PGID=1000
+     - VIRTUAL_HOST=rtorrentvpn.*
+     - VIRTUAL_PORT=3000
    restart: unless-stopped
 # Note: Please replace all user variables in the above command defined by <> with the correct values.
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address.
