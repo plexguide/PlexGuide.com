@@ -83,6 +83,7 @@ case $CHOICE in
      ;;
 
     "3)")
+    docker rm -f emby
       echo ymlprogram nginx-emby > /opt/plexguide/tmp.txt
       echo ymldisplay NGINX-Emby >> /opt/plexguide/tmp.txt
       echo ymlport 8096 >> /opt/plexguide/tmp.txt
@@ -90,6 +91,7 @@ case $CHOICE in
       ;;
 
     "4)")
+    docker rm -f netdata
      echo ymlprogram nginx-netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
@@ -105,6 +107,7 @@ case $CHOICE in
      ;;
 
     "6)")
+    docker rm -f muximux
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
@@ -112,6 +115,7 @@ case $CHOICE in
      ;;
 
     "7)")
+    docker rm -f ombi
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
@@ -119,6 +123,7 @@ case $CHOICE in
      ;;
 
     "8)")
+    docker rm -f organizr
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
@@ -126,6 +131,7 @@ case $CHOICE in
      ;;
 
     "9)")
+    docker rm -f plexpy
      echo ymlprogram plexpy > /opt/plexguide/tmp.txt
      echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
@@ -133,6 +139,7 @@ case $CHOICE in
      ;;
 
     "10)")
+    docker rm -f radarr
      echo ymlprogram nginx-radarr > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
@@ -145,6 +152,7 @@ case $CHOICE in
      ;;
 
     "12)")
+    docker rm -f sonarr
      echo ymlprogram nginx-sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
@@ -166,6 +174,7 @@ case $CHOICE in
       ;;
 
     "15)")
+    docker rm -f delugevpn
      echo ymlprogram nginx-delugevpn > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX DelugeVPN >> /opt/plexguide/tmp.txt
      echo ymlport 8112 >> /opt/plexguide/tmp.txt
@@ -173,6 +182,7 @@ case $CHOICE in
       ;;
 
     "16)")
+    docker rm -f rtorrentvpn
      echo ymlprogram nginx-rtorrentvpn > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX rTorrentVPN >> /opt/plexguide/tmp.txt
      echo ymlport 3000 >> /opt/plexguide/tmp.txt
@@ -180,6 +190,7 @@ case $CHOICE in
       ;;
 
     "17)")
+    docker rm -f jackettvpn
        echo ymlprogram nginx-jackettvpn> /opt/plexguide/tmp.txt
        echo ymldisplay NGINX JackettVPN >> /opt/plexguide/tmp.txt
        echo ymlport 9117 >> /opt/plexguide/tmp.txt
