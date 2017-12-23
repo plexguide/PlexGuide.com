@@ -47,13 +47,13 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 15 34 8 \
-    "1)" "View  :HardDrive Space"   \
-    "2)" "View  : Container Sizes"  \
-    "3)" "Verify: PlexDrive"  \
-    "4)" "Verify: UnionFS"  \
-    "5)" "Verify: UN-RClone"  \
-    "6)" "Verify: EN-RClone"  \
+whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
+    "1)" "View HardDrive Space"   \
+    "2)" "View Container Sizes"  \
+    "3)" "Verify PlexDrive"  \
+    "4)" "Verify UnionFS"  \
+    "5)" "Verify UN-RClone"  \
+    "6)" "Verify EN-RClone"  \
     "7)" "Exit  "  3>&2 2>&1 1>&3
 )
 
