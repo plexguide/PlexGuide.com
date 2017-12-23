@@ -7,13 +7,13 @@ services:
    ports:
      - "8989:8989"
    volumes:
-     - /opt/appdata/sonarr:/config
-     - /:/yourcomputer
-     - /mnt/unionfs:/unionfs
-     - /mnt/sab/complete:/complete
-     - /mnt/nzbget/completed:/completed
-     - /mnt/deluge/downloaded:/downloaded
-     - /mnt/rutorrents/downloads/incoming:/downloads
+     - /opt/appdata/sonarr:/config:rw
+     - /:/yourcomputer:rw
+     - /mnt/unionfs:/unionfs:rw
+     - /mnt/sab/complete:/complete:rw
+     - /mnt/nzbget/completed:/completed:rw
+     - /mnt/deluge/downloaded:/downloaded:rw
+     - /mnt/rutorrents/downloads/incoming:/downloads:rw
      - /etc/localtime:/etc/localtime:ro
    cpu_shares: 256
    environment:
