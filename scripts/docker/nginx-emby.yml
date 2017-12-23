@@ -1,0 +1,24 @@
+---
+version: '2.2'
+services:
+ nginx-emby:
+        image: emby/embyserver
+        container_name: nginx-emby
+        ports:
+            - "8096:8096"
+#            - "127.0.0.1:8096:8096"
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /opt/appdata/embyserver:/config
+            - /mnt/plexdrive4/:/plexdrive4
+            - /mnt/unionfs:/unionfs
+            - /mnt/encrypt:/encrypt
+            - /:/yourcomputer
+        cpu_shares: 1024
+        environment:
+            - AUTO_UPDATES_ON=true
+            - PUID=1000
+            - PGID=1000
+            - VIRTUAL_HOST=emby.*
+            - VIRTUAL_PORT=8096
+        restart: always

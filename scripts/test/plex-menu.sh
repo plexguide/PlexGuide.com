@@ -41,6 +41,8 @@ computer, please visit http://wiki.plexguide.com so you access the server!
 
 1. Run environment install
 2. Install Latest Plex Server
+3. exit
+4. PlexToken
 
 EOF
 }
@@ -51,14 +53,14 @@ read_options(){
 	case $choice in
 		1)
     clear
-    rm /opt/.environments/.plex-env
+    rm /opt/appdata/.plex-env
     clear
     bash /opt/plexguide/scripts/test/plex.sh
     ;;
 		2)
 
-        echo ymlprogram plex > /opt/plexguide/tmp.txt
-        echo ymldisplay Plex >> /opt/plexguide/tmp.txt
+        echo ymlprogram nginx-plexpass > /opt/plexguide/tmp.txt
+        echo ymldisplay NGINX-PlexPass >> /opt/plexguide/tmp.txt
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
@@ -75,8 +77,8 @@ read_options(){
       clear
       echo "Visit http://plex.tv/claim"
       echo
-      read -p "What is your Plex Claim Token? " pmstoken
-      echo "PMSTOKEN=$pmstoken" >> /opt/.environments/.plex-env
+      read -p "What is your Plex Claim Token? " pms_token
+      echo "PMS_TOKEN=$pms_token" >> /opt/appdata/.plex-env
       clear
       touch /var/plexguide/plextoken.yes
       echo "Your PlexToken is Installed for the Easy Setup!"

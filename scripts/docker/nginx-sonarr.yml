@@ -6,6 +6,7 @@ services:
    container_name: nginx-sonarr
    ports:
      - "127.0.0.1:8989:8989"
+#     - "8989:8989"
    volumes:
      - /opt/appdata/sonarr:/config
      - /:/yourcomputer
