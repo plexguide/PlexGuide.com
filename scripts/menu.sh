@@ -3,6 +3,10 @@
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
 
+# copying rclone config to user incase bonehead is not root
+cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
+
+
 file="/var/plexguide/dep22.yes"
 if [ -e "$file" ]
 then
