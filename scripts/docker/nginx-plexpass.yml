@@ -26,8 +26,8 @@ services:
      - "33400:33400/tcp"
      - "33443:33443/tcp"
    restart: always
-  # env_file:
-  #   - /opt/.environments/.plex-env
+   env_file:
+     - /opt/appdata/.plex-env
    cpu_shares: 1024
    environment:
      - PUID=1000
