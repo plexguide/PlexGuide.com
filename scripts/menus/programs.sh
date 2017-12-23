@@ -163,6 +163,7 @@ case $CHOICE in
      echo ymldisplay HeadPhones >> /opt/plexguide/tmp.txt
      echo ymlport 8282 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
 
      "16)")
       clear
