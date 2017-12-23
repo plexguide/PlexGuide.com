@@ -1,9 +1,9 @@
 ---
 version: '2.2'
 services:
- nginx-${PMS_TAG}:
+ nginx-plex:
    image: plexinc/pms-docker:${PMS_TAG}
-   container_name: nginx-${PMS_TAG}
+   container_name: nginx-plex
    volumes:
      - /opt/appdata/plex/database:/config
      - /opt/appdata/plex/transcode:/transcode
