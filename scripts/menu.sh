@@ -17,9 +17,6 @@ fi
 
 bash /opt/plexguide/scripts/startup/owner.sh
 
-##clear screen
-clear
-
 function contextSwitch {
    {
    ctxt1=$(grep ctxt /proc/stat | awk '{print $2}')
