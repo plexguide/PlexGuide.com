@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 23 35 16 \
+whiptail --title "Install Menu" --menu "Make your choice" 16 35 9 \
     "1)" "View HardDrive Space"   \
     "2)" "View Container Sizes"  \
     "3)" "Verify PlexDrive"  \
