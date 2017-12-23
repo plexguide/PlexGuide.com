@@ -12,8 +12,8 @@ services:
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    volumes_from:
-     - cointainer:nzbget:rw
-     - cointainer:sabnzbd:rw
+     - container:nzbget:rw
+     - container:sabnzbd:rw
    environment:
      - PUID=1000
      - PGID=1000
