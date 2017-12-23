@@ -59,8 +59,8 @@ read_options(){
     ;;
 		2)
 
-        echo ymlprogram nginx-plex > /opt/plexguide/tmp.txt
-        echo ymldisplay NGINX-Plex >> /opt/plexguide/tmp.txt
+        echo ymlprogram nginx-plexpass > /opt/plexguide/tmp.txt
+        echo ymldisplay NGINX-PlexPass >> /opt/plexguide/tmp.txt
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
         bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
@@ -77,8 +77,8 @@ read_options(){
       clear
       echo "Visit http://plex.tv/claim"
       echo
-      read -p "What is your Plex Claim Token? " pmstoken
-      echo "PMSTOKEN=$pmstoken" >> /opt/appdata/.plex-env
+      read -p "What is your Plex Claim Token? " pms_token
+      echo "PMS_TOKEN=$pms_token" >> /opt/appdata/.plex-env
       clear
       touch /var/plexguide/plextoken.yes
       echo "Your PlexToken is Installed for the Easy Setup!"

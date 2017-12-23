@@ -1,9 +1,9 @@
 ---
 version: '2.2'
 services:
- nginx-plex:
-   image: plexinc/pms-docker:plexpass
-   container_name: nginx-plexpass
+ nginx-${PMS_TAG}:
+   image: plexinc/pms-docker:${PMS_TAG}
+   container_name: nginx-${PMS_TAG}
    volumes:
      - /opt/appdata/plex/database:/config
      - /opt/appdata/plex/transcode:/transcode
@@ -34,5 +34,5 @@ services:
      - PGID=1000
      - VIRTUAL_HOST=plex.*
      - VIRTUAL_PORT=32400
-#     - PLEX_CLAIM=${PMSTOKEN}
-#   network_mode: "host"
+#     - PLEX_CLAIM=${PMS_TOKEN}
+   network_mode: "host"
