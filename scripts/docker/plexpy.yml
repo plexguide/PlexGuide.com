@@ -13,3 +13,4 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
+     - cpu-shares=1023
