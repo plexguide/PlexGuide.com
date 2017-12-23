@@ -5,7 +5,7 @@ services:
    image: linuxserver/headphones
    container_name: headphones
    ports:
-     - 8181:8181
+     - 8282:8181
    volumes:
      - /opt/appdata/headphones:/config
      - /:/yourcomputer
@@ -16,5 +16,6 @@ services:
    environment:
      - PUID=1000
      - PGID=1000
+   cpu_shares: 256
    restart:
      always
