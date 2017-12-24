@@ -91,13 +91,13 @@ chmod 777 /mnt/sab/complete/incomplete 1>/dev/null 2>&1
 chmod 777 /mnt/sab/complete/nzb 1>/dev/null 2>&1
 
 ################################################## For UnionFS
-chown 1000:1000 /mnt/unionfs 1>/dev/null 2>&1
-chown 1000:1000 /mnt/unionfs/tv 1>/dev/null 2>&1
-chown 1000:1000 /mnt/unionfs/movies 1>/dev/null 2>&1
+# chown 1000:1000 /mnt/unionfs 1>/dev/null 2>&1
+# chown 1000:1000 /mnt/unionfs/tv 1>/dev/null 2>&1
+# chown 1000:1000 /mnt/unionfs/movies 1>/dev/null 2>&1
 
-chmod 777 /mnt/unionfs 1>/dev/null 2>&1
-chmod 777 /mnt/unionfs/tv 1>/dev/null 2>&1
-chmod 777 /mnt/unionfs/movies 1>/dev/null 2>&1
+# chmod 777 /mnt/unionfs 1>/dev/null 2>&1
+# chmod 777 /mnt/unionfs/tv 1>/dev/null 2>&1
+# chmod 777 /mnt/unionfs/movies 1>/dev/null 2>&1
 
 ################################################## For RCLONE & PLXDRIVE
 chown 1000:1000 /mnt/.config/* 1>/dev/null 2>&1
