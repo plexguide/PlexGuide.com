@@ -15,9 +15,9 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
         done
     } | whiptail --gauge "[ 1 of 5 ] Updating Your System" 6 50 0
 
-    yes | apt-get install curl 1>/dev/null 2>&1 & disown
-    yes | apt-get install apt-transport-https 1>/dev/null 2>&1 & disown
-    yes | apt-get install nano 1>/dev/null 2>&1 & disown
+    yes | apt-get install curl 
+    yes | apt-get install apt-transport-https 
+    yes | apt-get install nano 
     yes | apt-get install fuse 1>/dev/null 2>&1 & disown
     yes | apt-get install man-db 1>/dev/null 2>&1 & disown
     yes | apt-get install unzip 1>/dev/null 2>&1 & disown
