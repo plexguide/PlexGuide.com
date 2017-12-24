@@ -18,7 +18,7 @@ services:
    cpu_shares: 256
    environment:
      - APP=radarr
-     - VERSION=develop
+     - VERSION=stable
      - PUID=1000
      - PGID=1000
    restart:
