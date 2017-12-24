@@ -51,11 +51,11 @@ chown 1000:1000 /mnt/nzbget 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/completed 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/completed/movies 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/completed/tv 1>/dev/null 2>&1
-chown 1000:1000 /mnt/nzbget/completed/movies 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/incomplete 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/nzb 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/queue 1>/dev/null 2>&1
 chown 1000:1000 /mnt/nzbget/tmp 1>/dev/null 2>&1
+chown 1000:1000 /mnt/nzbget/log 1>/dev/null 2>&1
 
 chmod 777 /mnt/nzbget 1>/dev/null 2>&1
 chmod 777 /mnt/nzbget/completed 1>/dev/null 2>&1
@@ -65,6 +65,7 @@ chmod 777 /mnt/nzbget/incomplete 1>/dev/null 2>&1
 chmod 777 /mnt/nzbget/nzb 1>/dev/null 2>&1
 chmod 777 /mnt/nzbget/queue1>/dev/null 2>&1
 chmod 777 /mnt/nzbget/tmp 1>/dev/null 2>&1
+chmod 777 /mnt/nzbget/log 1>/dev/null 2>&1
 
 chown 1000:1000 /mnt/plexdrive4 1>/dev/null 2>&1
 chown 1000:1000 /mnt/plexdrive4/tv 1>/dev/null 2>&1
