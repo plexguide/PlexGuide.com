@@ -2,7 +2,7 @@
 version: '2.2'
 services:
  sonarr:
-   image: linuxserver/sonarr
+   image: hotio/suitarr
    container_name: sonarr
    ports:
      - "8989:8989"
@@ -17,6 +17,8 @@ services:
      - /etc/localtime:/etc/localtime:ro
    cpu_shares: 256
    environment:
+     - APP=sonarr
+     - VERSION=stable
      - PUID=1000
      - PGID=1000
    restart:
