@@ -2,11 +2,10 @@
 version: '2.2'
 services:
  nginx-jackett:
-   image: linuxserver/jackett
+   image: hotio/suitarr
    container_name: nginx-jackett
    ports:
      - "9117:9117"
-#     - "127.0.0.1:9117:9117"
    volumes:
      - /opt/appdata/jackett:/config
      - /:/yourcomputer
@@ -19,9 +18,9 @@ services:
     #- /opt/.environments/.env
    cpu_shares: 256
    environment:
+     - APP=jackett
+     - VERSION=stable
      - PUID=1000
      - PGID=1000
-     - VIRTUAL_HOST=jackett.*
-     - VIRTUAL_PORT=9117
    restart:
      always
