@@ -18,7 +18,7 @@
 ## Social
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) ![alt text](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true "Logo")
 - Reddit Discussion Link: http://reddit.plexguide.com
-- Slack is now discontinued!
+- Slack is now discontinued! Use the offical Discord instead!
 
 ### Awesome Beta Testers & Contributers!
 
