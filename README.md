@@ -71,7 +71,7 @@ plexguide
 ```
 
 **E. Configuration**
- - Install & Configure (Select Only One)
+ - Install & Configure (Select Only One) - YouTube Video for RClone & PlexGuide: https://youtu.be/R15xXDwmxtk
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot Server!
