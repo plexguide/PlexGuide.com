@@ -14,7 +14,7 @@ services:
      - /mnt/rutorrents/downloads:/downloads
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
-     - /mnt/unionfs/completed:/completed
+     - /mnt/unionfs/:/unionfs
    cpu_shares: 256
    environment:
      - PUID=1000
