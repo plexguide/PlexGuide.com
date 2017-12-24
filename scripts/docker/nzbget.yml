@@ -2,7 +2,7 @@
 version: '2.2'
 services:
  nzbget:
-   image: linuxserver/nzbget
+   image: hotio/suitarr
    container_name: nzbget
    ports:
      - 6789:6789
@@ -19,6 +19,8 @@ services:
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:
+     - APP=nzbget
+     - VERSION=stable
      - PUID=1000
      - PGID=1000
    cpu_shares: 256
