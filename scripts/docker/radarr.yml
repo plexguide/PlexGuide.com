@@ -2,7 +2,7 @@
 version: '2.2'
 services:
  radarr:
-   image: hotio/suitarr
+   image: hotio/suitarr:develop
    container_name: radarr
    ports:
      - "7878:7878"
