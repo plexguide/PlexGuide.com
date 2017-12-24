@@ -7,8 +7,8 @@ services:
    ports:
      - "8989:8989"
    volumes:
-     - /opt/appdata/sonarr:/config:rw
-     - /:/yourcomputer:rw
+     - /opt/appdata/sonarr:/config
+     - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /mnt/sab/complete:/complete
      - /mnt/nzbget/completed:/completed

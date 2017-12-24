@@ -12,6 +12,7 @@ services:
      - /mnt/sab/incomplete:/incomplete
      - /mnt/sab/nzb:/nzb
      - /mnt/sab/admin:/admin
+     - /mnt/unionfs:/unionfs
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
    cpu_shares: 256
