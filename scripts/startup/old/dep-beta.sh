@@ -6,7 +6,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 
 ###################### Install Depdency Programs ##########################################
 
-    yes | apt-get update 1>/dev/null 2>&1 & disown
+    
 
     {
         for ((i = 0 ; i <= 100 ; i+=1)); do
@@ -15,19 +15,43 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
         done
     } | whiptail --gauge "[ 1 of 5 ] Updating Your System" 6 50 0
 
-    yes | apt-get install curl 
-    yes | apt-get install apt-transport-https 
-    yes | apt-get install nano 
-    yes | apt-get install fuse 1>/dev/null 2>&1 & disown
-    yes | apt-get install man-db 1>/dev/null 2>&1 & disown
-    yes | apt-get install unzip 1>/dev/null 2>&1 & disown
-    yes | apt-get install zip 1>/dev/null 2>&1 & disown
-    yes | apt-get install python 1>/dev/null 2>&1 & disown
-    yes | apt-get install openssh-server 1>/dev/null 2>&1 & disown
-    yes | apt-get install unions-fuse 1>/dev/null 2>&1 & disown
-    yes | apt-get install dirmngr 1>/dev/null 2>&1 & disown
-    yes | apt-get install software-properties-common 1>/dev/null 2>&1 & disown
-    yes | apt-get install fail2ban 1>/dev/null 2>&1 & disown
+    clear
+    echo "Screen"
+    yes | apt-get install screen 1>/dev/null 2>&1
+    echo "System Update"
+    yes | apt-get update 1>/dev/null 2>&1
+    echo "Nano"
+    yes | apt-get install nano 1>/dev/null 2>&1
+    echo "Fuse"
+    yes | apt-get install fuse 1>/dev/null 2>&1
+    echo "Man-DB"
+    yes | apt-get install man-db 1>/dev/null 2>&1
+    echo "Unzip"
+    yes | apt-get install unzip 1>/dev/null 2>&1
+    echo "Zip"
+    yes | apt-get install zip 1>/dev/null 2>&1
+    echo "Python"
+    yes | apt-get install python 1>/dev/null 2>&1
+    echo "Python Bridge Utils"
+    yes | apt-get install git python bridge-utils 1>/dev/null 2>&1
+    echo "Curl"
+    yes | apt-get install curl 1>/dev/null 2>&1
+    echo "OpenSSH Server"
+    yes | apt-get install openssh-server 1>/dev/null 2>&1
+    echo "UnionFS Fuse"
+    yes | apt-get install unionfs-fuse 1>/dev/null 2>&1
+    echo "DirMngr"
+    yes | apt-get install dirmngr 1>/dev/null 2>&1
+    echo "Apt Transport HTTPS"
+    yes | apt-get install apt-transport-https 1>/dev/null 2>&1
+    echo "CA Certificates"
+    yes | apt-get install ca-certificates 1>/dev/null 2>&1
+    echo "Software Properties Common"
+    yes | apt-get install software-properties-common 1>/dev/null 2>&1
+    echo "WGet"
+    yes | apt-get install wget 1>/dev/null 2>&1
+    echo "Fail2Ban"
+    yes | apt-get install fail2ban 1>/dev/null 2>&1
 
 {
     for ((i = 0 ; i <= 100 ; i+=1)); do
