@@ -91,7 +91,7 @@ plexguide
   - Future Support for LetsEncrypt
   - Select #7 From the Menu
 
-**G. Installing & Setting Up Support Programs
+**G. Installing & Setting Up Support Programs**
  
  - [Configure Plex](http://plex.plexguide.com)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
