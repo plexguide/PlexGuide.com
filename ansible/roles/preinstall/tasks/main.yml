@@ -16,7 +16,6 @@
       - python-passlib
       - curl
       - man-db
-      - python bridge-utils
       - htop
       - openssh-server
       - dirmngr
