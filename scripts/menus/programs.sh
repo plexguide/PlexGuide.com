@@ -82,10 +82,7 @@ case $CHOICE in
       ;;
 
     "3)")
-     echo ymlprogram netdata > /opt/plexguide/tmp.txt
-     echo ymldisplay NetData >> /opt/plexguide/tmp.txt
-     echo ymlport 19999 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
      ;;
 
     "4)")
