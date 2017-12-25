@@ -116,8 +116,9 @@ case $CHOICE in
      ;;
 
     "8)")
-     clear
-     bash /opt/plexguide/scripts/menus/plexpy-tautulli.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
+    echo "NetData: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "9)")
