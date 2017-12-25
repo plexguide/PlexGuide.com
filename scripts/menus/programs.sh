@@ -83,7 +83,7 @@ case $CHOICE in
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
-    echo "NetData: httpp://ipv4:19999 | For NGINX Proxy netdata.doamin.com"
+    echo "NetData: http://ipv4:19999 | For NGINX Proxy netdata.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
