@@ -5,7 +5,7 @@ services:
    image: linuxserver/sabnzbd
    container_name: nginx-sabnzbd
    ports:
-     - "127.0.0.1:8080:8090"
+     - "127.0.0.1:8090:8080"
    volumes:
      - /opt/appdata/sabnzbd:/config
      - /mnt/sab/complete:/complete
@@ -18,7 +18,7 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=sab.*
-     - VIRTUAL_PORT=8090
+     - VIRTUAL_PORT=8080
    cpu_shares: 256
    restart:
      always
