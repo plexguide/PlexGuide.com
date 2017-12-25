@@ -77,14 +77,13 @@ plexguide
  
 **F. Decision Time - Normal Install or Reverse Proxy** 
 - No Reverse Proxy (Access Via http://ipv4:port) (Ex: http://192.168.1.20:7878)
-  - **Still in Testing**
   - Requires No Domain
   - Provides Less Protection and Exposed Ports
   - No LetsEncrypt Support
   - Select #2 From the Menu
 
 - NGINX Reverse Proxy (Access Via Subdomain http://sub.domain.com) (Ex: http://radarr.domain.com)
-  - In Testing Mode; near production
+  - **Still in Testing**; almost ready
   - Requires a Domain 
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
