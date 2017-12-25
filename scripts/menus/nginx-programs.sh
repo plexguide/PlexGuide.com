@@ -108,8 +108,8 @@ case $CHOICE in
      ;;
 
     "7)")
-     echo ymlprogram ombi > /opt/plexguide/tmp.txt
-     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-ombi > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
