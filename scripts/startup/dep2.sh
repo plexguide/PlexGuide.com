@@ -11,7 +11,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo "1. Conducting a System Update" 
     yes | apt-get update 1>/dev/null 2>&1
     echo "2. Installing Software Properties Common"
-    yes | apt-get install software-properties-common
+    yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Installing Ansible Playbook"
     yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
     yes | apt-get install ansible 1>/dev/null 2>&1
