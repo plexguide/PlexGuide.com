@@ -86,10 +86,10 @@ read_options(){
       docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
       ;;
     4)
-     echo ymlprogram portainer > /opt/plexguide/tmp.txt
-     echo ymldisplay Portainer >> /opt/plexguide/tmp.txt
-     echo ymlport 9000 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      docker stop portainer
+      docker rm portainer
+      rm -r /opt/appdata/portainer
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
      ;;
     5)
       clear
