@@ -52,7 +52,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "2)" "Not Ready - Plex"   \
     "3)" "Not Ready - Emby"  \
     "4)" "Netdata"  \
-    "5)" "Not Ready - NZBGET"  \
+    "5)" "NZBGET"  \
     "6)" "Not Ready - Muximux"  \
     "7)" "Not Ready - OMBIv3"  \
     "8)" "Not Ready - Organizr"  \
