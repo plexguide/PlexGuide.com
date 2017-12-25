@@ -77,6 +77,7 @@ plexguide
  
 **F. Decision Time - Normal Install or Reverse Proxy** 
 - No Reverse Proxy (Access Via http://ipv4:port) (Ex: http://192.168.1.20:7878)
+  - **Still in Testing**
   - Requires No Domain
   - Provides Less Protection and Exposed Ports
   - No LetsEncrypt Support
