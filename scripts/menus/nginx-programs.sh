@@ -122,8 +122,8 @@ case $CHOICE in
      ;;
 
     "9)")
-     echo ymlprogram nginx-tatulli > /opt/plexguide/tmp.txt
-     echo ymldisplay Tatulli >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-tautulli > /opt/plexguide/tmp.txt
+     echo ymldisplay Tautulli >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
