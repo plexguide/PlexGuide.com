@@ -1,35 +1,25 @@
 ---
-  - name: Install common packages
+  - name: Install Dependicies 
     apt: "name={{item}} state=installed"
     with_items:
+      - fuse
+      - nano
+      - fail2ban
+      - wget
+      - unionfs-fuse
       - unrar
       - unzip
-      - p7zip
+      - zip
+      - python
       - python-pip
       - python3-pip
       - python-passlib
       - curl
-      - sqlite3
-      - vnstat
-      - tree
-      - lsof
       - man-db
-      - ksmtuned
-      - git
-      - pwgen
-      - rsync
-      - logrotate
+      - git python bridge-utils
       - htop
-      - iotop
-      - nload
-      - fail2ban
-      - ufw
-      - ncdu
-      - mc
-      - speedtest-cli
-      - python-ndg-httpsclient
-      - nethogs
-      - nodejs-legacy
-      - npm
-
-
+      - openssh-server
+      - dirmngr
+      - apt-transport-https
+      - ca-certificates
+      - tree
