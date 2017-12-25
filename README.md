@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/capture5.PNG?raw=true" alt="PlexGuide.com Preview"/>
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/preview01.png?raw=true" alt="PlexGuide.com Preview"/>
 </p>
 
 ----------------------------------------------------------------------
