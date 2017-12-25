@@ -1,0 +1,24 @@
+---
+
+- name: Remove Existing Container
+  docker_container:
+    name: tautulli
+    state: absent
+
+- name: Build Container
+  docker_container:
+    name: tautulli
+    image: "shiggins8/tautulli"
+    pull: yes
+    published_ports:
+      - "8181:8181"
+    volumes:
+      - /opt/appdata/tautulli:/config
+      - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
+    env:
+      VIRTUAL_HOST: "tautulli.*"
+      VIRTUAL_PORT: 8181
+      PUID: 1000
+      PGID: 1000
+    restart_policy: always
+    state: started
