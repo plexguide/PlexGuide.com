@@ -4,6 +4,8 @@ services:
  nginx-apache:
    image: linuxserver/apache
    container_name: nginx-apache
+   ports:
+     - "127.0.0.1:10001:80"
    volumes:
      - /opt/appdata/apache:/config
    environment:

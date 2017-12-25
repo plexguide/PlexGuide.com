@@ -18,7 +18,7 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=sab.*
-     - VIRTUAL_PORT=8090
+     - VIRTUAL_PORT=8080
    cpu_shares: 256
    restart:
      always

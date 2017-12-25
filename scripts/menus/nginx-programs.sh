@@ -50,7 +50,7 @@ CHOICE=$(
 whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "1)" "NGINX - Required First"  \
     "2)" "Not Ready - Plex"   \
-    "3)" "Not Ready - Emby"  \
+    "3)" "Emby"  \
     "4)" "Netdata"  \
     "5)" "NZBGET"  \
     "6)" "Not Ready - Muximux"  \
