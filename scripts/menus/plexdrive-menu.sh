@@ -60,7 +60,7 @@ case $CHOICE in
         ;;
 
     "2)")
-        rm -r /root/plexguide/.plexdrive 1>/dev/null 2>&1
+        rm -r /root/.plexdrive 1>/dev/null 2>&1
         rm -r ~/.plexdrive 1>/dev/null 2>&1
         echo
         echo "Tokens Removed - Try PlexDrive Install Again"
