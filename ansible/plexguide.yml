@@ -3,4 +3,5 @@
 
   roles:
   - { role: preinstall, tags: ['preinstall'] }
+  - { role: directories, tags: ['directories'] }
     
