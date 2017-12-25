@@ -5,14 +5,14 @@ services:
    image: linuxserver/apache
    container_name: nginx-apache
    ports:
-     - "127.0.0.1:10001:80"
+     - "127.0.0.1:10001:8080"
    volumes:
      - /opt/appdata/apache:/config
    environment:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=apache.*
-     - VIRTUAL_PORT=80
+     - VIRTUAL_PORT=8080
    cpu_shares: 256
    restart:
      always
