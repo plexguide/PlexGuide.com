@@ -83,6 +83,7 @@ case $CHOICE in
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "4)")
