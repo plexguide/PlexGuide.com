@@ -2,8 +2,8 @@
 version: '2.2'
 services:
  nginx-muximux:
-   image: linuxserver/sabnzbd
-   container_name: nginx-sabnzbd
+   image: linuxserver/muximux
+   container_name: nginx-muximux
    ports:
      - "127.0.0.1:8015:80"
    volumes:
