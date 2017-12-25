@@ -69,21 +69,39 @@ sudo bash /opt/plexg*/sc*/ins*
 ```sh
 plexguide
 ```
-
-**E. Configuration**
+**E. RClone / PlexDrive / UnionFS**
  - Install & Configure (Select Only One) - YouTube Video for RClone & PlexGuide: https://youtu.be/R15xXDwmxtk
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
- - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot Server!
+ - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot Serv
+ 
+**F. Decision Time - Normal Install or Reverse Proxy** 
+- No Reverse Proxy (Access Via http://ipv4:port) (Example: http://192.168.1.20:7878)
+  - Requires No Domain
+  - Provides Less Protection and Exposed Ports
+  - No LetsEncrypt Support
+  - Select #2 From the Menu
+
+- NGINX Reverse Proxy (Access Via Subdomain http://subdomain.domain.com) (Example: http://radarr.domain.com)
+  - In Testing Mode; near production
+  - Requires a Domain 
+    - How To With a Paid GoDaddy Domain
+    - How To With a Free NomNom Domain
+  - Provides More Protection and Closes Exposed Ports / Can Access ports only via Localhost)
+  - Future Support for LetsEncrypt
+  - Select #7 From the Menu
+
+**G. Installing & Setting Up Support Programs
+ 
  - [Configure Plex](http://plex.plexguide.com)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](http://portainer.plexguide.com)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
-**F. Final Notes**
+**H. Final Notes**
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com).
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
 - Your Feedback Helps Us and You!
 
-**G. Quick Troubleshoot**
+**I. Quick Troubleshoot**
 - Docker Install Failure: If Docker refuses to install, visit Tools and force the reinstall. If that fails; most likely you are running an older version of UB or have a VPS service that runs and outdated kernel. [[Manual Docker Install Incase]](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
