@@ -1,0 +1,5 @@
+test_home: /test
+
+roles:
+   - { role: test, jenkins_port: 8181, test_home: '/test' }
+   - { role: test, jenkins_port: 8080, test_home: '/test' }
