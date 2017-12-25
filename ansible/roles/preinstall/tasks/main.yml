@@ -1,0 +1,35 @@
+---
+  - name: Install common packages
+    apt: "name={{item}} state=installed"
+    with_items:
+      - unrar
+      - unzip
+      - p7zip
+      - python-pip
+      - python3-pip
+      - python-passlib
+      - curl
+      - sqlite3
+      - vnstat
+      - tree
+      - lsof
+      - man-db
+      - ksmtuned
+      - git
+      - pwgen
+      - rsync
+      - logrotate
+      - htop
+      - iotop
+      - nload
+      - fail2ban
+      - ufw
+      - ncdu
+      - mc
+      - speedtest-cli
+      - python-ndg-httpsclient
+      - nethogs
+      - nodejs-legacy
+      - npm
+
+

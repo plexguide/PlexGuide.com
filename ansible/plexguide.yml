@@ -2,5 +2,5 @@
 - hosts: localhosts
 
 roles:
-   - { role: preinstall, tags: 'preinstall' }
+   - { role: preinstall, tags: ['preinstall'] }
     
