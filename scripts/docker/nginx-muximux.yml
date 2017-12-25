@@ -1,7 +1,7 @@
 ---
 version: '2.2'
 services:
- nginx-sabnzbd:
+ nginx-muximux:
    image: linuxserver/sabnzbd
    container_name: nginx-sabnzbd
    ports:
