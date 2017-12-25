@@ -85,8 +85,8 @@ plexguide
 - NGINX Reverse Proxy (Access Via Subdomain http://subdomain.domain.com) (Example: http://radarr.domain.com)
   - In Testing Mode; near production
   - Requires a Domain 
-    - How To With a Paid GoDaddy Domain
-    - How To With a Free NomNom Domain
+    - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
+    - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
   - Provides More Protection and Closes Exposed Ports / Can Access ports only via Localhost)
   - Future Support for LetsEncrypt
   - Select #7 From the Menu
