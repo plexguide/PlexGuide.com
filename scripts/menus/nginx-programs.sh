@@ -75,9 +75,11 @@ case $CHOICE in
      ;;
 
     "2)")
-     clear
-     bash /opt/plexguide/scripts/menus/plexsub-menu.sh
-     ;;
+      echo ymlprogram nginx-plexpublic > /opt/plexguide/tmp.txt
+      echo ymldisplay NGINX Plex Public >> /opt/plexguide/tmp.txt
+      echo ymlport 32400 >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ;;
 
     "3)")
       echo ymlprogram nginx-emby > /opt/plexguide/tmp.txt
