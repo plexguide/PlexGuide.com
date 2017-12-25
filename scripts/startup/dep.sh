@@ -6,45 +6,21 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 ###################### Install Depdency Programs ###############
 
     clear
-    echo "Screen"
-    yes | apt-get install screen 1>/dev/null 2>&1
-    echo "System Update"
+    echo "PlexGuide Pre-Installer"
+    echo ""
+    echo "1. Conducting a System Update" 
     yes | apt-get update 1>/dev/null 2>&1
-    echo "Nano"
-    yes | apt-get install nano 1>/dev/null 2>&1
-    echo "Fuse"
-    yes | apt-get install fuse 1>/dev/null 2>&1
-    echo "Man-DB"
-    yes | apt-get install man-db 1>/dev/null 2>&1
-    echo "Unzip"
-    yes | apt-get install unzip 1>/dev/null 2>&1
-    echo "Zip"
-    yes | apt-get install zip 1>/dev/null 2>&1
-    echo "Python"
-    yes | apt-get install python 1>/dev/null 2>&1
-    echo "Python Bridge Utils"
-    yes | apt-get install git python bridge-utils 1>/dev/null 2>&1
-    echo "Curl"
-    yes | apt-get install curl 1>/dev/null 2>&1
-    echo "OpenSSH Server"
-    yes | apt-get install openssh-server 1>/dev/null 2>&1
-    echo "UnionFS Fuse"
-    yes | apt-get install unionfs-fuse 1>/dev/null 2>&1
-    echo "DirMngr"
-    yes | apt-get install dirmngr 1>/dev/null 2>&1
-    echo "Apt Transport HTTPS"
-    yes | apt-get install apt-transport-https 1>/dev/null 2>&1
-    echo "CA Certificates"
-    yes | apt-get install ca-certificates 1>/dev/null 2>&1
-    echo "Software Properties Common"
+    echo "2. Installing Software Properties Common"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
-    echo "WGet"
-    yes | apt-get install wget 1>/dev/null 2>&1
-    echo "Fail2Ban"
-    yes | apt-get install fail2ban 1>/dev/null 2>&1
-
-echo ""
-echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
+    echo "3. Installing Ansible Playbook"
+    yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+    yes | apt-get install ansible 1>/dev/null 2>&1
+    yes | apt-get update 1>/dev/null 2>&1
+    echo "4. Installing Dependicies - Please Wait"
+    echo
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
+    echo ""
+    echo "5. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 
 ## Create Directory Structure - Goal is to move everything here
 
@@ -88,7 +64,7 @@ mkdir -p /mnt/plexdrive4
 bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 ######################################################### For RCLONE
 
-echo "2. Pre-Installing RClone & Services (Please Wait)"
+echo "6. Pre-Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
   bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
@@ -97,7 +73,7 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
   touch /var/plexguide/basics.yes 1>/dev/null 2>&1
   touch /var/plexguide/version.5 1>/dev/null 2>&1
 
-echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
+echo "7. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
   bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
@@ -107,21 +83,21 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #  bash /opt/plexguide/scripts/test/basic-env.sh 1>/dev/null 2>&1
 
-  echo "4. Installing Docker & Docker Compose (Please Standby)"
+  echo "8. Installing Docker & Docker Compose (Please Standby)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
-  echo "5. Installing Portainer for Docker (Please Wait)"
+  echo "9. Installing Portainer for Docker (Please Wait)"
 
 # Installs Portainer
   docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "6. Finishing Up"
+    echo "10. Finishing Up"
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash

@@ -7,14 +7,14 @@ bash /opt/plexguide/scripts/docker-no/user.sh
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 
-file="/var/plexguide/dep22.yes"
+file="/var/plexguide/dep23.yes"
 if [ -e "$file" ]
 then
    clear
 else
    bash /opt/plexguide/scripts/startup/dep.sh
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep22.yes
+   touch /var/plexguide/dep23.yes
 fi
 
 ## ensure folders follow plexguide
