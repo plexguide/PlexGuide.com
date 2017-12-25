@@ -15,8 +15,8 @@ services:
      - "127.0.0.1:32412:32412/udp"
      - "127.0.0.1:32413:32413/udp"
      - "127.0.0.1:32414:32414/udp"
-     - "127.0.0.1:"33400:33400/tcp"
-     - "127.0.0.1:"33443:33443/tcp"
+     - "127.0.0.1:33400:33400/tcp"
+     - "127.0.0.1:33443:33443/tcp"
    volumes:
      - /opt/appdata/plex/database:/config
      - /opt/appdata/plex/transcode:/transcode
