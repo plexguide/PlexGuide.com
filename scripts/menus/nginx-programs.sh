@@ -101,7 +101,7 @@ case $CHOICE in
      ;;
 
     "6)")
-     echo ymlprogram muximux > /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
