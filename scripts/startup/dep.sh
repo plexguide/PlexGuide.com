@@ -196,5 +196,3 @@ else
 fi
 
 clear
-
-cat << EOF

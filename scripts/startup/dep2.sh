@@ -6,20 +6,21 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 ###################### Install Depdency Programs ###############
 
     clear
-    echo "Conducting a System Update"
+    echo "PlexGuide Pre-Installer"
+    echo ""
+    echo "1. Conducting a System Update"
     yes | apt-get update
-    echo "Installing Software Properties Common"
+    echo "2. Installing Software Properties Common"
     yes | apt-get install software-properties-common
-    echo "Installing Ansible Playbook"
+    echo "3. Installing Ansible Playbook"
     yes | apt-add-repository ppa:ansible/ansible
     yes | apt-get install ansible
-    echo "System Update"
     yes | apt-get update
-    echo "Installing Dependicies - Please Wait"
+    echo "4. Installing Dependicies - Please Wait"
     echo
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
     echo ""
-    echo "1. Installing Supporting Programs - Directories & Permissions (Please Wait)"
+    echo "5. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 
 ## Create Directory Structure - Goal is to move everything here
 
@@ -63,7 +64,7 @@ mkdir -p /mnt/plexdrive4
 bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
 ######################################################### For RCLONE
 
-echo "2. Pre-Installing RClone & Services (Please Wait)"
+echo "6. Pre-Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
   bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
@@ -72,7 +73,7 @@ echo "2. Pre-Installing RClone & Services (Please Wait)"
   touch /var/plexguide/basics.yes 1>/dev/null 2>&1
   touch /var/plexguide/version.5 1>/dev/null 2>&1
 
-echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
+echo "7. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
   bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
@@ -82,21 +83,21 @@ echo "3. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #  bash /opt/plexguide/scripts/test/basic-env.sh 1>/dev/null 2>&1
 
-  echo "4. Installing Docker & Docker Compose (Please Standby)"
+  echo "8. Installing Docker & Docker Compose (Please Standby)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
-  echo "5. Installing Portainer for Docker (Please Wait)"
+  echo "9. Installing Portainer for Docker (Please Wait)"
 
 # Installs Portainer
   docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d 1>/dev/null 2>&1
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "6. Finishing Up"
+    echo "10. Finishing Up"
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
@@ -171,5 +172,3 @@ else
 fi
 
 clear
-
-cat << EOF
