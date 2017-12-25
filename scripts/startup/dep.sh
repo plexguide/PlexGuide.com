@@ -22,46 +22,11 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo ""
     echo "5. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 
-## Create Directory Structure - Goal is to move everything here
+################### This might be deleted, cannot remember function
+# mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
+# chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
 
-################### chown
-
-  chown -R 1000:1000 /opt/plexguide/scripts/docker-no/* 1>/dev/null 2>&1
-
-################### For PlexDrive
-
-  mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
-  chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
-
-################### For SAB
-
-  mkdir -p /mnt
-  mkdir -p /mnt/sab/admin
-  mkdir -p /mnt/sab/incomplete
-  mkdir -p /mnt/sab/complete/tv
-  mkdir -p /mnt/sab/complete/movies
-  mkdir -p /mnt/sab/nzb
-
-#################### For NZBGET
-
-  mkdir -p /mnt/nzbget
-  mkdir -p /mnt/nzbget/incomplete
-  mkdir -p /mnt/nzbget/completed/tv
-  mkdir -p /mnt/nzbget/completed/movies
-  mkdir -p /mnt/nzbget/nzb
-  mkdir -p /mnt/nzbget/tmp
-  mkdir -p /mnt/nzbget/queue
-
-########################################################### RClone
-
-mkdir -p /mnt/move
-mkdir -p /mnt/gdrive
-mkdir -p /mnt/unionfs
-mkdir -p /mnt/plexdrive4
-mkdir -p /opt/appdata/plexguide
-mkdir -p /mnt/plexdrive4
-
-bash /opt/plexguide/scripts/startup/owner.sh 1>/dev/null 2>&1
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
 ######################################################### For RCLONE
 
 echo "6. Pre-Installing RClone & Services (Please Wait)"
