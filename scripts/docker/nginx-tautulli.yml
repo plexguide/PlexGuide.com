@@ -1,0 +1,19 @@
+---
+version: '2.2'
+services:
+ tatulli:
+   image: shiggins8/tautulli
+   container_name: nginx-tautulli
+   ports:
+     - "127.0.0.1:8181:8181"
+   volumes:
+     - /opt/appdata/tautulli:/config
+     - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
+   environment:
+     - PUID=1000
+     - PGID=1000
+     - VIRTUAL_HOST=tautulli.*
+     - VIRTUAL_PORT=8181
+   cpu_shares: 128
+   restart:
+     always

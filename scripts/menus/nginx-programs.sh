@@ -49,14 +49,14 @@ do
 CHOICE=$(
 whiptail --title "Install Menu" --menu "Make your choice" 22 35 15 \
     "1)" "NGINX - Required First"  \
-    "2)" "Not Ready - Plex"   \
+    "2)" "Plex"   \
     "3)" "Emby"  \
     "4)" "Netdata"  \
     "5)" "NZBGET"  \
     "6)" "Muximux"  \
-    "7)" "Not Ready - OMBIv3"  \
-    "8)" "Not Ready - Organizr"  \
-    "9)" "Not Ready - PlexPy"  \
+    "7)" "OMBIv3"  \
+    "8)" "Organizr"  \
+    "9)" "Tautulli"  \
     "10)" "Radarr"  \
     "11)" "SABNZBD"  \
     "12)" "Sonarr"  \
@@ -122,8 +122,8 @@ case $CHOICE in
      ;;
 
     "9)")
-     echo ymlprogram plexpy > /opt/plexguide/tmp.txt
-     echo ymldisplay PlexPY >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-tatulli > /opt/plexguide/tmp.txt
+     echo ymldisplay Tatulli >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
