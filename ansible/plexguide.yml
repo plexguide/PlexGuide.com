@@ -4,4 +4,4 @@
   roles:
   - { role: preinstall, tags: ['preinstall'] }
   - { role: folders, tags: ['folders'] }
-    
+  - { role: portainer, tags: ['portainer'] }
