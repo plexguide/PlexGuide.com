@@ -5,8 +5,8 @@ services:
    image: plexinc/pms-docker:public
    container_name: plexpublic
    ports:
-     - "127.0.0.1:32400:32400"
-     - "127.0.0.1:32400:32400/udp"
+     - "32400:32400"
+     - "32400:32400/udp"
      - "3005:3005/tcp"
      - "8324:8324/tcp"
      - "32469:32469/tcp"
