@@ -2,7 +2,19 @@
   - name: Create Directories
     file: "path={{item}} state=directory mode=0777 owner=1000 group=1000"
     with_items:
-      - /mnt/local
-      - /mnt/local/.unionfs-fuse
-      - /mnt/local/Media/TV
-      - /mnt/local/Media/Movies
+      - /mnt/deluge
+      - /mnt/rutorrent
+      - /mnt/nzbget
+      - /mnt/nzbget/completed
+      - /mnt/nzbget/completed/movies
+      - /mnt/nzbget/completed/tv
+      - /mnt/nzbget/incomplete
+      - /mnt/nzbget/nzb
+      - /mnt/nzbget/queue
+      - /mnt/nzbget/tmp
+      - /mnt/nzbget/log 
+      - /mnt/sab
+      - /mnt/plexdrive4
+      - /mnt/encrypt
+
+
