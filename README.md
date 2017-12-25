@@ -76,13 +76,13 @@ plexguide
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot Serv
  
 **F. Decision Time - Normal Install or Reverse Proxy** 
-- No Reverse Proxy (Access Via http://ipv4:port) (Example: http://192.168.1.20:7878)
+- No Reverse Proxy (Access Via http://ipv4:port) (Ex: http://192.168.1.20:7878)
   - Requires No Domain
   - Provides Less Protection and Exposed Ports
   - No LetsEncrypt Support
   - Select #2 From the Menu
 
-- NGINX Reverse Proxy (Access Via Subdomain http://subdomain.domain.com) (Example: http://radarr.domain.com)
+- NGINX Reverse Proxy (Access Via Subdomain http://sub.domain.com) (Ex: http://radarr.domain.com)
   - In Testing Mode; near production
   - Requires a Domain 
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
