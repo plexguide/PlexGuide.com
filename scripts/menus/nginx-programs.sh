@@ -75,6 +75,8 @@ case $CHOICE in
      ;;
 
     "2)")
+      sudo docker stop plexpublic 1>/dev/null 2>&1
+      sudo docker rm plexpublic 1>/dev/null 2>&1
       echo ymlprogram nginx-plexpublic > /opt/plexguide/tmp.txt
       echo ymldisplay NGINX Plex Public >> /opt/plexguide/tmp.txt
       echo ymlport 32400 >> /opt/plexguide/tmp.txt
@@ -82,6 +84,8 @@ case $CHOICE in
       ;;
 
     "3)")
+      sudo docker stop emby 1>/dev/null 2>&1
+      sudo docker rm emby 1>/dev/null 2>&1
       echo ymlprogram nginx-emby > /opt/plexguide/tmp.txt
       echo ymldisplay NGINX Emby >> /opt/plexguide/tmp.txt
       echo ymlport 8096 >> /opt/plexguide/tmp.txt
@@ -89,6 +93,8 @@ case $CHOICE in
       ;;
 
     "4)")
+     sudo docker stop netdata 1>/dev/null 2>&1
+     sudo docker rm netdata 1>/dev/null 2>&1
      echo ymlprogram nginx-netdata > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX NetData >> /opt/plexguide/tmp.txt
      echo ymlport 19999 >> /opt/plexguide/tmp.txt
@@ -96,6 +102,8 @@ case $CHOICE in
      ;;
 
     "5)")
+     sudo docker stop nzbget 1>/dev/null 2>&1
+     sudo docker rm nzbget 1>/dev/null 2>&1
      echo ymlprogram nginx-nzbget > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX NZBGET >> /opt/plexguide/tmp.txt
      echo ymlport 6789 >> /opt/plexguide/tmp.txt
@@ -103,6 +111,8 @@ case $CHOICE in
      ;;
 
     "6)")
+     sudo docker stop muximux 1>/dev/null 2>&1
+     sudo docker rm muximux 1>/dev/null 2>&1
      echo ymlprogram nginx-muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
@@ -110,6 +120,8 @@ case $CHOICE in
      ;;
 
     "7)")
+     sudo docker stop ombi 1>/dev/null 2>&1
+     sudo docker rm ombi 1>/dev/null 2>&1
      echo ymlprogram nginx-ombi > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
@@ -117,6 +129,8 @@ case $CHOICE in
      ;;
 
     "8)")
+     sudo docker stop organizr 1>/dev/null 2>&1
+     sudo docker rm organizr 1>/dev/null 2>&1
      echo ymlprogram nginx-organizr > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
@@ -124,6 +138,8 @@ case $CHOICE in
      ;;
 
     "9)")
+     sudo docker stop tautulli 1>/dev/null 2>&1
+     sudo docker rm tautulli 1>/dev/null 2>&1
      echo ymlprogram nginx-tautulli > /opt/plexguide/tmp.txt
      echo ymldisplay Tautulli >> /opt/plexguide/tmp.txt
      echo ymlport 8181 >> /opt/plexguide/tmp.txt
@@ -131,6 +147,8 @@ case $CHOICE in
      ;;
 
     "10)")
+     sudo docker stop radarr 1>/dev/null 2>&1
+     sudo docker rm radarr 1>/dev/null 2>&1
      echo ymlprogram nginx-radarr > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
@@ -143,6 +161,8 @@ case $CHOICE in
      ;;
 
     "12)")
+     sudo docker stop sonarr 1>/dev/null 2>&1
+     sudo docker rm sonarr 1>/dev/null 2>&1
      echo ymlprogram nginx-sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay NGINX Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
@@ -150,8 +170,8 @@ case $CHOICE in
      ;;
 
     "13)")
-     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
-     echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-wordpress > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Wordpress >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
