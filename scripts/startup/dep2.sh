@@ -8,14 +8,14 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     clear
     echo "PlexGuide Pre-Installer"
     echo ""
-    echo "1. Conducting a System Update"
-    yes | apt-get update
+    echo "1. Conducting a System Update" 
+    yes | apt-get update 1>/dev/null 2>&1
     echo "2. Installing Software Properties Common"
     yes | apt-get install software-properties-common
     echo "3. Installing Ansible Playbook"
-    yes | apt-add-repository ppa:ansible/ansible
-    yes | apt-get install ansible
-    yes | apt-get update
+    yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+    yes | apt-get install ansible 1>/dev/null 2>&1
+    yes | apt-get update 1>/dev/null 2>&1
     echo "4. Installing Dependicies - Please Wait"
     echo
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
