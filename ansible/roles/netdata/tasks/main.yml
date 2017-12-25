@@ -1,5 +1,11 @@
 ---
-- name: Container
+
+- name: Remove Existing Container
+  docker_container:
+    name: portainer
+    state: absent
+
+- name: Build Container
   docker_container:
     name: netdata
     image: "titpetric/netdata:latest"
