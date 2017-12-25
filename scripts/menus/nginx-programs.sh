@@ -117,8 +117,8 @@ case $CHOICE in
      ;;
 
     "8)")
-     echo ymlprogram organizr > /opt/plexguide/tmp.txt
-     echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-organizr > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
