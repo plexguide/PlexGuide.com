@@ -28,7 +28,7 @@
       - "6789:6789"
     volumes:
       - "/opt/appdata/nzbget:/config"
-      - "/mnt/nzbget/:/config/downloads"
+      - "/mnt/nzbget/:/config/downloads/completed"
       - "/mnt:/mnt"
       - "/mnt/unionfs:/unionfs"
       - "/opt/scripts/nzb:/scripts"
