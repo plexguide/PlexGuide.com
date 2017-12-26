@@ -11,7 +11,7 @@ services:
      - /:/yourcomputer
      - /mnt/unionfs:/unionfs
      - /mnt/sab/complete:/complete
-     - /mnt/nzbget/completed:/completed
+     - /mnt/nzbget/completed/:/config/downloads
      - /mnt/deluge/downloaded:/downloaded
      - /mnt/rutorrents/downloads/incoming:/downloads
      - /etc/localtime:/etc/localtime:ro
