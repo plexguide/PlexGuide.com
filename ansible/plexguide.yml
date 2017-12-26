@@ -8,3 +8,4 @@
   - { role: netdata, tags: ['netdata'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
+  - { role: nzbhydra, tags: ['nzbhydra'] }

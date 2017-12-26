@@ -50,20 +50,21 @@ CHOICE=$(
 whiptail --title "Install Menu" --menu "Make your choice" 19 32 12 \
     "1)" "Plex"   \
     "2)" "Emby"  \
-    "3)" "Netdata"  \
-    "4)" "NZBGET"  \
-    "5)" "Muximux"  \
-    "6)" "OMBIv3"  \
-    "7)" "Organizr"  \
-    "8)" "Radarr"  \
-    "9)" "SABNZBD"  \
-    "10)" "Sonarr"  \
-    "11)" "Tautulli"  \
-    "12)" "Wordpress"  \
-    "13)" "Mylar - Test"  \
-    "14)" "Headphones - Test"  \
-    "15)" "Ubooquity - Test"  \
-    "16)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Muximux"  \
+    "4)" "Netdata"  \
+    "5)" "NZBGET"  \
+    "6)" "NZBHydra"  \
+    "7)" "OMBIv3"  \
+    "8)" "Organizr"  \
+    "9)" "Radarr"  \
+    "10)" "SABNZBD"  \
+    "11)" "Sonarr"  \
+    "12)" "Tautulli"  \
+    "13)" "Wordpress"  \
+    "14)" "Mylar - Test"  \
+    "15)" "Headphones - Test"  \
+    "16)" "Ubooquity - Test"  \
+    "17)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -81,92 +82,98 @@ case $CHOICE in
       ;;
 
     "3)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
-    echo "NetData: http://ipv4:19999 | For NGINX Proxy netdata.domain.com"
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-    "4)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
-    echo "NZBGET: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-    "5)")
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
      echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
      echo ymlport 8015 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
+    "4)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
+    echo "NetData: http://ipv4:19999 | For NGINX Proxy netdata.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
+
+    "5)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
+    echo "NZBGET: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
+
     "6)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra
+    echo "NZBHydra: http://ipv4:5075 | For NGINX Proxy nzbhyra.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
+
+    "7)")
      echo ymlprogram ombi > /opt/plexguide/tmp.txt
      echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
      echo ymlport 3579 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "7)")
+    "8)")
      echo ymlprogram organizr > /opt/plexguide/tmp.txt
      echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
      echo ymlport 8020 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "8)")
+    "9)")
      echo ymlprogram radarr > /opt/plexguide/tmp.txt
      echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
      echo ymlport 7878 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "9)")
+    "10)")
      clear
      bash /opt/plexguide/scripts/menus/sabsub-menu.sh
      ;;
 
-    "10)")
+    "11)")
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt
      echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-    "11)")
+    "12)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
     echo "Tautulli: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    "12)")
+    "13)")
      echo ymlprogram wordpress > /opt/plexguide/tmp.txt
      echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-     "13)")
+     "14)")
      echo ymlprogram mylar > /opt/plexguide/tmp.txt
      echo ymldisplay MYLAR >> /opt/plexguide/tmp.txt
      echo ymlport 8099 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-     "14)")
+     "15)")
      echo ymlprogram headphones > /opt/plexguide/tmp.txt
      echo ymldisplay HeadPhones >> /opt/plexguide/tmp.txt
      echo ymlport 8282 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-     "15)")
+     "16)")
      echo ymlprogram ubooquity > /opt/plexguide/tmp.txt
      echo ymldisplay Ubooquity >> /opt/plexguide/tmp.txt
      echo ymlport 2203 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
 
-     "16)")
+     "17)")
       clear
       exit 0
       ;;
