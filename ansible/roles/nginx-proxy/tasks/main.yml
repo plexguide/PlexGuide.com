@@ -1,5 +1,10 @@
 ---
 
+- name: Directory for Proxy
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/nginx-proxy
+
 - name: Proxy File
   copy: "src=proxy.conf dest=/opt/appdata/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
 
