@@ -96,6 +96,30 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Change DestDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^DestDir\s?='
+    line: 'DestDir=/completed'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Change NZBDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^NzbDir\s?='
+    line: 'DestDir=/nzb'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Change Queue Dir
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^QueueDir\s?='
+    line: 'QueueDir=/queue'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Lowercase & Set Movie Category
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
