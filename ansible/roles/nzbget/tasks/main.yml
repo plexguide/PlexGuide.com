@@ -108,15 +108,39 @@
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^NzbDir\s?='
-    line: 'DestDir=/nzb'
+    line: 'NzbDir=/nzb'
     state: present
   when: nzbget_conf.stat.exists == False
 
-- name: Change Queue Dir
+- name: Change QueueDir
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^QueueDir\s?='
     line: 'QueueDir=/queue'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Change TempDir
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^TempDir\s?='
+    line: 'TempDir=/tmp'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: ScriptDir
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^ScriptDir\s?='
+    line: 'ScriptDir=scripts/'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: LogFile
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^LogFile\s?='
+    line: 'LogFile=/log/nzbget.log'
     state: present
   when: nzbget_conf.stat.exists == False
 
