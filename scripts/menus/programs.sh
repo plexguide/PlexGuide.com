@@ -61,10 +61,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 32 12 \
     "11)" "Sonarr"  \
     "12)" "Tautulli"  \
     "13)" "Wordpress"  \
-    "14)" "Mylar - Test"  \
-    "15)" "Headphones - Test"  \
-    "16)" "Ubooquity - Test"  \
-    "17)" "Exit  "  3>&2 2>&1 1>&3
+    "14)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -152,27 +149,6 @@ case $CHOICE in
      ;;
 
      "14)")
-     echo ymlprogram mylar > /opt/plexguide/tmp.txt
-     echo ymldisplay MYLAR >> /opt/plexguide/tmp.txt
-     echo ymlport 8099 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-
-     "15)")
-     echo ymlprogram headphones > /opt/plexguide/tmp.txt
-     echo ymldisplay HeadPhones >> /opt/plexguide/tmp.txt
-     echo ymlport 8282 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-
-     "16)")
-     echo ymlprogram ubooquity > /opt/plexguide/tmp.txt
-     echo ymldisplay Ubooquity >> /opt/plexguide/tmp.txt
-     echo ymlport 2203 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
-
-     "17)")
       clear
       exit 0
       ;;
