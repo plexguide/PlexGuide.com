@@ -10,7 +10,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo ""
     echo "1. Conducting a System Update"
     yes | apt-get update 1>/dev/null 2>&1
-    yes | pip install docker-py pip 1>/dev/null 2>&1
+    pip install docker-py pip 1>/dev/null 2>&1
     echo "2. Installing Software Properties Common"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Installing Ansible Playbook"
