@@ -1,5 +1,5 @@
 ---
-- name: Create Container
+- name: Create and Start Container
   docker_container:
     name: portainer
     image: "portainer/portainer"
@@ -13,7 +13,7 @@
     env:
       VIRTUAL_HOST: "portainer.*"
       VIRTUAL_PORT: 9000
-      PUID: 1000
-      PGID: 1000
+      PUID: "1000"
+      PGID: "1000"
     restart_policy: always
     state: started
