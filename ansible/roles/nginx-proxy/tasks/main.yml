@@ -28,9 +28,8 @@
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
-      - "/opt/appdata/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
     restart_policy: always
     state: started
     env:
-      PUID: "1000"
-      PGID: "1000"
+      PUID: "0"
+      PGID: "0"
