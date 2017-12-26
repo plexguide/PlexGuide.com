@@ -49,7 +49,7 @@ do
 CHOICE=$(
 whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
     "1)" "View HardDrive Space"   \
-    "2)" "View Container Sizes"  \
+    "2)" "View Container Info"  \
     "3)" "Verify PlexDrive"  \
     "4)" "Verify UnionFS"  \
     "5)" "Verify UN-RClone"  \
@@ -68,9 +68,7 @@ case $CHOICE in
 
     "2)")
         clear
-        docker ps -s
-        echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        ctop
         ;;
 
     "3)")
