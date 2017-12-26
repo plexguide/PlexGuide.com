@@ -67,6 +67,22 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Lowercase & Set Movie Category
+  lineinfile:
+    path: "/opt/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category1.Name=movies'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Lowercase & Set TV Category
+  lineinfile:
+    path: "/opt/nzbget/nzbget.conf"
+    regexp: '^Category2.Name\s?='
+    line: 'Category2.Name=tv'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Restart Container
   docker_container:
     name: nzbget
