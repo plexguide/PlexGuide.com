@@ -1,4 +1,5 @@
 ---
+
 - name: Remove Container
   docker_container:
     name: nzbget
