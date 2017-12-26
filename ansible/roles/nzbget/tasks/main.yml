@@ -5,6 +5,11 @@
     name: nzbget
     state: absent
 
+- name: Check nzbget.conf exists
+  stat:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+  register: nzbget_conf
+
 - name: Build Container
   docker_container:
     name: nzbget
