@@ -28,3 +28,20 @@
       PGID: 1000
     restart_policy: always
     state: started
+
+- name: Path for .conf
+  wait_for:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: "Wait 12 Seconds"
+  wait_for:
+    timeout: 12
+  when: nzbget_conf.stat.exists == False
+
+- name: Customize nzbget.conf
+  docker_container:
+    name: nzbget
+    state: stopped
+  when: nzbget_conf.stat.exists == False
