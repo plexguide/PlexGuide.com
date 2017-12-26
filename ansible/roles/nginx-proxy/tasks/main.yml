@@ -30,3 +30,6 @@
       - "/opt/appdata/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
     restart_policy: always
     state: started
+    environment:
+      - PUID=0
+      - PGID=0
