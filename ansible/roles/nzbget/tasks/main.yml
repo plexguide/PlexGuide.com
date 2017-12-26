@@ -144,6 +144,14 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: DirectUnpack Set to On
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^DirectUnpack\s?='
+    line: 'DirectUnpack=yes'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Lowercase & Set Movie Category
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
