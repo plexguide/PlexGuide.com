@@ -1,7 +1,7 @@
 ---
 
 - name: Proxy File
-  copy: "src=proxy.conf dest=/opt/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
+  copy: "src=proxy.conf dest=/opt/appdata/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
 
 - name: Remove Container
   docker_container:
@@ -17,11 +17,11 @@
       - "80:80"
       - "443:443"
     volumes:
-      - "/opt/nginx-proxy:/etc/nginx/certs:ro"
+      - "/opt/appdata/nginx-proxy:/etc/nginx/certs:ro"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
-      - "/opt/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
+      - "/opt/appdata/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: always
     state: started

@@ -10,3 +10,4 @@
   - { role: nzbget, tags: ['nzbget'] }
   - { role: nzbhydra, tags: ['nzbhydra'] }
   - { role: muximux, tags: ['muximux'] }
+  - { role: nginx-proxy, tags: ['nginx-proxy'] }
