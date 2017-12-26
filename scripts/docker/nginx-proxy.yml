@@ -10,6 +10,7 @@ services:
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
+      - "/opt/appdata/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
     ports:
       - "80:80"
       - "443:443"
@@ -30,8 +31,8 @@ services:
     links:
       - nginx
     restart: always
-    environment:
-      - PUID=0
-      - PGID=0
+    env:
+      PUID: "1000"
+      PGID: "1000"
 
 
