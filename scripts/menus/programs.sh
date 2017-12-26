@@ -87,11 +87,10 @@ case $CHOICE in
      ;;
 
     "4)")
-     echo ymlprogram nzbget > /opt/plexguide/tmp.txt
-     echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
-     echo ymlport 6789 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
+    echo "NetData: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
     "5)")
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
