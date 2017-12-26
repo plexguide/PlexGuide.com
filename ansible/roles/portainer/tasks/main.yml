@@ -1,14 +1,8 @@
 ---
-
-- name: Remove Container
+- name: Create and Start Container
   docker_container:
     name: portainer
-    state: absent
-
-- name: Create Container
-  docker_container:
-    name: portainer
-    image: portainer/portainer
+    image: "portainer/portainer"
     pull: yes
     published_ports:
       - "9000:9000"
@@ -19,7 +13,7 @@
     env:
       VIRTUAL_HOST: "portainer.*"
       VIRTUAL_PORT: 9000
-      PUID: 1000
-      PGID: 1000
+      PUID: "1000"
+      PGID: "1000"
     restart_policy: always
     state: started
