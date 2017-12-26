@@ -1,8 +1,14 @@
 ---
+
+- name: Remove Container
+  docker_container:
+    name: portainer
+    state: absent
+
 - name: Create Container
   docker_container:
     name: portainer
-    image: "portainer/portainer"
+    image: portainer/portainer
     pull: yes
     published_ports:
       - "9000:9000"
