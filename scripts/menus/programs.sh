@@ -82,10 +82,9 @@ case $CHOICE in
       ;;
 
     "3)")
-     echo ymlprogram muximux > /opt/plexguide/tmp.txt
-     echo ymldisplay Muximux >> /opt/plexguide/tmp.txt
-     echo ymlport 8015 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
+    echo "NetData: http://ipv4:8015 | For NGINX Proxy muximux.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "4)")
