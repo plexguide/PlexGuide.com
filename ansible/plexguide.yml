@@ -7,4 +7,4 @@
   - { role: portainer, tags: ['portainer'] }
   - { role: netdata, tags: ['netdata'] }
   - { role: tautulli, tags: ['tautulli'] }
-  - { role: nzbget, tags: ['nzbget'] }
+  #- { role: nzbget, tags: ['nzbget'] }
