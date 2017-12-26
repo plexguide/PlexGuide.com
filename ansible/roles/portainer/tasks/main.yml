@@ -1,5 +1,5 @@
 ---
-- name: Container
+- name: Create Container
   docker_container:
     name: portainer
     image: "portainer/portainer"
