@@ -90,6 +90,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
     echo "NetData: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
+    ;;
 
     "5)")
      echo ymlprogram muximux > /opt/plexguide/tmp.txt
