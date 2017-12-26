@@ -50,3 +50,25 @@
     name: nzbget
     state: stopped
   when: nzbget_conf.stat.exists == False
+
+- name: Remove User
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^ControlUsername\s?='
+    line: 'ControlUsername='
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Remove Password
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^ControlPassword=\s?='
+    line: 'ControlPassword='
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Restart Container
+  docker_container:
+    name: nzbget
+    state: started
+  when: nzbget_conf.stat.exists == False
