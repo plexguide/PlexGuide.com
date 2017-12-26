@@ -88,7 +88,7 @@ case $CHOICE in
 
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
-    echo "NetData: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
+    echo "NZBGET: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
@@ -134,7 +134,7 @@ case $CHOICE in
 
     "11)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
-    echo "NetData: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
+    echo "Tautulli: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
