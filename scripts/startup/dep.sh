@@ -8,9 +8,9 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     clear
     echo "PlexGuide Pre-Installer"
     echo ""
-    echo "1. Conducting a System Update" 
+    echo "1. Conducting a System Update"
     yes | apt-get update 1>/dev/null 2>&1
-    yes | pip install docker-py --upgrade pip 1>/dev/null 2>&1
+    yes | pip install docker-py pip 1>/dev/null 2>&1
     echo "2. Installing Software Properties Common"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Installing Ansible Playbook"
@@ -27,7 +27,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 # mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
 # chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
 
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
 ######################################################### For RCLONE
 
 echo "6. Pre-Installing RClone & Services (Please Wait)"
