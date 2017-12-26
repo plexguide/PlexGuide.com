@@ -80,6 +80,22 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Change MainDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^MainDir\s?='
+    line: 'MainDir=/config'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Change InterDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^InterDir\s?='
+    line: 'InterDir=/incomplete'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Lowercase & Set Movie Category
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
