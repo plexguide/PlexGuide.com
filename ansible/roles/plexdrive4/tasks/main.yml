@@ -11,7 +11,7 @@
   - name: PlexDrive 4 Install
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
-      dest: /tmp
+      dest: /usr/bin
       mode: 0755
       owner: 1000
       group: 1000
