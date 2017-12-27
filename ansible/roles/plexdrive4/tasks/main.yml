@@ -38,7 +38,7 @@
     
   - name: Config Present?
     stat:
-      path: "/opt/plexdrive/config.json"
+      path: "/root/.plexdrive/config.json"
     register: plexdrive4_config
 
   - name: PlexDrive4 Start
