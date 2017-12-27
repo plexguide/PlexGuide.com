@@ -81,7 +81,7 @@
 - name: Install WebTools
   unarchive:
     src: https://github.com/ukdtom/WebTools.bundle/releases/download/2.4.1/WebTools.bundle.zip
-    dest: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins"
+    dest: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Plug-ins"
     copy: no
     owner: 1000
     group: 1000
