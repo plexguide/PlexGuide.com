@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: nzbget, tags: ['nzbget'] }
+  - { role: plexdrive4, tags: ['plexdrive4'] }
