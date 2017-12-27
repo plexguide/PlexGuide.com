@@ -64,7 +64,7 @@
 - name: Change Port
   lineinfile:
     path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-    regexp: '^port\s?='
+    regexp: '^port\s?=\s8080'
     line: 'port = 8090'
     state: present
   when: sabnzbd_ini.stat.exists == False
