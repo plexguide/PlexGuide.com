@@ -1,5 +1,7 @@
 ---
 
+## http://docs.ansible.com/ansible/latest/lineinfile_module.html
+
 - name: Remove Existing Container
   docker_container:
     name: sabnzbd
@@ -64,8 +66,8 @@
 - name: Change Port
   lineinfile:
     path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-    regexp: 'port = 8080'
-    line: 'port = 8090'
+    regexp: '^port'
+    line: '^ports'
     state: present
   when: sabnzbd_ini.stat.exists == False
 
