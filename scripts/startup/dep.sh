@@ -17,7 +17,8 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     apt-add-repository ppa:ansible/ansible
     apt-get update -y
     apt-get install ansible -y
-    
+    apt install python-pip -y
+    pip install docker
     echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
     echo "5. Installing Dependicies - Please Wait"
