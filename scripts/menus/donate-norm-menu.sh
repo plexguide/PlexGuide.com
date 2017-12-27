@@ -10,9 +10,10 @@ if (whiptail --title "PlexGuide Donation Selection" --yesno "Will you Donate you
     rm -r /var/plexguide/donation* 1>/dev/null 2>&1
     touch /var/plexguide/donation.yes 1>/dev/null 2>&1
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags support
-     echo "Setting up PlexGuide Donations - Thank You!"
      echo ""
-     # read -n 1 -s -r -p "Press any key to continue"
+     echo "Thank you for your support!"
+     echo ""
+     read -n 1 -s -r -p "Press any key to continue"
 else
     whiptail --title "Donation Status - No" --msgbox "We understand! If installed or running prior, we will disable it!" 9 76
     echo "Removing/Stopping Donation Support"
@@ -23,5 +24,5 @@ else
     clear
     echo "Support Container Removed - Turn it back on anytime!"
     echo ""
-    # read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press any key to continue"
 fi
