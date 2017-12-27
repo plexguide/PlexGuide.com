@@ -10,20 +10,22 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo ""
     echo "1. Conducting a System Update (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
-    apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools
-    easy_install -U pip
-    easy_install3 -U pip
-    python -m pip install ansible==2.3.1.0 requests
-    python3 -m pip install requests
+
     echo "2. Installing Software Properties Common (Please Wait)"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
-    echo "3. Installing Ansible Playbook & Supporting Components (Please Wait)"
+    echo "3. Pre-Install for Ansible Playbook (Please Wait)"
+    apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools 1>/dev/null 2>&1
+    easy_install -U pip 1>/dev/null 2>&1
+    easy_install3 -U pip 1>/dev/null 2>&1
+    python -m pip install ansible==2.3.1.0 requests 1>/dev/null 2>&1
+    python3 -m pip install requests 1>/dev/null 2>&1
+    echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
-    echo "4. Installing Dependicies - Please Wait"
+    echo "5. Installing Dependicies - Please Wait"
     echo
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
     echo ""
-    echo "5. Installing Supporting Programs - Directories & Permissions (Please Wait)"
+    echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
 
 ################### This might be deleted, cannot remember function
 # mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
@@ -32,7 +34,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
 ######################################################### For RCLONE
 
-echo "6. Pre-Installing RClone & Services (Please Wait)"
+echo "7. Pre-Installing RClone & Services (Please Wait)"
 
 #Installing RClone and Service
   bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
@@ -41,7 +43,7 @@ echo "6. Pre-Installing RClone & Services (Please Wait)"
   touch /var/plexguide/basics.yes 1>/dev/null 2>&1
   touch /var/plexguide/version.5 1>/dev/null 2>&1
 
-echo "7. Pre-Installing PlexDrive & Services (Please Wait)"
+echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
   bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
@@ -51,25 +53,25 @@ echo "7. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #  bash /opt/plexguide/scripts/test/basic-env.sh 1>/dev/null 2>&1
 
-  echo "8. Installing Docker & Docker Compose (Please Standby)"
+  echo "9. Installing Docker & Docker Compose (Please Standby)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
-  echo "9. Installing Portainer for Docker (Please Wait)"
+  echo "10. Installing Portainer for Docker (Please Wait)"
 
 # Installs Portainer
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "10. Finishing Up"
+    echo "11. Finishing Up"
 
 tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
   #!/bin/bash
-  sleep 30
+  sleep 20
   while true
   do
     docker restart emby 1>/dev/null 2>&1
@@ -107,7 +109,7 @@ EOF
   systemctl enable dockerfix 1>/dev/null 2>&1
   systemctl start dockerfix 1>/dev/null 2>&1
 
-  echo "7. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
+  echo "12. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
 
   docker restart emby 1>/dev/null 2>&1
   docker restart nzbget 1>/dev/null 2>&1
@@ -122,11 +124,13 @@ EOF
     then
         echo "" 1>/dev/null 2>&1
     else
-        echo "8. Donation Information - (Please Wait)"
+        echo "13. Donation Information - (Please Wait)"
         echo ""
         bash /opt/plexguide/scripts/menus/donate-menu.sh
     fi
 
+   rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+   touch /var/plexguide/dep24.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 

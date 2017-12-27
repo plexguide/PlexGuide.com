@@ -7,14 +7,12 @@ bash /opt/plexguide/scripts/docker-no/user.sh
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 
-file="/var/plexguide/dep23.yes"
+file="/var/plexguide/dep24.yes"
 if [ -e "$file" ]
 then
    clear
 else
-   bash /opt/plexguide/scripts/startup/dep.sh
-   rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep23.yes
+   bash /opt/plexguide/scripts/startup/dep24.sh
 fi
 
 ## ensure folders follow plexguide
@@ -66,7 +64,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0015 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+whiptail --title "PlexGuide.com - v5.0016 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs - Main" \
