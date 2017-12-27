@@ -17,10 +17,11 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools 1>/dev/null 2>&1
     easy_install -U pip 1>/dev/null 2>&1
     easy_install3 -U pip 1>/dev/null 2>&1
+    python -m pip install ansible==2.3.1.0 requests 
     python3 -m pip install requests 1>/dev/null 2>&1
-    apt-add-repository ppa:ansible/ansible -y
-    apt-get update -y
-    apt-get install ansible -y
+    #apt-add-repository ppa:ansible/ansible -y
+    #apt-get update -y
+    #apt-get install ansible -y
     echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
     echo "5. Installing Dependicies - Please Wait"
@@ -59,7 +60,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
-  curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
+  curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
   echo "10. Installing Portainer for Docker (Please Wait)"
