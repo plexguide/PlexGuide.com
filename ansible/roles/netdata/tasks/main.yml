@@ -2,7 +2,7 @@
 
 - name: Remove Existing Container
   docker_container:
-    name: portainer
+    name: netdata
     state: absent
 
 - name: Build Container
