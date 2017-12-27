@@ -3,7 +3,7 @@
 clear
 
 ################# Install Plex
-echo "READ >> AFTER IT FINISHES, YOU MUST REBOOT!!! <<< READ"
+echo "READ >> REBOOT PLEXDRIVE AFTER IT COMPLETES!!! <<< READ"
 echo ""
 echo -n "Do you want to Install PlexDrive? (y/n)? "
 old_stty_cfg=$(stty -g)
@@ -14,36 +14,19 @@ if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
 clear
-## Create the PlexDrive4 Service
-tee "/etc/systemd/system/plexdrive4.service" > /dev/null <<EOF
-
-[Unit]
-Description=PlexDrive4 Service
-After=multi-user.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
+ 
 ## Enables the PlexDrive Service
-systemctl daemon-reload
-systemctl enable plexdrive4.service
+#systemctl daemon-reload
+#systemctl enable plexdrive4.service
 
-    clear
-    cd /tmp
-    wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
-    mv plexdrive-linux-amd64 plexdrive4
+    sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags plexdrive4
+    #cd /tmp
+    #wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
+    mv /tmp/plexdrive-linux-amd64 plexdrive4
     mv plexdrive4 /usr/bin/
     cd /usr/bin/
-    chown root:root /usr/bin/plexdrive4
-    chmod 755 /usr/bin/plexdrive4
+    #chown root:root /usr/bin/plexdrive4
+    #chmod 755 /usr/bin/plexdrive4
     clear
     plexdrive4 --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
     clear
