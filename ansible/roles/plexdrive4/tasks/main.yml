@@ -24,23 +24,23 @@
       force: yes
     when: plexdrive4.stat.exists == False
 
-  - name: Systemd daemon-reload
+  - name: Daemon-Reload
     systemd: state=stopped name=plexdrive4 daemon_reload=yes enabled=no
 
-  - name: Check config exists
+  - name: Config Check
     stat:
       path: "/root/.plexdrive/config.json"
     register: plexdrive4
 
-  - name: Start plexdrive service
+  - name: Start PlexDrive
     systemd: state=started name=plexdrive4 enabled=yes
     when: plexdrive4.stat.exists
     
-  - name: Check config exists
+  - name: Config Present?
     stat:
       path: "/opt/plexdrive/config.json"
-    register: plexdrive_config4
+    register: plexdrive4_config
 
-  - name: Start PlexDrive4
+  - name: PlexDrive4 Start
     systemd: state=started name=plexdrive4 enabled=yes
     when: plexdrive4_config.stat.exists
