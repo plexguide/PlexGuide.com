@@ -103,10 +103,9 @@ case $CHOICE in
      ;;
 
     "7)")
-     echo ymlprogram ombi > /opt/plexguide/tmp.txt
-     echo ymldisplay Ombi >> /opt/plexguide/tmp.txt
-     echo ymlport 3579 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
+    echo "NetData: http://ipv4:3759 | For NGINX Proxy ombidomain.com"
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "8)")
