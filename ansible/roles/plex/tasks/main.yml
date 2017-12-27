@@ -1,15 +1,15 @@
 ---
 
-- name: Stop and remove any existing container
+- name: Remove Container
   docker_container:
     name: plex
     state: absent
 
-- name: Retrieve plex docker image
+- name: Pull Docker Image
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-- name: Check Preferences.xml exists
+- name: Test Server Claim
   stat:
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
@@ -23,7 +23,7 @@
 - debug: msg="Using plex claim token {{plex_claim.user_input}}"
   when: plex_prefs.stat.exists == False
 
-- name: Create and start container
+- name: Create Container
   docker_container:
     name: plex
     image: "plexinc/pms-docker:plexpass"
