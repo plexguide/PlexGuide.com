@@ -1,24 +1,18 @@
 ---
-## Initial Base Script from CloudBox
 
-- name: Stop and remove any existing container
+- name: Remove Container
   docker_container:
     name: plex
     state: absent
 
-- name: Retrieve plex docker image
+- name: Pull Docker Image
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-- name: Check Preferences.xml exists
+- name: Test Server Claim
   stat:
-    path: "/opt/plex/Library/Application Support/Plex Media Server/Preferences.xml"
+    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
-
-- name: Check /dev/dri exists
-  stat:
-    path: "/dev/dri"
-  register: dev_dri
 
 - name: Claim ID
   pause:
@@ -29,13 +23,14 @@
 - debug: msg="Using plex claim token {{plex_claim.user_input}}"
   when: plex_prefs.stat.exists == False
 
-- name: Create and start container
+- name: Create Container
   docker_container:
     name: plex
     image: "plexinc/pms-docker:plexpass"
     pull: yes
     published_ports:
-      - "127.0.0.1:32400:32400/tcp"
+      - "32400:32400"
+      - "32400:32400/udp"
       - "3005:3005/tcp"
       - "8324:8324/tcp"
       - "32469:32469/tcp"
@@ -49,50 +44,22 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plex_claim.user_input| default (omit)}}"
-      CHANGE_CONFIG_DIR_OWNERSHIP: false
-      # ADVERTISE_IP: "http://plex.{{domain}}:80/,https://plex.{{domain}}:443/"
+      PLEX_CLAIM: "{{plex_claim.user_input}}"
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
     volumes:
-      - /tmp:/tmp
-      - /opt/appdata/plex/database:/config
-      - /opt/appdata/plex/transcode:/transcode
-      - /mnt/plexdrive4:/plexdrive4
-      - /mnt/unionfs:/unionfs
-      - /:/yourcomputer
-      - /etc/localtime:/etc/localtime:ro
-
-    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+      - "/tmp:/tmp"
+      - "/opt/appdata/plex/database:/config"
+      - "/opt/appdata/plex/transcode:/transcode"
+      - "/mnt/plexdrive4:/plexdrive4"
+      - "/mnt/unionfs:/unionfs"
+      - "/:/yourcomputer"
+      - "/etc/localtime:/etc/localtime:ro"
+    cpu_shares: 1024
+    networks:
+      - name: docker_default
+        ipv4_address: 172.18.0.24
+        aliases:
+          - plex
     restart_policy: always
-    etc_hosts: {'metric.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1', 'analytics.plex.tv': '127.0.0.1'}
     state: started
-
-- name: Check WebTools exists
-  stat:
-    path: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle"
-  register: webtools_bundle
-
-- name: Wait for Plug-ins folder to be created by Plex
-  wait_for:
-    path: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins"
-    state: present
-  when: webtools_bundle.stat.exists == False
-
-- name: Install WebTools
-  unarchive:
-    src: https://github.com/ukdtom/WebTools.bundle/releases/download/2.4.1/WebTools.bundle.zip
-    dest: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins"
-    copy: no
-    owner: 1000
-    group: 1000
-    mode: 0775
-  when: webtools_bundle.stat.exists == False
-
-- name: Create plex_autoscan Logs folder
-  file: 
-    path: "/opt/plex/Library/Logs/Plex Media Server"
-    state: directory
-    mode: 0775
-    owner: 1000
-    group: 1000
