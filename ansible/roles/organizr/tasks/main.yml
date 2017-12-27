@@ -8,7 +8,7 @@
 - name: Create Container
   docker_container:
     name: organizr
-    image: linuxserver/organizr
+    image: lsiocommunity/organizr
     pull: yes
     cpu_shares: 128
     published_ports:
