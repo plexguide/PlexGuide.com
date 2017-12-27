@@ -19,7 +19,7 @@ clear
 #systemctl daemon-reload
 #systemctl enable plexdrive4.service
 
-    sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags plexdrive4
+    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive4
     #cd /tmp
     #wget https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
     mv /tmp/plexdrive-linux-amd64 plexdrive4
@@ -27,6 +27,8 @@ clear
     cd /usr/bin/
     #chown root:root /usr/bin/plexdrive4
     #chmod 755 /usr/bin/plexdrive4
+    systemctl daemon-reload
+    systemctl enable plexdrive4
     clear
     plexdrive4 --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
     clear
