@@ -36,3 +36,11 @@
     systemd: state=started name=plexdrive4 enabled=yes
     when: plexdrive4.stat.exists
     
+  - name: Check config exists
+    stat:
+      path: "/opt/plexdrive/config.json"
+    register: plexdrive_config4
+
+  - name: Start PlexDrive4
+    systemd: state=started name=plexdrive4 enabled=yes
+    when: plexdrive4_config.stat.exists
