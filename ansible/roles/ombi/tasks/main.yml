@@ -12,12 +12,12 @@
     pull: yes
     cpu_shares: 128
     published_ports:
-      - "3579:3579"
+      - "3759:3759"
     env:
       PUID: "1000"
       PGID: "1000"
       VIRTUAL_HOST: "ombi.*"
-      VIRTUAL_PORT: 3579
+      VIRTUAL_PORT: 3759
     volumes:
       - /opt/appdata/ombiv3:/config
       - /etc/localtime:/etc/localtime:ro
