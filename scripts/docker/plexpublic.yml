@@ -8,6 +8,7 @@ services:
      - /opt/appdata/plex/database:/config
      - /opt/appdata/plex/transcode:/transcode
      - /mnt/plexdrive4:/plexdrive4
+     - /mnt/encrypt:/encrypt
      - /mnt/unionfs:/unionfs
      - /:/yourcomputer
      - /etc/localtime:/etc/localtime:ro
