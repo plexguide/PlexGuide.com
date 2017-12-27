@@ -1,5 +1,4 @@
 ---
-## Initial Base Script from CloudBox
 
 - name: Stop and remove any existing container
   docker_container:
@@ -75,7 +74,7 @@
 
 - name: Wait for Plug-ins folder to be created by Plex
   wait_for:
-    path: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins"
+    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Plug-ins"
     state: present
   when: webtools_bundle.stat.exists == False
 
@@ -88,11 +87,3 @@
     group: 1000
     mode: 0775
   when: webtools_bundle.stat.exists == False
-
-- name: Create plex_autoscan Logs folder
-  file: 
-    path: "/opt/plex/Library/Logs/Plex Media Server"
-    state: directory
-    mode: 0775
-    owner: 1000
-    group: 1000
