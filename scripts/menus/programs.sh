@@ -124,9 +124,10 @@ case $CHOICE in
      ;;
 
     "10)")
-     clear
-     bash /opt/plexguide/scripts/menus/sabsub-menu.sh
-     ;;
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
+    echo "NZBHydra: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
+    ;;
 
     "11)")
      echo ymlprogram sonarr > /opt/plexguide/tmp.txt

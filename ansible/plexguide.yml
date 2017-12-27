@@ -12,3 +12,4 @@
   - { role: muximux, tags: ['muximux'] }
   - { role: nginx-proxy, tags: ['nginx-proxy'] }
   - { role: plexdrive4, tags: ['plexdrive4'] }
+  - { role: sabnzbd, tags: ['sabnzbd'] }
