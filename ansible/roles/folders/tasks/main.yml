@@ -35,8 +35,8 @@
       - /mnt/encrypt
       - /mnt/encrypt/tv
       - /mnt/encrypt/movies
-      - /mnt/.grcypt
-      - /mnt/.grcypt/tv
+      - /mnt/.gcrypt
+      - /mnt/.gcrypt/tv
       - /mnt/.gcrypt/movies
       - /mnt/gdrive
       - /mnt/gdrive/tv
