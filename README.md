@@ -51,7 +51,7 @@
 
 *Recommened First to Prevent Issues*
 ```sh
-sudo apt-get update -y && apt-get upgrade -y
+sudo apt-get update -y
 ```
 
 *Install Supporting Programs*
@@ -62,6 +62,8 @@ sudo apt-get install git
 *Install PlexGuide*
 ```sh
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+```
+```sh
 sudo bash /opt/plexg*/sc*/ins*
 ```
 
