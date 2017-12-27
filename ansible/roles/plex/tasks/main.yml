@@ -1,5 +1,7 @@
 ---
 
+## http://docs.ansible.com/ansible/latest/playbooks_conditionals.html
+
 - name: Remove Container
   docker_container:
     name: plex
@@ -7,21 +9,32 @@
 
 - name: Pull Docker Image
   docker_image:
-    name: "plexinc/pms-docker:plexpass"
+    name: "plexinc/pms-docker:public"
 
 - name: Test Server Claim
   stat:
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
+- name: Plex Pass Member?
+  pause:
+    prompt: "Are you a Plex Pass Member? Type: yes or no (Sensitive Case)"
+  register: plex_pass
+  when: 
+    - plex_prefs.stat.exists == False
+
 - name: Claim ID
   pause:
     prompt: "Visit https://plex.tv/claim for your CLAIM token, Paste and then press [ENTER]"
   register: plex_claim
-  when: plex_prefs.stat.exists == False
+  when: 
+    - plex_prefs.stat.exists == False
+    - plex_pass.stat.exist == "yes"
 
 - debug: msg="Using plex claim token {{plex_claim.user_input}}"
-  when: plex_prefs.stat.exists == False
+  when: 
+    - plex_prefs.stat.exists == False
+    - plex_pass.stat.exist == "yes"
 
 - name: Create Container
   docker_container:
