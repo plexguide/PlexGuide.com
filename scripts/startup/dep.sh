@@ -8,19 +8,16 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     clear
     echo "PlexGuide Pre-Installer"
     echo ""
-    echo "1. Conducting a System Update & Upgrade (Please Wait)"
+    echo "1. Conducting a System Update (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
-    pip install docker-py pip 1>/dev/null 2>&1
+    apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools\
+    easy_install -U pip
+    requests
+    python3 -m pip install requests
+    python -m pip install ansible==2.3.1.0
     echo "2. Installing Software Properties Common"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Installing Ansible Playbook & Supporting Components"
-    apt-get install python-minimal -y
-    python python-pip -y 
-    apt-get install sshpass -y
-    apt-get install apt-transport-https ca-certificates -y
-    apt-get install python-dev libffi-dev libssl-dev -y 
-    yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-    yes | apt-get install ansible 1>/dev/null 2>&1
     yes | apt-get update 1>/dev/null 2>&1
     echo "4. Installing Dependicies - Please Wait"
     echo
