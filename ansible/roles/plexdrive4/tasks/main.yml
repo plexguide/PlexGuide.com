@@ -5,7 +5,7 @@
     register: plexdrive4
 
   - name: Stop existing plexdrive service
-    systemd: state=stopped name=plexdrive
+    systemd: state=stopped name=plexdrive4
     when: plexdrive4.stat.exists
     
   - name: PlexDrive 4 Install
