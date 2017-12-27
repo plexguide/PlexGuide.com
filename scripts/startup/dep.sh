@@ -14,11 +14,15 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo "2. Installing Software Properties Common (Please Wait)"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Pre-Install for Ansible Playbook (Please Wait)"
-    apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools 1>/dev/null 2>&1
-    easy_install -U pip 1>/dev/null 2>&1
-    easy_install3 -U pip 1>/dev/null 2>&1
-    python -m pip install ansible==2.3.1.0 requests 
-    python3 -m pip install requests 1>/dev/null 2>&1
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+    #apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools 1>/dev/null 2>&1
+    #easy_install -U pip 1>/dev/null 2>&1
+    #easy_install3 -U pip 1>/dev/null 2>&1
+    #python -m pip install ansible==2.3.1.0 requests 
+    #python3 -m pip install requests 1>/dev/null 2>&1
     #apt-add-repository ppa:ansible/ansible -y
     #apt-get update -y
     #apt-get install ansible -y
