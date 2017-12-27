@@ -1,0 +1,25 @@
+---
+
+- name: Remove Container
+  docker_container:
+    name: ombi
+    state: absent
+
+- name: Create Container
+  docker_container:
+    name: ombi
+    image: lsiodev/ombi-preview
+    pull: yes
+    cpu_shares: 128
+    published_ports:
+      - "3579:3759"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "ombi.*"
+      VIRTUAL_PORT: 3759
+    volumes:
+      - /opt/appdata/ombiv3:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
