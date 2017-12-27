@@ -14,11 +14,11 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo "2. Installing Software Properties Common (Please Wait)"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Pre-Install for Ansible Playbook (Please Wait)"
-    yes | apt-add-repository ppa:ansible/ansible
-    apt-get update -y
-    apt-get install ansible -y
-    apt install python-pip -y
-    pip install docker
+    yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+    apt-get update -y 1>/dev/null 2>&1
+    apt-get install ansible -y 1>/dev/null 2>&1
+    apt install python-pip -y 1>/dev/null 2>&1
+    pip install docker 1>/dev/null 2>&1
     echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
     echo "5. Installing Dependicies - Please Wait"
@@ -124,8 +124,9 @@ EOF
     then
         echo "" 1>/dev/null 2>&1
     else
-        echo "13. Donation Information - (Please Wait)"
+        echo "13. Donation Information - Coming Up"
         echo ""
+        read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/donate-menu.sh
     fi
 
@@ -140,7 +141,7 @@ else
     echo "You will be able to browse the programs but doing anything will cause"
     echo "problems! Good Luck!"
     echo
-    bash /opt/plexguide/scripts/docker-no/continue.sh
+    read -n 1 -s -r -p "Press any key to continue "
 fi
 
 clear
