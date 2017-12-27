@@ -15,6 +15,7 @@
     volumes:
       - "/sys:/host/sys:ro"
       - "/proc:/host/proc:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     env:
       VIRTUAL_HOST: "netdata.*"
       VIRTUAL_PORT: 19999
