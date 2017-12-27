@@ -44,7 +44,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plex_claim.user_input| default (omit)}}"
+      PLEX_CLAIM: "{{plex_claim.user_input}}"
       CHANGE_CONFIG_DIR_OWNERSHIP: false
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
