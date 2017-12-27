@@ -47,7 +47,7 @@
       PLEX_CLAIM: "{{plex_claim.user_input}}"
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
-      ADVERTISE_IP: http://http://173.208.137.122:32400
+      ADVERTISE_IP: http://173.208.137.122:32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
