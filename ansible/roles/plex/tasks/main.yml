@@ -56,6 +56,10 @@
       - "/:/yourcomputer"
       - "/etc/localtime:/etc/localtime:ro"
     cpu_shares: 1024
-    network_mode: host
+    networks:
+      - name: docker_default
+        ipv4_address: 172.18.0.24
+        aliases:
+          - plex
     restart_policy: always
     state: started
