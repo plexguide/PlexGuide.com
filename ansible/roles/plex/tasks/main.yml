@@ -11,7 +11,7 @@
 
 - name: Check Preferences.xml exists
   stat:
-    path: "/opt/plex/Library/Application Support/Plex Media Server/Preferences.xml"
+    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
 - name: Check /dev/dri exists
