@@ -104,7 +104,7 @@ case $CHOICE in
 
     "7)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
-    echo "NetData: http://ipv4:3759 | For NGINX Proxy ombidomain.com"
+    echo "NetData: http://ipv4:3579 | For NGINX Proxy ombidomain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
