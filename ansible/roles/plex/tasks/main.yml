@@ -69,7 +69,7 @@
 
 - name: Check WebTools exists
   stat:
-    path: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle"
+    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle"
   register: webtools_bundle
 
 - name: Wait for Plug-ins folder to be created by Plex
