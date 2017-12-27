@@ -1,0 +1,21 @@
+---
+
+- name: Remove Container
+  docker_container:
+    name: support
+    state: absent
+
+- name: Create Container
+  docker_container:
+    name: support
+    image: admin9705/support
+    pull: yes
+    tty: true
+    cpu_shares: 2
+    published_ports:
+      - "45560:45560"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    restart_policy: always
+    state: started
