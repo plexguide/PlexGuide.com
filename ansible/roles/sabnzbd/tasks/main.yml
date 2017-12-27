@@ -1,0 +1,76 @@
+---
+
+- name: Remove Existing Container
+  docker_container:
+    name: sabnzbd
+    state: absent
+
+- name: "Set folzder permissions"
+  shell: "chmod -R 777 /mnt/sab/"
+
+- name: "Set owner permisisons"
+  shell: "chown -R 1000:1000 /mnt/sab/"
+
+- name: Create SAB download directory
+  file: "path=/mnt/sab/ state=directory mode=0777 owner=1000 group=1000"
+
+- name: Check sabnzbd.ini exists
+  stat:
+    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+  register: sabnzbd_ini
+
+- name: Build Container
+  docker_container:
+    name: sabnzbd
+    image: "linuxserver/sabnzbd"
+    pull: yes
+    published_ports:
+      - "8090:8090"
+    volumes:
+      - /opt/appdata/sabnzbd:/config
+      - /mnt/sab/complete:/complete
+      - /mnt/sab/incomplete:/incomplete
+      - /mnt/sab/nzb:/nzb
+      - /mnt/sab/admin:/admin
+      - /mnt/unionfs:/unionfs
+      - /:/yourcomputer
+      - /etc/localtime:/etc/localtime:ro
+    cpu_shares: 256
+    env:
+      VIRTUAL_HOST: "sabnzbd.*"
+      VIRTUAL_PORT: 8090
+      PUID: 1000
+      PGID: 1000
+    restart_policy: always
+    state: started
+
+- name: Path for .ini
+  wait_for:
+    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+    state: present
+  when: sabnzbd_ini.stat.exists == False
+
+- name: "Wait 12 Seconds"
+  wait_for:
+    timeout: 12
+  when: sabnzbd_ini.stat.exists == False
+
+- name: Customize sabnzbd_ini
+  docker_container:
+    name: sabnzbd
+    state: stopped
+  when: sabnzbd_ini.stat.exists == False
+
+- name: Change Port
+  lineinfile:
+    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+    regexp: '^port\s?='
+    line: 'port = 8090'
+    state: present
+  when: sabnzbd_ini.stat.exists == False
+
+- name: Restart Container
+  docker_container:
+    name: sabnzbd
+    state: started
+  when: sabnzbd_ini.stat.exists == False

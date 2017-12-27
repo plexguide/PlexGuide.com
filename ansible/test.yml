@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: plexdrive4, tags: ['plexdrive4'] }
+  - { role: sabnzbd, tags: ['sabnzbd'] }
