@@ -45,7 +45,6 @@
       PLEX_UID: 1000
       PLEX_GID: 1000
       PLEX_CLAIM: "{{plex_claim.user_input}}"
-      CHANGE_CONFIG_DIR_OWNERSHIP: false
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
     volumes:
@@ -56,5 +55,7 @@
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
       - "/etc/localtime:/etc/localtime:ro"
+    cpu_shares: 1024
+    network_mode: host
     restart_policy: always
     state: started
