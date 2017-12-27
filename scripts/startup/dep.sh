@@ -17,7 +17,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools 1>/dev/null 2>&1
     easy_install -U pip 1>/dev/null 2>&1
     easy_install3 -U pip 1>/dev/null 2>&1
-    python -m pip install ansible==2.3.1.0 requests 1>/dev/null 2>&1
+    python -m pip install ansible==2.4.3.0 requests 1>/dev/null 2>&1
     python3 -m pip install requests 1>/dev/null 2>&1
     echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
