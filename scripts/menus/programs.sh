@@ -110,10 +110,9 @@ case $CHOICE in
      ;;
 
     "8)")
-     echo ymlprogram organizr > /opt/plexguide/tmp.txt
-     echo ymldisplay Organizr >> /opt/plexguide/tmp.txt
-     echo ymlport 8020 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
+    echo "NZBHydra: http://ipv4:8020 | For NGINX Proxy organizr.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "9)")
