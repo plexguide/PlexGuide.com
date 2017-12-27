@@ -14,3 +14,4 @@
   - { role: plexdrive4, tags: ['plexdrive4'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: support, tags: ['support'] }
+  - { role: organizr, tags: ['organizr'] }
