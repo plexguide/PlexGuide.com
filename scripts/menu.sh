@@ -12,7 +12,7 @@ if [ -e "$file" ]
 then
    clear
 else
-   bash /opt/plexguide/scripts/startup/dep24.sh
+   bash /opt/plexguide/scripts/startup/dep.sh
 fi
 
 ## ensure folders follow plexguide
