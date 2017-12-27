@@ -14,7 +14,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo "2. Installing Software Properties Common (Please Wait)"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Pre-Install for Ansible Playbook (Please Wait)"
-    apt-add-repository ppa:ansible/ansible
+    yes | apt-add-repository ppa:ansible/ansible
     apt-get update -y
     apt-get install ansible -y
     apt install python-pip -y
