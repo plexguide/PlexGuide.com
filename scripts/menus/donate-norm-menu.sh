@@ -9,11 +9,7 @@ if (whiptail --title "PlexGuide Donation Selection" --yesno "Will you Donate you
     whiptail --title "Donation Status - Yes" --msgbox "Thank you for helping and support the Team!" 8 76
     rm -r /var/plexguide/donation* 1>/dev/null 2>&1
     touch /var/plexguide/donation.yes 1>/dev/null 2>&1
-     echo ymlprogram support > /opt/plexguide/tmp.txt
-     echo ymldisplay Support >> /opt/plexguide/tmp.txt
-     echo ymlport 0000 >> /opt/plexguide/tmp.txt
-     echo ""
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags support
      echo "Setting up PlexGuide Donations - Thank You!"
      echo ""
      # read -n 1 -s -r -p "Press any key to continue"
