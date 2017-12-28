@@ -20,7 +20,7 @@
     
   - name: Install DockerFix Service
     template:
-      src: move.js2
+      src: dockerfix.js2
       dest: /etc/systemd/system/dockerfix.service 
       force: yes
     when: dockerfix.stat.exists == False
