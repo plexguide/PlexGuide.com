@@ -1,0 +1,42 @@
+---
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0777 owner=1000 group=1000"
+    with_items:
+      - /mnt/sab
+      - /mnt/sab/admin
+      - /mnt/sab/complete
+      - /mnt/sab/complete/tv
+      - /mnt/sab/complete/movies
+      - /mnt/sab/incomplete
+      - /mnt/sab/nzb 
+
+- name: Remove Container
+  docker_container:
+    name: sonarr
+    state: absent
+
+- name: Create Container
+  docker_container:
+    name: sonarr
+    image: hotio/suitarr
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8989:8989"
+    env:
+      APP: sonarr
+      VERSION: stable
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "sonarr.*"
+      VIRTUAL_PORT: 8989
+    volumes:
+      - /opt/appdata/sonarr:/config
+      - /mnt/unionfs:/unionfs
+      - /mnt/sab/complete:/complete
+      - /mnt/nzbget/completed:/completed
+      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started

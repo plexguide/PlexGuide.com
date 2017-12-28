@@ -19,3 +19,4 @@
   - { role: plexpublic, tags: ['plexpublic'] }
   - { role: plexpass, tags: ['plexpass'] }
   - { role: emby, tags: ['emby'] }
+  - { role: sonarr, tags: ['sonarr'] }
