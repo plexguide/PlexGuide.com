@@ -41,6 +41,16 @@
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Have a Dedicated, VPS, or Home Solution Ready!
 
+** Recommend Space Requirements
+Running Plex Only:
+  - Small Library (40G)
+  - Large Library (100G):
+Plex with Downloading/Uploading
+  - Small Library (100G)
+  - Large Library (300G+)
+Notes:
+  - Example:  The metadata of 10000 Movies and 2000 shows alone can run 80Gigs
+
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
  - [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
