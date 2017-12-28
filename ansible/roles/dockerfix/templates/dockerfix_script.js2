@@ -1,0 +1,9 @@
+  #!/bin/bash
+  sleep 10
+    docker restart emby 1>/dev/null 2>&1
+    docker restart nzbget 1>/dev/null 2>&1
+    docker restart radarr 1>/dev/null 2>&1
+    docker restart sonarr 1>/dev/null 2>&1
+    docker restart plexpass 1>/dev/null 2>&1
+    docker restart plexpublic 1>/dev/null 2>&1
+    docker restart sabnzbd 1>/dev/null 2>&1

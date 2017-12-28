@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: plex, tags: ['plex'] }
+  - { role: dockerfix, tags: ['dockerfix'] }
