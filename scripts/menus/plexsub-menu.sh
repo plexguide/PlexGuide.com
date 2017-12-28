@@ -4,7 +4,7 @@
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 clear
 
-whiptail --title "Plex Information" --msgbox "If installing Plex on your OWN LOCAL Network, visit http//ip:32400/web to complete the install. If installing Plex on a remote server, visit the wiki at http://wiki.plexguide.com on how to SSH into your server to complete the setup. Visit http://ipv4:32400/web afterwards!" 13 76
+whiptail --title "Plex Information" --msgbox "If installing Plex on your OWN LOCAL Network, visit http//ip:32400/web to complete the install. If installing Plex on a REMOTE SERVER, visit the wiki at http://wiki.plexguide.com on utilizing SSH to complete your setup. Visit http://ipv4:32400/web afterwards!" 13 76
 
 function contextSwitch {
     {
@@ -63,7 +63,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexpublic
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installed Plex Public" --msgbox "The Public Verison of Plex has been installed!" 8 76     
+    whiptail --title "Installed Plex Public" --msgbox "The Public Verison of Plex has been installed! Do not forget about the wiki!" 8 76     
 
     ;;
 
@@ -71,7 +71,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexpass
         echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version of Plex has been installed!" 9 76
+    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version of Plex has been installed! Do not forget about the wiki!" 9 76
     ;;
 
     "3)")
