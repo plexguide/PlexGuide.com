@@ -1,10 +1,12 @@
 [Unit]
-Description=PlexDrive4 Service
+Description=UnionFS Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
+User=0
+Group=0
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
