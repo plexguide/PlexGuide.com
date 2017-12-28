@@ -1,13 +1,16 @@
 [Unit]
-Description=PlexDrive4 Service
+Description=Move Service Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
+User=0
+Group=0
+ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
