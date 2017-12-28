@@ -32,7 +32,6 @@
       PLEX_GID: 1000
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
-      ADVERTISE_IP: http://{{ipv4.user_input}}:32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
