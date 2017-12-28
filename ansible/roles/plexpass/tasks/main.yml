@@ -32,6 +32,7 @@
       PLEX_GID: 1000
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
+    network_mode: "host"
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"

@@ -27,6 +27,7 @@
       - "32414:32414/udp"
       - "33400:33400/tcp"
       - "33443:33443/tcp"
+    network_mode: "host"
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
