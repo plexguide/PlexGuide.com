@@ -12,7 +12,7 @@
 - name: Your IPv4 Address
   pause:
     prompt: "Visit https://plex.tv/claim, copy, paste and hit [Enter]"
-  register: token
+  register: ipv4
   when: ipv4.stat.exists == False
 
 - name: Test Server Claim
