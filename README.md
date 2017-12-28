@@ -50,6 +50,7 @@
   - Large Library (300G+)
 - Notes:
   - Example:  The metadata of 10000 Movies and 2000 shows alone can run 80Gigs
+  - Warning:  If backing up your library, you need space for the additional zip file!
 
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
