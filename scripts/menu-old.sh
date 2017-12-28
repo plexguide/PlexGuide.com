@@ -64,16 +64,15 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0017 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+whiptail --title "PlexGuide.com - v5.0016 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
-   "3)" "Programs - Main"
-   "4)" "Programs - Torrent" \
-   "5)" "Programs - Betas" \
-   "6)" "Info & TShoot" \
-   "7)" "Backup & Restore" \
-   "8)" "PlexGuide - Update" \
-   "9)" "Exit  "  3>&2 2>&1 1>&3
+   "3)" "Programs - Main" \
+   "4)" "Info & Troubleshoot" \
+   "5)" "Backup & Restore" \
+   "6)" "PlexGuide - Update" \
+   "7)" "Beta - Torrents" \
+   "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -95,26 +94,26 @@ case $CHOICE in
 
    "4)")
        clear
-       bash /opt/plexguide/scripts/menus/programs-torrent.sh
+       bash /opt/plexguide/scripts/menus/help-select.sh
        ;;
 
    "5)")
        clear
-       bash /opt/plexguide/scripts/menus/help-select.sh
-       ;;
-
-   "7)")
-       clear
        bash /opt/plexguide/scripts/menus/back-restore-select.sh
        ;;
 
-   "8)")
+   "6)")
        bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
        echo Remember, restart by typing: plexguide
        exit 0;;
 
-   "9)")
+   "7)")
+       clear
+       bash /opt/plexguide/scripts/menus/programs-torrent.sh
+       ;;
+
+   "8)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
