@@ -61,16 +61,17 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexpublic
-    whiptail --title "Donation Status - Yes" --msgbox "Thank you for helping and support the Team!" 8 76     
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
+    whiptail --title "Installed Plex Public" --msgbox "The Public Verison of Plex has been installed!" 8 76     
+
     ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexpass
-    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version of Plex has been installed!" 9 76
-    echo ""
+        echo ""
     read -n 1 -s -r -p "Press any key to continue"
+    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version of Plex has been installed!" 9 76
     ;;
 
     "3)")
