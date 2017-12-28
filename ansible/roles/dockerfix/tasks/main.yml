@@ -23,7 +23,7 @@
       src: move.js2
       dest: /etc/systemd/system/dockerfix.service 
       force: yes
-    when: dokckerfix.stat.exists == False
+    when: dockerfix.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=dockerfix daemon_reload=yes enabled=no
