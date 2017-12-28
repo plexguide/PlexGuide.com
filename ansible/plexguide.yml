@@ -16,3 +16,5 @@
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
+  - { role: plexpublic, tags: ['plexpublic'] }
+  - { role: plexpass, tags: ['plexpass'] }
