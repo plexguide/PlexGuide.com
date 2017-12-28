@@ -10,6 +10,7 @@
     name: tautulli
     image: "shiggins8/tautulli"
     pull: yes
+    cpu_shares: 256
     published_ports:
       - "8181:8181"
     volumes:

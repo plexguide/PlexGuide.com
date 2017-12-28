@@ -10,6 +10,7 @@
     name: nzbhydra
     image: hotio/suitarr
     pull: yes
+    cpu_shares: 256
     published_ports:
       - "5075:5075"
     env:

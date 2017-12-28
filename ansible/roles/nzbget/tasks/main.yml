@@ -24,6 +24,7 @@
     name: nzbget
     image: "hotio/suitarr"
     pull: yes
+    cpu_shares: 256
     published_ports:
       - "6789:6789"
     volumes:
