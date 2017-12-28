@@ -67,7 +67,7 @@ CHOICE=$(
 whiptail --title "PlexGuide.com - v5.0017 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
-   "3)" "Programs - Main"
+   "3)" "Programs - Main"  \
    "4)" "Programs - Torrent" \
    "5)" "Programs - Betas" \
    "6)" "Info & TShoot" \
