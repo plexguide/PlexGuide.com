@@ -20,3 +20,4 @@
   - { role: plexpass, tags: ['plexpass'] }
   - { role: emby, tags: ['emby'] }
   - { role: sonarr, tags: ['sonarr'] }
+  - { role: radarr, tags: ['radarr'] }

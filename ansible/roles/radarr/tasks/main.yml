@@ -1,0 +1,31 @@
+---
+- name: Remove Container
+  docker_container:
+    name: radarr
+    state: absent
+
+- name: Create Container
+  docker_container:
+    name: radarr
+    image: hotio/suitarr
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "7878:7878"
+    env:
+      APP: radarr
+      VERSION: stable
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "radarr.*"
+      VIRTUAL_PORT: 7878
+    volumes:
+      - /opt/appdata/radarr:/config
+      - /mnt/unionfs:/unionfs
+      - /mnt/sab/complete:/complete
+      - /mnt/nzbget/completed:/completed
+      - /mnt/rutorrents/downloads:/downloads
+      - /mnt/deluge/downloaded:/downloaded
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
