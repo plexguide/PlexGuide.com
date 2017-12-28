@@ -42,8 +42,41 @@ rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k
 EOF
 chmod 755 /opt/appdata/plexguide/rclone.sh
 
-## RClone Server-------------- RCLONE.JS2
-## UnionFS ----------------- UNIONFS.JS2
+## RClone Server
+tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
+EOF
+
+######################################### UNIONFS
+## Create the UnionFS Service
+tee "/etc/systemd/system/unionfs.service" > /dev/null <<EOF
+[Unit]
+Description=UnionFS Daemon
+After=multi-user.target
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
+EOF
+
 
 ## Create the Move Script
 tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
@@ -58,13 +91,26 @@ done
 EOF
 chmod 755 /opt/appdata/plexguide/move.sh
 
-## MOVE ----------------------------- unionfs.js2
-
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un
-
+## Create the Move Service
+tee "/etc/systemd/system/move.service" > /dev/null <<EOF
+[Unit]
+Description=Move Service Daemon
+After=multi-user.target
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+Restart=always
+[Install]
+WantedBy=multi-user.target
+EOF
 
 ###### Ensure Changes Are Reflected
-#sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 
 #stop encrypted services
 systemctl disable rclone-en 1>/dev/null 2>&1
@@ -77,12 +123,12 @@ systemctl stop unionfs-encrypt 1>/dev/null 2>&1
 systemctl stop rclone-encrypt 1>/dev/null 2>&1
 
 # ensure that the unencrypted services are on
-#systemctl enable rclone 1>/dev/null 2>&1
-#systemctl enable move 1>/dev/null 2>&1
-#systemctl enable unionfs 1>/dev/null 2>&1
-#systemctl start unionfs 1>/dev/null 2>&1
-#systemctl start rclone 1>/dev/null 2>&1
-#systemctl start move 1>/dev/null 2>&1
+systemctl enable rclone 1>/dev/null 2>&1
+systemctl enable move 1>/dev/null 2>&1
+systemctl enable unionfs 1>/dev/null 2>&1
+systemctl start unionfs 1>/dev/null 2>&1
+systemctl start rclone 1>/dev/null 2>&1
+systemctl start move 1>/dev/null 2>&1
 
 
 systemctl restart rclone 1>/dev/null 2>&1
