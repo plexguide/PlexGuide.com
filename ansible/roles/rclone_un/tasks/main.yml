@@ -18,10 +18,10 @@
       path: "/opt/appdata/plexguide/rclone.sh"
     register: rclone_script
     
-  - name: Install Move Service
+  - name: Install RClone Sync Service
     template:
-      src: move_script.js2
-      dest: /etc/systemd/system/move.service 
+      src: rclone_script.js2
+      dest: /etc/systemd/system/rclone.service 
       force: yes
     when: rclone_script.stat.exists == False
 ########################################## Services
