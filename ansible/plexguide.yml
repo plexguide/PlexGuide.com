@@ -21,3 +21,4 @@
   - { role: emby, tags: ['emby'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
+  - { role: deluge, tags: ['deluge'] }

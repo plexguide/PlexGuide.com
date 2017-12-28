@@ -66,10 +66,9 @@ case $CHOICE in
       ;;
 
      "2)")
-      echo ymlprogram deluge > /opt/plexguide/tmp.txt
-      echo ymldisplay Deluge >> /opt/plexguide/tmp.txt
-      echo ymlport 8112 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
+      echo "Deluge: http://ipv4:8112 | For NGINX Proxy deluge.domain.com"
+      read -n 1 -s -r -p "Press any key to continue "
       ;;
 
       "3)")

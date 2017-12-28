@@ -73,13 +73,13 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
-    echo "NetData: http://ipv4:8096 | For NGINX Proxy emby.domain.com"
+    echo "Emby: http://ipv4:8096 | For NGINX Proxy emby.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
       ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
-    echo "NetData: http://ipv4:8015 | For NGINX Proxy muximux.domain.com"
+    echo "Muximux: http://ipv4:8015 | For NGINX Proxy muximux.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
@@ -103,31 +103,31 @@ case $CHOICE in
 
     "7)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
-    echo "NetData: http://ipv4:3579 | For NGINX Proxy ombi.domain.com"
+    echo "Ombi: http://ipv4:3579 | For NGINX Proxy ombi.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "8)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
-    echo "NZBHydra: http://ipv4:8020 | For NGINX Proxy organizr.domain.com"
+    echo "Organizr: http://ipv4:8020 | For NGINX Proxy organizr.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "9)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
-    echo "NetData: http://ipv4:7878 | For NGINX Proxy radarr.domain.com"
+    echo "Radarr: http://ipv4:7878 | For NGINX Proxy radarr.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "10)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
-    echo "NZBHydra: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
+    echo "SABNZBD: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "11)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
-    echo "NetData: http://ipv4:8989 | For NGINX Proxy sonarr.domain.com"
+    echo "Sonarr: http://ipv4:8989 | For NGINX Proxy sonarr.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
