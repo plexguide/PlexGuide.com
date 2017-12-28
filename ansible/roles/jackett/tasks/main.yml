@@ -1,31 +1,30 @@
 ---
 - name: Remove Container
   docker_container:
-    name: sonarr
+    name: jackett
     state: absent
 
 - name: Create Container
   docker_container:
-    name: sonarr
+    name: jackett
     image: hotio/suitarr
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "8989:8989"
+      - "9117:9117"
     env:
-      APP: sonarr
+      APP: jackett
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "sonarr.*"
-      VIRTUAL_PORT: 8989
+      VIRTUAL_HOST: "jackett.*"
+      VIRTUAL_PORT: 9117
     volumes:
-      - /opt/appdata/sonarr:/config
-      - /mnt/unionfs:/unionfs
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
+      - /opt/appdata/jackett:/config
+      - /mnt/deluge/temp:/temp
       - /mnt/deluge/downloaded:/downloaded
-      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /mnt/deluge/torrent:/torrent
+      - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

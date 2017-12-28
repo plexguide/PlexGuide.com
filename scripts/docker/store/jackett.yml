@@ -8,7 +8,6 @@ services:
      - "9117:9117"
    volumes:
      - /opt/appdata/jackett:/config
-     - /:/yourcomputer
      - /mnt/deluge/temp:/temp
      - /mnt/deluge/downloaded:/downloaded
      - /mnt/deluge/torrent:/torrent

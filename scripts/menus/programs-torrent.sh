@@ -59,10 +59,9 @@ result=$(whoami)
 case $CHOICE in
 
      "1)")
-      echo ymlprogram rutorrent > /opt/plexguide/tmp.txt
-      echo ymldisplay RUTorrent >> /opt/plexguide/tmp.txt
-      echo ymlport 8999 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
+      echo "RuTorrent: http://ipv4:8999 | For NGINX Proxy rutorrent.domain.com"
+      read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "2)")
@@ -77,10 +76,9 @@ case $CHOICE in
        ;;
 
      "4)")
-      echo ymlprogram jackett > /opt/plexguide/tmp.txt
-      echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
-      echo ymlport 9117 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
+      echo "Jackett: http://ipv4:9117 | For NGINX Proxy jackett.domain.com"
+      read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "5)")

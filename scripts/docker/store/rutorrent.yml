@@ -1,20 +1,22 @@
 ---
-version: '2'
+version: '2.2'
 services:
  rutorrent:
    image:  linuxserver/rutorrent
    container_name: rutorrent
    ports:
-     - "8085:80"
+     - "8999:80"
+     - "51413:51413"
      - "6881:6881/udp"
      - "5000:5000"
-     - "51413:51413"
    volumes:
-     - /opt/appdata/rclone/config:/config
-     - /mnt/rutorrent/downloads:/downloads
+     - /opt/appdata/rutorrent/:/config
+     - /mnt/rutorrents/downloads:/downloads
      - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+     - /mnt/unionfs/:/unionfs
+   cpu_shares: 256
    environment:
      - PUID=1000
      - PGID=1000
-   restart:
-     always
+   restart: unless-stopped
