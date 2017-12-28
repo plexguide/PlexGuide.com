@@ -56,7 +56,7 @@ systemctl stop move-en 1>/dev/null 2>&1
 systemctl stop unionfs-encrypt 1>/dev/null 2>&1
 systemctl stop rclone-encrypt 1>/dev/null 2>&1
 
-ensure that the unencrypted services are on
+# ensure that the unencrypted services are on
 systemctl enable rclone 1>/dev/null 2>&1
 systemctl enable move 1>/dev/null 2>&1
 systemctl enable unionfs 1>/dev/null 2>&1
