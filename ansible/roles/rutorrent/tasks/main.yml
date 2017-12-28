@@ -1,0 +1,30 @@
+---
+
+- name: Remove Container
+  docker_container:
+    name: rutorrent
+    state: absent
+
+- name: Create Container
+  docker_container:
+    name: rutorrent
+    image: linuxserver/rutorrent
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8999:80"
+      - "51413:51413"
+      - "6881:6881/udp"
+      - "5000:5000"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "rutorrent.*"
+      VIRTUAL_PORT: 8999
+    volumes:
+      - /opt/appdata/rutorrent/:/config
+      - /mnt/rutorrents/downloads:/downloads
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/unionfs/:/unionfs
+    restart_policy: always
+    state: started

@@ -22,3 +22,4 @@
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
   - { role: deluge, tags: ['deluge'] }
+  - { role: rutorrent, tags: ['rutorrent'] }
