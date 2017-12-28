@@ -9,7 +9,7 @@
   - name: Install Move Service
     template:
       src: move_script.js2
-      dest: /etc/systemd/system/move.service 
+      dest: /opt/appdata/plexguide/move.sh
       force: yes
     when: move_script.stat.exists == False
 ########### Rclone Sync Script
@@ -21,7 +21,7 @@
   - name: Install RClone Sync Service
     template:
       src: rclone_script.js2
-      dest: /etc/systemd/system/rclone.service 
+      dest: /opt/appdata/plexguide/rclone.sh
       force: yes
     when: rclone_script.stat.exists == False
 ########################################## Services
