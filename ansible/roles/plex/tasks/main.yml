@@ -28,12 +28,11 @@
     prompt: "Visit https://plex.tv/claim for your CLAIM token, Paste and then press [ENTER]"
   register: plex_claim
   when: 
-    - plex_prefs.stat.exists == False
-    - plex_pass.stat.exist == "yes"
+    - (plex_prefs.stat.exists == False) and (plex_pass.stat.exist == "yes")
 
 - debug: msg="Using plex claim token {{plex_claim.user_input}}"
   when: 
-    - plex_prefs.stat.exists == False and plex_pass.stat.exist == "yes"
+    - (plex_prefs.stat.exists == False) and (plex_pass.stat.exist == "yes")
 
 - name: Create Container
   docker_container:
