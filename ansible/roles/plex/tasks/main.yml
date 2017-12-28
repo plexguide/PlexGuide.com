@@ -1,7 +1,5 @@
 ---
 
-## http://docs.ansible.com/ansible/latest/playbooks_conditionals.html
-
 - name: Remove Container
   docker_container:
     name: plex
@@ -9,30 +7,27 @@
 
 - name: Pull Docker Image
   docker_image:
-    name: "plexinc/pms-docker:public"
+    name: "plexinc/pms-docker:plexpass"
+
+- name: Your IPv4 Address
+  pause:
+    prompt: "Visit https://plex.tv/claim, copy, paste and hit [Enter]"
+  register: token
+  when: ipv4.stat.exists == False
 
 - name: Test Server Claim
   stat:
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
-  register: plex_prefs
-
-- name: Member
-  pause:
-    prompt: "Plex Pass Member? Type: yes or no (Sensitive Case)"
-  register: plex_pass
-  when: 
-    - plex_prefs.stat.exists == False
+  register: claim
 
 - name: Claim ID
   pause:
-    prompt: "Visit https://plex.tv/claim for your CLAIM token, Paste and then press [ENTER]"
-  register: plex_claim
-  when: 
-    - (plex_prefs.stat.exists == False) and (plex_pass == yes)
+    prompt: "Visit https://plex.tv/claim, copy, paste and hit [Enter]"
+  register: token
+  when: claim.stat.exists == False
 
-- debug: msg="Using plex claim token {{plex_claim.user_input}}"
-  when: 
-    - (plex_prefs.stat.exists == False) and (plex_pass == yes)
+- debug: msg="Using plex claim token {{token.user_input}}"
+  when: claim.stat.exists == False
 
 - name: Create Container
   docker_container:
@@ -55,10 +50,10 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plex_claim.user_input}}"
+      PLEX_CLAIM: "{{token.user_input}}"
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
-      ADVERTISE_IP: http://173.208.137.122:32400
+      ADVERTISE_IP: http://{{ipv4.user_input}}:32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
