@@ -72,10 +72,9 @@ case $CHOICE in
      ;;
 
     "2)")
-      echo ymlprogram emby > /opt/plexguide/tmp.txt
-      echo ymldisplay Emby >> /opt/plexguide/tmp.txt
-      echo ymlport 8096 >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
+    echo "NetData: http://ipv4:8096 | For NGINX Proxy emby.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
       ;;
 
     "3)")

@@ -18,3 +18,4 @@
   - { role: ombi, tags: ['ombi'] }
   - { role: plexpublic, tags: ['plexpublic'] }
   - { role: plexpass, tags: ['plexpass'] }
+  - { role: emby, tags: ['emby'] }
