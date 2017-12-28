@@ -103,7 +103,7 @@ case $CHOICE in
 
     "7)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
-    echo "NetData: http://ipv4:3579 | For NGINX Proxy ombidomain.com"
+    echo "NetData: http://ipv4:3579 | For NGINX Proxy ombi.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
@@ -127,10 +127,9 @@ case $CHOICE in
     ;;
 
     "11)")
-     echo ymlprogram sonarr > /opt/plexguide/tmp.txt
-     echo ymldisplay Sonarr >> /opt/plexguide/tmp.txt
-     echo ymlport 8989 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
+    echo "NetData: http://ipv4:8989 | For NGINX Proxy sonarr.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "12)")
