@@ -114,10 +114,9 @@ case $CHOICE in
      ;;
 
     "9)")
-     echo ymlprogram radarr > /opt/plexguide/tmp.txt
-     echo ymldisplay Radarr >> /opt/plexguide/tmp.txt
-     echo ymlport 7878 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
+    echo "NetData: http://ipv4:7878 | For NGINX Proxy radarr.domain.com"
+    read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "10)")
@@ -127,7 +126,7 @@ case $CHOICE in
     ;;
 
     "11)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
     echo "NetData: http://ipv4:8989 | For NGINX Proxy sonarr.domain.com"
     read -n 1 -s -r -p "Press any key to continue "
      ;;
