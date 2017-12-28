@@ -31,6 +31,8 @@
 
 ----------------------------------------------------------------------
 
+[![Feature Requests](http://feathub.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server?format=svg)](http://feathub.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server)
+
 ### Preparation, Installation & Configuration
 
 **A. Quick Notes:**
