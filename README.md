@@ -106,9 +106,9 @@ plexguide
 
 **G. Installing & Setting Up Support Programs**
  
- - [Configure Plex](http://plex.plexguide.com)
+ - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
- - [Configure Portainer](http://portainer.plexguide.com)
+ - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
 **H. Final Notes**
