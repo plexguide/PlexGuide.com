@@ -16,9 +16,9 @@
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
-- name: Plex Pass Member?
+- name: Member
   pause:
-    prompt: "Are you a Plex Pass Member? Type: yes or no (Sensitive Case)"
+    prompt: "Plex Pass Member? Type: yes or no (Sensitive Case)"
   register: plex_pass
   when: 
     - plex_prefs.stat.exists == False
@@ -29,12 +29,12 @@
   register: plex_claim
   when: 
     - plex_prefs.stat.exists == False
-    - plex_pass.stat.exist == "yes"
+    - plex_pass.stat.exist == yes
 
 - debug: msg="Using plex claim token {{plex_claim.user_input}}"
   when: 
     - plex_prefs.stat.exists == False
-    - plex_pass.stat.exist == "yes"
+    - plex_pass.stat.exist == yes
 
 - name: Create Container
   docker_container:
