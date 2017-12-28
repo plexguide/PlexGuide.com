@@ -98,7 +98,7 @@ case $CHOICE in
        bash /opt/plexguide/scripts/menus/programs-torrent.sh
        ;;
 
-   "5)")
+   "6)")
        clear
        bash /opt/plexguide/scripts/menus/help-select.sh
        ;;
