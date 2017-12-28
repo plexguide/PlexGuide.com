@@ -43,11 +43,11 @@
 
 ** Recommend Space Requirements
 - Running Plex Only:
-  - Small Library (40G)
-  - Large Library (100G):
+  - Small Library (30GB-50GB)
+  - Large Library (100GB+):
 - Plex with Downloading/Uploading
-  - Small Library (100G)
-  - Large Library (300G+)
+  - Small Library (80GB-100GB+)
+  - Large Library (200GB-300GB+)
 - Notes:
   - Example:  The metadata of 10000 Movies and 2000 shows alone can run 80Gigs
   - Warning:  If backing up your library, you need space for the additional zip file!
