@@ -16,7 +16,7 @@
 - If anyone wants to take on the torrent portion of the project, please let us know!
 
 ## Social
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) ![alt text](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true "Logo")
+- [PlexGuide Discord Channel] [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw) [![N|Solid]
 - Reddit Discussion Link: http://reddit.plexguide.com
 - Slack is now discontinued! Use the offical Discord instead!
 
