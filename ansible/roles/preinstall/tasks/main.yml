@@ -6,6 +6,10 @@
       - nano
       - fail2ban
       - wget
+      - lsb-release
+      - figlet
+      - update-motd
+      - update-notifier-common
       - unionfs-fuse
       - unrar
       - unzip

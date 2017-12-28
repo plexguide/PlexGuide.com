@@ -32,6 +32,7 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 # chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
 
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
 ######################################################### For RCLONE
 
 echo "7. Pre-Installing RClone & Services (Please Wait)"
