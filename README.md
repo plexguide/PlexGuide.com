@@ -42,13 +42,13 @@
 - Have a Dedicated, VPS, or Home Solution Ready!
 
 ** Recommend Space Requirements
-Running Plex Only:
+- Running Plex Only:
   - Small Library (40G)
   - Large Library (100G):
-Plex with Downloading/Uploading
+- Plex with Downloading/Uploading
   - Small Library (100G)
   - Large Library (300G+)
-Notes:
+- Notes:
   - Example:  The metadata of 10000 Movies and 2000 shows alone can run 80Gigs
 
 **C. Preparation:**
