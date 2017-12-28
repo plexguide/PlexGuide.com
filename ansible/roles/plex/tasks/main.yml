@@ -9,26 +9,6 @@
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-- name: Your IPv4 Address
-  pause:
-    prompt: "Visit https://plex.tv/claim, copy, paste and hit [Enter]"
-  register: ipv4
-  when: ipv4.stat.exists == False
-
-- name: Test Server Claim
-  stat:
-    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
-  register: claim
-
-- name: Claim ID
-  pause:
-    prompt: "Visit https://plex.tv/claim, copy, paste and hit [Enter]"
-  register: token
-  when: claim.stat.exists == False
-
-- debug: msg="Using plex claim token {{token.user_input}}"
-  when: claim.stat.exists == False
-
 - name: Create Container
   docker_container:
     name: plex
@@ -50,7 +30,6 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{token.user_input}}"
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
       ADVERTISE_IP: http://{{ipv4.user_input}}:32400
