@@ -15,7 +15,7 @@
     register: dockerfix
 
   - name: Stop If DockerFix Service Running
-    systemd: state=stopped name=move
+    systemd: state=stopped name=dockerfix
     when: dockerfix.stat.exists
     
   - name: Install DockerFix Service
