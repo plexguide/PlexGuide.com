@@ -7,7 +7,7 @@
 
 - name: Pull Docker Image
   docker_image:
-    name: plex
+    name: "plexinc/pms-docker:plexpass"
 
 - name: Create Container
   docker_container:
