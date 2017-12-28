@@ -2,7 +2,7 @@
 
 clear
 
-## Installing rclone
+## Installing RClone
   cd /tmp
   curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip 1>/dev/null 2>&1
   unzip rclone-current-linux-amd64.zip 1>/dev/null 2>&1
@@ -35,33 +35,13 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
-## RClone Script
-tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
-#!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
-EOF
-chmod 755 /opt/appdata/plexguide/rclone.sh
-
-## RClone Server-------------- RCLONE.JS2
-## UnionFS ----------------- UNIONFS.JS2
-
-## Create the Move Script
-tee "/opt/appdata/plexguide/move.sh" > /dev/null <<EOF
-#!/bin/bash
-sleep 30
-while true
-do
-## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 9M --tpslimit 4 --exclude '*.partial~' --max-size 99G --log-level INFO --stats 15s /mnt/move gdrive:/
-sleep 600
-done
-EOF
-chmod 755 /opt/appdata/plexguide/move.sh
-
-## MOVE ----------------------------- unionfs.js2
-
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un
 
+## RClone Script
+chmod 755 /opt/appdata/plexguide/rclone.sh
+
+## Create the Move Script
+chmod 755 /opt/appdata/plexguide/move.sh
 
 ###### Ensure Changes Are Reflected
 #sudo systemctl daemon-reload
@@ -76,14 +56,13 @@ systemctl stop move-en 1>/dev/null 2>&1
 systemctl stop unionfs-encrypt 1>/dev/null 2>&1
 systemctl stop rclone-encrypt 1>/dev/null 2>&1
 
-# ensure that the unencrypted services are on
-#systemctl enable rclone 1>/dev/null 2>&1
-#systemctl enable move 1>/dev/null 2>&1
-#systemctl enable unionfs 1>/dev/null 2>&1
-#systemctl start unionfs 1>/dev/null 2>&1
-#systemctl start rclone 1>/dev/null 2>&1
-#systemctl start move 1>/dev/null 2>&1
-
+ensure that the unencrypted services are on
+systemctl enable rclone 1>/dev/null 2>&1
+systemctl enable move 1>/dev/null 2>&1
+systemctl enable unionfs 1>/dev/null 2>&1
+systemctl start unionfs 1>/dev/null 2>&1
+systemctl start rclone 1>/dev/null 2>&1
+systemctl start move 1>/dev/null 2>&1
 
 systemctl restart rclone 1>/dev/null 2>&1
 # set variable to remember what version of rclone user installed
