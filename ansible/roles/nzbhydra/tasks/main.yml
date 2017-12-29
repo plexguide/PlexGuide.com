@@ -13,7 +13,7 @@
     cpu_shares: 256
     published_ports:
       #- "5075:5075"
-      - 5075:8080
+      - 5075:5075
     env:
       APP: "nzbhydra"
       VERSION: "stable"
@@ -22,7 +22,7 @@
       #VIRTUAL_HOST: "nzbhydra.*"
       #VIRTUAL_PORT: 5075
       VIRTUAL_HOST: "nzbhydra.plex.one"
-      VIRTUAL_PORT: 8080
+      VIRTUAL_PORT: 5075
       LETSENCRYPT_HOST: "nzbhydra.plex.one"
       LETSENCRYPT_EMAIL: "test@dunn.cloud"
     volumes:
