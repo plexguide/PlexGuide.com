@@ -12,16 +12,17 @@
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
+
+### Awesome Beta Testers & Contributers!
+
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of others!
+
+- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, Pentaganos, [The Creator](https://github.com/TheCreatorzOne), trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 ## Social
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
 - Reddit Discussion Link: http://reddit.plexguide.com
 - Slack is now discontinued! Use the offical Discord instead!
-
-### Awesome Beta Testers & Contributers!
-
-- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, Pentaganos, [The Creator](https://github.com/TheCreatorzOne), trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 ### Want to Donate? Everybit Helps!
 
