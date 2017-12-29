@@ -149,10 +149,10 @@ case $CHOICE in
     ;;
 
     "13)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx-proxy
-    echo "Tautulli: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
+     echo ymlprogram nginx-proxy > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Proxy >> /opt/plexguide/tmp.txt
+     echo ymlport 3579 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
 
      "14)")
