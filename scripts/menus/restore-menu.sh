@@ -116,11 +116,11 @@ case $CHOICE in
      bash /opt/plexguide/scripts/docker-no/restore-script.sh
      ;;
 
-    "0)")
-      echo ymlprogram jackett > /opt/plexguide/tmp.txt
-      echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
-      bash /opt/plexguide/scripts/docker-no/restore-script.sh
-      ;;
+  "0)")
+    echo ymlprogram jackett > /opt/plexguide/tmp.txt
+    echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
+    bash /opt/plexguide/scripts/docker-no/restore-script.sh
+    ;;
 
    "10)")
        clear
