@@ -7,7 +7,7 @@ bash /opt/plexguide/scripts/docker-no/user.sh
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 
-file="/var/plexguide/dep24.yes"
+file="/var/plexguide/dep25.yes"
 if [ -e "$file" ]
 then
    clear
@@ -64,7 +64,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0017 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+whiptail --title "PlexGuide.com - v5.0018 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs - Main"  \
