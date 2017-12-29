@@ -23,7 +23,7 @@
       VIRTUAL_PORT: 8999
     volumes:
       - /opt/appdata/rutorrent/:/config
-      - /mnt/rutorrents/downloads:/downloads
+      - /mnt/rutorrents/downloads/incoming:/downloads
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
