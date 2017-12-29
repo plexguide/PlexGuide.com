@@ -57,10 +57,9 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
   echo "9. Installing Docker & Docker Compose (Please Standby)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
-  
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker
-  #curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
-  #curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
+
+  curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
+  curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 
   echo "10. Installing Portainer for Docker (Please Wait)"

@@ -26,4 +26,3 @@
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: jackett, tags: ['jackett'] }
   - { role: rclone_un, tags: ['rclone_un'] }
-  - { role: docker, tags: ['docker'] }
