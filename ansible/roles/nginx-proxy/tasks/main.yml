@@ -1,6 +1,6 @@
 ---
 - name: Import proxy.conf
-  copy: "src=proxy.conf dest=/opt/appdata/nginx-proxy/proxy.conf force=yes owner={{user}} group={{user}} mode=0775"
+  copy: "src=proxy.conf dest=/opt/appdata/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
 
 - name: Remove NGINX-Proxy Container
   docker_container:
