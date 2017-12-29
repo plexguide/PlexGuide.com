@@ -16,8 +16,8 @@ services:
       - "443:443"
     restart: always
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion

@@ -60,7 +60,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 32 12 \
     "10)" "SABNZBD"  \
     "11)" "Sonarr"  \
     "12)" "Tautulli"  \
-    "13)" "Wordpress"  \
+    "13)" "Test"  \
     "14)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -149,8 +149,8 @@ case $CHOICE in
     ;;
 
     "13)")
-     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
-     echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
+     echo ymlprogram nginx-proxy > /opt/plexguide/tmp.txt
+     echo ymldisplay NGINX Proxy >> /opt/plexguide/tmp.txt
      echo ymlport 8989 >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/program-installer.sh
      ;;
