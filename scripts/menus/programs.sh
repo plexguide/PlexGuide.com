@@ -149,10 +149,9 @@ case $CHOICE in
     ;;
 
     "13)")
-     echo ymlprogram nginx-proxy > /opt/plexguide/tmp.txt
-     echo ymldisplay NGINX Proxy >> /opt/plexguide/tmp.txt
-     echo ymlport 3579 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx-proxy
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
     ;;
 
      "14)")
