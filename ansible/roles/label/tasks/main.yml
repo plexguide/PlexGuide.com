@@ -25,3 +25,14 @@
     dest: /etc/motd
     state: link
     force: yes
+
+- name: Pip Mods
+  pip: "name={{item}} state=latest"
+    with_items:
+    - docker-py
+    - certbot
+
+- name: Npm Mods
+  npm: "name={{item}} global=yes"
+  with_items:
+    - frontail
