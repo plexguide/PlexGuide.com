@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: dockerfix, tags: ['dockerfix'] }
+  - { role: nginx-proxy, tags: ['nginx-proxy'] }
