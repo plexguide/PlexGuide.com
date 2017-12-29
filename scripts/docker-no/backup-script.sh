@@ -30,8 +30,8 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo Not Backed Up! - $YMLDISPALY
+    echo Not Backed Up! - $YMLDISPLAY
     echo
-fi
+if
 
 read -n 1 -s -r -p "Press any key to continue "

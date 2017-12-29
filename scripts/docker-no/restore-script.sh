@@ -32,8 +32,8 @@ if echo "$answer" | grep -iq "^y" ;then
 else
     echo No
     clear
-    echo Not Restored Up! - "$YMLDISPALY"
+    echo Not Restored! - "$YMLDISPLAY"
     echo
-fi
+if
 
 read -n 1 -s -r -p "Press any key to continue "
