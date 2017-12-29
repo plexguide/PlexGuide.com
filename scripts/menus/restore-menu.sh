@@ -57,6 +57,7 @@ whiptail --title "Restore Menu" --menu "Make your choice" 16 25 9 \
    "7)" "Emby"  \
    "8)" "PlexDrive"  \
    "9)" "Tautulli"  \
+   "0)" "Jackett"  \
    "10)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -114,6 +115,12 @@ case $CHOICE in
      echo ymldisplay Tautulli >> /opt/plexguide/tmp.txt
      bash /opt/plexguide/scripts/docker-no/restore-script.sh
      ;;
+
+    "0)")
+      echo ymlprogram jackett > /opt/plexguide/tmp.txt
+      echo ymldisplay Jackett >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/restore-script.sh
+      ;;
 
    "10)")
        clear
