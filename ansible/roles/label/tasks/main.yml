@@ -28,7 +28,7 @@
 
 - name: Pip Mods
   pip: "name={{item}} state=latest"
-    with_items:
+  with_items:
     - docker-py
     - certbot
 
