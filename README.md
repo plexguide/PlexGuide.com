@@ -64,13 +64,15 @@
 
 *Recommened First to Prevent Issues*
 ```sh
-sudo apt-get update -y
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y
 ```
+Insures that the distro has it's dependencies updated and no updates are queued.
 
 *Install Supporting Programs*
 ```sh
-sudo apt-get install git
+sudo apt-get install git && sudo apt-get install whiptail
 ```
+This one is important as if you do not have git and whiptail you will not be able to fetch and run PlexGuide!
 
 *Install PlexGuide*
 ```sh
@@ -90,8 +92,8 @@ plexguide
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot the Server!
- 
-**F. Decision Time - Normal Install or Reverse Proxy** 
+
+**F. Decision Time - Normal Install or Reverse Proxy**
 - No Reverse Proxy (Access Via http://ipv4:port) (Ex: http://192.168.1.20:7878)
   - Requires No Domain
   - Provides Less Protection and Exposed Ports
@@ -100,7 +102,7 @@ plexguide
 
 - NGINX Reverse Proxy (Access Via Subdomain http://sub.domain.com) (Ex: http://radarr.domain.com)
   - **STILL IN TESTING - DO NOT USE OR FOLLOW THIS ONE**
-  - Requires a Domain 
+  - Requires a Domain
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
   - Provides More Protection and Closes Exposed Ports / Can Access ports only via Localhost)
@@ -108,7 +110,7 @@ plexguide
   - **STILL IN TESTING - DO NOT USE OR FOLLOW THIS ONE**
 
 **G. Installing & Setting Up Support Programs**
- 
+
  - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
