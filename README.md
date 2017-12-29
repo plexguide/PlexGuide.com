@@ -66,7 +66,7 @@
 ```sh
 sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y
 ```
-Insures that the distro has it's dependencies updated and no updates are queued.
+Ensures that the distro has it's dependencies updated and no updates are queued.
 
 *Install Supporting Programs*
 ```sh
