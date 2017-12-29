@@ -1,21 +1,16 @@
 ---
 version: '2'
+
 services:
- nginx:
-   image: jwilder/nginx-proxy
-   container_name: nginx
-   volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/nginx-proxy:/etc/nginx/certs:ro"
-      - "/var/run/docker.sock:/tmp/docker.sock:ro"
-      - "/etc/nginx/vhost.d"
-      - "/usr/share/nginx/html"
-   ports:
-     - "80:80"
-     - "443:443"
-   restart: always
-   environment:
-     - PUID=1000
-     - PGID=1000
-     - VIRTUAL_HOST=whoami.local
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  whoami:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.local
 
