@@ -11,6 +11,7 @@
       - update-motd
       - update-notifier-common
       - unionfs-fuse
+      - software-properties-common
       - unrar
       - unzip
       - python-pip
