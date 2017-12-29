@@ -74,66 +74,77 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
     echo "Emby: http://ipv4:8096 | For NGINX Proxy emby.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
       ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
     echo "Muximux: http://ipv4:8015 | For NGINX Proxy muximux.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
     echo "NetData: http://ipv4:19999 | For NGINX Proxy netdata.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "5)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
     echo "NZBGET: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "6)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra
     echo "NZBHydra: http://ipv4:5075 | For NGINX Proxy nzbhyra.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "7)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
     echo "Ombi: http://ipv4:3579 | For NGINX Proxy ombi.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "8)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
     echo "Organizr: http://ipv4:8020 | For NGINX Proxy organizr.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "9)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
     echo "Radarr: http://ipv4:7878 | For NGINX Proxy radarr.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "10)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
     echo "SABNZBD: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "11)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
     echo "Sonarr: http://ipv4:8989 | For NGINX Proxy sonarr.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
-     ;;
+    ;;
 
     "12)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
     echo "Tautulli: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 

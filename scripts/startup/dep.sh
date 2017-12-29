@@ -61,6 +61,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
   curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
   curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
   chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
+  pip install docker
 
   echo "10. Installing Portainer for Docker (Please Wait)"
 
