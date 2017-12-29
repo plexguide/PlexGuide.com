@@ -41,6 +41,7 @@
       - /mnt/gdrive
       - /mnt/gdrive/tv
       - /mnt/gdrive/movies
+      - /opt/appdata/nginx-proxy
 
   - name: Create Important Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
