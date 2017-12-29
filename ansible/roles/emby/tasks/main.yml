@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Emby Container
   docker_container:
     name: emby
     state: absent
 
-- name: Create Container
+- name: Deploy Emby Container
   docker_container:
     name: emby
     image: emby/embyserver

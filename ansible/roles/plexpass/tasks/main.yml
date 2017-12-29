@@ -1,15 +1,15 @@
 ---
 
-- name: Remove Container
+- name: Remove Plex Pass Container
   docker_container:
     name: plex
     state: absent
 
-- name: Pull Docker Image
+- name: Pull PlexPass Image
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-- name: Create Container
+- name: Deploy PlexPass Container
   docker_container:
     name: plex
     image: "plexinc/pms-docker:plexpass"

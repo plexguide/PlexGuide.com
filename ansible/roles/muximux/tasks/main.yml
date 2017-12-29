@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Muximux Container
   docker_container:
     name: muximux
     state: absent
 
-- name: Create Container
+- name: Deploy Muximux Container
   docker_container:
     name: muximux
     image: linuxserver/muximux

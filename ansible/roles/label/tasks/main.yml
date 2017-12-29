@@ -1,18 +1,18 @@
 ---
-- name: Toss Old MOTD
+- name: Remove Old MOTD
   file: "path={{item}} state=absent"
   with_items:
     - /etc/update-motd.d
     - /etc/motd
     - /etc/motd.dynamic
 
-- name: Create Dynamic MOTD
+- name: Deploy Dynamic MOTD
   file:
     path: /etc/update-motd.d
     state: directory
     mode: 0775
 
-- name: Import Files
+- name: Import Support Files
   copy: "src={{item}} dest=/etc/update-motd.d/{{item}} force=yes mode=0775"
   with_items:
     - 00-header

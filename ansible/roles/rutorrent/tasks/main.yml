@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Rutorrent Container
   docker_container:
     name: rutorrent
     state: absent
 
-- name: Create Container
+- name: Deploy Rutorrent Container
   docker_container:
     name: rutorrent
     image: linuxserver/rutorrent

@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove NZBHYDRA Container
   docker_container:
     name: nzbhydra
     state: absent
 
-- name: Create Container
+- name: Deploy NZBHyra Container
   docker_container:
     name: nzbhydra
     image: hotio/suitarr

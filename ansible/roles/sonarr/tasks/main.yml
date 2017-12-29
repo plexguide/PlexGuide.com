@@ -1,10 +1,10 @@
 ---
-- name: Remove Container
+- name: Remove Sonarr Container
   docker_container:
     name: sonarr
     state: absent
 
-- name: Create Container
+- name: Deploy Sonarr Container
   docker_container:
     name: sonarr
     image: hotio/suitarr

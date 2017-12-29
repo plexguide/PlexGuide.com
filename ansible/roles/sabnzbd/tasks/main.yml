@@ -2,12 +2,12 @@
 
 ## http://docs.ansible.com/ansible/latest/lineinfile_module.html
 
-- name: Remove Existing Container
+- name: Remove SABNZBD Container
   docker_container:
     name: sabnzbd
     state: absent
 
-- name: "Set folzder permissions"
+- name: "Set folder permissions"
   shell: "chmod -R 777 /mnt/sab/"
 
 - name: "Set owner permisisons"
@@ -21,7 +21,7 @@
     path: "/opt/appdata/sabnzbd/sabnzbd.ini"
   register: sabnzbd_ini
 
-- name: Build Container
+- name: Deploy SABNZBD Container
   docker_container:
     name: sabnzbd
     image: "linuxserver/sabnzbd"

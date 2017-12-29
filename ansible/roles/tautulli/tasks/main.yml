@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Existing Container
+- name: Remove Tautulli Container
   docker_container:
     name: tautulli
     state: absent
 
-- name: Build Container
+- name: Deploy Tautulli Container
   docker_container:
     name: tautulli
     image: "shiggins8/tautulli"

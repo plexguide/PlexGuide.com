@@ -1,6 +1,6 @@
 ---
 
-- name: Remove Existing Container
+- name: Remove NZBGET Container
   docker_container:
     name: nzbget
     state: absent
@@ -19,7 +19,7 @@
     path: "/opt/appdata/nzbget/nzbget.conf"
   register: nzbget_conf
 
-- name: Build Container
+- name: Deploy NZBGET Container
   docker_container:
     name: nzbget
     image: "hotio/suitarr"

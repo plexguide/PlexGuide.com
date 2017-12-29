@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Organizr Container
   docker_container:
     name: organizr
     state: absent
 
-- name: Create Container
+- name: Deploy Organizr Container
   docker_container:
     name: organizr
     image: lsiocommunity/organizr

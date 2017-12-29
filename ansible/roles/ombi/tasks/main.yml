@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Ombi Container
   docker_container:
     name: ombi
     state: absent
 
-- name: Create Container
+- name: Deploy Ombi Container
   docker_container:
     name: ombi
     image: lsiodev/ombi-preview

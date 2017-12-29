@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Deluge Container
   docker_container:
     name: deluge
     state: absent
 
-- name: Create Container
+- name: Create Deluge Container
   docker_container:
     name: deluge
     image: binhex/arch-deluge

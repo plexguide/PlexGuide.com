@@ -8,12 +8,12 @@
 - name: Proxy File
   copy: "src=proxy.conf dest=/opt/appdata/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
 
-- name: Remove Container
+- name: Remove NGINX Container
   docker_container:
     name: nginx-proxy
     state: absent
 
-- name: Create Container
+- name: Deploy NGINX Container
   docker_container:
     name: nginx-proxy
     image: "jwilder/nginx-proxy"

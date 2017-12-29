@@ -1,10 +1,10 @@
 ---
-- name: Remove Container
+- name: Remove Radarr Container
   docker_container:
     name: radarr
     state: absent
 
-- name: Create Container
+- name: Deploy Radarr Container
   docker_container:
     name: radarr
     image: hotio/suitarr

@@ -1,10 +1,10 @@
 ---
-- name: Remove Container
+- name: Remove Jackett Container
   docker_container:
     name: jackett
     state: absent
 
-- name: Create Container
+- name: Deploy Jacket Container
   docker_container:
     name: jackett
     image: hotio/suitarr

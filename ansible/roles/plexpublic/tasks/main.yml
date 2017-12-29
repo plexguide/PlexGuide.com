@@ -1,11 +1,11 @@
 ---
 
-- name: Remove Container
+- name: Remove Plex Public Container
   docker_container:
     name: plex
     state: absent
 
-- name: Pull Docker Image
+- name: Deploy Plex Public Image
   docker_image:
     name: "plexinc/pms-docker:public"
 
