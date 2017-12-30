@@ -53,7 +53,7 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
     "-cdn" "CDN Download"  \
     "-northamerica" "North America Download"  \
     "-europe" "Europe Download"  \
-    "-asia" "Asia Download" 3>&1 1>&2 2>&3
+    "-asia" "Asia Download" 3>&2 2>&1 1>&3
 )
 
   exitstatus=$?
