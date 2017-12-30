@@ -64,7 +64,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0019 (Admin9705 & Deiteq)" --menu "Make your choice" 16 50 9 \
+whiptail --title "PlexGuide.com - v5.0019 (Admin9705 & Deiteq)" --menu "Make your choice" 17 50 10 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs - Main"  \
@@ -73,7 +73,7 @@ whiptail --title "PlexGuide.com - v5.0019 (Admin9705 & Deiteq)" --menu "Make you
    "6)" "Info & TShoot" \
    "7)" "Backup & Restore" \
    "8)" "PlexGuide - Update" \
-   "9)" "PlexGuide - Uninstaller"
+   "9)" "PlexGuide - Uninstaller" \
    "10)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -119,7 +119,8 @@ case $CHOICE in
        # bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
        echo "Uninstaller Not Ready - Type PlexGuide to Restart"
-       exit 0;;
+       exit
+       ;;
 
    "10)")
        clear
