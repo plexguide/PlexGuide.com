@@ -70,3 +70,7 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
 
   result=$(whoami)
   case $VARS in
+
+  esac
+  done
+  exit
