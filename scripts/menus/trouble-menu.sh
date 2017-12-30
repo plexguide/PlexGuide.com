@@ -47,13 +47,11 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 19 50 12 \
+whiptail --title "Install Menu" --menu "Make your choice" 19 55 12 \
     "1)" "Force PreInstaller"   \
     "2)" "Reinstall Portainer"  \
     "3)" "Uninstall Docker & Containers (Force Preinstall)"  \
-    "4)" "NZBGET"  \
-    "5)" "Muximux"  \
-    "6)" "Exit  "  3>&2 2>&1 1>&3
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
