@@ -55,6 +55,7 @@ whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
     "5)" "Verify UN-RClone"  \
     "6)" "Verify EN-RClone"  \
     "7)" "System Info and Bench"  \
+    "0)" "Test"  \
     "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -142,6 +143,11 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
     clear
     ;;
+
+  "0)")
+  clear
+  bash /opt/plexguide/scripts/menus/bench-menu.sh
+  ;;
 
      "8)")
       clear
