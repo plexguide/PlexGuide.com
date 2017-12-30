@@ -42,7 +42,7 @@
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Have a Dedicated, VPS, or Home Solution Ready!
-  - [Recommended EU Servers](* [EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers)
+  - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers)
   
 ** Recommend Space Requirements
 - Running Plex Only:
