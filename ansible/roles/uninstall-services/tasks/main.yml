@@ -22,4 +22,4 @@
     file:
       state: absent
       path: /etc/systemd/system/rclone.service 
-    when: rclone.stat.exists == False
+    when: rclone.stat.exists
