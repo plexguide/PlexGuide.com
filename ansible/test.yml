@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: uninstall-services, tags: ['uninstall-services'] }
+  - { role: unservices, tags: ['unservices'] }
