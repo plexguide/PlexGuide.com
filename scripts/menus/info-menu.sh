@@ -122,7 +122,7 @@ case $CHOICE in
         ;;
 
       "0)")
-      echo -n "Do you want to run benchmark and information? (y/n)? "
+      echo "Do you want to run benchmark and information? (y/n)? "
       old_stty_cfg=$(stty -g)
       stty raw -echo
       answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -130,7 +130,7 @@ case $CHOICE in
       if echo "$answer" | grep -iq "^y" ;then
           echo Yes;
 
-      sudo wget -qO- bench.sh
+      sudo wget -qO- bench.sh | bash
 
     else
         echo No
