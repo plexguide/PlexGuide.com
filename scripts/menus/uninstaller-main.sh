@@ -4,7 +4,7 @@
 whiptail --title "Uninstaller Information" --msgbox "The UnInstaller will remove ALL SERVICES, NUKE the file directories and accumulated files, UNINSTALL Docker, REMOVE ALL CONTAINERS, and PROMPT you if you want to keep your PROGRAM DATA." 13 76
 
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
-if (whiptail --title "UnInstaller Selection" --noyes "Do you want to Uninstall PlexGuide?" 8 76) then
+if (whiptail --title "UnInstaller Selection" --yesno "Do you want to Uninstall PlexGuide?" 8 76) then
     
     whiptail --title "Now Uninstalling PlexGuide" --msgbox "May the Force Be With You!" 8 76
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices
