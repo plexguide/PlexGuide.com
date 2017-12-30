@@ -58,3 +58,7 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
 )
 
 echo $VARS
+
+esac
+done
+exit
