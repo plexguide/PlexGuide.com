@@ -54,6 +54,7 @@ whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
     "4)" "Verify UnionFS"  \
     "5)" "Verify UN-RClone"  \
     "6)" "Verify EN-RClone"  \
+#    "7)" "System Info and Bench"  \
     "7)" "Benchmark and Info"  \
     "8)" "Exit  "  3>&2 2>&1 1>&3
 )
@@ -121,10 +122,32 @@ case $CHOICE in
         clear
         ;;
 
-    "7)")
-        clear
-        bash /opt/plexguide/scripts/menus/bench-menu.sh
-        ;;
+#      "7)")
+#      echo "Do you want to run benchmark and information? (y/n)? "
+#      old_stty_cfg=$(stty -g)
+#      stty raw -echo
+#      answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+#      stty $old_stty_cfg
+#      if echo "$answer" | grep -iq "^y" ;then
+#          echo Yes;
+#
+#      sudo wget -qO- bench.sh | bash
+#
+#    else
+#        echo No
+#        clear
+#        echo "Did not run benchmark and information"
+#        echo
+#    fi
+#
+#    read -n 1 -s -r -p "Press any key to continue "
+#    clear
+#    ;;
+
+  "7)")
+  clear
+  bash /opt/plexguide/scripts/menus/bench-menu.sh
+  ;;
 
      "8)")
       clear

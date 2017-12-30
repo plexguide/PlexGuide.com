@@ -50,7 +50,9 @@ CHOICE=$(
 whiptail --title "Benchmark Menu" --menu "Make your choice" 24 34 7 \
    "1)" "System Info and Benchmark - Basic"  \
    "2)" "System Info and Benchmark - Advanced"  \
+#   "2)" "System Info and Benchmark - Custom (Based off Advanced)" \ Saved for later
    "3)" "Simple Speedtest"  \
+#   "4)" "Custom Speedtest"  \ Another time; another day...
    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -103,6 +105,11 @@ case $CHOICE in
      clear
      ;;
 
+  #"3)")
+  #   bash /opt/plexguide/scripts/menus/bench-custom.sh
+  #   clear
+  #   ;;
+
   "3)")
   echo "Do you want to run a Speedtest? (y/n)? "
   old_stty_cfg=$(stty -g)
@@ -126,6 +133,11 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
     clear
     ;;
+
+  #"4)") Saved for another time...
+  #     clear
+  #     bash /opt/plexguide/scripts/menus/speed-custom.sh
+  #     ;;
 
   "4)")
      clear
