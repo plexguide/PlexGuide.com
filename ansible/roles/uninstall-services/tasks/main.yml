@@ -20,8 +20,6 @@
     
   - name: Remove RClone Service
     file:
-      state: rclone.service
-      path: /etc/systemd/system/ 
-    with_items: 
-      - absent
+      state: absent
+      path: /etc/systemd/system/rclone.service 
     when: rclone.stat.exists == False
