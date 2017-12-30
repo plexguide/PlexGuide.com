@@ -2,7 +2,7 @@
 YMLPROGRAM=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
 YMLDISPLAY=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
 
-echo -n "Do you want to backup "$YMLPROGRAM" to your Google Drive (y/n)? "
+echo -n "Do you want to backup "$YMLDISPLAY" to your Google Drive (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )

@@ -4,7 +4,7 @@ YMLDISPLAY=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
 clear
 echo "Warning! This will delete and overwrite the current install (if one)"
 echo
-echo -n "Do you want to restore "$YMLPROGRAM" from your Google Drive (y/n)? "
+echo -n "Do you want to restore "$YMLDISPLAY" from your Google Drive (y/n)? "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
