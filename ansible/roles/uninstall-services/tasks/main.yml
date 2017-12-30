@@ -88,16 +88,16 @@
 ## Encrypted
   - name: Check UnionFS Encrypted
     stat:
-      path: "/etc/systemd/system/unionfs.service"
+      path: "/etc/systemd/system/unionfs-encrypt.service"
     register: unionfs_en
 
   - name: Stop UnionFS Encrypted
-    systemd: state=stopped name=unionfs-en
+    systemd: state=stopped name=unionfs-encrypt
     when: unionfs_en.stat.exists
     
   - name: Remove UnionFS Service
     file:
       state: absent
-      path: /etc/systemd/system/unionfs-en.service 
+      path: /etc/systemd/system/unionfs-encrypt.service 
     when: unionfs_en.stat.exists
 
