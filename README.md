@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/preview01.png?raw=true" alt="PlexGuide.com Preview"/>
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/preview02.png?raw=true" alt="PlexGuide.com Preview"/>
 </p>
 
 ----------------------------------------------------------------------
@@ -42,7 +42,8 @@
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Have a Dedicated, VPS, or Home Solution Ready!
-
+  - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers)
+  
 ** Recommend Space Requirements
 - Running Plex Only:
   - Small Library (30GB-50GB)

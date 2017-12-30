@@ -17,13 +17,13 @@
       path: /etc/systemd/system/rclone.service 
     when: rclone.stat.exists
 
-## Encrypted
-  - name: Check RClone Encrypted
+## Encrypted - Part 1
+  - name: Check RClone Encrypted Part 1
     stat:
       path: "/etc/systemd/system/rclone-en.service"
     register: rclone_en
 
-  - name: Stop RClone Encrypted
+  - name: Stop RClone Encrypted Part 1
     systemd: state=stopped name=rclone-en
     when: rclone_en.stat.exists
     
@@ -32,6 +32,22 @@
       state: absent
       path: /etc/systemd/system/rclone-en.service 
     when: rclone_en.stat.exists
+
+## Encrypted - Part 2
+  - name: Check RClone Encrypted Part 2
+    stat:
+      path: "/etc/systemd/system/rclone-encrypt.service"
+    register: rclone_encrypt
+
+  - name: Stop RClone Encrypted Part 2
+    systemd: state=stopped name=rclone-encrypt
+    when: rclone_encrypt.stat.exists
+    
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-encrypt.service 
+    when: rclone_encrypt.stat.exists
 
   ########################################## MOVE ##################
 
@@ -103,7 +119,6 @@
 
 ########################################## DOCKERFIX ##################
 
-## Unencrypted
   - name: Check DockerFix
     stat:
       path: "/etc/systemd/system/dockerfix.service"
@@ -118,4 +133,21 @@
       state: absent
       path: /etc/systemd/system/dockerfix.service 
     when: dockerfix.stat.exists
+
+########################################## PLEXDRIVE4 ##################
+
+  - name: Check PlexDrive4 Unencrypted
+    stat:
+      path: "/etc/systemd/system/plexdrive4.service"
+    register: plexdrive4
+
+  - name: Stop PlexDrive Unencrypted
+    systemd: state=stopped name=plexdrive4
+    when: plexdrive4.stat.exists
+    
+  - name: Remove PlexDrive4 Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive4.service 
+    when: plexdrive4.stat.exists
 
