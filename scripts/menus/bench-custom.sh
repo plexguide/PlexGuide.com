@@ -56,13 +56,16 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
     "-asia" "Asia Download" 3>&2 2>&1 1>&3
 )
 
-echo "Do you want to run benchmark and information? (y/n)? "
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
-    echo Yes;
+result=$(whoami)
+case $VARS in
+  "1)")
+  echo "Do you want to run BASIC benchmark and information? (y/n)? "
+  old_stty_cfg=$(stty -g)
+  stty raw -echo
+  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+  stty $old_stty_cfg
+  if echo "$answer" | grep -iq "^y" ;then
+      echo Yes;
 
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
     echo
@@ -73,7 +76,6 @@ if echo "$answer" | grep -iq "^y" ;then
 
   read -n 1 -s -r -p "Press any key to continue "
   clear
-  ;;
 
 fi
 
