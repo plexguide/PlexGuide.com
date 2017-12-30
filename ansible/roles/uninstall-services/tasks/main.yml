@@ -14,7 +14,7 @@
   - name: Remove RClone Service
     file:
       state: absent
-      path: /etc/systemd/system/rclone-en.service 
+      path: /etc/systemd/system/rclone.service 
     when: rclone.stat.exists
 
 ## Encrypted
