@@ -1,14 +1,7 @@
 ---
-########################################## Scripts
-########## Move Service Script    
-#  - name: Install Move Service
-#    template:
-#      src: move_script.js2
-#      dest: /opt/appdata/plexguide/move.sh
-#      force: yes
-#    when: move_script.stat.exists == False
-########################################## Services
-########### RClone Unencrypted
+########################################## RCLONE ##################
+
+## Unencrypted
   - name: Check RClone Unencrypted
     stat:
       path: "/etc/systemd/system/rclone.service"
@@ -21,5 +14,21 @@
   - name: Remove RClone Service
     file:
       state: absent
-      path: /etc/systemd/system/rclone.service 
+      path: /etc/systemd/system/rclone-en.service 
     when: rclone.stat.exists
+
+## Encrypted
+  - name: Check RClone Encrypted
+    stat:
+      path: "/etc/systemd/system/rclone.service"
+    register: rclone-en
+
+  - name: Stop RClone Encrypted
+    systemd: state=stopped name=rclone-en
+    when: rclone-en.stat.exists
+    
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-en.service 
+    when: rclone-en.stat.exists
