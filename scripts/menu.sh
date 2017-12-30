@@ -116,9 +116,8 @@ case $CHOICE in
        exit 0;;
 
    "9)")
-       # bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
-       echo "Uninstaller Not Ready - Type PlexGuide to Restart"
+       bash /opt/plexguide/scripts/menus/uninstaller-main.sh
        exit
        ;;
 
