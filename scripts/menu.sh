@@ -73,7 +73,7 @@ whiptail --title "PlexGuide.com - v5.0019 (Admin9705 & Deiteq)" --menu "Make you
    "6)" "Info & TShoot" \
    "7)" "Backup & Restore" \
    "8)" "PlexGuide - Update" \
-   "9)" "PlexGuide - UnInstall" \
+   "9)" "PlexGuide - UnInstall - Test" \
    "10)" "Exit  "  3>&2 2>&1 1>&3
 )
 
