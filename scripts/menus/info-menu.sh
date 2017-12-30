@@ -54,8 +54,8 @@ whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
     "4)" "Verify UnionFS"  \
     "5)" "Verify UN-RClone"  \
     "6)" "Verify EN-RClone"  \
-    "0)" "System Info and Bench"  \
-    "7)" "Exit  "  3>&2 2>&1 1>&3
+    "7)" "System Info and Bench"  \
+    "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -121,7 +121,7 @@ case $CHOICE in
         clear
         ;;
 
-      "0)")
+      "7)")
       echo "Do you want to run benchmark and information? (y/n)? "
       old_stty_cfg=$(stty -g)
       stty raw -echo
@@ -143,7 +143,7 @@ case $CHOICE in
     clear
     ;;
 
-     "7)")
+     "8)")
       clear
       exit 0
       ;;
