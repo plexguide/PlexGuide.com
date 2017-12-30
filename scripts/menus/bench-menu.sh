@@ -115,7 +115,7 @@ case $CHOICE in
       pip install speedtest-cli
 
       echo
-      bash speedtest-cli
+      speedtest-cli
 
     else
       echo No
