@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Benchmark Menu" --menu "Make your choice" 20 40 7 \
+whiptail --title "Benchmark Menu" --menu "Make your choice" 17 44 7 \
    "1)" "System Info and Benchmark - Basic"  \
    "2)" "System Info and Benchmark - Advanced"  \
    "3)" "Simple Speedtest"  \
@@ -112,7 +112,8 @@ case $CHOICE in
   if echo "$answer" | grep -iq "^y" ;then
       echo Yes;
 
-      wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py; chmod +x speedtest-cli
+      pip install speedtest-cli
+
       echo
       bash speedtest-cli
 
