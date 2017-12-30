@@ -79,4 +79,6 @@ echo $VARS
 
 fi
 
-exit
+esac
+done
+exit 
