@@ -59,11 +59,13 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
 result=$(whoami)
 case $VARS in
 
-  exitstatus=$?
-  if [ $exitstatus = 0 ]; then
+  if echo "$answer" | grep -iq "^y" ;then
+      echo Yes;
+
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
     echo
     ./bench.sh $VARS
+
   else
     bash /opt/plexguide/scripts/menus/bench-menu.sh
 
