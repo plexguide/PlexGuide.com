@@ -55,11 +55,10 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
     "-europe" "Europe Download"  \
     "-asia" "Asia Download" 3>&2 2>&1 1>&3
 )
-
-result=$(whoami)
 case $VARS in
+result=$(whoami)
 
-  if echo "$answer" | grep -iq "^y" ;then
+if echo "$answer" | grep -iq "^y" ;then
       echo Yes;
 
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
