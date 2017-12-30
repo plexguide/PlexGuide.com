@@ -44,6 +44,7 @@ function interupts {
    } | whiptail --gauge "Getting data ..." 6 60 50
 }
 
+while []
 do
 VARS=$(
 whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Variables for the Information and Benchmark Run" 15 60 4 \
@@ -57,3 +58,27 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
 )
 
 echo $VARS
+
+echo "Do you want to run BASIC benchmark and information? (y/n)? "
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+    echo Yes;
+
+  curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
+  echo
+  ./bench.sh $VARS
+
+else
+  bash /opt/plexguide/scripts/menus/bench-menu.sh
+
+read -n 1 -s -r -p "Press any key to continue "
+clear
+
+fi
+
+esac
+done
+exit
