@@ -54,6 +54,7 @@ whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
     "4)" "Verify UnionFS"  \
     "5)" "Verify UN-RClone"  \
     "6)" "Verify EN-RClone"  \
+    "0)" "System Info and Bench"  \
     "7)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -120,6 +121,27 @@ case $CHOICE in
         clear
         ;;
 
+      "0)")
+      echo -n "Do you want to run benchmark and information? (y/n)? "
+      old_stty_cfg=$(stty -g)
+      stty raw -echo
+      answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+      stty $old_stty_cfg
+      if echo "$answer" | grep -iq "^y" ;then
+          echo Yes;
+
+      sudo wget -qO- bench.sh
+
+    else
+        echo No
+        clear
+        echo "Did not run benchmark and information"
+        echo
+    fi
+
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
+    ;;
 
      "7)")
       clear
