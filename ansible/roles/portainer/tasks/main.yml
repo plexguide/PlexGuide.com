@@ -1,10 +1,10 @@
 ---
 - name: Portainer Container
   docker_container:
-    name: jackett
+    name: portainer
     state: absent
 
-- name: Deploy Jacket Container
+- name: Deploy Portainer Container
   docker_container:
     name: portainer
     image: portainer/portainer
