@@ -24,7 +24,7 @@
     register: rclone_en
 
   - name: Stop RClone Encrypted
-    systemd: state=stopped name=rclone_en
+    systemd: state=stopped name=rclone-en
     when: rclone_en.stat.exists
     
   - name: Remove RClone Service
