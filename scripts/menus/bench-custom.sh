@@ -76,7 +76,7 @@ echo $VARS
 
   read -n 1 -s -r -p "Press any key to continue "
   clear
-  ;;
+
 fi
 
 exit
