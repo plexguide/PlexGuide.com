@@ -46,10 +46,8 @@ function interupts {
 
 while [ 1 ]
 do
-
-  VARS=$(
-  whiptail --title "Advanced System and Bechnmark Options" --checklist \
-    "Choose Variables for the Information and Benchmark Run" 15 60 4 \
+VARS=$(
+whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Variables for the Information and Benchmark Run" 15 60 4 \
     "-info" "System Information"  \
     "-io" "I/O Test"  \
     "-cdn" "CDN Download"  \
