@@ -20,7 +20,7 @@
 ## Encrypted
   - name: Check RClone Encrypted
     stat:
-      path: "/etc/systemd/system/rclone.service"
+      path: "/etc/systemd/system/rclone-en.service"
     register: rclone-en
 
   - name: Stop RClone Encrypted
