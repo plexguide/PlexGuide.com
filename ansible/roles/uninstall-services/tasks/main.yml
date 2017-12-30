@@ -32,3 +32,37 @@
       state: absent
       path: /etc/systemd/system/rclone-en.service 
     when: rclone_en.stat.exists
+
+  ########################################## MOVE ##################
+
+## Unencrypted
+  - name: Check Move Unencrypted
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move
+
+  - name: Stop Move Unencrypted
+    systemd: state=stopped name=move
+    when: move.stat.exists
+    
+  - name: Remove Move Service
+    file:
+      state: absent
+      path: /etc/systemd/system/move.service 
+    when: move.stat.exists
+
+## Encrypted
+  - name: Check Move Encrypted
+    stat:
+      path: "/etc/systemd/system/move-en.service"
+    register: move_en
+
+  - name: Stop Move Encrypted
+    systemd: state=stopped name=move-en
+    when: move_en.stat.exists
+    
+  - name: Remove Move Service
+    file:
+      state: absent
+      path: /etc/systemd/system/move-en.service 
+    when: move_en.stat.exists
