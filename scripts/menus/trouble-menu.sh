@@ -67,7 +67,7 @@ case $CHOICE in
 
     "2)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-      echo "NZBHydra: http://ipv4:5075 | For NGINX Proxy nzbhyra.domain.com"
+      echo "Portainer: http://ipv4:9000 | For NGINX Proxy portainer.domain.com"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
