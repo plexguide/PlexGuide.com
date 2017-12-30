@@ -1,0 +1,34 @@
+---
+########################################## RCLONE ##################
+
+## Unencrypted
+  - name: Check RClone Unencrypted
+    stat:
+      path: "/etc/systemd/system/rclone.service"
+    register: rclone
+
+  - name: Stop RClone Unencrypted
+    systemd: state=stopped name=rclone
+    when: rclone.stat.exists
+    
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone.service 
+    when: rclone.stat.exists
+
+## Encrypted
+  - name: Check RClone Encrypted
+    stat:
+      path: "/etc/systemd/system/rclone-en.service"
+    register: rclone_en
+
+  - name: Stop RClone Encrypted
+    systemd: state=stopped name=rclone-en
+    when: rclone_en.stat.exists
+    
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-en.service 
+    when: rclone_en.stat.exists

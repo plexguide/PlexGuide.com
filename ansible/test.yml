@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: nginx-proxy, tags: ['nginx-proxy'] }
+  - { role: uninstall-services, tags: ['uninstall-services'] }
