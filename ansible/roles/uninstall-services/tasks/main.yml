@@ -21,14 +21,14 @@
   - name: Check RClone Encrypted
     stat:
       path: "/etc/systemd/system/rclone-en.service"
-    register: rclone-en
+    register: rclone_en
 
   - name: Stop RClone Encrypted
-    systemd: state=stopped name=rclone-en
-    when: rclone-en.stat.exists
+    systemd: state=stopped name=rclone_en
+    when: rclone_en.stat.exists
     
   - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/rclone-en.service 
-    when: rclone-en.stat.exists
+    when: rclone_en.stat.exists
