@@ -62,9 +62,10 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
     echo
     ./bench.sh $VARS
   else
-    clear
     bash /opt/plexguide/scripts/menus/bench-menu.sh
+    clear
     ;;
+    
   fi
   read -n 1 -s -r -p "Press any key to continue "
   clear
