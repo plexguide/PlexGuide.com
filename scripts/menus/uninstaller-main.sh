@@ -6,7 +6,7 @@ whiptail --title "Uninstaller Information" --msgbox "The UnInstaller will remove
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "UnInstaller Selection" --yesno "Do you want to Uninstall PlexGuide?" 8 76) then
     
-    whiptail --title "Now Uninstalling PlexGuide" --msgbox "May the Force Be With You!" 8 76
+    whiptail --title "Notice" --msgbox "May the Force Be With You! Uninstalling PlexGuide" 8 76
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices
      echo ""
      echo "Services Uninstalled"
@@ -15,6 +15,7 @@ if (whiptail --title "UnInstaller Selection" --yesno "Do you want to Uninstall P
      echo "Program Data Removed - Not Ready"
      echo ""
      read -n 1 -s -r -p "Press any key to continue"
+     clear
 else
     whiptail --title "No Uninstall" --msgbox "Nothing has been uninstalled" 9 76
     clear
