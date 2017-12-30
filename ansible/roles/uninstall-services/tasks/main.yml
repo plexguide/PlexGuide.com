@@ -101,3 +101,21 @@
       path: /etc/systemd/system/unionfs-encrypt.service 
     when: unionfs_en.stat.exists
 
+########################################## DOCKERFIX ##################
+
+## Unencrypted
+  - name: Check DockerFix
+    stat:
+      path: "/etc/systemd/system/dockerfix.service"
+    register: dockerfix
+
+  - name: Stop DockerFix
+    systemd: state=stopped name=dockerfix
+    when: dockerfix.stat.exists
+    
+  - name: Remove DockerFix Service
+    file:
+      state: absent
+      path: /etc/systemd/system/dockerfix.service 
+    when: dockerfix.stat.exists
+
