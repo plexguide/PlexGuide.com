@@ -1,59 +1,80 @@
-#!/bin/bash
-# A menu driven shell script sample template
-## ----------------------------------
-# Step #1: Define variables
-# ----------------------------------
-EDITOR=vim
-PASSWD=/etc/passwd
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
-
-# ----------------------------------
-# Step #2: User defined function
-# ----------------------------------
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
-
-one(){
-	echo "one() called"
-        pause
-}
-
-# do something in two()
-two(){
-	echo "two() called"
-        pause
-}
-
-# function to display menus
-show_menus() {
+ #!/bin/bash
 
 clear
-cat << EOF
-Troubleshooting 101 Menu - Be aware that if you select option 
-[1], you will not lose your data.  It completely uninstalls 
-Docker and removes all containers.  From there, it will execute
-option [2] and reinstall everything.  All you have to do is 
-recreate your containers.  Data is not lost.  It is preserved in
-/opt/appdata!  Enjoy!
 
-1. Remove Containers:  No Data Loss! Just Recreate Cotainers
-                       *************************************
-2. Force PreInstall :  Forces Startup PreInstall
-                       *************************************
-3. Docker           :  Force Reinstall Docker
-4. Portainer        :  Force Reinstall Portainer
-5. User: plexguide  :  Force recreation and password change
-
-EOF
+function contextSwitch {
+    {
+    ctxt1=$(grep ctxt /proc/stat | awk '{print $2}')
+        echo 50
+    sleep 1
+        ctxt2=$(grep ctxt /proc/stat | awk '{print $2}')
+        ctxt=$(($ctxt2 - $ctxt1))
+        result="Number os context switches in the last secound: $ctxt"
+    echo $result > result
+    } | whiptail --gauge "Getting data ..." 6 60 0
 }
 
-read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 6 ];  Type [6] to Exit! " choice
-	case $choice in
-    1)
+
+function userKernelMode {
+    {
+    raw=( $(grep "cpu " /proc/stat) )
+        userfirst=$((${raw[1]} + ${raw[2]}))
+        kernelfirst=${raw[3]}
+    echo 50
+        sleep 1
+    raw=( $(grep "cpu " /proc/stat) )
+        user=$(( $((${raw[1]} + ${raw[2]})) - $userfirst ))
+    echo 90
+        kernel=$(( ${raw[3]} - $kernelfirst ))
+        sum=$(($kernel + $user))
+        result="Percentage of last sekund in usermode: \
+        $((( $user*100)/$sum ))% \
+        \nand in kernelmode: $((($kernel*100)/$sum ))%"
+    echo $result > result
+    echo 100
+    } | whiptail --gauge "Getting data ..." 6 60 0
+}
+
+function interupts {
+    {
+    ints=$(vmstat 1 2 | tail -1 | awk '{print $11}')
+        result="Number of interupts in the last secound:  $ints"
+    echo 100
+    echo $result > result
+    } | whiptail --gauge "Getting data ..." 6 60 50
+}
+
+while [ 1 ]
+do
+CHOICE=$(
+whiptail --title "Install Menu" --menu "Make your choice" 19 50 12 \
+    "1)" "Force PreInstaller"   \
+    "2)" "Reinstall Portainer"  \
+    "3)" "Uninstall Docker & Containers (Force Preinstall)"  \
+    "4)" "NZBGET"  \
+    "5)" "Muximux"  \
+    "6)" "Exit  "  3>&2 2>&1 1>&3
+)
+
+result=$(whoami)
+case $CHOICE in
+   "1)")
+      clear
+      rm -r /var/plexguide/dep*
+      echo
+      echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+    "2)")
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
+      echo "NZBHydra: http://ipv4:5075 | For NGINX Proxy nzbhyra.domain.com"
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+    "3)")
       echo "Uninstall Docker"
       echo 
       apt-get purge docker-ce
@@ -67,56 +88,11 @@ read_options(){
       echo
       read -n 1 -s -r -p "Press any key to continue "
       ;;
-    2)
+
+     "4)")
       clear
-      rm -r /var/plexguide/dep*
-      echo
-      echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
-      echo
-      read -n 1 -s -r -p "Press any key to continue "
-        ;;
-    3)
-      clear
-      echo "Note, if you get a message about docker is installed and the 20 sec sleep"
-      echo "warning, just ignore it and let the 20 seconds go by."
-      echo
-      curl -sSL https://get.docker.com | sh
-      curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-      chmod +x /usr/local/bin/docker-compose
-      docker-compose -f /opt/plexguide/scripts/docker/portainer.yml up -d
+      exit 0
       ;;
-    4)
-      docker stop portainer
-      docker rm portainer
-      rm -r /opt/appdata/portainer
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-     ;;
-    5)
-      clear
-      rm -r /var/plexguide/plexguide.user
-      echo
-      echo "*** Exit This Menu / Select / Update, then Restart PlexGuide! ***"
-      echo
-      read -n 1 -s -r -p "Press any key to continue "
-      exit
-        ;;
-    6)
-      exit 0;;
-		*) echo -e "${RED}Error...${STD}" && sleep 2
-	esac
-}
-
-# ----------------------------------------------
-# Step #3: Trap CTRL+C, CTRL+Z and quit singles
-# ----------------------------------------------
-trap '' SIGINT SIGQUIT SIGTSTP
-
-# -----------------------------------
-# Step #4: Main logic - infinite loop
-# ------------------------------------
-while true
-do
-
-	show_menus
-	read_options
+esac
 done
+exit
