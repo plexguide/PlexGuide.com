@@ -103,7 +103,6 @@
 
 ########################################## DOCKERFIX ##################
 
-## Unencrypted
   - name: Check DockerFix
     stat:
       path: "/etc/systemd/system/dockerfix.service"
@@ -118,4 +117,21 @@
       state: absent
       path: /etc/systemd/system/dockerfix.service 
     when: dockerfix.stat.exists
+
+########################################## PLEXDRIVE4 ##################
+
+  - name: Check PlexDrive4 Unencrypted
+    stat:
+      path: "/etc/systemd/system/plexdrive4.service"
+    register: plexdrive4
+
+  - name: Stop PlexDrive Unencrypted
+    systemd: state=stopped name=plexdrive4
+    when: plexdrive4.stat.exists
+    
+  - name: Remove PlexDrive4 Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive4.service 
+    when: plexdrive4.stat.exists
 
