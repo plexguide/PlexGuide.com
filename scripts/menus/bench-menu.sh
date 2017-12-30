@@ -106,8 +106,8 @@ case $CHOICE in
      ;;
 
   "3)")
-     clear
      bash /opt/plexguide/scripts/menus/bench-custom.sh
+     clear
      ;;
 
   "4)")
