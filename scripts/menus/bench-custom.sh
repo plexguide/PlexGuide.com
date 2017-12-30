@@ -67,7 +67,6 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
   fi
   read -n 1 -s -r -p "Press any key to continue "
   clear
-  ;;
 
   result=$(whoami)
   case $VARS in
