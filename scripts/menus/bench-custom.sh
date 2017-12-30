@@ -48,17 +48,17 @@ while [ 1 ]
 do
 VARS=$(
 whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Variables for the Information and Benchmark Run" 15 60 4 \
-    "-info" "System Information"  \
-    "-io" "I/O Test"  \
-    "-cdn" "CDN Download"  \
-    "-northamerica" "North America Download"  \
-    "-europe" "Europe Download"  \
-    "-asia" "Asia Download" 3>&2 2>&1 1>&3
+    "-info" "System Information" OFF \
+    "-io" "I/O Test" OFF \
+    "-cdn" "CDN Download" OFF \
+    "-northamerica" "North America Download" OFF \
+    "-europe" "Europe Download" OFF \
+    "-asia" "Asia Download"
+    3>&1 1>&2 2>&3
 )
 
-result=$(whoami)
-case $VARS in
-  "1)")
+echo $VARS
+
   echo "Do you want to run BASIC benchmark and information? (y/n)? "
   old_stty_cfg=$(stty -g)
   stty raw -echo
