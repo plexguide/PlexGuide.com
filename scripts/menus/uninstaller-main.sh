@@ -8,7 +8,6 @@ if (whiptail --title "UnInstaller Selection" --yesno "Do you WANT TO STOP THE UN
     
     whiptail --title "No Uninstall" --msgbox "Nothing has been uninstalled" 8 76
     clear
-    read -n 1 -s -r -p "Press any key to continue"
 else
     whiptail --title "Uninstalling PlexGuide" --msgbox "May The Force Be With You! Uninstalling PlexGuide!" 9 76
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices
