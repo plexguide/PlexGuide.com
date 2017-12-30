@@ -136,7 +136,7 @@ EOF
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep26.yes
+   touch /var/plexguide/dep27.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 
