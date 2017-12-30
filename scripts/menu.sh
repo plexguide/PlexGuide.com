@@ -118,7 +118,6 @@ case $CHOICE in
    "9)")
        clear
        bash /opt/plexguide/scripts/menus/uninstaller-main.sh
-       exit
        ;;
 
    "10)")
