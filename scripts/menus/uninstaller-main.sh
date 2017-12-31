@@ -21,6 +21,7 @@ else
      echo ""
      echo 3. "Uninstalling Docker & Removing all Containers"
      echo ""
+     # 1>/dev/null 2>&1
      apt-get purge docker-ce
      rm -rf /var/lib/docker
      echo ""
@@ -32,6 +33,7 @@ else
      whiptail --title "AppData - No Action" --msgbox "Your Program-AppData remains intact at: /opt/appdata" 8 76
         clear
         else
+     sudo rm -r /opt/appdata
      whiptail --title "Removing AppData" --msgbox "Poof! I'm gone (appdata removed from /opt/appdata)!" 9 76
      clear
      fi
