@@ -9,7 +9,12 @@ name: Pull PlexPass Image
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-name: Ask user for his plex server claim id
+name: Ask For IP Address
+  pause:
+    prompt: "What is your IPV4 Address?"
+  register: ipaddress
+
+name: Ask Plex ID
   pause:
     prompt: "To continue the plex installation, you must visit https://plex.tv/claim and retrieve a claim token, paste it below and press enter"
   register: plex_claim
@@ -35,6 +40,7 @@ name: Deploy PlexPass Container
       - "33400:33400/tcp"
       - "33443:33443/tcp"
     env:
+      ADVERTISE_IP: http://ipv4:32400
       PLEX_UID: 1000
       PLEX_GID: 1000
       VIRTUAL_HOST: "plex.*"

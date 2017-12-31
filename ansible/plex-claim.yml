@@ -30,4 +30,4 @@
   - { role: unservices, tags: ['unservices'] }
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
-  - { role: claim-test, tags: ['plex-claim'] }
+  - { role: plex-claim, tags: ['plex-claim'] }
