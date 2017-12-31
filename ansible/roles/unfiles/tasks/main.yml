@@ -42,3 +42,5 @@
         - /mnt/gdrive/tv
         - /mnt/gdrive/movies
         - /opt/appdata/nginx-proxy
+    with_items:
+        - directory
