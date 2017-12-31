@@ -54,8 +54,7 @@ whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
     "4)" "Verify UnionFS"  \
     "5)" "Verify UN-RClone"  \
     "6)" "Verify EN-RClone"  \
-    "7)" "Benchmark and Info"  \
-    "8)" "Exit  "  3>&2 2>&1 1>&3
+    "7)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -121,12 +120,7 @@ case $CHOICE in
         clear
         ;;
 
-    "7)")
-        clear
-        bash /opt/plexguide/scripts/menus/bench-menu.sh
-        ;;
-
-     "8)")
+     "7)")
       clear
       exit 0
       ;; 

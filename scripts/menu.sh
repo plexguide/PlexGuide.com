@@ -69,7 +69,7 @@ whiptail --title "PlexGuide.com - v5.0019 (Admin9705 & Deiteq)" --menu "Make you
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs - Main"  \
    "4)" "Programs - Torrent" \
-   "5)" "Programs - Betas" \
+   "5)" "Server/Net Benchmarks" \
    "6)" "Info & TShoot" \
    "7)" "Backup & Restore" \
    "8)" "PlexGuide - Update" \
@@ -98,6 +98,11 @@ case $CHOICE in
        clear
        bash /opt/plexguide/scripts/menus/programs-torrent.sh
        ;;
+       
+   "5)")
+        clear
+        bash /opt/plexguide/scripts/menus/bench-menu.sh
+        ;;
 
    "6)")
        clear
