@@ -1,0 +1,26 @@
+---
+- name: Remove Resilio Container
+  docker_container:
+    name: resilio
+    state: absent
+
+- name: Deploy Resilio Container
+  docker_container:
+    name: resilio
+    image: linuxserver/resilio-sync
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "55555:55555"
+      - "9117:9117"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "resilio.*"
+      VIRTUAL_PORT: 9117
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/resilio:/config
+      - /mnt/gdrive/resilio:/sync
+    restart_policy: always
+    state: started

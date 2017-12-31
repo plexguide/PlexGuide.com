@@ -23,9 +23,12 @@
   - { role: radarr, tags: ['radarr'] }
   - { role: deluge, tags: ['deluge'] }
   - { role: label, tags: ['label'] }
+  - { role: resilio, tags: ['resilio'] }
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: jackett, tags: ['jackett'] }
   - { role: rclone_un, tags: ['rclone_un'] }
   - { role: unservices, tags: ['unservices'] }
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
+
+  resilio
