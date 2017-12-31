@@ -2,8 +2,8 @@
   - name: Remove Files Directories
     file:
       state: absent
-      path:
-        - /var/plexguide
+      path: "{{ item }}"
+    with_items:
         - /mnt/deluge
         - /mnt/deluge/temp
         - /mnt/deluge/downloaded
@@ -42,5 +42,3 @@
         - /mnt/gdrive/tv
         - /mnt/gdrive/movies
         - /opt/appdata/nginx-proxy
-    with_items:
-        - directory
