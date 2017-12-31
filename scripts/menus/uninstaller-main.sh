@@ -17,7 +17,7 @@ else
      echo ""
      echo 2. "Removing Directories & Unnecessary Files"
      echo ""
-     ansible-playbook /opt/plexguide/ansible/PlexGuide.yml --tags unfiles
+     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unfiles
      echo ""
      echo "Main Programs Uninstalled - Not Ready"
      echo "Program Data Removed - Not Ready"
