@@ -1,22 +1,22 @@
 ---
 
-- name: Remove Plex Pass Container
+name: Remove Plex Pass Container
   docker_container:
     name: plex
     state: absent
 
-- name: Pull PlexPass Image
+name: Pull PlexPass Image
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-- name: Ask user for his plex server claim id
+name: Ask user for his plex server claim id
   pause:
     prompt: "To continue the plex installation, you must visit https://plex.tv/claim and retrieve a claim token, paste it below and press enter"
   register: plex_claim
 
-- debug: msg="Using plex claim token {{plex_claim.user_input}}"
+debug: msg="Using plex claim token {{plex_claim.user_input}}"
 
-- name: Deploy PlexPass Container
+name: Deploy PlexPass Container
   docker_container:
     name: plex
     image: "plexinc/pms-docker:plexpass"
