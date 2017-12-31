@@ -87,14 +87,20 @@ sudo bash /opt/plexg*/sc*/ins*
 ```sh
 plexguide
 ```
-**E. RClone / PlexDrive / UnionFS**
+
+**E. Benchmarks**
+- Select [Server/Net Benchmarks] on the PlexGuide front Menu
+- It is a good idea to check your benchmarks prior to setting up everything else
+- Remember to conduct multiple tests if you feel uneasy about your results
+
+**F. RClone / PlexDrive / UnionFS**
  - Install & Configure (Select Only One)
  - YouTube Demo Video (V2) for RClone, UnionFS & PlexGuide: https://youtu.be/T0eXtrOY4kw
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot the Server!
 
-**F. Decision Time - Normal Install or Reverse Proxy**
+**G. Decision Time - Normal Install or Reverse Proxy**
 - No Reverse Proxy (Access Via http://ipv4:port) (Ex: http://192.168.1.20:7878)
   - Requires No Domain
   - Provides Less Protection and Exposed Ports
@@ -110,17 +116,17 @@ plexguide
   - Future Support for LetsEncrypt
   - **STILL IN TESTING - DO NOT USE OR FOLLOW THIS ONE**
 
-**G. Installing & Setting Up Support Programs**
+**H. Installing & Setting Up Support Programs**
 
  - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
-**H. Final Notes**
+**I. Final Notes**
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com).
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
 - Your Feedback Helps Us and You!
 
-**I. Quick Troubleshoot**
+**J. Quick Troubleshoot**
 - Docker Install Failure: If Docker refuses to install, visit Tools and force the reinstall. If that fails; most likely you are running an older version of UB or have a VPS service that runs and outdated kernel. [[Manual Docker Install Incase]](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
