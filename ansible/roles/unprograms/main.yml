@@ -1,5 +1,5 @@
 ---
-  - name: Install common packages
+  - name: Removing Packages & Programs
     apt: "name={{item}} state=absent"
     with_items:
       - nano
