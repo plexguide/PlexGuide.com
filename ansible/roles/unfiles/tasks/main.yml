@@ -1,6 +1,6 @@
 ---
   - name: Create Basic Directories
-    file: "path={{item}} state=directory"
+    file:
       state: absent
       path:
         - /var/plexguide
