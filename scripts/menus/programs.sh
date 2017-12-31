@@ -57,11 +57,12 @@ whiptail --title "Install Menu" --menu "Make your choice" 19 32 12 \
     "7)" "OMBIv3"  \
     "8)" "Organizr"  \
     "9)" "Radarr"  \
-    "10)" "SABNZBD"  \
-    "11)" "Sonarr"  \
-    "12)" "Tautulli"  \
-    "13)" "Test"  \
-    "14)" "Exit  "  3>&2 2>&1 1>&3
+    "10)" "Resilio"  \
+    "11)" "SABNZBD"  \
+    "12)" "Sonarr"  \
+    "13)" "Tautulli"  \
+    "14)" "Test"  \
+    "15)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -128,33 +129,40 @@ case $CHOICE in
      ;;
 
     "10)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio
+    echo "Resilio: http://ipv4:8888 | For NGINX Proxy resilio.domain.com"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+    ;;
+
+    "11)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
     echo "SABNZBD: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    "11)")
+    "12)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
     echo "Sonarr: http://ipv4:8989 | For NGINX Proxy sonarr.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    "12)")
+    "13)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
     echo "Tautulli: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    "13)")
+    "14)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx-proxy
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-     "14)")
+     "15)")
       clear
       exit 0
       ;;
