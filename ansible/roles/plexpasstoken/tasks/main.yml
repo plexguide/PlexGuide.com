@@ -49,8 +49,8 @@
       PLEX_GID: 1000
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
-      TOKEN: "{{pms_token}}"
-      ADVERTISE_IP: "http://{{local_ip}}:32400/"
+      TOKEN: "{{pms_token.user_input}}"
+      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
     network_mode: "host"
     volumes:
       - "/tmp:/tmp"
