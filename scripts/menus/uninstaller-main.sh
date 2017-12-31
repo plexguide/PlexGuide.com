@@ -19,9 +19,22 @@ else
      echo ""
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unfiles
      echo ""
-     echo "Main Programs Uninstalled - Not Ready"
+     echo 3. "Uninstalling Docker & Removing all Containers"
+     echo ""
+     apt-get purge docker-ce
+     rm -rf /var/lib/docker
+     echo ""
+
      echo "Program Data Removed - Not Ready"
      echo ""
-     read -n 1 -s -r -p "Press any key to continue"
+     if (whiptail --title "Program (AppData)" --yesno "Do you WANT to keep your Program Configs (Appdata)?" 8 76) then
+    
+     whiptail --title "AppData - No Action" --msgbox "Your Program-AppData remains intact at: /opt/appdata" 8 76
+        clear
+        else
+     whiptail --title "Removing AppData" --msgbox "Poof! I'm gone (appdata removed from /opt/appdata)!" 9 76
      clear
+     fi
+    whiptail --title "Final Notice" --msgbox "Most of everything should have been removed. Time to reboot!" 9 76  
+    reboot
 fi
