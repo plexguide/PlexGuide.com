@@ -12,12 +12,12 @@
     cpu_shares: 256
     published_ports:
       - "55555:55555"
-      - "9117:9117"
+      - "8888:8888"
     env:
       PUID: "1000"
       PGID: "1000"
       VIRTUAL_HOST: "resilio.*"
-      VIRTUAL_PORT: 9117
+      VIRTUAL_PORT: 8888
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/resilio:/config
