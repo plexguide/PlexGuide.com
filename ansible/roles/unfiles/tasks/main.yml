@@ -1,5 +1,5 @@
 ---
-  - name: Create Basic Directories
+  - name: Remove Files Directories
     file:
       state: absent
       path:
