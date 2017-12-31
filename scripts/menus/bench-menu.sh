@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Benchmark Menu (The Creator)" --menu "Make Your Choice!" 13 44 5 \
+whiptail --title "Benchmark Menu (The Creator)" --menu "Make Your Choice!" 11 44 4 \
    "1)" "System Info and Benchmark - Basic"  \
    "2)" "System Info and Benchmark - Advanced"  \
    "3)" "Simple Speedtest"  \
