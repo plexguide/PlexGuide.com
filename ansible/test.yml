@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: unservices, tags: ['unservices'] }
+  - { role: unfiles, tags: ['unfiles'] }

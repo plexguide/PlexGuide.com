@@ -1,0 +1,44 @@
+---
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory"
+      state: absent
+      path:
+        - /var/plexguide
+        - /mnt/deluge
+        - /mnt/deluge/temp
+        - /mnt/deluge/downloaded
+        - /mnt/deluge/torrent
+        - /mnt/rutorrent
+        - /mnt/rutorrent/downloads
+        - /mnt/move
+        - /mnt/move/tv
+        - /mnt/move/movies 
+        - /mnt/nzbget
+        - /mnt/nzbget/completed
+        - /mnt/nzbget/completed/movies
+        - /mnt/nzbget/completed/tv
+        - /mnt/nzbget/incomplete
+        - /mnt/nzbget/nzb
+        - /mnt/nzbget/queue
+        - /mnt/nzbget/tmp
+        - /mnt/nzbget/log 
+        - /mnt/sab
+        - /mnt/sab/admin
+        - /mnt/sab/complete
+        - /mnt/sab/complete/tv
+        - /mnt/sab/complete/movies
+        - /mnt/sab/incomplete
+        - /mnt/sab/nzb 
+        - /mnt/plexdrive4
+        - /mnt/plexdrive4/tv
+        - /mnt/plexdrive4/movies
+        - /mnt/encrypt
+        - /mnt/encrypt/tv
+        - /mnt/encrypt/movies
+        - /mnt/.gcrypt
+        - /mnt/.gcrypt/tv
+        - /mnt/.gcrypt/movies
+        - /mnt/gdrive
+        - /mnt/gdrive/tv
+        - /mnt/gdrive/movies
+        - /opt/appdata/nginx-proxy
