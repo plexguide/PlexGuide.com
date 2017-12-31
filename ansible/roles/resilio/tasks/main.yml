@@ -21,6 +21,6 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/resilio:/config
-      - /mnt/gdrive/resilio:/sync
+      - /mnt:/sync
     restart_policy: always
     state: started
