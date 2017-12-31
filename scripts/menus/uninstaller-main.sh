@@ -35,6 +35,6 @@ else
      whiptail --title "Removing AppData" --msgbox "Poof! I'm gone (appdata removed from /opt/appdata)!" 9 76
      clear
      fi
-    whiptail --title "Final Notice" --msgbox "Most of everything should have been removed. Time to reboot!" 9 76  
+    whiptail --title "Final Notice" --msgbox "Most of everything should have been removed. Time to reboot! After you reboot, you can type plexguide to start a new installation once again!" 9 76  
     reboot
 fi
