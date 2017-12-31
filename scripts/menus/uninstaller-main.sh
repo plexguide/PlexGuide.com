@@ -10,10 +10,15 @@ if (whiptail --title "UnInstaller Selection" --yesno "Do you WANT TO STOP THE UN
     clear
 else
     whiptail --title "Uninstalling PlexGuide" --msgbox "May The Force Be With You! Uninstalling PlexGuide!" 9 76
+     clear
+     echo 1. "Stopping & Uninstalling Services"
+     echo ""
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices
      echo ""
-     echo "Services Uninstalled"
-     echo "Files Uninstalled - Not Ready"
+     echo 2. "Removing Directories & Unnecessary Files"
+     echo ""
+     ansible-playbook /opt/plexguide/ansible/PlexGuide.yml --tags unfiles
+     echo ""
      echo "Main Programs Uninstalled - Not Ready"
      echo "Program Data Removed - Not Ready"
      echo ""

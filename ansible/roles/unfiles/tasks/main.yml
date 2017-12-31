@@ -1,5 +1,5 @@
 ---
-  - name: Remove Files Directories
+  - name: Removing File Directories
     file:
       state: absent
       path: "{{ item }}"
@@ -29,16 +29,3 @@
         - /mnt/sab/complete/movies
         - /mnt/sab/incomplete
         - /mnt/sab/nzb 
-        - /mnt/plexdrive4
-        - /mnt/plexdrive4/tv
-        - /mnt/plexdrive4/movies
-        - /mnt/encrypt
-        - /mnt/encrypt/tv
-        - /mnt/encrypt/movies
-        - /mnt/.gcrypt
-        - /mnt/.gcrypt/tv
-        - /mnt/.gcrypt/movies
-        - /mnt/gdrive
-        - /mnt/gdrive/tv
-        - /mnt/gdrive/movies
-        - /opt/appdata/nginx-proxy
