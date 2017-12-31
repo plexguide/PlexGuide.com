@@ -21,7 +21,7 @@
         - /mnt/nzbget/nzb
         - /mnt/nzbget/queue
         - /mnt/nzbget/tmp
-        - /mnt/nzbget/log 
+        - /mnt/nzbget/log
         - /mnt/sab
         - /mnt/sab/admin
         - /mnt/sab/complete
