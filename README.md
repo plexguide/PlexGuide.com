@@ -12,7 +12,7 @@
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
-**Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
+- **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
 ### Awesome Beta Testers & Contributers!
 
