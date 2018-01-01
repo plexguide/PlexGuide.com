@@ -1,4 +1,9 @@
 ---
+- name: Stop and remove any existing container
+  docker_container:
+    name: plex
+    state: absent
+
 - name: "Get Server IP"
   shell: "hostname -I | awk '{print $1}'"
   register: local_ip
