@@ -96,7 +96,7 @@ case $CHOICE in
 
    "4)")
        clear
-       bash /opt/plexguide/scripts/menus/programs/programs-select.sh
+       bash /opt/plexguide/scripts/menus/programs/program-select.sh
        ;;
 
    "5)")
