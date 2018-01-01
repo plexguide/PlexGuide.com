@@ -4,6 +4,11 @@
     name: portainer
     state: absent
 
+- name: Create portainer directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/portainer
+
 - name: Deploy Portainer Container
   docker_container:
     name: portainer
@@ -20,6 +25,6 @@
     volumes:
      - /opt/appdata/portainer:/data
      - /var/run/docker.sock:/var/run/docker.sock
+     - /opt/appdata/portainer:/data
     restart_policy: always
     state: started
-
