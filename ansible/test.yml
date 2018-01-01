@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: unprograms, tags: ['unprograms'] }
+  - { role: docker, tags: ['docker'] }

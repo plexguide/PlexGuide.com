@@ -20,7 +20,7 @@
       VIRTUAL_PORT: 8888
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /opt/resilio:/config
+      - /opt/appdata/resilio:/config
       - /mnt:/sync
     restart_policy: always
     state: started
