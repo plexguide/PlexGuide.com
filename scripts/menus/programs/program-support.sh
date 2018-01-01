@@ -49,7 +49,7 @@ do
 CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 11 34 4 \
     "1)" "Netdata"   \
-    "2") "OMBIv3"   \
+    "2)" "OMBIv3"   \
     "3)" "Resilio"  \
     "4)" "Resilio"  \
     "5)" "Exit  "  3>&2 2>&1 1>&3
