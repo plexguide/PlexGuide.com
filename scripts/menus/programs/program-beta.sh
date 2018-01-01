@@ -68,7 +68,7 @@ case $CHOICE in
     ;;
 
 
-     "2)")
+     "3)")
       clear
       exit 0
       ;;
