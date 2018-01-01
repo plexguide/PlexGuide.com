@@ -29,3 +29,4 @@
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
   - { role: plex, tags: ['plex'] }
+  - { role: plex-beta, tags: ['plex-beta'] }

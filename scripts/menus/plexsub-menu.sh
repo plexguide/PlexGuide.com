@@ -52,26 +52,26 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Plex Version Install" --menu "Make your choice" 10 25 3 \
-    "1)" "Plex Public"   \
+    "1)" "Plex Stable"   \
     "2)" "Plex Beta"  \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
+    "2)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
     "1)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexpublic
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installed Plex Public" --msgbox "The Public Verison of Plex has been installed! Do not forget about the wiki!" 8 76     
+    whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 8 76
 
     ;;
 
     "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexpass
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex-beta
         echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version of Plex has been installed! Do not forget about the wiki!" 9 76
+    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 9 76
     ;;
 
     "3)")
