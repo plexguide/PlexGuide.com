@@ -21,8 +21,8 @@
       - "80:80"
       - "443:443"
     env:
-      PUID: "1000"
-      PGID: "1000"
+      PUID: "0"
+      PGID: "0"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/nginx-proxy:/etc/nginx/certs:ro"
