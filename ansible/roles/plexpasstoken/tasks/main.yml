@@ -13,6 +13,9 @@
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
+- debug: msg="Your IP Address is {{local_ip.stdout}}"
+  when: plex_prefs.stat.exists == False
+
 - name: Get Plex Media Server claim token
   pause:
     prompt: "If you have PLEXPASS what is your Claim Token: (Visit http://plex.tv/claim or press Enter) "
