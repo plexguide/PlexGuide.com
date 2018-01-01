@@ -62,7 +62,7 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
-    echo "NZBHydra: http://ipv4:5075 | For NGINX Proxy nzbhyra.domain.com"
+    echo "EMBY: http://ipv4:8096 | For NGINX Proxy emby.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
