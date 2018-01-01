@@ -69,18 +69,13 @@ case $CHOICE in
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
-      "3)")
-       clear
-       bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh
-       ;;
-
-     "4)")
+     "3)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
       echo "Jackett: http://ipv4:9117 | For NGINX Proxy jackett.domain.com"
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
-     "5)")
+     "4)")
       clear
       exit 0
       ;;
