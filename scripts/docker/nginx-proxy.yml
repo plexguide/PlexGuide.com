@@ -18,3 +18,5 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=whoami.local
+networks:
+  plexguide:
