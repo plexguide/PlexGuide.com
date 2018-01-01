@@ -47,12 +47,11 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 15 26 8 \
+whiptail --title "Install Menu" --menu "Make your choice" 11 25 4 \
     "1)" "RuTorrent"  \
     "2)" "Deluge"  \
-    "3)" "VPN Torrent - Test"  \
-    "4)" "Jackett"  \
-    "5)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Jackett"  \
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
