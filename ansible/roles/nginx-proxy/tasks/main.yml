@@ -20,6 +20,9 @@
     published_ports:
       - "80:80"
       - "443:443"
+    env:
+      PUID: "1000"
+      PGID: "1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/nginx-proxy:/etc/nginx/certs:ro"
