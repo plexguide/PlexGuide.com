@@ -47,7 +47,7 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 14 34 7 \
+whiptail --title "Program Categories" --menu "Make your choice" 16 34 9 \
     "1)" "Programs: Plex & Emby"  \
     "2)" "Programs: NZBs"   \
     "3)" "Programs: Torrents"  \
@@ -63,7 +63,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    bash /opt/plexguide/scripts/menus/progams/program-media.sh
+    bash /opt/plexguide/scripts/menus/programs/program-media.sh
     ;;
 
     "2)")
