@@ -61,9 +61,9 @@ case $CHOICE in
     ;;
 
     "2)")
-    echo ymlprogram emby > /opt/plexguide/tmp.txt
-    echo ymldisplay Emby >> /opt/plexguide/tmp.txt
-    echo ymlport 8096 >> /opt/plexguide/tmp.txt
+    echo ymlprogram nginx-proxy > /opt/plexguide/tmp.txt
+    echo ymldisplay NGINX-Proxy >> /opt/plexguide/tmp.txt
+    echo ymlport 0000 >> /opt/plexguide/tmp.txt
     bash /opt/plexguide/scripts/docker-no/program-installer.sh
     ;;
 
