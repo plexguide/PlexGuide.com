@@ -1,4 +1,32 @@
 ---
+- pause: Warning
+    prompt: "This Plex version is only intended for people who own Plex Pass! If you do not, quit using CTRL+C and use the first option!"
+
+- name: Stop and remove any existing container
+  docker_container:
+    name: plex
+    state: absent
+
+- name: "Get Server IP"
+  shell: "hostname -I | awk '{print $1}'"
+  register: local_ip
+
+- name: Check Preferences.xml exists
+  stat:
+    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
+  register: plex_prefs
+
+- debug: msg="Your IP Address is {{local_ip.stdout}}"
+  when: plex_prefs.stat.exists == False
+
+- name: Get Plex Media Server claim token
+  pause:
+    prompt: "Paste your Plex claim token: (Visit http://plex.tv/claim , press "Copy to Clipboard" and paste the whole code here) "
+  register: pms_token
+  when: plex_prefs.stat.exists == False
+
+- debug: msg="Using following Plex claim token {{pms_token.user_input}}"
+  when: plex_prefs.stat.exists == False
 
 - name: Remove Plex Pass Container
   docker_container:
@@ -15,7 +43,8 @@
     image: "plexinc/pms-docker:plexpass"
     pull: yes
     published_ports:
-      - "32400:32400/tcp"
+      - "32400:32400"
+      - "32400:32400/udp"
       - "3005:3005/tcp"
       - "8324:8324/tcp"
       - "32469:32469/tcp"
@@ -31,6 +60,8 @@
       PLEX_GID: 1000
       VIRTUAL_HOST: "plex.*"
       VIRTUAL_PORT: 32400
+      TOKEN: "{{pms_token.user_input}}"
+      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
     network_mode: "host"
     volumes:
       - "/tmp:/tmp"

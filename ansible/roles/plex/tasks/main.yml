@@ -18,14 +18,14 @@
 
 - name: Get Plex Media Server claim token
   pause:
-    prompt: "What is your Claim Token: (Visit http://plex.tv/claim or press Enter) "
+    prompt: "Paste your Plex claim token: (Visit http://plex.tv/claim , press "Copy to Clipboard" and paste the whole code here) "
   register: pms_token
   when: plex_prefs.stat.exists == False
 
-- debug: msg="Using plex claim token {{pms_token.user_input}}"
+- debug: msg="Using following Plex claim token {{pms_token.user_input}}"
   when: plex_prefs.stat.exists == False
 
-- name: Remove Plex Pass Container
+- name: Remove Plex Container
   docker_container:
     name: plex
     state: absent
@@ -34,7 +34,7 @@
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
-- name: Deploy PlexPass Container
+- name: Deploy Plex Container
   docker_container:
     name: plex
     image: "plexinc/pms-docker:plexpass"

@@ -16,6 +16,8 @@
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
+  - { role: plexpublic, tags: ['plexpublic'] }
+  - { role: plexpass, tags: ['plexpass'] }
   - { role: emby, tags: ['emby'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
@@ -28,4 +30,3 @@
   - { role: unservices, tags: ['unservices'] }
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
-  - { role: plex, tags: ['plex'] }
