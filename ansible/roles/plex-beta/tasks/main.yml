@@ -1,7 +1,7 @@
 ---
 - name: Warning
   pause:
-    prompt: "The following Plex image is a BETA image. If you prefer to use the STABLE version, exit with CTRL+C and choose the other option! REMEMBER: Only have one Plex container at a time!"
+    prompt: "The following Plex image is a BETA image. If you prefer to use the STABLE version, you can re-install later through the menu! Press Enter to Continue"
 
 - name: Stop and remove any existing container
   docker_container:

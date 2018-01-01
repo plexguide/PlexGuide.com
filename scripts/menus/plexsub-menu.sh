@@ -51,10 +51,10 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Plex Version Install" --menu "Make your choice" 10 25 3 \
+whiptail --title "Plex Version Select" --menu "Make your choice" 10 28 3 \
     "1)" "Plex Stable"   \
     "2)" "Plex Beta"  \
-    "2)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -63,7 +63,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 8 76
+    whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 8 82
 
     ;;
 
@@ -71,7 +71,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex-beta
         echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 9 76
+    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 8 82
     ;;
 
     "3)")
