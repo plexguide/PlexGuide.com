@@ -47,11 +47,11 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 11 34 4 \
-    "1)" "NZBGet"   \
+whiptail --title "Program Categories" --menu "Make your choice" 11 21 4 \
+    "1)" "NZBGet"  \
     "2") "NZBHydra"  \
     "3)" "SABNZBD"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
+    "4)" "Exit"  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
