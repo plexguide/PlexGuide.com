@@ -96,6 +96,11 @@ case $CHOICE in
     bash /opt/plexguide/scripts/menus/programs/program-critical.sh
     ;;
 
+    "8)")
+    clear
+    bash /opt/plexguide/scripts/menus/programs/program-critical.sh
+    ;;
+
     "9)")
       clear
       exit 0
