@@ -12,7 +12,7 @@
       - /mnt/rutorrent/downloads
       - /mnt/move
       - /mnt/move/tv
-      - /mnt/move/movies 
+      - /mnt/move/movies
       - /mnt/nzbget
       - /mnt/nzbget/completed
       - /mnt/nzbget/completed/movies
@@ -21,14 +21,14 @@
       - /mnt/nzbget/nzb
       - /mnt/nzbget/queue
       - /mnt/nzbget/tmp
-      - /mnt/nzbget/log 
+      - /mnt/nzbget/log
       - /mnt/sab
       - /mnt/sab/admin
       - /mnt/sab/complete
       - /mnt/sab/complete/tv
       - /mnt/sab/complete/movies
       - /mnt/sab/incomplete
-      - /mnt/sab/nzb 
+      - /mnt/sab/nzb
       - /mnt/plexdrive4
       - /mnt/plexdrive4/tv
       - /mnt/plexdrive4/movies
@@ -42,6 +42,7 @@
       - /mnt/gdrive/tv
       - /mnt/gdrive/movies
       - /opt/appdata/nginx-proxy
+      - /opt/nginx-proxy
 
   - name: Create Important Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
