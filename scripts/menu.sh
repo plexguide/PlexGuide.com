@@ -64,17 +64,16 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0020 (Admin9705 & Deiteq)" --menu "Make your choice" 17 50 10 \
+whiptail --title "PlexGuide.com - v5.0021 (Admin9705 & Deiteq)" --menu "Make your choice" 17 50 10 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
-   "3)" "Programs - Main"  \
-   "4)" "Programs - Torrent" \
-   "5)" "Server/Net Benchmarks" \
-   "6)" "Info & TShoot" \
-   "7)" "Backup & Restore" \
-   "8)" "PlexGuide - Update" \
-   "9)" "PlexGuide - UnInstall" \
-   "10)" "Exit  "  3>&2 2>&1 1>&3
+   "3)" "Programs" \
+   "4)" "Server & Net Benchmarks" \
+   "5)" "Info & TShoot" \
+   "6)" "Backup & Restore" \
+   "7)" "PlexGuide: Update" \
+   "8)" "PlexGuide: UnInstall" \
+   "9)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -91,41 +90,36 @@ case $CHOICE in
 
    "3)")
        clear
-       bash /opt/plexguide/scripts/menus/programs.sh
-       ;;
-
-   "4)")
-       clear
        bash /opt/plexguide/scripts/menus/programs/program-select.sh
        ;;
 
-   "5)")
+   "4)")
         clear
         bash /opt/plexguide/scripts/menus/bench-menu.sh
         ;;
 
-   "6)")
+   "5)")
        clear
        bash /opt/plexguide/scripts/menus/help-select.sh
        ;;
 
-   "7)")
+   "6)")
        clear
        bash /opt/plexguide/scripts/menus/back-restore-select.sh
        ;;
 
-   "8)")
+   "7)")
        bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
        echo Remember, restart by typing: plexguide
        exit 0;;
 
-   "9)")
+   "8)")
        clear
        bash /opt/plexguide/scripts/menus/uninstaller-main.sh
        ;;
 
-   "10)")
+   "9)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
