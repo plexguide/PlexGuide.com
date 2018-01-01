@@ -49,7 +49,7 @@ do
 CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 11 34 4 \
     "1)" "NZBGet"   \
-    "2") "NZBHydra"   \
+    "2") "NZBHydra"  \
     "3)" "SABNZBD"  \
     "4)" "Exit  "  3>&2 2>&1 1>&3
 )
