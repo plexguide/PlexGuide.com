@@ -1,10 +1,39 @@
 ---
-- name: Remove Traefix
+########## Move Script if not Present
+- name: Check SCRIPT
+  stat:
+    path: "/opt/appdata/traefik/traefik.toml"
+  register: script
+
+- name: Installing Traefik.Toml
+  template:
+    src: traefik.toml
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+  when: script.stat.exists == False
+
+vars_promt:
+  - name: domain
+  prompt: "Enter your domain here:"
+  register: domain_input
+  private: no
+
+- debug: msg="Using following domain: {{domain_input.user_input}}"
+
+tasks:
+  - name: Replace yourdomain.com with users domain
+    lineinfile:
+      dest: /opt/appdata/traefik/traefik.toml
+      regexp: '^\s*yourdomain.com.*$'
+      line: '{{domain_input.user_input}}'
+#############################
+
+- name: Remove Traefik
   docker_container:
     name: traefik
     state: absent
 
-- name: Deploy Traefix
+- name: Deploy Traefik
   docker_container:
     name: traefik
     image: traefik
