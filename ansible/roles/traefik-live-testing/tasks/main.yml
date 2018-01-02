@@ -12,7 +12,7 @@
     force: yes
   when: script.stat.exists == False
 
-vars_promt:
+
 - name: domain
   pause:
     prompt: "Enter your domain here"
