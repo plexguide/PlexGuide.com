@@ -23,8 +23,8 @@
       PUID: 1000
       PGID: 1000
     restart_policy: always
-    state: started
+   state: started
     networks:
-      default:
-        external:
-          name: nginx-proxy
+      - name: nginx-proxy
+        aliases:
+          - netdata

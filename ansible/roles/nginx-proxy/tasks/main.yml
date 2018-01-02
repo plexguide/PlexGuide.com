@@ -38,6 +38,10 @@
     restart_policy: always
     state: started
     detach: true
+    networks:
+      - name: nginx-proxy
+        aliases:
+          - nginx-proxy
 
 - name: Deploy Lets Encrypt
   docker_container:
@@ -54,3 +58,7 @@
       DEBUG: true
     restart_policy: always
     state: started
+    networks:
+      - name: nginx-proxy
+        aliases:
+          - letsencrypt
