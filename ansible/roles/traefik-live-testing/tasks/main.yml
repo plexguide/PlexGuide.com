@@ -15,9 +15,10 @@
 - name: Input Domain
   vars_promt:
     - name: domain
-        prompt: "Enter your domain here:"
-        register: domain_input
-        private: no
+      pause:
+        prompt: "Enter your domain here"
+      register: domain_input
+      private: no
 
 - debug: msg="Using following domain {{domain_input.user_input}}"
 
