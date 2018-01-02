@@ -19,7 +19,8 @@
       - "8081:8081"
     volumes:
       - /opt/appdata/medusa:/config
-      - /mnt/medusa/downloads:/downloads
+      - /mnt/sab/complete:/sabcomplete
+      - /mnt/nzbget/completed:/nzbcomplete
       - /mnt/unionfs/tv:/tv
     cpu_shares: 256
     env:
