@@ -63,7 +63,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 8 82
+    whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Read The Wiki!" 9 50
 
     ;;
 
@@ -71,7 +71,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex-beta
         echo ""
     read -n 1 -s -r -p "Press any key to continue"
-    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Do Not Forget To Read The Wiki!" 8 80
+    whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Read The Wiki!" 9 50
     ;;
 
     "3)")

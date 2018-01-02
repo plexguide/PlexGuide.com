@@ -1,6 +1,6 @@
 ---
 - pause: Warning
-    prompt: "This Plex version is only intended for people who own Plex Pass! If you do not, quit using CTRL+C and use the first option!"
+    prompt: "Version are for those own Plex Pass! If you do not, quit using CTRL+C and use the first option!"
 
 - name: Stop and remove any existing container
   docker_container:
@@ -21,7 +21,7 @@
 
 - name: Get Plex Media Server claim token
   pause:
-    prompt: "Paste your Plex claim token: (Visit http://plex.tv/claim , press "Copy to Clipboard" and paste the whole code here) "
+    prompt: "Visit http://plex.tv/claim, "Copy to Clipboard", and Paste"
   register: pms_token
   when: plex_prefs.stat.exists == False
 

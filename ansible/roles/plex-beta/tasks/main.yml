@@ -1,7 +1,7 @@
 ---
 - name: Warning
   pause:
-    prompt: "The following Plex image is a BETA image. If you prefer to use the STABLE version, you can re-install later through the menu! Press Enter to Continue"
+    prompt: "You are utilizing the BETA image. If you prefer the STABLE version, re-install later through the menu! Press Enter to Continue"
 
 - name: Stop and remove any existing container
   docker_container:
@@ -22,7 +22,7 @@
 
 - name: Get Plex Media Server claim token
   pause:
-    prompt: "Paste your Plex claim token: (Visit http://plex.tv/claim , press Copy to Clipboard and paste the whole code here) "
+    prompt: "Visit http://plex.tv/claim, "Copy to Clipboard", and Paste"
   register: pms_token
   when: plex_prefs.stat.exists == False
 

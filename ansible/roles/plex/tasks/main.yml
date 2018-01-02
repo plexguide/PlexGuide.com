@@ -1,7 +1,7 @@
 ---
 - name: Warning
   pause:
-    prompt: "The following Plex image is a STABLE image. If you prefer to use the BETA version, you can re-install later through the menu Press Enter to Continue!"
+    prompt: ""You are utilizing the STABLE image. If you prefer the BETA version, re-install later through the menu! Press Enter to Continue"
 
 - name: Stop and remove any existing container
   docker_container:
@@ -36,12 +36,12 @@
 
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:plexpass"
+    name: "plexinc/pms-docker:public"
 
 - name: Deploy Plex Container
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:plexpass"
+    image: "plexinc/pms-docker:public"
     pull: yes
     published_ports:
       - "32400:32400"
