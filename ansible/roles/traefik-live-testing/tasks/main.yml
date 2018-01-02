@@ -12,8 +12,7 @@
     force: yes
   when: script.stat.exists == False
 
-- hosts: localhost
-  vars_promt:
+- vars_promt:
     - name: domain
       prompt: "Enter your domain here:"
       register: domain_input
