@@ -21,6 +21,7 @@
       - /opt/appdata/medusa:/config
       - /mnt/:/downloads
       - /mnt/unionfs/:/tv
+      - /mnt:/test
     cpu_shares: 256
     env:
       VIRTUAL_HOST: "medusa.*"
