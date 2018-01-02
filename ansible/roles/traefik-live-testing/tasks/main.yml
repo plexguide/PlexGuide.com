@@ -14,7 +14,7 @@
     file:
       state: absent
       path: /opt/appdata/traefik/traefik.toml
-    when: script.stat.exists == True
+    when: script.stat.exists
 
 - name: Installing Traefik.Toml
   template:
