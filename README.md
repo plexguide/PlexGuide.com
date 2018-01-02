@@ -19,7 +19,7 @@
 
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
 
-- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, , trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
+- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 ## Social
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
@@ -104,7 +104,7 @@ plexguide
 
 **G. (Optional) Setting Up Your Reverse Proxy**
 
-Traefik Reverse Proxy Access Via Apps Via Subdomain (Ex: http://radarr.domain.com)
+Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
 
  - [Configuring Traefik Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Traefik-Reverse-Proxy)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
