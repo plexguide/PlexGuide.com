@@ -12,12 +12,12 @@
     force: yes
   when: script.stat.exists == False
 
-- vars_promt:
-  - name: domain
-    pause:
-      prompt: "Enter your domain here"
-      register: domain_input
-      private: no
+vars_promt:
+- name: domain
+  pause:
+    prompt: "Enter your domain here"
+    register: domain_input
+    private: no
 
 - debug: msg="Using following domain {{domain_input.user_input}}"
 
