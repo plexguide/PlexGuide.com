@@ -64,6 +64,7 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx-proxy
+    docker exec nginx nginx -s reload
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
