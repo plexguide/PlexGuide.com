@@ -49,7 +49,7 @@ do
 CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 10 25 3 \
     "1)" "Portainer"   \
-    "2)" "NGINX"   \
+    "2)" "Traefik"   \
     "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -63,7 +63,7 @@ case $CHOICE in
     ;;
 
     "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx-proxy
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
     docker exec nginx nginx -s reload
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
