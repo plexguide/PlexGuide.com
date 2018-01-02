@@ -30,7 +30,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: yourdomain.com
-    replace: {{domain_input.user_input}}
+    replace: "{{domain_input.user_input}}"
 #############################
 
 - name: Remove Traefik
