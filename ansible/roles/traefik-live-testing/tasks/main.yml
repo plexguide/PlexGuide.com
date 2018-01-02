@@ -15,18 +15,18 @@
 - hosts: localhost
   vars_promt:
     - name: domain
-    prompt: "Enter your domain here:"
-    register: domain_input
-    private: no
+      prompt: "Enter your domain here:"
+      register: domain_input
+      private: no
 
     - debug: msg="Using following domain {{domain_input.user_input}}"
 
     - tasks:
       - name: Replace yourdomain.com with users domain
-      lineinfile:
-        dest: /opt/appdata/traefik/traefik.toml
-        regexp: '^\s*yourdomain.com.*$'
-        line: '{{domain_input.user_input}}'
+        lineinfile:
+          dest: /opt/appdata/traefik/traefik.toml
+          regexp: '^\s*yourdomain.com.*$'
+          line: '{{domain_input.user_input}}'
 #############################
 
 - name: Remove Traefik
