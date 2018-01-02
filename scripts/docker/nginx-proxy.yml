@@ -1,9 +1,9 @@
 ---
 version: '2'
 services:
- nginx:
+ nginx-proxy:
    image: jwilder/nginx-proxy
-   container_name: nginx
+   container_name: nginx-proxy
    volumes:
      - /var/run/docker.sock:/tmp/docker.sock:ro
    ports:
@@ -14,5 +14,3 @@ services:
      - PUID=1000
      - PGID=1000
      - VIRTUAL_HOST=whoami.local
-networks:
-  plexguide:

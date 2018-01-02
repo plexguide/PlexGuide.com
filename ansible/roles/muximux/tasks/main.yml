@@ -19,7 +19,7 @@
       VIRTUAL_HOST: "muximux.*"
       VIRTUAL_PORT: 80
     volumes:
-      - "/opt/appdata/nzbhyra:/config"
+      - "/opt/appdata/muximux:/config"
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: always
     state: started
