@@ -1,12 +1,12 @@
 ---
 
-- name: Import proxy.conf
-  copy: "src=proxy.conf dest=/opt/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
-
 - name: Create nginx-proxy directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /opt/nginx-proxy
+
+- name: Import proxy.conf
+  copy: "src=proxy.conf dest=/opt/nginx-proxy/proxy.conf force=yes owner=1000 group=1000 mode=0775"
 
 - name: Remove NGINX-Proxy Container
   docker_container:
