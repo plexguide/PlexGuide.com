@@ -64,10 +64,12 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker
   pip install docker 1>/dev/null 2>&1
 
-  echo "10. Installing Portainer for Docker (Please Wait)"
+  echo "10. Installing Portainer & Reverse Proxy (Please Wait)"
 
 # Installs Portainer
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
+# Instlls Reverse Prox
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
 ############################################# Install a Post-Docker Fix ###################### START
 
     echo "11. Finishing Up"
