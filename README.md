@@ -1,9 +1,5 @@
 # PlexGuide.com - Version 5
 
-## Social
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
-- Reddit Discussion Link: http://reddit.plexguide.com
-
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
@@ -13,6 +9,11 @@
 </p>
 
 ----------------------------------------------------------------------
+## Social
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
+- Reddit Discussion Link: http://reddit.plexguide.com
+
+
 ### Basic Information
 - Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
 - Additonal Code Crew: [The Creator](https://github.com/TheCreatorzOne)
