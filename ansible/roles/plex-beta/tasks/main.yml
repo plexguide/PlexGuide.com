@@ -22,7 +22,7 @@
 
 - name: Get Plex Media Server claim token
   pause:
-    prompt: "Visit http://plex.tv/claim, "Copy to Clipboard", and Paste"
+    prompt: "Visit http://plex.tv/claim, Copy to Clipboard, and Paste"
   register: pms_token
   when: plex_prefs.stat.exists == False
 
