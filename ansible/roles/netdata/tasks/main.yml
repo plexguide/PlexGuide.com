@@ -26,5 +26,5 @@
     state: started
     networks:
       - name: nginx-proxy
-          aliases:
-            - netdata
+        aliases:
+          - netdata
