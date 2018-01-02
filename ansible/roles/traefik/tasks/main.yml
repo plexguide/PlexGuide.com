@@ -5,7 +5,7 @@
     path: "/opt/appdata/traefik/traefik.toml"
   register: script
     
-- name: Install Move Service
+- name: Installing Traefix.Toml
   template:
     src: traefik.js2
     dest: /opt/appdata/traefik/traefik.toml
