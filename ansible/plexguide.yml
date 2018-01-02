@@ -30,3 +30,5 @@
   - { role: unprograms, tags: ['unprograms'] }
   - { role: plex, tags: ['plex'] }
   - { role: plex-beta, tags: ['plex-beta'] }
+  - { role: docker, tags: ['docker'] }
+
