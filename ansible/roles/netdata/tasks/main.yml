@@ -24,7 +24,7 @@
       PGID: 1000
     restart_policy: always
    state: started
-    networks:
-      - name: nginx-proxy
-        aliases:
-          - netdata
+   networks:
+     - name: nginx-proxy
+         aliases:
+           - netdata
