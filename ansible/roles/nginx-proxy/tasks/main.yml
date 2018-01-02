@@ -33,27 +33,27 @@
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
       - "/opt/nginx-proxy/proxy.conf:/etc/nginx/conf.d/proxy.conf"
-    #labels:
-      #com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     restart_policy: always
-    #networks:
+    networks:
       #- name: bridge
         #aliases:
         #- nginx-proxy
     state: started
 
-#- name: Deploy Lets Encrypt
-  #docker_container:
-    #name: letsencrypt
-    #image: "jrcs/letsencrypt-nginx-proxy-companion"
-    #pull: yes
-    #volumes:
-      #- "/etc/localtime:/etc/localtime:ro"
-      #- "/opt/nginx-proxy:/etc/nginx/certs:rw"
-      #- "/var/run/docker.sock:/var/run/docker.sock:ro"
-    #volumes_from:
-      #- "nginx-proxy"
-    #env:
-      #DEBUG: true
-    #restart_policy: always
-    #state: started
+- name: Deploy Lets Encrypt
+  docker_container:
+    name: letsencrypt
+    image: "jrcs/letsencrypt-nginx-proxy-companion"
+    pull: yes
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/nginx-proxy:/etc/nginx/certs:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    volumes_from:
+      - "nginx"
+    env:
+      DEBUG: true
+    restart_policy: always
+    state: started
