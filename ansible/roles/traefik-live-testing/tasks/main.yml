@@ -26,12 +26,11 @@
 
 - debug: msg="Using following domain {{domain_input.user_input}}"
 
-- tasks:
-    - name: Replace yourdomain.com with users domain
-    - replace:
-        dest: /opt/appdata/traefik/traefik.toml
-        regexp: \"(yourdomain.com)\"
-        line: '"{{domain_input.user_input}}"'
+- name: Replace yourdomain.com with users domain
+  - replace:
+    dest: /opt/appdata/traefik/traefik.toml
+    regexp: \"(yourdomain.com)\"
+    line: '"{{domain_input.user_input}}"'
 #############################
 
 - name: Remove Traefik
