@@ -102,21 +102,13 @@ plexguide
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot the Server!
 
-**G. Decision Time - Normal Install or Reverse Proxy**
-- No Reverse Proxy (Access Via http://ipv4:port) (Ex: http://192.168.1.20:7878)
-  - Requires No Domain
-  - Provides Less Protection and Exposed Ports
-  - No LetsEncrypt Support
-  - Select #2 From the Menu
+**G. (Optional) Setting Up Your Reverse Proxy**
 
-- NGINX Reverse Proxy (Access Via Subdomain http://sub.domain.com) (Ex: http://radarr.domain.com)
-  - **STILL IN TESTING - DO NOT USE OR FOLLOW THIS ONE**
-  - Requires a Domain
+- NGINX Reverse Proxy Access Via Apps Via Subdomain (Ex: http://radarr.domain.com)
+ - [Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
-  - Provides More Protection and Closes Exposed Ports / Can Access ports only via Localhost)
-  - Future Support for LetsEncrypt
-  - **STILL IN TESTING - DO NOT USE OR FOLLOW THIS ONE**
+
 
 **H. Installing & Setting Up Support Programs**
 
