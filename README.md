@@ -1,5 +1,9 @@
 # PlexGuide.com - Version 5
 
+## Social
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
+- Reddit Discussion Link: http://reddit.plexguide.com
+
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
@@ -14,17 +18,13 @@
 - Additonal Code Crew: [The Creator](https://github.com/TheCreatorzOne)
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
 - **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
+- This will remain as developer version for quite some time.  We keep adding & fixing things!
 
 ### Awesome Beta Testers & Contributers!
 
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
 
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
-
-## Social
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
-- Reddit Discussion Link: http://reddit.plexguide.com
-- Slack is now discontinued! Use the offical Discord instead!
 
 ### Want to Donate? Everybit Helps!
 
