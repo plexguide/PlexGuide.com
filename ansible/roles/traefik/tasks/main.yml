@@ -1,16 +1,16 @@
 ---
 ########## Move Script if not Present
-  - name: Check SCRIPT
-    stat:
-      path: "/opt/appdata/traefik/traefik.toml"
-    register: script
+- name: Check SCRIPT
+  stat:
+    path: "/opt/appdata/traefik/traefik.toml"
+  register: script
     
-  - name: Install Move Service
-    template:
-      src: traefik.js2
-      dest: /opt/appdata/traefik/traefik.toml
-      force: yes
-    when: script.stat.exists == False
+- name: Install Move Service
+  template:
+    src: traefik.js2
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+  when: script.stat.exists == False
 #############################
 
 - name: Remove Traefix
