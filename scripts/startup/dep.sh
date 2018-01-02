@@ -67,9 +67,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
   echo "10. Installing Portainer for Docker (Please Wait)"
 
 # Installs Portainer
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx-proxy
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-  docker exec nginx nginx -s reload
 ############################################# Install a Post-Docker Fix ###################### START
 
     echo "11. Finishing Up"
