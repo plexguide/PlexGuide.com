@@ -21,7 +21,7 @@
 - name: Deploy NGINX_Proxy
   docker_container:
     name: nginx
-    image: "jwilder/nginx-proxy"
+    image: "neilpang/nginx-proxy"
     pull: yes
     published_ports:
       - "80:80"
