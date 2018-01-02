@@ -49,8 +49,8 @@
 
 - name: PlexGuide Network
   docker_network:
-    name: nginx-proxy
+    name: plexguide
     ipam_options:
-      subnet: '172.21.0.0/16'
-      gateway: '172.21.0.254'
-      iprange: '172.21.0.0/24'
+      subnet: '172.20.0.0/16'
+      gateway: '172.20.0.254'
+      iprange: '172.20.0.0/24'
