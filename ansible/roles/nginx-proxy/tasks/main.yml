@@ -41,6 +41,7 @@
         #aliases:
         #- nginx-proxy
     state: started
+    network_mode: bridge
 
 - name: Deploy Lets Encrypt
   docker_container:
