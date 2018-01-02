@@ -1,0 +1,20 @@
+---
+- name: Remove Traefix
+  docker_container:
+    name: traefik
+    state: absent
+
+- name: Deploy Traefix
+  docker_container:
+    name: traefik
+    image: traefik
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8080:8080"
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started

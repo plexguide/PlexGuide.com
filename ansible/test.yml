@@ -2,4 +2,4 @@
 - hosts: localhost
 
   roles:
-  - { role: docker, tags: ['docker'] }
+  - { role: traefik, tags: ['traefik'] }
