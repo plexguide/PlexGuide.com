@@ -30,8 +30,8 @@
     - name: Replace yourdomain.com with users domain
       lineinfile:
         dest: /opt/appdata/traefik/traefik.toml
-        regexp: '^\s*yourdomain.com.*$'
-        line: '{{domain_input.user_input}}'
+        regexp: \"(yourdomain.com)\"
+        line: '"{{domain_input.user_input}}"'
 #############################
 
 - name: Remove Traefik
