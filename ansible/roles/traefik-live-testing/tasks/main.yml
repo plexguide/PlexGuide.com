@@ -23,7 +23,7 @@
 - debug: msg="Using following domain {{domain_input.user_input}}"
 
 - name: Replace Domain
-  - tasks:
+  tasks:
     - name: Replace yourdomain.com with users domain
       lineinfile:
         dest: /opt/appdata/traefik/traefik.toml
