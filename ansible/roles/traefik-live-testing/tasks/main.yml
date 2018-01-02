@@ -11,10 +11,10 @@
   register: script
 
 - name: Removing File Directories
-    file:
-      state: absent
-      path: /opt/appdata/traefik/traefik.toml
-    when: script.stat.exists
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+  when: script.stat.exists
 
 - name: Installing Traefik.Toml
   template:
