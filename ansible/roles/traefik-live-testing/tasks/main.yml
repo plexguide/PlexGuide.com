@@ -1,24 +1,10 @@
 ---
-########## Move Script if not Present
-- name: Check SCRIPT
-  stat:
-    path: "/opt/appdata/traefik/traefik.toml"
-  register: script
-
-- name: Installing Traefik.Toml
-  template:
-    src: traefik.js2
-    dest: /opt/appdata/traefik/traefik.toml
-    force: yes
-  when: script.stat.exists == False
-#############################
-
-- name: Remove Traefik
+- name: Remove Traefix
   docker_container:
     name: traefik
     state: absent
 
-- name: Deploy Traefik
+- name: Deploy Traefix
   docker_container:
     name: traefik
     image: traefik
