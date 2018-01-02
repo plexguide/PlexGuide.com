@@ -35,10 +35,10 @@
     #labels:
       #com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     restart_policy: always
-    networks:
-      - name: bridge
-        aliases:
-        - nginx-proxy
+    #networks:
+      #- name: bridge
+        #aliases:
+        #- nginx-proxy
     state: started
 
 #- name: Deploy Lets Encrypt
