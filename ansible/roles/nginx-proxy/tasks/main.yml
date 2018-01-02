@@ -37,7 +37,7 @@
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     restart_policy: always
     networks:
-      - name: nginx-proxy
+      - name: plexguide
         aliases:
         - nginx-proxy
     state: started
