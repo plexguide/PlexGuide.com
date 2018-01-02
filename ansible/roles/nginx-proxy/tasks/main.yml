@@ -10,7 +10,7 @@
 
 - name: Remove NGINX-Proxy Container
   docker_container:
-    name: nginx-proxy
+    name: nginx
     state: absent
 
 #- name: Remove LetsEncrypt
@@ -20,7 +20,7 @@
 
 - name: Deploy NGINX_Proxy
   docker_container:
-    name: nginx-proxy
+    name: nginx
     image: "jwilder/nginx-proxy"
     pull: yes
     published_ports:
