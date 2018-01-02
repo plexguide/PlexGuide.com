@@ -18,7 +18,7 @@
   register: domain_input
   private: no
 
-- debug: msg="Using following domain: {{domain_input.user_input}}"
+- debug: msg="Using following domain {{domain_input.user_input}}"
 
 - tasks:
   - name: Replace yourdomain.com with users domain
