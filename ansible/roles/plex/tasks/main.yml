@@ -36,12 +36,12 @@
 
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:public"
+    name: "plexinc/pms-docker:plexpass"
 
 - name: Deploy Plex Container
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:public"
+    image: "plexinc/pms-docker:plexpass"
     pull: yes
     published_ports:
       - "32400:32400"
