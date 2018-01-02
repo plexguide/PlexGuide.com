@@ -37,13 +37,6 @@
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     restart_policy: always
     state: started
-    env:
-      PUID: 1000
-      PGID: 1000
-    networks:
-      - name: nginx-proxy
-        aliases:
-          - nginx-proxy
 
 - name: Deploy Lets Encrypt
   docker_container:
@@ -60,7 +53,3 @@
       DEBUG: true
     restart_policy: always
     state: started
-    networks:
-      - name: nginx-proxy
-        aliases:
-          - letsencrypt
