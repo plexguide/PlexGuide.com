@@ -21,8 +21,8 @@
 - name: domain
   pause:
     prompt: "Enter your domain here"
-    register: domain_input
-    private: no
+  register: domain_input
+
 
 - debug: msg="Using following domain {{domain_input.user_input}}"
 
