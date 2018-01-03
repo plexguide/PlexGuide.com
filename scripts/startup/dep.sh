@@ -1,7 +1,7 @@
 clear
 
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
-if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 78) then
+if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
 ###################### Install Depdency Programs ###############
 
@@ -10,7 +10,6 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     echo ""
     echo "1. Conducting a System Update (Please Wait)"
     yes | apt-get update 1>/dev/null 2>&1
-
     echo "2. Installing Software Properties Common (Please Wait)"
     yes | apt-get install software-properties-common 1>/dev/null 2>&1
     echo "3. Pre-Install for Ansible Playbook (Please Wait)"
@@ -26,10 +25,6 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
     echo ""
     echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
-
-################### This might be deleted, cannot remember function
-# mkdir -p /opt/plexguide-startup 1>/dev/null 2>&1
-# chmod 755 /opt/plexguide-startup 1>/dev/null 2>&1
 
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
@@ -48,11 +43,6 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
   bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
-
-#  Adding basic environment file ################################
-#  chmod +x bash /opt/plexguide/scripts/basic-env.sh
-
-#  bash /opt/plexguide/scripts/test/basic-env.sh 1>/dev/null 2>&1
 
   echo "9. Installing Docker & Docker Compose (Please Standby)"
 

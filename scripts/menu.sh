@@ -17,8 +17,6 @@ fi
 
 ## ensure folders follow plexguide
 
-bash /opt/plexguide/scripts/startup/owner.sh
-
 function contextSwitch {
    {
    ctxt1=$(grep ctxt /proc/stat | awk '{print $2}')
