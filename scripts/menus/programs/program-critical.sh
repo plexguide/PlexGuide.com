@@ -64,7 +64,7 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
-    docker exec nginx nginx -s reload
+    echo "Traefik: http://ipv4:8080 | For Traefik Proxy traefik.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
