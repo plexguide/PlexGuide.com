@@ -9,13 +9,15 @@
 </p>
 
 ----------------------------------------------------------------------
+**Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
+
 ### Social
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
 - Reddit Discussion Link: http://reddit.plexguide.com
 
 
 ### Coded By
-[Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
+- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
 ### Awesome Beta Testers & Contributers!
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
@@ -24,7 +26,6 @@
 
 ### Awesome Beta Testers & Contributers!
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
-- **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 - This will remain as developer version for quite some time.  We keep adding & fixing things!
 
 ### Want to Donate? Everybit Helps!
