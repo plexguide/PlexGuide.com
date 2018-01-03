@@ -3,7 +3,7 @@ services:
   my-wpdb:
     image: mariadb
     ports:
-      - "8081:3306"
+      - "8082:3306"
     environment:
       MYSQL_ROOT_PASSWORD: SUPERSTrongWp@$$
   my-wp:
