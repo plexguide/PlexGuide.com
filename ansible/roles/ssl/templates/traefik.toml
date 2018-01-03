@@ -1,0 +1,41 @@
+################################################################
+# Web configuration backend
+################################################################
+[web]
+address = ":8080"
+
+################################################################
+# Debug Options and Values
+################################################################
+debug = false
+checkNewVersion = true
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+################################################################
+# http and https redirect backend
+################################################################
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+################################################################
+# Docker configuration backend
+################################################################
+[docker]
+domain = "yourdomain.com"
+watch = true
+
+################################################################
+# Let's Encrypt information backend
+################################################################
+[acme]
+email = "your@email.com"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true

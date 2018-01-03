@@ -4,3 +4,4 @@
   roles:
   - { role: traefik, tags: ['traefik'] }
   - { role: medusa, tags: ['medusa'] }
+  - { role: ssl, tags: ['ssl'] }
