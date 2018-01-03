@@ -49,7 +49,7 @@ do
 CHOICE=$(
 whiptail --title "Media Choice" --menu "Make your choice" 12 30 5 \
     "1)" "VPN Torrent"   \
-    "2)" "Old School Proxy"   \
+    "2)" "Medusa"   \
     "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -61,12 +61,11 @@ case $CHOICE in
     ;;
 
     "2)")
-    echo ymlprogram nginx-proxy > /opt/plexguide/tmp.txt
-    echo ymldisplay NGINX-Proxy >> /opt/plexguide/tmp.txt
-    echo ymlport 0000 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
+    echo "Medusa: http://ipv4:8081| For NGINX Proxy medusa.domain.com"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
      "3)")
       clear
