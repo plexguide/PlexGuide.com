@@ -15,8 +15,7 @@
 
 
 ### Basic Information
-- Written By [Admin9705](https://github.com/Admin9705) and [Deiteq](https://github.com/Deiteq)
-- Additonal Code Crew: [The Creator](https://github.com/TheCreatorzOne)
+- Coded By: [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
 - **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 - This will remain as developer version for quite some time.  We keep adding & fixing things!
