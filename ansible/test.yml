@@ -3,5 +3,4 @@
 
   roles:
   - { role: traefik, tags: ['traefik'] }
-  - { role: traefik-live-testing, tags: ['traefik-live-testing'] }
   - { role: medusa, tags: ['medusa'] }
