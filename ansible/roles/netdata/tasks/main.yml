@@ -22,4 +22,6 @@
       VIRTUAL_PORT: 19999
       PUID: 1000
       PGID: 1000
+      LETSENCRYPT_HOST: "netdata.*"
+      LETSENCRYPT_EMAIL: user@dunn.cloud
     restart_policy: always
