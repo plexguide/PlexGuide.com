@@ -88,6 +88,7 @@
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
-      - /opt/appdata/traefik/ssl/acme.json:acme.json
+      #- /opt/appdata/traefik/ssl/acme.json:acme.json
+      - /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
     restart_policy: always
     state: started
