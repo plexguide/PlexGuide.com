@@ -24,7 +24,7 @@
 
 - name: domain
   pause:
-    prompt: "Enter your domain here"
+    prompt: "Enter your domain here! Don't Have One, just hit Enter"
   register: domain_input
 
 
