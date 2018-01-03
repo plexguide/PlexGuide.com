@@ -30,12 +30,16 @@ defaultEntryPoints = ["https","http"]
 [docker]
 domain = "yourdomain.com"
 watch = true
+endpoint = "unix:///var/run/docker.sock"
+exposedbydefault = true
+
 
 ################################################################
 # Let's Encrypt information backend
 ################################################################
 [acme]
 email = "your@email.com"
-storage = "acme.json"
+storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
 OnHostRule = true
+#onDemand = true

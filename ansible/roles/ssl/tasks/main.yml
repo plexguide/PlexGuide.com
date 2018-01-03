@@ -12,6 +12,11 @@
     - /opt/appdata/traefik
     - /opt/appdata/traefik/ssl
 
+- name: create traefik network
+  docker_network:
+    name: "proxy"
+    state: present
+
 ########## Check if Traefik config exists and register
 - name: Check if Traefik prerequisites exist
   stat:
@@ -84,11 +89,14 @@
     published_ports:
       - "8080:8080"
       - "80:80"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
       #- /opt/appdata/traefik/ssl/acme.json:acme.json
       - /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
+    networks:
+      - name: "proxy"
     restart_policy: always
     state: started
