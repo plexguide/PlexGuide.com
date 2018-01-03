@@ -50,7 +50,8 @@ CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 10 25 3 \
     "1)" "Muximux"   \
     "2)" "Organizr"   \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Wordpress"   \
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -70,6 +71,13 @@ case $CHOICE in
      ;;
 
      "3)")
+     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
+     echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
+     echo ymlport 10000 >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+     ;;
+
+     "4)")
       clear
       exit 0
       ;;
