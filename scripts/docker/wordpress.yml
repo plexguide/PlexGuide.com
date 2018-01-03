@@ -13,9 +13,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - VIRTUAL_HOST=plex.one
+      - VIRTUAL_HOST=wordpress.plex.one
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=plex.one
+      - LETSENCRYPT_HOST=wordpress.plex.one
       - LETSENCRYPT_EMAIL=user@dunn.cloud
     ports:
       - "10000:80"
