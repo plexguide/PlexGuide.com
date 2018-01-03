@@ -1,4 +1,10 @@
 ---
+- name: Removing File Directories
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+  when: script.stat.exists
+
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -10,19 +16,12 @@
     path: "/opt/appdata/traefik/traefik.toml"
   register: script
 
-- name: Removing File Directories
-  file:
-    state: absent
-    path: /opt/appdata/traefik/traefik.toml
-  when: script.stat.exists
-
 - name: Installing Traefik.Toml
   template:
     src: traefik.toml
     dest: /opt/appdata/traefik/traefik.toml
     force: yes
   when: script.stat.exists == False
-
 
 - name: domain
   pause:
