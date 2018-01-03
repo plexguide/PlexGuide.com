@@ -19,6 +19,7 @@ services:
       - LETSENCRYPT_EMAIL=user@dunn.cloud
     ports:
       - "10000:80"
+      - "10001:443"
     cpu_shares: 256
     links:
       - my-wpdb:mysql
