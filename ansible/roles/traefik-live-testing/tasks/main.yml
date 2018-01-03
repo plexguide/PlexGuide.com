@@ -3,7 +3,6 @@
   file:
     state: absent
     path: /opt/appdata/traefik/traefik.toml
-  when: script.stat.exists
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
