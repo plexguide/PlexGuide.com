@@ -20,7 +20,6 @@ file="/var/plexguide/message.no"
 if [ -e "$file" ]
 then
    whiptail --title "Support Message" --msgbox "Visit http://binance.plexguide.com to purchase crypto coins. Purchasing Ripple, Stellar, and Tron are the way to go. Any sign ups will help support future website server costs and possible prizes! I truly use the site myself!" 10 76
-   rm /var/plexguide/message.no
 else
   no
 fi
