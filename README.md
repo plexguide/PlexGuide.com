@@ -1,13 +1,8 @@
-# PlexGuide.com - Version 5
-
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
 
-<p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/preview02.png?raw=true" alt="PlexGuide.com Preview"/>
-</p>
-
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open")
 ----------------------------------------------------------------------
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
@@ -16,7 +11,7 @@
 - Reddit Discussion Link: http://reddit.plexguide.com
 
 
-### Coded By
+### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
 ### Awesome Beta Testers & Contributers!
