@@ -8,6 +8,7 @@
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
 ----------------------------------------------------------------------
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
+**Support US** Purchase multiple crypto curriencies via http://binance.plexguide.com Purchase Stellar & Ripple
 
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
