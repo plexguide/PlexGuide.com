@@ -20,14 +20,14 @@
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
 - This will remain as developer version for quite some time.  We keep adding & fixing things!
 
+### Social
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
+- Reddit Discussion Link: http://reddit.plexguide.com
+
 ### Want to Donate? Everybit Helps!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
-
-### Social
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
-- Reddit Discussion Link: http://reddit.plexguide.com
 
 ----------------------------------------------------------------------
 
