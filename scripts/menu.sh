@@ -10,18 +10,18 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&
 file="/var/plexguide/dep28.yes"
 if [ -e "$file" ]
 then
-   clear
+   touch /var/plexguide/message.no
 else
    bash /opt/plexguide/scripts/startup/dep.sh
-   touch /var/plexguide/message.no
 fi
 
 file="/var/plexguide/message.no"
 if [ -e "$file" ]
 then
-   whiptail --title "Support Message" --msgbox "Visit http://binance.plexguide.com to purchase crypto coins. Purchasing Ripple, Stellar, and Tron are the way to go. Any sign ups will help support future website server costs and possible prizes! I truly use the site myself!" 10 76
+   clear
 else
-  no
+   whiptail --title "Support Message" --msgbox "Visit http://binance.plexguide.com to purchase crypto coins. Purchasing Ripple, Stellar, and Tron are the way to go. Any sign ups will help support future website server costs and possible prizes! I truly use the site myself!" 10 76
+   rm /var/plexguide/message.no
 fi
 
 ## ensure folders follow plexguide
