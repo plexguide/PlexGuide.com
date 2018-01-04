@@ -49,7 +49,7 @@ do
 CHOICE=$(
 whiptail --title "Media Choice" --menu "Make your choice" 12 30 5 \
     "1)" "VPN Torrent"   \
-    "2)" "Medusa"   \
+    "2)" "Do Not Use"   \
     "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
