@@ -32,6 +32,10 @@
 
 ----------------------------------------------------------------------
 
+<p align="center">
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="Demo"/>
+</p>
+
 [![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](http://feathub.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server)
 
 ### Preparation, Installation & Configuration
