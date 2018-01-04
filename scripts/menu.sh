@@ -59,6 +59,8 @@ function interupts {
    } | whiptail --gauge "Getting data ..." 6 60 50
 }
 
+whiptail --title "Support Message" --msgbox "Visit http://binance.plexguide.com to purchase crypto coins.  Truly made 4 times profit purchasing XLM, XRM, and TRN coins.  Any sign ups will help support future website server costs!" 8 76
+
 while [ 1 ]
 do
 CHOICE=$(
