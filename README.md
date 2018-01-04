@@ -3,11 +3,13 @@
 </p>
 
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open")
+
+[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
 ----------------------------------------------------------------------
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
 ### Social
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
 - Reddit Discussion Link: http://reddit.plexguide.com
 
 
