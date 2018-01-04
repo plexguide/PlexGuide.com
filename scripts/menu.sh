@@ -62,12 +62,12 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "PlexGuide.com - v5.0021 (Admin9705 & Deiteq)" --menu "Make your choice" 17 50 10 \
+whiptail --title "Visit PlexGuide.com - v5.0022" --menu "Make your choice" 16 40 9 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs" \
    "4)" "Server & Net Benchmarks" \
-   "5)" "Info & TShoot" \
+   "5)" "Info & Troubleshoot" \
    "6)" "Backup & Restore" \
    "7)" "PlexGuide: Update" \
    "8)" "PlexGuide: UnInstall" \
