@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
 
