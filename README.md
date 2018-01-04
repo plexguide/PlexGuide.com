@@ -9,8 +9,6 @@
 ----------------------------------------------------------------------
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
-**Support US**: Purchase multiple crypto-curriencies via http://binance.plexguide.com - Purchase Stellar & Ripple! Value increased 4 times from late Dec 17 thru Jan 18!
-
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
@@ -28,6 +26,8 @@
 - Reddit Discussion Link: http://reddit.plexguide.com
 
 ### Want to Donate? Everybit Helps!
+
+**Support US**: Purchase multiple crypto-curriencies via http://binance.plexguide.com - Purchase Stellar & Ripple! Value increased 4 times from late Dec 17 thru Jan 18!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
