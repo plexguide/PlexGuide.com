@@ -8,11 +8,6 @@
 ----------------------------------------------------------------------
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
-### Social
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
-- Reddit Discussion Link: http://reddit.plexguide.com
-
-
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
@@ -29,6 +24,10 @@
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
+
+### Social
+- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
+- Reddit Discussion Link: http://reddit.plexguide.com
 
 ----------------------------------------------------------------------
 
