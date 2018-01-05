@@ -23,7 +23,7 @@ echo
 number=$RANDOM
 let "number %= $RANGE"
 
-if [ "$number" == 1 ]
+if [ "$number" -eq "1" ]
 then
    echo "1"
 else
