@@ -23,5 +23,5 @@
       PUID: 1000
       PGID: 1000
     restart_policy: always
-    networks:
-      - name: "proxy"
+    #networks:
+     # - name: "proxy"
