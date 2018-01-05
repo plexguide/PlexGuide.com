@@ -31,7 +31,7 @@ defaultEntryPoints = ["https","http"]
 domain = "yourdomain.com"
 watch = true
 endpoint = "unix:///var/run/docker.sock"
-exposedbydefault = false
+exposedbydefault = true
 
 
 ################################################################
