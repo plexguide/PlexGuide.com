@@ -6,13 +6,10 @@ count=1
 while [ "$count" -le $MAXCOUNT ]
 do
   number=$RANDOM
-  echo $number
   let "count += 1"  # Increment count.
 done
 
 RANGE=3
-
-echo
 
 number=$RANDOM
 let "number %= $RANGE"
