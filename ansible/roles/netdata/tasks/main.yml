@@ -24,6 +24,4 @@
       PGID: 1000
     restart_policy: always
     networks:
-      - name: proxy
-        aliases:
-          - netdata
+      - name: "proxy"
