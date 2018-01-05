@@ -52,14 +52,10 @@
   - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers)
 
 ** Recommend Space Requirements
-- Running Plex Only:
-  - Small Library (30GB-50GB)
-  - Large Library (100GB+):
-- Plex with Downloading/Uploading
-  - Small Library (80GB-100GB+)
-  - Large Library (200GB-300GB+)
+- Plex Only Server: Small Library (30GB-50GB) - Large Library (100GB+):
+- Plex with USENET or Torrents: Small Library (80GB-100GB+) - Large Library (200GB-300GB+)
 - Notes:
-  - Example:  The metadata of 10000 Movies and 2000 shows alone can run 80Gigs
+  - Example:  MetaDATA of 10000 Movies and 2000 shows can run 80Gigs big 
   - Warning:  If backing up your library, you need space for the additional zip file!
 
 **C. Preparation:**
@@ -78,9 +74,9 @@ Ensures that the distro has it's dependencies updated and no updates are queued.
 
 *Install Supporting Programs*
 ```sh
-sudo apt-get install git && sudo apt-get install whiptail
+sudo apt-get install git -y && sudo apt-get install whiptail -y
 ```
-This one is important as if you do not have git and whiptail you will not be able to fetch and run PlexGuide!
+Important as if you do not have git and whiptail; you will not be able to fetch and run PlexGuide!
 
 *Install PlexGuide*
 ```sh
