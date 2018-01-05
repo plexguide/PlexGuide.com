@@ -1,11 +1,6 @@
 #!/bin/bash
 
-#!/bin/bash
-
-# $RANDOM returns a different random integer at each invocation.
-# Nominal range: 0 - 32767 (signed 16-bit integer).
-
-MAXCOUNT=
+MAXCOUNT=1
 count=1
 
 echo
@@ -21,15 +16,21 @@ echo "-----------------"
 
 # If you need a random int within a certain range, use the 'modulo' operator.
 # This returns the remainder of a division operation.
-
-RANGE=5
-
+RANGE=2
+#$number is the endstate
 echo
 
 number=$RANDOM
 let "number %= $RANGE"
-#           ^^
-echo "Random number less than $RANGE  ---  $number"
+
+if [ "$number" == 1 ]
+then
+   echo "1"
+else
+   echo "5"
+fi
+
+
 
 echo
 exit 0
