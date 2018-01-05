@@ -24,6 +24,6 @@
       PGID: 1000
     restart_policy: always
     networks:
-      - name: plexguide
+      - name: proxy
         aliases:
           - netdata
