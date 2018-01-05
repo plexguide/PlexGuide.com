@@ -9,7 +9,7 @@ do
   let "count += 1"  # Increment count.
 done
 
-RANGE=3
+RANGE=4
 
 number=$RANDOM
 let "number %= $RANGE"
