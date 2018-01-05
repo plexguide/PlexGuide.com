@@ -3,7 +3,7 @@
 MAXCOUNT=1
 count=1
 
-while [ "$count" -le $MAXCOUNT ]    
+while [ "$count" -le $MAXCOUNT ]
 do
   number=$RANDOM
   echo $number
@@ -24,12 +24,12 @@ fi
 
 if [ "$number" -eq "2" ]
 then
-   echo "1"
+   echo "2"
 fi
 
 if [ "$number" -eq "3" ]
 then
-   echo "1"
+   echo "3"
 fi
 
 echo
