@@ -96,8 +96,6 @@
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
       #- /opt/appdata/traefik/ssl/acme.json:acme.json
       - /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
-    networks:
-      - name: "proxy"
     restart_policy: always
     state: started
     networks:
