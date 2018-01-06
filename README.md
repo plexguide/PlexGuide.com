@@ -17,9 +17,9 @@
 
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
 
-### Awesome Beta Testers & Contributers!
+### Important
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
-- This will remain as developer version for quite some time.  We keep adding & fixing things!
+- This will remain as developer version.  If you want a specific version, please download from [here](test)
 
 ### Social
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
