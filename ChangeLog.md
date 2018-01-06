@@ -1,6 +1,21 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
+### [5.0.0026] Actively Working
+#### Added
+- Added Port 5000:5000 to MEDUSA
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+
 ### [5.0.0025]
 #### Added
 - Add v2 DockerFix
@@ -17,8 +32,6 @@ Current Changes will continued to be modifed as known.
   - Timing issues resulted in containers sometimes losing unionfs/plexdrive4
 
 -------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.0.0024]
 #### Added
