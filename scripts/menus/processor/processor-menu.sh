@@ -57,7 +57,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Processor Performance" --menu "Make your choice" 11 60 5 \
+whiptail --title "Processor Performance" --menu "Make your choice" 12 60 5 \
     "1)" "Peformance Mode   - Recommend for Top Performance"  \
     "2)" "Ondemand Mode     - Default Mode"  \
     "3)" "Conservative Mode - Utilizes Less Power (Slowest)"  \
