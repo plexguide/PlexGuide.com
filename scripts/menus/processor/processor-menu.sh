@@ -69,24 +69,24 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/tasks/peformance.yml 
+    sudo ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance 
     ;;
 
     "2)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/tasks/ondemand.yml
+    sudo ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags ondemand
     ;;
 
     "3)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/tasks/conservative.yml
+    sudo ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags conservative
     ;;
 
     "4)")
     clear
     cpufreq-info
     echo ""
-    #### put pauses ###
+    read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "5)")
