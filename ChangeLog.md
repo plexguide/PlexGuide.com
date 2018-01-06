@@ -6,7 +6,6 @@ Current Changes will continued to be modifed as known.
 - Add v2 DockerFix
   - Reboots all containers 
   - Ensures other containers see unionfs/plexdrive4 properly
-  - 
 
 #### Changed
 - Installs new V2 and removes old v1 automatically
