@@ -10,7 +10,7 @@ do
 done
 
 ## so if the highest number is 10, the range must be 11 - Range = maxnumber + 1
-RANGE=4
+RANGE=6
 
 number=$RANDOM
 let "number %= $RANGE"
@@ -38,6 +38,11 @@ fi
 if [ "$number" -eq "4" ]
 then
    whiptail --title "Startup Message" --msgbox "We are looking for CODERS; even ones with limited experience! Want to improve your skills without drama? Join our TEAM! Trust me, we are new coders ourselves!" 10 76
+fi
+
+if [ "$number" -eq "5" ]
+then
+   whiptail --title "Startup Message" --msgbox "Visit http://htcbtc.plexguide.com to puchase more crypto! Purchasing bytecoins which are now exploding! Good to trade currency without ID requirements. Signups help pay for some costs; but I personally use!" 10 76
 fi
 
 echo
