@@ -1,3 +1,0 @@
----
-- name: System Reboot
-  shell: reboot

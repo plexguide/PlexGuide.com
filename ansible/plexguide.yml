@@ -31,4 +31,3 @@
   - { role: plex-beta, tags: ['plex-beta'] }
   - { role: traefik, tags: ['traefik'] }
   - { role: medusa, tags: ['medusa'] }
-  - { role: reboot, tags: ['reboot'] }
