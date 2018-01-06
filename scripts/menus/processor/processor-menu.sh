@@ -44,64 +44,52 @@ function interupts {
     } | whiptail --gauge "Getting data ..." 6 60 50
 }
 
+################# Virtual Machine Check
+if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine?" 8 76) then
+
+    whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a virtual machine. Trust me, it does not work if you try!" 9 76
+    exit 
+else
+    whiptail --title "Virutal Machine - No" --msgbox "We will now ask you if you want to enhance your cpu - processor performance. We recommend that you utilize performance mode!" 9 76
+fi
+
+
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 16 26 9 \
-    "1)" "Plex & Emby"  \
-    "2)" "NZBs"  \
-    "3)" "Torrents"  \
-    "4)" "Managers"  \
-    "5)" "Supporting"  \
-    "6)" "UI Organizers"  \
-    "7)" "Critical"  \
-    "8)" "Beta Testing"  \
-    "9)" "Exit  "  3>&2 2>&1 1>&3
+whiptail --title "Processor Performance" --menu "Make your choice" 11 45 5 \
+    "1)" "Peformance Mode   - Recommend for Top Performance"  \
+    "2)" "Ondemand Mode     - Default Mode"  \
+    "3)" "Conservative Mode - Utilizes Less Power (Slowest)"  \
+    "4)" "View Current Processor Policy"  \
+    "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-media.sh
+    ansible-playbook /opt/plexguide/ansible/roles/processor/tasks/peformance.yml 
     ;;
 
     "2)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-nzbs.sh
+    ansible-playbook /opt/plexguide/ansible/roles/processor/tasks/ondemand.yml
     ;;
 
     "3)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-torrent.sh
+    ansible-playbook /opt/plexguide/ansible/roles/processor/tasks/conservative.yml
     ;;
 
     "4)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-managers.sh
+    cpufreq-info
+    echo ""
+    #### put pauses ###
     ;;
 
     "5)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-support.sh
-    ;;
-
-    "6)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-ui.sh
-    ;;
-
-    "7)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-critical.sh
-    ;;
-
-    "8)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-beta.sh
-    ;;
-
-    "9)")
       clear
       exit 0
       ;;
