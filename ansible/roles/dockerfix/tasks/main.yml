@@ -1,33 +1,31 @@
 ---
-########################################## Scripts
-########### Install Docker Reboot   
-  - name: Install Docker Reboot
-    template:
-      src: dockerfix_script.js2
-      dest: /opt/appdata/plexguide/dockerfix.sh
-      force: yes
-    when: dockerfix_script.stat.exists == False
-########################################## Services
-########### Move Service
+########################################## Scripts   
   - name: Check DockerFix Service
     stat:
-      path: "/etc/systemd/system/dockerfix.service"
-    register: dockerfix
+      path: "/etc/systemd/system/v2dockerfix.service"
+    register: v2dockerfix
+
+  - name: Install Docker Reboot
+    template:
+      src: v2dockerscript.js2
+      dest: /opt/appdata/plexguide/v2dockerscript.sh
+      force: yes
+########################################## Services
 
   - name: Stop If DockerFix Service Running
-    systemd: state=stopped name=dockerfix
-    when: dockerfix.stat.exists
+    systemd: state=stopped name=v2dockerfix
+    when: v2dockerfix.stat.exists
     
   - name: Install DockerFix Service
     template:
-      src: dockerfix.js2
-      dest: /etc/systemd/system/dockerfix.service 
+      src: v2dockerfix.js2
+      dest: /etc/systemd/system/v2dockerfix.service 
       force: yes
-    when: dockerfix.stat.exists == False
+    when: v2dockerfix.stat.exists == False
 
   - name: Daemon-Reload
-    systemd: state=stopped name=dockerfix daemon_reload=yes enabled=no
+    systemd: state=stopped name=v2dockerfix daemon_reload=yes enabled=no
 
   - name: Start DockerFix
     systemd: state=started name=move enabled=yes
-    when: dockerfix.stat.exists
+    when: v2dockerfix.stat.exists
