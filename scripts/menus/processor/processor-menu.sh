@@ -45,19 +45,19 @@ function interupts {
 }
 
 ################# Virtual Machine Check
-if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine?" 8 76) then
+if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine?" 8 65) then
 
-    whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a virtual machine. Trust me, it does not work if you try!" 9 76
+    whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a virtual machine. Trust me, it does not work if you try!" 9 65
     exit 
 else
-    whiptail --title "Virutal Machine - No" --msgbox "We will now ask you if you want to enhance your cpu - processor performance. We recommend that you utilize performance mode!" 9 76
+    whiptail --title "Virutal Machine - No" --msgbox "We will now ask you if you want to enhance your cpu - processor performance. We recommend that you utilize performance mode!" 9 65
 fi
 
 
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Processor Performance" --menu "Make your choice" 11 45 5 \
+whiptail --title "Processor Performance" --menu "Make your choice" 11 60 5 \
     "1)" "Peformance Mode   - Recommend for Top Performance"  \
     "2)" "Ondemand Mode     - Default Mode"  \
     "3)" "Conservative Mode - Utilizes Less Power (Slowest)"  \
@@ -69,17 +69,17 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    sudo ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance 
+    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance 
     ;;
 
     "2)")
     clear
-    sudo ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags ondemand
+    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags ondemand
     ;;
 
     "3)")
     clear
-    sudo ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags conservative
+    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags conservative
     ;;
 
     "4)")
