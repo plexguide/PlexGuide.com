@@ -3,3 +3,4 @@
 
   roles:
   - { role: sabnzbdtest, tags: ['sabnzbdtest'] }
+  - { role: cpu, tags: ['cpu'] }

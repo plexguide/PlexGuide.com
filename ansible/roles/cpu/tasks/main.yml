@@ -1,0 +1,53 @@
+## Notes: https://wiki.archlinux.org/index.php/CPU_frequency_scaling
+
+- name: Install CPUFrequtils
+  apt: "name={{item}} state=latest"
+  with_items:
+    - cpufrequtils
+
+########### Remove Current Governor if it exists
+
+
+################################# Install CPU Freq /w Governor
+
+## Three Modes With Menu Selection
+# 1. Performance, 2. Ondemand, 3. Conservative
+
+- name: CPUFrequtils Checker
+  stat:
+    path: /etc/default/cpufrequtils
+  register: cpu
+
+- name: Create /etc/plexguide/cpufrequtils
+  file:
+    path: /etc/plexguide/cpufrequtils
+    state: touch
+  when: cpu.stat.exists == False
+
+################################## Modes
+- name: CPU 2 Performance
+  lineinfile:
+    path: "/etc/default/cpufrequtils"
+    regexp: '^GOVENOR\s?='
+    line: 'GOVENOR="performance"'
+    state: present
+
+- name: CPU Freq Set
+  lineinfile:
+    path: "/etc/default/cpufrequtils"
+    regexp: '^GOVERNOR\s?='
+    line: 'GOVERNOR="performance"'
+    state: present
+
+- name: Enable Governer
+  lineinfile:
+    path: "/etc/plexguide/cpufrequtils"
+    regexp: '^ENABLE\s?='
+    line: 'ENABLE="true"'
+    state: present
+
+################################################################## END OF EXECUTION
+- name: Disable Scaling Frequencyh
+  shell: "update-rc.d ondemand disable"
+
+  ################### Set to Reboot
