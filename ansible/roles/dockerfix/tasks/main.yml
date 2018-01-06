@@ -27,5 +27,5 @@
     systemd: state=stopped name=v2dockerfix daemon_reload=yes enabled=no
 
   - name: Start DockerFix
-    systemd: state=started name=move enabled=yes
+    systemd: state=started name=v2dockerfix enabled=yes
     when: v2dockerfix.stat.exists
