@@ -12,9 +12,6 @@
       force: yes
 ########################################## Remove Old Services
 
-  - name: Stop If Old Docker Fix Exists
-    systemd: state=stopped name=dockerfix
-
   - name: Remove Old Docker Fix
     file:
       state: absent
