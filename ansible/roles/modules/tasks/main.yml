@@ -20,7 +20,7 @@
 
 - name: Create /etc/default/cpufrequtils
   file:
-    path: /etc/plexguide/cpufrequtils
+    path: /etc/default/cpufrequtils
     state: touch
   when: cpu.stat.exists == False
 
