@@ -48,7 +48,7 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 16 26 9 \
-    "1)" "Plex & Emby"  \
+    "1)" "Media Servers"  \
     "2)" "NZBs"  \
     "3)" "Torrents"  \
     "4)" "Managers"  \
