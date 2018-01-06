@@ -45,12 +45,12 @@ function interupts {
 }
 
 ################# Virtual Machine Check
-if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine?" 8 65) then
+if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine?" 8 56) then
 
-    whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a virtual machine. Trust me, it does not work if you try!" 9 65
+    whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a virtual machine. Trust me, it does not work if you try!" 9 66
     exit 
 else
-    whiptail --title "Virutal Machine - No" --msgbox "We will now ask you if you want to enhance your cpu - processor performance. We recommend that you utilize performance mode!" 9 65
+    whiptail --title "Virutal Machine - No" --msgbox "We will now ask you if you want to enhance your cpu - processor performance. We recommend that you utilize performance mode!" 9 66
 fi
 
 
