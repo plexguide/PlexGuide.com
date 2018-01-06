@@ -81,7 +81,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep28.yes
+   touch /var/plexguide/dep29.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 
