@@ -44,6 +44,7 @@ function interupts {
     } | whiptail --gauge "Getting data ..." 6 60 50
 }
 
+sudo touch /var/plexguide/asked.processor
 ################# Virtual Machine Check
 if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine?" 8 56) then
 
@@ -68,17 +69,20 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance 
+    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance
+    bash /opt/plexguide/scripts/menus/processor/reboot.sh
     ;;
 
     "2)")
     clear
     ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags ondemand
+    bash /opt/plexguide/scripts/menus/processor/reboot.sh
     ;;
 
     "3)")
     clear
     ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags conservative
+    bash /opt/plexguide/scripts/menus/processor/reboot.sh
     ;;
 
     "4)")
