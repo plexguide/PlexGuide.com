@@ -5,13 +5,14 @@
   with_items:
     - cpufrequtils
 
-########### Remove Current Governor if it exists
+########### Remove Governer Policy If Exists
 
+- name: Removing File Directories
+  file:
+    state: absent
+    path: /etc/default/cpufrequtils
 
-################################# Install CPU Freq /w Governor
-
-## Three Modes With Menu Selection
-# 1. Performance, 2. Ondemand, 3. Conservative
+########### Set Governer File
 
 - name: CPUFrequtils Checker
   stat:
@@ -24,8 +25,11 @@
     state: touch
   when: cpu.stat.exists == False
 
-################################## Modes
-- name: CPU 2 Performance
+########### Establish CPU Performance
+## Three Modes With Menu Selection
+## 1. Performance, 2. Ondemand, 3. Conservative
+
+- name: CPU Performance = Performance
   lineinfile:
     path: "/etc/default/cpufrequtils"
     regexp: '^GOVENOR\s?='
@@ -46,8 +50,7 @@
     line: 'ENABLE="true"'
     state: present
 
-################################################################## END OF EXECUTION
+################### STOP SCALING
+
 - name: Disable Scaling Frequencyh
   shell: "update-rc.d ondemand disable"
-
-  ################### Set to Reboot

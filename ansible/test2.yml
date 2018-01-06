@@ -3,4 +3,4 @@
 
   roles:
   - { role: sabnzbdtest, tags: ['sabnzbdtest'] }
-  - { role: modules, tags: ['modules'] }
+  - { role: processor, tags: ['processor'] }
