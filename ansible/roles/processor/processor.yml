@@ -3,5 +3,7 @@
 
   roles:
   - { role: performance, tags: ['performance'] }
+  - { role: ondemand, tags: ['ondemand'] }
+  - { role: conservative, tags: ['conservative'] }
 
 
