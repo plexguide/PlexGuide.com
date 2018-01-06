@@ -95,7 +95,7 @@ plexguide
 - Only use for a REAL Machine; useless for a virtual machine
 - Select [Set CPU Performance]
 - Select Performance mode for best result; default is OnDemand mode
-- Screenshot of Performance Mode | Screenshot of OnDemand Mode | Screenshot of Conservative Mode
+- Screenshot of Performance Mode | Screenshot of OnDemand Mode | Screenshot of [Conservative Mode](https://imgur.com/a/ES9tw)
 
 **F. Benchmarks**
 - Select [Server/Net Benchmarks] on the PlexGuide front Menu
@@ -116,7 +116,6 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
  - [Configuring Traefik Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Traefik-Reverse-Proxy)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
-
 
 **I. Installing & Setting Up Support Programs**
 
