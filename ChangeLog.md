@@ -3,7 +3,7 @@ Current Changes will continued to be modifed as known.
 
 ### [5.0.0026] Actively Working
 #### Added
-- Added Port 5000:5000 to MEDUSA
+- None
 
 #### Changed
 - None
