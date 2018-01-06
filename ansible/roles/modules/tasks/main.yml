@@ -18,7 +18,7 @@
     path: /etc/default/cpufrequtils
   register: cpu
 
-- name: Create /etc/plexguide/cpufrequtils
+- name: Create /etc/default/cpufrequtils
   file:
     path: /etc/plexguide/cpufrequtils
     state: touch
@@ -41,7 +41,7 @@
 
 - name: Enable Governer
   lineinfile:
-    path: "/etc/plexguide/cpufrequtils"
+    path: "/etc/default/cpufrequtils"
     regexp: '^ENABLE\s?='
     line: 'ENABLE="true"'
     state: present

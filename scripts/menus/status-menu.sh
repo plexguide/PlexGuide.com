@@ -31,30 +31,23 @@ show_menus() {
 
 clear
 cat << EOF
-Service Status Checks
-
 Plexdrive Test - Can use both for Encrypted ********************************
-
 1. Plexdrive4           :   View status of the Plexdrive4 service
 2. Plexdrive4-Encrypt   :   View status of the Plexdrive4 Encrypted service
 
 RClone Tests - Can use both for Encrypted **********************************
-
 3. RClone               :   View status of the RClone Unencrypted service
 4. RClone-Encrypt       :   View status of the RClone Encrypted service
 
 UnionFS Tests - Only use 1 *************************************************
-
 5. UnionFS              :   View status of the Unencrypted service
 6. UnionFS-Encrypt      :   View status of the Encrypted service
 
 Move Tests - Only use 1 ****************************************************
-
 7. Move                 :   View status of the Unencrypted SYNC service
 8. Move-Encrypt         :   View status of the Encrypted SYNC service
 
 Restart Services - For any issues found above ******************************
-
 9. Restart Menu         :   Here you can restart the services that need it!
 
 EOF
