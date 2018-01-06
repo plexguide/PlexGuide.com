@@ -42,7 +42,7 @@ fi
 
 if [ "$number" -eq "5" ]
 then
-   whiptail --title "Startup Message" --msgbox "Visit http://htcbtc.plexguide.com to puchase more crypto! Purchasing bytecoins which are now exploding! Good to trade currency without ID requirements. Signups help pay for some costs; but I personally use!" 10 76
+   whiptail --title "Startup Message" --msgbox "Visit http://hitbtc.plexguide.com to puchase more crypto! Purchasing bytecoins which are now exploding! Good to trade currency without ID requirements. Signups help pay for some costs; but I personally use!" 10 76
 fi
 
 echo
