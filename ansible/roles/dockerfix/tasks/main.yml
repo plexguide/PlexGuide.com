@@ -23,7 +23,7 @@
   - name: Remove Old Docker File
     file:
       state: absent
-      path: /opt/appdata/plexguide/dockrfix.sh
+      path: /opt/appdata/plexguide/dockerfix.sh
 
 ########################################## New Service
 

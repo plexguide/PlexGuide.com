@@ -5,7 +5,7 @@ do
     docker=$(docker stop $container)
 done
 
-sleep 8
+sleep 9
 
 for container in $containers;
 do

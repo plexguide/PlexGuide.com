@@ -65,57 +65,9 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
   docker rm nginx-proxy 1>/dev/null 2>&1
 ############################################# Install a Post-Docker Fix ###################### START
 
-    echo "11. Finishing Up"
+  echo "11. Installing DockerFix & Service Activation"
 
-tee "/opt/plexguide/scripts/dockerfix.sh" > /dev/null <<EOF
-  #!/bin/bash
-  sleep 20
-  while true
-  do
-    docker restart emby 1>/dev/null 2>&1
-    docker restart nzbget 1>/dev/null 2>&1
-    docker restart radarr 1>/dev/null 2>&1
-    docker restart sonarr 1>/dev/null 2>&1
-    docker restart plexpass 1>/dev/null 2>&1
-    docker restart plexpublic 1>/dev/null 2>&1
-    docker restart sabnzbd 1>/dev/null 2>&1
-  sleep 6000000000000000000000000
-  done
-EOF
-
-  chmod 755 /opt/plexguide/scripts/dockerfix.sh
-
-## Create the Post-Docker Fix Service
-tee "/etc/systemd/system/dockerfix.service" > /dev/null <<EOF
-    [Unit]
-    Description=Move Service Daemon
-    After=multi-user.target
-    [Service]
-    Type=simple
-    User=root
-    Group=root
-    ExecStart=/bin/bash /opt/plexguide/scripts/dockerfix.sh
-    TimeoutStopSec=20
-    KillMode=process
-    RemainAfterExit=yes
-    Restart=always
-    [Install]
-    WantedBy=multi-user.target
-EOF
-
-  systemctl daemon-reload
-  systemctl enable dockerfix 1>/dev/null 2>&1
-  systemctl start dockerfix 1>/dev/null 2>&1
-
-  echo "12. Rebooting Any Running Containers - Assist UnionFS (Please Wait)"
-
-  docker restart emby 1>/dev/null 2>&1
-  docker restart nzbget 1>/dev/null 2>&1
-  docker restart radarr 1>/dev/null 2>&1
-  docker restart sonarr 1>/dev/null 2>&1
-  docker restart plexpass 1>/dev/null 2>&1
-  docker restart plexpublic 1>/dev/null 2>&1
-  docker restart sabnzbd 1>/dev/null 2>&1
+  sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
