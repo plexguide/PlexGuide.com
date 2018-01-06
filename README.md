@@ -91,19 +91,25 @@ sudo bash /opt/plexg*/sc*/ins*
 plexguide
 ```
 
-**E. Benchmarks**
+**E. Set CPU Performance**
+- Only use for a REAL Machine; useless for a virtual machine
+- Select [Set CPU Performance]
+- Select Performance mode for best result; default is OnDemand mode
+- Screenshot of Performance Mode | Screenshot of OnDemand Mode | Screenshot of Conservative Mode
+
+**F. Benchmarks**
 - Select [Server/Net Benchmarks] on the PlexGuide front Menu
 - It is a good idea to check your benchmarks prior to setting up everything else
 - Remember to conduct multiple tests if you feel uneasy about your results
 
-**F. RClone / PlexDrive / UnionFS**
+**G. RClone / PlexDrive / UnionFS**
  - Install & Configure (Select Only One)
  - YouTube Demo Video (V2) for RClone, UnionFS & PlexGuide: https://youtu.be/T0eXtrOY4kw
    - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot the Server!
 
-**G. (Optional) Setting Up Your Reverse Proxy**
+**H. (Optional) Setting Up Your Reverse Proxy**
 
 Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
 
@@ -112,17 +118,14 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
     - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
 
 
-**H. Installing & Setting Up Support Programs**
+**I. Installing & Setting Up Support Programs**
 
  - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
-**I. Final Notes**
+**J. Final Notes**
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com).
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
 - Your Feedback Helps Us and You!
-
-**J. Quick Troubleshoot**
-- Docker Install Failure: If Docker refuses to install, visit Tools and force the reinstall. If that fails; most likely you are running an older version of UB or have a VPS service that runs and outdated kernel. [[Manual Docker Install Incase]](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository)
