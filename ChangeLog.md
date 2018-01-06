@@ -12,6 +12,7 @@ Current Changes will continued to be modifed as known.
 ### Removed
 - None
 
+-------------------------------------------------------
 # Past Changes
 Historical Documented Changes will be stored as below.
 
