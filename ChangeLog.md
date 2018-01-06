@@ -1,7 +1,7 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.0.0024] - 6 JAN 2018
+### [5.0.0024]
 #### Added
 - Set CPU to work at Performance, OnDemand, or Conservative Mode
 
