@@ -17,7 +17,6 @@
     pull: yes
     published_ports:
       - "8081:8081"
-      - "5000:5000"
     volumes:
       - /opt/appdata/medusa:/config
       - /mnt/:/downloads
