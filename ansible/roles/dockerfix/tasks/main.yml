@@ -27,4 +27,3 @@
 
   - name: Start DockerFix
     systemd: state=started name=v2dockerfix enabled=yes
-    when: v2dockerfix.stat.exists
