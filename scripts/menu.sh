@@ -70,7 +70,7 @@ whiptail --title "Visit PlexGuide.com - v5.0024" --menu "Make your choice" 17 40
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs" \
-   "4)" "Set Processor Performance"
+   "4)" "Set Processor Performance" \
    "5)" "Server & Net Benchmarks" \
    "6)" "Info & Troubleshoot" \
    "7)" "Backup & Restore" \
