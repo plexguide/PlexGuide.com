@@ -100,5 +100,3 @@
       - name: "proxy"
     restart_policy: always
     state: started
-    networks:
-      - name: plexguide
