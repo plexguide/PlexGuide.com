@@ -66,16 +66,17 @@ function interupts {
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.0023" --menu "Make your choice" 16 40 9 \
+whiptail --title "Visit PlexGuide.com - v5.0024" --menu "Make your choice" 17 40 10 \
    "1)" "Donation Menu (Please Turn On)"   \
    "2)" "RClone & PlexDrive"  \
    "3)" "Programs" \
-   "4)" "Server & Net Benchmarks" \
-   "5)" "Info & Troubleshoot" \
-   "6)" "Backup & Restore" \
-   "7)" "PlexGuide: Update" \
-   "8)" "PlexGuide: UnInstall" \
-   "9)" "Exit  "  3>&2 2>&1 1>&3
+   "4)" "Set Processor Performance"
+   "5)" "Server & Net Benchmarks" \
+   "6)" "Info & Troubleshoot" \
+   "7)" "Backup & Restore" \
+   "8)" "PlexGuide: Update" \
+   "9)" "PlexGuide: UnInstall" \
+   "10)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -96,32 +97,37 @@ case $CHOICE in
        ;;
 
    "4)")
+       clear
+       bash /opt/plexguide/scripts/menus/processor/processor-menu.sh
+       ;;
+
+   "5)")
         clear
         bash /opt/plexguide/scripts/menus/bench-menu.sh
         ;;
 
-   "5)")
+   "6)")
        clear
        bash /opt/plexguide/scripts/menus/help-select.sh
        ;;
 
-   "6)")
+   "7)")
        clear
        bash /opt/plexguide/scripts/menus/back-restore-select.sh
        ;;
 
-   "7)")
+   "8)")
        bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
        echo Remember, restart by typing: plexguide
        exit 0;;
 
-   "8)")
+   "9)")
        clear
        bash /opt/plexguide/scripts/menus/uninstaller-main.sh
        ;;
 
-   "9)")
+   "10)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
