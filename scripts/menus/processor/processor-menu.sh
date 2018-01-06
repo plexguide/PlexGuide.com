@@ -50,18 +50,17 @@ if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Vir
     whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a virtual machine. Trust me, it does not work if you try!" 9 66
     exit 
 else
-    whiptail --title "Virutal Machine - No" --msgbox "We will now ask you if you want to enhance your cpu - processor performance. We recommend that you utilize performance mode!" 9 66
+    whiptail --title "Virutal Machine - No" --msgbox "We recommend that you select performance mode. By default, your utilizing ondemand mode. Mode does not kick in until you REBOOT!" 9 66
 fi
-
 
 while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Processor Performance" --menu "Make your choice" 12 60 5 \
-    "1)" "Peformance Mode   - Recommend for Top Performance"  \
-    "2)" "Ondemand Mode     - Default Mode"  \
-    "3)" "Conservative Mode - Utilizes Less Power (Slowest)"  \
-    "4)" "View Current Processor Policy"  \
+    "1)" "Peformance Mode"  \
+    "2)" "Ondemand Mode"  \
+    "3)" "Conservative Mode"  \
+    "4)" "View Processor Policy"  \
     "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
