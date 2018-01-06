@@ -94,7 +94,7 @@ plexguide
 **E. Set CPU Performance**
 - Only use for a REAL Machine; useless for a virtual machine
 - Select [Set CPU Performance]; recommend to use Performance Mode
-  - Performance Mode Screenshot 
+  - [Performance Mode](https://imgur.com/a/bdHMg) Screenshot 
   - [OnDemand Mode](https://imgur.com/a/hriFS) Screenshot
   - [Conservative Mode](https://imgur.com/a/ES9tw) Screenshot
 
