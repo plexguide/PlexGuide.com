@@ -71,18 +71,24 @@ case $CHOICE in
     clear
     ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance
     bash /opt/plexguide/scripts/menus/processor/reboot.sh
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "2)")
     clear
     ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags ondemand
     bash /opt/plexguide/scripts/menus/processor/reboot.sh
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "3)")
     clear
     ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags conservative
     bash /opt/plexguide/scripts/menus/processor/reboot.sh
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "4)")

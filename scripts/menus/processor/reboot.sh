@@ -4,7 +4,7 @@ clear
 
 if (whiptail --title "Reboot Question" --yesno "New policy will not take affect until you reboot your machine. Do you want to reboot your machine?" 8 56) then
 
-    whiptail --title "Reboot Selected" --msgbox "Roger That! We will help you reboot your machine!" 8 66
+    whiptail --title "Reboot Selected" --msgbox "Roger That! We will reboot your machine!" 8 66
     ansible-playbook /opt/plexguide/ansible/roles/plexguide.yml --tags reboot
     exit 
 else
