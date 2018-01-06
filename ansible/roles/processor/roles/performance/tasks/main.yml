@@ -52,5 +52,5 @@
 
 ################### STOP SCALING
 
-- name: Disable Scaling Frequencyh
+- name: Disable Scaling Frequency
   shell: "update-rc.d ondemand disable"
