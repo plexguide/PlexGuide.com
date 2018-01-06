@@ -10,7 +10,22 @@
       src: v2dockerscript.js2
       dest: /opt/appdata/plexguide/v2dockerscript.sh
       force: yes
-########################################## Services
+########################################## Remove Old Services
+
+  - name: Stop If Old Docker Fix Exists
+    systemd: state=stopped name=dockerfix
+
+  - name: Remove Old Docker Fix
+    file:
+      state: absent
+      path: /etc/systemd/system/dockerfix.service 
+
+  - name: Remove Old Docker File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/dockrfix.sh
+
+########################################## New Service
 
   - name: Stop If DockerFix Service Running
     systemd: state=stopped name=v2dockerfix
