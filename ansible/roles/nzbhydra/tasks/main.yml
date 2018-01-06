@@ -23,8 +23,6 @@
       #VIRTUAL_PORT: 5075
       VIRTUAL_HOST: "nzbhydra.plex.one"
       VIRTUAL_PORT: 5075
-      LETSENCRYPT_HOST: "nzbhydra.plex.one"
-      LETSENCRYPT_EMAIL: "test@dunn.cloud"
     volumes:
       - "/opt/appdata/nzbhyra:/config"
       - "/etc/localtime:/etc/localtime:ro"
