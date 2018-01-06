@@ -21,7 +21,6 @@
       src: v2dockerfix.js2
       dest: /etc/systemd/system/v2dockerfix.service 
       force: yes
-    when: v2dockerfix.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=v2dockerfix daemon_reload=yes enabled=no
