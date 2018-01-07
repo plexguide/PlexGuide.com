@@ -8,12 +8,22 @@
     - /opt/appdata/vpn/rtorrent/config
     - /opt/appdata/vpn/rtorrent/config/openvpn
 
+- name: Choose Server
+  pause:
+    prompt: "What PIA server would you like to use:- \n
+       france, israel, montreal, netherlands,\n
+       romainia, sweden, switzerland or toronto ? "
+  register: server
+#  when: vpn_prefs.stat.exists == False
 
-- name: Install Netherlands openvpn
+- debug: msg="Using {{server.user_input}} Server"
+
+- name: "Install {{server.user_input}} openvpn file"
   template:
-    src: Netherlands.ovpn
-    dest: /opt/appdata/vpn/rtorrent/config/openvpn/Netherlands.ovpn
+    src: "{{server.user_input}}.ovpn"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
+
 
 
 - name: Remove Rutorrent Container

@@ -10,15 +10,15 @@
 
 - name: Choose Server
   pause:
-    prompt: "What PIA would you like to use? \n
-    CA Montreal, CA Toronto, France, Israel, \n
-    Netherlands, Romainia, Sweden or Switzerland"
+    prompt: "What PIA server would you like to use:- \n
+       france, israel, montreal, netherlands,\n
+       romainia, sweden, switzerland or toronto ? "
   register: server
 #  when: vpn_prefs.stat.exists == False
 
-- debug: msg="Using following Server {{server.user_input}}"
+- debug: msg="Using {{server.user_input}} Server"
 
-- name: "Install {{server.user_input}} openvpn"
+- name: "Install {{server.user_input}} openvpn file"
   template:
     src: "{{server.user_input}}.ovpn"
     dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
