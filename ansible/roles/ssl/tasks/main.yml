@@ -12,10 +12,10 @@
     - /opt/appdata/traefik
     - /opt/appdata/traefik/ssl
 
-- name: create traefik network
-  docker_network:
-    name: "proxy"
-    state: present
+#- name: create traefik network
+#  docker_network:
+#    name: "proxy"
+#    state: present
 
 ########## Check if Traefik config exists and register
 - name: Check if Traefik prerequisites exist
@@ -95,10 +95,10 @@
     published_ports:
       - "80:80"
       - "443:443"
-    networks:
-      - name: "proxy"
+#    networks:
+#      - name: "proxy"
     restart_policy: always
     state: started
-  networks:
-    proxy:
-      external: true
+#  networks:
+#    proxy:
+#      external: true
