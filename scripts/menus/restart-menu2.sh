@@ -101,7 +101,7 @@ case $CHOICE in
       ;;
 
     "5)")
-      touch /mnnt/gdrive/gdrivetest.txt
+      touch /mnt/gdrive/gdrivetest.txt
       clear
       ls /mnt/gdrive
       echo

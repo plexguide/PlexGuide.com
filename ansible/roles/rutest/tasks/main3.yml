@@ -1,35 +1,5 @@
 ---
 
-- name: "Get Server IP"
-  shell: "hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'"
-  register: lan_net
-
-#- name: Check vpn.xml exists
-#  stat:
-#    path: "/opt/appdata/rutest/vpn.xml"
-#  register: vpn_prefs
-
-- name: Get VPN username
-  pause:
-    prompt: "What is your PIA username? "
-  register: user
-#  when: vpn_prefs.stat.exists == False
-
-- debug: msg="Using following username {{user.user_input}}"
-#  when: vpn_prefs.stat.exists == False
-
-- name: Get VPN password
-  pause:
-    prompt: "What is your PIA password? "
-  register: password
-#  when: vpn_prefs.stat.exists == False
-
-- debug: msg="Using following password {{password.user_input}}"
-#  when: vpn_prefs.stat.exists == False- name: Remove Rutorrent Container
-
-- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
-#  when: vpn_prefs.stat.exists == False
-
 - name: Remove Rutorrent Container
   docker_container:
     name: rutest
@@ -57,14 +27,14 @@
       VIRTUAL_PORT: 8999
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
-      VPN_USER: "{{user.user_input}}"
-      VPN_PASS: "{{password.user_input}}"
+      VPN_USER: here
+      VPN_PASS: andhere
       VPN_PROV: pia
       STRICT_PORT_FORWARD: yes
       ENABLE_PRIVOXY: no
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: no
-      LAN_NETWORK: "{{lan_net.stdout}}"
+      LAN_NETWORK: 192.168.1.0/24
     volumes:
       - /opt/appdata/rutest/:/config
       - /mnt/rutorrents/downloads/incoming:/downloads
@@ -85,3 +55,7 @@
     env:
     PUID: "1000"
     PGID: "1000"
+
+
+
+

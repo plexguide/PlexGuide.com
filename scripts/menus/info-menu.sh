@@ -97,7 +97,7 @@ case $CHOICE in
       ;;
 
     "5)")
-      touch /mnnt/gdrive/gdrivetest.txt
+      touch /mnt/gdrive/gdrivetest.txt
       clear
       ls /mnt/gdrive
       echo
@@ -123,7 +123,7 @@ case $CHOICE in
      "7)")
       clear
       exit 0
-      ;; 
+      ;;
 esac
 done
 exit
