@@ -17,7 +17,6 @@ logLevel = "DEBUG"
 # Docker configuration backend
 ################################################################
 [docker]
-endpoint = "unix:///var/run/docker.sock"
 domain = "yourdomain.com"
 watch = true
 exposedbydefault = true
@@ -33,7 +32,7 @@ exposedbydefault = true
     entryPoint = "https"
   [entryPoints.https]
   address = ":443"
-  [entryPoints.https.tls]
+    [entryPoints.https.tls]
 
 
 ################################################################
@@ -44,8 +43,8 @@ email = "your@email.com"
 storage = "/opt/appdata/traefik/ssl/acme.json"
 entryPoint = "https, http"
 caServer = "https://acme-staging.api.letsencrypt.org/directory"
-[[acme.domains]]
-  main = "yourdomain.com"
-  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
+#[[acme.domains]]
+#  main = "yourdomain.com"
+#  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
 #OnHostRule = true
-#onDemand = true
+onDemand = true
