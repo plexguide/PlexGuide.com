@@ -8,7 +8,8 @@
   register: vpn_prefs
 
 - name: "Get Server IP"
-  shell: "/opt/plexguide/torrentvpn/lan_net.sh"
+  stat:
+    path: "/opt/plexguide/scripts/torrentvpn/lan_net.sh"
   register: lan_net
 
 - name: Get VPN username
