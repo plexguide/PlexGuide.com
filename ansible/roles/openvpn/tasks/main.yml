@@ -35,6 +35,26 @@
     path: "/opt/plexguide/scripts/torrentvpn/lan_net.sh"
   register: lan_net
 
+- name: Check SCRIPT
+  stat:
+    path: "/opt/appdata/vpn/lan.toml"
+  register: script
+
+- name: Installing lan.Toml
+  template:
+    src: lan.toml
+    dest: /opt/appdata/vpn/lan.toml
+    force: yes
+  when: script.stat.exists == False
+
+- name: Replace lan with std output
+  replace:
+    path: /opt/appdata/vpn/lan.toml
+    regexp: lan_net
+    replace: "{{lan_net.stdout}}"
+
+- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
+
 - name: Get VPN username
   pause:
     prompt: "What is your PIA username? "
