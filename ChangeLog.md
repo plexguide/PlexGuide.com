@@ -6,7 +6,7 @@ Current Changes will continued to be modifed as known.
 - Added Watchtower / Updates Containers
 
 #### Changed
-- None
+- Fixed Backup Script; was an if instead of an fi 
 
 #### Removed
 - None
