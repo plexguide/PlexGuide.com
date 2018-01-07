@@ -35,9 +35,9 @@
       - "9443:9443"
       - "8118:8118"
       - "3000:3000"
-    env_file:
-      - /opt/appdata/vpn/.vpn-env
-      - /opt/appdata/vpn/vpn.xml
+#    env_file:
+#      - /opt/appdata/vpn/.vpn-env
+#      - /opt/appdata/vpn/vpn.xml
     env:
       PUID: "1000"
       PGID: "1000"
