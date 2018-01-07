@@ -92,11 +92,14 @@
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
       #- /opt/appdata/traefik/ssl/acme.json:acme.json
       - /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
-    networks:
-      - name: "proxy"
     published_ports:
-      - "8080:8080"
       - "80:80"
       - "443:443"
+    networks:
+      - name: "proxy"
     restart_policy: always
     state: started
+
+    networks:
+      proxy:
+        external: true
