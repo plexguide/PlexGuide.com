@@ -1,6 +1,20 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
+### [5.0.0027] Actively Working
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.0.0026] Actively Working
 #### Added
 - Added Watchtower / Updates Containers
@@ -12,10 +26,7 @@ Current Changes will continued to be modifed as known.
 #### Removed
 - Uncessary Menu Code
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
-
+--------------------------------------------------------
 
 ### [5.0.0025]
 #### Added
