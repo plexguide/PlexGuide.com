@@ -43,8 +43,8 @@ email = "your@email.com"
 storage = "/opt/appdata/traefik/ssl/acme.json"
 entryPoint = "https, http"
 caServer = "https://acme-staging.api.letsencrypt.org/directory"
-#[[acme.domains]]
-#  main = "yourdomain.com"
-#  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
+[[acme.domains]]
+  main = "yourdomain.com"
+  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
 #OnHostRule = true
-onDemand = true
+#onDemand = true
