@@ -99,7 +99,6 @@
       - name: "proxy"
     restart_policy: always
     state: started
-
-    networks:
-      proxy:
-        external: true
+  networks:
+    proxy:
+      external: true
