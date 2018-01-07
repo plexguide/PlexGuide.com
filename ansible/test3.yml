@@ -1,6 +1,9 @@
 ---
 - hosts: localhost
 
+vars_files:
+    - settings.yml
+
   roles:
       - { role: openvpn, tags: ['openvpn', 'rtorrentvpn'] }
 #      - { role: rtorrentvpn, tags: ['openvpn', 'rtorrentvpn'] }
