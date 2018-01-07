@@ -67,11 +67,11 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
   echo "11. Installing DockerFix & Service Activation"
 
-  sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix
 
   echo "12. Installing Watcher"
 
-  sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watcher
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watcher
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
