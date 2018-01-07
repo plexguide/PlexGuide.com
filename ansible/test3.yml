@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: rutest, tags: ['rutest'] }
+#  - { role: processor, tags: ['processor'] }
