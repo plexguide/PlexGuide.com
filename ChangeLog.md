@@ -1,12 +1,12 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.0.0026] Actively Working
+### [5.0.0027] Actively Working
 #### Added
-- Added Watchtower / Updates Containers
+- None
 
 #### Changed
-- Fixed Backup Script; was an if instead of an fi 
+- None
 
 #### Removed
 - None
@@ -15,6 +15,18 @@ Current Changes will continued to be modifed as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
+### [5.0.0026] Actively Working
+#### Added
+- Added Watchtower / Updates Containers
+
+#### Changed
+- Fixed Backup Script; was an if instead of an fi
+- Fixed Watch Tower / Accidently Took the Place of Sonnar (naming scheme)
+
+#### Removed
+- Uncessary Menu Code
+
+--------------------------------------------------------
 
 ### [5.0.0025]
 #### Added

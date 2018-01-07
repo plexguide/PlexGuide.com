@@ -6,7 +6,7 @@
 
 - name: Deploy Watchtower
   docker_container:
-    name: sonarr
+    name: watchtower
     image: v2tec/watchtower
     pull: yes
     command: medusa tautulli jackett nzbhydra nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
