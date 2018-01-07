@@ -9,6 +9,7 @@
   with_items:
     - /mnt/move/books
     - /mnt/gdrive/books
+    - /mnt/nzbget/completed/books
 
 - name: Deploy LazyLibrarian Container
   docker_container:
