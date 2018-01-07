@@ -28,8 +28,8 @@
     pull: yes
     cpu_shares: 256
     network_mode: "bridge"
-#    cap_add:
-#      - NET_ADMIN
+    capabilities:
+      - NET_ADMIN
     published_ports:
       - "9080:9080"
       - "9443:9443"
@@ -39,8 +39,6 @@
 #      - /opt/appdata/vpn/.vpn-env
 #      - /opt/appdata/vpn/vpn.xml
     env:
-      cap_add:
-        - NET_ADMIN
       PUID: "1000"
       PGID: "1000"
       VIRTUAL_HOST: "rtorrent.*"
