@@ -3,7 +3,9 @@
 - name: Removing File Directories
   file:
     state: absent
-    path: /opt/appdata/traefik/traefik.toml
+    path:
+      - /opt/appdata/traefik/traefik.toml
+      - /opt/appdate/traefik/ssl/acme.json
 
 ########## Create prerequisite Traefik directories
 - name: Create Basic Directories
