@@ -6,10 +6,11 @@ Current Changes will continued to be modifed as known.
 - Added Watchtower / Updates Containers
 
 #### Changed
-- Fixed Backup Script; was an if instead of an fi 
+- Fixed Backup Script; was an if instead of an fi
+- Fixed Watch Tower / Accidently Took the Place of Sonnar (naming scheme)
 
 #### Removed
-- None
+- Uncessary Menu Code
 
 -------------------------------------------------------
 ## Past Changes
