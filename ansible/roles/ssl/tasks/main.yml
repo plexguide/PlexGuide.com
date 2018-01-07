@@ -101,16 +101,16 @@
     image: traefik
     pull: yes
     cpu_shares: 256
+    published_ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
       #- /opt/appdata/traefik/ssl/acme.json:acme.json
       - /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
-    published_ports:
-      - "80:80"
-      - "8080:8080"
-      - "443:443"
 #    networks:
 #      - name: "proxy"
     restart_policy: always
