@@ -10,9 +10,9 @@
 
 - name: Choose Server
   pause:
-    prompt: "What PIA server would you like to use? \n
-    montreal, toronto, france, israel, \n
-    netherlands, romainia, sweden or switzerland"
+    prompt: "What PIA server would you like to use:- \n
+       france, israel, montreal, netherlands,\n
+       romainia, sweden, switzerland or toronto ? "
   register: server
 #  when: vpn_prefs.stat.exists == False
 
