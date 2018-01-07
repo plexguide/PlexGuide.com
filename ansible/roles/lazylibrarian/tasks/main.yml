@@ -1,0 +1,26 @@
+---
+- name: Remove LazyLibrarian Container
+  docker_container:
+    name: lazylibrarian
+    state: absent
+
+- name: Deploy LazyLibrarian Container
+  docker_container:
+    name: lazylibrarian
+    image: "linuxserver/lazylibrarian"
+    pull: yes
+    published_ports:
+      - "5299:5299"
+    volumes:
+      - /opt/appdata/lazylibrarian:/config
+      - /mnt/:/downloads
+      - /mnt/unionfs/:/books
+      - /mnt:/test
+    cpu_shares: 128
+    env:
+      VIRTUAL_HOST: "lazy.*"
+      VIRTUAL_PORT: 5299
+      PUID: 1000
+      PGID: 1000
+    restart_policy: always
+    state: started

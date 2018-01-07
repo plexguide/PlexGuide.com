@@ -3,5 +3,5 @@
 
   roles:
   - { role: traefik, tags: ['traefik'] }
-  - { role: medusa, tags: ['medusa'] }
+  - { role: lazylibrarian, tags: ['lazylibrarian'] }
   - { role: ssl, tags: ['ssl'] }
