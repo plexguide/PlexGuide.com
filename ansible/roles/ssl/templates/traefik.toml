@@ -10,8 +10,18 @@ address = ":8080"
 debug = true
 checkNewVersion = true
 traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
-logLevel = "ERROR"
+logLevel = "DEBUG"
 #defaultEntryPoints = ["https","http"]
+
+################################################################
+# Docker configuration backend
+################################################################
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "yourdomain.com"
+watch = true
+exposedbydefault = true
+
 
 ################################################################
 # http and https redirect backend
@@ -25,15 +35,6 @@ logLevel = "ERROR"
   address = ":443"
   [entryPoints.https.tls]
 
-################################################################
-# Docker configuration backend
-################################################################
-[docker]
-endpoint = "unix:///var/run/docker.sock"
-domain = "yourdomain.com"
-watch = true
-exposedbydefault = true
-
 
 ################################################################
 # Let's Encrypt information backend
@@ -42,5 +43,9 @@ exposedbydefault = true
 email = "your@email.com"
 storage = "/opt/appdata/traefik/ssl/acme.json"
 entryPoint = "https, http"
+caServer = "https://acme-staging.api.letsencrypt.org/directory"
+[[acme.domains]]
+  main = "yourdomain.com"
+  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
 #OnHostRule = true
-onDemand = true
+#onDemand = true
