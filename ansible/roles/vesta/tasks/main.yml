@@ -5,6 +5,13 @@
     name: vesta
     state: absent
 
+- name: Create Basic Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/vestacp
+    - /opt/appdata/vestacp/backup
+    - /opt/appdata/vestacp/home
+
 - name: Deploy VestaCP Container
   docker_container:
     name: vesta
