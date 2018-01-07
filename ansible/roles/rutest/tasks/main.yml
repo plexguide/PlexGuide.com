@@ -67,7 +67,8 @@
       ENABLE_PRIVOXY: no
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: no
-      LAN_NETWORK: "{{lan_net.stdout}}"
+      LAN_NETWORK: 192.168.1.0/24
+  #    LAN_NETWORK: "{{lan_net.stdout}}"
     volumes:
       - /opt/appdata/rutest/:/config
       - /mnt/rutorrents/downloads/incoming:/downloads
