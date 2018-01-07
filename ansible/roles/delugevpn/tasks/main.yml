@@ -8,11 +8,20 @@
     - /opt/appdata/vpn/deluge/config
     - /opt/appdata/vpn/deluge/config/openvpn
 
+- name: Choose Server
+  pause:
+    prompt: "What PIA would you like to use? \n
+    CA Montreal, CA Toronto, France, Israel, \n
+    Netherlands, Romainia, Sweden or Switzerland"
+  register: server
+#  when: vpn_prefs.stat.exists == False
 
-- name: Install Netherlands openvpn
+- debug: msg="Using following Server {{server.user_input}}"
+
+- name: "Install {{server.user_input}} openvpn"
   template:
-    src: Netherlands.ovpn
-    dest: /opt/appdata/vpn/deluge/config/openvpn/Netherlands.ovpn
+    src: "{{server.user_input}}.ovpn"
+    dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
 
@@ -28,8 +37,8 @@
     pull: yes
     cpu_shares: 256
     network_mode: "bridge"
-#    cap_add:
-#      - NET_ADMIN
+    capabilities:
+      - NET_ADMIN
     published_ports:
       - "8112:8112"
       - "8118:8118"
@@ -75,7 +84,7 @@
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
     volumes_from:
-      - "rtorrentvpn"
+      - "delugevpn"
     env:
      PUID: "1000"
      PGID: "1000"
