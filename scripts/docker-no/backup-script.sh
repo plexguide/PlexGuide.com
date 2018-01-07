@@ -32,6 +32,6 @@ else
     clear
     echo Not Backed Up! - $YMLDISPLAY
     echo
-if
+fi
 
-read -n 1 -s -r -p "Press any key to continue "
+read -n 1 -s -r -p "Press any key to continue"
