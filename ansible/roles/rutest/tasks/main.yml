@@ -30,8 +30,8 @@
 - debug: msg="Using following password {{password.user_input}}"
 #  when: vpn_prefs.stat.exists == False- name: Remove Rutorrent Container
 
-- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
-  when: vpn_prefs.stat.exists == False
+#- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
+#  when: vpn_prefs.stat.exists == False
 
 - name: Remove Rutorrent Container
   docker_container:
