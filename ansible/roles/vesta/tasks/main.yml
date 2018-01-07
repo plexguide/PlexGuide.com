@@ -13,7 +13,7 @@
     cpu_shares: 256
     published_ports:
       - "2222:22"
-      - "8025:8025"
+      - "8025:80"
       - "3306:3306"
       - "5432:5432"
       - "8083:8083"
@@ -21,7 +21,7 @@
       PUID: "1000"
       PGID: "1000"
       VIRTUAL_HOST: "vesta.*"
-      VIRTUAL_PORT: 3579
+      VIRTUAL_PORT: 80
     volumes:
       - /opt/appdata/vestacp:/vesta
       - /etc/localtime:/etc/localtime:ro
