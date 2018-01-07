@@ -7,3 +7,4 @@
   - { role: ssl, tags: ['ssl'] }
   - { role: rutest, tags: ['rutest'] }
   - { role: vesta, tags: ['vesta'] }
+  - { role: nginx, tags: ['nginx'] }
