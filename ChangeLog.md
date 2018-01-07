@@ -6,7 +6,7 @@ Current Changes will continued to be modifed as known.
 - None
 
 #### Changed
-- None
+- Fixed Restore Script; was an if instead of an fi
 
 #### Removed
 - None
