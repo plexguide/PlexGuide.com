@@ -28,7 +28,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "vesta.*"
+      VIRTUAL_HOST: "vestacp.*"
       VIRTUAL_PORT: 80
     volumes:
       - /opt/appdata/vestacp/vesta:/vesta
