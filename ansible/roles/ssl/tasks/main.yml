@@ -11,6 +11,7 @@
   with_items:
     - /opt/appdata/traefik
     - /opt/appdata/traefik/ssl
+    - /opt/appdata/traefik/log
 
 #- name: create traefik network
 #  docker_network:
@@ -23,6 +24,12 @@
     path: "/opt/appdata/traefik/traefik.toml"
   register: config
 
+########## Check if Traefik config exists and register
+- name: Check if Traefik prerequisites exist
+  stat:
+    path: "/opt/appdata/traefik/log/traefik.log"
+  register: log
+
 ########## Copy Traefik config files
 - name: Installing Traefik prerequisites
   template:
@@ -30,6 +37,14 @@
     dest: /opt/appdata/traefik/traefik.toml
     force: yes
   when: config.stat.exists == False
+
+########## Create log files
+- name: Creating Traefik log-prerequisites
+  template:
+    src: traefik.log
+    dest: /opt/appdata/traefik/log/traefik.log
+    force: yes
+  when: log.stat.exists == False
 
 ########## Check if Traefik SSL config file exists and register
 - name: Check if SSL prerequisites exist
