@@ -7,10 +7,11 @@ address = ":8080"
 ################################################################
 # Debug Options and Values
 ################################################################
-debug = false
+debug = true
 checkNewVersion = true
+traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
 logLevel = "ERROR"
-defaultEntryPoints = ["https","http"]
+#defaultEntryPoints = ["https","http"]
 
 ################################################################
 # http and https redirect backend
@@ -22,15 +23,15 @@ defaultEntryPoints = ["https","http"]
     entryPoint = "https"
   [entryPoints.https]
   address = ":443"
-    [entryPoints.https.tls]
+  [entryPoints.https.tls]
 
 ################################################################
 # Docker configuration backend
 ################################################################
 [docker]
+endpoint = "unix:///var/run/docker.sock"
 domain = "yourdomain.com"
 watch = true
-endpoint = "/var/run/docker.sock"
 exposedbydefault = true
 
 
@@ -39,7 +40,7 @@ exposedbydefault = true
 ################################################################
 [acme]
 email = "your@email.com"
-storage = "/etc/traefik/acme/acme.json"
-entryPoint = "https"
-OnHostRule = true
+storage = "/opt/appdata/traefik/ssl/acme.json"
+entryPoint = "https, http"
+#OnHostRule = true
 onDemand = true

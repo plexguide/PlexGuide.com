@@ -11,17 +11,24 @@
   with_items:
     - /opt/appdata/traefik
     - /opt/appdata/traefik/ssl
+    - /opt/appdata/traefik/log
 
-- name: create traefik network
-  docker_network:
-    name: "proxy"
-    state: present
+#- name: create traefik network
+#  docker_network:
+#    name: "proxy"
+#    state: present
 
 ########## Check if Traefik config exists and register
 - name: Check if Traefik prerequisites exist
   stat:
     path: "/opt/appdata/traefik/traefik.toml"
   register: config
+
+########## Check if Traefik config exists and register
+- name: Check if Traefik log-prerequisites exist
+  stat:
+    path: "/opt/appdata/traefik/log/traefik.log"
+  register: log
 
 ########## Copy Traefik config files
 - name: Installing Traefik prerequisites
@@ -30,6 +37,14 @@
     dest: /opt/appdata/traefik/traefik.toml
     force: yes
   when: config.stat.exists == False
+
+########## Create log files
+- name: Creating Traefik log-prerequisites
+  template:
+    src: traefik.log
+    dest: /opt/appdata/traefik/log/traefik.log
+    force: yes
+  when: log.stat.exists == False
 
 ########## Check if Traefik SSL config file exists and register
 - name: Check if SSL prerequisites exist
@@ -86,17 +101,20 @@
     image: traefik
     pull: yes
     cpu_shares: 256
+    published_ports:
+      - "80:80"
+      - "8080:8080"
+#      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
       #- /opt/appdata/traefik/ssl/acme.json:acme.json
       - /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
-    networks:
-      - name: "proxy"
-    published_ports:
-      - "8080:8080"
-      - "80:80"
-      - "443:443"
+#    networks:
+#      - name: "proxy"
     restart_policy: always
     state: started
+#  networks:
+#    proxy:
+#      external: true
