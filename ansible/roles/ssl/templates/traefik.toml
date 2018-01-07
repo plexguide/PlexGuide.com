@@ -7,19 +7,11 @@ address = ":8080"
 ################################################################
 # Debug Options and Values
 ################################################################
-debug = true
-checkNewVersion = true
-traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
-logLevel = "DEBUG"
+#debug = true
+#checkNewVersion = true
+#traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
+#logLevel = "DEBUG"
 #defaultEntryPoints = ["https","http"]
-
-################################################################
-# Docker configuration backend
-################################################################
-[docker]
-domain = "yourdomain.com"
-watch = true
-exposedbydefault = true
 
 
 ################################################################
@@ -41,10 +33,19 @@ exposedbydefault = true
 [acme]
 email = "your@email.com"
 storage = "/opt/appdata/traefik/ssl/acme.json"
-entryPoint = "https, http"
-caServer = "https://acme-staging.api.letsencrypt.org/directory"
-[[acme.domains]]
-  main = "yourdomain.com"
-  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
-#OnHostRule = true
-#onDemand = true
+entryPoint = "https"
+#caServer = "https://acme-staging.api.letsencrypt.org/directory"
+#[[acme.domains]]
+#  main = "yourdomain.com"
+#  sans = ["radarr.yourdomain.com", "portainer.yourdomain.com"]
+OnHostRule = true
+onDemand = false
+
+################################################################
+# Docker configuration backend
+################################################################
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "yourdomain.com"
+watch = true
+exposedbydefault = true
