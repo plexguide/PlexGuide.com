@@ -27,9 +27,9 @@
     image: binhex/arch-rtorrentvpn
     pull: yes
     cpu_shares: 256
-#   network_mode: "bridge"
-#    cap_add:
-#      - NET_ADMIN
+   network_mode: "bridge"
+    cap_add:
+      - NET_ADMIN
     published_ports:
       - "9080:9080"
       - "9443:9443"
