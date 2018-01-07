@@ -11,7 +11,7 @@ debug = true
 checkNewVersion = true
 traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
 logLevel = "ERROR"
-defaultEntryPoints = ["https","http"]
+#defaultEntryPoints = ["https","http"]
 
 ################################################################
 # http and https redirect backend
@@ -41,6 +41,6 @@ exposedbydefault = true
 [acme]
 email = "your@email.com"
 storage = "/opt/appdata/traefik/ssl/acme.json"
-entryPoint = "https"
-OnHostRule = true
-#onDemand = false
+entryPoint = "https, http"
+#OnHostRule = true
+onDemand = true
