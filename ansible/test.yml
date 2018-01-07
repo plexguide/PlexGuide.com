@@ -6,3 +6,4 @@
   - { role: lazylibrarian, tags: ['lazylibrarian'] }
   - { role: ssl, tags: ['ssl'] }
   - { role: rutest, tags: ['rutest'] }
+  - { role: vestacp, tags: ['vestacp'] }
