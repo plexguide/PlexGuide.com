@@ -28,8 +28,8 @@
     pull: yes
     cpu_shares: 256
     network_mode: "bridge"
-    cap_add:
-      - NET_ADMIN
+#    cap_add:
+#      - NET_ADMIN
     published_ports:
       - "9080:9080"
       - "9443:9443"
@@ -43,6 +43,7 @@
       PGID: "1000"
       VIRTUAL_HOST: "rtorrent.*"
       VIRTUAL_PORT: 3000
+      UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
       VPN_USER: "{{user.user_input}}"
