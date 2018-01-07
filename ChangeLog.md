@@ -15,7 +15,7 @@ Current Changes will continued to be modifed as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.0.0026] Actively Working
+### [5.0.0026] 
 #### Added
 - Added Watchtower / Updates Containers
 
@@ -24,7 +24,7 @@ Historical Documented Changes will be stored as below.
 - Fixed Watch Tower / Accidently Took the Place of Sonnar (naming scheme)
 
 #### Removed
-- Uncessary Menu Code
+- Unnecessary Menu Code
 
 --------------------------------------------------------
 
