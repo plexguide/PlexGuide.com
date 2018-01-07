@@ -25,7 +25,7 @@
   register: config
 
 ########## Check if Traefik config exists and register
-- name: Check if Traefik prerequisites exist
+- name: Check if Traefik log-prerequisites exist
   stat:
     path: "/opt/appdata/traefik/log/traefik.log"
   register: log
