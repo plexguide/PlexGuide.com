@@ -1,0 +1,18 @@
+---
+- name: Remove Watchtower Container
+  docker_container:
+    name: watchtower
+    state: absent
+
+- name: Deploy Watchtower
+  docker_container:
+    name: sonarr
+    image: v2tec/watchtower
+    pull: yes
+    command: medusa tautulli jackett nzbhydra nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
+    cpu_shares: 64
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
