@@ -1,10 +1,15 @@
 ---
 
+- name: Install Netherlands openvpn
+  template:
+    src: Netherlands.ovpn
+    dest: /opt/appdata/vpn/rtorrent/config/openvpn/Netherlands.ovpn
+    force: yes
 
 
 - name: Check vpn.xml exists
   stat:
-    path: "/opt/appdata/rutest/vpn.xml"
+    path: "/opt/appdata/vpn/vpn.xml"
   register: vpn_prefs
 
 - name: "Get Server IP"
@@ -28,22 +33,23 @@
 #  when: vpn_prefs.stat.exists == False
 
 - debug: msg="Using following password {{password.user_input}}"
-#  when: vpn_prefs.stat.exists == False- name: Remove Rutorrent Container
+#  when: vpn_prefs.stat.exists == False- name: Remove Rtorrent Container
 
 #- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
 #  when: vpn_prefs.stat.exists == False
 
 - name: Remove Rutorrent Container
   docker_container:
-    name: rutest
+    name: rtorrentvpn
     state: absent
 
-- name: Deploy Rutorrent Container
+- name: Deploy Rtorrent Container
   docker_container:
     name: rtorrentvpn
     image: binhex/arch-rtorrentvpn
     pull: yes
     cpu_shares: 256
+#   network_mode: "bridge"
     cap_add:
       - NET_ADMIN
     published_ports:
@@ -51,6 +57,9 @@
       - "9443:9443"
       - "8118:8118"
       - "3000:3000"
+    env_file:
+      - /opt/appdata/vpn/.vpn-env
+      - /opt/appdata/vpn/vpn.xml
     env:
       PUID: "1000"
       PGID: "1000"

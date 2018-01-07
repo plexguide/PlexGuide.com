@@ -2,5 +2,5 @@
 - hosts: localhost
 
   roles:
-  - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
-#  - { role: processor, tags: ['processor'] }
+  - { role: rtorrentvpn, tags: ['openvpn', 'rtorrentvpn'] }
+#  - { role: delugevpn, tags: ['openvpn', 'delugevpn'] }
