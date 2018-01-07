@@ -1,18 +1,37 @@
 ---
 
+
+
+- name: Check vpn.xml exists
+  stat:
+    path: "/opt/appdata/rutest/vpn.xml"
+  register: vpn_prefs
+
+- name: "Get Server IP"
+  stat:
+    path: "/opt/plexguide/scripts/torrentvpn/lan_net.sh"
+  register: lan_net
+
 - name: Get VPN username
   pause:
     prompt: "What is your PIA username? "
   register: user
+#  when: vpn_prefs.stat.exists == False
 
 - debug: msg="Using following username {{user.user_input}}"
+#  when: vpn_prefs.stat.exists == False
 
 - name: Get VPN password
   pause:
     prompt: "What is your PIA password? "
   register: password
+#  when: vpn_prefs.stat.exists == False
 
 - debug: msg="Using following password {{password.user_input}}"
+#  when: vpn_prefs.stat.exists == False- name: Remove Rutorrent Container
+
+#- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
+#  when: vpn_prefs.stat.exists == False
 
 - name: Remove Rutorrent Container
   docker_container:
@@ -21,15 +40,13 @@
 
 - name: Deploy Rutorrent Container
   docker_container:
-    name: rutest
+    name: rtorrentvpn
     image: binhex/arch-rtorrentvpn
     pull: yes
     cpu_shares: 256
+    cap_add:
+      - NET_ADMIN
     published_ports:
-      - "8999:80"
-      - "51413:51413"
-      - "6881:6881/udp"
-      - "5000:5000"
       - "9080:9080"
       - "9443:9443"
       - "8118:8118"
@@ -37,24 +54,28 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "rutorrent.*"
-      VIRTUAL_PORT: 8999
+      VIRTUAL_HOST: "rtorrent.*"
+      VIRTUAL_PORT: 3000
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
       VPN_USER: "{{user.user_input}}"
       VPN_PASS: "{{password.user_input}}"
       VPN_PROV: pia
       STRICT_PORT_FORWARD: yes
-      ENABLE_PRIVOXY: no
+      ENABLE_PRIVOXY: yes
       ENABLE_FLOOD: both
-      ENABLE_AUTODL_IRSSI: no
+      ENABLE_AUTODL_IRSSI: yes
       LAN_NETWORK: 192.168.1.0/24
+  #    LAN_NETWORK: "{{lan_net.stdout}}"
     volumes:
-      - /opt/appdata/rutest/:/config
-      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /opt/appdata/vpn/rtorrent/config:/config
+      - /mnt/torrentvpn/temp:/data/incomplete
+      - /mnt/torrentvpn/downloaded:/data/completed
+      - /mnt/torrentvpn/.torrent:/torrents
+      - /mnt/torrentvpn/.watched:/data/watched
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
 
 - name: NGINX Container
@@ -65,7 +86,7 @@
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
     volumes_from:
-      - "rutest"
+      - "rtorrentvpn"
     env:
     PUID: "1000"
     PGID: "1000"

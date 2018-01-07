@@ -2,5 +2,5 @@
 - hosts: localhost
 
   roles:
-  - { role: rutest, tags: ['rutest'] }
+  - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
 #  - { role: processor, tags: ['processor'] }
