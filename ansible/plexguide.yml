@@ -32,3 +32,4 @@
   - { role: traefik, tags: ['traefik'] }
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
+  - { role: watcher, tags: ['watcher'] }
