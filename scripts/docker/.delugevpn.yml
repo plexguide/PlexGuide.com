@@ -41,7 +41,7 @@ services:
      - ENABLE_PRIVOXY=yes
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
-   #  - UMASK=<umask for created files>
+   #  - UMASK=0027
 #     - PUID=1000
 #     - PGID=1000
    restart: unless-stopped
