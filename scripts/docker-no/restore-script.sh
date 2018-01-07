@@ -34,6 +34,6 @@ else
     clear
     echo Not Restored! - "$YMLDISPLAY"
     echo
-if
+fi
 
 read -n 1 -s -r -p "Press any key to continue "
