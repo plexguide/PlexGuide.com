@@ -28,10 +28,7 @@
 
 
 
-- name: Check vpn.xml exists
-  stat:
-    path: "/opt/appdata/vpn/vpn.xml"
-  register: vpn_prefs
+
 
 - name: "Get Server IP"
   stat:
@@ -58,3 +55,10 @@
 
 #- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
 #  when: vpn_prefs.stat.exists == False
+
+- name: Get LAN Net address
+  template:
+    src: lan_net.sh
+    dest: /opt/appdata/vpn/lan_net.env
+    force: yes
+  when: script.stat.exists == False
