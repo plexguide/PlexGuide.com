@@ -4,6 +4,12 @@
     name: lazylibrarian
     state: absent
 
+- name: Create Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /mnt/move/books
+    - /mnt/gdrive/books
+
 - name: Deploy LazyLibrarian Container
   docker_container:
     name: lazylibrarian
