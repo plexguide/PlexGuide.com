@@ -56,9 +56,9 @@
 #- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
 #  when: vpn_prefs.stat.exists == False
 
-- name: Get LAN Net address
-  template:
-    src: lan_net.sh
-    dest: /opt/appdata/vpn/vpn.env
-    force: yes
-  when: script.stat.exists == False
+#- name: Get LAN Net address
+#  template:
+#    src: lan_net.sh
+#    dest: /opt/appdata/vpn/vpn.env
+#    force: yes
+#  when: script.stat.exists == False
