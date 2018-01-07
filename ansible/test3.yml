@@ -3,5 +3,5 @@
 
   roles:
       - { role: openvpn, tags: ['openvpn', 'rtorrentvpn'] }
-  #    - { role: rtorrentvpn, tags: ['openvpn', 'rtorrentvpn'] }
+      - { role: rtorrentvpn, tags: ['openvpn', 'rtorrentvpn'] }
 #  - { role: delugevpn, tags: ['openvpn', 'delugevpn'] }
