@@ -1,0 +1,60 @@
+---
+
+- name: Create Basic directories
+  file: "path={{item}} state=directory mode=0755 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/vpn
+    - /opt/appdata/vpn/rtorrent
+    - /opt/appdata/vpn/rtorrent/config
+    - /opt/appdata/vpn/rtorrent/config/openvpn
+    - /mnt/torrentvpn
+    - /mnt/torrentvpn/downloaded
+    - /mnt/torrentvpn/temp
+    - /mnt/torrentvpn/.torrent
+    - /mnt/torrentvpn/.watched
+
+- name: Move Certs
+  template:
+    src: ca.rsa.2048.crt
+    dest: /opt/appdata/vpn/rtorrent/config/openvpn/ca.rsa.2048.crt
+    force: yes
+
+- name: Move Certs
+  template:
+    src: crl.rsa.2048.pem
+    dest: /opt/appdata/vpn/rtorrent/config/openvpn/crl.rsa.2048.pem
+    force: yes
+
+
+
+
+- name: Check vpn.xml exists
+  stat:
+    path: "/opt/appdata/vpn/vpn.xml"
+  register: vpn_prefs
+
+- name: "Get Server IP"
+  stat:
+    path: "/opt/plexguide/scripts/torrentvpn/lan_net.sh"
+  register: lan_net
+
+- name: Get VPN username
+  pause:
+    prompt: "What is your PIA username? "
+  register: user
+#  when: vpn_prefs.stat.exists == False
+
+- debug: msg="Using following username {{user.user_input}}"
+#  when: vpn_prefs.stat.exists == False
+
+- name: Get VPN password
+  pause:
+    prompt: "What is your PIA password? "
+  register: password
+#  when: vpn_prefs.stat.exists == False
+
+- debug: msg="Using following password {{password.user_input}}"
+#  when: vpn_prefs.stat.exists == False- name: Remove Rtorrent Container
+
+#- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
+#  when: vpn_prefs.stat.exists == False
