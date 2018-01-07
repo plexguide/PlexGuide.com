@@ -18,10 +18,10 @@
 
 - debug: msg="Using following Server {{server.user_input}}"
 
-- name: "Install {{server}} openvpn"
+- name: "Install {{server.user_input}} openvpn"
   template:
-    src: "{{server}}.ovpn"
-    dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server}}.ovpn"
+    src: "{{server.user_input}}.ovpn"
+    dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
 
