@@ -1,13 +1,15 @@
 ---
 
-- name: "Get Server IP"
-  shell: "hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'"
-  register: lan_net
 
-#- name: Check vpn.xml exists
-#  stat:
-#    path: "/opt/appdata/rutest/vpn.xml"
-#  register: vpn_prefs
+
+- name: Check vpn.xml exists
+  stat:
+    path: "/opt/appdata/rutest/vpn.xml"
+  register: vpn_prefs
+
+- name: "Get Server IP"
+  shell: "/opt/plexguide/torrentvpn/lan_net.sh"
+  register: lan_net
 
 - name: Get VPN username
   pause:
@@ -28,7 +30,7 @@
 #  when: vpn_prefs.stat.exists == False- name: Remove Rutorrent Container
 
 - debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
-#  when: vpn_prefs.stat.exists == False
+  when: vpn_prefs.stat.exists == False
 
 - name: Remove Rutorrent Container
   docker_container:
