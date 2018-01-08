@@ -1,6 +1,10 @@
 ---
 - hosts: localhost
 
+## ensure to delete traefik from portainer
+## ansible-playbook /opt/plexguide/ansible/test.yml --tags nginx
+## ansible-playbook /opt/plexguide/ansible/test.yml --tags sonarrssl
+
   roles:
   - { role: traefik, tags: ['traefik'] }
   - { role: lazylibrarian, tags: ['lazylibrarian'] }
@@ -9,3 +13,4 @@
   - { role: vesta, tags: ['vesta'] }
   - { role: nginx, tags: ['nginx'] }
   - { role: docker, tags: ['docker'] }
+  - { role: sonarrssl, tags: ['sonarrssl'] }
