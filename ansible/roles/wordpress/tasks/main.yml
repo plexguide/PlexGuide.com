@@ -4,9 +4,9 @@
     name: wordpress
     state: absent
 
-- name: Create and start letsencrypt container
+- name: Deploy Wordpress Database
   docker_container:
-    name: mariadb
+    name: my-wpdb
     image: mariadb
     pull: yes
     cpu_shares: 512
