@@ -1,5 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: plex-claim, tags: ['plex-claim'] }
