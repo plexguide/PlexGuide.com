@@ -4,7 +4,8 @@ clear
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
 ###################### Need to Allow the Rest of Ansible to Work
-touch var /opt/appdata/plexguide/var.yml
+touch var /opt/appdata/plexguide/var.yml 1>/dev/null 2>&1
+docker network create plexguide 1>/dev/null 2>&1
 ###################### Install Depdency Programs ###############
 
     clear
