@@ -12,12 +12,9 @@
 ## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags sonarrssl
 
   roles:
-  - { role: traefik, tags: ['traefik'] }
-  - { role: lazylibrarian, tags: ['lazylibrarian'] }
-  - { role: ssl, tags: ['ssl'] }
-  - { role: rutest, tags: ['rutest'] }
   - { role: vesta, tags: ['vesta'] }
   - { role: nginx, tags: ['nginx'] }
   - { role: docker, tags: ['docker'] }
+  - { role: radarrssl, tags: ['radarrssl'] }
   - { role: sonarrssl, tags: ['sonarrssl'] }
   - { role: var, tags: ['var'] }

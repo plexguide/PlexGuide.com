@@ -24,6 +24,7 @@ touch var /opt/appdata/plexguide/var.yml
     yes | apt-get update 1>/dev/null 2>&1
     echo "5. Installing Dependicies - Please Wait"
     echo
+    ansible-playbook /opt/plexguide/ansible/config.yml
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
     echo ""
     echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
