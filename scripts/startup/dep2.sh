@@ -9,8 +9,6 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 #curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
 #chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
 #pip install docker 1>/dev/null 2>&1
-
-ansible-playbook /opt/plexguide/ansible/docker.yml
 ###################### Install Depdency Programs ###############
 
     clear
@@ -31,6 +29,7 @@ ansible-playbook /opt/plexguide/ansible/docker.yml
     echo "5. Installing Dependicies - Please Wait"
     echo
     ansible-playbook /opt/plexguide/ansible/config.yml
+    ansible-playbook /opt/plexguide/ansible/docker.yml
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
     echo ""
     echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"

@@ -27,7 +27,7 @@
 ########## Ask user for e-mail & domain
 - name: domain
   pause:
-    prompt: "Enter your domain here"
+    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
   register: domain_input
 
 - name: email

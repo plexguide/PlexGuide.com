@@ -39,9 +39,9 @@
   systemd: state=started name=docker enabled=yes
   when: docker_daemon.stat.exists == False
 
-- name: "Wait for 30 seconds before commencing"
+- name: "Wait for 25 seconds before commencing"
   wait_for:
-    timeout: 30
+    timeout: 25
 
 - name: Check override folder exists
   stat:
@@ -54,11 +54,3 @@
 
 - name: Import override file
   copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
-
-- name: Create plexguide network
-  docker_network:
-    name: plexguide
-    ipam_options:
-      subnet: '172.18.0.0/16'
-      gateway: '172.18.0.254'
-      iprange: '172.18.0.0/24'
