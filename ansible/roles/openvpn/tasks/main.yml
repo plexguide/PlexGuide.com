@@ -62,6 +62,7 @@
   pause:
     prompt: "What is your PIA username? "
   register: user
+  tags: openvpn
 #  when: vpn_prefs.stat.exists == False
 
 
@@ -69,6 +70,7 @@
   pause:
     prompt: "What is your PIA password? "
   register: password
+  tags: openvpn
 #  when: vpn_prefs.stat.exists == False
 
 - debug: msg="Using following username {{user.user_input}}"
