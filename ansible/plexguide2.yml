@@ -12,7 +12,7 @@
 ## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags sonarrssl
 
   roles:
-  - { role: vesta, tags: ['vesta'] }
+  - { role: vestacp, tags: ['vestacp'] }
   - { role: nginx, tags: ['nginx'] }
   - { role: docker, tags: ['docker'] }
   - { role: radarrssl, tags: ['radarrssl'] }
@@ -20,3 +20,5 @@
   - { role: var, tags: ['var'] }
   - { role: wordpress, tags: ['wordpress'] }
   - { role: netdatassl, tags: ['netdatassl'] }
+  - { role: plexssl, tags: ['plexssl'] }
+  - { role: embyssl, tags: ['embyssl'] }
