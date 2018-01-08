@@ -21,8 +21,6 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
 
-- We thank [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
-
 ### Important
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
@@ -135,3 +133,8 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com).
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
 - Your Feedback Helps Us and You!
+
+### Additional Thank You's
+- [LinuxServerIO](For development of all of their containers along with core YML structure to provide guidance).
+
+- [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
