@@ -18,8 +18,15 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "sonarr.*"
+      VIRTUAL_HOST: "sonarr.dunn.cloud"
       VIRTUAL_PORT: 8989
+      LETSENCRYPT_HOST: "sonarr.dunn.cloud"
+      LETSENCRYPT_EMAIL: :"gforce75@gmail.com"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - netdata
     volumes:
       - /opt/appdata/sonarr:/config
       - /mnt/unionfs:/unionfs
