@@ -4,6 +4,11 @@
     name: wordpress
     state: absent
 
+- name: Remove Database Container
+  docker_container:
+    name: wordpress
+    state: absent
+
 - name: Deploy Wordpress Database
   docker_container:
     name: my-wpdb
