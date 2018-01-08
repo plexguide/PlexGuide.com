@@ -13,12 +13,6 @@
 
 PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D
 
-### PlexGuide - Version 5 - Coded By:
-- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
-
-### Awesome Beta Testers & Contributers!
-- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
-
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
 
 ### Important
@@ -133,6 +127,12 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com).
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
 - Your Feedback Helps Us and You!
+
+### PlexGuide - Version 5 - Coded By:
+- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
+
+### Awesome Beta Testers & Contributers!
+- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 ### Additional Thank You's
 
