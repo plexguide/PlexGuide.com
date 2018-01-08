@@ -140,6 +140,6 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 
 - [LinuxServerIO](https://www.linuxserver.io) For development of all of their containers along with core YML structure to provide guidance.
 
-- [Tom472](https://) from Mediabox for concepts in using .env files and driving the starting train to develop YML's
+- [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
 - [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
