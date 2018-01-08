@@ -19,7 +19,7 @@
       VIRTUAL_HOST: "emby.{{domain}}"
       VIRTUAL_PORT: 8096
       LETSENCRYPT_HOST: "emby.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config
