@@ -144,4 +144,4 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
-- [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
+-  l3uddz & [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration and minor script use.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
