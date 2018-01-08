@@ -22,7 +22,6 @@
       VIRTUAL_PORT: 8989
       LETSENCRYPT_HOST: "sonarr.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
-    restart_policy: always
     networks:
       - name: plexguide
         aliases:
