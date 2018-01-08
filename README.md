@@ -21,6 +21,8 @@ This is a community driven project. You can spot errors, update the wiki, contri
 ### Awesome Beta Testers & Contributers!
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK)
 
+- See Additonal Thanks You! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous)
+
 ### Important
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
