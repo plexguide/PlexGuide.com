@@ -4,10 +4,11 @@ clear
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
 ###################### Need to Allow the Rest of Ansible to Work
+curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
 touch var /opt/appdata/plexguide/var.yml 1>/dev/null 2>&1
-docker network create plexguide 1>/dev/null 2>&1
 curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
 chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
+docker network create plexguide 1>/dev/null 2>&1
 ###################### Install Depdency Programs ###############
 
     clear
