@@ -22,7 +22,7 @@
       VIRTUAL_PORT: 19999
       PUID: 1000
       PGID: 1000
-      LETSENCRYPT_HOST: "netdata.plex.one"
+      LETSENCRYPT_HOST: "netdata.dunn.cloud"
       LETSENCRYPT_EMAIL: :"gforce75@gmail.com"
     restart_policy: always
     networks:
