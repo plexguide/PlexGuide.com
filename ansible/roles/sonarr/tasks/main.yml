@@ -11,7 +11,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "127.0.0.01:8989:8989"
+      - "127.0.0.1:8989:8989"
       - "9898:9898"
     env:
       APP: sonarr
