@@ -10,12 +10,6 @@
 
   email: {{your@email.com}}
 
-  lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
-  #- name: "Get Server IP"
-  #  shell: `hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
-  #  register: lan_net
-  lan: {{lan_net.stdout}}
-
 - name: Get VPN username
   pause:
     prompt: "What is your PIA username? "
