@@ -8,3 +8,4 @@
   - { role: rutest, tags: ['rutest'] }
   - { role: vesta, tags: ['vesta'] }
   - { role: nginx, tags: ['nginx'] }
+  - { role: docker, tags: ['docker'] }
