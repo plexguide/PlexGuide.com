@@ -6,7 +6,7 @@
 
 - name: Remove Database Container
   docker_container:
-    name: wordpress
+    name: my-wpdb
     state: absent
 
 - name: Deploy Wordpress Database
