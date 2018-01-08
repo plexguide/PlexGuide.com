@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
-
+  vars_files:
+    - var.yml
 ## ensure to delete traefik from portainer
 ## ensure to update plexguide
 ## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags docker
