@@ -22,6 +22,12 @@
       VIRTUAL_PORT: 19999
       PUID: 1000
       PGID: 1000
+      LETSENCRYPT_HOST: "netdata.plex.one"
+      LETSENCRYPT_EMAIL: :"gforce75@gmail.com"
     restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - netdata
     #networks:
      # - name: "proxy"
