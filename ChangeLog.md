@@ -3,13 +3,14 @@ Current Changes will continued to be modifed as known.
 
 ### [5.0.0027] Actively Working
 #### Added
-- None
+- SSL Deployment (Not Released Yet)
 
 #### Changed
 - Fixed Restore Script; was an if instead of an fi
+- Modifications to script to allow SSL (Not Complete Yet)
 
 #### Removed
-- None
+- Traefik (Not In Affect Yet)
 
 -------------------------------------------------------
 ## Past Changes
