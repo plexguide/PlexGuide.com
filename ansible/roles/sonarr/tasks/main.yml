@@ -21,7 +21,7 @@
       VIRTUAL_HOST: "sonarr.dunn.cloud"
       VIRTUAL_PORT: 8989
       LETSENCRYPT_HOST: "sonarr.dunn.cloud"
-      LETSENCRYPT_EMAIL: :"gforce75@gmail.com"
+      LETSENCRYPT_EMAIL: "gforce75@gmail.com"
     restart_policy: always
     networks:
       - name: plexguide
