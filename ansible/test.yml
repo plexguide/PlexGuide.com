@@ -4,6 +4,7 @@
     - var.yml
 ## ensure to delete traefik from portainer
 ## ensure to update plexguide
+## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags var
 ## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags docker
 ## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags nginx
 ## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags sonarrssl
@@ -17,3 +18,4 @@
   - { role: nginx, tags: ['nginx'] }
   - { role: docker, tags: ['docker'] }
   - { role: sonarrssl, tags: ['sonarrssl'] }
+  - { role: var, tags: ['var'] }
