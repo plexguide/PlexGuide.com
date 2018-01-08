@@ -21,7 +21,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
 
-- We thank [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long because Ansible streamlined bashing features.
+- We thank [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long because Ansible's streamlined bashing features.
 
 ### Important
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
