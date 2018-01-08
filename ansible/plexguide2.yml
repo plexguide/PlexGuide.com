@@ -19,4 +19,4 @@
   - { role: sonarrssl, tags: ['sonarrssl'] }
   - { role: var, tags: ['var'] }
   - { role: wordpress, tags: ['wordpress'] }
-  - { role: netdata, tags: ['netdata'] }
+  - { role: netdatassl, tags: ['netdatassl'] }
