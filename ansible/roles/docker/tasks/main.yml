@@ -1,4 +1,5 @@
 ---
+########### Original Development of this Script Was Created By desimaniac from https://github.com/desimaniac/Cloudbox
 - name: Install required packages
   apt: "name={{item}} state=installed"
   with_items:
@@ -13,8 +14,8 @@
 
 - name: Add official repository
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable" 
-    
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+
 - name: Install docker
   apt:
     name: docker-ce
