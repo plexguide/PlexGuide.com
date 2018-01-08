@@ -18,7 +18,7 @@
     state: present
 
 ########## Copy Traefik config files
-- name: Installing Traefik prerequisites
+- name: Installing config prerequisites
   template:
     src: var.yml
     dest: /opt/appdata/plexguide/var.yml
@@ -43,7 +43,7 @@
 - name: Replace yourdomain.com with user input
   replace:
     path: /opt/appdata/plexguide/var.yml
-    regexp: yourdomain.com
+    regexp: domain.com
     replace: "{{domain_input.user_input}}"
 
 - name: Replace your@email.com with user input
