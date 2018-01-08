@@ -135,6 +135,7 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - Your Feedback Helps Us and You!
 
 ### Additional Thank You's
-- [LinuxServerIO](For development of all of their containers along with core YML structure to provide guidance).
+
+- [LinuxServerIO](https://www.linuxserver.io) For development of all of their containers along with core YML structure to provide guidance.
 
 - [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
