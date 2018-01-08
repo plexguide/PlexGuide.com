@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  vars_files:
+    - /opt/appdata/plexguide/var.yml
+
+## ensure to delete traefik from portainer
+## ensure to update plexguide
+## sudo ansible-playbook /opt/plexguide/ansible/config.yml <<< to generate the var file required above
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags var
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags docker
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags nginx
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags sonarrssl
+
+  roles:
+  - { role: traefik, tags: ['traefik'] }
+  - { role: lazylibrarian, tags: ['lazylibrarian'] }
+  - { role: ssl, tags: ['ssl'] }
+  - { role: rutest, tags: ['rutest'] }
+  - { role: vesta, tags: ['vesta'] }
+  - { role: nginx, tags: ['nginx'] }
+  - { role: docker, tags: ['docker'] }
+  - { role: sonarrssl, tags: ['sonarrssl'] }
+  - { role: var, tags: ['var'] }

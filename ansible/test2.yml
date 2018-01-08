@@ -1,6 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: sabnzbdtest, tags: ['sabnzbdtest'] }
-  - { role: processor, tags: ['processor'] }
