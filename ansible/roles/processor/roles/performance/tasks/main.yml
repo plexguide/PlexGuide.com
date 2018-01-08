@@ -1,4 +1,5 @@
 ## Notes: https://wiki.archlinux.org/index.php/CPU_frequency_scaling
+########### Original Development of this Script Was Created By desimaniac from https://github.com/desimaniac/Cloudbox
 
 - name: Install CPUFrequtils
   apt: "name={{item}} state=latest"

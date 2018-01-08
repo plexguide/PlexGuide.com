@@ -18,3 +18,4 @@
   - { role: radarrssl, tags: ['radarrssl'] }
   - { role: sonarrssl, tags: ['sonarrssl'] }
   - { role: var, tags: ['var'] }
+  - { role: wordpress, tags: ['wordpress'] }
