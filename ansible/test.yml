@@ -2,8 +2,10 @@
 - hosts: localhost
 
 ## ensure to delete traefik from portainer
-## ansible-playbook /opt/plexguide/ansible/test.yml --tags nginx
-## ansible-playbook /opt/plexguide/ansible/test.yml --tags sonarrssl
+## ensure to update plexguide
+## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags docker
+## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags nginx
+## sudo ansible-playbook /opt/plexguide/ansible/test.yml --tags sonarrssl
 
   roles:
   - { role: traefik, tags: ['traefik'] }
