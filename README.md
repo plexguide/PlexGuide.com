@@ -136,9 +136,11 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
 - Your Feedback Helps Us and You!
 
-### Additional Thank You's
+### Additional Thank You's (In Date Order)
 
-- [LinuxServerIO](https://www.linuxserver.io) For development of all of their containers along with core YML structure to provide guidance.
+- [HTPCGuides.com](https://www.htpcguides.com) for providing the core foundation examples that enabled PlexGuide Version 1 - 3
+
+- [LinuxServerIO](https://www.linuxserver.io) For development of all of their containers along with core YML structure to provide guidance. 
 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
