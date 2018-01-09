@@ -44,9 +44,6 @@ function interupts {
    } | whiptail --gauge "Getting data ..." 6 60 50
 }
 
-while []
-do
-VARS=$(
 whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Variables for the Information and Benchmark Run" 15 60 4 \
     "-info" "System Information" OFF \
     "-io" "I/O Test" OFF \

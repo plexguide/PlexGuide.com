@@ -24,7 +24,7 @@ address = ":8080"
     entryPoint = "https"
   [entryPoints.https]
   address = ":443"
-    [entryPoints.https.tls]
+  [entryPoints.https.tls]
 
 
 ################################################################
