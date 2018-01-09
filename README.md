@@ -80,7 +80,7 @@ Copy & Paste either or into your terminal
 sudo apt-get update -y && sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/scripts/curlinstall.sh && sudo bash ./curlinstall.sh
 ```
 
-#### Slower Install Git Option Via GitHub
+#### Install Via Git Option Via GitHub
 
 ```sh
 sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo rm -r /opt/plexguide/ && sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
