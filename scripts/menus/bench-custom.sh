@@ -37,6 +37,5 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
   fi
 
   read -n 1 -s -r -p "Press any key to continue "
-  clear
 
 exit
