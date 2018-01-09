@@ -55,7 +55,8 @@ This is a community driven project. You can spot errors, update the wiki, contri
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Have a Dedicated, VPS, or Home Solution Ready!
-  - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers)
+
+  - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers) | Recommended US Servers
 
 ** Recommend Space Requirements
 - Plex Only Server: Small Library (30GB-50GB) - Large Library (100GB+):
