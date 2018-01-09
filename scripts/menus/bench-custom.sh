@@ -37,7 +37,6 @@ do
     echo "Did not run benchmarks and information"
     echo
   fi
-fi
   read -n 1 -s -r -p "Press any key to continue "
   clear
 
