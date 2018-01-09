@@ -37,10 +37,10 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-outpu
       echo "Did not run benchmarks and information"
       echo
 #      read -n 1 -s -r -p "Press any key to continue "
-      clear
-  else
+#      clear
+#  else
 #    read -n 1 -s -r -p "Press any key to continue "
-    clear
+#    clear
   fi
 
 #  echo "You chose the following options:" $BENCH
