@@ -1,5 +1,5 @@
 #! /bin/bash
-INFO=$"-info"
+INFO=$(-info)
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 15 \
   "$INFO" "System Information" off \
