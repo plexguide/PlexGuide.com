@@ -51,13 +51,6 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist 15 60 4 \
     "-northamerica" "North America Download" OFF \
     "-europe" "Europe Download" OFF \
     "-asia" "Asia Download"
-    3>&1 1>&2 2>&3
 
 read -n 1 -s -r -p "Press any key to continue "
 clear
-
-fi
-
-esac
-done
-exit
