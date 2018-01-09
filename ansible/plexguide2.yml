@@ -22,3 +22,5 @@
   - { role: plexssl, tags: ['plexssl'] }
   - { role: embyssl, tags: ['embyssl'] }
   - { role: portainerssl, tags: ['portainerssl'] }
+  - { role: nzbgetssl, tags: ['nzbgetssl'] }
+  - { role: ombissl, tags: ['ombissl'] }
