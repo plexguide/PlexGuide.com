@@ -50,8 +50,9 @@ CHOICE=$(
 whiptail --title "Benchmark Menu (The Creator)" --menu "Make Your Choice!" 12 44 5 \
    "1)" "System Info and Benchmark - Basic"  \
    "2)" "System Info and Benchmark - Advanced"  \
-   "3)" "Simple Speedtest"  \
-   "4)" "Exit  "  3>&2 2>&1 1>&3
+   "3)" "System Info and Benchmark - Custom"  \
+   "4)" "Simple Speedtest"  \
+   "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -88,7 +89,7 @@ case $CHOICE in
    if echo "$answer" | grep -iq "^y" ;then
        echo Yes;
 
-       curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
+       curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
        echo
        ./bench.sh -a
 
@@ -104,6 +105,10 @@ case $CHOICE in
      ;;
 
   "3)")
+  bash /opt/plexguide/scripts/menus/bench-custom.sh
+  ;;
+
+  "4)")
   echo "Do you want to run a Speedtest? (y/n)? "
   old_stty_cfg=$(stty -g)
   stty raw -echo
@@ -128,7 +133,7 @@ case $CHOICE in
     clear
     ;;
 
-  "4)")
+  "5)")
      clear
      exit 0
      ;;

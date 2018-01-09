@@ -1,6 +1,6 @@
 #! /bin/bash
 
-BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-output -- "Choose:" 18  78 15 \
+BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-output -- "Choose:" 24 88 15 \
   -info "System Information" off \
   -io "System I/O Test" off \
   -cdn "CDN Test Download (200MB)" off \
