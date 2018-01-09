@@ -19,7 +19,7 @@
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
-    command: sh -c "cd /usr/src/app && npm i && npm start"
+    #command: sh -c "cd /usr/src/app && npm i && npm start"
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     networks:
@@ -28,6 +28,7 @@
           - nginx-proxy
     restart_policy: always
     state: started
+    tty: true
 
 - name: Create and start letsencrypt container
   docker_container:
