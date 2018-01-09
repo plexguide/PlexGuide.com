@@ -1,8 +1,8 @@
 #! /bin/bash
-INFO=$("-info")
+#INFO=$"-info"
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 15 \
-  "$INFO" "System Information" off \
+  "info" "System Information" off \
 #  "-io" "System I/O Test" off \
 #  "-cdn" "CDN Test Download (200MB)" off \
 #  "-northamerica" "North-American Server Test Download (800MB)" off \
@@ -26,7 +26,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 
   if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
-    curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
+    curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
     echo
     ./bench.sh $BENCH
 
