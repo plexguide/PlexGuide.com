@@ -1,7 +1,7 @@
 #! /bin/bash
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 30 15 \
-  "-info" "System Information" off \
+  -info off \
   "-io" "System I/O Test" off \
   "-cdn" "CDN Test Download (200MB)" off \
   "-northamerica" "North-American Server Test Download (800MB)" off \
@@ -14,7 +14,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
   "-about" "Show About-Info. Do NOT Execute This With Other Options!" off \
   3>&1 1>&2 2>&3)
 
-  echo "You chose the following options: "$BENCH""
+  echo "You chose the following options: $BENCH"
   echo
 
   echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
@@ -27,7 +27,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
 
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/master/bench.sh; chmod +x bench.sh
     echo
-    bash ./bench.sh "$BENCH"
+    bash ./bench.sh $BENCH
 
   else
     echo No
