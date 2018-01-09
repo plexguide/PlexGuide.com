@@ -25,9 +25,9 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
   if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
-    curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/master/bench.sh; chmod +x bench.sh
-    echo
-    bash ./bench.sh $BENCH
+curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/master/bench.sh; chmod +x bench.sh
+echo
+bash ./bench.sh $BENCH
 
   else
     echo No
@@ -37,5 +37,6 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
   fi
 
   read -n 1 -s -r -p "Press any key to continue "
+  clear
 
 exit
