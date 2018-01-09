@@ -53,10 +53,6 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist 15 60 4 \
     "-asia" "Asia Download"
     3>&1 1>&2 2>&3
 
-
-else
-  bash /opt/plexguide/scripts/menus/bench-menu.sh
-
 read -n 1 -s -r -p "Press any key to continue "
 clear
 
