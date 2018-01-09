@@ -14,9 +14,6 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 
   "-about" "Show About-Info. Do NOT Execute This With Other Options!" off \
   3>&1 1>&2 2>&3)
 
-#  echo "You chose the following options: $BENCH"
-  echo
-
   echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
   old_stty_cfg=$(stty -g)
   stty raw -echo
