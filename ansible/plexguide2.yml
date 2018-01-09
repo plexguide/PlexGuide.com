@@ -3,7 +3,14 @@
   vars_files:
     - /opt/appdata/plexguide/var.yml
 
-## ensure to delete traefik from portainer
+### ensure to delete traefik from portainer or add the following to nginx main.yml
+#- name: Remove Traefik
+#  docker_container:
+#    name: traefik
+#    state: absent
+## comment out vars_files parts
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags var
+## then comment back in vars_files parts and comment out var role
 ## ensure to update plexguide
 ## sudo ansible-playbook /opt/plexguide/ansible/config.yml <<< to generate the var file required above
 ## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags var
