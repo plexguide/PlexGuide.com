@@ -8,7 +8,7 @@
 - name: Create and start container
   docker_container:
     name: nginx-proxy
-    image: "jwilder/nginx-proxy:latest"
+    image: "jwilder/nginx-proxy:0.6.0"
     pull: yes
     published_ports:
       - "80:80"
@@ -19,8 +19,7 @@
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
-    entrypoint: /bin/sh -c
-    command: ["/usr/local/bin/docker-gen -notify-sighup nginx -only-exposed -watch -wait 30s:60s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf"]
+    #entrypoint: /bin/sh -c
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     networks:
