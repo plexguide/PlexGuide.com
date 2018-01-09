@@ -1,6 +1,6 @@
 #! /bin/bash
 
-BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-output -- "Choose:" 32 68 15 \
+BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-output -- "Choose:" 18 78 15 \
   -info "System Information" off \
   -io "System I/O Test" off \
   -cdn "CDN Test Download (200MB)" off \
@@ -17,8 +17,6 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-outpu
   echo "You chose the following options:" $BENCH
   echo
 
-while read $BENCH
-do
   echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
   old_stty_cfg=$(stty -g)
   stty raw -echo
@@ -39,5 +37,6 @@ do
   fi
   read -n 1 -s -r -p "Press any key to continue "
   clear
+
 
 exit
