@@ -18,6 +18,7 @@
   - { role: emby, tags: ['emby'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
+  - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
   - { role: label, tags: ['label'] }
   - { role: resilio, tags: ['resilio'] }
