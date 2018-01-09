@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Variables for the Information and Benchmark Run" 15 60 4 \
+whiptail --checklist "Choose Variables for the Information and Benchmark Run" --title "Advanced System and Bechnmark Options" 15 60 4 \
     "-info" "System Information" OFF \
     "-io" "I/O Test" OFF \
     "-cdn" "CDN Download" OFF \
