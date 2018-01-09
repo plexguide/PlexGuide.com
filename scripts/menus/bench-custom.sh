@@ -29,7 +29,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-outpu
 
     curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
     echo
-    ./bench.sh $BENCH
+    ./bench.sh $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH
 
     else
 #      echo No
