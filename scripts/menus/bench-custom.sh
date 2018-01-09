@@ -27,7 +27,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
 
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/master/bench.sh; chmod +x bench.sh
     echo
-    ./bench.sh $BENCH
+    bash ./bench.sh $BENCH
 
   else
     echo No
