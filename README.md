@@ -86,8 +86,8 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -
 ```
 
 **E. Set CPU Performance**
-- For Real Machine; useless on VPS or Virtual Machine. View the following screenshots on affects:
-  - [Performance Mode](https://imgur.com/a/bdHMg), [OnDemand Mode](https://imgur.com/a/hriFS), [Conservative Mode](https://imgur.com/a/ES9tw)
+- For Real Machine; useless on VPS or Virtual Machine. 
+- View the following screenshots on affects: [Performance Mode](https://imgur.com/a/bdHMg), [OnDemand Mode](https://imgur.com/a/hriFS), [Conservative Mode](https://imgur.com/a/ES9tw)
 
 **F. Benchmarks**
 - Select [Server/Net Benchmarks] on the PlexGuide front Menu
