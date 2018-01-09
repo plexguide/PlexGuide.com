@@ -2,7 +2,7 @@
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 30 15 \
   -info "" off \
-  "-io" off \
+  "-io" "I/O Test" off \
   "-cdn" "" off \
   "-northamerica" "North-American Server Test Download (800MB)" off \
   "-europe" "European Server Test Download (900MB)" off \
