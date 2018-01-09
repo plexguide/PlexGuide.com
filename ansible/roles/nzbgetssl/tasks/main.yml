@@ -39,8 +39,6 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      VIRTUAL_HOST: "nzbget.*"
-      VIRTUAL_PORT: 6789
       APP: "nzbget"
       VERSION: "stable"
       PUID: 1000
