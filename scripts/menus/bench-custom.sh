@@ -1,7 +1,7 @@
 #! /bin/bash
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 15 \
-  "{-info}" "System Information" off \
+  {-info} "System Information" off \
   "${BENCH[-io]}" "System I/O Test" off \
   "${BENCH[-cdn]}" "CDN Test Download (200MB)" off \
   "${BENCH[-northamerica]}" "North-American Server Test Download (800MB)" off \
