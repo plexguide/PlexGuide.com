@@ -52,7 +52,6 @@ whiptail --title "Advanced System and Bechnmark Options" --checklist "Choose Var
     "-europe" "Europe Download" OFF \
     "-asia" "Asia Download"
     3>&1 1>&2 2>&3
-)
 
 echo $VARS
 
