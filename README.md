@@ -78,6 +78,7 @@ This is a community driven project. You can spot errors, update the wiki, contri
 sudo apt-getupdate -y && sudo app-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/scripts/curlinstall.sh && sudo bash ./curlinstall.sh
 ```
 
+#### Slow Install
 *Recommened First to Prevent Issues*
 ```sh
 sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y
