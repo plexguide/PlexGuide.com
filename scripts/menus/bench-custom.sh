@@ -1,7 +1,7 @@
 #! /bin/bash
-whiptail --title "Information" --msgbox "This is a custom benchmarking and speedtest script for your machine. From here you can manipulate which options you want to include in the test! You can return anytime by pressing Cancel. Navigate using Space, TAB and Up/Down Arrow keys. Choose OK to continue." 14 60
+whiptail --title "Information" --msgbox "This is a custom benchmarking and speedtest script for your machine. From here you can manipulate which options you want to include in the test! You may only choose ONE, for now. You can return anytime by pressing Cancel. Navigate using Space, TAB and Up/Down Arrow keys. Choose OK to continue." 14 60
 
-BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-output -- "Choose:" 22 84 15 \
+BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-output -- "Choose:" 22 84 15 \
   -info "System Information" off \
   -io "System I/O Test" off \
   -cdn "CDN Test Download (200MB)" off \
@@ -15,55 +15,55 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-outpu
   -about "Show About-Info. Do NOT Execute This With Other Options!" off \
   3>&1 1>&2 2>&3)
 
-#  exitstatus=$?
-#  if [ $exitstatus = 0 ]; then
-#    echo "You chose the following options:" $BENCH
-#    echo
-#    echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
-#    old_stty_cfg=$(stty -g)
-#    stty raw -echo
-#    answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-#    stty $old_stty_cfg
-#    if echo "$answer" | grep -iq "^y" ;then
-#      echo Yes;
-#
-#    curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
-#    echo
-#    ./bench.sh $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH && $BENCH
-#
-#    else
-#      echo No
-#      clear
-#      echo "Did not run benchmarks and information"
-#      echo
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
+    echo "You chose the following options:" $BENCH
+    echo
+    echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
+    old_stty_cfg=$(stty -g)
+    stty raw -echo
+    answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+    stty $old_stty_cfg
+    if echo "$answer" | grep -iq "^y" ;then
+      echo Yes;
+
+    curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
+    echo
+    ./bench.sh $BENCH
+
+    else
+      echo No
+      clear
+      echo "Did not run benchmarks and information"
+      echo
 #      read -n 1 -s -r -p "Press any key to continue "
-#      clear
-#  else
-#    read -n 1 -s -r -p "Press any key to continue "
-#    clear
-#  fi
-
-  echo "You chose the following options:" $BENCH
-  echo
-
-  echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
-  old_stty_cfg=$(stty -g)
-  stty raw -echo
-  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-  stty $old_stty_cfg
-  if echo "$answer" | grep -iq "^y" ;then
-    echo Yes;
-
-  curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
-  echo
-  ./bench.sh $BENCH
-
+      clear
   else
-    echo No
+#    read -n 1 -s -r -p "Press any key to continue "
     clear
-    echo "Did not run benchmarks and information"
-
   fi
+
+#  echo "You chose the following options:" $BENCH
+#  echo
+#
+#  echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
+#  old_stty_cfg=$(stty -g)
+#  stty raw -echo
+#  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+#  stty $old_stty_cfg
+#  if echo "$answer" | grep -iq "^y" ;then
+#    echo Yes;
+#
+#  curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
+#  echo
+#  ./bench.sh $BENCH
+#
+#  else
+#    echo No
+#    clear
+#    echo "Did not run benchmarks and information"
+#
+#  fi
 
 echo
 read -n 1 -s -r -p "Press any key to continue"
