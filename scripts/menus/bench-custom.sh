@@ -35,7 +35,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-outpu
 #      clear
       echo "Did not run benchmarks and information"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+#      read -n 1 -s -r -p "Press any key to continue "
 #      clear
 #  else
 #    read -n 1 -s -r -p "Press any key to continue "
