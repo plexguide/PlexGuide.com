@@ -17,6 +17,8 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
   echo "You chose the following options: $BENCH"
   echo
 
+while read $BENCH
+do
   echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
   old_stty_cfg=$(stty -g)
   stty raw -echo
@@ -35,7 +37,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 
     echo "Did not run benchmarks and information"
     echo
   fi
-
+fi
   read -n 1 -s -r -p "Press any key to continue "
   clear
 
