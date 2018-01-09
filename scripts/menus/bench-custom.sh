@@ -43,6 +43,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-outpu
 #    clear
   fi
 
+bash /opt/plexguide/scripts/menus/bench-menu.sh
 #  echo "You chose the following options:" $BENCH
 #  echo
 #
@@ -65,7 +66,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-outpu
 #
 #  fi
 
-echo
-read -n 1 -s -r -p "Press any key to continue"
+#echo
+#read -n 1 -s -r -p "Press any key to continue"
 
-exit
+#exit
