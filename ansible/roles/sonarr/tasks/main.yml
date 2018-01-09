@@ -20,7 +20,6 @@
       PGID: "1000"
       VIRTUAL_HOST: "sonarr.*"
       VIRTUAL_PORT: 8989
-    restart_policy: always
     volumes:
       - /opt/appdata/sonarr:/config
       - /mnt/unionfs:/unionfs
