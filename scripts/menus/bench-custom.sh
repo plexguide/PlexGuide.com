@@ -30,16 +30,16 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-outpu
     echo
     ./bench.sh $BENCH
 
-    else
+#    else
 #      echo No
 #      clear
 #      echo "Did not run benchmarks and information"
 #      echo
-      read -n 1 -s -r -p "Press any key to continue "
-      clear
-#  else
-#    read -n 1 -s -r -p "Press any key to continue "
-#    clear
+#      read -n 1 -s -r -p "Press any key to continue "
+#      clear
+  else
+    read -n 1 -s -r -p "Press any key to continue "
+    clear
   fi
 
 #  echo "You chose the following options:" $BENCH
