@@ -78,30 +78,10 @@ This is a community driven project. You can spot errors, update the wiki, contri
 sudo apt-get update -y && sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/scripts/curlinstall.sh && sudo bash ./curlinstall.sh
 ```
 
-#### Slow Install
-*Recommened First to Prevent Issues*
-```sh
-sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y
-```
-Ensures that the distro has it's dependencies updated and no updates are queued.
+#### Slower Install
 
-*Install Supporting Programs*
 ```sh
-sudo apt-get install git -y && sudo apt-get install whiptail -y
-```
-Important as if you do not have git and whiptail; you will not be able to fetch and run PlexGuide!
-
-*Install PlexGuide*
-```sh
-sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-```
-```sh
-sudo bash /opt/plexg*/sc*/ins*
-```
-
-*Execute PlexGuide AnyTime Futurewise*
-```sh
-plexguide
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && echo "Execute PlexGuide Anytime By Typing: plexguide"
 ```
 
 **E. Set CPU Performance**
