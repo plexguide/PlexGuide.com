@@ -87,7 +87,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -
 ```
 
 **E. Set CPU Performance**
-- Only use for a REAL Machine; useless for a virtual machine
+- Only use for a REAL Machine; useless for a virtual machine or VPS
 - Select [Set CPU Performance]; recommend to use Performance Mode
   - [Performance Mode](https://imgur.com/a/bdHMg) Screenshot 
   - [OnDemand Mode](https://imgur.com/a/hriFS) Screenshot
@@ -133,4 +133,4 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
--  l3uddz & [Desimanic](https://github.com/desimaniac) from Cloudbox for the Ansible Inspiration and minor script use.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
+-  l3uddz & Desimanic from Cloudbox(https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and minor script use.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
