@@ -63,8 +63,5 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist --separate-outpu
 #    echo "Did not run benchmarks and information"
 #    echo
   fi
-  read -n 1 -s -r -p "Press any key to continue "
-  clear
-
 
 exit
