@@ -8,6 +8,7 @@ Current Changes will continued to be modifed as known.
 #### Changed
 - Fixed Restore Script; was an if instead of an fi
 - Fixed NetData, would remove portainer on install
+- Improved Initial Install Instructions on Read Me
 - Modifications to script to allow SSL (Not Complete Yet)
 
 #### Removed
