@@ -1,7 +1,7 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.0.0027] Actively Working
+### [5.0.027] Actively Working
 #### Added
 - SSL Deployment (Not Released Yet)
 
@@ -18,7 +18,7 @@ Current Changes will continued to be modifed as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.0.0026] 
+### [5.0.026] 
 #### Added
 - Added Watchtower / Updates Containers
 
@@ -31,7 +31,7 @@ Historical Documented Changes will be stored as below.
 
 --------------------------------------------------------
 
-### [5.0.0025]
+### [5.0.025]
 #### Added
 - Add v2 DockerFix
   - Reboots all containers 
@@ -48,7 +48,7 @@ Historical Documented Changes will be stored as below.
 
 -------------------------------------------------------
 
-### [5.0.0024]
+### [5.0.024]
 #### Added
 - Set CPU to work at Performance, OnDemand, or Conservative Mode
 
