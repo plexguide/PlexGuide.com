@@ -18,10 +18,6 @@
       PGID: "1000"
       VIRTUAL_HOST: "ombi.*"
       VIRTUAL_PORT: 3579
-      VIRTUAL_HOST: "ombi.{{domain}}"
-      VIRTUAL_PORT: ombi
-      LETSENCRYPT_HOST: "ombi.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /opt/appdata/ombiv3:/config
       - /etc/localtime:/etc/localtime:ro
