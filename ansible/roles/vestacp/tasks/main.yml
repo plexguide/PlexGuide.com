@@ -16,7 +16,7 @@
 - name: Deploy VestaCP Container
   docker_container:
     name: vesta
-    image: niiknow/vestacp:0.9.25
+    image: niiknow/vestacp:1.0.5
     pull: yes
     cpu_shares: 256
     published_ports:
