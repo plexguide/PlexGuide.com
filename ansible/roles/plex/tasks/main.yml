@@ -61,10 +61,7 @@
       PLEX_GID: 1000
       TOKEN: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
-      VIRTUAL_HOST: "plex.{{domain}}"
-      VIRTUAL_PORT: 32400
-      LETSENCRYPT_HOST: "plex.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}
+      VIRTUAL_HOST: "plex.*"
     network_mode: "host"
     volumes:
       - "/tmp:/tmp"
