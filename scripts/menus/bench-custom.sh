@@ -28,7 +28,7 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 
 
     curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
     echo
-    ./bench.sh $BENCH
+    bash ./bench.sh $BENCH
 
   else
     echo No
