@@ -4,5 +4,5 @@ sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Serve
 sudo bash /opt/plexg*/sc*/ins*
 
 clear
-echo "To deploy this Script anytime, type: plexguide
+echo "To deploy this Script anytime, type: plexguide"
 echo ""
