@@ -72,7 +72,7 @@ This is a community driven project. You can spot errors, update the wiki, contri
 
 **D. Install Instructions:**
 
-- Copy & Paste either or into your terminal
+Copy & Paste either or into your terminal
 
 #### Install Via Curl Option Via GitHub
 
