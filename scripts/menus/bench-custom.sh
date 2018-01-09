@@ -12,15 +12,15 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 
   "-share" "Share Your Results With Others!" off \
   "-help" "Help Menu. Do NOT Execute This With Other Options!" off \
   "-about" "Show About-Info. Do NOT Execute This With Other Options!" off \
-  3>&1 1>&2 2>&3)
+3>&1 1>&2 2>&3)
 
-  echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
-  old_stty_cfg=$(stty -g)
-  stty raw -echo
-  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-  stty $old_stty_cfg
-  if echo "$answer" | grep -iq "^y" ;then
-    echo Yes;
+#  echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
+#  old_stty_cfg=$(stty -g)
+#  stty raw -echo
+#  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+#  stty $old_stty_cfg
+#  if echo "$answer" | grep -iq "^y" ;then
+#    echo Yes;
 
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/master/bench.sh; chmod +x bench.sh
     echo
