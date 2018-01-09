@@ -71,8 +71,7 @@ This is a community driven project. You can spot errors, update the wiki, contri
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
 
 **D. Install Instructions:**
-
-Copy & Paste either or into your terminal
+Copy & Paste either or into your Terminal (usually double clicking on a word selects the entire item)
 
 #### Install Via Curl Option Via GitHub
 
