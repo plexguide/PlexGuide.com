@@ -16,7 +16,7 @@
 - name: Deploy VestaCP Container
   docker_container:
     name: vesta
-    image: niiknow/vestacp
+    image: lagun4ik/vestacp:latest
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -25,6 +25,11 @@
       - "3306:3306"
       - "5432:5432"
       - "8083:8083"
+      - "25:25"
+      - "993:993"
+      - "110:110"
+      - "53:53"
+      - "54:54"
     env:
       PUID: "1000"
       PGID: "1000"
@@ -34,7 +39,6 @@
       LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /opt/appdata/vestacp/vesta:/vesta
-      - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/vestacp/home:/home
       - /opt/appdata/vestacp/backup:/backup
     restart_policy: always
