@@ -1,9 +1,9 @@
 #! /bin/bash
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist -- "Choose:" 20 30 15 \
-  -info off \
+  -info "" off \
   "-io" off \
-  "-cdn" off \
+  "-cdn" "" off \
   "-northamerica" "North-American Server Test Download (800MB)" off \
   "-europe" "European Server Test Download (900MB)" off \
   "-asia" "Asian Server Test Download (400MB)" off \
