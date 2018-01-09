@@ -1,7 +1,7 @@
 #! /bin/bash
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 15 \
-  "info" "System Information" off \
+  "-info" "System Information" off \
   "-io" "System I/O Test" off \
   "-cdn" "CDN Test Download (200MB)" off \
   "-northamerica" "North-American Server Test Download (800MB)" off \
@@ -14,15 +14,15 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --checklist "Choose:" 20 30 
   "-about" "Show About-Info. Do NOT Execute This With Other Options!" off \
   3>&1 1>&2 2>&3)
 
-echo "You chose the following options $BENCH"
-echo
+  echo "You chose the following options: $BENCH"
+  echo
 
-echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg
-if echo "$answer" | grep -iq "^y" ;then
+  echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
+  old_stty_cfg=$(stty -g)
+  stty raw -echo
+  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+  stty $old_stty_cfg
+  if echo "$answer" | grep -iq "^y" ;then
     echo Yes;
 
     curl -LsO raw.githubusercontent.com/sayem314/serverreview-benchmark/v3-dev/bench.sh; chmod +x bench.sh
@@ -36,7 +36,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo
   fi
 
-read -n 1 -s -r -p "Press any key to continue "
-clear
+  read -n 1 -s -r -p "Press any key to continue "
+  clear
 
 exit
