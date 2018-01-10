@@ -42,7 +42,7 @@
     image: binhex/arch-delugevpn
     pull: yes
     cpu_shares: 256
-    network_mode: "bridge"
+#    network_mode: "bridge"
     capabilities:
       - NET_ADMIN
     published_ports:
