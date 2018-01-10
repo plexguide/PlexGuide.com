@@ -35,3 +35,4 @@
   - { role: nzbgetssl, tags: ['nzbgetssl'] }
   - { role: ombissl, tags: ['ombissl'] }
   - { role: muximuxssl, tags: ['muximuxssl'] }
+  - { role: sabnzbdssl, tags: ['sabnzbdssl'] }
