@@ -6,5 +6,5 @@ sudo clear
 #cd ~
 sudo rm -r /opt/plexg* 2>/dev/nu*
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-bash /opt/plexg*/ins*
+#bash /opt/plexg*/ins*
 #echo Remember, restart by typing: plexguide
