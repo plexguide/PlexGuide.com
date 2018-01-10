@@ -1,10 +1,10 @@
 ---
 - hosts: localhost
 
-  vars_files:
-    - settings.yml
+#  vars_files:
+#    - settings.yml
 
   roles:
       - { role: openvpn, tags: ['openvpn', 'rtorrentvpn'] }
 #      - { role: rtorrentvpn, tags: ['openvpn', 'rtorrentvpn'] }
-      - { role: delugevpn, tags: ['openvpn', 'delugevpn'] }
+#      - { role: delugevpn, tags: ['openvpn', 'delugevpn'] }
