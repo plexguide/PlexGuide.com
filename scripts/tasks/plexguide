@@ -1,5 +1,2 @@
 #!/bin/bash
-clear
-bash /opt/plexguide/scripts/docker-no/upgrade.sh
-clear
-echo Remember, restart by typing: plexguide
+sudo bash /opt/plex*/scri*/menu.sh
