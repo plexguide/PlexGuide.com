@@ -37,8 +37,8 @@
   - { role: muximuxssl, tags: ['muximuxssl'] }
   - { role: sabnzbdssl, tags: ['sabnzbdssl'] }
   #- { role: rutorrentssl, tags: ['rutorrentssl'] }
-  #- { role: medusassl, tags: ['medusassl'] }
-  #- { role: tautullissl, tags: ['tautullissl'] }
+  - { role: medusassl, tags: ['medusassl'] }
+  - { role: tautullissl, tags: ['tautullissl'] }
   #- { role: wordpressssl, tags: ['wordpressssl'] }
   #- { role: delugessl, tags: ['delugessl'] }
   #- { role: nzbhydrassl, tags: ['nzbhydrassl'] }
