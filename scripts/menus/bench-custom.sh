@@ -15,29 +15,35 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-outpu
   -about "Show About-Info. Do NOT Execute This With Other Options!" off \
   3>&1 1>&2 2>&3)
 
-echo "You chose the following options:" $BENCH
-  echo
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
+    echo "You chose the following options:" $BENCH
+      echo
 
-echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
-  old_stty_cfg=$(stty -g)
-  stty raw -echo
-  answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-  stty $old_stty_cfg
-  if echo "$answer" | grep -iq "^y" ;then
-    echo Yes;
+    echo "Do you want to run CUSTOM benchmark and information? (y/n)? "
+      old_stty_cfg=$(stty -g)
+      stty raw -echo
+      answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+      stty $old_stty_cfg
+      if echo "$answer" | grep -iq "^y" ;then
+        echo Yes;
 
-  curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
+      curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh
+      echo
+      ./bench.sh $BENCH
+
+    else
+      echo No
+      clear
+      echo "Did not run benchmarks and information"
+
+    fi
+
   echo
-  ./bench.sh $BENCH
+  read -n 1 -s -r -p "Press any key to continue"
 
   else
-    echo No
-    clear
-    echo "Did not run benchmarks and information"
-
+      exit
   fi
-
-echo
-read -n 1 -s -r -p "Press any key to continue"
-
+  
 exit
