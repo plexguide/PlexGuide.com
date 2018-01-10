@@ -1,5 +1,5 @@
 #! /bin/bash
-whiptail --title "Information" --msgbox "This is a custom benchmarking and speedtest script for your machine. From here you can manipulate which options you want to include in the test! You may only choose ONE, for now. You can return anytime by pressing Cancel. Select using Space & navigate with TAB and Up/Down Arrow keys. Press Enter to continue." 10 70
+whiptail --title "Information" --msgbox "This is a custom benchmarking and speedtest script for your machine. From here you can manipulate which options you want to include in the test! You may only choose ONE, for now. You can return anytime by pressing Cancel. Select using Space & navigate with TAB and Up/Down Arrow keys. Press Enter to continue." 15 70
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-output -- "Choose:" 22 84 15 \
   -info "System Information" off \
