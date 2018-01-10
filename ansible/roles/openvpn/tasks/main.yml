@@ -28,7 +28,7 @@
 
 #lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 - name: "Get Server LAN IP"
-  shell: `hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0\/24/'`
+  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0\/24/'"
   register: lan_net
 
 
