@@ -39,7 +39,7 @@
     cpu_shares: 256
     env:
       VIRTUAL_HOST: "sabnzbd.{{domain}}"
-      VIRTUAL_PORT: 8090
+      VIRTUAL_PORT: 8080
       LETSENCRYPT_HOST: "sabnzbd.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
       PUID: 1000
