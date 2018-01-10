@@ -83,7 +83,7 @@ sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/
 #### Install Via Git Option Via GitHub
 
 ```sh
-sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo rm -r /opt/plexguide/ & sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 ```
 
 **E. Set CPU Performance**
