@@ -28,7 +28,7 @@
 
 #lan_net=`hostname -I | awk '{print $1}' | sed 's/\.[0-9]*$/.0\/24/'`
 - name: "Get Server LAN IP"
-  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0\/24/'"
+  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
   register: lan_net
 
 
@@ -56,26 +56,26 @@
 #    regexp: lan_net
 #    replace: "{{lan_net.stdout}}"
 
-#- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
-tasks:
- - name: Get VPN username
-   pause:
-    prompt: "What is your PIA username? "
-   register: user
-   tags: openvpn
+##- debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
+#tasks:
+# - name: Get VPN username
+#   pause:
+#    prompt: "What is your PIA username? "
+#   register: user
+#   tags: openvpn
 #  when: vpn_prefs.stat.exists == False
 
 
- - name: Get VPN password
-   pause:
-    prompt: "What is your PIA password? "
-   register: password
-   tags: openvpn
+#- name: Get VPN password
+#  pause:
+#   prompt: "What is your PIA password? "
+#  register: password
+#  tags: openvpn
 #  when: vpn_prefs.stat.exists == False
 
-- debug: msg="Using following username {{user.user_input}}"
+#- debug: msg="Using following username {{user.user_input}}"
 
-- debug: msg="Using following password {{password.user_input}}"
+#- debug: msg="Using following password {{password.user_input}}"
 
 - debug: msg="Your LAN_NETWORK Address is {{lan_net.stdout}}"
 #  when: vpn_prefs.stat.exists == False
