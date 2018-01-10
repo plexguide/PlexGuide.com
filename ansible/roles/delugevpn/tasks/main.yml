@@ -75,7 +75,7 @@
       DEBUG: false
   #    LAN_NETWORK: 192.168.1.0/24
       LAN_NETWORK: "{{lan_net.stdout}}/24"
-# http://www.subnet-calculator.com/cidr.php to calculate CIDR address.
+# http://www.subnet-calculator.com/cidr.php to calculate CIDR address
     volumes:
       - /opt/appdata/vpn/deluge/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete

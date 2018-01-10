@@ -10,12 +10,12 @@
 
 - name: Choose Server
   pause:
-    prompt: "What PIA server would you like to use:- \n
+    prompt: " \n
+    What PIA server would you like to use:- \n
         \n
        france, israel, montreal, netherlands,\n
        romainia, sweden, switzerland or toronto ? "
   register: server
-#  when: vpn_prefs.stat.exists == False
 
 - debug: msg="Using {{server.user_input}} Server"
 
@@ -61,8 +61,8 @@
       PGID: "1000"
       VIRTUAL_HOST: "rtorrent.{{domain}}"
       VIRTUAL_PORT: 3000
-#      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
-#      LETSENCRYPT_EMAIL: "{{email}}"
+      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
       UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
@@ -86,15 +86,15 @@
     restart_policy: unless-stopped
     state: started
 
-- name: NGINX Container
-  docker_container:
-    name: nginx
-    image: "linuxserver/nginx"
-    pull: yes
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-    volumes_from:
-      - "rtorrentvpn"
-    env:
-     PUID: "1000"
-     PGID: "1000"
+#- name: NGINX Container
+#  docker_container:
+#    name: nginx
+#    image: "linuxserver/nginx"
+#    pull: yes
+#    volumes:
+#      - "/etc/localtime:/etc/localtime:ro"
+#    volumes_from:
+#      - "rtorrentvpn"
+#    env:
+#     PUID: "1000"
+#     PGID: "1000"
