@@ -4,11 +4,14 @@ Current Changes will continued to be modifed as known.
 ### [5.0.027] Actively Working
 #### Added
 - SSL Deployment (Not Released Yet)
+- Radio Menu for Advanced Benchmark Test
+- Lidarr to Beta (Thanks DesignGears) 
 
 #### Changed
 - Fixed Restore Script; was an if instead of an fi
 - Fixed NetData, would remove portainer on install
 - Improved Initial Install Instructions on Read Me
+- Menu Code Cleanup
 - Modifications to script to allow SSL (Not Complete Yet)
 
 #### Removed
