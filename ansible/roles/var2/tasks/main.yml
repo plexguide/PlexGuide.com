@@ -36,10 +36,10 @@
   register: email_input
 
 ############ Ask for PIA VPN user info
-  - name: user
-    pause:
-      prompt: "What is your PIA username (If none, press ENTER to SKIP)? "
-    register: pia_user
+- name: user
+  pause:
+    prompt: "What is your PIA username (If none, press ENTER to SKIP)? "
+  register: pia_user
 
 - name: password
   pause:
