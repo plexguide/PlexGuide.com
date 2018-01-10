@@ -16,7 +16,6 @@
        france, israel, montreal, netherlands,\n
        romainia, sweden, switzerland or toronto ? "
   register: server
-#  when: vpn_prefs.stat.exists == False
 
 - debug: msg="Using {{server.user_input}} Server"
 
