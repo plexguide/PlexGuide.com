@@ -10,7 +10,9 @@
 
 - name: Choose Server
   pause:
-    prompt: "What PIA server would you like to use:- \n
+    prompt: " \n
+      What PIA server would you like to use:-\n
+         \n
        france, israel, montreal, netherlands,\n
        romainia, sweden, switzerland or toronto ? "
   register: server
