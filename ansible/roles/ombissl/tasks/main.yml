@@ -19,7 +19,7 @@
       VIRTUAL_HOST: "ombi.{{domain}}"
       VIRTUAL_PORT: 3579
       LETSENCRYPT_HOST: "ombi.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}""
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /opt/appdata/ombiv3:/config
       - /etc/localtime:/etc/localtime:ro
