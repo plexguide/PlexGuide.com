@@ -2,11 +2,13 @@
 - hosts: localhost
 
   vars_files:
-    - /opt/appdata/plexguide/var.yml
+    - /opt/appdata/plexguide/var2.yml
 
-## sudo ansible-playbook /opt/plexguide/ansible/config.yml <<< to generate the var file required above
+## sudo ansible-playbook /opt/plexguide/ansible/config2.yml <<< to generate the var file required above
 
   roles:
       - { role: openvpn, tags: ['openvpn'] }
       - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
 #      - { role: delugevpn, tags: ['delugevpn'] }
+#      - { role: rtorrentvpnssl, tags: ['rtorrentvpn'] }
+#      - { role: delugevpnssl, tags: ['delugevpn'] }
