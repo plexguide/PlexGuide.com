@@ -13,7 +13,7 @@
 
 PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D
 
-This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others!
+This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
