@@ -24,7 +24,9 @@
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
-
+- name: "Get Server LAN IP"
+  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
+  register: lan_net
 
 - name: Remove Rutorrent Container
   docker_container:
@@ -51,8 +53,10 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "rtorrent.*"
+      VIRTUAL_HOST: "rtorrent.{{domain}}"
       VIRTUAL_PORT: 3000
+#      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
+#      LETSENCRYPT_EMAIL: "{{email}}"
       UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
@@ -63,8 +67,8 @@
       ENABLE_PRIVOXY: yes
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: yes
-      LAN_NETWORK: 192.168.1.0/24
-  #    LAN_NETWORK: "{{lan_net}}"
+#      LAN_NETWORK: 192.168.1.0/24
+      LAN_NETWORK: "{{lan_net}}/24"
     volumes:
       - /opt/appdata/vpn/rtorrent/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete

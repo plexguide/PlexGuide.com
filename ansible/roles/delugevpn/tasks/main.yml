@@ -24,6 +24,9 @@
     dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
+- name: "Get Server LAN IP"
+  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
+  register: lan_net
 
 - name: Remove deluge Container
   docker_container:
@@ -50,8 +53,10 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "deluge.*"
+      VIRTUAL_HOST: "deluge.{{domain}}"
       VIRTUAL_PORT: 8112
+#      LETSENCRYPT_HOST: "deluge.{{domain}}"
+#      LETSENCRYPT_EMAIL: "{{email}}"
       UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
@@ -62,8 +67,8 @@
       STRONG_CERTS: no
       ENABLE_PRIVOXY: yes
       DEBUG: false
-      LAN_NETWORK: 192.168.1.0/24
-  #    LAN_NETWORK: "{{lan_net.stdout}}"
+  #    LAN_NETWORK: 192.168.1.0/24
+      LAN_NETWORK: "{{lan_net.stdout}}/24"
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address.
     volumes:
       - /opt/appdata/vpn/deluge/config:/config
