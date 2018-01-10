@@ -11,6 +11,7 @@
 - name: Choose Server
   pause:
     prompt: "What PIA server would you like to use:- \n
+        \n
        france, israel, montreal, netherlands,\n
        romainia, sweden, switzerland or toronto ? "
   register: server
@@ -24,9 +25,9 @@
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
-- name: "Get Server LAN IP"
-  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
-  register: lan_net
+#- name: "Get Server LAN IP"
+#  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
+#  register: lan_net
 
 - name: Remove deluge Container
   docker_container:
