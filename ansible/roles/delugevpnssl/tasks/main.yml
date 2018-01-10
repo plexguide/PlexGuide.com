@@ -69,6 +69,9 @@
       STRONG_CERTS: no
       ENABLE_PRIVOXY: yes
       DEBUG: false
+      VPN_PORT: 1198
+      VPN_PROTOCOL: udp
+      VPN_DEVICE_TYPE: tun
 #      LAN_NETWORK: "{{lan_net.stdout}}/24"
       LAN_NETWORK: "{{lan}}/24"
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address
