@@ -59,15 +59,15 @@
       LETSENCRYPT_EMAIL: "{{email}}"
 #      UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
-      VPN_ENABLED: yes
+      VPN_ENABLED: "yes"
 #      VPN_USER: "{{user.user_input}}"
 #      VPN_PASS: "{{password.user_input}}"
       VPN_USER: "{{user}}"
       VPN_PASS: "{{password}}"
       VPN_PROV: pia
-      STRICT_PORT_FORWARD: yes
-      STRONG_CERTS: no
-      ENABLE_PRIVOXY: yes
+      STRICT_PORT_FORWARD: "yes"
+      STRONG_CERTS: "no"
+      ENABLE_PRIVOXY: "yes"
       DEBUG: false
       VPN_PORT: 1198
       VPN_PROTOCOL: udp
