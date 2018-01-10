@@ -45,5 +45,6 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-outpu
   else
       exit
   fi
-  
-exit
+
+bash /opt/plexguide/scripts/menus/bench-custom.sh
+#exit
