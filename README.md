@@ -21,9 +21,9 @@ This is a community driven project. You can spot errors, update the wiki, contri
 ### Awesome Beta Testers & Advisors!
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK)
 
--  l3uddz & Desimanic from [Cloudbox] (https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
+-  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
 
-- See Additonal Thanks You! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
+- See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
 ### Important
 - **UBUNTU 16.04 & 17.04 ** Only !!! PlexGuide is not MADE FOR SERVER EDITONS 16.10 - 17.10**
