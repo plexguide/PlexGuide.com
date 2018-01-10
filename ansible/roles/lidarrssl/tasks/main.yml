@@ -17,9 +17,9 @@
       VERSION: unstable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "lidarrssl.{{domain}}"
+      VIRTUAL_HOST: "lidarr.{{domain}}"
       VIRTUAL_PORT: 8686
-      LETSENCRYPT_HOST: "lidarrssl.{{domain}}"
+      LETSENCRYPT_HOST: "lidarr.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /opt/appdata/lidarr:/config
