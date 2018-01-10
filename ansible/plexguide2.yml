@@ -34,4 +34,4 @@
   - { role: portainerssl, tags: ['portainerssl'] }
   - { role: nzbgetssl, tags: ['nzbgetssl'] }
   - { role: ombissl, tags: ['ombissl'] }
-  - { role: ombissl, tags: ['muximux'] }
+  - { role: muximuxssl, tags: ['muximuxssl'] }
