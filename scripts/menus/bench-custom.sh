@@ -1,5 +1,5 @@
 #! /bin/bash
-whiptail --title "Information" --msgbox "This is a custom benchmarking and speedtest script for your machine. From here you can manipulate which options you want to include in the test! You may only choose ONE, for now. You can return anytime by pressing Cancel. Navigate using Space, TAB and Up/Down Arrow keys. Choose OK to continue." 14 60
+whiptail --title "Information" --msgbox "This is a custom benchmarking and speedtest script for your machine. From here you can manipulate which options you want to include in the test! You may only choose ONE, for now. You can return anytime by pressing Cancel. Select using Space & navigate with TAB and Up/Down Arrow keys. Press Enter to continue." 14 67
 
 BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-output -- "Choose:" 22 84 15 \
   -info "System Information" off \
@@ -10,9 +10,9 @@ BENCH=$(whiptail --title "Choose Benchmark Options" --radiolist --separate-outpu
   -asia "Asian Server Test Download (400MB)" off \
   -b "System Information, CDN Download Test & I/O Test" off \
   -speed "Network Speedtest Using speedtest-cli" off \
-  -share "Share Your Results With Others!" off \
-  -help "Help Menu. Do NOT Execute This With Other Options!" off \
-  -about "Show About-Info. Do NOT Execute This With Other Options!" off \
+#  -share "Share Your Results With Others!" off \
+  -help "Help Menu" off \
+  -about "Show About Info" off \
   3>&1 1>&2 2>&3)
 
   exitstatus=$?
