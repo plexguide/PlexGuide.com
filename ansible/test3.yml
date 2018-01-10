@@ -7,6 +7,6 @@
 ## sudo ansible-playbook /opt/plexguide/ansible/config.yml <<< to generate the var file required above
 
   roles:
-      - { role: openvpn, tags: ['openvpn', 'rtorrentvpn'] }
-      - { role: rtorrentvpn, tags: ['openvpn', 'rtorrentvpn'] }
-#      - { role: delugevpn, tags: ['openvpn', 'delugevpn'] }
+      - { role: openvpn, tags: ['openvpn'] }
+      - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
+#      - { role: delugevpn, tags: ['delugevpn'] }

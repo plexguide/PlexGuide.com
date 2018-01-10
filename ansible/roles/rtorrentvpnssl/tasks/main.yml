@@ -4,15 +4,15 @@
   file: "path={{item}} state=directory mode=0755 owner=1000 group=1000"
   with_items:
     - /opt/appdata/vpn
-    - /opt/appdata/vpn/deluge
-    - /opt/appdata/vpn/deluge/config
-    - /opt/appdata/vpn/deluge/config/openvpn
+    - /opt/appdata/vpn/rtorrent
+    - /opt/appdata/vpn/rtorrent/config
+    - /opt/appdata/vpn/rtorrent/config/openvpn
 
 - name: Choose Server
   pause:
     prompt: " \n
-      What PIA server would you like to use:-\n
-         \n
+    What PIA server would you like to use:- \n
+        \n
        france, israel, montreal, netherlands,\n
        romainia, sweden, switzerland or toronto ? "
   register: server
@@ -22,47 +22,41 @@
 - name: "Install {{server.user_input}} openvpn file"
   template:
     src: "{{server.user_input}}.ovpn"
-    dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
-#- name: "Get Server LAN IP"
-#  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
-#  register: lan_net
-
-- name: Remove Rtorrent Container
-  docker_container:
-    name: rtorrentvpn
-    state: absent
 
 - name: Remove deluge Container
   docker_container:
     name: delugevpn
     state: absent
 
-- name: Deploy Deluge Container
+- name: Remove Rtorrent Container
   docker_container:
-    name: delugevpn
-    image: binhex/arch-delugevpn
+    name: rtorrentvpn
+    state: absent
+
+- name: Deploy Rtorrent Container
+  docker_container:
+    name: rtorrentvpn
+    image: binhex/arch-rtorrentvpn
     pull: yes
     cpu_shares: 256
     network_mode: "bridge"
     capabilities:
       - NET_ADMIN
     published_ports:
-      - "8112:8112"
+      - "9080:9080"
+      - "9443:9443"
       - "8118:8118"
-      - "58846:58846"
-      - "58946:58946"
-#    env_file:
-#      - /opt/appdata/vpn/.vpn-env
-#      - /opt/appdata/vpn/vpn.xml
+      - "3000:3000"
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "deluge.{{domain}}"
-      VIRTUAL_PORT: 8112
-#      LETSENCRYPT_HOST: "deluge.{{domain}}"
-#      LETSENCRYPT_EMAIL: "{{email}}"
+      VIRTUAL_HOST: "rtorrent.{{domain}}"
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
       UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
@@ -72,33 +66,18 @@
 #      VPN_PASS: "{{password}}"
       VPN_PROV: pia
       STRICT_PORT_FORWARD: yes
-      STRONG_CERTS: no
       ENABLE_PRIVOXY: yes
-      DEBUG: false
-  #    LAN_NETWORK: 192.168.1.0/24
+      ENABLE_FLOOD: both
+      ENABLE_AUTODL_IRSSI: yes
       LAN_NETWORK: "{{lan_net.stdout}}/24"
 #      LAN_NETWORK: "{{lan}}/24"
-# http://www.subnet-calculator.com/cidr.php to calculate CIDR address
     volumes:
-      - /opt/appdata/vpn/deluge/config:/config
+      - /opt/appdata/vpn/rtorrent/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete
       - /mnt/torrentvpn/downloaded:/data/completed
-      - /mnt/torrentvpn/.torrent:/data/torrents
+      - /mnt/torrentvpn/.torrent:/torrents
       - /mnt/torrentvpn/.watched:/data/watched
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: unless-stopped
     state: started
-
-- name: NGINX Container
-  docker_container:
-    name: nginx
-    image: "linuxserver/nginx"
-    pull: yes
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-    volumes_from:
-      - "delugevpn"
-    env:
-     PUID: "1000"
-     PGID: "1000"

@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: var2, tags: ['var'] }
