@@ -61,9 +61,9 @@
       PGID: "1000"
       VIRTUAL_HOST: "rtorrent.{{domain}}"
       VIRTUAL_PORT: 3000
-      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
-      UMASK: "0027"
+#      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
+#      LETSENCRYPT_EMAIL: "{{email}}"
+#      UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: yes
       VPN_USER: "{{user.user_input}}"
@@ -75,6 +75,7 @@
       ENABLE_AUTODL_IRSSI: yes
 #      LAN_NETWORK: 192.168.1.0/24
       LAN_NETWORK: "{{lan_net.stdout}}/24"
+      DEBUG: false
     volumes:
       - /opt/appdata/vpn/rtorrent/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete
