@@ -77,13 +77,13 @@ Copy & Paste either or into your Terminal (usually double clicking on a word sel
 #### Install Via Curl Option Via GitHub
 
 ```sh
-sudo apt-get update -y && sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/scripts/curlinstall.sh && sudo bash ./curlinstall.sh
+sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/scripts/curlinstall.sh && sudo bash ./curlinstall.sh
 ```
 
 #### Install Via Git Option Via GitHub
 
 ```sh
-sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo rm -r /opt/plexguide/ && sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo rm -r /opt/plexguide/ & sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 ```
 
 **E. Set CPU Performance**
@@ -108,7 +108,7 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 
  - [Configuring Traefik Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Traefik-Reverse-Proxy)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
-    - How To With a FreeNom Domain     : [NomNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
+    - How To With a FreeNom Domain     : [FreeNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
 
 **I. Installing & Setting Up Support Programs**
 
