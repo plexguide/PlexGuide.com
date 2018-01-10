@@ -73,7 +73,7 @@
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: yes
 #      LAN_NETWORK: 192.168.1.0/24
-      LAN_NETWORK: "{{lan_net}}/24"
+      LAN_NETWORK: "{{lan_net.stdout}}/24"
     volumes:
       - /opt/appdata/vpn/rtorrent/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete

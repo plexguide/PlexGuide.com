@@ -24,15 +24,15 @@
     dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
-- name: "Get Server LAN IP"
-  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
-  register: lan_net
+#- name: "Get Server LAN IP"
+#  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
+#  register: lan_net
 
 - name: Remove Rtorrent Container
   docker_container:
     name: rtorrentvpn
     state: absent
-    
+
 - name: Remove deluge Container
   docker_container:
     name: delugevpn
