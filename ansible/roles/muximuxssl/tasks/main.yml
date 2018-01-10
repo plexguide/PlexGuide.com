@@ -19,7 +19,7 @@
       VIRTUAL_HOST: "muximux.{{domain}}"
       VIRTUAL_PORT: 80
       LETSENCRYPT_HOST: "muximux.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - "/opt/appdata/muximux:/config"
       - "/etc/localtime:/etc/localtime:ro"
