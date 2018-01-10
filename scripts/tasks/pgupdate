@@ -1,10 +1,10 @@
 #!/bin/bash
-clear
-mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
-cd /tmp
-bash /tmp/upgrade2.sh
-cd ~
+sudo clear
+#sudo mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
+#cd /tmp
+#sudo bash /tmp/upgrade2.sh
+#cd ~
 sudo rm -r /opt/plexg* 2>/dev/nu*
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
-bash /opt/plexg*/ins*
-echo Remember, restart by typing: plexguide
+#bash /opt/plexg*/ins*
+#echo Remember, restart by typing: plexguide

@@ -36,6 +36,7 @@
   - { role: ombissl, tags: ['ombissl'] }
   - { role: muximuxssl, tags: ['muximuxssl'] }
   - { role: sabnzbdssl, tags: ['sabnzbdssl'] }
+  - { role: jackettssl, tags: ['jackettssl'] }
   #- { role: rutorrentssl, tags: ['rutorrentssl'] }
   - { role: medusassl, tags: ['medusassl'] }
   - { role: tautullissl, tags: ['tautullissl'] }
