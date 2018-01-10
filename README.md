@@ -18,7 +18,7 @@ This is a community driven project. You can spot errors, update the wiki, contri
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
-### Awesome Beta Testers & Advisors!
+### Awesome Team Members, Advisors & Beta Testers!
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK)
 
 -  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
