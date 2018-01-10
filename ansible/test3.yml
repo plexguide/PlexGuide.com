@@ -10,5 +10,6 @@
       - { role: openvpn, tags: ['openvpn'] }
       - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
 #      - { role: delugevpn, tags: ['delugevpn'] }
+      - { role: openvpn2, tags: ['openvpn'] }
 #      - { role: rtorrentvpnssl, tags: ['rtorrentvpn'] }
 #      - { role: delugevpnssl, tags: ['delugevpn'] }
