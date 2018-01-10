@@ -17,6 +17,9 @@
 ## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags docker
 ## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags nginx
 ## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags sonarrssl
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags radarrssl
+## sudo ansible-playbook /opt/plexguide/ansible/plexguide2.yml --tags portainerssl
+## AND SO ON
 
   roles:
   - { role: nginx, tags: ['nginx'] }
@@ -31,3 +34,4 @@
   - { role: portainerssl, tags: ['portainerssl'] }
   - { role: nzbgetssl, tags: ['nzbgetssl'] }
   - { role: ombissl, tags: ['ombissl'] }
+  - { role: ombissl, tags: ['muximux'] }
