@@ -21,8 +21,6 @@ This is a community driven project. You can spot errors, update the wiki, contri
 ### Awesome Team Members, Advisors & Beta Testers!
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
--  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few key scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
-
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
 ### Important
@@ -131,3 +129,5 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - [LinuxServerIO](https://www.linuxserver.io) For development of all of their containers along with core YML structure to provide guidance. 
 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
+
+-  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few key scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
