@@ -52,7 +52,21 @@
 
 - debug: msg="Using following PIA username {{pia_user.user_input}}"
 - debug: msg="Using following PIA password {{pia_password.user_input}}"
-####
+
+#### Get IPv4 and CIDR info
+- name: ipv4
+  shell: "hostname -I | awk '{print $1}'"
+  register: ipv4
+#  ipv4: {{ipv4.stdout}}
+
+- name: Replace ipv4 with stand output
+  replace:
+    path: /opt/appdata/plexguide/var2.yml
+    regexp: ipv4
+    replace: "{{ipv4.stdout}}"
+
+- debug: msg="Your IPv4 Address is {{ipv4.stdout}}"
+
 - name: lan
   shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
   register: lan_net

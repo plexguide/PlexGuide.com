@@ -1,6 +1,7 @@
 ---
   domain: domain.com
   email: user@gmail.com
+  ipv4: ipv4
   lan: lan_net
   user: pia_user
   password: pia_password
