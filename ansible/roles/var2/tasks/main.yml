@@ -56,16 +56,16 @@
 #### Get IPv4 and CIDR info
 - name: ipv4
   shell: "hostname -I | awk '{print $1}'"
-  register: ipv4
+  register: ip
 #  ipv4: {{ipv4.stdout}}
 
 - name: Replace ipv4 with stand output
   replace:
     path: /opt/appdata/plexguide/var2.yml
-    regexp: ipv4
-    replace: "{{ipv4.stdout}}"
+    regexp: ip
+    replace: "{{ip.stdout}}"
 
-- debug: msg="Your IPv4 Address is {{ipv4.stdout}}"
+- debug: msg="Your IPv4 Address is {{ip.stdout}}"
 
 - name: lan
   shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
@@ -107,3 +107,12 @@
     path: /opt/appdata/plexguide/var2.yml
     regexp: pia_password
     replace: "{{pia_password.user_input}}"
+
+#### activate var.sh
+
+  - name: Install var2
+    template:
+      src: testing.js2
+      dest: /opt/appdata/plexguide/testing.sh
+      force: yes
+    when: testing.stat.exists == False
