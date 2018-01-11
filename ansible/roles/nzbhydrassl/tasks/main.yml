@@ -1,0 +1,29 @@
+---
+
+- name: Remove NZBHYDRA Container
+  docker_container:
+    name: nzbhydra
+    state: absent
+
+- name: Deploy NZBHyra Container
+  docker_container:
+    name: nzbhydra
+    image: hotio/suitarr
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - 5075:5075
+    env:
+      APP: "nzbhydra"
+      VERSION: "stable"
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "nzbhydra.{{domain}}"
+      VIRTUAL_PORT: 5075
+      LETSENCRYPT_HOST: "nzbhydra.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+    volumes:
+      - "/opt/appdata/nzbhyra:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    restart_policy: always
+    state: started
