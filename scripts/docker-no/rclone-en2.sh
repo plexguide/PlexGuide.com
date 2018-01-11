@@ -6,6 +6,7 @@ clear
 mkdir -p /mnt/.gcrypt
 mkdir -p /mnt/.move-plex
 mkdir -p /mnt/encrypt
+mkdir -p /opt/appdata/plex/database
 
 ## Installing rclone
   cd /tmp
@@ -145,7 +146,7 @@ After=multi-user.target
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/.move-plex=RW:/mnt/plexdrive4/.plex=RO /opt/appdata/plex/database
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/.move-plex=RW:/mnt/storagespace/.plex=RO /opt/appdata/plex/database
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
@@ -161,7 +162,7 @@ sleep 30
 while true
 do
 ## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /mnt/.move-plex gdrive:/.plex
+rclone move --bwlimit 9M --tpslimit 4 --max-size 99G --log-level INFO --stats 15s /mnt/.move-plex /mnt/storagespace/.plex
 sleep 600
 done
 EOF

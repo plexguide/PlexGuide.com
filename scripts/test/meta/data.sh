@@ -7,6 +7,3 @@ mv '/opt/appdata/plex/database/Library/Application Support' '/opt/appdata/plex/d
 ln -s '/mnt/storagespace/.plex/Application Support' '/opt/appdata/plex/database/Library/Application Support'
 
 chown -R plex.plex '/opt/appdata/plex/database/Library/Application Support'
-
-
-http://plex.deiteq.eu/web/index.html#!/setup

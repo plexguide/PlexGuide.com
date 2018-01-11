@@ -70,7 +70,6 @@
 - name: lan
   shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
   register: lan_net
-#  lan: {{lan_net.stdout}}
 
 - name: Replace lan_net with stand output
   replace:
@@ -107,12 +106,3 @@
     path: /opt/appdata/plexguide/var2.yml
     regexp: pia_password
     replace: "{{pia_password.user_input}}"
-
-#### activate var.sh
-
-  - name: Install var2
-    template:
-      src: testing.js2
-      dest: /opt/appdata/plexguide/testing.sh
-      force: yes
-    when: testing.stat.exists == False
