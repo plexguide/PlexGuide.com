@@ -37,3 +37,4 @@
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
+  - { role: var, tags: ['var'] }
