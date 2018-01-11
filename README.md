@@ -131,7 +131,3 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
 -  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few key scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
-
-### Test YouTube Video Later For PlexGuide
-
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
