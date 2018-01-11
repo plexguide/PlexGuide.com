@@ -104,9 +104,9 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -
 
 **H. (Optional) Setting Up Your Reverse Proxy**
 
-Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
+Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
 
- - [Configuring Traefik Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Traefik-Reverse-Proxy)
+ - [Configuring Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/SSL-Reverse-Proxy)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [FreeNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
 
@@ -131,7 +131,3 @@ Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
 -  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few key scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
-
-### Test YouTube Video Later For PlexGuide
-
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
