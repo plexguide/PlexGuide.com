@@ -30,7 +30,8 @@
   - { role: unprograms, tags: ['unprograms'] }
   - { role: plex, tags: ['plex'] }
   - { role: plex-beta, tags: ['plex-beta'] }
-  - { role: traefik, tags: ['traefik'] }
+  - { role: docker, tags: ['docker'] }
+  - { role: nginx, tags: ['nginx'] }
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
