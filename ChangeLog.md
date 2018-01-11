@@ -3,7 +3,9 @@ Current Changes will continued to be modifed as known.
 
 ### [5.0.027] Actively Working
 #### Added
-- SSL Deployment (Not Released Yet)
+- SSL Deployment
+- Version Update Control
+- Patch Management Depending on Version
 - Radio Menu for Advanced Benchmark Test
 - Lidarr to Beta (Thanks DesignGears) 
 
@@ -12,10 +14,10 @@ Current Changes will continued to be modifed as known.
 - Fixed NetData, would remove portainer on install
 - Improved Initial Install Instructions on Read Me
 - Menu Code Cleanup
-- Modifications to script to allow SSL (Not Complete Yet)
+- Modifications to script to allow SSL
 
 #### Removed
-- Traefik (Not In Affect Yet)
+- Traefik 
 
 -------------------------------------------------------
 ## Past Changes
