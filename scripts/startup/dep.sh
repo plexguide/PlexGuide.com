@@ -1,6 +1,6 @@
 clear
 
-## Upgrade away from Version 5 to 5.27
+## Force Exit if Required
 file="/var/plexguide/exit.yes"
 if [ -e "$file" ]
 then

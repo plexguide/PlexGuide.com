@@ -22,7 +22,12 @@ fi
 
   bash /opt/plexguide/scripts/docker-no/random.sh
 
-## ensure folders follow plexguide
+## Force Exit if Required
+file="/var/plexguide/exit.yes"
+if [ -e "$file" ]
+then
+   exit
+fi
 
 while [ 1 ]
 do
