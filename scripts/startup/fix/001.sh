@@ -18,5 +18,5 @@ whiptail --title "New Containers" --msgbox "Remember to Rebuild Your Containers"
     exit
 else
     whiptail --title "No Upgrade" --msgbox "Your System Will Not Upgrade! Do not select or do anything" 9 66
-    exit 0;;
+    exit
 fi
