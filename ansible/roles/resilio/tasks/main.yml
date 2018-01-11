@@ -16,8 +16,10 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "resilio.*"
+      VIRTUAL_HOST: "resilio.{{domain}}"
       VIRTUAL_PORT: 8888
+      LETSENCRYPT_HOST: "resilio.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/resilio:/config

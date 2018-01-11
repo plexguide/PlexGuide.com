@@ -5,11 +5,11 @@
     name: nzbget
     state: absent
 
-- name: "Set folder permissions"
-  shell: "chmod -R 777 /mnt/nzbget/"
+#- name: "Set folder permissions"
+#  shell: "chmod -R 777 /mnt/nzbget/"
 
-- name: "Set owner permisisons"
-  shell: "chown -R 1000:1000 /mnt/nzbget/"
+#- name: "Set owner permisisons"
+#  shell: "chown -R 1000:1000 /mnt/nzbget/"
 
 - name: Create nzbget download directory
   file: "path=/mnt/nzbget/ state=directory mode=0777 owner=1000 group=1000"
@@ -39,12 +39,14 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      VIRTUAL_HOST: "nzbget.*"
-      VIRTUAL_PORT: 6789
       APP: "nzbget"
       VERSION: "stable"
       PUID: 1000
       PGID: 1000
+      VIRTUAL_HOST: "nzbget.{{domain}}"
+      VIRTUAL_PORT: 6789
+      LETSENCRYPT_HOST: "nzbget.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
     restart_policy: always
     state: started
 
@@ -56,7 +58,7 @@
 
 - name: "Wait 12 Seconds"
   wait_for:
-    timeout: 12
+    timeout: 10
   when: nzbget_conf.stat.exists == False
 
 - name: Customize nzbget.conf

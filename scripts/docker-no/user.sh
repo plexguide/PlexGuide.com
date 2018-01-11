@@ -15,3 +15,6 @@ touch /var/plexguide/plexguide.user
 
 exit
 fi
+
+#checks list of fixes
+bash /opt/plexguide/scripts/startup/fix/main.sh

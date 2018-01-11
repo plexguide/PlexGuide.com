@@ -18,8 +18,14 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "sonarr.*"
+      VIRTUAL_HOST: "sonarr.{{domain}}"
       VIRTUAL_PORT: 8989
+      LETSENCRYPT_HOST: "sonarr.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - Sonarr
     volumes:
       - /opt/appdata/sonarr:/config
       - /mnt/unionfs:/unionfs

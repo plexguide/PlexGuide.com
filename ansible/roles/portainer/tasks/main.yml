@@ -20,8 +20,10 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "portainer.*"
+      VIRTUAL_HOST: "portainer.{{domain}}"
       VIRTUAL_PORT: 9000
+      LETSENCRYPT_HOST: "portainer.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
      - /opt/appdata/portainer:/data
      - /var/run/docker.sock:/var/run/docker.sock

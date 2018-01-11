@@ -18,8 +18,10 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "deluge.*"
+      VIRTUAL_HOST: "deluge.{{domain}}"
       VIRTUAL_PORT: 8112
+      LETSENCRYPT_HOST: "deluge.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /opt/appdata/deluge/config:/config
       - /mnt/deluge/temp:/temp

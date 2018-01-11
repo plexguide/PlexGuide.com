@@ -17,8 +17,10 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "jackett.*"
+      VIRTUAL_HOST: "jackett.{{domain}}"
       VIRTUAL_PORT: 9117
+      LETSENCRYPT_HOST: "jackett.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
     volumes:
       - /opt/appdata/jackett:/config
       - /mnt/deluge/temp:/temp

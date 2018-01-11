@@ -17,9 +17,11 @@
       - /opt/appdata/tautulli:/config
       - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
     env:
-      VIRTUAL_HOST: "tautulli.*"
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "tautulli.{{domain}}"
       VIRTUAL_PORT: 8181
-      PUID: 1000
-      PGID: 1000
+      LETSENCRYPT_HOST: "tautulli.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
     restart_policy: always
     state: started

@@ -17,8 +17,14 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "radarr.*"
+      VIRTUAL_HOST: "radarr.{{domain}}"
       VIRTUAL_PORT: 7878
+      LETSENCRYPT_HOST: "radarr.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - Radarr
     volumes:
       - /opt/appdata/radarr:/config
       - /mnt/unionfs:/unionfs
