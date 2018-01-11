@@ -1,15 +1,10 @@
 #!/bin/bash
 
 ## point to variable file for ipv4 and domain.com
-# This takes .yml file and converts it to bash readable format
-#sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var2.sh
-
 source <(grep '^ .*='  /opt/appdata/plexguide/var3.sh)
 echo $ipv4
 echo $domain
 
-# This replaces $ipv4 with local ip
-#ipv4=`hostname -I | awk '{print $1}'`
 
 clear
 
