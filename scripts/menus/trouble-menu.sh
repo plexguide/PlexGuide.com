@@ -8,8 +8,9 @@ CHOICE=$(
 whiptail --title "Install Menu" --menu "Make your choice" 19 55 12 \
     "1)" "Force PreInstaller"   \
     "2)" "Reinstall Portainer"  \
-    "3)" "Uninstall Docker, Containers & Force Preinstall"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Uninstall Docker, Containers & Force Preinstall" \
+    "4)" "Update Your E-Mail, Domain and other Variables" \
+    "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -45,7 +46,14 @@ case $CHOICE in
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
-     "4)")
+    "4)")
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
+      echo "Portainer: http://ipv4:9000 | For NGINX Proxy portainer.domain.com"
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+     "5)")
       clear
       exit 0
       ;;
