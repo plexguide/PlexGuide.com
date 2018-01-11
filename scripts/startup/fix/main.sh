@@ -4,5 +4,4 @@ file="/var/plexguide/version.5"
 if [ -e "$file" ]
 then
    bash /opt/plexguide/scripts/startup/fix/001.sh
-   rm -r /var/plexguide/version.5
 fi
