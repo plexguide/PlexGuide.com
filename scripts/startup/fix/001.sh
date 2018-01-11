@@ -12,7 +12,7 @@ docker rm $(docker ps -a -q)
 
 rm /var/plexguide/version.5
 rm /var/plexguide/donation*
-rm /var/plexguide/var*
+rm /var/plexguide/dep*
 touch /var/plexguide/version-5.27
 whiptail --title "New Containers" --msgbox "Remember to Rebuild Your Containers" 9 66
     exit

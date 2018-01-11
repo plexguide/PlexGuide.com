@@ -3,6 +3,12 @@ clear
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
+###################### Need to Allow the Rest of Ansible to Work
+#apt-get install docker-ce -y
+#curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
+#curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
+#chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
+#pip install docker 1>/dev/null 2>&1
 ###################### Install Depdency Programs ###############
 
     clear
@@ -22,6 +28,8 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
     yes | apt-get update 1>/dev/null 2>&1
     echo "5. Installing Dependicies - Please Wait"
     echo
+    ansible-playbook /opt/plexguide/ansible/docker.yml
+    ansible-playbook /opt/plexguide/ansible/config.yml
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
     echo ""
     echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
@@ -48,21 +56,20 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
 # Install Docker and Docker Composer / Checks to see if is installed also
 
-  curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
-  curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
-  chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
-  #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker
-  pip install docker 1>/dev/null 2>&1
+  #curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
+  #curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
+  #chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker
+  #pip install docker 1>/dev/null 2>&1
 
   echo "10. Installing Portainer & Reverse Proxy (Please Wait)"
 
 # Installs Portainer
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
 # Instlls Reverse Prox
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
+  ansible-playbook /opt/plexguide/ansible/test.yml --tags nginx
 # Remove NGINX if it exists
-  docker rm nginx 1>/dev/null 2>&1
-  docker rm nginx-proxy 1>/dev/null 2>&1
+
 ############################################# Install a Post-Docker Fix ###################### START
 
   echo "11. Installing DockerFix & Service Activation"
@@ -85,7 +92,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep30.yes
+   touch /var/plexguide/dep31.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 
