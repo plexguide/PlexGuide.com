@@ -20,7 +20,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-    echo "Portainer: http://$ipv4:9000 | For Traefik Proxy portainer.$domain"
+    echo "Portainer: http://$ipv4:9000 | For Traefik Proxy https://portainer.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

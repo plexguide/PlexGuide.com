@@ -22,21 +22,21 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
-    echo "Radarr: http://$ipv4:7878 | For Reverse Proxy radarr.$domain"
+    echo "Radarr: http://$ipv4:7878 | For Reverse Proxy https://radarr.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
-    echo "Sonarr: http://$ipv4:8989 | For Revese Proxy sonarr.$domain"
+    echo "Sonarr: http://$ipv4:8989 | For Revese Proxy https://sonarr.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
-    echo "MEDUSA: http://$ipv4:8081 | For Reverse Proxy medusa.$domain"
+    echo "MEDUSA: http://$ipv4:8081 | For Reverse Proxy https://medusa.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

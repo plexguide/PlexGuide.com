@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
  ## point to variable file for ipv4 and $domain
  source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
@@ -22,7 +22,7 @@ case $CHOICE in
 
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
-    echo "Lidarr: http://$ipv4:8686 | For Reverse Proxy lidarr.$domain"
+    echo "Lidarr: http://$ipv4:8686 | For Reverse Proxy https://lidarr.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
@@ -34,7 +34,7 @@ case $CHOICE in
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
-    echo "Medusa: http://$ipv4:8081| For NGINX Proxy medusa.$domain"
+    echo "Medusa: http://$ipv4:8081| For NGINX Proxy https://medusa.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;

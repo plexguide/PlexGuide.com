@@ -4,7 +4,7 @@
   source <(grep '^ .*='  /opt/appdata/plexguide/var3.sh)
   echo $ipv4
   echo $domain
-  
+
 clear
 
 while [ 1 ]
@@ -25,7 +25,7 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
-    echo "EMBY: http://$ipv4:8096 | For NGINX Proxy emby.$domain"
+    echo "EMBY: http://$ipv4:8096 | For NGINX Proxy https://emby.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;

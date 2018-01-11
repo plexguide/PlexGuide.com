@@ -22,28 +22,28 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
-    echo "NetData: http://$ipv4:19999 | For NGINX Proxy netdata.$domain"
+    echo "NetData: http://$ipv4:19999 | For NGINX Proxy https://netdata.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
-    echo "Ombi: http://$ipv4:3579 | For NGINX Proxy ombi.$domain"
+    echo "Ombi: http://$ipv4:3579 | For NGINX Proxy https://ombi.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio
-    echo "Resilio: http://$ipv4:8888 | For NGINX Proxy resilio.$domain"
+    echo "Resilio: http://$ipv4:8888 | For NGINX Proxy https://resilio.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
-    echo "Tautulli: http://$ipv4:8181 | For NGINX Proxy tautulli.$domain"
+    echo "Tautulli: http://$ipv4:8181 | For NGINX Proxy https://tautulli.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

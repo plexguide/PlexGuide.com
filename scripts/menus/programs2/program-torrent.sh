@@ -22,19 +22,19 @@ case $CHOICE in
 
      "1)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
-      echo "RuTorrent: http://$ipv4:8999 | For NGINX Proxy rutorrent.$domain"
+      echo "RuTorrent: http://$ipv4:8999 | For NGINX Proxy https://rutorrent.$domain"
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "2)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
-      echo "Deluge: http://$ipv4:8112 | For NGINX Proxy deluge.$domain"
+      echo "Deluge: http://$ipv4:8112 | For NGINX Proxy https://deluge.$domain"
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "3)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
-      echo "Jackett: http://$ipv4:9117 | For NGINX Proxy jackett.$domain"
+      echo "Jackett: http://$ipv4:9117 | For NGINX Proxy https://jackett.$domain"
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 

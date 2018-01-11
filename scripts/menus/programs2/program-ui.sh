@@ -21,14 +21,14 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
-    echo "Muximux: http://$ipv4:8015 | For NGINX Proxy muximux.$domain"
+    echo "Muximux: http://$ipv4:8015 | For NGINX Proxy https://muximux.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
-    echo "Organizr: http://$ipv4:8020 | For NGINX Proxy organizr.$domain"
+    echo "Organizr: http://$ipv4:8020 | For NGINX Proxy https://organizr.$domain"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
