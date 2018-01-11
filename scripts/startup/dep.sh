@@ -1,5 +1,13 @@
 clear
 
+## Upgrade away from Version 5 to 5.27
+file="/var/plexguide/exit.yes"
+if [ -e "$file" ]
+then
+   exit
+fi
+
+
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 

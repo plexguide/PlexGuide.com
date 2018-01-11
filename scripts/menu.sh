@@ -1,5 +1,8 @@
 #!/bin/bash
 
+### remove exit hold
+rm -r /var/plexguide/exit.yes
+
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
 
