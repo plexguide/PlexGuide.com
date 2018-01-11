@@ -106,7 +106,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -
 
 Traefik Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
 
- - [Configuring Traefik Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Traefik-Reverse-Proxy)
+ - [Configuring Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/SSL-Reverse-Proxy)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [FreeNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
 
