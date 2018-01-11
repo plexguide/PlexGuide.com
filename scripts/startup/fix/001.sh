@@ -10,7 +10,6 @@ echo "Stopping & Removing All Containers"
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
-rm /var/plexguide/version.5
 rm /var/plexguide/donation*
 rm /var/plexguide/dep*
 touch /var/plexguide/version-5.27
