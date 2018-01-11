@@ -2,6 +2,9 @@
 
 mkdir -p /var/plexguide
 
+## Remove Exit Code
+rm -r /var/plexguide/exit.yes
+
 file="/var/plexguide/plexguide.user"
 if [ -e "$file" ]
 then
