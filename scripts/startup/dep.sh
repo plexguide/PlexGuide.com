@@ -45,7 +45,7 @@ echo "7. Pre-Installing RClone & Services (Please Wait)"
 
 #Lets the System Know that Script Ran Once
   touch /var/plexguide/basics.yes 1>/dev/null 2>&1
-  touch /var/plexguide/version.5 1>/dev/null 2>&1
+  touch /var/plexguide/version-5.27 1>/dev/null 2>&1
 
 echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
