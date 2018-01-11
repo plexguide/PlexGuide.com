@@ -4,7 +4,7 @@
 sudo docker stop traefik
 sudo docker rm traefik
 
-if (whiptail --title "Upgrade Question" --yesno "You will be required to rebuild all your containers for the upgrade? Are you ready? (Will not lose data)" 9 66) then
+if (whiptail --title "Upgrade Question" --yesno "You will be required to rebuild all your containers for the upgrade? Are you ready? (Will not lose data) Recommend Reboot when all is done!" 10 66) then
 clear
 echo "Stopping & Removing All Containers"
 docker stop $(docker ps -a -q)
