@@ -40,7 +40,7 @@
   #- { role: rutorrentssl, tags: ['rutorrentssl'] }
   - { role: medusassl, tags: ['medusassl'] }
   - { role: tautullissl, tags: ['tautullissl'] }
-  #- { role: delugessl, tags: ['delugessl'] }
+  - { role: delugessl, tags: ['delugessl'] }
   #- { role: nzbhydrassl, tags: ['nzbhydrassl'] }
   - { role: lidarrssl, tags: ['lidarrssl'] }
   #- { role: organizrssl, tags: ['organizrssl'] }

@@ -1,0 +1,33 @@
+---
+
+- name: Remove Deluge Container
+  docker_container:
+    name: deluge
+    state: absent
+
+- name: Create Deluge Container
+  docker_container:
+    name: deluge
+    image: binhex/arch-deluge
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8112:8112"
+      - "58846:58846"
+      - "58946:58946"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "deluge.{{domain}}"
+      VIRTUAL_PORT: 8112
+      LETSENCRYPT_HOST: "deluge.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+    volumes:
+      - /opt/appdata/deluge/config:/config
+      - /mnt/deluge/temp:/temp
+      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/deluge/torrent:/torrent
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/unionfs/:/unionfs
+    restart_policy: always
+    state: started
