@@ -35,13 +35,18 @@
     prompt: "Enter e-mail address - (must be valid in order to register SSL)"
   register: email_input
 
+- name: password
+  pause:
+    prompt: "Please create a Universal Password (.htaccess / Wordpress & etc)"
+  register: password_input
+
 ############ Ask for PIA VPN user info
-- name: user
+- name: vpnuser
   pause:
     prompt: "What is your PIA username (If none, press ENTER to SKIP)? "
   register: pia_user
 
-- name: password
+- name: vpnpassword
   pause:
    prompt: "What is your PIA password (If none, press ENTER to SKIP)? "
   register: pia_password
@@ -49,6 +54,7 @@
 ########## Info-Debug
 - debug: msg="Using following domain {{domain_input.user_input}}"
 - debug: msg="Using following e-mail {{email_input.user_input}}"
+- debug: msg="Using following password {{password_input.user_input}}"
 
 - debug: msg="Using following PIA username {{pia_user.user_input}}"
 - debug: msg="Using following PIA password {{pia_password.user_input}}"
@@ -93,6 +99,12 @@
     path: /opt/appdata/plexguide/var2.yml
     regexp: user@gmail.com
     replace: "{{email_input.user_input}}"
+
+- name: Replace password with user input
+  replace:
+    path: /opt/appdata/plexguide/var2.yml
+    regexp: defaultpassword
+    replace: "{{password_input.user_input}}"
 
 ############ Replace PIA VPN user info
 - name: Replace pia_user with user input

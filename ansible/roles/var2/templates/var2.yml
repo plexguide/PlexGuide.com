@@ -1,7 +1,8 @@
 ---
   domain: domain.com
   email: user@gmail.com
+  password: defaultpassword
   ipv4: ip_address
   lan: lan_net
-  user: pia_user
-  password: pia_password
+  vpnuser: pia_user
+  vpnpassword: pia_password
