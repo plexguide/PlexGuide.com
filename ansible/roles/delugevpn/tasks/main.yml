@@ -10,7 +10,7 @@
 
 ########## Remove old existing config file
 - name: Removing ovpn files
-  shell: rm -r  /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
+  shell: rm -r  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
 
 ########## Remote Server selection
 
