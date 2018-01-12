@@ -12,10 +12,10 @@
 - name: Copy default ovpn file
   template:
     src: "netherlands.ovpn"
-    dest: "/opt/appdata/vpn/deluge/config/openvpn/netherlands.ovpn"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/netherlands.ovpn"
     force: yes
 
-- name: Removing ovpn files
+- name: Removing all ovpn files
   shell: rm -r  /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
 
 ########## Remote Server selection
@@ -26,8 +26,7 @@
          \n
        france, germany, israel, montreal, netherlands,\n
        romainia, sweden, switzerland, toronto or vancouver.\n
-       \n
-       Default sever is netherlands, press Enter to skip! \n
+        \n
        "
   register: server
 
