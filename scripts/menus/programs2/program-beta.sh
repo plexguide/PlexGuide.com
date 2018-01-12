@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 clear
 
@@ -7,8 +7,8 @@ do
 CHOICE=$(
 whiptail --title "Media Choice" --menu "Make your choice" 10 30 3 \
     "1)" "VPN Torrent - old way"   \
-    "2)" "VPN Torrent - new way"    \
-    "3)" "Swap test files"
+    "2)" "VPN Torrent - new way"   \
+    "3)" "Swap test files"   \
     "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
