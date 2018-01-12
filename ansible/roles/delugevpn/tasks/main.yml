@@ -31,7 +31,7 @@
     dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
-
+######### Remove previous containers
 - name: Remove Rtorrent Container
   docker_container:
     name: rtorrentvpn
@@ -47,6 +47,7 @@
     name: delugevpn
     state: absent
 
+######## Deploy new container
 - name: Deploy Deluge Container
   docker_container:
     name: delugevpn

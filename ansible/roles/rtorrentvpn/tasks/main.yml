@@ -9,19 +9,17 @@
     - /opt/appdata/vpn/rtorrent/config/openvpn
 
 ########## Remove old existing config file
-
 - name: Removing ovpn files
   shell: rm -r  /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
 
 ########## Remote Server selection
-
 - name: Choose Server
   pause:
     prompt: " \n
-    What PIA server would you like to use:- \n
-        \n
-      france, germany, israel, montreal, netherlands,\n
-      romainia, sweden, switzerland, toronto or vancouver ? "
+      What PIA server would you like to use:-\n
+         \n
+       france, germany, israel, montreal, netherlands,\n
+       romainia, sweden, switzerland, toronto or vancouver ? "
   register: server
 
 - debug: msg="Using {{server.user_input}} Server"
@@ -32,7 +30,7 @@
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
-
+######### Remove previous containers
 - name: Remove DelugeVPN Container
   docker_container:
     name: delugevpn
@@ -43,6 +41,7 @@
     name: rtorrentvpn
     state: absent
 
+######## Deploy new container
 - name: Deploy Rtorrent Container
   docker_container:
     name: rtorrentvpn
