@@ -1,7 +1,7 @@
  #!/bin/bash
 
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var3.sh)
+ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
  echo $ipv4
  echo $domain
 
@@ -10,7 +10,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 11 25 4 \
+whiptail --title "Install Menu" --menu "Make your choice" 11 25 5 \
     "1)" "RuTorrent"  \
     "2)" "Deluge"  \
     "3)" "Jackett"  \
@@ -23,19 +23,28 @@ case $CHOICE in
 
      "1)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
-      echo "RuTorrent: http://$ipv4:8999 | For NGINX Proxy https://rutorrent.$domain"
+      echo "RuTorrent: http://$ipv4:8999"
+      echo "For NGINX Proxy https://rutorrent.$domain"
+      echo "For Traefik http://$domain:8999"
+      echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "2)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
-      echo "Deluge: http://$ipv4:8112 | For NGINX Proxy https://deluge.$domain"
+      echo "Deluge: http://$ipv4:8112"
+      echo "For NGINX Proxy https://deluge.$domain"
+      echo "For Traefik http://$domain:8112"
+      echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "3)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
-      echo "Jackett: http://$ipv4:9117 | For NGINX Proxy https://jackett.$domain"
+      echo "Jackett: http://$ipv4:9117"
+      echo "For NGINX Proxy https://jackett.$domain"
+      echo "For Traefik http://$domain:9117"
+      echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
