@@ -71,7 +71,7 @@
 
 - name: Replace ipv4 with stand output
   replace:
-    path: /opt/appdata/plexguide/var2.yml
+    path: /opt/appdata/plexguide/var.yml
     regexp: ip_address
     replace: "{{ip_address.stdout}}"
 
@@ -83,7 +83,7 @@
 
 - name: Replace lan_net with stand output
   replace:
-    path: /opt/appdata/plexguide/var2.yml
+    path: /opt/appdata/plexguide/var.yml
     regexp: lan_net
     replace: "{{lan_net.stdout}}"
 
