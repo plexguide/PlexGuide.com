@@ -38,7 +38,7 @@
 - name: password
   pause:
     prompt: "Please create a Universal Password (.htaccess / Wordpress & etc)"
-  register: password
+  register: password_input
 
 ########## Info-Debug
 - debug: msg="Using following domain {{domain_input.user_input}}"
