@@ -17,9 +17,9 @@
       - "/sys:/host/sys:ro"
       - "/proc:/host/proc:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    labels:
-      - traefik.port: 19999
-      - traefik.enable: true
+      labels:
+        - "traefik.port: 19999"
+        - "traefik.enable: true"
     env:
       PUID: 1000
       PGID: 1000
