@@ -17,9 +17,14 @@
       - "/sys:/host/sys:ro"
       - "/proc:/host/proc:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
+    labels:
+      traefik.enable: "true"
+      traefik.backend: "flask"
+      traefik.frontend.rule: "Host:netdata.plex.one"
+      traefik.port: "19999"
     env:
       PUID: 1000
       PGID: 1000
-      VIRTUAL_HOST: "netdata.{{domain}}"
-      VIRTUAL_PORT: 19999"
+      VIRTUAL_HOST: "netdata.plex.one"
+      VIRTUAL_PORT: "19999"
     restart_policy: always
