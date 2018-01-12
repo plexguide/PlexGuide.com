@@ -27,32 +27,3 @@
     src: crl.rsa.2048.pem
     dest: /opt/appdata/vpn/rtorrent/config/openvpn/crl.rsa.2048.pem
     force: yes
-
-
-- name: Get Server LAN IP
-  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
-  register: lan_net
-  tags: openvpn
-
-#tasks:
-
-- name: Get VPN username
-  pause:
-    prompt: "What is your PIA username? "
-  register: user
-  tags: openvpn
-
-
-- name: Get VPN password
-  pause:
-   prompt: "What is your PIA password? "
-  register: password
-  tags: openvpn
-
-- debug: msg="Using following username {{user.user_input}}"
-
-- debug: msg="Using following password {{password.user_input}}"
-
-- debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
-
-- debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"
