@@ -20,7 +20,7 @@
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
     env:
-      MYSQL_ROOT_PASSWORD: SUPERSTrongWp@$$
+      MYSQL_ROOT_PASSWORD: "{{pw}}"
     networks:
       - name: plexguide
         aliases:
@@ -44,7 +44,7 @@
       VIRTUAL_PORT: 80
       LETSENCRYPT_HOST: "{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
-      WORDPRESS_DB_PASSWORD: SUPERSTrongWp@$$
+      WORDPRESS_DB_PASSWORD: "{{pw}}"
     networks:
       - name: plexguide
         aliases:
