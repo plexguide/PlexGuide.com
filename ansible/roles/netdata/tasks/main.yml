@@ -24,4 +24,8 @@
       VIRTUAL_PORT: 19999
       LETSENCRYPT_HOST: "netdata.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - netdata
     restart_policy: always

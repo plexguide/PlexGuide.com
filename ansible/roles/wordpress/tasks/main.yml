@@ -48,7 +48,7 @@
     networks:
       - name: plexguide
         aliases:
-          - Wordpress
+          - wordpress
     links:
       - my-wpdb:mysql
     volumes:

@@ -20,6 +20,10 @@
       VIRTUAL_PORT: 8888
       LETSENCRYPT_HOST: "resilio.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - resilio
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/resilio:/config

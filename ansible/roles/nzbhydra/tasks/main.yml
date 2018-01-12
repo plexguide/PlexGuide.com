@@ -26,4 +26,8 @@
       - "/opt/appdata/nzbhyra:/config"
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - nzbhydra
     state: started

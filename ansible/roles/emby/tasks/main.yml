@@ -26,5 +26,9 @@
       - /mnt/plexdrive4/:/plexdrive4
       - /mnt/unionfs:/unionfs
       - /mnt/encrypt:/encrypt
+    networks:
+      - name: plexguide
+        aliases:
+          - emby
     restart_policy: always
     state: started

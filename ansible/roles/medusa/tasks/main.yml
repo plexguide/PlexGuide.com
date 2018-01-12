@@ -30,5 +30,9 @@
       LETSENCRYPT_EMAIL: "{{email}}"
       PUID: 1000
       PGID: 1000
+    networks:
+      - name: plexguide
+        aliases:
+          - medusa
     restart_policy: always
     state: started

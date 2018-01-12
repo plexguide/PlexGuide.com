@@ -28,5 +28,9 @@
      - /opt/appdata/portainer:/data
      - /var/run/docker.sock:/var/run/docker.sock
      - /opt/appdata/portainer:/data
+    networks:
+      - name: plexguide
+        aliases:
+          - netdata
     restart_policy: always
     state: started
