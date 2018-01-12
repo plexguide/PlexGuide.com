@@ -56,16 +56,16 @@
 #### Get IPv4 and CIDR info
 - name: ipv4
   shell: "hostname -I | awk '{print $1}'"
-  register: ip
+  register: ip_address
 #  ipv4: {{ipv4.stdout}}
 
 - name: Replace ipv4 with stand output
   replace:
     path: /opt/appdata/plexguide/var2.yml
-    regexp: ip
-    replace: "{{ip.stdout}}"
+    regexp: ip_address
+    replace: "{{ip_address.stdout}}"
 
-- debug: msg="Your IPv4 Address is {{ip.stdout}}"
+- debug: msg="Your IPv4 Address is {{ip_address.stdout}}"
 
 - name: lan
   shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
