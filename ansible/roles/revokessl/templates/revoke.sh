@@ -4,7 +4,7 @@
 
 domain={{domain}}
 
-cd /opt/appdata/nginx-proxy
+cd /opt/nginx-proxy
 
 sudo docker stop $(docker ps -aq)
 
@@ -14,4 +14,4 @@ for i in *.${domain}.chain.pem;
     sudo certbot revoke --cert-path ${base}/fullchain.pem --key-path ${base}/key.pem
 done
 
-sudo chown -R 1000:1000 /opt/appdata/nginx
+sudo chown -R 1000:1000 /opt/nginx
