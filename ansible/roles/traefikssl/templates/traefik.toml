@@ -46,3 +46,6 @@ storage = "/opt/appdata/traefik/ssl/acme.json"
 entryPoint = "https, http"
 #OnHostRule = true
 onDemand = true
+
+[web]
+address = ":8080"
