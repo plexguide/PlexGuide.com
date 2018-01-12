@@ -2,7 +2,7 @@
 ### Install ### NGINX
 
 ## Stopping containers
-
+if (whiptail --title "Patch 002" --yesno "See Changlog for Changes? Recommend a Reboot" 10 66) then
 clear
 echo "Stopping All containers"
 docker stop $(docker ps -a -q)
