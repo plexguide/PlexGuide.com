@@ -5,7 +5,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Media Choice" --menu "Make your choice" 10 30 3 \
+whiptail --title "Media Choice" --menu "Make your choice" 10 30 4 \
     "1)" "VPN Torrent - old way"   \
     "2)" "VPN Torrent - new way"   \
     "3)" "Swap test files"   \
@@ -31,11 +31,10 @@ case $CHOICE in
    bash mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs4
    bash mv /opt/plexguide/scripts/menus/programs2 /opt/plexguide/scripts/menus/programs
 
-
-     "4)")
-      clear
-      exit 0
-      ;;
+   "4)")
+    clear
+    exit 0
+    ;;
 esac
 done
 exit
