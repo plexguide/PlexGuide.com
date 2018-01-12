@@ -9,4 +9,4 @@
   roles:
       - { role: openvpn, tags: ['openvpn'] }
       - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
-#      - { role: delugevpn, tags: ['delugevpn'] }
+      - { role: delugevpn, tags: ['delugevpn'] }
