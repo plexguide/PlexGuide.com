@@ -1,7 +1,7 @@
  #!/bin/bash
 
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var3.sh)
+ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
  echo $ipv4
  echo $domain
 
@@ -21,21 +21,27 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
-    echo "NZBGET: http://$ipv4:6789 | For NGINX Proxy https://nzbget.$domain"
+    echo "NZBGET: http://$ipv4:6789"
+    echo "For NGINX Proxy https://nzbget.$domain"
+    echo "For Traefik http://$domain:6789"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra
-    echo "NZBHydra: http://$ipv4:5075 | For NGINX Proxy https://nzbhyra.$domain"
+    echo "NZBHydra: http://$ipv4:5075"
+    echo "For NGINX Proxy https://nzbhyra.$domain"
+    echo "For Traefik http://$domain:5075"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
-    echo "SABNZBD: http://$ipv4:8090 | For NGINX Proxy https://sabnzbd.$domain"
+    echo "SABNZBD: http://$ipv4:8090"
+    echo "For NGINX Proxy https://sabnzbd.$domain"
+    echo "For Traefik http://$domain:8090"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

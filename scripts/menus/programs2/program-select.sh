@@ -1,7 +1,7 @@
  #!/bin/bash
 
  # This takes .yml file and converts it to bash readable format
- sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
+ sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
 clear
 

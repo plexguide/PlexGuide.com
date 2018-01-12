@@ -9,7 +9,7 @@ whiptail --title "Program Categories" --menu "Make your choice" 12 25 5 \
     "1)" "Lidarr"   \
     "2)" "Medusa"   \
     "3)" "Sonarr"   \
-    "4)" "MEDUSA"   \
+    "4)" "Radarr"   \
     "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -18,7 +18,7 @@ case $CHOICE in
 
   "1)")
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
-  echo "MEDUSA: http://ipv4:8686 | For Reverse Proxy lidarr.domain.com"
+  echo "Lidarr: http://ipv4:8686 | For Reverse Proxy lidarr.domain.com"
   echo ""
   read -n 1 -s -r -p "Press any key to continue "
   ;;
