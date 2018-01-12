@@ -36,10 +36,10 @@ case $CHOICE in
       ;;
 
      "3)")
-     ansible-playbook /opt/plexguide/ansible/config2.yml --tags var2
-     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
+#     ansible-playbook /opt/plexguide/ansible/config2.yml --tags var2
+#     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
 #     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
-#     bash sudo ansible-playbook /opt/plexguide/ansible/test3.yml
+     bash sudo ansible-playbook /opt/plexguide/ansible/test3.yml
      read -n 1 -s -r -p "Press any key to continue "
       ;;
 
