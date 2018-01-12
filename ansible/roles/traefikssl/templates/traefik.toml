@@ -17,16 +17,27 @@ logLevel = "ERROR"
 # http and https redirect backend
 ################################################################
 [entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
+  #[entryPoints.http]
+  #address = ":80"
+    #[entryPoints.http.redirect]
+    #entryPoint = "https"
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
     [[entryPoints.https.tls.certificates]]
-    CertFile = "/opt/appdata/traefik/ssl/mycert.cert.pem"
-    KeyFile = "/opt/appdata/traefik/ssl/mycert.key.pem"
+    certFile = "/opt/appdata/traefik/ssl/mycert.cert"
+    keyFile = "/opt/appdata/traefik/ssl/mycert.key"
+
+################################################################
+# Let's Encrypt information backend
+################################################################
+[acme]
+email = "test@dunn.cloud"
+storage = "/opt/appdata/traefik/ssl/acme.json"
+entryPoint = "https, http"
+OnHostRule = true
+onDemand = true
+
 
 ################################################################
 # Docker configuration backend
@@ -36,13 +47,3 @@ endpoint = "unix:///var/run/docker.sock"
 domain = "plex.one"
 watch = true
 exposedbydefault = true
-
-################################################################
-# Let's Encrypt information backend
-################################################################
-[acme]
-email = "test@dunn.cloud"
-storage = "/opt/appdata/traefik/ssl/acme.json"
-entryPoint = "https, http"
-#OnHostRule = true
-onDemand = true
