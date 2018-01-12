@@ -24,6 +24,9 @@ logLevel = "ERROR"
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
+    [[entryPoints.https.tls.certificates]]
+    CertFile = "/opt/appdata/traefik/traefik.cert.pem"
+    KeyFile = "/opt/appdata/traefik/traefik.key.pem"
 
 ################################################################
 # Docker configuration backend
