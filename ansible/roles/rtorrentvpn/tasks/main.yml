@@ -26,7 +26,7 @@
     force: yes
 
 
-- name: Remove deluge Container
+- name: Remove DelugeVPN Container
   docker_container:
     name: delugevpn
     state: absent
@@ -53,9 +53,9 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "rtorrent.{{domain}}"
+      VIRTUAL_HOST: "rtorrentvpn.{{domain}}"
       VIRTUAL_PORT: 3000
-      LETSENCRYPT_HOST: "rtorrent.{{domain}}"
+      LETSENCRYPT_HOST: "rtorrentvpn.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
 #      UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4

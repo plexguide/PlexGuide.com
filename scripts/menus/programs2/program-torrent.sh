@@ -14,7 +14,8 @@ whiptail --title "Install Menu" --menu "Make your choice" 11 25 4 \
     "1)" "RuTorrent"  \
     "2)" "Deluge"  \
     "3)" "Jackett"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
+    "4)" "VPN Options"  \
+    "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -39,6 +40,11 @@ case $CHOICE in
       ;;
 
      "4)")
+     clear
+     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
+     ;;
+
+     "5)")
       clear
       exit 0
       ;;
