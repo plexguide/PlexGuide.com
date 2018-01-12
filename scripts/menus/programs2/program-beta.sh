@@ -30,6 +30,7 @@ case $CHOICE in
    # bash ansible-playbook /opt/plexguide/ansible/config2.yml --tags: var2 ## to generate the var file required above
    bash mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs4
    bash mv /opt/plexguide/scripts/menus/programs2 /opt/plexguide/scripts/menus/programs
+   ;;
 
    "4)")
     clear
