@@ -9,6 +9,12 @@
     - /opt/appdata/vpn/deluge/config/openvpn
 
 ########## Remove old existing config file
+- name: Copy default ovpn file
+  template:
+    src: "netherlands.ovpn"
+    dest: "/opt/appdata/vpn/deluge/config/openvpn/netherlands.ovpn"
+    force: yes
+
 - name: Removing ovpn files
   shell: rm -r  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
 
@@ -17,10 +23,13 @@
 - name: Choose Server
   pause:
     prompt: " \n
-      What PIA server would you like to use:-\n
+      What PIA server would you like to use?\n
          \n
        france, germany, israel, montreal, netherlands,\n
-       romainia, sweden, switzerland, toronto or vancouver ? "
+       romainia, sweden, switzerland, toronto or vancouver.\n
+       \n
+       Default sever is netherlands, press Enter to skip! \n
+       "
   register: server
 
 - debug: msg="Using {{server.user_input}} Server"
