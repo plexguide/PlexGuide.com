@@ -1,5 +1,8 @@
  #!/bin/bash
 
+ # This takes .yml file and converts it to bash readable format
+ sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
+
  ## point to variable file for ipv4 and domain.com
  source <(grep '^ .*='  /opt/appdata/plexguide/var3.sh)
  echo $ipv4
@@ -33,8 +36,9 @@ case $CHOICE in
       ;;
 
      "3)")
-#     bash ansible-playbook /opt/plexguide/ansible/config2.yml
-     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
+     ansible-playbook /opt/plexguide/ansible/config2.yml --tags var2
+     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
+#     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
 #     bash sudo ansible-playbook /opt/plexguide/ansible/test3.yml
      read -n 1 -s -r -p "Press any key to continue "
       ;;
