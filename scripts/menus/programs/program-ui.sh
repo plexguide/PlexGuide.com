@@ -29,11 +29,11 @@ case $CHOICE in
      ;;
 
      "3)")
-     echo ymlprogram wordpress > /opt/plexguide/tmp.txt
-     echo ymldisplay Wordpress >> /opt/plexguide/tmp.txt
-     echo ymlport 10000 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-     ;;
+     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+     echo "Vist: http://ipv4 | Visit domain.com"
+     echo ""
+     read -n 1 -s -r -p "Press any key to continue "
+      ;;
 
      "4)")
       clear
