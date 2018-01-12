@@ -16,7 +16,7 @@ whiptail --title "Program Categories" --menu "Make your choice" 12 25 5 \
 result=$(whoami)
 case $CHOICE in
 
-  "2)")
+  "1)")
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
   echo "MEDUSA: http://ipv4:8686 | For Reverse Proxy lidarr.domain.com"
   echo ""
