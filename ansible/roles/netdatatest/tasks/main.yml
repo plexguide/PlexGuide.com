@@ -23,6 +23,6 @@
     env:
       PUID: 1000
       PGID: 1000
-      VIRTUAL_HOST: "netdata.{{domain}}"
+      VIRTUAL_HOST: "netdata.plex.one"
       VIRTUAL_PORT: 19999"
     restart_policy: always
