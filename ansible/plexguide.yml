@@ -38,3 +38,4 @@
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
   - { role: var, tags: ['var'] }
+  - { role: revokessl, tags: ['revokessl'] }
