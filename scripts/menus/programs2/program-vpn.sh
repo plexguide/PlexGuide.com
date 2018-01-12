@@ -33,9 +33,10 @@ case $CHOICE in
       ;;
 
      "3)")
-     bash ansible-playbook /opt/plexguide/ansible/config2.yml
-     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
-     bash ansible-playbook /opt/plexguide/ansible/test3.yml
+#     bash ansible-playbook /opt/plexguide/ansible/config2.yml
+#     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
+     bash sudo ansible-playbook /opt/plexguide/ansible/test3.yml
+     read -n 1 -s -r -p "Press any key to continue "
       ;;
 
      "4)")
