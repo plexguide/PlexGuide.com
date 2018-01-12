@@ -22,7 +22,7 @@
     src: traefik.toml
     dest: /opt/appdata/traefik/traefik.toml
     force: yes
-  when: script.stat.exists == False
+  #when: script.stat.exists == False
 
 ########## Check if Traefik config exists and register
 - name: Check if Traefik log-prerequisites exist
