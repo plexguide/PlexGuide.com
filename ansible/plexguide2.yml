@@ -5,4 +5,5 @@
 
   roles:
   - { role: traefik, tags: ['traefik'] }
+  - { role: traefik, tags: ['traefikssl'] }
   - { role: netdatatest, tags: ['netdatatest'] }

@@ -3,3 +3,4 @@
 
   roles:
   - { role: var2, tags: ['var2'] }
+  - { role: var2, tags: ['var2'] }
