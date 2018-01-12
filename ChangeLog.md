@@ -1,7 +1,21 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.0.027] Actively Working
+### [5.0.028] Actively Working
+#### Added
+- Patch 002
+
+#### Changed
+- Patch 002 changes /opt/nginx-proxy to /opt/appdata/nginx-proxy
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.0.027] 
 #### Added
 - SSL Deployment
 - Version Update Control
@@ -18,10 +32,6 @@ Current Changes will continued to be modifed as known.
 
 #### Removed
 - Traefik 
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.0.026] 
 #### Added
