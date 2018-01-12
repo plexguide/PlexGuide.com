@@ -3,7 +3,7 @@
 - name: Create nginx-proxy directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/nginx-proxy
+    - /opt/appdata/nginx-proxy
 
 - name: Create and start container
   docker_container:
