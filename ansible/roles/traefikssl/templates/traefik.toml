@@ -28,6 +28,6 @@ OnHostRule = true
 # Enable Docker configuration backend
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "plex.one"
+domain = "dunn.cloud"
 watch = true
 exposedbydefault = false
