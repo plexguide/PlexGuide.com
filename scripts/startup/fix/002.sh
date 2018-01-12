@@ -8,7 +8,7 @@ echo "Stopping All containers"
 docker stop $(docker ps -a -q)
 ################
 ## Moving Nginx-Proxy Certs
-mv /opt/nginx-proxy /opt/appdata/nginx-proxy
+mv /opt/nginx-proxy /opt/appdata
 ## Remake the LetsEncrypt
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx
 ################ Version Updates for Patch
