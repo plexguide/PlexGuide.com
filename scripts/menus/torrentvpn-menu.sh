@@ -61,8 +61,7 @@ Default is set to Netherlands
 5. Install NGINX DelugeVPN
 6. Install NGINX rTorrentVPN
 7. Install NGINX JackettVPN
-8. Test - Plex menu
-9. Exit
+8. Exit
 
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
     to check for leaks! ***
@@ -77,7 +76,7 @@ EOF
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 9 ] " choice
+	read -p "Enter choice [ 1 - 8 ] " choice
   echo
 	case $choice in
     1)
@@ -187,9 +186,6 @@ read_options(){
        bash /opt/plexguide/scripts/docker-no/program-installer.sh
         ;;
     8)
-    bash /opt/plexguide/scripts/test/plex-menu.sh
-    ;;
-    9)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

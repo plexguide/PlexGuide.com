@@ -5,6 +5,8 @@
     - /opt/appdata/plexguide/var2.yml
 
 ## sudo ansible-playbook /opt/plexguide/ansible/config2.yml <<< to generate the var file required above
+## sudo mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs3
+## sudo mv /opt/plexguide/scripts/menus/programs2 /opt/plexguide/scripts/menus/programs
 
   roles:
       - { role: openvpn, tags: ['openvpn'] }
