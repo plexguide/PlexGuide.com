@@ -20,7 +20,7 @@ address = ":8080"
 [acme]
 # Email address used for registration
 email = "trashbot75@icloud.com"
-storageFile = "/op/appdata/traefik/ssl/acme.json"
+storageFile = "/opt/appdata/traefik/ssl/acme.json"
 entryPoint = "https"
 onDemand = false
 OnHostRule = true
