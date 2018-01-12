@@ -32,7 +32,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.028" --menu "Make your choice" 17 40 10 \
+whiptail --title "Visit PlexGuide.com - v5.028" --menu "Make your choice" 17 43 10 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \
@@ -40,7 +40,7 @@ whiptail --title "Visit PlexGuide.com - v5.028" --menu "Make your choice" 17 40 
    "5)" "Server & Net Benchmarks" \
    "6)" "Info & Troubleshoot" \
    "7)" "Backup & Restore" \
-   "8)" "PlexGuide: Update (View ChangeLog)" \
+   "8)" "PlexGuide: Update (Check ChangeLog)" \
    "9)" "PlexGuide: UnInstall" \
    "10)" "Exit  "  3>&2 2>&1 1>&3
 )
