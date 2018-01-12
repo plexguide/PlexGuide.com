@@ -13,7 +13,8 @@ CHOICE=$(
 whiptail --title "Install Menu" --menu "Make your choice" 11 25 4 \
     "1)" "RTorrentVPN"  \
     "2)" "DelugeVPN"  \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "Var file setup"  \
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -32,6 +33,12 @@ case $CHOICE in
       ;;
 
      "3)")
+     bash ansible-playbook /opt/plexguide/ansible/config2.yml
+     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var2.yml > /opt/appdata/plexguide/var3.sh
+     bash ansible-playbook /opt/plexguide/ansible/test3.yml
+      ;;
+
+     "4)")
       clear
       exit 0
       ;;
