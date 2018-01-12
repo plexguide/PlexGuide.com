@@ -24,4 +24,8 @@
       LETSENCRYPT_HOST: "tautulli.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
     restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - tautulli
     state: started

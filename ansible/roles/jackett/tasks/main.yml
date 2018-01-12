@@ -28,5 +28,9 @@
       - /mnt/deluge/torrent:/torrent
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
+    networks:
+      - name: plexguide
+        aliases:
+          - emby
     restart_policy: always
     state: started

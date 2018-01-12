@@ -23,5 +23,9 @@
     volumes:
       - /opt/appdata/organizr:/config
       - /etc/localtime:/etc/localtime:ro
+    networks:
+      - name: plexguide
+        aliases:
+          - organizr
     restart_policy: always
     state: started

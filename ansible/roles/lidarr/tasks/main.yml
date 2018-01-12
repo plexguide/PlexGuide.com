@@ -21,6 +21,10 @@
       VIRTUAL_PORT: 8686
       LETSENCRYPT_HOST: "lidarr.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - lidarr
     volumes:
       - /opt/appdata/lidarr:/config
       - /mnt/unionfs:/unionfs

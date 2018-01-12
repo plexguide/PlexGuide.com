@@ -28,7 +28,6 @@
           - nginx-proxy
     restart_policy: always
     state: started
-    tty: true
 
 - name: Create and start letsencrypt container
   docker_container:

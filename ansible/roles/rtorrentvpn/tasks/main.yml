@@ -92,4 +92,8 @@
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: unless-stopped
+    networks:
+      - name: plexguide
+        aliases:
+          - rtorrentvpn
     state: started

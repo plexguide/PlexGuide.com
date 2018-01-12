@@ -22,6 +22,10 @@
       VIRTUAL_PORT: 8112
       LETSENCRYPT_HOST: "deluge.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - deluge
     volumes:
       - /opt/appdata/deluge/config:/config
       - /mnt/deluge/temp:/temp

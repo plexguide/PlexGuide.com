@@ -29,4 +29,8 @@
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - rutorrent
     state: started

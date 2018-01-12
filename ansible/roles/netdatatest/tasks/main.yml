@@ -27,4 +27,8 @@
       PGID: 1000
       VIRTUAL_HOST: "netdata.plex.one"
       VIRTUAL_PORT: "19999"
+    networks:
+      - name: plexguide
+        aliases:
+          - netdata
     restart_policy: always

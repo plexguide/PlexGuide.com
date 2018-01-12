@@ -48,6 +48,10 @@
       LETSENCRYPT_HOST: "nzbget.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
     restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - nzbget
     state: started
 
 - name: Path for .conf

@@ -23,5 +23,9 @@
     volumes:
       - /opt/appdata/ombiv3:/config
       - /etc/localtime:/etc/localtime:ro
+    networks:
+      - name: plexguide
+        aliases:
+          - ombi
     restart_policy: always
     state: started

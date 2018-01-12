@@ -23,5 +23,9 @@
     volumes:
       - "/opt/appdata/muximux:/config"
       - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - name: plexguide
+        aliases:
+          - muximux
     restart_policy: always
     state: started

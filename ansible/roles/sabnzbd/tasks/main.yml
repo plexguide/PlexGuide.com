@@ -46,6 +46,10 @@
       PGID: 1000
     restart_policy: always
     state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - sabnzbd 
 
 - name: Path for .ini
   wait_for:
