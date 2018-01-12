@@ -5,10 +5,9 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Media Choice" --menu "Make your choice" 12 30 5 \
+whiptail --title "Media Choice" --menu "Make your choice" 10 30 3 \
     "1)" "VPN Torrent"   \
-    "2)" "Do Not Use"   \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
+    "2)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
