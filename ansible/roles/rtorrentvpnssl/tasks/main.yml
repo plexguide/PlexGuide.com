@@ -60,8 +60,6 @@
 #      UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: "yes"
-#      VPN_USER: "{{user.user_input}}"
-#      VPN_PASS: "{{password.user_input}}"
       VPN_USER: "{{user}}"
       VPN_PASS: "{{password}}"
       VPN_PROV: pia
@@ -69,7 +67,6 @@
       ENABLE_PRIVOXY: "yes"
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: "yes"
-#      LAN_NETWORK: "{{lan_net.stdout}}/24"
       LAN_NETWORK: "{{lan}}/24"
       DEBUG: false
     volumes:

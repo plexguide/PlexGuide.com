@@ -25,12 +25,12 @@ services:
      - /opt/appdata/vpn/.vpn-env
    cpu_shares: 256
    environment:
-     - VPN_ENABLED=yes
+     - VPN_ENABLED="yes"
      - VPN_PROV=pia
   #   - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
    #  - VPN_OPTIONS=<additional openvpn cli options>
-     - STRICT_PORT_FORWARD=yes
-     - ENABLE_PRIVOXY=yes
+     - STRICT_PORT_FORWARD="yes"
+     - ENABLE_PRIVOXY="yes"
      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
      - DEBUG=false
    #  - UMASK=<umask for created files>
