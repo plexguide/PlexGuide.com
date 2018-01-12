@@ -4,6 +4,7 @@ Current Changes will continued to be modifed as known.
 ### [5.0.028] Actively Working
 #### Added
 - Patch 002
+- Password request for future wordpress info and .htaccess files
 
 #### Changed
 - Patch 002 changes /opt/nginx-proxy to /opt/appdata/nginx-proxy
