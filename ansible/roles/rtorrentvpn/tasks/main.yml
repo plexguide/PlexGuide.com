@@ -8,6 +8,13 @@
     - /opt/appdata/vpn/rtorrent/config
     - /opt/appdata/vpn/rtorrent/config/openvpn
 
+########## Remove old existing config file
+- name: Removing ovpn files
+  file:
+    state: absent
+    path:
+      - /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
+
 - name: Choose Server
   pause:
     prompt: " \n
