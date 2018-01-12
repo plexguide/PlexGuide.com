@@ -63,3 +63,29 @@
     path: /opt/appdata/plexguide/var.yml
     regexp: defaultpassword
     replace: "{{password_input.user_input}}"
+
+#### Get IPv4 and CIDR info
+- name: ipv4
+  shell: "hostname -I | awk '{print $1}'"
+  register: ip_address
+
+- name: Replace ipv4 with stand output
+  replace:
+    path: /opt/appdata/plexguide/var2.yml
+    regexp: ip_address
+    replace: "{{ip_address.stdout}}"
+
+- debug: msg="Your IPv4 Address is {{ip_address.stdout}}"
+
+- name: lan
+  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
+  register: lan_net
+
+- name: Replace lan_net with stand output
+  replace:
+    path: /opt/appdata/plexguide/var2.yml
+    regexp: lan_net
+    replace: "{{lan_net.stdout}}"
+
+- debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
+- debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"
