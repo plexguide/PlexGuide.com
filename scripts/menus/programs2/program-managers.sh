@@ -11,7 +11,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 11 25 4 \
+whiptail --title "Program Categories" --menu "Make your choice" 11 25 5 \
     "1)" "Lidarr"   \
     "2)" "Medusa"   \
     "3)" "Sonarr"   \
@@ -57,7 +57,7 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
-     "4)")
+     "5)")
       clear
       exit 0
       ;;
