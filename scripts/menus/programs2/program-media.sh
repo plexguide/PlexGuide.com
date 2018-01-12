@@ -27,7 +27,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
     echo "EMBY: http://$ipv4:8096"
     echo "For NGINX Proxy https://emby.$domain"
-    echo "For Traefik http://$domain:8096"
+    echo "For Subdomain http://$domain:8096"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;

@@ -27,7 +27,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/test3.yml --tags rtorrentvpn
       echo "RTorrentVPN: http://$ipv4:3000"
       echo "For NGINX Proxy https://rtorrentvpn.$domain"
-      echo "For Traefik http://$domain:3000"
+      echo "For Subdomain http://$domain:3000"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
@@ -36,7 +36,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/test3.yml --tags delugevpn
       echo "DelugeVPN: http://$ipv4:8112"
       echo "For NGINX Proxy https://delugevpn.$domain"
-      echo "For Traefik http://$domain:8112"
+      echo "For Subdomain http://$domain:8112"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;

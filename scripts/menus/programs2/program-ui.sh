@@ -23,7 +23,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
     echo "Muximux: http://$ipv4:8015"
     echo "For NGINX Proxy https://muximux.$domain"
-    echo "For Traefik http://$domain:8015"
+    echo "For Subdomain http://$domain:8015"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
@@ -32,7 +32,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
     echo "Organizr: http://$ipv4:8020"
     echo "For NGINX Proxy https://organizr.$domain"
-    echo "For Traefik http://$domain:8020"
+    echo "For Subdomain http://$domain:8020"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
