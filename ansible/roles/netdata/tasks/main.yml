@@ -1,6 +1,6 @@
 ---
 
-- name: Remove Portainer Container
+- name: Remove Netdata Container
   docker_container:
     name: netdata
     state: absent
