@@ -1,49 +1,33 @@
-################################################################
-# Web configuration backend
-################################################################
+defaultEntryPoints = ["http", "https"]
+
 [web]
+# Port for the status page
 address = ":8080"
 
-################################################################
-# Debug Options and Values
-################################################################
-debug = true
-checkNewVersion = true
-traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
-logLevel = "ERROR"
-#defaultEntryPoints = ["https","http"]
-
-################################################################
-# http and https redirect backend
-################################################################
+# Entrypoints, http and https
 [entryPoints]
-  #[entryPoints.http]
-  #address = ":80"
-    #[entryPoints.http.redirect]
-    #entryPoint = "https"
+  # http should be redirected to https
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  # https is the default
   [entryPoints.https]
   address = ":443"
-  [entryPoints.https.tls]
-    [[entryPoints.https.tls.certificates]]
-    certFile = "/opt/appdata/traefik/ssl/mycert.cert"
-    keyFile = "/opt/appdata/traefik/ssl/mycert.key"
+    [entryPoints.https.tls]
 
-################################################################
-# Let's Encrypt information backend
-################################################################
+# Enable ACME (Let's Encrypt): automatic SSL
 [acme]
-email = "test@dunn.cloud"
-storage = "/opt/appdata/traefik/ssl/acme.json"
-entryPoint = "https, http"
+# Email address used for registration
+email = "trashbot75@icloud.com"
+storageFile = "/opt/appdata/traefik/ssl/acme.json"
+entryPoint = "https"
+onDemand = false
 OnHostRule = true
-onDemand = true
 
-
-################################################################
-# Docker configuration backend
-################################################################
+# Enable Docker configuration backend
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "plex.one"
+domain = "dunn.cloud"
 watch = true
-exposedbydefault = true
+exposedbydefault = false
