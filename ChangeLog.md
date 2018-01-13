@@ -1,7 +1,21 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.0.028] Actively Working
+### [5.0.029] Actively Working
+#### Added
+- NGINX Line Fix
+
+#### Changed
+- Forced Pre-Install Update
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.0.028]
 #### Added
 - Patch 002
 - Password request for future wordpress info and .htaccess files
@@ -11,10 +25,6 @@ Current Changes will continued to be modifed as known.
 
 #### Removed
 - None
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.0.027] 
 #### Added
