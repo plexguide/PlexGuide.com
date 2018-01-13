@@ -66,7 +66,7 @@
       VIRTUAL_PORT: 32400
       LETSENCRYPT_HOST: "plex.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
-    network_mode: "host"
+#    network_mode: "host"
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
