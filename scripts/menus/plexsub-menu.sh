@@ -19,6 +19,9 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+    echo "PLEX: http://$ipv4:32400"
+    echo "For NGINX Proxy https://plex.$domain"
+    echo "For Subdomain http://$domain:32400"
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
     whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Read The Wiki!" 9 50
@@ -27,7 +30,10 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex-beta
-        echo ""
+    echo "PLEX: http://$ipv4:32400"
+    echo "For NGINX Proxy https://plex.$domain"
+    echo "For Subdomain http://$domain:32400"
+    echo ""
     read -n 1 -s -r -p "Press any key to continue"
     whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Read The Wiki!" 9 50
     ;;
