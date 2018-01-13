@@ -8,7 +8,7 @@
 - name: Deploy HTPCManager Container
   docker_container:
     name: htpcmanager
-    image: llinuxserver/htpcmanager
+    image: linuxserver/htpcmanager
     pull: yes
     cpu_shares: 256
     published_ports:
