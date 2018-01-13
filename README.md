@@ -16,7 +16,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
 ### Programs ###
-Emby - HTPCManager - Liddar - Muximux - NZBHydra 1 & 2 - NZBGET - Plex - Radarr - Sonnar - Tautulli (Plexpy)
+Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
 
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
