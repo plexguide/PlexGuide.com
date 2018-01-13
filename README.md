@@ -15,6 +15,9 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
+### Programs ###
+Emby - HTPCManager - Liddar - Muximux - NZBHydra 1 & 2 - NZBGET - Plex - Radarr - Sonnar - Tautulli (Plexpy)
+
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
