@@ -5,6 +5,7 @@ Current Changes will continued to be modifed as known.
 #### Added
 - NGINX Line Fix
 - NZBHyra2 (Added By DesignGears)
+- Menu OverHaul
 
 #### Changed
 - Forced Pre-Install Update
