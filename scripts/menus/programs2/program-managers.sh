@@ -24,7 +24,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
     echo "Lidarr: http://$ipv4:8686"
-    echo "For Reverse Proxy https://radarr.$domain"
+    echo "For Reverse Proxy https://lidarr.$domain"
     echo "For Subdomain http://$domain:8686"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
