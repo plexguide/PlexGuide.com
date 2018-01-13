@@ -1,0 +1,31 @@
+---
+
+- name: Remove HTPCManager Container
+  docker_container:
+    name: htpcmanager
+    state: absent
+
+- name: Deploy HTPCManager Container
+  docker_container:
+    name: htpcmanager
+    image: llinuxserver/htpcmanager
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8085:8085"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "htpcmanager.{{domain}}"
+      VIRTUAL_PORT: 8085
+      LETSENCRYPT_HOST: "htpcmanager.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+    volumes:
+      - "/opt/appdata/htpcmanager:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - name: plexguide
+        aliases:
+          - htpcmanager
+    restart_policy: always
+    state: started
