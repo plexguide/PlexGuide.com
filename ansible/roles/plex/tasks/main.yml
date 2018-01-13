@@ -76,10 +76,6 @@
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
       - "/etc/localtime:/etc/localtime:ro"
-    networks:
-      - name: plexguide
-        aliases:
-          - plex
     cpu_shares: 1024
     restart_policy: always
     state: started
