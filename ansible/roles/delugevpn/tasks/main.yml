@@ -102,3 +102,7 @@
       - /mnt/unionfs/:/unionfs
     restart_policy: unless-stopped
     state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - delugevpn
