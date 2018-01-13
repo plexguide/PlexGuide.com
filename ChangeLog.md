@@ -10,7 +10,7 @@ Current Changes will continued to be modifed as known.
 - Forced Pre-Install Update
 
 #### Removed
-- None
+- PlexGuide Network From Plex
 
 -------------------------------------------------------
 ## Past Changes
