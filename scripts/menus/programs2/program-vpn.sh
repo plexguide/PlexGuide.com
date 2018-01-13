@@ -29,6 +29,7 @@ case $CHOICE in
       echo "RTorrentVPN: http://$ipv4:3000"
       echo "For NGINX Proxy https://rtorrentvpn.$domain"
       echo "For Subdomain http://$domain:3000"
+      echo "Please set your own username & password!"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
@@ -39,6 +40,7 @@ case $CHOICE in
       echo "DelugeVPN: http://$ipv4:8112"
       echo "For NGINX Proxy https://delugevpn.$domain"
       echo "For Subdomain http://$domain:8112"
+      echo "Default password: deluge"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
