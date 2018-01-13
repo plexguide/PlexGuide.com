@@ -1,10 +1,11 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.029] Actively Working
+### [5.030] Actively Working
 #### Added
 - NGINX Line Fix
 - NZBHyra2 (Added By DesignGears)
+- Menu OverHaul
 
 #### Changed
 - Forced Pre-Install Update
