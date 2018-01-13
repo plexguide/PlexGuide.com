@@ -8,13 +8,26 @@
     - /opt/appdata/vpn/rtorrent/config
     - /opt/appdata/vpn/rtorrent/config/openvpn
 
-########## Remove old existing config file
+########## Moving certs to config file
+- name: Copy default ovpn cert
+  template:
+    src: "ca.rsa.2048.crt"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/ca.rsa.2048.crt"
+    force: yes
+
+- name: Copy default ovpn pem
+  template:
+    src: "crl.rsa.2048.pem"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/crl.rsa.2048.pem"
+    force: yes
+
 - name: Copy default ovpn file
   template:
     src: "netherlands.ovpn"
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/netherlands.ovpn"
     force: yes
 
+########## Remove old existing config file
 - name: Removing all ovpn files
   shell: rm -r  /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
 

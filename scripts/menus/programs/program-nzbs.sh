@@ -8,8 +8,9 @@ CHOICE=$(
 whiptail --title "Media Choice" --menu "Make your choice" 11 25 4 \
     "1)" "NZBGet"   \
     "2)" "NZBHydra"  \
-    "3)" "SABNZBD"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "NZBHydra2"  \
+    "4)" "SABNZBD"  \
+    "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -29,13 +30,20 @@ case $CHOICE in
      ;;
 
     "3)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2
+    echo "NZBHydra2: http://ipv4:5076 | For NGINX Proxy nzbhyra2.domain.com"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
+
+    "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
     echo "SABNZBD: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-     "4)")
+     "5)")
       clear
       exit 0
       ;;

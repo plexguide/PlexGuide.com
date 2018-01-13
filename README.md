@@ -18,8 +18,8 @@ This is a community driven project. You can spot errors, update the wiki, contri
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
 
-### Awesome Team Members, Advisors & Beta Testers!
-- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
+### Awesome Team Members, Advisors, Contributors & Beta Testers!
+- Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [DesignGears](https://github.com/designgears), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
@@ -130,4 +130,4 @@ Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netda
 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
--  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few key scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
+-  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the [Ansible](www.ansible.com) Inspiration and utilization of a few key scripts.

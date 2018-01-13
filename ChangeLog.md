@@ -1,9 +1,10 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.0.029] Actively Working
+### [5.029] Actively Working
 #### Added
 - NGINX Line Fix
+- NZBHyra2 (Added By DesignGears)
 
 #### Changed
 - Forced Pre-Install Update
@@ -15,7 +16,7 @@ Current Changes will continued to be modifed as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.0.028]
+### [5.028]
 #### Added
 - Patch 002
 - Password request for future wordpress info and .htaccess files
@@ -26,7 +27,7 @@ Historical Documented Changes will be stored as below.
 #### Removed
 - None
 
-### [5.0.027] 
+### [5.027] 
 #### Added
 - SSL Deployment
 - Version Update Control
@@ -44,7 +45,7 @@ Historical Documented Changes will be stored as below.
 #### Removed
 - Traefik 
 
-### [5.0.026] 
+### [5.026] 
 #### Added
 - Added Watchtower / Updates Containers
 
@@ -57,7 +58,7 @@ Historical Documented Changes will be stored as below.
 
 --------------------------------------------------------
 
-### [5.0.025]
+### [5.025]
 #### Added
 - Add v2 DockerFix
   - Reboots all containers 
@@ -74,7 +75,7 @@ Historical Documented Changes will be stored as below.
 
 -------------------------------------------------------
 
-### [5.0.024]
+### [5.024]
 #### Added
 - Set CPU to work at Performance, OnDemand, or Conservative Mode
 
