@@ -22,7 +22,8 @@ case $CHOICE in
      "2)")
      clear
      bash /opt/plexguide/scripts/test/move.sh
-     echo "Move files have been swapped, please go back to the main menu!"
+     echo "Testing files have now been swapped"
+     echo "Please go back to the main menu to see changes"
      read -n 1 -s -r -p "Press any key to continue "
      ;;
 
