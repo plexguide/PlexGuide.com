@@ -28,8 +28,7 @@ case $CHOICE in
    "3)")
    clear
    # bash ansible-playbook /opt/plexguide/ansible/config2.yml --tags: var2 ## to generate the var file required above
-   mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs4
-   mv /opt/plexguide/scripts/menus/programs2 /opt/plexguide/scripts/menus/programs
+   bash /opt/plexguide/scripts/test/move.sh
    echo ""
    read -n 1 -s -r -p "Press any key to continue "
    ;;
