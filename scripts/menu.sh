@@ -10,7 +10,7 @@ bash /opt/plexguide/scripts/docker-no/user.sh
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 
-file="/var/plexguide/dep31.yes"
+file="/var/plexguide/dep32.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
@@ -32,7 +32,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.028" --menu "Make your choice" 17 43 10 \
+whiptail --title "Visit PlexGuide.com - v5.029" --menu "Make your choice" 17 43 10 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \
