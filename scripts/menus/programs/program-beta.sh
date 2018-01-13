@@ -5,10 +5,11 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Media Choice" --menu "Make your choice" 10 30 4 \
+whiptail --title "Media Choice" --menu "Make your choice" 10 45 4 \
     "1)" "VPN Torrent - New way"   \
     "2)" "VPN Torrent - Old way"   \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
+    "3)" "DO NOT USE - For Developers Use Only!"   \
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -24,16 +25,15 @@ case $CHOICE in
    bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh
    ;;
 
-#   "3)")
-#   clear
-#   # bash ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags: var-vpn ## to generate the var file required above
-#   bash /opt/plexguide/scripts/test/move.sh
-#   echo "Testing files have now been swapped"
-#   echo "Please go back to the main menu to see changes"
-#   read -n 1 -s -r -p "Press any key to continue "
-#   ;;
-
    "3)")
+   clear
+   bash /opt/plexguide/scripts/test/move.sh
+   echo "Testing files have now been swapped"
+   echo "Please go back to the main menu to see changes"
+   read -n 1 -s -r -p "Press any key to continue "
+   ;;
+
+   "4)")
     clear
     exit 0
     ;;
