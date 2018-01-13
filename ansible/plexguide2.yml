@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  vars_files:
-    - /opt/appdata/plexguide/var.yml
-
-  roles:
-  - { role: traefik, tags: ['traefik'] }
-  - { role: traefikssl, tags: ['traefikssl'] }
-  - { role: netdatatest, tags: ['netdatatest'] }
