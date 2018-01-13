@@ -14,6 +14,7 @@ whiptail --title "Install Menu" --menu "Make your choice" 11 25 5 \
     "1)" "RuTorrent"  \
     "2)" "Deluge"  \
     "3)" "Jackett"  \
+    "4)" "VPN Options"  \
     "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -47,12 +48,12 @@ case $CHOICE in
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
-#     "4)")
-#     clear
-#     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
-#     ;;
-
      "4)")
+     clear
+     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
+     ;;
+
+     "5)")
       clear
       exit 0
       ;;

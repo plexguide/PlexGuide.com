@@ -1,10 +1,5 @@
  #!/bin/bash
 
- ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
-
 clear
 
 while [ 1 ]
@@ -22,36 +17,28 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
-    echo "NetData: http://$ipv4:19999"
-    echo "For NGINX Proxy https://netdata.$domain"
-    echo "For Subdomain http://$domain:19999"
+    echo "NetData: http://ipv4:19999 | For NGINX Proxy netdata.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
-    echo "Ombi: http://$ipv4:3579"
-    echo "For NGINX Proxy https://ombi.$domain"
-    echo "For Subdomain http://$domain:3579"
+    echo "Ombi: http://ipv4:3579 | For NGINX Proxy ombi.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio
-    echo "Resilio: http://$ipv4:8888"
-    echo "For NGINX Proxy https://resilio.$domain"
-    echo "For Subdomain http://$domain:8888"
+    echo "Resilio: http://ipv4:8888 | For NGINX Proxy resilio.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
-    echo "Tautulli: http://$ipv4:8181"
-    echo "For NGINX Proxy https://tautulli.$domain"
-    echo "For Subdomain http://$domain:8181"
+    echo "Tautulli: http://ipv4:8181 | For NGINX Proxy tautulli.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

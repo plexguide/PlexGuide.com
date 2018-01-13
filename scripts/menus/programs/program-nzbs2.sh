@@ -1,10 +1,5 @@
  #!/bin/bash
 
- ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
-
 clear
 
 while [ 1 ]
@@ -22,36 +17,28 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
-    echo "NZBGET: http://$ipv4:6789"
-    echo "For NGINX Proxy https://nzbget.$domain"
-    echo "For Subdomain http://$domain:6789"
+    echo "NZBGET: http://ipv4:6789 | For NGINX Proxy nzbget.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra
-    echo "NZBHydra: http://$ipv4:5075"
-    echo "For NGINX Proxy https://nzbhyra.$domain"
-    echo "For Subdomain http://$domain:5075"
+    echo "NZBHydra: http://ipv4:5075 | For NGINX Proxy nzbhyra.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2
-    echo "NZBHydra2: http://$ipv4:5076"
-    echo "For NGINX Proxy https://nzbhyra2.$domain"
-    echo "For Subdomain http://$domain:5076"
+    echo "NZBHydra2: http://ipv4:5076 | For NGINX Proxy nzbhyra2.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
-    echo "SABNZBD: http://$ipv4:8090"
-    echo "For NGINX Proxy https://sabnzbd.$domain"
-    echo "For Subdomain http://$domain:8090"
+    echo "SABNZBD: http://ipv4:8090 | For NGINX Proxy sabnzbd.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

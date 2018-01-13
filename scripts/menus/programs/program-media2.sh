@@ -1,10 +1,5 @@
  #!/bin/bash
 
-  ## point to variable file for ipv4 and domain.com
-  source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
-  echo $ipv4
-  echo $domain
-
 clear
 
 while [ 1 ]
@@ -25,9 +20,7 @@ case $CHOICE in
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
-    echo "EMBY: http://$ipv4:8096"
-    echo "For NGINX Proxy https://emby.$domain"
-    echo "For Subdomain http://$domain:8096"
+    echo "EMBY: http://ipv4:8096 | For NGINX Proxy emby.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;

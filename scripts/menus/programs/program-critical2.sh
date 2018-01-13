@@ -1,10 +1,5 @@
  #!/bin/bash
 
- ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
-
 clear
 
 while [ 1 ]
@@ -20,9 +15,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-    echo "Portainer: http://$ipv4:9000"
-    echo "For Reverse Proxy https://portainer.$domain"
-    echo "For Subdomain http://$domain:9000"
+    echo "Portainer: http://ipv4:9000 | For Traefik Proxy portainer.domain.com"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;

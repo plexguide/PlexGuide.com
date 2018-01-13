@@ -1,11 +1,17 @@
- #!/bin/bash
+#!/bin/bash
+
+## point to variable file for ipv4 and domain.com
+source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+echo $ipv4
+echo $domain
+
 
 clear
 
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 12 25 5 \
+whiptail --title "Program Categories" --menu "Make your choice" 11 25 5 \
     "1)" "Lidarr"   \
     "2)" "Medusa"   \
     "3)" "Sonarr"   \
@@ -15,31 +21,38 @@ whiptail --title "Program Categories" --menu "Make your choice" 12 25 5 \
 
 result=$(whoami)
 case $CHOICE in
+    "1)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
+    echo "Lidarr: http://$ipv4:8686"
+    echo "For Reverse Proxy https://lidarr.$domain"
+    echo "For Subdomain http://$domain:8686"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
-  "1)")
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
-  echo "Lidarr: http://ipv4:8686 | For Reverse Proxy lidarr.domain.com"
-  echo ""
-  read -n 1 -s -r -p "Press any key to continue "
-  ;;
-
-  "2)")
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
-  echo "MEDUSA: http://ipv4:8081 | For Reverse Proxy medusa.domain.com"
-  echo ""
-  read -n 1 -s -r -p "Press any key to continue "
-  ;;
+    "2)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
+    echo "MEDUSA: http://$ipv4:8081"
+    echo "For Reverse Proxy https://medusa.$domain"
+    echo "For Subdomain http://$domain:8081"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+    ;;
 
   "3)")
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
-  echo "Sonarr: http://ipv4:8989 | For Revese Proxy sonarr.domain.com"
-  echo ""
-  read -n 1 -s -r -p "Press any key to continue "
-  ;;
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
+   echo "Sonarr: http://$ipv4:8989"
+   echo "For Revese Proxy https://sonarr.$domain"
+   echo "For Subdomain http://$domain:8989"
+   echo ""
+   read -n 1 -s -r -p "Press any key to continue "
+   ;;
 
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
-    echo "Radarr: http://ipv4:7878 | For Reverse Proxy radarr.domain.com"
+    echo "Radarr: http://$ipv4:7878"
+    echo "For Reverse Proxy https://radarr.$domain"
+    echo "For Subdomain http://$domain:7878"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
