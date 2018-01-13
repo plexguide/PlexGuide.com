@@ -130,4 +130,4 @@ Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netda
 
 - [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
 
--  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the Ansible Inspiration and utilization of a few key scripts.  Without [Ansible](www.ansible.com), it would twice as long without Ansible's streamlined bashing features.
+-  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the [Ansible](www.ansible.com) Inspiration and utilization of a few key scripts.
