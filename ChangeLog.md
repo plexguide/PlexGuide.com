@@ -4,7 +4,7 @@ Current Changes will continued to be modifed as known.
 ### [5.0.029] Actively Working
 #### Added
 - NGINX Line Fix
-- NZBHyra2 (Added By Design Gears)
+- NZBHyra2 (Added By DesignGears)
 
 #### Changed
 - Forced Pre-Install Update
