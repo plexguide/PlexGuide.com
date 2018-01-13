@@ -22,7 +22,7 @@
 
 - name: Get Plex Media Server claim token
   pause:
-    prompt: "Visit http://plex.tv/claim, Copy to Clipboard, and Paste"
+    prompt: "Visit http://plex.tv/claim, Copy to Clipboard, and Paste (Press Enter If Already Setup)"
   register: pms_token
   when: plex_prefs.stat.exists == False
 
@@ -82,3 +82,20 @@
     cpu_shares: 1024
     restart_policy: always
     state: started
+
+- name: Create Basic Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+      - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
+
+## Source: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide
+#### http://docs.ansible.com/ansible/latest/unarchive_module.html
+- name: WebTools
+  unarchive:
+    src: https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
+    dest: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
+    keep_newer: no
+    owner: 1000
+    group: 1000
+    mode: 0775
+    copy: no
