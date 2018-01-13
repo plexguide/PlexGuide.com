@@ -24,6 +24,7 @@ result=$(whoami)
 case $CHOICE in
 
      "1)")
+      ansible-playbook /opt/plexguide/ansible/test3.yml --tags openvpn
       ansible-playbook /opt/plexguide/ansible/test3.yml --tags rtorrentvpn
       echo "RTorrentVPN: http://$ipv4:3000"
       echo "For NGINX Proxy https://rtorrentvpn.$domain"
@@ -33,6 +34,7 @@ case $CHOICE in
       ;;
 
      "2)")
+      ansible-playbook /opt/plexguide/ansible/test3.yml --tags openvpn
       ansible-playbook /opt/plexguide/ansible/test3.yml --tags delugevpn
       echo "DelugeVPN: http://$ipv4:8112"
       echo "For NGINX Proxy https://delugevpn.$domain"
