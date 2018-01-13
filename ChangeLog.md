@@ -6,6 +6,7 @@ Current Changes will continued to be modifed as known.
 - NGINX Line Fix
 - NZBHyra2 (Added By DesignGears)
 - Menu OverHaul
+- Automated WebTools (Thanks Bate for Writeup To Help)
 
 #### Changed
 - Forced Pre-Install Update
