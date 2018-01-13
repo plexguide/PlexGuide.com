@@ -10,11 +10,11 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 11 25 5 \
+whiptail --title "Install Menu" --menu "Make your choice" 11 25 4 \
     "1)" "RuTorrent"  \
     "2)" "Deluge"  \
     "3)" "Jackett"  \
-    "5)" "Exit  "  3>&2 2>&1 1>&3
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -46,11 +46,6 @@ case $CHOICE in
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
-
-#     "4)")
-#     clear
-#     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
-#     ;;
 
      "4)")
       clear

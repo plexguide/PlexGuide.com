@@ -1,3 +1,5 @@
 
 .DS_Store
 plexguide.retry
+*.sh
+scripts/menus/programs2/program-managers.sh
