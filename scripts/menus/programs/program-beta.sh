@@ -23,7 +23,7 @@ case $CHOICE in
      clear
      bash /opt/plexguide/scripts/test/move.sh
      echo "Testing files have now been swapped"
-     echo "Please go back to the main menu to see changes"
+     echo "Please go back to the main Programs Menu to see changes"
      read -n 1 -s -r -p "Press any key to continue "
      ;;
 

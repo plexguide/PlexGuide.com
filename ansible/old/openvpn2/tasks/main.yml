@@ -1,5 +1,5 @@
 ---
-### To be used with var2.yml
+### To be used with var-vpn.yml
 ##### Might need to make sure to run:-
 ##### /sbin/modprobe iptable_mangle
 

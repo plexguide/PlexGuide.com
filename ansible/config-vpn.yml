@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: var-vpn, tags: ['var-vpn'] }
+  - { role: var-vpn, tags: ['var-vpn'] }

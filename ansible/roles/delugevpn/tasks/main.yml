@@ -1,6 +1,18 @@
 ---
 
-- name: Create Basic directories
+##### Need to make sure to run:-
+##### /sbin/modprobe iptable_mangle
+
+- name: Create Basic directories for Torrents
+  file: "path={{item}} state=directory mode=0755 owner=1000 group=1000"
+  with_items:
+    - /mnt/torrentvpn
+    - /mnt/torrentvpn/downloaded
+    - /mnt/torrentvpn/temp
+    - /mnt/torrentvpn/.torrent
+    - /mnt/torrentvpn/.watched
+
+- name: Create Basic directories for DelugeVPN
   file: "path={{item}} state=directory mode=0755 owner=1000 group=1000"
   with_items:
     - /opt/appdata/vpn
