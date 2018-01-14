@@ -23,7 +23,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VNC_PW: "{{vncpasswd}}"
+      VNC_PW: "{{vncpassword}}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt:/mnt"
