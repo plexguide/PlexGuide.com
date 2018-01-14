@@ -7,7 +7,7 @@ echo $domain
 
 clear
 
-whiptail --title "Warning" --msgbox "This is only a temporary measure for you to do other things.  You cannot deploy plexguide here." 9 66
+whiptail --title "Warning" --msgbox "This is only a temporary measure for you to do other things.  You cannot deploy plexguide here and the connection is unencrypted.  We will look to improve this!." 10 66
 
 while [ 1 ]
 do

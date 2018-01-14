@@ -38,17 +38,18 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.029" --menu "Make your choice" 17 43 10 \
+whiptail --title "Visit PlexGuide.com - v5.030" --menu "Make your choice" 18 43 11 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \
    "4)" "Set Processor Performance" \
    "5)" "Server & Net Benchmarks" \
-   "6)" "Info & Troubleshoot" \
-   "7)" "Backup & Restore" \
-   "8)" "PlexGuide: Update (Check ChangeLog)" \
-   "9)" "PlexGuide: UnInstall" \
-   "10)" "Exit  "  3>&2 2>&1 1>&3
+   "6)" "VNC Remote Server Install" \
+   "7)" "Info & Troubleshoot" \
+   "8)" "Backup & Restore" \
+   "9)" "PlexGuide: Update (Check ChangeLog)" \
+   "10)" "PlexGuide: UnInstall" \
+   "11)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -75,7 +76,7 @@ case $CHOICE in
 
    "5)")
         clear
-        bash /opt/plexguide/scripts/menus/bench-menu.sh
+        bash /opt/plexguide/scripts/menus/vnc.sh
         ;;
 
    "6)")
@@ -85,21 +86,26 @@ case $CHOICE in
 
    "7)")
        clear
-       bash /opt/plexguide/scripts/menus/back-restore-select.sh
+       bash /opt/plexguide/scripts/menus/help-select.sh
        ;;
 
    "8)")
+       clear
+       bash /opt/plexguide/scripts/menus/back-restore-select.sh
+       ;;
+
+   "9)")
        bash /opt/plexguide/scripts/docker-no/upgrade.sh
        clear
        echo Remember, restart by typing: plexguide
        exit 0;;
 
-   "9)")
+   "10)")
        clear
        bash /opt/plexguide/scripts/menus/uninstaller-main.sh
        ;;
 
-   "10)")
+   "11)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
