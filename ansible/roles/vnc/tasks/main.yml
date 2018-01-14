@@ -1,5 +1,9 @@
 ---
 
+- name: Warning [Press Enter]
+  pause:
+    prompt: "This should be used for temporary reason. Please destroy container when done!"
+
 - name: Remove VNC Container
   docker_container:
     name: VNC
@@ -38,4 +42,6 @@
     restart_policy: always
     state: started
 
-
+- name: Download VNC Software [Press Enter]
+  pause:
+    prompt: "Visit https://www.realvnc.com/download/viewer/ and read the Wiki - Use Port 20001"
