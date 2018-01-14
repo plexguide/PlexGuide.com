@@ -5,7 +5,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Service Status Menu" --menu "Make your choice" 16 34 10 \
+whiptail --title "Service Status Menu" --menu "Make your choice" 17 34 10 \
     "1)" "Unencrypted: PlexDrive4"   \
     "2)" "Encrypted: PlexDrive4"  \
     "3)" "Unencrypted: RClone"  \
