@@ -46,7 +46,7 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 - Next, Fork the Best Project Ever (because you want to make it better!)
 - Clone the Project: 
   - ```sudo git clone http://github.com/<username>/PlexGuide.com-The-Awesome-Plex-Server /opt/plexguide```
-  - Note: It will clone it in the location of /opt/plexguide
+  - **Note:** It will clone it in the location of /opt/plexguide
 - Develop a Featured Branch: ```sudo git checkout -b my-awesome-sauce-feature Version-5```
 - Commit Changes: ```sudo git commit -am 'My Cool Feature' ```
 - Push to the Branch: ```sudo git push origin my-new-feature ```
