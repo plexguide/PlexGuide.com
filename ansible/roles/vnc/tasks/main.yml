@@ -8,9 +8,9 @@
 - name: Password
   pause:
     prompt: "Create a Password for the VNC Player"
-  register: temp_password
+  register: vncpassword
 
-- debug: msg="Your Password is {{temp_password.stdout}}"
+- debug: msg="Your Password is {{vncpassword.stdout}}"
 
 - name: Deploy VNC Container
   docker_container:
@@ -23,7 +23,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VNC_PW: "{{temp_password}}"
+      VNC_PW: "{{vncpasswd}}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt:/mnt"
