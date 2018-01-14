@@ -2,7 +2,7 @@
 
 - name: Warning
   pause:
-    prompt: "This should be used for temporary reasons. Destroy the Container when finished [Press Enter]"
+    prompt: "Only use for temp reasons. Destroy container when finished [Press Enter]"
 
 - name: Remove VNC Container
   docker_container:
@@ -44,4 +44,4 @@
 
 - name: Download VNC Software
   pause:
-    prompt: "Visit https://www.realvnc.com/download/viewer/ and read the Wiki - Port 20001 [Press Enter]"
+    prompt: "Visit https://realvnc.com/download/viewer/ and read the Wiki [Press Enter]"

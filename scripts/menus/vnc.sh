@@ -11,8 +11,8 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "VNC Server" --menu "Make your choice" 10 37 3 \
-    "1)" "VNC Server Container: Create"   \
-    "2)" "VNC Server Container: Destory"   \
+    "1)" "VNC Server Container: Create"  \
+    "2)" "VNC Server Container: Destory" \
     "3)" "Exit  "  3>&2 2>&1 1>&3
 )
  
@@ -20,14 +20,14 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags vnc
-    echo "Access VNC Via IP:     http://$ipv4:8686"
-    echo "Acesss VNC Via Domain: http://$domain:8686"
+    echo "Access VNC Via IP:     http://$ipv4:20001"
+    echo "Acesss VNC Via Domain: http://$domain:20001"
     echo ""
     touch /var/plexguide/vnc.yes 1>/dev/null 2>&1
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
-    "2")
+    "2)")
     docker stop VNC
     docker rm VNC
     echo ""
