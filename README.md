@@ -41,8 +41,8 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
-### Contribute to PlexGuide Project
-- First, Click the ##Star## in the upper right to promte the project!
+### Contribute to the PlexGuide Project
+- First, click the **Star** in the upper right to promte the project!
 - Next, Fork the Best Project Ever (because you want to make it better!)
 - Clone the Project: 
   - ```sudo git clone http://github.com/<username>/PlexGuide.com-The-Awesome-Plex-Server /opt/plexguide```
