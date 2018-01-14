@@ -8,7 +8,7 @@
 - name: Deploy x2Go Container
   docker_container:
     name: x2go
-    image: docker pull consol/ubuntu-xfce-vnc
+    image: consol/ubuntu-xfce-vnc
     pull: yes
     cpu_shares: 256
     published_ports:
