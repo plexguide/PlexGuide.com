@@ -8,11 +8,12 @@
 - name: Deploy x2Go Container
   docker_container:
     name: x2go
-    image: paimpozhil/docker-x2go-xubuntu
+    image: docker pull consol/ubuntu-xfce-vnc
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "2222:22"
+      - "5901:5901"
+      - "6901:6901"
     env:
       PUID: "1000"
       PGID: "1000"
