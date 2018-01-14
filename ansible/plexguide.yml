@@ -42,4 +42,4 @@
   - { role: var, tags: ['var'] }
   - { role: revokessl, tags: ['revokessl'] }
   - { role: wordpress, tags: ['wordpress'] }
-  - { role: x2go, tags: ['x2go'] }
+  - { role: vnc, tags: ['vnc'] }
