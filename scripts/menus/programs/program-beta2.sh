@@ -5,7 +5,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Media Choice" --menu "Make your choice" 10 50 3 \
+whiptail --title "Beta Menu" --menu "Make your choice" 10 50 3 \
     "1)" "VPN Torrent"   \
     "2)" "DO NOT USE - Swap files round for testing"   \
     "3)" "Exit  "  3>&2 2>&1 1>&3
