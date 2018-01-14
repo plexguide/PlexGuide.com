@@ -14,7 +14,7 @@ whiptail --title "Service Status Menu" --menu "Make your choice" 17 34 10 \
     "6)" "Encrypted: UnionFS"  \
     "7)" "Unencrypted: Move"  \
     "8)" "Encrypted: Move"  \
-    "9)" "Restart Menu"
+    "9)" "Restart Menu"   \
     "10)" "Exit  "  3>&2 2>&1 1>&3
 )
 
