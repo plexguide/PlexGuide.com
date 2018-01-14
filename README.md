@@ -19,7 +19,7 @@ This is a community driven project. You can spot errors, update the wiki, contri
 Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
 
 ### PlexGuide - Version 5 - Coded By:
-- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne) 
+- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq), [The Creator](https://github.com/TheCreatorzOne) & [Budman17r](https://github.com/Budman17r)
 
 ### Awesome Team Members, Advisors, Contributors & Beta Testers!
 - Augie, [AugusDogus](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [DesignGears](https://github.com/designgears), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
