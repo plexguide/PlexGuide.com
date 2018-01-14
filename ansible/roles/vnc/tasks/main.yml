@@ -29,6 +29,8 @@
       - "/mnt:/mnt"
       - "/opt:/opt"
       - "/tmp:/tmp"
+      - "/bin:/bin"
+      - "/headless/Desktop/mnt"
     networks:
       - name: plexguide
         aliases:
