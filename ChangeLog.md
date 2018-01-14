@@ -8,6 +8,7 @@ Current Changes will continued to be modifed as known.
 - Menu OverHaul
 - Automated WebTools (Thanks Bate for Writeup To Help)
 - DelugeVPN & rTorrentVPN are now in the Beta Testing menu
+- Adding VNC Docker Server Image for Temp Uses
 
 #### Changed
 - Forced Pre-Install Update
