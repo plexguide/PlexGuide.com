@@ -15,7 +15,7 @@
       - "443:443"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/nginx-proxy/dhparam.pem:/etc/nginx/dhparam/dhparam.pem"
+      - "/opt/appdata/nginx-proxy/dhparam:/etc/nginx/dhparam/"
       - "/opt/appdata/nginx-proxy:/etc/nginx/certs:ro"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
