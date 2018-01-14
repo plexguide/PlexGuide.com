@@ -10,7 +10,7 @@ bash /opt/plexguide/scripts/docker-no/user.sh
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 # Checking to see if VNC Container is Running
-file="/var/plexguide/var.yes"
+file="/var/plexguide/vnc.yes"
 if [ -e "$file" ]
 then
   clear
