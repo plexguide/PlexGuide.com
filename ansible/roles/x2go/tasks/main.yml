@@ -22,6 +22,7 @@
     volumes:
       - "/opt/appdata/x2go:/config"
       - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt:/mnt"
     networks:
       - name: plexguide
         aliases:
