@@ -10,11 +10,6 @@
     prompt: "Create a STRONG Password for the VNC Player - Make it Unique"
   register: vncpassword
 
-- name: Root
-  pause:
-    prompt: "Type 0 if you want to run VNC Container with Root | Press [Enter] to Not"
-  register: rootpref
-
 - debug: msg="Your Password is {{vncpassword.user_input}}"
 
 - name: Deploy VNC Container
@@ -25,7 +20,7 @@
     cpu_shares: 512
     published_ports:
       - "20001:5901"
-    user: "{{rootpref.user_input}}"
+    #user: 0 
     env:
       PUID: "1000"
       PGID: "1000"
@@ -36,6 +31,7 @@
       - "/opt:/opt"
       - "/tmp:/tmp"
       - "/mnt:/headless/Desktop/mnt:rw"
+      - "/opt/appdata/:/headless/Desktop/appdata:rw"
     networks:
       - name: plexguide
         aliases:
