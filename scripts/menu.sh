@@ -76,12 +76,12 @@ case $CHOICE in
 
    "5)")
         clear
-        bash /opt/plexguide/scripts/menus/vnc.sh
+        bash /opt/plexguide/scripts/menus/bench-menu.sh
         ;;
 
    "6)")
        clear
-       bash /opt/plexguide/scripts/menus/help-select.sh
+       bash /opt/plexguide/scripts/menus/vnc.sh
        ;;
 
    "7)")
