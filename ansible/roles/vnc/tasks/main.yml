@@ -30,6 +30,7 @@
       - "/opt:/opt"
       - "/tmp:/tmp"
       - "/bin:/bin"
+      - "/sbin:/sbin"
       - "/headless/Desktop/mnt"
     networks:
       - name: plexguide
