@@ -10,6 +10,8 @@
     prompt: "Create a Password for the VNC Player"
   register: temp_password
 
+- debug: msg="Your Password is {{temp_password.stdout}}"
+
 - name: Deploy VNC Container
   docker_container:
     name: VNC
