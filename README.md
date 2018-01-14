@@ -30,7 +30,7 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
 ### Important
-- **UBUNTU 16.04 & 17.04 Desktop Only!** NOT MADE TO WORK WITH SERVER!
+- **UBUNTU 16.04 & 17.04!**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
 
 ### Social
