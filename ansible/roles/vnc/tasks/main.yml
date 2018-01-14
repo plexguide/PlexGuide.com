@@ -20,7 +20,6 @@
     cpu_shares: 512
     published_ports:
       - "20001:5901"
-    #user: 0 
     env:
       PUID: "1000"
       PGID: "1000"
@@ -31,7 +30,6 @@
       - "/opt:/opt"
       - "/tmp:/tmp"
       - "/mnt:/headless/Desktop/mnt:rw"
-      - "/opt/appdata:/headless/Desktop/appdata:rw"
     networks:
       - name: plexguide
         aliases:
