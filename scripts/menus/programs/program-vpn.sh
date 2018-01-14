@@ -13,7 +13,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Install Menu" --menu "Make your choice" 11 50 4 \
+whiptail --title "Torrent VPN Menu" --menu "Make your choice" 11 50 4 \
     "1)" "First click here to setup var files"  \
     "2)" "RTorrentVPN"  \
     "3)" "DelugeVPN"  \

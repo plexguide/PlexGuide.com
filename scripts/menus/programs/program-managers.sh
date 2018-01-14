@@ -11,7 +11,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 11 25 5 \
+whiptail --title "Program Categories" --menu "Make your choice" 12 25 5 \
     "1)" "Lidarr"   \
     "2)" "Medusa"   \
     "3)" "Sonarr"   \
