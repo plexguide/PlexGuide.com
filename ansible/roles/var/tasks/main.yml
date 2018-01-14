@@ -35,10 +35,11 @@
     prompt: "Enter e-mail address - (must be valid in order to register SSL)"
   register: email_input
 
-- name: password
-  pause:
-    prompt: "Please create a Universal Password (.htaccess / Wordpress & etc)"
-  register: password_input
+#Not Need So Far
+#- name: password
+#  pause:
+#    prompt: "Please create a Universal Password (.htaccess / Wordpress & etc)"
+#  register: password_input
 
 ########## Info-Debug
 - debug: msg="Using following domain {{domain_input.user_input}}"
