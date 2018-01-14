@@ -7,7 +7,7 @@
 
 - name: Password
   pause:
-    prompt: "Create a Password"
+    prompt: "Create a Password for the VNC Player"
   register: temp_password
 
 - name: Deploy VNC Container
