@@ -9,6 +9,12 @@ bash /opt/plexguide/scripts/docker-no/user.sh
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
+# Checking to see if VNC Container is Running
+file="/var/plexguide/var.yes"
+if [ -e "$file" ]
+then
+whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy It!." 9 66
+fi
 
 file="/var/plexguide/dep32.yes"
 if [ -e "$file" ]
