@@ -31,7 +31,7 @@
       - "/opt:/opt"
       - "/tmp:/tmp"
       - "/mnt:/headless/Desktop/mnt:rw"
-      - "/opt/appdata/:/headless/Desktop/appdata:rw"
+      - "/opt/appdata:/headless/Desktop/appdata:rw"
     networks:
       - name: plexguide
         aliases:
