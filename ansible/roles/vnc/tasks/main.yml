@@ -10,10 +10,10 @@
     name: x2go
     image: consol/ubuntu-xfce-vnc
     pull: yes
-    cpu_shares: 256
+    cpu_shares: 512
     published_ports:
       - "20001:5901"
-      - "6901:6901"
+      - "20011:6901"
     env:
       PUID: "1000"
       PGID: "1000"
