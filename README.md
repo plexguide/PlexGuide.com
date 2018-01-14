@@ -89,6 +89,10 @@ sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/
 sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 ```
 
+#### (Optional) Kernal Upgrade for Ubuntu Operating System
+- Not Needed unless your system is just having problems
+- Visit https://www.tecmint.com/upgrade-kernel-in-ubuntu/
+
 **E. Set CPU Performance**
 - For Real Machine; useless on VPS or Virtual Machine. 
 - View the following screenshots on affects: [Performance Mode](https://imgur.com/a/bdHMg), [OnDemand Mode](https://imgur.com/a/hriFS), [Conservative Mode](https://imgur.com/a/ES9tw)
