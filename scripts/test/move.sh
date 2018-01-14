@@ -16,7 +16,7 @@ mv /opt/plexguide/scripts/menus/restore-menu2 /opt/plexguide/scripts/menus/resto
 
 
 ## For testing new service status and restart menus
-rm /opt/plexguide/scripts/menus/restart-menu.sh
-rm /opt/plexguide/scripts/menus/status-menu.sh
-mv /opt/plexguide/scripts/menus/restart-menu2.sh /opt/plexguide/scripts/menus/restart-menu.sh
-mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
+#rm /opt/plexguide/scripts/menus/restart-menu.sh
+#rm /opt/plexguide/scripts/menus/status-menu.sh
+#mv /opt/plexguide/scripts/menus/restart-menu2.sh /opt/plexguide/scripts/menus/restart-menu.sh
+#mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
