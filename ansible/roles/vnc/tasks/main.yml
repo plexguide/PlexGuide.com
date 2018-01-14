@@ -1,32 +1,37 @@
 ---
 
-- name: Remove x2Go Container
+- name: Remove VNC Container
   docker_container:
-    name: x2go
+    name: VNC
     state: absent
 
-- name: Deploy x2Go Container
+- name: Password
+  pause:
+    prompt: "Create a Password"
+  register: temp_password
+
+- name: Deploy VNC Container
   docker_container:
-    name: x2go
+    name: VNC
     image: consol/ubuntu-xfce-vnc
     pull: yes
     cpu_shares: 512
     published_ports:
       - "20001:5901"
-      - "20011:6901"
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "vnc.{{domain}}"
-      VIRTUAL_PORT: 5901
+      VNC_PW: "{{temp_password}}"
     volumes:
-      - "/opt/appdata/x2go:/config"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt:/mnt"
       - "/opt:/opt"
+      - "/tmp:/tmp"
     networks:
       - name: plexguide
         aliases:
-          - x2go
+          - VNC
     restart_policy: always
     state: started
+
+
