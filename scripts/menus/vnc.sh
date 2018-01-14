@@ -10,7 +10,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "VNC Server" --menu "Make your choice" 10 36 3 \
+whiptail --title "VNC Server" --menu "Make your choice" 10 38 3 \
     "1)" "VNC Server Container:  Create"   \
     "2)" "VNC Server Container:  Destory"   \
     "3)" "Exit  "  3>&2 2>&1 1>&3
