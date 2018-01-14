@@ -49,7 +49,7 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
   - **Note:** It will clone it in the location of /opt/plexguide
 - Develop a Featured Branch: ```sudo git checkout -b my-awesome-sauce-feature Version-5```
 - Commit Changes: ```sudo git commit -am 'My Cool Feature' ```
-- Push to the Branch: ```sudo git push origin my-new-feature ```
+- Push to the Branch: ```sudo git push origin my-awesome-sauce-feature```
 - Submit a Pull Request
 
 ----------------------------------------------------------------------
