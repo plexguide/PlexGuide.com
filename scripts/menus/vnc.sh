@@ -31,9 +31,11 @@ case $CHOICE in
 
     "2)")
     clear
+    echo "Please Wait"
     docker stop VNC 1>/dev/null 2>&1
     docker rm VNC 1>/dev/null 2>&1
-    whiptail --title "Container Destroyed" --msgbox "Container Destroyed" 8 66
+    whiptail --title "Container Destroyed" --msgbox "Container Destroyed" 8 40
+    clear
     rm -r /var/plexguide/vnc.yes 1>/dev/null 2>&1
      ;;
 
