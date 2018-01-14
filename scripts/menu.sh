@@ -15,7 +15,7 @@ if [ -e "$file" ]
 then
   clear
 else
-whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy It!." 9 66
+whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
 fi
 
 file="/var/plexguide/dep32.yes"
