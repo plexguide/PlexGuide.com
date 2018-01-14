@@ -7,6 +7,7 @@ Current Changes will continued to be modifed as known.
 - NZBHyra2 (Added By DesignGears)
 - Menu OverHaul
 - Automated WebTools (Thanks Bate for Writeup To Help)
+- DelugeVPN & rTorrentVPN are now in the Beta Testing menu
 
 #### Changed
 - Forced Pre-Install Update
@@ -29,13 +30,13 @@ Historical Documented Changes will be stored as below.
 #### Removed
 - None
 
-### [5.027] 
+### [5.027]
 #### Added
 - SSL Deployment
 - Version Update Control
 - Patch Management Depending on Version
 - Radio Menu for Advanced Benchmark Test
-- Lidarr to Beta (Thanks DesignGears) 
+- Lidarr to Beta (Thanks DesignGears)
 
 #### Changed
 - Fixed Restore Script; was an if instead of an fi
@@ -45,9 +46,9 @@ Historical Documented Changes will be stored as below.
 - Modifications to script to allow SSL
 
 #### Removed
-- Traefik 
+- Traefik
 
-### [5.026] 
+### [5.026]
 #### Added
 - Added Watchtower / Updates Containers
 
@@ -63,7 +64,7 @@ Historical Documented Changes will be stored as below.
 ### [5.025]
 #### Added
 - Add v2 DockerFix
-  - Reboots all containers 
+  - Reboots all containers
   - Ensures other containers see unionfs/plexdrive4 properly
 
 #### Changed
