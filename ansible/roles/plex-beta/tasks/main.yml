@@ -65,7 +65,7 @@
       LETSENCRYPT_EMAIL: "{{email}}"
       TOKEN: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
-    #network_mode: "host"
+    network_mode: "host"
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
@@ -75,10 +75,6 @@
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
       - "/etc/localtime:/etc/localtime:ro"
-    networks:
-      - name: plexguide
-        aliases:
-          - plexbeta
     cpu_shares: 1024
     restart_policy: always
     state: started
