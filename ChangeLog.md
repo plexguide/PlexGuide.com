@@ -12,6 +12,7 @@ Current Changes will continued to be modifed as known.
 
 #### Changed
 - Forced Pre-Install Update
+- Service Status & Restore menu style
 
 #### Removed
 - PlexGuide Network From Plex
