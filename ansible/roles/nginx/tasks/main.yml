@@ -16,7 +16,7 @@
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/appdata/nginx-proxy/dhparam/dhparam.pem:/etc/nginx/dhparam/dhparam.pem:rw"
-      - "/opt/appdata/nginx-proxy/dhparam/:/etc/nginx/dhparam:rw"
+      - "/opt/appdata/nginx-proxy/conf:/etc/nginx/conf.d/default.conf:rw"
       - "/opt/appdata/nginx-proxy:/etc/nginx/certs:ro"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
