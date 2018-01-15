@@ -24,8 +24,8 @@ logLevel = "ERROR"
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
-  certFile = "/certs/tls.crt"
-  keyFile = "/certs/tls.key"
+  certFile = "/opt/appdata/traefik/certs/tls.crt"
+  keyFile = "/opt/appdata/traefik/certs/tls.key"
 
 ################################################################
 # Docker configuration backend
@@ -42,7 +42,7 @@ exposedbydefault = true
 ################################################################
 [acme]
 email = "trashbot@icloud.com"
-storage = "/opt/appdata/traefik/ssl/acme.json"
+storage = "/acme.json"
 entryPoint = "https, http"
 #OnHostRule = true
 onDemand = true
