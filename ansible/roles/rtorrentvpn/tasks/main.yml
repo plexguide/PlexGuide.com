@@ -44,6 +44,7 @@
   shell: rm -r  /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
 
 ########## Remote Server selection
+
 - name: Choose Server
   pause:
     prompt: " \n
@@ -107,6 +108,7 @@
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: "yes"
       LAN_NETWORK: "{{lan}}/24"
+      HTTPS_METHOD: noredirect
       DEBUG: false
     volumes:
       - /opt/appdata/vpn/rtorrent/config:/config
