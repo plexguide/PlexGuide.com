@@ -7,14 +7,18 @@ address = ":8080"
 ################################################################
 # http and https redirect backend
 ################################################################
+defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
     [entryPoints.http.redirect]
-    entryPoint = "https"
+      entryPoint = "https"
   [entryPoints.https]
   address = ":443"
-  [entryPoints.https.tls]
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      CertFile = "/etc/ssl/traefik/traefik.cert.pem"
+      KeyFile = "/etc/ssl/traefik/traefik.key.pem"
 
 ################################################################
 # Docker configuration backend
