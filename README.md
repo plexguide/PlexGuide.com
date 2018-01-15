@@ -8,7 +8,7 @@
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
 ----------------------------------------------------------------------
 
-**Please see issues, poll of the community**
+**Please see issues; poll of the community**
 
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
