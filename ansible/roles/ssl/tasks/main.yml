@@ -12,6 +12,7 @@
     - /opt/appdata/traefik
     - /opt/appdata/traefik/ssl
     - /opt/appdata/traefik/log
+    - /opt/appdata/traefik/certs   
 
 #- name: create traefik network
 #  docker_network:
