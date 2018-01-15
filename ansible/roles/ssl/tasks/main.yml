@@ -106,11 +106,13 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/traefik/traefik.toml:/traefik.toml
-      - /opt/appdata/traefik/acme.json:/acme.json
-      #- /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
-#    networks:
-#      - name: "proxy"
+      #- /opt/appdata/traefik/traefik.toml:/traefik.toml
+      #- /opt/appdata/traefik/acme.json:/acme.json
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - /opt/appdata/traefik/acme.json:/etc/traefik/acme/acme.json
+    env:
+      PUID: "1000"
+      PGID: "1000"
     restart_policy: always
     state: started
 #  networks:
