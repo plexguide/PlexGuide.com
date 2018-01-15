@@ -45,9 +45,9 @@
       PGID: 1000
       VIRTUAL_HOST: "nzbget.{{domain}}"
       VIRTUAL_PORT: 6789
-      LETSENCRYPT_HOST: "nzbget.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
-      HTTPS_METHOD: noredirect
+      #LETSENCRYPT_HOST: "nzbget.{{domain}}"
+      #LETSENCRYPT_EMAIL: "{{email}}"
+      #HTTPS_METHOD: noredirect
     restart_policy: always
     networks:
       - name: plexguide

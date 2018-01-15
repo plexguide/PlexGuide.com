@@ -10,9 +10,9 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 10 27 3 \
+whiptail --title "Program Categories" --menu "Make your choice" 10 33 3 \
     "1)" "Portainer"   \
-    "2)" "NGINX-LetsEncrypt"   \
+    "2)" "Traefik Reverse Proxy"   \
     "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
@@ -28,7 +28,7 @@ case $CHOICE in
     ;;
 
     "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     ;;
