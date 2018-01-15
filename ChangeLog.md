@@ -3,13 +3,13 @@ Current Changes will continued to be modifed as known.
 
 ### [5.031] Actively Working
 #### Added
-- None
+- Traefik Reverse Proxy - Only http:// works... but works. https:// for it down the road.
 
 #### Changed
 - None
 
 #### Removed
-- None
+- NGINX-Proxy - It's the program; it crashes and loses track of everything!
 
 -------------------------------------------------------
 ## Past Changes
