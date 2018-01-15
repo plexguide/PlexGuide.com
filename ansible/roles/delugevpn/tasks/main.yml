@@ -64,6 +64,10 @@
     dest: "/opt/appdata/vpn/deluge/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
 
+########## Run iptable_mangle command
+- name: Making sure iptable is set
+  shell: /sbin/modprobe iptable_mangle
+
 ######### Remove previous containers
 - name: Remove Rtorrent Container
   docker_container:

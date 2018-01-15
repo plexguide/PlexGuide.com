@@ -63,6 +63,10 @@
     src: "{{server.user_input}}.ovpn"
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
+    
+########## Run iptable_mangle command
+- name: Making sure iptable is set
+  shell: /sbin/modprobe iptable_mangle
 
 ######### Remove previous containers
 - name: Remove DelugeVPN Container
