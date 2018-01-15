@@ -24,6 +24,8 @@ logLevel = "ERROR"
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
+  certFile = "/certs/tls.crt"
+  keyFile = "/certs/tls.key"
 
 ################################################################
 # Docker configuration backend
