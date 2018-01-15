@@ -10,9 +10,6 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/traefik
-    - /opt/appdata/traefik/ssl
-    - /opt/appdata/traefik/log
-    - /opt/appdata/traefik/certs   
 
 #- name: create traefik network
 #  docker_network:
@@ -40,26 +37,26 @@
   when: config.stat.exists == False
 
 ########## Create log files
-- name: Creating Traefik log-prerequisites
-  template:
-    src: traefik.log
-    dest: /opt/appdata/traefik/log/traefik.log
-    force: yes
-  when: log.stat.exists == False
+#- name: Creating Traefik log-prerequisites
+#  template:
+#    src: traefik.log
+#    dest: /opt/appdata/traefik/log/traefik.log
+#    force: yes
+#  when: log.stat.exists == False
 
 ########## Check if Traefik SSL config file exists and register
-- name: Check if SSL prerequisites exist
-  stat:
-    path: "/opt/appdata/traefik/ssl/acme.json"
-  register: ssl_config
+#- name: Check if SSL prerequisites exist
+#  stat:
+#    path: "/opt/appdata/traefik/ssl/acme.json"
+#  register: ssl_config
 
 ########## Copy Traefik SSL config file
-- name: Installing SSL prerequisites
-  template:
-    src: acme.json
-    dest: /opt/appdata/traefik/ssl/acme.json
-    force: yes
-  when: ssl_config.stat.exists == False
+#- name: Installing SSL prerequisites
+#  template:
+#    src: acme.json
+#    dest: /opt/appdata/traefik/ssl/acme.json
+#    force: yes
+#  when: ssl_config.stat.exists == False
 
 ########## Ask user for e-mail & domain
 #- name: domain
@@ -110,7 +107,7 @@
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik/traefik.toml:/traefik.toml
-      - /opt/appdata/traefik/ssl/acme.json:/acme.json
+      - /opt/appdata/traefik/acme.json:/acme.json
       #- /opt/appdata/traefik/ssl/acme.json:/etc/traefik/acme/acme.json
 #    networks:
 #      - name: "proxy"
