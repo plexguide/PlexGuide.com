@@ -123,16 +123,16 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot the Server!
 
-**H. (Optional) Setting Up Your Reverse Proxy**
+**H. (Optional) Setting Up Your Reverse Proxy (http:// only)**
 
 Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
 
  - [Configuring Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/SSL-Reverse-Proxy)
     - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
     - How To With a FreeNom Domain     : [FreeNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
-    - Note that https:// redirect is turned off.  So you have to type https:// (if it works)
-      - Due to issues at time with encryption issues
-      - Future, will setup and option to allow turning on or off of redirect
+    - Note that http works only (https:// working on)
+      - Update switches you to Traefik which works better
+      - NGINX-Proxy role left there if you ever want to tinker with it
 
 **I. Installing & Setting Up Support Programs**
 
