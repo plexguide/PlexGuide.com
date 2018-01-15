@@ -33,5 +33,5 @@ exposedbydefault = true
 email = "trashbot@icloud.com"
 storage = "/opt/appdata/traefik/acme.json"
 entryPoint = "https, http"
-#OnHostRule = true
+OnHostRule = true
 onDemand = true
