@@ -19,8 +19,10 @@
       PGID: "1000"
       VIRTUAL_HOST: "sonarr.{{domain}}"
       VIRTUAL_PORT: 8989
+      HTTPS_METHOD: noredirect
       LETSENCRYPT_HOST: "sonarr.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+
     networks:
       - name: plexguide
         aliases:
