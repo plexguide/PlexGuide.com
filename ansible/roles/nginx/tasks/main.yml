@@ -16,7 +16,7 @@
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/appdata/nginx-proxy/dhparam/dhparam.pem:/etc/nginx/dhparam/dhparam.pem:rw"
-      - "/opt/appdata/nginx-proxy/conf.d:/etc/nginx/conf.d/:rw"
+      - "/opt/appdata/nginx-proxy/conf.d:/etc/nginx/conf.d:rw"
       - "/opt/appdata/nginx-proxy:/etc/nginx/certs:ro"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/etc/nginx/vhost.d"
@@ -38,7 +38,6 @@
     pull: yes
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/nginx-proxy:/etc/nginx/certs:rw"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     volumes_from:
       - "nginx-proxy"
