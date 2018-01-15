@@ -23,7 +23,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
     echo "NetData: http://$ipv4:19999"
-    echo "For NGINX Proxy https://netdata.$domain"
+    #echo "For NGINX Proxy https://netdata.$domain"
     echo "For Subdomain http://$domain:19999"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -32,7 +32,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
     echo "Ombi: http://$ipv4:3579"
-    echo "For NGINX Proxy https://ombi.$domain"
+    #echo "For NGINX Proxy https://ombi.$domain"
     echo "For Subdomain http://$domain:3579"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -41,7 +41,7 @@ case $CHOICE in
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio
     echo "Resilio: http://$ipv4:8888"
-    echo "For NGINX Proxy https://resilio.$domain"
+    #echo "For NGINX Proxy https://resilio.$domain"
     echo "For Subdomain http://$domain:8888"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -50,7 +50,7 @@ case $CHOICE in
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
     echo "Tautulli: http://$ipv4:8181"
-    echo "For NGINX Proxy https://tautulli.$domain"
+    #echo "For NGINX Proxy https://tautulli.$domain"
     echo "For Subdomain http://$domain:8181"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "

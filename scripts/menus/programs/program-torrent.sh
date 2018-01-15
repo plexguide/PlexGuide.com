@@ -23,7 +23,7 @@ case $CHOICE in
      "1)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
       echo "RuTorrent: http://$ipv4:8999"
-      echo "For NGINX Proxy https://rutorrent.$domain"
+      #echo "For NGINX Proxy https://rutorrent.$domain"
       echo "For Subdomain http://$domain:8999"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
@@ -32,7 +32,7 @@ case $CHOICE in
      "2)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
       echo "Deluge: http://$ipv4:8112"
-      echo "For NGINX Proxy https://deluge.$domain"
+      #echo "For NGINX Proxy https://deluge.$domain"
       echo "For Subdomain http://$domain:8112"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
@@ -41,7 +41,7 @@ case $CHOICE in
      "3)")
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
       echo "Jackett: http://$ipv4:9117"
-      echo "For NGINX Proxy https://jackett.$domain"
+      #echo "For NGINX Proxy https://jackett.$domain"
       echo "For Subdomain http://$domain:9117"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
