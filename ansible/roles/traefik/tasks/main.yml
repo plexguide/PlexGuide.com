@@ -9,6 +9,11 @@
     name: nginx-proxy
     state: absent
 
+- name: Remove LetsEncrypt
+  docker_container:
+    name: letsencrypt
+    state: absent
+
 - name: Removing Prior Traefik.toml
   file:
     state: absent
