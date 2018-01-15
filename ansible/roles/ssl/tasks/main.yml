@@ -23,10 +23,10 @@
   register: config
 
 ########## Check if Traefik config exists and register
-- name: Check if Traefik log-prerequisites exist
-  stat:
-    path: "/opt/appdata/traefik/log/traefik.log"
-  register: log
+#- name: Check if Traefik log-prerequisites exist
+#  stat:
+#    path: "/opt/appdata/traefik/log/traefik.log"
+#  register: log
 
 ########## Copy Traefik config files
 - name: Installing Traefik prerequisites
