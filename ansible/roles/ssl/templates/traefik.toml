@@ -5,15 +5,6 @@
 address = ":8080"
 
 ################################################################
-# Debug Options and Values
-################################################################
-debug = true
-checkNewVersion = true
-traefikLogsFile = "/opt/appdata/traefik/log/traefik.log"
-logLevel = "ERROR"
-#defaultEntryPoints = ["https","http"]
-
-################################################################
 # http and https redirect backend
 ################################################################
 [entryPoints]
@@ -24,8 +15,6 @@ logLevel = "ERROR"
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
-  certFile = "/opt/appdata/traefik/certs/tls.crt"
-  keyFile = "/opt/appdata/traefik/certs/tls.key"
 
 ################################################################
 # Docker configuration backend
