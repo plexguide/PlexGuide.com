@@ -61,10 +61,10 @@
   when: ssl_config.stat.exists == False
 
 ########## Ask user for e-mail & domain
-- name: domain
-  pause:
-    prompt: "Enter your domain here"
-  register: domain_input
+#- name: domain
+#  pause:
+#    prompt: "Enter your domain here"
+#  register: domain_input
 
 #- name: email
 #  pause:
