@@ -65,7 +65,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 # Installs Portainer
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
 # Instlls Reverse Prox
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
 # Remove NGINX if it exists
 
 ############################################# Install a Post-Docker Fix ###################### START
@@ -90,7 +90,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep32.yes
+   touch /var/plexguide/dep33.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 
