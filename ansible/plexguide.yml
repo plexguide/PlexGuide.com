@@ -44,3 +44,4 @@
   - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
   - { role: ssl, tags: ['ssl'] }
+  - { role: traefik, tags: ['traefik'] }
