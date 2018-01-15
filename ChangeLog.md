@@ -1,7 +1,21 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.030] Actively Working
+### [5.031] Actively Working
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.030]
 #### Added
 - NGINX Line Fix
 - NZBHyra2 (Added By DesignGears)
@@ -9,6 +23,7 @@ Current Changes will continued to be modifed as known.
 - Automated WebTools (Thanks Bate for Writeup To Help)
 - DelugeVPN & rTorrentVPN are now in the Beta Testing menu
 - Adding VNC Docker Server Image for Temp Uses
+- Nonredirect tags (requires recreating container) useful if https:// doesn't load
 
 #### Changed
 - Forced Pre-Install Update
@@ -16,10 +31,6 @@ Current Changes will continued to be modifed as known.
 
 #### Removed
 - PlexGuide Network From Plex
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.028]
 #### Added
