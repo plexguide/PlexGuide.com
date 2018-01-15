@@ -35,7 +35,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
       echo "RTorrentVPN: http://$ipv4:3000"
       #echo "For NGINX Proxy https://rtorrentvpn.$domain"
-      echo "For Subdomain http://$domain:3000"
+      echo "For Domain http://$domain:3000"
       echo ""
       echo "Please set your own username & password!"
       echo ""
@@ -46,7 +46,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn
       echo "DelugeVPN: http://$ipv4:8112"
       #echo "For NGINX Proxy https://delugevpn.$domain"
-      echo "For Subdomain http://$domain:8112"
+      echo "For Domain http://$domain:8112"
       echo ""
       echo "Default password: deluge"
       echo ""

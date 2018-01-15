@@ -26,7 +26,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
     echo "PLEX: http://$ipv4:32400/web"
     #echo "For NGINX Proxy https://plex.$domain/web"
-    echo "For Subdomain http://$domain:32400/web"
+    echo "For Domain http://$domain:32400/web"
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
     whiptail --title "Installed Plex Public" --msgbox "The Stable Version Of Plex Has Been Installed! Read The Wiki!" 9 50
@@ -37,7 +37,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex-beta
     echo "PLEX: http://$ipv4:32400/web"
     #echo "For NGINX Proxy https://plex.$domain/web"
-    echo "For Subdomain http://$domain:32400/web"
+    echo "For Domain http://$domain:32400/web"
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
     whiptail --title "Installing Plex Beta" --msgbox "The Beta Version Of Plex Has Been Installed! Read The Wiki!" 9 50
