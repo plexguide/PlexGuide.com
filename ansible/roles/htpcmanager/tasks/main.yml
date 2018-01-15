@@ -20,6 +20,7 @@
       VIRTUAL_PORT: 8085
       LETSENCRYPT_HOST: "htpcmanager.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     volumes:
       - "/opt/appdata/htpcmanager:/config"
       - "/etc/localtime:/etc/localtime:ro"

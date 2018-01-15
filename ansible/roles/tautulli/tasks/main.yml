@@ -23,6 +23,7 @@
       VIRTUAL_PORT: 8181
       LETSENCRYPT_HOST: "tautulli.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     restart_policy: always
     networks:
       - name: plexguide

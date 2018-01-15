@@ -22,6 +22,7 @@
       VIRTUAL_PORT: 8112
       LETSENCRYPT_HOST: "deluge.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:

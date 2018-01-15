@@ -20,6 +20,7 @@
       VIRTUAL_PORT: 8888
       LETSENCRYPT_HOST: "resilio.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:

@@ -47,6 +47,7 @@
       VIRTUAL_PORT: 6789
       LETSENCRYPT_HOST: "nzbget.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     restart_policy: always
     networks:
       - name: plexguide

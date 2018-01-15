@@ -22,6 +22,7 @@
       VIRTUAL_PORT: 5075
       LETSENCRYPT_HOST: "nzbhydra.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     volumes:
       - "/opt/appdata/nzbhyra:/config"
       - "/etc/localtime:/etc/localtime:ro"

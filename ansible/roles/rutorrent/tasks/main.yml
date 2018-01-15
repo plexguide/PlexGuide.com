@@ -23,6 +23,7 @@
       VIRTUAL_PORT: 80
       LETSENCRYPT_HOST: "rutorrent.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/rutorrent/:/config
       - /mnt/rutorrents/downloads/incoming:/downloads

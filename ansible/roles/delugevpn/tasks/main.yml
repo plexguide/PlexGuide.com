@@ -116,6 +116,7 @@
       VPN_PROTOCOL: udp
       VPN_DEVICE_TYPE: tun
       LAN_NETWORK: "{{lan}}/24"
+      HTTPS_METHOD: noredirect
 # http://www.subnet-calculator.com/cidr.php to calculate CIDR address
     volumes:
       - /opt/appdata/vpn/deluge/config:/config

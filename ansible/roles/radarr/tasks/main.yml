@@ -21,6 +21,7 @@
       VIRTUAL_PORT: 7878
       LETSENCRYPT_HOST: "radarr.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:

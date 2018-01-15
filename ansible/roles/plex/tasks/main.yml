@@ -65,6 +65,7 @@
       VIRTUAL_PORT: 32400
       LETSENCRYPT_HOST: "plex.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     network_mode: "host"
     volumes:
       - "/tmp:/tmp"

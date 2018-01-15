@@ -21,6 +21,7 @@
       VIRTUAL_PORT: 8686
       LETSENCRYPT_HOST: "lidarr.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:

@@ -20,6 +20,7 @@
       VIRTUAL_PORT: 8096
       LETSENCRYPT_HOST: "emby.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config

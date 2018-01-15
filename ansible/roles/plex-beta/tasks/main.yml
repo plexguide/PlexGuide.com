@@ -59,6 +59,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
+      HTTPS_METHOD: noredirect
       VIRTUAL_HOST: "plex.{{domain}}"
       VIRTUAL_PORT: 32400
       LETSENCRYPT_HOST: "plex.{{domain}}"
