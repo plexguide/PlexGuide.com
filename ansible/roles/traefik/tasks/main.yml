@@ -1,5 +1,15 @@
 ---
-- name: Removing File Directories
+- name: Removing Old NGINX File Directory
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+
+- name: Remove NGINX Container
+  docker_container:
+    name: nginx-proxy
+    state: absent
+
+- name: Removing Prior Traefik.toml
   file:
     state: absent
     path: /opt/appdata/traefik/traefik.toml
