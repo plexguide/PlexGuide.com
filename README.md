@@ -148,10 +148,7 @@ Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netda
 
 ### Additional Thank You's (In Date Order)
 
-- [HTPCGuides.com](https://www.htpcguides.com) for providing the core foundation examples that enabled PlexGuide Version 1 - 3
-
-- [LinuxServerIO](https://www.linuxserver.io) For development of all of their containers along with core YML structure to provide guidance. 
-
-- [Tom472](https://github.com/tom472) from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
-
--  l3uddz & Desimanic from [Cloudbox](https://github.com/Cloudbox/Cloudbox) for the [Ansible](www.ansible.com) Inspiration and utilization of a few key scripts.
+- HTPCGuides.com for providing the core foundation examples that enabled PlexGuide Version 1 - 3
+- LinuxServerIO for development of all of their containers along with core YML structure to provide guidance. 
+- Tom472 from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
+- l3uddz & Desimanic from Cloudbox for the Ansible Inspiration and utilization of a few key scripts.
