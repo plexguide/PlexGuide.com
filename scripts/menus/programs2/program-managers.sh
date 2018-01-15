@@ -24,7 +24,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
     echo "Lidarr: http://$ipv4:8686"
-    echo "For Reverse Proxy https://lidarr.$domain"
+    #echo "For Reverse Proxy https://lidarr.$domain"
     echo "For Subdomain http://$domain:8686"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -33,7 +33,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
     echo "MEDUSA: http://$ipv4:8081"
-    echo "For Reverse Proxy https://medusa.$domain"
+    #echo "For Reverse Proxy https://medusa.$domain"
     echo "For Subdomain http://$domain:8081"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -51,7 +51,7 @@ case $CHOICE in
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
     echo "Radarr: http://$ipv4:7878"
-    echo "For Reverse Proxy https://radarr.$domain"
+    #echo "For Reverse Proxy https://radarr.$domain"
     echo "For Subdomain http://$domain:7878"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
