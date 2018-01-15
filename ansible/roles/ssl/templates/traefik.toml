@@ -31,7 +31,7 @@ exposedbydefault = true
 ################################################################
 [acme]
 email = "trashbot@icloud.com"
-storage = "acme.json"
+storage = "/opt/appdata/traefik/acme.json"
 entryPoint = "https, http"
 #OnHostRule = true
 onDemand = true
