@@ -66,27 +66,27 @@
     prompt: "Enter your domain here"
   register: domain_input
 
-- name: email
-  pause:
-    prompt: "Enter your e-mail address here (must be valid in order to register SSL)"
-  register: email_input
+#- name: email
+#  pause:
+#    prompt: "Enter your e-mail address here (must be valid in order to register SSL)"
+#  register: email_input
 
 ########## Info-Debug
-- debug: msg="Using following domain {{domain_input.user_input}}"
-- debug: msg="Using following e-mail {{email_input.user_input}}"
+#- debug: msg="Using following domain {{domain_input.user_input}}"
+#- debug: msg="Using following e-mail {{email_input.user_input}}"
 
 ########## Replace template domain and email with the user input
-- name: Replace yourdomain.com with user input
-  replace:
-    path: /opt/appdata/traefik/traefik.toml
-    regexp: yourdomain.com
-    replace: "{{domain_input.user_input}}"
+#- name: Replace yourdomain.com with user input
+#  replace:
+#    path: /opt/appdata/traefik/traefik.toml
+#    regexp: yourdomain.com
+#    replace: "{{domain_input.user_input}}"
 
-- name: Replace your@email.com with user input
-  replace:
-    path: /opt/appdata/traefik/traefik.toml
-    regexp: your@email.com
-    replace: "{{email_input.user_input}}"
+#- name: Replace your@email.com with user input
+#  replace:
+#    path: /opt/appdata/traefik/traefik.toml
+#    regexp: your@email.com
+#    replace: "{{email_input.user_input}}"
 
 ########## Removes old Traefik container
 - name: Remove Traefik
@@ -104,7 +104,7 @@
     published_ports:
       - "80:80"
       - "8080:8080"
-#      - "443:443"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/localtime:/etc/localtime:ro
