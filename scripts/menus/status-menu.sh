@@ -1,63 +1,26 @@
-#!/bin/bash
-# A menu driven shell script sample template
-## ----------------------------------
-# Step #1: Define variables
-# ----------------------------------
-EDITOR=vim
-PASSWD=/etc/passwd
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
-
-# ----------------------------------
-# Step #2: User defined function
-# ----------------------------------
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
-
-one(){
-	echo "one() called"
-        pause
-}
-
-# do something in two()
-two(){
-	echo "two() called"
-        pause
-}
-
-# function to display menus
-show_menus() {
+ #!/bin/bash
 
 clear
-cat << EOF
-Plexdrive Test - Can use both for Encrypted ********************************
-1. Plexdrive4           :   View status of the Plexdrive4 service
-2. Plexdrive4-Encrypt   :   View status of the Plexdrive4 Encrypted service
 
-RClone Tests - Can use both for Encrypted **********************************
-3. RClone               :   View status of the RClone Unencrypted service
-4. RClone-Encrypt       :   View status of the RClone Encrypted service
+while [ 1 ]
+do
+CHOICE=$(
+whiptail --title "Service Status Menu" --menu "Make your choice" 17 34 10 \
+    "1)" "Unencrypted: PlexDrive4"   \
+    "2)" "Encrypted: PlexDrive4"  \
+    "3)" "Unencrypted: RClone"  \
+    "4)" "Encrypted: RClone"  \
+    "5)" "Unencrypted: UnionFS"  \
+    "6)" "Encrypted: UnionFS"  \
+    "7)" "Unencrypted: Move"  \
+    "8)" "Encrypted: Move"  \
+    "9)" "Restart Menu"   \
+    "10)" "Exit  "  3>&2 2>&1 1>&3
+)
 
-UnionFS Tests - Only use 1 *************************************************
-5. UnionFS              :   View status of the Unencrypted service
-6. UnionFS-Encrypt      :   View status of the Encrypted service
-
-Move Tests - Only use 1 ****************************************************
-7. Move                 :   View status of the Unencrypted SYNC service
-8. Move-Encrypt         :   View status of the Encrypted SYNC service
-
-Restart Services - For any issues found above ******************************
-9. Restart Menu         :   Here you can restart the services that need it!
-
-EOF
-}
-
-read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 10 ];  Type [10] to Exit! " choice
-	case $choice in
-    1)
+result=$(whoami)
+case $CHOICE in
+    "1)")
       ## create log file if does not exist
       if [ -e "/opt/plexguide/plexdrive4.log" ]
       then
@@ -75,25 +38,27 @@ read_options(){
       echo
       read -n 1 -s -r -p "Press any key to continue "
       ;;
-      2)
-        ## create log file if does not exist
-        if [ -e "/opt/plexguide/rclone-en.log" ]
-        then
-          echo "Log exists"
-        else
-          touch /opt/plexguide/rclone.log
-        fi
 
-        ## obtains rclone-en.service info and puts into a log to be displayed to the user
-        clear
-        systemctl status rclone-en > /opt/plexguide/rclone-en.log
-        cat /opt/plexguide/rclone-en.log
-        echo
-        echo "*** View the Log ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        ;;
-  	3)
+    "2)")
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/rclone-en.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/rclone.log
+      fi
+
+      ## obtains rclone-en.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status rclone-en > /opt/plexguide/rclone-en.log
+      cat /opt/plexguide/rclone-en.log
+      echo
+      echo "*** View the Log ***"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+    "3)")
       ## create log file if does not exist
       if [ -e "/opt/plexguide/rclone.log" ]
       then
@@ -112,7 +77,8 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
       ;;
-  	4)
+
+    "4)")
       ## create log file if does not exist
       if [ -e "/opt/plexguide/rclone-encrypt.log" ]
       then
@@ -131,27 +97,28 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
   		;;
-      5)
-        ## create log file if does not exist
-        if [ -e "/opt/plexguide/unionfs.log" ]
-        then
-          echo "Log exists"
-        else
-          touch /opt/plexguide/unionfs.log
-        fi
 
-        ## obtains unionfs.service info and puts into a log to be displayed to the user
-        clear
-        systemctl status unionfs > /opt/plexguide/unionfs.log
-        cat /opt/plexguide/unionfs.log
-        echo
-        echo "*** View the Log ***"
-        echo
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
-    		;;
+    "5)")
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/unionfs.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/unionfs.log
+      fi
 
-    6)
+      ## obtains unionfs.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status unionfs > /opt/plexguide/unionfs.log
+      cat /opt/plexguide/unionfs.log
+      echo
+      echo "*** View the Log ***"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      clear
+      ;;
+
+    "6)")
       ## create log file if does not exist
       if [ -e "/opt/plexguide/unionfs-encrypt.log" ]
       then
@@ -170,69 +137,62 @@ read_options(){
       read -n 1 -s -r -p "Press any key to continue "
       clear
       ;;
-        7)
-          ## create log file if does not exist
-          if [ -e "/opt/plexguide/move.log" ]
-          then
-            echo "Log exists"
-          else
-            touch /opt/plexguide/move.log
-          fi
 
-          ## obtains move.service info and puts into a log to be displayed to the user
-          clear
-          systemctl status move > /opt/plexguide/move.log
-          cat /opt/plexguide/move.log
-          echo
-          echo "*** View the Log ***"
-          echo "Remember, there is a sleep function of 30 minutes after done"
-          echo "If you have tons of stuff downloaded, you should see some activity"
-          echo
-        read -n 1 -s -r -p "Press any key to continue "
+    "7)")
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/move.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/move.log
+      fi
+
+      ## obtains move.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status move > /opt/plexguide/move.log
+      cat /opt/plexguide/move.log
+      echo
+      echo "*** View the Log ***"
+      echo "Remember, there is a sleep function of 30 minutes after done"
+      echo "If you have tons of stuff downloaded, you should see some activity"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      clear
+      ;;
+
+    "8)")
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/move-en.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/move-en.log
+      fi
+
+      ## obtains move-en.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status move-en > /opt/plexguide/move-en.log
+      cat /opt/plexguide/move-en.log
+      echo
+      echo "*** View the Log ***"
+      echo "Remember, there is a sleep function of 30 minutes after done"
+      echo "If you have tons of stuff downloaded, you should see some activity"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      clear
+      ;;
+
+    "9)")
+        clear
+        bash /opt/plexguide/scripts/menus/restart-menu.sh
         clear
         ;;
-        8)
-          ## create log file if does not exist
-          if [ -e "/opt/plexguide/move-en.log" ]
-          then
-            echo "Log exists"
-          else
-            touch /opt/plexguide/move-en.log
-          fi
 
-          ## obtains move-en.service info and puts into a log to be displayed to the user
-          clear
-          systemctl status move-en > /opt/plexguide/move-en.log
-          cat /opt/plexguide/move-en.log
-          echo
-          echo "*** View the Log ***"
-          echo "Remember, there is a sleep function of 30 minutes after done"
-          echo "If you have tons of stuff downloaded, you should see some activity"
-          echo
-          read -n 1 -s -r -p "Press any key to continue "
-          clear
-          ;;
-        9)
-          clear
-          bash /opt/plexguide/scripts/menus/restart-menu.sh
-          ;;
-        10)
-      exit 0;;
-		*) echo -e "${RED}Error...${STD}" && sleep 2
-	esac
-}
 
-# ----------------------------------------------
-# Step #3: Trap CTRL+C, CTRL+Z and quit singles
-# ----------------------------------------------
-trap '' SIGINT SIGQUIT SIGTSTP
-
-# -----------------------------------
-# Step #4: Main logic - infinite loop
-# ------------------------------------
-while true
-do
-
-	show_menus
-	read_options
+     "10)")
+      clear
+      exit 0
+      ;;
+esac
 done
+exit
