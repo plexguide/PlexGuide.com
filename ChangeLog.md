@@ -4,7 +4,7 @@ Current Changes will continued to be modifed as known.
 ### [5.031] Actively Working
 #### Added
 - Traefik Reverse Proxy - Only http:// works... but works. https:// for it down the road.
-- Added missing Emby ports to container
+- Added labels to Plex and Emby so Traefik binds with the correct ports
 
 #### Changed
 - Swapped Proxy https:// for Subdomain http:// in program menus

@@ -66,6 +66,8 @@
       LETSENCRYPT_HOST: "plex.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
+    labels:
+      traefik.port: "32400"
     network_mode: "host"
     volumes:
       - "/tmp:/tmp"
