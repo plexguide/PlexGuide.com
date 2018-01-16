@@ -1,0 +1,40 @@
+---
+
+- name: Remove Emby Container
+  docker_container:
+    name: emby
+    state: absent
+
+- name: Deploy Emby Container
+  docker_container:
+    name: emby
+    image: emby/embyserver
+    pull: yes
+    cpu_shares: 1024
+    published_ports:
+      - "8096:8096"
+      - "7359:7359/udp"
+      - "1900:1900/udp"
+      - "8920:8920"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "emby.{{domain}}"
+      VIRTUAL_PORT: 8096
+      LETSENCRYPT_HOST: "emby.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+      HTTPS_METHOD: noredirect
+    labels:
+      traefik.port: 8096
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/embyserver:/config
+      - /mnt/plexdrive4/:/plexdrive4
+      - /mnt/unionfs:/unionfs
+      - /mnt/encrypt:/encrypt
+    networks:
+      - name: plexguide
+        aliases:
+          - emby
+    restart_policy: always
+    state: started
