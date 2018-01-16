@@ -66,8 +66,10 @@
       - "8080:8080"
       - "80:80"
       - "443:443"
+    env:
+      VIRTUAL_HOST: "traefik.{{domain}}"
+      VIRTUAL_PORT: 8080
     labels:
-      traefik.enable: true
       traefik.docker.network: "dockerplatform_default"
       traefik.port: "8080"
       traefik.frontend.rule: "Host:traefik.{{domain}}"

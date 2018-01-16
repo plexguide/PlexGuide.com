@@ -4,10 +4,11 @@
 [web]
 address = ":8080"
 
-
 ################################################################
 # Entry-points configuration
 ################################################################
+[api]
+
 [entryPoints]
   [entryPoints.http]
     address = ":80"
@@ -21,6 +22,7 @@ address = ":8080"
 # Docker configuration backend
 ################################################################
 [docker]
+endpoint = "unix:///var/run/docker.sock"
 domain = "yourdomain.com"
 watch = true
 exposedbydefault = false
@@ -30,7 +32,13 @@ exposedbydefault = false
 ################################################################
 [acme]
 email = "user@gmail.com"
-storageFile = "/etc/traefik/acme.json"
+storageFile = "/etc/traefik/acme/acme.json"
+entryPoint = "https"
+[acme.httpChallenge]
+    entryPoint = "http"
 onDemand = false
 onHostRule = true
-entryPoint = "https"
+
+[[acme.domains]]
+main = "yourdomain.com"
+sans = "*.yourdomain.com"
