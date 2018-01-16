@@ -36,8 +36,9 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
 
 ### Social
+- [PlexGuide VBulletin Forums](https://forums.plexguide.com)
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
-- Reddit Discussion Link: http://reddit.plexguide.com
+- [Reddit Discussion Link](http://reddit.plexguide.com)
 
 ### Want to Donate? Everybit Helps!
 
