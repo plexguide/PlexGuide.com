@@ -25,7 +25,10 @@
       LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     labels:
-      traefik.port: 8096
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=dockerplatform_default'
+      - 'traefik.port=8096'
+      - 'traefik.frontend.rule=Host:emby.{{domain}}'
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config
