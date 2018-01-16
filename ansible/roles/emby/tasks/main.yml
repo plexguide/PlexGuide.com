@@ -13,6 +13,9 @@
     cpu_shares: 1024
     published_ports:
       - "8096:8096"
+      - "7359:7359/udp"
+      - "1900:1900/udp"
+      - "8920:8920"
     env:
       PUID: "1000"
       PGID: "1000"
