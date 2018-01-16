@@ -38,7 +38,6 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 ### Social
 - [PlexGuide VBulletin Forums](https://forums.plexguide.com)
 - [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
-- [Reddit Discussion Link](http://reddit.plexguide.com)
 
 ### Want to Donate? Everybit Helps!
 
@@ -145,9 +144,7 @@ Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netda
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
 **J. Final Notes**
-- See issues or have solutions? Please post your [GitHub Issues for the Best Tracking](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) or our [REDDIT](http://reddit.plexguide.com).
-- Please visit: https://www.reddit.com/r/PleX/ for additonal support and information!
-- Your Feedback Helps Us and You!
+- See issues or have solutions? Please visit us the [PlexGuide Forums](https://forums.plexguide.com)!
 
 ### Additional Thank You's (In Date Order)
 
