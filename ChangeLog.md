@@ -4,9 +4,11 @@ Current Changes will continued to be modifed as known.
 ### [5.031] Actively Working
 #### Added
 - Traefik Reverse Proxy - Only http:// works... but works. https:// for it down the road.
+- Added missing Emby ports to container
 
 #### Changed
-- None
+- Swapped Proxy https:// for Subdomain http:// in program menus
+- Moved NGINX-Proxy to Beta Testing menu for those that want to tinker
 
 #### Removed
 - NGINX-Proxy - It's the program; it crashes and loses track of everything!
