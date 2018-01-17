@@ -43,17 +43,20 @@
       VERSION: "stable"
       PUID: 1000
       PGID: 1000
-      VIRTUAL_HOST: "nzbget.{{domain}}"
-      VIRTUAL_PORT: 6789
-      #LETSENCRYPT_HOST: "nzbget.{{domain}}"
-      #LETSENCRYPT_EMAIL: "{{email}}"
-      #HTTPS_METHOD: noredirect
     restart_policy: always
+    purge_networks: yes
     networks:
       - name: plexguide
         aliases:
           - nzbget
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:nzbget.{{domain}}"
+      traefik.domain: nzbget.{{domain}}
+      traefik.backend: "nzbget"
+      traefik.port: "6789"
+      traefik.docker.network: "plexguide"
 
 - name: Path for .conf
   wait_for:
@@ -61,7 +64,7 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
-- name: "Wait 12 Seconds"
+- name: "Wait 10 Seconds"
   wait_for:
     timeout: 10
   when: nzbget_conf.stat.exists == False
