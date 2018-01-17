@@ -56,7 +56,7 @@
        "
   register: server
 
-- debug: msg="Using {{server.user_input}} Server"
+- debug: msg="Using server in {{server.user_input}} "
 
 - name: "Install {{server.user_input}} openvpn file"
   template:
