@@ -87,6 +87,10 @@
 
 - debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"
 
+#### subnet test
+- name: subnet
+  shell: /opt/plexguide/test/subnet
+
 ########## Replace template domain and email with the user input
 - name: Replace yourdomain.com with user input
   replace:
