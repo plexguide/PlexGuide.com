@@ -25,7 +25,8 @@ case $CHOICE in
 
      "1)")
      ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
-     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
+     bash  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var-vpn.yml > /opt/appdata/plexguide/var-vpn.sh
+#     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "

@@ -73,23 +73,23 @@
 
 - debug: msg="Your IPv4 Address is {{ip_address.stdout}}"
 
-- name: lan
-  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
-  register: lan_net
+#- name: lan
+#  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
+#  register: lan_net
 
-- name: Replace lan_net with stand output
-  replace:
-    path: /opt/appdata/plexguide/var-vpn.yml
-    regexp: lan_net
-    replace: "{{lan_net.stdout}}"
+#- name: Replace lan_net with stand output
+#  replace:
+#    path: /opt/appdata/plexguide/var-vpn.yml
+#    regexp: lan_net
+#    replace: "{{lan_net.stdout}}"
 
-- debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
+#- debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
 
-- debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"
+#- debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"
 
-#### subnet test
+#### Find CIDR via subnet 
 - name: subnet
-  shell: /opt/plexguide/test/subnet
+  shell: sudo bash /opt/plexguide/scripts/test/subnet
 
 ########## Replace template domain and email with the user input
 - name: Replace yourdomain.com with user input
