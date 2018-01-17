@@ -1,0 +1,42 @@
+---
+- name: Remove couchpotato Container
+  docker_container:
+    name: couchpotato
+    state: absent
+
+- name: Deploy CouchPotato Container
+  docker_container:
+    name: couchpotato
+    image: linuxserver/couchpotato
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "5050:5050"
+    env:
+      APP: couchpotato
+      VERSION: stable
+      PUID: "1000"
+      PGID: "1000"
+      VIRTUAL_HOST: "couchpotato.{{domain}}"
+      VIRTUAL_PORT: 5050
+      HTTPS_METHOD: noredirect
+      LETSENCRYPT_HOST: "couchpotato.{{domain}}"
+      LETSENCRYPT_EMAIL: "{{email}}"
+
+    networks:
+      - name: plexguide
+        aliases:
+          - CouchPotato
+    volumes:
+      - /opt/appdata/couchpotato:/config
+      - /mnt/unionfs/completed:/downloads:shared
+      - /mnt/unionfs:/unionfs
+      - /mnt/unionfs/movies:/movies
+      - /mnt/sab/complete:/complete
+      - /mnt/nzbget/completed:/completed
+      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /mnt/torrentvpn/downloaded:/tdownloads
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
