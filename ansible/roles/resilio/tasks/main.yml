@@ -16,10 +16,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "resilio.{{domain}}"
-      VIRTUAL_PORT: 8888
-      LETSENCRYPT_HOST: "resilio.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
@@ -31,3 +27,7 @@
       - /mnt:/sync
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:resilio.{{domain}}"
+      traefik.port: "8888"

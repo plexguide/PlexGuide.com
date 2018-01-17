@@ -38,10 +38,6 @@
       - /etc/localtime:/etc/localtime:ro
     cpu_shares: 256
     env:
-      VIRTUAL_HOST: "sabnzbd.{{domain}}"
-      VIRTUAL_PORT: 8080
-      LETSENCRYPT_HOST: "sabnzbd.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       PUID: 1000
       PGID: 1000
       HTTPS_METHOD: noredirect
@@ -51,6 +47,10 @@
       - name: plexguide
         aliases:
           - sabnzbd 
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:sabnzbd.{{domain}}"
+      traefik.port: "8080"
 
 - name: Path for .ini
   wait_for:

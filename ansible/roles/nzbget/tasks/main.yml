@@ -44,7 +44,6 @@
       PUID: 1000
       PGID: 1000
     restart_policy: always
-    purge_networks: yes
     networks:
       - name: plexguide
         aliases:
@@ -53,10 +52,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
-      traefik.domain: nzbget.{{domain}}
-      traefik.backend: "nzbget"
       traefik.port: "6789"
-      traefik.docker.network: "plexguide"
 
 - name: Path for .conf
   wait_for:

@@ -17,12 +17,7 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "sonarr.{{domain}}"
-      VIRTUAL_PORT: 8989
       HTTPS_METHOD: noredirect
-      LETSENCRYPT_HOST: "sonarr.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
-
     networks:
       - name: plexguide
         aliases:
@@ -37,3 +32,7 @@
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:sonarr.{{domain}}"
+      traefik.port: "8989"

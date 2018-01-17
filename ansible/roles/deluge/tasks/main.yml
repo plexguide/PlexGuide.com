@@ -18,15 +18,14 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "deluge.{{domain}}"
-      VIRTUAL_PORT: 8112
-      LETSENCRYPT_HOST: "deluge.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:
           - deluge
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:deluge.{{domain}}"
+      traefik.port: "8112"
     volumes:
       - /opt/appdata/deluge/config:/config
       - /mnt/deluge/temp:/temp

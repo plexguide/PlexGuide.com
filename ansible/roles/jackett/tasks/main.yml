@@ -17,10 +17,6 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "jackett.{{domain}}"
-      VIRTUAL_PORT: 9117
-      LETSENCRYPT_HOST: "jackett.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/jackett:/config
@@ -33,5 +29,9 @@
       - name: plexguide
         aliases:
           - emby
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:jackett.{{domain}}"
+      traefik.port: "9117"
     restart_policy: always
     state: started

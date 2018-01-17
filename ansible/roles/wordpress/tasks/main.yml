@@ -40,10 +40,6 @@
       APP: wordpress
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "{{domain}}"
-      VIRTUAL_PORT: 80
-      LETSENCRYPT_HOST: "{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       WORDPRESS_DB_PASSWORD: "{{password}}"
     networks:
       - name: plexguide
@@ -56,3 +52,7 @@
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:{{domain}}"
+      traefik.port: "80"

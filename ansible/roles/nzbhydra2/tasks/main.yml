@@ -16,10 +16,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "nzbhydra2.{{domain}}"
-      VIRTUAL_PORT: 5076
-      LETSENCRYPT_HOST: "nzbhydra2.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     volumes:
       - "/opt/appdata/nzbhyra2:/config"
@@ -30,3 +26,7 @@
         aliases:
           - nzbhydra2
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:nzbhydra2.{{domain}}"
+      traefik.port: "5076"

@@ -16,16 +16,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "emby.{{domain}}"
-      VIRTUAL_PORT: 8096
-      LETSENCRYPT_HOST: "emby.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
-    labels:
-#      traefik.enable: true
-      traefik.docker.network: "dockerplatform_default"
-      traefik.port: "8096"
-      traefik.frontend.rule: "Host:emby.{{domain}}"
     expose: 8096
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -37,5 +28,9 @@
       - name: plexguide
         aliases:
           - emby
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:emby.{{domain}}"
+      traefik.port: "8096"
     restart_policy: always
     state: started

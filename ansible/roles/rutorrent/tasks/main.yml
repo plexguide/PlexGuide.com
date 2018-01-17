@@ -35,3 +35,7 @@
         aliases:
           - rutorrent
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:rtorrent.{{domain}}"
+      traefik.port: "80"
