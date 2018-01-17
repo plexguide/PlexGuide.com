@@ -17,7 +17,7 @@
     name: "plexguide"
     state: present
 
-########## Copy Traefik config files
+########## Copy Var-VPN config files
 - name: Installing config prerequisites
   template:
     src: var-vpn.yml
@@ -41,11 +41,6 @@
 - debug: msg="Using following PIA username {{pia_user.user_input}}"
 - debug: msg="Using following PIA password {{pia_password.user_input}}"
 
-#### Find CIDR via subnet
-- name: subnet
-  shell: sudo bash /opt/plexguide/scripts/test/subnet
-  
-
 ############ Replace PIA VPN user info
 - name: Replace pia_user with user input
   replace:
@@ -58,3 +53,20 @@
     path: /opt/appdata/plexguide/var-vpn.yml
     regexp: pia_password
     replace: "{{pia_password.user_input}}"
+
+#### Get IPv4 info
+- name: ipv4
+  shell: "hostname -I | awk '{print $1}'"
+  register: ip_address
+
+- name: Replace ipv4 with stand output
+  replace:
+    path: /opt/appdata/plexguide/var.yml
+    regexp: ip_address
+    replace: "{{ip_address.stdout}}"
+
+- debug: msg="Your IPv4 Address is {{ip_address.stdout}}"
+
+#### Find CIDR via subnet
+- name: subnet
+  shell: sudo bash /opt/plexguide/scripts/test/subnet

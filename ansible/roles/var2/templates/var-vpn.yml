@@ -4,3 +4,4 @@
   claim_token: pms_token
   vpnuser: pia_user
   vpnpassword: pia_password
+  ipv4: ip_address
