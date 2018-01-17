@@ -119,9 +119,8 @@
       VPN_PORT: 1198
       VPN_PROTOCOL: udp
       VPN_DEVICE_TYPE: tun
-      LAN_NETWORK: "{{lan}}/24"
+      LAN_NETWORK: "{{subnet}}"
       HTTPS_METHOD: noredirect
-# http://www.subnet-calculator.com/cidr.php to calculate CIDR address
     volumes:
       - /opt/appdata/vpn/deluge/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete

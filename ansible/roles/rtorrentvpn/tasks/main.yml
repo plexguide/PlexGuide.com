@@ -63,7 +63,7 @@
     src: "{{server.user_input}}.ovpn"
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
-    
+
 ########## Run iptable_mangle command
 - name: Making sure iptable is set
   shell: /sbin/modprobe iptable_mangle
@@ -111,7 +111,7 @@
       ENABLE_PRIVOXY: "yes"
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: "yes"
-      LAN_NETWORK: "{{lan}}/24"
+      LAN_NETWORK: "{{subnet}}"
       HTTPS_METHOD: noredirect
       DEBUG: false
     volumes:

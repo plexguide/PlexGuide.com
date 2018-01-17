@@ -1,0 +1,7 @@
+---
+  
+  claim_token: pms_token
+  vpnuser: pia_user
+  vpnpassword: pia_password
+
+  storage: metadata
