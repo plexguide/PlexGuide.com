@@ -38,4 +38,4 @@ lannet=$(echo "$lannet/$cidr_bits") # Combine lannet and cidr
 
 
 echo "CIDR_ADDRESS=$lannet" >> /opt/appdata/plexguide/.env
-echo "lan2: $lan_net" >> /opt/appdata/plexguide/var-test
+echo "lan2: $lannet" >> /opt/appdata/plexguide/var-test
