@@ -21,5 +21,5 @@ mv /opt/plexguide/scripts/menus/restore-menu2 /opt/plexguide/scripts/menus/resto
 #mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
 
 ## For testing new var-vpn configs
-rm -r /opt/plexguide/ansible/roles/var-vpn
-mv /opt/plexguide/ansible/roles/var2 /opt/plexguide/ansible/roles/var-vpn
+#rm -r /opt/plexguide/ansible/roles/var-vpn
+#mv /opt/plexguide/ansible/roles/var2 /opt/plexguide/ansible/roles/var-vpn
