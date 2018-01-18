@@ -13,7 +13,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Torrent VPN Menu" --menu "Make your choice" 11 50 4 \
+whiptail --title "Torrent VPN Menu" --menu "Make your choice" 12 50 5 \
     "1)" "First click here to setup var files"  \
     "2)" "RTorrentVPN"  \
     "3)" "DelugeVPN"  \
@@ -49,15 +49,6 @@ case $CHOICE in
       echo "For Domain http://$domain:8112"
       echo ""
       echo "Default password: deluge"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
-
-     "4)")
-      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags couchpotato
-      echo "CouchPotato: http://$ipv4:5050"
-      echo "For Subdomain http://couchpotato.$domain"
-      echo "For Domain http://$domain:5050"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
