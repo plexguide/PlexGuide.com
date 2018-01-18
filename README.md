@@ -12,11 +12,9 @@ Visit the PlexGuide XeoForo Forum @ http://forums.plexguide.com
 
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
-#### What is PlexGuide? ###
+### What is PlexGuide? ###
 
-PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D
-
-This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
+PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
 #### PlexGuide - Version 5 - Dedicated Coders:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne)
@@ -29,24 +27,24 @@ This is a community driven project. You can spot errors, update the wiki, contri
 
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
-#### Important
+### Important
 - **UBUNTU 16.04 & 17.04!**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
 
 ### Programs ###
 Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
 
-#### Social Support
+### Social Support
 - [PlexGuide VBulletin Forums](https://forums.plexguide.com)
 
-#### Want to Donate? Everybit Helps!
+### Want to Donate? Everybit Helps!
 
 **Support US**: Purchase multiple crypto-curriencies via http://binance.plexguide.com - Purchase Stellar & Ripple! Value increased 4 times from late Dec 17 thru Jan 18!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
-#### Contribute to the PlexGuide Project
+### Contribute to the PlexGuide Project
 - First, click the **Star** in the upper right to promte the project!
 - Next, Fork the Best Project Ever (because you want to make it better!)
 - Clone the Project: 
