@@ -54,6 +54,15 @@ case $CHOICE in
       ;;
 
      "4)")
+      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags couchpotato
+      echo "CouchPotato: http://$ipv4:5050"
+      echo "For Subdomain http://couchpotato.$domain"
+      echo "For Domain http://$domain:5050"
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+     "5)")
       clear
       exit 0
       ;;
