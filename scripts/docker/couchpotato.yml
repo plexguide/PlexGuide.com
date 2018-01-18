@@ -8,7 +8,9 @@ services:
      - 5050:5050
    volumes:
      - /opt/appdata/couchpotato:/config
+     - /mnt/unionfs/completed:/downloads:shared
      - /:/yourcomputer
+     - /mnt/unionfs/movies:/movies
      - /mnt/unionfs:/unionfs
      - /etc/localtime:/etc/localtime:ro
    environment:

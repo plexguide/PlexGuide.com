@@ -2,32 +2,28 @@
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
 </p>
 
-Visit the PlexGuide VBulletin Forum @ http://forums.plexguide.com
+Visit the PlexGuide Forum @ http://forums.plexguide.com
 
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open") [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 
+[![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://forums.plexguide.com/index.php?categories/issues-bugs.7/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://forums.plexguide.com/index.php?categories/suggestions.8/)
 
-[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/discord-button.PNG?raw=true)](https://discord.gg/mg7bVnw)
 ----------------------------------------------------------------------
-
-**Please see issues; poll of the community**
 
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
 ### What is PlexGuide? ###
 
-PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D
+PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
-This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
+### PlexGuide - Version 5 - Dedicated Coders:
+- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne)
 
-### Programs ###
-Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
-
-### PlexGuide - Version 5 - Coded By:
-- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq), [The Creator](https://github.com/TheCreatorzOne) & [Budman17r](https://github.com/Budman17r)
+### Major Code Contributors
+- [DesignGears](https://github.com/designgears) & [Budman17r](https://github.com/Budman17r)
 
 ### Awesome Team Members, Advisors, Contributors & Beta Testers!
-- [Augie](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [DesignGears](https://github.com/designgears), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
+- [Augie](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
@@ -35,9 +31,11 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 - **UBUNTU 16.04 & 17.04!**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
 
-### Social
+### Programs ###
+Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
+
+### Social Support
 - [PlexGuide VBulletin Forums](https://forums.plexguide.com)
-- [PlexGuide Discord Channel](https://discord.gg/mg7bVnw) 
 
 ### Want to Donate? Everybit Helps!
 
@@ -62,8 +60,6 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/version24.png" alt="Demo"/>
 </p>
-
-[![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/issues) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](http://feathub.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server)
 
 ### Preparation, Installation & Configuration
 

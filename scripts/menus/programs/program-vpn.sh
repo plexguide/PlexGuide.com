@@ -4,7 +4,7 @@
  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var-vpn.yml > /opt/appdata/plexguide/var-vpn.sh
 
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var-vpn.sh)
+ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
  echo $ipv4
  echo $domain
 
@@ -13,7 +13,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Torrent VPN Menu" --menu "Make your choice" 11 50 4 \
+whiptail --title "Torrent VPN Menu" --menu "Make your choice" 12 50 5 \
     "1)" "First click here to setup var files"  \
     "2)" "RTorrentVPN"  \
     "3)" "DelugeVPN"  \
@@ -25,10 +25,10 @@ case $CHOICE in
 
      "1)")
      ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
-     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
+     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
      ;;
 
      "2)")
