@@ -10,8 +10,6 @@ Visit the PlexGuide XeoForo Forum @ http://forums.plexguide.com
 
 ----------------------------------------------------------------------
 
-**Please see issues; poll of the community**
-
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
 ### What is PlexGuide? ###
@@ -20,20 +18,23 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
-### Programs ###
-Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
+### PlexGuide - Version 5 - Dedicated Coders:
+- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne)
 
-### PlexGuide - Version 5 - Coded By:
-- [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq), [The Creator](https://github.com/TheCreatorzOne) & [Budman17r](https://github.com/Budman17r)
+### Major Code Contributors
+[DesignGears](https://github.com/designgears) & [Budman17r](https://github.com/Budman17r)
 
 ### Awesome Team Members, Advisors, Contributors & Beta Testers!
-- [Augie](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [DesignGears](https://github.com/designgears), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
+- [Augie](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
 
 ### Important
 - **UBUNTU 16.04 & 17.04!**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
+
+### Programs ###
+Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
 
 ### Social Support
 - [PlexGuide VBulletin Forums](https://forums.plexguide.com)
