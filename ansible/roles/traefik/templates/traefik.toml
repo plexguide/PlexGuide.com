@@ -86,7 +86,8 @@ sans = [
     "jackett.yourdomain.com",
     "emby.yourdomain.com",
     "deluge.yourdomain.com",
-    "delugevpn.yourdomain.com"
+    "delugevpn.yourdomain.com",
+    "ombi.yourdomain.com"
 ]
 
 # Enable Docker configuration backend
