@@ -29,7 +29,7 @@
           - CouchPotato
     volumes:
       - /opt/appdata/couchpotato:/config
-      - /mnt/unionfs/completed:/downloads:shared
+      - /mnt/unionfs/completed:/udownloads:shared
       - /mnt/unionfs:/unionfs
       - /mnt/unionfs/movies:/movies
       - /mnt/sab/complete:/complete
