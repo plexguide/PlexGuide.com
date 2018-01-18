@@ -16,13 +16,13 @@ Visit the PlexGuide XeoForo Forum @ http://forums.plexguide.com
 
 PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
-#### PlexGuide - Version 5 - Dedicated Coders:
+### PlexGuide - Version 5 - Dedicated Coders:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne)
 
-#### Major Code Contributors
-[DesignGears](https://github.com/designgears) & [Budman17r](https://github.com/Budman17r)
+### Major Code Contributors
+- [DesignGears](https://github.com/designgears) & [Budman17r](https://github.com/Budman17r)
 
-#### Awesome Team Members, Advisors, Contributors & Beta Testers!
+### Awesome Team Members, Advisors, Contributors & Beta Testers!
 - [Augie](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
 - See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
