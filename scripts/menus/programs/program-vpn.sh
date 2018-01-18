@@ -53,7 +53,7 @@ case $CHOICE in
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
-     "5)")
+     "4)")
       clear
       exit 0
       ;;
