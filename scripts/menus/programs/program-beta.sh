@@ -1,5 +1,10 @@
 #!/bin/bash
 
+ ## point to variable file for ipv4 and domain.com
+ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+ echo $ipv4
+ echo $domain
+ 
 clear
 
 while [ 1 ]
