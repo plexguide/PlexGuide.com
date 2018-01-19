@@ -9,7 +9,7 @@ clear
   cd rclone-*-linux-amd64
   cp rclone /usr/bin/ 1>/dev/null 2>&1
   chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
-  chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+  chmod 775 /usr/bin/rclone 1>/dev/null 2>&1
   mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
   mandb 1>/dev/null 2>&1
@@ -38,12 +38,12 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_en
 
 ## RClone Script
-chmod 755 /opt/appdata/plexguide/rclone.sh
-chmod 755 /opt/appdata/plexguide/rclone-en.sh
-chmod 755 /opt/appdata/plexguide/rclone-encrypt.sh
+chmod 775 /opt/appdata/plexguide/rclone.sh
+chmod 775 /opt/appdata/plexguide/rclone-en.sh
+chmod 775 /opt/appdata/plexguide/rclone-encrypt.sh
 
 ## Create the Move Script
-chmod 755 /opt/appdata/plexguide/move-en.sh
+chmod 775 /opt/appdata/plexguide/move-en.sh
 
 ###### Ensure Changes Are Reflected
 #sudo systemctl daemon-reload
