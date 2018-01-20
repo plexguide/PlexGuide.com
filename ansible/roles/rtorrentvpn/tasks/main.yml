@@ -4,7 +4,7 @@
 ##### /sbin/modprobe iptable_mangle
 
 - name: Create Basic directories for Torrents
-  file: "path={{item}} state=directory mode=0755 owner=1000 group=1000"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /mnt/torrentvpn
     - /mnt/torrentvpn/downloaded
@@ -13,7 +13,7 @@
     - /mnt/torrentvpn/.watched
 
 - name: Create Basic directories for rTorrentVPN
-  file: "path={{item}} state=directory mode=0755 owner=1000 group=1000"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/vpn
     - /opt/appdata/vpn/rtorrent
@@ -56,14 +56,14 @@
        "
   register: server
 
-- debug: msg="Using {{server.user_input}} Server"
+- debug: msg="Using server in {{server.user_input}} "
 
 - name: "Install {{server.user_input}} openvpn file"
   template:
     src: "{{server.user_input}}.ovpn"
     dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
     force: yes
-    
+
 ########## Run iptable_mangle command
 - name: Making sure iptable is set
   shell: /sbin/modprobe iptable_mangle
@@ -111,7 +111,7 @@
       ENABLE_PRIVOXY: "yes"
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: "yes"
-      LAN_NETWORK: "{{lan}}/24"
+      LAN_NETWORK: "{{subnet}}"
       HTTPS_METHOD: noredirect
       DEBUG: false
     volumes:

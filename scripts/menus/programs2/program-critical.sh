@@ -21,7 +21,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
     echo "Portainer: http://$ipv4:9000"
-    #echo "For Reverse Proxy https://portainer.$domain"
+    #echo "For Subdomain http://portainer.$domain"
     echo "For Domain http://$domain:9000"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "

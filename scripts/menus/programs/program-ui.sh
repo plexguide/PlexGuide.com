@@ -23,7 +23,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager
     echo "HTPCManager: http://$ipv4:8085"
-    #echo "For NGINX Proxy htpcmanager.$domain"
+    echo "For Subdomain http://htpcmanager.$domain"
     echo "For Domain http://$domain:8085"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -32,7 +32,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
     echo "Muximux: http://$ipv4:8015"
-    #echo "For NGINX Proxy https://muximux.$domain"
+    echo "For Subdomain http://muximux.$domain"
     echo "For Domain http://$domain:8015"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -41,7 +41,7 @@ case $CHOICE in
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
     echo "Organizr: http://$ipv4:8020"
-    #echo "For NGINX Proxy https://organizr.$domain"
+    echo "For Subdomain http://organizr.$domain"
     echo "For Domain http://$domain:8020"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "

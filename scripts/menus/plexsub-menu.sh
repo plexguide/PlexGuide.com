@@ -25,7 +25,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
     echo "PLEX: http://$ipv4:32400/web"
-    #echo "For NGINX Proxy https://plex.$domain/web"
+    echo "For Subdomain http://plex.$domain/web"
     echo "For Domain http://$domain:32400/web"
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
@@ -36,7 +36,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex-beta
     echo "PLEX: http://$ipv4:32400/web"
-    #echo "For NGINX Proxy https://plex.$domain/web"
+    echo "For Subdomain http://plex.$domain/web"
     echo "For Domain http://$domain:32400/web"
     echo ""
     read -n 1 -s -r -p "Press any key to continue"

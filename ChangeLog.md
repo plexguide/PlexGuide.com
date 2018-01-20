@@ -4,9 +4,13 @@ Current Changes will continued to be modifed as known.
 ### [5.031] Actively Working
 #### Added
 - Traefik Reverse Proxy - Only http:// works... but works. https:// for it down the road.
+- Added labels to Plex and Emby so Traefik binds with the correct ports
+- Added Troubleshooting Guide for Rclone & Plexdrive4 Services to the Wiki pages
 
 #### Changed
-- None
+- Swapped Proxy https:// for Subdomain http:// in program menus
+- Moved NGINX-Proxy to Beta Testing menu for those that want to tinker
+- Put a new way to grab your actually CIDR for use with Torrent VPN's - please re-run var setup from the Beta menu if you plan to reinstall either
 
 #### Removed
 - NGINX-Proxy - It's the program; it crashes and loses track of everything!

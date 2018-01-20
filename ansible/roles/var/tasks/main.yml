@@ -89,4 +89,3 @@
     replace: "{{lan_net.stdout}}"
 
 - debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
-- debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"

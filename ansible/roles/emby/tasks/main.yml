@@ -21,6 +21,10 @@
       LETSENCRYPT_HOST: "emby.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
+    labels:
+      traefik.port: "8096"
+    expose:
+      - 8096 
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config

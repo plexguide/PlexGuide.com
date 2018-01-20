@@ -17,28 +17,13 @@
     name: "plexguide"
     state: present
 
-########## Copy Traefik config files
+########## Copy Var-VPN config files
 - name: Installing config prerequisites
   template:
     src: var-vpn.yml
     dest: /opt/appdata/plexguide/var-vpn.yml
     force: yes
 
-########## Ask user for e-mail & domain
-- name: domain
-  pause:
-    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
-  register: domain_input
-
-- name: email
-  pause:
-    prompt: "Enter e-mail address - (must be valid in order to register SSL)"
-  register: email_input
-
-- name: password
-  pause:
-    prompt: "Please create a Universal Password (.htaccess / Wordpress & etc)"
-  register: password_input
 
 ############ Ask for PIA VPN user info
 - name: vpnuser
@@ -52,59 +37,9 @@
   register: pia_password
 
 ########## Info-Debug
-- debug: msg="Using following domain {{domain_input.user_input}}"
-- debug: msg="Using following e-mail {{email_input.user_input}}"
-- debug: msg="Using following password {{password_input.user_input}}"
 
 - debug: msg="Using following PIA username {{pia_user.user_input}}"
 - debug: msg="Using following PIA password {{pia_password.user_input}}"
-
-#### Get IPv4 and CIDR info
-- name: ipv4
-  shell: "hostname -I | awk '{print $1}'"
-  register: ip_address
-#  ipv4: {{ipv4.stdout}}
-
-- name: Replace ipv4 with stand output
-  replace:
-    path: /opt/appdata/plexguide/var-vpn.yml
-    regexp: ip_address
-    replace: "{{ip_address.stdout}}"
-
-- debug: msg="Your IPv4 Address is {{ip_address.stdout}}"
-
-- name: lan
-  shell: "hostname -I | awk '{print $1}' | sed 's/[0-9]*$/0/'"
-  register: lan_net
-
-- name: Replace lan_net with stand output
-  replace:
-    path: /opt/appdata/plexguide/var-vpn.yml
-    regexp: lan_net
-    replace: "{{lan_net.stdout}}"
-
-- debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
-
-- debug: msg="http://www.subnet-calculator.com/cidr.php to calculate CIDR address"
-
-########## Replace template domain and email with the user input
-- name: Replace yourdomain.com with user input
-  replace:
-    path: /opt/appdata/plexguide/var-vpn.yml
-    regexp: domain.com
-    replace: "{{domain_input.user_input}}"
-
-- name: Replace your@email.com with user input
-  replace:
-    path: /opt/appdata/plexguide/var-vpn.yml
-    regexp: user@gmail.com
-    replace: "{{email_input.user_input}}"
-
-- name: Replace password with user input
-  replace:
-    path: /opt/appdata/plexguide/var-vpn.yml
-    regexp: defaultpassword
-    replace: "{{password_input.user_input}}"
 
 ############ Replace PIA VPN user info
 - name: Replace pia_user with user input
@@ -118,3 +53,20 @@
     path: /opt/appdata/plexguide/var-vpn.yml
     regexp: pia_password
     replace: "{{pia_password.user_input}}"
+
+#### Get IPv4 info
+- name: ipv4
+  shell: "hostname -I | awk '{print $1}'"
+  register: ip_address
+
+- name: Replace ipv4 with stand output
+  replace:
+    path: /opt/appdata/plexguide/var-vpn.yml
+    regexp: ip_address
+    replace: "{{ip_address.stdout}}"
+
+- debug: msg="Your IPv4 Address is {{ip_address.stdout}}"
+
+#### Find CIDR via subnet
+- name: subnet
+  shell: sudo bash /opt/plexguide/scripts/test/subnet
