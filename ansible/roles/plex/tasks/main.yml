@@ -62,7 +62,12 @@
       CLAIM_TOKEN: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
       HTTPS_METHOD: noredirect
-    network_mode: "host"
+    networks:
+      - name: plexguide
+        aliases:
+          - plex
+    expose:
+      - 32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
