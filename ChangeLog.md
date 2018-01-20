@@ -11,6 +11,7 @@ Current Changes will continued to be modifed as known.
 - Swapped Proxy https:// for Subdomain http:// in program menus
 - Moved NGINX-Proxy to Beta Testing menu for those that want to tinker
 - Put a new way to grab your actually CIDR for use with Torrent VPN's - please re-run var setup from the Beta menu if you plan to reinstall either
+- (Thanks DesignGears) Expose plex properly!
 
 #### Removed
 - NGINX-Proxy - It's the program; it crashes and loses track of everything!
