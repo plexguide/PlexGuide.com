@@ -1,7 +1,21 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.031] Actively Working
+### [5.032] Actively Working
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.031]
 #### Added
 - Traefik Reverse Proxy - Only http:// works... but works. https:// for it down the road.
 - Added labels to Plex and Emby so Traefik binds with the correct ports
@@ -11,13 +25,12 @@ Current Changes will continued to be modifed as known.
 - Swapped Proxy https:// for Subdomain http:// in program menus
 - Moved NGINX-Proxy to Beta Testing menu for those that want to tinker
 - Put a new way to grab your actually CIDR for use with Torrent VPN's - please re-run var setup from the Beta menu if you plan to reinstall either
+- (Thanks DesignGears) Expose plex properly!
 
 #### Removed
 - NGINX-Proxy - It's the program; it crashes and loses track of everything!
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
+
 
 ### [5.030]
 #### Added
