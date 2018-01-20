@@ -21,7 +21,7 @@
     networks:
       - name: plexguide
         aliases:
-          - Radarr
+          - radarr
     volumes:
       - /opt/appdata/radarr:/config
       - /mnt/unionfs:/unionfs

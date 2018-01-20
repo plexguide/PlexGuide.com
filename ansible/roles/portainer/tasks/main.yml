@@ -27,7 +27,7 @@
     networks:
       - name: plexguide
         aliases:
-          - netdata
+          - portainer
     restart_policy: always
     state: started
     labels:

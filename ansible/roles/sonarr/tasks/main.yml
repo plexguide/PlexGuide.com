@@ -21,7 +21,7 @@
     networks:
       - name: plexguide
         aliases:
-          - Sonarr
+          - sonarr
     volumes:
       - /opt/appdata/sonarr:/config
       - /mnt/unionfs:/unionfs
