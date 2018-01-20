@@ -66,6 +66,10 @@
       LETSENCRYPT_HOST: "plex.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
+    labels:
+      traefik.port: "32400"
+      traefik.docker.network: dockerplatform_default
+      traefik.frontend.rule: "Host:plex.{{domain}}"
     networks:
       - name: plexguide
         aliases:
