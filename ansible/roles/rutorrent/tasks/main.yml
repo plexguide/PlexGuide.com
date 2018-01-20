@@ -20,7 +20,7 @@
       PUID: "1000"
       PGID: "1000"
       VIRTUAL_HOST: "rutorrent.{{domain}}"
-      VIRTUAL_PORT: 80
+      VIRTUAL_PORT: 8999
       LETSENCRYPT_HOST: "rutorrent.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
