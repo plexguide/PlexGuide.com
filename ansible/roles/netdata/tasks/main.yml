@@ -20,12 +20,12 @@
     env:
       PUID: 1000
       PGID: 1000
-      VIRTUAL_HOST: "netdata.{{domain}}"
-      VIRTUAL_PORT: 19999
-      LETSENCRYPT_HOST: "netdata.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
     networks:
       - name: plexguide
         aliases:
           - netdata
     restart_policy: always
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:netdata.{{domain}}"
+      traefik.port: "19999"

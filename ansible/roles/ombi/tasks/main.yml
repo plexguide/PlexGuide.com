@@ -16,10 +16,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "ombi.{{domain}}"
-      VIRTUAL_PORT: 3579
-      LETSENCRYPT_HOST: "ombi.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/ombiv3:/config
@@ -30,3 +26,7 @@
           - ombi
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:ombi.{{domain}}"
+      traefik.port: "3579"

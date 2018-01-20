@@ -16,10 +16,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "htpcmanager.{{domain}}"
-      VIRTUAL_PORT: 8085
-      LETSENCRYPT_HOST: "htpcmanager.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     volumes:
       - "/opt/appdata/htpcmanager:/config"
@@ -28,5 +24,9 @@
       - name: plexguide
         aliases:
           - htpcmanager
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:htpcmanager.{{domain}}"
+      traefik.port: "8085"
     restart_policy: always
     state: started

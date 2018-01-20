@@ -24,10 +24,6 @@
       - /mnt:/test
     cpu_shares: 256
     env:
-      VIRTUAL_HOST: "medusa.{{domain}}"
-      VIRTUAL_PORT: 8081
-      LETSENCRYPT_HOST: "medusa.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       PUID: 1000
       PGID: 1000
       HTTPS_METHOD: noredirect
@@ -37,3 +33,7 @@
           - medusa
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:medusa.{{domain}}"
+      traefik.port: "8081"

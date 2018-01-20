@@ -17,10 +17,6 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "radarr.{{domain}}"
-      VIRTUAL_PORT: 7878
-      LETSENCRYPT_HOST: "radarr.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
       HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
@@ -37,3 +33,7 @@
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:radarr.{{domain}}"
+      traefik.port: "7878"

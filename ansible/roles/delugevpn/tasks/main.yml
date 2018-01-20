@@ -102,10 +102,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "delugevpn.{{domain}}"
-      VIRTUAL_PORT: 8112
-      LETSENCRYPT_HOST: "delugevpn.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
 #      UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: "yes"
@@ -135,3 +131,7 @@
       - name: plexguide
         aliases:
           - delugevpn
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:delugevpn.{{domain}}"
+      traefik.port: "8112"
