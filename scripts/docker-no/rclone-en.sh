@@ -13,7 +13,7 @@ mkdir -p /mnt/encrypt
   cd rclone-*-linux-amd64
   cp rclone /usr/bin/ 1>/dev/null 2>&1
   chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
-  chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+  chmod 775 /usr/bin/rclone 1>/dev/null 2>&1
   mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
   mandb 1>/dev/null 2>&1
@@ -46,7 +46,7 @@ tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
 rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 EOF
-chmod 755 /opt/appdata/plexguide/rclone.sh
+chmod 775 /opt/appdata/plexguide/rclone.sh
 echo 2
 ## RClone Server
 tee "/etc/systemd/system/rclone.service" > /dev/null <<EOF
@@ -70,7 +70,7 @@ tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
 rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
 EOF
-chmod 755 /opt/appdata/plexguide/rclone-encrypt.sh
+chmod 775 /opt/appdata/plexguide/rclone-encrypt.sh
 
 ## RClone Server
 tee "/etc/systemd/system/rclone-encrypt.service" > /dev/null <<EOF
@@ -95,7 +95,7 @@ tee "/opt/appdata/plexguide/rclone-en.sh" > /dev/null <<EOF
 #!/bin/bash
 rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
 EOF
-chmod 755 /opt/appdata/plexguide/rclone-en.sh
+chmod 775 /opt/appdata/plexguide/rclone-en.sh
 ## Create the RClone service for plexdrive4 encrypted mount point
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
@@ -141,11 +141,11 @@ sleep 30
 while true
 do
 ## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 9M --tpslimit 4 --exclude '*.partial~' --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
-sleep 600
+rclone move --bwlimit 10M --tpslimit 6 --exclude '*.partial~' --exclude="**_HIDDEN" --exclude=".unionfs/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
+sleep 480
 done
 EOF
-chmod 755 /opt/appdata/plexguide/move-en.sh
+chmod 775 /opt/appdata/plexguide/move-en.sh
 
 ## Create the Encrypted Move Service
 tee "/etc/systemd/system/move-en.service" > /dev/null <<EOF
