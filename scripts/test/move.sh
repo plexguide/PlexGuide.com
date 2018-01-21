@@ -23,3 +23,7 @@ mv /opt/plexguide/scripts/menus/restore-menu2 /opt/plexguide/scripts/menus/resto
 ## For testing new var-vpn configs
 #rm -r /opt/plexguide/ansible/roles/var-vpn
 #mv /opt/plexguide/ansible/roles/var2 /opt/plexguide/ansible/roles/var-vpn
+
+## For testing new rclone-en setup
+rm -r /opt/plexguide/scripts/docker-no/rclone-en
+mv /opt/plexguide/scripts/docker-no/rclone-entest /opt/plexguide/scripts/docker-no/rclone-en
