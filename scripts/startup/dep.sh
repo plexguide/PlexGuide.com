@@ -11,13 +11,6 @@ fi
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
-###################### Need to Allow the Rest of Ansible to Work
-#apt-get install docker-ce -y
-#curl -sSL https://get.docker.com | sh 1>/dev/null 2>&1
-#curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 1>/dev/null 2>&1
-#chmod +x /usr/local/bin/docker-compose 1>/dev/null 2>&1
-#pip install docker 1>/dev/null 2>&1
-###################### Install Depdency Programs ###############
 
     clear
     echo "PlexGuide Pre-Installer"
@@ -74,7 +67,7 @@ echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix
 
-  echo "12. Installing Watcher"
+  echo "12. Installing WatchTower"
 
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
 

@@ -27,7 +27,7 @@ fi
 
 if [ "$number" -eq "2" ]
 then
-   whiptail --title "Startup Message" --msgbox "Visit our Discord Channel at http://discord.plexguide.com!" 8 66
+   whiptail --title "Startup Message" --msgbox "Visit our Forum at https://plexguide.com!" 8 66
 fi
 
 if [ "$number" -eq "3" ]
