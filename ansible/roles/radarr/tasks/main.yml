@@ -26,10 +26,10 @@
       - /opt/appdata/radarr:/config
       - /mnt/unionfs:/unionfs
       - /mnt/torrentvpn/downloaded:/vpn-downloaded
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
-      - /mnt/rutorrents/downloads:/downloads
-      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/sab/complete:/sab-complete
+      - /mnt/nzbget/completed:/nzbget-completed
+      - /mnt/rutorrents/downloads:/rutorrent-downloads
+      - /mnt/deluge/downloaded:/deluge-downloaded
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

@@ -7,14 +7,14 @@
     name: sabnzbd
     state: absent
 
-- name: "Set folder permissions"
-  shell: "chmod -R 777 /mnt/sab/"
+#- name: "Set folder permissions"
+#  shell: "chmod -R 777 /mnt/sab/"
 
-- name: "Set owner permisisons"
-  shell: "chown -R 1000:1000 /mnt/sab/"
+#- name: "Set owner permisisons"
+#  shell: "chown -R 1000:1000 /mnt/sab/"
 
 - name: Create SAB download directory
-  file: "path=/mnt/sab/ state=directory mode=0777 owner=1000 group=1000"
+  file: "path=/mnt/sab/ state=directory mode=0777 owner=1000 group=1000 recurse=yes"
 
 - name: Check sabnzbd.ini exists
   stat:
@@ -46,7 +46,7 @@
     networks:
       - name: plexguide
         aliases:
-          - sabnzbd 
+          - sabnzbd
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:sabnzbd.{{domain}}"
