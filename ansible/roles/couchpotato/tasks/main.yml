@@ -34,13 +34,13 @@
       - /opt/appdata/couchpotato:/config
       - /mnt/unionfs/completed:/unionfs-downloads:shared
       - /mnt/unionfs:/unionfs
-      - /mnt/unionfs/movies:/unionfs-movies
-      - /mnt/sab/complete:/sab-complete
-      - /mnt/nzbget/completed:/nzbget-completed
-      - /mnt/deluge/downloaded:/deluge-downloaded
-      - /mnt/rutorrents/downloads/incoming:/rutorrents-downloads
-      - /mnt/torrentvpn/.watched:/torrentvpn-watched
-      - /mnt/torrentvpn/downloaded:/torrentvpn-downloaded
+      - /mnt/unionfs/movies:/movies
+      - /mnt/sab/complete:/complete
+      - /mnt/nzbget/completed:/completed
+      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /mnt/torrentvpn/.watched:/watched
+      - /mnt/torrentvpn/downloaded:/downloaded
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

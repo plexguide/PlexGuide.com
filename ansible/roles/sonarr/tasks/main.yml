@@ -25,11 +25,11 @@
     volumes:
       - /opt/appdata/sonarr:/config
       - /mnt/unionfs:/unionfs
-      - /mnt/sab/complete:/sab-complete
-      - /mnt/nzbget/completed:/nzbget-completed
-      - /mnt/deluge/downloaded:/deluge-downloaded
-      - /mnt/torrentvpn/downloaded:/vpn-downloaded
-      - /mnt/rutorrents/downloads/incoming:/rutorrent-downloads
+      - /mnt/sab/complete:/complete
+      - /mnt/nzbget/completed:/completed
+      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/torrentvpn/downloaded:/downloaded
+      - /mnt/rutorrents/downloads/incoming:/downloads
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
