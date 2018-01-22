@@ -7,6 +7,7 @@ Type=simple
 User=0
 Group=0
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
+ExecStop=/bin/umount -l /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes

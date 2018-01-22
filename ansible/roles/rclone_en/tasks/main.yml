@@ -2,6 +2,11 @@
 
 ########################################## Remove Old Services
 
+  - name: Remove Old UnionFS-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/unionfs-encrypt.service
+
   - name: Remove Old move-en service
     file:
       state: absent
@@ -52,10 +57,10 @@
 
   - name: Install Move En Service
     template:
-      src: move-en_script.js2
+      src: move-en_script.js2"
       dest: /opt/appdata/plexguide/move-en.sh
       force: yes
-    when: move-en_script.stat.exists == False
+    when: move_en_script.stat.exists == False
 ########### Rclone Sync Scripts
   - name: Check RClone Sync SCRIPT
     stat:
@@ -79,7 +84,7 @@
       src: rclone-en_script.js2
       dest: /opt/appdata/plexguide/rclone-en.sh
       force: yes
-    when: rclone-en_script.stat.exists == False
+    when: rclone_en_script.stat.exists == False
 ############ Rclone Encrypt Sync
   - name: Check RClone Encrypt Sync SCRIPT
     stat:
@@ -91,7 +96,7 @@
       src: rclone-encrypt_script.js2
       dest: /opt/appdata/plexguide/rclone-encrypt.sh
       force: yes
-    when: rclone-encrypt_script.stat.exists == False
+    when: rclone_encrypt_script.stat.exists == False
 
 ########################################## Services
 ########### Move En Service
@@ -116,7 +121,7 @@
 
   - name: Start Move En
     systemd: state=started name=move-en enabled=yes
-    when: move-en.stat.exists
+    when: move_en.stat.exists
 
 ########### rclone
   - name: Check RClone Service
@@ -156,14 +161,14 @@
       src: rclone-en.js2
       dest: /etc/systemd/system/rclone-en.service
       force: yes
-    when: rclone-en.stat.exists == False
+    when: rclone_en.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone-en daemon_reload=yes enabled=no
 
   - name: Start RClone En
     systemd: state=started name=rclone-en enabled=yes
-    when: rclone-en.stat.exists
+    when: rclone_en.stat.exists
 ########### rclone encrypt
   - name: Check RClone Encrypt Service
     stat:
@@ -172,21 +177,21 @@
 
   - name: Stop If RClone Encrypt Service Running
     systemd: state=stopped name=rclone-encrypt
-    when: rclone-encrypt.stat.exists
+    when: rclone_encrypt.stat.exists
 
   - name: Install RClone Encrypt Service
     template:
       src: rclone-encrypt.js2
       dest: /etc/systemd/system/rclone-encrypt.service
       force: yes
-    when: rclone-encrypt.stat.exists == False
+    when: rclone_encrypt.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone-encrypt daemon_reload=yes enabled=no
 
   - name: Start RClone Encrypt
     systemd: state=started name=rclone-encrypt enabled=yes
-    when: rclone-encrypt.stat.exists
+    when: rclone_encrypt.stat.exists
 
 ########### UnionFS Encrypt
   - name: Check UnionFS Encrypt Service
@@ -196,7 +201,7 @@
 
   - name: Stop If UnionFS Encrypt Service Running
     systemd: state=stopped name=unionfs-encrypt
-    when: unionfs-encrypt.stat.exists
+    when: unionfs_encrypt.stat.exists
 
   - name: Install UnionFS Encrypt Service
     template:
@@ -210,4 +215,4 @@
 
   - name: Start UnionFS Encrypt
     systemd: state=started name=unionfs-encrypt enabled=yes
-    when: unionfs-encrypt.stat.exists
+    when: unionfs_encrypt.stat.exists
