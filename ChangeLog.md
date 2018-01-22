@@ -6,7 +6,7 @@ Current Changes will continued to be modifed as known.
 - None
 
 #### Changed
-- None
+- NZBHydra2 to Hotio Image
 
 #### Removed
 - None
