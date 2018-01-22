@@ -3,10 +3,13 @@ Current Changes will continued to be modifed as known.
 
 ### [5.032] Actively Working
 #### Added
-- None
+- Added ExecStop to RClone Encrypted install
+- Added recurse=true to some containers
 
 #### Changed
 - NZBHydra2 to Hotio Image
+- Volume labels for easier identification within apps like Sonarr & Radarr
+- Medusa volume from /mnt to /mnt/medusa/downloads
 
 #### Removed
 - None
