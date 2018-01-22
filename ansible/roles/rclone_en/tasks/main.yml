@@ -1,4 +1,48 @@
 ---
+
+########################################## Remove Old Services
+
+  - name: Remove Old move-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/move-en.service
+
+  - name: Remove Old move-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move-en.sh
+
+
+  - name: Remove Old rclone service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone.service
+
+  - name: Remove Old rclone File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone.sh
+
+  - name: Remove Old rclone-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-en.service
+
+  - name: Remove Old rclone-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-en.sh
+
+  - name: Remove Old rclone-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-encrypt.service
+
+  - name: Remove Old rclone-encrypt File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-encrypt.sh
+
 ########################################## Scripts
 ########## Move En Service Script
   - name: Check MOVE EN SCRIPT
@@ -12,7 +56,6 @@
       dest: /opt/appdata/plexguide/move-en.sh
       force: yes
     when: move-en_script.stat.exists == False
-
 ########### Rclone Sync Scripts
   - name: Check RClone Sync SCRIPT
     stat:

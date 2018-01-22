@@ -4,16 +4,12 @@
 ##### /sbin/modprobe iptable_mangle
 
 - name: Create Basic directories for Torrents
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
     - /mnt/torrentvpn
-    - /mnt/torrentvpn/downloaded
-    - /mnt/torrentvpn/temp
-    - /mnt/torrentvpn/.torrent
-    - /mnt/torrentvpn/.watched
 
 - name: Create Basic directories for rTorrentVPN
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
     - /opt/appdata/vpn
     - /opt/appdata/vpn/rtorrent

@@ -21,15 +21,15 @@
     networks:
       - name: plexguide
         aliases:
-          - Sonarr
+          - sonarr
     volumes:
       - /opt/appdata/sonarr:/config
       - /mnt/unionfs:/unionfs
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
-      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/sab/complete:/sab-complete
+      - /mnt/nzbget/completed:/nzbget-completed
+      - /mnt/deluge/downloaded:/deluge-downloaded
       - /mnt/torrentvpn/downloaded:/vpn-downloaded
-      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /mnt/rutorrents/downloads/incoming:/rutorrent-downloads
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

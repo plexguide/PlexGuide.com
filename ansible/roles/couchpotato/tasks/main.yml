@@ -22,22 +22,25 @@
       HTTPS_METHOD: noredirect
       LETSENCRYPT_HOST: "couchpotato.{{domain}}"
       LETSENCRYPT_EMAIL: "{{email}}"
-
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:couchpotato.{{domain}}"
+      traefik.port: "5050"
     networks:
       - name: plexguide
         aliases:
           - CouchPotato
     volumes:
       - /opt/appdata/couchpotato:/config
-      - /mnt/unionfs/completed:/udownloads:shared
+      - /mnt/unionfs/completed:/unionfs-downloads:shared
       - /mnt/unionfs:/unionfs
-      - /mnt/unionfs/movies:/movies
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
-      - /mnt/deluge/downloaded:/downloaded
-      - /mnt/rutorrents/downloads/incoming:/downloads
-      - /mnt/torrentvpn/.watched:/watched
-      - /mnt/torrentvpn/downloaded:/tdownloaded
+      - /mnt/unionfs/movies:/unionfs-movies
+      - /mnt/sab/complete:/sab-complete
+      - /mnt/nzbget/completed:/nzbget-completed
+      - /mnt/deluge/downloaded:/deluge-downloaded
+      - /mnt/rutorrents/downloads/incoming:/rutorrents-downloads
+      - /mnt/torrentvpn/.watched:/torrentvpn-watched
+      - /mnt/torrentvpn/downloaded:/torrentvpn-downloaded
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

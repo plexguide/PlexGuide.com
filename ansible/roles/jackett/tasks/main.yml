@@ -28,7 +28,7 @@
     networks:
       - name: plexguide
         aliases:
-          - emby
+          - jackett
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:jackett.{{domain}}"

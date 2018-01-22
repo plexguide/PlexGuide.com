@@ -5,7 +5,7 @@
     state: absent
 
 - name: Create Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
     - /mnt/move/books
     - /mnt/gdrive/books
@@ -31,3 +31,7 @@
       PGID: 1000
     restart_policy: always
     state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:lazy.{{domain}}"
+      traefik.port: "5299"
