@@ -8,7 +8,6 @@ Current Changes will continued to be modifed as known.
 
 #### Changed
 - NZBHydra2 to Hotio Image
-- Volume labels for easier identification within apps like Sonarr & Radarr
 - Medusa volume from /mnt to /mnt/medusa/downloads
 
 #### Removed
