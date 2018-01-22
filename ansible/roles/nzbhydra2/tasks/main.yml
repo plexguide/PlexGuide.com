@@ -8,12 +8,14 @@
 - name: Deploy NZBHyra2 Container
   docker_container:
     name: nzbhydra2
-    image: theotherp/nzbhydra2
+    image: hotio/suitarr
     pull: yes
     cpu_shares: 256
     published_ports:
       - 5076:5076
     env:
+      APP: "nzbhydra2"
+      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
       HTTPS_METHOD: noredirect
