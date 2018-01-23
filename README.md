@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
-</p>
+[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
 
 Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 
