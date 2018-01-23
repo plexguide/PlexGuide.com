@@ -33,9 +33,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
 
 ### Social Support
-- [PlexGuide Forums](https://plexguide.com)
-
-[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
+[PlexGuide Forums](https://plexguide.com)
 
 ### Want to Donate? Everybit Helps!
 
