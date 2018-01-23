@@ -1,8 +1,4 @@
 <p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
-</p>
-
-<p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_3.png" alt="PlexGuide.com Fourms"/>
 </p>
 
@@ -15,6 +11,10 @@ Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 ----------------------------------------------------------------------
 
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
+
+<p align="center">
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
+</p>
 
 ### What is PlexGuide? ###
 
