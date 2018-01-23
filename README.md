@@ -37,7 +37,7 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 ### Social Support
 - [PlexGuide Forums](https://plexguide.com)
 
-[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_3.png)](https://plexguide.com)
+[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
 
 ### Want to Donate? Everybit Helps!
 
