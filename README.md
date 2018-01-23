@@ -115,7 +115,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -
 **G. RClone / PlexDrive / UnionFS**
  - Install & Configure (Select Only One)
  - YouTube Demo Video (V2) for RClone, UnionFS & PlexGuide: https://youtu.be/T0eXtrOY4kw
-   - [RClone Unencrypted Version](http://unrclone.plexguide.com)  
+   - [RClone Unencrypted Version](https://plexguide.com/threads/rclone-unencrypted.226/)  
    - [RClone Encrypted Version](http://enrclone.plexguide.com)   
  - [Configure PlexDrive](http://plexdrive.plexguide.com) Note: Let It Finish and then Reboot the Server!
 
