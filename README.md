@@ -62,6 +62,7 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 ### Preparation, Installation & Configuration
 
 **A. Quick Notes:**
+- READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230/
 - Lightly check the PlexGuide Wiki @ http://wiki.plexguide.com
 - With a GITHUB login, did you know that you can edit our wiki pages?! Yes, you can make corrections, add snapshots or expand on any topic. IF you make an update, you'll save us time and help others! Some users have already helped us!
 
