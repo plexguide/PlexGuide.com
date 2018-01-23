@@ -1,4 +1,6 @@
-[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_3.png)](https://plexguide.com)
+<p align="center">
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
+</p>
 
 Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 
@@ -9,10 +11,6 @@ Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 ----------------------------------------------------------------------
 
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
-
-<p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/plexguide-logo5.PNG?raw=true" alt="PlexGuide.com Logo"/>
-</p>
 
 ### What is PlexGuide? ###
 
@@ -38,6 +36,8 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
 
 ### Social Support
 - [PlexGuide Forums](https://plexguide.com)
+
+[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_3.png)](https://plexguide.com)
 
 ### Want to Donate? Everybit Helps!
 
