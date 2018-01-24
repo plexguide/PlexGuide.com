@@ -24,7 +24,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 1. **Programs** - [Installs Program Information List](https://plexguide.com/threads/programs-install-information-list.245/)
 2. **Social Support** - [PlexGuide Forums](https://plexguide.com)
-3. **Contribute To the Project:** [Contribute Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
+3. **Contribute To the Project:** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
 
 ### Want to Donate? Everybit Helps!
 
