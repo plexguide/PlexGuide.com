@@ -29,9 +29,8 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 - **UBUNTU 16.04 & 17.04!**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
 
-#### [Programs Install Information List](https://plexguide.com/threads/programs-install-information-list.245/)
-
-#### Social Support - [PlexGuide Forums](https://plexguide.com)
+1. [Programs Install Information List](https://plexguide.com/threads/programs-install-information-list.245/)
+2. Social Support - [PlexGuide Forums](https://plexguide.com)
 
 ### Want to Donate? Everybit Helps!
 
