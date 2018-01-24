@@ -29,15 +29,11 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 - **UBUNTU 16.04 & 17.04!**
 - This will remain as developer version.  If you want a specific version, please download from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
 
-### Programs ###
-Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX Reverse Proxy, NetData, NZBHydra 1 & 2, NZBGET, Organizr, Plex, PlexDrive, Portainer, Radarr, RClone, Resilio, RuTorrent, Sonnar, Tautulli (Plexpy), UnionFS, WatchTower, Wordpress (Beta) & more!
+#### [Programs Install Information List](https://plexguide.com/threads/programs-install-information-list.245/)
 
-### Social Support
-[PlexGuide Forums](https://plexguide.com)
+#### Social Support - [PlexGuide Forums](https://plexguide.com)
 
 ### Want to Donate? Everybit Helps!
-
-**Support US**: Purchase multiple crypto-curriencies via http://binance.plexguide.com - Purchase Stellar & Ripple! Value increased 4 times from late Dec 17 thru Jan 18!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
@@ -127,10 +123,3 @@ Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netda
 
 **J. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
-
-### Additional Thank You's (In Date Order)
-
-- HTPCGuides.com for providing the core foundation examples that enabled PlexGuide Version 1 - 3
-- LinuxServerIO for development of all of their containers along with core YML structure to provide guidance. 
-- Tom472 from Mediabox for concepts in using .env files and driving the starting train to develop YMLs.
-- l3uddz & Desimanic from Cloudbox for the Ansible Inspiration and utilization of a few key scripts.
