@@ -78,7 +78,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 - It is a good idea to check your benchmarks prior to setting up everything else
 - Remember to conduct multiple tests if you feel uneasy about your results
 
-**G. RClone / PlexDrive / UnionFS Instrrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
+**G. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
 
 **H. (Optional) Setting Up Your Reverse Proxy (http:// only)**
 
