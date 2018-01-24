@@ -45,13 +45,6 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
   - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers) | Recommended US Servers
 
-** Recommend Space Requirements
-- Plex Only Server: Small Library (30GB-50GB) - Large Library (100GB+):
-- Plex with USENET or Torrents: Small Library (80GB-100GB+) - Large Library (200GB-300GB+)
-- Notes:
-  - Example:  MetaDATA of 10000 Movies and 2000 shows can run 80Gigs big 
-  - Warning:  If backing up your library, you need space for the additional zip file!
-
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
  - [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
