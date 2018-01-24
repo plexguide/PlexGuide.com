@@ -1,0 +1,36 @@
+---
+- name: Remove Mylar Container
+  docker_container:
+    name: mylar
+    state: absent
+
+- name: Deploy Mylar Container
+  docker_container:
+    name: mylar
+    image: linuxserver/mylar
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8090:8090"
+    env:
+      APP: mylar
+      VERSION: stable
+      PUID: "1000"
+      PGID: "1000"
+      HTTPS_METHOD: noredirect
+    networks:
+      - name: plexguide
+        aliases:
+          - mylar
+    volumes:
+    - /opt/appdata/mylar/:/config
+	  - /mnt/rutorrents/downloads/incoming:/downloads
+	  - /mnt/nzbget/completed:/completed
+	  - /mnt/unionfs:/unionfs
+	  - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:mylar.{{domain}}"
+      traefik.port: "8090"
