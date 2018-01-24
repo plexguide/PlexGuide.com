@@ -54,8 +54,8 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
- - [Do you Require SSH Access?](https://plexguide.com/threads/create-sudo-user.251/)
- - [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
+ - [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
+ - [Do you Require a SUDO User?](https://plexguide.com/threads/create-sudo-user.251/)
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
 
 **D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243/
