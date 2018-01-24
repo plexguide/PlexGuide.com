@@ -23,7 +23,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 ### Awesome Team Members, Advisors, Contributors & Beta Testers!
 - [Augie](https://github.com/AugusDogus), [Bate](https://github.com/batedk), cocainbiceps, [daveftw84](https://github.com/daveftw84), [Desimanic](https://github.com/desimaniac), Jackalblood, imes, NickUK, Pentaganos, trustyfox, [Rothuith](https://github.com/Rothuith), simon021, SpencerUK
 
-- See Additional Thank You's! [Click Here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/README.md#additional-thank-yous-in-date-order)
+- Including Additional Thank You's! [Click Here](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/)
 
 ### Important
 - **UBUNTU 16.04 & 17.04!**
