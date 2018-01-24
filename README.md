@@ -85,20 +85,7 @@ Deluge, Emby, HTPCManager, Jackett, LetsEncrypt, Liddar, Medusa, Muximux, NGINX 
  - [Do you Require a SUDO User?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Creating-a-SUDO-User)
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
 
-**D. Install Instructions:**
-Copy & Paste either or into your Terminal (usually double clicking on a word selects the entire item)
-
-#### Install Via Curl Option Via GitHub
-
-```sh
-sudo apt-get update -y && sudo wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/scripts/curlinstall.sh && sudo bash ./curlinstall.sh
-```
-
-#### Install Via Git Option Via GitHub
-
-```sh
-sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install whiptail -y && sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
-```
+**D. Install PlexGuide:**  [View Instructions](https://plexguide.com/threads/plexguide-install-instructions.243/)
 
 #### (Optional) Kernal Upgrade for Ubuntu Operating System
 - Not Needed unless your system is just having problems
