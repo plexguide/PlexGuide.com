@@ -24,22 +24,12 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 1. **Programs** - [Installs Program Information List](https://plexguide.com/threads/programs-install-information-list.245/)
 2. **Social Support** - [PlexGuide Forums](https://plexguide.com)
+3. **Contribute To the Project:** [Contribute Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
 
 ### Want to Donate? Everybit Helps!
 
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
-
-### Contribute to the PlexGuide Project
-- First, click the **Star** in the upper right to promte the project!
-- Next, Fork the Best Project Ever (because you want to make it better!)
-- Clone the Project: 
-  - ```sudo git clone http://github.com/<username>/PlexGuide.com-The-Awesome-Plex-Server /opt/plexguide```
-  - **Note:** It will clone it in the location of /opt/plexguide
-- Develop a Featured Branch: ```sudo git checkout -b my-awesome-sauce-feature Version-5```
-- Commit Changes: ```sudo git commit -am 'My Awesome Sauce Feature' ```
-- Push to the Branch: ```sudo git push origin my-awesome-sauce-feature```
-- Submit a Pull Request
 
 ----------------------------------------------------------------------
 
