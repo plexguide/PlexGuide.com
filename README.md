@@ -16,7 +16,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 ### PlexGuide - Version 5 - Coded By:
 - [Admin9705](https://github.com/Admin9705), [Deiteq](https://github.com/Deiteq) & [The Creator](https://github.com/TheCreatorzOne), [DesignGears](https://github.com/designgears)
-- Includined Additional Thank You's! [Click Here](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/)
+- Included Additional Support & Thank You's! [Click Here](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/)
 
 ### Important
 - **UBUNTU 16.04 & 17.04!**
