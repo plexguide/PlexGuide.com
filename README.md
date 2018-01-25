@@ -68,16 +68,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 **G. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
 
-**H. (Optional) Setting Up Your Reverse Proxy (http:// only)**
-
-Reverse Proxy - Access Your Apps Via a Subdomain (Ex: radarr.domain.com or netdata.domain.com)
-
- - [Configuring Reverse Proxy](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/SSL-Reverse-Proxy)
-    - How To With a Paid GoDaddy Domain: [GoDaddy Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Godaddy-Domain-to-IPv4-Instructions)
-    - How To With a FreeNom Domain     : [FreeNom Instructions](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/FreeNom-Domain-to-IPv4-Instructions)
-    - Note that http works only (https:// working on)
-      - Update switches you to Traefik which works better
-      - NGINX-Proxy role left there if you ever want to tinker with it
+**H. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259/
 
 **I. Installing & Setting Up Support Programs**
 
