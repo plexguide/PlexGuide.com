@@ -16,11 +16,12 @@ Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/
 
 ### What is PlexGuide? ###
-PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
-1. **For Intel/AMD UBUNTU 16.04 LTS** 
-2. **Programs** - [Installs Program Information List](https://plexguide.com/threads/programs-install-information-list.245/)
-3. **Contribute To the Project -** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
+An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-end unlimited storage drive.  PlexGuide is a community project that only exists with motivation of others.  You can detect errors, contribute code, build-up our forums, assist new members, and always suggest ideas. We truly would not exist without the help of you and others!
+
+1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
+2. **View Deployable Programs:** [Program List](https://plexguide.com/threads/programs-install-information-list.245/)
+3. **Contribute To the Project:** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
 
 ### Want to Donate? Everybit Helps!
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
