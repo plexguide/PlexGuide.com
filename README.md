@@ -11,7 +11,7 @@ Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
   <img src="http://plexguide.com/imagesplus/coding_team.png" alt="Coding Team"/>
 </p>
 
-Addiontal Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/
+Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/
 
 **Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
 
