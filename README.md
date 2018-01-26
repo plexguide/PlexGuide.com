@@ -1,4 +1,5 @@
 **Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
+
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 
