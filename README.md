@@ -55,14 +55,9 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 - Not Needed unless your system is just having problems
 - Visit https://www.tecmint.com/upgrade-kernel-in-ubuntu/
 
-**E. Set CPU Performance**
-- For Real Machine; useless on VPS or Virtual Machine. 
-- View the following screenshots on affects: [Performance Mode](https://imgur.com/a/bdHMg), [OnDemand Mode](https://imgur.com/a/hriFS), [Conservative Mode](https://imgur.com/a/ES9tw)
+**E. Set CPU Performance**: For Real Machines Only; Useless on VPS or Virtual Machine. Set to Performance, OnDemand, or Con
 
-**F. Benchmarks**
-- Select [Server/Net Benchmarks] on the PlexGuide front Menu
-- It is a good idea to check your benchmarks prior to setting up everything else
-- Remember to conduct multiple tests if you feel uneasy about your results
+**F. Benchmarks**:  Run benchmark test to assist in determing your server speeds.
 
 **G. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
 
