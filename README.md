@@ -41,9 +41,7 @@ PlexGuide is an all in one solution that enables you to build a strong plex serv
 
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
-- Have a Dedicated, VPS, or Home Solution Ready!
-
-  - [Recommended EU Servers](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/EU-Servers) | Recommended US Servers
+- Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5/
 
 **C. Preparation:**
  - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
