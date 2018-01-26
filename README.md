@@ -1,3 +1,4 @@
+**Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 
@@ -13,15 +14,12 @@ Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
 
 Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/
 
-**Tip**: Did you know if you click the star in the upper right, it promotes our project further on GITHUB?
-
 ### What is PlexGuide? ###
 PlexGuide is an all in one solution that enables you to build a strong plex server with Google Drive as a backend storage.  Not only that, it deploys multiple services and programs in the most automated manner possible.  New to linux, no worry!  Just follow our steps and you'll be fine... to some extent :D - This is a community driven project. You can spot errors, update the wiki, contribute code, suggest ideas! This project would not exist without the help of you and others! Truly, those with the least experience do the best!
 
-1. **UBUNTU 16.04 LTS** Program remains as developer version.  Download a specific release from [here](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/releases)
+1. **For Intel/AMD UBUNTU 16.04 LTS** 
 2. **Programs** - [Installs Program Information List](https://plexguide.com/threads/programs-install-information-list.245/)
-3. **Social Support** - [PlexGuide Forums](https://plexguide.com)
-4. **Contribute To the Project -** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
+3. **Contribute To the Project -** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
 
 ### Want to Donate? Everybit Helps!
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
