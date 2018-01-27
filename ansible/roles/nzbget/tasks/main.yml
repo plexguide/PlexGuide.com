@@ -175,6 +175,14 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Lowercase & Set Music Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category3.Name\s?='
+    line: 'Category3.Name=music'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Restart Container
   docker_container:
     name: nzbget
