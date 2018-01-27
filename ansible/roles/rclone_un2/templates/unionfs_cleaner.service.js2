@@ -1,0 +1,18 @@
+########### Original Development of the Cleaner was created By l3uddz from https://github.com/
+# /etc/systemd/system/unionfs_cleaner.service
+
+[Unit]
+Description=UnionFS Cleaner
+After=network-online.target unionfs.service
+
+[Service]
+User=1000
+Group=1000
+Type=simple
+WorkingDirectory=/opt/appdata/unionfs_cleaner/
+ExecStart=/opt/appdata/unionfs_cleaner/cleaner.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
