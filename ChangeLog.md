@@ -9,6 +9,7 @@ Current Changes will continued to be modifed as known.
 #### Changed
 - NZBHydra2 to Hotio Image
 - Medusa volume from /mnt to /mnt/medusa/downloads
+- Traefik is at version 1.5
 
 #### Removed
 - None

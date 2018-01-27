@@ -58,7 +58,7 @@
 - name: Deploy Traefik
   docker_container:
     name: traefik
-    image: traefik:v1.5.0-rc5
+    image: traefik:latest
     pull: yes
     cpu_shares: 256
     published_ports:
