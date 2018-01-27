@@ -52,24 +52,16 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 **D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243/
 
-#### (Optional) Kernal Upgrade for Ubuntu Operating System
-- Not Needed unless your system is just having problems
-- Visit https://www.tecmint.com/upgrade-kernel-in-ubuntu/
+**E. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
 
-**E. Set CPU Performance**: For Real Machines Only; Useless on VPS or Virtual Machine.
+**F. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259/
 
-**F. Internet Benchmarks**:  Run Internet Benchmarks to assist in determing your server speeds.
-
-**G. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
-
-**H. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259/
-
-**I. Installing & Setting Up Support Programs**
+**G. Installing & Setting Up Support Programs**
 
  - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
  - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
 
-**J. Final Notes**
+**H. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
