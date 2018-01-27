@@ -1,8 +1,4 @@
----
-########################################## Scripts
-
-
-########### Original Development of the Cleaner was created By l3uddz from https://github.com/
+## Original Development of the Cleaner was created By l3uddz from https://github.com/
 ---
 - name: Check service exists
   stat:
