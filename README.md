@@ -27,6 +27,9 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
+### Discord Access
+- As a member, when you hit 5 posts; you'll be able to view your own personal discord invite link here [Here].
+
 ----------------------------------------------------------------------
 
 <p align="center">
