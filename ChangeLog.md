@@ -1,15 +1,12 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.032] Actively Working
+### [5.033] Actively Working
 #### Added
-- Added ExecStop to RClone Encrypted install
-- Added recurse=true to some containers
+- None
 
 #### Changed
-- NZBHydra2 to Hotio Image
-- Medusa volume from /mnt to /mnt/medusa/downloads
-- Traefik is at version 1.5
+- None
 
 #### Removed
 - None
@@ -17,6 +14,21 @@ Current Changes will continued to be modifed as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.032]
+#### Added
+- Added ExecStop to RClone Encrypted install
+- Added recurse=true to some containers
+
+#### Changed
+- NZBHydra2 to Hotio Image
+- Medusa volume from /mnt to /mnt/medusa/downloads
+- Traefik is at version 1.5 (DesignGears)
+- Updated RClone Move to delete Folders empty folder after each sync (MrWednesday)
+  - To Apply Fix, rerun rclone (the version you had); when it loads, type Q (quit) and press ENTER; that's it!
+
+#### Removed
+- None
 
 ### [5.031]
 #### Added
