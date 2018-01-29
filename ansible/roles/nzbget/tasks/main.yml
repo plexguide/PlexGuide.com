@@ -5,14 +5,8 @@
     name: nzbget
     state: absent
 
-#- name: "Set folder permissions"
-#  shell: "chmod -R 777 /mnt/nzbget/"
-
-#- name: "Set owner permisisons"
-#  shell: "chown -R 1000:1000 /mnt/nzbget/"
-
 - name: Create nzbget download directory
-  file: "path=/mnt/nzbget/ state=directory mode=0777 owner=1000 group=1000 recurse=true"
+  file: "path=/mnt/nzbget/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
 - name: Check nzbget.conf exists
   stat:
@@ -172,6 +166,22 @@
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^Category2.Name\s?='
     line: 'Category2.Name=tv'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Lowercase & Set Music Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category3.Name\s?='
+    line: 'Category3.Name=music'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Lowercase & Set EBook Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category4.Name\s?='
+    line: 'Category4.Name=ebooks'
     state: present
   when: nzbget_conf.stat.exists == False
 

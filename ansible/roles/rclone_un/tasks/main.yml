@@ -11,7 +11,7 @@
       src: move_script.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
-    when: move_script.stat.exists == False
+    #when: move_script.stat.exists == False
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
     stat:

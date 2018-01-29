@@ -3,6 +3,8 @@ sleep 30
 while true
 do
 ## Sync, Sleep 8 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 10M --tpslimit 6 --exclude '*.partial~' --exclude="**_HIDDEN" --exclude=".unionfs/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
+rclone move --bwlimit 10M --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
+# Remove empty directories (MrWednesday)
+find "/mnt/move/" -mindepth 2 -type d -empty -delete
 sleep 480
 done

@@ -1,7 +1,9 @@
 **Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
 
+[![N|Solid](https://plexguide.com/discord.png)](https://plexguide.com/threads/discord-link.303/)
+
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
-Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
+Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open") [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 
@@ -20,12 +22,14 @@ Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-
 An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-end unlimited storage drive.  PlexGuide is a community project that only exists with motivation of others.  You can detect errors, contribute code, build-up our forums, assist new members, and always suggest ideas. We truly would not exist without the help of you and others!
 
 1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
-2. **View Deployable Programs:** [Program List](https://plexguide.com/threads/programs-install-information-list.245/)
-3. **Contribute To the Project:** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
+2. **View Deployable Programs:** https://plexguide.com/threads/programs-install-information-list.245
+3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246/
 
 ### Want to Donate? Everybit Helps!
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
+
+**Discord Access:** https://plexguide.com/threads/discord-link.303
 
 ----------------------------------------------------------------------
 
@@ -52,24 +56,15 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 **D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243/
 
-#### (Optional) Kernal Upgrade for Ubuntu Operating System
-- Not Needed unless your system is just having problems
-- Visit https://www.tecmint.com/upgrade-kernel-in-ubuntu/
+**E. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
 
-**E. Set CPU Performance**: For Real Machines Only; Useless on VPS or Virtual Machine.
+**F. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259/
 
-**F. Internet Benchmarks**:  Run Internet Benchmarks to assist in determing your server speeds.
-
-**G. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
-
-**H. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259/
-
-**I. Installing & Setting Up Support Programs**
-
- - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
+**G. Installing & Setting Up Support Programs**
+ - Configure Plex: https://plexguide.com/threads/plex-configuration.307/
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
- - [Port Numbers Reminder](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Port-Assignments)
+ - Port Numbers Reminder: https://plexguide.com/threads/programs-port-numbers.306/
 
-**J. Final Notes**
+**H. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!

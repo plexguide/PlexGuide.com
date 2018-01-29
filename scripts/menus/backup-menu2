@@ -5,7 +5,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Backup Menu" --menu "Make your choice" 21 25 13 \
+whiptail --title "Backup Menu" --menu "Make your choice" 21 25 14 \
     "1)" "OMBIv3"   \
     "2)" "NZBGet"  \
     "3)" "Plex"  \
@@ -17,8 +17,9 @@ whiptail --title "Backup Menu" --menu "Make your choice" 21 25 13 \
     "9)" "Tautulli"  \
     "10)" "Jackett"  \
     "11)" "NGINX"   \
-    "12)" "CouchPotato"   \
-    "13)" "Exit  "  3>&2 2>&1 1>&3
+    "12)" "CouchPotato"  \
+    "13)" "Lidarr"   \
+    "14)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -94,6 +95,12 @@ case $CHOICE in
       ;;
 
     "13)")
+      echo ymlprogram lidarr > /opt/plexguide/tmp.txt
+      echo ymldisplay Lidarr >> /opt/plexguide/tmp.txt
+      bash /opt/plexguide/scripts/docker-no/backup-script.sh
+      ;;
+
+    "14)")
         clear
         exit 0
         ;;
