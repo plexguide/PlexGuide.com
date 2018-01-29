@@ -44,7 +44,7 @@ echo 1
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
+rclone --uid=1000 --gid=1000 --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
 EOF
 chmod 775 /opt/appdata/plexguide/rclone.sh
 echo 2
@@ -69,7 +69,7 @@ echo 3
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
+rclone --uid=1000 --gid=1000 --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
 EOF
 chmod 775 /opt/appdata/plexguide/rclone-encrypt.sh
 
@@ -145,7 +145,9 @@ sleep 30
 while true
 do
 ## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 10M --tpslimit 6 --exclude '*.partial~' --exclude="**_HIDDEN" --exclude=".unionfs/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
+rclone move --bwlimit 10M --tpslimit 6 --exclude='**.partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 15s /mnt/move gcrypt:/
+# Remove empty directories (MrWednesday)
+find "/mnt/move/" -mindepth 2 -type d -empty -delete
 sleep 480
 done
 EOF
