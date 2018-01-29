@@ -1,6 +1,6 @@
 **Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
 
-[![N|Solid](https://plexguide.com/discord.png)](https://plexguide.com/pages/Disocrd/)
+[![N|Solid](https://plexguide.com/discord.png)](https://plexguide.com/threads/discord-link.303/)
 
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
