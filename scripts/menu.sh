@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### remove exit hold
-rm -r /var/plexguide/exit.yes 1>/dev/null 2>&1
+#rm -r /var/plexguide/exit.yes 1>/dev/null 2>&1
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
@@ -38,7 +38,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.032" --menu "Make your choice" 18 43 11 \
+whiptail --title "Visit PlexGuide.com - v5.033" --menu "Make your choice" 18 43 11 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \
