@@ -3,7 +3,7 @@
 [![N|Solid](https://plexguide.com/discord.png)](https://plexguide.com/threads/discord-link.303/)
 
 [![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
-Visit the PlexGuide Forum @ http://plexguide.com (Please Help Our Forum Grow!)
+Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open") [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 
@@ -22,7 +22,7 @@ Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-
 An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-end unlimited storage drive.  PlexGuide is a community project that only exists with motivation of others.  You can detect errors, contribute code, build-up our forums, assist new members, and always suggest ideas. We truly would not exist without the help of you and others!
 
 1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
-2. **View Deployable Programs:** (https://plexguide.com/threads/programs-install-information-list.245
+2. **View Deployable Programs:** https://plexguide.com/threads/programs-install-information-list.245
 3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246/
 
 ### Want to Donate? Everybit Helps!
