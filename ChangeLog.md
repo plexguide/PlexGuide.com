@@ -19,9 +19,10 @@ Historical Documented Changes will be stored as below.
 #### Added
 - Added ExecStop to RClone Encrypted install
 - Added recurse=true to some containers
+- Added EBook Stuff - Not Implement Yet (Pentagons)
 
 #### Changed
-- NZBHydra2 to Hotio Image
+- NZBHydra2 to Hotio Image (DesignGears)
 - Medusa volume from /mnt to /mnt/medusa/downloads
 - Traefik is at version 1.5 (DesignGears)
 - Updated RClone Move to delete Folders empty folder after each sync (MrWednesday)
