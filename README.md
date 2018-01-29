@@ -64,7 +64,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
  - [Configure Plex](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide)
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
  - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
- - [Port Numbers Reminder]: https://plexguide.com/threads/programs-port-numbers.306/
+ - Port Numbers Reminder: https://plexguide.com/threads/programs-port-numbers.306/
 
 **H. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
