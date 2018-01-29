@@ -22,14 +22,14 @@ Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-
 An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-end unlimited storage drive.  PlexGuide is a community project that only exists with motivation of others.  You can detect errors, contribute code, build-up our forums, assist new members, and always suggest ideas. We truly would not exist without the help of you and others!
 
 1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
-2. **View Deployable Programs:** [Program List](https://plexguide.com/threads/programs-install-information-list.245/)
-3. **Contribute To the Project:** [Information](https://plexguide.com/threads/plexguide-contribute-fork-information.246/)
+2. **View Deployable Programs:** (https://plexguide.com/threads/programs-install-information-list.245
+3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246/
 
 ### Want to Donate? Everybit Helps!
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
 - LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
 
-### Discord Access: https://plexguide.com/threads/discord-link.303
+**Discord Access:** https://plexguide.com/threads/discord-link.303
 
 ----------------------------------------------------------------------
 
