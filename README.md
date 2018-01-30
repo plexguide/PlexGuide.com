@@ -49,7 +49,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 - Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5/
 
 **C. Preparation:**
- - [Google Drive Layout](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Google-Drive-Layout)
+ - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308/
  - [Do you Require SSH Access?](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Access-via-SSH)
  - Require a SUDO User?: https://plexguide.com/threads/create-sudo-user.251
  - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
