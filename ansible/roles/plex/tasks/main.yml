@@ -59,7 +59,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      CLAIM_TOKEN: "{{pms_token.user_input}}"
+      PLEX_CLAIM: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
       HTTPS_METHOD: noredirect
     networks:
