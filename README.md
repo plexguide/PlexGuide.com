@@ -42,7 +42,6 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 **A. Quick Notes:**
 - READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230/
 - Lightly check the PlexGuide Wiki @ http://wiki.plexguide.com
-- With a GITHUB login, did you know that you can edit our wiki pages?! Yes, you can make corrections, add snapshots or expand on any topic. IF you make an update, you'll save us time and help others! Some users have already helped us!
 
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
@@ -52,7 +51,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
  - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308/
  - Access Via SSH: https://plexguide.com/threads/access-your-ubuntu-via-ssh.309/
  - Require a SUDO User?: https://plexguide.com/threads/create-sudo-user.251
- - [Disk Space Warning Check!](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Disk-Check-Warning!)
+ - Disk Space Warning Check!: https://plexguide.com/threads/disk-space-check.310/
 
 **D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243/
 
