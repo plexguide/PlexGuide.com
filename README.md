@@ -15,7 +15,7 @@ Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
   <img src="http://plexguide.com/imagesplus/coding_team.png" alt="Coding Team"/>
 </p>
 
-Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244/
+Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
 
 ### What is PlexGuide? ###
 
@@ -23,7 +23,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
 2. **View Deployable Programs:** https://plexguide.com/threads/programs-install-information-list.245
-3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246/
+3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246
 
 ### Want to Donate? Everybit Helps!
 - Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
@@ -40,30 +40,30 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 ### Preparation, Installation & Configuration
 
 **A. Quick Notes:**
-- READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230/
+- READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230
 - Lightly check the PlexGuide Wiki @ http://wiki.plexguide.com
 
 **B. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
-- Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5/
+- Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5
 
 **C. Preparation:**
- - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308/
- - Access Via SSH: https://plexguide.com/threads/access-your-ubuntu-via-ssh.309/
+ - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308
+ - Access Via SSH: https://plexguide.com/threads/access-your-ubuntu-via-ssh.309
  - Require a SUDO User?: https://plexguide.com/threads/create-sudo-user.251
- - Disk Space Warning Check!: https://plexguide.com/threads/disk-space-check.310/
+ - Disk Space Warning Check!: https://plexguide.com/threads/disk-space-check.310
 
-**D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243/
+**D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243
 
-**E. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247/
+**E. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247
 
-**F. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259/
+**F. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259
 
 **G. Installing & Setting Up Support Programs**
- - Configure Plex: https://plexguide.com/threads/plex-configuration.307/
+ - Configure Plex: https://plexguide.com/threads/plex-configuration.307
  - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
- - [Configure Portainer](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Portainer)
- - Port Numbers Reminder: https://plexguide.com/threads/programs-port-numbers.306/
+ - Configure Portainer: https://plexguide.com/threads/portainer-configuration.311
+ - Port Numbers Reminder: https://plexguide.com/threads/programs-port-numbers.306
 
 **H. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
