@@ -39,7 +39,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 ---------------------------------
 
-### PlexGuid Preparation, Installation & Configuration Install
+### PlexGuide Preparation, Installation & Configuration Install
 
 [![N|Solid](https://plexguide.com/wikisnip2.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
 
