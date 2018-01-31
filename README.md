@@ -32,18 +32,17 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 **Discord Access:** https://plexguide.com/threads/discord-link.303
 
 ----------------------------------------------------------------------
-
-
-[![N|Solid](https://plexguide.com/wikisnip2.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
-
-
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/version24.png" alt="Demo"/>
 </p>
+** PlexGuide Interface Demo**
+
+---------------------------------
 
 ### Preparation, Installation & Configuration
 
-**1. Quick Notes:**
+[![N|Solid](https://plexguide.com/wikisnip2.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
+
 - READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230
 - Lightly check the PlexGuide Wiki @ http://wiki.plexguide.com
 
