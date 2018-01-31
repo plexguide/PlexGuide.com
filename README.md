@@ -55,7 +55,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 **D. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243
 
-**E. RClone / PlexDrive / UnionFS Instrcutions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247
+**E. RClone / PlexDrive / UnionFS Instructions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247
 
 **F. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259
 
