@@ -33,6 +33,10 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 ----------------------------------------------------------------------
 
+
+[![N|Solid](https://plexguide.com/wikisnip.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
+
+
 <p align="center">
   <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/version24.png" alt="Demo"/>
 </p>
