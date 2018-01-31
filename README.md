@@ -67,7 +67,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 **8. Installing & Setting Up Support Programs**
  - Configure Plex: https://plexguide.com/threads/plex-configuration.307
- - [Configure Programs](http://wiki.plexguide.com) on the ***Right Hand Side***
+ - Configure Other Programs: https://plexguide.com/threads/guides-wiki-homepage.227/
  - Configure Portainer: https://plexguide.com/threads/portainer-configuration.311
  - Port Numbers Reminder: https://plexguide.com/threads/programs-port-numbers.306
 
