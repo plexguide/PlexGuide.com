@@ -17,10 +17,10 @@ if echo "$answer" | grep -iq "^y" ;then
     echo ""
     mkdir -p /mnt/gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
-    zip -r /tmp/"$YMLPROGRAM".zip /opt/appdata/"$YMLPROGRAM"
+    tar -zcvf -r /tmp/"$YMLPROGRAM".tar.gz /opt/appdata/"$YMLPROGRAM"
     echo "3. Copy Files to Your Google Drive"
-    rclone copy /tmp/"$YMLPROGRAM".zip gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
-    rm /tmp/"$YMLPROGRAM".zip
+    rclone copy /tmp/"$YMLPROGRAM".tar.gz gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
+    rm /tmp/"$YMLPROGRAM".tar.gz
     docker start "$YMLPROGRAM" 1>/dev/null 2>&1
     echo ""
     echo "4. Restarting Your Docker Program"
