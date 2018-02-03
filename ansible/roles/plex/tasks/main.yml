@@ -1,7 +1,7 @@
 ---
-- name: Warning
+- name: Warning!
   pause:
-    prompt: "You are utilizing the STABLE image. If you prefer the BETA version, re-install later through the menu! Press Enter to Continue"
+    prompt: "[Press Enter to Continue] Note: You are utilizing the STABLE image."
 
 - name: Stop and remove any existing container
   docker_container:
@@ -59,6 +59,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
+      CHANGE_CONFIG_DIR_OWNERSHIP: false
       PLEX_CLAIM: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
       HTTPS_METHOD: noredirect

@@ -1,7 +1,7 @@
 ---
 - name: Warning
   pause:
-    prompt: "You are utilizing the BETA image. If you prefer the STABLE version, re-install later through the menu! Press Enter to Continue"
+    prompt: "[Press Enter to Continue] Note: You are utilizing the BETA image."
 
 - name: Stop and remove any existing container
   docker_container:
