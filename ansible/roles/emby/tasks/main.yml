@@ -8,7 +8,7 @@
 - name: Deploy Emby Container
   docker_container:
     name: emby
-    image: emby/embyserver
+    image: emby/embyserver_netcore:latest
     pull: yes
     cpu_shares: 1024
     published_ports:
