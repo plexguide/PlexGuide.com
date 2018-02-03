@@ -61,7 +61,7 @@
       PLEX_GID: 1000
       CHANGE_CONFIG_DIR_OWNERSHIP: false
       PLEX_CLAIM: "{{pms_token.user_input}}"
-      ADVERTISE_IP: "{{local_ip.stdout}}:32400/"
+      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
       HTTPS_METHOD: noredirect
     etc_hosts: {'metrics.plex.tv': '127.0.0.1', 'analytics.plex.tv': '127.0.0.1'} ## From https://cloudbox.rocks
     networks:
