@@ -84,7 +84,7 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:plex.{{domain}}"
       traefik.port: "32400"
-    etc_hosts: {'metrics.plex.tv': '127.0.0.1', 'analytics.plex.tv': '127.0.0.1'} ## From https://cloudbox.rocks
+    #etc_hosts: {'metrics.plex.tv': '127.0.0.1', 'analytics.plex.tv': '127.0.0.1'} ## From https://cloudbox.rocks
 
 
 - name: Create Basic Directories
