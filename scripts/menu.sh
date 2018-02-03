@@ -38,7 +38,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.033" --menu "Make your choice" 18 43 11 \
+whiptail --title "Visit PlexGuide.com - v5.035" --menu "Make your choice" 18 43 11 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \

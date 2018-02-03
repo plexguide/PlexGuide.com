@@ -9,7 +9,7 @@
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 clear
 
-whiptail --title "Plex Information" --msgbox "If installing Plex on your OWN LOCAL Network, visit http//$ipv4:32400/web to complete the install. If installing Plex on a REMOTE SERVER have your Plex Claim Token ready by heading over to https://plex.tv/claim , and remember that the claim token is valid only for 4 minutes at a time! If, for some reason, the claim process should not work, head over to http://wiki.plexguide.com and use a manual method!" 16 66
+whiptail --title "Plex Information" --msgbox "Visit http//:$ipv4:32400/web to complete the install. If installing Plex on a REMOTE SERVER have your Plex Claim Token ready by heading over to https://plex.tv/claim , and remember that the claim token is valid only for 4 minutes at a time! If, for some reason, the claim process should not work, read the plex wiki for the other 3 methods to claim!" 16 66
 
 while [ 1 ]
 do

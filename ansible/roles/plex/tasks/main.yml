@@ -1,8 +1,4 @@
 ---
-- name: Warning
-  pause:
-    prompt: "You are utilizing the STABLE image. If you prefer the BETA version, re-install later through the menu! Press Enter to Continue"
-
 - name: Stop and remove any existing container
   docker_container:
     name: plex
@@ -84,13 +80,17 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:plex.{{domain}}"
       traefik.port: "32400"
-    #etc_hosts: {'metrics.plex.tv': '127.0.0.1', 'analytics.plex.tv': '127.0.0.1'} ## From https://cloudbox.rocks
 
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
       - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
+
+- name: Warning
+  pause:
+    prompt: "[Press Enter] (For Remote Servers) Remember to claim your SERVER via IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure it turn GREEN!"
+
 
 ## Source: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide
 #### http://docs.ansible.com/ansible/latest/unarchive_module.html

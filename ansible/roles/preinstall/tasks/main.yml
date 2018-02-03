@@ -29,6 +29,7 @@
       - ca-certificates
       - tree
       - ncdu
+      - ctop
     ignore_errors: yes
 
   #- name: Install ctop
