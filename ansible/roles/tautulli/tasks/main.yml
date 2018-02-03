@@ -29,4 +29,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:plexpy.{{domain}}"
+      traefik.frontend.rule2: "Host:tautulli.{{domain}}"
       traefik.port: "8181"
