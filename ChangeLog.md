@@ -12,6 +12,7 @@ Current Changes will continued to be modifed as known.
 - Updated Emby Image
 - Temp Removed /// Updates CTop to .7 | prior one was removed and caused freezing
 - Pre-Installer 25 second wait removed if docker was installed before
+- Put PlexGuide Back on Host Network so http://plex.tv can pick up properly; claiming still works
 
 #### Removed
 - None
@@ -50,8 +51,6 @@ Historical Documented Changes will be stored as below.
 
 #### Removed
 - NGINX-Proxy - It's the program; it crashes and loses track of everything!
-
-
 
 ### [5.030]
 #### Added
