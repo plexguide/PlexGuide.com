@@ -37,5 +37,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:rtorrent.{{domain}}"
+      traefik.frontend.rule: "Host:rutorrent.{{domain}}"
       traefik.port: "80"

@@ -2,7 +2,7 @@
 
 [![N|Solid](https://plexguide.com/discord.png)](https://plexguide.com/threads/discord-link.303/)
 
-[![N|Solid](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/Snip20180123_4.png)](https://plexguide.com)
+[![N|Solid](https://plexguide.com/board3.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open") [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
@@ -41,7 +41,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 ### PlexGuide Preparation, Installation & Configuration Install
 
-[![N|Solid](https://plexguide.com/wikisnip2.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
+[![N|Solid](https://plexguide.com/wikisnip3.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
 
 **1. Reading Assignment:**
 - READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230
@@ -50,6 +50,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 **2. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5
+- Want to test via a cheap dedicated server? Read: https://plexguide.com/threads/hetzners-cloud-server.381/
 
 **3. Preparation:**
  - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308
