@@ -16,6 +16,7 @@ Current Changes will continued to be modifed as known.
 - Added addiontal information for people who have issues where their server cannot be seen by network (added to guide)
     - https://plexguide.com/threads/plex-configuration.307/
 - Fixed rclone-en uid/gid issue for /mnt/encrypt
+- Added fix to install docker properly if it was uninstalled before
 
 #### Removed
 - None
