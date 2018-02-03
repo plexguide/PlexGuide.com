@@ -50,6 +50,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 **2. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
 - Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5
+- Want to test via a cheap dedicated server? Read: https://plexguide.com/threads/hetzners-cloud-server.381/
 
 **3. Preparation:**
  - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308
