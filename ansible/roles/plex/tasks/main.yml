@@ -68,6 +68,7 @@
       - name: plexguide
         aliases:
           - plex
+    network_mode: "host"
     expose:
       - 32400
     volumes:
