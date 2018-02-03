@@ -42,6 +42,7 @@
 - name: "Wait for 25 seconds before commencing"
   wait_for:
     timeout: 25
+  when: docker_daemon.stat.exists == False
 
 - name: Check override folder exists
   stat:
