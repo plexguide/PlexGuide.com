@@ -1,7 +1,7 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.033] Actively Working
+### [5.033 & 5.034] Actively Working
 #### Added
 - Added ncdu to preinstall
 
@@ -11,8 +11,10 @@ Current Changes will continued to be modifed as known.
 - Improved Reverse Proxy Guide: https://plexguide.com/threads/reverse-proxy-basic-instructions.259/
 - Updated Emby Image
 - Temp Removed /// Updates CTop to .7 | prior one was removed and caused freezing
+- Cleaned Up Random Messages
 - Pre-Installer 25 second wait removed if docker was installed before
-- Put PlexGuide Back on Host Network so http://plex.tv can pick up properly; claiming still works
+- Added addiontal information for people who have issues where their server cannot be seen by network (added to guide)
+    - https://plexguide.com/threads/plex-configuration.307/
 - Fixed rclone-en uid/gid issue for /mnt/encrypt
 
 #### Removed
