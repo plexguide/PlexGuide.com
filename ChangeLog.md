@@ -11,7 +11,7 @@ Current Changes will continued to be modifed as known.
 - Improved Reverse Proxy Guide: https://plexguide.com/threads/reverse-proxy-basic-instructions.259/
 - Updated Emby Image
 - Temp Removed /// Updates CTop to .7 | prior one was removed and caused freezing
-- Pre-Installer 25 second remove if docker was installed before
+- Pre-Installer 25 second wait removed if docker was installed before
 
 #### Removed
 - None
