@@ -12,7 +12,8 @@ Current Changes will continued to be modifed as known.
 - Updated Emby Image
 - Temp Removed /// Updates CTop to .7 | prior one was removed and caused freezing
 - Pre-Installer 25 second wait removed if docker was installed before
-- Put PlexGuide Back on Host Network so http://plex.tv can pick up properly; claiming still works
+- Added addiontal information for people who have issues where their server cannot be seen by network (added to guide)
+    - https://plexguide.com/threads/plex-configuration.307/
 - Fixed rclone-en uid/gid issue for /mnt/encrypt
 
 #### Removed
