@@ -64,11 +64,11 @@
       ADVERTISE_IP: "{{local_ip.stdout}}:32400/"
       HTTPS_METHOD: noredirect
     etc_hosts: {'metrics.plex.tv': '127.0.0.1', 'analytics.plex.tv': '127.0.0.1'}
-    #networks:
-      #- name: plexguide
-        #aliases:
-          #- plex
-    network_mode: "host"
+    networks:
+      - name: plexguide
+        aliases:
+          - plex
+    #network_mode: "host"
     expose:
       - 32400
     volumes:
