@@ -28,6 +28,7 @@
       - apt-transport-https
       - ca-certificates
       - tree
+    ignore_errors: yes
 
   - name: Install ctop
     get_url:
@@ -37,3 +38,4 @@
       owner: root
       group: root
       force: yes
+    ignore_errors: yes
