@@ -9,6 +9,7 @@ Current Changes will continued to be modifed as known.
 - Fixed RuTorrent Subdomain to rutorrent.yourdomain.com
 - Fixed Tautulli Sudomain to point correctly to tautulli.yourdomain.com / was plepy.yourdomain.com before
 - Improved Reverse Proxy Guide: https://plexguide.com/threads/reverse-proxy-basic-instructions.259/
+- Updated Emby Image
 
 #### Removed
 - None
