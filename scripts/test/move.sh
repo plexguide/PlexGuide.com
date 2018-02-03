@@ -29,5 +29,5 @@ mv /opt/plexguide/scripts/menus/restore-menu2 /opt/plexguide/scripts/menus/resto
 #mv /opt/plexguide/ansible/roles/foldersX /opt/plexguide/ansible/roles/folders
 
 ## For testing new rclone-en setup
-rm -r /opt/plexguide/scripts/docker-no/rclone-en.sh
-mv /opt/plexguide/scripts/docker-no/rclone-entest.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
+#rm -r /opt/plexguide/scripts/docker-no/rclone-en.sh
+#mv /opt/plexguide/scripts/docker-no/rclone-entest.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
