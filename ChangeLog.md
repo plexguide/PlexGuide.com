@@ -3,7 +3,7 @@ Current Changes will continued to be modifed as known.
 
 ### [5.033] Actively Working
 #### Added
-- None
+- Added ncdu to preinstall
 
 #### Changed
 - Fixed RuTorrent Subdomain to rutorrent.yourdomain.com
@@ -13,6 +13,7 @@ Current Changes will continued to be modifed as known.
 - Temp Removed /// Updates CTop to .7 | prior one was removed and caused freezing
 - Pre-Installer 25 second wait removed if docker was installed before
 - Put PlexGuide Back on Host Network so http://plex.tv can pick up properly; claiming still works
+- Fixed rclone-en uid/gid issue for /mnt/encrypt
 
 #### Removed
 - None
