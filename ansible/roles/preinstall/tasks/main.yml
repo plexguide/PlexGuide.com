@@ -24,10 +24,11 @@
       - openssh-server
       - dirmngr
       - npm
-      - zip 
+      - zip
       - apt-transport-https
       - ca-certificates
       - tree
+      - ncdu
     ignore_errors: yes
 
   #- name: Install ctop

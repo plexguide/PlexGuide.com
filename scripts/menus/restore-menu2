@@ -5,7 +5,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Restore Menu" --menu "Make your choice" 21 25 14 \
+whiptail --title "Restore Menu" --menu "Make your choice" 25 25 16 \
    "1)" "OMBIv3"   \
    "2)" "NZBGet"  \
    "3)" "Plex"  \
@@ -19,7 +19,9 @@ whiptail --title "Restore Menu" --menu "Make your choice" 21 25 14 \
    "11)" "NGINX"   \
    "12)" "CouchPotato"   \
    "13)" "Lidarr"   \
-   "14)" "Exit  "  3>&2 2>&1 1>&3
+   "14)" "Organizr"   \
+   "15)" "Muximux"   \
+   "16)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -101,6 +103,18 @@ case $CHOICE in
   ;;
 
    "14)")
+     echo ymlprogram organizr > /opt/plexguide/tmp.txt
+     echo ymldisplay ORGANIZR >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/backup-script.sh
+     ;;
+
+   "15)")
+     echo ymlprogram muximux > /opt/plexguide/tmp.txt
+     echo ymldisplay MUXIMUX >> /opt/plexguide/tmp.txt
+     bash /opt/plexguide/scripts/docker-no/backup-script.sh
+     ;;
+
+   "16)")
        clear
        exit 0
        ;;
