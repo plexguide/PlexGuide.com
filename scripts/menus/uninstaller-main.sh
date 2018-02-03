@@ -22,6 +22,7 @@ else
      echo 3. "Uninstalling Docker & Removing all Containers"
      echo ""
      # 1>/dev/null 2>&1
+     rm -r /etc/docker
      apt-get purge docker-ce
      rm -rf /var/lib/docker
      echo ""

@@ -34,6 +34,7 @@ case $CHOICE in
     "3)")
       echo "Uninstall Docker"
       echo
+      rm -r /etc/docker
       apt-get purge docker-ce
       rm -rf /var/lib/docker
       clear
