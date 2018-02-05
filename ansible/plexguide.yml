@@ -24,6 +24,7 @@
   - { role: radarr, tags: ['radarr'] }
   - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
+  - { role: lazy, tags: ['lazy'] }
   - { role: label, tags: ['label'] }
   - { role: resilio, tags: ['resilio'] }
   - { role: rutorrent, tags: ['rutorrent'] }

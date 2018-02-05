@@ -1,7 +1,7 @@
 ---
 - name: Remove LazyLibrarian Container
   docker_container:
-    name: lazylibrarian
+    name: lazy
     state: absent
 
 - name: Create Directories
@@ -13,7 +13,7 @@
 
 - name: Deploy LazyLibrarian Container
   docker_container:
-    name: lazylibrarian
+    name: lazy
     image: "linuxserver/lazylibrarian"
     pull: yes
     published_ports:
