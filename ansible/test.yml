@@ -4,4 +4,4 @@
     #- /opt/appdata/plexguide/var.yml
 
   roles:
-  - { role: rclone_un2, tags: ['rclone_un2'] }
+  - { role: traefik3, tags: ['traefik3'] }

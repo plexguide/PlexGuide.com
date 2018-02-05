@@ -1,0 +1,26 @@
+InsecureSkipVerify = true 
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"  
+domain = "ffplex.com"  
+watch = true  
+exposedbydefault = false
+
+[acme]
+email = "trash@cloud.com"  
+storage = "acme.json"  
+entryPoint = "https"  
+OnHostRule = true  
+  [acme.httpChallenge]
+  entryPoint = "http"
