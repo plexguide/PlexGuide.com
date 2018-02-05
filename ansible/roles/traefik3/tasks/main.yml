@@ -41,13 +41,13 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: yourdomain.com
-    replace: "{{domain}}"
+    replace: "ffplex.com"
 
 - name: Replace your@email.com with user input
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: user@gmail.com
-    replace: "{{email}}"
+    replace: "trash@trash.com"
 
 #############################
 
