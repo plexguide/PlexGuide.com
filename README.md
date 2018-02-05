@@ -46,6 +46,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 **1. Reading Assignment:**
 - READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230
 - Lightly check the PlexGuide Wiki @ https://plexguide.com/threads/guides-wiki-homepage.227/
+- Quick YouTube Demo on Docker & Portainer @ https://plexguide.com/threads/quick-101-live-demo-docker-portainer.400/
 
 **2. Pre-Preparation:**
 - Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
