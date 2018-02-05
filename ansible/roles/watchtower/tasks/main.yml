@@ -9,7 +9,7 @@
     name: watchtower
     image: v2tec/watchtower
     pull: yes
-    command: medusa tautulli jackett nzbhydra nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
+    command: medusa tautulli jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
     cpu_shares: 64
     state: started
     volumes:
