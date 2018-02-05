@@ -67,7 +67,7 @@
       - "80:80"
       - "443:443"
     env:
-      VIRTUAL_HOST: "traefik.{{domain}}"
+      VIRTUAL_HOST: "traefik.ffplex.com"
       VIRTUAL_PORT: 8080
     labels:
       traefik.docker.network: "dockerplatform_default"
