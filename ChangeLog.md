@@ -3,7 +3,7 @@ Current Changes will continued to be modifed as known.
 
 ### [5.035] Actively Working
 #### Added
-- None
+- NZBHydra2 to WatchTower
 
 #### Changed
 - None
