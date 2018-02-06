@@ -16,7 +16,8 @@ whiptail --title "Program Categories" --menu "Make your choice" 12 25 5 \
     "2)" "Medusa"   \
     "3)" "Sonarr"   \
     "4)" "Radarr"   \
-    "5)" "Exit  "  3>&2 2>&1 1>&3
+	"5)" "Mylar"    \
+    "6)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -56,8 +57,17 @@ case $CHOICE in
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
+	 
+	"5)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar
+    echo "Mylar: http://$ipv4:8090"
+    echo "For Subdomain http://mylar.$domain"
+    echo "For Domain http://$domain:8090"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
-     "5)")
+     "6)")
       clear
       exit 0
       ;;
