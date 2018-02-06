@@ -24,10 +24,10 @@
           - mylar
     volumes:
     - /opt/appdata/mylar/:/config
-	  - /mnt/rutorrents/downloads/incoming:/downloads
-	  - /mnt/nzbget/completed:/completed
-	  - /mnt/unionfs:/unionfs
-	  - /etc/localtime:/etc/localtime:ro
+    - /mnt/rutorrents/downloads/incoming:/downloads
+    - /mnt/nzbget/completed:/completed
+    - /mnt/unionfs:/unionfs
+    - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
     labels:
