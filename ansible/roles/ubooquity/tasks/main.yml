@@ -12,7 +12,7 @@
     cpu_shares: 256
     published_ports:
     - "2202:2202"
-	  - "2203:2203"
+    - "2203:2203"
     env:
       APP: ubooquity
       VERSION: stable
@@ -28,7 +28,7 @@
     - /mnt/unionfs/books:/books
     - /mnt/unionfs/comics:/comics
     - /mnt/unionfs/raw:/files
-	  - /etc/localtime:/etc/localtime:ro
+    - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
     labels:
