@@ -8,14 +8,15 @@
 - name: Deploy Emby Container
   docker_container:
     name: emby
-    image: emby/embyserver_netcore:latest
+    image: emby/embyserver:latest
     pull: yes
     cpu_shares: 1024
     published_ports:
       - "8096:8096"
     env:
-      PUID: "1000"
-      PGID: "1000"
+      UID: "1000"
+      GID: "1000"
+      GIDLIST: "1000"
       HTTPS_METHOD: noredirect
     expose:
       - 8096 
