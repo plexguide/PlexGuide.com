@@ -35,9 +35,9 @@ case $CHOICE in
 	 
 	"3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity
-    echo "EMBY: http://$ipv4:2202"
+    echo "EMBY: http://$ipv4:2202/ubooquity/"
     echo "For Subdomain http://ubooquity.$domain"
-    echo "For Domain http://$domain:2202"
+    echo "For Domain http://$domain:2202/ubooquity/"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
