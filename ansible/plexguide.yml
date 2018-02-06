@@ -47,3 +47,5 @@
   - { role: vnc, tags: ['vnc'] }
   - { role: ssl, tags: ['ssl'] }
   - { role: traefik, tags: ['traefik'] }
+  - { role: mylar, tags: ['mylar'] }
+  - { role: ubooquity, tags: ['ubooquity'] }
