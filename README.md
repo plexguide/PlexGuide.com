@@ -9,11 +9,7 @@ Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 ----------------------------------------------------------------------
 
-<p align="center">
-  <img src="http://plexguide.com/imagesplus/coding_team.png" alt="Coding Team"/>
-</p>
-
-Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
+The PlexGuide Staff: https://plexguide.com/members/?key=staff_members
 
 ### What is PlexGuide? ###
 
@@ -49,3 +45,4 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 **3. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
+- Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
