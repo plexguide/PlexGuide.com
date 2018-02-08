@@ -41,35 +41,8 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 [![N|Solid](https://plexguide.com/wikisnip3.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
 
-**1. Reading Assignment:**
-- READ THE QUICKFAQ First @ https://plexguide.com/threads/quick-faq.230
-- Lightly check the PlexGuide Wiki @ https://plexguide.com/threads/guides-wiki-homepage.227/
-- Quick YouTube Demo on Docker & Portainer @ https://plexguide.com/threads/quick-101-live-demo-docker-portainer.400/
+**1. Follow The Wiki:**
+- READ THE QUICKFAQ First @ https://plexguide.com/threads/guides-wiki-homepage.227
 
-**2. Pre-Preparation:**
-- Purchase a [Google Suite Drive Account](https://gsuite.google.com) via Unlimited Storage.
-- Dedicated, VPS, or Home Solution Ready. Server Questions? https://plexguide.com/categories/servers.5
-- Want to test via a cheap dedicated server? Read: https://plexguide.com/threads/hetzners-cloud-server.381/
-
-**3. Preparation:**
- - Google Drive Basic Layout: https://plexguide.com/threads/google-drive-basic-layout.308
- - Access Via SSH: https://plexguide.com/threads/access-your-ubuntu-via-ssh.309
- - Require a SUDO User?: https://plexguide.com/threads/create-sudo-user.251
- - Disk Space Warning Check!: https://plexguide.com/threads/disk-space-check.310
-
-**4. Obtain Google API Key:** https://plexguide.com/threads/api-google-drive.318/
-
-**5. Install PlexGuide:** https://plexguide.com/threads/plexguide-install-instructions.243
-
-**6. RClone / PlexDrive / UnionFS Instructions**: https://plexguide.com/threads/installing-plexdrive-rclone-basics.247
-
-**7. (Optional) Set up a Reverse Proxy (http:// only)**: https://plexguide.com/threads/reverse-proxy-instructions.259
-
-**8. Installing & Setting Up Support Programs**
- - Configure Plex: https://plexguide.com/threads/plex-configuration.307
- - Configure Other Programs: https://plexguide.com/threads/guides-wiki-homepage.227/
- - Configure Portainer: https://plexguide.com/threads/portainer-configuration.311
- - Port Numbers Reminder: https://plexguide.com/threads/programs-port-numbers.306
-
-**9. Final Notes**
+**2. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
