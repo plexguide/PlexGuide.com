@@ -42,7 +42,10 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 [![N|Solid](https://plexguide.com/wikisnip3.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
 
 **1. Follow The Wiki:**
-- READ THE QUICKFAQ First @ https://plexguide.com/threads/guides-wiki-homepage.227
+- Wiki Homepage @ https://plexguide.com/threads/guides-wiki-homepage.227
 
-**2. Final Notes**
+**2. Don't Care? Just Install (Been Warned if New)**
+- Install Instructions: https://plexguide.com/threads/plexguide-install-instructions.243/
+
+**3. Final Notes**
 - See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
