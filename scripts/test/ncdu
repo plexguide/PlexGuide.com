@@ -1,0 +1,117 @@
+#!/bin/bash
+
+## This is to analyse what taking up space on you drives
+
+#apt install ncdu -y
+
+## to run use name and drive or mount point
+
+#ncdu /
+#ncdu /mnt
+#ncdu /mnt/nzbget
+#ncdu /mnt/sab
+#ncdu /mnt/move
+#ncdu /mnt/unionfs
+
+### variables to call
+#ncdu {{mount.user_input}}
+
+clear
+
+while [ 1 ]
+do
+CHOICE=$(
+whiptail --title "Service Restart Menu" --menu "Make your choice" 17 55 10 \
+    "1)" "Entire drive - Can take a long time!"   \
+    "2)" "/mnt"  \
+    "3)" "Move"  \
+    "4)" "UnionFS"  \
+    "5)" "NZBGET"  \
+    "6)" "SAB"  \
+    "7)" "Deluge"  \
+    "8)" "RuTorrents"  \
+    "9)" "TorrentVPN"  \
+    "10)" "Exit  "  3>&2 2>&1 1>&3
+)
+
+result=$(whoami)
+case $CHOICE in
+    "1)")
+      clear
+      ncdu /
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+    "2)")
+        clear
+        ncdu /mnt
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue "
+        ;;
+
+    "3)")
+      clear
+      ncdu /mnt/move
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      clear
+      ;;
+
+    "4)")
+      clear
+      ncdu /mnt/unionfs
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      clear
+      ;;
+
+    "5)")
+      clear
+      ncdu /mnt/nzbget
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue "
+      clear
+        ;;
+
+    "6)")
+        clear
+        ncdu /mnt/sab
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+        ;;
+
+    "7)")
+        clear
+        ncdu /mnt/deluge
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+        ;;
+
+    "8)")
+        clear
+        ncdu /mnt/rutorrent
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue "
+        clear
+        ;;
+
+
+     "9)")
+         clear
+         ncdu /mnt/torrentvpn
+         echo ""
+         read -n 1 -s -r -p "Press any key to continue "
+         clear
+         ;;
+
+
+      "10)")
+      clear
+      exit 0
+      ;;
+esac
+done
+exit

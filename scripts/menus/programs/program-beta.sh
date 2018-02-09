@@ -4,19 +4,20 @@
  source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
  echo $ipv4
  echo $domain
- 
+
 clear
 
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Beta Menu" --menu "Make your choice" 13 60 6 \
+whiptail --title "Beta Menu" --menu "Make your choice" 14 60 7 \
     "1)" "VPN Torrent - New way"   \
     "2)" "VPN Torrent - Old way"   \
     "3)" "DO NOT USE - For Developers Use Only!"   \
     "4)" "NGINX-Proxy - For those that still want to use it!"   \
     "5)" "Couchpotato"  \
-    "6)" "Exit  "  3>&2 2>&1 1>&3
+    "6)" "NCDU"   \
+    "7)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -56,6 +57,11 @@ case $CHOICE in
    ;;
 
    "6)")
+   clear
+   bash /opt/plexguide/scripts/test/ncdu
+   ;;
+
+    "7)")
     clear
     exit 0
     ;;

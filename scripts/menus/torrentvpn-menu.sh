@@ -57,11 +57,7 @@ Default is set to Netherlands
 1. PIA VPN details
 2. Install DelugeVPN
 3. Install rTorrentVPN
-4. Install JackettVPN
-5. Install NGINX DelugeVPN
-6. Install NGINX rTorrentVPN
-7. Install NGINX JackettVPN
-8. Exit
+4. Exit
 
 *** Use http://iknowwhatyoudownload.com or TorGuard's CheckMyTorrentIP Tool
     to check for leaks! ***
@@ -155,37 +151,37 @@ read_options(){
      read -n 1 -s -r -p "Press any key to continue "
    fi
    ;;
-    4)
-    echo ymlprogram jackettvpn > /opt/plexguide/tmp.txt
-    echo ymldisplay JackettVPN >> /opt/plexguide/tmp.txt
-    echo ymlport 9117 >> /opt/plexguide/tmp.txt
-    bash /opt/plexguide/scripts/docker-no/program-installer.sh
-    ;;
-    5)
-    bash /opt/plexguide/scripts/torrentvpn/deluge.sh
-      docker rm -f delugevpn
-     echo ymlprogram nginx-delugevpn > /opt/plexguide/tmp.txt
-     echo ymldisplay NGINX DelugeVPN >> /opt/plexguide/tmp.txt
-     echo ymlport 8112 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      ;;
+#    4)
+#    echo ymlprogram jackettvpn > /opt/plexguide/tmp.txt
+#    echo ymldisplay JackettVPN >> /opt/plexguide/tmp.txt
+#    echo ymlport 9117 >> /opt/plexguide/tmp.txt
+#    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#    ;;
+#    5)
+#    bash /opt/plexguide/scripts/torrentvpn/deluge.sh
+#      docker rm -f delugevpn
+#     echo ymlprogram nginx-delugevpn > /opt/plexguide/tmp.txt
+#     echo ymldisplay NGINX DelugeVPN >> /opt/plexguide/tmp.txt
+#     echo ymlport 8112 >> /opt/plexguide/tmp.txt
+#     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#      ;;
 
-    6)
-    bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
-      docker rm -f rtorrentvpn
-     echo ymlprogram nginx-rtorrentvpn > /opt/plexguide/tmp.txt
-     echo ymldisplay NGINX rTorrentVPN >> /opt/plexguide/tmp.txt
-     echo ymlport 3000 >> /opt/plexguide/tmp.txt
-     bash /opt/plexguide/scripts/docker-no/program-installer.sh
-      ;;
-    7)
-      docker rm -f jackettvpn
-       echo ymlprogram nginx-jackettvpn > /opt/plexguide/tmp.txt
-       echo ymldisplay NGINX JackettVPN >> /opt/plexguide/tmp.txt
-       echo ymlport 9117 >> /opt/plexguide/tmp.txt
-       bash /opt/plexguide/scripts/docker-no/program-installer.sh
-        ;;
-    8)
+#    6)
+#    bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
+#      docker rm -f rtorrentvpn
+#     echo ymlprogram nginx-rtorrentvpn > /opt/plexguide/tmp.txt
+#     echo ymldisplay NGINX rTorrentVPN >> /opt/plexguide/tmp.txt
+#     echo ymlport 3000 >> /opt/plexguide/tmp.txt
+#     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#      ;;
+#    7)
+#      docker rm -f jackettvpn
+#       echo ymlprogram nginx-jackettvpn > /opt/plexguide/tmp.txt
+#       echo ymldisplay NGINX JackettVPN >> /opt/plexguide/tmp.txt
+#       echo ymlport 9117 >> /opt/plexguide/tmp.txt
+#       bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#        ;;
+    4)
       exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
