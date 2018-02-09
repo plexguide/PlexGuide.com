@@ -21,7 +21,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Service Restart Menu" --menu "Make your choice" 17 55 10 \
+whiptail --title "NCDU Directory Size Menu" --menu "Make your choice" 17 55 10 \
     "1)" "Entire drive - Can take a long time!"   \
     "2)" "/mnt"  \
     "3)" "Move"  \
