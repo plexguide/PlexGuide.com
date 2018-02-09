@@ -39,74 +39,47 @@ case $CHOICE in
     "1)")
       clear
       ncdu /
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
       ;;
 
     "2)")
         clear
         ncdu /mnt
-        echo ""
-        read -n 1 -s -r -p "Press any key to continue "
         ;;
 
     "3)")
       clear
       ncdu /mnt/move
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      clear
       ;;
 
     "4)")
       clear
       ncdu /mnt/unionfs
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      clear
       ;;
 
     "5)")
       clear
       ncdu /mnt/nzbget
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      clear
-        ;;
+      ;;
 
     "6)")
         clear
         ncdu /mnt/sab
-        echo ""
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
         ;;
 
     "7)")
         clear
         ncdu /mnt/deluge
-        echo ""
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
         ;;
 
     "8)")
         clear
         ncdu /mnt/rutorrent
-        echo ""
-        read -n 1 -s -r -p "Press any key to continue "
-        clear
         ;;
-
 
      "9)")
          clear
          ncdu /mnt/torrentvpn
-         echo ""
-         read -n 1 -s -r -p "Press any key to continue "
-         clear
          ;;
-
 
       "10)")
       clear
