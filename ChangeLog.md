@@ -4,6 +4,7 @@ Current Changes will continued to be modifed as known.
 ### [5.035] Actively Working
 #### Added
 - NZBHydra2 to WatchTower
+- Category Fields Locations for NZBGET for /tv /movie /music /ebook; users no longer have to add
 
 #### Changed
 - None
