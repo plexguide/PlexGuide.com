@@ -19,6 +19,7 @@
       - /mnt/nzbget/completed/movies
       - /mnt/nzbget/completed/music
       - /mnt/nzbget/completed/tv
+      - /mnt/nzbget/completed/ebooks
       - /mnt/nzbget/incomplete
       - /mnt/nzbget/nzb
       - /mnt/nzbget/queue
@@ -30,24 +31,29 @@
       - /mnt/sab/complete/tv
       - /mnt/sab/complete/movies
       - /mnt/sab/complete/music
+      - /mnt/sab/complete/ebooks
       - /mnt/sab/incomplete
       - /mnt/sab/nzb
       - /mnt/plexdrive4
       - /mnt/plexdrive4/tv
       - /mnt/plexdrive4/movies
       - /mnt/plexdrive4/music
+      - /mnt/sab/complete/ebooks
       - /mnt/encrypt
       - /mnt/encrypt/tv
       - /mnt/encrypt/movies
       - /mnt/encrypt/music
+      - /mnt/encrypt/ebooks
       - /mnt/.gcrypt
       - /mnt/.gcrypt/tv
       - /mnt/.gcrypt/movies
       - /mnt/.gcrypt/music
+      - /mnt/.gcrypt/ebooks
       - /mnt/gdrive
       - /mnt/gdrive/tv
       - /mnt/gdrive/movies
       - /mnt/gdrive/music
+      - /mnt/gdrive/ebooks
       - /mnt/unionfs
 
   - name: Create Important Directories
