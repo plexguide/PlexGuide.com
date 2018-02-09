@@ -161,11 +161,27 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Set Location of Movies
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category1.DestDir=/completed/movies'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Lowercase & Set TV Category
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^Category2.Name\s?='
     line: 'Category2.Name=tv'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Set Location of TV
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category2.DestDir=/completed/tv'
     state: present
   when: nzbget_conf.stat.exists == False
 
@@ -177,11 +193,27 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Set Location of Music
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category2.DestDir=/completed/music'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
 - name: Lowercase & Set EBook Category
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^Category4.Name\s?='
     line: 'Category4.Name=ebooks'
+    state: present
+  when: nzbget_conf.stat.exists == False
+
+- name: Set Location of EBooks
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category2.DestDir=/completed/ebooks'
     state: present
   when: nzbget_conf.stat.exists == False
 
