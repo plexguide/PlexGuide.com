@@ -5,10 +5,11 @@ Current Changes will continued to be modifed as known.
 #### Added
 - NZBHydra2 to WatchTower
 - Category Fields Locations for NZBGET for /tv /movie /music /ebook; users no longer have to add
-- NCDU menu into beta testing
+- NCDU menu
 
 #### Changed
 - Tidied up VPN Torrent - old way menu
+- Moved NCDU menu from Beta to Information menu
 
 #### Removed
 - None

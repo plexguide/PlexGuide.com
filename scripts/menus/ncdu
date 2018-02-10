@@ -1,27 +1,16 @@
 #!/bin/bash
 
-## This is to analyse what taking up space on you drives
+## This is to analyse what's taking up space on you drives
 
 #apt install ncdu -y
 
-## to run use name and drive or mount point
-
-#ncdu /
-#ncdu /mnt
-#ncdu /mnt/nzbget
-#ncdu /mnt/sab
-#ncdu /mnt/move
-#ncdu /mnt/unionfs
-
-### variables to call
-#ncdu {{mount.user_input}}
 
 clear
 
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "NCDU Directory Size Menu" --menu "Make your choice" 20 55 12 \
+whiptail --title "NCDU Directory Size Menu" --menu "Make your choice" 20 60 12 \
     "1)" "Entire drive - excluding /mnt"   \
     "2)" "Entire drive - excluding /mnt & /opt"   \
     "3)" "/opt - WARNING Can take a long time!"   \
@@ -93,7 +82,7 @@ case $CHOICE in
          ncdu /mnt/torrentvpn
          ;;
 
-      "11)")
+      "12)")
       clear
       exit 0
       ;;
