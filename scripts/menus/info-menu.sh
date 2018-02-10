@@ -5,14 +5,15 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Information Menu" --menu "Make your choice" 14 34 7 \
+whiptail --title "Information Menu" --menu "Make your choice" 15 54 8 \
     "1)" "View HardDrive Space"   \
-    "2)" "View Container Info"  \
-    "3)" "Verify PlexDrive"  \
-    "4)" "Verify UnionFS"  \
-    "5)" "Verify UN-RClone"  \
-    "6)" "Verify EN-RClone"  \
-    "7)" "Exit  "  3>&2 2>&1 1>&3
+    "2)" "Check storage space with NCDU"  \
+    "3)" "View Container Info"  \
+    "4)" "Verify PlexDrive"  \
+    "5)" "Verify UnionFS"  \
+    "6)" "Verify UN-RClone"  \
+    "7)" "Verify EN-RClone"  \
+    "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -25,11 +26,16 @@ case $CHOICE in
       ;;
 
     "2)")
+      clear
+      bash /opt/plexguide/scripts/menus/ncdu
+      ;;
+
+    "3)")
         clear
         ctop
         ;;
 
-    "3)")
+    "4)")
       clear
       ls /mnt/plexdrive4
       echo
@@ -41,7 +47,7 @@ case $CHOICE in
       clear
       ;;
 
-    "4)")
+    "5)")
       touch /mnt/move/uniontest.txt
       clear
       ls /mnt/unionfs
@@ -54,7 +60,7 @@ case $CHOICE in
       clear
       ;;
 
-    "5)")
+    "6)")
       touch /mnt/gdrive/gdrivetest.txt
       clear
       ls /mnt/gdrive
@@ -66,7 +72,7 @@ case $CHOICE in
       clear
         ;;
 
-    "6)")
+    "7)")
         touch /mnt/.gcrypt/gdrivetest.txt
         clear
         ls /mnt/.gcrypt
@@ -78,7 +84,7 @@ case $CHOICE in
         clear
         ;;
 
-     "7)")
+      "8)")
       clear
       exit 0
       ;;
