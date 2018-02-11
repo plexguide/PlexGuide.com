@@ -4,7 +4,7 @@ Current Changes will continued to be modifed as known.
 ### [5.036] Actively Working
 #### Added
 - SABNZBD: Automated location of /download and /incomplete folder; user no longer needs to setup
-- SABNZBB: Ignore Samples turned on Automatically
+- SABNZBD: Ignore Samples turned on Automatically
 
 #### Changed
 - None
