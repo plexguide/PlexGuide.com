@@ -9,6 +9,7 @@ Current Changes will continued to be modifed as known.
 #### Changed
 - SABNZBD: Ignore Samples turned on automatically for new installs
 - SABNZBD: Direct unpack turned on for new installs
+- SABNZBD: Automatically turns on Unwanted Extensions and Unwanted Exentions are automatically added
 
 #### Removed
 - None
