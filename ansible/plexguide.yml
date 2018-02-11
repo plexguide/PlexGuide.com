@@ -49,3 +49,4 @@
   - { role: traefik, tags: ['traefik'] }
   - { role: mylar, tags: ['mylar'] }
   - { role: ubooquity, tags: ['ubooquity'] }
+  - { role: heimdall, tags: ['heimdall'] }

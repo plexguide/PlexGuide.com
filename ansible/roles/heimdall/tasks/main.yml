@@ -1,0 +1,31 @@
+---
+
+- name: Remove Heimdall Container
+  docker_container:
+    name: heimdall
+    state: absent
+
+- name: Deploy Heimdall Container
+  docker_container:
+    name: heimdall
+    image: lsioarmhf/heimdall
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "1111:80"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/opt/appdata/heimdall:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - name: plexguide
+        aliases:
+          - heimdall
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:heimdall.{{domain}}"
+      traefik.port: "80"
