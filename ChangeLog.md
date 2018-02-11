@@ -8,9 +8,10 @@ Current Changes will continued to be modifed as known.
 #### Changed
 - Fixed RClone Menu Size in PlexGuide
 - CouchPotato no longer starts up with the Wizard
+- CouchPotato Blackhole turned off
 
 #### Removed
-- None
+- CouchPotato from the Menu
 
 -------------------------------------------------------
 ## Past Changes
