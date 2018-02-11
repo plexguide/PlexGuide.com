@@ -14,6 +14,7 @@ Current Changes will continued to be modifed as known.
 - SABNZBD: Remove Password Protects RARS is now automatically turned on
 - SABNZBD: All files will go into one folder for unpack
 - SABNZBD: Remove dots from folders and replace with spaces
+- SABNZBD: Automatically added cleanup extensions
 
 #### Removed
 - None
