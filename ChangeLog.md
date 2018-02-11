@@ -10,6 +10,8 @@ Current Changes will continued to be modifed as known.
 - SABNZBD: Ignore Samples turned on automatically for new installs
 - SABNZBD: Direct unpack turned on for new installs
 - SABNZBD: Automatically turns on Unwanted Extensions and Unwanted Exentions are automatically added
+- SABNZBD: Try new NZB if fails automatically turned on automatically
+- SABNZBD: Remove Password Protects RARS is now automatically turned on
 
 #### Removed
 - None
