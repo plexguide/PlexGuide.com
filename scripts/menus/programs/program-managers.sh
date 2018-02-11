@@ -12,12 +12,12 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 12 27 7 \
-    "1)" "Couchpotato" \
+    "1)" "Couchpotato"   \
     "2)" "Lidarr"   \
     "3)" "Medusa"   \
     "4)" "Sonarr"   \
     "5)" "Radarr"   \
-	  "6)" "Mylar"    \
+	"6)" "Mylar"    \
     "7)" "Exit  "  3>&2 2>&1 1>&3
 )
 
