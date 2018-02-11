@@ -69,18 +69,16 @@
     state: stopped
   when: sabnzbd_ini.stat.exists == False
 
-- name: Change Downloads Location
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: "complete_dir = Downloads/complete"
-    line: "complete_dir = /complete"
-    state: present
-  when: sabnzbd_ini.stat.exists == False
-
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "complete_dir = Downloads/complete"
     replace: "complete_dir = /complete"
+  when: sabnzbd_ini.stat.exists == False
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "complete_dir = Downloads/incomplete"
+    replace: "complete_dir = /incomplete"
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
