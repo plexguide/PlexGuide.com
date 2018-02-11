@@ -105,10 +105,18 @@
     replace: "ignore_samples = 1"
   when: sabnzbd_ini.stat.exists == False
 
+## remove unwanted extensions
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "unwanted_extensions = ,"
     replace: "unwanted_extensions = exe, com, bat, sh"
+  when: sabnzbd_ini.stat.exists == False
+
+## ignore and cleanup the following files
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "cleanup_list = ,"
+    replace: "cleanup_list = nfo, exe, com, bat, txt, doc, xls, xlxs, docx, doc, jpg, jeg, gif, png"
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
@@ -129,6 +137,20 @@
     path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "new_nzb_on_failure = 0"
     replace: "new_nzb_on_failure = 1"
+  when: sabnzbd_ini.stat.exists == False
+
+## replace dots with space
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "replace_dots = 0"
+    replace: "replace_dots = 1"
+  when: sabnzbd_ini.stat.exists == False
+
+## flat_unpack
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "flat_unpack = 0"
+    replace: "flat_unpack = 1"
   when: sabnzbd_ini.stat.exists == False
 
 - name: Restart Container
