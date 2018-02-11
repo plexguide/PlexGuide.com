@@ -107,12 +107,6 @@
 
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: port = 8080
-    replace: port = 8090
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "unwanted_extensions = ,"
     replace: "unwanted_extensions = exe, com, bat, sh"
   when: sabnzbd_ini.stat.exists == False
@@ -121,6 +115,12 @@
     path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "action_on_unwanted_extensions = 0"
     replace: "action_on_unwanted_extensions = 2"
+  when: sabnzbd_ini.stat.exists == False
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "pause_on_pwrar = 1"
+    replace: "pause_on_pwrar = 2"
   when: sabnzbd_ini.stat.exists == False
 
 - name: Restart Container
