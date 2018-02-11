@@ -6,7 +6,7 @@ Current Changes will continued to be modifed as known.
 - None
 
 #### Changed
-- None
+- Fixed RClone Menu Size in PlexGuide
 
 #### Removed
 - None
