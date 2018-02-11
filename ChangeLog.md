@@ -10,6 +10,7 @@ Current Changes will continued to be modifed as known.
 #### Changed
 - Tidied up VPN Torrent - old way menu
 - Moved NCDU menu from Beta to Information menu
+- Fixed removal of password issue when using NZBGET for the first time
 
 #### Removed
 - None
