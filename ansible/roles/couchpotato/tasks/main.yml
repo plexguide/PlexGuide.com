@@ -87,7 +87,6 @@
     regexp: "enabled = True"
     replace: "enabled = 0"
     after: "[blackhole]"
-    before: "[deluge]"
   when: cp_ini.stat.exists == False
 
 - name: "Wait 5 Seconds"
