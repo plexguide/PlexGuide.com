@@ -82,11 +82,9 @@
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
-    path: /opt/appdata/nzbget/nzbget.conf
-    regexp: 'dir = ""'
-    replace: 'dir = "movies"'
-    after: "[[movies]]"
-    before: "[[software]]"
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "ignore_samples = 0"
+    replace: "ignore_samples = 1"
   when: sabnzbd_ini.stat.exists == False
 
 - name: Restart Container
