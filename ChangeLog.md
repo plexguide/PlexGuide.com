@@ -1,13 +1,12 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.037] Actively Working
+### [5.038] Actively Working
 #### Added
-- CouchPotato Container Added (No Wiki Yet)
+- None
 
 #### Changed
-- Fixed RClone Menu Size in PlexGuide
-- CouchPotato no longer starts up with the Wizard
+- None
 
 #### Removed
 - None
@@ -15,6 +14,18 @@ Current Changes will continued to be modifed as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.037]
+#### Added
+- CouchPotato Container Added (No Wiki Yet)
+
+#### Changed
+- Fixed RClone Menu Size in PlexGuide
+- CouchPotato no longer starts up with the Wizard
+- CouchPotato Blackhole turned off
+
+#### Removed
+- CouchPotato from the Menu
 
 ### [5.036]
 #### Added
