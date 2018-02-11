@@ -83,7 +83,6 @@
     replace: dir = "movies"
     after: [[movies]]
     before: [[software]]
-    state: present
   when: sabnzbd_ini.stat.exists == False
 
 - name: Restart Container
