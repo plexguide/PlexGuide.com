@@ -58,12 +58,27 @@
     timeout: 10
   when: cp_ini.stat.exists == False
 
-## prevent wizard from starting
-- name: turn wizard off
+- name: Turn the Wizard Off
   replace:
     path: /opt/appdata/couchpotato/config.ini
     regexp: "show_wizard = 1"
     replace: "show_wizard = 0"
+  when: cp_ini.stat.exists == False
+
+- name: Turn on Dark Theme
+  replace:
+    path: /opt/appdata/couchpotato/config.ini
+    regexp: "dark_theme = False"
+    replace: "dark_theme = True"
+  when: cp_ini.stat.exists == False
+
+- name: Turn off blackhole
+  replace:
+    path: /opt/appdata/couchpotato/config.ini
+    regexp: "enabled = True"
+    replace: "enabled = False"
+    after: "[blackhole]"
+    before: "directory = /root"
   when: cp_ini.stat.exists == False
 
 - name: "Wait 5 Seconds"
