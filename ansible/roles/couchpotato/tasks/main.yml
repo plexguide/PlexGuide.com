@@ -59,7 +59,7 @@
   when: cp_ini.stat.exists == False
 
 ## prevent wizard from starting
-name: turn wizard off
+- name: turn wizard off
   replace:
     path: /opt/appdata/couchpotato/config.ini
     regexp: "show_wizard = 0"
