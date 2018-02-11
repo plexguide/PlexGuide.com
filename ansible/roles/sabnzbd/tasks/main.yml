@@ -117,10 +117,18 @@
     replace: "action_on_unwanted_extensions = 2"
   when: sabnzbd_ini.stat.exists == False
 
+## aborts encrypted rar rather than pausing
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "pause_on_pwrar = 1"
     replace: "pause_on_pwrar = 2"
+  when: sabnzbd_ini.stat.exists == False
+
+## try a new nzb if it fails
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "new_nzb_on_failure = 0"
+    replace: "new_nzb_on_failure = 1"
   when: sabnzbd_ini.stat.exists == False
 
 - name: Restart Container
