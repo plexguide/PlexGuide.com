@@ -76,7 +76,8 @@
 - name: Remove Password
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^ControlPassword=\s?='
+    regexp: ControlPassword=tegbzn6789
+    #regexp: '^ControlPassword=\s?='
     line: 'ControlPassword='
     state: present
   when: nzbget_conf.stat.exists == False
