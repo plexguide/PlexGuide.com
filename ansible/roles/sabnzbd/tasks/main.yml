@@ -70,19 +70,17 @@
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
-    path: /etc/hosts
-    regexp: '(\s+)old\.host\.name(\s+.*)?$'
-    replace: '\1new.host.name\2'
-    after: 'Start after line.*'
-    before: 'Start before line.*'
-    backup: yes
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: 'complete_dir = Downloads/complete'
+    replace: 'complete_dir = /complete'
+  when: sabnzbd_ini.stat.exists == False
 
 - replace:
     path: /opt/appdata/nzbget/nzbget.conf
-    regexp: dir = ""
-    replace: dir = "movies"
-    after: [[movies]]
-    before: [[software]]
+    regexp: 'dir = ""'
+    replace: 'dir = "movies"'
+    after: "[[movies]]"
+    before: "[[software]]"
   when: sabnzbd_ini.stat.exists == False
 
 - name: Restart Container
