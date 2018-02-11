@@ -70,7 +70,6 @@
   when: sabnzbd_ini.stat.exists == False
 
 - name: Movies
-  lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: 'dir = ""'
     replace: 'dir = "movies"'
