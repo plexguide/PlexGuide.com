@@ -1,7 +1,24 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
-### [5.035] Actively Working
+### [5.036] Actively Working
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+## Current Changes
+Current Changes will continued to be modifed as known.
+
+### [5.036]
 #### Added
 - NZBHydra2 to WatchTower
 - Category Fields Locations for NZBGET for /tv /movie /music /ebook; users no longer have to add
@@ -15,10 +32,6 @@ Current Changes will continued to be modifed as known.
 
 #### Removed
 - None
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.033 & 5.034]
 #### Added
