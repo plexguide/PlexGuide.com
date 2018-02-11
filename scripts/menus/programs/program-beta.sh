@@ -15,8 +15,7 @@ whiptail --title "Beta Menu" --menu "Make your choice" 14 60 7 \
     "2)" "VPN Torrent - Old way"   \
     "3)" "DO NOT USE - For Developers Use Only!"   \
     "4)" "NGINX-Proxy - For those that still want to use it!"   \
-    "5)" "Couchpotato"  \
-    "6)" "Exit  "  3>&2 2>&1 1>&3
+    "5)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -46,16 +45,7 @@ case $CHOICE in
    read -n 1 -s -r -p "Press any key to continue "
    ;;
 
-  "5)")
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
-   echo "CouchPotato: http://$ipv4:5050"
-   echo "For Subdomain http://couchpotato.$domain"
-   echo "For Domain http://$domain:5050"
-   echo ""
-   read -n 1 -s -r -p "Press any key to continue "
-   ;;
-
-   "6)")
+   "5)")
     clear
     exit 0
     ;;
