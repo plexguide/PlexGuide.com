@@ -107,8 +107,8 @@
 
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "port = 8080"
-    replace: "port = 8090"
+    regexp: port = 8080
+    replace: port = 8090
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
