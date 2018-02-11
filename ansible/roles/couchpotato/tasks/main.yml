@@ -75,8 +75,8 @@
 - name: Turn off blackhole
   replace:
     path: /opt/appdata/couchpotato/config.ini
-    regexp: "enabled = True"
-    replace: "enabled = False"
+    regexp: "enabled = 1"
+    replace: "enabled = 0"
     after: "[blackhole]"
     before: "directory = /root"
   when: cp_ini.stat.exists == False
