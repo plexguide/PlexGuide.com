@@ -80,13 +80,13 @@
     after: "[blackhole]"
   when: cp_ini.stat.exists == False
 
-- name: Turn On Renamer
-  replace:
-    path: /opt/appdata/couchpotato/config.ini
-    regexp: "enabled = 0"
-    replace: "enabled = True"
-    after: "[renamer]"
-  when: cp_ini.stat.exists == False
+#- name: Turn On Renamer
+  #replace:
+    #path: /opt/appdata/couchpotato/config.ini
+    #regexp: "enabled = 0"
+    #replace: "enabled = True"
+    #after: "[renamer]"
+  #when: cp_ini.stat.exists == False
 
 - name: "Wait 5 Seconds"
   wait_for:
