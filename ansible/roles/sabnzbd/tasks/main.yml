@@ -69,11 +69,11 @@
     state: stopped
   when: sabnzbd_ini.stat.exists == False
 
-- name: Remove Password
+- name: Movies
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: 'dir = ""'
-    line: 'dir = "movies"'
+    replace: 'dir = "movies"'
     after: "[[movies]]"
     before: "[[software]]"
     state: present
