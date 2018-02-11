@@ -71,8 +71,14 @@
     timeout: 5
   when: cp_ini.stat.exists == False
 
+- name: Stopping CouchPotato Container
+  docker_container:
+    name: couchpotato
+    state: stopped
+  when: cp_ini.stat.exists == False
+
 - name: Restarting CouchPotato Container
   docker_container:
     name: couchpotato
-    state: restart
+    state: started
   when: cp_ini.stat.exists == False
