@@ -4,6 +4,11 @@
     name: couchpotato
     state: absent
 
+- name: Check sabnzbd.ini exists
+  stat:
+    path: "/opt/appdata/couchpotato/config.ini"
+  register: cp_ini
+
 - name: Deploy CouchPotato Container
   docker_container:
     name: couchpotato
@@ -41,3 +46,21 @@
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
+
+- name: Path for .ini
+  wait_for:
+    path: "/opt/appdata/couchpotato/config.ini"
+    state: present
+  when: cp_ini.stat.exists == False
+
+- name: "Wait 10 Seconds"
+  wait_for:
+    timeout: 10
+  when: cp_ini.stat.exists == False
+
+## prevent wizard from starting
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "show_wizard = 1"
+    replace: "show_wizard = 0"
+  when: sabnzbd_ini.stat.exists == False
