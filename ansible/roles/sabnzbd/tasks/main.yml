@@ -69,12 +69,20 @@
     state: stopped
   when: sabnzbd_ini.stat.exists == False
 
-- replace: Movies
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: 'dir = ""'
-    replace: 'dir = "movies"'
-    after: "[[movies]]"
-    before: "[[software]]"
+- replace:
+    path: /etc/hosts
+    regexp: '(\s+)old\.host\.name(\s+.*)?$'
+    replace: '\1new.host.name\2'
+    after: 'Start after line.*'
+    before: 'Start before line.*'
+    backup: yes
+
+- replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: dir = ""
+    replace: dir = "movies"
+    after: [[movies]]
+    before: [[software]]
     state: present
   when: sabnzbd_ini.stat.exists == False
 
