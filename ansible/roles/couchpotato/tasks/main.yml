@@ -72,14 +72,14 @@
     replace: "dark_theme = True"
   when: cp_ini.stat.exists == False
 
-- name: Turn On Renamer
-  replace:
-    path: /opt/appdata/couchpotato/config.ini
-    regexp: "enabled = False"
-    replace: "enabled = True"
-    after: "[renamer]"
-    before: "[subtitle]"
-  when: cp_ini.stat.exists == False
+#- name: Turn On Renamer
+  #replace:
+    #path: /opt/appdata/couchpotato/config.ini
+    #regexp: "enabled = False"
+    #replace: "enabled = True"
+    #after: "[renamer]"
+    #before: "[subtitle]"
+  #when: cp_ini.stat.exists == False
 
 - name: Turn off Blackhole
   replace:
