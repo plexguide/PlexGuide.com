@@ -77,8 +77,8 @@
 
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "complete_dir = Downloads/incomplete"
-    replace: "complete_dir = /incomplete"
+    regexp: "download_dir = Downloads/incomplete"
+    replace: "download_dir = /incomplete"
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
