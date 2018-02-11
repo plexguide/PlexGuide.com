@@ -62,6 +62,6 @@
 - name: turn wizard off
   replace:
     path: /opt/appdata/couchpotato/config.ini
-    regexp: "show_wizard = 0"
-    replace: "show_wizard = 1"
+    regexp: "show_wizard = 1"
+    replace: "show_wizard = 0"
   when: cp_ini.stat.exists == False
