@@ -83,7 +83,7 @@
 
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "nzb_backup_dir ="
+    regexp: nzb_backup_dir = ""
     replace: "nzb_backup_dir = /nzb"
   when: sabnzbd_ini.stat.exists == False
 
