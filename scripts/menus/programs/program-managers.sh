@@ -18,12 +18,11 @@ whiptail --title "Program Categories" --menu "Make your choice" 12 27 7 \
     "4)" "Sonarr"   \
     "5)" "Radarr"   \
 	"6)" "Mylar"    \
-    "7)" "Exit  "  3>&2 2>&1 1>&3
+    "7)" "Exit"  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE 
-
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
     echo "Lidarr: http://$ipv4:5050"
