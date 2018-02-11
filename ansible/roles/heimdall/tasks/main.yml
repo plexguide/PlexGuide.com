@@ -8,11 +8,11 @@
 - name: Deploy Heimdall Container
   docker_container:
     name: heimdall
-    image: lsioarmhf/heimdall
+    image: lsioarmhf/heimdall:latest
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "8695:80"
+      - "1111:80"
     env:
       PUID: "1000"
       PGID: "1000"

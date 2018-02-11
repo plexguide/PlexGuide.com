@@ -26,7 +26,7 @@ case $CHOICE in
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
     echo "heimdall: http://$ipv4:1111"
     echo "For Subdomain http://heimdall.$domain"
-    echo "For Domain http://$domain:8085"
+    echo "For Domain http://$domain:1111"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
