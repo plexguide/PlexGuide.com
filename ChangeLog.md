@@ -3,7 +3,7 @@ Current Changes will continued to be modifed as known.
 
 ### [5.036] Actively Working
 #### Added
-- None
+- Automated location of /download and /incomplete folder; user no longer needs to setup
 
 #### Changed
 - None
