@@ -15,10 +15,7 @@ Current Changes will continued to be modifed as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-## Current Changes
-Current Changes will continued to be modifed as known.
-
-### [5.036]
+### [5.035]
 #### Added
 - NZBHydra2 to WatchTower
 - Category Fields Locations for NZBGET for /tv /movie /music /ebook; users no longer have to add
