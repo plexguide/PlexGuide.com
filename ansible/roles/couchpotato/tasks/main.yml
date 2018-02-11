@@ -78,7 +78,6 @@
     regexp: "enabled = True"
     replace: "enabled = 0"
     after: "[blackhole]"
-    before: "directory = /root"
   when: cp_ini.stat.exists == False
 
 - name: "Wait 5 Seconds"
