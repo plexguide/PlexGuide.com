@@ -6,6 +6,7 @@ Current Changes will continued to be modifed as known.
 - NZBHydra2 to WatchTower
 - Category Fields Locations for NZBGET for /tv /movie /music /ebook; users no longer have to add
 - NCDU menu
+- Fixed Movies category issues, new deployment results in /movies now instead of /Movies
 
 #### Changed
 - Tidied up VPN Torrent - old way menu
