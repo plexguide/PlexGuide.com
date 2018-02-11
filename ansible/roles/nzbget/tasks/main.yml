@@ -199,7 +199,7 @@
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^Category1.Name\s?='
-    line: 'Category2.DestDir=/completed/music'
+    line: 'Category3.DestDir=/completed/music'
     state: present
   when: nzbget_conf.stat.exists == False
 
@@ -215,7 +215,7 @@
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^Category1.Name\s?='
-    line: 'Category2.DestDir=/completed/ebooks'
+    line: 'Category4.DestDir=/completed/ebooks'
     state: present
   when: nzbget_conf.stat.exists == False
 
