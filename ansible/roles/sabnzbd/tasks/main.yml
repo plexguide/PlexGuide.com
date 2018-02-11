@@ -69,7 +69,7 @@
     state: stopped
   when: sabnzbd_ini.stat.exists == False
 
-- name: Movies
+- replace: Movies
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: 'dir = ""'
     replace: 'dir = "movies"'
