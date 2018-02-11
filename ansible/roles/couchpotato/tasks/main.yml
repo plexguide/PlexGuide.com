@@ -38,9 +38,6 @@
       - /mnt/sab/complete:/complete
       - /mnt/nzbget/completed:/completed
       - /mnt/deluge/downloaded:/downloaded
-      - /mnt/rutorrents/downloads/incoming:/downloads
-      - /mnt/torrentvpn/.watched:/watched
-      - /mnt/torrentvpn/downloaded:/downloaded
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
