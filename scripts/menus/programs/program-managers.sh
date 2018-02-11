@@ -22,10 +22,10 @@ whiptail --title "Program Categories" --menu "Make your choice" 12 27 7 \
 )
 
 result=$(whoami)
-case $CHOICE 
+case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
-    echo "Lidarr: http://$ipv4:5050"
+    echo "Couchpotato: http://$ipv4:5050"
     echo "For Subdomain http://couchpotato.$domain"
     echo "For Domain http://$domain:5050"
     echo ""
