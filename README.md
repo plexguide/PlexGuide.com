@@ -27,7 +27,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 **REDDIT:** https://www.reddit.com/r/AwesomePlex/
 
-**Discord:** https://plexguide.com/threads/discord-link.303
+**Discord:** https://plexguide.com/threads/plexguide-discord-information.471/
 
 ----------------------------------------------------------------------
 <p align="center">
