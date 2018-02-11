@@ -1,3 +1,4 @@
+
 ---
 
 - name: Remove NZBGET Container
@@ -181,7 +182,7 @@
 - name: Set Location of TV
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category2.Name\s?='
+    regexp: '^Category1.Name\s?='
     line: 'Category2.DestDir=/completed/tv'
     state: present
   when: nzbget_conf.stat.exists == False
@@ -197,8 +198,8 @@
 - name: Set Location of Music
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category3.Name\s?='
-    line: 'Category3.DestDir=/completed/music'
+    regexp: '^Category1.Name\s?='
+    line: 'Category2.DestDir=/completed/music'
     state: present
   when: nzbget_conf.stat.exists == False
 
@@ -213,8 +214,8 @@
 - name: Set Location of EBooks
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category4.Name\s?='
-    line: 'Category4.DestDir=/completed/ebooks'
+    regexp: '^Category1.Name\s?='
+    line: 'Category2.DestDir=/completed/ebooks'
     state: present
   when: nzbget_conf.stat.exists == False
 
