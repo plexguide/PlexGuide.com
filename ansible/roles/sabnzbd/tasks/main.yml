@@ -75,7 +75,7 @@
     regexp: "complete_dir = Downloads/complete"
     line: "complete_dir = /complete"
     state: present
-  when: sabnzbd_conf.stat.exists == False
+  when: sabnzbd_ini.stat.exists == False
 
 - replace:
     path: /opt/appdata/nzbget/nzbget.conf
