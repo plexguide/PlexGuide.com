@@ -50,3 +50,4 @@
   - { role: mylar, tags: ['mylar'] }
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: heimdall, tags: ['heimdall'] }
+  - { role: couchpotato, tags: ['couchpotato'] }

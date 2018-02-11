@@ -47,7 +47,7 @@ case $CHOICE in
    ;;
 
   "5)")
-   ansible-playbook /opt/plexguide/ansible/vpn.yml --tags couchpotato
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
    echo "CouchPotato: http://$ipv4:5050"
    echo "For Subdomain http://couchpotato.$domain"
    echo "For Domain http://$domain:5050"
