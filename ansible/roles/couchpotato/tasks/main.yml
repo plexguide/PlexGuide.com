@@ -65,3 +65,14 @@
     regexp: "show_wizard = 1"
     replace: "show_wizard = 0"
   when: cp_ini.stat.exists == False
+
+- name: "Wait 5 Seconds"
+  wait_for:
+    timeout: 5
+  when: cp_ini.stat.exists == False
+
+- name: Restarting CouchPotato Container
+  docker_container:
+    name: couchpotato
+    state: restart
+  when: cp_ini.stat.exists == False
