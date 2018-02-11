@@ -78,6 +78,12 @@
   when: sabnzbd_ini.stat.exists == False
 
 - replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "complete_dir = Downloads/complete"
+    replace: "complete_dir = /complete"
+  when: sabnzbd_ini.stat.exists == False
+
+- replace:
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: 'dir = ""'
     replace: 'dir = "movies"'
