@@ -69,11 +69,13 @@
     state: stopped
   when: sabnzbd_ini.stat.exists == False
 
-- name: Test
+- name: Remove Password
   lineinfile:
-    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-    regexp: '^port\s'
-    line: 'ports\s'
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: 'dir = ""'
+    line: 'dir = "movies"'
+    after: "[[movies]]"
+    before: "[[software]]"
     state: present
   when: sabnzbd_ini.stat.exists == False
 
