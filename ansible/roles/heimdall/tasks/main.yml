@@ -8,7 +8,7 @@
 - name: Deploy Heimdall Container
   docker_container:
     name: heimdall
-    image: linuxserver/heimdall:latest
+    image: linuxserver/heimdall
     pull: yes
     cpu_shares: 256
     published_ports:
