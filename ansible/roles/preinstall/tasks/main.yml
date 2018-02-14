@@ -35,6 +35,9 @@
   - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
     shell: pip install git+https://github.com/larsks/ansible-toolbox
 
+  - name: Create Symbolic Link for Ansible-ToolBox
+    shell: sudo ln -s /opt/plexguide/ansible/roles /etc/ansible/
+
   #- name: Install ctop
     #get_url:
       #url:  https://github.com/bcicen/ctop/releases/download/v0.7/ctop-0.7-linux-amd64
