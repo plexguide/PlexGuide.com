@@ -39,9 +39,9 @@
     shell: unlink /etc/ansible/roles
     ignore_errors: yes
 
-  #- name: Remove Folder if it exists
-    #shell: rm -r /etc/ansible/roles
-    #ignore_errors: yes
+  - name: Remove Folder if it exists
+    shell: rm -r /etc/ansible/roles
+    ignore_errors: yes
 
   - name: Create Symbolic Link for Ansible-ToolBox
     shell: ln -s /opt/plexguide/ansible/roles /etc/ansible/
