@@ -30,7 +30,23 @@
       - tree
       - ncdu
       - ctop
+
+  - debug: msg="You May Get An Error Notice, Ignore the Error!"
+
+  - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
+    shell: pip install git+https://github.com/larsks/ansible-toolbox
     ignore_errors: yes
+
+  - name: Remove Symbolic if it exists
+    shell: unlink /etc/ansible/roles
+    ignore_errors: yes
+
+  - name: Remove Folder if it exists
+    shell: rm -r /etc/ansible/roles
+    ignore_errors: yes
+
+  - name: Create Symbolic Link for Ansible-ToolBox
+    shell: ln -s /opt/plexguide/ansible/roles /etc/ansible/
 
   #- name: Install ctop
     #get_url:
