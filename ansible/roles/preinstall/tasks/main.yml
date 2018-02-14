@@ -33,7 +33,7 @@
     ignore_errors: yes
 
   - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
-    shell: sudo pip install git+https://github.com/larsks/ansible-toolbox
+    shell: pip install git+https://github.com/larsks/ansible-toolbox
 
   #- name: Install ctop
     #get_url:
