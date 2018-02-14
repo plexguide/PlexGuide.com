@@ -32,11 +32,21 @@
       - ctop
     ignore_errors: yes
 
-  - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
-    shell: pip install git+https://github.com/larsks/ansible-toolbox
+- name: Check if Symoblic Link Exists
+  stat:
+    path: "/etc/ansible/roles/folders"
+  register: symbolic
 
-  - name: Create Symbolic Link for Ansible-ToolBox
-    shell: sudo ln -s /opt/plexguide/ansible/roles /etc/ansible/
+- name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
+  shell: pip install git+https://github.com/larsks/ansible-toolbox
+
+- name: Remove Unused Ansible Roles Folder
+  shell: sudo rm -r /etc/ansible/roles
+  when: symoblic == False
+
+- name: Create Symbolic Link for Ansible-ToolBox
+  shell: sudo ln -s /opt/plexguide/ansible/roles /etc/ansible/
+  when: symoblic == False
 
   #- name: Install ctop
     #get_url:
