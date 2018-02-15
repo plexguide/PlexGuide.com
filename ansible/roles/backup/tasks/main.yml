@@ -18,7 +18,7 @@
 - name: Making Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /mnt/gdrive/plexguide/{{program_var.stdout}}
+    - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
