@@ -6,7 +6,7 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Backup Menu" --menu "Make your choice" 15 25 8 \
-    "1)" "Nedata"  \
+    "1)" "Netdata"  \
     "2)" "NZBGET"  \
     "3)" "Ombi"  \
     "4)" "Plex"  \
@@ -19,7 +19,7 @@ whiptail --title "Backup Menu" --menu "Make your choice" 15 25 8 \
 result=$(whoami)
 case $CHOICE in
     "1)")
-      echo ymlprogram netdata > /tmp/program_var.txt
+      echo netdata > /tmp/program_var.txt
       ;;
 
     #"2)")
