@@ -20,7 +20,11 @@
   with_items:
     - /mnt/gdrive/plexguide/{{program_var.stdout}}
 
+- debug: msg="Time Length can be Long or Short! Please Wait!"
+
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: Backing Up Program to '/mnt/gdrive/' - {{program_var.stdout}}
   shell: "tar -zcvf /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
+
+
 
