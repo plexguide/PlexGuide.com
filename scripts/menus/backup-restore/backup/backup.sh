@@ -9,10 +9,10 @@ whiptail --title "Backup Menu" --menu "Make your choice" 15 25 8 \
     "1)" "Nedata"  \
     "2)" "NZBGET"  \
     "3)" "Ombi"  \
-    "4)" "Portainer"  \
+    "4)" "Plex"  \
     "5)" "Portainer"  \
-    "6)" "Portainer"  \
-    "7)" "Portainer"  \
+    "6)" "Sonarr"  \
+    "7)" "Radarr"  \
     "8)" "Exit  "  3>&2 2>&1 1>&3
 )
 
