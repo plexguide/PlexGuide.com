@@ -13,3 +13,8 @@
   docker_container:
     name: "{{program_var.stdout}}"
     state: stopped
+
+## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
+- name: Backing Up Program to '/tmp/' - {{program_var.stdout}}
+  shell: "tar -zcvf /opt/appdata/{{program_var.stdout}} /mnt/gdrive/plexguide/{{program_var.stdout}}"
+
