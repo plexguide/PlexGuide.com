@@ -39,6 +39,13 @@
     name: "{{program_var.stdout}}"
     state: started
 
+- name: Remove Junk Folder
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
+
 - debug: msg="Program is now backed up to your Google Drive - {{program_var}}"
 
 
