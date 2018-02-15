@@ -19,7 +19,7 @@ whiptail --title "Backup Menu" --menu "Make your choice" 15 25 8 \
 result=$(whoami)
 case $CHOICE in
     "1)")
-      echo netdata > /tmp/program_var.txt
+      echo "netdata" > /tmp/program_var
       ;;
 
     #"2)")
