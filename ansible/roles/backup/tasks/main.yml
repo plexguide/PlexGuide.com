@@ -34,10 +34,10 @@
 - name: Backing Up Program to '/mnt/gdrive/' - {{program_var.stdout}}
   shell: "tar -zcvf /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
 
-- name: Stopping Docker Container - {{program_var.stdout}}
+- name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
-    state: restart
+    state: started
 
 - debug: msg="Program is now backed up to your Google Drive - {{program_var}}"
 
