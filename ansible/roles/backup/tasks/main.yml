@@ -8,11 +8,17 @@
 
 ## Add Prompt Future Wise and Skip if Set to No Xor
 ## Note to have an uppercase version of the variable
+## Ensure /mnt/gdrive exists
 
 - name: Stopping Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
     state: stopped
+
+- name: Making Folders
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - /mnt/gdrive/plexguide/{{program_var.stdout}}
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: Backing Up Program to '/tmp/' - {{program_var.stdout}}
