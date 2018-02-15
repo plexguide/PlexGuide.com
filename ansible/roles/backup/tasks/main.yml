@@ -4,4 +4,13 @@
   shell: "awk '{print $2}' /opt/plexguide/tmp.txt"
   register: program_var
 
-- debug: msg="Output Test {{program_var.stdout}}"
+- debug: msg="Temp Message - For {{program_var.stdout}}"
+
+## Add Prompt Future Wise and Skip if Set to No Xor
+## Note to have an uppercase version of the variable
+
+- name: Stopping Docker Container - {{program_var.stdout}}
+  docker_container:
+    name: "{{program_var.stdout}}"
+    state: stopped
+}
