@@ -8,9 +8,16 @@
     systemd: state=stopped name=plexdrive4
     when: plexdrive4.stat.exists
     
+  - name: Remove Plexdrive Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive4.service
+      force: yes
+    when: plexdrive4.stat.exists
+
   - name: PlexDrive 4 Install
     get_url:
-      url:  https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
+      url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
       dest: /tmp
       mode: 0755
       owner: 1000

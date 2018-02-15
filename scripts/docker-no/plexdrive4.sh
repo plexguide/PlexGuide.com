@@ -30,7 +30,7 @@ clear
     systemctl daemon-reload
     systemctl enable plexdrive4
     clear
-    plexdrive4 --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
+    plexdrive4 mount --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
     clear
     ## USER Will Have To Reboot Once PlexDrive Is Finished!
 else
