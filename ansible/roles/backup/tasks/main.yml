@@ -22,6 +22,7 @@
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
+## https://stackoverflow.com/questions/45864831/ansible-how-to-delete-a-folder-and-file-inside-a-directory-in-a-single-task
 - name: Remove Old Backup
   file:
     path: "{{ item }}"
