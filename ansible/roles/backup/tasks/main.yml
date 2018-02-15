@@ -1,7 +1,7 @@
 ---
 
 - name: "Establishing Variable"
-  shell: "awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt"
+  shell: "awk '{print $2}' /opt/plexguide/tmp.txt"
   register: program_var
 
-- debug: msg="Test {{program_var.stdout}}"
+- debug: msg="Output Test {{program_var.stdout}}"
