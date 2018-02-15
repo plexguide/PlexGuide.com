@@ -22,16 +22,25 @@ case $CHOICE in
       echo "netdata" > /tmp/program_var
       ;;
 
-    #"2)")
-        #echo ymlprogram nzbget > /opt/plexguide/tmp.txt
-        #echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
-        #bash /opt/plexguide/scripts/docker-no/backup-script.sh
-        #;;
+    "2)")
+      echo "nzbget" > /tmp/program_var
+      ;;
 
-    #"3)")
-      #echo ymlprogram legacy > /tmp/program_var.txt
-      #bash /opt/plexguide/scripts/docker-no/backup-script.sh
-      #;;
+    "4)")
+      echo "plex" > /tmp/program_var
+      ;;
+
+    "5)")
+      echo "portainer" > /tmp/program_var
+      ;;
+
+    "6)")
+      echo "sonarr" > /tmp/program_var
+      ;;
+
+    "7)")
+      echo "radarr" > /tmp/program_var
+      ;;
 
     "8)")
         clear
