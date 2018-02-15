@@ -11,5 +11,5 @@
 
 - name: Stopping Docker Container - {{program_var.stdout}}
   docker_container:
-    name: {{program_var.stdout}}
+    name: "{{program_var.stdout}}"
     state: stopped
