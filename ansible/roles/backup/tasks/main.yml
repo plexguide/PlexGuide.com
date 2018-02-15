@@ -1,7 +1,7 @@
 ---
 
 - name: "Establishing Variable"
-  shell: "awk '{print $2}' /opt/plexguide/tmp.txt"
+  shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
 
 - debug: msg="Temp Message - For {{program_var.stdout}}"
