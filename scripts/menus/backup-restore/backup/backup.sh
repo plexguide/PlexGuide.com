@@ -44,7 +44,7 @@ case $CHOICE in
       ;;
 
     "3 )")
-      echo "emby" > /tmp/program_var
+      echo "embyserver" > /tmp/program_var
       ;;
 
     "4 )")
@@ -137,5 +137,6 @@ case $CHOICE in
         ;;
 esac
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
+read -n 1 -s -r -p "Press any key to continue "
 done
 exit

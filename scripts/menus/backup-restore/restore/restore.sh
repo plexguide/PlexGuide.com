@@ -137,5 +137,6 @@ case $CHOICE in
         ;;
 esac
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
+read -n 1 -s -r -p "Press any key to continue "
 done
 exit
