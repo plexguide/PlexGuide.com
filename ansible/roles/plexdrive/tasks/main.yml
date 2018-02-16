@@ -1,0 +1,53 @@
+---
+  - name: Check service exists
+    stat:
+      path: "/etc/systemd/system/plexdrive.service"
+    register: plexdrive
+
+  - name: Stop existing plexdrive service
+    systemd: state=stopped name=plexdrive
+    when: plexdrive.stat.exists
+
+  - name: Remove Plexdrive Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive.service
+      force: yes
+    when: plexdrive.stat.exists
+
+  - name: PlexDrive Install
+    get_url:
+      url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
+      dest: /tmp
+      mode: 0755
+      owner: 1000
+      group: 1000
+      force: yes
+
+  - name: Move plexdrive Service
+    template:
+      src: plexdrive.js2
+      dest: /etc/systemd/system/plexdrive.service
+      force: yes
+    when: plexdrive.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=plexdrive daemon_reload=yes enabled=no
+
+  - name: Config Check
+    stat:
+      path: "/root/.plexdrive/config.json"
+    register: plexdrive
+
+  - name: Start PlexDrive
+    systemd: state=started name=plexdrive enabled=yes
+    when: plexdrive.stat.exists
+
+  - name: Config Present?
+    stat:
+      path: "/root/.plexdrive/config.json"
+    register: plexdrive_config
+
+  - name: plexdrive Start
+    systemd: state=started name=plexdrive enabled=yes
+    when: plexdrive_config.stat.exists
