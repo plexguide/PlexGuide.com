@@ -7,6 +7,7 @@ Current Changes will continued to be modifed as known.
 - Add Symoblic Links to assist the Program
 - Adding New Ansible Backup, Restore - old becomes legacy and can be used until tranistion out
 - Added Lidarr, CouchPotato, Organizr, Muximux & Heimdall to Backup/Restore scripts
+- Added torrentvpn directory back into CouchPotato
 
 #### Changed
 - Switched to PlexDrive5 @designgears

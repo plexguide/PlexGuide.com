@@ -5,10 +5,10 @@
 ##     so that they can be used in the future if need be!    ##
 
 ## For testing new status and restart menus
-rm /opt/plexguide/scripts/menus/status-menu.sh
-rm /opt/plexguide/scripts/menus/restart-menu.sh
-mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
-mv /opt/plexguide/scripts/menus/restart-menu2.sh /opt/plexguide/scripts/menus/restart-menu.sh
+#rm /opt/plexguide/scripts/menus/status-menu.sh
+#rm /opt/plexguide/scripts/menus/restart-menu.sh
+#mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
+#mv /opt/plexguide/scripts/menus/restart-menu2.sh /opt/plexguide/scripts/menus/restart-menu.sh
 
 ## For testing new plexguide.yml
 #rm /opt/plexguide/ansible/plexguide.yml
