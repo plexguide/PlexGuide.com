@@ -16,6 +16,7 @@ Current Changes will continued to be modifed as known.
 
 #### Changed
 - Switched to PlexDrive5 @designgears (This will require plexdrive being scanned again)
+- New installs do not setup a /mnt/plexdrive4 
 
 #### Removed
 - Old Ownership.sh file - no longer used
