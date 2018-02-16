@@ -34,6 +34,11 @@ echo
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
 echo ""
 echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
+# Remove unused rutorrent directory
+ rmdir /mnt/rutorrent/downloads
+ rmdir /mnt/rutorrent 
+# Stop all services, need to rerun plexdrive and unionfs
+# bash /opt/plexguide/scripts/test/stop-services 1>/dev/null 2>&1
 
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
