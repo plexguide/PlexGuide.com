@@ -34,8 +34,8 @@
 
 - name: "Downloading {{program_var.stdout}} from Google Drive"
   synchronize:
-    src: "/mnt/gdrive/plexguide/backup/{{program_var.stdout}.tar"
-    dest: "/tmp"
+    src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}.tar
+    dest: /tmp
   become: true
   become_user: 1000
 
