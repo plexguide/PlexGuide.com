@@ -11,6 +11,7 @@ Current Changes will continued to be modifed as known.
 
 #### Changed
 - Switched to PlexDrive5 @designgears
+- PG5 Configs
 - Excluded Plex cache folder from Backup
 - Edited emby to embyserver in Backup/Restore script
 - Updated Service menus to reflect PlexDrive name change
