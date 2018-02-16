@@ -17,7 +17,7 @@ if echo "$answer" | grep -iq "^y" ;then
     echo ""
     mkdir -p /mnt/gdrive/Backup/"$YMLPROGRAM"
     docker stop "$YMLPROGRAM" 1>/dev/null 2>&1
-    zip -r /tmp/"$YMLPROGRAM".zip /opt/appdata/"$YMLPROGRAM"
+    zip -r /tmp/"$YMLPROGRAM".zip /opt/appdata/"$YMLPROGRAM" -x "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Cache/*"
     echo "3. Copy Files to Your Google Drive"
     rclone copy /tmp/"$YMLPROGRAM".zip gdrive:/Backup/"$YMLPROGRAM" -v --checksum --drive-chunk-size=64M 1>/dev/null 2>&1
     rm /tmp/"$YMLPROGRAM".zip

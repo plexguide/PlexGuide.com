@@ -2,25 +2,21 @@
 Current Changes will continued to be modifed as known.
 
 ### [5.038] Actively Working
-
-#### Warning
-- Updating will REQUIRE YOU TO go through plexdrive install again!
-- Updating will REQUIRE YOU TO go through rclone again (for UnionFS portion) - do not have to setup, just run and quit
-- May require recreating EMBY & PLEX containers after (only if having playing problems)
-
 #### Added
 - Install Ansible Toolbox
 - Add Symoblic Links to assist the Program
 - Adding New Ansible Backup, Restore - old becomes legacy and can be used until tranistion out
-- Added /mnt/plexdrive
+- Added Lidarr, CouchPotato, Organizr, Muximux & Heimdall to Backup/Restore scripts
+- Added torrentvpn directory back into CouchPotato
 
 #### Changed
-- Switched to PlexDrive5 @designgears (This will require plexdrive being scanned again)
-- New installs do not setup a /mnt/plexdrive4 
+- Switched to PlexDrive5 @designgears
+- Excluded Plex cache folder from Backup
+- Edited emby to embyserver in Backup/Restore script
+- Updated Service menus to reflect PlexDrive name change
 
 #### Removed
 - Old Ownership.sh file - no longer used
-- Remove PlexDrive PreInstall (was for MongoDB) - Not needed anymore
 
 -------------------------------------------------------
 ## Past Changes
