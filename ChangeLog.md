@@ -10,8 +10,9 @@ Current Changes will continued to be modifed as known.
 
 #### Changed
 - Switched to PlexDrive5 @designgears
-- excluded Plex cache folder from Backup
-- edited emby to embyserver in Backup/Restore script
+- Excluded Plex cache folder from Backup
+- Edited emby to embyserver in Backup/Restore script
+- Updated Service menus to reflect PlexDrive name change
 
 #### Removed
 - Old Ownership.sh file - no longer used
