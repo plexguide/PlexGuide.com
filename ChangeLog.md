@@ -5,6 +5,7 @@ Current Changes will continued to be modifed as known.
 
 #### Warning
 - If your plex a path such as /mnt/plexdrive4 for TV or anything else, need to change to /mnt/plexdrive
+- Recommend future to use /mnt/unionfs instead
 
 #### Added
 - Install Ansible Toolbox
