@@ -1,0 +1,19 @@
+#!/bin/bash
+
+## Stop all services and unmount drives
+
+sudo systemctl stop unionfs-encrypt
+sudo systemctl stop plexdrive4
+sudo systemctl stop rclone
+sudo systemctl stop rclone-en
+sudo systemctl stop rclone-encrypt
+sudo systemctl stop move-en
+
+sudo umount -l /mnt/unionfs
+sudo umount -l /mnt/plexdrive4
+sudo umount -l /mnt/gdrive
+sudo umount -l /mnt/.gcrypt
+sudo umount -l /mnt/encrypt
+sudo umount -l /mnt/move
+
+## script needed to change mount name of plexdrive4 to plexdrive
