@@ -20,7 +20,6 @@ Current Changes will continued to be modifed as known.
 #### Removed
 - Old Ownership.sh file - no longer used
 - Remove PlexDrive PreInstall (was for MongoDB) - Not needed anymore
-- Removed /mnt/plexdrive4
 
 -------------------------------------------------------
 ## Past Changes
