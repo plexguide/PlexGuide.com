@@ -18,10 +18,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
 2. **View Deployable Programs:** https://plexguide.com/threads/programs-install-information-list.245
 3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246
-
-### Want to Donate? Everybit Helps!
-- Bitcoin : 1H3SD3ef6qaN8ND8S8ZQCaEyD4pMW4kFsA
-- LiteCoin: LbCDaq26N39TuUarBkrxTXNFjsNWds9Ktj
+4. **Donate To the Project:** https://plexguide.com/dbtech-donate/
 
 ### Social
 
@@ -31,7 +28,7 @@ An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-e
 
 ----------------------------------------------------------------------
 <p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/version24.png" alt="Demo"/>
+  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/pictures/version39.png" alt="Demo"/>
 </p>
 ** PlexGuide Interface Demo**
 
