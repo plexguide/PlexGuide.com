@@ -18,11 +18,9 @@ case $CHOICE in
         bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh
         ;;
 
-    #"2)")
-        #echo ymlprogram nzbget > /opt/plexguide/tmp.txt
-        #echo ymldisplay NZBGET >> /opt/plexguide/tmp.txt
-        #bash /opt/plexguide/scripts/docker-no/backup-script.sh
-        #;;
+    "2)")
+        bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh
+        ;;
 
     #"3)")
       #echo ymlprogram legacy > /tmp/program_var.txt
