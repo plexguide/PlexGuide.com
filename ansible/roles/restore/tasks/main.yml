@@ -36,8 +36,6 @@
   synchronize:
     src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
     dest: /tmp
-  become: true
-  become_user: 1000
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
