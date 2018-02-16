@@ -21,7 +21,6 @@ result=$(whoami)
 case $CHOICE in
     "1)")
       clear
-      systemctl restart mongodb
       systemctl restart plexdrive4
       echo ""
       read -n 1 -s -r -p "Press any key to continue "

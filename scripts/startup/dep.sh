@@ -51,7 +51,7 @@ echo "7. Pre-Installing RClone & Services (Please Wait)"
 echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
 
 #Installing MongoDB for PlexDrive
-  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
+#  bash /opt/plexguide/scripts/startup/plexdrive-preinstall.sh 1>/dev/null 2>&1
 
   echo "10. Installing Portainer & Reverse Proxy (Please Wait)"
 
