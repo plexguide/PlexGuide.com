@@ -3,6 +3,11 @@ Current Changes will continued to be modifed as known.
 
 ### [5.038] Actively Working
 
+#### Warning
+- Updating will REQUIRE YOU TO go through plexdrive install again!
+- Updating will REQUIRE YOU TO go through rclone again (for UnionFS portion) - do not have to setup, just run and quit
+- Will also require recreating EMBY & PLEX containers after
+
 #### Added
 - Install Ansible Toolbox
 - Add Symoblic Links to assist the Program
