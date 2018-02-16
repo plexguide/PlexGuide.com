@@ -2,10 +2,15 @@
 Current Changes will continued to be modifed as known.
 
 ### [5.038] Actively Working
+
+#### Warning
+- If your plex a path such as /mnt/plexdrive4 for TV or anything else, need to change to /mnt/plexdrive
+
 #### Added
 - Install Ansible Toolbox
 - Add Symoblic Links to assist the Program
 - Adding New Ansible Backup, Restore - old becomes legacy and can be used until tranistion out
+- Added /mnt/plexdrive
 
 #### Changed
 - Switched to PlexDrive5 @designgears (This will require plexdrive being scanned again)
@@ -13,6 +18,7 @@ Current Changes will continued to be modifed as known.
 #### Removed
 - Old Ownership.sh file - no longer used
 - Remove PlexDrive PreInstall (was for MongoDB) - Not needed anymore
+- Removed /mnt/plexdrive4
 
 -------------------------------------------------------
 ## Past Changes
