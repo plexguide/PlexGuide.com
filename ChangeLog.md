@@ -1,6 +1,20 @@
 ## Current Changes
 Current Changes will continued to be modifed as known.
 
+### [5.039] Actively Working
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.038] Actively Working
 #### Added
 - Install Ansible Toolbox
@@ -18,10 +32,6 @@ Current Changes will continued to be modifed as known.
 
 #### Removed
 - Old Ownership.sh file - no longer used
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.037]
 #### Added
