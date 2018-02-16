@@ -52,7 +52,6 @@
     state: absent
   with_items:
     - /tmp/{{program_var.stdout}}
-    - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
 
 - debug: msg="Program is now RESTORED from your Google Drive - {{program_var}}"
 
