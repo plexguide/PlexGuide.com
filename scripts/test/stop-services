@@ -2,12 +2,14 @@
 
 ## Stop all services and unmount drives
 
+sudo systemctl stop unionfs
 sudo systemctl stop unionfs-encrypt
 sudo systemctl stop plexdrive4
 sudo systemctl stop rclone
 sudo systemctl stop rclone-en
 sudo systemctl stop rclone-encrypt
 sudo systemctl stop move-en
+sudo systemctl stop move
 
 sudo umount -l /mnt/unionfs
 sudo umount -l /mnt/plexdrive4
