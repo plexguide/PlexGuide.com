@@ -4,6 +4,16 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new status and restart menus
+rm /opt/plexguide/scripts/menus/status-menu.sh
+rm /opt/plexguide/scripts/menus/restart-menu.sh
+mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
+mv /opt/plexguide/scripts/menus/restart-menu2.sh /opt/plexguide/scripts/menus/restart-menu.sh
+
+## For testing new plexguide.yml
+#rm /opt/plexguide/ansible/plexguide.yml
+#mv /opt/plexguide/ansible/plexguide2.yml /opt/plexguide/ansible/plexguide.yml
+
 ## For testing new program menus
 #mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs4
 #mv /opt/plexguide/scripts/menus/programs2 /opt/plexguide/scripts/menus/programs
