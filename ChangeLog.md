@@ -11,7 +11,7 @@ Current Changes will continued to be modifed as known.
 - Switched to PlexDrive5 @designgears
 
 #### Removed
-- None
+- Old Ownership.sh file - no longer used
 
 -------------------------------------------------------
 ## Past Changes
