@@ -2,16 +2,25 @@
 Current Changes will continued to be modifed as known.
 
 ### [5.038] Actively Working
+
+#### Warning
+- Updating will REQUIRE YOU TO go through plexdrive install again!
+- Updating will REQUIRE YOU TO go through rclone again (for UnionFS portion) - do not have to setup, just run and quit
+- Will also require recreating EMBY & PLEX containers after
+
 #### Added
 - Install Ansible Toolbox
 - Add Symoblic Links to assist the Program
 - Adding New Ansible Backup, Restore - old becomes legacy and can be used until tranistion out
+- Added /mnt/plexdrive
 
 #### Changed
-- Switched to PlexDrive5 @designgears
+- Switched to PlexDrive5 @designgears (This will require plexdrive being scanned again)
 
 #### Removed
 - Old Ownership.sh file - no longer used
+- Remove PlexDrive PreInstall (was for MongoDB) - Not needed anymore
+- Removed /mnt/plexdrive4
 
 -------------------------------------------------------
 ## Past Changes
