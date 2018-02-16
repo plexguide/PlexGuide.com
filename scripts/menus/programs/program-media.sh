@@ -10,7 +10,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Media Servers" --menu "Make your choice" 10 25 3 \
+whiptail --title "Media Servers" --menu "Make your choice" 10 25 4 \
     "1)" "Plex"   \
     "2)" "Emby"  \
 	"3)" "Ubooquity"  \
@@ -32,7 +32,7 @@ case $CHOICE in
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
-	 
+
 	"3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity
     echo "EMBY: http://$ipv4:2202/ubooquity/"
