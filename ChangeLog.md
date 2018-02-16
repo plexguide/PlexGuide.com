@@ -1,12 +1,12 @@
 ## Current Changes
-Current Changes will continued to be modifed as known.
+Current Changes will continued to be modified as known.
 
 ### [5.039] Actively Working
 #### Added
 - None
 
 #### Changed
-- None
+- /mnt/rutorrent to /mnt/rutorrents in folder set up script
 
 #### Removed
 - None
