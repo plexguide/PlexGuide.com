@@ -6,6 +6,7 @@
   roles:
   - { role: preinstall, tags: ['preinstall'] }
   - { role: backup, tags: ['backup'] }
+  - { role: restore, tags: ['restore'] }
   - { role: folders, tags: ['folders'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: netdata, tags: ['netdata'] }
