@@ -58,7 +58,7 @@ case $CHOICE in
       ;;
 
     "7)")
-      echo ymlprogram emby > /opt/plexguide/tmp.txt
+      echo ymlprogram embyserver > /opt/plexguide/tmp.txt
       echo ymldisplay EMBY >> /opt/plexguide/tmp.txt
       bash /opt/plexguide/scripts/docker-no/backup-script.sh
       ;;
