@@ -9,7 +9,7 @@ Current Changes will continued to be modified as known.
 - /mnt/rutorrent to /mnt/rutorrents in folder set up script
 
 #### Removed
-- None
+- /mnt/rutorrent directory (when used with preinstaller)
 
 -------------------------------------------------------
 ## Past Changes
