@@ -34,10 +34,10 @@
       - /mnt/sab/complete/ebooks
       - /mnt/sab/incomplete
       - /mnt/sab/nzb
-      - /mnt/plexdrive4
-      - /mnt/plexdrive4/tv
-      - /mnt/plexdrive4/movies
-      - /mnt/plexdrive4/music
+      - /mnt/plexdrive
+      - /mnt/plexdrive/tv
+      - /mnt/plexdrive/movies
+      - /mnt/plexdrive/music
       - /mnt/sab/complete/ebooks
       - /mnt/encrypt
       - /mnt/encrypt/tv
