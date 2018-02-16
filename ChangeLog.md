@@ -8,10 +8,11 @@ Current Changes will continued to be modifed as known.
 - Adding New Ansible Backup, Restore - old becomes legacy and can be used until tranistion out
 
 #### Changed
-- Switched to PlexDrive5 @designgears
+- Switched to PlexDrive5 @designgears (This will require plexdrive being scanned again)
 
 #### Removed
 - Old Ownership.sh file - no longer used
+- Remove PlexDrive PreInstall (was for MongoDB) - Not needed anymore
 
 -------------------------------------------------------
 ## Past Changes
