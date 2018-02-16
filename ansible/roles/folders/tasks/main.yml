@@ -8,8 +8,8 @@
       - /mnt/deluge/temp
       - /mnt/deluge/downloaded
       - /mnt/deluge/torrent
-      - /mnt/rutorrent
-      - /mnt/rutorrent/downloads
+      - /mnt/rutorrents
+      - /mnt/rutorrents/downloads
       - /mnt/move
       - /mnt/move/tv
       - /mnt/move/movies
