@@ -1,6 +1,22 @@
 ---
   - name: Check service exists
     stat:
+      path: "/etc/systemd/system/plexdrive4.service"
+    register: plexdrive
+
+  - name: Stop existing plexdrive service
+    systemd: state=stopped name=plexdrive4
+    when: plexdrive4.stat.exists
+
+  - name: Remove Plexdrive 4 Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive4.service
+      force: yes
+    when: plexdrive4.stat.exists
+
+  - name: Check service exists
+    stat:
       path: "/etc/systemd/system/plexdrive.service"
     register: plexdrive
 
