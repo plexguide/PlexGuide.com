@@ -68,7 +68,6 @@
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
       - "/opt/appdata/plex/transcode:/transcode"
-      - "/mnt/plexdrive:/plexdrive4"
       - "/mnt/plexdrive:/plexdrive"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
