@@ -88,7 +88,6 @@
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service 
       force: yes
-    when: unionfs.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
