@@ -14,7 +14,7 @@
   - { role: nzbhydra, tags: ['nzbhydra'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
   - { role: muximux, tags: ['muximux'] }
-  - { role: plexdrive4, tags: ['plexdrive4'] }
+  - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
