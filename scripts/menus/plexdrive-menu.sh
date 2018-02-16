@@ -15,6 +15,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
         bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
+#        bash /opt/plexguide/scripts/docker-no/plexdrive.sh
         ;;
 
     "2)")
