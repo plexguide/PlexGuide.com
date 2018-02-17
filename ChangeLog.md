@@ -3,10 +3,11 @@ Current Changes will continued to be modified as known.
 
 ### [5.039] Actively Working
 #### Added
-- None
+- Added news Ansible Backup & Restore Works
 
 #### Changed
 - /mnt/rutorrent to /mnt/rutorrents in folder set up script
+- Moved legacy backup to legacy selection for new ReStore & Backup
 
 #### Removed
 - /mnt/rutorrent directory (when used with preinstaller)
