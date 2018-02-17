@@ -27,7 +27,7 @@
   - name: PlexDrive Install
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
-      dest: /tmp
+      dest: /usr/bin/plexdrive
       mode: 0755
       owner: 1000
       group: 1000
@@ -35,11 +35,11 @@
 
   - name: Move PlexDrive Service
     template:
-      src: plexdrive.js2
+      src: plexdrive.serivce
       dest: /etc/systemd/system/plexdrive.service 
       force: yes
 
-  - name: Daemon-Reload
+  - name: Reloading
     systemd: state=stopped name=plexdrive daemon_reload=yes enabled=no
 
   - name: Config Check
