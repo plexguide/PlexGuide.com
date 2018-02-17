@@ -10,10 +10,10 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Media Servers" --menu "Make your choice" 10 25 4 \
+whiptail --title "Media Servers" --menu "Make your choice" 11 25 4 \
     "1)" "Plex"   \
     "2)" "Emby"  \
-	"3)" "Ubooquity"  \
+	  "3)" "Ubooquity"  \
     "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
