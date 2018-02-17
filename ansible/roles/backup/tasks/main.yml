@@ -52,9 +52,9 @@
   ignore_errors: True
   when: programappdata.stat.exists == True
 
-- debug: msg="Program is now backed up to your Google Drive - {{program_var}}"
+- debug: msg="Program is now backed up to your Google Drive - {{program_var.stdout}}"
   when: programappdata.stat.exists == True
 
-- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var}}"
+- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var.stdout}}"
   when: programappdata.stat.exists == False
 
