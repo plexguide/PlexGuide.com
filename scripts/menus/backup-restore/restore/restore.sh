@@ -84,7 +84,7 @@ case $CHOICE in
       ;;
 
     "13)")
-      echo "nzbhyra2" > /tmp/program_var
+      echo "nzbhydra2" > /tmp/program_var
       ;;
 
     "14)")

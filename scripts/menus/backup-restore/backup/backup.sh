@@ -18,7 +18,7 @@ whiptail --title "Backup Menu" --menu "Make your choice" 19 25 12 \
     "10)" "Muximux"  \
     "11)" "NZBGET"  \
     "12)" "NZBHydra"  \
-    "13)" "NZBHydra"  \
+    "13)" "NZBHydra2"  \
     "14)" "Ombi"  \
     "15)" "Organizr"  \
     "16)" "Plex"  \
@@ -84,7 +84,7 @@ case $CHOICE in
       ;;
 
     "13)")
-      echo "nzbhyra2" > /tmp/program_var
+      echo "nzbhydra2" > /tmp/program_var
       ;;
 
     "14)")
