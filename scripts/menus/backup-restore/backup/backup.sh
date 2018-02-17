@@ -48,7 +48,7 @@ case $CHOICE in
       ;;
 
     "4 )")
-      echo "hemidall" > /tmp/program_var
+      echo "heimdall" > /tmp/program_var
       ;;
 
     "5 )")
@@ -88,7 +88,7 @@ case $CHOICE in
       ;;
 
     "14)")
-      echo "ombi" > /tmp/program_var
+      echo "ombiv3" > /tmp/program_var
       ;;
 
     "15)")

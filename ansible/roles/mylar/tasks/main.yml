@@ -25,6 +25,7 @@
     volumes:
     - /opt/appdata/mylar/:/config
     - /mnt/rutorrents/downloads/incoming:/downloads
+    - /mnt/torrentvpn/downloaded:/data/completed
     - /mnt/nzbget/completed:/completed
     - /mnt/unionfs:/unionfs
     - /etc/localtime:/etc/localtime:ro
