@@ -5,7 +5,7 @@ sudo systemctl status unionfs-encrypt
 sudo systemctl status rclone
 sudo systemctl status rclone-en
 sudo systemctl status rclone-encrypt
-sudo systemctl status plexdrive4
+sudo systemctl status plexdrive
 
 # quick list of service restarts
 
@@ -14,4 +14,4 @@ sudo systemctl restart unionfs-encrypt
 sudo systemctl restart rclone
 sudo systemctl restart rclone-en
 sudo systemctl restart rclone-encrypt
-sudo systemctl restart plexdrive4
+sudo systemctl restart plexdrive

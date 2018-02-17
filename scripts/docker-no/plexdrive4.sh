@@ -19,12 +19,12 @@ clear
     mv /tmp/plexdrive-linux-amd64 plexdrive
     mv plexdrive /usr/bin/
     cd /usr/bin/
-    #chown root:root /usr/bin/plexdrive4
-    #chmod 755 /usr/bin/plexdrive4
+    #chown root:root /usr/bin/plexdrive
+    #chmod 755 /usr/bin/plexdrive
     systemctl daemon-reload
     systemctl enable plexdrive
     clear
-    plexdrive mount --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive4
+    plexdrive mount --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive
     read -n 1 -s -r -p "Press any key to continue "
     clear
     ## USER Will Have To Reboot Once PlexDrive Is Finished!

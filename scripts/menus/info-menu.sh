@@ -37,11 +37,11 @@ case $CHOICE in
 
     "4)")
       clear
-      ls /mnt/plexdrive4
+      ls /mnt/plexdrive
       echo
-      echo "*** PlexDrive4: Your Google Drive - If empty, that's not good ***"
+      echo "*** PlexDrive: Your Google Drive - If empty, that's not good ***"
       echo "Note 1: Must have at least 1 item in your Google Drive for the test"
-      echo "Note 2: Once you finish the PLEXDRIVE4 setup, you'll see everything!"
+      echo "Note 2: Once you finish the PLEXDRIVE setup, you'll see everything!"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
@@ -54,7 +54,7 @@ case $CHOICE in
       echo
       echo "*** UnionFS: Your Google Drive - If empty, that's not good ***"
       echo "Note 1: You should at least see uniontest.txt"
-      echo "Note 2: Once PLEXDRIVE4 is setup, you should see the rest"
+      echo "Note 2: Once PLEXDRIVE is setup, you should see the rest"
       echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
