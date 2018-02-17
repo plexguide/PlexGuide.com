@@ -12,7 +12,7 @@
 ## move to tmp and then sync, easy fix
 ## ensure it pauses at end
 
-- name: Does Backup Data Exist on Grive - {{program_var.stdout}}
+- name: Does Backup Data Exist on Grive - {{program_var.stdout}}.tar
   stat:
     path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
   register: programgdrive
@@ -50,7 +50,7 @@
     - /tmp/{{program_var.stdout}}.tar
   when: programtmp.stat.exists == True
 
-- name: Remove Old {{program_var.stdout}} from TMP
+- name: Remove Old {{program_var.stdout}} from APPDATA
   file:
     path: "{{ item }}"
     state: absent
