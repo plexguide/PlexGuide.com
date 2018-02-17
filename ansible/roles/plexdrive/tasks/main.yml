@@ -47,7 +47,7 @@
       force: yes
 
   - name: Daemon-Reload
-    systemd: state=stopped name=plexdrive daemon_reload=yes enabled=no
+    systemd: state=stopped name=plexdrive daemon_reload=yes enabled=yes
 
   - name: Config Check
     stat:
@@ -55,4 +55,4 @@
     register: plexdrive
 
   - name: Start PlexDrive
-    systemd: state=started name=plexdrive enabled=yes
+    systemd: state=started daemon_reload=yes name=plexdrive enabled=yes
