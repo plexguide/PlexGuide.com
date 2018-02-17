@@ -42,7 +42,7 @@
     state: absent
   with_items:
     - /tmp/{{program_var.stdout}}.tar
-  when: program-appdata.stat.exists == True
+  when: programtmp.stat.exists == True
  
 - name: Making Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
