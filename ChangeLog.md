@@ -2,12 +2,16 @@
 Current Changes will continued to be modified as known.
 
 ### [5.039] Actively Working
+
+#### Warning
+- Updating will require new backs if you have any - new zipping format is utilized
+
 #### Added
 - Added news Ansible Backup & Restore Works
 
 #### Changed
 - /mnt/rutorrent to /mnt/rutorrents in folder set up script
-- Moved legacy backup to legacy selection for new ReStore & Backup
+- Moved legacy backup to legacy selection for new Restore & Backup
 
 #### Removed
 - /mnt/rutorrent directory (when used with preinstaller)
