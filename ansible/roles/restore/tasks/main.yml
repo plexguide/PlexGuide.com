@@ -92,7 +92,7 @@
     - /tmp/{{program_var.stdout}}
 
 - debug: msg="Program is now RESTORED from your Google Drive - {{program_var.stdout}}"
-  when: programtmp.stat.exists == True
+  when: programgdrive.stat.exists == True
 
 - debug: msg="Program is not restored - A BACKUP Does Not Exist on GDrive {{program_var.stdout}}"
-  when: programtmp.stat.exists == False
+  when: programgdrive.stat.exists == False
