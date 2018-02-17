@@ -48,7 +48,7 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /opt/appdata/{{program_var.stdout}}
-  when: program-appdata.stat.exists == False
+  when: programtmp.stat.exists == False
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
