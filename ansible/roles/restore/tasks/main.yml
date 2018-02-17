@@ -18,19 +18,37 @@
     state: stopped
   ignore_errors: True
 
-- name: Remove Current Folder
+- name: "Checking for an OLDER version of {{program_var.stdout}} in TMP"
+  stat:
+    path: "{{backup.tar_dest}}"
+  register: program-tmp
+
+- name: Remove Old {{program_var.stdout}} from /TMP
   file:
     path: "{{ item }}"
     state: absent
   with_items:
-    - /opt/appdata/{{program_var.stdout}}.tar
     - /tmp/{{program_var.stdout}}.tar
-  ignore_errors: True
+  when: program-tmp.stat.exists == True
 
+- name: Checking for an Current TMP {{program_var.stdout}} in /opt/appdata
+  stat:
+    path: /opt/appdata"{{program_var.stdout}}
+  register: program-appdata
+
+- name: Remove Old {{program_var.stdout}} from /TMP
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /tmp/{{program_var.stdout}}.tar
+  when: program-appdata.stat.exists == True
+ 
 - name: Making Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /opt/appdata/{{program_var.stdout}}
+  when: program-appdata.stat.exists == False
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
