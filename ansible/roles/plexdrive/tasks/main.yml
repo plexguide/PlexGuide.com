@@ -36,7 +36,7 @@
   - name: Move PlexDrive Service
     template:
       src: plexdrive.js2
-      dest: /etc/systemd/system/plexdrive4.service 
+      dest: /etc/systemd/system/plexdrive.service 
       force: yes
     when: plexdrive.stat.exists == False
 
@@ -57,6 +57,6 @@
       path: "/root/.plexdrive/config.json"
     register: plexdrive_config
 
-  - name: PlexDrive4 Start
+  - name: PlexDrive Start
     systemd: state=started name=plexdrive enabled=yes
     when: plexdrive_config.stat.exists
