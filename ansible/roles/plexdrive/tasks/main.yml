@@ -35,7 +35,7 @@
 
   - name: Move PlexDrive Service
     template:
-      src: plexdrive.serivce
+      src: plexdrive.service
       dest: /etc/systemd/system/plexdrive.service 
       force: yes
 
