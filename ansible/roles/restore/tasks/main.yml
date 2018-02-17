@@ -37,52 +37,37 @@
     - /tmp/{{program_var.stdout}}.tar
   when: programtmp.stat.exists == True
 
-- name: Checking for an APPDATA {{program_var.stdout}}
-  stat:
-    path: /opt/appdata"{{program_var.stdout}}
-  register: programappdata
-
-- name: Remove Old {{program_var.stdout}} from TMP
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /tmp/{{program_var.stdout}}.tar
-  when: programtmp.stat.exists == True
-
 - name: Remove Old {{program_var.stdout}} from APPDATA
   file:
     path: "{{ item }}"
     state: absent
   with_items:
     - /opt/appdata/{{program_var.stdout}}.tar
-  when: programappdata.stat.exists == True
- 
-- name: Making Folders
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - /opt/appdata/{{program_var.stdout}}
-  when: programappdata.stat.exists == False
 
+- name: Checking for an APPDATA {{program_var.stdout}}
+  stat:
+    path: /opt/appdata"{{program_var.stdout}}
+  register: programappdata
+ 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
 - name: "Downloading from Google Drive - {{program_var.stdout}}"
   synchronize:
     src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
     dest: /tmp
-  when: programtmp.stat.exists == True
+  when: programgdrive.stat.exists == True 
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
   shell: "tar -xf '/tmp/{{program_var.stdout}}.tar' -C /opt/appdata/{{program_var.stdout}} ."
-  when: programtmp.stat.exists == True
+  when: programgdrive.stat.exists == True
 
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
     state: started
   ignore_errors: True
-  when: programtmp.stat.exists == True
+  when: programgdrive.stat.exists == True
 
 - name: Remove Leftover Tar from /tmp
   file:
