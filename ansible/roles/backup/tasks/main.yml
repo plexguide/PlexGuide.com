@@ -42,7 +42,7 @@
   when: programappdata.stat.exists == True
 
 - name: Uploading Backup to Google Drive
-  shell: "rclone copy /tmp/{{program_var}}.tar gdrive:/plexguide/backup/ -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /tmp/{{program_var}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: programappdata.stat.exists == True
 
 - name: Restart Docker Container - {{program_var.stdout}}
