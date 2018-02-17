@@ -1,7 +1,25 @@
 ## Current Changes
 Current Changes will continued to be modified as known.
 
-### [5.039] Actively Working
+### [5.040] Actively Working
+
+#### Warning
+- None
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.039]
 
 #### Warning
 - Updating will require new backs ups if you have any - new .tar format is utilized over .zip
@@ -21,11 +39,7 @@ Current Changes will continued to be modified as known.
 #### Removed
 - /mnt/rutorrent directory (when used with preinstaller)
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
-
-### [5.038] Actively Working
+### [5.038]
 #### Added
 - Install Ansible Toolbox
 - Add Symoblic Links to assist the Program
