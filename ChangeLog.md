@@ -4,10 +4,14 @@ Current Changes will continued to be modified as known.
 ### [5.039] Actively Working
 
 #### Warning
-- Updating will require new backs if you have any - new zipping format is utilized
+- Updating will require new backs ups if you have any - new .tar format is utilized over .zip
+- If running 5.038 and below; ensure you:
+  - Rerun plexdrive to activate new service (let it finish and reboot) (do not have enter tokens)
+  - Rerun your version of rclone to activate the new service (may have to reboot) (do not have to enter tokens)
 
 #### Added
 - Added news Ansible Backup & Restore Works
+- Fixed PD5 service start issue
 
 #### Changed
 - /mnt/rutorrent to /mnt/rutorrents in folder set up script
