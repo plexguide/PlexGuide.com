@@ -12,6 +12,7 @@ Current Changes will continued to be modified as known.
 #### Changed
 - /mnt/rutorrent to /mnt/rutorrents in folder set up script
 - Moved legacy backup to legacy selection for new Restore & Backup
+- Media Programs menu fixed
 
 #### Removed
 - /mnt/rutorrent directory (when used with preinstaller)
