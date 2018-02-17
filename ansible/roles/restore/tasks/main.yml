@@ -55,7 +55,7 @@
   synchronize:
     src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
     dest: /tmp
-  when: programgdrive.stat.exists == True 
+  when: programgdrive.stat.exists == True
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
