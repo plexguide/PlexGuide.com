@@ -6,9 +6,8 @@ After=multi-user.target
 Type=simple
 ExecStart=/usr/bin/plexdrive mount --uid=1000 --gid=1000 --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-check-threads=8 --chunk-load-threads=8 --chunk-load-ahead=6 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
 ExecStop=/bin/fusermount -uz /mnt/plexdrive
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
