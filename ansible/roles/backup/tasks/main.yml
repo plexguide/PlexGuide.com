@@ -36,11 +36,11 @@
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: Backing Up Program to '/mnt/gdrive/' - {{program_var.stdout}}
   shell: "tar -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
-  when: programappdata = true
+  when: programappdata.stat.exists == True
 
 - name: Uploading Backup to Google Drive
   shell: "rclone copy /tmp/{{program_var}}.tar gdrive:/plexdrive/backup -v --checksum --drive-chunk-size=64M"
-  when: programappdata = true
+  when: programappdata.stat.exists == True
 
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
