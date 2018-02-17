@@ -23,7 +23,7 @@
     path: /tmp/{{program_var.stdout}}
   register: program-tmp
 
-- name: "Remove Old {{program_var.stdout}} from /TMP"
+- name: "Remove Old {{program_var.stdout}} from TMP"
   file:
     path: "{{ item }}"
     state: absent
