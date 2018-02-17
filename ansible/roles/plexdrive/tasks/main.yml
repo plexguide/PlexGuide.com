@@ -56,13 +56,3 @@
 
   - name: Start PlexDrive
     systemd: state=started name=plexdrive enabled=yes
-    when: plexdrive.stat.exists
-
-  - name: Config Present?
-    stat:
-      path: "/root/.plexdrive/config.json"
-    register: plexdrive_config
-
-  - name: plexdrive Start
-    systemd: state=started name=plexdrive enabled=yes
-    when: plexdrive_config.stat.exists
