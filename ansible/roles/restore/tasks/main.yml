@@ -20,7 +20,7 @@
 
 - name: "Checking for an OLDER version of {{program_var.stdout}} in TMP"
   stat:
-    path: "/tmp/{{backup.tar_dest}}"
+    path: /tmp/{{program_var.stdout}}
   register: program-tmp
 
 - name: Remove Old {{program_var.stdout}} from /TMP
