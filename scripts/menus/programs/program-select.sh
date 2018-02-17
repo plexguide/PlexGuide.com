@@ -10,9 +10,9 @@ do
 CHOICE=$(
 whiptail --title "Program Categories" --menu "Make your choice" 16 26 9 \
     "1)" "Media Servers"  \
-    "2)" "NZBs"  \
-    "3)" "Torrents"  \
-    "4)" "Managers"  \
+    "2)" "Managers"  \
+    "3)" "NZBs"  \
+    "4)" "Torrents"  \
     "5)" "Supporting"  \
     "6)" "UI Organizers"  \
     "7)" "Critical"  \
@@ -29,17 +29,17 @@ case $CHOICE in
 
     "2)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-nzbs.sh
+    bash /opt/plexguide/scripts/menus/programs/program-managers.sh
     ;;
 
     "3)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-torrent.sh
+    bash /opt/plexguide/scripts/menus/programs/program-nzbs.sh
     ;;
 
     "4)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/program-managers.sh
+    bash /opt/plexguide/scripts/menus/programs/program-torrent.sh
     ;;
 
     "5)")
