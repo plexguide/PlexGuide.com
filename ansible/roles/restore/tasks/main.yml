@@ -21,7 +21,7 @@
 - name: "Checking for an OLDER version of {{program_var.stdout}} in TMP"
   stat:
     path: /tmp/{{program_var.stdout}}
-  register: program-tmp
+  register: programtmp
 
 - name: "Remove Old {{program_var.stdout}} from TMP"
   file:
@@ -29,7 +29,7 @@
     state: absent
   with_items:
     - /tmp/{{program_var.stdout}}.tar
-  when: program-tmp.stat.exists == True
+  when: programtmp.stat.exists == True
 
 - name: Checking for an Current TMP {{program_var.stdout}} in /opt/appdata
   stat:
