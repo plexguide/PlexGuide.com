@@ -11,6 +11,11 @@
 ## Ensure /mnt/gdrive exists
 ## move to tmp and then sync, easy fix
 ## ensure it pauses at end
+- name: "Checking {{program_var.stdout}} location in APPDATA"
+  stat:
+    path: /tmp/{{program_var.stdout}}
+  register: programappdata
+
 
 - name: Stopping Docker Container - {{program_var.stdout}}
   docker_container:
@@ -35,12 +40,11 @@
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: Backing Up Program to '/mnt/gdrive/' - {{program_var.stdout}}
   shell: "tar -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
+  when: programappdata = true
 
 - name: "Upload backup with rclone to \"{{backup.rclone_dest}}\""
-  command: "rclone copy '/tmp/{{program_var}}.tar' '/gdrive/plexguide/backup/{{backup.rclone_dest}}.tar' --stats=30s -v --transfers=2 --drive-chunk-size=64M --log-file='{{playbook_dir}}/backup_rclone.log'"
-  become: true
-  become_user: "{{user}}"
-  when: backup.use_rclone
+  command: "rclone copy '/tmp/{{program_var}}.tar' '/gdrive/plexguide/backup/{{backup.rclone_dest}}.tar' --stats=30s -v --transfers=4 --drive-chunk-size=32M'"
+  when: programappdata = true
 
 
 - name: Restart Docker Container - {{program_var.stdout}}
