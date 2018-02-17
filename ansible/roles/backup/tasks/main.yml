@@ -42,8 +42,8 @@
   shell: "tar -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
   when: programappdata = true
 
-- name: "Uploading Backuup to Google Drive"
-  command: "rclone copy '/tmp/{{program_var}}.tar' '/gdrive/plexguide/backup/{{backup.rclone_dest}}.tar' --stats=30s -v --transfers=4 --drive-chunk-size=32M'"
+- name: "Uploading Backuu to Google Drive"
+  command: "rclone copy '/tmp/{{program_var}}.tar' '/gdrive/plexguide/backup/{{program_var}.tar' --stats=15s -v --transfers=4 --drive-chunk-size=32M'"
   when: programappdata = true
 
 
