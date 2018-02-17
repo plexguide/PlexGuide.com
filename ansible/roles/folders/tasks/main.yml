@@ -35,9 +35,6 @@
       - /mnt/sab/incomplete
       - /mnt/sab/nzb
       - /mnt/plexdrive
-      - /mnt/plexdrive/tv
-      - /mnt/plexdrive/movies
-      - /mnt/plexdrive/music
       - /mnt/sab/complete/ebooks
       - /mnt/encrypt
       - /mnt/encrypt/tv
