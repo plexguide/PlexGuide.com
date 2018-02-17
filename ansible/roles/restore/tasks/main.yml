@@ -12,9 +12,9 @@
 ## move to tmp and then sync, easy fix
 ## ensure it pauses at end
 
-- name: Does Backup Data Exist on Grive - {{program_var.stdout}}.tar
+- name: Does Backup Data Exist on Grive - {{program_var.stdout}}
   stat:
-    path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
+    path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
   register: programgdrive
 
 - name: Stopping Docker Container - {{program_var.stdout}}
