@@ -12,11 +12,17 @@
 ## move to tmp and then sync, easy fix
 ## ensure it pauses at end
 
+- name: Does Backup Data Exist on Grive - {{program_var.stdout}}?
+  stat:
+    path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
+  register: programgdrive
+
 - name: Stopping Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
     state: stopped
   ignore_errors: True
+  when: programgdrive.stat.exists == True
 
 - name: "Checking for an OLDER version of {{program_var.stdout}} in TMP"
   stat:
@@ -31,24 +37,32 @@
     - /tmp/{{program_var.stdout}}.tar
   when: programtmp.stat.exists == True
 
-- name: Checking for an Current TMP {{program_var.stdout}} in /opt/appdata
+- name: Checking for an APPDATA {{program_var.stdout}}
   stat:
     path: /opt/appdata"{{program_var.stdout}}
-  register: program-appdata
+  register: programappdata
 
-- name: Remove Old {{program_var.stdout}} from /TMP
+- name: Remove Old {{program_var.stdout}} from TMP
   file:
     path: "{{ item }}"
     state: absent
   with_items:
     - /tmp/{{program_var.stdout}}.tar
   when: programtmp.stat.exists == True
+
+- name: Remove Old {{program_var.stdout}} from TMP
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /opt/appdata/{{program_var.stdout}}.tar
+  when: programappdata.stat.exists == True
  
 - name: Making Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /opt/appdata/{{program_var.stdout}}
-  when: programtmp.stat.exists == False
+  when: programappdata.stat.exists == False
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
@@ -56,16 +70,19 @@
   synchronize:
     src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
     dest: /tmp
+    when: programtmp.stat.exists == True
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
   shell: "tar -xf '/tmp/{{program_var.stdout}}.tar' -C /opt/appdata/{{program_var.stdout}} ."
+  when: programtmp.stat.exists == True
 
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
     state: started
   ignore_errors: True
+  when: programtmp.stat.exists == True
 
 - name: Remove Leftover Tar from /tmp
   file:
@@ -75,5 +92,7 @@
     - /tmp/{{program_var.stdout}}
 
 - debug: msg="Program is now RESTORED from your Google Drive - {{program_var}}"
+  when: programtmp.stat.exists == True
 
-
+- debug: msg="Program is not restored - A BACKUP Does Not Exist on GDrive {{program_var}}"
+  when: programtmp.stat.exists == False
