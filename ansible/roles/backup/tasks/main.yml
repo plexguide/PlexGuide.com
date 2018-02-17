@@ -13,7 +13,7 @@
 ## ensure it pauses at end
 - name: "Checking {{program_var.stdout}} location in APPDATA"
   stat:
-    path: /tmp/{{program_var.stdout}}
+    path: /opt/appdata/{{program_var.stdout}}
   register: programappdata
 
 
@@ -22,8 +22,10 @@
     name: "{{program_var.stdout}}"
     state: stopped
   ignore_errors: True
+  when: programappdata.stat.exists == True
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
+  when: programappdata.stat.exists == True
 
 ## https://stackoverflow.com/questions/45864831/ansible-how-to-delete-a-folder-and-file-inside-a-directory-in-a-single-task
 - name: Remove Old Backup
@@ -32,6 +34,7 @@
     state: absent
   with_items:
     - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
+  when: programappdata.stat.exists == True
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: Backing Up Program to '/mnt/gdrive/' - {{program_var.stdout}}
@@ -47,14 +50,11 @@
     name: "{{program_var.stdout}}"
     state: started
   ignore_errors: True
-
-- name: Remove Junk Folder
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
+  when: programappdata.stat.exists == True
 
 - debug: msg="Program is now backed up to your Google Drive - {{program_var}}"
+  when: programappdata.stat.exists == True
 
+- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var}}"
+  when: programappdata.stat.exists == False
 
