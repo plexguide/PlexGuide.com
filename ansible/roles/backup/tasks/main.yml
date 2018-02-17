@@ -22,11 +22,6 @@
     name: "{{program_var.stdout}}"
     state: stopped
 
-- name: Making Folders
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
-
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
 ## https://stackoverflow.com/questions/45864831/ansible-how-to-delete-a-folder-and-file-inside-a-directory-in-a-single-task
@@ -43,7 +38,7 @@
   when: programappdata = true
 
 - name: Uploading Backup to Google Drive
-  command: "rclone copy '/tmp/{{program_var}}.tar' '/mnt/gdrive/plexguide/backup/{{program_var}.tar' --stats=15s -v --transfers=4 --drive-chunk-size=32M"
+  shell: "rclone copy /tmp/{{program_var}}.tar gdrive:/plexdrive/backup -v --checksum --drive-chunk-size=64M"
   when: programappdata = true
 
 - name: Restart Docker Container - {{program_var.stdout}}
