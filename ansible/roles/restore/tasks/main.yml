@@ -12,7 +12,7 @@
 ## move to tmp and then sync, easy fix
 ## ensure it pauses at end
 
-- name: Does Backup Data Exist on Grive - {{program_var.stdout}}?
+- name: Does Backup Data Exist on Grive - {{program_var.stdout}}
   stat:
     path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}
   register: programgdrive
@@ -91,8 +91,8 @@
   with_items:
     - /tmp/{{program_var.stdout}}
 
-- debug: msg="Program is now RESTORED from your Google Drive - {{program_var}}"
+- debug: msg="Program is now RESTORED from your Google Drive - {{program_var.stdout}}"
   when: programtmp.stat.exists == True
 
-- debug: msg="Program is not restored - A BACKUP Does Not Exist on GDrive {{program_var}}"
+- debug: msg="Program is not restored - A BACKUP Does Not Exist on GDrive {{program_var.stdout}}"
   when: programtmp.stat.exists == False
