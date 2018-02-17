@@ -12,6 +12,7 @@ Current Changes will continued to be modified as known.
 #### Changed
 - Fixed DelugeVPN download locations in Sonarr, Radarr, Lidarr, Mylar and CouchPotato
 - Fixed name for Ombi and Heimdall in Backup/Restore scripts
+- Order of Programs in Main Display
 
 #### Removed
 - None
