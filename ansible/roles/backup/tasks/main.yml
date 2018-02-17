@@ -21,6 +21,7 @@
   docker_container:
     name: "{{program_var.stdout}}"
     state: stopped
+  ignore_errors: True
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
@@ -45,6 +46,7 @@
   docker_container:
     name: "{{program_var.stdout}}"
     state: started
+  ignore_errors: True
 
 - name: Remove Junk Folder
   file:
