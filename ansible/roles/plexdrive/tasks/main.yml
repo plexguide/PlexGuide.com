@@ -16,9 +16,9 @@
     when: plexdrive4.stat.exists
 
   - name: Check service exists
-  stat:
-    path: "/etc/systemd/system/plexdrive.service"
-  register: plexdrive
+    stat:
+      path: "/etc/systemd/system/plexdrive.service"
+    register: plexdrive
 
   - name: Stop existing plexdrive service
     systemd: state=stopped name=plexdrive
