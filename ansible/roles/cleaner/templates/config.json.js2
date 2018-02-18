@@ -1,0 +1,18 @@
+########### Original Development of this Script Was Created By l3uddz from https://github.com/Cloudbox/Cloudbox
+# /etc/systemd/system/cleaner.service
+
+[Unit]
+Description=UnionFS Cleaner
+After=network-online.target unionfs.service
+
+[Service]
+User={{user}}
+Group={{user}}
+Type=simple
+WorkingDirectory=/opt/appdata/plexguide/cleaner/
+ExecStart=/opt/appdata/plexguide/cleaner/cleaner.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
