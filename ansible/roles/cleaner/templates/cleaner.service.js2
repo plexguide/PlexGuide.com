@@ -1,9 +1,6 @@
-########### Original Development of this Script Was Created By l3uddz from https://github.com/Cloudbox/Cloudbox
-# /etc/systemd/system/cleaner.service
-
 [Unit]
-Description=UnionFS Cleaner
-After=network-online.target unionfs.service
+Description=Cleaner
+After=multi-user.target
 
 [Service]
 User=1000
@@ -15,4 +12,4 @@ Restart=always
 RestartSec=10
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

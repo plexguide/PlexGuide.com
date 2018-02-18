@@ -4,14 +4,12 @@
     "dry_run": false,
     "du_excludes": ["*.partial~"],
     "local_folder": "/mnt/move/",
-    "local_folder_check_interval": {{cleaner.size_check_mins}},
-    "local_folder_size": {{cleaner.max_local_gigabytes}},
-    "local_remote": "{{cleaner.rclone_remote}}/Media",
+    "local_folder_check_interval": 10,
+    "local_folder_size": 25,
+    "local_remote": "/mnt/move/",
     "lsof_excludes": [
         ".partial~"
     ],
-    "pushover_app_token": "",
-    "pushover_user_token": "",
     "rclone_bwlimit": "",
     "rclone_checkers": 16,
     "rclone_chunk_size": "8M",
@@ -28,7 +26,7 @@
         #"/mnt/move/ebooks": 1
     },
     "rclone_transfers": 8,
-    "remote_folder": "{{cleaner.rclone_remote}}",
+    "remote_folder": "/mnt/gdrive",
     "unionfs_folder": "/mnt/move/.unionfs-fuse",
     "use_config_manager": true,
     "use_git_autoupdater": true,
