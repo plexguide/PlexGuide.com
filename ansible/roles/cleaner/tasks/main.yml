@@ -41,7 +41,7 @@
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/appdata/plexguide/cleaner state=directory owner={{user}} group={{user}} recurse=yes"
+  file: "path=/opt/appdata/plexguide/cleaner state=directory owner=1000 group=1000 recurse=yes"
 
 - name: Import cleaner service
   template:
