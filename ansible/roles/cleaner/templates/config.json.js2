@@ -3,10 +3,10 @@
     "cloud_folder": "/mnt/plexdrive",
     "dry_run": false,
     "du_excludes": ["*.partial~"],
-    "local_folder": "/mnt/move/",
+    "local_folder": "/mnt/unionfs/",
     "local_folder_check_interval": 10,
     "local_folder_size": 25,
-    "local_remote": "/mnt/move/",
+    "local_remote": "/mnt/unionfs/",
     "lsof_excludes": [
         ".partial~"
     ],
@@ -22,12 +22,10 @@
     "rclone_remove_empty_on_upload": {
         "/mnt/move/movies": 1,
         "/mnt/move/tv": 1
-        #"/mnt/move/music": 1
-        #"/mnt/move/ebooks": 1
     },
     "rclone_transfers": 8,
     "remote_folder": "/mnt/gdrive",
-    "unionfs_folder": "/mnt/move/.unionfs-fuse",
+    "unionfs_folder": "/mnt/unionfs/.unionfs-fuse",
     "use_config_manager": true,
     "use_git_autoupdater": true,
     "use_upload_manager": true
