@@ -3,9 +3,6 @@ Current Changes will continued to be modified as known.
 
 ### [5.040] Actively Working
 
-#### Warning
-- None
-
 #### Added
 - None
 
@@ -13,6 +10,7 @@ Current Changes will continued to be modified as known.
 - Fixed DelugeVPN download locations in Sonarr, Radarr, Lidarr, Mylar and CouchPotato
 - Fixed name for Ombi and Heimdall in Backup/Restore scripts
 - Order of Programs in Main Display
+- Changed directory points in rutorrent (just redeploy rutorrent; make sure nothing is pedning)
 
 #### Removed
 - None
