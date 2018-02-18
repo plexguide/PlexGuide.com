@@ -13,13 +13,10 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /opt/appdata/plexguide/cleaner
-    
-- name: Clone cleaner
-  git:
-    repo: https://github.com/l3uddz/cleaner/
-    dest: /opt/appdata/plexguide/cleaner
-    version: master
-    force: yes
+  
+- name: Backing Up Program to GDrive - {{program_var.stdout}}
+  shell: "git clone https://github.com/Admin9705/unionfs_cleaner.git /opt/appdata/plexguide/cleaner"
+  when: programappdata.stat.exists == True
     
 - name: Install pip requirements
   pip:
