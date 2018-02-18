@@ -6,8 +6,8 @@ Description=UnionFS Cleaner
 After=network-online.target unionfs.service
 
 [Service]
-User={{user}}
-Group={{user}}
+User=1000
+Group=1000
 Type=simple
 WorkingDirectory=/opt/appdata/plexguide/cleaner/
 ExecStart=/opt/appdata/plexguide/cleaner/cleaner.py
