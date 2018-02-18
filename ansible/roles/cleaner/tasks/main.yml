@@ -14,9 +14,8 @@
   with_items:
     - /opt/appdata/plexguide/cleaner
   
-- name: Backing Up Program to GDrive - {{program_var.stdout}}
+- name: Clone Cleaner
   shell: "git clone https://github.com/Admin9705/unionfs_cleaner.git /opt/appdata/plexguide/cleaner"
-  when: programappdata.stat.exists == True
     
 - name: Install pip requirements
   pip:
