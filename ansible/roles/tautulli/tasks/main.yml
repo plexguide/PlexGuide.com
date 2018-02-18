@@ -28,6 +28,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:tautulli.{{domain}}"
-      traefik.frontend.rule2: "Host:plexpy.{{domain}}"
+      traefik.frontend.rule: "Host:tautulli.{{domain}},plexpy.{{domain}}"
       traefik.port: "8181"

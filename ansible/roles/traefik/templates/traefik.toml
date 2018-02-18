@@ -64,30 +64,36 @@ OnHostRule = true
 
 [[acme.domains]]
 main = "yourdomain.com"
+# Make sure these are alphabetical so it's easy to read
 sans = [
+    "couchpotato.yourdomain.com",
+    "deluge.yourdomain.com",
+    "delugevpn.yourdomain.com",
+    "emby.yourdomain.com",
+    "heimdall.yourdomain.com",
+    "htpcmanager.yourdomain.com",
+    "jackett.yourdomain.com",
+    "lidarr.yourdomain.com",
+    "medusa.yourdomain.com",
+    "muximux.yourdomain.com",
+    "mylar.yourdomain.com",
+    "netdata.yourdomain.com",
+    "nzbget.yourdomain.com",
+    "nzbhydra.yourdomain.com",
+    "nzbhydra2.yourdomain.com",
+    "ombi.yourdomain.com",
+    "organizr.yourdomain.com",
     "plex.yourdomain.com",
     "plexpy.yourdomain.com",
     "portainer.yourdomain.com",
-    "nzbhydra.yourdomain.com",
-    "organizr.yourdomain.com",
-    "nzbhydra2.yourdomain.com",
-    "nzbget.yourdomain.com",
-    "sonarr.yourdomain.com",
     "radarr.yourdomain.com",
-    "lidarr.yourdomain.com",
-    "htpcmanager.yourdomain.com",
-    "sabnzbd.yourdomain.com",
-    "rutorrent.yourdomain.com",
-    "rtorrentvpn.yourdomain.com",
     "resilio.yourdomain.com",
-    "netdata.yourdomain.com",
-    "muximux.yourdomain.com",
-    "medusa.yourdomain.com",
-    "jackett.yourdomain.com",
-    "emby.yourdomain.com",
-    "deluge.yourdomain.com",
-    "delugevpn.yourdomain.com",
-    "ombi.yourdomain.com"
+    "rtorrentvpn.yourdomain.com",
+    "rutorrent.yourdomain.com",
+    "sabnzbd.yourdomain.com",
+    "sonarr.yourdomain.com",
+    "tautulli.yourdomain.com",
+    "ubooquity.yourdomain.com"
 ]
 
 # Enable Docker configuration backend
