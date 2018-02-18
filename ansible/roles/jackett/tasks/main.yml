@@ -7,15 +7,14 @@
 - name: Deploy Jacket Container
   docker_container:
     name: jackett
-    #image: hotio/suitarr
-    image: linuxserver/jackett
+    image: hotio/suitarr
     pull: yes
     cpu_shares: 256
     published_ports:
       - "9117:9117"
     env:
-      #APP: jackett
-      #VERSION: unstable
+      APP: jackett
+      VERSION: unstable
       PUID: "1000"
       PGID: "1000"
       HTTPS_METHOD: noredirect
