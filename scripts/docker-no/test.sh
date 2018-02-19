@@ -26,6 +26,7 @@ do
 
 	done
 
+		echo "finish flag"
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		sleep 300
 
