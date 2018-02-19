@@ -9,13 +9,13 @@ do
 
 ### Poll #1
 echo "On Poll 1"
-	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((a + 0))" | bc -l 1>/dev/null 2>&1
+	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((a + 0))" 1>/dev/null 2>&1 | bc -l 
 echo "$a"
 
 sleep 20
 echo "On Poll 2"
 ### Poll #2	
-	b=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((b + 0))" | bc -l 1>/dev/null 2>&1
+	b=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((b + 0))" 1>/dev/null 2>&1 | bc -l 
 echo "$b"
 
 done
