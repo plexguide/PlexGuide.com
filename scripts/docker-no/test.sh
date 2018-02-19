@@ -27,6 +27,7 @@ while [ 1 -lt 10000000 ]
 do
 	data=$((data+0))
 	data=$((data+a))
+	echo "$data" > /opt/appdata/plexguide/data
 
 	if [ "$data" -gt 1000000 ]; then
        exit 0
