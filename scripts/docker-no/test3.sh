@@ -22,9 +22,11 @@ total=$((date2-date1))
 
 while [ "$total" -lt 90001 ]
 do
-	date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date2
-	date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
-	echo "$date2"
+	date +%s > /opt/appdata/plexguide/date2
+    date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
+	total=$((date2-date1))
+	echo "total difference"
+	echo "$total"
 	sleep 5
 done
 
