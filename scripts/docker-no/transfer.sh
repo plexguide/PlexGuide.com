@@ -29,7 +29,7 @@ else
 	echo "$switch"
 fi
 
-if [ "$switch" -eq 0 ]; then
+if [ "$switch" -eq "0" ]; then
    	echo "You Reached Your Limit for The Day!"
    exit 0
 fi
