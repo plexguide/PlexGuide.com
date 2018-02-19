@@ -4,12 +4,12 @@
 # 1307068 = 1.3 GB
 # 10000000 = 10 GB
 
-a=$(du -hla /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
+a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
 while [ "$a" -lt 10000000 ]
 do
 
-a=$(du -hla /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
+a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
 sleep 5
 echo "test"
