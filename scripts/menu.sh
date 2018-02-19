@@ -49,7 +49,7 @@ whiptail --title "Visit PlexGuide.com - v5.040" --menu "Make your choice" 18 43 
    "8)" "Backup & Restore" \
    "9)" "PlexGuide: Update (Check ChangeLog)" \
    "10)" "PlexGuide: UnInstall" \
-   "11)" "BETA: Uncapped Speeds"
+   "11)" "BETA: Uncapped Speeds" \
    "12)" "Exit  "  3>&2 2>&1 1>&3
 )
 
