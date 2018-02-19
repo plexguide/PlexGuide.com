@@ -1,4 +1,4 @@
-Unit]
+[Unit]
 Description=Time
 After=multi-user.target
 
