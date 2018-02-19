@@ -1,6 +1,7 @@
 #!/bin/bash
+### bash /opt/plexguide/scripts/docker-no/test.sh
 
-while [ $pgpoll1 -ne $pgpoll2 ]
+while [ "$pgpoll1" -ne "$pgpoll2" ]
 do
 
 ### Poll #1
