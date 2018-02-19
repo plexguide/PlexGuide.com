@@ -2,8 +2,7 @@
 ### bash /opt/plexguide/scripts/docker-no/test2.sh
 
 	echo "flag a"
-#if [ ! -e "$file" ]
-if [! -f "/opt/appdata/plexguide/date1.txt"]
+if [ ! -e "/opt/appdata/plexguide/date1.txt" ]
 then
 	echo "file exists already"
 else
