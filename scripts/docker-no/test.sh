@@ -14,7 +14,7 @@ echo ""
 while [ 1 -lt 10000000 ]
 do
 
-	while [ "$a" -lt 1000000 ]
+	while [ "$a" -lt 500000 ]
 	do
 
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
@@ -28,7 +28,10 @@ do
 
 		echo "finish flag"
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
-		sleep 300
+		sleep 15
+
+	## recalculate	
+	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
 done
 
