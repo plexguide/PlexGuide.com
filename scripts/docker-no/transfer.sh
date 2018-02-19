@@ -51,7 +51,7 @@ do
        exit 0
     fi
 
-	while [ "$a" -lt 1000000 ]
+	while [ "$a" -lt 100000 ]
 	do
 
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
