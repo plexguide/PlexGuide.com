@@ -5,6 +5,9 @@
 # 10000000 = 10 GB
 
 a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
+echo "first flag"
+echo ""
+
 
 while [ "$a" -lt 10000000 ]
 do
@@ -12,7 +15,8 @@ do
 a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
 sleep 5
-echo "test"
+echo "flag"
+echo ""
 
 done
 
