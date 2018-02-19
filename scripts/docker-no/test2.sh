@@ -15,6 +15,8 @@ else
 	echo "$date1"
 fi
 
+date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date2
+date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
 
 while [ "$date1" == "$date2" ]
 do
