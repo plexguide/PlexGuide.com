@@ -4,8 +4,8 @@
 file="/var/plexguide/vnc.yes"
 if [ -e "$file" ]
 then
-    date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date.txt
-    echo "flag date set"
+    #date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date.txt
+    #echo "flag date set"
 fi
 
 
