@@ -1,16 +1,13 @@
 ## Current Changes
 Current Changes will continued to be modified as known.
 
-### [5.040] Actively Working
+### [5.041] Actively Working
 
 #### Added
-- None
+- None 
 
 #### Changed
-- Fixed DelugeVPN download locations in Sonarr, Radarr, Lidarr, Mylar and CouchPotato
-- Fixed name for Ombi and Heimdall in Backup/Restore scripts
-- Order of Programs in Main Display
-- Changed directory points in rutorrent (just redeploy rutorrent; make sure nothing is pedning)
+- None
 
 #### Removed
 - None
@@ -18,6 +15,20 @@ Current Changes will continued to be modified as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.040]
+
+#### Added
+- PG Upload Uncapped Beta Scripts (for unencrypted rclone version only)
+
+#### Changed
+- Fixed DelugeVPN download locations in Sonarr, Radarr, Lidarr, Mylar and CouchPotato
+- Fixed name for Ombi and Heimdall in Backup/Restore scripts
+- Order of Programs in Main Display
+- Changed directory points in rutorrent (just redeploy rutorrent; make sure nothing is pending)
+
+#### Removed
+- Older Unused Scripts
 
 ### [5.039]
 
