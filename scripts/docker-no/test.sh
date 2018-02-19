@@ -2,7 +2,7 @@
 ### bash /opt/plexguide/scripts/docker-no/test.sh
 
 pgpoll1="1"
-pgpoll2="1"
+pgpoll2="2"
 
 while [ "$pgpoll1" -ne "$pgpoll2" ]
 do
