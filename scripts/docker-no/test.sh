@@ -7,7 +7,7 @@
 
 if [ ! -e "/opt/appdata/plexguide/data" ]
 then
-	"0" > /opt/appdata/plexguide/data
+	echo 0 > /opt/appdata/plexguide/data
     data=$(awk '{print $1}' /opt/appdata/plexguide/data)
     echo "a date never existed"
     echo "$data"
