@@ -5,15 +5,31 @@
 # 10000000 = 10 GB
 # 750000000 = 750 GB
 
+if [ ! -e "/opt/appdata/plexguide/data" ]
+then
+	0 > /opt/appdata/plexguide/data
+    data=$(awk '{print $1}' /opt/appdata/plexguide/data)
+    echo "a date never existed"
+    echo "$data"
+else
+	echo "file exists already"
+	data=$(awk '{print $1}' /opt/appdata/plexguide/data)
+	echo "$data"
+fi
+
+
+
 a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 echo "first flag"
 echo ""
 
-	
 while [ 1 -lt 10000000 ]
 do
+	((data=data+a))
+	0 > /opt/appdata/plexguide/data
+    data=$(awk '{print $1}' /opt/appdata/plexguide/data)
 
-	if [ "$total" -gt 1000000 ]; then
+	if [ "$data" -gt 1000000 ]; then
        exit 0
     fi
 
@@ -24,34 +40,14 @@ do
 
 	sleep 5
 
-		echo "flag"
+		echo "transfer amount under 10GB"
 		echo ""
-
 	done
 
 		echo "finish flag"
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		sleep 10
 
-	((total=total+a))
-	echo "$total"
-	echo "total above"
-	echo ""
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
 done
-
-
-
-### Poll #1
-#echo "On Poll 1"
-#	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((a + 0))" | clisp --quiet -x '(+ 1.5 "$a")'
-#echo "$a"
-
-#sleep 20
-#echo "On Poll 2"
-### Poll #2	
-#	b=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((b + 0))" > /dev/null 2>&1 | bc -l 
-#echo "$b"
-
-#done
