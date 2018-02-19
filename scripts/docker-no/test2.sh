@@ -1,11 +1,21 @@
 #!/bin/bash
 ### bash /opt/plexguide/scripts/docker-no/test2.sh
 
-if [ ! -f /opt/appdata/plexguide/date1.txt ]
-	then
+file="/var/plexguide/vnc.yes"
+if [ -e "$file" ]
+then
     date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date.txt
     echo "flag date set"
 fi
+
+
+
+
+#if [ ! -f /opt/appdata/plexguide/date1.txt ]
+#	then
+#   date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date.txt
+#    echo "flag date set"
+#fi
 
 while [ 1 -lt 10000000 ]
 do
