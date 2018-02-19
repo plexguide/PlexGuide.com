@@ -29,9 +29,9 @@ else
 	echo "$switch"
 fi
 
-switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
+#switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
 if [ "$switch" -eq "0" ]; then
-   	echo "You Reached Your Limit for The Day!"
+   echo "You Reached Your Limit for The Day!"
    exit 0
 fi
 
