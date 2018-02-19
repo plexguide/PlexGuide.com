@@ -28,7 +28,7 @@ do
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		sleep 10
 
-	total=$((total+a)) | echo "$total"
+	((total=total+a)) | echo "$total"
 	echo "total above"
 	echo ""
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
