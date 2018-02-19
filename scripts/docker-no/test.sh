@@ -9,12 +9,12 @@ do
 
 ### Poll #1
 echo "On Poll 1"
-	pgpolla=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((pgpolla" + 0))"
+	pgpolla=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((pgpolla + 0))"
 
 sleep 20
 echo "On Poll 2"
 ### Poll #2	
-	pgpollb=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((pgpollb" + 0))"
+	pgpollb=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((pgpollb + 0))"
 
 done
 
