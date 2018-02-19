@@ -11,7 +11,7 @@ then
     echo "a date never existed"
 else
 	echo "file exists already"
-	cat /opt/appdata/plexguide/date1
+	date1=$(awk '{print $2}' /opt/appdata/plexguide/date1)
 	echo "$date1"
 fi
 
