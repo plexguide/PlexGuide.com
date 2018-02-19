@@ -17,21 +17,21 @@ else
 	echo "$data"
 fi
 
-if [ ! -e "/opt/appdata/plexguide/data" ]
+if [ ! -e "/opt/appdata/plexguide/switch" ]
 then
-	echo 1 > /opt/appdata/plexguide/switch
+	echo "on" > /opt/appdata/plexguide/switch
     switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
-    echo "the swtich never exist"
+    echo "the switched never existed"
     echo "$switch"
 else
 	echo "switch already exists"
-	switch=$(awk '{print $1}' /opt/appdata/plexguide/data)
+	switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
+	echo "The switch is currently:"
 	echo "$switch"
 fi
 
-echo "$switch"
 #switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
-if [ "$switch" -eq "0" ]; then
+if [ "$switch" == "off" ]; then
    echo "You Reached Your Limit for The Day!"
    exit 0
 fi
@@ -46,7 +46,7 @@ do
 	data=$((data+0))
 
 	if [ "$data" -gt 1000000 ]; then
-	   	echo 0 > /opt/appdata/plexguide/switch
+	   	echo off > /opt/appdata/plexguide/switch
     	switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
        exit 0
     fi
