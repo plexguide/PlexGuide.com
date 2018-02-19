@@ -36,7 +36,7 @@ do
  		echo 1 > /opt/appdata/plexguide/data
 		systemctl restart transfer
     fi
-
+    total=$((date2-date1))
 done
 
 echo "Program Exited Incorrectly"
