@@ -12,6 +12,10 @@ echo ""
 while [ 1 -lt 10000000 ]
 do
 
+	if [ "$total" -gt 1000000 ]; then
+       exit 0
+    fi
+
 	while [ "$a" -lt 500000 ]
 	do
 
