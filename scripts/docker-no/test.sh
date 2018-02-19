@@ -11,10 +11,10 @@ echo "first flag"
 echo ""
 
 	
-while [ 1000 -lt 1 ]
+while [ 1 -lt 10000000 ]
 do
 
-	while [ 1000000 -lt "$a" ]
+	while [ "$a" -lt 1000000 ]
 	do
 
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
