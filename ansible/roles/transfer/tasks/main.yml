@@ -20,6 +20,10 @@
   - name: Daemon-Reload
     systemd: state=stopped name=transfer daemon_reload=yes enabled=no
 
+  - name: "Wait 10 Seconds"
+    wait_for:
+      timeout: 5
+
   - name: Start Transfer
     systemd: state=started name=transfer enabled=yes
     when: transfer.stat.exists
@@ -43,6 +47,10 @@
 
   - name: Daemon-Reload
     systemd: state=stopped name=time daemon_reload=yes enabled=no
+
+  - name: "Wait 5 Seconds"
+    wait_for:
+      timeout: 5
 
   - name: Start Time
     systemd: state=started name=time enabled=yes

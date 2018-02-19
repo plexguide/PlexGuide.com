@@ -3,7 +3,7 @@
 
 # 1307068 = 1.3 GB
 # 10000000 = 10 GB
-# 750000000 = 750 GB
+# 740000000 = 750 GB
 
 if [ ! -e "/opt/appdata/plexguide/data" ]
 then
@@ -41,7 +41,7 @@ a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$
 echo "first flag"
 echo ""
 
-while [ 1 -lt 10000000 ]
+while [ 1 -lt 740000000 ]
 do
 	data=$((data+0))
 
@@ -51,14 +51,14 @@ do
        exit 0
     fi
 
-	while [ "$a" -lt 500000 ]
+	while [ "$a" -lt 1000000 ]
 	do
 
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
 	sleep 5
 
-		echo "transfer amount under 10GB"
+		echo "transfer amount under 1GB"
 		echo ""
 	done
 
@@ -68,7 +68,9 @@ do
 		echo "finish flag"
 
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
-		sleep 10
+		echo "sleeping for 60 seconds"
+		sleep 60
+		echo "resuming"
 
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 
