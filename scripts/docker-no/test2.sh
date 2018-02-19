@@ -4,12 +4,12 @@
 	echo "flag a"
 if [ ! -e "/opt/appdata/plexguide/date1.txt" ]
 then
-	echo "file exists already"
-else
-    date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date1.txt
+	date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date1.txt
     date1=$(awk '{print $2}' /opt/appdata/plexguide/date1.txt)
     echo "$date1"
     echo "flag b"
+else
+	echo "file exists already"
 fi
 
 #if [ ! -f /opt/appdata/plexguide/date1.txt ]
