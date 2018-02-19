@@ -6,7 +6,7 @@ After=multi-user.target
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive4=RO /mnt/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/plexdrive=RO /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes

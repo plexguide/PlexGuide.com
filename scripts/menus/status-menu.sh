@@ -6,8 +6,8 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Service Status Menu" --menu "Make your choice" 17 34 10 \
-    "1)" "Unencrypted: PlexDrive4"   \
-    "2)" "Encrypted: PlexDrive4"  \
+    "1)" "Unencrypted: PlexDrive"   \
+    "2)" "Encrypted: PlexDrive"  \
     "3)" "Unencrypted: RClone"  \
     "4)" "Encrypted: RClone"  \
     "5)" "Unencrypted: UnionFS"  \
@@ -22,17 +22,17 @@ result=$(whoami)
 case $CHOICE in
     "1)")
       ## create log file if does not exist
-      if [ -e "/opt/plexguide/plexdrive4.log" ]
+      if [ -e "/opt/plexguide/plexdrive.log" ]
       then
         echo "Log exists"
       else
-        touch /opt/plexguide/plexdrive4.log
+        touch /opt/plexguide/plexdrive.log
       fi
 
-      ## obtains plexdrive4.service info and puts into a log to be displayed to the user
+      ## obtains plexdrive.service info and puts into a log to be displayed to the user
       clear
-      systemctl status plexdrive4 > /opt/plexguide/plexdrive4.log
-      cat /opt/plexguide/plexdrive4.log
+      systemctl status plexdrive > /opt/plexguide/plexdrive.log
+      cat /opt/plexguide/plexdrive.log
       echo
       echo "*** View the Log ***"
       echo

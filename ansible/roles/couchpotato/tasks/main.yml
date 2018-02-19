@@ -4,7 +4,7 @@
     name: couchpotato
     state: absent
 
-- name: Check sabnzbd.ini exists
+- name: Check couchpotato.ini exists
   stat:
     path: "/opt/appdata/couchpotato/config.ini"
   register: cp_ini
@@ -43,6 +43,7 @@
       - /mnt/sab/complete:/complete
       - /mnt/nzbget/completed:/completed
       - /mnt/deluge/downloaded:/downloaded
+      - /mnt/torrentvpn/downloaded:/data/completed
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

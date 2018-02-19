@@ -14,7 +14,7 @@ whiptail --title "PlexDrive Menu" --menu "Make your choice" 10 40 3 \
 result=$(whoami)
 case $CHOICE in
     "1)")
-        bash /opt/plexguide/scripts/docker-no/plexdrive4.sh
+        bash /opt/plexguide/scripts/docker-no/plexdrive.sh
         ;;
 
     "2)")

@@ -6,8 +6,8 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Service Restart Menu" --menu "Make your choice" 16 34 9 \
-    "1)" "Unencrypted: PlexDrive4"   \
-    "2)" "Encrypted: PlexDrive4"  \
+    "1)" "Unencrypted: PlexDrive"   \
+    "2)" "Encrypted: PlexDrive"  \
     "3)" "Unencrypted: RClone"  \
     "4)" "Encrypted: RClone"  \
     "5)" "Unencrypted: UnionFS"  \
@@ -21,8 +21,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
       clear
-      systemctl restart mongodb
-      systemctl restart plexdrive4
+      systemctl restart plexdrive
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;

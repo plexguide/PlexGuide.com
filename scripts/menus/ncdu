@@ -10,7 +10,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "NCDU Directory Size Menu" --menu "CTRL C to exit" 21 60 12 \
+whiptail --title "NCDU Directory Size Menu" --menu "*** Press q to quit! ***" 21 60 12 \
     "1)" "Entire drive - excluding /mnt"   \
     "2)" "Entire drive - excluding /mnt & /opt"   \
     "3)" "/opt - WARNING Can take a long time!"   \

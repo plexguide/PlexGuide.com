@@ -26,7 +26,7 @@
       HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/rutorrent/:/config
-      - /mnt/rutorrents/downloads/incoming:/downloads
+      - /mnt/rutorrents/:/downloads
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always

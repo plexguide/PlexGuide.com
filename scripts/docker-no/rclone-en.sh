@@ -98,7 +98,7 @@ tee "/opt/appdata/plexguide/rclone-en.sh" > /dev/null <<EOF
 rclone --uid=1000 --gid=1000 --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
 EOF
 chmod 775 /opt/appdata/plexguide/rclone-en.sh
-## Create the RClone service for plexdrive4 encrypted mount point
+## Create the RClone service for plexdrive encrypted mount point
 tee "/etc/systemd/system/rclone-en.service" > /dev/null <<EOF
 [Unit]
 Description=RClone Daemon

@@ -8,8 +8,8 @@
       - /mnt/deluge/temp
       - /mnt/deluge/downloaded
       - /mnt/deluge/torrent
-      - /mnt/rutorrent
-      - /mnt/rutorrent/downloads
+      - /mnt/rutorrents
+      - /mnt/rutorrents/downloads
       - /mnt/move
       - /mnt/move/tv
       - /mnt/move/movies
@@ -34,10 +34,7 @@
       - /mnt/sab/complete/ebooks
       - /mnt/sab/incomplete
       - /mnt/sab/nzb
-      - /mnt/plexdrive4
-      - /mnt/plexdrive4/tv
-      - /mnt/plexdrive4/movies
-      - /mnt/plexdrive4/music
+      - /mnt/plexdrive
       - /mnt/sab/complete/ebooks
       - /mnt/encrypt
       - /mnt/encrypt/tv

@@ -38,7 +38,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.038" --menu "Make your choice" 18 43 11 \
+whiptail --title "Visit PlexGuide.com - v5.040" --menu "Make your choice" 18 43 11 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \
@@ -91,7 +91,7 @@ case $CHOICE in
 
    "8)")
        clear
-       bash /opt/plexguide/scripts/menus/back-restore-select.sh
+       bash /opt/plexguide/scripts/menus/backup-restore/main.sh
        ;;
 
    "9)")

@@ -23,7 +23,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config
-      - /mnt/plexdrive4/:/plexdrive4
+      - /mnt/plexdrive/:/plexdrive
       - /mnt/unionfs:/unionfs
       - /mnt/encrypt:/encrypt
     networks:

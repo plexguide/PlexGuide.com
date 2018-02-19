@@ -1,13 +1,16 @@
 ## Current Changes
-Current Changes will continued to be modifed as known.
+Current Changes will continued to be modified as known.
 
-### [5.038] Actively Working
+### [5.040] Actively Working
+
 #### Added
-- Install Ansible Toolbox
-- Add Symoblic Links to assist the Program
+- None
 
 #### Changed
-- None
+- Fixed DelugeVPN download locations in Sonarr, Radarr, Lidarr, Mylar and CouchPotato
+- Fixed name for Ombi and Heimdall in Backup/Restore scripts
+- Order of Programs in Main Display
+- Changed directory points in rutorrent (just redeploy rutorrent; make sure nothing is pedning)
 
 #### Removed
 - None
@@ -15,6 +18,44 @@ Current Changes will continued to be modifed as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.039]
+
+#### Warning
+- Updating will require new backs ups if you have any - new .tar format is utilized over .zip
+- If running 5.038 and below; ensure you:
+  - Rerun plexdrive to activate new service (let it finish and reboot) (do not have enter tokens)
+  - Rerun your version of rclone to activate the new service (may have to reboot) (do not have to enter tokens)
+
+#### Added
+- Added news Ansible Backup & Restore Works
+- Fixed PD5 service start issue
+
+#### Changed
+- /mnt/rutorrent to /mnt/rutorrents in folder set up script
+- Moved legacy backup to legacy selection for new Restore & Backup
+- Media Programs menu fixed
+
+#### Removed
+- /mnt/rutorrent directory (when used with preinstaller)
+
+### [5.038]
+#### Added
+- Install Ansible Toolbox
+- Add Symoblic Links to assist the Program
+- Adding New Ansible Backup, Restore - old becomes legacy and can be used until tranistion out
+- Added Lidarr, CouchPotato, Organizr, Muximux & Heimdall to Backup/Restore scripts
+- Added torrentvpn directory back into CouchPotato
+
+#### Changed
+- Switched to PlexDrive5 @designgears
+- PG5 Configs
+- Excluded Plex cache folder from Backup
+- Edited emby to embyserver in Backup/Restore script
+- Updated Service menus to reflect PlexDrive name change
+
+#### Removed
+- Old Ownership.sh file - no longer used
 
 ### [5.037]
 #### Added
