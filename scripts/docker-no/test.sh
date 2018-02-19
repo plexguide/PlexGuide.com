@@ -11,7 +11,7 @@ echo "first flag"
 echo ""
 
 	
-while [ 1 -lt 1000 ]
+while [ 1000 -lt 1 ]
 do
 
 	while [ "$a" -lt 1000000 ]
