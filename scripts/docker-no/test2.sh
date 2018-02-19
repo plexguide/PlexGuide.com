@@ -15,8 +15,8 @@ else
 	echo "$date1"
 fi
 
-((date1=date1+0))
-((date2=date2+0))
+date1=$(echo "$((date1 + 0))"
+date2=$(echo "$((date2 + 0))"
 
 while [ "$date1" -eq "$date2" ]
 do
