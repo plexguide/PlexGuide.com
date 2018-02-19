@@ -1,0 +1,49 @@
+---
+########################################## Services
+########### Transfer Service
+  - name: Check Transfer Service
+    stat:
+      path: "/etc/systemd/system/transfer.service"
+    register: transfer
+
+  - name: Stop If Transfer Service Running
+    systemd: state=stopped name=transfer
+    when: transfer.stat.exists
+    
+  - name: Install Transfer Service
+    template:
+      src: transfer.js2
+      dest: /etc/systemd/system/transfer.service 
+      force: yes
+    when: transfer.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=transfer daemon_reload=yes enabled=no
+
+  - name: Start Transfer
+    systemd: state=started name=transfer enabled=yes
+    when: transfer.stat.exists
+    
+########### Time
+  - name: Check Time Service
+    stat:
+      path: "/etc/systemd/system/time.service"
+    register: time
+
+  - name: Stop If Time Service Running
+    systemd: state=stopped name=time
+    when: time.stat.exists
+    
+  - name: Install Time Service
+    template:
+      src: time.js2
+      dest: /etc/systemd/system/time.service 
+      force: yes
+    when: time.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=time daemon_reload=yes enabled=no
+
+  - name: Start Time
+    systemd: state=started name=time enabled=yes
+    when: time.stat.exists

@@ -1,0 +1,13 @@
+Unit]
+Description=Time
+After=multi-user.target
+
+[Service]
+User=0
+Group=0
+Type=simple
+ExecStart=/bin/bash /opt/plexguide/scripts/docker-no/transfer.sh
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
