@@ -8,8 +8,10 @@ then
     date1=$(awk '{print $2}' /opt/appdata/plexguide/date1)
     echo "$date1"
     echo "a date never existed"
+
 else
 	echo "file exists already"
+	cat /opt/appdata/plexguide/date1
 fi
 
 #if [ ! -f /opt/appdata/plexguide/date1.txt ]
