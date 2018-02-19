@@ -3,6 +3,7 @@
 
 # 1307068 = 1.3 GB
 # 10000000 = 10 GB
+# 750000000 = 750 GB
 
 a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 echo "first flag"
