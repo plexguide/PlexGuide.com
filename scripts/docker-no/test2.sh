@@ -4,8 +4,9 @@
 file="/var/plexguide/vnc.yes"
 if [ -e "$file" ]
 then
-    date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date.txt
-    echo "flag date set"
+    date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date1.txt
+    date1=$(awk '{print $2}' /opt/appdata/plexguide/date1.txt)
+    echo "date1"
 fi
 
 #if [ ! -f /opt/appdata/plexguide/date1.txt ]
@@ -14,17 +15,17 @@ fi
 #    echo "flag date set"
 #fi
 
-while [ 1 -lt 10000000 ]
-do
+#while [ 1 -lt 10000000 ]
+#do
 
-	a=$(awk '{print 1}' /opt/appdata/plexguide/date.txt)
+	#a=$(awk '{print 1}' /opt/appdata/plexguide/date.txt)
 	echo  "$a"
 	echo "flag1"
 	
-	sleep 10
-	$b=(date -d '0 hour ago' '+%d')
+	#sleep 10
+	#$b=(date -d '0 hour ago' '+%d')
 	echo "$b"
 	echo "flag2"
 
-done
+#done
 
