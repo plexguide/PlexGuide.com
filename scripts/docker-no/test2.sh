@@ -1,7 +1,7 @@
 #!/bin/bash
 ### bash /opt/plexguide/scripts/docker-no/test2.sh
 
-file="/var/plexguide/vnc.yes"
+file="/opt/appdata/plexguide/date1.txt"
 if [ -e "$file" ]
 then
     date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date1.txt
