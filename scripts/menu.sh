@@ -49,7 +49,8 @@ whiptail --title "Visit PlexGuide.com - v5.040" --menu "Make your choice" 18 43 
    "8)" "Backup & Restore" \
    "9)" "PlexGuide: Update (Check ChangeLog)" \
    "10)" "PlexGuide: UnInstall" \
-   "11)" "Exit  "  3>&2 2>&1 1>&3
+   "11)" "BETA: Uncapped Speeds"
+   "12)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -106,6 +107,11 @@ case $CHOICE in
        ;;
 
    "11)")
+       clear
+       bash /opt/plexguide/scripts/menus/transfer/main.sh
+       ;;
+
+   "12)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
