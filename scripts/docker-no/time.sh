@@ -20,7 +20,8 @@ date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
 
 total=$((date2-date1))
 
-while [ "$total" -lt 90001 ]
+## 90001
+while [ "$total" -lt 600 ]
 do
 	date +%s > /opt/appdata/plexguide/date2
     date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
