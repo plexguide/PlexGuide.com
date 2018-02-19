@@ -9,7 +9,7 @@ do
 
 ### Poll #1
 echo "On Poll 1"
-	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$a" | bc <<< 'scale=2; $a' 
+	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$a" | bc <<< 'scale=2; "$a"' 
 echo "$a"
 
 sleep 20
