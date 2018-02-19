@@ -25,7 +25,8 @@ echo ""
 
 while [ 1 -lt 10000000 ]
 do
-	((data=data+a))
+	data=$((data+0))
+	data=$((data+a))
 	0 > /opt/appdata/plexguide/data
     data=$(awk '{print $1}' /opt/appdata/plexguide/data)
 
