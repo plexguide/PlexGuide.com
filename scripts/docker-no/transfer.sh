@@ -58,7 +58,7 @@ do
 
 	sleep 5
 
-		echo "transfer amount under 1GB"
+		echo "Transfer will occur after 100MB is Collected"
 		echo ""
 	done
 
