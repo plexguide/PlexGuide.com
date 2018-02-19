@@ -1,13 +1,13 @@
 #!/bin/bash
 ### bash /opt/plexguide/scripts/docker-no/test2.sh
 
-	echo "flag a"
+	echo "starting program"
 if [ ! -e "/opt/appdata/plexguide/date1.txt" ]
 then
-	date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date1.txt
-    date1=$(awk '{print $2}' /opt/appdata/plexguide/date1.txt)
+	date -d '0 hour ago' '+%d' > /opt/appdata/plexguide/date1
+    date1=$(awk '{print $2}' /opt/appdata/plexguide/date1)
     echo "$date1"
-    echo "flag b"
+    echo "a date never existed"
 else
 	echo "file exists already"
 fi
