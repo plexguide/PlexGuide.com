@@ -1,24 +1,34 @@
 #!/bin/bash
 ### bash /opt/plexguide/scripts/docker-no/test.sh
 
-a="1"
-b="2"
+# 1307068 = 1.3 GB
+# 10000000 = 10 GB
 
-while [ "$a" -ne "$b" ]
+a=$(du -hla /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}')
+
+while [ "$a" -lt 10000000 ]
 do
 
-### Poll #1
-echo "On Poll 1"
-	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') | printf "%.0f\n" "$a"
-echo "$a"
+a=$(du -hla /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}')
 
-sleep 20
-echo "On Poll 2"
-### Poll #2	
-	b=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((b + 0))" > /dev/null 2>&1 | bc -l 
-echo "$b"
+sleep 5
+echo "test"
 
 done
 
-echo "Final Transfer Output"
-echo "$b"
+
+
+
+
+### Poll #1
+#echo "On Poll 1"
+#	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((a + 0))" | clisp --quiet -x '(+ 1.5 "$a")'
+#echo "$a"
+
+#sleep 20
+#echo "On Poll 2"
+### Poll #2	
+#	b=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((b + 0))" > /dev/null 2>&1 | bc -l 
+#echo "$b"
+
+#done
