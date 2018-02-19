@@ -21,7 +21,7 @@ date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
 total=$((date2-date1))
 
 ## 90001
-while [ "a" -eq "b" ]
+while [ "a" == "a" ]
 do
 	date +%s > /opt/appdata/plexguide/date2
     date2=$(awk '{print $1}' /opt/appdata/plexguide/date2)
