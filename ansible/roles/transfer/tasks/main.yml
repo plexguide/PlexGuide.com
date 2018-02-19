@@ -11,13 +11,13 @@
       force: yes
  
   - name: Daemon-Reload
-    systemd: state=stopped name=transfer daemon_reload=yes enabled=no
+    shell: "sudo systemctl daemon-reload"
 
   - name: Start Transfer Service
     shell: "systemctl enable transfer"
 
   - name: Start Transfer Service
-    shell: "systemctl restart transfer"
+    shell: "sudo systemctl restart transfer"
     
 ########### Time
 
@@ -31,10 +31,10 @@
       force: yes
 
   - name: Daemon-Reload
-    systemd: state=stopped name=time daemon_reload=yes enabled=no
+    shell: "sudo systemctl daemon-reload"
 
   - name: Start Transfer Service
     shell: "systemctl enable time"
 
   - name: Start Transfer Service
-    shell: "systemctl restart time"
+    shell: "sudo systemctl restart time"
