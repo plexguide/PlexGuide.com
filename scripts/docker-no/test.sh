@@ -1,22 +1,22 @@
 #!/bin/bash
 ### bash /opt/plexguide/scripts/docker-no/test.sh
 
-pgpolla="1"
-pgpollb="2"
+a="1"
+b="2"
 
-while [ "$pgpolla" -ne "$pgpollb" ]
+while [ "$a" -ne "$b" ]
 do
 
 ### Poll #1
 echo "On Poll 1"
-	pgpolla=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((pgpolla + 0))"
+	a=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((a + 0))"
 
 sleep 20
 echo "On Poll 2"
 ### Poll #2	
-	pgpollb=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((pgpollb + 0))"
+	b=$(systemctl status move | grep "GBytes" | grep "MBytes" | awk '{print $7}') && echo "$((b + 0))"
 
 done
 
 echo "Final Transfer Output"
-echo $pgpollb
+echo "$b"
