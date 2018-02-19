@@ -14,10 +14,10 @@
     systemd: state=stopped name=transfer daemon_reload=yes enabled=no
 
   - name: Start Transfer Service
-    shell: "sytemctl enable transfer"
+    shell: "systemctl enable transfer"
 
   - name: Start Transfer Service
-    shell: "sytemctl start transfer"
+    shell: "systemctl restart transfer"
     
 ########### Time
 
@@ -34,7 +34,7 @@
     systemd: state=stopped name=time daemon_reload=yes enabled=no
 
   - name: Start Transfer Service
-    shell: "sytemctl enable time"
+    shell: "systemctl enable time"
 
   - name: Start Transfer Service
-    shell: "sytemctl start time"
+    shell: "systemctl restart time"
