@@ -17,6 +17,22 @@ else
 	echo "$data"
 fi
 
+if [ ! -e "/opt/appdata/plexguide/data" ]
+then
+	echo 1 > /opt/appdata/plexguide/switch
+    switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
+    echo "the swtich never exist"
+    echo "$switch"
+else
+	echo "switch already exists"
+	switch=$(awk '{print $1}' /opt/appdata/plexguide/data)
+	echo "$switch"
+fi
+
+if [ "$switch" -eq 0 ]; then
+   	echo "You Reached Your Limit for The Day!"
+   exit 0
+fi
 
 
 a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
@@ -28,6 +44,8 @@ do
 	data=$((data+0))
 
 	if [ "$data" -gt 1000000 ]; then
+	   	echo 0 > /opt/appdata/plexguide/switch
+    	switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
        exit 0
     fi
 
@@ -46,7 +64,7 @@ do
 		data=$((data+a))
 		echo "$data" > /opt/appdata/plexguide/data
 		echo "finish flag"
-		
+
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		sleep 10
 

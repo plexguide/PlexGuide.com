@@ -33,6 +33,7 @@ done
 date +%s > /opt/appdata/plexguide/date1
 date1=$(awk '{print $1}' /opt/appdata/plexguide/date1)
 
+echo 1 > /opt/appdata/plexguide/data
 systemctl enable transfer
 systemctl restart transfer
 
