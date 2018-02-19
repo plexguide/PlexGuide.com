@@ -1,8 +1,8 @@
 ---
 ########################################## Services
 ########### Transfer Service
-  - name: Stop If Transfer Service Running
-    systemd: state=stopped name=transfer
+  #- name: Stop If Transfer Service Running
+    #systemd: state=stopped name=transfer
     
   - name: Install Transfer Service
     template:
@@ -21,8 +21,8 @@
     
 ########### Time
 
-  - name: Stop If Time Service Running
-    systemd: state=stopped name=time
+  #- name: Stop If Time Service Running
+    #systemd: state=stopped name=time
     
   - name: Install Time Service
     template:
