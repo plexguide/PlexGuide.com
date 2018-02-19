@@ -4,8 +4,6 @@
 # 1307068 = 1.3 GB
 # 10000000 = 10 GB
 
-total=0
-
 a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
 echo "first flag"
 echo ""
@@ -30,7 +28,7 @@ do
 		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		sleep 10
 
-	total="$total"+"$a"	| echo "$((total + $a + 0))"
+	total=$((total+a)) | echo "$((total + 0))"
 	echo "total above"
 	echo ""
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"
