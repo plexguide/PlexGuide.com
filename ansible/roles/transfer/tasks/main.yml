@@ -1,0 +1,40 @@
+---
+########################################## Services
+########### Transfer Service
+  #- name: Stop If Transfer Service Running
+    #systemd: state=stopped name=transfer
+    
+  - name: Install Transfer Service
+    template:
+      src: transfer.js2
+      dest: /etc/systemd/system/transfer.service 
+      force: yes
+ 
+  - name: Daemon-Reload
+    shell: "sudo systemctl daemon-reload"
+
+  - name: Start Transfer Service
+    shell: "systemctl enable transfer"
+
+  - name: Start Transfer Service
+    shell: "sudo systemctl restart transfer"
+    
+########### Time
+
+  #- name: Stop If Time Service Running
+    #systemd: state=stopped name=time
+    
+  - name: Install Time Service
+    template:
+      src: time.js2
+      dest: /etc/systemd/system/time.service 
+      force: yes
+
+  - name: Daemon-Reload
+    shell: "sudo systemctl daemon-reload"
+
+  - name: Start Transfer Service
+    shell: "systemctl enable time"
+
+  - name: Start Transfer Service
+    shell: "sudo systemctl restart time"

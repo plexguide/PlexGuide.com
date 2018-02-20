@@ -42,7 +42,7 @@ fi
 
 if [ "$number" -eq "5" ]
 then
-   whiptail --title "Startup Message" --msgbox "Development cost are about $100 - $150 a month! If you can donate on the front page, it will help a-ton!" 11 66
+   whiptail --title "Startup Message" --msgbox "Development cost are about 100 - 150 a month! If you can donate on the front page, it will help a-ton!" 11 66
 fi
 
 echo
