@@ -45,7 +45,7 @@ while [ 1 -lt 740000000 ]
 do
 	data=$((data+0))
 
-	if [ "$data" -gt 1000000 ]; then
+	if [ "$data" -gt 740000000 ]; then
 	   	echo off > /opt/appdata/plexguide/switch
     	switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
        exit 0
