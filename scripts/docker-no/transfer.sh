@@ -3,7 +3,7 @@
 
 # 1307068 = 1.3 GB
 # 10000000 = 10 GB
-# 740000000 = 750 GB
+# 740000000 = 740 GB
 
 if [ ! -e "/opt/appdata/plexguide/data" ]
 then
