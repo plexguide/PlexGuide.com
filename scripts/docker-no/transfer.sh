@@ -67,7 +67,7 @@ do
 		echo "$data" > /opt/appdata/plexguide/data
 		echo "finish flag"
 
-		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
+		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --log-file=/opt/appdata/plexguide/rclone --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		echo "sleeping for 180 seconds"
 		sleep 180
 		echo "resuming"
