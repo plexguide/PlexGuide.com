@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known.
 #### Changed
 - Minor fixes for https://
 - Typo fixes for appdata
+- Fixed major error with data, prior transfer service would stop too early
 
 #### Removed
 - None
