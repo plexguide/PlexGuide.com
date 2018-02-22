@@ -54,3 +54,4 @@
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
+  - { role: pyload, tags: ['pyload'] }

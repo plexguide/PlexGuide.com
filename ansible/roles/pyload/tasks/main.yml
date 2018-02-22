@@ -1,0 +1,33 @@
+---
+- name: Remove pyLoad Container
+  docker_container:
+    name: pyload
+    state: absent
+
+- name: Deploy pyLoad Container
+  docker_container:
+    name: pyload
+    image: writl/pyload
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "8000:8000"
+    command: "/run.sh"
+    env:
+      UID: "1000"
+      GID: "1000"
+      HTTPS_METHOD: noredirect
+    networks:
+      - name: plexguide
+        aliases:
+          - pyload
+    volumes:
+      - /opt/appdata/pyload:/opt/pyload/pyload-config
+      - /mnt/pyload/downloads:/opt/pyload/Downloads
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:pyload.{{domain}}"
+      traefik.port: "8000"
