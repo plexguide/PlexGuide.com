@@ -11,11 +11,11 @@ Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 The PlexGuide Staff: https://plexguide.com/members/?key=staff_members
 
-### What is PlexGuide? ###
+### PlexGuide Mission Statement ###
 
-An All-In-One Solution which Deploys a Plex Server with Google Drive as a back-end unlimited storage drive.  PlexGuide is a community project that only exists with motivation of others.  You can detect errors, contribute code, build-up our forums, assist new members, and always suggest ideas. We truly would not exist without the help of you and others!
+PlexGuide is an all-in-one media solution that deploys a Media Server through the use of Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
-1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS
+1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS (UB17 Confirmed Working)
 2. **View Deployable Programs:** https://plexguide.com/threads/programs-install-information-list.245
 3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246
 4. **Donate To the Project:** https://plexguide.com/dbtech-donate/
