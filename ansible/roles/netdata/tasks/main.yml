@@ -29,3 +29,4 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:netdata.{{domain}}"
       traefik.port: "19999"
+      traefik.backend: "netdata"

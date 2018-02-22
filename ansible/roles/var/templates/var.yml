@@ -1,6 +1,6 @@
 ---
   domain: domain.com
-  email: user@gmail.com
+  email: your@email.com
   password: defaultpassword
   ipv4: ip_address
   lan: lan_net
