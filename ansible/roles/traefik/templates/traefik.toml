@@ -89,6 +89,7 @@ sans = [
     "plex.yourdomain.com",
     "plexpy.yourdomain.com",
     "portainer.yourdomain.com",
+	"pyload.yourdomain.com",
     "radarr.yourdomain.com",
     "resilio.yourdomain.com",
     "rtorrentvpn.yourdomain.com",
