@@ -53,8 +53,8 @@
     regexp: domain.com
     replace: "{{domain_input.user_input}}"
 
-#- name: Replace your@email.com with user input
-  #replace:
+- name: Replace your@email.com with user input
+  replace:
     path: /opt/appdata/plexguide/var.yml
     regexp: your@email.com
     replace: "{{email_input.user_input}}"
