@@ -7,7 +7,8 @@ Current Changes will continued to be modified as known.
 - None 
 
 #### Changed
-- None
+- Minor fixes for https://
+- Typo fixes for appdata
 
 #### Removed
 - None
