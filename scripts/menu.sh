@@ -50,7 +50,7 @@ whiptail --title "Visit PlexGuide.com - v5.043" --menu "Make your choice" 20 43 
    "9)" "PlexGuide: Update (Check ChangeLog)" \
    "10)" "PlexGuide: UnInstall" \
    "11)" "BETA: Uncapped Speeds" \
-   "12)" "Not Ready - Turn On/Off Ports" \
+   "12)" "BETA: Turn On/Off Ports" \
    "13)" "Exit  "  3>&2 2>&1 1>&3
 )
 
