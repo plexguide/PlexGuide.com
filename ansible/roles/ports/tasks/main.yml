@@ -8,7 +8,7 @@
 
 - replace:
     path: /opt/appdata/plexguide/ports-no
-    regexp: "ports: "
+    regexp: "ports:"
     replace: "ports: 127.0.0.1:"
   when: ports_closed.stat.exists == True
   ignore_errors: yes
@@ -16,6 +16,6 @@
 - replace:
     path: /opt/appdata/plexguide/ports-no
     regexp: "ports: 127.0.0.1"
-    replace: "ports: "
+    replace: "ports:"
   when: ports_closed.stat.exists == False
   ignore_errors: yes
