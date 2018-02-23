@@ -14,6 +14,7 @@
       - software-properties-common
       - unrar
       - unzip
+      - glances
       - python-pip
       - python3-pip
       - python-passlib
