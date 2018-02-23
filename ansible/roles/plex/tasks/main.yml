@@ -34,6 +34,11 @@
   docker_image:
     name: "plexinc/pms-docker:plexpass"
 
+- name: Create Transcodes Directory
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+      - /opt/transcodes
+
 - name: Deploy Plex Container
   docker_container:
     name: plex
@@ -57,7 +62,6 @@
       PLEX_GID: 1000
       PLEX_CLAIM: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:
@@ -67,7 +71,7 @@
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
-      - "/opt/appdata/plex/transcode:/transcode"
+      - "/opt/transcodes:/transcode"
       - "/mnt/plexdrive:/plexdrive"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
@@ -81,7 +85,6 @@
       traefik.frontend.rule: "Host:plex.{{domain}}"
       traefik.port: "32400"
 
-
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -90,7 +93,6 @@
 - name: Warning
   pause:
     prompt: "[Press Enter] (For Remote Servers) Remember to claim your SERVER via IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure it turn GREEN!"
-
 
 ## Source: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide
 #### http://docs.ansible.com/ansible/latest/unarchive_module.html

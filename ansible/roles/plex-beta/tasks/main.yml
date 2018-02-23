@@ -34,6 +34,11 @@
   docker_image:
     name: "plexinc/pms-docker:beta"
 
+- name: Create Transcodes Directory
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+      - /opt/transcodes
+
 - name: Deploy Plex Container
   docker_container:
     name: plex
@@ -55,7 +60,6 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      HTTPS_METHOD: noredirect
       PLEX_CLAIM: "{{pms_token.user_input}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
     networks:
@@ -67,7 +71,7 @@
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
-      - "/opt/appdata/plex/transcode:/transcode"
+      - "/opt/transcodes:/transcode"
       - "/mnt/plexdrive:/plexdrive"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
