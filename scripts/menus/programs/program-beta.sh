@@ -14,8 +14,7 @@ whiptail --title "Beta Menu" --menu "Make your choice" 14 60 7 \
     "1)" "VPN Torrent - New way"   \
     "2)" "VPN Torrent - Old way"   \
     "3)" "DO NOT USE - For Developers Use Only!"   \
-    "4)" "NGINX-Proxy - For those that still want to use it!"   \
-    "5)" "Exit  "  3>&2 2>&1 1>&3
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -40,12 +39,6 @@ case $CHOICE in
    ;;
 
    "4)")
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nginx
-   echo ""
-   read -n 1 -s -r -p "Press any key to continue "
-   ;;
-
-   "5)")
     clear
     exit 0
     ;;
