@@ -12,7 +12,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "19999:19999"
+      - "{{domain}}19999:19999"
     volumes:
       - "/sys:/host/sys:ro"
       - "/proc:/host/proc:ro"
