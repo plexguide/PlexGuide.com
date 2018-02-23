@@ -3,3 +3,4 @@
 
   roles:
   - { role: var, tags: ['var'] }
+  - { role: ports, ports: ['ports']}

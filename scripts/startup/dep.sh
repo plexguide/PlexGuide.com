@@ -30,7 +30,7 @@ echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
 echo "5. Installing Dependicies & Docker - Please Wait"
 echo
     ansible-playbook /opt/plexguide/ansible/docker.yml
-    ansible-playbook /opt/plexguide/ansible/config.yml
+    ansible-playbook /opt/plexguide/ansible/config.yml --tags var
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
 echo ""
 echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
