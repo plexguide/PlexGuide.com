@@ -8,7 +8,7 @@
 
 - replace:
     path: /opt/appdata/plexguide/var.yml
-    regexp: "ports:"
+    regexp: "ports:$"
     replace: 'ports: "127.0.0.1:"'
   when: ports_closed.stat.exists == True
   ignore_errors: yes
