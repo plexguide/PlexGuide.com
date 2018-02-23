@@ -81,7 +81,7 @@ echo "8. Installing Portainer & Reverse Proxy (Please Wait)"
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep33.yes
+   touch /var/plexguide/dep34.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 
