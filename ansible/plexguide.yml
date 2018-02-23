@@ -21,6 +21,7 @@
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
+  - { role: sickrage, tags: ['sickrage'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: emby, tags: ['emby'] }
   - { role: sonarr, tags: ['sonarr'] }
