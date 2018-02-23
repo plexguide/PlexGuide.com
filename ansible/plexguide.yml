@@ -41,7 +41,6 @@
   - { role: plex, tags: ['plex'] }
   - { role: plex-beta, tags: ['plex-beta'] }
   - { role: docker, tags: ['docker'] }
-  - { role: nginx, tags: ['nginx'] }
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
