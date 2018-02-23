@@ -4,3 +4,4 @@
   password: defaultpassword
   ipv4: ip_address
   lan: lan_net
+  ports: 

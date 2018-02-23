@@ -114,7 +114,7 @@ case $CHOICE in
 
    "12)")
        clear
-       #bash /opt/plexguide/scripts/menus/transfer/main.sh
+       bash /opt/plexguide/scripts/menus/ports/ports.sh
        ;;   
 
    "13)")
