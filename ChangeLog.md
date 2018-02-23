@@ -1,13 +1,13 @@
 ## Current Changes
 Current Changes will continued to be modified as known.
 
-### [5.042] Actively Working
+### [5.043] 
 
 #### Added
-- Ability to turn off ports (only use subdomains)
+- None
 
 #### Changed
-- Bye NGINX-Reverse Proxy (wasn't used, but got rid of it from test menu)
+- None
 
 #### Removed
 - None
@@ -15,6 +15,17 @@ Current Changes will continued to be modified as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.042] 
+
+#### Added
+- Ability to turn off ports (only use subdomains) and turn back on
+
+#### Changed
+- Bye NGINX-Reverse Proxy (wasn't used, but got rid of it from test menu)
+
+#### Removed
+- None
 
 ### [5.041]
 
