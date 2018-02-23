@@ -6,6 +6,7 @@ Current Changes will continued to be modified as known.
 #### Added
 - PyLoad application was added (From b0ltn)
 - Sickrage Added
+- Added Glances Terminal Tool
 
 #### Changed
 - Minor fixes for https://
