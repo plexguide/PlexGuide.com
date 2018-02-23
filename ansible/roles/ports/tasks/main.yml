@@ -7,14 +7,14 @@
   register: ports_closed
 
 - replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    path: /opt/appdata/plexguide/ports-no
     regexp: "ports: "
     replace: "ports: 127.0.0.1:"
   when: ports_closed.stat.exists == True
   ignore_errors: yes
 
 - replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    path: /opt/appdata/plexguide/ports-no
     regexp: "ports: 127.0.0.1"
     replace: "ports: "
   when: ports_closed.stat.exists == False
