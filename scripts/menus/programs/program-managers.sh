@@ -15,10 +15,11 @@ whiptail --title "Program Categories" --menu "Make your choice" 14 27 7 \
     "1)" "Couchpotato"   \
     "2)" "Lidarr"   \
     "3)" "Medusa"   \
-    "4)" "Sonarr"   \
+    "4)" "Mylar"    \
     "5)" "Radarr"   \
-	"6)" "Mylar"    \
-    "7)" "Exit"  3>&2 2>&1 1>&3
+    "6)" "Sickrage"   \
+    "7)" "Sonarr"   \
+    "8)" "Exit"  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -50,25 +51,7 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-  "4)")
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
-   echo "Sonarr: http://$ipv4:8989"
-   echo "For Subdomain http://sonarr.$domain"
-   echo "For Domain http://$domain:8989"
-   echo ""
-   read -n 1 -s -r -p "Press any key to continue "
-   ;;
-
-    "5)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
-    echo "Radarr: http://$ipv4:7878"
-    echo "For Subdomain http://radarr.$domain"
-    echo "For Domain http://$domain:7878"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-	 
-	"6)")
+    "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar
     echo "Mylar: http://$ipv4:8090"
     echo "For Subdomain http://mylar.$domain"
@@ -77,7 +60,34 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
      ;;
 
-     "7)")
+    "5)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
+    echo "Radarr: http://$ipv4:7878"
+    echo "For Subdomain http://radarr.$domain"
+    echo "For Domain http://$domain:7878"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+    ;;
+
+    "6)")
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage
+    echo "Radarr: http://$ipv4:8082"
+    echo "For Subdomain http://sickrage.$domain"
+    echo "For Domain http://$domain:8082"
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue "
+     ;;
+	 
+  "7)")
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
+   echo "Sonarr: http://$ipv4:8989"
+   echo "For Subdomain http://sonarr.$domain"
+   echo "For Domain http://$domain:8989"
+   echo ""
+   read -n 1 -s -r -p "Press any key to continue "
+   ;;
+
+     "8)")
       clear
       exit 0
       ;;

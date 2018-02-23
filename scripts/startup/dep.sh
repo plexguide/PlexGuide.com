@@ -55,7 +55,7 @@ echo "8. Installing Portainer & Reverse Proxy (Please Wait)"
 
 # Installs Portainer
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-# Instlls Reverse Prox
+# Installs Reverse Prox
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
 # Remove NGINX if it exists
 

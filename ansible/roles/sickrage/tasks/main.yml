@@ -1,0 +1,41 @@
+---
+- name: Remove Sickrage Container
+  docker_container:
+    name: sickrage
+    state: absent
+
+- name: Create Sickrage Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - /mnt/sickrage
+    - /mnt/sickrage/downloads
+
+- name: Deploy Sickrage Container
+  docker_container:
+    name: sickrage
+    image: "linuxserver/sickrage"
+    pull: yes
+    published_ports:
+      - "8082:8081"
+    volumes:
+      - /opt/appdata/sickrage:/config
+      - /opt/appdata/sickrage/scripts:/scripts
+      - /mnt/sickrage/downloads:/downloads
+      - /mnt/unionfs/:/tv
+    cpu_shares: 256
+    env:
+      PUID: 1000
+      PGID: 1000
+      HTTPS_METHOD: noredirect
+    networks:
+      - name: plexguide
+        aliases:
+          - sickrage
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:sickrage.{{domain}}"
+      traefik.port: "8082"
+
+
