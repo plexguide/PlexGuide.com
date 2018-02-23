@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known.
 #### Changed
 - Resolving Issues for Subdomains!
 - Updated Program menus to reflect new https:// for subdomains
+- Improved Folder Ansible Deployment to prevent locks with existing mounts
 
 #### Removed
 - None
