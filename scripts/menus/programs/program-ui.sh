@@ -25,7 +25,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
     echo "heimdall: http://$ipv4:1111"
-    echo "For Subdomain http://heimdall.$domain"
+    echo "For Subdomain https://heimdall.$domain"
     echo "For Domain http://$domain:1111"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -35,7 +35,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager
     echo "HTPCManager: http://$ipv4:8085"
-    echo "For Subdomain http://htpcmanager.$domain"
+    echo "For Subdomain https://htpcmanager.$domain"
     echo "For Domain http://$domain:8085"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -44,7 +44,7 @@ case $CHOICE in
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
     echo "Muximux: http://$ipv4:8015"
-    echo "For Subdomain http://muximux.$domain"
+    echo "For Subdomain https://muximux.$domain"
     echo "For Domain http://$domain:8015"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -53,7 +53,7 @@ case $CHOICE in
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
     echo "Organizr: http://$ipv4:8020"
-    echo "For Subdomain http://organizr.$domain"
+    echo "For Subdomain https://organizr.$domain"
     echo "For Domain http://$domain:8020"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "

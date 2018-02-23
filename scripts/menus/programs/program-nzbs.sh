@@ -23,7 +23,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
     echo "NZBGET: http://$ipv4:6789"
-    echo "For Subdomain http://nzbget.$domain"
+    echo "For Subdomain https://nzbget.$domain"
     echo "For Domain http://$domain:6789"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -32,7 +32,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra
     echo "NZBHydra: http://$ipv4:5075"
-    echo "For Subdomain http://nzbhyra.$domain"
+    echo "For Subdomain https://nzbhyra.$domain"
     echo "For Domain http://$domain:5075"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -41,7 +41,7 @@ case $CHOICE in
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2
     echo "NZBHydra2: http://$ipv4:5076"
-    echo "For Subdomain http://nzbhyra2.$domain"
+    echo "For Subdomain https://nzbhyra2.$domain"
     echo "For Domain http://$domain:5076"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -50,7 +50,7 @@ case $CHOICE in
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
     echo "SABNZBD: http://$ipv4:8090"
-    echo "For Subdomain http://sabnzbd.$domain"
+    echo "For Subdomain https://sabnzbd.$domain"
     echo "For Domain http://$domain:8090"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "

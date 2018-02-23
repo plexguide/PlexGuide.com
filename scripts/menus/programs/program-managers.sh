@@ -27,7 +27,7 @@ case $CHOICE in
     "1)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
     echo "Couchpotato: http://$ipv4:5050"
-    echo "For Subdomain http://couchpotato.$domain"
+    echo "For Subdomain https://couchpotato.$domain"
     echo "For Domain http://$domain:5050"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -36,7 +36,7 @@ case $CHOICE in
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
     echo "Lidarr: http://$ipv4:8686"
-    echo "For Subdomain http://lidarr.$domain"
+    echo "For Subdomain https://lidarr.$domain"
     echo "For Domain http://$domain:8686"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -45,7 +45,7 @@ case $CHOICE in
     "3)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
     echo "MEDUSA: http://$ipv4:8081"
-    echo "For Subdomain http://medusa.$domain"
+    echo "For Subdomain https://medusa.$domain"
     echo "For Domain http://$domain:8081"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -54,7 +54,7 @@ case $CHOICE in
     "4)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar
     echo "Mylar: http://$ipv4:8090"
-    echo "For Subdomain http://mylar.$domain"
+    echo "For Subdomain https://mylar.$domain"
     echo "For Domain http://$domain:8090"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -63,7 +63,7 @@ case $CHOICE in
     "5)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
     echo "Radarr: http://$ipv4:7878"
-    echo "For Subdomain http://radarr.$domain"
+    echo "For Subdomain https://radarr.$domain"
     echo "For Domain http://$domain:7878"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
@@ -72,16 +72,16 @@ case $CHOICE in
     "6)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage
     echo "Radarr: http://$ipv4:8082"
-    echo "For Subdomain http://sickrage.$domain"
+    echo "For Subdomain https://sickrage.$domain"
     echo "For Domain http://$domain:8082"
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
      ;;
-	 
+
   "7)")
    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
    echo "Sonarr: http://$ipv4:8989"
-   echo "For Subdomain http://sonarr.$domain"
+   echo "For Subdomain https://sonarr.$domain"
    echo "For Domain http://$domain:8989"
    echo ""
    read -n 1 -s -r -p "Press any key to continue "
