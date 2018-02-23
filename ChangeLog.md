@@ -1,7 +1,22 @@
 ## Current Changes
 Current Changes will continued to be modified as known.
 
-### [5.041] Actively Working
+### [5.042] Actively Working
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.041]
 
 #### Added
 - PyLoad application was added (From b0ltn)
@@ -15,10 +30,6 @@ Current Changes will continued to be modified as known.
 
 #### Removed
 - None
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.040]
 
