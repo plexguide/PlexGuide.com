@@ -38,7 +38,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.042" --menu "Make your choice" 19 43 12 \
+whiptail --title "Visit PlexGuide.com - v5.042" --menu "Make your choice" 20 43 13 \
    "1)" "Donation Menu (Please Turn On)" \
    "2)" "RClone & PlexDrive" \
    "3)" "Programs" \
@@ -50,7 +50,8 @@ whiptail --title "Visit PlexGuide.com - v5.042" --menu "Make your choice" 19 43 
    "9)" "PlexGuide: Update (Check ChangeLog)" \
    "10)" "PlexGuide: UnInstall" \
    "11)" "BETA: Uncapped Speeds" \
-   "12)" "Exit  "  3>&2 2>&1 1>&3
+   "12)" "BETA: Turn On/Off Ports" \
+   "13)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -112,6 +113,11 @@ case $CHOICE in
        ;;
 
    "12)")
+       clear
+       #bash /opt/plexguide/scripts/menus/transfer/main.sh
+       ;;   
+
+   "13)")
        clear
        echo Remember, restart by typing:  plexguide
        exit
