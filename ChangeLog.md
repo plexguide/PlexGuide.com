@@ -4,10 +4,10 @@ Current Changes will continued to be modified as known.
 ### [5.042] Actively Working
 
 #### Added
-- None
+- Ability to turn off ports (only use subdomains)
 
 #### Changed
-- None
+- Bye NGINX-Reverse Proxy (wasn't used, but got rid of it from test menu)
 
 #### Removed
 - None
