@@ -4,7 +4,8 @@ Current Changes will continued to be modified as known.
 ### [5.041] Actively Working
 
 #### Added
-- None 
+- PyLoad application was added (From b0ltn)
+- Sickrage Added
 
 #### Changed
 - Minor fixes for https://
