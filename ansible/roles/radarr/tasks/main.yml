@@ -11,13 +11,12 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "7878:7878"
+      - "{{ports}}7878:7878"
     env:
       APP: radarr
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:

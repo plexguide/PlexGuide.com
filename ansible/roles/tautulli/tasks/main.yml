@@ -12,7 +12,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "8181:8181"
+      - "{{ports}}8181:8181"
     volumes:
       - /opt/appdata/tautulli:/config
       - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\

@@ -40,8 +40,8 @@
     image: "plexinc/pms-docker:beta"
     pull: yes
     published_ports:
-      - "32400:32400"
-      - "32400:32400/udp"
+      - "{{ports}}32400:32400"
+      - "{{ports}}32400:32400/udp"
       - "3005:3005/tcp"
       - "8324:8324/tcp"
       - "32469:32469/tcp"

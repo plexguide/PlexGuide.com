@@ -11,7 +11,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "8000:8000"
+      - "{{ports}}8000:8000"
     command: "/run.sh"
     env:
       UID: "1000"

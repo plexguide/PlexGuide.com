@@ -11,14 +11,13 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-    - "2202:2202"
+    - "{{ports}}2202:2202"
     - "2203:2203"
     env:
       APP: ubooquity
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:
