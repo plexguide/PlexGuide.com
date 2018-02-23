@@ -31,6 +31,7 @@
       - tree
       - ncdu
       - ctop
+    ignore_errors: yes
 
   - debug: msg="You May Get An Error Notice, Ignore the Error!"
 
