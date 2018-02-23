@@ -1,0 +1,13 @@
+
+---
+
+- name: Register if Ports Are Closed
+  stat:
+    path: /opt/appdata/plexguide/ports-no
+  register: ports_closed
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "ports: "
+    replace: "ports: 127.0.0.1:"
+  when: ports_closed.stat.exists == True
