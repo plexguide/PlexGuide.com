@@ -1,13 +1,14 @@
 ## Current Changes
 Current Changes will continued to be modified as known.
 
-### [5.043] 
+### [5.043]
 
 #### Added
 - None
 
 #### Changed
-- Resoloving Issues for Subdomains!
+- Resolving Issues for Subdomains!
+- Updated Program menus to reflect new https:// for subdomains
 
 #### Removed
 - None
@@ -16,7 +17,7 @@ Current Changes will continued to be modified as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.042] 
+### [5.042]
 
 #### Added
 - Ability to turn off ports (only use subdomains) and turn back on
