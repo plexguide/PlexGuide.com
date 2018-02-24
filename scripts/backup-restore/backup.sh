@@ -1,7 +1,6 @@
 #!/bin/bash
 
 d=$(date +%Y-%m-%d-%T)
-echo "$d"
 
 mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
 mpath="$mfolder$d"
