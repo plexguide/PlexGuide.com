@@ -9,7 +9,7 @@ MENU="Choose one of the following options:"
 
 OPTIONS=(A "Individual: Solo App Backup"
          B "Individual: Solo App Restore"
-         C "Mass (All): Restore (Takes Time)"
+         C "Mass (All): Backup (Takes Time)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
