@@ -37,7 +37,7 @@ fi
 
 clear
 
-HEIGHT=12
+HEIGHT=15
 WIDTH=45
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
