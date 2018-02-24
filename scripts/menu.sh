@@ -35,6 +35,7 @@ then
    exit
 fi
 
+clear
 while [ 1 ]
 do
 CHOICE=$(
@@ -57,9 +58,7 @@ whiptail --title "Visit PlexGuide.com - v5.044" --menu "Make your choice" 20 43 
 result=$(whoami)
 case $CHOICE in
    "1)")
-       clear
-       bash /opt/plexguide/scripts/menus/donate-norm-menu.sh
-       ;;
+       bash /opt/plexguide/scripts/menus/donate-norm-menu.sh;;
 
    "2)")
        clear
@@ -67,9 +66,7 @@ case $CHOICE in
        ;;
 
    "3)")
-       clear
-       bash /opt/plexguide/scripts/menus/programs/program-select.sh
-       ;;
+       bash /opt/plexguide/menus/programs/main.sh ;;
 
    "4)")
        clear
