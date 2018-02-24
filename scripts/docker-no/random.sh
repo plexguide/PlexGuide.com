@@ -41,12 +41,14 @@ fi
 
 if [ "$number" -eq "4" ]
 then
-   whiptail --title "Startup Message" --msgbox "We are looking for CODERS; even ones with limited experience! Want to improve your skills without drama? Join our TEAM! Trust me, we are new coders ourselves!" 11 66
+   	dialog --title "Startup Message - PlexGuide.com" \
+	--msgbox "\nWe are looking for CODERS; even ones with limited experience! Want to improve your skills without drama? Join our TEAM! Trust me, we are new coders ourselves!" 10 50
 fi
 
 if [ "$number" -eq "5" ]
 then
-   whiptail --title "Startup Message" --msgbox "Development cost are about 100 - 150 a month! If you can donate on the front page, it will help a-ton!" 11 66
+   	dialog --title "Startup Message - PlexGuide.com" \
+	--msgbox "\nDevelopment Costs are 100 to 150 a month! Any type of Donation is Appecriated!" 9 50
 fi
 
 echo
