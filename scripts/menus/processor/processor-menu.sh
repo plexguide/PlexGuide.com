@@ -13,7 +13,7 @@ $DIALOG --title " Virtual Machine" --clear \
 
 case $? in
   0)
-    dialog --title "Title" --msgbox "Hello World" 1 0
+    dialog --title "Title" --msgbox "Hello World" 1 1
     exit
   1)
     echo "No chosen.";;
