@@ -79,6 +79,10 @@
   unarchive:
     src: /tmp/{{program_var.stdout}}.tar
     dest: /opt/appdata/{{program_var.stdout}}
+    keep_newer: no
+    owner: 1000
+    group: 1000
+    mode: 0775
   when: programgdrive.stat.exists == True
 
 - name: Restart Docker Container - {{program_var.stdout}}
