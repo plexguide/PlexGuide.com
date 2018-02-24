@@ -8,6 +8,7 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - Fixed fast flash load up error (did not affect anything, but could be seen at times)
+- Forced update to install "dialog"
 
 #### Removed
 - None
