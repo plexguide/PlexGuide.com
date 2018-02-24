@@ -110,10 +110,10 @@ whiptail --title "Visit PlexGuide.com - v5.044" --menu "Make your choice" 20 43 
 
 result=$(whoami)
 case $CHOICE in
-   "1)")
+   "A)")
        bash /opt/plexguide/scripts/menus/donate-norm-menu.sh;;
 
-   "2)")
+   "B)")
        clear
        bash /opt/plexguide/scripts/menus/rclone-pd-select.sh
        ;;
