@@ -5,11 +5,12 @@ d=$(date +%Y-%m-%d-%T)
 echo "$d"
 
 mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
-$mpath="$mfolder$d"
+mpath="$mfolder$d"
 echo "path is"
 echo $mfolder
 echo $d
 echo $mpath
+
 
 # 
 mkdir /mnt/gdrive/plexguide/backup.old/
