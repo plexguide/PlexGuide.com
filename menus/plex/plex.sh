@@ -12,7 +12,7 @@ HEIGHT=4
 WIDTH=40
 CHOICE_HEIGHT=2
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Plex Install Menu"
+TITLE="Plex Installer"
 MENU="Select your Plex Preference:"
 
 OPTIONS=(A "Plex Install"
