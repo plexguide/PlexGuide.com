@@ -57,6 +57,20 @@
     dest: /tmp
   when: programgdrive.stat.exists == True
 
+############ Restore Folder Check
+  - name: Restore Folder Check
+    stat:
+      path: /opt/appdata/{{program_var.stdout}}
+    register: restore
+    when: programgdrive.stat.exists == True
+
+  - name: Create Restore Folder
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /opt/appdata/{{program_var.stdout}}
+    when: restore.stat.exists == True
+    ignore_errors: yes
+
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 #- name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
   #shell: "tar -xf '/tmp/{{program_var.stdout}}.tar' -C /opt/appdata/{{program_var.stdout}} ."
