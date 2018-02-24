@@ -7,8 +7,9 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
 
-OPTIONS=(A "Backup"
-         B "Restore"
+OPTIONS=(A "Individual: Solo App Backup"
+         B "Individual: Solo App Restore"
+         C "Mass (All): Restore (Takes Time)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -22,11 +23,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh
-            ;;
+            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh;;
         B)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh
-            ;;
+            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+        C)
+            bash /opt/plexguide/scripts/backup-restore/backup.sh ;;
+
         Z)
             clear
             exit 0

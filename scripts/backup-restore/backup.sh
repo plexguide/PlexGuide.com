@@ -21,4 +21,7 @@ done </opt/appdata/plexguide/running
 rm -r /mnt/gdrive/plexguide/backup/watchtower.tar 1>/dev/null 2>&1
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&
 
+echo ""
+echo "Backup Complete"
 read -n 1 -s -r -p "Press any key to continue "
+clear
