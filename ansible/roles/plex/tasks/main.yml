@@ -77,6 +77,7 @@
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
       - "/etc/localtime:/etc/localtime:ro"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
     cpu_shares: 1024
     restart_policy: always
     state: started
