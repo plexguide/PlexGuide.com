@@ -22,13 +22,14 @@ echo "test"
 
 ls -la | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
-count=0
+count=0;
 
 while read p; do
   ((count++))
       	if [ "count" = 1 ]; then
             echo "it worked"
         fi
+echo "test2"
   #echo $p > /tmp/program_var
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
 done </opt/appdata/plexguide/backuplist
