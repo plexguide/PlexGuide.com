@@ -54,6 +54,8 @@ case $CHOICE in
             bash /opt/plexguide/scripts/menus/ports/ports.sh ;;
         Z)
             clear
+            echo "To Restart the Program Anytime, type: plexguide"
+            echo ""
             exit 0 ;;
 esac
 
