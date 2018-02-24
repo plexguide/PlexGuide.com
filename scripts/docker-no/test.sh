@@ -1,7 +1,7 @@
 timestamp() {
   date +"%Y-%m-%d-%T"
 }
-$time < timestamp
+timestamp > $time
 
 mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
 $mpath="$mfolder$timestamp"
