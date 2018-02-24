@@ -39,10 +39,9 @@ clear
 
 HEIGHT=17
 WIDTH=45
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Install Suite"
-MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Donation Menu"
          2 "RClone & PlexDrive"
