@@ -56,6 +56,3 @@ then
    	dialog --title "Startup Message - PlexGuide.com" \
 	--msgbox "\nThe menus allow the use of HotKeys! Select the LETTER & Press Enter. The Letter Z is always Exit!" 9 50
 fi
-
-echo
-exit 0
