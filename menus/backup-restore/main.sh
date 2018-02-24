@@ -23,12 +23,11 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh;;
+            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
         B)
             bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
         C)
             bash /opt/plexguide/scripts/backup-restore/backup.sh ;;
-
         Z)
             clear
             exit 0
