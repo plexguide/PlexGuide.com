@@ -1,6 +1,6 @@
 **Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
 
-[![N|Solid](https://plexguide.com/board3.png)](https://plexguide.com)
+[![N|Solid](https://plexguide.com/board6.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open") [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
@@ -28,7 +28,7 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 ----------------------------------------------------------------------
 <p align="center">
-  <img src="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/scripts/pictures/version39.png" alt="Demo"/>
+  <img src="https://plexguide.com/demo40.png" alt="Demo"/>
 </p>
 ** PlexGuide Interface Demo**
 
