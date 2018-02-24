@@ -26,7 +26,7 @@ fi
 
 ## starup Message
 
-bash /opt/plexguide/menus/startup/message.s
+bash /opt/plexguide/menus/startup/message.sh
 
 ## Force Exit if Required
 file="/var/plexguide/exit.yes"
