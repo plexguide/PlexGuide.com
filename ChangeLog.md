@@ -10,6 +10,7 @@ Current Changes will continued to be modified as known.
 - Resolving Issues for Subdomains!
 - Updated Program menus to reflect new https:// for subdomains
 - Improved Folder Ansible Deployment to prevent locks with existing mounts
+- Improved Restore Script to untar ansible style over bash; delete local restore after complete
 - Move plex transcode folder - no longer in backup, if running older version, redeploy plex and delete via rm -r /opt/appdata/plex/transcode
 
 #### Removed
