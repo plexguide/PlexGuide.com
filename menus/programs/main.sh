@@ -10,15 +10,15 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Install Suite"
 MENU="Choose one of the following options:"
 
-OPTIONS=(1 "Media Servers"
-         2 "Managers"
-         3 "NZB"
-         4 "Torrents"
-         5 "Supporting"
-         6 "UI Organziers"
-         7 "Critical"
-         8 "Beta"
-         9 "Exit")
+OPTIONS=(A "Media Servers"
+         B "Managers"
+         C "NZB"
+         D "Torrents"
+         E "Supporting"
+         F "UI Organziers"
+         G "Critical"
+         H "Beta"
+         Z "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -30,23 +30,23 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1)
+        A)
             bash /opt/plexguide/menus/programs/media.sh ;;
-        2)
+        B)
             bash /opt/plexguide/menus/programs/manager.sh ;;
-        3)
+        C)
             bash /opt/plexguide/menus/programs/nzbs.sh ;;
-        4)
+        D)
             bash /opt/plexguide/menus/programs/torrent.sh ;;
-        5)
+        E)
             bash /opt/plexguide/menus/programs/support.sh ;;
-        6)
+        F)
             bash /opt/plexguide/menus/programs/ui.sh ;;
-        7)
+        G)
             bash /opt/plexguide/menus/programs/critical.sh ;;
-        8)
+        H)
             bash /opt/plexguide/menus/programs/beta.sh ;;
-        9)
+        Z)
             clear
             exit 0 ;;
 esac

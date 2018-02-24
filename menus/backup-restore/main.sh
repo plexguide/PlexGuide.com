@@ -7,9 +7,9 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
 
-OPTIONS=(1 "Backup"
-         2 "Restore"
-         3 "Exit")
+OPTIONS=(A "Backup"
+         B "Restore"
+         Z "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -21,13 +21,13 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1)
+        A)
             bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh
             ;;
-        2)
+        B)
             bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh
             ;;
-        3)
+        Z)
             clear
             exit 0
             ;;
