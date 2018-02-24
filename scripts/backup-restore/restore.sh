@@ -26,7 +26,7 @@ declare -i count=0
 
 while read p; do
   var=$((var+1))
-      	if [ $count -eq 1 ]; then
+      	if [ $count -eq 2 ]; then
             echo "it worked"
         fi
 echo "test2"
