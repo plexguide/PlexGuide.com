@@ -1,13 +1,14 @@
-timestamp() {
-  date +"%Y-%m-%d-%T"
-}
-timestamp > $time
+##date +"%Y-%m-%d-%T"
+
+
+d=$(date +%Y-%m-%d-%T)
+echo "$d"
 
 mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
-$mpath="$mfolder$timestamp"
+$mpath="$mfolder$d"
 echo "path is"
 echo $mfolder
-echo $time
+echo $d
 echo $mpath
 
 # 
