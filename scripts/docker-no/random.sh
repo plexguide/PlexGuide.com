@@ -17,12 +17,14 @@ let "number %= $RANGE"
 
 if [ "$number" -eq "0" ]
 then
-   whiptail --title "Startup Message" --msgbox "Did you know that you can type - sudo pgupdate - from the terminal prompt and plexguide will update itself?" 11 66
+	dialog --title "Plex Claim Info" \
+	--msgbox "\nDid you know that you can type - sudo pgupdate - from the terminal prompt and plexguide will update itself?" 10 50
 fi
 
 if [ "$number" -eq "1" ]
 then
-   whiptail --title "Startup Message" --msgbox "See issues with our Wiki Pages? Please comment in the forum and we will udpdate! Once an offical wiki plugin is built, we'll add it!" 10 66
+	dialog --title "Plex Claim Info" \
+	--msgbox "\nSee issues with our Wiki Pages? Please comment in the forum and we will udpdate! Once an offical wiki plugin is built, we'll add it!" 11 50
 fi
 
 if [ "$number" -eq "2" ]
