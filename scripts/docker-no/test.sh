@@ -5,7 +5,7 @@ timestamp() {
 mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
 $mpath="$mfolder$timestamp"
 echo "path is"
-echo "$mpath"
+echo $mpath
 
 # 
 mkdir /mnt/gdrive/plexguide/backup.old/
