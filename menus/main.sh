@@ -58,6 +58,7 @@ case $CHOICE in
             echo "2. Update Plexguide Anytime, type: pgupdate"
             echo "3. Please STAR PG via https://github.plexguide.com"
             echo "4. Join the PG Discord via https://discord.plexguide.com"
+            echo "5. Donate to PG via https://donate.plexguide.com"
             echo "TIP: Press Z in the Menus to Always Exit"
             echo "TIP: Menu Letters Displayed are HotKeys"
             echo ""
