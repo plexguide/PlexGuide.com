@@ -21,8 +21,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    bash /opt/plexguide/scripts/menus/plexsub-menu.sh
-    ;;
+    bash /opt/plexguide/menus/plex/main.sh ;;
 
     "2)")
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
