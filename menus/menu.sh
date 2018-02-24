@@ -37,9 +37,9 @@ fi
 
 clear
 
-HEIGHT=19
+HEIGHT=17
 WIDTH=45
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PlexGuide - Version 5.044"
 
@@ -48,13 +48,13 @@ OPTIONS=(1 "Donation Menu"
          3 "PG Application Suite (Programs)"
          4 "Enhance Processor Performance"
          5 "Network & Server Benchmarks"
-         6 "Info & Troubleshoot Tools"
+         6 "Info & Troubleshoot"
          7 "Application Backup & Restore"
-         8 "Update PG Suite (Read Changelog)"
-         10 "Uninstall PG Suite"
-         11 "BETA: Uncapped Upload Speeds"
-         12 "BETA: Turn On/Off App Ports"
-         13 "Exit")
+         8 "Update (Read Changelog)"
+         9 "Uninstall PG"
+         10 "BETA: Uncapped Upload Speeds"
+         11 "BETA: Turn On/Off App Ports"
+         12 "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
