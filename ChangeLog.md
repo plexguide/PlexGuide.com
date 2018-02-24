@@ -5,6 +5,8 @@ Current Changes will continued to be modified as known.
 
 #### Added
 - Slowing adding new meus
+- Mass Backup Installer
+- Mass Backup Installer also moves recent backup in gdrive to backup.old with a time stamp
 
 #### Changed
 - Fixed fast flash load up error (did not affect anything, but could be seen at times)
