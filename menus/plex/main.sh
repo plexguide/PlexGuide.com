@@ -6,7 +6,7 @@
  echo $ipv4
  echo $domain
 
-dialog --title "Plex Information" --msgbox "Visit http//:$ipv4:32400/web to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 14 60
+dialog --title "Plex Information" --msgbox "/n Visit http//:$ipv4:32400/web to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 14 60
 
 whiptail --title "Plex Information" --msgbox "Visit http//:$ipv4:32400/web to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 16 66
 
