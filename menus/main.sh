@@ -54,12 +54,12 @@ case $CHOICE in
             bash /opt/plexguide/scripts/menus/ports/ports.sh ;;
         Z)
             clear
-            echo "1. Restart the Program Anytime, type: plexguide"
-            echo "2. Update Plexguide Anytime, type: pgupdate"
-            echo "3. Please STAR PG via https://github.plexguide.com"
-            echo "4. Join the PG Discord via https://discord.plexguide.com"
-            echo "5. Donate to PG via https://donate.plexguide.com"
+            echo "1. Please STAR PG via https://github.plexguide.com"
+            echo "2. Join the PG Discord via https://discord.plexguide.com"
+            echo "3. Donate to PG via https://donate.plexguide.com"
             echo ""
+            echo "TIP: Restart the Program Anytime, type: plexguide"
+            echo "TIP: Update Plexguide Anytime, type: pgupdate"
             echo "TIP: Press Z in the Menus to Always Exit"
             echo "TIP: Menu Letters Displayed are HotKeys"
             echo ""
