@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known.
 ### [5.043]
 
 #### Added
-- Force http to go https now. Rerun Traefik under programs > critical and will go into affect if not working
+- Force http to go https now. Rerun Traefik under programs > critical and will go into affect (required if not a new install)
 
 #### Changed
 - Resolving Issues for Subdomains!
