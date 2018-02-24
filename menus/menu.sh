@@ -37,9 +37,9 @@ fi
 
 clear
 
-HEIGHT=16
-WIDTH=40
-CHOICE_HEIGHT=9
+HEIGHT=17
+WIDTH=45
+CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Install Suite"
 MENU="Choose one of the following options:"
