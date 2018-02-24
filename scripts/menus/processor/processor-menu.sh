@@ -8,8 +8,8 @@ sudo touch /var/plexguide/asked.processor
 
 DIALOG=${DIALOG=dialog}
 
-$DIALOG --title " My first dialog" --clear \
-        --yesno "Hello , this is my first dialog program" 10 30
+$DIALOG --title " Virtual Machine" --clear \
+        --yesno "Are you utilizing a Virutal Machine or VPS?" 10 30
 
 case $? in
   0)
@@ -18,7 +18,7 @@ case $? in
     echo "No chosen.";;
   255)
     echo "ESC pressed.";;
-esac
+esac 
 
 if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine or VPS?" 8 56) then
 
