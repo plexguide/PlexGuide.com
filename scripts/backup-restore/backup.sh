@@ -2,7 +2,8 @@
 
 d=$(date +%Y-%m-%d-%T)
 
-touch /opt/appdata/plexguide/backup
+touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
+sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
 mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
 mpath="$mfolder$d"
