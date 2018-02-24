@@ -4,7 +4,7 @@ timestamp() {
 
 # 
 mkdir /mnt/gdrive/plexguide/backup.old/
-mkdir /mnt/drive/plexguide/backup.old/backup-{timestamp}
+mkdir /mnt/gdrive/plexguide/backup.old/backup-{timestamp}
 mv /mnt/gdrive/plexguide/backup /mnt/drive/plexguide/backup.old/backup-{timestamp}
 
 timestamp # print timestamp
