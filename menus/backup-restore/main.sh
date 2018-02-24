@@ -2,21 +2,16 @@
 
 #!/bin/bash
 
-HEIGHT=15
+HEIGHT=10
 WIDTH=40
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com"
-TITLE="Make Your Choice"
+TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Backup"
          2 "Restore"
-         3 "Exit"
-         4 "Test"
-         2 "Restore"
-         3 "Exit"
-         4 "Test"
-         5 "Test")
+         3 "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
