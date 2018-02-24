@@ -8,9 +8,9 @@
 
 whiptail --title "Plex Information" --msgbox "Visit http//:$ipv4:32400/web to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 16 66
 
-HEIGHT=8
+HEIGHT=4
 WIDTH=40
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=2
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Install Menu"
 MENU="Select your Plex Preference:"
