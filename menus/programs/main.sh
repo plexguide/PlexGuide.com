@@ -5,7 +5,7 @@ sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /op
 
 HEIGHT=16
 WIDTH=40
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Install Suite"
 MENU="Choose one of the following options:"
