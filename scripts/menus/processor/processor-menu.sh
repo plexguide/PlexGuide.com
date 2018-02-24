@@ -11,11 +11,9 @@ DIALOG=${DIALOG=dialog}
 $DIALOG --title " Virtual Machine" --clear \
         --yesno "Are you utilizing a Virutal Machine or VPS?" 10 30
 
-dialog --title "Title" --msgbox "Hello World" 0 0
-
 case $? in
   0)
-    dialog --title "Title" --msgbox "Hello World" 0 0
+    dialog --title "Title" --msgbox "Hello World" 1 0
     exit
   1)
     echo "No chosen.";;
