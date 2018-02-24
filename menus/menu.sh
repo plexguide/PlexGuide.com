@@ -37,11 +37,11 @@ fi
 
 clear
 
-HEIGHT=17
+HEIGHT=19
 WIDTH=45
 CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PG Application Install Suite"
+TITLE="PlexGuide - Version 5.044"
 
 OPTIONS=(1 "Donation Menu"
          2 "RClone & PlexDrive"
