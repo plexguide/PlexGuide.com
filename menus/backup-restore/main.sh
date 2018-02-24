@@ -11,7 +11,12 @@ MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Backup"
          2 "Restore"
-         3 "Exit")
+         3 "Exit"
+         4 "Test"
+         2 "Restore"
+         3 "Exit"
+         4 "Test"
+         5 "Test")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
