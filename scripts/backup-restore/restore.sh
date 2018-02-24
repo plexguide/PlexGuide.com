@@ -20,13 +20,13 @@
 #mv /mnt/gdrive/plexguide/backup/* $mpath 
 echo "test"
 
-ls -la | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
+ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
 
 while read p; do
   count=$((count+1))
-      	if [ $count -eq 2 ]; then
+      	if [ $count -eq 1 ]; then
             echo "it worked"
         fi
 echo "test2"
