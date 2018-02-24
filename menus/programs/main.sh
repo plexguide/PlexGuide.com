@@ -33,7 +33,7 @@ case $CHOICE in
         1)
             bash /opt/plexguide/menus/programs/media.sh ;;
         2)
-            bash /opt/plexguide/menus/programs/mangers.sh ;;
+            bash /opt/plexguide/menus/programs/manager.sh ;;
         3)
             bash /opt/plexguide/menus/programs/nzbs.sh ;;
         4)
