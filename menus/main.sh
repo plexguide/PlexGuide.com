@@ -95,4 +95,4 @@ case $CHOICE in
 esac
 
 ## repeat menu when exiting
-bash /opt/plexguide/menus/menu.sh
+bash /opt/plexguide/menus/main.sh
