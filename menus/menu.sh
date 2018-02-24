@@ -64,7 +64,6 @@ CHOICE=$(dialog --clear \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-clear
 case $CHOICE in
         A)
             bash /opt/plexguide/scripts/menus/donate-norm-menu.sh ;;
