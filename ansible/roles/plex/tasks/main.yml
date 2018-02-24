@@ -4,9 +4,6 @@
     name: plex
     state: absent
 
-- name: "Remove Old Transcode Folder"
-  shell: "rm -r /opt/appdata/plex/transcode 1>/dev/null 2>&1"
-
 - name: "Get Server IP"
   shell: "hostname -I | awk '{print $1}'"
   register: local_ip
