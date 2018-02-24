@@ -4,6 +4,8 @@ clear
 
 sudo touch /var/plexguide/asked.processor
 ################# Virtual Machine Check
+dialog --title "Hello" --msgbox 'Hello world!' 6 20
+
 if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine or VPS?" 8 56) then
 
     whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a VM or VPS. Trust me, it does not work if you try!" 9 66
