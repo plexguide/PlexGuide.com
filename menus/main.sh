@@ -60,7 +60,7 @@ case $CHOICE in
             echo ""
             echo "TIP: Restart the Program Anytime, type: plexguide"
             echo "TIP: Update Plexguide Anytime, type: pgupdate"
-            echo "TIP: Press Z in the Menus to Always Exit"
+            echo "TIP: Press Z, then [ENTER] in the Menus to Exit"
             echo "TIP: Menu Letters Displayed are HotKeys"
             echo ""
             exit 0 ;;
