@@ -1,8 +1,8 @@
 #!/bin/bash
 
-HEIGHT=10
+HEIGHT=12
 WIDTH=40
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
