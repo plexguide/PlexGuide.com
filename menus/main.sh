@@ -51,7 +51,7 @@ case $CHOICE in
         J)
             bash /opt/plexguide/menus/transfer/main.sh ;;
         K)
-            bash /opt/plexguide/menus/ports/ports.sh ;;
+            bash /opt/plexguide/menus/ports/main.sh ;;
         Z)
             clear
             echo "1. Please STAR PG via http://github.plexguide.com"
