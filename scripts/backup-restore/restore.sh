@@ -26,7 +26,7 @@ count=0;
 
 while read p; do
   ((count++))
-      	if [ "count" = 1 ]; then
+      	if [ "count" -eq 1 ]; then
             echo "it worked"
         fi
 echo "test2"
