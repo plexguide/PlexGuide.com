@@ -93,8 +93,8 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Visit PlexGuide.com - v5.044" --menu "Make your choice" 20 43 13 \
-   "1)" "Donation Menu (Please Turn On)" \
-   "2)" "RClone & PlexDrive" \
+   "A)" "Donation Menu (Please Turn On)" \
+   "B)" "RClone & PlexDrive" \
    "3)" "Programs" \
    "4)" "Set Processor Performance" \
    "5)" "Server & Net Benchmarks" \
