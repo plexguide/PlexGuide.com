@@ -1,5 +1,5 @@
 timestamp() {
-  date +"%T"
+  date +"%Y-%m-%d"
 }
 
 # do something...
