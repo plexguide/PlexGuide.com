@@ -26,7 +26,7 @@ fi
 
 ## starup Message
 
-  bash /opt/plexguide/scripts/docker-no/random.sh
+bash /opt/plexguide/menus/startup/message.s
 
 ## Force Exit if Required
 file="/var/plexguide/exit.yes"
