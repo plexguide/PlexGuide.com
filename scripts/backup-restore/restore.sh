@@ -22,7 +22,7 @@ echo "test"
 
 ls -la | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
-count=0;
+count=0+0;
 
 while read p; do
   ((count++))
