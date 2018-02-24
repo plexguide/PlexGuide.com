@@ -2,8 +2,8 @@ timestamp() {
   date +"%Y-%m-%d-%T"
 }
 
-$mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
-$mpath="${mfolder}+${timestamp}"
+mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
+$mpath="$mfolder$timestamp"
 echo "path is"
 echo "$mpath"
 
