@@ -49,9 +49,9 @@ case $CHOICE in
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
         J)
-            bash /opt/plexguide/scripts/menus/transfer/main.sh ;;
+            bash /opt/plexguide/menus/transfer/main.sh ;;
         K)
-            bash /opt/plexguide/scripts/menus/ports/ports.sh ;;
+            bash /opt/plexguide/menus/ports/ports.sh ;;
         Z)
             clear
             echo "1. Please STAR PG via http://github.plexguide.com"
