@@ -18,7 +18,6 @@
 #mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
 #mkdir $mpath
 #mv /mnt/gdrive/plexguide/backup/* $mpath 
-echo "test"
 
 ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
@@ -27,7 +26,8 @@ declare -i count=0
 while read p; do
   count=$((count+1))
       	if [ $count -eq 1 ]; then
-            echo "it worked"
+            $p > $var1
+            echo $var1
         fi
 echo "test2"
   #echo $p > /tmp/program_var
