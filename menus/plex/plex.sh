@@ -15,7 +15,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Install Menu"
 MENU="Select your Plex Preference:"
 
-OPTIONS=(A "Install Plex"
+OPTIONS=(A "Plex Install"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
