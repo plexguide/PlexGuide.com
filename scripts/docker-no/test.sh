@@ -1,6 +1,6 @@
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 
 while read p; do
-  echo $p
+  echo $p > /tmp/program_var
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
 done </opt/appdata/plexguide/running
-echo "woot"
