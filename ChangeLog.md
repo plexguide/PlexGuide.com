@@ -7,7 +7,7 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Changed
-- None
+- Fixed fast flash load up error (did not affect anything, but could be seen at times)
 
 #### Removed
 - None
