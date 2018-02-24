@@ -25,7 +25,7 @@ ls -la | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 declare -i count=0
 
 while read p; do
-  var=$((var+1))
+  count=$((count+1))
       	if [ $count -eq 2 ]; then
             echo "it worked"
         fi
