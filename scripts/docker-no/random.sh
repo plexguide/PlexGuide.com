@@ -24,7 +24,7 @@ fi
 if [ "$number" -eq "1" ]
 then
 	dialog --title "Plex Claim Info" \
-	--msgbox "\nSee issues with our Wiki Pages? Please comment in the forum and we will udpdate! Once an offical wiki plugin is built, we'll add it!" 11 50
+	--msgbox "\nSee issues with our Wiki Pages? Please comment in the forum and we will udpdate! Once an offical wiki plugin is built, we'll add it!" 10 50
 fi
 
 if [ "$number" -eq "2" ]
