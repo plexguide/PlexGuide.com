@@ -7,17 +7,17 @@ HEIGHT=16
 WIDTH=40
 CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Backup & Restore Menu"
+TITLE="PG Application Install Suite"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Media Servers"
-         2 "Restore"
-         3 "Restore"
-         4 "Restore"
-         5 "Restore"
-         6 "Restore"
-         7 "Restore"
-         8 "Restore"
+         2 "Managers"
+         3 "NZB"
+         4 "Torrents"
+         5 "Supporting"
+         6 "UI Organziers"
+         7 "Critical"
+         8 "Beta"
          9 "Exit")
 
 CHOICE=$(dialog --clear \
@@ -31,89 +31,22 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+            bash /opt/plexguide/menus/programs/media.sh ;;
         2)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+            bash /opt/plexguide/menus/programs/mangers.sh ;;
         3)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+            bash /opt/plexguide/menus/programs/nzbs.sh ;;
         4)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+            bash /opt/plexguide/menus/programs/torrent.sh ;;
         5)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+            bash /opt/plexguide/menus/programs/support.sh ;;
         6)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+            bash /opt/plexguide/menus/programs/ui.sh ;;
         7)
+            bash /opt/plexguide/menus/programs/critical.sh ;;
+        8)
+            bash /opt/plexguide/menus/programs/beta.sh ;;
+        9)
             clear
-            exit 0
-            ;;
+            exit 0 ;;
 esac
-
-
-
-
-clear
-
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 16 26 9 \
-    "1)" "Media Servers"  \
-    "2)" "Managers"  \
-    "3)" "NZBs"  \
-    "4)" "Torrents"  \
-    "5)" "Supporting"  \
-    "6)" "UI Organizers"  \
-    "7)" "Critical"  \
-    "8)" "Beta Testing"  \
-    "9)" "Exit  "  3>&2 2>&1 1>&3
-)
-
-result=$(whoami)
-case $CHOICE in
-    "1)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-media.sh
-    ;;
-
-    "2)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-managers.sh
-    ;;
-
-    "3)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-nzbs.sh
-    ;;
-
-    "4)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-torrent.sh
-    ;;
-
-    "5)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-support.sh
-    ;;
-
-    "6)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-ui.sh
-    ;;
-
-    "7)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-critical.sh
-    ;;
-
-    "8)")
-    clear
-    bash /opt/plexguide/scripts/menus/programs/program-beta.sh
-    ;;
-
-    "9)")
-      clear
-      exit 0
-      ;;
-esac
-done
-exit
