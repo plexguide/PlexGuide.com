@@ -39,7 +39,7 @@ clear
 
 HEIGHT=17
 WIDTH=45
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PlexGuide - Version 5.044"
 
