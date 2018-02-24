@@ -5,7 +5,7 @@ sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /op
 
 HEIGHT=10
 WIDTH=40
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
