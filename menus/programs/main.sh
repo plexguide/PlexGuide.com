@@ -30,12 +30,18 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh
-            ;;
+            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
         2)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh
-            ;;
+            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
         3)
+            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+        4)
+            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+        5)
+            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+        6)
+            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+        7)
             clear
             exit 0
             ;;
