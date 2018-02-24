@@ -1,8 +1,11 @@
 timestamp() {
-  date +"date +%Y-%m-%d+%T"
+  date +"%Y-%m-%d-%T"
 }
 
-# do something...
+# 
+mkdir /mnt/gdrive/plexguide/backup.old/
+mv /mnt/gdrive/plexguide/backup /mnt/drive/plexguide/backup.old/backup-{timestamp}
+
 timestamp # print timestamp
 # do something else...
 timestamp 
