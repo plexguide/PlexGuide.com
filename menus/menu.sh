@@ -43,8 +43,8 @@ CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PlexGuide - Version 5.044"
 
-OPTIONS=(1 "Donation Menu"
-         2 "RClone & PlexDrive"
+OPTIONS=(A "Donation Menu"
+         B "RClone & PlexDrive"
          3 "PG Application Suite (Programs)"
          4 "Enhance Processor Performance"
          5 "Network & Server Benchmarks"
@@ -66,9 +66,9 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1)
+        A)
             bash /opt/plexguide/menus/programs/media.sh ;;
-        2)
+        B)
             bash /opt/plexguide/menus/programs/manager.sh ;;
         3)
             bash /opt/plexguide/menus/programs/nzbs.sh ;;
@@ -93,7 +93,7 @@ while [ 1 ]
 do
 CHOICE=$(
 whiptail --title "Visit PlexGuide.com - v5.044" --menu "Make your choice" 20 43 13 \
-   "A)" "Donation Menu (Please Turn On)" \
+   "A)" "Donation Menu" \
    "B)" "RClone & PlexDrive" \
    "3)" "Programs" \
    "4)" "Set Processor Performance" \
