@@ -17,24 +17,26 @@ let "number %= $RANGE"
 
 if [ "$number" -eq "0" ]
 then
-	dialog --title "Plex Claim Info" \
+	dialog --title "Startup Message - PlexGuide.com" \
 	--msgbox "\nDid you know that you can type - sudo pgupdate - from the terminal prompt and plexguide will update itself?" 10 50
 fi
 
 if [ "$number" -eq "1" ]
 then
-	dialog --title "Plex Claim Info" \
+	dialog --title "Startup Message - PlexGuide.com" \
 	--msgbox "\nSee issues with our Wiki Pages? Please comment in the forum and we will udpdate! Once an offical wiki plugin is built, we'll add it!" 10 50
 fi
 
 if [ "$number" -eq "2" ]
 then
-   whiptail --title "Startup Message" --msgbox "Visit our Forum at https://plexguide.com!" 8 66
+   	dialog --title "Startup Message - PlexGuide.com" \
+	--msgbox "\nVisit our Forums via https://PlexGuide.com" 8 50
 fi
 
 if [ "$number" -eq "3" ]
 then
-   whiptail --title "Startup Message" --msgbox "Did you log into GITHUB and click the STAR in the upper right? Doing so further supports our project and awareness! Even making an account just do so means a-lot to us!" 11 66
+   	dialog --title "Startup Message - PlexGuide.com" \
+	--msgbox "\nDid you log into GITHUB and click the STAR in the upper right? Doing so further supports our project and awareness! Even making an account just do so means a-lot to us!" 10 50
 fi
 
 if [ "$number" -eq "4" ]
