@@ -97,7 +97,7 @@
     path: "{{ item }}"
     state: absent
   with_items:
-    - /tmp/{{program_var.stdout}}
+    - /tmp/{{program_var.stdout}}.tar
 
 - debug: msg="Program is now RESTORED from your Google Drive - {{program_var.stdout}}"
   when: programgdrive.stat.exists == True
