@@ -16,7 +16,7 @@ case $? in
     dialog --title "Example Dialog message box" --msgbox "\n Installation Completed on host7" 6 50
     exit
   1)
-    dialog --title "User - System Is Not Virtual" \  --msgbox "\n We recommend that you select performance mode. By default, your utilizing ondemand mode. Mode does not kick in until you REBOOT!" 6 50
+    dialog --title "User - System Is Not Virtual" --msgbox "\n We recommend that you select performance mode. By default, your utilizing ondemand mode. Mode does not kick in until you REBOOT!" 6 50
   255)
     echo "ESC pressed.";;
 esac 
