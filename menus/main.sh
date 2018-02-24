@@ -56,8 +56,8 @@ case $CHOICE in
             clear
             echo "1. Restart the Program Anytime, type: plexguide"
             echo "2. Update Plexguide Anytime, type: pgupdate"
-            echo "3. Please STAR PG via http://github.plexguide.com"
-            echo "4. Join the PG Discord via http://discord.plexguide.com"
+            echo "3. Please STAR PG via https://github.plexguide.com"
+            echo "4. Join the PG Discord via https://discord.plexguide.com"
             echo ""
             exit 0 ;;
 esac
