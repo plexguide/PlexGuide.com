@@ -19,8 +19,7 @@ OPTIONS=(A "Donation Menu"
          K "BETA: Turn On/Off App Ports"
          Z "Exit")
 
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
