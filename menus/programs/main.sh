@@ -3,7 +3,7 @@
 # This takes .yml file and converts it to bash readable format
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
-HEIGHT=15
+HEIGHT=16
 WIDTH=40
 CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
@@ -17,7 +17,8 @@ OPTIONS=(1 "Media Servers"
          5 "Restore"
          6 "Restore"
          7 "Restore"
-         8 "Exit")
+         8 "Restore"
+         9 "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
