@@ -18,6 +18,7 @@
 #mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
 #mkdir $mpath
 #mv /mnt/gdrive/plexguide/backup/* $mpath 
+echo "test"
 
 ls -la | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
