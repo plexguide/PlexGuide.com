@@ -24,9 +24,9 @@ defaultEntryPoints = ["http", "https"]
 # http should be redirected to https
 [entryPoints.http]
 address = ":80"
-    #delete this line and uncomment two lines below to force https://
-    #[entryPoints.http.redirect]
-    #entryPoint = "https"
+    # add comment sybols in the front of each line to turn off https:// redirect
+    [entryPoints.http.redirect]
+    entryPoint = "https"
 # https is the default
 [entryPoints.https]
 address = ":443"
