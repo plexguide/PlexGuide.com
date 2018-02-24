@@ -11,8 +11,6 @@ echo $mfolder
 echo $d
 echo $mpath
 
-
-# 
 mkdir /mnt/gdrive/plexguide/backup.old/
 mkdir $mpath
 mv /mnt/gdrive/plexguide/backup $mpath
