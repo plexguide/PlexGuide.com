@@ -3,6 +3,7 @@
 - name: Check - acme.json existance
   stat:
     path: "/opt/appdata/traefik/acme/acme.json"
+  register: acme
 
 - name: "Register - Cert"
   shell: "cat /opt/appdata/traefik/acme/acme.json | awk '{print $1}'"
