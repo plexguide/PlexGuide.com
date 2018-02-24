@@ -54,9 +54,9 @@ case $CHOICE in
             bash /opt/plexguide/scripts/menus/ports/ports.sh ;;
         Z)
             clear
-            echo "1. Please STAR PG via https://github.plexguide.com"
-            echo "2. Join the PG Discord via https://discord.plexguide.com"
-            echo "3. Donate to PG via https://donate.plexguide.com"
+            echo "1. Please STAR PG via http://github.plexguide.com"
+            echo "2. Join the PG Discord via http://discord.plexguide.com"
+            echo "3. Donate to PG via http://donate.plexguide.com"
             echo ""
             echo "TIP: Restart the Program Anytime, type: plexguide"
             echo "TIP: Update Plexguide Anytime, type: pgupdate"
