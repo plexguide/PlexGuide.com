@@ -1,3 +1,12 @@
+timestamp() {
+  date +"%T"
+}
+
+# do something...
+timestamp # print timestamp
+# do something else...
+timestamp 
+
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 
 while read p; do
