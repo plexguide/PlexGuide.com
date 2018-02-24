@@ -45,16 +45,16 @@ TITLE="PlexGuide - Version 5.044"
 
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
-         3 "PG Application Suite (Programs)"
-         4 "Enhance Processor Performance"
-         5 "Network & Server Benchmarks"
-         6 "Info & Troubleshoot"
-         7 "Application Backup & Restore"
-         8 "Update (Read Changelog)"
-         9 "Uninstall PG"
-         10 "BETA: Uncapped Upload Speeds"
-         11 "BETA: Turn On/Off App Ports"
-         12 "Exit")
+         C "PG Application Suite (Programs)"
+         D "Enhance Processor Performance"
+         E "Network & Server Benchmarks"
+         F "Info & Troubleshoot"
+         G "Application Backup & Restore"
+         H "Update (Read Changelog)"
+         I "Uninstall PG"
+         J "BETA: Uncapped Upload Speeds"
+         K "BETA: Turn On/Off App Ports"
+         Z "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
