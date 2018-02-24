@@ -4,14 +4,14 @@ Current Changes will continued to be modified as known.
 ### [5.044] 
 
 #### Added
-- None
+- Slowing adding new meus
 
 #### Changed
 - Fixed fast flash load up error (did not affect anything, but could be seen at times)
 - Forced update to install "dialog"
 
 #### Removed
-- None
+- Slowly tossing old menus
 
 -------------------------------------------------------
 ## Past Changes
