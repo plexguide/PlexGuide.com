@@ -1,10 +1,25 @@
-## Current Changes
+## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
+
+### [5.044] 
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
 
 ### [5.043]
 
 #### Added
-- Force http to go https now. Rerun Traefik under programs > critical and will go into affect if not working
+- Force http to go https now. Rerun Traefik under programs > critical and will go into affect (required if not a new install)
 
 #### Changed
 - Resolving Issues for Subdomains!
@@ -16,9 +31,6 @@ Current Changes will continued to be modified as known.
 #### Removed
 - None
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.042]
 
