@@ -94,3 +94,6 @@ case $CHOICE in
             clear
             exit 0 ;;
 esac
+
+## repeat menu when exiting
+bash /opt/plexguide/menus/menu.sh
