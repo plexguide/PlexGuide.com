@@ -58,8 +58,15 @@
   when: programgdrive.stat.exists == True
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
-- name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
-  shell: "tar -xf '/tmp/{{program_var.stdout}}.tar' -C /opt/appdata/{{program_var.stdout}} ."
+#- name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
+  #shell: "tar -xf '/tmp/{{program_var.stdout}}.tar' -C /opt/appdata/{{program_var.stdout}} ."
+  #when: programgdrive.stat.exists == True
+
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
+    src: /tmp/{{program_var.stdout}}.tar
+    dest: /opt/appdata/{{program_var.stdout}}
+    remote_src: yes
   when: programgdrive.stat.exists == True
 
 - name: Restart Docker Container - {{program_var.stdout}}
