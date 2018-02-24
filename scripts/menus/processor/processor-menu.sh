@@ -6,21 +6,6 @@ sudo touch /var/plexguide/asked.processor
 ################# Virtual Machine Check
 #dialog --title "Hello" --msgbox 'Hello world!' 6 20
 
-DIALOG=${DIALOG=dialog}
-
-$DIALOG --title " Virtual Machine" --clear \
-        --yesno "Are you utilizing a Virutal Machine or VPS?" 10 30
-
-case $? in
-  0)
-    dialog --title "Example Dialog message box" --msgbox "\n Installation Completed on host7" 6 50
-    exit
-  1)
-    dialog --title "User - System Is Not Virtual" --msgbox "\n We recommend that you select performance mode. By default, your utilizing ondemand mode. Mode does not kick in until you REBOOT!" 6 50
-  255)
-    echo "ESC pressed.";;
-esac 
-
 if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine or VPS?" 8 56) then
 
     whiptail --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a VM or VPS. Trust me, it does not work if you try!" 9 66
