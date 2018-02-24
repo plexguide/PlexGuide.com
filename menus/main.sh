@@ -42,6 +42,7 @@ case $CHOICE in
         G)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         H)
+            clear
             bash /opt/plexguide/scripts/docker-no/upgrade.sh
               echo Remember, restart by typing: plexguide
               exit 0;;
