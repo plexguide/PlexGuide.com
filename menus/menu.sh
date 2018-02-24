@@ -37,7 +37,7 @@ fi
 
 clear
 
-HEIGHT=15
+HEIGHT=16
 WIDTH=45
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
@@ -49,7 +49,7 @@ OPTIONS=(A "Donation Menu"
          D "Enhance Processor Performance"
          E "Network & Server Benchmarks"
          F "Info & Troubleshoot"
-         G "Application Backup & Restore"
+         G "Backup & Restore"
          H "Update (Read Changelog)"
          I "Uninstall PG"
          J "BETA: Uncapped Upload Speeds"
@@ -67,22 +67,30 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/programs/media.sh ;;
+            bash /opt/plexguide/scripts/menus/donate-norm-menu.sh ;;
         B)
-            bash /opt/plexguide/menus/programs/manager.sh ;;
-        3)
-            bash /opt/plexguide/menus/programs/nzbs.sh ;;
-        4)
-            bash /opt/plexguide/menus/programs/torrent.sh ;;
-        5)
-            bash /opt/plexguide/menus/programs/support.sh ;;
-        6)
-            bash /opt/plexguide/menus/programs/ui.sh ;;
-        7)
-            bash /opt/plexguide/menus/programs/critical.sh ;;
-        8)
-            bash /opt/plexguide/menus/programs/beta.sh ;;
-        9)
+            bash /opt/plexguide/scripts/menus/rclone-pd-select.sh ;;
+        C)
+            bash /opt/plexguide/menus/programs/main.sh ;;
+        D)
+            bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+        E)
+            bash /opt/plexguide/scripts/menus/bench-menu.sh ;;
+        F)
+            bash /opt/plexguide/scripts/menus/help-select.sh ;;
+        G)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        H)
+            bash /opt/plexguide/scripts/docker-no/upgrade.sh
+              echo Remember, restart by typing: plexguide
+              exit 0;;
+        I)
+            bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
+        J)
+            bash /opt/plexguide/scripts/menus/transfer/main.sh ;;
+        K)
+            bash /opt/plexguide/scripts/menus/ports/ports.sh ;;
+        Z)
             clear
             exit 0 ;;
 esac
