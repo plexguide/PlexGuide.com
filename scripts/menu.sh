@@ -93,7 +93,7 @@ case $CHOICE in
 
    "8)")
        clear
-       bash /opt/plexguide/scripts/menus/backup-restore/main.sh
+       bash /opt/plexguide/menus/backup-restore/main.sh
        ;;
 
    "9)")
