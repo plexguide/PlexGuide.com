@@ -1,6 +1,8 @@
 
  #!/bin/bash
 
+dialog --title "Hello" --msgbox 'Hello world!' 6 20
+
 whiptail --title "Donation Option Info" --msgbox "Would you be kind enough to TURN ON the Donation Option to mine for coins? From here, you can also disable/stop the mining of coins." 13 76
 
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
