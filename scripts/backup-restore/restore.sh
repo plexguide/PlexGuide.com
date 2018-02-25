@@ -96,9 +96,9 @@ mpath="$mfolder$varselect"
 
 echo "mpath equals"
 echo "$mpath"
-# ls -la /mnt/gdrive/plexguide/backup.old/ | awk '{ print $9}'
+#ls -la /mnt/gdrive/plexguide/backup.old/ | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' 
 
-ls -la $mpath | awk '{ print $9}' | tail -n 9 > /opt/appdata/plexguide/backuplist2
+ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
 while read p; do
   echo $p > /tmp/program_var
