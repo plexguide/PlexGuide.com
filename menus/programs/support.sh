@@ -28,7 +28,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            program=netdata
+            program=NetData
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
             bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
@@ -56,6 +56,9 @@ case $CHOICE in
 esac
 
     clear
+    dialog --title "Plex Claim Info" \
+    --msgbox "\n$program  - http://$ipv4:19999\nSubdomain - https://$program.$domain\nDomain    - http://$domain:19999" 12 50
+
     echo "$program  - http://$ipv4:19999"
     echo "Subdomain - https://$program.$domain"
     echo "Domain    - http://$domain:19999"
