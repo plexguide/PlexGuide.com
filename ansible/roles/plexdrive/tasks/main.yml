@@ -22,15 +22,18 @@
   - name: Check service exists
     stat:
       path: "/etc/systemd/system/plexdrive.service"
+    register: plexdrive
 
   - name: Stop existing plexdrive service
     systemd: state=stopped name=plexdrive
+    when: plexdrive.stat.exists
 
   - name: Remove Plexdrive Service
     file:
       state: absent
-      path: /etc/systemd/system/plexdrive4.service
+      path: /etc/systemd/system/plexdrive.service
       force: yes
+    when: plexdrive.stat.exists
  
 ################## Start of New PlexDrive 5 Service
 
