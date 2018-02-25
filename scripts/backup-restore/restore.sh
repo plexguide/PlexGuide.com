@@ -46,6 +46,54 @@ while read p; do
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
 done </opt/appdata/plexguide/backuplist
 
+HEIGHT=16
+WIDTH=40
+CHOICE_HEIGHT=9
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="Restore Your PlexGuide Server"
+MENU="Select a Restore Option:"
+
+OPTIONS=(A "Most Recent Backup"
+         B "$var1"
+         C "$var2"
+         D "$var3"
+         E "$var4"
+         F "$var5"
+         G "$var6"
+         Z "Exit")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        A)
+            bash /opt/plexguide/menus/programs/media.sh ;;
+        B)
+            bash /opt/plexguide/menus/programs/manager.sh ;;
+        C)
+            bash /opt/plexguide/menus/programs/nzbs.sh ;;
+        D)
+            bash /opt/plexguide/menus/programs/torrent.sh ;;
+        E)
+            bash /opt/plexguide/menus/programs/support.sh ;;
+        F)
+            bash /opt/plexguide/menus/programs/ui.sh ;;
+        G)
+            bash /opt/plexguide/menus/programs/critical.sh ;;
+        H)
+            bash /opt/plexguide/menus/programs/beta.sh ;;
+        Z)
+            clear
+            exit 0 ;;
+esac
+
+
 #rm -r /mnt/gdrive/plexguide/backup/watchtower.tar 1>/dev/null 2>&1
 #rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&
 
