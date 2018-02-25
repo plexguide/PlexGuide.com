@@ -114,6 +114,12 @@ esac
 mfolder="/mnt/gdrive/plexguide/backup.old/"
 mpath="$mfolder$varselect"
 
+# Force Exit if Required
+if [ "$folder" -eq "/mnt/gdrive/plexguide/backup.old/" ]
+then
+   exit
+fi
+
 echo "mpath equals"
 echo "$mpath"
 #ls -la /mnt/gdrive/plexguide/backup.old/ | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' 
