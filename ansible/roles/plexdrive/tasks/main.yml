@@ -78,24 +78,27 @@
       path: "/opt/appdata/plexguide/pd4"
     register: pd4
 
-  - name: Import MongoDB public GPG Key
-    apt_key:
-      keyserver: keyserver.ubuntu.com
-      id: 0C49F3730359A14518585931BC711F9BA15703C6
-    when: pd4.stat.exists
+  - name: Execute MongoDB Script
+    script: /opt/plexguide/scripts/plexdrive/mongod.sh
 
-  - name: Add MongoDB repository into sources list
-    apt_repository:
-        repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
-        state: present
-    when: pd4.stat.exists
+  #- name: Import MongoDB public GPG Key
+    #apt_key:
+      #keyserver: keyserver.ubuntu.com
+      #id: 0C49F3730359A14518585931BC711F9BA15703C6
+    #when: pd4.stat.exists
 
-  - name: Install MongoDB package
-    apt:
-      name: mongodb-org
-      update_cache: yes
-    become: yes
-    when: pd4.stat.exists
+  #- name: Add MongoDB repository into sources list
+    #apt_repository:
+        #repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+        #state: present
+    #when: pd4.stat.exists
+
+  #- name: Install MongoDB package
+    #apt:
+      #name: mongodb-org
+      #update_cache: yes
+    #become: yes
+    #when: pd4.stat.exists
 
   - name: PlexDrive 4 Install
     get_url:
