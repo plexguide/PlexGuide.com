@@ -27,8 +27,8 @@ while read p; do
   count=$((count+1))
       	if [ $count -eq 1 ]; then
             echo $p > var1
-            p=$var
-            echo $var1
+            p=$var1
+            echo "$var1"
         fi
 echo "test2"
   #echo $p > /tmp/program_var
