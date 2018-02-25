@@ -29,6 +29,8 @@ case $CHOICE in
             bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
         C)
             bash /opt/plexguide/scripts/backup-restore/backup.sh ;;
+        D)
+            bash /opt/plexguide/scripts/backup-restore/restore.sh ;;
         Z)
             clear
             exit 0
