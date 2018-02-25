@@ -128,8 +128,14 @@ echo "$mpath"
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
+mappdata="/opt/appdata/"
+
 while read p; do
   echo $p > /tmp/program_var
+  mapprm="$mappdata$p"
+  echo "remove this path"
+  echo "$mapprm"
+  rm -r $mapprm
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
 done </opt/appdata/plexguide/backuplist2
 
