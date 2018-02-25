@@ -17,25 +17,16 @@
 #################################################################################
 # Advanced Restore Script
 
-
-#d=$(date +%Y-%m-%d-%T)
-
-#touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
-#sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
-
-#mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
-#mpath="$mfolder$d"
-
-#mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
-#mkdir $mpath
-#mv /mnt/gdrive/plexguide/backup/* $mpath 
+clear
+echo "Strting Restore Process"
+echo ""
 
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
 ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
-declare -i count=0
+declare -i count=1
 
 while read p; do
   count=$((count+1))
