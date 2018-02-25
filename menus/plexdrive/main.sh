@@ -37,7 +37,8 @@ case $CHOICE in
             echo "Tokens Removed - Try PlexDrive Install Again"
             echo
             read -n 1 -s -r -p "Press any key to continue"
-            clear  ;;
+            clear
+            bash /opt/plexguide/menus/plexdrive/main.sh ;;
         Z)
             clear
             exit 0 ;;
