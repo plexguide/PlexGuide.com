@@ -93,7 +93,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "" > varselect ;;
+            echo "main" > varselect ;;
         B)
             varselect=$var6 ;;
         C)
@@ -121,6 +121,14 @@ then
   echo "You Selected a Blank Field - Nothing Happened"
   read -n 1 -s -r -p "Press any key to continue "
   exit
+fi
+
+# Force Exit if Required
+if [ $varselect = "main" ]
+then
+  clear
+  echo "Main Selected"
+  mpath="/mnt/gdrive/plexguide/backup/"
 fi
 
 echo "mpath equals"
