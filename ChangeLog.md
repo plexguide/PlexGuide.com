@@ -1,6 +1,21 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
+### [5.045] 
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.044] 
 
 #### Added
@@ -16,10 +31,6 @@ Current Changes will continued to be modified as known.
 
 #### Removed
 - Slowly tossing old menus
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.043]
 
