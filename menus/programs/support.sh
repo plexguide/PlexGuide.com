@@ -30,26 +30,32 @@ case $CHOICE in
         A)
             clear
             program=NetData
+            port=19999
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
             clear
-            program=OMBIv3
+            program=ombi
+            port=3579
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi ;;
         C)
             clear
             program=NextCloud
+            port=9999
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next ;;
         D)
             clear
             program=pyLoad
+            port=9999
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad ;;
         E)
             clear
             program=Resilio
+            port=9999
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio ;;
         F)
             clear
             program=Tautulli
+            port=8181
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli ;;
         Z)
             exit 0 ;;
@@ -57,4 +63,4 @@ esac
 
     clear
     dialog --title "$program - Address Info" \
-    --msgbox "\n$program   - http://$ipv4:19999\nSubdomain - https://$program.$domain\nDomain    - http://$domain:19999" 8 50
+    --msgbox "\n$program   - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
