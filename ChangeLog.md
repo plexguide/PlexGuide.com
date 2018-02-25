@@ -1,12 +1,29 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
+### [5.045] 
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.044] 
 
 #### Added
 - Slowing adding new meus
 - Mass Backup Installer
-- Mass Backup Installer also moves recent backup in gdrive to backup.old with a time stamp
+  - Mass Backup Installer also moves recent backup in gdrive to backup.old with a time stamp
+- Mass Restore Installer
+  - Mass Restore Installer can restore most recent and last 6 backups 
 
 #### Changed
 - Fixed fast flash load up error (did not affect anything, but could be seen at times)
@@ -14,10 +31,6 @@ Current Changes will continued to be modified as known.
 
 #### Removed
 - Slowly tossing old menus
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.043]
 
