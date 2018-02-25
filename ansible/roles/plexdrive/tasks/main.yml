@@ -42,7 +42,7 @@
       path: "/opt/appdata/plexguide/pd5"
     register: pd5
 
-  - name: PlexDrive Install
+  - name: PlexDrive 5 Install
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
       dest: /usr/bin/plexdrive
@@ -110,11 +110,11 @@
   - name: Config Check
     stat:
       path: "/root/.plexdrive/config.json"
-    register: plexdrive
+    register: token
 
   - name: Start PlexDrive
     systemd: state=started name=plexdrive enabled=yes
-    when: plexdrive.stat.exists
+    when: token.stat.exists
     
   - name: Config Present?
     stat:
