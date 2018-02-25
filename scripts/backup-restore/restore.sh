@@ -124,16 +124,17 @@ fi
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
-mappdata="/opt/appdata/"
+#mkdir /tmp/plexguide
+#cp /opt/appdata/plexguide/* /tmp/plexguide
 
 while read p; do
   echo $p > /tmp/program_var
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass
 done </opt/appdata/plexguide/backuplist2
 
-sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
-sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
-sudo rm -r /opt/appdata/var* 1>/dev/null 2>&1
+rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
+rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
+rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 echo ""
 echo "Backup Complete"
