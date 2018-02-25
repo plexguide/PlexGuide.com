@@ -26,10 +26,9 @@ sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
 ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
-declare -i count=1
+declare -i count=0
 
 while read p; do
-  count=$((count+1))
       	if [ $count -eq 1 ]; then
             echo "$p" > var1
             var1=$p
@@ -54,7 +53,7 @@ while read p; do
             echo "$p" > var6
             var6=$p
         fi
-
+    count=$((count+1))
 done </opt/appdata/plexguide/backuplist
 
 HEIGHT=15
