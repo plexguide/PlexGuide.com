@@ -26,7 +26,8 @@ declare -i count=0
 while read p; do
   count=$((count+1))
       	if [ $count -eq 1 ]; then
-            echo $p > var1
+            echo "$p"
+            echo "$p" > var1
             p=$var1
             echo "$var1"
         fi
