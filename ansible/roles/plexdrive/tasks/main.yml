@@ -35,6 +35,18 @@
       force: yes
     when: plexdrive.stat.exists
  
+  - name: Check PD Binary Exist
+    stat:
+      path: "/usr/bin/plexdrive"
+    register: pdb
+
+  - name: Remove PD Binary
+    file:
+      state: absent
+      path: /usr/bin/plexdrive
+      force: yes
+    when: pdb.stat.exists
+
 ################## Start of New PlexDrive 5 Service
 
   - name: Check service exists
