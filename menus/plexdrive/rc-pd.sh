@@ -4,12 +4,11 @@ HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PlexDrive for PG"
+TITLE="PlexDrive - RClone"
 MENU="Choose one of the following options:"
 
-OPTIONS=(A "PlexDrive5 Install"
-         B "PlexDrive4 (Not Ready)"
-         C "Remove PlexDrive Tokens"
+OPTIONS=(A "PlexDrive"
+         B "RClone"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
