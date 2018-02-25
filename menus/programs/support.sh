@@ -28,7 +28,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            $program="netdata"
+            echo "netdata" > program
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
             bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
