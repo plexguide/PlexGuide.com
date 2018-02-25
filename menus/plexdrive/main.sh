@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############# User Confirms They Understand
-dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the scan, make sure to reboot! If using PD5 and it says - Opening Cache - go ahead and reboot!" 0 0
+dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
 
 
 ############# Menu
