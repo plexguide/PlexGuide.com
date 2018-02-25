@@ -6,7 +6,7 @@
 # Author:   Admin9705
 # URL:      https://plexguide.com
 #
-# QuickBox Copyright (C) 2018 PlexGuide.com
+# PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
 #   You may copy, distribute and modify the software as long as you track
