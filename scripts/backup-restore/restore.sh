@@ -30,7 +30,7 @@
 #mkdir $mpath
 #mv /mnt/gdrive/plexguide/backup/* $mpath 
 
-ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
+ls -la -R /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
 
