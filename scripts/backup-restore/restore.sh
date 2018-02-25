@@ -72,12 +72,12 @@ TITLE="Restore Your PlexGuide Server"
 MENU="Select a Restore Option:"
 
 OPTIONS=(A "Most Recent Backup"
-         B "$var1"
-         C "$var2"
-         D "$var3"
-         E "$var4"
-         F "$var5"
-         G "$var6"
+         B "$var6"
+         C "$var5"
+         D "$var4"
+         E "$var3"
+         F "$var2"
+         G "$var1"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -93,17 +93,17 @@ case $CHOICE in
         A)
             echo "" > varselect ;;
         B)
-            varselect=$var1 ;;
-        C)
-            varselect=$var2 ;;
-        D)
-            varselect=$var3 ;;
-        E)
-            varselect=$var4 ;;
-        F)
-            varselect=$var5 ;;
-        G)
             varselect=$var6 ;;
+        C)
+            varselect=$var5 ;;
+        D)
+            varselect=$var4 ;;
+        E)
+            varselect=$var3 ;;
+        F)
+            varselect=$var2 ;;
+        G)
+            varselect=$var1 ;;
         Z)
             clear
             exit 0 ;;
