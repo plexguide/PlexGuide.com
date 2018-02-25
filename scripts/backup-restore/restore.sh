@@ -64,9 +64,9 @@ while read p; do
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
 done </opt/appdata/plexguide/backuplist
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=48
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Restore Your PlexGuide Server"
 MENU="Select a Restore Option (Most Recent Top):"
