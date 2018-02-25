@@ -94,7 +94,7 @@ esac
 mfolder="/mnt/gdrive/plexguide/backup.old/"
 mpath="$mfolder$varselect"
 
-ls -la $mpath | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist2
+ls -la $mpath | awk '{ print $9}' | tail -n 9 > /opt/appdata/plexguide/backuplist2
 
 while read p; do
   echo $p > /tmp/program_var
