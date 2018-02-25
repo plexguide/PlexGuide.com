@@ -42,9 +42,6 @@ while read p; do
       	if [ $count -eq 1 ]; then
             echo "$p" > var1
             var1=$p
-              if [ $var1 -eq var1 ]; then
-              var1=$""
-              fi
         fi
       	if [ $count -eq 2 ]; then
             echo "$p" > var2
@@ -148,6 +145,7 @@ done </opt/appdata/plexguide/backuplist2
 
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
+sudo rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 echo ""
 echo "Backup Complete"
