@@ -93,7 +93,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "main" > varselect ;;
+            varselect="main" ;;
         B)
             varselect=$var6 ;;
         C)
@@ -128,6 +128,7 @@ then
   clear
   echo "You Selected a Blank Field - Nothing Happened"
   read -n 1 -s -r -p "Press any key to continue "
+  clear
   exit
 fi
 
