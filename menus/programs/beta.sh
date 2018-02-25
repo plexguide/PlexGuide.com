@@ -22,7 +22,7 @@ case $CHOICE in
 
     "1)")
     clear
-    bash /opt/plexguide/scripts/menus/programs/vpn.sh
+    bash /opt/plexguide/menus/programs/vpn.sh
     ;;
 
    "2)")
