@@ -12,7 +12,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - 5075:5075
+      - "{{ports}}5075:5075"
     env:
       APP: "nzbhydra"
       VERSION: "stable"
@@ -20,7 +20,7 @@
       PGID: "1000"
       HTTPS_METHOD: noredirect
     volumes:
-      - "/opt/appdata/nzbhyra:/config"
+      - "/opt/appdata/nzbhydra:/config"
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: always
     networks:

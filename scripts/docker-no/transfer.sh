@@ -3,7 +3,7 @@
 
 # 1307068 = 1.3 GB
 # 10000000 = 10 GB
-# 740000000 = 750 GB
+# 740000000 = 740 GB
 
 if [ ! -e "/opt/appdata/plexguide/data" ]
 then
@@ -45,7 +45,7 @@ while [ 1 -lt 740000000 ]
 do
 	data=$((data+0))
 
-	if [ "$data" -gt 1000000 ]; then
+	if [ "$data" -gt 740000000 ]; then
 	   	echo off > /opt/appdata/plexguide/switch
     	switch=$(awk '{print $1}' /opt/appdata/plexguide/switch)
        exit 0
@@ -66,10 +66,10 @@ do
 		data=$((data+a))
 		echo "$data" > /opt/appdata/plexguide/data
 		echo "finish flag"
-
-		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
-		echo "sleeping for 180 seconds"
-		sleep 180
+		rm -r /opt/appdata/plexguide/rclone
+		rclone move --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --log-file=/opt/appdata/plexguide/rclone --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
+		echo "sleeping for 120 seconds"
+		sleep 120
 		echo "resuming"
 
 	a=$(du -la /mnt/move | grep "/mnt/move" | tail -1 | awk '{print $1}') && echo "$((a + 0))"

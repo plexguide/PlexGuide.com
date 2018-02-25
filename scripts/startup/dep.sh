@@ -30,7 +30,7 @@ echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
 echo "5. Installing Dependicies & Docker - Please Wait"
 echo
     ansible-playbook /opt/plexguide/ansible/docker.yml
-    ansible-playbook /opt/plexguide/ansible/config.yml
+    ansible-playbook /opt/plexguide/ansible/config.yml --tags var
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
 echo ""
 echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
@@ -51,24 +51,21 @@ echo "7. Pre-Installing RClone & Services (Please Wait)"
   touch /var/plexguide/basics.yes 1>/dev/null 2>&1
   touch /var/plexguide/version-5.28 1>/dev/null 2>&1
 
-echo "8. Pre-Installing PlexDrive & Services (Please Wait)"
-
-
-echo "9. Installing Portainer & Reverse Proxy (Please Wait)"
+echo "8. Installing Portainer & Reverse Proxy (Please Wait)"
 
 # Installs Portainer
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-# Instlls Reverse Prox
+# Installs Reverse Prox
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
 # Remove NGINX if it exists
 
 ############################################# Install a Post-Docker Fix ###################### START
 
-  echo "10. Installing DockerFix & Service Activation"
+  echo "9. Installing DockerFix & Service Activation"
 
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix
 
-  echo "11. Installing WatchTower"
+  echo "10. Installing WatchTower"
 
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
 
@@ -77,14 +74,14 @@ echo "9. Installing Portainer & Reverse Proxy (Please Wait)"
     then
   echo "" 1>/dev/null 2>&1
     else
-  echo "13. Donation Information - Coming Up"
+  echo "11. Donation Information - Coming Up"
   echo ""
         read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/donate-menu.sh
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep33.yes
+   touch /var/plexguide/dep35.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 

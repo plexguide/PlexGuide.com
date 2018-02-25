@@ -16,7 +16,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "5050:5050"
+      - "{{ports}}5050:5050"
     env:
       APP: couchpotato
       VERSION: stable

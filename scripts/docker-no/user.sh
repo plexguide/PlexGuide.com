@@ -1,9 +1,6 @@
 #!/bin/bash
 
-mkdir -p /var/plexguide
-
-## Remove Exit Code
-rm -r /var/plexguide/exit.yes
+mkdir -p /var/plexguide 1>/dev/null 2>&1
 
 file="/var/plexguide/plexguide.user"
 if [ -e "$file" ]
@@ -14,10 +11,7 @@ clear
 
 whiptail --title "Important" --msgbox "Welcome to the PlexGuide.com Installer.  If you have questions,
 please read the Wikis or join our #Discord Channel." 8 78
-touch /var/plexguide/plexguide.user
+touch /var/plexguide/plexguide.user 
 
 exit
 fi
-
-#checks list of fixes
-bash /opt/plexguide/scripts/startup/fix/main.sh

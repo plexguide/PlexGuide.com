@@ -12,7 +12,7 @@
     pull: yes
     cpu_shares: 128
     published_ports:
-      - "8020:80"
+      - "{{ports}}8020:80"
     env:
       PUID: "1000"
       PGID: "1000"

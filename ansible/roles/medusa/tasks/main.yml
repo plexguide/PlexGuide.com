@@ -16,7 +16,7 @@
     image: "linuxserver/medusa"
     pull: yes
     published_ports:
-      - "8081:8081"
+      - "{{ports}}8081:8081"
     volumes:
       - /opt/appdata/medusa:/config
       - /mnt/medusa/downloads:/downloads

@@ -17,7 +17,7 @@
     image: "linuxserver/lazylibrarian"
     pull: yes
     published_ports:
-      - "5299:5299"
+      - "{{ports}}5299:5299"
     volumes:
       - /opt/appdata/lazylibrarian:/config
       - /mnt/:/downloads

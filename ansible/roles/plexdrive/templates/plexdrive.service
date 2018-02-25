@@ -1,13 +1,14 @@
 [Unit]
-Description=PlexDrive Service
+Description=PlexDrive5 Service
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-check-threads=8 --chunk-load-threads=8 --max-chunks=12 --chunk-load-ahead=6 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
+ExecStart=/usr/bin/plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --max-chunks=8 --chunk-check-threads=8 --chunk-load-threads=8 --chunk-load-ahead=6 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
 ExecStop=/bin/fusermount -uz /mnt/plexdrive
 Restart=always
 RestartSec=5
 
 [Install]
 WantedBy=default.target
+

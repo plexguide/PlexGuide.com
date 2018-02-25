@@ -1,4 +1,81 @@
 ---
+ 
+ ########### PlexDrive
+  - name: PlexDrive Check
+    stat:
+      path: /mnt/plexdrive
+    register: plexdrive
+
+  - name: Create PlexDrive Folder
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/plexdrive 
+    when: plexdrive.stat.exists == False
+    ignore_errors: yes
+
+############ GCrypt
+  - name: GCrypt Check
+    stat:
+      path: /mnt/.gcrypt
+    register: gcrypt
+
+  - name: Create GCrypt Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/.gcrypt/tv
+      - /mnt/.gcrypt/movies
+      - /mnt/.gcrypt/music
+      - /mnt/.gcrypt/ebooks
+    when: gcrypt.stat.exists == False
+    ignore_errors: yes
+
+############ UnionFS
+  - name: UnionFS Check
+    stat:
+      path: /mnt/unionfs
+    register: unionfs
+
+  - name: Create UnionFS Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/unionfs
+    when: unionfs.stat.exists == False
+    ignore_errors: yes
+
+############ GDrive
+  - name: GDrive Check
+    stat:
+      path: /mnt/gdrive
+    register: gdrive
+
+  - name: Create GDrive Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/gdrive
+      - /mnt/gdrive/tv
+      - /mnt/gdrive/movies
+      - /mnt/gdrive/music
+      - /mnt/gdrive/ebooks
+    when: gdrive.stat.exists == False
+    ignore_errors: yes
+
+############ Encrypt
+  - name: Encrypt Check
+    stat:
+      path: /mnt/encrypt
+    register: encrypt
+
+  - name: Create Encrypt Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/encrypt/tv
+      - /mnt/encrypt/movies
+      - /mnt/encrypt/music
+      - /mnt/encrypt/ebooks
+    when: encrypt.stat.exists == False
+    ignore_errors: yes
+
+############ Directories
   - name: Create Basic Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
@@ -34,27 +111,4 @@
       - /mnt/sab/complete/ebooks
       - /mnt/sab/incomplete
       - /mnt/sab/nzb
-      - /mnt/plexdrive
       - /mnt/sab/complete/ebooks
-      - /mnt/encrypt
-      - /mnt/encrypt/tv
-      - /mnt/encrypt/movies
-      - /mnt/encrypt/music
-      - /mnt/encrypt/ebooks
-      - /mnt/.gcrypt
-      - /mnt/.gcrypt/tv
-      - /mnt/.gcrypt/movies
-      - /mnt/.gcrypt/music
-      - /mnt/.gcrypt/ebooks
-      - /mnt/gdrive
-      - /mnt/gdrive/tv
-      - /mnt/gdrive/movies
-      - /mnt/gdrive/music
-      - /mnt/gdrive/ebooks
-      - /mnt/unionfs
-
-  - name: Create Important Directories
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-    with_items:
-      - /opt/appdata/plexguide
-      - /var/plexguide

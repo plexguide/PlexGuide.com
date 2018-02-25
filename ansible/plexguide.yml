@@ -7,6 +7,7 @@
   - { role: preinstall, tags: ['preinstall'] }
   - { role: backup, tags: ['backup'] }
   - { role: restore, tags: ['restore'] }
+  - { role: restoremass, tags: ['restoremass'] }
   - { role: folders, tags: ['folders'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: netdata, tags: ['netdata'] }
@@ -21,6 +22,7 @@
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
+  - { role: sickrage, tags: ['sickrage'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: emby, tags: ['emby'] }
   - { role: sonarr, tags: ['sonarr'] }
@@ -38,14 +40,11 @@
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
   - { role: plex, tags: ['plex'] }
-  - { role: plex-beta, tags: ['plex-beta'] }
   - { role: docker, tags: ['docker'] }
-  - { role: nginx, tags: ['nginx'] }
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
   - { role: var, tags: ['var'] }
-  - { role: revokessl, tags: ['revokessl'] }
   - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
   - { role: ssl, tags: ['ssl'] }
@@ -54,3 +53,4 @@
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
+  - { role: pyload, tags: ['pyload'] }

@@ -24,6 +24,9 @@ defaultEntryPoints = ["http", "https"]
 # http should be redirected to https
 [entryPoints.http]
 address = ":80"
+    # add comment sybols in the front of each line to turn off https:// redirect
+    [entryPoints.http.redirect]
+    entryPoint = "https"
 # https is the default
 [entryPoints.https]
 address = ":443"
@@ -86,11 +89,13 @@ sans = [
     "plex.yourdomain.com",
     "plexpy.yourdomain.com",
     "portainer.yourdomain.com",
+	"pyload.yourdomain.com",
     "radarr.yourdomain.com",
     "resilio.yourdomain.com",
     "rtorrentvpn.yourdomain.com",
     "rutorrent.yourdomain.com",
     "sabnzbd.yourdomain.com",
+    "sickrage.yourdomain.com",
     "sonarr.yourdomain.com",
     "tautulli.yourdomain.com",
     "ubooquity.yourdomain.com"

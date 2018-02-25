@@ -1,4 +1,6 @@
 ---
+
+################# Not to target PD4, but to remove legacy setup
   - name: Check service exists
     stat:
       path: "/etc/systemd/system/plexdrive4.service"
@@ -15,6 +17,8 @@
       force: yes
     when: plexdrive4.stat.exists
 
+################# Remove New PlexDrive Regardless
+
   - name: Check service exists
     stat:
       path: "/etc/systemd/system/plexdrive.service"
@@ -23,8 +27,34 @@
   - name: Stop existing plexdrive service
     systemd: state=stopped name=plexdrive
     when: plexdrive.stat.exists
-    
-  - name: PlexDrive Install
+
+  - name: Remove Plexdrive Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive.service
+      force: yes
+    when: plexdrive.stat.exists
+ 
+  - name: Check PD Binary Exist
+    stat:
+      path: "/usr/bin/plexdrive"
+    register: pdb
+
+  - name: Remove PD Binary
+    file:
+      state: absent
+      path: /usr/bin/plexdrive
+      force: yes
+    when: pdb.stat.exists
+
+################## Start of New PlexDrive 5 Service
+
+  - name: Check service exists
+    stat:
+      path: "/opt/appdata/plexguide/pd5"
+    register: pd5
+
+  - name: PlexDrive 5 Install (Be Patient)
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
       dest: /usr/bin/plexdrive
@@ -32,12 +62,63 @@
       owner: 1000
       group: 1000
       force: yes
+    when: pd5.stat.exists
 
   - name: Move PlexDrive Service
     template:
       src: plexdrive.service
       dest: /etc/systemd/system/plexdrive.service 
       force: yes
+    when: pd5.stat.exists
+
+###################### Start of New PlexDrive 4 Service
+
+  - name: Check service exists
+    stat:
+      path: "/opt/appdata/plexguide/pd4"
+    register: pd4
+
+  - name: Execute MongoDB Script
+    script: '/opt/plexguide/scripts/plexdrive/mongod.sh'
+    when: pd4.stat.exists
+
+  #- name: Import MongoDB public GPG Key
+    #apt_key:
+      #keyserver: keyserver.ubuntu.com
+      #id: 0C49F3730359A14518585931BC711F9BA15703C6
+    #when: pd4.stat.exists
+
+  #- name: Add MongoDB repository into sources list
+    #apt_repository:
+        #repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+        #state: present
+    #when: pd4.stat.exists
+
+  #- name: Install MongoDB package
+    #apt:
+      #name: mongodb-org
+      #update_cache: yes
+    #become: yes
+    #when: pd4.stat.exists
+
+  - name: PlexDrive 4 Install (Be Patient)
+    get_url:
+      url:  https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
+      dest: /tmp
+      mode: 0755
+      owner: 1000
+      group: 1000
+      force: yes
+    when: pd4.stat.exists
+
+  - name: Move PlexDrive Service
+    template:
+      src: plexdrive4.js2
+      dest: /etc/systemd/system/plexdrive.service 
+      force: yes
+    when: pd4.stat.exists
+
+###################### For Either New PD5 or PD4
 
   - name: Reloading
     systemd: state=stopped name=plexdrive daemon_reload=yes enabled=no
@@ -45,11 +126,11 @@
   - name: Config Check
     stat:
       path: "/root/.plexdrive/config.json"
-    register: plexdrive
+    register: token
 
   - name: Start PlexDrive
     systemd: state=started name=plexdrive enabled=yes
-    when: plexdrive.stat.exists
+    when: token.stat.exists
     
   - name: Config Present?
     stat:

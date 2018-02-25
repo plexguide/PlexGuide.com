@@ -1,10 +1,10 @@
-## Current Changes
+## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.041] Actively Working
+### [5.045] 
 
 #### Added
-- None 
+- None
 
 #### Changed
 - None
@@ -15,6 +15,64 @@ Current Changes will continued to be modified as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.044] 
+
+#### Added
+- Slowing adding new meus
+- Mass Backup Installer
+  - Mass Backup Installer also moves recent backup in gdrive to backup.old with a time stamp
+- Mass Restore Installer
+  - Mass Restore Installer can restore most recent and last 6 backups 
+
+#### Changed
+- Fixed fast flash load up error (did not affect anything, but could be seen at times)
+- Forced update to install "dialog"
+
+#### Removed
+- Slowly tossing old menus
+
+### [5.043]
+
+#### Added
+- Force http to go https now. Rerun Traefik under programs > critical and will go into affect (required if not a new install)
+
+#### Changed
+- Resolving Issues for Subdomains!
+- Updated Program menus to reflect new https:// for subdomains
+- Improved Folder Ansible Deployment to prevent locks with existing mounts
+- Improved Restore Script to untar ansible style over bash; delete local restore after complete
+- Move plex transcode folder - no longer in backup, if running older version, redeploy plex and delete via rm -r /opt/appdata/plex/transcode
+
+#### Removed
+- None
+
+
+### [5.042]
+
+#### Added
+- Ability to turn off ports (only use subdomains) and turn back on
+
+#### Changed
+- Bye NGINX-Reverse Proxy (wasn't used, but got rid of it from test menu)
+
+#### Removed
+- None
+
+### [5.041]
+
+#### Added
+- PyLoad application was added (From b0ltn)
+- Sickrage Added
+- Added Glances Terminal Tool
+
+#### Changed
+- Minor fixes for https://
+- Typo fixes for appdata
+- Fixed major error with data, prior transfer service would stop too early
+
+#### Removed
+- None
 
 ### [5.040]
 

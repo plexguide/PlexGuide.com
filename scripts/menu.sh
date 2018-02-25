@@ -16,7 +16,7 @@ then
 whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
 fi
 
-file="/var/plexguide/dep33.yes"
+file="/var/plexguide/dep35.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
@@ -26,7 +26,7 @@ fi
 
 ## starup Message
 
-  bash /opt/plexguide/scripts/docker-no/random.sh
+bash /opt/plexguide/menus/startup/message.sh
 
 ## Force Exit if Required
 file="/var/plexguide/exit.yes"
@@ -35,87 +35,4 @@ then
    exit
 fi
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Visit PlexGuide.com - v5.041" --menu "Make your choice" 19 43 12 \
-   "1)" "Donation Menu (Please Turn On)" \
-   "2)" "RClone & PlexDrive" \
-   "3)" "Programs" \
-   "4)" "Set Processor Performance" \
-   "5)" "Server & Net Benchmarks" \
-   "6)" "VNC Remote Server Install" \
-   "7)" "Info & Troubleshoot" \
-   "8)" "Backup & Restore" \
-   "9)" "PlexGuide: Update (Check ChangeLog)" \
-   "10)" "PlexGuide: UnInstall" \
-   "11)" "BETA: Uncapped Speeds" \
-   "12)" "Exit  "  3>&2 2>&1 1>&3
-)
-
-result=$(whoami)
-case $CHOICE in
-   "1)")
-       clear
-       bash /opt/plexguide/scripts/menus/donate-norm-menu.sh
-       ;;
-
-   "2)")
-       clear
-       bash /opt/plexguide/scripts/menus/rclone-pd-select.sh
-       ;;
-
-   "3)")
-       clear
-       bash /opt/plexguide/scripts/menus/programs/program-select.sh
-       ;;
-
-   "4)")
-       clear
-       bash /opt/plexguide/scripts/menus/processor/processor-menu.sh
-       ;;
-
-   "5)")
-        clear
-        bash /opt/plexguide/scripts/menus/bench-menu.sh
-        ;;
-
-   "6)")
-       clear
-       bash /opt/plexguide/scripts/menus/vnc.sh
-       ;;
-
-   "7)")
-       clear
-       bash /opt/plexguide/scripts/menus/help-select.sh
-       ;;
-
-   "8)")
-       clear
-       bash /opt/plexguide/scripts/menus/backup-restore/main.sh
-       ;;
-
-   "9)")
-       bash /opt/plexguide/scripts/docker-no/upgrade.sh
-       clear
-       echo Remember, restart by typing: plexguide
-       exit 0;;
-
-   "10)")
-       clear
-       bash /opt/plexguide/scripts/menus/uninstaller-main.sh
-       ;;
-
-   "11)")
-       clear
-       bash /opt/plexguide/scripts/menus/transfer/main.sh
-       ;;
-
-   "12)")
-       clear
-       echo Remember, restart by typing:  plexguide
-       exit
-       ;;
-esac
-done
-exit
+bash /opt/plexguide/menus/main.sh

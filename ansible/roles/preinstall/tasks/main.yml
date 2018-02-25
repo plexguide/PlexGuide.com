@@ -14,6 +14,7 @@
       - software-properties-common
       - unrar
       - unzip
+      - glances
       - python-pip
       - python3-pip
       - python-passlib
@@ -30,6 +31,8 @@
       - tree
       - ncdu
       - ctop
+      - dialog
+    ignore_errors: yes
 
   - debug: msg="You May Get An Error Notice, Ignore the Error!"
 

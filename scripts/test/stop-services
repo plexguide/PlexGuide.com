@@ -11,9 +11,16 @@ sudo systemctl stop rclone-encrypt
 sudo systemctl stop move-en
 sudo systemctl stop move
 
-sudo umount -l /mnt/unionfs
-sudo umount -l /mnt/plexdrive
-sudo umount -l /mnt/gdrive
-sudo umount -l /mnt/.gcrypt
-sudo umount -l /mnt/encrypt
-sudo umount -l /mnt/move
+#sudo umount -l /mnt/unionfs
+#sudo umount -l /mnt/plexdrive
+#sudo umount -l /mnt/gdrive
+#sudo umount -l /mnt/.gcrypt
+#sudo umount -l /mnt/encrypt
+#sudo umount -l /mnt/move
+
+ fusermount -uz /mnt/unionfs
+ fusermount -uz /mnt/plexdrive
+ fusermount -uz /mnt/gdrive
+ fusermount -uz /mnt/.gcrypt
+ fusermount -uz /mnt/encrypt
+ fusermount -uz /mnt/move

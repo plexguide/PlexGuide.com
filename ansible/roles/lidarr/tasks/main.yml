@@ -11,7 +11,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "8686:8686"
+      - "{{ports}}8686:8686"
     env:
       APP: lidarr
       VERSION: unstable
