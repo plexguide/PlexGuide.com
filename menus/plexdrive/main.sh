@@ -4,7 +4,7 @@
 DIALOG=${DIALOG=dialog}
 
 $DIALOG --title " My first dialog" --clear \
-        --noyes "Hello , this is my first dialog program" 10 30
+        --yes "Hello , this is my first dialog program" 10 30
 
 case $? in
   0)
