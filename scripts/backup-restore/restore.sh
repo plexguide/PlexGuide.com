@@ -65,8 +65,8 @@ while read p; do
 done </opt/appdata/plexguide/backuplist
 
 HEIGHT=14
-WIDTH=45
-CHOICE_HEIGHT=9
+WIDTH=48
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Restore Your PlexGuide Server"
 MENU="Select a Restore Option (Most Recent Top):"
