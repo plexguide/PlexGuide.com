@@ -42,6 +42,9 @@ while read p; do
       	if [ $count -eq 1 ]; then
             echo "$p" > var1
             var1=$p
+              if [ $var1 -eq var1 ]; then
+              var1=$""
+              fi
         fi
       	if [ $count -eq 2 ]; then
             echo "$p" > var2
