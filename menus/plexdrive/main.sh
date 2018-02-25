@@ -29,7 +29,7 @@ case $CHOICE in
         B)
             rm -r /opt/appdata/plexguide/pd5 1>/dev/null 2>&1
             touch /opt/appdata/plexguide/pd4 1>/dev/null 2>&1
-            bash /opt/plexguide/scripts/docker-no/plexdrive.sh ;;
+            bash /opt/plexguide/scripts/docker-no/plexdrive4.sh ;;
         C)
             rm -r /root/.plexdrive 1>/dev/null 2>&1
             rm -r ~/.plexdrive 1>/dev/null 2>&1
