@@ -33,24 +33,24 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
             clear
-            program=NetData
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
+            program=OMBIv3
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi ;;
         C)
             clear
-            program=NetData
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
+            program=NextCloud
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next ;;
         D)
             clear
-            program=NetData
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
+            program=pyLoad
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad ;;
         E)
             clear
-            program=NetData
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
+            program=Resilio
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio ;;
         F)
             clear
-            program=NetData
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
+            program=Tautulli
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli ;;
         Z)
             exit 0 ;;
 esac
