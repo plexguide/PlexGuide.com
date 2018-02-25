@@ -28,6 +28,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+            clear
             program=NetData
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
@@ -57,4 +58,4 @@ esac
 
     clear
     dialog --title "$program - Address Info" \
-    --msgbox "\n$program   - http://$ipv4:19999\nSubdomain - https://$program.$domain\nDomain    - http://$domain:19999" 10 50
+    --msgbox "\n$program   - http://$ipv4:19999\nSubdomain - https://$program.$domain\nDomain    - http://$domain:19999" 8 50
