@@ -91,6 +91,15 @@ case $CHOICE in
             exit 0 ;;
 esac
 
+mfolder="/mnt/gdrive/plexguide/backup.old/"
+mpath="$mfolder$varselect"
+
+ls -la $mpath | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist2
+
+while read p; do
+  echo $p > /tmp/program_var
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
+done </opt/appdata/plexguide/backuplist2
 
 #rm -r /mnt/gdrive/plexguide/backup/watchtower.tar 1>/dev/null 2>&1
 #rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&
