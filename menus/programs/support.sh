@@ -56,11 +56,5 @@ case $CHOICE in
 esac
 
     clear
-    dialog --title "Plex Claim Info" \
-    --msgbox "\n$program  - http://$ipv4:19999\nSubdomain - https://$program.$domain\nDomain    - http://$domain:19999" 12 50
-
-    echo "$program  - http://$ipv4:19999"
-    echo "Subdomain - https://$program.$domain"
-    echo "Domain    - http://$domain:19999"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
+    dialog --title "$program - Address Info" \
+    --msgbox "\n$program   - http://$ipv4:19999\nSubdomain - https://$program.$domain\nDomain    - http://$domain:19999" 10 50
