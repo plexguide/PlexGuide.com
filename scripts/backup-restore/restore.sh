@@ -64,12 +64,12 @@ while read p; do
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
 done </opt/appdata/plexguide/backuplist
 
-HEIGHT=16
-WIDTH=40
+HEIGHT=14
+WIDTH=45
 CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Restore Your PlexGuide Server"
-MENU="Select a Restore Option:"
+MENU="Select a Restore Option (Most Recent Top):"
 
 OPTIONS=(A "Most Recent Backup"
          B "$var6"
