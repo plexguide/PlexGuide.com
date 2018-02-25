@@ -4,7 +4,7 @@ HEIGHT=16
 WIDTH=45
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PlexGuide - Version 5.044"
+TITLE="PlexGuide - Version 5.045"
 
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
