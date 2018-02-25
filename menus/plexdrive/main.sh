@@ -8,7 +8,7 @@ TITLE="PlexDrive for PG"
 MENU="Choose one of the following options:"
 
 OPTIONS=(A "PlexDrive5 Install"
-         B "PlexDrive4 Install"
+         B "PlexDrive4 (Not Ready)"
          C "Remove PlexDrive Tokens"
          Z "Exit")
 
