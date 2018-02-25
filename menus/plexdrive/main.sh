@@ -1,5 +1,22 @@
- #!/bin/bash
+#!/bin/bash
 
+############# User Confirms They Understand
+DIALOG=${DIALOG=dialog}
+
+$DIALOG --title " My first dialog" --clear \
+        --noyes "Hello , this is my first dialog program" 10 30
+
+case $? in
+  0)
+    echo "Yes chosen.";;
+  1)
+    echo "No chosen.";;
+  255)
+    echo "ESC pressed.";;
+esac
+
+
+############# Menu
 HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=5
