@@ -15,7 +15,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
      clear
-     bash /opt/plexguide/scripts/menus/plexdrive-menu.sh
+     bash /opt/plexguide/menus/plexdrive/main.sh
      ;;
 
     "2)")
