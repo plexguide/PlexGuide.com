@@ -41,6 +41,7 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 echo 1
+fusermount -uz /mnt/gdrive
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone.sh" > /dev/null <<EOF
 #!/bin/bash
@@ -66,6 +67,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 echo 3
+fusermount -uz /mnt/.gcrypt
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
@@ -92,6 +94,7 @@ WantedBy=multi-user.target
 EOF
 ####################################### Encrypted Service
 echo 4
+fusermount -uz /mnt/encrypt
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-en.sh" > /dev/null <<EOF
 #!/bin/bash
@@ -118,7 +121,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 echo 5
-
+fusermount -uz /mnt/unionfs
 ## Create the UnionFS Service for the plexdrive encrypted mount point
 tee "/etc/systemd/system/unionfs-encrypt.service" > /dev/null <<EOF
 [Unit]
