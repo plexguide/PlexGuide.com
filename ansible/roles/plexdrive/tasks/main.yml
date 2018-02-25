@@ -79,7 +79,7 @@
     register: pd4
 
   - name: Execute MongoDB Script
-    script: /opt/plexguide/scripts/plexdrive/mongod.sh'
+    script: '/opt/plexguide/scripts/plexdrive/mongod.sh'
     when: pd4.stat.exists
 
   #- name: Import MongoDB public GPG Key
