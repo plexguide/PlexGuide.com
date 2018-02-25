@@ -117,7 +117,10 @@ mpath="$mfolder$varselect"
 # Force Exit if Required
 if [ $mpath = "/mnt/gdrive/plexguide/backup.old/" ]
 then
-   exit
+  clear
+  echo "You Selected a Blank Field - Nothing Happened"
+  read -n 1 -s -r -p "Press any key to continue "
+  exit
 fi
 
 echo "mpath equals"
