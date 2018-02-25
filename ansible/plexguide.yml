@@ -25,6 +25,7 @@
   - { role: sickrage, tags: ['sickrage'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: emby, tags: ['emby'] }
+  - { role: next, tags: ['next'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
   - { role: lidarr, tags: ['lidarr'] }
