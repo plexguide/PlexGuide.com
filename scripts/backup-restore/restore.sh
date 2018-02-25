@@ -115,7 +115,7 @@ mfolder="/mnt/gdrive/plexguide/backup.old/"
 mpath="$mfolder$varselect"
 
 # Force Exit if Required
-if [ $mpath -eq "/mnt/gdrive/plexguide/backup.old/" ]
+if [ $mpath = "/mnt/gdrive/plexguide/backup.old/" ]
 then
    exit
 fi
