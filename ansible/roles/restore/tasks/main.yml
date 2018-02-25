@@ -42,7 +42,7 @@
     path: "{{ item }}"
     state: absent
   with_items:
-    - /opt/appdata/{{program_var.stdout}}.tar
+    - /opt/appdata/{{program_var.stdout}}
 
 - name: Checking for an APPDATA {{program_var.stdout}}
   stat:
