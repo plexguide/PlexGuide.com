@@ -54,7 +54,7 @@
       path: "/opt/appdata/plexguide/pd5"
     register: pd5
 
-  - name: PlexDrive 5 Install
+  - name: PlexDrive 5 Install (Be Patient)
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
       dest: /usr/bin/plexdrive
@@ -79,7 +79,8 @@
     register: pd4
 
   - name: Execute MongoDB Script
-    script: /opt/plexguide/scripts/plexdrive/mongod.sh
+    script: /opt/plexguide/scripts/plexdrive/mongod.sh'
+    when: pd4.stat.exists
 
   #- name: Import MongoDB public GPG Key
     #apt_key:
@@ -100,7 +101,7 @@
     #become: yes
     #when: pd4.stat.exists
 
-  - name: PlexDrive 4 Install
+  - name: PlexDrive 4 Install (Be Patient)
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
       dest: /tmp
