@@ -73,21 +73,19 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/programs/media.sh ;;
+            echo "" > varselect ;;
         B)
-            bash /opt/plexguide/menus/programs/manager.sh ;;
+            echo "$var1" > varselect ;;
         C)
-            bash /opt/plexguide/menus/programs/nzbs.sh ;;
+            echo "$var2" > varselect ;;
         D)
-            bash /opt/plexguide/menus/programs/torrent.sh ;;
+            echo "$var3" > varselect ;;
         E)
-            bash /opt/plexguide/menus/programs/support.sh ;;
+            echo "$var4" > varselect ;;
         F)
-            bash /opt/plexguide/menus/programs/ui.sh ;;
+            echo "$var5" > varselect ;;
         G)
-            bash /opt/plexguide/menus/programs/critical.sh ;;
-        H)
-            bash /opt/plexguide/menus/programs/beta.sh ;;
+            echo "$var6" > varselect ;;
         Z)
             clear
             exit 0 ;;
