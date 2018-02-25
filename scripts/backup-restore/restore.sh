@@ -68,7 +68,7 @@ HEIGHT=15
 WIDTH=48
 CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Restore Your PlexGuide Server"
+TITLE="PG Restore - Last 7 Shown"
 MENU="Select a Restore Option (Most Recent Top):"
 
 OPTIONS=(A "Most Recent Backup"
