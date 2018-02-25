@@ -18,7 +18,7 @@
 # Advanced Restore Script
 
 clear
-echo "Strting Restore Process"
+echo "Starting Restore Process"
 echo ""
 
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1

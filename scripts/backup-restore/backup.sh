@@ -1,5 +1,9 @@
 #!/bin/bash
 
+clear
+echo "Starting Backup Process"
+echo ""
+
 d=$(date +%Y-%m-%d-%T)
 
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
