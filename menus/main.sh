@@ -30,7 +30,7 @@ case $CHOICE in
         A)
             bash /opt/plexguide/scripts/menus/donate-norm-menu.sh ;;
         B)
-            bash /opt/plexguide/scripts/menus/rclone-pd-select.sh ;;
+            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
         C)
             bash /opt/plexguide/menus/programs/main.sh ;;
         D)
