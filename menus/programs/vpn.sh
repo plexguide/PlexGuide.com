@@ -28,7 +28,7 @@ case $CHOICE in
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
-     bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
+     bash /opt/plexguide/menus/programs/vpn.sh
      ;;
 
      "2)")
