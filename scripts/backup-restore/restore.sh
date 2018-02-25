@@ -75,17 +75,17 @@ case $CHOICE in
         A)
             echo "" > varselect ;;
         B)
-            echo "$var1" > varselect ;;
+            varselect=$var1 ;;
         C)
-            echo "$var2" > varselect ;;
+            varselect=$var2 ;;
         D)
-            echo "$var3" > varselect ;;
+            varselect=$var3 ;;
         E)
-            echo "$var4" > varselect ;;
+            varselect=$var4 ;;
         F)
-            echo "$var5" > varselect ;;
+            varselect=$var5 ;;
         G)
-            echo "$var6" > varselect ;;
+            varselect=$var6 ;;
         Z)
             clear
             exit 0 ;;
