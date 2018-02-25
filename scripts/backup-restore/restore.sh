@@ -26,12 +26,35 @@ declare -i count=0
 while read p; do
   count=$((count+1))
       	if [ $count -eq 1 ]; then
-            echo "$p"
             echo "$p" > var1
             var1=$p
             echo $var1
         fi
-echo "test2"
+      	if [ $count -eq 2 ]; then
+            echo "$p" > var2
+            var2=$p
+            echo $var2
+        fi
+      	if [ $count -eq 3 ]; then
+            echo "$p" > var3
+            var3=$p
+            echo $var3
+        fi
+      	if [ $count -eq 4 ]; then
+            echo "$p" > var4
+            var4=$p
+            echo $var4
+        fi
+      	if [ $count -eq 5 ]; then
+            echo "$p" > var5
+            var5=$p
+            echo $var5
+        fi
+      	if [ $count -eq 6 ]; then
+            echo "$p" > var6
+            var6=$p
+            echo $var6
+        fi
   #echo $p > /tmp/program_var
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
 done </opt/appdata/plexguide/backuplist
