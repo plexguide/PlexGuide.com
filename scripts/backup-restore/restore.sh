@@ -30,6 +30,9 @@
 #mkdir $mpath
 #mv /mnt/gdrive/plexguide/backup/* $mpath 
 
+sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
+sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
+
 ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
@@ -60,8 +63,7 @@ while read p; do
             echo "$p" > var6
             var6=$p
         fi
-  #echo $p > /tmp/program_var
-  #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
+
 done </opt/appdata/plexguide/backuplist
 
 HEIGHT=15
@@ -123,10 +125,10 @@ while read p; do
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
 done </opt/appdata/plexguide/backuplist2
 
-#rm -r /mnt/gdrive/plexguide/backup/watchtower.tar 1>/dev/null 2>&1
-#rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&
+sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
+sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
-#echo ""
-#echo "Backup Complete"
-#read -n 1 -s -r -p "Press any key to continue "
-#clear
+echo ""
+echo "Backup Complete"
+read -n 1 -s -r -p "Press any key to continue "
+clear
