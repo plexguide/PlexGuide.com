@@ -1,4 +1,22 @@
 #!/bin/bash
+#
+# [PlexGuide Installation Script]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# QuickBox Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Advanced Restore Script
+
 
 #d=$(date +%Y-%m-%d-%T)
 
@@ -12,7 +30,7 @@
 #mkdir $mpath
 #mv /mnt/gdrive/plexguide/backup/* $mpath 
 
-ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
+ls -laR /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
 
