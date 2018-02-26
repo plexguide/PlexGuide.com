@@ -5,9 +5,9 @@
  echo $ipv4
  echo $domain
 
- HEIGHT=14
+ HEIGHT=12
  WIDTH=38
- CHOICE_HEIGHT=9
+ CHOICE_HEIGHT=6
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Manager Programs"
 
