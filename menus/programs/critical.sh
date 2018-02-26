@@ -1,10 +1,5 @@
  #!/bin/bash
 
- ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
-
 ## point to variable file for ipv4 and domain.com
 source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
@@ -14,7 +9,7 @@ HEIGHT=9
 WIDTH=38
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Applications - PG Supporting"
+TITLE="Applications - PG Supporting"
 
 OPTIONS=(A "Portainer"
          B "Traefik"
@@ -30,12 +25,12 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             clear
-            program=Portainer
+            program=portainer
             port=19999
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer;;
         B)
             clear
-            program=Traefik
+            program=traefik
             port=NONE
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik ;;
 
@@ -49,4 +44,4 @@ esac
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/nzbs.sh.sh
+bash /opt/plexguide/menus/programs/critical.sh

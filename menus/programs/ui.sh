@@ -5,71 +5,67 @@
  echo $ipv4
  echo $domain
 
-clear
+ HEIGHT=14
+ WIDTH=38
+ CHOICE_HEIGHT=9
+ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+ TITLE="Applications - Manager Programs"
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 13 25 6 \
-    "1)" "Heimdall" \
-    "2)" "HTPCManager" \
-    "3)" "Muximux" \
-    "4)" "Organizr" \
-    "5)" "Wordpress" \
-    "6)" "Exit  "  3>&2 2>&1 1>&3
-)
+ OPTIONS=(A "Heimdall"
+          B "HTPCManager"
+          C "Muximux"
+          D "Organizr"
+          E "Wordpress"
+          Z "Exit")
 
-result=$(whoami)
+ CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                 --title "$TITLE" \
+                 --menu "$MENU" \
+                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                 "${OPTIONS[@]}" \
+                 2>&1 >/dev/tty)
+
 case $CHOICE in
 
-    "1)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
-    echo "heimdall: http://$ipv4:1111"
-    echo "For Subdomain https://heimdall.$domain"
-    echo "For Domain http://$domain:1111"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-
-    "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager
-    echo "HTPCManager: http://$ipv4:8085"
-    echo "For Subdomain https://htpcmanager.$domain"
-    echo "For Domain http://$domain:8085"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-    "3)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
-    echo "Muximux: http://$ipv4:8015"
-    echo "For Subdomain https://muximux.$domain"
-    echo "For Domain http://$domain:8015"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-    "4)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
-    echo "Organizr: http://$ipv4:8020"
-    echo "For Subdomain https://organizr.$domain"
-    echo "For Domain http://$domain:8020"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-     "5)")
-     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
-     echo "Vist: http://$ipv4 | Visit $domain"
-     echo ""
-     read -n 1 -s -r -p "Press any key to continue "
-      ;;
-
-     "6)")
+    A)
       clear
-      exit 0
-      ;;
+      program=heimdall
+      port=1111
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall ;;
+
+
+    B)
+      clear
+      program=htpcmanager
+      port=8085
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager ;;
+
+    C)
+      clear
+      program=muximux
+      port=8015
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux;;
+
+    D)
+      clear
+      program=organizr
+      port=8020
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr ;;
+
+     E)
+       clear
+       program=wordpress
+       port=NONE
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress ;;
+
+     Z)
+       exit 0 ;;
 esac
-done
-exit
+
+    clear
+
+    dialog --title "$program - Address Info" \
+    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/ui.sh
