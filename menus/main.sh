@@ -44,8 +44,6 @@ case $CHOICE in
         H)
             clear
             bash /opt/plexguide/scripts/docker-no/upgrade.sh ;;
-            dialog --title "PG Application Status" --msgbox "\nUpgrade Complete!" 0 0
-            ;;
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
         J)
