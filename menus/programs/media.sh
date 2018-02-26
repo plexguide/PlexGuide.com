@@ -9,11 +9,11 @@ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
 echo $domain
 
-HEIGHT=9
+HEIGHT=10
 WIDTH=38
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Applications - PG Supporting"
+TITLE="NZB Applications - Media Programs"
 
 OPTIONS=(A "Plex"
          B "Emby"
