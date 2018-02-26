@@ -5,38 +5,48 @@
  echo $ipv4
  echo $domain
 
-clear
+## point to variable file for ipv4 and domain.com
+source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+echo $ipv4
+echo $domain
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 10 33 3 \
-    "1)" "Portainer"   \
-    "2)" "Traefik Reverse Proxy"   \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
-)
+HEIGHT=9
+WIDTH=38
+CHOICE_HEIGHT=4
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="NZB Applications - PG Supporting"
 
-result=$(whoami)
+OPTIONS=(A "Portainer"
+         B "Traefik"
+         Z "Exit")
+
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
 case $CHOICE in
-    "1)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-    echo "Portainer: http://$ipv4:9000"
-    echo "For Subdomain https://portainer.$domain"
-    echo "For Domain http://$domain:9000"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-    ;;
+        A)
+            clear
+            program=Portainer
+            port=19999
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer;;
+        B)
+            clear
+            program=Traefik
+            port=NONE
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik ;;
 
-    "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-    ;;
-
-     "3)")
-      clear
-      exit 0
-      ;;
+        Z)
+            exit 0 ;;
 esac
-done
-exit
+
+    clear
+
+    dialog --title "$program - Address Info" \
+    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/nzbs.sh.sh
