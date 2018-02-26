@@ -4,13 +4,13 @@ Current Changes will continued to be modified as known.
 ### [5.045] 
 
 #### Added
-- None
+- Plex 4 or 5 Install selection
 
 #### Changed
-- None
+- Menu changes to new format
 
 #### Removed
-- None
+- Tossing old menus
 
 -------------------------------------------------------
 ## Past Changes
