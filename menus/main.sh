@@ -43,7 +43,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         H)
             clear
-            bash /opt/plexguide/scripts/docker-no/upgrade.sh
+            bash /opt/plexguide/scripts/docker-no/upgrade.sh ;;
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
         J)
