@@ -27,33 +27,27 @@
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-
      A)
-     ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
-     echo "Your Variables have now been set."
-     echo ""
-     read -n 1 -s -r -p "Press any key to continue "
-     bash /opt/plexguide/menus/programs/vpn.sh ;;
-
+       ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
+       echo "Your Variables have now been set."
+       echo ""
+       read -n 1 -s -r -p "Press any key to continue "
+       bash /opt/plexguide/menus/programs/vpn.sh ;;
      B)
-     clear
-     program=delugevpn
-     port=8112
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
-
+       clear
+       program=delugevpn
+       port=8112
+       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
 #     C)
-#     clear
-#     program=rtorrentvpn
-#     port=3000
-#     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn ;;
-
+#       clear
+#       program=rtorrentvpn
+#       port=3000
+#       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn ;;
      Z)
        exit 0 ;;
-
 esac
 
     clear
-
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
