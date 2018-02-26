@@ -45,12 +45,10 @@ case $CHOICE in
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett ;;
 
      D)
-      clear
-      bash /opt/plexguide/scripts/menus/programs/program-vpn.sh
-      ;;
+       bash /opt/plexguide/menus/programs/vpn.sh ;;
 
      Z)
-      exit 0 ;;
+       exit 0 ;;
 esac
 
     clear
