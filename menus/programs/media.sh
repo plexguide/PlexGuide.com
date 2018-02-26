@@ -5,15 +5,11 @@
   echo $ipv4
   echo $domain
 
-source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
-echo $ipv4
-echo $domain
-
 HEIGHT=10
 WIDTH=38
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Applications - Media Programs"
+TITLE="Applications - Media Programs"
 
 OPTIONS=(A "Plex"
          B "Emby"
@@ -30,7 +26,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             clear
-            program=Portainer
+            program=plex
             port=19999
             bash /opt/plexguide/ansible/menus/plex.main.sh
         B)
