@@ -14,7 +14,7 @@ TITLE="NZB Applications - PG Supporting"
 OPTIONS=(A "NZBGet"
          B "NZBHydra"
          C "NZBHydra2"
-         D "SABNZBD"
+         D "SABNZBD")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -50,7 +50,7 @@ case $CHOICE in
 esac
 
     clear
-    
+
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
