@@ -40,17 +40,17 @@ case $CHOICE in
         C)
             clear
             program=NextCloud
-            port=9999
+            port=4645
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next ;;
         D)
             clear
             program=pyLoad
-            port=9999
+            port=8000
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad ;;
         E)
             clear
             program=Resilio
-            port=9999
+            port=8888
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio ;;
         F)
             clear
@@ -64,3 +64,6 @@ esac
     clear
     dialog --title "$program - Address Info" \
     --msgbox "\n$program   - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/support.sh
