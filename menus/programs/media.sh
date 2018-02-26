@@ -28,7 +28,7 @@ case $CHOICE in
             clear
             program=plex
             port=32400
-            bash /opt/plexguide/ansible/menus/plex.main.sh ;;
+            bash /opt/plexguide/menus/plex/main.sh ;;
         B)
             clear
             program=emby
