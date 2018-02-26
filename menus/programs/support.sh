@@ -29,7 +29,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             clear
-            program=NetData
+            program=netdata
             port=19999
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
@@ -39,22 +39,22 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi ;;
         C)
             clear
-            program=NextCloud
+            program=nextcloud
             port=4645
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next ;;
         D)
             clear
-            program=pyLoad
+            program=pyload
             port=8000
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad ;;
         E)
             clear
-            program=Resilio
+            program=resilio
             port=8888
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio ;;
         F)
             clear
-            program=Tautulli
+            program=tautulli
             port=8181
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli ;;
         Z)

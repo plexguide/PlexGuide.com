@@ -16,7 +16,7 @@
 
  OPTIONS=(A "First click here to setup var files"
           B "DelugeVPN"
-  #        C "RTorrentVPN"
+          C "RTorrentVPN"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -42,11 +42,11 @@ case $CHOICE in
      port=8112
      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
 
-#     C)
-#     clear
-#     program=rtorrentvpn
-#     port=3000
-#     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn ;;
+     C)
+     clear
+     program=rtorrentvpn
+     port=3000
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn ;;
 
      Z)
        exit 0 ;;

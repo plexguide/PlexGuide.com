@@ -7,7 +7,7 @@ echo $domain
 
 HEIGHT=14
 WIDTH=38
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - Manager Programs"
 

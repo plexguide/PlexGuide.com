@@ -27,16 +27,16 @@ case $CHOICE in
         A)
             clear
             program=plex
-            port=19999
+            port=32400
             bash /opt/plexguide/ansible/menus/plex.main.sh
         B)
             clear
-            program=Traefik
-            port=NONE
+            program=emby
+            port=8096
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby ;;
         C)
             clear
-            program=Ubooquity
+            program=ubooquity
             port=2202
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity ;;
 

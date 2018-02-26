@@ -28,7 +28,7 @@ case $CHOICE in
         A)
             clear
             program=NZBGet
-            port=19999
+            port=6789
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget ;;
         B)
             clear
@@ -56,4 +56,4 @@ esac
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/nzbs.sh.sh
+bash /opt/plexguide/menus/programs/nzbs.sh
