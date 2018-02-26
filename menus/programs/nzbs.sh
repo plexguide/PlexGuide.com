@@ -14,7 +14,8 @@ TITLE="NZB Applications - PG Supporting"
 OPTIONS=(A "NZBGet"
          B "NZBHydra"
          C "NZBHydra2"
-         D "SABNZBD")
+         D "SABNZBD"
+         E "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
