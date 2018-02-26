@@ -5,46 +5,53 @@
   echo $ipv4
   echo $domain
 
-clear
+source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+echo $ipv4
+echo $domain
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Media Servers" --menu "Make your choice" 11 25 4 \
-    "1)" "Plex"   \
-    "2)" "Emby"  \
-	  "3)" "Ubooquity"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
-)
+HEIGHT=9
+WIDTH=38
+CHOICE_HEIGHT=4
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="NZB Applications - PG Supporting"
 
-result=$(whoami)
+OPTIONS=(A "Plex"
+         B "Emby"
+         C "Ubooquity"
+         Z "Exit")
+
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
 case $CHOICE in
-    "1)")
-    clear
-    bash /opt/plexguide/menus/plex/main.sh ;;
+        A)
+            clear
+            program=Portainer
+            port=19999
+            bash /opt/plexguide/ansible/menus/plex.main.sh
+        B)
+            clear
+            program=Traefik
+            port=NONE
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby ;;
+        C)
+            clear
+            program=Ubooquity
+            port=2202
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity ;;
 
-    "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
-    echo "EMBY: http://$ipv4:8096"
-    echo "For Subdomain https://emby.$domain"
-    echo "For Domain http://$domain:8096"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-	"3)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity
-    echo "EMBY: http://$ipv4:2202/ubooquity/"
-    echo "For Subdomain https://ubooquity.$domain"
-    echo "For Domain http://$domain:2202/ubooquity/"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-     "4)")
-      clear
-      exit 0
-      ;;
+        Z)
+            exit 0 ;;
 esac
-done
-exit
+
+    clear
+
+    dialog --title "$program - Address Info" \
+    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/media.sh
