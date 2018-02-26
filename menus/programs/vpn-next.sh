@@ -8,8 +8,8 @@
  echo $ipv4
  echo $domain
 
- HEIGHT=14
- WIDTH=38
+ HEIGHT=10
+ WIDTH=55
  CHOICE_HEIGHT=4
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - VPN Programs"
@@ -33,7 +33,7 @@ case $CHOICE in
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
-     bash /opt/plexguide/menus/programs/vpn.sh
+     bash /opt/plexguide/menus/programs/vpn-next.sh
      ;;
 
      B)
@@ -59,4 +59,4 @@ esac
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/vpn.sh
+bash /opt/plexguide/menus/programs/vpn-next.sh
