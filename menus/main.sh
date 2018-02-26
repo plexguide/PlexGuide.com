@@ -44,8 +44,6 @@ case $CHOICE in
         H)
             clear
             bash /opt/plexguide/scripts/docker-no/upgrade.sh
-              echo Remember, restart by typing: plexguide
-              exit 0;;
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
         J)
