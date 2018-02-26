@@ -5,9 +5,9 @@ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
 echo $domain
 
-HEIGHT=12
-WIDTH=45
-CHOICE_HEIGHT=7
+HEIGHT=13
+WIDTH=38
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
