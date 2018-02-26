@@ -15,7 +15,7 @@ OPTIONS=(A "NZBGet"
          B "NZBHydra"
          C "NZBHydra2"
          D "SABNZBD"
-         E "Exit")
+         Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
