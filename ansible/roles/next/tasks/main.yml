@@ -1,0 +1,52 @@
+---
+- name: Destory NextCloud Container
+  docker_container:
+    name: next
+    state: absent
+
+- name: Deploy a MariaDB Container
+  docker_container:
+    name: mariadb
+    image: "linuxserver/mariadb"
+    pull: yes
+    published_ports:
+      - "{{ports}}3306:3306"
+    env:
+      PUID: 1000
+      PGID: 1000
+      MYSQL_ROOT_PASSWORD: "password321"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/mariadb:/config"
+    networks:
+      - name: plexguide
+        aliases:
+          - mariadb
+    restart_policy: always
+    state: started
+
+- name: Create and start nextcloud container
+  docker_container:
+    name: nextcloud
+    image: "linuxserver/nextcloud"
+    pull: yes
+    published_ports:
+      - "{{ports}}4645:4645"
+    env:
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/nextcloud/data:/data"
+      - "/opt/appdata/nextcloud/conf:/config"
+      - "/mnt:/mnt"
+    networks:
+      - name: plexguide
+        aliases:
+          - next
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:nextcloud.{{domain}}"
+      traefik.port: "4645"

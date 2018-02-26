@@ -1,75 +1,69 @@
- #!/bin/bash
+#!/bin/bash
 
- ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
+## point to variable file for ipv4 and domain.com
+source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+echo $ipv4
+echo $domain
 
-clear
+HEIGHT=13
+WIDTH=37
+CHOICE_HEIGHT=8
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="Applications - PG Supporting"
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Program Categories" --menu "Make your choice" 13 25 6 \
-    "1)" "Netdata"   \
-    "2)" "OMBIv3"   \
-    "3)" "pyLoad"   \
-	"4)" "Resilio"  \
-    "5)" "Tautulli"  \
-    "6)" "Exit  "  3>&2 2>&1 1>&3
-)
+OPTIONS=(A "NetData"
+         B "OMBIv3"
+         C "NextCloud"
+         D "pyLoad"
+         E "Resilio"
+         F "Tautulli"
+         Z "Exit")
 
-result=$(whoami)
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
 case $CHOICE in
-    "1)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
-    echo "NetData: http://$ipv4:19999"
-    echo "For Subdomain https://netdata.$domain"
-    echo "For Domain http://$domain:19999"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-    "2)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
-    echo "Ombi: http://$ipv4:3579"
-    echo "For Subdomain https://ombi.$domain"
-    echo "For Domain http://$domain:3579"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-	"3)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyload
-    echo "pyLoad: http://$ipv4:8000"
-    echo "For Subdomain https://pyload.$domain"
-    echo "For Domain http://$domain:8000"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-     ;;
-
-    "4)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio
-    echo "Resilio: http://$ipv4:8888"
-    echo "For Subdomain https://resilio.$domain"
-    echo "For Domain http://$domain:8888"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-    ;;
-
-    "5)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
-    echo "Tautulli: http://$ipv4:8181"
-    echo "For Subdomain https://tautulli.$domain"
-    echo "For Domain https://$domain:8181"
-    echo ""
-    read -n 1 -s -r -p "Press any key to continue "
-    ;;
-
-     "6)")
-      clear
-      exit 0
-      ;;
+        A)
+            clear
+            program=NetData
+            port=19999
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
+        B)
+            clear
+            program=ombi
+            port=3579
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi ;;
+        C)
+            clear
+            program=NextCloud
+            port=4645
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next ;;
+        D)
+            clear
+            program=pyLoad
+            port=8000
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad ;;
+        E)
+            clear
+            program=Resilio
+            port=8888
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio ;;
+        F)
+            clear
+            program=Tautulli
+            port=8181
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli ;;
+        Z)
+            exit 0 ;;
 esac
-done
-exit
+
+    clear
+    dialog --title "$program - Address Info" \
+    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/support.sh
