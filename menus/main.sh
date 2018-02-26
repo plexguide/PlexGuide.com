@@ -38,7 +38,7 @@ case $CHOICE in
         E)
             bash /opt/plexguide/scripts/menus/bench-menu.sh ;;
         F)
-            bash /opt/plexguide/scripts/menus/help-select.sh ;;
+            bash /opt/plexguide/menus/info/main.sh ;;
         G)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         H)
