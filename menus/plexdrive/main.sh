@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export NCURSES_NO_UTF8_ACS=1
 ############# User Confirms They Understand
 dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
 

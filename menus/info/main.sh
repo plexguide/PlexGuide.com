@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
 WIDTH=40
 CHOICE_HEIGHT=6

@@ -15,7 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Advanced Restore Script
+
+export NCURSES_NO_UTF8_ACS=1
 
 clear
 echo "Starting Restore Process"
