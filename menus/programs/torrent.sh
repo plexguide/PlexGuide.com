@@ -5,52 +5,52 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
-clear
+ HEIGHT=11
+ WIDTH=38
+ CHOICE_HEIGHT=5
+ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+ TITLE="Applications - Torrent Programs"
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Torrent Menu" --menu "Make your choice" 11 25 4 \
-    "1)" "RuTorrent"  \
-    "2)" "Deluge"  \
-    "3)" "Jackett"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
-)
+ OPTIONS=(A "RuTorrent"
+          B "Deluge"
+          C "Jackett"
+          Z "Exit")
 
-result=$(whoami)
+ CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                 --title "$TITLE" \
+                 --menu "$MENU" \
+                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                 "${OPTIONS[@]}" \
+                 2>&1 >/dev/tty)
+
 case $CHOICE in
 
-     "1)")
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
-      echo "RuTorrent: http://$ipv4:8999"
-      echo "For Subdomain https://rutorrent.$domain"
-      echo "For Domain http://$domain:8999"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
+     A)
+       clear
+       program=rutorrent
+       port=8999
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent ;;
 
-     "2)")
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
-      echo "Deluge: http://$ipv4:8112"
-      echo "For Subdomain https://deluge.$domain"
-      echo "For Domain http://$domain:8112"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
+     B)
+       clear
+       program=deluge
+       port=8112
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge ;;
 
-     "3)")
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
-      echo "Jackett: http://$ipv4:9117"
-      echo "For Subdomain https://jackett.$domain"
-      echo "For Domain http://$domain:9117"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
+     C)
+       clear
+       program=jackett
+       port=9117
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett ;;
 
-     "4)")
-      clear
-      exit 0
-      ;;
+     Z)
+       exit 0 ;;
 esac
-done
-exit
+
+    clear
+
+    dialog --title "$program - Address Info" \
+    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/torrent.sh
