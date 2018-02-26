@@ -50,6 +50,7 @@ case $CHOICE in
 esac
 
     clear
+    
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
