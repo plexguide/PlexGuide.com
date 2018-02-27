@@ -1,7 +1,23 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.046] 
+### [5.047]
+
+#### Added
+- None
+
+#### Changed
+- Added dialog to preinstall
+- There was wildcard bug that didn't call install.sh, rather talked to the install folder causing pg to not be there
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.046] BUGGED VERSION / FIXED NOW, 5.047 FIXES
 
 #### Added
 - New PreInstaller
@@ -11,10 +27,6 @@ Current Changes will continued to be modified as known.
 
 #### Removed
 - Tossed Old PreInstaller
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.045] 
 
