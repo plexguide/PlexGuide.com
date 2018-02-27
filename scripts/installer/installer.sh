@@ -29,76 +29,54 @@ if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Ins
 ## while [  $COUNTER -lt 10 ]; do
 ## count=$((count+1)) 
 
-echo "10" | dialog --gauge "Please wait" 10 70 0
-sleep 4
-echo "50" | dialog --gauge "Please wait" 10 70 0
-sleep 4
-echo "100" | dialog --gauge "Please wait" 10 70 0
+echo "0" | dialog --gauge "Conducting a System Update" 8 50 0
+yes | apt-get update 1>/dev/null 2>&1
 
-sleep 2
-#echo The counter is $COUNTER
-## done
+echo "15" | dialog --gauge "Installing: Software Properties Common" 8 50 0
+yes | apt-get install software-properties-common 1>/dev/null 2>&1
 
-exit
+echo "20" | dialog --gauge "Installing: Pip & Docker Basics" 8 50 0
+apt install python-pip -y 1>/dev/null 2>&1
+pip install docker 1>/dev/null 2>&1
 
+echo "25" | dialog --gauge "Installing: Ansible Playbook" 8 50 0
+apt-get update -y 1>/dev/null 2>&1
+apt-get install ansible -y 1>/dev/null 2>&1
+yes | apt-get update 1>/dev/null 2>&1
 
+echo "30" | dialog --gauge "Installing: Docker" 8 50 0
+ansible-playbook /opt/plexguide/ansible/docker.yml 1>/dev/null 2>&1
 
+echo "40" | dialog --gauge "Installing: PlexGuide Basics" 8 50 0
+ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 
-echo "PlexGuide Pre-Installer"
-echo ""
-echo "1. Conducting a System Update (Please Wait)"
-    yes | apt-get update 1>/dev/null 2>&1
-echo "2. Installing Software Properties Common (Please Wait)"
-    yes | apt-get install software-properties-common 1>/dev/null 2>&1
-echo "3. Pre-Install for Ansible Playbook (Please Wait)"
-    yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-    apt-get update -y 1>/dev/null 2>&1
-    apt-get install ansible -y 1>/dev/null 2>&1
-    apt install python-pip -y 1>/dev/null 2>&1
-    pip install docker 1>/dev/null 2>&1
-echo "4. Installing Ansible Playbook & Supporting Components (Please Wait)"
-    yes | apt-get update 1>/dev/null 2>&1
-echo "5. Installing Dependicies & Docker - Please Wait"
-echo
-    ansible-playbook /opt/plexguide/ansible/docker.yml
-    ansible-playbook /opt/plexguide/ansible/config.yml --tags var
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
-echo ""
-echo "6. Installing Supporting Programs - Directories & Permissions (Please Wait)"
-# Remove unused rutorrent directory
- rmdir /mnt/rutorrent/downloads
- rmdir /mnt/rutorrent 
+echo "45" | dialog --gauge "Installing: PlexGuide Folders" 8 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
-######################################################### For RCLONE
+echo "50" | dialog --gauge "Installing: PlexGuide Folders" 8 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
-echo "7. Pre-Installing RClone & Services (Please Wait)"
+echo "55" | dialog --gauge "Installing: RClone & Services" 8 50 0
+bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
+touch /var/plexguide/basics.yes 1>/dev/null 2>&1
 
-#Installing RClone and Service
-  bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
+echo "60" | dialog --gauge "Installing: Portainer" 8 50 0 
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
 
-#Lets the System Know that Script Ran Once
-  touch /var/plexguide/basics.yes 1>/dev/null 2>&1
-  touch /var/plexguide/version-5.28 1>/dev/null 2>&1
+### Will Set Up Collection of Variables Later
+echo "70" | dialog --gauge "Installing: Traefik" 8 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
 
-echo "8. Installing Portainer & Reverse Proxy (Please Wait)"
+echo "80" | dialog --gauge "Installing: Docker Startup Assist" 8 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 
-# Installs Portainer
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
-# Installs Reverse Prox
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
-# Remove NGINX if it exists
+echo "90" | dialog --gauge "Installing: WatchTower" 8 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
 
-############################################# Install a Post-Docker Fix ###################### START
-
-  echo "9. Installing DockerFix & Service Activation"
-
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix
-
-  echo "10. Installing WatchTower"
-
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
+echo "99" | dialog --gauge "Donation Question?" 8 50 0
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
