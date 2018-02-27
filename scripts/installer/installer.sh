@@ -22,13 +22,6 @@ clear
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
-## declare -i count=0
-
-## COUNTER=0
-
-## while [  $COUNTER -lt 10 ]; do
-## count=$((count+1)) 
-
 echo "0" | dialog --gauge "Conducting a System Update" 8 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
