@@ -5,6 +5,10 @@
 ##     so that they can be used in the future if need be!    ##
 
 ## For testing new torrent menus
+rm /opt/plexguide/menus/programs/beta.sh
+mv /opt/plexguide/menus/programs/beta-next.sh /opt/plexguide/menus/programs/beta.sh
+
+## For testing new torrent menus
 rm /opt/plexguide/menus/programs/torrent.sh
 mv /opt/plexguide/menus/programs/torrent-next.sh /opt/plexguide/menus/programs/torrent.sh
 

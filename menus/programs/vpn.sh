@@ -27,18 +27,19 @@ export NCURSES_NO_UTF8_ACS=1
 
 case $CHOICE in
      A)
-       ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
-       echo "Your Variables have now been set."
-       echo ""
-       read -n 1 -s -r -p "Press any key to continue "
-       bash /opt/plexguide/menus/programs/vpn.sh ;;
+        ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
+        echo "Your Variables have now been set."
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue "
+        bash /opt/plexguide/menus/programs/vpn.sh ;;
      B)
-       clear
-       program=delugevpn
-       port=8112
-       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
+        clear
+        program=delugevpn
+        port=8112
+        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
      Z)
-       exit 0 ;;
+        clear
+        exit 0 ;;
 esac
 
     clear
@@ -46,4 +47,4 @@ esac
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/torrent.sh
+bash /opt/plexguide/menus/programs/vpn.sh

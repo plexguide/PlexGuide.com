@@ -1,19 +1,20 @@
  #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
+
  ## point to variable file for ipv4 and domain.com
  source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
  echo $ipv4
  echo $domain
 
- HEIGHT=11
- WIDTH=38
- CHOICE_HEIGHT=5
+ HEIGHT=10
+ WIDTH=55
+ CHOICE_HEIGHT=4
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
- TITLE="Applications - Torrent Programs"
+ TITLE="Applications - VPN Programs"
 
- OPTIONS=(A "RuTorrent"
-          B "Deluge"
-          C "Jackett"
+ OPTIONS=(A "VPN Torrent - New way"
+          B "VPN Torrent - Old way"
+          C "DO NOT USE - For Developers Use Only!"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -24,33 +25,26 @@ export NCURSES_NO_UTF8_ACS=1
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-
      A)
-       clear
-       program=rutorrent
-       port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent ;;
-
+        bash /opt/plexguide/menus/programs/vpn-next.sh ;;
      B)
-       clear
-       program=deluge
-       port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge ;;
-
+        bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh ;;
      C)
-       clear
-       program=jackett
-       port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett ;;
+     clear
+     bash /opt/plexguide/scripts/test/move.sh
+     echo "Testing files have now been swapped"
+     echo "Please go back to the main menu to see changes"
+     read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
      Z)
-       exit 0 ;;
+        clear
+        exit 0 ;;
 esac
 
     clear
-
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/torrent.sh
+bash /opt/plexguide/menus/programs/beta.sh
