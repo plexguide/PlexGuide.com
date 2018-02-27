@@ -42,7 +42,7 @@ ansible-playbook /opt/plexguide/ansible/docker.yml 1>/dev/null 2>&1
 
 echo "40" | dialog --gauge "Installing: PlexGuide Basics" 8 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 
 echo "45" | dialog --gauge "Installing: PlexGuide Folders" 8 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
