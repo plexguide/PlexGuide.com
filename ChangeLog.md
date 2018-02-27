@@ -1,6 +1,21 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
+### [5.046] 
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.045] 
 
 #### Added
@@ -8,13 +23,10 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - Menu changes to new format
+- Fixed TOML File (thanks razzamatazm)
 
 #### Removed
 - Tossing old menus
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.044] 
 
