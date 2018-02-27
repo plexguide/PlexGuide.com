@@ -8,6 +8,7 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - Menu changes to new format
+- Fixed TOML File (thanks razzamatazm)
 
 #### Removed
 - Tossing old menus
