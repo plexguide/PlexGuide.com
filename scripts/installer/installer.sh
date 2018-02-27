@@ -76,9 +76,6 @@ echo "99" | dialog --gauge "Donation Question?" 8 50 0
     then
   echo "" 1>/dev/null 2>&1
     else
-  echo "11. Donation Information - Coming Up"
-  echo ""
-        read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/donate-menu.sh
     fi
 
