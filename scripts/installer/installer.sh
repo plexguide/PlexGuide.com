@@ -22,54 +22,54 @@ clear
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
-echo "0" | dialog --gauge "Conducting a System Update" 8 50 0
+echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
-echo "15" | dialog --gauge "Installing: Software Properties Common" 8 50 0
+echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 
-echo "20" | dialog --gauge "Installing: Pip & Docker Basics" 8 50 0
+echo "20" | dialog --gauge "Installing: Pip & Docker Basics" 7 50 0
 apt install python-pip -y 1>/dev/null 2>&1
 pip install docker 1>/dev/null 2>&1
 
-echo "25" | dialog --gauge "Installing: Ansible Playbook" 8 50 0
+echo "25" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 apt-get update -y 1>/dev/null 2>&1
 apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
-echo "30" | dialog --gauge "Installing: Docker" 8 50 0
+echo "30" | dialog --gauge "Installing: Docker" 7 50 0
 ansible-playbook /opt/plexguide/ansible/docker.yml 1>/dev/null 2>&1
 
-echo "40" | dialog --gauge "Installing: PlexGuide Basics" 8 50 0
+echo "40" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 
-echo "45" | dialog --gauge "Installing: PlexGuide Folders" 8 50 0
+echo "45" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
-echo "50" | dialog --gauge "Installing: PlexGuide Folders" 8 50 0
+echo "50" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
-echo "55" | dialog --gauge "Installing: RClone & Services" 8 50 0
+echo "55" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
 touch /var/plexguide/basics.yes 1>/dev/null 2>&1
 
-echo "60" | dialog --gauge "Installing: Portainer" 8 50 0 
+echo "60" | dialog --gauge "Installing: Portainer" 7 50 0 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
 
 ### Will Set Up Collection of Variables Later
-echo "70" | dialog --gauge "Installing: Traefik" 8 50 0
+echo "70" | dialog --gauge "Installing: Traefik" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
 
-echo "80" | dialog --gauge "Installing: Docker Startup Assist" 8 50 0
+echo "80" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 
-echo "90" | dialog --gauge "Installing: WatchTower" 8 50 0
+echo "90" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
 
-echo "99" | dialog --gauge "Donation Question?" 8 50 0
+echo "99" | dialog --gauge "Donation Question?" 7 50 0
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
