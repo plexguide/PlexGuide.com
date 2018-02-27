@@ -21,7 +21,7 @@ if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
 else
-   bash /opt/plexguide/scripts/installer/installer.sh
+   bash /opt/plexguide/scripts/baseinstall/installer.sh
 fi
 
 ## starup Message
