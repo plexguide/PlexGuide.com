@@ -99,7 +99,7 @@ sans = [
     "sonarr.yourdomain.com",
     "tautulli.yourdomain.com",
     "ubooquity.yourdomain.com",
-    "nextcloud.yourdomain.com",  
+    "nextcloud.yourdomain.com"
 ]
 
 # Enable Docker configuration backend
