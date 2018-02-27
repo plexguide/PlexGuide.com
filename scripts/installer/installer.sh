@@ -42,34 +42,37 @@ ansible-playbook /opt/plexguide/ansible/docker.yml 1>/dev/null 2>&1
 
 echo "40" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 
-echo "45" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+echo "45" | dialog --gauge "Installing: PlexGuide Dependiences" 7 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 
 echo "50" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
-echo "55" | dialog --gauge "Installing: RClone & Services" 7 50 0
+echo "55" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+
+echo "60" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
 touch /var/plexguide/basics.yes 1>/dev/null 2>&1
 
-echo "60" | dialog --gauge "Installing: Portainer" 7 50 0 
+echo "65" | dialog --gauge "Installing: Portainer" 7 50 0 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
 
 ### Will Set Up Collection of Variables Later
-echo "70" | dialog --gauge "Installing: Traefik" 7 50 0
+echo "75" | dialog --gauge "Installing: Traefik" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
 
-echo "80" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+echo "85" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 
-echo "90" | dialog --gauge "Installing: WatchTower" 7 50 0
+echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
 
-echo "99" | dialog --gauge "Donation Question?" 7 50 0
+echo "99" | dialog --gauge "Donation Question" 7 50 0
+sleep 3
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
