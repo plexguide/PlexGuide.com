@@ -14,7 +14,7 @@
 #  shell: "chown -R 1000:1000 /mnt/sab/"
 
 - name: Create SAB download directory
-  file: "path=/mnt/sab/ state=directory mode=0777 owner=1000 group=1000 recurse=true"
+  file: "path=/mnt/sab/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
 - name: Check sabnzbd.ini exists
   stat:
@@ -50,7 +50,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:sabnzbd.{{domain}}"
-      traefik.port: "8080"
+      traefik.port: "8090"
 
 - name: Path for .ini
   wait_for:
