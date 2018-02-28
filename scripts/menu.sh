@@ -16,7 +16,7 @@ then
 whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
 fi
 
-file="/var/plexguide/dep36.yes"
+file="/var/plexguide/dep37.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
