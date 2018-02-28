@@ -60,7 +60,7 @@ case $CHOICE in
         D)
             clear
             program=SABNZBD
-            port=9000
+            port=8090
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags SABNZBD ;;
 
         Z)
