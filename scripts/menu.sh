@@ -14,6 +14,7 @@ else
    echo "Installing Dialog"
    apt-get install dialog 1>/dev/null 2>&1
    export NCURSES_NO_UTF8_ACS=1
+   echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
