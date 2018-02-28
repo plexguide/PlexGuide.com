@@ -49,7 +49,7 @@ case $CHOICE in
 esac
 
 sudo rm -r /opt/plexg* 2>/dev/nu*
-sudo wget 'https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/"$version".zip' -P /tmp
+sudo wget "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/'$version'.zip" -P /tmp
 sudo unzip /tmp/$version.zip -d /opt/
 sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
