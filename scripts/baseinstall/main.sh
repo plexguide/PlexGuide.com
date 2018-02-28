@@ -83,7 +83,7 @@ sleep 3
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep35.yes
+   touch /var/plexguide/dep36.yes
 
 ############################################# Install a Post-Docker Fix ###################### END
 
