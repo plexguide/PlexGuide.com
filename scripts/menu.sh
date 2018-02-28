@@ -5,6 +5,7 @@
 
 #sudo apt-get install whiptail -y 1>/dev/null 2>&1
 
+### incase it's not install prior
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
@@ -13,6 +14,7 @@ else
    clear
    echo "Installing Dialog"
    apt-get install dialog
+   export NCURSES_NO_UTF8_ACS=1
 fi
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
