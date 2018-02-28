@@ -25,7 +25,7 @@ TITLE="PG Install"
 MENU="Make a Selection"
 
 OPTIONS=(A "Latest Developer"
-         B "Version: 5.048"
+         B "Version: 5.043"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -41,7 +41,7 @@ case $CHOICE in
         A)
             version="5.048" ;;
         B)
-            version="5.048" ;;
+            version="5.043" ;;
         Z)
             clear
             exit 0
