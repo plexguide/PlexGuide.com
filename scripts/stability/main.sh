@@ -41,7 +41,7 @@ case $CHOICE in
         A)
             version="5.048" ;;
         B)
-            version="5.048" ;;
+            version=5.048 ;;
         Z)
             clear
             exit 0
@@ -54,5 +54,7 @@ sudo unzip /tmp/$version.zip -d /opt/
 sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
 sudo rm -r /tmp/$version.zip
-
+echo version number:
+echo $version
+read -n 1 -s -r -p "Press any key to continue "
 clear
