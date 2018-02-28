@@ -13,7 +13,7 @@ then
 else
    clear
    echo "Installing Dialog"
-   apt-get install dialog
+   apt-get install dialog 1>/dev/null 2>&1
    export NCURSES_NO_UTF8_ACS=1
 fi
 
