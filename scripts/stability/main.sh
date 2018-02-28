@@ -41,7 +41,7 @@ case $CHOICE in
         A)
             version="5.048" ;;
         B)
-            version=5.048 ;;
+            version="5.048" ;;
         Z)
             clear
             exit 0
@@ -49,7 +49,7 @@ case $CHOICE in
 esac
 
 sudo rm -r /opt/plexg* 2>/dev/nu*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/"$version".zip -P /tmp
+sudo wget "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip" -P /tmp
 sudo unzip /tmp/$version.zip -d /opt/
 sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
