@@ -8,7 +8,10 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - Added dialog to preinstall
+- Put in a checker to check for dialog; not present... force installs
+- Updated Installer info, adds sudo rm -r /opt/plexguide at beginning to prevent clash
 - There was wildcard bug that didn't call install.sh, rather talked to the install folder causing pg to not be there
+- (Not Finished) adding ability for developer edition / stable install
 
 #### Removed
 - None
