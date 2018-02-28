@@ -5,15 +5,15 @@
 
 #sudo apt-get install whiptail -y 1>/dev/null 2>&1
 
-file="/usr/bin/dialog"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   clear
-   echo "Installing Dialog"
-   apt-get install dialog
-fi
+#file="/usr/bin/dialog"
+#if [ -e "$file" ]
+#then
+#   clear 1>/dev/null 2>&1
+#else
+#   clear
+#   echo "Installing Dialog"
+#   apt-get install dialog
+#fi
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
 bash /opt/plexguide/scripts/docker-no/user.sh
