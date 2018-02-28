@@ -1,7 +1,7 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.047]
+### [5.048]
 
 #### Added
 - None
@@ -17,7 +17,7 @@ Current Changes will continued to be modified as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.046] BUGGED VERSION / FIXED NOW, 5.047 FIXES
+### [5.046-5.047] BUGGED VERSION / FIXED NOW, 5.047 FIXES
 
 #### Added
 - New PreInstaller
