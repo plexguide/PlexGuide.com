@@ -12,7 +12,7 @@ then
 else
    clear
    echo "Installing Dialog"
-   apt-get install dialog -y
+   apt-get install dialog
 fi
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
