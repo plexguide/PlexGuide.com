@@ -101,5 +101,4 @@ mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 
-bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
 clear

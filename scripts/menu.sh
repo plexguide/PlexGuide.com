@@ -50,7 +50,6 @@ fi
 
 ## starup Message
 
+bash /opt/plexguide/scripts/checker/main.sh
 bash /opt/plexguide/menus/startup/message.sh
-
-
 bash /opt/plexguide/menus/main.sh
