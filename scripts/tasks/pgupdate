@@ -16,5 +16,5 @@
 #
 #################################################################################
 
-bash /opt/plexguide/scirpts/stability/main.sh
+bash /opt/plexguide/menus/version/main.sh
 
