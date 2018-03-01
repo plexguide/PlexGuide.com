@@ -23,8 +23,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "Developer: 5.049"
-         B "Stable   : 5.048"
+OPTIONS=(A "Developer: 5.050"
+         B "Stable   : 5.049"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
