@@ -1,0 +1,11 @@
+---
+  - name: Remove PGUpdate
+    file:
+      path: /bin/pgupdate
+      state: absent
+
+  - name: Install PGUpdate
+    template:
+      src: /opt/ansbile/roles/commands/pgupdate
+      dest: /bin
+      force: yes

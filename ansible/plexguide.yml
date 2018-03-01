@@ -9,7 +9,8 @@
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: folders, tags: ['folders'] }
-  - { role: portainer, tags: ['portainer'] }
+  - { role: commands, tags: ['commands'] }
+  - { role: netdata, tags: ['netdata'] }
   - { role: netdata, tags: ['netdata'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
