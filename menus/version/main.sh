@@ -52,6 +52,17 @@ case $CHOICE in
             ;;
 esac
 
+if dialog --stdout --title "What to do?" \
+          --backtitle "Backup-Verwaltung" \
+          --yesno "Yes: Delete, No:  Restore" 7 60; then
+    dialog --title "Information" --msgbox "TRUE" 6 44
+else
+    dialog --title "Information" --msgbox "FALSE" 6 44
+fi
+
+
+
+
 rm -r /opt/plexg* 2>/dev/nu*
 wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
 unzip /tmp/$version.zip -d /opt/
