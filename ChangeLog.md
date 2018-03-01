@@ -1,8 +1,7 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.049]
-- None
+### [5.050] Developer Version
 
 #### Added
 - None
@@ -16,6 +15,20 @@ Current Changes will continued to be modified as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.049]
+
+#### Added
+- New Update Version System - Can select stable or develop versions
+- Added menu precautions to prevent accidently upgrade
+- Ansible role to install commands
+
+#### Changed
+- Command "sudo pgupdate" results in bringing up the menu
+- More Menu Updates
+
+#### Removed
+- None
 
 ### [5.048]
 
