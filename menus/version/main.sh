@@ -44,6 +44,7 @@ case $CHOICE in
                       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                       --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
                 dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+                clear
                 exit 0
             else
                 clear

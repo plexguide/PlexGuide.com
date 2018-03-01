@@ -22,6 +22,17 @@ clear
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
 
+if dialog --stdout --title "System Update" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
+  dialog --title "PG Update Status" --msgbox "\nExiting! User Failed To Agree!" 0 0
+  clear
+  echo "Type to Restart the Program: sudo plexguide"
+  exit 0
+else
+  clear
+fi
+
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
@@ -86,16 +97,5 @@ sleep 3
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
    touch /var/plexguide/dep37.yes
-
-############################################# Install a Post-Docker Fix ###################### END
-
-else
-    echo "Install Aborted - You Failed to Agree to Install the Program!"
-    echo
-    echo "You will be able to browse the programs but doing anything will cause"
-    echo "problems! Good Luck!"
-    echo
-    read -n 1 -s -r -p "Press any key to continue "
-fi
 
 clear
