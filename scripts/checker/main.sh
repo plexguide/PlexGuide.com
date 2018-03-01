@@ -1,1 +1,2 @@
-wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/version.sh -O /tmp 1>/dev/null 2>&1
+sudo rm -r /tmp/version.sh
+wget https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/version.sh && sudo bash /tmp/version.sh
