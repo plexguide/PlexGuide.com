@@ -16,15 +16,15 @@
 #
 #################################################################################
 
-export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Older Versions"
-MENU="Restore to an Older PG Version:"
+TITLE="PG Install"
+MENU="Make a Selection"
 
-OPTIONS=(A "Version: 5.048"
+OPTIONS=(A "Beta Version  : 5.049"
+         B "Stable Version: 5.048"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -38,12 +38,24 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
-
+            mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
+            cd /tmp
+            bash /tmp/upgrade2.sh
+            version="Latest"
+        B)
+            version="5.048" ;;
         Z)
             clear
             exit 0
             ;;
 esac
 
+sudo rm -r /opt/plexg* 2>/dev/nu*
+sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
+sudo unzip /tmp/$version.zip -d /opt/
+sudo mv /opt/PlexG* /opt/plexguide
+sudo bash /opt/plexg*/sc*/ins*
+sudo rm -r /tmp/$version.zip
+
 clear
+dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
