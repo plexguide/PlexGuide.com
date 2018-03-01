@@ -41,7 +41,8 @@ case $CHOICE in
             mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
             cd /tmp
             bash /tmp/upgrade2.sh
-            version="Latest" ;;
+            version="Latest"
+            exit 0 ;;
         B)
             version="5.048" ;;
         Z)
