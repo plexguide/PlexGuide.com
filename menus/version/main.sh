@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 HEIGHT=10
 WIDTH=32
 CHOICE_HEIGHT=4
@@ -40,6 +39,7 @@ case $CHOICE in
         A)
             version="Developer"
 
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             if dialog --stdout --title "Version User Confirmation" \
                       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                       --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
@@ -58,10 +58,11 @@ case $CHOICE in
             clear
             exit 0 ;;
         B)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.049" ;;
         Z)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             clear
-
             exit 0
             ;;
 esac
@@ -87,5 +88,5 @@ git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git
 rm -r /opt/plexguide/menus/version/main.sh
 mv /tmp/pg/menus/version/main.sh /opt/plexguide/menus/version/
 rm -r /tmp/pg/
-
+touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 clear
