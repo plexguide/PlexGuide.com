@@ -1,6 +1,22 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
+### [5.049]
+- None
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.048]
 
 #### Added
@@ -15,10 +31,6 @@ Current Changes will continued to be modified as known.
 
 #### Removed
 - None
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.046-5.047] BUGGED VERSION / FIXED NOW, 5.047 FIXES
 
