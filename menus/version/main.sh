@@ -59,8 +59,8 @@ mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/pg
 rm -r /tmp/pg/
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/pg
 rm -r /opt/plexguide/menus/version/main.sh
 mv /tmp/pg/menus/version/main.sh /opt/plexguide/menus/version/
 rm -r /tmp/pg/
