@@ -4,7 +4,9 @@ Current Changes will continued to be modified as known.
 ### [5.050] Developer Version
 
 #### Added
-- None
+- New Installs - Ask for which version of PG they want to install (Stable/Developer)
+- Not Complete - Ensure that new installs do results in exiting out of selection of Stable/Developer
+- Ensure Dialog is installed prior to startup
 
 #### Changed
 - None
