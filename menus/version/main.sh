@@ -44,7 +44,7 @@ case $CHOICE in
                       --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $upgrade" 7 50; then
                 dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
             else
-                ## nothing
+                dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
             fi
 
             mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
@@ -66,7 +66,7 @@ if dialog --stdout --title "Version User Confirmation" \
           --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $upgrade" 7 50; then
     dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
 else
-    ## nothing
+    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
 fi
 
 rm -r /opt/plexg* 2>/dev/nu*
