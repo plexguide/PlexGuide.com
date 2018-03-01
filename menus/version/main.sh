@@ -20,11 +20,11 @@ HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Install"
+TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "Beta Version  : 5.049"
-         B "Stable Version: 5.048"
+OPTIONS=(A "Developer: 5.049"
+         B "Stable   : 5.048"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
