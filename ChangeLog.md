@@ -1,7 +1,7 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.051] Developer Version
+### [5.052] Developer Version
 
 #### Added
 - None
@@ -15,6 +15,17 @@ Current Changes will continued to be modified as known.
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.052] Developer Version
+
+#### Added
+- Ability to always downloaded lastest download menu regardless of version
+
+#### Changed
+- None
+
+#### Removed
+- None
 
 ### [5.050]
 
