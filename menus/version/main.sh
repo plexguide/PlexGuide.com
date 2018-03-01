@@ -54,7 +54,7 @@ esac
 
 if dialog --stdout --title "Version User Confirmation" \
           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\n Do You Want to " 7 60; then
+          --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $upgrade" 6 50; then
     dialog --title "Information" --msgbox "TRUE" 6 44
 else
     dialog --title "Information" --msgbox "FALSE" 6 44
