@@ -41,7 +41,7 @@ case $CHOICE in
             mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
             cd /tmp
             bash /tmp/upgrade2.sh
-            version="Latest - Developer"
+            version="Developer"
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
             exit 0 ;;
         B)
