@@ -58,5 +58,5 @@ sudo unzip /tmp/$version.zip -d /opt/
 sudo mv /opt/PlexG* /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
 sudo rm -r /tmp/$version.zip
-
+read -n 1 -s -r -p "Press any key to continue "
 clear
