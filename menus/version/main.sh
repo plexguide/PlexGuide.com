@@ -52,8 +52,8 @@ case $CHOICE in
             ;;
 esac
 
-if dialog --stdout --title "What to do?" \
-          --backtitle "Backup-Verwaltung" \
+if dialog --stdout --title "Visit https://PlexGuide.com - Automations Made Simple" \
+          --backtitle "User Confrimation" \
           --yesno "Yes: Delete, No:  Restore" 7 60; then
     dialog --title "Information" --msgbox "TRUE" 6 44
 else
