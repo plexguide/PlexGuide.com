@@ -11,10 +11,10 @@
     when: pg_script.stat.exists == True
 ########### Rclone Sync Script
 
-    - name: Install RClone Sync Service
+    - name: Install PG's Serivce
     template:
-      src: rclone_script.js2
-      dest: /opt/appdata/plexguide/rclone.sh
+      src: /opt/ansbile/roles/movement/pgupdate
+      dest: /bin
       force: yes
     when: rclone_script.stat.exists == False
 ########################################## Services
