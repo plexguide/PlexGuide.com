@@ -23,12 +23,11 @@ if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
   clear
-  dialog --title "PG Update Status" --msgbox "\nExiting! User Failed To Agree!" 0 0
-  echo "Type to Restart the Program: sudo plexguide"
-  exit 0
-  clear
 else
   clear
+  dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree! You can view the program, but doing anything will mess things up!" 0 0
+  echo "Type to Restart the Program: sudo plexguide"
+  exit 0
 fi
 
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
