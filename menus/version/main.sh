@@ -54,7 +54,7 @@ esac
 
 if dialog --stdout --title "Visit https://PlexGuide.com - Automations Made Simple" \
           --backtitle "User Confrimation" \
-          --yesno "Yes: Delete, No:  Restore" 7 60; then
+          --yesno "\n Do You Want to " 7 60; then
     dialog --title "Information" --msgbox "TRUE" 6 44
 else
     dialog --title "Information" --msgbox "FALSE" 6 44
