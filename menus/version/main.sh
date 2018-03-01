@@ -55,6 +55,7 @@ case $CHOICE in
             bash /tmp/upgrade2.sh
             
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             clear
             exit 0 ;;
         B)
@@ -86,5 +87,5 @@ git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git
 rm -r /opt/plexguide/menus/version/main.sh
 mv /tmp/pg/menus/version/main.sh /opt/plexguide/menus/version/
 rm -r /tmp/pg/
-read -n 1 -s -r -p "Press any key to continue "
+touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 clear
