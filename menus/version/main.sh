@@ -42,7 +42,7 @@ case $CHOICE in
 
             if dialog --stdout --title "Version User Confirmation" \
                       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                      --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $version" 7 50; then
+                      --yesno "\nDo You Want to EXIT and Backout from the Upgrade: Version - $version" 7 50; then
                 dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
                 exit 0
             else
@@ -65,7 +65,7 @@ esac
 
 if dialog --stdout --title "Version User Confirmation" \
           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $version" 7 50; then
+          --yesno "\nDo You Want to EXIT and Backout from the Upgrade: Version - $version" 7 50; then
     dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
     exit 0
 else
