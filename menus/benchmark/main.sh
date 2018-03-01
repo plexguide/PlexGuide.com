@@ -23,7 +23,7 @@ echo $ipv4
 echo $domain
 
 HEIGHT=11
-WIDTH=38
+WIDTH=45
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="NZB Applications - PG Supporting"
