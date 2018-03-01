@@ -55,6 +55,7 @@ case $CHOICE in
             bash /tmp/upgrade2.sh
             
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
+            clear
             exit 0 ;;
         B)
             version="5.048" ;;
