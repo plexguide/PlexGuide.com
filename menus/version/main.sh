@@ -52,11 +52,12 @@ case $CHOICE in
             ;;
 esac
 
-sudo rm -r /opt/plexg* 2>/dev/nu*
-sudo wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
-sudo unzip /tmp/$version.zip -d /opt/
-sudo mv /opt/PlexG* /opt/plexguide
-sudo bash /opt/plexg*/sc*/ins*
-sudo rm -r /tmp/$version.zip
+rm -r /opt/plexg* 2>/dev/nu*
+wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
+unzip /tmp/$version.zip -d /opt/
+mv /opt/PlexG* /opt/plexguide
+bash /opt/plexg*/sc*/ins*
+rm -r /tmp/$version.zip
+clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp
 read -n 1 -s -r -p "Press any key to continue "
 clear
