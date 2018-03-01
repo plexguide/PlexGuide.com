@@ -93,6 +93,6 @@ sleep 3
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep37.yes
+   touch /var/plexguide/dep38.yes
 
 clear
