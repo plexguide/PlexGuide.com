@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 HEIGHT=10
 WIDTH=32
 CHOICE_HEIGHT=4
@@ -55,13 +55,13 @@ case $CHOICE in
             bash /tmp/upgrade2.sh
             
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             clear
             exit 0 ;;
         B)
             version="5.049" ;;
         Z)
             clear
+
             exit 0
             ;;
 esac
@@ -87,5 +87,5 @@ git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git
 rm -r /opt/plexguide/menus/version/main.sh
 mv /tmp/pg/menus/version/main.sh /opt/plexguide/menus/version/
 rm -r /tmp/pg/
-touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+
 clear
