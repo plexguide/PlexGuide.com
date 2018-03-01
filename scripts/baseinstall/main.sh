@@ -19,9 +19,6 @@ export NCURSES_NO_UTF8_ACS=1
 
 clear
 
-# If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
-if (whiptail --title "PlexGuide Installer/Upgrader" --yesno "Do You Agree to Install / Upgrade PlexGuide?" 8 45) then
-
 if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
