@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
+
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
