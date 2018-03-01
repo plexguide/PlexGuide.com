@@ -53,7 +53,7 @@ case $CHOICE in
         D)
             bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
         E)
-            bash /opt/plexguide/scripts/menus/bench-menu.sh ;;
+            bash /opt/plexguide/menus/benchmark/main.sh ;;
         F)
             bash /opt/plexguide/menus/info/main.sh ;;
         G)
