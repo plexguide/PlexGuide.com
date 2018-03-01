@@ -31,7 +31,7 @@ whiptail --title "Backup Menu" --menu "Make your choice" 19 25 12 \
     "6 )" "Jackett"  \
     "7 )" "Lidarr"  \
     "8 )" "Medusa"  \
-    "9)" "Myler"  \
+    "9 )" "Myler"  \
     "10)" "Muximux"  \
     "11)" "NZBGET"  \
     "12)" "NZBHydra"  \

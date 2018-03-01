@@ -39,13 +39,21 @@ case $CHOICE in
         A)
             version="Developer"
 
+            file="/var/plexguide/ask.yes"
+            if [ -e "$file" ]
+            then
+
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             if dialog --stdout --title "Version User Confirmation" \
-                      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                      --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
-                dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-                clear
-                exit 0
+               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+               --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
+               dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+            clear
+            exit 0
+                else
+            clear
+            fi
+
             else
                 clear
             fi
@@ -53,25 +61,35 @@ case $CHOICE in
             mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
             cd /tmp
             bash /tmp/upgrade2.sh
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
             clear
             exit 0 ;;
         B)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.049" ;;
         Z)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             clear
             exit 0
             ;;
 esac
 
+file="/var/plexguide/ask.yes"
+if [ -e "$file" ]
+then
+
+touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 if dialog --stdout --title "Version User Confirmation" \
-          --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
-    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-    exit 0
+   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+   --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
+   dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+clear
+exit 0
+    else
+clear
+fi
+
+
 else
     clear
 fi
