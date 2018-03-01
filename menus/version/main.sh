@@ -16,9 +16,9 @@
 #
 #################################################################################
 
-HEIGHT=12
-WIDTH=45
-CHOICE_HEIGHT=5
+HEIGHT=9
+WIDTH=35
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
