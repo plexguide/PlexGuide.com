@@ -58,6 +58,6 @@ unzip /tmp/$version.zip -d /opt/
 mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/pg
 read -n 1 -s -r -p "Press any key to continue "
 clear
