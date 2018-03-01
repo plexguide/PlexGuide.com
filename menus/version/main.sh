@@ -101,10 +101,5 @@ mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 
-rm -r /tmp/pg/
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /tmp/pg
-rm -r /opt/plexguide/menus/version/main.sh
-mv /tmp/pg/menus/version/main.sh /opt/plexguide/menus/version/
-rm -r /tmp/pg/
-touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
 clear

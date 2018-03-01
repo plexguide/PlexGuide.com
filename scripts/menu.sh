@@ -17,10 +17,10 @@ else
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
-bash /opt/plexguide/scripts/checker/main.sh
+bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
-bash /opt/plexguide/scripts/docker-no/user.sh
+bash /opt/plexguide/scripts/docker-no/user.sh 1>/dev/null 2>&1
 
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
