@@ -38,6 +38,15 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+
+            if dialog --stdout --title "Version User Confirmation" \
+                      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                      --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $upgrade" 7 50; then
+                dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
+            else
+                ## nothing
+            fi
+
             mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
             cd /tmp
             bash /tmp/upgrade2.sh
@@ -54,14 +63,11 @@ esac
 
 if dialog --stdout --title "Version User Confirmation" \
           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $upgrade" 6 50; then
-    dialog --title "Information" --msgbox "TRUE" 6 44
+          --yesno "\nDo You Want to EXIT and Backout from the Upgrade: $upgrade" 7 50; then
+    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT UPGRADE!" 0 0
 else
-    dialog --title "Information" --msgbox "FALSE" 6 44
+    ## nothing
 fi
-
-
-
 
 rm -r /opt/plexg* 2>/dev/nu*
 wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
