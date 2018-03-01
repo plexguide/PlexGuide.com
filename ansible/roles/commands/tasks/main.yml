@@ -13,7 +13,7 @@
 
   - name: Install PGUpdate
     template:
-      src: /opt/plexguide/ansible/roles/commands/templates/pgupdate
+      src: pgupdate.js2
       dest: /bin
       force: yes
       mode: 0775 
