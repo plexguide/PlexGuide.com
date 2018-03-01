@@ -42,11 +42,5 @@ fi
 
 bash /opt/plexguide/menus/startup/message.sh
 
-## Force Exit if Required
-file="/var/plexguide/exit.yes"
-if [ -e "$file" ]
-then
-   exit
-fi
 
 bash /opt/plexguide/menus/main.sh
