@@ -23,7 +23,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "Developer: 5.049"
+OPTIONS=(A "Developer: Latest"
          B "Stable   : 5.048"
          Z "Exit")
 
