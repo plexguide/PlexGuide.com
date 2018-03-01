@@ -1,11 +1,19 @@
 ---
+
+  - name: Check if PGUpdate Exists
+    stat:
+      path: /bin/pgupdate
+    register: pgupdate
+
   - name: Remove PGUpdate
     file:
       path: /bin/pgupdate
       state: absent
+    when: pgupdate.stat.exists
 
   - name: Install PGUpdate
     template:
-      src: /opt/ansbile/roles/commands/pgupdate
+      src: /opt/plexguide/ansible/roles/commands/templates/pgupdate
       dest: /bin
       force: yes
+      mode: 0775 
