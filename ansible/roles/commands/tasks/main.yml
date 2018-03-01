@@ -14,6 +14,6 @@
   - name: Install PGUpdate
     template:
       src: pgupdate.js2
-      dest: /bin
+      dest: /bin/pgupdate
       force: yes
       mode: 0775 
