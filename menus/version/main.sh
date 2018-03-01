@@ -52,8 +52,8 @@ case $CHOICE in
             ;;
 esac
 
-if dialog --stdout --title "Visit https://PlexGuide.com - Automations Made Simple" \
-          --backtitle "User Confrimation" \
+if dialog --stdout --title "Version User Confirmation" \
+          --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
           --yesno "\n Do You Want to " 7 60; then
     dialog --title "Information" --msgbox "TRUE" 6 44
 else
