@@ -36,6 +36,16 @@ then
    clear
 else
    bash /opt/plexguide/menus/version/main.sh
+   clear
+      echo "1. Please STAR PG via http://github.plexguide.com"
+      echo "2. Join the PG Discord via http://discord.plexguide.com"
+      echo "3. Donate to PG via http://donate.plexguide.com"
+      echo ""
+      echo "TIP: Restart the Program Anytime, type: plexguide"
+      echo "TIP: Update Plexguide Anytime, type: pgupdate"
+      echo "TIP: Press Z, then [ENTER] in the Menus to Exit"
+      echo "TIP: Menu Letters Displayed are HotKeys"
+      echo ""
    exit 0
 fi
 
