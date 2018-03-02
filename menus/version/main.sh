@@ -42,7 +42,6 @@ case $CHOICE in
             file="/var/plexguide/ask.yes"
             if [ -e "$file" ]
             then
-
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             if dialog --stdout --title "Version User Confirmation" \
                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -57,7 +56,7 @@ case $CHOICE in
             else
                 clear
             fi
-
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
             cd /tmp
             bash /tmp/upgrade2.sh
@@ -67,6 +66,7 @@ case $CHOICE in
             clear
             exit 0 ;;
         B)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.057" ;;
         Z)
             clear
@@ -100,5 +100,5 @@ unzip /tmp/$version.zip -d /opt/
 mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
-
+touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 clear
