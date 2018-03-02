@@ -1,18 +1,31 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.053] Developer Version
+### [5.054] Developer Version
+
+#### Added
+- None
+
+#### Changed
+- None
+- None
+
+#### Removed
+- None
+
+-------------------------------------------------------
+### [5.053] 
 
 #### Added
 - None
 
 #### Changed
 - Changed Portainer Output Display (never affected performance)
+- Fixed Bugged Startup
 
 #### Removed
 - None
 
--------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
