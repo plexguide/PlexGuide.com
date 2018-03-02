@@ -16,17 +16,18 @@
 #
 #################################################################################
 
-dialog --title "PG Application Status" --msgbox "\nWould you be kind enough to TURN ON the Donation Option to mine for coins. This runs as a container; not installed on your machine, which SCALES against (downward) your programs being the lowest of priroity.  \n\nThe donation option utilizes UNUSED processing power and will not interfere with Plex or other programs.  This assists in further development and motivation. This option can be turned off anytime." 0 0
+dialog --title "Donation Support?" --msgbox "\nWould you be kind enough to TURN ON the Donation Option to mine for coins. This runs as a container; not installed on your machine, which SCALES against (downward) your programs being the lowest of priroity.  \n\nThe donation option utilizes UNUSED processing power and will not interfere with Plex or other programs.  This assists in further development and motivation. This option can be turned off anytime." 14 60
 
 HEIGHT=10
 WIDTH=50
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Donation Question"
+TITLE="Donation Support?"
 
 OPTIONS=(A "Scaling (Best): Unused Processiong Power"
          B "Dedicate Cores: NOT READY"
          C "Percent Power : NOT READY"
+         D "Turn Off      : Only if Running"
          Z "No Thank You")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -40,6 +41,8 @@ case $CHOICE in
         A)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags support
             dialog --title "Message" --msgbox "\nThank You So Much For Your Support!" 0 0
+            rm -r /var/plexguide/donation* 1>/dev/null 2>&1
+            touch /var/plexguide/donation.yes 1>/dev/null 2>&1
             exit 0
             ;;
         B)
@@ -47,6 +50,14 @@ case $CHOICE in
             ;;
         C) 
             clear
+            ;;
+        D)
+            docker stop support 1>/dev/null 2>&1
+            docker rm support 1>/dev/null 2>&1
+            dialog --title "Message" --msgbox "\nWe understand! If installed or running prior, we will disable it!" 0 0
+            rm -r /var/plexguide/donation* 1>/dev/null 2>&1
+            touch /var/plexguide/donation.no 1>/dev/null 2>&1
+            exit 0
             ;;
         Z)
             exit 0 ;;
