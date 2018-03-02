@@ -1,7 +1,7 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.055] Developer Version
+### [5.058] Developer Version
 
 #### Added
 - None
@@ -13,13 +13,13 @@ Current Changes will continued to be modified as known.
 - None
 
 -------------------------------------------------------
-### [5.054] Developer Version
+### [5.055 - 5.057] Developer Version
 
 #### Added
 - None
 
 #### Changed
-- None
+- Fixed version of Docker; new one corrupt
 
 #### Removed
 - Old Rogue Script
