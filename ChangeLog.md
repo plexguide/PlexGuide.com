@@ -8,7 +8,6 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - None
-- None
 
 #### Removed
 - None
