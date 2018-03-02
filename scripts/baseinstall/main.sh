@@ -38,6 +38,7 @@ yes | apt-get install software-properties-common #1>/dev/null 2>&1
 
 #echo "20" | dialog --gauge "Installing: Pip & Docker Basics" 7 50 0
 apt-get install python-pip -y #1>/dev/null 2>&1
+pip install --upgrade pip -y
 pip install docker #1>/dev/null 2>&1
 
 #echo "25" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
