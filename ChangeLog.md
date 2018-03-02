@@ -1,6 +1,18 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
+### [5.055] Developer Version
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- Old Rogue Script
+
+-------------------------------------------------------
 ### [5.054] Developer Version
 
 #### Added
@@ -10,9 +22,8 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Removed
-- None
+- Old Rogue Script
 
--------------------------------------------------------
 ### [5.053] 
 
 #### Added
