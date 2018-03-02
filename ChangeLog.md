@@ -10,7 +10,7 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Removed
-- Old Rogue Script
+- None
 
 -------------------------------------------------------
 ### [5.054] Developer Version
