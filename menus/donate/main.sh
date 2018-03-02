@@ -39,8 +39,9 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+            clear
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags support
-            dialog --title "Message" --msgbox "\nThank You So Much For Your Support!" 0 0
+            dialog --title "Message" --msgbox "\nThank You So Much For Your Support! Woot Woot!" 0 0
             rm -r /var/plexguide/donation* 1>/dev/null 2>&1
             touch /var/plexguide/donation.yes 1>/dev/null 2>&1
             exit 0
