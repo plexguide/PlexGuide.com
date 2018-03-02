@@ -11,7 +11,7 @@
   - { role: folders, tags: ['folders'] }
   - { role: commands, tags: ['commands'] }
   - { role: netdata, tags: ['netdata'] }
-  - { role: netdata, tags: ['netdata'] }
+  - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: nzbhydra, tags: ['nzbhydra'] }
