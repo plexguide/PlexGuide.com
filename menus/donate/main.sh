@@ -54,13 +54,13 @@ case $CHOICE in
         D)
             docker stop support 1>/dev/null 2>&1
             docker rm support 1>/dev/null 2>&1
-            dialog --title "Message" --msgbox "\nWe understand! It's being removed. :( Sad Face" 0 0
+            dialog --title "Message" --msgbox "\nWe understand and it's being removed :( Sad Face" 0 0
             rm -r /var/plexguide/donation* 1>/dev/null 2>&1
             touch /var/plexguide/donation.no 1>/dev/null 2>&1
             exit 0
             ;;
         Z)
-            dialog --title "Message" --msgbox "\nWe understand! You can turn on anytime! :( Sad Face" 0 0
+            dialog --title "Message" --msgbox "\nWe understand and you can turn on anytime :( Sad Face" 0 0
             exit 0 ;;
 esac
 
