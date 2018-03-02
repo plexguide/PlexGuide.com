@@ -19,14 +19,14 @@
 dialog --title "PG Application Status" --msgbox "\nWould you be kind enough to TURN ON the Donation Option to mine for coins. This runs as a container; not installed on your machine, which SCALES against (downward) your programs; being the lowest priroity.  The donation option utilizes UNUSED processing power and will not interfere with Plex or other programs.  This assists in further development and motivation. This option can be turned off anytime." 0 0
 
 HEIGHT=11
-WIDTH=45
+WIDTH=50
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Donation Question"
 
-OPTIONS=(A "Scale (Best): Unused Processiong Power"
-         B "Dedicate    : NOT READY"
-         C "Percentage  : NOT READY"
+OPTIONS=(A "Scaling (Best): Unused Processiong Power"
+         B "Dedicate Cores: NOT READY"
+         C "Percent Power : NOT READY"
          Z "No Thank You")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -40,6 +40,7 @@ case $CHOICE in
         A)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags support
             dialog --title "Message" --msgbox "\nThank You So Much For Your Support!" 0 0
+            exit 0
             ;;
         B)
             clear
