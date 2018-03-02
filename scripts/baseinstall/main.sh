@@ -34,7 +34,7 @@ echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
-yes | apt-get install software-properties-common 1>/dev/null 2>&1
+yes | apt-get install software-properties-common >> 
 
 echo "20" | dialog --gauge "Installing: Pip & Docker Basics" 7 50 0
 apt install python-pip -y 1>/dev/null 2>&1
@@ -47,39 +47,39 @@ apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "30" | dialog --gauge "Installing: Docker" 7 50 0
-ansible-playbook /opt/plexguide/ansible/docker.yml 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/docker.yml >> /opt/plexguide/installer.log
 
 echo "40" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
-ansible-playbook /opt/plexguide/ansible/config.yml --tags var
+ansible-playbook /opt/plexguide/ansible/config.yml --tags var >> /opt/plexguide/installer.log
 
 echo "45" | dialog --gauge "Installing: PlexGuide Dependiences" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall >> /opt/plexguide/installer.log
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands >> /opt/plexguide/installer.log
 
 echo "50" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders >> /opt/plexguide/installer.log
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label >> /opt/plexguide/installer.log
 
 echo "55" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders >> /opt/plexguide/installer.log
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label >> /opt/plexguide/installer.log
 
 echo "60" | dialog --gauge "Installing: RClone & Services" 7 50 0
-bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/startup/rclone-preinstall.sh >> /opt/plexguide/installer.log
 touch /var/plexguide/basics.yes 1>/dev/null 2>&1
 
 echo "65" | dialog --gauge "Installing: Portainer" 7 50 0 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer >> /opt/plexguide/installer.log
 
 ### Will Set Up Collection of Variables Later
 echo "75" | dialog --gauge "Installing: Traefik" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik >> /opt/plexguide/installer.log
 
 echo "85" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix >> /opt/plexguide/installer.log
 
 echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower >> /opt/plexguide/installer.log
 
 echo "99" | dialog --gauge "Donation Question" 7 50 0
 sleep 3
