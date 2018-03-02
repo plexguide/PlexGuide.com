@@ -10,12 +10,7 @@
   file:
     state: absent
     path:
-      - /opt/appdata/plexguide/var.yml
-
-- name: create plexguide network
-  docker_network:
-    name: "plexguide"
-    state: present
+     - /opt/appdata/plexguide/var.yml
 
 ########## Copy Traefik config files
 - name: Installing config prerequisites
@@ -23,6 +18,11 @@
     src: var.yml
     dest: /opt/appdata/plexguide/var.yml
     force: yes
+
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
 
 ########## Ask user for e-mail & domain
 - name: domain
