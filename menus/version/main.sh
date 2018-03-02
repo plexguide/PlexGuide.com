@@ -22,8 +22,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "Developer: 5.052"
-         B "Stable   : 5.051"
+OPTIONS=(A "Developer: 5.053"
+         B "Stable   : 5.052"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -67,7 +67,7 @@ case $CHOICE in
             clear
             exit 0 ;;
         B)
-            version="5.050" ;;
+            version="5.052" ;;
         Z)
             clear
             exit 0
