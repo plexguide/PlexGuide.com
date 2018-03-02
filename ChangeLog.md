@@ -16,6 +16,10 @@ Current Changes will continued to be modified as known.
 - None
 
 -------------------------------------------------------
+
+## Past Changes
+Historical Documented Changes will be stored as below.
+
 ### [5.055 - 5.057]
 
 #### Added
@@ -42,8 +46,6 @@ Current Changes will continued to be modified as known.
 #### Removed
 - None
 
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.052] Bug Fix Update to 5.051
 
