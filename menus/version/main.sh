@@ -22,8 +22,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "Developer: 5.053"
-         B "Stable   : 5.052"
+OPTIONS=(A "Developer: 5.054"
+         B "Stable   : 5.053"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -62,7 +62,7 @@ case $CHOICE in
             cd /tmp
             bash /tmp/upgrade2.sh
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            
+
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
             clear
             exit 0 ;;
