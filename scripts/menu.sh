@@ -40,7 +40,7 @@ else
    bash /opt/plexguide/menus/version/main.sh
 fi
 
-file="/var/plexguide/dep38.yes"
+file="/var/plexguide/dep39.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
