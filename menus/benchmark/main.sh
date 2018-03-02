@@ -26,7 +26,7 @@ HEIGHT=11
 WIDTH=45
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Applications - PG Supporting"
+TITLE="Benchmark Applications"
 
 OPTIONS=(A "System Info and Benchmark - Basic"
          B "System Info and Benchmark - Advanced"
