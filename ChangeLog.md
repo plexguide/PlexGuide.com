@@ -12,6 +12,9 @@ Current Changes will continued to be modified as known.
 #### Removed
 - None
 
+### Known Issues
+- None
+
 -------------------------------------------------------
 ### [5.055 - 5.057]
 
@@ -23,6 +26,9 @@ Current Changes will continued to be modified as known.
 
 #### Removed
 - Old Rogue Script
+
+#### Known Issues
+- SABNZBD will not work in this version, repaired in 5.058
 
 ### [5.053] 
 
