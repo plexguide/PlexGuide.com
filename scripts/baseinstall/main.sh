@@ -37,14 +37,14 @@ yes | apt-get update #1>/dev/null 2>&1
 yes | apt-get install software-properties-common #1>/dev/null 2>&1
 
 #echo "20" | dialog --gauge "Installing: Pip & Docker Basics" 7 50 0
-apt install python-pip -y #1>/dev/null 2>&1
+apt-get install python-pip -y #1>/dev/null 2>&1
 pip install docker #1>/dev/null 2>&1
 
 #echo "25" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 yes | apt-add-repository ppa:ansible/ansible #1>/dev/null 2>&1
-apt-get update -y #1>/dev/null 2>&1
-apt-get install ansible -y #1>/dev/null 2>&1
-yes | apt-get update #1>/dev/null 2>&1
+apt-get update -y 1>/dev/null 2>&1
+apt-get install ansible -y 1>/dev/null 2>&1
+yes | apt-get update 1>/dev/null 2>&1
 
 #echo "30" | dialog --gauge "Installing: Docker" 7 50 0
 ansible-playbook /opt/plexguide/ansible/docker.yml #1>/dev/null 2>&1
