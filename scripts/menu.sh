@@ -19,11 +19,6 @@ fi
 
 sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/menus/version/main.sh
 
-#bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
-
-#check to see if /var/plexguide/dep exists - if not, install dependencies
-#bash /opt/plexguide/scripts/docker-no/user.sh
-
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
 
