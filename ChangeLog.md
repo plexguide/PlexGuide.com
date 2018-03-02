@@ -7,13 +7,13 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Changed
-- None
+- Repaired SABNZBD; tags were off
 
 #### Removed
 - None
 
 -------------------------------------------------------
-### [5.055 - 5.057] Developer Version
+### [5.055 - 5.057]
 
 #### Added
 - None
