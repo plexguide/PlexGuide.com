@@ -41,7 +41,7 @@ while read p; do
 done </opt/appdata/plexguide/running
 
 rm -r /mnt/gdrive/plexguide/backup/watchtower.tar 1>/dev/null 2>&1
-rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&
+rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 
 echo ""
 echo "Backup Complete"
