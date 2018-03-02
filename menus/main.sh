@@ -60,7 +60,9 @@ case $CHOICE in
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         H)
             clear
-            bash /opt/plexguide/scripts/upgrade/main.sh ;;
+            bash /opt/plexguide/scripts/upgrade/main.sh 
+            exit 0
+            ;;
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
         J)

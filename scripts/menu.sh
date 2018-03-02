@@ -35,6 +35,7 @@ then
    clear
 else
    bash /opt/plexguide/menus/version/main.sh
+   exit 0
 fi
 
 file="/var/plexguide/dep39.yes"
