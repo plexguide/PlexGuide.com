@@ -7,15 +7,27 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Changed
-- Dialog: Updated Benchmark Menu
-- Dialog: New Donation Menu
+- Changed Portainer Output Display (never affected performance)
 
 #### Removed
-- Tossed Corresponding Above WhipTail Menus
+- None
 
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.052] Bug Fix Update to 5.051
+
+#### Added
+- None
+
+#### Changed
+- Dialog: Updated Benchmark Menu
+- Dialog: New Donation Menu
+- Fixed Portainer Glitch
+
+#### Removed
+- Tossed Corresponding Above WhipTail Menu
 
 ### [5.051] Maintence Update to 5.050
 
