@@ -18,9 +18,9 @@
 
 dialog --title "Donation Support?" --msgbox "\nWould you be kind enough to TURN ON the Donation Option to mine for coins. This runs as a container; not installed on your machine, which SCALES against (downward) your programs being the lowest of priroity.  \n\nThe donation option utilizes UNUSED processing power and will not interfere with Plex or other programs.  This assists in further development and motivation. This option can be turned off anytime." 14 60
 
-HEIGHT=10
-WIDTH=50
-CHOICE_HEIGHT=5
+HEIGHT=11
+WIDTH=43
+CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Donation Support?"
 
