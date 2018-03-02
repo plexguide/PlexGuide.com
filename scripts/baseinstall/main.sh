@@ -89,7 +89,7 @@ sleep 3
     then
   echo "" 1>/dev/null 2>&1
     else
-        bash /opt/plexguide/scripts/menus/donate-menu.sh
+        bash /opt/plexguide/menus/donate/main.sh
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1

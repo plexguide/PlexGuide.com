@@ -45,7 +45,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/donate-norm-menu.sh ;;
+            bash /opt/plexguide/menus/donate/main.sh ;;
         B)
             bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
         C)
