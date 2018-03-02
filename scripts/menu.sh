@@ -22,10 +22,10 @@ fi
 #bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
 
 #check to see if /var/plexguide/dep exists - if not, install dependencies
-bash /opt/plexguide/scripts/docker-no/user.sh 1>/dev/null 2>&1
+#bash /opt/plexguide/scripts/docker-no/user.sh
 
 # copying rclone config to user incase bonehead is not root
-cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
+cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
 
 # Checking to see if VNC Container is Running
 file="/var/plexguide/vnc.yes"
