@@ -8,9 +8,10 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - Dialog: Updated Benchmark Menu
+- Dialog: New Donation Menu
 
 #### Removed
-- None
+- Tossed Corresponding Above WhipTail Menus
 
 -------------------------------------------------------
 ## Past Changes
