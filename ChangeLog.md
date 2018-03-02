@@ -7,7 +7,7 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Changed
-- None
+- Dialog: Updated Benchmark Menu
 
 #### Removed
 - None
