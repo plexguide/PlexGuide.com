@@ -32,7 +32,7 @@ dialog --title "Inputbox - To take input from you" \
 respose=$?
 
 # get data stored in $OUPUT using input redirection
-name=$(<$OUTPUT)
+echo "eat"
 
 
 read -n 1 -s -r -p "Press any key to continue "
