@@ -23,7 +23,7 @@ TITLE="PG Version Install"
 MENU="Make a Selection"
 
 OPTIONS=(A "Developer: 5.060"
-         C "Stable   : 5.059"
+         B "Stable   : 5.059"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
