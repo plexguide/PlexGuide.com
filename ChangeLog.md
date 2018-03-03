@@ -8,7 +8,7 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
-- Changed NZBGET Container; prior one is bugged (not our fault lol)
+- [BETA 1] Changed NZBGET Container; prior one is bugged (not our fault lol)
 
 #### Removed
 - None
