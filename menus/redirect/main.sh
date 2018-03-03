@@ -16,13 +16,23 @@
 #
 #################################################################################
 
+file="/var/plexguide/redirect.yes"
+  if [ -e "$file" ]
+    then
+    sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
+    else
+    sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
+    fi
+
+
+
 dialog --title "PG Application Status" --msgbox "\nIf turning forced redirect ON, ensure that an https:// address works first!" 0 0
 
 HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Forced HTTPS Redirect: On/Off"
+TITLE="Forced HTTPS Redirect: -OFF-"
 MENU="For use with SUBDOMAINS, not IPv4:Ports"
 
 OPTIONS=(A "Keep Forced Redirect Off"
@@ -40,14 +50,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)   
-            touch /var/plexguide/redirect.no 1>/dev/null 2>&1
             rm /var/plexguide/redirect.yes 1>/dev/null 2>&1
             sed -i 's/entryPoint = "https"/#entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is OFF! Restarting Traefik!" 0 0
             ;;
         B)
             touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
-            rm /var/plexguide/redirect.no 1>/dev/null 2>&1
             sed -i 's/#entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is ON! Restarting Traefik" 0 0
             ;;
