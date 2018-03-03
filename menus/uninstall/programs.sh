@@ -18,7 +18,7 @@
 
 mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
 
-dialog --inputbox "Type the name of the Program you want to Uninstall" 5 40 2> /tmp/namedPipe1 &
+dialog --inputbox "Type the name of the Program you want to Uninstall" 8 40 2> /tmp/namedPipe1 &
 
 OUTPUT="$( cat /tmp/namedPipe1  )" # release contents of pipe
 
