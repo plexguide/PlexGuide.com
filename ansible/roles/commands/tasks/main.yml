@@ -24,7 +24,7 @@
 
   - name: Remove PlexGuide
     file:
-      path: /bin/pgupdate
+      path: /bin/plexguide
       state: absent
     when: plexguide.stat.exists
 
