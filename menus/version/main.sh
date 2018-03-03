@@ -64,6 +64,15 @@ case $CHOICE in
 
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
             clear
+            echo "1. Please STAR PG via http://github.plexguide.com"
+            echo "2. Join the PG Discord via http://discord.plexguide.com"
+            echo "3. Donate to PG via http://donate.plexguide.com"
+            echo ""
+            echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
+            echo "TIP : Menu Letters Displayed are HotKeys"
+            echo "NOTE: Restart the Program Anytime, type: plexguide"
+            echo "NOTE: Update Plexguide Anytime, type: pgupdate"
+            echo ""
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
@@ -102,12 +111,12 @@ bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
    clear
-      echo "1. Please STAR PG via http://github.plexguide.com"
-      echo "2. Join the PG Discord via http://discord.plexguide.com"
-      echo "3. Donate to PG via http://donate.plexguide.com"
-      echo ""
-      echo "TIP: Restart the Program Anytime, type: plexguide"
-      echo "TIP: Update Plexguide Anytime, type: pgupdate"
-      echo "TIP: Press Z, then [ENTER] in the Menus to Exit"
-      echo "TIP: Menu Letters Displayed are HotKeys"
-      echo ""
+            echo "1. Please STAR PG via http://github.plexguide.com"
+            echo "2. Join the PG Discord via http://discord.plexguide.com"
+            echo "3. Donate to PG via http://donate.plexguide.com"
+            echo ""
+            echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
+            echo "TIP : Menu Letters Displayed are HotKeys"
+            echo "NOTE: Restart the Program Anytime, type: plexguide"
+            echo "NOTE: Update Plexguide Anytime, type: pgupdate"
+            echo ""
