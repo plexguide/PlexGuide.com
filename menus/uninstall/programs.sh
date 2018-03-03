@@ -17,7 +17,7 @@
 #################################################################################
 
 sudo rm -r /tmp/namedPipe1
-mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
+sudo touch /tmp/namedPipe1 # this creates named pipe, aka fifo
 
 dialog --inputbox "Name of the Program You Want to Uninstall" 8 40 2> /tmp/namedPipe1 &
 OUTPUT="$( cat /tmp/namedPipe1 )"
