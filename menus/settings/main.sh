@@ -16,25 +16,16 @@
 #
 #################################################################################
 
-file="/var/plexguide/redirect.yes"
-  if [ -e "$file" ]
-    then
-    sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
-    else
-    
-  fi
-
-dialog --title "PG Application Status" --msgbox "\nIf turning forced redirect ON, ensure that an https:// address works first!" 0 0
-
 HEIGHT=11
-WIDTH=40
+WIDTH=57
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Forced HTTPS Redirect: -OFF- "
-MENU="For use with SUBDOMAINS, not IPv4:Ports"
+TITLE="PG Settings"
+MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Keep Forced Redirect Off"
-         B "Force HTTPS Redirect On"
+OPTIONS=(A "Ports   : Turn On/Off Application Ports"
+         B "Redirect: Force Apps to use HTTPS Only"
+         C "Uncapped: Turn On/Off Upload Bandwidth Limit"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -48,29 +39,23 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)   
-            rm /var/plexguide/redirect.yes 1>/dev/null 2>&1
-            sed -i 's/entryPoint = "https"/#entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
-            dialog --title "Traefik Status" --msgbox "\nForced https Redirect is OFF! Restarting Traefik!" 0 0
-            ;;
+            bash /opt/plexguide/menus/ports/main.sh ;;
         B)
-            touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
-            sed -i 's/#entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
-            dialog --title "Traefik Status" --msgbox "\nForced https Redirect is ON! Restarting Traefik" 0 0
+            bash /opt/plexguide/menus/redirect/main.sh
+
+            file="/var/plexguide/redirect.yes"
+                if [ -e "$file" ]
+                    then
+                sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
+                    else
+                sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
+            fi
             ;;
+        C) 
+            bash /opt/plexguide/menus/transfer/main.sh ;;
         Z)
             clear
             exit 0
             ;;
 esac
 clear
-
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirect
-dialog --title "Traefik Status" --msgbox "\nTraefik is now Restarted!" 0 0
-
-file="/var/plexguide/redirect.yes"
-  if [ -e "$file" ]
-    then
-    sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
-    else
-    sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
-  fi
