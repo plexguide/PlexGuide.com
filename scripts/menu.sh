@@ -41,10 +41,10 @@ else
       echo "2. Join the PG Discord via http://discord.plexguide.com"
       echo "3. Donate to PG via http://donate.plexguide.com"
       echo ""
-      echo "TIP: Restart the Program Anytime, type: plexguide"
-      echo "TIP: Update Plexguide Anytime, type: pgupdate"
-      echo "TIP: Press Z, then [ENTER] in the Menus to Exit"
-      echo "TIP: Menu Letters Displayed are HotKeys"
+      echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
+      echo "TIP : Menu Letters Displayed are HotKeys"
+      echo "TIP : Update Plexguide Anytime, type: sudo pgupdate"
+      echo "NOTE: Restart the Program Anytime, type: sudo plexguide"
       echo ""
    exit 0
 fi
