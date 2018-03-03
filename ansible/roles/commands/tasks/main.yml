@@ -31,6 +31,6 @@
   - name: Install PlexGuide
     template:
       src: plexguide.js2
-      dest: /bin/pgupdate
+      dest: /bin/plexguide
       force: yes
       mode: 0775 
