@@ -7,6 +7,12 @@
     - ca-certificates
     - software-properties-common
 
+- name: Pip Mods
+  pip: "name={{item}} state=latest"
+  with_items:
+    - docker-py
+    - certbot
+
 - name: Add official gpg signing key
   apt_key:
     id: 0EBFCD88
