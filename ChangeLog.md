@@ -26,6 +26,7 @@ Historical Documented Changes will be stored as below.
 #### Added
 - New Command updates to pgupdata and plexguide
   - Emergency Mode: If for some reason plexguide is deleted, it will download the newest version so your not stuck
+  - This requires an update to ensure new commands work
 
 #### Changed
 - For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
