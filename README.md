@@ -1,8 +1,5 @@
 **Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
 
-[![N|Solid](https://plexguide.com/pics/menu17.png)](https://plexguide.com/forums/bugs.13/)
-
-
 [![N|Solid](https://plexguide.com/board6.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
