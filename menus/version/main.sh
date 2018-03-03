@@ -22,8 +22,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "Developer: 5.058"
-         B "Stable   : 5.057"
+OPTIONS=(A "Developer: 5.059"
+         B "Stable   : 5.058"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -76,7 +76,7 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.057" ;;
+            version="5.058" ;;
         Z)
             clear
             exit 0

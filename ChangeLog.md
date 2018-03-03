@@ -8,13 +8,13 @@ Genric Release Rule
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.058] Developer Version
+### [5.059] Developer Version
 
 #### Added
 - None
 
 #### Changed
-- Repaired SABNZBD; tags were off
+- None
 
 #### Removed
 - None
@@ -27,7 +27,23 @@ Current Changes will continued to be modified as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.055 - 5.057]
+### [5.058]
+
+#### Added
+- None
+
+#### Changed
+- Repaired SABNZBD; tags were off
+- Reworked Menu Loadup
+- Fixed Docker Completely
+
+#### Removed
+- None
+
+#### Known Issues
+- None
+
+### [5.055 - 5.057] Bugged
 
 #### Added
 - None
@@ -40,8 +56,9 @@ Historical Documented Changes will be stored as below.
 
 #### Known Issues
 - SABNZBD will not work in this version, repaired in 5.058
+- Docker Will Not Load
 
-### [5.053] 
+### [5.053] Bugged
 
 #### Added
 - None
