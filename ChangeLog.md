@@ -1,22 +1,14 @@
-## Genric Release Rule
-
-1. Last Known Developer Becomes a BETA every SAT (generally)
-2. A week after the BETA unless someone notes there is something wrong with it; it becomes a STABLE EDITION
-3. A Stable Edition is removed only if there is something critically flawed that can undermine server operations
-4. In rare occasions, a hotfix will be located above a BETA if one is required for testing!
-
--------------------------------------------------------
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.059] Developer Version
+### [5.059] Developer Version & Beta
 
 #### Added
 - None
 
 #### Changed
-- For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
-- Changed NZBGET Container; prior one is bugged (not our fault lol)
+- [BETA 1] For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
+- [BETA 1] Changed NZBGET Container; prior one is bugged (not our fault lol)
 
 #### Removed
 - None
