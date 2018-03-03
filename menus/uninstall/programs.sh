@@ -16,23 +16,13 @@
 #
 #################################################################################
 
-mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
-mpath="$mfolder$d"
+mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
 
-docker ps -a --format "{{.Names}}" > /opt/appdata/plexguide/running
+dialog --inputbox "This is an input box  with named pipe" 40 40 2> /tmp/namedPipe1 &
 
+OUTPUT="$( cat /tmp/namedPipe1  )" # release contents of pipe
 
-
-# show an inputbox
-dialog --title "Inputbox - To take input from you" \
---backtitle "Linux Shell Script Tutorial Example" \
---inputbox "Enter your name " 8 60 2>$OUTPUT
-
-# get respose
-respose=$?
-
-# get data stored in $OUPUT using input redirection
-echo "eat"
+echo  "This is the output " $OUTPUT
 
 
 read -n 1 -s -r -p "Press any key to continue "
