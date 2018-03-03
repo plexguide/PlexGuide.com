@@ -17,9 +17,9 @@
 #################################################################################
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=18
+HEIGHT=16
 WIDTH=45
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PlexGuide - Version 5.060"
 
@@ -32,8 +32,6 @@ OPTIONS=(A "Donation Menu"
          G "Backup & Restore"
          H "Update (Read Changelog)"
          I "Uninstall PG"
-         J "BETA: Uncapped Upload Speeds"
-         K "BETA: Turn On/Off App Ports"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -65,10 +63,6 @@ case $CHOICE in
             ;;
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
-        J)
-            bash /opt/plexguide/menus/transfer/main.sh ;;
-        K)
-            bash /opt/plexguide/menus/ports/main.sh ;;
         Z)
             clear
             echo "1. Please STAR PG via http://github.plexguide.com"
