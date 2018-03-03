@@ -58,7 +58,5 @@ case $CHOICE in
 esac
 clear
 
-ansible-playbook --skip-tags=optional playbook.yml
-
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirect
 dialog --title "Traefik Status" --msgbox "\nTraefik is now Restarted!" 0 0
