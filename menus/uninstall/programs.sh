@@ -28,22 +28,11 @@ dialog --title "Inputbox - To take input from you" \
 --backtitle "Linux Shell Script Tutorial Example" \
 --inputbox "Enter your name " 8 60 2>$OUTPUT
 
-# get respose
-respose=$?
-
+#read -n 1 -s -r -p "Press any key to continue "
 # get data stored in $OUPUT using input redirection
 name=$(<$OUTPUT)
 
 
-
-
-i=0
-while read p; do
-  echo $p > /tmp/program_var
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
-done </opt/appdata/plexguide/running
-
-HEIGHT=11
 WIDTH=32
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
