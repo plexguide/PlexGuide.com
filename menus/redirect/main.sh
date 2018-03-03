@@ -37,12 +37,16 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)   
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            touch /var/plexguide/redirect.no 1>/dev/null 2>&1
+            rm /var/plexguide/redirect.yes 1>/dev/null 2>&1
+            sed -i '[entryPoints.http.redirect]/#[entryPoints.http.redirect]/g' /opt/appdata/traefik/traefik.toml
             sed -i 's/entryPoint = "https"/#entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
             dialog --title "PG Application Status" --msgbox "\nForced https Redirect is OFF!" 0 0
             ;;
         B)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
+            rm /var/plexguide/redirect.no 1>/dev/null 2>&1
+            sed -i '[entryPoints.http.redirect]/#[entryPoints.http.redirect]/g' /opt/appdata/traefik/traefik.toml
             sed -i '#s/entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
             dialog --title "PG Application Status" --msgbox "\nForced https Redirect is ON!" 0 0
             ;;
