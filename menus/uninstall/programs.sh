@@ -18,45 +18,12 @@
 
 mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
 
-dialog --inputbox "Type the name of the Program you want to Uninstall" 8 40 2> /tmp/namedPipe1 &
-
-OUTPUT="$( cat /tmp/namedPipe1  )" # release contents of pipe
-
+dialog --inputbox "Name of the Program You Want to Uninstall" 8 40 2> /tmp/namedPipe1 &
+OUTPUT="$( cat /tmp/namedPipe1  )"
 echo  "This is the output " $OUTPUT
 
+sudo docker stop $OUTPUT
+sudo docker rm $OUTPUT
 
 read -n 1 -s -r -p "Press any key to continue "
 
-
-
-HEIGHT=11
-WIDTH=32
-CHOICE_HEIGHT=5
-BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Version Install"
-MENU="Make a Selection"
-
-OPTIONS=(- "P"
-         - "Exit")
-
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-        A)
-
-            exit 0 ;;
-        B)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.059" ;;
-        Z)
-            clear
-            exit 0
-            ;;
-esac
