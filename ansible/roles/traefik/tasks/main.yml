@@ -14,10 +14,10 @@
     name: letsencrypt
     state: absent
 
-- name: Removing Prior Traefik.toml
-  file:
-    state: absent
-    path: /opt/appdata/traefik/traefik.toml
+#- name: Removing Prior Traefik.toml
+  #file:
+    #state: absent
+    #path: /opt/appdata/traefik/traefik.toml
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
