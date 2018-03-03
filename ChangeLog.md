@@ -1,13 +1,13 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.059] Developer Version
+### [5.059] Developer Version & Beta
 
 #### Added
 - None
 
 #### Changed
-- For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
+- [BETA 1] For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
 - [BETA 1] Changed NZBGET Container; prior one is bugged (not our fault lol)
 
 #### Removed
