@@ -32,6 +32,7 @@ OPTIONS=(A "Donation Menu"
          G "Backup & Restore"
          H "Update (Read Changelog)"
          I "Uninstall PG"
+         J "Settings"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -63,6 +64,8 @@ case $CHOICE in
             ;;
         I)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
+        J)  
+            bash /opt/plexguide/menus/settings/main.sh ;;
         Z)
             clear
             echo "1. Please STAR PG via http://github.plexguide.com"
