@@ -30,8 +30,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(A "P"
-         Z "Exit")
+1
+
+OPTIONS=(- "P"
+         - "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
