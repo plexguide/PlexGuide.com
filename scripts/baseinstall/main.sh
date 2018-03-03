@@ -54,7 +54,7 @@ ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders 1>/dev/null 2>&1
 echo "40" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
-echo "45" | dialog --gauge "Installing: Docker" 7 50 0
+echo "45" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
 
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
@@ -76,7 +76,7 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/nu
 echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
 
-read -n 1 -s -r -p "Press any key to continue "
+#read -n 1 -s -r -p "Press any key to continue "
 echo "99" | dialog --gauge "Donation Question" 7 50 0
 sleep 3
 
