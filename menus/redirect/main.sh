@@ -54,3 +54,5 @@ case $CHOICE in
             ;;
 esac
 clear
+
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 2> /tmp/redirect
