@@ -18,16 +18,16 @@
 
 mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
 
-dialog --inputbox "Name of the Program You Want to Uninstall" 8 40 2> /tmp/namedPipe &
+dialog --inputbox "Name of the Program You Want to Uninstall" 8 40 2> /tmp/namedPipe1 &
 OUTPUT="$( cat /tmp/namedPipe1 )"
 
 
 echo  "This is the output " $OUTPUT
-echo "$OUTPUT" | awk '{print tolower($0)}' 2> /tmp/namedPipe &
-OUTPUT2="$( cat /tmp/namedPipe )"
-echo "$OUTPUT2"
-docker stop $OUTPUT2
-docker rm $OUTPUT2
+echo "$OUTPUT" | awk '{print tolower($0)}' 2> /tmp/namedPipe1 &
+OUTPUT="$( cat /tmp/namedPipe )"
+echo "$OUTPUT"
+docker stop $OUTPUT
+docker rm $OUTPUT
 
 
 read -n 1 -s -r -p "Press any key to continue "
