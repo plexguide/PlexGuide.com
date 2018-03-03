@@ -17,7 +17,7 @@
 - name: Deploy NZBGET Container
   docker_container:
     name: nzbget
-    image: "hotio/suitarr"
+    image: "linuxserver/nzbget"
     pull: yes
     cpu_shares: 256
     published_ports:
