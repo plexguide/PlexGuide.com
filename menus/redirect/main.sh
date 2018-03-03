@@ -46,8 +46,8 @@ case $CHOICE in
         B)
             touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
             rm /var/plexguide/redirect.no 1>/dev/null 2>&1
-            sed -i '[entryPoints.http.redirect]/#[entryPoints.http.redirect]/g' /opt/appdata/traefik/traefik.toml
-            sed -i '#s/entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
+            sed -i '#[entryPoints.http.redirect]/#[entryPoints.http.redirect]/g' /opt/appdata/traefik/traefik.toml
+            sed -i 's/#entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
             dialog --title "PG Application Status" --msgbox "\nForced https Redirect is ON!" 0 0
             ;;
         Z)
