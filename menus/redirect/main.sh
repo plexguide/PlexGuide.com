@@ -24,15 +24,13 @@ file="/var/plexguide/redirect.yes"
     sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
   fi
 
-
-
 dialog --title "PG Application Status" --msgbox "\nIf turning forced redirect ON, ensure that an https:// address works first!" 0 0
 
 HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Forced HTTPS Redirect: -OFF-"
+TITLE="Forced HTTPS Redirect: -OFF- "
 MENU="For use with SUBDOMAINS, not IPv4:Ports"
 
 OPTIONS=(A "Keep Forced Redirect Off"
