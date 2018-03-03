@@ -1,9 +1,13 @@
 ---
-
   - name: Check if PGUpdate Exists
     stat:
       path: /bin/pgupdate
     register: pgupdate
+
+  - name: Check if PGUpdate Exists
+    stat:
+      path: /bin/plexguide
+    register: plexguide
 
   - name: Remove PGUpdate
     file:
@@ -14,6 +18,19 @@
   - name: Install PGUpdate
     template:
       src: pgupdate.js2
+      dest: /bin/pgupdate
+      force: yes
+      mode: 0775 
+
+  - name: Remove PlexGuide
+    file:
+      path: /bin/pgupdate
+      state: absent
+    when: plexguide.stat.exists
+
+  - name: Install PlexGuide
+    template:
+      src: plexguide.js2
       dest: /bin/pgupdate
       force: yes
       mode: 0775 
