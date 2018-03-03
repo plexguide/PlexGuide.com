@@ -25,7 +25,7 @@ OUTPUT="$( cat /tmp/namedPipe1 )"
 
 echo  "This is the output " $OUTPUT
 echo "$OUTPUT" | awk '{print tolower($0)}' 2> /tmp/namedPipe1 &
-OUTPUT="$( cat /tmp/namedPipe )"
+OUTPUT="$( cat /tmp/namedPipe1 )"
 echo "$OUTPUT"
 docker stop $OUTPUT
 docker rm $OUTPUT
