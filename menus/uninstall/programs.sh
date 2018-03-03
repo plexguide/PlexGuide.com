@@ -30,8 +30,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
 
-OPTIONS=(
-while read p; do
+OPTIONS=(while read p; do
          A "$p"
 done </opt/appdata/plexguide/running
          Z "Exit")
