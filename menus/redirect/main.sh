@@ -22,7 +22,7 @@ file="/var/plexguide/redirect.yes"
     sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
     else
     sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
-    fi
+  fi
 
 
 
@@ -68,3 +68,11 @@ clear
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirect
 dialog --title "Traefik Status" --msgbox "\nTraefik is now Restarted!" 0 0
+
+file="/var/plexguide/redirect.yes"
+  if [ -e "$file" ]
+    then
+    sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
+    else
+    sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
+  fi
