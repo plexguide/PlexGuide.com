@@ -13,7 +13,8 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Known Issues
-- None
+- For those using 5.058 or below; type sudo ansible-role commands (after you update)
+  - If you don't, you'll never see the newer updates, you'll just see Developer 5.059 and Stable 5.058
 
 -------------------------------------------------------
 
@@ -34,6 +35,8 @@ Historical Documented Changes will be stored as below.
 
 #### Known Issues
 - NBGET Container is no good (not our fault, but pulling a new one to help you)
+- For those using 5.058 or below; type sudo ansible-role commands (after you update)
+  - If you don't, you'll never see the newer updates, you'll just see Developer 5.059 and Stable 5.058
 
 ### [5.058]
 
