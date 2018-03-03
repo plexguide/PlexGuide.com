@@ -1,4 +1,5 @@
-Genric Release Rule
+## Genric Release Rule
+
 1. Last Known Developer Becomes a BETA every SAT (generally)
 2. A week after the BETA unless someone notes there is something wrong with it; it becomes a STABLE EDITION
 3. A Stable Edition is removed only if there is something critically flawed that can undermine server operations
@@ -14,7 +15,7 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Changed
-- None
+- For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
 
 #### Removed
 - None
