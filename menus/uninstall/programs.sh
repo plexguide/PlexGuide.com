@@ -18,7 +18,7 @@
 
 mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
 
-dialog --inputbox 0 0 "This is an input box  with named pipe" 40 40 2> /tmp/namedPipe1 &
+dialog --inputbox "This is an input box  with named pipe" 40 5 2> /tmp/namedPipe1 &
 
 OUTPUT="$( cat /tmp/namedPipe1  )" # release contents of pipe
 
