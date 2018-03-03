@@ -47,21 +47,21 @@ apt-get update -y 1>/dev/null 2>&1
 apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
-#echo "30" | dialog --gauge "Installing: Docker" 7 50 0
-ansible-playbook /opt/plexguide/ansible/docker.yml #1>/dev/null 2>&1
-
-#echo "40" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
-ansible-playbook /opt/plexguide/ansible/config.yml --tags var
-
 #echo "45" | dialog --gauge "Installing: PlexGuide Dependiences" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall #1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands #1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall #1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands #1>/dev/null 2>&1
 
 #echo "50" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders #1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders #1>/dev/null 2>&1
 
 #echo "55" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label #1>/dev/null 2>&1
+
+#echo "30" | dialog --gauge "Installing: Docker" 7 50 0
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker #1>/dev/null 2>&1
+
+#echo "40" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
+ansible-playbook /opt/plexguide/ansible/config.yml --tags var
 
 #echo "60" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh #1>/dev/null 2>&1

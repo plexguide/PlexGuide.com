@@ -4,12 +4,9 @@
     - /opt/appdata/plexguide/var.yml
 
   roles:
-  - { role: preinstall, tags: ['preinstall'] }
   - { role: backup, tags: ['backup'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
-  - { role: folders, tags: ['folders'] }
-  - { role: commands, tags: ['commands'] }
   - { role: netdata, tags: ['netdata'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
