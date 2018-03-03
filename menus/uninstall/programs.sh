@@ -21,18 +21,25 @@ mpath="$mfolder$d"
 
 docker ps -a --format "{{.Names}}" > /opt/appdata/plexguide/running
 
-#read -n 1 -s -r -p "Press any key to continue "
+
 
 # show an inputbox
 dialog --title "Inputbox - To take input from you" \
 --backtitle "Linux Shell Script Tutorial Example" \
 --inputbox "Enter your name " 8 60 2>$OUTPUT
 
-#read -n 1 -s -r -p "Press any key to continue "
+# get respose
+respose=$?
+
 # get data stored in $OUPUT using input redirection
 name=$(<$OUTPUT)
 
 
+read -n 1 -s -r -p "Press any key to continue "
+
+
+
+HEIGHT=11
 WIDTH=32
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
