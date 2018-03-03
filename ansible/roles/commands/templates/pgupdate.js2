@@ -20,6 +20,7 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
+	clear
 	dialog --title "Emergency Mode" --msgbox "\nFor some reason, PLEXGUIDE is missing! Your DATA is not lost.  We are downloading the DEVELOPER Version to Help You!" 0 0
 	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 	exit 0
