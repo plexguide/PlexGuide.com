@@ -1,11 +1,3 @@
-## Genric Release Rule
-
-1. Last Known Developer Becomes a BETA every SAT (generally)
-2. A week after the BETA unless someone notes there is something wrong with it; it becomes a STABLE EDITION
-3. A Stable Edition is removed only if there is something critically flawed that can undermine server operations
-4. In rare occasions, a hotfix will be located above a BETA if one is required for testing!
-
--------------------------------------------------------
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
