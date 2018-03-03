@@ -59,10 +59,8 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands #1>/dev/nu
 
 #echo "50" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders #1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label #1>/dev/null 2>&1
 
-#echo "55" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders #1>/dev/null 2>&1
+#echo "55" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label #1>/dev/null 2>&1
 
 #echo "60" | dialog --gauge "Installing: RClone & Services" 7 50 0
