@@ -45,7 +45,7 @@ defaultEntryPoints = ["http", "https"]
 address = ":80"
     # add comment sybols in the front of each line to turn off https:// redirect
     [entryPoints.http.redirect]
-    entryPoint = "https"
+    #entryPoint = "https"
 # https is the default
 [entryPoints.https]
 address = ":443"
