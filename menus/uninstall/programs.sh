@@ -25,8 +25,9 @@ OUTPUT="$( cat /tmp/namedPipe1 )"
 echo  "This is the output " $OUTPUT
 echo "$OUTPUT" | awk '{print tolower($0)}' 2> /tmp/namedPipe1 &
 OUTPUT2="$( cat /tmp/namedPipe )"
-docker stop "$OUTPUT2"
-docker rm "$OUTPUT2"
+echo "$OUTPUT2"
+docker stop $OUTPUT2
+docker rm $OUTPUT2
 
 
 read -n 1 -s -r -p "Press any key to continue "
