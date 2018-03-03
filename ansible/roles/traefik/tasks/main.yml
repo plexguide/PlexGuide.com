@@ -3,21 +3,29 @@
   file:
     state: absent
     path: /opt/appdata/traefik/traefik.toml
+  tags:
+    - redirect
 
 - name: Remove NGINX Container
   docker_container:
     name: nginx-proxy
     state: absent
+  tags:
+    - redirect
 
 - name: Remove LetsEncrypt
   docker_container:
     name: letsencrypt
     state: absent
+  tags:
+    - redirect
 
-#- name: Removing Prior Traefik.toml
-  #file:
-    #state: absent
-    #path: /opt/appdata/traefik/traefik.toml
+- name: Removing Prior Traefik.toml
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+  tags:
+    - redirect
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
@@ -32,18 +40,24 @@
     force: yes
     owner: 1000
     group: 1000
+  tags:
+    - redirect
 
 - name: Replace yourdomain.com with user input
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: yourdomain.com
     replace: "{{domain}}"
+  tags:
+    - redirect 
 
 - name: Replace your@email.com with user input
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: your@email.com
     replace: "{{email}}"
+  tags:
+    - redirect
 #############################
 
 - name: Remove Traefik
