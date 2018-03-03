@@ -23,14 +23,32 @@ docker ps -a --format "{{.Names}}" > /opt/appdata/plexguide/running
 
 #read -n 1 -s -r -p "Press any key to continue "
 
+# show an inputbox
+dialog --title "Inputbox - To take input from you" \
+--backtitle "Linux Shell Script Tutorial Example" \
+--inputbox "Enter your name " 8 60 2>$OUTPUT
+
+# get respose
+respose=$?
+
+# get data stored in $OUPUT using input redirection
+name=$(<$OUTPUT)
+
+
+
+
+i=0
+while read p; do
+  echo $p > /tmp/program_var
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
+done </opt/appdata/plexguide/running
+
 HEIGHT=11
 WIDTH=32
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection"
-
-1
 
 OPTIONS=(- "P"
          - "Exit")
