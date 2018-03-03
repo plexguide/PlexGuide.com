@@ -49,11 +49,11 @@
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
 
-- name: Path for .conf
-  wait_for:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    state: present
-  when: nzbget_conf.stat.exists == False
+#- name: Please Wait - Pending .conf generation from NZBGET
+#  wait_for:
+#    path: "/opt/appdata/nzbget/nzbget.conf"
+#    state: present
+#  when: nzbget_conf.stat.exists == False
 
 - name: "Wait 10 Seconds"
   wait_for:
