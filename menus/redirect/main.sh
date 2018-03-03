@@ -16,7 +16,7 @@
 #
 #################################################################################
 HEIGHT=11
-WIDTH=32
+WIDTH=40
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Forced HTTPS Redirect: On/Off"
@@ -39,11 +39,13 @@ case $CHOICE in
         A)   
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             sed -i 's/entryPoint = "https"/#entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
-            dialog --title "PG Application Status" --msgbox "\nForced https Redirect is OFF!" 0 0  
+            dialog --title "PG Application Status" --msgbox "\nForced https Redirect is OFF!" 0 0
+            ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             sed -i '#s/entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
             dialog --title "PG Application Status" --msgbox "\nForced https Redirect is ON!" 0 0
+            ;;
         Z)
             clear
             exit 0
