@@ -18,10 +18,6 @@
 
 export NCURSES_NO_UTF8_ACS=1
 
-clear
-echo "Starting Restore Process"
-echo ""
-
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
@@ -125,19 +121,19 @@ fi
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
-#mkdir /tmp/plexguide
-#cp /opt/appdata/plexguide/* /tmp/plexguide
-
 while read p; do
   echo $p > /tmp/program_var
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass
+  app=$( cat /tmp/program_var )
+  dialog --infobox "Restoring App: $app" 3 37
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass 1>/dev/null 2>&1
 done </opt/appdata/plexguide/backuplist2
 
 rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
-echo ""
-echo "Backup Complete"
-read -n 1 -s -r -p "Press any key to continue "
+dialog --title "PG Backup Status" --msgbox "\nMass Application Restore Complete!" 0 0
 clear
+
+sudo bash /opt/plexguide/menus/backup-restore/main.sh
+exit 0
