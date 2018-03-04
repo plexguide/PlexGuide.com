@@ -49,9 +49,9 @@ case $CHOICE in
             file="/var/plexguide/redirect.yes"
                 if [ -e "$file" ]
                     then
-                sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
-                    else
                 sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
+                    else
+                sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
             fi
             ;;
         D) 

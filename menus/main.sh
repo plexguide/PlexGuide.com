@@ -64,16 +64,7 @@ case $CHOICE in
         I)  
             bash /opt/plexguide/menus/settings/main.sh ;;
         Z)
-            clear
-            echo "1. Please STAR PG via http://github.plexguide.com"
-            echo "2. Join the PG Discord via http://discord.plexguide.com"
-            echo "3. Donate to PG via http://donate.plexguide.com"
-            echo ""
-            echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
-            echo "TIP : Menu Letters Displayed are HotKeys"
-            echo "NOTE: Restart the Program Anytime, type: plexguide"
-            echo "NOTE: Update Plexguide Anytime, type: pgupdate"
-            echo ""
+            sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
 esac
 
