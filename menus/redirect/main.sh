@@ -48,6 +48,7 @@ case $CHOICE in
         B)
             touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
             sed -i 's/#entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
+            sed -i 's/\[entryPoints.http.redirect\]/\#\[entryPoints.http.redirect\]/g' /opt/appdata/traefik/traefik.toml
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is ON! Restarting Traefik" 0 0
             ;;
         Z)
