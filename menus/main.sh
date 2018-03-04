@@ -29,9 +29,9 @@ OPTIONS=(A "Donation Menu"
          C "PG Program Suite"
          D "Server Information"
          E "Troubleshooting Actions"
-         F "Backup & Restore"
-         G "Update PlexGuide"
-         H "Settings & Tools"
+         F "Settings & Tools"
+         G "Backup & Restore"
+         H "Update PlexGuide"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -52,13 +52,13 @@ case $CHOICE in
             bash /opt/plexguide/menus/info/main.sh ;;
         E)
             bash /opt/plexguide/menus/tshoot/main.sh ;;
-        F)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        F) 
+            bash /opt/plexguide/menus/settings/main.sh ;;
         G)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        H)
             bash /opt/plexguide/scripts/upgrade/main.sh 
             exit 0 ;;
-        H) 
-            bash /opt/plexguide/menus/settings/main.sh ;;
         Z)
             sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
