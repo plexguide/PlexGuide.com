@@ -139,6 +139,7 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
 
 done
 
+read -n 1 -s -r -p "Press any key to continue "
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 sudo bash /opt/plexguide/menus/backup-restore/restore.sh
 exit 0
