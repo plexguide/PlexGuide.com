@@ -45,7 +45,7 @@
 
 - name: Installing Traefik.Toml (Off Redirect)
   template:
-    src: traefik.toml
+    src: traefik.toml.off
     dest: /opt/appdata/traefik/traefik.toml
     force: yes
     owner: 1000
