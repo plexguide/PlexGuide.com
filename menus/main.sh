@@ -17,6 +17,7 @@
 #################################################################################
 
 export NCURSES_NO_UTF8_ACS=1
+clear
 HEIGHT=15
 WIDTH=43
 CHOICE_HEIGHT=9
@@ -26,11 +27,11 @@ TITLE="PlexGuide - Version 5.060"
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
          C "PG Program Suite"
-         D "Server Info & Tools"
+         D "Server Information"
          E "Troubleshooting Actions"
          F "Backup & Restore"
          G "Update PlexGuide"
-         H "Settings"
+         H "Settings & Tools"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -39,7 +40,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-            #bash /opt/plexguide/menus/benchmark/main.sh ;;
             #bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
 case $CHOICE in
         A)
@@ -51,15 +51,12 @@ case $CHOICE in
         D)
             bash /opt/plexguide/menus/info/main.sh ;;
         E)
-            ## troubleshooting
-            ;;
+            bash /opt/plexguide/menus/tshoot/main.sh ;;
         F)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         G)
-            clear
             bash /opt/plexguide/scripts/upgrade/main.sh 
-            exit 0
-            ;;
+            exit 0 ;;
         H) 
             bash /opt/plexguide/menus/settings/main.sh ;;
         Z)
