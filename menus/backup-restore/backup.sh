@@ -18,12 +18,12 @@
 
 export NCURSES_NO_UTF8_ACS=1
 
-HEIGHT=17
-WIDTH=45
-CHOICE_HEIGHT=10
-BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+HEIGHT=19
+WIDTH=30
+CHOICE_HEIGHT=12
+#BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
-MENU="Choose one of the following options:"
+MENU="Choose a Program:"
 
 OPTIONS=(1 "CouchPotato"
          2 "Delguge"
