@@ -67,8 +67,15 @@ touch /var/plexguide/basics.yes 1>/dev/null 2>&1
 echo "80" | dialog --gauge "Installing: Portainer" 7 50 0 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
 
-echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
+file="/var/plexguide/redirect.yes"
+if [ -e "$file" ]
+then
+  clear 1>/dev/null 2>&1
+else
+  echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
+fi
+
 
 echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
