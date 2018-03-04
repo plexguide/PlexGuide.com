@@ -41,13 +41,13 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backup.sh ;;
         B)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+            bash /opt/plexguide/menus/backup-restore/restore.sh ;;
         C)
-            bash /opt/plexguide/scripts/backup-restore/backup.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
         D)
-            bash /opt/plexguide/scripts/backup-restore/restore.sh ;;
+            bash /opt/plexguide/menus/backup-restore/restoremass.sh ;;
         Z)
             clear
             exit 0

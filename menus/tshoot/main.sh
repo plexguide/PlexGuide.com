@@ -9,11 +9,8 @@ MENU="Make a Selection Choice:"
 
 OPTIONS=(A "Information"
          B "Server Network Benchmarks"
-         C "View Diskpspace with NCDU"
-         D "View Container Performance"
-         E "View Service Status"
+         C "View Service Status"
          Z "Exit")
-
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -26,12 +23,10 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/info/basicchecks.sh ;;
+            bash /opt/plexguide/scripts/menus/info-menu.sh ;;
         B)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         C)
-            bash /opt/plexguide/menus/info/ncdu.sh ;;
-        D)
             bash /opt/plexguide/scripts/menus/status-menu.sh ;;
         Z)
             clear

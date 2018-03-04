@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/plexdrive --uid=1000 --gid=1000 -o allow_other,allow_non_empty_mount -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive
+ExecStart=/usr/bin/plexdrive --uid=1000 --gid=1000 -o allow_other,read_only -v 2 --refresh-interval=1m --config=/root/.plexdrive /mnt/plexdrive
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes

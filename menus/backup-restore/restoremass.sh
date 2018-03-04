@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [PlexGuide Installation Script]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -18,9 +18,15 @@
 
 export NCURSES_NO_UTF8_ACS=1
 
-clear
-echo "Starting Restore Process"
-echo ""
+if dialog --stdout --title "Restore Mass Confirmation" \
+            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+            --yesno "\nDo you want to BACKOUT & EXIT from making a Mass Restore?" 0 0; then
+            dialog --title "PG Restore Status" --msgbox "\nExiting! User selected NOT to RESTORE!" 0 0
+            sudo bash /opt/plexguide/menus/backup-restore/main.sh
+            exit 0
+        else
+            clear
+        fi
 
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
@@ -31,27 +37,27 @@ declare -i count=0
 
 while read p; do
       count=$((count+1))
-      	if [ $count -eq 1 ]; then
+        if [ $count -eq 1 ]; then
             echo "$p" > var1
             var1=$p
         fi
-      	if [ $count -eq 2 ]; then
+        if [ $count -eq 2 ]; then
             echo "$p" > var2
             var2=$p
         fi
-      	if [ $count -eq 3 ]; then
+        if [ $count -eq 3 ]; then
             echo "$p" > var3
             var3=$p
         fi
-      	if [ $count -eq 4 ]; then
+        if [ $count -eq 4 ]; then
             echo "$p" > var4
             var4=$p
         fi
-      	if [ $count -eq 5 ]; then
+        if [ $count -eq 5 ]; then
             echo "$p" > var5
             var5=$p
         fi
-      	if [ $count -eq 6 ]; then
+        if [ $count -eq 6 ]; then
             echo "$p" > var6
             var6=$p
         fi
@@ -61,7 +67,7 @@ HEIGHT=15
 WIDTH=48
 CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PG Restore - Last 7 Shown"
+TITLE="PG Mass Restore - Last 7 Shown"
 MENU="Select a Restore Option (Most Recent Top):"
 
 OPTIONS=(A "Most Recent Backup"
@@ -125,19 +131,19 @@ fi
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
-#mkdir /tmp/plexguide
-#cp /opt/appdata/plexguide/* /tmp/plexguide
-
 while read p; do
   echo $p > /tmp/program_var
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass
+  app=$( cat /tmp/program_var )
+  dialog --infobox "Restoring App: $app" 3 37
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass 1>/dev/null 2>&1
 done </opt/appdata/plexguide/backuplist2
 
 rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
-echo ""
-echo "Backup Complete"
-read -n 1 -s -r -p "Press any key to continue "
+dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!" 0 0
 clear
+
+sudo bash /opt/plexguide/menus/backup-restore/main.sh
+exit 0
