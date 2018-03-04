@@ -18,7 +18,7 @@ Current Changes will continued to be modified as known.
   - Put Failsafes in place to prevent accidental backup
 
 #### Removed
-- None
+- (BETA) Trashed Old Menus
 
 #### Known Issues
 - For those using 5.058 or below; type sudo ansible-role commands (after you update)
