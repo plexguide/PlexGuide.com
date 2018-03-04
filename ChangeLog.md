@@ -4,10 +4,12 @@ Current Changes will continued to be modified as known.
 ### [5.060] Developer Version & Beta
 
 #### Added
-- None
+- Added Settings Menu
+- pgdev command; allows you to automatically to update to latest pgdev without being prompted
+- added minor script to dislay ending info rather than having to copy all over the place
 
 #### Changed
-- None
+- Front Menu Layout
 
 #### Removed
 - None
