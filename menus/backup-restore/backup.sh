@@ -52,7 +52,7 @@ OPTIONS=(1 "CouchPotato"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
+                ##--backtitle "$BACKTITLE" \
                 --title "$TITLE" \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
