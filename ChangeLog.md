@@ -3,6 +3,8 @@ Current Changes will continued to be modified as known.
 
 ### [5.060] Developer Version & Beta
 
+BETA 2 = BETA 1 & 2
+
 #### Added
 - (Beta1) Added Settings Menu
 - (Beta1) pgdev command; allows you to automatically to update to latest pgdev without being prompted
@@ -11,9 +13,11 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - (Beta1) Front Menu Layout
-- (Dev) Solo App Backup Formatted To New Menu
-  - Put Failsafe in place to prevent accidental backup
-  - Check to see local data even exists
+- (Beta2) Solo Backup & Restore Formatted To New Menu
+  - Put Failsafes in place to prevent accidental backup
+  - Check to see local data even exist
+- (Beta2) Mass Backup & Restore Formatted To New Menu
+  - Put Failsafes in place to prevent accidental backup
 
 #### Removed
 - None
