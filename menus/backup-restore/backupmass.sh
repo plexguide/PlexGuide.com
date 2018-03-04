@@ -40,7 +40,7 @@ mpath="$mfolder$d"
 
 mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
 mkdir $mpath
-mv /mnt/gdrive/plexguide/backup/* $mpath 
+mv /mnt/gdrive/plexguide/backup/* $mpath 1>/dev/null 2>&1
 
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 
