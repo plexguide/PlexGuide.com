@@ -130,7 +130,7 @@ if [ -e "$file" ]
             clear
         fi
     else
-        dialog --title "PG Restore Status" --msgbox "\nExiting! You have no GDrive data -- $app -- to backup to GDrive!" 0 0
+        dialog --title "PG Restore Status" --msgbox "\nExiting! You have no GDrive data -- $app -- to Restore From GDrive!" 0 0
         sudo bash /opt/plexguide/menus/backup-restore/restore.sh
         exit 0
 fi
