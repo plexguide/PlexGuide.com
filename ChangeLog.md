@@ -10,6 +10,7 @@ Current Changes will continued to be modified as known.
 - (BETA) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
 
 #### Changed
+- (DEV) Removed Bad Flags - PlexDrive / reported by Petitor
 - (BETA) Front Menu Layout
 - (BETA) Solo Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
