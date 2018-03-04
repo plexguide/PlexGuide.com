@@ -11,9 +11,11 @@ Current Changes will continued to be modified as known.
 
 #### Changed
 - (Beta1) Front Menu Layout
-- (Dev) Solo App Backup Formatted To New Menu
-  - Put Failsafe in place to prevent accidental backup
-  - Check to see local data even exists
+- (Beta2) Solo Backup & Restore Formatted To New Menu
+  - Put Failsafes in place to prevent accidental backup
+  - Check to see local data even exist
+- (Beta2) Mass Backup & Restore Formatted To New Menu
+  - Put Failsafes in place to prevent accidental backup
 
 #### Removed
 - None
