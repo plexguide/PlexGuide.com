@@ -52,6 +52,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/info/main.sh ;;
         E)
             ## troubleshooting
+            ;;
         F)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         G)
