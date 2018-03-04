@@ -1,7 +1,7 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
-WIDTH=38
+WIDTH=36
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
