@@ -22,7 +22,7 @@ clear
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Backup Menu" --menu "Make your choice" 19 25 12 \
+whiptail --title "Restore Menu" --menu "Make your choice" 19 25 12 \
     "1 )" "CouchPotato"  \
     "2 )" "Deluge"  \
     "3 )" "Emby"  \
@@ -31,11 +31,11 @@ whiptail --title "Backup Menu" --menu "Make your choice" 19 25 12 \
     "6 )" "Jackett"  \
     "7 )" "Lidarr"  \
     "8 )" "Medusa"  \
-    "9 )" "Myler"  \
+    "9)" "Myler"  \
     "10)" "Muximux"  \
     "11)" "NZBGET"  \
     "12)" "NZBHydra"  \
-    "13)" "NZBHydra2"  \
+    "13)" "NZBHydra"  \
     "14)" "Ombi"  \
     "15)" "Organizr"  \
     "16)" "Plex"  \
@@ -61,7 +61,7 @@ case $CHOICE in
       ;;
 
     "3 )")
-      echo "embyserver" > /tmp/program_var
+      echo "emby" > /tmp/program_var
       ;;
 
     "4 )")
@@ -153,7 +153,7 @@ case $CHOICE in
         exit 0
         ;;
 esac
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
 read -n 1 -s -r -p "Press any key to continue "
 done
 exit
