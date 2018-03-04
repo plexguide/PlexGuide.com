@@ -48,6 +48,7 @@ case $CHOICE in
                --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
                dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
             clear
+            sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0
                 else
             clear
@@ -64,15 +65,7 @@ case $CHOICE in
 
             dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
             clear
-            echo "1. Please STAR PG via http://github.plexguide.com"
-            echo "2. Join the PG Discord via http://discord.plexguide.com"
-            echo "3. Donate to PG via http://donate.plexguide.com"
-            echo ""
-            echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
-            echo "TIP : Menu Letters Displayed are HotKeys"
-            echo "NOTE: Restart the Program Anytime, type: plexguide"
-            echo "NOTE: Update Plexguide Anytime, type: pgupdate"
-            echo ""
+            sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
@@ -93,6 +86,7 @@ if dialog --stdout --title "Version User Confirmation" \
    --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
 clear
+sudo bash /opt/plexguide/scripts/message/ending.sh
 exit 0
     else
 clear
@@ -110,13 +104,5 @@ mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-   clear
-            echo "1. Please STAR PG via http://github.plexguide.com"
-            echo "2. Join the PG Discord via http://discord.plexguide.com"
-            echo "3. Donate to PG via http://donate.plexguide.com"
-            echo ""
-            echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
-            echo "TIP : Menu Letters Displayed are HotKeys"
-            echo "NOTE: Restart the Program Anytime, type: plexguide"
-            echo "NOTE: Update Plexguide Anytime, type: pgupdate"
-            echo ""
+
+sudo bash /opt/plexguide/scripts/message/ending.sh
