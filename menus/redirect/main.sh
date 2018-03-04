@@ -22,7 +22,7 @@ HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Forced HTTPS Redirect: -OFF- "
+TITLE="Forced HTTPS Redirect"
 MENU="For use with SUBDOMAINS, not IPv4:Ports"
 
 OPTIONS=(A "Keep Forced Redirect Off"

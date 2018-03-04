@@ -25,7 +25,7 @@ MENU="Make Your Selection Choice:"
 
 OPTIONS=(A "Ports    : Turn On/Off Application Ports"
          B "Processor: Enhance Processing Power"
-         C "Redirect : Force Apps to use HTTPS Only"
+         C "Redirect : Force Apps to use HTTPS Only?"
          D "Uncapped : Turn On/Off Upload Bandwidth Limit"
          Z "Exit")
 
