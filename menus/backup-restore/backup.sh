@@ -116,19 +116,19 @@ esac
 
 app=$( cat /tmp/program_var )
 
-file="/var/plexguide/$app"
+file="/opt/appdata/$app"
 if [ -e "$file" ]
     then
 
-    if dialog --stdout --title "Backup User Confirmation" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nDo you want to BACKOUT & EXIT from making the Backup of: $app?" 0 0; then
-        dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-        exit 0
+        if dialog --stdout --title "Backup User Confirmation" \
+            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup of: $app?" 0 0; then
+            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+            exit 0
+        else
+            clear
+        fi
     else
-        clear
-    fi
-else
         dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data to backup to GDrive!" 0 0
         exit 0
 fi
