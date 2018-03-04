@@ -22,7 +22,7 @@ HEIGHT=19
 WIDTH=30
 CHOICE_HEIGHT=12
 #BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Backup & Restore Menu"
+TITLE="Backup Menu"
 MENU="Choose a Program:"
 
 OPTIONS=(1 "CouchPotato"
