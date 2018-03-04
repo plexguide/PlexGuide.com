@@ -41,15 +41,13 @@ clear
 case $CHOICE in
         A)   
             rm /var/plexguide/redirect.yes 1>/dev/null 2>&1
-            sed -i 's/entryPoint = "https"/\#\entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
-            sed -i 's/\[entryPoints.http.redirect]\#\[entryPoints.http.redirect\]/g' /opt/appdata/traefik/traefik.toml
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is OFF! Restarting Traefik!" 0 0
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=main,redirecton
             ;;
         B)
             touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
-            sed -i 's/#entryPoint = "https"/entryPoint = "https"/g' /opt/appdata/traefik/traefik.toml
-            sed -i 's/\#\[entryPoints.http.redirect\]/\[entryPoints.http.redirect\]/g' /opt/appdata/traefik/traefik.toml
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is ON! Restarting Traefik" 0 0
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=main,redirectoff
             ;;
         Z)
             clear
@@ -58,5 +56,5 @@ case $CHOICE in
 esac
 clear
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirect
+
 dialog --title "Traefik Status" --msgbox "\nTraefik is now Restarted!" 0 0
