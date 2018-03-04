@@ -22,7 +22,7 @@ if dialog --stdout --title "Backup Mass Confirmation" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
             --yesno "\nDo you want to BACKOUT & EXIT from making a Mass Backup?" 0 0; then
             dialog --title "PG Backup Status" --msgbox "\nExiting! User selected NOT to BACKUP!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
+            sudo bash /opt/plexguide/menus/backup-restore/main.sh
             exit 0
         else
             clear
@@ -56,35 +56,6 @@ echo ""
 echo "Backup Complete"
 read -n 1 -s -r -p "Press any key to continue "
 clear
-
-
-
-
-
-
-
-
-file="/opt/appdata/$app"
-if [ -e "$file" ]
-    then
-
-        if dialog --stdout --title "Backup User Confirmation" \
-            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup -- $app -- ?" 0 0; then
-            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
-            exit 0
-        else
-            clear
-        fi
-    else
-        dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
-        sudo bash /opt/plexguide/menus/backup-restore/backup.sh
-        exit 0
-fi
-
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
-dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 
 sudo bash /opt/plexguide/menus/backup-restore/main.sh
 exit 0
