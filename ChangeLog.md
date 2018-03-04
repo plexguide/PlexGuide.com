@@ -4,12 +4,13 @@ Current Changes will continued to be modified as known.
 ### [5.060] Developer Version & Beta
 
 #### Added
-- Added Settings Menu
-- pgdev command; allows you to automatically to update to latest pgdev without being prompted
-- added minor script to dislay ending info rather than having to copy all over the place
+- (Beta1) Added Settings Menu
+- (Beta1) pgdev command; allows you to automatically to update to latest pgdev without being prompted
+- (Beta1) added minor script to dislay ending info rather than having to copy all over the place
+- (Beta1) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
 
 #### Changed
-- Front Menu Layout
+- (Beta1) Front Menu Layout
 
 #### Removed
 - None
