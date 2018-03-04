@@ -122,18 +122,23 @@ if [ -e "$file" ]
 
         if dialog --stdout --title "Backup User Confirmation" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup of: $app?" 0 0; then
+            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup -- $app -- ?" 0 0; then
             dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
             exit 0
         else
             clear
         fi
     else
-        dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data to backup to GDrive!" 0 0
+        dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
+        sudo bash /opt/plexguide/menus/backup-restore/backup.sh
         exit 0
 fi
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
-read -n 1 -s -r -p "Press any key to continue "
+
 done
-exit
+
+dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
+sudo bash /opt/plexguide/menus/backup-restore/backup.sh
+exit 0
