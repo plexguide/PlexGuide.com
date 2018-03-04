@@ -28,7 +28,7 @@ if dialog --stdout --title "Backup Mass Confirmation" \
             clear
         fi
 
-dialog --infobox "Backup: Starting Processing" 0 0 ; sleep 1
+dialog --infobox "Backup: Starting Processing" 1 30 ; sleep 1
 
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
