@@ -111,7 +111,20 @@ case $CHOICE in
         Z)
             clear
             exit 0 ;;
+
 esac
+
+app=$( cat /tmp/program_var )
+
+if dialog --stdout --title "Backup User Confirmation" \
+   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+   --yesno "\nDo you want to BACKOUT & EXIT from making the Backup of: $app" 7 50; then
+   dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+exit 0
+    else
+clear
+fi
+
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
 read -n 1 -s -r -p "Press any key to continue "
 done
