@@ -41,7 +41,7 @@
     owner: 1000
     group: 1000
   tags:
-    - redirecton
+    - redirectoff
 
 - name: Installing Traefik.Toml (Off Redirect)
   template:
@@ -51,7 +51,7 @@
     owner: 1000
     group: 1000
   tags:
-    - redirectoff
+    - redirecton
 
 - name: Replace yourdomain.com with user input
   replace:
