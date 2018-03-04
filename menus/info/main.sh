@@ -1,16 +1,16 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
-WIDTH=40
+WIDTH=38
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
 
 OPTIONS=(A "Server Network Benchmarks"
-         B "View Diskpspace with NCDU"
-         C "View Container Performance"
-         D "View Service Status"
+         B "Diskpspace with NCDU"
+         C "Container Performance"
+         D "View Services"
          Z "Exit")
 
 
