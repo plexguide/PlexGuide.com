@@ -27,7 +27,7 @@ case $CHOICE in
 
    "2)")
    clear
-   bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh
+   bash /opt/plexguide/scripts/torrentvpn/torrentvpn-menu.sh
    ;;
 
    "3)")
