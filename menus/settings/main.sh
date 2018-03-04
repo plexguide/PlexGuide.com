@@ -23,9 +23,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Ports   : Turn On/Off Application Ports"
-         B "Redirect: Force Apps to use HTTPS Only"
-         C "Uncapped: Turn On/Off Upload Bandwidth Limit"
+OPTIONS=(A "Ports    : Turn On/Off Application Ports"
+         B "Processor: Enhance Processing Power"
+         C "Redirect : Force Apps to use HTTPS Only"
+         D "Uncapped : Turn On/Off Upload Bandwidth Limit"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -39,8 +40,10 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)   
-            bash /opt/plexguide/menus/ports/main.sh ;;
+            bash /opt/plexguide/menus/ports/main.sh ;;  
         B)
+            bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+        C)
             bash /opt/plexguide/menus/redirect/main.sh
 
             file="/var/plexguide/redirect.yes"
@@ -51,7 +54,7 @@ case $CHOICE in
                 sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
             fi
             ;;
-        C) 
+        D) 
             bash /opt/plexguide/menus/transfer/main.sh ;;
         Z)
             clear

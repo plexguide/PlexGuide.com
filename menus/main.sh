@@ -26,13 +26,12 @@ TITLE="PlexGuide - Version 5.060"
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
          C "PG Application Suite (Programs)"
-         D "Enhance Processor Performance"
-         E "Network & Server Benchmarks"
-         F "Info & Troubleshoot"
-         G "Backup & Restore"
-         H "Update (Read Changelog)"
-         I "Uninstall PG"
-         J "Settings"
+         D "Network & Server Benchmarks"
+         E "Info & Troubleshoot"
+         F "Backup & Restore"
+         G "Update (Read Changelog)"
+         H "Uninstall PG"
+         I "Settings"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -50,21 +49,19 @@ case $CHOICE in
         C)
             bash /opt/plexguide/menus/programs/main.sh ;;
         D)
-            bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
-        E)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
-        F)
+        E)
             bash /opt/plexguide/menus/info/main.sh ;;
-        G)
+        F)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
-        H)
+        G)
             clear
             bash /opt/plexguide/scripts/upgrade/main.sh 
             exit 0
             ;;
-        I)
+        H)
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
-        J)  
+        I)  
             bash /opt/plexguide/menus/settings/main.sh ;;
         Z)
             clear
