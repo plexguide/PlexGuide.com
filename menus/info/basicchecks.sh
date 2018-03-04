@@ -7,7 +7,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
 
-OPTIONS=(A "Basic Checks Tool"
+OPTIONS=(A "Information"
          B "Server Network Benchmarks"
          C "View Service Status"
          Z "Exit")
@@ -23,7 +23,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/info/basicchecks.sh ;;
+            bash /opt/plexguide/scripts/menus/info-menu.sh ;;
         B)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         C)
