@@ -25,11 +25,11 @@ TITLE="PlexGuide - Version 5.060"
 
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
-         C "PG Application Suite (Programs)"
+         C "PG Program Suite"
          D "Server Info & Tools"
          E "Troubleshooting Actions"
          F "Backup & Restore"
-         G "Update (Read Changelog)"
+         G "Update PlexGuide"
          H "Settings"
          Z "Exit")
 
