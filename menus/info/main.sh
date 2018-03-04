@@ -7,11 +7,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
 
-OPTIONS=(A "Information"
-         B "Server Network Benchmarks"
-         C "View Diskpspace with NCDU"
-         D "View Container Performance"
-         E "View Service Status"
+OPTIONS=(A "Server Network Benchmarks"
+         B "View Diskpspace with NCDU"
+         C "View Container Performance"
+         D "View Service Status"
          Z "Exit")
 
 
@@ -26,11 +25,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/info/basicchecks.sh ;;
-        B)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
-        C)
+        B)
             bash /opt/plexguide/menus/info/ncdu.sh ;;
+        C)
+            ##bash /opt/plexguide/scripts/menus/status-menu.sh 
+            ;;
         D)
             bash /opt/plexguide/scripts/menus/status-menu.sh ;;
         Z)
