@@ -1,26 +1,24 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.060] Developer Version & Beta
-
-BETA 2 = BETA 1 & 2
+### [5.060] BETA & DEV Version
 
 #### Added
-- (Beta1) Added Settings Menu
-- (Beta1) pgdev command; allows you to automatically to update to latest pgdev without being prompted
-- (Beta1) added minor script to dislay ending info rather than having to copy all over the place
-- (Beta1) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
+- (BETA) Added Settings Menu
+- (BETA) pgdev command; allows you to automatically to update to latest pgdev without being prompted
+- (BETA) added minor script to dislay ending info rather than having to copy all over the place
+- (BETA) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
 
 #### Changed
-- (Beta1) Front Menu Layout
-- (Beta2) Solo Backup & Restore Formatted To New Menu
+- (BETA) Front Menu Layout
+- (BETA) Solo Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
   - Check to see local data even exist
-- (Beta2) Mass Backup & Restore Formatted To New Menu
+- (BETA) Mass Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
 
 #### Removed
-- None
+- (BETA) Trashed Old Menus
 
 #### Known Issues
 - For those using 5.058 or below; type sudo ansible-role commands (after you update)
