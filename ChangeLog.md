@@ -3,6 +3,9 @@ Current Changes will continued to be modified as known.
 
 ### [5.060] Developer Version & Beta
 
+BETA 2 = BETA 1 & 2
+BETA 1 = BETA 1
+
 #### Added
 - (Beta1) Added Settings Menu
 - (Beta1) pgdev command; allows you to automatically to update to latest pgdev without being prompted
