@@ -42,12 +42,16 @@ case $CHOICE in
         A)   
             rm /var/plexguide/redirect.yes 1>/dev/null 2>&1
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is OFF! Restarting Traefik!" 0 0
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=main,redirecton
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=main,redirectoff
+            clear
             ;;
         B)
             touch /var/plexguide/redirect.yes 1>/dev/null 2>&1
             dialog --title "Traefik Status" --msgbox "\nForced https Redirect is ON! Restarting Traefik" 0 0
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=main,redirectoff
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=main,redirecton
+            clear
             ;;
         Z)
             clear
