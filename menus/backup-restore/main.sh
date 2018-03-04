@@ -45,7 +45,7 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/backup-restore/restore.sh ;;
         C)
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
         D)
             bash /opt/plexguide/scripts/backup-restore/restore.sh ;;
         Z)
