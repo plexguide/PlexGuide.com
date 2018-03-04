@@ -116,7 +116,7 @@ esac
 
 app=$( cat /tmp/program_var )
 
-file="/mnt/gdrive/plexguide/backup/$app"
+file="/mnt/gdrive/plexguide/backup/$app.tar"
 if [ -e "$file" ]
     then
 
