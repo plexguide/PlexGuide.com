@@ -1,20 +1,15 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
-############# User Confirms They Understand
-dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
 
-
-############# Menu
-HEIGHT=12
+HEIGHT=9
 WIDTH=45
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PlexDrive for PG"
 MENU="Choose one of the following options:"
 
-OPTIONS=(A "PlexDrive4 (Recommended)"
-         B "PlexDrive5 "
-         C "Remove PlexDrive Tokens"
+OPTIONS=(A "RClone - Unencrypted (Recommended)"
+         B "RClone - Encrypted"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -28,22 +23,9 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            rm -r /opt/appdata/plexguide/pd5 1>/dev/null 2>&1
-            touch /opt/appdata/plexguide/pd4 1>/dev/null 2>&1
-            bash /opt/plexguide/scripts/docker-no/plexdrive4.sh ;;
+            bash /opt/plexguide/scripts/docker-no/rclone-un.sh ;;
         B)
-            rm -r /opt/appdata/plexguide/pd4 1>/dev/null 2>&1
-            touch /opt/appdata/plexguide/pd5 1>/dev/null 2>&1
-            bash /opt/plexguide/scripts/docker-no/plexdrive.sh ;;
-        C)
-            rm -r /root/.plexdrive 1>/dev/null 2>&1
-            rm -r ~/.plexdrive 1>/dev/null 2>&1
-            clear
-            echo "Tokens Removed - Try PlexDrive Install Again"
-            echo
-            read -n 1 -s -r -p "Press any key to continue"
-            clear
-            bash /opt/plexguide/menus/plexdrive/main.sh ;;
+            bash /opt/plexguide/scripts/docker-no/rclone-en.sh ;;
         Z)
             clear
             exit 0 ;;
