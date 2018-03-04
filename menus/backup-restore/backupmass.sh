@@ -47,16 +47,14 @@ docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
-  dialog --infobox "Backing Up: $app" 3 40
+  dialog --infobox "Backing Up: $app" 3 37
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
 done </opt/appdata/plexguide/running
 
 rm -r /mnt/gdrive/plexguide/backup/watchtower.tar 1>/dev/null 2>&1
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 
-echo ""
-echo "Backup Complete"
-read -n 1 -s -r -p "Press any key to continue "
+dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
 
 sudo bash /opt/plexguide/menus/backup-restore/main.sh
