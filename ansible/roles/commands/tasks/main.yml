@@ -21,6 +21,7 @@
     when: pgupdate.stat.exists
 
   - name: Remove PGDev
+    file:
       path: /bin/pgdev
       state: absent
     when: pgdev.stat.exists
