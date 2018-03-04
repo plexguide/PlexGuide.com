@@ -16,17 +16,6 @@
 #
 #################################################################################
 
-touch /mnt/gdrive/pg.test
-file="/mnt/gdrive/pg.test"
-if [ -e "$file" ]
-then
-    clear
-else
-    dialog --title "RCLONE" --msgbox "\nExiting! You need to Configure RClone First or it may NOT be SETUP correctly!" 0 0
-    rm -r touch /mnt/gdrive/pg.test
-    exit 0
-fi
-
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=19
