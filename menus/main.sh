@@ -17,21 +17,20 @@
 #################################################################################
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=16
+HEIGHT=15
 WIDTH=43
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PlexGuide - Version 5.060"
 
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
          C "PG Application Suite (Programs)"
-         D "Network & Server Benchmarks"
-         E "Info & Troubleshoot"
+         D "Server Info & Tools"
+         E "Troubleshooting Actions"
          F "Backup & Restore"
          G "Update (Read Changelog)"
-         H "Uninstall PG"
-         I "Settings"
+         H "Settings"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -40,7 +39,8 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
+            #bash /opt/plexguide/menus/benchmark/main.sh ;;
+            #bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
 case $CHOICE in
         A)
             bash /opt/plexguide/menus/donate/main.sh ;;
@@ -49,9 +49,9 @@ case $CHOICE in
         C)
             bash /opt/plexguide/menus/programs/main.sh ;;
         D)
-            bash /opt/plexguide/menus/benchmark/main.sh ;;
-        E)
             bash /opt/plexguide/menus/info/main.sh ;;
+        E)
+            ## troubleshooting
         F)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         G)
@@ -59,9 +59,7 @@ case $CHOICE in
             bash /opt/plexguide/scripts/upgrade/main.sh 
             exit 0
             ;;
-        H)
-            bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
-        I)  
+        H) 
             bash /opt/plexguide/menus/settings/main.sh ;;
         Z)
             sudo bash /opt/plexguide/scripts/message/ending.sh
