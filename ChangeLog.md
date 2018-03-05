@@ -6,8 +6,9 @@ Current Changes will continued to be modified as known.
 #### Added
 - (BETA) Added Settings Menu
 - (BETA) pgdev command; allows you to automatically to update to latest pgdev without being prompted
-- (BETA) added minor script to dislay ending info rather than having to copy all over the place
+- (BETA) added minor script to display ending info rather than having to copy all over the place
 - (BETA) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
+- (DEV) Added option to go back to Main menu in the Service menu
 
 #### Changed
 - (DEV) Removed Bad Flags - PlexDrive / reported by Petitor
@@ -17,6 +18,7 @@ Current Changes will continued to be modified as known.
   - Check to see local data even exist
 - (BETA) Mass Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
+- (DEV) Updated Service Status&Restart menus look
 
 #### Removed
 - (BETA) Trashed Old Menus
@@ -29,7 +31,7 @@ Current Changes will continued to be modified as known.
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.059] 
+### [5.059]
 
 #### Added
 - New Command updates to pgupdata and plexguide
@@ -116,7 +118,7 @@ Historical Documented Changes will be stored as below.
 #### Removed
 - None
 
-### [5.050] 
+### [5.050]
 
 #### Added
 - Ability to always downloaded lastest download menu regardless of version
@@ -180,7 +182,7 @@ Historical Documented Changes will be stored as below.
 #### Removed
 - Tossed Old PreInstaller
 
-### [5.045] 
+### [5.045]
 
 #### Added
 - Plex 4 or 5 Install selection
@@ -192,14 +194,14 @@ Historical Documented Changes will be stored as below.
 #### Removed
 - Tossing old menus
 
-### [5.044] 
+### [5.044]
 
 #### Added
 - Slowing adding new meus
 - Mass Backup Installer
   - Mass Backup Installer also moves recent backup in gdrive to backup.old with a time stamp
 - Mass Restore Installer
-  - Mass Restore Installer can restore most recent and last 6 backups 
+  - Mass Restore Installer can restore most recent and last 6 backups
 
 #### Changed
 - Fixed fast flash load up error (did not affect anything, but could be seen at times)
