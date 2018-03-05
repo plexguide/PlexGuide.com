@@ -88,11 +88,11 @@ if [ "$skip" == "yes" ]; then
     clear
 else
 
-    HEIGHT=10
-    WIDTH=37
-    CHOICE_HEIGHT=6
+    HEIGHT=9
+    WIDTH=35
+    CHOICE_HEIGHT=5
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-    TITLE="Schedule Backup of --$program --?"
+    TITLE="Schedule a Backup of --$program --?"
 
     OPTIONS=(A "Weekly"
              B "Daily"
@@ -107,14 +107,15 @@ else
 
     case $CHOICE in
             A)
+                clear
                 echo "$program" > /tmp/program_var
-                echo "Weekly" > /tmp/time_var
+                echo "weekly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             B)
                 clear
                 echo "$program" > /tmp/program_var
-                echo "Daily" > /tmp/time_var
+                echo "daily" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
