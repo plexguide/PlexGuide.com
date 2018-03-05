@@ -8,7 +8,7 @@ docker rm x2go
 #./run.sh
 
 #mkdir ~/docker-x2go
-mv -r /opt/plexguide/scripts/test/x2go/docker-x2go ~/
+mv /opt/plexguide/scripts/test/x2go/docker-x2go ~/
 mv /opt/plexguide/scripts/test/x2go/run.sh ~/
 cd docker-x2go
 #chmod +x start-sshd.sh
