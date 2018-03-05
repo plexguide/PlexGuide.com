@@ -67,3 +67,6 @@ case $CHOICE in
             clear
             exit 0 ;;
 esac
+
+### loops until exit
+bash /opt/plexguide/menus/programs/main.sh
