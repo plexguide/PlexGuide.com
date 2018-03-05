@@ -45,12 +45,16 @@ case $CHOICE in
             clear
             program=plex
             port=32400
+
             bash /opt/plexguide/menus/plex/main.sh ;;
+            --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0
         B)
             clear
             program=emby
             port=8096
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby ;;
+            --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0
+
         C)
             clear
             program=ubooquity
