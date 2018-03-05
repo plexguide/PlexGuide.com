@@ -29,7 +29,12 @@
   shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
 
 - cron:
-    name: Build a {{time_var.stdout}} Cron Job - {{program_var.stdout}}
+    name: Build a Cron Job - {{program_var.stdout}}
+    state: absent
+  ignore_errors: yes
+
+- cron:
+    name: Build a Cron Job - {{program_var.stdout}}
     special_time: '{{time_var.stdout}}'
     job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
     state: present
