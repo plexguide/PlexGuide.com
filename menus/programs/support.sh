@@ -17,6 +17,7 @@
 #################################################################################
 
 export NCURSES_NO_UTF8_ACS=1
+skip=no
 ## point to variable file for ipv4 and domain.com
 source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
@@ -48,6 +49,7 @@ case $CHOICE in
             clear
             program=netdata
             port=19999
+            skip=yes
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata ;;
         B)
             clear
@@ -82,27 +84,29 @@ esac
 number=$((1 + RANDOM % 2000))
 echo "$number" > /tmp/number_var
 
-if dialog --stdout --title "Daily Backup Question?" \
-    --backtitle "Visit https://" \
-    --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
+if [ "$skip" == "yes" ]; then
     clear
-    echo "$program" > /tmp/program_var
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-
-    read -n 1 -s -r -p "Press any key to continue "
-    dialog --title "$program - Address Info" \
-    --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
 else
-    dialog --title "$program - Not Chosen" \
-    --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
-    clear
+    if dialog --stdout --title "Daily Backup Question?" \
+        --backtitle "Visit https://" \
+        --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
+        clear
+        echo "$program" > /tmp/program_var
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+
+        read -n 1 -s -r -p "Press any key to continue "
+        dialog --title "$program - Address Info" \
+        --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
+    else
+        dialog --title "$program - Not Chosen" \
+        --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+        clear
+    fi
 fi
 ########## Deploy End
-
-
-    clear
-    dialog --title "$program - Address Info" \
-    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+clear
+dialog --title "$program - Address Info" \
+--msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/support.sh
