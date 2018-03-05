@@ -20,7 +20,7 @@ WIDTH=32
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
-MENU="Make a Selection"
+MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.060"
          B "BETA 3   : 5.060"
