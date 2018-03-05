@@ -1,5 +1,4 @@
 ---
-
 - name: "Establishing Variable"
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
