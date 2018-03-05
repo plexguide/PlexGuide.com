@@ -27,7 +27,7 @@ export NCURSES_NO_UTF8_ACS=1
 case $CHOICE in
      A)
         bash /opt/plexguide/menus/programs/vpn.sh ;;
-     C)
+     B)
      clear
      bash /opt/plexguide/scripts/test/move.sh
      echo "Testing files have now been swapped"
