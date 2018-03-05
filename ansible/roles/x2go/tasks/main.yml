@@ -1,0 +1,40 @@
+x2go---
+
+- name: Warning
+  pause:
+    prompt: "Only use for temp reasons. Destroy container when finished [Press Enter]"
+
+- name: Remove x2go Container
+  docker_container:
+    name: x2go
+    state: absent
+
+
+- name: Deploy x2go Container
+  docker_container:
+    name: x2go
+    image: quay.io/tatsuya6502/x2go:latest
+    pull: yes
+    cpu_shares: 512
+    published_ports:
+      - "2222:22"
+    user: 0
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt:/mnt"
+      - "/opt:/opt"
+      - "/tmp:/tmp"
+      - "/mnt:/headless/Desktop/mnt:rw"
+    networks:
+      - name: plexguide
+        aliases:
+          - x2go
+    restart_policy: always
+    state: started
+
+- name: Download x2go Software
+  pause:
+    prompt: "Visit https://x2go.com/, download the client and read the Wiki [Press Enter]"
