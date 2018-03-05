@@ -89,7 +89,7 @@ if [ "$skip" == "yes" ]; then
 else
 
     HEIGHT=9
-    WIDTH=35
+    WIDTH=42
     CHOICE_HEIGHT=5
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
     TITLE="Schedule a Backup of --$program --?"
