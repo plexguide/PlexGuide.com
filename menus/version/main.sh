@@ -24,8 +24,8 @@ MENU="Make a Selection"
 
 OPTIONS=(A "Developer: 5.060"
          B "BETA 3   : 5.060"
-         B "BETA 2   : 5.060"
-         C "Stable   : 5.059"
+         C "BETA 2   : 5.060"
+         D "Stable   : 5.059"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
