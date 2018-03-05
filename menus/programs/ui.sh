@@ -80,7 +80,7 @@ esac
 
     clear
 
-echo "$program" > /tmp/program_var ;;
+echo "$program" > /tmp/program_var
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
 read -n 1 -s -r -p "Press any key to continue "
 
