@@ -16,4 +16,3 @@
     special_time: hourly
     job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
     state: present
-    cron_file: ansible_{{program_var.stdout}}
