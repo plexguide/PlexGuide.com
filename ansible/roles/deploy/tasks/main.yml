@@ -7,6 +7,10 @@
   shell: "awk '{print $1}' /tmp/number_var"
   register: number_var
 
+- name: "Establishing Random Number Variable"
+  shell: "awk '{print $1}' /tmp/time_var"
+  register: number_var
+
 - debug: msg="Temp Message - Deploy For {{program_var.stdout}}"
 
 - name: Create {{program_var.stdout}}
@@ -25,7 +29,7 @@
   shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
 
 - cron:
-    name: Build a Hourly Cron Job - {{program_var.stdout}}
-    special_time: hourly
+    name: Build a {{time_var.stdout}} Cron Job - {{program_var.stdout}}
+    special_time: {{time_var.stdout}}
     job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
     state: present
