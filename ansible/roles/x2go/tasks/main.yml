@@ -1,8 +1,5 @@
-x2go---
+---
 
-- name: Warning
-  pause:
-    prompt: "Only use for temp reasons. Destroy container when finished [Press Enter]"
 
 - name: Remove x2go Container
   docker_container:
