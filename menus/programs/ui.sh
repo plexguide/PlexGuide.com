@@ -88,6 +88,7 @@ if dialog --stdout --title "Daily Backup Question?" \
     echo "$program" > /tmp/program_var
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
 
+    read -n 1 -s -r -p "Press any key to continue "
     dialog --title "$program - Address Info" \
     --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
 else
