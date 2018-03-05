@@ -44,7 +44,7 @@ case $CHOICE in
             clear
             program=portainer
             port=9000
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer ;;
         B)
             clear
             program=traefik

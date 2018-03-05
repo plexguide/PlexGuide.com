@@ -60,7 +60,7 @@ case $CHOICE in
       clear
       program=muximux
       port=8015
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux ;;
 
     D)
       clear
