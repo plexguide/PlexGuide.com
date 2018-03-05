@@ -34,4 +34,4 @@
 
 - name: Download x2go Software
   pause:
-    prompt: "Visit https://x2go.com/, download the client and read the Wiki [Press Enter]"
+    prompt: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki [Press Enter]"
