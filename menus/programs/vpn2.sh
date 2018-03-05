@@ -72,7 +72,9 @@ case $CHOICE in
      program=x2go
      port=2222
      skip=yes
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags x2go ;;
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags x2go
+     read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
      Z)
        exit 0 ;;
