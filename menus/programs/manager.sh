@@ -96,20 +96,46 @@ esac
 number=$((1 + RANDOM % 2000))
 echo "$number" > /tmp/number_var
 
-if dialog --stdout --title "Daily Backup Question?" \
-    --backtitle "Visit https://" \
-    --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
+if [ "$skip" == "yes" ]; then
     clear
-    echo "$program" > /tmp/program_var
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-
-    read -n 1 -s -r -p "Press any key to continue "
-    dialog --title "$program - Address Info" \
-    --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
 else
-    dialog --title "$program - Not Chosen" \
-    --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
-    clear
+
+    HEIGHT=9
+    WIDTH=42
+    CHOICE_HEIGHT=5
+    BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+    TITLE="Schedule a Backup of --$program --?"
+
+    OPTIONS=(A "Weekly"
+             B "Daily"
+             Z "None")
+
+    CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                    --title "$TITLE" \
+                    --menu "$MENU" \
+                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                    "${OPTIONS[@]}" \
+                    2>&1 >/dev/tty)
+
+    case $CHOICE in
+            A)
+                clear
+                echo "$program" > /tmp/program_var
+                echo "weekly" > /tmp/time_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+                read -n 1 -s -r -p "Press any key to continue "
+                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+            B)
+                clear
+                echo "$program" > /tmp/program_var
+                echo "daily" > /tmp/time_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+                read -n 1 -s -r -p "Press any key to continue "
+                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+            Z)
+                --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+                clear ;;
+    esac
 fi
 ########## Deploy End
 
