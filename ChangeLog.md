@@ -22,8 +22,7 @@ Current Changes will continued to be modified as known.
 - (BETA) Trashed Old Menus
 
 #### Known Issues
-- For those using 5.058 or below; type sudo ansible-role commands (after you update)
-  - If you don't, you'll never see the newer updates, you'll just see Developer 5.059 and Stable 5.058
+- None
 
 -------------------------------------------------------
 
