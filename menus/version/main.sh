@@ -23,6 +23,7 @@ TITLE="PG Version Install"
 MENU="Make a Selection"
 
 OPTIONS=(A "Developer: 5.060"
+         B "BETA 3   : 5.060"
          B "BETA 2   : 5.060"
          C "Stable   : 5.059"
          Z "Exit")
@@ -70,8 +71,11 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.060beta2" ;;
-        C)
+            version="5.060beta3" ;;
+        C)  
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.060beta2" ''
+        D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
         Z)
