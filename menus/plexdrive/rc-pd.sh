@@ -1,7 +1,7 @@
  #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=10
-WIDTH=32
+WIDTH=28
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PlexDrive - RClone"
