@@ -1,15 +1,15 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
-WIDTH=40
+WIDTH=48
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
 
-OPTIONS=(A "Information"
-         B "Server Network Benchmarks"
-         C "View Service Status"
+OPTIONS=(A "Run PreInstaller Again"
+         B "Uninstall Docker, Containers & Run PreInstaller"
+         C "Uninstall PlexGuide"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -19,15 +19,23 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
+# ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags var
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/info-menu.sh ;;
+            rm -r /var/plexguide/dep* 
+            ## dialog message
+            exit 0 ;;
         B)
-            bash /opt/plexguide/menus/benchmark/main.sh ;;
+            rm -r /etc/docker
+            apt-get purge docker-ce
+            rm -rf /var/lib/docker
+            rm -r /var/plexguide/dep*
+            ## dialog message
+            exit 0 ;;
         C)
-            bash /opt/plexguide/scripts/menus/status-menu.sh ;;
+            rm -r /var/plexguide/dep* 
+            bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
         Z)
             clear
             exit 0 ;;

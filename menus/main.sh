@@ -19,7 +19,7 @@
 export NCURSES_NO_UTF8_ACS=1
 clear
 HEIGHT=15
-WIDTH=38
+WIDTH=36
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PlexGuide - Version 5.060"
@@ -40,7 +40,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-            #bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
 case $CHOICE in
         A)
             bash /opt/plexguide/menus/donate/main.sh ;;
@@ -49,9 +48,9 @@ case $CHOICE in
         C)
             bash /opt/plexguide/menus/programs/main.sh ;;
         D)
-            bash /opt/plexguide/menus/info/main.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         E)
-            bash /opt/plexguide/menus/tshoot/main.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         F) 
             bash /opt/plexguide/menus/settings/main.sh ;;
         G)
