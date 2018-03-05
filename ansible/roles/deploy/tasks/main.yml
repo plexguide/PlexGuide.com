@@ -11,10 +11,12 @@
     - /opt/plexguide/ansible
   ignore_errors: yes
 
-- name: Build nginx 
-   shell: |
-     echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
-     echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+- name: Test
+  shell:
+    cmd: |
+      cat <<EOF
+      This is a test.
+      EOF
 
 #- name: "Store Variable into Job"
   #shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
