@@ -111,12 +111,14 @@ else
                 echo "$program" > /tmp/program_var
                 echo "weekly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+                read -n 1 -s -r -p "Press any key to continue "
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             B)
                 clear
                 echo "$program" > /tmp/program_var
                 echo "daily" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+                read -n 1 -s -r -p "Press any key to continue "
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
                 --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
