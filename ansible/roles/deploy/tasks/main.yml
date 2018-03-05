@@ -10,3 +10,12 @@
 
 - name: "Build Deploy Script"
   shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags {{program_var.stdout}}" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
+
+- cron:
+  name: Build a Hourly Cron Job
+  weekday: 2
+  minute: 0
+  hour: 12
+  user: root
+  job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
+  cron_file: "{{program_var.stdout}}"
