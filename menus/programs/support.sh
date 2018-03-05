@@ -78,7 +78,7 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli ;;
         Z)
             exit 0 ;;
-esac
+    esac
 
 ########## Deploy Start
 number=$((1 + RANDOM % 2000))
@@ -110,13 +110,13 @@ else
                 echo "$program" > /tmp/program_var
                 echo "Weekly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                --msgbox "\nBackups of -- $program -- will occur!" 0 0
+                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             B)
                 clear
                 echo "$program" > /tmp/program_var
                 echo "Daily" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                --msgbox "\nBackups of -- $program -- will occur!" 0 0
+                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
                 --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
                 clear ;;
