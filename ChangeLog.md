@@ -12,7 +12,7 @@ Current Changes will continued to be modified as known.
 - (DEV) Added Cron Jobs Daily to all the programs (it deploys as hourly for testing purposes)
   - Will attempt to offer daily or weekly options
   - Weekly might be best for plex due to it's size and possibly cutting out for the time it's backing up
- 
+
 #### Changed
 - (DEV) Removed Bad Flags - PlexDrive / reported by Petitor
 - (BETA) Front Menu Layout
@@ -22,6 +22,7 @@ Current Changes will continued to be modified as known.
 - (BETA) Mass Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
 - (DEV) Updated Service Status&Restart menus look
+- (DEV) Updated NCDU menu look
 
 #### Removed
 - (BETA) Trashed Old Menus
