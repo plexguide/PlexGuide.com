@@ -74,7 +74,7 @@ case $CHOICE in
             version="5.060beta3" ;;
         C)  
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.060beta2" ''
+            version="5.060beta2" ;;
         D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
