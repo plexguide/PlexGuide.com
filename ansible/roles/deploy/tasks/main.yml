@@ -30,6 +30,6 @@
 
 - cron:
     name: Build a {{time_var.stdout}} Cron Job - {{program_var.stdout}}
-    special_time: {{time_var.stdout}}
+    special_time: daily
     job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
     state: present
