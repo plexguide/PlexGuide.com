@@ -16,7 +16,8 @@ export NCURSES_NO_UTF8_ACS=1
           B "DO NOT USE - For Developers Use Only!"
           Z "Exit")
 
- CHOICE=$(dialog --backtitle "$BACKTITLE" \
+ CHOICE=$(dialog --clear \
+                 --backtitle "$BACKTITLE" \
                  --title "$TITLE" \
                  --menu "$MENU" \
                  $HEIGHT $WIDTH $CHOICE_HEIGHT \
