@@ -1,8 +1,8 @@
  #!/bin/bash
  export NCURSES_NO_UTF8_ACS=1
- HEIGHT=15
+ HEIGHT=16
  WIDTH=36
- CHOICE_HEIGHT=9
+ CHOICE_HEIGHT=10
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
  TITLE="PG Services Restart Menu"
  MENU="Make a Selection Choice:"

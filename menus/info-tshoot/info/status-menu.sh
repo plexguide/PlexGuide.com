@@ -1,8 +1,8 @@
  #!/bin/bash
  export NCURSES_NO_UTF8_ACS=1
- HEIGHT=16
+ HEIGHT=17
  WIDTH=36
- CHOICE_HEIGHT=10
+ CHOICE_HEIGHT=11
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
  TITLE="PG Services Status Menu"
  MENU="Make a Selection Choice:"
