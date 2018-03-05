@@ -20,12 +20,12 @@ export NCURSES_NO_UTF8_ACS=1
 # This takes .yml file and converts it to bash readable format
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
-HEIGHT=16
-WIDTH=40
-CHOICE_HEIGHT=10
+HEIGHT=15
+WIDTH=30
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PG Application Install Suite"
-MENU="Choose one of the following options:"
+TITLE="PG Application Suite"
+MENU="Make A Selection:"
 
 OPTIONS=(A "Media Servers"
          B "Managers"
