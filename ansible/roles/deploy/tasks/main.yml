@@ -9,7 +9,7 @@
 
 - name: "Establishing Random Number Variable"
   shell: "awk '{print $1}' /tmp/time_var"
-  register: number_var
+  register: time_var
 
 - debug: msg="Temp Message - Deploy For {{program_var.stdout}}"
 
