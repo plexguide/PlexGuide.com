@@ -8,7 +8,7 @@ docker rm x2go
 #./run.sh
 
 mkdir ~/docker-x2go
-cp /opt/plexguide/scripts/test/x2go/docker-x2go ~/docker-x2go
+cp /opt/plexguide/scripts/test/x2go/docker-x2go ~/
 
 cd docker-x2go
 ./run.sh
