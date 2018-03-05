@@ -13,8 +13,8 @@ mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
 #mv /opt/plexguide/menus/info-tshoot/info-next.sh /opt/plexguide/menus/info-tshoot/info.sh
 
 ## For testing new torrent menus
-rm /opt/plexguide/menus/programs/beta.sh
-mv /opt/plexguide/menus/programs/beta-next.sh /opt/plexguide/menus/programs/beta.sh
+#rm /opt/plexguide/menus/programs/beta.sh
+#mv /opt/plexguide/menus/programs/beta-next.sh /opt/plexguide/menus/programs/beta.sh
 
 ## For testing new torrent menus
 rm /opt/plexguide/menus/programs/torrent.sh
