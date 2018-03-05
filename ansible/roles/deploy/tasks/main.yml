@@ -15,7 +15,8 @@
   shell:
     cmd: |
       cat <<EOF
-      This is a test.
+      mkdir /opt/test1
+      mkdir /opt/test2
       EOF
 
 #- name: "Store Variable into Job"
