@@ -109,13 +109,13 @@ else
             A)
                 clear
                 echo "$program" > /tmp/program_var
-                echo "Weekly" > /tmp/time_var
+                echo "weekly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             B)
                 clear
                 echo "$program" > /tmp/program_var
-                echo "Daily" > /tmp/time_var
+                echo "daily" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
