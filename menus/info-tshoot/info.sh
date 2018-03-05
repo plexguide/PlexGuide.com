@@ -29,8 +29,8 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/info/ncdu.sh ;;
         C)
-            ##bash /opt/plexguide/scripts/menus/status-menu.sh 
-            ;;
+            dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
+            ctop ;;
         D)
             bash /opt/plexguide/scripts/menus/status-menu.sh ;;
         Z)
