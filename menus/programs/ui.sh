@@ -80,9 +80,16 @@ esac
 
     clear
 
-echo "$program" > /tmp/program_var
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-read -n 1 -s -r -p "Press any key to continue "
+
+if dialog --stdout --title "Cron - Backup Question?" \
+    --backtitle "Visit https://" \
+    --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
+
+    echo "$program" > /tmp/program_var
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+else
+    clear
+fi
 
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50

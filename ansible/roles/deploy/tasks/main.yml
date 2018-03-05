@@ -5,6 +5,12 @@
 
 - debug: msg="Temp Message - Deploy For {{program_var.stdout}}"
 
+- name: Create {{program_var.stdout}}
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/plexguide/ansible
+  ignore_errors: yes
+
 - name: "Store Variable into Job"
   shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
