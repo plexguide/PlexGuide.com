@@ -48,8 +48,7 @@ case $CHOICE in
       clear
       program=heimdall
       port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
 
     B)
       clear
@@ -80,6 +79,10 @@ case $CHOICE in
 esac
 
     clear
+
+echo "$program" > /tmp/program_var ;;
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+read -n 1 -s -r -p "Press any key to continue "
 
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
