@@ -49,7 +49,7 @@ case $CHOICE in
       clear
       program=couchpotato
       port=5050
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
 
     B)
       clear
@@ -91,6 +91,9 @@ case $CHOICE in
       exit 0 ;;
 esac
     clear
+
+      echo "$program" > /tmp/program_var ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
 
     dialog --title "$program - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
