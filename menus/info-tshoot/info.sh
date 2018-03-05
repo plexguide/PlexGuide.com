@@ -27,7 +27,7 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         B)
-            bash /opt/plexguide/menus/info/ncdu.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/ncdu.sh ;;
         C)
             dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
             ctop ;;
@@ -39,4 +39,4 @@ case $CHOICE in
 esac
 
 ### loops until exit
-bash /opt/plexguide/menus/info/main.sh
+bash /opt/plexguide/menus/info-tshoot/info.sh
