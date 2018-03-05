@@ -2,9 +2,9 @@
 export NCURSES_NO_UTF8_ACS=1
 
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
+# source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+# echo $ipv4
+# echo $domain
 
  HEIGHT=10
  WIDTH=55
@@ -39,9 +39,9 @@ case $CHOICE in
         exit 0 ;;
 esac
 
-    clear
-    dialog --title "$program - Address Info" \
-    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+#    clear
+#    dialog --title "$program - Address Info" \
+#    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/beta.sh
+# bash /opt/plexguide/menus/programs/beta.sh
