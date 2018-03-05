@@ -21,9 +21,9 @@
 
 # sudo apt install ncdu -y
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=20
+HEIGHT=22
 WIDTH=60
-CHOICE_HEIGHT=15
+CHOICE_HEIGHT=16
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG NCDU Directory Size Menu"
 MENU="*** Press q to quit! ***"
