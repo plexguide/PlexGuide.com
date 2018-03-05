@@ -3,6 +3,10 @@
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
 
+- name: "Establishing Random Number Variable"
+  shell: "awk '{print $1}' /tmp/number_var"
+  register: number_var
+
 - debug: msg="Temp Message - Deploy For {{program_var.stdout}}"
 
 - name: Create {{program_var.stdout}}
@@ -11,19 +15,14 @@
     - /opt/plexguide/ansible
   ignore_errors: yes
 
-- name: Test
-  shell:
-    cmd: |
-      cat <<EOF
-      mkdir /opt/test1
-      mkdir /opt/test2
-      EOF
+- name: "Add Sleep & Random Number"
+  shell: echo "sleep {{number_var.stdout}}" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
-#- name: "Store Variable into Job"
-  #shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+- name: "Store Variable into Job"
+  shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" >> /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
-#- name: "Build Deploy Script"
-  #shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
+- name: "Build Deploy Script"
+  shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
 
 - cron:
     name: Build a Hourly Cron Job - {{program_var.stdout}}
