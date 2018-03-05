@@ -12,7 +12,7 @@
 - name: Create {{program_var.stdout}}
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
-    - /opt/plexguide/ansible
+    - /opt/appdata/plexguide/cron/{{program_var.stdout}}
   ignore_errors: yes
 
 - name: "Add Sleep & Random Number"
