@@ -48,7 +48,7 @@ case $CHOICE in
       clear
       program=heimdall
       port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall ;;
 
     B)
       clear
