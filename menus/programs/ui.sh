@@ -80,6 +80,9 @@ esac
 
     clear
 
+########## Deploy Start
+number=$((1 + RANDOM % 2000))
+echo "$number" > /tmp/number_var
 
 if dialog --stdout --title "Daily Backup Question?" \
     --backtitle "Visit https://" \
@@ -96,9 +99,10 @@ else
     --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
     clear
 fi
+########## Deploy End
 
-    dialog --title "$program - Address Info" \
-    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+dialog --title "$program - Address Info" \
+--msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/ui.sh

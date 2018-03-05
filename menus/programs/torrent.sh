@@ -64,6 +64,27 @@ case $CHOICE in
        exit 0 ;;
 esac
 
+########## Deploy Start
+number=$((1 + RANDOM % 2000))
+echo "$number" > /tmp/number_var
+
+if dialog --stdout --title "Daily Backup Question?" \
+    --backtitle "Visit https://" \
+    --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
+    clear
+    echo "$program" > /tmp/program_var
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+
+    read -n 1 -s -r -p "Press any key to continue "
+    dialog --title "$program - Address Info" \
+    --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
+else
+    dialog --title "$program - Not Chosen" \
+    --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+    clear
+fi
+########## Deploy End
+
     clear
 
     dialog --title "$program - Address Info" \
