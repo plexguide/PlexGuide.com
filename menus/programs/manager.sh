@@ -49,7 +49,7 @@ case $CHOICE in
       clear
       program=couchpotato
       port=5050
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato ;;
 
     B)
       clear
