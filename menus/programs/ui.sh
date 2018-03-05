@@ -80,6 +80,8 @@ esac
 
     clear
 
+number=$((1 + RANDOM % 2000))
+echo "$number" > /tmp/number_var
 
 if dialog --stdout --title "Daily Backup Question?" \
     --backtitle "Visit https://" \
