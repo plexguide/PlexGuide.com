@@ -5,7 +5,7 @@
 
 - debug: msg="Temp Message - Deploy For {{program_var.stdout}}"
 
-- name: "Build Deploy Script"
+- name: "Store Variable into Job"
   shell: echo 'echo "{{program_var.stdout}}" > /tmp/program_var' > /opt/appdata/plexguide/cron/{{program_var.stdout}}    
 
 - name: "Build Deploy Script"
