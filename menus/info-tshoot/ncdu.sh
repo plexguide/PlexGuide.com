@@ -1,91 +1,130 @@
 #!/bin/bash
+#
+# [PlexGuide Menu]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 - Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
 
 ## This is to analyse what's taking up space on you drives
 
-#apt install ncdu -y
+# sudo apt install ncdu -y
+export NCURSES_NO_UTF8_ACS=1
+HEIGHT=22
+WIDTH=60
+CHOICE_HEIGHT=16
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="PG NCDU Directory Size Menu"
+MENU="*** Press q to quit! ***"
 
+OPTIONS=(A "Entire drive - excluding /mnt"
+         B "Entire drive - excluding /mnt & /opt"
+         C "/opt - WARNING Can take a long time!"
+         D "/mnt - WARNING Can take a long time!"
+         E "Move"
+         F "UnionFS - WARNING Can take a long time!"
+         G "NZBGET"
+         H "SAB"
+         I "Deluge"
+         J "RuTorrent"
+         K "TorrentVPN"
+         L "/home"
+         X "Back to Main Menu"
+         Z "Exit")
+
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
 clear
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "NCDU Directory Size Menu" --menu "*** Press q to quit! ***" 21 60 12 \
-    "1)" "Entire drive - excluding /mnt"   \
-    "2)" "Entire drive - excluding /mnt & /opt"   \
-    "3)" "/opt - WARNING Can take a long time!"   \
-    "4)" "/mnt - WARNING Can take a long time!"  \
-    "5)" "Move"  \
-    "6)" "UnionFS - WARNING Can take a long time!"  \
-    "7)" "NZBGET"  \
-    "8)" "SAB"  \
-    "9)" "Deluge"  \
-    "10)" "RuTorrent"  \
-    "11)" "TorrentVPN"  \
-    "12)" "Exit  "  3>&2 2>&1 1>&3
-)
-
-result=$(whoami)
 case $CHOICE in
-    "1)")
+    A)
       clear
       ncdu / --exclude=/mnt
       ;;
 
-    "2)")
+    B)
       clear
       ncdu / --exclude=/mnt --exclude=/opt
       ;;
 
-    "3)")
+    C)
         clear
         ncdu /opt
         ;;
 
-    "4)")
+    D)
         clear
         ncdu /mnt
         ;;
 
-    "5)")
+    E)
       clear
       ncdu /mnt/move
       ;;
 
-    "6)")
+    F)
       clear
       ncdu /mnt/unionfs
       ;;
 
-    "7)")
+    G)
       clear
       ncdu /mnt/nzbget
       ;;
 
-    "8)")
+    H)
         clear
         ncdu /mnt/sab
         ;;
 
-    "9)")
+    I)
         clear
         ncdu /mnt/deluge
         ;;
 
-    "10)")
+    J)
         clear
         ncdu /mnt/rutorrent
         ;;
 
-     "11)")
+     K)
          clear
          ncdu /mnt/torrentvpn
          ;;
 
-      "12)")
+      L)
+          clear
+          ncdu /home
+          ;;
+
+     X)
+         clear
+         bash /opt/plexguide/menus/main.sh
+         ;;
+
+      Z)
       clear
       exit 0
       ;;
 esac
-done
-exit
+
+### loops until exit
+bash /opt/plexguide/menus/info-tshoot/ncdu.sh

@@ -9,6 +9,9 @@ Current Changes will continued to be modified as known.
 - (BETA) added minor script to display ending info rather than having to copy all over the place
 - (BETA) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
 - (DEV) Added option to go back to Main menu in the Service menu
+- (DEV) Added Cron Jobs Daily to all the programs (it deploys as hourly for testing purposes)
+  - Will attempt to offer daily or weekly options
+  - Weekly might be best for plex due to it's size and possibly cutting out for the time it's backing up
 
 #### Changed
 - (DEV) Removed Bad Flags - PlexDrive / reported by Petitor
@@ -19,6 +22,7 @@ Current Changes will continued to be modified as known.
 - (BETA) Mass Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
 - (DEV) Updated Service Status&Restart menus look
+- (DEV) Updated NCDU menu look
 
 #### Removed
 - (BETA) Trashed Old Menus
