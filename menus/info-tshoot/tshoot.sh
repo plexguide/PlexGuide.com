@@ -24,7 +24,7 @@ clear
 case $CHOICE in
         A)
             rm -r /var/plexguide/dep* 
-            dialog --title "Note" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
+            dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         B)
             rm -r /etc/docker
