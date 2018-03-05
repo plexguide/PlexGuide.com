@@ -1,8 +1,8 @@
  #!/bin/bash
  export NCURSES_NO_UTF8_ACS=1
- HEIGHT=17
+ HEIGHT=18
  WIDTH=36
- CHOICE_HEIGHT=11
+ CHOICE_HEIGHT=12
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
  TITLE="PG Services Status Menu"
  MENU="Make a Selection Choice:"
@@ -16,6 +16,7 @@
           G "Unencrypted: Move"
           H "Encrypted: Move"
           I "Restart Menu"
+          X "Back to Main Menu"
           Z "Exit")
 
 
@@ -197,6 +198,11 @@ case $CHOICE in
         clear
         ;;
 
+    X)
+        clear
+        bash /opt/plexguide/menus/main.sh
+        clear
+        ;;
 
      Z)
       clear
