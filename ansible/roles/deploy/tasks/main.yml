@@ -14,6 +14,5 @@
 - cron:
     name: Build a Hourly Cron Job
     special_time: hourly
-    user: root
     job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
     cron_file: "{{program_var.stdout}}"
