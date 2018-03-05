@@ -11,11 +11,18 @@
     - /opt/plexguide/ansible
   ignore_errors: yes
 
-- name: "Store Variable into Job"
-  shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+- name: Test
+  shell:
+    cmd: |
+      cat <<EOF
+      This is a test.
+      EOF
 
-- name: "Build Deploy Script"
-  shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
+#- name: "Store Variable into Job"
+  #shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+
+#- name: "Build Deploy Script"
+  #shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
 
 - cron:
     name: Build a Hourly Cron Job - {{program_var.stdout}}
