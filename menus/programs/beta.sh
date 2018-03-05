@@ -12,9 +12,8 @@ export NCURSES_NO_UTF8_ACS=1
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - VPN Programs"
 
- OPTIONS=(A "VPN Torrent - New way"
-          B "VPN Torrent - Old way"
-          C "DO NOT USE - For Developers Use Only!"
+ OPTIONS=(A "VPN Torrent"
+          B "DO NOT USE - For Developers Use Only!"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -27,8 +26,6 @@ export NCURSES_NO_UTF8_ACS=1
 case $CHOICE in
      A)
         bash /opt/plexguide/menus/programs/vpn.sh ;;
-     B)
-        bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh ;;
      C)
      clear
      bash /opt/plexguide/scripts/test/move.sh
