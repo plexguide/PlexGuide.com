@@ -11,35 +11,10 @@
     - /opt/plexguide/ansible
   ignore_errors: yes
 
-- name: "Store Variable into Job"
-  shell: tee "/opt/test.txt" > /dev/null <<EOF
-Create the PlexDrive4 Service
-[Unit]
-Description=PlexDrive4 Service
-After=multi-user.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/plexdrive4 --uid=0 --gid=0 -o allow_other,allow_non_empty_mount --refresh-interval=1m /mnt/plexdrive4
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-EOF"
-
-
-
-
-  #- name: Build nginx 
-    #shell: |
-      #cd nginx-1.11.13
-      #sudo ./configure
-      #sudo make
-      #sudo make install
-
-
+- name: Build nginx 
+   shell: |
+     echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
+     echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
 #- name: "Store Variable into Job"
   #shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
