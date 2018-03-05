@@ -81,7 +81,7 @@ esac
     clear
 
 
-if dialog --stdout --title "Cron - Backup Question?" \
+if dialog --stdout --title "Daily Backup Question?" \
     --backtitle "Visit https://" \
     --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
 
