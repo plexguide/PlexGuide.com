@@ -24,14 +24,14 @@ clear
 case $CHOICE in
         A)
             rm -r /var/plexguide/dep* 
-            ## dialog message
+            dialog --title "Note" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         B)
             rm -r /etc/docker
             apt-get purge docker-ce
             rm -rf /var/lib/docker
             rm -r /var/plexguide/dep*
-            ## dialog message
+            dialog --title "Note" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         C)
             rm -r /var/plexguide/dep* 
