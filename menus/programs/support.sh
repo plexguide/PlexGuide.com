@@ -87,22 +87,41 @@ echo "$number" > /tmp/number_var
 if [ "$skip" == "yes" ]; then
     clear
 else
-    if dialog --stdout --title "Daily Backup Question?" \
-        --backtitle "Visit https://" \
-        --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
-        clear
-        echo "$program" > /tmp/program_var
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
 
-        read -n 1 -s -r -p "Press any key to continue "
-        dialog --title "$program - Address Info" \
-        --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
-    else
-        dialog --title "$program - Not Chosen" \
-        --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
-        clear
-    fi
-fi
+HEIGHT=10
+WIDTH=37
+CHOICE_HEIGHT=6
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="Schedule Backup of --$program --?"
+
+OPTIONS=(A "Weekly"
+         B "Daily"
+         Z "None")
+
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+case $CHOICE in
+        A)
+            echo "$program" > /tmp/program_var
+            echo "Weekly" > /tmp/time_var
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+            --msgbox "\nBackups of -- $program -- will occur!" 0 0
+        B)
+            clear
+            echo "$program" > /tmp/program_var
+            echo "Daily" > /tmp/time_var
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+            --msgbox "\nBackups of -- $program -- will occur!" 0 0
+        Z)
+            --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+            clear ;;
+esac
+
 ########## Deploy End
 clear
 dialog --title "$program - Address Info" \
