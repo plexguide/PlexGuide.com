@@ -72,8 +72,8 @@ case $CHOICE in
        clear
        program=wordpress
        port=NONE
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress ;;
        skip=yes
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress ;;
      Z)
        exit 0 ;;
 esac
