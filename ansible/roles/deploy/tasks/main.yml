@@ -2,10 +2,14 @@
 - name: "Establishing Variable"
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
+  tags:
+    - nocron
 
 - name: "Establishing Random Number Variable"
   shell: "awk '{print $1}' /tmp/number_var"
   register: number_var
+  tags:
+    - nocron
 
 - name: "Establishing Random Number Variable"
   shell: "awk '{print $1}' /tmp/time_var"
@@ -32,7 +36,9 @@
     name: Build a Cron Job - {{program_var.stdout}}
     state: absent
   ignore_errors: yes
-
+  tags:
+    - nocron
+    
 - cron:
     name: Build a Cron Job - {{program_var.stdout}}
     special_time: '{{time_var.stdout}}'
