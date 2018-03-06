@@ -10,7 +10,8 @@ ENV DOCKERFILE_UPDATED 2017-04-02
 RUN (apt-get update && \
      apt-get install -y software-properties-common && \
      add-apt-repository -y ppa:x2go/stable && \
-     apt-get update && \
+     apt-get update -y && \
+     apt-get upgrade -y && \
      DEBIAN_FRONTEND=noninteractive apt-get install -y \
          x2goserver x2goserver-xsession ttf-dejavu fonts-ipafont-gothic \
          xfce4 openbox obconf obmenu conky nitrogen \
