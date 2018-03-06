@@ -99,21 +99,19 @@ else
 
     case $CHOICE in
             A)
-                clear
+                dialog --infobox "Establishing [Weekly] CronJob" 3 0
                 echo "$program" > /tmp/program_var
                 echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                read -n 1 -s -r -p "Press any key to continue "
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             B)
-                clear
+                dialog --infobox "Establishing [Daily] CronJob" 3 0
                 echo "$program" > /tmp/program_var
                 echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                read -n 1 -s -r -p "Press any key to continue "
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
-                dialog --infobox "Removing CronJob (If Exists)" 3 37
+                dialog --infobox "Removing CronJob (If Exists)" 3 0
                 echo "$program" > /tmp/program_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
                 --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
