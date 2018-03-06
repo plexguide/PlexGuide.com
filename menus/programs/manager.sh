@@ -67,7 +67,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa 1>/dev/null 2>&1 ;;
 
     D)
-      display=MYLAR
+      display=Mylar
       program=mylar
       port=8090
       dialog --infobox "Installing: $display" 3 30
