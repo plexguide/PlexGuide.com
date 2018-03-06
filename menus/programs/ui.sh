@@ -32,7 +32,6 @@ export NCURSES_NO_UTF8_ACS=1
           B "HTPCManager"
           C "Muximux"
           D "Organizr"
-          E "Wordpress"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -67,14 +66,7 @@ case $CHOICE in
       program=organizr
       port=8020
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr ;;
-
-     E)
-       clear
-       program=wordpress
-       port=NONE
-       skip=yes
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress ;;
-     Z)
+    Z)
        exit 0 ;;
 esac
 
