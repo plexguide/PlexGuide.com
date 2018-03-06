@@ -5,9 +5,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Added
 - (D) Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues
+- (D) Enabling System Health Monitoring (Credit: EasternPA)
 
 #### Changed
 - (D) Mass Restore: User is notified to deploy each app after a mass restore
+- (D) PlexDrive Fix (Credit: budman17r)
 
 #### Removed
 - None
