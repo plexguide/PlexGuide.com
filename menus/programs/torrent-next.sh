@@ -44,26 +44,27 @@ export NCURSES_NO_UTF8_ACS=1
 case $CHOICE in
 
      A)
-       clear
+       display=RUTorrent
        program=rutorrent
+       dialog --infobox "Installing: $display" 3 30
        port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent ;;
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent 1>/dev/null 2>&1 ;;
 
      B)
-       clear
+       display=Deluge
        program=deluge
+       dialog --infobox "Installing: $display" 3 30
        port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge ;;
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge 1>/dev/null 2>&1 ;;
 
      C)
-       clear
+       display=Jackett
        program=jackett
+       dialog --infobox "Installing: $display" 3 30
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett ;;
-
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett 1>/dev/null 2>&1 ;;
      D)
        bash /opt/plexguide/menus/programs/vpn.sh ;;
-
      Z)
        exit 0 ;;
 esac
@@ -74,24 +75,51 @@ esac
 number=$((1 + RANDOM % 2000))
 echo "$number" > /tmp/number_var
 
-if dialog --stdout --title "Daily Backup Question?" \
-    --backtitle "Visit https://" \
-    --yesno "\nWant to Schedule a Daily Backup Of: -- $program -- ?" 0 0; then
+if [ "$skip" == "yes" ]; then
     clear
-    echo "$program" > /tmp/program_var
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-
-    read -n 1 -s -r -p "Press any key to continue "
-    dialog --title "$program - Address Info" \
-    --msgbox "\nDaily Backups of -- $program -- will occur!" 0 0
 else
-    dialog --title "$program - Not Chosen" \
-    --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
-    clear
+
+    HEIGHT=9
+    WIDTH=42
+    CHOICE_HEIGHT=5
+    BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+    TITLE="Schedule a Backup of --$display --?"
+
+    OPTIONS=(A "Weekly"
+             B "Daily"
+             Z "None")
+
+    CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                    --title "$TITLE" \
+                    --menu "$MENU" \
+                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                    "${OPTIONS[@]}" \
+                    2>&1 >/dev/tty)
+
+    case $CHOICE in
+            A)
+                dialog --infobox "Establishing [Weekly] CronJob" 3 34
+                echo "$program" > /tmp/program_var
+                echo "weekly" > /tmp/time_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
+            B)
+                dialog --infobox "Establishing [Daily] CronJob" 3 34
+                echo "$program" > /tmp/program_var
+                echo "daily" > /tmp/time_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
+            Z)
+                dialog --infobox "Removing CronJob (If Exists)" 3 34
+                echo "$program" > /tmp/program_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
+                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
+                clear ;;
+    esac
 fi
 ########## Deploy End
 
-    dialog --title "$program - Address Info" \
+    dialog --title "$display - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits

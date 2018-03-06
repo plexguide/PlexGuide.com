@@ -46,46 +46,53 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      clear
+      display=CouchPotato
       program=couchpotato
       port=5050
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato 1>/dev/null 2>&1 ;;
 
     B)
-      clear
+      display=Lidarr
       program=lidarr
       port=8686
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr 1>/dev/null 2>&1 ;;
 
     C)
-      clear
+      display=MEDUSA
       program=medusa
       port=8081
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa 1>/dev/null 2>&1 ;;
 
     D)
-      clear
+      display=MYLAR
       program=mylar
       port=8090
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar 1>/dev/null 2>&1 ;;
 
     E)
-      clear
+      display=Radarr
       program=radarr
       port=7878
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1 ;;
 
     F)
-      clear
+      display=SickRage
       program=sickrage
       port=8082
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage 1>/dev/null 2>&1 ;;
 
     G)
-      clear
+      display=Sonarr
       program=sonarr
       port=8989
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr ;;
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 ;;
 
     Z)
       exit 0 ;;
@@ -104,7 +111,7 @@ else
     WIDTH=42
     CHOICE_HEIGHT=5
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-    TITLE="Schedule a Backup of --$program --?"
+    TITLE="Schedule a Backup of --$display --?"
 
     OPTIONS=(A "Weekly"
              B "Daily"
@@ -119,27 +126,28 @@ else
 
     case $CHOICE in
             A)
-                clear
+                dialog --infobox "Establishing [Weekly] CronJob" 3 34
                 echo "$program" > /tmp/program_var
                 echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                read -n 1 -s -r -p "Press any key to continue "
-                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             B)
-                clear
+                dialog --infobox "Establishing [Daily] CronJob" 3 34
                 echo "$program" > /tmp/program_var
                 echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                read -n 1 -s -r -p "Press any key to continue "
-                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             Z)
-                --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+                dialog --infobox "Removing CronJob (If Exists)" 3 34
+                echo "$program" > /tmp/program_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
+                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
                 clear ;;
     esac
 fi
 ########## Deploy End
 
-    dialog --title "$program - Address Info" \
+    dialog --title "$display - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits

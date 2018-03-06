@@ -42,23 +42,24 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            clear
+            display=PLEX
             program=plex
             port=32400
-
             bash /opt/plexguide/menus/plex/main.sh
             --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
         B)
-            clear
+            display=Emby
             program=emby
             port=8096
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby 1>/dev/null 2>&1
             --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
 
         C)
-            clear
+            display=Ubooquity
             program=ubooquity
             port=2202
+            dialog --infobox "Installing: $display" 3 30 1>/dev/null 2>&1
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity ;;
 
         Z)
@@ -79,7 +80,7 @@ else
     WIDTH=42
     CHOICE_HEIGHT=5
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-    TITLE="Schedule a Backup of --$program --?"
+    TITLE="Schedule a Backup of --$display --?"
 
     OPTIONS=(A "Weekly"
              B "Daily"
@@ -94,28 +95,29 @@ else
 
     case $CHOICE in
             A)
-                clear
+                dialog --infobox "Establishing [Weekly] CronJob" 3 34
                 echo "$program" > /tmp/program_var
                 echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                read -n 1 -s -r -p "Press any key to continue "
-                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             B)
-                clear
+                dialog --infobox "Establishing [Daily] CronJob" 3 34
                 echo "$program" > /tmp/program_var
                 echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-                read -n 1 -s -r -p "Press any key to continue "
-                --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             Z)
-                --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+                dialog --infobox "Removing CronJob (If Exists)" 3 34
+                echo "$program" > /tmp/program_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
+                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
                 clear ;;
     esac
 fi
 ########## Deploy End
 
 
-    dialog --title "$program - Address Info" \
+    dialog --title "$display - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
