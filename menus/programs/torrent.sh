@@ -22,9 +22,9 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
- HEIGHT=11
+ HEIGHT=10
  WIDTH=38
- CHOICE_HEIGHT=5
+ CHOICE_HEIGHT=4
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Torrent Programs"
 
