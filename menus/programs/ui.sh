@@ -22,9 +22,9 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
- HEIGHT=12
+ HEIGHT=11
  WIDTH=38
- CHOICE_HEIGHT=6
+ CHOICE_HEIGHT=5
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Manager Programs"
 
@@ -80,9 +80,9 @@ if [ "$skip" == "yes" ]; then
     clear
 else
 
-    HEIGHT=8
+    HEIGHT=9
     WIDTH=42
-    CHOICE_HEIGHT=3
+    CHOICE_HEIGHT=5
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
     TITLE="Schedule a Backup of --$program --?"
 
