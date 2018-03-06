@@ -45,25 +45,25 @@ case $CHOICE in
 
     A)
       program=heimdall
-      dialog --infobox "Installing $program" 3 34
+      dialog --infobox "Installing: $program" 3 30
       port=1111
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall 1>/dev/null 2>&1 ;;
 
     B)
-      clear
       program=htpcmanager
+      dialog --infobox "Installing: $program" 3 30
       port=8085
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager  1>/dev/null 2>&1 ;;
 
     C)
-      clear
       program=muximux
+      dialog --infobox "Installing: $program" 3 30
       port=8015
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux 1>/dev/null 2>&1;;
 
     D)
-      clear
       program=organizr
+      dialog --infobox "Installing: $program" 3 30
       port=8020
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr 1>/dev/null 2>&1 ;;
     Z)
