@@ -13,7 +13,9 @@ Current Changes will continued to be modified as known.
 - None
 
 #### Known Issues
-- None
+- pyload is not working
+- turnin off ports may not work in settings
+- restoring traefik may result in a break of permissions / requires at least chmod 600  or 775
 
 -------------------------------------------------------
 
@@ -50,6 +52,7 @@ Historical Documented Changes will be stored as below.
 
 #### Known Issues
 - pyload is not working
+- turnin off ports may not work in settings
 
 ### [5.059]
 
