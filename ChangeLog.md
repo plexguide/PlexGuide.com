@@ -12,6 +12,7 @@ Current Changes will continued to be modified as known.
 - Added Cron Jobs Daily our Weekly to Installs
   - Will attempt to offer daily or weekly options
   - Weekly might be best for plex due to it's size and possibly cutting out for the time it's backing up
+- Selecting none for Cron Job will remove it if there is one!
 
 #### Changed
 - Removed Bad Flags - PlexDrive / reported by Petitor
