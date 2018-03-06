@@ -9,11 +9,15 @@ docker rm x2go
 
 #mkdir ~/docker-x2go
 mv /opt/plexguide/scripts/test/x2go/docker-x2go ~/
-mv /opt/plexguide/scripts/test/x2go/run.sh ~/
+echo 1
+mv /opt/plexguide/scripts/test/x2go/run.sh ~/docker-x2go/
+echo 2
 cd docker-x2go
+echo 3
 #chmod +x start-sshd.sh
 #chmod +x Dockerfile
 #chmod +x 999-sudoers-docker
 chmod +x run.sh
+echo 4
 
 ./run.sh
