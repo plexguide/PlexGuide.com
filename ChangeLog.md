@@ -21,6 +21,8 @@ Current Changes will continued to be modified as known.
 Historical Documented Changes will be stored as below.
 
 #### [5.060]
+
+#### Added
 - Added Settings Menu
 - pgdev command; allows you to automatically to update to latest pgdev without being prompted
 - Added minor script to display ending info rather than having to copy all over the place
