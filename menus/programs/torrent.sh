@@ -45,18 +45,21 @@ case $CHOICE in
      A)
        display=RUTorrent
        program=rutorrent
+       dialog --infobox "Installing: $display" 3 30
        port=8999
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent 1>/dev/null 2>&1 ;;
 
      B)
        display=Deluge
        program=deluge
+       dialog --infobox "Installing: $display" 3 30
        port=8112
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge 1>/dev/null 2>&1 ;;
 
      C)
        display=Jackett
        program=jackett
+       dialog --infobox "Installing: $display" 3 30
        port=9117
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett 1>/dev/null 2>&1 ;;
 
