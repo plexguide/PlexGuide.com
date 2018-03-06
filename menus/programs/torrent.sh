@@ -46,19 +46,19 @@ case $CHOICE in
        display=RUTorrent
        program=rutorrent
        port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent ;;
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent 1>/dev/null 2>&1 ;;
 
      B)
        display=Deluge
        program=deluge
        port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge ;;
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge 1>/dev/null 2>&1 ;;
 
      C)
        display=Jackett
        program=jackett
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett ;;
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett 1>/dev/null 2>&1 ;;
 
      Z)
        exit 0 ;;
