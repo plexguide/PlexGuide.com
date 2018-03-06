@@ -144,7 +144,7 @@ rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
-dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete! You must REDPLOY each app!" 0 0
+dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete! You must REDPLOY each Application!" 0 0
 clear
 
 sudo bash /opt/plexguide/menus/backup-restore/main.sh
