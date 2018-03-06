@@ -42,30 +42,30 @@ export NCURSES_NO_UTF8_ACS=1
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-
+      dialog --infobox "Test" 3 34
     A)
       clear
       program=heimdall
       port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall 1>/dev/null 2>&1 ;;
 
     B)
       clear
       program=htpcmanager
       port=8085
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager  1>/dev/null 2>&1 ;;
 
     C)
       clear
       program=muximux
       port=8015
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux 1>/dev/null 2>&1;;
 
     D)
       clear
       program=organizr
       port=8020
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr 1>/dev/null 2>&1 ;;
     Z)
        exit 0 ;;
 esac
@@ -80,9 +80,9 @@ if [ "$skip" == "yes" ]; then
     clear
 else
 
-    HEIGHT=8
+    HEIGHT=9
     WIDTH=42
-    CHOICE_HEIGHT=5
+    CHOICE_HEIGHT=4
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
     TITLE="Schedule a Backup of --$program --?"
 
@@ -99,19 +99,19 @@ else
 
     case $CHOICE in
             A)
-                dialog --infobox "Establishing [Weekly] CronJob" 3 0
+                dialog --infobox "Establishing [Weekly] CronJob" 3 34
                 echo "$program" > /tmp/program_var
                 echo "weekly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             B)
-                dialog --infobox "Establishing [Daily] CronJob" 3 0
+                dialog --infobox "Establishing [Daily] CronJob" 3 34
                 echo "$program" > /tmp/program_var
                 echo "daily" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
-                dialog --infobox "Removing CronJob (If Exists)" 3 0
+                dialog --infobox "Removing CronJob (If Exists)" 3 34
                 echo "$program" > /tmp/program_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
                 --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
