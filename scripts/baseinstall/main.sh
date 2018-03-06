@@ -36,6 +36,10 @@ yes | apt-get update 1>/dev/null 2>&1
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 
+echo "17" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
+yes | apt-get install sysstat nmon 1>/dev/null 2>&1
+sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
+
 echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
 apt-get update -y 1>/dev/null 2>&1
