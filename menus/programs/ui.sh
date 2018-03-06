@@ -113,8 +113,9 @@ else
                 read -n 1 -s -r -p "Press any key to continue "
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron
                 echo "$program" > /tmp/program_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron
+                read -n 1 -s -r -p "Press any key to continue "
                 --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
                 clear ;;
     esac
