@@ -1,9 +1,26 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known.
 
-### [5.060] BETA & DEV Version
+### [5.061] BETA & DEV Version
 
 #### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+#### Known Issues
+- None
+
+-------------------------------------------------------
+
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+#### [5.060]
 - Added Settings Menu
 - pgdev command; allows you to automatically to update to latest pgdev without being prompted
 - Added minor script to display ending info rather than having to copy all over the place
@@ -31,11 +48,6 @@ Current Changes will continued to be modified as known.
 
 #### Known Issues
 - pyload is not working
-
--------------------------------------------------------
-
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.059]
 
