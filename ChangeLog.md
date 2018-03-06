@@ -1,13 +1,13 @@
 ## Current Changes (ACTIVE)
-Current Changes will continued to be modified as known.
+Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
 ### [5.061] BETA & DEV Version
 
 #### Added
-- None
+- (D) Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues
 
 #### Changed
-- None
+- (D) Mass Restore: User is notified to deploy each app after a mass restore
 
 #### Removed
 - None
@@ -15,7 +15,7 @@ Current Changes will continued to be modified as known.
 #### Known Issues
 - pyload is not working
 - turnin off ports may not work in settings
-- restoring traefik may result in a break of permissions / requires at least chmod 600  or 775
+
 
 -------------------------------------------------------
 
