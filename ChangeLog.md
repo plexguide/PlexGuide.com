@@ -4,31 +4,32 @@ Current Changes will continued to be modified as known.
 ### [5.060] BETA & DEV Version
 
 #### Added
-- (BETA) Added Settings Menu
-- (BETA) pgdev command; allows you to automatically to update to latest pgdev without being prompted
-- (BETA) added minor script to display ending info rather than having to copy all over the place
-- (BETA) Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
-- (DEV) Added option to go back to Main menu in the Service menu
-- (DEV) Added Cron Jobs Daily to all the programs (it deploys as hourly for testing purposes)
+- Added Settings Menu
+- pgdev command; allows you to automatically to update to latest pgdev without being prompted
+- Added minor script to display ending info rather than having to copy all over the place
+- Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
+- Added option to go back to Main menu in the Service menu
+- Added Cron Jobs Daily our Weekly to Installs
   - Will attempt to offer daily or weekly options
   - Weekly might be best for plex due to it's size and possibly cutting out for the time it's backing up
 
 #### Changed
-- (DEV) Removed Bad Flags - PlexDrive / reported by Petitor
-- (BETA) Front Menu Layout
-- (BETA) Solo Backup & Restore Formatted To New Menu
+- Removed Bad Flags - PlexDrive / reported by Petitor
+- Front Menu Layout
+- Solo Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
   - Check to see local data even exist
-- (BETA) Mass Backup & Restore Formatted To New Menu
+- Mass Backup & Restore Formatted To New Menu
   - Put Failsafes in place to prevent accidental backup
-- (DEV) Updated Service Status&Restart menus look
-- (DEV) Updated NCDU menu look
+- Updated Service Status&Restart menus look
+- Updated NCDU menu look
 
 #### Removed
-- (BETA) Trashed Old Menus
+- Trashed Old Menus
+- Wordpress for testing later
 
 #### Known Issues
-- None
+- pyload is not working
 
 -------------------------------------------------------
 
