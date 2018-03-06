@@ -42,7 +42,7 @@ apt-get update -y 1>/dev/null 2>&1
 apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
-echo "25" | dialog --gauge "Installing: PlexGuide Dependiences" 7 50 0
+echo "25" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall 1>/dev/null 2>&1
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
