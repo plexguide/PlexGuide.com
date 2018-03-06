@@ -47,25 +47,25 @@ case $CHOICE in
             program=nzbget
             dialog --infobox "Installing: $display" 3 30
             port=6789
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget 1>/dev/null 2>&1 ;;
         B)
             display=NZBHYDRA
             program=nzbhydra
             dialog --infobox "Installing: $display" 3 30            
             port=5075
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra 1>/dev/null 2>&1 ;;
         C)
             display=NZBHYRA2
             program=nzbhyra2
             dialog --infobox "Installing: $display" 3 30
             port=5076
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2 ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2 1>/dev/null 2>&1 ;;
         D)
             display=SABNZBD
             program=sabnzbd
             dialog --infobox "Installing: $display" 3 30
             port=8090
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd 1>/dev/null 2>&1 ;;
 
         Z)
             exit 0 ;;
