@@ -42,10 +42,10 @@ export NCURSES_NO_UTF8_ACS=1
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-      dialog --infobox "Test" 3 34
+
     A)
-      clear
       program=heimdall
+      dialog --infobox "Installing $program" 3 34
       port=1111
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall 1>/dev/null 2>&1 ;;
 
