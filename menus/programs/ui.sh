@@ -113,9 +113,9 @@ else
                 read -n 1 -s -r -p "Press any key to continue "
                 --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
             Z)
+                dialog --infobox "Removing CronJob (If Exists)" 3 37
                 echo "$program" > /tmp/program_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron
-                read -n 1 -s -r -p "Press any key to continue "
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
                 --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
                 clear ;;
     esac
