@@ -46,21 +46,21 @@ case $CHOICE in
             program=plex
             port=32400
             bash /opt/plexguide/menus/plex/main.sh
-            --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
         B)
             display=Emby
             program=emby
             port=8096
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby 1>/dev/null 2>&1
-            --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
 
         C)
             display=Ubooquity
             program=ubooquity
             port=2202
-            dialog --infobox "Installing: $display" 3 30 1>/dev/null 2>&1
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity ;;
+            dialog --infobox "Installing: $display" 3 30 
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity 1>/dev/null 2>&1 ;;
 
         Z)
             exit 0 ;;
