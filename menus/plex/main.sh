@@ -34,15 +34,15 @@ case $CHOICE in
             echo "latest" > /tmp/plextag
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
             
-                dialog --infobox "Typed Tag: $plextag" 3 45
-                sleep 5
+                dialog --infobox "Selected Tag: $plextag" 3 45
+                sleep 4
             
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
             echo "For Domain http://$domain:32400/web"
             echo ""
             read -n 1 -s -r -p "Press any key to continue" ;;
-            
+
         B)
                 
                 dialog --title "Input >> Your Domain" \
@@ -51,7 +51,7 @@ case $CHOICE in
                 dom=$(cat /tmp/plextag)
 
                 dialog --infobox "Typed Tag: $plextag" 3 45
-                sleep 5
+                sleep 4
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
             echo "PLEX: http://$ipv4:32400/web"
