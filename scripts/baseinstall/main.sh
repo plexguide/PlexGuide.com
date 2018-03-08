@@ -123,10 +123,14 @@ else
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
 fi
 
-echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+echo "88" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 
-echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
+echo "92" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
+bash /opt/plexguide/scripts/containers/reboot.sh 1>/dev/null 2>&1
+sleep 3
+
+echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
 
 #read -n 1 -s -r -p "Press any key to continue "
