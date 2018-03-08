@@ -49,7 +49,7 @@ else
    exit 0
 fi
 
-file="/var/plexguide/dep41.yes"
+file="/var/plexguide/dep42.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
