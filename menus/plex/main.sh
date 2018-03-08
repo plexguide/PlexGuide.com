@@ -63,7 +63,7 @@ case $CHOICE in
         Z)
             clear
             exit 0 ;;
-
+esac
 
     dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?" 3 48
     sleep 2
