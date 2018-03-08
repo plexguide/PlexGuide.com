@@ -7,5 +7,5 @@ dialog --title "Inputbox - To take input from you" \
 --inputbox "Enter your name " 8 60 2>$OUTPUT
 
 clear
-echo "testfile"
-echo "$tempfile"
+echo "---------"
+echo "$OUTPUT"
