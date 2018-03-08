@@ -39,7 +39,7 @@ case $CHOICE in
             dialog --title "FOR REMOTE SERVERS Users!" \
             --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
 
-           
+            clear
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
             echo "For Domain http://$domain:32400/web"
@@ -63,6 +63,7 @@ case $CHOICE in
             dialog --title "FOR REMOTE SERVERS Users!" \
             --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
 
+            clear
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
             echo "For Domain http://$domain:32400/web"
