@@ -9,4 +9,4 @@ clear
 
 corn=$(cat /tmp/input)
 echo "-----"
-echo $input
+echo $corn
