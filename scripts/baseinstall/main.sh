@@ -48,10 +48,10 @@ if dialog --stdout --title "Domain Question - One Time" \
   email=$(cat /tmp/email)
 
   dialog --infobox "Set Domain is $dom" 3 45
-  sleep 4
+  sleep 5
   dialog --infobox "Set E-Mail is $email" 3 45
-  sleep 4
-  dialog --infobox "Need to Change? Change via Settings Any Time" 4 30
+  sleep 5
+  dialog --infobox "Need to Change? Change via Settings Any Time" 4 28
   sleep 5
 
 else
