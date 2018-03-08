@@ -42,6 +42,7 @@ case $CHOICE in
             echo "For Domain http://$domain:32400/web"
             echo ""
             read -n 1 -s -r -p "Press any key to continue" ;;
+            
         B)
                 
                 dialog --title "Input >> Your Domain" \
