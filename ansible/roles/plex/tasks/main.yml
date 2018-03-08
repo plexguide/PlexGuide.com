@@ -20,11 +20,15 @@
 - debug: msg="Your IP Address is {{local_ip.stdout}}"
   when: plex_prefs.stat.exists == False
 
-- name: Get Plex Media Server claim token
-  pause:
-    prompt: "Visit http://plex.tv/claim, Copy to Clipboard, and Paste (Press Enter If Already Setup)"
-  register: pms_token
-  when: plex_prefs.stat.exists == False
+- name: "Establishing Plex Token Version"
+  shell: "awk '{print $1}' /tmp/plextoken"
+  register: plextoken_var
+
+#- name: Get Plex Media Server claim token
+#  pause:
+#    prompt: "Visit http://plex.tv/claim, Copy to Clipboard, and Paste (Press Enter If Already Setup)"
+#  register: pms_token
+#  when: plex_prefs.stat.exists == False
 
 - debug: msg="Using following Plex claim token {{pms_token.user_input}}"
   when: plex_prefs.stat.exists == False
@@ -64,7 +68,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{pms_token.user_input}}"
+      PLEX_CLAIM: "{{program_var.stdout}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
     networks:
       - name: plexguide

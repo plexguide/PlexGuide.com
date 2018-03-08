@@ -65,18 +65,26 @@ case $CHOICE in
             exit 0 ;;
 esac
 
-    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?" 3 48
-    sleep 2
+    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)? If You SAY -NO- and it is, you must repeat this process!" 4 50
+    sleep 4
 
     if dialog --stdout --title "PAY ATTENTION!" \
       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
       --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
-        dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
-    else
-        clear 1>/dev/null 2>&1
-    fi
 
+    dialog --title "PLEX CLAIM INFORMATION" \
+    --msgbox "\nVisit http://plex.tv/claim and PRESS the [COPY] Button (do not highlight and copy). You have 5 minutes starting NOW! [PRESS ENTER] when you are READY!" 10 50
+
+    dialog --title "Input >> PLEX CLAIM" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --inputbox "Visit http://plex.tv/claim - Token?" 8 40 2>/tmp/plextoken
+    plextoken=$(cat /tmp/plextoken)
+    dialog --infobox "Typed Tag: $token" 3 45
+    sleep 4
+    clear
+    else
+        echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
+    fi
 
 dialog --title "Input >> Tag Version" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
