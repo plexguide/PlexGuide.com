@@ -32,10 +32,16 @@ clear
 case $CHOICE in
         A)
                 echo "latest" > /tmp/plextag
+                plexgtag=$(cat /tmp/plextag)
                 dialog --infobox "Selected Tag: $plextag" 3 45
                 sleep 4
                 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex            
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex 
+
+            dialog --title "FOR REMOTE SERVERS Users!" \
+            --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
+
+           
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
             echo "For Domain http://$domain:32400/web"
@@ -43,16 +49,22 @@ case $CHOICE in
             read -n 1 -s -r -p "Press any key to continue" ;;
 
         B)
-                
+                dialog --title "Warning - Tag Info" \
+                --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
+
                 dialog --title "Input >> Your Domain" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/plextag
-                dom=$(cat /tmp/plextag)
+                plexgtag=$(cat /tmp/plextag)
 
                 dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 4
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+
+            dialog --title "FOR REMOTE SERVERS Users!" \
+            --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
+
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
             echo "For Domain http://$domain:32400/web"
