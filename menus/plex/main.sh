@@ -56,7 +56,7 @@ case $CHOICE in
 
             dialog --title "FOR REMOTE SERVERS Users!" \
             --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
-
+            ;;
         Z)
             clear
             exit 0 ;;
