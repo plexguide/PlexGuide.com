@@ -33,6 +33,7 @@ case $CHOICE in
         A)
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 4
+                clear
                 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex 
 
@@ -56,6 +57,7 @@ case $CHOICE in
                 plexgtag=$(cat /tmp/plextag)
                 #dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 4
+                clear
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
 
