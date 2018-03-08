@@ -30,6 +30,32 @@ else
   exit 0
 fi
 
+############### Domain Question - START
+if dialog --stdout --title "Domain Question - One Time" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --yesno "\nDo you have a domain NOW for setup (Not Required)?" 7 50; then
+  
+  domain='yes'
+  
+  dialog --title "Input Your Domain" \
+  --backtitle "Domain Example: plexguide.com" \
+  --inputbox "Your Domain" 8 40 2>/tmp/domain
+  #domain=$(cat /tmp/domain)
+
+  dialog --title "Inputbox - To take input from you" \
+  --backtitle "Linux Shell Script Tutorial Example" \
+  --inputbox "Your E-Mail:" 8 40 2>/tmp/email
+  #email=$(cat /tmp/email)
+
+else
+  domain="no"
+fi
+
+### Tracked So It Does Not Ask User Again!
+touch /var/pleguide/domain
+
+############### Domain Question - END
+
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
