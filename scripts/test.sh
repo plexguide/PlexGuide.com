@@ -7,6 +7,4 @@ dialog --title "Inputbox - To take input from you" \
 --inputbox "Enter your name " 8 60 2>/tmp/input
 clear
 
-corn=$(cat /tmp/input)
-echo "-----"
-echo $corn
+input=$(cat /tmp/input)
