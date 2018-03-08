@@ -10,7 +10,7 @@ display=PLEX
 program=plex
 port=32400
 
-    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)? If You SAY -NO- and it is, you must repeat this process!" 4 50
+    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\nIf You SAY -NO- and it is, you must repeat this process!" 5 50
     sleep 4
 
     if dialog --stdout --title "PAY ATTENTION!" \
