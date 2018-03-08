@@ -24,14 +24,7 @@
   shell: "awk '{print $1}' /tmp/plextoken"
   register: plextoken_var
 
-#- name: Get Plex Media Server claim token
-#  pause:
-#    prompt: "Visit http://plex.tv/claim, Copy to Clipboard, and Paste (Press Enter If Already Setup)"
-#  register: pms_token
-#  when: plex_prefs.stat.exists == False
-
 - debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
-  when: plex_prefs.stat.exists == False
 
 - name: Remove Plex Container
   docker_container:

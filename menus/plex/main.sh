@@ -85,12 +85,6 @@ case $CHOICE in
         Z)
             clear
             exit 0 ;;
-esac
-
-dialog --title "Input >> Tag Version" \
---backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Tags Example: 1.12.0.4829-6de959918" 8 40 2>/tmp/plextag
-plexgtag=$(cat /tmp/plextag)
 
 ########## Deploy End
 esac 
