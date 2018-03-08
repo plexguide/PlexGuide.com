@@ -68,7 +68,7 @@ else
   dialog --infobox "No Changes Were Made!" 3 38
   sleep 4
   bash /opt/plexguide/menus/settings/main.sh
-  exit 0 ;;
+  exit
 fi
 
 ### Tracked So It Does Not Ask User Again!
