@@ -44,7 +44,7 @@ if dialog --stdout --title "Domain Question - One Time" \
 
   dialog --title "Input >> Your E-Mail" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "E-Mail (Example - user@pg.com)" 8 36 2>/tmp/email
+  --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/tmp/email
   #email=$(cat /tmp/email)
 
 else
