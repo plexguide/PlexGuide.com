@@ -24,6 +24,18 @@
     name: "plexguide"
     state: present
 
+- name: "Establishing Domain"
+  shell: "awk '{print $1}' /tmp/domain"
+  register: domain_var
+  tags:
+    - domain
+
+- name: "Establishing E-Mail"
+  shell: "awk '{print $1}' /tmp/email"
+  register: email_var
+  tags:
+    - domain
+
 ########## Ask user for e-mail & domain
 #- name: domain
 #  pause:
@@ -47,17 +59,17 @@
 #- debug: msg="Using following password {{password_input.user_input}}"
 
 ########## Replace template domain and email with the user input
-#- name: Replace yourdomain.com with user input
-#  replace:
-#    path: /opt/appdata/plexguide/var.yml
-#    regexp: domain.com
-#    replace: "{{domain_input.user_input}}"
+- name: Replace yourdomain.com with user input
+  replace:
+    path: /opt/appdata/plexguide/var.yml
+    regexp: domain.com
+    replace: "{{domain_var.stdout}}"
 
-#- name: Replace your@email.com with user input
-#  replace:
-#    path: /opt/appdata/plexguide/var.yml
-#    regexp: your@email.com
-#    replace: "{{email_input.user_input}}"
+- name: Replace your@email.com with user input
+  replace:
+    path: /opt/appdata/plexguide/var.yml
+    regexp: your@email.com
+    replace: "{{email_var.stdout}}"
 
 #- name: Replace password with user input
 #  replace:
