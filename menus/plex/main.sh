@@ -50,12 +50,11 @@ case $CHOICE in
                 dialog --title "Warning - Tag Info" \
                 --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
 
-                dialog --title "Input >> Your Domain" \
+                dialog --title "Input >> Tag Version" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/plextag
+                --inputbox "Tags Example: 1.12.0.4829-6de959918" 8 40 2>/tmp/plextag
                 plexgtag=$(cat /tmp/plextag)
-
-                dialog --infobox "Typed Tag: $plextag" 3 45
+                #dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 4
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
