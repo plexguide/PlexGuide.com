@@ -61,7 +61,7 @@ else
 fi
 
 ### Tracked So It Does Not Ask User Again!
-touch /var/pleguide/domain
+touch /var/plexguide/domain
 
 ############### Domain Question - END
 
