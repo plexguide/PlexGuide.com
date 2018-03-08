@@ -97,7 +97,7 @@ else
 fi
             
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
---msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. \n\nGoto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
+--msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
 ########## Deploy Start
 number=$((1 + RANDOM % 2000))
