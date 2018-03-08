@@ -6,18 +6,19 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Added
 - (D) Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
 - (D) Enabling System Health Monitoring (Credit: EasternPA)
+- (D) Dialog asks for your username and email
 #### Changed
 - (D) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
 - (D) PlexDrive Fix (Credit: budman17r)
 
 #### Removed
-- None
+- (D) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
 
 #### Known Issues
 - pyload is not working
 - turnin off ports may not work in settings
-
-
+- nextcloud not working
+- SABNZBD https:// maybe not working?
 -------------------------------------------------------
 
 ## Past Changes
