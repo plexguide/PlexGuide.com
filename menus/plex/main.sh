@@ -77,7 +77,7 @@ if [ "$skip" == "yes" ]; then
     clear
 else
 
-    HEIGHT=9
+    HEIGHT=10
     WIDTH=42
     CHOICE_HEIGHT=5
     BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
