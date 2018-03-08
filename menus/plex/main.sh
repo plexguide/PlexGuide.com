@@ -42,6 +42,7 @@ case $CHOICE in
                 clear
                 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex 
+            read -n 1 -s -r -p "Press any key to continue "
             ;;
 
         B)
@@ -57,6 +58,8 @@ case $CHOICE in
                 clear
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+            read -n 1 -s -r -p "Press any key to continue "
+
             ;;
         Z)
             clear
