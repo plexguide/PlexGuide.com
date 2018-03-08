@@ -58,8 +58,8 @@ case $CHOICE in
                 echo "latest" > /tmp/plextag
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 4
-                clear
-                
+
+            dialog --infobox "Installing Plex: Please Wait" 3 45   
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
@@ -74,8 +74,8 @@ case $CHOICE in
                 plexgtag=$(cat /tmp/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 4
-                clear
-
+            
+            dialog --infobox "Installing Plex: Please Wait" 3 45
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
