@@ -31,12 +31,11 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "latest" > /tmp/plextag
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
-            
+                echo "latest" > /tmp/plextag
                 dialog --infobox "Selected Tag: $plextag" 3 45
                 sleep 4
-            
+                
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex            
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
             echo "For Domain http://$domain:32400/web"
