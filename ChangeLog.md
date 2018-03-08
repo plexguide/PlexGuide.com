@@ -4,12 +4,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.061] BETA & DEV Version
 
 #### Added
-- (D) Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
-- (D) Enabling System Health Monitoring (Credit: EasternPA)
-- (D) Dialog asks for your username and email
+- (B1) Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
+- (B1) Enabling System Health Monitoring (Credit: EasternPA)
+- (B1) Dialog asks for your username and email
+- (B1) Added New Menu to Settings Incase You Have To Change
 #### Changed
-- (D) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
-- (D) PlexDrive Fix (Credit: budman17r)
+- (B1) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
+- (B1) PlexDrive Fix (Credit: budman17r)
 
 #### Removed
 - (D) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
