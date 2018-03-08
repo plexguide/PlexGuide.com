@@ -57,7 +57,7 @@ if dialog --stdout --title "Domain Question - One Time" \
 else
   domain="no"
   dialog --infobox "Add a Domain Anytime Via - Settings" 3 38
-  sleep 4
+  sleep 5
 fi
 
 ### Tracked So It Does Not Ask User Again!
@@ -112,7 +112,8 @@ then
   clear 1>/dev/null 2>&1
 else
   echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton #1>/dev/null 2>&1
+  read -n 1 -s -r -p "Press any key to continue "
 fi
 
 
