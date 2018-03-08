@@ -42,9 +42,9 @@ clear
 case $CHOICE in
         A) 
 ################################################# START
-if dialog --stdout --title "Domain Question - One Time" \
+if dialog --stdout --title "Domain Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nAre You Utilizing a Domain?" 7 34; then
+  --yesno "\nAre You Adding/Changing a Domain?" 7 34; then
   
   domain='yes'
   
@@ -62,13 +62,13 @@ if dialog --stdout --title "Domain Question - One Time" \
   sleep 5
   dialog --infobox "Set E-Mail is $email" 3 45
   sleep 5
-  dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
-  sleep 5
 
 else
   domain="no"
-  dialog --infobox "Add a Domain Anytime Via - Settings" 3 38
-  sleep 5
+  dialog --infobox "No Changes Were Made!" 3 38
+  sleep 4
+  bash /opt/plexguide/menus/settings/main.sh
+  exit 0 ;;
 fi
 
 ### Tracked So It Does Not Ask User Again!
@@ -115,5 +115,5 @@ touch /var/plexguide/domain
 esac
 clear
 
-bash /opt/plexguide/menus/settings/main.sh ;;
+bash /opt/plexguide/menus/settings/main.sh
 exit 0
