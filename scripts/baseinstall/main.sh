@@ -39,7 +39,7 @@ if dialog --stdout --title "Domain Question - One Time" \
   
   dialog --title "Input >> Your Domain" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Domain (Example - plexguide.com)" 8 38 2>/tmp/domain
+  --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/domain
   #domain=$(cat /tmp/domain)
 
   dialog --title "Input >> Your E-Mail" \
