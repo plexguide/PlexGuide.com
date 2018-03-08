@@ -78,7 +78,7 @@ else
 fi
             
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
---msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. \nGoto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. \nMake sure its turn GREEN! DO NOT FORGET or do it now!" 14 50
+--msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. \nGoto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. \nMake sure its turn GREEN! DO NOT FORGET or do it now!" 13 50
 
 
 ########## Deploy Start
