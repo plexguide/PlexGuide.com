@@ -33,18 +33,18 @@ fi
 ############### Domain Question - START
 if dialog --stdout --title "Domain Question - One Time" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nAre You Utilizing a Domain?" 7 40; then
+  --yesno "\nAre You Utilizing a Domain?" 7 36; then
   
   domain='yes'
   
   dialog --title "Input Your Domain" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Your Domain\n" 8 40 2>/tmp/domain
+  --inputbox "Type Domain (Example: plexguide.com):\n" 8 45 2>/tmp/domain
   #domain=$(cat /tmp/domain)
 
   dialog --title "Inputbox - To take input from you" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Your E-Mail:" 8 40 2>/tmp/email
+  --inputbox "Type E-Mail (Example: admin9705@plexguide.com" 8 45 2>/tmp/email
   #email=$(cat /tmp/email)
 
 else
