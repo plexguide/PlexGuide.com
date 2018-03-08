@@ -7,13 +7,13 @@ export NCURSES_NO_UTF8_ACS=1
  echo $domain
 
  ### demo ip / comment out when done
- domain=69.69.69.69
+ ipv4=69.69.69.69
 
 display=PLEX
 program=plex
 port=32400
 
-    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\nIf You SAY -NO- and it is, you must repeat this process!" 5 50
+    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
     sleep 4
 
     if dialog --stdout --title "PAY ATTENTION!" \
@@ -29,7 +29,6 @@ port=32400
     plextoken=$(cat /tmp/plextoken)
     dialog --infobox "Token: $plextoken" 3 45
     sleep 4
-    clear
     else
         echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
     fi
@@ -155,5 +154,3 @@ dialog --title "$display - Address Info" \
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/media.sh
-
-exit
