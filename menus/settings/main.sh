@@ -77,3 +77,6 @@ case $CHOICE in
             ;;
 esac
 clear
+
+bash /opt/plexguide/menus/settings/main.sh ;;
+exit 0
