@@ -8,6 +8,10 @@
   shell: "hostname -I | awk '{print $1}'"
   register: local_ip
 
+- name: "Establishing Plex Tag Version"
+  shell: "awk '{print $1}' /tmp/plextag"
+  register: domain_var
+
 - name: Check Preferences.xml exists
   stat:
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
@@ -32,7 +36,7 @@
 
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:plexpass"
+    name: "plexinc/pms-docker:{{email_var.stdout}}"
 
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
@@ -42,7 +46,7 @@
 - name: Deploy Plex Container
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:plexpass"
+    image: "plexinc/pms-docker:{{email_var.stdout}}"
     pull: yes
     published_ports:
       - "{{ports}}32400:32400"
@@ -95,8 +99,6 @@
   pause:
     prompt: "[Press Enter] (For Remote Servers) Remember to claim your SERVER via IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure it turn GREEN!"
 
-## Source: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/Plex-Guide
-#### http://docs.ansible.com/ansible/latest/unarchive_module.html
 - name: WebTools
   unarchive:
     src: https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
