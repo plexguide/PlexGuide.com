@@ -36,7 +36,7 @@ if [ -e "$file" ]
 then
   clear
 else
-
+      rm -r /opt/appdata/plexguide/var.yml
       if dialog --stdout --title "Domain Question - One Time" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nAre You Utilizing a Domain?" 7 34; then
