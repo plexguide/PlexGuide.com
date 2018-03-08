@@ -47,12 +47,12 @@ if dialog --stdout --title "Domain Question - One Time" \
   --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/tmp/email
   email=$(cat /tmp/email)
 
-  dialog --infobox "Set Domain is $dom" 3 40
-  sleep 3
-  dialog --infobox "Set E-Mail is $email" 3 40
-  sleep 3
-  dialog --infobox "Need to Change? Change Via Settings Any Time" 3 40
+  dialog --infobox "Set Domain is $dom" 3 45
   sleep 4
+  dialog --infobox "Set E-Mail is $email" 3 45
+  sleep 4
+  dialog --infobox "Need to Change? Change Via Settings Any Time" 4 40
+  sleep 5
 
 else
   domain="no"
