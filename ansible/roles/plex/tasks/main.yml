@@ -30,7 +30,7 @@
 #  register: pms_token
 #  when: plex_prefs.stat.exists == False
 
-- debug: msg="Using following Plex claim token {{pms_token.user_input}}"
+- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
   when: plex_prefs.stat.exists == False
 
 - name: Remove Plex Container
@@ -68,7 +68,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{program_var.stdout}}"
+      PLEX_CLAIM: "{{plextoken_var.stdout}}"
       ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
     networks:
       - name: plexguide
