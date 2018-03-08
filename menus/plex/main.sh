@@ -39,7 +39,7 @@ case $CHOICE in
 
             dialog --title "FOR REMOTE SERVERS Users!" \
             --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
-
+            ;;
         B)
                 dialog --title "Warning - Tag Info" \
                 --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
