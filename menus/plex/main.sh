@@ -36,7 +36,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-                echo "latest" /tmp/plextag
+                echo "latest" > /tmp/plextag
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 4
                 clear
