@@ -6,6 +6,9 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
+ ### demo ip / comment out when done
+ domain=69.69.69.69
+
 display=PLEX
 program=plex
 port=32400
@@ -30,10 +33,6 @@ port=32400
     else
         echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
     fi
-
-
-dialog --title "Plex Claim Info" \
---msgbox "\nVisit http//:$ipv4:32400/web AFTER to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 12 50
 
 HEIGHT=10
 WIDTH=40
@@ -62,8 +61,8 @@ case $CHOICE in
                 sleep 4
                 clear
                 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
-            read -n 1 -s -r -p "Press any key to continue "
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+            #read -n 1 -s -r -p "Press any key to continue "
             ;;
 
         B)
@@ -78,9 +77,8 @@ case $CHOICE in
                 sleep 4
                 clear
 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
-            read -n 1 -s -r -p "Press any key to continue "
-
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+            #read -n 1 -s -r -p "Press any key to continue "
             ;;
         Z)
             clear
@@ -89,7 +87,7 @@ case $CHOICE in
 ########## Deploy End
 esac 
 
-if dialog --stdout --title "WebToos 3.0" \
+if dialog --stdout --title "WebTools Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
     dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
@@ -101,7 +99,6 @@ fi
             
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
 --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. \n\nGoto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake sure its turn GREEN! DO NOT FORGET or do it now!" 13 50
-
 
 ########## Deploy Start
 number=$((1 + RANDOM % 2000))
@@ -150,6 +147,8 @@ else
     esac
 fi
 ########## Deploy End
+dialog --infobox "If the claim does not work, read the WIKI for other methods!" 3 55
+sleep 5
 
 dialog --title "$display - Address Info" \
 --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://plex.$domain\nDomain    - http://$domain:$port" 8 50
