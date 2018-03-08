@@ -146,7 +146,7 @@ else
     esac
 fi
 ########## Deploy End
-dialog --infobox "If the claim does not work, read the WIKI for other methods!" 3 55
+dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
 sleep 5
 
 dialog --title "$display - Address Info" \
