@@ -13,11 +13,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) PlexDrive Fix (Credit: budman17r)
 
 #### Removed
-- (D) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
+- (B1) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
 
 #### Known Issues
 - pyload is not working
-- turnin off ports may not work in settings
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
 - nextcloud not working
 - SABNZBD https:// maybe not working?
 -------------------------------------------------------
