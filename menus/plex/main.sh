@@ -6,6 +6,11 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
+display=Emby
+program=emby
+port=8096
+
+
 dialog --title "Plex Claim Info" \
 --msgbox "\nVisit http//:$ipv4:32400/web AFTER to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 12 50
 
@@ -36,10 +41,8 @@ case $CHOICE in
                 clear
                 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex 
-
-            dialog --title "FOR REMOTE SERVERS Users!" \
-            --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
             ;;
+
         B)
                 dialog --title "Warning - Tag Info" \
                 --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
@@ -53,9 +56,6 @@ case $CHOICE in
                 clear
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
-
-            dialog --title "FOR REMOTE SERVERS Users!" \
-            --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
             ;;
         Z)
             clear
@@ -63,6 +63,59 @@ case $CHOICE in
 
 ########## Deploy End
 esac 
+
+            
+dialog --title "FOR REMOTE PLEX SERVERS Users!" \
+--msgbox "\nRemember to claim your SERVER via your $ipv4, then goto your http://$ipv4:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN! DO NOT FORGET or do it now!" 10 50
+
+
+########## Deploy Start
+number=$((1 + RANDOM % 2000))
+echo "$number" > /tmp/number_var
+
+if [ "$skip" == "yes" ]; then
+    clear
+else
+
+    HEIGHT=9
+    WIDTH=42
+    CHOICE_HEIGHT=5
+    BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+    TITLE="Schedule a Backup of --$display --?"
+
+    OPTIONS=(A "Weekly"
+             B "Daily"
+             Z "None")
+
+    CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                    --title "$TITLE" \
+                    --menu "$MENU" \
+                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                    "${OPTIONS[@]}" \
+                    2>&1 >/dev/tty)
+
+    case $CHOICE in
+            A)
+                dialog --infobox "Establishing [Weekly] CronJob" 3 34
+                echo "$program" > /tmp/program_var
+                echo "weekly" > /tmp/time_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
+            B)
+                dialog --infobox "Establishing [Daily] CronJob" 3 34
+                echo "$program" > /tmp/program_var
+                echo "daily" > /tmp/time_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
+            Z)
+                dialog --infobox "Removing CronJob (If Exists)" 3 34
+                echo "$program" > /tmp/program_var
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
+                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
+                clear ;;
+    esac
+fi
+########## Deploy End
 
 dialog --title "$display - Address Info" \
 --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://plex.$domain\nDomain    - http://$domain:$port" 8 50
