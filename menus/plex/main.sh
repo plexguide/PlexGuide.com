@@ -16,7 +16,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Installer"
 MENU="Select your Plex Preference:"
 
-OPTIONS=(A "Plex Install"
+OPTIONS=(A "Plex Latest"
+         B "Plex Custom"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -30,6 +31,27 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+            echo "latest" > /tmp/plextag
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+            
+                dialog --infobox "Typed Tag: $plextag" 3 45
+                sleep 5
+            
+            echo "PLEX: http://$ipv4:32400/web"
+            echo "For Subdomain https://plex.$domain/web"
+            echo "For Domain http://$domain:32400/web"
+            echo ""
+            read -n 1 -s -r -p "Press any key to continue" ;;
+        B)
+                
+                dialog --title "Input >> Your Domain" \
+                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/plextag
+                dom=$(cat /tmp/plextag)
+
+                dialog --infobox "Typed Tag: $plextag" 3 45
+                sleep 5
+
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
             echo "PLEX: http://$ipv4:32400/web"
             echo "For Subdomain https://plex.$domain/web"
