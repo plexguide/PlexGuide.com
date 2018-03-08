@@ -71,7 +71,7 @@ if dialog --stdout --title "WebToos 3.0" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
     dialog --infobox "WebTools: Installing - Please Wait" 3 45
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
 else
     dialog --infobox "WebTools: Not Installed" 3 45
     sleep 3
