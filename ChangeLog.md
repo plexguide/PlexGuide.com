@@ -8,12 +8,15 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Enabling System Health Monitoring (Credit: EasternPA)
 - (B1) Dialog asks for your username and email
 - (B1) Added New Menu to Settings Incase You Have To Change
+- (D) Can type your own new custom plex tag (useful for certain version, or if newest plex is bugged)
+
 #### Changed
 - (B1) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
 - (B1) PlexDrive Fix (Credit: budman17r)
 
 #### Removed
 - (B1) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
+- (D) Removed one useless press enter during ansible install of plex
 
 #### Known Issues
 - pyload is not working
