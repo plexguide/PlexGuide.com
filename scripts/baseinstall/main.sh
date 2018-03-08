@@ -38,12 +38,12 @@ if dialog --stdout --title "Domain Question - One Time" \
   domain='yes'
   
   dialog --title "Input Your Domain" \
-  --backtitle "Domain Example: plexguide.com\n" \
-  --inputbox "nYour Domain" 8 40 2>/tmp/domain
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Your Domain\n" 8 40 2>/tmp/domain
   #domain=$(cat /tmp/domain)
 
   dialog --title "Inputbox - To take input from you" \
-  --backtitle "Linux Shell Script Tutorial Example\n" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Your E-Mail:" 8 40 2>/tmp/email
   #email=$(cat /tmp/email)
 
