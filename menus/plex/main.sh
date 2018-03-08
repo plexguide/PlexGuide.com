@@ -6,9 +6,9 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
-display=Emby
-program=emby
-port=8096
+display=PLEX
+program=plex
+port=32400
 
 
 dialog --title "Plex Claim Info" \
