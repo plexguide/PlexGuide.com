@@ -41,7 +41,7 @@ case $CHOICE in
                 sleep 4
                 clear
                 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex 
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
             read -n 1 -s -r -p "Press any key to continue "
             ;;
 
@@ -53,11 +53,11 @@ case $CHOICE in
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "Tags Example: 1.12.0.4829-6de959918" 8 40 2>/tmp/plextag
                 plexgtag=$(cat /tmp/plextag)
-                #dialog --infobox "Typed Tag: $plextag" 3 45
+                dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 4
                 clear
 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
             read -n 1 -s -r -p "Press any key to continue "
 
             ;;
@@ -70,7 +70,7 @@ esac
 
             
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
---msgbox "\nRemember to claim your SERVER via your $ipv4, then goto your http://$ipv4:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN! DO NOT FORGET or do it now!" 12 50
+--msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. Goto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. Make sure its turn GREEN! DO NOT FORGET or do it now!" 12 50
 
 
 ########## Deploy Start

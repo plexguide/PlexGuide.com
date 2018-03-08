@@ -104,3 +104,5 @@
     group: 1000
     mode: 0775
     copy: no
+  tags:
+    - webtools
