@@ -10,7 +10,6 @@ display=PLEX
 program=plex
 port=32400
 
-
 dialog --title "Plex Claim Info" \
 --msgbox "\nVisit http//:$ipv4:32400/web AFTER to complete the install. If installing Plex on a REMOTE SERVER, have your Plex Claim Token ready by heading to https://plex.tv/claim. The Claim Token is valid only for 4 minutes! If the claim process does not work, read the plex wiki for the other 3 methods to claim!" 12 50
 
@@ -68,6 +67,15 @@ case $CHOICE in
 ########## Deploy End
 esac 
 
+if dialog --stdout --title "WebToos 3.0" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
+    dialog --infobox "WebTools: Installing - Please Wait" 3 45
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools
+else
+    dialog --infobox "WebTools: Not Installed" 3 45
+    sleep 3
+fi
             
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
 --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. Goto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. Make sure its turn GREEN! DO NOT FORGET or do it now!" 12 50
