@@ -31,9 +31,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-                echo "latest" > /tmp/plextag
-                plexgtag=$(cat /tmp/plextag)
-                dialog --infobox "Selected Tag: $plextag" 3 45
+                dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 4
                 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex 
