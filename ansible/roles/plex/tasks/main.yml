@@ -10,7 +10,7 @@
 
 - name: "Establishing Plex Tag Version"
   shell: "awk '{print $1}' /tmp/plextag"
-  register: domain_var
+  register: plextag_var
 
 - name: Check Preferences.xml exists
   stat:
@@ -36,7 +36,7 @@
 
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:{{email_var.stdout}}"
+    name: "plexinc/pms-docker:{{plextag_var.stdout}}"
 
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
@@ -46,7 +46,7 @@
 - name: Deploy Plex Container
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{email_var.stdout}}"
+    image: "plexinc/pms-docker:{{plextag_var.stdout}}"
     pull: yes
     published_ports:
       - "{{ports}}32400:32400"
