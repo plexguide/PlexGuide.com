@@ -4,11 +4,8 @@
 
 dialog --title "Inputbox - To take input from you" \
 --backtitle "Linux Shell Script Tutorial Example" \
---inputbox "Enter your name " 8 60 2> $OUTPUT
+--inputbox "Enter your name " 8 60 2>/tmp/input
 
-
-
-clear
-echo "---------"
-echo "$OUTPUT"
-#cat /tmp/input.txt
+corn=( cat /tmp/input )
+echo "-----"
+echo $input
