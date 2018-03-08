@@ -40,13 +40,6 @@ case $CHOICE in
             dialog --title "FOR REMOTE SERVERS Users!" \
             --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
 
-            clear
-            echo "PLEX: http://$ipv4:32400/web"
-            echo "For Subdomain https://plex.$domain/web"
-            echo "For Domain http://$domain:32400/web"
-            echo ""
-            read -n 1 -s -r -p "Press any key to continue" ;;
-
         B)
                 dialog --title "Warning - Tag Info" \
                 --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
@@ -64,13 +57,17 @@ case $CHOICE in
             dialog --title "FOR REMOTE SERVERS Users!" \
             --msgbox "\nRemember to claim your SERVER via your IP, then goto your IP:32400, goto settings, remote access, check manual, port 32400 then ENABLE. Make sure its turn GREEN!" 10 50
 
-            clear
-            echo "PLEX: http://$ipv4:32400/web"
-            echo "For Subdomain https://plex.$domain/web"
-            echo "For Domain http://$domain:32400/web"
-            echo ""
-            read -n 1 -s -r -p "Press any key to continue" ;;
         Z)
             clear
             exit 0 ;;
-esac
+
+########## Deploy End
+esac 
+
+dialog --title "$display - Address Info" \
+--msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://plex.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/media.sh
+
+exit
