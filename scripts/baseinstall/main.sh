@@ -62,7 +62,7 @@ else
 
       else
         domain="no"
-        dialog --infobox "Add a Domain Anytime Via - Settings" 3 38
+        dialog --infobox "Add a Domain Anytime Via - Settings" 3 43
         sleep 5
       fi
 
