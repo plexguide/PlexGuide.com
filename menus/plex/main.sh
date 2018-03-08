@@ -24,7 +24,7 @@ port=32400
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "Visit http://plex.tv/claim - Token?" 8 40 2>/tmp/plextoken
     plextoken=$(cat /tmp/plextoken)
-    dialog --infobox "Typed Tag: $token" 3 45
+    dialog --infobox "Token: $plextoken" 3 45
     sleep 4
     clear
     else
@@ -100,7 +100,7 @@ else
 fi
             
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
---msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. \nGoto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. \nMake sure its turn GREEN! DO NOT FORGET or do it now!" 13 50
+--msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400. \n\nGoto Sttings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake sure its turn GREEN! DO NOT FORGET or do it now!" 13 50
 
 
 ########## Deploy Start
