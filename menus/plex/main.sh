@@ -64,6 +64,25 @@ case $CHOICE in
             clear
             exit 0 ;;
 
+
+    dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?" 3 48
+    sleep 2
+
+    if dialog --stdout --title "PAY ATTENTION!" \
+      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+      --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
+        dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
+    else
+        clear 1>/dev/null 2>&1
+    fi
+
+
+dialog --title "Input >> Tag Version" \
+--backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+--inputbox "Tags Example: 1.12.0.4829-6de959918" 8 40 2>/tmp/plextag
+plexgtag=$(cat /tmp/plextag)
+
 ########## Deploy End
 esac 
 
