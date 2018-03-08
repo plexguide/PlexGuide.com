@@ -8,4 +8,4 @@ dialog --title "Inputbox - To take input from you" \
 
 clear
 echo "---------"
-echo "$OUTPUT"
+echo $OUTPUT
