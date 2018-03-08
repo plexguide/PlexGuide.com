@@ -6,12 +6,6 @@
 
 - debug: msg="Temp Message - For {{program_var.stdout}}"
 
-## Add Prompt Future Wise and Skip if Set to No Xor
-## Note to have an uppercase version of the variable
-## Ensure /mnt/gdrive exists
-## move to tmp and then sync, easy fix
-## ensure it pauses at end
-
 - name: Does Backup Data Exist on Grive - {{program_var.stdout}}
   stat:
     path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar

@@ -25,6 +25,18 @@
     state: absent
     path: /opt/appdata/traefik/traefik.toml
 
+- name: "Establishing Domain"
+  shell: "awk '{print $1}' /tmp/domain"
+  register: domain_var
+  tags:
+    - domain
+
+- name: "Establishing E-Mail"
+  shell: "awk '{print $1}' /tmp/email"
+  register: email_var
+  tags:
+    - domain
+
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -42,6 +54,7 @@
     group: 1000
   tags:
     - redirecton
+    - redirect
 
 - name: Installing Traefik.Toml (Off Redirect)
   template:
@@ -52,12 +65,13 @@
     group: 1000
   tags:
     - redirectoff
+    - redirect
 
 - name: Replace yourdomain.com with user input
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: yourdomain.com
-    replace: "{{domain}}"
+    replace: "{{domain_var.stdout}}"
   tags:
     - main 
 
@@ -65,7 +79,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: your@email.com
-    replace: "{{email}}"
+    replace: "{{email_var.stdout}}"
   tags:
     - main
 #############################

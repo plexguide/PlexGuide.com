@@ -25,15 +25,15 @@
     state: present
 
 ########## Ask user for e-mail & domain
-- name: domain
-  pause:
-    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
-  register: domain_input
+#- name: domain
+#  pause:
+#    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
+#  register: domain_input
 
-- name: email
-  pause:
-    prompt: "Enter e-mail address - (must be valid in order to register SSL)"
-  register: email_input
+#- name: email
+#  pause:
+#    prompt: "Enter e-mail address - (must be valid in order to register SSL)"
+#  register: email_input
 
 #Not Need So Far
 #- name: password
@@ -42,22 +42,22 @@
 #  register: password_input
 
 ########## Info-Debug
-- debug: msg="Using following domain {{domain_input.user_input}}"
-- debug: msg="Using following e-mail {{email_input.user_input}}"
+#- debug: msg="Using following domain {{domain_input.user_input}}"
+#- debug: msg="Using following e-mail {{email_input.user_input}}"
 #- debug: msg="Using following password {{password_input.user_input}}"
 
 ########## Replace template domain and email with the user input
-- name: Replace yourdomain.com with user input
-  replace:
-    path: /opt/appdata/plexguide/var.yml
-    regexp: domain.com
-    replace: "{{domain_input.user_input}}"
+#- name: Replace yourdomain.com with user input
+#  replace:
+#    path: /opt/appdata/plexguide/var.yml
+#    regexp: domain.com
+#    replace: "{{domain_input.user_input}}"
 
-- name: Replace your@email.com with user input
-  replace:
-    path: /opt/appdata/plexguide/var.yml
-    regexp: your@email.com
-    replace: "{{email_input.user_input}}"
+#- name: Replace your@email.com with user input
+#  replace:
+#    path: /opt/appdata/plexguide/var.yml
+#    regexp: your@email.com
+#    replace: "{{email_input.user_input}}"
 
 #- name: Replace password with user input
 #  replace:

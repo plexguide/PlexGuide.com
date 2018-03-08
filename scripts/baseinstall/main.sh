@@ -51,7 +51,7 @@ if dialog --stdout --title "Domain Question - One Time" \
   sleep 5
   dialog --infobox "Set E-Mail is $email" 3 45
   sleep 5
-  dialog --infobox "Need to Change? Change via Settings Any Time" 4 28
+  dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
   sleep 5
 
 else
