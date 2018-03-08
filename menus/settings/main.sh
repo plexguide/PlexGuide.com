@@ -62,6 +62,7 @@ if dialog --stdout --title "Domain Question" \
   sleep 5
   dialog --infobox "Set E-Mail is $email" 3 45
   sleep 5
+  clear
 
 else
   domain="no"

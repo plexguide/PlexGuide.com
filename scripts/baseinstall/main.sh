@@ -31,38 +31,45 @@ else
 fi
 
 ############### Domain Question - START
-if dialog --stdout --title "Domain Question - One Time" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nAre You Utilizing a Domain?" 7 34; then
-  
-  domain='yes'
-  
-  dialog --title "Input >> Your Domain" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/domain
-  dom=$(cat /tmp/domain)
-
-  dialog --title "Input >> Your E-Mail" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/tmp/email
-  email=$(cat /tmp/email)
-
-  dialog --infobox "Set Domain is $dom" 3 45
-  sleep 5
-  dialog --infobox "Set E-Mail is $email" 3 45
-  sleep 5
-  dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
-  sleep 5
-
+file="/var/plexguide/domain"
+if [ -e "$file" ]
+then
+  clear
 else
-  domain="no"
-  dialog --infobox "Add a Domain Anytime Via - Settings" 3 38
-  sleep 5
+
+      if dialog --stdout --title "Domain Question - One Time" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nAre You Utilizing a Domain?" 7 34; then
+        
+        domain='yes'
+        
+        dialog --title "Input >> Your Domain" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/domain
+        dom=$(cat /tmp/domain)
+
+        dialog --title "Input >> Your E-Mail" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/tmp/email
+        email=$(cat /tmp/email)
+
+        dialog --infobox "Set Domain is $dom" 3 45
+        sleep 5
+        dialog --infobox "Set E-Mail is $email" 3 45
+        sleep 5
+        dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
+        sleep 5
+
+      else
+        domain="no"
+        dialog --infobox "Add a Domain Anytime Via - Settings" 3 38
+        sleep 5
+      fi
+
+      ### Tracked So It Does Not Ask User Again!
+      touch /var/plexguide/domain
+
 fi
-
-### Tracked So It Does Not Ask User Again!
-touch /var/plexguide/domain
-
 ############### Domain Question - END
 
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
