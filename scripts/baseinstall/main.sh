@@ -109,7 +109,8 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/nu
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
 then
-  clear 1>/dev/null 2>&1
+  echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff 1>/dev/null 2>&1
 else
   echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
