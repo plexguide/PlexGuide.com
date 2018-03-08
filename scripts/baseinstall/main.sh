@@ -97,7 +97,7 @@ echo "45" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
 
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
-ansible-playbook /opt/plexguide/ansible/config.yml --tags var 
+ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
@@ -112,10 +112,8 @@ then
   clear 1>/dev/null 2>&1
 else
   echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton #1>/dev/null 2>&1
-  read -n 1 -s -r -p "Press any key to continue "
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
 fi
-
 
 echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
