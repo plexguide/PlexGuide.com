@@ -18,9 +18,15 @@
     id: 0EBFCD88
     url: https://download.docker.com/linux/ubuntu/gpg
 
+- name: Check docker daemon.json exists
+  stat:
+    path: /etc/docker/daemon.json
+  register: docker_daemon
+
 - name: Add official repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+  when: docker_daemon.stat.exists == False
 
 - name: Install docker
   apt:    
@@ -28,11 +34,7 @@
     state: installed
     force: yes
     #update_cache: yes
-
-- name: Check docker daemon.json exists
-  stat:
-    path: /etc/docker/daemon.json
-  register: docker_daemon
+  when: docker_daemon.stat.exists == False
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes
