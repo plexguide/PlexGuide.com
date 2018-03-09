@@ -99,58 +99,11 @@ fi
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
 --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
-########## Deploy Start
-number=$((1 + RANDOM % 2000))
-echo "$number" > /tmp/number_var
-
-if [ "$skip" == "yes" ]; then
-    clear
-else
-
-    HEIGHT=10
-    WIDTH=42
-    CHOICE_HEIGHT=5
-    BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-    TITLE="Schedule a Backup of --$display --?"
-
-    OPTIONS=(A "Weekly"
-             B "Daily"
-             Z "None")
-
-    CHOICE=$(dialog --backtitle "$BACKTITLE" \
-                    --title "$TITLE" \
-                    --menu "$MENU" \
-                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                    "${OPTIONS[@]}" \
-                    2>&1 >/dev/tty)
-
-    case $CHOICE in
-            A)
-                dialog --infobox "Establishing [Weekly] CronJob" 3 34
-                echo "$program" > /tmp/program_var
-                echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
-                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
-            B)
-                dialog --infobox "Establishing [Daily] CronJob" 3 34
-                echo "$program" > /tmp/program_var
-                echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
-                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
-            Z)
-                dialog --infobox "Removing CronJob (If Exists)" 3 34
-                echo "$program" > /tmp/program_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
-                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
-                clear ;;
-    esac
-fi
-########## Deploy End
 dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
 sleep 5
 
-dialog --title "$display - Address Info" \
---msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://plex.$domain\nDomain    - http://$domain:$port" 8 50
+#dialog --title "$display - Address Info" \
+#--msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://plex.$domain\nDomain    - http://$domain:$port" 8 50
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/media.sh
+#bash /opt/plexguide/menus/programs/media.sh
