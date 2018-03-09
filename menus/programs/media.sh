@@ -22,6 +22,9 @@ export NCURSES_NO_UTF8_ACS=1
   echo $ipv4
   echo $domain
 
+ ### demo ip / comment out when done
+ ipv4=69.69.69.69
+
 HEIGHT=10
 WIDTH=38
 CHOICE_HEIGHT=5
@@ -119,5 +122,5 @@ fi
     dialog --title "$display - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
 
-#### recall itself to loop unless user exits
-#bash /opt/plexguide/menus/programs/media.sh
+#recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/media.sh
