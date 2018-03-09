@@ -8,19 +8,19 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Enabling System Health Monitoring (Credit: EasternPA)
 - (B1) Dialog asks for your username and email
 - (B1) Added New Menu to Settings Incase You Have To Change
-- (D) Can type your own new custom plex tag (useful for certain version, or if newest plex is bugged)
-- (D) New Menus for Plex Install with Checks including asking for if user has remote server
-- (D) PreInstall Docker Checker - If Docker cannot installs, it lets the user know common reasons why; cuts down on issues
+- (B2) Can type your own new custom plex tag (useful for certain version, or if newest plex is bugged)
+- (B2) New Menus for Plex Install with Checks including asking for if user has remote server
+- (B2) PreInstall Docker Checker - If Docker cannot installs, it lets the user know common reasons why; cuts down on issues
 
 #### Changed
 - (B1) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
 - (B1) PlexDrive Fix (Credit: budman17r)
-- (D) Overhauled Plex Install System
+- (B2) Overhauled Plex Install System
 
 #### Removed
 - (B1) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
-- (D) Removed one useless press enter during ansible install of plex
-- (D) Removed Use Plex Menus
+- (B2) Removed one useless press enter during ansible install of plex
+- (B2) Removed Use Plex Menus
 
 #### Known Issues
 - pyload is not working
