@@ -33,7 +33,7 @@
     name: docker-ce=17.09.0~ce-0~ubuntu
     state: installed
     force: yes
-    #update_cache: yes
+    update_cache: yes
   when: docker_daemon.stat.exists == False
 
 - name: Stop docker to enable overlay2
