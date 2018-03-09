@@ -15,9 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-HEIGHT=12
+HEIGHT=14
 WIDTH=32
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection:"
