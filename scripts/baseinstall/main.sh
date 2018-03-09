@@ -102,7 +102,7 @@ echo "40" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 
 echo "45" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
+#ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
 
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
