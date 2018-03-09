@@ -23,7 +23,7 @@ export NCURSES_NO_UTF8_ACS=1
   echo $domain
 
  ### demo ip / comment out when done
- ipv4=69.69.69.69
+ #ipv4=69.69.69.69
 
 HEIGHT=10
 WIDTH=38
