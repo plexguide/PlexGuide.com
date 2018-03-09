@@ -57,8 +57,30 @@ else
    bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
 
-## starup Message
+## docker / ansible failure
+file="/var/plexguide/startup.error" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+    dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n-Most problems are due to using a VPS\n- Using an OutDated Kernal\n\n\Again, 99% is the VPS provider being SPECIAL\n- Modified version of Ubuntu\n\nPlease check with Forums" 0 0
+    dialog --infobox "Exiting!" 0 0
 
+      echo "EXITED DUE TO DOCKER FAILURE!!!!!"
+      echo ""
+      echo "1. Please STAR PG via http://github.plexguide.com"
+      echo "2. Join the PG Discord via http://discord.plexguide.com"
+      echo "3. Donate to PG via http://donate.plexguide.com"
+      echo ""
+      echo "TIP : Press Z, then [ENTER] in the Menus to Exit"
+      echo "TIP : Menu Letters Displayed are HotKeys"
+      echo "TIP : Update Plexguide Anytime, type: sudo pgupdate"
+      echo "NOTE: Restart the Program Anytime, type: sudo plexguide"
+      echo ""
+    sleep 5
+    exit
+  fi
+
+
+## starup Message
 bash /opt/plexguide/scripts/checker/main.sh
 bash /opt/plexguide/menus/startup/message.sh
 bash /opt/plexguide/menus/main.sh

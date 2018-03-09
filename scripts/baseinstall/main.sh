@@ -106,6 +106,20 @@ ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
 
+##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
+rm -r /var/plexguide/startup.error
+file="/opt/appdata/plexguide/var.yml" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+    touch /var/plexguide/startup.error 1>/dev/null 2>&1
+    exit
+    fi
+
+   rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+   touch /var/plexguide/dep42.yes
+
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
 touch /var/plexguide/basics.yes 1>/dev/null 2>&1
