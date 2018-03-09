@@ -25,7 +25,7 @@ TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
 
 OPTIONS=(A "Server Network Benchmarks"
-         B "Diskpspace with NCDU"
+         B "Diskspace with NCDU"
          C "Container Performance"
          D "View Services"
          Z "Exit")

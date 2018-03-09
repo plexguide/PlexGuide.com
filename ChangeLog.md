@@ -16,6 +16,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
 - (B1) PlexDrive Fix (Credit: budman17r)
 - (B2) Overhauled Plex Install System
+- (D) Fixed Typo in PG Server Info Menu
 
 #### Removed
 - (B1) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
