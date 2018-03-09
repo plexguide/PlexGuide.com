@@ -71,7 +71,7 @@ touch /var/plexguide/rclone/un 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/en 1>/dev/null 2>&1
 
 ## testing
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clowplow
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudplow
 
 # pauses
 bash /opt/plexguide/scripts/docker-no/continue.sh
