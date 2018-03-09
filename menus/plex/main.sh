@@ -86,6 +86,12 @@ case $CHOICE in
 ########## Deploy End
 esac 
 
+dialog --title "FOR REMOTE PLEX SERVERS Users!" \
+--msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
+
+dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
+sleep 5
+
 if dialog --stdout --title "WebTools Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
@@ -95,15 +101,3 @@ else
     dialog --infobox "WebTools: Not Installed" 3 45
     sleep 3
 fi
-            
-dialog --title "FOR REMOTE PLEX SERVERS Users!" \
---msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
-
-dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
-sleep 5
-
-#dialog --title "$display - Address Info" \
-#--msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://plex.$domain\nDomain    - http://$domain:$port" 8 50
-
-#### recall itself to loop unless user exits
-#bash /opt/plexguide/menus/programs/media.sh
