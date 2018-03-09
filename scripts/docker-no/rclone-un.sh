@@ -70,5 +70,8 @@ mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
 touch /var/plexguide/rclone/un 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/en 1>/dev/null 2>&1
 
+## testing
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clowplow
+
 # pauses
 bash /opt/plexguide/scripts/docker-no/continue.sh
