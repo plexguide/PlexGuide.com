@@ -108,7 +108,7 @@ ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
 
 ##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
 rm -r /var/plexguide/startup.error
-file="/opt/appdata/plexguide/var.2yml" 1>/dev/null 2>&1
+file="/opt/appdata/plexguide/var.yml" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
