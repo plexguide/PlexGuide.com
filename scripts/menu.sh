@@ -76,7 +76,6 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
       echo "TIP : Update Plexguide Anytime, type: sudo pgupdate"
       echo "NOTE: Restart the Program Anytime, type: sudo plexguide"
       echo ""
-    sleep 5
     exit
   fi
 
