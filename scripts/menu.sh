@@ -63,7 +63,8 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
     then
     dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n-Most problems are due to using a VPS\n- Using an OutDated Kernal\n\n\Again, 99% is the VPS provider being SPECIAL\n- Modified version of Ubuntu\n\nPlease check with Forums" 0 0
     dialog --infobox "Exiting!" 0 0
-
+    sleep 5
+      clear
       echo "EXITED DUE TO DOCKER FAILURE!!!!!"
       echo ""
       echo "1. Please STAR PG via http://github.plexguide.com"

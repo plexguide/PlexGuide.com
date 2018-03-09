@@ -118,7 +118,6 @@ file="/opt/appdata/plexguide/var.2yml" 1>/dev/null 2>&1
   fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep42.yes
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
