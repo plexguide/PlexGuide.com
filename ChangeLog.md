@@ -28,6 +28,10 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
 - nextcloud not working
 - SABNZBD https:// maybe not working?
+
+#### To Do
+- Add Traefik Labels for reverse Proxy Protection
+- Update Heimdall for Protection
 -------------------------------------------------------
 
 ## Past Changes
