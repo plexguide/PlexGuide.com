@@ -14,7 +14,7 @@ RUN (apt-get update && \
      apt-get upgrade -y && \
      DEBIAN_FRONTEND=noninteractive apt-get install -y \
          x2goserver x2goserver-xsession ttf-dejavu fonts-ipafont-gothic \
-         xfce4 openbox obconf obmenu conky nitrogen \
+         xfce4 obconf obmenu conky nitrogen \
          sudo gnome-terminal rxvt-unicode-256color \
          firefox emacs)
 
