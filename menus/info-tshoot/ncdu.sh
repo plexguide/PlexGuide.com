@@ -22,24 +22,25 @@
 # sudo apt install ncdu -y
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=22
-WIDTH=60
+WIDTH=70
 CHOICE_HEIGHT=16
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG NCDU Directory Size Menu"
 MENU="*** Press q to quit! ***"
 
-OPTIONS=(A "Entire drive - excluding /mnt"
-         B "Entire drive - excluding /mnt & /opt"
-         C "/opt - WARNING Can take a long time!"
-         D "/mnt - WARNING Can take a long time!"
-         E "Move"
-         F "UnionFS - WARNING Can take a long time!"
-         G "NZBGET"
-         H "SAB"
-         I "Deluge"
-         J "RuTorrent"
-         K "TorrentVPN"
-         L "/home"
+OPTIONS=(A "Entire drive - excluding /mnt WARNING Can take a long time!"
+         B "Entire drive - excluding /opt WARNING Can take a long time!"
+         C "Entire drive - excluding /mnt & /opt"
+         D "/opt - WARNING Can take a long time!"
+         E "/mnt - WARNING Can take a long time!"
+         F "Move"
+         G "UnionFS - WARNING Can take a long time!"
+         H "NZBGET"
+         I "SAB"
+         J "Deluge"
+         K "RuTorrent"
+         L "TorrentVPN"
+         M "/home"
          X "Back to Main Menu"
          Z "Exit")
 
@@ -62,55 +63,60 @@ case $CHOICE in
 
     B)
       clear
-      ncdu / --exclude=/mnt --exclude=/opt
+      ncdu / --exclude=/opt
       ;;
 
     C)
+      clear
+      ncdu / --exclude=/mnt --exclude=/opt
+      ;;
+
+    D)
         clear
         ncdu /opt
         ;;
 
-    D)
+    E)
         clear
         ncdu /mnt
         ;;
 
-    E)
+    F)
       clear
       ncdu /mnt/move
       ;;
 
-    F)
+    G)
       clear
       ncdu /mnt/unionfs
       ;;
 
-    G)
+    H)
       clear
       ncdu /mnt/nzbget
       ;;
 
-    H)
+    I)
         clear
         ncdu /mnt/sab
         ;;
 
-    I)
+    J)
         clear
         ncdu /mnt/deluge
         ;;
 
-    J)
+    K)
         clear
         ncdu /mnt/rutorrent
         ;;
 
-     K)
+     L)
          clear
          ncdu /mnt/torrentvpn
          ;;
 
-      L)
+      M)
           clear
           ncdu /home
           ;;
