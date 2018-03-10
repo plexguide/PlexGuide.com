@@ -12,9 +12,10 @@ RUN (apt-get update && \
      add-apt-repository -y ppa:x2go/stable && \
      apt-get update -y && \
      apt-get upgrade -y && \
+     apt-get install -y xfce4 && \
      DEBIAN_FRONTEND=noninteractive apt-get install -y \
          x2goserver x2goserver-xsession ttf-dejavu fonts-ipafont-gothic \
-         xfce4 obconf obmenu conky nitrogen \
+         openbox obconf obmenu conky nitrogen \
          sudo gnome-terminal rxvt-unicode-256color \
          firefox emacs)
 
@@ -39,7 +40,8 @@ ADD ./start-sshd.sh /root/start-sshd.sh
 RUN chmod 744 /root/start-sshd.sh
 
 ### Need to change this!
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
 EXPOSE 22
 ENTRYPOINT ["/root/start-sshd.sh"]
