@@ -57,4 +57,4 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nextcloud.{{domain}}"
-      traefik.port: "4645"
+      traefik.port: "443"
