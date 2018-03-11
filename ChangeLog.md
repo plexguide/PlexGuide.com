@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
-- None
+- (D) NextCloud Container repaired; access via domain or port 4645
 
 #### Changed
 - (D) Container Starts up after a local backup is made on the server; speeds up pending container use
@@ -15,7 +15,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Known Issues
 - pyload is not working
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
-- nextcloud not working
 - SABNZBD https:// maybe not working?
 
 #### To Do
