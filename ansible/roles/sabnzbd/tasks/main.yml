@@ -40,7 +40,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:sabnzbd.{{domain}}"
-      traefik.port: "8090"
+      traefik.port: "8080"
 
 - name: Path for .ini
   wait_for:
