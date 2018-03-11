@@ -19,7 +19,7 @@ HEIGHT=14
 WIDTH=32
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Version Install"
+TITLE="PG Version Installation"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.062"
