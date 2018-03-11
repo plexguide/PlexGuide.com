@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
-- (D) NextCloud Container repaired; access via domain or port 4645
+- (D) NextCloud Container work access; access via domain:port (working on https)
 
 #### Changed
 - (D) Container Starts up after a local backup is made on the server; speeds up pending container use
