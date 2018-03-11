@@ -1,27 +1,16 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.061] BETA & DEV Version
+### [5.062] BETA & DEV Version
 
 #### Added
-- (B1) Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
-- (B1) Enabling System Health Monitoring (Credit: EasternPA)
-- (B1) Dialog asks for your username and email
-- (B1) Added New Menu to Settings Incase You Have To Change
-- (B2) Can type your own new custom plex tag (useful for certain version, or if newest plex is bugged)
-- (B2) New Menus for Plex Install with Checks including asking for if user has remote server
-- (B2) PreInstall Docker Checker - If Docker cannot installs, it lets the user know common reasons why; cuts down on issues
+- None
 
 #### Changed
-- (B1) Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
-- (B1) PlexDrive Fix (Credit: budman17r)
-- (B2) Overhauled Plex Install System
-- (D) Fixed Typo in PG Server Info Menu
+- None
 
 #### Removed
-- (B1) Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
-- (B2) Removed one useless press enter during ansible install of plex
-- (B2) Removed Use Plex Menus
+- None
 
 #### Known Issues
 - pyload is not working
@@ -36,6 +25,38 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.061] 
+
+#### Added
+- Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
+- Enabling System Health Monitoring (Credit: EasternPA)
+- Dialog asks for your username and email
+- Added New Menu to Settings Incase You Have To Change
+- Can type your own new custom plex tag (useful for certain version, or if newest plex is bugged)
+- New Menus for Plex Install with Checks including asking for if user has remote server
+- PreInstall Docker Checker - If Docker cannot installs, it lets the user know common reasons why; cuts down on issues
+
+#### Changed
+- Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
+- PlexDrive Fix (Credit: budman17r)
+- Overhauled Plex Install System
+- Fixed Typo in PG Server Info Menu
+
+#### Removed
+- Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
+- Removed one useless press enter during ansible install of plex
+- Removed Use Plex Menus
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- nextcloud not working
+- SABNZBD https:// maybe not working?
+
+#### To Do
+- Add Traefik Labels for reverse Proxy Protection
+- Update Heimdall for Protection
 
 #### [5.060]
 
