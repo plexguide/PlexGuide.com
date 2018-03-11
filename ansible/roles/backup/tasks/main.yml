@@ -41,15 +41,15 @@
   shell: "tar -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
   when: programappdata.stat.exists == True
 
-- name: Uploading Backup to Google Drive
-  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
-  when: programappdata.stat.exists == True
-
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
     state: started
   ignore_errors: True
+  when: programappdata.stat.exists == True
+
+- name: Uploading Backup to Google Drive
+  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: programappdata.stat.exists == True
 
 - debug: msg="Program is now backed up to your Google Drive - {{program_var.stdout}}"
