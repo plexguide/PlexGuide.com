@@ -4,18 +4,18 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
-- (D) NextCloud Container work access; access via domain:port (working on https)
+- (D) NextCloud Container works; access via domain:port only
 
 #### Changed
 - (D) Container Starts up after a local backup is made on the server; speeds up pending container use
+- (D) Changed SAB to port 8080; https:// now works for SABNZBD 
 
 #### Removed
-- None
+- Several https:// no redirects, legacy code
 
 #### Known Issues
 - pyload is not working
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
-- SABNZBD https:// maybe not working?
 
 #### To Do
 - Add Traefik Labels for reverse Proxy Protection
