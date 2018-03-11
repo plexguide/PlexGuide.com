@@ -22,9 +22,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Install"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Developer: 5.061"
-         B "Beta 2   : 5.061"
-         C "Beta 1   : 5.061"
+OPTIONS=(A "Developer: 5.062"
+         C "Stable   : 5.061"
          D "Stable   : 5.060"
          E "Stable   : 5.059"
          Z "Exit")
@@ -72,14 +71,11 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.061beta2" ;;
+            version="5.061" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.061beta1" ;;
-        D)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.060" ;;
-        E)  
+        D)  
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
         Z)
