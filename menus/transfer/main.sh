@@ -20,7 +20,6 @@
 export NCURSES_NO_UTF8_ACS=1
 clear
 
-sudo touch /var/plexguide/asked.processor
 ################# Virtual Machine Check
 if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing the ENCRYPTED RCLONE?" 8 56) then
 
