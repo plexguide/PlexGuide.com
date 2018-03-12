@@ -45,6 +45,7 @@ case $CHOICE in
     clear
     systemctl stop move
     systemctl disable move
+    systemctl daemon-reload
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags transfer
     echo ""
     echo "Speeds are UNCAPPED - Thanks for TESTING"
