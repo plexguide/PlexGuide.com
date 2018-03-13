@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Changed
 - (D) Container Starts up after a local backup is made on the server; speeds up pending container use
+- (D) PlexDrive - Fixed up to ensure service works properly when installing for the first time
 - (D) Changed SAB to port 8080; https:// now works for SABNZBD 
 - (D) Changed Ombi Source / Requires a rerun if you had ombi setup from before!
 
