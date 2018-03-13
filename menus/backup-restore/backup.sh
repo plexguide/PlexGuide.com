@@ -136,6 +136,37 @@ if [ -e "$file" ]
 fi
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
+
+
+
+    inotifywait -qqt 2 -e create -e moved_to "$(dirname $file)"
+done
+
+    #PD="No"
+    #while [ "$PD" != "Opening" ]; do
+
+    file=/tmp/list.txt
+    while [ ! -f "$file" ]
+    do
+        dialog --infobox "Backing Up." 3 22
+        sleep 1
+        dialog --infobox "Backing Up.." 3 22
+        sleep 1
+        dialog --infobox "Backing Up..." 3 22
+        sleep 1
+        dialog --infobox "Backing Up...." 3 22
+        sleep 1
+        dialog --infobox "Backing Up....." 3 22
+        sleep 1
+        dialog --infobox "Backing Up......" 3 22
+        sleep 1
+        dialog --infobox "Backing Up......." 3 22
+        sleep 1
+        dialog --infobox "Backing Up........" 3 22
+        sleep 1
+        #PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
+    done
+
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 
 sudo bash /opt/plexguide/menus/backup-restore/backup.sh
