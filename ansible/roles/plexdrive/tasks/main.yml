@@ -5,10 +5,14 @@
     stat:
       path: "/etc/systemd/system/plexdrive4.service"
     register: plexdrive4
+    tags:
+      - plexd
 
   - name: Stop existing plexdrive service
     systemd: state=stopped name=plexdrive4
     when: plexdrive4.stat.exists
+    tags:
+      - plexd
 
   - name: Remove Plexdrive 4 Service
     file:
@@ -16,6 +20,8 @@
       path: /etc/systemd/system/plexdrive4.service
       force: yes
     when: plexdrive4.stat.exists
+    tags:
+      - plexd
 
 ################# Remove New PlexDrive Regardless
 
@@ -23,10 +29,14 @@
     stat:
       path: "/etc/systemd/system/plexdrive.service"
     register: plexdrive
+    tags:
+      - plexd
 
   - name: Stop existing plexdrive service
     systemd: state=stopped name=plexdrive
     when: plexdrive.stat.exists
+    tags:
+      - plexd
 
   - name: Remove Plexdrive Service
     file:
@@ -34,11 +44,15 @@
       path: /etc/systemd/system/plexdrive.service
       force: yes
     when: plexdrive.stat.exists
+    tags:
+      - plexd
  
   - name: Check PD Binary Exist
     stat:
       path: "/usr/bin/plexdrive"
     register: pdb
+    tags:
+      - plexd
 
   - name: Remove PD Binary
     file:
@@ -46,6 +60,8 @@
       path: /usr/bin/plexdrive
       force: yes
     when: pdb.stat.exists
+    tags:
+      - plexd
 
 ################## Start of New PlexDrive 5 Service
 
@@ -58,7 +74,7 @@
       group: 1000
       force: yes
     tags:
-      - plexdrive5
+      - plexd5
 
   - name: Move PlexDrive Service
     template:
@@ -66,14 +82,14 @@
       dest: /etc/systemd/system/plexdrive.service 
       force: yes
     tags:
-      - plexdrive5
+      - plexd5
 
 ###################### Start of New PlexDrive 4 Service
 
   - name: Execute MongoDB Script
     script: '/opt/plexguide/scripts/plexdrive/mongod.sh'
     tags:
-      - plexdrive4
+      - plexd4
 
   - name: PlexDrive 4 Install (Be Patient)
     get_url:
@@ -84,7 +100,7 @@
       group: 1000
       force: yes
     tags:
-      - plexdrive4
+      - plexd4
 
   - name: Move PlexDrive Service
     template:
@@ -92,4 +108,4 @@
       dest: /etc/systemd/system/plexdrive.service 
       force: yes
     tags:
-      - plexdrive4
+      - plexd4
