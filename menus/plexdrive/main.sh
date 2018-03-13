@@ -78,12 +78,27 @@ case $CHOICE in
                 echo "b"
                 PD="No"
                 while [ "$PD" != "Opening" ]; do
-                  echo "0"
-                  sleep 5
+
+                dialog --infobox "Scanning." 3 20
+                sleep 1
+                dialog --infobox "Scanning.." 3 20
+                sleep 1
+                dialog --infobox "Scanning..." 3 20
+                sleep 1
+                dialog --infobox "Scanning...." 3 20
+                sleep 1
+                dialog --infobox "Scanning....." 3 20
+                sleep 1
+                dialog --infobox "Scanning......" 3 20
+                sleep 1
+                dialog --infobox "Scanning......." 3 20
+                sleep 1
+                dialog --infobox "Scanning........" 3 20
+                sleep 1
+
                   PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
                   echo "1"
                 done
-
                 dialog --title "PG5 Status" --msgbox "\nYour Update is Complete! PRESS ENTER TO REBOOT!\n\nYou Must Reboot!" 0 0
                 sudo reboot
             else
