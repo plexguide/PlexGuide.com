@@ -49,14 +49,19 @@ case $CHOICE in
             clear
             curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
             echo
-            ./bench.sh -a ;;
+            ./bench.sh -a
+            read -n 1 -s -r -p "Press any key to continue" ;;
         C)
             clear
-            bash /opt/plexguide/scripts/menus/bench-custom.sh ;;
+            bash /opt/plexguide/scripts/menus/bench-custom.sh 
+            read -n 1 -s -r -p "Press any key to continue"
+            ;;
         D)
             pip install speedtest-cli
             echo
-            speedtest-cli ;;
+            speedtest-cli 
+            read -n 1 -s -r -p "Press any key to continue"
+            ;;
         Z)
             exit 0 ;;
 esac
