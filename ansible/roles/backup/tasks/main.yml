@@ -52,6 +52,9 @@
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: programappdata.stat.exists == True
 
+- name: Kill Switch
+  shell: echo "false" > /tmp/alive
+
 - debug: msg="Program is now backed up to your Google Drive - {{program_var.stdout}}"
   when: programappdata.stat.exists == True
 
