@@ -78,7 +78,8 @@ case $CHOICE in
                 while [ "$PD" != "Opening" ]
                 do
                   sleep 5
-                  PD=$(grep -o Opening /opt/appdata/plexdrive.info)
+                  PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
+                  echo "1"
                 done
 
                 read -n 1 -s -r -p "PAUSED FOR TESTING"
