@@ -121,22 +121,21 @@
 ###################### For Either New PD5 or PD4
 
   - name: Reloading
-    systemd: state=started name=plexdrive daemon_reload=yes enabled=yes
+    systemd: state=stopped name=plexdrive daemon_reload=yes enabled=no
 
-#- name: Config Check
-    #stat:
-      #path: "/root/.plexdrive/config.json"
+  - name: Config Check
+    stat:
+      path: "/root/.plexdrive/config.json"
 
-
- # - name: Start PlexDrive
-  #  systemd: state=started name=plexdrive enabled=yes
-  #  when: token.stat.exists
+  - name: Start PlexDrive
+    systemd: state=started name=plexdrive enabled=yes
+    when: token.stat.exists
     
-  #- name: Config Present?
-  #  stat:
-  #    path: "/root/.plexdrive/config.json"
-  #  register: plexdrive_config
+  - name: Config Present?
+    stat:
+      path: "/root/.plexdrive/config.json"
+    register: plexdrive_config
 
-  #- name: PlexDrive Start
-  #  systemd: state=started name=plexdrive enabled=yes
-  #  when: plexdrive_config.stat.exists
+  - name: PlexDrive Start
+    systemd: state=started name=plexdrive enabled=yes
+    when: plexdrive_config.stat.exists
