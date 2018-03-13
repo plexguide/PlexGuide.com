@@ -16,15 +16,4 @@
 #
 #################################################################################
 
-rm -r /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
-touch /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
-PD="Blank"
-
-while [ "$PD" != "Checking" ]; do
-sleep 3
-systemctl status plexdrive >> /opt/appdata/plexguide/plexdrive.info
-PD=$(grep -o Opening /opt/appdata/plexguide/plexdrive.info | head -1)
-done
-
-rm -r /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
-bash /opt/plexguide/menus/plexdrive/reboot.sh
+sudo reboot
