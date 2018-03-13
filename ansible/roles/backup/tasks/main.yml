@@ -5,12 +5,12 @@
   register: program_var
 
 - name: "Establishing Variable"
-  shell: "awk '{print $1}' /tmp/pushapp"
+  shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
   register: app_var
   ignore_errors: True
 
 - name: "Establishing Variable"
-  shell: "awk '{print $1}' /tmp/pushuser"
+  shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
   register: user_var
   ignore_errors: True
 
@@ -68,7 +68,7 @@
 
 - name: "Pushover: {{program_var.stdout}} - Backup"
   pushover:
-    msg: "Pushover: {{program_var.stdout}} - Backed Up!"
+    msg: "PlexGuide: {{program_var.stdout}} - Is Fully Backed Up!"
     app_token: "{{app_var.stdout}}"
     user_key: "{{user_var.stdout}}"
   ignore_errors: True
