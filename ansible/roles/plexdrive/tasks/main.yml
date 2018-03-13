@@ -91,5 +91,5 @@
       src: plexdrive4.js2
       dest: /etc/systemd/system/plexdrive.service 
       force: yes
-    when: pd4.stat.exists
+    tags:
       - plexdrive4
