@@ -75,7 +75,7 @@ case $CHOICE in
                         sleep 1
                         loop=$(cat /tmp/alive)
                     done
-
+                clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive
                 mv plexdrive /usr/bin/
                 cd /usr/bin/
@@ -121,7 +121,7 @@ case $CHOICE in
                         sleep 1
                         loop=$(cat /tmp/alive)
                     done
-                
+                clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
                 mv plexdrive /usr/bin/ 1>/dev/null 2>&1
                 cd /usr/bin/ 
