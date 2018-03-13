@@ -7,6 +7,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (D) NextCloud Container works; access via domain:port only
 - (D) For Uncapped; added a deamon reload; critical because move.service will never disable
 - (D) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
+- (D) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
 
 #### Changed
 - (D) Container Starts up after a local backup is made on the server; speeds up pending container use
