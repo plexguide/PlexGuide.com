@@ -76,14 +76,15 @@ case $CHOICE in
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive >> /opt/appdata/plexdrive.info
 
                 PD="No"
-                while [ "$PD" !=ne "Opening" ]; do
+                while [ "$PD" != "Opening" ]; do
                   echo "0"
                   sleep 5
                   PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
                   echo "1"
                 done
 
-                read -n 1 -s -r -p "PAUSED FOR TESTING"
+                dialog --title "PG5 Status" --msgbox "\nYour Update is Complete! You Will Now Reboot" 0 0
+                sudo reboot
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
                 echo "Type to Restart the Program: sudo plexguide"
