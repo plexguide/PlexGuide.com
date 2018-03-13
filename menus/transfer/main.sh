@@ -20,30 +20,54 @@
 export NCURSES_NO_UTF8_ACS=1
 clear
 
-################# Virtual Machine Check
-if (whiptail --title "Virutal Machine Question" --yesno "Are You Utilizing the ENCRYPTED RCLONE?" 8 56) then
-
-    whiptail --title "Virutal Machine - Yes" --msgbox "This is for the UNENCRYTPED RCLONE VERSION! If it works well, we will make an ENCRYPTED Version" 10 66
-    exit
-else
-    whiptail --title "Virutal Machine - No" --msgbox "Ensure you that you have run the NORMAL UNENCRYPTED RCLONE INSTALL FIRST" 9 66
-fi
+################# Unencrypted Rclone Question
+rclone listremotes | grep crypt && whiptail --title "Warning" --msgbox "This is for the UNENCRYPTED RCLONE only. Please remove all encrypted rclone remotes." 8 56 && exit 0
 
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Processor Performance" --menu "Make your choice" 12 38 5 \
-    "1)" "Use NEW SPEED TRANSFER"  \
-    "2)" "BACK TO NORMAL TRANSFER"  \
-    "3)" "Exit  "  3>&2 2>&1 1>&3
+whiptail --title "Transfer Performance" --menu "Make your choice" 12 38 5 \
+    "1)" "Use MULTI-DRIVE SPEED TRANSFER"  \
+    "2)" "Use SPEED TRANSFER"  \
+    "3)" "BACK TO NORMAL TRANSFER"  \
+    "4)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
 case $CHOICE in
     "1)")
     clear
+    echo 
+    echo "Please Add Another Gdrive. (Name It Whatever You'd Like.)"
+    echo
+    read -n 1 -s -r -p "Press any key to continue "
+    rclone config
+	if [[ $(rclone listremotes | grep -v crypt | wc -l) -ge 2 ]]; then
+    		systemctl stop move
+    		systemctl disable move
+    		systemctl stop transfer
+    		systemctl disable transfer
+    		systemctl stop time
+    		systemctl disable time
+    		systemctl daemon-reload
+	    	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer
+    		echo ""
+    		echo "Load Balancing Between $(rclone listremotes | grep -v crypt | wc -l) Gdrives."
+    		echo "MAXIMUM DAILY TRANSFER $(( $(rclone listremotes | grep -v crypt | wc -l) * 750 ))GB."
+    		read -n 1 -s -r -p "Press any key to continue "
+	else
+		echo
+		echo "No New Gdrives Were Added."
+		echo
+    		read -n 1 -s -r -p "Press any key to continue "
+    ;;
+
+    "2)")
+    clear
     systemctl stop move
     systemctl disable move
+    systemctl stop supertransfer
+    systemctl disable supertransfer
     systemctl daemon-reload
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags transfer
     echo ""
@@ -51,7 +75,7 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    "2)")
+    "3)")
     clear
     systemctl daemon-reload
     systemctl enable move
@@ -66,7 +90,7 @@ case $CHOICE in
     read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    "3)")
+    "4)")
       clear
       exit 0
       ;;

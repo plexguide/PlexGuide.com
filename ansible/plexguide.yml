@@ -19,6 +19,7 @@
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
+  - { role: supertransfer, tags: ['supertransfer'] }
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
