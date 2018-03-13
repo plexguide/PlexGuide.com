@@ -56,6 +56,7 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
+                bash opt/plexguide/menus/plexdrive/check.sh &>/dev/null &
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
