@@ -4,24 +4,26 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
-- (D) NextCloud Container works; access via domain:port only
-- (D) For Uncapped; added a deamon reload; critical because move.service will never disable
-- (D) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
-- (D) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
+- (B1) NextCloud Container works; access via domain:port only
+- (B1) For Uncapped; added a deamon reload; critical because move.service will never disable
+- (B1) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
+- (B1) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
+- (B1) Moving Animiation to Solo PlexDrive to show the program is working; removed ansible display for solo process
 
 #### Changed
-- (D) Container Starts up after a local backup is made on the server; speeds up pending container use
-- (D) PlexDrive - Fixed up to ensure service works properly when installing for the first time
-- (D) Changed SAB to port 8080; https:// now works for SABNZBD 
-- (D) Changed Ombi Source / Requires a rerun if you had ombi setup from before!
+- (B1) Container Starts up after a local backup is made on the server; speeds up pending container use
+- (B1) PlexDrive - Fixed up to ensure service works properly when installing for the first time
+- (B1) Changed SAB to port 8080; https:// now works for SABNZBD 
+- (B1) Changed Ombi Source / Requires a rerun if you had ombi setup from before!
 
 #### Removed
-- (D) Several https:// no redirects, legacy code
-- (D) Streamlined PlexDrive Script; tossed older legacy scripts (no older prompts)
+- (B1) Several https:// no redirects, legacy code
+- (B1) Streamlined PlexDrive Script; tossed older legacy scripts (no older prompts)
 
 #### Known Issues
 - pyload is not working
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
 
 #### To Do
 - Add Traefik Labels for reverse Proxy Protection
