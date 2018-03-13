@@ -14,7 +14,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (D) Changed Ombi Source / Requires a rerun if you had ombi setup from before!
 
 #### Removed
-- Several https:// no redirects, legacy code
+- (D) Several https:// no redirects, legacy code
+- (D) Streamlined PlexDrive Script; tossed older legacy scripts (no older prompts)
 
 #### Known Issues
 - pyload is not working
