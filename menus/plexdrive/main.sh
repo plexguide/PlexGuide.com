@@ -95,7 +95,33 @@ case $CHOICE in
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
                 clear 
-                sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4
+
+                    echo "true" > /tmp/alive
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 &>/dev/null &
+
+                    loop="true"
+                    echo "true" > /tmp/alive
+                    while [ "$loop" = "true" ]
+                    do
+                        dialog --infobox "Installing." 3 22
+                        sleep 1
+                        dialog --infobox "Installing.." 3 22
+                        sleep 1
+                        dialog --infobox "Installing..." 3 22
+                        sleep 1
+                        dialog --infobox "Installing...." 3 22
+                        sleep 1
+                        dialog --infobox "Installing....." 3 22
+                        sleep 1
+                        dialog --infobox "Installing......" 3 22
+                        sleep 1
+                        dialog --infobox "Installing......." 3 22
+                        sleep 1
+                        dialog --infobox "Installing........" 3 22
+                        sleep 1
+                        loop=$(cat /tmp/alive)
+                    done
+                
                 mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
                 mv plexdrive /usr/bin/ 1>/dev/null 2>&1
                 cd /usr/bin/ 
