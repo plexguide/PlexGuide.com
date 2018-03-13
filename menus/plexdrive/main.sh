@@ -1,4 +1,21 @@
 #!/bin/bash
+#
+# [PlexGuide Menu]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 - Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
 export NCURSES_NO_UTF8_ACS=1
 ############# User Confirms They Understand
 dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
@@ -57,6 +74,14 @@ case $CHOICE in
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-check-threads=8 --chunk-load-threads=8 --chunk-load-ahead=6 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive >> /opt/appdata/plexdrive.info
+
+                while [ "$PD" != "Opening" ]
+                do
+                  sleep 5
+                  PD=$(grep -o Opening /opt/appdata/plexdrive.info)
+                done
+
+                read -n 1 -s -r -p "PAUSED FOR TESTING"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
                 echo "Type to Restart the Program: sudo plexguide"
