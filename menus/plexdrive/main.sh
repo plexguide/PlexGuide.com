@@ -83,7 +83,7 @@ case $CHOICE in
                   echo "1"
                 done
 
-                dialog --title "PG5 Status" --msgbox "\nYour Update is Complete! You Will Now Reboot" 0 0
+                dialog --title "PG5 Status" --msgbox "\nYour Update is Complete! PRESS ENTER TO REBOOT!\n\nYou Must Reboot!" 0 0
                 sudo reboot
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
