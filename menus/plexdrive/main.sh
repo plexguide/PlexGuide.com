@@ -37,7 +37,6 @@ case $CHOICE in
                 cd /usr/bin/
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
-                systemctl daemon-reload
                 systemctl enable plexdrive
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive
             else
@@ -56,7 +55,6 @@ case $CHOICE in
                 cd /usr/bin/
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
-                systemctl daemon-reload
                 systemctl enable plexdrive
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-check-threads=8 --chunk-load-threads=8 --chunk-load-ahead=6 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
             else
