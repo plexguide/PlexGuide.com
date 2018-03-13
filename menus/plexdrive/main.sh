@@ -74,7 +74,7 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash /opt/plexguide/scripts/plexdrive/pd5.sh 1>/dev/null 2>&1
+                systemctl start pd5temp
 
                 PD="No"
                 while [ "$PD" != "Opening" ]; do
