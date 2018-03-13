@@ -25,7 +25,7 @@ MENU="Select Notification Preference(s):"
 OPTIONS=(A "Pushover (BETA)  "
          B "Slack (Not Ready)"
          C "Discord (Not Ready)"
-         Z "Exit")
+         Z "No Notifications")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
