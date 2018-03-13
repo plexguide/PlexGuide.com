@@ -68,7 +68,7 @@
 
 - name: "Pushover: {{program_var.stdout}} - Backup"
   pushover:
-    msg: "Pushover: {{program_var.stdout}} - Backed Up!"
+    msg: "PlexGuide: {{program_var.stdout}} - Is Fully Backed Up!"
     app_token: "{{app_var.stdout}}"
     user_key: "{{user_var.stdout}}"
   ignore_errors: True
