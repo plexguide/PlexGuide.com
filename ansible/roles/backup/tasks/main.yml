@@ -4,13 +4,18 @@
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
 
+- name: "Establishing Variable"
+  shell: "awk '{print $1}' /tmp/pushapp"
+  register: app_var
+  ignore_errors: True
+
+- name: "Establishing Variable"
+  shell: "awk '{print $1}' /tmp/pushuser"
+  register: user_var
+  ignore_errors: True
+
 - debug: msg="Temp Message - For {{program_var.stdout}}"
 
-## Add Prompt Future Wise and Skip if Set to No Xor
-## Note to have an uppercase version of the variable
-## Ensure /mnt/gdrive exists
-## move to tmp and then sync, easy fix
-## ensure it pauses at end
 - name: "Checking {{program_var.stdout}} location in APPDATA"
   stat:
     path: /opt/appdata/{{program_var.stdout}}
@@ -60,4 +65,11 @@
 
 - debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var.stdout}}"
   when: programappdata.stat.exists == False
+
+- name: "Pushover: {{program_var.stdout}} - Backup"
+  pushover:
+    msg: "Pushover: {{program_var.stdout}} - Backed Up!"
+    app_token: "{{app_var.stdout}}"
+    user_key: "{{user_var.stdout}}"
+  ignore_errors: True
 

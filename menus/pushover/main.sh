@@ -35,18 +35,20 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-                dialog --title "Input >> Push Over 1" \
+                dialog --title "Input >> Pushover User Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Info 1" 8 40 2>/opt/appdata/plexguide/pushover1
-                plexgtag=$(cat /tmp/plextag)
-                dialog --infobox "Typed Tag: $plextag" 3 45
+                --inputbox "Info 2" 8 40 2>/opt/appdata/plexguide/pushuser
+                pushuser=$(cat /opt/appdata/plexguide/pushuser)
+                dialog --infobox "Typed Tag: $pushuser" 3 45
                 sleep 4
-                dialog --title "Input >> Push Over 2" \
+
+                dialog --title "Input >> Pushover APP Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Info 2" 8 40 2>/opt/appdata/plexguide/pushover2
-                plexgtag=$(cat /tmp/plextag)
-                dialog --infobox "Typed Tag: $plextag" 3 45
+                --inputbox "Info 1" 8 40 2>/opt/appdata/plexguide/pushapp
+                pushapp=$(cat /opt/appdata/plexguide/pushapp)
+                dialog --infobox "Typed Tag: $pushapp" 3 45
                 sleep 4
+
             ;;
 
         B)
