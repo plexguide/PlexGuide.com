@@ -135,7 +135,7 @@ if [ -e "$file" ]
         exit 0
 fi
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
+screen ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
 
     loop="true"
     echo "true" > /tmp/alive
