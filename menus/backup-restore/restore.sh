@@ -136,7 +136,7 @@ if [ -e "$file" ]
 fi
 
     echo "true" > /tmp/alive
-    screen ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore 1>/dev/null 2>&1
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore &
 
     loop="true"
     echo "true" > /tmp/alive
