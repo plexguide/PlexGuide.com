@@ -74,33 +74,7 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                systemctl start pd5temp
-
-                PD="No"
-                while [ "$PD" != "Opening" ]; do
-
-                dialog --infobox "Scanning." 3 20
-                sleep 1
-                dialog --infobox "Scanning.." 3 20
-                sleep 1
-                dialog --infobox "Scanning..." 3 20
-                sleep 1
-                dialog --infobox "Scanning...." 3 20
-                sleep 1
-                dialog --infobox "Scanning....." 3 20
-                sleep 1
-                dialog --infobox "Scanning......" 3 20
-                sleep 1
-                dialog --infobox "Scanning......." 3 20
-                sleep 1
-                dialog --infobox "Scanning........" 3 20
-                sleep 1
-
-                PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
-
-                done
-                dialog --title "PG5 Status" --msgbox "\nYour Update is Complete! PRESS ENTER TO REBOOT!\n\nYou Must Reboot!" 0 0
-                sudo reboot
+                plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
                 echo "Type to Restart the Program: sudo plexguide"

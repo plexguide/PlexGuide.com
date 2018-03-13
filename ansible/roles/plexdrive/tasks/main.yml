@@ -67,18 +67,18 @@
     tags:
       - plexd5
 
-  - name: Move PlexDrive Service
-    template:
-      src: pd5temp.js2
-      dest: /etc/systemd/system/pd5temp.service 
-      force: yes
-    tags:
-      - plexd5
+  #- name: Move PlexDrive Service
+    #template:
+      #src: pd5temp.js2
+      #dest: /etc/systemd/system/pd5temp.service 
+      #force: yes
+    #tags:
+      #- plexd5
 
-  - name: Reloading
-    systemd: state=stopped name=pd5temp daemon_reload=yes enabled=no
-    tags:
-      - plexd5
+  #- name: Reloading
+    #systemd: state=stopped name=pd5temp daemon_reload=yes enabled=no
+    #tags:
+      #- plexd5
 
 ###################### Start of New PlexDrive 4 Service
 
