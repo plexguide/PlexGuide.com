@@ -1,0 +1,21 @@
+---
+########################################## Services
+########### SuperTransfer Service
+  #- name: Stop If Transfer Service Running
+    #systemd: state=stopped name=transfer
+    
+  - name: Install SuperTransfer Service
+    template:
+      src: supertransfer.js2
+      dest: /etc/systemd/system/supertransfer.service 
+      force: yes
+ 
+  - name: Daemon-Reload
+    shell: "sudo systemctl daemon-reload"
+
+  - name: Start Transfer Service
+    shell: "systemctl enable supertransfer"
+
+  - name: Start Transfer Service
+    shell: "sudo systemctl restart supertransfer"
+    
