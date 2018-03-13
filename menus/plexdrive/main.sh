@@ -65,16 +65,16 @@ case $CHOICE in
         B)
             if dialog --stdout --title "PlexDrive 5 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo you want to install PlexDrive5?" 7 50; then
+              --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
                 clear 
                 sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4
-                mv /tmp/plexdrive-linux-amd64 plexdrive
-                mv plexdrive /usr/bin/
-                cd /usr/bin/
+                mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
+                mv plexdrive /usr/bin/ 1>/dev/null 2>&1
+                cd /usr/bin/ 
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive >> /opt/appdata/plexdrive.info 2>&1
+                bash /opt/plexguide/scripts/plexdrive/pd5.sh 1>/dev/null 2>&1
 
                 PD="No"
                 while [ "$PD" != "Opening" ]; do
