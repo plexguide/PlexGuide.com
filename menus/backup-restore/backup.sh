@@ -135,10 +135,10 @@ if [ -e "$file" ]
         exit 0
 fi
 
-screen ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
-
     loop="true"
     echo "true" > /tmp/alive
+    screen ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
+
     while [ "$loop" = "true" ]
     do
         dialog --infobox "Backing Up." 3 22

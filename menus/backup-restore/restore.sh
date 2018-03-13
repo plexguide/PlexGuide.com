@@ -135,7 +135,31 @@ if [ -e "$file" ]
         exit 0
 fi
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore
+    loop="true"
+    echo "true" > /tmp/alive
+    screen ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore 1>/dev/null 2>&1
+
+    while [ "$loop" = "true" ]
+    do
+        dialog --infobox "Restoring." 3 21
+        sleep 1
+        dialog --infobox "Restoring.." 3 21
+        sleep 1
+        dialog --infobox "Restoring..." 3 21
+        sleep 1
+        dialog --infobox "Restoring...." 3 21
+        sleep 1
+        dialog --infobox "Restoring....." 3 21
+        sleep 1
+        dialog --infobox "Restoring......" 3 21
+        sleep 1
+        dialog --infobox "Restoring......." 3 21
+        sleep 1
+        dialog --infobox "Restoring........" 3 21
+        sleep 1
+        loop=$(cat /tmp/alive)
+    done
+
 dialog --title "PG Backup Status" --msgbox "\nYour Restore of -- $app -- to Google Drive is Complete!" 0 0
 
 sudo bash /opt/plexguide/menus/backup-restore/restore.sh
