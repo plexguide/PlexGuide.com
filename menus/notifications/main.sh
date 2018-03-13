@@ -24,6 +24,7 @@ MENU="Select Notification Preference(s):"
 
 OPTIONS=(A "Pushover (BETA)  "
          B "Slack (Not Ready)"
+         C "Discord (Not Ready)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -53,8 +54,10 @@ case $CHOICE in
             ;;
 
         B)
-                dialog --infobox "SSLACK IS NOT READY" 7 50
-
+                dialog --infobox "SLACK IS NOT READY" 7 50
+            ;;
+        C)
+                dialog --infobox "DISCORD IS NOT READY" 7 50
             ;;
         Z)
             clear

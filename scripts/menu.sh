@@ -29,7 +29,6 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
 #then
 #whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
 #fi
-
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]
 then
@@ -57,6 +56,14 @@ else
    bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
 
+file="/var/plexguide/notification.yes"
+if [ -e "$file" ]
+then
+   clear
+else
+   bash /opt/plexguide/menus/notifications/main.sh
+fi
+
 ## docker / ansible failure
 file="/var/plexguide/startup.error" 1>/dev/null 2>&1
   if [ -e "$file" ]
@@ -78,7 +85,6 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
       echo ""
     exit
   fi
-
 
 ## starup Message
 bash /opt/plexguide/scripts/checker/main.sh
