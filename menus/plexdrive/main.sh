@@ -66,6 +66,7 @@ case $CHOICE in
             if dialog --stdout --title "PlexDrive 5 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to install PlexDrive5?" 7 50; then
+                clear 
                 sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4
                 mv /tmp/plexdrive-linux-amd64 plexdrive
                 mv plexdrive /usr/bin/
@@ -96,8 +97,8 @@ case $CHOICE in
                 dialog --infobox "Scanning........" 3 20
                 sleep 1
 
-                  PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
-                  echo "1"
+                PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
+
                 done
                 dialog --title "PG5 Status" --msgbox "\nYour Update is Complete! PRESS ENTER TO REBOOT!\n\nYou Must Reboot!" 0 0
                 sudo reboot
