@@ -75,8 +75,9 @@ case $CHOICE in
                 systemctl enable plexdrive
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive >> /opt/appdata/plexdrive.info
 
-                while [ "$PD" != "Opening" ]
-                do
+                PD="No"
+                while [ "$PD" !=ne "Opening" ]; do
+                  echo "0"
                   sleep 5
                   PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
                   echo "1"
