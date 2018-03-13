@@ -6,19 +6,21 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
-cat /var/plexguide/notification.yes
-### if notifcation = yes exit for beginning load up
-
-### put a skip if accessing via normal menu
-dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY, visit SETTINGS to to put in your INFO later on!" 7 50
-sleep 5
+file="/var/plexguide/notification.yes"
+if [ -e "$file" ]
+then
+   clear
+else
+   dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY, visit SETTINGS to to put in your INFO later on!" 7 50
+   touch /var/plexguide/notification.yes
+fi
 
 HEIGHT=10
 WIDTH=40
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Plex Installer"
-MENU="Select your Plex Preference:"
+TITLE="Notification Manager"
+MENU="Select Notification Preference(s):"
 
 OPTIONS=(A "Pushover (BETA)  "
          B "Slack (Not Ready)"
@@ -48,18 +50,15 @@ case $CHOICE in
                 pushapp=$(cat /opt/appdata/plexguide/pushapp)
                 dialog --infobox "Typed Tag: $pushapp" 3 45
                 sleep 4
-
             ;;
 
         B)
-            #bash .. /script
-            #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
-            #read -n 1 -s -r -p "Press any key to continue "
+                dialog --infobox "SSLACK IS NOT READY" 7 50
+
             ;;
         Z)
             clear
             exit 0 ;;
 esac 
 
-
-### put a repeat line, void if this is a first time
+bash /opt/plexguide/menus/notifications/main.sh
