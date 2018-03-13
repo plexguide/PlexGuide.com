@@ -56,7 +56,6 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash /opt/plexguide/menus/plexdrive/check4.sh &>/dev/null &
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -76,7 +75,6 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -87,11 +85,7 @@ case $CHOICE in
         C)
             rm -r /root/.plexdrive 1>/dev/null 2>&1
             rm -r ~/.plexdrive 1>/dev/null 2>&1
-            clear
-            echo "Tokens Removed - Try PlexDrive Install Again"
-            echo
-            read -n 1 -s -r -p "Press any key to continue"
-            clear
+            dialog --title "Token Status" --msgbox "\nThe Tokens were Removed" 0 0
             bash /opt/plexguide/menus/plexdrive/main.sh ;;
         Z)
             clear
