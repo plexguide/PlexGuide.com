@@ -16,19 +16,17 @@ if echo "$answer" | grep -iq "^y" ;then
 clear
 
 ## Enables the PlexDrive Service
-#systemctl daemon-reload
-#systemctl enable plexdrive.service
+
 
     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive
-    #cd /tmp
-    #wget https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
     mv /tmp/plexdrive-linux-amd64 plexdrive
     mv plexdrive /usr/bin/
     cd /usr/bin/
     chown root:root /usr/bin/plexdrive
     chmod 755 /usr/bin/plexdrive
     systemctl daemon-reload
-    systemctl enable plexdrive
+    systemctl enable plexdrive.service
+    systemctl start plexdrive.service
     plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-check-threads=8 --chunk-load-threads=8 --chunk-load-ahead=6 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
     read -n 1 -s -r -p "Press any key to continue "
     clear
