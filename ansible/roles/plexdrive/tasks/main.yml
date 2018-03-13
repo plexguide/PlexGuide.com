@@ -125,3 +125,6 @@
 
   - name: PlexDrive Start
     systemd: state=started name=plexdrive enabled=yes
+
+  - name: Kill Switch
+    shell: echo "false" > /tmp/alive
