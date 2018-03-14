@@ -27,7 +27,7 @@
 
   - name: Start Transfer Service
     shell: "sudo systemctl restart supertransfer"
-=======
+
   - name: Install Dependencies
     shell: "sudo apt install iftop -y "
 
