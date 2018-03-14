@@ -173,9 +173,10 @@ sleep 3
     then
   echo "" 1>/dev/null 2>&1
     else
-        bash /opt/plexguide/menus/donate/main.sh
         echo "Please Support Us with Any Donations :D" > /tmp/pushover
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+        
+        bash /opt/plexguide/menus/donate/main.sh
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1

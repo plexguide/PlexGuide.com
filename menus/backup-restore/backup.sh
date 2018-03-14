@@ -138,6 +138,9 @@ fi
     echo "true" > /tmp/alive
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup &>/dev/null &
 
+    echo "$app: Restoring Started" > /tmp/pushover
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
     loop="true"
     echo "true" > /tmp/alive
     while [ "$loop" = "true" ]
@@ -160,6 +163,9 @@ fi
         sleep 1
         loop=$(cat /tmp/alive)
     done
+
+echo "$app: Restoring Complete" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 
