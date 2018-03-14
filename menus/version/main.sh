@@ -88,7 +88,8 @@ case $CHOICE in
             version="5.059" ;;
         Z)
             clear
-            exit 0
+            bash /opt/plexguide/menus/main.sh
+            exit 0            
             ;;
 esac
 
