@@ -4,13 +4,14 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
-- (D)  Multi-Gdrive Upload Option Added; ansible updated.
+- (B2) (SuperSpeed) Flicker-Gate's Multi-Gdrive Upload Option Added; ansible updated.
 - (B1) NextCloud Container works; access via domain:port only
 - (B1) For Uncapped; added a deamon reload; critical because move.service will never disable
 - (B1) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
 - (B1) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
 - (B1) Moving Animiation to Solo PlexDrive to show the program is working; removed ansible display for solo process
-- (D) Pushover notification system
+- (B2) (Pushover) notification system added and to various scripts
+- (B2) Pushover & SuperSpeed Added-Amended to Settings
 
 #### Changed
 - (B1) Container Starts up after a local backup is made on the server; speeds up pending container use
