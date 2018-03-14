@@ -1,0 +1,54 @@
+---
+  - name: Check if PGUpdate Exists
+    stat:
+      path: /bin/pgupdate
+    register: pgupdate
+
+  - name: Check if PGUpdate Exists
+    stat:
+      path: /bin/plexguide
+    register: plexguide
+
+  - name: Check if PGDEV Exists
+    stat:
+      path: /bin/pgdev
+    register: pgdev
+
+  - name: Remove PGUpdate
+    file:
+      path: /bin/pgupdate
+      state: absent
+    when: pgupdate.stat.exists
+
+  - name: Remove PGDev
+    file:
+      path: /bin/pgdev
+      state: absent
+    when: pgdev.stat.exists
+
+  - name: Install PGDev
+    template:
+      src: pgdev.js2
+      dest: /bin/pgdev
+      force: yes
+      mode: 0775 
+
+  - name: Install PGUpdate
+    template:
+      src: pgupdate.js2
+      dest: /bin/pgupdate
+      force: yes
+      mode: 0775 
+
+  - name: Remove PlexGuide
+    file:
+      path: /bin/plexguide
+      state: absent
+    when: plexguide.stat.exists
+
+  - name: Install PlexGuide
+    template:
+      src: plexguide.js2
+      dest: /bin/plexguide
+      force: yes
+      mode: 0775 

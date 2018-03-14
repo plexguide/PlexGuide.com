@@ -7,25 +7,34 @@
     - ca-certificates
     - software-properties-common
 
+- name: Pip Mods
+  pip: "name={{item}} state=latest"
+  with_items:
+    - docker-py
+    - certbot
+
 - name: Add official gpg signing key
   apt_key:
     id: 0EBFCD88
     url: https://download.docker.com/linux/ubuntu/gpg
 
-- name: Add official repository
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-
-- name: Install docker
-  apt:
-    name: docker-ce
-    state: installed
-    update_cache: yes
-
 - name: Check docker daemon.json exists
   stat:
     path: /etc/docker/daemon.json
   register: docker_daemon
+
+- name: Add official repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+  when: docker_daemon.stat.exists == False
+
+- name: Install docker
+  apt:    
+    name: docker-ce=17.09.0~ce-0~ubuntu
+    state: installed
+    force: yes
+    update_cache: yes
+  when: docker_daemon.stat.exists == False
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes

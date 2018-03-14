@@ -1,10 +1,184 @@
 ## Current Changes (ACTIVE)
-Current Changes will continued to be modified as known.
+Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.045] 
+### [5.062] BETA & DEV Version
+
+#### Added
+- (D)  Multi-Gdrive Upload Option Added; ansible updated.
+- (B1) NextCloud Container works; access via domain:port only
+- (B1) For Uncapped; added a deamon reload; critical because move.service will never disable
+- (B1) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
+- (B1) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
+- (B1) Moving Animiation to Solo PlexDrive to show the program is working; removed ansible display for solo process
+- (D) Pushover notification system
+
+#### Changed
+- (B1) Container Starts up after a local backup is made on the server; speeds up pending container use
+- (B1) PlexDrive - Fixed up to ensure service works properly when installing for the first time
+- (B1) Changed SAB to port 8080; https:// now works for SABNZBD 
+- (B1) Changed Ombi Source / Requires a rerun if you had ombi setup from before!
+
+#### Removed
+- (B1) Several https:// no redirects, legacy code
+- (B1) Streamlined PlexDrive Script; tossed older legacy scripts (no older prompts)
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
+
+#### To Do
+- Add Traefik Labels for reverse Proxy Protection
+- Update Heimdall for Protection
+-------------------------------------------------------
+
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.061] 
+
+#### Added
+- Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
+- Enabling System Health Monitoring (Credit: EasternPA)
+- Dialog asks for your username and email
+- Added New Menu to Settings Incase You Have To Change
+- Can type your own new custom plex tag (useful for certain version, or if newest plex is bugged)
+- New Menus for Plex Install with Checks including asking for if user has remote server
+- PreInstall Docker Checker - If Docker cannot installs, it lets the user know common reasons why; cuts down on issues
+
+#### Changed
+- Mass Restore: User is notified to deploy each app after a mass restore (Reported By: Flicker-Rate)
+- PlexDrive Fix (Credit: budman17r)
+- Overhauled Plex Install System
+- Fixed Typo in PG Server Info Menu
+
+#### Removed
+- Ansible asking you about domain and email, prevents stopping midinstalls (or babysitting to wait around)
+- Removed one useless press enter during ansible install of plex
+- Removed Use Plex Menus
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- nextcloud not working
+- SABNZBD https:// maybe not working?
+
+#### To Do
+- Add Traefik Labels for reverse Proxy Protection
+- Update Heimdall for Protection
+
+#### [5.060]
+
+#### Added
+- Added Settings Menu
+- pgdev command; allows you to automatically to update to latest pgdev without being prompted
+- Added minor script to display ending info rather than having to copy all over the place
+- Ability to Force HTTPS:// only to apps or allow HTTP:// or HTTPS:// (new installs, default is http:// & https://
+- Added option to go back to Main menu in the Service menu
+- Added Cron Jobs Daily our Weekly to Installs
+  - Will attempt to offer daily or weekly options
+  - Weekly might be best for plex due to it's size and possibly cutting out for the time it's backing up
+- Selecting none for Cron Job will remove it if there is one!
+
+#### Changed
+- Removed Bad Flags - PlexDrive / reported by Petitor
+- Front Menu Layout
+- Solo Backup & Restore Formatted To New Menu
+  - Put Failsafes in place to prevent accidental backup
+  - Check to see local data even exist
+- Mass Backup & Restore Formatted To New Menu
+  - Put Failsafes in place to prevent accidental backup
+- Updated Service Status&Restart menus look
+- Updated NCDU menu look
+
+#### Removed
+- Trashed Old Menus
+- Wordpress for testing later
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings
+
+### [5.059]
+
+#### Added
+- New Command updates to pgupdata and plexguide
+  - Emergency Mode: If for some reason plexguide is deleted, it will download the newest version so your not stuck
+  - This requires an update to ensure new commands work
+
+#### Changed
+- For PD4, install MongoDB to version 3.4 from 3.6; believe 3.6 creates problems (3.4 was default prior)
+- Changed NZBGET Container; prior one is bugged (not our fault lol)
+
+#### Removed
+- None
+
+#### Known Issues
+- NBGET Container is no good (not our fault, but pulling a new one to help you)
+- For those using 5.058 or below; type sudo ansible-role commands (after you update)
+  - If you don't, you'll never see the newer updates, you'll just see Developer 5.059 and Stable 5.058
+
+### [5.058]
 
 #### Added
 - None
+
+#### Changed
+- Repaired SABNZBD; tags were off
+- Reworked Menu Loadup
+- Fixed Docker Completely
+
+#### Removed
+- None
+
+#### Known Issues
+- None
+
+### [5.055 - 5.057] Bugged
+
+#### Added
+- None
+
+#### Changed
+- Fixed version of Docker; new one corrupt
+
+#### Removed
+- Old Rogue Script
+
+#### Known Issues
+- SABNZBD will not work in this version, repaired in 5.058
+- Docker Will Not Load
+
+### [5.053] Bugged
+
+#### Added
+- None
+
+#### Changed
+- Changed Portainer Output Display (never affected performance)
+- Fixed Bugged Startup
+
+#### Removed
+- None
+
+
+### [5.052] Bug Fix Update to 5.051
+
+#### Added
+- None
+
+#### Changed
+- Dialog: Updated Benchmark Menu
+- Dialog: New Donation Menu
+- Fixed Portainer Glitch
+
+#### Removed
+- Tossed Corresponding Above WhipTail Menu
+
+### [5.051] Maintence Update to 5.050
+
+#### Added
+- Additonal Ability to pull latest update menu regardless of version
 
 #### Changed
 - None
@@ -12,18 +186,90 @@ Current Changes will continued to be modified as known.
 #### Removed
 - None
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
+### [5.050]
 
-### [5.044] 
+#### Added
+- Ability to always downloaded lastest download menu regardless of version
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+### [5.050]
+
+#### Added
+- New Installs - Ask for which version of PG they want to install (Stable/Developer)
+- Ensure that new installs do results in exiting out of selection of Stable/Developer
+- Ensure Dialog is installed prior to startup
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+### [5.049]
+
+#### Added
+- New Update Version System - Can select stable or develop versions
+- Added menu precautions to prevent accidently upgrade
+- Ansible role to install commands
+
+#### Changed
+- Command "sudo pgupdate" results in bringing up the menu
+- More Menu Updates
+
+#### Removed
+- None
+
+### [5.048]
+
+#### Added
+- None
+
+#### Changed
+- Added dialog to preinstall
+- Put in a checker to check for dialog; not present... force installs
+- Updated Installer info, adds sudo rm -r /opt/plexguide at beginning to prevent clash
+- There was wildcard bug that didn't call install.sh, rather talked to the install folder causing pg to not be there
+- (Not Finished) adding ability for developer edition / stable install
+
+#### Removed
+- None
+
+### [5.046-5.047] BUGGED VERSION / FIXED NOW, 5.047 FIXES
+
+#### Added
+- New PreInstaller
+
+#### Changed
+- None
+
+#### Removed
+- Tossed Old PreInstaller
+
+### [5.045]
+
+#### Added
+- Plex 4 or 5 Install selection
+
+#### Changed
+- Menu changes to new format
+- Fixed TOML File (thanks razzamatazm)
+
+#### Removed
+- Tossing old menus
+
+### [5.044]
 
 #### Added
 - Slowing adding new meus
 - Mass Backup Installer
   - Mass Backup Installer also moves recent backup in gdrive to backup.old with a time stamp
 - Mass Restore Installer
-  - Mass Restore Installer can restore most recent and last 6 backups 
+  - Mass Restore Installer can restore most recent and last 6 backups
 
 #### Changed
 - Fixed fast flash load up error (did not affect anything, but could be seen at times)

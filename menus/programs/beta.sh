@@ -1,47 +1,48 @@
-#!/bin/bash
+ #!/bin/bash
+export NCURSES_NO_UTF8_ACS=1
 
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
+# source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+# echo $ipv4
+# echo $domain
 
-clear
+ HEIGHT=10
+ WIDTH=55
+ CHOICE_HEIGHT=4
+ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+ TITLE="Applications - VPN Programs"
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Beta Menu" --menu "Make your choice" 14 60 7 \
-    "1)" "VPN Torrent - New way"   \
-    "2)" "VPN Torrent - Old way"   \
-    "3)" "DO NOT USE - For Developers Use Only!"   \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
-)
+ OPTIONS=(A "VPN Torrent"
+          B "DO NOT USE - For Developers Use Only!"
+          Z "Exit")
 
-result=$(whoami)
+ CHOICE=$(dialog --clear \
+                 --backtitle "$BACKTITLE" \
+                 --title "$TITLE" \
+                 --menu "$MENU" \
+                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                 "${OPTIONS[@]}" \
+                 2>&1 >/dev/tty)
+
 case $CHOICE in
+     A)
+        bash /opt/plexguide/menus/programs/vpn.sh ;;
+     B)
+     clear
+     bash /opt/plexguide/scripts/test/move.sh
+     echo "Testing files have now been swapped"
+     echo "Please go back to the main menu to see changes"
+     read -n 1 -s -r -p "Press any key to continue "
+     ;;
 
-    "1)")
-    clear
-    bash /opt/plexguide/menus/programs/vpn.sh
-    ;;
-
-   "2)")
-   clear
-   bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh
-   ;;
-
-   "3)")
-   clear
-   bash /opt/plexguide/scripts/test/move.sh
-   echo "Testing files have now been swapped"
-   echo "Please go back to the main menu to see changes"
-   read -n 1 -s -r -p "Press any key to continue "
-   ;;
-
-   "4)")
-    clear
-    exit 0
-    ;;
+     Z)
+        clear
+        exit 0 ;;
 esac
-done
-exit
+
+#    clear
+#    dialog --title "$program - Address Info" \
+#    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+# bash /opt/plexguide/menus/programs/beta.sh

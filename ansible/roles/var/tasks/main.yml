@@ -10,12 +10,7 @@
   file:
     state: absent
     path:
-      - /opt/appdata/plexguide/var.yml
-
-- name: create plexguide network
-  docker_network:
-    name: "plexguide"
-    state: present
+     - /opt/appdata/plexguide/var.yml
 
 ########## Copy Traefik config files
 - name: Installing config prerequisites
@@ -24,16 +19,33 @@
     dest: /opt/appdata/plexguide/var.yml
     force: yes
 
-########## Ask user for e-mail & domain
-- name: domain
-  pause:
-    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
-  register: domain_input
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
 
-- name: email
-  pause:
-    prompt: "Enter e-mail address - (must be valid in order to register SSL)"
-  register: email_input
+- name: "Establishing Domain"
+  shell: "awk '{print $1}' /tmp/domain"
+  register: domain_var
+  tags:
+    - domain
+
+- name: "Establishing E-Mail"
+  shell: "awk '{print $1}' /tmp/email"
+  register: email_var
+  tags:
+    - domain
+
+########## Ask user for e-mail & domain
+#- name: domain
+#  pause:
+#    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
+#  register: domain_input
+
+#- name: email
+#  pause:
+#    prompt: "Enter e-mail address - (must be valid in order to register SSL)"
+#  register: email_input
 
 #Not Need So Far
 #- name: password
@@ -42,8 +54,8 @@
 #  register: password_input
 
 ########## Info-Debug
-- debug: msg="Using following domain {{domain_input.user_input}}"
-- debug: msg="Using following e-mail {{email_input.user_input}}"
+#- debug: msg="Using following domain {{domain_input.user_input}}"
+#- debug: msg="Using following e-mail {{email_input.user_input}}"
 #- debug: msg="Using following password {{password_input.user_input}}"
 
 ########## Replace template domain and email with the user input
@@ -51,13 +63,13 @@
   replace:
     path: /opt/appdata/plexguide/var.yml
     regexp: domain.com
-    replace: "{{domain_input.user_input}}"
+    replace: "{{domain_var.stdout}}"
 
 - name: Replace your@email.com with user input
   replace:
     path: /opt/appdata/plexguide/var.yml
     regexp: your@email.com
-    replace: "{{email_input.user_input}}"
+    replace: "{{email_var.stdout}}"
 
 #- name: Replace password with user input
 #  replace:

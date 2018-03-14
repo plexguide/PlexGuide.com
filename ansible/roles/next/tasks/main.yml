@@ -1,4 +1,12 @@
 ---
+- name: Create required directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/nextcloud
+    - /opt/appdata/nextcloud/conf
+    - /opt/appdata/nextcloud/data
+    - /opt/appdata/nextcloud/mariadb
+
 - name: Destory NextCloud Container
   docker_container:
     name: next
@@ -17,7 +25,7 @@
       MYSQL_ROOT_PASSWORD: "password321"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/mariadb:/config"
+      - "/opt/appdata/nexcloud/mariadb:/config"
     networks:
       - name: plexguide
         aliases:
@@ -31,7 +39,7 @@
     image: "linuxserver/nextcloud"
     pull: yes
     published_ports:
-      - "{{ports}}4645:4645"
+      - "{{ports}}4645:443"
     env:
       PUID: 1000
       PGID: 1000
@@ -49,4 +57,4 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nextcloud.{{domain}}"
-      traefik.port: "4645"
+      traefik.port: "443"

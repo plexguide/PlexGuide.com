@@ -1,5 +1,3 @@
-########### Original Development of this Script Was Created By l3uddz from https://github.com/Cloudbox/Cloudbox
-
 containers=$(comm -12 <(docker ps -a -q | sort) <(docker ps -q | sort))
 for container in $containers;
 do

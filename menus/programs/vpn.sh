@@ -1,5 +1,22 @@
- #!/bin/bash
+#!/bin/bash
+#
+# [PlexGuide Menu]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 - Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 
+export NCURSES_NO_UTF8_ACS=1
  # This takes .yml file and converts it to bash readable format
  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var-vpn.yml > /opt/appdata/plexguide/var-vpn.sh
 
@@ -8,22 +25,28 @@
  echo $ipv4
  echo $domain
 
-clear
+ HEIGHT=10
+ WIDTH=55
+ CHOICE_HEIGHT=4
+ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+ TITLE="Applications - VPN Programs"
 
-while [ 1 ]
-do
-CHOICE=$(
-whiptail --title "Torrent VPN Menu" --menu "Make your choice" 12 50 5 \
-    "1)" "First click here to setup var files"  \
-    "2)" "RTorrentVPN"  \
-    "3)" "DelugeVPN"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
-)
+ OPTIONS=(A "First click here to setup var files"
+          B "DelugeVPN"
+          C "RTorrentVPN"
+          Z "Exit")
 
-result=$(whoami)
+ CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                 --title "$TITLE" \
+                 --menu "$MENU" \
+                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                 "${OPTIONS[@]}" \
+                 2>&1 >/dev/tty)
+
 case $CHOICE in
 
-     "1)")
+     A)
+     skip=yes
      ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
      echo "Your Variables have now been set."
      echo ""
@@ -31,32 +54,74 @@ case $CHOICE in
      bash /opt/plexguide/menus/programs/vpn.sh
      ;;
 
-     "2)")
-      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
-      echo "RTorrentVPN: http://$ipv4:3000"
-      echo "For Subdomain https://rtorrentvpn.$domain"
-      echo "For Domain http://$domain:3000"
-      echo ""
-      echo "Please set your own username & password!"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
+     B)
+     clear
+     program=delugevpn
+     port=8112
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
 
-     "3)")
-      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn
-      echo "DelugeVPN: http://$ipv4:8112"
-      echo "For Subdomain https://delugevpn.$domain"
-      echo "For Domain http://$domain:8112"
-      echo ""
-      echo "Default password: deluge"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue "
-      ;;
+     C)
+     clear
+     program=rtorrentvpn
+     port=3000
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn ;;
 
-     "4)")
-      clear
-      exit 0
-      ;;
+     Z)
+       exit 0 ;;
+
 esac
-done
-exit
+
+clear
+
+########## Deploy Start
+number=$((1 + RANDOM % 2000))
+echo "$number" > /tmp/number_var
+
+if [ "$skip" == "yes" ]; then
+clear
+else
+
+HEIGHT=9
+WIDTH=42
+CHOICE_HEIGHT=5
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="Schedule a Backup of --$program --?"
+
+OPTIONS=(A "Weekly"
+         B "Daily"
+         Z "None")
+
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+case $CHOICE in
+        A)
+            clear
+            echo "$program" > /tmp/program_var
+            echo "weekly" > /tmp/time_var
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+            read -n 1 -s -r -p "Press any key to continue "
+            --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+        B)
+            clear
+            echo "$program" > /tmp/program_var
+            echo "daily" > /tmp/time_var
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
+            read -n 1 -s -r -p "Press any key to continue "
+            --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
+        Z)
+            --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
+            clear ;;
+esac
+fi
+########## Deploy End
+
+    dialog --title "$program - Address Info" \
+    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### recall itself to loop unless user exits
+bash /opt/plexguide/menus/programs/vpn.sh

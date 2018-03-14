@@ -1,5 +1,22 @@
 #!/bin/bash
+#
+# [PlexGuide Menu]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 
+export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=5
@@ -24,13 +41,13 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/menus/backup-restore/backup/backup.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backup.sh ;;
         B)
-            bash /opt/plexguide/scripts/menus/backup-restore/restore/restore.sh ;;
+            bash /opt/plexguide/menus/backup-restore/restore.sh ;;
         C)
-            bash /opt/plexguide/scripts/backup-restore/backup.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
         D)
-            bash /opt/plexguide/scripts/backup-restore/restore.sh ;;
+            bash /opt/plexguide/menus/backup-restore/restoremass.sh ;;
         Z)
             clear
             exit 0

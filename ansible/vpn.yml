@@ -12,4 +12,4 @@
   roles:
       - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
       - { role: delugevpn, tags: ['delugevpn'] }
-      - { role: couchpotato, tags: ['couchpotato'] }
+      - { role: x2go, tags: ['x2go'] }

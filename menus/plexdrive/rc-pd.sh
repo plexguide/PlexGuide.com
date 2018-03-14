@@ -1,11 +1,11 @@
  #!/bin/bash
-
-HEIGHT=12
-WIDTH=45
-CHOICE_HEIGHT=5
+export NCURSES_NO_UTF8_ACS=1
+HEIGHT=10
+WIDTH=28
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PlexDrive - RClone"
-MENU="Choose one of the following options:"
+TITLE="PlexDrive - Mounts"
+MENU="Make a Slection:"
 
 OPTIONS=(A "PlexDrive"
          B "RClone"
@@ -24,7 +24,7 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/plexdrive/main.sh ;;
         B)
-            bash /opt/plexguide/scripts/menus/rclone-menu.sh ;;
+            bash /opt/plexguide/menus/rclone/select.sh ;;
         Z)
             clear
             exit 0 ;;

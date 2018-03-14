@@ -4,13 +4,13 @@
     - /opt/appdata/plexguide/var.yml
 
   roles:
-  - { role: preinstall, tags: ['preinstall'] }
+  - { role: deploy, tags: ['deploy'] }   
   - { role: backup, tags: ['backup'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
-  - { role: folders, tags: ['folders'] }
-  - { role: portainer, tags: ['portainer'] }
+  - { role: cloudplow, tags: ['cloudplow'] }
   - { role: netdata, tags: ['netdata'] }
+  - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: nzbhydra, tags: ['nzbhydra'] }
@@ -19,6 +19,7 @@
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
+  - { role: supertransfer, tags: ['supertransfer'] }
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
@@ -26,6 +27,7 @@
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: emby, tags: ['emby'] }
   - { role: next, tags: ['next'] }
+  - { role: telly, tags: ['telly'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
   - { role: lidarr, tags: ['lidarr'] }
@@ -41,7 +43,6 @@
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
   - { role: plex, tags: ['plex'] }
-  - { role: docker, tags: ['docker'] }
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }

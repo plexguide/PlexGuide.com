@@ -17,7 +17,7 @@
 - name: Deploy NZBGET Container
   docker_container:
     name: nzbget
-    image: "hotio/suitarr"
+    image: "linuxserver/nzbget"
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -49,7 +49,7 @@
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
 
-- name: Path for .conf
+- name: Please Wait - Pending .conf generation from NZBGET
   wait_for:
     path: "/opt/appdata/nzbget/nzbget.conf"
     state: present

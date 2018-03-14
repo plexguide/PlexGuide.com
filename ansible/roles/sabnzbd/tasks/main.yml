@@ -1,20 +1,11 @@
 ---
-
-## http://docs.ansible.com/ansible/latest/lineinfile_module.html
-
 - name: Remove SABNZBD Container
   docker_container:
     name: sabnzbd
     state: absent
 
-#- name: "Set folder permissions"
-#  shell: "chmod -R 777 /mnt/sab/"
-
-#- name: "Set owner permisisons"
-#  shell: "chown -R 1000:1000 /mnt/sab/"
-
 - name: Create SAB download directory
-  file: "path=/mnt/sab/ state=directory mode=0777 owner=1000 group=1000 recurse=true"
+  file: "path=/mnt/sab/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
 - name: Check sabnzbd.ini exists
   stat:
@@ -27,7 +18,7 @@
     image: "linuxserver/sabnzbd"
     pull: yes
     published_ports:
-      - "{{ports}}8090:8080"
+      - "{{ports}}8080:8080"
     volumes:
       - /opt/appdata/sabnzbd:/config
       - /mnt/sab/complete:/complete
@@ -40,7 +31,6 @@
     env:
       PUID: 1000
       PGID: 1000
-      HTTPS_METHOD: noredirect
     restart_policy: always
     state: started
     networks:

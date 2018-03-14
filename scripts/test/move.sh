@@ -4,6 +4,22 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new torrent menus
+rm /opt/plexguide/menus/programs/vpn.sh
+mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
+
+## For testing new info & services menus
+#rm /opt/plexguide/menus/info-tshoot/info.sh
+#mv /opt/plexguide/menus/info-tshoot/info-next.sh /opt/plexguide/menus/info-tshoot/info.sh
+
+## For testing new torrent menus
+#rm /opt/plexguide/menus/programs/beta.sh
+#mv /opt/plexguide/menus/programs/beta-next.sh /opt/plexguide/menus/programs/beta.sh
+
+## For testing new torrent menus
+rm /opt/plexguide/menus/programs/torrent.sh
+mv /opt/plexguide/menus/programs/torrent-next.sh /opt/plexguide/menus/programs/torrent.sh
+
 ## For testing new status and restart menus
 #rm /opt/plexguide/scripts/menus/status-menu.sh
 #rm /opt/plexguide/scripts/menus/restart-menu.sh
@@ -19,10 +35,10 @@
 #mv /opt/plexguide/scripts/menus/programs2 /opt/plexguide/scripts/menus/programs
 
 ## For testing new backup and restore menus
-rm /opt/plexguide/scripts/menus/backup-menu.sh
-rm /opt/plexguide/scripts/menus/restore-menu.sh
-mv /opt/plexguide/scripts/menus/backup-menu2 /opt/plexguide/scripts/menus/backup-menu.sh
-mv /opt/plexguide/scripts/menus/restore-menu2 /opt/plexguide/scripts/menus/restore-menu.sh
+#rm /opt/plexguide/scripts/menus/backup-menu.sh
+#rm /opt/plexguide/scripts/menus/restore-menu.sh
+#mv /opt/plexguide/scripts/menus/backup-menu2 /opt/plexguide/scripts/menus/backup-menu.sh
+#mv /opt/plexguide/scripts/menus/restore-menu2 /opt/plexguide/scripts/menus/restore-menu.sh
 
 ## For testing new service status and restart menus
 #rm /opt/plexguide/scripts/menus/restart-menu.sh
