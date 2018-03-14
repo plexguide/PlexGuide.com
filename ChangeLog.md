@@ -4,6 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
+- (D) Added Pushover Role, now can call up easily in bash - Ansible is my work horse :D
 - (B2) (SuperSpeed) Flicker-Rate's Multi-Gdrive Upload Option Added; ansible updated.
 - (B1) NextCloud Container works; access via domain:port only
 - (B1) For Uncapped; added a deamon reload; critical because move.service will never disable
