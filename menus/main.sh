@@ -57,10 +57,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         H)
             bash /opt/plexguide/scripts/upgrade/main.sh 
-            sudo bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         Z)
-            sudo bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
 esac
 

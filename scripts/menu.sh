@@ -48,20 +48,20 @@ else
    exit 0
 fi
 
-file="/var/plexguide/dep42.yes"
-if [ -e "$file" ]
-then
-   touch /var/plexguide/message.no
-else
-   bash /opt/plexguide/scripts/baseinstall/main.sh
-fi
-
 file="/var/plexguide/notification.yes"
 if [ -e "$file" ]
 then
    clear
 else
    bash /opt/plexguide/menus/notifications/main.sh
+fi
+
+file="/var/plexguide/dep42.yes"
+if [ -e "$file" ]
+then
+   touch /var/plexguide/message.no
+else
+   bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
 
 ## docker / ansible failure
