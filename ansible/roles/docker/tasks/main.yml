@@ -1,5 +1,14 @@
 ---
-########### Original Development of this Script Was Created By l3uddz from https://github.com/Cloudbox/Cloudbox
+- name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
+    register: app_var
+    ignore_errors: True
+
+- name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
+    register: user_var
+    ignore_errors: True
+
 - name: Install required packages
   apt: "name={{item}} state=installed"
   with_items:
@@ -64,3 +73,10 @@
 
 - name: Import override file
   copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
+
+- name: "Pushover: Docker Installed"
+  pushover:
+    msg: "PlexGuide - Docker Install Complete"
+    app_token: "{{app_var.stdout}}"
+    user_key: "{{user_var.stdout}}"
+  ignore_errors: True
