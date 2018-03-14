@@ -61,8 +61,16 @@ if dialog --stdout --title "Domain Question" \
 
   dialog --infobox "Set Domain is $dom" 3 45
   sleep 5
+
+  echo "Domain - Set to $dom" > /tmp/pushover
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
   dialog --infobox "Set E-Mail is $email" 3 45
   sleep 5
+
+  echo "E-Mail - Set to $email" > /tmp/pushover
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
   clear
 
 else
@@ -93,7 +101,10 @@ touch /var/plexguide/domain
             fi
             ;;
         B)
-            bash /opt/plexguide/menus/notifications/main.sh ;;
+              bash /opt/plexguide/menus/notifications/main.sh
+              echo "Pushover Notifications are Working!" > /tmp/pushover
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+              ;;
         C)
             bash /opt/plexguide/menus/ports/main.sh ;;  
         D)
