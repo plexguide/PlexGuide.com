@@ -46,29 +46,6 @@
   tags:
     - domain
 
-########## Ask user for e-mail & domain
-#- name: domain
-#  pause:
-#    prompt: "Enter your domain here (If none, press ENTER to SKIP)"
-#  register: domain_input
-
-#- name: email
-#  pause:
-#    prompt: "Enter e-mail address - (must be valid in order to register SSL)"
-#  register: email_input
-
-#Not Need So Far
-#- name: password
-#  pause:
-#    prompt: "Please create a Universal Password (.htaccess / Wordpress & etc)"
-#  register: password_input
-
-########## Info-Debug
-#- debug: msg="Using following domain {{domain_input.user_input}}"
-#- debug: msg="Using following e-mail {{email_input.user_input}}"
-#- debug: msg="Using following password {{password_input.user_input}}"
-
-########## Replace template domain and email with the user input
 - name: Replace yourdomain.com with user input
   replace:
     path: /opt/appdata/plexguide/var.yml
@@ -81,13 +58,6 @@
     regexp: your@email.com
     replace: "{{email_var.stdout}}"
 
-#- name: Replace password with user input
-#  replace:
-#    path: /opt/appdata/plexguide/var.yml
-#    regexp: defaultpassword
-#    replace: "{{password_input.user_input}}"
-
-#### Get IPv4 and CIDR info
 - name: ipv4
   shell: "hostname -I | awk '{print $1}'"
   register: ip_address
