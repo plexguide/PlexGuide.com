@@ -100,9 +100,7 @@ queued_transfers () {
 }
 
 current_transfers() {
-		echo $(tac /opt/appdata/plexguide/rclone \
-			| grep -m1 "Transferring:" -B7 \
-			| grep "\*" | wc -l)
+		echo $(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l)
 }
 
 # Throttle Detection Daemon
