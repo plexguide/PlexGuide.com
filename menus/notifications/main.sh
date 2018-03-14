@@ -58,9 +58,11 @@ case $CHOICE in
             ;;
         B)
                 dialog --infobox "SLACK IS NOT READY" 7 50
+                sleep 5
             ;;
         C)
                 dialog --infobox "DISCORD IS NOT READY" 7 50
+                sleep 5
             ;;
         Z)
             clear
