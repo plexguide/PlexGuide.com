@@ -91,21 +91,27 @@ yes | apt-get update 1>/dev/null 2>&1
 
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 ##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
 rm -r /var/plexguide/startup.error
@@ -130,22 +136,26 @@ if [ -e "$file" ]
 then
   echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff #1>/dev/null 2>&1
+  read -n 1 -s -r -p "Press any key to continue "
 else
   echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton #1>/dev/null 2>&1
+  read -n 1 -s -r -p "Press any key to continue "
 fi
 
 echo "88" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 
 echo "92" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh #1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue "
 sleep 3
 
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
 
-read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press any key to continue "
 echo "99" | dialog --gauge "Donation Question" 7 50 0
 sleep 3
 
