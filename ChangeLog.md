@@ -10,6 +10,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
 - (B1) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
 - (B1) Moving Animiation to Solo PlexDrive to show the program is working; removed ansible display for solo process
+- (D) Pushover notification system
 
 #### Changed
 - (B1) Container Starts up after a local backup is made on the server; speeds up pending container use
