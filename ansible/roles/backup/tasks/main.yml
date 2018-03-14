@@ -4,16 +4,6 @@
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
 
-- name: "Establishing Variable"
-  shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
-  register: app_var
-  ignore_errors: True
-
-- name: "Establishing Variable"
-  shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
-  register: user_var
-  ignore_errors: True
-
 - debug: msg="Temp Message - For {{program_var.stdout}}"
 
 - name: "Checking {{program_var.stdout}} location in APPDATA"
@@ -65,11 +55,3 @@
 
 - debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var.stdout}}"
   when: programappdata.stat.exists == False
-
-- name: "Pushover: {{program_var.stdout}} - Backup"
-  pushover:
-    msg: "PlexGuide: {{program_var.stdout}} - Is Fully Backed Up!"
-    app_token: "{{app_var.stdout}}"
-    user_key: "{{user_var.stdout}}"
-  ignore_errors: True
-

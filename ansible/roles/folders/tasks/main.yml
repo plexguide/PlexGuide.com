@@ -1,14 +1,4 @@
 ---
-  - name: "Establishing Variable"
-    shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
-    register: app_var
-    ignore_errors: True
-
-  - name: "Establishing Variable"
-    shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
-    register: user_var
-    ignore_errors: True
-
  ########### PlexDrive
   - name: PlexDrive Check
     stat:
@@ -121,10 +111,3 @@
       - /mnt/sab/incomplete
       - /mnt/sab/nzb
       - /mnt/sab/complete/ebooks
-
-  - name: "Pushover: Folders Made"
-    pushover:
-      msg: "PlexGuide - Basic Folder Structure Built"
-      app_token: "{{app_var.stdout}}"
-      user_key: "{{user_var.stdout}}"
-    ignore_errors: True

@@ -64,11 +64,6 @@
     - /opt/appdata/{{program_var.stdout}}
   ignore_errors: yes
 
-## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
-#- name: "Restoring Downloaded Program from /tmp - {{program_var.stdout}}"
-  #shell: "tar -xf '/tmp/{{program_var.stdout}}.tar' -C /opt/appdata/{{program_var.stdout}} ."
-  #when: programgdrive.stat.exists == True
-
 - name: Unzip Folders
   unarchive:
     src: /tmp/{{program_var.stdout}}.tar
