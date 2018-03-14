@@ -1,13 +1,13 @@
 ---
 - name: "Establishing Variable"
-    shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
-    register: app_var
-    ignore_errors: True
+  shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
+  register: app_var
+  ignore_errors: True
 
 - name: "Establishing Variable"
-    shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
-    register: user_var
-    ignore_errors: True
+  shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
+  register: user_var
+  ignore_errors: True
 
 - name: Install required packages
   apt: "name={{item}} state=installed"
