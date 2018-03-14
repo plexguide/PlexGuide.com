@@ -19,6 +19,9 @@ export NCURSES_NO_UTF8_ACS=1
 
 clear
 
+echo "Installation Started" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
@@ -120,6 +123,10 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
     then
   echo "" 1>/dev/null 2>&1
     else
+    
+    echo "Program Aborted - Docker Install Failed" > /tmp/pushover
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+    
     touch /var/plexguide/startup.error 1>/dev/null 2>&1
     exit
   fi
@@ -130,6 +137,8 @@ touch /var/plexguide/basics.yes 1>/dev/null 2>&1
 
 echo "80" | dialog --gauge "Installing: Portainer" 7 50 0 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
+echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
@@ -165,12 +174,14 @@ sleep 3
   echo "" 1>/dev/null 2>&1
     else
         bash /opt/plexguide/menus/donate/main.sh
+        echo "Please Support Us with Any Donations :D" > /tmp/pushover
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
    touch /var/plexguide/dep42.yes
 
 
-echo "Installation is Now Complete" > /tmp/pushover
+echo "PG Install is Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 clear
