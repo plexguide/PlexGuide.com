@@ -23,10 +23,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
 
-OPTIONS=(A "Pushover (BETA)  "
-         B "Slack (Not Ready)"
-         C "Discord (Not Ready)"
-         Z "No Notifications")
+OPTIONS=(Z "No Notifications"
+         A "Pushover"
+         B "Discord (Not Ready)"
+         C "Slack (Not Ready)")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -52,6 +52,9 @@ case $CHOICE in
                 pushapp=$(cat /opt/appdata/plexguide/pushapp)
                 dialog --infobox "Typed Tag: $pushapp" 3 45
                 sleep 4
+
+                dialog --infobox "Notice: You can configure more notifications, if you want! Made an error? Just SELECT it again!" 7 50
+                sleep 5
             ;;
         B)
                 dialog --infobox "SLACK IS NOT READY" 7 50
