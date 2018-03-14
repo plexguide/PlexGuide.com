@@ -23,10 +23,11 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
 
-OPTIONS=(Z "No Notifications"
-         A "Pushover"
-         B "Discord (Not Ready)"
-         C "Slack (Not Ready)")
+OPTIONS=(A "No Notifications"
+         B "Pushover"
+         C "Discord (Not Ready)"
+         D "Slack (Not Ready)"
+         E "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -38,7 +39,7 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
+        B)
                 dialog --title "Input >> Pushover User Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "USER KEY:" 8 40 2>/opt/appdata/plexguide/pushuser
@@ -56,7 +57,7 @@ case $CHOICE in
                 dialog --infobox "Notice: You can configure more notifications; if you want!\n\nMade an error? Just SELECT it again!" 0 0
                 sleep 7
             ;;
-        B)
+        D)
                 dialog --infobox "SLACK IS NOT READY" 7 50
                 sleep 5
             ;;
@@ -64,6 +65,9 @@ case $CHOICE in
                 dialog --infobox "DISCORD IS NOT READY" 7 50
                 sleep 5
             ;;
+        A)
+            clear
+            exit 0 ;;
         Z)
             clear
             exit 0 ;;
