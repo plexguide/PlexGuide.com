@@ -138,7 +138,7 @@ fi
     echo "true" > /tmp/alive
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore &>/dev/null &
 
-    echo "$app: Restore Complete" > /tmp/pushover
+    echo "$app: Restore Started" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
     loop="true"

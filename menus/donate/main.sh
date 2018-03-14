@@ -42,6 +42,10 @@ case $CHOICE in
             clear
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags support
             dialog --title "Message" --msgbox "\nThank You So Much For Your Support! Woot Woot!" 0 0
+
+            echo "Donation: Thank You!!!" > /tmp/pushover
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
             rm -r /var/plexguide/donation* 1>/dev/null 2>&1
             touch /var/plexguide/donation.yes 1>/dev/null 2>&1
             exit 0
