@@ -27,11 +27,9 @@
 
   - name: Start Transfer Service
     shell: "sudo systemctl restart supertransfer"
-<<<<<<< HEAD
-    
+        
   - name: Install Dependencies
     shell: "sudo apt install iftop -y "
-=======
 
   - name: "Pushover: Super Speed Enabled"
     pushover:
@@ -39,5 +37,3 @@
       app_token: "{{app_var.stdout}}"
       user_key: "{{user_var.stdout}}"
     ignore_errors: True
-
->>>>>>> refs/remotes/origin/Version-5
