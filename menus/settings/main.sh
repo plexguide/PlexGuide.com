@@ -93,7 +93,7 @@ touch /var/plexguide/domain
             fi
             ;;
         B)
-            bash /opt/plexguide/menus/notifications/main.sh
+            bash /opt/plexguide/menus/notifications/main.sh ;;
         C)
             bash /opt/plexguide/menus/ports/main.sh ;;  
         D)
