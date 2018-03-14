@@ -170,4 +170,7 @@ sleep 3
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
    touch /var/plexguide/dep42.yes
 
+
+echo "Installation is Now Complete" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 clear
