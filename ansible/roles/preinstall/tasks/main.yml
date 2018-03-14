@@ -1,4 +1,14 @@
 ---
+  - name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
+    register: app_var
+    ignore_errors: True
+
+  - name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
+    register: user_var
+    ignore_errors: True
+
   - name: Install common packages
     apt: "name={{item}} state=installed"
     with_items:
@@ -50,6 +60,13 @@
 
   - name: Create Symbolic Link for Ansible-ToolBox
     shell: ln -s /opt/plexguide/ansible/roles /etc/ansible/
+
+  - name: "Pushover: Dependencies Installed"
+    pushover:
+      msg: "PlexGuide: Dependencies Installed"
+      app_token: "{{app_var.stdout}}"
+      user_key: "{{user_var.stdout}}"
+    ignore_errors: True
 
   #- name: Install ctop
     #get_url:

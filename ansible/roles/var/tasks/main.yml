@@ -1,5 +1,15 @@
 ---
 ########## Create prerequisite config directories
+- name: "Establishing Variable"
+  shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
+  register: app_var
+  ignore_errors: True
+
+- name: "Establishing Variable"
+  shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
+  register: user_var
+  ignore_errors: True
+
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -101,3 +111,10 @@
     replace: "{{lan_net.stdout}}"
 
 - debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
+
+- name: "Pushover: Variables Established & Built"
+  pushover:
+    msg: "PlexGuide: Variables Established & Built"
+    app_token: "{{app_var.stdout}}"
+    user_key: "{{user_var.stdout}}"
+  ignore_errors: True

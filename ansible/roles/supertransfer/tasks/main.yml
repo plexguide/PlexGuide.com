@@ -3,7 +3,16 @@
 ########### SuperTransfer Service
   #- name: Stop If Transfer Service Running
     #systemd: state=stopped name=transfer
-    
+  - name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
+    register: app_var
+    ignore_errors: True
+
+  - name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
+    register: user_var
+    ignore_errors: True
+
   - name: Install SuperTransfer Service
     template:
       src: supertransfer.js2
@@ -18,4 +27,11 @@
 
   - name: Start Transfer Service
     shell: "sudo systemctl restart supertransfer"
-    
+
+  - name: "Pushover: Super Speed Enabled"
+    pushover:
+      msg: "PlexGuide: Super Speed Enabled"
+      app_token: "{{app_var.stdout}}"
+      user_key: "{{user_var.stdout}}"
+    ignore_errors: True
+
