@@ -4,6 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
+- (D)  Multi-Gdrive Upload Option Added; ansible updated.
 - (B1) NextCloud Container works; access via domain:port only
 - (B1) For Uncapped; added a deamon reload; critical because move.service will never disable
 - (B1) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
