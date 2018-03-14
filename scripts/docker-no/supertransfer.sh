@@ -39,13 +39,13 @@ detect_throttle() {
 	upspeed=$(python -c "print(int($upspeed+0))") # float & null val sanity check
 	echo "$upspeed" > /opt/appdata/plexguide/current_speed
 
-	case $(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l) in
+	case $(tail /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B20 | grep "\*" | wc -l) in
 		1) threshold=$(( 20 + $threshold_modifier )) ;;
 		2) threshold=$(( 30 + $threshold_modifier )) ;;
 	        *) threshold=$(( 40 + $threshold_modifier )) ;;
 	esac
 
-		current_transfers=$(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l)
+		current_transfers=$(tail /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B20 | grep "\*" | wc -l)
 		if [[ upspeed -gt $threshold || ( current_transfers -eq 0 ) ]]; then
 			echo no 
 		else
@@ -57,7 +57,7 @@ detect_throttle() {
 rclone_sync() {
 	# memory_optimization
 		queued_transfers=$(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l)
-		current_transfers=$(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l)
+		current_transfers=$(tail /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B20 | grep "\*" | wc -l)
 	case $(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l) in
 		1) drive_chunk_size="1024M" ;;
 		2) drive_chunk_size="512M" ;;
@@ -100,7 +100,7 @@ queued_transfers () {
 }
 
 current_transfers() {
-		echo $(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l)
+		echo $(tail /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B20 | grep "\*" | wc -l)
 }
 
 # Throttle Detection Daemon
