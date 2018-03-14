@@ -11,15 +11,16 @@ if [ -e "$file" ]
 then
    clear
 else
-   dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY, visit SETTINGS to to put in your INFO later on!" 7 50
+   dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY or DON'T CARE, visit SETTINGS to to put in your INFO later on!" 7 50
+   sleep 5
    touch /var/plexguide/notification.yes
 fi
 
-HEIGHT=10
+HEIGHT=11
 WIDTH=40
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Notification Manager"
+TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
 
 OPTIONS=(A "Pushover (BETA)  "
@@ -52,7 +53,6 @@ case $CHOICE in
                 dialog --infobox "Typed Tag: $pushapp" 3 45
                 sleep 4
             ;;
-
         B)
                 dialog --infobox "SLACK IS NOT READY" 7 50
             ;;
