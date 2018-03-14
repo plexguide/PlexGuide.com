@@ -22,6 +22,8 @@ remote_dir='/'		# set custom gdrive mapping (default: '/')
 # init
 cat /opt/appdata/plexguide/current_index | grep [0-9] || echo 0 > /opt/appdata/plexguide/current_index
 cat /opt/appdata/plexguide/current_gdrive | grep gdrive || echo gdrive > /opt/appdata/plexguide/current_gdrive
+touch /opt/appdata/plexguide/rclone
+chmod 755 /opt/appdata/plexguide/rclone
 
 	
 
@@ -155,7 +157,7 @@ done &
 
 # Gdrive Uploader
 while true; do
-	if [[ $(queued_transfers) -ge 0 ]]; then
+	if [[ $(queued_transfers) -gt 0 ]]; then
 		echo "Currently Selected Gdrive: $(cat /opt/appdata/plexguide/current_index) ($(cat /opt/appdata/plexguide/current_gdrive))"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log
