@@ -112,9 +112,9 @@
 
 - debug: msg="Your LAN_NETWORK/CIDR Address is {{lan_net.stdout}}"
 
-- name: "Pushover: Variables Established & Built"
+- name: "Pushover: Variables Established and Built"
   pushover:
-    msg: "PlexGuide: Variables Established & Built"
+    msg: "PlexGuide: Variables Established and Built"
     app_token: "{{app_var.stdout}}"
     user_key: "{{user_var.stdout}}"
   ignore_errors: True
