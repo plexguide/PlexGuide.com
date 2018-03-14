@@ -13,7 +13,7 @@
     ignore_errors: True
  
   - name: "Establishing Variable"
-    shell: "awk '{print $1}' /tmp/pushover"
+    shell: "cat /tmp/pushover"
     register: message_var
     ignore_errors: True
 
