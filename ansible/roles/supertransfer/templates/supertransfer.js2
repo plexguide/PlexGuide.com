@@ -7,7 +7,7 @@ User=0
 Group=0
 Type=simple
 ExecStart=/bin/bash /opt/plexguide/scripts/docker-no/supertransfer.sh
-ExecStop=ps -ef | grep supertransfer | grep -v  "grep"  | awk '{print $2}' | xargs kill;
+ExecStop=/bin/bash /opt/plexguide/scripts/docker-no/supertransferkill.sh
 KillMode=process
 
 [Install]
