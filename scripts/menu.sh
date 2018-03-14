@@ -1,11 +1,12 @@
 #!/bin/bash
 
-### remove exit hold
-#rm -r /var/plexguide/exit.yes 1>/dev/null 2>&1
+#### Temp Variables Established To Prevent Crashing - START
+echo "plexguide" > /tmp/pushover
+#### Temp Variables Esablished  To Prevent Crashing - END
+
 echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 mkdir /var/plexguide/ 1>/dev/null 2>&1
-#sudo apt-get install whiptail -y 1>/dev/null 2>&1
-### incase it's not installed prior
+
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then

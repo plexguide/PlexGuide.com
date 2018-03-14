@@ -1,4 +1,7 @@
 ---
+### echo "my message here" > /tmp/pushover
+### ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
   - name: "Establishing Variable"
     shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
     register: app_var
