@@ -30,7 +30,7 @@
 
   - name: "Pushover: Super Speed Enabled"
     pushover:
-      msg: "PlexGuide: Super Speed Enabled"
+      msg: "PlexGuide - Super Speed Enabled"
       app_token: "{{app_var.stdout}}"
       user_key: "{{user_var.stdout}}"
     ignore_errors: True

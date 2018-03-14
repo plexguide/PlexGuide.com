@@ -76,7 +76,7 @@
 
 - name: "Pushover: Docker Installed"
   pushover:
-    msg: "PlexGuide: Docker Install Complete"
+    msg: "PlexGuide - Docker Install Complete"
     app_token: "{{app_var.stdout}}"
     user_key: "{{user_var.stdout}}"
   ignore_errors: True

@@ -124,7 +124,7 @@
 
   - name: "Pushover: Folders Made"
     pushover:
-      msg: "PlexGuide: Basic Folder Structure Built"
+      msg: "PlexGuide - Basic Folder Structure Built"
       app_token: "{{app_var.stdout}}"
       user_key: "{{user_var.stdout}}"
     ignore_errors: True

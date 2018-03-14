@@ -114,7 +114,7 @@
 
 - name: "Pushover: Variables Established and Built"
   pushover:
-    msg: "PlexGuide: Variables Established and Built"
+    msg: "PlexGuide - Variables Established and Built"
     app_token: "{{app_var.stdout}}"
     user_key: "{{user_var.stdout}}"
   ignore_errors: True

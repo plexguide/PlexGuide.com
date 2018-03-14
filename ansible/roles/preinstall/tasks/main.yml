@@ -63,7 +63,7 @@
 
   - name: "Pushover: Dependencies Installed"
     pushover:
-      msg: "PlexGuide: Dependencies Installed"
+      msg: "PlexGuide - Dependencies Installed"
       app_token: "{{app_var.stdout}}"
       user_key: "{{user_var.stdout}}"
     ignore_errors: True
