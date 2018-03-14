@@ -87,7 +87,6 @@ case $CHOICE in
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
         Z)
-            clear
             bash /opt/plexguide/menus/main.sh
             exit 0            
             ;;
