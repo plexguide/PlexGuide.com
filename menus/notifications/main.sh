@@ -27,7 +27,7 @@ OPTIONS=(A "No Notifications"
          B "Pushover"
          C "Discord (Not Ready)"
          D "Slack (Not Ready)"
-         E "Exit")
+         Z "Exit")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
