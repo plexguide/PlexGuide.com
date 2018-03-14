@@ -17,17 +17,18 @@
 #################################################################################
 
 HEIGHT=13
-WIDTH=55
+WIDTH=59
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Domain   : Set/Change a Domain"
-         B "Ports    : Turn On/Off Application Ports"
-         C "Processor: Enhance Processing Power"
-         D "Redirect : Force Apps to use HTTPS Only?"
-         E "Uncapped : Turn On/Off Upload Bandwidth Limit"
+OPTIONS=(A "Domain       : Set/Change a Domain"
+         B "Notifications: Enable the Use of Notifications"
+         C "Ports        : Turn On/Off Application Ports"
+         D "Processor    : Enhance Processing Power"
+         E "Redirect     : Force Apps to use HTTPS Only?"
+         F "Uncapped     : Turn On/Off Upload Bandwidth Limit"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -91,12 +92,13 @@ touch /var/plexguide/domain
                 sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
             fi
             ;;
-
         B)
-            bash /opt/plexguide/menus/ports/main.sh ;;  
+            bash /opt/plexguide/menus/notifications/main.sh
         C)
-            bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+            bash /opt/plexguide/menus/ports/main.sh ;;  
         D)
+            bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+        E)
             bash /opt/plexguide/menus/redirect/main.sh
 
             file="/var/plexguide/redirect.yes"
@@ -107,7 +109,7 @@ touch /var/plexguide/domain
                 sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
             fi
             ;;
-        E) 
+        F) 
             bash /opt/plexguide/menus/transfer/main.sh ;;
         Z)
             clear
