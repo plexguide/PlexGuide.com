@@ -28,7 +28,7 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          C "Ports        : Turn On/Off Application Ports"
          D "Processor    : Enhance Processing Power"
          E "Redirect     : Force Apps to use HTTPS Only?"
-         F "Uploads      : Change Gdrive Transfer Settings"
+         F "SuperSpeeds  : Change Gdrive Transfer Settings"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
