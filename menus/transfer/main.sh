@@ -21,6 +21,7 @@ export NCURSES_NO_UTF8_ACS=1
 clear
 
 ################# Unencrypted Rclone Question
+clear
 rclone listremotes | grep crypt && whiptail --title "Warning" --msgbox "This is for the UNENCRYPTED RCLONE only. Please remove all encrypted rclone remotes." 8 56 && exit 0
 
 while [ 1 ]
@@ -60,6 +61,7 @@ case $CHOICE in
 		echo "No New Gdrives Were Added."
 		echo
     		read -n 1 -s -r -p "Press any key to continue "
+	fi
     ;;
 
     "2)")
