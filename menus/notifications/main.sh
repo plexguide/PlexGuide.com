@@ -16,9 +16,9 @@ else
    touch /var/plexguide/notification.yes
 fi
 
-HEIGHT=11
+HEIGHT=12
 WIDTH=44
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
