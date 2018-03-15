@@ -4,6 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.062] BETA & DEV Version
 
 #### Added
+- (D) Ubooquity works, read instructions carefully in wiki on how to access
 - (D) Added Pushover Role, now can call up easily in bash - Ansible is my work horse :D
 - (B2) (SuperSpeed) Flicker-Rate's Multi-Gdrive Upload Option Added; ansible updated.
 - (B1) NextCloud Container works; access via domain:port only
