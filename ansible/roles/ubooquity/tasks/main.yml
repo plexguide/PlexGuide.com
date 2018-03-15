@@ -7,7 +7,7 @@
 - name: Deploy Ubooquity Container
   docker_container:
     name: ubooquity
-    image: linuxserver/ubooquity:70
+    image: linuxserver/ubooquity:latest
     pull: yes
     cpu_shares: 256
     published_ports:
