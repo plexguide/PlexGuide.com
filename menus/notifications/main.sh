@@ -23,10 +23,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
 
-OPTIONS=(A "No Notifications"
+OPTIONS=(A "Turn Off Pushover"
          B "Pushover"
-         C "Discord (Not Ready)"
-         D "Slack (Not Ready)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -57,16 +55,12 @@ case $CHOICE in
                 dialog --infobox "Notice: You can configure more notifications; if you want!\n\nMade an error? Just SELECT it again!" 0 0
                 sleep 7
             ;;
-        D)
-                dialog --infobox "SLACK IS NOT READY" 7 50
-                sleep 5
-            ;;
-        C)
-                dialog --infobox "DISCORD IS NOT READY" 7 50
-                sleep 5
-            ;;
         A)
-            clear
+            "fart" > /opt/appdata/plexguide/pushapp
+            "butt" > /opt/appdata/plexguide/user
+
+            dialog --infobox "IF this was enabled before, it's now disabled!  Please EXIT!" 0 0
+            sleep 6
             exit 0 ;;
         Z)
             clear
