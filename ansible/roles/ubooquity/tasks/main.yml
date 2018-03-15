@@ -24,9 +24,9 @@
           - ubooquity
     volumes:
     - /opt/appdata/ubooquity:/config
-    - /mnt/unionfs/books:/books
-    - /mnt/unionfs/comics:/comics
-    - /mnt/unionfs/raw:/files
+    - /mnt/ubooquity/books:/books
+    - /mnt/ubooquity/comics:/comics
+    - /mnt/ubooquity/raw:/files
     - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
