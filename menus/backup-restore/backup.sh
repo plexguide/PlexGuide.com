@@ -153,7 +153,7 @@ fi
         sleep 0.5
         dialog --infobox "Backing Up - " 3 17
         sleep 0.5
-        loop=$(cat /tmp/alive)
+        loop=$(cat /tmp/alive) 1>/dev/null 2>&1
     done
 
 echo "$app: Backup Complete" > /tmp/pushover
