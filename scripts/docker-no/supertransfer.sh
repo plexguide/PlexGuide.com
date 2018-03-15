@@ -1,4 +1,18 @@
 #!/bin/bash
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Flicker-Rate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions. 
+#
+#################################################################################
 #/opt/appdata/plexguide/throttle-detect.sh
 
 # BACKLOG DETECTION SETTINGS
@@ -22,6 +36,8 @@ remote_dir='/'		# set custom gdrive mapping (default: '/')
 # init
 cat /opt/appdata/plexguide/current_index | grep [0-9] || echo 0 > /opt/appdata/plexguide/current_index
 cat /opt/appdata/plexguide/current_gdrive | grep gdrive || echo gdrive > /opt/appdata/plexguide/current_gdrive
+touch /opt/appdata/plexguide/rclone
+chmod 755 /opt/appdata/plexguide/rclone
 
 	
 
@@ -37,13 +53,13 @@ detect_throttle() {
 	upspeed=$(python -c "print(int($upspeed+0))") # float & null val sanity check
 	echo "$upspeed" > /opt/appdata/plexguide/current_speed
 
-	case $(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l) in
+	case $(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l) in
 		1) threshold=$(( 20 + $threshold_modifier )) ;;
 		2) threshold=$(( 30 + $threshold_modifier )) ;;
 	        *) threshold=$(( 40 + $threshold_modifier )) ;;
 	esac
 
-		current_transfers=$(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l)
+		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
 		if [[ upspeed -gt $threshold || ( current_transfers -eq 0 ) ]]; then
 			echo no 
 		else
@@ -55,7 +71,7 @@ detect_throttle() {
 rclone_sync() {
 	# memory_optimization
 		queued_transfers=$(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l)
-		current_transfers=$(tac /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -B7 | grep "\*" | wc -l)
+		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
 	case $(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l) in
 		1) drive_chunk_size="1024M" ;;
 		2) drive_chunk_size="512M" ;;
@@ -98,9 +114,7 @@ queued_transfers () {
 }
 
 current_transfers() {
-		echo $(tac /opt/appdata/plexguide/rclone \
-			| grep -m1 "Transferring:" -B7 \
-			| grep "\*" | wc -l)
+		echo $(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
 }
 
 # Throttle Detection Daemon
@@ -155,7 +169,7 @@ done &
 
 # Gdrive Uploader
 while true; do
-	if [[ $(queued_transfers) -ge 0 ]]; then
+	if [[ $(queued_transfers) -gt 0 ]]; then
 		echo "Currently Selected Gdrive: $(cat /opt/appdata/plexguide/current_index) ($(cat /opt/appdata/plexguide/current_gdrive))"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log

@@ -10,6 +10,7 @@
   - { role: restoremass, tags: ['restoremass'] }
   - { role: cloudplow, tags: ['cloudplow'] }
   - { role: netdata, tags: ['netdata'] }
+  - { role: pushover, tags: ['pushover'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }

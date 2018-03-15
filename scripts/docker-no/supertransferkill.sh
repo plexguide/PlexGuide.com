@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
-#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,19 +13,5 @@
 #   under the GPL along with build & install instructions. 
 #
 #################################################################################
-clear
-YMLPROGRAM=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
-YMLDISPLAY=$(awk '/ymlprogram/{print $2}' /opt/plexguide/tmp.txt)
-YMLPORT=$(awk '/ymlport/{print $2}' /opt/plexguide/tmp.txt)
-
-
-    docker stop "$YMLPROGRAM"
-    docker rm "$YMLPROGRAM"
-    docker-compose -f /opt/plexguide/scripts/docker/"$YMLPROGRAM".yml up -d
-    echo
-    echo Upgraded "$YMLDISPLAY" - Use Port "$YMLPORT" with IP Address; hostname -I;
-    echo
-
-bash /opt/plexguide/scripts/startup/owner.sh
-read -n 1 -s -r -p "Press any key to continue "
-echo ""
+ps -ef | grep supertransfer | grep -v "grep" | awk '{print $2}' | xargs kill; 
+exit 0
