@@ -23,7 +23,7 @@ port=32400
     dialog --title "PLEX CLAIM INFORMATION" \
     --msgbox "\nVisit http://plex.tv/claim and PRESS the [COPY] Button (do not highlight and copy). You have 5 minutes starting NOW! [PRESS ENTER] when you are READY!" 10 50
 
-    dialog --title "Input >> PLEX CLAIM" \
+    dialog --title "Input >> PLEX CLAIM - WINDOWS USERS: CTRL+INSERT" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "Visit http://plex.tv/claim - Token?" 8 40 2>/tmp/plextoken
     plextoken=$(cat /tmp/plextoken)
@@ -68,7 +68,7 @@ case $CHOICE in
                 dialog --title "Warning - Tag Info" \
                 --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
 
-                dialog --title "Input >> Tag Version" \
+                dialog --title "Input >> Tag Version - WINDOWS USERS: CTRL+INSERT" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "Tags Example: 1.12.0.4829-6de959918" 8 40 2>/tmp/plextag
                 plexgtag=$(cat /tmp/plextag)
