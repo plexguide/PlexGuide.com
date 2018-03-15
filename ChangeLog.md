@@ -15,6 +15,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B2) Pushover & SuperSpeed Added-Amended to Settings
 
 #### Changed
+- (D) Further enhanced locations and notifications of Pushover
 - (B1) Container Starts up after a local backup is made on the server; speeds up pending container use
 - (B1) PlexDrive - Fixed up to ensure service works properly when installing for the first time
 - (B1) Changed SAB to port 8080; https:// now works for SABNZBD 
