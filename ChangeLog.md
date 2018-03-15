@@ -1,43 +1,55 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.062] BETA & DEV Version
+### [5.063] BETA & DEV Version
 
 #### Added
-- (D) Ubooquity works, read instructions carefully in wiki on how to access
-- (D) Added Pushover Role, now can call up easily in bash - Ansible is my work horse :D
-- (B2) (SuperSpeed) Flicker-Rate's Multi-Gdrive Upload Option Added; ansible updated.
-- (B1) NextCloud Container works; access via domain:port only
-- (B1) For Uncapped; added a deamon reload; critical because move.service will never disable
-- (B1) Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
-- (B1) Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
-- (B1) Moving Animiation to Solo PlexDrive to show the program is working; removed ansible display for solo process
-- (B2) (Pushover) notification system added and to various scripts
-- (B2) Pushover & SuperSpeed Added-Amended to Settings
+- None
 
 #### Changed
-- (D) Further enhanced locations and notifications of Pushover
-- (B1) Container Starts up after a local backup is made on the server; speeds up pending container use
-- (B1) PlexDrive - Fixed up to ensure service works properly when installing for the first time
-- (B1) Changed SAB to port 8080; https:// now works for SABNZBD 
-- (B1) Changed Ombi Source / Requires a rerun if you had ombi setup from before!
+- None
 
 #### Removed
-- (B1) Several https:// no redirects, legacy code
-- (B1) Streamlined PlexDrive Script; tossed older legacy scripts (no older prompts)
+- None
 
 #### Known Issues
 - pyload is not working
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
 - next cloud https:// domain not working, but port access is
 
-#### To Do
-- Add Traefik Labels for reverse Proxy Protection
-- Update Heimdall for Protection
 -------------------------------------------------------
 
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.062]
+
+#### Added
+- Ubooquity works, read instructions carefully in wiki on how to access
+- Added Pushover Role, now can call up easily in bash - Ansible is my work horse :D
+- (SuperSpeed) Flicker-Rate's Multi-Gdrive Upload Option Added; ansible updated.
+- NextCloud Container works; access via domain:port only
+- For Uncapped; added a deamon reload; critical because move.service will never disable
+- Added Press Key To Continue after all speed tests; previously would exit soon as it finished printing results
+- Moving Animiation to Solo Restore & Backup to show the program is working; removed ansible display for solo process
+- (Pushover) notification system added and to various scripts
+- Pushover & SuperSpeed Added-Amended to Settings
+
+#### Changed
+- Further enhanced locations and notifications of Pushover
+- Container Starts up after a local backup is made on the server; speeds up pending container use
+- PlexDrive - Fixed up to ensure service works properly when installing for the first time
+- Changed SAB to port 8080; https:// now works for SABNZBD 
+- Changed Ombi Source / Requires a rerun if you had ombi setup from before!
+
+#### Removed
+- Several https:// no redirects, legacy code
+- Streamlined PlexDrive Script; tossed older legacy scripts (no older prompts)
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
 
 ### [5.061] 
 
