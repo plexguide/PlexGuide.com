@@ -145,13 +145,13 @@ fi
     echo "true" > /tmp/alive
     while [ "$loop" = "true" ]
     do
-        dialog --infobox "Backing Up / " 3 17
+        dialog --infobox "Restoring / " 3 16
         sleep 0.5
-        dialog --infobox "Backing Up | " 3 17
+        dialog --infobox "Restoring | " 3 16
         sleep 0.5
-        dialog --infobox "Backing Up \ " 3 17
+        dialog --infobox "Restoring \ " 3 16
         sleep 0.5
-        dialog --infobox "Backing Up - " 3 17
+        dialog --infobox "Restoring - " 3 16
         sleep 0.5
         loop=$(cat /tmp/alive) 1>/dev/null 2>&1
     done
