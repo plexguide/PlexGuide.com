@@ -40,16 +40,16 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         B)
-                dialog --title "Input >> Pushover User Key - WINDOWS USERS: CTRL+INSERT" \
+                dialog --title "Input >> Pushover User Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "USER KEY:" 8 48 2>/opt/appdata/plexguide/pushuser
+                --inputbox "USER KEY - WINDOWS USERS: CTRL+INSERT:" 8 48 2>/opt/appdata/plexguide/pushuser
                 pushuser=$(cat /opt/appdata/plexguide/pushuser)
                 dialog --infobox "Typed Tag: $pushuser" 3 45
                 sleep 4
 
-                dialog --title "Input >> Pushover APP Key - WINDOWS USERS: CTRL+INSERT" \
+                dialog --title "Input >> Pushover APP Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "APP KEY:" 8 48 2>/opt/appdata/plexguide/pushapp
+                --inputbox "APP KEY - WINDOWS USERS: CTRL+INSERT:" 8 48 2>/opt/appdata/plexguide/pushapp
                 pushapp=$(cat /opt/appdata/plexguide/pushapp)
                 dialog --infobox "Typed Tag: $pushapp" 3 45
                 sleep 4
