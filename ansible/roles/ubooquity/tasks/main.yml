@@ -12,7 +12,7 @@
     cpu_shares: 256
     published_ports:
     - "{{ports}}2202:2202"
-    - "{{ports}}2203:2203"
+    - "2203:2203"
     env:
       APP: ubooquity
       VERSION: stable
