@@ -1,0 +1,25 @@
+---
+### echo "my message here" > /tmp/pushover
+### ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
+  - name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushapp"
+    register: app_var
+    ignore_errors: True
+
+  - name: "Establishing Variable"
+    shell: "awk '{print $1}' /opt/appdata/plexguide/pushuser"
+    register: user_var
+    ignore_errors: True
+ 
+  - name: "Establishing Variable"
+    shell: "cat /tmp/pushover"
+    register: message_var
+    ignore_errors: True
+
+  - name: "Message"
+    pushover:
+      msg: "PlexGuide - {{message_var.stdout}}"
+      app_token: "{{app_var.stdout}}"
+      user_key: "{{user_var.stdout}}"
+    ignore_errors: True

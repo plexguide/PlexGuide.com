@@ -7,7 +7,7 @@
 - name: Deploy Ubooquity Container
   docker_container:
     name: ubooquity
-    image: linuxserver/ubooquity
+    image: linuxserver/ubooquity:latest
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -24,9 +24,9 @@
           - ubooquity
     volumes:
     - /opt/appdata/ubooquity:/config
-    - /mnt/unionfs/books:/books
-    - /mnt/unionfs/comics:/comics
-    - /mnt/unionfs/raw:/files
+    - /mnt/unionfs/plexguide/ubooquity/books:/books
+    - /mnt/unionfs/plexguide/ubooquity/comics:/comics
+    - /mnt/unionfs/plexguide/ubooquity/raw:/files
     - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

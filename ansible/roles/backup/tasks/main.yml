@@ -6,11 +6,6 @@
 
 - debug: msg="Temp Message - For {{program_var.stdout}}"
 
-## Add Prompt Future Wise and Skip if Set to No Xor
-## Note to have an uppercase version of the variable
-## Ensure /mnt/gdrive exists
-## move to tmp and then sync, easy fix
-## ensure it pauses at end
 - name: "Checking {{program_var.stdout}} location in APPDATA"
   stat:
     path: /opt/appdata/{{program_var.stdout}}
@@ -41,10 +36,6 @@
   shell: "tar -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
   when: programappdata.stat.exists == True
 
-- name: Uploading Backup to Google Drive
-  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
-  when: programappdata.stat.exists == True
-
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
@@ -52,9 +43,15 @@
   ignore_errors: True
   when: programappdata.stat.exists == True
 
+- name: Uploading Backup to Google Drive
+  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
+  when: programappdata.stat.exists == True
+
+- name: Kill Switch
+  shell: echo "false" > /tmp/alive
+
 - debug: msg="Program is now backed up to your Google Drive - {{program_var.stdout}}"
   when: programappdata.stat.exists == True
 
 - debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var.stdout}}"
   when: programappdata.stat.exists == False
-

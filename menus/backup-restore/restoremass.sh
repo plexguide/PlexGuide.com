@@ -131,11 +131,18 @@ fi
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
+  echo "$Mass Restore Started!" > /tmp/pushover
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
   dialog --infobox "Restoring App: $app" 3 37
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass 1>/dev/null 2>&1
+  
+  echo "$app: Restore Complete" > /tmp/pushover
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 done </opt/appdata/plexguide/backuplist2
 
 rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
@@ -146,6 +153,9 @@ chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
 dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete! You must REDPLOY each Application!" 0 0
 clear
+
+echo "Mass Restore Complete!" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 sudo bash /opt/plexguide/menus/backup-restore/main.sh
 exit 0

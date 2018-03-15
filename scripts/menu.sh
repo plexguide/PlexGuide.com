@@ -1,11 +1,12 @@
 #!/bin/bash
 
-### remove exit hold
-#rm -r /var/plexguide/exit.yes 1>/dev/null 2>&1
+#### Temp Variables Established To Prevent Crashing - START
+echo "plexguide" > /tmp/pushover
+#### Temp Variables Esablished  To Prevent Crashing - END
+
 echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 mkdir /var/plexguide/ 1>/dev/null 2>&1
-#sudo apt-get install whiptail -y 1>/dev/null 2>&1
-### incase it's not installed prior
+
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
@@ -29,7 +30,6 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
 #then
 #whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
 #fi
-
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]
 then
@@ -47,6 +47,14 @@ else
       echo "NOTE: Restart the Program Anytime, type: sudo plexguide"
       echo ""
    exit 0
+fi
+
+file="/var/plexguide/notification.yes"
+if [ -e "$file" ]
+then
+   clear
+else
+   bash /opt/plexguide/menus/notifications/main.sh
 fi
 
 file="/var/plexguide/dep42.yes"
@@ -78,7 +86,6 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
       echo ""
     exit
   fi
-
 
 ## starup Message
 bash /opt/plexguide/scripts/checker/main.sh

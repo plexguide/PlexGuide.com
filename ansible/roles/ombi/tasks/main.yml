@@ -8,7 +8,7 @@
 - name: Deploy Ombi Container
   docker_container:
     name: ombi
-    image: lsiodev/ombi-preview
+    image: linuxserver/ombi
     pull: yes
     cpu_shares: 128
     published_ports:

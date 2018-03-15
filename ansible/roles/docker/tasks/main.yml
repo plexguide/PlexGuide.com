@@ -1,5 +1,4 @@
 ---
-########### Original Development of this Script Was Created By l3uddz from https://github.com/Cloudbox/Cloudbox
 - name: Install required packages
   apt: "name={{item}} state=installed"
   with_items:

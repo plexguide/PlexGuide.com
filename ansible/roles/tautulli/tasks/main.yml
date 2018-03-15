@@ -19,7 +19,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     restart_policy: always
     networks:
       - name: plexguide

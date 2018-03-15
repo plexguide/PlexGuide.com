@@ -135,7 +135,30 @@ if [ -e "$file" ]
         exit 0
 fi
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup
+    echo "true" > /tmp/alive
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup &>/dev/null &
+
+    echo "$app: Backup Started" > /tmp/pushover
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
+    loop="true"
+    echo "true" > /tmp/alive
+    while [ "$loop" = "true" ]
+    do
+        dialog --infobox "Backing Up / " 3 17
+        sleep 0.5
+        dialog --infobox "Backing Up | " 3 17
+        sleep 0.5
+        dialog --infobox "Backing Up \ " 3 17
+        sleep 0.5
+        dialog --infobox "Backing Up - " 3 17
+        sleep 0.5
+        loop=$(cat /tmp/alive) 1>/dev/null 2>&1
+    done
+
+echo "$app: Backup Complete" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 
 sudo bash /opt/plexguide/menus/backup-restore/backup.sh

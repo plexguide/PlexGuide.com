@@ -1,0 +1,37 @@
+---
+######https://hub.docker.com/r/tombowditch/telly/
+- name: Deploy Critical Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - "/opt/appdata/telly"
+
+- name: Remove Telly Container
+  docker_container:
+    name: organizr
+    state: absent
+
+- name: Deploy Telly Container
+  docker_container:
+    name: telly
+    image: tombowditch/telly
+    pull: yes
+    cpu_shares: 128
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      PLAYLIST: "/opt/appdata/telly/ipfile.m3u"
+      STREAMS: 1
+      LISTEN: "0.0.0.0:6077"
+    volumes:
+      - /opt/appdata/telly:/opt/telly
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - name: plexguide
+        aliases:
+          - telly
+    restart_policy: always
+    state: started
+    #labels:
+      #traefik.enable: "true"
+      #traefik.frontend.rule: "Host:telly.{{domain}}"
+      #traefik.port: "80"

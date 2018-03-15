@@ -25,7 +25,7 @@ port=32400
 
     dialog --title "Input >> PLEX CLAIM" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "Visit http://plex.tv/claim - Token?" 8 40 2>/tmp/plextoken
+    --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/tmp/plextoken
     plextoken=$(cat /tmp/plextoken)
     dialog --infobox "Token: $plextoken" 3 45
     sleep 4
@@ -70,7 +70,7 @@ case $CHOICE in
 
                 dialog --title "Input >> Tag Version" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Tags Example: 1.12.0.4829-6de959918" 8 40 2>/tmp/plextag
+                --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/tmp/plextag
                 plexgtag=$(cat /tmp/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 4
@@ -89,7 +89,14 @@ esac
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
 --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
+echo "Visit http(s)://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
+
+echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 sleep 5
 
 if dialog --stdout --title "WebTools Question" \
@@ -97,7 +104,14 @@ if dialog --stdout --title "WebTools Question" \
   --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
     dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
+
+    echo "WebTools - Was Installed" > /tmp/pushover
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 else
     dialog --infobox "WebTools: Not Installed" 3 45
+ 
+    echo "WebTools - Is Not Installed" > /tmp/pushover
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
     sleep 3
 fi

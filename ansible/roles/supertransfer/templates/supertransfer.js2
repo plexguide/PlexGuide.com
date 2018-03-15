@@ -1,0 +1,14 @@
+[Unit]
+Description=Time
+After=multi-user.target
+
+[Service]
+User=0
+Group=0
+Type=simple
+ExecStart=/bin/bash /opt/plexguide/scripts/docker-no/supertransfer.sh
+ExecStop=/bin/bash /opt/plexguide/scripts/docker-no/supertransferkill.sh
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

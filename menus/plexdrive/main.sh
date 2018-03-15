@@ -1,10 +1,27 @@
 #!/bin/bash
+#
+# [PlexGuide Menu]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 - Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
 export NCURSES_NO_UTF8_ACS=1
 ############# User Confirms They Understand
 dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
 
 
-############# Menu
+############ Menu
 HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=5
@@ -28,21 +45,100 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            rm -r /opt/appdata/plexguide/pd5 1>/dev/null 2>&1
-            touch /opt/appdata/plexguide/pd4 1>/dev/null 2>&1
-            bash /opt/plexguide/scripts/docker-no/plexdrive4.sh ;;
+            if dialog --stdout --title "PlexDrive 4 Install" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nDo you want to install PlexDrive4?" 7 50; then
+                clear
+                
+                    echo "true" > /tmp/alive
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 &>/dev/null &
+
+                    loop="true"
+                    echo "true" > /tmp/alive
+                    while [ "$loop" = "true" ]
+                    do
+                        dialog --infobox "Installing." 3 22
+                        sleep 1
+                        dialog --infobox "Installing.." 3 22
+                        sleep 1
+                        dialog --infobox "Installing..." 3 22
+                        sleep 1
+                        dialog --infobox "Installing...." 3 22
+                        sleep 1
+                        dialog --infobox "Installing....." 3 22
+                        sleep 1
+                        dialog --infobox "Installing......" 3 22
+                        sleep 1
+                        dialog --infobox "Installing......." 3 22
+                        sleep 1
+                        dialog --infobox "Installing........" 3 22
+                        sleep 1
+                        loop=$(cat /tmp/alive)
+                    done
+                clear
+                mv /tmp/plexdrive-linux-amd64 plexdrive
+                mv plexdrive /usr/bin/
+                cd /usr/bin/
+                chown root:root /usr/bin/plexdrive
+                chmod 755 /usr/bin/plexdrive
+                systemctl enable plexdrive
+                plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive
+            else
+                dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
+                echo "Type to Restart the Program: sudo plexguide"
+                exit 0
+            fi
+
+            ;;
         B)
-            rm -r /opt/appdata/plexguide/pd4 1>/dev/null 2>&1
-            touch /opt/appdata/plexguide/pd5 1>/dev/null 2>&1
-            bash /opt/plexguide/scripts/docker-no/plexdrive.sh ;;
+            if dialog --stdout --title "PlexDrive 5 Install" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
+                clear 
+
+                    echo "true" > /tmp/alive
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 &>/dev/null &
+
+                    loop="true"
+                    echo "true" > /tmp/alive
+                    while [ "$loop" = "true" ]
+                    do
+                        dialog --infobox "Installing." 3 22
+                        sleep 1
+                        dialog --infobox "Installing.." 3 22
+                        sleep 1
+                        dialog --infobox "Installing..." 3 22
+                        sleep 1
+                        dialog --infobox "Installing...." 3 22
+                        sleep 1
+                        dialog --infobox "Installing....." 3 22
+                        sleep 1
+                        dialog --infobox "Installing......" 3 22
+                        sleep 1
+                        dialog --infobox "Installing......." 3 22
+                        sleep 1
+                        dialog --infobox "Installing........" 3 22
+                        sleep 1
+                        loop=$(cat /tmp/alive)
+                    done
+                clear
+                mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
+                mv plexdrive /usr/bin/ 1>/dev/null 2>&1
+                cd /usr/bin/ 
+                chown root:root /usr/bin/plexdrive
+                chmod 755 /usr/bin/plexdrive
+                systemctl enable plexdrive
+                plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
+            else
+                dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
+                echo "Type to Restart the Program: sudo plexguide"
+                exit 0
+            fi
+            ;;
         C)
             rm -r /root/.plexdrive 1>/dev/null 2>&1
             rm -r ~/.plexdrive 1>/dev/null 2>&1
-            clear
-            echo "Tokens Removed - Try PlexDrive Install Again"
-            echo
-            read -n 1 -s -r -p "Press any key to continue"
-            clear
+            dialog --title "Token Status" --msgbox "\nThe Tokens were Removed" 0 0
             bash /opt/plexguide/menus/plexdrive/main.sh ;;
         Z)
             clear
