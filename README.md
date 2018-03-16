@@ -1,6 +1,6 @@
 **NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
-[Main Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Discord](#) | [Reddit](#) | [Thank You's](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244)
+[Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Discord](#) | [Reddit](#) | [Thank You's](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244)
 
 ### PlexGuide Mission Statement ###
 
