@@ -1,4 +1,4 @@
-**Note**: CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
+**NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
 [![N|Solid](https://plexguide.com/board6.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
