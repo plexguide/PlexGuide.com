@@ -1,6 +1,6 @@
 **NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
-[Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com) | [Install](https://plexguide.com/threads/plexguide-install-instructions.243/) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Discord]() | [Reddit](https://www.reddit.com/r/plexguide/) | [YouTube](https://plexguide.com/threads/youtube-videos.436/) | [Newcomers](https://plexguide.com/threads/for-pg-newcomers.653/) | [Donate](https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate)
+[Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com) | [Install](https://plexguide.com/threads/plexguide-install-instructions.243/) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Reddit](https://www.reddit.com/r/plexguide/) | [YouTube](https://plexguide.com/threads/youtube-videos.436/) | [Newcomers](https://plexguide.com/threads/for-pg-newcomers.653/) | [Donate](https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate)
 
 [![N|Discord](https://plexguide.com/pics/github/discord1.png)](https://plexguide.com/threads/plexguide-discord-information.471/)
 
