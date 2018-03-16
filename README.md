@@ -1,4 +1,4 @@
-**Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
+**Note**: CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
 [![N|Solid](https://plexguide.com/board6.png)](https://plexguide.com)
 Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
@@ -7,7 +7,6 @@ Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
 
 [![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://plexguide.com/forums/bugs.13/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://plexguide.com/forums/development.14/)
 
-----------------------------------------------------------------------
 
 The PlexGuide Staff: https://plexguide.com/members/?key=staff_members
 
