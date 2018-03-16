@@ -2,7 +2,7 @@
 
 [PlexGuide Forums](https://plexguide.com)
 
-[Forum] [Test] [Thank You](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244)
+[Main Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com) | [Thank You's](https://plexguide.com/threads/plexguide-thank-yous-in-addition.244)
 
 ### PlexGuide Mission Statement ###
 
