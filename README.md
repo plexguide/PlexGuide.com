@@ -1,6 +1,6 @@
 **NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
-[Forum] [Test]
+[Forum] [Test] | [Thank You's]https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
 
 ### PlexGuide Mission Statement ###
 
