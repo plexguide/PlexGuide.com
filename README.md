@@ -10,6 +10,18 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 [![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://plexguide.com/forums/pg-scripting.94/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://plexguide.com/forums/development.14/)
 
+### History ###
+
+Dec 2016: PlexGuide Documentation Established
+Feb 2017: PlexGuide Domain Purchased to Link Documentation
+Mar 2017: Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
+Aug 2017: PlexGuide Documentation but on GitHub
+Sep 2017: Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (nightmare begins)
+Dec 2017: Discoverd Ansible (cut down on some bash - CB Desmonic Inspiried)
+Jan 2018: Forums Established
+Feb 2018: Jackalblood CoFounder advances project
+Mar 2018: Flicker-Rate advances project
+
 ----------------------------------------------------------------------
 <p align="center">
   <img src="https://plexguide.com/demo40.png" alt="Demo"/>
