@@ -4,12 +4,12 @@
     name: watchtower
     state: absent
 
-- name: Deploy Watchtower
+- name: Deploy Watchtower (No Plex Emby)
   docker_container:
     name: watchtower
     image: v2tec/watchtower
     pull: yes
-    command: medusa tautulli jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
+    command: medusa tautulli resilio next ubooquity sickrage mylar sabnzbd rutorrent netdata jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
     cpu_shares: 64
     state: started
     volumes:
@@ -20,3 +20,24 @@
       - name: plexguide
         aliases:
           - watchtower
+    tags:
+      - plexemby
+
+- name: Deploy Watchtower (All)
+  docker_container:
+    name: watchtower
+    image: v2tec/watchtower
+    pull: yes
+    command: medusa ubooquity resilio next sickrage mylar plex emby netdata rutorrent sabnzbd tautulli jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
+    cpu_shares: 64
+    state: started
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - watchtower
+    tags:
+      - all
