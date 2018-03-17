@@ -4,10 +4,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.063] BETA & DEV Version
 
 #### Added
-- None
+- (B1) New Installs, fixed initial pushover prompt
+- (B1) Reorders pushover menu
 
 #### Changed
-- None
+- (B1) Changed to all Linux Server Images
 
 #### Removed
 - None
