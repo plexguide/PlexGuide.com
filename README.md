@@ -15,7 +15,7 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Dec 2016:**  PlexGuide Documentation Established (Learned to Document from Linux Classes)
 * **Jan 2017:**  Purchased Linux Book
 * **Feb 2017:**  PlexGuide Domain Purchased to Link Documentation
-* **Mar 2017:**  Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
+* **Mar 2017:**  Started Utilizing Reddit for Assitance | Got Yelled @ for asking Noob Questions (disliked Old Linux Users)
 * **May 2017:**  Started to learn about init.d and startups, noob for using UB 14.
 * **Jun 2017:**  Ran First UB16 Emulations to update documentation and started playing with Docker
 * **Jul 2017:**  Bate from QB advices and schools Admin9705
