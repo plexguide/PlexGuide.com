@@ -23,7 +23,7 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Sep 2017:** Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
 * **Oct 2017:** Slack First Used for Communication
 * **Nov 2017:** Discord First Used Pentagons and many others start beta testing project
-* **Dec 2017:** Discoverd Ansible (cut down on bash - CB Desmonic Inspiried - Thanks Buddy) + Started First YouTube Video
+* **Dec 2017:** Discoverd Ansible (cut down on bash - CB Desmonic Inspiried - Thanks Buddy) + Started YouTube
 * **Jan 2018:** Forums Established (Data & Berry help out much) & DesignGears advances projec
 * **Feb 2018:** Jackalblood CoFounder advances project
 * **Mar 2018:** Flicker-Rate advances project; overhauling Wiki
