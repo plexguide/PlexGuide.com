@@ -20,8 +20,7 @@
       - name: plexguide
         aliases:
           - watchtower
-    tags:
-      - plexemby
+  tags: plexemby
 
 - name: Deploy Watchtower (All)
   docker_container:
@@ -39,5 +38,4 @@
       - name: plexguide
         aliases:
           - watchtower
-    tags:
-      - all
+  tags: all
