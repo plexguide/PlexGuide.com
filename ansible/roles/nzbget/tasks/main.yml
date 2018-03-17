@@ -17,7 +17,7 @@
 - name: Deploy NZBGET Container
   docker_container:
     name: nzbget
-    image: "linuxserver/nzbget"
+    image: linuxserver/nzbget
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -34,8 +34,6 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      APP: "nzbget"
-      VERSION: "stable"
       PUID: 1000
       PGID: 1000
     restart_policy: always
