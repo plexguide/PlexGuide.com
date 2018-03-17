@@ -11,8 +11,8 @@ if [ -e "$file" ]
 then
    clear
 else
-   dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY or DON'T CARE, visit SETTINGS to to put in your INFO later on!" 7 50
-   sleep 6
+   dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\n NOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 0 0
+   sleep 10
    touch /var/plexguide/watchtower.yes
 fi
 
@@ -25,7 +25,8 @@ MENU="Select Notification Preference(s):"
 
 OPTIONS=(A "Update All Containers - Except Plex & Emby"
          B "Update All Containers"
-         C "Never Update Containers (Manually Updating")
+         C "Never Update Containers - Manually Update"
+         D "Mini FAQ - WatchTower")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -40,24 +41,49 @@ case $CHOICE in
         A)
             if dialog --stdout --title "System Update" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
-              clear
+              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 0 0; then
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=all 1>/dev/null 2>&1
+              dialog --infobox "Notice: Your containers will Auto-Update except PLEX & Emby!\n\nMade an error? Just SELECT it again!" 0 0
+              sleep 8
+              exit 0
             else
               clear
-              dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree! You can view the program, but doing anything will mess things up!" 0 0
-              echo "Type to Restart the Program: sudo plexguide"
+              dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
+              bash /opt/plexguide/menus/watchtower/main.sh
               exit 0
             fi
-
-                dialog --infobox "Notice: You can configure more notifications; if you want!\n\nMade an error? Just SELECT it again!" 0 0
-                sleep 7
             ;;
         B)
-            "fart" > /opt/appdata/plexguide/pushapp
-            "butt" > /opt/appdata/plexguide/user
-            dialog --infobox "IF this was enabled before, it's now disabled!  Please EXIT!" 0 0
-            sleep 6
+            if dialog --stdout --title "System Update" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 0 0; then
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=plexemby 1>/dev/null 2>&1
+              dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
+              sleep 8
+              exit 0
+            else
+              clear
+              dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
+              bash /opt/plexguide/menus/watchtower/main.sh
+              exit 0
+            fi
             ;;
+        D)
+            if dialog --stdout --title "System Update" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nDo You Want to Disable and/or Remove WatchTower?" 7 0 0; then
+              dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
+              docker stop watchtower
+              docker rm watchtower
+              dialog --infobox "Notice: WatchTower is not enabled or has been removed! To manually update, use this Application and rerun your selcted Application for the newest update!" 0 0
+              sleep 8
+            else
+              clear
+              dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
+              bash /opt/plexguide/menus/watchtower/main.sh
+              exit 0
+            fi
+              ;;
         Z)
             clear
             exit 0 
