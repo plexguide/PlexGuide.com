@@ -17,8 +17,9 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Feb 2017:** PlexGuide Domain Purchased to Link Documentation
 * **Mar 2017:** Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
 * **May 2017:** Started to learn about init.d and startups, noob for using UB 14.
+* **Jun 2017:** Ran First UB16 Emulations to update documentation
 * **Jul 2017:** Bate from QB advices and schools Admin9705
-* **Aug 2017:** PlexGuide Documentation but on GitHub
+* **Aug 2017:** PlexGuide Documentation Established on GitHub
 * **Sep 2017:** Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
 * **Oct 2017:** Slack First Used for Communications
 * **Nov 2017:** Discord First Used Pentagons and many others start beta testing project
