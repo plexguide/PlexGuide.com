@@ -116,4 +116,4 @@ bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 
-sudo bash /opt/plexguide/scripts/message/ending.sh
+bash /opt/plexguide/scripts/message/ending.sh
