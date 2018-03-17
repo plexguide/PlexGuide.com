@@ -20,16 +20,16 @@ else
    touch /var/plexguide/notification.yes
 fi
 
-HEIGHT=12
+HEIGHT=10
 WIDTH=44
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
 
-OPTIONS=(A "Turn Off Pushover"
-         B "Pushover"
-         Z "Exit")
+OPTIONS=(Z "Exit"
+         A "Enable Pushover"
+         B "Disable Pushover")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -41,7 +41,7 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        B)
+        A)
                 dialog --title "Input >> Pushover User Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "USER KEY - WINDOWS USERS: SHIFT+INSERT:" 8 45 2>/opt/appdata/plexguide/pushuser
@@ -59,7 +59,7 @@ case $CHOICE in
                 dialog --infobox "Notice: You can configure more notifications; if you want!\n\nMade an error? Just SELECT it again!" 0 0
                 sleep 7
             ;;
-        A)
+        B)
             "fart" > /opt/appdata/plexguide/pushapp
             "butt" > /opt/appdata/plexguide/user
 
