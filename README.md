@@ -12,9 +12,11 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 ### History ###
 
-* **Dec 2016:** PlexGuide Documentation Established
+* **Dec 2016:** PlexGuide Documentation Established (Learned to Document from Linux Classes)
+* **Jan 2017:** Purchased Linux Book
 * **Feb 2017:** PlexGuide Domain Purchased to Link Documentation
 * **Mar 2017:** Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
+* **May 2017:** Started to learn about init.d and startups, noob for using UB 14.
 * **Jul 2017:** Bate from QB advices and schools Admin9705
 * **Aug 2017:** PlexGuide Documentation but on GitHub
 * **Sep 2017:** Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
