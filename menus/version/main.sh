@@ -15,18 +15,19 @@
 #   under the GPL along with build & install instructions. 
 #
 #################################################################################
-HEIGHT=14
+HEIGHT=15
 WIDTH=32
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Installation"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Developer: 5.063"
-         B "Stable   : 5.062"
-         C "Stable   : 5.061"
-         D "Stable   : 5.060"
-         E "Stable   : 5.059"
+OPTIONS=(A "Developer: 5.064"
+         B "Stable   : 5.063"
+         C "Stable   : 5.062"
+         D "Stable   : 5.061"
+         E "Stable   : 5.060"
+         F "Stable   : 5.059"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -72,14 +73,17 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.062" ;;
+            version="5.063" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.062" ;;
+        D)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.061" ;;
-        D)  
+        E)  
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.060" ;;
-        E)  
+        F)  
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
         Z)
