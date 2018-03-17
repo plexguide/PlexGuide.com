@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Changed
 - (B1) Changed to all Linux Server Images
+- (B1) Disabled CloudPlow Install (did not do anything)
 
 #### Removed
 - None
