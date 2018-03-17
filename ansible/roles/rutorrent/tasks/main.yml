@@ -19,8 +19,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "rutorrent.{{domain}}"
-      VIRTUAL_PORT: 8999
     volumes:
       - /opt/appdata/rutorrent/:/config
       - /mnt/rutorrents/:/downloads
