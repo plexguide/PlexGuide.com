@@ -12,15 +12,16 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 ### History ###
 
-Dec 2016: PlexGuide Documentation Established
-Feb 2017: PlexGuide Domain Purchased to Link Documentation
-Mar 2017: Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
-Aug 2017: PlexGuide Documentation but on GitHub
-Sep 2017: Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (nightmare begins)
-Dec 2017: Discoverd Ansible (cut down on some bash - CB Desmonic Inspiried)
-Jan 2018: Forums Established
-Feb 2018: Jackalblood CoFounder advances project
-Mar 2018: Flicker-Rate advances project
+* Dec 2016: PlexGuide Documentation Established
+* Feb 2017: PlexGuide Domain Purchased to Link Documentation
+* Mar 2017: Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
+* Aug 2017: PlexGuide Documentation but on GitHub
+* Sep 2017: Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
+* Nov 2017: Pentagons and many others start beta testing project
+* Dec 2017: Discoverd Ansible (cut down on some bash - CB Desmonic Inspiried - Thank You Buddy for the kickstart)
+* Jan 2018: Forums Established (Data & Berry help out much)
+* Feb 2018: Jackalblood CoFounder advances project
+* Mar 2018: Flicker-Rate advances project
 
 ----------------------------------------------------------------------
 <p align="center">
