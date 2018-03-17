@@ -12,21 +12,21 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 ### History ###
 
-* **Dec 2016:** PlexGuide Documentation Established (Learned to Document from Linux Classes)
-* **Jan 2017:** Purchased Linux Book
-* **Feb 2017:** PlexGuide Domain Purchased to Link Documentation
-* **Mar 2017:** Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
-* **May 2017:** Started to learn about init.d and startups, noob for using UB 14.
-* **Jun 2017:** Ran First UB16 Emulations to update documentation and started playing with Docker
-* **Jul 2017:** Bate from QB advices and schools Admin9705
-* **Aug 2017:** PlexGuide Documentation Established on GitHub
-* **Sep 2017:** Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
-* **Oct 2017:** Slack First Used for Communication
-* **Nov 2017:** Discord First Used Pentagons and many others start beta testing project
-* **Dec 2017:** Discoverd Ansible (cut down on bash - CB Desmonic Inspiried - Thanks Buddy) + Started YouTube
-* **Jan 2018:** Forums Established (Data & Berry help out much) & DesignGears advances projec
-* **Feb 2018:** Jackalblood CoFounder advances project
-* **Mar 2018:** Flicker-Rate advances project; overhauling Wiki
+* **Dec 2016:**  PlexGuide Documentation Established (Learned to Document from Linux Classes)
+* **Jan 2017:**  Purchased Linux Book
+* **Feb 2017:**  PlexGuide Domain Purchased to Link Documentation
+* **Mar 2017:**  Started Utilizing Reddit for Assitance | Got Yelled out for Noob Questions
+* **May 2017:**  Started to learn about init.d and startups, noob for using UB 14.
+* **Jun 2017:**  Ran First UB16 Emulations to update documentation and started playing with Docker
+* **Jul 2017:**  Bate from QB advices and schools Admin9705
+* **Aug 2017:**  PlexGuide Documentation Established on GitHub
+* **Sep 2017:**  Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
+* **Oct 2017:**  Slack First Used for Communication
+* **Nov 2017:**  Discord First Used Pentagons and many others start beta testing project
+* **Dec 2017:**  Discovered Ansible (cut down on bash - CB Desmonic Inspiried - Thanks Buddy) + Started YouTube
+* **Jan 2018:**  Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
+* **Feb 2018:**  Jackalblood CoFounder advances project
+* **Mar 2018:**  Flicker-Rate advances project; overhauling Wiki
 
 ----------------------------------------------------------------------
 <p align="center">
