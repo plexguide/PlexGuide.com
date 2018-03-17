@@ -11,7 +11,7 @@ if [ -e "$file" ]
 then
    clear
 else
-   dialog --title "PG Update Status" --msgbox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 12 60
+   dialog --title "PG Update Status" --msgbox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 14 62
    #echo "Type to Restart the Program: sudo plexguide"
    #dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 12 60
    sleep 12
