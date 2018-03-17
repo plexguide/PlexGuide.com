@@ -41,7 +41,7 @@ case $CHOICE in
         A)
             if dialog --stdout --title "WatchTower Question" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 0 0; then
+              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 34; then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=all 1>/dev/null 2>&1
               dialog --infobox "Notice: Your containers will Auto-Update except PLEX & Emby!\n\nMade an error? Just SELECT it again!" 0 0
               sleep 8
@@ -56,7 +56,7 @@ case $CHOICE in
         B)
             if dialog --stdout --title "WatchTower Question" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 0 0; then
+              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 34; then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=plexemby 1>/dev/null 2>&1
               dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
               sleep 8
@@ -71,7 +71,7 @@ case $CHOICE in
         C)
             if dialog --stdout --title "WatchTower Questions" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo You Want to Disable and/or Remove WatchTower?" 7 0 0; then
+              --yesno "\nDo You Want to Disable and/or Remove WatchTower?" 7 34; then
               dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
               docker stop watchtower 1>/dev/null 2>&1
               docker rm watchtower 1>/dev/null 2>&1
