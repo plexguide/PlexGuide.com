@@ -38,4 +38,4 @@
       - name: plexguide
         aliases:
           - watchtower
-  tags: all
+  tags: watchall
