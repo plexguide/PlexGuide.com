@@ -25,13 +25,11 @@ case $CHOICE in
         A)
             bash /opt/plexguide/scripts/docker-no/rclone-un.sh
               echo "RClone - You Chose the Unencrypted Method" > /tmp/pushover
-
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
               ;;
         B)
             bash /opt/plexguide/scripts/docker-no/rclone-en.sh
               echo "RClone - You Chose the Encrypted Method" > /tmp/pushover
-              
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
               ;;
         Z)

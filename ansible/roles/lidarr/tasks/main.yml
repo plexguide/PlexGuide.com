@@ -7,14 +7,12 @@
 - name: Deploy Lidarr Container
   docker_container:
     name: lidarr
-    image: hotio/suitarr
+    image: linuxserver/lidarr
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports}}8686:8686"
     env:
-      APP: lidarr
-      VERSION: unstable
       PUID: "1000"
       PGID: "1000"
       HTTPS_METHOD: noredirect
