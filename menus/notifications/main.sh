@@ -13,6 +13,10 @@ then
 else
    dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY or DON'T CARE, visit SETTINGS to to put in your INFO later on!" 7 50
    sleep 5
+   mkdir -p /opt/appdata/plexguide
+   chmod 755 /opt/appdata/plexguide
+   echo "corn" > /opt/appdata/plexguide/pushapp
+   echo "corn" > /opt/appdata/plexguide/pushuser
    touch /var/plexguide/notification.yes
 fi
 
