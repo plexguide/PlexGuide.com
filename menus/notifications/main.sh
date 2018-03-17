@@ -62,10 +62,9 @@ case $CHOICE in
         B)
             "fart" > /opt/appdata/plexguide/pushapp
             "butt" > /opt/appdata/plexguide/user
-
             dialog --infobox "IF this was enabled before, it's now disabled!  Please EXIT!" 0 0
             sleep 6
-            exit 0 ;;
+            ;;
         Z)
             clear
             exit 0 ;;
