@@ -4,12 +4,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.063] BETA & DEV Version
 
 #### Added
-- (B1) New Installs, fixed initial pushover prompt
-- (B1) Reorders pushover menu
+- New Installs, fixed initial pushover prompt
+- Reorders pushover menu
+- Install new WatchTower Menu; gives user option in regards to auto updates
 
 #### Changed
-- (B1) Changed to all Linux Server Images
-- (B1) Disabled CloudPlow Install (did not do anything)
+- Changed to all Linux Server Images
+- Disabled CloudPlow Install (did not do anything)
 
 #### Removed
 - None
