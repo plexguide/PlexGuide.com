@@ -11,14 +11,14 @@ if [ -e "$file" ]
 then
    clear
 else
-   dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\n NOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 0 0
+   dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\n NOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 60 12
    sleep 10
    touch /var/plexguide/watchtower.yes
 fi
 
-HEIGHT=10
+HEIGHT=11
 WIDTH=52
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="WatchTower Manager"
 MENU="Select Notification Preference(s):"
