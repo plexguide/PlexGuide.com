@@ -37,8 +37,8 @@
     path: /opt/appdata/traefik/traefik.toml
     regexp: yourdomain.com
     replace: "{{domain}}"
-  tags:
-    - main 
+  #tags:
+    #- main 
 
 - name: Replace your@email.com with user input
   replace:
