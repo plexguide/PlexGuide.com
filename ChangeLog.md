@@ -1,7 +1,28 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.063] BETA & DEV Version
+### [5.064] BETA & DEV Version
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
+
+-------------------------------------------------------
+
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.063]
 
 #### Added
 - New Installs, fixed initial pushover prompt
@@ -19,11 +40,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - pyload is not working
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
 - next cloud https:// domain not working, but port access is
-
--------------------------------------------------------
-
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.062]
 
