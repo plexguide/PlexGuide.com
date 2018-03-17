@@ -11,8 +11,8 @@ if [ -e "$file" ]
 then
    clear
 else
-   dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\n NOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 12 60
-   sleep 10
+   dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 12 60
+   sleep 12
    touch /var/plexguide/watchtower.yes
 fi
 
@@ -83,6 +83,10 @@ case $CHOICE in
               bash /opt/plexguide/menus/watchtower/main.sh
               exit 0
             fi
+              ;;
+        D)
+              dialog --infobox "Notice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 12 60
+             sleep 12
               ;;
         Z)
             clear
