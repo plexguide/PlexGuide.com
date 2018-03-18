@@ -6,8 +6,10 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   clear
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un --skip-tags rclone  
+   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un --skip-tags rclone &>/dev/null &
+   dialog --infobox "RCLONE:  Installing a Dummy Starter File - One Time" 3 48
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un --skip-tags rclone 1>/dev/null 2>&1
+   sleep 1
 fi
 
 #############
