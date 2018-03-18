@@ -30,7 +30,7 @@
 
 - name: Install Cloudplow; download
   become_user: root
-  shell: "git clone https://github.com/l3uddz/cloudplow /opt/appdata/cloudplow"
+  shell: "git clone https://github.com/Admin9705/clean /opt/appdata/clowplow"
   
 - name: Install Cloudplow; dependencies
   become_user: root
