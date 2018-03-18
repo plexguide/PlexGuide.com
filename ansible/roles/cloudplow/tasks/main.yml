@@ -1,0 +1,33 @@
+---
+- name: Install Cloudplow; remove old cronjob
+  cron:
+    name: "Cloudplow Clean"
+    user: "root"
+    state: absent
+
+- name: Install Cloudplow; remove old directory
+  file:
+    state: absent
+    path: "/opt/appdata/cloudplow"
+
+- name: Install Cloudplow; download
+  become_user: root
+  shell: "git clone https://github.com/l3uddz/cloudplow /opt/appdata/cloudplow"
+  
+- name: Install Cloudplow; dependencies
+  become_user: root
+  shell: "python3 -m pip install -r /opt/appdata/cloudplow/requirements.txt"
+
+- name: Install Cloudplow; config
+  template:
+    src: config.js2
+    dest: /opt/appdata/cloudplow/config.json 
+    force: yes
+
+- name: Install Cloudplow; cronjob
+  cron:
+    name: "Cloudplow Clean"
+    user: "root"
+    minute: "0"
+    hour: "0"
+    job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"

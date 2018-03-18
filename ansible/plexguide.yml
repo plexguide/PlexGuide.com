@@ -56,3 +56,4 @@
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: pyload, tags: ['pyload'] }
+  - { role: cloudplow, tags: ['cloudplow'] }
