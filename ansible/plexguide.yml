@@ -56,4 +56,4 @@
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: pyload, tags: ['pyload'] }
-  - { role: cleaner, tags: ['cleaner'] }
+  - { role: clean, tags: ['clean'] }
