@@ -25,8 +25,8 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Nov 2017:**  Discord First Used Pentagons and many others start beta testing project
 * **Dec 2017:**  Discovered Ansible (cut down on bash - CB Desmonic Inspiried - Thanks Buddy) + Started YouTube
 * **Jan 2018:**  Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
-* **Feb 2018:**  Jackalblood CoFounder advances project
-* **Mar 2018:**  Flicker-Rate advances project; overhauling Wiki
+* **Feb 2018:**  Jackalblood CoFounder Advances Project
+* **Mar 2018:**  Flicker-Rate Advances Project; Overhauling Wiki
 
 ----------------------------------------------------------------------
 <p align="center">
