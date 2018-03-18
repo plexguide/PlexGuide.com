@@ -42,10 +42,10 @@
     dest: /opt/appdata/clean/config.json 
     force: yes
 
-- name: Install Ceanplow; cronjob
+- name: Install Clean; cronjob
   cron:
     name: "Clean"
     user: "root"
     minute: "0"
     hour: "0"
-    job: "cd /opt/appdata/clean && /usr/bin/python3 cloudplow.py clean"
+    job: "cd /opt/appdata/clean && /usr/bin/python3 clean.py clean"
