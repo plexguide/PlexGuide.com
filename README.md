@@ -36,3 +36,5 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 ---------------------------------
 - Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
+
+[![N|Solid](https://plexguide.com/attachments/plexguide_flowchartlarge2-png.445/)](https://plexguide.com/forums/development.14/)
