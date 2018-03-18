@@ -16,6 +16,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - pyload is not working
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
 - next cloud https:// domain not working, but port access is
+- supertransfer sometimes uploads duplicates (reported by lolmattylol)
 
 -------------------------------------------------------
 
@@ -39,7 +40,7 @@ Historical Documented Changes will be stored as below.
 - Further enhanced locations and notifications of Pushover
 - Container Starts up after a local backup is made on the server; speeds up pending container use
 - PlexDrive - Fixed up to ensure service works properly when installing for the first time
-- Changed SAB to port 8080; https:// now works for SABNZBD 
+- Changed SAB to port 8080; https:// now works for SABNZBD
 - Changed Ombi Source / Requires a rerun if you had ombi setup from before!
 
 #### Removed
@@ -51,7 +52,7 @@ Historical Documented Changes will be stored as below.
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
 - next cloud https:// domain not working, but port access is
 
-### [5.061] 
+### [5.061]
 
 #### Added
 - Mass Restore: Traefik file is chmod to 0600 to prevent file permission issues (Reported By: Flicker-Rate)
