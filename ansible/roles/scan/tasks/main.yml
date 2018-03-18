@@ -15,66 +15,66 @@
 #
 #################################################################################
 # Further Enhancements & Options By: PlexGuide.com
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# GitHub: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 #################################################################################
 ---
 - name: Check service exists
   stat:
-    path: "/etc/systemd/system/plex_autoscan.service"
-  register: plex_autoscan_service
+    path: "/etc/systemd/system/scan.service"
+  register: scan_service
 
-- name: Stop existing plex_autoscan service
-  systemd: state=stopped name=plex_autoscan
-  when: plex_autoscan_service.stat.exists
+- name: Stop existing scan service
+  systemd: state=stopped name=scan
+  when: scan_service.stat.exists
 
-- name: Create plex_autoscan directories
-  file: "path={{item}} state=directory mode=0775 owner={{user}} group={{user}} recurse=true"
+- name: Create scan directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/plex_autoscan
+    - /opt/appdata/scan
 
-- name: Clone plex_autoscan
+- name: Clone scan
   git:
-    repo: https://github.com/l3uddz/plex_autoscan/
-    dest: /opt/plex_autoscan
+    repo: https://github.com/Admin9705/scan
+    dest: /opt/appdata/scan
     version: master
     force: yes
     
 - name: Install pip requirements
   pip:
-    requirements: /opt/plex_autoscan/requirements.txt
+    requirements: /opt/appdata/scan/requirements.txt
     executable: pip2
 
 - name: Check config exists
   stat:
-    path: "/opt/plex_autoscan/config/config.json"
-  register: plex_autoscan_config
+    path: "/opt/appdata/scan/config/config.json"
+  register: scan_config
 
 - name: "Generate 32 character SERVER_PASS"
   shell: "pwgen 32 1"
-  register: plex_autoscan_pass
-  when: plex_autoscan_config.stat.exists == False
+  register: scan_pass
+  when: scan_config.stat.exists == False
 
 - name: Import default config
   template:
     src: config.json.js2
-    dest: /opt/plex_autoscan/config/config.json
+    dest: /opt/appdata/scan/config/config.json
     force: yes
-  when: plex_autoscan_config.stat.exists == False
+  when: scan_config.stat.exists == False
 
 - name: Set scan.py as executable
   file:
-    path: /opt/plex_autoscan/scan.py
+    path: /opt/appdata/scan/scan.py
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/plex_autoscan state=directory owner={{user}} group={{user}} recurse=yes"
+  file: "path=/opt/appdata/scan state=directory owner=1000 group=1000 recurse=yes"
 
-- name: Import plex_autoscan service
+- name: Import scan service
   template:
-    src: plex_autoscan.service.js2
-    dest: /etc/systemd/system/plex_autoscan.service 
+    src: scan.service.js2
+    dest: /etc/systemd/system/scan.service 
     force: yes
-  when: plex_autoscan_service.stat.exists == False
+  when: scan_service.stat.exists == False
 
-- name: Start plex_autoscan service
-  systemd: state=started name=plex_autoscan daemon_reload=yes enabled=yes
+- name: Start scan service
+  systemd: state=started name=scan daemon_reload=yes enabled=yes

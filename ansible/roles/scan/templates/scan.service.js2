@@ -23,8 +23,8 @@ Description=Scanner
 After=network-online.target
 
 [Service]
-User={{user}}
-Group={{user}}
+User=1000
+Group=1000
 Type=simple
 WorkingDirectory=/opt/appdata/scan/
 ExecStart=/opt/appdata/scan/scan.py server
