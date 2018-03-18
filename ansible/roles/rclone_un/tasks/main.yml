@@ -4,7 +4,7 @@
       src: temp.js2
       dest: /root/.config/rclone/rclone.conf
       force: yes
-  - tags: rclone_temp
+    tags: rclone_temp
 
 ########################################## Scripts
 ########## Move Service Script
@@ -18,7 +18,7 @@
       src: move_script.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
-  - tags:
+    tags:
       - rclone
     #when: move_script.stat.exists == False
 ########### Rclone Sync Script
@@ -33,7 +33,7 @@
       dest: /opt/appdata/plexguide/rclone.sh
       force: yes
     when: rclone_script.stat.exists == False
-  - tags:
+    tags:
       - rclone
 ########################################## Services
 ########### Move Service
@@ -41,13 +41,13 @@
     stat:
       path: "/etc/systemd/system/move.service"
     register: move
-  - tags:
+    tags:
       - rclone
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     when: move.stat.exists
-  - tags:
+    tags:
       - rclone
     
   - name: Install Move Service
@@ -56,18 +56,18 @@
       dest: /etc/systemd/system/move.service 
       force: yes
     when: move.stat.exists == False
-  - tags:
+    tags:
       - rclone
 
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=n
-  - tags:
+    tags:
       - rclone
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
-  - tags:
+    tags:
       - rclone
     
 ########### rclone
@@ -75,13 +75,13 @@
     stat:
       path: "/etc/systemd/system/rclone.service"
     register: rclone
-  - tags:
+    tags:
       - rclone
 
   - name: Stop If RClone Service Running
     systemd: state=stopped name=rclone
     when: rclone.stat.exists
-  - tags:
+    tags:
       - rclone
     
   - name: Install RCLONE Service
@@ -90,18 +90,18 @@
       dest: /etc/systemd/system/rclone.service 
       force: yes
     when: rclone.stat.exists == False
-  - tags:
+    tags:
       - rclone
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone daemon_reload=yes enabled=no
-  - tags:
+    tags:
       - rclone
 
   - name: Start RClone
     systemd: state=started name=rclone enabled=yes
     when: rclone.stat.exists
-  - tags:
+    tags:
       - rclone
 
 ########### UNIONFS
@@ -109,13 +109,13 @@
     stat:
       path: "/etc/systemd/system/unionfs.service"
     register: unionfs
-  - tags:
+    tags:
       - rclone
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     when: unionfs.stat.exists
-  - tags:
+    tags:
       - rclone
     
   - name: Install UNIONFS Service
@@ -123,16 +123,16 @@
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service 
       force: yes
-  - tags:
+    tags:
       - rclone
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-  - tags:
+    tags:
       - rclone
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     when: unionfs.stat.exists
-  - tags:
+    tags:
       - rclone
