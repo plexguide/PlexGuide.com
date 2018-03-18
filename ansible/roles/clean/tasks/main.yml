@@ -17,40 +17,35 @@
 # GitHub: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 #################################################################################
 ---
-- name: Install Clean; remove old cronjob
+- name: Install Cloudplow; remove old cronjob
   cron:
-    name: "Clean"
+    name: "Cloudplow Clean"
     user: "root"
     state: absent
 
-- name: Install Clean; remove old directory
+- name: Install Cloudplow; remove old directory
   file:
     state: absent
-    path: "/opt/appdata/clean"
+    path: "/opt/appdata/cloudplow"
 
-#- name: Create Basic Directories for Clean
-#  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-#  with_items:
-#    - /opt/appdata/clean
-
-- name: Install Clean; download
+- name: Install Cloudplow; download
   become_user: root
-  shell: "git clone https://github.com/Admin9705/clean /opt/appdata/clean"
+  shell: "git clone https://github.com/l3uddz/cloudplow /opt/appdata/cloudplow"
   
-- name: Install Clean; dependencies
+- name: Install Cloudplow; dependencies
   become_user: root
-  shell: "python3 -m pip install -r /opt/appdata/clean/requirements.txt"
+  shell: "python3 -m pip install -r /opt/appdata/cloudplow/requirements.txt"
 
-- name: Install Clean; config
+- name: Install Cloudplow; config
   template:
     src: config.js2
-    dest: /opt/appdata/clean/config.json 
+    dest: /opt/appdata/cloudplow/config.json 
     force: yes
 
-- name: Install Clean; cronjob
+- name: Install Cloudplow; cronjob
   cron:
-    name: "Clean"
+    name: "Cloudplow Clean"
     user: "root"
     minute: "0"
     hour: "0"
-    job: "cd /opt/appdata/clean && /usr/bin/python3 clean.py clean"
+    job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"
