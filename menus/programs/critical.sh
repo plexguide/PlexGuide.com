@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [PlexGuide Critical Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 - Deiteq
