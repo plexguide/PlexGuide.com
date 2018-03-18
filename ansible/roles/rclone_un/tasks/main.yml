@@ -1,5 +1,5 @@
 ---
-  - name: Install UNIONFS Service
+  - name: RClone Filler
     template:
       src: temp.js2
       dest: /root/.config/rclone/rclone.conf
@@ -12,6 +12,8 @@
     stat:
       path: "/opt/appdata/plexguide/move.sh"
     register: move_script
+    tags:
+      - rclone
     
   - name: Install Move Service
     template:
@@ -26,6 +28,8 @@
     stat:
       path: "/opt/appdata/plexguide/rclone.sh"
     register: rclone_script
+    tags:
+      - rclone
     
   - name: Install RClone Sync Service
     template:
