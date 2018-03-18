@@ -23,7 +23,7 @@
     user: "root"
     state: absent
 
-- name: Install Cloudplow; remove old directory
+- name: Install Clean; remove old directory
   file:
     state: absent
     path: "/opt/appdata/clean"
@@ -32,7 +32,7 @@
   become_user: root
   shell: "git clone https://github.com/Admin9705/clean"
   
-- name: Install Cloudplow; dependencies
+- name: Install Clean; dependencies
   become_user: root
   shell: "python3 -m pip install -r /opt/appdata/clean/requirements.txt"
 
