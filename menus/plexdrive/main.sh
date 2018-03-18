@@ -52,6 +52,7 @@ case $CHOICE in
                 
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 #&>/dev/null &
+read -n 1 -s -r -p "Press any key to continue "
 
                     #loop="true"
                     #echo "true" > /tmp/alive
