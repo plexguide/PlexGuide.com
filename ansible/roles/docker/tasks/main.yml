@@ -2,7 +2,6 @@
 #
 # [Cloudbox Ansible Role]
 #
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   13uddz & Desmonic
 # URL:      https://cloudbox.rocks
 #
@@ -14,6 +13,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Further Enhanced By: https://plexguide.com
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+#################################################################################
+
 ---
 - name: Install required packages
   apt: "name={{item}} state=installed"
