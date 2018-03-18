@@ -6,7 +6,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Added
 - (B1) Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
 - (B1) ClowPlow Role (serves to only as a nerfed/cleaner) modification from Design Gears
-  - Original Tool Credit: https://github.com/l3uddz/cloudplow
+  - Original Tool Credit: l3uddz/cloudplow
   - Installs properly when using RCLONE unencrypted and going through it again
   - If PG already installed an updating, type -- sudo ansible-role clean
 
