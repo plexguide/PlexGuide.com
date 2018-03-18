@@ -1,13 +1,16 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
-############# missing default file info
-
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_temp
+file="/root/.config/rclone/rclone.conf"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   clear
+   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un --skip-tags rclone  
+fi
 
 #############
-
-
 HEIGHT=10
 WIDTH=45
 CHOICE_HEIGHT=4
