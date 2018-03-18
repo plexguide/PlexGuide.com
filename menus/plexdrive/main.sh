@@ -49,7 +49,7 @@ case $CHOICE in
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to install PlexDrive4?" 7 50; then
                 clear
-                
+
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 &>/dev/null &
 
@@ -74,7 +74,7 @@ case $CHOICE in
                         dialog --infobox "Installing........" 3 22
                         sleep 1
                         loop=$(cat /tmp/alive)
-                    done
+                    done &
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive
                 mv plexdrive /usr/bin/
@@ -83,6 +83,7 @@ case $CHOICE in
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive
+                loop="false"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
                 echo "Type to Restart the Program: sudo plexguide"
@@ -94,7 +95,7 @@ case $CHOICE in
             if dialog --stdout --title "PlexDrive 5 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
-                clear 
+                clear
 
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 &>/dev/null &
@@ -120,15 +121,16 @@ case $CHOICE in
                         dialog --infobox "Installing........" 3 22
                         sleep 1
                         loop=$(cat /tmp/alive)
-                    done
+                    done &
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
                 mv plexdrive /usr/bin/ 1>/dev/null 2>&1
-                cd /usr/bin/ 
+                cd /usr/bin/
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
                 plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
+                loop="false"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
                 echo "Type to Restart the Program: sudo plexguide"
