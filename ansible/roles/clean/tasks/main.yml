@@ -35,7 +35,7 @@
 
 - name: Install Clean; download
   become_user: root
-  shell: "git clone https://github.com/Admin9705/clean"
+  shell: "git clone https://github.com/Admin9705/clean /opt/appdata/clean"
   
 - name: Install Clean; dependencies
   become_user: root
