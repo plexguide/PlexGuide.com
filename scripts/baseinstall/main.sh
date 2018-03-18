@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Startup Script]
+# [PG BaseInstall]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-export NCURSES_NO_UTF8_ACS=1
 
 clear
 
