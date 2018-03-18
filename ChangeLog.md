@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.064] BETA & DEV Version
 
 #### Added
-- None
+- (D) Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
 
 #### Changed
 - None
