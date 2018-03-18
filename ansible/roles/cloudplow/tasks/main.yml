@@ -30,4 +30,4 @@
     user: "root"
     minute: "0"
     hour: "0"
-    job: "/usr/bin/python3 /opt/appdata/cloudplow/cloudplow.py clean"
+    job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"
