@@ -8,7 +8,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) ClowPlow Role (serves to only as a nerfed/cleaner) modification from Design Gears
   - Original Tool Credit: l3uddz/cloudplow
   - Installs properly when using RCLONE unencrypted and going through it again (might work encrypted later)
-  - If PG already installed an updating, type -- sudo ansible-role clean
+  - If PG is already installed and CONDUCTING AN UPDATE from 5.063 & Below, type -- sudo ansible-role clean
 
 #### Changed
 - (B1) Fixed a menu info glitch regards to watchtower
