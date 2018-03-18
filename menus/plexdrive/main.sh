@@ -51,13 +51,13 @@ case $CHOICE in
                 clear
                 
                     echo "true" > /tmp/alive
-                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 #&>/dev/null &
-read -n 1 -s -r -p "Press any key to continue "
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 &>/dev/null &
+                    #read -n 1 -s -r -p "Press any key to continue "
 
-                    #loop="true"
-                    #echo "true" > /tmp/alive
-                    #while [ "$loop" = "true" ]
-                    #do
+                    loop="true"
+                    echo "true" > /tmp/alive
+                    while [ "$loop" = "true" ]
+                    do
                         dialog --infobox "Installing." 3 22
                         sleep 1
                         dialog --infobox "Installing.." 3 22
@@ -74,8 +74,8 @@ read -n 1 -s -r -p "Press any key to continue "
                         sleep 1
                         dialog --infobox "Installing........" 3 22
                         sleep 1
-                        #loop=$(cat /tmp/alive)
-                    #done
+                        loop=$(cat /tmp/alive)
+                    done
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive
                 mv plexdrive /usr/bin/
