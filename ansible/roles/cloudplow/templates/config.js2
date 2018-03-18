@@ -1,0 +1,61 @@
+{
+    "core": {
+        "dry_run": false
+    },
+    "hidden": {
+        "/mnt/move/.unionfs-fuse": {
+            "hidden_remotes": [
+                "gdrive"
+            ]
+        }
+    },
+    "notifications": {
+        "Pushover": {
+            "app_token": "app token goes here",
+            "service": "pushover",
+            "user_token": "user token goes here"
+        }
+    },
+    "remotes": {
+        "gdrive": {
+            "hidden_remote": "gdrive:",
+            "rclone_excludes": [
+                "**partial~",
+                "**_HIDDEN~",
+                ".unionfs/**",
+                ".unionfs-fuse/**"
+            ],
+            "rclone_extras": {
+                "--checkers": 16,
+                "--drive-chunk-size": "64M",
+                "--no-traverse": null,
+                "--stats": "60s",
+                "--transfers": 8,
+                "--verbose": 1
+            },
+            "rclone_sleeps": {
+                "Error 403: User rate limit exceeded": {
+                    "count": 5,
+                    "sleep": 25,
+                    "timeout": 300
+                }
+            },
+            "remove_empty_dir_depth": 2,
+            "upload_folder": "/mnt/move",
+            "upload_remote": "gdrive:"
+        }
+    },
+    "uploader": {
+        "google": {
+            "check_interval": 30,
+            "exclude_open_files": true,
+            "max_size_gb": 400,
+            "opened_excludes": [
+                "/downloads/"
+            ],
+            "size_excludes": [
+                "downloads/*"
+            ]
+        }
+    }
+}
