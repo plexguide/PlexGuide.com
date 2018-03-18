@@ -55,7 +55,7 @@ case $CHOICE in
         B)
             if dialog --stdout --title "WatchTower Question" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 34; then
+              --yesno "\nYou Want to have all Your Containers Auto-Update?" 7 34; then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=plexemby &>/dev/null &
               dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
               sleep 9
