@@ -1,22 +1,52 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 ---
+  - name: RClone Filler
+    template:
+      src: temp.js2
+      dest: /root/.config/rclone/rclone.conf
+      force: yes
+    tags: rclone_temp
+
 ########################################## Scripts
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move.sh"
     register: move_script
+    tags:
+      - rclone
     
   - name: Install Move Service
     template:
       src: move_script.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
+    tags:
+      - rclone
     #when: move_script.stat.exists == False
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/rclone.sh"
     register: rclone_script
+    tags:
+      - rclone
     
   - name: Install RClone Sync Service
     template:
@@ -24,16 +54,22 @@
       dest: /opt/appdata/plexguide/rclone.sh
       force: yes
     when: rclone_script.stat.exists == False
+    tags:
+      - rclone
 ########################################## Services
 ########### Move Service
   - name: Check MOVE Service
     stat:
       path: "/etc/systemd/system/move.service"
     register: move
+    tags:
+      - rclone
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     when: move.stat.exists
+    tags:
+      - rclone
     
   - name: Install Move Service
     template:
@@ -41,23 +77,33 @@
       dest: /etc/systemd/system/move.service 
       force: yes
     when: move.stat.exists == False
+    tags:
+      - rclone
 
   - name: Daemon-Reload
-    systemd: state=stopped name=move daemon_reload=yes enabled=no
+    systemd: state=stopped name=move daemon_reload=yes enabled=n
+    tags:
+      - rclone
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
+    tags:
+      - rclone
     
 ########### rclone
   - name: Check RCLONE Service
     stat:
       path: "/etc/systemd/system/rclone.service"
     register: rclone
+    tags:
+      - rclone
 
   - name: Stop If RClone Service Running
     systemd: state=stopped name=rclone
     when: rclone.stat.exists
+    tags:
+      - rclone
     
   - name: Install RCLONE Service
     template:
@@ -65,33 +111,49 @@
       dest: /etc/systemd/system/rclone.service 
       force: yes
     when: rclone.stat.exists == False
+    tags:
+      - rclone
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+    tags:
+      - rclone
 
   - name: Start RClone
     systemd: state=started name=rclone enabled=yes
     when: rclone.stat.exists
+    tags:
+      - rclone
 
 ########### UNIONFS
   - name: Check UNIONFS Service
     stat:
       path: "/etc/systemd/system/unionfs.service"
     register: unionfs
+    tags:
+      - rclone
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     when: unionfs.stat.exists
+    tags:
+      - rclone
     
   - name: Install UNIONFS Service
     template:
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service 
       force: yes
+    tags:
+      - rclone
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - rclone
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     when: unionfs.stat.exists
+    tags:
+      - rclone

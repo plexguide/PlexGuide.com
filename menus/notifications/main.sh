@@ -13,19 +13,23 @@ then
 else
    dialog --infobox "Notice: You can enable PUSH Notifications!\n\nIf NOT READY or DON'T CARE, visit SETTINGS to to put in your INFO later on!" 7 50
    sleep 5
+   mkdir -p /opt/appdata/plexguide
+   chmod 755 /opt/appdata/plexguide
+   echo "corn" > /opt/appdata/plexguide/pushapp
+   echo "corn" > /opt/appdata/plexguide/pushuser
    touch /var/plexguide/notification.yes
 fi
 
-HEIGHT=12
+HEIGHT=10
 WIDTH=44
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Notification Manager (Purley Optional)"
 MENU="Select Notification Preference(s):"
 
-OPTIONS=(A "Turn Off Pushover"
-         B "Pushover"
-         Z "Exit")
+OPTIONS=(Z "Exit"
+         A "Enable Pushover"
+         B "Disable Pushover")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -37,7 +41,7 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        B)
+        A)
                 dialog --title "Input >> Pushover User Key" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "USER KEY - WINDOWS USERS: SHIFT+INSERT:" 8 45 2>/opt/appdata/plexguide/pushuser
@@ -55,13 +59,12 @@ case $CHOICE in
                 dialog --infobox "Notice: You can configure more notifications; if you want!\n\nMade an error? Just SELECT it again!" 0 0
                 sleep 7
             ;;
-        A)
+        B)
             "fart" > /opt/appdata/plexguide/pushapp
             "butt" > /opt/appdata/plexguide/user
-
             dialog --infobox "IF this was enabled before, it's now disabled!  Please EXIT!" 0 0
             sleep 6
-            exit 0 ;;
+            ;;
         Z)
             clear
             exit 0 ;;

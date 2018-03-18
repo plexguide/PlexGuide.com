@@ -16,9 +16,9 @@
 #
 #################################################################################
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=59
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
@@ -29,6 +29,7 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          D "Processor    : Enhance Processing Power"
          E "Redirect     : Force Apps to use HTTPS Only?"
          F "SuperSpeeds  : Change Gdrive Transfer Settings"
+         G "WatchTower   : Auto-Update Application Manager"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -122,6 +123,8 @@ touch /var/plexguide/domain
             ;;
         F) 
             bash /opt/plexguide/menus/transfer/main.sh ;;
+        G) 
+            bash /opt/plexguide/menus/watchtower/main.sh ;;
         Z)
             clear
             exit 0

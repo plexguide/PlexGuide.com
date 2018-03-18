@@ -1,25 +1,21 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 ---
-- name: Removing Old NGINX File Directory
-  file:
-    state: absent
-    path: /opt/appdata/traefik/traefik.toml
-  tags:
-    - main
-
-- name: Remove NGINX Container
-  docker_container:
-    name: nginx-proxy
-    state: absent
-  tags:
-    - main
-
-- name: Remove LetsEncrypt
-  docker_container:
-    name: letsencrypt
-    state: absent
-  tags:
-    - main
-
 - name: Removing Prior Traefik.toml
   file:
     state: absent
@@ -58,8 +54,8 @@
     path: /opt/appdata/traefik/traefik.toml
     regexp: yourdomain.com
     replace: "{{domain}}"
-  tags:
-    - main 
+  #tags:
+    #- main 
 
 - name: Replace your@email.com with user input
   replace:

@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -52,6 +52,7 @@ case $CHOICE in
 
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 &>/dev/null &
+                    #read -n 1 -s -r -p "Press any key to continue "
 
                     loop="true"
                     echo "true" > /tmp/alive

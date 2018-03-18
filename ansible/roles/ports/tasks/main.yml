@@ -1,22 +1,29 @@
-
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 ---
-
-- name: Register if Ports Are Closed
-  stat:
-    path: /opt/appdata/plexguide/ports-no
-  register: ports_closed
-
 - replace:
     path: /opt/appdata/plexguide/var.yml
-    regexp: "ports:$"
+    regexp: "ports:"
     replace: 'ports: "127.0.0.1:"'
-  when: ports_closed.stat.exists == True
-  ignore_errors: yes
+  tags: closed
 
 - replace:
     path: /opt/appdata/plexguide/var.yml
     regexp: 'ports: "127.0.0.1:"'
     replace: "ports:"
-  when: ports_closed.stat.exists == False
-  ignore_errors: yes
-
+  tags: open

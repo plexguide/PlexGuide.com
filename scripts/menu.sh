@@ -57,7 +57,7 @@ else
    bash /opt/plexguide/menus/notifications/main.sh
 fi
 
-file="/var/plexguide/dep42.yes"
+file="/var/plexguide/dep43.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
@@ -69,7 +69,7 @@ fi
 file="/var/plexguide/startup.error" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
-    dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n- Most problems are due to using a VPS\n- Using an OutDated Kernal\n- 99% is your VPS provider being SPECIAL\n- Modified version of Ubuntu\n\nPlease check with Forums" 0 0
+    dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n- Most problems are due to using a VPS\n- Using an OutDated Kernal\n- 99% is your VPS provider being SPECIAL\n- A modified version of Ubuntu\n\nTry a Reboot First and RERUN. If it fails, please check with site forums." 0 0
     dialog --infobox "Exiting!" 0 0
     sleep 5
       clear

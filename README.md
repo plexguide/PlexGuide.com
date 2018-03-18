@@ -1,30 +1,32 @@
-**Tip**: Did you know if you click the STAR in the upper right, you further promote our project on GITHUB?
+**NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
-[![N|Solid](https://plexguide.com/board6.png)](https://plexguide.com)
-Visit the PlexGuide Forum @ https://plexguide.com (Please Help Our Forum Grow!)
+[Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com) | [Install](https://plexguide.com/threads/plexguide-install-instructions.243/) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Reddit](https://www.reddit.com/r/plexguide/) | [YouTube](https://plexguide.com/threads/youtube-videos.436/) | [Newcomers](https://plexguide.com/threads/for-pg-newcomers.653/)
 
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/admin9705/PlexGuide.com-The-Awesome-Plex-Server.svg)](http://isitmaintained.com/project/admin9705/PlexGuide.com-The-Awesome-Plex-Server "Percentage of issues still open") [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
-
-[![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://plexguide.com/forums/bugs.13/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://plexguide.com/forums/development.14/)
-
-----------------------------------------------------------------------
-
-The PlexGuide Staff: https://plexguide.com/members/?key=staff_members
+[![N|Discord](https://plexguide.com/pics/github/discord1.png)](https://plexguide.com/threads/plexguide-discord-information.471/) [![N|Discord](https://plexguide.com/pics/github/donate.png)](https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate)
 
 ### PlexGuide Mission Statement ###
 
 PlexGuide is an all-in-one media solution that deploys a Media Server through the use of Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
-1. **Supported Operating Systems:** Intel/AMD UBUNTU 16.04 LTS (UB17 Confirmed Working)
-2. **View Deployable Programs:** https://plexguide.com/threads/programs-install-information-list.245
-3. **Contribute To the Project:** https://plexguide.com/threads/plexguide-contribute-fork-information.246
-4. **Donate To the Project:** https://plexguide.com/dbtech-donate/
+[![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://plexguide.com/forums/pg-scripting.94/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://plexguide.com/forums/development.14/)
 
-### Social
+### History ###
 
-**REDDIT:** https://www.reddit.com/r/plexguide/
-
-**Discord:** https://plexguide.com/threads/plexguide-discord-information.471/
+* **Dec 2016:**  PlexGuide Documentation Established (Learned to Document from Linux Classes)
+* **Jan 2017:**  Purchased Linux Book
+* **Feb 2017:**  PlexGuide Domain Purchased to Link Documentation
+* **Mar 2017:**  Started Utilizing Reddit for Assitance | Got Yelled @ for asking Noob Questions (disliked Old Linux Users)
+* **May 2017:**  Started to learn about init.d and startups, noob for using UB 14.
+* **Jun 2017:**  Ran First UB16 Emulations to update documentation and started playing with Docker
+* **Jul 2017:**  Bate from QB advices and schools Admin9705
+* **Aug 2017:**  PlexGuide Documentation Established on GitHub
+* **Sep 2017:**  Detique Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
+* **Oct 2017:**  Slack First Used for Communication
+* **Nov 2017:**  Discord First Used Pentagons and many others start beta testing project
+* **Dec 2017:**  Discovered Ansible - Cut Bashing Funcitons - CB Desmonic Inspiried - [Thanks Buddy](https://plexguide.com/cbpaypal.png) + YouTube
+* **Jan 2018:**  Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
+* **Feb 2018:**  Jackalblood CoFounder Advances Project
+* **Mar 2018:**  Flicker-Rate Advances Project; Overhauling Wiki
 
 ----------------------------------------------------------------------
 <p align="center">
@@ -33,17 +35,8 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 ** PlexGuide Interface Demo**
 
 ---------------------------------
-
-### PlexGuide Preparation, Installation & Configuration Install
-
-[![N|Solid](https://plexguide.com/wikisnip3.png)](https://plexguide.com/threads/guides-wiki-homepage.227/)
-
-**1. Follow The Wiki:**
-- Wiki Homepage @ https://plexguide.com/threads/guides-wiki-homepage.227
-
-**2. Don't Care? Just Install (Been Warned if New)**
-- Install Instructions: https://plexguide.com/threads/plexguide-install-instructions.243/
-
-**3. Final Notes**
-- See issues or have solutions? Please visit us the [PlexGuide Forums](https://plexguide.com)!
 - Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
+
+-------------------------------------------------------
+** Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
+[![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)

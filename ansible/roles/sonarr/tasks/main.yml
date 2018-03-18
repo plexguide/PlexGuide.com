@@ -7,17 +7,14 @@
 - name: Deploy Sonarr Container
   docker_container:
     name: sonarr
-    image: hotio/suitarr
+    image: linuxserver/sonarr
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports}}8989:8989"
     env:
-      APP: sonarr
-      VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:

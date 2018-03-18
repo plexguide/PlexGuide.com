@@ -8,7 +8,6 @@
   - { role: backup, tags: ['backup'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
-  - { role: cloudplow, tags: ['cloudplow'] }
   - { role: netdata, tags: ['netdata'] }
   - { role: pushover, tags: ['pushover'] }
   - { role: portainer, tags: ['portainer'] }
@@ -50,10 +49,10 @@
   - { role: var, tags: ['var'] }
   - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
-  - { role: ssl, tags: ['ssl'] }
   - { role: traefik, tags: ['traefik'] }
   - { role: mylar, tags: ['mylar'] }
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: pyload, tags: ['pyload'] }
+  - { role: clean, tags: ['clean'] }

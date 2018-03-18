@@ -1,10 +1,10 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.063] BETA & DEV Version
+### [5.064] BETA & DEV Version
 
 #### Added
-- None
+- (D) Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
 
 #### Changed
 - None
@@ -22,6 +22,25 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.063]
+
+#### Added
+- New Installs, fixed initial pushover prompt
+- Reorders pushover menu
+- Install new WatchTower Menu; gives user option in regards to auto updates
+
+#### Changed
+- Changed to all Linux Server Images
+- Disabled CloudPlow Install (did not do anything)
+
+#### Removed
+- None
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
 
 ### [5.062]
 

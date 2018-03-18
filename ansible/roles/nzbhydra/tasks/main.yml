@@ -8,14 +8,12 @@
 - name: Deploy NZBHyra Container
   docker_container:
     name: nzbhydra
-    image: hotio/suitarr
+    image: linuxserver/hydra
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports}}5075:5075"
     env:
-      APP: "nzbhydra"
-      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
     volumes:
