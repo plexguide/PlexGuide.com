@@ -30,6 +30,7 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          E "Redirect     : Force Apps to use HTTPS Only?"
          F "SuperSpeeds  : Change Gdrive Transfer Settings"
          G "WatchTower   : Auto-Update Application Manager"
+         H "Migration    : Migrate Prexisting Data to GD "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -42,14 +43,14 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A) 
+        A)
 ################################################# START
 if dialog --stdout --title "Domain Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nAre You Adding/Changing a Domain?" 7 34; then
-  
+
   domain='yes'
-  
+
   dialog --title "Input >> Your Domain" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/domain
@@ -107,7 +108,7 @@ touch /var/plexguide/domain
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
               ;;
         C)
-            bash /opt/plexguide/menus/ports/main.sh ;;  
+            bash /opt/plexguide/menus/ports/main.sh ;;
         D)
             bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
         E)
@@ -121,10 +122,12 @@ touch /var/plexguide/domain
                 sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
             fi
             ;;
-        F) 
+        F)
             bash /opt/plexguide/menus/transfer/main.sh ;;
-        G) 
+        G)
             bash /opt/plexguide/menus/watchtower/main.sh ;;
+        H)
+            bash /opt/plexguide/menus/migrate/main.sh ;;
         Z)
             clear
             exit 0
