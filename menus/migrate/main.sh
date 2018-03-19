@@ -51,17 +51,25 @@ import_custom(){
                 --dselect ~/ 8 45 2>/opt/appdata/plexguide/migrate
 
                 dialog --title "Select Gdrive Directory" \
-                --backtitle "Enter the Gdrive Directory You Want The Local Data To Be Migrated To." \
-                --dselect /mnt/move 8 45 2>/opt/appdata/plexguide/migrate
+                --backtitle "Enter the Gdrive Directory You Want The Local Data To Be Migrated To. (needs to be in /mnt/move/)" \
+                --dselect /mnt/move 8 45 2>/opt/appdata/plexguide/migrateto
 
                 migrate=$(cat /opt/appdata/plexguide/migrate)
+                migrateto=$(cat /opt/appdata/plexguide/migrateto)
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
-                dialog --infobox "The $migratesize of $migrate will be moved to Gdrive.\nRebooting the server will stop the transfer.\nIf you reboot, you can always go back to this menu to try again." 3 45
-                /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW /mnt/move/$1
+                ls $migrateto &>/dev/null || mkdir -p $migrateto
+                dialog --infobox "The $migratesize of $migrate will be moved to gdrive.\nRebooting the server will stop the transfer.\nIf you reboot, you can always go back to this menu to try again." 3 45
+                /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW $migrateto
                 sleep 7
 
                 dialog --infobox "Notice: You can migrate more existing content types if you want!\n\nMade an error? Just SELECT it again!" 0 0
                 sleep 4
+}
+
+import_stop(){
+              for mount in /mnt/move/* ; do
+                /bin/fusermount -u $mount
+              done
 }
 case $CHOICE in
         A)
@@ -71,14 +79,14 @@ case $CHOICE in
         C)
             import_media music ;;
         D)
-            import_media movies ;;
+            import_media ebooks ;;
         E)
-            import_media movies ;;
+            import_custom ;;
         F)
-            import_media movies ;;
+            import_stop ;;
         Z)
             clear
             exit 0 ;;
 esac
 
-bash /opt/plexguide/menus/notifications/main.sh
+bash /opt/plexguide/menus/migrate/main.sh
