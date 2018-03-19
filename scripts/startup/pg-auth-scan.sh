@@ -4,13 +4,13 @@
 ping icanhazip.com -c 1 &>/dev/null || exit 1
 if [[ ! -e /var/plexguide/basics.yes ]]; then
   exit 1; fi
-ip=$(curl icanhazip.com)
+ip=$(curl -s icanhazip.com)
 
 
 sonarr () {
 curl -m 5 -s $ip:8989 -o html \
   && grep -iq api html \
-  && echo "WARNING: Sonarr Has No Password On $ip:8989" >> /var/plexguide/nopassword
+  && echo "Sonarr Has No Password On $ip:8989" >> /var/plexguide/nopassword
 }
 
 radarr () {
@@ -63,7 +63,7 @@ echo "" > /var/plexguide/nopassword
 
 # only test passwords for docker containers that are running
 applist=$(docker ps | awk '{print $NF}' | grep -v NAME)
-for app in $applist; do $app; done
+for app in $applist; do $app &>/dev/null; done
 
 
 exit 0
