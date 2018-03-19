@@ -1,23 +1,13 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.064] BETA & DEV Version
+### [5.065] BETA & DEV Version
 
 #### Added
-- (D)  Warns users if they forgot to set a password
-- (D)  Added  a e s t h e t i c s  To PG Exit Message
-- (B2) Added Migration Option - Now you can import existing data to be uploaded into gdrive
-- (B1) Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
-- (B1) ClowPlow Role (serves to only as a nerfed/cleaner) modification from Design Gears
-  - Original Tool Credit: l3uddz/cloudplow
-  - Installs properly when using RCLONE unencrypted and going through it again (might work encrypted later)
-  - If PG is already installed and CONDUCTING AN UPDATE from 5.063 & Below, type -- sudo ansible-role clean
+- None 
 
 #### Changed
-- (D)  Tweaked Update Menu yes/no dialog
-- (D)  Changed Migration Option Name to "Import Media" 
-- (B1) Fixed a menu info glitch regards to watchtower
-- (B2) Fixed PlexDrive Install Glitch
+- None
 
 #### Removed
 - None
@@ -32,6 +22,33 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.064] 
+
+#### Added
+- Warns users if they forgot to set a password
+- Added  a e s t h e t i c s  To PG Exit Message
+- Added Migration Option - Now you can import existing data to be uploaded into gdrive
+- Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
+- ClowPlow Role (serves to only as a nerfed/cleaner) modification from Design Gears
+  - Original Tool Credit: l3uddz/cloudplow
+  - Installs properly when using RCLONE unencrypted and going through it again (might work encrypted later)
+  - If PG is already installed and CONDUCTING AN UPDATE from 5.063 & Below, type -- sudo ansible-role clean
+
+#### Changed
+- Tweaked Update Menu yes/no dialog
+- Changed Migration Option Name to "Import Media" 
+- Fixed a menu info glitch regards to watchtower
+- Fixed PlexDrive Install Glitch
+
+#### Removed
+- None
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
+- supertransfer sometimes uploads duplicates (reported by lolmattylol)
 
 ### [5.063]
 
