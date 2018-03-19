@@ -13,6 +13,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Changed
 - (B1) Fixed a menu info glitch regards to watchtower
+- (B2) Fixed PlexDrive Install Glitch
 
 #### Removed
 - None
