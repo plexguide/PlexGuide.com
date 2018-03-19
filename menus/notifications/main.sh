@@ -24,7 +24,7 @@ HEIGHT=10
 WIDTH=44
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Notification Manager (Purley Optional)"
+TITLE="Notification Manager (Purely Optional)"
 MENU="Select Notification Preference(s):"
 
 OPTIONS=(Z "Exit"
@@ -68,6 +68,6 @@ case $CHOICE in
         Z)
             clear
             exit 0 ;;
-esac 
+esac
 
 bash /opt/plexguide/menus/notifications/main.sh
