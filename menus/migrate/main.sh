@@ -6,9 +6,9 @@ export NCURSES_NO_UTF8_ACS=1
  echo $ipv4
  echo $domain
 
-HEIGHT=10
+HEIGHT=15
 WIDTH=44
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=15
 BACKTITLE="WARNING - THIS WILL DELETE YOUR EXISTING DATA ONCE IT'S MOVED TO GDRIVE"
 TITLE="Migrate Existing Data"
 MENU="Select Media Type:"
@@ -37,6 +37,7 @@ import_media(){
                 --dselect ~/ 8 45 2>/opt/appdata/plexguide/migrate
                 migrate=$(cat /opt/appdata/plexguide/migrate)
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
+                ls $migrate &>/dev/null || mkdir -p $migrate
                 dialog --infobox "The $migratesize of $migrate will be moved to Gdrive.\nRebooting the server will stop the transfer.\nIf you reboot, you can always go back to this menu to try again." 3 45
                 /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW /mnt/move/$1
                 sleep 7
@@ -57,6 +58,7 @@ import_custom(){
                 migrate=$(cat /opt/appdata/plexguide/migrate)
                 migrateto=$(cat /opt/appdata/plexguide/migrateto)
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
+                ls $migrate &>/dev/null || mkdir -p $migrate
                 ls $migrateto &>/dev/null || mkdir -p $migrateto
                 dialog --infobox "The $migratesize of $migrate will be moved to gdrive.\nRebooting the server will stop the transfer.\nIf you reboot, you can always go back to this menu to try again." 3 45
                 /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW $migrateto

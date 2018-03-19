@@ -18,7 +18,7 @@
 
 HEIGHT=15
 WIDTH=59
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=15
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
