@@ -44,12 +44,13 @@ cat << "EOF"
 │ Update Plexguide:         pgupdate  │
 │ Update to Dev Version:    pgdev     │
 └─────────────────────────────────────┘
+
 EOF
 
 # warn users if they don't have a password set
 touch /var/plexguide/nopassword
 if [[ $(cat /var/plexguide/nopassword) != '' ]]; then
-  echo
-  echo -e "\033[1;31mSECURITY WARNING"
+  echo -e "\033[1;31m      -== SECURITY WARNING ==-"
   cat /var/plexguide/nopassword
+  echo
 fi

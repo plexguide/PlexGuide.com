@@ -51,12 +51,12 @@ case $CHOICE in
             bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         E)
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
-        F) 
+        F)
             bash /opt/plexguide/menus/settings/main.sh ;;
         G)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         H)
-            bash /opt/plexguide/scripts/upgrade/main.sh 
+            bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         Z)

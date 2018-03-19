@@ -48,9 +48,9 @@ case $CHOICE in
             if [ -e "$file" ]
             then
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            if dialog --stdout --title "Version User Confirmation" \
+            if ! dialog --stdout --title "Version User Confirmation" \
                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-               --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
+               --yesno "\nDo You Want Install Version - $version?" 7 50; then
                dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
             clear
             sudo bash /opt/plexguide/scripts/message/ending.sh
@@ -101,9 +101,9 @@ if [ -e "$file" ]
 then
 
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-if dialog --stdout --title "Version User Confirmation" \
+if ! dialog --stdout --title "Version User Confirmation" \
    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-   --yesno "\nDo You Want to EXIT and Backout from the Install: Version - $version" 7 50; then
+   --yesno "\nDo Want to Install: Version - $version?" 7 50; then
    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
 clear
 sudo bash /opt/plexguide/scripts/message/ending.sh
