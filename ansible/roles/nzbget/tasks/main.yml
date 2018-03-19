@@ -39,7 +39,6 @@
       - "{{ports}}6789:6789"
     volumes:
       - /opt/appdata/nzbget:/config
-      - /opt/appdata/themes/nzbget:/app/nzbget/webui:shared
       - /mnt/nzbget/completed:/completed
       - /mnt/nzbget/incomplete:/incomplete
       - /mnt/nzbget/nzb:/nzb
