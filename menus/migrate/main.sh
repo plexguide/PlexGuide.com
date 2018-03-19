@@ -38,7 +38,7 @@ import_media(){
                 migrate=$(cat /opt/appdata/plexguide/migrate)
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
                 ls $migrate &>/dev/null || mkdir -p $migrate
-                dialog --infobox "The $migratesize of "$migrate" will be moved to Gdrive.\n\nRebooting the server will stop the transfer.\n\nIf you reboot, you can always go back to this menu to try again." 3 45
+                dialog --infobox "The $migratesize of $migrate will be moved to Gdrive.\n\nRebooting the server will stop the transfer.\n\nIf you reboot, you can always go back to this menu to try again." 0 0
                 /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW /mnt/move/$1
                 sleep 4
 
