@@ -41,4 +41,7 @@ NOTE: Update Plexguide Anytime, type   : sudo pgupdate
 EOF
 
 # warn users if they don't have a password set
-cat /var/plexguide/nopassword
+if [[ $(cat /var/plexguide/nopassword) = '' ]]; then
+  echo -e "\033[1;31mSECURITY WARNING"
+  cat /var/plexguide/nopassword
+fi
