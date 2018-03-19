@@ -12,7 +12,7 @@
 #   You may copy, distribute and modify the software as long as you track
 #   changes/dates in source files. Any modifications to our software
 #   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions. 
+#   under the GPL along with build & install instructions.
 #
 #################################################################################
 HEIGHT=15
@@ -23,7 +23,7 @@ TITLE="PG Version Installation"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.064"
-         B "Beta 1   : 5.064"
+         B "Beta 2   : 5.064"
          C "Stable   : 5.063B"
          D "Stable   : 5.062"
          E "Stable   : 5.061"
@@ -84,15 +84,15 @@ case $CHOICE in
         E)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.061" ;;
-        F)  
+        F)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.060" ;;
-        G)  
+        G)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
         Z)
             bash /opt/plexguide/menus/main.sh
-            exit 0            
+            exit 0
             ;;
 esac
 
