@@ -19,6 +19,9 @@ else
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
+# security scan
+bash /opt/plexguide/scripts/startup/pg-auth-scan.sh &
+
 sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/menus/version/main.sh 1>/dev/null 2>&1
 
 # copying rclone config to user incase bonehead is not root
@@ -69,7 +72,7 @@ fi
 file="/var/plexguide/startup.error" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
-    dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n- Most problems are due to using a VPS\n- Using an OutDated Kernal\n- 99% is your VPS provider being SPECIAL\n- A modified version of Ubuntu\n\nTry a Reboot First and RERUN. If it fails, please check with site forums." 0 0
+    dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n- Most problems are due to using a VPS\n- Using an OutDated Kernel\n- 99% is your VPS provider being SPECIAL\n- A modified version of Ubuntu\n\nTry a Reboot First and RERUN. If it fails, please check with site forums." 0 0
     dialog --infobox "Exiting!" 0 0
     sleep 5
       clear

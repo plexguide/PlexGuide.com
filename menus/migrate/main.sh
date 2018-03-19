@@ -13,14 +13,13 @@ BACKTITLE="WARNING - THIS WILL DELETE YOUR EXISTING DATA ONCE IT'S MOVED TO GDRI
 TITLE="Migrate Existing Data"
 MENU="Select Media Type:"
 
-OPTIONS=(Z "Exit"
-         A "TV"
+OPTIONS=(A "TV"
          B "Movies"
          C "Music"
          D "Ebooks"
          E "Custom"
-         F "Stop Import")
-
+         F "Stop Import"
+         Z "Exit")
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
                 --title "$TITLE" \

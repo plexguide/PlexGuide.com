@@ -16,9 +16,9 @@
 #
 #################################################################################
 
-HEIGHT=15
+HEIGHT=20
 WIDTH=59
-CHOICE_HEIGHT=15
+CHOICE_HEIGHT=20
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
@@ -30,7 +30,7 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          E "Redirect     : Force Apps to use HTTPS Only?"
          F "SuperSpeeds  : Change Gdrive Transfer Settings"
          G "WatchTower   : Auto-Update Application Manager"
-         H "Migration    : Migrate Prexisting Data to GD "
+         H "Import Media : Import Existing Media to GDrive "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
