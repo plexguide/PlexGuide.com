@@ -31,7 +31,7 @@ cat << "EOF"
 ┌─────────────────────────────────────┐
 │        -== PlexGuide Team ==-       │
 │                                     │
-│   Admin9705, Deteiq, JackalBlood    │
+│   Admin9705, Deiteq, JackalBlood    │
 │ DataMonkeh, DesignGears, Pentagonos │
 │       RXWatcher, Flicker-Rate       │
 │                                     │
