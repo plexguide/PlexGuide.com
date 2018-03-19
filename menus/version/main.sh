@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq - Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -22,8 +22,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Version Installation"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Developer: 5.064"
-         B "Beta 2   : 5.064"
+OPTIONS=(A "Developer: 5.065"
+         B "Stable   : 5.064"
          C "Stable   : 5.063B"
          D "Stable   : 5.062"
          E "Stable   : 5.061"
@@ -74,7 +74,7 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.064beta2" ;;
+            version="5.064" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.063B" ;;
