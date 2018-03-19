@@ -4,6 +4,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.064] BETA & DEV Version
 
 #### Added
+- (D)  Warns users if they forgot to set a password
+- (D)  Added  a e s t h e t i c s  To PG Exit Message
 - (B2) Added Migration Option - Now you can import existing data to be uploaded into gdrive
 - (B1) Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
 - (B1) ClowPlow Role (serves to only as a nerfed/cleaner) modification from Design Gears
@@ -12,6 +14,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - If PG is already installed and CONDUCTING AN UPDATE from 5.063 & Below, type -- sudo ansible-role clean
 
 #### Changed
+- (D)  Tweaked Update Menu yes/no dialog
+- (D)  Changed Migration Option Name to "Import Media" 
 - (B1) Fixed a menu info glitch regards to watchtower
 - (B2) Fixed PlexDrive Install Glitch
 

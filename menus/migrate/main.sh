@@ -18,7 +18,7 @@ OPTIONS=(A "TV"
          C "Music"
          D "Ebooks"
          E "Custom"
-         F "Stop Import"
+         F "STOP Import Transfers"
          Z "Exit")
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -37,12 +37,13 @@ import_media(){
                 migrate=$(cat /opt/appdata/plexguide/migrate)
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
                 ls $migrate &>/dev/null || mkdir -p $migrate
-                dialog --infobox "The $migratesize of $migrate will be moved to Gdrive.\n\nRebooting the server will stop the transfer.\n\nIf you reboot, you can always go back to this menu to try again." 0 0
-                /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW /mnt/move/$1
-                sleep 4
 
-                dialog --infobox "Notice: You can migrate more existing content types if you want.\n\nMade an error? Just SELECT it again!" 0 0
-                sleep 4
+                  if dialog --stdout --title "Import $1" \
+                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                    --yesno "\nDo You Want To Transfer $migratesize of $migrate to Gdrive?" 7 34; then
+                        /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW /mnt/move/$1
+                    dialog --msgbox "Notice: Rebooting The Server Will Stop The Transfer.\n\nNeed To Reboot? Just SELECT it again!" 0 0
+                  fi
 }
 
 import_custom(){
@@ -59,12 +60,12 @@ import_custom(){
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
                 ls $migrate &>/dev/null || mkdir -p $migrate
                 ls $migrateto &>/dev/null || mkdir -p $migrateto
-                dialog --infobox "The $migratesize of $migrate will be moved to gdrive.\nRebooting the server will stop the transfer.\nIf you reboot, you can always go back to this menu to try again." 3 45
-                /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW $migrateto
-                sleep 3
-
-                dialog --infobox "Notice: You can migrate more existing content types if you want!\n\nMade an error? Just SELECT it again!" 0 0
-                sleep 2
+                  if dialog --stdout --title "Import $1" \
+                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                    --yesno "\nDo You Want To Transfer $migratesize of $migrate to Gdrive?" 7 34; then
+                      /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW $migrateto
+                    dialog --msgbox "Notice: Rebooting The Server Will Stop The Transfer.\n\nNeed To Reboot? Just SELECT it again!" 0 0
+                  fi
 }
 
 import_stop(){
