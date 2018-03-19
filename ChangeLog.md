@@ -4,6 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.064] BETA & DEV Version
 
 #### Added
+- (B2) Added Migration Option - Now you can import existing data to be uploaded into gdrive
 - (B1) Fresh Install - RClone: When going to RClone Menu, installs a dummy file to ensure drive is named gdrive!
 - (B1) ClowPlow Role (serves to only as a nerfed/cleaner) modification from Design Gears
   - Original Tool Credit: l3uddz/cloudplow
