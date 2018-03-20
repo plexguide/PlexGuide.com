@@ -68,9 +68,9 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
-- name: "Wait 10 Seconds"
+- name: "Wait 8 Seconds"
   wait_for:
-    timeout: 10
+    timeout: 8
   when: nzbget_conf.stat.exists == False
 
 - name: Customize nzbget.conf
@@ -87,67 +87,53 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
-- name: Remove Password Test
+- name: PG Remove Password Test
   replace:
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: ControlPassword=tegbzn6789
-    replace: ControlPassword=22
+    replace: ControlPassword=23
   when: nzbget_conf.stat.exists == False
 
-#- name: Remove Password
-#  lineinfile:
-#    path: "/opt/appdata/nzbget/nzbget.conf"
-#    regexp: ControlPassword=tegbzn6789
-    #regexp: '^ControlPassword=\s?='
-#    line: 'ControlPassword='
-#    state: present
-#  when: nzbget_conf.stat.exists == False
-
-- name: Change MainDir director
+- name: PG Change MainDir Directory
   replace:
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: MainDir=
     replace: MainDir=/config
   when: nzbget_conf.stat.exists == False
 
-#- name: Change MainDir directory
-#  lineinfile:
-#    path: "/opt/appdata/nzbget/nzbget.conf"
-#    regexp: '^MainDir\='
-#    line: 'MainDir=/config'
-#    state: present
-#  when: nzbget_conf.stat.exists == False
-
-- name: Change InterDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^InterDir\s?='
-    line: 'InterDir=/incomplete'
-    state: present
+- name: PG InterDir Directory
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: InterDir=
+    replace: InterDir=/incomplete
   when: nzbget_conf.stat.exists == False
 
-- name: Change DestDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^DestDir\s?='
-    line: 'DestDir=/completed'
-    state: present
+- name: Change DestDir director
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: DestDir=
+    replace: DestDir=/completed
   when: nzbget_conf.stat.exists == False
 
-- name: Change NZBDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^NzbDir\s?='
-    line: 'NzbDir=/nzb'
-    state: present
+- name: Change NZBDir Directory
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: NzbDir=
+    replace: NzbDir=/nzb
   when: nzbget_conf.stat.exists == False
 
-- name: Change QueueDir
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^QueueDir\s?='
-    line: 'QueueDir=/queue'
-    state: present
+- name: Change NZBDir Directory
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: QueueDir=
+    replace: QueueDir=/queue
+  when: nzbget_conf.stat.exists == False
+
+- name: Change TempDir
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: TempDir=
+    replace: TempDir=/tmp
   when: nzbget_conf.stat.exists == False
 
 - name: Change TempDir
