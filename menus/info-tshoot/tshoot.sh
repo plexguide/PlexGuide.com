@@ -10,6 +10,7 @@ MENU="Make a Selection Choice:"
 OPTIONS=(A "Run PreInstaller Again"
          B "Uninstall Docker, Containers & Run PreInstaller"
          C "Uninstall PlexGuide"
+         D "Ansible Bug Test"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -23,7 +24,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            rm -r /var/plexguide/dep* 
+            rm -r /var/plexguide/dep*
             dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         B)
@@ -34,8 +35,15 @@ case $CHOICE in
             dialog --title "Note" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         C)
-            rm -r /var/plexguide/dep* 
+            rm -r /var/plexguide/dep*
             bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
+        D)
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags test
+            echo ""
+            echo "If no RED, Ansible is good; if RED, ansible is bugged!"
+            echo ""
+            read -n 1 -s -r -p "Press any key to continue"
+            ;;
         Z)
             clear
             exit 0 ;;

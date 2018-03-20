@@ -4,7 +4,7 @@
     - /opt/appdata/plexguide/var.yml
 
   roles:
-  - { role: deploy, tags: ['deploy'] }   
+  - { role: deploy, tags: ['deploy'] }
   - { role: backup, tags: ['backup'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
@@ -33,6 +33,7 @@
   - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
   - { role: lazy, tags: ['lazy'] }
+  - { role: test, tags: ['test'] }
   - { role: label, tags: ['label'] }
   - { role: resilio, tags: ['resilio'] }
   - { role: rutorrent, tags: ['rutorrent'] }
