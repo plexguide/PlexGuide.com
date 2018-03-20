@@ -59,7 +59,7 @@ curl -i -s -m 5 $ip:8080 -o html \
 }
 
 # reset
-echo "" > /var/plexguide/nopassword
+echo -n "" > /var/plexguide/nopassword
 
 # only test passwords for docker containers that are running
 applist=$(docker ps | awk '{print $NF}' | grep -v NAME)
