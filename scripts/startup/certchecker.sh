@@ -12,7 +12,7 @@ ssl_check() {
 
 ping_check() {
               nslookup=$(nslookup $1.$domain | grep 'Address:' | tail -1 | awk '{print $2}')
-                if ping -c 1 $1.$domain &>/dev/null; then 
+                if ping -c 1 $1.$domain &>/dev/null; then
                   echo "$1.$domain Cannot Be Reached." >> /var/plexguide/pingchecker
                 elif [[ $nslookup != $realip ]]; then
                   echo "$1.$domain Does not point to this machine's real ip: $realip" >> /var/plexguide/pingchecker
@@ -20,7 +20,7 @@ ping_check() {
 }
 
 
-applist=$(docker ps | awk '{print $NF}' | grep -v NAME | grep -v Traefik | grep -v WatchTower)
+applist=$(docker ps | awk '{print $NF}' | grep -v NAME | grep -v traefik | grep -v watchtower)
 
 # reset
 echo -n '' > /var/plexguide/certchecker
