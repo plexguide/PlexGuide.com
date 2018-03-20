@@ -22,6 +22,9 @@ fi
 # security scan
 bash /opt/plexguide/scripts/startup/pg-auth-scan.sh &
 
+# traefik cert validation
+bash /opt/plexguide/scripts/startup/certchecker.sh &
+
 sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/menus/version/main.sh 1>/dev/null 2>&1
 
 # copying rclone config to user incase bonehead is not root
