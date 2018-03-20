@@ -10,14 +10,14 @@
 #   You may copy, distribute and modify the software as long as you track
 #   changes/dates in source files. Any modifications to our software
 #   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions. 
+#   under the GPL along with build & install instructions.
 #
 #################################################################################
 #/opt/appdata/plexguide/throttle-detect.sh
 
 # BACKLOG DETECTION SETTINGS
 backlog_restart=off
-backlog_threshold=4   # will restart rclone if this many items are waiting for transfer. 
+backlog_threshold=4   # will restart rclone if this many items are waiting for transfer.
 
 # GDRIVE THROTTLE DETECTION SETTINGS
 threshold_modifier=0	# adjust throttle detection threshold (+/- num) in Mb/s
@@ -39,10 +39,10 @@ cat /opt/appdata/plexguide/current_gdrive | grep gdrive || echo gdrive > /opt/ap
 touch /opt/appdata/plexguide/rclone
 chmod 755 /opt/appdata/plexguide/rclone
 
-	
+
 
 detect_throttle() {
-	# calc egress speed to google servers in Mb/s 
+	# calc egress speed to google servers in Mb/s
 	upspeed=$(2>/dev/null iftop -t -s $sample_size \
 		| grep "1e100.net" -B1 \
 		| grep '=>' \
@@ -61,7 +61,7 @@ detect_throttle() {
 
 		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
 		if [[ upspeed -gt $threshold || ( current_transfers -eq 0 ) ]]; then
-			echo no 
+			echo no
 		else
 			echo yes
 		fi
@@ -127,7 +127,7 @@ while true; do
 				throttle_conf=$i
 				echo "Throttle Confirmation ($i/$false_positive_checks) $(cat /opt/appdata/plexguide/current_speed)Mbit/s"
 			else
-				echo "Throttle Confirmation ($i/$false_positive_checks) False Positive! $(cat /opt/appdata/plexguide/current_speed)Mbit/s"	
+				echo "Throttle Confirmation ($i/$false_positive_checks) False Positive! $(cat /opt/appdata/plexguide/current_speed)Mbit/s"
 				break
 			fi
 		done
@@ -155,7 +155,7 @@ done &
 while true; do
 	if [[ $(( $(queued_transfers) - $(current_transfers) )) -ge $backlog_threshold ]]; then
 		if [[ $backlog_restart =~ "on" ]]; then
-			pkill rclone  
+			pkill rclone
 			echo
 			echo
 			echo "Currently Transfering: $(current_transfers) Backlog: $(( $(queued_transfers) - 1 ))"
@@ -173,16 +173,12 @@ while true; do
 		echo "Currently Selected Gdrive: $(cat /opt/appdata/plexguide/current_index) ($(cat /opt/appdata/plexguide/current_gdrive))"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log
-		rclone_sync $(cat /opt/appdata/plexguide/current_gdrive)	
+		rclone_sync $(cat /opt/appdata/plexguide/current_gdrive)
 		sleep 10
 		echo "Cleaning Up $(find $local_dir -mindepth 2 -empty | wc -l) Empty Directories"
 	 	find $local_dir -mindepth 2 -empty -delete
 	else
 		echo "Waiting Until Transfer Queue is at Least 100M"
 	fi
-	
+
 done
-
-
-
-

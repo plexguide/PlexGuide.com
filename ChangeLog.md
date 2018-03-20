@@ -30,6 +30,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - turnin off ports may not work in settings <<< might be fixed (have to test more)
 - next cloud https:// domain not working, but port access is
 - supertransfer sometimes uploads duplicates (reported by lolmattylol)
+- supertransfer sometimes runs multiple instances at once, leading to upload failure
 
 -------------------------------------------------------
 
