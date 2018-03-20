@@ -1,5 +1,5 @@
 ---
-- name: Removing Prior Traefik.toml
+- name: Removing A Folder
   file:
     state: absent
     path: /tmp/test
