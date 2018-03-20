@@ -63,7 +63,7 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
-    tags: stable
+  tags: stable
 
 - name: Deploy NZBGET Container - UNSTABLE
   docker_container:
@@ -99,7 +99,7 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
-    tags: beta
+  tags: beta
 
 - name: Please Wait - Pending .conf generation from NZBGET
   wait_for:
