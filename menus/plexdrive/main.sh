@@ -51,7 +51,7 @@ case $CHOICE in
                 clear
 
                     echo "true" > /tmp/alive
-                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5 &>/dev/null
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5
                     #read -n 1 -s -r -p "Press any key to continue "
 
                     loop="true"
@@ -98,7 +98,7 @@ case $CHOICE in
                 clear
 
                     echo "true" > /tmp/alive
-                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 &>/dev/null
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 
 
                     loop="true"
                     echo "true" > /tmp/alive
