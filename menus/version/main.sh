@@ -116,7 +116,7 @@ else
     clear
 fi
 
-rm -r /opt/plexg* 2>/dev/nu*
+rm -rf /opt/plexguide 2>/dev/null
 wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
 unzip /tmp/$version.zip -d /opt/
 mv /opt/PlexG* /opt/plexguide
