@@ -91,7 +91,7 @@
   replace:
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: ControlPassword=tegbzn6789
-    replace: ControlPassword=245
+    replace: ControlPassword=
   when: nzbget_conf.stat.exists == False
 
 - name: PG Change MainDir Directory
@@ -151,11 +151,10 @@
   when: nzbget_conf.stat.exists == False
 
 - name: DirectUnpack Set to On
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^DirectUnpack\s?='
-    line: 'DirectUnpack=yes'
-    state: present
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: DirectUnpack=
+    replace: DirectUnpack=yes
   when: nzbget_conf.stat.exists == False
 
 - name: Lowercase & Set Movie Category
