@@ -54,3 +54,19 @@ if [[ $(cat /var/plexguide/nopassword) != '' ]]; then
   cat /var/plexguide/nopassword
   echo
 fi
+
+# warn users if they don't have a valid cert
+touch /var/plexguide/certchecker
+if [[ $(cat /var/plexguide/certchecker) != '' ]]; then
+  echo -e "\033[1;33m       -== INVALID SSL CERT ==-"
+  cat /var/plexguide/certchecker
+  echo
+fi
+
+# warn users if their DNS settings don't work
+touch /var/plexguide/pingchecker
+if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
+  echo -e "\033[1;33m       -== UNREACHABLE HOST ==-"
+  cat /var/plexguide/certchecker
+  echo
+fi
