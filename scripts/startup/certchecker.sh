@@ -14,7 +14,7 @@ ping_check() {
               nslookup=$(nslookup $1.$domain | grep 'Address:' | tail -1 | awk '{print $2}')
               ping -c 1 $1.$domain &>/dev/null \
               || echo "$1.$domain Cannot Be Reached." >> /var/plexguide/pingchecker && return 1
-                if [[ $nslookup != $realip ]];
+                if [[ $nslookup != $realip ]]; then
                   echo "$1.$domain Does not point to this machine's real ip: $realip" >> /var/plexguide/pingchecker
                 fi
 }
@@ -58,5 +58,4 @@ Or that you don't have a domain configured (feel free to ignore in this case)
 1. Try Restarting Traefik by typing: docker restart traefik
 2. Re-Install Traefik in the PlexGuide Menu.
 EOF
-
 fi
