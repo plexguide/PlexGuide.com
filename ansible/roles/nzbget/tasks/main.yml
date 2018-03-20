@@ -49,8 +49,8 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      APP: "nzbget"
-      VERSION: "stable"
+      APP: nzbget
+      VERSION: stable
       PUID: 1000
       PGID: 1000
     restart_policy: always
@@ -85,8 +85,8 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      APP: "nzbget"
-      VERSION: "unstable"
+      APP: nzbget
+      VERSION: unstable
       PUID: 1000
       PGID: 1000
     restart_policy: always
