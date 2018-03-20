@@ -1,4 +1,5 @@
 #!/bin/bash
+export NCURSES_NO_UTF8_ACS=1
 
 #### Temp Variables Established To Prevent Crashing - START
 echo "plexguide" > /tmp/pushover
