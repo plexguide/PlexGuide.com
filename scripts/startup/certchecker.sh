@@ -27,7 +27,7 @@ done
 
 # ping error message
 if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
-  tee <<-EOF >>/var/plexguide/pingchecker
+tee <<-EOF >>/var/plexguide/pingchecker
 
   This may be caused by misconfigured DNS settings on your registrar,
   or that your nameserver hasn\'t been updated (may take up to 30 minutes)
@@ -35,12 +35,12 @@ if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
   1. Verify that A Records Are Pointed To $(curl icanhazip.com)
   2. Verify That The Host (subdomain) Is Set To *
   3. TTL is set to 1 minute.
-  EOF
+EOF
 fi
 
 # invalid cert error message
 if [[ $(cat /var/plexguide/certchecker) != '' ]]; then
-  tee <<-EOF >>/var/plexguide/pingchecker
+tee <<-EOF >>/var/plexguide/certchecker
 
   This may be caused by Traefik failing to validate DNS.
   This could happen if you've recently added or changed the domain settings,
@@ -48,7 +48,7 @@ if [[ $(cat /var/plexguide/certchecker) != '' ]]; then
 
   1. Try Restarting Traefik by typing: docker restart traefik
   2. Re-Install Traefik in the PlexGuide Menu.
-  EOF
+EOF
 
 fi
 
