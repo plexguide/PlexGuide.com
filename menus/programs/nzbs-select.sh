@@ -22,16 +22,14 @@ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
 echo $domain
 
-HEIGHT=11
-WIDTH=38
-CHOICE_HEIGHT=6
+HEIGHT=10
+WIDTH=45
+CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Applications - PG Supporting"
+TITLE="NZB Selection - BETA 1 Version Ahead"
 
-OPTIONS=(A "NZBGet"
-         B "NZBHydra"
-         C "NZBHydra2"
-         D "SABNZBD"
+OPTIONS=(A "NZBGET Stable"
+         B "NZBGET Beta"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -43,29 +41,19 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/programs/nzbs-select.sh
-            bash /opt/plexguide/menus/programs/nzbs.sh
-            exit
+            display=NZBGET
+            program=nzbget
+            dialog --infobox "Installing STABLE: $display" 3 30
+            port=6789
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget --skip-tags beta #1>/dev/null 2>&1 ;;
+            read -n 1 -s -r -p "Press any key to continue "
             ;;
         B)
-            display=NZBHYDRA
-            program=nzbhydra
-            dialog --infobox "Installing: $display" 3 30
-            port=5075
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra 1>/dev/null 2>&1 ;;
-        C)
-            display=NZBHYRA2
-            program=nzbhyra2
-            dialog --infobox "Installing: $display" 3 30
-            port=5076
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2 1>/dev/null 2>&1 ;;
-        D)
-            display=SABNZBD
-            program=sabnzbd
-            dialog --infobox "Installing: $display" 3 30
-            port=8090
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd 1>/dev/null 2>&1 ;;
-
+            display=NZBGET
+            program=nzbget
+            dialog --infobox "Installing BETA: $display" 3 30
+            port=6789
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget --skip-tags stable 1>/dev/null 2>&1 ;;
         Z)
             exit 0 ;;
 esac
