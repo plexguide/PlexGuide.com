@@ -23,7 +23,7 @@ TITLE="PG Version Version 5.065"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.065"
-         B "Stable   : 5.064D"
+         B "Stable   : 5.064E"
          C "Stable   : 5.063B"
          D "Stable   : 5.062"
          E "Stable   : 5.061"
