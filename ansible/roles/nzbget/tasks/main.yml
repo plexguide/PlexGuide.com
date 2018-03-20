@@ -102,10 +102,16 @@
 #    state: present
 #  when: nzbget_conf.stat.exists == False
 
+- name: Change MainDir director
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: MainDir=
+    replace: MainDir=/config
+
 - name: Change MainDir directory
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^MainDir\s?='
+    regexp: '^MainDir\='
     line: 'MainDir=/config'
     state: present
   when: nzbget_conf.stat.exists == False
