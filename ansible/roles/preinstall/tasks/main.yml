@@ -62,8 +62,10 @@
     shell: unlink /etc/ansible/roles
     ignore_errors: yes
 
-  - name: Remove Folder if it exists
-    shell: rm -r /etc/ansible/roles
+  - name: Removing A Folder
+    file:
+      state: absent
+      path: /etc/ansible/roles
     ignore_errors: yes
 
   - name: Create Symbolic Link for Ansible-ToolBox
