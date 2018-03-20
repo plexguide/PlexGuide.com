@@ -24,7 +24,7 @@ MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.065"
          B "Stable   : 5.064E"
-         C "Stable   : 5.063B"
+         C "Stable   : 5.063"
          D "Stable   : 5.062"
          E "Stable   : 5.061"
          F "Stable   : 5.060"
@@ -74,7 +74,7 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.064D" ;;
+            version="5.064E" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.063" ;;
