@@ -5,6 +5,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Added
 - OS Check / Warns user if not using 16.04 - Prompts only one time!
+- Attempted to correct odd display of UI in Putty / works
 
 #### Changed
 - None
