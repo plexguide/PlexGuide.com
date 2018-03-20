@@ -45,7 +45,8 @@ case $CHOICE in
             program=nzbget
             dialog --infobox "Installing STABLE: $display" 3 30
             port=6789
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget --skip-tags beta 1>/dev/null 2>&1 ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget --skip-tags beta #1>/dev/null 2>&1 ;;
+            read -n 1 -s -r -p "Press any key to continue "
         B)
             display=NZBGET
             program=nzbget
