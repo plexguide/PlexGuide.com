@@ -49,7 +49,7 @@
       - ncdu
       - ctop
       - dialog
-      - dns-utils
+      - dnsutils
     ignore_errors: yes
 
   - debug: msg="You May Get An Error Notice, Ignore the Error!"
