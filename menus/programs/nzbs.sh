@@ -43,9 +43,15 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/programs/nzbs-select.sh
-            bash /opt/plexguide/menus/programs/nzbs.sh
-            exit
+            display=NZBHYDRA
+            program=nzbhydra
+            dialog --infobox "Installing: $display" 3 30
+            port=5075
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget 1>/dev/null 2>&1 ;;
+            
+            #bash /opt/plexguide/menus/programs/nzbs-select.sh
+            #bash /opt/plexguide/menus/programs/nzbs.sh
+            #exit
             ;;
         B)
             display=NZBHYDRA
