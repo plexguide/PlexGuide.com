@@ -91,7 +91,7 @@
   replace:
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: ControlPassword=tegbzn6789
-    replace: ControlPassword=23
+    replace: ControlPassword=245
   when: nzbget_conf.stat.exists == False
 
 - name: PG Change MainDir Directory
@@ -149,7 +149,7 @@
     regexp: LogFile=
     replace: LogFile=/log/nzbget.log
   when: nzbget_conf.stat.exists == False
-  
+
 - name: DirectUnpack Set to On
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
