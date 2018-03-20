@@ -32,7 +32,6 @@
   - { role: radarr, tags: ['radarr'] }
   - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
-  - { role: lazy, tags: ['lazy'] }
   - { role: test, tags: ['test'] }
   - { role: label, tags: ['label'] }
   - { role: resilio, tags: ['resilio'] }
