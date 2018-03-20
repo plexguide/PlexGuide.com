@@ -1,7 +1,29 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.064] BETA & DEV Version
+### [5.065] BETA & DEV Version
+
+#### Added
+- None
+
+#### Changed
+- None
+
+#### Removed
+- None
+
+#### Known Issues
+- pyload is not working
+- turnin off ports may not work in settings <<< might be fixed (have to test more)
+- next cloud https:// domain not working, but port access is
+- supertransfer sometimes uploads duplicates (reported by lolmattylol)
+- supertransfer sometimes runs multiple instances at once, leading to upload failure
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.064]
 
 #### Added
 - Ansible bug test role added to menu
@@ -23,18 +45,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Fixed PlexDrive Install Glitch
 
 #### Removed
-- None
-
-#### Known Issues
-- pyload is not working
-- turnin off ports may not work in settings <<< might be fixed (have to test more)
-- next cloud https:// domain not working, but port access is
-- supertransfer sometimes uploads duplicates (reported by lolmattylol)
-- supertransfer sometimes runs multiple instances at once, leading to upload failure
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
+- NERFED Subdomain check (was not ready)
 
 ### [5.063]
 
