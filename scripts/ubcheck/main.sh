@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+export NCURSES_NO_UTF8_ACS=1
 lsb_release -r -s > /var/plexguide/ubversion
 ubversion=$( cat /var/plexguide/ubversion )
 
