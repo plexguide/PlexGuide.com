@@ -43,7 +43,9 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/programs/nzbs-selects.sh
+            bash /opt/plexguide/menus/programs/nzbs-select.sh
+            bash /opt/plexguide/menus/programs/nzbs.sh
+            exit
             ;;
         B)
             display=NZBHYDRA
