@@ -136,30 +136,20 @@
     replace: TempDir=/tmp
   when: nzbget_conf.stat.exists == False
 
-- name: Change TempDir
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^TempDir\s?='
-    line: 'TempDir=/tmp'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: ScriptDir
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^ScriptDir\s?='
-    line: 'ScriptDir=scripts/'
-    state: present
+- name: Change ScriptDir
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: ScriptDir=
+    replace: ScriptDir=scripts/
   when: nzbget_conf.stat.exists == False
 
 - name: LogFile
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^LogFile\s?='
-    line: 'LogFile=/log/nzbget.log'
-    state: present
+  replace:
+    path: /opt/appdata/nzbget/nzbget.conf
+    regexp: LogFile=
+    replace: LogFile=/log/nzbget.log
   when: nzbget_conf.stat.exists == False
-
+  
 - name: DirectUnpack Set to On
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
