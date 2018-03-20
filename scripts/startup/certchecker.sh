@@ -4,6 +4,11 @@
 domain=$(cat /opt/appdata/plexguide/var.yml | grep 'domain:' -m 1 | awk '{print $2}')
 realip=$(curl -s icanhazip.com)
 
+# don't test if users hasn't set a domain.
+if [[ $domain == '' ]]; then
+  exit 0
+fi
+
 ssl_check() {
             true | openssl s_client -connect $1.$domain:443 2>/dev/null | \
             openssl x509 -noout -checkend 0 2>/dev/null \
@@ -38,7 +43,6 @@ tee <<-EOF >>/var/plexguide/pingchecker
 This may be caused by misconfigured DNS settings on your registrar,
 Or that your nameserver hasn't been updated (may take up to 30 minutes)
 Or that you may be running a VPN or Proxy on your host.
-Or that you don't have a domain configured (feel free to ignore in this case)
 
 1. Verify that A Records Are Pointed To $(curl -s icanhazip.com)
 2. Verify That The Host (subdomain) Is Set To *
@@ -53,9 +57,9 @@ tee <<-EOF >>/var/plexguide/certchecker
 This may be caused by Traefik failing to validate DNS.
 This could happen if you've recently added or changed the domain settings,
 Or that you've recently added or changed the A records for your registrar.
-Or that you don't have a domain configured (feel free to ignore in this case)
 
 1. Try Restarting Traefik by typing: docker restart traefik
-2. Re-Install Traefik in the PlexGuide Menu.
+2. View Traefik Logs by typing: docker logs traefik
+3. Re-Install Traefik in the PlexGuide Menu.
 EOF
 fi

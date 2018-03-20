@@ -75,7 +75,7 @@ case $CHOICE in
                         dialog --infobox "Installing........" 3 22
                         sleep 1
                         loop=$(cat /tmp/alive)
-                    done
+                    done &
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive
                 mv plexdrive /usr/bin/
@@ -122,7 +122,7 @@ case $CHOICE in
                         dialog --infobox "Installing........" 3 22
                         sleep 1
                         loop=$(cat /tmp/alive)
-                    done
+                    done &
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
                 mv plexdrive /usr/bin/ 1>/dev/null 2>&1
