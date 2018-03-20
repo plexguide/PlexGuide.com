@@ -19,16 +19,15 @@ HEIGHT=15
 WIDTH=32
 CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Version Version 5.065"
+TITLE="Select A PG Version"
 MENU="Make a Selection: "
 
-OPTIONS=(A "Developer: 5.065"
-         B "Stable   : 5.064E"
-         C "Stable   : 5.063"
-         D "Stable   : 5.062"
-         E "Stable   : 5.061"
-         F "Stable   : 5.060"
-         G "Stable   : 5.059"
+OPTIONS=(A "Developer: 5.064"
+         B "Stable   : 5.063"
+         C "Stable   : 5.062"
+         D "Stable   : 5.061"
+         E "Stable   : 5.060"
+         F "Stable   : 5.059"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -74,20 +73,17 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.064E" ;;
+            version="5.063" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.063" ;;
+            version="5.062" ;;
         D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.062" ;;
+            version="5.061" ;;
         E)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.061" ;;
-        F)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.060" ;;
-        G)
+        F)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.059" ;;
         Z)
