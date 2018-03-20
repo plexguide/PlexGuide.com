@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Flicker-Rate
+# Author:   Admin9705 & Deiteq - Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -19,7 +19,7 @@ HEIGHT=15
 WIDTH=32
 CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Version Version 5.065"
+TITLE="PG Version Version 5.064E"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.065"
