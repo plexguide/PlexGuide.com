@@ -18,6 +18,6 @@
 echo "lsb_release -r -s" > /var/plexguide/ubversion
 ubversion=$( cat /var/plexguide/ubversion )
 
-if [ $ubversion -eq "16.04" ]; then
+if [ "$ubversion" -eq "16.04" ]; then
     dialog --title "Ubuntu Version" --msgbox "\nGood Choice! You Are Running Ubuntu 16.04" 0 0
 fi
