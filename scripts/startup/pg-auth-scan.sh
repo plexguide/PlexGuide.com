@@ -36,7 +36,7 @@ curl -d '{"method":"auth.login","params":["deluge"],"id":7}' \
   -H "Content-Type: application/json" \
    $ip:8112/json -m 5 -i -s -o html \
    && grep -iq 'Set-Cookie:' html \
-   && echo "Deluge Has Default Password: "deluge" On $ip:8112" >> /var/plexguide/nopassword
+   && echo "Deluge Has Default Password: \"deluge\" On $ip:8112" >> /var/plexguide/nopassword
 }
 
 rutorrent () {
