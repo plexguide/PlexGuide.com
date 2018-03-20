@@ -68,6 +68,7 @@
 
   - name: Create Symbolic Link for Ansible-ToolBox
     shell: ln -s /opt/plexguide/ansible/roles /etc/ansible/
+    ignore_errors: yes
 
   #- name: Install ctop
     #get_url:
