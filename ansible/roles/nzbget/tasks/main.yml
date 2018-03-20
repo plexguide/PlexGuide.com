@@ -29,10 +29,10 @@
     path: "/opt/appdata/nzbget/nzbget.conf"
   register: nzbget_conf
 
-- name: Deploy NZBGET Container - STABLE
+- name: Deploy NZBGET Container
   docker_container:
     name: nzbget
-    image: hotio/suitarr
+    image: linuxserver/nzbget
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -49,8 +49,6 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      APP: "nzbget"
-      VERSION: "stable"
       PUID: 1000
       PGID: 1000
     restart_policy: always
@@ -63,43 +61,6 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
-  tags: stable
-
-- name: Deploy NZBGET Container - UNSTABLE
-  docker_container:
-    name: nzbget
-    image: hotio/suitarr
-    pull: yes
-    cpu_shares: 256
-    published_ports:
-      - "{{ports}}6789:6789"
-    volumes:
-      - /opt/appdata/nzbget:/config
-      - /mnt/nzbget/completed:/completed
-      - /mnt/nzbget/incomplete:/incomplete
-      - /mnt/nzbget/nzb:/nzb
-      - /mnt/nzbget/log:/log
-      - /mnt/nzbget/tmp:/tmp
-      - /mnt/nzbget/queue:/queue
-      - /mnt/nzbget/scripts:/scripts
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
-    env:
-      APP: "nzbget"
-      VERSION: "unstable"
-      PUID: 1000
-      PGID: 1000
-    restart_policy: always
-    networks:
-      - name: plexguide
-        aliases:
-          - nzbget
-    state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.rule: "Host:nzbget.{{domain}}"
-      traefik.port: "6789"
-  tags: beta
 
 - name: Please Wait - Pending .conf generation from NZBGET
   wait_for:
