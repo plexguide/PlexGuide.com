@@ -10,8 +10,8 @@
 #   You may copy, distribute and modify the software as long as you track
 #   changes/dates in source files. Any modifications to our software
 #   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions. 
+#   under the GPL along with build & install instructions.
 #
 #################################################################################
-ps -ef | grep supertransfer | grep -v "grep" | awk '{print $2}' | xargs kill; 
+ps -ef | grep supertransfer | grep -v "grep" | awk '{print $2}' | xargs kill -9;
 exit 0
