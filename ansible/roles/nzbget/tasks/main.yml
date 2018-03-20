@@ -92,6 +92,7 @@
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: ControlPassword=tegbzn6789
     replace: ControlPassword=22
+  when: nzbget_conf.stat.exists == False
 
 #- name: Remove Password
 #  lineinfile:
@@ -107,14 +108,15 @@
     path: /opt/appdata/nzbget/nzbget.conf
     regexp: MainDir=
     replace: MainDir=/config
-
-- name: Change MainDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^MainDir\='
-    line: 'MainDir=/config'
-    state: present
   when: nzbget_conf.stat.exists == False
+
+#- name: Change MainDir directory
+#  lineinfile:
+#    path: "/opt/appdata/nzbget/nzbget.conf"
+#    regexp: '^MainDir\='
+#    line: 'MainDir=/config'
+#    state: present
+#  when: nzbget_conf.stat.exists == False
 
 - name: Change InterDir directory
   lineinfile:
