@@ -19,7 +19,7 @@ HEIGHT=15
 WIDTH=32
 CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Version Version 5.064"
+TITLE="PG Version Version 5.065"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.065"
@@ -74,7 +74,7 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.064C" ;;
+            version="5.064D" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.063" ;;
