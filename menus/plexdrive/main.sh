@@ -56,26 +56,26 @@ case $CHOICE in
 
                     loop="true"
                     echo "true" > /tmp/alive
-                    while [ "$loop" = "true" ]
-                    do
-                        dialog --infobox "Installing." 3 22
-                        sleep 1
-                        dialog --infobox "Installing.." 3 22
-                        sleep 1
-                        dialog --infobox "Installing..." 3 22
-                        sleep 1
-                        dialog --infobox "Installing...." 3 22
-                        sleep 1
-                        dialog --infobox "Installing....." 3 22
-                        sleep 1
-                        dialog --infobox "Installing......" 3 22
-                        sleep 1
-                        dialog --infobox "Installing......." 3 22
-                        sleep 1
-                        dialog --infobox "Installing........" 3 22
-                        sleep 1
-                        loop=$(cat /tmp/alive)
-                    done &
+                    #while [ "$loop" = "true" ]
+                    #do
+                    #    dialog --infobox "Installing." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing.." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing..." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing...." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing....." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing......" 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing......." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing........" 3 22
+                    #    sleep 1
+                    #    loop=$(cat /tmp/alive)
+                    #done &
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive
                 mv plexdrive /usr/bin/
@@ -103,26 +103,26 @@ case $CHOICE in
 
                     loop="true"
                     echo "true" > /tmp/alive
-                    while [ "$loop" = "true" ]
-                    do
-                        dialog --infobox "Installing." 3 22
-                        sleep 1
-                        dialog --infobox "Installing.." 3 22
-                        sleep 1
-                        dialog --infobox "Installing..." 3 22
-                        sleep 1
-                        dialog --infobox "Installing...." 3 22
-                        sleep 1
-                        dialog --infobox "Installing....." 3 22
-                        sleep 1
-                        dialog --infobox "Installing......" 3 22
-                        sleep 1
-                        dialog --infobox "Installing......." 3 22
-                        sleep 1
-                        dialog --infobox "Installing........" 3 22
-                        sleep 1
-                        loop=$(cat /tmp/alive)
-                    done &
+                    #while [ "$loop" = "true" ]
+                    #do
+                    #    dialog --infobox "Installing." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing.." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing..." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing...." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing....." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing......" 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing......." 3 22
+                    #    sleep 1
+                    #    dialog --infobox "Installing........" 3 22
+                    #    sleep 1
+                    #    loop=$(cat /tmp/alive)
+                    #done &
                 clear
                 mv /tmp/plexdrive-linux-amd64 plexdrive 1>/dev/null 2>&1
                 mv plexdrive /usr/bin/ 1>/dev/null 2>&1
