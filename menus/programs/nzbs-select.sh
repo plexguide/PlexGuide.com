@@ -26,10 +26,10 @@ HEIGHT=10
 WIDTH=45
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Application Selection - BETA Normally 1 Version Ahead"
+TITLE="NZB Selection - BETA 1 Version Ahead"
 
-OPTIONS=(A "NZBGET STABLE"
-         B "NZBGET BETA"
+OPTIONS=(A "NZBGET Stable"
+         B "NZBGET Beta"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \

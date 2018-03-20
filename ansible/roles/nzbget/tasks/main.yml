@@ -31,8 +31,8 @@
 
 - name: Deploy NZBGET Container (STABLE)
   docker_container:
-    name: hotio/suitarr
-    image: linuxserver/nzbget
+    name: nzbget
+    image: hotio/suitarr
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -63,10 +63,9 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
-  tags:
-    - stable
+  tags: stable
 
-- name: Deploy NZBGET Container
+- name: Deploy NZBGET Container (BETA)
   docker_container:
     name: nzbget
     image: hotio/suitarr
@@ -100,8 +99,7 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:nzbget.{{domain}}"
       traefik.port: "6789"
-  tags:
-    - beta
+  tags: beta
 
 - name: Please Wait - Pending .conf generation from NZBGET
   wait_for:
