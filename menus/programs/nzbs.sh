@@ -47,7 +47,7 @@ case $CHOICE in
             program=nzbhydra
             dialog --infobox "Installing: $display" 3 30
             port=5075
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget 1>/dev/null 2>&1 ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget 1>/dev/null 2>&1
             
             #bash /opt/plexguide/menus/programs/nzbs-select.sh
             #bash /opt/plexguide/menus/programs/nzbs.sh
