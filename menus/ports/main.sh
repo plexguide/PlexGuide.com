@@ -25,7 +25,7 @@ else
 	status="Open"
 fi
 
-dialog --title "Very Important" --msgbox "\nYour Ports Status: $status\n\n You must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
+dialog --title "Very Important" --msgbox "\nYour Ports Status: $status\n\nYou must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
 
 ############ Menu
 HEIGHT=12
