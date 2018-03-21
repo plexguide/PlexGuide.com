@@ -50,12 +50,16 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+        dialog --infobox "Please Wait!" 3 50
+        sleep 1
 			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
- 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed
+ 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed 1>/dev/null 2>&1
             ;;
         B)
+        dialog --infobox "Please Wait!" 3 50
+        sleep 1
 			touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1	
-			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open
+			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open 1>/dev/null 2>&1
             ;;
         Z)
             clear
