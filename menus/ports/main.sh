@@ -71,6 +71,7 @@ while read p; do
   app=$( cat /tmp/program_var )
   dialog --infobox "Reconsturcting Your Container: $app" 3 46
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "$app" #--skip-tags webtools #1>/dev/null 2>&1
+  read -n 1 -s -r -p "Press any key to continue "
 done </opt/appdata/plexguide/running
 
 echo "$app: All Applications Ports Are $status" > /tmp/pushover
