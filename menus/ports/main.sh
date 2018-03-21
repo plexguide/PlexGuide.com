@@ -30,7 +30,7 @@ dialog --title "Very Important" --msgbox "\nYour Applications Port Status: $stat
 ############ Menu
 HEIGHT=9
 WIDTH=45
-CHOICE_HEIGHT=3
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Make a Choice"
 MENU="Ports are Currently $status"
