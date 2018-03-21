@@ -20,7 +20,7 @@ export NCURSES_NO_UTF8_ACS=1
 file="/opt/appdata/plexguide/ports-no"
 if [ -e "$file" ]
 then
-    status="Closed"
+  status="Closed"
 else
 	status="Open"
 fi
