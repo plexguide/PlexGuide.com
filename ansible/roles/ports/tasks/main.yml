@@ -18,12 +18,12 @@
 ---
 - replace:
     path: /opt/appdata/plexguide/var.yml
-    regexp: "ports:"
+    regexp: "ports: "
     replace: 'ports: "127.0.0.1:"'
   tags: closed
 
 - replace:
     path: /opt/appdata/plexguide/var.yml
     regexp: 'ports: "127.0.0.1:"'
-    replace: "ports:"
+    replace: "ports: "
   tags: open
