@@ -4,11 +4,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.065] BETA & DEV Version
 
 #### Added
-- OS Check / Warns user if not using 16.04 - Prompts only one time!
-- Attempted to correct odd display of UI in Putty / works
+- (D) OS Check / Warns user if not using 16.04 - Prompts only one time!
+- (D) Attempted to correct odd display of UI in Putty / works
 
 #### Changed
-- None
+- (D) Fix Closed/Open Port Settings; new menu, reconstructs all containers
 
 #### Removed
 - None
