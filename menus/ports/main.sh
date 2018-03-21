@@ -52,12 +52,10 @@ case $CHOICE in
         A)
 			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
  			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed
- 			dialog --title "Note" --msgbox "\nApplication Ports are Open (Worst for Security)" 0 0
             ;;
         B)
 			touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1	
 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open
-			dialog --title "Note" --msgbox "\nApplication Ports are Closed (Best for Security)" 0 0
             ;;
         Z)
             clear
@@ -70,9 +68,10 @@ while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
   dialog --infobox "Reconsturcting Your Container: $app" 3 50
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "$app" --skip-tags webtools #1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "$app" --skip-tags webtools 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 done </opt/appdata/plexguide/running
 
 echo "$app: All Applications Ports Are $status" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+dialog --title "Final Note" --msgbox "\nYour Containers Are Built with the Ports $app!" 0 0
