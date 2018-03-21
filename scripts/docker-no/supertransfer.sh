@@ -16,8 +16,8 @@
 #/opt/appdata/plexguide/throttle-detect.sh
 
 # stop program if dependencies not met
-which iftop | grep iftop || echo Please Install iftop before running && exit 1
-which rclone | grep rclone || echo Please Install rclone before running && exit 1
+which iftop | grep iftop &>/dev/null || echo Please Install iftop before running && exit 1
+which rclone | grep rclone &>/dev/null || echo Please Install rclone before running && exit 1
 
 # BACKLOG DETECTION SETTINGS
 backlog_restart=off

@@ -57,7 +57,19 @@ rutorrent () {
 curl -i -m 5 -s $ip:8999 -o html \
   && grep -iq '200 OK' html \
   && echo "ruTorrent Has No Password On $ip:8999" >> /var/plexguide/nopassword
+}
 
+resilio () {
+curl -i -m 5 -s $ip:8888 -o html \
+  && grep -iq '200 OK' html \
+  && echo "resilio Has No Password On $ip:8888" >> /var/plexguide/nopassword
+}
+
+jackett () {
+curl -i -m 5 -s $ip:9117 -o html
+  if [[ $(cat html | wc -l) -gt 100 ]]; then
+  echo "Jackett Has No Password On $ip:9117" >> /var/plexguide/nopassword
+  fi
 }
 
 nzbget () {
@@ -72,12 +84,38 @@ curl -i -s -m 5 $ip:8080 -o html \
   && echo "SABNZBD Has No Password On $ip:8080"  >> /var/plexguide/nopassword
 }
 
+nzbhydra () {
+curl -i -s -m 5 $ip:5075 -o html \
+  && grep -q '"authType": "none"' html \
+  && echo "NZBHydra Has No Password On $ip:5075"  >> /var/plexguide/nopassword
+}
+
+nzbhydra2 () {
+curl -i -s -m 5 $ip:5076 -o html \
+  && grep -q '"authType":"NONE"' html \
+  && echo "NZBHydra2 Has No Password On $ip:5076"  >> /var/plexguide/nopassword
+}
+
+emby () {
+  curl -i -s -m 5 $ip:8096/emby/users/public -o html \
+  && grep -q '"HasPassword":false' \
+  && echo "An Emby User Has No Password On $ip:8096"
+}
+
+medusa () {
+curl -i -m 5 -s $ip:8081 -o html
+  if [[ $(cat html | wc -l) -gt 20 ]]; then
+  echo "Medusa Has No Password On $ip:8081" >> /var/plexguide/nopassword
+  fi
+}
+
 # reset
 echo -n "" > /var/plexguide/nopassword
 
 # only test passwords for docker containers that are running
 applist=$(docker ps | awk '{print $NF}' | grep -v NAME)
 for app in $applist; do $app &>/dev/null; done
+
 
 
 exit 0
