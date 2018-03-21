@@ -4,6 +4,7 @@
 # Author:   Flicker-Rate
 # URL:      https://plexguide.com
 #
+#
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
@@ -12,20 +13,28 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#################################################################################n/bash
+#################################################################################
 
 # this script checks for valid ssl certs on all running dockers
 
+# stop program if dependencies not met
+which nslookup | grep nslookup || exit 1
+which openssl | grep openssl || exit 1
+
 domain=$(cat /opt/appdata/plexguide/var.yml | grep 'domain:' -m 1 | awk '{print $2}')
 realip=$(curl -s icanhazip.com)
+echo -n '' > /var/plexguide/certchecker
+echo -n '' > /var/plexguide/pingchecker
 
 # don't test if users hasn't set a domain.
 if [[ $domain == '' ]]; then
   exit 0
+elif [[ $domain == 'domain.com' ]]; then
+  exit 0
 fi
 
 ssl_check() {
-            true | openssl s_client -connect $1.$domain:443 2>/dev/null | \
+            true | openssl s_client -servername $1.$domain -connect $1.$domain:443 2>/dev/null | \
             openssl x509 -noout -checkend 0 2>/dev/null \
             || echo "$1.$domain Does Not Have A Valid SSL Certificate." >> /var/plexguide/certchecker
 }
@@ -40,7 +49,7 @@ ping_check() {
 }
 
 
-applist=$(docker ps | awk '{print $NF}' | grep -v NAME | grep -v traefik | grep -v watchtower)
+applist=$(docker ps | awk '{print $NF}' | grep -v NAME | grep -v traefik | grep -v watchtower | grep -v plex)
 
 # reset
 echo -n '' > /var/plexguide/certchecker

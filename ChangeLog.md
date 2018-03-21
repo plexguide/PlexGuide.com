@@ -16,6 +16,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - If PG is already installed and CONDUCTING AN UPDATE from 5.063 & Below, type -- sudo ansible-role clean
 
 #### Changed
+- (D)  Stronger KillSignal on supertransfer restart (testing bugfix)
+- (D)  Fixed Plexdrive Ansible role being executed out of order
 - (D)  Removed Buggy Animations for PlexDrive install menus
 - (D)  Tweaked Update Menu yes/no dialog
 - (D)  Changed Migration Option Name to "Import Media"

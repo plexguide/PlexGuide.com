@@ -15,6 +15,10 @@
 #################################################################################
 #/opt/appdata/plexguide/throttle-detect.sh
 
+# stop program if dependencies not met
+which iftop | grep iftop || echo Please Install iftop before running && exit 1
+which rclone | grep rclone || echo Please Install rclone before running && exit 1
+
 # BACKLOG DETECTION SETTINGS
 backlog_restart=off
 backlog_threshold=4   # will restart rclone if this many items are waiting for transfer.
@@ -56,7 +60,7 @@ detect_throttle() {
 	case $(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l) in
 		1) threshold=$(( 20 + $threshold_modifier )) ;;
 		2) threshold=$(( 30 + $threshold_modifier )) ;;
-	        *) threshold=$(( 40 + $threshold_modifier )) ;;
+	  *) threshold=$(( 40 + $threshold_modifier )) ;;
 	esac
 
 		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
