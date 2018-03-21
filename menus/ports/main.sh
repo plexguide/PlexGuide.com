@@ -28,8 +28,8 @@ fi
 dialog --title "Very Important" --msgbox "\nYour Applications Port Status: $status\n\nYou must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
 
 ############ Menu
-HEIGHT=9
-WIDTH=45
+HEIGHT=10
+WIDTH=52
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Make a Choice"
