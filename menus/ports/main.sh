@@ -33,7 +33,7 @@ WIDTH=45
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Make a Choice"
-MENU="Ports are Currently $status"
+MENU="Application Ports are currently >>> $status"
 
 OPTIONS=(A "Open Ports"
          B "Closed Ports"
