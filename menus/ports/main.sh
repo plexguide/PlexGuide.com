@@ -63,5 +63,3 @@ case $CHOICE in
             clear
             exit 0 ;;
 esac
-
-bash /opt/plexguide/menus/ports/main.sh
