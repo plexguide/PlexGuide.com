@@ -74,4 +74,4 @@ done </opt/appdata/plexguide/running
 
 echo "$app: All Applications Ports Are $status" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-dialog --title "Final Note" --msgbox "\nYour Containers Are Built with the Ports $status!" 0 0
+dialog --title "Final Note" --msgbox "\nYour Containers Are Built!" 0 0
