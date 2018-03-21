@@ -15,23 +15,67 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
-clear
 
-################# Virtual Machine Check
-if (whiptail --title "Virutal Machine Question" --yesno "Do You Want To Keep Your Ports Open?" 8 56) then
-
-    whiptail --title "Virutal Machine - Yes" --msgbox "Your Ports are now/still Open.  If they were closed, you need to redeploy each container!" 9 66
-    rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
-    ansible-playbook /opt/plexguide/ansible/config.yml --tags ports
-    read -n 1 -s -r -p "Press any key to continue "
-    exit
+file="/opt/appdata/plexguide/ports-no"
+if [ -e "$file" ]
+then
+  status="Closed"
 else
-    whiptail --title "Virutal Machine - No" --msgbox "Your Ports are now/still Closed. If they were open, you need to redeploy each container!" 9 66
-    touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
-    ansible-playbook /opt/plexguide/ansible/config.yml --tags ports
-    read -n 1 -s -r -p "Press any key to continue "
+	status="Open"
 fi
 
-exit
+dialog --title "Very Important" --msgbox "\nYour Applications Port Status: $status\n\nYou must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
+
+############ Menu
+HEIGHT=10
+WIDTH=52
+CHOICE_HEIGHT=4
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="Make a Choice"
+MENU="Application Ports are currently >>> $status"
+
+OPTIONS=(A "Open Application Ports"
+         B "Close Application Ports"
+         Z "No Change")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        A)
+        dialog --infobox "Please Wait!" 3 35
+        sleep 1
+			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
+ 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed 1>/dev/null 2>&1
+            ;;
+        B)
+        dialog --infobox "Please Wait!" 3 50
+        sleep 1
+			touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1	
+			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open 1>/dev/null 2>&1
+            ;;
+        Z)
+            clear
+            exit 0 ;;
+esac
+
+dialog --title "Very Important" --msgbox "\nWe must rebuild each container occardingly! Please Be Patient!" 0 0
+docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
+while read p; do
+  echo $p > /tmp/program_var
+  app=$( cat /tmp/program_var )
+  dialog --infobox "Reconsturcting Your Container: $app" 3 50
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "$app" --skip-tags webtools 1>/dev/null 2>&1
+  #read -n 1 -s -r -p "Press any key to continue "
+done </opt/appdata/plexguide/running
+
+echo "$app: All Applications Ports Are $status" > /tmp/pushover
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+dialog --title "Final Note" --msgbox "\nYour Containers Are Built!" 0 0

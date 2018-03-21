@@ -16,232 +16,82 @@
 #
 #################################################################################
 ---
-- name: Remove NZBGET Container
+- name: Removing Prior Traefik.toml
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+
+- name: Create Basic Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/traefik
+  tags:
+    - main
+
+########## Move Script if not Present
+- name: Installing Traefik.Toml (On Redirect)
+  template:
+    src: traefik.toml.on
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+    owner: 1000
+    group: 1000
+  tags:
+    - redirecton
+
+- name: Installing Traefik.Toml (Off Redirect)
+  template:
+    src: traefik.toml.off
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+    owner: 1000
+    group: 1000
+  tags:
+    - redirectoff
+
+- name: Replace yourdomain.com with user input
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: yourdomain.com
+    replace: "{{domain}}"
+  #tags:
+    #- main 
+
+- name: Replace your@email.com with user input
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: your@email.com
+    replace: "{{email}}"
+  tags:
+    - main
+#############################
+
+- name: Remove Traefik
   docker_container:
-    name: nzbget
+    name: traefik
     state: absent
 
-- name: Create nzbget download directory
-  file: "path=/mnt/nzbget/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
-
-- name: Check nzbget.conf exists
-  stat:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-  register: nzbget_conf
-
-- name: Deploy NZBGET Container
+- name: Deploy Traefik
   docker_container:
-    name: nzbget
-    image: linuxserver/nzbget
+    name: traefik
+    image: traefik:latest
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}6789:6789"
-    volumes:
-      - /opt/appdata/nzbget:/config
-      - /mnt/nzbget/completed:/completed
-      - /mnt/nzbget/incomplete:/incomplete
-      - /mnt/nzbget/nzb:/nzb
-      - /mnt/nzbget/log:/log
-      - /mnt/nzbget/tmp:/tmp
-      - /mnt/nzbget/queue:/queue
-      - /mnt/nzbget/scripts:/scripts
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
+      #- "8080:8080"
+      - "443:443"
+      - "80:80"
     env:
       PUID: 1000
       PGID: 1000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme:rw
     restart_policy: always
+    state: started
     networks:
       - name: plexguide
         aliases:
-          - nzbget
-    state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.rule: "Host:nzbget.{{domain}}"
-      traefik.port: "6789"
-
-- name: Please Wait - Pending .conf generation from NZBGET
-  wait_for:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: "Wait 10 Seconds"
-  wait_for:
-    timeout: 10
-  when: nzbget_conf.stat.exists == False
-
-- name: Customize nzbget.conf
-  docker_container:
-    name: nzbget
-    state: stopped
-  when: nzbget_conf.stat.exists == False
-
-- name: Remove User
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^ControlUsername\s?='
-    line: 'ControlUsername='
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Remove Password
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: ControlPassword=tegbzn6789
-    #regexp: '^ControlPassword=\s?='
-    line: 'ControlPassword='
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Change MainDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^MainDir\s?='
-    line: 'MainDir=/config'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Change InterDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^InterDir\s?='
-    line: 'InterDir=/incomplete'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Change DestDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^DestDir\s?='
-    line: 'DestDir=/completed'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Change NZBDir directory
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^NzbDir\s?='
-    line: 'NzbDir=/nzb'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Change QueueDir
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^QueueDir\s?='
-    line: 'QueueDir=/queue'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Change TempDir
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^TempDir\s?='
-    line: 'TempDir=/tmp'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: ScriptDir
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^ScriptDir\s?='
-    line: 'ScriptDir=scripts/'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: LogFile
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^LogFile\s?='
-    line: 'LogFile=/log/nzbget.log'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: DirectUnpack Set to On
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^DirectUnpack\s?='
-    line: 'DirectUnpack=yes'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Lowercase & Set Movie Category
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
-    line: 'Category1.Name=movies'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Set Location of Movies
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
-    line: 'Category1.DestDir=/completed/movies'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Lowercase & Set TV Category
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category2.Name\s?='
-    line: 'Category2.Name=tv'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Set Location of TV
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
-    line: 'Category2.DestDir=/completed/tv'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Lowercase & Set Music Category
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category3.Name\s?='
-    line: 'Category3.Name=music'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Set Location of Music
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
-    line: 'Category3.DestDir=/completed/music'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Lowercase & Set EBook Category
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category4.Name\s?='
-    line: 'Category4.Name=ebooks'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Set Location of EBooks
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
-    line: 'Category4.DestDir=/completed/ebooks'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Fix Lowercase & Set Movie Category
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: 'Category1.Name='
-    line: 'Category1.Name=movies'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Restart Container
-  docker_container:
-    name: nzbget
-    state: started
-  when: nzbget_conf.stat.exists == False
+          - traefik
