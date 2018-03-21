@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-dialog --title "Donation Support?" --msgbox "\nWould you be kind enough to TURN ON the Donation Option to mine for coins. This runs as a container; not installed on your machine, which SCALES against (downward) your programs being the lowest of priroity.  \n\nThe donation option utilizes UNUSED processing power and will not interfere with Plex or other programs.  This assists in further development and motivation. This option can be turned off anytime." 14 60
+dialog --title "Donation Support?" --msgbox "\nCannot Donate Money to Help out PlexGuide Development? Donate your Unused CPU power instead!\n\nThis option can be turned off anytime." 12 58
 
 HEIGHT=11
 WIDTH=51
@@ -53,7 +53,7 @@ case $CHOICE in
         B)
             clear
             ;;
-        C) 
+        C)
             clear
             ;;
         D)

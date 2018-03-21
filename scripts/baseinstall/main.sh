@@ -179,7 +179,7 @@ sleep 3
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep43.yes
+   touch /var/plexguide/dep44.yes
 
 
 echo "PG Install is Complete" > /tmp/pushover
