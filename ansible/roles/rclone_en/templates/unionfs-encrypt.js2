@@ -1,6 +1,8 @@
 [Unit]
 Description=UnionFS Daemon
-After=multi-user.target
+Requires=plexdrive.service
+After=multi-user.target plexdrive.service
+RequiresMountsFor=/mnt/plexdrive
 
 [Service]
 Type=simple
