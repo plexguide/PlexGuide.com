@@ -15,23 +15,51 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
-clear
 
-################# Virtual Machine Check
-if (whiptail --title "Virutal Machine Question" --yesno "Do You Want To Keep Your Ports Open?" 8 56) then
-
-    whiptail --title "Virutal Machine - Yes" --msgbox "Your Ports are now/still Open.  If they were closed, you need to redeploy each container!" 9 66
-    rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
-    ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed
-    read -n 1 -s -r -p "Press any key to continue "
-    exit
+file="/opt/appdata/plexguide/ports-no"
+if [ -e "$file" ]
+then
+    status="Closed"
 else
-    whiptail --title "Virutal Machine - No" --msgbox "Your Ports are now/still Closed. If they were open, you need to redeploy each container!" 9 66
-    touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
-    ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open
-    read -n 1 -s -r -p "Press any key to continue "
+	status="Open"
 fi
 
-exit
+dialog --title "Very Important" --msgbox "\nYour Ports Status: $status\n\n You must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
+
+############ Menu
+HEIGHT=12
+WIDTH=45
+CHOICE_HEIGHT=5
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="Make a Choice"
+MENU="Ports are Currently $status"
+
+OPTIONS=(A "Open Ports"
+         B "Closed Ports"
+         Z "Exit")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        A)
+			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
+ 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed
+ 			dialog --title "Note" --msgbox "\nYour Ports Are Open (Worst for Security)" 0 0
+            ;;
+        B)
+			touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1	
+			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open
+			dialog --title "Note" --msgbox "\nYour Ports Are Open (Best for Security)" 0 0
+            ;;
+        Z)
+            clear
+            exit 0 ;;
+esac
