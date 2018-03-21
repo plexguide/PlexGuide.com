@@ -1,120 +1,97 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 ---
-########## Remove old existing Traefik config
-- name: Removing File Directories
+- name: Removing Prior Traefik.toml
   file:
     state: absent
     path: /opt/appdata/traefik/traefik.toml
 
-########## Create prerequisite Traefik directories
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/traefik
+  tags:
+    - main
 
-#- name: create traefik network
-#  docker_network:
-#    name: "proxy"
-#    state: present
-
-########## Check if Traefik config exists and register
-- name: Check if Traefik prerequisites exist
-  stat:
-    path: "/opt/appdata/traefik/traefik.toml"
-  register: config
-
-########## Check if Traefik config exists and register
-#- name: Check if Traefik log-prerequisites exist
-#  stat:
-#    path: "/opt/appdata/traefik/log/traefik.log"
-#  register: log
-
-########## Copy Traefik config files
-- name: Installing Traefik prerequisites
+########## Move Script if not Present
+- name: Installing Traefik.Toml (On Redirect)
   template:
-    src: traefik.toml
+    src: traefik.toml.on
     dest: /opt/appdata/traefik/traefik.toml
     force: yes
-  when: config.stat.exists == False
+    owner: 1000
+    group: 1000
+  tags:
+    - redirecton
 
-########## Create log files
-#- name: Creating Traefik log-prerequisites
-#  template:
-#    src: traefik.log
-#    dest: /opt/appdata/traefik/log/traefik.log
-#    force: yes
-#  when: log.stat.exists == False
+- name: Installing Traefik.Toml (Off Redirect)
+  template:
+    src: traefik.toml.off
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+    owner: 1000
+    group: 1000
+  tags:
+    - redirectoff
 
-########## Check if Traefik SSL config file exists and register
-#- name: Check if SSL prerequisites exist
-#  stat:
-#    path: "/opt/appdata/traefik/ssl/acme.json"
-#  register: ssl_config
+- name: Replace yourdomain.com with user input
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: yourdomain.com
+    replace: "{{domain}}"
+  #tags:
+    #- main 
 
-########## Copy Traefik SSL config file
-#- name: Installing SSL prerequisites
-#  template:
-#    src: acme.json
-#    dest: /opt/appdata/traefik/ssl/acme.json
-#    force: yes
-#  when: ssl_config.stat.exists == False
+- name: Replace your@email.com with user input
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: your@email.com
+    replace: "{{email}}"
+  tags:
+    - main
+#############################
 
-########## Ask user for e-mail & domain
-#- name: domain
-#  pause:
-#    prompt: "Enter your domain here"
-#  register: domain_input
-
-#- name: email
-#  pause:
-#    prompt: "Enter your e-mail address here (must be valid in order to register SSL)"
-#  register: email_input
-
-########## Info-Debug
-#- debug: msg="Using following domain {{domain_input.user_input}}"
-#- debug: msg="Using following e-mail {{email_input.user_input}}"
-
-########## Replace template domain and email with the user input
-#- name: Replace yourdomain.com with user input
-#  replace:
-#    path: /opt/appdata/traefik/traefik.toml
-#    regexp: yourdomain.com
-#    replace: "{{domain_input.user_input}}"
-
-#- name: Replace your@email.com with user input
-#  replace:
-#    path: /opt/appdata/traefik/traefik.toml
-#    regexp: your@email.com
-#    replace: "{{email_input.user_input}}"
-
-########## Removes old Traefik container
 - name: Remove Traefik
   docker_container:
     name: traefik
     state: absent
 
-########## Deploys new Traefik container
-- name: Deploy Traefik and Start SSL
+- name: Deploy Traefik
   docker_container:
     name: traefik
-    image: traefik
+    image: traefik:latest
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "80:80"
-      - "8080:8080"
+      #- "8080:8080"
       - "443:443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/localtime:/etc/localtime:ro
-      #- /opt/appdata/traefik/traefik.toml:/traefik.toml
-      #- /opt/appdata/traefik/acme.json:/acme.json
-      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
-      - /opt/appdata/traefik/acme.json:/etc/traefik/acme/acme.json
+      - "80:80"
     env:
-      PUID: "1000"
-      PGID: "1000"
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme:rw
     restart_policy: always
     state: started
-#  networks:
-#    proxy:
-#      external: true
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
