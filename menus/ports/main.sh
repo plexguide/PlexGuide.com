@@ -35,8 +35,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Make a Choice"
 MENU="Application Ports are currently >>> $status"
 
-OPTIONS=(A "Open Ports"
-         B "Closed Ports"
+OPTIONS=(A "Open Application Ports"
+         B "Close Application Ports"
          Z "No Change")
 
 CHOICE=$(dialog --clear \
@@ -52,12 +52,12 @@ case $CHOICE in
         A)
 			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
  			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed
- 			dialog --title "Note" --msgbox "\nYour Ports Are Open (Worst for Security)" 0 0
+ 			dialog --title "Note" --msgbox "\nApplication Ports are Open (Worst for Security)" 0 0
             ;;
         B)
 			touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1	
 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open
-			dialog --title "Note" --msgbox "\nYour Ports Are Open (Best for Security)" 0 0
+			dialog --title "Note" --msgbox "\nApplication Ports are Closed (Best for Security)" 0 0
             ;;
         Z)
             clear
