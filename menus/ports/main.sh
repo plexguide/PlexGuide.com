@@ -50,7 +50,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-        dialog --infobox "Please Wait!" 3 50
+        dialog --infobox "Please Wait!" 3 35
         sleep 1
 			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
  			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed 1>/dev/null 2>&1
