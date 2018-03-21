@@ -37,7 +37,7 @@ MENU="Ports are Currently $status"
 
 OPTIONS=(A "Open Ports"
          B "Closed Ports"
-         Z "Exit")
+         Z "No Change")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -63,3 +63,5 @@ case $CHOICE in
             clear
             exit 0 ;;
 esac
+
+bash /opt/plexguide/menus/ports/main.sh
