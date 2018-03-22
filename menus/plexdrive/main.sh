@@ -130,7 +130,7 @@ case $CHOICE in
                 
                 bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
 
-                file="/root/.plexdrive/config.json"
+                file="/root/.plexdrive/token.json"
                 if [ -e "$file" ]
                     then
                         bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
