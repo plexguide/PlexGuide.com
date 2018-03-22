@@ -48,7 +48,8 @@ benchmark(){
 	ssh $ip "ansible-playbook /opt/plexguide/ansible/plexguide.yml\
 		 --tags network_tuning --skip-tags $1 &>/dev/null"
   nohup ssh $ip 'reboot now' >nohup.out 2>&1 &
-  sleep 60
+  sleep 10
+  while ! ping -c 1 $ip &>/dev/null; do sleep 3;done
   nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
 	sleep 10
 	start=$(date +%s)
@@ -71,14 +72,13 @@ benchmark(){
   fi
 
   if [[ avgup != '' ]]; then
-    perc_up=$(bc <<< "scale=2; ($baseline_avgup - $avgup)/$avgup * 100")
-    perc_down=$(bc <<< "scale=2; ($baseline_avgdown - $avgdown)/$avgdown * 100")
+    perc_up=$(bc <<< "scale=2; ($avgup - $baseline_avgup)/$baseline_avgup * 100")
+    perc_down=$(bc <<< "scale=2; ($avgdown - $baseline_avgdown)/$baseline_avgdown * 100")
   else
     perc_up=0
     perc_down=0
   fi
 
-  echo "PING: $(pingtest $ip)"
 	echo "AVG Down Speed: $avgdown  ($perc_down%)"
 	echo "AVG Up Speed  : $avgup  ($perc_up%)"
 	echo "Elapsed Time: $minutes Minutes"
@@ -99,13 +99,13 @@ echo "TCP Window : 128 KB"
 echo "Time       : $time seconds"
 echo "=============================="
 echo ""
-echo "Baseline Test"
+echo "Baseline Test $(pingtest $ip)
 benchmark 'bbr,mem,netsec,net' baseline
 
-echo "NET Test"
+echo "NET Test $(pingtest $ip)"
 benchmark 'bbr,mem,netsec'
 
-echo "BBR Test"
+echo "BBR Test $(pingtest $ip)"
 benchmark 'mem,net,netsec'
 
 #echo "MEM Test"
@@ -117,7 +117,7 @@ benchmark 'mem,net,netsec'
 #echo "BBR + NET + MEM Test"
 #benchmark 'netsec'
 
-echo "BBR + NET + MEM + NETSEC Test"
+echo "BBR + NET + MEM + NETSEC Test $(pingtest $ip)"
 benchmark 'testall'
 
 # TUNING NOTES
