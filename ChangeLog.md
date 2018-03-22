@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.066] (Dev & Beta)
 
 #### Added
-- Bug Fix: Stop deletion of domain upon forced upgrades
+- [D] Bug Fix: Stop deletion of domain upon forced upgrades
 
 #### Changed
 - None
