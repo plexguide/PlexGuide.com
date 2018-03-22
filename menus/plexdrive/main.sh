@@ -50,12 +50,15 @@ case $CHOICE in
             then
                 if dialog --stdout --title "PAY ATTENTION!" \
                     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE5 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 4 Again.\n\nDo You Want to Proceed?" 13 50; then
+                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE5 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 4 Again.\n\nDo You Want to Proceed?" 14 50; then
                 
                     systemctl stop plexdrive
                     rm -r /etc/systemd/system/plexdrive.service 
                     rm -r /usr/bin/plexdrive
                     dialog --title "PG Update Status" --msgbox "\nYour System Must Now Reboot!\n\nMake sure you come back and rerun PLEXDRIVE4 Again!" 0 0
+                    clear
+                    echo "Make Sure to Rerun PlexDrive4 through the Interface!"
+                    echo ""
                     reboot
                 else
                     dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -114,6 +117,26 @@ case $CHOICE in
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
                 clear
+
+            if [ "$pdversion" == "4.0.0" ]
+            then
+                if dialog --stdout --title "PAY ATTENTION!" \
+                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE4 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 5 Again.\n\nDo You Want to Proceed?" 14 50; then
+                
+                    systemctl stop plexdrive
+                    rm -r /etc/systemd/system/plexdrive.service 
+                    rm -r /usr/bin/plexdrive
+                    dialog --title "PG Update Status" --msgbox "\nYour System Must Now Reboot!\n\nMake sure you come back and rerun PLEXDRIVE5 Again!" 0 0
+                    clear
+                    echo "Make Sure to Rerun PlexDrive5 through the Interface!"
+                    echo ""
+                    reboot
+                else
+                    dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
+                    exit 0 
+                fi
+            fi
 
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 
