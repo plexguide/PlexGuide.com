@@ -46,7 +46,7 @@ clear
 case $CHOICE in
         A)
 
-            if [ "$number" -eq "0" ]
+            if [ "$pd_version" -eq "5.0.0" ]
             then
 
                 if dialog --stdout --title "PAY ATTENTION!" \
