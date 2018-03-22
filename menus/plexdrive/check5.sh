@@ -20,7 +20,7 @@ PD="Blank"
 
 while [ "$PD" != "cache" ]; do
 sleep 3
-PD=$(grep -o Opening /opt/appdata/plexguide/plexdrive.info | head -1)
+PD=$(grep -o cache /opt/appdata/plexguide/plexdrive.info | head -1)
 done
 
 rm -r /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
