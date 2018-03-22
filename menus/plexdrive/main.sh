@@ -137,8 +137,7 @@ case $CHOICE in
                     else
                         clear 1>/dev/null 2>&1
                 fi
-
-                bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
+                
                 bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
