@@ -1,20 +1,43 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.065] BETA & DEV Version
+### [5.066] (Dev & Beta)
 
 #### Added
-- (B1) OS Check / Warns User if not using 16.04 - Prompts only one time!
-- (B1) Attempted to correct odd display of UI in Putty / works
-- (B2) Added Password Checks for nzbhydra (1 & 2), resilio, emby, jackett & medusa
-- (B3) Automatic Reboot after Installing or Rerunning PlexDrive 4 or PlexDrive 5 
-- (B3) Nonempty tag added on the PlexDrive
+- None
 
 #### Changed
-- (B2) Fix Closed/Open Port Settings; new menu, reconstructs all containers
-- (B2) Fix Multiple instances of supertransfer running if systemd service is restarted
-- (B2) Fix False positive on SSL check
-- (B2) Added systemd requirement dependencies for plexdrive, unionfs & transfer services
+- None
+
+#### Removed
+- None
+
+#### Known Issues
+- pyload is not working
+- next cloud https:// domain not working, but port access is
+- supertransfer sometimes uploads duplicates (reported by lolmattylol)
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+Dropped All Version 5.064 prior for Support & Updates
+
+### [5.065]
+
+#### Added
+- OS Check / Warns User if not using 16.04 - Prompts only one time!
+- Attempted to correct odd display of UI in Putty / works
+- Added Password Checks for nzbhydra (1 & 2), resilio, emby, jackett & medusa
+- Automatic Reboot after Installing or Rerunning PlexDrive 4 or PlexDrive 5 
+- Nonempty tag added on the PlexDrive
+- Handling Ability to Switch Between PD4 and PD5; scripts reboot system if switching to assist
+
+#### Changed
+- Fix Closed/Open Port Settings; new menu, reconstructs all containers
+- Fix Multiple instances of supertransfer running if systemd service is restarted
+- Fix False positive on SSL check
+- Added systemd requirement dependencies for plexdrive, unionfs & transfer services
     - *should* fix "endpoint error not connected" error (reported by japandler)
 
 #### Removed
@@ -22,13 +45,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Known Issues
 - pyload is not working
-- turnin off ports may not work in settings <<< might be fixed (have to test more)
 - next cloud https:// domain not working, but port access is
 - supertransfer sometimes uploads duplicates (reported by lolmattylol)
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.064]
 
