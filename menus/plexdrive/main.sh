@@ -15,15 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
-############# User Confirms They Understand
-dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
 
+plexdrive --version > /tmp/pdversion 
+pdversion=$( cat /tmp/pdversion)
 
 ############ Menu
 HEIGHT=12
-WIDTH=45
+WIDTH=50
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PlexDrive for PG"
@@ -32,6 +31,7 @@ MENU="Choose one of the following options:"
 OPTIONS=(A "PlexDrive4 (Recommended)"
          B "PlexDrive5 "
          C "Remove PlexDrive Tokens"
+         D "Stop & Remove Current PD; then Reboot!"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -45,9 +45,30 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+
+            if [ "$pdversion" == "5.0.0" ]
+            then
+                if dialog --stdout --title "PAY ATTENTION!" \
+                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE5 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 4 Again.\n\nDo You Want to Proceed?" 14 50; then
+                
+                    systemctl stop plexdrive
+                    rm -r /etc/systemd/system/plexdrive.service 
+                    rm -r /usr/bin/plexdrive
+                    dialog --title "PG Update Status" --msgbox "\nYour System Must Now Reboot!\n\nMake sure you come back and rerun PLEXDRIVE4 Again!" 0 0
+                    clear
+                    echo "Make Sure to Rerun PlexDrive4 through the Interface!"
+                    echo ""
+                    reboot
+                else
+                    dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
+                    exit 0 
+                fi
+            fi
+
             if dialog --stdout --title "PlexDrive 4 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo you want to install PlexDrive4?" 7 50; then
+              --yesno "\nDo you want to install PlexDrive4? Your System Will Reboot Automatically After!" 8 50; then
                 clear
 
                     echo "true" > /tmp/alive
@@ -81,7 +102,7 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash -x /opt/plexguide/menus/plexdrive/check4.sh &
+                bash -x /opt/plexguide/menus/plexdrive/check4.sh &>/dev/null &
                 bash -x /opt/plexguide/menus/plexdrive/pd4.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
@@ -92,9 +113,30 @@ case $CHOICE in
 
             ;;
         B)
+
+            if [ "$pdversion" == "4.0.0" ]
+            then
+                if dialog --stdout --title "PAY ATTENTION!" \
+                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE5 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 5 Again.\n\nDo You Want to Proceed?" 14 50; then
+                
+                    systemctl stop plexdrive
+                    rm -r /etc/systemd/system/plexdrive.service 
+                    rm -r /usr/bin/plexdrive
+                    dialog --title "PG Update Status" --msgbox "\nYour System Must Now Reboot!\n\nMake sure you come back and rerun PLEXDRIVE5 Again!" 0 0
+                    clear
+                    echo "Make Sure to Rerun PlexDrive5 through the Interface!"
+                    echo ""
+                    reboot
+                else
+                    dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
+                    exit 0 
+                fi
+            fi
+
             if dialog --stdout --title "PlexDrive 5 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
+              --yesno "\nDo you want to Install PlexDrive5? Your System Will Reboot Automatically After!" 8 50; then
                 clear
 
                     echo "true" > /tmp/alive
@@ -128,7 +170,17 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash -x /opt/plexguide/menus/plexdrive/check5.sh &
+                
+                bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
+
+                file="/root/.plexdrive/token.json"
+                if [ -e "$file" ]
+                    then
+                        bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
+                    else
+                        clear 1>/dev/null 2>&1
+                fi
+                
                 bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
@@ -141,7 +193,18 @@ case $CHOICE in
             rm -r /root/.plexdrive 1>/dev/null 2>&1
             rm -r ~/.plexdrive 1>/dev/null 2>&1
             dialog --title "Token Status" --msgbox "\nThe Tokens were Removed" 0 0
-            bash /opt/plexguide/menus/plexdrive/main.sh ;;
+            bash /opt/plexguide/menus/plexdrive/main.sh 
+            ;;
+        D)
+            systemctl stop plexdrive 1>/dev/null 2>&1
+            sudo rm -r /etc/systemd/system/plexdrive.service 1>/dev/null 2>&1
+            bash /opt/plexguide/menus/plexdrive/main.sh 1>/dev/null 2>&1
+            dialog --title "Token Status" --msgbox "\nWe Are Going To Restart Your System!\n\nMake sure you come back and pick a version of PlexDrive!" 0 0
+            clear
+            echo "Make sure to come back and pick a version of PlexDrive to ReRun!"
+            echo ""
+            reboot
+            exit 0 ;;
         Z)
             clear
             exit 0 ;;

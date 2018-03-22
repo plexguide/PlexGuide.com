@@ -57,13 +57,13 @@ fi
 
 # warn users if their DNS settings don't work
 
-touch /var/plexguide/pingchecker
-if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
-  echo -e "\033[1;33m       -== UNREACHABLE HOST ==- \033[0m;"
-  cat /var/plexguide/pingchecker
-  echo
-elif [[ $(cat /var/plexguide/certchecker) != '' ]]; then
-  echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0m;"
-  cat /var/plexguide/certchecker
-  echo
-fi
+#touch /var/plexguide/pingchecker
+#if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
+#  echo -e "\033[1;33m       -== UNREACHABLE HOST ==- \033[0m;"
+#  cat /var/plexguide/pingchecker
+#  echo
+#elif [[ $(cat /var/plexguide/certchecker) != '' ]]; then
+  #echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0m;"
+  #cat /var/plexguide/certchecker
+  #echo
+#fi
