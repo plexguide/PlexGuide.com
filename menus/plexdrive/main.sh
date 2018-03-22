@@ -128,7 +128,7 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash -x /opt/plexguide/menus/plexdrive/check4.sh &
+                bash -x /opt/plexguide/menus/plexdrive/check5.sh &
                 bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
