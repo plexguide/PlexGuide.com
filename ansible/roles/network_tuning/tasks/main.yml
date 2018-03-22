@@ -52,12 +52,33 @@
 - name: Enable TCP BBR
   blockinfile:
     path: /etc/sysctl.conf
+    marker: "# TCP BBR"
     block: |
       net.core.default_qdisc=fq
       net.ipv4.tcp_congestion_control=bbr
   tags:
     - bbr
-    
+
+####### test
+- debug:
+    msg: "tcp-2"
+  tags: tcp-2
+
+- debug:
+    msg: "bbr-2"
+  tags: bbr-2
+
+- debug:
+    msg: "bbr2"
+  tags: bbr2
+
+- debug:
+    msg: "bbr-asdf"
+  tags: bbr-asdf
+
+- debug:
+    msg: "tcp-1"
+  tags: tcp-1
 ################### Load Kernel Configs
 
 - name: Apply Kernel Settings
