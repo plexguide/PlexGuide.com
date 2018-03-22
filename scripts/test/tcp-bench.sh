@@ -26,7 +26,7 @@
 # Usage: ./tcp-bench <file>
 ###################
 
-trys=10
+trys=20
 ip=195.201.98.159
 bufferlen=8
 time=10
@@ -64,7 +64,7 @@ benchmark(){
 	echo -n '~'
 	for i in $(seq $trys); do
 		iperf -c $ip -d -r -t $time | grep Mbits >> $1
-		echo -n '=='
+		echo -n '='
 	done
 	echo ''
 
@@ -87,21 +87,9 @@ benchmark(){
     perc_down=0
   fi
 
-  if [[ $perc_up -ge 0 ]]; then
-    sign='+'
-  else
-    sign=''
-  fi
-
-  if [[ $perc_down -ge 0 ]]; then
-    signdown='+'
-  else
-    signdown=''
-  fi
-
 	echo "AVG Down Speed: $avgdown mbit/s ($signdown$perc_down%)"
 	echo "AVG Up Speed  : $avgup mbit/s ($sign$perc_up%)"
-	echo "Elapsed Time: $minutes minutes"
+	echo "Elapsed Time  : $minutes minutes"
 	echo "=============================="
 	echo
 }
@@ -119,9 +107,6 @@ echo "=============================="
 echo ""
 echo "Baseline Test"
 benchmark 'bbr,mem,netsec,net' baseline
-
-echo "NET Test"
-benchmark 'bbr,mem,netsec'
 
 echo "BBR Test"
 benchmark 'mem,net,netsec'
