@@ -118,7 +118,7 @@ case $CHOICE in
             then
                 if dialog --stdout --title "PAY ATTENTION!" \
                     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE4 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 5 Again.\n\nDo You Want to Proceed?" 14 50; then
+                    --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE5 as of now!\n\nIf switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 5 Again.\n\nDo You Want to Proceed?" 14 50; then
                 
                     systemctl stop plexdrive
                     rm -r /etc/systemd/system/plexdrive.service 
