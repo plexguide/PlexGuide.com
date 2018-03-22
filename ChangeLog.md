@@ -4,16 +4,16 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.065] BETA & DEV Version
 
 #### Added
-- (D) OS Check / Warns user if not using 16.04 - Prompts only one time!
-- (D) Attempted to correct odd display of UI in Putty / works
-- (D) Added Password Checks for nzbhydra (1 & 2), resilio, emby, jackett & medusa
-
+- (B1) OS Check / Warns User if not using 16.04 - Prompts only one time!
+- (B1) Attempted to correct odd display of UI in Putty / works
+- (B2) Added Password Checks for nzbhydra (1 & 2), resilio, emby, jackett & medusa
+- (B3) Automatic Reboot after Installing or Rerunning PlexDrive 4 or PlexDrive 5 
 
 #### Changed
-- (D) Fix Closed/Open Port Settings; new menu, reconstructs all containers
-- (D) Fix Multiple instances of supertransfer running if systemd service is restarted
-- (D) Fix False positive on SSL check
-- (D) Added systemd requirement dependencies for plexdrive, unionfs & transfer services
+- (B2) Fix Closed/Open Port Settings; new menu, reconstructs all containers
+- (B2) Fix Multiple instances of supertransfer running if systemd service is restarted
+- (B2) Fix False positive on SSL check
+- (B2) Added systemd requirement dependencies for plexdrive, unionfs & transfer services
     - *should* fix "endpoint error not connected" error (reported by japandler)
 
 #### Removed
