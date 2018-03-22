@@ -64,7 +64,7 @@ benchmark(){
 	start=$(date +%s)
 
 	for i in $(seq $trys); do
-		iperf -c $ip -d -r -t $time  | grep Mbits >> $1
+		iperf -c $ip -d -r -t $time | grep Mbits >> $1
 		echo -n '========='
 	done
 	echo ''
@@ -105,8 +105,8 @@ echo "=============================="
 echo "Sample Size: $trys"
 echo "Buffer Size: $bufferlen KB"
 echo "TCP Window : 128 KB"
-#echo "Time       : $time seconds"
-echo "NZB Article: $(du -h $1 | awk '{print $1}')"
+echo "Time       : $time seconds"
+#echo "NZB Article: $(du -h $1 | awk '{print $1}')"
 echo "Ping       : $(pingtest $ip)"
 echo "=============================="
 echo ""
