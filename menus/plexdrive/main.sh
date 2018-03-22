@@ -136,7 +136,6 @@ case $CHOICE in
                         bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
                     else
                         clear 1>/dev/null 2>&1
-                        bash /opt/plexguide/menus/donate/main.sh
                 fi
 
                 bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
