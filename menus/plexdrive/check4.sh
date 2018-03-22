@@ -27,4 +27,6 @@ PD=$(grep -o Opening /opt/appdata/plexguide/plexdrive.info | head -1)
 done
 
 rm -r /opt/appdata/plexdrive.info 1>/dev/null 2>&1
+clear
+echo "PlexDrive4 Finished Scanning - Rebooting Your System"
 sudo reboot
