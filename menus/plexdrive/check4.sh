@@ -22,8 +22,8 @@ PD="Blank"
 
 while [ "$PD" != "Opening" ]; do
 sleep 3
-systemctl status plexdrive >> /opt/appdata/plexguide/plexdrive.info
-PD=$(grep -o Opening /opt/appdata/plexdrive.info | head -1)
+#systemctl status plexdrive >> /opt/appdata/plexguide/plexdrive.info
+PD=$(grep -o Opening /opt/appdata/plexguide/plexdrive.info | head -1)
 done
 
 rm -r /opt/appdata/plexdrive.info 1>/dev/null 2>&1
