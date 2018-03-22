@@ -15,15 +15,5 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
-PD="Blank"
-
-while [ "$PD" != "finished!" ]; do
-sleep 3
-PD=$(grep -o finished! /opt/appdata/plexguide/plexdrive.info | head -1)
-done
-
-rm -r /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
-clear
-echo "PlexDrive4 Finished Scanning - Rebooting Your System"
-reboot
+#bash -x foo.sh 2>&1 | tee log.file
+plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive

@@ -50,7 +50,7 @@ EOF
 # warn users if they don't have a password set
 touch /var/plexguide/nopassword
 if [[ $(cat /var/plexguide/nopassword) != '' ]]; then
-  echo -e "\033[1;31m       -== SECURITY WARNING ==- \033[0;1m"
+  echo -e "\033[1;31m       -== SECURITY WARNING ==- \033[0m;"
   cat /var/plexguide/nopassword
   echo
 fi
@@ -59,11 +59,11 @@ fi
 
 touch /var/plexguide/pingchecker
 if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
-  echo -e "\033[1;33m       -== UNREACHABLE HOST ==- \033[0;1m"
+  echo -e "\033[1;33m       -== UNREACHABLE HOST ==- \033[0m;"
   cat /var/plexguide/pingchecker
   echo
 elif [[ $(cat /var/plexguide/certchecker) != '' ]]; then
-  echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0;1m"
-  cat /var/plexguide/certchecker
-  echo
+  #echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0m;"
+  #cat /var/plexguide/certchecker
+  #echo
 fi

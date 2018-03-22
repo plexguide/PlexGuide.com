@@ -18,8 +18,6 @@
 
 export NCURSES_NO_UTF8_ACS=1
 ############# User Confirms They Understand
-dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
-
 
 ############ Menu
 HEIGHT=12
@@ -32,6 +30,7 @@ MENU="Choose one of the following options:"
 OPTIONS=(A "PlexDrive4 (Recommended)"
          B "PlexDrive5 "
          C "Remove PlexDrive Tokens"
+         D "Stop & Remove Current PD"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -53,7 +52,6 @@ case $CHOICE in
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd5
                     #read -n 1 -s -r -p "Press any key to continue "
-
                     loop="true"
                     echo "true" > /tmp/alive
                     #while [ "$loop" = "true" ]
@@ -82,7 +80,8 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive /mnt/plexdrive
+                bash -x /opt/plexguide/menus/plexdrive/check4.sh &>/dev/null &
+                bash -x /opt/plexguide/menus/plexdrive/pd4.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -98,7 +97,7 @@ case $CHOICE in
                 clear
 
                     echo "true" > /tmp/alive
-                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4
+                    sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 
 
                     loop="true"
                     echo "true" > /tmp/alive
@@ -128,7 +127,18 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                plexdrive mount --uid=1000 --gid=1000 -v 3 --refresh-interval=1m --chunk-load-threads=8 --chunk-check-threads=8 --chunk-load-ahead=4 --chunk-size=10M --max-chunks=300 --fuse-options=allow_other,read_only,allow_non_empty_mount --config=/root/.plexdrive --cache-file=/root/.plexdrive/cache.bolt /mnt/plexdrive
+                
+                bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
+
+                file="/root/.plexdrive/token.json"
+                if [ -e "$file" ]
+                    then
+                        bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
+                    else
+                        clear 1>/dev/null 2>&1
+                fi
+                
+                bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -141,6 +151,11 @@ case $CHOICE in
             rm -r ~/.plexdrive 1>/dev/null 2>&1
             dialog --title "Token Status" --msgbox "\nThe Tokens were Removed" 0 0
             bash /opt/plexguide/menus/plexdrive/main.sh ;;
+        D)
+            systemctl stop plexdrive
+            sudo rm -r /etc/systemd/system/plexdrive.service
+            bash /opt/plexguide/menus/plexdrive/main.sh 
+            exit 0 ;;
         Z)
             clear
             exit 0 ;;

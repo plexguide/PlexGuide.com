@@ -13,11 +13,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#/opt/appdata/plexguide/throttle-detect.sh
-
-# stop program if dependencies not met
-which iftop | grep iftop &>/dev/null || echo Please Install iftop before running && exit 1
-which rclone | grep rclone &>/dev/null || echo Please Install rclone before running && exit 1
 
 # BACKLOG DETECTION SETTINGS
 backlog_restart=off
@@ -36,6 +31,10 @@ bw_limit=1000M 		# adjust this speed if rclone is interfering with plex playback
 drive_upload_cutoff=1G
 local_dir='/mnt/move'
 remote_dir='/'		# set custom gdrive mapping (default: '/')
+
+# stop program if dependencies not met
+which iftop | grep iftop &>/dev/null || echo Supertransfer: Please Install iftop before running && exit 1
+which rclone | grep rclone &>/dev/null || echo Supertransfer: Please Install rclone before running && exit 1
 
 # init
 cat /opt/appdata/plexguide/current_index | grep [0-9] || echo 0 > /opt/appdata/plexguide/current_index

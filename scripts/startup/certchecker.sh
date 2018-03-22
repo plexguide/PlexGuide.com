@@ -24,6 +24,8 @@ which curl | grep curl &>/dev/null || exit 1
 ping icanhazip.com -c 1 &>/dev/null || exit 1
 if [[ ! -e /var/plexguide/basics.yes ]]; then
   exit 1; fi
+if [[ ! -e /opt/appdata/plexguide/var.yml ]];then
+  exit 1; fi
 
 domain=$(cat /opt/appdata/plexguide/var.yml | grep 'domain:' -m 1 | awk '{print $2}')
 realip=$(curl -s icanhazip.com)

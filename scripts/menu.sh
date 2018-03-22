@@ -20,9 +20,12 @@ else
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
+#clear warning messages
+for txtfile in certchecker nopassword pingchecker; do
+  echo -n '' > /var/plexguide/$txtfile; done
+
 # security scan
 bash /opt/plexguide/scripts/startup/pg-auth-scan.sh &
-
 # traefik cert validation
 bash /opt/plexguide/scripts/startup/certchecker.sh &
 

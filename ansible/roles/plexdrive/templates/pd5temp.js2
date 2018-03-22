@@ -1,6 +1,6 @@
 [Unit]
 Description=Move Service Daemon
-After=multi-user.target
+After=multi-user.target network-online.target
 
 [Service]
 Type=simple

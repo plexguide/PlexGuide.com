@@ -16,23 +16,6 @@
 #
 #################################################################################
 ---
-################# Not to target PD4, but to remove legacy setup
-  - name: Check service exists
-    stat:
-      path: "/etc/systemd/system/plexdrive4.service"
-    register: plexdrive4
-
-  - name: Stop existing plexdrive service
-    systemd: state=stopped name=plexdrive4
-    when: plexdrive4.stat.exists
-
-  - name: Remove Plexdrive 4 Service
-    file:
-      state: absent
-      path: /etc/systemd/system/plexdrive4.service
-      force: yes
-    when: plexdrive4.stat.exists
-
 ################# Remove New PlexDrive Regardless
 
   - name: Check service exists
@@ -107,7 +90,7 @@
   - name: PlexDrive 4 Install (Be Patient)
     get_url:
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
-      dest: /tmp
+      dest: /usr/bin/plexdrive
       mode: 0755
       owner: 1000
       group: 1000

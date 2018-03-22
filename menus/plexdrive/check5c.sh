@@ -16,4 +16,14 @@
 #
 #################################################################################
 
-sudo reboot
+PDC="Blank"
+
+while [ "$PDC" != "connection" ]; do
+sleep 3
+PDC=$(grep -o connection /opt/appdata/plexguide/plexdrive.info | head -1)
+done
+
+rm -r /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
+clear
+echo "PlexDrive5 Finished Scanning - Rebooting Your System"
+reboot
