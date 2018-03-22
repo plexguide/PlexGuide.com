@@ -128,6 +128,7 @@ case $CHOICE in
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
                 bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
+                bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
                 bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
