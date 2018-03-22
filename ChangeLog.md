@@ -8,6 +8,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Attempted to correct odd display of UI in Putty / works
 - (B2) Added Password Checks for nzbhydra (1 & 2), resilio, emby, jackett & medusa
 - (B3) Automatic Reboot after Installing or Rerunning PlexDrive 4 or PlexDrive 5 
+- (B3) Nonempty tag added on the PlexDrive
 
 #### Changed
 - (B2) Fix Closed/Open Port Settings; new menu, reconstructs all containers
