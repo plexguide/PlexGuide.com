@@ -164,7 +164,7 @@
       kernel.shmmax = 268435456
       kernel.shmall = 268435456
       vm.min_free_kbytes = 65535
-    tags:
+  tags:
       - mem
 
 ################### Load Kernel Configs
