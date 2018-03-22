@@ -68,7 +68,7 @@ case $CHOICE in
 
             if dialog --stdout --title "PlexDrive 4 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo you want to install PlexDrive4?" 7 50; then
+              --yesno "\nDo you want to install PlexDrive4? Your System Will Reboot Automatically After!" 8 50; then
                 clear
 
                     echo "true" > /tmp/alive
@@ -136,7 +136,7 @@ case $CHOICE in
 
             if dialog --stdout --title "PlexDrive 5 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
+              --yesno "\nDo you want to Install PlexDrive5? Your System Will Reboot Automatically After!" 8 50; then
                 clear
 
                     echo "true" > /tmp/alive
