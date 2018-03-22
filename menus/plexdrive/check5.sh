@@ -22,7 +22,6 @@ PD="Blank"
 
 while [ "$PD" != "cache" ]; do
 sleep 3
-systemctl status plexdrive >> /opt/appdata/plexguide/plexdrive.info
 PD=$(grep -o Opening /opt/appdata/plexguide/plexdrive.info | head -1)
 done
 
