@@ -15,9 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
-############# User Confirms They Understand
+
+echo $p > /tmp/pd_version
+pd_version=$( cat /tmp/pd_version)
 
 ############ Menu
 HEIGHT=12
@@ -30,7 +31,7 @@ MENU="Choose one of the following options:"
 OPTIONS=(A "PlexDrive4 (Recommended)"
          B "PlexDrive5 "
          C "Remove PlexDrive Tokens"
-         D "Stop & Remove Current PD"
+         D "Stop & Remove Current PD; then Reboot!"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -44,6 +45,24 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+
+            if [ "$number" -eq "0" ]
+            then
+
+                if dialog --stdout --title "PAY ATTENTION!" \
+                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                --yesno "\nYou Selected PLEXDRIVE4.  You are running PLEXDRIVE5 right now\n\n If switching, we must stop the current one and remove it. Afterwards, we will reboot your SYSTEM and YOU MUST rerun PLEXDRIVE 4 Again.\n\nDo You Want to Proceed?" 0 0; then
+                
+                systemctl stop plexdrive
+                rm -r /etc/systemd/system/plexdrive.service
+                rm -r /usr/bin/plexdrive
+                dialog --title "PG Update Status" --msgbox "\nYour System Must Now Reboot!\n\nMake sure you come back and rerun PLEXDRIVE4 Again!" 0 0
+                reboot
+            else
+                dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
+                exit 0 
+            fi
+
             if dialog --stdout --title "PlexDrive 4 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to install PlexDrive4?" 7 50; then
@@ -155,6 +174,7 @@ case $CHOICE in
             systemctl stop plexdrive
             sudo rm -r /etc/systemd/system/plexdrive.service
             bash /opt/plexguide/menus/plexdrive/main.sh 
+            reboot
             exit 0 ;;
         Z)
             clear
