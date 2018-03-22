@@ -18,9 +18,9 @@
 
 PD="Blank"
 
-while [ "$PD" != "Opening" ]; do
+while [ "$PD" != "First" ]; do
 sleep 3
-PD=$(grep -o Opening /opt/appdata/plexguide/plexdrive.info | head -1)
+PD=$(grep -o First /opt/appdata/plexguide/plexdrive.info | head -1)
 done
 
 rm -r /opt/appdata/plexguide/plexdrive.info 1>/dev/null 2>&1
