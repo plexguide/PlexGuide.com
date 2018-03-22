@@ -29,26 +29,10 @@
 trys=1
 ip=195.201.98.159
 bufferlen=8
-time=60
+time=10
 size=200
 skip_tags='bbr,mem,net,netsec'
 
-FormatBytes() {
-        bytes=${1%.*}
-        local Mbps=$( printf "%s" "$bytes" | awk '{ printf "%.2f", $0 / 1024 / 1024 * 8 } END { if (NR == 0) { print "error" } }' )
-        if [[ $bytes -lt 1000 ]]; then
-                printf "%8i B/s |      N/A     "  $bytes
-        elif [[ $bytes -lt 1000000 ]]; then
-                local KiBs=$( printf "%s" "$bytes" | awk '{ printf "%.2f", $0 / 1024 } END { if (NR == 0) { print "error" } }' )
-                printf "%7s KiB/s | %7s Mbps" "$KiBs" "$Mbps"
-        else
-                # awk way for accuracy
-                local MiBs=$( printf "%s" "$bytes" | awk '{ printf "%.2f", $0 / 1024 / 1024 } END { if (NR == 0) { print "error" } }' )
-                printf "%7s MiB/s | %7s Mbps" "$MiBs" "$Mbps"
-                # bash way
-                # printf "%4s MiB/s | %4s Mbps""$(( bytes / 1024 / 1024 ))" "$(( bytes / 1024 / 1024 * 8 ))"
-        fi
-}
 pingtest() {
         # ping one time
         local ping_link=$( echo ${1#*//} | cut -d"/" -f1 )
@@ -60,27 +44,12 @@ pingtest() {
                 printf " | ping %3i.%sms" "${ping_ms%.*}" "${ping_ms#*.}"
         fi
 }
-gdrive() {}
-          # google drive speed test
-          TMP_COOKIES="/tmp/cookies.txt"
-          TMP_FILE="/tmp/gdrive"
-          DRIVE="drive.google.com"
-          FILE_ID="1EcDdTYwJNBIXx_BL6pzEkjTD_pkCbYni"
-          printf " G-Drive   :"  | tee -a $log
-          curl -c $TMP_COOKIES -o $TMP_FILE -s "https://$DRIVE/uc?id=$FILE_ID&export=download"
-          D_ID=$( grep "confirm=" < $TMP_FILE | awk -F "confirm=" '{ print $NF }' | awk -F "&amp" '{ print $1 }' )
-          C_DL=$( curl -m 4 -Lb $TMP_COOKIES -w '%{speed_download}\n' -o $NULL \
-          -s "https://$DRIVE/uc?export=download&confirm=$D_ID&id=$FILE_ID" )
-          printf "%s\n" "$(FormatBytes $C_DL) $(pingtest $DRIVE)" | tee -a $log
-          echo "" | tee -a $log
-}
 benchmark(){
 	ssh $ip "ansible-playbook /opt/plexguide/ansible/plexguide.yml\
 		 --tags network_tuning --skip-tags $1 &>/dev/null"
   nohup ssh $ip 'reboot now' >nohup.out 2>&1 &
-  gdrive
   sleep 60
-  nohup ssh $ip 'nohup iperf -s' >nohup.out 2>&1 &
+  nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
 	sleep 10
 	start=$(date +%s)
 
@@ -88,7 +57,6 @@ benchmark(){
 		iperf -c $ip -d -r -t $time  | grep Mbits >> $1
 		echo -n '========='
 	done
-  nohup ssh $ip 'pkill iperf' >nohup.out 2>&1 &
 	echo ''
 
 	avgup=$(sed -n 2~2p $1 | awk '{ total += $7; count++ } END { print total/count }')
@@ -110,6 +78,7 @@ benchmark(){
     perc_down=0
   fi
 
+  echo "PING: $(pingtest $ip)"
 	echo "AVG Down Speed: $avgdown  ($perc_down%)"
 	echo "AVG Up Speed  : $avgup  ($perc_up%)"
 	echo "Elapsed Time: $minutes Minutes"
