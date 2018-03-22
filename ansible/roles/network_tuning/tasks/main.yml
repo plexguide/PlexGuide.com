@@ -1,7 +1,7 @@
 # https://cloudplatform.googleblog.com/2017/07/TCP-BBR-congestion-control-comes-to-GCP-your-Internet-just-got-faster.html
-# https://wiki.archlinux.org/index.php/Sysctl
+# https://www.psc.edu/index.php/networking/641-tcp-tune
 #
-# [PlexGuide Network Tuning]
+# [PlexGuide TCP Tuning]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Flicker-Rate
@@ -38,23 +38,27 @@
     dest: /opt/appdata/plexguide/sysctl.conf
   when: sysctl.stat.exists == False
 
+########### Reset Sysctl Config With Backup File
+- name: Reseting Kernel Parameters
+  copy:
+    src: /opt/appdata/plexguide/sysctl.conf
+    dest: /etc/sysctl.conf
+  when: sysctl.stat.exists == True
+
 ########### Adjust kernel params
 # enable/disable tweaks with --skip-tags
 
-## BBR
-- sysctl:
-    name: net.core.default_qdisc
-    value: fq
+#################### BBR
+- name: Enable TCP BBR
+  blockinfile:
+    path: /etc/sysctl.conf
+    block: |
+      net.core.default_qdisc=fq
+      net.ipv4.tcp_congestion_control=bbr
   tags:
     - bbr
     
-- sysctl:
-    name: net.ipv4.tcp_congestion_control
-    value: bbr
-  tags:
-    - bbr
-
 ################### Load Kernel Configs
 
 - name: Apply Kernel Settings
-  shell: "sysctl -p"
+  shell: "sysctl -e -p"
