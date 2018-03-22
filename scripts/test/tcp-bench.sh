@@ -26,12 +26,11 @@
 # Usage: ./tcp-bench <ip.address>
 ###################
 
-trys=1
-ip=195.201.98.159
+trys=20
+#ip=195.201.98.159
+ip=$1
 bufferlen=8
 time=10
-size=200
-skip_tags='bbr,mem,net,netsec'
 
 pingtest() {
         # ping one time
@@ -39,23 +38,34 @@ pingtest() {
         local ping_ms=$( ping -w1 -c1 $ping_link | grep 'rtt' | cut -d"/" -f5 )
         # get download speed and print
         if [[ $ping_ms == "" ]]; then
-                printf " | ping error!"
+                printf "error"
         else
-                printf " | ping %3i.%sms" "${ping_ms%.*}" "${ping_ms#*.}"
+                printf "%3i.%sms" "${ping_ms%.*}" "${ping_ms#*.}"
         fi
 }
+
 benchmark(){
+  echo -n '' > $1
+  nohup ssh $ip 'pkill iperf' >nohup.out 2>&1 &
+	echo -n '='
 	ssh $ip "ansible-playbook /opt/plexguide/ansible/plexguide.yml\
 		 --tags network_tuning --skip-tags $1 &>/dev/null"
+	echo -n '='
   nohup ssh $ip 'reboot now' >nohup.out 2>&1 &
-  sleep 60
+	echo -n '='
+  sleep 10
+	echo -n '='
+  while ! ping -c 1 $ip &>/dev/null; do sleep 3;done
+	echo -n '='
+  sleep 10
+	echo -n '='
   nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
-	sleep 10
+	sleep 5
 	start=$(date +%s)
-
+	echo -n '~'
 	for i in $(seq $trys); do
-		iperf -c $ip -d -r -t $time  | grep Mbits >> $1
-		echo -n '========='
+		iperf -c $ip -d -t $time | grep Mbits >> $1
+		echo -n '='
 	done
 	echo ''
 
@@ -71,51 +81,36 @@ benchmark(){
   fi
 
   if [[ avgup != '' ]]; then
-    perc_up=$(bc <<< "scale=2; ($baseline_avgup - $avgup)/$avgup * 100")
-    perc_down=$(bc <<< "scale=2; ($baseline_avgdown - $avgdown)/$avgdown * 100")
+    perc_up=$(bc <<< "scale=2; ($avgup - $baseline_avgup)/$baseline_avgup * 100")
+    perc_down=$(bc <<< "scale=2; ($avgdown - $baseline_avgdown)/$baseline_avgdown * 100")
   else
     perc_up=0
     perc_down=0
   fi
 
-  echo "PING: $(pingtest $ip)"
-	echo "AVG Down Speed: $avgdown  ($perc_down%)"
-	echo "AVG Up Speed  : $avgup  ($perc_up%)"
-	echo "Elapsed Time: $minutes Minutes"
-	echo "=============================="
+	echo "AVG Down Speed: $avgdown mbit/s ($signdown$perc_down%)"
+	echo "AVG Up Speed  : $avgup mbit/s ($sign$perc_up%)"
+	echo "Elapsed Time  : $minutes minutes"
+	echo "======================================="
 	echo
-  if [[ $2 == 'baseline' ]]; then
-    baseline_avgup=$avgup
-    baseline_avgdown=$avgdown
-  fi
 }
 
-
+echo
 echo "PLEXGUIDE TCP TUNER BENCHMARK"
-echo "=============================="
+echo "======================================="
 echo "Sample Size: $trys"
 echo "Buffer Size: $bufferlen KB"
 echo "TCP Window : 128 KB"
 echo "Time       : $time seconds"
-echo "=============================="
+#echo "NZB Article: $(du -h $1 | awk '{print $1}')"
+echo "Ping       : $(pingtest $ip)"
+echo "======================================="
 echo ""
 echo "Baseline Test"
 benchmark 'bbr,mem,netsec,net' baseline
 
-echo "NET Test"
-benchmark 'bbr,mem,netsec'
-
 echo "BBR Test"
 benchmark 'mem,net,netsec'
-
-#echo "MEM Test"
-#benchmark 'bbr,netsec,net'
-
-#echo "BBR + NET Test"
-#benchmark 'mem,netsec'
-
-#echo "BBR + NET + MEM Test"
-#benchmark 'netsec'
 
 echo "BBR + NET + MEM + NETSEC Test"
 benchmark 'testall'
