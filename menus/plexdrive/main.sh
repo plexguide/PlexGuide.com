@@ -17,8 +17,8 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-echo $p > /tmp/pd_version 
-pd_version=$( cat /tmp/pd_version)
+plexdrive --version > /tmp/pdversion 
+pdversion=$( cat /tmp/pdversion)
 
 ############ Menu
 HEIGHT=12
@@ -46,7 +46,7 @@ clear
 case $CHOICE in
         A)
 
-            if [ "$pd_version" -eq "5.0.0" ]
+            if [ "$pdversion" -eq "5.0.0" ]
             then
 
                 if dialog --stdout --title "PAY ATTENTION!" \
@@ -63,7 +63,7 @@ case $CHOICE in
                     exit 0 
                 fi
             fi
-            
+
             if dialog --stdout --title "PlexDrive 4 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to install PlexDrive4?" 7 50; then
