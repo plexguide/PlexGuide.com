@@ -113,10 +113,6 @@ case $CHOICE in
 
             ;;
         B)
-            if dialog --stdout --title "PlexDrive 5 Install" \
-              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
-                clear
 
             if [ "$pdversion" == "4.0.0" ]
             then
@@ -137,6 +133,11 @@ case $CHOICE in
                     exit 0 
                 fi
             fi
+
+            if dialog --stdout --title "PlexDrive 5 Install" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nDo you want to Install PlexDrive5?" 7 50; then
+                clear
 
                     echo "true" > /tmp/alive
                     sudo ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plexdrive --skip-tags plexd4 
