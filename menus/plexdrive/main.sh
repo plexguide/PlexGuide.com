@@ -127,7 +127,18 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
+                
                 bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
+
+                file="/root/.plexdrive/config.json"
+                if [ -e "$file" ]
+                    then
+                        bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
+                    else
+                        clear 1>/dev/null 2>&1
+                        bash /opt/plexguide/menus/donate/main.sh
+                fi
+
                 bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
                 bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
