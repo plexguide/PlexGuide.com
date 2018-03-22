@@ -63,7 +63,7 @@ if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
   cat /var/plexguide/pingchecker
   echo
 elif [[ $(cat /var/plexguide/certchecker) != '' ]]; then
-  echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0m;"
-  cat /var/plexguide/certchecker
-  echo
+  #echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0m;"
+  #cat /var/plexguide/certchecker
+  #echo
 fi
