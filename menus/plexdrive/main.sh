@@ -22,7 +22,7 @@ pd_version=$( cat /tmp/pd_version)
 
 ############ Menu
 HEIGHT=12
-WIDTH=45
+WIDTH=50
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PlexDrive for PG"
@@ -61,8 +61,9 @@ case $CHOICE in
                 else
                     dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
                     exit 0 
+                fi
             fi
-
+            
             if dialog --stdout --title "PlexDrive 4 Install" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo you want to install PlexDrive4?" 7 50; then
