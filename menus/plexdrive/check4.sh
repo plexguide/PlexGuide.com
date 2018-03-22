@@ -16,8 +16,8 @@
 #
 #################################################################################
 
-rm -r /opt/appdata/plexdrive.info 1>/dev/null 2>&1
-touch /opt/appdata/plexdrive.info 1>/dev/null 2>&1
+#rm -r /opt/appdata/plexdrive.info 1>/dev/null 2>&1
+#touch /opt/appdata/plexdrive.info 1>/dev/null 2>&1
 PD="Blank"
 
 while [ "$PD" != "Opening" ]; do
