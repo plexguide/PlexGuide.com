@@ -23,14 +23,14 @@
 #
 # Install SSH keys on remote:
 #
-# Usage: ./tcp-bench <file>
+# Usage: ./tcp-bench <ip.address>
 ###################
 
 trys=20
-ip=195.201.98.159
+#ip=195.201.98.159
+ip=$1
 bufferlen=8
 time=10
-skip_tags='bbr,mem,net,netsec'
 
 pingtest() {
         # ping one time
@@ -43,6 +43,7 @@ pingtest() {
                 printf "%3i.%sms" "${ping_ms%.*}" "${ping_ms#*.}"
         fi
 }
+
 benchmark(){
   echo -n '' > $1
   nohup ssh $ip 'pkill iperf' >nohup.out 2>&1 &
@@ -63,7 +64,7 @@ benchmark(){
 	start=$(date +%s)
 	echo -n '~'
 	for i in $(seq $trys); do
-		iperf -c $ip -d -r -t $time | grep Mbits >> $1
+		iperf -c $ip -d -t $time | grep Mbits >> $1
 		echo -n '='
 	done
 	echo ''
@@ -90,20 +91,20 @@ benchmark(){
 	echo "AVG Down Speed: $avgdown mbit/s ($signdown$perc_down%)"
 	echo "AVG Up Speed  : $avgup mbit/s ($sign$perc_up%)"
 	echo "Elapsed Time  : $minutes minutes"
-	echo "=============================="
+	echo "======================================="
 	echo
 }
 
 echo
 echo "PLEXGUIDE TCP TUNER BENCHMARK"
-echo "=============================="
+echo "======================================="
 echo "Sample Size: $trys"
 echo "Buffer Size: $bufferlen KB"
 echo "TCP Window : 128 KB"
 echo "Time       : $time seconds"
 #echo "NZB Article: $(du -h $1 | awk '{print $1}')"
 echo "Ping       : $(pingtest $ip)"
-echo "=============================="
+echo "======================================="
 echo ""
 echo "Baseline Test"
 benchmark 'bbr,mem,netsec,net' baseline
