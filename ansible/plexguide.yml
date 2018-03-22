@@ -56,3 +56,4 @@
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: pyload, tags: ['pyload'] }
   - { role: clean, tags: ['clean'] }
+  - { role: network_tuning, tags: ['network_tuning'] }

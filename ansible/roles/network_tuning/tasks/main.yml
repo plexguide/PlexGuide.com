@@ -1,0 +1,60 @@
+# https://cloudplatform.googleblog.com/2017/07/TCP-BBR-congestion-control-comes-to-GCP-your-Internet-just-got-faster.html
+# https://wiki.archlinux.org/index.php/Sysctl
+#
+# [PlexGuide Network Tuning]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Flicker-Rate
+# URL:      https://plexguide.com
+#
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# TCP BBR significantly improves throughput on high latency & bufferfloat heavy networks
+# Requires Linux Kernel <= 4.9
+#
+# Plex users streaming from faraway servers with aysymetric
+# internet speeds will see the most improvement
+#
+# Real-world benchmark shows 260% increase in download speeds on an iperf test
+# With servers in East Germany and Midwest USA on gigabit networks
+#################################################################################
+
+########### Check If Backup sysctl exists
+- name: sysctl Checker
+  stat:
+    path: /opt/appdata/plexguide/sysctl.conf
+  register: sysctl
+
+########### Backup Sysctl Config
+- name: Backup Kernel Parameters
+  copy:
+    src: /etc/sysctl.conf
+    dest: /opt/appdata/plexguide/sysctl.conf
+  when: sysctl.stat.exists == False
+
+########### Adjust kernel params
+# enable/disable tweaks with --skip-tags
+
+## BBR
+- sysctl:
+    name: net.core.default_qdisc
+    value: fq
+  tags:
+    - bbr
+    
+- sysctl:
+    name: net.ipv4.tcp_congestion_control
+    value: bbr
+  tags:
+    - bbr
+
+################### Load Kernel Configs
+
+- name: Apply Kernel Settings
+  shell: "sysctl -p"
