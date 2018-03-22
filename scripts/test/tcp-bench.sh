@@ -26,7 +26,7 @@
 # Usage: ./tcp-bench <file>
 ###################
 
-trys=1
+trys=10
 ip=195.201.98.159
 bufferlen=8
 time=10
@@ -46,26 +46,26 @@ pingtest() {
 benchmark(){
   echo -n '' > $1
   nohup ssh $ip 'pkill iperf' >nohup.out 2>&1 &
-	echo -n '='
+	echo -n '*'
 	ssh $ip "ansible-playbook /opt/plexguide/ansible/plexguide.yml\
 		 --tags network_tuning --skip-tags $1 &>/dev/null"
-	echo -n '='
+	echo -n '*'
   nohup ssh $ip 'reboot now' >nohup.out 2>&1 &
 	echo -n '='
   sleep 10
 	echo -n '='
   while ! ping -c 1 $ip &>/dev/null; do sleep 3;done
-	echo -n '='
+	echo -n '!'
   sleep 10
 	echo -n '='
   nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
-	echo -n '='
+	echo -n '$'
 	sleep 5
 	start=$(date +%s)
 
 	for i in $(seq $trys); do
 		iperf -c $ip -d -r -t $time | grep Mbits >> $1
-		echo -n '========='
+		echo -n '==='
 	done
 	echo ''
 
@@ -88,15 +88,17 @@ benchmark(){
     perc_down=0
   fi
 
-	echo "AVG Down Speed: $avgdown mbit/s ($perc_down%)"
-	echo "AVG Up Speed  : $avgup mbit/s ($perc_up%)"
+  if [[ $perc_up -ge 0 ]];
+    sign='+'
+  else
+    sign=''
+  fi
+
+	echo "AVG Down Speed: $avgdown mbit/s ($sign$perc_down%)"
+	echo "AVG Up Speed  : $avgup mbit/s ($sign$perc_up%)"
 	echo "Elapsed Time: $minutes minutes"
 	echo "=============================="
 	echo
-  if [[ $2 == 'baseline' ]]; then
-    baseline_avgup=$avgup
-    baseline_avgdown=$avgdown
-  fi
 }
 
 
@@ -110,25 +112,16 @@ echo "Time       : $time seconds"
 echo "Ping       : $(pingtest $ip)"
 echo "=============================="
 echo ""
-echo "Baseline Test $(pingtest $ip)"
+echo "Baseline Test"
 benchmark 'bbr,mem,netsec,net' baseline
 
-echo "NET Test $(pingtest $ip)"
+echo "NET Test"
 benchmark 'bbr,mem,netsec'
 
-echo "BBR Test $(pingtest $ip)"
+echo "BBR Test"
 benchmark 'mem,net,netsec'
 
-#echo "MEM Test"
-#benchmark 'bbr,netsec,net'
-
-#echo "BBR + NET Test"
-#benchmark 'mem,netsec'
-
-#echo "BBR + NET + MEM Test"
-#benchmark 'netsec'
-
-echo "BBR + NET + MEM + NETSEC Test $(pingtest $ip)"
+echo "BBR + NET + MEM + NETSEC Test"
 benchmark 'testall'
 
 # TUNING NOTES
