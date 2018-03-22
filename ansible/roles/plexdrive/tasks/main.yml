@@ -53,6 +53,7 @@
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
       dest: /usr/bin/plexdrive
       mode: 0755
+      validate_certs: no
       owner: 1000
       group: 1000
       force: yes
@@ -92,6 +93,7 @@
       url:  https://github.com/dweidenfeld/plexdrive/releases/download/4.0.0/plexdrive-linux-amd64
       dest: /usr/bin/plexdrive
       mode: 0755
+      validate_certs: no
       owner: 1000
       group: 1000
       force: yes
