@@ -23,14 +23,13 @@
 #
 # Install SSH keys on remote:
 #
-# Usage: ./tcp-bench <ip.address>
+# Usage: ./tcp-bench <file>
 ###################
 
 trys=1
 ip=195.201.98.159
 bufferlen=8
 time=10
-size=200
 skip_tags='bbr,mem,net,netsec'
 
 pingtest() {
@@ -39,19 +38,29 @@ pingtest() {
         local ping_ms=$( ping -w1 -c1 $ping_link | grep 'rtt' | cut -d"/" -f5 )
         # get download speed and print
         if [[ $ping_ms == "" ]]; then
-                printf " | ping error!"
+                printf "error"
         else
-                printf " | ping %3i.%sms" "${ping_ms%.*}" "${ping_ms#*.}"
+                printf "%3i.%sms" "${ping_ms%.*}" "${ping_ms#*.}"
         fi
 }
 benchmark(){
+  echo -n '' > $1
+  nohup ssh $ip 'pkill iperf' >nohup.out 2>&1 &
+	echo -n '='
 	ssh $ip "ansible-playbook /opt/plexguide/ansible/plexguide.yml\
 		 --tags network_tuning --skip-tags $1 &>/dev/null"
+	echo -n '='
   nohup ssh $ip 'reboot now' >nohup.out 2>&1 &
+	echo -n '='
   sleep 10
+	echo -n '='
   while ! ping -c 1 $ip &>/dev/null; do sleep 3;done
+	echo -n '='
+  sleep 10
+	echo -n '='
   nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
-	sleep 10
+	echo -n '='
+	sleep 5
 	start=$(date +%s)
 
 	for i in $(seq $trys); do
@@ -79,9 +88,9 @@ benchmark(){
     perc_down=0
   fi
 
-	echo "AVG Down Speed: $avgdown  ($perc_down%)"
-	echo "AVG Up Speed  : $avgup  ($perc_up%)"
-	echo "Elapsed Time: $minutes Minutes"
+	echo "AVG Down Speed: $avgdown mbit/s ($perc_down%)"
+	echo "AVG Up Speed  : $avgup mbit/s ($perc_up%)"
+	echo "Elapsed Time: $minutes minutes"
 	echo "=============================="
 	echo
   if [[ $2 == 'baseline' ]]; then
@@ -96,10 +105,12 @@ echo "=============================="
 echo "Sample Size: $trys"
 echo "Buffer Size: $bufferlen KB"
 echo "TCP Window : 128 KB"
-echo "Time       : $time seconds"
+#echo "Time       : $time seconds"
+echo "NZB Article: $(du -h $1 | awk '{print $1}')"
+echo "Ping       : $(pingtest $ip)"
 echo "=============================="
 echo ""
-echo "Baseline Test $(pingtest $ip)
+echo "Baseline Test $(pingtest $ip)"
 benchmark 'bbr,mem,netsec,net' baseline
 
 echo "NET Test $(pingtest $ip)"
