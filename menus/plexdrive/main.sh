@@ -18,8 +18,6 @@
 
 export NCURSES_NO_UTF8_ACS=1
 ############# User Confirms They Understand
-dialog --title "Very Important" --msgbox "\nWhen PlexDrive finishes the initial scan, make sure to reboot the server! If using PD5 and then says 'Opening Cache' - go ahead and reboot the server!" 0 0
-
 
 ############ Menu
 HEIGHT=12
@@ -32,6 +30,7 @@ MENU="Choose one of the following options:"
 OPTIONS=(A "PlexDrive4 (Recommended)"
          B "PlexDrive5 "
          C "Remove PlexDrive Tokens"
+         D "Stop & Remove Current PD"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -142,6 +141,11 @@ case $CHOICE in
             rm -r ~/.plexdrive 1>/dev/null 2>&1
             dialog --title "Token Status" --msgbox "\nThe Tokens were Removed" 0 0
             bash /opt/plexguide/menus/plexdrive/main.sh ;;
+        D)
+            systemctl stop plexdrive
+            sudo rm -r /etc/systemd/system/plexdrive.service
+            bash /opt/plexguide/menus/plexdrive/main.sh 
+            exit 0 ;;
         Z)
             clear
             exit 0 ;;
