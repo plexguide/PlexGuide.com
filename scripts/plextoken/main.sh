@@ -56,5 +56,5 @@ if [ -z "$X_PLEX_TOKEN" ]; then
     dialog --title "Token Status" --msgbox "\nFailed to Retrieve the Plex Token!" 0 0
     exit 1
 fi
-rm -f /opt/appdata/plexguide/plex_sign_in
+
 dialog --title "Your Token - We Saved It" --msgbox "\nToken: $X_PLEX_TOKEN!\n\nNote: You Do Not Need To Copy This" 0 0  
