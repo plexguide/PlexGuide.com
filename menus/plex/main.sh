@@ -69,6 +69,7 @@ case $CHOICE in
         Z)
             clear
             exit 0 
+            failed > /tmp/plexinstall
             ;;
 
 ########## Deploy End
