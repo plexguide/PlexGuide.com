@@ -28,17 +28,17 @@ fi
     --inputbox "Plex Username or EMail:" 8 45 2>/tmp/plexuser
     plexuser=$(cat /tmp/plexuser)
     dialog --infobox "Typed PlexUser: $plexuser" 3 45
-    sleep 4
+    sleep 2
  
     dialog --title "Input >> Plex Password" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "Your Plex Password" 8 45 2>/tmp/plexpassword
     plexpassword=$(cat /tmp/plexpassword)
     dialog --infobox "Typed Password: $plexpassword" 3 45
-    sleep 4
+    sleep 2
 
-    clear
->&2 echo 'Retrieving a X-Plex-Token using Plex login/password...'
+    dialog --infobox "Fetching Your Plex Token" 3 45
+    sleep 2
 
 curl -qu "${plexuser}":"${plexpassword}" 'https://plex.tv/users/sign_in.xml' \
     -X POST -H 'X-Plex-Device-Name: PlexMediaServer' \
