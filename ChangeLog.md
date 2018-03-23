@@ -5,12 +5,14 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Added
 - [D] Bug Fix: Stop deletion of domain upon forced upgrades
+- [D] Added Ability to Claim Token through PG; no more going to plex.tv/claim
+    - STILL UNDER DEVELOPMENT & TESTING
 
 #### Changed
 - None
 
 #### Removed
-- None
+- Some Old Menus
 
 #### Known Issues
 - pyload is not working
