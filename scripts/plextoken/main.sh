@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Token Retriever]
 #
-# GitHub:   https://github.com/wernight/docker-plex-media-server/blob/master/root/usr/local/bin/retrieve-plex-token
-# Author:   Wernight
+# Website:   https://plexguide.com
+# Author:   Admin9705
 #
-# PlexGuide Copyright (C) 2018 PlexGuide.com
+# PlexGuide Copyright (C) PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
 #   You may copy, distribute and modify the software as long as you track
@@ -14,26 +14,33 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Further Enhanced By https://plexguide.com
+# Original Script
+# GitHub:   https://github.com/wernight/docker-plex-media-server/blob/master/root/usr/local/bin/retrieve-plex-token
+# Author:   Wernight
 #################################################################################
-if [ -z "$PLEX_LOGIN" ] || [ -z "$PLEX_PASSWORD" ]; then
-    PLEX_LOGIN=$1
-    PLEX_PASSWORD=$2
+if [ -z "$plexuser" ] || [ -z "$plexpassword" ]; then
+    plexuser=$1
+    plexpassword=$2
 fi
 
-while [ -z "$PLEX_LOGIN" ]; do
-    >&2 echo -n 'Your Plex login (e-mail or username): '
-    read PLEX_LOGIN
-done
+    dialog --title "Input >> Plex Login" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --inputbox "Plex Username or EMail:" 8 45 2>/tmp/plexuser
+    plexuser=$(cat /tmp/plexuser)
+    dialog --infobox "Typed PlexUser: $plexuser" 3 45
+    sleep 4
+ 
+    dialog --title "Input >> Plex Password" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --inputbox "Plex Password or EMail:" 8 45 2>/tmp/plexuser
+    plexpassword=$(cat /tmp/plexpassword)
+    dialog --infobox "Typed Password: $plexpassword" 3 45
+    sleep 4
 
-while [ -z "$PLEX_PASSWORD" ]; do
-    >&2 echo -n 'Your Plex password: '
-    read PLEX_PASSWORD
-done
-
+    clear
 >&2 echo 'Retrieving a X-Plex-Token using Plex login/password...'
 
-curl -qu "${PLEX_LOGIN}":"${PLEX_PASSWORD}" 'https://plex.tv/users/sign_in.xml' \
+curl -qu "${plexuser}":"${plexpassword}" 'https://plex.tv/users/sign_in.xml' \
     -X POST -H 'X-Plex-Device-Name: PlexMediaServer' \
     -H 'X-Plex-Provides: server' \
     -H 'X-Plex-Version: 0.9' \
