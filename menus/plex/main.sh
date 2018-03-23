@@ -33,7 +33,8 @@ port=32400
     bash /opt/plexguide/scripts/plextoken/main.sh
     plextoken=$(cat /opt/appdata/plexguide/plextoken)
     plextoken="claim-$plextoken"
-    echo "$plextoken" > /opt/appdata/plexguide/plextoken
+    echo "claim-9xnZvQegpPgQmPFqAyx2" > /opt/appdata/plexguide/plextoken
+    #echo "$plextoken" > /opt/appdata/plexguide/plextoken
 
 
 HEIGHT=10
