@@ -40,7 +40,7 @@ fi
     dialog --infobox "Fetching Your Plex Token" 3 45
     sleep 2
 
-curl -qu "${plexuser}":"${plexpassword}" 'https://plex.tv/users/sign_in.xml' \
+curl -qu "${plexuser}":"${plexpassword}" 'https://plex.tv/users/sign_in.xml' 1>/dev/null 2>&1 \
     -X POST -H 'X-Plex-Device-Name: PlexMediaServer' \
     -H 'X-Plex-Provides: server' \
     -H 'X-Plex-Version: 0.9' \
@@ -51,8 +51,8 @@ curl -qu "${plexuser}":"${plexpassword}" 'https://plex.tv/users/sign_in.xml' \
     -H 'X-Plex-Client-Identifier: XXXX' --compressed >/opt/appdata/plexguide/plex_sign_in
 X_PLEX_TOKEN=$(sed -n 's/.*<authentication-token>\(.*\)<\/authentication-token>.*/\1/p' /opt/appdata/plexguide/plex_sign_in)
 if [ -z "$X_PLEX_TOKEN" ]; then
-    cat /opt/appdata/plexguide/plex_sign_in
-    rm -f /opt/appdata/plexguide/plex_sign_in
+    cat /opt/appdata/plexguide/plex_sign_in 1>/dev/null 2>&1
+    rm -f /opt/appdata/plexguide/plex_sign_in 1>/dev/null 2>&1
     dialog --title "Token Status" --msgbox "\nFailed to Retrieve the Plex Token!" 0 0
     exit 1
 fi
