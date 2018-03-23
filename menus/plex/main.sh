@@ -44,9 +44,9 @@ case $CHOICE in
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 4
 
-            dialog --infobox "Installing Plex: Please Wait" 3 45   
+            #dialog --infobox "Installing Plex: Please Wait" 3 45   
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
-            #read -n 1 -s -r -p "Press any key to continue "
+            read -n 1 -s -r -p "Press any key to continue "
             ;;
 
         B)
