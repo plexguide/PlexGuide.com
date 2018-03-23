@@ -42,10 +42,10 @@ case $CHOICE in
         A)
                 echo "latest" > /tmp/plextag
                 dialog --infobox "Selected Tag: Latest" 3 38
-                sleep 4
+                sleep 2
 
             #dialog --infobox "Installing Plex: Please Wait" 3 45   
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools #1>/dev/null 2>&1
             read -n 1 -s -r -p "Press any key to continue "
             ;;
 
@@ -58,7 +58,7 @@ case $CHOICE in
                 --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/tmp/plextag
                 plexgtag=$(cat /tmp/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
-                sleep 4
+                sleep 2
             
             dialog --infobox "Installing Plex: Please Wait" 3 45
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
