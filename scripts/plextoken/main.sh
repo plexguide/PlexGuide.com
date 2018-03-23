@@ -48,15 +48,15 @@ curl -qu "${plexuser}":"${plexpassword}" 'https://plex.tv/users/sign_in.xml' \
     -H 'X-Plex-Platform: xcid' \
     -H 'X-Plex-Product: Plex Media Server'\
     -H 'X-Plex-Device: Linux'\
-    -H 'X-Plex-Client-Identifier: XXXX' --compressed >/tmp/plex_sign_in
-X_PLEX_TOKEN=$(sed -n 's/.*<authentication-token>\(.*\)<\/authentication-token>.*/\1/p' /tmp/plex_sign_in)
+    -H 'X-Plex-Client-Identifier: XXXX' --compressed >/opt/appdata/plexguide/plex_sign_in
+X_PLEX_TOKEN=$(sed -n 's/.*<authentication-token>\(.*\)<\/authentication-token>.*/\1/p' /opt/appdata/plexguide/plex_sign_in)
 if [ -z "$X_PLEX_TOKEN" ]; then
-    cat /tmp/plex_sign_in
-    rm -f /tmp/plex_sign_in
+    cat /opt/appdata/plexguide/plex_sign_in
+    rm -f /opt/appdata/plexguide/plex_sign_in
     >&2 echo 'Failed to retrieve the X-Plex-Token.'
     exit 1
 fi
-rm -f /tmp/plex_sign_in
+rm -f /opt/appdata/plexguide/plex_sign_in
 
 >&2 echo "Your X_PLEX_TOKEN:"
 
