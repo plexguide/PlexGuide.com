@@ -47,5 +47,5 @@ token=$(curl -H "Content-Length: 0" -H "X-Plex-Client-Identifier: PlexInTheCloud
 # Grab the Plex Section ID of our new TV show library
 #tvID=$(curl -H "X-Plex-Token: ${token}" http://ffplex.com:32400/library/sections | grep "show" | grep "title=" | awk -F = '{print $6" "$7" "$8}' | sed 's/ art//g' | sed 's/title//g' | sed 's/type//g' | awk -F \" '{print "Section=\""$6"\" ID="$2}' | cut -d '"' -f2)
 
-dialog --title "Your Token - We Saved It" --msgbox "\nToken: $token\nNote:  Do Not Need To Copy This" 0 0  
+dialog --title "Your Token - We Saved It" --msgbox "\nToken: $token \nNote:  Do Not Need To Copy This" 0 0  
 echo "$token" > /opt/appdata/plexguide/plextoken
