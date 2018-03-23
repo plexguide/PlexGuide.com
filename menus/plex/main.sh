@@ -29,8 +29,8 @@ port=32400
     
     bash /opt/plexguide/scripts/plextoken/main.sh
     plextoken=$(cat /opt/appdata/plexguide/plextoken)
-    dialog --infobox "Token: $plextoken" 3 45
-    sleep 4
+    #dialog --infobox "Token: $plextoken" 3 45
+    #sleep 4
     else
         echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
     fi
