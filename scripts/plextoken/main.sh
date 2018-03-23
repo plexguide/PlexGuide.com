@@ -32,7 +32,7 @@ fi
  
     dialog --title "Input >> Plex Password" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "Your Plex Password" 8 45 2>/tmp/plexuser
+    --inputbox "Your Plex Password" 8 45 2>/tmp/plexpassword
     plexpassword=$(cat /tmp/plexpassword)
     dialog --infobox "Typed Password: $plexpassword" 3 45
     sleep 4
