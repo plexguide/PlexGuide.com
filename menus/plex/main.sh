@@ -30,11 +30,11 @@ port=32400
 
     sleep 4
 
-    bash /opt/plexguide/scripts/plextoken/main.sh
+    bash /opt/plexguide/scripts/plextoken/test.sh
     plextoken=$(cat /opt/appdata/plexguide/plextoken)
     plextoken="claim-$plextoken"
-    echo "claim-9xnZvQegpPgQmPFqAyx2" > /opt/appdata/plexguide/plextoken
-    #echo "$plextoken" > /opt/appdata/plexguide/plextoken
+    #echo "claim-NARF" > /opt/appdata/plexguide/plextoken
+    echo "$plextoken" > /opt/appdata/plexguide/plextoken
 
 
 HEIGHT=10
