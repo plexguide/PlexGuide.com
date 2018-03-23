@@ -57,5 +57,5 @@ if [ -z "$X_PLEX_TOKEN" ]; then
     exit 1
 fi
 rm -f /opt/appdata/plexguide/plex_sign_in
-dialog --title "Your Token - We Saved It" --msgbox "\nToken: $X_PLEX_TOKEN!\nNote: Do Not Need To Copy This" 0 0  
+dialog --title "Your Token - We Saved It" --msgbox "\nToken: $X_PLEX_TOKEN!\nNote:  Do Not Need To Copy This" 0 0  
 echo X_PLEX_TOKEN > /opt/appdata/plexguide/plextoken
