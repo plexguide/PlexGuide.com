@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# [Cloudbox Ansible Role - Cleaning Function Only]
+#
+# Author:   13uddz & Desmonic
+# URL:      https://cloudbox.rocks
+#
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Further Enhanced by DesignGears: https://plexguide.com
+# GitHub: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+#################################################################################
+---
+- name: Install Cloudplow; remove old cronjob
+  cron:
+    name: "Cloudplow Clean"
+    user: "root"
+    state: absent
+
+- name: Install Cloudplow; remove old directory
+  file:
+    state: absent
+    path: "/opt/appdata/cloudplow"
+
+- name: Install Cloudplow; download
+  become_user: root
+  shell: "git clone https://github.com/Admin9705/clean /opt/appdata/cloudplow"
+  
+- name: Install Cloudplow; dependencies
+  become_user: root
+  shell: "python3 -m pip install -r /opt/appdata/cloudplow/requirements.txt"
+
+- name: Install Cloudplow; config
+  template:
+    src: config.js2
+    dest: /opt/appdata/cloudplow/config.json 
+    force: yes
+
+- name: Install Cloudplow; cronjob
+  cron:
+    name: "Cloudplow Clean"
+    user: "root"
+    minute: "0"
+    hour: "0"
+    job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"

@@ -1,2 +1,2 @@
 #!/bin/bash
-rclone --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
+rclone --uid=1000 --gid=1000 --allow-non-empty --allow-other mount crypt: /mnt/encrypt --bwlimit 8650k --size-only
