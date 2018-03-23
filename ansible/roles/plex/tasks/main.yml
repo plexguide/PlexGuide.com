@@ -21,10 +21,8 @@
   when: plex_prefs.stat.exists == False
 
 - name: "Establishing Plex Token Version"
-  shell: "awk '{print $1}' /opt/appdata/plexguide/plextoken"
+  shell: "cat /opt/appdata/plexguide/plextoken"
   register: plextoken_var
-
-- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
 
 - name: Remove Plex Container
   docker_container:
