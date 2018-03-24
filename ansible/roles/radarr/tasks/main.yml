@@ -25,7 +25,7 @@
       - /mnt/torrentvpn/downloaded:/data/completed
       - /mnt/sab/complete:/complete
       - /mnt/nzbget/completed:/completed
-      - /mnt/rutorrents/downloads:/downloads
+      - /mnt/rutorrents:/downloads
       - /mnt/deluge/downloaded:/downloaded
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
