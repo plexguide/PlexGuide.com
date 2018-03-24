@@ -4,12 +4,11 @@ clear
 
 ################# init message
 
-if (whiptail --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
-
-    whiptail --title "Network Speed - Yes" --msgbox "These tweaks work best in high-latency, low packet loss enviroments (ie: server is located in America, but you are streaming from Austrailia)." 9 66
-else
-    whiptail --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
-fi
+#if (whiptail --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
+#    whiptail --title "Network Speed - Yes" --msgbox "These tweaks work best in high-latency, low packet loss enviroments (ie: server is located in America, but you are streaming from Austrailia)." 9 66
+#else
+#    whiptail --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
+#fi
 
 while [ 1 ]
 do
@@ -20,10 +19,9 @@ whiptail --title "Kernel Profiles" --menu "See Wiki For Info" 12 38 5 \
     "3)" "tj007s13 Kernel Tweaks + BBR"  \
     "4)" "Update to Latest Generic Kernel"  \
     "5)" "Install Xanmod Kernel"  \
-    "6)" "Exit  "  3>&2 2>&1 1>&3
+    "6)" "Exit"  3>&2 2>&1 1>&3
 )
 
-result=$(whoami)
 case $CHOICE in
     "1)")
     clear
