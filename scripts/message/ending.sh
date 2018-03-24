@@ -33,7 +33,7 @@ cat << "EOF"
 │                                     │
 │   Admin9705, Deiteq, JackalBlood    │
 │ DataMonkeh, DesignGears, Pentagonos │
-│       RXWatcher, Flicker-Rate       │
+│   RXWatcher, Flicker-Rate, Davaz    │
 │                                     │
 │ ——————————————————————————————————— │
 │ Star PG:      github.plexguide.com  │

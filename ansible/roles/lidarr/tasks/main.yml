@@ -25,7 +25,7 @@
       - /mnt/unionfs:/unionfs
       - /mnt/sab/complete:/complete
       - /mnt/nzbget/completed:/completed
-      - /mnt/rutorrents/downloads:/downloads
+      - /mnt/rutorrents:/downloads
       - /mnt/deluge/downloaded:/downloaded
       - /mnt/torrentvpn/downloaded:/data/completed
       - /etc/localtime:/etc/localtime:ro

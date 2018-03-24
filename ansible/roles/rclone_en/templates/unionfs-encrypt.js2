@@ -8,8 +8,9 @@ RequiresMountsFor=/mnt/plexdrive
 Type=simple
 User=0
 Group=0
+ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
-ExecStop=/bin/umount -l /mnt/unionfs
+ExecStop=/bin/fusermount -uz /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes

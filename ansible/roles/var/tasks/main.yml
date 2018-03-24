@@ -22,13 +22,6 @@
   with_items:
     - /opt/appdata/plexguide
 
-########## Remove old existing config file
-- name: Removing File Directories
-  file:
-    state: absent
-    path:
-     - /opt/appdata/plexguide/var.yml
-
 ########## Copy Traefik config files
 - name: Installing config prerequisites
   template:
