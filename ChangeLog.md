@@ -4,7 +4,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.066] (Dev & Beta)
 
 #### Added
-- [D] Bug Fix: Stop deletion of domain upon forced upgrades
+- (D) Bug Fix: Stop deletion of domain upon forced upgrades
+- (D) Bug Fix: Code for menu glitches if you cancel out of plex install & ask if you already claimed
 
 #### Changed
 - (D) Minor changes to PlexDrive
