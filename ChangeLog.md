@@ -5,8 +5,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Added
 - [D] Bug Fix: Stop deletion of domain upon forced upgrades
-- [D] Added Ability to Claim Token through PG; no more going to plex.tv/claim
-    - STILL UNDER DEVELOPMENT & TESTING
 
 #### Changed
 - (D) Minor changes to PlexDrive
