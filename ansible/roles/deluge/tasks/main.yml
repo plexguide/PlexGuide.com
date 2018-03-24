@@ -45,7 +45,7 @@
   register: label.conf
   tags:
     - web
-    
+
 ################ MOVE
 - name: Move noseed.conf
   template:
@@ -66,7 +66,7 @@
 - name: Move web.conf
   template:
     src: web.conf
-    dest: /opt/appdata/deluge/config/web.conf
+    dest: /opt/appdata/deluge/config/web2.conf
     force: yes
   tags:
     - web
