@@ -5,7 +5,7 @@
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & Flicker-Rate
 # URL:      https://plexguide.com
-#
+#extractor
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
@@ -23,6 +23,13 @@
 
 - name: Create Deluge Directory
   file: "path=/opt/appdata/deluge/config state=directory mode=0775 owner=1000 group=1000 recurse=true"
+
+- name: Check extractor.conf exists - noseed
+  stat:
+    path: "/opt/appdata/deluge/config/extractor.conf"
+  register: extractor.conf
+  tags:
+    - extractor
 
 - name: Check label.conf exists - noseed
   stat:
