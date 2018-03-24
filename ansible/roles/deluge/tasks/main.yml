@@ -24,13 +24,7 @@
 - name: Create Deluge Directory
   file: "path=/opt/appdata/deluge/config state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
-- name: Check label.conf exists - noseed
-  stat:
-    path: "/opt/appdata/deluge/config/web.conf"
-  register: web.conf
-  tags:
-    - noseed
-
+################ REGISTER
 - name: Check extractor.conf exists
   stat:
     path: "/opt/appdata/deluge/config/extractor.conf"
@@ -51,7 +45,8 @@
   register: label.conf
   tags:
     - web
-
+    
+################ MOVE
 - name: Move noseed.conf
   template:
     src: noseed.conf
@@ -62,19 +57,19 @@
 
 - name: Move extractor.conf
   template:
-    src: noseed.conf
+    src: extractor.conf
     dest: /opt/appdata/deluge/config/extractor.conf
     force: yes
   tags:
     - extractor
 
-- name: Move extractor.conf
+- name: Move web.conf
   template:
-    src: noseed.conf
+    src: web.conf
     dest: /opt/appdata/deluge/config/web.conf
     force: yes
   tags:
-    - extractor
+    - web
 
 - name: Create Deluge Container
   docker_container:
