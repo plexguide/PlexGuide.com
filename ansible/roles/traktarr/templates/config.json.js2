@@ -47,15 +47,11 @@
       "blacklisted_networks": [
         "twitch",
         "youtube",
-        "nickelodeon",
-        "hallmark",
         "reelzchannel",
-        "disney",
         "cnn",
         "cbbc",
         "the movie network",
         "teletoon",
-        "cartoon network",
         "espn",
         "fox sports",
         "yahoo!"
