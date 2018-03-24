@@ -25,19 +25,20 @@
 #
 # Usage: ./tcp-bench <ip.address>
 ###################
+which nslookup &>/dev/null || echo please install dnsutils
+which nc &>/dev/null || echo please install nc
+which iperf &>/dev/null || echo please install iperf
 
-trys=20
-#ip=195.201.98.159
+trys=10
+ip=195.201.98.159
 #ip=107.155.94.69
-ip=$1
+#ip=$1
 bufferlen=8
-time=10
+time=60
 
 pingtest() {
-        # ping one time
         local ping_link=$( echo ${1#*//} | cut -d"/" -f1 )
         local ping_ms=$( ping -w1 -c1 $ping_link | grep 'rtt' | cut -d"/" -f5 )
-        # get download speed and print
         if [[ $ping_ms == "" ]]; then
                 printf "error"
         else
@@ -56,9 +57,9 @@ benchmark(){
 	echo -n '='
   sleep 10
 	echo -n '='
-  while ! ping -c 1 $ip &>/dev/null; do sleep 3;done
+  while ! nc -nz $ip 22 ; do sleep 3;done
 	echo -n '='
-  sleep 10
+  sleep 5
 	echo -n '='
   nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
 	sleep 5
@@ -107,16 +108,15 @@ echo "Time       : $time seconds"
 echo "Ping       :$(pingtest $ip)"
 echo "======================================="
 echo ""
+
 echo "Baseline"
-benchmark 'bbr,klaver' baseline
+benchmark 'bbr,klaver,tj' baseline
 
 echo "BBR"
-benchmark 'klaver'
+benchmark 'klaver,tj'
 
 echo "BBR + Klaver"
-benchmark 'testall'
+benchmark 'tj'
 
-# TUNING NOTES
-# RUN #1 (nocix -> hetzner)
-# Best: BBR + NET + MEM + NETSEC (kernel: 4.10 generic)
-# renamed to bbrnet
+echo "BBR + tj"
+benchmark 'klaver'

@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# Title:    PlexGuide Auth Scan (Security Checkup)
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Flicker-Rate
 # URL:      https://plexguide.com
@@ -65,12 +65,12 @@ curl -i -m 5 -s $ip:8888 -o html \
   && echo "resilio Has No Password On $ip:8888" >> /var/plexguide/nopassword
 }
 
-jackett () {
-curl -i -m 5 -s $ip:9117 -o html
-  if [[ $(cat html | wc -l) -gt 100 ]]; then
-  echo "Jackett Has No Password On $ip:9117" >> /var/plexguide/nopassword
-  fi
-}
+#jackett () {
+#curl -i -m 5 -s $ip:9117 -o html
+#  if [[ $(cat html | wc -l) -gt 100 ]]; then
+#  echo "Jackett Has No Password On $ip:9117" >> /var/plexguide/nopassword
+#  fi
+# }
 
 nzbget () {
 curl -i -s -m 5 $ip:6789 -o html \
@@ -102,12 +102,12 @@ emby () {
   && echo "An Emby User Has No Password On $ip:8096"
 }
 
-medusa () {
-curl -i -m 5 -s $ip:8081 -o html
-  if [[ $(cat html | wc -l) -gt 20 ]]; then
-  echo "Medusa Has No Password On $ip:8081" >> /var/plexguide/nopassword
-  fi
-}
+#medusa () {
+#curl -i -m 5 -s $ip:8081 -o html
+#  if [[ $(cat html | wc -l) -gt 20 ]]; then
+#  echo "Medusa Has No Password On $ip:8081" >> /var/plexguide/nopassword
+#  fi
+#}
 
 # reset
 echo -n "" > /var/plexguide/nopassword
