@@ -31,9 +31,9 @@ cat << "EOF"
 ┌─────────────────────────────────────────────┐
 │           -== PlexGuide Team ==-            │
 │                                             │
-│ Admin9705, Deiteq, The Creator, JackalBlood │
+│    Admin9705, Deiteq, The Creator, Davaz    │
 │     DataMonkeh, DesignGears, Pentagonos     │
-│       RXWatcher, Flicker-Rate, Davaz        │
+│ RXWatcher, Flicker-Rate, Davaz, JackalBlood │
 │                                             │
 │ ——————————————————————————————————————————— │
 │ Star PG:      github.plexguide.com          │
