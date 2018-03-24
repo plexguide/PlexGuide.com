@@ -113,6 +113,6 @@
     }
   },
   "trakt": {
-    "api_key": "{traktkey}"
+    "api_key": "a43e93decafa476ec4ea5e5c1ef76209a8edcc76406cb89e98d32890e9e5dde5"
   }
 }
