@@ -33,8 +33,8 @@ local_dir='/mnt/move'
 remote_dir='/'		# set custom gdrive mapping (default: '/')
 
 # stop program if dependencies not met
-which iftop | grep iftop &>/dev/null || echo Supertransfer: Please Install iftop before running && exit 1
-which rclone | grep rclone &>/dev/null || echo Supertransfer: Please Install rclone before running && exit 1
+#which iftop | grep iftop &>/dev/null || echo Supertransfer: Please Install iftop before running && exit 1
+#which rclone | grep rclone &>/dev/null || echo Supertransfer: Please Install rclone before running && exit 1
 
 # init
 cat /opt/appdata/plexguide/current_index | grep [0-9] || echo 0 > /opt/appdata/plexguide/current_index

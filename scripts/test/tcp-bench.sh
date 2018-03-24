@@ -28,6 +28,7 @@
 
 trys=20
 #ip=195.201.98.159
+#ip=107.155.94.69
 ip=$1
 bufferlen=8
 time=10
@@ -103,16 +104,16 @@ echo "Buffer Size: $bufferlen KB"
 echo "TCP Window : 128 KB"
 echo "Time       : $time seconds"
 #echo "NZB Article: $(du -h $1 | awk '{print $1}')"
-echo "Ping       : $(pingtest $ip)"
+echo "Ping       :$(pingtest $ip)"
 echo "======================================="
 echo ""
-echo "Baseline Test"
-benchmark 'bbr,mem,netsec,net' baseline
+echo "Baseline"
+benchmark 'bbr,klaver' baseline
 
-echo "BBR Test"
-benchmark 'mem,net,netsec'
+echo "BBR"
+benchmark 'klaver'
 
-echo "BBR + NET + MEM + NETSEC Test"
+echo "BBR + Klaver"
 benchmark 'testall'
 
 # TUNING NOTES
