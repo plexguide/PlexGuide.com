@@ -22,8 +22,9 @@ whiptail --title "Kernel Profiles" --menu "See Wiki For Info" 12 38 5 \
     "6)" "Exit"  3>&2 2>&1 1>&3
 )
 
+result=$(whoami)
 case $CHOICE in
-    1)
+    "1)")
     clear
       # check if bbr is avail
       skip-tags='tj,klaver'
@@ -39,7 +40,7 @@ case $CHOICE in
       fi
     ;;
 
-    2)
+    "2)")
       clear
       # check if bbr is avail
       skip-tags='tj'
@@ -55,7 +56,7 @@ case $CHOICE in
       fi
     ;;
 
-    3)
+    "3)")
       clear
       # check if bbr is avail
       skip-tags='klaver'
@@ -71,19 +72,19 @@ case $CHOICE in
       fi
     ;;
 
-    4)
+    "4)")
       clear
       echo "not yet implenmented"
       read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    5)
+    "5)")
       clear
       echo "not yet implenmented"
       read -n 1 -s -r -p "Press any key to continue "
     ;;
 
-    6)
+    "6)")
       clear
       #exit 0
       ;;
