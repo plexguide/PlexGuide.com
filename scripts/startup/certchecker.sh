@@ -40,8 +40,8 @@ elif [[ $domain == 'domain.com' ]]; then
 fi
 
 ssl_check() {
-            true | openssl s_client -servername $1.$domain -connect $1.$domain:443 2>/dev/null | \
-            openssl x509 -noout -checkend 0 2>/dev/null \
+            true | openssl s_client -showcerts -servername $1.$domain -connect $1.$domain:443 2>/dev/null | \
+            openssl x509 -noout -text 2>/dev/null \
             || echo "$1.$domain Does Not Have A Valid SSL Certificate." >> /var/plexguide/certchecker
 }
 

@@ -26,18 +26,16 @@
 # Usage: ./tcp-bench <ip.address>
 ###################
 
-trys=20
-#ip=195.201.98.159
+trys=10
+ip=195.201.98.159
 #ip=107.155.94.69
 ip=$1
 bufferlen=8
-time=10
+time=60
 
 pingtest() {
-        # ping one time
         local ping_link=$( echo ${1#*//} | cut -d"/" -f1 )
         local ping_ms=$( ping -w1 -c1 $ping_link | grep 'rtt' | cut -d"/" -f5 )
-        # get download speed and print
         if [[ $ping_ms == "" ]]; then
                 printf "error"
         else
@@ -107,16 +105,24 @@ echo "Time       : $time seconds"
 echo "Ping       :$(pingtest $ip)"
 echo "======================================="
 echo ""
+
 echo "Baseline"
-benchmark 'bbr,klaver' baseline
+benchmark 'bbr,klaver,tj,illinois' baseline
 
 echo "BBR"
-benchmark 'klaver'
+benchmark 'klaver,illinois,tj'
+
+echo "illinois"
+benchmark 'klaver,bbr,tj'
 
 echo "BBR + Klaver"
-benchmark 'testall'
+benchmark 'tj,illinois'
 
-# TUNING NOTES
-# RUN #1 (nocix -> hetzner)
-# Best: BBR + NET + MEM + NETSEC (kernel: 4.10 generic)
-# renamed to bbrnet
+echo "BBR + tj"
+benchmark 'klaver,illinois'
+
+echo "illinois + Klaver"
+benchmark 'bbr,tj'
+
+echo "illinois + tj"
+benchmark 'klaver,bbr'

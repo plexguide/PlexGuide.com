@@ -14,6 +14,9 @@
 #
 #################################################################################
 
+which rclone &>/dev/null || exit 1
+which iftop &>/dev/null || exit 1
+
 # BACKLOG DETECTION SETTINGS
 backlog_restart=off
 backlog_threshold=4   # will restart rclone if this many items are waiting for transfer.
