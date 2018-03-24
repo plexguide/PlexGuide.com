@@ -108,7 +108,7 @@ esac
 file="/tmp/plexsetup"
 if [ -e "$file" ]
 then
-   rm /tmp/plexsetup
+   clear 1>/dev/null 2>&1
 else
    exit 
 fi
@@ -124,7 +124,7 @@ dialog --infobox "If the claim does not work, read the WIKI for other methods!" 
 echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-sleep 5
+sleep 4
 
 if dialog --stdout --title "WebTools Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \

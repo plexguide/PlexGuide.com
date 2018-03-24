@@ -49,6 +49,16 @@ case $CHOICE in
             program=plex
             port=32400
             bash /opt/plexguide/menus/plex/main.sh
+
+            file="/tmp/plexsetup"
+            if [ -e "$file" ]
+            then
+                clear 1>/dev/null 2>&1
+            else
+                bash /opt/plexguide/menus/programs/media.sh
+                exit 
+            fi
+
             dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
         B)
             display=Emby
