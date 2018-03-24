@@ -9,7 +9,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
     - STILL UNDER DEVELOPMENT & TESTING
 
 #### Changed
-- None
+- (D) Minor changes to PlexDrive
+- (D) Migz - submitted a pull request to fix rutorrent mappings!
 
 #### Removed
 - Some Old Menus
