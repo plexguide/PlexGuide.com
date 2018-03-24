@@ -19,10 +19,11 @@ HEIGHT=15
 WIDTH=32
 CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Select A PlexGuide Version"
+TITLE="Select a PlexGuide Version"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.066"
+         B "Beta 1   : 5.066"
          B "Stable   : 5.065"
          Z "Exit")
 
@@ -68,6 +69,9 @@ case $CHOICE in
             sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         B)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.066beta1" ;;           
+        C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.065" ;;
         Z)
