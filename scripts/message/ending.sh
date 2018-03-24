@@ -55,7 +55,7 @@ if [[ $(cat /var/plexguide/nopassword) != '' ]]; then
   echo
 fi
 
- warn users if their DNS settings don't work
+ #warn users if their DNS settings don't work
 
 touch /var/plexguide/pingchecker
 if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
