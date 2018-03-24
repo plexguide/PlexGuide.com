@@ -21,6 +21,8 @@
 # Donate: Paypal - l3uddz@gmail.com
 #################################################################################
 ---
+
+## make sure to put conditional statements
 - name: Check service exists
   stat:
     path: "/etc/systemd/system/traktarr.service"
@@ -30,10 +32,22 @@
   systemd: state=stopped name=traktarr
   when: traktarr_service.stat.exists
 
+## make sure to put conditional statements
+- name: Check to see if traktarr.yml exists
+  stat:
+    path: "/opt/appdata/plexguide/traktarr.yml"
+  register: traktarr_service
+
+- name: Installing config prerequisites
+  template:
+    src: traktarr.yml
+    dest: /opt/appdata/plexguide/traktarr.yml
+    force: yes
+
 - name: Create traktarr directories
-  file: "path={{item}} state=directory mode=0775 owner={{user}} group={{user}} recurse=true"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/traktarr
+    - /opt/appdata/traktarr
     
 - name: Clone traktarr
   git:
@@ -44,7 +58,7 @@
     
 - name: Install pip requirements
   pip:
-    requirements: /opt/traktarr/requirements.txt
+    requirements: /opt/appdata/traktarr/requirements.txt
     executable: pip3
 
 - name: Check config exists
@@ -61,11 +75,11 @@
 
 - name: Set traktarr.py as executable
   file:
-    path: /opt/traktarr/traktarr.py
+    path: /opt/appdata/traktarr/traktarr.py
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/traktarr state=directory owner=1000 group=1000 recurse=yes"
+  file: "path=/opt/appdata/traktarr state=directory owner=1000 group=1000 recurse=yes"
 
 - name: "Create /usr/local/bin symlink"
   file:
@@ -78,7 +92,6 @@
     src: traktarr.service.js2
     dest: /etc/systemd/system/traktarr.service 
     force: yes
-  when: traktarr_service.stat.exists == False
 
 - name: Load service file
   systemd: state=stopped name=traktarr daemon_reload=yes enabled=no

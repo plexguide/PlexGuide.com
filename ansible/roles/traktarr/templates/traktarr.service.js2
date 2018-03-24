@@ -3,10 +3,10 @@ Description=traktarr
 After=network-online.target unionfs.service
 
 [Service]
-User={{user}}
-Group={{user}}
+User=0
+Group=0
 Type=simple
-WorkingDirectory=/opt/traktarr/
+WorkingDirectory=/opt/appdata/traktarr/
 ExecStart=/usr/bin/python3 /opt/appdata/traktarr/traktarr.py run
 Restart=always
 RestartSec=10

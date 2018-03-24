@@ -28,22 +28,22 @@ cat << "EOF"
 EOF
 
 cat << "EOF"
-┌─────────────────────────────────────┐
-│        -== PlexGuide Team ==-       │
-│                                     │
-│   Admin9705, Deiteq, JackalBlood    │
-│ DataMonkeh, DesignGears, Pentagonos │
-│   RXWatcher, Flicker-Rate, Davaz    │
-│                                     │
-│ ——————————————————————————————————— │
-│ Star PG:      github.plexguide.com  │
-│ PG Discord:   discord.plexguide.com │
-│ Donate:       donate.plexguide.com  │
-│ ——————————————————————————————————— │
-│ Restart Plexguide:        plexguide │
-│ Update Plexguide:         pgupdate  │
-│ Update to Dev Version:    pgdev     │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│           -== PlexGuide Team ==-            │
+│                                             │
+│    Admin9705, Deiteq, The Creator, Davaz    │
+│     DataMonkeh, DesignGears, Pentagonos     │
+│ RXWatcher, Flicker-Rate, Davaz, JackalBlood │
+│                                             │
+│ ——————————————————————————————————————————— │
+│ Star PG:      github.plexguide.com          │
+│ PG Discord:   discord.plexguide.com         │
+│ Donate:       donate.plexguide.com          │
+│ ——————————————————————————————————————————— │
+│ Restart Plexguide:        plexguide         │
+│ Update Plexguide:         pgupdate          │
+│ Update to Dev Version:    pgdev             │
+└─────────────────────────────────────────────┘
 
 EOF
 

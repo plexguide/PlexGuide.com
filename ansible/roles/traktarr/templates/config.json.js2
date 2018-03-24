@@ -14,14 +14,6 @@
       "trending": 1
     }
   },
-  "notifications": {
-    "verbose": true,
-    "pushover": {
-      "service": "pushover",
-      "app_token": "",
-      "user_token": ""
-    }
-  },
   "filters": {
     "shows": {
       "allowed_countries": [
@@ -80,16 +72,16 @@
     "debug": false
   },
   "radarr": {
-    "api_key": "",
+    "api_key": "{radarrkey}",
     "profile": "HD-1080p",
     "url": "https://radarr.{{domain}}",
-    "root_folder": "/movies/"
+    "root_folder": "{radarrfolder"
   },
   "sonarr": {
-    "api_key": "",
-    "profile": "HD-1080p",
+    "api_key": "1d8e7fe4dc9e403eaa3adddee642aceb",
+    "profile": "Any",
     "url": "https://sonarr.{{domain}}",
-    "root_folder": "/tv/",
+    "root_folder": "{sonarrfolder}",
     "tags": {
       "amzn": [
         "hbo",
@@ -121,6 +113,6 @@
     }
   },
   "trakt": {
-    "api_key": ""
+    "api_key": "a43e93decafa476ec4ea5e5c1ef76209a8edcc76406cb89e98d32890e9e5dde5"
   }
 }

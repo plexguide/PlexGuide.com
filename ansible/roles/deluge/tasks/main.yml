@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -20,6 +20,56 @@
   docker_container:
     name: deluge
     state: absent
+
+- name: Create Deluge Directory
+  file: "path=/opt/appdata/deluge/config state=directory mode=0775 owner=1000 group=1000 recurse=true"
+
+################ REGISTER
+- name: Check extractor.conf exists
+  stat:
+    path: "/opt/appdata/deluge/config/extractor.conf"
+  register: extractor.conf
+  tags:
+    - extractor
+
+- name: Check label.conf exists
+  stat:
+    path: "/opt/appdata/deluge/config/label.conf"
+  register: label.conf
+  tags:
+    - noseed
+
+- name: Check web.conf exists
+  stat:
+    path: "/opt/appdata/deluge/config/label.conf"
+  register: label.conf
+  tags:
+    - web
+
+################ MOVE
+- name: Move noseed.conf
+  template:
+    src: noseed.conf
+    dest: /opt/appdata/deluge/config/label.conf
+    force: yes
+  tags:
+    - noseed
+
+- name: Move extractor.conf
+  template:
+    src: extractor.conf
+    dest: /opt/appdata/deluge/config/extractor.conf
+    force: yes
+  tags:
+    - extractor
+
+- name: Move web.conf
+  template:
+    src: web.conf
+    dest: /opt/appdata/deluge/config/web2.conf
+    force: yes
+  tags:
+    - web
 
 - name: Create Deluge Container
   docker_container:

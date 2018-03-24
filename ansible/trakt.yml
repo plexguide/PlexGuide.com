@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  vars_files:
+    - /opt/appdata/plexguide/var.yml
+    - /opt/appdata/plexguide/traktarr.yml
+
+  roles:
+  - { role: traktarr, tags: ['traktarr'] }

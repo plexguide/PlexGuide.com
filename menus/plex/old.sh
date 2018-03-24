@@ -15,13 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-rm -r /tmp/plexsetup 1>/dev/null 2>&1
-
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
  source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
 
  ### demo ip / comment out when done
  #ipv4=69.69.69.69
@@ -30,32 +26,16 @@ display=PLEX
 program=plex
 port=32400
 
-    if dialog --stdout --title "PAY ATTENTION!" \
-      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-      --yesno "\nDo you require to claim this SERVER for PLEX?\n\nSelect No: IF your PLEX Container is already Claimed & Working" 0 0; then
 
-        dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
-        sleep 4
 
-        if dialog --stdout --title "PAY ATTENTION!" \
-          --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
+    #sleep 4
 
-        dialog --title "PLEX CLAIM INFORMATION" \
-        --msgbox "\nVisit http://plex.tv/claim and PRESS the [COPY] Button (do not highlight and copy). You have 5 minutes starting NOW! [PRESS ENTER] when you are READY!" 10 50
+    #bash /opt/plexguide/scripts/plextoken/test.sh
+    #plextoken=$(cat /opt/appdata/plexguide/plextoken)
+    #plextoken="claim-$plextoken"
+    #echo "claim-NARF" > /opt/appdata/plexguide/plextoken
+    #echo "$plextoken" > /opt/appdata/plexguide/plextoken
 
-        dialog --title "Input >> PLEX CLAIM" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/tmp/plextoken
-        plextoken=$(cat /tmp/plextoken)
-        dialog --infobox "Token: $plextoken" 3 45
-        sleep 2
-        else
-            echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
-        fi
-    else
-       echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
-    fi
 
 HEIGHT=10
 WIDTH=40
@@ -83,10 +63,9 @@ case $CHOICE in
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 2
 
-            dialog --infobox "Installing Plex: Please Wait" 3 45   
-            touch /tmp/plexsetup
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
-            #read -n 1 -s -r -p "Press any key to continue "
+            #dialog --infobox "Installing Plex: Please Wait" 3 45   
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools #1>/dev/null 2>&1
+            read -n 1 -s -r -p "Press any key to continue "
             ;;
 
         B)
@@ -101,24 +80,17 @@ case $CHOICE in
                 sleep 2
             
             dialog --infobox "Installing Plex: Please Wait" 3 45
-            touch /tmp/plexsetup
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
         Z)
             clear
-            exit 0 ;;
+            exit 0 
+            failed > /tmp/plexinstall
+            ;;
 
 ########## Deploy End
 esac 
-
-file="/tmp/plexsetup"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   exit 
-fi
 
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
 --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
@@ -131,7 +103,7 @@ dialog --infobox "If the claim does not work, read the WIKI for other methods!" 
 echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-sleep 4
+sleep 5
 
 if dialog --stdout --title "WebTools Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -147,5 +119,5 @@ else
     echo "WebTools - Is Not Installed" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-    sleep 2
+    sleep 3
 fi
