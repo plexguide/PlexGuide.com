@@ -32,7 +32,7 @@ port=32400
 
     if dialog --stdout --title "PAY ATTENTION!" \
       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-      --yesno "\nDo you require to claim this SERVER?\n\nSelect No: IF your SERVER is already Claimed & Working" 0 0; then
+      --yesno "\nDo you require to claim this SERVER for PLEX?\n\nSelect No: IF your PLEX Container is already Claimed & Working" 0 0; then
 
         dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
         sleep 4
