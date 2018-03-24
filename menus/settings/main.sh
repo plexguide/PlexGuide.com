@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-HEIGHT=16
+HEIGHT=17
 WIDTH=59
 CHOICE_HEIGHT=16
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
