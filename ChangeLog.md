@@ -4,12 +4,12 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.066] (Dev & Beta)
 
 #### Added
-- (D) Bug Fix: Stop deletion of domain upon forced upgrades
-- (D) Bug Fix: Code for menu glitches if you cancel out of plex install & ask if you already claimed
+- (B1) Bug Fix: Stop deletion of domain upon forced upgrades
+- (B1) Bug Fix: Code for menu glitches if you cancel out of plex install & ask if you already claimed
 
 #### Changed
-- (D) Minor changes to PlexDrive
-- (D) Migz - submitted a pull request to fix rutorrent mappings!
+- (B1) Minor changes to PlexDrive
+- (B1) Migz - submitted a pull request to fix rutorrent mappings!
 
 #### Removed
 - Some Old Menus
