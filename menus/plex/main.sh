@@ -32,12 +32,12 @@ port=32400
 
     if dialog --stdout --title "PAY ATTENTION!" \
       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-      --yesno "\nDo you require to claim this SERVER? Select No: IF your SERVER is already Claimed & Working" 0 0; then
+      --yesno "\nDo you require to claim this SERVER?\n\nSelect No: IF your SERVER is already Claimed & Working" 0 0; then
       echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
     else
         dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
         sleep 4
-     
+
         if dialog --stdout --title "PAY ATTENTION!" \
           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
           --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
