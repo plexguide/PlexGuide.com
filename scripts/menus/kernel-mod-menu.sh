@@ -4,20 +4,20 @@ clear
 
 ################# init message
 
-#if (whiptail --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
-#    whiptail --title "Network Speed - Yes" --msgbox "These tweaks work best in high-latency, low packet loss enviroments (ie: server is located in America, but you are streaming from Austrailia)." 9 66
-#else
-#    whiptail --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
-#fi
+if (whiptail --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
+    whiptail --title "Network Speed - Yes" --msgbox "These tweaks work best in high-latency, low packet loss enviroments (ie: server is located in America, but you are streaming from Austrailia)." 9 66
+else
+    whiptail --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
+fi
 
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Kernel Profiles" --menu "See Wiki For Info" 12 38 5 \
+whiptail --title "Kernel Profiles" --menu "See Wiki For Info" 16 60 5 \
     "1)" "Enable BBR TCP Congestion Control"  \
     "2)" "Klaver Kernel Tweaks + BBR"  \
     "3)" "tj007s13 Kernel Tweaks + BBR"  \
-    "4)" "Update to Latest Generic Kernel"  \
+    "4)" "Install Latest Generic Kernel"  \
     "5)" "Install Xanmod Kernel"  \
     "6)" "Exit"  3>&2 2>&1 1>&3
 )
@@ -31,7 +31,7 @@ case $CHOICE in
       if cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr -q
         then
         ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags network_tuning --skip-tags $skip_tags
-        echo ""
+        cat /etc/sysctl.conf
         read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/processor/reboot.sh
       else
@@ -47,7 +47,7 @@ case $CHOICE in
       if cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr -q
       then
         ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags network_tuning --skip-tags $skip_tags
-        echo ""
+        cat /etc/sysctl.conf
         read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/processor/reboot.sh
       else
@@ -63,6 +63,7 @@ case $CHOICE in
       if cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr -q
       then
         ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags network_tuning --skip-tags $skip_tags
+        cat /etc/sysctl.conf 
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/processor/reboot.sh
@@ -74,7 +75,7 @@ case $CHOICE in
 
     "4)")
       clear
-      echo "not yet implenmented"
+      echo "not yet implemented, please install manually"
       read -n 1 -s -r -p "Press any key to continue "
     ;;
 
@@ -86,7 +87,7 @@ case $CHOICE in
 
     "6)")
       clear
-      #exit 0
+      exit 0
       ;;
 esac
 done
