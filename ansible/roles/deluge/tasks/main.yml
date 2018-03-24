@@ -21,7 +21,7 @@
     name: deluge
     state: absent
 
-- name: Create SAB download directory
+- name: Create Deluge Directory
   file: "path=/opt/appdata/deluge/config state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
 - name: Check label.conf exists - noseed
