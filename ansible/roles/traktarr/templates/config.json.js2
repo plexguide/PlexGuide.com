@@ -78,7 +78,7 @@
     "root_folder": "{radarrfolder"
   },
   "sonarr": {
-    "api_key": "{sonnarkey}",
+    "api_key": "1d8e7fe4dc9e403eaa3adddee642aceb",
     "profile": "HD-1080p",
     "url": "https://sonarr.{{domain}}",
     "root_folder": "{sonarrfolder}",
