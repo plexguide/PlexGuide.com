@@ -40,7 +40,7 @@
 
 - name: Installing config prerequisites
   template:
-    src: var.yml
+    src: traktarr.yml
     dest: /opt/appdata/plexguide/traktarr.yml
     force: yes
 
