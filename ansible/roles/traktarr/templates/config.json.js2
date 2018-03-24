@@ -14,14 +14,6 @@
       "trending": 1
     }
   },
-  "notifications": {
-    "verbose": true,
-    "pushover": {
-      "service": "pushover",
-      "app_token": "",
-      "user_token": ""
-    }
-  },
   "filters": {
     "shows": {
       "allowed_countries": [

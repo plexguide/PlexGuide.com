@@ -31,9 +31,9 @@
   when: traktarr_service.stat.exists
 
 - name: Create traktarr directories
-  file: "path={{item}} state=directory mode=0775 owner={{user}} group={{user}} recurse=true"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/traktarr
+    - /opt/appdata/traktarr
     
 - name: Clone traktarr
   git:
@@ -61,11 +61,11 @@
 
 - name: Set traktarr.py as executable
   file:
-    path: /opt/traktarr/traktarr.py
+    path: /opt/appdata/traktarr/traktarr.py
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/traktarr state=directory owner=1000 group=1000 recurse=yes"
+  file: "path=/opt/appdata/traktarr state=directory owner=1000 group=1000 recurse=yes"
 
 - name: "Create /usr/local/bin symlink"
   file:
