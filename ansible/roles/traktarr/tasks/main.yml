@@ -92,7 +92,6 @@
     src: traktarr.service.js2
     dest: /etc/systemd/system/traktarr.service 
     force: yes
-  when: traktarr_service.stat.exists == False
 
 - name: Load service file
   systemd: state=stopped name=traktarr daemon_reload=yes enabled=no
