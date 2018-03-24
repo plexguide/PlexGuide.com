@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+rm -r /tmp/plexsetup 1>/dev/null 2>&1
+
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
  source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
@@ -75,6 +77,7 @@ case $CHOICE in
                 sleep 2
 
             dialog --infobox "Installing Plex: Please Wait" 3 45   
+            touch /tmp/plexsetup
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
@@ -91,6 +94,7 @@ case $CHOICE in
                 sleep 2
             
             dialog --infobox "Installing Plex: Please Wait" 3 45
+            touch /tmp/plexsetup
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
@@ -100,6 +104,14 @@ case $CHOICE in
 
 ########## Deploy End
 esac 
+
+file="/tmp/plexsetup"
+if [ -e "$file" ]
+then
+   rm /tmp/plexsetup
+else
+   exit 
+fi
 
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
 --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
