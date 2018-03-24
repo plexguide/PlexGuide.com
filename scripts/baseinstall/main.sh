@@ -77,6 +77,8 @@ fi
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
+sudo apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools && sudo easy_install -U pip && sudo easy_install3 -U pip && requests && sudo python3 -m pip install requests
+
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 
