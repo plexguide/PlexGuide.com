@@ -79,7 +79,7 @@
   },
   "sonarr": {
     "api_key": "1d8e7fe4dc9e403eaa3adddee642aceb",
-    "profile": "HD-1080p",
+    "profile": "Any",
     "url": "https://sonarr.{{domain}}",
     "root_folder": "{sonarrfolder}",
     "tags": {
