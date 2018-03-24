@@ -26,15 +26,15 @@ display=PLEX
 program=plex
 port=32400
 
-### add a do you need to claim your server?
 
-    sleep 4
 
-    bash /opt/plexguide/scripts/plextoken/test.sh
-    plextoken=$(cat /opt/appdata/plexguide/plextoken)
-    plextoken="claim-$plextoken"
+    #sleep 4
+
+    #bash /opt/plexguide/scripts/plextoken/test.sh
+    #plextoken=$(cat /opt/appdata/plexguide/plextoken)
+    #plextoken="claim-$plextoken"
     #echo "claim-NARF" > /opt/appdata/plexguide/plextoken
-    echo "$plextoken" > /opt/appdata/plexguide/plextoken
+    #echo "$plextoken" > /opt/appdata/plexguide/plextoken
 
 
 HEIGHT=10
