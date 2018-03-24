@@ -44,7 +44,7 @@
     
 - name: Install pip requirements
   pip:
-    requirements: /opt/traktarr/requirements.txt
+    requirements: /opt/appdata/traktarr/requirements.txt
     executable: pip3
 
 - name: Check config exists
