@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -20,6 +20,24 @@
   docker_container:
     name: deluge
     state: absent
+
+- name: Create SAB download directory
+  file: "path=/opt/appdata/deluge/config state=directory mode=0775 owner=1000 group=1000 recurse=true"
+
+- name: Check label.conf exists - noseed
+  stat:
+    path: "/opt/appdata/deluge/config/label.conf"
+  register: label.conf
+  tags:
+    - noseed
+
+- name: Move PlexDrive Service
+  template:
+    src: noseed.conf
+    dest: /opt/appdata/deluge/config/label.conf
+    force: yes
+  tags:
+    - noseed
 
 - name: Create Deluge Container
   docker_container:
