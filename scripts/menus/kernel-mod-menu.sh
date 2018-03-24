@@ -13,10 +13,10 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Kernel Profiles" --menu "See Wiki For Info" 10 40 6 \
+whiptail --title "Kernel Profiles" --menu "See Wiki For Info" 10 50 6 \
     "1)" "Enable BBR TCP Congestion Control"  \
-    "2)" "Klaver Kernel Tweaks + BBR"  \
-    "3)" "tj007s13 Kernel Tweaks + BBR"  \
+    "2)" "High-Latency Network + BBR"  \
+    "3)" "Low-Latency Network + BBR"  \
     "4)" "Install Latest Generic Kernel"  \
     "5)" "Install Xanmod Kernel"  \
     "6)" "Exit"  3>&2 2>&1 1>&3
@@ -75,14 +75,23 @@ case $CHOICE in
 
     "4)")
       clear
-      echo "not yet implemented, please install manually"
-      read -n 1 -s -r -p "Press any key to continue "
+        if (whiptail --title "Kernel Upgrade" --yesno "Are You Sure You Want To Upgrade Your Kernel? (warning: this may break network drivers on some systems)" 8 56) then
+          sudo apt update -y && sudo apt sudo apt install --install-recommends linux-generic-hwe-16.04
+          bash /opt/plexguide/scripts/menus/processor/reboot.sh
+        else
+            whiptail --title "Kernel Upgrade" --msgbox "Canceling Kernel Upgrade." 9 66
+        fi
     ;;
 
     "5)")
       clear
-      echo "not yet implenmented"
-      read -n 1 -s -r -p "Press any key to continue "
+        if (whiptail --title "Kernel Upgrade" --yesno "Are You Sure You Want To Install An Expirimental Kernel? (warning: this may break network drivers on some systems)" 8 56) then
+          echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - http://deb.xanmod.org/gpg.key | sudo apt-key add -
+          sudo apt update && sudo apt install linux-xanmod-4.15
+          bash /opt/plexguide/scripts/menus/processor/reboot.sh
+        else
+            whiptail --title "Kernel Upgrade" --msgbox "Canceling Kernel Upgrade." 9 66
+        fi
     ;;
 
     "6)")
