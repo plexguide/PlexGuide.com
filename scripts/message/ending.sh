@@ -29,7 +29,7 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│           -== PlexGuide Team ==-    │
+│        -== PlexGuide Team ==-       │
 │                                     │
 │   Admin9705, Deiteq, The Creator    │
 │    Davaz, DataMonkeh, DesignGears   │
