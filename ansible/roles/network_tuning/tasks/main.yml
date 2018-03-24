@@ -60,17 +60,6 @@
   tags:
     - bbr
 
-#################### bbr
-- name: Enable Illinois TCP Congestion Control
-  blockinfile:
-    path: /etc/sysctl.conf
-    marker: "# TCP BBR"
-    block: |
-      net.core.default_qdisc=fq
-      net.ipv4.tcp_congestion_control=illinois
-  tags:
-    - illinois
-    
 #################### tj007s13
 # https://www.reddit.com/r/seedboxes/comments/6spbla/my_linux_server_performance_tweaks/
 - name: tj007s13's kernel tweaks
