@@ -43,7 +43,7 @@ port=32400
     --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/tmp/plextoken
     plextoken=$(cat /tmp/plextoken)
     dialog --infobox "Token: $plextoken" 3 45
-    sleep 4
+    sleep 2
     else
         echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
     fi
@@ -72,7 +72,7 @@ case $CHOICE in
         A)
                 echo "latest" > /tmp/plextag
                 dialog --infobox "Selected Tag: Latest" 3 38
-                sleep 4
+                sleep 2
 
             dialog --infobox "Installing Plex: Please Wait" 3 45   
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
@@ -88,7 +88,7 @@ case $CHOICE in
                 --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/tmp/plextag
                 plexgtag=$(cat /tmp/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
-                sleep 4
+                sleep 2
             
             dialog --infobox "Installing Plex: Please Wait" 3 45
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
@@ -128,5 +128,5 @@ else
     echo "WebTools - Is Not Installed" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-    sleep 3
+    sleep 2
 fi
