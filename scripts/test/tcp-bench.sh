@@ -25,11 +25,14 @@
 #
 # Usage: ./tcp-bench <ip.address>
 ###################
+which nslookup &>/dev/null || echo please install dnsutils
+which nc &>/dev/null || echo please install nc
+which iperf &>/dev/null || echo please install iperf
 
 trys=10
 ip=195.201.98.159
 #ip=107.155.94.69
-ip=$1
+#ip=$1
 bufferlen=8
 time=60
 
@@ -54,9 +57,9 @@ benchmark(){
 	echo -n '='
   sleep 10
 	echo -n '='
-  while ! ping -c 1 $ip &>/dev/null; do sleep 3;done
+  while ! nc -nz $ip 22 ; do sleep 3;done
 	echo -n '='
-  sleep 10
+  sleep 5
 	echo -n '='
   nohup ssh $ip 'iperf -s' >nohup.out 2>&1 &
 	sleep 5
@@ -107,22 +110,13 @@ echo "======================================="
 echo ""
 
 echo "Baseline"
-benchmark 'bbr,klaver,tj,illinois' baseline
+benchmark 'bbr,klaver,tj' baseline
 
 echo "BBR"
-benchmark 'klaver,illinois,tj'
-
-echo "illinois"
-benchmark 'klaver,bbr,tj'
+benchmark 'klaver,tj'
 
 echo "BBR + Klaver"
-benchmark 'tj,illinois'
+benchmark 'tj'
 
 echo "BBR + tj"
-benchmark 'klaver,illinois'
-
-echo "illinois + Klaver"
-benchmark 'bbr,tj'
-
-echo "illinois + tj"
-benchmark 'klaver,bbr'
+benchmark 'klaver'
