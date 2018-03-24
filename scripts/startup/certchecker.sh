@@ -18,10 +18,11 @@
 # this script checks for valid ssl certs on all running dockers
 
 # stop program if dependencies not met
-which nslookup | grep nslookup &>/dev/null || exit 1
-which openssl | grep openssl &>/dev/null || exit 1
-which curl | grep curl &>/dev/null || exit 1
+which nslookup &>/dev/null || exit 1
+which openssl &>/dev/null || exit 1
+which curl  &>/dev/null || exit 1
 ping icanhazip.com -c 1 &>/dev/null || exit 1
+
 if [[ ! -e /var/plexguide/basics.yes ]]; then
   exit 1; fi
 if [[ ! -e /opt/appdata/plexguide/var.yml ]];then
