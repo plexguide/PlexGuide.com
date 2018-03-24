@@ -27,7 +27,7 @@ case $CHOICE in
     "1)")
     clear
       # check if bbr is avail
-      skip-tags='tj,klaver'
+      skip_tags='tj,klaver'
       if cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr -q
         then
         ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags network_tuning --skip-tags $skip_tags
@@ -43,7 +43,7 @@ case $CHOICE in
     "2)")
       clear
       # check if bbr is avail
-      skip-tags='tj'
+      skip_tags='tj'
       if cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr -q
       then
         ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags network_tuning --skip-tags $skip_tags
@@ -59,7 +59,7 @@ case $CHOICE in
     "3)")
       clear
       # check if bbr is avail
-      skip-tags='klaver'
+      skip_tags='klaver'
       if cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr -q
       then
         ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags network_tuning --skip-tags $skip_tags
