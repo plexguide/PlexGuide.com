@@ -32,20 +32,6 @@
   tags:
     - extractor
 
-- name: Check label.conf exists
-  stat:
-    path: "/opt/appdata/deluge/label.conf"
-  register: label.conf
-  tags:
-    - label
-
-- name: Check web.conf exists
-  stat:
-    path: "/opt/appdata/deluge/web.conf"
-  register: web.conf
-  tags:
-    - web
-
 ################ MOVE
 - name: Move extractor.conf
   template:
@@ -54,14 +40,6 @@
     force: yes
   tags:
     - extractor
-
-- name: Move web.conf
-  template:
-    src: web.conf
-    dest: /opt/appdata/deluge/web.conf
-    force: yes
-  tags:
-    - web
 
 ################ DEPLOY
 - name: Create Deluge Container
