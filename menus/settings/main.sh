@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-HEIGHT=16
+HEIGHT=17
 WIDTH=59
 CHOICE_HEIGHT=16
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
@@ -27,10 +27,11 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          B "Notifications: Enable the Use of Notifications"
          C "Ports        : Turn On/Off Application Ports"
          D "Processor    : Enhance Processing Power"
-         E "Redirect     : Force Apps to use HTTPS Only?"
-         F "SuperSpeeds  : Change Gdrive Transfer Settings"
-         G "WatchTower   : Auto-Update Application Manager"
-         H "Import Media : Import Existing Media to GDrive "
+         E "Kernel Mods  : Enhance Network Throughput"
+         F "Redirect     : Force Apps to use HTTPS Only?"
+         G "SuperSpeeds  : Change Gdrive Transfer Settings"
+         H "WatchTower   : Auto-Update Application Manager"
+         I "Import Media : Import Existing Media to GDrive "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -112,6 +113,8 @@ touch /var/plexguide/domain
         D)
             bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
         E)
+            bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
+        F)
             bash /opt/plexguide/menus/redirect/main.sh
 
             file="/var/plexguide/redirect.yes"
@@ -122,11 +125,11 @@ touch /var/plexguide/domain
                 sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
             fi
             ;;
-        F)
-            bash /opt/plexguide/menus/transfer/main.sh ;;
         G)
-            bash /opt/plexguide/menus/watchtower/main.sh ;;
+            bash /opt/plexguide/menus/transfer/main.sh ;;
         H)
+            bash /opt/plexguide/menus/watchtower/main.sh ;;
+        I)
             bash /opt/plexguide/menus/migrate/main.sh ;;
         Z)
             clear

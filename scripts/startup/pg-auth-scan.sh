@@ -19,6 +19,7 @@ ping icanhazip.com -c 1 &>/dev/null || exit 1
 if [[ ! -e /var/plexguide/basics.yes ]]; then
   exit 1; fi
 ip=$(curl -s icanhazip.com)
+which curl &>/dev/null || exit 1
 
 
 sonarr () {
