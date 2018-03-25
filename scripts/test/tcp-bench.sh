@@ -110,13 +110,16 @@ echo "======================================="
 echo ""
 
 echo "Baseline"
-benchmark 'bbr,klaver,tj' baseline
+benchmark 'bbr,klaver,tj,seedboxer' baseline
 
 echo "BBR"
-benchmark 'klaver,tj'
+benchmark 'klaver,tj,seedboxer'
 
 echo "BBR + Klaver"
-benchmark 'tj'
+benchmark 'tj,seedboxer'
 
 echo "BBR + tj"
-benchmark 'klaver'
+benchmark 'klaver,seedboxer'
+
+echo "BBR + seedboxer"
+benchmark 'klaver,tj'
