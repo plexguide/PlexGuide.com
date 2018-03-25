@@ -13,10 +13,10 @@ else
 fi
 
 HEIGHT=10
-WIDTH=44
+WIDTH=34
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Midnight Commander - File Organizer"
+TITLE="Midnight Commander"
 MENU="Make Your Selection:"
 
 OPTIONS=(A "Yes"
