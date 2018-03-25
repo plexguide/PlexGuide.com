@@ -1,18 +1,16 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.066] (Dev & Beta)
+### [5.067] (Dev & Beta)
 
 #### Added
-- (B1) Bug Fix: Stop deletion of domain upon forced upgrades
-- (B1) Bug Fix: Code for menu glitches if you cancel out of plex install & ask if you already claimed
+- None
 
 #### Changed
-- (B1) Minor changes to PlexDrive
-- (B1) Migz - submitted a pull request to fix rutorrent mappings!
+- None
 
 #### Removed
-- Some Old Menus
+- None
 
 #### Known Issues
 - pyload is not working
@@ -24,6 +22,22 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 Historical Documented Changes will be stored as below.
 
 Dropped All Version 5.064 prior for Support & Updates
+
+### [5.066] - Emergency Update
+
+#### Added
+- Bug Fix: Stop deletion of domain upon forced upgrades
+- Bug Fix: Code for menu glitches if you cancel out of plex install & ask if you already claimed
+- Flicker's Server Speed Network Enhancement (View Settings)
+- Flicker's SuperSpeed Emergency Repair Patch
+
+#### Changed
+- (Emergency) Glitch with PD Image; repaired emergency update
+- Minor changes to PlexDrive
+- Migz - submitted a pull request to fix rutorrent mappings!
+
+#### Removed
+- Some Old Menus
 
 ### [5.065]
 
