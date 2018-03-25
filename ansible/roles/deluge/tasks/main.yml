@@ -47,14 +47,6 @@
     - web
 
 ################ MOVE
-- name: Move noseed.conf
-  template:
-    src: noseed.conf
-    dest: /opt/appdata/deluge/label.conf
-    force: yes
-  tags:
-    - noseed
-
 - name: Move extractor.conf
   template:
     src: extractor.conf
@@ -102,3 +94,14 @@
       - /mnt/unionfs/:/unionfs
     restart_policy: always
     state: started
+
+- name: "Wait 8 Seconds"
+  wait_for:
+    timeout: 8
+  when: web.stat.exists == False
+
+- name: Restart Container
+  docker_container:
+    name: deluge
+    state: started
+  when: web.stat.exists == False
