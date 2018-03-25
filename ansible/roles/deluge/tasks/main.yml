@@ -47,13 +47,13 @@
   tags:
     - extractor
 
-- name: Move label0.conf
-  template:
-    src: label0.conf
-    dest: /opt/appdata/deluge/label.conf
-    force: yes
-  tags:
-    - label0
+#- name: Move label0.conf
+#  template:
+#    src: label0.conf
+#    dest: /opt/appdata/deluge/label.conf
+#    force: yes
+#  tags:
+#    - label0
 
 ################ DEPLOY
 - name: Create Deluge Container
