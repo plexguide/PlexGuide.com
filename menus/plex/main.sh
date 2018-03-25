@@ -85,8 +85,8 @@ case $CHOICE in
 
             dialog --infobox "Installing Plex: Please Wait" 3 45   
             touch /tmp/plexsetup
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
-            #read -n 1 -s -r -p "Press any key to continue "
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools #1>/dev/null 2>&1
+            read -n 1 -s -r -p "Press any key to continue "
             ;;
 
         B)
