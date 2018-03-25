@@ -22,9 +22,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select a PlexGuide Version"
 MENU="Make a Selection: "
 
-OPTIONS=(A "Developer: 5.066"
-         B "Beta 1   : 5.066"
-         C "Stable   : 5.065"
+OPTIONS=(A "Developer: 5.067"
+         C "Stable EM: 5.066"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
