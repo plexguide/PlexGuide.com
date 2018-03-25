@@ -103,4 +103,3 @@
   docker_container:
     name: deluge
     state: started
-  when: web.stat.exists == False
