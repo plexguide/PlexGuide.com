@@ -34,8 +34,9 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-             apt-get update
-             apt-get install mc
+             dialog --infobox "Installing Midnight Commander!" 3 30
+             apt-get update 1>/dev/null 2>&1
+             apt-get install mc 1>/dev/null 2>&1
              dialog --title "Status" --msgbox "\nMidnight Commander is Installed!\n\nType - mc - to USE IT!" 0 0
              exit 0
             ;;
