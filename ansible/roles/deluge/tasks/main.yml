@@ -37,12 +37,12 @@
     path: "/opt/appdata/deluge/config/label.conf"
   register: label.conf
   tags:
-    - noseed
+    - label
 
 - name: Check web.conf exists
   stat:
-    path: "/opt/appdata/deluge/config/label.conf"
-  register: label.conf
+    path: "/opt/appdata/deluge/config/web.conf"
+  register: web.conf
   tags:
     - web
 
@@ -71,6 +71,7 @@
   tags:
     - web
 
+################ DEPLOY
 - name: Create Deluge Container
   docker_container:
     name: deluge
