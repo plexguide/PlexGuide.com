@@ -94,7 +94,7 @@
       net.ipv4.tcp_tw_reuse = 1
   tags:
     - seedboxer
-
+    
 #################### tj007s13
 # https://www.reddit.com/r/seedboxes/comments/6spbla/my_linux_server_performance_tweaks/
 - name: tj007s13's kernel tweaks
@@ -143,7 +143,7 @@
       net.ipv4.tcp_fastopen = 3
       net.ipv4.tcp_rmem = 4096 87380 16777216
       net.ipv4.tcp_wmem = 4096 65536 16777216
-      net.ipv4.tcp_adv_win_scale = 2
+      net.ipv4.tcp_adv_win_scale = 1
       net.core.default_qdisc = fq
       net.ipv4.tcp_congestion_control = bbr
   tags:
