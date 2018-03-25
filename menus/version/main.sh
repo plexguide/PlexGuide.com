@@ -23,7 +23,7 @@ TITLE="Select a PlexGuide Version"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.067"
-         C "Stable EM: 5.066"
+         B "Stable EM: 5.066"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
