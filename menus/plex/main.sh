@@ -83,10 +83,10 @@ case $CHOICE in
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 2
 
-            dialog --infobox "Installing Plex: Please Wait" 3 45   
+            dialog --infobox "Installing Plex: Please Wait" 3 45
             touch /tmp/plexsetup
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
-            read -n 1 -s -r -p "Press any key to continue "
+            #read -n 1 -s -r -p "Press any key to continue "
             ;;
 
         B)
@@ -99,7 +99,7 @@ case $CHOICE in
                 plexgtag=$(cat /tmp/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 2
-            
+
             dialog --infobox "Installing Plex: Please Wait" 3 45
             touch /tmp/plexsetup
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
@@ -110,14 +110,14 @@ case $CHOICE in
             exit 0 ;;
 
 ########## Deploy End
-esac 
+esac
 
 file="/tmp/plexsetup"
 if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   exit 
+   exit
 fi
 
 dialog --title "FOR REMOTE PLEX SERVERS Users!" \
@@ -143,7 +143,7 @@ if dialog --stdout --title "WebTools Question" \
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 else
     dialog --infobox "WebTools: Not Installed" 3 45
- 
+
     echo "WebTools - Is Not Installed" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
