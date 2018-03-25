@@ -22,26 +22,26 @@
     state: absent
 
 - name: Create Deluge Directory
-  file: "path=/opt/appdata/deluge/config state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  file: "path=/opt/appdata/deluge state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
 ################ REGISTER
 - name: Check extractor.conf exists
   stat:
-    path: "/opt/appdata/deluge/config/extractor.conf"
+    path: "/opt/appdata/deluge/extractor.conf"
   register: extractor.conf
   tags:
     - extractor
 
 - name: Check label.conf exists
   stat:
-    path: "/opt/appdata/deluge/config/label.conf"
+    path: "/opt/appdata/deluge/label.conf"
   register: label.conf
   tags:
     - label
 
 - name: Check web.conf exists
   stat:
-    path: "/opt/appdata/deluge/config/web.conf"
+    path: "/opt/appdata/deluge/web.conf"
   register: web.conf
   tags:
     - web
@@ -50,7 +50,7 @@
 - name: Move noseed.conf
   template:
     src: noseed.conf
-    dest: /opt/appdata/deluge/config/label.conf
+    dest: /opt/appdata/deluge/label.conf
     force: yes
   tags:
     - noseed
@@ -58,7 +58,7 @@
 - name: Move extractor.conf
   template:
     src: extractor.conf
-    dest: /opt/appdata/deluge/config/extractor.conf
+    dest: /opt/appdata/deluge/extractor.conf
     force: yes
   tags:
     - extractor
@@ -66,7 +66,7 @@
 - name: Move web.conf
   template:
     src: web.conf
-    dest: /opt/appdata/deluge/config/web2.conf
+    dest: /opt/appdata/deluge/web.conf
     force: yes
   tags:
     - web
@@ -94,7 +94,7 @@
       traefik.frontend.rule: "Host:deluge.{{domain}}"
       traefik.port: "8112"
     volumes:
-      - /opt/appdata/deluge/config:/config
+      - /opt/appdata/deluge:/config
       - /mnt/deluge/temp:/temp
       - /mnt/deluge/downloaded:/downloaded
       - /mnt/deluge/torrent:/torrent
