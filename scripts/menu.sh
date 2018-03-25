@@ -84,6 +84,10 @@ else
    bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
 
+## Midnight Commander Install
+bash /opt/plexguide/menus/midnight/main.sh
+
+
 ## docker / ansible failure
 file="/var/plexguide/startup.error" 1>/dev/null 2>&1
   if [ -e "$file" ]
