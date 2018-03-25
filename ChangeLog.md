@@ -21,9 +21,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-Dropped All Version 5.064 prior for Support & Updates
-
-### [5.066] - Emergency Update
+### [5.066 PL1]
 
 #### Added
 - Bug Fix: Stop deletion of domain upon forced upgrades
@@ -32,6 +30,7 @@ Dropped All Version 5.064 prior for Support & Updates
 - Flicker's SuperSpeed Emergency Repair Patch
 
 #### Changed
+- PD4 Restart for those it drops on
 - (Emergency) Glitch with PD Image; repaired emergency update
 - Minor changes to PlexDrive
 - Migz - submitted a pull request to fix rutorrent mappings!
