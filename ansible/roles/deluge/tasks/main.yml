@@ -21,40 +21,6 @@
     name: deluge
     state: absent
 
-- name: Create Deluge Directory
-  file: "path=/opt/appdata/deluge state=directory mode=0775 owner=1000 group=1000 recurse=true"
-
-################ REGISTER
-- name: Check label exists
-  stat:
-    path: "/opt/appdata/deluge/label.conf"
-  register: label
-  tags:
-    - label
-
-- name: Check extractor.conf exists
-  stat:
-    path: "/opt/appdata/deluge/extractor.conf"
-  register: extractor.conf
-  tags:
-    - extractor
-################ MOVE
-- name: Move extractor.conf
-  template:
-    src: extractor.conf
-    dest: /opt/appdata/deluge/extractor.conf
-    force: yes
-  tags:
-    - extractor
-
-#- name: Move label0.conf
-#  template:
-#    src: label0.conf
-#    dest: /opt/appdata/deluge/label.conf
-#    force: yes
-#  tags:
-#    - label0
-
 ################ DEPLOY
 - name: Create Deluge Container
   docker_container:
@@ -87,13 +53,7 @@
     restart_policy: always
     state: started
 
-- name: "Wait 8 Seconds"
-  wait_for:
-    timeout: 8
-  when: web.stat.exists == False
-
 - name: Restart Container
   docker_container:
     name: deluge
     state: started
-  when: web.stat.exists == False
