@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.067] (Dev & Beta)
 
 #### Added
-- None
+- Midnight Commander Install Menu
 
 #### Changed
 - None
