@@ -13,7 +13,7 @@ else
 fi
 
 HEIGHT=11
-WIDTH=52
+WIDTH=46
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Midgnith Commander - File Organizer"
