@@ -28,7 +28,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PlexDrive for PG"
 MENU="Choose one of the following options:"
 
-OPTIONS=(A "PlexDrive4 (Recommended)"
+OPTIONS=(A "PlexDrive4 "
          B "PlexDrive5 "
          C "Remove PlexDrive Tokens"
          D "Stop & Remove Current PD; then Reboot!"
@@ -199,7 +199,7 @@ case $CHOICE in
             systemctl stop plexdrive 1>/dev/null 2>&1
             sudo rm -r /etc/systemd/system/plexdrive.service 1>/dev/null 2>&1
             bash /opt/plexguide/menus/plexdrive/main.sh 1>/dev/null 2>&1
-            dialog --title "Token Status" --msgbox "\nWe Are Going To Restart Your System!\n\nMake sure you come back and pick a version of PlexDrive!" 0 0
+            dialog --title "PD Status" --msgbox "\nWe Are Going To Restart Your System!\n\nMake sure you come back and pick a version of PlexDrive!" 0 0
             clear
             echo "Make sure to come back and pick a version of PlexDrive to ReRun!"
             echo ""
