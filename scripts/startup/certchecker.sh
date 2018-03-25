@@ -36,13 +36,15 @@ echo -n '' > /var/plexguide/pingchecker
 # don't test if users hasn't set a domain.
 if [[ $domain == '' ]]; then
   exit 0
-elif [[ $domain == 'domain.com' ]]; then
+fi
+
+if [[ $domain == 'domain.com' ]]; then
   exit 0
 fi
 
 ssl_check() {
-            true | openssl s_client -showcerts -servername $1.$domain -connect $1.$domain:443 2>/dev/null | \
-            openssl x509 -noout -text 2>/dev/null \
+            true | openssl s_client -showcerts -servername $1.$domain -connect $1.$domain:443 &>/dev/null | \
+            openssl x509 -noout -text &>/dev/null \
             || echo "$1.$domain Does Not Have A Valid SSL Certificate." >> /var/plexguide/certchecker
 }
 
