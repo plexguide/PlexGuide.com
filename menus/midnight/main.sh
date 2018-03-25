@@ -12,11 +12,11 @@ else
    touch /var/plexguide/midnight.yes
 fi
 
-HEIGHT=11
-WIDTH=46
-CHOICE_HEIGHT=5
+HEIGHT=10
+WIDTH=44
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Midgnith Commander - File Organizer"
+TITLE="Midnight Commander - File Organizer"
 MENU="Make Your Selection:"
 
 OPTIONS=(A "Yes"
