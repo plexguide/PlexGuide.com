@@ -39,14 +39,6 @@
   tags:
     - extractor
 ################ MOVE
-- name: Move extractor.conf
-  template:
-    src: extractor.conf
-    dest: /opt/appdata/deluge/extractor.conf
-    force: yes
-  tags:
-    - extractor
-
 #- name: Move label0.conf
 #  template:
 #    src: label0.conf
@@ -90,7 +82,22 @@
 - name: "Wait 8 Seconds"
   wait_for:
     timeout: 8
-  when: web.stat.exists == False
+
+- name: Stop Container
+  docker_container:
+    name: deluge
+    state: stopped
+  #when: web.stat.exists == False
+
+#when: web.stat.exists == False
+
+- name: Move label0.conf
+  template:
+    src: label0.conf
+    dest: /opt/appdata/deluge/label.conf
+    force: yes
+  tags:
+    - label0
 
 - name: Restart Container
   docker_container:
