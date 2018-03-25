@@ -69,7 +69,7 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.066p1" ;;           
+            version="5.066p11" ;;           
         Z)
             bash /opt/plexguide/menus/main.sh
             exit 0
