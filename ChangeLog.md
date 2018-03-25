@@ -29,6 +29,7 @@ Dropped All Version 5.064 prior for Support & Updates
 - Bug Fix: Stop deletion of domain upon forced upgrades
 - Bug Fix: Code for menu glitches if you cancel out of plex install & ask if you already claimed
 - Flicker's Server Speed Network Enhancement (View Settings)
+- Flicker's SuperSpeed Emergency Repair Patch
 
 #### Changed
 - (Emergency) Glitch with PD Image; repaired emergency update
