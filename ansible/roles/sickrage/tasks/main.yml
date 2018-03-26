@@ -53,6 +53,6 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:sickrage.{{domain}}"
-      traefik.port: "8082"
+      traefik.port: "8081"
 
 
