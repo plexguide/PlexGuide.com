@@ -5,6 +5,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### Added
 - Midnight Commander Install Menu
+- Sickrage: Fixed subdomain; now works
 
 #### Changed
 - None
