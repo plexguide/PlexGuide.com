@@ -6,6 +6,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Added
 - Midnight Commander Install Menu / fixed stuck menu glitch
 - Sickrage: Fixed subdomain; now works
+- Sped up the Base Installer; forcing more items to install via background
 
 #### Changed
 - Rclone move now deletes empty directories
