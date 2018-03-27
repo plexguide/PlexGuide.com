@@ -35,7 +35,7 @@ clear
 case $CHOICE in
         A)
              dialog --infobox "Installing Midnight Commander!" 3 35
-             yes | apt-get install mc &>/dev/null &
+             yes | apt install mc &>/dev/null &
              sleep 3
              dialog --title "Status" --msgbox "\nMidnight Commander is Installed!\n\nType - mc - to USE IT!" 0 0
              exit 0
