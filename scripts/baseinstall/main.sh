@@ -56,16 +56,16 @@ else
         email=$(cat /tmp/email)
 
         dialog --infobox "Set Domain is $dom" 3 45
-        sleep 5
+        sleep 2
         dialog --infobox "Set E-Mail is $email" 3 45
-        sleep 5
+        sleep 2
         dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
-        sleep 5
+        sleep 3
 
       else
         domain="no"
         dialog --infobox "Add a Domain Anytime Via - Settings" 3 48
-        sleep 5
+        sleep 3
       fi
 
       ### Tracked So It Does Not Ask User Again!
@@ -123,7 +123,7 @@ ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 ##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
-rm -r /var/plexguide/startup.error
+rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
@@ -148,7 +148,7 @@ sleep 2
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-
+############ Installs Traefik Based on Redirection Setting
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
 then
@@ -173,9 +173,8 @@ sleep 2
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
 sleep 2
+#read -n 1 -s -r -p "Press any key to continue "
 
-
-      #read -n 1 -s -r -p "Press any key to continue "
 echo "99" | dialog --gauge "Donation Question" 7 50 0
 sleep 2
 
