@@ -76,17 +76,13 @@ else
    bash /opt/plexguide/menus/notifications/main.sh
 fi
 
-file="/var/plexguide/dep44.yes"
+file="/var/plexguide/dep45.yes"
 if [ -e "$file" ]
 then
    touch /var/plexguide/message.no
 else
    bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
-
-## Midnight Commander Install
-bash /opt/plexguide/menus/midnight/main.sh
-
 
 ## docker / ansible failure
 file="/var/plexguide/startup.error" 1>/dev/null 2>&1

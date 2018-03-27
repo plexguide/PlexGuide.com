@@ -140,7 +140,7 @@ bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
 touch /var/plexguide/basics.yes &>/dev/null &
 sleep 2
 
-echo "80" | dialog --gauge "Installing: Portainer" 7 50 0 
+echo "78" | dialog --gauge "Installing: Portainer" 7 50 0 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
 sleep 2
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
@@ -150,23 +150,33 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/nul
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
 then
-  echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
+  echo "82" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 else
-  echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
+  echo "82" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 fi
 
-echo "88" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+echo "86" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
-echo "92" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
+echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
+
+file="/var/plexguide/midnight.yes"
+if [ -e "$file" ]
+then
+   clear
+else
+  echo "93" | dialog --gauge "Installing Midnight Commander!" 7 50 0
+  bash yes | apt install mc &>/dev/null &
+  sleep 2
+fi
 
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
@@ -188,7 +198,7 @@ sleep 2
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep44.yes
+   touch /var/plexguide/dep45.yes
 
 
 echo "PG Install is Complete" > /tmp/pushover
