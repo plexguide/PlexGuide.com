@@ -145,9 +145,10 @@ sleep 2
 
 echo "80" | dialog --gauge "Installing: Portainer" 7 50 0 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
-echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover
 sleep 2
+echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
