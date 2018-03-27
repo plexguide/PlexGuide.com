@@ -39,7 +39,7 @@
       - localstorage
 
   - name: Daemon-Reload
-    systemd: state=stopped name=unionfslocal daemon_reload=yes enabled=n
+    systemd: state=stopped name=unionfslocal daemon_reload=yes enabled=no
     tags:
       - localstorage
 
