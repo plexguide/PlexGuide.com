@@ -77,14 +77,17 @@ fi
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
-sudo apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools && sudo easy_install -U pip && sudo easy_install3 -U pip && requests && sudo python3 -m pip install requests
+echo "10" | dialog --gauge "Installing Python Support" 7 50 0
+bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
+sleep 2
 
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
-yes | apt-get install software-properties-common 1>/dev/null 2>&1
+yes | apt-get install software-properties-common &>/dev/null &
+sleep 2
 
 echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
-yes | apt-get install sysstat nmon 1>/dev/null 2>&1
-sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
+yes | apt-get install sysstat nmon 1>/dev/null &>/dev/null &
+sed -i 's/false/true/g' /etc/default/sysstat &>/dev/null &
 sleep 2
 
 echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
@@ -94,20 +97,23 @@ apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
+sleep 2
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
+sleep 2
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
+sleep 2
 
 echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
@@ -133,13 +139,15 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
   fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
-bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
-touch /var/plexguide/basics.yes 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
+touch /var/plexguide/basics.yes &>/dev/null &
+sleep 2
 
 echo "80" | dialog --gauge "Installing: Portainer" 7 50 0 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover
+sleep 2
 
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
@@ -158,16 +166,18 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/nu
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "92" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
-bash /opt/plexguide/scripts/containers/reboot.sh 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
-sleep 3
+sleep 2
 
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
+sleep 2
+
 
       #read -n 1 -s -r -p "Press any key to continue "
 echo "99" | dialog --gauge "Donation Question" 7 50 0
-sleep 3
+sleep 2
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
