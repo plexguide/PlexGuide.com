@@ -129,10 +129,8 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
     then
   echo "" 1>/dev/null 2>&1
     else
-    
     echo "Program Aborted - Docker Install Failed" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-    
     touch /var/plexguide/startup.error 1>/dev/null 2>&1
     exit
   fi
