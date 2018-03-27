@@ -8,7 +8,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Sickrage: Fixed subdomain; now works
 
 #### Changed
-- None
+- Rclone move now deletes empty directories
 
 #### Removed
 - None
@@ -45,7 +45,7 @@ Historical Documented Changes will be stored as below.
 - OS Check / Warns User if not using 16.04 - Prompts only one time!
 - Attempted to correct odd display of UI in Putty / works
 - Added Password Checks for nzbhydra (1 & 2), resilio, emby, jackett & medusa
-- Automatic Reboot after Installing or Rerunning PlexDrive 4 or PlexDrive 5 
+- Automatic Reboot after Installing or Rerunning PlexDrive 4 or PlexDrive 5
 - Nonempty tag added on the PlexDrive
 - Handling Ability to Switch Between PD4 and PD5; scripts reboot system if switching to assist
 
