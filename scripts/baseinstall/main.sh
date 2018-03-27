@@ -56,16 +56,14 @@ else
         email=$(cat /tmp/email)
 
         dialog --infobox "Set Domain is $dom" 3 45
-        sleep 5
+        sleep 2
         dialog --infobox "Set E-Mail is $email" 3 45
-        sleep 5
+        sleep 2
         dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
-        sleep 5
-
+        sleep 3
       else
-        domain="no"
         dialog --infobox "Add a Domain Anytime Via - Settings" 3 48
-        sleep 5
+        sleep 3
       fi
 
       ### Tracked So It Does Not Ask User Again!
@@ -77,14 +75,17 @@ fi
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
-sudo apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools && sudo easy_install -U pip && sudo easy_install3 -U pip && requests && sudo python3 -m pip install requests
+echo "10" | dialog --gauge "Installing Python Support" 7 50 0
+bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
+sleep 2
 
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
-yes | apt-get install software-properties-common 1>/dev/null 2>&1
+yes | apt-get install software-properties-common &>/dev/null &
+sleep 2
 
 echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
-yes | apt-get install sysstat nmon 1>/dev/null 2>&1
-sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
+yes | apt-get install sysstat nmon &>/dev/null &
+sed -i 's/false/true/g' /etc/default/sysstat &>/dev/null &
 sleep 2
 
 echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
@@ -94,12 +95,14 @@ apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
+sleep 2
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
+sleep 2
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders 1>/dev/null 2>&1
@@ -118,56 +121,69 @@ ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 ##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
-rm -r /var/plexguide/startup.error
+rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
     else
-    
     echo "Program Aborted - Docker Install Failed" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-    
     touch /var/plexguide/startup.error 1>/dev/null 2>&1
     exit
   fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
-bash /opt/plexguide/scripts/startup/rclone-preinstall.sh 1>/dev/null 2>&1
-touch /var/plexguide/basics.yes 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
+touch /var/plexguide/basics.yes &>/dev/null &
+sleep 2
 
-echo "80" | dialog --gauge "Installing: Portainer" 7 50 0 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
-echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
+echo "78" | dialog --gauge "Installing: Portainer" 7 50 0 
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
+sleep 2
+echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
+############ Installs Traefik Based on Redirection Setting
 file="/var/plexguide/redirect.yes"
 if [ -e "$file" ]
 then
-  echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
+  echo "82" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 else
-  echo "85" | dialog --gauge "Installing: Traefik" 7 50 0
+  echo "82" | dialog --gauge "Installing: Traefik" 7 50 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 fi
 
-echo "88" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+echo "86" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
-echo "92" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
-bash /opt/plexguide/scripts/containers/reboot.sh 1>/dev/null 2>&1
+echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
+bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
-sleep 3
+sleep 2
+
+file="/var/plexguide/midnight.yes"
+if [ -e "$file" ]
+then
+   clear
+else
+  echo "93" | dialog --gauge "Installing Midnight Commander!" 7 50 0
+  bash yes | apt install mc &>/dev/null &
+  touch /var/plexguide/midnight.yes 1>/dev/null 2>&1
+  sleep 2
+fi
 
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
+sleep 2
+#read -n 1 -s -r -p "Press any key to continue "
 
-      #read -n 1 -s -r -p "Press any key to continue "
 echo "99" | dialog --gauge "Donation Question" 7 50 0
-sleep 3
+sleep 2
 
   file="/var/plexguide/donation.yes"
   if [ -e "$file" ]
@@ -181,7 +197,7 @@ sleep 3
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep44.yes
+   touch /var/plexguide/dep45.yes
 
 
 echo "PG Install is Complete" > /tmp/pushover

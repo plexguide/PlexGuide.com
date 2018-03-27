@@ -51,12 +51,13 @@ case $CHOICE in
             bash /opt/plexguide/menus/midnight/main.sh
             bash /opt/plexguide/menus/programs/support.sh
             exit
+            ;;
         B)
             display=NETDATA
             program=netdata
             port=19999
             dialog --infobox "Installing: $display" 3 30
-            skip=yes 
+            skip=yes
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata 1>/dev/null 2>&1;;
         C)
             display=OMBIv3

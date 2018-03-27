@@ -26,8 +26,6 @@ display=PLEX
 program=plex
 port=32400
 
-
-
     #sleep 4
 
     #bash /opt/plexguide/scripts/plextoken/test.sh
