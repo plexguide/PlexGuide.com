@@ -61,9 +61,7 @@ else
         sleep 2
         dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
         sleep 3
-
       else
-        domain="no"
         dialog --infobox "Add a Domain Anytime Via - Settings" 3 48
         sleep 3
       fi
