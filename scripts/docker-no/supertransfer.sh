@@ -97,6 +97,7 @@ rclone_sync() {
 		--drive-upload-cutoff=$drive_upload_cutoff \
 		--drive-chunk-size=$drive_chunk_size \
 		--max-size=$max_size \
+		--delete-empty-src-dirs \
 		$local_dir $1:$remote_dir # function input = gdrive remote name
 	}
 
@@ -180,9 +181,7 @@ while true; do
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
 		echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log
 		rclone_sync $(cat /opt/appdata/plexguide/current_gdrive)
-		sleep 10
-		echo "Cleaning Up $(find $local_dir -mindepth 2 -empty | wc -l) Empty Directories"
-	 	find $local_dir -mindepth 2 -empty -delete
+		sleep 60
 	else
 		echo "Waiting Until Transfer Queue is at Least 100M"
 	fi
