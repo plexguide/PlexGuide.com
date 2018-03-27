@@ -86,7 +86,7 @@ yes | apt-get install software-properties-common &>/dev/null &
 sleep 2
 
 echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
-yes | apt-get install sysstat nmon 1>/dev/null &>/dev/null &
+yes | apt-get install sysstat nmon &>/dev/null &
 sed -i 's/false/true/g' /etc/default/sysstat &>/dev/null &
 sleep 2
 
@@ -111,9 +111,8 @@ ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
-sleep 2
 
 echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
