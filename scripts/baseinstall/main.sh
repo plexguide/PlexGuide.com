@@ -173,6 +173,7 @@ then
 else
   echo "93" | dialog --gauge "Installing Midnight Commander!" 7 50 0
   bash yes | apt install mc &>/dev/null &
+  touch /var/plexguide/midnight.yes
   sleep 2
 fi
 
