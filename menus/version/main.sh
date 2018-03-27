@@ -23,6 +23,7 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.067"
+         A "Beta 1   : 5.067"
          B "Stable P1: 5.066"
          Z "Exit")
 
