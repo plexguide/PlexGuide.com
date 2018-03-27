@@ -4,7 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.067] (Dev & Beta)
 
 #### Added
-- Midnight Commander Install Menu
+- Midnight Commander Install Menu / fixed stuck menu glitch
 - Sickrage: Fixed subdomain; now works
 
 #### Changed
