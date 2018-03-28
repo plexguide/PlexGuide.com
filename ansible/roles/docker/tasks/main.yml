@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Cloudbox Ansible Role]
+# [PlexGuide Ansible Role]
 #
-# Author:   13uddz & Desmonic
-# URL:      https://cloudbox.rocks
+# By:       Admin9705
+# URL:      https://plexguide.com
 #
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
@@ -13,13 +13,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Further Enhanced By: https://plexguide.com
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Original Author: 13uddz & Desmonic
+# URL:             https://cloudbox.rocks
 #################################################################################
 
 ---
 - name: Install required packages
-  apt: "name={{item}} state=installed"
+  apt: "name={{item}} state=present"
   with_items:
     - apt-transport-https
     - ca-certificates
@@ -30,6 +30,7 @@
   with_items:
     - docker-py
     - certbot
+  ignore_errors: True
 
 - name: Add official gpg signing key
   apt_key:
