@@ -6,7 +6,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Added
 - (B3) Midnight Commander Installs via Ansible; no more menu glitches and etc
 - (B1) Sickrage: Fixed subdomain; now works
-- (B1) Sped up the Base Installer; forcing more items to install via background
+- (B1) Sped up the Base Installer (about 40 percent); forcing more items to install via background
 - (B3) Docker 18.03 now installs over 17
 - (B3) Fixed Docker Install Glitch; rare times it wouldn't install; caused problems if uninstalled and reinstalled
 
