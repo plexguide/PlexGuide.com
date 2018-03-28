@@ -25,13 +25,6 @@
     - ca-certificates
     - software-properties-common
 
-- name: Pip Mods
-  pip: "name={{item}} state=latest"
-  with_items:
-    - docker-py
-    - certbot
-  ignore_errors: True
-
 - name: Add official gpg signing key
   apt_key:
     id: 0EBFCD88
@@ -50,7 +43,7 @@
 - name: Install docker
   apt:    
     name: docker-ce=18.03.0~ce-0~ubuntu
-    state: installed
+    state: present
     force: yes
     update_cache: yes
   when: docker_daemon.stat.exists == False
