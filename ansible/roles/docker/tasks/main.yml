@@ -60,9 +60,9 @@
   systemd: state=started name=docker enabled=yes
   when: docker_daemon.stat.exists == False
 
-- name: "Wait for 25 seconds before commencing"
+- name: "Wait for 10 seconds before commencing"
   wait_for:
-    timeout: 25
+    timeout: 10
   when: docker_daemon.stat.exists == False
 
 - name: Check override folder exists
