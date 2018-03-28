@@ -170,12 +170,12 @@ file="/var/plexguide/midnight.yes"
 if [ -e "$file" ]
 then
    clear
-else
-  echo "93" | dialog --gauge "Installing Midnight Commander!" 7 50 0
-  bash yes | apt install mc &>/dev/null &
-  touch /var/plexguide/midnight.yes 1>/dev/null 2>&1
-  sleep 2
-fi
+#else
+#  echo "93" | dialog --gauge "Installing Midnight Commander!" 7 50 0
+#  bash yes | apt install mc &>/dev/null &
+#  touch /var/plexguide/midnight.yes 1>/dev/null 2>&1
+#  sleep 2
+#fi
 
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &

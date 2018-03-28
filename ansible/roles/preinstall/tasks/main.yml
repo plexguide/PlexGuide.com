@@ -50,6 +50,7 @@
       - ctop
       - dialog
       - dnsutils
+      - mc
     ignore_errors: yes
 
   - name: Pip Modes
