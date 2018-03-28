@@ -14,6 +14,7 @@ export NCURSES_NO_UTF8_ACS=1
 
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"
+          C " Use Local Storage - No GDrive Upload"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -34,7 +35,8 @@ case $CHOICE in
      echo "Please go back to the main menu to see changes"
      read -n 1 -s -r -p "Press any key to continue "
      ;;
-
+     C)
+     bash /opt/plexguide/menus/programs/localstorage.sh ;;
      Z)
         clear
         exit 0 ;;

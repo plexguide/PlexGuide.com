@@ -31,7 +31,7 @@ case $CHOICE in
       skip_tags='tj,klaver,seedboxer'
       if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]
         then
-        ansible-playbook /opt/plexguide/ansible/roles/plexguide.yml --tags network_tuning --skip-tags $skip_tags
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/processor/reboot.sh
@@ -47,7 +47,7 @@ case $CHOICE in
       skip_tags='tj,seedboxer'
       if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]
       then
-        ansible-playbook /opt/plexguide/ansible/roles/plexguide.yml --tags network_tuning --skip-tags $skip_tags
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         read -n 1 -s -r -p "Press any key to continue "
         bash /opt/plexguide/scripts/menus/processor/reboot.sh
@@ -63,7 +63,7 @@ case $CHOICE in
       skip_tags='klaver,seedboxer'
       if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]
       then
-        ansible-playbook /opt/plexguide/ansible/roles/plexguide.yml --tags network_tuning --skip-tags $skip_tags
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
@@ -80,7 +80,7 @@ case $CHOICE in
       skip_tags='klaver,tj'
       if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]
       then
-        ansible-playbook /opt/plexguide/ansible/roles/plexguide.yml --tags network_tuning --skip-tags $skip_tags
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
