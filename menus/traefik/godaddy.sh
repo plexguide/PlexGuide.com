@@ -15,10 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  "godaddy" > /tmp/provider
-  provider=$(cat /tmp/provider)
-
-  dialog --infobox "Configuring Traefik For: $provider" 4 35
+  dialog --infobox "Configuring Traefik For: GoDaddy" 4 35
   sleep 2
   
   display1="GODADDY_API_KEY"
