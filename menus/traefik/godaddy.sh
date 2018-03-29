@@ -43,7 +43,7 @@
   echo "test combinedd"
   echo $main2
   echo ""
-  eval export ${2}
+  eval export ${main2}
 
 
 ##temp
