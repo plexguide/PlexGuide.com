@@ -36,9 +36,9 @@
   display1="GODADDY_API_SECRET"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "$display1:" 8 40 2>/tmp/var2
+    --inputbox "$display2:" 8 40 2>/tmp/var2
   var1=$(cat /tmp/var2)
-  main2="$display1=$var2"
+  main2="$display2=$var2"
   echo ""
   echo "test combinedd"
   echo $main2
