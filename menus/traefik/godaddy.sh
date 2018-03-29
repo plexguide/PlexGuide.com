@@ -16,10 +16,10 @@
 #
 #################################################################################
 
-
-  dialog --infobox "Configuring Traefik For: GoDaddy" 4 50
+  dialog --infobox "Configuring Traefik For: GoDaddy" 3 45
   sleep 2
-  
+
+#### PART 1 
   display1="GODADDY_API_KEY"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -32,7 +32,18 @@
   echo ""
   eval export ${main1}
  
-
+ #### PART 2
+  display1="GODADDY_API_SECRET"
+    dialog --title "Input Required Information" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --inputbox "$display1:" 8 40 2>/tmp/var2
+  var1=$(cat /tmp/var2)
+  main2="$display1=$var2"
+  echo ""
+  echo "test combinedd"
+  echo $main2
+  echo ""
+  eval export ${2}
 
 
 ##temp
