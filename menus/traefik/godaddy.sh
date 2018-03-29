@@ -28,7 +28,8 @@
   echo "test combinedd"
   echo $main1
   echo ""
-  export "${main1}"="${var1}"
+ export $display1
+ ${display1}=$var1
 
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
