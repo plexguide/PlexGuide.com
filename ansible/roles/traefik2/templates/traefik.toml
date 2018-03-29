@@ -64,7 +64,7 @@ storage = "/etc/traefik/acme/acmev2.json"
 # WARNING, must point to an entrypoint on port 443
 entryPoint = "https"
   [acme.httpChallenge]
-    provider = "manual"
+    provider = "godaddy"
 # CA server to use
 # Uncomment the line to run on the staging let's encrypt server
 # Leave comment to go to prod
