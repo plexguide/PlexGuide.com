@@ -37,7 +37,7 @@
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/tmp/var2
-  var1=$(cat /tmp/var2)
+  var2=$(cat /tmp/var2)
   main2="$display2=$var2"
   echo ""
   echo "test combinedd"
