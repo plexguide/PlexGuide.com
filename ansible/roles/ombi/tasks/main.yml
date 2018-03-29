@@ -16,7 +16,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/ombiv3:/config
       - /etc/localtime:/etc/localtime:ro
