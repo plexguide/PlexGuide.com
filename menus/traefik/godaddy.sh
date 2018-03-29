@@ -39,9 +39,11 @@
   echo "$main2" >> /var/plexguide/traefik.var
   #export ${main2}
 
+  source /var/plexguide/traefik.var
+
 ## If you want to display afterwards, uncomment the two lines below
 
-#ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
 
 #echo "test"
 #printenv
