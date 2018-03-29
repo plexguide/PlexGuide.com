@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Cloudbox Ansible Role]
+# [PlexGuide Ansible Role]
 #
-# Author:   13uddz & Desmonic
-# URL:      https://cloudbox.rocks
+# Enhanced By:       Admin9705 & Deiteq
+# URL:               https://plexguide.com
 #
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
@@ -13,23 +13,17 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Further Enhanced By: https://plexguide.com
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Original Author: 13uddz & Desmonic
+# URL:             https://cloudbox.rocks
 #################################################################################
 
 ---
 - name: Install required packages
-  apt: "name={{item}} state=installed"
+  apt: "name={{item}} state=present"
   with_items:
     - apt-transport-https
     - ca-certificates
     - software-properties-common
-
-- name: Pip Mods
-  pip: "name={{item}} state=latest"
-  with_items:
-    - docker-py
-    - certbot
 
 - name: Add official gpg signing key
   apt_key:
@@ -46,10 +40,10 @@
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
   when: docker_daemon.stat.exists == False
 
-- name: Install docker
+- name: Installing docker
   apt:    
-    name: docker-ce=17.09.0~ce-0~ubuntu
-    state: installed
+    name: docker-ce=18.03.0~ce-0~ubuntu
+    state: present
     force: yes
     update_cache: yes
   when: docker_daemon.stat.exists == False
@@ -66,9 +60,9 @@
   systemd: state=started name=docker enabled=yes
   when: docker_daemon.stat.exists == False
 
-- name: "Wait for 25 seconds before commencing"
+- name: "Wait for 10 seconds before commencing"
   wait_for:
-    timeout: 25
+    timeout: 10
   when: docker_daemon.stat.exists == False
 
 - name: Check override folder exists

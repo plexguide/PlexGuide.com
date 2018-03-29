@@ -1,0 +1,5 @@
+---
+  - name: Removing Packages
+    apt: "name={{item}} state=absent"
+    with_items:
+      - htop

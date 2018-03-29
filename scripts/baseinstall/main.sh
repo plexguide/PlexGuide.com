@@ -76,17 +76,17 @@ echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "10" | dialog --gauge "Installing Python Support" 7 50 0
-bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
-sleep 2
+bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+sleep 1
 
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
-yes | apt-get install software-properties-common &>/dev/null &
-sleep 2
+yes | apt-get install software-properties-common 1>/dev/null 2>&1
+sleep 1
 
 echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
-yes | apt-get install sysstat nmon &>/dev/null &
-sed -i 's/false/true/g' /etc/default/sysstat &>/dev/null &
-sleep 2
+yes | apt-get install sysstat nmon 1>/dev/null 2>&1
+sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
+sleep 1
 
 echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
@@ -95,9 +95,8 @@ apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
-sleep 2
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
 ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands &>/dev/null &
@@ -166,17 +165,6 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
-file="/var/plexguide/midnight.yes"
-if [ -e "$file" ]
-then
-   clear
-else
-  echo "93" | dialog --gauge "Installing Midnight Commander!" 7 50 0
-  bash yes | apt install mc &>/dev/null &
-  touch /var/plexguide/midnight.yes 1>/dev/null 2>&1
-  sleep 2
-fi
-
 echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
 sleep 2
@@ -197,8 +185,7 @@ sleep 2
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep45.yes
-
+   touch /var/plexguide/dep46.yes
 
 echo "PG Install is Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
