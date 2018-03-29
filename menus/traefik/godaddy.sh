@@ -17,7 +17,7 @@
 #################################################################################
 
 
-  dialog --infobox "Configuring Traefik For: GoDaddy" 4 35
+  dialog --infobox "Configuring Traefik For: GoDaddy" 4 50
   sleep 2
   
   display1="GODADDY_API_KEY"
@@ -31,7 +31,10 @@
   echo $main1
   echo ""
   eval export ${main1}
-  
+ 
+
+
+
 ##temp
   clear
   printenv
