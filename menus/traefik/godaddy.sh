@@ -26,6 +26,11 @@
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display1 " 8 40 2>/tmp/var1
   var1=$(cat /tmp/var1)
-  main1=$()
+  main1="$display1=$var1"
+  echo ""
+  echo $main1
+  echo ""
+  export $main1
+
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
