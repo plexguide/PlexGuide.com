@@ -38,7 +38,7 @@
   eval export ${main2}
 
 ## If you want to display afterwards, uncomment the two lines below
-clear
-printenv
+#clear
+#printenv
 
-#ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
