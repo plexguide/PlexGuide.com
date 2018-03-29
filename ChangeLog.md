@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Sped up the Base Installer (about 40 percent); forcing more items to install via background
 - (B3) Docker 18.03 now installs over 17
 - (B3) Fixed Docker Install Glitch; rare times it wouldn't install; caused problems if uninstalled and reinstalled
+- (D)  Working on wildcard https:// subdomains v2 implementation
 
 #### Changed
 - (B1) Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
