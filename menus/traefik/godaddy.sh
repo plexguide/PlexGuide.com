@@ -36,14 +36,12 @@
     --inputbox "$display2:" 8 40 2>/tmp/var2
   var2=$(cat /tmp/var2)
   main2="$display2=$var2"
-  $main2 > /var/plexguide/traefik.var
+  $main2 >> /var/plexguide/traefik.var
   #export ${main2}
 
 ## If you want to display afterwards, uncomment the two lines below
-clear
-printenv
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
+#ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
 
-echo "test"
-printenv
+#echo "test"
+#printenv
