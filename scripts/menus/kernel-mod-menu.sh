@@ -4,6 +4,12 @@ clear
 
 ################# init message
 
+if (whiptail --title "Here Be Dragons" --yesno "Warning: Adjusting Kernel Parameters May Break Network Adapters or Even Brick Your Machine. Continue?" 8 56) then
+  echo ok
+else
+  exit 0
+fi
+
 if (whiptail --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
   echo good
 else
