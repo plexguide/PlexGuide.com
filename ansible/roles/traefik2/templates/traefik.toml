@@ -78,7 +78,7 @@ entryPoint = "https"
 # OnHostRule = true
 
 [[acme.domains]]
-main = "yourdomain.com"
+main = "*.yourdomain.com"
 
 # Enable Docker configuration backend
 [docker]
