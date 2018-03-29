@@ -38,16 +38,6 @@ defaultEntryPoints = ["http", "https"]
 # Replaces [web], dashboard is enabled by default on :8080
 [api]
 
-# Entrypoints, http and https
-[entryPoints]
-# http should be redirected to https
-[entryPoints.http]
-address = ":80"
-    # add comment sybols in the front of each line to turn off https:// redirect
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-# https is the default
-[entryPoints.https]
 address = ":443"
 [entryPoints.https.tls]
 
