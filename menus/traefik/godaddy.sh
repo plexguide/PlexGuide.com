@@ -26,7 +26,7 @@
     --inputbox "$display1:" 8 40 2>/tmp/var1
   var1=$(cat /tmp/var1)
   main1="$display1=$var1"
-  eval export ${main1}
+  export ${main1}
  
  #### PART 2
   display2="GODADDY_API_SECRET"
@@ -35,7 +35,7 @@
     --inputbox "$display2:" 8 40 2>/tmp/var2
   var2=$(cat /tmp/var2)
   main2="$display2=$var2"
-  eval export ${main2}
+  export ${main2}
 
 ## If you want to display afterwards, uncomment the two lines below
 clear
