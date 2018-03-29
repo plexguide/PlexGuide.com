@@ -49,6 +49,6 @@
 #clear
 #printenv
 
-echo GODADDY_API_KEY
+echo $GODADDY_API_KEY
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
