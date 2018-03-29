@@ -239,7 +239,7 @@ function validate_install {
 }
 
 # Execute functions
-choose_color
+# choose_color
 if [[ "${installType}" = "local" ]]; then
   package_manager
   get_nzb_dir

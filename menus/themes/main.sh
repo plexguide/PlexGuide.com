@@ -18,12 +18,12 @@
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=15
-WIDTH=44
-CHOICE_HEIGHT=15
+WIDTH=60
+CHOICE_HEIGHT=4
 TITLE="Install Dark Themes"
 MENU="Select App Theme"
 
-OPTIONS=(A "NZBget - Original Authors: ydkmlt84 & Tronyx"
+OPTIONS=(A "DarkerNZBget - ydkmlt84 & Tronyx"
          X "Uninstall All Themes"
          Z "Exit")
 CHOICE=$(dialog --clear \
@@ -38,8 +38,8 @@ clear
 
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/themes/darkernzbget \
-            -i docker -c nzbget ;;
+            bash /opt/plexguide/menus/themes/darkernzbget.sh \
+            -i docker -c nzbget && sleep 10;;
         X)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget;;
         Z)
@@ -47,4 +47,4 @@ case $CHOICE in
             exit 0 ;;
 esac
 
-bash /opt/plexguide/menus/migrate/main.sh
+bash /opt/plexguide/menus/main.sh
