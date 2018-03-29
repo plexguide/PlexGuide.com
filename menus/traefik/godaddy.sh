@@ -21,10 +21,10 @@
   dialog --infobox "Configuring Traefik For: $provider" 4 35
   sleep 2
   
-  display1="GODADDY_API_KEY:"
+  display1="GODADDY_API_KEY"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "$display1 " 8 40 2>/tmp/var1
+    --inputbox "$display1:" 8 40 2>/tmp/var1
   var1=$(cat /tmp/var1)
   main1="$display1=$var1"
   echo ""
