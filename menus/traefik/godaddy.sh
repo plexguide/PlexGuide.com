@@ -25,8 +25,9 @@
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display1:" 8 40 2>/tmp/var1
   var1=$(cat /tmp/var1)
-  main1="$display1=$var1"
-  export ${main1}
+  main1="export $display1=$var1"
+  echo "$main1" > /var/plexguide/traefik.var
+  #export ${main1}
  
  #### PART 2
   display2="GODADDY_API_SECRET"
@@ -34,14 +35,15 @@
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/tmp/var2
   var2=$(cat /tmp/var2)
-  main2="$display2=$var2"
-  export ${main2}
+  main2="export $display2=$var2"
+  echo "$main2" >> /var/plexguide/traefik.var
+  #export ${main2}
+
+  source /var/plexguide/traefik.var
 
 ## If you want to display afterwards, uncomment the two lines below
-clear
-printenv
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
 
-echo "test"
-printenv
+#echo "test"
+#printenv
