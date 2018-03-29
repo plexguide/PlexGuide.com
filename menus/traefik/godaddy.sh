@@ -26,11 +26,7 @@
     --inputbox "$display1:" 8 40 2>/tmp/var1
   var1=$(cat /tmp/var1)
   main1="$display1=$var1"
-  echo ""
-  echo "test combinedd"
-  echo $main1
-  echo ""
-  export ${main1}
+  eval export ${main1}
  
  #### PART 2
   display2="GODADDY_API_SECRET"
@@ -39,14 +35,10 @@
     --inputbox "$display2:" 8 40 2>/tmp/var2
   var2=$(cat /tmp/var2)
   main2="$display2=$var2"
-  echo ""
-  echo "test combinedd"
-  echo $main2
-  echo ""
-  export ${main2}
+  eval export ${main2}
 
 ## If you want to display afterwards, uncomment the two lines below
 #clear
 #printenv
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
+#ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
