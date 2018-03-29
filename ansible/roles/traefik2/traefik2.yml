@@ -1,7 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: godaddy, tags: ['godaddy'] }
-
-

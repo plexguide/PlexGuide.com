@@ -50,6 +50,7 @@
   - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
   - { role: traefik, tags: ['traefik'] }
+  - { role: traefik2, tags: ['traefik2'] }
   - { role: mylar, tags: ['mylar'] }
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: heimdall, tags: ['heimdall'] }
