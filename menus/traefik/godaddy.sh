@@ -15,7 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  dialog --infobox "Configuring Traefik For: GoDaddy" 4 35
+  "godaddy" > /tmp/provider
+  provider=$(cat /tmp/provider)
+
+  dialog --infobox "Configuring Traefik For: $provider" 4 35
   sleep 2
   
   display1="GODADDY_API_KEY"
@@ -28,8 +31,7 @@
   echo "test combinedd"
   echo $main1
   echo ""
- export $display1
- ${display1}=$var1
+  export main1="$var1"
 
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
