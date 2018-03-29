@@ -31,7 +31,7 @@
   echo "test combinedd"
   echo $main1
   echo ""
-  export GODADDY_API_KEY=$var1
+  export GODADDY_API_KEY="$var1"
 
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
