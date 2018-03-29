@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-HEIGHT=17
+HEIGHT=18
 WIDTH=59
 CHOICE_HEIGHT=16
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
@@ -32,6 +32,7 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          G "SuperSpeeds  : Change Gdrive Transfer Settings"
          H "WatchTower   : Auto-Update Application Manager"
          I "Import Media : Import Existing Media to GDrive "
+         J "App Themes   : Install Dark Theme(s) For Apps "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -131,6 +132,8 @@ touch /var/plexguide/domain
             bash /opt/plexguide/menus/watchtower/main.sh ;;
         I)
             bash /opt/plexguide/menus/migrate/main.sh ;;
+        J)
+            bash /opt/plexguide/menus/themes/main.sh ;;
         Z)
             clear
             exit 0
