@@ -30,7 +30,7 @@
   echo "test combinedd"
   echo $main1
   echo ""
-  eval export ${main1}
+  export ${main1}
  
  #### PART 2
   display2="GODADDY_API_SECRET"
@@ -43,7 +43,7 @@
   echo "test combinedd"
   echo $main2
   echo ""
-  eval export ${main2}
+  export ${main2}
 
 ## If you want to display afterwards, uncomment the two lines below
 #clear
