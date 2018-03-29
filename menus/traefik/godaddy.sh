@@ -31,7 +31,7 @@
   echo "test combinedd"
   echo $main1
   echo ""
-  eval export main1="$var1"
+  export $main1
 
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
