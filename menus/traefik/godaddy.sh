@@ -45,11 +45,8 @@
   echo ""
   eval export ${main2}
 
-
-##temp
-  clear
-  printenv
-
-
+## If you want to display afterwards, uncomment the two lines below
+#clear
+#printenv
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
