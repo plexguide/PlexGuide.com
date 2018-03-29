@@ -31,7 +31,12 @@
   echo "test combinedd"
   echo $main1
   echo ""
-  export $(main1)
+  eval export ${main1}
+  
+##temp
+  clear
+  printenv
+
 
 
 #  ansible-playbook /opt/plexguide/ansible/roles/traefik2/traefik2.yml --tags $provider
