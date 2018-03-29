@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-  dialog --infobox "Configuring Traefik For: GoDaddy" 3 45
+  dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
   sleep 2
 
 #### PART 1 
@@ -33,7 +33,7 @@
   eval export ${main1}
  
  #### PART 2
-  display1="GODADDY_API_SECRET"
+  display2="GODADDY_API_SECRET"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/tmp/var2
