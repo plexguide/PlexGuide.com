@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+#source /var/plexguide/traefik.var
   dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
   sleep 2
 
@@ -39,11 +39,13 @@
   echo "$main2" >> /var/plexguide/traefik.var
   #export ${main2}
 
-  source /var/plexguide/traefik.var
+
 
 ## If you want to display afterwards, uncomment the two lines below
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
 
+
+source /var/plexguide/traefik.var
 #echo "test"
 #printenv
