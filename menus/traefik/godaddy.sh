@@ -28,6 +28,7 @@
   var1=$(cat /tmp/var1)
   main1="$display1=$var1"
   echo ""
+  echo "test combinedd"
   echo $main1
   echo ""
   export $main1
