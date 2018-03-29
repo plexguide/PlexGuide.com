@@ -76,16 +76,16 @@ elif [[ "$installType" == "docker" && "$dockerContainer" == "" ]]; then
 fi
 
 
-# Prompt user to choose black or white icons and validate correct options
-#function choose_color {
-#  read -p 'Which icon color do you want? ([w]hite or [b]lack): ' color
-#  if ! [[ "$color" =~ ^(black|b|white|w)$  ]]; then
-#    echo "Please specify black, b, white, or w."
-#    read -p 'Which icon color do you want? ([w]hite or [b]lack): ' color
-#  else
-#    :
-#  fi
-#}
+#Prompt user to choose black or white icons and validate correct options
+function choose_color {
+ read -p 'Which icon color do you want? ([w]hite or [b]lack): ' color
+ if ! [[ "$color" =~ ^(black|b|white|w)$  ]]; then
+   echo "Please specify black, b, white, or w."
+   read -p 'Which icon color do you want? ([w]hite or [b]lack): ' color
+ else
+   :
+ fi
+}
 color='black'
 
 # Determine if provided Docker container name is valid
@@ -239,7 +239,7 @@ function validate_install {
 }
 
 # Execute functions
-# choose_color
+choose_color
 if [[ "${installType}" = "local" ]]; then
   package_manager
   get_nzb_dir
