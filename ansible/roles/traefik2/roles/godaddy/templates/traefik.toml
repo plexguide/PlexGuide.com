@@ -33,23 +33,16 @@ logLevel = "WARN"
 
 # Entrypoints to be used by frontends that do not specify any entrypoint.
 # Each frontend can specify its own entrypoints.
-defaultEntryPoints = ["http", "https"]
+defaultEntryPoints = ["https"]
 
 # Replaces [web], dashboard is enabled by default on :8080
 [api]
 
 # Entrypoints, http and https
 [entryPoints]
-# http should be redirected to https
-[entryPoints.http]
-address = ":80"
-    # add comment sybols in the front of each line to turn off https:// redirect
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-# https is the default
-[entryPoints.https]
-address = ":443"
-[entryPoints.https.tls]
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
 
 [retry]
 
@@ -66,13 +59,12 @@ email = "your@email.com"
 #  - mount the folder containing the file as a volume
 #      storageFile = "/etc/traefik/acme/acme.json"
 #      $ docker run -v "/my/host/acme:/etc/traefik/acme" traefik
-storage = "/etc/traefik/acme/acme.json"
+storage = "/etc/traefik/acme/acmev2.json"
 # Entrypoint to proxy acme challenge/apply certificates to.
 # WARNING, must point to an entrypoint on port 443
 entryPoint = "https"
-[acme.httpChallenge]
-  provider = "godaddy"
-  delayBeforeCheck = 0
+  [acme.httpChallenge]
+    provider = "manual"
 # CA server to use
 # Uncomment the line to run on the staging let's encrypt server
 # Leave comment to go to prod
@@ -80,10 +72,10 @@ entryPoint = "https"
 # Enable on demand certificate. This will request a certificate from Let's Encrypt during the first TLS handshake for a hostname that does not yet have a certificate.
 # WARNING, TLS handshakes will be slow when requesting a hostname certificate for the first time, this can leads to DoS attacks.
 # WARNING, Take note that Let's Encrypt have rate limiting: https://letsencrypt.org/docs/rate-limits
-onDemand = false
+# onDemand = false
 # Enable certificate generation on frontends Host rules. This will request a certificate from Let's Encrypt for each frontend with a Host rule.
 # For example, a rule Host:test1.traefik.io,test2.traefik.io will request a certificate with main domain test1.traefik.io and SAN test2.traefik.io.
-OnHostRule = true
+# OnHostRule = true
 
 [[acme.domains]]
 main = "*.yourdomain.com"
