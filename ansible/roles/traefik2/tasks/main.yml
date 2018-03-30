@@ -100,7 +100,7 @@
       - "443:443"
       - "80:80"
     env:
-      PROVIDER: "{{provider.stdout}}"
+      PROVIDER: godaddy
       GODADDY_API_KEY: "{{var1.stdout}}"
       GODADDY_API_SECRET: "{{var2.stdout}}"
       PUID: 1000
