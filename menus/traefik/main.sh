@@ -47,23 +47,25 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     A)
       bash /opt/plexguide/menus/traefik/godaddy.sh
+      ;;
     B)
       echo ""
-
+      ;;
     C)
       echo ""
-
+      ;;
     D)
       echo ""
-
+      ;;
     E)
       echo ""
-
+      ;;
     F)
       echo ""
-
+      ;;
     G)
       echo ""
+      ;;
     Z)
       exit 0 ;;
 esac
