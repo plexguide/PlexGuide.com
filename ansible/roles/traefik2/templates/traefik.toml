@@ -43,7 +43,7 @@ defaultEntryPoints = ["https"]
 [acme]
 acmeLogging = true
 email = "your@email.com"
-storage = "acme.json"
+storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
   [acme.dnsChallenge]
     provider = "godaddy"
