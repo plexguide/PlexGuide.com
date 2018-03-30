@@ -91,6 +91,7 @@ case $CHOICE in
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
       echo "GANDI_API_KEY" > /tmp/display1
+      echo "gandi" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap
       exit 0 ;;
