@@ -61,6 +61,11 @@ case $CHOICE in
       ;;
 esac
 
+rm -r /tmp/display1 1>/dev/null 2>&1
+rm -r /tmp/display2 1>/dev/null 2>&1
+rm -r /tmp/display3 1>/dev/null 2>&1
+rm -r /tmp/display4 1>/dev/null 2>&1
+
 HEIGHT=14
 WIDTH=55
 CHOICE_HEIGHT=9
