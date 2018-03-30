@@ -95,7 +95,7 @@
 
 ######################################################### REPLACE STANDARD VARIBLES
 
-- name: Replace yourdomain.com with user input
+- name: Replace Provider
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
