@@ -41,6 +41,9 @@ case $CHOICE in
       clear ;;
       ## keep going
     B)
+      docker stop traefik 1>/dev/null 2>&1
+      docerk rm traefik 1>/dev/null 2>&1
+      docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       display=Legacy-Traefik
       program=traefik
       port=NONE
@@ -56,9 +59,6 @@ case $CHOICE in
       exit
       ;;
 esac
-
-
-
 
 rm -r /tmp/display1
 rm -r /tmp/display2
