@@ -38,7 +38,6 @@
   template:
     src: traefik.toml
     dest: /opt/appdata/traefik/traefik.toml
-    "{{foo_result.stdout}}": fat
     force: yes
     owner: 1000
     group: 1000
@@ -75,7 +74,7 @@
       - "443:443"
       - "80:80"
     env:
-      #{{var11}}: {{var12}}
+      "{{foo_result.stdout}}": fat
       PUID: 1000
       PGID: 1000
     volumes:
