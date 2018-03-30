@@ -29,8 +29,8 @@ CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
-OPTIONS=(A "GoDaddy.com"
-         B "BLANK"
+OPTIONS=(A "GoDaddy"
+         B "NameCheap"
          C "BLANK"
          D "BLANK"
          E "BLANK"
@@ -51,10 +51,15 @@ case $CHOICE in
       echo "GODADDY_API_SECRET" > /tmp/display2
       echo "godaddy" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap
       exit 0 ;;
     B)
-      clear ;;
+      echo "NAMECHEAP_API_USER" > /tmp/display1
+      echo "NAMECHEAP_API_KEY" > /tmp/display2
+      echo "namecheap" > /var/plexguide/provider
+      bash /opt/plexguide/menus/traefik/menu.sh
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy
+      exit 0 ;;
     C)
       clear ;;
     D)
