@@ -21,12 +21,17 @@
     state: absent
     path: /opt/appdata/traefik/traefik.toml
 
+- name: Variable Test
+  shell: "echo /var/plexguide/test"
+  register: foo_result
+  ignore_errors: True
+
+- debug: msg="Using following Plex claim token {{foo_result.stdout}}"
+
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/traefik
-  tags:
-    - main
 
 ########## Move Script if not Present
 - name: Installing Traefik.Toml
@@ -69,6 +74,7 @@
       - "443:443"
       - "80:80"
     env:
+      #{{var11}}: {{var12}}
       PUID: 1000
       PGID: 1000
     volumes:
