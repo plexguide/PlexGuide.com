@@ -67,13 +67,14 @@ CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
-OPTIONS=(A "GoDaddy"
-         B "NameCheap (Warning: namecheap.plexguide.com)"
-         C "BLANK"
+OPTIONS=(A "Gandi" 
+         B "GoDaddy"
+         C "NameCheap (Warning: namecheap.plexguide.com)"
          D "BLANK"
          E "BLANK"
          F "BLANK"
          G "BLANK"
+         H "BLANK"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -89,13 +90,21 @@ case $CHOICE in
       docerk rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
+      echo "GANDI_API_KEY" > /tmp/display1
+      bash /opt/plexguide/menus/traefik/menu.sh
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap
+    B)
+      docker stop traefik 1>/dev/null 2>&1
+      docerk rm traefik 1>/dev/null 2>&1
+      docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
+      sleep 3
       echo "GODADDY_API_KEY" > /tmp/display1
       echo "GODADDY_API_SECRET" > /tmp/display2
       echo "godaddy" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi
       exit 0 ;;
-    B)
+    C)
       docker stop traefik 1>/dev/null 2>&1
       docerk rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
@@ -104,10 +113,8 @@ case $CHOICE in
       echo "NAMECHEAP_API_KEY" > /tmp/display2
       echo "namecheap" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi
       exit 0 ;;
-    C)
-      clear ;;
     D)
       clear ;;
     E)
@@ -115,6 +122,8 @@ case $CHOICE in
     F)
       clear ;;
     G)
+      clear ;;
+    H)
       clear ;;
     Z)
       exit 0 ;;
