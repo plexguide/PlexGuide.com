@@ -42,13 +42,13 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      ## provide how many displays there are
+      2 > /tmp/number
       echo "GODADDY_API_KEY" > /tmp/display1
       echo "GODADDY_API_KEY" > /tmp/display2
       echo "godaddy" > /var/plexguide/traefik.provider
 
       bash /opt/plexguide/menus/traefik/menu.sh
-      
+
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
       exit 0 ;;
     B)
