@@ -68,7 +68,7 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
 OPTIONS=(A "GoDaddy"
-         B "NameCheap (Warning: https://namecheap.plexguide.com)"
+         B "NameCheap (Warning: namecheap.plexguide.com)"
          C "BLANK"
          D "BLANK"
          E "BLANK"
