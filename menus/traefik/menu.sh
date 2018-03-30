@@ -19,7 +19,7 @@
   
 provider=$( cat /var/plexguide/provider )
 dialog --infobox "Configuring Traefik For: $provider" 3 40
-sleep 1
+sleep 2
 
 ############################## DISPLAY 1
 file="/tmp/display1"
