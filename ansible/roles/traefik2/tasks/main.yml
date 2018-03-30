@@ -100,16 +100,16 @@
       - "443:443"
       - "80:80"
     env:
+      PUID: 1000
+      PGID: 1000
       PROVIDER: godaddy
       GODADDY_API_KEY: "{{var1.stdout}}"
       GODADDY_API_SECRET: "{{var2.stdout}}"
-      PUID: 1000
-      PGID: 1000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik2/traefik.toml:/etc/traefik/traefik.toml:ro
-      - /opt/appdata/traefik2/acme:/etc/traefik/acme/:rw
+      - /opt/appdata/traefik2/acme:/etc/traefik/acme:rw
     restart_policy: always
     state: started
     networks:
