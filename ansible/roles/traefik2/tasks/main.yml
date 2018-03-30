@@ -20,7 +20,7 @@
   docker_container:
     name: traefik
     state: absent
-    
+
 - name: Removing Prior Traefik.toml
   file:
     state: absent
@@ -30,7 +30,7 @@
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
-    - /opt/appdata/traefik
+    - /opt/appdata/traefik2
 
 ########## Move Script if not Present
 - name: Installing Traefik.Toml
@@ -103,8 +103,8 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
-      - /opt/appdata/traefik/acme:/etc/traefik/acme:rw
+      - /opt/appdata/traefik2/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik2/acme:/etc/traefik/acme:rw
     restart_policy: always
     state: started
     networks:
