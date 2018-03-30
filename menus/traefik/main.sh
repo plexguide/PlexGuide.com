@@ -18,6 +18,11 @@
 export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 
+rm -r /tmp/display1
+rm -r /tmp/display2
+rm -r /tmp/display3
+rm -r /tmp/display4
+
 HEIGHT=14
 WIDTH=38
 CHOICE_HEIGHT=9

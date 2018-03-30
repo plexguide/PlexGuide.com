@@ -28,16 +28,29 @@
  display1=$( cat /tmp/display1 )
  display2=$( cat /tmp/display2 )
 
-if [ "$number" -le "1" ]
- then
+############################## DISPLAY 1
+file="/tmp/display1"
+if [ -e "$file" ]
+then
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display1:" 8 40 2>/var/plexguide/traefik.var1
 fi
 
-if [ "$number" -le "2" ]
-  then
+############################## DISPLAY 2
+file="/tmp/display2"
+if [ -e "$file" ]
+then
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/var/plexguide/traefik.var2
+fi
+
+############################## DISPLAY 3
+file="/tmp/display2"
+if [ -e "$file" ]
+then
+    dialog --title "Input Required Information" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --inputbox "$display3:" 8 40 2>/var/plexguide/traefik.var3
 fi
