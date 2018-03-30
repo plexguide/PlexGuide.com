@@ -16,17 +16,15 @@
 #
 #################################################################################
 ---
+
+- hosts: whatever
+  gather_facts: no
+
 - name: Removing Prior Traefik.toml
   file:
     state: absent
     path: /opt/appdata/traefik/traefik.toml
 
-- name: Variable
-  shell: "cat /var/plexguide/test"
-  register: foo_result
-  ignore_errors: True
-
-- debug: msg="Using following Plex claim token {{foo_result.stdout}}"
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
@@ -57,13 +55,39 @@
     replace: "{{email}}"
   tags:
     - main
-#############################
 
 - name: Remove Traefik
   docker_container:
     name: traefik
     state: absent
+######################################################### RECALL VARIABLES
 
+- name: Provider
+  shell: "cat /var/plexguide/traefik.provider"
+  register: traefik.provider
+  ignore_errors: True
+
+- name: Variable 1
+  shell: "cat /var/plexguide/traefik.var1"
+  register: traefik.var1
+  ignore_errors: True
+
+- name: Variable 2
+  shell: "cat /var/plexguide/traefik.var2"
+  register: traefik.var2
+  ignore_errors: True
+
+- name: Variable 3
+  shell: "cat /var/plexguide/traefik.var3"
+  register: traefik.var3
+  ignore_errors: True
+
+- name: Variable 4
+  shell: "cat /var/plexguide/traefik.var4"
+  register: traekfik.var4
+  ignore_errors: True
+
+######################################################### GODADDY
 - name: Deploy Traefik
   docker_container:
     name: traefik
@@ -74,7 +98,9 @@
       - "443:443"
       - "80:80"
     env:
-      {{foo_result.stdout}}: fat
+      PROVIDER: 
+      GODADDY_API_KEY:
+      GODADDY_API_SECRET: 
       PUID: 1000
       PGID: 1000
     volumes:
