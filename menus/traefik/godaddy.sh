@@ -19,33 +19,22 @@
   dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
   sleep 2
 
+##### Provider
+echo "godaddy" > /var/plexguide/traefik.provider
+
 #### PART 1 
   display1="GODADDY_API_KEY"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "$display1:" 8 40 2>/tmp/var1
-  var1=$(cat /tmp/var1)
-  main1="$display1=$var1"
-  echo "$main1" > /etc/environment
-  #export ${main1}
+    --inputbox "$display1:" 8 40 2>/var/plexguige/traefik1.var1
  
  #### PART 2
   display2="GODADDY_API_SECRET"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/tmp/var2
-  var2=$(cat /tmp/var2)
-  main2="$display2=$var2"
-  echo "$main2" >> /var/plexguide/traefik.var
-  #export ${main2}
-
-
+  echo "$var2" > /var/plexguide/traefik.var2
 
 ## If you want to display afterwards, uncomment the two lines below
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
-
-
-source /var/plexguide/traefik.var
-#echo "test"
-#printenv

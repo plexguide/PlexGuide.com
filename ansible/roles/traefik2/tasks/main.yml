@@ -16,10 +16,6 @@
 #
 #################################################################################
 ---
-
-- hosts: webservers
-  gather_facts: no
-
 - name: Removing Prior Traefik.toml
   file:
     state: absent
@@ -64,27 +60,27 @@
 
 - name: Provider
   shell: "cat /var/plexguide/traefik.provider"
-  register: traefik.provider
+  register: provider
   ignore_errors: True
 
 - name: Variable 1
   shell: "cat /var/plexguide/traefik.var1"
-  register: traefik.var1
+  register: var1
   ignore_errors: True
 
 - name: Variable 2
   shell: "cat /var/plexguide/traefik.var2"
-  register: traefik.var2
+  register: var2
   ignore_errors: True
 
 - name: Variable 3
   shell: "cat /var/plexguide/traefik.var3"
-  register: traefik.var3
+  register: var3
   ignore_errors: True
 
 - name: Variable 4
   shell: "cat /var/plexguide/traefik.var4"
-  register: traekfik.var4
+  register: var4
   ignore_errors: True
 
 ######################################################### GODADDY
@@ -98,9 +94,9 @@
       - "443:443"
       - "80:80"
     env:
-      PROVIDER: 
-      GODADDY_API_KEY:
-      GODADDY_API_SECRET: 
+      PROVIDER: {{provider.stdout}}
+      GODADDY_API_KEY: {{var1.stdout}}
+      GODADDY_API_SECRET: {{var2.stdout}}
       PUID: 1000
       PGID: 1000
     volumes:
