@@ -42,7 +42,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      "1" > /tmp/number
+      echo "1" > /tmp/number
       echo "GODADDY_API_KEY" > /tmp/display1
       echo "GODADDY_API_KEY" > /tmp/display2
       echo "godaddy" > /var/plexguide/traefik.provider
