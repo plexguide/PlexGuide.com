@@ -32,8 +32,11 @@ echo "godaddy" > /var/plexguide/traefik.provider
   display2="GODADDY_API_SECRET"
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "$display2:" 8 40 2>/tmp/var2
-  echo "$var2" > /var/plexguide/traefik.var2
+    --inputbox "$display2:" 8 40 2>/var/plexguide/traefik.var2
+
+#################### FILLERS
+echo "blank" >/var/plexguide/traefik.var3
+echo "blank" >/var/plexguide/traefik.var4
 
 ## If you want to display afterwards, uncomment the two lines below
 
