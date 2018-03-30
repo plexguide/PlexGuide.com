@@ -26,7 +26,7 @@ TITLE="Select Your Domain Provider"
 
 OPTIONS=(A "Traefik V2"
          B "Legacy Traefik"
-         C "Change Your Domain"
+         C "Change Your Domain (NOT READY)"
          D "Mini FAQ")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
