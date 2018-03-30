@@ -26,7 +26,6 @@
     state: absent
     path: /opt/appdata/traefik/traefik.toml
 
-
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -38,6 +37,14 @@
   template:
     src: traefik.toml
     dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+    owner: 1000
+    group: 1000
+
+- name: Installing Traefik.Toml
+  template:
+    src: acme.json
+    dest: /opt/appdata/traefik/acme/acme.json
     force: yes
     owner: 1000
     group: 1000
