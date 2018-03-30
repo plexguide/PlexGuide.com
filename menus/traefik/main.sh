@@ -38,15 +38,20 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      clear
+      clear ;;
       ## keep going
     B)
-      
+      display=Legacy-Traefik
+      program=traefik
+      port=NONE
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
+      exit ;;
     C)
       clear ;;
     D)
-      clear
-      ## type up stuff
+      dialog --title "Mini FAQ: Page 1 of 2" --msgbox "Visit traefik.plexguide.com for more detailed info\n\nTraefik v2 is the new version that allows all of your subdomains (unlimited) to receive an SSL CERTIFICATE. This allows you to create custom subdomains, not limited by having a max of 20, and cuts down on the RATE ERRORS. There is some minor work on your end to make this work!" 0 0
+      dialog --title "Mini FAQ: Page 2 of 2" --msgbox "Legacy Traefik works fine, but you will not be able to create custom subdomains and more limited in the amount of subdomains you can create per week. It is easier to setup though.\n\nVisit https://traefik.plexguide.com for more information." 0 0 ;;
 esac
 
 
