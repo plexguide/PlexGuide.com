@@ -48,6 +48,7 @@ case $CHOICE in
       program=traefik
       port=NONE
       dialog --infobox "Installing: $display" 3 30
+      sleep 3
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
       exit ;;
     C)
