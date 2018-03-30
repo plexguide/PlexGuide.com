@@ -94,9 +94,9 @@
       - "443:443"
       - "80:80"
     env:
-      PROVIDER: {{provider.stdout}}
-      GODADDY_API_KEY: {{var1.stdout}}
-      GODADDY_API_SECRET: {{var2.stdout}}
+      PROVIDER: "{{provider.stdout}}"
+      GODADDY_API_KEY: "{{var1.stdout}}"
+      GODADDY_API_SECRET: "{{var2.stdout}}"
       PUID: 1000
       PGID: 1000
     volumes:
