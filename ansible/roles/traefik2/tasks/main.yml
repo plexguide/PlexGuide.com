@@ -93,6 +93,14 @@
   register: var4
   ignore_errors: True
 
+######################################################### REPLACE STANDARD VARIBLES
+
+- name: Replace yourdomain.com with user input
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: myprovider
+    replace: "{{provider.stdout}}"
+
 ######################################################### GODADDY
 - name: Deploy Traefik
   docker_container:
