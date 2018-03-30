@@ -23,8 +23,7 @@
 
 #### PART 1 
  number=$( cat /tmp/number )
-
-
+ let number=number+0
 
 if [ "$number" -le "1" ]
  then
