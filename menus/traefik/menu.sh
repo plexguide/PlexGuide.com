@@ -19,17 +19,21 @@
   dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
   sleep 1
 
-##### Provider
-echo "godaddy" > /var/plexguide/traefik.provider
+## call up display 1,4
 
 #### PART 1 
-    display1="GODADDY_API_KEY" 
+ number=$( cat /tmp/number )
+
+
+
+if [ "$number" -le "1" ]
+ then
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display1:" 8 40 2>/var/plexguide/traefik.var1
- 
- #### PART 2
-    display2="GODADDY_API_SECRET" 
+ fi
+
+if [ "$number" -le "2" ]
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/var/plexguide/traefik.var2
@@ -40,4 +44,3 @@ echo "blank" >/var/plexguide/traefik.var4
 
 ## If you want to display afterwards, uncomment the two lines below
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
