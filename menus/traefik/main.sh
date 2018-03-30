@@ -49,10 +49,8 @@ case $CHOICE in
     A)
       echo "GODADDY_API_KEY" > /tmp/display1
       echo "GODADDY_API_SECRET" > /tmp/display2
-      echo "GoDaddy" > /var/plexguide/provider
-
+      echo "godaddy" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2
       exit 0 ;;
     B)
