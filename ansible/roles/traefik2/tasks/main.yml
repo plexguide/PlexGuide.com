@@ -41,11 +41,12 @@
     owner: 1000
     group: 1000
 
-- name: Installing Traefik.Toml
+- name: Installing ACME
   template:
     src: acme.json
     dest: /opt/appdata/traefik/acme/acme.json
     force: yes
+    mode: 0600
     owner: 1000
     group: 1000
 
