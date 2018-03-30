@@ -17,7 +17,7 @@
 #################################################################################
 #source /var/plexguide/traefik.var
   
-provider=$( cat /tmp/provider )
+provider=$( cat /var/plexguide/provider )
 dialog --infobox "Configuring Traefik For: $provider" 3 40
 sleep 1
 
@@ -49,4 +49,14 @@ display3=$( cat /tmp/display3 )
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display3:" 8 40 2>/var/plexguide/traefik.var3
+fi
+
+############################## DISPLAY 4
+file="/tmp/display4"
+if [ -e "$file" ]
+then
+display3=$( cat /tmp/display4 )
+    dialog --title "Input Required Information" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --inputbox "$display4:" 8 40 2>/var/plexguide/traefik.var4
 fi
