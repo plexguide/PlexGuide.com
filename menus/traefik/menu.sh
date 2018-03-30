@@ -25,8 +25,8 @@
  number=$( cat /tmp/number )
  let number=number+0
 
- display1=$( cat /tmp/display2 )
- display2=$( cat /tmp/display2)
+ display1=$( cat /tmp/display1 )
+ display2=$( cat /tmp/display2 )
 
 if [ "$number" -le "1" ]
  then
