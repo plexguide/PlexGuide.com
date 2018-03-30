@@ -115,8 +115,7 @@
       PUID: 1000
       PGID: 1000
       PROVIDER: "{{provider.stdout}}"
-      NAMECHEAP_API_USER: "{{var1.stdout}}"
-      NAMECHEAP_API_KEY: "{{var2.stdout}}"
+      GANDI_API_KEY: "{{var1.stdout}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
@@ -128,10 +127,7 @@
       - name: plexguide
         aliases:
           - traefik
-  tags: namecheap
-
-
-
+  tags: gandi
 
 ######################################################### GODADDY
 - name: Deploy Traefik
