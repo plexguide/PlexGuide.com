@@ -143,31 +143,22 @@ sleep 2
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-############ Installs Traefik Based on Redirection Setting
-file="/var/plexguide/redirect.yes"
-if [ -e "$file" ]
-then
-  echo "82" | dialog --gauge "Installing: Traefik" 7 50 0
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff 1>/dev/null 2>&1
-  #read -n 1 -s -r -p "Press any key to continue "
-else
-  echo "82" | dialog --gauge "Installing: Traefik" 7 50 0
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirecton 1>/dev/null 2>&1
-  #read -n 1 -s -r -p "Press any key to continue "
-fi
-
-echo "86" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
-echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
+echo "86" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
-echo "96" | dialog --gauge "Installing: WatchTower" 7 50 0
+echo "89" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
 sleep 2
+
+echo "95" | dialog --gauge "Installing: Traefik" 7 50 0
+sleep 2
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "99" | dialog --gauge "Donation Question" 7 50 0
