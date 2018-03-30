@@ -17,7 +17,7 @@
 #################################################################################
 #source /var/plexguide/traefik.var
   dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
-  sleep 2
+  sleep 1
 
 ##### Provider
 echo "godaddy" > /var/plexguide/traefik.provider
