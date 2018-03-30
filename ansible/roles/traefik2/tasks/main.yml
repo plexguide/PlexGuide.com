@@ -109,7 +109,7 @@
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik2/traefik.toml:/etc/traefik/traefik.toml:ro
-      - /opt/appdata/traefik2/acme.json:acme.json:rw
+      - /opt/appdata/traefik2/acme.json:/acme.json:rw
     restart_policy: always
     state: started
     networks:
