@@ -30,11 +30,11 @@ if [ "$number" -le "1" ]
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display1:" 8 40 2>/var/plexguide/traefik.var1
- fi
+fi
 
 if [ "$number" -le "2" ]
+  then
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/var/plexguide/traefik.var2
-then
 fi
