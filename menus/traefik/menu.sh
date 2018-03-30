@@ -16,8 +16,10 @@
 #
 #################################################################################
 #source /var/plexguide/traefik.var
-  dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
-  sleep 1
+  
+provider=$( cat /tmp/provider )
+dialog --infobox "Configuring Traefik For: $provider" 3 40
+sleep 1
 
 ############################## DISPLAY 1
 file="/tmp/display1"
