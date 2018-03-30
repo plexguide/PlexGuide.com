@@ -93,6 +93,7 @@ case $CHOICE in
       echo "GANDI_API_KEY" > /tmp/display1
       bash /opt/plexguide/menus/traefik/menu.sh
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap
+      exit 0 ;;
     B)
       docker stop traefik 1>/dev/null 2>&1
       docerk rm traefik 1>/dev/null 2>&1
