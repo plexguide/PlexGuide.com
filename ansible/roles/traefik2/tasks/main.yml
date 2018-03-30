@@ -21,6 +21,11 @@
     name: traefik
     state: absent
 
+- name: Remove Traefik
+  docker_container:
+    name: traefik2
+    state: absent
+
 - name: Removing Prior Traefik.toml
   file:
     state: absent
@@ -87,7 +92,7 @@
 ######################################################### GODADDY
 - name: Deploy Traefik
   docker_container:
-    name: traefik
+    name: traefik2
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
