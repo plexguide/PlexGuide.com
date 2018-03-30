@@ -26,7 +26,7 @@ echo "godaddy" > /var/plexguide/traefik.provider
     display1="GODADDY_API_KEY" 
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "$display1:" 8 40 2>/var/plexguide/traefik1.var1
+    --inputbox "$display1:" 8 40 2>/var/plexguide/traefik.var1
  
  #### PART 2
     display2="GODADDY_API_SECRET" 
