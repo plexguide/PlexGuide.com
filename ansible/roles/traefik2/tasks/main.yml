@@ -69,7 +69,7 @@
 ######################################################### RECALL VARIABLES
 
 - name: Provider
-  shell: "cat /var/plexguide/traefik.provider"
+  shell: "cat /var/plexguide/provider"
   register: provider
   ignore_errors: True
 
