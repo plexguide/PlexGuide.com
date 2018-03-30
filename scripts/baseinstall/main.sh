@@ -158,7 +158,7 @@ sleep 2
 
 echo "95" | dialog --gauge "Installing: Traefik" 7 50 0
 sleep 2
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik --skip-tags=redirectoff 1>/dev/null 2>&1
+bash /opt/plexguide/menus/traefik/main.sh
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "99" | dialog --gauge "Donation Question" 7 50 0
