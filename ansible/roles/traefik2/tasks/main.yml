@@ -38,7 +38,7 @@
   template:
     src: traefik.toml
     dest: /opt/appdata/traefik/traefik.toml
-    {{foo_result.stdout}}: fat
+    "{{foo_result.stdout}}": fat
     force: yes
     owner: 1000
     group: 1000
