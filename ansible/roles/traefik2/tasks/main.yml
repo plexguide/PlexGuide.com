@@ -16,6 +16,11 @@
 #
 #################################################################################
 ---
+- name: Remove Traefik
+  docker_container:
+    name: traefik
+    state: absent
+    
 - name: Removing Prior Traefik.toml
   file:
     state: absent
@@ -52,10 +57,6 @@
   tags:
     - main
 
-- name: Remove Traefik
-  docker_container:
-    name: traefik
-    state: absent
 ######################################################### RECALL VARIABLES
 
 - name: Provider
