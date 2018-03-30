@@ -62,54 +62,24 @@
   tags:
     - main
 
-######################################################### RECALL VARIABLES
-
-- name: Provider
-  shell: "cat /var/plexguide/traefik.provider"
-  register: provider
-  ignore_errors: True
-
-- name: Variable 1
-  shell: "cat /var/plexguide/traefik.var1"
-  register: var1
-  ignore_errors: True
-
-- name: Variable 2
-  shell: "cat /var/plexguide/traefik.var2"
-  register: var2
-  ignore_errors: True
-
-- name: Variable 3
-  shell: "cat /var/plexguide/traefik.var3"
-  register: var3
-  ignore_errors: True
-
-- name: Variable 4
-  shell: "cat /var/plexguide/traefik.var4"
-  register: var4
-  ignore_errors: True
-
 ######################################################### GODADDY
 - name: Deploy Traefik
   docker_container:
     name: traefik2
-    image: traefik:tetedemoine-alpine
+    image: traefik:1.6
     pull: yes
     cpu_shares: 256
     published_ports:
       - "443:443"
       - "80:80"
     env:
-      PROVIDER: "{{provider.stdout}}"
-      GODADDY_API_KEY: "{{var1.stdout}}"
-      GODADDY_API_SECRET: "{{var2.stdout}}"
       PUID: 1000
       PGID: 1000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik2/traefik.toml:/etc/traefik/traefik.toml:ro
-      - /opt/appdata/traefik2/acme.json:/acme.json:rw
+      - /opt/appdata/traefik2/acme:/etc/traefik/acme:rw
     restart_policy: always
     state: started
     networks:
