@@ -93,7 +93,7 @@
 - name: Deploy Traefik
   docker_container:
     name: traefik2
-    image: traefik:1.6
+    image: traefik:1.6.0-rc3
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -109,7 +109,7 @@
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik2/traefik.toml:/etc/traefik/traefik.toml:ro
-      #- /opt/appdata/traefik2/acme:/etc/traefik/acme:rw
+      - /opt/appdata/traefik2/acme:/etc/traefik/acme:rw
     restart_policy: always
     state: started
     networks:
