@@ -15,12 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
-source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
-echo $ipv4
-echo $domain
 
 HEIGHT=14
 WIDTH=38
@@ -46,29 +42,21 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      bash /opt/plexguide/menus/traefik/godaddy.sh
-      ;;
+      bash /opt/plexguide/menus/traefik/godaddy.sh ;;
     B)
-      echo ""
-      ;;
+      clear ;;
     C)
-      echo ""
-      ;;
+      clear ;;
     D)
-      echo ""
-      ;;
+      clear ;;
     E)
-      echo ""
-      ;;
+      clear ;;
     F)
-      echo ""
-      ;;
+      clear ;;
     G)
-      echo ""
-      ;;
+      clear ;;
     Z)
       exit 0 ;;
 esac
-    clear
 
 bash /opt/plexguide/menus/traefik/main.sh
