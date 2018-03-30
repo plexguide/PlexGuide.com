@@ -61,11 +61,6 @@ case $CHOICE in
       ;;
 esac
 
-rm -r /tmp/display1
-rm -r /tmp/display2
-rm -r /tmp/display3
-rm -r /tmp/display4
-
 HEIGHT=14
 WIDTH=45
 CHOICE_HEIGHT=9
