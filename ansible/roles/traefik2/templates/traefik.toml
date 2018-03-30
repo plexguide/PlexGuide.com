@@ -27,17 +27,12 @@
 # Optional
 # Default: "ERROR"
 # Accepted values, in order of severity: "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "PANIC"
-#
-logLevel = "WARN"
 
-# Entrypoints to be used by frontends that do not specify any entrypoint.
-# Each frontend can specify its own entrypoints.
+logLevel = "WARN"
 defaultEntryPoints = ["https"]
 
-# Replaces [web], dashboard is enabled by default on :8080
 [api]
 
-# Entrypoints, http and https
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -45,38 +40,19 @@ defaultEntryPoints = ["https"]
 
 [retry]
 
-# Enable ACME (Let's Encrypt): automatic SSL
 [acme]
 acmeLogging = true
-# Email address used for registration
 email = "your@email.com"
-# File or key used for certificates storage.
-# WARNING, if you use Traefik in Docker, you have 2 options:
-#  - create a file on your host and mount it as a volume
-#      storageFile = "acme.json"
-#      $ docker run -v "/my/host/acme.json:acme.json" traefik
-#  - mount the folder containing the file as a volume
-#      storageFile = "/etc/traefik/acme/acme.json"
-#      $ docker run -v "/my/host/acme:/etc/traefik/acme" traefik
 storage = "/etc/traefik/acme/acmev2.json"
-# Entrypoint to proxy acme challenge/apply certificates to.
-# WARNING, must point to an entrypoint on port 443
 entryPoint = "https"
-  [acme.httpChallenge]
-    provider = "godaddy"
+  [acme.dnsChallenge]
+    provider = "manual"
 
 [[acme.domains]]
-main = "*.yourdomain.com"
+  main = "*.yourdomain.com"
 
-# Enable Docker configuration backend
 [docker]
-# Docker server endpoint. Can be a tcp or a unix socket endpoint.
 endpoint = "unix:///var/run/docker.sock"
-# Default domain used.
-# Can be overridden by setting the "traefik.domain" label on a container.
 domain = "yourdomain.com"
-# Enable watch docker changes
 watch = true
-# Expose containers by default in traefik
-# If set to false, containers that don't have `traefik.enable=true` will be ignored
 exposedbydefault = false
