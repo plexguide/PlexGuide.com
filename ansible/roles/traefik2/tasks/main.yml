@@ -22,7 +22,7 @@
     path: /opt/appdata/traefik/traefik.toml
 
 - name: Variable Test
-  shell: "echo '/var/plexguide/test'"
+  shell: "cat /var/plexguide/test"
   register: foo_result
   ignore_errors: True
 
