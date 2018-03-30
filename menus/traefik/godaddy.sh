@@ -19,11 +19,6 @@
   dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
   sleep 1
 
-                dialog --title "Input >> Tag Version" \
-                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/tmp/plextag
-
-
 ##### Provider
 echo "godaddy" > /var/plexguide/traefik.provider
 
@@ -31,7 +26,7 @@ echo "godaddy" > /var/plexguide/traefik.provider
     display1="GODADDY_API_KEY" 
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "$display1:" 8 40 2>/var/plexguige/traefik1.var1
+    --inputbox "$display1:" 8 40 2>/var/plexguide/traefik1.var1
  
  #### PART 2
     display2="GODADDY_API_SECRET" 
