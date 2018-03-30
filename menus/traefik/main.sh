@@ -18,6 +18,40 @@
 export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 
+HEIGHT=14
+WIDTH=38
+CHOICE_HEIGHT=9
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="Select Your Domain Provider"
+
+OPTIONS=(A "Traefik V2"
+         B "Legacy Traefik"
+         C "Change Your Domain"
+         D "Mini FAQ")
+
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+case $CHOICE in
+    A)
+      clear
+      ## keep going
+    B)
+      
+    C)
+      clear ;;
+    D)
+      clear
+      ## type up stuff
+esac
+
+
+
+
 rm -r /tmp/display1
 rm -r /tmp/display2
 rm -r /tmp/display3
