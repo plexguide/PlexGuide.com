@@ -62,7 +62,7 @@ case $CHOICE in
 esac
 
 HEIGHT=14
-WIDTH=45
+WIDTH=55
 CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
