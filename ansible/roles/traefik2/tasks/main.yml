@@ -128,3 +128,4 @@
       - name: plexguide
         aliases:
           - traefik
+  tags: godaddy
