@@ -24,7 +24,7 @@
 - name: Removing Prior Traefik.toml
   file:
     state: absent
-    path: /opt/appdata/traefik/traefik.toml
+    path: /opt/appdata/traefik2/traefik.toml
 
 
 - name: Create Basic Directories
@@ -36,14 +36,14 @@
 - name: Installing Traefik.Toml
   template:
     src: traefik.toml
-    dest: /opt/appdata/traefik/traefik.toml
+    dest: /opt/appdata/traefik2/traefik.toml
     force: yes
     owner: 1000
     group: 1000
 
 - name: Replace yourdomain.com with user input
   replace:
-    path: /opt/appdata/traefik/traefik.toml
+    path: /opt/appdata/traefik2/traefik.toml
     regexp: yourdomain.com
     replace: "{{domain}}"
   #tags:
@@ -51,7 +51,7 @@
 
 - name: Replace your@email.com with user input
   replace:
-    path: /opt/appdata/traefik/traefik.toml
+    path: /opt/appdata/traefik2/traefik.toml
     regexp: your@email.com
     replace: "{{email}}"
   tags:
@@ -110,4 +110,4 @@
     networks:
       - name: plexguide
         aliases:
-          - traefik
+          - traefik2
