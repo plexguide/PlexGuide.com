@@ -42,7 +42,8 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      bash /opt/plexguide/menus/traefik/godaddy.sh ;;
+      bash /opt/plexguide/menus/traefik/godaddy.sh
+      exit 0 ;;
     B)
       clear ;;
     C)
