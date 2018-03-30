@@ -93,7 +93,7 @@
 - name: Deploy Traefik
   docker_container:
     name: traefik2
-    image: traefik:1.6.0-rc3
+    image: traefik:tetedemoine-alpine
     pull: yes
     cpu_shares: 256
     published_ports:
