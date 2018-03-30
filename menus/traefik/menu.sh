@@ -19,19 +19,11 @@
   dialog --infobox "Configuring Traefik For: GoDaddy" 3 40
   sleep 1
 
-## call up display 1,4
-
-#### PART 1 
- number=$( cat /tmp/number )
- let number=number+0
-
- display1=$( cat /tmp/display1 )
- display2=$( cat /tmp/display2 )
-
 ############################## DISPLAY 1
 file="/tmp/display1"
 if [ -e "$file" ]
 then
+display1=$( cat /tmp/display1 )
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display1:" 8 40 2>/var/plexguide/traefik.var1
@@ -41,15 +33,17 @@ fi
 file="/tmp/display2"
 if [ -e "$file" ]
 then
+display2=$( cat /tmp/display2 )
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display2:" 8 40 2>/var/plexguide/traefik.var2
 fi
 
 ############################## DISPLAY 3
-file="/tmp/display2"
+file="/tmp/display3"
 if [ -e "$file" ]
 then
+display3=$( cat /tmp/display3 )
     dialog --title "Input Required Information" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "$display3:" 8 40 2>/var/plexguide/traefik.var3
