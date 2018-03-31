@@ -56,7 +56,7 @@ case $CHOICE in
       exit ;;
     B)
       docker stop traefik 1>/dev/null 2>&1
-      docerk rm traefik 1>/dev/null 2>&1
+      docker rm traefik 1>/dev/null 2>&1
       rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       display=Legacy-Traefik
       program=traefik
