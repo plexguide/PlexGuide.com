@@ -18,9 +18,19 @@
 export NCURSES_NO_UTF8_ACS=1
 
 domain=$( cat /var/plexguide/server.domain )
-
 dialog --infobox "Tracked Domain: $domain" 3 46
 sleep 2
+
+version=$( cat /var/plexguide/provider )
+if [ "$version" == "null" ]
+then
+  dialog --infobox "Using Legacy Traefik" 3 32
+  sleep 2
+else
+  dialog --infobox "Using Traefik v2\n\nProvider $version" 3 40
+  sleep 2
+fi
+
 
 HEIGHT=12
 WIDTH=38
