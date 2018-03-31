@@ -16,7 +16,11 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-## point to variable file for ipv4 and domain.com
+
+domain=$( cat /var/plexguide/server.domain)
+
+dialog --infobox "Tracked Domain: $domain" 3 40
+
 
 HEIGHT=12
 WIDTH=38
