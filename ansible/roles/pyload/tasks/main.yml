@@ -23,7 +23,6 @@
   ignore_errors: True
   ## {{domain.stdout}}
 ############################ VARIABLES END
----
 - name: Remove pyLoad Container
   docker_container:
     name: pyload
