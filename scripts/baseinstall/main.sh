@@ -157,9 +157,10 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/n
 sleep 2
 
 file="/var/plexguide/server.domain"
-  if [ -e "$file" ]
+if [ -e "$file" ]
     then
-      
+      echo "" 1>/dev/null 2>&1   
+    else
       if dialog --stdout --title "Domain Question" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nIs Your Domain Ready & Setting Up Now?" 7 50; then
@@ -174,10 +175,7 @@ file="/var/plexguide/server.domain"
         dialog --title "First Time Domain Setup" --msgbox "\nSetting Up Your Domain For The First Time" 0 0
         bash /opt/plexguide/menus/traefik/main.sh
       fi
-    
-    else
-    echo "" 1>/dev/null 2>&1
-  fi
+fi
 
 echo "99" | dialog --gauge "Donation Question" 7 50 0
 sleep 2
