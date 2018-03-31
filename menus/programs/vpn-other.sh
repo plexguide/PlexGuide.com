@@ -59,6 +59,8 @@ case $CHOICE in
         exit 0 ;;
 esac
 
+echo "$program" > /tmp/program
+echo "$port" > /tmp/port
 #### Pushes Out Ending
 bash /opt/plexguide/menus/programs/ending.sh
 

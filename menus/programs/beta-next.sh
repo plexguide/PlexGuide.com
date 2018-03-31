@@ -42,8 +42,5 @@ case $CHOICE in
         exit 0 ;;
 esac
 
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
-
 #### Recall Loop
 bash /opt/plexguide/menus/programs/beta.sh

@@ -118,6 +118,8 @@ else
     esac
 fi
 
+echo "$program" > /tmp/program
+echo "$port" > /tmp/port
 #### Pushes Out Ending
 bash /opt/plexguide/menus/programs/ending.sh
 
