@@ -141,8 +141,9 @@ else
 fi
 ########## Deploy End
 clear
-dialog --title "$display - Address Info" \
---msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+#### Pushes Out Ending
+bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/support.sh

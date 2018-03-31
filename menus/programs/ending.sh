@@ -15,9 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
-echo $ipv4
 domain=$( cat /var/plexguide/server.domain )
+ipv4=$( cat /var/plexguide/server.ip )
+program=$( cat /tmp/program )
+port=$( cat /tmp/port )
 
 dialog --title "$display - Address Info" \
 --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50

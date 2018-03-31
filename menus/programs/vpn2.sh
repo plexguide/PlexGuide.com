@@ -130,10 +130,11 @@ case $CHOICE in
             clear ;;
 esac
 fi
-########## Deploy End
 
-    dialog --title "$program - Address Info" \
-    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+echo "$program" > /tmp/program
+echo "$port" > /tmp/port
+#### Pushes Out Ending
+bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/vpn.sh

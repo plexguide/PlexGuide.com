@@ -145,11 +145,12 @@ else
                 clear ;;
     esac
 fi
-########## Deploy End
-domain=$( cat /var/plexguide/server.domain )
 
-    dialog --title "$display - Address Info" \
-    --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+echo "$program" > /tmp/program
+echo "$port" > /tmp/port
+
+#### Pushes Out Ending
+bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/manager.sh
