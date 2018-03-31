@@ -80,7 +80,7 @@ then
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
 else
-  echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
+  echo "50" | dialog --gauge "Installing: Docker 18.03 (Please Be Patient)" 7 54 0
   ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 fi
