@@ -20,28 +20,28 @@ version=$( cat /var/plexguide/provider )
 ############################## NULL LEGACY
 if [ "$version" == "null" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
 fi
 ############################## CLOUDFLRARE
 if [ "$version" == "cloudflare" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi 1>/dev/null 2>&1
 fi
 
 ############################## GANDI
 if [ "$version" == "gandi" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare 1>/dev/null 2>&1
 fi
 
 ############################## GODADDY
 if [ "$version" == "godaddy" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare 1>/dev/null 2>&1
 fi
 
 ############################## NAMECHEAP
 if [ "$version" == "namecheap" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare 1>/dev/null 2>&1
 fi

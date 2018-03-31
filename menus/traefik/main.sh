@@ -62,7 +62,7 @@ case $CHOICE in
       program=traefik
       port=NONE
       dialog --infobox "Installing: $display" 3 30
-      sleep 3
+      sleep 2
       echo "null" > /var/plexguide/provider  
       bash /opt/plexguide/menus/traefik/version.sh
       exit ;;
