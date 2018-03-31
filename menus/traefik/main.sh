@@ -72,14 +72,10 @@ CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
-OPTIONS=(A "Gandi" 
-         B "GoDaddy"
-         C "NameCheap (Warning: namecheap.plexguide.com)"
-         D "BLANK"
-         E "BLANK"
-         F "BLANK"
-         G "BLANK"
-         H "BLANK"
+OPTIONS=(A "CloudFlare"
+         B "Gandi" 
+         C "GoDaddy"
+         D "NameCheap (Warning: namecheap.plexguide.com)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -95,12 +91,24 @@ case $CHOICE in
       docerk rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
+      echo "CLOUDFLARE_EMAIL" > /tmp/display1
+      echo "CLOUDFLARE_API_KEY" > /tmp/display1
+      echo "cloudflare" > /var/plexguide/provider
+      bash /opt/plexguide/menus/traefik/menu.sh
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi
+      exit 0 ;;
+
+    B)
+      docker stop traefik 1>/dev/null 2>&1
+      docerk rm traefik 1>/dev/null 2>&1
+      docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
+      sleep 3
       echo "GANDI_API_KEY" > /tmp/display1
       echo "gandiv5" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare
       exit 0 ;;
-    B)
+    C)
       docker stop traefik 1>/dev/null 2>&1
       docerk rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
@@ -109,9 +117,9 @@ case $CHOICE in
       echo "GODADDY_API_SECRET" > /tmp/display2
       echo "godaddy" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare
       exit 0 ;;
-    C)
+    D)
       docker stop traefik 1>/dev/null 2>&1
       docerk rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
@@ -120,18 +128,8 @@ case $CHOICE in
       echo "NAMECHEAP_API_KEY" > /tmp/display2
       echo "namecheap" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare
       exit 0 ;;
-    D)
-      clear ;;
-    E)
-      clear ;;
-    F)
-      clear ;;
-    G)
-      clear ;;
-    H)
-      clear ;;
     Z)
       exit 0 ;;
 esac

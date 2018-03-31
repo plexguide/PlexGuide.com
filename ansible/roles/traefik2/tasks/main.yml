@@ -101,6 +101,35 @@
     regexp: myprovider
     replace: "{{provider.stdout}}"
 
+######################################################### CLOUDFLARE
+- name: Deploy Traefik
+  docker_container:
+    name: traefik
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "{{provider.stdout}}"
+      CLOUDFLARE_EMAIL: "{{var1.stdout}}"
+      CLOUDFLARE_API_KEY: "{{var2.stdout}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: cloudflare
+
 ######################################################### GANDI
 - name: Deploy Traefik
   docker_container:
