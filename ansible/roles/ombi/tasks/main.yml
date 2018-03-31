@@ -23,7 +23,6 @@
   ignore_errors: True
   ## {{domain.stdout}}
 ############################ VARIABLES END
-- name: Remove Jackett Container
 - name: Remove Ombi Container
   docker_container:
     name: ombi
