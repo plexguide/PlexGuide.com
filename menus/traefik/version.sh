@@ -15,21 +15,33 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  
-version=$( cat /var/plexguide/server.domain )
+version=$( cat /var/plexguide/provider )
 
 ############################## NULL LEGACY
+if [ "$version" == "null" ]
+then
 
-
+fi
 ############################## CLOUDFLRARE
-
+if [ "$version" == "cloudflare" ]
+then
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi
+fi
 
 ############################## GANDI
-
+if [ "$version" == "gandi" ]
+then
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare
+fi
 
 ############################## GODADDY
-
+if [ "$version" == "godaddy" ]
+then
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare
+fi
 
 ############################## NAMECHEAP
-
-kjjj
+if [ "$version" == "namecheap" ]
+then
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare
+fi
