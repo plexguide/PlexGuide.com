@@ -10,9 +10,15 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B3) Docker 18.03 now installs over 17
 - (B3) Fixed Docker Install Glitch; rare times it wouldn't install; caused problems if uninstalled and reinstalled
 - (D)  Working on wildcard https:// subdomains v2 implementation
+  - WORKING Domain Providers for V2: CloudFlare, Gandi, GoDaddy, NameCheap
+- (D)  Overhauled Domain Variable Recall / Storage
+- (D)  Added new and overhauled prior Redeployment System after changing Domain Names
+- (D)  Tracking on utilizing PG Traefik V1 & PG Tracking V2
+- (D)  Enhanced Dialog Menus for Better Tracking
 
 #### Changed
 - (B1) Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
+- (D) Fixed Lazy Librain Role Location
 
 #### Removed
 - None
