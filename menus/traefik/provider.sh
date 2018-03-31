@@ -47,7 +47,7 @@ case $CHOICE in
       echo "CLOUDFLARE_EMAIL" > /tmp/display1
       echo "CLOUDFLARE_API_KEY" > /tmp/display2
       echo "cloudflare" > /var/plexguide/provider
-      dialog --infobox "Setting Up CloudFlare" 3 45
+      dialog --infobox "Setting Up CloudFlare" 3 35
       sleep 1     
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
@@ -55,8 +55,10 @@ case $CHOICE in
       docker rm traefik2 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
+      dialog --infobox "Establishing CloudFlare" 3 35
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
+      dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     B)
       echo "GANDI_API_KEY" > /tmp/display1
@@ -69,8 +71,10 @@ case $CHOICE in
       docker rm traefik2 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
+      dialog --infobox "Establishing Gandi" 3 35
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
+      dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     C)
       echo "GODADDY_API_KEY" > /tmp/display1
@@ -84,8 +88,10 @@ case $CHOICE in
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
+      dialog --infobox "Establishing GoDaddy" 3 35
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
+      dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     D)
       dialog --title "Word of Caution" --msgbox "\nNameCheap requires a customer to spend at least 50 USD within the last two years to access their API!\n\nTold them the issue it causes and GoDaddy has no such requirement. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
@@ -100,8 +106,10 @@ case $CHOICE in
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
+      dialog --infobox "Establishing NameCheap" 3 35
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
+      dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     Z)
       exit 0 ;;
