@@ -26,7 +26,7 @@ HEIGHT=9
 WIDTH=38
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Applications - PG Supporting"
+TITLE="Applications - PG Critical"
 
 OPTIONS=(A "Portainer"
          B "Domain/Traefik"
