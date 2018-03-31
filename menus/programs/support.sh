@@ -29,13 +29,12 @@ CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
-OPTIONS=(A "Midnight CDR"
-         B "Netdata"
-         C "OMBIv3"
-         D "NextCloud"
-         E "pyLoad"
-         F "Resilio"
-         G "Tautulli"
+OPTIONS=(A "Netdata"
+         B "OMBIv3"
+         C "NextCloud"
+         D "pyLoad"
+         E "Resilio"
+         F "Tautulli"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -47,43 +46,37 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            rm -r /var/plexguide/midnight.yes 1>/dev/null 2>&1
-            bash /opt/plexguide/menus/midnight/main.sh
-            bash /opt/plexguide/menus/programs/support.sh
-            exit
-            ;;
-        B)
             display=NETDATA
             program=netdata
             port=19999
             dialog --infobox "Installing: $display" 3 30
             skip=yes
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata 1>/dev/null 2>&1;;
-        C)
+        B)
             display=OMBIv3
             program=ombi
             port=3579
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1 ;;
-        D)
+        C)
             display=NEXTCloud
             program=nextcloud
             port=4645
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next 1>/dev/null 2>&1 ;;
-        E)
+        D)
             display=PYLoad
             program=pyload
             port=8000
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad 1>/dev/null 2>&1 ;;
-        F)
+        E)
             display=RESILIO
             program=resilio
             port=8888
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio 1>/dev/null 2>&1 ;;
-        G)
+        F)
             display=Tautulli
             program=tautulli
             port=8181
