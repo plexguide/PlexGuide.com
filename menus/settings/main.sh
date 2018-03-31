@@ -28,11 +28,10 @@ OPTIONS=(A "Domain       : Set/Change a Domain"
          C "Ports        : Turn On/Off Application Ports"
          D "Processor    : Enhance Processing Power"
          E "Kernel Mods  : Enhance Network Throughput"
-         F "Redirect     : Force Apps to use HTTPS Only?"
-         G "SuperSpeeds  : Change Gdrive Transfer Settings"
-         H "WatchTower   : Auto-Update Application Manager"
-         I "Import Media : Import Existing Media to GDrive "
-         J "App Themes   : Install Dark Theme(s) For Apps "
+         F "SuperSpeeds  : Change Gdrive Transfer Settings"
+         G "WatchTower   : Auto-Update Application Manager"
+         H "Import Media : Import Existing Media to GDrive "
+         I "App Themes   : Install Dark Theme(s) For Apps "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -88,7 +87,6 @@ fi
 rm -r /opt/appdata/plexguide/var.yml
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var
 ################################################## END
-
 ;;
     B)
           bash /opt/plexguide/menus/notifications/main.sh
@@ -102,23 +100,12 @@ ansible-playbook /opt/plexguide/ansible/config.yml --tags var
     E)
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     F)
-        bash /opt/plexguide/menus/redirect/main.sh
-
-        file="/var/plexguide/redirect.yes"
-            if [ -e "$file" ]
-                then
-            sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
-                else
-            sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
-        fi
-        ;;
-    G)
         bash /opt/plexguide/menus/transfer/main.sh ;;
-    H)
+    G)
         bash /opt/plexguide/menus/watchtower/main.sh ;;
-    I)
+    H)
         bash /opt/plexguide/menus/migrate/main.sh ;;
-    J)
+    I)
         bash /opt/plexguide/menus/themes/main.sh ;;
     Z)
         clear
