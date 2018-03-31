@@ -18,9 +18,9 @@
 export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 
-HEIGHT=14
+HEIGHT=12
 WIDTH=38
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
