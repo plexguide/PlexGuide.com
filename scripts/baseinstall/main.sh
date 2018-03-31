@@ -71,9 +71,19 @@ echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
-echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
+docker --version | awk '{print $3}' > /var/plexguide/docker.version
+docker_var=$( cat /var/plexguide/docker.version )
+
+if [ "$docker_var" == "18.03.0-ce," ]
+then
+  echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  sleep 2
+  #read -n 1 -s -r -p "Press any key to continue "
+else
+  echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
+  ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
+  #read -n 1 -s -r -p "Press any key to continue "
+fi
 
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
 ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
