@@ -1,5 +1,28 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 ---
-
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 ##### Need to make sure to run:-
 ##### /sbin/modprobe iptable_mangle
 
@@ -93,7 +116,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-#      UMASK: "0027"
+#     UMASK: "0027"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: "yes"
       VPN_USER: "{{vpnuser}}"
@@ -104,7 +127,6 @@
       ENABLE_FLOOD: both
       ENABLE_AUTODL_IRSSI: "yes"
       LAN_NETWORK: "{{subnet}}"
-      HTTPS_METHOD: noredirect
       DEBUG: false
     volumes:
       - /opt/appdata/vpn/rtorrent/config:/config
@@ -122,5 +144,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:rtorrentvpn.{{domain}}"
+      traefik.frontend.rule: "Host:rtorrentvpn.## {{domain.stdout}"
       traefik.port: "3000"

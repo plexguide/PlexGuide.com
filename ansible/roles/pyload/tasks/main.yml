@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,6 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 ---
 - name: Remove pyLoad Container
   docker_container:
@@ -33,7 +41,6 @@
     env:
       UID: "1000"
       GID: "1000"
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:
@@ -46,5 +53,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:pyload.{{domain}}"
+      traefik.frontend.rule: "Host:pyload.{{domain.stdout}}"
       traefik.port: "8000"

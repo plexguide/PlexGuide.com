@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 - name: Portainer Container
   docker_container:
     name: portainer
@@ -49,5 +56,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:portainer.{{domain}}"
+      traefik.frontend.rule: "Host:portainer.{{domain.stdout}}"
       traefik.port: "9000"
