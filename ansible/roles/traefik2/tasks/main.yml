@@ -98,13 +98,13 @@
 - name: Replace Domain
   replace:
     path: /opt/appdata/traefik/traefik.toml
-    regexp: yourdomain
+    regexp: yourdomain.com
     replace: "{{domain.stdout}}"
 
 - name: Replace E-Mail
   replace:
     path: /opt/appdata/traefik/traefik.toml
-    regexp: myprovider
+    regexp: your@email.com
     replace: "{{email.stdout}}"
 
 ######################################################### CLOUDFLARE
