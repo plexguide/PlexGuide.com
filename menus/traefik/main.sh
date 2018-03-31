@@ -67,6 +67,7 @@ case $CHOICE in
       sleep 2
       echo "null" > /var/plexguide/provider  
       bash /opt/plexguide/menus/traefik/version.sh
+      bash /opt/plexguide/menus/traefik/rebuild.sh
       dialog --title "Status" --msgbox "\nLegacy Traefik Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit ;;
     C)
