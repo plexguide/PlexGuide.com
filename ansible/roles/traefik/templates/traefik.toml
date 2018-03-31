@@ -31,25 +31,16 @@
 #
 logLevel = "WARN"
 
-# Entrypoints to be used by frontends that do not specify any entrypoint.
-# Each frontend can specify its own entrypoints.
 defaultEntryPoints = ["http", "https"]
 
-# Replaces [web], dashboard is enabled by default on :8080
-[api]
-
-# Entrypoints, http and https
 [entryPoints]
-# http should be redirected to https
-[entryPoints.http]
-address = ":80"
-    # add comment sybols in the front of each line to turn off https:// redirect
-    [entryPoints.http.redirect]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.http.redirect]
     entryPoint = "https"
-# https is the default
-[entryPoints.https]
-address = ":443"
-[entryPoints.https.tls]
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
 
 [retry]
 
