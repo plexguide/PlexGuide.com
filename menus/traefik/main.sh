@@ -68,7 +68,7 @@ rm -r /tmp/display4 1>/dev/null 2>&1
 dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domains.plexguide.com\n\nBasic information regarding each provider is listed!" 0 0
 
 HEIGHT=14
-WIDTH=55
+WIDTH=35
 CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
@@ -76,7 +76,7 @@ TITLE="Select Your Domain Provider"
 OPTIONS=(A "CloudFlare"
          B "Gandi" 
          C "GoDaddy"
-         D "NameCheap (Warning: domains.plexguide.com)"
+         D "NameCheap"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
