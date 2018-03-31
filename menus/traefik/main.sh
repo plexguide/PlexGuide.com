@@ -20,7 +20,7 @@ export NCURSES_NO_UTF8_ACS=1
 domain=$( cat /var/plexguide/server.domain)
 
 dialog --infobox "Tracked Domain: $domain" 3 40
-
+sleep 2
 
 HEIGHT=12
 WIDTH=38
