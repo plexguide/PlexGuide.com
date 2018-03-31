@@ -21,7 +21,7 @@ skip=no
 ## point to variable file for ipv4 and domain.com
 source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
-echo $domain
+domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=14
 WIDTH=37

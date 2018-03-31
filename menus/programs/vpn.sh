@@ -21,9 +21,9 @@ export NCURSES_NO_UTF8_ACS=1
  sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var-vpn.yml > /opt/appdata/plexguide/var-vpn.sh
 
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
+source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
+echo $ipv4
+domain=$( cat /var/plexguide/server.domain )
 
  HEIGHT=10
  WIDTH=55

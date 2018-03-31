@@ -20,7 +20,7 @@ export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
-echo $domain
+domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=14
 WIDTH=38
@@ -146,6 +146,7 @@ else
     esac
 fi
 ########## Deploy End
+domain=$( cat /var/plexguide/server.domain )
 
     dialog --title "$display - Address Info" \
     --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
