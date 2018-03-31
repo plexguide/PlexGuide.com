@@ -44,55 +44,13 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
-################################################# START
-if dialog --stdout --title "Domain Question" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nAre You Adding/Changing a Domain?" 7 34; then
-
-  domain='yes'
-
-  dialog --title "Input >> Your Domain" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Domain (Example - plexguide.com)" 8 40 2>/var/plexguide/server.domain
-  dom=$(cat /var/plexguide/server.domain)
-
-  dialog --title "Input >> Your E-Mail" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "E-Mail (Example - user@pg.com)" 8 40 2>/var/plexguide/server.email
-  email=$(cat /var/plexguide/server.email)
-
-  dialog --infobox "Set Domain is $dom" 3 40
-  sleep 2
-
-  echo "Domain - Set to $dom" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
-  dialog --infobox "Set E-Mail is $email" 3 40
-  sleep 2
-
-  echo "E-Mail - Set to $email" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-  clear
-
-else
-  domain="no"
-  dialog --infobox "No Changes Were Made!" 3 38
-  sleep 3
-  bash /opt/plexguide/menus/settings/main.sh
-  exit
-fi
-################################################## VAR CHANGE
-
-rm -r /opt/appdata/plexguide/var.yml
-ansible-playbook /opt/plexguide/ansible/config.yml --tags var
-################################################## END
-;;
+    A)
+      bash /opt/plexguide/scripts/baseinstall/domain.sh ;;
     B)
-          bash /opt/plexguide/menus/notifications/main.sh
-          echo "Pushover Notifications are Working!" > /tmp/pushover
-          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-          ;;
+        bash /opt/plexguide/menus/notifications/main.sh
+        echo "Pushover Notifications are Working!" > /tmp/pushover
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+        ;;
     C)
         bash /opt/plexguide/menus/ports/main.sh ;;
     D)
