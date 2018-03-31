@@ -3,6 +3,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.067] (Dev & Beta)
 
+#### Note: This Version will make You Register Your Domain Again (New System); plus for V1 or V2 Traefik
+
 #### Added
 - (B3) Midnight Commander Installs via Ansible; no more menu glitches and etc
 - (B1) Sickrage: Fixed subdomain; now works
