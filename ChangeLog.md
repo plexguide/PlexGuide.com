@@ -19,15 +19,17 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Changed
 - (B1) Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
 - (D) Fixed Lazy Librain Role Location
+- (D) Enhanced Ending Menu
 
 #### Removed
 - (D) Several https:// redirects
 
 #### Known Issues
-- pyload is not working
-- next cloud https:// domain not working, but port access is
-- supertransfer sometimes uploads duplicates (reported by lolmattylol)
-
+- (B4) https://emby does not work with Traefik v2
+- (B4) https://hemidall does not work with Traefik v2
+- (B4) Must type https:// to use subdomain, working on redirect
+- (Tracking) pyload is not working
+- (Tracking) next cloud https:// domain not working, but port access works
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
