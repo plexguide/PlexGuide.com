@@ -54,7 +54,7 @@ case $CHOICE in
       exit ;;
     C)
       bash /opt/plexguide/menus/traefik/domain.sh
-      bash /opt/plexguide/menus/traefik/main.sh
+      bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
       exit
       ;;
