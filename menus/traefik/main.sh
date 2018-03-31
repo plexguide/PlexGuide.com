@@ -72,10 +72,10 @@ CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
-OPTIONS=(A "CloudFlare"
+OPTIONS=(A "CloudFlare (Testing, Not Working)"
          B "Gandi" 
          C "GoDaddy"
-         D "NameCheap (Warning: namecheap.plexguide.com)"
+         D "NameCheap (Warning: domains.plexguide.com)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
