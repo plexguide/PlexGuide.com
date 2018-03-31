@@ -49,13 +49,12 @@ case $CHOICE in
       port=NONE
       dialog --infobox "Installing: $display" 3 30
       sleep 3
-
       echo "null" > /var/plexguide/provider  
       bash /opt/plexguide/menus/traefik/version.sh
       exit ;;
     C)
       bash /opt/plexguide/scripts/baseinstall/domain.sh
-      bash /opt/plexguide/menus/traefik/main.sh
+      bash /opt/plexguide/menus/traefik/rebuild.sh
       exit
       ;;
     D)
