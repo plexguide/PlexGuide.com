@@ -36,7 +36,7 @@ echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "10" | dialog --gauge "Installing Python Support" 7 50 0
-#bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
 sleep 1
 
 echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
