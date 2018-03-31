@@ -39,8 +39,6 @@
       UID: "1000"
       GID: "1000"
       GIDLIST: "1000"
-    expose:
-      - 8096 
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config
