@@ -18,7 +18,7 @@
 ---
 - name: Remove Traefik
   docker_container:
-    name: traefik
+    name: traefik2
     state: absent
 
 - name: Removing Prior Traefik.toml
@@ -110,7 +110,7 @@
 ######################################################### CLOUDFLARE
 - name: Deploy Traefik
   docker_container:
-    name: traefik
+    name: traefik2
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
@@ -139,7 +139,7 @@
 ######################################################### GANDI
 - name: Deploy Traefik
   docker_container:
-    name: traefik
+    name: traefik2
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
@@ -167,7 +167,7 @@
 ######################################################### GODADDY
 - name: Deploy Traefik
   docker_container:
-    name: traefik
+    name: traefik2
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
@@ -195,7 +195,7 @@
 ######################################################### NAMECHEAP
 - name: Deploy Traefik
   docker_container:
-    name: traefik
+    name: traefik2
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
