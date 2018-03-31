@@ -68,7 +68,7 @@ rm -r /tmp/display4 1>/dev/null 2>&1
 dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domains.plexguide.com\n\nBasic information regarding each provider is listed!" 0 0
 
 HEIGHT=12
-WIDTH=27
+WIDTH=26
 CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE=" Select a Domain Provider "
