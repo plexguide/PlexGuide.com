@@ -32,46 +32,6 @@ else
   exit 0
 fi
 
-############### Domain Question - START
-file="/var/plexguide/domain"
-if [ -e "$file" ]
-then
-  clear
-else
-      rm -r /opt/appdata/plexguide/var.yml
-      if dialog --stdout --title "Domain Question - One Time" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nAre You Utilizing a Domain?" 7 34; then
-        
-        domain='yes'
-        
-        dialog --title "Input >> Your Domain" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/domain
-        dom=$(cat /tmp/domain)
-
-        dialog --title "Input >> Your E-Mail" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/tmp/email
-        email=$(cat /tmp/email)
-
-        dialog --infobox "Set Domain is $dom" 3 45
-        sleep 2
-        dialog --infobox "Set E-Mail is $email" 3 45
-        sleep 2
-        dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
-        sleep 3
-      else
-        dialog --infobox "Add a Domain Anytime Via - Settings" 3 48
-        sleep 3
-      fi
-
-      ### Tracked So It Does Not Ask User Again!
-      touch /var/plexguide/domain
-
-fi
-############### Domain Question - END
-
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
@@ -169,6 +129,24 @@ if [ -e "$file" ]
         echo "95" | dialog --gauge "Installing: Traefik" 7 50 0
         sleep 2
         dialog --title "First Time Domain Setup" --msgbox "\nSetting Up Your Domain For The First Time" 0 0
+        
+        dialog --title "Input >> Your Domain" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "Domain (Example - plexguide.com)" 8 40 2>/var/plexguide/server.domain
+        dom=$(cat /var/plexguide/server.domain)
+
+        dialog --title "Input >> Your E-Mail" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/var/plexguide/server.email
+        email=$(cat /var/plexguide/server.email)
+
+        dialog --infobox "Set Domain is $dom" 3 45
+        sleep 2
+        dialog --infobox "Set E-Mail is $email" 3 45
+        sleep 2
+        dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
+        sleep 2
+        
         dialog --title "Copy & Paste Note" --msgbox "\nNote: For COPY & PASTE, write this down!\n\nWIN Users - CTRL + INSERT\nMAC Users - CMD + V" 0 0
         bash /opt/plexguide/menus/traefik/main.sh
       else
