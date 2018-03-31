@@ -54,7 +54,7 @@
 - name: Replace Domain
   replace:
     path: /opt/appdata/traefik/traefik.toml
-    regexp: yourdomain
+    regexp: yourdomain.com
     replace: "{{domain.stdout}}"
 
 - name: Replace E-Mail
