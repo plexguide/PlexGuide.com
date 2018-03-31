@@ -31,12 +31,11 @@ else
   sleep 2
 fi
 
-
 HEIGHT=12
-WIDTH=38
+WIDTH=34
 CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Select Your Domain Provider"
+TITLE="Make A Choice"
 
 OPTIONS=(A "Traefik V2"
          B "Legacy Traefik"
