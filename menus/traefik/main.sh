@@ -125,7 +125,7 @@ case $CHOICE in
       bash /opt/plexguide/menus/traefik/rebuild.sh
       exit 0 ;;
     D)
-      dialog --title "Word of Caution" --msgbox "\nNameCheap requires you have spent at least $50 in the last two years to access their API!\n\nWe told them what problem this causes. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
+      dialog --title "Word of Caution" --msgbox "\nNameCheap requires you have spent at least 50 USD in the last two years to access their API!\n\nWe told them the issue it causes and GoDaddy has no such requirement. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
