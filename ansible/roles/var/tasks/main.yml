@@ -34,30 +34,6 @@
     name: "plexguide"
     state: present
 
-- name: "Establishing Domain"
-  shell: "awk '{print $1}' /tmp/domain"
-  register: domain_var
-  tags:
-    - domain
-
-- name: "Establishing E-Mail"
-  shell: "awk '{print $1}' /tmp/email"
-  register: email_var
-  tags:
-    - domain
-
-- name: Replace yourdomain.com with user input
-  replace:
-    path: /opt/appdata/plexguide/var.yml
-    regexp: domain.com
-    replace: "{{domain_var.stdout}}"
-
-- name: Replace your@email.com with user input
-  replace:
-    path: /opt/appdata/plexguide/var.yml
-    regexp: your@email.com
-    replace: "{{email_var.stdout}}"
-
 - name: ipv4
   shell: "hostname -I | awk '{print $1}'"
   register: ip_address
