@@ -9,6 +9,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B1) Sped up the Base Installer (about 40 percent); forcing more items to install via background
 - (B3) Docker 18.03 now installs over 17
 - (B4) Fixed Docker Install Glitch; rare times it wouldn't install; caused problems if uninstalled and reinstalled
+- (B4) Docker Install Speed up now checking for a specific version, if good; skips so not waiting
+- (B4) Uninstalling PlexGuide no longer causes issues with Docker
 - (B4)  Working on wildcard https:// subdomains v2 implementation
   - WORKING Domain Providers for V2: CloudFlare, Gandi, GoDaddy, NameCheap
 - (B4)  Overhauled Domain Variable Recall / Storage
