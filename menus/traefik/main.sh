@@ -65,6 +65,7 @@ rm -r /tmp/display1 1>/dev/null 2>&1
 rm -r /tmp/display2 1>/dev/null 2>&1
 rm -r /tmp/display3 1>/dev/null 2>&1
 rm -r /tmp/display4 1>/dev/null 2>&1
+dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domains.plexguide.com\n\nBasic information regarding each provider is listed!" 0 0
 
 HEIGHT=14
 WIDTH=55
@@ -72,7 +73,7 @@ CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Domain Provider"
 
-OPTIONS=(A "CloudFlare (Testing, Not Working)"
+OPTIONS=(A "CloudFlare"
          B "Gandi" 
          C "GoDaddy"
          D "NameCheap (Warning: domains.plexguide.com)"
