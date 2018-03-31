@@ -68,7 +68,7 @@ case $CHOICE in
       echo "null" > /var/plexguide/provider  
       bash /opt/plexguide/menus/traefik/version.sh
       dialog --infobox "Legacy Traefik Installed" 3 45
-      sleep 2
+      sleep 3
       exit ;;
     C)
       bash /opt/plexguide/menus/traefik/domain.sh
