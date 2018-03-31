@@ -150,7 +150,7 @@ sleep 2
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep46.yes
+   touch /var/plexguide/dep47.yes
 
 echo "PG Install is Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
