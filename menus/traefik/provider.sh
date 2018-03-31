@@ -51,6 +51,8 @@ case $CHOICE in
       sleep 1     
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
+      docker stop traefik2 1>/dev/null 2>&1
+      docker rm traefik2 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
       bash /opt/plexguide/menus/traefik/version.sh
@@ -63,6 +65,8 @@ case $CHOICE in
       sleep 1
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
+      docker stop traefik2 1>/dev/null 2>&1
+      docker rm traefik2 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
       bash /opt/plexguide/menus/traefik/version.sh
@@ -74,6 +78,8 @@ case $CHOICE in
       echo "godaddy" > /var/plexguide/provider
       dialog --infobox "Setting Up Godaddy" 3 45
       sleep 1
+      docker stop traefik2 1>/dev/null 2>&1
+      docker rm traefik2 1>/dev/null 2>&1
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
@@ -88,6 +94,8 @@ case $CHOICE in
       echo "namecheap" > /var/plexguide/provider
       dialog --infobox "Setting Up NameCheap" 3 45
       sleep 1
+      docker stop traefik2 1>/dev/null 2>&1
+      docker rm traefik2 1>/dev/null 2>&1
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
