@@ -173,7 +173,7 @@ file="/var/plexguide/server.domain"
         sleep 2
         dialog --title "First Time Domain Setup" --msgbox "\nSetting Up Your Domain For The First Time" 0 0
         bash /opt/plexguide/menus/traefik/main.sh
-        fi
+      fi
     echo "" 1>/dev/null 2>&1
   fi
 
