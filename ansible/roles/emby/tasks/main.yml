@@ -39,7 +39,6 @@
       UID: "1000"
       GID: "1000"
       GIDLIST: "1000"
-      HTTPS_METHOD: noredirect
     expose:
       - 8096 
     volumes:

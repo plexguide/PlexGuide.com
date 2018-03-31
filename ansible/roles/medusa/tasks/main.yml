@@ -50,7 +50,6 @@
     env:
       PUID: 1000
       PGID: 1000
-      HTTPS_METHOD: noredirect
     networks:
       - name: plexguide
         aliases:
