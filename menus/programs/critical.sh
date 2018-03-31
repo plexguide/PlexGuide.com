@@ -49,7 +49,8 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/traefik/main.sh
             bash /opt/plexguide/menus/programs/critical.sh
-            exit   
+            exit
+            ;;   
         Z)
             exit 0 ;;
 esac
