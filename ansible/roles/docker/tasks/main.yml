@@ -30,15 +30,9 @@
     id: 0EBFCD88
     url: https://download.docker.com/linux/ubuntu/gpg
 
-- name: Check docker daemon.json exists
-  stat:
-    path: /etc/docker/daemon.json
-  register: docker_daemon
-
 - name: Add official repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-  when: docker_daemon.stat.exists == False
 
 - name: Installing docker
   apt:    
@@ -46,33 +40,26 @@
     state: present
     force: yes
     update_cache: yes
-  when: docker_daemon.stat.exists == False
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes
-  when: docker_daemon.stat.exists == False
 
 - name: Import daemon.json
   copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
-  when: docker_daemon.stat.exists == False
 
 - name: Start docker
   systemd: state=started name=docker enabled=yes
-  when: docker_daemon.stat.exists == False
 
 - name: "Wait for 10 seconds before commencing"
   wait_for:
     timeout: 10
-  when: docker_daemon.stat.exists == False
 
 - name: Check override folder exists
   stat:
     path: /etc/systemd/system/docker.service.d
-  register: docker_override
 
 - name: Create override folder
   file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
-  when: docker_override.stat.exists == False
 
 - name: Import override file
   copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
