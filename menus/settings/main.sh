@@ -60,7 +60,7 @@ if dialog --stdout --title "Domain Question" \
   dialog --title "Input >> Your E-Mail" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "E-Mail (Example - user@pg.com)" 8 40 2>/var/plexguide/server.email
-  email=$(cat /var/plexguide/server.domain)
+  email=$(cat /var/plexguide/server.email)
 
   dialog --infobox "Set Domain is $dom" 3 40
   sleep 2

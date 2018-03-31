@@ -28,8 +28,21 @@
   tags:
     - main
 
-########## Move Script if not Present
-- name: Installing Traefik.Toml (On Redirect)
+#################################### REGISTER VAR START
+
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+- name: Register E-Mail
+  shell: "cat /var/plexguide/server.email"
+  register: email
+  ignore_errors: True
+
+#################################### REGISTER VAR END
+
+- name: Installing Traefik.Toml
   template:
     src: traefik.toml
     dest: /opt/appdata/traefik/traefik.toml
@@ -37,22 +50,19 @@
     owner: 1000
     group: 1000
 
-- name: Replace yourdomain.com with user input
+#################################### REPLACE START
+- name: Replace Domain
   replace:
     path: /opt/appdata/traefik/traefik.toml
-    regexp: yourdomain.com
-    replace: "{{domain}}"
-  #tags:
-    #- main 
+    regexp: yourdomain
+    replace: "{{domain.stdout}}"
 
-- name: Replace your@email.com with user input
+- name: Replace E-Mail
   replace:
     path: /opt/appdata/traefik/traefik.toml
-    regexp: your@email.com
-    replace: "{{email}}"
-  tags:
-    - main
-#############################
+    regexp: myprovider
+    replace: "{{email.stdout}}"
+############################# REPLACE END
 
 - name: Remove Traefik
   docker_container:
@@ -66,7 +76,6 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      #- "8080:8080"
       - "443:443"
       - "80:80"
     env:
