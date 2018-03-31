@@ -50,4 +50,4 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.rule: "Host:heimdall.{domain.stdout}}"
-      traefik.port: "80"
+      traefik.port: "1111"
