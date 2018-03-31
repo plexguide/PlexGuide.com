@@ -53,7 +53,7 @@ case $CHOICE in
       bash /opt/plexguide/menus/traefik/version.sh
       exit ;;
     C)
-      bash /opt/plexguide/scripts/baseinstall/domain.sh
+      bash /opt/plexguide/menus/traefik/domain.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
       exit
       ;;
