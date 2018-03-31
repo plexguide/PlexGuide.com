@@ -17,9 +17,9 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-domain=$( cat /var/plexguide/server.domain)
+domain=$( cat /var/plexguide/server.domain )
 
-dialog --infobox "Tracked Domain: $domain" 3 40
+dialog --infobox "Tracked Domain: $domain" 3 46
 sleep 2
 
 HEIGHT=12
