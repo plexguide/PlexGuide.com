@@ -52,8 +52,6 @@ case $CHOICE in
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
-
-
       bash /opt/plexguide/menus/traefik/menu.sh
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
@@ -93,8 +91,6 @@ case $CHOICE in
       docker stop traefik 1>/dev/null 2>&1
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
-
-
       bash /opt/plexguide/menus/traefik/menu.sh
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
