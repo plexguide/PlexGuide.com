@@ -23,15 +23,15 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Domain       : Set/Change a Domain"
-         B "Notifications: Enable the Use of Notifications"
-         C "Ports        : Turn On/Off Application Ports"
-         D "Processor    : Enhance Processing Power"
-         E "Kernel Mods  : Enhance Network Throughput"
-         F "SuperSpeeds  : Change Gdrive Transfer Settings"
-         G "WatchTower   : Auto-Update Application Manager"
-         H "Import Media : Import Existing Media to GDrive "
-         I "App Themes   : Install Dark Theme(s) For Apps "
+OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
+         B "Notifications : Enable the Use of Notifications"
+         C "Ports         : Turn On/Off Application Ports"
+         D "Processor     : Enhance Processing Power"
+         E "Kernel Mods   : Enhance Network Throughput"
+         F "SuperSpeeds   : Change Gdrive Transfer Settings"
+         G "WatchTower    : Auto-Update Application Manager"
+         H "Import Media  : Import Existing Media to GDrive "
+         I "App Themes    : Install Dark Theme(s) For Apps "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -45,7 +45,8 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
-      bash /opt/plexguide/scripts/baseinstall/domain.sh ;;
+        bash /opt/plexguide/menus/traefik/main.sh
+        ;;
     B)
         bash /opt/plexguide/menus/notifications/main.sh
         echo "Pushover Notifications are Working!" > /tmp/pushover
