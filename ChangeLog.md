@@ -27,7 +27,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Known Issues
 - (B4) https://emby does not work with Traefik v2
 - (B4) https://hemidall does not work with Traefik v2
-- (B4) Must type https:// to use subdomain, working on redirect
 - (Tracking) pyload is not working
 - (Tracking) next cloud https:// domain not working, but port access works
 -------------------------------------------------------
