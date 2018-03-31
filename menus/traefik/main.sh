@@ -49,7 +49,9 @@ case $CHOICE in
       port=NONE
       dialog --infobox "Installing: $display" 3 30
       sleep 3
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
+
+      echo "null" > /var/plexguide/provider  
+      bash /opt/plexguide/menus/traefik/version.sh
       exit ;;
     C)
       bash /opt/plexguide/scripts/baseinstall/domain.sh

@@ -20,7 +20,7 @@ version=$( cat /var/plexguide/provider )
 ############################## NULL LEGACY
 if [ "$version" == "null" ]
 then
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik
 fi
 ############################## CLOUDFLRARE
 if [ "$version" == "cloudflare" ]
