@@ -34,6 +34,14 @@ defaultEntryPoints = ["https"]
 [api]
 
 [entryPoints]
+
+######################### Testing Redirect START
+[entryPoints.http]
+address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+######################### Testing Redirect END
+
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
