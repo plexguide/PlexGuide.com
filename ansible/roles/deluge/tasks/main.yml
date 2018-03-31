@@ -16,6 +16,12 @@
 #
 #################################################################################
 ---
+############################ Replace Variables
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+############################  Replace Variables
 - name: Remove Deluge Container
   docker_container:
     name: deluge
@@ -41,7 +47,7 @@
           - deluge
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:deluge.{{domain}}"
+      traefik.frontend.rule: "Host:deluge.{{domain.stdout}}"
       traefik.port: "8112"
     volumes:
       - /opt/appdata/deluge:/config

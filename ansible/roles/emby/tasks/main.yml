@@ -16,6 +16,12 @@
 #
 #################################################################################
 ---
+############################ Replace Variables
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+############################  Replace Variables
 - name: Remove Emby Container
   docker_container:
     name: emby
@@ -48,7 +54,7 @@
           - emby
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:emby.{{domain}}"
+      traefik.frontend.rule: "Host:emby.{domain.stdout}}"
       traefik.port: "8096"
     restart_policy: always
     state: started

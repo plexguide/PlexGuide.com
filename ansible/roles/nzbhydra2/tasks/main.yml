@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 - name: Remove NZBHyra2 Container
   docker_container:
     name: nzbhydra2
@@ -43,5 +50,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:nzbhydra2.{{domain}}"
+      traefik.frontend.rule: "Host:nzbhydra2.{{domain.stdout}}"
       traefik.port: "5076"

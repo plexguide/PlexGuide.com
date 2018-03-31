@@ -16,6 +16,12 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+############################ VARIABLES END
 - name: Remove HTPCManager Container
   docker_container:
     name: htpcmanager
@@ -32,7 +38,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     volumes:
       - "/opt/appdata/htpcmanager:/config"
       - "/etc/localtime:/etc/localtime:ro"
@@ -42,7 +47,7 @@
           - htpcmanager
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:htpcmanager.{{domain}}"
+      traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}"
       traefik.port: "8085"
     restart_policy: always
     state: started

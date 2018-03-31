@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 - name: Remove Netdata Container
   docker_container:
     name: netdata
@@ -43,7 +50,7 @@
     restart_policy: always
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:netdata.{{domain}}"
+      traefik.frontend.rule: "Host:netdata.{{domain.stdout}}"
       traefik.port: "19999"
       traefik.backend: "netdata"
       #traefik.frontend.auth.basic: "gforce:gforce"

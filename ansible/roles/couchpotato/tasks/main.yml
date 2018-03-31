@@ -16,6 +16,14 @@
 #
 #################################################################################
 ---
+############################ Variables START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ Replace END
+
 - name: Remove couchpotato Container
   docker_container:
     name: couchpotato
@@ -39,14 +47,9 @@
       VERSION: stable
       PUID: "1000"
       PGID: "1000"
-      VIRTUAL_HOST: "couchpotato.{{domain}}"
-      VIRTUAL_PORT: 5050
-      HTTPS_METHOD: noredirect
-      LETSENCRYPT_HOST: "couchpotato.{{domain}}"
-      LETSENCRYPT_EMAIL: "{{email}}"
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:couchpotato.{{domain}}"
+      traefik.frontend.rule: "Host:couchpotato.{{domain.stdout}}"
       traefik.port: "5050"
     networks:
       - name: plexguide

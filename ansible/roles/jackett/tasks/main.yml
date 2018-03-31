@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 - name: Remove Jackett Container
   docker_container:
     name: jackett
@@ -32,7 +39,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/jackett:/config
       - /mnt/deluge/temp:/temp
@@ -46,7 +52,7 @@
           - jackett
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:jackett.{{domain}}"
+      traefik.frontend.rule: "Host:jackett.{{domain.stdout}}"
       traefik.port: "9117"
     restart_policy: always
     state: started

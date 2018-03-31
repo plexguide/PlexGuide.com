@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ Replace Variables
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+############################  Replace Variables
+
 ##### Need to make sure to run:-
 ##### /sbin/modprobe iptable_mangle
 
@@ -23,7 +30,6 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /mnt/torrentvpn
-
 
 - name: Create Basic directories for DelugeVPN
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -115,7 +121,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-#      UMASK: "0022"
+#     UMASK: "0022"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: "yes"
       VPN_USER: "{{vpnuser}}"
@@ -129,7 +135,6 @@
       VPN_PROTOCOL: udp
       VPN_DEVICE_TYPE: tun
       LAN_NETWORK: "{{subnet}}"
-      HTTPS_METHOD: noredirect
     volumes:
       - /opt/appdata/vpn/deluge/config:/config
       - /mnt/torrentvpn/temp:/data/incomplete
@@ -146,5 +151,5 @@
           - delugevpn
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:delugevpn.{{domain}}"
+      traefik.frontend.rule: "Host:delugevpn.{{domain.stdout}}"
       traefik.port: "8112"

@@ -16,6 +16,12 @@
 #
 #################################################################################
 ---
+############################ Replace Variables
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+############################  Replace Variables
 - name: Remove Heimdall Container
   docker_container:
     name: heimdall
@@ -43,5 +49,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:heimdall.{{domain}}"
+      traefik.frontend.rule: "Host:heimdall.{domain.stdout}}"
       traefik.port: "80"
