@@ -29,18 +29,14 @@
 # Accepted values, in order of severity: "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "PANIC"
 
 logLevel = "WARN"
-defaultEntryPoints = ["https"]
 
-[api]
+defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
-######################### Testing Redirect START
   [entryPoints.http]
   address = ":80"
-    [entryPoints.http.redirect]
+  [entryPoints.http.redirect]
     entryPoint = "https"
-######################### Testing Redirect END
-
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
