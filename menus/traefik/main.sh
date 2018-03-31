@@ -96,6 +96,7 @@ case $CHOICE in
       echo "cloudflare" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi
+      bash /opt/plexguide/menus/traefik/rebuild.sh
       exit 0 ;;
 
     B)
@@ -106,7 +107,8 @@ case $CHOICE in
       echo "GANDI_API_KEY" > /tmp/display1
       echo "gandiv5" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflar
+      bash /opt/plexguide/menus/traefik/rebuild.sh
       exit 0 ;;
     C)
       docker stop traefik 1>/dev/null 2>&1
@@ -118,6 +120,7 @@ case $CHOICE in
       echo "godaddy" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare
+      bash /opt/plexguide/menus/traefik/rebuild.sh
       exit 0 ;;
     D)
       docker stop traefik 1>/dev/null 2>&1
@@ -129,6 +132,7 @@ case $CHOICE in
       echo "namecheap" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare
+      bash /opt/plexguide/menus/traefik/rebuild.sh
       exit 0 ;;
     Z)
       exit 0 ;;
