@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
+  vars_files:
+    - /opt/appdata/plexguide/var.yml
 
   roles:
   - { role: deploy, tags: ['deploy'] }
