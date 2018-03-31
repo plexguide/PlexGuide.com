@@ -26,7 +26,7 @@
         
         ##### NOTE THAT THIS A ONETIME MENU
         dialog --title "Copy & Paste Note" --msgbox "\nNote: For COPY & PASTE, write this down!\n\nWIN Users - CTRL + INSERT\nMAC Users - CMD + V" 0 0
-        bash /opt/plexguide/scripts/baseline/traefik.sh
+        bash /opt/plexguide/scripts/baseinstall/traefik.sh
       else
         dialog --title "Domain - No" --msgbox "\nSet this up later anytime via settings!" 0 0
         echo "later" > /var/plexguide/server.domain
