@@ -53,6 +53,8 @@ case $CHOICE in
       exit ;;
     C)
       bash /opt/plexguide/scripts/baseinstall/domain.sh
+      bash /opt/plexguide/menus/traefik/main.sh
+      exit
       ;;
     D)
       dialog --title "Mini FAQ: Page 1 of 2" --msgbox "\nVisit traefik.plexguide.com for more detailed info\n\nTraefik v2 is the new version that allows all of your subdomains (unlimited) to receive an SSL CERTIFICATE. This allows you to create custom subdomains, not limited by having a max of 20, and cuts down on the RATE ERRORS. There is some minor work on your end to make this work!" 0 0
