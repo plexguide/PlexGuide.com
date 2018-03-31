@@ -15,6 +15,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B4)  Added new and overhauled prior Redeployment System after changing Domain Names
 - (B4)  Tracking on utilizing PG Traefik V1 & PG Tracking V2
 - (B4)  Enhanced Dialog Menus for Better Tracking
+- (B4)  With Traefik V2, user can type plexpy.domain.com or tautulli.domain.com
 
 #### Changed
 - (B1) Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
@@ -27,7 +28,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Known Issues
 - (B4) https://emby does not work with Traefik v2
 - (B4) https://hemidall does not work with Traefik v2
-- (B4) Must type https:// to use subdomain, working on redirect
 - (Tracking) pyload is not working
 - (Tracking) next cloud https:// domain not working, but port access works
 -------------------------------------------------------
