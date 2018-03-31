@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+---
 ############################ VARIABLES START
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
@@ -22,7 +23,6 @@
   ignore_errors: True
   ## {{domain.stdout}}
 ############################ VARIABLES END
----
 - name: Remove Mylar Container
   docker_container:
     name: mylar
