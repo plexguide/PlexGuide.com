@@ -27,6 +27,6 @@
         dialog --title "Copy & Paste Note" --msgbox "\nNote: For COPY & PASTE, write this down!\n\nWIN Users - CTRL + INSERT\nMAC Users - CMD + V" 0 0
         bash /opt/plexguide/menus/traefik/main.sh
       else
-        dialog --title "Domain - No" --msgbox "\nYou can set this up later!" 0 0
+        dialog --title "Domain - No" --msgbox "\nSet this up later anytime via settings!" 0 0
         echo "later" > /var/plexguide/server.domain
  fi

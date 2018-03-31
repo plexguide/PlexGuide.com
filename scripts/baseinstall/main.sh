@@ -121,7 +121,7 @@ if [ -e "$file" ]
     then
       echo "" 1>/dev/null 2>&1   
     else
-      echo "No-Domain" > /var/plexguide/server.domain
+      echo "null" > /var/plexguide/server.domain
       bash /opt/plexguide/scripts/baseinstall/domain.sh
 fi
 
