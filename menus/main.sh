@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 
 export NCURSES_NO_UTF8_ACS=1
 clear
