@@ -29,7 +29,7 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
 OPTIONS=(A "Portainer"
-         B "Traefik"
+         B "Domain/Traefik"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -47,12 +47,9 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1 ;;
         B)
-            display=Traefik
-            program=traefik
-            port=NONE
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1 ;;
-
+            bash /opt/plexguide/menus/traefik/main.sh
+            bash /opt/plexguide/menus/programs/critical.sh
+            exit   
         Z)
             exit 0 ;;
 esac
