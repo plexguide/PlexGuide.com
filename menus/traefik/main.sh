@@ -26,7 +26,7 @@ TITLE="Select Your Domain Provider"
 
 OPTIONS=(A "Traefik V2"
          B "Legacy Traefik"
-         C "Change Domain (NOT READY)"
+         C "Change Domain Name"
          D "Mini FAQ")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -52,7 +52,8 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
       exit ;;
     C)
-      clear ;;
+      bash /opt/plexguide/scripts/baseinstall/domain.sh
+      ;;
     D)
       dialog --title "Mini FAQ: Page 1 of 2" --msgbox "\nVisit traefik.plexguide.com for more detailed info\n\nTraefik v2 is the new version that allows all of your subdomains (unlimited) to receive an SSL CERTIFICATE. This allows you to create custom subdomains, not limited by having a max of 20, and cuts down on the RATE ERRORS. There is some minor work on your end to make this work!" 0 0
       dialog --title "Mini FAQ: Page 2 of 2" --msgbox "\nLegacy Traefik works fine, but you will not be able to create custom subdomains and more limited in the amount of subdomains you can create per week. It is easier to setup though.\n\nVisit https://traefik.plexguide.com for more information." 0 0
