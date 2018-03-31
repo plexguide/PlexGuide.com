@@ -21,7 +21,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (D) Fixed Lazy Librain Role Location
 
 #### Removed
-- None
+- (D) Several https:// redirects
 
 #### Known Issues
 - pyload is not working
