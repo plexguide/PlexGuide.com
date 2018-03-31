@@ -115,7 +115,7 @@
       PUID: 1000
       PGID: 1000
       PROVIDER: "{{provider.stdout}}"
-      GANDI_API_KEY: "{{var1.stdout}}"
+      GANDIV5_API_KEY: "{{var1.stdout}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
