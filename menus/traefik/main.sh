@@ -88,9 +88,9 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      dialog --title "Word of Caution" --msgbox "\nCloudflare is a great way to go! It may appear to work, but you need up to 12 hours if you just setup with CloudFlare\n\n If not, you may see an issue regarding the nameserver in the Portainer Logs!" 0 0
+      dialog --title "Word of Caution" --msgbox "\nCloudflare is a great way to go! It may appear to work, but you need up to 12 hours if you just setup with CloudFlare\n\nIf not, you may see an issue regarding the nameserver in the Portainer Logs!" 0 0
       docker stop traefik 1>/dev/null 2>&1
-      docerk rm traefik 1>/dev/null 2>&1
+      docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
       echo "CLOUDFLARE_EMAIL" > /tmp/display1
@@ -103,7 +103,7 @@ case $CHOICE in
 
     B)
       docker stop traefik 1>/dev/null 2>&1
-      docerk rm traefik 1>/dev/null 2>&1
+      docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
       echo "GANDI_API_KEY" > /tmp/display1
@@ -114,7 +114,7 @@ case $CHOICE in
       exit 0 ;;
     C)
       docker stop traefik 1>/dev/null 2>&1
-      docerk rm traefik 1>/dev/null 2>&1
+      docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
       echo "GODADDY_API_KEY" > /tmp/display1
@@ -125,9 +125,9 @@ case $CHOICE in
       bash /opt/plexguide/menus/traefik/rebuild.sh
       exit 0 ;;
     D)
-      dialog --title "Word of Caution" --msgbox "\nNameCheap requires you have spent at least $50 in the last two years to access their API!/n/nWe told them what problem this causes. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
+      dialog --title "Word of Caution" --msgbox "\nNameCheap requires you have spent at least $50 in the last two years to access their API!\n\nWe told them what problem this causes. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
       docker stop traefik 1>/dev/null 2>&1
-      docerk rm traefik 1>/dev/null 2>&1
+      docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
       echo "NAMECHEAP_API_USER" > /tmp/display1
