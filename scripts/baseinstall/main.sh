@@ -156,7 +156,7 @@ echo "89" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
 sleep 2
 
-file="/var/plexguide/server.domain" 1>/dev/null 2>&1
+file="/var/plexguide/server.domain"
   if [ -e "$file" ]
     then
       if dialog --stdout --title "Domain Question" \
@@ -166,6 +166,7 @@ file="/var/plexguide/server.domain" 1>/dev/null 2>&1
         dialog --title "Domain - No" --msgbox "\nYou can set this up later!" 0 0
         echo "later" > /var/plexguide/server.domain
       else
+        echo "later" > /var/plexguide/server.domain
         clear
         dialog --title "Copy & Paste Note" --msgbox "\nNote: For COPY & PASTE, write this down!\n\nWIN Users - CTRL + INSERT\nMAC Users - CMD + V" 0 0
         echo "95" | dialog --gauge "Installing: Traefik" 7 50 0
