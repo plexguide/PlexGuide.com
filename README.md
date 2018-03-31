@@ -22,10 +22,11 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Sep 2017:**  deiteq Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
 * **Oct 2017:**  Slack First Used for Communication | The Creator joins the Team & started Traefik & Benchmarks
 * **Nov 2017:**  Discord First Used Pentagons and many others start beta testing project
-* **Dec 2017:**  Discovered Ansible - thru Desmonic Inspiried - [Thanks Buddy](https://plexguide.com/cbpaypal.png) + YouTube
+* **Dec 2017:**  Discovered Ansible - thru Desmonic Inspiried + Established YouTube Channel
 * **Jan 2018:**  Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
 * **Feb 2018:**  Jackalblood CoFounder Advances Project
 * **Mar 2018:**  Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
+* **Apr 2018:**  DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
 
 ----------------------------------------------------------------------
 <p align="center">
