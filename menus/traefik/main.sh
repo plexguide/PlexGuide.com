@@ -71,7 +71,7 @@ HEIGHT=12
 WIDTH=28
 CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Select Your Domain Provider"
+TITLE="Select a Domain Provider"
 
 OPTIONS=(A "CloudFlare"
          B "Gandi" 
