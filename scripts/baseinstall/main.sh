@@ -164,9 +164,6 @@ if [ -e "$file" ]
       if dialog --stdout --title "Domain Question" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nIs Your Domain Ready & Setting Up Now?" 7 50; then
-        dialog --title "Domain - No" --msgbox "\nYou can set this up later!" 0 0
-        echo "later" > /var/plexguide/server.domain
-      else
         echo "later" > /var/plexguide/server.domain
         clear
         dialog --title "Copy & Paste Note" --msgbox "\nNote: For COPY & PASTE, write this down!\n\nWIN Users - CTRL + INSERT\nMAC Users - CMD + V" 0 0
@@ -174,6 +171,9 @@ if [ -e "$file" ]
         sleep 2
         dialog --title "First Time Domain Setup" --msgbox "\nSetting Up Your Domain For The First Time" 0 0
         bash /opt/plexguide/menus/traefik/main.sh
+      else
+        dialog --title "Domain - No" --msgbox "\nYou can set this up later!" 0 0
+        echo "later" > /var/plexguide/server.domain
       fi
 fi
 
