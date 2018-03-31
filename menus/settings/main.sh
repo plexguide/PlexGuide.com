@@ -55,90 +55,76 @@ if dialog --stdout --title "Domain Question" \
 
   dialog --title "Input >> Your Domain" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Domain (Example - plexguide.com)" 8 40 2>/tmp/domain
-  dom=$(cat /tmp/domain)
+  --inputbox "Domain (Example - plexguide.com)" 8 40 2>/var/plexguide/server.domain
+  dom=$(cat /var/plexguide/server.domain)
 
   dialog --title "Input >> Your E-Mail" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "E-Mail (Example - user@pg.com)" 8 37 2>/tmp/email
-  email=$(cat /tmp/email)
+  --inputbox "E-Mail (Example - user@pg.com)" 8 40 2>/var/plexguide/server.email
+  email=$(cat /var/plexguide/server.domain)
 
-  dialog --infobox "Set Domain is $dom" 3 45
-  sleep 5
+  dialog --infobox "Set Domain is $dom" 3 40
+  sleep 2
 
   echo "Domain - Set to $dom" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-  dialog --infobox "Set E-Mail is $email" 3 45
-  sleep 5
+  dialog --infobox "Set E-Mail is $email" 3 40
+  sleep 2
 
   echo "E-Mail - Set to $email" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
   clear
 
 else
   domain="no"
   dialog --infobox "No Changes Were Made!" 3 38
-  sleep 4
+  sleep 3
   bash /opt/plexguide/menus/settings/main.sh
   exit
 fi
+################################################## VAR CHANGE
 
-### Tracked So It Does Not Ask User Again!
-touch /var/plexguide/domain
+rm -r /opt/appdata/plexguide/var.yml
+ansible-playbook /opt/plexguide/ansible/config.yml --tags var
 ################################################## END
 
-################################################## Main
-            rm -r /opt/appdata/plexguide/var.yml
-            ansible-playbook /opt/plexguide/ansible/config.yml --tags var
+;;
+    B)
+          bash /opt/plexguide/menus/notifications/main.sh
+          echo "Pushover Notifications are Working!" > /tmp/pushover
+          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+          ;;
+    C)
+        bash /opt/plexguide/menus/ports/main.sh ;;
+    D)
+        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+    E)
+        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
+    F)
+        bash /opt/plexguide/menus/redirect/main.sh
 
-################################################## REDIRECT QUESTION
-            bash /opt/plexguide/menus/redirect/main.sh
-
-            file="/var/plexguide/redirect.yes"
-                if [ -e "$file" ]
-                    then
-                sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
-                    else
-                sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
-            fi
-            ;;
-        B)
-              bash /opt/plexguide/menus/notifications/main.sh
-              echo "Pushover Notifications are Working!" > /tmp/pushover
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-              ;;
-        C)
-            bash /opt/plexguide/menus/ports/main.sh ;;
-        D)
-            bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
-        E)
-            bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
-        F)
-            bash /opt/plexguide/menus/redirect/main.sh
-
-            file="/var/plexguide/redirect.yes"
-                if [ -e "$file" ]
-                    then
-                sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
-                    else
-                sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
-            fi
-            ;;
-        G)
-            bash /opt/plexguide/menus/transfer/main.sh ;;
-        H)
-            bash /opt/plexguide/menus/watchtower/main.sh ;;
-        I)
-            bash /opt/plexguide/menus/migrate/main.sh ;;
-        J)
-            bash /opt/plexguide/menus/themes/main.sh ;;
-        Z)
-            clear
-            exit 0
-            ;;
-esac
+        file="/var/plexguide/redirect.yes"
+            if [ -e "$file" ]
+                then
+            sed -i 's/-OFF-/-ON-/g' /opt/plexguide/menus/redirect/main.sh
+                else
+            sed -i 's/-ON-/-OFF-/g' /opt/plexguide/menus/redirect/main.sh
+        fi
+        ;;
+    G)
+        bash /opt/plexguide/menus/transfer/main.sh ;;
+    H)
+        bash /opt/plexguide/menus/watchtower/main.sh ;;
+    I)
+        bash /opt/plexguide/menus/migrate/main.sh ;;
+    J)
+        bash /opt/plexguide/menus/themes/main.sh ;;
+    Z)
+        clear
+        exit 0
+        ;;
+    esac
 clear
 
 bash /opt/plexguide/menus/settings/main.sh
