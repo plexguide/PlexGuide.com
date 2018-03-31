@@ -50,22 +50,6 @@
     owner: 1000
     group: 1000
 
-- name: Replace yourdomain.com with user input
-  replace:
-    path: /opt/appdata/traefik/traefik.toml
-    regexp: yourdomain.com
-    replace: "{{domain}}"
-  #tags:
-    #- main 
-
-- name: Replace your@email.com with user input
-  replace:
-    path: /opt/appdata/traefik/traefik.toml
-    regexp: your@email.com
-    replace: "{{email}}"
-  tags:
-    - main
-
 ######################################################### RECALL VARIABLES
 
 - name: Provider
@@ -93,6 +77,16 @@
   register: var4
   ignore_errors: True
 
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+- name: Register E-Mail
+  shell: "cat /var/plexguide/server.email"
+  register: email
+  ignore_errors: True
+
 ######################################################### REPLACE STANDARD VARIBLES
 
 - name: Replace Provider
@@ -100,6 +94,18 @@
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
     replace: "{{provider.stdout}}"
+
+- name: Replace Domain
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: yourdomain
+    replace: "{{domain.stdout}}"
+
+- name: Replace E-Mail
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: myprovider
+    replace: "{{email.stdout}}"
 
 ######################################################### CLOUDFLARE
 - name: Deploy Traefik
