@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 - name: Remove Tautulli Container
   docker_container:
     name: tautulli
@@ -43,5 +50,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:tautulli.{{domain}},plexpy.{{domain}}"
+      traefik.frontend.rule: "Host:tautulli.{{domain.stdout}},plexpy.{{domain.stdout}}"
       traefik.port: "8181"

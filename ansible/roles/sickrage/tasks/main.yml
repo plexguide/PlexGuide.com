@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,6 +16,13 @@
 #
 #################################################################################
 ---
+############################ VARIABLES START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+  ## {{domain.stdout}}
+############################ VARIABLES END
 - name: Remove Sickrage Container
   docker_container:
     name: sickrage
@@ -51,7 +58,7 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:sickrage.{{domain}}"
+      traefik.frontend.rule: "Host:sickrage.{{domain.stdout}}"
       traefik.port: "8081"
 
 

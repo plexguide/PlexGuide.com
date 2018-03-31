@@ -24,7 +24,6 @@
     dest: /opt/appdata/plexguide/var-vpn.yml
     force: yes
 
-
 ############ Ask for PIA VPN user info
 - name: vpnuser
   pause:
