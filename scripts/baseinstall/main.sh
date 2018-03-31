@@ -35,11 +35,11 @@ fi
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
-echo "10" | dialog --gauge "Installing Python Support" 7 50 0
+#echo "10" | dialog --gauge "Installing Python Support" 7 50 0
 #bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
-sleep 1
+#sleep 1
 
-echo "15" | dialog --gauge "Installing: Software Properties Common" 7 50 0
+echo "12" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 sleep 1
 
@@ -55,29 +55,29 @@ apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall #1>/dev/null 2>&1
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall 1>/dev/null 2>&1
+#read -n 1 -s -r -p "Press any key to continue "
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands #&>/dev/null &
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands &>/dev/null &
+#read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders #1>/dev/null 2>&1
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders 1>/dev/null 2>&1
+#read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label #1>/dev/null 2>&1
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+#read -n 1 -s -r -p "Press any key to continue "
 
 echo "50" | dialog --gauge "Installing: Docker (Please Be Patient)" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker #1>/dev/null 2>&1
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
+#read -n 1 -s -r -p "Press any key to continue "
 
 echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
-ansible-playbook /opt/plexguide/ansible/config.yml --tags var #1>/dev/null 2>&1
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
+#read -n 1 -s -r -p "Press any key to continue "
 
 ##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
@@ -93,23 +93,23 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
   fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
-bash /opt/plexguide/scripts/startup/rclone-preinstall.sh #&>/dev/null &
+bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
 touch /var/plexguide/basics.yes &>/dev/null &
 sleep 2
 
 echo "78" | dialog --gauge "Installing: Portainer" 7 50 0 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer #&>/dev/null &
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
 sleep 2
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover #&>/dev/null &
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix #1>/dev/null 2>&1
-read -n 1 -s -r -p "Press any key to continue "
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
+#read -n 1 -s -r -p "Press any key to continue "
 
 echo "86" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
-read -n 1 -s -r -p "Press any key to continue "
+#read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
 echo "89" | dialog --gauge "Installing: WatchTower" 7 50 0
