@@ -92,7 +92,7 @@ case $CHOICE in
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       sleep 3
       echo "CLOUDFLARE_EMAIL" > /tmp/display1
-      echo "CLOUDFLARE_API_KEY" > /tmp/display1
+      echo "CLOUDFLARE_API_KEY" > /tmp/display2
       echo "cloudflare" > /var/plexguide/provider
       bash /opt/plexguide/menus/traefik/menu.sh
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi
