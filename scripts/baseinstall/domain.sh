@@ -29,5 +29,5 @@
         bash /opt/plexguide/scripts/baseinstall/traefik.sh
       else
         dialog --title "Domain - No" --msgbox "\nSet this up later anytime via settings!" 0 0
-        echo "later" > /var/plexguide/server.domain
+        echo "NO-DOMAIN" > /var/plexguide/server.domain
  fi
