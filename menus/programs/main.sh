@@ -35,7 +35,7 @@ OPTIONS=(A "Media Servers"
          F "UI Organziers"
          G "Critical"
          H "Beta"
-         I "Wordpress Suite"
+         I "Wordpress-Test"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -65,7 +65,9 @@ case $CHOICE in
         H)
             bash /opt/plexguide/menus/programs/beta.sh ;;
         I)  
-            clear ;;
+            dialog --infobox "THIS IS NOT READY" 3 45
+            sleep 4
+            bash /opt/plexguide/menus/programs/wp.sh ;;
         Z)
             clear
             exit 0 ;;
