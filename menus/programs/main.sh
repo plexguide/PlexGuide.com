@@ -20,9 +20,9 @@ export NCURSES_NO_UTF8_ACS=1
 # This takes .yml file and converts it to bash readable format
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
-HEIGHT=16
+HEIGHT=17
 WIDTH=30
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Suite"
 MENU="Make A Selection:"
@@ -35,6 +35,7 @@ OPTIONS=(A "Media Servers"
          F "UI Organziers"
          G "Critical"
          H "Beta"
+         I "Wordpress Suite"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -63,6 +64,8 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/critical.sh ;;
         H)
             bash /opt/plexguide/menus/programs/beta.sh ;;
+        I)  
+            clear ;;
         Z)
             clear
             exit 0 ;;
