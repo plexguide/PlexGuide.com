@@ -40,7 +40,6 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&
 #then
 #whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
 #fi
-
 file="/var/plexguide/ubversion"
 if [ -e "$file" ]
 then
