@@ -32,7 +32,7 @@ folders = [
 "opt/appdata/plexguide"
 ]
 for folder in folders:
-    print(folder)
+    #print(folder)
     dir = os.path.join('/',folder)
     if os.path.exists(dir):
         shutil.rmtree(dir)
