@@ -16,3 +16,4 @@ for color in colors:
         shutil.rmtree(dir)
     os.makedirs(dir)
     os.chmod(dir, 0o775)
+    os.chown(dir, 1000, 1000)
