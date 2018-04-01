@@ -11,7 +11,6 @@ folders = [
 for folder in folders:
     print(folder)
     dir = os.path.join('/',folder)
-    #dir = 'folders'
     if os.path.exists(dir):
         shutil.rmtree(dir)
     os.makedirs(dir)
