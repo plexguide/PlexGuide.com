@@ -15,4 +15,4 @@ for color in colors:
     if os.path.exists(dir):
         shutil.rmtree(dir)
     os.makedirs(dir)
-    #print(color)
+    os.chmod(dir, 0o775)
