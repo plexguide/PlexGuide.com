@@ -14,7 +14,7 @@ colors = [
 "purple"
 ]
 for color in colors:
-    dir = os.path.join('/', 'colors')
+    dir = os.path.join('/', colors)
     #dir = 'colors'
     if os.path.exists(dir):
         shutil.rmtree(dir)
