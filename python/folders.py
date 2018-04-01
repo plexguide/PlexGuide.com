@@ -2,16 +2,16 @@ import os
 import os.path
 import shutil
 
-colors = [
+folders = [
 "red", 
 "green", 
 "blue", 
 "purple"
 ]
-for color in colors:
-    print(color)
-    dir = os.path.join('/',color)
-    #dir = 'colors'
+for folder in folders:
+    print(folder)
+    dir = os.path.join('/',folder)
+    #dir = 'folders'
     if os.path.exists(dir):
         shutil.rmtree(dir)
     os.makedirs(dir)
