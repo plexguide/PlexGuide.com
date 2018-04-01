@@ -53,4 +53,4 @@
       traefik.frontend.rule: "Host:netdata.{{domain.stdout}}"
       traefik.port: "19999"
       traefik.backend: "netdata"
-      #traefik.frontend.auth.basic: "gforce:gforce"
+      traefik.frontend.auth.basic: "gforce:gforce"
