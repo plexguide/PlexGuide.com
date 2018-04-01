@@ -9,7 +9,7 @@ colors = [
 "purple"
 ]
 for color in colors:
-	print(color)
+    print(color)
     dir = os.path.join('/',color)
     #dir = 'colors'
     if os.path.exists(dir):
