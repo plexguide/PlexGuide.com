@@ -91,8 +91,8 @@
       - name: plexguide
         aliases:
           - plex
-    #expose:
-    #  - 32400
+    expose:
+      - 32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
