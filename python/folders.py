@@ -1,4 +1,5 @@
 import os
+import os.path
 import shutil
 
 dir = '/test/chicken/popcorn'
@@ -6,7 +7,16 @@ if os.path.exists(dir):
     shutil.rmtree(dir)
 os.makedirs(dir)
 
-
-#os.makedirs('/test/one')
-#os.makedirs('/test/two')
-#os.chmod('/test', 0775 )
+colors = [
+"red", 
+"green", 
+"blue", 
+"purple"
+]
+for color in colors:
+    dir = os.path.join('/', 'colors')
+    #dir = 'colors'
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    os.makedirs(dir)
+    print(color)
