@@ -7,7 +7,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Added 
   - Apache2-utils has been added to preinstaller for htpasswd generation for Treafik
 - Changed
-  - https://redirection from Traefik TOMLS, redirection labels added per container for better control 
+  - https: //redirection from Traefik TOMLS, redirection labels added per container for better control 
 #### RC1
 - Added
   - Improved Traefik's menu handling
