@@ -100,7 +100,7 @@ case $CHOICE in
       program=lazy
       port=5299
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy 1>/dev/null 2>&1 ;;
     Z)
       exit 0 ;;
 esac
