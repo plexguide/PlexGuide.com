@@ -3,17 +3,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.067] (Release Candiate & DEV)
 
-#### Note: This Version will make You Register Your Domain Again (New System); plus for V1 or V2 Traefik
-
-#### Added
-- (RC1) Improved Message for Traefik Regarding Wildcards
-- (RC1) Improved Traefik's menu handling
-- (RC2) Apache2-utils has been added to preinstaller for htpasswd generation for Treafik
-#### Changed
-- None
-
-#### Removed
-- None
+- (RC2)(Changed) Deleted https://redirection from Traefik TOMLS, redirection labels added per container for better control
+- (RC2)(Added)   Apache2-utils has been added to preinstaller for htpasswd generation for Treafik
+- (R1)(Added)    Improved Traefik's menu handling
+- (R1)(Added)    Improved Message for Traefik Regarding Wildcards
+#### Note: Installing from 5.066 & Below will make you Register Your Domain Again (New System); plus for V1 or V2 Traefik
 
 #### Known Issues
 https://hemidall does not work with Traefik v2
