@@ -37,6 +37,7 @@
   - { role: jackett, tags: ['jackett'] }
   - { role: rclone_un, tags: ['rclone_un'] }
   - { role: rclone_en, tags: ['rclone_en'] }
+  - { role: lazy, tags: ['lazy'] }
   - { role: unservices, tags: ['unservices'] }
   - { role: unfiles, tags: ['unfiles'] }
   - { role: unprograms, tags: ['unprograms'] }
