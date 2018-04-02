@@ -6,6 +6,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Note: This Version will make You Register Your Domain Again (New System); plus for V1 or V2 Traefik
 
 #### Added
+- (B5) New Variable System for IP tracking and Ports Tracking; gone is the var.yml
 - (B3) Midnight Commander Installs via Ansible; no more menu glitches and etc
 - (B1) Sickrage: Fixed subdomain; now works
 - (B1) Sped up the Base Installer (about 40 percent); forcing more items to install via background
@@ -22,12 +23,14 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - (B4)  With Traefik V2, user can type plexpy.domain.com or tautulli.domain.com
 
 #### Changed
+- (B5) Fixed RClone Dummy File Install
 - (B1) Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
 - (B4) Fixed Lazy Librain Role Location
 - (B4) Enhanced Ending Menu
 
 #### Removed
 - (B4) Several https:// redirects
+- (B5)  The pre.yml is gone, including the var.yml which caused headaches for people at times
 
 #### Known Issues
 - (B4) https://emby subdomain and https://plex subdomain does not work
