@@ -120,10 +120,10 @@ bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
 touch /var/plexguide/basics.yes &>/dev/null &
 sleep 2
 
-echo "78" | dialog --gauge "Installing: Portainer" 7 50 0 
+echo "78" | dialog --gauge "Installing: Portainer" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
 sleep 2
-echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
+echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 ############################################################ Reboot Startup Container Script
@@ -143,7 +143,7 @@ sleep 2
 file="/var/plexguide/server.domain"
 if [ -e "$file" ]
     then
-      echo "" 1>/dev/null 2>&1   
+      echo "" 1>/dev/null 2>&1
     else
       echo "null" > /var/plexguide/server.domain
       bash /opt/plexguide/scripts/baseinstall/domain.sh
@@ -159,12 +159,12 @@ sleep 2
     else
         echo "Please Support Us with Any Donations :D" > /tmp/pushover
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-        
+
         bash /opt/plexguide/menus/donate/main.sh
     fi
 
    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-   touch /var/plexguide/dep47.yes
+   touch /var/plexguide/dep48.yes
 
 echo "PG Install is Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
