@@ -55,7 +55,7 @@ case $CHOICE in
         dialog --infobox "Please Wait!" 3 50
         sleep 1
             echo "Closed" > /var/plexguide/server.ports.status
-            echo "127.0.0.1:" /var/plexguide/server.ports
+            echo "127.0.0.1:" > /var/plexguide/server.ports
             ;;
         Z)
             clear
