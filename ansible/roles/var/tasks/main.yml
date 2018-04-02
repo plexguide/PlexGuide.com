@@ -23,23 +23,8 @@
     - /opt/appdata/plexguide
 
 ########## Copy Traefik config files
-- name: Installing config prerequisites
-  template:
-    src: var.yml
-    dest: /opt/appdata/plexguide/var.yml
-    force: yes
 
 - name: create plexguide network
   docker_network:
     name: "plexguide"
     state: present
-
-- name: ipv4
-  shell: "hostname -I | awk '{print $1}'"
-  register: ip_address
-
-- name: Replace ipv4 with stand output
-  replace:
-    path: /opt/appdata/plexguide/var.yml
-    regexp: ip_address
-    replace: "{{ip_address.stdout}}"

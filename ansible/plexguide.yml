@@ -1,7 +1,5 @@
 ---
 - hosts: localhost
-  vars_files:
-    - /opt/appdata/plexguide/var.yml
 
   roles:
   - { role: deploy, tags: ['deploy'] }
@@ -46,7 +44,6 @@
   - { role: medusa, tags: ['medusa'] }
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
-  - { role: var, tags: ['var'] }
   - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
   - { role: traefik, tags: ['traefik'] }
@@ -59,3 +56,7 @@
   - { role: clean, tags: ['clean'] }
   - { role: network_tuning, tags: ['network_tuning'] }
   - { role: localstorage, tags: ['localstorage'] }
+  - { role: docker, tags: ['docker'] }
+  - { role: preinstall, tags: ['preinstall'] }
+  - { role: commands, tags: ['commands'] }
+  - { role: folders, tags: ['folders'] }

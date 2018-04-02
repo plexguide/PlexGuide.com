@@ -85,10 +85,6 @@ else
   #read -n 1 -s -r -p "Press any key to continue "
 fi
 
-echo "70" | dialog --gauge "Installing: PlexGuide Basics" 7 50 0
-ansible-playbook /opt/plexguide/ansible/config.yml --tags var 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
-
 ##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1

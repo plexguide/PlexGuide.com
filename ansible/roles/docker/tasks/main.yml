@@ -65,3 +65,8 @@
 
 - name: Import override file
   copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
+
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
