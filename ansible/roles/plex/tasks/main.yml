@@ -114,6 +114,7 @@
       traefik.enable: "true"
       traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
       traefik.port: "32400"
+      traefik.frontend.entryPoints: "http,https"
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
