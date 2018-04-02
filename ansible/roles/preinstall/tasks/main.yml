@@ -51,6 +51,7 @@
       - dialog
       - dnsutils
       - mc
+      - apache2-utils
     ignore_errors: yes
 
   - name: Pip Modes
