@@ -17,13 +17,8 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-file="/opt/appdata/plexguide/ports-no"
-if [ -e "$file" ]
-then
-  status="Closed"
-else
-	status="Open"
-fi
+############################################################ Recall Server Port Status
+status=$(cat /var/plexguide/server.ports.status)
 
 dialog --title "Very Important" --msgbox "\nYour Applications Port Status: $status\n\nYou must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
 
@@ -33,11 +28,11 @@ WIDTH=52
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Make a Choice"
-MENU="Application Ports are currently >>> $status"
+MENU="Ports are Currently >>> $status"
 
-OPTIONS=(A "Open Application Ports"
-         B "Close Application Ports"
-         Z "No Change")
+OPTIONS=(A "Ports: OPEN"
+         B "Ports: CLOSED"
+         Z "Exit - No Change")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -52,14 +47,15 @@ case $CHOICE in
         A)
         dialog --infobox "Please Wait!" 3 35
         sleep 1
-			rm -r /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1
- 			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags closed 1>/dev/null 2>&1
+            echo "Open" > /var/plexguide/server.ports.status
+            rm -r /var/plexguide/server.ports
+            touch /var/plexguide/server.ports
             ;;
         B)
         dialog --infobox "Please Wait!" 3 50
         sleep 1
-			touch /opt/appdata/plexguide/ports-no 1>/dev/null 2>&1	
-			ansible-playbook /opt/plexguide/ansible/config.yml --tags ports --skip-tags open 1>/dev/null 2>&1
+            echo "Closed" > /var/plexguide/server.ports.status
+            echo "127.0.0.1:" /var/plexguide/server.ports
             ;;
         Z)
             clear

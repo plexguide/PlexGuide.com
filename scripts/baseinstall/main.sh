@@ -17,10 +17,11 @@
 #################################################################################
 
 clear
-
+############################################################ Push Over Notification of Starting Process
 echo "Installation Started" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
+############################################################ Basic Menu
 if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
@@ -32,6 +33,19 @@ else
   exit 0
 fi
 
+############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
+file="/var/plexguide/server.ports" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  dialog --title "Server Ports" --msgbox "\nYour Applicaiton Ports are Open by Default!\n\n!You can turn them OFF via Settings and TURN OFF only after you confirmed if your https:// for your DOMAIN is working!" 0 0
+  touch /var/plexguide/server.ports
+  echo "Open" > /var/plexguide/server.ports.status
+    exit
+  fi
+
+############################################################ Starting Install Processing
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
@@ -48,12 +62,14 @@ yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 sleep 1
 
+############################################################ Enables Use of ROLES AfterWards
 echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
 apt-get update -y 1>/dev/null 2>&1
 apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
+############################################################ Start of Role Execution
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
@@ -71,6 +87,7 @@ echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
+############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
 
@@ -85,7 +102,7 @@ else
   #read -n 1 -s -r -p "Press any key to continue "
 fi
 
-##### Check For Docker / Ansible Failure #### If file is missing, one of the two failed
+############################################################ Checks to See if Docker Installed; if not... FAIL!
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
   if [ -e "$file" ]
@@ -109,6 +126,7 @@ sleep 2
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
+############################################################ Reboot Startup Container Script
 echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
