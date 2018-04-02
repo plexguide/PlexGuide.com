@@ -67,6 +67,7 @@
           - sabnzbd
     labels:
       traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:sabnzbd.{{domain.stdout}}"
       traefik.port: "8080"
 

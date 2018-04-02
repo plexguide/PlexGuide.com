@@ -71,5 +71,6 @@
     state: started
     labels:
       traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{domain}}"
       traefik.port: "80"

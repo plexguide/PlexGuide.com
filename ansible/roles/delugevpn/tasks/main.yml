@@ -156,5 +156,6 @@
           - delugevpn
     labels:
       traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:delugevpn.{{domain.stdout}}"
       traefik.port: "8112"

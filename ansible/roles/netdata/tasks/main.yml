@@ -54,6 +54,7 @@
     restart_policy: always
     labels:
       traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:netdata.{{domain.stdout}}"
       traefik.port: "19999"
       traefik.backend: "netdata"

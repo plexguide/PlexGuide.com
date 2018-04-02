@@ -62,5 +62,6 @@
     state: started
     labels:
       traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:medusa.{{domain.stdout}}"
       traefik.port: "8081"
