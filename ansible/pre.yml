@@ -1,8 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: docker, tags: ['docker'] }
-  - { role: preinstall, tags: ['preinstall'] }
-  - { role: commands, tags: ['commands'] }
-  - { role: folders, tags: ['folders'] }

@@ -55,16 +55,16 @@ apt-get install ansible -y 1>/dev/null 2>&1
 yes | apt-get update 1>/dev/null 2>&1
 
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags preinstall 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags commands &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/pre.yml --tags folders 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
@@ -81,7 +81,7 @@ then
   #read -n 1 -s -r -p "Press any key to continue "
 else
   echo "50" | dialog --gauge "Installing: Docker 18.03 (Please Be Patient)" 7 54 0
-  ansible-playbook /opt/plexguide/ansible/pre.yml --tags docker 1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 fi
 
