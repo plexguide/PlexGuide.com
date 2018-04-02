@@ -6,8 +6,10 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### RC2
 - Added 
   - Apache2-utils has been added to preinstaller for htpasswd generation for Treafik (not used for production yet)
+  - TraefikV2 - Users are notified of additional domains that ombi and tatuilli can reach
 - Changed
   - https: //redirection from Traefik TOMLS, redirection labels added per container for better control 
+  - Fixed minor mispellings
 #### RC1
 - Added
   - Improved Traefik's menu handling
