@@ -39,7 +39,7 @@ file="/var/plexguide/server.ports" 1>/dev/null 2>&1
     then
   echo "" 1>/dev/null 2>&1
     else
-  dialog --title "Server Ports" --msgbox "\nYour Applicaiton Ports are Open by Default!\n\n!You can turn them OFF via Settings and TURN OFF only after you confirmed if your https:// for your DOMAIN is working!" 0 0
+  dialog --title "Server Ports - One Time Message" --msgbox "\nYour Applicaiton Ports are Open by Default!\n\nYou can turn them OFF via Settings. TURN OFF only when https:// is confirmed for you DOMAIN!" 0 0
   touch /var/plexguide/server.ports
   echo "Open" > /var/plexguide/server.ports.status
     exit
