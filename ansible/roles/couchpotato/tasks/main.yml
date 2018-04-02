@@ -21,7 +21,7 @@
   shell: "cat /var/plexguide/server.domain"
   register: domain
   ignore_errors: True
-  ## {{domain.stdout}}
+
 ############################ Replace END
 
 ############################ Variables START

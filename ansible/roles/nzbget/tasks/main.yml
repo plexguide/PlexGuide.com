@@ -21,7 +21,11 @@
   shell: "cat /var/plexguide/server.domain"
   register: domain
   ignore_errors: True
-  ## {{domain.stdout}}
+
+- name: Register Ports
+  shell: "cat /var/plexguide/server.ports"
+  register: domain
+  ignore_errors: True
 ############################ VARIABLES END
 - name: Remove NZBGET Container
   docker_container:
