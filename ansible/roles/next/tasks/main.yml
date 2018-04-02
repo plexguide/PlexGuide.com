@@ -53,7 +53,7 @@
       MYSQL_ROOT_PASSWORD: "password321"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/nexcloud/mariadb:/config"
+      - "/opt/appdata/nextcloud/mariadb:/config"
     networks:
       - name: plexguide
         aliases:
