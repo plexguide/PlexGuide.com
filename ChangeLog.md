@@ -8,7 +8,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Added
 - (RC1) Improved Message for Traefik Regarding Wildcards
 - (RC1) Improved Traefik's menu handling
-
+- (RC2) Apache2-utils has been added to preinstaller for htpasswd generation for Treafik
 #### Changed
 - None
 
