@@ -54,5 +54,5 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}},{{domain.stdout}}"
+      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}"
       traefik.port: "3579"
