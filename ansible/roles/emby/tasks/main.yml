@@ -21,6 +21,11 @@
   shell: "cat /var/plexguide/server.domain"
   register: domain
   ignore_errors: True
+  
+- name: Register Ports
+  shell: "cat /var/plexguide/server.ports"
+  register: domain
+  ignore_errors: True
 ############################  Replace Variables
 - name: Remove Emby Container
   docker_container:
@@ -40,7 +45,7 @@
       GID: "1000"
       GIDLIST: "1000"
     expose:
-      - 8096 
+      - 8096
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/embyserver:/config
