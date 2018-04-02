@@ -24,7 +24,7 @@
 
 - name: Register Ports
   shell: "cat /var/plexguide/server.ports"
-  register: domain
+  register: ports
   ignore_errors: True
 ############################ VARIABLES END
 - name: Remove NZBHyra2 Container
