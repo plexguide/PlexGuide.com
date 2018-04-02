@@ -57,7 +57,15 @@ case $CHOICE in
             program=ombi
             port=3579
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1 ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1 
+
+            version=$( cat /var/plexguide/provider )
+            if [ "$version" != "null" ]
+            then
+              dialog --infobox "Using Traefikv2 & Ombi\n\nAs a result, you can use the following subdomains and domains\nombi.domain.com\nrequests.domain.com\n\request.domain.com\ndomain.com (straight to your domain)" 0 0
+              sleep 5
+            fi
+            ;;
         C)
             display=NEXTCloud
             program=nextcloud
