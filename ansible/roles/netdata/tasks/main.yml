@@ -58,4 +58,4 @@
       traefik.port: "19999"
       traefik.backend: "netdata"
       traefik.frontend.entryPoints: "http,https"
-      traefik.frontend.auth.basic: "test:qUqP5cyxm6YcTAhz05Hph5gvu9M="
+      #traefik.frontend.auth.basic: "test:qUqP5cyxm6YcTAhz05Hph5gvu9M="
