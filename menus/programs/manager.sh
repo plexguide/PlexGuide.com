@@ -35,6 +35,7 @@ OPTIONS=(A "Couchpotato"
          E "Radarr"
          F "Sickrage"
          G "Sonarr"
+         H "Lazy Librarian"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -94,6 +95,12 @@ case $CHOICE in
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 ;;
 
+    H)
+      display=LazyLibrarian
+      program=lazy
+      port=5299
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 ;;
     Z)
       exit 0 ;;
 esac
