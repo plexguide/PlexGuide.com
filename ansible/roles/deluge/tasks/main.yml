@@ -35,7 +35,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}8112:8112"
+      - "{{ports.stdout}}8112:8112"
       - "58846:58846"
       - "58946:58946"
     env:

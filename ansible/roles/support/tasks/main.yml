@@ -29,7 +29,7 @@
     tty: true
     cpu_shares: 2
     published_ports:
-      - "{{ports}}45560:45560"
+      - "{{ports.stdout}}45560:45560"
     env:
       PUID: "1000"
       PGID: "1000"

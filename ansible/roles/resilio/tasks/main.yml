@@ -36,7 +36,7 @@
     cpu_shares: 256
     published_ports:
       - "55555:55555"
-      - "{{ports}}8888:8888"
+      - "{{ports.stdout}}8888:8888"
     env:
       PUID: "1000"
       PGID: "1000"

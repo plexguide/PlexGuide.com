@@ -35,7 +35,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}8090:8090"
+      - "{{ports.stdout}}8090:8090"
     env:
       APP: mylar
       VERSION: stable

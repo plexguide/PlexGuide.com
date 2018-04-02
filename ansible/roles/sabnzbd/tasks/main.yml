@@ -42,7 +42,7 @@
     image: "linuxserver/sabnzbd"
     pull: yes
     published_ports:
-      - "{{ports}}8080:8080"
+      - "{{ports.stdout}}8080:8080"
     volumes:
       - /opt/appdata/sabnzbd:/config
       - /mnt/sab/complete:/complete

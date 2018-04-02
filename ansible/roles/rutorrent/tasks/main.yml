@@ -35,7 +35,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}8999:80"
+      - "{{ports.stdout}}8999:80"
       - "51413:51413"
       - "6881:6881/udp"
       - "5000:5000"

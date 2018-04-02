@@ -43,7 +43,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}6789:6789"
+      - "{{ports.stdout}}6789:6789"
     volumes:
       - /opt/appdata/nzbget:/config
       - /mnt/nzbget/completed:/completed

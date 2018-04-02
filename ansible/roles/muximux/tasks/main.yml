@@ -35,7 +35,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}8015:80"
+      - "{{ports.stdout}}8015:80"
     env:
       PUID: "1000"
       PGID: "1000"

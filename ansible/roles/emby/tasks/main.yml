@@ -34,7 +34,7 @@
     pull: yes
     cpu_shares: 1024
     published_ports:
-      - "{{ports}}8096:8096"
+      - "{{ports.stdout}}8096:8096"
     env:
       UID: "1000"
       GID: "1000"

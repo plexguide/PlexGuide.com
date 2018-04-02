@@ -24,6 +24,19 @@
   ## {{domain.stdout}}
 ############################ Replace END
 
+############################ Variables START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+- name: Register Ports
+  shell: "cat /var/plexguide/server.ports"
+  register: domain
+  ignore_errors: True
+############################ Replace END
+
+
 - name: Remove couchpotato Container
   docker_container:
     name: couchpotato
@@ -41,7 +54,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports}}5050:5050"
+      - "{{ports.stdout}}5050:5050"
     env:
       APP: couchpotato
       VERSION: stable
