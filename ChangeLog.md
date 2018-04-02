@@ -6,6 +6,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### Note: This Version will make You Register Your Domain Again (New System); plus for V1 or V2 Traefik
 
 #### Added
+- (B5) LazyLibrarian Added - Haven't had much time to test, but deploys; please test out
+- (B5) Ombi Deploys To Main Domain Name (Will make optional for B6) TRAEFIKv2 Required
 - (B5) New Variable System for IP tracking and Ports Tracking; gone is the var.yml
 - (B3) Midnight Commander Installs via Ansible; no more menu glitches and etc
 - (B1) Sickrage: Fixed subdomain; now works
