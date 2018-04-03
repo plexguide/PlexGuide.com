@@ -18,6 +18,8 @@
 ######## This is a ONE TIME MENU
 export NCURSES_NO_UTF8_ACS=1
 
+### PUT IF SETUP ALREADY, EXIT
+
 HEIGHT=11
 WIDTH=35
 CHOICE_HEIGHT=6
@@ -40,6 +42,25 @@ case $CHOICE in
     A)
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
       echo "yes" > /var/plexguide/server.hd
+
+      dialog --title "Input FULL PATH [EX: /hd2/media or /hd2]" \
+      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+      --inputbox "Full Path: " 8 50 2>/var/plexguide/server.hd.path
+      path=$(cat /var/plexguide/server.hd.path)
+
+      if dialog --stdout --title "Path Check" \
+            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+            --yesno "\nPATH: $path - Correct?" 0 0; then
+            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+        dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
+        
+        dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
+      else
+        dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
+        bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+        exit
+      fi
+
       ;;
     B)
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
@@ -57,5 +78,25 @@ case $CHOICE in
       exit
     ;;
 esac
+
+file="/opt/appdata/$app"
+if [ -e "$file" ]
+    then
+
+        if dialog --stdout --title "Backup User Confirmation" \
+            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup -- $app -- ?" 0 0; then
+            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
+            exit 0
+        else
+            clear
+        fi
+    else
+        dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
+        sudo bash /opt/plexguide/menus/backup-restore/backup.sh
+        exit 0
+fi
+
 
 exit
