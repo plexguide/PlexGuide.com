@@ -17,6 +17,9 @@
 #################################################################################
 ---
 ############################ VARIABLES START
+- include_role:
+    name: sabnzbd
+
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
   register: domain
