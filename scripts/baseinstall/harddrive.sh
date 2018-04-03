@@ -51,14 +51,19 @@ case $CHOICE in
       if dialog --stdout --title "Path Check" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
             --yesno "\nPATH: $path - Correct?" 0 0; then
-        dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
-
+        #### Rebuild thing
         dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
         clear
         initial="$(echo $path | head -c 1)"
+        
         echo "$initial"
+        if [ "$version" != "null" ]
+          then
+                echo "WARNING"
+          fi
         exit
+
       else
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh
