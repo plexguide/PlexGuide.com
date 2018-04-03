@@ -60,6 +60,8 @@ case $CHOICE in
             version=$( cat /var/plexguide/provider )
             if [ "$version" != "null" ]
             then
+                clear 1>/dev/null 2>&1
+            else
               --msgbox "Using Traefikv2 & Ombi\n\nAs a result, you can use the following subdomains and domains\nombi.domain.com\nrequests.domain.com\nrequest.domain.com\ndomain.com (straight to your domain)" 0 0
             fi
             ;;
@@ -89,8 +91,10 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli 1>/dev/null 2>&1
 
             version=$( cat /var/plexguide/provider )
-            if [ "$version" != "null" ]
+            if [ "$version" == "null" ]
             then
+                clear 1>/dev/null 2>&1
+            else
               --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
             fi
             ;;
