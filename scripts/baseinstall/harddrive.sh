@@ -60,7 +60,8 @@ case $CHOICE in
         echo "$initial"
         if [ "$initial" != "/" ]
           then
-                echo "WARNING"
+                $
+                path="/$path"
           fi
         exit
 
