@@ -46,7 +46,7 @@
     image: "linuxserver/mariadb"
     pull: yes
     published_ports:
-      - "{{ports.stdout}}3306:3306"
+      - "127.0.0.1:3306:3306"
     env:
       PUID: 1000
       PGID: 1000
@@ -67,7 +67,8 @@
     image: "linuxserver/nextcloud"
     pull: yes
     published_ports:
-      - "{{ports.stdout}}4645:443"
+      - "127.0.0.1:4645:4433"
+      #- "{{ports.stdout}}4645:443"
     env:
       PUID: 1000
       PGID: 1000
