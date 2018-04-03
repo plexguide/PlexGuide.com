@@ -64,11 +64,11 @@ case $CHOICE in
           fi
       
         ##### If BONEHEAD added a / at the end, we fix for them  
-        initial="${path::-1}"
-        if [ "$initial" != "/" ]
+        initial="${path: -1}"
+        if [ "$initial" == "/" ]
           then
                 pathe="$path"
-                path="${path%?}" 
+                path=${path::-1} 
                 dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
                 echo "$path" > /var/plexguide/server.hd.path
           fi
