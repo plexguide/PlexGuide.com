@@ -67,7 +67,7 @@
     image: "linuxserver/nextcloud"
     pull: yes
     published_ports:
-      - "127.0.0.1:4645:4433"
+      - "127.0.0.1:4645:443"
       #- "{{ports.stdout}}4645:443"
     env:
       PUID: 1000
