@@ -16,8 +16,8 @@
 #
 #################################################################################
 ---
-#- include_role:
-    #name: variables
+- include_role:
+    name: variables
 
 - name: Remove NZBGET Container
   docker_container:
@@ -42,13 +42,13 @@
       - "{{ports.stdout}}6789:6789"
     volumes:
       - /opt/appdata/nzbget:/config
-      - /mnt/nzbget/completed:/completed
-      - /mnt/nzbget/incomplete:/incomplete
-      - /mnt/nzbget/nzb:/nzb
-      - /mnt/nzbget/log:/log
-      - /mnt/nzbget/tmp:/tmp
-      - /mnt/nzbget/queue:/queue
-      - /mnt/nzbget/scripts:/scripts
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/nzbget/incomplete:/incomplete"
+      - "{{path.stdout}}/nzbget/nzb:/nzb"
+      - "{{path.stdout}}/nzbget/log:/log"
+      - "{{path.stdout}}/nzbget/tmp:/tmp"
+      - "{{path.stdout}}/nzbget/queue:/queue"
+      - "{{path.stdout}}/nzbget/scripts:/scripts"
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
