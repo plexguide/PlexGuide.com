@@ -60,7 +60,6 @@ case $CHOICE in
         echo "$initial"
         if [ "$initial" != "/" ]
           then
-                $
                 path="/$path"
           fi
         exit
