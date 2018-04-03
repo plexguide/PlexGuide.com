@@ -53,7 +53,7 @@ case $CHOICE in
             --yesno "\nPATH: $path - Correct?" 0 0; then
             dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
-        
+
         dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
       else
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
@@ -66,6 +66,7 @@ case $CHOICE in
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
       echo "nr" > /var/plexguide/server.hd
       echo "/mnt" > /var/plexguide/server.hd.path
+            exit
       ;;
     C)
       dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
