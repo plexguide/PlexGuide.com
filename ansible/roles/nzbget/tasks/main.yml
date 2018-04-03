@@ -18,17 +18,8 @@
 ---
 ############################ VARIABLES START
 - include_role:
-    name: sabnzbd
+    name: variables
 
-- name: Register Domain
-  shell: "cat /var/plexguide/server.domain"
-  register: domain
-  ignore_errors: True
-
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
 ############################ VARIABLES END
 - name: Remove NZBGET Container
   docker_container:
