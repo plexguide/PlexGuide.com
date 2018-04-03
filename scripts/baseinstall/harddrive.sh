@@ -40,51 +40,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
-      echo "yes" > /var/plexguide/server.hd
-
-      dialog --title "Input FULL PATH [ EX: /hd2/media or /hd2 ]" \
-      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-      --inputbox "Full Path: " 8 50 2>/var/plexguide/server.hd.path
-      path=$(cat /var/plexguide/server.hd.path)
-
-      if dialog --stdout --title "Path Check" \
-            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nPATH: $path - Correct?" 0 0; then
-        dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
-        
-        ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-        initial="$(echo $path | head -c 1)"
-        if [ "$initial" != "/" ]
-          then
-                pathe="$path"
-                path="/$path"
-                dialog --title "PG Error Checking" --msgbox "\nForgot to add a FORWARD SLASH in the beginning!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
-                echo "$path" > /var/plexguide/server.hd.path
-          fi
-      
-        ##### If BONEHEAD added a / at the end, we fix for them  
-        initial="${path: -1}"
-        if [ "$initial" == "/" ]
-          then
-                pathe="$path"
-                path=${path::-1} 
-                dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
-                echo "$path" > /var/plexguide/server.hd.path
-          fi
-        exit
-
-        #### Rebuild thing
-        dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
-
-
-
-      else
-        dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
-        bash /opt/plexguide/scripts/baseinstall/harddrive.sh
-        exit
-      fi
-
+      bash /opt/plexguide/scripts/baseinstall/path.sh
       ;;
     B)
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
