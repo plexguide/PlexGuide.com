@@ -26,7 +26,7 @@
   if dialog --stdout --title "Path Check" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nPATH: $path - Correct?" 0 0; then
-    dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
+    dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set!" 0 0
     
     ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
     initial="$(echo $path | head -c 1)"
@@ -54,7 +54,12 @@
     file="$path/plexguide"
     if [ -e "$file" ]
       then
-      dialog --title "PG Path Checker" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path exist! We are going to CHMOD & CHOWN the path for you!" 0 0
+        chown 1000:1000 "$path"
+        chmod 0775 "$path"
+      else
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path does not EXIST! Re-Running Menu! 0 0"
+    fi
 
     exit
 
