@@ -61,6 +61,7 @@ case $CHOICE in
                 pathe="$path"
                 path="/$path"
                 dialog --title "PG Error Checking" --msgbox "\nForgot to add a FORWARD SLASH in the beginning!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
+                echo "$path" > /var/plexguide/server.hd.path
           fi
         exit
 
