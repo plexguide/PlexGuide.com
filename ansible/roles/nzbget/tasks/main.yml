@@ -16,11 +16,9 @@
 #
 #################################################################################
 ---
-############################ VARIABLES START
-- include_role:
-    name: variables
+#- include_role:
+    #name: variables
 
-############################ VARIABLES END
 - name: Remove NZBGET Container
   docker_container:
     name: nzbget
