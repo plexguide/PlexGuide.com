@@ -60,7 +60,7 @@ case $CHOICE in
           then
                 pathe="$path"
                 path="/$path"
-                dialog --title "PG Error Checking" --msgbox "\nYou forgot to add the backslash in the beginning.\n\nOld Path:\n$pathe\n\nNew Path:\n$path" 0 0
+                dialog --title "PG Error Checking" --msgbox "\nYou forgot to add the backslash in the beginning.\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
           fi
         exit
 
