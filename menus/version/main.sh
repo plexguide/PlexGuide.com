@@ -15,6 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+export NCURSES_NO_UTF8_ACS=1
+clear
+
 HEIGHT=15
 WIDTH=33
 CHOICE_HEIGHT=8
@@ -23,8 +26,8 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.067"
-         B "Release 1: 5.067"
-         C "Release 2: 5.067"
+         B "Release 2: 5.067"
+         C "Release 1: 5.067"
          D "Beta 5   : 5.067"
          E "Stable P1 : 5.066"
          Z "Exit")
