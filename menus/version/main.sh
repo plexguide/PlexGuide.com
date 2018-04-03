@@ -29,7 +29,7 @@ OPTIONS=(A "Developer: 5.067"
          B "Release 2: 5.067"
          C "Release 1: 5.067"
          D "Beta 5   : 5.067"
-         E "Stable P1 : 5.066"
+         E "Stable P1: 5.066"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
