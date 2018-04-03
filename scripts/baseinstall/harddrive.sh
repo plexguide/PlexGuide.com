@@ -53,14 +53,24 @@ case $CHOICE in
             --yesno "\nPATH: $path - Correct?" 0 0; then
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
         
-        ##### If user forgot to add a / in the beginning, we fix for them
+        ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
         initial="$(echo $path | head -c 1)"
-        echo "$initial"
         if [ "$initial" != "/" ]
           then
                 pathe="$path"
                 path="/$path"
                 dialog --title "PG Error Checking" --msgbox "\nForgot to add a FORWARD SLASH in the beginning!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
+                echo "$path" > /var/plexguide/server.hd.path
+          fi
+      
+        ##### If BONEHEAD added a / at the end, we fix for them  
+        initial="${path: -1}"
+        if [ "$initial" != "/" ]
+          then
+                pathe="$path"
+                path="${a::-1}"
+                path="/$path"
+                dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
                 echo "$path" > /var/plexguide/server.hd.path
           fi
         exit
