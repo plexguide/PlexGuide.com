@@ -57,6 +57,7 @@ case $CHOICE in
         dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
         clear
         initial="$(echo $path | head -c 1)"
+        echo $initial
       else
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh
