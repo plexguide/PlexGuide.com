@@ -57,8 +57,8 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1 
 
-            version=$( cat /var/plexguide/provider )
-            if [ "$version" != "null" ]
+            vers=$( cat /var/plexguide/provider )
+            if [ "$vers" == "null" ]
             then
                 clear 1>/dev/null 2>&1
             else
@@ -90,8 +90,8 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli 1>/dev/null 2>&1
 
-            version=$( cat /var/plexguide/provider )
-            if [ "$version" == "null" ]
+            vers=$( cat /var/plexguide/provider )
+            if [ "$vers" == "null" ]
             then
                 clear 1>/dev/null 2>&1
             else
