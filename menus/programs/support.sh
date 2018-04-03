@@ -88,13 +88,14 @@ case $CHOICE in
             program=tautulli
             port=8181
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli 1>/dev/null 2>&1 ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli 1>/dev/null 2>&1
 
             version=$( cat /var/plexguide/provider )
             if [ "$version" != "null" ]
             then
               --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
             fi
+            ;;
         Z)
             exit 0 ;;
     esac
