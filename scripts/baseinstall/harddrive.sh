@@ -68,7 +68,7 @@ case $CHOICE in
         if [ "$initial" != "/" ]
           then
                 pathe="$path"
-                path="${a::-1}"
+                path="${path%?}
                 path="/$path"
                 dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
                 echo "$path" > /var/plexguide/server.hd.path
