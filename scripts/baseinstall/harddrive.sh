@@ -58,7 +58,7 @@ case $CHOICE in
         initial="$(echo $path | head -c 1)"
         
         echo "$initial"
-        if [ "$version" != "null" ]
+        if [ "$version" != "/" ]
           then
                 echo "WARNING"
           fi
