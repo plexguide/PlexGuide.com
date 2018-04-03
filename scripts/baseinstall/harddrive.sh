@@ -52,18 +52,22 @@ case $CHOICE in
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
             --yesno "\nPATH: $path - Correct?" 0 0; then
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
-        #### Rebuild thing
-        dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
-        clear
-        initial="$(echo $path | head -c 1)"
         
+        ##### If user forgot to add a / in the beginning, we fix for them
+        initial="$(echo $path | head -c 1)"
         echo "$initial"
         if [ "$initial" != "/" ]
           then
+                pathe="$path"
                 path="/$path"
-                echo $path
+                dialog --title "PG Error Checking" --msgbox "\nYour path was: $pathe\n\nYour forgot to add the backslash in the beginning. Your new path is:\n\n$path" 0 0
           fi
         exit
+
+        #### Rebuild thing
+        dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
+
+
 
       else
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
