@@ -43,7 +43,7 @@ case $CHOICE in
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
       echo "yes" > /var/plexguide/server.hd
 
-      dialog --title "Input FULL PATH [EX: /hd2/media or /hd2]" \
+      dialog --title "Input FULL PATH [ EX: /hd2/media or /hd2 ]" \
       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
       --inputbox "Full Path: " 8 50 2>/var/plexguide/server.hd.path
       path=$(cat /var/plexguide/server.hd.path)
@@ -55,6 +55,8 @@ case $CHOICE in
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set! Rebuilding Containers!" 0 0
 
         dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
+        clear
+        initial="$(echo $path | head -c 1)"
       else
         dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh
