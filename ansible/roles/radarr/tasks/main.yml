@@ -35,7 +35,7 @@
 - name: Deploy Radarr Container
   docker_container:
     name: radarr
-    image: linuxserver/radarr
+    image: aront/radarr
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -49,6 +49,7 @@
           - radarr
     volumes:
       - /opt/appdata/radarr:/config
+      - /opt/appdata/radarr/mp4_automator:/config_mp4_automator
       - /mnt/unionfs:/unionfs
       - /mnt/torrentvpn/downloaded:/data/completed
       - /mnt/sab/complete:/complete
@@ -63,3 +64,9 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:radarr.{{domain.stdout}}"
       traefik.port: "7878"
+- name: Install autoProcess.ini
+  template:
+    src: autoProcess.ini
+    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
+    force: yes
+    mode: 0775
