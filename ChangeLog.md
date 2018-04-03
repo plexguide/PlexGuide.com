@@ -26,7 +26,7 @@ https://hemidall does not work with Traefik v2
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.067] (BETA 1-4)
+### [5.067] (BETA 1-5)
 
 #### Added
 - (B5) LazyLibrarian Added - Haven't had much time to test, but deploys; please test out
