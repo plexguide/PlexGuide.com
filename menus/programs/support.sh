@@ -62,8 +62,7 @@ case $CHOICE in
             version=$( cat /var/plexguide/provider )
             if [ "$version" != "null" ]
             then
-              dialog --infobox "Using Traefikv2 & Ombi\n\nAs a result, you can use the following subdomains and domains\nombi.domain.com\nrequests.domain.com\n\request.domain.com\ndomain.com (straight to your domain)" 0 0
-              sleep 5
+              --msgbox "Using Traefikv2 & Ombi\n\nAs a result, you can use the following subdomains and domains\nombi.domain.com\nrequests.domain.com\nrequest.domain.com\ndomain.com (straight to your domain)" 0 0
             fi
             ;;
         C)
@@ -90,6 +89,12 @@ case $CHOICE in
             port=8181
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli 1>/dev/null 2>&1 ;;
+
+            version=$( cat /var/plexguide/provider )
+            if [ "$version" != "null" ]
+            then
+              --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
+            fi
         Z)
             exit 0 ;;
     esac
