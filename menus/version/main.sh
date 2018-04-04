@@ -26,7 +26,7 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection: "
 
 OPTIONS=(A "Developer: 5.067"
-         B:"Beta 6   : 5.067"    
+         B "Beta 6   : 5.067"    
          C "Release 2: 5.067"
          D "Release 1: 5.067"
          E "Beta 5   : 5.067"
@@ -80,7 +80,6 @@ case $CHOICE in
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.067RC2" ;; 
-
         D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.067RC1" ;; 
