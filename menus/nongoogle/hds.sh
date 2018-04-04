@@ -18,19 +18,28 @@
 ######## This is a ONE TIME MENU
 export NCURSES_NO_UTF8_ACS=1
 
-### PUT IF SETUP ALREADY, EXIT
+#### Proof of concept, delete these 4 lines later
+echo "/mnt/test1" > /var/plexguide/hd/hd1
+echo "/mnt/cat/test2" > /var/plexguide/hd/hd2
+echo "/tmp/test3" > /var/plexguide/hd/hd3
+echo "/mnt" > /var/plexguide/hd/hd4
+
+hd1=$( cat /var/plexguide/hd/hd1 )
+hd2=$( cat /var/plexguide/hd/hd2 )
+hd3=$( cat /var/plexguide/hd/hd3 )
+hd4=$( cat /var/plexguide/hd/hd4 )
 
 HEIGHT=11
-WIDTH=55
+WIDTH=60
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Make A Choice - Visit Again In Settings!"
 
-OPTIONS=(A "YES: Second HD Will Be Used! It's READY!"
-         B "YES: Second HD Will Be Used! It's NOT READY"
-         C "NO:  No SECOND HD!"
-         D "MINI FAQ: Why this Question?"
-         Z "Exit")
+OPTIONS=(A "Exit"
+         B "HD1: $hd1"
+         C "HD2: $hd2"
+         D "HD3: $hd3"
+         Z "HD4: $hd4")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -63,24 +72,9 @@ case $CHOICE in
       exit
       ;;
     D)
-      dialog --title "Quick Story" --msgbox "\nPurpose is to keep your downloaded/downloading content to process on a SECONDARY HD.\n\nRunning PLEX and having everything download to one drive can result in slow performace! If you have a second HD, you can use this to help improve your performance (and great for those using SMALL SSD's as their primary drives)." 0 0
-      bash /opt/plexguide/scripts/baseinstall/harddrive.sh
       exit
     ;;
     Z)
-    file="/var/plexguide/base.hd"
-    if [ -e "$file" ]
-        then
-          echo "" 1>/dev/null 2>&1
-        else
-          dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP (EXITED)!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
-          echo "no" > /var/plexguide/server.hd
-          echo "/mnt" > /var/plexguide/server.hd.path
-          #### Rebuild Containers
-          bash /opt/plexguide/scripts/baseinstall/rebuild.sh
-          dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
-          echo "no" > /var/plexguide/base.hd
-    fi
       exit
     ;;
 esac
