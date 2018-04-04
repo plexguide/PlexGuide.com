@@ -67,7 +67,7 @@ do
 		echo "$data" > /opt/appdata/plexguide/data
 		echo "finish flag"
 		rm -r /opt/appdata/plexguide/rclone
-		rclone move --delete-empty-src-dirs --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --no-traverse --checkers=16 --log-file=/opt/appdata/plexguide/rclone --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
+		rclone move --delete-empty-src-dirs --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --checkers=16 --log-file=/opt/appdata/plexguide/rclone --max-size 99G --log-level INFO --stats 5s /mnt/move gdrive:/
 		echo "sleeping for 120 seconds"
 		sleep 120
 		echo "resuming"
