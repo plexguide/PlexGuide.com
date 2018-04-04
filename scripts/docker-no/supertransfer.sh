@@ -88,7 +88,7 @@ rclone_sync() {
 	        *) drive_chunk_size="16M" ;;
 	esac
 
-	rclone move --tpslimit 6 --no-traverse --checkers=16 \
+	rclone move --tpslimit 6 --checkers=16 \
 		--log-file=/opt/appdata/plexguide/rclone \
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
