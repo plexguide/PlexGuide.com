@@ -3,12 +3,16 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.067] (Beta, Release Candiate & DEV)
 
-#### B6
+#### RC3
 - Added 
   - Added ability to use a 2nd HD for PG
   - MP4 Automator added via AllergicToPineapple (Discord)
+  - MP4 Automator permission issue fixed from BETA6
+- Changed
+  - Exit Initial Traefik setup; failing to setup warns user and no TRAEFIK runs (not critical if you accessing via IP or VM)
 - Removed
   - Old Roles
+  - Redudant Traefik Menu
 #### RC2
 - Added 
   - Apache2-utils has been added to preinstaller for htpasswd generation for Treafik (not used for production yet)
