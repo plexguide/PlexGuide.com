@@ -100,7 +100,7 @@ case $CHOICE in
             fi
             ;;
         G)
-            display=SpeedtestServer
+            display=speedtestserver
             program=speedtestserver
             port=8888
             dialog --infobox "Installing: $display" 3 30
