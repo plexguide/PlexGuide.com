@@ -25,7 +25,7 @@
 - name: Create Basic directories for Torrents
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /mnt/torrentvpn
+    - "{{path.stdout}}/torrentvpn"
 
 - name: Create Basic directories for DelugeVPN
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -133,10 +133,10 @@
       LAN_NETWORK: "{{subnet}}"
     volumes:
       - /opt/appdata/vpn/deluge/config:/config
-      - /mnt/torrentvpn/temp:/data/incomplete
-      - /mnt/torrentvpn/downloaded:/data/completed
-      - /mnt/torrentvpn/.torrent:/data/torrents
-      - /mnt/torrentvpn/.watched:/data/watched
+      - "{{path.stdout}}/torrentvpn/temp:/data/incomplete"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/torrentvpn/.torrent:/data/torrents"
+      - "{{path.stdout}}/torrentvpn/.watched:/data/watched"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: unless-stopped
