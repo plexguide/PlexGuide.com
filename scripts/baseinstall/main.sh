@@ -139,6 +139,7 @@ echo "89" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
 sleep 2
 
+##### Traefik Process
 file="/var/plexguide/server.domain"
 if [ -e "$file" ]
     then
@@ -146,6 +147,7 @@ if [ -e "$file" ]
     else
       echo "null" > /var/plexguide/server.domain
       bash /opt/plexguide/scripts/baseinstall/domain.sh
+      touch /var/plexguide/base.domain
 fi
 
 file="/var/plexguide/base.hd"

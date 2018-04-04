@@ -54,6 +54,7 @@ case $CHOICE in
     A)
       bash /opt/plexguide/menus/traefik/provider.sh
       bash /opt/plexguide/menus/traefik/main.sh
+      touch /var/plexguide/base.domain
       exit ;;
     B)
       docker stop traefik 1>/dev/null 2>&1
@@ -71,6 +72,7 @@ case $CHOICE in
       bash /opt/plexguide/menus/traefik/rebuild.sh
       dialog --title "Status" --msgbox "\nLegacy Traefik Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       bash /opt/plexguide/menus/traefik/main.sh
+      touch /var/plexguide/base.domain
       exit ;;
     C)
       bash /opt/plexguide/menus/traefik/domain.sh
@@ -78,7 +80,7 @@ case $CHOICE in
       bash /opt/plexguide/menus/traefik/rebuild.sh
       dialog --title "Status" --msgbox "\nYour Domain is Now Set!" 0 0
       bash /opt/plexguide/menus/traefik/main.sh
-
+      touch /var/plexguide/base.domain
       ;;
     D)
       dialog --title "Mini FAQ: Page 1 of 2" --msgbox "\nVisit traefik.plexguide.com for more detailed info\n\nTraefik v2 is the new version that allows all of your subdomains (unlimited) to receive an SSL CERTIFICATE. This allows you to create custom subdomains, not limited by having a max of 20, and cuts down on the RATE ERRORS. There is some minor work on your end to make this work!" 0 0
@@ -87,6 +89,14 @@ case $CHOICE in
       exit
       ;;
     Z)
+    file="/var/plexguide/base.domain"
+    if [ -e "$file" ]
+        then
+          echo "" 1>/dev/null 2>&1
+        else
+          dialog --title "No Traefik" --msgbox "\nYou Decided to Exit without making any choices!\n\nWarning, No Version of Traefik has Installed! Visit settings to fix anytime!" 0 0
+          touch /var/plexguide/base.domain
+    fi
       exit
       ;;
 esac
