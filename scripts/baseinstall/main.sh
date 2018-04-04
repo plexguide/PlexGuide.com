@@ -157,8 +157,8 @@ if [ -e "$file" ]
       echo "94" | dialog --gauge "Setting Up: 2nd Hard Drive Question" 7 50 0
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
       sleep 2
-      echo "null" > /var/plexguide/base.hd
       bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+      echo "null" > /var/plexguide/base.hd
 fi
 
 echo "99" | dialog --gauge "Donation Question" 7 50 0

@@ -29,7 +29,8 @@ TITLE="Make A Choice - Visit Again In Settings!"
 OPTIONS=(A "YES: Second HD Will Be Used! It's READY!"
          B "YES: Second HD Will Be Used! It's NOT READY"
          C "NO:  No SECOND HD!"
-         D "MINI FAQ: Why this Question?")
+         D "MINI FAQ: Why this Question?"
+         E "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -64,6 +65,21 @@ case $CHOICE in
     D)
       dialog --title "Quick Story" --msgbox "\nThe purpose of this is to seperate your downloaded/downloading content to occur on another HD.\n\nRunning PLEX and having everything download to one drive can result in slow performace! If you have a second HD, you can use this to help improve your performance (and great for those using SMALL SSD's as their primary drives)." 0 0
       bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+      exit
+    ;;
+    E)
+    file="/var/plexguide/base.hd"
+    if [ -e "$file" ]
+        then
+          echo "" 1>/dev/null 2>&1
+        else
+          dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP (EXITED)!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
+          echo "no" > /var/plexguide/server.hd
+          echo "/mnt" > /var/plexguide/server.hd.path
+          #### Rebuild Containers
+          bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+          dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
+    fi
       exit
     ;;
 esac
