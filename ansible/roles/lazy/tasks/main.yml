@@ -40,7 +40,7 @@
       - "{{ports.stdout}}5299:5299"
     volumes:
       - /opt/appdata/lazylibrarian:/config
-      - "{{path.stdout}}":/downloads
+      - "{{path.stdout}}:/downloads"
       - /mnt/unionfs:/books
     cpu_shares: 128
     env:
