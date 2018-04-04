@@ -25,7 +25,7 @@
 
   if dialog --stdout --title "Path Check" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nPATH: $path - Correct?" 0 0; then
+        --yesno "\nPATH: $path\n\nCorrect?" 0 0; then
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nTracking!" 0 0
     
     ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
