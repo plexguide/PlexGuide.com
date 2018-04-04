@@ -30,7 +30,7 @@ OPTIONS=(A "YES: Second HD Will Be Used! It's READY!"
          B "YES: Second HD Will Be Used! It's NOT READY"
          C "NO:  No SECOND HD!"
          D "MINI FAQ: Why this Question?"
-         E "Exit")
+         Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -67,7 +67,7 @@ case $CHOICE in
       bash /opt/plexguide/scripts/baseinstall/harddrive.sh
       exit
     ;;
-    E)
+    Z)
     file="/var/plexguide/base.hd"
     if [ -e "$file" ]
         then
