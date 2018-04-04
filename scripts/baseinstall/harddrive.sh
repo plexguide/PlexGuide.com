@@ -61,25 +61,3 @@ case $CHOICE in
       exit
     ;;
 esac
-
-file="/opt/appdata/$app"
-if [ -e "$file" ]
-    then
-
-        if dialog --stdout --title "Backup User Confirmation" \
-            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup -- $app -- ?" 0 0; then
-            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
-            exit 0
-        else
-            clear
-        fi
-    else
-        dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
-        sudo bash /opt/plexguide/menus/backup-restore/backup.sh
-        exit 0
-fi
-
-
-exit
