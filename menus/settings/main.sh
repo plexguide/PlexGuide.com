@@ -49,23 +49,25 @@ case $CHOICE in
         bash /opt/plexguide/menus/traefik/main.sh
         ;;
     B)
+        bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
+    C)
         bash /opt/plexguide/menus/notifications/main.sh
         echo "Pushover Notifications are Working!" > /tmp/pushover
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
         ;;
-    C)
-        bash /opt/plexguide/menus/ports/main.sh ;;
     D)
-        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+        bash /opt/plexguide/menus/ports/main.sh ;;
     E)
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
+        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
     F)
-        bash /opt/plexguide/menus/transfer/main.sh ;;
+        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     G)
-        bash /opt/plexguide/menus/watchtower/main.sh ;;
+        bash /opt/plexguide/menus/transfer/main.sh ;;
     H)
-        bash /opt/plexguide/menus/migrate/main.sh ;;
+        bash /opt/plexguide/menus/watchtower/main.sh ;;
     I)
+        bash /opt/plexguide/menus/migrate/main.sh ;;
+    J)
         bash /opt/plexguide/menus/themes/main.sh ;;
     Z)
         clear
