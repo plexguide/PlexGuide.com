@@ -32,8 +32,8 @@ OPTIONS=(A "Netdata"
          C "NextCloud"
          D "pyLoad"
          E "Resilio"
-         F "SpeedtestServer"
-         G "Tautulli"
+         F "Tautulli"
+         G "SpeedtestServer"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -85,12 +85,6 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio 1>/dev/null 2>&1 ;;
         F)
-            display=speedtestserver
-            program=speedtestserver
-            port=8223
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1 ;;
-        G)
             display=Tautulli
             program=tautulli
             port=8181
@@ -105,6 +99,12 @@ case $CHOICE in
               --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
             fi
             ;;
+        G)
+            display=SpeedtestServer
+            program=speedtestserver
+            port=8223
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1 ;;
 
         Z)
             exit 0 ;;
