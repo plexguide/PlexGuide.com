@@ -42,7 +42,7 @@
           - pyload
     volumes:
       - /opt/appdata/pyload:/opt/pyload/pyload-config
-      - /mnt/pyload/downloads:/opt/pyload/Downloads
+      - "{{path.stdout}}/pyload/downloads:/opt/pyload/Downloads"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
