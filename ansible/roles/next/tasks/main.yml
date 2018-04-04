@@ -69,6 +69,7 @@
       - "/opt/appdata/nextcloud/data:/data"
       - "/opt/appdata/nextcloud/conf:/config"
       - "/mnt:/mnt"
+      - "{{path.stdout}}:{{path.stdout}}"
     networks:
       - name: plexguide
         aliases:
