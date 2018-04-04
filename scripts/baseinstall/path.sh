@@ -66,7 +66,7 @@
     #### Rebuild Containers
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
-    dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!/n/nWant to check? Use portainer and check the ENVs of certain containers!" 0 0
+    dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!\n\nWant to check? Use PORTAINER and check the ENVs of certain containers!" 0 0
     exit
 
   else
