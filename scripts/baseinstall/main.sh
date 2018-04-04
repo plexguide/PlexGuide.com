@@ -148,6 +148,19 @@ if [ -e "$file" ]
       bash /opt/plexguide/scripts/baseinstall/domain.sh
 fi
 
+file="/var/plexguide/base.hd"
+if [ -e "$file" ]
+    then
+      echo "" 1>/dev/null 2>&1
+    else
+      dialog --title "2nd Harddrive - One Time Message" --msgbox "\nYou will be asked if you want to setup a second harddrive.\n\n Only SETUP if you have your harddrive formatted an labled! If not, you can visit the setting to setup anytime!" 0 0
+      echo "94" | dialog --gauge "Setting Up: 2nd Hard Drive Question" 7 50 0
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
+      sleep 2
+      echo "null" > /var/plexguide/base.hd
+      bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+fi
+
 echo "99" | dialog --gauge "Donation Question" 7 50 0
 sleep 2
 
@@ -158,7 +171,6 @@ sleep 2
     else
         echo "Please Support Us with Any Donations :D" > /tmp/pushover
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
         bash /opt/plexguide/menus/donate/main.sh
     fi
 
