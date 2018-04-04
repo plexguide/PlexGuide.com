@@ -59,6 +59,8 @@
         chmod 0775 "$path"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path does not EXIST! Re-Running Menu!" 0 0
+        bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+        exit
     fi
 
     #### Rebuild thing
