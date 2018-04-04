@@ -21,14 +21,21 @@ domain=$( cat /var/plexguide/server.domain )
 dialog --infobox "Tracked Domain: $domain" 3 46
 sleep 2
 
-version=$( cat /var/plexguide/provider )
-if [ "$version" == "null" ]
-then
-  dialog --infobox "Using Legacy Traefik" 3 28
-  sleep 2
-else
-  dialog --infobox "Using Traefik v2\n\nProvider $version" 3 40
-  sleep 2
+file="/var/plexguide/base.domain"
+if [ -e "$file" ]
+    then
+          version=$( cat /var/plexguide/provider )
+          if [ "$version" == "null" ]
+          then
+            dialog --infobox "Using Legacy Traefik" 3 28
+            sleep 2
+          else
+            dialog --infobox "Using Traefik v2\n\nProvider $version" 3 40
+            sleep 2
+          fi
+    else
+      dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed! Warning, goto http://domains.plexguide.com for Info!" 0 0
+      touch /var/plexguide/base.domain
 fi
 
 HEIGHT=11
