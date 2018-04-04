@@ -26,7 +26,7 @@
   if dialog --stdout --title "Path Check" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nPATH: $path - Correct?" 0 0; then
-    dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Set!" 0 0
+    dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nTracking!" 0 0
     
     ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
     initial="$(echo $path | head -c 1)"
