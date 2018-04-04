@@ -23,7 +23,7 @@
   --inputbox "Full Path: " 8 50 2>/var/plexguide/server.hd.path
   path=$(cat /var/plexguide/server.hd.path)
 
-  if dialog --stdout --title "Path Check" \
+  if dialog --stdout --title "PG Path Builder" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nPATH: $path\n\nCorrect?" 0 0; then
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nTracking!" 0 0
@@ -54,11 +54,11 @@
     file="$path/plexguide"
     if [ -e "$file" ]
       then
-        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path exist! We are going to CHMOD & CHOWN the path for you!" 0 0
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists! We are going to CHMOD & CHOWN the path for you!" 0 0
         chown 1000:1000 "$path"
         chmod 0775 "$path"
       else
-        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path does not EXIST! Re-Running Menu!" 0 0
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         exit
     fi
