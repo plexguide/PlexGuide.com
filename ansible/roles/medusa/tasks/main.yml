@@ -39,8 +39,7 @@
     volumes:
       - /opt/appdata/medusa:/config
       - "{{path.stdout}}/medusa/downloads:/downloads"
-      - "{{path.stdout}}mnt/unionfs/:/tv"
-      - "{{path.stdout}}/mnt:/test"
+      - "/mnt/unionfs/:/tv"
     cpu_shares: 256
     env:
       PUID: 1000
