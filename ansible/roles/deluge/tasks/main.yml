@@ -49,9 +49,9 @@
       traefik.port: "8112"
     volumes:
       - /opt/appdata/deluge:/config
-      - /mnt/deluge/temp:/temp
-      - /mnt/deluge/downloaded:/downloaded
-      - /mnt/deluge/torrent:/torrent
+      - "{{path.stdout}}/deluge/temp:/temp"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/deluge/torrent:/torrent"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
