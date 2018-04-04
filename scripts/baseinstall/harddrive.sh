@@ -21,7 +21,7 @@ export NCURSES_NO_UTF8_ACS=1
 ### PUT IF SETUP ALREADY, EXIT
 
 HEIGHT=11
-WIDTH=50
+WIDTH=60
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Make A Choice - Visit Again In Settings!"
