@@ -18,8 +18,8 @@
 ---
 ############################ Replace Variables
 - name: Register Domain
-  shell: "cat /var/plexguide/server.domain"
-  register: domain
+
+  
   ignore_errors: True
   
 - name: Register Ports
