@@ -63,7 +63,28 @@
         exit
     fi
 
-    #### Rebuild thing
+    #### Rebuild t
+    dialog --title "Very Important" --msgbox "\nWe must rebuild each container occardingly! Please Be Patient!" 0 0
+    docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
+    sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/plex/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/portainer/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/ombi/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/organizr/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/muximux/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/heimdall/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+    sed -i -e "/support/d" /opt/appdata/plexguide/running    1>/dev/null 2>&1
+    while read p; do
+    echo $p > /tmp/program_var
+    app=$( cat /tmp/program_var )
+    dialog --infobox "Reconstructing Your Container: $app" 3 50
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "$app" --skip-tags webtools 1>/dev/null 2>&1
+    #read -n 1 -s -r -p "Press any key to continue "
+    done </opt/appdata/plexguide/running
+
     dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
     exit
 
