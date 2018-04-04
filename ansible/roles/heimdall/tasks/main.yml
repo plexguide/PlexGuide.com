@@ -18,7 +18,7 @@
 ---
 - include_role:
     name: variables
-    
+
 - name: Remove Heimdall Container
   docker_container:
     name: heimdall
@@ -47,5 +47,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:heimdall.{domain.stdout}}"
+      traefik.frontend.rule: "Host:heimdall.{{domain.stdout}}"
       traefik.port: "1111"
