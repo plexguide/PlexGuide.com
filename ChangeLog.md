@@ -1,8 +1,14 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.067] (Release Candiate & DEV)
+### [5.067] (Beta, Release Candiate & DEV)
 
+#### B6
+- Added 
+  - Added ability to use a 2nd HD for PG
+  - MP4 Automator added via AllergicToPineapple (Discord)
+- Removed
+  - Old Roles
 #### RC2
 - Added 
   - Apache2-utils has been added to preinstaller for htpasswd generation for Treafik (not used for production yet)
