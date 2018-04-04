@@ -12,6 +12,7 @@
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: nzbhydra, tags: ['nzbhydra'] }
+  - { role: variables, tags: ['variables'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
   - { role: muximux, tags: ['muximux'] }
   - { role: plexdrive, tags: ['plexdrive'] }
