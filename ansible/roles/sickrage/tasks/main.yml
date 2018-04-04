@@ -40,7 +40,7 @@
     volumes:
       - /opt/appdata/sickrage:/config
       - /opt/appdata/sickrage/scripts:/scripts
-      - "{{path.stdout}}"/sickrage/downloads:/downloads
+      - "{{path.stdout}}/sickrage/downloads:/downloads"
       - /mnt/unionfs/:/tv
     cpu_shares: 256
     env:
