@@ -79,7 +79,9 @@ case $CHOICE in
       program=radarr
       port=7878
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1 ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1
+      chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 ;;
 
     F)
       display=SickRage
@@ -93,7 +95,10 @@ case $CHOICE in
       program=sonarr
       port=8989
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 
+      chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      ;;
 
     H)
       display=LazyLibrarian
