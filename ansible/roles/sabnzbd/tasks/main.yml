@@ -41,10 +41,10 @@
       - "{{ports.stdout}}8080:8080"
     volumes:
       - /opt/appdata/sabnzbd:/config
-      - /mnt/sab/complete:/complete
-      - /mnt/sab/incomplete:/incomplete
-      - /mnt/sab/nzb:/nzb
-      - /mnt/sab/admin:/admin
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/mnt/sab/incomplete:/incomplete"
+      - "{{path.stdout}}/mnt/sab/nzb:/nzb"
+      - "{{path.stdout}}/mnt/sab/admin:/admin"
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     cpu_shares: 256
