@@ -16,18 +16,9 @@
 #
 #################################################################################
 ---
-############################ VARIABLES START
-- name: Register Domain
-
-  
-  ignore_errors: True
-
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-############################ VARIABLES END
-- name: Remove Medusa Container
+- include_role:
+    name: variables
+    
   docker_container:
     name: medusa
     state: absent

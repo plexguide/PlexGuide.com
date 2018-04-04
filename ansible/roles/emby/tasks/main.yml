@@ -16,17 +16,9 @@
 #
 #################################################################################
 ---
-############################ Replace Variables
-- name: Register Domain
-
-  
-  ignore_errors: True
-
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-############################  Replace Variables
+- include_role:
+    name: variables
+    
 - name: Remove Emby Container
   docker_container:
     name: emby

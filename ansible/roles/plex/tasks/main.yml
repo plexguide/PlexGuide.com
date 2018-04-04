@@ -16,17 +16,9 @@
 #
 #################################################################################
 ---
-############################ VARIABLES START
-- name: Register Domain
-
-  
-  ignore_errors: True
-
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-############################ VARIABLES END
+- include_role:
+    name: variables
+    
 - name: Stop and remove any existing container
   docker_container:
     name: plex

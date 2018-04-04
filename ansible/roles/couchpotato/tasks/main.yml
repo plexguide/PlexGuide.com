@@ -16,18 +16,8 @@
 #
 #################################################################################
 ---
-############################ Variables START
-- name: Register Domain
-
-  
-  ignore_errors: True
-
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-############################ Replace END
-
+- include_role:
+    name: variables
 
 - name: Remove couchpotato Container
   docker_container:

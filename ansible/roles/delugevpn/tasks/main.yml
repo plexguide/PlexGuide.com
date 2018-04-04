@@ -16,17 +16,8 @@
 #
 #################################################################################
 ---
-############################ Replace Variables
-- name: Register Domain
-
-  
-  ignore_errors: True
-  
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-############################  Replace Variables
+- include_role:
+    name: variables
 
 ##### Need to make sure to run:-
 ##### /sbin/modprobe iptable_mangle

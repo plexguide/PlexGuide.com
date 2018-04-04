@@ -21,7 +21,6 @@
     name: x2go
     state: absent
 
-
 - name: Deploy x2go Container
   docker_container:
     name: x2go

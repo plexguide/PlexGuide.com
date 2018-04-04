@@ -49,6 +49,7 @@ case $CHOICE in
       echo "/mnt" > /var/plexguide/server.hd.path
       #### Rebuild Containers
       bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+      dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
       exit
       ;;
     C)
@@ -57,6 +58,7 @@ case $CHOICE in
       echo "/mnt" > /var/plexguide/server.hd.path
       #### Rebuild Containers
       bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+      dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
       exit
       ;;
     D)
