@@ -153,7 +153,7 @@ if [ -e "$file" ]
     then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --title "2nd Harddrive - One Time Message" --msgbox "\nYou will be asked if you want to setup a second harddrive.\n\nOnly SETUP if you have your harddrive is formatted and ready to go! If not, you can visit the setting to setup anytime!" 0 0
+      dialog --title "2nd Harddrive - One Time Message" --msgbox "\nYou will be asked if you want to setup a second harddrive.\n\nOnly SETUP if you have your harddrive is formatted and ready to go! If you have one and it's not ready, you can visit the SETTINGS to set this up anytime!" 0 0
       echo "94" | dialog --gauge "Setting Up: 2nd Hard Drive Question" 7 50 0
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
       sleep 2
