@@ -24,14 +24,15 @@ TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
 OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
-         B "Notifications : Enable the Use of Notifications"
-         C "Ports         : Turn On/Off Application Ports"
-         D "Processor     : Enhance Processing Power"
-         E "Kernel Mods   : Enhance Network Throughput"
-         F "SuperSpeeds   : Change Gdrive Transfer Settings"
-         G "WatchTower    : Auto-Update Application Manager"
-         H "Import Media  : Import Existing Media to GDrive "
-         I "App Themes    : Install Dark Theme(s) For Apps "
+         B "Hard Drive 2nd: Use a Second HD for Processing"
+         C "Notifications : Enable the Use of Notifications"
+         D "Ports         : Turn On/Off Application Ports"
+         E "Processor     : Enhance Processing Power"
+         F "Kernel Mods   : Enhance Network Throughput"
+         G "SuperSpeeds   : Change Gdrive Transfer Settings"
+         H "WatchTower    : Auto-Update Application Manager"
+         I "Import Media  : Import Existing Media to GDrive "
+         J "App Themes    : Install Dark Theme(s) For Apps "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
