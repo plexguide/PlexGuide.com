@@ -47,12 +47,16 @@ case $CHOICE in
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
       echo "nr" > /var/plexguide/server.hd
       echo "/mnt" > /var/plexguide/server.hd.path
+      #### Rebuild Containers
+      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
       exit
       ;;
     C)
       dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
       echo "no" > /var/plexguide/server.hd
       echo "/mnt" > /var/plexguide/server.hd.path
+      #### Rebuild Containers
+      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
       exit
       ;;
     D)
