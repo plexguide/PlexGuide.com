@@ -56,10 +56,10 @@
       - /mnt/unionfs/completed:/unionfs-downloads:shared
       - /mnt/unionfs:/unionfs
       - /mnt/unionfs/movies:/movies
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
-      - /mnt/deluge/downloaded:/downloaded
-      - /mnt/torrentvpn/downloaded:/data/completed
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
