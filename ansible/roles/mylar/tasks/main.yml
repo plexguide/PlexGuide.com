@@ -43,9 +43,9 @@
           - mylar
     volumes:
     - /opt/appdata/mylar/:/config
-    - /mnt/rutorrents/downloads/incoming:/downloads
-    - /mnt/torrentvpn/downloaded:/data/completed
-    - /mnt/nzbget/completed:/completed
+    - "{{path.stdout}}/rutorrents/downloads/incoming:/downloads"
+    - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+    - "{{path.stdout}}/nzbget/completed:/completed"
     - /mnt/unionfs:/unionfs
     - /etc/localtime:/etc/localtime:ro
     restart_policy: always

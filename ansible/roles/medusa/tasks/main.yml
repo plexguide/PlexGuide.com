@@ -26,8 +26,8 @@
 - name: Create Medusa Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /mnt/medusa
-    - /mnt/medusa/downloads
+    - "{{path.stdout}}/medusa"
+    - "{{path.stdout}}/medusa/downloads"
 
 - name: Deploy Medusa Container
   docker_container:
@@ -38,9 +38,9 @@
       - "{{ports.stdout}}8081:8081"
     volumes:
       - /opt/appdata/medusa:/config
-      - /mnt/medusa/downloads:/downloads
-      - /mnt/unionfs/:/tv
-      - /mnt:/test
+      - "{{path.stdout}}/medusa/downloads:/downloads"
+      - "{{path.stdout}}mnt/unionfs/:/tv"
+      - "{{path.stdout}}/mnt:/test"
     cpu_shares: 256
     env:
       PUID: 1000

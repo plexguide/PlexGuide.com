@@ -40,7 +40,7 @@
       PGID: "1000"
     volumes:
       - /opt/appdata/rutorrent/:/config
-      - /mnt/rutorrents/:/downloads
+      - "{{path.stdout}}/rutorrents/:/downloads"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always

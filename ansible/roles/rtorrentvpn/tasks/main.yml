@@ -126,10 +126,10 @@
       DEBUG: false
     volumes:
       - /opt/appdata/vpn/rtorrent/config:/config
-      - /mnt/torrentvpn/temp:/data/incomplete
-      - /mnt/torrentvpn/downloaded:/data/completed
-      - /mnt/torrentvpn/.torrent:/torrents
-      - /mnt/torrentvpn/.watched:/data/watched
+      - "{{path.stdout}}/torrentvpn/temp:/data/incomplete"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/mnt/torrentvpn/.torrent:/torrents"
+      - "{{path.stdout}}/torrentvpn/.watched:/data/watched"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: unless-stopped

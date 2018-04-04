@@ -27,8 +27,8 @@
 - name: Create Sickrage Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /mnt/sickrage
-    - /mnt/sickrage/downloads
+    - "{{path.stdout}}/sickrage"
+    - "{{path.stdout}}/sickrage/downloads"
 
 - name: Deploy Sickrage Container
   docker_container:
@@ -40,7 +40,7 @@
     volumes:
       - /opt/appdata/sickrage:/config
       - /opt/appdata/sickrage/scripts:/scripts
-      - /mnt/sickrage/downloads:/downloads
+      - "{{path.stdout}}"/sickrage/downloads:/downloads
       - /mnt/unionfs/:/tv
     cpu_shares: 256
     env:
