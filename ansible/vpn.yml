@@ -3,7 +3,6 @@
 
   vars_files:
     - /opt/appdata/plexguide/var-vpn.yml
-    - /opt/appdata/plexguide/var.yml
 
 ## sudo ansible-playbook /opt/plexguide/ansible/config-vpn.yml # to generate the vpn var file required above
 ## sudo mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs3
