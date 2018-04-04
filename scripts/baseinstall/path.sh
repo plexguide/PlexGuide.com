@@ -63,7 +63,7 @@
         exit
     fi
 
-    #### Rebuild t
+    #### Rebuild Containers
     dialog --title "Very Important" --msgbox "\nWe must rebuild each container occardingly! Please Be Patient!" 0 0
     docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
     sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
@@ -76,7 +76,7 @@
     sed -i -e "/organizr/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
     sed -i -e "/muximux/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
     sed -i -e "/heimdall/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-    sed -i -e "/support/d" /opt/appdata/plexguide/running    1>/dev/null 2>&1
+    sed -i -e "/support/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
     while read p; do
     echo $p > /tmp/program_var
     app=$( cat /tmp/program_var )
