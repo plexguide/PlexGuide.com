@@ -35,7 +35,6 @@ if [ -e "$file" ]
           fi
     else
       dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed! Warning, goto http://domains.plexguide.com for Info!" 0 0
-      touch /var/plexguide/base.domain
 fi
 
 HEIGHT=11
