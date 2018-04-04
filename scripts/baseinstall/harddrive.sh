@@ -56,7 +56,7 @@ case $CHOICE in
       exit
       ;;
     D)
-      dialog --title "NOT READY" --msgbox "\nWill Update the Information" 0 0
+      dialog --title "Quick Story" --msgbox "\nThe purpose of this is to seperate your downloaded/downloading content to occur on another HD.\n\nRunning PLEX and having everything download to one drive can result in slow performace! If you have a second HD, you can use this to help improve your performance (and great for those using SMALL SSD's as their primary drives)." 0 0
       exit
     ;;
 esac
