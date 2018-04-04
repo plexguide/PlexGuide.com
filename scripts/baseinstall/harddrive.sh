@@ -79,6 +79,7 @@ case $CHOICE in
           #### Rebuild Containers
           bash /opt/plexguide/scripts/baseinstall/rebuild.sh
           dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
+          echo "no" > /var/plexguide/base.hd
     fi
       exit
     ;;
