@@ -58,13 +58,12 @@
         chown 1000:1000 "$path"
         chmod 0775 "$path"
       else
-        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path does not EXIST! Re-Running Menu! 0 0"
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThis path does not EXIST! Re-Running Menu!" 0 0
     fi
-
-    exit
 
     #### Rebuild thing
     dialog --title "Path Choice" --msgbox "\nContainers Rebuilt!" 0 0
+    exit
 
   else
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs Not Recorrect. Re-running HD Menu!" 0 0
