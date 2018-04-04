@@ -42,11 +42,11 @@
     volumes:
       - /opt/appdata/lidarr:/config
       - /mnt/unionfs:/unionfs
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
-      - /mnt/rutorrents:/downloads
-      - /mnt/deluge/downloaded:/downloaded
-      - /mnt/torrentvpn/downloaded:/data/completed
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/rutorrents:/downloads"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
