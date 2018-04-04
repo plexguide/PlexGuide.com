@@ -43,7 +43,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/resilio:/config
-      - /mnt:/sync
+      - "{{path.stdout}}:/sync"
     restart_policy: always
     state: started
     labels:

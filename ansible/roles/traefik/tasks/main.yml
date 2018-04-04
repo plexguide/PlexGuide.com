@@ -29,10 +29,9 @@
     - main
 
 #################################### REGISTER VAR START
-
 - name: Register Domain
-
-  
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
   ignore_errors: True
 
 - name: Register E-Mail
@@ -41,7 +40,6 @@
   ignore_errors: True
 
 #################################### REGISTER VAR END
-
 - name: Installing Traefik.Toml
   template:
     src: traefik.toml
@@ -49,7 +47,6 @@
     force: yes
     owner: 1000
     group: 1000
-
 #################################### REPLACE START
 - name: Replace Domain
   replace:
@@ -63,7 +60,6 @@
     regexp: myprovider
     replace: "{{email.stdout}}"
 ############################# REPLACE END
-
 - name: Remove Traefik
   docker_container:
     name: traefik
