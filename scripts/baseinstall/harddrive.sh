@@ -21,14 +21,14 @@ export NCURSES_NO_UTF8_ACS=1
 ### PUT IF SETUP ALREADY, EXIT
 
 HEIGHT=11
-WIDTH=60
+WIDTH=57
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Make A Choice - Visit Again In Settings!"
 
-OPTIONS=(A "YES: A Second HD Will Be Used! It's READY!"
-         B "YES: A Second HD Will Be Used! It's NOT READY"
-         C "NO:  Do Not Have a SECOND HD! Do NOT ASK AGAIN!"
+OPTIONS=(A "YES: Second HD Will Be Used! It's READY!"
+         B "YES: Second HD Will Be Used! It's NOT READY"
+         C "NO:  No SECOND HD!"
          D "MINI FAQ: Why this Question?")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
