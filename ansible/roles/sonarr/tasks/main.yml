@@ -27,7 +27,7 @@
 - name: Deploy Sonarr Container
   docker_container:
     name: sonarr
-    image: linuxserver/sonarr
+    image: aront/sonarr
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -41,6 +41,7 @@
           - sonarr
     volumes:
       - /opt/appdata/sonarr:/config
+      - /opt/appdata/sonarr/mp4_automator:/config_mp4_automator
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
@@ -55,3 +56,9 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:sonarr.{{domain.stdout}}"
       traefik.port: "8989"
+- name: Install autoProcess.ini
+  template:
+    src: autoProcess.ini
+    dest: /opt/appdata/sonarr/mp4_automator/autoProcess.ini
+    force: yes
+    mode: 0775
