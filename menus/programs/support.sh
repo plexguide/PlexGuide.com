@@ -99,7 +99,7 @@ case $CHOICE in
               --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
             fi
             ;;
-        E)
+        G)
             display=SpeedtestServer
             program=speedtestserver
             port=8888
