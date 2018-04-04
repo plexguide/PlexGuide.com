@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_role:
+    name: variables
+
+- name: Remove SpeedtestServer Container
+  docker_container:
+    name: speedtestserver
+    state: absent
+
+- name: Deploy SpeedtestServer Container
+  docker_container:
+    name: speedtestserver
+    image: "adolfintel/speedtest:latest"
+    pull: yes
+    cpu_shares: 512
+    published_ports:
+      - "{{ports.stdout}}8223:80"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - speedtestserver
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:speedtest.{{domain.stdout}},speedtestserver.{{domain.stdout}}"
+      traefik.port: "8223"

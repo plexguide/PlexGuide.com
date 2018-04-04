@@ -33,6 +33,7 @@ OPTIONS=(A "Netdata"
          D "pyLoad"
          E "Resilio"
          F "Tautulli"
+         G "SpeedtestServer"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -55,7 +56,7 @@ case $CHOICE in
             program=ombi
             port=3579
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1 
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1
 
             vers=$( cat /var/plexguide/provider )
             if [ "$vers" == "null" ]
@@ -98,6 +99,12 @@ case $CHOICE in
               --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
             fi
             ;;
+        E)
+            display=SpeedtestServer
+            program=speedtestserver
+            port=8888
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1 ;;
         Z)
             exit 0 ;;
     esac
