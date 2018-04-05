@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "Very Important" --msgbox "\nWe must rebuild certain containers occardingly! Please Be Patient!" 0 0
+dialog --title "Very Important" --msgbox "\nWe must rebuild CERTAIN containers occardingly! Please Be Patient!" 0 0
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
