@@ -30,16 +30,18 @@ display=PLEX
 program=plex
 port=32400
 
+rm -r /tmp/server.check 1>/dev/null 2>&1
+
+dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
+sleep 4
+
+if dialog --stdout --title "PAY ATTENTION!" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
+
     if dialog --stdout --title "PAY ATTENTION!" \
       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
       --yesno "\nDo you require to claim this SERVER for PLEX?\n\nSelect No: IF your PLEX Container is already Claimed & Working" 0 0; then
-
-        dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
-        sleep 4
-
-        if dialog --stdout --title "PAY ATTENTION!" \
-          --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
 
         dialog --title "PLEX CLAIM INFORMATION" \
         --msgbox "\nVisit http://plex.tv/claim and PRESS the [COPY] Button (do not highlight and copy). You have 5 minutes starting NOW! [PRESS ENTER] when you are READY!" 10 50
@@ -50,12 +52,13 @@ port=32400
         plextoken=$(cat /tmp/plextoken)
         dialog --infobox "Token: $plextoken" 3 45
         sleep 2
-        else
-            echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
-        fi
+        touch /tmp/server.check 1>/dev/null 2>&1
     else
        echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
     fi
+else
+    echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
+fi
 
 HEIGHT=10
 WIDTH=40
@@ -85,7 +88,17 @@ case $CHOICE in
 
             dialog --infobox "Installing Plex: Please Wait" 3 45
             touch /tmp/plexsetup
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+
+            file="/tmp/server.check"
+            if [ -e "$file" ]
+            then
+               # user select remote server (which requires claiming operations)
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+            else
+               # user select local server (non-remote which requires to change some things to work!)
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools 1>/dev/null 2>&1
+            fi
+
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
 
@@ -120,18 +133,25 @@ else
    exit
 fi
 
-dialog --title "FOR REMOTE PLEX SERVERS Users!" \
---msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
-echo "Visit http(s)://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+file="/tmp/server.check"
+if [ -e "$file" ]
+then
+  dialog --title "FOR REMOTE PLEX SERVERS Users!" \
+  --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
-dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
+  echo "Visit http(s)://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+  dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
 
-sleep 4
+  echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
+  sleep 4
+else
+   exit
+fi
 
 if dialog --stdout --title "WebTools Question" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -149,3 +169,5 @@ else
 
     sleep 2
 fi
+
+rm -r /tmp/server.check 1>/dev/null 2>&1
