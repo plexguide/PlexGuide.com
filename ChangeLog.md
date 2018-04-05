@@ -3,11 +3,15 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.068] (Beta, Release Candiate & DEV)
 
-#### RC3
+#### BETA 1
 - Added
   - PLEX - Local Servers / Virtual Machines - Plex Would be bugged for this case
     - If you select non-remote server, it will deploy a plex2 container which is on a host network and not exposed; basically works for the house or VM's
-  - Added 4K Radarr / 4K Sonarr from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
+  - 4K Radarr AND 4K Sonarr from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
+    - Radarr4k: radarr4k.domain.com - port 7874
+    - Sonarr4k: sonarr4k.domainn.com - port 8984
+- Changed
+  - Traefik v1 - Updated traefikv1 TOML (you have to rerun traefikv1 again under settings, which is why v2 is better)
 
 -------------------------------------------------------
 ## Past Changes
