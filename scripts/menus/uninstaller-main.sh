@@ -23,7 +23,7 @@ else
      echo ""
      # 1>/dev/null 2>&1
      rm -r /etc/docker
-     apt-get purge docker-ce
+     apt-get purge docker-ce -y
      rm -rf /var/lib/docker
      echo ""
 
