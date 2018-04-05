@@ -36,7 +36,8 @@ OPTIONS=(A "Couchpotato"
          F "Radarr4k"
          G "Sickrage"
          H "Sonarr"
-         I "Lazy Librarian"
+         I "Sonarr4k"
+         J "Lazy Librarian"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -87,7 +88,7 @@ case $CHOICE in
       F)
         display=Radarr4k
         program=radarr4k
-        port=7879
+        port=7874
         dialog --infobox "Installing: $display" 3 30
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
         chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
@@ -110,7 +111,18 @@ case $CHOICE in
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       ;;
 
-    I)
+
+      I)
+        display=Sonarrk
+        program=sonarrk
+        port=8984
+        dialog --infobox "Installing: $display" 3 30
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
+        chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+        chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+        ;;
+
+    J)
       display=LazyLibrarian
       program=lazy
       port=5299
