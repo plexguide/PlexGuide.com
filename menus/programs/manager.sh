@@ -33,9 +33,10 @@ OPTIONS=(A "Couchpotato"
          C "Medusa"
          D "Mylar"
          E "Radarr"
-         F "Sickrage"
-         G "Sonarr"
-         H "Lazy Librarian"
+         F "Radarr4k"
+         G "Sickrage"
+         H "Sonarr"
+         I "Lazy Librarian"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -83,24 +84,33 @@ case $CHOICE in
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 ;;
 
-    F)
+      F)
+        display=Radarr4k
+        program=radarr4k
+        port=7879
+        dialog --infobox "Installing: $display" 3 30
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
+        chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+        chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 ;;
+
+    G)
       display=SickRage
       program=sickrage
       port=8082
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage 1>/dev/null 2>&1 ;;
 
-    G)
+    H)
       display=Sonarr
       program=sonarr
       port=8989
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1 
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       ;;
 
-    H)
+    I)
       display=LazyLibrarian
       program=lazy
       port=5299

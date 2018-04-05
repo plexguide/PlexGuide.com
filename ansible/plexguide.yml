@@ -29,6 +29,7 @@
   - { role: telly, tags: ['telly'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: radarr, tags: ['radarr'] }
+  - { role: radarr4k, tags: ['radarr4k'] }
   - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
   - { role: test, tags: ['test'] }
