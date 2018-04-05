@@ -105,6 +105,11 @@ case $CHOICE in
             port=8223
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1
+
+            echo "$program" > /tmp/program
+            echo "$port" > /tmp/port
+            #### Pushes Out Ending
+            bash /opt/plexguide/menus/programs/ending.sh
             #### recall itself to loop unless user exits
             bash /opt/plexguide/menus/programs/support.sh
             exit 
