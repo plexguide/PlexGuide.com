@@ -3,6 +3,23 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.067] (Beta, Release Candiate & DEV)
 
+#### RC4
+- Added
+  - HTML5 Speed Test Docker Container
+    - Deploy Method #1 via server info > network benchmark > 5) SpeedTEST Server
+    - Deploy Method #2 via PG Program Suite > Supporting > SpeedTEST Server
+    - Treafik V2: Just work as speed.domain.com
+    - Traefik V1: You need to redeploy Traefik again and then speed.domain.com (updated TOML / that's why v2 better)
+    - CREDIT: Added by Migz < Awesome Find
+- Changed
+  - Commented out 8080 for Traefik, must reload so doesn't conflict with SABNZBD
+    - 5.068 will support password protection for certian programs, not ideal to run until then
+- Removed
+  - RClone --no-traverse removed from transfers
+    - Requires redeployment, but not requires, doesn't affect anything
+    - Stop log notificatons about rclone transfers longer being required
+    - CREDIT: allergictopineapple (Discord)
+
 #### RC3
 - Added 
   - Added ability to use a 2nd HD for PG
