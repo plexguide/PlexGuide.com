@@ -83,7 +83,6 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             #### recall itself to loop unless user exits
             bash /opt/plexguide/menus/programs/support.sh
-            exit 
             ;;
         Z)
             exit 0 ;;

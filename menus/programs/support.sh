@@ -100,10 +100,9 @@ case $CHOICE in
             fi
             ;;
         G)
-            display=SpeedTEST Server
             program=speed
             port=8223
-            dialog --infobox "Installing: $display" 3 35
+            dialog --infobox "Installing: SpeedTEST Server" 3 38
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1
 
             echo "$program" > /tmp/program
