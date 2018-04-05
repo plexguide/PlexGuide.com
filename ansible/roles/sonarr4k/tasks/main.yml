@@ -55,7 +55,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:sonarr4k.{{domain.stdout}}"
-      traefik.port: "8984"
+      traefik.port: "8989"
 - name: Install autoProcess.ini
   template:
     src: autoProcess.ini
