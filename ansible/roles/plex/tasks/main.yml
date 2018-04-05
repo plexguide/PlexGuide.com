@@ -44,6 +44,11 @@
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
+- name: Check /dev/dri exists
+  stat:
+    path: "/dev/dri"
+  register: dev_dri
+
 - debug: msg="Your IP Address is {{local_ip.stdout}}"
   when: plex_prefs.stat.exists == False
 
@@ -112,6 +117,7 @@
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
       - "/etc/localtime:/etc/localtime:ro"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
     etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
     cpu_shares: 1024
     restart_policy: always
