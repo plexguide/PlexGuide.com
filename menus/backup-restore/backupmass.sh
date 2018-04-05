@@ -50,7 +50,7 @@ docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
-  dialog --infobox "Backing App: $app" 3 37
+  dialog --infobox "Backing Up App: $app" 3 37
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
 
   echo "$app: Backup Complete" > /tmp/pushover

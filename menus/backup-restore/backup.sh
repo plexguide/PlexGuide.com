@@ -26,7 +26,7 @@ TITLE="Backup Menu"
 MENU="Choose a Program:"
 
 OPTIONS=(1 "CouchPotato"
-         2 "Delguge"
+         2 "Deluge"
          3 "Emby"
          4 "Heimdall"
          5 "HTPCManager"

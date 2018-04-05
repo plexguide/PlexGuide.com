@@ -39,7 +39,7 @@ case $CHOICE in
     "1)")
     clear
     echo 
-    echo "Please Add Another Gdrive. (Name It Whatever You'd Like.)"
+    echo "Please Add Another GDrive. (Name It Whatever You'd Like.)"
     echo
     read -n 1 -s -r -p "Press any key to continue "
     rclone config
@@ -53,12 +53,12 @@ case $CHOICE in
     		systemctl daemon-reload
 	    	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer
     		echo ""
-    		echo "Load Balancing Between $(rclone listremotes | grep -v crypt | wc -l) Gdrives."
+    		echo "Load Balancing Between $(rclone listremotes | grep -v crypt | wc -l) GDrives."
     		echo "MAXIMUM DAILY TRANSFER $(( $(rclone listremotes | grep -v crypt | wc -l) * 750 ))GB."
     		read -n 1 -s -r -p "Press any key to continue "
 	else
 		echo
-		echo "No New Gdrives Were Added."
+		echo "No New GDrives Were Added."
 		echo
     		read -n 1 -s -r -p "Press any key to continue "
 	fi

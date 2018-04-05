@@ -24,7 +24,7 @@ fi
 if [ "$number" -eq "1" ]
 then
 	dialog --title "Startup Message - PlexGuide.com" \
-	--msgbox "\nSee issues with our Wiki Pages? Please comment in the forum and we will udpdate! Once an offical wiki plugin is built, we'll add it!" 10 50
+	--msgbox "\nSee issues with our Wiki Pages? Please comment in the forum and we will update! Once an offical wiki plugin is built, we'll add it!" 10 50
 fi
 
 if [ "$number" -eq "2" ]
@@ -36,7 +36,7 @@ fi
 if [ "$number" -eq "3" ]
 then
    	dialog --title "Startup Message - PlexGuide.com" \
-	--msgbox "\nDid you log into GITHUB and click the STAR in the upper right? Doing so further supports our project and awareness! Even making an account just do so means a-lot to us!" 10 50
+	--msgbox "\nDid you log into GITHUB and click the STAR in the upper right? Doing so further supports our project and awareness! Even making an account just do so means a lot to us!" 10 50
 fi
 
 if [ "$number" -eq "4" ]
@@ -48,7 +48,7 @@ fi
 if [ "$number" -eq "5" ]
 then
    	dialog --title "Startup Message - PlexGuide.com" \
-	--msgbox "\nDevelopment Costs are 100 to 150 a month! Any type of Donation is Appecriated!" 9 50
+	--msgbox "\nDevelopment costs are 100 to 150 a month! Any type of donation is appreciated!" 9 50
 fi
 
 if [ "$number" -eq "6" ]

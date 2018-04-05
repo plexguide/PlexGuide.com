@@ -47,7 +47,7 @@ clear
 
 import_media(){
                 dialog --title "Select Local $1 Directory" \
-                --backtitle "Enter the directory you want migrated to Gdrive." \
+                --backtitle "Enter the directory you want migrated to GDrive." \
                 --dselect ~/ 8 45 2>/opt/appdata/plexguide/migrate
                 migrate=$(cat /opt/appdata/plexguide/migrate)
                 migratesize=$(du -hc $migrate | tail -1 | awk '{print $1}')
@@ -55,7 +55,7 @@ import_media(){
 
                   if dialog --stdout --title "Import $1" \
                     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                    --yesno "\nDo You Want To Transfer $migratesize of $migrate to Gdrive?" 7 34; then
+                    --yesno "\nDo You Want To Transfer $migratesize of $migrate to GDrive?" 7 34; then
                         /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW /mnt/move/$1
                     dialog --msgbox "Notice: Rebooting The Server Will Stop The Transfer.\n\nNeed To Reboot? Just SELECT it again!" 0 0
                   fi
@@ -63,11 +63,11 @@ import_media(){
 
 import_custom(){
                 dialog --title "Select Local Directory" \
-                --backtitle "Enter the local directory you want migrated to Gdrive." \
+                --backtitle "Enter the local directory you want migrated to GDrive." \
                 --dselect ~/ 8 45 2>/opt/appdata/plexguide/migrate
 
-                dialog --title "Select Gdrive Directory" \
-                --backtitle "Enter the Gdrive Directory You Want The Local Data To Be Migrated To. (needs to be in /mnt/move/)" \
+                dialog --title "Select GDrive Directory" \
+                --backtitle "Enter the GDrive Directory You Want The Local Data To Be Migrated To. (needs to be in /mnt/move/)" \
                 --dselect /mnt/move 8 45 2>/opt/appdata/plexguide/migrateto
 
                 migrate=$(cat /opt/appdata/plexguide/migrate)
@@ -77,7 +77,7 @@ import_custom(){
                 ls $migrateto &>/dev/null || mkdir -p $migrateto
                   if dialog --stdout --title "Import $1" \
                     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                    --yesno "\nDo You Want To Transfer $migratesize of $migrate to Gdrive?" 7 34; then
+                    --yesno "\nDo You Want To Transfer $migratesize of $migrate to GDrive?" 7 34; then
                       /usr/bin/unionfs -o cow,allow_other,nonempty $migrate=RW $migrateto
                     dialog --msgbox "Notice: Rebooting The Server Will Stop The Transfer.\n\nNeed To Reboot? Just SELECT it again!" 0 0
                   fi
