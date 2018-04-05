@@ -44,14 +44,14 @@
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
-- debug: msg="Your IP Address is {{local_ip.stdout}}"
-  when: plex_prefs.stat.exists == False
+#- debug: msg="Your IP Address is {{local_ip.stdout}}"
+#  when: plex_prefs.stat.exists == False
 
-- name: "Establishing Plex Token Version"
-  shell: "cat /tmp/plextoken"
-  register: plextoken_var
+#- name: "Establishing Plex Token Version"
+#  shell: "cat /tmp/plextoken"
+#  register: plextoken_var
 
-- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
+#- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
 
 - name: Remove Plex Container
   docker_container:
@@ -76,7 +76,7 @@
 
 - name: Deploy Plex Container
   docker_container:
-    name: plex
+    name: plex2
     image: "plexinc/pms-docker:{{plextag_var.stdout}}"
     pull: yes
     published_ports:
@@ -95,14 +95,11 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plextoken_var.stdout}}"
-      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
-    networks:
-      - name: plexguide
-        aliases:
-          - plex
-    expose:
-      - 32400
+#      PLEX_CLAIM: "{{plextoken_var.stdout}}"
+#      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
+    network_mode: "host"
+#    expose:
+#      - 32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
