@@ -72,7 +72,7 @@ case $CHOICE in
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
-            display=SpeedTEST Server
+            display=SpeedTEST-Server
             program=speed
             port=8223
             dialog --infobox "Installing: $display" 3 40
