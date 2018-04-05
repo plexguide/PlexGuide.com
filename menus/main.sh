@@ -16,14 +16,14 @@
 #
 #################################################################################
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
- 
+
 export NCURSES_NO_UTF8_ACS=1
 clear
 HEIGHT=15
 WIDTH=38
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PlexGuide - Version 5.068 DEV"
+TITLE="PlexGuide - Version 5.068 BETA 1"
 
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
