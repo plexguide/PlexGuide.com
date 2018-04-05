@@ -113,8 +113,8 @@ case $CHOICE in
 
 
       I)
-        display=Sonarrk
-        program=sonarrk
+        display=Sonarr4k
+        program=sonarr4k
         port=8984
         dialog --infobox "Installing: $display" 3 30
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
