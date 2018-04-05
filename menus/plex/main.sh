@@ -55,6 +55,7 @@ if dialog --stdout --title "PAY ATTENTION!" \
         touch /tmp/server.check 1>/dev/null 2>&1
     else
        echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
+       touch /tmp/server.check 1>/dev/null 2>&1
     fi
 else
     echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
