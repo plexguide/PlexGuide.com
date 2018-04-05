@@ -141,5 +141,9 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:rtorrentvpn.## {{domain.stdout}"
-      traefik.port: "3000"
+#      traefik.frontend.rule: "Host:rtorrentvpn.{{domain.stdout}}"
+#      traefik.port: "3000"
+      traefik.flood.port: "3000"
+      traefik.rutorrent.port: "9080"
+      traefik.flood.frontend.rule: "Host:flood.{{domain.stdout}}"
+      traefik.rutorrent.frontend.rule: "Host:rutorrent.{{domain.stdout}}"
