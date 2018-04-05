@@ -33,7 +33,7 @@ OPTIONS=(A "Netdata"
          D "pyLoad"
          E "Resilio"
          F "Tautulli"
-         G "Speedtest Server"
+         G "SpeedTEST Server"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
