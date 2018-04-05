@@ -22,9 +22,14 @@ Historical Documented Changes will be stored as below.
 - Changed
   - Commented out 8080 for Traefik, must reload so doesn't conflict with SABNZBD
     - 5.068 will support password protection for certian programs, not ideal to run until then
+<<<<<<< HEAD
   - Traefik V2
     - Newn functionality to allow the user to access both the rutorrent web interface and the flood  web interface by using different hostnames
     - CREDIT: 
+=======
+  - Improved Uninstaller
+    - CREDIT: allergictopineapple (Discord)
+>>>>>>> 4c1366190d4e7ddf24db9fb305531c41e74d6d5b
 - Removed
   - RClone --no-traverse removed from transfers
     - Requires redeployment, but not requires, doesn't affect anything
