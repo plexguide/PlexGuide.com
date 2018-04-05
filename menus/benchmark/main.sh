@@ -22,7 +22,7 @@ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
 echo $domain
 
-HEIGHT=11
+HEIGHT=12
 WIDTH=45
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
@@ -32,6 +32,7 @@ OPTIONS=(A "System Info and Benchmark - Basic"
          B "System Info and Benchmark - Advanced"
          C "System Info and Benchmark - Custom"
          D "Simple Speed Test"
+         E "SpeedTEST Server (Container)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -69,6 +70,21 @@ case $CHOICE in
             speedtest-cli
             echo ""
             read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        E)
+            display=SpeedTEST Server
+            program=speed
+            port=8223
+            dialog --infobox "Installing: $display" 3 35
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1
+
+            echo "$program" > /tmp/program
+            echo "$port" > /tmp/port
+            #### Pushes Out Ending
+            bash /opt/plexguide/menus/programs/ending.sh
+            #### recall itself to loop unless user exits
+            bash /opt/plexguide/menus/programs/support.sh
+            exit 
             ;;
         Z)
             exit 0 ;;
