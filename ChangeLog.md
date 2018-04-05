@@ -3,6 +3,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.068] (Beta, Release Candiate & DEV)
 
+#### DEV
+- Added
+  - PLEX Role: HW Transcoding by @MBCrop
+  - Lol, spelling fixes (quite a bit) by @kaltec
+
 #### BETA 1
 - Added
   - PLEX - Local Servers / Virtual Machines - Plex Would be bugged for this case
