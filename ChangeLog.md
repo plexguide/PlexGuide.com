@@ -22,7 +22,7 @@ Historical Documented Changes will be stored as below.
 - Changed
   - Commented out 8080 for Traefik, must reload so doesn't conflict with SABNZBD
     - 5.068 will support password protection for certian programs, not ideal to run until then
-<<<<<<< HEAD
+    - Fixed Initial Install Bug for 2nd HD, if created, didn't rebuild containers
   - Traefik V2
     - Newn functionality to allow the user to access both the rutorrent web interface and the flood  web interface by using different hostnames
     - CREDIT: 
