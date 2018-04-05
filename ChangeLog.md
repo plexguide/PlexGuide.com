@@ -38,6 +38,7 @@ Historical Documented Changes will be stored as below.
 - Removed
   - Old Roles
   - Redudant Traefik Menu
+
 #### RC2
 - Added 
   - Apache2-utils has been added to preinstaller for htpasswd generation for Treafik (not used for production yet)
@@ -47,6 +48,7 @@ Historical Documented Changes will be stored as below.
   - Fixed minor mispellings
   - Removed TEST htaccess protection / traefik for netdata (a focus for version 5.068) due using hashes for passwords
   - Fixed BAD MariaDB Container location for NEXTCLOUD was /nexcloud - changed to /nextcloud (still bugged)
+
 #### RC1
 - Added
   - Improved Traefik's menu handling
