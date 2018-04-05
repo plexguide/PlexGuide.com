@@ -22,6 +22,8 @@ Historical Documented Changes will be stored as below.
 - Changed
   - Commented out 8080 for Traefik, must reload so doesn't conflict with SABNZBD
     - 5.068 will support password protection for certian programs, not ideal to run until then
+  - Improved Uninstaller
+    - CREDIT: allergictopineapple (Discord)
 - Removed
   - RClone --no-traverse removed from transfers
     - Requires redeployment, but not requires, doesn't affect anything
