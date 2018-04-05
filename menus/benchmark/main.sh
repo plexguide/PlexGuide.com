@@ -72,10 +72,9 @@ case $CHOICE in
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
-            display=SpeedTEST-Server
             program=speed
             port=8223
-            dialog --infobox "Installing: $display" 3 40
+            dialog --infobox "Installing: SpeedTEST Server" 3 40
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1
 
             echo "$program" > /tmp/program
