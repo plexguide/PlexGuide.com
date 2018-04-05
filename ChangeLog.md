@@ -11,6 +11,8 @@ Historical Documented Changes will be stored as below.
 
 ### [5.067] 
 
+#### Note: Installing from 5.066 & Below will make you Register Your Domain Again (New System); plus for V1 or V2 Traefik
+
 #### Stable - Final Add-Ons
 - Added
   - HTML5 Speed Test Docker Container
@@ -59,7 +61,6 @@ Historical Documented Changes will be stored as below.
 - Added
   - Improved Traefik's menu handling
   - Improved Message for Traefik Regarding Wildcards
-#### Note: Installing from 5.066 & Below will make you Register Your Domain Again (New System); plus for V1 or V2 Traefik
 
 #### BETA 5
 - Added
