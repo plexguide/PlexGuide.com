@@ -1,9 +1,17 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.067] (Beta, Release Candiate & DEV)
+### [5.068] (Beta, Release Candiate & DEV)
 
-#### RC4
+### None So Far
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.067] 
+
+#### Stable - Final Add-Ons
 - Added
   - HTML5 Speed Test Docker Container
     - Deploy Method #1 via server info > network benchmark > 5) SpeedTEST Server
@@ -45,50 +53,53 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Improved Message for Traefik Regarding Wildcards
 #### Note: Installing from 5.066 & Below will make you Register Your Domain Again (New System); plus for V1 or V2 Traefik
 
+#### BETA 5
+- Added
+  - LazyLibrarian Added - Haven't had much time to test, but deploys; please test out
+  - Ombi Deploys To Main Domain Name (Will make optional for B6) TRAEFIKv2 Required
+  - New Variable System for IP tracking and Ports Tracking; gone is the var.yml
+- Changed
+  - Fixed RClone Dummy File Install
+- Removed
+  - The pre.yml is gone, including the var.yml which caused headaches for people at times
+
+#### BETA 4
+- Added
+  - Overhauled Domain Variable Recall / Storage
+  - Added new and overhauled prior Redeployment System after changing Domain Names
+  - Tracking on utilizing PG Traefik V1 & PG Tracking V2
+  - Enhanced Dialog Menus for Better Tracking
+  - With Traefik V2, user can type plexpy.domain.com or tautulli.domain.com
+    - WORKING Domain Providers for V2: CloudFlare, Gandi, GoDaddy, NameCheap
+  - Fixed Docker Install Glitch; rare times it wouldn't install; caused problems if uninstalled and reinstalled
+  - Docker Install Speed up now checking for a specific version, if good; skips so not waiting
+  - Uninstalling PlexGuide no longer causes issues with Docker
+  - Working on wildcard https:// subdomains v2 implementation
+- Changed
+  - Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
+  - Fixed Lazy Librain Role Location
+  - Enhanced Ending Menu
+- Removed
+  - Several https:// redirects
+
+#### BETA 3
+- Added
+  - Midnight Commander Installs via Ansible; no more menu glitches and etc
+  - Docker 18.03 now installs over 17
+
+#### BETA 2
+- Added
+  - Minor Bug Fixes
+
+#### BETA 1
+- Added
+  - Sickrage: Fixed subdomain; now works
+  - Sped up the Base Installer (about 25 percent); forcing more items to install via background
+
 #### Known Issues
-https://hemidall does not work with Traefik v2
+- (Tracking) https://hemidall domain not working via subdomain (reverse proxies)
 - (Tracking) pyload is not working
-- (Tracking) next cloud https:// domain not working, but port access works
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
-
-### [5.067] (BETA 1-5)
-
-#### Added
-- (B5) LazyLibrarian Added - Haven't had much time to test, but deploys; please test out
-- (B5) Ombi Deploys To Main Domain Name (Will make optional for B6) TRAEFIKv2 Required
-- (B5) New Variable System for IP tracking and Ports Tracking; gone is the var.yml
-- (B3) Midnight Commander Installs via Ansible; no more menu glitches and etc
-- (B1) Sickrage: Fixed subdomain; now works
-- (B1) Sped up the Base Installer (about 40 percent); forcing more items to install via background
-- (B3) Docker 18.03 now installs over 17
-- (B4) Fixed Docker Install Glitch; rare times it wouldn't install; caused problems if uninstalled and reinstalled
-- (B4) Docker Install Speed up now checking for a specific version, if good; skips so not waiting
-- (B4) Uninstalling PlexGuide no longer causes issues with Docker
-- (B4)  Working on wildcard https:// subdomains v2 implementation
-  - WORKING Domain Providers for V2: CloudFlare, Gandi, GoDaddy, NameCheap
-- (B4)  Overhauled Domain Variable Recall / Storage
-- (B4)  Added new and overhauled prior Redeployment System after changing Domain Names
-- (B4)  Tracking on utilizing PG Traefik V1 & PG Tracking V2
-- (B4)  Enhanced Dialog Menus for Better Tracking
-- (B4)  With Traefik V2, user can type plexpy.domain.com or tautulli.domain.com
-
-#### Changed
-- (B5) Fixed RClone Dummy File Install
-- (B1) Rclone move now deletes empty directories, you may need to rerun rclone and quit for prior installs
-- (B4) Fixed Lazy Librain Role Location
-- (B4) Enhanced Ending Menu
-
-#### Removed
-- (B4) Several https:// redirects
-- (B5)  The pre.yml is gone, including the var.yml which caused headaches for people at times
-
-#### Known Issues
-- (B4) https://emby subdomain and https://plex subdomain does not work
-- (B4) https://hemidall does not work with Traefik v2
-- (Tracking) pyload is not working
-- (Tracking) next cloud https:// domain not working, but port access works
+- (Tracking) nextcloud bugged
 
 ### [5.066 PL1]
 
