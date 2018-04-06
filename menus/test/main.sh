@@ -19,8 +19,8 @@ export NCURSES_NO_UTF8_ACS=1
 
 #!/bin/bash
 
-MENU_OPTIONS=5
-COUNT=0
+MENU_OPTIONS=
+COUNT=5
 
 for i in `ls`
 do
