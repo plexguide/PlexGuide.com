@@ -22,7 +22,6 @@ dock=${dock::-1}
 echo $dock | head -c 1
 echo $dock > /var/plexguide/status.traefik2
 
-echo $dock 
 dock2=$( cat /var/plexguide/status.traefik2 )
 if [ "$dock2" == "certificate" ]
 then
