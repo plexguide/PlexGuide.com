@@ -17,8 +17,10 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-ls -l /opt/appdata
+#ls -l /opt/appdata
 
 # var=$(df -hT | awk '{print v++,$7}')
-var=$(ls -l /opt/appdata | awk '{5}')
+#locip=`hostname -I | awk '{print $1}'`
+
+var=`ls -l /opt/appdata | awk '{print $5}'`
 dialog --menu "Please choose a mounted Partition" 15 55 5 $var
