@@ -22,10 +22,12 @@ dock=${dock::-1}
 echo $dock | head -c 1
 echo $dock > /var/plexguide/status.traefik2
 
-echo $dock 
-dock2=$( cat /var/plexguide/status.traefik2 )
-if [ "$dock2" == "certificate" ]
-then
-echo "$dock2"
-echo "$bite"
-fi
+######### path to call script
+#bash /opt/plexguide/menus/traefik/rebuild.sh
+
+######### Sample Script for Traefik2
+#dock2=$( cat /var/plexguide/status.traefik2 )
+#if [ "$dock2" == "certificate" ]
+#then
+	#echo "$dock2"
+#fi
