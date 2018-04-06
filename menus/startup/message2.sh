@@ -3,7 +3,7 @@ export NCURSES_NO_UTF8_ACS=1
 
 domain=$( cat /var/plexguide/server.domain )
 hd=$( cat /var/plexguide/server.hd.path )
-hd=$( cat /var/plexguide/server.ip )
+ip=$( cat /var/plexguide/server.ip )
 
 cert2=$( cat /var/plexguide/status.traefik2 )
 if [ "$cert2" == "certificate" ]
