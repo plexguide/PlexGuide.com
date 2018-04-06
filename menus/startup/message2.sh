@@ -4,7 +4,9 @@ export NCURSES_NO_UTF8_ACS=1
 domain=$( cat /var/plexguide/server.domain )
 hd=$( cat /var/plexguide/server.hd.path )
 ip=$( cat /var/plexguide/server.ip )
+
 docker=$( cat /var/plexguide/docker.version )
+docker=${docker::-1} 
 
 cert2=$( cat /var/plexguide/status.traefik2 )
 if [ "$cert2" == "certificate" ]
