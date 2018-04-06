@@ -8,7 +8,7 @@ ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
 docker=${docker::-1} 1>/dev/null 2>&1
 
-cert2=$( cat /var/plexguide/status.traefik2 ) 1>/dev/null 2>&1
+cert2=$( cat /var/plexguide/status.traefik2 )
 if [ "$cert2" == "certificate" ]
 then
 	echo "\nTraefik v2: Certificate is Valid" > /var/plexguide/status.traefik.cert 1>/dev/null 2>&1
