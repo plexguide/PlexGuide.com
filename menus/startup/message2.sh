@@ -8,14 +8,21 @@ ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
 docker=${docker::-1} 1>/dev/null 2>&1
 
-cert2=$( cat /var/plexguide/status.traefik2 ) 1>/dev/null 2>&1
-if [ "$cert2" == "certificate" ]
+provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
+if [ "$provider" == "null" ]
 then
-	echo "\nTraefik v2: Certificate is Valid" > /var/plexguide/status.traefik.cert
+	echo "\nTraefik v1: NOT READY YET" > /var/plexguide/status.traefik.cert
 	cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
 else
-	echo "\nTraefik v2: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
-	cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+	cert2=$( cat /var/plexguide/status.traefik2 ) 1>/dev/null 2>&1
+	if [ "$cert2" == "certificate" ]
+	then
+		echo "\nTraefik v2: Certificate is Valid" > /var/plexguide/status.traefik.cert
+		cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+	else
+		echo "\nTraefik v2: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
+		cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+	fi
 fi
 
 dialog --title "PG Startup Variable Page" --msgbox "\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
