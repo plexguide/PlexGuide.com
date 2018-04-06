@@ -19,7 +19,7 @@ export NCURSES_NO_UTF8_ACS=1
 
 #!/bin/bash
 
-MENU_OPTIONS=5
+MENU_OPTIONS="corn"
 COUNT=5
 
 for i in `ls`
