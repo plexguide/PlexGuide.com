@@ -22,5 +22,5 @@ export NCURSES_NO_UTF8_ACS=1
 # var=$(df -hT | awk '{print v++,$7}')
 #locip=`hostname -I | awk '{print $1}'`
 
-var=`ls -l /opt/appdata | awk '{print v++,$1}'`
+var=`ls -F /opt/appdata | grep / | cut -d'/' -f1 | awk '{print v++,$1}'`
 dialog --menu "Please choose a mounted Partition" 15 55 5 $var
