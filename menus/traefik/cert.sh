@@ -24,7 +24,7 @@ echo $dock > /var/plexguide/status.traefik2
 
 
 dock2=$( cat /var/plexguide/status.traefik2 )
-if [ "$dock2” == “certificate” ]
+if [ "$dock2" == "certificate" ]
 then
 	echo “bite”
 fi
