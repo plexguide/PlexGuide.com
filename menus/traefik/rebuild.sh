@@ -17,8 +17,17 @@
 #################################################################################
 dialog --title "Very Important" --msgbox "\nWe must rebuild each container! Please Be Patient!" 0 0
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
+
 sed -i -e "/traefik/d" /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running
+
+bash /opt/plexguide/menus/traefik/certs2.sh
+dock2=$( cat /var/plexguide/status.traefik2 )
+if [ "$dock2" == "certificate" ]
+then
+	sed -i -e "/traefik2/d" /opt/appdata/plexguide/running
+fi
+
 while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )

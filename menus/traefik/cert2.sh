@@ -23,7 +23,7 @@ echo $dock | head -c 1
 echo $dock > /var/plexguide/status.traefik2
 
 ######### path to call script
-#bash /opt/plexguide/menus/traefik/rebuild.sh
+#bash /opt/plexguide/menus/traefik/cert2.sh
 
 ######### Sample Script for Traefik2
 #dock2=$( cat /var/plexguide/status.traefik2 )
