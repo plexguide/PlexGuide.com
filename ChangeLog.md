@@ -4,7 +4,15 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.068] (Beta, Release Candiate & DEV)
 
 #### DEV
+- None
+
+#### BETA 2
+
 - Added
+  - Startup Variable Page, displays info like IP, download points, if your Treafik Certifcate is valid and etc
+    - Note: If using Traefik v1, will say not ready yet
+  - Added not to rebuild Traefik v2 container based on certain situations IF certificate reports VALID
+    - Note: Not set for Traefik v1
   - delayBeforeCheck for Docker
       - CREDIT: allergictopineapple (Discord)
   - PLEX Role: HW Transcoding by @MBCrop
