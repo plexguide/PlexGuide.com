@@ -21,9 +21,9 @@ skip=no
 ## point to variable file for ipv4 and domain.com
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=37
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
