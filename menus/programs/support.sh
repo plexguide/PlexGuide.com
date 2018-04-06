@@ -63,7 +63,7 @@ case $CHOICE in
             program=ombi4k
             port=3574
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k 1>/dev/null 2>&1;;
         D)
             display=NEXTCloud
             program=nextcloud
