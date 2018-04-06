@@ -19,7 +19,7 @@ export NCURSES_NO_UTF8_ACS=1
 
 #!/bin/bash
 
-MENU_OPTIONS=
+MENU_OPTIONS=5
 COUNT=5
 
 for i in `ls`
@@ -32,5 +32,5 @@ options=(${MENU_OPTIONS})
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 for choice in $choices
 do
-       echo " WHATEVER from HERE"
+      echo " WHATEVER from HERE"
 done
