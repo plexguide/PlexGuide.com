@@ -44,6 +44,21 @@
     path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
+- name: "Get Plex Custom URL"
+  shell: "cat /tmp/plexurl"
+  register: plex_tmpurl
+- debug: msg="Your /tmp/plexurl is {{ plex_tmpurl.stdout }}"
+
+- set_fact:
+      plex_advert_ip: "http://{{local_ip.stdout}}:32400"
+  when: plex_tmpurl.stdout == ""
+
+- set_fact:
+      plex_advert_ip: "{{ plex_tmpurl.stdout }}"
+  when: plex_tmpurl.stdout != ""
+
+- debug: msg="plex_advert_ip is {{plex_advert_ip}}"
+
 - name: Check /dev/dri exists
   stat:
     path: "/dev/dri"
@@ -101,7 +116,7 @@
       PLEX_UID: 1000
       PLEX_GID: 1000
       PLEX_CLAIM: "{{plextoken_var.stdout}}"
-      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
+      ADVERTISE_IP: "{{plex_advert_ip}}"
     networks:
       - name: plexguide
         aliases:
