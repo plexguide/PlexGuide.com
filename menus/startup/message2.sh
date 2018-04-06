@@ -3,6 +3,7 @@ export NCURSES_NO_UTF8_ACS=1
 
 domain=$( cat /var/plexguide/server.domain )
 hd=$( cat /var/plexguide/server.hd.path )
+hd=$( cat /var/plexguide/server.ip )
 
 cert2=$( cat /var/plexguide/status.traefik2 )
 if [ "$cert2" == "certificate" ]
@@ -14,4 +15,4 @@ else
 	cert2=$( cat /var/plexguide/status.traefik.cert )
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\nDomain: $domain$cert2\nDownload Path: $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\nIP: $serverip\nDomain: $domain$cert2\nDownload Path: $hd" 0 0
