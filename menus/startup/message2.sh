@@ -15,4 +15,4 @@ else
 	cert2=$( cat /var/plexguide/status.traefik.cert )
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\nIP: $ip\nDomain: $domain$cert2\nDownload Path: $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\nIP: $ip    \nDomain: $domain$cert2\nDownload Path: $hd" 0 0
