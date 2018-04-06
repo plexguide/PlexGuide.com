@@ -5,6 +5,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### DEV
 - Added
+  - delayBeforeCheck for Docker
+      - CREDIT: allergictopineapple (Discord)
   - PLEX Role: HW Transcoding by @MBCrop
   - Lol, spelling fixes (quite a bit) by @kaltec
 
