@@ -8,7 +8,9 @@ if [ "$cert2" == "certificate" ]
 then
 	echo "\nTraefik v2: Certificate is Valid" > /var/plexguide/status.traefik.cert
 	cert2=$( cat /var/plexguide/status.traefik.cert )
+else
+	echo "\nTraefik v2: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
+	cert2=$( cat /var/plexguide/status.traefik.cert )
 fi
 
 dialog --title "PLEXGUIDE Variable Page" --msgbox "\nDomain: $domain.$cert2" 0 0
-
