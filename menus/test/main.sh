@@ -23,6 +23,4 @@ export NCURSES_NO_UTF8_ACS=1
 #locip=`hostname -I | awk '{print $1}'`
 
 ##### nice, but how do output?
-var=`ls -F /opt/appdata | grep / | cut -d'/' -f1 | awk '{print v++,$1}'`
-dialog --menu "Select a Directory to Uninstall" 15 35 9 $var 
-echo $var
+ls -F /opt/appdata | grep / | cut -d'/' -f1
