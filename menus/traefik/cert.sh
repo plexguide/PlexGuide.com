@@ -16,8 +16,15 @@
 #
 #################################################################################
 docker logs --tail 1 traefik2 2> /var/plexguide/status.traefik2
-dock=$( cat /var/plexguide/status.traefik2)
+dock=$( cat /var/plexguide/status.traefik2 )
 dock=${dock#*responded with a} 
 dock=${dock::-1}
-path=" /$path"
-echo "$dock" > /var/plexguide/status.traefik2
+echo $dock | head -c 1
+echo $dock > /var/plexguide/status.traefik2
+
+
+dock2=$( cat /var/plexguide/status.traefik2 )
+if [ "$dock2” == “certificate” ]
+then
+	echo “bite”
+fi
