@@ -9,7 +9,7 @@ docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
 docker=${docker::-1} 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
-if [ "$provider" == "null" ]
+if [ "$provider" == "nulsl" ]
 then
 	echo "\nTraefik v1: NOT READY YET" > /var/plexguide/status.traefik.cert
 	cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
