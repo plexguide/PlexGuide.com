@@ -28,12 +28,13 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
 OPTIONS=(A "Netdata"
-         B "OMBIv3"
-         C "NextCloud"
-         D "pyLoad"
-         E "Resilio"
-         F "Tautulli"
-         G "SpeedTEST Server"
+         B "Ombi"
+         C "Ombi4k"
+         D "NextCloud"
+         E "pyLoad"
+         F "Resilio"
+         G "Tautulli"
+         H "SpeedTEST Server"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -52,39 +53,36 @@ case $CHOICE in
             skip=yes
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata 1>/dev/null 2>&1;;
         B)
-            display=OMBIv3
+            display=Ombi
             program=ombi
             port=3579
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1
-
-            vers=$( cat /var/plexguide/provider )
-            if [ "$vers" == "null" ]
-            then
-                clear 1>/dev/null 2>&1
-            else
-              --msgbox "Using Traefikv2 & Ombi\n\nAs a result, you can use the following subdomains and domains\nombi.domain.com\nrequests.domain.com\nrequest.domain.com\ndomain.com (straight to your domain)" 0 0
-            fi
-            ;;
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1;;
         C)
+            display=Ombi4K
+            program=ombi4k
+            port=3574
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1;;
+        D)
             display=NEXTCloud
             program=nextcloud
             port=4645
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next 1>/dev/null 2>&1 ;;
-        D)
+        E)
             display=PYLoad
             program=pyload
             port=8000
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad 1>/dev/null 2>&1 ;;
-        E)
+        F)
             display=RESILIO
             program=resilio
             port=8888
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio 1>/dev/null 2>&1 ;;
-        F)
+        G)
             display=Tautulli
             program=tautulli
             port=8181
@@ -99,7 +97,7 @@ case $CHOICE in
               --msgbox "Using Traefikv2 & Tautulli\n\nAs a result, you can use the following subdomains and domains\ntautulli.domain.com\nplexply.domain.com" 0 0
             fi
             ;;
-        G)
+        H)
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
