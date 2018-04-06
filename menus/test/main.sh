@@ -32,5 +32,5 @@ options=(${MENU_OPTIONS})
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 for choice in $choices
 do
-       " WHATEVER from HERE"
+       echo " WHATEVER from HERE"
 done
