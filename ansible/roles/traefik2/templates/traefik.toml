@@ -50,10 +50,11 @@ storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
   [acme.dnsChallenge]
     provider = "myprovider"
+    delayBeforeCheck = 30
 
 [[acme.domains]]
   main = "*.yourdomain.com"
-  delayBeforeCheck = 30
+  
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"

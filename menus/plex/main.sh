@@ -61,6 +61,19 @@ else
     echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
 fi
 
+if dialog --stdout --title "Custom Access URL" \
+       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+       --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN." 0 0; then
+                dialog --title "Input CUSTOM ACCESS URL:" \
+                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                --inputbox "URL?" 8 50 2>/tmp/plexurl
+                plexurl=$(cat /tmp/plexurl)
+                dialog --infobox "URL: $plexurl" 3 45
+                sleep 2
+else
+        echo "default" > /tmp/plexurl 1>/dev/null 2>&1    
+fi
+
 HEIGHT=10
 WIDTH=40
 CHOICE_HEIGHT=4
