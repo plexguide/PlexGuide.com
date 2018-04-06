@@ -107,5 +107,5 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
 
 ## starup Message
 bash /opt/plexguide/scripts/checker/main.sh
-bash /opt/plexguide/menus/startup/message.sh
+bash /opt/plexguide/menus/startup/message2.sh
 bash /opt/plexguide/menus/main.sh
