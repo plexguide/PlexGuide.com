@@ -67,3 +67,4 @@
   - { role: commands, tags: ['commands'] }
   - { role: folders, tags: ['folders'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
+  - { role: airsonic, tags: ['airsonic'] }

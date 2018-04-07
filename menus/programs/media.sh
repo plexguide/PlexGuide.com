@@ -33,6 +33,7 @@ TITLE="Applications - Media Programs"
 OPTIONS=(A "Plex"
          B "Emby"
          C "Ubooquity"
+         D "Airsonic"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -55,7 +56,7 @@ case $CHOICE in
                 clear 1>/dev/null 2>&1
             else
                 bash /opt/plexguide/menus/programs/media.sh
-                exit 
+                exit
             fi
 
             dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
@@ -65,14 +66,21 @@ case $CHOICE in
             port=8096
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby 1>/dev/null 2>&1
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0 ;;
 
         C)
             display=Ubooquity
             program=ubooquity
             port=2202
-            dialog --infobox "Installing: $display" 3 30 
+            dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity 1>/dev/null 2>&1 ;;
+
+        D)  display=Airsonic
+            program=airsonic
+            port=4040
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags airsonic 1>/dev/null 2>&1
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Airsonic! If your Library is super huge, when it's backing up; it will shut down your Airsonic Container and could take several Minutes or Hours!" 0 0 ;;
 
         Z)
             exit 0 ;;
