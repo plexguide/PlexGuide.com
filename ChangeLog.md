@@ -4,8 +4,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.068] (Beta, Release Candiate & DEV)
 
 #### DEV
+- None
+
+#### BETA4
 - Added
   - Added RClone install check for mass restore; warns users - Credit: Migz
+  - Rebuilding Fix - Credit RXWatcher
+  - New info.sh file at root to keep track of upgrading portions of PG (used, but not fully implemented)
 
 #### BETA 3
 - Added
