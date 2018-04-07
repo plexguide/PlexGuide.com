@@ -43,11 +43,21 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/backup-restore/backup.sh ;;
         B)
-            bash /opt/plexguide/menus/backup-restore/restore.sh ;;
+        systemctl is-active --quiet rclone
+        if [ $? -eq 0 ]; then
+          bash /opt/plexguide/menus/backup-restore/restore.sh
+        else
+          echo "rclone service does not exists, please install from menu before running restore!"
+        fi ;;
         C)
             bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
         D)
-            bash /opt/plexguide/menus/backup-restore/restoremass.sh ;;
+        systemctl is-active --quiet rclone
+        if [ $? -eq 0 ]; then
+          bash /opt/plexguide/menus/backup-restore/restoremass.sh
+        else
+          echo "rclone service does not exists, please ensure rclone service running or install it from menu before running restore!"
+        fi ;;
         Z)
             clear
             exit 0
