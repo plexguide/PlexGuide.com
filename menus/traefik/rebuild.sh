@@ -21,7 +21,7 @@ docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 sed -i -e "/traefik/d" /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running
 
-bash /opt/plexguide/menus/traefik/certs2.sh
+bash /opt/plexguide/menus/traefik/cert2.sh
 dock2=$( cat /var/plexguide/status.traefik2 )
 if [ "$dock2" == "certificate" ]
 then
