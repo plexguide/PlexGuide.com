@@ -1,6 +1,6 @@
 {
     "DOCKER_NAME": "plex",
-    "PLEX_DATABASE_PATH": "/opt/plex/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
+    "PLEX_DATABASE_PATH": "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
     "PLEX_EMPTY_TRASH": true,
     "PLEX_EMPTY_TRASH_CONTROL_FILES": [
         "/mnt/unionfs/mounted.bin"
@@ -9,7 +9,7 @@
     "PLEX_EMPTY_TRASH_ZERO_DELETED": false,
     "PLEX_LD_LIBRARY_PATH": "/usr/lib/plexmediaserver",
     "PLEX_LOCAL_URL": "http://plex.{{domain}}",
-    "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
+    "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex Media Scanner",
     "PLEX_SECTION_PATH_MAPPINGS": {
         "1": [
             "/Movies/"
@@ -18,7 +18,7 @@
             "/TV/"
         ]
     },
-    "PLEX_SUPPORT_DIR": "/var/lib/plexmediaserver/Library/Application\\ Support",
+    "PLEX_SUPPORT_DIR": "/opt/appdata/plex/database/Library/Application Support",
     "PLEX_TOKEN": "",
     "PLEX_USER": "plex",
     "PLEX_WAIT_FOR_EXTERNAL_SCANNERS": true,
