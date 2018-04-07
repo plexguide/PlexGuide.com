@@ -97,7 +97,6 @@ rclone_sync() {
 		--drive-upload-cutoff=$drive_upload_cutoff \
 		--drive-chunk-size=$drive_chunk_size \
 		--max-size=$max_size \
-		--delete-empty-src-dirs \
 		$local_dir $1:$remote_dir # function input = gdrive remote name
 	}
 
