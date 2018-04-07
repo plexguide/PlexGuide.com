@@ -12,10 +12,10 @@
     "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
     "PLEX_SECTION_PATH_MAPPINGS": {
         "1": [
-            "/TV/"
+            "/Movies/"
         ],
         "2": [
-            "/Movies/"
+            "/TV/"
         ]
     },
     "PLEX_SUPPORT_DIR": "/var/lib/plexmediaserver/Library/Application\\ Support",
@@ -35,11 +35,11 @@
     "SERVER_PATH_MAPPINGS": {
         "/data/Movies/": [
             "/movies/",
-            "/mnt/unionfs/Media/Movies/"
+            "/mnt/unionfs/Movies/"
         ],
         "/data/TV/": [
             "/tv/",
-            "/mnt/unionfs/Media/TV/"
+            "/mnt/unionfs/TV/"
         ]
     },
     "SERVER_IGNORE_LIST": [
