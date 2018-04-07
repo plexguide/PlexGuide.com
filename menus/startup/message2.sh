@@ -12,7 +12,7 @@ docker=${docker::-1} 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
 echo "\nPG Edition: Google Drive" > /var/plexguide/pg.edition
-editon=$( cat /var/plexguide/pg.dediton ) 1>/dev/null 2>&1
+edition=$( cat /var/plexguide/pg.dediton ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
