@@ -4,7 +4,10 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.068] (Beta, Release Candiate & DEV)
 
 #### DEV
-- None
+- Added
+  - Startup Menu Variable Fixes
+- Changed
+  - Fixed bash error flash before starting up of the program
 
 #### BETA4
 - Added
