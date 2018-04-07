@@ -6,8 +6,12 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - Added
   - Startup Menu Variable Fixes
+  - Added Dupefinder - Credit Danburg (unsure if working / testing required )
+  - AirSonic Added - Credit Migz
+  - Scan fixes/added - Credit Danburg (unsure if working / testing required)
 - Changed
   - Fixed bash error flash before starting up of the program
+  - Removed to del empty folder from rclone, caused problems - Credit MBCorps 
 
 -------------------------------------------------------
 ## Past Changes
