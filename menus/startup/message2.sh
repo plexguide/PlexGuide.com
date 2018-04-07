@@ -11,7 +11,7 @@ docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
 docker=${docker::-1} 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
-echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
+echo "\nPG Edition: Google Drive" > /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
