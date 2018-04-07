@@ -4,7 +4,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.068] (Beta, Release Candiate & DEV)
 
 #### DEV
-- None
+- Added
+  - Added RClone install check for mass restore; warns users - Credit: Migz
 
 #### BETA 3
 - Added
