@@ -26,7 +26,7 @@ domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=10
 WIDTH=38
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - Media Programs"
 
