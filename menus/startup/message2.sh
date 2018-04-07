@@ -12,7 +12,7 @@ hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
-echo "5.068\n" > /var/plexguide/pg.version
+#cat /var/plexguide/pg.version > /var/plexguide/pg.version
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 #### PG Version (Not Working Yet)
