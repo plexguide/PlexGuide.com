@@ -1,6 +1,9 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
+#### Set Fixed Information
+bash /opt/plexguide/info.sh
+
 #### Temp Variables Established To Prevent Crashing - START
 echo "plexguide" > /tmp/pushover
 #### Temp Variables Esablished  To Prevent Crashing - END
