@@ -12,12 +12,12 @@ hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
-echo "PG Version : 5.068\n" > /var/plexguide/pg.edition
-edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
+echo "PG Version : 5.068\n" > /var/plexguide/pg.version
+version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 #### PG Version (Not Working Yet)
-echo "\nPG Edition: Google Drive\n" > /var/plexguide/pg.version
-version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+echo "\nPG Edition: Google Drive\n" > /var/plexguide/pg.edition
+edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
