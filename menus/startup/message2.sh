@@ -17,7 +17,7 @@ edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 #### PG Version (Not Working Yet)
 echo "\nPG Edition: Google Drive\n" > /var/plexguide/pg.version
-version=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
+version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
