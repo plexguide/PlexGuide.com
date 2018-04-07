@@ -15,7 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+#hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+
+version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
 clear
@@ -23,7 +25,7 @@ HEIGHT=15
 WIDTH=38
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PlexGuide - Version 5.068 BETA 3"
+TITLE="PlexGuide - $version"
 
 OPTIONS=(A "Donation Menu"
          B "RClone & PlexDrive"
