@@ -12,7 +12,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Ombi4k from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
     - Ombi4k: ombi4k.domain.com - port 3574 
     - Traefik V1 Users: Have to rerun traefik
-  - PLEX: Input CUSTOM ACCESS URL by lunchingfriar if not using CloudFlare (we need more info on this)
+  - PLEX: Input CUSTOM ACCESS URL by lunchingfriar if not using CloudFlare
+    - Info: https://plexguide.com/threads/beta-3-plexguide-5-068.903/
 - Changed
   - Traefik v2 Users
     - Commented out port 8080, using SAB, must reload Traefik v2 - Fixed by allergictopineapple (Discord)
