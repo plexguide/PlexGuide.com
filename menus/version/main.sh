@@ -25,11 +25,9 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Developer: 5.068"
-         B "Beta 4   : 5.068"
+OPTIONS=(A "Developer: 5.069"
+         B "Stable   : 5.068"
          C "Stable   : 5.067"
-         D "Release 3: 5.067"
-         E "Release 2: 5.067"
          F "Stable P1: 5.066"
          Z "Exit")
 
@@ -76,17 +74,11 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.068beta4" ;;
+            version="5.068" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.067" ;;
         D)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.067RC3" ;;
-        E)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.067RC2" ;;
-        F)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.066p11" ;;
         Z)
