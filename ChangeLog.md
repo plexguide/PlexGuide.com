@@ -25,7 +25,7 @@ Historical Documented Changes will be stored as below.
     - Added info.sh to root to keep track of static variables; mostly for the preinstaller
   - PLEX: Input CUSTOM ACCESS URL by lunchingfriar if not using CloudFlare
     - Info: https://plexguide.com/threads/beta-3-plexguide-5-068.903/
- - Startup Variable Page, displays info like IP, download points, if your Treafik Certifcate is valid and etc
+  - Startup Variable Page, displays info like IP, download points, if your Treafik Certifcate is valid and etc
     - Note: If using Traefik v1, will say not ready yet
   - Added not to rebuild Traefik v2 container based on certain situations IF certificate reports VALID
     - Note: Not set for Traefik v1
