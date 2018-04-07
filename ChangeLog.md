@@ -1,33 +1,28 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.068] (Beta, Release Candiate & DEV)
+### [5.069] (Beta, Release Candiate & DEV)
 
 #### DEV
 - None
 
-#### BETA4
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.068] 7 April 2018
+
 - Added
   - Added RClone install check for mass restore; warns users - Credit: Migz
   - Rebuilding Fix - Credit RXWatcher
   - New info.sh file at root to keep track of upgrading portions of PG (used, but not fully implemented)
-
-#### BETA 3
-- Added
   - Ombi4k from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
     - Ombi4k: ombi4k.domain.com - port 3574 
     - Traefik V1 Users: Have to rerun traefik
     - Added info.sh to root to keep track of static variables; mostly for the preinstaller
   - PLEX: Input CUSTOM ACCESS URL by lunchingfriar if not using CloudFlare
     - Info: https://plexguide.com/threads/beta-3-plexguide-5-068.903/
-- Changed
-  - Traefik v2 Users
-    - Commented out port 8080, using SAB, must reload Traefik v2 - Fixed by allergictopineapple (Discord)
-
-#### BETA 2
-
-- Added
-  - Startup Variable Page, displays info like IP, download points, if your Treafik Certifcate is valid and etc
+ - Startup Variable Page, displays info like IP, download points, if your Treafik Certifcate is valid and etc
     - Note: If using Traefik v1, will say not ready yet
   - Added not to rebuild Traefik v2 container based on certain situations IF certificate reports VALID
     - Note: Not set for Traefik v1
@@ -35,20 +30,16 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
       - CREDIT: allergictopineapple (Discord)
   - PLEX Role: HW Transcoding by @MBCrop
   - Lol, spelling fixes (quite a bit) by @kaltec
-
-#### BETA 1
-- Added
   - PLEX - Local Servers / Virtual Machines - Plex Would be bugged for this case
     - If you select non-remote server, it will deploy a plex2 container which is on a host network and not exposed; basically works for the house or VM's
   - 4K Radarr AND 4K Sonarr from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
     - Radarr4k: radarr4k.domain.com - port 7874
     - Sonarr4k: sonarr4k.domainn.com - port 8984
-- Changed
-  - Traefik v1 - Updated traefikv1 TOML (you have to rerun traefikv1 again under settings, which is why v2 is better)
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
+- Changed
+  - Traefik v2 Users
+    - Commented out port 8080, using SAB, must reload Traefik v2 - Fixed by allergictopineapple (Discord)
+  - Traefik v1 - Updated traefikv1 TOML (you have to rerun traefikv1 again under settings, which is why v2 is better)
 
 ### [5.067] 4 April 2018
 

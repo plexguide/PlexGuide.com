@@ -1,6 +1,8 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
+bash /opt/plexguide/menus/traefik/cert2.sh
+
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 
