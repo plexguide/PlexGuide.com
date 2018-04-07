@@ -5,7 +5,7 @@ WIDTH=28
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PlexDrive - Mounts"
-MENU="Make a Slection:"
+MENU="Make a Selection:"
 
 OPTIONS=(A "PlexDrive"
          B "RClone"
