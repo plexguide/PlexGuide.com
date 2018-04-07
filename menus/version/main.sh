@@ -28,7 +28,7 @@ MENU="Make a Selection:"
 OPTIONS=(A "Developer: 5.069"
          B "Stable   : 5.068"
          C "Stable   : 5.067"
-         F "Stable P1: 5.066"
+         D "Stable P1: 5.066"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
