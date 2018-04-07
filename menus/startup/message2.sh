@@ -3,15 +3,16 @@ export NCURSES_NO_UTF8_ACS=1
 
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
-ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
-
 
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
 docker=${docker::-1} 1>/dev/null 2>&1
 
+hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
+
 #### GDrive or Local Edition (Local Not Working Yet)
-echo "\nPG Edition: Google Drive" > /var/plexguide/pg.edition
+echo "\nPG Edition: Google Drive\n" > /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
