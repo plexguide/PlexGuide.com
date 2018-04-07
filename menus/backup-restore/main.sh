@@ -48,7 +48,6 @@ case $CHOICE in
           bash /opt/plexguide/menus/backup-restore/restore.sh
         else
           dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-          exit 0
         fi ;;
         C)
             bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
@@ -58,10 +57,10 @@ case $CHOICE in
           bash /opt/plexguide/menus/backup-restore/restoremass.sh
         else
           dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-          exit 0
         fi ;;
         Z)
             clear
             exit 0
             ;;
+bash /opt/plexguide/menus/backup-restore/main.sh
 esac
