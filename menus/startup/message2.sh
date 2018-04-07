@@ -16,7 +16,7 @@ ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 #### PG Version (Not Working Yet)
-echo "\nPG Edition: Google Drive\n" > /var/plexguide/pg.edition
+echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
@@ -35,4 +35,4 @@ else
 		cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
 	fi
 fi
-dialog --title "PG Startup Variable Page" --msgbox "$editionPG Version: $version\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition\nPG Version: $version\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
