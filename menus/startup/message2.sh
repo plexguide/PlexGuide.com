@@ -35,4 +35,4 @@ else
 		cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
 	fi
 fi
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition\nPG Version: $version\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition\nPG Version: $version\n\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
