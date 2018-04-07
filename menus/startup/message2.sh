@@ -10,6 +10,10 @@ docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
 docker=${docker::-1} 1>/dev/null 2>&1
 
+#### GDrive or Local Edition (Local Not Working Yet)
+echo "\nPG Edition: Google Drive" > /var/plexguide/pg.edition
+editon=$( cat /var/plexguide/pg.dediton ) 1>/dev/null 2>&1
+
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
 then
@@ -27,4 +31,4 @@ else
 	fi
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd$edition" 0 0
