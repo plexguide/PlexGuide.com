@@ -1,6 +1,6 @@
 {
     "DOCKER_NAME": "plex",
-    "PLEX_DATABASE_PATH": "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases",
+    "PLEX_DATABASE_PATH": "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
     "PLEX_EMPTY_TRASH": true,
     "PLEX_EMPTY_TRASH_CONTROL_FILES": [
         "/mnt/unionfs/mounted.bin"
