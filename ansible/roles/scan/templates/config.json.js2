@@ -33,11 +33,11 @@
     "SERVER_MAX_FILE_CHECKS": 10,
     "SERVER_PASS": "{{plex_autoscan_pass.stdout}}",
     "SERVER_PATH_MAPPINGS": {
-        "/unionfs/Movies/": [
+        "/unionfs/movies/": [
             "/movies/",
             "/mnt/unionfs/movies/"
         ],
-        "/unionfs/TV/": [
+        "/unionfs/tv/": [
             "/tv/",
             "/mnt/unionfs/tv/"
         ]
