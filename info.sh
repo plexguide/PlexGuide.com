@@ -16,5 +16,5 @@
 #
 #################################################################################
 
-echo "5.068 Stable" > /var/plexguide/pg.version
+echo "5.069 DEV" > /var/plexguide/pg.version
 echo "51" > /var/plexguide/pg.preinstall
