@@ -13,11 +13,11 @@ ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
 echo "PG Version : 5.068\n" > /var/plexguide/pg.edition
-version=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
+edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 #### PG Version (Not Working Yet)
 echo "\nPG Edition: Google Drive\n" > /var/plexguide/pg.version
-edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
+version=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
