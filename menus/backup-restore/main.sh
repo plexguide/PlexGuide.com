@@ -47,7 +47,7 @@ case $CHOICE in
         if [ $? -eq 0 ]; then
           bash /opt/plexguide/menus/backup-restore/restore.sh
         else
-          echo "rclone service does not exists, please install from menu before running restore!"
+          dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
         fi ;;
         C)
             bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
@@ -56,7 +56,7 @@ case $CHOICE in
         if [ $? -eq 0 ]; then
           bash /opt/plexguide/menus/backup-restore/restoremass.sh
         else
-          echo "rclone service does not exists, please ensure rclone service running or install it from menu before running restore!"
+          dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
         fi ;;
         Z)
             clear
