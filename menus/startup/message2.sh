@@ -12,7 +12,7 @@ hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
-echo "PG Version: 5.068\n" > /var/plexguide/pg.version
+echo "5.068\n" > /var/plexguide/pg.version
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 #### PG Version (Not Working Yet)
@@ -35,4 +35,4 @@ else
 		cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
 	fi
 fi
-dialog --title "PG Startup Variable Page" --msgbox "$edition$version\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "$edition\nPG Version: $version\nIP:     $ip\nDomain: $domain\n$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
