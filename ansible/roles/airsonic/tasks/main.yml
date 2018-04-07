@@ -38,7 +38,7 @@
     volumes:
       - /opt/appdata/airsonic:/airsonic/data
       - /mnt/unionfs/music:/airsonic/music
-      - /opt/appdata/airsonic/playlists:/airsonic/data/playlists
+      - /opt/appdata/airsonic/playlists:/airsonic/playlists
       - /opt/appdata/airsonic/podcasts:/airsonic/podcasts
       - /etc/localtime:/etc/localtime:ro
     networks:
