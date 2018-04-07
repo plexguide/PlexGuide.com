@@ -160,7 +160,7 @@
   tags:
     - webtools
 
-- name: Create plex_autoscan Logs folder
+- name: Create autoscan Logs folder
   file:
     path: "/opt/appdata/scan/Logs/Plex Media Server"
     state: directory
