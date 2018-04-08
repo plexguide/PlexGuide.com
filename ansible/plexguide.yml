@@ -4,6 +4,7 @@
   roles:
   - { role: deploy, tags: ['deploy'] }
   - { role: backup, tags: ['backup'] }
+  - { role: autodelete, tags: ['autodelete'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: netdata, tags: ['netdata'] }
