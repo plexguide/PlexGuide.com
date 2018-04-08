@@ -48,80 +48,46 @@ case $CHOICE in
       display=Heimdall
       dialog --infobox "Installing: $display" 3 30
       port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall 1>/dev/null 2>&1 ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall 1>/dev/null 2>&1
+      cronskip=no
+      ;;
     B)
       program=htpcmanager
       display=HTPCManager
       dialog --infobox "Installing: $display" 3 30
       port=8085
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager  1>/dev/null 2>&1 ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager  1>/dev/null 2>&1
+      cronskip=no
+      ;;
     C)
       program=muximux
       display=MUXIMUX
       dialog --infobox "Installing: $display" 3 30
       port=8015
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux 1>/dev/null 2>&1;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux 1>/dev/null 2>&1
+      cronskip=no
+      ;;
 
     D)
       program=organizr
       display=Organizr
       dialog --infobox "Installing: $display" 3 30
       port=8020
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr 1>/dev/null 2>&1 ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr 1>/dev/null 2>&1 
+      cronskip=no
+      ;;
     Z)
        exit 0 ;;
 esac
 
     clear
 
-########## Deploy Start
-number=$((1 + RANDOM % 2000))
-echo "$number" > /tmp/number_var
-
-if [ "$skip" == "yes" ]; then
-    clear
+########## Cron Job a Program
+if [ "$cronskip" == "yes" ]; then
+    clear 1>/dev/null 2>&1
 else
-
-    HEIGHT=9
-    WIDTH=42
-    CHOICE_HEIGHT=5
-    BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-    TITLE="Schedule a Backup of --$display --?"
-
-    OPTIONS=(A "Weekly"
-             B "Daily"
-             Z "None")
-
-    CHOICE=$(dialog --backtitle "$BACKTITLE" \
-                    --title "$TITLE" \
-                    --menu "$MENU" \
-                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                    "${OPTIONS[@]}" \
-                    2>&1 >/dev/tty)
-
-    case $CHOICE in
-            A)
-                dialog --infobox "Establishing [Weekly] CronJob" 3 34
-                echo "$program" > /tmp/program_var
-                echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
-                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
-            B)
-                dialog --infobox "Establishing [Daily] CronJob" 3 34
-                echo "$program" > /tmp/program_var
-                echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
-                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
-            Z)
-                dialog --infobox "Removing CronJob (If Exists)" 3 34
-                echo "$program" > /tmp/program_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
-                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
-                clear ;;
-    esac
-fi
+    bash /opt/plexguide/menus/backup/main.sh
+fi 
 
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
