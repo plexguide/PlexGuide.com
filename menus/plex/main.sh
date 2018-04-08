@@ -66,12 +66,12 @@ if dialog --stdout --title "Custom Access URL" \
        --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN." 0 0; then
                 dialog --title "Input CUSTOM ACCESS URL:" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "URL?" 8 50 2>/tmp/plexurl
-                plexurl=$(cat /tmp/plexurl)
-                dialog --infobox "URL: $plexurl" 3 45
+                --inputbox "URL?" 8 70 2>/var/plexguide/plex.url
+                plexurl=$(cat /var/plexguide/plex.url)
+                dialog --infobox "URL: $plexurl" 3 70
                 sleep 2
 else
-        echo "default" > /tmp/plexurl 1>/dev/null 2>&1    
+        echo "default" > /var/plexguide/plex.url 1>/dev/null 2>&1    
 fi
 
 HEIGHT=10
