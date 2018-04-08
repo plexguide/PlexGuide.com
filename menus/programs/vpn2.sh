@@ -50,23 +50,28 @@ case $CHOICE in
      skip=yes
      ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
      echo "Your Variables have now been set."
-     echo ""
+     echo
      read -n 1 -s -r -p "Press any key to continue "
      bash /opt/plexguide/menus/programs/vpn.sh
+     cronskip="yes"
      ;;
 
      B)
      clear
      program=delugevpn
      port=8112
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn ;;
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn 
+     cronskip="yes"
+     ;;
 
      C)
      clear
      program=rtorrentvpn
      port=3000
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn ;;
-
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
+     cronskip="yes"
+     ;;
+     
      D)
      clear
      program=x2go
@@ -85,51 +90,12 @@ esac
 
 clear
 
-########## Deploy Start
-number=$((1 + RANDOM % 2000))
-echo "$number" > /tmp/number_var
-
-if [ "$skip" == "yes" ]; then
-clear
+########## Cron Job a Program
+if [ "$cronskip" == "yes" ]; then
+    clear 1>/dev/null 2>&1
 else
-
-HEIGHT=9
-WIDTH=42
-CHOICE_HEIGHT=5
-BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Schedule a Backup of --$program --?"
-
-OPTIONS=(A "Weekly"
-         B "Daily"
-         Z "None")
-
-CHOICE=$(dialog --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-case $CHOICE in
-        A)
-            clear
-            echo "$program" > /tmp/program_var
-            echo "weekly" > /tmp/time_var
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-            read -n 1 -s -r -p "Press any key to continue "
-            --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
-        B)
-            clear
-            echo "$program" > /tmp/program_var
-            echo "daily" > /tmp/time_var
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy
-            read -n 1 -s -r -p "Press any key to continue "
-            --msgbox "\nBackups of -- $program -- will occur!" 0 0 ;;
-        Z)
-            --msgbox "\nNo Daily Backups will Occur of -- $program --!" 0 0
-            clear ;;
-esac
-fi
+    bash /opt/plexguide/menus/backup/main.sh
+fi 
 
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port

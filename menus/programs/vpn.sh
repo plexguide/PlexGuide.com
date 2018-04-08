@@ -67,15 +67,17 @@ case $CHOICE in
      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn 
      cronskip=no
      ;;
-
      Z)
        exit 0 ;;
 
 esac
 
-clear
-
-
+########## Cron Job a Program
+if [ "$cronskip" == "yes" ]; then
+    clear 1>/dev/null 2>&1
+else
+    bash /opt/plexguide/menus/backup/main.sh
+fi 
 
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
