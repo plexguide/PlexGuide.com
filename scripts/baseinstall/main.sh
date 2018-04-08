@@ -117,20 +117,24 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
 touch /var/plexguide/basics.yes &>/dev/null &
-sleep 2
+sleep 1
 
-echo "78" | dialog --gauge "Installing: Portainer" 7 50 0
+echo "78" | dialog --gauge "Installing: Auto-Delete" 7 50 0
+bash /opt/plexguide/scripts/autodelete/install.sh &>/dev/null &
+sleep 1
+
+echo "81" | dialog --gauge "Installing: Portainer" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
-sleep 2
+sleep 1
 echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 ############################################################ Reboot Startup Container Script
-echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+echo "84" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
-echo "86" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
+echo "87" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
