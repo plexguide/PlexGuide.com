@@ -26,7 +26,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Changed
   - Fixed bash error flash before starting up of the program
   - Removed to del empty folder from rclone, caused problems - Credit MBCorps 
-  - Code Cleanup, added new cronskip function and remove large scripts to a solo one for cron exectuion
+  - Code Cleanup, added new cronskip function and remove large scripts to a solo one for cron exe
 
 -------------------------------------------------------
 ## Past Changes
