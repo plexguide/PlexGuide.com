@@ -48,7 +48,8 @@ case $CHOICE in
       display=Heimdall
       dialog --infobox "Installing: $display" 3 30
       port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall &>/dev/null &
+      sleep 2
       cronskip=no
       ;;
     B)
@@ -56,7 +57,8 @@ case $CHOICE in
       display=HTPCManager
       dialog --infobox "Installing: $display" 3 30
       port=8085
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager  1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager &>/dev/null &
+      sleep 2
       cronskip=no
       ;;
     C)
@@ -64,7 +66,8 @@ case $CHOICE in
       display=MUXIMUX
       dialog --infobox "Installing: $display" 3 30
       port=8015
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux &>/dev/null &
+      sleep 2
       cronskip=no
       ;;
 
@@ -73,7 +76,8 @@ case $CHOICE in
       display=Organizr
       dialog --infobox "Installing: $display" 3 30
       port=8020
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr 1>/dev/null 2>&1 
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr &>/dev/null &
+      sleep 2 
       cronskip=no
       ;;
     Z)
