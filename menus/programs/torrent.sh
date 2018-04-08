@@ -45,6 +45,7 @@ case $CHOICE in
      A)
        display=RUTorrent
        program=rutorrent
+       echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=8999
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent 1>/dev/null 2>&1 ;;
@@ -52,6 +53,7 @@ case $CHOICE in
      B)
        display=Deluge
        program=deluge
+       echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=8112
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge 1>/dev/null 2>&1 ;;
@@ -59,6 +61,7 @@ case $CHOICE in
      C)
        display=Jackett
        program=jackett
+       echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=9117
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett 1>/dev/null 2>&1 ;;
