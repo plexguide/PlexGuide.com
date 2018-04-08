@@ -48,7 +48,8 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent 1>/dev/null 2>&1 
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent &>/dev/null &
+       sleep 2
        cronskip=no
        ;;
 
@@ -58,7 +59,8 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge 1>/dev/null 2>&1 
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge &>/dev/null &
+       sleep 2
        cronskip=no
        ;;
 
@@ -68,7 +70,8 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett 1>/dev/null 2>&1 
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null &
+       sleep 2
        cronskip=no
        ;;
 

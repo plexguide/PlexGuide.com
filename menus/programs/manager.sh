@@ -53,7 +53,8 @@ case $CHOICE in
       program=couchpotato
       port=5050
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato 1>/dev/null 2>&1 
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato &>/dev/null &
+      sleep 2 
       cronskip="no"
       ;;
 
@@ -62,7 +63,8 @@ case $CHOICE in
       program=lidarr
       port=8686
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr &>/dev/null &
+      sleep 2
       cronskip="no"
       ;;
     C)
@@ -70,16 +72,18 @@ case $CHOICE in
       program=medusa
       port=8081
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa &>/dev/null &
       cronskip="no"
+      sleep 2
       ;;
     D)
       display=Mylar
       program=mylar
       port=8090
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar &>/dev/null &
       cronskip="no"
+      sleep 2
       ;;
     E)
       display=Radarr
@@ -91,7 +95,8 @@ case $CHOICE in
       chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       cronskip="no"
       ;;
-      F)
+
+    F)
       display=Radarr4k
       program=radarr4k
       port=7874
@@ -107,8 +112,9 @@ case $CHOICE in
       program=sickrage
       port=8082
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage &>/dev/null &
       cronskip="no"
+      sleep 2
       ;;
     H)
       display=Sonarr
@@ -135,8 +141,9 @@ case $CHOICE in
       program=lazy
       port=5299
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy &>/dev/null &
       cronskip="no"
+      sleep 2
       ;;
     Z)
       exit 0 ;;

@@ -51,7 +51,8 @@ case $CHOICE in
             port=19999
             dialog --infobox "Installing: $display" 3 30
             skip=yes
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata &>/dev/null &
+            sleep 2
             cronskip=yes
             ;;
         B)
@@ -59,7 +60,8 @@ case $CHOICE in
             program=ombi
             port=3579
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
+            sleep 2
             cronskip=no
             ;;
         C)
@@ -67,7 +69,8 @@ case $CHOICE in
             program=ombi4k
             port=3574
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k &>/dev/null &
+            sleep 2
             cronskip=no
             ;;
         D)
@@ -75,7 +78,8 @@ case $CHOICE in
             program=nextcloud
             port=4645
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next 1>/dev/null 2>&1 
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next &>/dev/null &
+            sleep 2 
             cronskip=no
             ;;
         E)
@@ -83,7 +87,8 @@ case $CHOICE in
             program=pyload
             port=8000
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad 1>/dev/null 2>&1 
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad &>/dev/null &
+            sleep 2
             cronskip=no
             ;;
         F)
@@ -91,7 +96,8 @@ case $CHOICE in
             program=resilio
             port=8888
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio 1>/dev/null 2>&1 
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio &>/dev/null &
+            sleep 2
             cronskip=no
             ;;
         G)
@@ -99,14 +105,16 @@ case $CHOICE in
             program=tautulli
             port=8181
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
+            sleep 2
             cronskip=no
             ;;
         H)
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver &>/dev/null &
+            sleep 2
             cronskip=yes
             ;;
         Z)

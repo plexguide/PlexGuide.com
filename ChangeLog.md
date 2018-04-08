@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### BETA 1 - 8 April 2018
 
 - Added
+  - Sped up the Install of Most Applications
   - NZBGET cron job, delete files older than 60 minutes (unprocessed) - Initial Credit: RXWatcher
   - Enhance PreInstaller Check
   - Menu Cleanup for Cronjobs

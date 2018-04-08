@@ -107,10 +107,12 @@ case $CHOICE in
             if [ -e "$file" ]
             then
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools &>/dev/null &
+               sleep 2
             else
                # user select local server (non-remote which requires to change some things to work!)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools 1>/dev/null 2>&1
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools &>/dev/null &
+               sleep 2
             fi
 
             #read -n 1 -s -r -p "Press any key to continue "
