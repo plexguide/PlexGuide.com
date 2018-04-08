@@ -118,10 +118,8 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      cronskip="no"
+      cronskip="yes"
       ;;
-
-
     I)
       display=Sonarr4k
       program=sonarr4k
@@ -132,7 +130,6 @@ case $CHOICE in
       chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       cronskip="no"
       ;;
-
     J)
       display=LazyLibrarian
       program=lazy
