@@ -58,15 +58,16 @@ case $CHOICE in
                 bash /opt/plexguide/menus/programs/media.sh
                 exit
             fi
-
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 ;;
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 
+            cronskip=no
+            ;;
         B)
             display=Emby
             program=emby
             port=8096
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby 1>/dev/null 2>&1
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0 ;;
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
             cronskip=no
             ;;
         C)
@@ -83,8 +84,9 @@ case $CHOICE in
             port=4040
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags airsonic 1>/dev/null 2>&1
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Airsonic! If your Library is super huge, when it's backing up; it will shut down your Airsonic Container and could take several Minutes or Hours!" 0 0 ;;
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Airsonic! If your Library is super huge, when it's backing up; it will shut down your Airsonic Container and could take several Minutes or Hours!" 0 0
             cronskip=no
+            ;;
         Z)
             exit 0 ;;
 esac
