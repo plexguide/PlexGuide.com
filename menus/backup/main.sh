@@ -43,21 +43,25 @@ TITLE="Schedule a Backup of --$display --?"
             A)
                 dialog --infobox "Establishing [Weekly] CronJob" 3 34
                 echo "monthly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy &>/dev/null &
+                sleep 2
                 --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             B)
                 dialog --infobox "Establishing [Daily] CronJob" 3 34
                 echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy &>/dev/null &
+                sleep 2
                 --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             C)
                 dialog --infobox "Establishing [Daily] CronJob" 3 34
                 echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy &>/dev/null &
+                sleep 2
                 --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             Z)
                 dialog --infobox "Removing CronJob (If Exists)" 3 34
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron &>/dev/null &
+                sleep 2
                 --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
                 clear ;;
     esac

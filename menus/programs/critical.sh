@@ -44,7 +44,8 @@ case $CHOICE in
             program=portainer
             port=9000
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
+            sleep 2
             cronskip="yes"
             ;;
         B)
@@ -56,10 +57,6 @@ case $CHOICE in
         Z)
             exit 0 ;;
 esac
-
-########## Deploy Start
-number=$((1 + RANDOM % 2000))
-echo "$number" > /tmp/number_var
 
 ########## Cron Job a Program
 if [ "$cronskip" == "yes" ]; then

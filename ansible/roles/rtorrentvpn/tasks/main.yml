@@ -18,6 +18,11 @@
 ---
 - include_role:
     name: variables
+
+# Import VPN variables in case this was called from the rebuild.sh script
+- name: Import VPN variables
+  include_vars:
+    file: /opt/appdata/plexguide/var-vpn.yml
     
 ##### Need to make sure to run:-
 ##### /sbin/modprobe iptable_mangle
@@ -71,12 +76,21 @@
        "
   register: server
 
-- debug: msg="Using server in {{server.user_input}} "
+# user can't input server when called from rebuild.sh, so we need a default...
+- set_fact: my_server="{{ server.user_input }}"
+  when: server.user_input != ""
+  
+- set_fact: my_server="netherlands"
+  when: server.user_input == ""
+  
+- debug: var=my_server
 
-- name: "Install {{server.user_input}} openvpn file"
+- debug: msg="Using server in {{my_server}} "
+
+- name: "Install {{my_server}} openvpn file"
   template:
-    src: "{{server.user_input}}.ovpn"
-    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
+    src: "{{my_server}}.ovpn"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{my_server}}.ovpn"
     force: yes
 
 ########## Run iptable_mangle command

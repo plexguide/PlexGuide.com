@@ -61,7 +61,7 @@ case $CHOICE in
      program=delugevpn
      port=8112
      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn 
-     cronskip="yes"
+     cronskip="no"
      ;;
 
      C)
@@ -69,7 +69,7 @@ case $CHOICE in
      program=rtorrentvpn
      port=3000
      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
-     cronskip="yes"
+     cronskip="no"
      ;;
      
      D)
