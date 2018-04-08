@@ -53,29 +53,34 @@ case $CHOICE in
       program=couchpotato
       port=5050
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato 1>/dev/null 2>&1 ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato 1>/dev/null 2>&1 
+      cronskip="no"
+      ;;
 
     B)
       display=Lidarr
       program=lidarr
       port=8686
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr 1>/dev/null 2>&1 ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
     C)
       display=MEDUSA
       program=medusa
       port=8081
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa 1>/dev/null 2>&1 ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
     D)
       display=Mylar
       program=mylar
       port=8090
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar 1>/dev/null 2>&1 ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
     E)
       display=Radarr
       program=radarr
@@ -83,24 +88,28 @@ case $CHOICE in
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 ;;
-
+      chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
       F)
-        display=Radarr4k
-        program=radarr4k
-        port=7874
-        dialog --infobox "Installing: $display" 3 30
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
-        chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-        chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 ;;
+      display=Radarr4k
+      program=radarr4k
+      port=7874
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
+      chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
+      cronskip="no"
+      ;;
 
     G)
       display=SickRage
       program=sickrage
       port=8082
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage 1>/dev/null 2>&1 ;;
-
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
     H)
       display=Sonarr
       program=sonarr
@@ -109,76 +118,40 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      cronskip="no"
       ;;
 
 
-      I)
-        display=Sonarr4k
-        program=sonarr4k
-        port=8984
-        dialog --infobox "Installing: $display" 3 30
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
-        chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-        chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-        ;;
+    I)
+      display=Sonarr4k
+      program=sonarr4k
+      port=8984
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
+      chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
 
     J)
       display=LazyLibrarian
       program=lazy
       port=5299
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy 1>/dev/null 2>&1 ;;
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy 1>/dev/null 2>&1
+      cronskip="no"
+      ;;
     Z)
       exit 0 ;;
 esac
     clear
 
-########## Deploy Start
-number=$((1 + RANDOM % 2000))
-echo "$number" > /tmp/number_var
-
-if [ "$skip" == "yes" ]; then
-    clear
+########## Cron Job a Program
+if [ "$cronskip" == "yes" ]; then
+    clear 1>/dev/null 2>&1
 else
-
-    HEIGHT=9
-    WIDTH=42
-    CHOICE_HEIGHT=5
-    BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-    TITLE="Schedule a Backup of --$display --?"
-
-    OPTIONS=(A "Weekly"
-             B "Daily"
-             Z "None")
-
-    CHOICE=$(dialog --backtitle "$BACKTITLE" \
-                    --title "$TITLE" \
-                    --menu "$MENU" \
-                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                    "${OPTIONS[@]}" \
-                    2>&1 >/dev/tty)
-
-    case $CHOICE in
-            A)
-                dialog --infobox "Establishing [Weekly] CronJob" 3 34
-                echo "$program" > /tmp/program_var
-                echo "weekly" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
-                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
-            B)
-                dialog --infobox "Establishing [Daily] CronJob" 3 34
-                echo "$program" > /tmp/program_var
-                echo "daily" > /tmp/time_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy 1>/dev/null 2>&1
-                --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
-            Z)
-                dialog --infobox "Removing CronJob (If Exists)" 3 34
-                echo "$program" > /tmp/program_var
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nocron 1>/dev/null 2>&1
-                --msgbox "\nNo Daily Backups will Occur of -- $display --!" 0 0
-                clear ;;
-    esac
-fi
+    bash /opt/plexguide/menus/backup/main.sh
+fi 
 
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
