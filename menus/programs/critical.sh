@@ -45,7 +45,7 @@ case $CHOICE in
             port=9000
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer 1>/dev/null 2>&1
-            cronskip="yes"
+            cronskip="no"
             ;;
         B)
             bash /opt/plexguide/menus/traefik/main.sh
