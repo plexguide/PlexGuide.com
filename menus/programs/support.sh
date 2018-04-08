@@ -120,7 +120,6 @@ else
     bash /opt/plexguide/menus/backup/main.sh
 fi 
 
-
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
 #### Pushes Out Ending
