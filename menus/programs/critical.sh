@@ -57,10 +57,6 @@ case $CHOICE in
             exit 0 ;;
 esac
 
-########## Deploy Start
-number=$((1 + RANDOM % 2000))
-echo "$number" > /tmp/number_var
-
 ########## Cron Job a Program
 if [ "$cronskip" == "yes" ]; then
     clear 1>/dev/null 2>&1
