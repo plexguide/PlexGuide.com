@@ -16,6 +16,9 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+
+number=$((1 + RANDOM % 2000))
+echo "$number" > /tmp/number_var
 display=$( cat /tmp/program_var )
 
 HEIGHT=10
