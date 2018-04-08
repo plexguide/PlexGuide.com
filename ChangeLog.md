@@ -4,14 +4,29 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.069] (Beta, Release Candiate & DEV)
 
 #### DEV
+- None
+
+#### BETA 1 - 8 April 2018
+
 - Added
+  - Sped up the Install of Most Applications
+  - Sped up cronjob installs
+  - Improved valid certificate detection
+  - Fixed Quick Flash at Startup in regards to certificates
+  - NZBGET cron job, delete files older than 60 minutes (unprocessed) - Initial Credit: RXWatcher
+  - Enhance PreInstaller Check
+  - Menu Cleanup for Cronjobs
+    - stored in one script
+    - has a cronskip tag (some programs don't need cronjob backups)
   - Startup Menu Variable Fixes
-  - Added Dupefinder - Credit Danburg (unsure if working / testing required )
+  - Added Dupefinder - Credit MBCorps (unsure if working / testing required )
   - AirSonic Added - Credit Migz
-  - Scan fixes/added - Credit Danburg (unsure if working / testing required)
+  - Scan fixes/added - Credit MBCorps (unsure if working / testing required)
+  
 - Changed
   - Fixed bash error flash before starting up of the program
   - Removed to del empty folder from rclone, caused problems - Credit MBCorps 
+  - Code Cleanup, added new cronskip function and remove large scripts to a solo one for cron exe
 
 -------------------------------------------------------
 ## Past Changes

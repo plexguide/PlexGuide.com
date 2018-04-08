@@ -78,8 +78,9 @@ else
    bash /opt/plexguide/menus/notifications/main.sh
 fi
 
-file="/var/plexguide/dep52.yes"
-if [ -e "$file" ]
+current=$( cat /var/plexguide/pg.preinstall ) 1>/dev/null 2>&1
+stored=$( cat /var/plexguide/pg.preinstall.stored ) 1>/dev/null 2>&1
+if [ "$current" == "$stored" ]
 then
    touch /var/plexguide/message.no
 else

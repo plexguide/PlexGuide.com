@@ -45,17 +45,17 @@
   register: plex_prefs
 
 - name: "Get Plex Custom URL"
-  shell: "cat /tmp/plexurl"
-  register: plex_tmpurl
-- debug: msg="Your /tmp/plexurl is {{ plex_tmpurl.stdout }}"
+  shell: "cat /var/plexguide/plex.url"
+  register: plex_url
+- debug: msg="Your plex_url is {{ plex_url.stdout }}"
 
 - set_fact:
       plex_advert_ip: "http://{{local_ip.stdout}}:32400"
-  when: plex_tmpurl.stdout == ""
+  when: plex_url.stdout == ""
 
 - set_fact:
-      plex_advert_ip: "{{ plex_tmpurl.stdout }}"
-  when: plex_tmpurl.stdout != ""
+      plex_advert_ip: "{{ plex_url.stdout }}"
+  when: plex_url.stdout != ""
 
 - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
 
