@@ -11,6 +11,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Added
   - Sped up the Install of Most Applications
   - Sped up cronjob installs
+  - Improved valid certificate detection
+  - Fixed Quick Flash at Startup in regards to certificates
   - NZBGET cron job, delete files older than 60 minutes (unprocessed) - Initial Credit: RXWatcher
   - Enhance PreInstaller Check
   - Menu Cleanup for Cronjobs
