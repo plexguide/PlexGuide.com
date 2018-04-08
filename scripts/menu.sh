@@ -80,7 +80,7 @@ fi
 
 current=$( cat /var/plexguide/pg.preinstall ) 1>/dev/null 2>&1
 stored=$( cat /var/plexguide/pg.preinstall.stored ) 1>/dev/null 2>&1
-if [ "$current" -eq "stored" ]
+if [ "$current" == "$stored" ]
 then
    touch /var/plexguide/message.no
 else
