@@ -126,7 +126,7 @@ bash /opt/plexguide/menus/startup/message2.sh
 ## Selects an edition
 
 edition=$( cat /var/plexguide/pg.edition )
-if [ "$editon" == "PG Edition: Google Drive" ]
+if [ "$edition" == "PG Edition: Google Drive" ]
   then
     bash /opt/plexguide/menus/main.sh
   else
