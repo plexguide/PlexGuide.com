@@ -22,9 +22,9 @@
       path: "/etc/systemd/system/drives.service"
     register: drives
 
-  - name: Stop If UNIONFS Service Running
+  - name: Stop If DRIVES Service Running
     systemd: state=stopped name=unionfs
-    when: unionfs.stat.exists
+    when: drives.stat.exists
 
   - name: Main Line
     shell: "cat /var/plexguide/hd/combined"
