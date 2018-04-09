@@ -20,7 +20,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
     - Note: When you run BETA2, you will have to do the preinstall once; afterwards, it should not occur
   - Heimdall works now with the reverse proxy, https://heimdall.domain.com - Credit: desgyz
   - Telly Port Fix - Credit: Migz
-  - Fixed bad nzbget information (never affect plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
+  - Fixed bad nzbget information (never affected plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
 
 #### BETA 1 - 8 April 2018
 
