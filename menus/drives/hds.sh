@@ -53,11 +53,11 @@ case $CHOICE in
     Z)
       exit
       ;;
-    B)
+    A)
       echo "1" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/path.sh
       ;;
-    C)
+    B)
       echo "2" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/path.sh
       ;;
