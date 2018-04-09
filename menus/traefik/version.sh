@@ -23,25 +23,30 @@ then
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
 fi
 ############################## CLOUDFLRARE
+if [ "$version" == "namedotcom" ]
+then
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare,godaddy 1>/dev/null 2>&1
+fi
+############################## CLOUDFLRARE
 if [ "$version" == "cloudflare" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi,namedotcom 1>/dev/null 2>&1
 fi
 
 ############################## GANDI
 if [ "$version" == "gandi" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare,namedotcom 1>/dev/null 2>&1
 fi
 
 ############################## GODADDY
 if [ "$version" == "godaddy" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare,namedotcom 1>/dev/null 2>&1
 fi
 
 ############################## NAMECHEAP
 if [ "$version" == "namecheap" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare,namedotcom 1>/dev/null 2>&1
 fi
