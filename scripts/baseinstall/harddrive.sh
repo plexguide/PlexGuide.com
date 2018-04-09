@@ -41,7 +41,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      bash /opt/plexguide/scripts/baseinstall/path.sh
+      bash /opt/plexguide/menus/drives/path.sh
       exit
       ;;
     B)
