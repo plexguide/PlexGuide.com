@@ -31,7 +31,7 @@ TITLE=" Select a Domain Provider "
 OPTIONS=(A "CloudFlare"
          B "Gandi" 
          C "GoDaddy"
-         D "Name.com (Testing)"
+         D "NAME.com (Testing)"
          E "NameCheap"
          Z "Exit")
 
@@ -99,7 +99,7 @@ case $CHOICE in
       echo "NAMECOM_API_TOKEN" > /tmp/display2
       echo "NAMECOM_SERVER" > /tmp/display3
       echo "namedotcom" > /var/plexguide/provider
-      dialog --infobox "Setting Up Godaddy" 3 45
+      dialog --infobox "Setting Up NAME.com" 3 45
       sleep 1
       docker stop traefik2 1>/dev/null 2>&1
       docker rm traefik2 1>/dev/null 2>&1
