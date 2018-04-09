@@ -58,7 +58,9 @@ case $CHOICE in
             exit 0 ;;
 esac
 
+
 ########## Cron Job a Program
+echo "$program" > /var/program_var
 if [ "$cronskip" == "yes" ]; then
     clear 1>/dev/null 2>&1
 else
