@@ -20,10 +20,6 @@ export NCURSES_NO_UTF8_ACS=1
 
 #### Proof of concept, delete these 4 lines later
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
-#echo "/mnt/test1" > /var/plexguide/hd/hd1
-echo "/mnt/cat/test2" > /var/plexguide/hd/hd2
-echo "/tmp/test3" > /var/plexguide/hd/hd3
-echo "/mnt" > /var/plexguide/hd/hd4
 
 hd1=$( cat /var/plexguide/hd/hd1 )
 hd2=$( cat /var/plexguide/hd/hd2 )
