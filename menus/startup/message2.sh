@@ -24,8 +24,15 @@ edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
 then
-	echo "\nTraefik v1: NOT READY YET" > /var/plexguide/status.traefik.cert
-	cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+	cert1=$( cat /var/plexguide/status.traefik1 ) 1>/dev/null 2>&1
+	if [ "$cert2" == "certificate" ]
+	then
+		echo "\nTraefik v1: Certificate is Valid" > /var/plexguide/status.traefik.cert
+		cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+	else
+		echo "\nTraefik v1: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
+		cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+	fi
 else
 	cert2=$( cat /var/plexguide/status.traefik2 ) 1>/dev/null 2>&1
 	if [ "$cert2" == "certificate" ]
