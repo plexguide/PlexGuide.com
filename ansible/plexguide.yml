@@ -26,6 +26,7 @@
   - { role: ombi4k, tags: ['ombi4k'] }
   - { role: sickrage, tags: ['sickrage'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
+  - { role: drives, tags: ['drives'] }
   - { role: emby, tags: ['emby'] }
   - { role: next, tags: ['next'] }
   - { role: telly, tags: ['telly'] }
