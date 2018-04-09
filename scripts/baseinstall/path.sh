@@ -66,6 +66,7 @@
     ##### Symbolic Link
     #path="/mnt/hd2"
     rm -r /mnt/move 1>/dev/null 2>&1
+    mkdir $path/move 1>/dev/null 2>&1
     ln -s $path/move /mnt
 
     #### Rebuild Containers
