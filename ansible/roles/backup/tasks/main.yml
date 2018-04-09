@@ -26,8 +26,8 @@
   stat:
     path: /opt/appdata/{{program_var.stdout}}
   register: programappdata
-  
-  - name: "Checking if RCLone Encrypted"
+
+- name: "Checking if RCLone Encrypted"
   stat:
     path: /var/plexguide/rclone-en.yes
   register: encrypted
@@ -68,7 +68,7 @@
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: programappdata.stat.exists == True
   when: encrypted.stat.exists == False
-  
+
   - name: Uploading Backup to Google Drive (encrypted)
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gcrypt:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: programappdata.stat.exists == True
