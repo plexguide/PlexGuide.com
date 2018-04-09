@@ -15,32 +15,21 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-######## This is a ONE TIME MENU
 export NCURSES_NO_UTF8_ACS=1
 
-#### Proof of concept, delete these 4 lines later
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
-echo "/mnt/test1" > /var/plexguide/hd/hd1
-echo "/mnt/cat/test2" > /var/plexguide/hd/hd2
-echo "/tmp/test3" > /var/plexguide/hd/hd3
-echo "/mnt" > /var/plexguide/hd/hd4
+#hd1=$( cat /var/plexguide/hd/hd1 )
 
-hd1=$( cat /var/plexguide/hd/hd1 )
-hd2=$( cat /var/plexguide/hd/hd2 )
-hd3=$( cat /var/plexguide/hd/hd3 )
-hd4=$( cat /var/plexguide/hd/hd4 )
-
-HEIGHT=11
-WIDTH=60
-CHOICE_HEIGHT=5
+HEIGHT=9
+WIDTH=54
+CHOICE_HEIGHT=3
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Make A Choice - Visit Again In Settings!"
+TITLE="Set Your Mount Paths!"
 
-OPTIONS=(A "Exit"
-         B "HD1: $hd1"
-         C "HD2: $hd2"
-         D "HD3: $hd3"
-         Z "HD4: $hd4")
+OPTIONS=(A "PlexGuide: Google Drive Edition"
+         B "TESTING  : Local Drives Edition (Not Ready)"
+         C "Mini FAQ"
+         Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -51,31 +40,20 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      bash /opt/plexguide/scripts/baseinstall/path.sh
-      exit
+      echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
+      bash /opt/plexguide/menus/drives/path.sh
       ;;
     B)
-      dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
-      echo "nr" > /var/plexguide/server.hd
-      echo "/mnt" > /var/plexguide/server.hd.path
-      #### Rebuild Containers
-      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
-      dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
-      exit
+      echo "PG Edition: Local Drives" > /var/plexguide/pg.edition
+      bash /opt/plexguide/menus/drives/path.sh
       ;;
     C)
-      dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
-      echo "no" > /var/plexguide/server.hd
-      echo "/mnt" > /var/plexguide/server.hd.path
-      #### Rebuild Containers
-      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
-      dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
-      exit
+      clear 1>/dev/null 2>&1
       ;;
-    D)
-      exit
-    ;;
     Z)
-      exit
-    ;;
+      echo "4" > /tmp/hd.drive
+      bash /opt/plexguide/menus/drives/path.sh
+      ;;
 esac
+
+bash /opt/plexguide/scripts/baseinstall/edition.sh  
