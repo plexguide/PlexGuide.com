@@ -73,7 +73,7 @@ case $CHOICE in
 esac
 
 ########## Cron Job a Program
-echo "$program" > /var/program_var
+echo "$program" > /tmp/program_var
 if [ "$cronskip" == "yes" ]; then
     clear 1>/dev/null 2>&1
 else
