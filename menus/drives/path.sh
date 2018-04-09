@@ -59,7 +59,7 @@
         chmod 0775 "$path"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
-        bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+        bash bash /opt/plexguide/menus/drives/hds.sh
         exit
     fi
 
@@ -71,7 +71,7 @@
 
   else
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs NOT Correct. Re-running HD Menu!" 0 0
-    bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+    bash /opt/plexguide/menus/drives/hds.sh
     exit
   fi
 
