@@ -47,5 +47,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:heimdall.{domain.stdout}}"
+      traefik.frontend.rule: "Host:heimdall.{{domain.stdout}}"
       traefik.port: "80"
