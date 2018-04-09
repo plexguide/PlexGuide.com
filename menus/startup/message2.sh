@@ -25,7 +25,7 @@ provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 if [ "$provider" == "null" ]
 then
 	cert1=$( cat /var/plexguide/status.traefik1 ) 1>/dev/null 2>&1
-	if [ "$cert2" == "certificate" ]
+	if [ "$cert1" == "certificate" ]
 	then
 		echo "\nTraefik v1: Certificate is Valid" > /var/plexguide/status.traefik.cert
 		cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
