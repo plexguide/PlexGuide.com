@@ -32,7 +32,7 @@ port=32400
 
 rm -r /tmp/server.check 1>/dev/null 2>&1
 
-dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
+dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)? If You SAY -NO- and it is, you must repeat this process!" 7 50
 sleep 6
 
 if dialog --stdout --title "PAY ATTENTION!" \
