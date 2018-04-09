@@ -26,11 +26,11 @@ hd2=$( cat /var/plexguide/hd/hd2 )
 hd3=$( cat /var/plexguide/hd/hd3 )
 hd4=$( cat /var/plexguide/hd/hd4 )
 
-HEIGHT=11
+HEIGHT=12
 WIDTH=60
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Make A Choice - Visit Again In Settings!"
+TITLE="Set Your Mount Paths!"
 
 OPTIONS=(Z "Exit"
          Y "Clear All Paths"
@@ -51,7 +51,7 @@ case $CHOICE in
       exit
       ;;
     Y)
-      rm -r /var/plexguide/hd/*
+      rm -r /var/plexguide/hd/* 1>/dev/null 2>&1
       ;;
     A)
       echo "1" > /tmp/hd.drive
