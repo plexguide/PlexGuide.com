@@ -51,7 +51,8 @@ while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
   dialog --infobox "Backing Up App: $app" 3 37
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup 1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup &>/dev/null &
+  sleep 2
 
   echo "$app: Backup Complete" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
