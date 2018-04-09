@@ -22,7 +22,7 @@
 
   dialog --title "SET FULL PATH [ EXAMPLE: /hd2/media or /hd2 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Full Path: " 8 50 2>/var/plexguide/server.hd.path
+  --inputbox "Full Path: " 8 50 2>/var/plexguide/hd/hd$hd
   path=$(cat /var/plexguide/server.hd.path)
 
   if dialog --stdout --title "PG Path Builder" \
@@ -69,6 +69,7 @@
     #bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
     dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!\n\nWant to check? Use PORTAINER and check the ENVs of certain containers!" 0 0
+    
     exit
 
   else
