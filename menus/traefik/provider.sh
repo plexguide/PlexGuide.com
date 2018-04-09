@@ -22,7 +22,7 @@ rm -r /tmp/display3 1>/dev/null 2>&1
 rm -r /tmp/display4 1>/dev/null 2>&1
 dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domains.plexguide.com\n\nBasic information regarding each provider is listed!\n\nIf you forget to create an * wildcard subdomains; your subdomains will not work!" 0 0
 
-HEIGHT=12
+HEIGHT=13
 WIDTH=26
 CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
