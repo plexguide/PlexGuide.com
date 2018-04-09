@@ -71,10 +71,12 @@ case $CHOICE in
       ;;
 esac
 
-dr1="$hd1:"
-dr2="$hd2:"
-dr3="$hd3:"
-dr4="$hd4:"
+###/mnt/move=RW:/mnt/plexdrive=RO
+
+dr1="$hd1=RW:"
+dr2="$hd2=RW:"
+dr3="$hd3=RW:"
+dr4="$hd4=RW:"
 
 echo "$dr1$dr2$dr3$dr4" > /var/plexguide/hd/combined
 bash /opt/plexguide/menus/drives/hds.sh
