@@ -64,7 +64,7 @@
     fi
 
     ##### Symbolic Link
-    sudo ln -s /$path /mnt
+    sudo ln -s /$path /mnt/move
 
     #### Rebuild Containers
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
