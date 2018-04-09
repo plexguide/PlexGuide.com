@@ -31,18 +31,18 @@
     register: drives_var
     ignore_errors: True
 
-#################################### REPLACE START
-  - name: Replace Domain
-    replace:
-      path: /etc/systemd/system/drives.service
-      regexp: replaceme
-      replace: "{{drives_var.stdout}}"
-#################################### REPLACE END
   - name: Install UNIONFS Service
     template:
       src: drives.js2
       dest: /etc/systemd/system/drives.service 
       force: yes
+#################################### REPLACE START
+  - name: Replace Drives Line
+    replace:
+      path: /etc/systemd/system/drives.service
+      regexp: replaceme
+      replace: "{{drives_var.stdout}}"
+#################################### REPLACE END
 
   - name: Daemon-Reload
     systemd: state=stopped name=drives daemon_reload=yes enabled=no
