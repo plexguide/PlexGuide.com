@@ -57,6 +57,7 @@
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists! We are going to CHMOD & CHOWN the path for you!" 0 0
         chown 1000:1000 "$path"
         chmod 0775 "$path"
+        rm -r "$path/plexguide"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh
@@ -65,9 +66,9 @@
 
     ##### Symbolic Link
     #path="/mnt/hd2"
-    rm -r /mnt/move 1>/dev/null 2>&1
-    mkdir $path/move 1>/dev/null 2>&1
-    ln -s $path/move /mnt
+    rm -r "/mnt/move" 1>/dev/null 2>&1
+    mkdir "$path/move" 1>/dev/null 2>&1
+    ln -s "$path/move" /mnt
 
     #### Rebuild Containers
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
