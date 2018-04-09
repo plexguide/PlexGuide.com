@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+  hd=$( cat /tmp/hd.drive )
+
   dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
   echo "yes" > /var/plexguide/server.hd
 
@@ -35,7 +37,7 @@
             pathe="$path"
             path="/$path"
             dialog --title "PG Error Checking" --msgbox "\nForgot to add a FORWARD SLASH in the beginning!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
-            echo "$path" > /var/plexguide/server.hd.path
+            echo "$path" > "/var/plexguide/hd/hd$hd"
       fi
   
     ##### If BONEHEAD added a / at the end, we fix for them  
@@ -45,7 +47,7 @@
             pathe="$path"
             path=${path::-1} 
             dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
-            echo "$path" > /var/plexguide/server.hd.path
+            echo "$path" > "/var/plexguide/hd/hd$hd"
       fi
 
     ##### READ / WRITE CHECK
@@ -59,7 +61,7 @@
         chmod 0775 "$path"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
-        bash bash /opt/plexguide/menus/drives/hds.sh
+        bash /opt/plexguide/menus/drives/hds.sh
         exit
     fi
 
