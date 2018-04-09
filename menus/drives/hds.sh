@@ -83,4 +83,4 @@ combined=${combined::-1}
 echo "$combined" > /var/plexguide/hd/combined
 bash /opt/plexguide/menus/drives/hds.sh
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
+#ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
