@@ -71,7 +71,7 @@ if dialog --stdout --title "Custom Access URL" \
                 dialog --infobox "URL: $plexurl" 3 70
                 sleep 2
 else
-        echo "default" > /var/plexguide/plex.url 1>/dev/null 2>&1    
+        echo "default" > /var/plexguide/plex.url 1>/dev/null 2>&1
 fi
 
 HEIGHT=10
@@ -125,13 +125,25 @@ case $CHOICE in
                 dialog --title "Input >> Tag Version" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/tmp/plextag
-                plexgtag=$(cat /tmp/plextag)
+                plextag=$(cat /tmp/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 2
 
             dialog --infobox "Installing Plex: Please Wait" 3 45
             touch /tmp/plexsetup
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 1>/dev/null 2>&1
+
+            file="/tmp/server.check"
+            if [ -e "$file" ]
+            then
+               # user select remote server (which requires claiming operations)
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools &>/dev/null &
+               sleep 2
+            else
+               # user select local server (non-remote which requires to change some things to work!)
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools &>/dev/null &
+               sleep 2
+            fi
+
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
         Z)

@@ -61,6 +61,7 @@
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: pyload, tags: ['pyload'] }
   - { role: clean, tags: ['clean'] }
+  - { role: clean-encrypt, tags: ['clean-encrypt'] }
   - { role: network_tuning, tags: ['network_tuning'] }
   - { role: localstorage, tags: ['localstorage'] }
   - { role: docker, tags: ['docker'] }
@@ -69,3 +70,4 @@
   - { role: folders, tags: ['folders'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
+  - { role: booksonic, tags: ['booksonic'] }

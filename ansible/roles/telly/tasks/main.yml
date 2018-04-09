@@ -7,7 +7,7 @@
 
 - name: Remove Telly Container
   docker_container:
-    name: organizr
+    name: telly
     state: absent
 
 - name: Deploy Telly Container
@@ -15,7 +15,9 @@
     name: telly
     image: tombowditch/telly
     pull: yes
-    cpu_shares: 128
+    cpu_shares: 256
+    published_ports:
+      - "0.0.0.0:6077:6077"
     env:
       PUID: "1000"
       PGID: "1000"
