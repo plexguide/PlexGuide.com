@@ -24,6 +24,12 @@
     name: booksonic
     state: absent
 
+- name: Create Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - "{{path.stdout}}/move/audiobooks"
+    - "{{path.stdout}}/move/podcasts"
+
 - name: Deploy boosonic Container
   docker_container:
     name: booksonic
@@ -31,7 +37,7 @@
     pull: yes
     cpu_shares: 512
     published_ports:
-      - "{{ports.stdout}}4050:4050"
+      - "{{ports.stdout}}4050:4040"
     env:
       PUID: "1000"
       PGID: "1000"
