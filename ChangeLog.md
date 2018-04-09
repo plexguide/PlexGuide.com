@@ -12,6 +12,10 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
     - Note: If you already setup a second HD, rerun HD setup in settings for the symbolic link to kick in
 - Changed
   - Fixed 2nd rebuild execution when adding a second HD
+  - LOOP Preinstall Issue - This should be fixed now; made several changes.  
+    - Note: When you run BETA2, you will have to do the preinstall once; afterwards, it should not occur
+  - Heimdall works now with the reverse proxy, https://heimdall.domain.com (someone pushed a fix lol)
+  - Fixed bad nzbget information (never affect plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
 
 #### BETA 1 - 8 April 2018
 
