@@ -20,14 +20,14 @@ export NCURSES_NO_UTF8_ACS=1
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
-HEIGHT=9
-WIDTH=54
-CHOICE_HEIGHT=3
+HEIGHT=10
+WIDTH=50
+CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
 OPTIONS=(A "PlexGuide: Google Drive Edition"
-         B "TESTING  : Local Drives Edition (Not Ready)"
+         B "TESTING  : Local HD Edition (Not Ready)"
          C "Mini FAQ"
          Z "Exit")
 
