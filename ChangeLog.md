@@ -10,11 +10,15 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Added
   - Symbolic Link for HD2 so stuff bounces from /mnt/move to {hardrive2}/move
     - Note: If you already setup a second HD, rerun HD setup in settings for the symbolic link to kick in
+    - BookSonic Role and Deployment - Credit: mrwednesday89 
+    - RClone Fixes - Credit: Zachawii
+    - Tons of Misc Encrypted RClone Fixes - desgyz
 - Changed
   - Fixed 2nd rebuild execution when adding a second HD
   - LOOP Preinstall Issue - This should be fixed now; made several changes.  
     - Note: When you run BETA2, you will have to do the preinstall once; afterwards, it should not occur
-  - Heimdall works now with the reverse proxy, https://heimdall.domain.com - Fixed by: desgyz
+  - Heimdall works now with the reverse proxy, https://heimdall.domain.com - Credit: desgyz
+  - Telly Port Fix - Credit: Migz
   - Fixed bad nzbget information (never affect plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
 
 #### BETA 1 - 8 April 2018
