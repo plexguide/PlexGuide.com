@@ -39,6 +39,7 @@ if dialog --stdout --title "PAY ATTENTION!" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
 
+    ######### Moved for remote server use; unless tracking how use local
     if dialog --stdout --title "Custom Access URL" \
            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
            --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN." 0 0; then
