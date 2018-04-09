@@ -3,7 +3,7 @@
 # [RClone Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,144 +16,37 @@
 #
 #################################################################################
 ---
-  - name: RClone Filler
-    template:
-      src: temp.js2
-      dest: /root/.config/rclone/rclone.conf
-      force: yes
-    tags: rclone_temp
-
-########################################## Scripts
-########## Move Service Script
-  - name: Check MOVE SCRIPT
+########### DRIVES
+  - name: Check DRIVES Service
     stat:
-      path: "/opt/appdata/plexguide/move.sh"
-    register: move_script
-    tags:
-      - rclone
-    
-  - name: Install Move Service
-    template:
-      src: move_script.js2
-      dest: /opt/appdata/plexguide/move.sh
-      force: yes
-    tags:
-      - rclone
-    #when: move_script.stat.exists == False
-########### Rclone Sync Script
-  - name: Check RClone Sync SCRIPT
-    stat:
-      path: "/opt/appdata/plexguide/rclone.sh"
-    register: rclone_script
-    tags:
-      - rclone
-    
-  - name: Install RClone Sync Service
-    template:
-      src: rclone_script.js2
-      dest: /opt/appdata/plexguide/rclone.sh
-      force: yes
-    when: rclone_script.stat.exists == False
-    tags:
-      - rclone
-########################################## Services
-########### Move Service
-  - name: Check MOVE Service
-    stat:
-      path: "/etc/systemd/system/move.service"
-    register: move
-    tags:
-      - rclone
-
-  - name: Stop If Move Service Running
-    systemd: state=stopped name=move
-    when: move.stat.exists
-    tags:
-      - rclone
-    
-  - name: Install Move Service
-    template:
-      src: move.js2
-      dest: /etc/systemd/system/move.service 
-      force: yes
-    when: move.stat.exists == False
-    tags:
-      - rclone
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=move daemon_reload=yes enabled=n
-    tags:
-      - rclone
-
-  - name: Start Move
-    systemd: state=started name=move enabled=yes
-    when: move.stat.exists
-    tags:
-      - rclone
-    
-########### rclone
-  - name: Check RCLONE Service
-    stat:
-      path: "/etc/systemd/system/rclone.service"
-    register: rclone
-    tags:
-      - rclone
-
-  - name: Stop If RClone Service Running
-    systemd: state=stopped name=rclone
-    when: rclone.stat.exists
-    tags:
-      - rclone
-    
-  - name: Install RCLONE Service
-    template:
-      src: rclone.js2
-      dest: /etc/systemd/system/rclone.service 
-      force: yes
-    when: rclone.stat.exists == False
-    tags:
-      - rclone
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
-    tags:
-      - rclone
-
-  - name: Start RClone
-    systemd: state=started name=rclone enabled=yes
-    when: rclone.stat.exists
-    tags:
-      - rclone
-
-########### UNIONFS
-  - name: Check UNIONFS Service
-    stat:
-      path: "/etc/systemd/system/unionfs.service"
-    register: unionfs
-    tags:
-      - rclone
+      path: "/etc/systemd/system/drives.service"
+    register: drives
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     when: unionfs.stat.exists
-    tags:
-      - rclone
-    
+
+  - name: Main Line
+    shell: "cat /var/plexguide/hd/combined"
+    register: drives_var
+    ignore_errors: True
+
+#################################### REPLACE START
+  - name: Replace Domain
+    replace:
+      path: /etc/systemd/system/drives.service
+      regexp: replaceme
+      replace: "{{drives_var.stdout}}"
+#################################### REPLACE END
   - name: Install UNIONFS Service
     template:
-      src: unionfs.js2
-      dest: /etc/systemd/system/unionfs.service 
+      src: drives.js2
+      dest: /etc/systemd/system/drives.service 
       force: yes
-    tags:
-      - rclone
 
   - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-    tags:
-      - rclone
+    systemd: state=stopped name=drives daemon_reload=yes enabled=no
 
-  - name: Start RClone
-    systemd: state=started name=unionfs enabled=yes
-    when: unionfs.stat.exists
-    tags:
-      - rclone
+  - name: Start Unionfs
+    systemd: state=started name=drives enabled=yes
+    #when: drives.stat.exists
