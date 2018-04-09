@@ -69,3 +69,4 @@
   - { role: folders, tags: ['folders'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
+  - { role: booksonic, tags: ['booksonic'] }
