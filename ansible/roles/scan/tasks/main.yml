@@ -3,7 +3,7 @@
 #
 # [Cloudbox Ansible Role]
 #
-# Author:   13uddz & Desmonic
+# Author:   l3uddz & Desimaniac
 # URL:      https://cloudbox.rocks
 #
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
@@ -38,7 +38,7 @@
     dest: /opt/appdata/scan
     version: master
     force: yes
-    
+
 - name: Install pip requirements
   pip:
     requirements: /opt/appdata/scan/requirements.txt
@@ -72,7 +72,7 @@
 - name: Import scan service
   template:
     src: scan.service.js2
-    dest: /etc/systemd/system/scan.service 
+    dest: /etc/systemd/system/scan.service
     force: yes
   when: scan_service.stat.exists == False
 

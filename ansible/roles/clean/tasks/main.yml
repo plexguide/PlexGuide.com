@@ -2,7 +2,7 @@
 #
 # [Cloudbox Ansible Role - Cleaning Function Only]
 #
-# Author:   13uddz & Desmonic
+# Author:   l3uddz & Desimaniac
 # URL:      https://cloudbox.rocks
 #
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
@@ -31,7 +31,7 @@
 - name: Install Cloudplow; download
   become_user: root
   shell: "git clone https://github.com/Admin9705/clean /opt/appdata/cloudplow"
-  
+
 - name: Install Cloudplow; dependencies
   become_user: root
   shell: "python3 -m pip install -r /opt/appdata/cloudplow/requirements.txt"
@@ -39,7 +39,7 @@
 - name: Install Cloudplow; config
   template:
     src: config.js2
-    dest: /opt/appdata/cloudplow/config.json 
+    dest: /opt/appdata/cloudplow/config.json
     force: yes
 
 - name: Install Cloudplow; cronjob
