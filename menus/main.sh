@@ -21,7 +21,7 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
 clear
-HEIGHT=15
+HEIGHT=16
 WIDTH=38
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
@@ -35,6 +35,7 @@ OPTIONS=(A "Donation Menu"
          F "Settings & Tools"
          G "Backup & Restore"
          H "Update PlexGuide"
+         I "Switch PG Editions"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -61,6 +62,9 @@ case $CHOICE in
         H)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
+            exit 0 ;;
+        I)
+            bash /opt/plexguide/scripts/baseinstall/edition.sh  
             exit 0 ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
