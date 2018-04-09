@@ -23,15 +23,15 @@ rm -r /tmp/display4 1>/dev/null 2>&1
 dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domains.plexguide.com\n\nBasic information regarding each provider is listed!\n\nIf you forget to create an * wildcard subdomains; your subdomains will not work!" 0 0
 
 HEIGHT=13
-WIDTH=28
+WIDTH=29
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE=" Select a Domain Provider "
 
 OPTIONS=(A "CloudFlare"
          B "Gandi" 
-         C "GoDaddy"
-         D "NAME.com (Testing)"
+         C "GoDaddy  (Recommended)" 
+         D "NAME.com (Not Working)"
          E "NameCheap"
          Z "Exit")
 
