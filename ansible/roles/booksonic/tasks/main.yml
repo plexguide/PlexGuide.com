@@ -30,7 +30,7 @@
     - "{{path.stdout}}/move/audiobooks"
     - "{{path.stdout}}/move/podcasts"
 
-- name: Deploy boosonic Container
+- name: Deploy booksonic Container
   docker_container:
     name: booksonic
     image: linuxserver/booksonic
