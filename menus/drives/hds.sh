@@ -33,6 +33,7 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Make A Choice - Visit Again In Settings!"
 
 OPTIONS=(Z "Exit"
+         Y "Clear All Paths"
          A "HD1: $hd1"
          B "HD2: $hd2"
          C "HD3: $hd3"
@@ -48,6 +49,9 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     Z)
       exit
+      ;;
+    Y)
+      rm -r /var/plexguide/hd/*
       ;;
     A)
       echo "1" > /tmp/hd.drive
