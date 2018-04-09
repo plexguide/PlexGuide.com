@@ -24,7 +24,7 @@ dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domain
 
 HEIGHT=12
 WIDTH=26
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE=" Select a Domain Provider "
 
