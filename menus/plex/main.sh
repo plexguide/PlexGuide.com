@@ -42,7 +42,9 @@ if dialog --stdout --title "PAY ATTENTION!" \
     ######### Moved for remote server use; unless tracking how use local
     if dialog --stdout --title "Custom Access URL" \
            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-           --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN." 0 0; then
+           --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN.\n\n If you do not understand the question, SELECT NO." 0 0; then
+                    
+
                     dialog --title "Input CUSTOM ACCESS URL:" \
                     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                     --inputbox "URL?" 8 70 2>/var/plexguide/plex.url
