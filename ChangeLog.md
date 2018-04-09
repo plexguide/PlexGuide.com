@@ -13,6 +13,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
     - BookSonic Role and Deployment - Credit: mrwednesday89 
     - RClone Fixes - Credit: Zachawii
     - Tons of Misc Encrypted RClone Fixes - desgyz
+    - CronJob Display Fix
 - Changed
   - Fixed 2nd rebuild execution when adding a second HD
   - LOOP Preinstall Issue - This should be fixed now; made several changes.  
