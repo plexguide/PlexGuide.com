@@ -34,6 +34,7 @@ OPTIONS=(A "Plex"
          B "Emby"
          C "Ubooquity"
          D "Airsonic"
+         E "Booksonic"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -58,7 +59,7 @@ case $CHOICE in
                 bash /opt/plexguide/menus/programs/media.sh
                 exit
             fi
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0 
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0
             cronskip=no
             ;;
         B)
@@ -81,13 +82,24 @@ case $CHOICE in
             cronskip=no
             ;;
 
-        D)  display=Airsonic
+        D)
+            display=Airsonic
             program=airsonic
             port=4040
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags airsonic &>/dev/null &
             sleep 2
             dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Airsonic! If your Library is super huge, when it's backing up; it will shut down your Airsonic Container and could take several Minutes or Hours!" 0 0
+            cronskip=no
+            ;;
+        E)
+            display=Booksonic
+            program=booksonic
+            port=4050
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
+            sleep 2
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Boosonic! If your Library is super huge, when it's backing up; it will shut down your Booksonic Container and could take several Minutes or Hours!" 0 0
             cronskip=no
             ;;
         Z)
@@ -101,7 +113,7 @@ if [ "$cronskip" == "yes" ]; then
     clear 1>/dev/null 2>&1
 else
     bash /opt/plexguide/menus/backup/main.sh
-fi 
+fi
 
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
