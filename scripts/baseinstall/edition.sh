@@ -41,12 +41,12 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     A)
       echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
-      ### Message Here
+      bash /opt/plexguide/menus/main.sh
       exit
       ;;
     B)
       echo "PG Edition: Local Drives" > /var/plexguide/pg.edition
-      #### Message Here
+      bash /opt/plexguide/menus/localmain.sh
       exit
       ;;
     C)
