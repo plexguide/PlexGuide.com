@@ -4,7 +4,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.069] (Beta, Release Candiate & DEV)
 
 #### DEV
-- None
+- Added
+  - Startup Variable Page - Traefik 1 (Legacy) users will be notified of about certificate status
 
 #### BETA 2 - 9 April 2018
 - Added
