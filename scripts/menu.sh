@@ -122,13 +122,13 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
 #bash /opt/plexguide/scripts/checker/main.sh
 bash /opt/plexguide/menus/startup/message2.sh
 
-
 ## Selects an edition
-
 edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition: Google Drive" ]
   then
     bash /opt/plexguide/menus/main.sh
+    exit
   else
     bash /opt/plexguide/menus/localmain.sh
+    exit
 fi
