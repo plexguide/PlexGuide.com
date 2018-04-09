@@ -66,7 +66,7 @@
     ##### Symbolic Link
     #path="/mnt/hd2"
     rm -r /mnt/move 1>/dev/null 2>&1
-    ln -s /$path/move /mnt/
+    ln -s /$path/move /mnt
 
     #### Rebuild Containers
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
