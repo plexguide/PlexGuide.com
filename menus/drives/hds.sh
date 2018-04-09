@@ -79,3 +79,10 @@ case $CHOICE in
       exit
     ;;
 esac
+
+dr1="$hd1:"
+dr2="$hd2:"
+dr3="$hd3:"
+dr4="$hd4:"
+
+echo "$dr1$dr2$dr3$dr4" > /var/plexguide/hd/combined
