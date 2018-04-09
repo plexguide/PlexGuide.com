@@ -36,11 +36,11 @@ CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Make A Choice - Visit Again In Settings!"
 
-OPTIONS=(A "Exit"
-         B "HD1: $hd1"
-         C "HD2: $hd2"
-         D "HD3: $hd3"
-         Z "HD4: $hd4")
+OPTIONS=(Z "Exit"
+         A "HD1: $hd1"
+         B "HD2: $hd2"
+         C "HD3: $hd3"
+         D "HD4: $hd4")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -50,26 +50,25 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-    A)
+    Z)
       exit
       ;;
     B)
-      bash /opt/plexguide/menus/drives/path.sh
       echo "1" > /tmp/hd.drive
+      bash /opt/plexguide/menus/drives/path.sh
       ;;
     C)
-      dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
-      echo "no" > /var/plexguide/server.hd
-      echo "/mnt" > /var/plexguide/server.hd.path
-      #### Rebuild Containers
-      dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
+      echo "2" > /tmp/hd.drive
+      bash /opt/plexguide/menus/drives/path.sh
+      ;;
+    C)
+      echo "3" > /tmp/hd.drive
+      bash /opt/plexguide/menus/drives/path.sh
       ;;
     D)
-      exit
-    ;;
-    Z)
-      exit
-    ;;
+      echo "4" > /tmp/hd.drive
+      bash /opt/plexguide/menus/drives/path.sh
+      ;;
 esac
 
 dr1="$hd1:"
