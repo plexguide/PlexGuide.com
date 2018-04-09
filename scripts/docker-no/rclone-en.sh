@@ -34,6 +34,8 @@ mkdir -p /mnt/encrypt
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
   mandb 1>/dev/null 2>&1
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
+  sudo rm -rf /var/plexguide/rclone-en.no
+  sudo touch /var/plexguide/rclone-en.yes
   cd ~
 
 ############################################# RCLONE
