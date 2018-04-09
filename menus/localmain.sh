@@ -25,17 +25,12 @@ HEIGHT=16
 WIDTH=38
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PlexGuide - $version"
+TITLE="PlexGuide Local HD - $version"
 
 OPTIONS=(A "Donation Menu"
-         B "RClone & PlexDrive"
-         C "PG Program Suite"
-         D "Server Information"
-         E "Troubleshooting Actions"
-         F "Settings & Tools"
-         G "Backup & Restore"
-         H "Update PlexGuide"
-         I "Switch PG Editions"
+         B "PG Program Suite"
+         C "Update PlexGuide"
+         D "Switch PG Editions"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -48,24 +43,14 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/donate/main.sh ;;
         B)
-            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
-        C)
             bash /opt/plexguide/menus/programs/main.sh ;;
-        D)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
-        E)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
-        F)
-            bash /opt/plexguide/menus/settings/main.sh ;;
-        G)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
-        H)
+        C)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        I)
-            bash /opt/plexguide/scripts/baseinstall/edition.sh  
-            rm -r /var/plexguide/pg.edition
+        D)
+            bash /opt/plexguide/scripts/baseinstall/edition.sh 
+            rm -r /var/plexguide/pg.edition 
             exit 0 ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
@@ -73,4 +58,4 @@ case $CHOICE in
 esac
 
 ## repeat menu when exiting
-bash /opt/plexguide/menus/main.sh
+bash /opt/plexguide/menus/localmain.sh
