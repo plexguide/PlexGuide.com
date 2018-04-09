@@ -54,7 +54,7 @@ case $CHOICE in
       exit
       ;;
     B)
-      bash /opt/plexguide/drives/hds/path.sh
+      bash /opt/plexguide/menus/drives/hds/path.sh
       ;;
     C)
       dialog --title "HD Selection" --msgbox "\nYou Selected: NO 2ND Harddrive for SETUP!\n\nNeed to Make Changes? Visit SETTINGS and change ANYTIME!" 0 0
