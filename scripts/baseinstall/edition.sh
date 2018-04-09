@@ -26,8 +26,8 @@ CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
-OPTIONS=(A "PlexGuide: Google Drive Edition"
-         B "TESTING  : Local HD Edition (Not Ready)"
+OPTIONS=(A "Google Drive Edition"
+         B "Local HD Edition (Not Ready)"
          C "Mini FAQ"
          Z "Exit")
 
