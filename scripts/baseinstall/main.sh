@@ -180,7 +180,7 @@ sleep 2
         bash /opt/plexguide/menus/donate/main.sh
     fi
 
-cat /var/plexguide/pg.preinstall > pg.preinstall.stored
+cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 echo "PG Install is Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
