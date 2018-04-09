@@ -78,5 +78,7 @@ dr2="$hd2=RW:"
 dr3="$hd3=RW:"
 dr4="$hd4=RW:"
 
-echo "$dr1$dr2$dr3$dr4" > /var/plexguide/hd/combined
+combined="$dr1$dr2$dr3$dr4"
+combined=${combined::-1} 
+echo "$combined" > /var/plexguide/hd/combined
 bash /opt/plexguide/menus/drives/hds.sh
