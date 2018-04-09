@@ -18,7 +18,7 @@
 dialog --title "Very Important" --msgbox "\nWe must rebuild each container! Please Be Patient!" 0 0
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 
-#sed -i -e "/traefik/d" /opt/appdata/plexguide/running
+sed -i -e "/traefik/d" /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running
 
 bash /opt/plexguide/menus/traefik/cert2.sh
