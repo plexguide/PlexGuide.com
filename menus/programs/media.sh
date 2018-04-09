@@ -24,7 +24,7 @@ domain=$( cat /var/plexguide/server.domain )
  ### demo ip / comment out when done
  #ipv4=69.69.69.69
 
-HEIGHT=11
+HEIGHT=12
 WIDTH=38
 CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
