@@ -166,7 +166,7 @@
       - name: plexguide
         aliases:
           - traefik
-  tags: cloudflare
+  tags: namedotcom
 
 ######################################################### GANDI
 - name: Deploy Traefik
