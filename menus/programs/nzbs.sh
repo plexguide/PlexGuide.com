@@ -46,7 +46,7 @@ case $CHOICE in
             display=NZBGET
             program=nzbget
             dialog --infobox "Installing: $display" 3 30
-            port=5075
+            port=6789
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
             sleep 2
             cronskip=no
