@@ -32,7 +32,7 @@ port=32400
 
 rm -r /tmp/server.check 1>/dev/null 2>&1
 
-dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)? If You SAY -NO- and it is, you must repeat this process!" 7 50
+dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
 sleep 6
 
 if dialog --stdout --title "PAY ATTENTION!" \
@@ -42,7 +42,7 @@ if dialog --stdout --title "PAY ATTENTION!" \
     ######### Moved for remote server use; unless tracking how use local
     if dialog --stdout --title "Custom Access URL" \
            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-           --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN.\nIf you do not understand the question, SELECT NO." 0 0; then
+           --yesno "\nDo you want to use a Custom Access URL?\n\nSelect No: if you are NOT using Cloudflare or some other CDN. If you do not understand the question, SELECT NO." 0 0; then
                     
 
                     dialog --title "Input CUSTOM ACCESS URL:" \
