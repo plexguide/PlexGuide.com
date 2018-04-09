@@ -24,14 +24,15 @@ dialog --title "Word of Caution" --msgbox "\nRecommended to visit https://domain
 
 HEIGHT=12
 WIDTH=26
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE=" Select a Domain Provider "
 
 OPTIONS=(A "CloudFlare"
          B "Gandi" 
          C "GoDaddy"
-         D "NameCheap"
+         D "Name.com (Testing)"
+         E "NameCheap"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -94,6 +95,25 @@ case $CHOICE in
       dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     D)
+      echo "NAMECOM_USERNAME" > /tmp/display1
+      echo "NAMECOM_API_TOKEN" > /tmp/display2
+      echo "NAMECOM_SERVER" > /tmp/display3
+      echo "namedotcom" > /var/plexguide/provider
+      dialog --infobox "Setting Up Godaddy" 3 45
+      sleep 1
+      docker stop traefik2 1>/dev/null 2>&1
+      docker rm traefik2 1>/dev/null 2>&1
+      docker stop traefik 1>/dev/null 2>&1
+      docker rm traefik 1>/dev/null 2>&1
+      docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
+      bash /opt/plexguide/menus/traefik/menu.sh
+      dialog --infobox "Establishing with NAME.com" 3 40
+      bash /opt/plexguide/menus/traefik/version.sh
+      bash /opt/plexguide/menus/traefik/rebuild.sh
+      dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
+      exit 0 ;;
+
+    E)
       dialog --title "Word of Caution" --msgbox "\nNameCheap requires a customer to spend at least 50 USD within the last two years to access their API!\n\nTold them the issue it causes and GoDaddy has no such requirement. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
       echo "NAMECHEAP_API_USER" > /tmp/display1
       echo "NAMECHEAP_API_KEY" > /tmp/display2
