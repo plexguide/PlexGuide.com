@@ -6,7 +6,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - None
 
-#### BETA 3 - 10 April 2018
+#### RC 1 - 10 April 2018
  - Added
   - Startup Variable Page - Traefik 1 (Legacy) users will be notified of about certificate status
   - New Local PG Option with a new combined unionFS
