@@ -20,9 +20,9 @@ export NCURSES_NO_UTF8_ACS=1
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
-HEIGHT=11
-WIDTH=44
-CHOICE_HEIGHT=4
+HEIGHT=12
+WIDTH=40
+CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
