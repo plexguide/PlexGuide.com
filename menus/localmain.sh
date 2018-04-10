@@ -25,12 +25,13 @@ HEIGHT=11
 WIDTH=36
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PlexGuide Local HD - $version"
+TITLE="NOT READY Local HD - $version"
 
 OPTIONS=(A "Donation Menu"
          B "PG Program Suite"
          C "Update PlexGuide"
-         D "Switch PG Editions"
+         D "Setup Hard Drives"
+         E "Switch PG Editions"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -49,6 +50,9 @@ case $CHOICE in
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         D)
+            bash /opt/plexguide/menus/drives/hds.sh
+            ;;
+        E)
             rm -r /var/plexguide/pg.edition 
             bash /opt/plexguide/scripts/baseinstall/edition.sh 
             exit 0 ;;
