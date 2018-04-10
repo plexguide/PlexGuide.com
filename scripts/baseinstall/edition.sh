@@ -24,7 +24,7 @@ HEIGHT=12
 WIDTH=36
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Set Your Mount Paths!"
+TITLE="Select Your Edition!"
 
 OPTIONS=(A "GDrive Edition"
          B "HD Multiple Edition (TEST)"
