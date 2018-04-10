@@ -21,14 +21,15 @@ mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
 HEIGHT=11
-WIDTH=40
+WIDTH=44
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
 OPTIONS=(A "Google Drive Edition"
-         B "Local HD Edition (Not Ready)"
-         C "Mini FAQ"
+         B "HDs Multiple Edition (TEST)"
+         C "HDs Solo Edition     (TEST)"
+         D "Mini FAQ"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -64,7 +65,12 @@ case $CHOICE in
 
       exit
       ;;
+
     C)
+      bash /opt/plexguide/scripts/baseinstall/edition.sh  
+      exit
+      ;;
+    D)
       dialog --title "Quick FAQ" --msgbox "\nYou can pick between using your local drives or Google Drive for your mass media storage collection.\n\nBe aware the LOCAL STORAGE option is not ready and is here for testing/demo purposes until ready" 0 0
       bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
