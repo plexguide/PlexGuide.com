@@ -37,15 +37,6 @@ sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
-# checking to see if PG Edition was set
-file="/var/plexguide/pg.edition"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   bash /opt/plexguide/scripts/baseinstall/edition.sh
-fi
-
 # Checking to see if VNC Container is Running
 #file="/var/plexguide/vnc.yes"
 #if [ -e "$file" ]
@@ -117,6 +108,15 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
       echo ""
     exit
   fi
+
+# checking to see if PG Edition was set
+file="/var/plexguide/pg.edition"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   bash /opt/plexguide/scripts/baseinstall/edition.sh
+fi
 
 ## Variables Menu
 #bash /opt/plexguide/scripts/checker/main.sh
