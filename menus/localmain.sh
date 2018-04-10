@@ -49,8 +49,8 @@ case $CHOICE in
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         D)
-            bash /opt/plexguide/scripts/baseinstall/edition.sh 
             rm -r /var/plexguide/pg.edition 
+            bash /opt/plexguide/scripts/baseinstall/edition.sh 
             exit 0 ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
