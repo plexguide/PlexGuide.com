@@ -8,7 +8,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### RC 3 - 10 April 2018
 - Added
-  - PG Solo HD Edition
+  - PG Solo HD Edition (NOT READY)
     - Useful for those who have only a single HD. Don't care about Google Drive; good for those with a small collection; or download, watch, delete types.
 
 #### RC 2 - 10 April 2018
