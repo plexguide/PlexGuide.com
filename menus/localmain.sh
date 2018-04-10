@@ -29,9 +29,9 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "Donation Menu"
          B "PG Program Suite"
-         C "Update PlexGuide"
-         D "Setup Hard Drives"
-         E "Switch PG Editions"
+         C "PG Update"
+         D "HD Setup"
+         E "PG Edition Switch"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \

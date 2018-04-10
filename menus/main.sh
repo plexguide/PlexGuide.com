@@ -34,8 +34,8 @@ OPTIONS=(A "Donation Menu"
          E "Troubleshooting Actions"
          F "Settings & Tools"
          G "Backup & Restore"
-         H "Update PlexGuide"
-         I "Switch PG Editions"
+         H "PG Updates"
+         I "PG Edition Switch"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
