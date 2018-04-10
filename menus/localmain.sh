@@ -30,7 +30,7 @@ TITLE="$edition - $version"
 OPTIONS=(A "Donation Menu"
          B "PG Program Suite"
          C "PG Update"
-         D "HD Setup"
+         D "PG HD Setup"
          E "PG Edition Switch"
          Z "Exit")
 
