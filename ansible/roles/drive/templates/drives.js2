@@ -1,0 +1,16 @@
+[Unit]
+Description=UnionFS Daemon
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty replaceme /mnt/unionfs
+ExecStop=/bin/fusermount -u /mnt/unionfs
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
