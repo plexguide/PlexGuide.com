@@ -51,6 +51,7 @@ case $CHOICE in
             exit 0 ;;
         D)
             bash /opt/plexguide/menus/drives/hds.sh
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
         E)
             rm -r /var/plexguide/pg.edition 

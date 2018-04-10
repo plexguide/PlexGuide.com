@@ -60,7 +60,6 @@ case $CHOICE in
       else
          echo "PG Edition: Local HD" > /var/plexguide/pg.edition
          bash /opt/plexguide/menus/localmain.sh
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
       fi
 
       exit
