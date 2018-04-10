@@ -66,10 +66,12 @@ case $CHOICE in
       exit
       ;;
     C)
-      clear 1>/dev/null 2>&1
+      dialog --title "Quick FAQ" --msgbox "\nYou can pick between using your local drives or Google Drive for your mass media storage collection.\n\nBe aware the LOCAL STORAGE option is not ready and is here for testing/demo purposes until ready" 0 0
+      bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
       ;;
     Z)
+      bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
       ;;
 esac
