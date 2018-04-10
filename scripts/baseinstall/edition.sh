@@ -80,7 +80,7 @@ case $CHOICE in
       exit
       ;;
     D)
-      dialog --title "Quick FAQ" --msgbox "\nYou can pick between using your local drives or Google Drive for your mass media storage collection.\n\nBe aware the HDs option is not ready and is here for testing/demo purposes until ready.\n\nSolo HD is for small collections; download, watch, delete. Multiple HD edition are for those who use multiple drives to build a collection!" 0 0
+      dialog --title "Quick FAQ" --msgbox "\nYou can pick between using your local drives or Google Drive for your mass media storage collection.\n\nBe aware the HDs option is not ready and is here for testing/demo purposes until ready.\n\nSolo HD is setup for smaller collections; download, watch, and delete. The multiple HD edition is for those who use multiple drives to build a collection!" 0 0
       bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
       ;;
