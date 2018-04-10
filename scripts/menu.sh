@@ -124,11 +124,26 @@ bash /opt/plexguide/menus/startup/message2.sh
 
 ## Selects an edition
 edition=$( cat /var/plexguide/pg.edition )
-if [ "$edition" == "PG Edition: Google Drive" ]
+
+#### G-Drive Edition
+if [ "$edition" == "PG Edition: GDrive" ]
   then
+    rm -r 
     bash /opt/plexguide/menus/main.sh
     exit
-  else
+fi
+
+#### Multiple Drive Edition
+if [ "$edition" == "HD Multiple Edition" ]
+  then
     bash /opt/plexguide/menus/localmain.sh
     exit
 fi
+
+#### Solo Drive Edition
+if [ "$edition" == "HD Solo Edition" ]
+  then
+    bash /opt/plexguide/menus/localmain.sh
+    exit
+fi
+
