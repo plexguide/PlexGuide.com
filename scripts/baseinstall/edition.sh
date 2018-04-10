@@ -67,10 +67,10 @@ case $CHOICE in
       ;;
     C)
       clear 1>/dev/null 2>&1
+      exit
       ;;
     Z)
-      echo "4" > /tmp/hd.drive
-      bash /opt/plexguide/menus/drives/path.sh
+      exit
       ;;
 esac
 
