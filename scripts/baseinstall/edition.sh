@@ -21,7 +21,7 @@ mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
 HEIGHT=12
-WIDTH=38
+WIDTH=36
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
@@ -44,9 +44,9 @@ case $CHOICE in
       file="/var/plexguide/pg.edition"
       if [ -e "$file" ]
       then
-         echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
+         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
       else
-         echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
+         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
          bash /opt/plexguide/scripts/menu.sh
       fi
 
