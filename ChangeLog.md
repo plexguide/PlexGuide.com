@@ -6,6 +6,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - None
 
+#### RC 3 - 10 April 2018
+- Added
+  - PG Solo HD Edition
+    - Useful for those who have only a single HD. Don't care about Google Drive; good for those with a small collection; or download, watch, delete types.
+
 #### RC 2 - 10 April 2018
 - Changed
   - TOML for Traefik v2 to allow domain to obtain https:// certificate (not just subdomains)
