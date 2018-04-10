@@ -53,7 +53,7 @@ entryPoint = "https"
     delayBeforeCheck = 30
 
 [[acme.domains]]
-  main = "*.yourdomain.com"
+  main = "yourdomain.com"
   
 
 [docker]
