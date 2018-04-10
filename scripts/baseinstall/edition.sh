@@ -21,14 +21,14 @@ mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
 HEIGHT=12
-WIDTH=40
+WIDTH=38
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
 OPTIONS=(A "GDrive Edition"
-         B "HDs Multiple Edition (TEST)"
-         C "HDs Solo Edition     (TEST)"
+         B "HD Multiple Edition (TEST)"
+         C "HD Solo Edition     (TEST)"
          D "Mini FAQ"
          Z "Exit")
 
@@ -47,7 +47,7 @@ case $CHOICE in
          echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
       else
          echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
-         bash /opt/plexguide/menus/main.sh
+         bash /opt/plexguide/scripts/menu.sh
       fi
 
       exit
@@ -57,17 +57,26 @@ case $CHOICE in
       file="/var/plexguide/pg.edition"
       if [ -e "$file" ]
       then
-         echo "PG Edition: Local HD" > /var/plexguide/pg.edition
+         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
       else
-         echo "PG Edition: Local HD" > /var/plexguide/pg.edition
-         bash /opt/plexguide/menus/localmain.sh
+         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
+         #bash /opt/plexguide/menus/localmain.sh
+         bash /opt/plexguide/scripts/menu.sh
       fi
 
       exit
       ;;
 
     C)
-      bash /opt/plexguide/scripts/baseinstall/edition.sh  
+      file="/var/plexguide/pg.edition"
+      if [ -e "$file" ]
+      then
+         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
+      else
+         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
+         bash /opt/plexguide/scripts/menu.sh
+      fi
+
       exit
       ;;
     D)
@@ -80,5 +89,4 @@ case $CHOICE in
       exit
       ;;
 esac
-
 bash /opt/plexguide/scripts/baseinstall/edition.sh  
