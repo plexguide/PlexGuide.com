@@ -17,8 +17,7 @@ ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 #cat /var/plexguide/pg.version > /var/plexguide/pg.version
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-#### PG Version (Not Working Yet)
-echo "PG Edition: Google Drive" > /var/plexguide/pg.edition
+#### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
