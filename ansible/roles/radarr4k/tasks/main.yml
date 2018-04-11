@@ -63,7 +63,7 @@
 - name: Install autoProcess.ini
   template:
     src: autoProcess.ini
-    dest: /opt/appdata/radrr/mp4_automator/autoProcess.ini
+    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
   when: autoProcess.stat.exists == False
