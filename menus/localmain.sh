@@ -48,11 +48,11 @@ CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
-OPTIONS=(A "Donation Menu"
-         B "PG Program Suite"
+OPTIONS=(A "PG Program Suite"
+         B "PG HD Setup"
          C "PG Update"
-         D "PG HD Setup"
-         E "PG Edition Switch"
+         D "PG Edition Switch"
+         E "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -63,14 +63,8 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/donate/main.sh ;;
-        B)
             bash /opt/plexguide/menus/programs/main.sh ;;
-        C)
-            bash /opt/plexguide/scripts/upgrade/main.sh
-            bash /opt/plexguide/scripts/message/ending.sh
-            exit 0 ;;
-        D)
+        B)
             #### Solo Drive Edition
             if [ "$edition" == "PG Edition: HD Solo" ]
               then
@@ -83,10 +77,16 @@ case $CHOICE in
             bash /opt/plexguide/menus/drives/hds.sh
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
-        E)
+        C)
+            bash /opt/plexguide/scripts/upgrade/main.sh
+            bash /opt/plexguide/scripts/message/ending.sh
+            exit 0 ;;
+        D)
             rm -r /var/plexguide/pg.edition 
             bash /opt/plexguide/scripts/baseinstall/edition.sh 
             exit 0 ;;
+        E)
+            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
