@@ -21,24 +21,24 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 
 #### Ensure Solo Edition's Path is /mnt
-if [ "$edition" == "PG Edition: HD Solo" ]
-  then
+#if [ "$edition" == "PG Edition: HD Solo" ]
+#  then
   #### If not /mnt, it will go through this process to change it!
-  if [ "$path" == "/mnt" ] 
-    then
-      clear 1>/dev/null 2>&1
-    else
-      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt IS NOT your default DOWNLOAD PATH for this EDITION.\n\nWe will fix that for you!" 0 0
-      echo "no" > /var/plexguide/server.hd
-      echo "/mnt" > /var/plexguide/server.hd.path
-      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
-  fi
-fi
+#  if [ "$path" == "/mnt" ] 
+#    then
+#      clear 1>/dev/null 2>&1
+#    else
+#      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt IS NOT your default DOWNLOAD PATH for this EDITION.\n\nWe will fix that for you!" 0 0
+#      echo "no" > /var/plexguide/server.hd
+#      echo "/mnt" > /var/plexguide/server.hd.path
+#      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+#  fi
+#fi
 
 #### Disable Certain Services #### put a detect move.service file here later
-systemctl stop move 1>/dev/null 2>&1
-systemctl disable move 1>/dev/null 2>&1
-systemctl deamon-reload 1>/dev/null 2>&1
+#systemctl stop move 1>/dev/null 2>&1
+#systemctl disable move 1>/dev/null 2>&1
+#systemctl deamon-reload 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
 clear
