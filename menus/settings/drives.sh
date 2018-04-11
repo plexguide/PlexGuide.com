@@ -53,7 +53,7 @@ case $CHOICE in
         if [ "$edition" == "PG Edition: HD Solo" ]
           then
           dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
-          bash /opt/plexguide/menus/localmain.sh
+          bash /opt/plexguide/menus/settings/drives.sh
           exit
         fi 
         ;;
