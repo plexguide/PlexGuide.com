@@ -53,7 +53,7 @@ case $CHOICE in
             #### Solo Drive Edition
             if [ "$edition" == "PG Edition: HD Solo" ]
               then
-              dialog --title "Docker Failure" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
+              dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
               bash /opt/plexguide/menus/localmain.sh
               exit
             fi
