@@ -28,7 +28,7 @@ CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE=" Select a Domain Provider "
 
-OPTIONS=(A "CloudFlare:  Difficult Process"
+OPTIONS=(A "CloudFlare:  Easy Process"
          B "Gandi     :  Works" 
          C "GoDaddy   :  Easiest Process" 
          D "NAME.com  :  ** NOT WORKING **"
