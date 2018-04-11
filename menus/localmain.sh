@@ -15,10 +15,55 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+
+############################################################################# MINI MENU SELECTION - START
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
+
+export NCURSES_NO_UTF8_ACS=1
+clear
+HEIGHT=10
+WIDTH=38
+CHOICE_HEIGHT=3
+BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+TITLE="$edition - $version"
+
+OPTIONS=(A "No : Just Looking!"
+         B "Yes: Setup & Switch Editons!"
+         Z "Backout - Exit")
+
+CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+case $CHOICE in
+        A)
+            bash /opt/plexguide/menus/programs/main.sh ;;
+        B)
+            #### Solo Drive Edition
+            if [ "$edition" == "PG Edition: HD Solo" ]
+              then
+              dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
+              bash /opt/plexguide/menus/localmain.sh
+              exit
+            fi
+
+            #### Multiple Editions HD
+            bash /opt/plexguide/menus/drives/hds.sh
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
+            ;;
+        C)
+            bash /opt/plexguide/menus/settings/drives.sh
+            ;;
+        Z)
+            bash /opt/plexguide/scripts/message/ending.sh
+            exit 0 ;;
+esac
+
+############################################################################# MINI MENU SELECTION - END
 
 #### Ensure Solo Edition's Path is /mnt
 #if [ "$edition" == "PG Edition: HD Solo" ]
