@@ -35,6 +35,11 @@ if [ "$edition" == "PG Edition: HD Solo" ]
   fi
 fi
 
+#### Disable Certain Services
+systemctl stop move 1>/dev/null 2>&1
+systemctl disable move 1>/dev/null 2>&1
+systemctl deamon-reload 1>/dev/null 2>&1
+
 export NCURSES_NO_UTF8_ACS=1
 clear
 HEIGHT=12
