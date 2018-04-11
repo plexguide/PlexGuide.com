@@ -35,7 +35,7 @@ if [ "$edition" == "PG Edition: HD Solo" ]
   fi
 fi
 
-#### Disable Certain Services
+#### Disable Certain Services #### put a detect move.service file here later
 systemctl stop move 1>/dev/null 2>&1
 systemctl disable move 1>/dev/null 2>&1
 systemctl deamon-reload 1>/dev/null 2>&1
