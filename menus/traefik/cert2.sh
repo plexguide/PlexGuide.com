@@ -20,9 +20,8 @@ dock=$( cat /var/plexguide/status.traefik2 )
 
 string='*with a certificsate.'
 if [[ $string = *"with a certificate"* ]]; then
-  echo "It's there!"
+  echo "certificate" > /var/plexguide/status.traefik2
 fi
-
 
 #new=${dock#*with a} 
 #new=${new::-1}
