@@ -28,7 +28,7 @@ if [ "$edition" == "PG Edition: HD Solo" ]
     then
       clear 1>/dev/null 2>&1
     else
-      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt is your default HD point.\nWe will fix that for you!" 0 0
+      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt IS NOT your default download point.\n\nWe will fix that for you!" 0 0
       echo "no" > /var/plexguide/server.hd
       echo "/mnt" > /var/plexguide/server.hd.path
       bash /opt/plexguide/scripts/baseinstall/rebuild.sh
