@@ -18,7 +18,7 @@
 docker logs --tail 15 traefik2 2> /var/plexguide/status.traefik2
 dock=$( cat /var/plexguide/status.traefik2 )
 
-string='*with a certificate.'
+string='*with a certificsate.'
 if [[ $string = *"with a certificate"* ]]; then
   echo "It's there!"
 fi
