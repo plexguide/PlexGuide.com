@@ -51,7 +51,7 @@ entryPoint = "https"
   [acme.dnsChallenge]
     provider = "myprovider"
     delayBeforeCheck = 30
-
+ 
 [[acme.domains]]
   main = "yourdomain.com"
 [[acme.domains]]
