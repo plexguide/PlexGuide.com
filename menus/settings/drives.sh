@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
+version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 HEIGHT=16
 WIDTH=59
