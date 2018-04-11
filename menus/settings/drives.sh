@@ -29,10 +29,8 @@ OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          D "Ports         : Turn On/Off Application Ports"
          E "Processor     : Enhance Processing Power"
          F "Kernel Mods   : Enhance Network Throughput"
-         G "SuperSpeeds   : Change GDrive Transfer Settings"
-         H "WatchTower    : Auto-Update Application Manager"
-         I "Import Media  : Import Existing Media to GDrive "
-         J "App Themes    : Install Dark Theme(s) For Apps "
+         G "WatchTower    : Auto-Update Application Manager"
+         H "App Themes    : Install Dark Theme(s) For Apps "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -61,12 +59,8 @@ case $CHOICE in
         bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
     F)
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
-    G)
-        bash /opt/plexguide/menus/transfer/main.sh ;;
     H)
         bash /opt/plexguide/menus/watchtower/main.sh ;;
-    I)
-        bash /opt/plexguide/menus/migrate/main.sh ;;
     J)
         bash /opt/plexguide/menus/themes/main.sh ;;
     Z)
@@ -76,5 +70,5 @@ case $CHOICE in
     esac
 clear
 
-bash /opt/plexguide/menus/settings/main.sh
+bash /opt/plexguide/menus/settings/drives.sh
 exit 0
