@@ -1,45 +1,32 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.069] (Beta, Release Candiate & DEV)
+### [5.070] (Beta, Release Candiate & DEV)
 
 #### DEV
 - None
 
-#### RC 3 - 10 April 2018
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+#### [5.069] - 10 April 2018
+
+NOTE: You must rerun Traefik v2 and go through cloudflare again for proper updates of subdomain/domain! 
+NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---cloudflare <<< Improved Instructions for CloudFlare
+
 - Added
   - PG Solo HD Edition (NOT READY)
     - Useful for those who have only a single HD. Don't care about Google Drive; good for those with a small collection; or download, watch, delete types.
-
-#### RC 2 - 10 April 2018
-- Changed
-  - TOML for Traefik v2 to allow domain to obtain https:// certificate (not just subdomains)
-
-#### RC 1 - 10 April 2018
- - Added
   - Startup Variable Page - Traefik 1 (Legacy) users will be notified of about certificate status
   - New Local PG Option with a new combined unionFS
     - WARNING, this does not work fully and should only be selected for testing purposes
-
-#### BETA 2 - 9 April 2018
-- Added
   - Symbolic Link for HD2 so stuff bounces from /mnt/move to {hardrive2}/move
     - Note: If you already setup a second HD, rerun HD setup in settings for the symbolic link to kick in
   - BookSonic Role and Deployment - Credit: mrwednesday89 
   - RClone Fixes - Credit: Zachawii
   - Tons of Misc Encrypted RClone Fixes - desgyz
   - CronJob Display Fix
-- Changed
-  - Fixed 2nd rebuild execution when adding a second HD
-  - LOOP Preinstall Issue - This should be fixed now; made several changes.  
-    - Note: When you run BETA2, you will have to do the preinstall once; afterwards, it should not occur
-  - Heimdall works now with the reverse proxy, https://heimdall.domain.com - Credit: desgyz
-  - Telly Port Fix - Credit: Migz
-  - Fixed bad nzbget information (never affected plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
-
-#### BETA 1 - 8 April 2018
-
-- Added
   - Sped up the Install of Most Applications
   - Sped up cronjob installs
   - Improved valid certificate detection
@@ -53,15 +40,17 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Added Dupefinder - Credit MBCorps (unsure if working / testing required )
   - AirSonic Added - Credit Migz
   - Scan fixes/added - Credit MBCorps (unsure if working / testing required)
-  
 - Changed
+  - TOML for Traefik v2 to allow domain to obtain https:// certificate (not just subdomains)
+  - Fixed 2nd rebuild execution when adding a second HD
+  - LOOP Preinstall Issue - This should be fixed now; made several changes.  
+    - Note: When you run BETA2, you will have to do the preinstall once; afterwards, it should not occur
+  - Heimdall works now with the reverse proxy, https://heimdall.domain.com - Credit: desgyz
+  - Telly Port Fix - Credit: Migz
+  - Fixed bad nzbget information (never affected plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
   - Fixed bash error flash before starting up of the program
   - Removed to del empty folder from rclone, caused problems - Credit MBCorps 
   - Code Cleanup, added new cronskip function and remove large scripts to a solo one for cron exe
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.068] 7 April 2018
 
