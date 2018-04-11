@@ -148,4 +148,5 @@ if [ "$edition" == "PG Edition: HD Solo" ]
 fi
 
 #### falls to this menu incase none work above
+rm -r /var/plexguide/pg.edition
 bash /opt/plexguide/scripts/baseinstall/edition.sh
