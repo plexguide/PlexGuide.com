@@ -17,7 +17,7 @@
 #################################################################################
 docker logs --tail 15 traefik 2> /var/plexguide/status.traefik1
 dock=$( cat /var/plexguide/status.traefik1 )
-dock=${dock#*responded with a} 
+dock=${dock#*with a} 
 dock=${dock::-1}
 echo $dock | head -c 1
 echo $dock > /var/plexguide/status.traefik1
