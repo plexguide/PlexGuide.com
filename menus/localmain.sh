@@ -50,6 +50,15 @@ case $CHOICE in
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         D)
+            #### Solo Drive Edition
+            if [ "$edition" == "PG Edition: HD Solo" ]
+              then
+              dialog --title "Docker Failure" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
+              bash /opt/plexguide/menus/localmain.sh
+              exit
+            fi
+
+            #### Multiple Editions HD
             bash /opt/plexguide/menus/drives/hds.sh
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
