@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-docker logs --tail 15 traefik2 2> /var/plexguide/status.traefik2
+docker logs --tail 20 traefik2 2> /var/plexguide/status.traefik2
 dock=$( cat /var/plexguide/status.traefik2 )
 
 string='*with a certificsate.'
