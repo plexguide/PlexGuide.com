@@ -44,10 +44,17 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
-        bash /opt/plexguide/menus/traefik/main.sh
+        bash /opt/plexguide/menus/settings/drives.sh
         ;;
     B)
-        bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
+        #### Solo Drive Edition
+        if [ "$edition" == "PG Edition: HD Solo" ]
+          then
+          dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
+          bash /opt/plexguide/menus/localmain.sh
+          exit
+        fi 
+        ;;
     C)
         bash /opt/plexguide/menus/notifications/main.sh
         echo "Pushover Notifications are Working!" > /tmp/pushover
