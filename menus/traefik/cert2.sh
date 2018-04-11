@@ -17,10 +17,10 @@
 #################################################################################
 docker logs --tail 15 traefik2 2> /var/plexguide/status.traefik2
 dock=$( cat /var/plexguide/status.traefik2 )
-dock=${dock#*with a} 
-dock=${dock::-1}
-echo $dock | head -c 1
-echo $dock > /var/plexguide/status.traefik2
+new=${dock#*with a} 
+new=${new::-1}
+echo $new | head -c 1
+echo $new > /var/plexguide/status.traefik2
 
 ######### path to call script
 #bash /opt/plexguide/menus/traefik/cert2.sh
