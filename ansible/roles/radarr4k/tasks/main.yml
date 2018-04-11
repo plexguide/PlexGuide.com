@@ -58,12 +58,12 @@
       traefik.port: "7878"
 - name: Check autoProcess.ini
   stat: 
-     path: "/opt/appdata/sonarr/mp4_automator/autoProcess.ini"
+     path: "/opt/appdata/radarr/mp4_automator/autoProcess.ini"
   register: autoProcess
 - name: Install autoProcess.ini
   template:
     src: autoProcess.ini
-    dest: /opt/appdata/sonarr/mp4_automator/autoProcess.ini
+    dest: /opt/appdata/radrr/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
   when: autoProcess.stat.exists == False
