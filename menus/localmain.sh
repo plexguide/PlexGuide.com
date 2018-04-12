@@ -20,6 +20,7 @@
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
+deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 
 ############################################################################# MINI MENU SELECTION - END
 
@@ -42,6 +43,26 @@ path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 #systemctl stop move 1>/dev/null 2>&1
 #systemctl disable move 1>/dev/null 2>&1
 #systemctl deamon-reload 1>/dev/null 2>&1
+
+echo "gdrive" > /var/pg.server.deploy
+        echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
+        echo "drive" > /var/pg.server.deploy
+
+echo "drive" > /var/pg.server.deploy
+
+#### Solo Drive Edition
+if [ "$edition" == "PG Edition: HD Solo" ]
+  then
+    deploy2=drive 
+    if [ "$deploy" == "$deploy2" ]
+    then
+      clear 1>/dev/null 2>&1
+    else
+    dialog --title "-- NOTE --" --msgbox "\nTime to Deploy the Solo HD Setup!" 0 0
+    exit
+  exit
+fi
+
 
 export NCURSES_NO_UTF8_ACS=1
 clear

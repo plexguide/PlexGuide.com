@@ -51,6 +51,7 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+        echo "gdrive" > /var/pg.server.deploy
         bash /opt/plexguide/menus/main.sh
         exit
       else 
@@ -72,6 +73,7 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
+        echo "drives" > /var/pg.server.deploy
         bash /opt/plexguide/menus/localmain.sh
         exit
       else 
@@ -93,6 +95,7 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
+        echo "drive" > /var/pg.server.deploy
         bash /opt/plexguide/menus/localmain.sh
         exit
       else 
