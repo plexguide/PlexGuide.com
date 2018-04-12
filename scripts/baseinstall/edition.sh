@@ -41,26 +41,18 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      file="/var/plexguide/pg.edition"
-      if [ -e "$file" ]
-      then
-         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+      bash /opt/plexguide/menus/confirm.sh
+      echo "PG Edition: GDrive" > /var/plexguide/pg.edition
 
-        ### Confirm yes or no to skip back to menu 
-        bash /opt/plexguide/menus/confirm.sh  
-        menu=$( cat /tmp/menu.choice )
-        bash
-        if [ "$menu" == "yes" ]
-          then
-          bash /opt/plexguide/menus/localmain.sh
-          exit
-        fi
+      ### Confirm yes or no to skip back to menu    
+      menu=$( cat /tmp/menu.choice )
 
-      else
-         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
-         bash /opt/plexguide/scripts/menu.sh
+      if [ "$menu" == "yes" ]
+        then
+        bash /opt/plexguide/menus/localmain.sh
+        exit
       fi
-
+        
       exit
       ;;
 
