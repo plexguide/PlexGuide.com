@@ -54,7 +54,7 @@ if [ "$deploy" == "drive" ]
   systemctl deamon-reload 1>/dev/null 2>&1
 
   #### Build Certain Paths
-  dialog --infobox "Building Folders!" 0 0 &>/dev/null &
+  dialog --infobox "Building Folders!" 0 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
   sleep 2
   #### Creates a  Symbolic Link
