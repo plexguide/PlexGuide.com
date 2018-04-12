@@ -6,6 +6,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - None
 
+#### BETA 3
+- Added Password Notice if using Duplicati
+- (SOLO HD) Improved Notifications
+- (SOLO HD) Added Troubleshooting to the Menu
+
 #### BETA 2
 - Added
   - Stopped the HTML folder from being left everytime you execute PG
