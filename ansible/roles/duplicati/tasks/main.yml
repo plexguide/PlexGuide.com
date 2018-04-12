@@ -69,7 +69,7 @@
 
   - name: Check duplicati service
     stat:
-    path: "/etc/systemd/system/duplicati.service"
+      path: "/etc/systemd/system/duplicati.service"
     register: duplicati
 
   - name: Stop if duplicati service running
