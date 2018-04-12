@@ -78,8 +78,10 @@ case $CHOICE in
                 A)
                 mkdir /mnt/old 1>/dev/null 2>&1
                 mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
+                ;;
                 B)
                 mv /mnt/unionfs/* /mnt/move 1>/dev/null 2>&1
+                ;;
                 esac
           fi
 
