@@ -19,9 +19,9 @@
 ############################################################################# MINI MENU SELECTION - START
 export NCURSES_NO_UTF8_ACS=1
 
-HEIGHT=10
+HEIGHT=9
 WIDTH=42
-CHOICE_HEIGHT=3
+CHOICE_HEIGHT=2
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Make A Decision!"
 

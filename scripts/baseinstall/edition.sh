@@ -47,7 +47,7 @@ case $CHOICE in
          echo "PG Edition: GDrive" > /var/plexguide/pg.edition
 
         ### Confirm yes or no to skip back to menu 
-        bash /opt/plexguide/scripts/menus/confirm.sh  
+        bash /opt/plexguide/menus/confirm.sh  
         menu=$( cat /tmp/menu.choice )
         bash
         if [ "$edition" == "menu" ]
