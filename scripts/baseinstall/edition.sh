@@ -60,48 +60,40 @@ case $CHOICE in
       ;;
 
     B)
-      file="/var/plexguide/pg.edition"
-      if [ -e "$file" ]
-      then
-         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
-      else
-         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
-         #bash /opt/plexguide/menus/localmain.sh
-         bash /opt/plexguide/scripts/menu.sh
+      rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
+      bash /opt/plexguide/menus/confirm.sh 
 
-        ### Confirm yes or no to skip back to menu 
-        bash /opt/plexguide/scripts/menus/confirm.sh  
-        menu=$( cat /tmp/menu.choice )
-        bash
-        if [ "$edition" == "menu" ]
-          then
-          bash /opt/plexguide/menus/localmain.sh
-          exit
-        fi
-
+      ### Confirm yes or no to skip back to menu    
+      menu=$( cat /tmp/menu.choice )
+      if [ "$menu" == "yes" ]
+        then
+        echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
+        bash /opt/plexguide/menus/main.sh
+        exit
+      else 
+        bash /opt/plexguide/scripts/baseinstall/edition.sh  
+        exit
       fi
+
       exit
       ;;
 
     C)
-      file="/var/plexguide/pg.edition"
-      if [ -e "$file" ]
-      then
-         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
-      else
-         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
-        
-        ### Confirm yes or no to skip back to menu 
-        bash /opt/plexguide/scripts/menus/confirm.sh  
-        menu=$( cat /tmp/menu.choice )
-        bash
-        if [ "$edition" == "menu" ]
-          then
-          bash /opt/plexguide/menus/localmain.sh
-          exit
-        fi
+      rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
+      bash /opt/plexguide/menus/confirm.sh 
 
+      ### Confirm yes or no to skip back to menu    
+      menu=$( cat /tmp/menu.choice )
+      if [ "$menu" == "yes" ]
+        then
+        echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
+        bash /opt/plexguide/menus/main.sh
+        exit
+      else 
+        bash /opt/plexguide/scripts/baseinstall/edition.sh  
+        exit
       fi
+
       exit
       ;;
     D)
