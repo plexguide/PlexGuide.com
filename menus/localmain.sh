@@ -54,10 +54,11 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "PG Program Suite"
          B "PG HD Setup"
-         C "PG Settings"
-         D "PG Update"
-         E "PG Edition Switch"
-         F "Donation Menu"
+         C "PG Troubleshooting Actions"
+         D "PG Settings"
+         E "PG Update"
+         F "PG Edition Switch"
+         G "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
