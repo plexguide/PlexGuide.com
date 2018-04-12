@@ -84,17 +84,19 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
         C)
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+        D)
             bash /opt/plexguide/menus/settings/drives.sh
             ;;
-        D)
+        E)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        E)
+        F)
             rm -r /var/plexguide/pg.edition 
             bash /opt/plexguide/scripts/baseinstall/edition.sh 
             exit 0 ;;
-        F)
+        G)
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
