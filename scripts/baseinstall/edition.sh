@@ -79,6 +79,8 @@ case $CHOICE in
       ;;
 
     C)
+      dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
+
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
       bash /opt/plexguide/menus/confirm.sh 
 
