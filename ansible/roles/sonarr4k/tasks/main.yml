@@ -56,7 +56,7 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:sonarr4k.{{domain.stdout}}"
       traefik.port: "8989"
- - name: Check autoProcess.ini
+- name: Check autoProcess.ini
   stat: 
      path: "/opt/appdata/sonarr/mp4_automator/autoProcess.ini"
   register: autoProcess
