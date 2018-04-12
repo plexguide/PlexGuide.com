@@ -72,3 +72,4 @@
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
   - { role: booksonic, tags: ['booksonic'] }
+  - { role: duplicati, tags: ['duplicati'] }
