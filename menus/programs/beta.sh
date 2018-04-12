@@ -34,12 +34,12 @@ case $CHOICE in
      C)
      bash /opt/plexguide/menus/programs/localstorage.sh ;;
      D)
-         display=Duplicati
-         program=duplicati
-         port=8200
+        display=Duplicati
          dialog --infobox "Installing: $display" 3 30
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
+         bash ansible-role duplicati
          sleep 2
+         dialog --infobox "$display install complete" 3 30
+         --msgbox "\nDuplicati access:domain.com:8200 Remember to set password" 0 0
          cronskip="yes"
          ;;
      Z)
