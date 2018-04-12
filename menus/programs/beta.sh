@@ -36,7 +36,7 @@ case $CHOICE in
      D)
         display=Duplicati
          dialog --infobox "Installing: $display" 3 30
-         bash ansible-role duplicati
+         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
          sleep 2
          dialog --infobox "$display install complete" 3 30
          --msgbox "\nDuplicati access:domain.com:8200 Remember to set password" 0 0
