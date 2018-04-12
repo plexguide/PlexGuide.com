@@ -55,8 +55,8 @@ if [ "$deploy" == "drive" ]
 
   chmod 775 /mnt/unionfs
   chmod 775 /mnt/move
-  chown 1000:1000 /mnt/unionfs
-  chown 1000:1000 /mnt/move
+  chown -r 1000:1000 /mnt/unionfs
+  chown -r 1000:1000 /mnt/move
   ##### Creates a  Symbolic Link
   ln -s "/mnt/move/" "/mnt/unionfs" 1>/dev/null 2>&1
 echo "drive" > /var/plexguide/pg.server.deploy
