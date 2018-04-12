@@ -55,9 +55,32 @@ case $CHOICE in
           deploy=$( cat /var/pg.server.deploy )
           if [ "$deploy" == "drive" ]
             then
-              dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs are moving to /mnt/old!\n\nYou are moving from the SOLO HD edition to the GDrive Edition! You can move those items to /mnt/gdrive if you want them to upload!" 0 0
-              mkdir /mnt/old 1>/dev/null 2>&1
-              mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
+              dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs need to move to either /mnt/old/ for storage reasons or /mnt/move for GDrive Uploading!" 0 0
+              
+                ### Make a Move Choice
+                HEIGHT=12
+                WIDTH=36
+                CHOICE_HEIGHT=5
+                BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                TITLE="Select Your Edition!"
+
+                OPTIONS=(A "To /mnt/old  - For Storage"
+                         B "To /mnt/move - For Google Uploads")
+
+                CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                --title "$TITLE" \
+                                --menu "$MENU" \
+                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                "${OPTIONS[@]}" \
+                                2>&1 >/dev/tty)
+
+                case $CHOICE in
+                A)
+                mkdir /mnt/old 1>/dev/null 2>&1
+                mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
+                B)
+                mv /mnt/unionfs/* /mnt/move 1>/dev/null 2>&1
+                esac
           fi
 
         ### Set Everything for GDrive Editon
