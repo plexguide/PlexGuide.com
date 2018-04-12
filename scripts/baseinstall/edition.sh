@@ -49,6 +49,7 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
         bash /opt/plexguide/menus/main.sh
+        exit
       else 
         bash /opt/plexguide/scripts/baseinstall/edition.sh  
         exit
