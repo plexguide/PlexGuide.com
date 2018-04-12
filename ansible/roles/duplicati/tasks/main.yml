@@ -92,14 +92,14 @@
     stat:
       path: "/etc/systemd/system/duplicati.service"
     register: duplicati
-  tags: duplicati
+   tags: duplicati
 
   - name: Stop if duplicati service running
     systemd:
       name: duplicati
       state: stopped
     when: duplicati.stat.exists
-  tags: duplicati
+    tags: duplicati
 
   - name: Install duplicati Service
     template:

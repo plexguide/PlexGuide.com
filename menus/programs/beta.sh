@@ -38,8 +38,7 @@ case $CHOICE in
          dialog --infobox "Installing: $display" 3 30
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
          sleep 2
-         dialog --infobox "$display install complete" 3 30
-         --msgbox "\nDuplicati access:domain.com:8200 Remember to set password" 0 0
+         --msgbox "\nDuplicati access: domain.com:8200 Remember to set password" 0 0
          cronskip="yes"
          ;;
      Z)
