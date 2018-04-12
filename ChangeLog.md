@@ -9,7 +9,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### BETA 2
 - Added
   - Stopped the HTML folder from being left everytime you execute PG
-  - (SOLO HD) automatic creation of folders when selecting the edtion
+  - (SOLO HD) automatic creation of folders when selecting the edtion under /mnt/unionfs
 
 #### BETA 1
 SOLO HD Version is being able to use only 1 drive and no google drive.  Good for small collections; or watch and delete@
