@@ -1,0 +1,113 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+##########################################Install dependencies and create directory
+
+  - name: Update repositories cache and install "mono-devel" package
+    apt:
+      name: mono-devel
+      update_cache: yes
+
+  - name: create directory if they don't exist
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0775
+    with_items:
+      - /usr/lib/duplicati
+
+  - name: Fetch and unzip duplicati
+    unarchive:
+      src: https://updates.duplicati.com/beta/duplicati-2.0.3.3_beta_2018-04-02.zip
+      dest: /usr/lib/duplicati
+      remote_src: yes
+      mode: 0755
+
+##########################################Scripts
+
+  - name: Install Scripts
+    template:
+      src: duplicati-cli.js2
+      dest: /usr/bin/duplicati-cli
+      mode: 0755
+      force: yes
+
+  - name: Install Scripts
+    template:
+      src: duplicati-server.js2
+      dest: /usr/bin/duplicati-server
+      mode: 0755
+      force: yes
+
+  - name: Installing Scripts
+    template:
+      src: docker-stop.js2
+      dest: /opt/appdata/plexguide/docker-stop.sh
+      mode: 0755
+      force: yes
+
+  - name: Installing Scripts
+    template:
+      src: docker-start.js2
+      dest: /opt/appdata/plexguide/docker-start.sh
+      mode: 0755
+      force: yes
+
+##########################################Config
+
+  - name: Add config file for webgui
+    template:
+      src: duplicati-web.js2
+      dest: /etc/default/duplicati
+      mode: 0644
+      force: yes
+
+##########################################Services
+
+  - name: Check duplicati service
+    stat:
+      path: "/etc/systemd/system/duplicati.service"
+    register: duplicati
+
+  - name: Stop if duplicati service running
+    systemd:
+      name: duplicati
+      state: stopped
+    when: duplicati.stat.exists
+
+  - name: Install duplicati Service
+    template:
+      src: duplicati-service.js2
+      dest: /etc/systemd/system/duplicati.service
+      force: yes
+    when: duplicati.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd:
+      name: duplicati
+      state: stopped
+      daemon_reload: yes
+      enabled: no
+
+  - name: Start duplicati
+    systemd:
+      name: duplicati
+      state: started
+      enabled: yes

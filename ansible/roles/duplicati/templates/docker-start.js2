@@ -1,0 +1,6 @@
+#!/bin/bash
+
+##Start all docker containers##
+
+docker start $(docker ps -a)
+exit
