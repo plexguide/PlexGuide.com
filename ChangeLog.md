@@ -6,6 +6,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - None
 
+#### BETA 1
+- Improved Solo HD Version, ready for testing
+- Fixes made to mp4 conversion
+- duplicati role added by Mr. Wens
+
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.

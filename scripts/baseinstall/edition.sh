@@ -28,7 +28,7 @@ TITLE="Select Your Edition!"
 
 OPTIONS=(A "GDrive Edition"
          B "HD Multiple Edition (TEST)"
-         C "HD Solo Edition     (TEST)"
+         C "HD Solo Edition     (BETA)"
          D "Mini FAQ"
          Z "Exit")
 
