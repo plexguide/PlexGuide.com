@@ -18,7 +18,7 @@
 
 ############################################################################# MINI MENU SELECTION - START
 export NCURSES_NO_UTF8_ACS=1
-clear
+
 HEIGHT=10
 WIDTH=42
 CHOICE_HEIGHT=3
@@ -40,7 +40,7 @@ case $CHOICE in
             exit 
             ;;
         A)
-            echo "yes" /tmp/menu.choice
+            echo "yes" > /tmp/menu.choice
             exit
             ;;
 
