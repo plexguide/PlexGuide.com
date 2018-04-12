@@ -62,7 +62,7 @@
     template:
       src: duplicati-web.js2
       dest: /etc/default/duplicati
-      mode: 0755
+      mode: 0644
       force: yes
 
 ##########################################Services
@@ -73,7 +73,9 @@
     register: duplicati
 
   - name: Stop if duplicati service running
-    systemd: state=stopped name=duplicati
+    systemd:
+      name: duplicati
+      state: stopped
     when: duplicati.stat.exists
 
   - name: Install duplicati Service
