@@ -30,7 +30,6 @@ OPTIONS=(A "Server Network Benchmarks"
          D "View Services"
          Z "Exit")
 
-
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
