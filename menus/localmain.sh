@@ -46,9 +46,9 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
 clear
-HEIGHT=14
+HEIGHT=15
 WIDTH=40
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
