@@ -52,10 +52,11 @@ if [ "$deploy" == "drive" ]
   systemctl disable move 1>/dev/null 2>&1
   systemctl disable unionfs 1>/dev/null 2>&1
   systemctl deamon-reload 1>/dev/null 2>&1
-
+    
   #### Build Certain Paths
+  dialog --infobox "Building Folders!" 0 0 &>/dev/null &
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo
-
+  sleep 2
   #### Creates a  Symbolic Link
   #ln -s "/mnt/move/" "/mnt/unionfs" 1>/dev/null 2>&1
 echo "drive" > /var/plexguide/pg.server.deploy
