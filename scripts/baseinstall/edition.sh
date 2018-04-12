@@ -48,6 +48,17 @@ case $CHOICE in
       else
          echo "PG Edition: GDrive" > /var/plexguide/pg.edition
          bash /opt/plexguide/scripts/menu.sh
+      
+        ### Confirm yes or no to skip back to menu 
+        bash /opt/plexguide/scripts/menus/confirm.sh  
+        menu=$( cat /tmp/menu.choice )
+        bash
+        if [ "$edition" == "menu" ]
+          then
+          bash /opt/plexguide/menus/localmain.sh
+          exit
+        fi
+
       fi
 
       exit
@@ -62,8 +73,18 @@ case $CHOICE in
          echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
          #bash /opt/plexguide/menus/localmain.sh
          bash /opt/plexguide/scripts/menu.sh
-      fi
 
+        ### Confirm yes or no to skip back to menu 
+        bash /opt/plexguide/scripts/menus/confirm.sh  
+        menu=$( cat /tmp/menu.choice )
+        bash
+        if [ "$edition" == "menu" ]
+          then
+          bash /opt/plexguide/menus/localmain.sh
+          exit
+        fi
+
+      fi
       exit
       ;;
 
@@ -74,9 +95,18 @@ case $CHOICE in
          echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
       else
          echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
-         bash /opt/plexguide/scripts/menu.sh
-      fi
+        
+        ### Confirm yes or no to skip back to menu 
+        bash /opt/plexguide/scripts/menus/confirm.sh  
+        menu=$( cat /tmp/menu.choice )
+        bash
+        if [ "$edition" == "menu" ]
+          then
+          bash /opt/plexguide/menus/localmain.sh
+          exit
+        fi
 
+      fi
       exit
       ;;
     D)
