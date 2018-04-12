@@ -106,7 +106,7 @@ emby () {
 ## duplicati 
 curl -i -s -m 5 $ip:8200 -o html \
   && grep -q '<title>Backup</title>' html \
-  && echo "duplicati Has No Password On $ip:8200"  >> /var/plexguide/nopassword
+  && echo "Duplicati Has No Password On $ip:8200"  >> /var/plexguide/nopassword
 
 
 #medusa () {
