@@ -27,6 +27,7 @@ if [ "$deploy" == "drives" ]
     clear 1>/dev/null 2>&1
   else
 ############################################################################# MINI MENU SELECTION - END
+    dialog --title "-- Solo Deployment --" --msgbox "\nWe have detected that you are setting up or establishing the Multi-HD Deployment!\n\nClick OK to Continue!" 0 0
 
   #Ensure Solo Edition's Path is /mnt
   #if [ "$edition" == "PG Edition: HD Solo" ]
