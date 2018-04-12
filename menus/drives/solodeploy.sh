@@ -54,25 +54,7 @@ if [ "$deploy" == "drive" ]
   systemctl deamon-reload 1>/dev/null 2>&1
 
   #### Build Certain Paths
-  chmod 775 /mnt/unionfs 1>/dev/null 2>&1
-  chmod 775 /mnt/move 1>/dev/null 2>&1
-  chown 1000:1000 /mnt/unionfs 1>/dev/null 2>&1
-  chown 1000:1000 /mnt/move 1>/dev/null 2>&1
-  
-  mkdir /mnt/unionfs/tv 1>/dev/null 2>&1
-  mkdir /mnt/unionfs/movies 1>/dev/null 2>&1
-  mkdir /mnt/unionfs/ebooks 1>/dev/null 2>&1
-  mkdir /mnt/unionfs/music 1>/dev/null 2>&1
-
-  chmod 775 /mnt/unionfs/tv 1>/dev/null 2>&1
-  chmod 775 /mnt/unionfs/movies 1>/dev/null 2>&1
-  chmod 775 /mnt/unionfs/ebooks 1>/dev/null 2>&1
-  chmod 775 /mnt/unionfs/music 1>/dev/null 2>&1
-
-  chown 1000:1000 /mnt/unionfs/tv 1>/dev/null 2>&1
-  chown 1000:1000 /mnt/unionfs/movies 1>/dev/null 2>&1
-  chown 1000:1000 /mnt/unionfs/ebooks 1>/dev/null 2>&1
-  chown 1000:1000 /mnt/unionfs/music 1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo
 
   #### Creates a  Symbolic Link
   #ln -s "/mnt/move/" "/mnt/unionfs" 1>/dev/null 2>&1
