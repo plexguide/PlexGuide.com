@@ -74,6 +74,7 @@ case $CHOICE in
         then
         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
         echo "drives" > /var/pg.server.deploy
+        bash /opt/plexguide/menus/drives/multideploy.sh
         bash /opt/plexguide/menus/localmain.sh
         exit
       else 
@@ -96,6 +97,7 @@ case $CHOICE in
         then
         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
         echo "drive" > /var/pg.server.deploy
+        bash /opt/plexguide/menus/drives/solodeploy.sh
         bash /opt/plexguide/menus/localmain.sh
         exit
       else 
