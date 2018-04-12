@@ -43,9 +43,7 @@ if [ "$deploy" == "drive" ]
         echo "/mnt" > /var/plexguide/server.hd.path
         bash /opt/plexguide/scripts/baseinstall/rebuild.sh
     fi
-
-    ##### Create a Symbolic Link
-    ln -s "/mnt/move" "/mnt/unionfs"  
+  
   fi
 
   #### Disable Certain Services #### put a detect move.service file here later
@@ -55,5 +53,7 @@ if [ "$deploy" == "drive" ]
   systemctl disable unionfs 1>/dev/null 2>&1
   systemctl deamon-reload 1>/dev/null 2>&1
 
+  ##### Creates a  Symbolic Link
+  ln -s "/mnt/move/" "/mnt/unionfs" 1>/dev/null 2>&1
 echo "drive" > /var/plexguide/pg.server.deploy
 fi
