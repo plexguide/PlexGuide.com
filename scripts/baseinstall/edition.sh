@@ -59,7 +59,7 @@ case $CHOICE in
               
                 ### Make a Move Choice
                 HEIGHT=12
-                WIDTH=36
+                WIDTH=44
                 CHOICE_HEIGHT=5
                 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
                 TITLE="Select Your Edition!"
@@ -76,10 +76,12 @@ case $CHOICE in
 
                 case $CHOICE in
                 A)
+                dialog --title "Quick Note" --msgbox "\nTo /mnt/old your DATA for storage it goes!" 0 0
                 mkdir /mnt/old 1>/dev/null 2>&1
                 mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
                 ;;
                 B)
+                dialog --title "Quick Note" --msgbox "\nTo /mnt/move your DATA for uploading it goes!" 0 0
                 mv /mnt/unionfs/* /mnt/move 1>/dev/null 2>&1
                 ;;
                 esac
