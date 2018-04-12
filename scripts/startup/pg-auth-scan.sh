@@ -103,6 +103,12 @@ emby () {
   && echo "An Emby User Has No Password On $ip:8096"
 }
 
+duplicati () {
+curl -i -s -m 5 $ip:8200 -o html \
+  && grep -q '"authType": "none"' html \
+  && echo "duplicati Has No Password On $ip:8200"  >> /var/plexguide/nopassword
+}
+
 #medusa () {
 #curl -i -m 5 -s $ip:8081 -o html
 #  if [[ $(cat html | wc -l) -gt 20 ]]; then
