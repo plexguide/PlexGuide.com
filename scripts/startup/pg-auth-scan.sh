@@ -100,7 +100,7 @@ curl -i -s -m 5 $ip:5076 -o html \
 emby () {
   curl -i -s -m 5 $ip:8096/emby/users/public -o html \
   && grep -q '"HasPassword":false' \
-  && echo "An Emby User Has No Password On $ip:8096"
+  && echo "An Emby User Has No Password On $ip:8096" >> /var/plexguide/nopassword
 }
 
 duplicati () {
