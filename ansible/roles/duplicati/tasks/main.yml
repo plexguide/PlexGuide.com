@@ -78,9 +78,9 @@
 
   - name: Install duplicati Service
     template:
-    src: duplicati-service.js2
-    dest: /etc/systemd/system/duplicati.service
-    force: yes
+      src: duplicati-service.js2
+      dest: /etc/systemd/system/duplicati.service
+      force: yes
     when: duplicati.stat.exists == False
 
   - name: Daemon-Reload
