@@ -7,9 +7,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - None
 
 #### BETA 1
+SOLO HD Version is being able to use only 1 drive and no google drive.  Good for small collections; or watch and delete@
+
 - Improved Solo HD Version, ready for testing
 - Fixes made to mp4 conversion
 - duplicati role added by Mr. Wens
+- Clean up some of the menus
+- Added checkers to Solo HD Version
 
 -------------------------------------------------------
 ## Past Changes
