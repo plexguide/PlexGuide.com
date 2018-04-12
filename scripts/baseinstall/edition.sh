@@ -52,13 +52,13 @@ case $CHOICE in
         then
 
           ### If SOLO Drive was active before, important to move item to an old folder
-          #deploy=$( cat /var/pg.server.deploy )
-          #if [ "$deploy" == "drive"]
-            #then
+          deploy=$( cat /var/pg.server.deploy )
+          if [ "$deploy" == "drive"]
+            then
               dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs are moving to /mnt/old!\n\nYou are moving from the SOLO HD edition to the GDrive Edition! You can move those items to /mnt/gdrive if you want them to upload!" 0 0
               mkdir /mnt/old 1>/dev/null 2>&1
               mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
-          #fi
+          fi
 
         ### Set Everything for GDrive Editon
         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
