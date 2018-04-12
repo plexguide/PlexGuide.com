@@ -10,6 +10,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Added Password Notice if using Duplicati
 - (SOLO HD) Improved Notifications
 - (SOLO HD) Added Troubleshooting to the Menu
+- (SOLO HD) Added Server Information to the MENU
 
 #### BETA 2
 - Added
