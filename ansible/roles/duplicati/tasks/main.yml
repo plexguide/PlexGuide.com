@@ -45,14 +45,14 @@
   - name: Install Scripts
     template:
       src: duplicati-cli.js2
-      dest: /usr/bin/duplicati-cli.sh
+      dest: /usr/bin/duplicati-cli
       mode: 0755
       force: yes
 
   - name: Install Scripts
     template:
       src: duplicati-server.js2
-      dest: /usr/bin/duplicati-server.sh
+      dest: /usr/bin/duplicati-server
       mode: 0755
       force: yes
 
