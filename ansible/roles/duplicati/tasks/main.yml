@@ -59,14 +59,14 @@
   - name: Installing Scripts
     template:
       src: docker-stop.js2
-      dest: /opt/appdata/plexguide
+      dest: /opt/appdata/plexguide/docker-stop.sh
       mode: 0755
       force: yes
 
   - name: Installing Scripts
     template:
       src: docker-start.js2
-      dest: /opt/appdata/plexguide
+      dest: /opt/appdata/plexguide/docker-start.sh
       mode: 0755
       force: yes
 
