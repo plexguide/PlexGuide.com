@@ -117,6 +117,6 @@ echo -n "" > /var/plexguide/nopassword
 applist=$(docker ps | awk '{print $NF}' | grep -v NAME)
 for app in $applist; do $app &>/dev/null; done
 
-
+rm -r html
 
 exit 0
