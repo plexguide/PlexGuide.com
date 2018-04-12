@@ -50,12 +50,12 @@ case $CHOICE in
         bash /opt/plexguide/menus/confirm.sh  
         menu=$( cat /tmp/menu.choice )
         bash
-        if [ "$edition" == "menu" ]
+        if [ "$menu" == "yes" ]
           then
           bash /opt/plexguide/menus/localmain.sh
           exit
         fi
-        
+
       else
          echo "PG Edition: GDrive" > /var/plexguide/pg.edition
          bash /opt/plexguide/scripts/menu.sh
