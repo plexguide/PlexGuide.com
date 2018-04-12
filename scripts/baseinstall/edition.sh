@@ -113,4 +113,4 @@ case $CHOICE in
       exit
       ;;
 esac
-bash /opt/plexguide/scripts/baseinstall/edition.sh  
+#bash /opt/plexguide/scripts/baseinstall/edition.sh  
