@@ -23,11 +23,15 @@
       name: mono-devel
       update_cache: yes
 
-  - name: Create directory
-    file: /usr/lib/duplicati
-    state: directory
-    mode: 0775
-    recurse: yes
+  - name: create directory if they don't exist
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0775
+    with_items:
+      - /usr/lib/duplicati
 
   - name: Fetch and unzip duplicati
     unarchive:
