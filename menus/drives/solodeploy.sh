@@ -31,6 +31,8 @@ if [ "$deploy" == "drive" ]
   #Ensure Solo Edition's Path is /mnt
   if [ "$edition" == "PG Edition: HD Solo" ]
     then
+    dialog --title "-- Solo Deployment --" --msgbox "\nWe have detected that you are setting up or establishing the Solo HD Deployment!\n\nClick OK to Continue!" 0 0
+
     #### If not /mnt, it will go through this process to change it!
     if [ "$path" == "/mnt" ] 
       then
