@@ -54,11 +54,12 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "PG Program Suite"
          B "PG HD Setup"
-         C "PG Troubleshooting Actions"
-         D "PG Settings"
-         E "PG Update"
-         F "PG Edition Switch"
-         G "Donation Menu"
+         C "PG Server Information"
+         D "PG Troubleshooting Actions"
+         E "PG Settings"
+         F "PG Update"
+         G "PG Edition Switch"
+         H "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -84,19 +85,23 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
         C)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/infodrives.sh 
+            ;;
         D)
-            bash /opt/plexguide/menus/settings/drives.sh
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh 
             ;;
         E)
+            bash /opt/plexguide/menus/settings/drives.sh
+            ;;
+        F)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        F)
+        G)
             rm -r /var/plexguide/pg.edition 
             bash /opt/plexguide/scripts/baseinstall/edition.sh 
             exit 0 ;;
-        G)
+        H)
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
