@@ -111,4 +111,3 @@
       name: duplicati
       state: started
       enabled: yes
-    when: duplicati.stat.exists
