@@ -52,7 +52,7 @@ case $CHOICE in
         then
 
         ### If SOLO Drive was active before, important to move item to an old folder
-        deploy=$( cat /var/pg.server.deploy  )
+        deploy=$( cat /var/pg.server.deploy )
         if [ "$deploy" == "drive"]
         then
         dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs are moving to /mnt/old!\n\nYou are moving from the SOLO HD edition to the GDrive Edition! You can move those items to /mnt/gdrive if you want them to upload!" 0 0
