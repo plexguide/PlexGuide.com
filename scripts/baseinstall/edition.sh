@@ -72,7 +72,7 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
         echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
-        bash /opt/plexguide/menus/main.sh
+        bash /opt/plexguide/menus/localmain.sh
         exit
       else 
         bash /opt/plexguide/scripts/baseinstall/edition.sh  
@@ -93,7 +93,7 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
-        bash /opt/plexguide/menus/main.sh
+        bash /opt/plexguide/menus/localmain.sh
         exit
       else 
         bash /opt/plexguide/scripts/baseinstall/edition.sh  
