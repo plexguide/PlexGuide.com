@@ -92,7 +92,7 @@
     stat:
       path: "/etc/systemd/system/duplicati.service"
     register: duplicati
-   tags: duplicati
+    tags: duplicati
 
   - name: Stop if duplicati service running
     systemd:
