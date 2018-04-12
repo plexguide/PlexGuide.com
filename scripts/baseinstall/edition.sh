@@ -42,7 +42,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     A)
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working one may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
       bash /opt/plexguide/menus/confirm.sh 
 
@@ -133,6 +132,7 @@ case $CHOICE in
       menu=$( cat /tmp/menu.choice )
       if [ "$menu" == "yes" ]
         then
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
         echo "drive" > /var/pg.server.deploy
         bash /opt/plexguide/menus/drives/solodeploy.sh
