@@ -44,19 +44,6 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 #systemctl disable move 1>/dev/null 2>&1
 #systemctl deamon-reload 1>/dev/null 2>&1
 
-#### Solo Drive Edition
-if [ "$edition" == "PG Edition: HD Solo" ]
-  then
-    deploy2=drive 
-    if [ "$deploy" == "$deploy2" ]
-    then
-      clear 1>/dev/null 2>&1
-    else
-    dialog --title "-- NOTE --" --msgbox "\nTime to Deploy the Solo HD Setup!" 0 0
-    fi
-fi
-
-
 export NCURSES_NO_UTF8_ACS=1
 clear
 HEIGHT=13
