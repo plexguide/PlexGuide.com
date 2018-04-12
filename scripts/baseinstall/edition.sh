@@ -41,18 +41,19 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      bash /opt/plexguide/menus/confirm.sh
-      echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+      rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
+      bash /opt/plexguide/menus/confirm.sh 
 
       ### Confirm yes or no to skip back to menu    
       menu=$( cat /tmp/menu.choice )
-
       if [ "$menu" == "yes" ]
         then
         bash /opt/plexguide/menus/localmain.sh
+      else 
+        bash /opt/plexguide/scripts/baseinstall/edition.sh  
         exit
       fi
-        
+
       exit
       ;;
 
