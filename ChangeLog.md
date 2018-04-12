@@ -6,14 +6,20 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - None
 
+#### BETA 2
+- Added
+  - Stopped the HTML folder from being left everytime you execute PG
+  - (SOLO HD) automatic creation of folders when selecting the edtion
+
 #### BETA 1
 SOLO HD Version is being able to use only 1 drive and no google drive.  Good for small collections; or watch and delete@
 
-- Improved Solo HD Version, ready for testing 
-- Fixes made to mp4 conversion (check wiki) - credit: allergictopineapple
-- duplicati role added by Mr. Wens
-- Clean up some of the menus
-- Added checkers to Solo HD Version (First BETA for it)
+- Added 
+ - Improved Solo HD Version, ready for testing 
+ - Fixes made to mp4 conversion (check wiki) - credit: allergictopineapple
+ - duplicati role added by Mr. Wens
+ - Clean up some of the menus
+ - Added checkers to Solo HD Version (First BETA for it)
 
 -------------------------------------------------------
 ## Past Changes
