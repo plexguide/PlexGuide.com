@@ -48,6 +48,7 @@ case $CHOICE in
       menu=$( cat /tmp/menu.choice )
       if [ "$menu" == "yes" ]
         then
+        echo "PG Edition: GDrive" > /var/plexguide/pg.edition
         bash /opt/plexguide/menus/main.sh
         exit
       else 
