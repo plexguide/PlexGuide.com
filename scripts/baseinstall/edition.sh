@@ -27,8 +27,8 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
 
 OPTIONS=(A "GDrive Edition"
-         B "HD Multiple Edition (TEST)"
-         C "HD Solo Edition     (BETA)"
+         B "HD Solo Edition"
+         C "HD Multiple Edition (TEST)"
          D "Mini FAQ"
          Z "Exit")
 
@@ -62,7 +62,7 @@ case $CHOICE in
       exit
       ;;
 
-    B)
+    C)
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
 
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
@@ -85,7 +85,7 @@ case $CHOICE in
       exit
       ;;
 
-    C)
+    B)
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
 
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
