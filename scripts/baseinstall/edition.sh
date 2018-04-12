@@ -45,10 +45,7 @@ case $CHOICE in
       if [ -e "$file" ]
       then
          echo "PG Edition: GDrive" > /var/plexguide/pg.edition
-      else
-         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
-         bash /opt/plexguide/scripts/menu.sh
-      
+
         ### Confirm yes or no to skip back to menu 
         bash /opt/plexguide/scripts/menus/confirm.sh  
         menu=$( cat /tmp/menu.choice )
@@ -58,7 +55,10 @@ case $CHOICE in
           bash /opt/plexguide/menus/localmain.sh
           exit
         fi
-
+        
+      else
+         echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+         bash /opt/plexguide/scripts/menu.sh
       fi
 
       exit
