@@ -22,6 +22,7 @@
     apt:
       name: mono-devel
       update_cache: yes
+    tags: duplicati
 
   - name: create directory if they don't exist
     file:
@@ -32,6 +33,7 @@
       mode: 0775
     with_items:
       - /usr/lib/duplicati
+    tags: duplicati
 
   - name: Fetch and unzip duplicati
     unarchive:
@@ -39,7 +41,7 @@
       dest: /usr/lib/duplicati
       remote_src: yes
       mode: 0755
-
+    tags: duplicati
 ##########################################Scripts
 
   - name: Install Scripts
@@ -48,6 +50,7 @@
       dest: /usr/bin/duplicati-cli
       mode: 0755
       force: yes
+    tags: duplicati
 
   - name: Install Scripts
     template:
@@ -55,6 +58,7 @@
       dest: /usr/bin/duplicati-server
       mode: 0755
       force: yes
+    tags: duplicati
 
   - name: Installing Scripts
     template:
@@ -62,6 +66,7 @@
       dest: /opt/appdata/plexguide/docker-stop.sh
       mode: 0755
       force: yes
+    tags: duplicati
 
   - name: Installing Scripts
     template:
@@ -69,6 +74,7 @@
       dest: /opt/appdata/plexguide/docker-start.sh
       mode: 0755
       force: yes
+    tags: duplicati
 
 ##########################################Config
 
@@ -78,6 +84,7 @@
       dest: /etc/default/duplicati
       mode: 0644
       force: yes
+    tags: duplicati
 
 ##########################################Services
 
@@ -85,12 +92,14 @@
     stat:
       path: "/etc/systemd/system/duplicati.service"
     register: duplicati
+    tags: duplicati
 
   - name: Stop if duplicati service running
     systemd:
       name: duplicati
       state: stopped
     when: duplicati.stat.exists
+    tags: duplicati
 
   - name: Install duplicati Service
     template:
@@ -98,6 +107,7 @@
       dest: /etc/systemd/system/duplicati.service
       force: yes
     when: duplicati.stat.exists == False
+    tags: duplicati
 
   - name: Daemon-Reload
     systemd:
@@ -105,9 +115,11 @@
       state: stopped
       daemon_reload: yes
       enabled: no
+    tags: duplicati
 
   - name: Start duplicati
     systemd:
       name: duplicati
       state: started
       enabled: yes
+    tags: duplicati
