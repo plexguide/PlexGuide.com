@@ -3,7 +3,7 @@
 [Website](https://plexguide.com) | [Wiki](https://wiki.plexguide.com/books) | [Install](https://plexguide.com/threads/plexguide-install-instructions.243/) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Reddit](https://www.reddit.com/r/plexguide/) | [YouTube](https://plexguide.com/threads/youtube-videos.436/) | [Newcomers](https://plexguide.com/threads/for-pg-newcomers.653/) | [Discord](https://plexguide.com/threads/your-discord-invite.769/) | [Donate](https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate)
 
 ### PlexGuide Mission Statement ###
-PlexGuide is an all-in-one media solution that deploys a Media Server through the use of Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
+PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your LOCAL or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
 [![N|Demo](https://wiki.plexguide.com/uploads/images/gallery/2018-03-Mar/scaled-840-0/pleguide1.png)](https://plexguide.com)
 
