@@ -180,6 +180,7 @@ sleep 2
         bash /opt/plexguide/menus/donate/main.sh
     fi
 
+touch /var/plexguide/server.hd.role.yes
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 echo "PG Install is Complete" > /tmp/pushover
