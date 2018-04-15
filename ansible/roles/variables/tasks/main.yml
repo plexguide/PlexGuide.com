@@ -23,12 +23,10 @@
 - name: Role Yes
   file: path=/var/plexguide/server.hd.role.yes state=touch owner=root group=root mode=0600
   when: check.stat.exists is defined and not check.stat.exists
-  ignore_errors: yes
 
 - name: Default Mount 
   shell: "echo /mnt > /var/plexguide/server.hd.path"
-  when: check.stat.exists == False
-  ignore_errors: yes
+  when: check.stat.exists is defined and not check.stat.exists
 
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
