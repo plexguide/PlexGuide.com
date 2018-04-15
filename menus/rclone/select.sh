@@ -1,17 +1,6 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
-file="/root/.config/rclone/rclone.conf"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un --skip-tags rclone &>/dev/null &
-   dialog --infobox "RCLONE:  Installing a Dummy Starter File\n\nOne Time Deal! DummyProofing!            " 0 0
-   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_un --skip-tags rclone 1>/dev/null 2>&1
-   sleep 2
-fi
-
 #############
 HEIGHT=10
 WIDTH=45
