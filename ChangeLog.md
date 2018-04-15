@@ -6,6 +6,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### DEV
 - None
 
+#### BETA 4
+- Added
+- Removed
+  - Dummy RClone File, this caused problems for some and wasn't needed!
+
 #### BETA 3
 - Added Password Notice if using Duplicati
 - (SOLO HD) Improved Notifications
