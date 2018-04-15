@@ -22,7 +22,7 @@
   register: check
 
 - name: Role Yes
-  shell: "touch /var/plexguide/server.hd.role.yes"
+  file: path=/var/plexguide/server.hd.role.yes state=touch owner=root group=root mode=0600
   when: check.stat.exists == False
   ignore_errors: yes
 
