@@ -46,6 +46,6 @@
   cron:
     name: "Cloudplow Clean"
     user: "root"
-    minute: "/15"
+    minute: "*/10"
     hour: "0"
     job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"
