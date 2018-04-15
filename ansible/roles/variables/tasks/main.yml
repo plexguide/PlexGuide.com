@@ -16,6 +16,21 @@
 #
 #################################################################################
 ---
+- name: Check server.hd.path exists
+  stat:
+    path: "/var/plexguide/server.hd.path.role"
+  register: check
+
+- name: Role Yes
+  shell: "touch /var/plexguide/server.hd.role.yes"
+  when: check.stat.exists == False
+  ignore_errors: yes
+
+- name: Default Mount 
+  shell: "echo > /var/plexguide/server.hd.path"
+  when: check.stat.exists == False
+  ignore_errors: yes
+
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
   register: domain

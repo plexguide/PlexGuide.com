@@ -1,4 +1,7 @@
 ---
+  - include_role:
+    name: variables
+
  ########### PlexDrive
   - name: PlexDrive Check
     stat:
@@ -81,34 +84,35 @@
       - /opt/appdata/plexguide
       - /var/plexguide
       - /var/plexguide/logs
-      - /mnt/deluge
-      - /mnt/deluge/temp
-      - /mnt/deluge/downloaded
-      - /mnt/deluge/torrent
-      - /mnt/rutorrents
-      - /mnt/rutorrents/downloads
-      - /mnt/move
-      - /mnt/move/tv
-      - /mnt/move/movies
-      - /mnt/move/music
-      - /mnt/nzbget
-      - /mnt/nzbget/completed
-      - /mnt/nzbget/completed/movies
-      - /mnt/nzbget/completed/music
-      - /mnt/nzbget/completed/tv
-      - /mnt/nzbget/completed/ebooks
-      - /mnt/nzbget/incomplete
-      - /mnt/nzbget/nzb
-      - /mnt/nzbget/queue
-      - /mnt/nzbget/tmp
-      - /mnt/nzbget/log
-      - /mnt/sab
-      - /mnt/sab/admin
-      - /mnt/sab/complete
-      - /mnt/sab/complete/tv
-      - /mnt/sab/complete/movies
-      - /mnt/sab/complete/music
-      - /mnt/sab/complete/ebooks
-      - /mnt/sab/incomplete
-      - /mnt/sab/nzb
-      - /mnt/sab/complete/ebooks
+      - "{{path.stdout}}/deluge"
+      - "{{path.stdout}}/deluge/temp"
+      - "{{path.stdout}}/deluge/downloaded"
+      - "{{path.stdout}}/deluge/torrent"
+      - "{{path.stdout}}/rutorrents"
+      - "{{path.stdout}}/rutorrents/downloads"
+      - "{{path.stdout}}/move"
+      - "{{path.stdout}}/move/tv"
+      - "{{path.stdout}}/move/movies"
+      - "{{path.stdout}}/move/music"
+      - "{{path.stdout}}/nzbget"
+      - "{{path.stdout}}/nzbget/completed"
+      - "{{path.stdout}}/nzbget/completed/movies"
+      - "{{path.stdout}}/nzbget/completed/music"
+      - "{{path.stdout}}/nzbget/completed/tv"
+      - "{{path.stdout}}/nzbget/completed/ebooks"
+      - "{{path.stdout}}/nzbget/incomplete"
+      - "{{path.stdout}}/nzbget/nzb"
+      - "{{path.stdout}}/nzbget/queue"
+      - "{{path.stdout}}/nzbget/tmp"
+      - "{{path.stdout}}/nzbget/log"
+      - "{{path.stdout}}/sab"
+      - "{{path.stdout}}/sab/admin"
+      - "{{path.stdout}}/sab/complete"
+      - "{{path.stdout}}/sab/complete/tv"
+      - "{{path.stdout}}/sab/complete/movies"
+      - "{{path.stdout}}/sab/complete/music"
+      - "{{path.stdout}}/sab/complete/ebooks"
+      - "{{path.stdout}}/sab/incomplete"
+      - "{{path.stdout}}/sab/nzb"
+      - "{{path.stdout}}/sab/complete/ebooks"
+    ignore_errors: yes
