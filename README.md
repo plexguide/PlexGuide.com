@@ -31,14 +31,15 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Apr 2018:**  DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
 
 ----------------------------------------------------------------------
-<p align="center">
-  <img src="https://plexguide.com/demo40.png" alt="Demo"/>
-</p>
-** PlexGuide Interface Demo**
 
----------------------------------
+<kbd>
+  <img src="https://plexguide.com/media/snip20180415_312-png.14/full">
+</kbd>
+
+
 - Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
 
--------------------------------------------------------
+----
+
 ** Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
 [![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
