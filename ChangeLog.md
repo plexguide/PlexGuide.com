@@ -7,7 +7,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - None
 
 #### BETA 4
-- Added
 - Changed
   - Fixed broken 2nd HD Link
 - Removed
