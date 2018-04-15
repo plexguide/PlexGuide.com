@@ -15,15 +15,22 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+#docker logs --tail 20 traefik 2> /var/plexguide/status.traefik1
+#dock=$( cat /var/plexguide/status.traefik1 )
+
+#string='*with a certificate.'
+#if [[ $string = *"with a certificate"* ]]; then
+#  echo "certificate" > /var/plexguide/status.traefik1
+#else
+#  echo "nope" > /var/plexguide/status.traefik1
+#fi
+
 docker logs --tail 20 traefik 2> /var/plexguide/status.traefik1
 dock=$( cat /var/plexguide/status.traefik1 )
-
-string='*with a certificate.'
-if [[ $string = *"with a certificate"* ]]; then
-  echo "certificate" > /var/plexguide/status.traefik1
-else
-  echo "nope" > /var/plexguide/status.traefik1
-fi
+dock=${dock#*responded with a} 
+dock=${dock::-1}
+echo $dock | head -c 1
+echo $dock > /var/plexguide/status.traefik1
 
 ######### path to call script
 #bash /opt/plexguide/menus/traefik/cert2.sh
