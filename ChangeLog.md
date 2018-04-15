@@ -5,6 +5,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### RC1
 - Ensured that folders are created with the correct permissions if 2nd HD is utilized
+- Ansible Duplicate Key Error Gone
 
 #### BETA 4
 - Changed
