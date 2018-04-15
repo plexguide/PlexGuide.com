@@ -143,6 +143,20 @@ case $CHOICE in
         else
           dialog --title "No Traefik" --msgbox "\nYou Decided to Exit without making any choices!\n\nWarning, No Version of Traefik has Installed! Visit settings to fix anytime!" 0 0
           touch /var/plexguide/base.domain
+          exit
+    fi
+
+    #### Checks to See if Either Traefik Exisxts
+    docker logs traefik2 2> /var/plexguide/traefik.error2
+    docker logs traefik 2> /var/plexguide/traefik.error1
+    error2=$( cat /var/plexguide/traefik.error2 )
+    error2=${error2::-1}
+    error1=$( cat /var/plexguide/traefik.error1 )
+
+    #### If neither one exist, displays message below; if does executes the stuff under else
+    if [ "$error2" == "$error1" ]
+      then
+        dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto http://domains.plexguide.com for Info!" 0 0
     fi
       exit
       ;;
