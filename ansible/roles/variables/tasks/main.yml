@@ -17,13 +17,12 @@
 #################################################################################
 ---
 - name: Check server.hd.path exists
-  stat:
-    path: "/var/plexguide/server.hd.path.role.yes"
+  stat: path=/var/plexguide/server.hd.path.role.yes
   register: check
 
 - name: Role Yes
   file: path=/var/plexguide/server.hd.role.yes state=touch owner=root group=root mode=0600
-  when: check.stat.exists == False
+  when: check.stat.exists is defined and not check.stat.exists
   ignore_errors: yes
 
 - name: Default Mount 
