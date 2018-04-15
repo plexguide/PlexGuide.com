@@ -43,7 +43,6 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 ** Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
 
 ----
-
 [![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
 
 ----
