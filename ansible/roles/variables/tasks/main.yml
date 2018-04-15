@@ -27,7 +27,7 @@
   ignore_errors: yes
 
 - name: Default Mount 
-  shell: "echo /mnt/ > /var/plexguide/server.hd.path"
+  shell: "echo /mnt > /var/plexguide/server.hd.path"
   when: check.stat.exists == False
   ignore_errors: yes
 
