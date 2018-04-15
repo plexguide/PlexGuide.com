@@ -3,8 +3,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.070] (Beta, Release Candiate & DEV)
 
-#### DEV
-- None
+#### RC1
+- Ensured that folders are created with the correct permissions if 2nd HD is utilized
 
 #### BETA 4
 - Changed
