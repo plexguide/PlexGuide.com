@@ -46,7 +46,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
-        bash /opt/plexguide/menus/settings/drives.sh
+        bash /opt/plexguide/menus/traefik/main.sh
         ;;
     B)
         #### Solo Drive Edition
