@@ -64,6 +64,9 @@
         exit
     fi
 
+    ### Ensure Location Get Stored for Variables Role
+    echo "$path" > /var/plexguide/server.hd.path
+
     ##### Symbolic Link
     #path="/mnt/hd2"
     rm -r "/mnt/move" 1>/dev/null 2>&1
