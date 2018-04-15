@@ -22,7 +22,7 @@ string='*with a certificate.'
 if [[ $string = *"with a certificate"* ]]; then
   echo "certificate" > /var/plexguide/status.traefik1
 else
-  echo "nope" > /var/plexguide/status.traefik2
+  echo "nope" > /var/plexguide/status.traefik1
 fi
 
 ######### path to call script
