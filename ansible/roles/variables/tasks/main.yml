@@ -18,7 +18,7 @@
 ---
 - name: Check server.hd.path exists
   stat:
-    path: "/var/plexguide/server.hd.path.role"
+    path: "/var/plexguide/server.hd.path.role.yes"
   register: check
 
 - name: Role Yes
