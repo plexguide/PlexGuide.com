@@ -7,6 +7,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Added
   - Ensured that folders are created with the correct permissions if 2nd HD is utilized
   - Startup Menu: Error Control was added and display if Traefik is not installed (incase bonehead uninstalled traefik)
+  - Domains/Traefik: User exits with no version of Traefik Installed, it reminds them again!
 - Changed
   - Fixed Solo HD Domain setup in settings; would go to wrong area prior
   - Adjusted Traefik startup variables, would give a false positive
