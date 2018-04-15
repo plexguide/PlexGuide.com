@@ -14,7 +14,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Removed
   - Ansible Duplicate Key Error Gone
 
-
 #### BETA 4
 - Changed
   - Fixed broken 2nd HD Link
