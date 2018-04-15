@@ -8,6 +8,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 #### BETA 4
 - Added
+- Changed
+  - Fixed broken 2nd HD Link
 - Removed
   - Dummy RClone File, this caused problems for some and wasn't needed!
 
