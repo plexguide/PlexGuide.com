@@ -32,6 +32,7 @@ error1=$( cat /var/plexguide/traefik.error1 )
 if [ "$error2" == "$error1" ]
   then
     echo "\nWARNING: Traefik is not installed!" > /var/plexguide/status.traefik.cert
+    cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
   else
   	
   	#### Version 1 or 2 Display
@@ -60,10 +61,5 @@ if [ "$error2" == "$error1" ]
 	fi
 
 fi
-
-
-
-
-
 
 dialog --title "PG Startup Variable Page" --msgbox "\n$edition\nPG Version: $version\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
