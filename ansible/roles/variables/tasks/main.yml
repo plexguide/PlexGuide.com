@@ -16,18 +16,6 @@
 #
 #################################################################################
 ---
-- name: Check server.hd.path exists
-  stat: path=/var/plexguide/server.hd.path.role.yes
-  register: check
-
-- name: Role Yes
-  file: path=/var/plexguide/server.hd.role.yes state=touch owner=root group=root mode=0600
-  when: check.stat.exists is defined and not check.stat.exists
-
-- name: Default Mount 
-  shell: "echo /mnt > /var/plexguide/server.hd.path"
-  when: check.stat.exists is defined and not check.stat.exists
-
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
   register: domain
