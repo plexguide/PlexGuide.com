@@ -7,6 +7,14 @@
 ### PlexGuide Mission Statement ###
 PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your LOCAL or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
+----
+
+<kbd>
+  <img src="https://plexguide.com/media/snip20180415_312-png.14/full">
+</kbd>
+
+----
+
 [![N|Demo](https://wiki.plexguide.com/uploads/images/gallery/2018-03-Mar/scaled-840-0/pleguide1.png)](https://plexguide.com)
 
 [![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://plexguide.com/forums/pg-scripting.94/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://plexguide.com/forums/development.14/)
@@ -29,14 +37,6 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 * **Feb 2018:**  Jackalblood CoFounder Advances Project
 * **Mar 2018:**  Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
 * **Apr 2018:**  DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
-
-----
-
-<kbd>
-  <img src="https://plexguide.com/media/snip20180415_312-png.14/full">
-</kbd>
-
-----
 
 ** Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
 [![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
