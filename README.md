@@ -9,9 +9,11 @@ PlexGuide is an all-in-one media solution that deploys a Media Server through th
 
 ----
 
+<p align="center">
 <kbd>
   <img src="https://plexguide.com/media/snip20180415_312-png.14/full">
 </kbd>
+</p>
 
 ----
 
