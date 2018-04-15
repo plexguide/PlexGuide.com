@@ -31,7 +31,7 @@ error1=$( cat /var/plexguide/traefik.error1 )
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$error2" == "$error1" ]
   then
-    dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed! Warning, goto http://domains.plexguide.com for Info!" 0 0
+    dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto http://domains.plexguide.com for Info!" 0 0
   else
     #### This results in providing which version of Traefik one is using
     version=$( cat /var/plexguide/provider )
