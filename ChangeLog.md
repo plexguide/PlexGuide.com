@@ -4,8 +4,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.070] (Beta, Release Candiate & DEV)
 
 #### RC1
-- Ensured that folders are created with the correct permissions if 2nd HD is utilized
-- Ansible Duplicate Key Error Gone
+- Added
+  - Ensured that folders are created with the correct permissions if 2nd HD is utilized
+- Changed
+  - Adjusted Traefik startup variables, would give a false positive
+- Removed
+  - Ansible Duplicate Key Error Gone
+
 
 #### BETA 4
 - Changed
