@@ -21,7 +21,7 @@ echo
 echo
 cat /opt/plexguide/scripts/docker-no/superstatus/ART.txt
 echo
-echo "      Please Report Any Bugs Via Discord PM"
+echo "        Please Report Any Bugs Via Discord"
 echo "          Suggestions Are Also Welcome"
 echo -e "               \e[032mThanks For Testing.\e[0m "
 # check for requirements
