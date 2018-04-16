@@ -59,16 +59,17 @@
     image: "linuxserver/nextcloud"
     pull: yes
     published_ports:
-      - "4645:80"
+      - "127.0.0.1:4645:443"
       #- "{{ports.stdout}}4645:443"
     env:
-      PUID: 0
-      PGID: 0
+      PUID: 1000
+      PGID: 1000
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/tmp:/var/www/html/data"
-      - "/tmp:/var/www/html/custom_apps"
-      - "/mnt/data/nextcloud/config:/var/www/html/config"
+      - "/opt/appdata/nextcloud/data:/data"
+      - "/opt/appdata/nextcloud/conf:/config"
+      - "/mnt:/mnt"
+      - "{{path.stdout}}:{{path.stdout}}"
     networks:
       - name: plexguide
         aliases:
@@ -79,4 +80,4 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:nextcloud.{{domain.stdout}}"
-      traefik.port: "80"
+      traefik.port: "443"
