@@ -62,14 +62,13 @@
       - "4645:80"
       #- "{{ports.stdout}}4645:443"
     env:
-      PUID: 1000
-      PGID: 1000
+      PUID: 0
+      PGID: 0
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/nextcloud/data:/data"
-      - "/opt/appdata/nextcloud/conf:/config"
-      - "/mnt:/mnt"
-      - "{{path.stdout}}:{{path.stdout}}"
+      - "/tmp:/var/www/html/data"
+      - "/tmp:/var/www/html/custom_apps"
+      - "/mnt/data/nextcloud/config:/var/www/html/config"
     networks:
       - name: plexguide
         aliases:
