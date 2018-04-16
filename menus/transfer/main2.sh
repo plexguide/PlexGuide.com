@@ -29,9 +29,8 @@ do
 CHOICE=$(
 whiptail --title "Transfer Performance" --menu "Make your choice" 12 38 5 \
     "1)" "Use MULTI-DRIVE SPEED TRANSFER"  \
-    "2)" "Use SPEED TRANSFER"  \
-    "3)" "BACK TO NORMAL TRANSFER"  \
-    "4)" "Exit  "  3>&2 2>&1 1>&3
+    "2)" "BACK TO NORMAL TRANSFER"  \
+    "3)" "Exit  "  3>&2 2>&1 1>&3
 )
 
 result=$(whoami)
@@ -65,19 +64,6 @@ case $CHOICE in
     ;;
 
     "2)")
-    clear
-    systemctl stop move
-    systemctl disable move
-    systemctl stop supertransfer
-    systemctl disable supertransfer
-    systemctl daemon-reload
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags transfer
-    echo ""
-    echo "Speeds are UNCAPPED - Thanks for TESTING"
-    read -n 1 -s -r -p "Press any key to continue "
-    ;;
-
-    "3)")
     clear
     systemctl daemon-reload
     systemctl enable move
