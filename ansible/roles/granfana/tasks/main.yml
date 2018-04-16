@@ -34,7 +34,7 @@
       - "8086:8086"
       - "8083:8083"
     volumes:
-      - "/opt/appdata/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
+      - "/opt/appdata:/etc/influxdb/influxdb.conf:ro"
     env:
       ADMIN_USER: root
       INFLUXDB_INIT_PWD: testpassword
