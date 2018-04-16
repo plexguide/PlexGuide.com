@@ -14,12 +14,12 @@
 #
 #################################################################################
 
-source simple_curses.sh
-source rnjesus.sh
-source system_status.sh
+source /opt/plexguide/scripts/docker-no/superstatus/simple_curses.sh
+source /opt/plexguide/scripts/docker-no/superstatus/rnjesus.sh
+source /opt/plexguide/scripts/docker-no/superstatus/system_status.sh
 echo
 echo
-cat ART.txt
+cat /opt/plexguide/scripts/docker-no/superstatus/ART.txt
 echo
 echo "     Please Report Any Bugs Via Discord PM"
 echo "         Suggestions Are Also Welcome"

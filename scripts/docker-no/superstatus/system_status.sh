@@ -179,7 +179,6 @@ tac $rclone_log | grep -m1 Transferring -B20 | grep '*' | cut -f2 -d'*' \
 		> /tmp/rclone
 
 # transfer progress bar calc
-rclone_log=/root/bashsimplecurses/rclone
 tac $rclone_log | grep -m1 Transferring -B20 | grep '*' \
 		| cut -f2 -d':' | cut -f1 -d'%'\
 		> /tmp/rclone_tmp
