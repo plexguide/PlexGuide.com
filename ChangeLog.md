@@ -3,6 +3,11 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.070] (Beta, Release Candiate & DEV)
 
+#### RC2
+- Added
+  - @Flicker-Rate's PGStatus Program & Command
+  - Minor Bug Fixes
+
 #### RC1
 - Added
   - Superstatus (PG status monitor) Beta 1.0 added
