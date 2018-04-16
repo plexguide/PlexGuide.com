@@ -15,9 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-HEIGHT=9
+HEIGHT=10
 WIDTH=59
-CHOICE_HEIGHT=3
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="SUPERSPEED by Flicker-Rate"
 MENU="Make Your Selection Choice:"
