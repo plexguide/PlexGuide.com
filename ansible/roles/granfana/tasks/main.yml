@@ -24,6 +24,28 @@
     name: granfana
     state: absent
 
+- name: Database
+  docker_container:
+    name: influxdb
+    image: tutum/influxdb
+    pull: yes
+    cpu_shares: 128
+    published_ports:
+      - "8086:8086"
+      - "8083:8083"
+    volumes:
+      - "/opt/appdata/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
+    env:
+      - ADMIN_USER: root
+      - INFLUXDB_INIT_PWD: testpassword
+      - PRE_CREATE_DB: my_db
+    networks:
+      - name: plexguide
+        aliases:
+          - influxdb
+    restart_policy: always
+    state: started
+
 - name: Granfana
   docker_container:
     name: granfana
