@@ -79,29 +79,29 @@ case $c in
             && sleep 1.5 && sudo apt install expect -y
 
          # run tcl expect on rclone config
-              expect - "$clientid" "$clientsecret" "$gdrive_name"<<'EOF'
-                  lassign $argv clientid clientsecret gdrive_name
-                  spawn /usr/bin/rclone config
-                  expect "New remote"
-                  send "n\r"
-                  expect "name>"
-                  send "$gdrive_name\r"
-                  expect "11 / Google Drive"
-                  send "11\r"
-                  expect "client_id>"
-                  send "$clientid\r"
-                  expect "client_secret>"
-                  send "$clientsecret\r"
-                  expect "scope>"
-                  send "1\r"
-                  expect "root_folder_id>"
-                  send "/\r"
-                  expect "service_account_file>"
-                  send "\r"
-                  expect "y/n>"
-                  send "n\r"
-                  interact "\r" return
-              EOF
+              # expect - "$clientid" "$clientsecret" "$gdrive_name"<<'EOF'
+              #     lassign $argv clientid clientsecret gdrive_name
+              #     spawn /usr/bin/rclone config
+              #     expect "New remote"
+              #     send "n\r"
+              #     expect "name>"
+              #     send "$gdrive_name\r"
+              #     expect "11 / Google Drive"
+              #     send "11\r"
+              #     expect "client_id>"
+              #     send "$clientid\r"
+              #     expect "client_secret>"
+              #     send "$clientsecret\r"
+              #     expect "scope>"
+              #     send "1\r"
+              #     expect "root_folder_id>"
+              #     send "/\r"
+              #     expect "service_account_file>"
+              #     send "\r"
+              #     expect "y/n>"
+              #     send "n\r"
+              #     interact "\r" return
+              # EOF
       ;;
 
   m) rclone config ;;
