@@ -6,14 +6,14 @@
 #
 #create_buffer patch by Laurent Bachelier
 #
-#restriction to local variables and 
+#restriction to local variables and
 #rename variables to ones which will not collide
 #by Markus Mikkolainen
 #
 #support for bgcolors by Markus Mikkolainen
 #
-#support for delay loop function (instead of sleep, 
-#enabling keyboard input) by Markus Mikkolainen 
+#support for delay loop function (instead of sleep,
+#enabling keyboard input) by Markus Mikkolainen
 
 bsc_create_buffer(){
     local BUFFER_DIR
@@ -24,7 +24,7 @@ bsc_create_buffer(){
         BUFFER_DIR="$TMPDIR"
     else
         BUFFER_DIR="/tmp"
-    fi 
+    fi
     local buffername
     [[ "$1" != "" ]] &&  buffername=$1 || buffername="bashsimplecurses"
 
@@ -71,7 +71,7 @@ bsc_term_init(){
 bsc__nl(){
     BSC_POSY=$((BSC_POSY+1))
     tput cup $BSC_POSY $BSC_POSX >> $BSC_BUFFER
-    #echo 
+    #echo
 }
 
 
@@ -141,9 +141,9 @@ window(){
     local color
     local bgcolor
     title=$1
-    color=$2        
+    color=$2
     bgcolor=$4
-    tput cup $BSC_POSY $BSC_POSX 
+    tput cup $BSC_POSY $BSC_POSX
     bsc_cols=$(tput cols)
     bsc_cols=$((bsc_cols))
     if [[ "$3" != "" ]]; then
@@ -176,7 +176,7 @@ window(){
     #set title color
     setcolor $color
     setbgcolor $bgcolor
-    
+
     echo $title
     setcolor
     setbgcolor
@@ -187,7 +187,7 @@ window(){
     bsc__nl
     #then draw bottom line for title
     addsep
-    
+
     BSC_LASTCOLS=$bsc_cols
 
 }
@@ -272,7 +272,7 @@ addsep (){
     setbgcolor $2
     local i
     for i in `seq 3 $bsc_cols`; do echo -ne $_HLINE; done
-    setcolor    
+    setcolor
     setbgcolor
     echo -ne $_SEPR
     bsc__nl
@@ -284,7 +284,7 @@ clean_line(){
     tput sc
     #tput el
     tput rc
-    
+
 }
 
 
@@ -318,7 +318,7 @@ blinkenlights(){
     text=$1
     color=$2
     color2=$3
-    incolor=$4  
+    incolor=$4
     bgcolor=$5
 
     declare -a params
@@ -340,12 +340,12 @@ blinkenlights(){
         params=( "${params[@]}" )
     done
 
-    bsc__multiappend "left" "[" $incolor $bgcolor $lights "]${text}" $incolor $bgcolor 
+    bsc__multiappend "left" "[" $incolor $bgcolor $lights "]" $incolor $bgcolor $white "${text}"
 }
 
 #
 #   vumeter <text> <width> <value> <max> [color] [color2] [inactivecolor] [bgcolor]
-#   
+#
 vumeter(){
     local done
     local todo
@@ -382,7 +382,7 @@ vumeter(){
     green=""
     red=""
     rest=""
-    
+
     for i in `seq 1 $(($done))`;do
         green="${green}|"
     done
@@ -393,8 +393,8 @@ vumeter(){
     for i in `seq 0 $(($todo))`;do
         rest="${rest}."
     done
-    [ "$red" == ""  ] && bsc__multiappend "left" "[" $incolor "black" "${green}" $okcolor "black" "${rest}]${text}" $incolor "black"
-    [ "$red" != ""  ] && bsc__multiappend "left" "[" $incolor "black" "${green}" $okcolor "black" "${red}" $overcolor "black" "${rest}]${text}" $incolor "black"
+    [ "$red" == ""  ] && bsc__multiappend "left" "[" $incolor "black" "${green}" $okcolor "black" "${rest}]" $incolor "black" $white "${text}" "black"
+    [ "$red" != ""  ] && bsc__multiappend "left" "[" $incolor "black" "${green}" $okcolor "black" "${red}" $overcolor "black" "${rest}]" $incolor "black" $white "${text}" "black"
 }
 #
 #
@@ -415,7 +415,7 @@ progressbar(){
     spinvar=$(cat /tmp/rclone_spinner)
     [[ $spinvar == '' ]] && spinvar=4
     len=$(( len - 2 ))
-    
+
     done=$(( progress * len / max))
     todo=$(( len - done - 1))
     modulo=$(( $spinvar % 4 ))
@@ -458,7 +458,7 @@ bsc__multiappend(){
         text="${text}${params[0]}"
         unset params[0]
         unset params[1]
-        unset params[2]    
+        unset params[2]
         params=( "${params[@]}" )
     done
     clean_line
@@ -467,7 +467,7 @@ bsc__multiappend(){
     len=$(echo "$text" | wc -c )
     len=$((len-1))
     bsc_left=$((BSC_LASTCOLS/2 - len/2 -1))
-    
+
     params=( "$@")
     [[ "${params[0]}" == "left" ]] && bsc_left=0
     unset params[0]
@@ -477,7 +477,7 @@ bsc__multiappend(){
         setcolor "${params[1]}"
         setbgcolor "${params[2]}"
         echo -ne "${params[0]}"
-        setcolor    
+        setcolor
         setbgcolor
         unset params[0]
         unset params[1]
@@ -500,14 +500,14 @@ bsc__append(){
     len=$(echo "$1" | wc -c )
     len=$((len-1))
     bsc_left=$((BSC_LASTCOLS/2 - len/2 -1))
-    
+
     [[ "$2" == "left" ]] && bsc_left=0
 
     tput cuf $bsc_left
     setcolor $3
     setbgcolor $4
     echo -e "$1"
-    setcolor    
+    setcolor
     setbgcolor
     tput rc
     tput cuf $((BSC_LASTCOLS-1))
@@ -525,15 +525,15 @@ append_tabbed(){
     local len
     len=$(echo "$1" | wc -c )
     len=$((len-1))
-    bsc_left=$((BSC_LASTCOLS/$2)) 
+    bsc_left=$((BSC_LASTCOLS/$2))
 
     setcolor $4
     setbgcolor $5
-    local i 
+    local i
     for i in `seq 0 $(($2))`; do
         tput rc
         tput cuf $((bsc_left*i+1))
-        echo "`echo $1 | cut -f$((i+1)) -d"$delim"`" | cut -c 1-$((bsc_left-2)) 
+        echo "`echo $1 | cut -f$((i+1)) -d"$delim"`" | cut -c 1-$((bsc_left-2))
     done
 
     setcolor
@@ -587,11 +587,11 @@ main_loop (){
     while [[ 1 ]];do
         tput cup 0 0 >> $BSC_BUFFER
         tput il $(tput lines) >>$BSC_BUFFER
-        main >> $BSC_BUFFER 
-        tput cup $(tput lines) $(tput cols) >> $BSC_BUFFER 
+        main >> $BSC_BUFFER
+        tput cup $(tput lines) $(tput cols) >> $BSC_BUFFER
         refresh
         if ! [[ $time =~ $number_re ]] ; then
-            #call function with name $time 
+            #call function with name $time
             eval $time
             retval=$?
             [ "$retval" == "0" ] || {
@@ -600,7 +600,7 @@ main_loop (){
             }
         else
             sleep $time
-        fi   
+        fi
         BSC_POSX=0
         BSC_POSY=0
     done
