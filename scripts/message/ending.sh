@@ -44,6 +44,7 @@ cat << "EOF"
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
 │ Update to Dev Version:    pgdev     │
+│ [32m*NEW*[0m PG System Monitor:  pgstatus  │
 └─────────────────────────────────────┘
 
 EOF

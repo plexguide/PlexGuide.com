@@ -21,9 +21,9 @@ echo
 echo
 cat /opt/plexguide/scripts/docker-no/superstatus/ART.txt
 echo
-echo "     Please Report Any Bugs Via Discord PM"
-echo "         Suggestions Are Also Welcome"
-echo -e "              \e[032mThanks For Testing.\e[0m "
+echo "      Please Report Any Bugs Via Discord PM"
+echo "          Suggestions Are Also Welcome"
+echo -e "               \e[032mThanks For Testing.\e[0m "
 # check for requirements
 declare -a dep=("vmstat" "route" "tput" "docker" "free" "sar" "python3")
 for prog in ${dep[@]}; do
