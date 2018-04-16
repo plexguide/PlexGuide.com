@@ -36,15 +36,12 @@ clear
 
 ############################################# RCLONE
 ## Executes RClone Config
-choice1(){
 echo 'a) Automatic Rclone Config (warning: in development)'
 echo 'm) Manual Rclone Config'
 echo 'w) Take Me To The PG Install Guide Wiki'
 echo 'e) Exit Rclone Config'
 read -p 'a/m/w/e>' c
-}
 
-choice1
 case $c in
   a)
     echo "Do You Have a Google Buisness/Enterprise/Student Account with:"
@@ -73,9 +70,9 @@ case $c in
          read -p 'Enter your Client Secret: ' clientsecret
          # validate id
          [[ $(echo $clientid | wc -c) > 60 && $(echo $clientid | grep 'apps.googleusercontent.com') ]] || \
-          echo "Invalid Client ID!" && read -p 'Press any key to try again... ' && choice1
+          echo "Invalid Client ID!" && read -p 'Press any key to try again... ' && exit 1
          [[ $(echo $clientsecret | wc -c) > 17 ]] || \
-          echo "Invalid Client Secret!" && read -p 'Press any key to try again... ' && choice1
+          echo "Invalid Client Secret!" && read -p 'Press any key to try again... ' && exit 1
 
          # check if tcl expect is avaible & install if needed
          [[ ! $(which expect) ]] && echo -e "Missing Dependency: expect\nInstalling..." \
@@ -113,7 +110,9 @@ case $c in
      read -p 'Press any key to continue... '
      choice1 ;;
   e) bash /opt/plexguide/menus/main.sh ;;
-  *) echo "Try Again" && choice1 ;;
+  *) echo "Invalid Choice"
+     read -p 'Press any key to continue... '
+     exit 1 ;;
 esac
 
 # allows others to access fuse
