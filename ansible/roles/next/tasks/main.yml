@@ -58,8 +58,8 @@
     name: nextcloud
     image: "linuxserver/nextcloud"
     pull: yes
-    #published_ports:
-      #- "127.0.0.1:4645:443"
+    published_ports:
+      - "4645:80"
       #- "{{ports.stdout}}4645:443"
     env:
       PUID: 1000
