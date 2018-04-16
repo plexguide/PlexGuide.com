@@ -25,7 +25,7 @@ echo "        Please Report Any Bugs Via Discord"
 echo "          Suggestions Are Also Welcome"
 echo -e "               \e[032mThanks For Testing.\e[0m "
 # check for requirements
-declare -a dep=("vmstat" "route" "tput" "docker" "free" "sar" "python3")
+declare -a dep=("vmstat" "route" "tput" "docker" "free" "sar" "python3" "lsof" "shuf" "seq" "awk" "sed" "egrep")
 for prog in ${dep[@]}; do
 	which $prog &>/dev/null || echo "ERROR: Missing Dependency: $prog"
 	which $prog &>/dev/null || exit 1

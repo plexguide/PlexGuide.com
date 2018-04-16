@@ -58,12 +58,14 @@ rutorrent_dir='/mnt/rutorrent'
 while true; do
 	disk=$(cat /etc/fstab | grep -m1 " / " | cut -f5 -d' ')
 	maxdisk_bytes=$(df | grep $disk | awk '{print $2}')
+	[[ $maxdisk_bytes == '' ]] && maxdisk_bytes=1
 	echo $(df -BG | grep $disk | awk '{print $2}') > /tmp/maxdisk
 	echo $(df | grep $disk | awk '{print $5}' | sed 's/%//') > /tmp/local_disk_perc
 	echo $(df -BG | grep $disk | awk '{print $3}' | sed 's/G//') > /tmp/local_disk_current
 
 
 	move_size=$(du $move_dir | tail -1 | awk '{print $1}')
+	[[ $move_size == '' ]] && move_size=1
 	echo $(python3 -c "print(int($move_size/$maxdisk_bytes*100))") > /tmp/move_perc
 	echo $(du -h $move_dir | tail -1 | awk '{print $1}') > /tmp/move_hr
 
@@ -73,6 +75,7 @@ while true; do
 		# nzbget size calc
 		if [[ $(grep nzbget /tmp/applist) ]]; then
 			nzbget_size=$(du $nzbget_dir | tail -1 | awk '{print $1}')
+			[[ $nzbget_size == '' ]] && nzbget_size=1
 			python3 -c "print(int($nzbget_size/$maxdisk_bytes*100))" > /tmp/nzbget_perc
 			du -h $nzbget_dir | tail -1 | awk '{print $1}' > /tmp/nzbget_hr
 		fi
@@ -80,6 +83,7 @@ while true; do
 		# sabnzbd size calc
 		if [[ $(grep sabnzbd /tmp/applist) ]]; then
 			sabnzbd_size=$(du $sabnzbd_dir | tail -1 | awk '{print $1}')
+			[[ $sabnzbd_size == '' ]] && sabnzbd_size=1
 			python3 -c "print(int($sabnzbd_size/$maxdisk_bytes*100))" > /tmp/sabnzbd_perc
 			du -h $sabnzbd_dir | tail -1 | awk '{print $1}' > /tmp/sabnzbd_hr
 		fi
@@ -87,6 +91,7 @@ while true; do
 		# deluge size calc
 		if [[ $(grep deluge /tmp/applist) ]]; then
 			deluge_size=$(du $deluge_dir | tail -1 | awk '{print $1}')
+			[[ $deluge_size == '' ]] && deluge_size=1
 			python3 -c "print(int($deluge_size/$maxdisk_bytes*100))" > /tmp/deluge_perc
 			du -h $deluge_dir | tail -1 | awk '{print $1}' > /tmp/deluge_hr
 		fi
@@ -94,6 +99,7 @@ while true; do
 		# rutorrent size calc
 		if [[ $(grep rutorrent /tmp/applist) ]]; then
 			rutorrent_size=$(du $rutorrent_dir | tail -1 | awk '{print $1}')
+			[[ $rutorrent_size == '' ]] && rutorrent_size=1
 			python3 -c "print(int($rutorrent_size/$maxdisk_bytes*100))" > /tmp/rutorrent_perc
 			du -h $rutorrent_dir | tail -1 | awk '{print $1}' > /tmp/rutorrent_hr
 		fi
@@ -260,6 +266,7 @@ for dir in ${dirlist[@]}; do
 done
 # sum junk file size
 junksum=$(awk '{sum += $1} END {print sum}' /tmp/filelist_buffer_calc_tmp)
+[[ $junksum == '' ]] && junksum=1
 echo "$(python3 -c "print(round($junksum/1000000, 2))")GB" > /tmp/filelist_buffer_calc
 # filter out junk files
 cat /tmp/filelist_buffer_tmp | egrep -iv "sample|nfo|iso|unpack|proof|sup" > /tmp/filelist_buffer_PP
