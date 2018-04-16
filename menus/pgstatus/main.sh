@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [PG BaseInstall]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,5 +16,9 @@
 #
 #################################################################################
 
-echo "5.070 DEV" > /var/plexguide/pg.version
-echo "56" > /var/plexguide/pg.preinstall
+  dialog --title "Flicker-Rate's PG Status" --msgbox "\nThis PROGRAM is an early BETA!\n\nOnce loaded, press CTRL+C to break out of it! We are working on a HOTKEY solution!\n\nIf you have ideas or solutions, visit us in the DISCORD or post on the Forums!\n\nThanks!\n\n@Flicker-Rate\n\nNOTE: You can type -- pgstatus -- in Termainal to access also!" 0 0
+
+
+  clear
+  bash pgstatus
+  

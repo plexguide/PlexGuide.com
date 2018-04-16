@@ -23,6 +23,7 @@
   - { role: support, tags: ['support'] }
   - { role: folders_solo, tags: ['folders_solo'] }
   - { role: organizr, tags: ['organizr'] }
+  - { role: granfana, tags: ['granfana'] }
   - { role: ombi, tags: ['ombi'] }
   - { role: ombi4k, tags: ['ombi4k'] }
   - { role: sickrage, tags: ['sickrage'] }
