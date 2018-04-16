@@ -33,7 +33,7 @@
     published_ports:
       - "{{ports.stdout}}3000:3000"
     env:
-      GF_SERVER_ROOT_URL: granfana.{{domain.stdout}}
+      #GF_SERVER_ROOT_URL:
       GF_SECURITY_ADMIN_PASSWORD: testpassword
       PUID: "1000"
       PGID: "1000"
