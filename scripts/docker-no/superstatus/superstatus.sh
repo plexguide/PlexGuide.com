@@ -74,7 +74,7 @@ main(){
 
 	# active transfer status
 	window "Active Transfers" "green" "33%"
-	if [[ $(cat /opt/plexguide/rclone) == '' ]]; then
+	if [[ -e /opt/appdata/plexguide/rclone ]]; then
 		append "ERROR: rclone log not found"
 		append "You may have to reinstall rclone to get the new patch"
 	elif [[ $(cat /tmp/active_transfers) != '' ]]; then
