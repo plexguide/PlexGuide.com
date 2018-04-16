@@ -24,7 +24,7 @@
     name: granfana
     state: absent
 
-- name: Database
+- name: INFLUXDB
   docker_container:
     name: influxdb
     image: tutum/influxdb
@@ -36,9 +36,9 @@
     volumes:
       - "/opt/appdata/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
     env:
-      - ADMIN_USER: root
-      - INFLUXDB_INIT_PWD: testpassword
-      - PRE_CREATE_DB: my_db
+      ADMIN_USER: root
+      INFLUXDB_INIT_PWD: testpassword
+      PRE_CREATE_DB: my_db
     networks:
       - name: plexguide
         aliases:
