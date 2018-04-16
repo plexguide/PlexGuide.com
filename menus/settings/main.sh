@@ -62,7 +62,7 @@ case $CHOICE in
     F)
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     G)
-        bash /opt/plexguide/menus/transfer/main.sh ;;
+        bash /opt/plexguide/menus/transfer/menu.sh ;;
     H)
         bash /opt/plexguide/menus/watchtower/main.sh ;;
     I)
