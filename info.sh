@@ -16,5 +16,5 @@
 #
 #################################################################################
 
-echo "5.070 RC 1" > /var/plexguide/pg.version
-echo "55" > /var/plexguide/pg.preinstall
+echo "5.070 RC2" > /var/plexguide/pg.version
+echo "56" > /var/plexguide/pg.preinstall
