@@ -18,5 +18,5 @@
 if [[ $(ps -ef | grep 'superstatus.sh' | grep -v "grep" | grep -v "vim" ) ]]; then
 	ps -ef | grep 'superstatus.sh' | grep -v "grep" | grep -v "vim" | awk '{print $2}' | xargs kill -9
 fi
-bash /opt/plexguide/scripts/docker-no/superstatus.sh
+bash /opt/plexguide/scripts/docker-no/superstatus/superstatus.sh
 exit 0
