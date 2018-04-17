@@ -32,27 +32,22 @@
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080
-
     volumes:
     - /:/rootfs:ro
     - /var/run:/var/run:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
     - /dev/disk/:/dev/disk:ro
-    
     env:
       PUID: 1000
       PGID: 1000
-      
     networks:
       - name: plexguide
         aliases:
           - cadvisor
-          
     restart_policy: always
-    
     labels:
-      traefik.enable: "false"
+      traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:cadvisor.{{domain.stdout}}"
       traefik.port: "19999"
