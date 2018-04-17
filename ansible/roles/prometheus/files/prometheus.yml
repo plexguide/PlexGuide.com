@@ -23,7 +23,6 @@ alerting:
     - targets:
       - "alertmanager:9093"
 
-# A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
@@ -35,8 +34,7 @@ scrape_configs:
 
     static_configs:
          - targets: ['localhost:9090']
-
-
+         
   - job_name: 'traefik'
 
     # Override the global default and scrape targets from this job every 5 seconds.
@@ -44,14 +42,6 @@ scrape_configs:
 
     static_configs:
          - targets: ['traefik:8080']
-
-#  - job_name: 'docker'
-#
-#    # Override the global default and scrape targets from this job every 5 seconds.
-#    scrape_interval: 5s
-#
-#    static_configs:
-#         - targets: ['localhost:9323']
 
   - job_name: 'netdata-scrape'
 
@@ -69,7 +59,7 @@ scrape_configs:
     - names: 
       - 'tasks.cadvisor'
       type: 'A'
-      port: 8080
+      port: 8082
 
-     static_configs:
-          - targets: ['cadvisor:8082']
+    static_configs:
+         - targets: ['cadvisor:8082']
