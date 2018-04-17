@@ -1,7 +1,21 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.070] (Beta, Release Candiate & DEV)
+### [5.071] (Beta, Release Candiate & DEV)
+
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.070] - 17 April 2018
+
+Note: Traefik v2 may say your certificate is not valid if it is.  Know the fix, but don't have time to fix yet.  Will be updated in version 5.071
+
+#### RC3 
+- Changed
+  - Flicker-Rate put some fixes to the pgstatus program
 
 #### RC2
 - Added
@@ -48,10 +62,6 @@ SOLO HD Version is being able to use only 1 drive and no google drive.  Good for
  - duplicati role added by Mr. Wens
  - Clean up some of the menus
  - Added checkers to Solo HD Version (First BETA for it)
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 #### [5.069] - 10 April 2018
 
