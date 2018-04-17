@@ -38,6 +38,7 @@ OPTIONS=(A "Couchpotato"
          H "Sonarr"
          I "Sonarr4k"
          J "Lazy Librarian"
+         K "Headphones"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -142,6 +143,15 @@ case $CHOICE in
       port=5299
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy &>/dev/null &
+      cronskip="no"
+      sleep 2
+      ;;
+    K)
+      display=Headphones
+      program=headphones
+      port=8081
+      dialog --infobox "Installing: $display" 3 30
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags headphones &>/dev/null &
       cronskip="no"
       sleep 2
       ;;

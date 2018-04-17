@@ -75,3 +75,4 @@
   - { role: airsonic, tags: ['airsonic'] }
   - { role: booksonic, tags: ['booksonic'] }
   - { role: duplicati, tags: ['duplicati'] }
+  - { role: headphones, tags: ['headphones'] }
