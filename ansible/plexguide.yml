@@ -7,10 +7,10 @@
   - { role: autodelete, tags: ['autodelete'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
-  - { role: netdata, tags: ['netdata,monitor'] }
-  - { role: cadvisor, tags: ['cadvisor,monitor'] }  
-  - { role: prometheus, tags: ['prometheus,monitor'] }
-  - { role: grafana, tags: ['grafana,monitor'] }
+  - { role: netdata, tags: ['netdata', 'monitor'] }
+  - { role: cadvisor, tags: ['cadvisor', 'monitor'] }  
+  - { role: prometheus, tags: ['prometheus', 'monitor'] }
+  - { role: grafana, tags: ['grafana', 'monitor'] }
   - { role: pushover, tags: ['pushover'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }

@@ -1,47 +1,58 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 ---
-- name: Create cadvisor docker user
-  user:
-    name: "{{ cadvisor_docker_user }}"
-    home: "{{ cadvisor_docker_directory }}"
-    createhome: yes
-    groups: docker
-    append: yes
-    shell: /bin/bash
-  become: yes
-  tags:
-    - cadvisor_docker
+- include_role:
+    name: variables
+    
+- name: Remove cadvisor Container
+  docker_container:
+    name: cadvisor
+    state: absent
 
-- name: Pull cadvisor docker image
-  docker_image:
-    name: "{{ cadvisor_docker_image_name }}:{{ cadvisor_docker_version }}"
-    force: "{{ cadvisor_docker_pull_images|bool }}"
-  become: yes
-  become_user: "{{ cadvisor_docker_user }}"
-  tags:
-    - cadvisor_docker
-    - cadvisor_docker_testing
+- name: Deploy cadvisor Container
+  docker_container:
+    name: cadvisor
+    image: "{{ cadvisor_docker_image_name }}:{{ cadvisor_docker_version }}"
+    pull: "{{ cadvisor_docker_pull_images|bool }}"
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080
 
-- name: Template docker-compose.yml
-  template:
-    src: docker-compose.yml.j2
-    dest: "{{ cadvisor_docker_directory }}/docker-compose.yml"
-    mode: 0750
-  become: yes
-  become_user: "{{ cadvisor_docker_user }}"
-  no_log: "{{ not cadvisor_docker_log_sensitive }}"
-  tags:
-    - cadvisor_docker
-    - cadvisor_docker_deploy
-    - cadvisor_docker_testing
-
-- name: Start cadvisor docker
-  docker_service:
-    project_src: "{{ cadvisor_docker_directory }}"
-    state: present
-  become: yes
-  become_user: "{{ cadvisor_docker_user }}"
-  register: start_cadvisor_docker
-  tags:
-    - cadvisor_docker
-    - cadvisor_docker_deploy
-    - cadvisor_docker_testing
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    - /dev/disk/:/dev/disk:ro
+    
+    env:
+      PUID: 1000
+      PGID: 1000
+      
+    networks:
+      - name: plexguide
+        aliases:
+          - cadvisor
+          
+    restart_policy: always
+    
+    labels:
+      traefik.enable: "false"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:cadvisor.{{domain.stdout}}"
+      traefik.port: "19999"

@@ -54,8 +54,8 @@ case $CHOICE in
 
 	B)
 		display=NETDATA-Advanced
-		export -a program="netdata cadvisor prometheus grafana"
-		export -a port="9090 8080 3000 9090"
+		export -a program="netdata"
+		export -a port="9090"
 		dialog --infobox "Installing: $display" 3 38
 		ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "monitor" &>/dev/null &
 		sleep 8
@@ -74,6 +74,7 @@ else
 	bash /opt/plexguide/menus/programs/support.sh
 fi 
 
+# 8080 3000 9090
 #rm -f /tmp/program
 #for prgm in $program; do
 #	echo "$prgm" >> /tmp/program
