@@ -206,7 +206,7 @@ update(){
 	deluge_perc=$(< /tmp/deluge_perc)
 	rutorrent_hr=$(< /tmp/rutorrent_hr)
 	rutorrent_perc=$(< /tmp/rutorrent_perc)
-	if [[ $(< /tmp/rclone_current) != 100 && $(< /tmp/netspeed_mbits | awk '{print $1}') != 0 ]]; then
+	if [[ $(< /tmp/rclone_current) != 100 && $(awk '{print $1}' /tmp/netspeed_mbits ) != 0 ]]; then
 		echo $(date +%s) > /tmp/rclone_spinner
 	fi
 

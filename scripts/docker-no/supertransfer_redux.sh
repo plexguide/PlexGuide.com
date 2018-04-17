@@ -67,7 +67,6 @@ detect_throttle() {
 		| awk '{print $4}' \
 		| sed 's/Mb//' \
 		| awk '{SUM += $1} END {print SUM}') # add all upload speeds together
-	[[ $upspeed == '' ]] && $upspeed=1
 	upspeed=$(python -c "print(int($upspeed+0))") # float & null val sanity check
 	echo "$upspeed" > /opt/appdata/plexguide/current_speed
 

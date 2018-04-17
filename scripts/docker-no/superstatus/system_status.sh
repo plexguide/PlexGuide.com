@@ -56,7 +56,7 @@ sabnzbd_dir='/mnt/sabnzbd'
 deluge_dir='/mnt/deluge'
 rutorrent_dir='/mnt/rutorrent'
 while true; do
-	disk=$(cat /etc/fstab | grep -m1 " / " | cut -f5 -d' ')
+	disk=$(grep -m1 " / " /etc/fstab | cut -f5 -d' ')
 	maxdisk_bytes=$(df | grep $disk | awk '{print $2}')
 	[[ $maxdisk_bytes == '' ]] && maxdisk_bytes=1
 	echo $(df -BG | grep $disk | awk '{print $2}') > /tmp/maxdisk
@@ -121,11 +121,11 @@ network_status(){
 interface=$(route | grep default | awk '{print $8}')
 interval=1
 while true; do
-		Rx1=$(cat /sys/class/net/$interface/statistics/rx_bytes)
-		Tx1=$(cat /sys/class/net/$interface/statistics/tx_bytes)
+		Rx1=$(< /sys/class/net/$interface/statistics/rx_bytes)
+		Tx1=$(< /sys/class/net/$interface/statistics/tx_bytes)
 		sleep $interval
-		Rx2=$(cat /sys/class/net/$interface/statistics/rx_bytes)
-		Tx2=$(cat /sys/class/net/$interface/statistics/tx_bytes)
+		Rx2=$(< /sys/class/net/$interface/statistics/rx_bytes)
+		Tx2=$(< /sys/class/net/$interface/statistics/tx_bytes)
 		TxPPS=$(( $Tx2 - $Tx1 ))
 		RxPPS=$(( $Rx2 - $Rx1 ))
 		TxMbps=`expr $TxPPS / 125000 / $interval`
@@ -171,8 +171,8 @@ done &
 transfer_queue_status(){
 declare -a dirlist=("/mnt/move/movies" "/mnt/move/tv")
 while true; do
-term_width=$(( $(cat /tmp/superstatus_cols) / 3 - 5))
-term_height=$(( $(cat /tmp/superstatus_lines) - 7))
+term_width=$(( $(< /tmp/superstatus_cols) / 3 - 5))
+term_height=$(( $(< /tmp/superstatus_lines) - 7))
 for dir in ${dirlist[@]}; do
 	slashcount=$(awk -F"/" '{print NF-1}' <<< ${dir})
 	find $dir -size +50M -type f | cut -f$(( $slashcount + 3)) -d'/' | grep -v '*' >> /tmp/filelist_buffer
@@ -188,7 +188,7 @@ tac $rclone_log | grep -m1 Transferring -B20 | grep '*' | cut -f2 -d'*' \
 tac $rclone_log | grep -m1 Transferring -B20 | grep '*' \
 		| cut -f2 -d':' | cut -f1 -d'%'\
 		> /tmp/rclone_tmp
-if [[ $(cat /tmp/rclone_tmp) != '' ]]; then
+if [[ $(< /tmp/rclone_tmp) != '' ]]; then
 	awk '{ sum += $1 } END { print sum }' /tmp/rclone_tmp > /tmp/rclone_current
 	echo $(( $(wc -l /tmp/rclone_tmp | awk '{print $1}') * 100)) > /tmp/rclone_max
 else
@@ -241,18 +241,18 @@ post_processing_queue_status(){
 
 # dynamically generate PP queue dirs to search
 declare -a dirlist=()
-[[ $(cat /tmp/applist | grep -i nzbget) ]] && \
+grep -iq nzbget /tmp/applist && \
 	dirlist+=("/mnt/nzbget/completed/movies" "/mnt/nzbget/completed/tv")
-[[ $(cat /tmp/applist | grep -i sabnzbd) ]] && \
+grep -iq sabnzbd /tmp/applist && \
 	dirlist+=("/mnt/sab/completed/movies" "/mnt/sab/completed/tv")
-[[ $(cat /tmp/applist | grep -i deluge) ]] && \
+grep -iq deluge /tmp/applist && \
 	dirlist+=("/mnt/deluge/downloaded")
-[[ $(cat /tmp/applist | grep -i rutorrent) ]] && \
+grep -iq rutorrent /tmp/applist && \
 	dirlist+=("/mnt/rutorrent/completed")
 
 while true; do
-term_width=$(( $(cat /tmp/superstatus_cols) / 3 - 5))
-term_height=$(( $(cat /tmp/superstatus_lines) - 15))
+term_width=$(( $(< /tmp/superstatus_cols) / 3 - 5))
+term_height=$(( $(< /tmp/superstatus_lines) - 15))
 for dir in ${dirlist[@]}; do
 	slashcount=$(awk -F"/" '{print NF-1}' <<< ${dir})
 	find $dir -type f | cut -f$(( $slashcount + 3)) -d'/' | grep -v '*' | sed '/^\s*$/d' >> /tmp/filelist_buffer_tmp
@@ -260,17 +260,17 @@ for dir in ${dirlist[@]}; do
 	# calc junk file size
 	find $dir -type f \( -iname "*.iso" -o -iname "*.nfo" \
 		-o -iname "*sample*" -o -iname "*unpack*" -o -iname "*proof*"\
-	        -o -iname "*.sup" \) \
+	  -o -iname "*.sup" \) \
 		-print0 | du --files0-from=- -c | tail -n1 | awk '{print $1}' \
-		>> /tmp/filelist_buffer_calc_tmp
+	  >> /tmp/filelist_buffer_calc_tmp
 done
 # sum junk file size
 junksum=$(awk '{sum += $1} END {print sum}' /tmp/filelist_buffer_calc_tmp)
 [[ $junksum == '' ]] && junksum=1
 echo "$(python3 -c "print(round($junksum/1000000, 2))")GB" > /tmp/filelist_buffer_calc
 # filter out junk files
-cat /tmp/filelist_buffer_tmp | egrep -iv "sample|nfo|iso|unpack|proof|sup" > /tmp/filelist_buffer_PP
-cat /tmp/filelist_buffer_tmp | egrep -i "sample|nfo|iso|unpack|proof|sup" | wc -l | awk '{print $1}' > /tmp/filelist_buffer_junk
+egrep -iv "sample|nfo|iso|unpack|proof|sup" /tmp/filelist_buffer_tmp > /tmp/filelist_buffer_PP
+egrep -ic "sample|nfo|iso|unpack|proof|sup" /tmp/filelist_buffer_tmp > /tmp/filelist_buffer_junk
 echo -n '' > /tmp/filelist_buffer_tmp
 echo -n '' > /tmp/filelist_buffer_calc_tmp
 # scale to term width & length
