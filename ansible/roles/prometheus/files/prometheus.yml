@@ -45,13 +45,13 @@ scrape_configs:
     static_configs:
          - targets: ['traefik:8080']
 
-  - job_name: 'docker'
-
-    # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
-
-    static_configs:
-         - targets: ['localhost:9323']
+#  - job_name: 'docker'
+#
+#    # Override the global default and scrape targets from this job every 5 seconds.
+#    scrape_interval: 5s
+#
+#    static_configs:
+#         - targets: ['localhost:9323']
 
   - job_name: 'netdata-scrape'
 
@@ -71,5 +71,5 @@ scrape_configs:
       type: 'A'
       port: 8080
 
-#     static_configs:
-#          - targets: ['cadvisor:8080']
+     static_configs:
+          - targets: ['cadvisor:8080']
