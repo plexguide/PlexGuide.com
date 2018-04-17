@@ -21,7 +21,6 @@
   - { role: transfer, tags: ['transfer'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: support, tags: ['support'] }
-  - { role: folders_solo, tags: ['folders_solo'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
   - { role: ombi4k, tags: ['ombi4k'] }
@@ -73,4 +72,5 @@
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
   - { role: booksonic, tags: ['booksonic'] }
-  - { role: duplicati, tags: ['duplicati'] }
+  - { role: prometheus, tags: ['prometheus'] }
+  - { role: grafana, tags: ['grafana'] }

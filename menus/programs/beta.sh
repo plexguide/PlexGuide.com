@@ -1,16 +1,15 @@
  #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
- HEIGHT=11
+ HEIGHT=10
  WIDTH=55
- CHOICE_HEIGHT=5
+ CHOICE_HEIGHT=4
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
- TITLE="Applications - Beta Programs"
+ TITLE="Applications - VPN Programs"
 
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"
           C "Use Local Storage - No GDrive Upload"
-          D "Duplicati - Advanced Backup"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -33,14 +32,6 @@ case $CHOICE in
      ;;
      C)
      bash /opt/plexguide/menus/programs/localstorage.sh ;;
-     D)
-         display=Duplicati
-         dialog --infobox "Installing: $display" 3 30
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
-         sleep 2
-         dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
-         cronskip="yes"
-         ;;
      Z)
         clear
         exit 0 ;;

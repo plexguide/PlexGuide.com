@@ -56,14 +56,9 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:radarr.{{domain.stdout}}"
       traefik.port: "7878"
-- name: Check autoProcess.ini
-  stat: 
-     path: "/opt/appdata/radarr/mp4_automator/autoProcess.ini"
-  register: autoProcess
 - name: Install autoProcess.ini
   template:
     src: autoProcess.ini
     dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
-  when: autoProcess.stat.exists == False

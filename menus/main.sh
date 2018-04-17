@@ -27,15 +27,15 @@ CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
-OPTIONS=(A "RClone & PlexDrive"
-         B "PG Program Suite"
-         C "PG Server Information"
-         D "PG Troubleshooting Actions"
-         E "PG Settings & Tools"
-         F "PG Backup & Restore"
-         G "PG Updates"
-         H "PG Edition Switch"
-         I "Donation Menu"
+OPTIONS=(A "Donation Menu"
+         B "RClone & PlexDrive"
+         C "PG Program Suite"
+         D "Server Information"
+         E "Troubleshooting Actions"
+         F "Settings & Tools"
+         G "Backup & Restore"
+         H "PG Updates"
+         I "PG Edition Switch"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -46,27 +46,27 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
+            bash /opt/plexguide/menus/donate/main.sh ;;
         B)
-            bash /opt/plexguide/menus/programs/main.sh ;;
+            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
         C)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/menus/programs/main.sh ;;
         D)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         E)
-            bash /opt/plexguide/menus/settings/main.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         F)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+            bash /opt/plexguide/menus/settings/main.sh ;;
         G)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        H)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        H)
+        I)
             rm -r /var/plexguide/pg.edition
             bash /opt/plexguide/scripts/baseinstall/edition.sh  
             exit 0 ;;
-        I)
-            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;

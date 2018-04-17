@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_role:
+    name: variables
+    
+- name: Remove Prometheus Container
+  docker_container:
+    name: prometheus
+    state: absent
+
+- name: Deploy Prometheus Container
+  docker_container:
+    name: prometheus
+    image: "prom/prometheus:latest"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+       - "{{ports.stdout}}9090:9090"
+    volumes:
+      - "/opt/appdata/prometheus/:/etc/prometheus"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/etc/prometheus'
+     # - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+     # - '--web.console.templates=/usr/share/prometheus/consoles'
+
+    env:
+      PUID: 1000
+      PGID: 1000
+    networks:
+      - name: plexguide
+        aliases:
+          - prometheus
+    restart_policy: always
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:prometheus.{{domain.stdout}}"
+      traefik.port: "9090"
+
+- name: ensure prometheus data directory owner is nobody
+  file: >
+    path="/opt/appdata/prometheus"
+    owner=nobody
+    group=nogroup
+    mode=0740
+    state=directory
+
+- name: copy prometheus config file
+  copy:
+    src="/opt/plexguide/ansible/roles/prometheus/templates/prometheus.yml"
+    dest="/opt/appdata/prometheus/prometheus.yml"
+
+- name: copy prometheus alert file
+  copy:
+    src="/opt/plexguide/ansible/roles/prometheus/templates/alert.rules"
+    dest="/opt/appdata/prometheus/alert.rules"

@@ -99,7 +99,7 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
             sleep 2
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Booksonic! If your Library is super huge, when it's backing up; it will shut down your Booksonic Container and could take several Minutes or Hours!" 0 0
+            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Boosonic! If your Library is super huge, when it's backing up; it will shut down your Booksonic Container and could take several Minutes or Hours!" 0 0
             cronskip=no
             ;;
         Z)
