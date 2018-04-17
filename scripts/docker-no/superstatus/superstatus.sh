@@ -25,11 +25,19 @@ echo "        Please Report Any Bugs Via Discord"
 echo "          Suggestions Are Also Welcome"
 echo -e "               \e[032mThanks For Testing.\e[0m "
 # check for requirements
-declare -a dep=("vmstat" "route" "tput" "docker" "free" "sar" "python3" "lsof" "shuf" "seq" "awk" "sed" "egrep")
+declare -a dep=("vmstat" "route" "tput" "docker" "free" "sar" "python3" "lsof" "shuf" "seq" "awk" "sed" "egrep" "tput")
 for prog in ${dep[@]}; do
 	which $prog &>/dev/null || echo "ERROR: Missing Dependency: $prog"
 	which $prog &>/dev/null || exit 1
 done
+
+# check if user is using custom move directories
+declare -a reqdir=("/mnt/move/movies" "/mnt/move/tv")
+for dir in ${reqdir[@]}; do
+	[[ -e $dir ]] || echo -e "ERROR: Missing Directory: $dir \nAre these the default directories?"
+	[[ -e $dir ]] || exit 1
+done
+
 # test for running apps
 docker ps | awk '{print $NF}' | grep -v NAMES > /tmp/applist
 # init vars
@@ -45,7 +53,7 @@ for init in ${initstat[@]}; do
 	y=0
 	i=1
 	sp="/-\|"
-	while [[ (( y < 9 )) || $(date +%s) -gt $(( $(cat /tmp/$init) + 4 ))  ]]; do
+	while [[ (( y < 9 )) || $(date +%s) -gt $(( $(< /tmp/$init) + 4 ))  ]]; do
 	((y++))
 	echo -en "[${sp:i++%${#sp}:1}]"
 	echo -en "  Initializing: $init"
@@ -56,7 +64,7 @@ for init in ${initstat[@]}; do
 	done
 	echo -en "\n"
 done
-echo "[!] Initializing: curses_library"
+echo "[!]  Initializing: curses_library"
 
 move_dir='/mnt/move'
 nzbget_dir='/mnt/nzbget'
@@ -77,22 +85,22 @@ main(){
 	if [[ ! -e /opt/appdata/plexguide/rclone ]]; then
 		append "ERROR: rclone log not found"
 		append "You may have to reinstall rclone to get the new patch"
-	elif [[ $(cat /tmp/active_transfers) != '' ]]; then
-		term_width=$(( $(cat /tmp/superstatus_cols) / 3 - 7))
-		progressbar $term_width $(cat /tmp/rclone_current) $(cat /tmp/rclone_max) "green" "grey"
+	elif [[ $(< /tmp/active_transfers) != '' ]]; then
+		term_width=$(( $(< /tmp/superstatus_cols) / 3 - 7))
+		progressbar $term_width $(< /tmp/rclone_current) $(< /tmp/rclone_max) "green" "grey"
 		append_file "/tmp/active_transfers"
 	else
 		append "-- rclone Inactive --"
 	fi
 
-	if [[ $(cat /tmp/queued_transfers) != '' ]]; then
+	if [[ $(< /tmp/queued_transfers) != '' ]]; then
 		addsep
 		append "Queued Transfers"
 		append_file "/tmp/queued_transfers"
 	fi
 
-	if [[ $(cat /tmp/queued_files_left) != '' ]]; then
-		append "$(cat /tmp/queued_files_left)"
+	if [[ $(< /tmp/queued_files_left) != '' ]]; then
+		append "$(< /tmp/queued_files_left)"
 	fi
 
 	endwin
@@ -110,20 +118,20 @@ main(){
 	endwin
 
 	window "Post Processing" "red" "33%"
-	if [[ $(cat /tmp/PP_queue) != '' ]]; then
+	if [[ $(< /tmp/PP_queue) != '' ]]; then
 		append_file "/tmp/PP_queue"
 	else
 		append "-- None --"
 	fi
 
-	if [[ $(cat /tmp/queued_files_left_PP) != '' ]]; then
-		filesleft=$(cat /tmp/queued_files_left_PP)
+	if [[ $(< /tmp/queued_files_left_PP) != '' ]]; then
+		filesleft=$(< /tmp/queued_files_left_PP)
 		append "$filesleft"
 	fi
 
-	if [[ $(cat /tmp/filelist_buffer_junk) != 0 ]]; then
+	if [[ $(< /tmp/filelist_buffer_junk) != 0 ]]; then
 		addsep
-		append "$(cat /tmp/filelist_buffer_junk) Junk Files @ $(cat /tmp/filelist_buffer_calc)"
+		append "$(< /tmp/filelist_buffer_junk) Junk Files @ $(< /tmp/filelist_buffer_calc)"
 	fi
 	endwin
 
@@ -132,7 +140,7 @@ main(){
 
 	# system status: cpu, mem, iowait, network
 	window "System Status" "magenta" "33%"
-		term_width_ss=$(( $(cat /tmp/superstatus_cols) / 3 - 16))
+		term_width_ss=$(( $(< /tmp/superstatus_cols) / 3 - 16))
 		vumeter " CPU $CPU_PERC%" "$term_width_ss" "$CPU_PERC" "100" "green" "red" "gray"
 		vumeter " MEM ${MEM_FREE}GB" "$term_width_ss" "$MEM_PERC" "100" "green" "red" "gray"
 		vumeter " IOWAIT $IO_PERC%" "$term_width_ss" "$IO_PERC" "50" "green" "red" "gray"
@@ -141,7 +149,7 @@ main(){
 
 	# disk space window
 	window "Disk Space" "magenta" "33%"
-		term_width_ds=$(( $(cat /tmp/superstatus_cols) / 3 - 20))
+		term_width_ds=$(( $(< /tmp/superstatus_cols) / 3 - 20))
 		# total disk size calc
 		vumeter " $LOCAL_DISK_CURRENT/$maxdisk Local" "$term_width_ds" "$LOCAL_PERC" "100" "green" "red" "gray"
 		# /mnt/move size calc
@@ -176,29 +184,29 @@ main(){
 update(){
 	up_speed=$(awk '{print $2}' /tmp/netspeed_kbits)
 	down_speed=$(awk '{print $1}' /tmp/netspeed_kbits)
-	term_width_b_gen=$(( $(cat /tmp/superstatus_cols) / 3 - 18))
+	term_width_b_gen=$(( $(< /tmp/superstatus_cols) / 3 - 18))
 	b_gen $term_width_b_gen 200000 $up_speed $down_speed
 	# system status
-	CPU_PERC=$(cat /tmp/CPU_PERC)
-	MEM_PERC=$(cat /tmp/MEM_PERC)
-	MEM_FREE=$(cat /tmp/MEM_FREE)
-	IO_PERC=$(cat /tmp/IO_PERC)
+	CPU_PERC=$(< /tmp/CPU_PERC)
+	MEM_PERC=$(< /tmp/MEM_PERC)
+	MEM_FREE=$(< /tmp/MEM_FREE)
+	IO_PERC=$(< /tmp/IO_PERC)
 	# disk space
-	LOCAL_PERC=$(cat /tmp/local_disk_perc)
-	LOCAL_DISK_CURRENT=$(cat /tmp/local_disk_current)
-	move_perc=$(cat /tmp/move_perc)
-	move_hr=$(cat /tmp/move_hr)
-	gdrive_size=$(cat /tmp/gdrive_size)
-	maxdisk=$(cat /tmp/maxdisk)
-	nzbget_hr=$(cat /tmp/nzbget_hr)
-	nzbget_perc=$(cat /tmp/nzbget_perc)
-	sabnzbd_hr=$(cat /tmp/sabnzbd_hr)
-	sabnzbd_perc=$(cat /tmp/sabnzbd_perc)
-	deluge_hr=$(cat /tmp/deluge_hr)
-	deluge_perc=$(cat /tmp/deluge_perc)
-	rutorrent_hr=$(cat /tmp/rutorrent_hr)
-	rutorrent_perc=$(cat /tmp/rutorrent_perc)
-	if [[ $(cat /tmp/rclone_current) != 100 && $(cat /tmp/netspeed_mbits | awk '{print $1}') != 0 ]]; then
+	LOCAL_PERC=$(< /tmp/local_disk_perc)
+	LOCAL_DISK_CURRENT=$(< /tmp/local_disk_current)
+	move_perc=$(< /tmp/move_perc)
+	move_hr=$(< /tmp/move_hr)
+	gdrive_size=$(< /tmp/gdrive_size)
+	maxdisk=$(< /tmp/maxdisk)
+	nzbget_hr=$(< /tmp/nzbget_hr)
+	nzbget_perc=$(< /tmp/nzbget_perc)
+	sabnzbd_hr=$(< /tmp/sabnzbd_hr)
+	sabnzbd_perc=$(< /tmp/sabnzbd_perc)
+	deluge_hr=$(< /tmp/deluge_hr)
+	deluge_perc=$(< /tmp/deluge_perc)
+	rutorrent_hr=$(< /tmp/rutorrent_hr)
+	rutorrent_perc=$(< /tmp/rutorrent_perc)
+	if [[ $(< /tmp/rclone_current) != 100 && $(< /tmp/netspeed_mbits | awk '{print $1}') != 0 ]]; then
 		echo $(date +%s) > /tmp/rclone_spinner
 	fi
 

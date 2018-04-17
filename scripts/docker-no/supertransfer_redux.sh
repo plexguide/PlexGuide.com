@@ -14,9 +14,12 @@
 #
 #################################################################################
 
-which rclone &>/dev/null || exit 1
-which iftop &>/dev/null || exit 1
-
+# check for requirements
+declare -a dep=("rclone" "iftop" "awk" "sed")
+for prog in ${dep[@]}; do
+	which $prog &>/dev/null || echo "ERROR: Missing Dependency: $prog"
+	which $prog &>/dev/null || exit 1
+done
 
 # GDRIVE THROTTLE DETECTION SETTINGS
 threshold_modifier=0	# adjust throttle detection threshold (+/- num) in Mb/s
@@ -33,8 +36,8 @@ local_dir='/mnt/move'
 remote_dir='/'		# set custom gdrive mapping (default: '/')
 
 # init
-cat /opt/appdata/plexguide/current_index | grep [0-9] || echo 0 > /opt/appdata/plexguide/current_index
-cat /opt/appdata/plexguide/current_gdrive | grep gdrive || echo gdrive > /opt/appdata/plexguide/current_gdrive
+grep [0-9] /opt/appdata/plexguide/current_index || echo 0 > /opt/appdata/plexguide/current_index
+grep gdrive /opt/appdata/plexguide/current_gdrive || echo gdrive > /opt/appdata/plexguide/current_gdrive
 touch /opt/appdata/plexguide/rclone
 chmod 755 /opt/appdata/plexguide/rclone
 
@@ -111,15 +114,15 @@ rclone_sync() {
 	}
 
 gdrive_switch() {
-	current_index=$(cat /opt/appdata/plexguide/current_index)
+	current_index=$(< /opt/appdata/plexguide/current_index)
 	gdrive_index=( $(rclone listremotes | sed 's/://' | grep -v crypt) )
 	if [[ current_index -ge $(( ${#gdrive_index[@]} - 1 )) ]]; then
 		echo 0 > /opt/appdata/plexguide/current_index
-		current_index=$(cat /opt/appdata/plexguide/current_index)
+		current_index=$(< /opt/appdata/plexguide/current_index)
 		echo ${gdrive_index[$current_index]} > /opt/appdata/plexguide/current_gdrive
 	else
 		echo $(( ++current_index )) > /opt/appdata/plexguide/current_index
-		current_index=$(cat /opt/appdata/plexguide/current_index)
+		current_index=$(< /opt/appdata/plexguide/current_index)
 		echo ${gdrive_index[$current_index]} > /opt/appdata/plexguide/current_gdrive
 	fi
 	echo "Switching Gdrives: $current_index $(date)" >> /opt/appdata/plexguide/supertransfer.log
@@ -134,60 +137,61 @@ current_transfers() {
 }
 
 # Throttle Detection Daemon
-	while true; do
+while true; do
 		if [[ $(detect_throttle) == "yes" ]]; then
-			echo "Potential Throttle Detected at $(cat /opt/appdata/plexguide/current_speed)Mbit/s"
+			echo "Potential Throttle Detected at $(< /opt/appdata/plexguide/current_speed)Mbit/s"
 			for i in $(seq $false_positive_checks); do
 				sleep $false_positive_wait
 				if [[ "$(detect_throttle)" == "yes" ]]; then
 					throttle_conf=$i
-					echo "Throttle Confirmation ($i/$false_positive_checks) $(cat /opt/appdata/plexguide/current_speed)Mbit/s"
+					current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
+					echo "$i/$false_positive_checks" > /tmp/${current_gdrive_var}_throttle_conf
+					echo "Throttle Confirmation ($i/$false_positive_checks) $(< /opt/appdata/plexguide/current_speed)Mbit/s"
 				else
-					echo "Throttle Confirmation ($i/$false_positive_checks) False Positive! $(cat /opt/appdata/plexguide/current_speed)Mbit/s"
+					echo '' > /tmp/${current_gdrive_var}_throttle_conf
+					echo "Throttle Confirmation ($i/$false_positive_checks) False Positive! $(< /opt/appdata/plexguide/current_speed)Mbit/s"
 					break
 				fi
 			done
 				if [[ throttle_conf -eq false_positive_checks ]]; then
-					echo "THROTTLING CONFIRMED: $(cat /opt/appdata/plexguide/current_speed)Mbit/s with $false_positive_checks Confirmations."
-						if [[ $(queued_transfers) -eq 1 ]]; then
-							echo "Nothing In Backlog. Currently Trickle Uploading 1 Item."
-							echo "Current Gdrive: $(cat /opt/appdata/plexguide/current_gdrive)"
-							break
-						elif [[ $transfer_type == 'multi' || $transfer_type == 'multi_crypt' ]]; then
+					echo "THROTTLING CONFIRMED: $(< /opt/appdata/plexguide/current_speed)Mbit/s with $false_positive_checks Confirmations."
+						if [[ $transfer_type == 'multi' || $transfer_type == 'multi_crypt' ]]; then
+							echo "Switching Gdrives to: $(< /opt/appdata/plexguide/current_gdrive)"
+							echo "$(date +%H:%M:%S) $(< /opt/appdata/plexguide/current_gdrive) THROTTLING CONFIRMED: $(< /opt/appdata/plexguide/current_speed)Mbit/s with $false_positive_checks Confirmations." >> /opt/appdata/plexguide/supertransfer.log
+							# multi gdrive cooldown timer
+							current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
+							echo $(date +%s) > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
+							echo "${current_gdrive_var}: 24 hour cooldown period started at $(date)"
 							pkill rclone
-							echo
-							echo
-							echo "Switching Gdrives to: $(cat /opt/appdata/plexguide/current_gdrive)"
-							echo "$(date +%H:%M:%S) $(cat /opt/appdata/plexguide/current_gdrive) THROTTLING CONFIRMED: $(cat /opt/appdata/plexguide/current_speed)Mbit/s with $false_positive_checks Confirmations." >> /opt/appdata/plexguide/supertransfer.log
 							gdrive_switch
 						elif [[ $transfer_type == 'single' || $transfer_type == 'crypt' ]]; then
-							current_gdrive_var=$(cat /opt/appdata/plexguide/current_gdrive)
+							current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
 							echo $(date +%s) > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
-							echo "24 hour cooldown period started at $(date)"
+							echo "${current_gdrive_var}: 24 hour cooldown period started at $(date)"
 						else
-							echo "Error: Invalid Transfer Type on Throttle dection daemon"
+							echo "Error: Invalid Transfer Type on Throttle detection daemon"
 						fi
 				fi
 		else
 			sleep $false_positive_wait
 		fi
-	done &
-fi
+done &
 
 # Gdrive Uploader
 
-# MULTI UPLOAD
 if [[ $transfer_type == 'multi' || $transfer_type == 'single' ]]; then
 	while true; do
 		if [[ $(queued_transfers) -gt 0 ]]; then
-			current_gdrive_var=$(cat /opt/appdata/plexguide/current_gdrive)
-			[[ -e /opt/appdata/plexguide/${current_gdrive_var}_cooldown ]] || echo '1' > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
-			cooldown=$(( $(date +%s) - $(cat /opt/appdata/plexguide/${current_gdrive_var}_cooldown) ))
+			current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
+			[[ -e /opt/appdata/plexguide/${current_gdrive_var}_cooldown ]] || echo '0' > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
+			cooldown=$(( $(date +%s) - $(< /opt/appdata/plexguide/${current_gdrive_var}_cooldown) ))
 			if [[ $cooldown > 86400 ]]; then
-				rclone_sync $(cat /opt/appdata/plexguide/current_gdrive)
-				echo "Currently Selected Gdrive: $(cat /opt/appdata/plexguide/current_index) ($(cat /opt/appdata/plexguide/current_gdrive))"
-				echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
-				echo "Starting Upload to $(cat /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log
+				rclone_sync $(< /opt/appdata/plexguide/current_gdrive)
+				echo "Currently Selected Gdrive: $(< /opt/appdata/plexguide/current_index) ($(< /opt/appdata/plexguide/current_gdrive))"
+				echo "Starting Upload to $(< /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
+				echo "Starting Upload to $(< /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log
+				# reset cooldown timer
+				echo '0' > /tmp/${current_gdrive_var}_cooldown_left
 			else
 				cooldown_left=$(eval "echo $(date -ud "@$cooldown" +'%H hours %M minutes')")
 				echo "$current_gdrive_var cooldown: $cooldown_left"
