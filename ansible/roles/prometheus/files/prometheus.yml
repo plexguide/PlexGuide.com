@@ -62,4 +62,4 @@ scrape_configs:
       port: 8082
 
     static_configs:
-         - targets: ['cadvisor:8082']
+         - targets: ['cadvisor:8080']
