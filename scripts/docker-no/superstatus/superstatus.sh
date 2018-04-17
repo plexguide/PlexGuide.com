@@ -27,7 +27,7 @@ echo -e "               \e[032mThanks For Testing.\e[0m "
 # check for requirements
 declare -a dep=("vmstat" "route" "tput" "docker" "free" "sar" "python3" "lsof" "shuf" "seq" "awk" "sed" "egrep" "tput")
 for prog in ${dep[@]}; do
-	which $prog &>/dev/null || echo "ERROR: Missing Dependency: $prog"
+	which $prog &>/dev/null || echo -e "ERROR: Missing Dependency: $prog\nPlease run: sudo apt install $prog"
 	which $prog &>/dev/null || exit 1
 done
 
@@ -169,7 +169,7 @@ main(){
 
 		# rutorrent size calc
 		[[ $(grep rutorrent /tmp/applist) ]] && \
-			vumeter " $deluge_hr Deluge" "$term_width_ds" "$rutorrent_perc" "100" "green" "red" "gray"
+			vumeter " $deluge_hr ruTorrent" "$term_width_ds" "$rutorrent_perc" "100" "green" "red" "gray"
 
 	endwin
 
@@ -185,6 +185,9 @@ update(){
 	up_speed=$(awk '{print $2}' /tmp/netspeed_kbits)
 	down_speed=$(awk '{print $1}' /tmp/netspeed_kbits)
 	term_width_b_gen=$(( $(< /tmp/superstatus_cols) / 3 - 18))
+	[[ $up_speed == '' ]] && up_speed=0
+	[[ $down_speed == '' ]] && down_speed=0
+	[[ $term_width_b_gen == '' ]] && term_width_b_gen=0
 	b_gen $term_width_b_gen 200000 $up_speed $down_speed
 	# system status
 	CPU_PERC=$(< /tmp/CPU_PERC)
@@ -210,7 +213,7 @@ update(){
 		echo $(date +%s) > /tmp/rclone_spinner
 	fi
 
-	sleep 0.2
+	sleep 0.5
 
 	return 0
 }
