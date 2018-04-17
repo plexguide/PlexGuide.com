@@ -31,7 +31,7 @@
     pull: "{{ cadvisor_docker_pull_images|bool }}"
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080
+    - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080"
     volumes:
     - /:/rootfs:ro
     - /var/run:/var/run:rw
