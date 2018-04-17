@@ -8,6 +8,9 @@
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: netdata, tags: ['netdata'] }
+  - { role: cadvisor-docker, tags: ['cadvisor'] }  
+  - { role: prometheus, tags: ['prometheus'] }
+  - { role: grafana, tags: ['grafana'] }
   - { role: pushover, tags: ['pushover'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
@@ -72,5 +75,3 @@
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
   - { role: booksonic, tags: ['booksonic'] }
-  - { role: prometheus, tags: ['prometheus'] }
-  - { role: grafana, tags: ['grafana'] }

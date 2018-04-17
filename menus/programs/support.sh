@@ -35,8 +35,6 @@ OPTIONS=(A "Netdata"
          F "Resilio"
          G "Tautulli"
          H "SpeedTEST Server"
-	 I "Prometheus"
-         J "Grafana"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -49,13 +47,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             display=NETDATA
-            program=netdata
-            port=19999
-            dialog --infobox "Installing: $display" 3 30
-            skip=yes
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata &>/dev/null &
-            sleep 2
-            cronskip=yes
+			bash /opt/plexguide/menus/programs/monitoring.sh
             ;;
         B)
             display=Ombi
@@ -119,23 +111,6 @@ case $CHOICE in
             sleep 2
             cronskip=yes
             ;;
-        I)
-            program=Prometheus
-            port=9090
-            dialog --infobox "Installing: Prometheus" 3 38
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags prometheus &>/dev/null &
-            sleep 2
-            cronskip=yes
-            ;;
-        J)
-            program=Grafana
-            port=3000
-            dialog --infobox "Installing: Grafana" 3 38
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags grafana &>/dev/null &
-            sleep 2
-            cronskip=yes
-            ;;
-
         Z)
             exit 0 ;;
     esac
