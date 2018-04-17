@@ -21,7 +21,7 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      PLAYLIST: /opt/appdata/telly/playlist.m3u
+      PLAYLIST: /telly/playlist.m3u
       STREAMS: 1
       LISTEN: "0.0.0.0:6077"
     volumes:
