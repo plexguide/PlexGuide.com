@@ -5,4 +5,4 @@ cadvisor_docker_pull_images: yes
 #cadvisor_docker_user: cadvisor-docker
 #cadvisor_docker_log_sensitive: yes
 #cadvisor_docker_directory: /srv/cadvisor-docker
-cadvisor_docker_expose_port: 8080
+cadvisor_docker_expose_port: 8082
