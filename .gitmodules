@@ -1,9 +1,0 @@
-[submodule "ansible/roles/cadvisor"]
-	path = ansible/roles/cadvisor
-	url = git@github.com:tekniqueltd/ansible-role-cadvisor-docker.git
-[submodule "C:/Users/cmacnichol-pa/Google Drive/Repositories/PlexGuide/ansible/roles/cadvisor"]
-	path = C:/Users/cmacnichol-pa/Google Drive/Repositories/PlexGuide/ansible/roles/cadvisor
-	url = git@github.com:tekniqueltd/ansible-role-cadvisor-docker.git
-[submodule "ansible/roles/cadvisor-docker"]
-	path = ansible/roles/cadvisor-docker
-	url = git@github.com:tekniqueltd/ansible-role-cadvisor-docker.git

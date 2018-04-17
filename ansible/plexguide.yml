@@ -8,7 +8,7 @@
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: netdata, tags: ['netdata'] }
-  - { role: cadvisor-docker, tags: ['cadvisor'] }  
+  - { role: cadvisor, tags: ['cadvisor'] }  
   - { role: prometheus, tags: ['prometheus'] }
   - { role: grafana, tags: ['grafana'] }
   - { role: pushover, tags: ['pushover'] }

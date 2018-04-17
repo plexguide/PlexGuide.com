@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Teknique DevOps Team
+  description: Ansible role that deploys cAdvisor using docker and docker-compose
+  company: Teknique Ltd
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+        - zesty
+        - artful
+    - name: Debian
+      versions:
+        - stretch
+  galaxy_tags:
+    - docker
+    - compose
+    - install
+    - cadvisor
+dependencies: []

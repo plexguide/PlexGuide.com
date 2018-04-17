@@ -1,0 +1,10 @@
+---
+- name: Test cadvisor_docker role
+  hosts: localhost
+  connection: local
+  vars:
+    cadvisor_docker_directory: ./output
+    cadvisor_docker_user: "{{ ansible_user_id }}"
+
+  roles:
+    - cadvisor-docker

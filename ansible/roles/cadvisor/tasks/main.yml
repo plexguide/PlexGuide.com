@@ -1,0 +1,47 @@
+---
+- name: Create cadvisor docker user
+  user:
+    name: "{{ cadvisor_docker_user }}"
+    home: "{{ cadvisor_docker_directory }}"
+    createhome: yes
+    groups: docker
+    append: yes
+    shell: /bin/bash
+  become: yes
+  tags:
+    - cadvisor_docker
+
+- name: Pull cadvisor docker image
+  docker_image:
+    name: "{{ cadvisor_docker_image_name }}:{{ cadvisor_docker_version }}"
+    force: "{{ cadvisor_docker_pull_images|bool }}"
+  become: yes
+  become_user: "{{ cadvisor_docker_user }}"
+  tags:
+    - cadvisor_docker
+    - cadvisor_docker_testing
+
+- name: Template docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ cadvisor_docker_directory }}/docker-compose.yml"
+    mode: 0750
+  become: yes
+  become_user: "{{ cadvisor_docker_user }}"
+  no_log: "{{ not cadvisor_docker_log_sensitive }}"
+  tags:
+    - cadvisor_docker
+    - cadvisor_docker_deploy
+    - cadvisor_docker_testing
+
+- name: Start cadvisor docker
+  docker_service:
+    project_src: "{{ cadvisor_docker_directory }}"
+    state: present
+  become: yes
+  become_user: "{{ cadvisor_docker_user }}"
+  register: start_cadvisor_docker
+  tags:
+    - cadvisor_docker
+    - cadvisor_docker_deploy
+    - cadvisor_docker_testing

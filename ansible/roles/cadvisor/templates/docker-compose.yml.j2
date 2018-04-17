@@ -1,0 +1,26 @@
+version: '2.2'
+services:
+	cadvisor:
+		image: {{ cadvisor_docker_image_name }}:{{ cadvisor_docker_version }}
+		volumes:
+		  - /:/rootfs:ro
+		  - /var/run:/var/run:rw
+		  - /sys:/sys:ro
+		  - /var/lib/docker/:/var/lib/docker:ro
+		  - /dev/disk/:/dev/disk:ro
+		ports:
+		  - {{ cadvisor_docker_expose_port }}:8080
+		networks:
+		  - name: plexguide
+				aliases:
+				  - cadvisor
+		restart: always
+		# Uncomment lines below for interactive debugging with `docker attach`
+		#stdin_open: true
+		#command: /bin/bash
+		#tty: true
+		labels:
+			traefik.enable: "false"
+			traefik.frontend.redirect.entryPoint: "https"
+			traefik.frontend.rule: "Host:cadvisor.{{domain.stdout}}"
+			traefik.port: "8080"
