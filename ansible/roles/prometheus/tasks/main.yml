@@ -64,10 +64,10 @@
 
 - name: copy prometheus config file
   copy:
-    src="/opt/plexguide/ansible/roles/prometheus/templates/prometheus.yml"
+    src="files/prometheus.yml"
     dest="/opt/appdata/prometheus/prometheus.yml"
 
 - name: copy prometheus alert file
   copy:
-    src="/opt/plexguide/ansible/roles/prometheus/templates/alert.rules"
+    src="files/alert.rules"
     dest="/opt/appdata/prometheus/alert.rules"

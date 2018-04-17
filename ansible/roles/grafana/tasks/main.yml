@@ -55,5 +55,5 @@
 
 - name: copy Grafana Provisioning files
   copy:
-    src="/opt/plexguide/ansible/roles/grafana/templates/"
+    src="files/"
     dest="/opt/appdata/grafana/provisioning/"
