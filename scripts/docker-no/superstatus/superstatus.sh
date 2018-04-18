@@ -185,9 +185,9 @@ update(){
 	up_speed=$(awk '{print $2}' /tmp/netspeed_kbits)
 	down_speed=$(awk '{print $1}' /tmp/netspeed_kbits)
 	term_width_b_gen=$(( $(< /tmp/superstatus_cols) / 3 - 18))
-	[[ $up_speed == '' ]] && up_speed=0
-	[[ $down_speed == '' ]] && down_speed=0
-	[[ $term_width_b_gen == '' ]] && term_width_b_gen=0
+	[[ -z $up_speed ]] && up_speed=0
+	[[ -z $down_speed ]] && down_speed=0
+	[[ -z $term_width_b_gen ]] && term_width_b_gen=0
 	b_gen $term_width_b_gen 200000 $up_speed $down_speed
 	# system status
 	CPU_PERC=$(< /tmp/CPU_PERC)
