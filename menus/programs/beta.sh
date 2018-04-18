@@ -9,8 +9,7 @@ export NCURSES_NO_UTF8_ACS=1
 
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"
-          C "Use Local Storage - No GDrive Upload"
-          D "Duplicati - Advanced Backup"
+          C "Duplicati - Advanced Backup"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -32,8 +31,6 @@ case $CHOICE in
      read -n 1 -s -r -p "Press any key to continue "
      ;;
      C)
-     bash /opt/plexguide/menus/programs/localstorage.sh ;;
-     D)
          display=Duplicati
          dialog --infobox "Installing: $display" 3 30
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
