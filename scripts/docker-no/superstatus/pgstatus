@@ -18,5 +18,16 @@
 if [[ $(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" ) ]]; then
 	ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" | awk '{print $2}' | xargs kill -9
 fi
+# if that didn't work, try sudo kill
+if [[ $(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" ) ]]; then
+	echo 'Multiple instances of superstatus found, but could not be killed with regular permissions. Please enter your sudo password to start superstatus.'
+	ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" | awk '{print $2}' | sudo xargs kill -9
+fi
+# start superstatus if multiple instances aren't running
+if [[ ! $(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" ) ]]; then
 bash /opt/plexguide/scripts/docker-no/superstatus/superstatus.sh
+else
+	echo 'Failed to start superstatus due to multiple unkillable instances running. Please report this bug on Discord.'
+	echo "$(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim")"
+fi
 exit 0

@@ -413,7 +413,7 @@ progressbar(){
     progress=$2
     [[ $3 > 0 && $3 =~ [0-9] ]] && max=$3 || max=100
     spinvar=$(cat /tmp/rclone_spinner)
-    [[ $spinvar == '' ]] && spinvar=4
+    [[ -z $spinvar ]] && spinvar=4
     len=$(( len - 2 ))
 
     done=$(( progress * len / max))
