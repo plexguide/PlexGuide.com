@@ -103,7 +103,7 @@ emby () {
   && echo "An Emby User Has No Password On $ip:8096" >> /var/plexguide/nopassword
 }
 
-## duplicati 
+## duplicati
 curl -i -s -m 5 $ip:8200 -o html \
   && grep -q '<title>Backup</title>' html \
   && echo "Duplicati Has No Password On $ip:8200"  >> /var/plexguide/nopassword
@@ -122,6 +122,6 @@ echo -n "" > /var/plexguide/nopassword
 applist=$(docker ps | awk '{print $NF}' | grep -v NAME)
 for app in $applist; do $app &>/dev/null; done
 
-rm -r html
+[[ -e html ]] && rm html
 
 exit 0
