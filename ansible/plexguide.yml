@@ -66,7 +66,6 @@
   - { role: clean, tags: ['clean'] }
   - { role: clean-encrypt, tags: ['clean-encrypt'] }
   - { role: network_tuning, tags: ['network_tuning'] }
-  - { role: localstorage, tags: ['localstorage'] }
   - { role: docker, tags: ['docker'] }
   - { role: preinstall, tags: ['preinstall'] }
   - { role: commands, tags: ['commands'] }
