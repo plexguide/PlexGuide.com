@@ -54,8 +54,8 @@ case $CHOICE in
 
 	B)
 		display=NETDATA-Advanced
-		export -a program="netdata"
-		export -a port="9090"
+		program="netdata"
+		port="9090"
 		dialog --infobox "Installing: $display" 3 38
 		ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "monitor" &>/dev/null &
 		sleep 8

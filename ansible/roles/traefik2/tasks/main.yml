@@ -112,7 +112,7 @@
   docker_container:
     name: traefik2
     image: traefik:1.6
-    command: --web --web.metrics.prometheus --web.metrics.prometheus.buckets="0.1,0.3,1.2,5.0"
+    command: --web --web.metrics.prometheus --web.metrics.prometheus.buckets="0.1,0.3,1.2,5.0" --docker
     pull: yes
     cpu_shares: 256
     published_ports:

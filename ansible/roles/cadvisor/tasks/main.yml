@@ -32,6 +32,7 @@
     cpu_shares: 256
     published_ports:
     - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080"
+    command:-logtostderr
     volumes:
     - /:/rootfs:ro
     - /var/run:/var/run:rw
