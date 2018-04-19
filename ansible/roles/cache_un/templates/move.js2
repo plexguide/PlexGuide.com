@@ -1,0 +1,16 @@
+[Unit]
+Description=Move Service Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/bin/bash /opt/appdata/plexguide/move.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
