@@ -1,11 +1,11 @@
  #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
- HEIGHT=11
+ HEIGHT=10
  WIDTH=55
- CHOICE_HEIGHT=5
+ CHOICE_HEIGHT=4
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
- TITLE="Applications - Beta Programs"
+ TITLE="Applications - VPN Programs"
 
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"

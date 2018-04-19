@@ -18,7 +18,7 @@
 ---
 - include_role:
     name: variables
-
+    
 - name: Remove Ombi Container
   docker_container:
     name: ombi
@@ -47,5 +47,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}},www.{{domain.stdout}},{{domain.stdout}}"
+      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}},{{domain.stdout}}"
       traefik.port: "3579"

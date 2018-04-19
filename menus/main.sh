@@ -47,18 +47,20 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
+            bash /opt/plexguide/menus/donate/main.sh ;;
         B)
-            bash /opt/plexguide/menus/programs/main.sh ;;
+            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
         C)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/menus/programs/main.sh ;;
         D)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         E)
-            bash /opt/plexguide/menus/settings/main.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         F)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+            bash /opt/plexguide/menus/settings/main.sh ;;
         G)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        H)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
