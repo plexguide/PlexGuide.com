@@ -47,13 +47,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             display=NETDATA
-            program=netdata
-            port=19999
-            dialog --infobox "Installing: $display" 3 30
-            skip=yes
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata &>/dev/null &
-            sleep 2
-            cronskip=yes
+			bash /opt/plexguide/menus/programs/monitoring.sh
             ;;
         B)
             display=Ombi

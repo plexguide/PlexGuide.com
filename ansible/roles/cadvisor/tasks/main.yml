@@ -18,47 +18,37 @@
 ---
 - include_role:
     name: variables
-
-- name: Remove Radarr Container
+    
+- name: Remove cadvisor Container
   docker_container:
-    name: radarr4k
+    name: cadvisor
     state: absent
 
-- name: Deploy Radarr Container
+- name: Deploy cadvisor Container
   docker_container:
-    name: radarr4k
-    image: aront/radarr
-    pull: yes
+    name: cadvisor
+    image: "{{ cadvisor_docker_image_name }}:{{ cadvisor_docker_version }}"
+    pull: "{{ cadvisor_docker_pull_images|bool }}"
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}7874:7878"
+    - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080"
+    command: '--logtostderr'
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    - /dev/disk/:/dev/disk:ro
     env:
-      PUID: "1000"
-      PGID: "1000"
+      PUID: 1000
+      PGID: 1000
     networks:
       - name: plexguide
         aliases:
-          - radarr4k
-    volumes:
-      - /opt/appdata/radarr4k:/config
-      - /opt/appdata/radarr4k/mp4_automator:/config_mp4_automator
-      - /mnt/unionfs:/unionfs
-      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/rutorrents:/downloads"
-      - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - /etc/localtime:/etc/localtime:ro
+          - cadvisor
     restart_policy: always
-    state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:radarr4k.{{domain.stdout}}"
-      traefik.port: "7878"
-- name: Install autoProcess.ini
-  template:
-    src: autoProcess.ini
-    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
-    force: yes
-    mode: 0775
+      traefik.frontend.rule: "Host:cadvisor.{{domain.stdout}}"
+      traefik.port: "8082"

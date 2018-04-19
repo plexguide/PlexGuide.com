@@ -7,7 +7,10 @@
   - { role: autodelete, tags: ['autodelete'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
-  - { role: netdata, tags: ['netdata'] }
+  - { role: netdata, tags: ['netdata', 'monitor'] }
+  - { role: cadvisor, tags: ['cadvisor', 'monitor'] }  
+  - { role: prometheus, tags: ['prometheus', 'monitor'] }
+  - { role: grafana, tags: ['grafana', 'monitor'] }
   - { role: pushover, tags: ['pushover'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
@@ -21,7 +24,6 @@
   - { role: transfer, tags: ['transfer'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: support, tags: ['support'] }
-  - { role: folders_solo, tags: ['folders_solo'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: granfana, tags: ['granfana'] }
   - { role: ombi, tags: ['ombi'] }

@@ -44,7 +44,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      dialog --title "Word of Caution" --msgbox "\nEnsure that you read the wiki for CloudFlare!" 0 0
+      dialog --title "Word of Caution" --msgbox "\nCloudflare is a great way to go! It may appear to work, but you need up to 12 hours if you just setup with CloudFlare!\n\nIf not, you may see an issue regarding the nameserver in the Portainer Logs!" 0 0
       echo "CLOUDFLARE_EMAIL" > /tmp/display1
       echo "CLOUDFLARE_API_KEY" > /tmp/display2
       echo "cloudflare" > /var/plexguide/provider
