@@ -21,20 +21,28 @@ domain=$( cat /var/plexguide/server.domain )
 dialog --infobox "Tracked Domain: $domain" 3 46
 sleep 2
 
-file="/var/plexguide/base.domain"
-if [ -e "$file" ]
+#### Checks to See if Either Traefik Exisxts
+docker logs traefik2 2> /var/plexguide/traefik.error2
+docker logs traefik 2> /var/plexguide/traefik.error1
+error2=$( cat /var/plexguide/traefik.error2 )
+error2=${error2::-1}
+error1=$( cat /var/plexguide/traefik.error1 )
+
+#### If neither one exist, displays message below; if does executes the stuff under else
+if [ "$error2" == "$error1" ]
+  then
+    dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto http://domains.plexguide.com for Info!" 0 0
+  else
+    #### This results in providing which version of Traefik one is using
+    version=$( cat /var/plexguide/provider )
+    if [ "$version" == "null" ]
     then
-          version=$( cat /var/plexguide/provider )
-          if [ "$version" == "null" ]
-          then
-            dialog --infobox "Using Legacy Traefik" 3 28
-            sleep 2
-          else
-            dialog --infobox "Using Traefik v2\n\nProvider $version" 3 40
-            sleep 2
-          fi
+      dialog --infobox "Using Legacy Traefik" 3 28
+      sleep 2
     else
-      dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed! Warning, goto http://domains.plexguide.com for Info!" 0 0
+      dialog --infobox "Using Traefik v2\n\nProvider $version" 3 40
+      sleep 2
+    fi
 fi
 
 HEIGHT=11
@@ -135,6 +143,20 @@ case $CHOICE in
         else
           dialog --title "No Traefik" --msgbox "\nYou Decided to Exit without making any choices!\n\nWarning, No Version of Traefik has Installed! Visit settings to fix anytime!" 0 0
           touch /var/plexguide/base.domain
+          exit
+    fi
+
+    #### Checks to See if Either Traefik Exisxts
+    docker logs traefik2 2> /var/plexguide/traefik.error2
+    docker logs traefik 2> /var/plexguide/traefik.error1
+    error2=$( cat /var/plexguide/traefik.error2 )
+    error2=${error2::-1}
+    error1=$( cat /var/plexguide/traefik.error1 )
+
+    #### If neither one exist, displays message below; if does executes the stuff under else
+    if [ "$error2" == "$error1" ]
+      then
+        dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto http://domains.plexguide.com for Info!" 0 0
     fi
       exit
       ;;

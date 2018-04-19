@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PG BaseInstall]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,18 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-- name: Register Domain
-  shell: "cat /var/plexguide/server.domain"
-  register: domain
-  ignore_errors: True
 
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
+  dialog --title "Flicker-Rate's PG Status" --msgbox "\nThis PROGRAM is an early BETA!\n\nOnce loaded, press CTRL+C to break out of it! We are working on a HOTKEY solution!\n\nIf you have ideas or solutions, visit us in the DISCORD or post on the Forums!\n\nThanks!\n\n@Flicker-Rate\n\nNOTE: You can type -- pgstatus -- in Termainal to access also!" 0 0
 
-- name: Register HD Path
-  shell: "cat /var/plexguide/server.hd.path"
-  register: path
-  ignore_errors: True
+
+  clear
+  bash pgstatus
+  

@@ -22,6 +22,9 @@ else
    export NCURSES_NO_UTF8_ACS=1
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
+# install pgstatus if needed
+[[ ! -e /bin/pgstatus ]] && \
+ cp /opt/plexguide/scripts/docker-no/superstatus/pgstatus /bin/pgstatus
 
 #clear warning messages
 for txtfile in certchecker nopassword pingchecker; do
@@ -128,7 +131,7 @@ edition=$( cat /var/plexguide/pg.edition )
 #### G-Drive Edition
 if [ "$edition" == "PG Edition: GDrive" ]
   then
-    rm -r 
+    rm -r
     bash /opt/plexguide/menus/main.sh
     exit
 fi

@@ -12,7 +12,7 @@
 #   You may copy, distribute and modify the software as long as you track
 #   changes/dates in source files. Any modifications to our software
 #   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions. 
+#   under the GPL along with build & install instructions.
 #
 #################################################################################
 
@@ -37,6 +37,85 @@ clear
 ############################################# RCLONE
 ## Executes RClone Config
 rclone config
+
+# echo 'a) Automatic Rclone Config (warning: in development)'
+# echo 'm) Manual Rclone Config'
+# echo 'w) Take Me To The PG Install Guide Wiki'
+# echo 'e) Exit Rclone Config'
+# read -p 'a/m/w/e>' c
+#
+# case $c in
+#   a)
+#     echo "Do You Have a Google Buisness/Enterprise/Student Account with:"
+#     echo "1. Gdrive API access enabled"
+#     echo "2. OAuth client ID ready"
+#     echo "3. OAuth client secret ready"
+#     read -p 'y/n>' a
+#       case $a in
+#       n) echo "Please go to https://console.developers.google.com and enable API access."
+#          echo "PG Wiki For generating API keys: https://bit.ly/2vnFBxW"
+#          read -p 'Press any key to continue... '
+#          choice1 ;;
+#       y)
+#          # dynamic naming of rclone gdrive remote
+#          if [[ $(rclone listremotes | grep gdrive2) ]]; then
+#            gdrive_name='gdrive3'
+#          elif [[ $(rclone listremotes | grep gdrive1) ]]; then
+#            gdrive_name='gdrive2'
+#          elif [[ $(rclone listremotes | grep gdrive) ]]; then
+#            gdrive_name='gdrive1'
+#          else
+#            gdrive_name='gdrive'
+#          fi
+#
+#          read -p 'Enter your Client ID: ' clientid
+#          read -p 'Enter your Client Secret: ' clientsecret
+#          # validate id
+#          [[ $(echo $clientid | wc -c) > 60 && $(echo $clientid | grep 'apps.googleusercontent.com') ]] || \
+#           echo "Invalid Client ID!" && read -p 'Press any key to try again... ' && exit 1
+#          [[ $(echo $clientsecret | wc -c) > 17 ]] || \
+#           echo "Invalid Client Secret!" && read -p 'Press any key to try again... ' && exit 1
+#
+#          # check if tcl expect is avaible & install if needed
+#          [[ ! $(which expect) ]] && echo -e "Missing Dependency: expect\nInstalling..." \
+#             && sleep 1.5 && sudo apt install expect -y
+#
+         # run tcl expect on rclone config
+              # expect - "$clientid" "$clientsecret" "$gdrive_name"<<'EOF'
+              #     lassign $argv clientid clientsecret gdrive_name
+              #     spawn /usr/bin/rclone config
+              #     expect "New remote"
+              #     send "n\r"
+              #     expect "name>"
+              #     send "$gdrive_name\r"
+              #     expect "11 / Google Drive"
+              #     send "11\r"
+              #     expect "client_id>"
+              #     send "$clientid\r"
+              #     expect "client_secret>"
+              #     send "$clientsecret\r"
+              #     expect "scope>"
+              #     send "1\r"
+              #     expect "root_folder_id>"
+              #     send "/\r"
+              #     expect "service_account_file>"
+              #     send "\r"
+              #     expect "y/n>"
+              #     send "n\r"
+              #     interact "\r" return
+              # EOF
+#       ;;
+#
+#   m) rclone config ;;
+#   w) echo "PG Wiki For Rclone: https://bit.ly/2JQrqV9"
+#      echo "PG Wiki For generating API keys: https://bit.ly/2vnFBxW"
+#      read -p 'Press any key to continue... '
+#      choice1 ;;
+#   e) bash /opt/plexguide/menus/main.sh ;;
+#   *) echo "Invalid Choice"
+#      read -p 'Press any key to continue... '
+#      exit 1 ;;
+# esac
 
 # allows others to access fuse
 tee "/etc/fuse.conf" > /dev/null <<EOF

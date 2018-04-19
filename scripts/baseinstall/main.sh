@@ -43,7 +43,6 @@ file="/var/plexguide/server.ports" 1>/dev/null 2>&1
   touch /var/plexguide/server.ports
   echo "Open" > /var/plexguide/server.ports.status
   fi
-
 ############################################################ Starting Install Processing
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
@@ -78,9 +77,21 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands &>/dev/nul
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
+# START ########################### If doesn't exist, put /mnt into the file for the folders role
+file="/var/plexguide/server.hd.path"
+if [ -e "$file" ]
+    then
+      echo "" 1>/dev/null 2>&1
+    else
+      echo "/mnt" > /var/plexguide/server.hd.path
+fi
+# END########################### If doesn't exist, put /mnt into the file for the folders role
+
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
+
+
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1

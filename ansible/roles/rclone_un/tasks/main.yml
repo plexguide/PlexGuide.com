@@ -15,14 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-  - name: RClone Filler
-    template:
-      src: temp.js2
-      dest: /root/.config/rclone/rclone.conf
-      force: yes
-    tags: rclone_temp
-
 ########################################## Scripts
 ########## Move Service Script
   - name: Check MOVE SCRIPT

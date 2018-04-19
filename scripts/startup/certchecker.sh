@@ -34,7 +34,7 @@ echo -n '' > /var/plexguide/certchecker
 echo -n '' > /var/plexguide/pingchecker
 
 # don't test if users hasn't set a domain.
-if [[ $domain == '' ]]; then
+if [[ -z $domain ]]; then
   exit 0
 fi
 

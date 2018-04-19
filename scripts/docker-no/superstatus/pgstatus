@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Flicker-Rate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+# kill double instances before starting
+if [[ $(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" ) ]]; then
+	ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" | awk '{print $2}' | xargs kill -9
+fi
+# if that didn't work, try sudo kill
+if [[ $(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" ) ]]; then
+	echo 'Multiple instances of superstatus found, but could not be killed with regular permissions. Please enter your sudo password to start superstatus.'
+	ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" | awk '{print $2}' | sudo xargs kill -9
+fi
+# start superstatus if multiple instances aren't running
+if [[ ! $(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim" ) ]]; then
+bash /opt/plexguide/scripts/docker-no/superstatus/superstatus.sh
+else
+	echo 'Failed to start superstatus due to multiple unkillable instances running. Please report this bug on Discord.'
+	echo "$(ps -ef | grep 'superstatus.sh' | egrep -v "grep|vim")"
+fi
+exit 0

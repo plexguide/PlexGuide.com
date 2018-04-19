@@ -1,0 +1,40 @@
+---
+- include_role:
+    name: variables    
+
+- name: Remove Headphones Container
+  docker_container:
+    name: headphones
+    state: absent
+
+- name: Deploy Headphones Container
+  docker_container:
+    name: headphones
+    image: linuxserver/headphones
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}8081:8181"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    networks:
+      - name: plexguide
+        aliases:
+          - headphones
+    volumes:
+      - /opt/appdata/headphones:/config
+      - /mnt/unionfs:/unionfs
+      - /mnt/move:/move
+      - /mnt/sab/complete:/complete
+      - /mnt/nzbget/completed:/completed
+      - /mnt/rutorrents/downloads:/downloads
+      - /mnt/deluge/downloaded:/downloaded
+      - /mnt/torrentvpn/downloaded:/data/completed
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:headphones.{{domain.stdout}}"
+      traefik.port: "8181"

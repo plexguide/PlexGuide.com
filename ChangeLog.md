@@ -1,10 +1,46 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.070] (Beta, Release Candiate & DEV)
+### [5.071] (Beta, Release Candiate & DEV)
 
-#### DEV
 - None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.070] - 17 April 2018
+
+Note: Traefik v2 may say your certificate is not valid if it is.  Know the fix, but don't have time to fix yet.  Will be updated in version 5.071
+
+#### RC3 
+- Changed
+  - Flicker-Rate put some fixes to the pgstatus program
+
+#### RC2
+- Added
+  - @Flicker-Rate's PGStatus Program & Command
+  - Minor Bug Fixes
+
+#### RC1
+- Added
+  - Superstatus (PG status monitor) Beta 1.0 added
+  - Ensured that folders are created with the correct permissions if 2nd HD is utilized
+  - Startup Menu: Error Control was added and display if Traefik is not installed (incase bonehead uninstalled traefik)
+  - Domains/Traefik: User exits with no version of Traefik Installed, it reminds them again!
+- Changed
+  - Fixed Solo HD Domain setup in settings; would go to wrong area prior
+  - Adjusted Traefik startup variables, would give a false positive
+  - Updated ending art to include pgstatus
+- Removed
+  - Ansible Duplicate Key Error Gone
+  - Unused Ansible files for rclone cache (not stable yet)
+
+#### BETA 4
+- Changed
+  - Fixed broken 2nd HD Link
+- Removed
+  - Dummy RClone File, this caused problems for some and wasn't needed!
 
 #### BETA 3
 - Added Password Notice if using Duplicati
@@ -20,20 +56,16 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 #### BETA 1
 SOLO HD Version is being able to use only 1 drive and no google drive.  Good for small collections; or watch and delete@
 
-- Added 
- - Improved Solo HD Version, ready for testing 
+- Added
+ - Improved Solo HD Version, ready for testing
  - Fixes made to mp4 conversion (check wiki) - credit: allergictopineapple
  - duplicati role added by Mr. Wens
  - Clean up some of the menus
  - Added checkers to Solo HD Version (First BETA for it)
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
-
 #### [5.069] - 10 April 2018
 
-NOTE: You must rerun Traefik v2 and go through cloudflare again for proper updates of subdomain/domain! 
+NOTE: You must rerun Traefik v2 and go through cloudflare again for proper updates of subdomain/domain!
 NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---cloudflare <<< Improved Instructions for CloudFlare
 
 - Added
@@ -44,7 +76,7 @@ NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---clou
     - WARNING, this does not work fully and should only be selected for testing purposes
   - Symbolic Link for HD2 so stuff bounces from /mnt/move to {hardrive2}/move
     - Note: If you already setup a second HD, rerun HD setup in settings for the symbolic link to kick in
-  - BookSonic Role and Deployment - Credit: mrwednesday89 
+  - BookSonic Role and Deployment - Credit: mrwednesday89
   - RClone Fixes - Credit: Zachawii
   - Tons of Misc Encrypted RClone Fixes - desgyz
   - CronJob Display Fix
@@ -70,7 +102,7 @@ NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---clou
   - Telly Port Fix - Credit: Migz
   - Fixed bad nzbget information (never affected plexguide), displayed port 5075 but it's 6789. - Thanks busanv (pgforums)
   - Fixed bash error flash before starting up of the program
-  - Removed to del empty folder from rclone, caused problems - Credit MBCorps 
+  - Removed to del empty folder from rclone, caused problems - Credit MBCorps
   - Code Cleanup, added new cronskip function and remove large scripts to a solo one for cron exe
 
 ### [5.068] 7 April 2018
@@ -80,7 +112,7 @@ NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---clou
   - Rebuilding Fix - Credit RXWatcher
   - New info.sh file at root to keep track of upgrading portions of PG (used, but not fully implemented)
   - Ombi4k from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
-    - Ombi4k: ombi4k.domain.com - port 3574 
+    - Ombi4k: ombi4k.domain.com - port 3574
     - Traefik V1 Users: Have to rerun traefik
     - Added info.sh to root to keep track of static variables; mostly for the preinstaller
   - PLEX: Input CUSTOM ACCESS URL by lunchingfriar if not using CloudFlare

@@ -64,11 +64,18 @@
         exit
     fi
 
+    ### Ensure Location Get Stored for Variables Role
+    echo "$path" > /var/plexguide/server.hd.path
+
     ##### Symbolic Link
     #path="/mnt/hd2"
     rm -r "/mnt/move" 1>/dev/null 2>&1
     mkdir "$path/move" 1>/dev/null 2>&1
     ln -s "$path/move" /mnt
+
+    #### Rebuild Containers
+    dialog --infobox "Rebuilding Folders For: $path" 3 55
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 
     #### Rebuild Containers
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh

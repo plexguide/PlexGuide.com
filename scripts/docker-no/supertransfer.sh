@@ -66,7 +66,7 @@ detect_throttle() {
 	esac
 
 		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
-		if [[ upspeed -gt $threshold || ( current_transfers -eq 0 ) ]]; then
+		if [[ upspeed -gt $threshold || $current_transfers -eq 0 ]]; then
 			echo no
 		else
 			echo yes

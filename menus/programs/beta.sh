@@ -9,7 +9,7 @@ export NCURSES_NO_UTF8_ACS=1
 
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"
-          C "Use Local Storage - No GDrive Upload"
+          C "Duplicati - Advanced Backup"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -31,7 +31,13 @@ case $CHOICE in
      read -n 1 -s -r -p "Press any key to continue "
      ;;
      C)
-     bash /opt/plexguide/menus/programs/localstorage.sh ;;
+         display=Duplicati
+         dialog --infobox "Installing: $display" 3 30
+         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
+         sleep 2
+         dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
+         cronskip="yes"
+         ;;
      Z)
         clear
         exit 0 ;;
