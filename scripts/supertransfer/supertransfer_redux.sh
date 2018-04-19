@@ -2,9 +2,10 @@
 # INIT
 ############################################################################
 source rcloneupload.sh
+source config.sh
 source settings.conf
 [[ $gdsaImpersonate == 'your@email.com' ]] \
-  && echo -e "[FAIL]\tNo Email Configured. Please edit /opt/plexguide/scripts/supertransfer/settings.conf" \
+  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit /opt/plexguide/scripts/supertransfer/settings.conf" \
   && exit 1
 
 # get list of avail gdsa accounts
@@ -12,10 +13,10 @@ gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 if [[ -n $gdsaList ]]; then
     numGdsa=$(echo $gdsaList | wc -w)
     maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3")
-    echo -e "[INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
-    echo -e "[INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
+    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
+    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
 else
-    echo -e "[FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
+    echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
     exit 1
 fi
 
@@ -24,17 +25,17 @@ echo '' > $gdsaDB
 for gdsa in $gdsaList; do
   if [[ $(rclone --drive-impersonate $gdsaImpersonate ${gdsa}:/ ) ]]; then
     echo "${gdsa}=0" >> $gdsaDB
-    echo -e "[INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
+    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
   else
     gdsaList=$(echo $gdsaList | sed 's/'$gdsa'//')
     ((++gdsaFail))
-    echo -e "[WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
+    echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
   fi
 sleep 0.5
 done
 
 [[ -n $gdsaFail ]] \
-  && echo -e "[WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
+  && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
 
 [[ -e $uploadHistory ]] || touch $uploadHistory
 
@@ -53,7 +54,7 @@ while read -r line; do
     fileSize=$(awk '{print $1}' <<< $line)
     rclone_upload $gdsaLeast $file $remoteDir &
     # add timestamp & log
-    echo -e "[INFO]\t$gdsaLeast\tStarting Upload: $file"
+    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
     echo "$gdsaLeast $line $(date +s%)" >> $uploadHistory
 
     # load latest usage value from db
