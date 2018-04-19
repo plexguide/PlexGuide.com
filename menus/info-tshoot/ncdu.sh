@@ -41,7 +41,6 @@ OPTIONS=(A "Entire drive - excluding /mnt - WARNING Can take a long time!"
          K "RuTorrent"
          L "TorrentVPN"
          M "/home"
-         X "Exit Plexguide"
          Z "Exit")
 
 
@@ -121,10 +120,12 @@ case $CHOICE in
           ncdu /home
           ;;
 
-     X)
-         clear
-         bash /opt/plexguide/scripts/test/exit
-         exit 0 ;;
+#     X)
+#         clear
+#         bash /opt/plexguide/scripts/test/exit
+#         : ${DIALOG_ESC=255}
+#         $DIALOG_ESC)
+#         exit 0 ;;
 
       Z)
       clear
