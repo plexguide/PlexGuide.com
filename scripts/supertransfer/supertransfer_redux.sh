@@ -1,15 +1,12 @@
 ############################################################################
-# SETTINGS
-############################################################################
-gdsaDB=/tmp/gdsaLoadBal.txt
-gdsaImpersonate=user@email.com
-localDir=/mnt/move
-modTime=1
-uploadHistory=/tmp/superTransferUploadHistory.txt
-
-############################################################################
 # INIT
 ############################################################################
+source rcloneupload.sh
+source settings.conf
+[[ $gdsaImpersonate == 'your@email.com' ]] \
+  && echo -e "[FAIL]\tNo Email Configured. Please edit /opt/plexguide/scripts/supertransfer/settings.conf" \
+  && exit 1
+
 # get list of avail gdsa accounts
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 if [[ -n $gdsaList ]]; then
@@ -37,17 +34,13 @@ sleep 0.5
 done
 
 [[ -n $gdsaFail ]] \
-&& echo -e "[WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
+  && echo -e "[WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
 
 [[ -e $uploadHistory ]] || touch $uploadHistory
 
 ############################################################################
 # Least Usage Load Balancing of GDSA Accounts
 ############################################################################
-gdsaLeast=$(sort -gr -k2 -t'=' $gdsaDB | tail -1 | cut -f1 -d'=')
-
-source $gdsaDB
-
 uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
   -exec du -s {} \; | awk -F'\t' '{print $1 "\t" "\"" $2 "\""}' | sort -gr)
 
@@ -56,14 +49,18 @@ while read -r line; do
   gdsaLeast=$(sort -gr -k2 -t'=' $gdsaDB | tail -1 | cut -f1 -d'=')
   # skip on files already queued or uploaded
   if [[ ! $(grep $line $uploadHistory) ]]; then
-    echo "$gdsaLeast $line $(date +s%)" >> $uploadHistory
     file=$(awk '{print $2}' <<< $line)
     fileSize=$(awk '{print $1}' <<< $line)
-    oldUsage=$(awk -F'=' '/^'$gdsaLeast'=./ {print $2}' $gdsaDB)
-    newUsage=$(( $oldUsage + $fileSize ))
+    rclone_upload $gdsaLeast $file $remoteDir &
+    # add timestamp & log
+    echo -e "[INFO]\t$gdsaLeast\tStarting Upload: $file"
+    echo "$gdsaLeast $line $(date +s%)" >> $uploadHistory
+
+    # load latest usage value from db
+    source $gdsaDB
+    Usage=$(( $gdsaLeast + $fileSize ))
     # update gdsaUsage file with latest usage value
-    sed -i '/'^$gdsaLeast'=/ s/=.*/='$newUsage'/' $gdsaDB
-    echo "uploading $filesize $file to $gdsaLeast"
+    sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
   fi
 done <<< "$uploadQueueBuffer"
 
