@@ -19,7 +19,7 @@ fi
 while [ 1 ]
 do
 CHOICE=$(
-whiptail --title "Kernel Profiles" --menu "See Wiki For More Info + iperf Network Benchmarks" 14 50 6 \
+whiptail --title "Kernel Profiles" --menu "See Wiki For More Info + iperf Network Benchmarks. Install New Kernel First!" 14 50 6 \
     "1)" "Enable BBR TCP Congestion Control"  \
     "2)" "Klaver + BBR"  \
     "3)" "TJ007 + BBR"  \

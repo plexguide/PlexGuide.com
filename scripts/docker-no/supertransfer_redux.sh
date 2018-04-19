@@ -1,208 +1,70 @@
-#!/bin/bash
-#
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Flicker-Rate
-# URL:      https://plexguide.com
-#
-# PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
+############################################################################
+# SETTINGS
+############################################################################
+gdsaDB=/tmp/gdsaLoadBal.txt
+gdsaImpersonate=kevin@pham.design
+localDir=/mnt/move
+modTime=1
+uploadHistory=/tmp/superTransferUploadHistory.txt
 
-# check for requirements
-declare -a dep=("rclone" "iftop" "awk" "sed")
-for prog in ${dep[@]}; do
-	which $prog &>/dev/null || echo "ERROR: Missing Dependency: $prog"
-	which $prog &>/dev/null || exit 1
+############################################################################
+# INIT
+############################################################################
+# get list of avail gdsa accounts
+gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
+if [[ -n $gdsaList ]]; then
+    numGdsa=$(echo $gdsaList | wc -w)
+    maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3")
+    echo -e "[INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
+    echo -e "[INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
+else
+    echo -e "[FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
+    exit 1
+fi
+
+# validate gdsaList, purge broken gdsa's & init db
+echo '' > $gdsaDB
+for gdsa in $gdsaList; do
+  if [[ $(rclone --drive-impersonate $gdsaImpersonate ${gdsa}:/ ) ]]; then
+    echo "${gdsa}=0" >> $gdsaDB
+    echo -e "[INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
+  else
+    gdsaList=$(echo $gdsaList | sed 's/'$gdsa'//')
+    ((++gdsaFail))
+    echo -e "[WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
+  fi
+sleep 0.5
 done
 
-# GDRIVE THROTTLE DETECTION SETTINGS
-threshold_modifier=0	# adjust throttle detection threshold (+/- num) in Mb/s
-sample_size=60		#in seconds
-false_positive_checks=5	# of times to double-check throttling
-false_positive_wait=10
+[[ -n $gdsaFail ]] \
+&& echo -e "[WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
 
-# RCLONE TRANSFER SETTINGS
-transfers=16
-max_size=99G
-bw_limit=1000M 		# adjust this speed if rclone is interfering with plex playback
-drive_upload_cutoff=1G
-local_dir='/mnt/move'
-remote_dir='/'		# set custom gdrive mapping (default: '/')
+[[ -e $uploadHistory ]] || touch $uploadHistory
 
-# init
-grep [0-9] /opt/appdata/plexguide/current_index || echo 0 > /opt/appdata/plexguide/current_index
-grep gdrive /opt/appdata/plexguide/current_gdrive || echo gdrive > /opt/appdata/plexguide/current_gdrive
-touch /opt/appdata/plexguide/rclone
-chmod 755 /opt/appdata/plexguide/rclone
+############################################################################
+# Least Usage Load Balancing of GDSA Accounts
+############################################################################
+gdsaLeast=$(sort -gr -k2 -t'=' $gdsaDB | tail -1 | cut -f1 -d'=')
 
-# get gdrive transfer type
-if [[ $(rclone listremotes | grep -c gcrypt) > 1 ]];
- transfer_type='multi_crypt'
-	echo -e "Multiple Encrypted Gdrives Detected. This feature is not supported yet; exiting."
-	exit 1; fi
-elif [[ $(rclone listremotes | grep -c gcrypt) == 1 ]];
- transfer_type='single_crypt'
-	echo -e "Encrypted Gdrive Detected. This feature is not supported yet; exiting."
-	exit 1; fi
-elif [[ $(rclone listremotes | grep -c gdrive) > 1 ]];
- transfer_type='multi'
-elif [[ $(rclone listremotes | grep -c gdrive) == 1 ]];
- transfer_type='single'
-else
-	echo -e "No Valid Gdrive Found, have you configured rclone?:\n$(rclone listremotes)\n EXITING!"
-	exit 1; fi
+source $gdsaDB
 
-detect_throttle() {
-	# calc egress speed to google servers in Mb/s
-	upspeed=$(2>/dev/null iftop -t -s $sample_size \
-		| grep "1e100.net" -B1 \
-		| grep '=>' \
-		| grep Mb \
-		| awk '{print $4}' \
-		| sed 's/Mb//' \
-		| awk '{SUM += $1} END {print SUM}') # add all upload speeds together
-	upspeed=$(python -c "print(int($upspeed+0))") # float & null val sanity check
-	echo "$upspeed" > /opt/appdata/plexguide/current_speed
+uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
+  -exec du -s {} \; | awk -F'\t' '{print $1 "\t" "\"" $2 "\""}' | sort -gr)
 
-	case $(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l) in
-		1) threshold=$(( 20 + $threshold_modifier )) ;;
-		2) threshold=$(( 30 + $threshold_modifier )) ;;
-	  *) threshold=$(( 40 + $threshold_modifier )) ;;
-	esac
+# iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
+while read -r line; do
+  gdsaLeast=$(sort -gr -k2 -t'=' $gdsaDB | tail -1 | cut -f1 -d'=')
+  # skip on files already queued or uploaded
+  if [[ ! $(grep $line $uploadHistory) ]]; then
+    echo "$gdsaLeast $line $(date +s%)" >> $uploadHistory
+    file=$(awk '{print $2}' <<< $line)
+    fileSize=$(awk '{print $1}' <<< $line)
+    oldUsage=$(awk -F'=' '/^'$gdsaLeast'=./ {print $2}' $gdsaDB)
+    newUsage=$(( $oldUsage + $fileSize ))
+    # update gdsaUsage file with latest usage value
+    sed -i '/'^$gdsaLeast'=/ s/=.*/='$newUsage'/' $gdsaDB
+    echo "uploading $filesize $file to $gdsaLeast"
+  fi
+done <<< "$uploadQueueBuffer"
 
-		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
-		if [[ upspeed -gt $threshold || $current_transfers -eq 0 ]]; then
-			echo no
-		else
-			echo yes
-		fi
-
-	}
-
-# usage: rclone_sync <gdrive>
-rclone_sync() {
-	# memory_optimization
-		queued_transfers=$(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l)
-		current_transfers=$(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
-	case $(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l) in
-		1) drive_chunk_size="1024M" ;;
-		2) drive_chunk_size="512M" ;;
-		3) drive_chunk_size="256M" ;;
-		4) drive_chunk_size="128M" ;;
-		5) drive_chunk_size="64M" ;;
-		6) drive_chunk_size="32M" ;;
-	        *) drive_chunk_size="16M" ;;
-	esac
-
-	rclone move --tpslimit 6 --checkers=16 \
-		--log-file=/opt/appdata/plexguide/rclone \
-		--log-level INFO --stats 5s \
-		--exclude="**partial~" --exclude="**_HIDDEN~" \
-		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
- 		--transfers $transfers \
-		--drive-upload-cutoff=$drive_upload_cutoff \
-		--drive-chunk-size=$drive_chunk_size \
-		--max-size=$max_size \
-		$local_dir $1:$remote_dir # function input = gdrive remote name
-	}
-
-gdrive_switch() {
-	current_index=$(< /opt/appdata/plexguide/current_index)
-	gdrive_index=( $(rclone listremotes | sed 's/://' | grep -v crypt) )
-	if [[ current_index -ge $(( ${#gdrive_index[@]} - 1 )) ]]; then
-		echo 0 > /opt/appdata/plexguide/current_index
-		current_index=$(< /opt/appdata/plexguide/current_index)
-		echo ${gdrive_index[$current_index]} > /opt/appdata/plexguide/current_gdrive
-	else
-		echo $(( ++current_index )) > /opt/appdata/plexguide/current_index
-		current_index=$(< /opt/appdata/plexguide/current_index)
-		echo ${gdrive_index[$current_index]} > /opt/appdata/plexguide/current_gdrive
-	fi
-	echo "Switching Gdrives: $current_index $(date)" >> /opt/appdata/plexguide/supertransfer.log
-	}
-
-queued_transfers () {
-		echo $(find /mnt/move ! -name "*.partial*" -type f -size +100M | wc -l)
-}
-
-current_transfers() {
-		echo $(tail -n 20 /opt/appdata/plexguide/rclone | grep -m1 "Transferring:" -A20 | grep "\*" | wc -l)
-}
-
-# Throttle Detection Daemon
-while true; do
-		if [[ $(detect_throttle) == "yes" ]]; then
-			echo "Potential Throttle Detected at $(< /opt/appdata/plexguide/current_speed)Mbit/s"
-			for i in $(seq $false_positive_checks); do
-				sleep $false_positive_wait
-				if [[ "$(detect_throttle)" == "yes" ]]; then
-					throttle_conf=$i
-					current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
-					echo "$i/$false_positive_checks" > /tmp/${current_gdrive_var}_throttle_conf
-					echo "Throttle Confirmation ($i/$false_positive_checks) $(< /opt/appdata/plexguide/current_speed)Mbit/s"
-				else
-					echo '' > /tmp/${current_gdrive_var}_throttle_conf
-					echo "Throttle Confirmation ($i/$false_positive_checks) False Positive! $(< /opt/appdata/plexguide/current_speed)Mbit/s"
-					break
-				fi
-			done
-				if [[ throttle_conf -eq false_positive_checks ]]; then
-					echo "THROTTLING CONFIRMED: $(< /opt/appdata/plexguide/current_speed)Mbit/s with $false_positive_checks Confirmations."
-						if [[ $transfer_type == 'multi' || $transfer_type == 'multi_crypt' ]]; then
-							echo "Switching Gdrives to: $(< /opt/appdata/plexguide/current_gdrive)"
-							echo "$(date +%H:%M:%S) $(< /opt/appdata/plexguide/current_gdrive) THROTTLING CONFIRMED: $(< /opt/appdata/plexguide/current_speed)Mbit/s with $false_positive_checks Confirmations." >> /opt/appdata/plexguide/supertransfer.log
-							# multi gdrive cooldown timer
-							current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
-							echo $(date +%s) > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
-							echo "${current_gdrive_var}: 24 hour cooldown period started at $(date)"
-							pkill rclone
-							gdrive_switch
-						elif [[ $transfer_type == 'single' || $transfer_type == 'crypt' ]]; then
-							current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
-							echo $(date +%s) > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
-							echo "${current_gdrive_var}: 24 hour cooldown period started at $(date)"
-						else
-							echo "Error: Invalid Transfer Type on Throttle detection daemon"
-						fi
-				fi
-		else
-			sleep $false_positive_wait
-		fi
-done &
-
-# Gdrive Uploader
-
-if [[ $transfer_type == 'multi' || $transfer_type == 'single' ]]; then
-	while true; do
-		if [[ $(queued_transfers) -gt 0 ]]; then
-			current_gdrive_var=$(< /opt/appdata/plexguide/current_gdrive)
-			[[ -e /opt/appdata/plexguide/${current_gdrive_var}_cooldown ]] || echo '0' > /opt/appdata/plexguide/${current_gdrive_var}_cooldown
-			cooldown=$(( $(date +%s) - $(< /opt/appdata/plexguide/${current_gdrive_var}_cooldown) ))
-			if [[ $cooldown > 86400 ]]; then
-				rclone_sync $(< /opt/appdata/plexguide/current_gdrive)
-				echo "Currently Selected Gdrive: $(< /opt/appdata/plexguide/current_index) ($(< /opt/appdata/plexguide/current_gdrive))"
-				echo "Starting Upload to $(< /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) as of $(date +%H:%M)"
-				echo "Starting Upload to $(< /opt/appdata/plexguide/current_gdrive). Transfer Queue: $(queued_transfers) $(date +%H:%M:%S)" >> /opt/appdata/plexguide/supertransfer.log
-				# reset cooldown timer
-				echo '0' > /tmp/${current_gdrive_var}_cooldown_left
-			else
-				cooldown_left=$(eval "echo $(date -ud "@$cooldown" +'%H hours %M minutes')")
-				echo "$current_gdrive_var cooldown: $cooldown_left"
-				echo $cooldown_left > /tmp/${current_gdrive_var}_cooldown_left
-				[[ $transfer_type == 'multi' ]] && gdrive_switch
-		else
-			echo "Waiting Until Transfer Queue is at Least 100M"
-		fi
-		sleep 60
-	done
-elif [[ $transfer_type == 'crypt' || $transfer_type == 'multi_crypt' ]]; then
-		echo "crypt not yet implemented"
-else
-	echo "error: gdrive uploader failed"
-fi
+echo "script end"
