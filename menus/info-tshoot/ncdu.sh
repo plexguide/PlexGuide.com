@@ -41,7 +41,7 @@ OPTIONS=(A "Entire drive - excluding /mnt - WARNING Can take a long time!"
          K "RuTorrent"
          L "TorrentVPN"
          M "/home"
-         X "Back to Main Menu"
+         X "Exit Plexguide"
          Z "Exit")
 
 
@@ -123,8 +123,8 @@ case $CHOICE in
 
      X)
          clear
-         bash /opt/plexguide/menus/main.sh
-         ;;
+         bash /opt/plexguide/scripts/test/exit
+         exit 0 ;;
 
       Z)
       clear
