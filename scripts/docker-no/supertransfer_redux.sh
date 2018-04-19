@@ -2,7 +2,7 @@
 # SETTINGS
 ############################################################################
 gdsaDB=/tmp/gdsaLoadBal.txt
-gdsaImpersonate=kevin@pham.design
+gdsaImpersonate=user@email.com
 localDir=/mnt/move
 modTime=1
 uploadHistory=/tmp/superTransferUploadHistory.txt
