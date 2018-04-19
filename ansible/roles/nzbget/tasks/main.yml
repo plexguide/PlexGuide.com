@@ -183,7 +183,7 @@
 - name: Set Location of Movies
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
+    regexp: '^Category1.DestDir\s?='
     line: 'Category1.DestDir=/completed/movies'
     state: present
   when: nzbget_conf.stat.exists == False
@@ -199,7 +199,7 @@
 - name: Set Location of TV
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
+    regexp: '^Category2.DestDir\s?='
     line: 'Category2.DestDir=/completed/tv'
     state: present
   when: nzbget_conf.stat.exists == False
@@ -212,10 +212,18 @@
     state: present
   when: nzbget_conf.stat.exists == False
 
+- name: Add Music alias for Lidarr Compatability
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category3.Aliases\s?='
+    line: 'Category3.Aliases=Music'
+    state: present
+  when: nzbget_conf.stat.exists == False
+  
 - name: Set Location of Music
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
+    regexp: '^Category3.DestDir\s?='
     line: 'Category3.DestDir=/completed/music'
     state: present
   when: nzbget_conf.stat.exists == False
@@ -231,16 +239,8 @@
 - name: Set Location of EBooks
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: '^Category1.Name\s?='
+    regexp: '^Category4.DestDir\s?='
     line: 'Category4.DestDir=/completed/ebooks'
-    state: present
-  when: nzbget_conf.stat.exists == False
-
-- name: Fix Lowercase & Set Movie Category
-  lineinfile:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-    regexp: 'Category1.Name='
-    line: 'Category1.Name=movies'
     state: present
   when: nzbget_conf.stat.exists == False
 
