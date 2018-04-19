@@ -4,6 +4,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.071] (Beta, Release Candiate & DEV)
 
 - None
+- Known Issues
+  - Pgstatus does not show proper IOwait, menu scaling issues
 
 -------------------------------------------------------
 ## Past Changes
