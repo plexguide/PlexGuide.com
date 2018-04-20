@@ -1,5 +1,5 @@
 <p align="center">
-####CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
+CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 </p>
 
 <p align="center">
