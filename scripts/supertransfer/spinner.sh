@@ -28,29 +28,39 @@ function _spinner() {
     # on stop : $2 process exit status
     #           $3 spinner function pid (supplied from stop_spinner)
 
-    local on_success="DONE"
+    local on_success=" OK "
     local on_fail="FAIL"
+    local on_crit="CRIT"
+    local on_warn="WARN"
+    local on_INFO="INFO"
+    local on_cust="$2"
+    local spincolor="\e[2m"
     local white="\e[1;37m"
+    local yellow="\e[1;33m"
     local green="\e[1;32m"
     local red="\e[1;31m"
+    local flash="\e[5;1;31m"
     local nc="\e[0m"
 
     case $1 in
         start)
             # calculate the column where spinner and status msg will be displayed
-            let column=$(tput cols)-${#2}-8
+            #let column=$(tput cols)-${#2}-4
+            let column=58-${#2}
+            (( $column < 0 )) && let column=8
             # display message and position the cursor in $column column
             echo -ne ${2}
             printf "%${column}s"
 
             # start spinner
             i=1
-            sp="⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆"
+            sp="⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆"
+
             delay=${SPINNER_DELAY:-0.15}
 
             while :
             do
-                printf "\b${sp:i++%${#sp}:1}"
+                printf "\b\b\b\b\b\b[${spincolor}${sp:i++%${#sp}:4}${nc}]"
                 sleep $delay
             done
             ;;
@@ -63,8 +73,18 @@ function _spinner() {
             kill $3 > /dev/null 2>&1
 
             # inform the user uppon success or failure
-            echo -en "\b["
-            if [[ $2 -eq 0 ]]; then
+            echo -en "\b\b\b\b\b\b["
+            if [[ $2 =~ "[WARN|warn|Warn]" ]]; then
+                echo -en "${yellow}${on_warn}${nc}"
+            elif [[ $2 =~ "[INFO|info|Info]" ]]; then
+                echo -en "${white}${on_info}${nc}"
+            elif [[ $2 =~ "[CRIT|crit|Crit]" ]]; then
+                echo -en "${flash}${on_crit}${nc}"
+            elif [[ $2 =~ "[FAIL|fail|Fail]" ]]; then
+                echo -en "${red}${on_fail}${nc}"
+            elif [[ $2 =~ "[_|a-z|A-Z]." ]]; then
+                echo -en "${white}${on_cust}${nc}"
+            elif [[ $2 -eq 0 ]]; then
                 echo -en "${green}${on_success}${nc}"
             else
                 echo -en "${red}${on_fail}${nc}"
@@ -84,10 +104,22 @@ function start_spinner {
     # set global spinner pid
     _sp_pid=$!
     disown
+    sleep 0.01
 }
 
 function stop_spinner {
     # $1 : command exit status
     _spinner "stop" $1 $_sp_pid
     unset _sp_pid
+}
+
+function log {
+  # usage: log <msg to display> <exit code>
+  # WARN == WARN
+  # INFO == INFO
+  # _200 == CUSTOM
+  # 0 == OK
+  # * == FAIL
+  start_spinner $1
+  stop_spinner $2
 }

@@ -4,12 +4,18 @@ source rcloneupload.sh
 source settings.conf
 source spinner.sh
 
+# source settings
+settings=/opt/appdata/plexguide/supertransfer/settings.conf
+[[ ! -e $settings ]] && cp settings.conf $jsonPath && log 'Configuration File Not Found. Creating.' INFO
+[[ ! -e $settings ]] && log "Config at $settings Could Not Be Created." FAIL
+source $settings
+
 # init
 OPS=$@
 cat_Art
 start_spinner "Initializing..."; sleep 5; stop_spinner $?
-if [[ ! $(egrep .json$ <<<$(ls $jsonPath)) || $OPS =~ "--config" ]]; then
-  [[ ! $(egrep .json$ <<<$(ls $jsonPath)) ]] && \
+if [[ ! $(ls $jsonPath | egrep .json$ || $OPS =~ "--config" ]]; then
+  [[ ! $(ls $jsonPath | egrep .json$ ]] && \
   read -p 'No Service Keys Found. Configure? y/n>' answer || upload_Json
     if [[ $answer =~ "y" ]];then
       upload_Json
@@ -20,7 +26,7 @@ if [[ ! $(egrep .json$ <<<$(ls $jsonPath)) || $OPS =~ "--config" ]]; then
 fi
 
 # configure json's for rclone
-numKeys=$(egrep .json$ <<<$(ls $jsonPath))
+numKeys=$(ls $jsonPath | egrep -c .json$)
 start_spinner "Configuring $numKeys SA Keys..."
 configure_Json
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')

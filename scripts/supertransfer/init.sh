@@ -30,9 +30,14 @@ ART
 
 
 upload_Json(){
-[[ ! -e $jsonPath ]] && mkdir $jsonPath && echo -e '[$(date +%m/%d\ %H:%M)] [WARN]\tJson Path Not Found. Creating.'
+[[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO
+[[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL
+[[ ! -e $settings ]] && cp settings.conf $jsonPath && log 'Configuration File Not Found. Creating.' INFO
+[[ ! -e $settings ]] && log "Config at $settings Could Not Be Created." FAIL
+
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
+trap "kill $jobpid" SIGTERM
 cd $jsonPath
 python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
 jobpid=$!
@@ -42,7 +47,7 @@ cat <<MSG
 ############ CONFIGURATION ################################
 
 1. Go to [32mhttp://${localIP}:8000[0m
-2. Upload 1-99 Gsuite service account json keys
+2. Upload 9-99 Gsuite service account json keys
           - each key == +750gb max daily upload
 
 Don't have them? Instructions are in that link.
@@ -55,33 +60,33 @@ $jsonPath
 ###########################################################
 
 MSG
-read -rep $'\e[33m     Don\'t Force exit with ctrl-c\n\n\e[032mPress enter when you are done uploading.\e[0m\n'
-kill -15 $jobpid
-sleep 1
+read -rep $'\e[032mPress enter when you are done uploading.\e[0m\n'
+trap "exit 1" SIGTERM
+start_spinner "Terminating Web Server."
+sleep 0.5
+{ kill $jobpid && wait $jobpid; } &>/dev/null ; kill -0
+stop_spinner $?
+
 if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
-       	echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tWeb Server Terminated Properly."
-else
-       	echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tWeb Server Failed To Terminate. Trying Again..."
-	pid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
-	kill -15 $pid
+  start_spinner "Web Server Failed To Terminate. Attempting again."
+	jobpid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
 	sleep 3
-	if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
-       		echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tWeb Server Terminated Properly."
-	else
-		pid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
-	echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tWeb Server May Not Have Been Terminated Properly.\nPlease Kill Manually With Htop or Kill -15 $pid in a different terminal window."
+  { kill $jobpid && wait $jobpid; } &>/dev/null ; kill -0 $jobpid
+  stop_spinner $?
 	fi
-fi
-sleep 1
-numKeys=$(egrep -c .json$ <<<$(ls $jsonPath))
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tFound $numKeys Service Account Keys"
+numKeys=$(ls $jsobPath | egrep -c .json$)
+[[ $numKeys > 0 ]] && log "Found $numKeys Service Account Keys" INFO || log "No Service Keys Found" FAIL
+echo
+read -p 'Please Enter your Gsuite email: ' email
+sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $settings
+source $settings
+[[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 }
 
 
 configure_Json(){
 rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
-[[ ! -e $jsonPath ]] && mkdir $jsonPath && echo -e '[$(date +%m/%d\ %H:%M)] [WARN]\tJson Path Not Found. Creating.'
-[[ ! $(ls $jsonPath | egrep .json$) ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Service Accounts Json's Found in $jsonPath" && exit 1
+[[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json's Found in $jsonPath" FAIL && exit 1
 # add rclone config for new keys if not already existing
 for json in ${jsonPath}/*.json; do
   if [[ ! $(egrep  '\[GDSA[0-9]+\]' -A7 $rclonePath | grep $json) ]]; then
@@ -100,13 +105,13 @@ CFG
     ((++newGdsaCount))
   fi
 done
-[[ -n $newGdsaCount ]] && echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$newGdsaCount New Gdrive Service Accounts Added."
+[[ -n $newGdsaCount ]] && log "$newGdsaCount New Gdrive Service Accounts Added." INFO
 }
 
 
 init_DB(){
 [[ $gdsaImpersonate == 'your@email.com' ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit /opt/plexguide/scripts/supertransfer/settings.conf" \
+  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $settings" \
   && exit 1
 
 # get list of avail gdsa accounts
