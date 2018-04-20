@@ -45,26 +45,20 @@
 | Dec 2016   | PG Documentation Established - Vital Skill Learned from taking a Linux Class
 | Feb 2017   | PlexGuide.com was purchased to link documentation
 | Mar 2017   | Started utilizing Reddit For Assitance | Yelled @ for noob questions (old linux users are the worst)
+| May 2017   | Started learning about init.d and services to start services (which is important)
+| Jun 2017   | Ran first emulations to update documentation and started playing with docker
+| Sep 2017   | Deiteq Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
+| Oct 2017   | Slack First Used for Communication | The Creator joins the Team & started Traefik & Benchmarks
+| Nov 2017   | Discord First Used Pentagons and many others start beta testing project
+| Dec 2017   | Established the PG YouTube Channel and discovered Ansible thru my pal Desmonic
+| Jan 2018   | Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
+| Feb 2018   | PG Update system built in for better updating
+| Mar 2018   | Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
+| Apr 2018   | DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
 
+----
 
-* **Dec 2016:**  PlexGuide Documentation Established (Learned to Document from Linux Classes)
-* **Jan 2017:**  Purchased Linux Book
-* **Feb 2017:**  PlexGuide Domain Purchased to Link Documentation
-* **Mar 2017:**  Started Utilizing Reddit for Assitance | Got Yelled @ for asking Noob Questions (disliked Old Linux Users)
-* **May 2017:**  Started to learn about init.d and startups, noob for using UB 14.
-* **Jun 2017:**  Ran First UB16 Emulations to update documentation and started playing with Docker
-* **Jul 2017:**  Bate from QB advices and schools Admin9705
-* **Aug 2017:**  PlexGuide Documentation Established on GitHub
-* **Sep 2017:**  deiteq Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
-* **Oct 2017:**  Slack First Used for Communication | The Creator joins the Team & started Traefik & Benchmarks
-* **Nov 2017:**  Discord First Used Pentagons and many others start beta testing project
-* **Dec 2017:**  Discovered Ansible - thru Desmonic Inspiried + Established YouTube Channel
-* **Jan 2018:**  Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
-* **Feb 2018:**  Jackalblood CoFounder Advances Project
-* **Mar 2018:**  Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
-* **Apr 2018:**  DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
-
-** Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
+Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
 
 ----
 [![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
