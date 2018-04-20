@@ -27,26 +27,26 @@ ART
 }
 
 
+
 upload_Json(){
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
 cd $jsonPath
-python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py
+python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &
 jobpid=$!
 
 cat <<MSG
 
 ######### CONFIGURATION ################################
 
-Go to [32mhttp://${localIP}:8000[0m
-and upload 1-99 Gsuite service account json keys
-(reccomended: 5)
+1. Go to [32mhttp://${localIP}:8000[0m
+2. Upload 1-99 Gsuite service account json keys
 
 Don't have them? Instructions are in that link.
 Make sure you allow api access in the security settings
 and check "enable domain wide delegation"
 
-Web Server not working? Place json keys directly into
+Want to upload keys securely? SCP json keys directly into
 $jsonPath
 
 ########################################################
