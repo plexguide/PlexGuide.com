@@ -1,4 +1,6 @@
+<p align="right">
 **NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
+</p>
 
 <p align="center">
   <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/media/4-wiki-png.32/full" width="200"/>
