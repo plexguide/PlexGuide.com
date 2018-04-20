@@ -60,23 +60,23 @@ $jsonPath
 ###########################################################
 
 MSG
-read -rep $'\e[032mPress enter when you are done uploading.\e[0m\n'
+read -rep $'\e[032m          -- Press any key when you are done uploading --\e[0m'
 trap "exit 1" SIGTERM
 start_spinner "Terminating Web Server."
 sleep 0.5
-{ kill $jobpid && wait $jobpid; } &>/dev/null ; [[ ! $(kill -0 $jobpid) ]]
+{ kill $jobpid && wait $jobpid; } &>/dev/null
 stop_spinner $?
 
-if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
+if [[ $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
   start_spinner "Web Server Failed To Terminate. Attempting again."
 	jobpid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
-	sleep 3
-  { kill $jobpid && wait $jobpid; } &>/dev/null ; [[ ! $(kill -0 $jobpid) ]]
+	sleep 5
+  { kill $jobpid && wait $jobpid; } &>/dev/null
   stop_spinner $?
 fi
 
 numKeys=$(ls $jsonPath | egrep -c .json$)
-if [[ -n $numKeys ]];then
+if [[ $numKeys > 0 ]];then
    log "Found $numKeys Service Account Keys" INFO
     read -p 'Please Enter your Gsuite email: ' email
     sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $settings
@@ -119,7 +119,7 @@ return 0
 init_DB(){
 [[ $gdsaImpersonate == 'your@email.com' ]] \
   && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $settings" \
-  && exit 1
+  && return 1
 
 # get list of avail gdsa accounts
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
@@ -130,7 +130,7 @@ if [[ -n $gdsaList ]]; then
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
 else
     echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
-    exit 1
+    return 1
 fi
 
 # validate gdsaList, purge broken gdsa's & init db

@@ -8,8 +8,8 @@ source spinner.sh
 # init
 OPS=$@
 cat_Art
-read -p '-- Press Any Key To Continue -- '
-
+read -p '        -- Press Any Key To Continue -- '
+echo
 start_spinner "Initializing..."
 # source settings
 settings=/opt/appdata/plexguide/supertransfer/settings.conf
@@ -20,7 +20,7 @@ stop_spinner $?
 
 if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
   read -p 'No Service Keys Found. Configure? y/n>' answer
-    if [[ $answer =~ "[y|Y]" ]];then
+    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
       upload_Json
     else
       exit 1
@@ -31,9 +31,8 @@ fi
 
 # configure json's for rclone
 numKeys=$(ls $jsonPath | egrep -c .json$)
-start_spinner "Configuring $numKeys SA Keys..."
+log "Configuring $numKeys SA Keys" INFO
 configure_Json
-stop_spinner $?
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 [[ -z $gdsaList ]] && log "Rclone Configuration Failure. No Valid SA's. Exiting." FAIL && exit 1
 
