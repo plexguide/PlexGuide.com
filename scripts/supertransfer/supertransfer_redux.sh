@@ -8,7 +8,7 @@ source settings.conf
 # init functions
 cat_Art
 # prompt user to upload json if none
-[[ $(egrep .json$ upload_Json <<<$(ls $jsonPath)) ]] && upload_Json
+[[ $(egrep .json$ <<<$(ls $jsonPath)) ]] && upload_Json
 configure_Json
 init_DB
 

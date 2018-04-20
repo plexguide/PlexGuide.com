@@ -8,52 +8,54 @@
 
 cat_Art(){
 cat <<ART
-[34m
+[32m
                          __                    ___
-  ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [31m2[34m
+  ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [35m2[32m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
 /___/\_,_/ .__/\__/_/  \__/_/  \_,_/_//_/___/_/ \__/_/
-        /_/    [32mUnlimited Parallelized Gdrive Uploader
+        /_/    [1;39;2mUnlimited Parallelized Gdrive Uploader
 [0m
 ┌────────────────────────────────────────────────────────┐
-| Version               :   Beta 2.1                     |
-| Author                :   Flicker-Rate                 |
-| Multi SA Method       :   ddurdle                      |
+│ Version               :   Beta 2.1                     │
+│ Author                :   Flicker-Rate                 │
+│ Special Thanks To     :   ddurdle                      │
 │ —————————————————————————————————————————————————————— │
-| Loose Lips Might Sink Ships!                           |
-| (please don't talk about this method on public forums) |
+│ [5;31m           ⚠ Loose Lips Might Sink Ships! ⚠[0m            │
+│      Do your part and keep publicity to a minimum.     │
+│     Don't talk about this method on public forums.     │
 └────────────────────────────────────────────────────────┘
+
 ART
 }
 
 
 upload_Json(){
+[[ ! -e $jsonPath ]] && mkdir $jsonPath && echo -e '[$(date +%m/%d\ %H:%M)] [WARN]\tJson Path Not Found. Creating.'
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
 cd $jsonPath
-python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py
+python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
 jobpid=$!
 
 cat <<MSG
 
-######### CONFIGURATION ################################
+############ CONFIGURATION ################################
 
-Go to [32mhttp://${localIP}:8000[0m
-and upload 1-99 Gsuite service account json keys
-(reccomended: 5)
+1. Go to [32mhttp://${localIP}:8000[0m
+2. Upload 1-99 Gsuite service account json keys
+          - each key == +750gb max daily upload
 
 Don't have them? Instructions are in that link.
 Make sure you allow api access in the security settings
 and check "enable domain wide delegation"
 
-Web Server not working? Place json keys directly into
+Want to upload keys securely? SCP json keys directly into
 $jsonPath
 
-########################################################
+###########################################################
 
 MSG
-read -rep $'Press Any Key When You Are Done Uploading\n'
-echo
+read -rep $'\e[33m     Don\'t Force exit with ctrl-c\n\n\e[032mPress enter when you are done uploading.\e[0m\n'
 kill -15 $jobpid
 sleep 1
 if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
@@ -122,7 +124,7 @@ fi
 # validate gdsaList, purge broken gdsa's & init db
 echo '' > $gdsaDB
 for gdsa in $gdsaList; do
-  if [[ $(rclone --drive-impersonate $gdsaImpersonate ${gdsa}:/ ) ]]; then
+  if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.SAtest ) ]]; then
     echo "${gdsa}=0" >> $gdsaDB
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
   else
