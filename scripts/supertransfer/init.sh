@@ -8,7 +8,7 @@
 
 cat_Art(){
 cat <<ART
-[37m
+[34m
                          __                    ___
   ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [31m2[34m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
@@ -16,13 +16,15 @@ cat <<ART
         /_/    [32mUnlimited Parallelized Gdrive Uploader
 [0m
 ┌────────────────────────────────────────────────────────┐
-| Version               :   Beta 2.1                     |
-| Author                :   Flicker-Rate                 |
-| Multi SA Method       :   ddurdle                      |
+│ Version               :   Beta 2.1                     │
+│ Author                :   Flicker-Rate                 │
+│ Special Thanks To     :   ddurdle                      │
 │ —————————————————————————————————————————————————————— │
-| [5;31mLoose Lips Might Sink Ships![37m                           |
-| (please don't talk about this method on public forums) |
+| [5;31m      ⚠ Loose Lips Might Sink Ships! ⚠[0m                 │
+| Do your part and keep publicity to a minimum.          │
+| Don't talk about this method on public forums.         │
 └────────────────────────────────────────────────────────┘
+
 ART
 }
 
@@ -38,7 +40,7 @@ jobpid=$!
 
 cat <<MSG
 
-######### CONFIGURATION ################################
+############ CONFIGURATION ################################
 
 1. Go to [32mhttp://${localIP}:8000[0m
 2. Upload 1-99 Gsuite service account json keys
@@ -50,10 +52,10 @@ and check "enable domain wide delegation"
 Want to upload keys securely? SCP json keys directly into
 $jsonPath
 
-########################################################
+###########################################################
 
 MSG
-read -rep $'\e[032mPress enter when you are done uploading.\n\e[31m     DO NOT FORCE EXIT WITH CTRL-C\e[0m\n\n'
+read -rep $'\e[032mPress enter when you are done uploading.\n\e[33m     DO NOT FORCE EXIT WITH CTRL-C\e[0m\n\n'
 kill -15 $jobpid
 sleep 1
 if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
