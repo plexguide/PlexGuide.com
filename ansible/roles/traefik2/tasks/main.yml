@@ -116,7 +116,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "8080:8080"
+      #- "8080:8080"
       - "443:443"
       - "80:80"
     env:

@@ -1,0 +1,52 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_role:
+    name: variables
+    
+- name: Remove Netdata Container
+  docker_container:
+    name: netdata
+    state: absent
+
+- name: Deploy NetData Container
+  docker_container:
+    name: netdata
+    image: "titpetric/netdata:latest"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}19999:19999"
+    volumes:
+      - "/sys:/host/sys:ro"
+      - "/proc:/host/proc:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    env:
+      PUID: 1000
+      PGID: 1000
+    networks:
+      - name: plexguide
+        aliases:
+          - netdata
+    restart_policy: always
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:netdata.{{domain.stdout}}"
+      traefik.port: "19999"
+      traefik.frontend.auth.basic: "root:$2y$05$WjWIZ06UaOTAHjKEfbwGaOqLVDosLCs/8CA51caSCGuMJq6E9PaAm"
