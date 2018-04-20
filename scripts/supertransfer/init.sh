@@ -13,7 +13,7 @@ cat <<ART
   ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [35m2[32m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
 /___/\_,_/ .__/\__/_/  \__/_/  \_,_/_//_/___/_/ \__/_/
-        /_/    [1;2mUnlimited Parallelized Gdrive Uploader
+        /_/    [1;39;2mUnlimited Parallelized Gdrive Uploader
 [0m
 ┌────────────────────────────────────────────────────────┐
 │ Version               :   Beta 2.1                     │
@@ -28,17 +28,6 @@ cat <<ART
 ART
 }
 
-# usage: spinner <int> <message>
-spinner(){
-  i=0
-  sp="⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆"
-  while (( i < $1 )); do
-	echo -en " [${sp:i++%${#sp}:1}] "
-    echo -en "$2"
-    echo -en "\r"
-    sleep 0.1
-done
-}
 
 upload_Json(){
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && echo -e '[$(date +%m/%d\ %H:%M)] [WARN]\tJson Path Not Found. Creating.'
@@ -135,7 +124,7 @@ fi
 # validate gdsaList, purge broken gdsa's & init db
 echo '' > $gdsaDB
 for gdsa in $gdsaList; do
-  if [[ $(rclone --drive-impersonate $gdsaImpersonate ${gdsa}:/ ) ]]; then
+  if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.SAtest ) ]]; then
     echo "${gdsa}=0" >> $gdsaDB
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
   else
