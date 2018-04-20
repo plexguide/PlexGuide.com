@@ -8,7 +8,7 @@
 
 cat_Art(){
 cat <<ART
-[34m
+[37m
                          __                    ___
   ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [31m2[34m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
@@ -20,7 +20,7 @@ cat <<ART
 | Author                :   Flicker-Rate                 |
 | Multi SA Method       :   ddurdle                      |
 │ —————————————————————————————————————————————————————— │
-| Loose Lips Might Sink Ships!                           |
+| [5;31mLoose Lips Might Sink Ships![37m                           |
 | (please don't talk about this method on public forums) |
 └────────────────────────────────────────────────────────┘
 ART
@@ -33,7 +33,7 @@ upload_Json(){
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
 cd $jsonPath
-python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &
+python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
 jobpid=$!
 
 cat <<MSG
@@ -53,8 +53,7 @@ $jsonPath
 ########################################################
 
 MSG
-read -rep $'Press Any Key When You Are Done Uploading\n'
-echo
+read -rep $'\e[032mPress enter when you are done uploading.\n\e[31m     DO NOT FORCE EXIT WITH CTRL-C\e[0m\n\n'
 kill -15 $jobpid
 sleep 1
 if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
