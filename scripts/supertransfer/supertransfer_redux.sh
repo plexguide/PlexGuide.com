@@ -2,42 +2,15 @@
 # INIT
 ############################################################################
 source rcloneupload.sh
-source config.sh
+source init.sh
 source settings.conf
-[[ $gdsaImpersonate == 'your@email.com' ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit /opt/plexguide/scripts/supertransfer/settings.conf" \
-  && exit 1
 
-# get list of avail gdsa accounts
-gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
-if [[ -n $gdsaList ]]; then
-    numGdsa=$(echo $gdsaList | wc -w)
-    maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3")
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
-else
-    echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
-    exit 1
-fi
-
-# validate gdsaList, purge broken gdsa's & init db
-echo '' > $gdsaDB
-for gdsa in $gdsaList; do
-  if [[ $(rclone --drive-impersonate $gdsaImpersonate ${gdsa}:/ ) ]]; then
-    echo "${gdsa}=0" >> $gdsaDB
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
-  else
-    gdsaList=$(echo $gdsaList | sed 's/'$gdsa'//')
-    ((++gdsaFail))
-    echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
-  fi
-sleep 0.5
-done
-
-[[ -n $gdsaFail ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
-
-[[ -e $uploadHistory ]] || touch $uploadHistory
+# init functions
+cat_Art
+# prompt user to upload json if none
+[[ $(egrep .json$ upload_Json <<<$(ls $jsonPath)) ]] && upload_Json
+configure_Json
+init_DB
 
 ############################################################################
 # Least Usage Load Balancing of GDSA Accounts
