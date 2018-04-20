@@ -41,7 +41,7 @@
 ### History ###
 
 | TimeFrame  | Details
-|:----------:|:------------------------------------------------------------------------------------------------:|
+|:----------:|------------------------------------------------------------------------------------------------|
 | Dec 2016   | PG Documentation Established - Vital Skill Learned from taking a Linux Class
 | Feb 2017   | PlexGuide.com was purchased to link documentation
 | Mar 2017   | Started utilizing Reddit For Assitance | Yelled @ for noob questions (old linux users are the worst)
