@@ -10,10 +10,10 @@ cat_Art(){
 cat <<ART
 [32m
                          __                    ___
-  ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [31m2[32m
+  ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [35m2[32m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
 /___/\_,_/ .__/\__/_/  \__/_/  \_,_/_//_/___/_/ \__/_/
-        /_/    [2mUnlimited Parallelized Gdrive Uploader
+        /_/    [1;2mUnlimited Parallelized Gdrive Uploader
 [0m
 ┌────────────────────────────────────────────────────────┐
 │ Version               :   Beta 2.1                     │
@@ -28,7 +28,15 @@ cat <<ART
 ART
 }
 
-
+# usage: spinner <int> <message>
+spinner(){
+  while (( i < $1 )); do
+	echo -en " [${sp:i++%${#sp}:1}] "
+    echo -en "$2"
+    echo -en "\r"
+    sleep 0.1
+done
+}
 
 upload_Json(){
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && echo -e '[$(date +%m/%d\ %H:%M)] [WARN]\tJson Path Not Found. Creating.'
