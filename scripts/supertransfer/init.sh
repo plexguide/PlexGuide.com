@@ -64,29 +64,35 @@ read -rep $'\e[032mPress enter when you are done uploading.\e[0m\n'
 trap "exit 1" SIGTERM
 start_spinner "Terminating Web Server."
 sleep 0.5
-{ kill $jobpid && wait $jobpid; } &>/dev/null ; kill -0
+{ kill $jobpid && wait $jobpid; } &>/dev/null ; [[ ! $(kill -0 $jobpid) ]]
 stop_spinner $?
 
 if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
   start_spinner "Web Server Failed To Terminate. Attempting again."
 	jobpid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
 	sleep 3
-  { kill $jobpid && wait $jobpid; } &>/dev/null ; kill -0 $jobpid
+  { kill $jobpid && wait $jobpid; } &>/dev/null ; [[ ! $(kill -0 $jobpid) ]]
   stop_spinner $?
-	fi
-numKeys=$(ls $jsobPath | egrep -c .json$)
-[[ $numKeys > 0 ]] && log "Found $numKeys Service Account Keys" INFO || log "No Service Keys Found" FAIL
-echo
-read -p 'Please Enter your Gsuite email: ' email
-sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $settings
-source $settings
-[[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
+fi
+
+numKeys=$(ls $jsonPath | egrep -c .json$)
+if [[ -n $numKeys ]];then
+   log "Found $numKeys Service Account Keys" INFO
+    read -p 'Please Enter your Gsuite email: ' email
+    sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $settings
+    source $settings
+    [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
+else
+   log "No Service Keys Found" FAIL
+   return 1
+fi
+return 0
 }
 
 
 configure_Json(){
 rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
-[[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json's Found in $jsonPath" FAIL && exit 1
+[[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json's Found in $jsonPath" FAIL && return 1
 # add rclone config for new keys if not already existing
 for json in ${jsonPath}/*.json; do
   if [[ ! $(egrep  '\[GDSA[0-9]+\]' -A7 $rclonePath | grep $json) ]]; then
@@ -106,6 +112,7 @@ CFG
   fi
 done
 [[ -n $newGdsaCount ]] && log "$newGdsaCount New Gdrive Service Accounts Added." INFO
+return 0
 }
 
 
