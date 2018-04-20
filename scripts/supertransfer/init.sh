@@ -56,7 +56,7 @@ $jsonPath
 ###########################################################
 
 MSG
-read -rep $'\e[032mPress enter when you are done uploading.\n\e[33m     DO NOT FORCE EXIT WITH CTRL-C\e[0m\n\n'
+read -rep $'\e[33m     Don\'t Force exit with ctrl-c\n\n\e[032mPress enter when you are done uploading.\e[0m\n'
 kill -15 $jobpid
 sleep 1
 if [[ ! $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
