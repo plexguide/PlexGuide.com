@@ -8,21 +8,21 @@
 
 cat_Art(){
 cat <<ART
-[34m
+[32m
                          __                    ___
-  ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [31m2[34m
+  ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [31m2[32m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
 /___/\_,_/ .__/\__/_/  \__/_/  \_,_/_//_/___/_/ \__/_/
-        /_/    [32mUnlimited Parallelized Gdrive Uploader
+        /_/    [2mUnlimited Parallelized Gdrive Uploader
 [0m
 ┌────────────────────────────────────────────────────────┐
 │ Version               :   Beta 2.1                     │
 │ Author                :   Flicker-Rate                 │
 │ Special Thanks To     :   ddurdle                      │
 │ —————————————————————————————————————————————————————— │
-| [5;31m      ⚠ Loose Lips Might Sink Ships! ⚠[0m                 │
-| Do your part and keep publicity to a minimum.          │
-| Don't talk about this method on public forums.         │
+│ [5;31m           ⚠ Loose Lips Might Sink Ships! ⚠[0m            │
+│      Do your part and keep publicity to a minimum.     │
+│     Don't talk about this method on public forums.     │
 └────────────────────────────────────────────────────────┘
 
 ART
@@ -44,6 +44,7 @@ cat <<MSG
 
 1. Go to [32mhttp://${localIP}:8000[0m
 2. Upload 1-99 Gsuite service account json keys
+          - each key == +750gb max daily upload
 
 Don't have them? Instructions are in that link.
 Make sure you allow api access in the security settings
