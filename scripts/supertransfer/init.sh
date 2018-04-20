@@ -30,6 +30,8 @@ ART
 
 # usage: spinner <int> <message>
 spinner(){
+  i=0
+  sp="⠄⠆⠇⠋⠙⠸⠰⠠⠰⠸⠙⠋⠇⠆"
   while (( i < $1 )); do
 	echo -en " [${sp:i++%${#sp}:1}] "
     echo -en "$2"
