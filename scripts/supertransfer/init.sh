@@ -30,9 +30,8 @@ ART
 upload_Json(){
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
-cd $jsonPath && python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py
-cd /opt/plexguide/supertransfer
-python3 /root/jsonUpload.py 1>/dev/null &
+cd $jsonPath
+python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py
 jobpid=$!
 
 cat <<MSG
@@ -78,6 +77,7 @@ echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tFound $numKeys Service Account Keys"
 
 
 configure_Json(){
+rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && echo -e '[$(date +%m/%d\ %H:%M)] [WARN]\tJson Path Not Found. Creating.'
 [[ ! $(ls $jsonPath | egrep .json$) ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Service Accounts Json's Found in $jsonPath" && exit 1
 # add rclone config for new keys if not already existing
