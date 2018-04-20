@@ -74,16 +74,14 @@ function _spinner() {
 
             # inform the user uppon success or failure
             echo -en "\b\b\b\b\b\b["
-            if [[ $2 =~ "[WARN|warn|Warn]" ]]; then
+            if [[ $2 =~ "WARN" ]]; then
                 echo -en "${yellow}${on_warn}${nc}"
-            elif [[ $2 =~ "[INFO|info|Info]" ]]; then
+            elif [[ $2 =~ "INFO" ]]; then
                 echo -en "${white}${on_info}${nc}"
-            elif [[ $2 =~ "[CRIT|crit|Crit]" ]]; then
+            elif [[ $2 =~ "CRIT" ]]; then
                 echo -en "${flash}${on_crit}${nc}"
-            elif [[ $2 =~ "[FAIL|fail|Fail]" ]]; then
+            elif [[ $2 =~ "FAIL" ]]; then
                 echo -en "${red}${on_fail}${nc}"
-            elif [[ $2 =~ "[_|a-z|A-Z]." ]]; then
-                echo -en "${white}${on_cust}${nc}"
             elif [[ $2 -eq 0 ]]; then
                 echo -en "${green}${on_success}${nc}"
             else
@@ -120,6 +118,6 @@ function log {
   # _200 == CUSTOM
   # 0 == OK
   # * == FAIL
-  start_spinner $1
-  stop_spinner $2
+  start_spinner "${1}"
+  stop_spinner "${2}"
 }
