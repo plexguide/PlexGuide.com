@@ -1,6 +1,13 @@
 **NOTE**:  CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!
 
-[Website](https://plexguide.com) | [Wiki](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki) | [Install](https://plexguide.com/threads/plexguide-install-instructions.243/) | [ChangeLog](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/blob/Version-5/ChangeLog.md) | [Reddit](https://www.reddit.com/r/plexguide/) | [YouTube](https://plexguide.com/threads/youtube-videos.436/) | [Newcomers](https://plexguide.com/threads/for-pg-newcomers.653/) | [Discord](https://plexguide.com/threads/your-discord-invite.769/) | [Donate](https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate)
+<p align="center">
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/media/4-wiki-png.32/full" width="200"/>
+  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/media/5-plexguide-png.33/full" width="200"/> 
+  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/media/1-install-png.29/full" width="200"/> 
+  <a href="https://plexguide.com/threads/for-pg-newcomers.653/" target="_blank"><img src="https://plexguide.com/media/6-new-png.34/full" width="200"/> 
+  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/media/3-discord-png.31/full" width="200"/> 
+  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/media/2-donation-png.30/full" width="200"/> 
+</p>
 
 ----
 ## Welcome to PlexGuide.com
