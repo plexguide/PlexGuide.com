@@ -42,7 +42,8 @@
 
 | TimeFrame  | `Details`
 |:----------:|:------------------------------------------------------------------------------------------------:|
-| Dec 2016   | 
+| Dec 2016   | PG Documentation Established - Vital Skill Learned from taking a Linux Class
+| Jan 2017   | PG Documentation Established - Vital Skill Learned from taking a Linux Class
 
 
 * **Dec 2016:**  PlexGuide Documentation Established (Learned to Document from Linux Classes)
