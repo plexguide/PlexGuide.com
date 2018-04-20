@@ -32,7 +32,7 @@ function _spinner() {
     local on_fail="FAIL"
     local on_crit="CRIT"
     local on_warn="WARN"
-    local on_INFO="INFO"
+    local on_info="INFO"
     local on_cust="$2"
     local spincolor="\e[2m"
     local white="\e[1;37m"

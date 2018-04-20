@@ -8,7 +8,7 @@ source spinner.sh
 # init
 OPS=$@
 cat_Art
-read -p '        -- Press Any Key To Continue -- '
+read -p '                 -- Press Any Key To Continue -- '
 echo
 start_spinner "Initializing..."
 # source settings
@@ -34,7 +34,7 @@ numKeys=$(ls $jsonPath | egrep -c .json$)
 log "Configuring $numKeys SA Keys" INFO
 configure_Json
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
-[[ -z $gdsaList ]] && log "Rclone Configuration Failure. No Valid SA's. Exiting." FAIL && exit 1
+[[ -z $gdsaList ]] && log "Rclone Configuration Failure. No Valid SA's" FAIL && exit 1
 
 # validate new keys
 for gdsa in $gdsaList; do

@@ -60,19 +60,20 @@ $jsonPath
 ###########################################################
 
 MSG
-read -rep $'\e[032m          -- Press any key when you are done uploading --\e[0m'
+read -rep $'\e[032m   -- Press any key when you are done uploading --\e[0m'
 trap "exit 1" SIGTERM
+echo
 start_spinner "Terminating Web Server."
 sleep 0.5
 { kill $jobpid && wait $jobpid; } &>/dev/null
-stop_spinner $?
+stop_spinner $(( ! $? ))
 
 if [[ $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
   start_spinner "Web Server Failed To Terminate. Attempting again."
 	jobpid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
 	sleep 5
   { kill $jobpid && wait $jobpid; } &>/dev/null
-  stop_spinner $?
+  stop_spinner $(( ! $? ))
 fi
 
 numKeys=$(ls $jsonPath | egrep -c .json$)
@@ -83,8 +84,8 @@ if [[ $numKeys > 0 ]];then
     source $settings
     [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 else
-   log "No Service Keys Found" FAIL
-   return 1
+   log "No Service Keys Found. Try Again." FAIL
+   exit 1
 fi
 return 0
 }
@@ -92,7 +93,7 @@ return 0
 
 configure_Json(){
 rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
-[[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json's Found in $jsonPath" FAIL && return 1
+[[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json's Found." FAIL && exit 1
 # add rclone config for new keys if not already existing
 for json in ${jsonPath}/*.json; do
   if [[ ! $(egrep  '\[GDSA[0-9]+\]' -A7 $rclonePath | grep $json) ]]; then
