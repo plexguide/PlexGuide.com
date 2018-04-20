@@ -49,4 +49,4 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:netdata.{{domain.stdout}}"
       traefik.port: "19999"
-      traefik.frontend.auth.basic: "test:$742929dcb631403d7c1c1efad2ca2700/"
+      traefik.frontend.auth.basic: "test:742929dcb631403d7c1c1efad2ca2700/"
