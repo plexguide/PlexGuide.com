@@ -54,8 +54,7 @@ entryPoint = "https"
 
 [[acme.domains]]
   main = "yourdomain.com"
-[[acme.domains]]
-  main = "*.yourdomain.com"  
+  sans = "*.yourdomain.com"  
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
