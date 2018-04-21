@@ -26,7 +26,6 @@
 #fi
 
 docker logs --tail 100 traefik2 2> /var/plexguide/status.traefik2
-docker logs --tail 100 traefik 2> /var/plexguide/status.traefik1
 
 #dock=${dock#*responded with a}
 #echo $dock 
