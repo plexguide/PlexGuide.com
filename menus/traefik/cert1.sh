@@ -25,11 +25,11 @@
 #  echo "nope" > /var/plexguide/status.traefik1
 #fi
 
-docker logs --tail 20 traefik 2> /var/plexguide/status.traefik1
-dock=$( cat /var/plexguide/status.traefik1 )
-dock=${dock#*responded with a} 
-dock=${dock::-1}
-echo $dock | head -c 1
+bash /opt/plexguide/menus/traefik/certlog.sh 1>/dev/null 2>&1
+dock=$( cat /var/plexguide/status.traefik1 ) 1>/dev/null 2>&1
+dock=${dock#*responded with a} 1>/dev/null 2>&1
+dock=${dock::-1} 1>/dev/null 2>&1
+echo $dock | head -c 1 1>/dev/null 2>&1
 echo $dock > /var/plexguide/status.traefik1
 
 ######### path to call script
