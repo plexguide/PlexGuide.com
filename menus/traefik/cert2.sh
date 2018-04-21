@@ -25,6 +25,7 @@
 #  echo "nope" > /var/plexguide/status.traefik2
 #fi
 
+bash /opt/plexguide/menus/traefik/certlog.sh 1>/dev/null 2>&1
 docker logs --tail 100 traefik2 2> /var/plexguide/status.traefik2
 dock=$( cat /var/plexguide/status.traefik2 )
 info=${dock#*responded with a}
