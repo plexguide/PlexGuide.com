@@ -6,10 +6,14 @@ source spinner.sh
 
 #if [[ $@ =~ [--help|-h] ]
 # init
-if [[ $@ =~ [--pw=durdle] || -e /opt/appdata/plexguide/.rclone ]]; then
+if [[ $@ =~ --pw=durdle || -e /opt/appdata/plexguide/.rclone ]]; then
 cat_Secret_Art
 else
 cat_Art
+fi
+
+if [[ $@ =~ --purge-rclone ]]; then
+  purge_Rclone
 fi
 
 # source settings
@@ -60,6 +64,7 @@ gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 
 # validate new keys
 function validate_json(){
+  echo '' > ${jsonPath}.SA_error.log
   for gdsa in $gdsaList; do
     start_spinner "Validating: ${gdsa}"
     if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/${jsonPath}.SA_error.log) ]]; then

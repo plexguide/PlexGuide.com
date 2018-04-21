@@ -121,7 +121,8 @@ cat <<MSG
 Make sure you allow api access in the security settings
 and check "enable domain wide delegation"
 
-Want to upload keys securely? SCP json keys directly into
+If port 8000 is closed or you wish to upload keys securely,
+Transfer json keys directly into:
 $jsonPath
 
 ###########################################################
@@ -163,9 +164,9 @@ rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
 [[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json Found." FAIL && exit 1
 # add rclone config for new keys if not already existing
 for json in ${jsonPath}/*.json; do
-  if [[ ! $(egrep  '\[GDSA[0-9]+\]' -A7 $rclonePath | grep $json) ]]; then
-    oldMaxGdsa=$(egrep  '\[GDSA[0-9]+\]' $rclonePath | sed 's/\[GDSA//g;s/\]//' | sort -g | tail -1)
-    newMaxGdsa=$(( $oldMaxGdsa++ ))
+  if [[ ! $(egrep  '^\[GDSA[0-9]+\]$' -A7 $rclonePath | grep $json) ]]; then
+    oldMaxGdsa=$(egrep  '^\[GDSA[0-9]+\]$' $rclonePath | sed 's/\[GDSA//g;s/\]//' | sort -g | tail -1)
+    newMaxGdsa=$((++oldMaxGdsa))
 cat <<-CFG >> $rclonePath
 [GDSA${newMaxGdsa}]
 type = drive
@@ -176,13 +177,36 @@ root_folder_id = $rootFolderId
 service_account_file = $json
 team_drive = $teamDrive
 CFG
-    (($newGdsaCount++))
+    ((++newGdsaCount))
   fi
 done
 [[ -n $newGdsaCount ]] && log "$newGdsaCount New Gdrive Service Account Added." INFO
 return 0
 }
 
+# purge rclone of SA's
+purge_Rclone(){
+source settings.conf
+del=0
+while read line; do
+if [[ $line == '' ]]; then
+	del=0
+	echo $line >> ${rclonePath}.tmp
+elif [[ $del == 1 || $line =~ ^\[GDSA[0-9]+\]$ ]]; then
+	del=1
+else
+	del=0
+	echo $line >> ${rclonePath}.tmp
+fi
+done <$rclonePath
+cat ${rclonePath}.tmp > $rclonePath
+rm ${rclonePath}.tmp
+if [[ $(egrep '^\[GDSA[0-9]+\]$' -A7 $rclonePath) ]]; then
+  log "Failed To Purge Rclone Config." WARN
+else
+  log "Rclone Config Purge Successful." INFO
+fi
+}
 
 init_DB(){
 [[ $gdsaImpersonate == 'your@email.com' ]] \
@@ -209,7 +233,7 @@ for gdsa in $gdsaList; do
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
   else
     gdsaList=$(echo $gdsaList | sed 's/'$gdsa'//')
-    ((++gdsaFail))
+    ((gdsaFail++))
     echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
   fi
 sleep 0.5
