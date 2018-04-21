@@ -7,6 +7,7 @@
 # init_DB() - validates gdsa's & init least usage DB
 
 cat_Secret_Art(){
+touch /opt/appdata/plexguide/.rclone
 cat <<ART
 [32m
                          __                    ___
@@ -25,7 +26,6 @@ cat <<ART
 │      Do your part and keep publicity to a minimum.     │
 │     Don't talk about this method on public forums.     │
 └────────────────────────────────────────────────────────┘
-
 ART
 }
 
@@ -46,6 +46,49 @@ cat <<ART
 ART
 }
 
+cat_Help(){
+cat <<HELP
+Usage: supertransfer [OPTION]
+
+##############################
+ATTN: Commands not ready yet!
+##############################
+
+  -s, --status           bring up status menu (not ready)
+  -l, --logs             show program logs
+  -r, --restart          restart daemon
+      --stop             stop daemon
+      --start            start daemon
+
+  -c, --config           start configuration wizard
+      --config-json      configure SA's used
+      --config-email     configure gdrive account impersonation
+
+      --pw=PASSWORD      unlocks secret multi-SA mode $(rev <<<eldrud)
+  -v  --validate         validates json account(s)
+  -V  --version          outputs version
+  -h, --help             what you're currently looking at
+
+Please report any bugs to @flicker-rate#3637 on discord, or at plexguide.com
+HELP
+}
+
+cat_Troubleshoot(){
+cat <<EOF
+####### Troubleshooting steps: ###########################
+
+1. Make sure you have enabled gdrive api access in
+   both the dev console and admin security settings.
+
+2. Check if the json keys have "domain wide delegation"
+
+3. Check if the this email is correct: $gdsaImpersonate
+      - if it is incorrect, configure it again with:
+        supertransfer --config
+
+##########################################################
+EOF
+}
 
 upload_Json(){
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO
