@@ -74,6 +74,9 @@ HELP
 }
 
 cat_Troubleshoot(){
+read -p "View Troubleshooting Tips? y/n>" answer
+if [[ $answer =~ [y|Y|yes|Yes] ]]; then
+}
 cat <<EOF
 ####### Troubleshooting steps: ###########################
 
@@ -91,6 +94,8 @@ cat <<EOF
 
 ##########################################################
 EOF
+fi
+
 read -p "View Error Log? y/n>" answer
 [[ $answer =~ [y|Y|yes|Yes] ]] && less ${jsonPath}/.SA_error.log
 }
