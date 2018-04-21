@@ -91,6 +91,8 @@ cat <<EOF
 
 ##########################################################
 EOF
+read -p "View Error Log? y/n>" answer
+[[ $answer =~ [y|Y|yes|Yes] ]] && less ${jsonPath}.SA_error.log
 }
 
 upload_Json(){
@@ -104,7 +106,7 @@ localIP=$(curl -s icanhazip.com)
 cd $jsonPath
 python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
 jobpid=$!
-trap "kill $jobpid" SIGTERM
+trap "kill $jobpid && exit 1" SIGTERM
 
 cat <<MSG
 
@@ -129,7 +131,7 @@ read -rep $'\e[032m   -- Press any key when you are done uploading --\e[0m'
 trap "exit 1" SIGTERM
 echo
 start_spinner "Terminating Web Server."
-sleep 3.5
+sleep 2
 { kill $jobpid && wait $jobpid; } &>/dev/null
 stop_spinner $(( ! $? ))
 
