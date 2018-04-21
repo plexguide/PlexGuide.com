@@ -25,7 +25,7 @@
 #  echo "nope" > /var/plexguide/status.traefik2
 #fi
 
-docker logs --tail 100 traefik2 2> /var/plexguide/status.traefik2
+docker logs --tail 100 traefik2 2> /var/plexguide/status.traefik2.temp
 
 #dock=${dock#*responded with a}
 #echo $dock 
