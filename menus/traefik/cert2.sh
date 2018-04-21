@@ -29,9 +29,8 @@ docker logs --tail 100 traefik2 2> /var/plexguide/status.traefik2
 dock=$( cat /var/plexguide/status.traefik2 )
 info=${dock#*responded with a}
 info=$( echo ${info:0:12} )
-echo $info | head -c 1 
+echo $info 1>/dev/null 2>&1 | head -c 1
 echo $info > /var/plexguide/status.traefik2
-echo $info
 
 #dock=${dock#*responded with a}
 #echo $dock 
