@@ -26,7 +26,7 @@
 #fi
 
 bash /opt/plexguide/menus/traefik/certlog.sh 1>/dev/null 2>&1
-dock=$( cat /var/plexguide/status.traefik1.tmp )
+dock=$( cat /var/plexguide/status.traefik1.temp )
 info=${dock#*responded with a}
 info=$( echo ${info:0:12} ) 1>/dev/null 2>&1
 echo $info 1>/dev/null 2>&1 | head -c 1
