@@ -65,7 +65,10 @@ ATTN: Commands not ready yet!
       --config-email     configure gdrive account impersonation
       --purge-rclone     remove all SA's from rclone config
 
-      --pw=PASSWORD      unlocks secret multi-SA mode $(rev <<<eldrud)
+      --pw=PASSWORD      unlocks secret multi-SA mode ;)
+                         n00b deterrence:
+                         password is reversed base64 of ZWxkcnVkCg==
+
   -v  --validate         validates json account(s)
   -V  --version          outputs version
   -h, --help             what you're currently looking at
@@ -90,7 +93,10 @@ cat <<EOF
       - if it is incorrect, configure it again with:
         supertransfer --config
 
-4. Check these logs for detailed debugging:
+4. Remove the offending keys and run:
+        supertransfer --purge-rclone
+
+5. Check these logs for detailed debugging:
       - /tmp/SA_error.log
 
 ##########################################################
