@@ -99,8 +99,8 @@ numKeys=$(ls $jsonPath | egrep -c .json$)
 if [[ $numKeys > 0 ]];then
    log "Found $numKeys Service Account Keys" INFO
     read -p 'Please Enter your Gsuite email: ' email
-    sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $settings
-    source $settings
+    sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
+    source $usersettings
     [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 else
    log "No Service Keys Found. Try Again." FAIL
@@ -138,7 +138,7 @@ return 0
 
 init_DB(){
 [[ $gdsaImpersonate == 'your@email.com' ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $settings" \
+  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $usersettings" \
   && exit 1
 
 # get list of avail gdsa accounts
