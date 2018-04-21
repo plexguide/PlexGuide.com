@@ -45,9 +45,9 @@ configure_SA
 # configure email, if user didn't do it in the last step
 function configure_email(){
   if [[ $gdsaImpersonate == 'your@email.com' ]]; then
-      log "No Email Configured in: $usersettings" WARN
+      log "No Email Configured in: usersettings.conf" WARN
       read -p 'Please Enter your Gsuite email: ' email
-      sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
+      sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
       source $usersettings
       [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
   fi
@@ -63,15 +63,14 @@ gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 
 # validate new keys
 function validate_json(){
-  configure_json
   for gdsa in $gdsaList; do
     start_spinner "Validating: ${gdsa}"
-    if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/dev/null) ]]; then
+    if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/${jsonPath}.SA_error.log) ]]; then
       sleep 1
       stop_spinner 0
     else
       stop_spinner 1
-      (($gdsaFail++))
+      ((gdsaFail++))
     fi
   done
 

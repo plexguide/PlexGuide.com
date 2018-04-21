@@ -86,6 +86,9 @@ cat <<EOF
       - if it is incorrect, configure it again with:
         supertransfer --config
 
+4. Check these logs for detailed debugging:
+      - ${jsonPath}.SA_error.log
+
 ##########################################################
 EOF
 }
@@ -142,7 +145,7 @@ numKeys=$(ls $jsonPath | egrep -c .json$)
 if [[ $numKeys > 0 ]];then
    log "Found $numKeys Service Account Keys" INFO
     read -p 'Please Enter your Gsuite email: ' email
-    sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
+    sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
     source $usersettings
     [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 else
