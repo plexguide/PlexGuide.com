@@ -64,10 +64,12 @@ gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 
 # validate new keys
 function validate_json(){
-  echo '' > ${jsonPath}.SA_error.log
+  echo '' > ${jsonPath}/.SA_error.log
   for gdsa in $gdsaList; do
+    s=0
     start_spinner "Validating: ${gdsa}"
-    if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/${jsonPath}.SA_error.log) ]]; then
+    rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>${jsonPath}/.SA_error.log && s=1
+    if [[ $s == 1 ]]; then
       sleep 1
       stop_spinner 0
     else
@@ -86,6 +88,5 @@ function validate_json(){
 
 }
 validate_json
-
 
 echo end

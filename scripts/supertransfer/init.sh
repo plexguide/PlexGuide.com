@@ -87,12 +87,12 @@ cat <<EOF
         supertransfer --config
 
 4. Check these logs for detailed debugging:
-      - ${jsonPath}.SA_error.log
+      - ${jsonPath}/.SA_error.log
 
 ##########################################################
 EOF
 read -p "View Error Log? y/n>" answer
-[[ $answer =~ [y|Y|yes|Yes] ]] && less ${jsonPath}.SA_error.log
+[[ $answer =~ [y|Y|yes|Yes] ]] && less ${jsonPath}/.SA_error.log
 }
 
 upload_Json(){
