@@ -26,11 +26,11 @@
 #fi
 
 bash /opt/plexguide/menus/traefik/certlog.sh 1>/dev/null 2>&1
-dock=$( cat /var/plexguide/status.traefik1 ) 1>/dev/null 2>&1
-dock=${dock#*responded with a} 1>/dev/null 2>&1
-dock=${dock::-1} 1>/dev/null 2>&1
-echo $dock | head -c 1 1>/dev/null 2>&1
-echo $dock > /var/plexguide/status.traefik1
+dock=$( cat /var/plexguide/status.traefik1 )
+info=${dock#*responded with a}
+info=$( echo ${info:0:12} ) 1>/dev/null 2>&1
+echo $info 1>/dev/null 2>&1 | head -c 1
+echo $info > /var/plexguide/status.traefik1
 
 ######### path to call script
 #bash /opt/plexguide/menus/traefik/cert2.sh
