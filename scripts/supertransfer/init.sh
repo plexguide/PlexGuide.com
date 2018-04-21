@@ -61,8 +61,9 @@ ATTN: Commands not ready yet!
       --start            start daemon
 
   -c, --config           start configuration wizard
-      --config-json      configure SA's used
+      --config-rclone    configure SA's used with rclone
       --config-email     configure gdrive account impersonation
+      --purge-rclone     remove all SA's from rclone config
 
       --pw=PASSWORD      unlocks secret multi-SA mode $(rev <<<eldrud)
   -v  --validate         validates json account(s)
@@ -76,7 +77,6 @@ HELP
 cat_Troubleshoot(){
 read -p "View Troubleshooting Tips? y/n>" answer
 if [[ $answer =~ [y|Y|yes|Yes] ]]; then
-}
 cat <<EOF
 ####### Troubleshooting steps: ###########################
 
@@ -85,19 +85,20 @@ cat <<EOF
 
 2. Check if the json keys have "domain wide delegation"
 
-3. Check if the this email is correct: $gdsaImpersonate
+3. Check if the this email is correct:
+   [1;35m$gdsaImpersonate[0m
       - if it is incorrect, configure it again with:
         supertransfer --config
 
 4. Check these logs for detailed debugging:
-      - ${jsonPath}/.SA_error.log
+      - /tmp/SA_error.log
 
 ##########################################################
 EOF
 fi
 
 read -p "View Error Log? y/n>" answer
-[[ $answer =~ [y|Y|yes|Yes] ]] && less ${jsonPath}/.SA_error.log
+[[ $answer =~ [y|Y|yes|Yes] ]] && less /tmp/SA_error.log
 }
 
 upload_Json(){
@@ -153,6 +154,9 @@ numKeys=$(ls $jsonPath | egrep -c .json$)
 if [[ $numKeys > 0 ]];then
    log "Found $numKeys Service Account Keys" INFO
     read -p 'Please Enter your Gsuite email: ' email
+    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
     sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
     source $usersettings
     [[ $gdsaImpersonate == $email ]] && log "Impersonation: $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
@@ -191,7 +195,7 @@ return 0
 
 # purge rclone of SA's
 purge_Rclone(){
-source settings.conf
+rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
 del=0
 while read line; do
 if [[ $line == '' ]]; then

@@ -48,6 +48,9 @@ function configure_email(){
   if [[ $gdsaImpersonate == 'your@email.com' ]]; then
       log "No Email Configured in: usersettings.conf" WARN
       read -p 'Please Enter your Gsuite email: ' email
+      [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+      [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+      [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
       sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
       source $usersettings
       [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
