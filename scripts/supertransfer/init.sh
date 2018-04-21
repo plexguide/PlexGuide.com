@@ -94,10 +94,10 @@ EOF
 }
 
 upload_Json(){
-[[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO
-[[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL
-[[ ! -e $settings ]] && cp settings.conf $jsonPath && log 'Configuration File Not Found. Creating.' INFO
-[[ ! -e $settings ]] && log "Config at $settings Could Not Be Created." FAIL
+source settings.conf
+source usersettings.conf
+[[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
+[[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
 
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
@@ -147,7 +147,7 @@ if [[ $numKeys > 0 ]];then
     read -p 'Please Enter your Gsuite email: ' email
     sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
     source $usersettings
-    [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
+    [[ $gdsaImpersonate == $email ]] && log "Impersonation: $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 else
    log "No Service Keys Found. Try Again." FAIL
    exit 1

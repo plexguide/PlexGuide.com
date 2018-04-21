@@ -4,7 +4,7 @@ source rcloneupload.sh
 source settings.conf
 source spinner.sh
 
-if [[ $@ =~ [--help|-h] ]
+#if [[ $@ =~ [--help|-h] ]
 # init
 if [[ $@ =~ [--pw=durdle] || -e /opt/appdata/plexguide/.rclone ]]; then
 cat_Secret_Art
@@ -28,19 +28,16 @@ fi
 
 
 # configure SA keys, if none found
-function configure_SA(){
-  if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
-    read -p 'No Service Keys Found. Configure? y/n>' answer
-      if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
-        upload_Json
-      else
-        exit 1
-      fi
-  elif [[ $@ =~ "--config" ]]; then
-    upload_Json
-  fi
-}
-configure_SA
+if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
+  read -p 'No Service Keys Found. Configure? y/n>' answer
+    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
+      upload_Json
+    else
+      exit 1
+    fi
+elif [[ $@ =~ "--config" ]]; then
+  upload_Json
+fi
 
 # configure email, if user didn't do it in the last step
 function configure_email(){
