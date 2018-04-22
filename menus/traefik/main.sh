@@ -150,8 +150,10 @@ case $CHOICE in
     fi
 
     #### Checks to See if Either Traefik Exisxts
-    docker logs traefik2 2> /var/plexguide/traefik.error2
-    docker logs traefik 2> /var/plexguide/traefik.error1
+    docker logs traefik2 3>&1 1>>/var/plexguide/traefik.error2 2>&1
+    docker logs traefik 3>&1 1>>/var/plexguide/traefik.error1 2>&1
+    #docker logs traefik2 2> /var/plexguide/traefik.error2
+    #docker logs traefik 2> /var/plexguide/traefik.error1
     error2=$( cat /var/plexguide/traefik.error2 )
     error2=${error2::-1}
     error1=$( cat /var/plexguide/traefik.error1 )
