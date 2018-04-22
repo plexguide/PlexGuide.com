@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  dialog --title "PG APP Guard Protection" --msgbox "\nPurpose is to generate username and passwords for APPS without PROTECTION such as Heimdall, RuTorrent & others\n\nYour Password will Be Hashed for Protection!" 0 0
+  dialog --title "PG APP Guard Protection" --msgbox "\nPurpose is to generate username and passwords for APPS without PROTECTION such as Heimdall, RuTorrent & others\n\nYour Password will Be Hashed for Protection\n\nNOTE, your PORTS MUST BE CLOSED for this to work well! APP GUARD only protects by SUBDOMAIN ACCESS, not Ports!!!" 0 0
 
   dialog --title "Create a USERNAME (case senstive)" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
