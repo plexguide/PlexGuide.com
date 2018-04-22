@@ -9,7 +9,7 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
   echo "" 1>/dev/null 2>&1
     else
   touch /var/plexguide/server.appguard 1>/dev/null 2>&1
-  echo "OFF" > /var/plexguide/server.appguard 1>/dev/null 2>&1
+  echo "OFF" > /var/plexguide/server.appguard
 
   fi
 ############################### Calls Variables
