@@ -12,7 +12,7 @@ TITLE="PG Server Security"
 MENU="Make a Selection:"
 
 OPTIONS=(A "APP Ports - [OPEN]"
-         B "APP Protection Guard - [OFF]"
+         B "APP Guard Protection - [OFF]"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
