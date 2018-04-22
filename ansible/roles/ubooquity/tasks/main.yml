@@ -52,6 +52,7 @@
     state: started
     labels:
       traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:ubooquity.{{domain.stdout}}"
       traefik.port: "2202"

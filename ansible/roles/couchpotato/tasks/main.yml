@@ -44,6 +44,7 @@
       PGID: "1000"
     labels:
       traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:couchpotato.{{domain.stdout}}"
       traefik.port: "5050"

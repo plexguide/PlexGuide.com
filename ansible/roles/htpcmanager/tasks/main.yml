@@ -44,6 +44,7 @@
           - htpcmanager
     labels:
       traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}"
       traefik.port: "8085"
     restart_policy: always

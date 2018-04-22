@@ -48,6 +48,7 @@
     state: started
     labels:
       traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:pyload.{{domain.stdout}}"
       traefik.port: "8000"
