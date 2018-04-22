@@ -5,6 +5,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 - Added
   - Stopped Traefik Error Messages Flashing on Startup
+- Changed
+  - Fixing Certificate Information on Startup
+  - SABNZBD Fixes
 - Known Issues
   - Pgstatus does not show proper IOwait, menu scaling issues
 
