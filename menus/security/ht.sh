@@ -35,6 +35,9 @@
     ### Builds the Username & Password
     htpasswd -cbs /var/plexguide/server.ht $user $pw
 
+    ### Password is Hased, Files no Longer Needed
+    rm -r /var/plexguide/server.ht.pw
+    rm -r /var/plexguide/server.ht.username
 
     #### Rebuild Containers
     #bash /opt/plexguide/scripts/baseinstall/rebuild.sh
