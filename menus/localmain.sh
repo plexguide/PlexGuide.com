@@ -15,24 +15,52 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+
+############################################################################# MINI MENU SELECTION - START
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
+deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
+
+############################################################################# MINI MENU SELECTION - END
+
+#### Ensure Solo Edition's Path is /mnt
+#if [ "$edition" == "PG Edition: HD Solo" ]
+#  then
+  #### If not /mnt, it will go through this process to change it!
+#  if [ "$path" == "/mnt" ] 
+#    then
+#      clear 1>/dev/null 2>&1
+#    else
+#      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt IS NOT your default DOWNLOAD PATH for this EDITION.\n\nWe will fix that for you!" 0 0
+#      echo "no" > /var/plexguide/server.hd
+#      echo "/mnt" > /var/plexguide/server.hd.path
+#      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+#  fi
+#fi
+
+#### Disable Certain Services #### put a detect move.service file here later
+#systemctl stop move 1>/dev/null 2>&1
+#systemctl disable move 1>/dev/null 2>&1
+#systemctl deamon-reload 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
 clear
-HEIGHT=13
+HEIGHT=15
 WIDTH=40
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
-OPTIONS=(A "Donation Menu"
-         B "PG Program Suite"
-         C "PG Server Security"
-         D "PG Update"
-         E "PG HD Setup"
-         F "PG Edition Switch"
+OPTIONS=(A "PG Program Suite"
+         B "PG Server Security"
+         C "PG HD Setup"
+         D "PG Server Information"
+         E "PG Troubleshooting Actions"
+         F "PG Settings"
+         G "PG Update"
+         H "PG Edition Switch"
+         I "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -43,23 +71,43 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/donate/main.sh ;;
+            bash /opt/plexguide/menus/programs/main.sh ;;
+
         B)
             bash /opt/plexguide/menus/security/main.sh ;;
+
         C)
-            bash /opt/plexguide/menus/programs/main.sh ;;
-        D)
-            bash /opt/plexguide/scripts/upgrade/main.sh
-            bash /opt/plexguide/scripts/message/ending.sh
-            exit 0 ;;
-        E)
+            #### Solo Drive Edition
+            if [ "$edition" == "PG Edition: HD Solo" ]
+              then
+              dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
+              bash /opt/plexguide/menus/localmain.sh
+              exit
+            fi
+
+            #### Multiple Editions HD
             bash /opt/plexguide/menus/drives/hds.sh
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
+        D)
+            bash /opt/plexguide/menus/info-tshoot/infodrives.sh 
+            ;;
+        E)
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh 
+            ;;
         F)
+            bash /opt/plexguide/menus/settings/drives.sh
+            ;;
+        G)
+            bash /opt/plexguide/scripts/upgrade/main.sh
+            bash /opt/plexguide/scripts/message/ending.sh
+            exit 0 ;;
+        H)
             rm -r /var/plexguide/pg.edition 
             bash /opt/plexguide/scripts/baseinstall/edition.sh 
             exit 0 ;;
+        I)
+            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
