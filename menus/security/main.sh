@@ -5,10 +5,10 @@ export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 
 HEIGHT=10
-WIDTH=60
+WIDTH=50
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="WatchTower Manager"
+TITLE="PG Server Security"
 MENU="Select Notification Preference(s):"
 
 OPTIONS=(A "APP Ports - [OPEN]"
