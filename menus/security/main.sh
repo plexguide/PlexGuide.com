@@ -18,7 +18,7 @@ file="/var/plexguide/server.ports.status" 1>/dev/null 2>&1
   echo "" 1>/dev/null 2>&1
     else
   touch /var/plexguide/var/plexguide/server.ports.status 1>/dev/null 2>&1
-  echo "[CLOSED]" > /var/plexguide/server.ports.status
+  echo "[OPEN]" > /var/plexguide/server.ports.status
   fi
 ############################### Calls Variables
   
