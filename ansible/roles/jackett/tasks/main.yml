@@ -48,7 +48,6 @@
           - jackett
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:jackett.{{domain.stdout}}"
       traefik.port: "9117"
