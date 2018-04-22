@@ -109,7 +109,6 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
