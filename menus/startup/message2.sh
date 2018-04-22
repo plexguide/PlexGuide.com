@@ -31,8 +31,9 @@ docker logs traefik2 3>&1 1>>/var/plexguide/traefik.error2 2>&1
 docker logs traefik 3>&1 1>>/var/plexguide/traefik.error1 2>&1
 
 error2=$( awk 'END {print $NF}' /var/plexguide/traefik.error2 )
-#error2=${error2::-1}
 error1=$( awk 'END {print $NF}' /var/plexguide/traefik.error1 )
+error2=${error2::-1}
+error1=${error1::-1}
 
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$error2" == "$error1" ]
