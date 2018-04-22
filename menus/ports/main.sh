@@ -20,7 +20,7 @@ export NCURSES_NO_UTF8_ACS=1
 ############################################################ Recall Server Port Status
 status=$(cat /var/plexguide/server.ports.status)
 
-dialog --title "Very Important" --msgbox "\nYour Applications Port Status: $status\n\nYou must decide to keep your PORTS opened or closed.  Only close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
+dialog --title "Very Important" --msgbox "\nYour Applications Port Status: $status\n\nYou must decide to keep your PORTS opened or closed.\n\nOnly close your PORTS if your REVERSE PROXY (subdomains) are working!" 0 0
 
 ############ Menu
 HEIGHT=10
@@ -47,14 +47,14 @@ case $CHOICE in
         A)
         dialog --infobox "Please Wait!" 3 35
         sleep 1
-            echo "Open" > /var/plexguide/server.ports.status
+            echo "[OPEN]" > /var/plexguide/server.ports.status
             rm -r /var/plexguide/server.ports
             touch /var/plexguide/server.ports
             ;;
         B)
         dialog --infobox "Please Wait!" 3 50
         sleep 1
-            echo "Closed" > /var/plexguide/server.ports.status
+            echo "[CLOSED]" > /var/plexguide/server.ports.status
             echo "127.0.0.1:" > /var/plexguide/server.ports
             ;;
         Z)

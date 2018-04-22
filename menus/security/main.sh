@@ -10,12 +10,20 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
     else
   touch /var/plexguide/server.appguard 1>/dev/null 2>&1
   echo "[OFF]" > /var/plexguide/server.appguard
+  fi
 
+file="/var/plexguide/server.ports.status" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  touch /var/plexguide/var/plexguide/server.ports.status 1>/dev/null 2>&1
+  echo "[CLOSED]" > /var/plexguide/server.ports.status
   fi
 ############################### Calls Variables
   
 appguard=$(cat /var/plexguide/server.appguard)
-
+portstat=$(cat /var/plexguide/server.ports.status)
 
 ############################### END
 
@@ -26,7 +34,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Server Security"
 MENU="Make a Selection:"
 
-OPTIONS=(A "APP Ports - [OPEN]"
+OPTIONS=(A "APP Ports - $portstat"
          B "APP Guard Protection - $appguard"
          Z "Exit")
 
