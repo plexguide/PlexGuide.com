@@ -42,12 +42,12 @@
     #### Rebuild Containers
     bash /opt/plexguide/menus/security/rebuild-ht.sh
 
-    dialog --title "PG APP Guard Security" --msgbox "\nContainers without protection are now Protected!]n\nIf you need to change the USERNAME and/or PASSWORD, rerun this program!" 0 0
+    dialog --title "PG APP Guard Security" --msgbox "\nContainers without protection are now Protected!\n\nIf you need to change the USERNAME and/or PASSWORD, rerun this program!" 0 0
 
     echo "[ON]" > /var/plexguide/server.appguard
     exit
   else
-    dialog --title "PG APP Guard Status" --msgbox "\nIndicated Username & Password is NOT CORRECT!\n\nRestarting Process!" 0 0
+    dialog --title "PG APP Guard Status" --msgbox "\nYou noted that the Username & Password is NOT CORRECT!\n\nRestarting Process!" 0 0
     bash /opt/plexguide/menus/security/ht.sh
     exit
   fi
