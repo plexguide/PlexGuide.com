@@ -1,8 +1,8 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
-#bash /opt/plexguide/menus/traefik/cert2.sh 1>/dev/null 2>&1
-#bash /opt/plexguide/menus/traefik/cert1.sh 1>/dev/null 2>&1
+bash /opt/plexguide/menus/traefik/cert2.sh 1>/dev/null 2>&1
+bash /opt/plexguide/menus/traefik/cert1.sh 1>/dev/null 2>&1
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 appguard=$(cat /var/plexguide/server.appguard)
@@ -26,8 +26,8 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 #### Checks to See if Either Traefik Exisxts
-docker logs traefik2 2> /var/plexguide/traefik.error2
-docker logs traefik 2> /var/plexguide/traefik.error1
+#docker logs traefik2 2> /var/plexguide/traefik.error2
+#docker logs traefik 2> /var/plexguide/traefik.error1
 error2=$( cat /var/plexguide/traefik.error2 )
 error2=${error2::-1}
 error1=$( cat /var/plexguide/traefik.error1 )
