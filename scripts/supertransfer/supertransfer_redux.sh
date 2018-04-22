@@ -16,7 +16,7 @@ init_DB(){
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
   if [[ -n $gdsaList ]]; then
       numGdsa=$(echo $gdsaList | wc -w)
-      maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3"))
+      maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3)")
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
   else
@@ -57,14 +57,19 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
 
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
 while read -r line; do
-  gdsaLeast=$(sort -gr -k2 -t'=' $gdsaDB | tail -1 | cut -f1 -d'=')
+  gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
+  if [[ -z $gdsaLeast ]]; then
+    echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tFailed To get gdsaLeast. Exiting."
+    exit 1
+  fi
   export gdsaLeast
   # skip on files already queued or uploaded
   [[ ! -e $uploadHistory ]] || touch $uploadHistory
   if [[ ! $(grep "${line}" $uploadHistory) ]]; then
     file=$(awk '{print $2}' <<< $line)
     fileSize=$(awk '{print $1}' <<< $line)
-    rclone_upload $gdsaLeast $file $remoteDir &
+    #rclone_upload $gdsaLeast $file $remoteDir &
+    echo "debug: rclone_upload GdsaLeast=$gdsaLeast file=$file remotedir=$remoteDir "
     # add timestamp & log
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
     echo "$gdsaLeast $line $(date +s%)" >> $uploadHistory
