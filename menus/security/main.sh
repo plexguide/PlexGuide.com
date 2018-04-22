@@ -28,7 +28,7 @@ case $CHOICE in
         A)
           bash /opt/plexguide/menus/ports/main.sh ;;
         B)
-          ;;
+          bash /opt/plexguide/menus/security/ht.sh ;;
         Z)
             clear
             exit 0
