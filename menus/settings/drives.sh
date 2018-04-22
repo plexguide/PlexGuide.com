@@ -18,9 +18,9 @@
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-HEIGHT=16
-WIDTH=59
-CHOICE_HEIGHT=14
+HEIGHT=15
+WIDTH=58
+CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
@@ -28,7 +28,6 @@ MENU="Make Your Selection Choice:"
 OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          B "Hard Drive 2nd: Use a Second HD for Processing"
          C "Notifications : Enable the Use of Notifications"
-         D "Ports         : Turn On/Off Application Ports"
          E "Processor     : Enhance Processing Power"
          F "Kernel Mods   : Enhance Network Throughput"
          G "WatchTower    : Auto-Update Application Manager"
