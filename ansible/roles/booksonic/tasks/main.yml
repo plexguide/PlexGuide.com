@@ -52,7 +52,6 @@
           - booksonic
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:booksonic.{{domain.stdout}}"
       traefik.port: "4040"
