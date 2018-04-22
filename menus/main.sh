@@ -29,12 +29,12 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "RClone & PlexDrive"
          B "PG Program Suite"
-         C "PG Server Information"
-         D "PG Troubleshooting Actions"
-         E "PG Settings & Tools"
-         F "PG Backup & Restore"
-         G "PG Updates"
-         H "PG Status (Early BETA)"
+         C "PG Server Security"
+         D "PG Server Information"
+         E "PG Troubleshooting Actions"
+         F "PG Settings & Tools"
+         G "PG Backup & Restore"
+         H "PG Updates"
          I "PG Edition Switch"
          J "Donation Menu"
          Z "Exit")
@@ -51,14 +51,16 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/menus/security/main.sh ;;
         D)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         E)
-            bash /opt/plexguide/menus/settings/main.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         F)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+            bash /opt/plexguide/menus/settings/main.sh ;;
         G)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        H)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
