@@ -4,6 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.071] (Beta, Release Candiate & DEV)
 
 - Added
+  - Added new menu item, PG Server Security
   - AppGuard and Port Status added to the menu
   - AppGuard is basically allowing Traefik to now password protect programs like NETDATA, RuTorrent, and Heimdall
   - Menu Dialogs for some information
