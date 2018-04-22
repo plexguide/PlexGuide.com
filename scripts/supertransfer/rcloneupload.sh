@@ -11,6 +11,7 @@ rclone_upload() {
   t1=$(date +%s)
   gdsa=$1; localDir=$2; remoteDir=$3
   source settings.conf
+	touch ${logDir}/${gdsa}.log
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -31,8 +32,8 @@ rclone_upload() {
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$drive_chunk_size \
+    --drive-impersonate $gdsaImpersonate
 		$local_dir $gdsa:$remote_dir && rclone_fin_flag=1
-  rclone
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))

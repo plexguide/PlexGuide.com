@@ -6,8 +6,8 @@ source spinner.sh
 
 declare -a reqlist=(rclone awk sed egrep grep echo printf find sort)
 for app in $reqlist; do
-  [[ $(which app) ]] || echo -e "$app dependency not met/nPlease install $app"
-  [[ $(which app) ]] || exit 1
+  [[ $(which $app) ]] || echo -e "$app dependency not met/nPlease install $app"
+  [[ $(which $app) ]] || exit 1
 done
 
 
@@ -24,8 +24,7 @@ if [[ $@ =~ --purge-rclone ]]; then
 fi
 
 # source settings
-[[ ! -e $jsonPath ]] || mkdir $jsonPath
-[[ ! -e $uploadHistory ]] || touch $uploadHistory
+#[[ ! -e $jsonPath ]] || mkdir $jsonPath
 [[ ! -e $logDir ]] || touch $logDir
 [[ ! -e $usersettings ]] && cp usersettings.conf $jsonPath && echo 'Configuration File Not Found. Creating.'
 [[ ! -e $usersettings ]] && echo "Config at $usersettings Could Not Be Created."
