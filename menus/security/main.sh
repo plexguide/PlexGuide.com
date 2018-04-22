@@ -1,8 +1,23 @@
 
  #!/bin/bash
-
 export NCURSES_NO_UTF8_ACS=1
-## point to variable file for ipv4 and domain.com
+
+############################### Creates Starter Files if it Doesn't Exist
+file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  touch /var/plexguide/server.appguard 1>/dev/null 2>&1
+  echo "OFF" > /var/plexguide/server.appguard 1>/dev/null 2>&1
+
+  fi
+############################### Calls Variables
+  
+appguard=$(cat /var/plexguide/server.appguard)
+
+
+############################### END
 
 HEIGHT=10
 WIDTH=43
@@ -12,7 +27,7 @@ TITLE="PG Server Security"
 MENU="Make a Selection:"
 
 OPTIONS=(A "APP Ports - [OPEN]"
-         B "APP Guard Protection - [OFF]"
+         B "APP Guard Protection - [$appguard]"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
