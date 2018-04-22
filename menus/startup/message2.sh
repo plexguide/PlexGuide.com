@@ -5,6 +5,8 @@ bash /opt/plexguide/menus/traefik/cert2.sh 1>/dev/null 2>&1
 bash /opt/plexguide/menus/traefik/cert1.sh 1>/dev/null 2>&1
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+appguard=$(cat /var/plexguide/server.appguard)
+portstat=$(cat /var/plexguide/server.ports.status)
 
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
@@ -64,4 +66,4 @@ if [ "$error2" == "$error1" ]
 
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\nPORTS: $portstat APPGUARD: $appguard" 0 0
