@@ -33,11 +33,11 @@
     dialog --title "Path Choice" --msgbox "\nUsername & Password are SET!" 0 0
 
     ### Builds the Username & Password
-    htpasswd -cbs /var/plexguide/server.ht $user $pw
+    htpasswd -cbs /var/plexguide/server.ht $user $pw 1>/dev/null 2>&1
 
     ### Password is Hased, Files no Longer Needed
-    rm -r /var/plexguide/server.ht.pw
-    rm -r /var/plexguide/server.ht.username
+    rm -r /var/plexguide/server.ht.pw 1>/dev/null 2>&1
+    rm -r /var/plexguide/server.ht.username 1>/dev/null 2>&1
 
     #### Rebuild Containers
     #bash /opt/plexguide/scripts/baseinstall/rebuild.sh
