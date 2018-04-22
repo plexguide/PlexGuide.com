@@ -31,7 +31,11 @@
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\n$user - $pw\n\nCorrect?" 0 0; then
     dialog --title "Path Choice" --msgbox "\nUsername & Password are SET!" 0 0
-    
+
+    ### Builds the Username & Password
+    htpasswd -cbs /var/plexguide/server.ht $user $pw
+
+
     #### Rebuild Containers
     #bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
