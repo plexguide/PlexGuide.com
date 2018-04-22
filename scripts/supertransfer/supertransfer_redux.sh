@@ -4,6 +4,7 @@
 source rcloneupload.sh
 source init.sh
 source settings.conf
+source usersettings.conf
 
 # init functions
 cat_Art

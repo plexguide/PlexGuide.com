@@ -36,7 +36,7 @@ cat <<ART
   ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
 /___/\_,_/ .__/\__/_/  \__/_/  \_,_/_//_/___/_/ \__/_/
-        /_/                      [1;39;2mFast Gdrive Uploader
+        /_/           [1;39;2mRclone Configurator For Plexguide
 [0m
 ┌────────────────────────────────────────────────────────┐
 │ Version               :   Beta 2.1                     │
@@ -54,24 +54,26 @@ Usage: supertransfer [OPTION]
 ATTN: Commands not ready yet!
 ##############################
 
-  -s, --status           bring up status menu (not ready)
-  -l, --logs             show program logs
-  -r, --restart          restart daemon
-      --stop             stop daemon
-      --start            start daemon
+-s, --status           bring up status menu (not ready)
+-l, --logs             show program logs
+-r, --restart          restart daemon
+    --stop             stop daemon
+    --start            start daemon
 
-  -c, --config           start configuration wizard
-      --config-rclone    configure SA's used with rclone
-      --config-email     configure gdrive account impersonation
-      --purge-rclone     remove all SA's from rclone config
+-c, --config           start configuration wizard
+    --config-rclone    interactively configure gdrive service accounts
+    --purge-rclone     remove all service accounts and reconfigure
+    --set-email=EMAIL  config gdrive account impersonation
+    --set-teamdrive=ID config teamdrive with ID (default: no)
+    --set-path=PATH    config where files are stored on gdrive: (default: /)
 
-      --pw=PASSWORD      unlocks secret multi-SA mode ;)
-                         n00b deterrence:
-                         password is reversed base64 of ZWxkcnVkCg==
+    --pw=PASSWORD      unlocks secret multi-SA mode ;)
+                       n00b deterrence:
+                       password is reversed base64 of ZWxkcnVkCg==
 
-  -v  --validate         validates json account(s)
-  -V  --version          outputs version
-  -h, --help             what you're currently looking at
+-v  --validate         validates json account(s)
+-V  --version          outputs version
+-h, --help             what you're currently looking at
 
 Please report any bugs to @flicker-rate#3637 on discord, or at plexguide.com
 HELP
@@ -126,8 +128,7 @@ cat <<MSG
 
 1. Go to [32mhttp://${localIP}:8000[0m
 2. Follow the instructions to generate the json keys
-2. Upload 9-99 Gsuite service account json keys
-          - each key == +750gb max daily upload
+2. Upload 20-99 Gsuite service account json keys
 3. Enter your gsuite email in the next step
 
 Make sure you allow api access in the security settings

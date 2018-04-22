@@ -4,6 +4,13 @@ source rcloneupload.sh
 source settings.conf
 source spinner.sh
 
+declare -a reqlist=(rclone awk sed egrep grep echo printf find sort)
+for app in $reqlist; do
+  [[ $(which app) ]] || echo -e "$app dependency not met/nPlease install $app"
+  [[ $(which app) ]] || exit 1
+done
+
+
 #if [[ $@ =~ [--help|-h] ]
 # init
 if [[ $@ =~ --pw=durdle || -e /opt/appdata/plexguide/.rclone ]]; then
@@ -72,11 +79,11 @@ function validate_json(){
     s=0
     start_spinner "Validating: ${gdsa}"
     rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
-    cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
     if [[ $s == 1 ]]; then
       sleep 1
       stop_spinner 0
     else
+      cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
       stop_spinner 1
       ((gdsaFail++))
     fi
