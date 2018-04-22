@@ -44,7 +44,7 @@
 
     dialog --title "PG APP Guard Security" --msgbox "\nContainers without protection are now Protected!]n\nIf you need to change the USERNAME and/or PASSWORD, rerun this program!" 0 0
 
-    echo "ON" > /var/plexguide/server.appguard 1>/dev/null 2>&1
+    echo "[ON]" > /var/plexguide/server.appguard 1>/dev/null 2>&1
     exit
   else
     dialog --title "PG APP Guard Status" --msgbox "\nIndicated Username & Password is NOT CORRECT!\n\nRestarting Process!" 0 0
