@@ -25,6 +25,12 @@
     state: absent
   ignore_errors: yes
 
+- name: Stop and remove any existing container
+  docker_container:
+    name: plex2
+    state: absent
+  ignore_errors: yes
+
 - name: "Get Server IP"
   shell: "hostname -I | awk '{print $1}'"
   register: local_ip
@@ -46,18 +52,6 @@
 #  register: plextoken_var
 
 #- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
-
-- name: Remove Plex Container
-  docker_container:
-    name: plex
-    state: absent
-  ignore_errors: yes
-
-- name: Remove Plex Container
-  docker_container:
-    name: plex
-    state: absent
-  ignore_errors: yes
 
 - name: Pull Plex Image
   docker_image:
