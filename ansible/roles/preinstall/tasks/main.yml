@@ -52,6 +52,8 @@
       - dnsutils
       - mc
       - apache2-utils
+      - lsof
+      - vmstat
     ignore_errors: yes
 
   - name: Pip Modes
