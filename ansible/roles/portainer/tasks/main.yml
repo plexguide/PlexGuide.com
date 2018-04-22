@@ -50,9 +50,9 @@
           - portainer
     restart_policy: always
     state: started
+### portainer cannot use auth label; pointless anyways due to creating own user/passwd
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:portainer.{{domain.stdout}}"
       traefik.port: "9000"
