@@ -22,9 +22,9 @@ source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
 echo $ipv4
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=17
+HEIGHT=18
 WIDTH=38
-CHOICE_HEIGHT=11
+CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - Manager Programs"
 
