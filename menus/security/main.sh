@@ -5,11 +5,11 @@ export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 
 HEIGHT=10
-WIDTH=45
+WIDTH=43
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Server Security"
-MENU="Select Notification Preference(s):"
+MENU="Make a Selection:"
 
 OPTIONS=(A "APP Ports - [OPEN]"
          B "APP Protection Guard - [OFF]"
