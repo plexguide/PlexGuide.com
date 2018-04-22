@@ -24,7 +24,7 @@
 
     dialog --title "Create a PASSWORD (case senstive)" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "PASSWORD: " 8 50 2>/var/plexguide/server.ht.username
+  --inputbox "PASSWORD: " 8 50 2>/var/plexguide/server.ht.pw
   pw=$(cat /var/plexguide/server.ht.pw)
 
   if dialog --stdout --title "Username & Password" \
