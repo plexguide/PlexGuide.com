@@ -25,12 +25,6 @@
     state: absent
   ignore_errors: yes
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: plex2
-    state: absent
-  ignore_errors: yes
-
 - name: "Get Server IP"
   shell: "hostname -I | awk '{print $1}'"
   register: local_ip
