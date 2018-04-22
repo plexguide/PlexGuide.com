@@ -26,13 +26,12 @@ MENU="Make Your Selection Choice:"
 OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          B "Hard Drive 2nd: Use a Second HD for Processing"
          C "Notifications : Enable the Use of Notifications"
-         D "Ports         : Turn On/Off Application Ports"
-         E "Processor     : Enhance Processing Power"
-         F "Kernel Mods   : Enhance Network Throughput"
-         G "SuperSpeeds   : Change GDrive Transfer Settings"
-         H "WatchTower    : Auto-Update Application Manager"
-         I "Import Media  : Import Existing Media to GDrive "
-         J "App Themes    : Install Dark Theme(s) For Apps "
+         D "Processor     : Enhance Processing Power"
+         E "Kernel Mods   : Enhance Network Throughput"
+         F "SuperSpeeds   : Change GDrive Transfer Settings"
+         G "WatchTower    : Auto-Update Application Manager"
+         H "Import Media  : Import Existing Media to GDrive "
+         I "App Themes    : Install Dark Theme(s) For Apps "
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -56,18 +55,16 @@ case $CHOICE in
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
         ;;
     D)
-        bash /opt/plexguide/menus/ports/main.sh ;;
-    E)
         bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
-    F)
+    E)
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
-    G)
+    F)
         bash /opt/plexguide/menus/transfer/menu.sh ;;
-    H)
+    G)
         bash /opt/plexguide/menus/watchtower/main.sh ;;
-    I)
+    H)
         bash /opt/plexguide/menus/migrate/main.sh ;;
-    J)
+    I)
         bash /opt/plexguide/menus/themes/main.sh ;;
     Z)
         clear
