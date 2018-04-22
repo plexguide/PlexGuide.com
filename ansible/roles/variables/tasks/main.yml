@@ -30,3 +30,8 @@
   shell: "cat /var/plexguide/server.hd.path"
   register: path
   ignore_errors: True
+
+- name: Register Auth Path
+  shell: "cat /var/plexguide/server.ht"
+  register: path
+  ignore_errors: True
