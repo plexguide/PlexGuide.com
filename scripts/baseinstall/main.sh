@@ -15,8 +15,16 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 clear
+file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  touch /var/plexguide/nzb.discount
+  bash /opt/plexguide/menus/nzb/main.sh
+  fi
+
 ############################################################ Push Over Notification of Starting Process
 echo "Installation Started" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
