@@ -49,7 +49,6 @@
     restart_policy: always
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:cadvisor.{{domain.stdout}}"
       traefik.port: "8082"
