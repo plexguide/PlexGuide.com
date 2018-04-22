@@ -32,5 +32,5 @@ let "number %= $RANGE"
 
 if [ "$number" -eq "5" ]
 then
-dialog --title "PG Member NZB Specials" --msgbox "\nWe are partnered to provide our PG Members with Deep Discounts!\n\n1. newshosting.plexguide.com  - Free VPN & 41% Discount! Fastest!\n2. usenetserver.plexguide.com - Free VPN & 39% Discount! Well-Known!\n3. easynews.plexguide.com     - Top Speeds & Great Alternative!\n4. pureusenet.plexguide.com   - Pay Euros & Packages as Low as 1.83!\n5. xlned.plexguide.com        - Pay Euros & Packages as Low as 2.24!\n\n* gsuite.plexguide.com        - MEMBERS Get a FREE 14 Day Trial!\n\nIf you need the LINKS again, visit our Wiki!" 16 73
+dialog --title "PG Member NZB Specials" --msgbox "\nWe are partnered to provide our PG Members with Deep Discounts!\n\n1. newshosting.plexguide.com  - Free VPN & 41% Discount! Fastest!\n2. usenetserver.plexguide.com - Free VPN & 39% Discount! Well-Known!\n3. easynews.plexguide.com     - Top Speeds & Great Alternative!\n4. pureusenet.plexguide.com   - Pay Euros & Packages as Low as 1.83!\n5. xlned.plexguide.com        - Pay Euros & Packages as Low as 2.24!\n\n* gsuite.plexguide.com        - MEMBERS Get a FREE 14 Day Trial!\n* Require Servers for your needs? PM Davaz via Forums/Discord!\n\nIf you need the LINKS again, visit our Wiki!" 17 73
 fi
