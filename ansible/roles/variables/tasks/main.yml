@@ -33,5 +33,5 @@
 
 - name: Register Auth Path
   shell: "cat /var/plexguide/server.ht"
-  register: path
+  register: auth
   ignore_errors: True
