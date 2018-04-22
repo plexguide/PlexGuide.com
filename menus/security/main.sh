@@ -28,11 +28,11 @@ case $CHOICE in
         A)
           bash /opt/plexguide/menus/ports/main.sh ;;
         B)
-            ;;
+          ;;
         Z)
             clear
             exit 0
             ;;
 esac
 
-bash /opt/plexguide/menus/watchtower/main.sh
+bash /opt/plexguide/menus/security/main.sh
