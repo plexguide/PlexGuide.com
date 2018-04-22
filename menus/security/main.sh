@@ -5,7 +5,7 @@ export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 
 HEIGHT=10
-WIDTH=50
+WIDTH=45
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Server Security"
