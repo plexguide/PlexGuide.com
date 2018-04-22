@@ -4,6 +4,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.071] (Beta, Release Candiate & DEV)
 
 - Added
+  - AppGuard and Port Status added to the menu
+  - AppGuard is basically allowing Traefik to now password protect programs like NETDATA, RuTorrent, and Heimdall
+  - Menu Dialogs for some information
   - Stopped Traefik Error Messages Flashing on Startup
 - Changed
   - Fixing Certificate Information on Startup
