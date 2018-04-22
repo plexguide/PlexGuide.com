@@ -46,7 +46,6 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}},{{domain.stdout}}"
       traefik.port: "3579"
