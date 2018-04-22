@@ -54,7 +54,7 @@ case $CHOICE in
         B)
         dialog --infobox "Please Wait!" 3 50
         sleep 1
-        dialog --title "WARNING WARNING!" --msgbox "\nYou are CLOSING your PORTS! What does that mean? Visit ports.plexguide.com for detailed info!\n\nBasically, a program such as Sonnar cannot communicate to NZBGET. In the host field, instead of https://nzbget.plexguide.com, just put the name of the container; in this case - nzbget.\n\nVisit the site for more information!" 0 0
+        dialog --title "WARNING! WARNING! WARNING!" --msgbox "\nYou are CLOSING your PORTS! What does that mean? Visit ports.plexguide.com for detailed info!\n\nBasically, a program such as Sonnar cannot communicate to NZBGET. In the host field, instead of https://nzbget.plexguide.com, just put the name of the container; in this case - nzbget.\n\nVisit the site for more information!" 0 0
             echo "[CLOSED]" > /var/plexguide/server.ports.status
             echo "127.0.0.1:" > /var/plexguide/server.ports
             ;;
