@@ -7,6 +7,7 @@
 # init_DB() - validates gdsa's & init least usage DB
 
 cat_Secret_Art(){
+touch /opt/appdata/plexguide/.rclone
 cat <<ART
 [32m
                          __                    ___
@@ -25,7 +26,6 @@ cat <<ART
 │      Do your part and keep publicity to a minimum.     │
 │     Don't talk about this method on public forums.     │
 └────────────────────────────────────────────────────────┘
-
 ART
 }
 
@@ -46,19 +46,79 @@ cat <<ART
 ART
 }
 
+cat_Help(){
+cat <<HELP
+Usage: supertransfer [OPTION]
+
+##############################
+ATTN: Commands not ready yet!
+##############################
+
+  -s, --status           bring up status menu (not ready)
+  -l, --logs             show program logs
+  -r, --restart          restart daemon
+      --stop             stop daemon
+      --start            start daemon
+
+  -c, --config           start configuration wizard
+      --config-rclone    configure SA's used with rclone
+      --config-email     configure gdrive account impersonation
+      --purge-rclone     remove all SA's from rclone config
+
+      --pw=PASSWORD      unlocks secret multi-SA mode ;)
+                         n00b deterrence:
+                         password is reversed base64 of ZWxkcnVkCg==
+
+  -v  --validate         validates json account(s)
+  -V  --version          outputs version
+  -h, --help             what you're currently looking at
+
+Please report any bugs to @flicker-rate#3637 on discord, or at plexguide.com
+HELP
+}
+
+cat_Troubleshoot(){
+read -p "View Troubleshooting Tips? y/n>" answer
+if [[ $answer =~ [y|Y|yes|Yes] ]]; then
+cat <<EOF
+####### Troubleshooting steps: ###########################
+
+1. Make sure you have enabled gdrive api access in
+   both the dev console and admin security settings.
+
+2. Check if the json keys have "domain wide delegation"
+
+3. Check if the this email is correct:
+   [1;35m$gdsaImpersonate[0m
+      - if it is incorrect, configure it again with:
+        supertransfer --config
+
+4. Remove the offending keys and run:
+        supertransfer --purge-rclone
+
+5. Check these logs for detailed debugging:
+      - /tmp/SA_error.log
+
+##########################################################
+EOF
+fi
+
+read -p "View Error Log? y/n>" answer
+[[ $answer =~ [y|Y|yes|Yes] ]] && less /tmp/SA_error.log
+}
 
 upload_Json(){
-[[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO
-[[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL
-[[ ! -e $settings ]] && cp settings.conf $jsonPath && log 'Configuration File Not Found. Creating.' INFO
-[[ ! -e $settings ]] && log "Config at $settings Could Not Be Created." FAIL
+source settings.conf
+source usersettings.conf
+[[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
+[[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
 
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
 cd $jsonPath
 python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
 jobpid=$!
-trap "kill $jobpid" SIGTERM
+trap "kill $jobpid && exit 1" SIGTERM
 
 cat <<MSG
 
@@ -73,7 +133,8 @@ cat <<MSG
 Make sure you allow api access in the security settings
 and check "enable domain wide delegation"
 
-Want to upload keys securely? SCP json keys directly into
+If port 8000 is closed or you wish to upload keys securely,
+Transfer json keys directly into:
 $jsonPath
 
 ###########################################################
@@ -83,7 +144,7 @@ read -rep $'\e[032m   -- Press any key when you are done uploading --\e[0m'
 trap "exit 1" SIGTERM
 echo
 start_spinner "Terminating Web Server."
-sleep 3.5
+sleep 2
 { kill $jobpid && wait $jobpid; } &>/dev/null
 stop_spinner $(( ! $? ))
 
@@ -99,9 +160,12 @@ numKeys=$(ls $jsonPath | egrep -c .json$)
 if [[ $numKeys > 0 ]];then
    log "Found $numKeys Service Account Keys" INFO
     read -p 'Please Enter your Gsuite email: ' email
-    sed -i '/'^$gdsaImpersonate'=/ s/=.*/='$email'/' $settings
-    source $settings
-    [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
+    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+    sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
+    source $usersettings
+    [[ $gdsaImpersonate == $email ]] && log "Impersonation: $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 else
    log "No Service Keys Found. Try Again." FAIL
    exit 1
@@ -115,9 +179,9 @@ rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
 [[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json Found." FAIL && exit 1
 # add rclone config for new keys if not already existing
 for json in ${jsonPath}/*.json; do
-  if [[ ! $(egrep  '\[GDSA[0-9]+\]' -A7 $rclonePath | grep $json) ]]; then
-    oldMaxGdsa=$(egrep  '\[GDSA[0-9]+\]' $rclonePath | sed 's/\[GDSA//g;s/\]//' | sort -g | tail -1)
-    newMaxGdsa=$(( $oldMaxGdsa++ ))
+  if [[ ! $(egrep  '^\[GDSA[0-9]+\]$' -A7 $rclonePath | grep $json) ]]; then
+    oldMaxGdsa=$(egrep  '^\[GDSA[0-9]+\]$' $rclonePath | sed 's/\[GDSA//g;s/\]//' | sort -g | tail -1)
+    newMaxGdsa=$((++oldMaxGdsa))
 cat <<-CFG >> $rclonePath
 [GDSA${newMaxGdsa}]
 type = drive
@@ -128,17 +192,40 @@ root_folder_id = $rootFolderId
 service_account_file = $json
 team_drive = $teamDrive
 CFG
-    (($newGdsaCount++))
+    ((++newGdsaCount))
   fi
 done
 [[ -n $newGdsaCount ]] && log "$newGdsaCount New Gdrive Service Account Added." INFO
 return 0
 }
 
+# purge rclone of SA's
+purge_Rclone(){
+rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+del=0
+while read line; do
+if [[ $line == '' ]]; then
+	del=0
+	echo $line >> ${rclonePath}.tmp
+elif [[ $del == 1 || $line =~ ^\[GDSA[0-9]+\]$ ]]; then
+	del=1
+else
+	del=0
+	echo $line >> ${rclonePath}.tmp
+fi
+done <$rclonePath
+cat ${rclonePath}.tmp > $rclonePath
+rm ${rclonePath}.tmp
+if [[ $(egrep '^\[GDSA[0-9]+\]$' -A7 $rclonePath) ]]; then
+  log "Failed To Purge Rclone Config." WARN
+else
+  log "Rclone Config Purge Successful." INFO
+fi
+}
 
 init_DB(){
 [[ $gdsaImpersonate == 'your@email.com' ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $settings" \
+  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $usersettings" \
   && exit 1
 
 # get list of avail gdsa accounts
@@ -161,7 +248,7 @@ for gdsa in $gdsaList; do
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
   else
     gdsaList=$(echo $gdsaList | sed 's/'$gdsa'//')
-    ((++gdsaFail))
+    ((gdsaFail++))
     echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
   fi
 sleep 0.5

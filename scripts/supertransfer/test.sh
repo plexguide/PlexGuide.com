@@ -4,21 +4,34 @@ source rcloneupload.sh
 source settings.conf
 source spinner.sh
 
-
+#if [[ $@ =~ [--help|-h] ]
 # init
-[ $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) \> 64 ]&&touch .x64;[[ $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) == x32 || -e .x64 ]]&&cat_Secret_Art;[[ ! -e .x64 && $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) == 1 ]]&&cat_Art;[[ -z x64 && $(export base32=$@ &>x64>2;/:(){ x[86]=`rev<<<$(<:;)`;base64 -d<<<"${x[@]}" 2>x32|bash;};/:|xargs;w 3>base16>1) =~ x32 ]]
+if [[ $@ =~ --pw=durdle || -e /opt/appdata/plexguide/.rclone ]]; then
+cat_Secret_Art
+else
+cat_Art
+fi
 
-read -p '        -- Press Any Key To Continue -- '
+if [[ $@ =~ --purge-rclone ]]; then
+  purge_Rclone
+fi
+
+# source settings
+[[ ! -e $usersettings ]] && cp usersettings.conf $jsonPath && echo 'Configuration File Not Found. Creating.'
+[[ ! -e $usersettings ]] && echo "Config at $usersettings Could Not Be Created."
+source $usersettings
+
+# spinny
+if [[ -z $@ ]]; then
+read -p '             -- Press Any Key To Continue -- '
 echo
 start_spinner "Initializing."
-sleep 2
-# source settings
-settings=/opt/appdata/plexguide/supertransfer/settings.conf
-[[ ! -e $settings ]] && cp settings.conf $jsonPath && log 'Configuration File Not Found. Creating.' INFO
-[[ ! -e $settings ]] && log "Config at $settings Could Not Be Created." FAIL
-source $settings
+sleep 3
 stop_spinner $?
+fi
 
+
+# configure SA keys, if none found
 if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
   read -p 'No Service Keys Found. Configure? y/n>' answer
     if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
@@ -30,43 +43,54 @@ elif [[ $@ =~ "--config" ]]; then
   upload_Json
 fi
 
+# configure email, if user didn't do it in the last step
+function configure_email(){
+  if [[ $gdsaImpersonate == 'your@email.com' ]]; then
+      log "No Email Configured in: usersettings.conf" WARN
+      read -p 'Please Enter your Gsuite email: ' email
+      [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+      [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+      [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
+      sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
+      source $usersettings
+      [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
+  fi
+}
+configure_email
+
 # configure json's for rclone
-[[ $gdsaImpersonate == 'your@email.com' ]] && log "No Email Configured. Run: supertransfer --config" FAIL && exit 1
 configure_Json
 gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
 [[ -z $gdsaList ]] && log "Rclone Configuration Failure." FAIL && exit 1
 
+
+
 # validate new keys
-for gdsa in $gdsaList; do
-  start_spinner "Validating: ${gdsa}"
-  if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/dev/null) ]]; then
-    sleep 1
-    stop_spinner 0
-  else
-    stop_spinner 1
-    (($gdsaFail++))
+function validate_json(){
+  echo '' > /tmp/SA_error.log
+  for gdsa in $gdsaList; do
+    s=0
+    start_spinner "Validating: ${gdsa}"
+    rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
+    cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
+    if [[ $s == 1 ]]; then
+      sleep 1
+      stop_spinner 0
+    else
+      stop_spinner 1
+      ((gdsaFail++))
+    fi
+  done
+
+  # help user troubleshoot
+  if [[ -n $gdsaFail ]]; then
+    log "$gdsaFail Validation Failure(s). " WARN
+    cat_Troubleshoot
+  read -p "Continue anyway? y/n>" answer
+  [[ ! $answer =~ [y|Y|Yes|yes] || ! $answer == '' ]] && exit 1
   fi
-done
 
-# help user troubleshoot
-if [[ -n $gdsaFail ]]; then
-  log "$gdsaFail Validation Failure(s). " WARN
-cat <<EOF
-####### Troubleshooting steps: ###########################
-
-1. Make sure you have enabled gdrive api access in
-   both the dev console and admin security settings.
-
-2. Check if the json keys have "domain wide delegation"
-
-3. Check if the this email is correct: $gdsaImpersonate
-      - if it is incorrect, configure it again with:
-        supertransfer --config
-
-##########################################################
-EOF
-read -p "Continue anyway? y/n>" answer
-[[ ! $answer =~ [y|Y|Yes|yes] || ! $answer == '' ]] && exit 1
-fi
+}
+validate_json
 
 echo end
