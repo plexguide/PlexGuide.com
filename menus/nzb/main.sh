@@ -16,4 +16,4 @@
 #
 #################################################################################
 
-dialog --title "PG Member NZB Specials" --msgbox "\nWe are partner with various companies to provide deep discounts for our PG Members!\n\n1. newshosting.plexguide.com - Free VPN & a 41% Discount! #1 Personal Choice!\n\n2. " 12 72
+dialog --title "PG Member NZB Specials" --msgbox "\nWe are partnered to provide our PG Members with Deep Discounts!\n\n1. newshosting.plexguide.com - Free VPN & 41% Discount! Fastest!\n\n2. usenetserver.plexguide.com - Free VPN & 39% Discount! Well-Known!" 12 72
