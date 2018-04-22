@@ -16,4 +16,4 @@
 #
 #################################################################################
 
-dialog --title "PG Member NZB Specials" --msgbox "\nWe are partnered to provide our PG Members with Deep Discounts\n\n1. newshosting.plexguide.com  - Free VPN & 41% Discount! Fastest!\n2. usenetserver.plexguide.com - Free VPN & 39% Discount! Well-Known!\n3. easynews.plexguide.com     - Top Speeds & Great Alternative!\n4. pureusenet.plexguide.com   - Pay Euros & Packages as Low as 1.83!\n5. xlned.plexguide.com         - Pay Euros & Packages as Low as 2.24!" 12 73
+dialog --title "PG Member NZB Specials" --msgbox "\nWe are partnered to provide our PG Members with Deep Discounts\n\n1. newshosting.plexguide.com  - Free VPN & 41% Discount! Fastest!\n2. usenetserver.plexguide.com - Free VPN & 39% Discount! Well-Known!\n3. easynews.plexguide.com     - Top Speeds & Great Alternative!\n4. pureusenet.plexguide.com   - Pay Euros & Packages as Low as 1.83!\n5. xlned.plexguide.com        - Pay Euros & Packages as Low as 2.24!" 12 73
