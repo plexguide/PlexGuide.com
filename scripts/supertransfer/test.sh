@@ -24,6 +24,9 @@ if [[ $@ =~ --purge-rclone ]]; then
 fi
 
 # source settings
+[[ ! -e $jsonPath ]] || mkdir $jsonPath
+[[ ! -e $uploadHistory ]] || touch $uploadHistory
+[[ ! -e $logDir ]] || touch $logDir
 [[ ! -e $usersettings ]] && cp usersettings.conf $jsonPath && echo 'Configuration File Not Found. Creating.'
 [[ ! -e $usersettings ]] && echo "Config at $usersettings Could Not Be Created."
 source $usersettings

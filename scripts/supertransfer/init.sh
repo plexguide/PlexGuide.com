@@ -202,61 +202,24 @@ return 0
 
 # purge rclone of SA's
 purge_Rclone(){
-rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
-del=0
-while read line; do
-if [[ $line == '' ]]; then
-	del=0
-	echo $line >> ${rclonePath}.tmp
-elif [[ $del == 1 || $line =~ ^\[GDSA[0-9]+\]$ ]]; then
-	del=1
-else
-	del=0
-	echo $line >> ${rclonePath}.tmp
-fi
-done <$rclonePath
-cat ${rclonePath}.tmp > $rclonePath
-rm ${rclonePath}.tmp
-if [[ $(egrep '^\[GDSA[0-9]+\]$' -A7 $rclonePath) ]]; then
-  log "Failed To Purge Rclone Config." WARN
-else
-  log "Rclone Config Purge Successful." INFO
-fi
-}
-
-init_DB(){
-[[ $gdsaImpersonate == 'your@email.com' ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $usersettings" \
-  && exit 1
-
-# get list of avail gdsa accounts
-gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
-if [[ -n $gdsaList ]]; then
-    numGdsa=$(echo $gdsaList | wc -w)
-    maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3")
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
-else
-    echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
-    exit 1 1
-fi
-
-# validate gdsaList, purge broken gdsa's & init db
-echo '' > $gdsaDB
-for gdsa in $gdsaList; do
-  if [[ $(rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.SAtest ) ]]; then
-    echo "${gdsa}=0" >> $gdsaDB
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}.json"
+  rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+  del=0
+  while read line; do
+    if [[ $line == '' ]]; then
+    	del=0
+    	echo $line >> ${rclonePath}.tmp
+    elif [[ $del == 1 || $line =~ ^\[GDSA[0-9]+\]$ ]]; then
+    	del=1
+    else
+    	del=0
+    	echo $line >> ${rclonePath}.tmp
+    fi
+  done <$rclonePath
+  cat ${rclonePath}.tmp > $rclonePath
+  rm ${rclonePath}.tmp
+  if [[ $(egrep '^\[GDSA[0-9]+\]$' -A7 $rclonePath) ]]; then
+    log "Failed To Purge Rclone Config." WARN
   else
-    gdsaList=$(echo $gdsaList | sed 's/'$gdsa'//')
-    ((gdsaFail++))
-    echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}.json"
+    log "Rclone Config Purge Successful." INFO
   fi
-sleep 0.5
-done
-
-[[ -n $gdsaFail ]] \
-  && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s). Did you enable Domain Wide Impersonation In your Google Security Settings?"
-
-[[ -e $upoadHistory ]] || touch $uploadHistory
 }
