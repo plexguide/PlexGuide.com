@@ -9,9 +9,12 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - AppGuard is basically allowing Traefik to now password protect programs like NETDATA, RuTorrent, and Heimdall
   - Menu Dialogs for some information
   - Stopped Traefik Error Messages Flashing on Startup
+  - Should prevent plex container from disappearing when upgrading or rebuilding mass containers
+    - Report if it still happens and what you did
 - Changed
   - Fixing Certificate Information on Startup
   - SABNZBD Fixes
+  - Fixed up some of the PLEX Dialogs
 - Known Issues
   - Pgstatus does not show proper IOwait, menu scaling issues
 
