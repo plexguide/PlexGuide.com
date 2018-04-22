@@ -16,9 +16,4 @@
 #
 #################################################################################
 
-  dialog --title "Flicker-Rate's PG Status" --msgbox "\nThis PROGRAM is an early BETA!\n\nOnce loaded, press CTRL+C to break out of it! We are working on a HOTKEY solution!\n\nIf you have ideas or solutions, visit us in the DISCORD or post on the Forums!\n\nThanks!\n\n@Flicker-Rate\n\nNOTE: You can type -- pgstatus -- in Termainal to access also!" 0 0
-
-
-  clear
-  bash pgstatus
-  
+dialog --title "PG Member NZB Specials" --msgbox "\nWe are partner with various companies to provide deep discounts for our PG Members!\n\n1. newshosting.plexguide.com - Free VPN & a 41% Discount! #1 Personal Choice!\n\n2. " 0 0
