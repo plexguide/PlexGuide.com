@@ -40,7 +40,7 @@
     rm -r /var/plexguide/server.ht.username 1>/dev/null 2>&1
 
     #### Rebuild Containers
-    bash /opt/plexguide/menus/security/rebuild-st.sh
+    bash /opt/plexguide/menus/security/rebuild-ht.sh
 
     dialog --title "PG APP Guard Security" --msgbox "\nContainers without protection are now Protected!" 0 0
     exit
