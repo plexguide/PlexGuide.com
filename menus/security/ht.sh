@@ -20,12 +20,12 @@
   dialog --title "Create a USERNAME (case senstive) ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "USERNAME: " 8 50 2>/var/plexguide/server.ht.username
-  user=$(cat /var/plexguide/server.hd.path)
+  user=$(cat /var/plexguide/server.ht.username)
 
-    dialog --title "Create a USERNAME (case senstive) ]" \
+    dialog --title "Create a PASSWORD (case senstive) ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "USERNAME: " 8 50 2>/var/plexguide/server.ht.username
-  pw=$(cat /var/plexguide/server.hd.path)
+  pw=$(cat /var/plexguide/server.ht.pw)
 
   if dialog --stdout --title "PG Path Builder" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
