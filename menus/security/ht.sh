@@ -17,17 +17,17 @@
 #################################################################################
   dialog --title "PG APP Guard Protection" --msgbox "\nPurpose is to generate username and passwords for APPS without PROTECTION such as Heimdall, RuTorrent & others\n\nYour Password will Be Hashed for Protection!" 0 0
 
-  dialog --title "Create a USERNAME (case senstive) ]" \
+  dialog --title "Create a USERNAME (case senstive)" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "USERNAME: " 8 50 2>/var/plexguide/server.ht.username
   user=$(cat /var/plexguide/server.ht.username)
 
-    dialog --title "Create a PASSWORD (case senstive) ]" \
+    dialog --title "Create a PASSWORD (case senstive)" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "USERNAME: " 8 50 2>/var/plexguide/server.ht.username
+  --inputbox "PASSWORD: " 8 50 2>/var/plexguide/server.ht.username
   pw=$(cat /var/plexguide/server.ht.pw)
 
-  if dialog --stdout --title "PG Path Builder" \
+  if dialog --stdout --title "Username & Password" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\n$user - $pw\n\nCorrect?" 0 0; then
     dialog --title "Path Choice" --msgbox "\nUsername & Password are SET!" 0 0
