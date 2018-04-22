@@ -19,9 +19,9 @@ rm -r /tmp/plexsetup 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
- source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
- echo $ipv4
- echo $domain
+hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+ipv4=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
+domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 
  ### demo ip / comment out when done
  #ipv4=69.69.69.69
@@ -39,21 +39,23 @@ if dialog --stdout --title "PAY ATTENTION!" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --yesno "\nIs this Server a REMOTE SERVER (Non-Local)?" 7 50; then
 
+
+    # NOTE: This needs better explanining on the wiki or somewhere, confuses people
     ######### Moved for remote server use; unless tracking how use local
-    if dialog --stdout --title "Custom Access URL" \
-           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-           --yesno "\nDo you want to use a Custom Access URL?\n\nSELECT NO: if you are NOT using Cloudflare or some other CDN. If you do not understand the question, SELECT NO." 0 0; then
+    #if dialog --stdout --title "Custom Access URL" \
+    #       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    #       --yesno "\nDo you want to use a Custom Access URL?\n\nSELECT NO: if you are NOT using Cloudflare or some other CDN. If you do not understand the question, SELECT NO." 0 0; then
                     
 
-                    dialog --title "Input CUSTOM ACCESS URL:" \
-                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                    --inputbox "URL?" 8 70 2>/var/plexguide/plex.url
-                    plexurl=$(cat /var/plexguide/plex.url)
-                    dialog --infobox "URL: $plexurl" 3 70
-                    sleep 2
-    else
+                   # dialog --title "Input CUSTOM ACCESS URL:" \
+                   # --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                   # --inputbox "URL?" 8 70 2>/var/plexguide/plex.url
+                   # plexurl=$(cat /var/plexguide/plex.url)
+                   # dialog --infobox "URL: $plexurl" 3 70
+                   # sleep 2
+    #else
             echo "default" > /var/plexguide/plex.url 1>/dev/null 2>&1
-    fi
+    #fi
 
     if dialog --stdout --title "PAY ATTENTION!" \
       --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -169,9 +171,9 @@ file="/tmp/server.check"
 if [ -e "$file" ]
 then
   dialog --title "FOR REMOTE PLEX SERVERS Users!" \
-  --msgbox "\nRemember to claim your SERVER @ http(s)://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
+  --msgbox "\nRemember to claim your SERVER @ http://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
-  echo "Visit http(s)://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
+  echo "Visit http://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
   dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
