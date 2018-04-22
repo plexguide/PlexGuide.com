@@ -26,6 +26,8 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
 #### Checks to See if Either Traefik Exisxts
+
+docker logs --tail 100 traefik2 3>&1 1>>/var/plexguide/traefik.error2 2>&1
 #docker logs traefik2 2> /var/plexguide/traefik.error2
 #docker logs traefik 2> /var/plexguide/traefik.error1
 error2=$( cat /var/plexguide/traefik.error2 )
