@@ -66,4 +66,4 @@ if [ "$error2" == "$error1" ]
 
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\n\nPORTS: $portstat -APPGUARD: $appguard" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
