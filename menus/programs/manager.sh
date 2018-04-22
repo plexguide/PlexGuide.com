@@ -50,6 +50,14 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=CouchPotato
       program=couchpotato
       port=5050
@@ -60,6 +68,14 @@ case $CHOICE in
       ;;
 
     B)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Lidarr
       program=lidarr
       port=8686
@@ -69,6 +85,14 @@ case $CHOICE in
       cronskip="no"
       ;;
     C)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=MEDUSA
       program=medusa
       port=8081
@@ -78,6 +102,14 @@ case $CHOICE in
       sleep 2
       ;;
     D)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Mylar
       program=mylar
       port=8090
@@ -87,6 +119,14 @@ case $CHOICE in
       sleep 2
       ;;
     E)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Radarr
       program=radarr
       port=7878
@@ -98,6 +138,14 @@ case $CHOICE in
       ;;
 
     F)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Radarr4k
       program=radarr4k
       port=7874
@@ -109,6 +157,14 @@ case $CHOICE in
       ;;
 
     G)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=SickRage
       program=sickrage
       port=8082
@@ -118,6 +174,14 @@ case $CHOICE in
       sleep 2
       ;;
     H)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Sonarr
       program=sonarr
       port=8989
@@ -128,6 +192,14 @@ case $CHOICE in
       cronskip="no"
       ;;
     I)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Sonarr4k
       program=sonarr4k
       port=8984
@@ -138,6 +210,14 @@ case $CHOICE in
       cronskip="no"
       ;;
     J)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=LazyLibrarian
       program=lazy
       port=5299
@@ -147,6 +227,14 @@ case $CHOICE in
       sleep 2
       ;;
     K)
+      file="/var/plexguide/nzb.discount3" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+          bash /opt/plexguide/menus/nzb/main33.sh
+          else
+        touch /var/plexguide/nzb.discount3
+        bash /opt/plexguide/menus/nzb/main.sh
+        fi
       display=Headphones
       program=headphones
       port=8081
