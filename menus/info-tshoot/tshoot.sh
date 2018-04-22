@@ -24,7 +24,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            rm -r /var/plexguide/dep*
+            echo "0" > /var/plexguide/pg.preinstall.stored
             dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         B)

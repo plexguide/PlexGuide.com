@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+bash /opt/plexguide/menus/nzb/main8.sh
 clear
 # PG ascii art with color
 cat << "EOF"

@@ -43,7 +43,7 @@ TITLE="Schedule a Backup of --$display --?"
 
     case $CHOICE in
             A)
-                dialog --infobox "Establishing [Weekly] CronJob" 3 34
+                dialog --infobox "Establishing [Monthly] CronJob" 3 34
                 echo "monthly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy &>/dev/null &
                 sleep 2
