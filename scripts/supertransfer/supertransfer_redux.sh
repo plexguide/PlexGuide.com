@@ -64,7 +64,7 @@ done <<<$staleFiles
 
 while true; do
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
-uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
+uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
   -exec du -s {} \; | awk -F'\t' '{print $1 ":" "\"" $2 "\""}' | sort -gr)
 
   while read -r line; do
@@ -85,7 +85,7 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
       sleep 0.5
       # add timestamp & log
       # load latest usage value from db
-      oldUsage=$(grep $gdsaLeast $gdsaDB | awk -F'=' '{print $2}')
+      oldUsage=$(egrep -m1 ^$gdsaLeast=. $gdsaDB | awk -F'=' '{print $2}')
       Usage=$(( oldUsage + fileSize ))
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsaLeast\tUsage: $Usage"
       # update gdsaUsage file with latest usage value

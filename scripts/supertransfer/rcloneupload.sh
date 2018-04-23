@@ -13,7 +13,7 @@ rclone_upload() {
   localDir=$(echo $2 | sed 's/ /\\ /g; s/\"//g'); #sanitize input
   remoteDir=${3}
   source settings.conf
-	touch ${logDir}/${gdsa}.log
+  [[ ! -d $logDir ]] && mkdir $logDir
 
   # lock file so multiple uploads don't happen
   echo ${2} >> $filelock
@@ -53,5 +53,5 @@ rclone_upload() {
   fi
   # release filelock when file transfer finishes (or fails)
   cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
-  rm $logfile
+  rm $logfile &>/dev/null
 	}
