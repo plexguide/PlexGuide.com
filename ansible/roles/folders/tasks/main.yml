@@ -101,6 +101,7 @@
       - /opt/appdata/plexguide
       - /var/plexguide
       - /var/plexguide/logs
+      - /mnt/rcache
       - "{{path.stdout}}/deluge"
       - "{{path.stdout}}/deluge/temp"
       - "{{path.stdout}}/deluge/downloaded"

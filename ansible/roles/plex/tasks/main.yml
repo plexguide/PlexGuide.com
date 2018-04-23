@@ -110,6 +110,7 @@
       - "/opt/appdata/plex/database:/config"
       - "/opt/transcodes:/transcode"
       - "/mnt/plexdrive:/plexdrive"
+      - "/mnt/rcache:/rcache"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
