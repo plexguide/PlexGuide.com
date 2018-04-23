@@ -6,12 +6,15 @@ rclone_upload() {
 
   # set vars
   local rclone_fin_flag ; local gdsa ; local localDir
-  local time_start ; local remoteDir
+  local time_start ; local remoteDir; local drive_chunk_size
   rclone_fin_flag=0
   t1=$(date +%s)
   gdsa=$1; localDir=$2; remoteDir=$3
   source settings.conf
 	touch ${logDir}/${gdsa}.log
+
+  # lock file so multiple uploads don't happen
+  echo $localDir >> $filelock
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -26,14 +29,16 @@ rclone_upload() {
 	  *) drive_chunk_size="8M" ;;
 	esac
 
-	rclone move --tpslimit 6 --checkers=16 \
-		--log-file=${logDir}/${gdsa}.log  \
-		--log-level INFO --stats 5s \
-		--exclude="**partial~" --exclude="**_HIDDEN~" \
-		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-		--drive-chunk-size=$drive_chunk_size \
-    --drive-impersonate $gdsaImpersonate
-		$local_dir $gdsa:$remote_dir && rclone_fin_flag=1
+  echo "debug: rclone_upload gdsa=$gdsa localdirfile=$localDir remoteDir=$remoteDir " && rclone_fin_flag=1
+
+	# rclone move --tpslimit 6 --checkers=16 \
+	# 	--log-file=${logDir}/${gdsa}.log  \
+	# 	--log-level INFO --stats 5s \
+	# 	--exclude="**partial~" --exclude="**_HIDDEN~" \
+	# 	--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+	# 	--drive-chunk-size=$drive_chunk_size \
+  #   --drive-impersonate $gdsaImpersonate
+	# 	$local_dir $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
@@ -44,5 +49,6 @@ rclone_upload() {
     printf "$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\t UPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
     return 1
   fi
-
+  # release filelock when file transfer finishes (or fails)
+  egrep -v ^"${localDir}"$ $filelock > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
 	}
