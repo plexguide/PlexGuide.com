@@ -52,6 +52,7 @@ rclone_upload() {
     printf "[$(date +%m/%d\ %H:%M)] [ OK ]\t$gdsaLeast\tFinished Upload: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
   else
     printf "[$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\tUPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
+    cat $logfile >> /tmp/rclonefail.log
   fi
   # release fileLock when file transfer finishes (or fails)
   cat $fileLock | egrep -v ^${2}$ > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
