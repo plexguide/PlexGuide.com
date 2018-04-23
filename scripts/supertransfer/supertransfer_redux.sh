@@ -16,7 +16,7 @@ init_DB(){
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
   if [[ -n $gdsaList ]]; then
       numGdsa=$(echo $gdsaList | wc -w)
-      maxDailyUpload=$(python3 -c "round($numGdsa * 750 / 1000, 3)")
+      maxDailyUpload=$(python3 -c "print(round($numGdsa * 750 / 1000, 3))")
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
   else
@@ -51,7 +51,7 @@ init_DB
 # Least Usage Load Balancing of GDSA Accounts
 ############################################################################
 
-[[ ! -e $filelock ]] || touch $filelock
+touch $filelock
 
 uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
   -exec du -s {} \; | awk -F'\t' '{print $1 ":" "\"" $2 "\""}' | sort -gr)
