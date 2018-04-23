@@ -57,13 +57,13 @@
       path: "/etc/systemd/system/move.service"
     register: move
     tags:
-      - rclone
+      - cache
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     when: move.stat.exists
     tags:
-      - rclone
+      - cache
     
   - name: Install Move Service
     template:
@@ -72,49 +72,52 @@
       force: yes
     when: move.stat.exists == False
     tags:
-      - rclone
+      - cache
 
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=n
     tags:
-      - rclone
+      - cache
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
     tags:
-      - rclone
-    
-########### rclone
-  - name: Check RCLONE Service
+      - cache
+
+########### gdrive mount
+# add here
+   
+########### cache
+  - name: Check Cache Service
     stat:
       path: "/etc/systemd/system/cache.service"
-    register: rclone
+    register: cache
     tags:
-      - rclone
+      - cache
 
-  - name: Stop If RClone Service Running
-    systemd: state=stopped name=rclone
+  - name: Stop If Cache Service Running
+    systemd: state=stopped name=cache
     when: cache.stat.exists
     tags:
-      - rclone
+      - cache
     
   - name: Install Cache Service
     template:
-      src: rclone.js2
-      dest: /etc/systemd/system/rclone.service 
+      src: cache.js2
+      dest: /etc/systemd/system/cache.service 
       force: yes
-    when: rclone.stat.exists == False
+    when: cache.stat.exists == False
     tags:
-      - rclone
+      - cache
 
   - name: Daemon-Reload
-    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+    systemd: state=stopped name=cache daemon_reload=yes enabled=no
     tags:
-      - rclone
+      - cache
 
-  - name: Start RClone
-    systemd: state=started name=rclone enabled=yes
-    when: rclone.stat.exists
+  - name: Start Cache
+    systemd: state=started name=cache enabled=yes
+    when: cache.stat.exists
     tags:
-      - rclone
+      - cache
