@@ -5,7 +5,7 @@ source rcloneupload.sh
 source init.sh
 source settings.conf
 source /opt/appdata/plexguide/supertransfer/usersettings.conf
-
+dbug=on
 
 init_DB(){
   [[ $gdsaImpersonate == 'your@email.com' ]] \
@@ -85,7 +85,7 @@ while read -r line; do
     # load latest usage value from db
     oldUsage=$(grep $gdsaLeast $gdsaDB | awk -F'=' '{print $2}')
     Usage=$(( oldUsage + fileSize ))
-    echo "debug: usage is $Usage"
+    [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsaLeast Usage: $Usage"
     # update gdsaUsage file with latest usage value
     sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
     source $gdsaDB
