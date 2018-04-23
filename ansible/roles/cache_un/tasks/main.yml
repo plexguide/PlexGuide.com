@@ -15,15 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-  - name: RClone Filler
-    template:
-      src: temp.js2
-      dest: /root/.config/rclone/rclone.conf
-      force: yes
-    tags: rclone_temp
-
-########################################## Scripts
+# TO DO NOTES
+# Need to ensure rcache mounts after gdrive
+# 
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
@@ -39,7 +33,7 @@
       force: yes
     tags:
       - rclone
-    #when: move_script.stat.exists == False
+
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
     stat:
@@ -63,13 +57,13 @@
       path: "/etc/systemd/system/move.service"
     register: move
     tags:
-      - rclone
+      - cache
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     when: move.stat.exists
     tags:
-      - rclone
+      - cache
     
   - name: Install Move Service
     template:
@@ -78,82 +72,52 @@
       force: yes
     when: move.stat.exists == False
     tags:
-      - rclone
+      - cache
 
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=n
     tags:
-      - rclone
+      - cache
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
     tags:
-      - rclone
-    
-########### rclone
-  - name: Check RCLONE Service
-    stat:
-      path: "/etc/systemd/system/rclone.service"
-    register: rclone
-    tags:
-      - rclone
+      - cache
 
-  - name: Stop If RClone Service Running
-    systemd: state=stopped name=rclone
-    when: rclone.stat.exists
+########### gdrive mount
+# add here
+   
+########### cache
+  - name: Check Cache Service
+    stat:
+      path: "/etc/systemd/system/cache.service"
+    register: cache
     tags:
-      - rclone
+      - cache
+
+  - name: Stop If Cache Service Running
+    systemd: state=stopped name=cache
+    when: cache.stat.exists
+    tags:
+      - cache
     
-  - name: Install RCLONE Service
+  - name: Install Cache Service
     template:
-      src: rclone.js2
-      dest: /etc/systemd/system/rclone.service 
+      src: cache.js2
+      dest: /etc/systemd/system/cache.service 
       force: yes
-    when: rclone.stat.exists == False
+    when: cache.stat.exists == False
     tags:
-      - rclone
+      - cache
 
   - name: Daemon-Reload
-    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+    systemd: state=stopped name=cache daemon_reload=yes enabled=no
     tags:
-      - rclone
+      - cache
 
-  - name: Start RClone
-    systemd: state=started name=rclone enabled=yes
-    when: rclone.stat.exists
+  - name: Start Cache
+    systemd: state=started name=cache enabled=yes
+    when: cache.stat.exists
     tags:
-      - rclone
-
-########### UNIONFS
-  - name: Check UNIONFS Service
-    stat:
-      path: "/etc/systemd/system/unionfs.service"
-    register: unionfs
-    tags:
-      - rclone
-
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    when: unionfs.stat.exists
-    tags:
-      - rclone
-    
-  - name: Install UNIONFS Service
-    template:
-      src: unionfs.js2
-      dest: /etc/systemd/system/unionfs.service 
-      force: yes
-    tags:
-      - rclone
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-    tags:
-      - rclone
-
-  - name: Start RClone
-    systemd: state=started name=unionfs enabled=yes
-    when: unionfs.stat.exists
-    tags:
-      - rclone
+      - cache
