@@ -77,8 +77,8 @@ while true; do
 find $localDir -mindepth 2 -type d -empty -delete
 
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
-uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
-  -exec du -s {} \; | awk -F'\t' '{print $1 ":" "\"" $2 "\""}' | sort -gr)
+find $localDir -mindepth 2 -mmin +${modTime} -type d \
+  -exec du -s {} \; | sort -gr | awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
 
   while read -r line; do
 
@@ -91,10 +91,10 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
     # skip on files currently being uploaded,
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localDir" $fileLock)
-    file=$(awk -F':' '{print $2}' <<< "${line}")
+    file=$(awk -F':' '{print $2}' <<< ${line})
     if [[ ! $(cat $fileLock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
-      fileSize=$(awk -F':' '{print $1}' <<< $line)
+      fileSize=$(awk -F':' '{print $1}' <<< ${line})
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
       rclone_upload $gdsaLeast "${file}" $remoteDir &
       sleep 0.5
@@ -107,7 +107,7 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
       sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
       source $gdsaDB
     fi
-  done <<<$uploadQueueBuffer
+  done </tmp/uploadQueueBuffer
   [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0
   sleep 15
 done
