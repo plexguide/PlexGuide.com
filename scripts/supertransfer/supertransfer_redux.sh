@@ -26,14 +26,14 @@ init_DB(){
 
   # reset existing logs & db
   echo '' > /tmp/SA_error.log
-  echo '' > $gdsaDB
+  #echo '' > $gdsaDB
   # test for working gdsa's and init gdsaDB
   for gdsa in $gdsaList; do
     s=0
     rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}"
-      echo "${gdsa}=0" >> $gdsaDB
+      grep -q "${gdsa}" $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
     else
       echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}"
       cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
