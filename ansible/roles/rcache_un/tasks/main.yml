@@ -86,7 +86,7 @@
       - rcache
 
 ########### gdrive mount
-  - name: Check RCLONE Service
+  - name: Check GDrive Service
     stat:
       path: "/etc/systemd/system/gdrive.service"
     register: gdrive
@@ -99,7 +99,7 @@
     tags:
       - rcache
     
-  - name: Install RCLONE Service
+  - name: Install GDrive Service
     template:
       src: gdrive.js2
       dest: /etc/systemd/system/gdrive.service 
