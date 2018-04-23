@@ -37,6 +37,7 @@ OPTIONS=(A "RClone & PlexDrive"
          H "PG Updates"
          I "PG Edition Switch"
          J "Donation Menu"
+         K "RClone Cache - Early Test"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -72,6 +73,11 @@ case $CHOICE in
             exit 0 ;;
         J)
             bash /opt/plexguide/menus/donate/main.sh ;;
+        K)
+            bash /opt/plexguide/scripts/docker-no/rcache.sh
+            echo "RClone - You Chose the Unencrypted Method" > /tmp/pushover
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;

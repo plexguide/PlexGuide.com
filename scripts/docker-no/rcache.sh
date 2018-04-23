@@ -19,7 +19,7 @@
 clear
 
 ## Installing RClone
-  curl https://rclone.org/install.sh | sudo bash -s beta
+  curl https://rclone.org/install.sh | sudo bash -s beta 1>/dev/null 2>&1
   cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
 
 # allows others to access fuse
