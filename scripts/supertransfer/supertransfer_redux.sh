@@ -109,7 +109,7 @@ find $localDir -mindepth 2 -mmin +${modTime} -type d \
     fi
   done </tmp/uploadQueueBuffer
   [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0
-  sleep 15
+  sleep 5
 done
 
 
