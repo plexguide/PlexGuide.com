@@ -32,6 +32,9 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 user_allow_other
 EOF
 
+## execute rclone
+rclone config
+
 mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 
 ## Copying to /mnt incase
