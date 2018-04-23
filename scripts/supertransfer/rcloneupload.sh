@@ -9,7 +9,7 @@ rclone_upload() {
   local time_start ; local remoteDir; local drive_chunk_size
   rclone_fin_flag=0
   t1=$(date +%s)
-  gdsa=${1}; localDir=${2}; remoteDir=${3}
+  gdsa=${1}; localDir=$(echo ${2} | sed 's/ /\\ /g'); remoteDir=${3}
   source settings.conf
 	touch ${logDir}/${gdsa}.log
 
@@ -41,7 +41,7 @@ rclone_upload() {
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$drive_chunk_size \
     --drive-impersonate $gdsaImpersonate
-		"${2}" $gdsa:$remote_dir && rclone_fin_flag=1
+		${localDir} $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
