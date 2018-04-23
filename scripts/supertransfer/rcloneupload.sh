@@ -9,7 +9,9 @@ rclone_upload() {
   local time_start ; local remoteDir; local drive_chunk_size
   rclone_fin_flag=0
   t1=$(date +%s)
-  gdsa=${1}; localDir=$(echo ${2} | sed 's/ /\\ /g'); remoteDir=${3}
+  gdsa=${1}
+  localDir=$(echo $2 | sed 's/ /\\ /g; s/\"//g'); #sanitize input
+  remoteDir=${3}
   source settings.conf
 	touch ${logDir}/${gdsa}.log
 
@@ -17,7 +19,6 @@ rclone_upload() {
   echo ${2} >> $filelock
   # debug
   echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
-
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -32,15 +33,13 @@ rclone_upload() {
 	  *) drive_chunk_size="8M" ;;
 	esac
 
-#  echo "debug: rclone_upload gdsa=$gdsa localdirfile="${2}" remoteDir=$remoteDir " && rclone_fin_flag=1
-
 	rclone move --tpslimit 6 --checkers=16 \
 		--log-file=${logDir}/${gdsa}.log  \
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$drive_chunk_size \
-    --drive-impersonate $gdsaImpersonate
+    --drive-impersonate $gdsaImpersonate \
 		${localDir} $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
