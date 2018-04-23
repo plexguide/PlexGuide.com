@@ -5,7 +5,7 @@ source rcloneupload.sh
 source init.sh
 source settings.conf
 source /opt/appdata/plexguide/supertransfer/usersettings.conf
-dbug=on
+#dbug=on
 
 # check to make sure filepaths are there
 [[ -e $gdsaDB ]] || touch $gdsaDB

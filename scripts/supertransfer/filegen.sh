@@ -5,13 +5,14 @@ max=$(( maxgb * 1000000 ))
 while true; do
 	while [[ $(du /mnt/move -c | tail -1 | awk '{print $1}') -lt $max ]]; do
     flag=0
-    dir=$(date +%H_%M_%S)
+    dir=$(date +%H_%M_%S)_$RANDOM
     mkdir $rootdir/$dir
     for i in $(seq $(( RANDOM % 3 + 1))); do
         file=500M_$RANDOM
-        size=$(shuf -i1-3 -n1)
-		    echo "[INFO] Creating ${size}G random file: $file Dir size: $(du /mnt/move/ -hc | tail -1 | awk '{print $1}')"
-		    dd if=/dev/urandom of=$rootdir/$dir/$file bs=${size}G count=1 &>/dev/null
+        size=$(shuf -i16-96 -n1)
+	      [[ $(du /mnt/move -c | tail -1 | awk '{print $1}') -lt $max ]] || break
+		    echo "[INFO] Creating ${size}M random file: $file Dir size: $(du /mnt/move/ -hc | tail -1 | awk '{print $1}')"
+		    dd if=/dev/urandom of=$rootdir/$dir/$file bs=64M count=$size &>/dev/null
       done
 	done
 sleep 1

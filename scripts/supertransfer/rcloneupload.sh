@@ -44,7 +44,6 @@ rclone_upload() {
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$driveChunkSize \
     --drive-impersonate $gdsaImpersonate \
-    --dry-run \
 		${localFile} $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
