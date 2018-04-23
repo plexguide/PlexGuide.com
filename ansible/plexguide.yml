@@ -32,7 +32,7 @@
   - { role: drives, tags: ['drives'] }
   - { role: emby, tags: ['emby'] }
   - { role: next, tags: ['next'] }
-  - { role: rcache, tags: ['rcache'] }
+  - { role: rcache_un, tags: ['rcache_un'] }
   - { role: telly, tags: ['telly'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: sonarr4k, tags: ['sonarr4k'] }
