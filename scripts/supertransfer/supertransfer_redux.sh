@@ -66,8 +66,8 @@ while read -r line; do
   fi
 
   # skip on files currently being uploaded
-  if [[ ! $(cat $filelock | egrep "${line}") ]]; then
-    file=$(awk -F':' '{print $2}' <<< ${line})
+  file=$(awk -F':' '{print $2}' <<< "${line}")
+  if [[ ! $(cat $filelock | egrep ^\"${file}\"$ ) ]]; then
     fileSize=$(awk -F':' '{print $1}' <<< $line)
     rclone_upload $gdsaLeast "${file}" $remoteDir &
     sleep 1

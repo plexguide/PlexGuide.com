@@ -50,5 +50,5 @@ rclone_upload() {
     return 1
   fi
   # release filelock when file transfer finishes (or fails)
-  cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
+  cat $filelock | egrep -v ^\"${2}\"$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
 	}
