@@ -61,12 +61,12 @@ while read -r line; do
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking filelock on $line"
 done <<<$staleFiles
 
+
+while true; do
+# iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
 uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
   -exec du -s {} \; | awk -F'\t' '{print $1 ":" "\"" $2 "\""}' | sort -gr)
 
-# iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
-
-while true; do
   while read -r line; do
 
     gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
