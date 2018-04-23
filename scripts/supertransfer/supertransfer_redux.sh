@@ -53,7 +53,7 @@ init_DB(){
     && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s)."
 
 }
-init_DB
+[[ $@ =~ --skip ]] || init_DB
 
 ############################################################################
 # Least Usage Load Balancing of GDSA Accounts
@@ -65,7 +65,7 @@ touch $filelock
 staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
 while read -r line; do
   egrep ^"${line}"$ $filelock && \
-  cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && \
+  cat $filelock | egrep -v ^${line}$ > /tmp/filelock.tmp && \
   mv /tmp/filelock.tmp /tmp/filelock && \
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking filelock on $line"
 done <<<$staleFiles
@@ -91,8 +91,10 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localdir" $filelock)
     file=$(awk -F':' '{print $2}' <<< "${line}")
-    if [[ ! $(cat $filelock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads ]]; then
+    if [[ ! $(cat $filelock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
+      flag=1
       fileSize=$(awk -F':' '{print $1}' <<< $line)
+      [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
       rclone_upload $gdsaLeast "${file}" $remoteDir &
       sleep 0.5
       # add timestamp & log
@@ -104,9 +106,10 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
       sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
       source $gdsaDB
     fi
-  done <<< "$uploadQueueBuffer"
+  done <<<$uploadQueueBuffer
 
-  sleep 60
+  sleep 15
+  [[ -n $dbug && flag=1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localdir}. Sleeping." && flag=0
 done
 
 
