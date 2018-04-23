@@ -28,8 +28,12 @@ else
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
-clear
-   sudo rm -r /opt/plexguide
-	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
+[[ $(pwd) =~ plexguide ]] && cd ~
+set -e
+sudo rm -r /opt/plexguide
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+sudo bash /opt/plexguide/scripts/install.sh
+echo "Updated to the latest PlexGuide Dev Version."
+echo
 
 sudo bash /opt/plexguide/scripts/message/ending.sh
