@@ -24,7 +24,7 @@
       path: "/opt/appdata/plexguide/move.sh"
     register: move_script
     tags:
-      - rclone
+      - rcache
     
   - name: Install Move Service
     template:
@@ -32,7 +32,7 @@
       dest: /opt/appdata/plexguide/move.sh
       force: yes
     tags:
-      - rclone
+      - rcache
 
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
@@ -40,7 +40,7 @@
       path: "/opt/appdata/plexguide/rclone.sh"
     register: rclone_script
     tags:
-      - rclone
+      - rache
     
   - name: Install RClone Sync Service
     template:
@@ -49,7 +49,7 @@
       force: yes
     when: rclone_script.stat.exists == False
     tags:
-      - rclone
+      - rcache
 ########################################## Services
 ########### Move Service
   - name: Check MOVE Service
@@ -57,13 +57,13 @@
       path: "/etc/systemd/system/move.service"
     register: move
     tags:
-      - cache
+      - rcache
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     when: move.stat.exists
     tags:
-      - cache
+      - rcache
     
   - name: Install Move Service
     template:
@@ -72,52 +72,116 @@
       force: yes
     when: move.stat.exists == False
     tags:
-      - cache
+      - rcache
 
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=n
     tags:
-      - cache
+      - rcache
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
     tags:
-      - cache
+      - rcache
 
 ########### gdrive mount
-# add here
+  - name: Check RCLONE Service
+    stat:
+      path: "/etc/systemd/system/gdrive.service"
+    register: gdrive
+    tags:
+      - rcache
+
+  - name: Stop If RClone Service Running
+    systemd: state=stopped name=gdrive
+    when: gdrive.stat.exists
+    tags:
+      - rcache
+    
+  - name: Install RCLONE Service
+    template:
+      src: gdrive.js2
+      dest: /etc/systemd/system/gdrive.service 
+      force: yes
+    when: gdrive.stat.exists == False
+    tags:
+      - rcache
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+    tags:
+      - rcache
+
+  - name: Start RClone
+    systemd: state=started name=gdrive enabled=yes
+    when: gdrive.stat.exists
+    tags:
+      - rcache
    
-########### cache
+########### rcache
   - name: Check Cache Service
     stat:
-      path: "/etc/systemd/system/cache.service"
-    register: cache
+      path: "/etc/systemd/system/rcache.service"
+    register: rcache
     tags:
-      - cache
+      - rcache
 
   - name: Stop If Cache Service Running
-    systemd: state=stopped name=cache
-    when: cache.stat.exists
+    systemd: state=stopped name=rcache
+    when: rcache.stat.exists
     tags:
-      - cache
+      - rcache
     
   - name: Install Cache Service
     template:
-      src: cache.js2
-      dest: /etc/systemd/system/cache.service 
+      src: rcache.js2
+      dest: /etc/systemd/system/rcache.service 
       force: yes
-    when: cache.stat.exists == False
+    when: rcache.stat.exists == False
     tags:
-      - cache
+      - rcache
 
   - name: Daemon-Reload
-    systemd: state=stopped name=cache daemon_reload=yes enabled=no
+    systemd: state=stopped name=rcache daemon_reload=yes enabled=no
     tags:
-      - cache
+      - rcache
 
   - name: Start Cache
-    systemd: state=started name=cache enabled=yes
-    when: cache.stat.exists
+    systemd: state=started name=rcache enabled=yes
+    when: rcache.stat.exists
     tags:
-      - cache
+      - rcache
+
+########### UNIONFS
+  - name: Check UNIONFS Service
+    stat:
+      path: "/etc/systemd/system/unionfsc.service"
+    register: unionfsc
+    tags:
+      - rcache
+
+  - name: Stop If UNIONFS Service Running
+    systemd: state=stopped name=unionfs
+    when: unionfsc.stat.exists
+    tags:
+      - rcache
+    
+  - name: Install UNIONFS Service
+    template:
+      src: unionfs.js2
+      dest: /etc/systemd/system/unionfsc.service 
+      force: yes
+    tags:
+      - rcache
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfsc daemon_reload=yes enabled=no
+    tags:
+      - rcache
+
+  - name: Start RClone
+    systemd: state=started name=unionfsc enabled=yes
+    when: unionfsc.stat.exists
+    tags:
+      - rcache
