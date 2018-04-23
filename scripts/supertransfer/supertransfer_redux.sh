@@ -51,7 +51,15 @@ init_DB
 # Least Usage Load Balancing of GDSA Accounts
 ############################################################################
 
+# break the filelock for stale files
 touch $filelock
+staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type f)
+while read -r line; do
+  grep "${line}" $filelock && \
+  cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && \
+  mv /tmp/filelock.tmp /tmp/filelock
+  echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking filelock on $line"
+done <<<$staleFiles
 
 uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type f \
   -exec du -s {} \; | awk -F'\t' '{print $1 ":" "\"" $2 "\""}' | sort -gr)
@@ -65,9 +73,11 @@ while read -r line; do
     exit 1
   fi
 
-  # skip on files currently being uploaded
+  # skip on files currently being uploaded,
+  # or if more than # of rclone uploads exceeds $maxConcurrentUploads
+  numCurrentTransfers=$(grep -c "$localdir" $filelock)
   file=$(awk -F':' '{print $2}' <<< "${line}")
-  if [[ ! $(cat $filelock | egrep ^${file}$ ) ]]; then
+  if [[ ! $(cat $filelock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads ]]; then
     fileSize=$(awk -F':' '{print $1}' <<< $line)
     rclone_upload $gdsaLeast "${file}" $remoteDir &
     sleep 0.5

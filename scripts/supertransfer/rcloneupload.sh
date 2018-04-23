@@ -32,24 +32,24 @@ rclone_upload() {
 	  *) drive_chunk_size="8M" ;;
 	esac
 
-  echo "debug: rclone_upload gdsa=$gdsa localdirfile="${2}" remoteDir=$remoteDir " && rclone_fin_flag=1
+#  echo "debug: rclone_upload gdsa=$gdsa localdirfile="${2}" remoteDir=$remoteDir " && rclone_fin_flag=1
 
-	# rclone move --tpslimit 6 --checkers=16 \
-	# 	--log-file=${logDir}/${gdsa}.log  \
-	# 	--log-level INFO --stats 5s \
-	# 	--exclude="**partial~" --exclude="**_HIDDEN~" \
-	# 	--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-	# 	--drive-chunk-size=$drive_chunk_size \
-  #   --drive-impersonate $gdsaImpersonate
-	# 	"${2}" $gdsa:$remote_dir && rclone_fin_flag=1
+	rclone move --tpslimit 6 --checkers=16 \
+		--log-file=${logDir}/${gdsa}.log  \
+		--log-level INFO --stats 5s \
+		--exclude="**partial~" --exclude="**_HIDDEN~" \
+		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+		--drive-chunk-size=$drive_chunk_size \
+    --drive-impersonate $gdsaImpersonate
+		"${2}" $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
-    printf "[$(date +%m/%d\ %H:%M)] [ OK ]\t$gdsaLeast\t Finished Upload: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
+    printf "[$(date +%m/%d\ %H:%M)] [ OK ]\t$gdsaLeast\tFinished Upload: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
   else
-    printf "[$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\t UPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
+    printf "[$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\tUPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
   fi
   # release filelock when file transfer finishes (or fails)
-  cat $filelock | egrep -v ^\"${2}\"$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
+  cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
 	}
