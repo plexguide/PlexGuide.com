@@ -71,7 +71,7 @@ while read -r line; do
 done <<<$staleFiles
 
 
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t."
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor."
 while true; do
 # purge empty folders
 find $localDir -mindepth 2 -type d -empty -delete
@@ -108,9 +108,8 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
       source $gdsaDB
     fi
   done <<<$uploadQueueBuffer
-
+  [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0
   sleep 15
-  [[ -n $dbug && flag=1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0
 done
 
 
