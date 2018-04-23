@@ -60,18 +60,18 @@ init_DB(){
 ############################################################################
 
 # needs work.
-# break the filelock for stale files
-touch $filelock
+# break the fileLock for stale files
+touch $fileLock
 staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
 while read -r line; do
-  egrep ^"${line}"$ $filelock && \
-  cat $filelock | egrep -v ^${line}$ > /tmp/filelock.tmp && \
-  mv /tmp/filelock.tmp /tmp/filelock && \
-  echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking filelock on $line"
+  egrep ^"${line}"$ $fileLock && \
+  cat $fileLock | egrep -v ^${line}$ > ${fileLock}.tmp && \
+  mv ${fileLock}.tmp ${fileLock} && \
+  echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking fileLock on $line"
 done <<<$staleFiles
 
 
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor."
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t."
 while true; do
 # purge empty folders
 find $localDir -mindepth 2 -type d -empty -delete
@@ -90,9 +90,9 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
 
     # skip on files currently being uploaded,
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
-    numCurrentTransfers=$(grep -c "$localDir" $filelock)
+    numCurrentTransfers=$(grep -c "$localDir" $fileLock)
     file=$(awk -F':' '{print $2}' <<< "${line}")
-    if [[ ! $(cat $filelock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
+    if [[ ! $(cat $fileLock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
       fileSize=$(awk -F':' '{print $1}' <<< $line)
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
