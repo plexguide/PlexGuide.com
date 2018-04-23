@@ -40,7 +40,7 @@ init_DB(){
     s=0
     rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
-      echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}"
+      echo -e "[$(date +%m/%d\ %H:%M)] [ OK ]\tGDSA Impersonation Success:\t ${gdsa}"
       egrep -q ^${gdsa}=. $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
     else
       echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}"
@@ -66,7 +66,7 @@ staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
 while read -r line; do
   egrep ^"${line}"$ $filelock && \
   cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && \
-  mv /tmp/filelock.tmp /tmp/filelock
+  mv /tmp/filelock.tmp /tmp/filelock && \
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking filelock on $line"
 done <<<$staleFiles
 

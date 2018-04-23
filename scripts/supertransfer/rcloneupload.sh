@@ -33,6 +33,7 @@ rclone_upload() {
 	  *) drive_chunk_size="8M" ;;
 	esac
   echo "[DBUG] rcloneupload: localDir=${localDir}"
+  echo "[DBUG] rcloneupload: raw input 2=$2"
 
   tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   logfile=${logDir}/${gdsa}_${tmp}.log
