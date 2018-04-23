@@ -5,12 +5,12 @@
 rclone_upload() {
 
   # set vars
-  local rclone_fin_flag ; local gdsa ; local localDir
+  local rclone_fin_flag ; local gdsa ; local localFile
   local time_start ; local remoteDir; local driveChunkSize
   rclone_fin_flag=0
   t1=$(date +%s)
   gdsa=${1}
-  localDir=$(echo $2 | sed 's/ /\\ /g; s/\"//g'); #sanitize input
+  localFile=$(echo $2 | sed 's/ /\\ /g; s/\"//g'); #sanitize input
   remoteDir=${3}
   source settings.conf
   [[ ! -d $logDir ]] && mkdir $logDir
@@ -18,7 +18,7 @@ rclone_upload() {
   # lock file so multiple uploads don't happen
   echo ${2} >> $fileLock
   # debug
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: ${localDir}"
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: ${localFile}"
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -32,7 +32,7 @@ rclone_upload() {
 		2*) driveChunkSize="32M" ;;
 	  *) driveChunkSize="8M" ;;
 	esac
-  echo "[DBUG] rcloneupload: localDir=${localDir}"
+  echo "[DBUG] rcloneupload: localFile=${localFile}"
   echo "[DBUG] rcloneupload: raw input 2=$2"
 
   tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
@@ -45,7 +45,7 @@ rclone_upload() {
 		--drive-chunk-size=$driveChunkSize \
     --drive-impersonate $gdsaImpersonate \
     --dry-run \
-		${localDir} $gdsa:$remote_dir && rclone_fin_flag=1
+		${localFile} $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
