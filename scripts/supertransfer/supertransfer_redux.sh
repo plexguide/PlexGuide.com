@@ -33,7 +33,7 @@ init_DB(){
     rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tGDSA Impersonation Success:\t ${gdsa}"
-      grep -q "${gdsa}" $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
+      egrep -q ^${gdsa}=. $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
     else
       echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}"
       cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
@@ -51,11 +51,12 @@ init_DB
 # Least Usage Load Balancing of GDSA Accounts
 ############################################################################
 
+# needs work.
 # break the filelock for stale files
 touch $filelock
-staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type f)
+staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
 while read -r line; do
-  grep "${line}" $filelock && \
+  egrep ^"${line}"$ $filelock && \
   cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && \
   mv /tmp/filelock.tmp /tmp/filelock
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking filelock on $line"
@@ -63,6 +64,9 @@ done <<<$staleFiles
 
 
 while true; do
+# purge empty folders
+find $localdir -mindepth 2 -type d -empty -delete
+
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
 uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
   -exec du -s {} \; | awk -F'\t' '{print $1 ":" "\"" $2 "\""}' | sort -gr)
@@ -95,8 +99,6 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
   done <<< "$uploadQueueBuffer"
 
   sleep 60
-  # clean empty folders
-  find $localdir -mindepth 2 -type d -empty -delete
 done
 
 

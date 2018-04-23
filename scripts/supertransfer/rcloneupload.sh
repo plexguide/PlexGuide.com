@@ -18,7 +18,7 @@ rclone_upload() {
   # lock file so multiple uploads don't happen
   echo ${2} >> $filelock
   # debug
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: ${localDir}"
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -32,8 +32,9 @@ rclone_upload() {
 		2*) drive_chunk_size="32M" ;;
 	  *) drive_chunk_size="8M" ;;
 	esac
+  echo "[DBUG] rcloneupload: localDir=${localDir}"
 
-  tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g')
+  tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   logfile=${logDir}/${gdsa}_${tmp}.log
 	rclone move --tpslimit 6 --checkers=16 \
 		--log-file=${logfile}  \
@@ -42,6 +43,7 @@ rclone_upload() {
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$drive_chunk_size \
     --drive-impersonate $gdsaImpersonate \
+    --dry-run \
 		${localDir} $gdsa:$remote_dir && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
