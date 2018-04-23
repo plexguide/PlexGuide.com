@@ -15,15 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-  - name: RClone Filler
-    template:
-      src: temp.js2
-      dest: /root/.config/rclone/rclone.conf
-      force: yes
-    tags: rclone_temp
-
-########################################## Scripts
+# TO DO NOTES
+# Need to ensure rcache mounts after gdrive
+# 
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
@@ -39,7 +33,7 @@
       force: yes
     tags:
       - rclone
-    #when: move_script.stat.exists == False
+
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
     stat:
@@ -94,18 +88,18 @@
 ########### rclone
   - name: Check RCLONE Service
     stat:
-      path: "/etc/systemd/system/rclone.service"
+      path: "/etc/systemd/system/cache.service"
     register: rclone
     tags:
       - rclone
 
   - name: Stop If RClone Service Running
     systemd: state=stopped name=rclone
-    when: rclone.stat.exists
+    when: cache.stat.exists
     tags:
       - rclone
     
-  - name: Install RCLONE Service
+  - name: Install Cache Service
     template:
       src: rclone.js2
       dest: /etc/systemd/system/rclone.service 
@@ -122,38 +116,5 @@
   - name: Start RClone
     systemd: state=started name=rclone enabled=yes
     when: rclone.stat.exists
-    tags:
-      - rclone
-
-########### UNIONFS
-  - name: Check UNIONFS Service
-    stat:
-      path: "/etc/systemd/system/unionfs.service"
-    register: unionfs
-    tags:
-      - rclone
-
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    when: unionfs.stat.exists
-    tags:
-      - rclone
-    
-  - name: Install UNIONFS Service
-    template:
-      src: unionfs.js2
-      dest: /etc/systemd/system/unionfs.service 
-      force: yes
-    tags:
-      - rclone
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-    tags:
-      - rclone
-
-  - name: Start RClone
-    systemd: state=started name=unionfs enabled=yes
-    when: unionfs.stat.exists
     tags:
       - rclone
