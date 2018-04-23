@@ -42,8 +42,8 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rcache_un #--skip-tags=rclone_temp
 
-## RClone Script
-chmod 755 /opt/appdata/plexguide/rclone.sh
+## Grive Script
+chmod 755 /opt/appdata/plexguide/gdrive.sh
 
 ## Create the Move Script
 chmod 755 /opt/appdata/plexguide/move.sh

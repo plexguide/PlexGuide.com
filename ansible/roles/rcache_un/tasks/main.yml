@@ -37,17 +37,17 @@
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
     stat:
-      path: "/opt/appdata/plexguide/rclone.sh"
-    register: rclone_script
+      path: "/opt/appdata/plexguide/gdrive.sh"
+    register: gdrive_script
     tags:
       - rache
     
   - name: Install RClone Sync Service
     template:
-      src: rclone_script.js2
-      dest: /opt/appdata/plexguide/rclone.sh
+      src: gdrive_script.js2
+      dest: /opt/appdata/plexguide/gdrive.sh
       force: yes
-    when: rclone_script.stat.exists == False
+    when: gdrive_script.stat.exists == False
     tags:
       - rcache
 ########################################## Services
@@ -86,7 +86,7 @@
       - rcache
 
 ########### gdrive mount
-  - name: Check RCLONE Service
+  - name: Check GDrive Service
     stat:
       path: "/etc/systemd/system/gdrive.service"
     register: gdrive
@@ -99,7 +99,7 @@
     tags:
       - rcache
     
-  - name: Install RCLONE Service
+  - name: Install GDrive Service
     template:
       src: gdrive.js2
       dest: /etc/systemd/system/gdrive.service 
@@ -162,14 +162,14 @@
       - rcache
 
   - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
+    systemd: state=stopped name=unionfsc
     when: unionfsc.stat.exists
     tags:
       - rcache
     
   - name: Install UNIONFS Service
     template:
-      src: unionfs.js2
+      src: unionfsc.js2
       dest: /etc/systemd/system/unionfsc.service 
       force: yes
     tags:
