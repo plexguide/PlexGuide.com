@@ -66,10 +66,11 @@ while read -r line; do
   fi
 
   # skip on files currently being uploaded
-  if [[ ! $(egrep ${line} $filelock) ]]; then
+  if [[ ! $(cat $filelock | egrep "${line}") ]]; then
     file=$(awk -F':' '{print $2}' <<< ${line})
-    fileSize=$(awk '-F':' {print $1}' <<< $line)
-    rclone_upload $gdsaLeast $file $remoteDir &
+    fileSize=$(awk -F':' '{print $1}' <<< $line)
+    rclone_upload $gdsaLeast "${file}" $remoteDir &
+    sleep 1
     # add timestamp & log
     echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
 
