@@ -7,6 +7,14 @@ source settings.conf
 source /opt/appdata/plexguide/supertransfer/usersettings.conf
 dbug=on
 
+# check to make sure filepaths are there
+[[ -e $gdsaDB ]] || touch $gdsaDB
+[[ -e $uploadHistory ]] || touch $uploadHistory
+[[ -d $jsonPath ]] || mkdir $jsonPath
+[[ -d $logDir ]] || mkdir $logDir
+[[ ! -e $usersettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo User settings found in $usersettings. Exiting." && exit 1
+
+
 init_DB(){
   [[ $gdsaImpersonate == 'your@email.com' ]] \
     && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $usersettings" \

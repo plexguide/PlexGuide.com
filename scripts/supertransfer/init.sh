@@ -192,6 +192,7 @@ scope = drive
 root_folder_id = $rootFolderId
 service_account_file = $json
 team_drive = $teamDrive
+
 CFG
     ((++newGdsaCount))
   fi
