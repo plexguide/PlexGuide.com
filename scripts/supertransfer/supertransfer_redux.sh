@@ -73,11 +73,12 @@ while read -r line; do
     sleep 0.5
     # add timestamp & log
     # load latest usage value from db
-    source $gdsaDB
-    Usage=$(( gdsaLeast + fileSize ))
+    oldUsage=$(grep $gdsaLeast $gdsaDB | awk -F'=' '{print $2}')
+    Usage=$(( oldUsage + fileSize ))
     echo "debug: usage is $Usage"
     # update gdsaUsage file with latest usage value
     sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
+    source $gdsaDB
   fi
 done <<< "$uploadQueueBuffer"
 
