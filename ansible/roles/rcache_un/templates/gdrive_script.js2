@@ -1,0 +1,2 @@
+#!/bin/bash
+rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive

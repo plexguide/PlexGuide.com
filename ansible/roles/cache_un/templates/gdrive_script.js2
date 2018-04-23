@@ -1,2 +1,0 @@
-#!/bin/bash
-rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive --bwlimit 8650k --size-only
