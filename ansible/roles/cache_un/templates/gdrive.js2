@@ -1,12 +1,12 @@
 [Unit]
-Description=RClone Daemon
+Description=GDrive Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
 User=0
 Group=0
-ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
+ExecStart=/bin/bash /opt/appdata/plexguide/gdrive.sh
 ExecStop=/bin/fusermount -u /mnt/gdrive
 TimeoutStopSec=20
 KillMode=process

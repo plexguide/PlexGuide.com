@@ -1,3 +1,2 @@
 #!/bin/bash
-
 rclone mount gdrive: /mnt/rcache --allow-other --dir-cache-time=1h --cache-chunk-size=5M --cache-info-age=2h --cache-workers=8 --buffer-size 0M --syslog --umask 002 --log-level INFO --attr-timeout=1s --debug-fuse 
