@@ -67,16 +67,15 @@ while read -r line; do
 
   # skip on files currently being uploaded
   file=$(awk -F':' '{print $2}' <<< "${line}")
-  if [[ ! $(cat $filelock | egrep ^\"${file}\"$ ) ]]; then
+  if [[ ! $(cat $filelock | egrep ^${file}$ ) ]]; then
     fileSize=$(awk -F':' '{print $1}' <<< $line)
     rclone_upload $gdsaLeast "${file}" $remoteDir &
-    sleep 1
+    sleep 0.5
     # add timestamp & log
-    echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
-
     # load latest usage value from db
     source $gdsaDB
-    Usage=$(( $gdsaLeast + $fileSize ))
+    Usage=$(( gdsaLeast + fileSize ))
+    echo "debug: usage is $Usage"
     # update gdsaUsage file with latest usage value
     sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
   fi

@@ -15,6 +15,9 @@ rclone_upload() {
 
   # lock file so multiple uploads don't happen
   echo ${2} >> $filelock
+  # debug
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: $file"
+
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -43,11 +46,9 @@ rclone_upload() {
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
-    printf "$(date +%m/%d\ %H:%M)] [ OK ]\t$gdsaLeast\t Finished Upload: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
-    return 0
+    printf "[$(date +%m/%d\ %H:%M)] [ OK ]\t$gdsaLeast\t Finished Upload: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
   else
-    printf "$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\t UPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
-    return 1
+    printf "[$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\t UPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
   fi
   # release filelock when file transfer finishes (or fails)
   cat $filelock | egrep -v ^\"${2}\"$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
