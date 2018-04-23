@@ -37,17 +37,17 @@
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
     stat:
-      path: "/opt/appdata/plexguide/rclone.sh"
-    register: rclone_script
+      path: "/opt/appdata/plexguide/gdrive.sh"
+    register: gdrive_script
     tags:
       - rache
     
   - name: Install RClone Sync Service
     template:
-      src: rclone_script.js2
-      dest: /opt/appdata/plexguide/rclone.sh
+      src: gdrive_script.js2
+      dest: /opt/appdata/plexguide/gdrive.sh
       force: yes
-    when: rclone_script.stat.exists == False
+    when: gdrive_script.stat.exists == False
     tags:
       - rcache
 ########################################## Services
