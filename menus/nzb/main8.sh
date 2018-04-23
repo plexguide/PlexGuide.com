@@ -25,7 +25,7 @@ do
 done
 
 ## so if the highest number is 10, the range must be 11 - Range = maxnumber + 1
-RANGE=15
+RANGE=18
 
 number=$RANDOM
 let "number %= $RANGE"
