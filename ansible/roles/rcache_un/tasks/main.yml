@@ -162,14 +162,14 @@
       - rcache
 
   - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
+    systemd: state=stopped name=unionfsc
     when: unionfsc.stat.exists
     tags:
       - rcache
     
   - name: Install UNIONFS Service
     template:
-      src: unionfs.js2
+      src: unionfsc.js2
       dest: /etc/systemd/system/unionfsc.service 
       force: yes
     tags:
