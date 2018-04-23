@@ -28,6 +28,7 @@ fi
 [[ ! -e $logDir ]] || touch $logDir
 [[ ! -e $usersettings ]] && cp usersettings.conf $jsonPath && echo 'Configuration File Not Found. Creating.'
 [[ ! -e $usersettings ]] && echo "Config at $usersettings Could Not Be Created."
+[[ ! -d $jsonPath ]] && mkdir $jsonPath
 source $usersettings
 
 # spinny
@@ -102,4 +103,4 @@ function validate_json(){
 }
 validate_json
 
-echo "[DBUG] config script end. run rcloneupload.sh to initiate upload."
+echo "[DBUG] config script end. run supertransfer_redux.sh to initiate upload."
