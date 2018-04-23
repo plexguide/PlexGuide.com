@@ -6,7 +6,7 @@ rclone_upload() {
 
   # set vars
   local rclone_fin_flag ; local gdsa ; local localDir
-  local time_start ; local remoteDir; local drive_chunk_size
+  local time_start ; local remoteDir; local driveChunkSize
   rclone_fin_flag=0
   t1=$(date +%s)
   gdsa=${1}
@@ -16,21 +16,21 @@ rclone_upload() {
   [[ ! -d $logDir ]] && mkdir $logDir
 
   # lock file so multiple uploads don't happen
-  echo ${2} >> $filelock
+  echo ${2} >> $fileLock
   # debug
   echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: ${localDir}"
 
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
 	case $freeRam in
-		[0123456789][0123456789][0123456789]*) drive_chunk_size="512" ;;
-		[0123456789][0123456789]*) drive_chunk_size="512M" ;;
-	  [6789]*) drive_chunk_size="512M" ;;
-		5*) drive_chunk_size="256M" ;;
-		4*) drive_chunk_size="128M" ;;
-		3*) drive_chunk_size="64M" ;;
-		2*) drive_chunk_size="32M" ;;
-	  *) drive_chunk_size="8M" ;;
+		[0123456789][0123456789][0123456789]*) driveChunkSize="512" ;;
+		[0123456789][0123456789]*) driveChunkSize="512M" ;;
+	  [6789]*) driveChunkSize="512M" ;;
+		5*) driveChunkSize="256M" ;;
+		4*) driveChunkSize="128M" ;;
+		3*) driveChunkSize="64M" ;;
+		2*) driveChunkSize="32M" ;;
+	  *) driveChunkSize="8M" ;;
 	esac
   echo "[DBUG] rcloneupload: localDir=${localDir}"
   echo "[DBUG] rcloneupload: raw input 2=$2"
@@ -42,7 +42,7 @@ rclone_upload() {
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-		--drive-chunk-size=$drive_chunk_size \
+		--drive-chunk-size=$driveChunkSize \
     --drive-impersonate $gdsaImpersonate \
     --dry-run \
 		${localDir} $gdsa:$remote_dir && rclone_fin_flag=1
@@ -54,7 +54,7 @@ rclone_upload() {
   else
     printf "[$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\tUPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
   fi
-  # release filelock when file transfer finishes (or fails)
-  cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
+  # release fileLock when file transfer finishes (or fails)
+  cat $fileLock | egrep -v ^${2}$ > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
   rm $logfile &>/dev/null
 	}

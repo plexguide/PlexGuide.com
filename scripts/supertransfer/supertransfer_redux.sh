@@ -12,12 +12,12 @@ dbug=on
 [[ -e $uploadHistory ]] || touch $uploadHistory
 [[ -d $jsonPath ]] || mkdir $jsonPath
 [[ -d $logDir ]] || mkdir $logDir
-[[ ! -e $usersettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo User settings found in $usersettings. Exiting." && exit 1
+[[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo User settings found in $userSettings. Exiting." && exit 1
 
 
 init_DB(){
   [[ $gdsaImpersonate == 'your@email.com' ]] \
-    && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $usersettings" \
+    && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $userSettings" \
     && exit 1
 
   # get list of avail gdsa accounts
@@ -71,9 +71,10 @@ while read -r line; do
 done <<<$staleFiles
 
 
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor."
 while true; do
 # purge empty folders
-find $localdir -mindepth 2 -type d -empty -delete
+find $localDir -mindepth 2 -type d -empty -delete
 
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
 uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
@@ -89,7 +90,7 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
 
     # skip on files currently being uploaded,
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
-    numCurrentTransfers=$(grep -c "$localdir" $filelock)
+    numCurrentTransfers=$(grep -c "$localDir" $filelock)
     file=$(awk -F':' '{print $2}' <<< "${line}")
     if [[ ! $(cat $filelock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
@@ -109,7 +110,7 @@ uploadQueueBuffer=$(find $localDir -mindepth 2 -mmin +${modTime} -type d \
   done <<<$uploadQueueBuffer
 
   sleep 15
-  [[ -n $dbug && flag=1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localdir}. Sleeping." && flag=0
+  [[ -n $dbug && flag=1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0
 done
 
 

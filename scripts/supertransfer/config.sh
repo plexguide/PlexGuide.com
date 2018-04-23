@@ -25,10 +25,10 @@ fi
 
 # source settings
 [[ ! -d $jsonPath ]] && mkdir $jsonPath
-[[ ! -e $logDir ]] || touch $logDir
-[[ ! -e $usersettings ]] && cp usersettings.conf $jsonPath && echo 'Configuration File Not Found. Creating.'
-[[ ! -e $usersettings ]] && echo "Config at $usersettings Could Not Be Created."
-source $usersettings
+[[ ! -d $logDir ]] || mkdir $logDir
+[[ ! -e $userSettings ]] && cp usersettings_template_dont_edit ${jsonPath}/usersettings.conf
+[[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
+source $userSettings
 
 # spinny
 if [[ -z $@ ]]; then
@@ -55,13 +55,13 @@ fi
 # configure email, if user didn't do it in the last step
 function configure_email(){
   if [[ $gdsaImpersonate == 'your@email.com' ]]; then
-      log "No Email Configured in: usersettings.conf" WARN
+      log "No Email Configured in: userSettings.conf" WARN
       read -p 'Please Enter your Gsuite email: ' email
       [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
       [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
       [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
-      sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
-      source $usersettings
+      sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $userSettings
+      source $userSettings
       [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
   fi
 }
