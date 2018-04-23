@@ -102,4 +102,4 @@ function validate_json(){
 }
 validate_json
 
-echo end
+echo "[DBUG] config script end. run rcloneupload.sh to initiate upload."
