@@ -33,8 +33,10 @@ rclone_upload() {
 	  *) drive_chunk_size="8M" ;;
 	esac
 
+  tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g')
+  logfile=${logDir}/${gdsa}_${tmp}.log
 	rclone move --tpslimit 6 --checkers=16 \
-		--log-file=${logDir}/${gdsa}.log  \
+		--log-file=${logfile}  \
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
@@ -51,4 +53,5 @@ rclone_upload() {
   fi
   # release filelock when file transfer finishes (or fails)
   cat $filelock | egrep -v ^${2}$ > /tmp/filelock.tmp && mv /tmp/filelock.tmp /tmp/filelock
+  rm $logfile
 	}
