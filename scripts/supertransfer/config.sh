@@ -27,6 +27,7 @@ fi
 [[ ! -d $jsonPath ]] && mkdir $jsonPath
 [[ ! -d $logDir ]] || mkdir $logDir
 [[ ! -e $userSettings ]] && cp usersettings_template_dont_edit ${jsonPath}/usersettings.conf
+[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp auto-rename-my-keys.sh $jsonPath
 [[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
 source $userSettings
 
@@ -40,17 +41,6 @@ stop_spinner $?
 fi
 
 
-# configure SA keys, if none found
-if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
-  read -p 'No Service Keys Found. Configure? y/n>' answer
-    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
-      upload_Json
-    else
-      exit 1
-    fi
-elif [[ $@ =~ "--config" ]]; then
-  upload_Json
-fi
 
 # configure email, if user didn't do it in the last step
 function configure_email(){
@@ -65,7 +55,48 @@ function configure_email(){
       [[ $gdsaImpersonate == $email ]] && log "SA Accounts Configured To Impersonate $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
   fi
 }
-configure_email
+#configure_email
+
+function configure_teamdrive(){
+source $userSettings
+  if [[ -z $teamDrive ]]; then
+      log "No Teamdrive Configured in: userSettings.conf" WARN
+cat <<EOF
+NOTE: this method doesn't work with personal gdrives.
+
+a) If you already have data in a personal drive, you can
+   easily copy it over to the team drive.
+b) If you are using plexdrive, you need to migrate to rclone cache (to support TD)
+
+Additional limitations: 1) Only 250,000 files allowed per teamdrive
+                        2) Folders may only be 20 directories deep
+########## INSTRUCTIONS ###################################
+1) Make a Team Drive in the Gdrive webui.
+2) Find the Team Drive ID— \e[032it looks like this:\e[0m
+   https://drive.google.com/drive/folders/\e[084g3BHcoUu8IHgWUo5PSA\e[0m
+###########################################################
+EOF
+
+      read -p 'Please Enter your Team Drive ID: ' teamId
+      sed -i '/'^teamDrive'=/ s/=.*/='$teamId'/' $userSettings
+      source $userSettings
+      [[ $teamId == $teamDrive ]] && log "SA Accounts Configured to use team drives." INFO || log "Failed To Update Settings" FAIL
+  fi
+}
+configure_teamdrive
+configure_teamdrive_share
+
+# configure SA keys, if none found
+if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
+  read -p 'No Service Keys Found. Configure? y/n>' answer
+    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
+      upload_Json
+    else
+      exit 1
+    fi
+elif [[ $@ =~ "--config" ]]; then
+  upload_Json
+fi
 
 # configure json's for rclone
 configure_Json
@@ -80,9 +111,8 @@ function validate_json(){
   for gdsa in $gdsaList; do
     s=0
     start_spinner "Validating: ${gdsa}"
-    rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
+    rclone touch ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
-      sleep 1
       stop_spinner 0
     else
       cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log

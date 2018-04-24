@@ -128,11 +128,11 @@ cat <<MSG
 
 1. Go to [32mhttp://${localIP}:8000[0m
 2. Follow the instructions to generate the json keys
-2. Upload 20-99 Gsuite service account json keys
-3. Enter your gsuite email in the next step
+3. Upload 20-99 Gsuite service account json keys
+          - domain wide delegation not needed.
 
-Make sure you allow api access in the security settings
-and check "enable domain wide delegation"
+Hint: if you have many keys, it's easier to compress them
+      into an archive, upload that, then extract server-side
 
 If port 8000 is closed or you wish to upload keys securely,
 Transfer json keys directly into:
@@ -160,18 +160,36 @@ fi
 numKeys=$(ls $jsonPath | egrep -c .json$)
 if [[ $numKeys > 0 ]];then
    log "Found $numKeys Service Account Keys" INFO
-    read -p 'Please Enter your Gsuite email: ' email
-    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
-    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
-    [[ ! $email =~ .@. ]] && read -p 'Invalid email. Try Again: ' email
-    sed -i '/'^gdsaImpersonate'=/ s/=.*/='$email'/' $usersettings
-    source $usersettings
-    [[ $gdsaImpersonate == $email ]] && log "Impersonation: $gdsaImpersonate" INFO || log "Failed To Update Settings" FAIL
 else
    log "No Service Keys Found. Try Again." FAIL
    exit 1
 fi
 return 0
+}
+
+configure_teamdrive_share(){
+source $userSettings
+[[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
+[[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
+grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"' > /tmp/clientemails
+count=$(</tmp/clientemails | wc -l)
+cat <<EOF
+############ CONFIGURATION ################################
+1) If you haven't done so, create a teamdrive
+2) Go to your teamdrive and share your folder with the $count
+   following emails:
+###########################################################
+EOF
+
+read -p 'Would you like to list them one at a time? y/n> ' answer
+if [[ $answer =~ [y|Y|yes|Yes] ]]; then
+  echo 'OK, press any key to see the next one.'
+  while read -r line; do
+    read -p "$line"
+  done </tmp/clientemails
+else
+  less /tmp/clientemails
+fi
 }
 
 
