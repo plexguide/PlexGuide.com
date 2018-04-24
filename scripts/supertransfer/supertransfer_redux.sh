@@ -71,6 +71,14 @@ while read -r line; do
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking fileLock on $line"
 done <<<$staleFiles
 
+cleanUp(){
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs and exiting."
+  rm ${jsonPath}/log/* &>/dev/null
+  echo -n '' > /tmp/fileLock
+  exit 0
+}
+trap "cleanUp" SIGINT
+
 
 echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads"
 while true; do
