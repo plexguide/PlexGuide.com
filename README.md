@@ -19,7 +19,7 @@
 [**The PlexGuide Wiki:**](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki) There are a series of topics that you should read to assist you! EVERYONE has rights to edit and/or build new wiki pages.  What you know may save everyone time!
 
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
-<p align="center"><kbd><img src="https://plexguide.com/media/pg5-jpg.54/full"></kbd></p>
+<p align="center"><kbd><img src="https://plexguide.com/media/snip20180424_194-png.75/full"></kbd></p>
 
 ## Testimonials
 

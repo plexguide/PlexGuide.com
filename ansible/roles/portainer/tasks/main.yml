@@ -18,6 +18,11 @@
 ---
 - include_role:
     name: variables
+
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
     
 - name: Portainer Container
   docker_container:
