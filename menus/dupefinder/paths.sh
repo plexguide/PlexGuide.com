@@ -27,6 +27,7 @@ do
     dialog --title "Type in your Plex Libraries Exactly as Listed" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "Library Title: " 8 50 2>/tmp/plex.library
+    message=$( cat /var/plexguide/plex.library )
 
     if dialog --stdout --title "PG Path Builder" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -39,8 +40,7 @@ do
       echo "" >> /var/plexguide/plex.library
     fi
 
-message=$( cat /var/plexguide/plex.library )
-dialog --title "Your Plex Library" --msgbox "$message" 0 0
+#dialog --title "Your Plex Library" --msgbox "$message" 0 0
 done
 
 clear
