@@ -39,7 +39,7 @@ do
     fi
 
 message=$( cat /var/plexguide/plex.library )
-dialog --title "HD Selection" --msgbox "$message" 0 0
+dialog --title "Your Plex Library" --msgbox "$message" 0 0
 done
 
 clear
