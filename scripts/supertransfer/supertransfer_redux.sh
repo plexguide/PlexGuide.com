@@ -88,10 +88,11 @@ find $localDir -mindepth 2 -type d -empty -delete
 # black magic: find list of all dirs that have files at least 2 minutes old
 # and only print the deepest directories, then sort them by largest first, then sanitize input
 sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
+find ${localDir} -mindepth $sc -links 2 -prune -type d > /tmp/uploadQueueFinder
 while read -r dir; do
+# [[ "${dir}" == '' ]] && break
  test $(find "${dir}" -type f -mmin -${modTime} -print -quit) || du -s "${dir}"
-done <<<$(find ${localDir} -mindepth $sc -links 2 -prune -type d) \
-| sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
+done </tmp/uploadQueueFinder | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
 
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
   while read -r line; do

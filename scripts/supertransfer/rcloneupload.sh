@@ -69,6 +69,6 @@ rclone_upload() {
     sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
   fi
   # release fileLock when file transfer finishes (or fails)
-  cat $fileLock | egrep -v ^${2}$ > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
-  rm $logfile &>/dev/null
+  cat $fileLock | egrep -v ^"${localFile}"$ > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
+  [[ -e $logfile ]] && rm $logfile
 	}
