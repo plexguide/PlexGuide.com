@@ -16,6 +16,7 @@
 #
 #################################################################################
 
+rm -r /tmp/plex.library
 rm -r /var/plexguide/plex.library
 rm -r /var/plexguide/plex.library.json
 message=""
