@@ -60,7 +60,7 @@
 
 ###################################### REGEX Source: Desmonic @ CLOUDBOX.rocks
 
-  - name: Check rtorrent.rc exists
+- name: Check rtorrent.rc exists
   stat:
     path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
   register: rtorrent_rc
