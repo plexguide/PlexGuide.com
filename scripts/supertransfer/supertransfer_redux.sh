@@ -90,7 +90,7 @@ find $localDir -mindepth 2 -type d -empty -delete
 
 # black magic: find list of all dirs that have files at least $modtime old
 # and only print the deepest directories, then sort them by largest first, then sanitize input
-sc=$(awk -F"/" '{print NF-1+2}' <<<${localDir})
+sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
 for dir in $(find ${localDir} -mindepth $sc -links 2 -prune -type d); do
  test $(find $dir -type f -mmin -${modTime} -print -quit) || du -s $dir
 done | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
