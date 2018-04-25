@@ -73,6 +73,11 @@ do
             word="next"
             cat /tmp/plex.library >> /var/plexguide/plex.library
             echo "" >> /var/plexguide/plex.library 
+            ### File
+            build="$(cat /tmp/plex.library)"
+            build="\"$build\": 1"
+            echo "$build" >> /tmp/plex.library.json
+            echo "" >> /var/plexguide/plex.library.json
             ;;
   esac
 
