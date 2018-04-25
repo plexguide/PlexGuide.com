@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "--- NOTE ---" --msgbox "If this is your first time and you have not read the wiki, I recommend that you goto:\n\nlibrary.plexguide.com" 0 0
+dialog --title "--- NOTE ---" --msgbox "\n\nFirst time here and not read the Wiki? Visit:\n\nlibrary.plexguide.com" 0 0
 
 rm -r /tmp/plex.library
 rm -r /tmp/plex.library.json
