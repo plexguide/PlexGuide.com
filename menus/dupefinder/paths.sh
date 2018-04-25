@@ -52,8 +52,8 @@ do
           A)
             ### Display
             cat /tmp/plex.library >> /var/plexguide/plex.library
-            echo "" >> /var/plexguide/plex.library
-            cat /tmp/plex.library >> /var/plexguide/plex.library
+            #echo "" >> /var/plexguide/plex.library
+            #cat /tmp/plex.library >> /var/plexguide/plex.library
             echo "" >> /var/plexguide/plex.library
             ### File
             build="$(cat /tmp/plex.library)"
