@@ -17,10 +17,10 @@
 #################################################################################
 
 rm -r /var/plexguide/plex.library
+dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
 
 while [ "$word" != "next" ]
 do 
-  dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
   echo "yes" > /var/plexguide/server.hd
 
     dialog --title "Type in your Plex Libraries Exactly as Listed" \
