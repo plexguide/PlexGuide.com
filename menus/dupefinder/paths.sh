@@ -58,6 +58,7 @@ do
             rm -r /var/plexguide/plex.library
             rm -r /var/plexguide/plex.library.json
             message=""
+            ;;
           Z)
             word="next"
             cat /tmp/plex.library >> /var/plexguide/plex.library
