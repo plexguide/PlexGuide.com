@@ -25,12 +25,11 @@ message=""
 while [ "$word" != "next" ]
 do 
 
-  dialog --title "Type in your Plex Libraries Exactly as Listed" \
+  dialog
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Library Title: " 8 50 2>/tmp/plex.library
   message=$( cat /var/plexguide/plex.library )
   current=$( cat /tmp/plex.library )
-
 
   HEIGHT=15
   WIDTH=43
