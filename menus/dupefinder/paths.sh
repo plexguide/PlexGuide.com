@@ -50,8 +50,17 @@ do
   clear
   case $CHOICE in
           A)
+            ### Display
             cat /tmp/plex.library >> /var/plexguide/plex.library
-            echo "" >> /var/plexguide/plex.library 
+            echo "" >> /var/plexguide/plex.library
+            cat /tmp/plex.library >> /var/plexguide/plex.library
+            echo "" >> /var/plexguide/plex.library
+            ### File
+            build="$(cat /tmp/plex.library)"
+            build="\"$build\": 1,"
+            echo "$build" >> /tmp/plex.library.json
+            echo "" >> /var/plexguide/plex.library.json
+            cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             ;;
           B)
             rm -r /tmp/plex.library
@@ -71,6 +80,8 @@ done
 
 clear
 cat /var/plexguide/plex.library
+echo ""
+cat /var/plexguide/plex.library.json
 
 exit
 
