@@ -20,7 +20,7 @@
   - { role: variables, tags: ['variables'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
   - { role: muximux, tags: ['muximux'] }
-  - { role: multi, tags: ['multi'] }
+  - { role: dupefinder, tags: ['dupefinder'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
