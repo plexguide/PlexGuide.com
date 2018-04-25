@@ -29,11 +29,11 @@ do
 
     if dialog --stdout --title "PG Path Builder" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --yesno "Are You Done?" 0 0; then
-    word="next"
+    --yesno "Keep Adding More?" 0 0; then
       cat /tmp/plex.library >> /var/plexguide/plex.library
       echo "" >> /var/plexguide/plex.library
     else
+      word="next"
       cat /tmp/plex.library >> /var/plexguide/plex.library
       echo "" >> /var/plexguide/plex.library
     fi
