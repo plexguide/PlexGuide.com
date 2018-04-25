@@ -45,10 +45,10 @@ case $CHOICE in
             bash /opt/plexguide/scripts/plextoken/main.sh
             ;;
         B)
-            bash /opt/plexguide/scripts/plextoken/main.sh
+            bash /opt/plexguide/menus/dupefinder/paths.sh
             ;;
         C)
-            ansible-playbook /opt/plexguide/dupefinder/paths.sh
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder
             ;;
         D)
             bash /opt/plexguide/menus/plex/telly.sh
