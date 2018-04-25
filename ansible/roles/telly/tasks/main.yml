@@ -6,8 +6,8 @@
   register: tellyplaylist
 
 - name: "Establishing IPTV stream ammount"
-    shell: "cat /tmp/tellystreams"
-    register: tellystreams
+  shell: "cat /tmp/tellystreams"
+  register: tellystreams
 
 - name: Stop and remove any existing container
   docker_container:
