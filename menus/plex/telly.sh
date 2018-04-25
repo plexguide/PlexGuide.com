@@ -48,7 +48,6 @@ dialog --title "IPTV Number Of Streams" \
 tellystreams=$(cat /tmp/tellystreams)
 dialog --infobox "Number Of Streams: $tellystreams" 3 45
 sleep 3
-touch /tmp/server.check 1>/dev/null 2>&1
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags telly &>/dev/null &
 sleep 2
