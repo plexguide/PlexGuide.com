@@ -88,7 +88,7 @@ find $localDir -mindepth 2 -type d -empty -delete
 #find $localDir -mindepth 2 -mmin +${modTime} -type d -links 2 -prune \
 #  -exec du -s {} \; | sort -gr | awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
 
-# black magic: find list of all dirs that have files at least $modtime old
+# black magic: find list of all dirs that have files at least 2 minutes old
 # and only print the deepest directories, then sort them by largest first, then sanitize input
 sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
 for dir in $(find ${localDir} -mindepth $sc -links 2 -prune -type d); do
@@ -108,7 +108,7 @@ done | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localDir" $fileLock)
     file=$(awk -F':' '{print $2}' <<< ${line})
-    if [[ ! $(cat $fileLock | grep "${file}" ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
+    if [[ ! $(cat $fileLock | egrep ^"${file}"$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
       fileSize=$(awk -F':' '{print $1}' <<< ${line})
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
