@@ -23,24 +23,40 @@ message=""
 
 while [ "$word" != "next" ]
 do 
-  echo "yes" > /var/plexguide/server.hd
 
-    dialog --title "Type in your Plex Libraries Exactly as Listed" \
-    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "Library Title: " 8 50 2>/tmp/plex.library
-    message=$( cat /var/plexguide/plex.library )
-    current=$( cat /tmp/plex.library )
+message=$( cat /var/plexguide/plex.library )
+current=$( cat /tmp/plex.library )
 
-    if dialog --stdout --title "PG Path Builder" \
-    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --yesno "Your Current Library!\n\n$current $message \n\nKeep Adding More?" 0 0; then
-      cat /tmp/plex.library >> /var/plexguide/plex.library
-      echo "" >> /var/plexguide/plex.library
-    else
-      word="next"
-      cat /tmp/plex.library >> /var/plexguide/plex.library
-      echo "" >> /var/plexguide/plex.library
-    fi
+  HEIGHT=10
+  WIDTH=43
+  CHOICE_HEIGHT=3
+  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+  TITLE="PG Server Security"
+  MENU="Your Current Library!\n\n$current $message \n\nKeep Adding More?"
+  OPTIONS=(A "Add Another Library"
+           B "Restart"
+           Z "Finished")
+  CHOICE=$(dialog --clear \
+                  --backtitle "$BACKTITLE" \
+                  --title "$TITLE" \
+                  --menu "$MENU" \
+                  $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                  "${OPTIONS[@]}" \
+                  2>&1 >/dev/tty)
+  clear
+  case $CHOICE in
+          A)
+            cat /tmp/plex.library >> /var/plexguide/plex.library
+            echo "" >> /var/plexguide/plex.library
+          B)
+            word="next"
+            cat /tmp/plex.library >> /var/plexguide/plex.library
+            echo "" >> /var/plexguide/plex.library ;;
+          Z)
+              clear
+              exit 0
+              ;;
+  esac
 
 #dialog --title "Your Plex Library" --msgbox "$message" 0 0
 done
