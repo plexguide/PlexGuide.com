@@ -16,9 +16,8 @@ source /opt/appdata/plexguide/supertransfer/usersettings.conf
 
 
 init_DB(){
-  [[ $gdsaImpersonate == 'your@email.com' ]] \
-    && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $userSettings" \
-    && exit 1
+  # [[ $gdsaImpersonate == 'your@email.com' ]] \
+  #   && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tNo Email Configured. Please edit $userSettings" \
 
   # get list of avail gdsa accounts
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
@@ -38,7 +37,7 @@ init_DB(){
   # test for working gdsa's and init gdsaDB
   for gdsa in $gdsaList; do
     s=0
-    rclone touch ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
+    rclone touch ${gdsa}:/SA_validate &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
       echo -e "[$(date +%m/%d\ %H:%M)] [ OK ]\t${gdsa}\t Validation Successful!"
       egrep -q ^${gdsa}=. $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
@@ -65,19 +64,20 @@ touch $fileLock
 #staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
 staleFiles=$(find $localDir -mindepth 2 -type d)
 while read -r line; do
-  egrep ^"${line}"$ $fileLock && \
+  grep "${line}" $fileLock && \
   cat $fileLock | egrep -v ^${line}$ > ${fileLock}.tmp && \
   mv ${fileLock}.tmp ${fileLock} && \
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking fileLock on $line"
 done <<<$staleFiles
 
 cleanUp(){
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs and exiting."
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs. Exiting."
   rm ${jsonPath}/log/* &>/dev/null
   echo -n '' > /tmp/fileLock
   exit 0
 }
 trap "cleanUp" SIGINT
+trap "cleanUp" SIGTERM
 
 
 echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads"
@@ -85,36 +85,32 @@ while true; do
 # purge empty folders
 find $localDir -mindepth 2 -type d -empty -delete
 
+# black magic: find list of all dirs that have files at least 2 minutes old
+# and only print the deepest directories, then sort them by largest first, then sanitize input
+sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
+find ${localDir} -mindepth $sc -links 2 -prune -type d > /tmp/uploadQueueFinder
+while read -r dir; do
+# [[ "${dir}" == '' ]] && break
+ test $(find "${dir}" -type f -mmin -${modTime} -print -quit) || du -s "${dir}"
+done </tmp/uploadQueueFinder | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
+
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
-find $localDir -mindepth 2 -mmin +${modTime} -type d \
-  -exec du -s {} \; | sort -gr | awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
-
   while read -r line; do
-
     gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
     if [[ -z $gdsaLeast ]]; then
       echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tFailed To get gdsaLeast. Exiting."
       exit 1
     fi
-
     # skip on files currently being uploaded,
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localDir" $fileLock)
     file=$(awk -F':' '{print $2}' <<< ${line})
-    if [[ ! $(cat $fileLock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
+    if [[ ! $(cat $fileLock | grep -E "(^|\s)"${file}"($|\s)") && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
       fileSize=$(awk -F':' '{print $1}' <<< ${line})
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
       rclone_upload $gdsaLeast "${file}" $remoteDir &
       sleep 0.5
-      # add timestamp & log
-      # load latest usage value from db
-      oldUsage=$(egrep -m1 ^$gdsaLeast=. $gdsaDB | awk -F'=' '{print $2}')
-      Usage=$(( oldUsage + fileSize ))
-      [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsaLeast\tUsage: $Usage"
-      # update gdsaUsage file with latest usage value
-      sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
-      source $gdsaDB
     fi
   done </tmp/uploadQueueBuffer
   [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0

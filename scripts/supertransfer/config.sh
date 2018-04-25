@@ -40,6 +40,17 @@ sleep 3
 stop_spinner $?
 fi
 
+# configure SA keys, if none found
+if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
+  read -p 'No Service Keys Found. Configure? y/n>' answer
+    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
+      upload_Json
+    else
+      exit 1
+    fi
+elif [[ $@ =~ "--config" ]]; then
+  upload_Json
+fi
 
 
 # configure email, if user didn't do it in the last step
@@ -86,17 +97,6 @@ EOF
 configure_teamdrive
 configure_teamdrive_share
 
-# configure SA keys, if none found
-if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
-  read -p 'No Service Keys Found. Configure? y/n>' answer
-    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
-      upload_Json
-    else
-      exit 1
-    fi
-elif [[ $@ =~ "--config" ]]; then
-  upload_Json
-fi
 
 # configure json's for rclone
 configure_Json
