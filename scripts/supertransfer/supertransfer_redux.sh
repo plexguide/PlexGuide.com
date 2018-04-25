@@ -72,7 +72,7 @@ while read -r line; do
 done <<<$staleFiles
 
 cleanUp(){
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs and exiting."
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs. Exiting."
   rm ${jsonPath}/log/* &>/dev/null
   echo -n '' > /tmp/fileLock
   exit 0
@@ -107,14 +107,7 @@ find $localDir -mindepth 2 -mmin +${modTime} -type d \
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
       rclone_upload $gdsaLeast "${file}" $remoteDir &
       sleep 0.5
-      # add timestamp & log
-      # load latest usage value from db
-      oldUsage=$(egrep -m1 ^$gdsaLeast=. $gdsaDB | awk -F'=' '{print $2}')
-      Usage=$(( oldUsage + fileSize ))
-      [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsaLeast\tUsage: $Usage"
-      # update gdsaUsage file with latest usage value
-      sed -i '/'^$gdsaLeast'=/ s/=.*/='$Usage'/' $gdsaDB
-      source $gdsaDB
+      
     fi
   done </tmp/uploadQueueBuffer
   [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0

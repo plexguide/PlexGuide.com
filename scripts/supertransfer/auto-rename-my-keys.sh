@@ -27,11 +27,12 @@ for file in *.json ; do
  else
    if [[ $(pwd) == '/opt/appdata/plexguide/supertransfer/' ]]; then
     mv $file ${rename}.json -v
-  else
+   else
     mv $file processed_keys/${rename}.json -v
     tar -cvf processed_keys.tar processed_keys
     echo "Processed keys ready. To extract: (optional)"
     echo "tar -xvf processed_keys.tar "
+  fi
  fi
 done
 

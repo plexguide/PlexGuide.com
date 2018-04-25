@@ -1,6 +1,7 @@
 #!/bin/bash
 [[ -z $@ ]] && maxgb=32 || maxgb=$@
 rootdir=/mnt/move/movies
+flag=0
 max=$(( maxgb * 1000000 ))
 while true; do
 	while [[ $(du /mnt/move -c | tail -1 | awk '{print $1}') -lt $max ]]; do

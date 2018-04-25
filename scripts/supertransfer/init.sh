@@ -172,7 +172,7 @@ source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
 [[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
 grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"' > /tmp/clientemails
-count=$(</tmp/clientemails | wc -l)
+count=$(cat /tmp/clientemails | wc -l)
 cat <<EOF
 ############ CONFIGURATION ################################
 1) If you haven't done so, create a teamdrive
