@@ -56,7 +56,7 @@
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/appdata/plex_dupefinder state=directory owner={{user}} group={{user}} recurse=yes"
+  file: "path=/opt/appdata/plex_dupefinder state=directory owner=1000 group=1000 recurse=yes"
 
 - name: "Create /usr/local/bin symlink"
   file:
