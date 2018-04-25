@@ -26,7 +26,9 @@ TITLE="Plex Installer"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Generate a PlexToken"
-         B "Install DupeFinder"
+         B "Add Your Plex Library"
+         C "Install DupeFinder"
+         D "Deploy Telly (Not Ready)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -42,9 +44,14 @@ case $CHOICE in
         A)
             bash /opt/plexguide/scripts/plextoken/main.sh
             ;;
-
         B)
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder
+            bash /opt/plexguide/scripts/plextoken/main.sh
+            ;;
+        C)
+            ansible-playbook /opt/plexguide/dupefinder/paths.sh
+            ;;
+        D)
+            bash /opt/plexguide/menus/plex/telly.sh
             ;;
         Z)
             clear
