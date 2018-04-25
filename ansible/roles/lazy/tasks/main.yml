@@ -50,6 +50,10 @@
       PGID: 1000
     restart_policy: always
     state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - lazy
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
