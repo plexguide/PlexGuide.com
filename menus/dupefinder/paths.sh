@@ -38,9 +38,10 @@ do
 
 done
 
-exit
 clear
 cat /var/plexguide/plex.library
+
+exit
 
     ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
     initial="$(echo $path | head -c 1)"
