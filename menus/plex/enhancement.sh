@@ -53,7 +53,7 @@ case $CHOICE in
             then
                 echo "" 1>/dev/null 2>&1
             else
-                dialog --title "--- WARNING ---" --msgbox "\n\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
+                dialog --title "--- WARNING ---" --msgbox "\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
                 bash /opt/plexguide/menus/plex/enhancement.sh
                 exit
             fi
@@ -63,7 +63,7 @@ case $CHOICE in
             then
                 echo "" 1>/dev/null 2>&1
             else
-                dialog --title "--- WARNING ---" --msgbox "\n\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
+                dialog --title "--- WARNING ---" --msgbox "\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
                 bash /opt/plexguide/menus/plex/enhancement.sh
                 exit
             fi
