@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+dialog --title "--- NOTE ---" --msgbox "If this is your first time and you have not read the wiki, I recommend that you goto:\n\nlibrary.plexguide.com" 0 0
 
 rm -r /tmp/plex.library
 rm -r /tmp/plex.library.json
@@ -83,3 +84,4 @@ done
 
 display="$(cat /var/plexguide/plex.library)"
 dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
+dialog --title "--- NOTE ---" --msgbox "\nIf your library changes; make sure to update this again!" 0 0
