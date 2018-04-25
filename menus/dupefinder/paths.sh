@@ -17,7 +17,7 @@
 #################################################################################
 
 rm -r /var/plexguide/plex.library
-dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
+#dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
 
 while [ "$word" != "next" ]
 do 
@@ -38,6 +38,8 @@ do
       echo "" >> /var/plexguide/plex.library
     fi
 
+message=$( cat /var/plexguide/plex.library )
+dialog --title "HD Selection" --msgbox "$message" 0 0
 done
 
 clear
