@@ -1,10 +1,12 @@
 #!/bin/bash
 #
-# [Cloudbox Ansible Role]
+# [Ansible Role]
 #
-# Author:   l3uddz & Desimaniac
-# URL:      https://cloudbox.rocks
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
 #
+# PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
 #   You may copy, distribute and modify the software as long as you track
@@ -13,49 +15,51 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Further Enhancements & Options By: PlexGuide.com
-# GitHub: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks
 #################################################################################
 ---
-- name: Create plex_dupefinder directories
-  file: "path={{item}} state=directory mode=0775 owner={{user}} group={{user}} recurse=true"
-  with_items:
-    - /opt/dupefinder
+- include_role:
+    name: variables
 
+- name: Create plex_dupefinder directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/plex_dupefinder
+    
 - name: Clone plex_dupefinder
   git:
     repo: https://github.com/l3uddz/plex_dupefinder/
-    dest: /opt/dupefinder
+    dest: /opt/appdata/plex_dupefinder
     version: master
     force: yes
-
+    
 - name: Install pip requirements
   pip:
-    requirements: /opt/dupefinder/requirements.txt
+    requirements: /opt/appdata/plex_dupefinder/requirements.txt
     executable: pip3
 
 - name: Check config exists
   stat:
-    path: "/opt/dupefinder/config.json"
+    path: "/opt/appdata/plex_dupefinder/config.json"
   register: plex_dupefinder_config
 
 - name: Import default config
   template:
     src: config.json.js2
-    dest: /opt/dupefinder/config.json
+    dest: /opt/appdata/plex_dupefinder/config.json
     force: yes
   when: plex_dupefinder_config.stat.exists == False
 
 - name: Set plexdupes.py as executable
   file:
-    path: /opt/dupefinder/plexdupes.py
+    path: /opt/appdata/plex_dupefinder/plexdupes.py
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/dupefinder state=directory owner={{user}} group={{user}} recurse=yes"
+  file: "path=/opt/appdata/plex_dupefinder state=directory owner=1000 group=1000 recurse=yes"
 
 - name: "Create /usr/local/bin symlink"
   file:
-    src: "/opt/dupefinder/plexdupes.py"
+    src: "/opt/appdata/plex_dupefinder/plexdupes.py"
     dest: "/usr/local/bin/plexdupes"
     state: link
