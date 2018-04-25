@@ -27,6 +27,10 @@ do
 message=$( cat /var/plexguide/plex.library )
 current=$( cat /tmp/plex.library )
 
+
+
+
+
   HEIGHT=10
   WIDTH=43
   CHOICE_HEIGHT=3
