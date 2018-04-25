@@ -27,9 +27,10 @@ do
 message=$( cat /var/plexguide/plex.library )
 current=$( cat /tmp/plex.library )
 
-
-
-
+  dialog --title "Type in your Plex Libraries Exactly as Listed" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Library Title: " 8 50 2>/tmp/plex.library
+  message=$( cat /var/plexguide/plex.library )
 
   HEIGHT=15
   WIDTH=43
