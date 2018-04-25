@@ -26,7 +26,7 @@ init_DB(){
       numGdsa=$(echo $gdsaList | wc -w)
       maxDailyUpload=$(python3 -c "print(round($numGdsa * 750 / 1000, 3))")
       echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts:\t${maxDailyUpload}TB Max Daily Upload"
-      echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
+#      echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tValidating Domain Wide Impersonation:\t$gdsaImpersonate"
   else
       echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
       exit 1
@@ -38,19 +38,19 @@ init_DB(){
   # test for working gdsa's and init gdsaDB
   for gdsa in $gdsaList; do
     s=0
-    rclone touch --drive-impersonate $gdsaImpersonate ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
+    rclone touch ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
-      echo -e "[$(date +%m/%d\ %H:%M)] [ OK ]\tGDSA Impersonation Success:\t ${gdsa}"
+      echo -e "[$(date +%m/%d\ %H:%M)] [ OK ]\t${gdsa}\t Validation Successful!"
       egrep -q ^${gdsa}=. $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
     else
-      echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tGDSA Impersonation Failure:\t ${gdsa}"
+      echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t${gdsa}\t Validation FAILURE!"
       cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
       ((gdsaFail++))
     fi
   done
 
   [[ -n $gdsaFail ]] \
-    && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s)."
+    && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s). See /tmp/SA_error.log"
 
 }
 [[ $@ =~ --skip ]] || init_DB
@@ -62,7 +62,8 @@ init_DB(){
 # needs work.
 # break the fileLock for stale files
 touch $fileLock
-staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
+#staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
+staleFiles=$(find $localDir -mindepth 2 -type d)
 while read -r line; do
   egrep ^"${line}"$ $fileLock && \
   cat $fileLock | egrep -v ^${line}$ > ${fileLock}.tmp && \
@@ -70,8 +71,16 @@ while read -r line; do
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking fileLock on $line"
 done <<<$staleFiles
 
+cleanUp(){
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs and exiting."
+  rm ${jsonPath}/log/* &>/dev/null
+  echo -n '' > /tmp/fileLock
+  exit 0
+}
+trap "cleanUp" SIGINT
 
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor."
+
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads"
 while true; do
 # purge empty folders
 find $localDir -mindepth 2 -type d -empty -delete

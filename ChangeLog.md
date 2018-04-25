@@ -1,7 +1,15 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.071] (Beta, Release Candiate & DEV)
+### [5.072] (Beta, Release Candiate & DEV)
+
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.071] - 22 April
 
 - Added
   - Fixed Preinstaller if you opted to make it run again
@@ -18,10 +26,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Fixed up some of the PLEX Dialogs
 - Known Issues
   - Pgstatus does not show proper IOwait, menu scaling issues
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.070] - 17 April 2018
 

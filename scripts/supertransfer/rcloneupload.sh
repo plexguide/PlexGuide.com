@@ -23,8 +23,8 @@ rclone_upload() {
 	# memory optimization
   freeRam=$(free | grep Mem | awk '{print $4/1000000}')
 	case $freeRam in
-		[0123456789][0123456789][0123456789]*) driveChunkSize="512" ;;
-		[0123456789][0123456789]*) driveChunkSize="512M" ;;
+		[0123456789][0123456789][0123456789]*) driveChunkSize="1024M" ;;
+		[0123456789][0123456789]*) driveChunkSize="1024M" ;;
 	  [6789]*) driveChunkSize="512M" ;;
 		5*) driveChunkSize="256M" ;;
 		4*) driveChunkSize="128M" ;;
@@ -34,6 +34,8 @@ rclone_upload() {
 	esac
   #echo "[DBUG] rcloneupload: localFile=${localFile}"
   #echo "[DBUG] rcloneupload: raw input 2=$2"
+  slashCut=$(awk -F"/" '{print NF-1+2}' <<< "${localDir}")
+  remote_dir2=$(cut -f${slashCut} -d'/' <<< "${localFile}")
 
   tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   logfile=${logDir}/${gdsa}_${tmp}.log
@@ -42,9 +44,9 @@ rclone_upload() {
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+    --delete-empty-src-dirs \
 		--drive-chunk-size=$driveChunkSize \
-    --drive-impersonate $gdsaImpersonate \
-		${localFile} $gdsa:$remote_dir && rclone_fin_flag=1
+		${localFile} $gdsa:${remote_dir}/${remote_dir2} && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
