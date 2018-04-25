@@ -47,15 +47,17 @@ current=$( cat /tmp/plex.library )
   case $CHOICE in
           A)
             cat /tmp/plex.library >> /var/plexguide/plex.library
-            echo "" >> /var/plexguide/plex.library
+            echo "" >> /var/plexguide/plex.library 
+            ;;
           B)
             word="next"
             cat /tmp/plex.library >> /var/plexguide/plex.library
-            echo "" >> /var/plexguide/plex.library ;;
+            echo "" >> /var/plexguide/plex.library 
+            ;;
           Z)
-              clear
-              exit 0
-              ;;
+            clear
+            exit 0
+            ;;
   esac
 
 #dialog --title "Your Plex Library" --msgbox "$message" 0 0
