@@ -6,8 +6,8 @@
   register: tellyplaylist
 
 - name: "Establishing IPTV stream ammount"
-    shell: "cat /tmp/tellystreams"
-    register: tellystreams
+  shell: "cat /tmp/tellystreams"
+  register: tellystreams
 
 - name: Stop and remove any existing container
   docker_container:
@@ -36,8 +36,8 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      PLAYLIST: {{tellyplaylist.stdout}}
-      STREAMS: {{tellystreams.stdout}}
+      PLAYLIST: "{{tellyplaylist.stdout}}"
+      STREAMS: "{{tellystreams.stdout}}"
       LISTEN: "0.0.0.0:6077"
     volumes:
       - /opt/appdata/telly:/telly
