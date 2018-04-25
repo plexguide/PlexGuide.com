@@ -85,25 +85,21 @@ while true; do
 # purge empty folders
 find $localDir -mindepth 2 -type d -empty -delete
 
-#find $localDir -mindepth 2 -mmin +${modTime} -type d -links 2 -prune \
-#  -exec du -s {} \; | sort -gr | awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
-
 # black magic: find list of all dirs that have files at least 2 minutes old
 # and only print the deepest directories, then sort them by largest first, then sanitize input
 sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
-for dir in $(find ${localDir} -mindepth $sc -links 2 -prune -type d); do
- test $(find $dir -type f -mmin -${modTime} -print -quit) || du -s $dir
-done | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
+while read -r dir; do
+ test $(find "${dir}" -type f -mmin -${modTime} -print -quit) || du -s "${dir}"
+done <<<$(find ${localDir} -mindepth $sc -links 2 -prune -type d) \
+| sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
 
 # iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
   while read -r line; do
-
     gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
     if [[ -z $gdsaLeast ]]; then
       echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tFailed To get gdsaLeast. Exiting."
       exit 1
     fi
-
     # skip on files currently being uploaded,
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localDir" $fileLock)
@@ -114,7 +110,6 @@ done | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
       rclone_upload $gdsaLeast "${file}" $remoteDir &
       sleep 0.5
-
     fi
   done </tmp/uploadQueueBuffer
   [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0
