@@ -30,7 +30,7 @@ do
 
     if dialog --stdout --title "PG Path Builder" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --yesno "Your Current Library!\n\n$ message \n\nKeep Adding More?" 0 0; then
+    --yesno "Your Current Library!\n\n$message \n\nKeep Adding More?" 0 0; then
       cat /tmp/plex.library >> /var/plexguide/plex.library
       echo "" >> /var/plexguide/plex.library
     else
