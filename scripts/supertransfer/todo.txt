@@ -7,6 +7,7 @@ X 3. add in support for filenames with spaces
 X 4. create remote folder before uploading
   5. add in logic to upload folders in root of localDir
 X 6. reset gdsaDB counter if transfer has failed
+  7. fix grep on filelock (needs exact match)
 
 CONFIG
   1. check to make sure previous transfer scripts are not running

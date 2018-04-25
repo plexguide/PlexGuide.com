@@ -105,7 +105,7 @@ done </tmp/uploadQueueFinder | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localDir" $fileLock)
     file=$(awk -F':' '{print $2}' <<< ${line})
-    if [[ ! $(cat $fileLock | egrep ^"${file}"$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
+    if [[ ! $(cat $fileLock | grep -E "(^|\s)"${file}"($|\s)") && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
       fileSize=$(awk -F':' '{print $1}' <<< ${line})
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
