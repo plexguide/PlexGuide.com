@@ -43,7 +43,7 @@
       - "{{path.stdout}}/rutorrents/:/downloads"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
-      - /opt/scripts/torrent:/scripts
+      - /opt/appdata/rutorrents:/scripts
     restart_policy: always
     networks:
       - name: plexguide
