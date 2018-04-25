@@ -25,7 +25,7 @@ message=""
 while [ "$word" != "next" ]
 do 
 
-  dialog
+  dialog --title "Type in your Plex Libraries Exactly as Listed" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Library Title: " 8 50 2>/tmp/plex.library
   message=$( cat /var/plexguide/plex.library )
@@ -34,7 +34,6 @@ do
   HEIGHT=15
   WIDTH=43
   CHOICE_HEIGHT=3
-  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
   TITLE="PG Server Security"
   MENU="Your Current Library!\n\n$current $message \n\nKeep Adding More?"
   OPTIONS=(A "Add Another Library"
