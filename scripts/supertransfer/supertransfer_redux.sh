@@ -38,7 +38,7 @@ init_DB(){
   # test for working gdsa's and init gdsaDB
   for gdsa in $gdsaList; do
     s=0
-    rclone touch ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
+    rclone touch ${gdsa}:/SA_validate &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
       echo -e "[$(date +%m/%d\ %H:%M)] [ OK ]\t${gdsa}\t Validation Successful!"
       egrep -q ^${gdsa}=. $gdsaDB || echo "${gdsa}=0" >> $gdsaDB
@@ -65,7 +65,7 @@ touch $fileLock
 #staleFiles=$(find $localDir -mindepth 2 -amin +${staleFileTime} -type d)
 staleFiles=$(find $localDir -mindepth 2 -type d)
 while read -r line; do
-  egrep ^"${line}"$ $fileLock && \
+  grep "${line}" $fileLock && \
   cat $fileLock | egrep -v ^${line}$ > ${fileLock}.tmp && \
   mv ${fileLock}.tmp ${fileLock} && \
   echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tBreaking fileLock on $line"
@@ -78,6 +78,7 @@ cleanUp(){
   exit 0
 }
 trap "cleanUp" SIGINT
+trap "cleanUp" SIGTERM
 
 
 echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads"
@@ -101,13 +102,13 @@ find $localDir -mindepth 2 -mmin +${modTime} -type d \
     # or if more than # of rclone uploads exceeds $maxConcurrentUploads
     numCurrentTransfers=$(grep -c "$localDir" $fileLock)
     file=$(awk -F':' '{print $2}' <<< ${line})
-    if [[ ! $(cat $fileLock | egrep ^${file}$ ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
+    if [[ ! $(cat $fileLock | grep "${file}" ) && $numCurrentTransfers -le $maxConcurrentUploads && -n $line ]]; then
       flag=1
       fileSize=$(awk -F':' '{print $1}' <<< ${line})
       [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
       rclone_upload $gdsaLeast "${file}" $remoteDir &
       sleep 0.5
-      
+
     fi
   done </tmp/uploadQueueBuffer
   [[ -n $dbug && flag == 1 ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tNo Files Found in ${localDir}. Sleeping." && flag=0

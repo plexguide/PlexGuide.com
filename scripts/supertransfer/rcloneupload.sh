@@ -7,12 +7,13 @@ rclone_upload() {
   # set vars
   local rclone_fin_flag ; local gdsa ; local localFile
   local time_start ; local remoteDir; local driveChunkSize
-  local oldUsage; local Usage
+  local oldUsage; local Usage; local rclonePID
   rclone_fin_flag=0
   t1=$(date +%s)
   gdsa=${1}
   # sanitize input of special chars and spaces by esacaping them
-  localFile=$(sed 's/ /\\ /g; s/\"//g; s/(/\\(/g; s/)/\\)/g; s/\]/\\]/g; s/\[/\\[/g; s/|/\\|/g; s/\*/\\\*/g; s/&/\\&/g; s/\^/\\^/g; s/\;/\\;/g' <<<$var)
+  #localFile=$(sed 's/ /\\ /g; s/\"//g; s/(/\\(/g; s/)/\\)/g; s/\]/\\]/g; s/\[/\\[/g; s/|/\\|/g; s/\*/\\\*/g; s/&/\\&/g; s/\^/\\^/g; s/\;/\\;/g' <<<$var)
+  localFile=${2}
   remoteDir=${3}
   source settings.conf
   [[ ! -d $logDir ]] && mkdir $logDir
@@ -56,7 +57,7 @@ rclone_upload() {
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
     --delete-empty-src-dirs \
 		--drive-chunk-size=$driveChunkSize \
-		${localFile} $gdsa:${remote_dir}/${remote_dir2}/${localFile} && rclone_fin_flag=1
+		"${localFile}" "$gdsa:${remote_dir}/${remote_dir2}/${localFile}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   secs=$(( $(date +%s) - $t1 ))
