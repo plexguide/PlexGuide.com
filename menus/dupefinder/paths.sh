@@ -78,7 +78,8 @@ do
             ;;
   esac
 
-display="$(cat /var/plexguide/plex.library)"
-dialog --title "Your Stated Plex Library" --msgbox "\ndispay" 0 0
 ### While Loop Done
 done
+
+display="$(cat /var/plexguide/plex.library)"
+dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
