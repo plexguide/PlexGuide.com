@@ -5,7 +5,7 @@
   shell: "cat /tmp/tellyplaylist"
   register: tellyplaylist
 
-  - name: "Establishing IPTV stream ammount"
+- name: "Establishing IPTV stream ammount"
     shell: "cat /tmp/tellystreams"
     register: tellystreams
 
