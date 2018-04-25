@@ -16,6 +16,8 @@
 #
 #################################################################################
 
+rm -r /var/plexguide/plex.library
+
 read word 
 while [ "$word" != "next" ]
 do 
@@ -24,14 +26,14 @@ do
 
     dialog --title "Type in your Plex Libraries Exactly as Listed" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "Library Title: " 8 50 2>>/tmp/plex.library
+    --inputbox "Library Title: " 8 50 2>/tmp/plex.library
 
     if dialog --stdout --title "PG Path Builder" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --yesno "Are You Done?" 0 0; then
-    clear
-    else
     word="next"
+    else
+    cat /tmp/plex.library >> /var/plexguide/plex.library
     fi
 
 done
