@@ -32,8 +32,10 @@ do
     --yesno "Are You Done?" 0 0; then
     word="next"
       cat /tmp/plex.library >> /var/plexguide/plex.library
+      echo "" >> /var/plexguide/plex.library
     else
       cat /tmp/plex.library >> /var/plexguide/plex.library
+      echo "" >> /var/plexguide/plex.library
     fi
 
 done
