@@ -29,15 +29,15 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "RClone & PlexDrive"
          B "PG Program Suite"
-         C "PG Server Security"
-         D "PG Server Information"
-         E "PG Troubleshooting Actions"
-         F "PG Settings & Tools"
-         G "PG Backup & Restore"
-         H "PG Updates"
-         I "PG Edition Switch"
-         J "Donation Menu"
-         K "RClone Cache - Early Test"
+         C "PG PLEX Enhancement Tools"
+         D "PG Server Security"
+         E "PG Server Information"
+         F "PG Troubleshooting Actions"
+         G "PG Settings & Tools"
+         H "PG Backup & Restore"
+         I "PG Updates"
+         J "PG Edition Switch"
+         K "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -52,32 +52,27 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
-            bash /opt/plexguide/menus/security/main.sh ;;
+            bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/menus/security/main.sh ;;
         E)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         F)
-            bash /opt/plexguide/menus/settings/main.sh ;;
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         G)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+            bash /opt/plexguide/menus/settings/main.sh ;;
         H)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        I)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        H)
-            bash /opt/plexguide/menus/pgstatus/main.sh ;;
-        I)
+        J)
             rm -r /var/plexguide/pg.edition
             bash /opt/plexguide/scripts/baseinstall/edition.sh
             exit 0 ;;
-        J)
-            bash /opt/plexguide/menus/donate/main.sh ;;
         K)
-            bash /opt/plexguide/scripts/docker-no/rcache.sh
-            echo "RClone - You Chose the Unencrypted Method" > /tmp/pushover
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null & ;;
+            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
