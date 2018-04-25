@@ -26,11 +26,11 @@
       - /opt/appdata/headphones:/config
       - /mnt/unionfs:/unionfs
       - /mnt/move:/move
-      - /mnt/sab/complete:/complete
-      - /mnt/nzbget/completed:/completed
-      - /mnt/rutorrents/downloads:/downloads
-      - /mnt/deluge/downloaded:/downloaded
-      - /mnt/torrentvpn/downloaded:/data/completed
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/rutorrents:/downloads"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
