@@ -39,18 +39,19 @@ dialog --title "Telly Playlist File" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Playlist path. Either local or URL" 8 50 2>/tmp/tellyplaylist
 tellyplaylist=$(cat /tmp/tellyplaylist)
-dialog --infobox "Playlist: $tellyplaylist" 3 45
-sleep 2
+dialog --infobox "Playlist: $tellyplaylist" 3 75
+sleep 3
 
 dialog --title "IPTV Number Of Streams" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "The ammount of concurrent streams your provider allows" 8 50 2>/tmp/tellystreams
 tellystreams=$(cat /tmp/tellystreams)
 dialog --infobox "Number Of Streams: $tellystreams" 3 45
-sleep 2
+sleep 3
 touch /tmp/server.check 1>/dev/null 2>&1
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags telly &>/dev/null &
 sleep 2
+dialog --infobox "Test" 6 75
 
 rm -r /tmp/server.check 1>/dev/null 2>&1
