@@ -39,7 +39,7 @@ dialog --title "Telly Playlist File" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Playlist path. Either local or URL" 8 50 2>/tmp/tellyplaylist
 tellyplaylist=$(cat /tmp/tellyplaylist)
-dialog --infobox "Playlist: $tellyplaylist" 3 75
+dialog --infobox "Playlist: $tellyplaylist" 6 75
 sleep 3
 
 dialog --title "IPTV Number Of Streams" \
