@@ -171,6 +171,9 @@ echo "89" | dialog --gauge "Installing: WatchTower" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
 sleep 2
 
+echo "91" | dialog --gauge "Installing: Python Support" 7 50 0
+bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+
 ##### Traefik Process
 file="/var/plexguide/server.domain"
 if [ -e "$file" ]
