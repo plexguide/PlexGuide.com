@@ -36,7 +36,7 @@ do
   CHOICE_HEIGHT=3
   BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
   TITLE="Your Current Library"
-  MENU="\n\n$current $message \n\nKeep Adding More?"
+  MENU="$current $message \n\nKeep Adding More?"
   OPTIONS=(A "Add Another Library"
            B "Restart"
            Z "Finished")
