@@ -16,9 +16,8 @@ source /opt/appdata/plexguide/supertransfer/usersettings.conf
 
 
 init_DB(){
-  [[ $gdsaImpersonate == 'your@email.com' ]] \
-    && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Email Configured. Please edit $userSettings" \
-    && exit 1
+  # [[ $gdsaImpersonate == 'your@email.com' ]] \
+  #   && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\tNo Email Configured. Please edit $userSettings" \
 
   # get list of avail gdsa accounts
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
@@ -86,10 +85,17 @@ while true; do
 # purge empty folders
 find $localDir -mindepth 2 -type d -empty -delete
 
-# iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
-find $localDir -mindepth 2 -mmin +${modTime} -type d \
-  -exec du -s {} \; | sort -gr | awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
+#find $localDir -mindepth 2 -mmin +${modTime} -type d -links 2 -prune \
+#  -exec du -s {} \; | sort -gr | awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
 
+# black magic: find list of all dirs that have files at least $modtime old
+# and only print the deepest directories, then sort them by largest first, then sanitize input
+sc=$(awk -F"/" '{print NF-1+2}' <<<${localDir})
+for dir in $(find ${localDir} -mindepth $sc -links 2 -prune -type d); do
+ test $(find $dir -type f -mmin -${modTime} -print -quit) || du -s $dir
+done | sort -gr |  awk -F'\t' '{print $1":"$2 }' > /tmp/uploadQueueBuffer
+
+# iterate through uploadQueueBuffer and update gdsaDB, incrementing usage values
   while read -r line; do
 
     gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
