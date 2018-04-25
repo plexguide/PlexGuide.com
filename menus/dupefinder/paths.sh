@@ -17,6 +17,7 @@
 #################################################################################
 
 rm -r /var/plexguide/plex.library
+rm -r /var/plexguide/plex.library.json
 message=""
 #dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
 
@@ -28,10 +29,11 @@ do
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --inputbox "Library Title: " 8 50 2>/tmp/plex.library
     message=$( cat /var/plexguide/plex.library )
+    current=$( cat /tmp/plex.library )
 
     if dialog --stdout --title "PG Path Builder" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --yesno "Your Current Library!\n\n$message \n\nKeep Adding More?" 0 0; then
+    --yesno "Your Current Library!\n\n$current $message \n\nKeep Adding More?" 0 0; then
       cat /tmp/plex.library >> /var/plexguide/plex.library
       echo "" >> /var/plexguide/plex.library
     else
