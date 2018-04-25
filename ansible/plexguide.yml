@@ -15,6 +15,7 @@
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
+  - { role: rutorrent, tags: ['rutorrent'] }
   - { role: nzbhydra, tags: ['nzbhydra'] }
   - { role: variables, tags: ['variables'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
