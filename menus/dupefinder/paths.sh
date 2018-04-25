@@ -38,7 +38,7 @@ do
   TITLE="Your Current Library"
   MENU="\n$current $message \n\nKeep Adding More?"
   OPTIONS=(A "Add Another Library"
-           B "Restart"
+           B "Clear & Start Over"
            Z "Finished")
   CHOICE=$(dialog --clear \
                   --backtitle "$BACKTITLE" \
@@ -54,13 +54,14 @@ do
             echo "" >> /var/plexguide/plex.library 
             ;;
           B)
+            rm -r /tmp/plex.library
+            rm -r /var/plexguide/plex.library
+            rm -r /var/plexguide/plex.library.json
+            message=""
+          Z)
             word="next"
             cat /tmp/plex.library >> /var/plexguide/plex.library
             echo "" >> /var/plexguide/plex.library 
-            ;;
-          Z)
-            clear
-            exit 0
             ;;
   esac
 
