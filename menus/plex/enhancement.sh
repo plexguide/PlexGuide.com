@@ -18,12 +18,12 @@
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 
-HEIGHT=9
+HEIGHT=10
 WIDTH=40
-CHOICE_HEIGHT=3
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Installer"
-MENU="Select your Plex Preference:"
+MENU="Make a Selection:"
 
 OPTIONS=(A "Generate a PlexToken"
          B "Install DupeFinder"
