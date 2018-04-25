@@ -1,6 +1,9 @@
 ---
 ######https://hub.docker.com/r/tombowditch/telly/
 
+- include_role:
+    name: variables
+
 - name: "Establishing IPTV playlist path"
   shell: "cat /tmp/tellyplaylist"
   register: tellyplaylist
