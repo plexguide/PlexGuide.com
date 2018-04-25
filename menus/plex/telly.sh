@@ -30,7 +30,7 @@ display=Telly
 program=telly
 port=6077
 
-dialog --infobox "Telly is unsupported at this time. You must already have a basic understanding to use!" 3 45
+dialog --infobox "Telly is unsupported at this time. You must already have a basic understanding to use!" 6 75
 sleep 2
 
 rm -r /tmp/server.check 1>/dev/null 2>&1
