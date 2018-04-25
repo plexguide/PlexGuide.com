@@ -18,6 +18,9 @@
 # Original Script Made By: l3uddz & Desmonic via cloudbox.rocks
 #################################################################################
 ---
+- include_role:
+    name: variables
+
 - name: Create plex_dupefinder directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
