@@ -30,8 +30,8 @@ display=Telly
 program=telly
 port=6077
 
-dialog --infobox "Telly is unsupported at this time. You must already have a basic understanding to use!" 6 75
-sleep 2
+dialog --infobox "Telly is unsupported at this time due to being in beta and the complexity of configuring. You must already have a good understanding of it and how it works to use it!" 6 75
+sleep 4
 
 rm -r /tmp/server.check 1>/dev/null 2>&1
 
