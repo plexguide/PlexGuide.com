@@ -78,6 +78,7 @@ do
             build="\"$build\": 1"
             echo "$build" >> /tmp/plex.library.json
             echo "" >> /var/plexguide/plex.library.json
+            cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             ;;
   esac
 
