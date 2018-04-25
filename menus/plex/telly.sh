@@ -15,8 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-rm -r /tmp/plexsetup 1>/dev/null 2>&1
-
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
@@ -33,13 +31,11 @@ port=6077
 dialog --infobox "Telly is unsupported at this time due to being in beta and the complexity of configuring. You must already have a good understanding of it and how it works to use it!" 6 75
 sleep 4
 
-rm -r /tmp/server.check 1>/dev/null 2>&1
-
 dialog --title "Telly Playlist File" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Playlist path. Either local or URL" 8 50 2>/tmp/tellyplaylist
 tellyplaylist=$(cat /tmp/tellyplaylist)
-dialog --infobox "Playlist: $tellyplaylist" 6 75
+dialog --infobox "Playlist: $tellyplaylist" 5 80
 sleep 3
 
 dialog --title "IPTV Number Of Streams" \
@@ -49,8 +45,6 @@ tellystreams=$(cat /tmp/tellystreams)
 dialog --infobox "Number Of Streams: $tellystreams" 3 45
 sleep 3
 
+dialog --infobox "Installing Plex: Please Wait" 3 45
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags telly &>/dev/null &
-sleep 2
-dialog --infobox "Test" 6 75
-
-rm -r /tmp/server.check 1>/dev/null 2>&1
+sleep 4
