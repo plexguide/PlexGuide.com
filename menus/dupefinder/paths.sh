@@ -34,7 +34,7 @@ do
   HEIGHT=15
   WIDTH=43
   CHOICE_HEIGHT=3
-  TITLE="PG Server Security"
+  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
   MENU="Your Current Library!\n\n$current $message \n\nKeep Adding More?"
   OPTIONS=(A "Add Another Library"
            B "Restart"
