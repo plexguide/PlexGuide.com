@@ -48,6 +48,26 @@ case $CHOICE in
             bash /opt/plexguide/menus/dupefinder/paths.sh
             ;;
         C)
+            file="/opt/appdata/plexguide/plextoken"
+            if [ -e "$file" ]
+            then
+                echo "" 1>/dev/null 2>&1
+            else
+                dialog --title "--- WARNING ---" --msgbox "\n\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
+                bash /opt/plexguide/menus/plex/enhancement.sh
+                exit
+            fi
+
+            file="/var/plexguide/plex.library.json"
+            if [ -e "$file" ]
+            then
+                echo "" 1>/dev/null 2>&1
+            else
+                dialog --title "--- WARNING ---" --msgbox "\n\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
+                bash /opt/plexguide/menus/plex/enhancement.sh
+                exit
+            fi
+
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder
             ;;
         D)
