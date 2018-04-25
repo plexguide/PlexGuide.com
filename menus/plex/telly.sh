@@ -28,7 +28,7 @@ display=Telly
 program=telly
 port=6077
 
-dialog --infobox "Telly is unsupported at this time due to being in beta and the complexity of configuring. You must already have a good understanding of it and how it works to use it!" 6 75
+dialog --infobox "Telly is unsupported at this time due to being in beta and the complexity of configuring. You must already have a good understanding of it and how it works to use it!" 5 75
 sleep 4
 
 dialog --title "Telly Playlist File" \
@@ -45,6 +45,6 @@ tellystreams=$(cat /tmp/tellystreams)
 dialog --infobox "Number Of Streams: $tellystreams" 3 45
 sleep 3
 
-dialog --infobox "Installing Plex: Please Wait" 3 45
+dialog --infobox "Installing Telly: Please Wait" 3 35
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags telly &>/dev/null &
 sleep 4
