@@ -26,7 +26,7 @@ clean_up(){
   totalUploaded=$(awk -F'=' '{ sum += $2 } END { print sum / 1000000 }' $gdsaDB)
   sizeLeft=$(du -hc ${localDir} | tail -1 | awk '{print $1}')
   echo -e "[$(date +%m/%d\ %H:%M)] [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded"
-  rm ${jsonPath}/log/* &>/dev/null
+  rm ${logDir}/* &>/dev/null
   echo -n '' > ${fileLock}
   rm /tmp/superTransferUploadFail &>/dev/null
   rm /tmp/superTransferUploadSuccess &>/dev/null

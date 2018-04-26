@@ -4,19 +4,18 @@
 rclone_upload() {
   local localFile="${2}"
   local sanitizedLocalFile=$(sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g; s/\^/\\^/g; s/\*/\\*/g; s/"/\\"/g; s/!/\\!/g' <<<$localFile)
-  # exit if file is locked
+  # exit if file is locked, or race condtion met
   [[ $(egrep -x "${sanitizedLocalFile}" $fileLock) ]] && return 1
+  [[ ! -d "${localFile}" ]] && return 1
   # lock file so multiple uploads don't happen
   echo "${localFile}" >> $fileLock
   local fileSize="${1}"
   local gdsa="${3}"
   local remoteDir="${4}"
-  # set vars
   local rclone_fin_flag=0
   local driveChunkSize
-  rclone_fin_flag=0
+  local rclone_fin_flag=0
   local t1=$(date +%s)
-  source settings.conf
 
   # load latest usage value from db
   local oldUsage=$(egrep -m1 ^$gdsa=. $gdsaDB | awk -F'=' '{print $2}')
