@@ -123,3 +123,40 @@
       state: started
       enabled: yes
     tags: duplicati
+
+####################################Traefik
+
+  - name: Install servers.toml
+    template:
+      src: servers.toml
+      dest: /opt/appdata/traefik/servers.toml
+      force: yes
+      owner: 1000
+      group: 1000
+
+  - name: Register Domain
+    shell: "cat /var/plexguide/server.domain"
+    register: domain
+    ignore_errors: true
+
+  - name: Replace Domain
+    replace:
+      path: /opt/appdata/traefik/servers.toml
+      regexp: yourdomain.com
+      replace: "{{domain.stdout}}"
+
+  - name: Update traefik.toml
+    blockinfile:
+      path: /opt/appdata/traefik/traefik.toml
+      insertafter: EOF
+      block: |
+        ################################################################
+        # File configuration backend
+        ################################################################
+        # Enable file configuration backend
+        # Optional
+        [file]
+              filename = "/etc/traefik/servers.toml"
+
+        # Enable watch file changes
+          watch = true
