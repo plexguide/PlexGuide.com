@@ -16,8 +16,8 @@ if [[ $@ =~ --purge-rclone ]]; then
 fi
 
 # source settings
-[[ ! -d $jsonPath ]] && mkdir $jsonPath
-[[ ! -d $logDir ]] || mkdir $logDir
+[[ ! -d $jsonPath ]] && mkdir $jsonPath &>/dev/null
+[[ ! -d $logDir ]] || mkdir $logDir &>/dev/null
 [[ ! -e $userSettings ]] && cp usersettings_template_dont_edit ${jsonPath}/usersettings.conf
 [[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp auto-rename-my-keys.sh $jsonPath
 [[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
@@ -103,7 +103,7 @@ function validate_json(){
   for gdsa in $gdsaList; do
     s=0
     start_spinner "Validating: ${gdsa}"
-    rclone touch ${gdsa}:/.test &>/tmp/.SA_error.log.tmp && s=1
+    rclone touch --drive-shared-with-me ${gdsa}:${rootDir}/.test &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
       stop_spinner 0
     else

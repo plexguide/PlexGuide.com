@@ -10,12 +10,12 @@ source /opt/appdata/plexguide/supertransfer/usersettings.conf
 
 
 # check to make sure filepaths are there
-touch /tmp/superTransferUploadSuccess
-touch /tmp/superTransferUploadFail
-[[ -e $gdsaDB ]] || touch $gdsaDB
-[[ -e $uploadHistory ]] || touch $uploadHistory
-[[ -d $jsonPath ]] || mkdir $jsonPath
-[[ -d $logDir ]] || mkdir $logDir
+touch /tmp/superTransferUploadSuccess &>/dev/null
+touch /tmp/superTransferUploadFail &>/dev/null
+[[ -e $gdsaDB ]] || touch $gdsaDB &>/dev/null
+[[ -e $uploadHistory ]] || touch $uploadHistory &>/dev/null
+[[ -d $jsonPath ]] || mkdir $jsonPath &>/dev/null
+[[ -d $logDir ]] || mkdir $logDir &>/dev/null
 [[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) No User settings found in $userSettings. Exiting." && exit 1
 
 
