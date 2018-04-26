@@ -25,9 +25,10 @@ rclone_upload() {
   [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tUsage: $Usage"
   # update gdsaUsage file with latest usage value
   sed -i '/'^$gdsa'=/ s/=.*/='$Usage'/' $gdsaDB
-  local gbUsage=$(python3 -c "print(int($Usage/1000000), 'GB')")
   local gbFileSize=$(python3 -c "print(int($fileSize/1000000), 'GB')")
-  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) $gdsaLeast @$gbUsage\tUploading: ${localFile#"$localDir"} @${gbFileSize}"
+  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) $gdsaLeast \tUploading: ${localFile#"$localDir"} @${gbFileSize}"
+  [[ -n $dbug ]] && local gbUsage=$(python3 -c "print(int($Usage/1000000), 'GB')")
+  [[ -n $dbug ]] && -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0) $gdsaLeast @${gbUsage}"
 
 	# memory optimization
   local freeRam=$(free | grep Mem | awk '{print $4/1000000}')
