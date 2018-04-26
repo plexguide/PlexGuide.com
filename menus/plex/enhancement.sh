@@ -69,6 +69,7 @@ case $CHOICE in
             fi
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder
+            read -n 1 -s -r -p "Press any key to continue"
             ;;
         D)
             bash /opt/plexguide/menus/plex/telly.sh
