@@ -131,4 +131,4 @@ function validate_json(){
 }
 validate_json
 
-echo "[DBUG] config script end. run supertransfer_redux.sh to initiate upload."
+echo "$(tput setaf 5)[DBUG]$(tput sgr0) config script end. run supertransfer_redux.sh to initiate upload."

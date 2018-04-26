@@ -1,7 +1,7 @@
 ############################################################################
 # INIT
 ############################################################################
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing Supertransfer2 Load Balanced Multi-SA Uploader..."
+echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0)\tInitializing Supertransfer2 Load Balanced Multi-SA Uploader..."
 source rcloneupload.sh
 source init.sh
 source settings.conf
@@ -16,11 +16,11 @@ touch /tmp/superTransferUploadFail
 [[ -e $uploadHistory ]] || touch $uploadHistory
 [[ -d $jsonPath ]] || mkdir $jsonPath
 [[ -d $logDir ]] || mkdir $logDir
-[[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo User settings found in $userSettings. Exiting." && exit 1
+[[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0)\tNo User settings found in $userSettings. Exiting." && exit 1
 
 
 clean_up(){
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs. Exiting."
+  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0)\tSIGINT: Clearing filelocks and logs. Exiting."
   numSuccess=$(cat /tmp/superTransferUploadSuccess | wc -l)
   numFail=$(cat /tmp/superTransferUploadFail | wc -l)
   totalUploaded=$(awk -F'=' '{ sum += $2 } END { print sum / 1000000 }' $gdsaDB)
@@ -45,9 +45,9 @@ init_DB(){
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
   if [[ -n $gdsaList ]]; then
       numGdsa=$(echo $gdsaList | wc -w)
-      echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing $numGdsa Service Accounts."
+      echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0)\tInitializing $numGdsa Service Accounts."
   else
-      echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
+      echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0)\tNo Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
       exit 1
   fi
 
@@ -57,10 +57,10 @@ init_DB(){
       local s=0
       rclone touch ${1}:/SA_validate &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
-        echo -e "[$(date +%m/%d\ %H:%M)] [ OK ]\t${1}\t Validation Successful!"
+        echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0)\t${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
       else
-        echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t${1}\t Validation FAILURE!"
+        echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0)\t${1}\t Validation FAILURE!"
         cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
         ((gdsaFail++))
       fi
@@ -70,7 +70,7 @@ init_DB(){
           validate $gdsa &
     done
   wait
-  [[ -n $gdsaFail ]] && echo -e "[$(date +%m/%d\ %H:%M)] [WARN]\t$gdsaFail Failure(s). See /tmp/SA_error.log"
+  [[ -n $gdsaFail ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0)\t$gdsaFail Failure(s). See /tmp/SA_error.log"
 }
 [[ $@ =~ --skip ]] || init_DB
 
@@ -81,7 +81,7 @@ init_DB(){
 
 numGdsa=$(cat $gdsaDB | wc -l)
 maxDailyUpload=$(python3 -c "print(round($numGdsa * 750 / 1000, 3))")
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads, ${maxDailyUpload}TB Max Daily Upload"
+echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0)\tStarting.\tMax Concurrent Uploads: $maxConcurrentUploads, ${maxDailyUpload}TB Max Daily Upload"
 echo -n '' > ${fileLock}
 
 while true; do
@@ -108,11 +108,11 @@ while true; do
 
         # get least used gdsa account
         gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
-        [[ -z $gdsaLeast ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tFailed To get gdsaLeast. Exiting." && exit 1
+        [[ -z $gdsaLeast ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0)\tFailed To get gdsaLeast. Exiting." && exit 1
 
         # upload folder (rclone_upload function will skip on filelocked folders)
         if [[ -n "${uploadQueueBuffer[i]}" ]]; then
-          [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\tSupertransfer rclone_upload input: "${file}""
+          [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\tSupertransfer rclone_upload input: "${file}""
           IFS=$'\t'
           #             |---uploadQueueBuffer--|
           #input format: <dirsize> <upload_dir>  <rclone> <remote_root_dir>
