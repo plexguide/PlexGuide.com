@@ -26,12 +26,13 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
  
 OPTIONS=(A "Developer: 5.072"
-         B "Stable   : 5.071"
-         C "Stable   : 5.070"
-         D "Stable   : 5.069"
-         E "Stable   : 5.068"
-         F "Stable   : 5.067"
-         G "Stable   : 5.066"
+         B "Beta 1   : 5.072"
+         C "Stable   : 5.071"
+         D "Stable   : 5.070"
+         E "Stable   : 5.069"
+         F "Stable   : 5.068"
+         G "Stable   : 5.067"
+         H "Stable   : 5.066"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -75,6 +76,9 @@ case $CHOICE in
             clear
             sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
+        B)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.071b1" ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.071" ;;
