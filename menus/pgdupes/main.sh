@@ -53,8 +53,8 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            dialog --infobox "Deploying DupeFinder!" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes 1>/dev/null 2>&1
+            dialog --infobox "Deploying PGDupes!" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes #1>/dev/null 2>&1
             bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
