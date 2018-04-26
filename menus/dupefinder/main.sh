@@ -55,7 +55,6 @@ case $CHOICE in
         A)
             dialog --infobox "Deploying DupeFinder!" 3 39
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder 1>/dev/null 2>&1
-            dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [ON]! Now Go Break Things!" 0 0
             bash /opt/plexguide/menus/dupefinder/main.sh
             exit
             ;;
