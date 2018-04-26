@@ -28,7 +28,7 @@
 
 - name: Stop existing pgtrak service
   systemd: state=stopped name=pgtrak
-  when: traktarr_service.stat.exists
+  when: pgtrak_service.stat.exists
 
 - name: Create pgtrak directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
