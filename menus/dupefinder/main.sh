@@ -56,55 +56,12 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder 1>/dev/null 2>&1
             ;;
         B)
-
-########################### START
-                HEIGHT=10
-                WIDTH=40
-                CHOICE_HEIGHT=3
-                BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-                TITLE="Autodelete"
-                MENU="Make a Selection:"
-
-                OPTIONS=(A "AutoDelete: On (Default)"
-                         B "AutoDelete: Off"
-                         C "Mini FAQ")
-
-                CHOICE=$(dialog --clear \
-                                --backtitle "$BACKTITLE" \
-                                --title "$TITLE" \
-                                --menu "$MENU" \
-                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                                "${OPTIONS[@]}" \
-                                2>&1 >/dev/tty)
-
-                clear
-                case $CHOICE in
-                        A)
-                            echo "ON" > /var/plexguide/pgdupes.autodelete
-                            echo "true" > /var/plexguide/pgdupes.autodelete.json
-                            dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
-                            ;;
-                        B)
-                            echo "OFF" > /var/plexguide/pgdupes.autodelete
-                            echo "false" > /var/plexguide/pgdupes.autodelete2.json
-                            bash /opt/plexguide/menus/dupefinder/paths.sh
-                            touch /var/plexguide/pgdupes.status 1>/dev/null 2>&1
-                            ;;
-                        C)
-                            display="$(cat /var/plexguide/plex.library)"
-                            dialog --title "--- AutoDelete Info ---" --msgbox "\nBy Default, this is ON. The title speaks for itself.\n\nIf you leave AutoDelete On, it will make the best choice for you. Ideal if you DO NOT want to choose between 700 items.  For those obessed with making a decision, you can turn it OFF!." 0 0
-                            ;;
-                        Z)
-                            clear
-                            exit 0 ;;
-                esac
-
-######################## END
+            bash /opt/plexguide/menus/dupefinder/onoff.sh
+            ;;
         C)
             display="$(cat /var/plexguide/plex.library)"
             dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
             ;;
-
         Z)
             clear
             exit 0 ;;
