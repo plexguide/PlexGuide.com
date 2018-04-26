@@ -30,7 +30,6 @@ clean_up(){
   echo -n '' > ${fileLock}
   rm /tmp/superTransferUploadFail &>/dev/null
   rm /tmp/superTransferUploadSuccess &>/dev/null
-  rm /tmp/filelock.tmp &>/dev/null
   rm /tmp/.SA_error.log.tmp &>/dev/null
   rm /tmp/SA_error.log &>/dev/null
   exit 0
