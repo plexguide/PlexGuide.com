@@ -61,5 +61,11 @@
 - name: "Create /usr/local/bin symlink"
   file:
     src: "/opt/appdata/plex_dupefinder/plexdupes.py"
-    dest: "/usr/local/bin/plexdupes"
+    dest: "/usr/local/bin/pgdupe"
     state: link
+
+- name: Register PG JSON
+  shell: "/var/plexguide/plex.library.json"
+  register: pgjson
+  ignore_errors: True
+
