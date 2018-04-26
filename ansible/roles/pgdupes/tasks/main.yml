@@ -36,9 +36,10 @@
   with_items:
     - /opt/appdata/pgdupes
     
+
 - name: Clone pgdupes
   git:
-    repo: https://github.com/Admin9705/pgdupes.git
+    repo: https://github.com/Admin9705/pgdupes/
     dest: /opt/appdata/pgdupes
     version: master
     force: yes
