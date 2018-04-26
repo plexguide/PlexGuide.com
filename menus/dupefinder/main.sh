@@ -29,7 +29,7 @@ else
 fi
 
 HEIGHT=11
-WIDTH=40
+WIDTH=48
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="DupeFinder"
@@ -91,7 +91,6 @@ case $CHOICE in
                         C)
                             display="$(cat /var/plexguide/plex.library)"
                             dialog --title "--- AutoDelete Info ---" --msgbox "\nBy Default, this is ON. The title speaks for itself.\n\nIf you leave AutoDelete On, it will make the best choice for you. Ideal if you DO NOT want to choose between 700 items.  For those obessed with making a decision, you can turn it OFF!." 0 0
-                            bash /opt/plexguide/menus/dupefinder/main.sh
                             ;;
                         Z)
                             clear
