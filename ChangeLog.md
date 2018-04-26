@@ -13,6 +13,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
    - All GUI for you!
  - Typo Fixes, Duplicati Fix, Emby Typo Fix - Mr Wensensday
  - Headphones, Typo Fixes, Lazy L. network fix - InfoMofo
+ - Python Support Additon
  - Tons of Minor Bug Fixes
 
 -------------------------------------------------------
