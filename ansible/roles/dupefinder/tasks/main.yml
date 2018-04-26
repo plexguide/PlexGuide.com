@@ -67,8 +67,8 @@
     dest: "/usr/local/bin/pgdupe"
     state: link
 
-- name: Replace Domain
-  replace:
-    path: /opt/appdata/plex_dupefinder/config.json
-    regexp: REPLACEME
-    replace: "{{pgjson.stdout}}"
+#- name: Replace Domain
+  #replace:
+    #path: /opt/appdata/plex_dupefinder/config.json
+    #regexp: REPLACEME
+    #replace: "{{pgjson.stdout}}"
