@@ -4,19 +4,12 @@ source rcloneupload.sh
 source settings.conf
 source spinner.sh
 
-declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee)
+declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3)
 for app in $reqlist; do
   [[ ! $(which $app) ]] && echo -e "$app dependency not met/nPlease install $app" && exit 1
 done
 
-
-#if [[ $@ =~ [--help|-h] ]
-# init
-if [[ $@ =~ --pw=durdle || -e /opt/appdata/plexguide/.rclone ]]; then
 cat_Secret_Art
-else
-cat_Art
-fi
 
 if [[ $@ =~ --purge-rclone ]]; then
   purge_Rclone
@@ -72,7 +65,6 @@ source $userSettings
   if [[ -z $teamDrive ]]; then
       log "No Teamdrive Configured in: userSettings.conf" WARN
 cat <<EOF
-NOTE: this method doesn't work with personal gdrives.
 
 a) If you already have data in a personal drive, you can
    easily copy it over to the team drive.
@@ -93,8 +85,9 @@ EOF
       [[ $teamId == $teamDrive ]] && log "SA Accounts Configured to use team drives." INFO || log "Failed To Update Settings" FAIL
   fi
 }
-configure_teamdrive
-configure_teamdrive_share
+#configure_teamdrive
+#configure_teamdrive_share
+configure_personal_share
 
 
 # configure json's for rclone
@@ -131,4 +124,4 @@ function validate_json(){
 }
 validate_json
 
-echo "$(tput setaf 5)[DBUG]$(tput sgr0) config script end. run supertransfer_redux.sh to initiate upload."
+echo "$(tput setaf 5)[DBUG]$(tput sgr0) config script end. run supertransfer2.sh to initiate upload."

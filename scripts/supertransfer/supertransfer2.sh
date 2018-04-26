@@ -31,6 +31,8 @@ clean_up(){
   rm /tmp/superTransferUploadFail &>/dev/null
   rm /tmp/superTransferUploadSuccess &>/dev/null
   rm /tmp/filelock.tmp &>/dev/null
+  rm /tmp/.SA_error.log.tmp &>/dev/null
+  rm /tmp/SA_error.log &>/dev/null
   exit 0
 }
 trap "clean_up" SIGINT
@@ -55,8 +57,9 @@ init_DB(){
   echo -n '' > /tmp/SA_error.log
   validate(){
       local s=0
-      rclone touch ${1}:/SA_validate &>/tmp/.SA_error.log.tmp && s=1
+      rclone touch --drive-shared-with-me ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
+        rclone delete --drive-shared-with-me ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp
         echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0) ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
       else
@@ -81,7 +84,7 @@ init_DB(){
 
 numGdsa=$(cat $gdsaDB | wc -l)
 maxDailyUpload=$(python3 -c "print(round($numGdsa * 750 / 1000, 3))")
-echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Starting.\tMax Concurrent Uploads: $maxConcurrentUploads, ${maxDailyUpload}TB Max Daily Upload"
+echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) START\tMax Concurrent Uploads: $maxConcurrentUploads, ${maxDailyUpload}TB Max Daily Upload"
 echo -n '' > ${fileLock}
 
 while true; do
@@ -102,6 +105,7 @@ while true; do
 
       # iterate through each folder and upload
       for i in $(seq 0 $((${#uploadQueueBuffer[@]}-1))); do
+        flag=0
         # pause if max concurrent uploads limit is hit
         numCurrentTransfers=$(grep -c "$localDir" $fileLock)
         [[ $numCurrentTransfers -ge $maxConcurrentUploads ]] && break
@@ -122,4 +126,5 @@ while true; do
         fi
       done
       unset -v uploadQueueBuffer[@]
+      sleep $sleepTime
 done

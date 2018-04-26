@@ -217,6 +217,41 @@ else
 fi
 }
 
+configure_personal_share(){
+source $userSettings
+[[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
+printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
+count=$(cat /tmp/clientemails | wc -l)
+cat <<EOF
+############ CONFIGURATION ################################
+1) Create a directory structure like so in your gdrive:
+
+   |____<root_folder>       <--- rename whatever you like
+   | |____movies
+   | |____tv
+   | |____etc...
+
+###########################################################
+EOF
+
+read -p 'What did you name your <root_folder> ?: ' root
+[[ $root =~ '/' ]] && root=''
+sed -i '/'^rootDir'=/ s/=.*/='$root'/' $userSettings
+
+cat <<EOF
+############ CONFIGURATION ################################
+2) In your gdrive, share your $root folder with
+   the $count following emails:
+      - tip: uncheck "notify" & check "prevent editors..."
+      - tip: ignore "sharing outside of org warning"
+
+###########################################################
+EOF
+read -p 'Press Any Key To See The Emails.'
+less /tmp/clientemails
+echo 'If you need to see them again, they are in /tmp/clientemails'
+read -p 'Press Any Key To Continue.'
+}
 
 configure_Json(){
 rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')

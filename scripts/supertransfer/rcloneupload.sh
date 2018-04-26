@@ -25,9 +25,9 @@ rclone_upload() {
   [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tUsage: $Usage"
   # update gdsaUsage file with latest usage value
   sed -i '/'^$gdsa'=/ s/=.*/='$Usage'/' $gdsaDB
-  local gbFileSize=$(python3 -c "print(int($fileSize/1000000), 'GB')")
+  local gbFileSize=$(python3 -c "print(round($fileSize/1000000, 1), 'GB')")
   echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) $gdsaLeast \tUploading: ${localFile#"$localDir"} @${gbFileSize}"
-  [[ -n $dbug ]] && local gbUsage=$(python3 -c "print(int($Usage/1000000), 'GB')")
+  [[ -n $dbug ]] && local gbUsage=$(python3 -c "print(round($Usage/1000000, 2), 'GB')")
   [[ -n $dbug ]] && -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0) $gdsaLeast @${gbUsage}"
 
 	# memory optimization
@@ -54,7 +54,8 @@ rclone_upload() {
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$driveChunkSize \
-		"${localFile}" "$gdsa:${remote_dir}${localFile#"$localDir"}" && rclone_fin_flag=1
+    --drive-shared-with-me \
+		"${localFile}" "$gdsa:${remoteDir}${localFile#"$localDir"}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   local secs=$(( $(date +%s) - $t1 ))
