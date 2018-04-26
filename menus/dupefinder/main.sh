@@ -18,17 +18,16 @@
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 
-HEIGHT=12
+HEIGHT=11
 WIDTH=40
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Plex Installer"
+TITLE="DupeFinder"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Generate a PlexToken"
-         B "Add Your Plex Library"
-         C "Install DupeFinder"
-         D "Deploy Telly (Not Ready)"
+OPTIONS=(A "DupeFinder Install/Config"
+         B "Turn On/Off AutoDelete"
+         C "View Your Current Library"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -45,35 +44,55 @@ case $CHOICE in
             bash /opt/plexguide/scripts/plextoken/main.sh
             ;;
         B)
-            bash /opt/plexguide/menus/dupefinder/paths.sh
-            ;;
+
+############################# START
+                HEIGHT=9
+                WIDTH=40
+                CHOICE_HEIGHT=2
+                BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+                TITLE="Autodelete"
+                MENU="Make a Selection:"
+
+                OPTIONS=(A "AutoDelete: On (Default)"
+                         B "AutoDelete: Off"
+                         C "Mini FAQ")
+
+                CHOICE=$(dialog --clear \
+                                --backtitle "$BACKTITLE" \
+                                --title "$TITLE" \
+                                --menu "$MENU" \
+                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                "${OPTIONS[@]}" \
+                                2>&1 >/dev/tty)
+
+                clear
+                case $CHOICE in
+                        A)
+                            echo "ON" > /var/plexguide/pgdupes.autodelete
+                            dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
+                            ;;
+                        B)
+                            echo "OFF" > /var/plexguide/pgdupes.autodelete
+                            bash /opt/plexguide/menus/dupefinder/paths.sh
+                            touch /var/plexguide/pgdupes.status 1>/dev/null 2>&1
+                            ;;
+                        C)
+                            display="$(cat /var/plexguide/plex.library)"
+                            dialog --title "--- AutoDelete Info ---" --msgbox "\nBy Default, this is ON. The title speaks for itself.\n\nIf you leave AutoDelete On, it will make the best choice for you. Ideal if you DO NOT want to choose between 700 items.  For those obessed with making a decision, you can turn it OFF!." 0 0
+                            bash /opt/plexguide/menus/dupefinder/main.sh
+                            ;;
+
+                        Z)
+                            clear
+                            exit 0 ;;
+                esac
+
+######################## END
         C)
-            file="/opt/appdata/plexguide/plextoken"
-            if [ -e "$file" ]
-            then
-                echo "" 1>/dev/null 2>&1
-            else
-                dialog --title "--- WARNING ---" --msgbox "\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
-                bash /opt/plexguide/menus/plex/enhancement.sh
-                exit
-            fi
-
-            file="/var/plexguide/plex.library.json"
-            if [ -e "$file" ]
-            then
-                echo "" 1>/dev/null 2>&1
-            else
-                dialog --title "--- WARNING ---" --msgbox "\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
-                bash /opt/plexguide/menus/plex/enhancement.sh
-                exit
-            fi
-
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder
-            read -n 1 -s -r -p "Press any key to continue"
+            display="$(cat /var/plexguide/plex.library)"
+            dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
             ;;
-        D)
-            bash /opt/plexguide/menus/plex/telly.sh
-            ;;
+
         Z)
             clear
             exit 0 ;;
@@ -81,4 +100,4 @@ case $CHOICE in
 ########## Deploy End
 esac
 
-bash /opt/plexguide/menus/plex/enhancement.sh
+bash /opt/plexguide/menus/dupefinder/main.sh

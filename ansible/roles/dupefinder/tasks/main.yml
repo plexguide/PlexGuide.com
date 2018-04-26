@@ -64,7 +64,7 @@
 - name: "Create /usr/local/bin symlink"
   file:
     src: "/opt/appdata/plex_dupefinder/plexdupes.py"
-    dest: "/usr/local/bin/pgdupe"
+    dest: "/usr/local/bin/pgdupes"
     state: link
 
 #- name: Replace Domain

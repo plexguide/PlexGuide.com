@@ -76,7 +76,7 @@ do
             build="     \"$build\": 1"
             echo "$build" > /tmp/plex.library.json
             cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
-            chown 1000:1000 /var/plexguide/plex.library.json
+            chown 1000:1000 /var/plexguide/plex.library.json 1>/dev/null 2>&1
             ;;
   esac
 
