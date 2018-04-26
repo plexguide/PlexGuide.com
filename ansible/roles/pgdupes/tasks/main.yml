@@ -38,7 +38,7 @@
     
 - name: Clone pgdupes
   git:
-    repo: https://github.com/Admin9705/pgdupes
+    repo: https://github.com/Admin9705/pgdupes.git
     dest: /opt/appdata/pgdupes
     version: master
     force: yes
