@@ -57,7 +57,7 @@ do
             echo "" >> /var/plexguide/plex.library
             ### File
             build="$(cat /tmp/plex.library)"
-            build="\"$build\": 1,"
+            build="     \"$build\": 1,"
             echo "$build" > /tmp/plex.library.json
             cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             ;;
@@ -73,7 +73,7 @@ do
             echo "" >> /var/plexguide/plex.library 
             ### File
             build="$(cat /tmp/plex.library)"
-            build="\"$build\": 1"
+            build="     \"$build\": 1"
             echo "$build" > /tmp/plex.library.json
             cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             chown 1000:1000 /var/plexguide/plex.library.json
