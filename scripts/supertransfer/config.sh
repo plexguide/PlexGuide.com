@@ -4,10 +4,9 @@ source rcloneupload.sh
 source settings.conf
 source spinner.sh
 
-declare -a reqlist=(rclone awk sed egrep grep echo printf find sort)
+declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee)
 for app in $reqlist; do
-  [[ $(which $app) ]] || echo -e "$app dependency not met/nPlease install $app"
-  [[ $(which $app) ]] || exit 1
+  [[ ! $(which $app) ]] && echo -e "$app dependency not met/nPlease install $app" && exit 1
 done
 
 
