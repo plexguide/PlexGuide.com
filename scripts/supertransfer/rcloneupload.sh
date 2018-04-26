@@ -3,8 +3,9 @@
 #usage: rclone_upload  <dirsize> <upload_dir>  <rclone> <remote_root_dir>
 rclone_upload() {
   local localFile="${2}"
+  local sanitizedLocalFile=$(sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g; s/\^/\\^/g; s/\*/\\*/g; s/"/\\"/g; s/!/\\!/g' <<<$localFile)
   # exit if file is locked
-  [[ $(grep -x "${localFile}" $fileLock) ]] && return 1
+  [[ $(egrep -x "${sanitizedLocalFile}" $fileLock) ]] && return 1
   # lock file so multiple uploads don't happen
   echo "${localFile}" >> $fileLock
   local fileSize="${1}"
@@ -64,6 +65,6 @@ rclone_upload() {
     sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
   fi
   # release fileLock when file transfer finishes (or fails)
-  cat $fileLock | grep -xv "${localFile}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
+  cat $fileLock | grep -xv "${sanitizedLocalFile}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
   [[ -e $logfile ]] && rm $logfile
 	}

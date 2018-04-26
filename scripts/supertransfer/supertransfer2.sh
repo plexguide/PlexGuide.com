@@ -23,7 +23,7 @@ clean_up(){
   echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs. Exiting."
   numSuccess=$(cat /tmp/superTransferUploadSuccess | wc -l)
   numFail=$(cat /tmp/superTransferUploadFail | wc -l)
-  totalUploaded=$(awk -F'=' '{ sum += $2 } END { print sum / 10000 }' $gdsaDB)
+  totalUploaded=$(awk -F'=' '{ sum += $2 } END { print sum / 1000000 }' $gdsaDB)
   sizeLeft=$(du -hc ${localDir} | tail -1 | awk '{print $1}')
   echo -e "[$(date +%m/%d\ %H:%M)] [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded"
   rm ${jsonPath}/log/* &>/dev/null
@@ -41,10 +41,6 @@ trap "clean_up" SIGTERM
 ############################################################################
 init_DB(){
 
-declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee)
-for app in $reqlist; do
-  [[ ! $(which $app) ]] && echo -e "$app dependency not met/nPlease install $app" && exit 1
-done
   # get list of avail gdsa accounts
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
   if [[ -n $gdsaList ]]; then
@@ -85,7 +81,7 @@ done
 
 numGdsa=$(cat $gdsaDB | wc -l)
 maxDailyUpload=$(python3 -c "print(round($numGdsa * 750 / 1000, 3))")
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads\t${maxDailyUpload}TB Max Daily Upload"
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tStarting File Monitor.\tMax Concurrent Uploads: $maxConcurrentUploads, ${maxDailyUpload}TB Max Daily Upload"
 echo -n '' > ${fileLock}
 
 while true; do
