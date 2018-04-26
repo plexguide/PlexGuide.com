@@ -55,18 +55,18 @@ case $CHOICE in
         A)
             dialog --infobox "Deploying DupeFinder!" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes 1>/dev/null 2>&1
-            bash /opt/plexguide/menus/dupefinder/main.sh
+            bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
         B)
-            bash /opt/plexguide/menus/dupefinder/onoff.sh
-            bash /opt/plexguide/menus/dupefinder/main.sh
+            bash /opt/plexguide/menus/pgdupes/onoff.sh
+            bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
         C)
             display="$(cat /var/plexguide/plex.library)"
             dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
-            bash /opt/plexguide/menus/dupefinder/main.sh
+            bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
         Z)
@@ -76,4 +76,4 @@ case $CHOICE in
 ########## Deploy End
 esac
 
-bash /opt/plexguide/menus/dupefinder/main.sh
+bash /opt/plexguide/menus/pgdupes/main.sh
