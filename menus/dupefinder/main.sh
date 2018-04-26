@@ -56,13 +56,19 @@ case $CHOICE in
             dialog --infobox "Deploying DupeFinder!" 3 39
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder 1>/dev/null 2>&1
             dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [ON]! Now Go Break Things!" 0 0
+            bash /opt/plexguide/menus/dupefinder/main.sh
+            exit
             ;;
         B)
             bash /opt/plexguide/menus/dupefinder/onoff.sh
+            bash /opt/plexguide/menus/dupefinder/main.sh
+            exit
             ;;
         C)
             display="$(cat /var/plexguide/plex.library)"
             dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
+            bash /opt/plexguide/menus/dupefinder/main.sh
+            exit
             ;;
         Z)
             clear
