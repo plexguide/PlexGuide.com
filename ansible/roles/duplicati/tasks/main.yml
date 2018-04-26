@@ -150,13 +150,13 @@
       path: /opt/appdata/traefik/traefik.toml
       insertafter: EOF
       block: |
-      ################################################################
-      # File configuration backend
-      ################################################################
-      # Enable file configuration backend
-      # Optional
-      [file]
-        filename = "/etc/traefik/servers.toml"
+        ################################################################
+        # File configuration backend
+        ################################################################
+        # Enable file configuration backend
+        # Optional
+        [file]
+              filename = "/etc/traefik/servers.toml"
 
-      # Enable watch file changes
-        watch = true
+        # Enable watch file changes
+          watch = true
