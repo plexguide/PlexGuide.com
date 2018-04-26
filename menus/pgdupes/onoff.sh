@@ -21,7 +21,7 @@ export NCURSES_NO_UTF8_ACS=1
                 WIDTH=40
                 CHOICE_HEIGHT=3
                 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-                TITLE="Autodelete"
+                TITLE="AutoDelete"
                 MENU="Make a Selection:"
 
                 OPTIONS=(A "AutoDelete: On (Default)"

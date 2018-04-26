@@ -37,7 +37,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="DupeFinder"
 MENU="Make a Selection:"
 
-OPTIONS=(A "DupeFinder Install/Config"
+OPTIONS=(A "PGDupes Install/Config"
          B "AutoDelete On/Off - Currently: $stat"
          C "View Your Current Library"
          Z "Exit")
