@@ -6,11 +6,14 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [Beta-1] - 26 April 2018
 
 - Added
+ - New "PG PLEX Enhancement Tools" added to the menu
+ - Some DummyProofing for those who do not like to read :D
  - PGDupe from DupeFinder
    - Tons of new scripts
    - All GUI for you!
  - Typo Fixes, Duplicati Fix, Emby Typo Fix - Mr Wensensday
- - Headphones, Typo Fixes - InfoMofo
+ - Headphones, Typo Fixes, Lazy L. network fix - InfoMofo
+ - Tons of Minor Bug Fixes
 
 -------------------------------------------------------
 ## Past Changes
