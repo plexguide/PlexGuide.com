@@ -3,13 +3,20 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.072] (Beta, Release Candiate & DEV)
 
-- None
+### [Beta-1] - 26 April 2018
+
+- Added
+ - PGDupe from DupeFinder
+   - Tons of new scripts
+   - All GUI for you!
+ - Typo Fixes, Emby Typo Fix - Mr Wensensday
+ -
 
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.071] - 22 April
+### [5.071] - 22 April 2018
 
 - Added
   - Fixed Preinstaller if you opted to make it run again
