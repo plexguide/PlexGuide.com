@@ -1,17 +1,25 @@
 {
   "automatic": {
     "movies": {
-      "anticipated": 5,
-      "interval": 12,
-      "popular": 2,
-      "trending": 3,
-      "boxoffice": 100
+      "anticipated": 3,
+      "boxoffice": 10,
+      "interval": 24,
+      "popular": 3,
+      "trending": 2
     },
     "shows": {
       "anticipated": 10,
-      "interval": 20,
+      "interval": 48,
       "popular": 1,
-      "trending": 1
+      "trending": 2
+    }
+  },
+  "notifications": {
+    "verbose": true,
+    "pushover": {
+      "service": "pushover",
+      "app_token": "",
+      "user_token": ""
     }
   },
   "filters": {
@@ -39,11 +47,15 @@
       "blacklisted_networks": [
         "twitch",
         "youtube",
+        "nickelodeon",
+        "hallmark",
         "reelzchannel",
+        "disney",
         "cnn",
         "cbbc",
         "the movie network",
         "teletoon",
+        "cartoon network",
         "espn",
         "fox sports",
         "yahoo!"
@@ -52,11 +64,16 @@
     "movies": {
       "blacklisted_genres": [
         "documentary",
-        "music"
+        "music",
+        "short",
+        "sporting-event",
+        "film-noir",
+        "fan-film"
       ],
       "blacklist_title_keywords": [
         "untitled",
-        "barbie"
+        "barbie",
+        "ufc fight night"
       ],
       "blacklisted_min_runtime": 60,
       "blacklisted_min_year": 2000,
@@ -72,47 +89,19 @@
     "debug": false
   },
   "radarr": {
-    "api_key": "{radarrkey}",
+    "api_key": "",
     "profile": "HD-1080p",
     "url": "https://radarr.{{domain}}",
-    "root_folder": "{radarrfolder}"
+    "root_folder": "/movies/"
   },
   "sonarr": {
-    "api_key": "1d8e7fe4dc9e403eaa3adddee642aceb",
-    "profile": "Any",
+    "api_key": "",
+    "profile": "HD-1080p",
     "url": "https://sonarr.{{domain}}",
-    "root_folder": "{sonarrfolder}",
-    "tags": {
-      "amzn": [
-        "hbo",
-        "amc",
-        "usa network",
-        "tnt",
-        "starz",
-        "the cw",
-        "fx",
-        "fox",
-        "abc",
-        "nbc",
-        "cbs",
-        "tbs",
-        "amazon",
-        "syfy",
-        "cinemax",
-        "bravo",
-        "showtime",
-        "paramount network"
-      ],
-      "best": [
-        "netflix",
-        "freeform",
-        "bbc",
-        "sky",
-        "hulu"
-      ]
-    }
+    "root_folder": "/tv/",
+    "tags": {}
   },
   "trakt": {
-    "api_key": "a43e93decafa476ec4ea5e5c1ef76209a8edcc76406cb89e98d32890e9e5dde5"
+    "api_key": ""
   }
 }

@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks - traktarr
+#################################################################################
+---
+- include_role:
+    name: variables
+
+- name: Check service exists
+  stat:
+    path: "/etc/systemd/system/pgtrak.service"
+  register: pgtrak_service
+
+- name: Stop existing pgtrak service
+  systemd: state=stopped name=pgtrak
+  when: pgtrak_service.stat.exists
+
+- name: Create pgtrak directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/pgtrak
+    
+- name: Clone pgtrak
+  git:
+    repo: https://github.com/Admin9705/pgtrak/
+    dest: /opt/appdata/pgtrak
+    version: master
+    force: yes
+    
+- name: Install pip requirements
+  pip:
+    requirements: /opt/appdata/pgtrak/requirements.txt
+    executable: pip3
+
+- name: Check config exists
+  stat:
+    path: "/opt/appdata/pgtrak/config.json"
+  register: pgtrak_config
+
+- name: Import default config
+  template:
+    src: config.json.js2
+    dest: /opt/appdata/pgtrak/config.json
+    force: yes
+  when: pgtrak_config.stat.exists == False
+
+- name: Set pgtrak.py as executable
+  file:
+    path: /opt/appdata/pgtrak/traktarr.py
+    mode: a+x
+
+- name: Set directory permissions
+  file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
+
+- name: "Create /usr/local/bin symlink"
+  file:
+    src: "/opt/appdata/pgtrak/traktarr.py"
+    dest: "/usr/local/bin/pgtrak"
+    state: link
+
+- name: Import pgtrak service
+  template:
+    src: pgtrak.service.js2
+    dest: /etc/systemd/system/pgtrak.service 
+    force: yes
+  when: pgtrak_service.stat.exists == False
+
+- name: Load service file
+  systemd: state=stopped name=pgtrak daemon_reload=yes enabled=no

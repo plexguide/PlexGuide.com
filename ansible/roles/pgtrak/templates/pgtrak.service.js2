@@ -1,0 +1,15 @@
+[Unit]
+Description=pgtrak
+After=network-online.target
+
+[Service]
+User=1000
+Group=1000
+Type=simple
+WorkingDirectory=/opt/appdata/pgtrak
+ExecStart=/usr/bin/python3 /opt/appdata/pgtrak/traktarr.py run
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
