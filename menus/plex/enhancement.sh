@@ -27,8 +27,8 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Generate a PlexToken"
          B "Add Your Plex Library"
-         C "Install DupeFinder"
-         D "Deploy Telly (Not Ready)"
+         C "Config: DupeFinder"
+         D "Config: Telly (Not Ready)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -67,9 +67,7 @@ case $CHOICE in
                 bash /opt/plexguide/menus/plex/enhancement.sh
                 exit
             fi
-
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder
-            read -n 1 -s -r -p "Press any key to continue"
+            bash /opt/plexguide/menus/dupefinder/main.sh
             ;;
         D)
             bash /opt/plexguide/menus/plex/telly.sh

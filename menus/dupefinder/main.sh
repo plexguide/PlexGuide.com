@@ -18,6 +18,16 @@
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 
+file="/var/plexguide/pgdupes.autodelete"
+if [ -e "$file" ]
+then
+    echo "" 1>/dev/null 2>&1
+else
+    echo "ON" > /var/plexguide/pgdupes.autodelete
+    echo "true" > /var/plexguide/pgdupes.autodelete.json
+    exit
+fi
+
 HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=4
@@ -26,7 +36,7 @@ TITLE="DupeFinder"
 MENU="Make a Selection:"
 
 OPTIONS=(A "DupeFinder Install/Config"
-         B "Turn On/Off AutoDelete"
+         B "AutoDelete On/Off - Currently: $stat"
          C "View Your Current Library"
          Z "Exit")
 
@@ -41,14 +51,14 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/plextoken/main.sh
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder 1>/dev/null 2>&1
             ;;
         B)
 
-############################# START
-                HEIGHT=9
+########################### START
+                HEIGHT=10
                 WIDTH=40
-                CHOICE_HEIGHT=2
+                CHOICE_HEIGHT=3
                 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
                 TITLE="Autodelete"
                 MENU="Make a Selection:"
@@ -69,10 +79,12 @@ case $CHOICE in
                 case $CHOICE in
                         A)
                             echo "ON" > /var/plexguide/pgdupes.autodelete
+                            echo "true" > /var/plexguide/pgdupes.autodelete.json
                             dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
                             ;;
                         B)
                             echo "OFF" > /var/plexguide/pgdupes.autodelete
+                            echo "false" > /var/plexguide/pgdupes.autodelete2.json
                             bash /opt/plexguide/menus/dupefinder/paths.sh
                             touch /var/plexguide/pgdupes.status 1>/dev/null 2>&1
                             ;;
@@ -81,7 +93,6 @@ case $CHOICE in
                             dialog --title "--- AutoDelete Info ---" --msgbox "\nBy Default, this is ON. The title speaks for itself.\n\nIf you leave AutoDelete On, it will make the best choice for you. Ideal if you DO NOT want to choose between 700 items.  For those obessed with making a decision, you can turn it OFF!." 0 0
                             bash /opt/plexguide/menus/dupefinder/main.sh
                             ;;
-
                         Z)
                             clear
                             exit 0 ;;

@@ -13,7 +13,7 @@
     "wmapro": 200,
     "Unknown": 0
   },
-  "AUTO_DELETE": false,
+  "AUTO_DELETE": {{pgauto.stdout}},
   "FILENAME_SCORES": {
     "*Remux*": 20000,
     "*1080p*BluRay*": 15000,
