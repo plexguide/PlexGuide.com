@@ -57,10 +57,10 @@ init_DB(){
       local s=0
       rclone touch ${1}:/SA_validate &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
-        echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0)\t${1}\t Validation Successful!"
+        echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0) ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
       else
-        echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0)\t${1}\t Validation FAILURE!"
+        echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0) ${1}\t Validation FAILURE!"
         cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
         ((gdsaFail++))
       fi
@@ -70,7 +70,7 @@ init_DB(){
           validate $gdsa &
     done
   wait
-  [[ -n $gdsaFail ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0)\t$gdsaFail Failure(s). See /tmp/SA_error.log"
+  [[ -n $gdsaFail ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0) $gdsaFail Failure(s). See /tmp/SA_error.log"
 }
 [[ $@ =~ --skip ]] || init_DB
 
