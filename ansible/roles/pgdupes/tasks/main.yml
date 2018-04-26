@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks
+# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks - dupefinder
 #################################################################################
 ---
 - include_role:
@@ -31,49 +31,49 @@
   register: pgauto
   ignore_errors: True
 
-- name: Create plex_dupefinder directories
+- name: Create pgdupes directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/appdata/plex_dupefinder
+    - /opt/appdata/pgdupes
     
-- name: Clone plex_dupefinder
+- name: Clone pgdupes
   git:
-    repo: https://github.com/l3uddz/plex_dupefinder/
-    dest: /opt/appdata/plex_dupefinder
+    repo: https://github.com/l3uddz/pgdupes/
+    dest: /opt/appdata/pgdupes
     version: master
     force: yes
     
 - name: Install pip requirements
   pip:
-    requirements: /opt/appdata/plex_dupefinder/requirements.txt
+    requirements: /opt/appdata/pgdupes/requirements.txt
     executable: pip3
 
 - name: Check config exists
   stat:
-    path: "/opt/appdata/plex_dupefinder/config.json"
+    path: "/opt/appdata/pgdupes/config.json"
 
 - name: Import default config
   template:
     src: config.json.js2
-    dest: /opt/appdata/plex_dupefinder/config.json
+    dest: /opt/appdata/pgdupes/config.json
     force: yes
 
 - name: Set plexdupes.py as executable
   file:
-    path: /opt/appdata/plex_dupefinder/plexdupes.py
+    path: /opt/appdata/pgdupes/plexdupes.py
     mode: a+x
 
 - name: Set directory permissions
-  file: "path=/opt/appdata/plex_dupefinder state=directory owner=1000 group=1000 recurse=yes"
+  file: "path=/opt/appdata/pgdupes state=directory owner=1000 group=1000 recurse=yes"
 
 - name: "Create /usr/local/bin symlink"
   file:
-    src: "/opt/appdata/plex_dupefinder/plexdupes.py"
+    src: "/opt/appdata/pgdupes/plexdupes.py"
     dest: "/usr/local/bin/pgdupes"
     state: link
 
 #- name: Replace Domain
   #replace:
-    #path: /opt/appdata/plex_dupefinder/config.json
+    #path: /opt/appdata/pgdupes/config.json
     #regexp: REPLACEME
     #replace: "{{pgjson.stdout}}"
