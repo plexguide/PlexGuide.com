@@ -30,7 +30,7 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│        -== PlexGuide Team ==-       │
+│      -== By Team PlexGuide ==-      │
 │                                     │
 │ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
