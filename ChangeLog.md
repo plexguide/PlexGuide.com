@@ -3,13 +3,24 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.072] (Beta, Release Candiate & DEV)
 
-- None
+#### Beta1 - 26 April 2018
+
+- Added
+ - New "PG PLEX Enhancement Tools" added to the menu
+ - Some DummyProofing for those who do not like to read :D
+ - PGDupe from DupeFinder
+   - Tons of new scripts
+   - All GUI for you!
+ - Typo Fixes, Duplicati Fix, Emby Typo Fix - Mr Wensensday
+ - Headphones, Typo Fixes, Lazy L. network fix - InfoMofo
+ - Python Support Additon
+ - Tons of Minor Bug Fixes
 
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
-### [5.071] - 22 April
+### [5.071] - 22 April 2018
 
 - Added
   - Fixed Preinstaller if you opted to make it run again

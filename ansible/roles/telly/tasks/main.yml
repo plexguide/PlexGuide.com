@@ -1,5 +1,23 @@
 ---
 ######https://hub.docker.com/r/tombowditch/telly/
+
+- include_role:
+    name: variables
+
+- name: "Establishing IPTV playlist path"
+  shell: "cat /tmp/tellyplaylist"
+  register: tellyplaylist
+
+- name: "Establishing IPTV stream ammount"
+  shell: "cat /tmp/tellystreams"
+  register: tellystreams
+
+- name: Stop and remove any existing container
+  docker_container:
+    name: telly
+    state: absent
+  ignore_errors: yes
+
 - name: Deploy Critical Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -16,11 +34,13 @@
     image: tombowditch/telly
     pull: yes
     cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}6077:6077"
     env:
       PUID: "1000"
       PGID: "1000"
-      PLAYLIST: --replace-me
-      STREAMS: 1
+      PLAYLIST: "{{tellyplaylist.stdout}}"
+      STREAMS: "{{tellystreams.stdout}}"
       LISTEN: "0.0.0.0:6077"
     volumes:
       - /opt/appdata/telly:/telly

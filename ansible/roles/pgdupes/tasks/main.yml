@@ -1,0 +1,79 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks - dupefinder
+#################################################################################
+---
+- include_role:
+    name: variables
+
+- name: Register PG JSON
+  shell: "cat /var/plexguide/plex.library.json"
+  register: pgjson
+  ignore_errors: True
+
+- name: Register Autodelete
+  shell: "cat /var/plexguide/pgdupes.autodelete2.json"
+  register: pgauto
+  ignore_errors: True
+
+- name: Create pgdupes directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/pgdupes
+    
+- name: Clone plex_dupefinder to pgdupes
+  git:
+    repo: https://github.com/Admin9705/pgdupes/
+    dest: /opt/appdata/pgdupes
+    version: master
+    force: yes
+    
+- name: Install pip requirements
+  pip:
+    requirements: /opt/appdata/pgdupes/requirements.txt
+    executable: pip3
+
+- name: Check config exists
+  stat:
+    path: "/opt/appdata/pgdupes/config.json"
+
+- name: Import default config
+  template:
+    src: config.json.js2
+    dest: /opt/appdata/pgdupes/config.json
+    force: yes
+
+- name: Set plexdupes.py as executable
+  file:
+    path: /opt/appdata/pgdupes/plexdupes.py
+    mode: a+x
+
+- name: Set directory permissions
+  file: "path=/opt/appdata/pgdupes state=directory owner=1000 group=1000 recurse=yes"
+
+- name: "Create /usr/local/bin symlink"
+  file:
+    src: "/opt/appdata/pgdupes/plexdupes.py"
+    dest: "/usr/local/bin/pgdupes"
+    state: link
+
+#- name: Replace Domain
+  #replace:
+    #path: /opt/appdata/pgdupes/config.json
+    #regexp: REPLACEME
+    #replace: "{{pgjson.stdout}}"

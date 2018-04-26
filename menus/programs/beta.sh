@@ -1,15 +1,16 @@
  #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
- HEIGHT=10
+ HEIGHT=11
  WIDTH=55
- CHOICE_HEIGHT=4
+ CHOICE_HEIGHT=5
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - VPN Programs"
 
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"
           C "Duplicati - Advanced Backup"
+          D "Telly - Plex Live TV through IPTV"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -38,6 +39,9 @@ case $CHOICE in
          dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
          cronskip="yes"
          ;;
+
+     D)
+     bash /opt/plexguide/menus/plex/telly.sh ;;
      Z)
         clear
         exit 0 ;;

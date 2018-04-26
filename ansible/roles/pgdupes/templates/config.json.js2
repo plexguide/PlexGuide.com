@@ -13,7 +13,7 @@
     "wmapro": 200,
     "Unknown": 0
   },
-  "AUTO_DELETE": false,
+  "AUTO_DELETE": {{pgauto.stdout}},
   "FILENAME_SCORES": {
     "*Remux*": 20000,
     "*1080p*BluRay*": 15000,
@@ -33,11 +33,10 @@
     "*.vob": -5000
   },
   "PLEX_SECTIONS": {
-    "Movies": 1,
-    "TV": 2
+{{pgjson.stdout}}
   },
-  "PLEX_SERVER": "https://plex.{{domain}}",
-  "PLEX_TOKEN": "",
+  "PLEX_SERVER": "http://localhost:32400",
+  "PLEX_TOKEN": "{{token.stdout}}",
   "SCORE_FILESIZE": true,
   "SKIP_LIST": [],
   "VIDEO_CODEC_SCORES": {

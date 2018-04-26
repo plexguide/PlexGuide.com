@@ -21,6 +21,11 @@
   register: domain
   ignore_errors: True
 
+- name: Register IP
+  shell: "cat /var/plexguide/server.ip"
+  register: ipaddress
+  ignore_errors: True
+
 - name: Register Ports
   shell: "cat /var/plexguide/server.ports"
   register: ports
@@ -34,4 +39,9 @@
 - name: Register Auth Path
   shell: "cat /var/plexguide/server.ht"
   register: auth
+  ignore_errors: True
+
+- name: Register Auth Token
+  shell: "cat /opt/appdata/plexguide/plextoken"
+  register: token
   ignore_errors: True

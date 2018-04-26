@@ -129,6 +129,7 @@
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
       - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/servers.toml:/etc/traefik/servers.toml:ro
       - /opt/appdata/traefik/acme:/etc/traefik/acme
     restart_policy: always
     state: started
