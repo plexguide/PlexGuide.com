@@ -40,7 +40,7 @@ export NCURSES_NO_UTF8_ACS=1
                 case $CHOICE in
                         A)
                             echo "ON" > /var/plexguide/pgdupes.autodelete
-                            echo "true" > /var/plexguide/pgdupes.autodelete.json
+                            echo "true" > /var/plexguide/pgdupes.autodelete2.json
                             dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [ON]! Now Go Break Things!" 0 0
                             ;;
                         B)
