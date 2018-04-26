@@ -1,7 +1,7 @@
 ############################################################################
 # INIT
 ############################################################################
-echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0)\tInitializing Supertransfer2 Load Balanced Multi-SA Uploader..."
+echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Initializing Supertransfer2 Load Balanced Multi-SA Uploader..."
 source rcloneupload.sh
 source init.sh
 source settings.conf
@@ -16,11 +16,11 @@ touch /tmp/superTransferUploadFail
 [[ -e $uploadHistory ]] || touch $uploadHistory
 [[ -d $jsonPath ]] || mkdir $jsonPath
 [[ -d $logDir ]] || mkdir $logDir
-[[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0)\tNo User settings found in $userSettings. Exiting." && exit 1
+[[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) No User settings found in $userSettings. Exiting." && exit 1
 
 
 clean_up(){
-  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0)\tSIGINT: Clearing filelocks and logs. Exiting."
+  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) SIGINT: Clearing filelocks and logs. Exiting."
   numSuccess=$(cat /tmp/superTransferUploadSuccess | wc -l)
   numFail=$(cat /tmp/superTransferUploadFail | wc -l)
   totalUploaded=$(awk -F'=' '{ sum += $2 } END { print sum / 1000000 }' $gdsaDB)
