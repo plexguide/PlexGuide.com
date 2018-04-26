@@ -33,7 +33,7 @@
     "*.vob": -5000
   },
   "PLEX_SECTIONS": {
-    "{{pgjson.stdout}}"
+    REPLACEME
   },
   "PLEX_SERVER": "http://localhost:32400",
   "PLEX_TOKEN": "{{token.stdout}}",
