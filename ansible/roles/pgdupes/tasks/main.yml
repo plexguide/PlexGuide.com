@@ -36,10 +36,9 @@
   with_items:
     - /opt/appdata/pgdupes
     
-
-- name: Clone pgdupes
+- name: Clone plex_dupefinder to pgupdates
   git:
-    repo: https://github.com/Admin9705/pgdupes/
+    repo: https://github.com/l3uddz/plex_dupefinder/
     dest: /opt/appdata/pgdupes
     version: master
     force: yes
