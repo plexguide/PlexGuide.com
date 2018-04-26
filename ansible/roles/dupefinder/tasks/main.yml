@@ -27,7 +27,7 @@
   ignore_errors: True
 
 - name: Register Autodelete
-  shell: "/var/plexguide/pgdupes.autodelete2.json"
+  shell: "cat /var/plexguide/pgdupes.autodelete2.json"
   register: pgauto
   ignore_errors: True
 
