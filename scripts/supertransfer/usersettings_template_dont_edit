@@ -4,3 +4,5 @@
 gdsaImpersonate=your@email.com
 rootFolderId=
 teamDrive=
+# leave empty for root
+remoteDir=
