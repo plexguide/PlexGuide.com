@@ -21,6 +21,11 @@
 - include_role:
     name: variables
 
+- name: Register PG JSON
+  shell: "/var/plexguide/plex.library.json"
+  register: pgjson
+  ignore_errors: True
+
 - name: Create plex_dupefinder directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
@@ -63,9 +68,3 @@
     src: "/opt/appdata/plex_dupefinder/plexdupes.py"
     dest: "/usr/local/bin/pgdupe"
     state: link
-
-- name: Register PG JSON
-  shell: "/var/plexguide/plex.library.json"
-  register: pgjson
-  ignore_errors: True
-
