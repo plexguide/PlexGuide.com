@@ -41,13 +41,13 @@ export NCURSES_NO_UTF8_ACS=1
                         A)
                             echo "ON" > /var/plexguide/pgdupes.autodelete
                             echo "true" > /var/plexguide/pgdupes.autodelete.json
-                            dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
+                            dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [ON]! Now Go Break Things!" 0 0
                             ;;
                         B)
                             echo "OFF" > /var/plexguide/pgdupes.autodelete
                             echo "false" > /var/plexguide/pgdupes.autodelete2.json
-                            bash /opt/plexguide/menus/dupefinder/paths.sh
-                            touch /var/plexguide/pgdupes.status 1>/dev/null 2>&1
+                            dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [OFF]! Now Go Break Things!" 0 0
+
                             ;;
                         C)
                             display="$(cat /var/plexguide/plex.library)"
