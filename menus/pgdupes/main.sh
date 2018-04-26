@@ -54,8 +54,8 @@ clear
 case $CHOICE in
         A)
             dialog --infobox "Deploying PGDupes!" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes #1>/dev/null 2>&1
-            read -n 1 -s -r -p "Press any key to continue"
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes 1>/dev/null 2>&1
+            #read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
