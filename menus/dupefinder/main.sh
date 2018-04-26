@@ -28,6 +28,8 @@ else
     exit
 fi
 
+stat=$( cat /var/plexguide/pgdupes.autodelete )
+
 HEIGHT=11
 WIDTH=48
 CHOICE_HEIGHT=4
