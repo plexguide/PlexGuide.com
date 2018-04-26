@@ -5,7 +5,7 @@ echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Initializing 
 source rcloneupload.sh
 source init.sh
 source settings.conf
-source /opt/appdata/plexguide/supertransfer/usersettings.conf
+source ${userSettings}
 #dbug=on
 
 
