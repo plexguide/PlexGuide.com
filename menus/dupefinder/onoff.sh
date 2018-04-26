@@ -42,16 +42,19 @@ export NCURSES_NO_UTF8_ACS=1
                             echo "ON" > /var/plexguide/pgdupes.autodelete
                             echo "true" > /var/plexguide/pgdupes.autodelete2.json
                             dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [ON]! Now Go Break Things!" 0 0
+                            exit
                             ;;
                         B)
                             echo "OFF" > /var/plexguide/pgdupes.autodelete
                             echo "false" > /var/plexguide/pgdupes.autodelete2.json
                             dialog --title "AutoDelete Status" --msgbox "\nAutoDelete is [OFF]! Now Go Break Things!" 0 0
+                            exit
 
                             ;;
                         C)
                             display="$(cat /var/plexguide/plex.library)"
                             dialog --title "--- AutoDelete Info ---" --msgbox "\nBy Default, this is ON. The title speaks for itself.\n\nIf you leave AutoDelete On, it will make the best choice for you. Ideal if you DO NOT want to choose between 700 items.  For those obessed with making a decision, you can turn it OFF!." 0 0
+                            exit
                             ;;
                 esac
 
