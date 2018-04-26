@@ -6,7 +6,9 @@ rclone_upload() {
   local sanitizedLocalFile=$(sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g; s/\^/\\^/g; s/\*/\\*/g; s/"/\\"/g; s/!/\\!/g' <<<$localFile)
   # exit if file is locked, or race condtion met
   [[ $(egrep -x "${sanitizedLocalFile}" $fileLock) ]] && return 1
-  [[ ! -d "${localFile}" ]] && return 1
+  #[[ ! -d "${localFile}" ]] && return 1
+  (cd "${sanitizedLocalFile}") || return 1
+  [[ $(ls "${sanitizedLocalFile}") == '' ]] && return 1
   # lock file so multiple uploads don't happen
   echo "${localFile}" >> $fileLock
   local fileSize="${1}"
