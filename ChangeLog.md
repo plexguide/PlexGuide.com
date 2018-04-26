@@ -3,7 +3,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.072] (Beta, Release Candiate & DEV)
 
-[Beta1] - 26 April 2018
+#### Beta1 - 26 April 2018
 
 - Added
  - New "PG PLEX Enhancement Tools" added to the menu
