@@ -62,7 +62,6 @@ rclone_upload() {
   if [[ $rclone_fin_flag == 1 ]]; then
     printf "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0) $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
     | tee -a /tmp/superTransferUploadSuccess
-    # release fileLock when file transfer finishes (or fails)
     sleep 5
   else
     printf "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
@@ -71,9 +70,8 @@ rclone_upload() {
     [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tREVERTED Usage: $Usage"
     # revert gdsaDB back to old value if upload failed
     sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
-    # release fileLock when file transfer finishes (or fails)
   fi
-	}
-
+    # release fileLock when file transfer finishes (or fails)
     egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp ${fileLock} 
     [[ -e $logfile ]] && rm $logfile
+	}
