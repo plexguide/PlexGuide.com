@@ -45,7 +45,7 @@ case $CHOICE in
             bash /opt/plexguide/scripts/plextoken/main.sh
             ;;
         B)
-            bash /opt/plexguide/menus/dupefinder/paths.sh
+            bash /opt/plexguide/menus/pgdupes/paths.sh
             ;;
         C)
             file="/opt/appdata/plexguide/plextoken"
@@ -67,7 +67,7 @@ case $CHOICE in
                 bash /opt/plexguide/menus/plex/enhancement.sh
                 exit
             fi
-            bash /opt/plexguide/menus/dupefinder/main.sh
+            bash /opt/plexguide/menus/pgdupes/main.sh
             ;;
         D)
             bash /opt/plexguide/menus/plex/telly.sh
