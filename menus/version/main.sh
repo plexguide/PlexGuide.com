@@ -18,9 +18,9 @@
 export NCURSES_NO_UTF8_ACS=1
 clear
 
-HEIGHT=15
+HEIGHT=16
 WIDTH=33
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
