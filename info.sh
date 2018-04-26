@@ -17,4 +17,4 @@
 #################################################################################
 
 echo "5.072 DEV" > /var/plexguide/pg.version
-echo "61" > /var/plexguide/pg.preinstall
+echo "62" > /var/plexguide/pg.preinstall
