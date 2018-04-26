@@ -27,7 +27,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Generate a PlexToken"
          B "Add Your Plex Library"
-         C "Config: DupeFinder"
+         C "Config: PGDupes"
          D "Config: Telly (Not Ready)"
          Z "Exit")
 
