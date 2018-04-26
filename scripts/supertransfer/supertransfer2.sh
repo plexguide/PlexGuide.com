@@ -1,13 +1,13 @@
 ############################################################################
 # INIT
 ############################################################################
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing Supertransfer2 Load Balanced Multi-SA Uploader..."
 source rcloneupload.sh
 source init.sh
 source settings.conf
 source /opt/appdata/plexguide/supertransfer/usersettings.conf
 #dbug=on
 
-echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing Supertransfer2 Load Balanced Multi-SA Uploader..."
 
 # check to make sure filepaths are there
 touch /tmp/superTransferUploadSuccess
