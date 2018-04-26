@@ -18,7 +18,7 @@
 ---
 - include_role:
     name: variables
-    
+
 - name: Remove Emby Container
   docker_container:
     name: emby
@@ -51,7 +51,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:emby.{domain.stdout}}"
+      traefik.frontend.rule: "Host:emby.{{domain.stdout}}"
       traefik.port: "8096"
     restart_policy: always
     state: started
