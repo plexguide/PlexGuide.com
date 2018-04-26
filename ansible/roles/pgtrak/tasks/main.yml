@@ -61,7 +61,7 @@
 
 - name: Set pgtrak.py as executable
   file:
-    path: /opt/appdata/pgtrak/pgtrak.py
+    path: /opt/appdata/pgtrak/traktarr.py
     mode: a+x
 
 - name: Set directory permissions
