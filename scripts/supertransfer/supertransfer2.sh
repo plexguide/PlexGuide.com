@@ -7,6 +7,7 @@ source settings.conf
 source /opt/appdata/plexguide/supertransfer/usersettings.conf
 #dbug=on
 
+echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tInitializing Supertransfer2 Load Balanced Multi-SA Uploader..."
 
 # check to make sure filepaths are there
 touch /tmp/superTransferUploadSuccess
@@ -17,10 +18,6 @@ touch /tmp/superTransferUploadFail
 [[ -d $logDir ]] || mkdir $logDir
 [[ ! -e $userSettings ]] && echo -e "[$(date +%m/%d\ %H:%M)] [FAIL]\tNo User settings found in $userSettings. Exiting." && exit 1
 
-declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee)
-for app in $reqlist; do
-  [[ ! $(which $app) ]] && echo -e "$app dependency not met/nPlease install $app" && exit 1
-done
 
 clean_up(){
   echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\tSIGINT: Clearing filelocks and logs. Exiting."
@@ -28,7 +25,7 @@ clean_up(){
   numFail=$(cat /tmp/superTransferUploadFail | wc -l)
   totalUploaded=$(awk -F'=' '{ sum += $2 } END { print sum / 10000 }' $gdsaDB)
   sizeLeft=$(du -hc ${localDir} | tail -1 | awk '{print $1}')
-  echo -e "[$(date +%m/%d\ %H:%M)] [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded" 
+  echo -e "[$(date +%m/%d\ %H:%M)] [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded"
   rm ${jsonPath}/log/* &>/dev/null
   echo -n '' > ${fileLock}
   rm /tmp/superTransferUploadFail &>/dev/null
@@ -43,6 +40,11 @@ trap "clean_up" SIGTERM
 # Initalize gdsaDB (can be skipped with --skip)
 ############################################################################
 init_DB(){
+
+declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee)
+for app in $reqlist; do
+  [[ ! $(which $app) ]] && echo -e "$app dependency not met/nPlease install $app" && exit 1
+done
   # get list of avail gdsa accounts
   gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
   if [[ -n $gdsaList ]]; then

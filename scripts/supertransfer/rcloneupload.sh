@@ -4,7 +4,7 @@
 rclone_upload() {
   local localFile="${2}"
   # exit if file is locked
-  [[ grep -x "${localFile}" $fileLock ]] && return 1
+  [[ $(grep -x "${localFile}" $fileLock) ]] && return 1
   # lock file so multiple uploads don't happen
   echo "${localFile}" >> $fileLock
   local fileSize="${1}"
