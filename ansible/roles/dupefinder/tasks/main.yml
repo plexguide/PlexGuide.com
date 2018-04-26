@@ -22,7 +22,7 @@
     name: variables
 
 - name: Register PG JSON
-  shell: "/var/plexguide/plex.library.json"
+  shell: "cat /var/plexguide/plex.library.json"
   register: pgjson
   ignore_errors: True
 
