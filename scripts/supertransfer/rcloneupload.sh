@@ -1,38 +1,36 @@
 #!/bin/bash
-
-
-# usage: rclone_upload <Service Account> <local_dir/filename> <remote_dir>
+#                      |---uploadQueueBuffer--|
+#usage: rclone_upload  <dirsize> <upload_dir>  <rclone> <remote_root_dir>
 rclone_upload() {
+  local localFile="${2}"
+  local sanitizedLocalFile=$(sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g; s/\^/\\^/g; s/\*/\\*/g; s/"/\\"/g; s/!/\\!/g' <<<$localFile)
+  # exit if file is locked, or race condtion met
+  [[ $(egrep -x "${sanitizedLocalFile}" $fileLock) ]] && return 1
+  #[[ ! -d "${localFile}" ]] && return 1
+  (cd "${localFile}") || return 1
+  [[ -z $(ls "${localFile}" ) ]] && return 1
+  # lock file so multiple uploads don't happen
+  echo "${localFile}" >> $fileLock
+  local fileSize="${1}"
+  local gdsa="${3}"
+  local remoteDir="${4}"
+  local rclone_fin_flag=0
+  local driveChunkSize
+  local rclone_fin_flag=0
+  local t1=$(date +%s)
 
-  # set vars
-  local rclone_fin_flag ; local gdsa ; local localFile
-  local time_start ; local remoteDir; local driveChunkSize
-  local oldUsage; local Usage; local rclonePID
-  rclone_fin_flag=0
-  t1=$(date +%s)
-  gdsa=${1}
-  # sanitize input of special chars and spaces by esacaping them
-  #localFile=$(sed 's/ /\\ /g; s/\"//g; s/(/\\(/g; s/)/\\)/g; s/\]/\\]/g; s/\[/\\[/g; s/|/\\|/g; s/\*/\\\*/g; s/&/\\&/g; s/\^/\\^/g; s/\;/\\;/g' <<<$var)
-  localFile=${2}
-  remoteDir=${3}
-  source settings.conf
-  [[ ! -d $logDir ]] && mkdir $logDir
-
-  # add timestamp & log
   # load latest usage value from db
-  oldUsage=$(egrep -m1 ^$gdsa=. $gdsaDB | awk -F'=' '{print $2}')
-  Usage=$(( oldUsage + fileSize ))
-  [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsa\tUsage: $Usage"
+  local oldUsage=$(egrep -m1 ^$gdsa=. $gdsaDB | awk -F'=' '{print $2}')
+  local Usage=$(( oldUsage + fileSize ))
+  [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tUsage: $Usage"
   # update gdsaUsage file with latest usage value
   sed -i '/'^$gdsa'=/ s/=.*/='$Usage'/' $gdsaDB
-
-  # lock file so multiple uploads don't happen
-  echo ${2} >> $fileLock
-  # debug
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO]\t$gdsaLeast\tStarting Upload: ${localFile}"
+  local gbUsage=$(python3 -c "print(int($Usage/1000000), 'GB')")
+  local gbFileSize=$(python3 -c "print(int($fileSize/1000000), 'GB')")
+  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) $gdsaLeast @$gbUsage\tUploading: ${localFile#"$localDir"} @${gbFileSize}"
 
 	# memory optimization
-  freeRam=$(free | grep Mem | awk '{print $4/1000000}')
+  local freeRam=$(free | grep Mem | awk '{print $4/1000000}')
 	case $freeRam in
 		[0123456789][0123456789][0123456789]*) driveChunkSize="1024M" ;;
 		[0123456789][0123456789]*) driveChunkSize="1024M" ;;
@@ -43,33 +41,41 @@ rclone_upload() {
 		2*) driveChunkSize="32M" ;;
 	  *) driveChunkSize="8M" ;;
 	esac
-  #echo "[DBUG] rcloneupload: localFile=${localFile}"
-  #echo "[DBUG] rcloneupload: raw input 2=$2"
+  #echo "$(tput setaf 5)[DBUG]$(tput sgr0) rcloneupload: localFile=${localFile}"
+  #echo "$(tput setaf 5)[DBUG]$(tput sgr0) rcloneupload: raw input 2=$2"
 
-  tmp=$(echo $2 | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
-  logfile=${logDir}/${gdsa}_${tmp}.log
-	rclone move --tpslimit 6 --checkers=16 \
+  local tmp=$(echo "${2}" | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
+  local logfile=${logDir}/${gdsa}_${tmp}.log
+	rclone move --tpslimit 6 --checkers=20 \
+    --transfers=8 --track-renames \
 		--log-file=${logfile}  \
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-    --delete-empty-src-dirs \
 		--drive-chunk-size=$driveChunkSize \
 		"${localFile}" "$gdsa:${remote_dir}${localFile#"$localDir"}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
-  secs=$(( $(date +%s) - $t1 ))
+  local secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
-    printf "[$(date +%m/%d\ %H:%M)] [ OK ]\t$gdsaLeast\tFinished Upload: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
+    printf "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0) $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
+    | tee -a /tmp/superTransferUploadSuccess
+    # release fileLock when file transfer finishes (or fails)
+    sleep 5
+    egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
+    [[ -e $logfile ]] && rm $logfile
+    return 0
   else
-    printf "[$(date +%m/%d\ %H:%M)] [FAIL]\t$gdsaLeast\tUPLOAD FAILED: $file in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
+    printf "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
+    | tee -a /tmp/superTransferUploadFail
     cat $logfile >> /tmp/rclonefail.log
-    [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsa\tREVERTED Usage: $Usage"
+    [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tREVERTED Usage: $Usage"
     # revert gdsaDB back to old value if upload failed
     sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
+    # release fileLock when file transfer finishes (or fails)
+    sleep 5
+    egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
+    [[ -e $logfile ]] && rm $logfile
+    return 1
   fi
-  # release fileLock when file transfer finishes (or fails)
-  grep -E ''
-  cat $fileLock | grep -Ev "(^|\s)${localFile}($|\s)" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp /tmp/fileLock
-  [[ -e $logfile ]] && rm $logfile
 	}
