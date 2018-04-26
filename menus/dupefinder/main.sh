@@ -53,7 +53,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            dialog --infobox "Deploying DupeFinder!" 3 33
+            dialog --infobox "Deploying DupeFinder!" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dupefinder 1>/dev/null 2>&1
             bash /opt/plexguide/menus/dupefinder/main.sh
             exit
