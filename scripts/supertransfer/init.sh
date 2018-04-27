@@ -235,10 +235,11 @@ NOTE: root_folder is optional, you can put movies into
       /movies , tv into /tv if you want.
 ###########################################################
 EOF
-echo "Leave this blank if you are using /"
-read -p 'Enter the name of your gdrive root folder for media. (example: /media) : ' root
+echo "NOTE: Leave this blank if you are using /"
+read -p 'Enter the name of your root folder for media: ' root
 [[ $root == '/' || -z $root ]] && root=''
-sed -i '/'^rootDir'=/ s/=.*/='"${root}"'/' $userSettings
+rootclean=$(sed 's/\//\\\//g' <<<$root)
+sed -i '/'^rootDir'=/ s/=.*/='${rootclean}'/' $userSetting
 
 cat <<EOF
 ############ CONFIGURATION ################################
