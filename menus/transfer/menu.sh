@@ -67,7 +67,7 @@ case $CHOICE in
     B)
         clear
         bash /opt/plexguide/scripts/supertransfer/config.sh
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
         read -n 1 -s -r -p "Press any key to continue "
         ;;
     C)
