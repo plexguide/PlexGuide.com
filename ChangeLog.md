@@ -3,7 +3,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.072] (Beta, Release Candiate & DEV)
 
-#### Beta2 - 27 April 2018
+#### Beta 3 - 27 April 2018
+
+- Changed
+  - Bug Fixes
+  - PGDupes Fixes
+
+#### Beta 2 - 27 April 2018
 
 - Added
   - PGTrak (half finished)
