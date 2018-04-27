@@ -24,7 +24,7 @@ After=multi-user.target network-online.target
 User=0
 Group=0
 Type=simple
-ExecStart=/bin/bash /opt/plexguide/scripts/supertransfer/supertransfer2.sh | tee /opt/appdata/plexguide/supertransfer.log
+ExecStart=/bin/bash /opt/plexguide/scripts/supertransfer/supertransfer2.sh 
 KillMode=process
 
 [Install]
