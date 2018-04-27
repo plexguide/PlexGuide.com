@@ -30,16 +30,18 @@ fi
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
-HEIGHT=11
+HEIGHT=13
 WIDTH=48
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="DupeFinder"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes Install/Config"
-         B "AutoDelete On/Off - Currently: $stat"
-         C "View Your Current Library"
+OPTIONS=(A "PGDupes Config - Install"
+         B "Generate a PlexToken"
+         C "Add Your Plex Library"
+         D "AutoDelete On/Off - Currently: $stat"
+         E "View Your Current Library"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -53,6 +55,26 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+            file="/opt/appdata/plexguide/plextoken"
+            if [ -e "$file" ]
+            then
+                echo "" 1>/dev/null 2>&1
+            else
+                dialog --title "--- WARNING ---" --msgbox "\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
+                bash /opt/plexguide/menus/pgdupes/main.sh
+                exit
+            fi
+
+            file="/var/plexguide/plex.library.json"
+            if [ -e "$file" ]
+            then
+                echo "" 1>/dev/null 2>&1
+            else
+                dialog --title "--- WARNING ---" --msgbox "\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
+                bash /opt/plexguide/menus/pgdupes/main.sh
+                exit
+            fi
+
             dialog --infobox "Deploying PGDupes!" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue"
@@ -61,11 +83,17 @@ case $CHOICE in
             exit
             ;;
         B)
+            bash /opt/plexguide/scripts/plextoken/main.sh
+            ;;
+        C)
+            bash /opt/plexguide/menus/pgdupes/paths.sh
+            ;; 
+        D)
             bash /opt/plexguide/menus/pgdupes/onoff.sh
             bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
-        C)
+        E)
             display="$(cat /var/plexguide/plex.library)"
             dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
             bash /opt/plexguide/menus/pgdupes/main.sh

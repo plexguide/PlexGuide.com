@@ -22,13 +22,12 @@ HEIGHT=12
 WIDTH=40
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Plex Installer"
+TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Generate a PlexToken"
-         B "Add Your Plex Library"
-         C "Config: PGDupes"
-         D "Config: Telly (Not Ready)"
+OPTIONS=(A "PGDupes"
+         B "PGTrek"
+         C "Telly (Not Ready)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -42,35 +41,13 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/scripts/plextoken/main.sh
-            ;;
-        B)
-            bash /opt/plexguide/menus/pgdupes/paths.sh
-            ;;
-        C)
-            file="/opt/appdata/plexguide/plextoken"
-            if [ -e "$file" ]
-            then
-                echo "" 1>/dev/null 2>&1
-            else
-                dialog --title "--- WARNING ---" --msgbox "\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
-                bash /opt/plexguide/menus/plex/enhancement.sh
-                exit
-            fi
-
-            file="/var/plexguide/plex.library.json"
-            if [ -e "$file" ]
-            then
-                echo "" 1>/dev/null 2>&1
-            else
-                dialog --title "--- WARNING ---" --msgbox "\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
-                bash /opt/plexguide/menus/plex/enhancement.sh
-                exit
-            fi
             bash /opt/plexguide/menus/pgdupes/main.sh
             ;;
-        D)
+        B)
             bash /opt/plexguide/menus/plex/telly.sh
+            ;;
+        C)
+            clear
             ;;
         Z)
             clear
