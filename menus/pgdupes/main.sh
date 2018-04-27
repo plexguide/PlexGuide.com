@@ -34,7 +34,7 @@ HEIGHT=13
 WIDTH=48
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="DupeFinder"
+TITLE="PGDupes"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGDupes"

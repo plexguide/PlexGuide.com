@@ -35,17 +35,20 @@ then
    exit
 fi
 
-file="/var/plexguide/pgdupes.autodelete"
+file="/var/plexguide/api.trakkey"
 if [ -e "$file" ]
 then
     echo "" 1>/dev/null 2>&1
 else
-    echo "ON" > /var/plexguide/pgdupes.autodelete
-    echo "true" > /var/plexguide/pgdupes.autodelete.json
+    dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
+    if dialog --stdout --title "API Question?" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --yesno "\nAPI Correct??" 0 0; then
+    bash /opt/plexguide/menus/pgtrak/traktkey.sh
+    else
+    dialog --title "-- Note! --" --msgbox "\nCome Back Anytime! As most non-US citizen say -- Cheers! --" 0 0
     exit
 fi
-
-stat=$( cat /var/plexguide/pgdupes.autodelete )
 
 HEIGHT=13
 WIDTH=48
@@ -55,7 +58,7 @@ TITLE="DupeFinder"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGDupes"
-         B "PlexToken"
+         B "Trakt API Key"
          C "Config Plex Library"
          D "AutoDelete - Currently: $stat"
          E "Current Library Config"

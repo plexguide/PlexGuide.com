@@ -21,4 +21,13 @@ dialog --title "Input >> Plex Login" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Plex Username or EMail:" 8 45 2>/var/plexguide/api.trakkey
 key=$(cat /var/plexguide/api.trakkey)
-dialog --infobox "Entered API Key: $key 3 45
+dialog --infobox "Entered API Key: $key 3 45"
+
+if dialog --stdout --title "API Question?" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --yesno "\nAPI Correct??" 0 0; then
+    rm -r /var/plexguide/api.trakkey
+else
+    bash /opt/plexguide/menus/pgtrak/traktkey.sh
+    exit
+fi
