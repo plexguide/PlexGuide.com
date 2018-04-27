@@ -18,12 +18,12 @@
 export NCURSES_NO_UTF8_ACS=1
 
 ### Pull the API Keys
-info=$( cat /opt/appdata/radarr/config.xml ) 1>/dev/null 2>&1
+info=$( cat /opt/appdata/radarr/config.xml 1>/dev/null 2>&1 ) 
 info=${info#*<ApiKey>} 1>/dev/null 2>&1
 info1=$( echo ${info:0:32} ) 1>/dev/null 2>&1
 echo "$info1" > /var/plexguide/api.radarr
 
-info=$( cat /opt/appdata/sonarr/config.xml ) 1>/dev/null 2>&1
+info=$( cat /opt/appdata/sonarr/config.xml 1>/dev/null 2>&1 ) 
 info=${info#*<ApiKey>} 1>/dev/null 2>&1
 info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
 echo "$info2" > /var/plexguide/api.sonarr
@@ -54,11 +54,11 @@ HEIGHT=13
 WIDTH=48
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="DupeFinder"
+TITLE="PGTrak"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Deploy PGDupes"
-         B "Trakt API Key"
+OPTIONS=(A "Deploy PGTrak"
+         B "Trakt API-Key"
          C "Config Plex Library"
          D "AutoDelete - Currently: $stat"
          E "Current Library Config"
@@ -75,35 +75,15 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            file="/opt/appdata/plexguide/plextoken"
-            if [ -e "$file" ]
-            then
-                echo "" 1>/dev/null 2>&1
-            else
-                dialog --title "--- WARNING ---" --msgbox "\nYou need to create a PLEXToken!\n\nYou must have not read the Wiki!" 0 0
-                bash /opt/plexguide/menus/pgdupes/main.sh
-                exit
-            fi
-
-            file="/var/plexguide/plex.library.json"
-            if [ -e "$file" ]
-            then
-                echo "" 1>/dev/null 2>&1
-            else
-                dialog --title "--- WARNING ---" --msgbox "\nYou need to create your Library layout for us!\n\nYou must have not read the Wiki!" 0 0
-                bash /opt/plexguide/menus/pgdupes/main.sh
-                exit
-            fi
-
-            dialog --infobox "Deploying PGDupes!" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes 1>/dev/null 2>&1
+            dialog --infobox "Deploying PGTrak!" 3 26
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue"
             dialog --title "PGDupes Status" --msgbox "\nPGDupes Deployment Complete! Use the CMD pgdupes in the Command Line!" 0 0
             bash /opt/plexguide/menus/pgdupes/main.sh
             exit
             ;;
         B)
-            bash /opt/plexguide/scripts/plextoken/main.sh
+            bash /opt/plexguide/menus/pgtrak/traktkey.sh
             ;;
         C)
             bash /opt/plexguide/menus/pgdupes/paths.sh
