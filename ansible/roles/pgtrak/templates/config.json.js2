@@ -30,15 +30,9 @@
         "ca"
       ],
       "blacklisted_min_runtime": 15,
-      "blacklisted_min_year": 2010,
+      "blacklisted_min_year": 1980,
       "blacklisted_max_year": 2019,
       "blacklisted_genres": [
-        "animation",
-        "game-show",
-        "talk-show",
-        "home-and-garden",
-        "children",
-        "reality",
         "anime",
         "news",
         "documentary",
@@ -47,15 +41,12 @@
       "blacklisted_networks": [
         "twitch",
         "youtube",
-        "nickelodeon",
-        "hallmark",
         "reelzchannel",
         "disney",
         "cnn",
         "cbbc",
         "the movie network",
         "teletoon",
-        "cartoon network",
         "espn",
         "fox sports",
         "yahoo!"
@@ -72,11 +63,10 @@
       ],
       "blacklist_title_keywords": [
         "untitled",
-        "barbie",
         "ufc fight night"
       ],
-      "blacklisted_min_runtime": 60,
-      "blacklisted_min_year": 2000,
+      "blacklisted_min_runtime": 35,
+      "blacklisted_min_year": 1980,
       "blacklisted_max_year": 2019,
       "allowed_countries": [
         "us",
@@ -91,17 +81,17 @@
   "radarr": {
     "api_key": "",
     "profile": "HD-1080p",
-    "url": "https://radarr.{{domain}}",
-    "root_folder": "/movies/"
+    "url": "http://0.0.0.0:7878",
+    "root_folder": "/unionfs/tv/"
   },
   "sonarr": {
     "api_key": "",
     "profile": "HD-1080p",
-    "url": "https://sonarr.{{domain}}",
-    "root_folder": "/tv/",
+    "url": "http://0.0.0.0:8989",
+    "root_folder": "/unionfs/movies/",
     "tags": {}
   },
   "trakt": {
-    "api_key": ""
+    "api_key": "REPLACEME"
   }
 }
