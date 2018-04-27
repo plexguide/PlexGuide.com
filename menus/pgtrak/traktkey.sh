@@ -17,11 +17,11 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-dialog --title "Input >> Plex Login" \
+dialog --title "Trakt Requested Information" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Trakt API-Key:" 8 45 2>/var/plexguide/api.trakkey
 key=$(cat /var/plexguide/api.trakkey)
-dialog --infobox "Entered API Key: $key 3 45"
+dialog --infobox "Entered API Key: $key" 0 0
 
 if dialog --stdout --title "API Question?" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
