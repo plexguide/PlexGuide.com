@@ -92,8 +92,8 @@ EOF
 }
 #configure_teamdrive
 #configure_teamdrive_share
+source /opt/plexguide/scripts/supertransfer/init.sh
 configure_personal_share
-
 
 # configure json's for rclone
 configure_Json
@@ -129,4 +129,4 @@ function validate_json(){
 }
 validate_json
 
-echo "$(tput setaf 5)[DBUG]$(tput sgr0) config script end. run supertransfer2.sh to initiate upload."
+echo "$(tput setaf 5)[DBUG]$(tput sgr0) config script end."
