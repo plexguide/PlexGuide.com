@@ -2,7 +2,7 @@
 source /opt/plexguide/scripts/supertransfer/init.sh
 source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
 source /opt/plexguide/scripts/supertransfer/settings.conf
-source spinner.sh
+source /opt/plexguide/scripts/supertransfer/spinner.sh
 
 declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3)
 for app in $reqlist; do
