@@ -22,13 +22,13 @@ rclone_upload() {
   # load latest usage value from db
   local oldUsage=$(egrep -m1 ^$gdsa=. $gdsaDB | awk -F'=' '{print $2}')
   local Usage=$(( oldUsage + fileSize ))
-  [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsa\tUsage: $Usage"
+  [[ -n $dbug ]] && echo -e " [DBUG]\t$gdsa\tUsage: $Usage"
   # update gdsaUsage file with latest usage value
   sed -i '/'^$gdsa'=/ s/=.*/='$Usage'/' $gdsaDB
   local gbFileSize=$(python3 -c "print(round($fileSize/1000000, 1), 'GB')")
-  echo -e "[$(date +%m/%d\ %H:%M)] [INFO] $gdsaLeast \tUploading: ${localFile#"$localDir"} @${gbFileSize}"
+  echo -e " [INFO] $gdsaLeast \tUploading: ${localFile#"$localDir"} @${gbFileSize}"
   [[ -n $dbug ]] && local gbUsage=$(python3 -c "print(round($Usage/1000000, 2), 'GB')")
-  [[ -n $dbug ]] && -e "[$(date +%m/%d\ %H:%M)] [DBUG] $gdsaLeast @${gbUsage}"
+  [[ -n $dbug ]] && -e " [DBUG] $gdsaLeast @${gbUsage}"
 
 	# memory optimization
   local freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -60,18 +60,16 @@ rclone_upload() {
   # check if rclone finished sucessfully
   local secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
-    printf "[$(date +%m/%d\ %H:%M)] [ OK ] $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
-    | tee -a /tmp/superTransferUploadSuccess
+    printf " [ OK ] $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
     sleep 5
   else
-    printf "[$(date +%m/%d\ %H:%M)] [FAIL] $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
-    | tee -a /tmp/superTransferUploadFail
+    printf " [FAIL] $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
     cat $logfile >> /tmp/rclonefail.log
-    [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsa\tREVERTED Usage: $Usage"
+    [[ -n $dbug ]] && echo -e " [DBUG]\t$gdsa\tREVERTED Usage: $Usage"
     # revert gdsaDB back to old value if upload failed
     sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
   fi
     # release fileLock when file transfer finishes (or fails)
-    egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp ${fileLock} 
+    egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp ${fileLock}
     [[ -e $logfile ]] && rm $logfile
 	}
