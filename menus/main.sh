@@ -1,4 +1,4 @@
-d#!/bin/bash
+#!/bin/bash
 #
 # [PlexGuide Menu]
 #
