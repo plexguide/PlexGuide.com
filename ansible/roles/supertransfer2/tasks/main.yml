@@ -16,35 +16,40 @@
 #
 #################################################################################
 ---
-  - name: Stop If Transfer Service Running
+  - name: Stop If Transfer Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: transfer
+      ignore_errors: True
 
-  - name: Stop If Move Service Running
+  - name: Stop If Move Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: move
+      ignore_errors: True
 
-  - name: Stop If Encrypted Move Service Running
+  - name: Stop If Encrypted Move Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: move-en
+      ignore_errors: True
 
-  - name: Stop If Time Service Running
+  - name: Stop If Time Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: time
+      ignore_errors: True
 
-  - name: Stop If Supertransfer (1) Service Running
+  - name: Stop If Supertransfer (1) Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: supertransfer
+      ignore_errors: True
 
   - name: Install SuperTransfer2 Service
     template:
