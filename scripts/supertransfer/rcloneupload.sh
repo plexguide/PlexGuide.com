@@ -22,13 +22,13 @@ rclone_upload() {
   # load latest usage value from db
   local oldUsage=$(egrep -m1 ^$gdsa=. $gdsaDB | awk -F'=' '{print $2}')
   local Usage=$(( oldUsage + fileSize ))
-  [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tUsage: $Usage"
+  [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsa\tUsage: $Usage"
   # update gdsaUsage file with latest usage value
   sed -i '/'^$gdsa'=/ s/=.*/='$Usage'/' $gdsaDB
   local gbFileSize=$(python3 -c "print(round($fileSize/1000000, 1), 'GB')")
-  echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) $gdsaLeast \tUploading: ${localFile#"$localDir"} @${gbFileSize}"
+  echo -e "[$(date +%m/%d\ %H:%M)] [INFO] $gdsaLeast \tUploading: ${localFile#"$localDir"} @${gbFileSize}"
   [[ -n $dbug ]] && local gbUsage=$(python3 -c "print(round($Usage/1000000, 2), 'GB')")
-  [[ -n $dbug ]] && -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0) $gdsaLeast @${gbUsage}"
+  [[ -n $dbug ]] && -e "[$(date +%m/%d\ %H:%M)] [DBUG] $gdsaLeast @${gbUsage}"
 
 	# memory optimization
   local freeRam=$(free | grep Mem | awk '{print $4/1000000}')
@@ -42,8 +42,8 @@ rclone_upload() {
 		2*) driveChunkSize="32M" ;;
 	  *) driveChunkSize="8M" ;;
 	esac
-  #echo "$(tput setaf 5)[DBUG]$(tput sgr0) rcloneupload: localFile=${localFile}"
-  #echo "$(tput setaf 5)[DBUG]$(tput sgr0) rcloneupload: raw input 2=$2"
+  #echo "[DBUG] rcloneupload: localFile=${localFile}"
+  #echo "[DBUG] rcloneupload: raw input 2=$2"
 
   local tmp=$(echo "${2}" | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   local logfile=${logDir}/${gdsa}_${tmp}.log
@@ -60,14 +60,14 @@ rclone_upload() {
   # check if rclone finished sucessfully
   local secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
-    printf "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0) $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
+    printf "[$(date +%m/%d\ %H:%M)] [ OK ] $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
     | tee -a /tmp/superTransferUploadSuccess
     sleep 5
   else
-    printf "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
+    printf "[$(date +%m/%d\ %H:%M)] [FAIL] $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) \
     | tee -a /tmp/superTransferUploadFail
     cat $logfile >> /tmp/rclonefail.log
-    [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 5)[DBUG]$(tput sgr0)\t$gdsa\tREVERTED Usage: $Usage"
+    [[ -n $dbug ]] && echo -e "[$(date +%m/%d\ %H:%M)] [DBUG]\t$gdsa\tREVERTED Usage: $Usage"
     # revert gdsaDB back to old value if upload failed
     sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
   fi
