@@ -18,8 +18,8 @@ fi
 # source settings
 [[ ! -d $jsonPath ]] && mkdir $jsonPath &>/dev/null
 [[ ! -d $logDir ]] || mkdir $logDir &>/dev/null
-[[ ! -e $userSettings ]] && cp usersettings_template_dont_edit ${jsonPath}/user/opt/plexguide/scripts/supertransfer/settings.conf
-[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp auto-rename-my-keys.sh $jsonPath
+[[ ! -e $userSettings ]] && cp /opt/plexguide/scripts/supertransfer/usersettings_template_dont_edit ${jsonPath}/settings.conf
+[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp /opt/plexguide/scripts/supertransfer/auto-rename-my-keys.sh $jsonPath
 [[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
 source $userSettings
 

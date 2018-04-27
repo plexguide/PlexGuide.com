@@ -15,9 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-HEIGHT=10
+HEIGHT=12
 WIDTH=59
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Supertransfer by Flicker-Rate"
 MENU="Make Your Selection Choice:"
