@@ -34,7 +34,7 @@ do
   current=$( cat /tmp/plex.library )
 
 ############# START
-    HEIGHT=10
+    HEIGHT=11
     WIDTH=43
     CHOICE_HEIGHT=2
     BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
