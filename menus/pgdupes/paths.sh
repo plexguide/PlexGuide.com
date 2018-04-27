@@ -33,6 +33,34 @@ do
   message=$( cat /var/plexguide/plex.library )
   current=$( cat /tmp/plex.library )
 
+############# START
+    HEIGHT=9
+    WIDTH=43
+    CHOICE_HEIGHT=2
+    BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+    TITLE="Library Type"
+    MENU="\nWhat Kind of Library is This? (Important)"
+    OPTIONS=(A "TV Library"
+             B "Movie Library")
+    CHOICE=$(dialog --clear \
+                    --backtitle "$BACKTITLE" \
+                    --title "$TITLE" \
+                    --menu "$MENU" \
+                    $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                    "${OPTIONS[@]}" \
+                    2>&1 >/dev/tty)
+    clear
+    case $CHOICE in
+            A)
+              number="2"
+              ;;
+            B)
+              number="1"
+              ;;
+    esac
+############# END
+
+
   HEIGHT=15
   WIDTH=43
   CHOICE_HEIGHT=3
@@ -57,7 +85,7 @@ do
             echo "" >> /var/plexguide/plex.library
             ### File
             build="$(cat /tmp/plex.library)"
-            build="     \"$build\": 1,"
+            build="     \"$build\": $number,"
             echo "$build" > /tmp/plex.library.json
             cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             ;;
@@ -73,7 +101,7 @@ do
             echo "" >> /var/plexguide/plex.library 
             ### File
             build="$(cat /tmp/plex.library)"
-            build="     \"$build\": 1"
+            build="     \"$build\": $number"
             echo "$build" > /tmp/plex.library.json
             cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             chown 1000:1000 /var/plexguide/plex.library.json 1>/dev/null 2>&1
