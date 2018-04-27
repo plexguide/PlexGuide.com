@@ -36,7 +36,7 @@ do
 ############# START
     HEIGHT=10
     WIDTH=43
-    CHOICE_HEIGHT=3
+    CHOICE_HEIGHT=2
     BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
     TITLE="Library Type"
     MENU="\nWhat Kind of Library is This? (Important)"
