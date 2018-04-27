@@ -62,7 +62,7 @@ do
 
 
   HEIGHT=15
-  WIDTH=43
+  WIDTH=50
   CHOICE_HEIGHT=3
   BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
   TITLE="Your Current Library"
