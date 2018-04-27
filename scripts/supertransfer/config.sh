@@ -133,4 +133,4 @@ function validate_json(){
 }
 validate_json
 
-echo "$(tput setaf 5)[DBUG]$(tput sgr0) config script end."
+echo "[DBUG] config script end."
