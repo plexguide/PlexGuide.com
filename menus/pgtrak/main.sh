@@ -57,6 +57,7 @@ else
     else
         dialog --title "-- Note! --" --msgbox "\nCome Back Anytime! As most non-US citizen say -- Cheers! --" 0 0
     exit
+    fi
 fi
 
 HEIGHT=13
