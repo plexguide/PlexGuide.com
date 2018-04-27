@@ -23,7 +23,7 @@ TITLE="Supertransfer by Flicker-Rate"
 MENU="Make Your Selection Choice:"
 
 OPTIONS=(A "Multi-Gdrive Supertransfer (depreciated)"
-         B "Multi-SA Supertransfer2"
+         B "Multi-SA Supertransfer2 req: teamdrives"
          C "BACK TO NORMAL TRANSFER"
          Z "Exit")
 
@@ -68,7 +68,7 @@ case $CHOICE in
         clear
         bash /opt/plexguide/scripts/supertransfer/config.sh
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
-        read -n 1 -s -r -p "Press any key to continue "
+        journalctl -f -u supertransfer2
         ;;
     C)
     clear

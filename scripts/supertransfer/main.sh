@@ -1,3 +1,3 @@
 #!/bin/bash
-tail -f /opt/plexguide/supertransfer.log
+journalctl -f -u supertransfer2 
 exit 0

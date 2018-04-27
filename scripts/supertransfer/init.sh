@@ -196,25 +196,24 @@ configure_teamdrive_share(){
 source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
 [[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
-grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"' > /tmp/clientemails
+printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
 count=$(cat /tmp/clientemails | wc -l)
 cat <<EOF
 ############ CONFIGURATION ################################
-1) If you haven't done so, create a teamdrive
-2) Go to your teamdrive and share your folder with the $count
-   following emails:
+2) In your gdrive, share your teamdrive with
+   the $count following emails:
+      - tip: uncheck "notify people" & check "prevent editors..."
+      - tip: ignore "sharing outside of org warning"
+
 ###########################################################
 EOF
-
-read -p 'Would you like to list them one at a time? y/n> ' answer
-if [[ $answer =~ [y|Y|yes|Yes] ]]; then
-  echo 'OK, press any key to see the next one.'
-  while read -r line; do
-    read -p "$line"
-  done </tmp/clientemails
-else
-  less /tmp/clientemails
-fi
+read -p 'Press Any Key To See The Emails'
+cat /tmp/clientemails
+echo
+echo 'NOTE: you can copy and paste the whole chunk at once'
+echo 'If you need to see them again, they are in /tmp/clientemails'
+read -p 'Press Any Key To Continue.'
+return 0
 }
 
 configure_personal_share(){
@@ -266,6 +265,7 @@ return 0
 }
 
 configure_Json(){
+source ${userSettings}
 rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
 [[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json Found." FAIL && exit 1
 # add rclone config for new keys if not already existing

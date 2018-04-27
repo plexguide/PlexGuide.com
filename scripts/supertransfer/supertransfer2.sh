@@ -126,7 +126,7 @@ while true; do
           #input format: <dirsize> <upload_dir>  <rclone> <remote_root_dir>
           rclone_upload ${uploadQueueBuffer[i]} $gdsaLeast $remoteDir &
           unset IFS
-          sleep 5
+          sleep
         fi
       done
       unset -v uploadQueueBuffer[@]
