@@ -37,11 +37,11 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="DupeFinder"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes Config - Install"
-         B "Generate a PlexToken"
-         C "Add Your Plex Library"
-         D "AutoDelete On/Off - Currently: $stat"
-         E "View Your Current Library"
+OPTIONS=(A "Deploy PGDupes"
+         B "PlexToken"
+         C "Config Plex Library"
+         D "AutoDelete - Currently: $stat"
+         E "Current Library Config"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
