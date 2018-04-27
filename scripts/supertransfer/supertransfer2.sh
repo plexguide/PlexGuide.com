@@ -2,9 +2,9 @@
 # INIT
 ############################################################################
 echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Initializing Supertransfer2 Load Balanced Multi-SA Uploader..."
-source rcloneupload.sh
-source init.sh
-source settings.conf
+source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer/init.sh
+source /opt/plexguide/scripts/supertransfer/settings.conf
 source ${userSettings}
 #dbug=on
 

@@ -17,7 +17,7 @@
 #################################################################################
 
 [Unit]
-Description='SuperTransfer Loaded Balanced Mutli SA Gdrive Uploader'
+Description='SuperTransfer Loaded Balanced Multi SA Gdrive Uploader'
 After=multi-user.target network-online.target
 
 [Service]

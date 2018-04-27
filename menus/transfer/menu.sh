@@ -17,7 +17,7 @@
 #################################################################################
 HEIGHT=10
 WIDTH=59
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Supertransfer by Flicker-Rate"
 MENU="Make Your Selection Choice:"

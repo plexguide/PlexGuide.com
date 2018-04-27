@@ -1,5 +1,5 @@
 #!/bin/bash
-#source settings.conf
+#source /opt/plexguide/scripts/supertransfer/settings.conf
 # functions:
 # cat_Art() - init msg
 # upload_Json() - configure with new jsons
@@ -135,7 +135,7 @@ read -p "View Error Log? y/n>" answer
 }
 
 upload_Json(){
-source settings.conf
+source /opt/plexguide/scripts/supertransfer/settings.conf
 source ${userSettings}
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
 [[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5

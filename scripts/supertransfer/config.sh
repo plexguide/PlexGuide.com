@@ -1,7 +1,7 @@
 #!/bin/bash
-source init.sh
-source rcloneupload.sh
-source settings.conf
+source /opt/plexguide/scripts/supertransfer/init.sh
+source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer/settings.conf
 source spinner.sh
 
 declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3)
@@ -18,7 +18,7 @@ fi
 # source settings
 [[ ! -d $jsonPath ]] && mkdir $jsonPath &>/dev/null
 [[ ! -d $logDir ]] || mkdir $logDir &>/dev/null
-[[ ! -e $userSettings ]] && cp usersettings_template_dont_edit ${jsonPath}/usersettings.conf
+[[ ! -e $userSettings ]] && cp usersettings_template_dont_edit ${jsonPath}/user/opt/plexguide/scripts/supertransfer/settings.conf
 [[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp auto-rename-my-keys.sh $jsonPath
 [[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
 source $userSettings
