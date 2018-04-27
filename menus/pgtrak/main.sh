@@ -20,7 +20,7 @@ export NCURSES_NO_UTF8_ACS=1
 ### Pull the API Keys
 info=$( cat /opt/appdata/radarr/config.xml )
 info=${info#*<ApiKey>}
-info1=$( echo ${info:0:32}
+info1=$( echo ${info:0:32} )
 echo "$info1" > /var/plexguide/api.radarr
 
 info=$( cat /opt/appdata/sonarr/config.xml )
