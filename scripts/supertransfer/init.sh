@@ -224,7 +224,7 @@ printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/cl
 count=$(cat /tmp/clientemails | wc -l)
 echo "tip: by default, PG stores media in gdrive on root"
 read -p 'Would you like to change where media is stored? y/n> ' answer
-if [[ $answer =~ [y|Y|yes|Yes] ]]; do
+if [[ $answer =~ [y|Y|yes|Yes] ]]; then
 cat <<EOF
 ############ CONFIGURATION ################################
 1) Create a directory structure like so in your gdrive:
@@ -262,6 +262,7 @@ echo
 echo 'NOTE: you can copy and paste the whole chunk at once'
 echo 'If you need to see them again, they are in /tmp/clientemails'
 read -p 'Press Any Key To Continue.'
+return 0
 }
 
 configure_Json(){
