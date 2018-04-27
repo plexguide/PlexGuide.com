@@ -26,8 +26,9 @@ dialog --infobox "Entered API Key: $key" 0 0
 if dialog --stdout --title "API Question?" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --yesno "\nAPI Correct? $key" 0 0; then
-    rm -r /var/plexguide/api.trakkey
+    easteregg="foundme"
 else
+	rm -r /var/plexguide/api.trakkey
     bash /opt/plexguide/menus/pgtrak/traktkey.sh
     exit
 fi
