@@ -25,6 +25,7 @@ info=$( cat /opt/appdata/radarr/config.xml )
 info=${info#*<ApiKey>} 1>/dev/null 2>&1
 info1=$( echo ${info:0:32} ) 1>/dev/null 2>&1
 echo "$info1" > /var/plexguide/api.radarr
+fi
 
 file="/opt/appdata/sonarr/config.xml"
 if [ -e "$file" ]
@@ -42,22 +43,21 @@ then
    exit
 fi
 
-#file="/var/plexguide/api.trakkey"
-#if [ -e "$file" ]
-#then
-    #echo "" 1>/dev/null 2>&1
-#else
-
-    #dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
+file="/var/plexguide/api.trakkey"
+if [ -e "$file" ]
+then
+    echo "" 1>/dev/null 2>&1
+else
+    dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
     
-    #if dialog --stdout --title "API Question?" \
-    #--backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    #--yesno "\nAPI Correct??" 0 0; then
-        #bash /opt/plexguide/menus/pgtrak/traktkey.sh
-    #else
-        #dialog --title "-- Note! --" --msgbox "\nCome Back Anytime! As most non-US citizen say -- Cheers! --" 0 0
-    #exit
-#fi
+    if dialog --stdout --title "API Question?" \
+    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+    --yesno "\nAPI Correct??" 0 0; then
+        bash /opt/plexguide/menus/pgtrak/traktkey.sh
+    else
+        dialog --title "-- Note! --" --msgbox "\nCome Back Anytime! As most non-US citizen say -- Cheers! --" 0 0
+    exit
+fi
 
 HEIGHT=13
 WIDTH=48
