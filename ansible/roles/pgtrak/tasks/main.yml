@@ -21,6 +21,16 @@
 - include_role:
     name: variables
 
+- name: API Sonarr
+  shell: "cat /var/plexguide/api.sonarr"
+  register: apis
+  ignore_errors: True
+
+- name: API Radarr
+  shell: "cat /var/plexguide/api.radarr"
+  register: apir
+  ignore_errors: True
+
 - name: Check service exists
   stat:
     path: "/etc/systemd/system/pgtrak.service"
