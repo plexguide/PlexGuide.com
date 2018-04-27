@@ -33,7 +33,7 @@
 
 - name: API Trakkey
   shell: "cat /var/plexguide/api.trakkey"
-  register: trakkey
+  register: key
   ignore_errors: True
 
 - name: Check service exists
