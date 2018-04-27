@@ -222,6 +222,9 @@ source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
 count=$(cat /tmp/clientemails | wc -l)
+echo "tip: by default, PG stores media in gdrive on root"
+read -p 'Would you like to change where media is stored? y/n> ' answer
+if [[ $answer =~ [y|Y|yes|Yes] ]]; do
 cat <<EOF
 ############ CONFIGURATION ################################
 1) Create a directory structure like so in your gdrive:
@@ -233,13 +236,16 @@ cat <<EOF
 
 NOTE: root_folder is optional, you can put movies into
       /movies , tv into /tv if you want.
+NOTE: you can drag and drop existing movies/tv folders here.
 ###########################################################
 EOF
-echo "NOTE: Leave this blank if you are using /"
+echo "Example: /media     Example2: /data"
 read -p 'Enter the name of your root folder for media: ' root
 [[ $root == '/' || -z $root ]] && root=''
 rootclean=$(sed 's/\//\\\//g' <<<$root)
-sed -i '/'^rootDir'=/ s/=.*/='${rootclean}'/' $userSetting
+sed -i '/'^rootDir'=/ s/=.*/='${rootclean}'/' $userSettings
+echo
+fi
 
 cat <<EOF
 ############ CONFIGURATION ################################
@@ -250,8 +256,10 @@ cat <<EOF
 
 ###########################################################
 EOF
-read -p 'Press Any Key To See The Emails. NOTE: you can copy and paste the whole chunk.'
+read -p 'Press Any Key To See The Emails'
 cat /tmp/clientemails
+echo
+echo 'NOTE: you can copy and paste the whole chunk at once'
 echo 'If you need to see them again, they are in /tmp/clientemails'
 read -p 'Press Any Key To Continue.'
 }

@@ -42,6 +42,11 @@ if [[ ! $(ls $jsonPath | egrep .json$)  ]]; then
     fi
 elif [[ $@ =~ "--config" ]]; then
   upload_Json
+else
+  read -p 'Looks Like you have Service Keys Already. Configure More? y/n>' answer
+    if [[ $answer =~ [y|Y|yes|Yes] || $answer == "" ]];then
+      upload_Json
+    fi
 fi
 
 
