@@ -35,7 +35,7 @@
   "PLEX_SECTIONS": {
 {{pgjson.stdout}}
   },
-  "PLEX_SERVER": "http://localhost:32400",
+  "PLEX_SERVER": "http://0.0.0.0:32400",
   "PLEX_TOKEN": "{{token.stdout}}",
   "SCORE_FILESIZE": true,
   "SKIP_LIST": [],
