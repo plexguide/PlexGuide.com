@@ -42,11 +42,11 @@ then
    exit
 fi
 
-file="/var/plexguide/api.trakkey"
-if [ -e "$file" ]
-then
+#file="/var/plexguide/api.trakkey"
+#if [ -e "$file" ]
+#then
     #echo "" 1>/dev/null 2>&1
-else
+#else
 
     #dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
     
@@ -57,7 +57,7 @@ else
     #else
         #dialog --title "-- Note! --" --msgbox "\nCome Back Anytime! As most non-US citizen say -- Cheers! --" 0 0
     #exit
-fi
+#fi
 
 HEIGHT=13
 WIDTH=48
