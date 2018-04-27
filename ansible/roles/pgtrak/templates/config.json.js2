@@ -82,13 +82,13 @@
     "api_key": "",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:7878",
-    "root_folder": "/unionfs/tv/"
+    "root_folder": "/unionfs/movies/"
   },
   "sonarr": {
     "api_key": "",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:8989",
-    "root_folder": "/unionfs/movies/",
+    "root_folder": "/unionfs/tv/",
     "tags": {}
   },
   "trakt": {
