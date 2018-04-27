@@ -16,7 +16,24 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
- ## point to variable file for ipv4 and domain.com
+
+### Pull the API Keys
+info=$( cat /opt/appdata/radarr/config.xml )
+info=${info#*<ApiKey>}
+info1=$( echo ${info:0:32}
+echo "$info1" > /var/plexguide/api.radarr
+
+info=$( cat /opt/appdata/sonarr/config.xml )
+info=${info#*<ApiKey>}
+info2=$( echo ${info:0:32} )
+echo "$info2" > /var/plexguide/api.sonarr
+
+### If Both are Blank, which means neither deployed, warn USER!
+if [ "$info2" == "$info1" ]
+then
+   dialog --title "-- WARNING! --" --msgbox "\nYou must deploy at least RADARR or SONARR. If you plan to do both, deploy both before starting!/n/nThis script automatically retrieves your API Keys for both programs! " 0 0
+   exit
+fi
 
 file="/var/plexguide/pgdupes.autodelete"
 if [ -e "$file" ]
@@ -106,4 +123,4 @@ case $CHOICE in
 ########## Deploy End
 esac
 
-bash /opt/plexguide/menus/pgdupes/main.sh
+bash /opt/plexguide/menus/pgtrak/main.sh

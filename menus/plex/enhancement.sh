@@ -44,6 +44,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgdupes/main.sh
             ;;
         B)
+            bash /opt/plexguide/menus/pgtrak/main.sh
             ansible-role pgtrak
             ;;
         C)
