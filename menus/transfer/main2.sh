@@ -22,7 +22,7 @@ clear
 
 ################# Unencrypted Rclone Question
 clear
-rclone listremotes | grep crypt && whiptail --title "Warning" --msgbox "This is for the UNENCRYPTED RCLONE only. Please remove all encrypted rclone remotes." 8 56 && exit 0
+#rclone listremotes | grep crypt && whiptail --title "Warning" --msgbox "This is for the UNENCRYPTED RCLONE only. Please remove all encrypted rclone remotes." 8 56 && exit 0
 
 while [ 1 ]
 do
@@ -37,7 +37,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    echo 
+    echo
     echo "Please Add Another GDrive. (Name It Whatever You'd Like.)"
     echo
     read -n 1 -s -r -p "Press any key to continue "

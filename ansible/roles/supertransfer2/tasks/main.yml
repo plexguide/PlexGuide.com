@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# [SuperTransfer]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+  - name: Stop If Transfer Service Running
+    systemd:
+      state: stopped
+      enabled: no
+      name: transfer
+
+  - name: Stop If Move Service Running
+    systemd:
+      state: stopped
+      enabled: no
+      name: move
+
+  - name: Stop If Encrypted Move Service Running
+    systemd:
+      state: stopped
+      enabled: no
+      name: move-en
+
+  - name: Stop If Time Service Running
+    systemd:
+      state: stopped
+      enabled: no
+      name: time
+
+  - name: Stop If Supertransfer (1) Service Running
+    systemd:
+      state: stopped
+      enabled: no
+      name: supertransfer
+
+  - name: Install SuperTransfer2 Service
+    template:
+      src: supertransfer2.service
+      dest: /etc/systemd/system/supertransfer2.service
+      force: yes
+
+  - name: Install SuperTransfer Command
+    template:
+      src: supertransfer
+      dest: /bin/supertransfer
+      force: yes
+
+  - name: Set Permissions On Supertransfer Command
+    shell: "sudo chmod +x /bin/supertransfer"
+
+  - name: Enable Supertransfer2 Service
+    systemd:
+      daemon_reload: yes
+      enabled: yes
+      state: restarted
+      name: supertransfer2

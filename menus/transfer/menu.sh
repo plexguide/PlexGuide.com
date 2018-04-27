@@ -19,11 +19,12 @@ HEIGHT=10
 WIDTH=59
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="SUPERSPEED by Flicker-Rate"
+TITLE="Supertransfer by Flicker-Rate"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Multi-Gdrive SUPERSPEED"
-         B "BACK TO NORMAL TRANSFER"
+OPTIONS=(A "Multi-Gdrive Supertransfer (depreciated)"
+         B "Multi-SA Supertransfer2"
+         C "BACK TO NORMAL TRANSFER"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -38,7 +39,7 @@ clear
 case $CHOICE in
     A)
     clear
-    echo 
+    echo
     echo "Please Add Another GDrive. (Name It Whatever You'd Like.)"
     echo
     read -n 1 -s -r -p "Press any key to continue "
@@ -64,6 +65,12 @@ case $CHOICE in
     fi
         ;;
     B)
+        clear
+        bash /opt/plexguide/scripts/supertransfer/config.sh
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer
+        read -n 1 -s -r -p "Press any key to continue "
+        ;;
+    C)
     clear
     systemctl daemon-reload
     systemctl enable move
@@ -75,7 +82,7 @@ case $CHOICE in
     systemctl daemon-reload
     echo ""
     echo "Back to normal"
-    read -n 1 -s -r -p "Press any key to continue " 
+    read -n 1 -s -r -p "Press any key to continue "
         ;;
     Z)
         clear

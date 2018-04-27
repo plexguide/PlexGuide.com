@@ -9,7 +9,7 @@ X 4. create remote folder before uploading
 X 6. reset gdsaDB counter if transfer has failed
 X 7. fix grep on filelock (needs exact match)
 X 8. refactor code to sort arrays & use tab delimiter
-  9. fix race condition where filelock gets deleted before array is cleared,
+X 9. fix race condition where filelock gets deleted before array is cleared,
      leading to the script attempting to upload a non-existent dir
 
 CONFIG
