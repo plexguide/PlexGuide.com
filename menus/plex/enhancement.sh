@@ -44,10 +44,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgdupes/main.sh
             ;;
         B)
-            bash /opt/plexguide/menus/plex/telly.sh
+            clear
             ;;
         C)
-            clear
+            bash /opt/plexguide/menus/plex/telly.sh
             ;;
         Z)
             clear
