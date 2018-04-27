@@ -31,6 +31,11 @@
   register: apir
   ignore_errors: True
 
+- name: API Trakkey
+  shell: "cat /var/plexguide/api.trakkey"
+  register: trakkey
+  ignore_errors: True
+
 - name: Check service exists
   stat:
     path: "/etc/systemd/system/pgtrak.service"
