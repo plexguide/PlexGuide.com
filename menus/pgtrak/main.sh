@@ -31,7 +31,7 @@ echo "$info2" > /var/plexguide/api.sonarr
 ### If Both are Blank, which means neither deployed, warn USER!
 if [ "$info2" == "$info1" ]
 then
-   dialog --title "-- WARNING! --" --msgbox "\nYou must deploy at least RADARR or SONARR. If you plan to do both, deploy both before starting!/n/nThis script automatically retrieves your API Keys for both programs! " 0 0
+   dialog --title "-- WARNING! --" --msgbox "\nYou must deploy at least RADARR or SONARR. If you plan to do both, deploy both before starting!\n\nThis script automatically retrieves your API Keys for both programs! " 0 0
    exit
 fi
 
