@@ -1,5 +1,5 @@
 #!/bin/bash
-#source settings.conf
+#source /opt/plexguide/scripts/supertransfer/settings.conf
 # functions:
 # cat_Art() - init msg
 # upload_Json() - configure with new jsons
@@ -135,7 +135,7 @@ read -p "View Error Log? y/n>" answer
 }
 
 upload_Json(){
-source settings.conf
+source /opt/plexguide/scripts/supertransfer/settings.conf
 source ${userSettings}
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
 [[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
@@ -226,16 +226,18 @@ cat <<EOF
 ############ CONFIGURATION ################################
 1) Create a directory structure like so in your gdrive:
 
-   |____<root_folder>       <--- rename whatever you like
+   |___media       <--- rename whatever you like
    | |____movies
    | |____tv
    | |____etc...
 
+NOTE: root_folder is optional, you can put movies into
+      /movies , tv into /tv if you want.
 ###########################################################
 EOF
-
-read -p 'What did you name your <root_folder> ?: ' root
-[[ $root =~ '/' ]] && root=''
+echo "Leave this blank if you are using /"
+read -p 'Enter the name of your gdrive root folder for media. (example: /media) : ' root
+[[ $root == '/' || -z $root ]] && root=''
 sed -i '/'^rootDir'=/ s/=.*/='$root'/' $userSettings
 
 cat <<EOF
@@ -247,8 +249,8 @@ cat <<EOF
 
 ###########################################################
 EOF
-read -p 'Press Any Key To See The Emails.'
-less /tmp/clientemails
+read -p 'Press Any Key To See The Emails. NOTE: you can copy and paste the whole chunk.'
+cat /tmp/clientemails
 echo 'If you need to see them again, they are in /tmp/clientemails'
 read -p 'Press Any Key To Continue.'
 }

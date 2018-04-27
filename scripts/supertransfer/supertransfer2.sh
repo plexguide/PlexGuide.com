@@ -2,9 +2,9 @@
 # INIT
 ############################################################################
 echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Initializing Supertransfer2 Load Balanced Multi-SA Uploader..."
-source rcloneupload.sh
-source init.sh
-source settings.conf
+source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer/init.sh
+source /opt/plexguide/scripts/supertransfer/settings.conf
 source ${userSettings}
 #dbug=on
 
@@ -48,8 +48,12 @@ init_DB(){
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Initializing $numGdsa Service Accounts."
   else
-      echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) No Valid SA accounts found! Is Rclone Configured With GDSA## remotes?"
-      exit 1
+      [[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf.back
+      [[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
+      gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
+      [[ -z $gdsaList ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 1)[FAIL]$(tput sgr0) No Valid SA accounts found! Is Rclone Configured With GDSA## remotes?" && exit 1
+      numGdsa=$(echo $gdsaList | wc -w)
+      echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 4)[INFO]$(tput sgr0) Initializing $numGdsa Service Accounts."
   fi
 
   # reset existing logs & db
@@ -58,7 +62,6 @@ init_DB(){
       local s=0
       rclone touch --drive-shared-with-me ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
-        rclone delete --drive-shared-with-me ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp
         echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 2)[ OK ]$(tput sgr0) ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
       else
@@ -72,6 +75,8 @@ init_DB(){
           validate $gdsa &
     done
   wait
+  gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
+  f(){ sleep 20 ; rclone delete --drive-shared-with-me ${gdsaLeast}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp; }; f &
   [[ -n $gdsaFail ]] && echo -e "[$(date +%m/%d\ %H:%M)] $(tput setaf 3)[WARN]$(tput sgr0) $gdsaFail Failure(s). See /tmp/SA_error.log"
 }
 [[ $@ =~ --skip ]] || init_DB

@@ -1,8 +1,9 @@
 ############################################################################
 # Supertransfer User Settings
 ############################################################################
+# not needed anymore
 gdsaImpersonate=your@email.com
-rootFolderId=
+# enter to use team drives. run with --purge-rclone
 teamDrive=
 # leave empty for root
 remoteDir=

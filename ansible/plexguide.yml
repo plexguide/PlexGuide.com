@@ -9,7 +9,7 @@
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: netdata, tags: ['netdata', 'monitor'] }
-  - { role: cadvisor, tags: ['cadvisor', 'monitor'] }  
+  - { role: cadvisor, tags: ['cadvisor', 'monitor'] }
   - { role: prometheus, tags: ['prometheus', 'monitor'] }
   - { role: grafana, tags: ['grafana', 'monitor'] }
   - { role: pushover, tags: ['pushover'] }
@@ -26,6 +26,7 @@
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: supertransfer, tags: ['supertransfer'] }
+  - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
   - { role: ombi, tags: ['ombi'] }
