@@ -3,6 +3,18 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.072] (Beta, Release Candiate & DEV)
 
+#### Beta2 - 27 April 2018
+
+- Added
+  - PGTrak (half finished)
+- Changed
+  - Revamped PG Enhancement Menu
+  - Fix Quick Flash Load Error
+  - Minor Bug Fixes
+  - Improved PGDupes Network Address
+- Removed
+  - Unused Roles
+
 #### Beta1 - 26 April 2018
 
 - Added
