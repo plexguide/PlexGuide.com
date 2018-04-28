@@ -80,8 +80,8 @@ Additional limitations: 1) Only 250,000 files allowed per teamdrive
 
 ########## INSTRUCTIONS ###################################
 1) Make a Team Drive in the Gdrive webui.
-2) Find the Team Drive ID— [32mit looks like this:[32m
-   https://drive.google.com/drive/folders/[32m084g3BHcoUu8IHgWUo5PSA[32m
+2) Find the Team Drive ID— [32mit looks like this:[0m
+   https://drive.google.com/drive/folders/[32m084g3BHcoUu8IHgWUo5PSA0m
 ###########################################################
 EOF
 

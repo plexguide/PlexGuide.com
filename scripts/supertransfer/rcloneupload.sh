@@ -48,13 +48,12 @@ rclone_upload() {
   local tmp=$(echo "${2}" | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   local logfile=${logDir}/${gdsa}_${tmp}.log
 	rclone move --tpslimit 6 --checkers=20 \
-    --transfers=8 --track-renames \
+    --transfers=8 \
 		--log-file=${logfile}  \
 		--log-level INFO --stats 5s \
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$driveChunkSize \
-    --drive-shared-with-me \
 		"${localFile}" "$gdsa:${remoteDir}${localFile#"$localDir"}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
