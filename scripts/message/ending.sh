@@ -30,7 +30,7 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│      -== By Team PlexGuide ==-      │
+│        -== Team PlexGuide ==-       │
 │ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
 │ PG Discord:   discord.plexguide.com │
@@ -40,7 +40,8 @@ cat << "EOF"
 │ Update Plexguide:         pgupdate  │
 │ Update to Dev Version:    pgdev     │
 │ [32mNEW![0m Delete Dupes:        pgdupes   │
-│ [32mNEW![0m PG System Monitor:   pgstatus  │
+│ [32mNEW![0m Add Content :        pgtrak    │
+│ [32mBETA[0m PG System Monitor:   pgstatus  │
 └─────────────────────────────────────┘
 
 EOF
