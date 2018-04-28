@@ -78,7 +78,7 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.072b3" ;;
+            version="5.072rc1" ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.071" ;;
