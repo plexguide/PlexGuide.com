@@ -127,15 +127,15 @@ case $CHOICE in
             fi
             dialog --infobox "Entered API Key: $key" 0 0
             bash /opt/plexguide/menus/pgtrak/traktkey.sh
-            dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun PGTrak up top. If not your changes will not go into affect until you do so!" 0 0
+            dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;;
         C)
             bash /opt/plexguide/menus/pgtrak/sonarrpath.sh
-            dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun PGTrak up top. If not your changes will not go into affect until you do so!" 0 0
+            dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;; 
         D)
             bash /opt/plexguide/menus/pgtrak/radarrpath.sh
-            dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun PGTrak up top. If not your changes will not go into affect until you do so!" 0 0
+            dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;;
         E)
             key=$( cat /var/plexguide/api.trakkey )
