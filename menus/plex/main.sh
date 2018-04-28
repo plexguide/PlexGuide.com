@@ -67,16 +67,16 @@ if dialog --stdout --title "PAY ATTENTION!" \
         dialog --title "Input >> PLEX CLAIM" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/tmp/plextoken
-        plextoken=$(cat /tmp/plextoken)
+        plextoken=$(cat /var/plexguide/plextoken)
         dialog --infobox "Token: $plextoken" 3 45
         sleep 2
         touch /tmp/server.check 1>/dev/null 2>&1
     else
-       echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
+       echo "claimedalready" > /var/plexguide/plextoken 1>/dev/null 2>&1
        touch /tmp/server.check 1>/dev/null 2>&1
     fi
 else
-    echo "claimedalready" > /tmp/plextoken 1>/dev/null 2>&1
+    echo "claimedalready" > /var/plexguide/plextoken 1>/dev/null 2>&1
 fi
 
 HEIGHT=10
@@ -101,7 +101,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-                echo "latest" > /tmp/plextag
+                echo "latest" > /var/plexguide/plextag
                 dialog --infobox "Selected Tag: Latest" 3 38
                 sleep 2
 
@@ -129,8 +129,8 @@ case $CHOICE in
 
                 dialog --title "Input >> Tag Version" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/tmp/plextag
-                plextag=$(cat /tmp/plextag)
+                --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/var/plexguide/plextag
+                plextag=$(cat /var/plexguide/plextag)
                 dialog --infobox "Typed Tag: $plextag" 3 45
                 sleep 2
 

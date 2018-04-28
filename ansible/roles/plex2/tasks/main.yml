@@ -30,7 +30,7 @@
   register: local_ip
 
 - name: "Establishing Plex Tag Version"
-  shell: "awk '{print $1}' /tmp/plextag"
+  shell: "awk '{print $1}' /var/plexguide/plextag"
   register: plextag_var
 
 - name: Check Preferences.xml exists
