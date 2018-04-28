@@ -76,19 +76,19 @@
     "debug": false
   },
   "radarr": {
-    "api_key": "",
+    "api_key": "{{apir.stdout}}",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:7878",
-    "root_folder": "/unionfs/movies/"
+    "root_folder": "{{radarr.stdout}}"
   },
   "sonarr": {
-    "api_key": "",
+    "api_key": "{{apis.stdout}}",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:8989",
-    "root_folder": "/unionfs/tv/",
+    "root_folder": "{{sonarr.stdout}}",
     "tags": {}
   },
   "trakt": {
-    "api_key": "REPLACEME"
+    "api_key": "{{key.stdout}}"
   }
 }

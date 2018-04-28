@@ -30,11 +30,11 @@ fi
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
-HEIGHT=13
+HEIGHT=14
 WIDTH=48
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="DupeFinder"
+TITLE="PGDupes"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGDupes"
@@ -42,6 +42,7 @@ OPTIONS=(A "Deploy PGDupes"
          C "Config Plex Library"
          D "AutoDelete - Currently: $stat"
          E "Current Library Config"
+         F "Mini FAQ & Info"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -98,6 +99,9 @@ case $CHOICE in
             dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
             bash /opt/plexguide/menus/pgdupes/main.sh
             exit
+            ;;
+        F)
+            dialog --title "Modify Config File" --msgbox "\nTo Modify the rest of the configurations, type the following: sudo nano /etc/opt/appdata/pgdupges/config.json\n\nPlease visit pgdupes.plexguide.com for way more info!" 0 0 
             ;;
         Z)
             clear

@@ -30,7 +30,7 @@
   register: local_ip
 
 - name: "Establishing Plex Tag Version"
-  shell: "awk '{print $1}' /tmp/plextag"
+  shell: "awk '{print $1}' /var/plexguide/plextag"
   register: plextag_var
 
 - name: Check Preferences.xml exists
@@ -118,3 +118,11 @@
     copy: no
   tags:
     - webtools
+
+- name: Create autoscan Logs folder
+  file:
+    path: "/opt/appdata/scan/Logs/Plex Media Server"
+    state: directory
+    mode: 0775
+    owner: "1000"
+    group: "1000"

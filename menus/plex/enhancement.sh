@@ -25,9 +25,9 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes"
-         B "PGTrak (NOT READY)"
-         C "Telly  (BETA)"
+OPTIONS=(A "PGDupes (BETA)"
+         B "PGTrak  (BETA)"
+         C "Telly   (BETA)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -44,7 +44,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgdupes/main.sh
             ;;
         B)
-            ansible-role pgtrak
+            bash /opt/plexguide/menus/pgtrak/main.sh
             ;;
         C)
             bash /opt/plexguide/menus/plex/telly.sh

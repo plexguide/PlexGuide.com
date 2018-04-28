@@ -21,6 +21,31 @@
 - include_role:
     name: variables
 
+- name: API Sonarr
+  shell: "cat /var/plexguide/api.sonarr"
+  register: apis
+  ignore_errors: True
+
+- name: API Radarr
+  shell: "cat /var/plexguide/api.radarr"
+  register: apir
+  ignore_errors: True
+
+- name: API Trakkey
+  shell: "cat /var/plexguide/api.trakkey"
+  register: key
+  ignore_errors: True
+
+- name: API Radarr
+  shell: "cat /var/plexguide/pgtrak.radarr"
+  register: radarr
+  ignore_errors: True
+
+- name: APIr Sonnar
+  shell: "cat /var/plexguide/pgtrak.sonarr"
+  register: sonarr
+  ignore_errors: True
+
 - name: Check service exists
   stat:
     path: "/etc/systemd/system/pgtrak.service"
@@ -47,17 +72,11 @@
     requirements: /opt/appdata/pgtrak/requirements.txt
     executable: pip3
 
-- name: Check config exists
-  stat:
-    path: "/opt/appdata/pgtrak/config.json"
-  register: pgtrak_config
-
 - name: Import default config
   template:
     src: config.json.js2
     dest: /opt/appdata/pgtrak/config.json
     force: yes
-  when: pgtrak_config.stat.exists == False
 
 - name: Set pgtrak.py as executable
   file:

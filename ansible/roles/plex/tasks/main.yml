@@ -30,7 +30,7 @@
   register: local_ip
 
 - name: "Establishing Plex Tag Version"
-  shell: "awk '{print $1}' /tmp/plextag"
+  shell: "awk '{print $1}' /var/plexguide/plextag"
   register: plextag_var
 
 - name: Check Preferences.xml exists
@@ -62,7 +62,7 @@
   when: plex_prefs.stat.exists == False
 
 - name: "Establishing Plex Token Version"
-  shell: "cat /tmp/plextoken"
+  shell: "cat /var/plexguide/plextoken"
   register: plextoken_var
 
 - debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
@@ -148,5 +148,5 @@
     path: "/opt/appdata/scan/Logs/Plex Media Server"
     state: directory
     mode: 0775
-    owner: "{{user}}"
-    group: "{{user}}"
+    owner: "1000"
+    group: "1000"
