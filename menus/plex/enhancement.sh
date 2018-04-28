@@ -25,9 +25,9 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes"
-         B "PGTrak"
-         C "Telly  (BETA)"
+OPTIONS=(A "PGDupes (BETA)"
+         B "PGTrak  (BETA)"
+         C "Telly   (BETA)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
