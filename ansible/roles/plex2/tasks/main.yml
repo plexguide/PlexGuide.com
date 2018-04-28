@@ -118,3 +118,11 @@
     copy: no
   tags:
     - webtools
+
+- name: Create autoscan Logs folder
+  file:
+    path: "/opt/appdata/scan/Logs/Plex Media Server"
+    state: directory
+    mode: 0775
+    owner: "1000"
+    group: "1000"

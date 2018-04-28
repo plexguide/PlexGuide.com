@@ -148,5 +148,5 @@
     path: "/opt/appdata/scan/Logs/Plex Media Server"
     state: directory
     mode: 0775
-    owner: "{{user}}"
-    group: "{{user}}"
+    owner: "1000"
+    group: "1000"
