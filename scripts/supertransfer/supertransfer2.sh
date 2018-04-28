@@ -60,7 +60,7 @@ init_DB(){
   echo -n '' > /tmp/SA_error.log
   validate(){
       local s=0
-      rclone touch --drive-shared-with-me ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
+      rclone touch ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
         echo -e " [ OK ] ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
