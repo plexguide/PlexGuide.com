@@ -108,9 +108,9 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            if dialog --stdout --title "If this IS NOT your first time, be aware that you may loose your personal configs from the config.json if you have edited it from before!\n\nTake note of what you put and edit it again! Want to redploy PGTrak?" \
+            if dialog --stdout --title "-- Deploy Warning --" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\n -- Deploy Warning --" 0 0; then
+                --yesno "If this IS NOT your first time, be aware that you may loose your personal configs from the config.json if you have edited it from before!\n\nTake note of what you put and edit it again! Want to redploy PGTrak?" 0 0; then
                 dialog --infobox "Deploying PGTrak!" 3 26
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak 1>/dev/null 2>&1
                 dialog --title "PGDupes Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
