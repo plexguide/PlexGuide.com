@@ -70,9 +70,14 @@ init_DB(){
         ((gdsaFail++))
       fi
   }
+  i=0
+  numProcs=10
   # parallelize validator for speeeeeed
     for gdsa in $gdsaList; do
-          validate $gdsa &
+      if (( i++ numProcs )); then
+        wait -n
+      fi
+      validate $gdsa &
     done
   wait
   gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
