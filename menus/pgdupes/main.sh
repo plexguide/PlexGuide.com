@@ -30,9 +30,9 @@ fi
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
-HEIGHT=13
+HEIGHT=14
 WIDTH=48
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDupes"
 MENU="Make a Selection:"

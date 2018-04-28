@@ -36,12 +36,12 @@
   register: key
   ignore_errors: True
 
-- name: API Trakkey
+- name: API Radarr
   shell: "cat /var/plexguide/pgtrak.radarr"
   register: radarr
   ignore_errors: True
 
-- name: API Trakkey
+- name: APIr Sonnar
   shell: "cat /var/plexguide/pgtrak.sonarr"
   register: sonarr
   ignore_errors: True
