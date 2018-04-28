@@ -91,8 +91,8 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGTrak"
          B "Trakt API-Key"
-         C "Set Sonnar Path:"
-         D "Set Radarr Path"
+         C "Change Path - Sonarr: $sonarr:"
+         D "Change Path - Radarr: $radarr"
          E "View APIs and Paths"
          Z "Exit")
 
@@ -131,9 +131,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgtrak/sonarrpath.sh
             ;; 
         D)
-            bash /opt/plexguide/menus/pgdupes/onoff.sh
-            bash /opt/plexguide/menus/pgdupes/main.sh
-            exit
+            bash /opt/plexguide/menus/pgtrak/radarrpath.sh
             ;;
         E)
             display="$(cat /var/plexguide/plex.library)"
