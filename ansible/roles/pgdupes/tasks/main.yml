@@ -71,9 +71,3 @@
     src: "/opt/appdata/pgdupes/plexdupes.py"
     dest: "/usr/local/bin/pgdupes"
     state: link
-
-#- name: Replace Domain
-  #replace:
-    #path: /opt/appdata/pgdupes/config.json
-    #regexp: REPLACEME
-    #replace: "{{pgjson.stdout}}"

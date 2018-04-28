@@ -72,17 +72,11 @@
     requirements: /opt/appdata/pgtrak/requirements.txt
     executable: pip3
 
-- name: Check config exists
-  stat:
-    path: "/opt/appdata/pgtrak/config.json"
-  register: pgtrak_config
-
 - name: Import default config
   template:
     src: config.json.js2
     dest: /opt/appdata/pgtrak/config.json
     force: yes
-  when: pgtrak_config.stat.exists == False
 
 - name: Set pgtrak.py as executable
   file:
