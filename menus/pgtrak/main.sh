@@ -82,9 +82,9 @@ radarr=$( cat /var/plexguide/pgtrak.radarr )
 sonarr=$( cat /var/plexguide/pgtrak.sonarr )
 
 ############################# START
-HEIGHT=13
+HEIGHT=14
 WIDTH=48
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGTrak"
 MENU="Make a Selection:"
@@ -94,6 +94,7 @@ OPTIONS=(A "Deploy PGTrak"
          C "Change Path - Sonarr"
          D "Change Path - Radarr"
          E "View Paths & Trakt API"
+         F "Mini FAQ & Info"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -136,6 +137,9 @@ case $CHOICE in
         E)
             key=$( cat /var/plexguide/api.trakkey )
             dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\nTrack API: $key" 0 0
+            ;;
+        F) 
+            dialog --title "Modify Config File" --msgbox "\nTo Modify the rest of the configurations, type the following: sudo nano /etc/opt/appdata/pgtrak/config.json\n\nPlease visit pgtrak.plexguide.com for way more info!" 0 0
             ;;
         Z)
             clear
