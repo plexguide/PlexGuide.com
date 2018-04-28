@@ -66,7 +66,7 @@ if dialog --stdout --title "PAY ATTENTION!" \
 
         dialog --title "Input >> PLEX CLAIM" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/tmp/plextoken
+        --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/var/plexguide/plextoken
         plextoken=$(cat /var/plexguide/plextoken)
         dialog --infobox "Token: $plextoken" 3 45
         sleep 2
