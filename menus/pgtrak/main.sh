@@ -112,6 +112,8 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue"
             dialog --title "PGDupes Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
+            key=$( cat /var/plexguide/api.trakkey )
+            dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\nTrack API: $key" 0 0
             ;;
         B)
             dialog --infobox "Recorded API Key: $key" 0 0
