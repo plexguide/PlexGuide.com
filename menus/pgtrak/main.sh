@@ -112,15 +112,15 @@ case $CHOICE in
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --yesno "\n -- Deploy Warning --" 0 0; then
                 dialog --infobox "Deploying PGTrak!" 3 26
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak 1>/dev/null 2>&1
-            dialog --title "PGDupes Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
-                else
-            dialog --title "-- WARNING! --" --msgbox "\nExiting! Nothing Happened!" 0 0
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak 1>/dev/null 2>&1
+                dialog --title "PGDupes Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
+            else
+                dialog --title "-- WARNING! --" --msgbox "\nExiting! Nothing Happened!" 0 0
                 exit
             fi
             ;;
         B)
-            dialog --infobox "Recorded API Key: $key" \
+            dialog --infobox "Recorded API Key: $key" 0 0
             if dialog --stdout --title "API Question?" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
                 --yesno "\nAPI Correct? $key" 0 0; then
