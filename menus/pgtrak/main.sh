@@ -21,7 +21,7 @@ export NCURSES_NO_UTF8_ACS=1
 file="/opt/appdata/radarr/config.xml"
 if [ -e "$file" ]
 then
-info=$( cat /opt/appdata/radarr/config.xml ) 
+info=$( cat /opt/appdata/radarr/config.xml )
 info=${info#*<ApiKey>} 1>/dev/null 2>&1
 info1=$( echo ${info:0:32} ) 1>/dev/null 2>&1
 echo "$info1" > /var/plexguide/api.radarr
@@ -30,7 +30,7 @@ fi
 file="/opt/appdata/sonarr/config.xml"
 if [ -e "$file" ]
 then
-    info=$( cat /opt/appdata/sonarr/config.xml ) 
+    info=$( cat /opt/appdata/sonarr/config.xml )
     info=${info#*<ApiKey>} 1>/dev/null 2>&1
     info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
     echo "$info2" > /var/plexguide/api.sonarr
@@ -49,7 +49,7 @@ then
     echo "" 1>/dev/null 2>&1
 else
     dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
-    
+
     if dialog --stdout --title "Are You Ready?" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --yesno "\nDo you have your Trekt API key?" 0 0; then
@@ -136,7 +136,7 @@ case $CHOICE in
         C)
             bash /opt/plexguide/menus/pgtrak/sonarrpath.sh
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
-            ;; 
+            ;;
         D)
             bash /opt/plexguide/menus/pgtrak/radarrpath.sh
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
@@ -145,8 +145,8 @@ case $CHOICE in
             key=$( cat /var/plexguide/api.trakkey )
             dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\nTrack API: $key" 0 0
             ;;
-        F) 
-            dialog --title "Modify Config File" --msgbox "\nTo Modify the rest of the configurations, type the following: sudo nano /etc/opt/appdata/pgtrak/config.json\n\nPlease visit pgtrak.plexguide.com for way more info!" 0 0
+        F)
+            dialog --title "Modify Config File" --msgbox "\nTo Modify the rest of the configurations, type the following: sudo nano /opt/appdata/pgtrak/config.json\n\nPlease visit pgtrak.plexguide.com for way more info!" 0 0
             ;;
         Z)
             clear
