@@ -91,8 +91,8 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGTrak"
          B "Trakt API-Key"
-         C "Change Path - Sonarr: $sonarr:"
-         D "Change Path - Radarr: $radarr"
+         C "Change Path - Sonarr"
+         D "Change Path - Radarr"
          E "View APIs and Paths"
          Z "Exit")
 
