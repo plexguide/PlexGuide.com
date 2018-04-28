@@ -50,7 +50,7 @@ then
 else
     dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
     
-    if dialog --stdout --title "Are You Ready??" \
+    if dialog --stdout --title "Are You Ready?" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
     --yesno "\nDo you have your Trekt API key?" 0 0; then
         bash /opt/plexguide/menus/pgtrak/traktkey.sh
@@ -69,9 +69,9 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGTrak"
          B "Trakt API-Key"
-         C "Config Plex Library"
-         D "AutoDelete - Currently: $stat"
-         E "Current Library Config"
+         C "Set Sonnar Path:"
+         D "Set Radarr Path"
+         E "View APIs and Paths"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -93,10 +93,20 @@ case $CHOICE in
             exit
             ;;
         B)
+            dialog --infobox "Recorded API Key: $key" 0 0
+            if dialog --stdout --title "API Question?" \
+                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                --yesno "\nAPI Correct? $key" 0 0; then
+                rm -r /var/plexguide/api.trakkey
+            else
+                bash /opt/plexguide/menus/pgtrak/traktkey.sh
+                exit
+            fi
+            dialog --infobox "Entered API Key: $key" 0 0
             bash /opt/plexguide/menus/pgtrak/traktkey.sh
             ;;
         C)
-            bash /opt/plexguide/menus/pgdupes/paths.sh
+            bash /opt/plexguide/menus/pgtrak/sonarrpath.sh
             ;; 
         D)
             bash /opt/plexguide/menus/pgdupes/onoff.sh
