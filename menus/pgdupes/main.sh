@@ -94,10 +94,8 @@ case $CHOICE in
             exit
             ;;
         E)
-            display="$(cat /var/plexguide/plex.library)"
-            dialog --title "Your Stated Plex Library" --msgbox "\n$display" 0 0
-            bash /opt/plexguide/menus/pgdupes/main.sh
-            exit
+            dialog --title "PG Trak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr" 0 0
+
             ;;
         Z)
             clear
