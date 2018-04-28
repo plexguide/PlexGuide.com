@@ -62,6 +62,7 @@ init_DB(){
       local s=0
       rclone touch ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
+        rclone delete ${1}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp
         echo -e " [ OK ] ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
       else
@@ -81,7 +82,6 @@ numProcs=10
     done
   wait
   gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
-  f(){ sleep 20 ; rclone delete --drive-shared-with-me ${gdsaLeast}:${remoteDir}/SA_validate &>/tmp/.SA_error.log.tmp; }; f &
   [[ -n $gdsaFail ]] && echo -e " [WARN] $gdsaFail Failure(s). See /tmp/SA_error.log"
 }
 [[ $@ =~ --skip ]] || init_DB
@@ -131,7 +131,7 @@ while true; do
           #input format: <dirsize> <upload_dir>  <rclone> <remote_root_dir>
           rclone_upload ${uploadQueueBuffer[i]} $gdsaLeast $remoteDir &
           unset IFS
-          sleep
+          sleep 0.2
         fi
       done
       unset -v uploadQueueBuffer[@]
