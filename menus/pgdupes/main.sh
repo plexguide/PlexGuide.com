@@ -24,7 +24,7 @@ then
     echo "" 1>/dev/null 2>&1
 else
     echo "ON" > /var/plexguide/pgdupes.autodelete
-    echo "true" > /var/plexguide/pgdupes.autodelete.json
+    echo "true" > /var/plexguide/pgdupes.autodelete2.json
     exit
 fi
 
