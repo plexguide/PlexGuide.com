@@ -18,7 +18,7 @@
   dialog --title "SET SONARR PATH [ EXAMPLE: /mnt/unionfs/tv ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Full Path: " 8 50 2>/tmp/pgtrak.sonarr
-  path=$(cat /var/plexguide/pgtrek.sonarr)
+  path=$(cat /tmp/pgtrak.sonarr)
 
   if dialog --stdout --title "PG Path Builder" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
