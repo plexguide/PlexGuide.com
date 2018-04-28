@@ -93,7 +93,7 @@ OPTIONS=(A "Deploy PGTrak"
          B "Trakt API-Key"
          C "Change Path - Sonarr"
          D "Change Path - Radarr"
-         E "View APIs and Paths"
+         E "View Paths & Trakt API"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -134,7 +134,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgtrak/radarrpath.sh
             ;;
         E)
-            dialog --title "PG Trak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr" 0 0
+            dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\n$API - Track.tv $:key" 0 0
             ;;
         Z)
             clear

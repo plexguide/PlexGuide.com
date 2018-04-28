@@ -17,7 +17,7 @@
 #################################################################################
   dialog --title "SET SONARR PATH [ EXAMPLE: /mnt/unionfs/tv ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Full Path: " 8 50 2>/tmp/pgtrak.sonarr
+  --inputbox "Full Path: " 8 52 2>/tmp/pgtrak.sonarr
   path=$(cat /tmp/pgtrak.sonarr)
 
   if dialog --stdout --title "PG Path Builder" \
@@ -51,7 +51,7 @@
     file="$path/plexguide"
     if [ -e "$file" ]
       then
-        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists!" 0 0
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe SONARR Path is Set!" 0 0
         rm -r "$path/plexguide"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Exiting!" 0 0

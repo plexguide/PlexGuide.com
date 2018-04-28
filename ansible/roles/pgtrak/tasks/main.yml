@@ -36,6 +36,16 @@
   register: key
   ignore_errors: True
 
+- name: API Trakkey
+  shell: "cat /var/plexguide/pgtrak.radarr"
+  register: radarr
+  ignore_errors: True
+
+- name: API Trakkey
+  shell: "cat /var/plexguide/pgtrak.sonarr"
+  register: sonarr
+  ignore_errors: True
+
 - name: Check service exists
   stat:
     path: "/etc/systemd/system/pgtrak.service"
