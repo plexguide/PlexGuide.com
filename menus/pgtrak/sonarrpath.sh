@@ -54,7 +54,7 @@
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists!" 0 0
         rm -r "$path/plexguide"
       else
-        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
+        dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Exiting!" 0 0
         bash /opt/plexguide/menus/pgtrak/main.sh
         exit
     fi
