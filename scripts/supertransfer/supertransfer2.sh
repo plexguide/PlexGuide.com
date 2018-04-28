@@ -70,11 +70,11 @@ init_DB(){
         ((gdsaFail++))
       fi
   }
-  i=0
-  numProcs=10
+i=0
+numProcs=10
   # parallelize validator for speeeeeed
     for gdsa in $gdsaList; do
-      if (( i++ numProcs )); then
+      if (( i++ >= numProcs )); then
         wait -n
       fi
       validate $gdsa &
