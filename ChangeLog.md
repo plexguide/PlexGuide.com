@@ -3,6 +3,13 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.072] (Beta, Release Candiate & DEV)
 
+#### RC1 - 27 April 2018
+
+- Changed
+  - Stop Plex From Disappearing on Rebuilds
+  - Minor Bug Fixes
+  - Finished PGTrak & PGDupes (Both in BETA, please provide feedback to release 5.072 Stable)
+
 #### Beta 3 - 27 April 2018
 
 - Changed
