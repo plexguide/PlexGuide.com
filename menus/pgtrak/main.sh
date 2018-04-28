@@ -60,6 +60,28 @@ else
     fi
 fi
 
+############################# BLANK OUT
+file="/var/plexguide/pgtrak.sonarr"
+if [ -e "$file" ]
+then
+    echo "" 1>/dev/null 2>&1
+else
+    echo "/NOT-set" > /var/plexguide/pgtrak.sonarr
+    exit
+fi
+
+file="/var/plexguide/pgtrak.radarr"
+if [ -e "$file" ]
+then
+    echo "" 1>/dev/null 2>&1
+else
+    echo "/NOT-set" > /var/plexguide/pgtrak.radarr
+fi
+
+radarr=$( cat /var/plexguide/pgtrak.radarr )
+sonarr=$( cat /var/plexguide/pgtrak.sonarr )
+
+############################# START
 HEIGHT=13
 WIDTH=48
 CHOICE_HEIGHT=6
@@ -125,3 +147,4 @@ case $CHOICE in
 
 ########## Deploy End
 esac
+bash /opt/plexguide/menus/pgtrak/main.sh
