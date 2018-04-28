@@ -26,7 +26,7 @@
   register: pgjson
   ignore_errors: True
 
-- name: Register Autodelete
+- name: Register AutoDelete
   shell: "cat /var/plexguide/pgdupes.autodelete2.json"
   register: pgauto
   ignore_errors: True
@@ -35,14 +35,14 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
     - /opt/appdata/pgdupes
-    
+
 - name: Clone plex_dupefinder to pgdupes
   git:
     repo: https://github.com/Admin9705/pgdupes/
     dest: /opt/appdata/pgdupes
     version: master
     force: yes
-    
+
 - name: Install pip requirements
   pip:
     requirements: /opt/appdata/pgdupes/requirements.txt
