@@ -85,7 +85,7 @@
     "api_key": "{{apis.stdout}}",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:8989",
-    "root_folder": "{{sonarr.stdout}}/",
+    "root_folder": "{{sonarr.stdout}}",
     "tags": {}
   },
   "trakt": {
