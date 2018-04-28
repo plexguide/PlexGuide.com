@@ -36,7 +36,7 @@
   with_items:
     - /opt/appdata/pgdupes
     
-- name: Clone plex_dupefinder to pgdupes
+- name: Clone plex_dupefinder to pgdupes 5.072
   git:
     repo: https://github.com/Admin9705/pgdupes/
     dest: /opt/appdata/pgdupes
