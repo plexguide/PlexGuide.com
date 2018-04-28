@@ -134,7 +134,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgtrak/radarrpath.sh
             ;;
         E)
-            dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\n$API - Track.tv $:key" 0 0
+            dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\n$Track API: $key" 0 0
             ;;
         Z)
             clear
