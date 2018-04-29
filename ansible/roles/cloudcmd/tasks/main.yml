@@ -24,6 +24,18 @@
   with_items:
     - "/opt/appdata/cloudcmd/"
 
+- name: Check config file exists
+  stat:
+    path: "/opt/appdata/cloudcmd/.cloudcmd.json"
+  register: cloud_json
+
+- name: Install config.json
+  template:
+    src: config.json
+    dest: /opt/appdata/cloudcmd/.cloudcmd.json
+    force: yes
+  when: cloud_json.stat.exists == False
+
 - name: Remove cloudcmd Container
   docker_container:
     name: cloudcmd
