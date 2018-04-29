@@ -92,7 +92,7 @@ case $CHOICE in
             then
                exit 0
             else
-               dialog --title "Dummy Proof Alert!" --msgbox "\nFor the first time select, you must select a status! REDO!" 0 0
+               dialog --title "Dummy Proof Alert!" --msgbox "\nFor the first time, you must select a status! REDO!" 0 0
             fi
             ;;
 esac
