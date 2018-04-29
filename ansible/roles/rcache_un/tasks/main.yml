@@ -50,6 +50,22 @@
     when: gdrive_script.stat.exists == False
     tags:
       - rcache
+
+  - name: Check Rcache script
+    stat:
+      path: "/opt/appdata/plexguide/rcache.sh"
+    register: rcache_script
+    tags:
+      - rcache
+
+  - name: Install RClone script
+    template:
+      src: rcache_script.js2
+      dest: /opt/appdata/plexguide/rcache.sh
+      force: yes
+    when: rcache_script.stat.exists == False
+    tags:
+      - rcache
 ########################################## Services
 ########### Move Service
   # - name: Check MOVE Service
