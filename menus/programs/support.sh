@@ -21,20 +21,19 @@ skip=no
 ## point to variable file for ipv4 and domain.com
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=15
+HEIGHT=14
 WIDTH=37
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
 OPTIONS=(A "Netdata"
-         B "Ombi"
-         C "Ombi4k"
-         D "NextCloud"
-         E "pyLoad"
-         F "Resilio"
-         G "Tautulli"
-         H "SpeedTEST Server"
+         B "NextCloud"
+         C "Ombi"
+         D "pyLoad"
+         E "Resilio"
+         F "SpeedTEST Server"
+         G "Tautulli (PlexPy)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -50,24 +49,6 @@ case $CHOICE in
 			bash /opt/plexguide/menus/programs/monitoring.sh
             ;;
         B)
-            display=Ombi
-            program=ombi
-            port=3579
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
-            sleep 2
-            cronskip=no
-            ;;
-        C)
-            display=Ombi4K
-            program=ombi4k
-            port=3574
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k &>/dev/null &
-            sleep 2
-            cronskip=no
-            ;;
-        D)
             display=NEXTCloud
             program=nextcloud
             port=4645
@@ -76,8 +57,17 @@ case $CHOICE in
             sleep 2 
             cronskip=no
             ;;
-        E)
-            display=PYLoad
+        C)
+            display=Ombi
+            program=ombi
+            port=3579
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
+            sleep 2
+            cronskip=no
+            ;;
+        D)
+            display=pyLoad
             program=pyload
             port=8000
             dialog --infobox "Installing: $display" 3 30
@@ -85,7 +75,7 @@ case $CHOICE in
             sleep 2
             cronskip=no
             ;;
-        F)
+        E)
             display=RESILIO
             program=resilio
             port=8888
@@ -93,6 +83,14 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio &>/dev/null &
             sleep 2
             cronskip=no
+            ;;
+        F)
+            program=speed
+            port=8223
+            dialog --infobox "Installing: SpeedTEST Server" 3 38
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver &>/dev/null &
+            sleep 2
+            cronskip=yes
             ;;
         G)
             display=Tautulli
@@ -102,14 +100,6 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
             sleep 2
             cronskip=no
-            ;;
-        H)
-            program=speed
-            port=8223
-            dialog --infobox "Installing: SpeedTEST Server" 3 38
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver &>/dev/null &
-            sleep 2
-            cronskip=yes
             ;;
         Z)
             exit 0 ;;
