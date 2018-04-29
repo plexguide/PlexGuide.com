@@ -27,14 +27,18 @@
 - name: Deploy Radarr Container
   docker_container:
     name: radarr
-    image: aront/radarr
+    image: hotio/suitarr
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}7878:7878"
     env:
+      APP: "radarr"
+      VERSION: "unstable"
       PUID: "1000"
       PGID: "1000"
+      BACKUP: "no"
+      MONO_TLS_PROVIDER: legacy
     networks:
       - name: plexguide
         aliases:
@@ -56,9 +60,3 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:radarr.{{domain.stdout}}"
       traefik.port: "7878"
-- name: Install autoProcess.ini
-  template:
-    src: autoProcess.ini
-    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
-    force: yes
-    mode: 0775

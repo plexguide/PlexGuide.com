@@ -33,8 +33,13 @@
     published_ports:
       - "{{ports.stdout}}7874:7878"
     env:
+    image: hotio/suitarr
+      APP: "radarr"
+      VERSION: "unstable"
       PUID: "1000"
       PGID: "1000"
+      BACKUP: "no"
+      MONO_TLS_PROVIDER: legacy
     networks:
       - name: plexguide
         aliases:
@@ -56,9 +61,3 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:radarr4k.{{domain.stdout}}"
       traefik.port: "7878"
-- name: Install autoProcess.ini
-  template:
-    src: autoProcess.ini
-    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
-    force: yes
-    mode: 0775
