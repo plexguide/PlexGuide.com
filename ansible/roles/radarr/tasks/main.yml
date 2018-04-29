@@ -45,7 +45,6 @@
           - radarr
     volumes:
       - /opt/appdata/radarr:/config
-      - /opt/appdata/radarr/mp4_automator:/config_mp4_automator
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"

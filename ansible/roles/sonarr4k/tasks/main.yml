@@ -45,7 +45,6 @@
           - sonarr4k
     volumes:
       - /opt/appdata/sonarr4k:/config
-      - /opt/appdata/sonarr4k/mp4_automator:/config_mp4_automator
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
