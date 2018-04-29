@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & MBCorps
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -31,7 +31,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}8000:8000"
+      - "{{ports.stdout}}7999:8000"
     env:
       PUID: "1000"
       PGID: "1000"
@@ -46,6 +46,6 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:cmd.{{domain.stdout}}"
-      traefik.port: "8000"
+      traefik.port: "7999"
     restart_policy: always
     state: started
