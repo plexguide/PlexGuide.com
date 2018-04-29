@@ -46,8 +46,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-
-            file="/opt/appdata/cloudcmd/.cloudcmd.json" 1>/dev/null 2>&1
+            file="/opt/appdata/cloudcmd/.cloudcmd.json"
             if [ -e "$file" ]
                 then
                     echo "" 1>/dev/null 2>&1
