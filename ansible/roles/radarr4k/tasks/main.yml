@@ -33,7 +33,6 @@
     published_ports:
       - "{{ports.stdout}}7874:7878"
     env:
-    image: hotio/suitarr
       APP: "radarr"
       VERSION: "unstable"
       PUID: "1000"
