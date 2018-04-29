@@ -134,7 +134,7 @@ NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---clou
   - Sped up cronjob installs
   - Improved valid certificate detection
   - Fixed Quick Flash at Startup in regards to certificates
-  - NZBGET cron job, delete files older than 60 minutes (unprocessed) - Initial Credit: RXWatcher
+  - NZBGET cron job, delete files older than 60 minutes (unprocessed)
   - Enhance PreInstaller Check
   - Menu Cleanup for Cronjobs
     - stored in one script
@@ -159,7 +159,6 @@ NOTE: https://wiki.plexguide.com/books/3-pg-configuration/page/traefik-v2---clou
 
 - Added
   - Added RClone install check for mass restore; warns users - Credit: Migz
-  - Rebuilding Fix - Credit RXWatcher
   - New info.sh file at root to keep track of upgrading portions of PG (used, but not fully implemented)
   - Ombi4k from the following request: https://plexguide.com/threads/optional-extra-containers-for-4k-content.837/
     - Ombi4k: ombi4k.domain.com - port 3574
