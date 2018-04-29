@@ -5,6 +5,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 - Put 4k Versions of all programs in one area
 - Removed Hyrda1 in favor of Hydra2
+- Minor Bug Fixes
 
 -------------------------------------------------------
 ## Past Changes
