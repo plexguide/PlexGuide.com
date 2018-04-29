@@ -51,7 +51,7 @@ case $CHOICE in
                 then
                     echo "" 1>/dev/null 2>&1
                 else
-                    dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: Plex\n\Pass: Guide\n\nIf you forget, please visit the Wiki!" 0 0
+                    dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: Plex\nPass: Guide\n\nIf you forget, please visit the Wiki!" 0 0
             fi
             display=CloudCMD
             program=cmd
