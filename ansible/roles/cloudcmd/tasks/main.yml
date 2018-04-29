@@ -61,4 +61,6 @@
     dest: /opt/appdata/cloudcmd/.cloudcmd.json
     force: yes
     mode: 0775
+    owner: "1000"
+    group: "1000"
   when: cloud_json.stat.exists == False
