@@ -38,7 +38,7 @@
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/thelounge:/config"
     networks:
-      - name: cloudbox
+      - name: plexguide
         aliases:
           - thelounge
     restart_policy: always
