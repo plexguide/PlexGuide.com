@@ -19,6 +19,19 @@
 - include_role:
     name: variables
 
+- name: Check config file exists
+  stat:
+    path: "/opt/appdata/cloudcmd/.cloudcmd.json"
+  register: cloud_json
+
+- name: Install config.json
+  template:
+    src: config.json
+    dest: /opt/appdata/cloudcmd/.cloudcmd.json
+    force: yes
+    mode: 0775
+  when: cloud_json.stat.exists == False
+
 - name: Remove cloudcmd Container
   docker_container:
     name: cloudcmd
