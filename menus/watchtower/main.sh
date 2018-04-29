@@ -40,7 +40,7 @@ case $CHOICE in
               --yesno "\nYou Want to --Update All Containers except Plex & Emby?" 7 34; then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=watchall &>/dev/null &
               dialog --infobox "Notice: Your containers will Auto-Update except PLEX & Emby!\n\nMade an error? Just SELECT it again!" 0 0
-              echo > "[All Except P&E]" /var/plexguide/watchtower.yes
+              echo "[All Except P&E]" > /var/plexguide/watchtower.yes
               sleep 9
               exit 0
             else
@@ -56,7 +56,7 @@ case $CHOICE in
               --yesno "\nYou Want to have all Your Containers Auto-Update?" 7 34; then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=plexemby &>/dev/null &
               dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
-              echo > "[All Containers]" /var/plexguide/watchtower.yes
+              echo "[All Containers]" > /var/plexguide/watchtower.yes
               sleep 9
               exit 0
             else
@@ -73,7 +73,7 @@ case $CHOICE in
               docker stop watchtower 1>/dev/null 2>&1
               docker rm watchtower 1>/dev/null 2>&1
               dialog --infobox "Notice: WatchTower is not enabled or has been removed!\n\nUpdate manually by rerunning your targeted Application for the newest update!" 0 0
-              echo > "[Disabled Updates]" /var/plexguide/watchtower.yes
+              echo "[Disabled Updates]" > /var/plexguide/watchtower.yes
               sleep 9
               exit 0
             else
