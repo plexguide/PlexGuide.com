@@ -19,12 +19,12 @@
 - include_role:
     name: variables
     
-- name: Remove NZBHyra2 Container
+- name: Remove NZBHydra2 Container
   docker_container:
     name: nzbhydra2
     state: absent
 
-- name: Deploy NZBHyra2 Container
+- name: Deploy NZBHydra2 Container
   docker_container:
     name: nzbhydra2
     image: linuxserver/hydra2
@@ -47,5 +47,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nzbhydra2.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:nzbhydra2.{{domain.stdout}}, nzbhydra.{{domain.stdout}}"
       traefik.port: "5076"

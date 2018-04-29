@@ -24,14 +24,13 @@ domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=11
 WIDTH=38
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="NZB Applications - PG Supporting"
 
 OPTIONS=(A "NZBGet"
-         B "NZBHydra"
-         C "NZBHydra2"
-         D "SABNZBD"
+         B "NZBHydra v2"
+         C "SABNZBD"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -69,24 +68,6 @@ case $CHOICE in
               bash /opt/plexguide/menus/nzb/main.sh
               fi
             bash /opt/plexguide/menus/nzb/main33.sh
-            display=NZBHYDRA
-            program=nzbhydra
-            dialog --infobox "Installing: $display" 3 30
-            port=5075
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra &>/dev/null &
-            sleep 2
-            cronskip=no
-            ;;
-        C)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
-            bash /opt/plexguide/menus/nzb/main33.sh
             display=NZBHYRA2
             program=nzbhyra2
             dialog --infobox "Installing: $display" 3 30
@@ -95,7 +76,7 @@ case $CHOICE in
             sleep 2
             cronskip=no
             ;;
-        D)
+        C)
             file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
