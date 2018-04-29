@@ -25,6 +25,7 @@
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: cloudcmd, tags: ['cloudcmd'] }
+  - { role: thelounge, tags: ['thelounge'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
