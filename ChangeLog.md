@@ -3,15 +3,19 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.073] (Beta, Release Candiate & DEV)
 
-- Put 4k Versions of all programs in one area
-- Removed Hyrda1 in favor of Hydra2
-- Minor Bug Fixes
+- None
 
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
 
 #### [5.072] - 28 April 2018
+
+- Patch 1
+  - Put 4k Versions of all programs in one area
+  - Removed Hyrda1 in favor of Hydra2
+  - Minor Bug Fixes
+  - Fix made for PGTrak Path input (Thanks John Doe)
 
 - Added
  - Finished PGTrak & PGDupes (Both in BETA, please provide feedback to release 5.072 Stable)

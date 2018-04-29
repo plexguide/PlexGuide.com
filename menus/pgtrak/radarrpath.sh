@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  dialog --title "SET RADARR PATH [ EXAMPLE: /mnt/unionfs/movies ]" \
+  dialog --title "SET RADARR PATH [ EXAMPLE: /unionfs/movies ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Full Path: " 8 52 2>/tmp/pgtrak.radarr
   path=$(cat /tmp/pgtrak.radarr)
