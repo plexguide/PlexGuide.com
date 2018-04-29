@@ -17,9 +17,8 @@
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: rutorrent, tags: ['rutorrent'] }
-  - { role: nzbhydra, tags: ['nzbhydra'] }
-  - { role: variables, tags: ['variables'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
+  - { role: variables, tags: ['variables'] }
   - { role: muximux, tags: ['muximux'] }
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
