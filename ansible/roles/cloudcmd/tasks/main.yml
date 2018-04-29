@@ -36,8 +36,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - ~:/root
-      - /:/fs
+      - /:/SERVER
       - /opt/appdata/cloudcmd:/root/
     networks:
       - name: plexguide
