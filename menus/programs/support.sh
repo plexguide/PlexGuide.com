@@ -21,9 +21,9 @@ skip=no
 ## point to variable file for ipv4 and domain.com
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=15
+HEIGHT=16
 WIDTH=37
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
@@ -35,6 +35,7 @@ OPTIONS=(A "CloudCMD"
          F "Resilio"
          G "SpeedTEST Server"
          H "Tautulli (PlexPy)"
+         I "The Lounge"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -115,6 +116,15 @@ case $CHOICE in
             port=8181
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
+            sleep 2
+            cronskip=no
+            ;;
+        I)
+            display=TheLounge
+            program=thelounge
+            port=9100
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags thelounge &>/dev/null &
             sleep 2
             cronskip=no
             ;;
