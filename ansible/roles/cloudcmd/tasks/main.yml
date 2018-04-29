@@ -19,24 +19,6 @@
 - include_role:
     name: variables
 
-- name: Create Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - "/opt/appdata/cloudcmd/"
-
-- name: Check config file exists
-  stat:
-    path: "/opt/appdata/cloudcmd/.cloudcmd.json"
-  register: cloud_json
-
-- name: Install config.json
-  template:
-    src: config.json
-    dest: /opt/appdata/cloudcmd/.cloudcmd.json
-    force: yes
-    mode: 0775
-  when: cloud_json.stat.exists == False
-
 - name: Remove cloudcmd Container
   docker_container:
     name: cloudcmd
@@ -67,3 +49,16 @@
       traefik.port: "8000"
     restart_policy: always
     state: started
+
+- name: Check config file exists
+  stat:
+    path: "/opt/appdata/cloudcmd/.cloudcmd.json"
+  register: cloud_json
+
+- name: Install config.json
+  template:
+    src: config.json
+    dest: /opt/appdata/cloudcmd/.cloudcmd.json
+    force: yes
+    mode: 0775
+  when: cloud_json.stat.exists == False
