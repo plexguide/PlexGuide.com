@@ -2,6 +2,7 @@
 - hosts: localhost
 
   roles:
+  - { role: lounge, tags: ['lounge'] }
   - { role: deploy, tags: ['deploy'] }
   - { role: pgtrak, tags: ['pgtrak']}
   - { role: backup, tags: ['backup'] }
