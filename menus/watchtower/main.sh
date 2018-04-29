@@ -11,7 +11,7 @@ else
    dialog --title "WatchTower Status" --msgbox "\nNotice: WatchTower enable your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually. Any automatic update of images can be bugged!" 14 62
 fi
 
-HEIGHT=11
+HEIGHT=12
 WIDTH=52
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
