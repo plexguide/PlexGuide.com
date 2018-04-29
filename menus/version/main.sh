@@ -77,6 +77,9 @@ case $CHOICE in
             clear
             sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
+        B)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.074" ;;        
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.073" ;;
