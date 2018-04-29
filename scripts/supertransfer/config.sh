@@ -108,9 +108,8 @@ function validate_json(){
   for gdsa in $gdsaList; do
     s=0
     start_spinner "Validating: ${gdsa}"
-    rclone touch ${gdsa}:${rootDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
+    rclone lsd ${gdsa}:${rootDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
-      rclone delete ${gdsa}:${rootDir}/SA_validate &>/tmp/.SA_error.log.tmp
       stop_spinner 0
     else
       cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log

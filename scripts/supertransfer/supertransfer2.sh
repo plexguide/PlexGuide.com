@@ -60,7 +60,7 @@ init_DB(){
   echo -n '' > /tmp/SA_error.log
   validate(){
       local s=0
-      rclone touch ${1}:/SA_validate &>/tmp/.SA_error.log.tmp && s=1
+      rclone lsd ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
         echo -e " [ OK ] ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
@@ -83,9 +83,6 @@ numProcs=10
   gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
   [[ -n $gdsaFail ]] && echo -e " [WARN] $gdsaFail Failure(s). See /tmp/SA_error.log"
 
-while read -r gdsaDel; do
-        rclone delete ${gdsaDel}:/SA_validate &>/dev/null &
-done <<<$(egrep ^GDSA[0-9]+=. "${gdsaDB}" | cut -f1 -d'=')
 }
 
 [[ $@ =~ --skip ]] || init_DB
