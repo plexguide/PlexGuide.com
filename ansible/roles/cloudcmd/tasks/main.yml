@@ -46,6 +46,6 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:cmd.{{domain.stdout}}"
-      traefik.port: "7999"
+      traefik.port: "8000"
     restart_policy: always
     state: started
