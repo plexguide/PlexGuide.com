@@ -46,5 +46,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:lounge.{{domain.stdout}},thelounge.{{domain.stdout}},chill.{{domain.stdout}}"
-      traefik.port: "9100"
+      traefik.frontend.rule: "Host:thelounge.{{domain.stdout}}"
+      traefik.port: "9000"
