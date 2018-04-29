@@ -46,6 +46,14 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+
+            file="/opt/appdata/cloudcmd/.cloudcmd.json" 1>/dev/null 2>&1
+            if [ -e "$file" ]
+                then
+                    echo "" 1>/dev/null 2>&1
+                else
+                    dialog --infobox "The default username and password is:\n\nUser: Plex\n\Pass: Guide\n\nIf you forget, please visit the Wiki!" 3 30
+            fi
             display=CloudCMD
             program=cmd
             port=7999
