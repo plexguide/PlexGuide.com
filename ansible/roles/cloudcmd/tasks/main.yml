@@ -38,6 +38,7 @@
     volumes:
       - ~:/root
       - /:/fs
+      - /opt/appdata/cloudcmd:/root/
     networks:
       - name: plexguide
         aliases:
