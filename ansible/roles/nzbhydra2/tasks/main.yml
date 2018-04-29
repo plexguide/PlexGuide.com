@@ -27,14 +27,18 @@
 - name: Deploy NZBHydra2 Container
   docker_container:
     name: nzbhydra2
-    image: linuxserver/hydra2
+    image: "hotio/suitarr"
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}5076:5076"
     env:
+      APP: "nzbhydra2"
+      VERSION: "unstable"
       PUID: "1000"
       PGID: "1000"
+      BACKUP: "no"
+      MONO_TLS_PROVIDER: legacy
     volumes:
       - "/opt/appdata/nzbhydra2:/config"
       - "/etc/localtime:/etc/localtime:ro"
