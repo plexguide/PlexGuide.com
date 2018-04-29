@@ -21,19 +21,20 @@ skip=no
 ## point to variable file for ipv4 and domain.com
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=37
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
-OPTIONS=(A "Netdata"
-         B "NextCloud"
-         C "Ombi"
-         D "pyLoad"
-         E "Resilio"
-         F "SpeedTEST Server"
-         G "Tautulli (PlexPy)"
+OPTIONS=(A "CloudCMD"
+         B "Netdata"
+         C "NextCloud"
+         D "Ombi"
+         E "pyLoad"
+         F "Resilio"
+         G "SpeedTEST Server"
+         H "Tautulli (PlexPy)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -45,10 +46,19 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+            display=CloudCMD
+            program=cloudcmd
+            port=7999
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd &>/dev/null &
+            sleep 2 
+            cronskip=yes
+            ;;
+        B)
             display=NETDATA
 			bash /opt/plexguide/menus/programs/monitoring.sh
             ;;
-        B)
+        C)
             display=NEXTCloud
             program=nextcloud
             port=4645
@@ -57,7 +67,7 @@ case $CHOICE in
             sleep 2 
             cronskip=no
             ;;
-        C)
+        D)
             display=Ombi
             program=ombi
             port=3579
@@ -66,7 +76,7 @@ case $CHOICE in
             sleep 2
             cronskip=no
             ;;
-        D)
+        E)
             display=pyLoad
             program=pyload
             port=8000
@@ -75,7 +85,7 @@ case $CHOICE in
             sleep 2
             cronskip=no
             ;;
-        E)
+        F)
             display=RESILIO
             program=resilio
             port=8888
@@ -84,7 +94,7 @@ case $CHOICE in
             sleep 2
             cronskip=no
             ;;
-        F)
+        G)
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
@@ -92,7 +102,7 @@ case $CHOICE in
             sleep 2
             cronskip=yes
             ;;
-        G)
+        H)
             display=Tautulli
             program=tautulli
             port=8181
