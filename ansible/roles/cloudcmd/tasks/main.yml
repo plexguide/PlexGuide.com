@@ -37,7 +37,7 @@
       PGID: "1000"
     volumes:
       - ~:/root
-      - /:/SERVER
+      - /:/fs
     networks:
       - name: plexguide
         aliases:
