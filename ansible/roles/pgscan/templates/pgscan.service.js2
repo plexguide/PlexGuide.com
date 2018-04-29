@@ -1,0 +1,14 @@
+[Unit]
+After=network-online.target unionfs.service
+
+[Service]
+User=1000
+Group=10000
+Type=simple
+WorkingDirectory=/opt/appdata/pgscan/
+ExecStart=/opt/pgscan/scan.py server
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
