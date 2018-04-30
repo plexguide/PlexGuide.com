@@ -26,7 +26,7 @@
     name: watchtower
     image: v2tec/watchtower
     pull: yes
-    command: medusa tautulli resilio next ubooquity sickrage mylar sabnzbd rutorrent netdata jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
+    command: medusa tautulli resilio next ubooquity sickrage mylar sabnzbd alltube rutorrent netdata jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik ombi4k htpcmanager radarr4k sonarr4k traefik2 booksonic airsonic cloudcmd headphones heimdall --cleanup --interval 600
     cpu_shares: 64
     state: started
     volumes:
@@ -34,7 +34,7 @@
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     networks:
-      - name: plexguide
+      - name: plexguide 
         aliases:
           - watchtower
   tags: plexemby
@@ -44,7 +44,7 @@
     name: watchtower
     image: v2tec/watchtower
     pull: yes
-    command: medusa ubooquity resilio next sickrage mylar plex emby netdata rutorrent sabnzbd tautulli jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik --cleanup --interval 600
+    command: medusa ubooquity resilio next sickrage mylar plex emby netdata rutorrent sabnzbd tautulli jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik sonarr4k htpcmanager alltubeombi4k radarr4k traefik2 booksonic airsonic cloudcmd headsphones heimdall --cleanup --interval 600
     cpu_shares: 64
     state: started
     volumes:

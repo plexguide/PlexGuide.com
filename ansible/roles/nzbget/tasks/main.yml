@@ -35,7 +35,7 @@
 - name: Deploy NZBGET Container
   docker_container:
     name: nzbget
-    image: linuxserver/nzbget
+    image: "hotio/suitarr"
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -52,8 +52,12 @@
       - /mnt/unionfs:/unionfs
       - /etc/localtime:/etc/localtime:ro
     env:
-      PUID: 1000
-      PGID: 1000
+      APP: "nzbget"
+      VERSION: "unstable"
+      PUID: "1000"
+      PGID: "1000"
+      BACKUP: "no"
+      MONO_TLS_PROVIDER: legacy
     restart_policy: always
     networks:
       - name: plexguide

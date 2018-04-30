@@ -1,49 +1,45 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.072] (Beta, Release Candiate & DEV)
+### [5.074] (Beta, Release Candiate & DEV)
 
-#### RC1 - 27 April 2018
+- None
 
-- Changed
-  - Stop Plex From Disappearing on Rebuilds
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+#### [5.073] - 29 April 2018
+
+  - Put 4k Versions of all programs in one area
+  - Added New Role - CloudCMD (Thanks @Bryde)
+  - Removed Hyrda1 in favor of Hydra2
   - Minor Bug Fixes
-  - Finished PGTrak & PGDupes (Both in BETA, please provide feedback to release 5.072 Stable)
+  - Fix made for PGTrak Path input (Thanks @John Doe)
 
-#### Beta 3 - 27 April 2018
+#### [5.072] - 28 April 2018
 
-- Changed
-  - Bug Fixes
-  - PGDupes Fixes
-
-#### Beta 2 - 27 April 2018
+- Patch 1
+  - Read 5.073 / some fixes from there
 
 - Added
-  - PGTrak (half finished)
-- Changed
-  - Revamped PG Enhancement Menu
-  - Fix Quick Flash Load Error
-  - Minor Bug Fixes
-  - Improved PGDupes Network Address
-- Removed
-  - Unused Roles
-
-#### Beta1 - 26 April 2018
-
-- Added
+ - Finished PGTrak & PGDupes (Both in BETA, please provide feedback to release 5.072 Stable)
  - New "PG PLEX Enhancement Tools" added to the menu
  - Some DummyProofing for those who do not like to read :D
  - PGDupe from DupeFinder
    - Tons of new scripts
    - All GUI for you!
+- Changed
+  - Revamped PG Enhancement Menu
+  - Fix Quick Flash Load Error
+  - Minor Bug Fixes
+  - Improved PGDupes Network Address
  - Typo Fixes, Duplicati Fix, Emby Typo Fix - Mr Wensensday
  - Headphones, Typo Fixes, Lazy L. network fix - InfoMofo
  - Python Support Additon
- - Tons of Minor Bug Fixes
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
+ - Tons of Minor Bug Fixes  - Stop Plex From Disappearing on Rebuilds
+- Removed
+  - Unused Roles
 
 ### [5.071] - 22 April 2018
 

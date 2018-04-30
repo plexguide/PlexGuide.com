@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  dialog --title "SET SONARR PATH [ EXAMPLE: /mnt/unionfs/tv ]" \
+  dialog --title "SET SONARR PATH [ EXAMPLE: /unionfs/tv ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Full Path: " 8 52 2>/tmp/pgtrak.sonarr
   path=$(cat /tmp/pgtrak.sonarr)
@@ -46,13 +46,13 @@
       fi
 
     ##### READ / WRITE CHECK
-    mkdir "$path/plexguide"
+    mkdir "/mnt$path/plexguide"
     
-    file="$path/plexguide"
+    file="/mnt$path/plexguide"
     if [ -e "$file" ]
       then
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe SONARR Path is Set!" 0 0
-        rm -r "$path/plexguide"
+        rm -r "/mnt$path/plexguide"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Exiting!" 0 0
         bash /opt/plexguide/menus/pgtrak/main.sh

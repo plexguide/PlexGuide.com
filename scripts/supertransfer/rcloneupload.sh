@@ -54,7 +54,7 @@ rclone_upload() {
 		--exclude="**partial~" --exclude="**_HIDDEN~" \
 		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
 		--drive-chunk-size=$driveChunkSize \
-		"${localFile}" "$gdsa:${remoteDir}${localFile#"$localDir"}" && rclone_fin_flag=1
+		"${localFile}" "$gdsa:${localFile#"$localDir"}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   local secs=$(( $(date +%s) - $t1 ))

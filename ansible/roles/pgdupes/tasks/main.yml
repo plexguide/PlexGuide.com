@@ -40,7 +40,7 @@
   git:
     repo: https://github.com/Admin9705/pgdupes/
     dest: /opt/appdata/pgdupes
-    version: master
+    version: 5.072
     force: yes
 
 - name: Install pip requirements

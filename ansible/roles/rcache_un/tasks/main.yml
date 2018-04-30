@@ -17,22 +17,22 @@
 #################################################################################
 # TO DO NOTES
 # Need to ensure rcache mounts after gdrive
-# 
+#
 ########## Move Service Script
-  - name: Check MOVE SCRIPT
-    stat:
-      path: "/opt/appdata/plexguide/move.sh"
-    register: move_script
-    tags:
-      - rcache
-    
-  - name: Install Move Service
-    template:
-      src: move_script.js2
-      dest: /opt/appdata/plexguide/move.sh
-      force: yes
-    tags:
-      - rcache
+  # - name: Check MOVE SCRIPT
+  #   stat:
+  #     path: "/opt/appdata/plexguide/move.sh"
+  #   register: move_script
+  #   tags:
+  #     - rcache
+  #
+  # - name: Install Move Service
+  #   template:
+  #     src: move_script.js2
+  #     dest: /opt/appdata/plexguide/move.sh
+  #     force: yes
+  #   tags:
+  #     - rcache
 
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
@@ -40,8 +40,8 @@
       path: "/opt/appdata/plexguide/gdrive.sh"
     register: gdrive_script
     tags:
-      - rache
-    
+      - rcache
+
   - name: Install RClone Sync Service
     template:
       src: gdrive_script.js2
@@ -50,40 +50,56 @@
     when: gdrive_script.stat.exists == False
     tags:
       - rcache
+
+  - name: Check Rcache script
+    stat:
+      path: "/opt/appdata/plexguide/rcache.sh"
+    register: rcache_script
+    tags:
+      - rcache
+
+  - name: Install RClone script
+    template:
+      src: rcache_script.js2
+      dest: /opt/appdata/plexguide/rcache.sh
+      force: yes
+    when: rcache_script.stat.exists == False
+    tags:
+      - rcache
 ########################################## Services
 ########### Move Service
-  - name: Check MOVE Service
-    stat:
-      path: "/etc/systemd/system/move.service"
-    register: move
-    tags:
-      - rcache
-
-  - name: Stop If Move Service Running
-    systemd: state=stopped name=move
-    when: move.stat.exists
-    tags:
-      - rcache
-    
-  - name: Install Move Service
-    template:
-      src: move.js2
-      dest: /etc/systemd/system/move.service 
-      force: yes
-    when: move.stat.exists == False
-    tags:
-      - rcache
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=move daemon_reload=yes enabled=n
-    tags:
-      - rcache
-
-  - name: Start Move
-    systemd: state=started name=move enabled=yes
-    when: move.stat.exists
-    tags:
-      - rcache
+  # - name: Check MOVE Service
+  #   stat:
+  #     path: "/etc/systemd/system/move.service"
+  #   register: move
+  #   tags:
+  #     - rcache
+  #
+  # - name: Stop If Move Service Running
+  #   systemd: state=stopped name=move
+  #   when: move.stat.exists
+  #   tags:
+  #     - rcache
+  #
+  # - name: Install Move Service
+  #   template:
+  #     src: move.js2
+  #     dest: /etc/systemd/system/move.service
+  #     force: yes
+  #   when: move.stat.exists == False
+  #   tags:
+  #     - rcache
+  #
+  # - name: Daemon-Reload
+  #   systemd: state=stopped name=move daemon_reload=yes enabled=n
+  #   tags:
+  #     - rcache
+  #
+  # - name: Start Move
+  #   systemd: state=started name=move enabled=yes
+  #   when: move.stat.exists
+  #   tags:
+  #     - rcache
 
 ########### gdrive mount
   - name: Check GDrive Service
@@ -98,11 +114,11 @@
     when: gdrive.stat.exists
     tags:
       - rcache
-    
+
   - name: Install GDrive Service
     template:
       src: gdrive.js2
-      dest: /etc/systemd/system/gdrive.service 
+      dest: /etc/systemd/system/gdrive.service
       force: yes
     when: gdrive.stat.exists == False
     tags:
@@ -113,12 +129,12 @@
     tags:
       - rcache
 
-  - name: Start RClone
+  - name: Start RClone Mount
     systemd: state=started name=gdrive enabled=yes
     when: gdrive.stat.exists
     tags:
       - rcache
-   
+
 ########### rcache
   - name: Check Cache Service
     stat:
@@ -132,11 +148,11 @@
     when: rcache.stat.exists
     tags:
       - rcache
-    
+
   - name: Install Cache Service
     template:
       src: rcache.js2
-      dest: /etc/systemd/system/rcache.service 
+      dest: /etc/systemd/system/rcache.service
       force: yes
     when: rcache.stat.exists == False
     tags:
@@ -166,11 +182,11 @@
     when: unionfsc.stat.exists
     tags:
       - rcache
-    
+
   - name: Install UNIONFS Service
     template:
       src: unionfsc.js2
-      dest: /etc/systemd/system/unionfsc.service 
+      dest: /etc/systemd/system/unionfsc.service
       force: yes
     tags:
       - rcache
@@ -180,7 +196,7 @@
     tags:
       - rcache
 
-  - name: Start RClone
+  - name: Start UnionFS
     systemd: state=started name=unionfsc enabled=yes
     when: unionfsc.stat.exists
     tags:

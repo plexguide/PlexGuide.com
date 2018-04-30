@@ -81,7 +81,7 @@ Additional limitations: 1) Only 250,000 files allowed per teamdrive
 ########## INSTRUCTIONS ###################################
 1) Make a Team Drive in the Gdrive webui.
 2) Find the Team Drive ID— [32mit looks like this:[0m
-   https://drive.google.com/drive/folders/[32m084g3BHcoUu8IHgWUo5PSA0m
+   https://drive.google.com/drive/folders/[32m084g3BHcoUu8IHgWUo5PSA[0m
 ###########################################################
 EOF
 
@@ -108,14 +108,10 @@ function validate_json(){
   for gdsa in $gdsaList; do
     s=0
     start_spinner "Validating: ${gdsa}"
-    rclone touch --drive-shared-with-me ${gdsa}:${rootDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
+    rclone lsd ${gdsa}:${rootDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=1
     if [[ $s == 1 ]]; then
       stop_spinner 0
     else
-      rclone touch ${gdsa}:${rootDir}/SA_validate &>/tmp/.SA_error.log.tmp && s=2
-      if [[ $s == 2 ]]; then
-        stop_spinner 0
-      fi
       cat /tmp/.SA_error.log.tmp >> /tmp/SA_error.log
       stop_spinner 1
       ((gdsaFail++))
