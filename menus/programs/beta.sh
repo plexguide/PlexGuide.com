@@ -41,7 +41,7 @@ case $CHOICE in
          ;;
 
      D)
-     bash /opt/plexguide/menus/plex/enhancement.sh ;;
+     bash /opt/plexguide/menus/plex/test.sh ;;
      Z)
         clear
         exit 0 ;;
