@@ -45,3 +45,5 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plextest &>/dev/nul
             dialog --infobox "Installing Plex: Please Wait" 3 45
             sleep 2
             dialog --infobox "Done!" 3 45
+
+clear
