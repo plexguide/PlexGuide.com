@@ -38,21 +38,8 @@ port=32400
         sleep 2
         touch /tmp/server.check 1>/dev/null 2>&1
 
+echo "lastest" > /var/plexguide/plextag
 
-
-               # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plextest &>/dev/null &
-               sleep 2
-
-                dialog --title "Warning - Tag Info" \
-                --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
-
-                dialog --title "Input >> Tag Version" \
-                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --inputbox "Windows Users - SHIFT + INSERT to PASTE" 8 40 2>/var/plexguide/plextag
-                plextag=$(cat /var/plexguide/plextag)
-                dialog --infobox "Typed Tag: $plextag" 3 45
-                sleep 1
 
             dialog --infobox "Installing Plex: Please Wait" 3 45
             sleep 2
