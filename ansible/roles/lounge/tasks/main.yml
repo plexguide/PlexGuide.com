@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -18,38 +18,33 @@
 ---
 - include_role:
     name: variables
-    
-- name: Remove NZBHydra2 Container
+
+- name: Remove Container
   docker_container:
-    name: nzbhydra2
+    name: thelounge
     state: absent
 
-- name: Deploy NZBHydra2 Container
+- name: Create and start container
   docker_container:
-    name: nzbhydra2
-    image: "hotio/suitarr"
+    name: thelounge
+    image: "linuxserver/thelounge"
     pull: yes
-    cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}5076:5076"
+      - "{{ports.stdout}}9100:9000"
     env:
-      APP: "nzbhydra2"
-      VERSION: "unstable"
       PUID: "1000"
       PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
     volumes:
-      - "/opt/appdata/nzbhydra2:/config"
       - "/etc/localtime:/etc/localtime:ro"
-    restart_policy: always
+      - "/opt/appdata/thelounge:/config"
     networks:
       - name: plexguide
         aliases:
-          - nzbhydra2
+          - thelounge
+    restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nzbhydra.{{domain.stdout}}, nzbhydra2.{{domain.stdout}}"
-      traefik.port: "5076"
+      traefik.frontend.rule: "Host:thelounge.{{domain.stdout}}"
+      traefik.port: "9000"

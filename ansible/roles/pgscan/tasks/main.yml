@@ -1,0 +1,80 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks - plex_autoscan
+#################################################################################
+---
+- name: Check service exists
+  stat:
+    path: "/etc/systemd/system/pgscan.service"
+  register: pgscan_service
+
+- name: Stop existing pgscan service
+  systemd: state=stopped name=pgscan
+  when: pgscan_service.stat.exists
+
+- name: Create pgscan directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/pgscan
+
+- name: Clone plex_autoscan to pgscan
+  git:
+    repo: https://github.com/Admin9705/pgscan/
+    dest: /opt/appdata/pgscan
+    version: master
+    force: yes
+    
+- name: Install pip requirements
+  pip:
+    requirements: /opt/appdata/pgscan/requirements.txt
+    executable: pip2
+
+- name: Check config exists
+  stat:
+    path: "/opt/appdata/pgscan/config/config.json"
+  register: pgscan_config
+
+- name: "Generate 32 character SERVER_PASS"
+  shell: "pwgen 32 1"
+  register: pgscan_pass
+  when: pgscan_config.stat.exists == False
+
+- name: Import default config
+  template:
+    src: config.json.js2
+    dest: /opt/appdata/pgscan/config/config.json
+    force: yes
+  when: pgscan_config.stat.exists == False
+
+- name: Set scan.py as executable
+  file:
+    path: /opt/appdata/pgscan/scan.py
+    mode: a+x
+
+- name: Set directory permissions
+  file: "path=/opt/appdata/pgscan state=directory owner=1000 group=1000 recurse=yes"
+
+- name: Import pgscan service
+  template:
+    src: pgscan.service.js2
+    dest: /etc/systemd/system/pgscan.service 
+    force: yes
+  when: pgscan_service.stat.exists == False
+
+- name: Start pgscan service
+  systemd: state=started name=pgscan daemon_reload=yes enabled=yes

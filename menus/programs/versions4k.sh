@@ -26,11 +26,11 @@ HEIGHT=10
 WIDTH=38
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="NZB Applications - PG Supporting"
+TITLE="4K Versions - PG Supporting"
 
-OPTIONS=(A "NZBGet"
-         B "NZBHydra v2"
-         C "SABNZBD"
+OPTIONS=(A "Ombi4k"
+         F "Radarr4k"
+         I "Sonarr4k"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -42,59 +42,34 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
-            display=NZBGET
-            program=nzbget
+            display=Ombi4K
+            program=ombi4k
+            port=3574
             dialog --infobox "Installing: $display" 3 30
-            port=6789
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k &>/dev/null &
             sleep 2
             cronskip=no
             ;;
         B)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
-            bash /opt/plexguide/menus/nzb/main33.sh
-            display=NZBHYRA2
-            program=nzbhyra2
+            display=Radarr4k
+            program=radarr4k
+            port=7874
             dialog --infobox "Installing: $display" 3 30
-            port=5076
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2 &>/dev/null &
-            sleep 2
-            cronskip=no
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
+            chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+            chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
+            cronskip="no"
             ;;
         C)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
-            bash /opt/plexguide/menus/nzb/main33.sh
-            display=SABNZBD
-            program=sabnzbd
+            display=Sonarr4k
+            program=sonarr4k
+            port=8984
             dialog --infobox "Installing: $display" 3 30
-            port=8090
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
-            sleep 2
-            cronskip=no
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
+            chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+            chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+            cronskip="no"
             ;;
-
         Z)
             exit 0 ;;
 esac

@@ -2,6 +2,7 @@
 - hosts: localhost
 
   roles:
+  - { role: lounge, tags: ['lounge'] }
   - { role: deploy, tags: ['deploy'] }
   - { role: pgtrak, tags: ['pgtrak']}
   - { role: backup, tags: ['backup'] }
@@ -17,14 +18,14 @@
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: rutorrent, tags: ['rutorrent'] }
-  - { role: nzbhydra, tags: ['nzbhydra'] }
-  - { role: variables, tags: ['variables'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
+  - { role: variables, tags: ['variables'] }
   - { role: muximux, tags: ['muximux'] }
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
+  - { role: cloudcmd, tags: ['cloudcmd'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
