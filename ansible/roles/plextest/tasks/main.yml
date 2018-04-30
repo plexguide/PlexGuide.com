@@ -69,7 +69,7 @@
 
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:{{plextag_var.stdout}}"
+    name: "plexinc/pms-docker"
 
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
@@ -79,7 +79,7 @@
 - name: Deploy Plex Container
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:latest"
+    image: "plexinc/pms-docker"
     pull: yes
     published_ports:
       #- "32400:32400"
