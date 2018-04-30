@@ -97,14 +97,11 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plextoken_var.stdout}}"
-      ADVERTISE_IP: "{{plex_advert_ip}}"
-    networks:
-      - name: plexguide
-        aliases:
-          - plex
-    expose:
-      - 32400
+#      PLEX_CLAIM: "{{plextoken_var.stdout}}"
+#      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
+    network_mode: "host"
+#    expose:
+#      - 32400
     volumes:
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
@@ -125,28 +122,3 @@
       traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
-
-- name: Create Basic Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-      - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
-
-- name: WebTools
-  unarchive:
-    src: https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
-    dest: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
-    keep_newer: no
-    owner: 1000
-    group: 1000
-    mode: 0775
-    copy: no
-  tags:
-    - webtools
-
-- name: Create autoscan Logs folder
-  file:
-    path: "/opt/appdata/scan/Logs/Plex Media Server"
-    state: directory
-    mode: 0775
-    owner: "1000"
-    group: "1000"
