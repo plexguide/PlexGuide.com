@@ -10,7 +10,7 @@ export NCURSES_NO_UTF8_ACS=1
  OPTIONS=(A "VPN Torrent"
           B "DO NOT USE - For Developers Use Only!"
           C "Duplicati - Advanced Backup"
-          D "Telly - Plex Live TV through IPTV"
+          D "PLEXTEST"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -41,7 +41,7 @@ case $CHOICE in
          ;;
 
      D)
-     bash /opt/plexguide/menus/plex/telly.sh ;;
+     bash /opt/plexguide/menus/plex/enhancement.sh ;;
      Z)
         clear
         exit 0 ;;
