@@ -40,6 +40,7 @@ port=32400
 
 echo "lastest" > /var/plexguide/plextag
 
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plextest &>/dev/null &
 
             dialog --infobox "Installing Plex: Please Wait" 3 45
             sleep 2
