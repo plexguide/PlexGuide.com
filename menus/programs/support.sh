@@ -124,7 +124,7 @@ case $CHOICE in
             program=thelounge
             port=9100
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags thelounge &>/dev/null &
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lounge &>/dev/null &
             sleep 2
             cronskip=no
             ;;
