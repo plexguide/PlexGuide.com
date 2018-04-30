@@ -79,7 +79,7 @@
 - name: Deploy Plex Container
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextag_var.stdout}}"
+    image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
       #- "32400:32400"
