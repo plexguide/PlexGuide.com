@@ -61,38 +61,24 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
   echo "[OFF]" > /var/plexguide/server.appguard
   fi
 ############################################################ Starting Install Processing
-echo "0" | dialog --gauge "Conducting a System Update (Be Patient)" 7 55 0
+echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
-echo "9" | dialog --gauge "Installing Python Support (Be Patient)" 7 55 0
-apt-get install python-pip -y 1>/dev/null 2>&1
-apt-get install build-essential -y 1>/dev/null 2>&1
-apt-get install libssl-dev -y 1>/dev/null 2>&1
-apt-get install libffi-dev -y 1>/dev/null 2>&1
-apt-get install python3-dev -y 1>/dev/null 2>&1
-apt-get install python3-pip -y 1>/dev/null 2>&1
-apt-get install python-dev -y 1>/dev/null 2>&1
-apt-get install python-pip -y 1>/dev/null 2>&1
-python3 -m pip install pyOpenSSL --upgrade 1>/dev/null 2>&1
-python3 -m pip install pip--upgrade 1>/dev/null 2>&1
-python3 -m pip install setuptools --upgrade 1>/dev/null 2>&1
-python3 -m pip install requests --upgrade 1>/dev/null 2>&1
-python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1 
- 
-echo "18" | dialog --gauge "Installing: Software Properties Common" 7 50 0
+#echo "10" | dialog --gauge "Installing Python Support" 7 50 0
+#bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+#sleep 1
+
+echo "12" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 sleep 1
 
-echo "20" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
+echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
 yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 sleep 1
 
 ############################################################ Enables Use of ROLES AfterWards
-echo "22" | dialog --gauge "Installing: Ansible Playbook 2.5.2" 7 50 0
-pip install --upgrade pip
-sudo easy_install pip
-#pip install ansible
+echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
 apt-get update -y 1>/dev/null 2>&1
 apt-get install ansible -y 1>/dev/null 2>&1
@@ -121,6 +107,8 @@ fi
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
+
+
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
@@ -190,6 +178,9 @@ if [ -e "$file" ]
       bash /opt/plexguide/menus/watchtower/main.sh
 fi
 
+echo "91" | dialog --gauge "Installing: Python Support" 7 50 0
+bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+
 ##### Traefik Process
 file="/var/plexguide/server.domain"
 if [ -e "$file" ]
@@ -228,7 +219,6 @@ sleep 2
     fi
 
 touch /var/plexguide/donation.yes 1>/dev/null 2>&1
-
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 echo "PG Install is Complete" > /tmp/pushover
