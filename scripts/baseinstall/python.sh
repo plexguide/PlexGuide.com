@@ -1,0 +1,1 @@
+sudo apt-get install -y git python-pip python3-pip python-setuptools python3-setuptools && sudo easy_install -U pip && sudo easy_install3 -U pip && requests && sudo python3 -m pip install requests
