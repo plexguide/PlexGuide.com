@@ -80,6 +80,7 @@ python3 -m pip install requests --upgrade 1>/dev/null 2>&1
 python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1 
 pip install --upgrade pip 1>/dev/null 2>&1
 sudo easy_install pip 1>/dev/null 2>&1
+pip install ansible==2.5.2 1>/dev/null 2>&1
 
 ## Repeating until determine root cause
 yes | apt-get update 1>/dev/null 2>&1
