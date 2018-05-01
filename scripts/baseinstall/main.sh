@@ -190,9 +190,6 @@ if [ -e "$file" ]
       bash /opt/plexguide/menus/watchtower/main.sh
 fi
 
-echo "91" | dialog --gauge "Installing: Python Support" 7 50 0
-bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
-
 ##### Traefik Process
 file="/var/plexguide/server.domain"
 if [ -e "$file" ]
