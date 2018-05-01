@@ -54,7 +54,7 @@
         aliases:
           - "{{role_name}}"
     volumes:
-      - "{{pathplus.stdout}}"
+#      - "{{pathplus.stdout}}"
       - "/opt/appdata/{{role_name}}:/config"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
