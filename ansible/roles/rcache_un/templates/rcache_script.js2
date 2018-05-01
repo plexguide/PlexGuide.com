@@ -1,2 +1,2 @@
 #!/bin/bash
-rclone mount rcache: /mnt/rcache --allow-other --dir-cache-time=1h --cache-chunk-size=5M --cache-info-age=2h --cache-workers=8 --buffer-size 0M --syslog --umask 000 --log-level INFO --attr-timeout=1s
+rclone mount rcache: /mnt/rcache --allow-other --dir-cache-time=1h --cache-chunk-size=10M --cache-info-age=1h --cache-workers=8 --buffer-size 0M --umask 002 --log-level INFO --attr-timeout=1s

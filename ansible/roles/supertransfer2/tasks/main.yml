@@ -16,39 +16,69 @@
 #
 #################################################################################
 ---
+  - name: Check Transfer Service
+    stat:
+      path: "/etc/systemd/system/transfer.service"
+    register: transfer
+
   - name: Stop If Transfer Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: transfer
+    when: transfer.stat.exists
     ignore_errors: True
+
+  - name: Check move Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move
 
   - name: Stop If Move Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: move
+    when: move.stat.exists
     ignore_errors: True
+
+  - name: Check move-en Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move-en
 
   - name: Stop If Encrypted Move Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: move-en
+    when: move.stat.exists
     ignore_errors: True
+
+  - name: Check time Service
+    stat:
+      path: "/etc/systemd/system/time.service"
+    register: time
 
   - name: Stop If Time Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: time
+    when: time.stat.exists
     ignore_errors: True
 
-  - name: Stop If Supertransfer (1) Service Running (ignore errors)
+  - name: Check supertransfer1 Service
+    stat:
+      path: "/etc/systemd/system/supertransfer.service"
+    register: supertransfer
+
+  - name: Stop If Supertransfer1 Service Running (ignore errors)
     systemd:
       state: stopped
       enabled: no
       name: supertransfer
+    when: supertransfer.stat.exists
     ignore_errors: True
 
   - name: Install SuperTransfer2 Service
