@@ -21,6 +21,14 @@
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
 <p align="center"><kbd><img src="https://plexguide.com/media/snip20180424_194-png.75/full"></kbd></p>
 
+----
+
+<p align="center"><kbd><img src="https://user-images.githubusercontent.com/37129444/39414593-9faa5d18-4bf6-11e8-8b83-0ade87c72ee3.gif"></kbd></p>
+
+A Project built by new coders for the average and new user!
+
+----
+
 ## Testimonials
 
 [**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
