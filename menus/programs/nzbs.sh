@@ -42,14 +42,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
             display=NZBGET
             program=nzbget
             dialog --infobox "Installing: $display" 3 30
@@ -59,15 +51,6 @@ case $CHOICE in
             cronskip=no
             ;;
         B)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
-            bash /opt/plexguide/menus/nzb/main33.sh
             display=NZBHYRA2
             program=nzbhyra2
             dialog --infobox "Installing: $display" 3 30
@@ -77,15 +60,6 @@ case $CHOICE in
             cronskip=no
             ;;
         C)
-            file="/var/plexguide/nzb.discount2" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                bash /opt/plexguide/menus/nzb/main33.sh
-                else
-              touch /var/plexguide/nzb.discount2
-              bash /opt/plexguide/menus/nzb/main.sh
-              fi
-            bash /opt/plexguide/menus/nzb/main33.sh
             display=SABNZBD
             program=sabnzbd
             dialog --infobox "Installing: $display" 3 30
