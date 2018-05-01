@@ -20,7 +20,7 @@ app="Radarr"
 ############################
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
-WIDTH=36
+WIDTH=48
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Image for $app"
@@ -43,16 +43,13 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "linuxserver/radarr" > /var/plexguide/image.radarr
-            ;;
+            echo "linuxserver/radarr" > /var/plexguide/image.radarr ;;
         B)
-            echo "hotio/suitarr" > /var/plexguide/image.radarr
-            ;;
+            echo "hotio/suitarr" > /var/plexguide/image.radarr ;;
         C)
-            dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
-            ctop ;;
+            echo "aront/radarr" > /var/plexguide/image.radarr ;;
         D)
-            bash /opt/plexguide/menus/info-tshoot/info/status-menu.sh ;;
+            ;;
         Z)
             clear
             exit 0 ;;
