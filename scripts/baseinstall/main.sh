@@ -64,9 +64,19 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
-#echo "10" | dialog --gauge "Installing Python Support" 7 50 0
-#bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
-#sleep 1
+apt-get install python-pip -y 1>/dev/null 2>&1
+apt-get install build-essential -y 1>/dev/null 2>&1
+apt-get install libssl-dev -y 1>/dev/null 2>&1
+apt-get install libffi-dev -y 1>/dev/null 2>&1
+apt-get install python3-dev -y 1>/dev/null 2>&1
+apt-get install python3-pip -y 1>/dev/null 2>&1
+apt-get install python-dev -y 1>/dev/null 2>&1
+apt-get install python-pip -y 1>/dev/null 2>&1
+python3 -m pip install pyOpenSSL --upgrade
+python3 -m pip install pip--upgrade
+python3 -m pip install setuptools --upgrade
+python3 -m pip install requests --upgrade
+python3 -m pip install netaddr --upgrade
 
 echo "12" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
@@ -78,11 +88,13 @@ sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 sleep 1
 
 ############################################################ Enables Use of ROLES AfterWards
-echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
-yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-apt-get update -y 1>/dev/null 2>&1
-apt-get install ansible -y 1>/dev/null 2>&1
-yes | apt-get update 1>/dev/null 2>&1
+echo "22" | dialog --gauge "Installing: Ansible Playbook 2.5.2" 7 50 0
+
+pip install ansible=2.5.2 1>/dev/null 2>&1
+#yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+#apt-get update -y 1>/dev/null 2>&1
+#apt-get install ansible -y 1>/dev/null 2>&1
+#yes | apt-get update 1>/dev/null 2>&1
 
 ############################################################ Start of Role Execution
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
