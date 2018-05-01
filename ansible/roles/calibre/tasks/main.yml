@@ -19,43 +19,34 @@
 - include_role:
     name: variables
     
-- name: Remove Lidarr Container
+- name: Remove Calibre Container
   docker_container:
-    name: lidarr
+    name: calibre
     state: absent
 
-- name: Deploy Lidarr Container
+- name: Deploy Calibre Container
   docker_container:
-    name: lidarr
-    image: "hotio/suitarr"
+    name: calibre
+    image: "aptalca/docker-calibre"
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}8686:8686"
+      - "{{ports.stdout}}7995:8080"
     env:
-      APP: "lidarr"
-      VERSION: "unstable"
       PUID: "1000"
       PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
     networks:
       - name: plexguide
         aliases:
-          - lidarr
-    volumes:
-      - /opt/appdata/lidarr:/config
+          - calibre
+    volumes: 
+      - /opt/appdata/calibre:/config
       - /mnt/unionfs:/unionfs
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/rutorrents:/downloads"
-      - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:lidarr.{{domain.stdout}}"
-      traefik.port: "8686"
+      traefik.frontend.rule: "Host:calibre.{{domain.stdout}}"
+      traefik.port: "8080"
