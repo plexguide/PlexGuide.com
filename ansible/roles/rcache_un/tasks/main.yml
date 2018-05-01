@@ -66,6 +66,27 @@
     when: rcache_script.stat.exists == False
     tags:
       - rcache
+
+  - name: Allow non-root fuse mount
+    lineinfile:
+      path: /etc/fuse.conf
+      line: user_allow_other
+
+  - name: Check Rcache directory
+    stat:
+      path: "/mnt/rcache"
+    register: rcache_dir
+    tags:
+      - rcache
+
+  - name: Create Rcache directory
+    file:
+      path: "/mnt/rcache"
+      state: directory
+      owner: 1000
+      group: 1000
+      mode: 755
+    when: rcache_dir.stat.exists == False
 ########################################## Services
 ########### Move Service
   # - name: Check MOVE Service
