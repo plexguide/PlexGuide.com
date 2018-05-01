@@ -90,7 +90,7 @@ sleep 1
 ############################################################ Enables Use of ROLES AfterWards
 echo "22" | dialog --gauge "Installing: Ansible Playbook 2.5.2" 7 50 0
 
-pip install ansible=2.5.2 1>/dev/null 2>&1
+pip install ansible==2.5.2 1>/dev/null 2>&1
 #yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
 #apt-get update -y 1>/dev/null 2>&1
 #apt-get install ansible -y 1>/dev/null 2>&1
