@@ -48,8 +48,8 @@ init_DB(){
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
   else
-      [[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf.back
-      [[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
+      #[[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf.back
+      #[[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
       gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
       [[ -z $gdsaList ]] && echo -e " [FAIL] No Valid SA accounts found! Is Rclone Configured With GDSA## remotes?" && exit 1
       numGdsa=$(echo $gdsaList | wc -w)
