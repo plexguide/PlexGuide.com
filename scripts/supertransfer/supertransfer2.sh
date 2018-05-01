@@ -48,8 +48,10 @@ init_DB(){
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
   else
-      #[[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf.back
-      #[[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf
+      # backup root's rclone conf
+      [[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.back
+      # cp home's rclone conf to root
+      [[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf
       gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
       [[ -z $gdsaList ]] && echo -e " [FAIL] No Valid SA accounts found! Is Rclone Configured With GDSA## remotes?" && exit 1
       numGdsa=$(echo $gdsaList | wc -w)
@@ -105,7 +107,7 @@ while true; do
   sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
   unset a i
       while IFS= read -r -u3 -d $'\0' dir; do
-          [[ $(find "${dir}" -type f -mmin -${modTime} -print -quit) == '' && ! $(find "${dir}" -type f -name "*.partial~") ]] \
+          [[ $(find "${dir}" -type f -mmin -${modTime} -print -quit) == '' && ! $(find "${dir}" -name "*.partial~" -o -name "*.unionfs-fuse*") ]] \
               && a[i++]=$(du -s "${dir}")
       done 3< <(find ${localDir} -mindepth $sc -type d -links 2 -not -empty -prune -print0)
 
