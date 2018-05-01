@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 HEIGHT=18
 WIDTH=59
 CHOICE_HEIGHT=16

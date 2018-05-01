@@ -1,13 +1,23 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.074] (Beta, Release Candiate & DEV)
+### [5.075] (Beta, Release Candiate & DEV)
 
-- None
+- Changed
+  - Reworked PreInstaller
+  - Stopped asking donation question if asked already once for preinstaller
 
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+#### [5.074] - 30 April 2018
+
+- Better watchtower settings
+- Watchtower improvements on the front page
+- New Program - The Lounge
+- Minor Bugs Fixes
+- Switched back to Hotio Images to cut down on eating all your space!
 
 #### [5.073] - 29 April 2018
 

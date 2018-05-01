@@ -19,8 +19,6 @@
 export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com
 source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
-echo $ipv4
-echo $domain
 
 HEIGHT=12
 WIDTH=45
