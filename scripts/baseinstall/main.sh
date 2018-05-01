@@ -77,7 +77,8 @@ python3 -m pip install pyOpenSSL --upgrade 1>/dev/null 2>&1
 python3 -m pip install pip--upgrade 1>/dev/null 2>&1
 python3 -m pip install setuptools --upgrade 1>/dev/null 2>&1
 python3 -m pip install requests --upgrade 1>/dev/null 2>&1
-python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1 
+python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1
+yes | apt-get update 1>/dev/null 2>&1 
 pip install --upgrade pip
 sudo easy_install pip
 
