@@ -64,6 +64,7 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 yes | apt-get update 1>/dev/null 2>&1
 
+echo "9" | dialog --gauge "Insatlling Python Support" 7 50 0
 apt-get install python-pip -y 1>/dev/null 2>&1
 apt-get install build-essential -y 1>/dev/null 2>&1
 apt-get install libssl-dev -y 1>/dev/null 2>&1
@@ -78,18 +79,17 @@ python3 -m pip install setuptools --upgrade 1>/dev/null 2>&1
 python3 -m pip install requests --upgrade 1>/dev/null 2>&1
 python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1 
 
-echo "12" | dialog --gauge "Installing: Software Properties Common" 7 50 0
+echo "18" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 sleep 1
 
-echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
+echo "20" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
 yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 sleep 1
 
 ############################################################ Enables Use of ROLES AfterWards
 echo "22" | dialog --gauge "Installing: Ansible Playbook 2.5.2" 7 50 0
-
 pip install ansible==2.5.2 1>/dev/null 2>&1
 #yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
 #apt-get update -y 1>/dev/null 2>&1
