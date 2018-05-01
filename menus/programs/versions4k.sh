@@ -48,7 +48,7 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k &>/dev/null &
             sleep 2
-            cronskip=no
+            cronskip="no"
             ;;
         B)
             display=Radarr4k
@@ -88,4 +88,4 @@ echo "$port" > /tmp/port
 bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/nzbs.sh
+bash /opt/plexguide/menus/programs/versions4k.sh

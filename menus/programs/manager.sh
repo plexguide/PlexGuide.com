@@ -105,6 +105,7 @@ case $CHOICE in
       display=Radarr
       program=radarr
       port=7878
+      bash /opt/plexguide/menus/images/$program.sh
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1

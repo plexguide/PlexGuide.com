@@ -18,16 +18,26 @@
 ---
 - include_role:
     name: variables
-    
-- name: Remove Radarr Container
+
+- name: Register Image
+  shell: "cat /var/plexguide/image.{{role_name}}"
+  register: image
+  ignore_errors: True
+
+- name: Register Additional Path
+  shell: "cat /var/plexguide/image.{{role_name}}.path"
+  register: pathplus
+  ignore_errors: True
+
+- name: Remove "{{role_name}}" Container
   docker_container:
     name: radarr
     state: absent
 
-- name: Deploy Radarr Container
+- name: Deploy "{{role_name}}" Container
   docker_container:
-    name: radarr
-    image: hotio/suitarr
+    name: "{{role_name}}"
+    image: "{{image.stdout}}"
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -42,9 +52,10 @@
     networks:
       - name: plexguide
         aliases:
-          - radarr
+          - "{{role_name}}"
     volumes:
-      - /opt/appdata/radarr:/config
+      - "{{pathplus.stdout}}"
+      - /opt/appdata/"{{role_name}}":/config
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
@@ -57,5 +68,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:radarr.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "7878"
