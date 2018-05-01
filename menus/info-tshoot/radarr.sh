@@ -25,10 +25,10 @@ CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
-OPTIONS=(A "hotio/suitarr"
-         B "Diskspace with NCDU"
-         C "Container Performance"
-         D "Why is this important?"
+OPTIONS=(A "linuxserver/radarr: Recommended"
+         B "hotio/suitarr     : Space Saver"
+         C "aront/radarr      : MP Convertor"
+         D "Why Important: FAQ"
          Z "Exit")
 
 
@@ -43,11 +43,13 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "hotio/suitarr" > /var/plexguide/image.radarr
-            echo "" > /var/plexguide/image.radarr.path 
+            echo "linuxserver/radarr" > /var/plexguide/image.radarr
+            echo "" > /var/plexguide/image.radarr.path
             ;;
         B)
-            bash /opt/plexguide/menus/info-tshoot/ncdu.sh ;;
+            echo "hotio/suitarr" > /var/plexguide/image.radarr
+            echo "" > /var/plexguide/image.radarr.path
+            ;;
         C)
             dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
             ctop ;;
