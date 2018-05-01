@@ -61,10 +61,10 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
   echo "[OFF]" > /var/plexguide/server.appguard
   fi
 ############################################################ Starting Install Processing
-echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
+echo "0" | dialog --gauge "Conducting a System Update (Be Patient)" 7 55 0
 yes | apt-get update 1>/dev/null 2>&1
 
-echo "9" | dialog --gauge "Installing Python Support" 7 50 0
+echo "9" | dialog --gauge "Installing Python Support (Be Patient)" 7 55 0
 apt-get install python-pip -y 1>/dev/null 2>&1
 apt-get install build-essential -y 1>/dev/null 2>&1
 apt-get install libssl-dev -y 1>/dev/null 2>&1
