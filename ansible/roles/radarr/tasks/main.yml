@@ -29,12 +29,12 @@
   register: pathplus
   ignore_errors: True
 
-- name: Remove "{{role_name}}" Container
+- name: Remove {{role_name}} Container
   docker_container:
     name: radarr
     state: absent
 
-- name: Deploy "{{role_name}}" Container
+- name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
     image: "{{image.stdout}}"
@@ -55,7 +55,7 @@
           - "{{role_name}}"
     volumes:
       - "{{pathplus.stdout}}"
-      - /opt/appdata/"{{role_name}}":/config
+      - "/opt/appdata/{{role_name}}:/config"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
