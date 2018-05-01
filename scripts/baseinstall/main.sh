@@ -83,7 +83,6 @@ sudo easy_install pip 1>/dev/null 2>&1
 
 ## Repeating until determine root cause
 yes | apt-get update 1>/dev/null 2>&1
-apt-get install python-pip -y 1>/dev/null 2>&1
 apt-get install build-essential -y 1>/dev/null 2>&1
 apt-get install libssl-dev -y 1>/dev/null 2>&1
 apt-get install libffi-dev -y 1>/dev/null 2>&1
