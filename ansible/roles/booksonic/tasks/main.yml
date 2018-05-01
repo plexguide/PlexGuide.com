@@ -19,9 +19,9 @@
 - include_role:
     name: variables
 
-- name: Remove booksonic Container
+- name: Remove {{role_name}} Container
   docker_container:
-    name: booksonic
+    name: "{{role_name}}"
     state: absent
 
 - name: Create Directories
@@ -30,9 +30,9 @@
     - "{{path.stdout}}/move/audiobooks"
     - "{{path.stdout}}/move/podcasts"
 
-- name: Deploy booksonic Container
+- name: Deploy {{role_name}} Container
   docker_container:
-    name: booksonic
+    name: "{{role_name}}"
     image: linuxserver/booksonic
     pull: yes
     cpu_shares: 512
@@ -42,18 +42,18 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/booksonic:/config
+      - "/opt/appdata/{{role_name}}:/config"
       - /mnt/unionfs/audiobooks:/books
       - /mnt/unionfs/podcasts:/podcasts
       - /etc/localtime:/etc/localtime:ro
     networks:
       - name: plexguide
         aliases:
-          - booksonic
+          - "{{role_name}}"
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:booksonic.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "4040"
     restart_policy: always
     state: started
