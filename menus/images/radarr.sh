@@ -44,11 +44,11 @@ clear
 case $CHOICE in
         A)
             echo "linuxserver/radarr" > /var/plexguide/image.radarr
-            echo "" > /var/plexguide/image.radarr.path
+            echo "-" > /var/plexguide/image.radarr.path
             ;;
         B)
             echo "hotio/suitarr" > /var/plexguide/image.radarr
-            echo "" > /var/plexguide/image.radarr.path
+            echo "-" > /var/plexguide/image.radarr.path
             ;;
         C)
             dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
