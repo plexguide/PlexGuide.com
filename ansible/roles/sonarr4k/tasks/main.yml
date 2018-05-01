@@ -27,24 +27,21 @@
 - name: Deploy Sonarr Container
   docker_container:
     name: sonarr4k
-    image: "hotio/suitarr"
+    image: aront/sonarr
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}8984:8989"
     env:
-      APP: "sonarr"
-      VERSION: "unstable"
       PUID: "1000"
       PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
     networks:
       - name: plexguide
         aliases:
           - sonarr4k
     volumes:
       - /opt/appdata/sonarr4k:/config
+      - /opt/appdata/sonarr4k/mp4_automator:/config_mp4_automator
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
@@ -59,3 +56,10 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:sonarr4k.{{domain.stdout}}"
       traefik.port: "8989"
+      
+- name: Install autoProcess.ini
+  template:
+    src: autoProcess.ini
+    dest: /opt/appdata/sonarr/mp4_automator/autoProcess.ini
+    force: yes
+    mode: 0775
