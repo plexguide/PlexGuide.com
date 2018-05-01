@@ -84,7 +84,7 @@ case $CHOICE in
             fi
               ;;
         D)
-              dialog --title "WatchTower Status" --msgbox "\nNotice: WatchTower allows your Containers to Auto-Update!\n\nPROS: You containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 0 0 
+              dialog --title "WatchTower Status" --msgbox "\nNotice: WatchTower allows your Containers to Auto-Update!\n\nPROS: Your containers will always be up-to-date.\n\nCONS: If something is wrong with the newest continer, you'll have issues; rare but happens.\n\nNOTE: Typically recommend Plex & Emby to be updated manually for stability purposes!" 0 0
               ;;
         Z)
             file="/var/plexguide/watchtower.yes"
