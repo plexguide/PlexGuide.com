@@ -24,15 +24,15 @@
   register: image
   ignore_errors: True
 
-- name: Register Additional Path
-  shell: "cat /var/plexguide/image.{{role_name}}.path"
-  register: pathplus
-  ignore_errors: True
-
 - name: Remove {{role_name}} Container
   docker_container:
     name: radarr
     state: absent
+
+- name: Create Folders
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/{{role_name}}/mp4_automator
 
 - name: Deploy {{role_name}} Container
   docker_container:
@@ -54,7 +54,7 @@
         aliases:
           - "{{role_name}}"
     volumes:
-      "{{pathplus.stdout}}"
+      - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
       - "/opt/appdata/{{role_name}}:/config"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
@@ -70,3 +70,10 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "7878"
+
+- name: Install autoProcess.ini
+  template:
+    src: autoProcess.ini
+    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
+    force: yes
+    mode: 0775
