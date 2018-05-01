@@ -78,6 +78,8 @@ python3 -m pip install pip--upgrade 1>/dev/null 2>&1
 python3 -m pip install setuptools --upgrade 1>/dev/null 2>&1
 python3 -m pip install requests --upgrade 1>/dev/null 2>&1
 python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1 
+pip install --upgrade pip
+sudo easy_install pip
 
 echo "18" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
