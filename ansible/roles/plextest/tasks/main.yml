@@ -1,0 +1,124 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_role:
+    name: variables
+
+- name: Stop and remove any existing container
+  docker_container:
+    name: plex
+    state: absent
+  ignore_errors: yes
+
+- name: "Get Server IP"
+  shell: "hostname -I | awk '{print $1}'"
+  register: local_ip
+
+- name: "Establishing Plex Tag Version"
+  shell: "awk '{print $1}' /var/plexguide/plextag"
+  register: plextag_var
+
+- name: Check Preferences.xml exists
+  stat:
+    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
+  register: plex_prefs
+
+- name: "Get Plex Custom URL"
+  shell: "cat /var/plexguide/plex.url"
+  register: plex_url
+- debug: msg="Your plex_url is {{ plex_url.stdout }}"
+
+- set_fact:
+      plex_advert_ip: "http://{{local_ip.stdout}}:32400"
+  when: plex_url.stdout == ""
+
+- set_fact:
+      plex_advert_ip: "{{ plex_url.stdout }}"
+  when: plex_url.stdout != ""
+
+- debug: msg="plex_advert_ip is {{plex_advert_ip}}"
+
+- name: Check /dev/dri exists
+  stat:
+    path: "/dev/dri"
+  register: dev_dri
+
+- debug: msg="Your IP Address is {{local_ip.stdout}}"
+  when: plex_prefs.stat.exists == False
+
+- name: "Establishing Plex Token Version"
+  shell: "cat /var/plexguide/plextoken"
+  register: plextoken_var
+
+- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
+
+- name: Pull Plex Image
+  docker_image:
+    name: "plexinc/pms-docker"
+
+- name: Create Transcodes Directory
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+      - /opt/transcodes
+
+- name: Deploy Plex Container
+  docker_container:
+    name: plex
+    image: "plexinc/pms-docker"
+    pull: yes
+    published_ports:
+      #- "32400:32400"
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "33400:33400/tcp"
+      - "33443:33443/tcp"
+    env:
+      PLEX_UID: 1000
+      PLEX_GID: 1000
+#      PLEX_CLAIM: "{{plextoken_var.stdout}}"
+#      ADVERTISE_IP: "http://{{local_ip.stdout}}:32400/"
+    network_mode: "host"
+#    expose:
+#      - 32400
+    volumes:
+      - "/tmp:/tmp"
+      - "/opt/appdata/plex/database:/config"
+      - "/opt/transcodes:/transcode"
+      - "/mnt/plexdrive:/plexdrive"
+      - "/mnt/rcache:/rcache"
+      - "/mnt/encrypt:/encrypt"
+      - "/mnt/unionfs:/unionfs"
+      - "/:/yourcomputer"
+      - "/etc/localtime:/etc/localtime:ro"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
+    cpu_shares: 1024
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
+      traefik.port: "32400"
+      traefik.frontend.entryPoints: "http,https"
