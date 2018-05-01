@@ -3,8 +3,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.075] (Beta, Release Candiate & DEV)
 
-- Reworked PreInstaller
-- Stopped asking donation question if asked already once for preinstaller
+- Changed
+  - Reworked PreInstaller
+  - Stopped asking donation question if asked already once for preinstaller
 
 -------------------------------------------------------
 ## Past Changes
