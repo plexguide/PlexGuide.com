@@ -78,9 +78,7 @@ python3 -m pip install pip--upgrade 1>/dev/null 2>&1
 python3 -m pip install setuptools --upgrade 1>/dev/null 2>&1
 python3 -m pip install requests --upgrade 1>/dev/null 2>&1
 python3 -m pip install netaddr --upgrade 1>/dev/null 2>&1 
-pip install --upgrade pip 1>/dev/null 2>&1
-sudo easy_install pip 1>/dev/null 2>&1
-
+ 
 echo "18" | dialog --gauge "Installing: Software Properties Common" 7 50 0
 yes | apt-get install software-properties-common 1>/dev/null 2>&1
 sleep 1
@@ -92,11 +90,13 @@ sleep 1
 
 ############################################################ Enables Use of ROLES AfterWards
 echo "22" | dialog --gauge "Installing: Ansible Playbook 2.5.2" 7 50 0
-pip install ansible 1>/dev/null 2>&1
-#yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-#apt-get update -y 1>/dev/null 2>&1
-#apt-get install ansible -y 1>/dev/null 2>&1
-#yes | apt-get update 1>/dev/null 2>&1
+pip install --upgrade pip
+sudo easy_install pip
+#pip install ansible
+yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+apt-get update -y 1>/dev/null 2>&1
+apt-get install ansible -y 1>/dev/null 2>&1
+yes | apt-get update 1>/dev/null 2>&1
 
 ############################################################ Start of Role Execution
 echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
