@@ -31,10 +31,12 @@
 
 ----
 
+## Vision Statement
 
+The PlexGuide Project built is by new coders for the average-new user! We strive to ensure that our community is friendly, open, and always considerate of others.  Unlike most projects, we welcome even the newest of coders because we all learn and rise together! 
+
+Credit: Flicker-Rate
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/37129444/39414593-9faa5d18-4bf6-11e8-8b83-0ade87c72ee3.gif"></kbd></p>
-
-A Project built by new coders for the average and new user!
 
 ----
 
