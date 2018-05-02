@@ -107,9 +107,9 @@ while true; do
   sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
   unset a i
       while IFS= read -r -u3 -d $'\0' dir; do
-          [[ $(find "${dir}" -type f -mmin -${modTime} -print -quit) == '' && ! $(find "${dir}" -name "*.partial~" -o -name "*.unionfs-fuse*") ]] \
+          [[ $(find "${dir}" -type f -mmin -${modTime} -print -quit) == '' && ! $(find "${dir}" -name "*.partial~") ]] \
               && a[i++]=$(du -s "${dir}")
-      done 3< <(find ${localDir} -mindepth $sc -type d -links 2 -not -empty -prune -print0)
+      done 3< <(find ${localDir} -not -path '*/\.*' -mindepth $sc -type d -links 2 -not -empty -prune -print0)
 
       # sort by largest files first
       IFS=$'\n' uploadQueueBuffer=($(sort -gr <<<"${a[*]}"))
