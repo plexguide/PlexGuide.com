@@ -13,7 +13,6 @@
 #   changes/dates in source files. Any modifications to our software
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
-#
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=10
