@@ -29,8 +29,8 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="4K Versions - PG Supporting"
 
 OPTIONS=(A "Ombi4k"
-         F "Radarr4k"
-         I "Sonarr4k"
+         B "Radarr4k"
+         C "Sonarr4k"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
