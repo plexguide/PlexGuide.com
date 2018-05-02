@@ -43,11 +43,11 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "linuxserver/sonarr" > /var/plexguide/image.radarr ;;
+            echo "linuxserver/sonarr" > /var/plexguide/image.sonarr4k ;;
         B)
-            echo "hotio/suitarr" > /var/plexguide/image.radarr ;;
+            echo "hotio/suitarr" > /var/plexguide/image.sonarr4k ;;
         C)
-            echo "aront/sonarr" > /var/plexguide/image.radarr ;;
+            echo "aront/sonarr" > /var/plexguide/image.sonarr4k ;;
         D)
             ;;
         Z)
