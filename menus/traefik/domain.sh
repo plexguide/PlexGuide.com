@@ -1,6 +1,6 @@
  if dialog --stdout --title "Domain Question" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nIs Your Domain Ready & Setting Up Now?" 7 50; then
+        --yesno "\nIs Your Domain Ready to Set Up Now?" 7 50; then
         
         dialog --title "Input >> Your Domain" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
