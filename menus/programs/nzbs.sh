@@ -51,8 +51,8 @@ case $CHOICE in
             cronskip=no
             ;;
         B)
-            display=NZBHYRA2
-            program=nzbhyra2
+            display=NZBHYDRA2
+            program=nzbhydra2
             dialog --infobox "Installing: $display" 3 30
             port=5076
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2 &>/dev/null &
