@@ -135,7 +135,6 @@ case $CHOICE in
     Z)
       exit 0 ;;
 esac
-    clear
 
 ########## Cron Job a Program
 echo "$program" > /tmp/program_var

@@ -1,0 +1,60 @@
+---
+- name: "Establishing Variable"
+  shell: "awk '{print $1}' /tmp/program_var"
+  register: program_var
+  ignore_errors: yes
+
+- name: "Establishing Variable"
+  shell: "awk '{print $1}' /tmp/cron.minute"
+  register: minute
+  ignore_errors: yes
+
+- name: "Establishing Random Number Variable"
+  shell: "awk '{print $1}' /tmp/cron.hour"
+  register: hour
+  ignore_errors: yes
+
+- name: "Establishing Random Number Variable"
+  shell: "awk '{print $1}' /tmp/cron.day"
+  register: day
+  ignore_errors: yes  
+
+- name: Create {{program_var.stdout}}
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/plexguide/cron
+  ignore_errors: yes
+
+#- name: "Establishing Random Number Variable"
+#  shell: "awk '{print $1}' /tmp/time_var"
+#  register: time_var
+
+- debug: msg="{{program_var.stdout}} - {{day.stdout}} {{hour.stdout}} {{minute.stdout}}"
+
+- name: Create {{program_var.stdout}}
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/plexguide/cron
+  ignore_errors: yes
+
+#- name: "Add Sleep & Random Number"
+#  shell: echo "sleep {{number_var.stdout}}" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+
+#- name: "Store Variable into Job"
+#  shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" >> /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+
+- name: "Build Deploy Script"
+  shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
+
+- cron:
+    name: Build a Cron Job - {{program_var.stdout}}
+    state: absent
+  ignore_errors: yes
+
+- cron:
+    name: "{{program_var.stdout}}"
+    weekday: "{{day.stdout}}"
+    minute: "{{minute.stdout}}"
+    hour: "{{hour.stdout}}"
+    job: "bash /opt/appdata/plexguide/cron/{{program_var.stdout}}"
+    state: present
