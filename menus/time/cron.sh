@@ -21,7 +21,7 @@ file="/var/plexguide/backup.backoff"
 if [ -e "$file" ]
 then 
   count=$( cat /var/plexguide/backup.backoff )
-  ((count+=1))
+  count=$((count+5))
   echo "$count" > /var/plexguide/backup.backoff
 else
   echo "1" > /var/plexguide/backup.backoff
