@@ -16,12 +16,17 @@
 #
 #################################################################################
 echo "plex" > /tmp/program_var
+
+number=$((1 + RANDOM % 300))
+echo "$number" > /tmp/number_var
+display=$( cat /tmp/program_var )
+
 ######################## CRON DAY START ##########################
 HEIGHT=14
-WIDTH=40
+WIDTH=30
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron"
+TITLE="PG Cron - $display"
 MENU="Select a Day"
 
 OPTIONS=(A "Monday"
@@ -72,10 +77,10 @@ esac
 
 ######################## CRON DAY HOUR ##########################
 HEIGHT=15
-WIDTH=40
+WIDTH=30
 CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron"
+TITLE="PG Cron - $display"
 MENU="Select an Hour"
 
 OPTIONS=(A "0000 - Midnight"
@@ -125,9 +130,9 @@ esac
 ######################## CRON HOUR END ##########################
 
 ######################## CRON DAY MINUTE ##########################
-HEIGHT=14
-WIDTH=48
-CHOICE_HEIGHT=7
+HEIGHT=11
+WIDTH=30
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Cron"
 MENU="Select the Minutes TimeFrame"
