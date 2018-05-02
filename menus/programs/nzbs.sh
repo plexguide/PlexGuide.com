@@ -63,7 +63,7 @@ case $CHOICE in
             display=SABNZBD
             program=sabnzbd
             dialog --infobox "Installing: $display" 3 30
-            port=8090
+            port=8080
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
             sleep 2
             cronskip=no
@@ -79,7 +79,7 @@ if [ "$cronskip" == "yes" ]; then
     clear 1>/dev/null 2>&1
 else
     bash /opt/plexguide/menus/backup/main.sh
-fi 
+fi
 
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
