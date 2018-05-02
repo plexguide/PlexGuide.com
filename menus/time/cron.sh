@@ -26,7 +26,7 @@ then
 else
   echo "1" > /var/plexguide/backup.backoff
 fi
-echo "/var/plexguide/backup.backoff" > /tmp/time_var
+cat "/var/plexguide/backup.backoff" > /tmp/time_var
 
 display=$( cat /tmp/program_var )
 
