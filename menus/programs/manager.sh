@@ -125,6 +125,7 @@ case $CHOICE in
       display=Sonarr
       program=sonarr
       port=8989
+      bash /opt/plexguide/menus/images/sonarr.sh
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1

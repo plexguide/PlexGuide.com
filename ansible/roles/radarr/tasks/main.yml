@@ -26,7 +26,7 @@
 
 - name: Remove {{role_name}} Container
   docker_container:
-    name: radarr
+    name: "{{role_name}}"
     state: absent
 
 - name: Create Folders
@@ -74,6 +74,6 @@
 - name: Install autoProcess.ini
   template:
     src: autoProcess.ini
-    dest: /opt/appdata/radarr/mp4_automator/autoProcess.ini
+    dest: /opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775

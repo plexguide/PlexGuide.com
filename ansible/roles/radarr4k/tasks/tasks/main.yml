@@ -19,15 +19,25 @@
 - include_role:
     name: variables
 
-- name: Remove Radarr Container
+- name: Register Image
+  shell: "cat /var/plexguide/image.{{role_name}}"
+  register: image
+  ignore_errors: True
+
+- name: Remove {{role_name}} Container
   docker_container:
-    name: radarr4k
+    name: radarr
     state: absent
 
-- name: Deploy Radarr Container
+- name: Create Folders
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/{{role_name}}/mp4_automator
+
+- name: Deploy {{role_name}} Container
   docker_container:
-    name: radarr4k
-    image: aront/radarr
+    name: "{{role_name}}"
+    image: "{{image.stdout}}"
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -42,9 +52,10 @@
     networks:
       - name: plexguide
         aliases:
-          - radarr4k
+          - "{{role_name}}"
     volumes:
-      - /opt/appdata/radarr4k:/config
+      - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
+      - "/opt/appdata/{{role_name}}:/config"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
@@ -57,5 +68,12 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:radarr4k.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "7878"
+
+- name: Install autoProcess.ini
+  template:
+    src: autoProcess.ini
+    dest: "/opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini"
+    force: yes
+    mode: 0775
