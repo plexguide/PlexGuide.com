@@ -18,7 +18,7 @@
 echo "plex" > /tmp/program_var
 
 number=$((1 + RANDOM % 300))
-echo "$number" > /tmp/number_var
+echo "$number" > /tmp/time_var
 display=$( cat /tmp/program_var )
 
 ######################## CRON DAY START ##########################
