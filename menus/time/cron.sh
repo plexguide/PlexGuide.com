@@ -44,28 +44,28 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-			"1" > /tmp/cron.day
+			echo "1" > /tmp/cron.day
 			;;
         B)
-			"2" > /tmp/cron.day
+			echo "2" > /tmp/cron.day
 			;;
         C)
-			"3" > /tmp/cron.day
+			echo "3" > /tmp/cron.day
 			;;
         D)
-			"4" > /tmp/cron.day
+			echo "4" > /tmp/cron.day
 			;;
         E)
-			"5" > /tmp/cron.day
+			echo "5" > /tmp/cron.day
 			;;
         F)
-			"6" > /tmp/cron.day
+			echo "6" > /tmp/cron.day
 			;;
         G)
-			"0" > /tmp/cron.day
+			echo "0" > /tmp/cron.day
 			;;
         H)
-			"*" > /tmp/cron.day
+			echo "*" > /tmp/cron.day
 			;;
 esac
 ######################## CRON DAY END ##########################
@@ -98,28 +98,28 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-			"0" > /tmp/cron.hour
+			echo "0" > /tmp/cron.hour
 			;;
         B)
-			"3" > /tmp/cron.hour
+			echo "3" > /tmp/cron.hour
 			;;
         C)
-			"6" > /tmp/cron.hour
+			echo "6" > /tmp/cron.hour
 			;;
         D)
-			"9" > /tmp/cron.hour
+			echo "9" > /tmp/cron.hour
 			;;
         E)
-			"12" > /tmp/cron.hour
+			echo "12" > /tmp/cron.hour
 			;;
         F)
-			"15" > /tmp/cron.hour
+			echo "15" > /tmp/cron.hour
 			;;
         G)
-			"18" > /tmp/cron.hour
+			echo "18" > /tmp/cron.hour
 			;;
         H)
-			"21" > /tmp/cron.hour
+			echo "21" > /tmp/cron.hour
 			;;
 esac
 ######################## CRON HOUR END ##########################
@@ -147,16 +147,16 @@ CHOICE=$(dialog --clear \
 
 case $CHOICE in
         A)
-			"0" > /tmp/cron.minute
+			echo "0" > /tmp/cron.minute
 			;;
         B)
-			"15" > /tmp/cron.minute
+			echo "15" > /tmp/cron.minute
 			;;
         C)
-			"30" > /tmp/cron.minute
+			echo "30" > /tmp/cron.minute
 			;;
         D)
-			"45" > /tmp/cron.minute
+			echo "45" > /tmp/cron.minute
 			;;
 esac
 ######################## CRON HOUR MINUTE ##########################
