@@ -145,7 +145,6 @@ CHOICE=$(dialog --clear \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-clear
 case $CHOICE in
         A)
 			"0" > /tmp/cron.minute
@@ -161,3 +160,5 @@ case $CHOICE in
 			;;
 esac
 ######################## CRON HOUR MINUTE ##########################
+
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2
