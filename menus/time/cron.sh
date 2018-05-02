@@ -22,8 +22,8 @@ if [ -e "$file" ]
 then 
   count=$( cat /var/plexguide/backup.backoff )
 
-  if [ "$count" -gt "600" ]; then
-  count=$((count-598))
+  if [ "$count" -gt "300" ]; then
+  count=$((count-287))
   fi
 
   count=$((count+5))
