@@ -39,7 +39,7 @@
   ignore_errors: yes
 
 - name: "Add Sleep & Random Number"
-  shell: echo "sleep {{number_var.stdout}}" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+  shell: echo "sleep {{time_var.stdout}}" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
 - name: "Store Variable into Job"
   shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" >> /opt/appdata/plexguide/cron/{{program_var.stdout}} 
