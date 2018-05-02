@@ -90,9 +90,9 @@ esac
 ######################## CRON DAY END ##########################
 
 ######################## CRON DAY HOUR ##########################
-HEIGHT=15
+HEIGHT=17
 WIDTH=27
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=10
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Cron - $display"
 MENU="Select Hour TimeFrame"
@@ -152,7 +152,7 @@ esac
 ######################## CRON HOUR END ##########################
 
 ######################## CRON DAY MINUTE ##########################
-HEIGHT=12
+HEIGHT=11
 WIDTH=30
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
