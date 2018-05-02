@@ -20,7 +20,7 @@ echo "plex" > /tmp/program_var
 file="/var/plexguide/backup.backoff"
 if [ -e "$file" ]
 then 
-  count="/var/plexguide/backup.backoff" /tmp/time_var
+  count="/var/plexguide/backup.backoff"
   ((count+=1))
   echo "$count" > /var/plexguide/backup.backoff
 else
