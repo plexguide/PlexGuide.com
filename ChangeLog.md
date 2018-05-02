@@ -3,6 +3,10 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.075] (Beta, Release Candiate & DEV)
 
+- Added
+  - PG Multi-Image Menu
+  - Repaired 4K Menu
+  
 - Changed
   - Reworked PreInstaller
   - Stopped asking donation question if asked already once for preinstaller
