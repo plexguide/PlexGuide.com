@@ -17,8 +17,17 @@
 #################################################################################
 echo "plex" > /tmp/program_var
 
-number=$((1 + RANDOM % 300))
-echo "$number" > /tmp/time_var
+file="/var/plexguide/backup.backoff"
+if [ -e "$file" ]
+then 
+  count="/var/plexguide/backup.backoff" /tmp/time_var
+  ((count+=1))
+  echo "$count" > /var/plexguide/backup.backoff
+else
+  echo "1" > /var/plexguide/backup.backoff
+fi
+echo "/var/plexguide/backup.backoff" > /tmp/time_var
+
 display=$( cat /tmp/program_var )
 
 ######################## CRON DAY START ##########################
