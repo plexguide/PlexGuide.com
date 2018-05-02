@@ -27,7 +27,7 @@ TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/sonarr: Recommended"
          B "hotio/suitarr     : Space Saver"
-         C "aront/sonarr      : MP Convertor"
+         C "aront/sonarr      : MP4 Converter"
          D "Why Important: FAQ"
          Z "Exit")
 

@@ -65,7 +65,7 @@ case $CHOICE in
             display=Sonarr4k
             program=sonarr4k
             port=8984
-            bash /opt/plexguide/menus/images/radarr4k.sh
+            bash /opt/plexguide/menus/images/sonarr4k.sh
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
             chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
