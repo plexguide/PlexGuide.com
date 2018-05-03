@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "plex" > /tmp/program_var
 display=$( cat /tmp/program_var )
 timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
 
