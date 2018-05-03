@@ -42,12 +42,13 @@ case $CHOICE in
                         
                         ;;
         B)
-                        exit
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags remove &>/dev/null &
+            dialog --title "Notice" --msgbox "\nThe backup for $display has been ignored and/or removed!\n\nWant to see it, Type crontab -e in the Command Line! " 0 0
                         ;;
         C)
-                        dpkg-reconfigure tzdata
-                        bash /opt/plexguide/menus/time/cron.sh
-                        exit
+            dpkg-reconfigure tzdata
+            bash /opt/plexguide/menus/time/cron.sh
+            exit
                         ;;
 esac
 

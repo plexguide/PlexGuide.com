@@ -45,6 +45,7 @@
   - { role: sonarr, tags: ['sonarr'] }
   - { role: sonarr4k, tags: ['sonarr4k'] }
   - { role: radarr, tags: ['radarr'] }
+  - { role: remove, tags: ['remove'] }
   - { role: radarr4k, tags: ['radarr4k'] }
   - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
