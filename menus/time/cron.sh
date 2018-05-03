@@ -219,9 +219,5 @@ case $CHOICE in
 esac
 ######################## CRON HOUR MINUTE ##########################
 
-day=$( cat /tmp/cron.day )
-hour=$( cat /tmp/cron.hour )
-minute=$( cat /tmp/cron.minute )
-
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
 dialog --title "Notice" --msgbox "\nThe backup for $display has been deployed\n\nWant to see it, Type crontab -e in the Command Line! " 0 0
