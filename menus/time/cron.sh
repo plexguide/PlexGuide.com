@@ -19,17 +19,16 @@ echo "plex" > /tmp/program_var
 display=$( cat /tmp/program_var )
 timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
 
-HEIGHT=11
+HEIGHT=10
 WIDTH=45
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Cron Backup - $display"
 MENU="Server Time: $timeinfo"
 
-OPTIONS=(A "Set Backup Cron - $display"
-         B "Do Not Set Backup Cron"
-         C "Change Server Time?"
-         Z "Exit")
+OPTIONS=(A "Backup Program - On"
+         B "Backup Program - Off"
+         C "Server Time Change?")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
