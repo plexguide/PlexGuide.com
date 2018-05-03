@@ -188,4 +188,10 @@ case $CHOICE in
 esac
 ######################## CRON HOUR MINUTE ##########################
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2
+day=$( cat /tmp/cron.day )
+hour=$( cat /tmp/cron.hour )
+minute=$( cat /tmp/cron.minute )
+
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
+sleep 3
+--msgbox "\nBackup of -- $display -- will occur!\n\nSet: $day @ $hour:$minute hours" 0 0 ;;
