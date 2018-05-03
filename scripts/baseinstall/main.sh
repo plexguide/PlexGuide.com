@@ -108,8 +108,6 @@ echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
 
-
-
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
 #read -n 1 -s -r -p "Press any key to continue "
@@ -118,15 +116,29 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
 
-if [ "$docker_var" == "18.03.0-ce," ]
+if [ "$docker_var" == "18.03.1-ce," ]
 then
   echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
 else
-  echo "50" | dialog --gauge "Installing: Docker 18.03 (Please Be Patient)" 7 54 0
+
+docver=$( cat /var/plexguide/ub.ver )
+
+  if [ "$docver" == "16" ]
+    then
+  echo "50" | dialog --gauge "Installing: UB16 - Docker 18.03 (Please Be Patient)" 7 58 0
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
+  fi
+
+  if [ "$docver" == "18" ]
+    then
+  echo "50" | dialog --gauge "Installing: UB18 - Docker 18.03 (Please Be Patient)" 7 58 0
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker18 1>/dev/null 2>&1
+  #read -n 1 -s -r -p "Press any key to continue "
+  fi
+
 fi
 
 ############################################################ Checks to See if Docker Installed; if not... FAIL!
