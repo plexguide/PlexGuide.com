@@ -70,7 +70,7 @@
   - name: Allow non-root fuse mount
     lineinfile:
       path: /etc/fuse.conf
-      line: user_allow_other
+      line: 'user_allow_other'
     tags:
       - rcache
 
@@ -100,14 +100,20 @@
     file:
       path: "/root/.config"
       state: directory
+      owner: 1000
+      group: 1000
       mode: 755
     file:
       path: "/root/.config/rclone"
       state: directory
+      owner: 1000
+      group: 1000
       mode: 755
     file:
       path: "/root/.config/rclone/rclone.conf"
       state: touch
+      owner: 1000
+      group: 1000
       mode: 755
     tags:
       - rcache
