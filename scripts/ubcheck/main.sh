@@ -21,9 +21,11 @@ ubversion=$( cat /var/plexguide/ubversion )
 
 if [ "$ubversion" == "16.04" ]; then
     dialog --title "Ubuntu Version" --msgbox "\nGood Choice! You Are Running Ubuntu 16.04!" 7 50
+    echo "16" > /var/plexguide/ub.ver
 else
 if [ "$ubversion" == "18.04" ]; then
     dialog --title "Ubuntu Version" --msgbox "\n You Are Running Ubuntu 18.04! Please Report Issues!" 7 50
+    echo "18" > /var/plexguide/ub.ver
 else
     dialog --title "Ubuntu Version" --msgbox "\nWARNING! SYSTEM IS NOT Running Ubuntu 16.04/18.04! USE AT YOUR OWN RISK! No Support Provided!" 8 50
 fi
