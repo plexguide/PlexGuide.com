@@ -21,7 +21,7 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
 clear
-HEIGHT=18
+HEIGHT=19
 WIDTH=40
 CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
