@@ -78,7 +78,3 @@ Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/fli
 
 ----
 [![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
-
-----
-
-- Additional Credits & Thank You's: https://plexguide.com/threads/plexguide-thank-yous-in-addition.244
