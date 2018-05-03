@@ -71,6 +71,7 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 | Feb 2018   | PG Update system built in for better updating
 | Mar 2018   | Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
 | Apr 2018   | DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
+| Apr 2018   | Support UB18 - Advance Cron Jobs, Backups, and added PG Multi-Image Select! 
 
 ----
 
