@@ -27,7 +27,7 @@
 
 ## Vision Statement
 
-The PlexGuide Project built is by new coders for the average-new user! We strive to ensure that our community at all time is friendly, open, and always considerate of others regardless of experience levels.  Unlike most projects, we welcome the newest of coders because we all learn and rise together!  
+The PlexGuide Project is built by new coders for the newest of users! We strive to ensure that our community at all time is friendly, open, and always considerate of others regardless of experience levels.  Unlike most projects, we welcome the newest of coders because we all learn and rise together!  
 
 SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-rate)
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/37129444/39414593-9faa5d18-4bf6-11e8-8b83-0ade87c72ee3.gif"></kbd></p>
