@@ -1,0 +1,72 @@
+#!/bin/bash
+#
+# [PlexGuide Ansible Role]
+#
+# Enhanced By:       Admin9705 & Deiteq
+# URL:               https://plexguide.com
+#
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Original Author: 13uddz & Desmonic
+# URL:             https://cloudbox.rocks
+#################################################################################
+
+---
+- name: Install required packages
+  apt: "name={{item}} state=present"
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+
+- name: Add official gpg signing key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Add official repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+
+- name: Installing docker
+  apt:    
+    name: docker-ce
+    state: present
+    force: yes
+    update_cache: yes
+
+- name: Stop docker to enable overlay2
+  systemd: state=stopped name=docker enabled=yes
+
+- name: Import daemon.json
+  copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
+
+- name: Start docker
+  systemd: state=started name=docker enabled=yes
+
+- name: "Wait for 10 seconds before commencing"
+  wait_for:
+    timeout: 10
+
+- name: Check override folder exists
+  stat:
+    path: /etc/systemd/system/docker.service.d
+  register: docker_override
+
+- name: Create override folder
+  file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
+  when: docker_override.stat.exists == False
+
+- name: Import override file
+  copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
+
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
