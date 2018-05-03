@@ -68,9 +68,13 @@ case $CHOICE in
             port=8096
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby &>/dev/null &
-            sleep 2
+            sleep 3
             dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
-            cronskip=no
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         C)
             display=Ubooquity
@@ -78,8 +82,12 @@ case $CHOICE in
             port=2202
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity &>/dev/null &
-            sleep 2
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
 
         D)
@@ -88,9 +96,12 @@ case $CHOICE in
             port=4040
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags airsonic &>/dev/null &
-            sleep 2
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Airsonic! If your Library is super huge, when it's backing up; it will shut down your Airsonic Container and could take several Minutes or Hours!" 0 0
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
             display=Booksonic
@@ -98,28 +109,16 @@ case $CHOICE in
             port=4050
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
-            sleep 2
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Boosonic! If your Library is super huge, when it's backing up; it will shut down your Booksonic Container and could take several Minutes or Hours!" 0 0
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;
 esac
-
-    clear
-
-########## Cron Job a Program
-echo "$program" > /tmp/program_var
-if [ "$cronskip" == "yes" ]; then
-    clear 1>/dev/null 2>&1
-else
-    bash /opt/plexguide/menus/backup/main.sh
-fi
-
-echo "$program" > /tmp/program
-echo "$port" > /tmp/port
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
 
 #recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/media.sh
