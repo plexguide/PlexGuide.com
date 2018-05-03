@@ -192,6 +192,6 @@ day=$( cat /tmp/cron.day )
 hour=$( cat /tmp/cron.hour )
 minute=$( cat /tmp/cron.minute )
 
---msgbox "\nBackup of -- $display -- will occur!\n\nSet: $day @ $hour:$minute hours" 0 0
+--msgbox "\nBackup of -- $display -- will occur!\n\nSet: $day @ $hour:$minute hours" 0 0 ;;
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
 sleep 3
