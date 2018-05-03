@@ -24,7 +24,7 @@ WIDTH=45
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Cron Backup - $display"
-MENU="Server Time: $time"
+MENU="Server Time: $timeinfo"
 
 OPTIONS=(A "Set Backup Cron - $display"
          B "Do Not Set Backup Cron"
