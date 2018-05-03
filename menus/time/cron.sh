@@ -28,7 +28,7 @@ MENU="Server Time: $timeinfo"
 
 OPTIONS=(A "Backup Cron Job - On"
          B "Backup Cron Job - Off"
-         C "Server Time Change?")
+         C "Server Time Change")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -45,7 +45,8 @@ case $CHOICE in
                         exit
                         ;;
         C)
-
+                        dpkg-reconfigure tzdata
+                        bash /opt/plexguide/menus/time/cron.sh
                         exit
                         ;;
 esac
