@@ -7,6 +7,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - PG Cron Advanced
   - PG Multi-Image Menu
   - Repaired 4K Menu
+  - Time To Menus / CronJob & Startup
+  - New Way to Adjust time Via Settings and Cron Job Interface
   
 - Changed
   - Better MP4 Repo (@zachawii)
