@@ -26,23 +26,45 @@
     systemd: state=stopped name=unionfs
     when: drives.stat.exists
 
-  - name: Main Line
-    shell: "cat /var/plexguide/hd/combined"
-    register: drives_var
+####################################################### REGISTER FIRST
+  - name: Register DRIVE1
+    shell: "cat /var/plexguide/hd.1"
+    register: hd1
     ignore_errors: True
 
-  - name: Install UNIONFS Service
+  - name: Register DRIVE2
+    shell: "cat /var/plexguide/hd.2"
+    register: hd2
+    ignore_errors: True
+
+  - name: Register DRIVE3
+    shell: "cat /var/plexguide/hd.3"
+    register: hd3
+    ignore_errors: True
+
+  - name: Register DRIVE4
+    shell: "cat /var/plexguide/hd.4"
+    register: hd4
+    ignore_errors: True
+######################################################### REGISTER END
+
+######################################################### COMBINE START
+  - name: Combine Paths
+    shell: echo "defaults,allow_other,direct_io,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{hd1.stdout}}{{hd2.stdout}}{{hd3.stdout}}{{hd4.stdout}} /mnt/unionfs" > /var/plexguide/hdcommand
+    ignore_errors: True
+
+  - name: Register Command
+    shell: "cat /var/plexguide/hd.multi"
+    register: hdcommand
+    ignore_errors: True
+
+######################################################### COMBINE END
+
+  - name: Install DRIVES Service
     template:
       src: drives.js2
       dest: /etc/systemd/system/drives.service 
       force: yes
-#################################### REPLACE START
-  - name: Replace Drives Line
-    replace:
-      path: /etc/systemd/system/drives.service
-      regexp: replaceme
-      replace: "{{drives_var.stdout}}"
-#################################### REPLACE END
 
   - name: Daemon-Reload
     systemd: state=stopped name=drives daemon_reload=yes enabled=no

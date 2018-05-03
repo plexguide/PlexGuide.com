@@ -21,10 +21,10 @@ export NCURSES_NO_UTF8_ACS=1
 #### Proof of concept, delete these 4 lines later
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 
-hd1=$( cat /var/plexguide/hd/hd1 )
-hd2=$( cat /var/plexguide/hd/hd2 )
-hd3=$( cat /var/plexguide/hd/hd3 )
-hd4=$( cat /var/plexguide/hd/hd4 )
+hd1=$( cat /var/plexguide/hd.1 )
+hd2=$( cat /var/plexguide/hd.2 )
+hd3=$( cat /var/plexguide/hd.3 )
+hd4=$( cat /var/plexguide/hd.4 )
 
 HEIGHT=12
 WIDTH=60
@@ -71,16 +71,4 @@ case $CHOICE in
       ;;
 esac
 
-###/mnt/move=RW:/mnt/plexdrive=RO
-
-dr1="$hd1=RW:"
-dr2="$hd2=RW:"
-dr3="$hd3=RW:"
-dr4="$hd4=RW:"
-
-combined="$dr1$dr2$dr3$dr4"
-combined=${combined::-1} 
-echo "$combined" > /var/plexguide/hd/combined
-bash /opt/plexguide/menus/drives/hds.sh
-
-#ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
