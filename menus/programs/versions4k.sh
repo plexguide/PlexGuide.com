@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+
 HEIGHT=10
 WIDTH=38
 CHOICE_HEIGHT=4
