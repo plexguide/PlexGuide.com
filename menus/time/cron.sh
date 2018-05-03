@@ -115,8 +115,6 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
-clear
 case $CHOICE in
         A)
 			echo "0" > /tmp/cron.hour
@@ -156,7 +154,7 @@ HEIGHT=11
 WIDTH=30
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron"
+TITLE="PG Cron - $display"
 MENU="Select Minute TimeFrame"
 
 OPTIONS=(A "00 - On the Hour"
@@ -171,7 +169,6 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
 case $CHOICE in
         A)
 			echo "0" > /tmp/cron.minute
@@ -192,6 +189,6 @@ day=$( cat /tmp/cron.day )
 hour=$( cat /tmp/cron.hour )
 minute=$( cat /tmp/cron.minute )
 
---msgbox "\nBackup of -- $display -- will occur!\n\nSet: $day @ $hour:$minute hours" 0 0 ;;
+dialog --title "Notice" --msgbox "\nBackups for " 0 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
 sleep 3
