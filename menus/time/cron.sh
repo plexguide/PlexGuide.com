@@ -23,11 +23,11 @@ HEIGHT=10
 WIDTH=39
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron Backup - $display"
+TITLE="PG Cron Job for $display"
 MENU="Server Time: $timeinfo"
 
-OPTIONS=(A "Backup Program - On"
-         B "Backup Program - Off"
+OPTIONS=(A "Backup Cron Job - On"
+         B "Backup Cron Job - Off"
          C "Server Time Change?")
 
 CHOICE=$(dialog --clear \
@@ -39,13 +39,14 @@ CHOICE=$(dialog --clear \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-                        echo "1" > /tmp/cron.day
+                        
                         ;;
         B)
-                        echo "2" > /tmp/cron.day
+                        exit
                         ;;
         C)
-                        echo "3" > /tmp/cron.day
+
+                        exit
                         ;;
 esac
 
