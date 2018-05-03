@@ -16,7 +16,7 @@
 #
 #################################################################################
 display=$( cat /tmp/program_var )
-timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
+timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 
 HEIGHT=10
 WIDTH=39
