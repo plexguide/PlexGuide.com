@@ -5,6 +5,6 @@
   ignore_errors: yes
 
 - cron:
-    name: Build a Cron Job - {{program_var.stdout}}
+    name: "{{program_var.stdout}}"
     state: absent
   ignore_errors: yes
