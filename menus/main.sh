@@ -15,17 +15,18 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+export NCURSES_NO_UTF8_ACS=1
+
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
 
-export NCURSES_NO_UTF8_ACS=1
-clear
 HEIGHT=19
 WIDTH=40
 CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
+MENU="Server Time: $timeinfo"
 
 OPTIONS=(A "RClone & PlexDrive"
          B "PG Program Suite"
