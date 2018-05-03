@@ -23,7 +23,7 @@
   dialog --title "SET FULL PATH [ EXAMPLE: /hd2/media or /hd2 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Full Path: " 8 50 2>/var/plexguide/hd.$hd
-  path=$(cat /var/plexguide/server.hd.path)
+  path=$(cat /var/plexguide/hd.$hd)
 
   if dialog --stdout --title "PG Path Builder" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
