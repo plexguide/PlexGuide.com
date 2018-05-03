@@ -151,35 +151,35 @@ CHOICE=$(dialog --clear \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-			echo "0" > /tmp/cron.hour
+			echo "23" > /tmp/cron.hour
 			;;
         B)
-                        echo "2" > /tmp/cron.hour
-                        ;;
+            echo "1" > /tmp/cron.hour
+            ;;
         C)
-			echo "4" > /tmp/cron.hour
+			echo "3" > /tmp/cron.hour
 			;;
         D)
-			echo "6" > /tmp/cron.hour
+			echo "5" > /tmp/cron.hour
 			;;
         E)
-			echo "9" > /tmp/cron.hour
+			echo "8" > /tmp/cron.hour
 			;;
         F)
-			echo "12" > /tmp/cron.hour
+			echo "11" > /tmp/cron.hour
 			;;
         G)
-			echo "15" > /tmp/cron.hour
+			echo "14" > /tmp/cron.hour
 			;;
         H)
-			echo "18" > /tmp/cron.hour
+			echo "17" > /tmp/cron.hour
 			;;
         I)
-			echo "21" > /tmp/cron.hour
+			echo "22" > /tmp/cron.hour
 			;;
         J)
-                        echo "23" > /tmp/cron.hour
-                        ;;
+            echo "23" > /tmp/cron.hour
+            ;;
 esac
 ######################## CRON HOUR END ##########################
 
