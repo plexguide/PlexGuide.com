@@ -1,33 +1,34 @@
 ---
-- name: "Establishing Variable"
+- name: "Establishing Program Variable"
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
   ignore_errors: yes
 
-- name: "Establishing Variable"
+- name: "Establishing Minute Variable"
   shell: "awk '{print $1}' /tmp/cron.minute"
   register: minute
   ignore_errors: yes
 
-- name: "Establishing Random Number Variable"
+- name: "Establishing Hour Variable"
   shell: "awk '{print $1}' /tmp/cron.hour"
   register: hour
   ignore_errors: yes
 
-- name: "Establishing Random Number Variable"
+- name: "Establishing Day Variable"
   shell: "awk '{print $1}' /tmp/cron.day"
   register: day
-  ignore_errors: yes  
+  ignore_errors: yes
+
+- name: "Establishing Random Number Variable"
+  shell: "awk '{print $1}' /tmp/time_var"
+  register: time_var
+  ignore_errors: yes
 
 - name: Create {{program_var.stdout}}
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/plexguide/cron
   ignore_errors: yes
-
-#- name: "Establishing Random Number Variable"
-#  shell: "awk '{print $1}' /tmp/time_var"
-#  register: time_var
 
 - debug: msg="{{program_var.stdout}} - {{day.stdout}} {{hour.stdout}} {{minute.stdout}}"
 
@@ -37,11 +38,11 @@
     - /opt/appdata/plexguide/cron
   ignore_errors: yes
 
-#- name: "Add Sleep & Random Number"
-#  shell: echo "sleep {{number_var.stdout}}" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+- name: "Add Sleep & Random Number"
+  shell: echo "sleep {{time_var.stdout}}" > /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
-#- name: "Store Variable into Job"
-#  shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" >> /opt/appdata/plexguide/cron/{{program_var.stdout}} 
+- name: "Store Variable into Job"
+  shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" >> /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
 - name: "Build Deploy Script"
   shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           

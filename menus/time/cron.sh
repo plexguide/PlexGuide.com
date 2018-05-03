@@ -16,22 +16,19 @@
 #
 #################################################################################
 echo "plex" > /tmp/program_var
-######################## CRON DAY START ##########################
-HEIGHT=14
-WIDTH=40
-CHOICE_HEIGHT=7
-BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron"
-MENU="Select a Day"
+display=$( cat /tmp/program_var )
+timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
 
-OPTIONS=(A "Monday"
-         B "Tuesday"
-         C "Wednesday"
-         D "Thursday"
-         E "Friday"
-         F "Saturday"
-         G "Sunday"
-         H "Daily")
+HEIGHT=10
+WIDTH=39
+CHOICE_HEIGHT=3
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="PG Cron Job for $display"
+MENU="Server Time: $timeinfo"
+
+OPTIONS=(A "Backup Cron Job - On"
+         B "Backup Cron Job - Off"
+         C "Server Time Change")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -40,8 +37,64 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
+case $CHOICE in
+        A)
+                        
+                        ;;
+        B)
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags remove &>/dev/null &
+            dialog --title "Notice" --msgbox "\nThe backup for $display has been ignored and/or removed!\n\nWant to see it, Type crontab -e in the Command Line! " 0 0
+                        ;;
+        C)
+            dpkg-reconfigure tzdata
+            bash /opt/plexguide/menus/time/cron.sh
+            exit
+                        ;;
+esac
 
-clear
+
+###################### KICKOFF ###################################
+
+file="/var/plexguide/backup.backoff"
+if [ -e "$file" ]
+then 
+  count=$( cat /var/plexguide/backup.backoff )
+
+  if [ "$count" -gt "300" ]; then
+  count=$((count-287))
+  fi
+
+  count=$((count+5))
+  echo "$count" > /var/plexguide/backup.backoff
+else
+  echo "1" > /var/plexguide/backup.backoff
+fi
+cat "/var/plexguide/backup.backoff" > /tmp/time_var
+
+######################## CRON DAY START ##########################
+HEIGHT=15
+WIDTH=25
+CHOICE_HEIGHT=8
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="PG Cron - $display"
+MENU="Select Day TimeFrame"
+
+OPTIONS=(A "Monday"
+         B "Tuesday"
+         C "Wednesday"
+         D "Thursday"
+         E "Friday"
+         F "Saturday"
+         G "Sunday"
+         H "DAILY")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 case $CHOICE in
         A)
 			echo "1" > /tmp/cron.day
@@ -71,21 +124,23 @@ esac
 ######################## CRON DAY END ##########################
 
 ######################## CRON DAY HOUR ##########################
-HEIGHT=15
-WIDTH=40
-CHOICE_HEIGHT=8
+HEIGHT=17
+WIDTH=27
+CHOICE_HEIGHT=10
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron"
-MENU="Select an Hour"
+TITLE="PG Cron - $display"
+MENU="Select Hour TimeFrame"
 
 OPTIONS=(A "0000 - Midnight"
-         B "0300 - 3 AM"
-         C "0600 - 6 AM"
-         D "0900 - 9 AM"
-         E "1200 - Noon"
-         F "1500 - 3 PM"
-         G "1800 - 6 PM"
-         H "2100 - 9 PM")
+         B "0200 - 2 AM"
+         C "0400 - 4 AM"
+         D "0600 - 6 AM"
+         E "0900 - 9 AM"
+         F "1200 - Noon"
+         G "1500 - 3 PM"
+         H "1800 - 6 PM"
+         I "2100 - 9 PM"
+         J "2300 - 11PM")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -94,43 +149,47 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
-clear
 case $CHOICE in
         A)
 			echo "0" > /tmp/cron.hour
 			;;
         B)
-			echo "3" > /tmp/cron.hour
-			;;
+                        echo "2" > /tmp/cron.hour
+                        ;;
         C)
-			echo "6" > /tmp/cron.hour
+			echo "4" > /tmp/cron.hour
 			;;
         D)
-			echo "9" > /tmp/cron.hour
+			echo "6" > /tmp/cron.hour
 			;;
         E)
-			echo "12" > /tmp/cron.hour
+			echo "9" > /tmp/cron.hour
 			;;
         F)
-			echo "15" > /tmp/cron.hour
+			echo "12" > /tmp/cron.hour
 			;;
         G)
-			echo "18" > /tmp/cron.hour
+			echo "15" > /tmp/cron.hour
 			;;
         H)
+			echo "18" > /tmp/cron.hour
+			;;
+        I)
 			echo "21" > /tmp/cron.hour
 			;;
+        J)
+                        echo "23" > /tmp/cron.hour
+                        ;;
 esac
 ######################## CRON HOUR END ##########################
 
 ######################## CRON DAY MINUTE ##########################
-HEIGHT=14
-WIDTH=48
-CHOICE_HEIGHT=7
+HEIGHT=11
+WIDTH=30
+CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Cron"
-MENU="Select the Minutes TimeFrame"
+TITLE="PG Cron - $display"
+MENU="Select Minute TimeFrame"
 
 OPTIONS=(A "00 - On the Hour"
          B "15 - 15 Minutes After"
@@ -144,7 +203,6 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
 case $CHOICE in
         A)
 			echo "0" > /tmp/cron.minute
@@ -161,4 +219,9 @@ case $CHOICE in
 esac
 ######################## CRON HOUR MINUTE ##########################
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2
+day=$( cat /tmp/cron.day )
+hour=$( cat /tmp/cron.hour )
+minute=$( cat /tmp/cron.minute )
+
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
+dialog --title "Notice" --msgbox "\nThe backup for $display has been deployed\n\nWant to see it, Type crontab -e in the Command Line! " 0 0

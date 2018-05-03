@@ -17,7 +17,7 @@
 #################################################################################
 HEIGHT=18
 WIDTH=59
-CHOICE_HEIGHT=16
+CHOICE_HEIGHT=11
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
@@ -31,6 +31,7 @@ OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          G "WatchTower    : Auto-Update Application Manager"
          H "Import Media  : Import Existing Media to GDrive "
          I "App Themes    : Install Dark Theme(s) For Apps "
+         J "Change Time   : Change the Server Time"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -65,6 +66,8 @@ case $CHOICE in
         bash /opt/plexguide/menus/migrate/main.sh ;;
     I)
         bash /opt/plexguide/menus/themes/main.sh ;;
+    J)
+        dpkg-reconfigure tzdata ;;
     Z)
         clear
         exit 0

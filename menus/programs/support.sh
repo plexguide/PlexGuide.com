@@ -15,10 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
-skip=no
-## point to variable file for ipv4 and domain.com
+
 domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=16

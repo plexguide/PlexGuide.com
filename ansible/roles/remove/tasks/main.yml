@@ -1,0 +1,10 @@
+---
+- name: "Establishing Program Variable"
+  shell: "awk '{print $1}' /tmp/program_var"
+  register: program_var
+  ignore_errors: yes
+
+- cron:
+    name: Build a Cron Job - {{program_var.stdout}}
+    state: absent
+  ignore_errors: yes
