@@ -4,11 +4,14 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.075] (Beta, Release Candiate & DEV)
 
 - Added
+  - PG Cron Advanced
   - PG Multi-Image Menu
   - Repaired 4K Menu
   
 - Changed
+  - Better MP4 Repo (@zachawii)
   - Reworked PreInstaller
+  - Fixed SAB port numbers
   - Stopped asking donation question if asked already once for preinstaller
 
 -------------------------------------------------------
