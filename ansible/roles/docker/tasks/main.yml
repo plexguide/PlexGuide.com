@@ -36,7 +36,7 @@
 
 - name: Installing docker
   apt:    
-    name: docker-ce=18.03.0~ce-0~ubuntu
+    name: docker-ce
     state: present
     force: yes
     update_cache: yes
