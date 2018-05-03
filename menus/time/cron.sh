@@ -20,7 +20,7 @@ display=$( cat /tmp/program_var )
 timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
 
 HEIGHT=10
-WIDTH=45
+WIDTH=39
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Cron Backup - $display"
