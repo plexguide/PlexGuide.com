@@ -189,6 +189,5 @@ day=$( cat /tmp/cron.day )
 hour=$( cat /tmp/cron.hour )
 minute=$( cat /tmp/cron.minute )
 
-dialog --title "Notice" --msgbox "\nThe backup for $display has been deployed\n\nWant to see it, Type crontab -e in the Command Line! " 0 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
-sleep 3
+dialog --title "Notice" --msgbox "\nThe backup for $display has been deployed\n\nWant to see it, Type crontab -e in the Command Line! " 0 0
