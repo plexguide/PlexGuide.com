@@ -266,7 +266,8 @@ return 0
 
 configure_Json(){
 source ${userSettings}
-rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+#rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+rclonePath='/root/.config/rclone/rclone.conf'
 [[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json Found." FAIL && exit 1
 # add rclone config for new keys if not already existing
 for json in ${jsonPath}/*.json; do
@@ -293,7 +294,8 @@ return 0
 
 # purge rclone of SA's
 purge_Rclone(){
-  rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+#  rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+rclonePath='/root/.config/rclone/rclone.conf'
   del=0
   while read line; do
     if [[ $line == '' ]]; then

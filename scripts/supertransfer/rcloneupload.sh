@@ -48,6 +48,7 @@ rclone_upload() {
   local tmp=$(echo "${2}" | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   local logfile=${logDir}/${gdsa}_${tmp}.log
 	rclone move --tpslimit 6 --checkers=20 \
+    --config /root/.config/rclone/rclone.conf \
     --transfers=8 \
 		--log-file=${logfile}  \
 		--log-level INFO --stats 5s \
@@ -60,7 +61,8 @@ rclone_upload() {
   local secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
     printf " [ OK ] $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
-    sleep 5
+    sleep 10
+    [[ -n $(ls "${localFile}") ]] && sleep 45  # sleep so files are deleted off disk before resuming; good for TV episodes
   else
     printf " [FAIL] $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
     cat $logfile >> /tmp/rclonefail.log

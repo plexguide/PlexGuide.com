@@ -87,6 +87,23 @@
       group: 1000
       mode: 755
     when: rcache_dir.stat.exists == False
+
+  - name: Check Rcache DB & cache file directory
+    stat:
+      path: "/mnt/.rcache"
+    register: rcacheDB_dir
+    tags:
+      - rcache
+
+  - name: Create Rcache DB & cache directory
+    file:
+      path: "/mnt/.rcache"
+      state: directory
+      owner: 1000
+      group: 1000
+      mode: 755
+    when: rcacheDB_dir.stat.exists == False
+
 ########################################## Services
 ########### Move Service
   # - name: Check MOVE Service

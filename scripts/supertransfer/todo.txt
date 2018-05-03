@@ -13,6 +13,6 @@ X 9. fix race condition where filelock gets deleted before array is cleared,
      leading to the script attempting to upload a non-existent dir
 
 CONFIG
-  1. check to make sure previous transfer scripts are not running
+X 1. check to make sure previous transfer scripts are not running
   2. proper get opts
   3. help menu

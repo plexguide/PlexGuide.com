@@ -43,17 +43,19 @@ trap "clean_up" SIGTERM
 init_DB(){
 
   # get list of avail gdsa accounts
-  gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
+  gdsaList=$(rclone listremotes --config /root/.config/rclone/rclone.conf | sed 's/://' | egrep '^GDSA[0-9]+$')
   if [[ -n $gdsaList ]]; then
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
   else
+      echo "[INFO] No GDSA's found in /root/.config/rclone/rclone.conf, checking ~/.config/rclone/rclone.conf for GDSA's"
       # backup root's rclone conf
       [[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.back
       # cp home's rclone conf to root
       [[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf
-      gdsaList=$(rclone listremotes | sed 's/://' | egrep '^GDSA[0-9]+$')
+      gdsaList=$(rclone listremotes --config /root/.config/rclone/rclone.conf | sed 's/://' | egrep '^GDSA[0-9]+$')
       [[ -z $gdsaList ]] && echo -e " [FAIL] No Valid SA accounts found! Is Rclone Configured With GDSA## remotes?" && exit 1
+      echo "[INFO] Found GDSA's in ~/ and copying to /root"
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
   fi
@@ -62,7 +64,7 @@ init_DB(){
   echo -n '' > /tmp/SA_error.log
   validate(){
       local s=0
-      rclone lsd ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
+      rclone lsd --config /root/.config/rclone/rclone.conf ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
         echo -e " [ OK ] ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
@@ -80,6 +82,7 @@ numProcs=10
         wait -n
       fi
       validate $gdsa &
+      sleep 0.1
     done
   wait
   gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
@@ -102,7 +105,7 @@ echo -n '' > ${fileLock}
 while true; do
   # purge empty folders
   find "${localDir}" -mindepth 2 -type d -empty -delete
-  # black magic: find list of all dirs that have files at least 1 minutes old
+  # black magic: find list of all dirs that have files at least 1 minutes old that aren't hidden
   # and put the deepest directories in an array, then sort by dirsize
   sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
   unset a i
