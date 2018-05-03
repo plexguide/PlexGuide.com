@@ -1,7 +1,15 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.075] (Beta, Release Candiate & DEV)
+### [5.076] (Beta, Release Candiate & DEV)
+
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+#### [5.075] - 3 May 2018
 
 - Added
   - PG Cron Advanced
@@ -16,9 +24,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Fixed SAB port numbers
   - Stopped asking donation question if asked already once for preinstaller
 
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 #### [5.074] - 30 April 2018
 
