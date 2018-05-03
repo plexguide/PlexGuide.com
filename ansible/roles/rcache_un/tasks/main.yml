@@ -71,6 +71,8 @@
     lineinfile:
       path: /etc/fuse.conf
       line: user_allow_other
+    tags:
+      - rcache
 
   - name: Check Rcache directory
     stat:
@@ -87,6 +89,29 @@
       group: 1000
       mode: 755
     when: rcache_dir.stat.exists == False
+    tags:
+      - rcache
+
+  - name: Set permissions for rclone config directory
+    file:
+      path: "/root"
+      state: directory
+      mode: 755
+    file:
+      path: "/root/.config"
+      state: directory
+      mode: 755
+    file:
+      path: "/root/.config/rclone"
+      state: directory
+      mode: 755
+    file:
+      path: "/root/.config/rclone/rclone.conf"
+      state: touch
+      mode: 755
+    tags:
+      - rcache
+
 
   - name: Check Rcache DB & cache file directory
     stat:
@@ -103,6 +128,8 @@
       group: 1000
       mode: 755
     when: rcacheDB_dir.stat.exists == False
+    tags:
+      - rcache
 
 ########################################## Services
 ########### Move Service
