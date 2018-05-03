@@ -43,8 +43,12 @@ case $CHOICE in
 		dialog --infobox "Installing: $display" 3 30
 		skip=yes
 		ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata &>/dev/null &
-		sleep 2
-		cronskip=yes
+        sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
 		;;
 
 	B)
@@ -53,21 +57,17 @@ case $CHOICE in
 		port="9090"
 		dialog --infobox "Installing: $display" 3 38
 		ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "monitor" &>/dev/null &
-		sleep 8
-		cronskip=yes
+        sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
 		;;
 
 	Z)
        exit 0 ;;
 esac
-
-########## Cron Job a Program
-echo "$program" > /tmp/program_var
-if [ "$cronskip" == "yes" ]; then
-    clear 1>/dev/null 2>&1
-else
-	bash /opt/plexguide/menus/programs/support.sh
-fi 
 
 # 8080 3000 9090
 #rm -f /tmp/program
@@ -81,11 +81,6 @@ fi
 #	done
 #"${program[@]}" "${port[@]}"
 
-echo "$program" > /tmp/program
-echo "$port" > /tmp/port
-
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/monitoring.sh

@@ -53,7 +53,6 @@ case $CHOICE in
      echo
      read -n 1 -s -r -p "Press any key to continue "
      bash /opt/plexguide/menus/programs/vpn.sh
-     cronskip="yes"
      ;;
 
      B)
@@ -61,7 +60,12 @@ case $CHOICE in
      program=delugevpn
      port=8112
      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn 
-     cronskip="no"
+        sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
      ;;
 
      C)
@@ -69,7 +73,12 @@ case $CHOICE in
      program=rtorrentvpn
      port=3000
      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
-     cronskip="no"
+        sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
      ;;
      
      D)
@@ -89,19 +98,6 @@ case $CHOICE in
 esac
 
 clear
-
-########## Cron Job a Program
-echo "$program" > /tmp/program_var
-if [ "$cronskip" == "yes" ]; then
-    clear 1>/dev/null 2>&1
-else
-    bash /opt/plexguide/menus/backup/main.sh
-fi 
-
-echo "$program" > /tmp/program
-echo "$port" > /tmp/port
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/vpn.sh
