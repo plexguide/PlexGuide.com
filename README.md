@@ -16,7 +16,7 @@
 
 <p align="center"><kbd><img src="https://plexguide.com/media/pg2-gif.116/full"></kbd></p>
 
-**To The Point:** We make your life easy by automating as much as we can so you can spend less time coding and more time watching!
+**Human Speak:** We make your life easy by automating as much as we can so you can spend less time coding and more time watching!
 
 [**The PlexGuide Wiki:**](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki) There are a series of topics that you should read to assist you! EVERYONE has rights to edit and/or build new wiki pages.  What you know may save everyone time!
 
