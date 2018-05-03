@@ -57,8 +57,12 @@ case $CHOICE in
             port=7999
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd &>/dev/null &
-            sleep 2 
-            cronskip=yes
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
             display=NETDATA
@@ -70,8 +74,12 @@ case $CHOICE in
             port=4645
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next &>/dev/null &
-            sleep 2 
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         D)
             display=Ombi
@@ -79,8 +87,12 @@ case $CHOICE in
             port=3579
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
-            sleep 2
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
             display=pyLoad
@@ -88,8 +100,12 @@ case $CHOICE in
             port=8000
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad &>/dev/null &
-            sleep 2
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         F)
             display=RESILIO
@@ -97,16 +113,24 @@ case $CHOICE in
             port=8888
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags resilio &>/dev/null &
-            sleep 2
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         G)
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver &>/dev/null &
-            sleep 2
-            cronskip=yes
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            #### skipped cron
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         H)
             display=Tautulli
@@ -114,8 +138,12 @@ case $CHOICE in
             port=8181
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
-            sleep 2
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         I)
             display=TheLounge
@@ -123,25 +151,16 @@ case $CHOICE in
             port=9100
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lounge &>/dev/null &
-            sleep 2
-            cronskip=no
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;
     esac
-
-########## Cron Job a Program
-echo "$program" > /tmp/program_var
-if [ "$cronskip" == "yes" ]; then
-    clear 1>/dev/null 2>&1
-else
-    bash /opt/plexguide/menus/backup/main.sh
-fi 
-
-echo "$program" > /tmp/program
-echo "$port" > /tmp/port
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/support.sh

@@ -44,8 +44,12 @@ case $CHOICE in
        dialog --infobox "Installing: $display" 3 30
        port=8999
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent &>/dev/null &
-       sleep 2
-       cronskip=no
+        sleep 3
+        echo "$program" > /tmp/program
+        echo "$program" > /tmp/program_var
+        echo "$port" > /tmp/port
+        bash /opt/plexguide/menus/time/cron.sh
+        bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
      B)
@@ -55,8 +59,12 @@ case $CHOICE in
        dialog --infobox "Installing: $display" 3 30
        port=8112
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge &>/dev/null &
-       sleep 2
-       cronskip=no
+        sleep 3
+        echo "$program" > /tmp/program
+        echo "$program" > /tmp/program_var
+        echo "$port" > /tmp/port
+        bash /opt/plexguide/menus/time/cron.sh
+        bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
      C)
@@ -66,26 +74,17 @@ case $CHOICE in
        dialog --infobox "Installing: $display" 3 30
        port=9117
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null &
-       sleep 2
-       cronskip=no
+        sleep 3
+        echo "$program" > /tmp/program
+        echo "$program" > /tmp/program_var
+        echo "$port" > /tmp/port
+        bash /opt/plexguide/menus/time/cron.sh
+        bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
      Z)
        exit 0 ;;
 esac
-
-########## Cron Job a Program
-echo "$program" > /tmp/program_var
-if [ "$cronskip" == "yes" ]; then
-    clear 1>/dev/null 2>&1
-else
-    bash /opt/plexguide/menus/backup/main.sh
-fi 
-
-echo "$program" > /tmp/program
-echo "$port" > /tmp/port
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/torrent.sh

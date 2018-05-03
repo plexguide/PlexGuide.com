@@ -48,8 +48,12 @@ case $CHOICE in
       port=5050
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato &>/dev/null &
-      sleep 2 
-      cronskip="no"
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     B)
       display=Headphones
@@ -57,8 +61,12 @@ case $CHOICE in
       port=8081
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags headphones &>/dev/null &
-      cronskip="no"
-      sleep 2
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     C)
       display=LazyLibrarian
@@ -66,8 +74,12 @@ case $CHOICE in
       port=5299
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy &>/dev/null &
-      cronskip="no"
-      sleep 2
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     D)
       display=Lidarr
@@ -75,8 +87,12 @@ case $CHOICE in
       port=8686
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr &>/dev/null &
-      sleep 2
-      cronskip="no"
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     E)
       display=MEDUSA
@@ -84,8 +100,12 @@ case $CHOICE in
       port=8081
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa &>/dev/null &
-      cronskip="no"
-      sleep 2
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     F)
       display=Mylar
@@ -93,8 +113,12 @@ case $CHOICE in
       port=8090
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar &>/dev/null &
-      cronskip="no"
-      sleep 2
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     G)
       display=Radarr
@@ -105,7 +129,12 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      cronskip="no"
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     H)
       display=SickRage
@@ -113,8 +142,12 @@ case $CHOICE in
       port=8082
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage &>/dev/null &
-      cronskip="no"
-      sleep 2
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     I)
       display=Sonarr
@@ -125,25 +158,16 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      cronskip="no"
+      sleep 3
+      echo "$program" > /tmp/program
+      echo "$program" > /tmp/program_var
+      echo "$port" > /tmp/port
+      bash /opt/plexguide/menus/time/cron.sh
+      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     Z)
       exit 0 ;;
 esac
-
-########## Cron Job a Program
-echo "$program" > /tmp/program_var
-if [ "$cronskip" == "yes" ]; then
-    clear 1>/dev/null 2>&1
-else
-    bash /opt/plexguide/menus/backup/main.sh
-fi 
-
-echo "$program" > /tmp/program
-echo "$port" > /tmp/port
-
-#### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
 
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/manager.sh
