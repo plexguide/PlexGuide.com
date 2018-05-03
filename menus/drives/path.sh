@@ -22,7 +22,7 @@
 
   dialog --title "SET FULL PATH [ EXAMPLE: /hd2/media or /hd2 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Full Path: " 8 50 2>/var/plexguide/hd/hd$hd
+  --inputbox "Full Path: " 8 50 2>/var/plexguide/hd$hd
   path=$(cat /var/plexguide/server.hd.path)
 
   if dialog --stdout --title "PG Path Builder" \
@@ -37,7 +37,7 @@
             pathe="$path"
             path="/$path"
             dialog --title "PG Error Checking" --msgbox "\nForgot to add a FORWARD SLASH in the beginning!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
-            echo "$path" > "/var/plexguide/hd/hd$hd"
+            echo "$path" > "/var/plexguide/hd$hd"
       fi
   
     ##### If BONEHEAD added a / at the end, we fix for them  
@@ -47,7 +47,7 @@
             pathe="$path"
             path=${path::-1} 
             dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
-            echo "$path" > "/var/plexguide/hd/hd$hd"
+            echo "$path" > "/var/plexguide/hd$hd"
       fi
 
     ##### READ / WRITE CHECK
