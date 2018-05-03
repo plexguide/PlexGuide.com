@@ -16,6 +16,42 @@
 #
 #################################################################################
 echo "plex" > /tmp/program_var
+display=$( cat /tmp/program_var )
+timeinfo=$( date "+%H:%M:%S - %d/%m/%y" )
+
+HEIGHT=11
+WIDTH=45
+CHOICE_HEIGHT=4
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="PG Cron Backup - $display"
+MENU="Server Time: $time"
+
+OPTIONS=(A "Set Backup Cron - $display"
+         B "Do Not Set Backup Cron"
+         C "Change Server Time?"
+         Z "Exit")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+case $CHOICE in
+        A)
+                        echo "1" > /tmp/cron.day
+                        ;;
+        B)
+                        echo "2" > /tmp/cron.day
+                        ;;
+        C)
+                        echo "3" > /tmp/cron.day
+                        ;;
+esac
+
+
+###################### KICKOFF ###################################
 
 file="/var/plexguide/backup.backoff"
 if [ -e "$file" ]
@@ -32,8 +68,6 @@ else
   echo "1" > /var/plexguide/backup.backoff
 fi
 cat "/var/plexguide/backup.backoff" > /tmp/time_var
-
-display=$( cat /tmp/program_var )
 
 ######################## CRON DAY START ##########################
 HEIGHT=15
@@ -59,8 +93,6 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-
-clear
 case $CHOICE in
         A)
 			echo "1" > /tmp/cron.day
