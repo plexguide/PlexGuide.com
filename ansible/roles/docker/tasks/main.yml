@@ -38,7 +38,7 @@
   apt:    
     name: docker-ce
     state: present
-    allow: yes
+    force: allow
     update_cache: yes
 
 - name: Stop docker to enable overlay2
