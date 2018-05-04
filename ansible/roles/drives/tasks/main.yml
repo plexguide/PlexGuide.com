@@ -50,7 +50,7 @@
 
 ######################################################### COMBINE START
   - name: Combine Paths
-    shell: echo "defaults,allow_other,direct_io,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{hd1.stdout}}{{hd2.stdout}}{{hd3.stdout}}{{hd4.stdout}} /mnt/unionfs" > /var/plexguide/hdcommand
+    shell: echo "defaults,allow_other,nonempty,direct_io,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{hd1.stdout}}{{hd2.stdout}}{{hd3.stdout}}{{hd4.stdout}} /mnt/unionfs" > /var/plexguide/hdcommand
 
   - name: Register Command
     shell: cat "/var/plexguide/hdcommand"
