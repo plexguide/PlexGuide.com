@@ -84,11 +84,12 @@ case $CHOICE in
               dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs need to move to either /mnt/old/ for storage reasons or /mnt/move for GDrive Uploading!" 0 0
               
                 ### Make a Move Choice
-                HEIGHT=12
-                WIDTH=44
-                CHOICE_HEIGHT=5
+                HEIGHT=9
+                WIDTH=50
+                CHOICE_HEIGHT=2
                 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                TITLE="Select Your Edition!"
+                TITLE="Solo HD >>> GDrive Edition"
+                MENU="Switching To GDrive Will Move your Current!"
 
                 OPTIONS=(A "To /mnt/old  - For Storage"
                          B "To /mnt/move - For Google Uploads")
@@ -120,11 +121,12 @@ case $CHOICE in
             then
 
                 ### Make a Move Choice
-                HEIGHT=12
-                WIDTH=44
-                CHOICE_HEIGHT=5
+                HEIGHT=9
+                WIDTH=50
+                CHOICE_HEIGHT=2
                 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                TITLE="Switching To GDrive Will Stop Your Drives Pool!"
+                TITLE="Multi HD >>> GDrive Edition"
+                MENU="Switching To GDrive Will Stop Your Drives Pool!"
 
                 OPTIONS=(A "Yes: Switch"
                          B "No : Back Out")
@@ -184,11 +186,12 @@ case $CHOICE in
             then
 
                 ### Make a Move Choice
-                HEIGHT=12
-                WIDTH=44
-                CHOICE_HEIGHT=5
+                HEIGHT=9
+                WIDTH=50
+                CHOICE_HEIGHT=2
                 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                TITLE="Switching to the HD Multi Edition requies to move your data!"
+                TITLE="Solo HD >>> Multi HD Edition"
+                MENU="Switching To Multi HD Will Move your Current!"
 
                 OPTIONS=(A "To /mnt/old  - For Storage"
                          B "No : Back Out")
@@ -223,11 +226,13 @@ case $CHOICE in
                     then
 
                         ### Make a Move Choice
-                        HEIGHT=12
-                        WIDTH=44
-                        CHOICE_HEIGHT=5
+                        HEIGHT=9
+                        WIDTH=50
+                        CHOICE_HEIGHT=2
                         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
                         TITLE="Switching To Solo HD will disable your Google Setup"
+                        TITLE="GDrive Edition >>> Multi HD Edition"
+                        MENU="Switching To Multi HD Will Stop GDrive!"
 
                         OPTIONS=(A "Yes: Switch"
                                  B "No : Back Out")
@@ -297,11 +302,12 @@ case $CHOICE in
                   then
 
                       ### Make a Move Choice
-                      HEIGHT=12
-                      WIDTH=44
-                      CHOICE_HEIGHT=5
+                      HEIGHT=9
+                      WIDTH=50
+                      CHOICE_HEIGHT=2
                       BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                      TITLE="Switching To Solo HD Will Stop Your Drives Pool!"
+                      TITLE="Multi HD Edition >>> Solo Edition"
+                      MENU="Switching To Solo HD will stop your Pool!"
 
                       OPTIONS=(A "Yes: Switch"
                                B "No : Back Out")
@@ -332,11 +338,12 @@ case $CHOICE in
                     then
 
                         ### Make a Move Choice
-                        HEIGHT=12
-                        WIDTH=44
-                        CHOICE_HEIGHT=5
+                        HEIGHT=9
+                        WIDTH=50
+                        CHOICE_HEIGHT=2
                         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                        TITLE="Switching To Solo HD will disable your Google Setup"
+                        TITLE="GDrive Edition >>> Solo HD"
+                        MENU="Switching To Solo HD will stop GDrive!"
 
                         OPTIONS=(A "Yes: Switch"
                                  B "No : Back Out")
