@@ -15,11 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-######## This is a ONE TIME MENU
 export NCURSES_NO_UTF8_ACS=1
-
-#### Proof of concept, delete these 4 lines later
-mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 
 hd1=$( cat /var/plexguide/hd.1 )
 hd2=$( cat /var/plexguide/hd.2 )
