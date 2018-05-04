@@ -237,6 +237,9 @@ case $CHOICE in
         echo "drives" > /var/pg.server.deploy
         bash /opt/plexguide/menus/drives/multideploy.sh
         bash /opt/plexguide/menus/localmain.sh
+        systemctl enable drives 1>/dev/null 2>&1
+        systemctl start drives 1>/dev/null 2>&1
+        systemctl daemon-reload 1>/dev/null 2>&1
         exit
       else 
         bash /opt/plexguide/scripts/baseinstall/edition.sh  
@@ -315,12 +318,15 @@ case $CHOICE in
                         case $CHOICE in
                         ######################### HANDLING
                         A)
+
+                        ### disable
                         systemctl stop unionfs 1>/dev/null 2>&1
                         systemctl disable unionfs 1>/dev/null 2>&1
                         systemctl stop unionfs-en 1>/dev/null 2>&1
                         systemctl disable unionfs-en 1>/dev/null 2>&1
                         systemctl stop move-en 1>/dev/null 2>&1
                         systemclt disable move-en 1>/dev/null 2>&1
+                        systemctl daemon-reload 1>/dev/null 2>&1
                         systemctl daemon-reload 1>/dev/null 2>&1
                         ;;
 
@@ -338,6 +344,10 @@ case $CHOICE in
         echo "drive" > /var/pg.server.deploy
         bash /opt/plexguide/menus/drives/solodeploy.sh
         bash /opt/plexguide/menus/localmain.sh
+        systemctl enable drive 1>/dev/null 2>&1
+        systemctl start drive 1>/dev/null 2>&1
+        systemctl daemon-reload 1>/dev/null 2>&1
+
         exit
       else 
         bash /opt/plexguide/scripts/baseinstall/edition.sh  
