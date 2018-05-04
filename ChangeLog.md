@@ -7,6 +7,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Stopped First Time Install, recall of menu
 - Tons of startup related bug fixes
 
+- Changed
+  - Moved TorrentVPN from Beta to Torrent Menu
+
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
@@ -19,7 +22,7 @@ Historical Documented Changes will be stored as below.
   - Repaired 4K Menu
   - Time To Menus / CronJob & Startup
   - New Way to Adjust time Via Settings and Cron Job Interface
-  
+
 - Changed
   - Better MP4 Repo (@zachawii)
   - Reworked PreInstaller
@@ -89,7 +92,7 @@ Historical Documented Changes will be stored as below.
 
 Note: Traefik v2 may say your certificate is not valid if it is.  Know the fix, but don't have time to fix yet.  Will be updated in version 5.071
 
-#### RC3 
+#### RC3
 - Changed
   - Flicker-Rate put some fixes to the pgstatus program
 

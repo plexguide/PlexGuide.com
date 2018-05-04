@@ -41,9 +41,10 @@ case $CHOICE in
      A)
        display=RUTorrent
        program=rutorrent
+       echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent 1>/dev/null 2>&1
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent &>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -51,12 +52,14 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
        ;;
+
      B)
        display=Deluge
        program=deluge
+       echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge 1>/dev/null 2>&1
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge &>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -64,12 +67,14 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
        ;;
+
      C)
        display=Jackett
        program=jackett
+       echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett 1>/dev/null 2>&1 
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null & 
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -77,8 +82,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
        ;;
+
      D)
        bash /opt/plexguide/menus/programs/vpn.sh ;;
+
      Z)
        exit 0 ;;
 esac

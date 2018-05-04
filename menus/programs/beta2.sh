@@ -1,23 +1,19 @@
  #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
- ## point to variable file for ipv4 and domain.com
-source <(grep '^ .*='  /opt/appdata/plexguide/var.sh)
-echo $ipv4
-domain=$( cat /var/plexguide/server.domain )
-
- HEIGHT=10
+ HEIGHT=11
  WIDTH=55
- CHOICE_HEIGHT=4
+ CHOICE_HEIGHT=5
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - VPN Programs"
 
- OPTIONS=(A "VPN Torrent - New way"
-          B "VPN Torrent - Old way"
-          C "DO NOT USE - For Developers Use Only!"
+ OPTIONS=(A "DO NOT USE - For Developers Use Only!"
+          B "Duplicati - Advanced Backup"
+          C "PLEXTEST"
           Z "Exit")
 
- CHOICE=$(dialog --backtitle "$BACKTITLE" \
+ CHOICE=$(dialog --clear \
+                 --backtitle "$BACKTITLE" \
                  --title "$TITLE" \
                  --menu "$MENU" \
                  $HEIGHT $WIDTH $CHOICE_HEIGHT \
@@ -26,21 +22,26 @@ domain=$( cat /var/plexguide/server.domain )
 
 case $CHOICE in
      A)
-        bash /opt/plexguide/menus/programs/vpn-next.sh ;;
-     B)
-        bash /opt/plexguide/scripts/menus/torrentvpn-menu.sh ;;
-     C)
      clear
      bash /opt/plexguide/scripts/test/move.sh
      echo "Testing files have now been swapped"
      echo "Please go back to the main menu to see changes"
      read -n 1 -s -r -p "Press any key to continue "
      ;;
+     B)
+         display=Duplicati
+         dialog --infobox "Installing: $display" 3 30
+         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
+         sleep 2
+         dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
+         cronskip="yes"
+         ;;
 
+     C)
+     bash /opt/plexguide/menus/plex/test.sh ;;
      Z)
         clear
         exit 0 ;;
 esac
 
-#### Recall Loop
 bash /opt/plexguide/menus/programs/beta.sh
