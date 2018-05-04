@@ -69,7 +69,7 @@ case $CHOICE in
         J)
             rm -r /var/plexguide/pg.edition
             bash /opt/plexguide/scripts/baseinstall/edition.sh
-            exit 0 ;;
+            ;;
         K)
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
