@@ -86,6 +86,10 @@ case $CHOICE in
             fi
 
 ############ If Not Installed
+if [ "$deploy" == "drives" ]
+  then
+    clear 1>/dev/null 2>&1
+  else
 file="/usr/bin/mergerfs" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
@@ -103,10 +107,7 @@ dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
 fi 
 
-if [ "$deploy" == "drives" ]
-  thenpl
-    clear 1>/dev/null 2>&1
-  else
+
 
             #### Multiple Editions HD
             bash /opt/plexguide/menus/drives/hds.sh
