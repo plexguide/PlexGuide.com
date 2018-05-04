@@ -50,8 +50,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     Z)
-      rm -r "/var/plexguide/hd.*"
-      /opt/plexguide/menus/drives/hds.sh
+      exit 
       ;;
     Y)
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
