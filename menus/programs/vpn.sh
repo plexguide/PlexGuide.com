@@ -59,10 +59,12 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
      ;;
      B)
-     clear
-     program=delugevpn
+       display=DelugeVPN
+       program=delugevpn
+       echo "$program" > /tmp/program_var
+       dialog --infobox "Installing: $display" 3 30
      port=8112
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn 
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn &>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -71,10 +73,12 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
      ;;
      C)
-     clear
-     program=rtorrentvpn
+       display=rTorrentVPN
+       program=rtorrentvpn
+       echo "$program" > /tmp/program_var
+       dialog --infobox "Installing: $display" 3 30
      port=3000
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn 
+     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn &>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
