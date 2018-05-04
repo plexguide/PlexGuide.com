@@ -87,7 +87,6 @@ case $CHOICE in
 
             #### Multiple Editions HD
             bash /opt/plexguide/menus/drives/hds.sh
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
             ;;
         D)
             bash /opt/plexguide/menus/info-tshoot/infodrives.sh 
