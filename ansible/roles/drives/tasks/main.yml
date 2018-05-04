@@ -23,7 +23,7 @@
     register: drives
 
   - name: Stop If DRIVES Service Running
-    systemd: state=stopped name=unionfs
+    systemd: state=stopped name=drives
     when: drives.stat.exists
 
 ####################################################### REGISTER FIRST
