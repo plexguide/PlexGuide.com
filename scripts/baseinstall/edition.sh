@@ -65,6 +65,12 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     A)
 ######################### GDRIVE
+  if [ "$deploy" == "gdrive" ]
+  then
+    exit
+  else
+    clear 1>/dev/null 2>&1
+  fi
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working one may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
       bash /opt/plexguide/menus/confirm.sh 
@@ -161,8 +167,13 @@ case $CHOICE in
               ;;
 ######################### MULTI
     C)
+  if [ "$deploy" == "drives" ]
+  then
+    exit
+  else
+    clear 1>/dev/null 2>&1
+  fi
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
-
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
       bash /opt/plexguide/menus/confirm.sh 
 
@@ -269,6 +280,12 @@ case $CHOICE in
       ;;
 ######################### SOLO
     B)
+  if [ "$deploy" == "drive" ]
+  then
+    exit
+  else
+    clear 1>/dev/null 2>&1
+  fi
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
 
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
