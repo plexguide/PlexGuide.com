@@ -26,9 +26,9 @@ hd2=$( cat /var/plexguide/hd.2 )
 hd3=$( cat /var/plexguide/hd.3 )
 hd4=$( cat /var/plexguide/hd.4 )
 
-HEIGHT=12
+HEIGHT=13
 WIDTH=60
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
@@ -50,6 +50,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     Z)
       rm -r "/var/plexguide/hd.*"
+      /opt/plexguide/menus/drives/hds.sh
       exit
       ;;
     Y)
