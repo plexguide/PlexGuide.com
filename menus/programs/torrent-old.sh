@@ -17,16 +17,15 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
- HEIGHT=11
+ HEIGHT=10
  WIDTH=38
- CHOICE_HEIGHT=5
+ CHOICE_HEIGHT=4
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Torrent Programs"
 
  OPTIONS=(A "RuTorrent"
           B "Deluge"
           C "Jackett"
-          D "VPN Options"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -46,11 +45,11 @@ case $CHOICE in
        port=8999
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent &>/dev/null &
         sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+        echo "$program" > /tmp/program
+        echo "$program" > /tmp/program_var
+        echo "$port" > /tmp/port
+        bash /opt/plexguide/menus/time/cron.sh
+        bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
      B)
@@ -61,11 +60,11 @@ case $CHOICE in
        port=8112
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge &>/dev/null &
         sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+        echo "$program" > /tmp/program
+        echo "$program" > /tmp/program_var
+        echo "$port" > /tmp/port
+        bash /opt/plexguide/menus/time/cron.sh
+        bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
      C)
@@ -74,17 +73,14 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null & 
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null &
         sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+        echo "$program" > /tmp/program
+        echo "$program" > /tmp/program_var
+        echo "$port" > /tmp/port
+        bash /opt/plexguide/menus/time/cron.sh
+        bash /opt/plexguide/menus/programs/ending.sh
        ;;
-
-     D)
-       bash /opt/plexguide/menus/programs/vpn.sh ;;
 
      Z)
        exit 0 ;;
