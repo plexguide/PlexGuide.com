@@ -20,20 +20,40 @@ export NCURSES_NO_UTF8_ACS=1
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
-          ### Determine Variable
-          deploy=$( cat /var/pg.server.deploy )
+### Determine Variable
+deploy=$( cat /var/pg.server.deploy )
+
+  if [ "$deploy" == "gdrive" ]
+  then
+    stat1=" <<< Currently Using"
+  else
+    stat1=""
+  fi
+
+  if [ "$deploy" == "drive" ]
+  then
+    stat2=" <<< Currently Using"
+  else
+    stat2=""
+  fi
+
+  if [ "$deploy" == "drives" ]
+  then
+    stat3=" <<< Currently Using"
+  else
+    stat3=""
+  fi
 
 HEIGHT=12
-WIDTH=36
+WIDTH=44
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
 
-OPTIONS=(A "GDrive Edition"
-         B "HD Solo Edition"
-         C "HD Multi Edition"
-         D "Mini FAQ"
-         Z "Exit")
+OPTIONS=(A "GDrive Edition$stat1"
+         B "HD Solo Edition$stat2"
+         C "HD Multi Edition$stat3"
+         D "Mini FAQ")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
