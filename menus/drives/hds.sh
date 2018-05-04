@@ -33,7 +33,8 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Set Your Mount Paths!"
 
 OPTIONS=(Z "Exit"
-         Y "Clear All Paths"
+         Y "Deploy MultiPath"
+         X "Clear All Paths"
          A "HD1: $hd1"
          B "HD2: $hd2"
          C "HD3: $hd3"
@@ -52,6 +53,9 @@ case $CHOICE in
       exit
       ;;
     Y)
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
+      ;;
+    X)
       rm -r /var/plexguide/hd 1>/dev/null 2>&1
       exit
       ;;
@@ -72,5 +76,3 @@ case $CHOICE in
       bash /opt/plexguide/menus/drives/paths.sh
       ;;
 esac
-
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
