@@ -60,7 +60,7 @@ case $CHOICE in
       exit
       ;;
     A)
-      echo "1" > /tmp/hd.drivez
+      echo "1" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/paths.sh
       ;;
     B)
