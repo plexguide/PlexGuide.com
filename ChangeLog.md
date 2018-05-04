@@ -3,7 +3,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.076] (Beta, Release Candiate & DEV)
 
-- None
+- Finished HD Multi Editoin
+- Stopped First Time Install, recall of menu
+- Tons of startup related bug fixes
 
 -------------------------------------------------------
 ## Past Changes
