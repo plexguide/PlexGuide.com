@@ -77,3 +77,5 @@ case $CHOICE in
       bash /opt/plexguide/menus/drives/paths.sh
       ;;
 esac
+
+bash /opt/plexguide/menus/drives/hds.sh
