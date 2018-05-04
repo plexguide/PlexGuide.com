@@ -26,10 +26,10 @@ hd2=$( cat /var/plexguide/hd.2 1>/dev/null 2>&1 )
 hd3=$( cat /var/plexguide/hd.3 1>/dev/null 2>&1 )
 hd4=$( cat /var/plexguide/hd.4 1>/dev/null 2>&1 )
 
-hd1=${hd1::-1} 1>/dev/null 2>&1
-hd2=${hd2::-1} 1>/dev/null 2>&1
-hd3=${hd3::-1} 1>/dev/null 2>&1
-hd4=${hd4::-1} 1>/dev/null 2>&1
+hd1="${hd1::-1}" 1>/dev/null 2>&1
+hd2="${hd2::-1}" 1>/dev/null 2>&1
+hd3="${hd3::-1}" 1>/dev/null 2>&1
+hd4="${hd4::-1}" 1>/dev/null 2>&1
 
 HEIGHT=13
 WIDTH=60
