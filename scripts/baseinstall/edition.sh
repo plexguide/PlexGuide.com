@@ -17,7 +17,6 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
 ### Determine Variable
@@ -25,23 +24,23 @@ deploy=$( cat /var/pg.server.deploy )
 
   if [ "$deploy" == "gdrive" ]
   then
-    stat1=" <<< Current Use"
+    stat1=" <<< Current Use" 1>/dev/null 2>&1
   else
-    stat1=""
+    stat1="" 1>/dev/null 2>&1
   fi
 
   if [ "$deploy" == "drive" ]
   then
-    stat2=" <<< Current Use"
+    stat2=" <<< Current Use" 1>/dev/null 2>&1
   else
-    stat2=""
+    stat2="" 1>/dev/null 2>&1
   fi
 
   if [ "$deploy" == "drives" ]
   then
-    stat3=" <<< Current Use"
+    stat3=" <<< Current Use" 1>/dev/null 2>&1
   else
-    stat3=""
+    stat3="" 1>/dev/null 2>&1
   fi
 
 HEIGHT=11
