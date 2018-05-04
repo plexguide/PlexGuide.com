@@ -25,27 +25,27 @@ deploy=$( cat /var/pg.server.deploy )
 
   if [ "$deploy" == "gdrive" ]
   then
-    stat1=" <<< Currently Using"
+    stat1=" <<< Current Use"
   else
     stat1=""
   fi
 
   if [ "$deploy" == "drive" ]
   then
-    stat2=" <<< Currently Using"
+    stat2=" <<< Current Use"
   else
     stat2=""
   fi
 
   if [ "$deploy" == "drives" ]
   then
-    stat3=" <<< Currently Using"
+    stat3=" <<< Current Use"
   else
     stat3=""
   fi
 
 HEIGHT=12
-WIDTH=45
+WIDTH=40
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
