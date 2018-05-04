@@ -56,7 +56,7 @@
     file="$path/plexguide"
     if [ -e "$file" ]
       then
-        $path > "/var/plexguide/hd.$number:"
+        echo "$path:" > "/var/plexguide/hd.$number"
         #dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists! We are going to CHMOD & CHOWN the path for you!" 0 0
         #chown 1000:1000 "$path"
         #chmod 0775 "$path"
