@@ -20,6 +20,9 @@ export NCURSES_NO_UTF8_ACS=1
 mkdir -p /var/plexguide/hd 1>/dev/null 2>&1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
+          ### Determine Variable
+          deploy=$( cat /var/pg.server.deploy )
+
 HEIGHT=12
 WIDTH=36
 CHOICE_HEIGHT=5
@@ -50,10 +53,6 @@ case $CHOICE in
       menu=$( cat /tmp/menu.choice )
       if [ "$menu" == "yes" ]
         then
-
-          ### Determine Variable
-          deploy=$( cat /var/pg.server.deploy )
-
 
           ### If SOLO Drive was active before, important to move item to an old folder
           if [ "$deploy" == "drive" ]
