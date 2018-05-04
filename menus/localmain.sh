@@ -103,9 +103,7 @@ case $CHOICE in
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         H)
-            rm -r /var/plexguide/pg.edition 
-            bash /opt/plexguide/scripts/baseinstall/edition.sh 
-            exit 0 ;;
+            bash /opt/plexguide/scripts/baseinstall/edition.sh ;;
         I)
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
