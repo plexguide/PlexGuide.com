@@ -43,10 +43,10 @@ git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
 sleep 1
 
 echo "85" | dialog --gauge "Linking MergerFS" 7 50 0
-cd mergerfs 1>/dev/null 2>&1
+cd mergerfs
 make clean 1>/dev/null 2>&1
 make deb 1>/dev/null 2>&1
-cd .. 1>/dev/null 2>&1
+cd .. 
 dpkg -i mergerfs*_amd64.deb 1>/dev/null 2>&1
 sleep 1
 
