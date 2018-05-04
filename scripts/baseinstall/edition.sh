@@ -66,6 +66,7 @@ case $CHOICE in
 ######################### GDRIVE
   if [ "$deploy" == "gdrive" ]
   then
+    bash /opt/plexguide/menus/main.sh
     exit
   else
     clear 1>/dev/null 2>&1
@@ -167,6 +168,7 @@ case $CHOICE in
     C)
   if [ "$deploy" == "drives" ]
   then
+    /opt/plexguide/menus/localmain.sh
     exit
   else
     clear 1>/dev/null 2>&1
@@ -279,6 +281,7 @@ case $CHOICE in
     B)
   if [ "$deploy" == "drive" ]
   then
+    /opt/plexguide/menus/localmain.sh
     exit
   else
     clear 1>/dev/null 2>&1
