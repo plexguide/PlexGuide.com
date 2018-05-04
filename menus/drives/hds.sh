@@ -48,10 +48,12 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     Z)
+      rm -r "/var/plexguide/hd.*"
       exit
       ;;
     Y)
-      rm -r /var/plexguide/hd/* 1>/dev/null 2>&1
+      rm -r /var/plexguide/hd 1>/dev/null 2>&1
+      exit
       ;;
     A)
       echo "1" > /tmp/hd.drive
