@@ -45,7 +45,7 @@ deploy=$( cat /var/pg.server.deploy )
   fi
 
 HEIGHT=11
-WIDTH=40
+WIDTH=41
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
