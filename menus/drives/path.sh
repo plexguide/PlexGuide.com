@@ -61,6 +61,7 @@
         chmod 0775 "$path"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
+        echo "" > /var/plexguide/hd.$number
         bash /opt/plexguide/menus/drives/hds.sh
         exit
     fi
