@@ -16,5 +16,5 @@
 #
 #################################################################################
 
-echo "5.075 Patch 2" > /var/plexguide/pg.version
-echo "64" > /var/plexguide/pg.preinstall
+echo "5.076 Beta 1" > /var/plexguide/pg.version
+echo "65" > /var/plexguide/pg.preinstall
