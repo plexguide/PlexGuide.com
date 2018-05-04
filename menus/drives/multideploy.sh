@@ -28,31 +28,18 @@ file="/usr/bin/mergerfs" 1>/dev/null 2>&1
   echo "" 1>/dev/null 2>&1
     else
 
-echo "0" | dialog --gauge "Downloding MergerFS" 7 50 0
+dialog --infobox "Installing MergerFS!" 0 0
 wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" 1>/dev/null 2>&1
-sleep 1
-
-echo "40" | dialog --gauge "Setting Up MergerFS" 7 50 0
 sudo -i 
 cd 
-sleep 1
-
-echo "65" | dialog --gauge "Installing MergerFS" 7 50 0
 apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y 1>/dev/null 2>&1
 git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
-sleep 1
-
-echo "85" | dialog --gauge "Linking MergerFS" 7 50 0
 cd mergerfs
 make clean 1>/dev/null 2>&1
 make deb 1>/dev/null 2>&1
 cd .. 
 dpkg -i mergerfs*_amd64.deb 1>/dev/null 2>&1
-sleep 1
-
-echo "95" | dialog --gauge "Cleaning Up MergerFS" 7 50 0
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz 1>/dev/null 2>&1
-sleep 1
 
   fi
 
