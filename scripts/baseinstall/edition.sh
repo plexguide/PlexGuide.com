@@ -28,7 +28,7 @@ TITLE="Select Your Edition!"
 
 OPTIONS=(A "GDrive Edition"
          B "HD Solo Edition"
-         C "HD Multiple Edition (TEST)"
+         C "HD Multi Edition"
          D "Mini FAQ"
          Z "Exit")
 
@@ -41,6 +41,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
+######################### GDRIVE
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working one may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
       rm -r /var/plexguide/pg.edition 1>/dev/null 2>&1
       bash /opt/plexguide/menus/confirm.sh 
@@ -50,8 +51,11 @@ case $CHOICE in
       if [ "$menu" == "yes" ]
         then
 
-          ### If SOLO Drive was active before, important to move item to an old folder
+          ### Determine Variable
           deploy=$( cat /var/pg.server.deploy )
+
+
+          ### If SOLO Drive was active before, important to move item to an old folder
           if [ "$deploy" == "drive" ]
             then
               dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs need to move to either /mnt/old/ for storage reasons or /mnt/move for GDrive Uploading!" 0 0
@@ -74,31 +78,69 @@ case $CHOICE in
                                 2>&1 >/dev/tty)
 
                 case $CHOICE in
+                ######################### HANDLING
                 A)
                 dialog --title "Quick Note" --msgbox "\nTo /mnt/old your DATA for storage it goes!" 0 0
                 mkdir /mnt/old 1>/dev/null 2>&1
                 mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
                 ;;
+
                 B)
                 dialog --title "Quick Note" --msgbox "\nTo /mnt/move your DATA for uploading it goes!" 0 0
                 mv /mnt/unionfs/* /mnt/move 1>/dev/null 2>&1
                 ;;
                 esac
-          fi
+              fi
 
-        ### Set Everything for GDrive Editon
-        echo "PG Edition: GDrive" > /var/plexguide/pg.edition
-        echo "gdrive" > /var/pg.server.deploy
-        bash /opt/plexguide/menus/main.sh
-        exit
-      else 
-        bash /opt/plexguide/scripts/baseinstall/edition.sh  
-        exit
-      fi
+          ### If MULTI Drive was active before, important to move item to an old folder
+          if [ "$deploy" == "drives" ]
+            then
 
-      exit
-      ;;
+                ### Make a Move Choice
+                HEIGHT=12
+                WIDTH=44
+                CHOICE_HEIGHT=5
+                BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                TITLE="Switching To GDrive Will Stop Your Drives Pool!"
 
+                OPTIONS=(A "Yes: Switch"
+                         B "No : Back Out")
+
+                CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                --title "$TITLE" \
+                                --menu "$MENU" \
+                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                "${OPTIONS[@]}" \
+                                2>&1 >/dev/tty)
+
+                case $CHOICE in
+                ######################### HANDLING
+                A)
+                systemctl stop drives
+                systemctl disable drives 
+                systemctl daemon-reload
+                ;;
+
+                B)
+                bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                exit
+                ;;
+                esac
+              fi
+
+                ### Set Everything for GDrive Editon
+                echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+                echo "gdrive" > /var/pg.server.deploy
+                bash /opt/plexguide/menus/main.sh
+                exit
+              else 
+                bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                exit
+              fi
+
+              exit
+              ;;
+######################### MULTI
     C)
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
 
@@ -121,7 +163,7 @@ case $CHOICE in
 
       exit
       ;;
-
+######################### SOLO
     B)
       dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
 
@@ -145,11 +187,13 @@ case $CHOICE in
 
       exit
       ;;
+######################### FAQ
     D)
       dialog --title "Quick FAQ" --msgbox "\nYou can pick between using your local drives or Google Drive for your mass media storage collection.\n\nBe aware the HDs option is not ready and is here for testing/demo purposes until ready.\n\nSolo HD is setup for smaller collections; download, watch, and delete. The multiple HD edition is for those who use multiple drives to build a collection!" 0 0
       bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
       ;;
+######################### EXIT
     Z)
       bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
