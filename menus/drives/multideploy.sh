@@ -30,10 +30,11 @@ file="/usr/bin/mergerfs" 1>/dev/null 2>&1
 
 echo "0" | dialog --gauge "Downloding MergerFS" 7 50 0
 wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" 1>/dev/null 2>&1
+sleep 1
 
 echo "40" | dialog --gauge "Setting Up MergerFS" 7 50 0
-sudo -i 1>/dev/null 2>&1
-cd 1>/dev/null 2>&1
+sudo -i 
+cd 
 sleep 1
 
 echo "65" | dialog --gauge "Installing MergerFS" 7 50 0
