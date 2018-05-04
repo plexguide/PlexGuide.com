@@ -136,7 +136,7 @@ if [ "$edition" == "PG Edition: GDrive" ]
 fi
 
 #### Multiple Drive Edition
-if [ "$edition" == "PG Edition: HD Multi" ]
+if [ "$edition" == "PG Edition: HD Multiple" ]
   then
     bash /opt/plexguide/menus/localmain.sh
     exit
@@ -148,3 +148,6 @@ if [ "$edition" == "PG Edition: HD Solo" ]
     bash /opt/plexguide/menus/localmain.sh
     exit
 fi
+
+#### falls to this menu incase none work above
+bash /opt/plexguide/scripts/baseinstall/edition.sh
