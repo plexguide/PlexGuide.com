@@ -92,7 +92,7 @@ case $CHOICE in
                 esac
               fi
 
-          ### If MULTI Drive was active before, important to move item to an old folder
+          ### If MULTI Drive was active before, switch over
           if [ "$deploy" == "drives" ]
             then
 
@@ -192,6 +192,46 @@ case $CHOICE in
                 esac
               fi
 
+         if [ "$deploy" == "gdrive" ]
+                    then
+
+                        ### Make a Move Choice
+                        HEIGHT=12
+                        WIDTH=44
+                        CHOICE_HEIGHT=5
+                        BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                        TITLE="Switching To Solo HD will disable your Google Setup"
+
+                        OPTIONS=(A "Yes: Switch"
+                                 B "No : Back Out")
+
+                        CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                        --title "$TITLE" \
+                                        --menu "$MENU" \
+                                        $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                        "${OPTIONS[@]}" \
+                                        2>&1 >/dev/tty)
+
+                        case $CHOICE in
+                        ######################### HANDLING
+                        A)
+                        systemctl stop unionfs
+                        systemctl disable unionfs
+                        systemctl stop unionfs-en
+                        systemctl disable unionfs-en
+                        systemctl stop move-en
+                        systemclt disable move-en
+                        systemctl daemon-reload
+                        ;;
+
+                        B)
+                        bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                        exit
+                        ;;
+                        esac
+                      fi
+
+
         ### Set Everything for HD Multi Editon
         echo "PG Edition: HD Multi" > /var/plexguide/pg.edition
         echo "drives" > /var/pg.server.deploy
@@ -216,6 +256,83 @@ case $CHOICE in
       menu=$( cat /tmp/menu.choice )
       if [ "$menu" == "yes" ]
         then
+
+       if [ "$deploy" == "drives" ]
+                  then
+
+                      ### Make a Move Choice
+                      HEIGHT=12
+                      WIDTH=44
+                      CHOICE_HEIGHT=5
+                      BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                      TITLE="Switching To Solo HD Will Stop Your Drives Pool!"
+
+                      OPTIONS=(A "Yes: Switch"
+                               B "No : Back Out")
+
+                      CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                      --title "$TITLE" \
+                                      --menu "$MENU" \
+                                      $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                      "${OPTIONS[@]}" \
+                                      2>&1 >/dev/tty)
+
+                      case $CHOICE in
+                      ######################### HANDLING
+                      A)
+                      systemctl stop drives
+                      systemctl disable drives 
+                      systemctl daemon-reload
+                      ;;
+
+                      B)
+                      bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                      exit
+                      ;;
+                      esac
+                    fi
+
+         if [ "$deploy" == "gdrive" ]
+                    then
+
+                        ### Make a Move Choice
+                        HEIGHT=12
+                        WIDTH=44
+                        CHOICE_HEIGHT=5
+                        BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                        TITLE="Switching To Solo HD will disable your Google Setup"
+
+                        OPTIONS=(A "Yes: Switch"
+                                 B "No : Back Out")
+
+                        CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                        --title "$TITLE" \
+                                        --menu "$MENU" \
+                                        $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                        "${OPTIONS[@]}" \
+                                        2>&1 >/dev/tty)
+
+                        case $CHOICE in
+                        ######################### HANDLING
+                        A)
+                        systemctl stop unionfs
+                        systemctl disable unionfs
+                        systemctl stop unionfs-en
+                        systemctl disable unionfs-en
+                        systemctl stop move-en
+                        systemclt disable move-en
+                        systemctl daemon-reload
+                        ;;
+
+                        B)
+                        bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                        exit
+                        ;;
+                        esac
+                      fi
+
+
+        #### Switch to Solo
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
         echo "drive" > /var/pg.server.deploy
@@ -241,4 +358,4 @@ case $CHOICE in
       exit
       ;;
 esac
-#bash /opt/plexguide/scripts/baseinstall/edition.sh  
+#bash /opt/plexguide/scripts/baseinstall/edition.sh
