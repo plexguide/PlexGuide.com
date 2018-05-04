@@ -29,7 +29,7 @@
     name: cadvisor
     image: "{{ cadvisor_docker_image_name }}:{{ cadvisor_docker_version }}"
     pull: "{{ cadvisor_docker_pull_images|bool }}"
-    cpu_shares: 256
+    cpu_shares: 128
     published_ports:
     - "{{ports.stdout}}{{ cadvisor_docker_expose_port }}:8080"
     command: '--logtostderr'

@@ -35,7 +35,7 @@
     name: "{{role_name}}"
     image: linuxserver/booksonic
     pull: yes
-    cpu_shares: 512
+    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}4050:4040"
     env:
