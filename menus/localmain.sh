@@ -85,7 +85,12 @@ case $CHOICE in
               exit
             fi
 
-############ If Nont Installed
+############ If Not Installed
+file="/usr/bin/mergerfs" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
 dialog --infobox "Installing MergerFS!" 7 50
 wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1sudo
 apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y #1>/dev/null 2>&1

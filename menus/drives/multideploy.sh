@@ -22,28 +22,6 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 deploy=$( cat /var/plexguide/pg.server.deploy ) 1>/dev/null 2>&1
 
-file="/usr/bin/mergerfs" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-
-dialog --infobox "Installing MergerFS!" 0 0
-wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1sudo
-apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y #1>/dev/null 2>&1
-git clone https://github.com/trapexit/mergerfs.git #1>/dev/null 2>&1
-cd mergerfs
-make clean #1>/dev/null 2>&1
-make deb #1>/dev/null 2>&1
-cd .. 
-dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
-rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
-fi 
-
-if [ "$deploy" == "drives" ]
-  then
-    clear 1>/dev/null 2>&1
-  else
 ############################################################################# MINI MENU SELECTION - END
 dialog --title "-- Solo Deployment --" --msgbox "\nWe have detected that you are setting up or establishing the Multi-HD Deployment!\n\nClick OK to Continue!" 0 0
 
