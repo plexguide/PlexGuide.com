@@ -116,14 +116,8 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
 file="/var/plexguide/pg.edition"
 if [ -e "$file" ]
 then
-   clear 1>/dev/null 2>&1
-else
-   bash /opt/plexguide/scripts/baseinstall/edition.sh
+   bash /opt/plexguide/menus/startup/message2.sh
 fi
-
-## Variables Menu
-#bash /opt/plexguide/scripts/checker/main.sh
-bash /opt/plexguide/menus/startup/message2.sh
 
 ## Selects an edition
 edition=$( cat /var/plexguide/pg.edition )
@@ -136,7 +130,7 @@ if [ "$edition" == "PG Edition: GDrive" ]
 fi
 
 #### Multiple Drive Edition
-if [ "$edition" == "PG Edition: HD Multiple" ]
+if [ "$edition" == "PG Edition: HD Multi" ]
   then
     bash /opt/plexguide/menus/localmain.sh
     exit
