@@ -22,27 +22,45 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 deploy=$( cat /var/plexguide/pg.server.deploy ) 1>/dev/null 2>&1
 
+file="/usr/bin/mergerfs" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+
+echo "0" | dialog --gauge "Downloding MergerFS" 7 50 0
+wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" 1>/dev/null 2>&1
+
+echo "40" | dialog --gauge "Setting Up MergerFS" 7 50 0
+sudo -i 1>/dev/null 2>&1
+cd 1>/dev/null 2>&1
+sleep 1
+
+echo "65" | dialog --gauge "Installing MergerFS" 7 50 0
+apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y 1>/dev/null 2>&1
+git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
+sleep 1
+
+echo "85" | dialog --gauge "Linking MergerFS" 7 50 0
+cd mergerfs 1>/dev/null 2>&1
+make clean 1>/dev/null 2>&1
+make deb 1>/dev/null 2>&1
+cd .. 1>/dev/null 2>&1
+dpkg -i mergerfs*_amd64.deb 1>/dev/null 2>&1
+sleep 1
+
+echo "95" | dialog --gauge "Cleaning Up MergerFS" 7 50 0
+rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz 1>/dev/null 2>&1
+sleep 1
+
+  fi
+
 if [ "$deploy" == "drives" ]
   then
     clear 1>/dev/null 2>&1
   else
 ############################################################################# MINI MENU SELECTION - END
-    dialog --title "-- Solo Deployment --" --msgbox "\nWe have detected that you are setting up or establishing the Multi-HD Deployment!\n\nClick OK to Continue!" 0 0
-
-  #Ensure Solo Edition's Path is /mnt
-  #if [ "$edition" == "PG Edition: HD Solo" ]
-  #  then
-    #### If not /mnt, it will go through this process to change it!
-  #  if [ "$path" == "/mnt" ] 
-  #    then
-  #      clear 1>/dev/null 2>&1
-  #    else
-  #      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt IS NOT your default DOWNLOAD PATH for this EDITION.\n\nWe will fix that for you!" 0 0
-  #      echo "no" > /var/plexguide/server.hd
-  #      echo "/mnt" > /var/plexguide/server.hd.path
-  #      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
-  #  fi
-  #fi
+dialog --title "-- Solo Deployment --" --msgbox "\nWe have detected that you are setting up or establishing the Multi-HD Deployment!\n\nClick OK to Continue!" 0 0
 
   #### Disable Certain Services #### put a detect move.service file here later
   systemctl stop move 1>/dev/null 2>&1
