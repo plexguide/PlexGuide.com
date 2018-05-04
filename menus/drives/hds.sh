@@ -56,20 +56,20 @@ case $CHOICE in
       exit
       ;;
     A)
-      echo "1" > /tmp/hd.drive
-      bash /opt/plexguide/menus/drives/path.sh
+      echo "1" > /tmp/hd.drivez
+      bash /opt/plexguide/menus/drives/paths.sh
       ;;
     B)
       echo "2" > /tmp/hd.drive
-      bash /opt/plexguide/menus/drives/path.sh
+      bash /opt/plexguide/menus/drives/paths.sh
       ;;
     C)
       echo "3" > /tmp/hd.drive
-      bash /opt/plexguide/menus/drives/path.sh
+      bash /opt/plexguide/menus/drives/paths.sh
       ;;
     D)
       echo "4" > /tmp/hd.drive
-      bash /opt/plexguide/menus/drives/path.sh
+      bash /opt/plexguide/menus/drives/paths.sh
       ;;
 esac
 
