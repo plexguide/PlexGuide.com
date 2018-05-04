@@ -50,13 +50,11 @@
 
 ######################################################### COMBINE START
   - name: Combine Paths
-    shell: echo "defaults,allow_other,direct_io,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{hd1.stdout}}{{hd2.stdout}}{{hd3.stdout}}{{hd4.stdout}} /mnt/unionfs" > /var/plexguide/hdcommand
-    ignore_errors: True
+    shell: echo "defaults,allow_other,direct_io,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool abcd /mnt/unionfs" > /var/plexguide/hdcommand
 
   - name: Register Command
-    shell: "cat /var/plexguide/hd.multi"
+    shell: cat "/var/plexguide/hd.multi"
     register: hdcommand
-    ignore_errors: True
 
 ######################################################### COMBINE END
 
@@ -69,6 +67,6 @@
   - name: Daemon-Reload
     systemd: state=stopped name=drives daemon_reload=yes enabled=no
 
-  - name: Start Unionfs
+  - name: Start DRIVES SERVICES
     systemd: state=started name=drives enabled=yes
     #when: drives.stat.exists
