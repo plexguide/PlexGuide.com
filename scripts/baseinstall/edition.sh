@@ -116,9 +116,9 @@ case $CHOICE in
                 case $CHOICE in
                 ######################### HANDLING
                 A)
-                systemctl stop drives
-                systemctl disable drives 
-                systemctl daemon-reload
+                systemctl stop drives 1>/dev/null 2>&1
+                systemctl disable drives 1>/dev/null 2>&1
+                systemctl daemon-reload 1>/dev/null 2>&1
                 ;;
 
                 B)
@@ -180,9 +180,9 @@ case $CHOICE in
                 dialog --title "Quick Note" --msgbox "\nTo /mnt/old your DATA for storage it goes!" 0 0
                 mkdir /mnt/old 1>/dev/null 2>&1
                 mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
-                systemctl stop drive
-                systemctl disable drive 
-                systemctl daemon-reload
+                systemctl stop drive 1>/dev/null 2>&1
+                systemctl disable drive 1>/dev/null 2>&1
+                systemctl daemon-reload 1>/dev/null 2>&1
                 ;;
 
                 B)
@@ -215,13 +215,13 @@ case $CHOICE in
                         case $CHOICE in
                         ######################### HANDLING
                         A)
-                        systemctl stop unionfs
-                        systemctl disable unionfs
-                        systemctl stop unionfs-en
-                        systemctl disable unionfs-en
-                        systemctl stop move-en
-                        systemclt disable move-en
-                        systemctl daemon-reload
+                        systemctl stop unionfs 1>/dev/null 2>&1
+                        systemctl disable unionfs 1>/dev/null 2>&1
+                        systemctl stop unionfs-en 1>/dev/null 2>&1
+                        systemctl disable unionfs-en 1>/dev/null 2>&1
+                        systemctl stop move-en 1>/dev/null 2>&1
+                        systemclt disable move-en 1>/dev/null 2>&1
+                        systemctl daemon-reload 1>/dev/null 2>&1
                         ;;
 
                         B)
@@ -280,9 +280,9 @@ case $CHOICE in
                       case $CHOICE in
                       ######################### HANDLING
                       A)
-                      systemctl stop drives
-                      systemctl disable drives 
-                      systemctl daemon-reload
+                      systemctl stop drives 1>/dev/null 2>&1
+                      systemctl disable drives 1>/dev/null 2>&1
+                      systemctl daemon-reload 1>/dev/null 2>&1
                       ;;
 
                       B)
@@ -315,13 +315,13 @@ case $CHOICE in
                         case $CHOICE in
                         ######################### HANDLING
                         A)
-                        systemctl stop unionfs
-                        systemctl disable unionfs
-                        systemctl stop unionfs-en
-                        systemctl disable unionfs-en
-                        systemctl stop move-en
-                        systemclt disable move-en
-                        systemctl daemon-reload
+                        systemctl stop unionfs 1>/dev/null 2>&1
+                        systemctl disable unionfs 1>/dev/null 2>&1
+                        systemctl stop unionfs-en 1>/dev/null 2>&1
+                        systemctl disable unionfs-en 1>/dev/null 2>&1
+                        systemctl stop move-en 1>/dev/null 2>&1
+                        systemclt disable move-en 1>/dev/null 2>&1
+                        systemctl daemon-reload 1>/dev/null 2>&1
                         ;;
 
                         B)
