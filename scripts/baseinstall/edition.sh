@@ -151,7 +151,49 @@ case $CHOICE in
       menu=$( cat /tmp/menu.choice )
       if [ "$menu" == "yes" ]
         then
-        echo "PG Edition: HD Multiple" > /var/plexguide/pg.edition
+
+         ### If Solo Drive was active before, important to move item to an old folder
+          if [ "$deploy" == "drive" ]
+            then
+
+                ### Make a Move Choice
+                HEIGHT=12
+                WIDTH=44
+                CHOICE_HEIGHT=5
+                BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                TITLE="Switching to the HD Multi Edition requies to move your data!"
+
+                OPTIONS=(A "To /mnt/old  - For Storage"
+                         B "No : Back Out")
+
+                CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                --title "$TITLE" \
+                                --menu "$MENU" \
+                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                "${OPTIONS[@]}" \
+                                2>&1 >/dev/tty)
+
+                case $CHOICE in
+                ######################### HANDLING
+                A)
+
+                dialog --title "Quick Note" --msgbox "\nTo /mnt/old your DATA for storage it goes!" 0 0
+                mkdir /mnt/old 1>/dev/null 2>&1
+                mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
+                systemctl stop drive
+                systemctl disable drive 
+                systemctl daemon-reload
+                ;;
+
+                B)
+                bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                exit
+                ;;
+                esac
+              fi
+
+        ### Set Everything for HD Multi Editon
+        echo "PG Edition: HD Multi" > /var/plexguide/pg.edition
         echo "drives" > /var/pg.server.deploy
         bash /opt/plexguide/menus/drives/multideploy.sh
         bash /opt/plexguide/menus/localmain.sh
