@@ -4,5 +4,5 @@ sleep 180
 while true
 do
 systemctl restart cache
-sleep 150
+sleep 240
 done
