@@ -10,7 +10,7 @@ export NCURSES_NO_UTF8_ACS=1
  OPTIONS=(A "DO NOT USE - For Developers Use Only!"
           B "Duplicati - Advanced Backup"
           C "PLEXTEST"
-          D "RClone Cache"
+          D "RClone Cache Unencrypted"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -41,7 +41,7 @@ case $CHOICE in
      C)
      bash /opt/plexguide/menus/plex/test.sh ;;
      D)
-    bash /opt/plexguide/menus/rclone/select2.sh ;;
+    bash /opt/plexguide/menus/rclone/uncache.sh ;;
      Z)
         clear
         exit 0 ;;
