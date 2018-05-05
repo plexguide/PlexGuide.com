@@ -12,8 +12,8 @@ ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/unionfs -o cow \
 	--allow_other \
     --allow-non-empty \
-	/mnt/move=RW:/mnt/gdrive=RO \
-	/mnt/unionfs
+	--/mnt/move=RW:/mnt/gdrive=RO \
+	--/mnt/unionfs
 ExecStop=/bin/fusermount -u /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
