@@ -7,8 +7,12 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Stopped First Time Install, recall of menu
 - Tons of startup related bug fixes
 
+- Added
+  - Airsonic to Restore menu
+
 - Changed
   - Moved TorrentVPN from Beta to Torrent Menu
+
 
 -------------------------------------------------------
 ## Past Changes
