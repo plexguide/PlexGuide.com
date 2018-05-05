@@ -20,11 +20,11 @@
   - name: Check Jump SCRIPT
     stat:
       path: "/opt/appdata/plexguide/jump.sh"
-    register: reboot_script
+    register: jump_script
     
   - name: Install Jump Service
     template:
-      src: reboot_script.js2
+      src: jump_script.js2
       dest: /opt/appdata/plexguide/jump.sh
       force: yes
 
