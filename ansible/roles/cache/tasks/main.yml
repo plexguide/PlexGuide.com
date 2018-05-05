@@ -70,10 +70,10 @@
     when: cache.stat.exists == False
 
   - name: Daemon-Reload
-    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+    systemd: state=stopped name=cache daemon_reload=yes enabled=no
 
   - name: Start CACHE
-    systemd: state=started name=rclone enabled=yes
+    systemd: state=started name=cache enabled=yes
     when: cache.stat.exists
 
 ########### UNIONFS
