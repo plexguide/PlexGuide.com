@@ -11,8 +11,7 @@ Group=0
 ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/unionfs -o cow \
 	--allow_other \
-	--nonempty \
-    --allow-non-empty
+    --allow-non-empty \
 	/mnt/move=RW:/mnt/gdrive=RO \
 	/mnt/unionfs
 ExecStop=/bin/fusermount -u /mnt/unionfs
