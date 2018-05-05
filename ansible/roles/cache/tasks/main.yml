@@ -29,29 +29,21 @@
       force: yes
 
 ########### Jump Service
-  - name: Check Jump Service
-    stat:
-      path: "/etc/systemd/system/jump.service"
-    register: jump
-
   - name: Stop If Jump Service Running
     systemd: state=stopped name=jump
-    when: jump.stat.exists
+    ignore_errors: True
     
   - name: Install Jump Service
     template:
-      src: jump.js2
+      src: cache.js2
       dest: /etc/systemd/system/jump.service 
       force: yes
-    when: jump.stat.exists == False
- 
+
   - name: Daemon-Reload
     systemd: state=stopped name=jump daemon_reload=yes enabled=no
 
-  - name: Start Jump
+  - name: Start JUMP
     systemd: state=started name=jump enabled=yes
-    when: jump.stat.exists
-
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
