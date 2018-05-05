@@ -59,7 +59,7 @@
     register: cache
 
   - name: Stop If CACHE Service Running
-    systemd: state=stopped name=rclone
+    systemd: state=stopped name=cache
     when: cache.stat.exists
     
   - name: Install CACHE Service
