@@ -22,7 +22,7 @@ HEIGHT=19
 WIDTH=30
 CHOICE_HEIGHT=12
 #BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Restore Menu"
+TITLE="Backup Menu"
 MENU="Choose a Program:"
 
 OPTIONS=(1 "CouchPotato"
@@ -46,12 +46,10 @@ OPTIONS=(1 "CouchPotato"
          19 "Resilio"
          20 "Rutorrent"
          21 "SABNZBD"
-         22 "SickRage"
-         23 "Sonarr"
-         24 "Tautulli"
-         25 "Ubooquity"
-         26 "Airsonic"
-         27 "TorrentVPN"
+         22 "Sonarr"
+         23 "Tautulli"
+         24 "Ubooquity"
+         25 "Airsonic"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -106,17 +104,13 @@ case $CHOICE in
         21)
             echo "sabnzbd" > /tmp/program_var ;;
         22)
-            echo "sickrage" > /tmp/program_var ;;
-        23)
             echo "sonarr" > /tmp/program_var ;;
-        24)
+        23)
             echo "tautulli" > /tmp/program_var ;;
-        25)
+        24)
             echo "ubooquity" > /tmp/program_var ;;
-        26)
+        25)
             echo "airsonic" > /tmp/program_var ;;
-        27)
-            echo "vpn" > /tmp/program_var ;;
         Z)
             clear
             exit 0 ;;
@@ -125,50 +119,50 @@ esac
 
 app=$( cat /tmp/program_var )
 
-file="/mnt/gdrive/plexguide/backup/$app.tar"
+file="/opt/appdata/$app"
 if [ -e "$file" ]
     then
 
-        if dialog --stdout --title "Restore User Confirmation" \
+        if dialog --stdout --title "Backup User Confirmation" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nDo you want to BACKOUT & EXIT from making the Restore -- $app -- ?" 0 0; then
-            dialog --title "PG Restore Status" --msgbox "\nExiting! User selected to NOT Restore!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/restore.sh
+            --yesno "\nDo you want to BACKOUT & EXIT from making the Backup -- $app -- ?" 0 0; then
+            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
             exit 0
         else
             clear
         fi
     else
-        dialog --title "PG Restore Status" --msgbox "\nExiting! You have no GDrive data -- $app -- to Restore From GDrive!" 0 0
-        sudo bash /opt/plexguide/menus/backup-restore/restore.sh
+        dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
+        sudo bash /opt/plexguide/menus/backup-restore/backup.sh
         exit 0
 fi
 
     echo "true" > /tmp/alive
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore &>/dev/null &
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup &>/dev/null &
 
-    echo "$app: Restore Started" > /tmp/pushover
+    echo "$app: Backup Started" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
     loop="true"
     echo "true" > /tmp/alive
     while [ "$loop" = "true" ]
     do
-        dialog --infobox "Restoring / " 3 16
+        dialog --infobox "Backing Up / " 3 17
         sleep 0.5
-        dialog --infobox "Restoring | " 3 16
+        dialog --infobox "Backing Up | " 3 17
         sleep 0.5
-        dialog --infobox "Restoring \ " 3 16
+        dialog --infobox "Backing Up \ " 3 17
         sleep 0.5
-        dialog --infobox "Restoring - " 3 16
+        dialog --infobox "Backing Up - " 3 17
         sleep 0.5
         loop=$(cat /tmp/alive) 1>/dev/null 2>&1
     done
 
-echo "$app: Restore Complete" > /tmp/pushover
+echo "$app: Backup Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-dialog --title "PG Backup Status" --msgbox "\nYour Restore of -- $app -- from Google Drive is Complete!" 0 0
+dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 
-sudo bash /opt/plexguide/menus/backup-restore/restore.sh
+sudo bash /opt/plexguide/menus/backup-restore/backup.sh
 exit 0

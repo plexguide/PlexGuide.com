@@ -9,6 +9,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 - Added
   - Airsonic to Restore menu
+  - TorrentVPN & SickRage to Backup & Restore menus
 
 - Changed
   - Moved TorrentVPN from Beta to Torrent Menu

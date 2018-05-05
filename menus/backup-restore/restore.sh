@@ -46,10 +46,12 @@ OPTIONS=(1 "CouchPotato"
          19 "Resilio"
          20 "Rutorrent"
          21 "SABNZBD"
-         22 "Sonarr"
-         23 "Tautulli"
-         24 "Ubooquity"
-         25 "Airsonic"
+         22 "SickRage"
+         23 "Sonarr"
+         24 "Tautulli"
+         25 "Ubooquity"
+         26 "Airsonic"
+         27 "TorrentVPN"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -104,13 +106,17 @@ case $CHOICE in
         21)
             echo "sabnzbd" > /tmp/program_var ;;
         22)
-            echo "sonarr" > /tmp/program_var ;;
+            echo "sickrage" > /tmp/program_var ;;
         23)
-            echo "tautulli" > /tmp/program_var ;;
+            echo "sonarr" > /tmp/program_var ;;
         24)
-            echo "ubooquity" > /tmp/program_var ;;
+            echo "tautulli" > /tmp/program_var ;;
         25)
+            echo "ubooquity" > /tmp/program_var ;;
+        26)
             echo "airsonic" > /tmp/program_var ;;
+        27)
+            echo "vpn" > /tmp/program_var ;;
         Z)
             clear
             exit 0 ;;
