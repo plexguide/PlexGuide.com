@@ -1,0 +1,100 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+########## Move Service Script
+  - name: Check MOVE SCRIPT
+    stat:
+      path: "/opt/appdata/plexguide/move.sh"
+    register: move_script
+    
+  - name: Install Move Service
+    template:
+      src: move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+########################################## Services
+########### Move Service
+  - name: Check MOVE Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move
+
+  - name: Stop If Move Service Running
+    systemd: state=stopped name=move
+    when: move.stat.exists
+    
+  - name: Install Move Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service 
+      force: yes
+    when: move.stat.exists == False
+ 
+  - name: Daemon-Reload
+    systemd: state=stopped name=move daemon_reload=yes enabled=no
+
+  - name: Start Move
+    systemd: state=started name=move enabled=yes
+    when: move.stat.exists
+    
+########### rclone
+  - name: Check CACHE Service
+    stat:
+      path: "/etc/systemd/system/cache.service"
+    register: cache
+
+  - name: Stop If CACHE Service Running
+    systemd: state=stopped name=rclone
+    when: cache.stat.exists
+    
+  - name: Install CACHE Service
+    template:
+      src: cache.js2
+      dest: /etc/systemd/system/cache.service 
+      force: yes
+    when: cache.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+
+  - name: Start CACHE
+    systemd: state=started name=rclone enabled=yes
+    when: cache.stat.exists
+
+########### UNIONFS
+  - name: Check UNIONFS Service
+    stat:
+      path: "/etc/systemd/system/unionfs.service"
+    register: unionfs
+
+  - name: Stop If UNIONFS Service Running
+    systemd: state=stopped name=unionfs
+    when: unionfs.stat.exists
+    
+  - name: Install UNIONFS Service
+    template:
+      src: unionfs.js2
+      dest: /etc/systemd/system/unionfs.service 
+      force: yes
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+
+  - name: Start UNIONFS
+    systemd: state=started name=unionfs enabled=yes
+    when: unionfs.stat.exists
