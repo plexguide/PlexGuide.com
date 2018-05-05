@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sleep 30
+while true
+do
+systemctl restart cache
+sleep 120
+done
