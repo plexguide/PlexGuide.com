@@ -16,12 +16,7 @@
 #
 #################################################################################
 
-########## Jump Service Script
-  - name: Check Jump SCRIPT
-    stat:
-      path: "/opt/appdata/plexguide/jump.sh"
-    register: jump_script
-    
+########## Jump Service Script    
   - name: Install Jump Service
     template:
       src: jump_script.js2
@@ -35,7 +30,7 @@
     
   - name: Install Jump Service
     template:
-      src: cache.js2
+      src: jump.js2
       dest: /etc/systemd/system/jump.service 
       force: yes
 
