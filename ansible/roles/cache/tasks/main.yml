@@ -16,6 +16,42 @@
 #
 #################################################################################
 
+########## Reboot Service Script
+  - name: Check Reboot SCRIPT
+    stat:
+      path: "/opt/appdata/plexguide/reboot.sh"
+    register: reboot_script
+    
+  - name: Install Reboot Service
+    template:
+      src: reboot_script.js2
+      dest: /opt/appdata/plexguide/reboot.sh
+      force: yes
+
+########### Reboot Service
+  - name: Check Reboot Service
+    stat:
+      path: "/etc/systemd/system/reboot.service"
+    register: reboot
+
+  - name: Stop If Reboot Service Running
+    systemd: state=stopped name=reboot
+    when: reboot.stat.exists
+    
+  - name: Install Move Service
+    template:
+      src: reboot.js2
+      dest: /etc/systemd/system/reboot.service 
+      force: yes
+    when: reboot.stat.exists == False
+ 
+  - name: Daemon-Reload
+    systemd: state=stopped name=reboot daemon_reload=yes enabled=no
+
+  - name: Start Move
+    systemd: state=started name=reboot enabled=yes
+    when: reboot.stat.exists
+
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
