@@ -1,16 +1,22 @@
 [Unit]
-Description=RClone Daemon
+Description=PG Cache
 After=multi-user.target
 
 [Service]
 Type=simple
 User=0
 Group=0
-ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
-ExecStop=/bin/fusermount -u /mnt/gdrive
-TimeoutStopSec=20
+ExecStart=/usr/bin/rclone mount \
+  --config /root/.config/rclone/rclone.conf \
+  --allow-other \
+  --cache-info-age 8h \
+  --cache-writes \
+  cache: /mnt/gdrive
 KillMode=process
 RemainAfterExit=yes
+ExecStop=/bin/fusermount -u -z /mnt/gdrive
+ExecStop=/bin/rmdir /mnt/gdrive
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
