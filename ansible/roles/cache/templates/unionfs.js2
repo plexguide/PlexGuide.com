@@ -13,7 +13,7 @@ ExecStart=/usr/bin/unionfs -o cow \
 	--allow_other \
 	--nonempty \
     --allow-non-empty
-	/mnt/move=RW:/mnt/plexdrive=RO \
+	/mnt/move=RW:/mnt/gdrive=RO \
 	/mnt/unionfs
 ExecStop=/bin/fusermount -u /mnt/unionfs
 TimeoutStopSec=20

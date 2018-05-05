@@ -53,28 +53,21 @@
     when: move.stat.exists
     
 ########### rclone
-  - name: Check CACHE Service
-    stat:
-      path: "/etc/systemd/system/cache.service"
-    register: cache
-
   - name: Stop If CACHE Service Running
     systemd: state=stopped name=cache
-    when: cache.stat.exists
+    ignore_errors: True
     
   - name: Install CACHE Service
     template:
       src: cache.js2
       dest: /etc/systemd/system/cache.service 
       force: yes
-    when: cache.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=cache daemon_reload=yes enabled=no
 
   - name: Start CACHE
     systemd: state=started name=cache enabled=yes
-    when: cache.stat.exists
 
 ########### UNIONFS
   - name: Check UNIONFS Service
