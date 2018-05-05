@@ -27,7 +27,7 @@
       src: move_script.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
-########################################## Services
+
 ########### Move Service
   - name: Check MOVE Service
     stat:
@@ -52,7 +52,7 @@
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
     
-########### rclone
+########### Cache
   - name: Stop If CACHE Service Running
     systemd: state=stopped name=cache
     ignore_errors: True
