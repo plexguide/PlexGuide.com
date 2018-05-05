@@ -16,41 +16,41 @@
 #
 #################################################################################
 
-########## Reboot Service Script
-  - name: Check Reboot SCRIPT
+########## Jump Service Script
+  - name: Check Jump SCRIPT
     stat:
-      path: "/opt/appdata/plexguide/reboot.sh"
+      path: "/opt/appdata/plexguide/jump.sh"
     register: reboot_script
     
-  - name: Install Reboot Service
+  - name: Install Jump Service
     template:
       src: reboot_script.js2
-      dest: /opt/appdata/plexguide/reboot.sh
+      dest: /opt/appdata/plexguide/jump.sh
       force: yes
 
-########### Reboot Service
-  - name: Check Reboot Service
+########### Jump Service
+  - name: Check Jump Service
     stat:
-      path: "/etc/systemd/system/reboot.service"
-    register: reboot
+      path: "/etc/systemd/system/jump.service"
+    register: jump
 
-  - name: Stop If Reboot Service Running
-    systemd: state=stopped name=reboot
-    when: reboot.stat.exists
+  - name: Stop If Jump Service Running
+    systemd: state=stopped name=jump
+    when: jump.stat.exists
     
-  - name: Install Reboot Service
+  - name: Install Jump Service
     template:
-      src: reboot.js2
-      dest: /etc/systemd/system/reboot.service 
+      src: jump.js2
+      dest: /etc/systemd/system/jump.service 
       force: yes
-    when: reboot.stat.exists == False
+    when: jump.stat.exists == False
  
   - name: Daemon-Reload
-    systemd: state=stopped name=reboot daemon_reload=yes enabled=no
+    systemd: state=stopped name=jump daemon_reload=yes enabled=no
 
-  - name: Start Reboot
-    systemd: state=started name=reboot enabled=yes
-    when: reboot.stat.exists
+  - name: Start Jump
+    systemd: state=started name=jump enabled=yes
+    when: jump.stat.exists
 
 ########## Move Service Script
   - name: Check MOVE SCRIPT
