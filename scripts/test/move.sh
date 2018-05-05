@@ -4,13 +4,21 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new backup menus
+rm /opt/plexguide/menus/backup-restore/backup.sh
+mv /opt/plexguide/menus/backup-restore/backup-new.sh /opt/plexguide/menus/backup-restore/backup.sh
+
+## For testing new restore menus
+rm /opt/plexguide/menus/backup-restore/restore.sh
+mv /opt/plexguide/menus/backup-restore/restore-new.sh /opt/plexguide/menus/backup-restore/restore.sh
+
 ## For testing new rclone-en install
-rm /opt/plexguide/scripts/docker-no/rclone-en.sh
-mv /opt/plexguide/scripts/docker-no/rclone-en2.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
+#rm /opt/plexguide/scripts/docker-no/rclone-en.sh
+#mv /opt/plexguide/scripts/docker-no/rclone-en2.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
 
 ## For testing new torrent menus
-rm /opt/plexguide/menus/programs/vpn.sh
-mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
+#rm /opt/plexguide/menus/programs/vpn.sh
+#mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
 
 ## For testing new info & services menus
 #rm /opt/plexguide/menus/info-tshoot/info.sh
@@ -21,8 +29,8 @@ mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
 #mv /opt/plexguide/menus/programs/beta-next.sh /opt/plexguide/menus/programs/beta.sh
 
 ## For testing new torrent menus
-rm /opt/plexguide/menus/programs/torrent.sh
-mv /opt/plexguide/menus/programs/torrent-next.sh /opt/plexguide/menus/programs/torrent.sh
+#rm /opt/plexguide/menus/programs/torrent.sh
+#mv /opt/plexguide/menus/programs/torrent-next.sh /opt/plexguide/menus/programs/torrent.sh
 
 ## For testing new status and restart menus
 #rm /opt/plexguide/scripts/menus/status-menu.sh
