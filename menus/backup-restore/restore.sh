@@ -49,6 +49,7 @@ OPTIONS=(1 "CouchPotato"
          22 "Sonarr"
          23 "Tautulli"
          24 "Ubooquity"
+         25 "Airsonic"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -108,6 +109,8 @@ case $CHOICE in
             echo "tautulli" > /tmp/program_var ;;
         24)
             echo "ubooquity" > /tmp/program_var ;;
+        25)
+            echo "airsonic" > /tmp/program_var ;;
         Z)
             clear
             exit 0 ;;
