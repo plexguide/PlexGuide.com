@@ -38,7 +38,7 @@
     systemd: state=stopped name=reboot
     when: reboot.stat.exists
     
-  - name: Install Move Service
+  - name: Install Reboot Service
     template:
       src: reboot.js2
       dest: /etc/systemd/system/reboot.service 
@@ -48,7 +48,7 @@
   - name: Daemon-Reload
     systemd: state=stopped name=reboot daemon_reload=yes enabled=no
 
-  - name: Start Move
+  - name: Start Reboot
     systemd: state=started name=reboot enabled=yes
     when: reboot.stat.exists
 
