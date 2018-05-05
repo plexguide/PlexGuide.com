@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sleep 30
+sleep 180
 while true
 do
 systemctl restart cache
-sleep 120
+sleep 150
 done
