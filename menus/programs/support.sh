@@ -66,10 +66,10 @@ case $CHOICE in
             ;;
         B)
             display=NETDATA
-            program=nextcloud
+            program=Netdata
             port=19999
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next &>/dev/null &
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata &>/dev/null &
             sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
