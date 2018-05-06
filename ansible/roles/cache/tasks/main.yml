@@ -17,28 +17,28 @@
 #################################################################################
 
 ########## Jump Service Script    
-  - name: Install Jump Service
-    template:
-      src: jump_script.js2
-      dest: /opt/appdata/plexguide/jump.sh
-      force: yes
+#  - name: Install Jump Service
+#    template:
+#      src: jump_script.js2
+#      dest: /opt/appdata/plexguide/jump.sh
+#      force: yes
 
 ########### Jump Service
-  - name: Stop If Jump Service Running
-    systemd: state=stopped name=jump
-    ignore_errors: True
+#  - name: Stop If Jump Service Running
+#    systemd: state=stopped name=jump
+#    ignore_errors: True
     
-  - name: Install Jump Service
-    template:
-      src: jump.js2
-      dest: /etc/systemd/system/jump.service 
-      force: yes
+#  - name: Install Jump Service
+#    template:
+#      src: jump.js2
+#      dest: /etc/systemd/system/jump.service 
+#      force: yes
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=jump daemon_reload=yes enabled=no
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=jump daemon_reload=yes enabled=no
 
-  - name: Start JUMP
-    systemd: state=started name=jump enabled=yes
+#  - name: Start JUMP
+#    systemd: state=started name=jump enabled=yes
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
