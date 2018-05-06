@@ -18,7 +18,12 @@
 ---
 - include_role:
     name: variables
-    
+
+- name: Register IP
+  shell: "cat /var/plexguide/nc.info"
+  register: ncinfo
+  ignore_errors: True
+
 - name: Create required directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
@@ -42,7 +47,7 @@
     env:
       PUID: 1000
       PGID: 1000
-      MYSQL_ROOT_PASSWORD: "password321"
+      MYSQL_ROOT_PASSWORD: "{{ncinfo.stdout}}"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/appdata/nextcloud/mariadb:/config"
