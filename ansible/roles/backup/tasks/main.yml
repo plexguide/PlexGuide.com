@@ -32,7 +32,6 @@
     path: /var/plexguide/rclone-en.yes
   register: encrypted
 
-
 - name: Stopping Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
@@ -54,8 +53,12 @@
 
 ## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
 - name: Backing Up Program to GDrive - {{program_var.stdout}}
-  shell: "tar -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
+  shell: "tar --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
   when: programappdata.stat.exists == True
+
+#- name: Backing Up Program to GDrive - {{program_var.stdout}}
+#  shell: "tar --exclude='./plex/database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder' --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
+#  when: programappdata.stat.exists == True and plex.stat.exist= True
 
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
