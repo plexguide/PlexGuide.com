@@ -13,8 +13,8 @@ ExecStart=/usr/bin/rclone mount \
   --dir-cache-time 1m \
   --cache-workers 5 \
   --allow-non-empty \
-  --attr-timeout 1m \ 
   --retries 2 \
+  --cache-info-age 8h \
   cache: /mnt/gdrive
 KillMode=process
 RemainAfterExit=yes
