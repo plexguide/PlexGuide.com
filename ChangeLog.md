@@ -1,9 +1,12 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.076] (Beta, Release Candiate & DEV)
+### [5.076-5077] (Beta, Release Candiate & DEV)
 
-- Finished HD Multi Editoin
+- Plex CloudFlare (@lunchingfriar)
+- Netdata Fixed
+- NextCloud Fixed
+- HD Multi Edition Released (Needs some work)
 - Stopped First Time Install, recall of menu
 - Tons of startup related bug fixes
 
