@@ -9,7 +9,7 @@
   - { role: autodelete, tags: ['autodelete'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
-  - { role: plextest, tags: ['netdata', 'plextest'] }
+  - { role: plextest, tags: ['plextest', 'plextest'] }
   - { role: netdata, tags: ['netdata', 'monitor'] }
   - { role: cadvisor, tags: ['cadvisor', 'monitor'] }
   - { role: prometheus, tags: ['prometheus', 'monitor'] }
