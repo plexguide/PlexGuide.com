@@ -84,6 +84,6 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nextcloud.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:nextcloud.{{domain.stdout}},next.{{domain.stdout}}"
       traefik.port: "443"
       traefik.protocol: "https"
