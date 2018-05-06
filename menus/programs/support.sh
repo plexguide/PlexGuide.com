@@ -66,7 +66,7 @@ case $CHOICE in
             ;;
         B)
             display=NETDATA
-            program=Netdata
+            program=netdata
             port=19999
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata &>/dev/null &
