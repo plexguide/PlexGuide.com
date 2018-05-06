@@ -28,6 +28,8 @@
 # Default: "ERROR"
 # Accepted values, in order of severity: "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "PANIC"
 
+insecureskipverify = true
+
 logLevel = "WARN"
 
 defaultEntryPoints = ["http", "https"]

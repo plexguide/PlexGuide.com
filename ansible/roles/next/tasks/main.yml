@@ -27,7 +27,7 @@
     - /opt/appdata/nextcloud/data
     - /opt/appdata/nextcloud/mariadb
 
-- name: Destory NextCloud Container
+- name: Destroy NextCloud Container
   docker_container:
     name: next
     state: absent
@@ -81,3 +81,4 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:nextcloud.{{domain.stdout}}"
       traefik.port: "443"
+      traefik.protocol: "https"
