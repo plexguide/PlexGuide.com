@@ -82,6 +82,7 @@ case $CHOICE in
             display=NEXTCloud
             program=nextcloud
             port=4645
+            bash /opt/plexguide/menus/nextcloud/main.sh
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next &>/dev/null &
             sleep 3
