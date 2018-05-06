@@ -66,7 +66,17 @@ case $CHOICE in
             ;;
         B)
             display=NETDATA
-			bash /opt/plexguide/menus/programs/monitoring.sh
+            program=nextcloud
+            port=19999
+            dialog --infobox "Installing: $display" 3 30
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags next &>/dev/null &
+            sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/programs/ending.sh
+            #this needs a wiki of sorts, good suggetion, but more undestanding is required
+            #bash /opt/plexguide/menus/programs/monitoring.sh
             ;;
         C)
             display=NEXTCloud
