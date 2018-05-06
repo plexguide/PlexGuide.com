@@ -10,13 +10,14 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 Historical Documented Changes will be stored as below.
 
 #### [5.076-5.077] - 6 May 2018
+
 - Notes
- - Plex CloudFlare (@lunchingfriar)
- - Netdata Fixed
- - NextCloud Fixed
- - HD Multi Edition Released (Needs some work)
- - Stopped First Time Install, recall of menu
- - Tons of startup related bug fixes
+  - Plex CloudFlare (@lunchingfriar)
+  - Netdata Fixed
+  - NextCloud Fixed
+  - HD Multi Edition Released (Needs some work)
+  - Stopped First Time Install, recall of menu
+  - Tons of startup related bug fixes
 
 - Added
   - Airsonic to Restore menu
