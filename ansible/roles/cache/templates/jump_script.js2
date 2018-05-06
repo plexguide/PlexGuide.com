@@ -1,8 +1,0 @@
-#!/bin/bash
-
-sleep 300
-while true
-do
-systemctl restart cache
-sleep 300
-done
