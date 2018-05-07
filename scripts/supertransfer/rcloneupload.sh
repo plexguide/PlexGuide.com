@@ -3,7 +3,7 @@
 #usage: rclone_upload  <dirsize> <upload_dir>  <rclone> <remote_root_dir>
 rclone_upload() {
   local localFile="${2}"
-  local sanitizedLocalFile=$(sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g; s/\^/\\^/g; s/\*/\\*/g; s/"/\\"/g; s/!/\\!/g' <<<$localFile)
+  local sanitizedLocalFile=$(sed 's/(/\\(/g; s/)/\\)/g; s/\[/\\[/g; s/\]/\\]/g; s/\^/\\^/g; s/\*/\\*/g; s/"/\\"/g; s/!/\\!/g; s/+/\\+/g' <<<$localFile)
   # exit if file is locked, or race condtion met
   [[ $(egrep -x "${sanitizedLocalFile}" $fileLock) ]] && return 1
   #[[ ! -d "${localFile}" ]] && return 1
