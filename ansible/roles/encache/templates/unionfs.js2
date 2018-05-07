@@ -1,0 +1,19 @@
+[Unit]
+Description=UnionFS Daemon
+Requires=cache.service
+After=multi-user.target cache.service
+RequiresMountsFor=/mnt/plexdrive
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/gdrive=RO /mnt/unionfs
+ExecStop=/bin/fusermount -u /mnt/unionfs
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

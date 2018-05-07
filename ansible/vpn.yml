@@ -12,3 +12,4 @@
       - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
       - { role: delugevpn, tags: ['delugevpn'] }
       - { role: x2go, tags: ['x2go'] }
+      - { role: encache, tags: ['encache'] }
