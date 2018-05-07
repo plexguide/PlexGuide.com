@@ -1,8 +1,8 @@
 [Unit]
 Description=UnionFS Daemon
-Requires=cache.service
-After=multi-user.target cache.service
-RequiresMountsFor=/mnt/plexdrive
+Requires=encache.service
+After=multi-user.target encache.service
+RequiresMountsFor=/mnt/gdrive
 
 [Service]
 Type=simple

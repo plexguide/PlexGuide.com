@@ -122,7 +122,7 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/ansible/vpn.yml --tags encache
 
 ## RClone Script
-chmod 755 /opt/appdata/plexguide/rclone.sh 1>/dev/null 2>&1
+#chmod 755 /opt/appdata/plexguide/rclone.sh 1>/dev/null 2>&1
 
 ## Create the Move Script
 chmod 755 /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
@@ -133,7 +133,7 @@ chmod 755 /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
 systemctl restart encache 1>/dev/null 2>&1
 # set variable to remember what version of rclone user installed
 mkdir -p /var/plexguide/rclone 1>/dev/null 2>&1
-touch /var/plexguide/rclone/cache-un 1>/dev/null 2>&1
+touch /var/plexguide/rclone/cache-en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/en 1>/dev/null 2>&1
 
