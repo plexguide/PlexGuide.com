@@ -131,7 +131,7 @@
 
   - name: Start ENCACHE
     systemd: state=started name=encache enabled=yes
-    when: echache.stat.exists
+    when: ecache.stat.exists
 
 
 ########### UNIONFS
