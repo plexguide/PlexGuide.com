@@ -44,6 +44,7 @@
       - /mnt/plexdrive/:/plexdrive
       - /mnt/unionfs:/unionfs
       - /mnt/encrypt:/encrypt
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
     networks:
       - name: plexguide
         aliases:
