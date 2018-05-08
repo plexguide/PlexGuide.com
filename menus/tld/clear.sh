@@ -15,5 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "5.078 DEV" > /var/plexguide/pg.version
-echo "65" > /var/plexguide/pg.preinstall
+echo "" > /var/plexguide/tld.ombi
+echo "" > /var/plexguide/tld.heimdall
+echo "" > /var/plexguide/tld.organizr
+echo "" > /var/plexguide/tld.htpcmanger
+echo "" > /var/plexguide/tld.muximux
