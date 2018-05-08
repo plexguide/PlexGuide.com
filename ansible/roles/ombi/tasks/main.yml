@@ -18,7 +18,13 @@
 ---
 - include_role:
     name: variables
-    
+
+########## Make sur to fix this, it's rolename, something
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{rolename}}"
+  register: tld
+  ignore_errors: True
+
 - name: Remove Ombi Container
   docker_container:
     name: ombi
@@ -47,5 +53,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}},{{domain.stdout}}"
+      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "3579"
