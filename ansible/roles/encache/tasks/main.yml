@@ -19,11 +19,11 @@
   - name: Check MOVE SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move.sh"
-    register: move_script
+    register: move
 
   - name: Install Move Service
     template:
-      src: move_script.js2
+      src: move.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
 
@@ -32,12 +32,12 @@
   - name: Check Encache Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/encache.sh"
-    register: encache_script
+    register: encache
 
 
   - name: Install Encache Service
     template:
-      src: encache_script.js2
+      src: encache.js2
       dest: /opt/appdata/plexguide/encahe.sh
       force: yes
     when: encache_script.stat.exists == False
@@ -47,11 +47,11 @@
   - name: Check MOVE SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move.sh"
-    register: move_script
+    register: move
 
   - name: Install Move Service
     template:
-      src: move_script.js2
+      src: move.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
 
