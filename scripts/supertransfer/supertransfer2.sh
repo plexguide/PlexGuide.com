@@ -109,12 +109,12 @@ while true; do
   awk -i inplace '!seen[$0]++' ${fileLock}
   # black magic: find list of all dirs that have files at least 1 minutes old that aren't hidden
   # and put the deepest directories in an array, then sort by dirsize
-  sc=$(awk -F"/" '{print NF-1}' <<<${localDir})
+  sc=$(awk -F"/" '{print NF-2}' <<<${localDir})
   unset a i
       while IFS= read -r -u3 -d $'\0' dir; do
           [[ $(find "${dir}" -type f -mmin -${modTime} -print -quit) == '' && ! $(find "${dir}" -name "*.partial~") ]] \
               && a[i++]=$(du -s "${dir}")
-      done 3< <(find ${localDir} -not -path '*/\.*' -mindepth $sc -type d -links 2 -not -empty -prune -print0)
+      done 3< <(find ${localDir} -mindepth $sc -type d -not -path '*/\.*' -links 2 -not -empty -prune -print0)
 
       # sort by largest files first
       IFS=$'\n' uploadQueueBuffer=($(sort -gr <<<"${a[*]}"))
