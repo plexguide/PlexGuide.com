@@ -15,19 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-########## Move Service Script
-  - name: Check MOVE SCRIPT
-    stat:
-      path: "/opt/appdata/plexguide/move.sh"
-    register: move
 
-  - name: Install Move Service
-    template:
-      src: move.js2
-      dest: /opt/appdata/plexguide/move.sh
-      force: yes
-
-    #when: move_script.stat.exists == False
 ########### Encache Sync Script
   - name: Check Encache Sync SCRIPT
     stat:
