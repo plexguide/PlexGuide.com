@@ -38,9 +38,9 @@
   - name: Install Encache Service
     template:
       src: encache.js2
-      dest: /opt/appdata/plexguide/encahe.sh
+      dest: /opt/appdata/plexguide/encache.sh
       force: yes
-    when: encache_script.stat.exists == False
+    when: encache.stat.exists == False
 
     ####
 
