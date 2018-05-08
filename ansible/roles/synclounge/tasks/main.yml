@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -19,39 +19,31 @@
 - include_role:
     name: variables
 
-########## Make sur to fix this, it's rolename, something
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{rolename}}"
-  register: tld
-  ignore_errors: True
-
-- name: Remove Ombi Container
+- name: Remove Container
   docker_container:
-    name: ombi
+    name: SyncLounge
     state: absent
 
-- name: Deploy Ombi Container
+- name: Create and start container
   docker_container:
-    name: ombi
-    image: linuxserver/ombi
+    name: SyncLounge
+    image: "starbix/synclounge"
     pull: yes
-    cpu_shares: 128
     published_ports:
-      - "{{ports.stdout}}3579:3579"
+      - "{{ports.stdout}}8088:8088"
+      - "{{ports.stdout}}8089:8089"
     env:
       PUID: "1000"
       PGID: "1000"
-    volumes:
-      - /opt/appdata/ombiv3:/config
-      - /etc/localtime:/etc/localtime:ro
     networks:
       - name: plexguide
         aliases:
-          - ombi
+          - SyncLounge
     restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
-      traefik.port: "3579"
+      traefik.frontend.rule: "Host:synclounge.{{domain.stdout}},sync.{{domain.stdout}}"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.port: "8088"

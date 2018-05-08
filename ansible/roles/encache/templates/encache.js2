@@ -1,0 +1,26 @@
+[Unit]
+Description=PG Encrypted Cache
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone mount \
+  --config /root/.config/rclone/rclone.conf \
+  --cache-db-purge \
+  --allow-other \
+  --dir-cache-time 1m \
+  --cache-workers 5 \
+  --allow-non-empty \
+  --retries 2 \
+  --cache-info-age 8h \
+  crypt: /mnt/gdrive
+KillMode=process
+RemainAfterExit=yes
+ExecStop=/bin/fusermount -u -z /mnt/gdrive
+ExecStop=/bin/rmdir /mnt/gdrive
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

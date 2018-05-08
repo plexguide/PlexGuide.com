@@ -40,6 +40,7 @@
       - /opt/appdata/medusa:/config
       - "{{path.stdout}}/medusa/downloads:/downloads"
       - "/mnt/unionfs/:/tv"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
     cpu_shares: 256
     env:
       PUID: 1000
