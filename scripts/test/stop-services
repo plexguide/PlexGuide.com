@@ -11,6 +11,18 @@ sudo systemctl stop rclone-encrypt
 sudo systemctl stop move-en
 sudo systemctl stop move
 
+
+systemctl disable unionfs 1>/dev/null 2>&1
+systemctl disable unionfs-encrypt 1>/dev/null 2>&1
+systemctl disable plexdrive 1>/dev/null 2>&1
+systemctl disable rclone 1>/dev/null 2>&1
+systemctl disable rclone-en 1>/dev/null 2>&1
+systemctl disable rclone-encrypt 1>/dev/null 2>&1
+systemctl disable move 1>/dev/null 2>&1
+systemctl disable move-en 1>/dev/null 2>&1
+
+sudo systemctl daemon-reload
+
 #sudo umount -l /mnt/unionfs
 #sudo umount -l /mnt/plexdrive
 #sudo umount -l /mnt/gdrive
