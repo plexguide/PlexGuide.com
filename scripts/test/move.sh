@@ -4,6 +4,10 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new info/services menus
+rm /opt/plexguide/menus/info-tshoot/info.sh
+mv /opt/plexguide/menus/info-tshoot/info-new.sh /opt/plexguide/menus/info-tshoot/info.sh
+
 ## For testing new beta menu
 rm /opt/plexguide/menus/programs/beta.sh
 mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.sh
