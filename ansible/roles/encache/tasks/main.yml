@@ -15,6 +15,35 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+########## Move Service Script
+  - name: Check MOVE SCRIPT
+    stat:
+      path: "/opt/appdata/plexguide/move.sh"
+    register: move_script
+
+  - name: Install Move Service
+    template:
+      src: move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+
+    #when: move_script.stat.exists == False
+########### Encache Sync Script
+  - name: Check Encache Sync SCRIPT
+    stat:
+      path: "/opt/appdata/plexguide/encache.sh"
+    register: encache_script
+
+
+  - name: Install Encache Service
+    template:
+      src: encache_script.js2
+      dest: /opt/appdata/plexguide/encahe.sh
+      force: yes
+    when: encache_script.stat.exists == False
+
+    ####
+
   - name: Check MOVE SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move.sh"
@@ -79,21 +108,30 @@
 #    systemd: state=started name=cache enabled=yes
 
 ########### Encrypted Cache
+  - name: Check ENCACHE Service
+    stat:
+      path: "/etc/systemd/system/encache.service"
+    register: encache
+
   - name: Stop If ENCACHE Service Running
     systemd: state=stopped name=encache
     ignore_errors: True
+    when: encache.stat.exists
+
 
   - name: Install ENCACHE Service
     template:
       src: encache.js2
       dest: /etc/systemd/system/encache.service
       force: yes
+    when: encache.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=encache daemon_reload=yes enabled=no
 
   - name: Start ENCACHE
     systemd: state=started name=encache enabled=yes
+    when: echache.stat.exists
 
 
 ########### UNIONFS

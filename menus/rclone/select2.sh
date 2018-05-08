@@ -10,7 +10,7 @@ TITLE="PlexDrive for PG"
 MENU="Choose one of the following options:"
 
 OPTIONS=(A "RClone Cache - Unencrypted"
-         B "RClone - Encrypted (NOT BUILT)"
+         B "RClone - Encrypted (NOT READY)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -30,6 +30,10 @@ case $CHOICE in
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
               ;;
         B)
+            bash /opt/plexguide/menus/rclone/encache.sh
+              echo "RClone Cache Installed" > /tmp/pushover
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
               ;;
         Z)
             clear
