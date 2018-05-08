@@ -1,0 +1,26 @@
+[Unit]
+Description=PG Cache
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone mount \
+  --config /root/.config/rclone/rclone.conf \
+  --cache-db-purge \
+  --allow-other \
+  --dir-cache-time 1m \
+  --cache-workers 5 \
+  --allow-non-empty \
+  --retries 2 \
+  --cache-info-age 8h \
+  cache: /mnt/.cache
+KillMode=process
+RemainAfterExit=yes
+ExecStop=/bin/fusermount -u -z /mnt/.cache
+ExecStop=/bin/rmdir /mnt/.cache
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

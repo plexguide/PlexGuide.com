@@ -4,6 +4,10 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new beta menu
+rm /opt/plexguide/menus/programs/beta.sh
+mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.sh
+
 ## For testing new backup menus
 #rm /opt/plexguide/menus/backup-restore/backup.sh
 #mv /opt/plexguide/menus/backup-restore/backup-new.sh /opt/plexguide/menus/backup-restore/backup.sh

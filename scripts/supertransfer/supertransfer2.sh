@@ -105,6 +105,8 @@ echo -n '' > ${fileLock}
 while true; do
   # purge empty folders
   find "${localDir}" -mindepth 2 -type d -empty -delete
+  # remote duplicates from fileLock
+  awk -i inplace '!seen[$0]++' ${fileLock}
   # black magic: find list of all dirs that have files at least 1 minutes old that aren't hidden
   # and put the deepest directories in an array, then sort by dirsize
   sc=$(awk -F"/" '{print NF-1}' <<<${localDir})

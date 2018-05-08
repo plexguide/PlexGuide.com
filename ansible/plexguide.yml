@@ -23,6 +23,7 @@
   - { role: variables, tags: ['variables'] }
   - { role: muximux, tags: ['muximux'] }
   - { role: cache, tags: ['cache'] }
+  - { role: encache, tags: ['encache'] }
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
