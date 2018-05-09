@@ -19,10 +19,12 @@
 - include_role:
     name: variables
     
-- name: Remove Heimdall Container
-  docker_container:
-    name: heimdall
-    state: absent
+########## Unique for TLD
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  register: tld
+  ignore_errors: True
+##########
 
 - name: Deploy Heimdall Container
   docker_container:

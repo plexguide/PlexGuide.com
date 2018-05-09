@@ -19,11 +19,12 @@
 - include_role:
     name: variables
 
-########## Make sur to fix this, it's rolename, something
+########## Unique for TLD
 - name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{rolename}}"
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
   register: tld
   ignore_errors: True
+##########
 
 - name: Remove Ombi Container
   docker_container:

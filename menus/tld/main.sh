@@ -39,9 +39,10 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            echo "$heimdall" > /var/plexguide/tld.var
+            
+            program="heimdall"
             echo ",$program" > cat /var/plexguide/tld.$program
-            bash /opt/plexguide/menus/plex/main.sh
+            bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         B)
