@@ -111,6 +111,6 @@ then
 	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
 fi
 
-dialog --msgbox "\nThe containers are rebuilding!\nCheck on your Top Level Domain between 1 - 5 Minutes!" 0 0
+dialog --msgbox "The containers are rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes!" 0 0
 dialog --msgbox "\n$choice is now your supported by your Top Level Domain!" 0 0
 
