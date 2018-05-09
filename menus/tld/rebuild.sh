@@ -16,9 +16,10 @@
 #
 #################################################################################
 domain=$( cat /var/plexguide/server.domain )
+choice=$( cat /var/plexguide/tld.choice )
 
 heimdall=$(docker ps -a --format "{{.Names}}" | grep heimdall)
-emby=$(docker ps -a --format "{{.Names}}" | grep emby)
+ombi=$(docker ps -a --format "{{.Names}}" | grep ombi)
 organizr=$(docker ps -a --format "{{.Names}}" | grep organizr)
 muximux=$(docker ps -a --format "{{.Names}}" | grep muximux)
 htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
@@ -29,14 +30,55 @@ echo "" > /var/plexguide/tld.organizr
 echo "" > /var/plexguide/tld.muximux
 echo "" > /var/plexguide/tld.htpcmanager
 
+program=heimdall
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
+
+program=ombi
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
+
+program=organizr
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
+
+program=muximux
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
+
+program=htpcmanager
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
+
+################# If role exist, rebuild
 if [ "$heimdall" == "heimdall" ]
 then
 	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall &>/dev/null &
 fi
 
-if [ "$emby" == "emby" ]
+if [ "$ombi" == "ombi" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby &>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
 fi
 
 if [ "$organizr" == "organizr" ]

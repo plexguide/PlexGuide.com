@@ -16,7 +16,6 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=12
 WIDTH=38
