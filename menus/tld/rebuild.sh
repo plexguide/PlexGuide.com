@@ -112,5 +112,5 @@ then
 fi
 read -n 1 -s -r -p "Press any key to continue"
 dialog --msgbox "The containers are rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes!" 0 0
-dialog --msgbox "\n$choice is now your supported by your Top Level Domain!" 0 0
+dialog --msgbox "\n$choice is your supported Top Level Domain!" 0 0
 
