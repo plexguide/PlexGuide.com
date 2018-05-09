@@ -73,25 +73,25 @@ fi
 ################# If role exist, rebuild
 if [ "$heimdall" == "heimdall" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall &>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall #&>/dev/null &
 fi
 
 if [ "$ombi" == "ombi" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi #&>/dev/null &
 fi
 
 if [ "$organizr" == "organizr" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr &>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr #&>/dev/null &
 fi
 
 if [ "$muximux" == "muximux" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux &>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux #&>/dev/null &
 fi
 
 if [ "$htpcmanager" == "htpcmanager" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager &>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager #&>/dev/null &
 fi
