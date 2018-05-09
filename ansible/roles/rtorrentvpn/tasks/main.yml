@@ -85,7 +85,7 @@
 
 - debug: var=my_server
 
-- debug: msg="Using server in {{my_server}} "
+- debug: msg="Using {{server.user_input}} server. "
 
 - name: "Install {{my_server}} openvpn file"
   template:
