@@ -17,9 +17,9 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-HEIGHT=12
+HEIGHT=13
 WIDTH=38
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="App Selection for Primary Domain"
 
