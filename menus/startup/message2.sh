@@ -3,7 +3,7 @@ export NCURSES_NO_UTF8_ACS=1
 
 bash /opt/plexguide/menus/traefik/cert2.sh &>/dev/null &
 bash /opt/plexguide/menus/traefik/cert1.sh &>/dev/null &
-sleep 2
+sleep 1
 edition=$( cat /var/plexguide/pg.edition ) 
 version=$( cat /var/plexguide/pg.version )
 appguard=$(cat /var/plexguide/server.appguard)
