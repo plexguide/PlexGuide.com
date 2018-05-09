@@ -72,5 +72,5 @@ rclone_upload() {
   fi
     # release fileLock when file transfer finishes (or fails)
     egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp ${fileLock}
-    [[ -e $logfile ]] && rm $logfile
-	}
+    [[ -e $logfile ]] && rm -f $logfile
+}
