@@ -15,9 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-HEIGHT=18
+HEIGHT=19
 WIDTH=59
-CHOICE_HEIGHT=11
+CHOICE_HEIGHT=12
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
@@ -32,6 +32,7 @@ OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          H "Import Media  : Import Existing Media to GDrive "
          I "App Themes    : Install Dark Theme(s) For Apps "
          J "Change Time   : Change the Server Time"
+         K "Default App   : For Your Top Level Domain"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -68,6 +69,8 @@ case $CHOICE in
         bash /opt/plexguide/menus/themes/main.sh ;;
     J)
         dpkg-reconfigure tzdata ;;
+    K)
+        bash /opt/plexguide/menus/tld/main.sh ;;
     Z)
         clear
         exit 0
