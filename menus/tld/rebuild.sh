@@ -74,6 +74,7 @@ fi
 if [ "$heimdall" == "heimdall" ]
 then
 	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall #&>/dev/null &
+	read -n 1 -s -r -p "Press any key to continue"
 fi
 
 if [ "$ombi" == "ombi" ]
