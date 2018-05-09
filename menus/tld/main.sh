@@ -38,47 +38,39 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-        A)
-            
+        A)         
             program="heimdall"
             echo ",$program" > cat /var/plexguide/tld.$program
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         B)
-            echo "$heimdall" > /var/plexguide/tld.var
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby &>/dev/null &
-
+            program="htpcmanager"
+            echo ",$program" > cat /var/plexguide/tld.$program
+            bash /opt/plexguide/menus/tld/rebuild.sh
+            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         C)
-            echo "$heimdall" > /var/plexguide/tld.var
-            port=2202
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity &>/dev/null &
-            sleep 3
-
-            ;;
-
-        D)
-            echo "$heimdall" > /var/plexguide/tld.var
-            display=Ombi
-            program=ombi
+            program="muximux"
             echo ",$program" > cat /var/plexguide/tld.$program
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags $program &>/dev/null &
+            bash /opt/plexguide/menus/tld/rebuild.sh
+            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
+            ;;
+        D)
+            program="ombi"
+            echo ",$program" > cat /var/plexguide/tld.$program
+            bash /opt/plexguide/menus/tld/rebuild.sh
+            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         E)
-            echo "$heimdall" > /var/plexguide/tld.var
-            display=Booksonic
-            program=booksonic
-            port=4050
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
-            sleep 3
+            program="organizr"
+            echo ",$program" > cat /var/plexguide/tld.$program
+            bash /opt/plexguide/menus/tld/rebuild.sh
+            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         Z)
             exit 0 ;;
 esac
 
 #recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/media.sh
+bash /opt/plexguide/menus/tld/main.sh
