@@ -65,7 +65,7 @@
     prompt: " \n
       What PIA server would you like to use?\n
          \n
-       france, germany, israel, montreal, netherlands,\n
+       czech, france, germany, israel, montreal,\n
        romainia, sweden, switzerland, toronto or vancouver.\n
        \n
        "
