@@ -40,31 +40,32 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)         
             program="heimdall"
-            echo ",$program" > cat /var/plexguide/tld.$program
+            cat /var/plexguide/tld.
+            echo ",$program" > /var/plexguide/tld.$program
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         B)
             program="htpcmanager"
-            echo ",$program" > cat /var/plexguide/tld.$program
+            echo ",$program" > /var/plexguide/tld.$program
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         C)
             program="muximux"
-            echo ",$program" > cat /var/plexguide/tld.$program
+            echo ",$program" > /var/plexguide/tld.$program
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         D)
             program="ombi"
-            echo ",$program" > cat /var/plexguide/tld.$program
+            echo ",$program" > /var/plexguide/tld.$program
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         E)
             program="organizr"
-            echo ",$program" > cat /var/plexguide/tld.$program
+            echo ",$program" > /var/plexguide/tld.$program
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
