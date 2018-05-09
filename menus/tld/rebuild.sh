@@ -26,7 +26,7 @@ htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
 tautulli=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
 
 echo "" > /var/plexguide/tld.heimdall
-echo "" > /var/plexguide/tld.emby
+echo "" > /var/plexguide/tld.ombi
 echo "" > /var/plexguide/tld.organizr
 echo "" > /var/plexguide/tld.muximux
 echo "" > /var/plexguide/tld.htpcmanager
