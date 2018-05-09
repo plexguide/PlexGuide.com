@@ -38,8 +38,12 @@
       - "{{ports.stdout}}8081:8081"
     volumes:
       - /opt/appdata/medusa:/config
-      - "{{path.stdout}}/medusa/downloads:/downloads"
-      - "/mnt/unionfs/:/tv"
+      - /mnt/unionfs:/unionfs
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/rutorrents:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
     cpu_shares: 256
     env:
