@@ -1,14 +1,17 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
-bash /opt/plexguide/menus/traefik/cert2.sh 1>/dev/null 2>&1
-bash /opt/plexguide/menus/traefik/cert1.sh 1>/dev/null 2>&1
-edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
-version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+bash /opt/plexguide/menus/traefik/cert2.sh &>/dev/null &
+bash /opt/plexguide/menus/traefik/cert1.sh &>/dev/null &
+sleep 2
+edition=$( cat /var/plexguide/pg.edition ) 
+version=$( cat /var/plexguide/pg.version )
 appguard=$(cat /var/plexguide/server.appguard)
 portstat=$(cat /var/plexguide/server.ports.status)
 watchtower=$(cat /var/plexguide/watchtower.yes)
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
+
+sleep 2
 
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
