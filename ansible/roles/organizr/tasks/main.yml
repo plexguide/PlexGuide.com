@@ -26,12 +26,12 @@
   ignore_errors: True
 ##########
 
-- name: Remove Organizr Container
+- name: Remove {{ role_name }}Container
   docker_container:
     name: "{{ role_name }}" 
     state: absent
 
-- name: Deploy Organizr Container
+- name: Deploy {{ role_name }} Container
   docker_container:
     name: "{{ role_name }}"
     image: "lsiocommunity/{{ role_name }}"
