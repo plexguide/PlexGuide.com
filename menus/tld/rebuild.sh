@@ -83,30 +83,34 @@ fi
 ################# If role exist, rebuild
 if [ "$heimdall" == "heimdall" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall #&>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall &>/dev/null &
 fi
 
 if [ "$ombi" == "ombi" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi #&>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
 fi
 
 if [ "$organizr" == "organizr" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr #&>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr &>/dev/null &
 fi
 
 if [ "$muximux" == "muximux" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux #&>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux &>/dev/null &
 fi
 
 if [ "$htpcmanager" == "htpcmanager" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager #&>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager &>/dev/null &
 fi
 
 if [ "$tautulli" == "tautulli" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli #&>/dev/null &
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
 fi
+
+dialog --msgbox "\nThe containers are rebuilding!\nCheck on your Top Level Domain between 1 - 5 Minutes!" 0 0
+dialog --msgbox "\n$choice is now your supported by your Top Level Domain!" 0 0
+

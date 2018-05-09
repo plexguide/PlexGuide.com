@@ -43,37 +43,31 @@ case $CHOICE in
             program="heimdall"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         B)
             program="htpcmanager"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         C)
             program="muximux"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         D)
             program="ombi"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         E)
             program="organizr"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         F)
             program="tautulli"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         Z)
             exit 0 ;;
