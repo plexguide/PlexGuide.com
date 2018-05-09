@@ -50,5 +50,5 @@
       traefik.enable: "true"
       traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:heimdall.{{domain.stdout}}{{tld.stoudt}}"
+      traefik.frontend.rule: "Host:heimdall.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "80"
