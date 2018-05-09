@@ -39,60 +39,41 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            display=Heimdall
-            program=heimdall
-            bash /opt/plexguide/menus/plex/main.sh
+            echo "$heimdall" > /var/plexguide/tld.var
             echo ",$program" > cat /var/plexguide/tld.$program
+            bash /opt/plexguide/menus/plex/main.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         B)
-            display=Emby
-            program=emby
-            port=8096
+            echo "$heimdall" > /var/plexguide/tld.var
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby &>/dev/null &
-            sleep 3
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+
             ;;
         C)
-            display=Ubooquity
-            program=ubooquity
+            echo "$heimdall" > /var/plexguide/tld.var
             port=2202
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity &>/dev/null &
             sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+
             ;;
 
         D)
-            bash /opt/plexguide/menus/tld/clear.sh
+            echo "$heimdall" > /var/plexguide/tld.var
             display=Ombi
             program=ombi
             echo ",$program" > cat /var/plexguide/tld.$program
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags $program &>/dev/null &
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         E)
+            echo "$heimdall" > /var/plexguide/tld.var
             display=Booksonic
             program=booksonic
             port=4050
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
             sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;
