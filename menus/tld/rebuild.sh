@@ -23,7 +23,7 @@ ombi=$(docker ps -a --format "{{.Names}}" | grep ombi)
 organizr=$(docker ps -a --format "{{.Names}}" | grep organizr)
 muximux=$(docker ps -a --format "{{.Names}}" | grep muximux)
 htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
-tautulli=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
+tautulli=$(docker ps -a --format "{{.Names}}" | grep tautulli)
 
 echo "" > /var/plexguide/tld.heimdall
 echo "" > /var/plexguide/tld.ombi
