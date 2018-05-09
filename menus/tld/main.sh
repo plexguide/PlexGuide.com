@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+domain=$( cat /var/plexguide/server.domain )
 
 HEIGHT=12
 WIDTH=38
@@ -40,32 +41,31 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)         
             program="heimdall"
-            cat /var/plexguide/tld.
-            echo ",$program" > /var/plexguide/tld.$program
+            echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         B)
             program="htpcmanager"
-            echo ",$program" > /var/plexguide/tld.$program
+            echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         C)
             program="muximux"
-            echo ",$program" > /var/plexguide/tld.$program
+            echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         D)
             program="ombi"
-            echo ",$program" > /var/plexguide/tld.$program
+            echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;
         E)
             program="organizr"
-            echo ",$program" > /var/plexguide/tld.$program
+            echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
             ;;

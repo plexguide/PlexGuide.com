@@ -15,11 +15,19 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+domain=$( cat /var/plexguide/server.domain )
+
 heimdall=$(docker ps -a --format "{{.Names}}" | grep heimdall)
 emby=$(docker ps -a --format "{{.Names}}" | grep emby)
 organizr=$(docker ps -a --format "{{.Names}}" | grep organizr)
 muximux=$(docker ps -a --format "{{.Names}}" | grep muximux)
 htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
+
+echo "" > /var/plexguide/tld.heimdall
+echo "" > /var/plexguide/tld.emby
+echo "" > /var/plexguide/tld.organizr
+echo "" > /var/plexguide/tld.muximux
+echo "" > /var/plexguide/tld.htpcmanager
 
 if [ "$heimdall" == "heimdall" ]
 then
