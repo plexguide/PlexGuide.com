@@ -19,7 +19,7 @@ echo " --------------------------------------------------------------------- ";
 echo " [ ! ]          C A U T I O N!           !C U I D A D O!          [ ! ]";
 echo " --------------------------------------------------------------------- ";
 echo "";
-echo "THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED"
+echo ""THIS SOFTWARE IS PROVIDED \"AS IS\" AND ANY EXPRESSED OR IMPLIED"";
 echo "WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES"
 echo "OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED."
 echo "IN NO EVENT SHALL THE PROJECT MAINTAINERS OR PROJECT CONTRIBUTORS BE"
@@ -35,6 +35,7 @@ echo "";
 echo " Installation of this software is subject to your acceptance of"
 echo "  these terms."
 echo "";
+# read: safe shell input check. non-negated answer continues, else aborts.
 read -p "Do you accept these terms? (Y/n)" -n 1 -r
 echo    # move cursor to a new line
 echo ""
@@ -68,6 +69,8 @@ then
     echo "";
     echo "";
     echo "ABORTING per user request.";
+    echo "";
+    echo "";
     exit 1;
 else
     echo "";# leave if statement and continue.
