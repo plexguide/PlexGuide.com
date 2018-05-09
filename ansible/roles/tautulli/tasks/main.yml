@@ -18,7 +18,14 @@
 ---
 - include_role:
     name: variables
-    
+
+########## Unique for TLD
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  register: tld
+  ignore_errors: True
+########## 
+
 - name: Remove Tautulli Container
   docker_container:
     name: tautulli
@@ -47,5 +54,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:tautulli.{{domain.stdout}},plexpy.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:tautulli.{{domain.stdout}},plexpy.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "8181"

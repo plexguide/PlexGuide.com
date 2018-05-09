@@ -28,6 +28,7 @@ TITLE="App Selection for Primary Domain"
           C "Muximux"
           D "Ombi"
           E "Organizr"
+          F "Tautulli"
           Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -64,6 +65,12 @@ case $CHOICE in
             ;;
         E)
             program="organizr"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
+            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
+            ;;
+        F)
+            program="tautulli"
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
