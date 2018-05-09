@@ -58,9 +58,6 @@ echo "  in-production server may break your environment and pre-existing setup"
 echo "  of software, programs, scripts, applications, etc."
 echo "";
 echo "";
-#  apt-get upate -y # retrive list of available updates
-#  apt-get upgrade -y" # upgrade out-of-date packages
-#  apt-get fullupgrade -y " # upgrade the OS to latest MAJOR version. ie 12.04 to 18.04. Potentially DANGEROUS for those who may understand what it implies.
 # read: safe shell input check. non-negated answer continues, else aborts.
 read -p "Would you like to proceed updating and upgrading your OS and ALL packages? " -n 1 -r
 echo    # move cursor to a new line
