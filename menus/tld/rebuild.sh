@@ -112,4 +112,3 @@ then
 fi
 dialog --msgbox "The containers are rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes\n\nNote: This only REBUILDS the App. If you never deployed it, make sure to do so!" 0 0
 dialog --msgbox "\n$choice is your supported Top Level Domain!" 0 0
-
