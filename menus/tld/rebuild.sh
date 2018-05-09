@@ -23,12 +23,14 @@ ombi=$(docker ps -a --format "{{.Names}}" | grep ombi)
 organizr=$(docker ps -a --format "{{.Names}}" | grep organizr)
 muximux=$(docker ps -a --format "{{.Names}}" | grep muximux)
 htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
+tautulli=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
 
 echo "" > /var/plexguide/tld.heimdall
 echo "" > /var/plexguide/tld.emby
 echo "" > /var/plexguide/tld.organizr
 echo "" > /var/plexguide/tld.muximux
 echo "" > /var/plexguide/tld.htpcmanager
+echo "" > /var/plexguide/tld.tautulli
 
 program=heimdall
 if [ "$choice" == "$program" ]
@@ -70,6 +72,14 @@ else
 	echo "" > /var/plexguide/tld.$program
 fi
 
+program=tautulli
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
+
 ################# If role exist, rebuild
 if [ "$heimdall" == "heimdall" ]
 then
@@ -95,4 +105,10 @@ fi
 if [ "$htpcmanager" == "htpcmanager" ]
 then
 	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager #&>/dev/null &
+fi
+
+if [ "$tautulli" == "tautulli" ]
+then
+	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli #&>/dev/null &
+	read -n 1 -s -r -p "Press any key to continue"
 fi
