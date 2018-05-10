@@ -87,7 +87,7 @@ case $CHOICE in
      D)
        bash /opt/plexguide/menus/programs/vpn.sh ;;
 
-     A)
+     E)
        display=uTorrent
        program=utorrent
        echo "$program" > /tmp/program_var
