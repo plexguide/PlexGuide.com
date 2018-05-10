@@ -1,0 +1,79 @@
+---
+- include_role:
+    name: variables
+
+- name: Remove uTorrent Container
+  docker_container:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - utorrent
+    - uTorrent
+
+- name: Remove Previous Settings
+  file:
+    path:
+      - /opt/appdata/{{ item }}
+    state: absent
+  with_items:
+    - utorrent
+    - uTorrent
+
+- name: Add Folders
+  file:
+    path:
+      - "/opt/appdata/utorrents"
+      - "/opt/appdata/utorrents/settings"
+      - "/opt/appdata/utorrents/data"
+      - "/opt/appdata/utorrents/active"
+      - "/opt/appdata/utorrents/autoload"
+      - "/opt/appdata/utorrents/torrents"
+    mode: 0775
+    state: directory
+
+- name: Install utserver.conf
+  template:
+    src: "utserver.conf"
+    dest: "/opt/appdata/utorrents/utserver.conf"
+    force: yes
+    mode: 0775
+
+#- name: Fetch entrypoint.sh
+#  get_url:
+#    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
+#    dest: /opt/appdata/utorrent/entrypoint.sh
+#    mode: 0775
+
+- name: Deploy uTorrent Container
+  docker_container:
+    name: "utorrent"
+    image: thecreatorzone/utorrent-server
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}8080:8080"
+      - "6882:6882/udp"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/opt/appdata/utorrents/utserver.conf:/utorrent/utserver.conf"
+      - "/opt/appdata/utorrents/settings:/utorrent/settings"
+      - "/opt/appdata/utorrents/data:/utorrent/data"
+      - "/opt/appdata/utorrents/active:/utorrent/active"
+      - "/opt/appdata/utorrents/autoload:/utorrent/autoload"
+      - "/opt/appdata/utorrents/torrents:/utorrent/torrents"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt/unionfs/:/unionfs"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - utorrent
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
+      traefik.port: "8080"
