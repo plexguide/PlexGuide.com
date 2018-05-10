@@ -4,27 +4,31 @@
 
 - name: Remove uTorrent Container
   docker_container:
-    name:
-      - uTorrent
-      - utorrent
+    name: {{item}}
     state: absent
+    with_items:
+      - "utorrent"
+      - "uTorrent"
 
 - name: Remove Previous Settings
   file:
     path:
-      - /opt/appdata/uTorrent
-      - /opt/appdata/utorrent
+      - /opt/appdata/{{item}}
     state: absent
+    recurse: yes
+    with_items:
+      - "utorrent"
+      - "uTorrent"
 
 - name: Add Folders
   file:
     path:
-      - /opt/appdata/utorrents
-      - /opt/appdata/utorrents/settings
-      - /opt/appdata/utorrents/data
-      - /opt/appdata/utorrents/active
-      - /opt/appdata/utorrents/autoload
-      - /opt/appdata/utorrents/torrents
+      - "/opt/appdata/utorrents"
+      - "/opt/appdata/utorrents/settings"
+      - "/opt/appdata/utorrents/data"
+      - "/opt/appdata/utorrents/active"
+      - "/opt/appdata/utorrents/autoload"
+      - "/opt/appdata/utorrents/torrents"
     mode: 0775
     state: directory
 
@@ -36,7 +40,7 @@
 
 - name: Deploy uTorrent Container
   docker_container:
-    name: uTorrent
+    name: "utorrent"
     image: ekho/utorrent
     pull: yes
     cpu_shares: 256
@@ -47,19 +51,19 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrents:/utorrent
-      - /opt/appdata/utorrents/settings:/utorrent/settings
-      - /opt/appdata/utorrents/data:/utorrent/data
-      - /opt/appdata/utorrents/active:/utorrent/active
-      - /opt/appdata/utorrents/autoload:/utorrent/autoload
-      - /opt/appdata/utorrents/torrents:/utorrent/torrents
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/unionfs/:/unionfs
+      - "/opt/appdata/utorrents:/utorrent"
+      - "/opt/appdata/utorrents/settings:/utorrent/settings"
+      - "/opt/appdata/utorrents/data:/utorrent/data"
+      - "/opt/appdata/utorrents/active:/utorrent/active"
+      - "/opt/appdata/utorrents/autoload:/utorrent/autoload"
+      - "/opt/appdata/utorrents/torrents:/utorrent/torrents"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt/unionfs/:/unionfs"
     restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - uTorrent
+          - utorrent
     state: started
     labels:
       traefik.enable: "true"
@@ -67,10 +71,10 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
       traefik.port: "8080"
-      
+
 - name: Install utserver.conf
   template:
-    src: utserver.conf
-    dest: /opt/appdata/utorrents/utserver.conf
+    src: "utserver.conf"
+    dest: "/opt/appdata/utorrents/utserver.conf"
     force: yes
     mode: 0775
