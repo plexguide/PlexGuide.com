@@ -19,25 +19,25 @@
 - name: Add Folders
   file:
     path:
-      - /opt/appdata/utorrent
-      - /opt/appdata/utorrent/settings
-      - /opt/appdata/utorrent/data
-      - /opt/appdata/utorrent/active
-      - /opt/appdata/utorrent/autoload
-      - /opt/appdata/utorrent/torrents
+      - /opt/appdata/utorrents
+      - /opt/appdata/utorrents/settings
+      - /opt/appdata/utorrents/data
+      - /opt/appdata/utorrents/active
+      - /opt/appdata/utorrents/autoload
+      - /opt/appdata/utorrents/torrents
     mode: 0775
     state: directory
 
-- name: Fetch entrypoint.sh
-  get_url:
-    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
-    dest: /opt/appdata/utorrent/entrypoint.sh
-    mode: 0775
+#- name: Fetch entrypoint.sh
+#  get_url:
+#    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
+#    dest: /opt/appdata/utorrent/entrypoint.sh
+#    mode: 0775
 
 - name: Install utserver.conf
   template:
     src: utserver.conf
-    dest: /opt/appdata/utorrent/utserver.conf
+    dest: /opt/appdata/utorrents/utserver.conf
     force: yes
     mode: 0775
 
@@ -54,12 +54,12 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent:/utorrent
-      - /opt/appdata/utorrent/settings:/utorrent/settings
-      - /opt/appdata/utorrent/data:/utorrent/data
-      - /opt/appdata/utorrent/active:/utorrent/active
-      - /opt/appdata/utorrent/autoload:/utorrent/autoload
-      - /opt/appdata/utorrent/torrents:/utorrent/torrents
+      - /opt/appdata/utorrents:/utorrent
+      - /opt/appdata/utorrents/settings:/utorrent/settings
+      - /opt/appdata/utorrents/data:/utorrent/data
+      - /opt/appdata/utorrents/active:/utorrent/active
+      - /opt/appdata/utorrents/autoload:/utorrent/autoload
+      - /opt/appdata/utorrents/torrents:/utorrent/torrents
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
