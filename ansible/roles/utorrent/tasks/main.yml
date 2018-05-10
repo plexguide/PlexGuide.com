@@ -34,13 +34,6 @@
 #    dest: /opt/appdata/utorrent/entrypoint.sh
 #    mode: 0775
 
-- name: Install utserver.conf
-  template:
-    src: utserver.conf
-    dest: /opt/appdata/utorrents/utserver.conf
-    force: yes
-    mode: 0775
-
 - name: Deploy uTorrent Container
   docker_container:
     name: uTorrent
@@ -74,3 +67,10 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
       traefik.port: "8080"
+      
+- name: Install utserver.conf
+  template:
+    src: utserver.conf
+    dest: /opt/appdata/utorrents/utserver.conf
+    force: yes
+    mode: 0775
