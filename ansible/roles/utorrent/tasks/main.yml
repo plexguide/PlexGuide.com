@@ -4,11 +4,11 @@
 
 - name: Remove uTorrent Container
   docker_container:
-    name: "{{item}}"
+    name: "{{ item }}"
     state: absent
-    with_items:
-      - utorrent
-      - uTorrent
+  with_items:
+    - utorrent
+    - uTorrent
 
 - name: Remove Previous Settings
   file:
@@ -16,9 +16,9 @@
       - /opt/appdata/{{item}}
     state: absent
     recurse: yes
-    with_items:
-      - "utorrent"
-      - "uTorrent"
+  with_items:
+    - utorrent
+    - uTorrent
 
 - name: Add Folders
   file:
