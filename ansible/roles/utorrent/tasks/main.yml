@@ -10,7 +10,7 @@
 - name: Remove Previous Settings
   file:
     path:
-      - /opt/appdata/{{ item }}
+      - "/opt/appdata/{{ item }}"
     state: absent
   with_items:
     - "utorrent"
@@ -19,14 +19,14 @@
 - name: Add Main-Folder
   file:
     path:
-      - /opt/appdata/utorrent
+      - "/opt/appdata/utorrent"
     mode: 0775
     state: directory
 
 - name: Add Sub-Folders
   file:
     path:
-      - /opt/appdata/utorrent/{{ item }}
+      - "/opt/appdata/utorrent/{{ item }}"
     mode: 0775
     state: directory
   with_items:
