@@ -10,7 +10,7 @@ TITLE="RClone Cache for PG"
 MENU="Choose one of the following options:"
 
 OPTIONS=(A "RClone Cache - Unencrypted"
-         B "RClone - Encrypted (NOT READY)"
+         B "RClone Cache - Encrypted (NOT READY)"
          C "Use first if switching from PlexDrive to Cache"
          Z "Exit")
 
