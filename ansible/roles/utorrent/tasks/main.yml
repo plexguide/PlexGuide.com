@@ -20,7 +20,8 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent/:/utorrent
+      - /opt/appdata/utorrent/settings:/utorrent/settings
+      - /opt/appdata/utorrent/data:/utorrent/data
       - "{{path.stdout}}/utorrent/downloads:/downloads"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
