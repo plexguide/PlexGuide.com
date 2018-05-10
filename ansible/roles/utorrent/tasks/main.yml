@@ -46,12 +46,11 @@
         aliases:
           - utorrent
 
-- name: Install utserver.conf
-    template:
-      src: utserver.conf
-      dest: /opt/appdata/utorrent/utserver.conf
-      force: yes
-      mode: 0775
+-  template:
+    src: utserver.conf
+    dest: /opt/appdata/utorrent/utserver.conf
+    force: yes
+    mode: 0775
 
 - name: Start Container & Add Labels
   docker_container:
