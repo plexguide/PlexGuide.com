@@ -38,11 +38,16 @@
       - name: plexguide
         aliases:
           - utorrent
-    template:
-      src: utserver.conf
-      dest: /opt/appdata/utorrent/settings/utserver.conf
-      force: yes
-      mode: 0775
+          
+- name: Add Config
+  template:
+    src: utserver.conf
+    dest: /opt/appdata/utorrent/settings/utserver.conf
+    force: yes
+    mode: 0775
+
+- name: Start Container & Add Labels
+  docker_container:
     state: started
     labels:
       traefik.enable: "true"
