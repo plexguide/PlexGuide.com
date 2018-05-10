@@ -47,7 +47,7 @@
 - name: Deploy uTorrent Container
   docker_container:
     name: "utorrent"
-    image: ekho/utorrent
+    image: thecreatorzone/utorrent-server
     pull: yes
     cpu_shares: 256
     published_ports:
