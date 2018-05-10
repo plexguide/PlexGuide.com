@@ -15,12 +15,12 @@
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}8080:8080"
-      - "6881:6881/udp"
+      - "6882:6882/udp"
     env:
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent/:/config
+      - /opt/appdata/utorrent/:/utorrent
       - "{{path.stdout}}/utorrent/downloads:/downloads"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
