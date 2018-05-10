@@ -13,7 +13,7 @@
 - name: Remove Previous Settings
   file:
     path:
-      - /opt/appdata/{{item}}
+      - /opt/appdata/{{ item }}
     state: absent
     recurse: yes
   with_items:
