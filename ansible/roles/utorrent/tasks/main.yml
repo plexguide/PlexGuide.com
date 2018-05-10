@@ -50,7 +50,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - "/opt/appdata/utorrents:/utorrent"
+#      - "/opt/appdata/utorrents:/utorrent"
       - "/opt/appdata/utorrents/settings:/utorrent/settings"
       - "/opt/appdata/utorrents/data:/utorrent/data"
       - "/opt/appdata/utorrents/active:/utorrent/active"
