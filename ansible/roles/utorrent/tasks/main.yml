@@ -4,29 +4,29 @@
 
 - name: Remove uTorrent Container
   docker_container:
-    name: utorrent
+    name: uTorrent
     state: absent
 
 - name: Remove Previous Settings
   file:
-    path: /opt/appdata/utorrent
+    path: /opt/appdata/uTorrent
     state: absent
 
 - name: Add Folders
   file:
     path:
-      - /opt/appdata/utorrent
-      - /opt/appdata/utorrent/settings
-      - /opt/appdata/utorrent/data
-      - /opt/appdata/utorrent/active
-      - /opt/appdata/utorrent/autoload
-      - /opt/appdata/utorrent/torrents
+      - /opt/appdata/uTorrent
+      - /opt/appdata/uTorrent/settings
+      - /opt/appdata/uTorrent/data
+      - /opt/appdata/uTorrent/active
+      - /opt/appdata/uTorrent/autoload
+      - /opt/appdata/uTorrent/torrents
     mode: 0775
-    state: directory 
+    state: directory
 
 - name: Deploy uTorrent Container
   docker_container:
-    name: utorrent
+    name: uTorrent
     image: ekho/utorrent
     pull: yes
     cpu_shares: 256
@@ -37,19 +37,19 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent:/utorrent
+      - /opt/appdata/uTorrent:/utorrent
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - utorrent
+          - uTorrent
 
 - name: Install utserver.conf
   template:
     src: utserver.conf
-    dest: /opt/appdata/utorrent/utserver.conf
+    dest: /opt/appdata/uTorrent/utserver.conf
     force: yes
     mode: 0775
 
