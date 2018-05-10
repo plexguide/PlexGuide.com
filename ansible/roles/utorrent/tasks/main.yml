@@ -12,6 +12,17 @@
     path: /opt/appdata/utorrent
     state: absent
 
+- name: Add Folders
+  file:
+    path:
+      - /opt/appdata/utorrent
+      - /opt/appdata/utorrent/settings
+      - /opt/appdata/utorrent/data
+      - /opt/appdata/utorrent/active
+      - /opt/appdata/utorrent/autoload
+      - /opt/appdata/utorrent/torrents
+    state: present
+
 - name: Deploy uTorrent Container
   docker_container:
     name: utorrent
@@ -25,12 +36,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent/settings:/utorrent/settings
       - /opt/appdata/utorrent:/utorrent
-      - /opt/appdata/utorrent/data:/utorrent/data
-      - /opt/appdata/utorrent/downloads/active:/active
-      - /opt/appdata/utorrent/torrents/autoload:/autoload
-      - /opt/appdata/utorrent/torrents/files:/torrents
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
