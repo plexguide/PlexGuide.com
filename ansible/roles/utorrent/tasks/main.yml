@@ -26,15 +26,16 @@
 - name: Add Sub-Folders
   file:
     path:
-      - "/opt/appdata/utorrent/{{ item }}"
+      - "{{ item }}"
     mode: 0775
     state: directory
   with_items:
-    - "settings"
-    - "data"
-    - "active"
-    - "autoload"
-    - "torrents"
+    - "/opt/appdata/utorrent"
+    - "/opt/appdata/utorrent/settings"
+    - "/opt/appdata/utorrent/data"
+    - "/opt/appdata/utorrent/active"
+    - "/opt/appdata/utorrent/autoload"
+    - "/opt/appdata/utorrent/torrents"
 
 - name: Install utserver.conf
   template:
