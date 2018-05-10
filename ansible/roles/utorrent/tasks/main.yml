@@ -47,11 +47,11 @@
     mode: 0775
 
 - name: Start Container & Add Labels
-    docker_container:
-      state: started
-      labels:
-        traefik.enable: "true"
-        traefik.frontend.auth.basic: "{{auth.stdout}}"
-        traefik.frontend.redirect.entryPoint: "https"
-        traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
-        traefik.port: "8080"
+  docker_container:
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
+      traefik.port: "8080"
