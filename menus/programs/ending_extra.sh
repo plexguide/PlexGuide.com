@@ -23,5 +23,5 @@ program_extra=$( cat /tmp/program_extra )
 port_extra=$( cat /tmp/port_extra )
 
 dialog --title "$display - Address Info" \
---msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain   - http://$ipv4:$port_extra\nSubdomain - https://$program.$domain\nDomain - https://$program_extra.$domain\nDomain  - http://$domain:$port - http://$domain:$port_extra" 11 50
+--msgbox "\nIPv4      - http://$ipv4:$port\nIPv4      - http://$ipv4:$port_extra\nSubdomain - https://$program.$domain\nSubdomain - https://$program_extra.$domain\nDomain  - http://$domain:$port\nDomain - http://$domain:$port_extra" 11 50
 # --msgbox "\nIPv4      - http://$ipv4:$port_extra\nSubdomain - https://$program_extra.$domain\nDomain    - http://$domain:$port_extra" 8 50
