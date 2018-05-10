@@ -4,7 +4,7 @@
 
 - name: Remove uTorrent Container
   docker_container:
-    name: {{item}}
+    name: "{{item}}"
     state: absent
     with_items:
       - "utorrent"
