@@ -25,8 +25,8 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/settings/utserver.conf
       - /opt/appdata/utorrent/settings:/utorrent/settings
+      - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/settings/utserver.conf
       - /opt/appdata/utorrent/data:/utorrent/data
       - /opt/appdata/utorrent/downloads/active:/active
       - /opt/appdata/utorrent/torrents/autoload:/autoload
@@ -38,6 +38,11 @@
       - name: plexguide
         aliases:
           - utorrent
+    template:
+      src: utserver.conf
+      dest: /opt/appdata/utorrent/settings/utserver.conf
+      force: yes
+      mode: 0775
     state: started
     labels:
       traefik.enable: "true"
@@ -45,10 +50,3 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
       traefik.port: "8080"
-
-- name: Install utserver.conf
-  template:
-    src: utserver.conf
-    dest: /opt/appdata/utorrent/settings/utserver.conf
-    force: yes
-    mode: 0775
