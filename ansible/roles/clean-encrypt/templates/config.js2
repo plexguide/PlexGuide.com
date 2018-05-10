@@ -39,22 +39,15 @@
                     "timeout": 300
                 }
             },
-            "remove_empty_dir_depth": 2,
+            "remove_empty_dir_depth": 10,
             "upload_folder": "/mnt/move",
             "upload_remote": "gcrypt:"
         }
     },
+    "syncer": {
+    },
     "uploader": {
         "google": {
-            "check_interval": 30,
-            "exclude_open_files": true,
-            "max_size_gb": 400,
-            "opened_excludes": [
-                "/downloads/"
-            ],
-            "size_excludes": [
-                "downloads/*"
-            ]
         }
     }
 }

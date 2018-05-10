@@ -17,9 +17,9 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-HEIGHT=12
+HEIGHT=13
 WIDTH=38
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="App Selection for Primary Domain"
 
@@ -28,6 +28,7 @@ TITLE="App Selection for Primary Domain"
           C "Muximux"
           D "Ombi"
           E "Organizr"
+          F "Tautulli"
           Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -38,65 +39,39 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-        A)
-            display=Heimdall
-            program=heimdall
-            bash /opt/plexguide/menus/plex/main.sh
-            echo ",$program" > cat /var/plexguide/tld.$program
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
+        A)         
+            program="heimdall"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
             ;;
         B)
-            display=Emby
-            program=emby
-            port=8096
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby &>/dev/null &
-            sleep 3
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+            program="htpcmanager"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
             ;;
         C)
-            display=Ubooquity
-            program=ubooquity
-            port=2202
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity &>/dev/null &
-            sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+            program="muximux"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
             ;;
-
         D)
-            bash /opt/plexguide/menus/tld/clear.sh
-            display=Ombi
-            program=ombi
-            echo ",$program" > cat /var/plexguide/tld.$program
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags $program &>/dev/null &
-            dialog --msgbox "\n$program is now your supported by your Top Level Domain!" 0 0
+            program="ombi"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
             ;;
         E)
-            display=Booksonic
-            program=booksonic
-            port=4050
-            dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
-            sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+            program="organizr"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
+            ;;
+        F)
+            program="tautulli"
+            echo "$program" > /var/plexguide/tld.choice
+            bash /opt/plexguide/menus/tld/rebuild.sh
             ;;
         Z)
             exit 0 ;;
 esac
 
 #recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/media.sh
+bash /opt/plexguide/menus/tld/main.sh

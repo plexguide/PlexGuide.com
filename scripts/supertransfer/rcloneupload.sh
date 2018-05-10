@@ -30,7 +30,7 @@ rclone_upload() {
   [[ -n $dbug ]] && local gbUsage=$(python3 -c "print(round($Usage/1000000, 2), 'GB')")
   [[ -n $dbug ]] && -e " [DBUG] $gdsaLeast @${gbUsage}"
 
-	# memory optimization
+  # memory optimization
   local freeRam=$(free | grep Mem | awk '{print $4/1000000}')
 	case $freeRam in
 		[0123456789][0123456789][0123456789]*) driveChunkSize="1024M" ;;
@@ -40,22 +40,22 @@ rclone_upload() {
 		4*) driveChunkSize="128M" ;;
 		3*) driveChunkSize="64M" ;;
 		2*) driveChunkSize="32M" ;;
-	  *) driveChunkSize="8M" ;;
+	  	*) driveChunkSize="8M" ;;
 	esac
   #echo "[DBUG] rcloneupload: localFile=${localFile}"
   #echo "[DBUG] rcloneupload: raw input 2=$2"
 
   local tmp=$(echo "${2}" | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   local logfile=${logDir}/${gdsa}_${tmp}.log
-	rclone move --tpslimit 6 --checkers=20 \
+  rclone move --tpslimit 6 --checkers=20 \
     --config /root/.config/rclone/rclone.conf \
     --transfers=8 \
-		--log-file=${logfile}  \
-		--log-level INFO --stats 5s \
-		--exclude="**partial~" --exclude="**_HIDDEN~" \
-		--exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-		--drive-chunk-size=$driveChunkSize \
-		"${localFile}" "$gdsa:${localFile#"$localDir"}" && rclone_fin_flag=1
+    --log-file=${logfile}  \
+    --log-level INFO --stats 5s \
+    --exclude="**partial~" --exclude="**_HIDDEN~" \
+    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+    --drive-chunk-size=$driveChunkSize \
+    "${localFile}" "$gdsa:${localFile#"$localDir"}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   local secs=$(( $(date +%s) - $t1 ))
@@ -72,5 +72,5 @@ rclone_upload() {
   fi
     # release fileLock when file transfer finishes (or fails)
     egrep -xv "${sanitizedLocalFile}" "${fileLock}" > /tmp/fileLock.tmp && mv /tmp/fileLock.tmp ${fileLock}
-    [[ -e $logfile ]] && rm $logfile
-	}
+    [[ -e $logfile ]] && rm -f $logfile
+}

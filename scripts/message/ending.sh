@@ -41,7 +41,6 @@ cat << "EOF"
 │ Update to Dev Version:    pgdev     │
 │ [32mNEW![0m Delete Dupes:        pgdupes   │
 │ [32mNEW![0m Add Content :        pgtrak    │
-│ [32mBETA[0m PG System Monitor:   pgstatus  │
 └─────────────────────────────────────┘
 
 EOF

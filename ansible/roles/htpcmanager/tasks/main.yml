@@ -18,6 +18,13 @@
 ---
 - include_role:
     name: variables
+ 
+########## Unique for TLD
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  register: tld
+  ignore_errors: True
+##########
     
 - name: Remove HTPCManager Container
   docker_container:
@@ -44,7 +51,7 @@
           - htpcmanager
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "8085"
     restart_policy: always
     state: started

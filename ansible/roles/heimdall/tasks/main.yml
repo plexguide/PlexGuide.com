@@ -19,10 +19,12 @@
 - include_role:
     name: variables
     
-- name: Remove Heimdall Container
-  docker_container:
-    name: heimdall
-    state: absent
+########## Unique for TLD
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  register: tld
+  ignore_errors: True
+##########
 
 - name: Deploy Heimdall Container
   docker_container:
@@ -48,5 +50,5 @@
       traefik.enable: "true"
       traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:heimdall.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:heimdall.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "80"

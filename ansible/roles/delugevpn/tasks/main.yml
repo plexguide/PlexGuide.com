@@ -65,13 +65,22 @@
     prompt: " \n
       What PIA server would you like to use?\n
          \n
-       france, germany, israel, montreal, netherlands,\n
+       czech, france, germany, israel, montreal,\n
        romainia, sweden, switzerland, toronto or vancouver.\n
        \n
        "
   register: server
 
-- debug: msg="Using server in {{server.user_input}} "
+# user can't input server when called from rebuild.sh, so we need a default...
+- set_fact: my_server="{{ server.user_input }}"
+  when: server.user_input != ""
+
+- set_fact: my_server="netherlands"
+  when: server.user_input == ""
+
+- debug: var=my_server
+
+- debug: msg="Using {{server.user_input}} server. "
 
 - name: "Install {{server.user_input}} openvpn file"
   template:

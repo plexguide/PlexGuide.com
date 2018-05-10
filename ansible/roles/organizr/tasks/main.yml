@@ -19,15 +19,22 @@
 - include_role:
     name: variables
     
-- name: Remove Organizr Container
+########## Unique for TLD
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  register: tld
+  ignore_errors: True
+##########
+
+- name: Remove {{ role_name }}Container
   docker_container:
-    name: organizr
+    name: "{{ role_name }}" 
     state: absent
 
-- name: Deploy Organizr Container
+- name: Deploy {{ role_name }} Container
   docker_container:
-    name: organizr
-    image: lsiocommunity/organizr
+    name: "{{ role_name }}"
+    image: "lsiocommunity/{{ role_name }}"
     pull: yes
     cpu_shares: 128
     published_ports:
@@ -36,16 +43,16 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/organizr:/config
+      - "/opt/appdata/{{ role_name }}:/config"
       - /etc/localtime:/etc/localtime:ro
     networks:
       - name: plexguide
         aliases:
-          - organizr
+          - "{{ role_name }}"
     restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:organizr.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{ role_name }}.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "80"
