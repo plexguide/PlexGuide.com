@@ -27,6 +27,7 @@ export NCURSES_NO_UTF8_ACS=1
           B "Deluge"
           C "Jackett"
           D "VPN Options"
+          E "BETA - uTorrent"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -74,7 +75,7 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null & 
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -85,6 +86,21 @@ case $CHOICE in
 
      D)
        bash /opt/plexguide/menus/programs/vpn.sh ;;
+
+     A)
+       display=uTorrent
+       program=utorrent
+       echo "$program" > /tmp/program_var
+       dialog --infobox "Installing: $display" 3 30
+       port=8080
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags utorrent &>/dev/null &
+        sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
+       ;;
 
      Z)
        exit 0 ;;

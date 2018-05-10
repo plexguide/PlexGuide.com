@@ -1,0 +1,38 @@
+---
+- include_role:
+    name: variables
+
+- name: Remove uTorrent Container
+  docker_container:
+    name: utorrent
+    state: absent
+
+- name: Deploy uTorrent Container
+  docker_container:
+    name: utorrent
+    image: ekho/utorrent
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}8080:8080"
+      - "6881:6881/udp"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - /opt/appdata/utorrent/:/config
+      - "{{path.stdout}}/utorrent/downloads:/downloads"
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/unionfs/:/unionfs
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - utorrent
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
+      traefik.port: "8080"

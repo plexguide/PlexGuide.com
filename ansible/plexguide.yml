@@ -89,3 +89,4 @@
   - { role: booksonic, tags: ['booksonic'] }
   - { role: duplicati, tags: ['duplicati'] }
   - { role: headphones, tags: ['headphones'] }
+  - { role: utorrent, tags: ['utorrent'] }
