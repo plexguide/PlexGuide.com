@@ -42,6 +42,11 @@
       PGID: "1000"
     volumes:
       - /opt/appdata/uTorrent:/utorrent
+      - /opt/appdata/uTorrent/settings:/utorrent/settings
+      - /opt/appdata/uTorrent/data:/utorrent/data
+      - /opt/appdata/uTorrent/active:/utorrent/active
+      - /opt/appdata/uTorrent/autoload:/utorrent/autoload
+      - /opt/appdata/uTorrent/torrents:/utorrent/torrents
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
