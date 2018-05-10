@@ -16,7 +16,14 @@
     - "utorrent"
     - "utorrents"
 
-- name: Add Folders
+- name: Add Main-Folder
+  file:
+    path:
+      - /opt/appdata/utorrent
+    mode: 0775
+    state: directory
+
+- name: Add Sub-Folders
   file:
     path:
       - /opt/appdata/utorrent/{{ item }}
