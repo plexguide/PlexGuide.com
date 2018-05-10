@@ -19,14 +19,15 @@
 - name: Add Folders
   file:
     path:
-      - "/opt/appdata/utorrent"
-      - "/opt/appdata/utorrent/settings"
-      - "/opt/appdata/utorrent/data"
-      - "/opt/appdata/utorrent/active"
-      - "/opt/appdata/utorrent/autoload"
-      - "/opt/appdata/utorrent/torrents"
+      - /opt/appdata/utorrent/{{ item }}
     mode: 0775
     state: directory
+  with_items:
+    - "settings"
+    - "data"
+    - "active"
+    - "autoload"
+    - "torrents"
 
 - name: Install utserver.conf
   template:
