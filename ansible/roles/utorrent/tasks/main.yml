@@ -15,7 +15,6 @@
     path:
       - /opt/appdata/{{ item }}
     state: absent
-    recurse: yes
   with_items:
     - utorrent
     - uTorrent
