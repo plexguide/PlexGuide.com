@@ -15,7 +15,7 @@
 - name: Install utserver.conf
     template:
       src: utserver.conf
-      dest: /opt/appdata/utorrent/settings/utserver.conf
+      dest: /opt/appdata/utorrent/utserver.conf
       force: yes
       mode: 0775
 
@@ -33,7 +33,7 @@
       PGID: "1000"
     volumes:
       - /opt/appdata/utorrent/settings:/utorrent/settings
-      - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/settings/utserver.conf
+      - /opt/appdata/utorrent:/utorrent
       - /opt/appdata/utorrent/data:/utorrent/data
       - /opt/appdata/utorrent/downloads/active:/active
       - /opt/appdata/utorrent/torrents/autoload:/autoload
