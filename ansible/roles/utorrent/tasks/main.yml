@@ -21,7 +21,8 @@
       - /opt/appdata/utorrent/active
       - /opt/appdata/utorrent/autoload
       - /opt/appdata/utorrent/torrents
-    state: present
+    mode: 0775
+    state: directory 
 
 - name: Deploy uTorrent Container
   docker_container:
