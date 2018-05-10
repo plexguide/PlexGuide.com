@@ -4,6 +4,10 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new torrent menus
+rm /opt/plexguide/menus/main.sh
+mv /opt/plexguide/menus/main-new.sh /opt/plexguide/menus/main.sh
+
 ## For testing new info/services menus
 rm /opt/plexguide/menus/info-tshoot/info.sh
 mv /opt/plexguide/menus/info-tshoot/info-new.sh /opt/plexguide/menus/info-tshoot/info.sh

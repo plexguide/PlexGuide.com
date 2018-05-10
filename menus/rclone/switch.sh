@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,12 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-domain=$( cat /var/plexguide/server.domain )
-ipv4=$( cat /var/plexguide/server.ip )
-program=$( cat /tmp/program )
-port=$( cat /tmp/port )
-program_extra=$( cat /tmp/program_extra )
-port_extra=$( cat /tmp/port_extra )
 
-dialog --title "$display - Address Info" \
---msgbox "\nIPv4      - http://$ipv4:$port\nIPv4      - http://$ipv4:$port_extra\nSubdomain - https://$program.$domain\nSubdomain - https://$program_extra.$domain\nDomain    - http://$domain:$port\nDomain    - http://$domain:$port_extra" 11 50
+## Stop old rclone plexdrive services if Installed
+bash /opt/plexguide/scripts/test/stop-services
