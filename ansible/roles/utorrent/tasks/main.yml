@@ -2,10 +2,12 @@
 - include_role:
     name: variables
 
-- name: Remove uTorrent Container and Previous Settings
+- name: Remove uTorrent Container
   docker_container:
     name: utorrent
     state: absent
+
+- name: Remove Previous Settings
   file:
     path: /opt/appdata/utorrent
     state: absent
@@ -26,9 +28,9 @@
       - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/utserver.conf
       - /opt/appdata/utorrent/settings:/utorrent/settings
       - /opt/appdata/utorrent/data:/utorrent/data
-      - "{{path.stdout}}/utorrent/downloads/active:/active"
-      - "{{path.stdout}}/utorrent/torrents/autoload:/autoload"
-      - "{{path.stdout}}/utorrent/torrents/files:/torrents"
+      - /opt/appdata/utorrent/downloads/active:/active
+      - /opt/appdata/utorrent/torrents/autoload:/autoload
+      - /opt/appdata/utorrent/torrents/files:/torrents
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
