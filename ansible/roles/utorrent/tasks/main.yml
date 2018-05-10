@@ -2,9 +2,12 @@
 - include_role:
     name: variables
 
-- name: Remove uTorrent Container
+- name: Remove uTorrent Container and Previous Settings
   docker_container:
     name: utorrent
+    state: absent
+  file:
+    path: /opt/appdata/utorrent
     state: absent
 
 - name: Deploy uTorrent Container
@@ -20,9 +23,12 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
+      - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/utserver.conf
       - /opt/appdata/utorrent/settings:/utorrent/settings
       - /opt/appdata/utorrent/data:/utorrent/data
-      - "{{path.stdout}}/utorrent/downloads:/downloads"
+      - "{{path.stdout}}/utorrent/downloads/active:/active"
+      - "{{path.stdout}}/utorrent/torrents/autoload:/autoload"
+      - "{{path.stdout}}/utorrent/torrents/files:/torrents"
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
@@ -37,3 +43,10 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
       traefik.port: "8080"
+
+- name: Install utserver.conf
+  template:
+    src: utserver.conf
+    dest: /opt/appdata/utorrent/settings/utserver.conf
+    force: yes
+    mode: 0775
