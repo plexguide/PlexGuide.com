@@ -31,6 +31,13 @@
     mode: 0775
     state: directory
 
+- name: Install utserver.conf
+  template:
+    src: "utserver.conf"
+    dest: "/opt/appdata/utorrents/utserver.conf"
+    force: yes
+    mode: 0775
+
 #- name: Fetch entrypoint.sh
 #  get_url:
 #    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
@@ -50,7 +57,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-#      - "/opt/appdata/utorrents:/utorrent"
+      - "/opt/appdata/utorrents/utserver.conf:/utorrent/utserver.conf"
       - "/opt/appdata/utorrents/settings:/utorrent/settings"
       - "/opt/appdata/utorrents/data:/utorrent/data"
       - "/opt/appdata/utorrents/active:/utorrent/active"
@@ -70,10 +77,3 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:utorrent.{{domain.stdout}}"
       traefik.port: "8080"
-
-- name: Install utserver.conf
-  template:
-    src: "utserver.conf"
-    dest: "/opt/appdata/utorrents/utserver.conf"
-    force: yes
-    mode: 0775
