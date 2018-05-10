@@ -76,23 +76,23 @@ case $CHOICE in
      C)
        display=rTorrentVPN
        program=rutorrent
-       program_flood=flood
+       program_extra=flood
        echo "$program" > /tmp/program_var
-       echo "$program_flood" > /tmp/program_var
+       echo "$program_extra" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
        port=9080
-       port_flood=3000
+       port_extra=3000
        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
        #&>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-                echo "$program_flood" > /tmp/program
-                echo "$program_flood" > /tmp/program_var
-                echo "$port_flood" > /tmp/port
+                echo "$program_extra" > /tmp/program
+                echo "$program_extra" > /tmp/program_var
+                echo "$port_extra" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+            bash /opt/plexguide/menus/programs/ending_extra.sh
      ;;
      Z)
        exit 0 ;;
