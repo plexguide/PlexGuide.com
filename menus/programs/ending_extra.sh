@@ -19,9 +19,9 @@ domain=$( cat /var/plexguide/server.domain )
 ipv4=$( cat /var/plexguide/server.ip )
 program=$( cat /tmp/program )
 port=$( cat /tmp/port )
-program_extra=$( cat /tmp/program )
-port_extra=$( cat /tmp/port )
+program_extra=$( cat /tmp/program_extra )
+port_extra=$( cat /tmp/port_extra )
 
 dialog --title "$display - Address Info" \
---msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port   - http://$ipv4:$port_extra\nSubdomain - https://$program_extra.$domain\nDomain    - http://$domain:$port_extra" 8 50
---msgbox "\nIPv4      - http://$ipv4:$port_extra\nSubdomain - https://$program_extra.$domain\nDomain    - http://$domain:$port_extra" 8 50
+--msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain   - http://$ipv4:$port_extra\nSubdomain - https://$program.$domain\nDomain - https://$program_extra.$domain\nDomain  - http://$domain:$port - http://$domain:$port_extra" 11 50
+# --msgbox "\nIPv4      - http://$ipv4:$port_extra\nSubdomain - https://$program_extra.$domain\nDomain    - http://$domain:$port_extra" 8 50

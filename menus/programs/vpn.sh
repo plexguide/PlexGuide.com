@@ -78,8 +78,8 @@ case $CHOICE in
        program=rutorrent
        program_extra=flood
        echo "$program" > /tmp/program_var
-       echo "$program_extra" > /tmp/program_var
-       dialog --infobox "Installing: $display" 3 30
+       echo "$program_extra" > /tmp/program_var_extra
+       dialog --infobox "Installing: $display" 6 30
        port=9080
        port_extra=3000
        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
@@ -88,9 +88,9 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-                echo "$program_extra" > /tmp/program
-                echo "$program_extra" > /tmp/program_var
-                echo "$port_extra" > /tmp/port
+            echo "$program_extra" > /tmp/program_extra
+            echo "$program_extra" > /tmp/program_var_extra
+            echo "$port_extra" > /tmp/port_extra
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending_extra.sh
      ;;
