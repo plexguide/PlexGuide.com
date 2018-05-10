@@ -34,6 +34,13 @@
     dest: /opt/appdata/utorrent/entrypoint.sh
     mode: 0775
 
+- name: Install utserver.conf
+  template:
+    src: utserver.conf
+    dest: /opt/appdata/utorrent/utserver.conf
+    force: yes
+    mode: 0775
+
 - name: Deploy uTorrent Container
   docker_container:
     name: uTorrent
@@ -60,17 +67,6 @@
       - name: plexguide
         aliases:
           - uTorrent
-
-- name: Install utserver.conf
-  template:
-    src: utserver.conf
-    dest: /opt/appdata/utorrent/utserver.conf
-    force: yes
-    mode: 0775
-
-- name: Start Container & Add Labels
-  docker_container:
-    name: uTorrent
     state: started
     labels:
       traefik.enable: "true"
