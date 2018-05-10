@@ -3,7 +3,7 @@ export NCURSES_NO_UTF8_ACS=1
 
 #############
 HEIGHT=10
-WIDTH=45
+WIDTH=60
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="RClone Cache for PG"
