@@ -79,7 +79,7 @@ case $CHOICE in
        program_extra=flood
        echo "$program" > /tmp/program_var
        echo "$program_extra" > /tmp/program_var_extra
-       dialog --infobox "Installing: $display" 6 30
+       dialog --infobox "Installing: $display" 3 30
        port=9080
        port_extra=3000
        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
