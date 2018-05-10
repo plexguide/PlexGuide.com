@@ -7,8 +7,8 @@
     name: "{{item}}"
     state: absent
     with_items:
-      - "utorrent"
-      - "uTorrent"
+      - utorrent
+      - uTorrent
 
 - name: Remove Previous Settings
   file:
