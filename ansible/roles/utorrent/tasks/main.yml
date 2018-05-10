@@ -70,6 +70,7 @@
 
 - name: Start Container & Add Labels
   docker_container:
+    name: uTorrent
     state: started
     labels:
       traefik.enable: "true"
