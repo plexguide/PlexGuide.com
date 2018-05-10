@@ -25,7 +25,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/utserver.conf
+      - /opt/appdata/utorrent/settings/utserver.conf:/utorrent/settings/utserver.conf
       - /opt/appdata/utorrent/settings:/utorrent/settings
       - /opt/appdata/utorrent/data:/utorrent/data
       - /opt/appdata/utorrent/downloads/active:/active
