@@ -4,11 +4,8 @@
 
 - name: Remove uTorrent Container
   docker_container:
-    name: "{{ item }}"
+    name: "utorrent"
     state: absent
-  with_items:
-    - utorrent
-    - uTorrent
 
 - name: Remove Previous Settings
   file:
@@ -16,25 +13,25 @@
       - /opt/appdata/{{ item }}
     state: absent
   with_items:
-    - utorrent
-    - uTorrent
+    - "utorrent"
+    - "utorrents"
 
 - name: Add Folders
   file:
     path:
-      - "/opt/appdata/utorrents"
-      - "/opt/appdata/utorrents/settings"
-      - "/opt/appdata/utorrents/data"
-      - "/opt/appdata/utorrents/active"
-      - "/opt/appdata/utorrents/autoload"
-      - "/opt/appdata/utorrents/torrents"
+      - "/opt/appdata/utorrent"
+      - "/opt/appdata/utorrent/settings"
+      - "/opt/appdata/utorrent/data"
+      - "/opt/appdata/utorrent/active"
+      - "/opt/appdata/utorrent/autoload"
+      - "/opt/appdata/utorrent/torrents"
     mode: 0775
     state: directory
 
 - name: Install utserver.conf
   template:
     src: "utserver.conf"
-    dest: "/opt/appdata/utorrents/utserver.conf"
+    dest: "/opt/appdata/utorrent/utserver.conf"
     force: yes
     mode: 0775
 
@@ -57,12 +54,12 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - "/opt/appdata/utorrents/utserver.conf:/utorrent/utserver.conf"
-      - "/opt/appdata/utorrents/settings:/utorrent/settings"
-      - "/opt/appdata/utorrents/data:/utorrent/data"
-      - "/opt/appdata/utorrents/active:/utorrent/active"
-      - "/opt/appdata/utorrents/autoload:/utorrent/autoload"
-      - "/opt/appdata/utorrents/torrents:/utorrent/torrents"
+      - "/opt/appdata/utorrent/utserver.conf:/utorrent/utserver.conf"
+      - "/opt/appdata/utorrent/settings:/utorrent/settings"
+      - "/opt/appdata/utorrent/data:/utorrent/data"
+      - "/opt/appdata/utorrent/active:/utorrent/active"
+      - "/opt/appdata/utorrent/autoload:/utorrent/autoload"
+      - "/opt/appdata/utorrent/torrents:/utorrent/torrents"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
