@@ -16,17 +16,23 @@
       - /opt/appdata/utorrent
     state: absent
 
-#- name: Add Folders
-#  file:
-#    path:
-#      - /opt/appdata/uTorrent
-#      - /opt/appdata/uTorrent/settings
-#      - /opt/appdata/uTorrent/data
-#      - /opt/appdata/uTorrent/active
-#      - /opt/appdata/uTorrent/autoload
-#      - /opt/appdata/uTorrent/torrents
-#    mode: 0775
-#    state: directory
+- name: Add Folders
+  file:
+    path:
+      - /opt/appdata/utorrent
+      - /opt/appdata/utorrent/settings
+      - /opt/appdata/utorrent/data
+      - /opt/appdata/utorrent/active
+      - /opt/appdata/utorrent/autoload
+      - /opt/appdata/utorrent/torrents
+    mode: 0775
+    state: directory
+
+- name: Fetch entrypoint.sh
+  get_url:
+    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
+    dest: /opt/appdata/utorrent/entrypoint.sh
+    mode: 0775
 
 - name: Deploy uTorrent Container
   docker_container:
@@ -41,12 +47,12 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/uTorrent:/utorrent
-      - /opt/appdata/uTorrent/settings:/utorrent/settings
-      - /opt/appdata/uTorrent/data:/utorrent/data
-      - /opt/appdata/uTorrent/active:/utorrent/active
-      - /opt/appdata/uTorrent/autoload:/utorrent/autoload
-      - /opt/appdata/uTorrent/torrents:/utorrent/torrents
+      - /opt/appdata/utorrent:/utorrent
+      - /opt/appdata/utorrent/settings:/utorrent/settings
+      - /opt/appdata/utorrent/data:/utorrent/data
+      - /opt/appdata/utorrent/active:/utorrent/active
+      - /opt/appdata/utorrent/autoload:/utorrent/autoload
+      - /opt/appdata/utorrent/torrents:/utorrent/torrents
       - /etc/localtime:/etc/localtime:ro
       - /mnt/unionfs/:/unionfs
     restart_policy: always
@@ -58,7 +64,7 @@
 - name: Install utserver.conf
   template:
     src: utserver.conf
-    dest: /opt/appdata/uTorrent/utserver.conf
+    dest: /opt/appdata/utorrent/utserver.conf
     force: yes
     mode: 0775
 
