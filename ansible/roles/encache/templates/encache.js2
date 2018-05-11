@@ -15,11 +15,13 @@ ExecStart=/usr/bin/rclone mount \
   --allow-non-empty \
   --retries 2 \
   --cache-info-age 8h \
+ # --uid 1000 \
+ # --gid 1000 \
   cachecrypt: /mnt/gdrive
 KillMode=process
 RemainAfterExit=yes
 ExecStop=/bin/fusermount -u -z /mnt/gdrive
-ExecStop=/bin/rmdir /mnt/gdrive
+#ExecStop=/bin/rmdir /mnt/gdrive
 Restart=always
 
 [Install]

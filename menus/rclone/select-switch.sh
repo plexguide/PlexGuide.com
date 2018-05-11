@@ -11,7 +11,7 @@ MENU="Choose one of the following options:"
 
 OPTIONS=(A "RClone Cache - Unencrypted"
          B "RClone Cache - Encrypted (NOT READY)"
-         C "Use first if switching from PlexDrive to Cache"
+         C "Use if switching from or to Cache method"
          Z "Exit")
 
 CHOICE=$(dialog --clear \

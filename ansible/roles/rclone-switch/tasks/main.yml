@@ -1,0 +1,185 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+  ################# Remove New PlexDrive Regardless
+
+  - name: Check service exists
+    stat:
+      path: "/etc/systemd/system/plexdrive.service"
+    register: plexdrive
+
+  - name: Stop existing plexdrive service
+    systemd: state=stopped name=plexdrive
+    when: plexdrive.stat.exists
+
+  - name: Remove Plexdrive Service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive.service
+      force: yes
+    when: plexdrive.stat.exists
+
+  - name: Check PD Binary Exist
+    stat:
+      path: "/usr/bin/plexdrive"
+    register: pdb
+
+  - name: Remove PD Binary
+    file:
+      state: absent
+      path: /usr/bin/plexdrive
+      force: yes
+    when: pdb.stat.exists
+
+    ################# Remove RClone Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/rclone.service"
+      register: rclone
+
+    - name: Stop existing rclone service
+      systemd: state=stopped name=rclone
+      when: rclone.stat.exists
+
+    - name: Remove rclone Service
+      file:
+        state: absent
+        path: /etc/systemd/system/rclone.service
+        force: yes
+      when: rclone.stat.exists
+
+    - name: Check RC Binary Exist
+      stat:
+        path: "/usr/bin/rclone"
+      register: rcb
+
+    - name: Remove RC Binary
+      file:
+        state: absent
+        path: /usr/bin/rclone
+        force: yes
+      when: rcb.stat.exists
+
+################# Remove RClone-en Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/rclone-en.service"
+      register: rclone_en
+
+    - name: Stop existing rclone-en service
+      systemd: state=stopped name=rclone_en
+      when: rclone_en.stat.exists
+
+    - name: Remove rclone-en Service
+      file:
+        state: absent
+        path: /etc/systemd/system/rclone-en.service
+        force: yes
+      when: rclone_en.stat.exists
+
+################# Remove RClone-encrypt Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/rclone-encrypt.service"
+      register: rclone_encrypt
+
+    - name: Stop existing rclone-encrypt service
+      systemd: state=stopped name=rclone_encrypt
+      when: rclone_encrypt.stat.exists
+
+    - name: Remove rclone-encrypt Service
+      file:
+        state: absent
+        path: /etc/systemd/system/rclone-encrypt.service
+        force: yes
+      when: rclone_encrypt.stat.exists
+
+################# Remove UnionFS-encrypt Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/unionfs-encrypt.service"
+      register: unionfs_encrypt
+
+    - name: Stop existing unionfs-encrypt service
+      systemd: state=stopped name=unionfs_encrypt
+      when: unionfs_encrypt.stat.exists
+
+    - name: Remove unionfs-encrypt Service
+      file:
+        state: absent
+        path: /etc/systemd/system/unionfs-encrypt.service
+        force: yes
+      when: unionfs_encrypt.stat.exists
+
+################# Remove UnionFS Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/unionfs.service"
+      register: unionfs
+
+    - name: Stop existing unionfs service
+      systemd: state=stopped name=unionfs
+      when: unionfs.stat.exists
+
+    - name: Remove unionfs Service
+      file:
+        state: absent
+        path: /etc/systemd/system/unionfs.service
+        force: yes
+      when: unionfs.stat.exists
+
+################# Remove move Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/move.service"
+      register: move
+
+    - name: Stop existing move service
+      systemd: state=stopped name=move
+      when: move.stat.exists
+
+    - name: Remove move Service
+      file:
+        state: absent
+        path: /etc/systemd/system/move.service
+        force: yes
+      when: move.stat.exists
+
+################# Remove move-en Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/move-en.service"
+      register: move_en
+
+    - name: Stop existing move-en service
+      systemd: state=stopped name=move_en
+      when: move_en.stat.exists
+
+    - name: Remove move-en Service
+      file:
+        state: absent
+        path: /etc/systemd/system/move-en.service
+        force: yes
+      when: move_en.stat.exists

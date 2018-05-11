@@ -15,6 +15,26 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+---
+  - include_role:
+      name: variables
+
+############ GDrive
+  - name: GDrive Check
+    stat:
+      path: /mnt/gdrive
+    register: gdrive
+
+  - name: Create GDrive Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+    with_items:
+      - /mnt/gdrive
+      - /mnt/gdrive/tv
+      - /mnt/gdrive/movies
+      - /mnt/gdrive/music
+      - /mnt/gdrive/ebooks
+    when: gdrive.stat.exists == False
+    ignore_errors: yes
 
 ########### Encache Sync Script
   - name: Check Encache Sync SCRIPT
