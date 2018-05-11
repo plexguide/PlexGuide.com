@@ -90,7 +90,7 @@ if [ "$deploy" == "drives" ]
   then
     clear 1>/dev/null 2>&1
   else
-file="/usr/bin/mergerfs" 1>/dev/null 2>&1
+file="/usr/bin/mergerfs"
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
