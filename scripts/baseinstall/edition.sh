@@ -43,16 +43,24 @@ deploy=$( cat /var/pg.server.deploy )
     stat3="" 1>/dev/null 2>&1
   fi
 
+  if [ "$deploy" == "feeder" ]
+  then
+    stat4=" <<< Current Use" 1>/dev/null 2>&1
+  else
+    stat4="" 1>/dev/null 2>&1
+  fi
+
 HEIGHT=11
 WIDTH=41
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
 
 OPTIONS=(A "GDrive Edition$stat1"
          B "HD Solo Edition$stat2"
          C "HD Multi Edition$stat3"
-         D "Mini FAQ")
+         D "GCE Feed BETA $stat4"
+         E "Mini FAQ")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -396,8 +404,111 @@ case $CHOICE in
 
       exit
       ;;
-######################### FAQ
     D)
+######################### FEEDER
+  if [ "$deploy" == "feeder" ]
+  then
+    exit
+  else
+    clear 1>/dev/null 2>&1
+  fi
+      dialog --title "Quick Note" --msgbox "\nWARNING! Switching to another edition from a previous working one may result in certain things being shutdown!\n\nWe will do our best to ensure that you can transition to any edition!" 0 0
+      bash /opt/plexguide/menus/confirm.sh 
+
+      ### Confirm yes or no to skip back to menu    
+      menu=$( cat /tmp/menu.choice )
+      if [ "$menu" == "yes" ]
+        then
+
+          ### If SOLO Drive was active before, important to move item to an old folder
+          if [ "$deploy" == "drive" ]
+            then
+              dialog --title "Quick Note" --msgbox "\nWARNING! Your Items from /mnt/unionfs need to move to either /mnt/old/ for storage reasons or /mnt/move for GDrive Uploading!" 0 0
+              
+                ### Make a Move Choice
+                HEIGHT=9
+                WIDTH=50
+                CHOICE_HEIGHT=2
+                BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                TITLE="Solo HD >>> GCE Feeder"
+                MENU="Switching To GDrive Will Move your Current!"
+
+                OPTIONS=(A "To /mnt/old  - For Storage"
+                         B "To /mnt/move - For Google Uploads")
+
+                CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                --title "$TITLE" \
+                                --menu "$MENU" \
+                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                "${OPTIONS[@]}" \
+                                2>&1 >/dev/tty)
+
+                case $CHOICE in
+                ######################### HANDLING
+                A)
+                dialog --title "Quick Note" --msgbox "\nTo /mnt/old your DATA for storage it goes!" 0 0
+                mkdir /mnt/old 1>/dev/null 2>&1
+                mv /mnt/unionfs/* /mnt/old 1>/dev/null 2>&1
+                ;;
+
+                B)
+                dialog --title "Quick Note" --msgbox "\nTo /mnt/move your DATA for uploading it goes!" 0 0
+                mv /mnt/unionfs/* /mnt/move 1>/dev/null 2>&1
+                ;;
+                esac
+              fi
+
+          ### If MULTI Drive was active before, switch over
+          if [ "$deploy" == "drives" ]
+            then
+
+                ### Make a Move Choice
+                HEIGHT=9
+                WIDTH=50
+                CHOICE_HEIGHT=2
+                BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+                TITLE="Multi HD >>> GCE Feeder"
+                MENU="Switching To GDrive Will Stop Your Drives Pool!"
+
+                OPTIONS=(A "Yes: Switch"
+                         B "No : Back Out")
+
+                CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                                --title "$TITLE" \
+                                --menu "$MENU" \
+                                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                                "${OPTIONS[@]}" \
+                                2>&1 >/dev/tty)
+
+                case $CHOICE in
+                ######################### HANDLING
+                A)
+                systemctl stop drives 1>/dev/null 2>&1
+                systemctl disable drives 1>/dev/null 2>&1
+                systemctl daemon-reload 1>/dev/null 2>&1
+                ;;
+
+                B)
+                bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                exit
+                ;;
+                esac
+              fi
+
+                ### Set Everything for GDrive Editon
+                echo "PG Edition: GCE Feed" > /var/plexguide/pg.edition
+                echo "feeder" > /var/pg.server.deploy
+                bash /opt/plexguide/menus/main.sh
+                exit
+              else 
+                bash /opt/plexguide/scripts/baseinstall/edition.sh  
+                exit
+              fi
+
+              exit
+              ;;
+######################### FAQ
+    E)
       dialog --title "Quick FAQ" --msgbox "\nYou can pick between using your local drives or Google Drive for your mass media storage collection.\n\nBe aware the HDs option is not ready and is here for testing/demo purposes until ready.\n\nSolo HD is setup for smaller collections; download, watch, and delete. The multiple HD edition is for those who use multiple drives to build a collection!" 0 0
       bash /opt/plexguide/scripts/baseinstall/edition.sh  
       exit
