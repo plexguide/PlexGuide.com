@@ -88,8 +88,6 @@ case $CHOICE in
 ############ If Not Installed
 if [ "$deploy" == "drives" ]
   then
-    clear 1>/dev/null 2>&1
-  else
 file="/usr/bin/mergerfs"
   if [ -e "$file" ]
     then
@@ -105,6 +103,8 @@ make deb #1>/dev/null 2>&1
 cd .. 
 dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
+  else
+    clear 1>/dev/null 2>&1
 fi 
 fi
 
