@@ -45,10 +45,10 @@
 
   - name: Install Move Service
     template:
-      src: move.js2
+      src: move_script.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
-      tags:
+    tags:
         - encache
 
 ########### Move Service
@@ -167,7 +167,7 @@
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service
       force: yes
-      tags:
+    tags:
         - encache
 
   - name: Daemon-Reload

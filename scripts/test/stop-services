@@ -7,7 +7,6 @@ fusermount -uz /mnt/plexdrive
 fusermount -uz /mnt/gdrive
 fusermount -uz /mnt/.gcrypt
 fusermount -uz /mnt/encrypt
-fusermount -uz /mnt/move
 
 
  systemctl stop unionfs
