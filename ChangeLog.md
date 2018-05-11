@@ -1,13 +1,17 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.078] (Beta, Release Candiate & DEV)
+### [5.080] (Beta, Release Candiate & DEV)
 
 - None
 
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.079] - 11 May
+
+- MergerFS Fixed
 
 #### [5.076-5.077] - 6 May 2018
 
