@@ -143,5 +143,11 @@ if [ "$edition" == "PG Edition: HD Solo" ]
     exit
 fi
 
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+    bash /opt/plexguide/menus/main.sh
+    exit
+fi
+
 #### falls to this menu incase none work above
 bash /opt/plexguide/scripts/baseinstall/edition.sh
