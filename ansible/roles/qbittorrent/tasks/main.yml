@@ -1,0 +1,80 @@
+---
+- include_role:
+    name: variables
+
+- name: Remove qBittorrent Container
+  docker_container:
+    name: "qBittorrent"
+    state: absent
+
+- name: Remove Previous Settings
+  file:
+    path:
+      - "/opt/appdata/{{ item }}"
+    state: absent
+  with_items:
+    - "qbittorrent"
+
+- name: Add Main-Folder
+  file:
+    path: "/opt/appdata/qbittorrent"
+    mode: 0775
+    state: directory
+
+#- name: Add Sub-Folders
+#  file:
+#    path:
+#      - "{{ item }}"
+#    mode: 0775
+#    state: directory
+#  with_items:
+#    - "/opt/appdata/utorrent"
+#    - "/opt/appdata/utorrent/settings"
+#    - "/opt/appdata/utorrent/data"
+#    - "/opt/appdata/utorrent/active"
+#    - "/opt/appdata/utorrent/autoload"
+#    - "/opt/appdata/utorrent/torrents"
+
+# - name: Install utserver.conf
+#   template:
+#     src: "utserver.conf"
+#     dest: "/opt/appdata/utorrent/utserver.conf"
+#     force: yes
+#     mode: 0775
+
+#- name: Fetch entrypoint.sh
+#  get_url:
+#    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
+#    dest: /opt/appdata/utorrent/entrypoint.sh
+#    mode: 0775
+
+- name: Deploy uTorrent Container
+  docker_container:
+    name: "qBittorrent"
+    image: thecreatorzone/qbittorrent-pg
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}8080:8080"
+      - "6881:6881"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/opt/appdata/qbittorrent/torrents:/torrents"
+      - "/opt/appdata/qbittorrent/config:/config"
+      - "/opt/appdata/qbittorrent/downloads:/downloads"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt/unionfs/:/unionfs"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - qBittorrent
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:qbittorrent.{{domain.stdout}}"
+      traefik.port: "8080"
