@@ -28,6 +28,7 @@ export NCURSES_NO_UTF8_ACS=1
           C "Jackett"
           D "VPN Options"
           E "BETA - uTorrent"
+          F "BETA - qBittorrent"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -94,6 +95,21 @@ case $CHOICE in
        dialog --infobox "Installing: $display" 3 30
        port=8080
        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags utorrent &>/dev/null &
+        sleep 3
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
+       ;;
+
+     F)
+       display=qBittorrent
+       program=qBittorrent
+       echo "$program" > /tmp/program_var
+       dialog --infobox "Installing: $display" 3 30
+       port=8080
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent &>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
