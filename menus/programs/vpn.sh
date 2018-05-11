@@ -51,12 +51,12 @@ case $CHOICE in
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
      bash /opt/plexguide/menus/programs/vpn.sh
-        sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+  #      sleep 3
+  #          echo "$program" > /tmp/program
+  #          echo "$program" > /tmp/program_var
+  #          echo "$port" > /tmp/port
+  #          bash /opt/plexguide/menus/time/cron.sh
+  #          bash /opt/plexguide/menus/programs/ending.sh
      ;;
      B)
        display=DelugeVPN
@@ -75,18 +75,24 @@ case $CHOICE in
      ;;
      C)
        display=rTorrentVPN
-       program=rtorrentvpn
+       program=rutorrent
+       program_extra=flood
        echo "$program" > /tmp/program_var
+       echo "$program_extra" > /tmp/program_var_extra
        dialog --infobox "Installing: $display" 3 30
-       port=3000
+       port=9080
+       port_extra=3000
        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
        #&>/dev/null &
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
+            echo "$program_extra" > /tmp/program_extra
+            echo "$program_extra" > /tmp/program_var_extra
+            echo "$port_extra" > /tmp/port_extra
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+            bash /opt/plexguide/menus/programs/ending_extra.sh
      ;;
      Z)
        exit 0 ;;
