@@ -156,7 +156,7 @@
   lineinfile:
     path: "/opt/appdata/nzbget/nzbget.conf"
     regexp: '^ScriptDir\s?='
-    line: 'ScriptDir=scripts/'
+    line: 'ScriptDir=/scripts'
     state: present
   when: nzbget_conf.stat.exists == False
 
