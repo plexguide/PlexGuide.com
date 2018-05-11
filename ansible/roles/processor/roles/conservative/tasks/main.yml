@@ -72,3 +72,8 @@
 
 - name: Disable Scaling Frequency
   shell: "update-rc.d ondemand disable"
+  when: (ansible_service_mgr != 'systemd')
+  
+- name: Disable Scaling Frequency UB18
+  shell: "systemctl disable ondemand"
+  when: (ansible_service_mgr == 'systemd')  
