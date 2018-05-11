@@ -32,6 +32,7 @@ OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          F "Kernel Mods   : Enhance Network Throughput"
          G "WatchTower    : Auto-Update Application Manager"
          H "App Themes    : Install Dark Theme(s) For Apps "
+         I "Default App   : For Your Top Level Domain"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -71,6 +72,8 @@ case $CHOICE in
         bash /opt/plexguide/menus/watchtower/main.sh ;;
     J)
         bash /opt/plexguide/menus/themes/main.sh ;;
+    I)
+        bash /opt/plexguide/menus/tld/main.sh ;;     
     Z)
         clear
         exit 0
