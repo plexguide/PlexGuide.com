@@ -103,9 +103,9 @@ make deb #1>/dev/null 2>&1
 cd .. 
 dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
-  else
+  fi
+else
     clear 1>/dev/null 2>&1
-  fi 
 fi
 
             #### Multiple Editions HD
