@@ -496,7 +496,7 @@ case $CHOICE in
               fi
 
                 ### Set Everything for GDrive Editon
-                echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+                echo "PG Edition: GCE Feed" > /var/plexguide/pg.edition
                 echo "feeder" > /var/pg.server.deploy
                 bash /opt/plexguide/menus/main.sh
                 exit
