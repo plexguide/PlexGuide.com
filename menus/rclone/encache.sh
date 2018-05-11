@@ -124,8 +124,11 @@ cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags encache
 #ansible-playbook /opt/plexguide/ansible/vpn.yml --tags encache
 
-## RClone Script
-#chmod 755 /opt/appdata/plexguide/rclone.sh 1>/dev/null 2>&1
+## Encache Script
+chmod 755 /opt/appdata/plexguide/encache.sh 1>/dev/null 2>&1
+
+## UnionFS Script
+chmod 755 /opt/appdata/plexguide/unionfs.sh 1>/dev/null 2>&1
 
 ## Create the Move Script
 chmod 755 /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
