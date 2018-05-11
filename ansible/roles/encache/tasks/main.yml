@@ -21,6 +21,8 @@
     stat:
       path: "/opt/appdata/plexguide/encache.sh"
     register: encache
+    tags:
+      - encache
 
 
   - name: Install Encache Service
@@ -29,6 +31,8 @@
       dest: /opt/appdata/plexguide/encache.sh
       force: yes
     when: encache.stat.exists == False
+    tags:
+      - encache
 
     ####
 
@@ -36,22 +40,30 @@
     stat:
       path: "/opt/appdata/plexguide/move.sh"
     register: move
+    tags:
+      - encache
 
   - name: Install Move Service
     template:
-      src: move.js2
+      src: move_script.js2
       dest: /opt/appdata/plexguide/move.sh
       force: yes
+    tags:
+        - encache
 
 ########### Move Service
   - name: Check MOVE Service
     stat:
       path: "/etc/systemd/system/move.service"
     register: move
+    tags:
+      - encache
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     when: move.stat.exists
+    tags:
+      - encache
 
   - name: Install Move Service
     template:
@@ -59,13 +71,19 @@
       dest: /etc/systemd/system/move.service
       force: yes
     when: move.stat.exists == False
+    tags:
+      - encache
 
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=no
+    tags:
+      - encache
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     when: move.stat.exists
+    tags:
+      - encache
 
 ########### Cache directory
 
@@ -100,11 +118,15 @@
     stat:
       path: "/etc/systemd/system/encache.service"
     register: encache
+    tags:
+      - encache
 
   - name: Stop If ENCACHE Service Running
     systemd: state=stopped name=encache
     ignore_errors: True
     when: encache.stat.exists
+    tags:
+      - encache
 
 
   - name: Install ENCACHE Service
@@ -113,6 +135,8 @@
       dest: /etc/systemd/system/encache.service
       force: yes
     when: encache.stat.exists == False
+    tags:
+      - encache
 
   - name: Daemon-Reload
     systemd: state=stopped name=encache daemon_reload=yes enabled=no
@@ -120,6 +144,8 @@
   - name: Start ENCACHE
     systemd: state=started name=encache enabled=yes
     when: encache.stat.exists
+    tags:
+      - encache
 
 
 ########### UNIONFS
@@ -127,20 +153,30 @@
     stat:
       path: "/etc/systemd/system/unionfs.service"
     register: unionfs
+    tags:
+      - encache
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     when: unionfs.stat.exists
+    tags:
+      - encache
 
   - name: Install UNIONFS Service
     template:
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service
       force: yes
+    tags:
+        - encache
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - encache
 
   - name: Start UNIONFS
     systemd: state=started name=unionfs enabled=yes
     when: unionfs.stat.exists
+    tags:
+      - encache
