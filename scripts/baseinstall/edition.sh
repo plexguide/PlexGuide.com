@@ -50,7 +50,7 @@ deploy=$( cat /var/pg.server.deploy )
     stat4="" 1>/dev/null 2>&1
   fi
 
-HEIGHT=12
+HEIGHT=11
 WIDTH=41
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
@@ -430,7 +430,7 @@ case $CHOICE in
                 WIDTH=50
                 CHOICE_HEIGHT=2
                 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                TITLE="Solo HD >>> GDrive Edition"
+                TITLE="Solo HD >>> GCE Feeder"
                 MENU="Switching To GDrive Will Move your Current!"
 
                 OPTIONS=(A "To /mnt/old  - For Storage"
@@ -467,7 +467,7 @@ case $CHOICE in
                 WIDTH=50
                 CHOICE_HEIGHT=2
                 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-                TITLE="Multi HD >>> GDrive Edition"
+                TITLE="Multi HD >>> GCE Feeder"
                 MENU="Switching To GDrive Will Stop Your Drives Pool!"
 
                 OPTIONS=(A "Yes: Switch"
