@@ -2,16 +2,24 @@
 
 ## Stop all services and unmount drives
 
-sudo systemctl stop unionfs
-sudo systemctl stop unionfs-encrypt
-sudo systemctl stop plexdrive
-sudo systemctl stop rclone
-sudo systemctl stop rclone-en
-sudo systemctl stop rclone-encrypt
-sudo systemctl stop move-en
-sudo systemctl stop move
-sudo systemctl stop cache
-sudo systemctl stop encache
+fusermount -uz /mnt/unionfs
+fusermount -uz /mnt/plexdrive
+fusermount -uz /mnt/gdrive
+fusermount -uz /mnt/.gcrypt
+fusermount -uz /mnt/encrypt
+fusermount -uz /mnt/move
+
+
+ systemctl stop unionfs
+ systemctl stop unionfs-encrypt
+ systemctl stop plexdrive
+ systemctl stop rclone
+ systemctl stop rclone-en
+ systemctl stop rclone-encrypt
+ systemctl stop move-en
+ systemctl stop move
+ systemctl stop cache
+ systemctl stop encache
 
 
 systemctl disable unionfs 1>/dev/null 2>&1
@@ -25,7 +33,7 @@ systemctl disable move-en 1>/dev/null 2>&1
 systemctl disable cache 1>/dev/null 2>&1
 systemctl disable encache 1>/dev/null 2>&1
 
-sudo systemctl daemon-reload
+ systemctl daemon-reload
 
 #sudo umount -l /mnt/unionfs
 #sudo umount -l /mnt/plexdrive
@@ -34,9 +42,5 @@ sudo systemctl daemon-reload
 #sudo umount -l /mnt/encrypt
 #sudo umount -l /mnt/move
 
- fusermount -uz /mnt/unionfs
- fusermount -uz /mnt/plexdrive
- fusermount -uz /mnt/gdrive
- fusermount -uz /mnt/.gcrypt
- fusermount -uz /mnt/encrypt
- fusermount -uz /mnt/move
+
+esac
