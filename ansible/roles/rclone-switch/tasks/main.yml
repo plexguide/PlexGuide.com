@@ -166,6 +166,13 @@
         force: yes
       when: move.stat.exists
 
+    - name: Remove move.sh
+      file:
+        state: absent
+        path: /opt/appdata/plexguide/move.sh
+        force: yes
+      when: move.stat.exists
+
 ################# Remove move-en Regardless
 
     - name: Check service exists
@@ -183,3 +190,53 @@
         path: /etc/systemd/system/move-en.service
         force: yes
       when: move_en.stat.exists
+
+################# Remove cache Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/cache.service"
+      register: cache
+
+    - name: Stop existing cache service
+      systemd: state=stopped name=cache
+      when: cache.stat.exists
+
+    - name: Remove cache Service
+      file:
+        state: absent
+        path: /etc/systemd/system/cache.service
+        force: yes
+      when: cache.stat.exists
+
+    - name: Remove cache.sh
+      file:
+        state: absent
+        path: /opt/appdata/plexguide/cache.sh
+        force: yes
+      when: cache.stat.exists
+
+################# Remove encache Regardless
+
+    - name: Check service exists
+      stat:
+        path: "/etc/systemd/system/encache.service"
+      register: encache
+
+    - name: Stop existing encache service
+      systemd: state=stopped name=encache
+      when: encache.stat.exists
+
+    - name: Remove encache Service
+      file:
+        state: absent
+        path: /etc/systemd/system/encache.service
+        force: yes
+      when: encache.stat.exists
+
+    - name: Remove encache.sh
+      file:
+        state: absent
+        path: /opt/appdata/plexguide/encache.sh
+        force: yes
+      when: encache.stat.exists
