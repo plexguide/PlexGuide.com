@@ -105,7 +105,7 @@ dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
   else
     clear 1>/dev/null 2>&1
-fi 
+  fi 
 fi
 
             #### Multiple Editions HD
