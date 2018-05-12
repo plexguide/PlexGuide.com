@@ -12,6 +12,7 @@
     path:
       - "{{ item }}"
     state: absent
+    recurse: yes
   with_items:
     - /opt/appdata/qbittorrent
     - /mnt/qbittorrent
@@ -23,6 +24,7 @@
     owner: 1000
     group: 1000
     state: directory
+    recurse: yes
   with_items:
     - config
     - torrents
@@ -51,7 +53,7 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
-      - "/mnt/qbittorrent/downloads:/downloads"
+      - "/mnt/qbittorrent/downloads:/qbittorrent/downloads"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
