@@ -145,7 +145,7 @@ fi
 
 if [ "$edition" == "PG Edition: GCE Feed" ]
   then
-    bash /opt/plexguide/menus/gce/programs.sh
+    bash /opt/plexguide/menus/gce.sh
     exit
 fi
 

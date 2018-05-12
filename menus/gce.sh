@@ -48,7 +48,7 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/rclone/old-or-new.sh ;;
         B)
-            bash /opt/plexguide/menus/programs/main.sh ;;
+            bash /opt/plexguide/menus/gce/programs.sh ;;
         C)
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
