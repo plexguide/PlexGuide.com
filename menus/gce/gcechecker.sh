@@ -86,11 +86,11 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   # Allow non-root users to specify the allow_other or allow_root mount options.
   user_allow_other
 EOF
+echo "yes" > /var/plexguide/gce.check
     else
       if [ "$drop" == "yes" ]
       then
         exit 0 
       fi
-      echo "yes" > /var/plexguide/gce.check
       dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly! You will proceed, but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
 fi
