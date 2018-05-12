@@ -79,7 +79,8 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
       echo "80" | dialog --gauge "Installing RCLONE BETA" 7 50 0
-      curl -s https://rclone.org/install.sh 1>/dev/null 2>&1 | bash -s beta 1>/dev/null 2>&1
+      sleep 1
+      curl -s https://rclone.org/install.sh | bash -s beta
       sleep 2
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
