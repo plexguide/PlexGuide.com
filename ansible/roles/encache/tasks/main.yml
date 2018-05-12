@@ -129,7 +129,7 @@
       src: encache_script.js2
       dest: /opt/appdata/plexguide/encache.sh
       force: yes
-#    when: encache_script.stat.exists == False
+    when: encache_script.stat.exists == False
 #    tags:
 #      - encache
 
@@ -144,7 +144,7 @@
   - name: Stop If ENCACHE Service Running
     systemd: state=stopped name=encache
     ignore_errors: True
-#    when: encache.stat.exists
+    when: encache.stat.exists
 #    tags:
 #      - encache
 
@@ -154,7 +154,7 @@
       src: encache.js2
       dest: /etc/systemd/system/encache.service
       force: yes
-#    when: encache.stat.exists == False
+    when: encache.stat.exists == False
 #    tags:
 #      - encache
 
@@ -163,7 +163,7 @@
 
   - name: Start ENCACHE
     systemd: state=started name=encache enabled=yes
-#    when: encache.stat.exists
+    when: encache.stat.exists
 #    tags:
 #      - encache
 
