@@ -11,7 +11,7 @@ portstat=$(cat /var/plexguide/server.ports.status)
 watchtower=$(cat /var/plexguide/watchtower.yes)
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 
-sleep 2
+sleep 1
 
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1

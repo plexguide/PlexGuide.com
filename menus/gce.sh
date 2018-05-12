@@ -17,6 +17,8 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
+bash /opt/plexguide/menus/gce/gcechecker.sh
+
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
@@ -76,4 +78,4 @@ case $CHOICE in
 esac
 
 ## repeat menu when exiting
-bash /opt/plexguide/menus/main.sh
+bash /opt/plexguide/menus/gce.sh
