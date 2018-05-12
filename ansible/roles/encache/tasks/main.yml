@@ -36,29 +36,13 @@
 #    when: gdrive.stat.exists == False
 #    ignore_errors: yes
 
-########### Encache Sync Script
-  - name: Check Encache Sync SCRIPT
-    stat:
-      path: "/opt/appdata/plexguide/encache.sh"
-    register: encache
-#    tags:
-#      - encache
-
-  - name: Install Encache Service
-    template:
-      src: encache.js2
-      dest: /opt/appdata/plexguide/encache.sh
-      force: yes
-    when: encache.stat.exists == False
-#    tags:
-#      - encache
 
     ####
 
   - name: Check MOVE SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move.sh"
-    register: move
+    register: move_script
 #    tags:
 #      - encache
 
@@ -132,6 +116,23 @@
 #  - name: Start CACHE
 #    systemd: state=started name=cache enabled=yes
 
+########### Encache Sync Script
+  - name: Check Encache Sync SCRIPT
+    stat:
+      path: "/opt/appdata/plexguide/encache.sh"
+    register: encache_script
+#    tags:
+#      - encache
+
+  - name: Install Encache Service
+    template:
+      src: encache_script.js2
+      dest: /opt/appdata/plexguide/encache.sh
+      force: yes
+#    when: encache_script.stat.exists == False
+#    tags:
+#      - encache
+
 ########### Encrypted Cache
   - name: Check ENCACHE Service
     stat:
@@ -143,7 +144,7 @@
   - name: Stop If ENCACHE Service Running
     systemd: state=stopped name=encache
     ignore_errors: True
-    when: encache.stat.exists
+#    when: encache.stat.exists
 #    tags:
 #      - encache
 
@@ -153,7 +154,7 @@
       src: encache.js2
       dest: /etc/systemd/system/encache.service
       force: yes
-    when: encache.stat.exists == False
+#    when: encache.stat.exists == False
 #    tags:
 #      - encache
 
@@ -162,7 +163,7 @@
 
   - name: Start ENCACHE
     systemd: state=started name=encache enabled=yes
-    when: encache.stat.exists
+#    when: encache.stat.exists
 #    tags:
 #      - encache
 
