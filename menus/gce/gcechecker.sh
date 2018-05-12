@@ -25,7 +25,7 @@ file="/dev/sdc"
       deploy="yes"
   fi
 
-file="/dev/nvme0n1"
+file="/dev/nvme0n2"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
       deploy="yes"
