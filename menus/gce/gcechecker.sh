@@ -15,13 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 ####### START OF STATEMENT
-file="/nvme2"
-  if [ -e "$file" ]
+drop=$(cat /var/plexguide/gce.check)
+
+file="/dev/nvme0n1"
+  if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
-      echo "corn" 1>/dev/null 2>&1
-    else
+
       mkfs.ext4 -F /dev/nvme0n1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
       chmod a+w /mnt
@@ -33,9 +33,6 @@ file="/nvme2"
       chmod a+w /nvme2
       echo UUID=`blkid | grep nvme0n2 | cut -f2 -d'"'` /nvme2 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-file="/nvme2"
-  if [ -e "$file" ]
-    then
       mv /mnt/move /nvme2/move
       ln -s /nvme2/move /mnt
 
@@ -63,10 +60,9 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   # Allow non-root users to specify the allow_other or allow_root mount options.
   user_allow_other
 EOF
+      echo "yes" > /var/plexguide/gce.check
     else
-    echo "corn" 1>/dev/null 2>&1
-    ## Tell Users Doesn't Exist / Issues
-  fi
+      echo "corn" 1>/dev/null 2>&1
 fi
 ####### END OF STATEMENT
 
