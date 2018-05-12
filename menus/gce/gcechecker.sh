@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-touch /nvme2/.test
+touch /nvme2/.test 1>/dev/null 2>&1
 
 ####### START OF STATEMENT
 file="touch /nvme2/.test" 1>/dev/null 2>&1
@@ -34,7 +34,11 @@ file="touch /nvme2/.test" 1>/dev/null 2>&1
       mount -o discard,defaults,nobarrier /dev/nvme0n2 /nvme2
       chmod a+w /nvme2
       echo UUID=`blkid | grep nvme0n2 | cut -f2 -d'"'` /nvme2 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
-  
+
+touch /nvme2/.test 1>/dev/null 2>&1
+file="touch /nvme2/.test" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
       mv /mnt/move /nvme2/move
       ln -s /nvme2/move /mnt
 
@@ -62,19 +66,11 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   # Allow non-root users to specify the allow_other or allow_root mount options.
   user_allow_other
 EOF
-
-  fi
-####### END OF STATEMENT
-
-
-file="touch /nvme2/.test" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-      echo "corn" 1>/dev/null 2>&1
     else
     ## Tell Users Doesn't Exist / Issues
-    exit
   fi
+fi
+####### END OF STATEMENT
 
 exit
 ################### NOTES ONLY BELOW ######
