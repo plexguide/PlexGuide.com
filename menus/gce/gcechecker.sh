@@ -22,11 +22,12 @@ file="/dev/nvme0n1"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
 
+      dialog --title "NOTICE" --msgbox "\nWe are Deploying your GCE Feeder" 0 0
+
+      echo "0" | dialog --gauge "Mount Deployment" 7 50 0
+      sleep 1
+
       clear
-      echo "Setting Up Your Feeder Box"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue"
-      echo ""
       mkfs.ext4 -F /dev/nvme0n1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
       chmod a+w /mnt
@@ -48,33 +49,32 @@ file="/dev/nvme0n1"
       chown -R 1000:1000 /mnt
       chown -R 1000:1000 /nvme2
 
-      echo ""
-      echo "Installing Sonarr"
-      sleep 0.5
+      echo "20" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
+      sleep 1
       
-      echo "Installing Radarr"
-      sleep 0.5
+      echo "40" | dialog --gauge "Deploying Radarr" 7 50 0
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
+      sleep 1
 
+      echo "60" | dialog --gauge "Deploying SABNZBD" 7 50 0
       echo "Installing SABNZBD"
-      sleep 0.5
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
+      sleep 1
 
-      echo "Installing NZBGET"
-      sleep 0.5
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
+      #echo "Installing NZBGET"
+      #sleep 0.5
+      #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
-      echo "Installing RCLONE BETA"
-      sleep 0.5
+      echo "80" | dialog --gauge "Installing RCLONE BETA" 7 50 0
       curl -s https://rclone.org/install.sh | bash -s beta
+      sleep 1
 
-      echo ""
-      echo "Feeder Box Deployment Finished"
-      echo ""
-      read -n 1 -s -r -p "Press any key to continue"
+      echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
+      sleep 2
+
 ## RClone - Replace Fuse by removing the # from user_allow_other
 tee "/etc/fuse.conf" > /dev/null <<EOF
   # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
