@@ -54,27 +54,27 @@ file="/dev/nvme0n1"
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
       
-      echo ""
       echo "Installing Radarr"
       sleep 0.5
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
 
-      echo ""
       echo "Installing SABNZBD"
       sleep 0.5
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
 
-      echo ""
       echo "Installing NZBGET"
       sleep 0.5
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
-      echo ""
       echo "Installing RCLONE BETA"
       sleep 0.5
       curl -s https://rclone.org/install.sh | bash -s beta
 
+      echo ""
+      echo "Feeder Box Deployment Finished"
+      echo ""
+      read -n 1 -s -r -p "Press any key to continue"
 ## RClone - Replace Fuse by removing the # from user_allow_other
 tee "/etc/fuse.conf" > /dev/null <<EOF
   # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
