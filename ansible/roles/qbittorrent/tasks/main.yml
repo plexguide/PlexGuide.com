@@ -18,15 +18,27 @@
 
 - name: Add Config-Folder
   file:
-    path: "/opt/appdata/qbittorrent/{{ item }}"
+    path: "/opt/appdata/qbittorrent/config"
     mode: 0775
     owner: 1000
     group: 1000
     state: directory
-    recurse: yes
-  with_items:
-    - config
-    - torrents
+
+- name: Add Torrents-Folder
+  file:
+    path: "/opt/appdata/qbittorrent/torrents"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+
+- name: Add Main-Folder
+  file:
+    path: "/mnt/qbittorrent"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
 
 - name: Add Downloads-Folder
   file:
@@ -35,7 +47,13 @@
     owner: 1000
     group: 1000
     state: directory
-    recurse: yes
+
+- template:
+    src: qBittorrent.conf
+    dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
+    owner: 1000
+    group: 1000
+    mode: 0755
 
 - name: Deploy uTorrent Container
   docker_container:
