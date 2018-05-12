@@ -51,7 +51,7 @@
 - name: Deploy uTorrent Container
   docker_container:
     name: "qBittorrent"
-    image: thecreatorzone/qbittorrent-pg
+    image: thecreatorzone/qbit
     pull: yes
     cpu_shares: 256
     published_ports:
