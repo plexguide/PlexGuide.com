@@ -25,6 +25,8 @@ file="/dev/nvme0n1"
       clear
       echo "Setting Up Your Feeder Box"
       echo ""
+      read -n 1 -s -r -p "Press any key to continue"
+      echo ""
       mkfs.ext4 -F /dev/nvme0n1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
       chmod a+w /mnt
@@ -46,19 +48,29 @@ file="/dev/nvme0n1"
       chown -R 1000:1000 /mnt
       chown -R 1000:1000 /nvme2
 
+      echo ""
+      echo "Installing Sonarr"
+      sleep 0.5
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
-      read -n 1 -s -r -p "Press any key to continue"
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
       
+      echo ""
+      echo "Installing Radarr"
+      sleep 0.5
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
-      read -n 1 -s -r -p "Press any key to continue"
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
-      read -n 1 -s -r -p "Press any key to continue"
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
+
+      echo ""
+      echo "Installing SABNZBD"
+      sleep 0.5
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
+
+      echo ""
+      echo "Installing NZBGET"
+      sleep 0.5
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
       curl -s https://rclone.org/install.sh | bash -s beta
-      read -n 1 -s -r -p "Press any key to continue"
-
 
 ## RClone - Replace Fuse by removing the # from user_allow_other
 tee "/etc/fuse.conf" > /dev/null <<EOF
