@@ -67,6 +67,7 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
   user_allow_other
 EOF
     else
+    echo "corn" 1>/dev/null 2>&1
     ## Tell Users Doesn't Exist / Issues
   fi
 fi
