@@ -22,7 +22,7 @@ file="/dev/nvme0n1"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
 
-      dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 50
+      dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 35
 
       echo "0" | dialog --gauge "Mount Deployment" 7 50 0
       sleep 1
