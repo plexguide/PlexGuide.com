@@ -70,6 +70,7 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
+      - "/opt/appdata/qbittorrent/config/qBittorrent.conf:/config/qBittorrent.conf"
       - "/mnt/qbittorrent/downloads:/qbittorrent/downloads"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
