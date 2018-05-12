@@ -125,13 +125,13 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags encache
 #ansible-playbook /opt/plexguide/ansible/vpn.yml --tags encache
 
 ## Encache Script
-chmod 755 /opt/appdata/plexguide/encache.sh 1>/dev/null 2>&1
+chmod 775 /opt/appdata/plexguide/encache.sh 1>/dev/null 2>&1
 
 ## UnionFS Script
-chmod 755 /opt/appdata/plexguide/unionfs.sh 1>/dev/null 2>&1
+chmod 775 /opt/appdata/plexguide/unionfs.sh 1>/dev/null 2>&1
 
 ## Create the Move Script
-chmod 755 /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
+chmod 775 /opt/appdata/plexguide/move.sh 1>/dev/null 2>&1
 
 ###### Ensure Changes Are Reflected
 #sudo systemctl daemon-reload

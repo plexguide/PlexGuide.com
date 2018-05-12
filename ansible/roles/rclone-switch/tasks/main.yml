@@ -64,17 +64,17 @@
         force: yes
       when: rclone.stat.exists
 
-    - name: Check RC Binary Exist
-      stat:
-        path: "/usr/bin/rclone"
-      register: rcb
+#    - name: Check RC Binary Exist
+#      stat:
+#        path: "/usr/bin/rclone"
+#      register: rcb
 
-    - name: Remove RC Binary
-      file:
-        state: absent
-        path: /usr/bin/rclone
-        force: yes
-      when: rcb.stat.exists
+#    - name: Remove RC Binary
+#      file:
+#        state: absent
+#        path: /usr/bin/rclone
+#        force: yes
+#      when: rcb.stat.exists
 
 ################# Remove RClone-en Regardless
 
@@ -166,12 +166,17 @@
         force: yes
       when: move.stat.exists
 
+    - name: Check move SCRIPT
+      stat:
+        path: "/opt/appdata/plexguide/move.sh"
+      register: move_script
+
     - name: Remove move.sh
       file:
         state: absent
         path: /opt/appdata/plexguide/move.sh
         force: yes
-      when: move.stat.exists
+      when: move_script.stat.exists
 
 ################# Remove move-en Regardless
 
@@ -209,12 +214,17 @@
         force: yes
       when: cache.stat.exists
 
+    - name: Check cache SCRIPT
+      stat:
+        path: "/opt/appdata/plexguide/cache.sh"
+      register: cache_script
+
     - name: Remove cache.sh
       file:
         state: absent
         path: /opt/appdata/plexguide/cache.sh
         force: yes
-      when: cache.stat.exists
+      when: cache_script.stat.exists
 
 ################# Remove encache Regardless
 
@@ -234,9 +244,14 @@
         force: yes
       when: encache.stat.exists
 
+    - name: Check encache SCRIPT
+      stat:
+       path: "/opt/appdata/plexguide/encache.sh"
+      register: encache_script
+
     - name: Remove encache.sh
       file:
         state: absent
         path: /opt/appdata/plexguide/encache.sh
         force: yes
-      when: encache.stat.exists
+      when: encache_script.stat.exists
