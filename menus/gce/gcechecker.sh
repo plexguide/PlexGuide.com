@@ -46,11 +46,11 @@ file="/dev/nvme0n1"
       chown -R 1000:1000 /mnt
       chown -R 1000:1000 /nvme2
 
-      echo "linuxserver" > /var/plexguide/image.sonarr
+      echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
       read -n 1 -s -r -p "Press any key to continue"
       
-      echo "linuxserver" > /var/plexguide/image.radarr
+      echo "linuxserver/radarr" > /var/plexguide/image.radarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
       read -n 1 -s -r -p "Press any key to continue"
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
