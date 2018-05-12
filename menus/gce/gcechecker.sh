@@ -28,26 +28,26 @@ file="/dev/nvme0n1"
       sleep 1
 
       clear
-      mkfs.ext4 -F /dev/nvme0n1
+      mkfs.ext4 -F /dev/nvme0n1 1>/dev/null 2>&1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
-      chmod a+w /mnt
+      chmod a+w /mnt 1>/dev/null 2>&1
       echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /mnt ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-      mkdir -p /nvme2
+      mkdir -p /nvme2 1>/dev/null 2>&1
       mkfs.ext4 -F /dev/nvme0n2
       mount -o discard,defaults,nobarrier /dev/nvme0n2 /nvme2
-      chmod a+w /nvme2
+      chmod a+w /nvme2 1>/dev/null 2>&1
       echo UUID=`blkid | grep nvme0n2 | cut -f2 -d'"'` /nvme2 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-      mv /mnt/move /nvme2/move
-      ln -s /nvme2/move /mnt
+      mv /mnt/move /nvme2/move 1>/dev/null 2>&1
+      ln -s /nvme2/move /mnt 1>/dev/null 2>&1
 
-      mkdir -p /nvme2/sab/complete
-      rm -r /mnt/sab/complete
-      ln -s /nvme2/sab/complete /mnt/sab/
+      mkdir -p /nvme2/sab/complete 1>/dev/null 2>&1
+      rm -r /mnt/sab/complete 1>/dev/null 2>&1
+      ln -s /nvme2/sab/complete /mnt/sab/ 
 
-      chown -R 1000:1000 /mnt
-      chown -R 1000:1000 /nvme2
+      chown -R 1000:1000 /mnt 1>/dev/null 2>&1
+      chown -R 1000:1000 /nvme2 1>/dev/null 2>&1
 
       echo "20" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
@@ -69,7 +69,7 @@ file="/dev/nvme0n1"
       #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
       echo "80" | dialog --gauge "Installing RCLONE BETA" 7 50 0
-      curl -s https://rclone.org/install.sh | bash -s beta
+      curl -s https://rclone.org/install.sh 1>/dev/null 2>&1 | bash -s beta 1>/dev/null 2>&1
       sleep 1
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
