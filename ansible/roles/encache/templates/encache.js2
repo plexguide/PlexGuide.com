@@ -15,8 +15,8 @@ ExecStart=/usr/bin/rclone mount \
   --allow-non-empty \
   --retries 2 \
   --cache-info-age 8h \
- # --uid 1000 \
- # --gid 1000 \
+  --uid 1000 \
+  --gid 1000 \
   cachecrypt: /mnt/gdrive
 KillMode=process
 RemainAfterExit=yes
