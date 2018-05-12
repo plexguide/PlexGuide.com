@@ -3,7 +3,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.080] (Beta, Release Candiate & DEV)
 
-- None
+- Load Up Faster
+- Sped up Installer / Updater
+- Added GCE Feeder Edition (Not Ready)
 
 -------------------------------------------------------
 ## Past Changes
