@@ -12,7 +12,6 @@
     path:
       - "{{ item }}"
     state: absent
-    recurse: yes
   with_items:
     - /opt/appdata/qbittorrent
     - /mnt/qbittorrent
