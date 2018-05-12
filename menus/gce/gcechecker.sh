@@ -90,7 +90,8 @@ echo "yes" > /var/plexguide/gce.check
     else
       if [ "$drop" == "yes" ]
       then
-        exit 0 
+        echo "corn" &>/dev/null &
+      else 
+        dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly! You will proceed, but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
       fi
-      dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly! You will proceed, but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
 fi
