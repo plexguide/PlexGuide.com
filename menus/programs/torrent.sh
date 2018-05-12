@@ -23,12 +23,11 @@ export NCURSES_NO_UTF8_ACS=1
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Torrent Programs"
 
- OPTIONS=(A "RuTorrent"
-          B "Deluge"
-          C "Jackett"
-          D "VPN Options"
-          E "BETA - uTorrent"
-          F "BETA - qBittorrent"
+ OPTIONS=(A "qBittorrent"
+          B "RuTorrent"
+          C "Deluge"
+          D "Jackett"
+          E "VPN Options"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -40,7 +39,22 @@ export NCURSES_NO_UTF8_ACS=1
 
 case $CHOICE in
 
-     A)
+    A)
+        display=qBittorrent
+        program=qBittorrent
+        echo "$program" > /tmp/program_var
+        dialog --infobox "Installing: $display" 3 30
+        port=8080
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent &>/dev/null &
+         sleep 3
+             echo "$program" > /tmp/program
+             echo "$program" > /tmp/program_var
+             echo "$port" > /tmp/port
+             bash /opt/plexguide/menus/time/cron.sh
+             bash /opt/plexguide/menus/programs/ending.sh
+        ;;
+
+     B)
        display=RUTorrent
        program=rutorrent
        echo "$program" > /tmp/program_var
@@ -55,7 +69,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
-     B)
+     C)
        display=Deluge
        program=deluge
        echo "$program" > /tmp/program_var
@@ -70,7 +84,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
-     C)
+     D)
        display=Jackett
        program=jackett
        echo "$program" > /tmp/program_var
@@ -85,38 +99,8 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
        ;;
 
-     D)
-       bash /opt/plexguide/menus/programs/vpn.sh ;;
-
      E)
-       display=uTorrent
-       program=utorrent
-       echo "$program" > /tmp/program_var
-       dialog --infobox "Installing: $display" 3 30
-       port=8080
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags utorrent &>/dev/null &
-        sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-       ;;
-
-     F)
-       display=qBittorrent
-       program=qBittorrent
-       echo "$program" > /tmp/program_var
-       dialog --infobox "Installing: $display" 3 30
-       port=8080
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent &>/dev/null &
-        sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-       ;;
+       bash /opt/plexguide/menus/programs/vpn.sh ;;
 
      Z)
        exit 0 ;;

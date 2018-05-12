@@ -7,51 +7,40 @@
     name: "qBittorrent"
     state: absent
 
-- name: Remove Previous Settings
+- name: Remove Previous-Downloads Settings
   file:
     path:
-      - "/opt/appdata/{{ item }}"
+      - "{{ item }}"
     state: absent
   with_items:
-    - "qbittorrent"
+    - /opt/appdata/qbittorrent
+    - /mnt/qbittorrent
 
-- name: Add Main-Folder
+- name: Add Config-Folder
   file:
-    path: "/opt/appdata/qbittorrent"
+    path: "/opt/appdata/qbittorrent/{{ item }}"
     mode: 0775
+    owner: 1000
+    group: 1000
     state: directory
+    recurse: yes
+  with_items:
+    - config
+    - torrents
 
-#- name: Add Sub-Folders
-#  file:
-#    path:
-#      - "{{ item }}"
-#    mode: 0775
-#    state: directory
-#  with_items:
-#    - "/opt/appdata/utorrent"
-#    - "/opt/appdata/utorrent/settings"
-#    - "/opt/appdata/utorrent/data"
-#    - "/opt/appdata/utorrent/active"
-#    - "/opt/appdata/utorrent/autoload"
-#    - "/opt/appdata/utorrent/torrents"
-
-# - name: Install utserver.conf
-#   template:
-#     src: "utserver.conf"
-#     dest: "/opt/appdata/utorrent/utserver.conf"
-#     force: yes
-#     mode: 0775
-
-#- name: Fetch entrypoint.sh
-#  get_url:
-#    url: https://raw.githubusercontent.com/ekho/dockerized-tools/master/utorrent/entrypoint.sh
-#    dest: /opt/appdata/utorrent/entrypoint.sh
-#    mode: 0775
+- name: Add Downloads-Folder
+  file:
+    path: "/mnt/qbittorrent/downloads"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
 
 - name: Deploy uTorrent Container
   docker_container:
     name: "qBittorrent"
-    image: thecreatorzone/qbittorrent-pg
+    image: thecreatorzone/qbit
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -63,7 +52,7 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
-      - "/opt/appdata/qbittorrent/downloads:/downloads"
+      - "/mnt/qbittorrent/downloads:/qbittorrent/downloads"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always

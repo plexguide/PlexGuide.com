@@ -495,10 +495,10 @@ case $CHOICE in
                 esac
               fi
 
-                ### Set Everything for GDrive Editon
+                ### Set Everything for GCE Editon
                 echo "PG Edition: GCE Feed" > /var/plexguide/pg.edition
                 echo "feeder" > /var/pg.server.deploy
-                bash /opt/plexguide/menus/main.sh
+                bash /opt/plexguide/menus/gce.sh
                 exit
               else 
                 bash /opt/plexguide/scripts/baseinstall/edition.sh  
