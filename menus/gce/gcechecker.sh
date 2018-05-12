@@ -15,13 +15,24 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-####### START OF STATEMENT
+deploy="no"
 drop=$(cat /var/plexguide/gce.check)
 
-file="/dev/nvme0n1"
+### Set This Up Incase BoneHead didn't pick the NVME drives, but still requires the two drives setup
+file="/dev/sdc"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
+      deploy="yes"
+  fi
 
+file="/dev/nvme0n2"
+  if [ -e "$file" ] && [ "$drop" != "yes" ]
+    then
+      deploy="yes"
+  fi
+
+if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
+    then
       dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 35
 
       echo "0" | dialog --gauge "Mount Deployment" 7 50 0
@@ -91,6 +102,6 @@ echo "yes" > /var/plexguide/gce.check
       then
         echo "corn" &>/dev/null &
       else 
-        dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly! You will proceed, but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
+        dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly (or didn't read the wiki!) but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
       fi
 fi
