@@ -52,17 +52,16 @@ file="/dev/nvme0n1"
       echo "20" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
-      sleep 1
+      sleep 2
       
       echo "40" | dialog --gauge "Deploying Radarr" 7 50 0
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
-      sleep 1
+      sleep 2
 
       echo "60" | dialog --gauge "Deploying SABNZBD" 7 50 0
-      echo "Installing SABNZBD"
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
-      sleep 1
+      sleep 2
 
       #echo "Installing NZBGET"
       #sleep 0.5
@@ -70,7 +69,7 @@ file="/dev/nvme0n1"
 
       echo "80" | dialog --gauge "Installing RCLONE BETA" 7 50 0
       curl -s https://rclone.org/install.sh 1>/dev/null 2>&1 | bash -s beta 1>/dev/null 2>&1
-      sleep 1
+      sleep 2
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
       sleep 2
