@@ -10,11 +10,11 @@
 - name: Remove Previous-Downloads Settings
   file:
     path:
-      - "/{{ item }}"
+      - "{{ item }}"
     state: absent
   with_items:
-    - "opt/appdata/qbittorrent"
-    - "mnt/qbittorrent"
+    - /opt/appdata/qbittorrent
+    - /mnt/qbittorrent
 
 - name: Add Config-Folder
   file:
