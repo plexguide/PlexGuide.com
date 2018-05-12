@@ -16,10 +16,8 @@
 #
 #################################################################################
 
-touch /nvme2/.test 1>/dev/null 2>&1
-
 ####### START OF STATEMENT
-file="touch /nvme2/.test" 1>/dev/null 2>&1
+file="/nvme2"
   if [ -e "$file" ]
     then
       echo "corn" 1>/dev/null 2>&1
@@ -35,8 +33,7 @@ file="touch /nvme2/.test" 1>/dev/null 2>&1
       chmod a+w /nvme2
       echo UUID=`blkid | grep nvme0n2 | cut -f2 -d'"'` /nvme2 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-touch /nvme2/.test 1>/dev/null 2>&1
-file="touch /nvme2/.test" 1>/dev/null 2>&1
+file="/nvme2"
   if [ -e "$file" ]
     then
       mv /mnt/move /nvme2/move
