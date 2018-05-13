@@ -19,7 +19,7 @@
 - name: Add Config-Folder
   file:
     path: "/opt/appdata/qbittorrent/config"
-    mode: 0775
+    mode: 6775
     owner: 1000
     group: 1000
     state: directory
@@ -27,7 +27,7 @@
 - name: Add Torrents-Folder
   file:
     path: "/opt/appdata/qbittorrent/torrents"
-    mode: 0775
+    mode: 6775
     owner: 1000
     group: 1000
     state: directory
@@ -35,7 +35,7 @@
 - name: Add Main-Folder
   file:
     path: "/mnt/qbittorrent"
-    mode: 0775
+    mode: 6775
     owner: 1000
     group: 1000
     state: directory
@@ -43,7 +43,7 @@
 - name: Add Downloads-Folder
   file:
     path: "/mnt/qbittorrent/downloads"
-    mode: 0775
+    mode: 6775
     owner: 1000
     group: 1000
     state: directory
@@ -53,7 +53,7 @@
     dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
     owner: 1000
     group: 1000
-    mode: 0755
+    mode: 6755
 
 - name: Deploy uTorrent Container
   docker_container:
