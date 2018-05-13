@@ -20,6 +20,7 @@ cat <<ART
 │ Version               :   Beta 2.6 Secret Edition      │
 │ Author                :   Flicker-Rate                 │
 │ Special Thanks        :   ddurdle, John Doe            │
+| Edits contributed by  :   YipYup                       |
 │ —————————————————————————————————————————————————————— │
 │ Bypass the 750GB/day limit on a single Gsuite account. │
 │ [5;31m           ⚠ Loose Lips Might Sink Ships! ⚠[0m            │
