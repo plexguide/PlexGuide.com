@@ -34,7 +34,7 @@ OPTIONS=(A "PG RClone Cache"
          D "PG Server Security"
          E "PG Server Information"
          F "PG Troubleshooting Actions"
-         G "PG Settings & Tools"
+         G "PG SuperTransfer2"
          H "PG Backup & Restore"
          I "PG Updates"
          J "PG Edition Switch"
@@ -60,7 +60,11 @@ case $CHOICE in
         F)
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         G)
-            bash /opt/plexguide/menus/settings/main.sh ;;
+        clear
+        bash /opt/plexguide/scripts/supertransfer/config.sh
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+        journalctl -f -u supertransfer2
+            ;;
         H)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         I)
