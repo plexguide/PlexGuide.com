@@ -30,14 +30,13 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "PG RClone Cache"
          B "PG Programs"
-         C "PG Trek"
-         D "PG Server Security"
-         E "PG Server Information"
+         C "PG SuperTransfer2"
+         D "PG Server NET Benchmarks"
+         E "PG Trek"
          F "PG Troubleshooting Actions"
-         G "PG SuperTransfer2"
-         H "PG Backup & Restore"
-         I "PG Updates"
-         J "PG Edition Switch"
+         G "PG Backup & Restore"
+         H "PG Updates"
+         I "PG Edition Switch"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -52,30 +51,27 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/gce/programs.sh ;;
         C)
-            bash /opt/plexguide/menus/plex/enhancement.sh ;;
-        D)
-            bash /opt/plexguide/menus/security/main.sh ;;
-        E)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
-        F)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
-        G)
         clear
         bash /opt/plexguide/scripts/supertransfer/config.sh
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
         journalctl -f -u supertransfer2
             ;;
-        H)
+        D)
+            bash /opt/plexguide/menus/benchmark/main.sh ;;
+        E)
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+        F)
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+
+        G)
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
-        I)
+        H)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        J)
+        I)
             bash /opt/plexguide/scripts/baseinstall/edition.sh
             ;;
-        K)
-            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
