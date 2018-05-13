@@ -17,22 +17,6 @@
 #################################################################################
 # TO DO NOTES
 # Need to ensure rcache mounts after gdrive
-#
-########## Move Service Script
-  # - name: Check MOVE SCRIPT
-  #   stat:
-  #     path: "/opt/appdata/plexguide/move.sh"
-  #   register: move_script
-  #   tags:
-  #     - rcache
-  #
-  # - name: Install Move Service
-  #   template:
-  #     src: move_script.js2
-  #     dest: /opt/appdata/plexguide/move.sh
-  #     force: yes
-  #   tags:
-  #     - rcache
 
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
