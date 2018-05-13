@@ -86,6 +86,7 @@
       - "/opt/appdata/qbittorrent/config:/config"
       - "/opt/appdata/qbittorrent/config/qBittorrent.conf:/config/qBittorrent.conf"
       - "/mnt/qbittorrent/downloads:/qbittorrent/downloads"
+      - "/mnt/qbittorrent/downloads/temp:/qbittorrent/downloads/temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
