@@ -16,6 +16,15 @@
     - /opt/appdata/qbittorrent
     - /mnt/qbittorrent
 
+- name: Add Main-Config-Folder
+  file:
+    path: "/opt/appdata/qbittorrent"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+    recursive: yes
+
 - name: Add Config-Folder
   file:
     path: "/opt/appdata/qbittorrent/config"
@@ -23,6 +32,7 @@
     owner: 1000
     group: 1000
     state: directory
+    recursive: yes
 
 - name: Add Torrents-Folder
   file:
@@ -31,14 +41,16 @@
     owner: 1000
     group: 1000
     state: directory
+    recursive: yes
 
 - name: Add Main-Folder
   file:
     path: "/mnt/qbittorrent"
-    mode: 6775
+    mode: 0775
     owner: 1000
     group: 1000
     state: directory
+    recursive: yes
 
 - name: Add Downloads-Folder
   file:
@@ -47,6 +59,7 @@
     owner: 1000
     group: 1000
     state: directory
+    recursive: yes
 
 - template:
     src: qBittorrent.conf
