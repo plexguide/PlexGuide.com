@@ -81,7 +81,7 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       echo "80" | dialog --gauge "Installing RCLONE BETA" 7 50 0
       sleep 1
       curl -s https://rclone.org/install.sh | bash -s beta
-      sleep 2
+      sleep 1
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
       sleep 2
