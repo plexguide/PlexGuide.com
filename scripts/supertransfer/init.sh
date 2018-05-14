@@ -198,8 +198,7 @@ source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
 [[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count_lb=$(cat /tmp/clientemails | wc -l); # store line break count
-count=$(($count_lb + 1)); # add 1 to line break count as last line does not have line break
+count=$(grep -c "@" /tmp/clientemails); # accurate count by @
 cat <<EOF
 ############ CONFIGURATION ################################
 2) In your gdrive, share your teamdrive with
@@ -222,8 +221,7 @@ configure_personal_share(){
 source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count_lb=$(cat /tmp/clientemails | wc -l); # store line break count
-count=$(($count_lb + 1)); # add 1 to line break count as last line does not have line break
+count=$(grep -c "@" /tmp/clientemails); # accurate count by @
 echo "tip: by default, PG stores media in gdrive on root"
 read -p 'Would you like to change where media is stored? y/n> ' answer
 if [[ $answer =~ [y|Y|yes|Yes] ]]; then
