@@ -44,6 +44,7 @@
   - { role: next, tags: ['next'] }
   - { role: rcache_un, tags: ['rcache_un'] }
   - { role: telly, tags: ['telly'] }
+  - { role: sstvproxy, tags: ['sstvproxy'] }
   - { role: sonarr, tags: ['sonarr'] }
   - { role: sonarr4k, tags: ['sonarr4k'] }
   - { role: radarr, tags: ['radarr'] }
