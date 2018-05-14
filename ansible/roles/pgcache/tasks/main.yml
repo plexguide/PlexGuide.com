@@ -16,6 +16,12 @@
 #
 #################################################################################
 
+########### Folder Deployment
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+    with_items:
+      - /root/.config/rclone
+
 ########### Deploy RClone config
   - name: Check RClone Config File
     stat:
