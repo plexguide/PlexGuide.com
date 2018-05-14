@@ -90,3 +90,4 @@
   - { role: duplicati, tags: ['duplicati'] }
   - { role: headphones, tags: ['headphones'] }
   - { role: qbittorrent, tags: ['qbittorrent'] }
+  - { role: qbittorrent-full, tags: ['qbit-full'] }
