@@ -70,12 +70,12 @@
     state: directory
     recurse: yes
 
-- template:
-    src: qBittorrent.conf
-    dest: /opt/appdata/qbittorrent-full/config/qBittorrent.conf
-    owner: 1000
-    group: 1000
-    mode: 2755
+# - template:
+#     src: qBittorrent.conf
+#     dest: /opt/appdata/qbittorrent-full/config/qBittorrent.conf
+#     owner: 1000
+#     group: 1000
+#     mode: 2755
 
 - name: Deploy uTorrent Container
   docker_container:
