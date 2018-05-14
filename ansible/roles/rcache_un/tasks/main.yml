@@ -17,22 +17,6 @@
 #################################################################################
 # TO DO NOTES
 # Need to ensure rcache mounts after gdrive
-#
-########## Move Service Script
-  # - name: Check MOVE SCRIPT
-  #   stat:
-  #     path: "/opt/appdata/plexguide/move.sh"
-  #   register: move_script
-  #   tags:
-  #     - rcache
-  #
-  # - name: Install Move Service
-  #   template:
-  #     src: move_script.js2
-  #     dest: /opt/appdata/plexguide/move.sh
-  #     force: yes
-  #   tags:
-  #     - rcache
 
 ########### Rclone Sync Script
   - name: Check RClone Sync SCRIPT
@@ -48,22 +32,6 @@
       dest: /opt/appdata/plexguide/gdrive.sh
       force: yes
     when: gdrive_script.stat.exists == False
-    tags:
-      - rcache
-
-  - name: Check Rcache script
-    stat:
-      path: "/opt/appdata/plexguide/rcache.sh"
-    register: rcache_script
-    tags:
-      - rcache
-
-  - name: Install RClone script
-    template:
-      src: rcache_script.js2
-      dest: /opt/appdata/plexguide/rcache.sh
-      force: yes
-    when: rcache_script.stat.exists == False
     tags:
       - rcache
 
@@ -118,7 +86,6 @@
     tags:
       - rcache
 
-
   - name: Check Rcache DB & cache file directory
     stat:
       path: "/mnt/.rcache"
@@ -136,41 +103,6 @@
     when: rcacheDB_dir.stat.exists == False
     tags:
       - rcache
-
-########################################## Services
-########### Move Service
-  # - name: Check MOVE Service
-  #   stat:
-  #     path: "/etc/systemd/system/move.service"
-  #   register: move
-  #   tags:
-  #     - rcache
-  #
-  # - name: Stop If Move Service Running
-  #   systemd: state=stopped name=move
-  #   when: move.stat.exists
-  #   tags:
-  #     - rcache
-  #
-  # - name: Install Move Service
-  #   template:
-  #     src: move.js2
-  #     dest: /etc/systemd/system/move.service
-  #     force: yes
-  #   when: move.stat.exists == False
-  #   tags:
-  #     - rcache
-  #
-  # - name: Daemon-Reload
-  #   systemd: state=stopped name=move daemon_reload=yes enabled=n
-  #   tags:
-  #     - rcache
-  #
-  # - name: Start Move
-  #   systemd: state=started name=move enabled=yes
-  #   when: move.stat.exists
-  #   tags:
-  #     - rcache
 
 ########### gdrive mount
   - name: Check GDrive Service

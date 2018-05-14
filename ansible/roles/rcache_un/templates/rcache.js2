@@ -6,7 +6,14 @@ After=multi-user.target
 Type=simple
 User=0
 Group=0
-ExecStart=/bin/bash /opt/appdata/plexguide/rcache.sh
+ExecStart=/usr/bin/rclone mount rcache: /mnt/rcache \
+                    --allow-other --dir-cache-time=4m \
+                    --cache-chunk-size=10M --cache-info-age=10m \
+                    --cache-workers=8 --buffer-size 0M \
+                    --umask 002 --log-level INFO \
+                    --attr-timeout=1s --cache-db-path=/mnt/.rcache \
+                    --cache-writes --attr-timeout=1s \
+                    --config /root/.config/rclone/rclone.conf
 ExecStop=/bin/fusermount -u /mnt/rcache
 TimeoutStopSec=20
 KillMode=process

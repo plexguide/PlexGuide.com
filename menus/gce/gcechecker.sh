@@ -55,22 +55,26 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
 
       mkdir -p /nvme2/sab/complete 1>/dev/null 2>&1
       rm -r /mnt/sab/complete 1>/dev/null 2>&1
-      ln -s /nvme2/sab/complete /mnt/sab/ 
+      ln -s /nvme2/sab/complete /mnt/sab/
 
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /nvme2 1>/dev/null 2>&1
 
-      echo "20" | dialog --gauge "Deploying Sonarr" 7 50 0
+      echo "18" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
       sleep 2
-      
-      echo "40" | dialog --gauge "Deploying Radarr" 7 50 0
+
+      echo "36" | dialog --gauge "Deploying Radarr" 7 50 0
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
       sleep 2
 
-      echo "60" | dialog --gauge "Deploying SABNZBD" 7 50 0
+      echo "54" | dialog --gauge "Deploying CloudCMD" 7 50 0
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd &>/dev/null &
+      sleep 2
+
+      echo "72" | dialog --gauge "Deploying SABNZBD" 7 50 0
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
       sleep 2
 
@@ -78,9 +82,10 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       #sleep 0.5
       #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
-      echo "80" | dialog --gauge "Installing RCLONE BETA" 7 50 0
-      curl -s https://rclone.org/install.sh 1>/dev/null 2>&1 | bash -s beta 1>/dev/null 2>&1
-      sleep 2
+      echo "90" | dialog --gauge "Installing RCLONE BETA" 7 50 0
+      sleep 1
+      curl -s https://rclone.org/install.sh | bash -s beta
+      sleep 1
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
       sleep 2
@@ -101,7 +106,7 @@ echo "yes" > /var/plexguide/gce.check
       if [ "$drop" == "yes" ]
       then
         echo "corn" &>/dev/null &
-      else 
+      else
         dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly (or didn't read the wiki!) but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
       fi
 fi

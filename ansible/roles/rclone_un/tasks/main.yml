@@ -23,7 +23,7 @@
     register: move_script
     tags:
       - rclone
-    
+
   - name: Install Move Service
     template:
       src: move_script.js2
@@ -39,7 +39,7 @@
     register: rclone_script
     tags:
       - rclone
-    
+
   - name: Install RClone Sync Service
     template:
       src: rclone_script.js2
@@ -62,11 +62,11 @@
     when: move.stat.exists
     tags:
       - rclone
-    
+
   - name: Install Move Service
     template:
       src: move.js2
-      dest: /etc/systemd/system/move.service 
+      dest: /etc/systemd/system/move.service
       force: yes
     when: move.stat.exists == False
     tags:
@@ -82,7 +82,7 @@
     when: move.stat.exists
     tags:
       - rclone
-    
+
 ########### rclone
   - name: Check RCLONE Service
     stat:
@@ -96,11 +96,11 @@
     when: rclone.stat.exists
     tags:
       - rclone
-    
+
   - name: Install RCLONE Service
     template:
       src: rclone.js2
-      dest: /etc/systemd/system/rclone.service 
+      dest: /etc/systemd/system/rclone.service
       force: yes
     when: rclone.stat.exists == False
     tags:
@@ -130,11 +130,11 @@
     when: unionfs.stat.exists
     tags:
       - rclone
-    
+
   - name: Install UNIONFS Service
     template:
       src: unionfs.js2
-      dest: /etc/systemd/system/unionfs.service 
+      dest: /etc/systemd/system/unionfs.service
       force: yes
     tags:
       - rclone
@@ -147,5 +147,17 @@
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     when: unionfs.stat.exists
+    tags:
+      - rclone
+
+  - name: SHELL COMMAND 1
+    shell: "chown -R 1000:1000 /root"
+    ignore_errors: True
+    tags:
+      - rclone
+
+  - name: SHELL COMMAND 2
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
+    ignore_errors: True
     tags:
       - rclone

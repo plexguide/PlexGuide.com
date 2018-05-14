@@ -16,26 +16,66 @@
     - /opt/appdata/qbittorrent
     - /mnt/qbittorrent
 
-- name: Add Config-Folder
+- name: Add Main-Config-Folder
   file:
-    path: "/opt/appdata/qbittorrent/{{ item }}"
+    path: "/opt/appdata/qbittorrent"
     mode: 0775
     owner: 1000
     group: 1000
     state: directory
     recurse: yes
-  with_items:
-    - config
-    - torrents
+
+- name: Add Config-Folder
+  file:
+    path: "/opt/appdata/qbittorrent/config"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+- name: Add Torrents-Folder
+  file:
+    path: "/opt/appdata/qbittorrent/torrents"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+- name: Add Main-Folder
+  file:
+    path: "/mnt/qbittorrent"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
 
 - name: Add Downloads-Folder
   file:
-    path: "/mnt/qbittorrent/downloads"
-    mode: 0775
+    path: "/mnt/qbittorrent/Downloads"
+    mode: 2775
     owner: 1000
     group: 1000
     state: directory
     recurse: yes
+
+- name: Add Temp-Folder
+  file:
+    path: "/mnt/qbittorrent/Downloads/temp"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+- template:
+    src: qBittorrent.conf
+    dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
+    owner: 1000
+    group: 1000
+    mode: 2755
 
 - name: Deploy uTorrent Container
   docker_container:
@@ -43,6 +83,7 @@
     image: thecreatorzone/qbit
     pull: yes
     cpu_shares: 256
+    user: 1000:1000
     published_ports:
       - "{{ports.stdout}}8080:8080"
       - "6881:6881"
@@ -52,7 +93,9 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
-      - "/mnt/qbittorrent/downloads:/qbittorrent/downloads"
+      - "/opt/appdata/qbittorrent/config/qBittorrent.conf:/config/qBittorrent.conf"
+      - "/mnt/qbittorrent/Downloads:/qbittorrent/Downloads"
+      - "/mnt/qbittorrent/Downloads/temp:/qbittorrent/Downloads/temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
