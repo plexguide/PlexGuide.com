@@ -53,6 +53,7 @@
       - mc
       - apache2-utils
       - lsof
+      - pwgen
     ignore_errors: yes
 
   - name: Pip Modes
