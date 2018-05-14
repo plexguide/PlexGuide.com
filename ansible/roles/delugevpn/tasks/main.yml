@@ -56,7 +56,13 @@
 
 ########## Remove old existing config file
 - name: Removing all ovpn files
-  shell: rm -r  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
+  file:
+    state: absent
+    path: /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
+    force: yes
+#    when: ovpn.stat.exists
+#  shell: rm -r  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
+
 
 ########## Remote Server selection
 
