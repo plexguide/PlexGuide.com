@@ -25,9 +25,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes (BETA)"
-         B "PGTrak  (BETA)"
-         C "Telly   (BETA)"
+OPTIONS=(A "PGDupes   (BETA)"
+         B "PGTrak    (BETA)"
+         C "Telly     (BETA)"
+         D "SSTVProxy (BETA)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -48,6 +49,9 @@ case $CHOICE in
             ;;
         C)
             bash /opt/plexguide/menus/plex/telly.sh
+            ;;
+        D)
+            bash /opt/plexguide/menus/plex/sstvproxy.sh
             ;;
         Z)
             clear

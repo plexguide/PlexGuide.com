@@ -21,9 +21,6 @@ hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ipv4=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 
- ### demo ip / comment out when done
- #ipv4=69.69.69.69
-
 display=SSTVProxy
 program=sstvproxy
 port=8098
@@ -35,15 +32,57 @@ dialog --title "SmoothStreams Username" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Username: Enter your SmoothStreams Username" 8 50 2>/tmp/sstvuser
 sstvuser=$(cat /tmp/sstvuser)
-dialog --infobox "Username: $sstvuser" 5 80
+dialog --infobox "Username: $sstvuser" 3 45
 sleep 3
 
 dialog --title "SmoothStreams Password" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Password: Enter your SmoothStreams Password" 8 50 2>/tmp/sstvpwd
 sstvpwd=$(cat /tmp/sstvpwd)
-dialog --infobox "Password: $sstvpwd" 5 80
+dialog --infobox "Password: $sstvpwd" 3 45
 sleep 3
+
+HEIGHT=12
+WIDTH=40
+CHOICE_HEIGHT=5
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="SmoothStreams Service"
+MENU="Select your Service Provider:"
+
+OPTIONS=(A "Live247"
+         B "Mystreams/Usport"
+         C "StarStreams"
+         D "StreamTVnow"
+         E "MMA-TV/MyShout")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        A)
+            echo "view247" > /tmp/sstvservice
+            ;;
+        B)
+            echo "vaders" > /tmp/sstvservice
+            ;;
+        C)
+            echo "viewss" > /tmp/sstvservice
+            ;;
+        D)
+            echo "viewstvn" > /tmp/sstvservice
+            ;;
+        Z)
+            echo "viewmmasr" > /tmp/sstvservice
+            ;;
+
+########## Deploy End
+esac
 
 dialog --infobox "Installing SSTVProxy: Please Wait" 3 35
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sstvproxy &>/dev/null &

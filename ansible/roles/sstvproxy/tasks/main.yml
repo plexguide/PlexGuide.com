@@ -12,6 +12,14 @@
   shell: "cat /tmp/sstvpwd"
   register: sstvpwd
 
+- name: "Establishing SmoothStreams Service"
+  shell: "cat /tmp/sstvservice"
+  register: sstvservice
+
+  - name: "Establishing Server Timezone"
+    shell: "cat /etc/timezone"
+    register: sstvtimezone
+
 - name: Stop and remove any existing container
   docker_container:
     name: sstvproxy
@@ -40,10 +48,10 @@
     env:
       PUID: "1000"
       PGID: "1000"
-      TZ: "America/Detroit"
+      TZ: "{{sstvtimezone.stdout}}"
       YAP_USERNAME: "{{sstvuser.stdout}}"
       YAP_PASSWORD: "{{sstvpwd.stdout}}"
-      YAP_SERVICE: "viewmmasr"
+      YAP_SERVICE: "{{sstvservice.stdout}}"
     volumes:
       - /opt/appdata/sstvproxy:/config
       - /etc/localtime:/etc/localtime:ro
