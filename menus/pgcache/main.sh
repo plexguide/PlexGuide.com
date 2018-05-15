@@ -34,7 +34,7 @@ HEIGHT=14
 WIDTH=48
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PGDupes"
+TITLE="PGCache Deployment"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy RClone"
