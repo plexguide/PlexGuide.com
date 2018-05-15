@@ -55,6 +55,7 @@ clear
 case $CHOICE in
         A)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_rclone #1>/dev/null 2>&1
+            rclone-config
             ;;
         B)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_deploy #1>/dev/null 2>&1
