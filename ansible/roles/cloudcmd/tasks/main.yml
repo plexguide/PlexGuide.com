@@ -115,11 +115,11 @@
     networks:
       - name: plexguide
         aliases:
-          - cloudcmd
+          - cloudst2
     labels:
       traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:cmd.{{domain.stdout}}, cloudcmd.{{domain.stdout}},"
+      #traefik.frontend.redirect.entryPoint: "https"
+      #traefik.frontend.rule: "Host:cmd.{{domain.stdout}}, cloudcmd.{{domain.stdout}},"
       traefik.port: "8000"
     restart_policy: always
     state: started
