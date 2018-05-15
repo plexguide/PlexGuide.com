@@ -16,9 +16,9 @@
   shell: "cat /tmp/sstvservice"
   register: sstvservice
 
-  - name: "Establishing Server Timezone"
-    shell: "cat /etc/timezone"
-    register: sstvtimezone
+- name: "Establishing Server Timezone"
+  shell: "cat /etc/timezone"
+  register: sstvtimezone
 
 - name: Stop and remove any existing container
   docker_container:

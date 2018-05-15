@@ -66,24 +66,26 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "view247" > /tmp/sstvservice
+            echo "view247">/tmp/sstvservice
             ;;
         B)
-            echo "vaders" > /tmp/sstvservice
+            echo "vaders">/tmp/sstvservice
             ;;
         C)
-            echo "viewss" > /tmp/sstvservice
+            echo "viewss">/tmp/sstvservice
             ;;
         D)
-            echo "viewstvn" > /tmp/sstvservice
+            echo "viewstvn">/tmp/sstvservice
             ;;
-        Z)
-            echo "viewmmasr" > /tmp/sstvservice
+        E)
+            echo "viewmmasr">/tmp/sstvservice
             ;;
 
 ########## Deploy End
+
+
 esac
 
-dialog --infobox "Installing SSTVProxy: Please Wait" 3 35
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sstvproxy &>/dev/null &
+dialog --infobox "Installing SSTVProxy: Please Wait" 3 45
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sstvproxy &
 sleep 4
