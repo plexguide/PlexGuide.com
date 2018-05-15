@@ -22,7 +22,7 @@
 
 - name: Remove qBittorrent Container
   docker_container:
-    name: "qBittorrent"
+    name: qBittorrent
     state: absent
 
 # - name: Remove Previous-Downloads Settings
@@ -91,16 +91,10 @@
     state: directory
     recurse: yes
 
-- template:
-    src: qBittorrent.conf
-    dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
-    owner: 1000
-    group: 1000
-    mode: 2755
 
 - name: Deploy qBittorrent Container
   docker_container:
-    name: "qBittorrent"
+    name: qBittorrent
     image: thecreatorzone/qbit-full
     pull: yes
     cpu_shares: 256
@@ -130,3 +124,23 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:qbittorrent.{{domain.stdout}}"
       traefik.port: "8080"
+
+- name: "Wait 5 Seconds"
+  wait_for:
+    timeout: 5
+
+- template:
+    src: qBittorrent.conf
+    dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
+    owner: 1000
+    group: 1000
+    mode: 2755
+
+- name: "Wait 5 Seconds"
+  wait_for:
+    timeout: 5
+
+- name: Restart Container
+  docker_container:
+    name: qBittorrent
+    state: started
