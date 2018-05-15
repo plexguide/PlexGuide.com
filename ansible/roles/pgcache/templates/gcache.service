@@ -6,7 +6,7 @@ After=multi-user.target
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/rclone mount cache: /mnt/gdrive \
+ExecStart=/usr/bin/rclone mount gcache: /mnt/gdrive \
                     --allow-other --dir-cache-time=1m \
                     --cache-chunk-size=10M --cache-info-age=10m \
                     --cache-workers=8 --buffer-size 0M \
