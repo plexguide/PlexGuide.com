@@ -6,6 +6,10 @@
 # configure_json() - load jsons into rclone config
 # init_DB() - validates gdsa's & init least usage DB
 
+################### Load CloudCMD ST2 Edition - START
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudst2 &>/dev/null &
+################### Load CloudCMD ST2 Edition - END
+
 cat_Secret_Art(){
 touch /opt/appdata/plexguide/.rclone
 cat <<ART
@@ -14,12 +18,13 @@ cat <<ART
   ___ __ _____  ___ ____/ /________ ____  ___ / _/__ ____ [35m2[32m
  (_-</ // / _ \/ -_) __/ __/ __/ _ \`/ _ \(_-</ _/ -_) __/
 /___/\_,_/ .__/\__/_/  \__/_/  \_,_/_//_/___/_/ \__/_/
-        /_/    [1;39;2mLoad Balanced Multi-SA Gdrive Uploader
+        /_/ [1;39;2mPG Load Balancer Multi-SA Gdrive Uploader
 [0m
 ┌────────────────────────────────────────────────────────┐
 │ Version               :   Beta 2.6 Secret Edition      │
 │ Author                :   Flicker-Rate                 │
 │ Special Thanks        :   ddurdle, John Doe            │
+| Edits contributed by  :   Admin9705, YipYup            |
 │ —————————————————————————————————————————————————————— │
 │ Bypass the 750GB/day limit on a single Gsuite account. │
 │ [5;31m           ⚠ Loose Lips Might Sink Ships! ⚠[0m            │
@@ -67,7 +72,7 @@ cat <<ART
   / ___/ / / / __ \/ _ \/ ___/ __/ ___/ __ `/ __ \/ ___/ /_/ _ \/ ___/
  (__  ) /_/ / /_/ /  __/ /  / /_/ /  / /_/ / / / (__  ) __/  __/ /
 /____/\__,_/ .___/\___/_/   \__/_/   \__,_/_/ /_/____/_/  \___/_/
-          /_/
+          /_/                                        PLEXGUIDE EDITION
 ART
 }
 
@@ -163,6 +168,8 @@ If port 8000 is closed or you wish to upload keys securely,
 Transfer json keys directly into:
 $jsonPath
 
+TIP : Use CloudCMD ST Edition for Faster Upload - Port 7998
+      [User] plex [Password] guide
 ###########################################################
 
 MSG
@@ -197,7 +204,7 @@ source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
 [[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count=$(cat /tmp/clientemails | wc -l)
+count=$(grep -c "@" /tmp/clientemails); # accurate count by @
 cat <<EOF
 ############ CONFIGURATION ################################
 2) In your gdrive, share your teamdrive with
@@ -220,7 +227,7 @@ configure_personal_share(){
 source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count=$(cat /tmp/clientemails | wc -l)
+count=$(grep -c "@" /tmp/clientemails); # accurate count by @
 echo "tip: by default, PG stores media in gdrive on root"
 read -p 'Would you like to change where media is stored? y/n> ' answer
 if [[ $answer =~ [y|Y|yes|Yes] ]]; then
@@ -317,3 +324,7 @@ rclonePath='/root/.config/rclone/rclone.conf'
     log "Rclone Config Purge Successful." INFO
   fi
 }
+
+############ KILL CLOUDSST2
+docker stop cloudst2 1>/dev/null 2>&1
+docker rm cloudst2 &>/dev/null &

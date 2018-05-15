@@ -1,0 +1,24 @@
+[Unit]
+Description=TCache Daemon (TeamDrive)
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone mount tcache: /mnt/tcache \
+                    --allow-other --dir-cache-time=1m \
+                    --cache-chunk-size=10M --cache-info-age=10m \
+                    --cache-workers=8 --buffer-size 0M \
+                    --umask 002 --log-level INFO \
+                    --allow-non-empty --retries=2 --cache-db-purge \
+                    --attr-timeout=1s --cache-db-path=/mnt/.rcache \
+                    --cache-writes --attr-timeout=1s \
+                    --config /root/.config/rclone/rclone.conf
+ExecStop=/bin/fusermount -u /mnt/tcache
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
