@@ -70,19 +70,19 @@
 ################ ST2 Edition
 - include_role:
     name: variables
-    tags: [ 'never', 'cloudst2' ]
+  tags: [ 'never', 'cloudst2' ]
 
 - name: Create Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - "/opt/appdata/cloudst2/"
-    tags: [ 'never', 'cloudst2' ]
+  tags: [ 'never', 'cloudst2' ]
 
 - name: Check config file exists
   stat:
     path: "/opt/appdata/cloudst2/.cloudcmd.json"
   register: cloud_json
-    tags: [ 'never', 'cloudst2' ]
+  tags: [ 'never', 'cloudst2' ]
 
 - name: Install configst2.json
   template:
@@ -90,13 +90,13 @@
     dest: /opt/appdata/cloudst2/.cloudcmd.json
     force: yes
   when: cloud_json.stat.exists == False
-    tags: [ 'never', 'cloudst2' ]
+  tags: [ 'never', 'cloudst2' ]
 
 - name: Remove cloudst2 Container
   docker_container:
     name: cloudst2
     state: absent
-    tags: [ 'never', 'cloudst2' ]
+  tags: [ 'never', 'cloudst2' ]
 
 - name: Deploy cloudst2 edition
   docker_container:
@@ -123,4 +123,4 @@
       traefik.port: "8000"
     restart_policy: always
     state: started
-    tags: [ 'never', 'cloudst2' ]
+  tags: [ 'never', 'cloudst2' ]
