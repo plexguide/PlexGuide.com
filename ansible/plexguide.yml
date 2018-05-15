@@ -29,6 +29,7 @@
   - { role: sabnzbd, tags: ['sabnzbd'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: cloudcmd, tags: ['cloudcmd'] }
+  - { role: pgcache, tags: ['pgcache'] }
   - { role: deploy2, tags: ['deploy2'] }
   - { role: calibre, tags: [' calibre'] }
   - { role: supertransfer, tags: ['supertransfer'] }

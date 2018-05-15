@@ -1,0 +1,150 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Flicker-Rate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+########### Deploy RClone config
+  - name: Check RClone Config File
+    stat:
+      path: "/root/.config/rclone/rclone.conf"
+    register: rclone_script
+    tags:
+      - pgcache_rclone
+
+  - name: Check RClone Config File
+    stat:
+      path: "/usr/bin/rclone"
+    register: rclone_program
+    tags:
+      - pgcache_rclone
+
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+    with_items:
+      - /root/.config/rclone
+    when: rclone_script.stat.exists == False
+    tags:
+      - pgcache_rclone
+
+  - name: RClone SHELL Curl
+    shell: "curl https://rclone.org/install.sh | sudo bash -s beta"
+    when: rclone_program.stat.exists == False
+    ignore_errors: True
+    tags:
+      - pgcache_rclone
+
+  - name: Install RClone Conf
+    template:
+      src: rclone.conf
+      dest: /root/.config/rclone/rclone.conf
+      force: yes
+    when: rclone_script.stat.exists == False
+    tags:
+      - pgcache_rclone
+
+  - name: RClone SHELL COMMAND 1
+    shell: "chown -R 1000:1000 /root"
+    when: rclone_script.stat.exists == False
+    ignore_errors: True
+    tags:
+      - pgcache_rclone
+
+  - name: RClone SHELL COMMAND 2
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
+    when: rclone_script.stat.exists == False
+    ignore_errors: True
+    tags:
+      - pgcache_rclone
+
+################################################## SERVICES START
+########### Deploy GCache config
+
+  - name: Stop If Service Running
+    systemd: state=stopped name=gdrive
+    ignore_errors: True
+    tags:
+      - pgcache_deploy
+
+  - name: Install GCache Service
+    template:
+      src: gcache.service
+      dest: /etc/systemd/system/gcache.service
+      force: yes
+    tags:
+      - pgcache_deploy
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=gcache daemon_reload=yes enabled=no
+    tags:
+      - pgcache_deploy
+
+  - name: Start Service
+    systemd: state=started name=gcache enabled=yes
+    tags:
+      - pgcache_deploy
+
+########### Deploy TCache config
+
+  - name: Stop If Service Running
+    systemd: state=stopped name=tdrive
+    ignore_errors: True
+    tags:
+      - pgcache_deploy
+
+  - name: Install TCache Service
+    template:
+      src: tcache.service
+      dest: /etc/systemd/system/tcache.service
+      force: yes
+    tags:
+      - pgcache_deploy
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=tcache daemon_reload=yes enabled=no
+    tags:
+      - pgcache_deploy
+
+  - name: Start Serivce
+    systemd: state=started name=tcache enabled=yes
+    tags:
+      - pgcache_deploy
+
+########### Deploy UnionFS config
+
+  - name: Stop If Service Running
+    systemd: state=stopped name=unionfs
+    ignore_errors: True
+    tags:
+      - pgcache_deploy
+
+  - name: Install UnionFS Service
+    template:
+      src: unionfs.service
+      dest: /etc/systemd/system/unionfs.service
+      force: yes
+    tags:
+      - pgcache_deploy
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - pgcache_deploy
+
+  - name: Start Service
+    systemd: state=started name=unionfs enabled=yes
+    tags:
+      - pgcache_deploy
+################################################## SERVICES ENDED
