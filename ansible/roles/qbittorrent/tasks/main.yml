@@ -129,18 +129,18 @@
   wait_for:
     timeout: 5
 
-- template:
-    src: qBittorrent.conf
-    dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
-    owner: 1000
-    group: 1000
-    mode: 2755
-
-- name: "Wait 5 Seconds"
-  wait_for:
-    timeout: 5
-
-- name: Restart Container
-  docker_container:
-    name: qBittorrent
-    state: started
+# - template:
+#     src: qBittorrent.conf
+#     dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
+#     owner: 1000
+#     group: 1000
+#     mode: 2755
+#
+# - name: "Wait 5 Seconds"
+#   wait_for:
+#     timeout: 5
+#
+# - name: Restart Container
+#   docker_container:
+#     name: qBittorrent
+#     state: started
