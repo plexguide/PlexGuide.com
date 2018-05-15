@@ -47,7 +47,7 @@ case $CHOICE in
      E)
     bash /opt/plexguide/menus/rclone/encache.sh ;;
      F)
-    bash /opt/plexguide/menus/pgcache/main.sh ;;
+     bash /opt/plexguide/menus/pgcache/main.sh ;;
      Z)
         clear
         exit 0 ;;
