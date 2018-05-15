@@ -20,6 +20,7 @@ cat <<ART
 │ Version               :   Beta 2.6 Secret Edition      │
 │ Author                :   Flicker-Rate                 │
 │ Special Thanks        :   ddurdle, John Doe            │
+| Edits contributed by  :   YipYup                       |
 │ —————————————————————————————————————————————————————— │
 │ Bypass the 750GB/day limit on a single Gsuite account. │
 │ [5;31m           ⚠ Loose Lips Might Sink Ships! ⚠[0m            │
@@ -197,7 +198,7 @@ source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
 [[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count=$(cat /tmp/clientemails | wc -l)
+count=$(grep -c "@" /tmp/clientemails); # accurate count by @
 cat <<EOF
 ############ CONFIGURATION ################################
 2) In your gdrive, share your teamdrive with
@@ -220,7 +221,7 @@ configure_personal_share(){
 source $userSettings
 [[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
 printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count=$(cat /tmp/clientemails | wc -l)
+count=$(grep -c "@" /tmp/clientemails); # accurate count by @
 echo "tip: by default, PG stores media in gdrive on root"
 read -p 'Would you like to change where media is stored? y/n> ' answer
 if [[ $answer =~ [y|Y|yes|Yes] ]]; then
