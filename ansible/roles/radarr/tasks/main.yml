@@ -63,7 +63,6 @@
       - "{{path.stdout}}/rutorrents:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
       - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
-      - "{{path.stdout}}/qbittorrent-full/Downloads:/qbittorrent-full/Downloads"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

@@ -25,14 +25,17 @@
     name: "qBittorrent"
     state: absent
 
-- name: Remove Previous-Downloads Settings
-  file:
-    path:
-      - "{{ item }}"
-    state: absent
-  with_items:
-    - /opt/appdata/qbittorrent
-    - /mnt/qbittorrent
+# - name: Remove Previous-Downloads Settings
+#   file:
+#     path:
+#       - /mnt/qbittorrent
+#     state: absent
+#
+# - name: Remove Previous Settings
+#   file:
+#     path:
+#       - /opt/appdata/qbittorrent
+#     state: absent
 
 - name: Add Main-Config-Folder
   file:
@@ -95,10 +98,10 @@
     group: 1000
     mode: 2755
 
-- name: Deploy uTorrent Container
+- name: Deploy qBittorrent Container
   docker_container:
     name: "qBittorrent"
-    image: thecreatorzone/qbit
+    image: thecreatorzone/qbit-full
     pull: yes
     cpu_shares: 256
     user: 1000:1000
@@ -111,7 +114,6 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
-      - "/opt/appdata/qbittorrent/config/qBittorrent.conf:/config/qBittorrent.conf"
       - "/mnt/qbittorrent/Downloads:/qbittorrent/Downloads"
       - "/mnt/qbittorrent/Downloads/temp:/qbittorrent/Downloads/temp"
       - "/etc/localtime:/etc/localtime:ro"
