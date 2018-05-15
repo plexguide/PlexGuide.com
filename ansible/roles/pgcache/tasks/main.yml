@@ -106,32 +106,6 @@
 
   - name: Install TCache Service
     template:
-      src: gcache.service
-      dest: /etc/systemd/system/tcache.service
-      force: yes
-    tags:
-      - pgcache_deploy
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=tcache daemon_reload=yes enabled=no
-    tags:
-      - pgcache_deploy
-
-  - name: Start Service
-    systemd: state=started name=tcache enabled=yes
-    tags:
-      - pgcache_deploy
-
-########### Deploy TCache config
-
-  - name: Stop If Service Running
-    systemd: state=stopped name=tdrive
-    ignore_errors: True
-    tags:
-      - pgcache_deploy
-
-  - name: Install TCache Service
-    template:
       src: tcache.service
       dest: /etc/systemd/system/tcache.service
       force: yes
