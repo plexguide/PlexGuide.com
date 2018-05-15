@@ -61,8 +61,11 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_deploy #1>/dev/null 2>&1
             ;;
         C)
-            bash /opt/plexguide/menus/pgdupes/paths.sh
-            ;;
+        clear
+        bash /opt/plexguide/scripts/supertransfer/config.sh
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+        journalctl -f -u supertransfer2
+        ;;
         Z)
             clear
             exit 0 ;;
