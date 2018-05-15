@@ -169,7 +169,7 @@ Transfer json keys directly into:
 $jsonPath
 
 TIP : Use CloudCMD ST Edition for Faster Upload - Port 7998
-      [User] Plex [Password] Guide
+      [User] plex [Password] guide
 ###########################################################
 
 MSG
