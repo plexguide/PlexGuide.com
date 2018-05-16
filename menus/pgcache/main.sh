@@ -54,8 +54,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_rclone #1>/dev/null 2>&1
-            
+        
 # allows others to access fuse
 tee "/etc/fuse.conf" > /dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
@@ -65,7 +64,8 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 # Allow non-root users to specify the allow_other or allow_root mount options.
 user_allow_other
 EOF
-            
+        
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_rclone #1>/dev/null 2>&1
             rclone config
             ;;
         B)
