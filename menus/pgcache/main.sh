@@ -66,6 +66,8 @@ user_allow_other
 EOF
         
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_rclone #1>/dev/null 2>&1
+            chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
+            chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
             rclone config
             ;;
         B)
