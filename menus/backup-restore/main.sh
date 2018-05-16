@@ -45,10 +45,10 @@ case $CHOICE in
         B)
         #systemctl is-active --quiet rclone
         #if [ $? -eq 0 ]; then
-        #  bash /opt/plexguide/menus/backup-restore/restore.sh
+        bash /opt/plexguide/menus/backup-restore/restore.sh
         #else
         #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-          bash /opt/plexguide/menus/backup-restore/main.sh
+          #bash /opt/plexguide/menus/backup-restore/main.sh
         #fi 
         ;;
         C)
