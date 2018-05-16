@@ -43,26 +43,29 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/backup-restore/backup.sh ;;
         B)
-        systemctl is-active --quiet rclone
-        if [ $? -eq 0 ]; then
-          bash /opt/plexguide/menus/backup-restore/restore.sh
-        else
-          dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
+        #systemctl is-active --quiet rclone
+        #if [ $? -eq 0 ]; then
+        #  bash /opt/plexguide/menus/backup-restore/restore.sh
+        #else
+        #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
           bash /opt/plexguide/menus/backup-restore/main.sh
-        fi ;;
+        #fi 
+        ;;
         C)
             bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
         D)
-        systemctl is-active --quiet rclone
-        if [ $? -eq 0 ]; then
+        #systemctl is-active --quiet rclone
+        #if [ $? -eq 0 ]; then
           bash /opt/plexguide/menus/backup-restore/restoremass.sh
-        else
-          dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-          bash /opt/plexguide/menus/backup-restore/main.sh
-        fi ;;
+        #else
+        #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
+        #  bash /opt/plexguide/menus/backup-restore/main.sh
+        #fi
+        ;;
         Z)
             clear
             exit 0
             ;;
 
 esac
+bash /opt/plexguide/menus/backup-restore/main.sh
