@@ -156,20 +156,19 @@ cat <<MSG
 
 ############ CONFIGURATION ################################
 
-1. Go to [32mhttp://${localIP}:8000[0m
-2. Follow the instructions to generate the json keys
-3. Upload 20-99 Gsuite service account json keys
+1. Go to [32mhttp://${localIP}:7998[0m
+2. Login: plex / guide
+3. Drag & Drop your keys in the PG CloudCMD ST Edition
+4. Follow the instructions to generate the json keys
+5. Upload 20-99 Gsuite service account json keys
           - domain wide delegation not needed.
 
-Hint: if you have many keys, it's easier to compress them
-      into an archive, upload that, then extract server-side
+TIP: Port 8000 is alternative port (slower process)
 
-If port 8000 is closed or you wish to upload keys securely,
+If port 7998/8000 is closed or wish to upload keys securely,
 Transfer json keys directly into:
 $jsonPath
 
-TIP : Use CloudCMD ST Edition for Faster Upload - Port 7998
-      [User] plex [Password] guide
 ###########################################################
 
 MSG
@@ -268,6 +267,10 @@ echo
 echo 'NOTE: you can copy and paste the whole chunk at once'
 echo 'If you need to see them again, they are in /tmp/clientemails'
 read -p 'Press Any Key To Continue.'
+############ KILL CLOUDST2
+docker stop cloudst2 1>/dev/null 2>&1
+docker rm cloudst2 &>/dev/null &
+############ KILL CLOUDST2
 return 0
 }
 
@@ -324,7 +327,3 @@ rclonePath='/root/.config/rclone/rclone.conf'
     log "Rclone Config Purge Successful." INFO
   fi
 }
-
-############ KILL CLOUDSST2
-docker stop cloudst2 1>/dev/null 2>&1
-docker rm cloudst2 &>/dev/null &
