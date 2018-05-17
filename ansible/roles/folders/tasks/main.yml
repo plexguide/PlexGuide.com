@@ -100,6 +100,7 @@
     with_items:
       - /opt/appdata/plexguide
       - /var/plexguide
+      - /mnt/move
       - /var/plexguide/logs
       - /mnt/rcache
       - "{{path.stdout}}/deluge"
