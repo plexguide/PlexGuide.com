@@ -89,10 +89,10 @@
 #      - encache
 
 ########### Cache directory
-- name: Check Cache directory
-  stat:
-    path: "/mnt/cache"
-  register: cache_dir
+  - name: Check Cache directory
+    stat:
+      path: "/mnt/cache"
+    register: cache_dir
 
   - name: Create Cache directory
     file:
