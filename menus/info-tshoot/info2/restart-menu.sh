@@ -17,7 +17,7 @@
  #################################################################################
 
  export NCURSES_NO_UTF8_ACS=1
- HEIGHT=11
+ HEIGHT=12
  WIDTH=36
  CHOICE_HEIGHT=5
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"

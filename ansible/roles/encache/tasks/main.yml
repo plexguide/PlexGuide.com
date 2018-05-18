@@ -90,46 +90,41 @@
 
 ########### Cache directory
 
-#  - name: Create Cache directory
-#    file:
-#      path: "/mnt/.cache"
-#      state: directory
-#      owner: 1000
-#      group: 1000
-#      mode: 755
-#    when: cache_dir.stat.exists == False
+  - name: Create Cache directory
+    file:
+      path: "/mnt/.cache"
+      state: directory
+      owner: 1000
+      group: 1000
+      mode: 755
+    when: cache_dir.stat.exists == False
 
 ########### Cache
 #  - name: Stop If CACHE Service Running
-#    systemd: state=stopped name=cache
+#    systemd: state=stopped name=encache
 #    ignore_errors: True
 
 #  - name: Install CACHE Service
 #    template:
-#      src: cache.js2
-#      dest: /etc/systemd/system/cache.service
+#      src: encache.js2
+#      dest: /etc/systemd/system/encache.service
 #      force: yes
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=cache daemon_reload=yes enabled=no
-#
-#  - name: Start CACHE
-#    systemd: state=started name=cache enabled=yes
 
 ########### Encache Sync Script
-  - name: Check Encache Sync SCRIPT
-    stat:
-      path: "/opt/appdata/plexguide/encache.sh"
-    register: encache_script
+#  - name: Check Encache Sync SCRIPT
+#    stat:
+#      path: "/opt/appdata/plexguide/encache.sh"
+#    register: encache_script
 #    tags:
 #      - encache
 
-  - name: Install Encache Service
-    template:
-      src: encache_script.js2
-      dest: /opt/appdata/plexguide/encache.sh
-      force: yes
-    when: encache_script.stat.exists == False
+#  - name: Install Encache Service
+#    template:
+#      src: encache_script.js2
+#      dest: /opt/appdata/plexguide/encache.sh
+#      force: yes
+#    when: encache_script.stat.exists == False
 #    tags:
 #      - encache
 
@@ -147,7 +142,6 @@
     when: encache.stat.exists
 #    tags:
 #      - encache
-
 
   - name: Install ENCACHE Service
     template:
