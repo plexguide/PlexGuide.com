@@ -4,6 +4,10 @@
 ## Once finished with testing just comment out last commands ##
 ##     so that they can be used in the future if need be!    ##
 
+## For testing new encache config
+rm /opt/plexguide/ansible/roles/encache/templates/encache.js2
+mv /opt/plexguide/ansible/roles/encache/templates/encache2.js2 /opt/plexguide/ansible/roles/encache/templates/encache.js2
+
 ## For testing new torrent menus
 rm /opt/plexguide/menus/main.sh
 mv /opt/plexguide/menus/main-new.sh /opt/plexguide/menus/main.sh

@@ -43,4 +43,4 @@ fusermount -uz /mnt/gdrive
 fusermount -uz /mnt/.gcrypt
 fusermount -uz /mnt/encrypt
 
-esac
+#esac

@@ -20,6 +20,6 @@
 bash /opt/plexguide/scripts/test/stop-services
 
 # ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone-switch
- ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rclone_switch
+# ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rclone_switch
 
 esac
