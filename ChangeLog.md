@@ -1,7 +1,7 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.080] (Beta, Release Candiate & DEV)
+### [5.081] (Beta, Release Candiate & DEV)
 
 - Load Up Faster
 - Sped up Installer / Updater
@@ -10,6 +10,20 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 -------------------------------------------------------
 ## Past Changes
 Historical Documented Changes will be stored as below.
+
+### [5.080] - 19 May
+
+- Added
+  - Loads up Faster
+  - Installer Sped Update
+  - Added GCE Feeder BETA Edition
+  - SSTVProxy added by @Aosmer
+  - YipYup added some ST2 Fixes
+  - TONS of Minor Bug Fixes over the span of a week!
+- Changed
+  - ST2 wording to deploy a Special Version of CloudCMD for ST2
+- Removed
+  - None
 
 ### [5.079] - 11 May
 
