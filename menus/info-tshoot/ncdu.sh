@@ -33,14 +33,15 @@ OPTIONS=(A "Entire drive - excluding /mnt - WARNING Can take a long time!"
          C "Entire drive - excluding /mnt & /opt"
          D "/opt - WARNING Can take a long time!"
          E "/mnt - WARNING Can take a long time!"
-         F "Move"
-         G "UnionFS - WARNING Can take a long time!"
-         H "NZBGET"
-         I "SAB"
-         J "Deluge"
-         K "RuTorrent"
-         L "TorrentVPN"
-         M "/home"
+         F "/mnt - excluding RClone & PlexDrive mounts"
+         G "Move"
+         H "UnionFS - WARNING Can take a long time!"
+         I "NZBGET"
+         J "SAB"
+         K "Deluge"
+         L "RuTorrent"
+         M "TorrentVPN"
+         N "/home"
          Z "Exit")
 
 
@@ -81,41 +82,46 @@ case $CHOICE in
         ;;
 
     F)
+        clear
+        ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/.gcrypt
+        ;;
+
+    G)
       clear
       ncdu /mnt/move
       ;;
 
-    G)
+    H)
       clear
       ncdu /mnt/unionfs
       ;;
 
-    H)
+    I)
       clear
       ncdu /mnt/nzbget
       ;;
 
-    I)
+    J)
         clear
         ncdu /mnt/sab
         ;;
 
-    J)
+    K)
         clear
         ncdu /mnt/deluge
         ;;
 
-    K)
+    L)
         clear
         ncdu /mnt/rutorrent
         ;;
 
-     L)
+     M)
          clear
          ncdu /mnt/torrentvpn
          ;;
 
-      M)
+      N)
           clear
           ncdu /home
           ;;
