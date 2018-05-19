@@ -106,7 +106,7 @@
     cpu_shares: 256
     user: 1000:1000
     published_ports:
-      - "{{ports.stdout}}8050:8080"
+      - "{{ports.stdout}}8080:8080"
       - "6881:6881"
     env:
       PUID: "1000"
