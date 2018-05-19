@@ -25,16 +25,16 @@
 #      path: /mnt/gdrive
 #    register: gdrive
 #
-#  - name: Create GDrive Folders
-#    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-#    with_items:
-#      - /mnt/gdrive
-#      - /mnt/gdrive/tv
-#      - /mnt/gdrive/movies
-#      - /mnt/gdrive/music
-#      - /mnt/gdrive/ebooks
-#    when: gdrive.stat.exists == False
-#    ignore_errors: yes
+  - name: Create GDrive Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+    with_items:
+      - /mnt/gdrive
+      - /mnt/gdrive/tv
+      - /mnt/gdrive/movies
+      - /mnt/gdrive/music
+      - /mnt/gdrive/ebooks
+    when: gdrive.stat.exists == False
+    ignore_errors: yes
 
 
     ####
@@ -100,7 +100,7 @@
       state: directory
       owner: 1000
       group: 1000
-      mode: 755
+      mode: 775
     when: cache_dir.stat.exists == False
 
   - name: Check Rcache DB & cache file directory
@@ -114,7 +114,7 @@
       state: directory
       owner: 1000
       group: 1000
-      mode: 755
+      mode: 775
     when: rcacheDB_dir.stat.exists == False
 
 ########### Cache
