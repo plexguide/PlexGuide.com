@@ -41,7 +41,7 @@ case $CHOICE in
 
     A)
         display=qBittorrent
-        program=qBittorrent
+        program=qbittorrent
         echo "$program" > /tmp/program_var
         dialog --infobox "Installing: $display" 3 30
         port=8080
