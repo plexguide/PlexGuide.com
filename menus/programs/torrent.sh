@@ -41,10 +41,10 @@ case $CHOICE in
 
     A)
         display=qBittorrent
-        program=qBittorrent
+        program=qbittorrent
         echo "$program" > /tmp/program_var
         dialog --infobox "Installing: $display" 3 30
-        port=8080
+        port=8050
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent &>/dev/null &
          sleep 3
              echo "$program" > /tmp/program
