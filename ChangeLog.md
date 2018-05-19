@@ -6,6 +6,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Load Up Faster
 - Sped up Installer / Updater
 - Added GCE Feeder Edition (Not Ready)
+- Added extra /mnt option to the NCDU menu
 
 -------------------------------------------------------
 ## Past Changes
