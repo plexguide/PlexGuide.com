@@ -22,9 +22,7 @@ export NCURSES_NO_UTF8_ACS=1
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ipv4=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
-
- ### demo ip / comment out when done
- #ipv4=69.69.69.69
+echo "default" > /var/plexguide/plex.url 1>/dev/null 2>&1
 
 display=PLEX
 program=plex
