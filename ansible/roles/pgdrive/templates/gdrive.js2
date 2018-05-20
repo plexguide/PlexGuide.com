@@ -1,5 +1,5 @@
 [Unit]
-Description=RClone Daemon
+Description=GDrive Daemon
 After=multi-user.target
 
 [Service]
