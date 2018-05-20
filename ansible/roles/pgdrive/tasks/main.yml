@@ -87,7 +87,6 @@
 ########### gdrive
   - name: Stop If GDRIVE Service Running
     systemd: state=stopped name=gdrive
-    when: gdrive.stat.exists
     tags:
       - gdrive
     ignore_errors: yes
@@ -113,7 +112,6 @@
 ########### UNIONFS
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
-    when: unionfs.stat.exists
     tags:
       - gdrive
     ignore_errors: yes
@@ -133,7 +131,6 @@
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
-    when: unionfs.stat.exists
     tags:
       - gdrive
 
@@ -144,7 +141,7 @@
       - gdrive
 
   - name: SHELL COMMAND 2
-    shell: "chmod 775 /root/.config/r clone/r clone.conf"
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
     ignore_errors: True
     tags:
       - gdrive
