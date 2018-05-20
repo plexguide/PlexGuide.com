@@ -78,7 +78,6 @@ case $CHOICE in
                 C)
                     ;;
                 Z)
-                    bash /opt/plexguide/scripts/message/ending.sh
                     exit 0 ;;
         esac
             ;;
