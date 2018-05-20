@@ -1,0 +1,19 @@
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive \
+						  --size-only --dir-cache-time=48h --buffer-size=64M \
+						  --vfs-read-chunk-size=128M --vfs-read-chunk-size-limit=2G \
+						  --config /root/.config/rclone/rclone.conf
+ExecStop=/bin/fusermount -u /mnt/gdrive
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
