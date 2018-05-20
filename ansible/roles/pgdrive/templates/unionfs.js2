@@ -1,6 +1,6 @@
 [Unit]
 Description=UnionFS Daemon
-Requires=plexdrive.service
+Requires=gdrive.service
 After=multi-user.target gdrive.service
 RequiresMountsFor=/mnt/gdrive
 
