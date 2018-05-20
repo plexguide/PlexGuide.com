@@ -50,7 +50,7 @@
 
   - name: PlexDrive 5 Install (Be Patient)
     get_url:
-      url:  https://github.com/Admin9705/plexdrive/releases/tag/5.1
+      url:  https://github.com/Admin9705/plexdrive/archive/5.1.zip
       dest: /usr/bin/plexdrive
       mode: 0755
       validate_certs: no
