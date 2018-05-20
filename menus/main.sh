@@ -81,7 +81,7 @@ case $CHOICE in
                     bash /opt/plexguide/scripts/message/ending.sh
                     exit 0 ;;
         esac
-
+            ;;
 ##################################################### DEPLOYMENT SYSTEM - END
         B)
             bash /opt/plexguide/menus/programs/main.sh ;;
