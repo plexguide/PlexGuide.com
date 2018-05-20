@@ -30,8 +30,8 @@ fi
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
-HEIGHT=13
-WIDTH=48
+HEIGHT=8
+WIDTH=44
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive UnEncrypted Edition"
