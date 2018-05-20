@@ -53,7 +53,7 @@ case $CHOICE in
         WIDTH=40
         CHOICE_HEIGHT=4
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-        TITLE="$edition - $version"
+        TITLE="Deploy a Mount System"
 
         OPTIONS=(A "PLEXDrive (Traditional)"
                  B "PGDrive   (New)"
