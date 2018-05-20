@@ -85,25 +85,18 @@
 #      - gdrive
 
 ########### gdrive
-  - name: Check GDRIVE Service
-    stat:
-      path: "/etc/systemd/system/gdrive.service"
-    register: gdrive
-    tags:
-      - gdrive
-
   - name: Stop If GDRIVE Service Running
     systemd: state=stopped name=gdrive
     when: gdrive.stat.exists
     tags:
       - gdrive
+    ignore_errors: yes
 
   - name: Install GDRIVE Service
     template:
       src: gdrive.js2
       dest: /etc/systemd/system/gdrive.service
       force: yes
-    when: gdrive.stat.exists == False
     tags:
       - gdrive
 
@@ -114,23 +107,16 @@
 
   - name: Start GDrive
     systemd: state=started name=gdrive enabled=yes
-    when: gdrive.stat.exists
     tags:
       - gdrive
 
 ########### UNIONFS
-  - name: Check UNIONFS Service
-    stat:
-      path: "/etc/systemd/system/unionfs.service"
-    register: unionfs
-    tags:
-      - gdrive
-
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     when: unionfs.stat.exists
     tags:
       - gdrive
+    ignore_errors: yes
 
   - name: Install UNIONFS Service
     template:
