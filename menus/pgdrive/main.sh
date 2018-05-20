@@ -39,7 +39,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Install: RClone"
          B "Deploy : PGDrive"
-         C "Deploy : Transfer a System"
+         C "Deploy : Transfer System"
          D "Deploy : PGScan (NOTREADY)"
          Z "Exit")
 
@@ -77,7 +77,7 @@ EOF
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
+                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First!" 0 0
                   bash /opt/plexguide/menus/pgdrive/main.sh
                   exit
               fi
@@ -91,15 +91,53 @@ EOF
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
+                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First!" 0 0
                   bash /opt/plexguide/menus/pgdrive/main.sh
                   exit
               fi
 
-            clear
-            bash /opt/plexguide/scripts/supertransfer/config.sh
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
-            journalctl -f -u supertransfer2
+##################################################### DEPLOYMENT SYSTEM - START
+        HEIGHT=10
+        WIDTH=40
+        CHOICE_HEIGHT=4
+        BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+        TITLE="Deploy a Mount System"
+
+        OPTIONS=(A "PG Move      (Traditional)"
+                 B "PG SuperTransfer 2   (New)"
+                 C "Mini FAQ"
+                 Z "Exit")
+
+        CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                        --title "$TITLE" \
+                        --menu "$MENU" \
+                        $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                        "${OPTIONS[@]}" \
+                        2>&1 >/dev/tty)
+        case $CHOICE in
+                A)
+                    systemctl stop supertransfer2 1>/dev/null 2>&1
+                    systemctl disable supertransfer2 1>/dev/null 2>&1
+                    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
+                    "PG Move" > /var/plexguide/deployed.system
+                    ;;
+                B)
+                    systemctl stop move 1>/dev/null 2>&1
+                    systemctl disable move 1>/dev/null 2>&1
+                    clear
+                    bash /opt/plexguide/scripts/supertransfer/config.sh
+                    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+                    journalctl -f -u supertransfer2
+                    "PG ST2" > /var/plexguide/deployed.system
+                    ;;
+                C)
+                    ;;
+                Z)
+                    ## Do Not Put Anything Here ;;
+        esac
+            ;;
+##################################################### DEPLOYMENT SYSTEM - END
+
             ;;
 
         D)

@@ -31,58 +31,39 @@
     tags:
       - gdrive
 
-########## Move Service Script
-#  - name: Check MOVE SCRIPT
-#    stat:
-#      path: "/opt/appdata/plexguide/move.sh"
-#    register: move_script
-#    tags:
-#      - gdrive
-#
-#  - name: Install Move Service
-#    template:
-#      src: move_script.js2
-#      dest: /opt/appdata/plexguide/move.sh
-#      force: yes
-#    tags:
-#      - gdrive
-#    when: move_script.stat.exists == False
-########### Rclone Sync Script
+########################################## MOVE START
+  - name: Install Move Service
+    template:
+      src: move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - move
 
-########################################## Services
-########### Move Service
-#  - name: Check MOVE Service
-#    stat:
-#      path: "/etc/systemd/system/move.service"
-#    register: move
-#    tags:
-#      - gdrive
+  - name: Stop If Move Service Running
+    systemd: state=stopped name=move
+    tags:
+      - move
+    ignore_errors: yes
 
-#  - name: Stop If Move Service Running
-#    systemd: state=stopped name=move
-#    when: move.stat.exists
-#    tags:
-#      - gdrive
+  - name: Install Move Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - move
 
-#  - name: Install Move Service
-#    template:
-#      src: move.js2
-#      dest: /etc/systemd/system/move.service
-#      force: yes
-#    when: move.stat.exists == False
-#    tags:
-#      - gdrive
+  - name: Daemon-Reload
+    systemd: state=stopped name=move daemon_reload=yes enabled=no
+    tags:
+      - move
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=move daemon_reload=yes enabled=n
-#    tags:
-#      - gdrive
-
-#  - name: Start Move
-#    systemd: state=started name=move enabled=yes
-#    when: move.stat.exists
-#    tags:
-#      - gdrive
+  - name: Start Move
+    systemd: state=started name=move enabled=yes
+    tags:
+      - move
+########################################## MOVE END
 
 ########### gdrive
   - name: Stop If GDRIVE Service Running
