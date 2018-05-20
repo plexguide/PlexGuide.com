@@ -48,27 +48,27 @@
 
 ################## Start of New PlexDrive 5 Service
 
-  #- name: PlexDrive 5 Install (Be Patient)
-    #get_url:
-      #url:  https://github.com/dweidenfeld/plexdrive/releases/download/5.0.0/plexdrive-linux-amd64
-      #dest: /usr/bin/plexdrive
-      #mode: 0755
-      #validate_certs: no
-      #owner: 1000
-      #group: 1000
-      #force: yes
-    #tags:
-      #- plexd5
-
-### TEST VERSION of PD%
-  - name: Clone TEST PD5
-    git:
-      repo: https://github.com/EchterAgo/plexdrive
+  - name: PlexDrive 5 Install (Be Patient)
+    get_url:
+      url:  https://github.com/Admin9705/plexdrive/releases/tag/5.1
       dest: /usr/bin/plexdrive
-      version: master
+      mode: 0755
+      validate_certs: no
+      owner: 1000
+      group: 1000
       force: yes
     tags:
       - plexd5
+
+### TEST VERSION of PD%
+  #- name: Clone TEST PD5
+    #git:
+      #repo: https://github.com/EchterAgo/plexdrive
+      #dest: /usr/bin/plexdrive
+      #version: master
+      #force: yes
+    #tags:
+      #- plexd5
 
   - name: Move PlexDrive Service
     template:
