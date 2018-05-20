@@ -108,6 +108,30 @@
     systemd: state=started name=gdrive enabled=yes
     tags:
       - gdrive
+########### gtrive
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=tdrive
+    tags:
+      - gdrive
+    ignore_errors: yes
+
+  - name: Install GDRIVE Service
+    template:
+      src: tdrive.js2
+      dest: /etc/systemd/system/tdrive.service
+      force: yes
+    tags:
+      - gdrive
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    tags:
+      - gdrive
+
+  - name: Start TDrive
+    systemd: state=started name=tdrive enabled=yes
+    tags:
+      - gdrive
 
 ########### UNIONFS
   - name: Stop If UNIONFS Service Running
