@@ -49,7 +49,7 @@ case $CHOICE in
         A)
 
 ##################################################### DEPLOYMENT SYSTEM - START
-        HEIGHT=13
+        HEIGHT=11
         WIDTH=40
         CHOICE_HEIGHT=4
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
