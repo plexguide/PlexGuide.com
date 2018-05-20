@@ -78,7 +78,7 @@ case $CHOICE in
                 C)
                     ;;
                 Z)
-                    exit 0 ;;
+                    ## Do Not Put Anything Here ;;
         esac
             ;;
 ##################################################### DEPLOYMENT SYSTEM - END
