@@ -65,9 +65,6 @@
     git:
       repo: https://github.com/EchterAgo/plexdrive
       dest: /usr/bin/plexdrive
-      owner: 1000
-      group: 1000
-      mode: 0755
       version: master
       force: yes
     tags:
