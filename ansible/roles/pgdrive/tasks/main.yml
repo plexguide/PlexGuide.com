@@ -112,7 +112,7 @@
     tags:
       - gdrive
 
-  - name: Start RClone
+  - name: Start GDrive
     systemd: state=started name=gdrive enabled=yes
     when: gdrive.stat.exists
     tags:
