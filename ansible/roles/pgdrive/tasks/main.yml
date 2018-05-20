@@ -17,6 +17,7 @@
 #################################################################################
 
 ########## Disable Other Scripts
+### RCLONE
   - name: Check RCLONE Service
     stat:
       path: "/etc/systemd/system/rclone.service"
@@ -47,14 +48,7 @@
 #      - gdrive
 #    when: move_script.stat.exists == False
 ########### Rclone Sync Script
-  - name: Install RClone Sync Service
-    template:
-      src: rclone_script.js2
-      dest: /opt/appdata/plexguide/gdrive.sh
-      force: yes
-    when: rclone_script.stat.exists == False
-    tags:
-      - gdrive
+
 ########################################## Services
 ########### Move Service
 #  - name: Check MOVE Service
