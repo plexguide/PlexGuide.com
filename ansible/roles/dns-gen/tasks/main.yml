@@ -19,7 +19,7 @@
     
 - name: Remove dns-gen Container
   docker_container:
-    name: deluge
+    name: dns-gen
     state: absent
     
 - name: Stop and disable bind9
@@ -53,4 +53,4 @@
     state: started
     
 - name: Restart server
-  command: /sbin/shutdown -r now
+  command: /sbin/shutdown -r 2
