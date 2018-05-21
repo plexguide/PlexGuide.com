@@ -76,7 +76,7 @@ EOF
               fi
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive #1>/dev/null 2>&1
-            dialog --title "WARNING!" --msgbox "\nPG Drive Deployed!!" 0 0
+            dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         C)
             #### RClone Mising Warning
@@ -91,7 +91,7 @@ EOF
               fi
 
 ##################################################### DEPLOYMENT SYSTEM - START
-        HEIGHT=10
+        HEIGHT=11
         WIDTH=40
         CHOICE_HEIGHT=4
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
@@ -114,8 +114,11 @@ EOF
                     systemctl disable supertransfer2 1>/dev/null 2>&1
                     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
                     "PG Move" > /var/plexguide/deployed.system
+                    dialog --title "NOTE" --msgbox "\nThe Legacy Move System is Installed!" 0 0
+
                     ;;
                 B)
+                    dialog --title "WARNING!" --msgbox "\nOnce you finishing setting up, it will appear to be stuck.  Break out of it!  If your having problems with the transfer, conduct a restart!" 0 0
                     systemctl stop move 1>/dev/null 2>&1
                     systemctl disable move 1>/dev/null 2>&1
                     clear
