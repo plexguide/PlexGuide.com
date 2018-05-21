@@ -26,7 +26,7 @@
     name: watchtower
     image: v2tec/watchtower
     pull: yes
-    command: medusa tautulli resilio next ubooquity sickrage mylar sabnzbd alltube rutorrent netdata jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik ombi4k htpcmanager radarr4k sonarr4k traefik2 booksonic airsonic cloudcmd headphones heimdall --cleanup --interval 600
+    command: medusa tautulli resilio next ubooquity sickrage mylar sabnzbd alltube rutorrent netdata jackett nzbhydra nzbhydra2 nzbget organizr muximux portainer sonarr radarr watchtower ombi traefik ombi4k htpcmanager radarr4k sonarr4k traefik2 booksonic airsonic cloudcmd headphones heimdall dns-gen --cleanup --interval 600
     cpu_shares: 64
     state: started
     volumes:
