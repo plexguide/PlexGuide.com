@@ -14,7 +14,7 @@ ExecStart=/usr/bin/rclone mount rcache: /mnt/rcache \
                     --attr-timeout=1s --cache-db-path=/mnt/.rcache \
                     --cache-writes --attr-timeout=1s \
                     --config /root/.config/rclone/rclone.conf
-ExecStop=/bin/fusermount -u /mnt/rcache
+ExecStop=/bin/fusermount -uz /mnt/rcache
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
