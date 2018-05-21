@@ -18,18 +18,6 @@
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 
-file="/var/plexguide/pgdupes.autodelete"
-if [ -e "$file" ]
-then
-    echo "" 1>/dev/null 2>&1
-else
-    echo "ON" > /var/plexguide/pgdupes.autodelete
-    echo "true" > /var/plexguide/pgdupes.autodelete2.json
-    exit
-fi
-
-stat=$( cat /var/plexguide/pgdupes.autodelete )
-
 HEIGHT=13
 WIDTH=48
 CHOICE_HEIGHT=5
@@ -51,7 +39,6 @@ CHOICE=$(dialog --clear \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-clear
 case $CHOICE in
         A)
 clear
