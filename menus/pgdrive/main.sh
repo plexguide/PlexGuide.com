@@ -64,7 +64,7 @@ EOF
             ;;
         B)
             clear
-            #### RClone Mising Warning
+            #### RClone Missing Warning
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
@@ -79,7 +79,7 @@ EOF
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         C)
-            #### RClone Mising Warning
+            #### RClone Missing Warning
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
