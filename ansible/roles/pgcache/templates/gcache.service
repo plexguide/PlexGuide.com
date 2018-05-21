@@ -15,7 +15,7 @@ ExecStart=/usr/bin/rclone mount gcache: /mnt/gdrive \
                     --attr-timeout=1s --cache-db-path=/mnt/.rcache \
                     --cache-writes --attr-timeout=1s \
                     --config /root/.config/rclone/rclone.conf
-ExecStop=/bin/fusermount -u /mnt/gdrive
+ExecStop=/bin/fusermount -uz /mnt/gdrive
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
