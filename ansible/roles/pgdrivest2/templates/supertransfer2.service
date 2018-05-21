@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [SuperTransfer]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,5 +15,17 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "5.081 DEV" > /var/plexguide/pg.version
-echo "66" > /var/plexguide/pg.preinstall
+
+[Unit]
+Description='SuperTransfer Loaded Balanced Multi SA Gdrive Uploader'
+After=multi-user.target network-online.target
+
+[Service]
+User=0
+Group=0
+Type=simple
+ExecStart=/bin/bash /opt/plexguide/scripts/supertransfer/supertransfer2.sh 
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

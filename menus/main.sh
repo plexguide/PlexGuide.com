@@ -26,7 +26,7 @@ CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
-OPTIONS=(A "RClone & PlexDrive"
+OPTIONS=(A "Deploy a Mount System"
          B "PG Program Suite"
          C "PG PLEX Enhancement Tools"
          D "PG Server Security"
@@ -47,7 +47,41 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/plexdrive/rc-pd.sh ;;
+
+##################################################### DEPLOYMENT SYSTEM - START
+        HEIGHT=10
+        WIDTH=40
+        CHOICE_HEIGHT=4
+        BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
+        TITLE="Deploy a Mount System"
+
+        OPTIONS=(A "PLEXDrive (Traditional)"
+                 B "PGDrive   (New)"
+                 C "Mini FAQ"
+                 Z "Exit")
+
+        CHOICE=$(dialog --backtitle "$BACKTITLE" \
+                        --title "$TITLE" \
+                        --menu "$MENU" \
+                        $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                        "${OPTIONS[@]}" \
+                        2>&1 >/dev/tty)
+        case $CHOICE in
+                A)
+                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
+                    "PLEXDrive" > /var/plexguide/drive.system
+                    ;;
+                B)
+                    bash /opt/plexguide/menus/pgdrive/main.sh 
+                    "PGDrive" > /var/plexguide/drive.system
+                    ;;
+                C)
+                    ;;
+                Z)
+                    ;; ## Do Not Put Anything Here
+        esac
+            ;;
+##################################################### DEPLOYMENT SYSTEM - END
         B)
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)

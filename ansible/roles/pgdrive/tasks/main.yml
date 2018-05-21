@@ -1,0 +1,152 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+########## Disable Other Scripts
+### RCLONE
+  - name: Check RCLONE Service
+    stat:
+      path: "/etc/systemd/system/rclone.service"
+    register: rclone
+    tags:
+      - gdrive
+
+  - name: Stop If RCLONE Service Running
+    systemd: state=stopped name=rclone enabled=no
+    when: rclone.stat.exists
+    tags:
+      - gdrive
+
+########################################## MOVE START
+  - name: Install Move Service
+    template:
+      src: move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - move
+
+  - name: Stop If Move Service Running
+    systemd: state=stopped name=move
+    tags:
+      - move
+    ignore_errors: yes
+
+  - name: Install Move Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - move
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=move daemon_reload=yes enabled=no
+    tags:
+      - move
+
+  - name: Start Move
+    systemd: state=started name=move enabled=yes
+    tags:
+      - move
+########################################## MOVE END
+
+########### gdrive
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=gdrive
+    tags:
+      - gdrive
+    ignore_errors: yes
+
+  - name: Install GDRIVE Service
+    template:
+      src: gdrive.js2
+      dest: /etc/systemd/system/gdrive.service
+      force: yes
+    tags:
+      - gdrive
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+    tags:
+      - gdrive
+
+  - name: Start GDrive
+    systemd: state=started name=gdrive enabled=yes
+    tags:
+      - gdrive
+########### gtrive
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=tdrive
+    tags:
+      - gdrive
+    ignore_errors: yes
+
+  - name: Install GDRIVE Service
+    template:
+      src: tdrive.js2
+      dest: /etc/systemd/system/tdrive.service
+      force: yes
+    tags:
+      - gdrive
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    tags:
+      - gdrive
+
+  - name: Start TDrive
+    systemd: state=started name=tdrive enabled=yes
+    tags:
+      - gdrive
+
+########### UNIONFS
+  - name: Stop If UNIONFS Service Running
+    systemd: state=stopped name=unionfs
+    tags:
+      - gdrive
+    ignore_errors: yes
+
+  - name: Install UNIONFS Service
+    template:
+      src: unionfs.js2
+      dest: /etc/systemd/system/unionfs.service
+      force: yes
+    tags:
+      - gdrive
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - gdrive
+
+  - name: Start RClone
+    systemd: state=started name=unionfs enabled=yes
+    tags:
+      - gdrive
+
+  - name: SHELL COMMAND 1
+    shell: "chown -R 1000:1000 /root"
+    ignore_errors: True
+    tags:
+      - gdrive
+
+  - name: SHELL COMMAND 2
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
+    ignore_errors: True
+    tags:
+      - gdrive

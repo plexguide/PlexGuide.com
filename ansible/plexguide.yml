@@ -18,6 +18,7 @@
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
+  - { role: pgdrive, tags: ['pgdrive'] }
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
   - { role: variables, tags: ['variables'] }

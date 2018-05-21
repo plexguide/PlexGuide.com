@@ -1,0 +1,104 @@
+#!/bin/bash
+#
+# [SuperTransfer]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+  - name: Check Transfer Service
+    stat:
+      path: "/etc/systemd/system/transfer.service"
+    register: transfer
+
+  - name: Stop If Transfer Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: transfer
+    when: transfer.stat.exists
+    ignore_errors: True
+
+  - name: Check move Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move
+
+  - name: Stop If Move Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: move
+    when: move.stat.exists
+    ignore_errors: True
+
+  - name: Check move-en Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move-en
+
+  - name: Stop If Encrypted Move Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: move-en
+    when: move.stat.exists
+    ignore_errors: True
+
+  - name: Check time Service
+    stat:
+      path: "/etc/systemd/system/time.service"
+    register: time
+
+  - name: Stop If Time Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: time
+    when: time.stat.exists
+    ignore_errors: True
+
+  - name: Check supertransfer1 Service
+    stat:
+      path: "/etc/systemd/system/supertransfer.service"
+    register: supertransfer
+
+  - name: Stop If Supertransfer1 Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: supertransfer
+    when: supertransfer.stat.exists
+    ignore_errors: True
+
+  - name: Install SuperTransfer2 Service
+    template:
+      src: supertransfer2.service
+      dest: /etc/systemd/system/supertransfer2.service
+      force: yes
+
+  - name: Install SuperTransfer Command
+    template:
+      src: supertransfer
+      dest: /bin/supertransfer
+      force: yes
+
+  - name: Set Permissions On Supertransfer Command
+    shell: "sudo chmod +x /bin/supertransfer"
+
+  - name: Enable Supertransfer2 Service
+    systemd:
+      daemon_reload: yes
+      enabled: yes
+      state: restarted
+      name: supertransfer2
