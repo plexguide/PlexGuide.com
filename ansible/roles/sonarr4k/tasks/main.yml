@@ -62,6 +62,7 @@
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/rutorrents:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started

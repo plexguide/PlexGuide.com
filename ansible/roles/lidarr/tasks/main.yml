@@ -18,7 +18,7 @@
 ---
 - include_role:
     name: variables
-    
+
 - name: Remove Lidarr Container
   docker_container:
     name: lidarr
@@ -51,6 +51,7 @@
       - "{{path.stdout}}/rutorrents:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
