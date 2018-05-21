@@ -3,7 +3,7 @@ export NCURSES_NO_UTF8_ACS=1
 
  HEIGHT=12
  WIDTH=55
- CHOICE_HEIGHT=6
+ CHOICE_HEIGHT=7
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - VPN Programs"
 
@@ -12,6 +12,7 @@ export NCURSES_NO_UTF8_ACS=1
           C "PLEXTEST"
           D "RClone Cache Unencrypted"
           E "PGCache TEST (Unencrypted)"
+          F "dns-gen"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -42,9 +43,16 @@ case $CHOICE in
      C)
      bash /opt/plexguide/menus/plex/test.sh ;;
      D)
-    bash /opt/plexguide/menus/rclone/uncache.sh ;;
-    E)
+     bash /opt/plexguide/menus/rclone/uncache.sh ;;
+     E)
      bash /opt/plexguide/menus/pgcache/main.sh ;;
+     B)
+         display=dns-gen
+         dialog --infobox "Installing: $display" 3 30
+         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dns-gen &>/dev/null &
+         sleep 3
+         cronskip="yes"
+         ;;
      Z)
         clear
         exit 0 ;;
