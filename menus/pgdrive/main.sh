@@ -63,6 +63,7 @@ EOF
             touch /mnt/gdrive/plexguide/
             ;;
         B)
+            clear
             #### RClone Mising Warning
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -75,6 +76,7 @@ EOF
               fi
 
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive #1>/dev/null 2>&1
+            dialog --title "WARNING!" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         C)
             #### RClone Mising Warning
