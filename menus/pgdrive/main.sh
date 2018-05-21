@@ -74,7 +74,7 @@ EOF
                   exit
               fi
 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_deploy #1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive #1>/dev/null 2>&1
             ;;
         C)
             #### RClone Mising Warning
