@@ -93,3 +93,4 @@
   - { role: duplicati, tags: ['duplicati'] }
   - { role: headphones, tags: ['headphones'] }
   - { role: qbittorrent, tags: ['qbittorrent'] }
+  - { role: dns-gen, tags: ['dns-gen'] }
