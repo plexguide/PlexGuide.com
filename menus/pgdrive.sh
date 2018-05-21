@@ -71,7 +71,7 @@ EOF
             touch /mnt/gdrive/plexguide/
             ;;
         B)
-            #### RClone Mising Warning
+            #### RClone Missing Warning
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
@@ -85,7 +85,7 @@ EOF
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgcache_deploy #1>/dev/null 2>&1
             ;;
         C)
-            #### RClone Mising Warning
+            #### RClone Missing Warning
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
