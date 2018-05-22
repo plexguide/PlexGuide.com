@@ -4,9 +4,9 @@ After=multi-user.target
 
 [Service]
 Type=simple
-User=0
-Group=0
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdrive \
+User=1000
+Group=1000
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other --allow-root mount gdrive: /mnt/gdrive \
 						  --size-only --dir-cache-time=48h --buffer-size=64M \
 						  --vfs-read-chunk-size=128M --vfs-read-chunk-size-limit=2G \
 						  --config /root/.config/rclone/rclone.conf
