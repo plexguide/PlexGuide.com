@@ -44,7 +44,7 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 
 <p align="center">
 <kbd>
-  <img src="https://plexguide.com/media/snip20180517_9-png.194/full">
+  <img src="https://plexguide.com/wikipics/picdemo.png">
 </kbd>
 </p>
 
