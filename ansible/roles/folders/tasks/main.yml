@@ -92,7 +92,7 @@
       - /mnt/tdrive/movies
       - /mnt/tdrive/music
       - /mnt/tdrive/ebooks
-    when: gdrive.stat.exists == False
+    when: tdrive.stat.exists == False
     ignore_errors: yes
 
 ############ Encrypt
