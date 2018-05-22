@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 source /opt/plexguide/scripts/supertransfer/init.sh
 source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
 source /opt/plexguide/scripts/supertransfer/settings.conf
