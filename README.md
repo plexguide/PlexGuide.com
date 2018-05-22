@@ -1,12 +1,12 @@
 <p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!</b></p>
 
 <p align="center">
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/media/4-wiki-png.189/full" width="200"/>
-  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/media/5-plexguide-png.188/full" width="200"/> 
-  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/media/1-install-png.191/full" width="200"/> 
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/media/6-new-png.187/full" width="200"/> 
-  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/media/3-discord-png.190/full" width="200"/> 
-  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/media/2-donation-png.192/full" width="200"/> 
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/wikipics/button4.png" width="200"/>
+  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/> 
+  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/> 
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/> 
+  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/> 
+  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/wikipics/button2.png" width="200"/> 
 </p>
 
 ----
