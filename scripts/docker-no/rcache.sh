@@ -19,11 +19,11 @@
 clear
 
 ## Installing RClone
-  curl https://rclone.org/install.sh | sudo bash -s beta 1>/dev/null 2>&1
-  cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
+curl https://rclone.org/install.sh | sudo bash -s beta 1>/dev/null 2>&1
+cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
 
 # allows others to access fuse
-tee "/etc/fuse.conf" > /dev/null <<EOF
+tee "/etc/fuse.conf" >/dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
 # Set the maximum number of FUSE mounts allowed to non-root users.
 # The default is 1000.
