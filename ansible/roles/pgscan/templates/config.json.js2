@@ -10,7 +10,7 @@
   "PLEX_EMPTY_TRASH_MAX_FILES": 100,
   "PLEX_EMPTY_TRASH_ZERO_DELETED": false,
   "PLEX_LD_LIBRARY_PATH": "/usr/lib/plexmediaserver",
-  "PLEX_LOCAL_URL": "http://127.0.0.1",
+  "PLEX_LOCAL_URL": "http://127.0.0.1:32400",
   "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
   "PLEX_SECTION_PATH_MAPPINGS": {
     "1": [
@@ -32,11 +32,8 @@
   "RUN_COMMAND_BEFORE_SCAN": "",
   "SERVER_ALLOW_MANUAL_SCAN": false,
   "SERVER_FILE_EXIST_PATH_MAPPINGS": {
-    "/mnt/unionfs/movies/": [
-      "/unionfs/movies/"
-    ],
-    "/mnt/unionfs/tv/": [
-      "/unionfs/tv/"
+    "/mnt/unionfs/": [
+      "/unionfs/"
     ]
   },
   "SERVER_IGNORE_LIST": [
@@ -49,10 +46,10 @@
   "SERVER_PASS": "xxxxxxxxxxxxxxxxxxxxxxx",
   "SERVER_PATH_MAPPINGS": {
     "/unionfs/movies/": [
-      "/unionfs/movies/"
+      "/mnt/unionfs/movies/"
     ],
     "/unionfs/tv/": [
-      "/unionfs/tv/"
+      "/mnt/unionfs/tv/"
     ]
   },
   "SERVER_PORT": 3468,
