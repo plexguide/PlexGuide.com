@@ -1,12 +1,12 @@
 <p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!</b></p>
 
 <p align="center">
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/media/4-wiki-png.189/full" width="200"/>
-  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/media/5-plexguide-png.188/full" width="200"/> 
-  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/media/1-install-png.191/full" width="200"/> 
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/media/6-new-png.187/full" width="200"/> 
-  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/media/3-discord-png.190/full" width="200"/> 
-  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/media/2-donation-png.192/full" width="200"/> 
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/wikipics/button4.png" width="200"/>
+  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button5.png" width="200"/> 
+  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button1.png" width="200"/> 
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/> 
+  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/> 
+  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/wikipics/button2.png" width="200"/> 
 </p>
 
 ----
@@ -14,14 +14,14 @@
 
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
-<p align="center"><kbd><img src="https://plexguide.com/media/pg2-1-gif.184/full"></kbd></p>
+<p align="center"><kbd><img src="https://plexguide.com/wikipics/cpuguy.gif"></kbd></p>
 
 **Human Speak:** We make your life easy by automating as much as we can so you can spend less time coding and more time watching!
 
 [**The PlexGuide Wiki:**](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki) There are a series of topics that you should read to assist you! EVERYONE has rights to edit and/or build new wiki pages.  What you know may save everyone time!
 
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
-<p align="center"><kbd><img src="https://plexguide.com/media/snip20180517_8-png.186/full"></kbd></p>
+<p align="center"><kbd><img src="https://plexguide.com/wikipics/pgladies.png"></kbd></p>
 
 ----
 
@@ -44,7 +44,7 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 
 <p align="center">
 <kbd>
-  <img src="https://plexguide.com/media/snip20180517_9-png.194/full">
+  <img src="https://plexguide.com/wikipics/picdemo.png">
 </kbd>
 </p>
 
