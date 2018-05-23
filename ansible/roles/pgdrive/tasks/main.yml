@@ -21,8 +21,8 @@
   - name: Stop If RCLONE Service Running
     systemd: state=stopped name=rclone enabled=no
     ignore_errors: yes
-    #tags:
-    #  - [ 'move', 'gdrive' ]
+    tags:
+      - [move,gdrive]
 
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
