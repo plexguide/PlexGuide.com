@@ -91,12 +91,12 @@
     state: directory
     recurse: yes
 
-- template:
-    src: entrypoint.sh
-    dest: /opt/appdata/qbittorrent/config/entrypoint.sh
-    owner: 1000
-    group: 1000
-    mode: 2755
+# - template:
+#     src: qBittorrent.conf
+#     dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
+#     owner: 1000
+#     group: 1000
+#     mode: 2755
 
 - name: Deploy qBittorrent Container
   docker_container:
