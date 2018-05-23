@@ -22,13 +22,13 @@
     systemd: state=stopped name=rclone enabled=no
     ignore_errors: yes
     tags:
-      - [move,gdrive]
+      - pgdrivestop
 
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
     tags:
-      - move, gdrive 
+      - pgdrivestop
 
 ########################################## MOVE START
   - name: Install Move Service
