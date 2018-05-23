@@ -75,7 +75,7 @@ EOF
                   exit
               fi
 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive #1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive,pgdrivestop #1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         C)
@@ -112,7 +112,7 @@ EOF
                 A)
                     systemctl stop supertransfer2 1>/dev/null 2>&1
                     systemctl disable supertransfer2 1>/dev/null 2>&1
-                    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
+                    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move,pgdrivestop
                     "PG Move" > /var/plexguide/deployed.system
                     dialog --title "NOTE" --msgbox "\nThe Legacy Move System is Installed!" 0 0
 
