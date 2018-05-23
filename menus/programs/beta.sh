@@ -10,9 +10,7 @@ export NCURSES_NO_UTF8_ACS=1
  OPTIONS=(A "DO NOT USE - For Developers Use Only!"
           B "Duplicati - Advanced Backup"
           C "PLEXTEST"
-          D "RClone Cache Unencrypted"
-          E "PGCache TEST (Unencrypted)"
-          F "dns-gen"
+          D "dns-gen"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -43,10 +41,6 @@ case $CHOICE in
      C)
      bash /opt/plexguide/menus/plex/test.sh ;;
      D)
-     bash /opt/plexguide/menus/rclone/uncache.sh ;;
-     E)
-     bash /opt/plexguide/menus/pgcache/main.sh ;;
-     B)
          display=dns-gen
          dialog --infobox "Installing: $display" 3 30
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dns-gen &>/dev/null &
