@@ -16,20 +16,20 @@
 #
 #################################################################################
 
-########## Disable Other Scripts
-### RCLONE
-  - name: Check RCLONE Service
-    stat:
-      path: "/etc/systemd/system/rclone.service"
-    register: rclone
-    tags:
-      - gdrive
+########## Disable Other Services
 
+####### FOR DRIVES
   - name: Stop If RCLONE Service Running
     systemd: state=stopped name=rclone enabled=no
-    when: rclone.stat.exists
+    ignore_errors: yes
     tags:
-      - gdrive
+      - [ 'move', 'gdrive' ]
+
+  - name: Stop If PLEXDRIVE Service Running
+    systemd: state=stopped name=plexdrive enabled=no
+    ignore_errors: yes
+    tags:
+      - [ 'move', 'gdrive' ]
 
 ########################################## MOVE START
   - name: Install Move Service
