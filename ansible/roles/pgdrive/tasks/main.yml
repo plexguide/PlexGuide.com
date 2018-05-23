@@ -27,8 +27,8 @@
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
-    #tags:
-    #  - [ 'move', 'gdrive' ]
+    tags:
+      - move, gdrive 
 
 ########################################## MOVE START
   - name: Install Move Service
