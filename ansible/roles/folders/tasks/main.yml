@@ -28,7 +28,7 @@
   - name: Create PlexDrive Folder
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
     with_items:
-      - /mnt/plexdrive 
+      - /mnt/plexdrive
     when: plexdrive.stat.exists == False
     ignore_errors: yes
 
@@ -151,4 +151,9 @@
       - "{{path.stdout}}/sab/incomplete"
       - "{{path.stdout}}/sab/nzb"
       - "{{path.stdout}}/sab/complete/ebooks"
+      - "{{path.stdout}}/torrentvpn"
+      - "{{path.stdout}}/torrentvpn/temp"
+      - "{{path.stdout}}/torrentvpn/downloaded"
+      - "{{path.stdout}}/torrentvpn/.torrent"
+      - "{{path.stdout}}/torrentvpn/.watched"
     ignore_errors: yes
