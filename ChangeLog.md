@@ -3,7 +3,9 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.081] (Beta, Release Candiate & DEV)
 
-- Added extra /mnt option to the NCDU menu
+- Added
+  - Extra /mnt option to the NCDU menu
+  - torrenvpn directory to Ansible folders roles for those that use 2nd HD
 
 -------------------------------------------------------
 ## Past Changes
