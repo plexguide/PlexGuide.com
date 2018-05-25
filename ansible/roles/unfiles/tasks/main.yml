@@ -4,19 +4,8 @@
       state: absent
       path: "{{ item }}"
     with_items:
-        - /mnt/*
         - /var/plexguide
         - /opt/appdata
 
-  - name: Ansible delete file glob
-    find:
-      paths: /mnt
-      use:regex: true
-      patterns: *
-    register: wildcard_files_to_delete
-
-  - name: Ansible remove file glob
-    file:
-      path: "{{ item.path }}"
-      state: absent
-    with_items: "{{ wildcard_files_to_delete.files }}
+  - name: Remove via Shell
+    shell: "rm -r /mnt/*"
