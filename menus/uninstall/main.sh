@@ -35,7 +35,7 @@ if dialog --stdout --title "PG UnInstaller" \
          dialog --infobox "Deleting Your Data Forever!" 3 42
          sleep 1
          rm -r /opt/appdata &>/dev/null &
-         dialog --infobox "I'm here, I'm there, wait... I'm your DATA! Poof! I'm gone!" 3 65
+         dialog --infobox "I'm here, I'm there, wait...\nI'm your DATA! Poof! I'm gone!" 4 45
          sleep 3
         fi
          dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 50
