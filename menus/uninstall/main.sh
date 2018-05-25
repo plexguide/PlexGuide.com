@@ -8,7 +8,7 @@ if dialog --stdout --title "PG UnInstaller" \
             dialog --infobox "Nothing Has Been Uninstalled!" 3 45
             sleep 3 
     else
-         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You!\nPlexGuide Never Dies!" 0 0
+         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 5 50
          sleep 4
          dialog --infobox "Removing Services" 3 30
          sleep 2
@@ -32,13 +32,13 @@ if dialog --stdout --title "PG UnInstaller" \
           dialog --infobox "Your Data will remain under /opt/appdata" 3 50
           sleep 3
         else
-         dialog --infobox "Deleting Your Data Forever!" 3 45
+         dialog --infobox "Deleting Your Data Forever!" 3 42
          sleep 1
          rm -r /opt/appdata &>/dev/null &
-         dialog --infobox "I'm here, I'm there, wait... I'm your DATA! Poof! I'm gone!" 3 60
+         dialog --infobox "I'm here, I'm there, wait... I'm your DATA! Poof! I'm gone!" 3 65
          sleep 3
         fi
-         dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 45
+         dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 50
          sleep 3
          dialog --infobox "GoodBye!" 0 0
          sleep 1
