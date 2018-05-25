@@ -67,7 +67,7 @@
 - name: Add Main-Folder
   file:
     path: "/mnt/qbittorrent"
-    mode: 4777
+    mode: 777
     owner: 1000
     group: 1000
     state: directory
