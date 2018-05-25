@@ -24,6 +24,12 @@
     tags:
       - pgdrivestop
 
+  - name: Stop If encache Service Running
+    systemd: state=stopped name=encache enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrivestop
+
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
@@ -112,14 +118,15 @@
     systemd: state=started name=gdrive enabled=yes
     tags:
       - gdrive
-########### gtrive
-  - name: Stop If GDRIVE Service Running
+
+########### tdrive
+  - name: Stop If TDRIVE Service Running
     systemd: state=stopped name=tdrive
     tags:
       - gdrive
     ignore_errors: yes
 
-  - name: Install GDRIVE Service
+  - name: Install TDRIVE Service
     template:
       src: tdrive.js2
       dest: /etc/systemd/system/tdrive.service
