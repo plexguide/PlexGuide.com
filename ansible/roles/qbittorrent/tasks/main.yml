@@ -49,7 +49,7 @@
 - name: Add Config-Folder
   file:
     path: "/opt/appdata/qbittorrent/config"
-    mode: 2777
+    mode: 0777
     owner: 1000
     group: 1000
     state: directory
@@ -58,7 +58,7 @@
 - name: Add Torrents-Folder
   file:
     path: "/opt/appdata/qbittorrent/torrents"
-    mode: 2777
+    mode: 0777
     owner: 1000
     group: 1000
     state: directory
