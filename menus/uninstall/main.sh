@@ -8,7 +8,7 @@ if dialog --stdout --title "PG UnInstaller" \
             dialog --infobox "Nothing Has Been Uninstalled!" 3 45
             sleep 3 
     else
-         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 0 0
+         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You!\nPlexGuide Never Dies!" 0 0
          sleep 4
          dialog --infobox "Removing Services" 3 30
          sleep 2
