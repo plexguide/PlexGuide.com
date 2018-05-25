@@ -6,7 +6,7 @@
 
 ## For testing new pgdrive encrypt new location
 rm -r /opt/plexguide/ansible/roles/pgdrive
-mv /opt/plexguide/ansible/roles/pgdrive_en /opt/plexguide/ansible/roles/pgdrive
+mv /opt/plexguide/ansible/roles/pgdrive_en2 /opt/plexguide/ansible/roles/pgdrive
 
 ## For testing new encache config
 #rm /opt/plexguide/ansible/roles/encache/templates/encache.js2
