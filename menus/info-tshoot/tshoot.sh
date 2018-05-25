@@ -36,7 +36,7 @@ case $CHOICE in
             exit 0 ;;
         C)
             rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-            bash /opt/plexguide/menus/uninstaller/main.sh 
+            bash /opt/plexguide/menus/uninstall/main.sh 
             ;;
         D)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags test
