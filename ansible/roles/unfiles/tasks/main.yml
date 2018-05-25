@@ -6,6 +6,11 @@
     with_items:
         - /var/plexguide
         - /opt/appdata
-
-  - name: Remove via Shell (Be Patient)
-    shell: "rm -r /mnt/*/"
+        - /mnt/nzbget
+        - /mnt/sab
+        - /mnt/rutorrents
+        - /mnt/move
+        - /mnt/.gcrypt
+        - /mnt/deluge
+        - /mnt/torrentvpn       
+    ignore_errors: yes   
