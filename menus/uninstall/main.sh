@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dialog --title "PG Uninstaller Info" --msgbox "\nThe UnInstaller will remove all services, nuke file directories and accumlated files, uninstall docker, and remove all containers; but will prompt you if you want to keep your program (APPDATA)" 14 60
+dialog --title "PG Uninstaller Info" --msgbox "\nThe UnInstaller will remove all services, nuke file directories and accumlated files, uninstall docker, and remove all containers; but will prompt you if you want to keep your program (APPDATA)" 9 60
 
 if dialog --stdout --title "PG UnInstaller" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
