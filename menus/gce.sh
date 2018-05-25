@@ -92,7 +92,7 @@ EOF
         journalctl -f -u supertransfer2
             ;;
         C)
-
+            ;;
         E)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         F)
