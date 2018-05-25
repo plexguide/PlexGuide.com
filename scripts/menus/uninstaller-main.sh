@@ -6,38 +6,36 @@ whiptail --title "Uninstaller Information" --msgbox "The UnInstaller will remove
 # If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "UnInstaller Selection" --yesno "Do you WANT TO STOP THE UNINSTALL & BACKOUT!?" 8 76) then
     
-    whiptail --title "No Uninstall" --msgbox "Nothing has been uninstalled" 8 76
+    dialog --infobox "Nothing Has Been Uninstalled!" 0 0
+    sleep 4
     clear
 else
     whiptail --title "Uninstalling PlexGuide" --msgbox "May The Force Be With You! Uninstalling PlexGuide!" 9 76
-     clear
-     echo 1. "Stopping & Uninstalling Services"
-     echo ""
+     dialog --infobox "Removing Services" 0 0
+     sleep 1
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices
-     echo ""
-     echo 2. "Removing Directories & Unnecessary Files"
-     echo ""
+     dialog --infobox "Removing Files & Folders" 0 0
+     sleep 1
      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unfiles
-     echo ""
-     echo 3. "Uninstalling Docker & Removing all Containers"
-     echo ""
+     dialog --infobox "Uninstall Docker & Removing Containers" 0 0
+     sleep 1
      # 1>/dev/null 2>&1
-     rm -r /etc/docker
+     rm -r /etc/docker 1>/dev/null 2>&1
      apt-get purge docker-ce -y
-     rm -rf /var/lib/docker
-     echo ""
+     rm -rf /var/lib/docker 1>/dev/null 2>&1
 
-     echo "Program Data Removed - Not Ready"
-     echo ""
+     dialog --infobox "Program Data Removed - Not Ready" 0 0
+     sleep 1
      if (whiptail --title "Program (AppData)" --yesno "Do you WANT to keep your Program Configs (Appdata)?" 8 76) then
     
-     whiptail --title "AppData - No Action" --msgbox "Your Program-AppData remains intact at: /opt/appdata" 8 76
+     dialog --infobox "Your Data will remain under /opt/appdata" 0 0
         clear
         else
      sudo rm -r /opt/appdata
-     whiptail --title "Removing AppData" --msgbox "Poof! I'm gone (appdata removed from /opt/appdata)!" 9 76
+     dialog --infobox "I'm here, I'm there, wait... I'm your DATA! Poof! I'm gone!" 0 0
      clear
      fi
-    whiptail --title "Final Notice" --msgbox "Most of everything should have been removed. Time to reboot! After you reboot, you can type plexguide to start a new installation once again!" 9 76  
-    reboot
+     dialog --infobox "Reboot will commence in 3 SECONDS!" 0 0
+     3
+     reboot
 fi
