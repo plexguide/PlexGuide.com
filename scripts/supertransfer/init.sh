@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# shellcheck disable=SC1091
+
 #source /opt/plexguide/scripts/supertransfer/settings.conf
 # functions:
 # cat_Art() - init msg
@@ -50,7 +52,7 @@ cat <<ART
 
 ART
 }
-cat_pasta(){
+function cat_pasta() {
 cat <<ART
          _.--.__                                             _.--.
     ./'       `--.__                                   ..-'   ,'
@@ -76,8 +78,8 @@ cat <<ART
 ART
 }
 
-cat_Help(){
-cat <<HELP
+cat_Help() {
+  cat <<HELP
 Usage: supertransfer [OPTION]
 
 ##############################
@@ -109,10 +111,10 @@ Please report any bugs to @flicker-rate#3637 on discord, or at plexguide.com
 HELP
 }
 
-cat_Troubleshoot(){
-read -p "View Troubleshooting Tips? y/n>" answer
-if [[ $answer =~ [y|Y|yes|Yes] ]]; then
-cat <<EOF
+cat_Troubleshoot() {
+  read -p "View Troubleshooting Tips? y/n>" answer
+  if [[ $answer =~ [y|Y|yes|Yes] ]]; then
+    cat <<EOF
 ####### Troubleshooting steps: ###########################
 
 1. Make sure you have enabled gdrive api access in
@@ -133,26 +135,29 @@ cat <<EOF
 
 ##########################################################
 EOF
-fi
+  fi
 
-read -p "View Error Log? y/n>" answer
-[[ $answer =~ [y|Y|yes|Yes] ]] && less /tmp/SA_error.log
+  read -p "View Error Log? y/n>" answer
+  [[ $answer =~ [y|Y|yes|Yes] ]] && less /tmp/SA_error.log
 }
 
-upload_Json(){
-source /opt/plexguide/scripts/supertransfer/settings.conf
-source ${userSettings}
-[[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
-[[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
+upload_Json() {
+  source /opt/plexguide/scripts/supertransfer/settings.conf
+  source "${userSettings}"
+  [[ ! -e "$jsonPath" ]] && mkdir" $jsonPath" && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
+  [[ ! -e "$jsonPath" ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
 
-localIP=$(curl -s icanhazip.com)
-[[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
-cd $jsonPath
-python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
-jobpid=$!
-trap "kill $jobpid && exit 1" SIGTERM
+  localIP=$(curl -s icanhazip.com)
+  [[ -z $localIP ]] && localIP=$(
+    wget -qO- http://ipecho.net/plain
+    echo
+  )
+  cd "$jsonPath" || exit
+  python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
+  jobpid=$!
+  trap 'kill $jobpid && exit 1' SIGTERM
 
-cat <<MSG
+  cat <<MSG
 
 ############ CONFIGURATION ################################
 
@@ -172,39 +177,39 @@ $jsonPath
 ###########################################################
 
 MSG
-read -rep $'\e[032m   -- Press any key when you are done uploading --\e[0m'
-trap "exit 1" SIGTERM
-echo
-start_spinner "Terminating Web Server."
-sleep 2
-{ kill $jobpid && wait $jobpid; } &>/dev/null
-stop_spinner $(( ! $? ))
-
-if [[ $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
-  start_spinner "Web Server Still Running. Attempting to kill again."
-	jobpid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
-	sleep 5
+  read -rep $'\e[032m   -- Press any key when you are done uploading --\e[0m'
+  trap "exit 1" SIGTERM
+  echo
+  start_spinner "Terminating Web Server."
+  sleep 2
   { kill $jobpid && wait $jobpid; } &>/dev/null
-  stop_spinner $(( ! $? ))
-fi
+  stop_spinner $((!$?))
 
-numKeys=$(ls $jsonPath | egrep -c .json$)
-if [[ $numKeys > 0 ]];then
-   log "Found $numKeys Service Account Keys" INFO
-else
-   log "No Service Keys Found. Try Again." FAIL
-   exit 1
-fi
-return 0
+  if [[ $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
+    start_spinner "Web Server Still Running. Attempting to kill again."
+    jobpid=$(ps -ef | grep "jsonUpload.py" | grep -v grep | awk '{print $2}')
+    sleep 5
+    { kill "$jobpid" && wait "$jobpid"; } &>/dev/null
+    stop_spinner $((!$?))
+  fi
+
+  numKeys=$(find "$jsonPath" -type f -name .json$ | wc -1)
+  if [[ $numKeys -gt 0 ]]; then
+    log "Found $numKeys Service Account Keys" INFO
+  else
+    log "No Service Keys Found. Try Again." FAIL
+    exit 1
+  fi
+  return 0
 }
 
-configure_teamdrive_share(){
-source $userSettings
-[[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
-[[ -z $teamDrive  ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
-printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count=$(grep -c "@" /tmp/clientemails); # accurate count by @
-cat <<EOF
+configure_teamdrive_share() {
+  source "$userSettings"
+  [[ ! $(ls "$jsonPath" | grep -E .json$) ]] && log "configure_teamdrive_share : no jsons found" FAIL && exit 1
+  [[ -z "$teamDrive" ]] && log "configure_teamdrive_share : no teamdrive found in config" FAIL && exit 1
+  printf "$(grep \"client_email\" "${jsonPath}"/*.json | cut -f4 -d'"')\t" >/tmp/clientemails
+  count=$(grep -c "@" /tmp/clientemails) # accurate count by @
+  cat <<EOF
 ############ CONFIGURATION ################################
 2) In your gdrive, share your teamdrive with
    the $count following emails:
@@ -213,24 +218,24 @@ cat <<EOF
 
 ###########################################################
 EOF
-read -p 'Press Any Key To See The Emails'
-cat /tmp/clientemails
-echo
-echo 'NOTE: you can copy and paste the whole chunk at once'
-echo 'If you need to see them again, they are in /tmp/clientemails'
-read -p 'Press Any Key To Continue.'
-return 0
+  read -p 'Press Any Key To See The Emails'
+  cat /tmp/clientemails
+  echo
+  echo 'NOTE: you can copy and paste the whole chunk at once'
+  echo 'If you need to see them again, they are in /tmp/clientemails'
+  read -p 'Press Any Key To Continue.'
+  return 0
 }
 
-configure_personal_share(){
-source $userSettings
-[[ ! $(ls $jsonPath | egrep .json$)  ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
-printf "$(grep \"client_email\" ${jsonPath}/*.json | cut -f4 -d'"')\t" > /tmp/clientemails
-count=$(grep -c "@" /tmp/clientemails); # accurate count by @
-echo "tip: by default, PG stores media in gdrive on root"
-read -p 'Would you like to change where media is stored? y/n> ' answer
-if [[ $answer =~ [y|Y|yes|Yes] ]]; then
-cat <<EOF
+configure_personal_share() {
+  source "$userSettings"
+  [[ ! $(ls "$jsonPath" | egrep .json$) ]] && log "configure_personal_share : no jsons found" FAIL && exit 1
+  printf "$(grep \"client_email\" "${jsonPath}"/*.json | cut -f4 -d'"')\t" >/tmp/clientemails
+  count=$(grep -c "@" /tmp/clientemails) # accurate count by @
+  echo "tip: by default, PG stores media in gdrive on root"
+  read -p 'Would you like to change where media is stored? y/n> ' answer
+  if [[ $answer =~ [y|Y|yes|Yes] ]]; then
+    cat <<EOF
 ############ CONFIGURATION ################################
 1) Create a directory structure like so in your gdrive:
 
@@ -244,15 +249,15 @@ NOTE: root_folder is optional, you can put movies into
 NOTE: you can drag and drop existing movies/tv folders here.
 ###########################################################
 EOF
-echo "Example: /media     Example2: /data"
-read -p 'Enter the name of your root folder for media: ' root
-[[ $root == '/' || -z $root ]] && root=''
-rootclean=$(sed 's/\//\\\//g' <<<$root)
-sed -i '/'^rootDir'=/ s/=.*/='${rootclean}'/' $userSettings
-echo
-fi
+    echo "Example: /media     Example2: /data"
+    read -p 'Enter the name of your root folder for media: ' root
+    [[ $root == '/' || -z $root ]] && root=''
+    rootclean=$(sed 's/\//\\\//g' <<<$root)
+    sed -i '/'^rootDir'=/ s/=.*/='"${rootclean}"'/' "$userSettings"
+    echo
+  fi
 
-cat <<EOF
+  cat <<EOF
 ############ CONFIGURATION ################################
 2) In your gdrive, share your $root folder with
    the $count following emails:
@@ -261,31 +266,31 @@ cat <<EOF
 
 ###########################################################
 EOF
-read -p 'Press Any Key To See The Emails'
-cat /tmp/clientemails
-echo
-echo 'NOTE: you can copy and paste the whole chunk at once'
-echo 'If you need to see them again, they are in /tmp/clientemails'
-read -p 'Press Any Key To Continue.'
-############ KILL CLOUDST2
-docker stop cloudst2 1>/dev/null 2>&1
-docker rm cloudst2 &>/dev/null &
-############ KILL CLOUDST2
-return 0
+  read -p 'Press Any Key To See The Emails'
+  cat /tmp/clientemails
+  echo
+  echo 'NOTE: you can copy and paste the whole chunk at once'
+  echo 'If you need to see them again, they are in /tmp/clientemails'
+  read -p 'Press Any Key To Continue.'
+  ############ KILL CLOUDST2
+  docker stop cloudst2 1>/dev/null 2>&1
+  docker rm cloudst2 &>/dev/null &
+  ############ KILL CLOUDST2
+  return 0
 }
 
-configure_Json(){
-source ${userSettings}
-#rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
-rclonePath='/root/.config/rclone/rclone.conf'
-[[ -e ${rclonePath} ]] || mkdir -p ${rclonePath}
-[[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json Found." FAIL && exit 1
-# add rclone config for new keys if not already existing
-for json in ${jsonPath}/*.json; do
-  if [[ ! $(egrep  '^\[GDSA[0-9]+\]$' -A7 $rclonePath | grep $json) ]]; then
-    oldMaxGdsa=$(egrep  '^\[GDSA[0-9]+\]$' $rclonePath | sed 's/\[GDSA//g;s/\]//' | sort -g | tail -1)
-    newMaxGdsa=$((++oldMaxGdsa))
-cat <<-CFG >> $rclonePath
+configure_Json() {
+  source "${userSettings}"
+  #rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+  rclonePath='/root/.config/rclone/rclone.conf'
+  [[ -e ${rclonePath} ]] || mkdir -p ${rclonePath}
+  [[ ! $(ls $jsonPath | egrep .json$) ]] && log "No Service Accounts Json Found." FAIL && exit 1
+  # add rclone config for new keys if not already existing
+  for json in ${jsonPath}/*.json; do
+    if [[ ! $(egrep '^\[GDSA[0-9]+\]$' -A7 $rclonePath | grep $json) ]]; then
+      oldMaxGdsa=$(egrep '^\[GDSA[0-9]+\]$' $rclonePath | sed 's/\[GDSA//g;s/\]//' | sort -g | tail -1)
+      newMaxGdsa=$((++oldMaxGdsa))
+      cat <<-CFG >>$rclonePath
 [GDSA${newMaxGdsa}]
 type = drive
 client_id =
@@ -296,30 +301,30 @@ service_account_file = $json
 team_drive = $teamDrive
 
 CFG
-    ((++newGdsaCount))
-  fi
-done
-[[ -n $newGdsaCount ]] && log "$newGdsaCount New Gdrive Service Account Added." INFO
-return 0
+      ((++newGdsaCount))
+    fi
+  done
+  [[ -n $newGdsaCount ]] && log "$newGdsaCount New Gdrive Service Account Added." INFO
+  return 0
 }
 
 # purge rclone of SA's
-purge_Rclone(){
-#  rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
-rclonePath='/root/.config/rclone/rclone.conf'
+purge_Rclone() {
+  #  rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
+  rclonePath='/root/.config/rclone/rclone.conf'
   del=0
   while read line; do
     if [[ $line == '' ]]; then
-    	del=0
-    	echo $line >> ${rclonePath}.tmp
+      del=0
+      echo $line >>${rclonePath}.tmp
     elif [[ $del == 1 || $line =~ ^\[GDSA[0-9]+\]$ ]]; then
-    	del=1
+      del=1
     else
-    	del=0
-    	echo $line >> ${rclonePath}.tmp
+      del=0
+      echo $line >>${rclonePath}.tmp
     fi
   done <$rclonePath
-  cat ${rclonePath}.tmp > $rclonePath
+  cat ${rclonePath}.tmp >$rclonePath
   rm ${rclonePath}.tmp
   if [[ $(egrep '^\[GDSA[0-9]+\]$' -A7 $rclonePath) ]]; then
     log "Failed To Purge Rclone Config." WARN
