@@ -164,8 +164,6 @@
       path: /etc/systemd/system/v2dockerfix.service 
     ignore_errors: True    
 ##################################### SERVICE ### END
-
-########################################## DOCKERFIX ##################
 #
 #
 #
