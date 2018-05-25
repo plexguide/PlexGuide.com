@@ -8,17 +8,16 @@ if dialog --stdout --title "PG UnInstaller" \
             dialog --infobox "Nothing Has Been Uninstalled!" 3 45
             sleep 3 
     else
-         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 3 45
+         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 4 45
          sleep 4
          dialog --infobox "Removing Services" 3 30
-         sleep 1
+         sleep 2
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices &>/dev/null &
          dialog --infobox "Removing Files & Folders" 3 30
-         sleep 1
+         sleep 2
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unfiles &>/dev/null &
-
          dialog --infobox "Uninstall Docker & Removing Containers" 3 35
-         sleep 1
+         sleep 2
          clear
          rm -r /etc/docker 1>/dev/null 2>&1
          apt-get purge docker-ce -y 1>/dev/null 2>&1
