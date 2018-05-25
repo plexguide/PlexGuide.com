@@ -1,153 +1,196 @@
 ---
-########################################## RCLONE ##################
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+    ignore_errors: True
 
-## Unencrypted
-  - name: Check RClone Unencrypted
-    stat:
-      path: "/etc/systemd/system/rclone.service"
-    register: rclone
+  - name: Remove Service
+    file:
+      state: absent
+      path: /etc/systemd/system/gdrive.service
+    ignore_errors: True 
+##################################### SERVICE - END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+    ignore_errors: True
 
-  - name: Stop RClone Unencrypted
-    systemd: state=stopped name=rclone
-    when: rclone.stat.exists
-    
-  - name: Remove RClone Service
+  - name: Remove Service
     file:
       state: absent
       path: /etc/systemd/system/rclone.service 
-    when: rclone.stat.exists
+    ignore_errors: True 
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=rclone daemon_reload=yes enabled=no
+    ignore_errors: True
 
-## Encrypted - Part 1
-  - name: Check RClone Encrypted Part 1
-    stat:
-      path: "/etc/systemd/system/rclone-en.service"
-    register: rclone_en
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone.service
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=rcache daemon_reload=yes enabled=no
+    ignore_errors: True
 
-  - name: Stop RClone Encrypted Part 1
-    systemd: state=stopped name=rclone-en
-    when: rclone_en.stat.exists
-    
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/rcache.service
+    ignore_errors: True     
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=tcache daemon_reload=yes enabled=no
+    ignore_errors: True
+
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/tcache.service 
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=rclone-en daemon_reload=yes enabled=no
+    ignore_errors: True
+
   - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/rclone-en.service 
-    when: rclone_en.stat.exists
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=rclone-encrypt daemon_reload=yes enabled=no
+    ignore_errors: True
 
-## Encrypted - Part 2
-  - name: Check RClone Encrypted Part 2
-    stat:
-      path: "/etc/systemd/system/rclone-encrypt.service"
-    register: rclone_encrypt
-
-  - name: Stop RClone Encrypted Part 2
-    systemd: state=stopped name=rclone-encrypt
-    when: rclone_encrypt.stat.exists
-    
   - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/rclone-encrypt.service 
-    when: rclone_encrypt.stat.exists
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=move daemon_reload=yes enabled=no
+    ignore_errors: True
 
-  ########################################## MOVE ##################
-
-## Unencrypted
-  - name: Check Move Unencrypted
-    stat:
-      path: "/etc/systemd/system/move.service"
-    register: move
-
-  - name: Stop Move Unencrypted
-    systemd: state=stopped name=move
-    when: move.stat.exists
-    
-  - name: Remove Move Service
+  - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/move.service 
-    when: move.stat.exists
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=move-en daemon_reload=yes enabled=no
+    ignore_errors: True
 
-## Encrypted
-  - name: Check Move Encrypted
-    stat:
-      path: "/etc/systemd/system/move-en.service"
-    register: move_en
-
-  - name: Stop Move Encrypted
-    systemd: state=stopped name=move-en
-    when: move_en.stat.exists
-    
-  - name: Remove Move Service
+  - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/move-en.service 
-    when: move_en.stat.exists
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    ignore_errors: True
 
-########################################## UNIONFS ##################
-
-## Unencrypted
-  - name: Check UnionFS Unencrypted
-    stat:
-      path: "/etc/systemd/system/unionfs.service"
-    register: unionfs
-
-  - name: Stop UnionFS Unencrypted
-    systemd: state=stopped name=unionfs
-    when: unionfs.stat.exists
-    
-  - name: Remove UnionFS Service
+  - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/unionfs.service 
-    when: unionfs.stat.exists
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs-encrypt daemon_reload=yes enabled=no
+    ignore_errors: True
 
-## Encrypted
-  - name: Check UnionFS Encrypted
-    stat:
-      path: "/etc/systemd/system/unionfs-encrypt.service"
-    register: unionfs_en
-
-  - name: Stop UnionFS Encrypted
-    systemd: state=stopped name=unionfs-encrypt
-    when: unionfs_en.stat.exists
-    
-  - name: Remove UnionFS Service
+  - name: Remove RClone Service
     file:
       state: absent
       path: /etc/systemd/system/unionfs-encrypt.service 
-    when: unionfs_en.stat.exists
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=v2dockerfix daemon_reload=yes enabled=no
+    ignore_errors: True
+
+  - name: Remove RClone Service
+    file:
+      state: absent
+      path: /etc/systemd/system/v2dockerfix.service 
+    ignore_errors: True    
+##################################### SERVICE ### END
 
 ########################################## DOCKERFIX ##################
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=plexdrive daemon_reload=yes enabled=no
+    ignore_errors: True
 
-  - name: Check DockerFix
-    stat:
-      path: "/etc/systemd/system/dockerfix.service"
-    register: dockerfix
-
-  - name: Stop DockerFix
-    systemd: state=stopped name=dockerfix
-    when: dockerfix.stat.exists
-    
-  - name: Remove DockerFix Service
+  - name: Remove RClone Service
     file:
       state: absent
-      path: /etc/systemd/system/dockerfix.service 
-    when: dockerfix.stat.exists
+      path: /etc/systemd/system/plexdrive.service 
+    ignore_errors: True    
+##################################### SERVICE ### END
+#
+#
+#
+##################################### SERVICE - START
+  - name: Daemon-Reload
+    systemd: state=stopped name=cache daemon_reload=yes enabled=no
+    ignore_errors: True
 
-########################################## PLEXDRIVE4 ##################
-
-  - name: Check PlexDrive4 Unencrypted
-    stat:
-      path: "/etc/systemd/system/plexdrive4.service"
-    register: plexdrive4
-
-  - name: Stop PlexDrive Unencrypted
-    systemd: state=stopped name=plexdrive4
-    when: plexdrive4.stat.exists
-    
-  - name: Remove PlexDrive4 Service
+  - name: Remove RClone Service
     file:
       state: absent
-      path: /etc/systemd/system/plexdrive4.service 
-    when: plexdrive4.stat.exists
-
+      path: /etc/systemd/system/cache.service 
+    ignore_errors: True    
+##################################### SERVICE ### END

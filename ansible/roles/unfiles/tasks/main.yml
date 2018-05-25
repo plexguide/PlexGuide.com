@@ -4,29 +4,6 @@
       state: absent
       path: "{{ item }}"
     with_items:
-        - /mnt/deluge
-        - /mnt/deluge/temp
-        - /mnt/deluge/downloaded
-        - /mnt/deluge/torrent
-        - /mnt/rutorrent
-        - /mnt/rutorrent/downloads
-        - /mnt/move
-        - /mnt/move/tv
-        - /mnt/move/movies 
-        - /mnt/nzbget
-        - /mnt/nzbget/completed
-        - /mnt/nzbget/completed/movies
-        - /mnt/nzbget/completed/tv
-        - /mnt/nzbget/incomplete
-        - /mnt/nzbget/nzb
-        - /mnt/nzbget/queue
-        - /mnt/nzbget/tmp
-        - /mnt/nzbget/log
-        - /mnt/sab
-        - /mnt/sab/admin
-        - /mnt/sab/complete
-        - /mnt/sab/complete/tv
-        - /mnt/sab/complete/movies
-        - /mnt/sab/incomplete
-        - /mnt/sab/nzb 
+        - /mnt/*
         - /var/plexguide
+        - /opt/appdata

@@ -65,7 +65,6 @@
   - { role: lazy, tags: ['lazy'] }
   - { role: unservices, tags: ['unservices'] }
   - { role: unfiles, tags: ['unfiles'] }
-  - { role: unprograms, tags: ['unprograms'] }
   - { role: plex, tags: ['plex'] }
   - { role: plex2, tags: ['plex2'] }
   - { role: medusa, tags: ['medusa'] }
