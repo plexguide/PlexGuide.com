@@ -8,7 +8,7 @@ if dialog --stdout --title "PG UnInstaller" \
             dialog --infobox "Nothing Has Been Uninstalled!" 3 45
             sleep 3 
     else
-         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 0 0
+         dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 3 45
          sleep 4
          dialog --infobox "Removing Services" 3 45
          sleep 1
@@ -23,8 +23,8 @@ if dialog --stdout --title "PG UnInstaller" \
          apt-get purge docker-ce -y
          rm -rf /var/lib/docker 1>/dev/null 2>&1
 
-         dialog --infobox "Program Data Removed - Not Ready" 0 0
-         sleep 2
+         #dialog --infobox "Program Data Removed - Not Ready" 0 0
+         #sleep 2
 
          if dialog --stdout --title "Program (AppData)" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -36,8 +36,9 @@ if dialog --stdout --title "PG UnInstaller" \
          sleep 1
          rm -r /opt/appdata 1>/dev/null 2>&1
          dialog --infobox "I'm here, I'm there, wait... I'm your DATA! Poof! I'm gone!" 3 60
+         sleep 3
         fi
-         dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 0 0
+         dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 45
          sleep 3
          dialog --infobox "GoodBye!" 0 0
          sleep 1
