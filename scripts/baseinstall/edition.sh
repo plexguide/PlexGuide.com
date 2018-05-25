@@ -20,7 +20,7 @@ export NCURSES_NO_UTF8_ACS=1
 #hd1=$( cat /var/plexguide/hd/hd1 )
 
 ### Determine Variable
-deploy=$( cat /var/pg.server.deploy )
+deploy=$( cat /var/plexguide/pg.server.deploy )
 
   if [ "$deploy" == "gdrive" ]
   then
@@ -163,7 +163,7 @@ case $CHOICE in
 
                 ### Set Everything for GDrive Editon
                 echo "PG Edition: GDrive" > /var/plexguide/pg.edition
-                echo "gdrive" > /var/pg.server.deploy
+                echo "gdrive" > /var/plexguide/pg.server.deploy
                 bash /opt/plexguide/menus/main.sh
                 exit
               else 
@@ -274,7 +274,7 @@ case $CHOICE in
 
         ### Set Everything for HD Multi Editon
         echo "PG Edition: HD Multi" > /var/plexguide/pg.edition
-        echo "drives" > /var/pg.server.deploy
+        echo "drives" > /var/plexguide/pg.server.deploy
         bash /opt/plexguide/menus/drives/multideploy.sh
         bash /opt/plexguide/menus/localmain.sh
         systemctl enable drives 1>/dev/null 2>&1
@@ -389,7 +389,7 @@ case $CHOICE in
         #### Switch to Solo
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
         echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
-        echo "drive" > /var/pg.server.deploy
+        echo "drive" > /var/plexguide/pg.server.deploy
         bash /opt/plexguide/menus/drives/solodeploy.sh
         bash /opt/plexguide/menus/localmain.sh
         systemctl enable drive 1>/dev/null 2>&1
@@ -497,7 +497,7 @@ case $CHOICE in
 
                 ### Set Everything for GCE Editon
                 echo "PG Edition: GCE Feed" > /var/plexguide/pg.edition
-                echo "feeder" > /var/pg.server.deploy
+                echo "feeder" > /var/plexguide/pg.server.deploy
                 bash /opt/plexguide/menus/gce.sh
                 exit
               else 

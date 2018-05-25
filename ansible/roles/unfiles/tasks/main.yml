@@ -5,7 +5,7 @@
       path: "{{ item }}"
     with_items:
         - /var/plexguide
-        - /opt/appdata
+        - /opt/appdata/plexguide
         - /mnt/nzbget
         - /mnt/sab
         - /mnt/rutorrents
