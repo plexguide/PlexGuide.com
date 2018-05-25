@@ -7,5 +7,5 @@
         - /var/plexguide
         - /opt/appdata
 
-  - name: Remove via Shell
+  - name: Remove via Shell (Be Patient)
     shell: "rm -r /mnt/*"
