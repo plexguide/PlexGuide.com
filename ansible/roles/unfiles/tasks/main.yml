@@ -8,4 +8,4 @@
         - /opt/appdata
 
   - name: Remove via Shell (Be Patient)
-    shell: "rm -r /mnt/*"
+    shell: "rm -r /mnt/*/"
