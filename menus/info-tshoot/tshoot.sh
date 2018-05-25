@@ -35,8 +35,9 @@ case $CHOICE in
             dialog --title "Note" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         C)
-            rm -r /var/plexguide/dep*
-            bash /opt/plexguide/scripts/menus/uninstaller-main.sh ;;
+            rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+            bash /opt/plexguide/menus/main.sh 
+            ;;
         D)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags test
             echo ""
