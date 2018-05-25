@@ -1,8 +1,6 @@
+#!/bin/bash
 
- #!/bin/bash
-
-whiptail --title "Uninstaller Information" --msgbox "The UnInstaller will remove all services, nuke file directories and accumlated files, uninstall docker, and remove all containers; but will prompt you if you want to keep your program (APPDATA)." 13 76
-
+dialog --title "PG Uninstaller Info" --msgbox "\nThe UnInstaller will remove all services, nuke file directories and accumlated files, uninstall docker, and remove all containers; but will prompt you if you want to keep your program (APPDATA)" 14 60
 
 if dialog --stdout --title "PG UnInstaller" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -26,12 +24,13 @@ if dialog --stdout --title "PG UnInstaller" \
          rm -rf /var/lib/docker 1>/dev/null 2>&1
 
          dialog --infobox "Program Data Removed - Not Ready" 0 0
-         sleep 1
+         sleep 2
 
          if dialog --stdout --title "Program (AppData)" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nDo you WANT to keep your Program Configs (Appdata)?" 7 60; then
           dialog --infobox "Your Data will remain under /opt/appdata" 3 50
+          sleep 3
         else
          dialog --infobox "Deleting Your Data Forever!" 3 45
          sleep 1
