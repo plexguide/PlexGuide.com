@@ -51,15 +51,23 @@ rclone_upload() {
 
   local tmp=$(echo "${2}" | rev | cut -f1 -d'/' | rev | sed 's/ /_/g; s/\"//g')
   local logfile=${logDir}/${gdsa}_${tmp}.log
-  rclone move --tpslimit 6 --checkers=20 \
-  --config /root/.config/rclone/rclone.conf \
-  --transfers=8 \
-  --log-file=${logfile} \
-  --log-level INFO --stats 5s \
-  --exclude="**partial~" --exclude="**_HIDDEN~" \
-  --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-  --drive-chunk-size=$driveChunkSize \
-  "${localFile}" "$gdsa:${localFile#"$localDir"}" && rclone_fin_flag=1
+
+  local rcloneARGS=(
+  "--tpslimit 6"
+  "--checkers=20"
+  "--config /root/.config/rclone/rclone.conf"
+  "--transfers=8"
+  "--log-file=${logfile}"
+  "--log-level INFO"
+  "--stats 5s"
+  "--exclude="**partial~""
+  "--exclude="**_HIDDEN~""
+  "--exclude=".unionfs-fuse/**""
+  "--exclude=".unionfs/**""
+  "--drive-chunk-size=$driveChunkSize"
+  )
+  rclone move "${localFile}" "$gdsa:${localFile#"$localDir"}" \
+  "${rcloneARGS[@]}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   local secs=$(($(date +%s) - $t1))
@@ -72,7 +80,7 @@ rclone_upload() {
     cat "$logfile" >>/tmp/rclonefail.log
     [[ -n $dbug ]] && echo -e " [DBUG]\t$gdsa\tREVERTED Usage: $Usage"
     # revert gdsaDB back to old value if upload failed
-    sed -i '/'^$gdsa'=/ s/=.*/='$oldUsage'/' $gdsaDB
+    sed -i '/'^"$gdsa"'=/ s/=.*/='"$oldUsage"'/' "$gdsaDB"
   fi
   # release fileLock when file transfer finishes (or fails)
   egrep -xv "${sanitizedLocalFile}" "${fileLock}" >/tmp/fileLock.tmp && mv /tmp/fileLock.tmp "${fileLock}"
