@@ -119,10 +119,10 @@
       - gdrive
 
 ########### gcrypt
-  - name: Stop If GDRIVE Service Running
+  - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt
     tags:
-      - gcrypt
+      - gdrive
     ignore_errors: yes
 
   - name: Install GCRYPT Service
@@ -131,17 +131,17 @@
       dest: /etc/systemd/system/gcrypt.service
       force: yes
     tags:
-      - gcrypt
+      - gdrive
 
   - name: Daemon-Reload
     systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
     tags:
-      - gcrypt
+      - gdrive
 
   - name: Start gcrypt
     systemd: state=started name=gcrypt enabled=yes
     tags:
-      - gcrypt
+      - gdrive
 
 ########### tdrive
   - name: Stop If TDRIVE Service Running
@@ -172,7 +172,7 @@
   - name: Stop If TCRYPT Service Running
     systemd: state=stopped name=tcrypt
     tags:
-      - tcrypt
+      - gdrive
     ignore_errors: yes
 
   - name: Install TCRYPT Service
@@ -181,17 +181,17 @@
       dest: /etc/systemd/system/tcrypt.service
       force: yes
     tags:
-      - tcrypt
+      - gdrive
 
   - name: Daemon-Reload
     systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
     tags:
-      - tcrypt
+      - gdrive
 
   - name: Start tcrypt
     systemd: state=started name=tcrypt enabled=yes
     tags:
-      - tcrypt
+      - gdrive
 
 ########### UNIONFS
   - name: Stop If UNIONFS Service Running
