@@ -13,4 +13,5 @@
       - { role: delugevpn, tags: ['delugevpn'] }
       - { role: x2go, tags: ['x2go'] }
       - { role: encache, tags: ['encache'] }
+      - { role: pgdrive_en, tags: ['pgdrive_en'] }
 #      - { role: rclone_switch, tags: ['rclone_switch'] }
