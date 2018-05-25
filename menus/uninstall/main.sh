@@ -16,7 +16,7 @@ if dialog --stdout --title "PG UnInstaller" \
          dialog --infobox "Removing Files & Folders" 3 30
          sleep 2
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unfiles &>/dev/null &
-         dialog --infobox "Uninstall Docker & Removing Containers" 3 35
+         dialog --infobox "Uninstall Docker & Removing Containers" 3 42
          sleep 2
          rm -r /etc/docker 1>/dev/null 2>&1
          apt-get purge docker-ce -y 1>/dev/null 2>&1
@@ -32,12 +32,12 @@ if dialog --stdout --title "PG UnInstaller" \
           sleep 3
         else
          dialog --infobox "Deleting Your Data Forever!" 3 42
-         sleep 1
+         sleep 2
          rm -r /opt/appdata &>/dev/null &
-         dialog --infobox "I'm here, I'm there, wait...\nI'm your DATA! Poof! I'm gone!" 4 45
+         dialog --infobox "I'm here, I'm there, wait...\n\nI'm your DATA! Poof! I'm gone!" 5 45
          sleep 3
         fi
-         dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 50
+         dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 58
          sleep 3
          dialog --infobox "GoodBye!" 0 0
          sleep 1
