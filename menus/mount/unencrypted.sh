@@ -81,6 +81,7 @@ EOF
             #### GREP Checks
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
             ;;
         C)
