@@ -21,11 +21,11 @@
  WIDTH=36
  CHOICE_HEIGHT=5
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
- TITLE="PG Services Restart Menu"
+ TITLE="PGDrive Services Restart Menu"
  MENU="Make a Selection Choice:"
 
- OPTIONS=(A "Unencrypted: Cache"
-          B "Encrypted: Cache"
+ OPTIONS=(A "Gdrive"
+          B "Tdrive"
           C "UnionFS"
           D "Move"
           Z "Exit")
@@ -44,23 +44,23 @@
 case $CHOICE in
     A)
       clear
-      systemctl restart cache
+      systemctl restart gdrive
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Gdrive restarted - Press any key to continue "
       ;;
 
     B)
         clear
-        systemctl restart encache
+        systemctl restart tdrive
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
         ;;
 
     C)
       clear
       systemctl restart unionfs
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "UnionFS restarted - Press any key to continue "
       clear
       ;;
 
@@ -68,7 +68,7 @@ case $CHOICE in
       clear
       systemctl restart move
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Move restarted - Press any key to continue "
       clear
       ;;
 
