@@ -10,6 +10,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 - Changed
   - Updated Uninstaller
   - Repaired Glitch that prevented edition select
+- Removed
+  - ST from Settings, part of mounts
 
 -------------------------------------------------------
 ## Past Changes
