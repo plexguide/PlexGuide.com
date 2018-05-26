@@ -49,9 +49,9 @@ case $CHOICE in
         A)
 
 ##################################################### DEPLOYMENT SYSTEM - START
-        HEIGHT=10
-        WIDTH=40
-        CHOICE_HEIGHT=4
+        HEIGHT=11
+        WIDTH=44
+        CHOICE_HEIGHT=5
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
         TITLE="Deploy a Mounting System"
 
@@ -69,11 +69,11 @@ case $CHOICE in
                         2>&1 >/dev/tty)
         case $CHOICE in
                 A)
-                    "pgmove" > /var/plexguide/menu.select
+                    "Move" > /var/plexguide/menu.select
                     bash /opt/plexguide/menus/mount/main.sh 
                     ;;
                 B)
-                    "pgst2" > /var/plexguide/menu.select
+                    "ST2" > /var/plexguide/menu.select
                     bash /opt/plexguide/menus/mount/main.sh
                     ;;
                 C)

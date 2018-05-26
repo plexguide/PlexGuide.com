@@ -30,18 +30,19 @@ export NCURSES_NO_UTF8_ACS=1
 #fi
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
+selected=$( cat /var/plexguide/menu.select )
 
 HEIGHT=14
-WIDTH=55
+WIDTH=42
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PGDrive /w $var"
+TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Install: RClone"
          B "Config : RClone"
          C "Deploy : PGDrive"
-         D "Deploy : $var"
+         D "Deploy : $selected"
          E "Deploy : PGScan (NOTREADY)"
          Z "Exit")
 
