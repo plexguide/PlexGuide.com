@@ -17,19 +17,11 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-#### PUT AN IF For Type Menus Selected
+#### BLANK OUT PATH - This Builds For UnionFS
+rm -r /tmp/path 1>/dev/null 2>&1
+touch /tmp/path 1>/dev/null 2>&1
 
-#file="/var/plexguide/pgdupes.autodelete"
-#if [ -e "$file" ]
-#then
-#    echo "" 1>/dev/null 2>&1
-#else
-#    echo "ON" > /var/plexguide/pgdupes.autodelete
-#    echo "true" > /var/plexguide/pgdupes.autodelete2.json
-#    exit
-#fi
-
-stat=$( cat /var/plexguide/pgdupes.autodelete )
+#### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
 
 HEIGHT=14
@@ -111,11 +103,17 @@ EOF
             #### IF EXIST - DEPLOY
             if [ "$tdrive" == "[tdrive]" ]
               then
+
+              #### ADDS TDRIVE to the UNIONFS PATH
+              "/mnt/tdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
             fi
 
             if [ "$gdrive" == "[gdrive]" ]
               then
+
+              #### ADDS GDRIVE to the UNIONFS PATH
+              "/mnt/gdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
             fi
 
@@ -150,7 +148,6 @@ EOF
               journalctl -f -u supertransfer2       
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
- 
             ;;
 
         E)

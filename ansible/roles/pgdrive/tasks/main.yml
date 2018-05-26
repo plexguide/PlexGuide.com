@@ -131,6 +131,13 @@
       - tdrive
 
 ########### UNIONFS
+  - name: Register UNIONFS PATH
+    shell: "cat /tmp/path"
+    register: unionfs_path
+    tags:
+      - unionfs
+    ignore_errors: True
+
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     tags:
