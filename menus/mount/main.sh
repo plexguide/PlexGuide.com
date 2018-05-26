@@ -105,7 +105,7 @@ EOF
               then
 
               #### ADDS TDRIVE to the UNIONFS PATH
-              "/mnt/tdrive=RO:" >> /tmp/path
+              echo "/mnt/tdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
             fi
 
@@ -113,7 +113,7 @@ EOF
               then
 
               #### ADDS GDRIVE to the UNIONFS PATH
-              "/mnt/gdrive=RO:" >> /tmp/path
+              echo "/mnt/gdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
             fi
 
