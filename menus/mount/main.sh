@@ -99,13 +99,13 @@ EOF
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
-            
+
             #### IF EXIST - DEPLOY
             if [ "$tdrive" == "[tdrive]" ]
               then
 
               #### ADDS TDRIVE to the UNIONFS PATH
-              echo "/mnt/tdrive=RO:" >> /tmp/path
+              echo -n "/mnt/tdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
             fi
 
@@ -113,7 +113,7 @@ EOF
               then
 
               #### ADDS GDRIVE to the UNIONFS PATH
-              echo "/mnt/gdrive=RO:" >> /tmp/path
+              echo -n "/mnt/gdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
             fi
 
