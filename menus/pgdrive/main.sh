@@ -16,7 +16,6 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
- ## point to variable file for ipv4 and domain.com
 
 HEIGHT=13
 WIDTH=48
