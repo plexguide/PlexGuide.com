@@ -17,35 +17,22 @@
 # URL:      https://cloudbox.rocks
 #################################################################################
 ---
-- name: Install Cloudplow; remove old cronjob
+- name: Install gdriveclean; remove old cronjob
   cron:
-    name: "Cloudplow Clean"
+    name: "gdriveclean"
     user: "root"
     state: absent
 
-- name: Install Cloudplow; remove old directory
-  file:
-    state: absent
-    path: "/opt/appdata/cloudplow"
-
-- name: Install Cloudplow; download
-  become_user: root
-  shell: "git clone https://github.com/Admin9705/clean /opt/appdata/cloudplow"
-
-- name: Install Cloudplow; dependencies
-  become_user: root
-  shell: "python3 -m pip install -r /opt/appdata/cloudplow/requirements.txt"
-
-- name: Install Cloudplow; config
+- name: Install gdriveclean; insert script
   template:
-    src: config.js2
-    dest: /opt/appdata/cloudplow/config.json
+    src: gdriveclean.js2
+    dest: /opt/appdata/plexguide/gdriveclean.sh
     force: yes
 
-- name: Install Cloudplow; cronjob
+- name: Install gdriveclean; cronjob
   cron:
-    name: "Cloudplow Clean"
+    name: "gdriveclean"
     user: "root"
-    minute: "*/10"
-    hour: "0"
-    job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"
+    minute: "*"
+    hour: "*"
+    job: "bash /opt/appdata/plexguide/gdriveclean.sh"
