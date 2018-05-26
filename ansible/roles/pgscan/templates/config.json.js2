@@ -21,7 +21,7 @@
     ]
   },
   "PLEX_SUPPORT_DIR": "/var/lib/plexmediaserver/Library/Application\\ Support",
-  "PLEX_TOKEN": "xxxxxxxxxxxxxxxxxxxxxxx",
+  "PLEX_TOKEN": "{{token.stdout}}",
   "PLEX_USER": "plex",
   "PLEX_WAIT_FOR_EXTERNAL_SCANNERS": true,
   "RCLONE_RC_CACHE_EXPIRE": {
@@ -43,7 +43,7 @@
   ],
   "SERVER_IP": "0.0.0.0",
   "SERVER_MAX_FILE_CHECKS": 10,
-  "SERVER_PASS": "xxxxxxxxxxxxxxxxxxxxxxx",
+  "SERVER_PASS": "{{pgscan_pass.stdout}}",
   "SERVER_PATH_MAPPINGS": {
     "/unionfs/movies/": [
       "/mnt/unionfs/movies/"
