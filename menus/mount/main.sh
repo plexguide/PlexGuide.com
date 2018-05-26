@@ -17,6 +17,9 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
+#### Recalls from prior menu what user selected
+selected=$( cat /var/plexguide/menu.select )
+
 ################################################################## UN OR ENCRYPTED
 
 HEIGHT=14
@@ -57,9 +60,6 @@ case $CHOICE in
 esac
 
 ################################################################## CORE
-
-#### Recalls from prior menu what user selected
-selected=$( cat /var/plexguide/menu.select )
 
 HEIGHT=14
 WIDTH=42
