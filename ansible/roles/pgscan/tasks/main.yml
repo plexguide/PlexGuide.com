@@ -62,13 +62,7 @@
   when: pgscan_config.stat.exists == False
   
 - name: PGscan empty trash control file
-  copy:
-    content: ""
-    dest: /mnt/unionfs/mounted.bin
-    force: no
-    group: sys
-    owner: root
-    mode: 0555
+  shell: "rclone touch gdrive:/mounted.bin"
 
 - name: Set scan.py as executable
   file:
