@@ -31,9 +31,9 @@ export NCURSES_NO_UTF8_ACS=1
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
-HEIGHT=13
-WIDTH=48
-CHOICE_HEIGHT=5
+HEIGHT=14
+WIDTH=52
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $var"
 MENU="Make a Selection:"
@@ -104,7 +104,7 @@ EOF
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
             #### RECALL VARIABLES END 
 
-            #### REQUIRED TO DEPLOY
+            #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard
             
             #### IF EXIST - DEPLOY
@@ -117,6 +117,10 @@ EOF
               then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
             fi
+
+            #### REQUIRED TO DEPLOY ENDING
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
+
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         D)
