@@ -101,13 +101,13 @@
     tags:
       - gdrive
 ########### TDRIVE
-  - name: Stop If GDRIVE Service Running
+  - name: Stop If GTDRIVE Service Running
     systemd: state=stopped name=tdrive
     tags:
       - tdrive
     ignore_errors: yes
 
-  - name: Install GDRIVE Service
+  - name: Install TDRIVE Service
     template:
       src: tdrive.js2
       dest: /etc/systemd/system/tdrive.service
