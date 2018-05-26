@@ -17,6 +17,44 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
+################################################################## UN OR ENCRYPTED
+
+HEIGHT=14
+WIDTH=42
+CHOICE_HEIGHT=6
+BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
+TITLE="PGDrive /w $selected"
+MENU="Select a Version:"
+
+OPTIONS=(A "PGDrives: Unencrypt"
+         B "PGDrives: Encrypted (NOT READY)"
+         Z "Exit")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        A) 
+        echo "unencrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
+        #### Continues Onward
+        ;;
+        B)
+        echo "encrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
+        #### Halted, NOT READY
+        dialog --title "WARNING!" --msgbox "\nPGDrives Encrypted is Not Ready\n\nUse the PLEXDRIVE Traditional Method for Now" 0 0
+        exit
+        ;;
+########## Deploy End
+esac
+
+################################################################## CORE
+
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
 
@@ -145,8 +183,6 @@ EOF
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
             #### RECALL VARIABLES END 
-
-
 
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
