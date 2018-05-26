@@ -32,7 +32,7 @@ OPTIONS=(A "Install: RClone"
          B "Config : RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
-         E "Deploy : PGScan (NOTREADY)"
+         E "Deploy : PGScan (NOTREADY/TESTING)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -185,6 +185,16 @@ EOF
             ;;
 
         E)
+            if [ ! "$(docker ps -q -f name=plex)" ]; then
+              dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
+            else
+              if [ ! -f /opt/appdata/plexguide/plextoken ]; then
+                dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
+                bash /opt/plexguide/scripts/plextoken/main.sh
+              fi
+              ansible-role pgscan
+            fi
+            
             ;;
         Z)
             exit 0 ;;
