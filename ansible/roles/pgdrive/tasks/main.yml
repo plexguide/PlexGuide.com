@@ -43,6 +43,11 @@
       - pgdrive_standard
 
 ########################################## MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    tags:
+      - move
+
   - name: Install Move Service
     template:
       src: move_script.js2
