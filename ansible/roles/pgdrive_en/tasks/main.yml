@@ -22,43 +22,43 @@
     systemd: state=stopped name=rclone enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
   - name: Stop If encache Service Running
     systemd: state=stopped name=encache enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
   - name: Stop If RCLONE-ENCRYPT Service Running
     systemd: state=stopped name=rclone-encrypt enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
   - name: Stop If RCLONE-EN Service Running
     systemd: state=stopped name=rclone-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
   - name: Stop If MOVE-EN Service Running
     systemd: state=stopped name=move-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
   - name: Stop If UNIONFS-EN Service Running
     systemd: state=stopped name=unionfs-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrivestop_en
 
 ########################################## MOVE START
   - name: Install Move Service
@@ -67,12 +67,12 @@
       dest: /opt/appdata/plexguide/move.sh
       force: yes
     tags:
-      - move
+      - move_en
 
   - name: Stop If Move Service Running
     systemd: state=stopped name=move
     tags:
-      - move
+      - move_en
     ignore_errors: yes
 
   - name: Install Move Service
@@ -81,24 +81,24 @@
       dest: /etc/systemd/system/move.service
       force: yes
     tags:
-      - move
+      - move_en
 
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=no
     tags:
-      - move
+      - move_en
 
   - name: Start Move
     systemd: state=started name=move enabled=yes
     tags:
-      - move
+      - move_en
 ########################################## MOVE END
 
 ########### gdrive
   - name: Stop If GDRIVE Service Running
     systemd: state=stopped name=gdrive
     tags:
-      - gdrive
+      - gdrive_en
     ignore_errors: yes
 
   - name: Install GDRIVE Service
@@ -107,23 +107,23 @@
       dest: /etc/systemd/system/gdrive.service
       force: yes
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: Daemon-Reload
     systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: Start GDrive
     systemd: state=started name=gdrive enabled=yes
     tags:
-      - gdrive
+      - gdrive_en
 
 ########### tdrive
   - name: Stop If TDRIVE Service Running
     systemd: state=stopped name=tdrive
     tags:
-      - gdrive
+      - gdrive_en
     ignore_errors: yes
 
   - name: Install TDRIVE Service
@@ -132,23 +132,23 @@
       dest: /etc/systemd/system/tdrive.service
       force: yes
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: Daemon-Reload
     systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: Start TDrive
     systemd: state=started name=tdrive enabled=yes
     tags:
-      - gdrive
+      - gdrive_en
 
 ########### UNIONFS
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     tags:
-      - gdrive
+      - gdrive_en
     ignore_errors: yes
 
   - name: Install UNIONFS Service
@@ -157,26 +157,26 @@
       dest: /etc/systemd/system/unionfs.service
       force: yes
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: SHELL COMMAND 1
     shell: "chown -R 1000:1000 /root"
     ignore_errors: True
     tags:
-      - gdrive
+      - gdrive_en
 
   - name: SHELL COMMAND 2
     shell: "chmod 775 /root/.config/rclone/rclone.conf"
     ignore_errors: True
     tags:
-      - gdrive
+      - gdrive_en

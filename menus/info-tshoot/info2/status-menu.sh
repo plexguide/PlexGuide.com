@@ -21,11 +21,11 @@
  WIDTH=36
  CHOICE_HEIGHT=6
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
- TITLE="PG Services Status Menu"
+ TITLE="PGDrive Services Status Menu"
  MENU="Make a Selection Choice:"
 
- OPTIONS=(A "Unencrypted: Cache"
-          B "Encrypted: Cache"
+ OPTIONS=(A "Gdrive"
+          B "Tdrive"
           C "UnionFS"
           D "Move"
           E "Restart Menu"
@@ -44,17 +44,17 @@
 case $CHOICE in
     A)
       ## create log file if does not exist
-      if [ -e "/opt/plexguide/cache.log" ]
+      if [ -e "/opt/plexguide/gdrive.log" ]
       then
         echo "Log exists"
       else
-        touch /opt/plexguide/cache.log
+        touch /opt/plexguide/gdrive.log
       fi
 
-      ## obtains cache.service info and puts into a log to be displayed to the user
+      ## obtains gdrive.service info and puts into a log to be displayed to the user
       clear
-      systemctl status cache > /opt/plexguide/cache.log
-      cat /opt/plexguide/cache.log
+      systemctl status gdrive > /opt/plexguide/gdrive.log
+      cat /opt/plexguide/gdrive.log
       echo
       echo "*** View the Log ***"
       echo
@@ -63,17 +63,17 @@ case $CHOICE in
 
     B)
       ## create log file if does not exist
-      if [ -e "/opt/plexguide/encache.log" ]
+      if [ -e "/opt/plexguide/tdrive.log" ]
       then
         echo "Log exists"
       else
-        touch /opt/plexguide/encache.log
+        touch /opt/plexguide/tdrive.log
       fi
 
-      ## obtains encache.service info and puts into a log to be displayed to the user
+      ## obtains tdrive.service info and puts into a log to be displayed to the user
       clear
-      systemctl status encache > /opt/plexguide/encache.log
-      cat /opt/plexguide/encache.log
+      systemctl status tdrive > /opt/plexguide/tdrive.log
+      cat /opt/plexguide/tdrive.log
       echo
       echo "*** View the Log ***"
       echo
