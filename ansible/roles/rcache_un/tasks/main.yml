@@ -59,24 +59,6 @@
     when: rcache_dir.stat.exists == False
     tags:
       - rcache
-
-  - name: Set permissions for rclone config directory
-    file:
-      path: "/root"
-      state: directory
-      mode: 755
-    file:
-      path: "/root/.config"
-      state: directory
-      owner: 1000
-      group: 1000
-      mode: 755
-    file:
-      path: "/root/.config/rclone"
-      state: directory
-      owner: 1000
-      group: 1000
-      mode: 755
     file:
       path: "/root/.config/rclone/rclone.conf"
       state: touch
