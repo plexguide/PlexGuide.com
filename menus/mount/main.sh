@@ -136,10 +136,19 @@ EOF
                   exit
               fi
             #### RClone Missing Warning - END
-            clear
-            bash /opt/plexguide/scripts/supertransfer/config.sh
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
-            journalctl -f -u supertransfer2
+
+            #### DEPLOY a TRANSFER SYSTEM - START
+            if [ "$selected" == "Move" ]
+              then
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
+            else
+              clear
+              bash /opt/plexguide/scripts/supertransfer/config.sh
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+              journalctl -f -u supertransfer2       
+            fi
+            #### DEPLOY a TRANSFER SYSTEM - END
+ 
             ;;
 
         E)
