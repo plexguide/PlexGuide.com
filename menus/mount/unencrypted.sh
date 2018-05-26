@@ -176,6 +176,7 @@ EOF
               journalctl -f -u supertransfer2       
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
+            dialog --title "NOTE!" --msgbox "\n$selected is now running!" 3 35
 
             ;;
 
