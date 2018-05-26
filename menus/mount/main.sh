@@ -189,10 +189,10 @@ EOF
 
             #### BASIC CHECKS to STOP Deployment - START
             if [ "$selected" == "Move" || "$gdrive" !="[gdrive]" ]
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you must have a gdrive\nconfiguration in RClone!" 0 0
+            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you MUSTt have a gdrive\nconfiguration in RClone!" 0 0
 
-            if [ "$selected" == "Move" || "$tdrive" !="[tdrive]" ]
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you must have a tdrive\nconfiguration in RClone!" 0 0
+            if [ "$selected" == "SuperTransfer2" || "$tdrive" !="[tdrive]" ]
+            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
 
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
