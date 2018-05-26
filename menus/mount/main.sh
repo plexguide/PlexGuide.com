@@ -22,9 +22,9 @@ selected=$( cat /var/plexguide/menu.select )
 
 ################################################################## UN OR ENCRYPTED
 
-HEIGHT=14
+HEIGHT=11
 WIDTH=42
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Select a Version:"
