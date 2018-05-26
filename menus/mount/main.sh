@@ -45,6 +45,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)       
+
+clear
+curl https://rclone.org/install.sh | sudo bash -s beta
+sleep 1
+dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE Beta is now Installed!" 0 0
+
 ################# Needed FOR RCLONE
 tee "/etc/fuse.conf" > /dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
@@ -135,6 +141,13 @@ EOF
               fi
             #### RClone Missing Warning - END
 
+            #### RECALL VARIABLES START
+            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            #### RECALL VARIABLES END 
+
+
+
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
@@ -153,7 +166,6 @@ EOF
         E)
             ;;
         Z)
-            clear
             exit 0 ;;
 
 ########## Deploy End
