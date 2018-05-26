@@ -11,7 +11,7 @@ ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount tdrive: /mnt/tdr
                                             --size-only --dir-cache-time=48h --buffer-size=64M \
                                             --vfs-read-chunk-size=128M --vfs-read-chunk-size-limit=2G \
                                             --config /root/.config/rclone/rclone.conf
-ExecStop=/bin/fusermount -u /mnt/tdrive
+ExecStop=/bin/fusermount -uz /mnt/tdrive
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
