@@ -31,7 +31,7 @@
       - pgdrive_standard
 
   - name: SHELL COMMAND 1
-    shell: "chown -R 1000:1000 /root"
+    shell: "chown -R 1000:1000 /root/.config/rclone/"
     ignore_errors: True
     tags:
       - pgdrive_standard
