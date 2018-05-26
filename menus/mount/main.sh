@@ -17,10 +17,6 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 
-#### BLANK OUT PATH - This Builds For UnionFS
-rm -r /tmp/path 1>/dev/null 2>&1
-touch /tmp/path 1>/dev/null 2>&1
-
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
 
@@ -99,6 +95,10 @@ EOF
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard
+            
+            #### BLANK OUT PATH - This Builds For UnionFS
+            rm -r /tmp/path 1>/dev/null 2>&1
+            touch /tmp/path 1>/dev/null 2>&1
             
             #### IF EXIST - DEPLOY
             if [ "$tdrive" == "[tdrive]" ]
