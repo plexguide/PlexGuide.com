@@ -128,6 +128,7 @@ EOF
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
 
+            read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         D)
@@ -167,13 +168,15 @@ EOF
             if [ "$selected" == "Move" ]
               then
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
+              read -n 1 -s -r -p "Press any key to continue"
             else
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
-              journalctl -f -u supertransfer2       
+              journalctl -f -u supertransfer2
+              read -n 1 -s -r -p "Press any key to continue"       
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
