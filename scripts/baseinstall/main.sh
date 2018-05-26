@@ -39,7 +39,7 @@ tee "/etc/ansible/inventory" > /dev/null <<EOF
 EOF
 ####### Append File
 echo "" >> /etc/ansible/ansible.cfg
-echo "[defaults]" >> /etc/anisble/ansible.cfg
+echo "[defaults]" >> /etc/ansible/ansible.cfg
 echo "inventory = inventory" >> /etc/ansible/ansible.cfg
   fi
 
