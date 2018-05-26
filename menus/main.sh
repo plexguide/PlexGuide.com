@@ -73,7 +73,7 @@ case $CHOICE in
                     bash /opt/plexguide/menus/mount/main.sh 
                     ;;
                 B)
-                    echo "ST2" > /var/plexguide/menu.select
+                    echo "SuperTransfer2" > /var/plexguide/menu.select
                     bash /opt/plexguide/menus/mount/main.sh
                     ;;
                 C)
