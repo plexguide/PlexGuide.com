@@ -151,4 +151,4 @@ EOF
 ########## Deploy End
 esac
 
-bash /opt/plexguide/menus/mounts/main.sh
+bash /opt/plexguide/menus/mount/main.sh
