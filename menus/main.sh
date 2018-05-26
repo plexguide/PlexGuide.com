@@ -69,11 +69,11 @@ case $CHOICE in
                         2>&1 >/dev/tty)
         case $CHOICE in
                 A)
-                    "Move" > /var/plexguide/menu.select
+                    echo "Move" > /var/plexguide/menu.select
                     bash /opt/plexguide/menus/mount/main.sh 
                     ;;
                 B)
-                    "ST2" > /var/plexguide/menu.select
+                    echo "ST2" > /var/plexguide/menu.select
                     bash /opt/plexguide/menus/mount/main.sh
                     ;;
                 C)
