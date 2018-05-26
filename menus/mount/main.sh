@@ -32,7 +32,7 @@ export NCURSES_NO_UTF8_ACS=1
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
 HEIGHT=14
-WIDTH=52
+WIDTH=55
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $var"
