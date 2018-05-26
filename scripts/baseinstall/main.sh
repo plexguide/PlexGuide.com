@@ -25,6 +25,24 @@ file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   bash /opt/plexguide/menus/nzb/main.sh
   fi
 
+############################################################ Create Inventory File
+
+file="/etc/ansible/inventory" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+####### Create File
+tee "/etc/ansible/inventory" > /dev/null <<EOF
+[localhost]
+127.0.0.1  ansible_connection=local
+EOF
+####### Append File
+echo "" >> /etc/ansible/ansible.cfg
+echo "[defaults]" >> /etc/anisble/ansible.cfg
+echo "inventory = inventory" >> /etc/ansible/ansible.cfg
+  fi
+
 ############################################################ Push Over Notification of Starting Process
 echo "Installation Started" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
