@@ -110,7 +110,7 @@ case $CHOICE in
                                 2>&1 >/dev/tty)
 
                 case $CHOICE in
-                ######################### HANDLING
+                ########################## HANDLING
                 A)
                 dialog --title "Quick Note" --msgbox "\nTo /mnt/old your DATA for storage it goes!" 0 0
                 mkdir /mnt/old 1>/dev/null 2>&1
