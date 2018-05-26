@@ -22,13 +22,25 @@
     systemd: state=stopped name=rclone enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrive_standard
 
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop
+      - pgdrive_standard
+
+  - name: SHELL COMMAND 1
+    shell: "chown -R 1000:1000 /root"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard
+
+  - name: SHELL COMMAND 2
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard
 
 ########################################## MOVE START
   - name: Install Move Service
@@ -88,11 +100,11 @@
     systemd: state=started name=gdrive enabled=yes
     tags:
       - gdrive
-########### gtrive
+########### TDRIVE
   - name: Stop If GDRIVE Service Running
     systemd: state=stopped name=tdrive
     tags:
-      - gdrive
+      - tdrive
     ignore_errors: yes
 
   - name: Install GDRIVE Service
@@ -101,23 +113,23 @@
       dest: /etc/systemd/system/tdrive.service
       force: yes
     tags:
-      - gdrive
+      - tdrive
 
   - name: Daemon-Reload
     systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
     tags:
-      - gdrive
+      - tdrive
 
   - name: Start TDrive
     systemd: state=started name=tdrive enabled=yes
     tags:
-      - gdrive
+      - tdrive
 
 ########### UNIONFS
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     tags:
-      - gdrive
+      - unionfs
     ignore_errors: yes
 
   - name: Install UNIONFS Service
@@ -126,26 +138,14 @@
       dest: /etc/systemd/system/unionfs.service
       force: yes
     tags:
-      - gdrive
+      - unionfs
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
     tags:
-      - gdrive
+      - unionfs
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     tags:
-      - gdrive
-
-  - name: SHELL COMMAND 1
-    shell: "chown -R 1000:1000 /root"
-    ignore_errors: True
-    tags:
-      - gdrive
-
-  - name: SHELL COMMAND 2
-    shell: "chmod 775 /root/.config/rclone/rclone.conf"
-    ignore_errors: True
-    tags:
-      - gdrive
+      - unionfs

@@ -53,11 +53,12 @@ case $CHOICE in
         WIDTH=40
         CHOICE_HEIGHT=4
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-        TITLE="Deploy a Mount System"
+        TITLE="Deploy a Mounting System"
 
-        OPTIONS=(A "PLEXDrive (Traditional)"
-                 B "PGDrive   (New)"
-                 C "Mini FAQ"
+        OPTIONS=(A "PGDrive   /w PG Move (Recommended)"
+                 B "PGDrive   /w PG ST2  (Advanced)"
+                 C "PlexDrive /w PG Move (Traditional)"
+                 D "Mini FAQ"
                  Z "Exit")
 
         CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -68,14 +69,18 @@ case $CHOICE in
                         2>&1 >/dev/tty)
         case $CHOICE in
                 A)
-                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
-                    "PLEXDrive" > /var/plexguide/drive.system
+                    "pgmove" > /var/plexguide/menu.select
+                    bash /opt/plexguide/menus/mount/main.sh 
                     ;;
                 B)
-                    bash /opt/plexguide/menus/pgdrive/main.sh 
-                    "PGDrive" > /var/plexguide/drive.system
+                    "pgst2" > /var/plexguide/menu.select
+                    bash /opt/plexguide/menus/mount/main.sh
                     ;;
                 C)
+                    "plexdrive" > /var/plexguide/menu.select
+                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
+                    ;;
+                D)
                     ;;
                 Z)
                     ;; ## Do Not Put Anything Here
