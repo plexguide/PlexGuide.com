@@ -49,6 +49,11 @@
     path: "/opt/appdata/pgscan/config/config.json"
   register: pgscan_config
 
+- name: Get plextoken
+  shell: "cat /opt/appdata/plexguide/plextoken"
+  register: plex_token
+  when: pgscan_config.stat.exists == False
+
 - name: "Generate 32 character SERVER_PASS"
   shell: "pwgen 32 1"
   register: pgscan_pass
