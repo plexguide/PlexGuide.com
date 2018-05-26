@@ -43,7 +43,6 @@
   - { role: drives, tags: ['drives'] }
   - { role: emby, tags: ['emby'] }
   - { role: next, tags: ['next'] }
-  - { role: rcache_un, tags: ['rcache_un'] }
   - { role: telly, tags: ['telly'] }
   - { role: sstvproxy, tags: ['sstvproxy'] }
   - { role: sonarr, tags: ['sonarr'] }
