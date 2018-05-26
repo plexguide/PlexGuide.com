@@ -121,7 +121,7 @@ EOF
             #### GREP Checks
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf
+            cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
             ;;
         C)
             #### RCLONE MISSING START
@@ -189,12 +189,13 @@ EOF
             #### RECALL VARIABLES END 
 
             #### BASIC CHECKS to STOP Deployment - START
-            if [ "$selected" == "Move" || "$gdrive" !="[gdrive]" ]
+            if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
               then
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+            exit
             fi
 
-            if [ "$selected" == "SuperTransfer2" || "$tdrive" !="[tdrive]" ]
+            if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
               then
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
             fi
