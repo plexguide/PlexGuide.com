@@ -152,7 +152,6 @@ EOF
             if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
               then
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-            exit
             fi
 
             if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
@@ -173,6 +172,7 @@ EOF
               journalctl -f -u supertransfer2       
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
+            bash /opt/plexguide/menus/mount/unencrypted.sh
             ;;
 
         E)
