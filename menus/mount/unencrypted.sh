@@ -176,7 +176,7 @@ EOF
               journalctl -f -u supertransfer2       
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
-            bash /opt/plexguide/menus/mount/unencrypted.sh
+
             ;;
 
         E)
