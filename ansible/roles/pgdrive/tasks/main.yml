@@ -157,7 +157,7 @@
     tags:
       - unionfs
 
-  - name: Start RClone
+  - name: Start UNIONFS Service
     systemd: state=started name=unionfs enabled=yes
     tags:
       - unionfs
