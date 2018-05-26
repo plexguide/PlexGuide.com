@@ -121,6 +121,7 @@ EOF
             #### GREP Checks
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf
             ;;
         C)
             #### RCLONE MISSING START
@@ -197,7 +198,7 @@ EOF
               then
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PGMove!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
             fi
-            
+
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
