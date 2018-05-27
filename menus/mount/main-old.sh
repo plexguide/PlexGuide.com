@@ -43,16 +43,16 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
+        A) 
         echo "unencrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
         bash /opt/plexguide/menus/mount/unencrypted.sh
         ;;
         B)
         echo "encrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
         #### Halted, NOT READY
-      #  dialog --title "WARNING!" --msgbox "\nPGDrives Encrypted is Not Ready\n\nUse the PLEXDRIVE Traditional Method for Now" 0 0
+        dialog --title "WARNING!" --msgbox "\nPGDrives Encrypted is Not Ready\n\nUse the PLEXDRIVE Traditional Method for Now" 0 0    
         ##recommend this forwards to another script/menu when it works
-        bash /opt/plexguide/menus/mount/encrypted.sh
+        ##bash /opt/plexguide/menus/mount/encrypted.sh
         exit
         ;;
 ########## Deploy End

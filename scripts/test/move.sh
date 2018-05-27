@@ -13,8 +13,8 @@
 #mv /opt/plexguide/ansible/roles/encache/templates/encache2.js2 /opt/plexguide/ansible/roles/encache/templates/encache.js2
 
 ## For testing new pgdrive menus
-rm /opt/plexguide/menus/mount/main.sh
-mv /opt/plexguide/menus/mount/main2.sh /opt/plexguide/menus/mount/main.sh
+#rm /opt/plexguide/menus/mount/main.sh
+#mv /opt/plexguide/menus/mount/main2.sh /opt/plexguide/menus/mount/main.sh
 
 ## For testing new info/services menus
 #rm /opt/plexguide/menus/info-tshoot/info.sh
