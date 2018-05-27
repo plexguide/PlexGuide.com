@@ -70,8 +70,7 @@ rclone_upload() {
     '--transfers=8'
   )
 
-  rclone move "${localFile}" "$gdsa:${localFile#"$localDir"}" "${rcloneARGS[@]}" &&
-    rclone_fin_flag=1
+  rclone move "${localFile}" "$gdsa:${localFile#"$localDir"}" "${rcloneARGS[@]}" && rclone_fin_flag=1
 
   # check if rclone finished sucessfully
   local secs=$(($(date +%s) - $t1))
