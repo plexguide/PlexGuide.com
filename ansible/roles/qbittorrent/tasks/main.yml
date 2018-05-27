@@ -76,7 +76,7 @@
 - name: Add Downloads-Folder
   file:
     path: "/mnt/qbittorrent/Downloads"
-    mode: 2777
+    mode: 0777
     owner: 1000
     group: 1000
     state: directory
@@ -85,7 +85,7 @@
 - name: Add Temp-Folder
   file:
     path: "/mnt/qbittorrent/Downloads/temp"
-    mode: 2777
+    mode: 0777
     owner: 1000
     group: 1000
     state: directory
