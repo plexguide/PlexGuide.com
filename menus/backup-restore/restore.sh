@@ -167,6 +167,8 @@ fi
         #loop=$(cat /tmp/alive) 1>/dev/null 2>&1
     #done
 
+read -n 1 -s -r -p "Press any key to continue"
+
 echo "$app: Restore Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
