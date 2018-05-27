@@ -32,7 +32,7 @@ OPTIONS=(A "Install: RClone"
          B "Config : RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
-         E "Deploy : PGScan (NOTREADY/TESTING)"
+         E "Deploy : PGScan"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
