@@ -144,26 +144,28 @@ if [ -e "$file" ]
         exit 0
 fi
 
-    echo "true" > /tmp/alive
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore &>/dev/null &
+### Commenting Out Allows You To See What's going On
 
-    echo "$app: Restore Started" > /tmp/pushover
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+    #echo "true" > /tmp/alive
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore #&>/dev/null &
 
-    loop="true"
-    echo "true" > /tmp/alive
-    while [ "$loop" = "true" ]
-    do
-        dialog --infobox "Restoring / " 3 16
-        sleep 0.5
-        dialog --infobox "Restoring | " 3 16
-        sleep 0.5
-        dialog --infobox "Restoring \ " 3 16
-        sleep 0.5
-        dialog --infobox "Restoring - " 3 16
-        sleep 0.5
-        loop=$(cat /tmp/alive) 1>/dev/null 2>&1
-    done
+    #echo "$app: Restore Started" > /tmp/pushover
+    #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
+    #loop="true"
+    #echo "true" > /tmp/alive
+    #while [ "$loop" = "true" ]
+    #do
+        #dialog --infobox "Restoring / " 3 16
+        #sleep 0.5
+        #dialog --infobox "Restoring | " 3 16
+        #sleep 0.5
+        #dialog --infobox "Restoring \ " 3 16
+        #sleep 0.5
+        #dialog --infobox "Restoring - " 3 16
+        #sleep 0.5
+        #loop=$(cat /tmp/alive) 1>/dev/null 2>&1
+    #done
 
 echo "$app: Restore Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
