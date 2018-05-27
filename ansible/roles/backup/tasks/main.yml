@@ -59,7 +59,7 @@
     format: tar
   when: programappdata.stat.exists == True
 
-## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
+# old school
 #- name: Backing Up Program to GDrive - {{program_var.stdout}}
 #  shell: "tar --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
 #  when: programappdata.stat.exists == True
@@ -82,6 +82,14 @@
 - name: Uploading Backup to Google Drive (encrypted)
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gcrypt:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
+
+- name: Remove TEMP Backup!
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /tmp/{{program_var.stdout}}.tar
+  when: programappdata.stat.exists == True
 
 #- name: Kill Switch
 #  shell: echo "false" > /tmp/alive
