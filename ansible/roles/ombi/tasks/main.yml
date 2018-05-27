@@ -34,7 +34,7 @@
 - name: Download Ombi appsettings.json config file
   get_url:
     url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
-    dest: /opt/appdata/ombiv3/appsettings.json
+    dest: /opt/appdata/ombi/appsettings.json
     owner: 1000
     group: 1000
     force: no
@@ -51,9 +51,9 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/ombiv3:/config
+      - /opt/appdata/ombi:/config
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/ombiv3/appsettings.json:/opt/ombi/appsettings.json
+      - /opt/appdata/ombi/appsettings.json:/opt/ombi/appsettings.json
     networks:
       - name: plexguide
         aliases:
