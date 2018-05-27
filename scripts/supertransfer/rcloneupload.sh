@@ -57,13 +57,13 @@ rclone_upload() {
   logfile="${logDir}/${gdsa}_${tmp}.log"
   local rcloneARGS=(
     "--drive-chunk-size=$driveChunkSize"
-    "--exclude=\"**_HIDDEN~\""
-    "--exclude=\"**partial~\""
-    "--exclude=\".unionfs-fuse/**\""
-    "--exclude=\".unionfs/**\""
     "--log-file=${logfile}"
     '--checkers=20'
     '--config /root/.config/rclone/rclone.conf'
+    '--exclude="**_HIDDEN~"'
+    '--exclude="**partial~"'
+    '--exclude=".unionfs-fuse/**"'
+    '--exclude=".unionfs/**"'
     '--log-level INFO'
     '--stats 5s'
     '--tpslimit 6'
