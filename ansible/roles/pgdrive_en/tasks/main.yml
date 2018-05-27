@@ -153,7 +153,7 @@
   - name: Stop If TDRIVE Service Running
     systemd: state=stopped name=tdrive
     tags:
-      - gcrypt
+      - tcrypt
     ignore_errors: yes
 
   - name: Daemon-Reload - Stop TDRIVE Service
@@ -190,13 +190,13 @@
     shell: "cat /tmp/path"
     register: unionfs_path
     tags:
-      - unionfs
+      - unionfs_en
     ignore_errors: True
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     tags:
-      - unionfs
+      - unionfs_en
     ignore_errors: yes
 
   - name: Install UNIONFS Service
@@ -205,14 +205,14 @@
       dest: /etc/systemd/system/unionfs.service
       force: yes
     tags:
-      - unionfs
+      - unionfs_en
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
     tags:
-      - unionfs
+      - unionfs_en
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     tags:
-      - unionfs
+      - unionfs_en
