@@ -193,6 +193,7 @@ EOF
                 bash /opt/plexguide/scripts/plextoken/main.sh
               fi
               ansible-role pgscan
+              dialog --title "Your PGscan Password - We Saved It" --msgbox "\nPassword: $(cat /opt/appdata/plexguide/pgscanpw)!\nNote:  You can write it down, but not needed!" 0 0 
             fi
             
             ;;
