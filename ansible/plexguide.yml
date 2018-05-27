@@ -91,3 +91,4 @@
   - { role: headphones, tags: ['headphones'] }
   - { role: qbittorrent, tags: ['qbittorrent'] }
   - { role: dns-gen, tags: ['dns-gen'] }
+  - { role: services_remove, tags: ['services_remove'] }
