@@ -25,9 +25,9 @@
  MENU="Make a Selection Choice:"
 
  OPTIONS=(A "Gdrive"
-          B "Gcrypt"
+          B "Gcrypt - Encrypted"
           C "Tdrive"
-          D "Tcrypt"
+          D "Tcrypt - Encrypted"
           E "UnionFS"
           F "Move"
           G "Restart Menu"

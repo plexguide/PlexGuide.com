@@ -17,9 +17,9 @@
 #################################################################################
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=12
+HEIGHT=13
 WIDTH=36
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
@@ -28,6 +28,7 @@ OPTIONS=(A "Server Network Benchmarks"
          B "Diskspace with NCDU"
          C "Container Performance"
          D "View Services"
+         E "View PGDrive Services"
          Z "Exit")
 
 
@@ -50,6 +51,8 @@ case $CHOICE in
             ctop ;;
         D)
             bash /opt/plexguide/menus/info-tshoot/info/status-menu.sh ;;
+        E)
+            bash /opt/plexguide/menus/info-tshoot/info2/status-menu.sh ;;
         Z)
             clear
             exit 0 ;;

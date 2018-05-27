@@ -17,8 +17,8 @@ rm /opt/plexguide/menus/mount/main.sh
 mv /opt/plexguide/menus/mount/main2.sh /opt/plexguide/menus/mount/main.sh
 
 ## For testing new info/services menus
-rm /opt/plexguide/menus/info-tshoot/info.sh
-mv /opt/plexguide/menus/info-tshoot/info-new.sh /opt/plexguide/menus/info-tshoot/info.sh
+#rm /opt/plexguide/menus/info-tshoot/info.sh
+#mv /opt/plexguide/menus/info-tshoot/info-new.sh /opt/plexguide/menus/info-tshoot/info.sh
 
 ## For testing new beta menu
 #rm /opt/plexguide/menus/programs/beta.sh
