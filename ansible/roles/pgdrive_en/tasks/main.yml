@@ -22,45 +22,62 @@
     systemd: state=stopped name=rclone enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
 
   - name: Stop If encache Service Running
     systemd: state=stopped name=encache enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
 
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
 
   - name: Stop If RCLONE-ENCRYPT Service Running
     systemd: state=stopped name=rclone-encrypt enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
 
   - name: Stop If RCLONE-EN Service Running
     systemd: state=stopped name=rclone-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
 
   - name: Stop If MOVE-EN Service Running
     systemd: state=stopped name=move-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
 
   - name: Stop If UNIONFS-EN Service Running
-    systemd: state=stopped name=unionfs-en enabled=no
+    systemd: state=stopped name=unionfs-encrypt enabled=no
     ignore_errors: yes
     tags:
-      - pgdrivestop_en
+      - pgdrive_standard_en
+
+  - name: SHELL COMMAND 1
+    shell: "chown -R 1000:1000 /root/.config/rclone/"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard_en
+
+  - name: SHELL COMMAND 2
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard_en
 
 ########################################## MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    tags:
+      - move_en
+
   - name: Install Move Service
     template:
       src: move_script.js2
@@ -94,61 +111,68 @@
       - move_en
 ########################################## MOVE END
 
-########### gdrive
-  - name: Stop If GDRIVE Service Running
-    systemd: state=stopped name=gdrive
+########### GCRYPT
+  - name: Stop If GCRYPT Service Running
+    systemd: state=stopped name=gcrypt
     tags:
-      - gdrive_en
+      - gcrypt
     ignore_errors: yes
 
-  - name: Install GDRIVE Service
+  - name: Install GCRYPT Service
     template:
-      src: gdrive.js2
-      dest: /etc/systemd/system/gdrive.service
+      src: gcrypt.js2
+      dest: /etc/systemd/system/gcrypt.service
       force: yes
     tags:
-      - gdrive_en
+      - gcrypt
 
   - name: Daemon-Reload
-    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
     tags:
-      - gdrive_en
+      - gcrypt
 
-  - name: Start GDrive
-    systemd: state=started name=gdrive enabled=yes
+  - name: Start GCRYPT
+    systemd: state=started name=gcrypt enabled=yes
     tags:
-      - gdrive_en
+      - gcrypt
 
-########### tdrive
-  - name: Stop If TDRIVE Service Running
-    systemd: state=stopped name=tdrive
+########### TCRYPT
+  - name: Stop If TCRYPT Service Running
+    systemd: state=stopped name=tcrypt
     tags:
-      - gdrive_en
+      - tcrypt
     ignore_errors: yes
 
-  - name: Install TDRIVE Service
+  - name: Install TCRYPT Service
     template:
-      src: tdrive.js2
-      dest: /etc/systemd/system/tdrive.service
+      src: tcrypt.js2
+      dest: /etc/systemd/system/tcrypt.service
       force: yes
     tags:
-      - gdrive_en
+      - tcrypt
 
   - name: Daemon-Reload
-    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
     tags:
-      - gdrive_en
+      - tcrypt
 
-  - name: Start TDrive
-    systemd: state=started name=tdrive enabled=yes
+  - name: Start TCRYPT
+    systemd: state=started name=tcrypt enabled=yes
     tags:
-      - gdrive_en
+      - tcrypt
 
 ########### UNIONFS
+  - name: Register UNIONFS PATH
+    shell: "cat /tmp/path"
+    register: unionfs_path
+    tags:
+      - unionfs
+    ignore_errors: True
+
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     tags:
-      - gdrive_en
+      - unionfs
     ignore_errors: yes
 
   - name: Install UNIONFS Service
@@ -157,26 +181,14 @@
       dest: /etc/systemd/system/unionfs.service
       force: yes
     tags:
-      - gdrive_en
+      - unionfs
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
     tags:
-      - gdrive_en
+      - unionfs
 
   - name: Start RClone
     systemd: state=started name=unionfs enabled=yes
     tags:
-      - gdrive_en
-
-  - name: SHELL COMMAND 1
-    shell: "chown -R 1000:1000 /root"
-    ignore_errors: True
-    tags:
-      - gdrive_en
-
-  - name: SHELL COMMAND 2
-    shell: "chmod 775 /root/.config/rclone/rclone.conf"
-    ignore_errors: True
-    tags:
-      - gdrive_en
+      - unionfs

@@ -1,17 +1,17 @@
 [Unit]
-Description=GDrive Daemon
+Description=GDrive Crypt Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount tcrypt: /mnt/tdrive \
-										    --uid=1000 --gid=1000 \
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/gdrive \
+											--uid=1000 --gid=1000 \
                                             --size-only --dir-cache-time=48h --buffer-size=64M \
                                             --vfs-read-chunk-size=128M --vfs-read-chunk-size-limit=2G \
                                             --config /root/.config/rclone/rclone.conf
-ExecStop=/bin/fusermount -u /mnt/tdrive
+ExecStop=/bin/fusermount -uz /mnt/gdrive
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
