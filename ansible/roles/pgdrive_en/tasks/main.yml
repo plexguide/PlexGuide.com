@@ -112,6 +112,12 @@
 ########################################## MOVE END
 
 ########### GCRYPT
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+    tags:
+      - gcrypt
+
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt
     tags:
@@ -137,6 +143,12 @@
       - gcrypt
 
 ########### TCRYPT
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    tags:
+      - tcrypt
+
   - name: Stop If TCRYPT Service Running
     systemd: state=stopped name=tcrypt
     tags:
