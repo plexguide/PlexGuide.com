@@ -134,14 +134,15 @@ ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/p
   echo "$Mass Restore Started!" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
+#### Commenting Out To Let User See
 while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
-  dialog --infobox "Restoring App: $app" 3 37
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass 1>/dev/null 2>&1
+  ###dialog --infobox "Restoring App: $app" 3 37
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass #1>/dev/null 2>&1
   
-  echo "$app: Restore Complete" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+  ####echo "$app: Restore Complete" > /tmp/pushover
+  ####ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 done </opt/appdata/plexguide/backuplist2
 
