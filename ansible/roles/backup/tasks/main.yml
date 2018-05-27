@@ -51,11 +51,11 @@
     - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
   when: programappdata.stat.exists == True
 
-- name: Create a bz2 archive of a globbed path, while excluding a glob of dirnames
+- name: Backing Up Program to GDrive - {{program_var.stdout}}
   archive:
     path:
-    - /tmp/{{program_var.stdout}}.tar
-    dest: /opt/appdata/{{program_var.stdout}}
+    - /opt/appdata/{{program_var.stdout}}
+    dest: /tmp/{{program_var.stdout}}.tar
     format: tar
   when: programappdata.stat.exists == True
 
