@@ -136,6 +136,8 @@
     systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
     tags:
       - gcrypt
+    ignore_errors: yes
+
 
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt
@@ -173,6 +175,7 @@
     systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
     tags:
       - tcrypt
+    ignore_errors: yes
 
   - name: Stop If TCRYPT Service Running
     systemd: state=stopped name=tcrypt

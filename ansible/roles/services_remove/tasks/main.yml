@@ -22,6 +22,42 @@
 # This will remove all services that have been run using RClone new and older!
 # Including PGDrive services!
 #
+###### Remove PGDrive Services
+  - name: Remove Old gdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/gdrive.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old tdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/tdrive.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old gcrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/gcrypt.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old tcrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/tcrypt.service
+    tags:
+      - remove
+    ignore_errors: yes
+
 ###### Remove Plexdrive Service
 
   - name: Remove Old Plexdrive service
@@ -30,6 +66,8 @@
       path: /etc/systemd/system/plexdrive.service
     tags:
       - remove
+    ignore_errors: yes
+
 
 ###### Remove Unencyrpted Services
 
@@ -39,6 +77,8 @@
       path: /etc/systemd/system/rclone.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old rclone File
     file:
@@ -46,6 +86,8 @@
       path: /opt/appdata/plexguide/rclone.sh
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old UnionFS service
     file:
@@ -53,6 +95,8 @@
       path: /etc/systemd/system/unionfs.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old move service
     file:
@@ -60,6 +104,8 @@
       path: /etc/systemd/system/move.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old move File
     file:
@@ -67,6 +113,8 @@
       path: /opt/appdata/plexguide/move.sh
     tags:
       - remove
+    ignore_errors: yes
+
 
 ###### Remove old Encrypted Services
 
@@ -76,6 +124,8 @@
       path: /etc/systemd/system/unionfs-encrypt.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old move-en service
     file:
@@ -83,6 +133,8 @@
       path: /etc/systemd/system/move-en.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old move-en File
     file:
@@ -90,6 +142,8 @@
       path: /opt/appdata/plexguide/move-en.sh
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old rclone-en service
     file:
@@ -97,6 +151,8 @@
       path: /etc/systemd/system/rclone-en.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old rclone-en File
     file:
@@ -104,6 +160,8 @@
       path: /opt/appdata/plexguide/rclone-en.sh
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old rclone-encrypt service
     file:
@@ -111,6 +169,8 @@
       path: /etc/systemd/system/rclone-encrypt.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old rclone-encrypt File
     file:
@@ -118,6 +178,8 @@
       path: /opt/appdata/plexguide/rclone-encrypt.sh
     tags:
       - remove
+    ignore_errors: yes
+
 
 ###### Remove Cacahe services
   - name: Remove Old cache service
@@ -126,6 +188,8 @@
       path: /etc/systemd/system/cache.service
     tags:
       - remove
+    ignore_errors: yes
+
 
   - name: Remove Old encache service
     file:
@@ -133,32 +197,4 @@
       path: /etc/systemd/system/encache.service
     tags:
       - remove
-
-###### Remove PGDrive Services
-  - name: Remove Old gdrive service
-    file:
-      state: absent
-      path: /etc/systemd/system/gdrive.service
-    tags:
-      - remove
-
-  - name: Remove Old tdrive service
-    file:
-      state: absent
-      path: /etc/systemd/system/tdrive.service
-    tags:
-      - remove
-
-  - name: Remove Old gcrypt service
-    file:
-      state: absent
-      path: /etc/systemd/system/gcrypt.service
-    tags:
-      - remove
-
-  - name: Remove Old tcrypt service
-    file:
-      state: absent
-      path: /etc/systemd/system/tcrypt.service
-    tags:
-      - remove
+    ignore_errors: yes
