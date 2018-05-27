@@ -144,4 +144,4 @@ _Main() {
     sleep $sleepTime
   done
 }
-_Main
+_Main "$@"
