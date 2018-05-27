@@ -144,26 +144,30 @@ if [ -e "$file" ]
         exit 0
 fi
 
-    echo "true" > /tmp/alive
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup &>/dev/null &
+### Commenting Out Enables User To See What's Backing Up
+
+    #echo "true" > /tmp/alive
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup #&>/dev/null &
 
     echo "$app: Backup Started" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-    loop="true"
-    echo "true" > /tmp/alive
-    while [ "$loop" = "true" ]
-    do
-        dialog --infobox "Backing Up / " 3 17
-        sleep 0.5
-        dialog --infobox "Backing Up | " 3 17
-        sleep 0.5
-        dialog --infobox "Backing Up \ " 3 17
-        sleep 0.5
-        dialog --infobox "Backing Up - " 3 17
-        sleep 0.5
-        loop=$(cat /tmp/alive) 1>/dev/null 2>&1
-    done
+    #loop="true"
+    #echo "true" > /tmp/alive
+    #while [ "$loop" = "true" ]
+    #do
+        #dialog --infobox "Backing Up / " 3 17
+        #sleep 0.5
+        #dialog --infobox "Backing Up | " 3 17
+        #sleep 0.5
+        #dialog --infobox "Backing Up \ " 3 17
+        #sleep 0.5
+        #dialog --infobox "Backing Up - " 3 17
+        #sleep 0.5
+        #loop=$(cat /tmp/alive) 1>/dev/null 2>&1
+    #done
+
+read -n 1 -s -r -p "Press any key to continue"
 
 echo "$app: Backup Complete" > /tmp/pushover
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
