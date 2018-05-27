@@ -17,9 +17,9 @@
  #################################################################################
 
  export NCURSES_NO_UTF8_ACS=1
- HEIGHT=13
+ HEIGHT=15
  WIDTH=36
- CHOICE_HEIGHT=6
+ CHOICE_HEIGHT=8
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
  TITLE="PGDrive Services Status Menu"
  MENU="Make a Selection Choice:"

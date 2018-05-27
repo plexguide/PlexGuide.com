@@ -17,9 +17,9 @@
  #################################################################################
 
  export NCURSES_NO_UTF8_ACS=1
- HEIGHT=12
+ HEIGHT=14
  WIDTH=36
- CHOICE_HEIGHT=5
+ CHOICE_HEIGHT=7
  BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
  TITLE="PGDrive Services Restart Menu"
  MENU="Make a Selection Choice:"
