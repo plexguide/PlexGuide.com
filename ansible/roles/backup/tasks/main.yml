@@ -54,7 +54,7 @@
 - name: Backing Up Program to GDrive - {{program_var.stdout}}
   archive:
     path:
-    - /opt/appdata/{{program_var.stdout}}
+    - /opt/appdata/{{program_var.stdout}}/*
     dest: /tmp/{{program_var.stdout}}.tar
     format: tar
   when: programappdata.stat.exists == True
