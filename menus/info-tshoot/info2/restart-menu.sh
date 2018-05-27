@@ -25,9 +25,11 @@
  MENU="Make a Selection Choice:"
 
  OPTIONS=(A "Gdrive"
-          B "Tdrive"
-          C "UnionFS"
-          D "Move"
+          B "Gcrypt"
+          C "Tdrive"
+          D "Tcrypt"
+          E "UnionFS"
+          F "Move"
           Z "Exit")
 
 
@@ -51,12 +53,26 @@ case $CHOICE in
 
     B)
         clear
-        systemctl restart tdrive
+        systemctl restart gcrypt
         echo ""
         read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
         ;;
 
     C)
+      clear
+      systemctl restart tdrive
+      echo ""
+      read -n 1 -s -r -p "Gdrive restarted - Press any key to continue "
+      ;;
+
+    D)
+        clear
+        systemctl restart tcrypt
+        echo ""
+        read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
+        ;;
+
+    E)
       clear
       systemctl restart unionfs
       echo ""
@@ -64,7 +80,7 @@ case $CHOICE in
       clear
       ;;
 
-    D)
+    F)
       clear
       systemctl restart move
       echo ""

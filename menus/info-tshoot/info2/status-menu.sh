@@ -25,10 +25,12 @@
  MENU="Make a Selection Choice:"
 
  OPTIONS=(A "Gdrive"
-          B "Tdrive"
-          C "UnionFS"
-          D "Move"
-          E "Restart Menu"
+          B "Gcrypt"
+          C "Tdrive"
+          D "Tcrypt"
+          E "UnionFS"
+          F "Move"
+          G "Restart Menu"
           Z "Exit")
 
 
@@ -63,6 +65,25 @@ case $CHOICE in
 
     B)
       ## create log file if does not exist
+      if [ -e "/opt/plexguide/gcrypt.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/gcrypt.log
+      fi
+
+      ## obtains gcrypt.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status gcrypt > /opt/plexguide/gcrypt.log
+      cat /opt/plexguide/gcrypt.log
+      echo
+      echo "*** View the Log ***"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+    C)
+      ## create log file if does not exist
       if [ -e "/opt/plexguide/tdrive.log" ]
       then
         echo "Log exists"
@@ -80,7 +101,26 @@ case $CHOICE in
       read -n 1 -s -r -p "Press any key to continue "
       ;;
 
-    C)
+    D)
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/tcrypt.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/tcrypt.log
+      fi
+
+      ## obtains tcrypt.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status tcrypt > /opt/plexguide/tcrypt.log
+      cat /opt/plexguide/tcrypt.log
+      echo
+      echo "*** View the Log ***"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
+      ;;
+
+    E)
       ## create log file if does not exist
       if [ -e "/opt/plexguide/unionfs.log" ]
       then
@@ -100,7 +140,7 @@ case $CHOICE in
       clear
       ;;
 
-    D)
+    F)
       ## create log file if does not exist
       if [ -e "/opt/plexguide/move.log" ]
       then
@@ -120,7 +160,7 @@ case $CHOICE in
       clear
   		;;
 
-    E)
+    G)
         clear
         bash /opt/plexguide/menus/info-tshoot/info2/restart-menu.sh
         clear

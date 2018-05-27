@@ -28,7 +28,7 @@ OPTIONS=(A "Server Network Benchmarks"
          B "Diskspace with NCDU"
          C "Container Performance"
          D "View Services"
-         E "View Cache Services"
+         E "View PGDrive Services"
          Z "Exit")
 
 
