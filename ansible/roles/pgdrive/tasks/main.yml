@@ -74,7 +74,6 @@
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=no
     tags:
-    ignore_errors: True
       - move
 
   - name: Start MOVE SERVICE
