@@ -54,9 +54,13 @@
   register: plex_token
   when: pgscan_config.stat.exists == False
 
-- name: "Generate 32 character SERVER_PASS"
-  shell: "pwgen 32 1"
+- name: "Generate 8 character SERVER_PASS"
+  shell: "pwgen 8 1 | tee /opt/appdata/plexguide/pgscanpw"
   register: pgscan_pass
+  when: pgscan_config.stat.exists == False
+
+- name: "Generate PGscan url file"
+  shell: "echo "http://172.17.0.1:3468/"$(cat /opt/appdata/plexguide/pgscanpw) | tee /opt/appdata/plexguide/pgscanurl"
   when: pgscan_config.stat.exists == False
 
 - name: Import default config
