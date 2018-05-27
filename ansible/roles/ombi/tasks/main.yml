@@ -37,6 +37,11 @@
   with_items:
     - /opt/appdata/ombi
 
+- name: Check JSON exists
+  stat:
+    path: "/opt/appdata/ombi/appsettings.json"
+  register: jsonfile
+
 - name: Download Ombi appsettings.json config file
   get_url:
     url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
@@ -45,6 +50,7 @@
     group: 1000
     force: no
   ignore_errors: True
+  when: jsonfile.stat.exists == False
 
 - name: Deploy Ombi Container
   docker_container:
