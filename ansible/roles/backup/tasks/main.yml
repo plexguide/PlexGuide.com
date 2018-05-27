@@ -51,10 +51,18 @@
     - /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
   when: programappdata.stat.exists == True
 
-## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
-- name: Backing Up Program to GDrive - {{program_var.stdout}}
-  shell: "tar --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
+- name: Create a bz2 archive of a globbed path, while excluding a glob of dirnames
+  archive:
+    path:
+    - /tmp/{{program_var.stdout}}.tar
+    dest: /opt/appdata/{{program_var.stdout}}
+    format: tar
   when: programappdata.stat.exists == True
+
+## https://askubuntu.com/questions/553158/compressing-a-folder-tar-without-its-containing-directory-in-the-folder-name
+#- name: Backing Up Program to GDrive - {{program_var.stdout}}
+#  shell: "tar --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
+#  when: programappdata.stat.exists == True
 
 #- name: Backing Up Program to GDrive - {{program_var.stdout}}
 #  shell: "tar --exclude='./plex/database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder' --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
@@ -75,8 +83,8 @@
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gcrypt:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
 
-- name: Kill Switch
-  shell: echo "false" > /tmp/alive
+#- name: Kill Switch
+#  shell: echo "false" > /tmp/alive
 
 - debug: msg="Program is now backed up to your Google Drive - {{program_var.stdout}}"
   when: programappdata.stat.exists == True
