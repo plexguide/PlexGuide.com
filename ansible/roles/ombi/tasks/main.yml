@@ -31,13 +31,26 @@
     name: ombi
     state: absent
 
+############ Directories
+- name: Create Basic Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - /opt/appdata/ombi
+
+- name: Check JSON exists
+  stat:
+    path: "/opt/appdata/ombi/appsettings.json"
+  register: jsonfile
+
 - name: Download Ombi appsettings.json config file
   get_url:
     url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
-    dest: /opt/appdata/ombiv3/appsettings.json
+    dest: /opt/appdata/ombi/appsettings.json
     owner: 1000
     group: 1000
     force: no
+  ignore_errors: True
+  when: jsonfile.stat.exists == False
 
 - name: Deploy Ombi Container
   docker_container:
@@ -51,9 +64,9 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/ombiv3:/config
+      - /opt/appdata/ombi:/config
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/ombiv3/appsettings.json:/opt/ombi/appsettings.json
+      - /opt/appdata/ombi/appsettings.json:/opt/ombi/appsettings.json
     networks:
       - name: plexguide
         aliases:

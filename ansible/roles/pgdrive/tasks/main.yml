@@ -45,6 +45,7 @@
 ########################################## MOVE START
   - name: Daemon-Reload
     systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
     tags:
       - move
 
