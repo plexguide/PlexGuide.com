@@ -7,6 +7,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Extra /mnt option to the NCDU menu
   - torrenvpn directory to Ansible folders roles for those that use 2nd HD
   - Added PG Drives
+  - PG Drives Service Status/Restart menus
 - Changed
   - Updated Uninstaller
   - Repaired Glitch that prevented edition select
