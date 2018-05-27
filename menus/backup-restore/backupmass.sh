@@ -28,7 +28,7 @@ if dialog --stdout --title "Backup Mass Confirmation" \
             clear
         fi
 
-dialog --infobox "Backup: Starting Processing" 3 37 ; sleep 1
+dialog --infobox "Backup: Starting Process" 3 37 ; sleep 1
 
   echo "Mass Backup Started" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
