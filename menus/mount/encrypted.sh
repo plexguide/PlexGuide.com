@@ -106,6 +106,7 @@ EOF
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
+#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rclone_remove
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
