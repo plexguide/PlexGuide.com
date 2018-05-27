@@ -1,0 +1,164 @@
+#!/bin/bash
+#
+# [RClone Remove Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+
+############################## Remove Old Services ##############################
+#
+# This will remove all services that have been run using RClone new and older!
+# Including PGDrive services!
+#
+###### Remove Plexdrive Service
+
+  - name: Remove Old Plexdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive.service
+    tags:
+      - remove
+
+###### Remove Unencyrpted Services
+
+  - name: Remove Old rclone service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone.service
+    tags:
+      - remove
+
+  - name: Remove Old rclone File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone.sh
+    tags:
+      - remove
+
+  - name: Remove Old UnionFS service
+    file:
+      state: absent
+      path: /etc/systemd/system/unionfs.service
+    tags:
+      - remove
+
+  - name: Remove Old move service
+    file:
+      state: absent
+      path: /etc/systemd/system/move.service
+    tags:
+      - remove
+
+  - name: Remove Old move File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move.sh
+    tags:
+      - remove
+
+###### Remove old Encrypted Services
+
+  - name: Remove Old UnionFS-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/unionfs-encrypt.service
+    tags:
+      - remove
+
+  - name: Remove Old move-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/move-en.service
+    tags:
+      - remove
+
+  - name: Remove Old move-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move-en.sh
+    tags:
+      - remove
+
+  - name: Remove Old rclone-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-en.service
+    tags:
+      - remove
+
+  - name: Remove Old rclone-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-en.sh
+    tags:
+      - remove
+
+  - name: Remove Old rclone-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-encrypt.service
+    tags:
+      - remove
+
+  - name: Remove Old rclone-encrypt File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-encrypt.sh
+    tags:
+      - remove
+
+###### Remove Cacahe services
+  - name: Remove Old cache service
+    file:
+      state: absent
+      path: /etc/systemd/system/cache.service
+    tags:
+      - remove
+
+  - name: Remove Old encache service
+    file:
+      state: absent
+      path: /etc/systemd/system/encache.service
+    tags:
+      - remove
+
+###### Remove PGDrive Services
+  - name: Remove Old gdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/gdrive.service
+    tags:
+      - remove
+
+  - name: Remove Old tdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/tdrive.service
+    tags:
+      - remove
+
+  - name: Remove Old gcrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/gcrypt.service
+    tags:
+      - remove
+
+  - name: Remove Old tcrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/tcrypt.service
+    tags:
+      - remove
