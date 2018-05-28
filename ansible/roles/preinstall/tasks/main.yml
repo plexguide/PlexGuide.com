@@ -54,6 +54,7 @@
       - apache2-utils
       - lsof
       - pwgen
+      - gawk
     ignore_errors: yes
 
   - name: Pip Modes
