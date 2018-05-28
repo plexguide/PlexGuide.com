@@ -44,9 +44,11 @@ case $CHOICE in
         program=qbittorrent
         echo "$program" > /tmp/program_var
         dialog --infobox "Installing: $display" 3 30
+        sleep 2
+        clear
         port=8080
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent &>/dev/null &
-         sleep 3
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent
+        read -n 1 -s -r -p "Press any key to continue"
              echo "$program" > /tmp/program
              echo "$program" > /tmp/program_var
              echo "$port" > /tmp/port
@@ -59,9 +61,11 @@ case $CHOICE in
        program=rutorrent
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
+       sleep 2
+       clear
        port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent &>/dev/null &
-        sleep 3
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
+       read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -74,9 +78,11 @@ case $CHOICE in
        program=deluge
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
+       sleep 2
+       clear
        port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge &>/dev/null &
-        sleep 3
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
+       read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -89,9 +95,11 @@ case $CHOICE in
        program=jackett
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
+       sleep 2
+       clear
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett &>/dev/null &
-        sleep 3
+       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
+       read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
