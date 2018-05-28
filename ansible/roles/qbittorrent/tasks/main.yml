@@ -84,7 +84,7 @@
 
 - name: Add Temp-Folder
   file:
-    path: "{{path.stdout}}/qbittorrent/Downloads/temp"
+    path: "{{path.stdout}}/qbittorrent/Downloads-temp"
     mode: 0775
     owner: 1000
     group: 1000
@@ -115,7 +115,7 @@
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
       - "/mnt/qbittorrent/Downloads:/qbit-downloads"
-      - "/mnt/qbittorrent/Downloads/temp:/qbit-downloads/temp"
+      - "/mnt/qbittorrent/Downloads-temp:/qbit-downloads-temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
