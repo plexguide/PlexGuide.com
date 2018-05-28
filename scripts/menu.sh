@@ -11,6 +11,23 @@ echo "plexguide" > /tmp/pushover
 echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 mkdir /var/plexguide/ 1>/dev/null 2>&1
 
+###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+file="/opt/appdata/plexguide/plextoken"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /opt/appdata/plexguide/plextoken
+fi
+
+file="touch /var/plexguide/server.ht"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/server.ht
+fi
+###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
