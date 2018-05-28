@@ -93,7 +93,7 @@
   lineinfile:
     path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
     regexp: '^directory\s?='
-    line: 'directory = {{path.stdout}}/rutorrent'
+    line: 'directory = /{{path.stdout}}/rutorrent'
     state: present
   when: rtorrent_rc.stat.exists == False
 
