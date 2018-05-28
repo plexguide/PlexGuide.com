@@ -1,0 +1,145 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & The Creator
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+---
+- include_role:
+    name: variables
+
+- name: Remove qBittorrent Container
+  docker_container:
+    name: qBittorrent
+    state: absent
+
+# - name: Remove Previous-Downloads Settings
+#   file:
+#     path:
+#       - /mnt/qbittorrent
+#     state: absent
+#
+# - name: Remove Previous Settings
+#   file:
+#     path:
+#       - /opt/appdata/qbittorrent
+#     state: absent
+
+- name: Add Main-Config-Folder
+  file:
+    path: "/opt/appdata/qbittorrent"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+#    recurse: yes
+
+- name: Add Config-Folder
+  file:
+    path: "/opt/appdata/qbittorrent/config"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+- name: Add Torrents-Folder
+  file:
+    path: "/opt/appdata/qbittorrent/torrents"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+- name: Add Main-Folder
+  file:
+    path: "{{path.stdout}}/qbittorrent"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+#    recurse: yes
+
+- name: Add Downloads-Folder
+  file:
+    path: "{{path.stdout}}/qbittorrent/Downloads"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+- name: Add Temp-Folder
+  file:
+    path: "{{path.stdout}}/qbittorrent/Downloads/temp"
+    mode: 2775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
+
+# - template:
+#     src: qBittorrent.conf
+#     dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
+#     owner: 1000
+#     group: 1000
+#     mode: 2755
+
+- name: Deploy qBittorrent Container
+  docker_container:
+    name: qBittorrent
+    image: thecreatorzone/qbit-full
+    pull: yes
+    cpu_shares: 256
+    user: 1000:1000
+    published_ports:
+      - "{{ports.stdout}}8080:8080"
+      - "6881:6881"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/opt/appdata/qbittorrent/torrents:/torrents"
+      - "/opt/appdata/qbittorrent/config:/config"
+      - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
+      - "{{path.stdout}}/qbittorrent/Downloads/temp:/qbittorrent/Downloads/temp"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt/unionfs/:/unionfs"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - qBittorrent
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:qbittorrent.{{domain.stdout}}"
+      traefik.port: "8080"
+
+# - name: "Wait 5 Seconds"
+#   wait_for:
+#     timeout: 5
+#
+# - name: "Wait 5 Seconds"
+#   wait_for:
+#     timeout: 5
+#
+# - name: Restart Container
+#   docker_container:
+#     name: qBittorrent
+#     state: started
