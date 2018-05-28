@@ -15,5 +15,5 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "5.081 RC1" > /var/plexguide/pg.version
+echo "5.081 RC2" > /var/plexguide/pg.version
 echo "70" > /var/plexguide/pg.preinstall
