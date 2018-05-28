@@ -46,12 +46,14 @@ domain=$( cat /var/plexguide/server.domain )
 case $CHOICE in
 
      A)
+     clear
      ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
      bash /opt/plexguide/menus/programs/vpn.sh
-  #      sleep 3
+        read -n 1 -s -r -p "Press any key to continue"
+  #      
   #          echo "$program" > /tmp/program
   #          echo "$program" > /tmp/program_var
   #          echo "$port" > /tmp/port
@@ -63,10 +65,13 @@ case $CHOICE in
        program=delugevpn
        echo "$program" > /tmp/program_var
        dialog --infobox "Installing: $display" 3 30
+       sleep 2
+       clear
        port=8112
        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn
        #&>/dev/null &
-        sleep 3
+       read -n 1 -s -r -p "Press any key to continue"
+
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -80,11 +85,14 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        echo "$program_extra" > /tmp/program_var_extra
        dialog --infobox "Installing: $display" 3 30
+       sleep 2 
+       clear
        port=9080
        port_extra=3000
        ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
        #&>/dev/null &
-        sleep 3
+       read -n 1 -s -r -p "Press any key to continue"
+
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port

@@ -38,10 +38,12 @@ case $CHOICE in
         A)
             display=Ombi4K
             program=ombi4k
+            sleep 2
+            clear
             port=3574
             dialog --infobox "Installing: $display" 3 30
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k &>/dev/null &
-        sleep 3
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -54,10 +56,12 @@ case $CHOICE in
             port=7874
             bash /opt/plexguide/menus/images/radarr4k.sh
             dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
             chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
-        sleep 3
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -70,10 +74,12 @@ case $CHOICE in
             port=8984
             bash /opt/plexguide/menus/images/sonarr4k.sh
             dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
             chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-        sleep 3
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
