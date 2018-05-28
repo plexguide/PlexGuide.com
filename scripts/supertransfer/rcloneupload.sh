@@ -59,7 +59,7 @@ rclone_upload() {
     "--drive-chunk-size=$driveChunkSize"
     "--log-file=${logfile}"
     '--checkers=20'
-    '--config /root/.config/rclone/rclone.conf'
+    '--config=/root/.config/rclone/rclone.conf'
     '--exclude="**_HIDDEN~"'
     '--exclude="**partial~"'
     '--exclude=".unionfs-fuse/**"'
