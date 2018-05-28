@@ -175,9 +175,9 @@ bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
 touch /var/plexguide/basics.yes &>/dev/null &
 #sleep 1
 
-echo "77" | dialog --gauge "Installing: Auto-Delete" 7 50 0
-bash /opt/plexguide/scripts/autodelete/install.sh &>/dev/null &
-#sleep 1
+echo "77" | dialog --gauge "Installing: AutoDelete" 7 50 0
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags autodelete &>/dev/null &
+sleep 2
 
 echo "79" | dialog --gauge "Installing: Portainer" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
