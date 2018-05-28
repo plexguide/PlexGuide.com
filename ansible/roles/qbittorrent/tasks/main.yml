@@ -49,7 +49,7 @@
 - name: Add Config-Folder
   file:
     path: "/opt/appdata/qbittorrent/config"
-    mode: 2775
+    mode: 0775
     owner: 1000
     group: 1000
     state: directory
@@ -58,7 +58,7 @@
 - name: Add Torrents-Folder
   file:
     path: "/opt/appdata/qbittorrent/torrents"
-    mode: 2775
+    mode: 0775
     owner: 1000
     group: 1000
     state: directory
@@ -76,7 +76,7 @@
 - name: Add Downloads-Folder
   file:
     path: "{{path.stdout}}/qbittorrent/Downloads"
-    mode: 2775
+    mode: 0775
     owner: 1000
     group: 1000
     state: directory
@@ -85,7 +85,7 @@
 - name: Add Temp-Folder
   file:
     path: "{{path.stdout}}/qbittorrent/Downloads/temp"
-    mode: 2775
+    mode: 0775
     owner: 1000
     group: 1000
     state: directory
@@ -114,8 +114,8 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
-      - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
-      - "{{path.stdout}}/qbittorrent/Downloads/temp:/qbittorrent/Downloads/temp"
+      - "{{path.stdout}}/qbittorrent/Downloads:/qbit-downloads"
+      - "{{path.stdout}}/qbittorrent/Downloads/temp:/qbit-downloads/temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
