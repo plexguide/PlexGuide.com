@@ -28,6 +28,12 @@ clean_up(){
   echo -e " [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded"
   rm ${logDir}/* &>/dev/null
   echo -n '' > ${fileLock}
+  
+  # if user added or removed GDSA remotes, reset the usage database in order to regenerate it
+  numGdsaDB=$(cat ${gdsaDB} | wc -l)
+  numGdsa=$(rclone listremotes --config=/root/.config/rclone/rclone.conf | wc -l)
+  [[ $numGdsaDB == $numGdsa ]] || echo -n '' > ${gdsaDB}
+  
   rm /tmp/superTransferUploadFail &>/dev/null
   rm /tmp/superTransferUploadSuccess &>/dev/null
   rm /tmp/.SA_error.log.tmp &>/dev/null
