@@ -43,8 +43,10 @@ case $CHOICE in
      D)
          display=dns-gen
          dialog --infobox "Installing: $display" 3 30
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dns-gen &>/dev/null &
-         sleep 3
+         sleep 2 
+         clear
+         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dns-gen
+         read -n 1 -s -r -p "Press any key to continue"
          cronskip="yes"
          ;;
      Z)
