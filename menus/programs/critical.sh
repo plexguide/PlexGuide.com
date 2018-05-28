@@ -40,8 +40,10 @@ case $CHOICE in
             program=portainer
             port=9000
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
-        sleep 3
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -51,7 +53,7 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/traefik/main.sh
             bash /opt/plexguide/menus/programs/critical.sh
-        sleep 3
+            sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
