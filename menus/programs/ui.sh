@@ -42,9 +42,11 @@ case $CHOICE in
       program=heimdall
       display=Heimdall
       dialog --infobox "Installing: $display" 3 30
+      sleep 2
+      clear
       port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall &>/dev/null &
-        sleep 3
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
+      read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -55,9 +57,11 @@ case $CHOICE in
       program=htpcmanager
       display=HTPCManager
       dialog --infobox "Installing: $display" 3 30
+      sleep 2
+      clear
       port=8085
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager &>/dev/null &
-        sleep 3
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager
+      read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -68,9 +72,11 @@ case $CHOICE in
       program=muximux
       display=MUXIMUX
       dialog --infobox "Installing: $display" 3 30
+      sleep 2
+      clear
       port=8015
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux &>/dev/null &
-        sleep 3
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
+      read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -82,9 +88,11 @@ case $CHOICE in
       program=organizr
       display=Organizr
       dialog --infobox "Installing: $display" 3 30
+      sleep 2
+      clear
       port=8020
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr &>/dev/null &
-        sleep 3
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
+      read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
