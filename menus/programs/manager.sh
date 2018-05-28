@@ -47,8 +47,9 @@ case $CHOICE in
       program=couchpotato
       port=5050
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -60,8 +61,9 @@ case $CHOICE in
       program=headphones
       port=8081
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags headphones &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags headphones
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -73,8 +75,9 @@ case $CHOICE in
       program=lazy
       port=5299
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -86,8 +89,9 @@ case $CHOICE in
       program=lidarr
       port=8686
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -99,8 +103,9 @@ case $CHOICE in
       program=medusa
       port=8081
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -112,8 +117,9 @@ case $CHOICE in
       program=mylar
       port=8090
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -126,10 +132,11 @@ case $CHOICE in
       port=7878
       bash /opt/plexguide/menus/images/radarr.sh
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      sleep 3
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -141,8 +148,9 @@ case $CHOICE in
       program=sickrage
       port=8082
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage &>/dev/null &
-      sleep 3
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
@@ -155,10 +163,11 @@ case $CHOICE in
       port=8989
       bash /opt/plexguide/menus/images/sonarr.sh
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      sleep 3
+      read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
