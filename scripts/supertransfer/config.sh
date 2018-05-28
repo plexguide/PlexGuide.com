@@ -4,7 +4,7 @@ source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
 source /opt/plexguide/scripts/supertransfer/settings.conf
 source /opt/plexguide/scripts/supertransfer/spinner.sh
 
-declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3)
+declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3 gawk)
 for app in $reqlist; do
   [[ ! $(which $app) ]] && echo -e "$app dependency not met/nPlease install $app" && exit 1
 done
