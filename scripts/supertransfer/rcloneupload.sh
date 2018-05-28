@@ -64,9 +64,9 @@ rclone_upload() {
     '--exclude="**partial~"'
     '--exclude=".unionfs-fuse/**"'
     '--exclude=".unionfs/**"'
-    '--log-level INFO'
-    '--stats 5s'
-    '--tpslimit 6'
+    '--log-level=INFO'
+    '--stats=5s'
+    '--tpslimit=6'
     '--transfers=8'
   )
 
