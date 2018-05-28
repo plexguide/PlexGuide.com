@@ -114,8 +114,8 @@
     volumes:
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
-      - "{{path.stdout}}/qbittorrent/Downloads:/qbit-downloads"
-      - "{{path.stdout}}/qbittorrent/Downloads/temp:/qbit-downloads/temp"
+      - "/opt/appdata/qbittorrent/Downloads:/qbit-downloads"
+      - "/opt/appdata/qbittorrent/Downloads/temp:/qbit-downloads/temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
