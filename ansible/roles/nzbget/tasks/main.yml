@@ -58,6 +58,7 @@
       PGID: "1000"
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
+      LC_ALL: "C"
     restart_policy: always
     networks:
       - name: plexguide
