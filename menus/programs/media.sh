@@ -64,8 +64,10 @@ case $CHOICE in
             program=emby
             port=8096
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby &>/dev/null &
-            sleep 3
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
+            read -n 1 -s -r -p "Press any key to continue"
             dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -78,8 +80,10 @@ case $CHOICE in
             program=ubooquity
             port=2202
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity &>/dev/null &
-            sleep 3
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ubooquity
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -92,8 +96,10 @@ case $CHOICE in
             program=airsonic
             port=4040
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags airsonic &>/dev/null &
-            sleep 3
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags airsonic
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -105,8 +111,10 @@ case $CHOICE in
             program=booksonic
             port=4050
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic &>/dev/null &
-            sleep 3
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags booksonic
+            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
