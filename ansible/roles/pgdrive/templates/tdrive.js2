@@ -1,5 +1,5 @@
 [Unit]
-Description=GDrive Daemon
+Description=TDrive Daemon
 After=multi-user.target
 
 [Service]
