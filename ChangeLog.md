@@ -8,7 +8,10 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Added torrenvpn directory to Ansible folders roles for those that use 2nd HD
   - Added PG Drives
   - PG Drives Service Status/Restart menus
+  - Cleaning Service
 - Changed
+  - Fixed RClone Copy issue for PG Drives
+  - Fixed ST2 including if due to json # changes
   - Updated Uninstaller
   - Repaired Glitch that prevented edition select
 - Removed
