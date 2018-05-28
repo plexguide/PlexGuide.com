@@ -28,7 +28,7 @@ if dialog --stdout --title "Backup Mass Confirmation" \
             clear
         fi
 
-dialog --infobox "Backup: Starting Processing" 3 37 ; sleep 1
+dialog --infobox "Backup: Starting Process" 3 37 ; sleep 1
 
   echo "Mass Backup Started" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
@@ -60,13 +60,13 @@ while read p; do
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 done </opt/appdata/plexguide/running
 
-rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
+read -n 1 -s -r -p "Press any key to continue"
 
+rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
 
   echo "Mass Backup Complete!" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
-sudo bash /opt/plexguide/menus/backup-restore/main.sh
 exit 0

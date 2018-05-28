@@ -146,13 +146,15 @@ while read p; do
 
 done </opt/appdata/plexguide/backuplist2
 
+read -n 1 -s -r -p "Press any key to continue"
+
 rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
-dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete! You must REDEPLOY each Application!" 0 0
+dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!\n\nYou must DEPLOY each APPLICATION that have NOT LAUNCHED before!" 0 0
 clear
 
 echo "Mass Restore Complete!" > /tmp/pushover

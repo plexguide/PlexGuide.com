@@ -1,19 +1,14 @@
 ---
-- name: "Establishing Variable"
-  shell: "awk '{print $1}' /tmp/program_var"
-  register: program_var
-  tags:
-    - nocron
+- cron:
+    name: Build a Cron Job - NZBGET
+    special_time: 'hourly'
+    job: "bash /opt/plexguide/scripts/autodelete/nzbget.sh"
+    state: present
+  ignore_errors: yes
 
 - cron:
-    name: Build a Cron Job - {{program_var.stdout}}
-    state: absent
-  ignore_errors: yes
-  tags:
-    - nocron
-    
-- cron:
-    name: Build a Cron Job - {{program_var.stdout}}
+    name: Build a Cron Job - SABNZBD
     special_time: 'hourly'
-    job: "bash /opt/plexguide/scripts/autodelete/{{program_var.stdout}}.sh"
+    job: "bash /opt/plexguide/scripts/autodelete/sabnzbd.sh"
     state: present
+  ignore_errors: yes
