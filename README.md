@@ -1,7 +1,7 @@
 <p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!</b></p>
 
 <p align="center">
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/wikipics/button4.png" width="200"/>
+  <a href="https://plexguide.com/wikis" target="_blank"><img src="https://plexguide.com/wikipics/button4.png" width="200"/>
   <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button5.png" width="200"/> 
   <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button1.png" width="200"/> 
   <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/> 
