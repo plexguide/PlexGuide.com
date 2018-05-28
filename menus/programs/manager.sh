@@ -48,6 +48,7 @@ case $CHOICE in
       port=5050
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -62,6 +63,7 @@ case $CHOICE in
       port=8081
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags headphones
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -76,6 +78,7 @@ case $CHOICE in
       port=5299
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lazy
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -90,6 +93,7 @@ case $CHOICE in
       port=8686
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lidarr
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -104,6 +108,7 @@ case $CHOICE in
       port=8081
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -118,6 +123,7 @@ case $CHOICE in
       port=8090
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -133,6 +139,7 @@ case $CHOICE in
       bash /opt/plexguide/menus/images/radarr.sh
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
@@ -149,6 +156,7 @@ case $CHOICE in
       port=8082
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage
       read -n 1 -s -r -p "Press any key to continue"
       echo "$program" > /tmp/program
@@ -164,6 +172,7 @@ case $CHOICE in
       bash /opt/plexguide/menus/images/sonarr.sh
       dialog --infobox "Installing: $display" 3 30
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
