@@ -22,6 +22,11 @@
     state: absent
   ignore_errors: yes
 
+- name: Install gdriveclean; remove existing unionfs-fuse whiteout files
+  file:
+    state: absent
+    path: "/mnt/move/.unionfs-fuse"
+
 - name: Install gdriveclean; insert script
   template:
     src: gdriveclean.js2
