@@ -31,7 +31,7 @@ TITLE=" Select a Domain Provider "
 OPTIONS=(A "CloudFlare:  Easy Process"
          B "Gandi     :  Works" 
          C "GoDaddy   :  Easiest Process" 
-         D "NAME.com  :  ** NOT WORKING **"
+         D "DuckDNS   :  ** NOT WORKING **"
          E "NameCheap :  Must email them for API"
          Z "Exit")
 
@@ -95,10 +95,8 @@ case $CHOICE in
       dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     D)
-      echo "NAMECOM_USERNAME" > /tmp/display1
-      echo "NAMECOM_API_TOKEN" > /tmp/display2
-      echo "NAMECOM_SERVER" > /tmp/display3
-      echo "namedotcom" > /var/plexguide/provider
+      echo "DUCKDNS_TOKEN" > /tmp/display1
+      echo "duckdns" > /var/plexguide/provider
       dialog --infobox "Setting Up NAME.com" 3 45
       sleep 1
       docker stop traefik2 1>/dev/null 2>&1

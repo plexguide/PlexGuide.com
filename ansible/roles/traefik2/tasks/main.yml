@@ -154,9 +154,7 @@
       PUID: 1000
       PGID: 1000
       PROVIDER: "{{provider.stdout}}"
-      NAMECOM_USERNAME: "{{var1.stdout}}"
-      NAMECOM_API_TOKEN: "{{var2.stdout}}"
-      NAMECOM_SERVER: "{{var3.stdout}}"
+      DUCKDNS_TOKEN: "{{var1.stdout}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
@@ -168,7 +166,7 @@
       - name: plexguide
         aliases:
           - traefik
-  tags: namedotcom
+  tags: duckdns
 
 ######################################################### GANDI
 - name: Deploy Traefik
