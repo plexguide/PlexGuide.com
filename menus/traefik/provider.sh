@@ -28,10 +28,10 @@ CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE=" Select a Domain Provider "
 
-OPTIONS=(A "CloudFlare:  Easy Process"
+OPTIONS=(A "CloudFlare:  Semi-Easy Process"
          B "Gandi     :  Works" 
          C "GoDaddy   :  Easiest Process" 
-         D "DuckDNS   :  ** NOT WORKING **"
+         D "DuckDNS   :  Easy Process"
          E "NameCheap :  Must email them for API"
          Z "Exit")
 
@@ -97,7 +97,7 @@ case $CHOICE in
     D)
       echo "DUCKDNS_TOKEN" > /tmp/display1
       echo "duckdns" > /var/plexguide/provider
-      dialog --infobox "Setting Up NAME.com" 3 45
+      dialog --infobox "Setting Up DuckDNS" 3 45
       sleep 1
       docker stop traefik2 1>/dev/null 2>&1
       docker rm traefik2 1>/dev/null 2>&1

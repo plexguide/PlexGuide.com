@@ -4,6 +4,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 ### [5.081] (Beta, Release Candiate & DEV)
 
 - Added
+  - DuckDNS for Traefik v2
   - Extra /mnt option to the NCDU menu
   - Added torrenvpn directory to Ansible folders roles for those that use 2nd HD
   - Added PG Drives
