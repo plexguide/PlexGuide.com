@@ -105,7 +105,7 @@ case $CHOICE in
       docker rm traefik 1>/dev/null 2>&1
       docker rm -r /opt/appdata/traefik 1>/dev/null 2>&1
       bash /opt/plexguide/menus/traefik/menu.sh
-      dialog --infobox "Establishing with NAME.com" 3 40
+      dialog --infobox "Establishing with DuckDNS" 3 40
       bash /opt/plexguide/menus/traefik/version.sh
       bash /opt/plexguide/menus/traefik/rebuild.sh
       dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
