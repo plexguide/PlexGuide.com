@@ -64,7 +64,7 @@
 - name: Add Downloads-Folder
   file:
     path: "{{path.stdout}}/qbittorrent/Downloads"
-    mode: 4775
+    mode: 2775
     owner: 1000
     group: 1000
     state: directory
@@ -73,7 +73,7 @@
 - name: Add Temp-Folder
   file:
     path: "{{path.stdout}}/qbittorrent/Downloads/temp"
-    mode: 4775
+    mode: 2775
     owner: 1000
     group: 1000
     state: directory
