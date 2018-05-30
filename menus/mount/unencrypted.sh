@@ -188,7 +188,7 @@ EOF
             if [ ! "$(docker ps -q -f name=plex)" ]; then
               dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
             else
-              if [ ! -f /opt/appdata/plexguide/plextoken ]; then
+              if [ ! -s /opt/appdata/plexguide/plextoken ]; then
                 dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
                 bash /opt/plexguide/scripts/plextoken/main.sh
               fi

@@ -90,6 +90,8 @@
     systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
     tags:
       - move_en
+    ignore_errors: yes
+
 
   - name: Install Move Service
     template:
@@ -228,7 +230,7 @@
     tags:
       - unionfs_en
 
-  - name: Start RClone
+  - name: Start UNIONFS
     systemd: state=started name=unionfs enabled=yes
     tags:
       - unionfs_en

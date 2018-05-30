@@ -71,6 +71,22 @@
 
 ###### Remove Unencyrpted Services
 
+  - name: Remove Old move service
+    file:
+      state: absent
+      path: /etc/systemd/system/move.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+  - name: Remove Old move File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move.sh
+    tags:
+      - remove
+    ignore_errors: yes
+
   - name: Remove Old rclone service
     file:
       state: absent
@@ -93,24 +109,6 @@
     file:
       state: absent
       path: /etc/systemd/system/unionfs.service
-    tags:
-      - remove
-    ignore_errors: yes
-
-
-  - name: Remove Old move service
-    file:
-      state: absent
-      path: /etc/systemd/system/move.service
-    tags:
-      - remove
-    ignore_errors: yes
-
-
-  - name: Remove Old move File
-    file:
-      state: absent
-      path: /opt/appdata/plexguide/move.sh
     tags:
       - remove
     ignore_errors: yes
