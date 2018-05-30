@@ -13,6 +13,7 @@ export NCURSES_NO_UTF8_ACS=1
           D "RClone Cache Unencrypted"
           E "RClone Cache Encrypted"
           F "PGCache TEST (Unencrypted)"
+          G "OpenVPN"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -48,6 +49,8 @@ case $CHOICE in
     bash /opt/plexguide/menus/rclone/encache.sh ;;
      F)
      bash /opt/plexguide/menus/pgcache/main.sh ;;
+      G)
+      bash /opt/plexguide/scripts/test/ovpn.sh ;;
      Z)
         clear
         exit 0 ;;

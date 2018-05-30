@@ -11,6 +11,7 @@
   roles:
       - { role: rtorrentvpn, tags: ['rtorrentvpn'] }
       - { role: delugevpn, tags: ['delugevpn'] }
+      - { role: openvpn, tags: ['openvpn'] }
       - { role: x2go, tags: ['x2go'] }
 #      - { role: encache, tags: ['encache'] }
 #      - { role: pgdrive_en, tags: ['pgdrive_en'] }
