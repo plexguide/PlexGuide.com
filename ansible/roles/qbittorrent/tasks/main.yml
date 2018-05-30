@@ -115,7 +115,7 @@
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
       - "/mnt/qbittorrent/Downloads:/qbit-downloads"
-      - "/mnt/qbittorrent/Downloads-temp:/qbit-downloads/temp"
+      - "/mnt/qbittorrent/Downloads-temp:/qbit-temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
