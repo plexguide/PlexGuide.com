@@ -24,6 +24,18 @@
 ##### Need to make sure to run:-
 ##### /sbin/modprobe iptable_mangle
 
+
+- name: "Establishing OpenVPN"
+  shell: "awk '{print $1}' /var/plexguide/vpn.user"
+  register: vpnuser
+- debug: msg="Your Username is {{ vpnuser.stdout }}"
+
+- name: "Establishing OpenVPN"
+  shell: "awk '{print $1}' /var/plexguide/vpn.password"
+  register: vpnpassword
+- debug: msg="Your Password is {{ vpnpassword.stdout }}"
+
+
 - name: Create Basic directories for OpenVPN
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
@@ -128,8 +140,8 @@
 #     UMASK: "0022"
       NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
       VPN_ENABLED: "yes"
-      VPN_USER: "{{vpnuser}}"
-      VPN_PASS: "{{vpnpassword}}"
+      VPN_USER: "{{vpnuser.stdout}}"
+      VPN_PASS: "{{vpnpassword.stdout}}"
       VPN_PROV: pia
       STRICT_PORT_FORWARD: "yes"
       STRONG_CERTS: "no"
