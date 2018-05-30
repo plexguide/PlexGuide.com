@@ -13,7 +13,8 @@ export NCURSES_NO_UTF8_ACS=1
           D "RClone Cache Unencrypted"
           E "RClone Cache Encrypted"
           F "PGCache TEST (Unencrypted)"
-          G "OpenVPN"
+          G "OpenVPN - Client"
+          H "OpenVPN - Server"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -51,6 +52,8 @@ case $CHOICE in
      bash /opt/plexguide/menus/pgcache/main.sh ;;
       G)
       bash /opt/plexguide/scripts/test/ovpn.sh ;;
+      H)
+      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags openvpn_server &>/dev/null & ;;
      Z)
         clear
         exit 0 ;;
