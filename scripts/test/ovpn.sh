@@ -78,9 +78,9 @@ if dialog --stdout --title "PAY ATTENTION!" \
     sleep 2
     touch /tmp/server.check 1>/dev/null 2>&1
 
-else
-   echo "User already setup!" > /var/plexguide/vpn.user 1>/dev/null 2>&1
-   touch /tmp/server.check 1>/dev/null 2>&1
+#else
+#   echo "User already setup!" > /var/plexguide/vpn.user 1>/dev/null 2>&1
+#   touch /tmp/server.check 1>/dev/null 2>&1
 fi
 
 if dialog --stdout --title "PAY ATTENTION!" \
@@ -95,9 +95,9 @@ if dialog --stdout --title "PAY ATTENTION!" \
     sleep 2
     touch /tmp/server.check 1>/dev/null 2>&1
 
-else
-   echo "Password already setup!" > /var/plexguide/vpn.password 1>/dev/null 2>&1
-   touch /tmp/server.check 1>/dev/null 2>&1
+#else
+#   echo "Password already setup!" > /var/plexguide/vpn.password 1>/dev/null 2>&1
+#   touch /tmp/server.check 1>/dev/null 2>&1
 #else
 #    echo "claimedalready" > /var/plexguide/plextoken 1>/dev/null 2>&1
 fi
