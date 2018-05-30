@@ -16,6 +16,18 @@
 #
 #################################################################################
 ########################################## Scripts
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - rclone
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - rclone
+
 ########## Move Service Script
   - name: Check MOVE SCRIPT
     stat:
