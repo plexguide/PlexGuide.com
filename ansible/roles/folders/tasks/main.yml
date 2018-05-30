@@ -111,6 +111,20 @@
     when: encrypt.stat.exists == False
     ignore_errors: yes
 
+########### qBittorrent
+  - name: qBit-Check
+    stat:
+      path: /mnt/qbittorrent
+    register: qbit
+
+  - name: Create qBit Folders
+    file: "path={{item}} state=directory mode=2775 owner=1000 group=1000"
+    with_items:
+      - /mnt/qbittorrent/Downloads
+      - /mnt/qbittorrent/Downloads/Temp
+    when: qbit.stat.exists == False
+    ignore_errors: yes
+
 ############ Directories
   - name: Create Basic Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
