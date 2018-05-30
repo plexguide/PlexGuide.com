@@ -159,6 +159,6 @@
       - unionfs
 
   - name: Start UNIONFS Service
-    systemd: state=started name=unionfs enabled=yes
+    systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs
