@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [OpenVPN]
+# [OpenVPN Server]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq
@@ -25,61 +25,61 @@
 ##### /sbin/modprobe iptable_mangle
 
 
-- name: "Establishing OpenVPN Username"
-  shell: "awk '{print $1}' /var/plexguide/vpn.user"
-  register: vpnuser
-  tags:
-    openvpn
-- debug: msg="Your Username is {{ vpnuser.stdout }}"
+#- name: "Establishing OpenVPN Username"
+#  shell: "awk '{print $1}' /var/plexguide/vpn.user"
+#  register: vpnuser
+#  tags:
+#    openvpn_server
+#- debug: msg="Your Username is {{ vpnuser.stdout }}"
 
-- name: "Establishing OpenVPN Password"
-  shell: "awk '{print $1}' /var/plexguide/vpn.password"
-  register: vpnpassword
-  tags:
-    openvpn
-- debug: msg="Your Password is {{ vpnpassword.stdout }}"
+#- name: "Establishing OpenVPN Password"
+#  shell: "awk '{print $1}' /var/plexguide/vpn.password"
+#  register: vpnpassword
+#  tags:
+#    openvpn_server
+#- debug: msg="Your Password is {{ vpnpassword.stdout }}"
 
-- name: "Establishing OpenVPN Server"
-  shell: "awk '{print $1}' /var/plexguide/vpn.server"
-  register: vpnserver
-  ignore_errors: True
-  tags:
-    openvpn
-- debug: msg="Your Server is {{ vpnserver.stdout }}"
+#- name: "Establishing OpenVPN Server"
+#  shell: "awk '{print $1}' /var/plexguide/vpn.server"
+#  register: vpnserver
+#  ignore_errors: True
+#  tags:
+#    openvpn_server
+#- debug: msg="Your Server is {{ vpnserver.stdout }}"
 
-- name: Create Basic directories for OpenVPN
+- name: Create Basic directories for OpenVPN Server
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - /opt/appdata/openvpn
-    - /opt/appdata/openvpn/config
+    - /opt/appdata/openvpn/server
 #    - /opt/appdata/openvpn/config/openvpn
   tags:
-    openvpn
+    openvpn_server
 
 ########## Moving certs to config file
-- name: Copy default ovpn cert
-  template:
-    src: "ca.rsa.2048.crt"
-    dest: "/opt/appdata/openvpn/ca.rsa.2048.crt"
-    force: yes
-  tags:
-    openvpn
+#- name: Copy default ovpn cert
+#  template:
+#    src: "ca.rsa.2048.crt"
+#    dest: "/opt/appdata/openvpn/ca.rsa.2048.crt"
+#    force: yes
+#  tags:
+#    openvpn
 
-- name: Copy default ovpn pem
-  template:
-    src: "crl.rsa.2048.pem"
-    dest: "/opt/appdata/openvpn/crl.rsa.2048.pem"
-    force: yes
-  tags:
-    openvpn
+#- name: Copy default ovpn pem
+#  template:
+#    src: "crl.rsa.2048.pem"
+#    dest: "/opt/appdata/openvpn/crl.rsa.2048.pem"
+#    force: yes
+#  tags:
+#    openvpn
 
-- name: Copy default ovpn file
-  template:
-    src: "netherlands.ovpn"
-    dest: "/opt/appdata/openvpn/netherlands.ovpn"
-    force: yes
-  tags:
-    openvpn
+#- name: Copy default ovpn file
+#  template:
+#    src: "netherlands.ovpn"
+#    dest: "/opt/appdata/openvpn/netherlands.ovpn"
+#    force: yes
+#  tags:
+#    openvpn
 
 ########## Remove old existing config file
 #- name: Removing all ovpn files
@@ -124,7 +124,7 @@
 - name: Making sure iptable is set
   shell: /sbin/modprobe iptable_mangle
   tags:
-    openvpn
+    openvpn_server
 
 ######### Remove previous containers
 - name: Remove Rtorrent Container
@@ -133,7 +133,7 @@
     state: absent
   ignore_errors: True
   tags:
-    openvpn
+    openvpn_server
 
 - name: Remove DelugeVPN Container
   docker_container:
@@ -141,13 +141,13 @@
     state: absent
   ignore_errors: True
   tags:
-    openvpn
+    openvpn_server
 
 ######## Deploy new container
-- name: Deploy Openvpn Container
+- name: Deploy Openvpn Server Container
   docker_container:
-    name: openvpn
-    image: binhex/arch-openvpn
+    name: openvpn_server
+    image: kylemanna/openvpn
     pull: yes
     cpu_shares: 256
 #    network_mode: "bridge"
@@ -155,35 +155,36 @@
       - NET_ADMIN
     published_ports:
 #      - "{{ports.stdout}}8112:8112"
-      - "8118:8118"
+#      - "8118:8118"
 #      - "58846:58846"
 #      - "58946:58946"
+      - "1194:1194/udp"
     env:
       PUID: "1000"
       PGID: "1000"
 #     UMASK: "0022"
-      NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
-      VPN_ENABLED: "yes"
-      VPN_USER: "{{vpnuser.stdout}}"
-      VPN_PASS: "{{vpnpassword.stdout}}"
-      VPN_PROV: pia
-      STRICT_PORT_FORWARD: "yes"
-      STRONG_CERTS: "no"
-      ENABLE_PRIVOXY: "yes"
-      DEBUG: false
-      VPN_PORT: 1198
-      VPN_PROTOCOL: udp
-      VPN_DEVICE_TYPE: tun
-      LAN_NETWORK: "{{subnet}}"
+#      NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
+#      VPN_ENABLED: "yes"
+#      VPN_USER: "{{vpnuser.stdout}}"
+#      VPN_PASS: "{{vpnpassword.stdout}}"
+#      VPN_PROV: pia
+#      STRICT_PORT_FORWARD: "yes"
+#      STRONG_CERTS: "no"
+#      ENABLE_PRIVOXY: "yes"
+#      DEBUG: false
+#      VPN_PORT: 1198
+#      VPN_PROTOCOL: udp
+#      VPN_DEVICE_TYPE: tun
+#      LAN_NETWORK: "{{subnet}}"
     volumes:
-      - /opt/appdata/openvpn/config:/config
+      - /opt/appdata/openvpn/server:/etc/openvpn
       - /etc/localtime:/etc/localtime:ro
     restart_policy: unless-stopped
     state: started
     networks:
       - name: plexguide
         aliases:
-          - openvpn
+          - openvpn_server
 #    labels:
 #      traefik.enable: "true"
 #      traefik.frontend.redirect.entryPoint: "https"

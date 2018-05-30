@@ -25,18 +25,6 @@
     name: qBittorrent
     state: absent
 
-# - name: Remove Previous-Downloads Settings
-#   file:
-#     path:
-#       - /mnt/qbittorrent
-#     state: absent
-#
-# - name: Remove Previous Settings
-#   file:
-#     path:
-#       - /opt/appdata/qbittorrent
-#     state: absent
-
 - name: Add Main-Config-Folder
   file:
     path: "/opt/appdata/qbittorrent"
@@ -44,7 +32,7 @@
     owner: 1000
     group: 1000
     state: directory
-#    recurse: yes
+    recurse: yes
 
 - name: Add Config-Folder
   file:
@@ -71,7 +59,7 @@
     owner: 1000
     group: 1000
     state: directory
-#    recurse: yes
+    recurse: yes
 
 - name: Add Downloads-Folder
   file:
@@ -84,19 +72,12 @@
 
 - name: Add Temp-Folder
   file:
-    path: "{{path.stdout}}/qbittorrent/Downloads-temp"
+    path: "{{path.stdout}}/qbittorrent/Downloads/temp"
     mode: 2775
     owner: 1000
     group: 1000
     state: directory
     recurse: yes
-
-# - template:
-#     src: qBittorrent.conf
-#     dest: /opt/appdata/qbittorrent/config/qBittorrent.conf
-#     owner: 1000
-#     group: 1000
-#     mode: 2755
 
 - name: Deploy qBittorrent Container
   docker_container:
@@ -115,7 +96,7 @@
       - "/opt/appdata/qbittorrent/torrents:/torrents"
       - "/opt/appdata/qbittorrent/config:/config"
       - "/mnt/qbittorrent/Downloads:/qbit-downloads"
-      - "/mnt/qbittorrent/Downloads-temp:/qbit-downloads-temp"
+#      - "/mnt/qbittorrent/Downloads/temp:/qbit-downloads/temp"
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/unionfs/:/unionfs"
     restart_policy: always
