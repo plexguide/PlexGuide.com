@@ -17,8 +17,8 @@ ExecStart=/usr/bin/rclone mount tdrive: /mnt/tdrive \
 	--vfs-read-chunk-size-limit=1G \
 	--allow-non-empty \
 	--allow-other \
-	--config /root/.config/rclone/rclone.conf
-	--size-only
+	--config /root/.config/rclone/rclone.conf \
+	--size-only \
 	--syslog \
 	--uid=1000 \
 	--vfs-read-chunk-size=32M

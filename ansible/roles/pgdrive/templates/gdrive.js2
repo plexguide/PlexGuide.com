@@ -15,13 +15,13 @@ ExecStart=/usr/bin/rclone mount gdrive: /mnt/gdrive \
 	--umask 002 \
 	--vfs-cache-max-age 675h \
 	--vfs-read-chunk-size-limit=1G \
-  --allow-non-empty \
-  --allow-other \
-  --config /root/.config/rclone/rclone.conf
-  --size-only
-  --syslog \
-  --uid=1000 \
-  --vfs-read-chunk-size=32M
+	--allow-non-empty \
+	--allow-other \
+	--config /root/.config/rclone/rclone.conf \
+	--size-only \
+	--syslog \
+	--uid=1000 \
+	--vfs-read-chunk-size=32M
 
 ExecStop=/bin/fusermount -uz /mnt/gdrive
 TimeoutStopSec=20
