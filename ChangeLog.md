@@ -1,7 +1,15 @@
 ## Current Changes (ACTIVE)
 Current Changes will continued to be modified as known - (D) Dev (B#) Beta Version Update
 
-### [5.081] (Beta, Release Candiate & DEV)
+### [5.082] (Beta, Release Candiate & DEV)
+
+- None
+
+-------------------------------------------------------
+## Past Changes
+Historical Documented Changes will be stored as below.
+
+### [5.081] - 30 May
 
 - Added
   - DuckDNS for Traefik v2
@@ -17,10 +25,6 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
   - Repaired Glitch that prevented edition select
 - Removed
   - ST from Settings, part of mounts
-
--------------------------------------------------------
-## Past Changes
-Historical Documented Changes will be stored as below.
 
 ### [5.080] - 19 May
 
