@@ -31,12 +31,18 @@
       - pgdrive_standard
 
   - name: SHELL COMMAND 1
-    shell: "chown -R 1000:1000 /root/.config/rclone/"
+    shell: "mkdir -p /root/.config/rclone/"
     ignore_errors: True
     tags:
       - pgdrive_standard
 
   - name: SHELL COMMAND 2
+    shell: "chown -R 1000:1000 /root/.config/rclone/"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard
+
+  - name: SHELL COMMAND 3
     shell: "chmod 775 /root/.config/rclone/rclone.conf"
     ignore_errors: True
     tags:
