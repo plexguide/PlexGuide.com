@@ -23,6 +23,7 @@
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
   - { role: variables, tags: ['variables'] }
   - { role: muximux, tags: ['muximux'] }
+  - { role: monitorr, tags: ['monitorr'] }
   - { role: pgdrive_en, tags: ['pgdrive_en'] }
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
