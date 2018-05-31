@@ -3,7 +3,8 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 ### [5.082] (Beta, Release Candiate & DEV)
 
-- None
+- Added
+  - Monitorr Program
 
 -------------------------------------------------------
 ## Past Changes
