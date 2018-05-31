@@ -81,6 +81,7 @@ EOF
             #### GREP Checks
             tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
             gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+            mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
             ;;
