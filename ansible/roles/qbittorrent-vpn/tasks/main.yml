@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   The Creator
+# Author:   Admin9705 & Deiteq & The Creator
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,49 +15,50 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
 ---
 - include_role:
     name: variables
 
-- name: Remove {{role_name}} Container
+- name: Remove qBittorrent Container
   docker_container:
-    name: "{{role_name}}"
+    name: qBittorrent-VPN
     state: absent
 
-- name: Create Folders
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/appdata/radarr
+- name: Add Main-Config-Folder
+  file:
+    path: "/opt/appdata/qbittorrent-vpn"
+    mode: 0775
+    owner: 1000
+    group: 1000
+    state: directory
+    recurse: yes
 
-- name: Deploy {{role_name}} Container
+- name: Deploy qBittorrent-VPN Container
   docker_container:
-    name: "{{role_name}}"
-    image: thecreatorzone/radarr
+    name: qBittorrent-VPN
+    image: thecreatorzone/qbit-full
     pull: yes
     cpu_shares: 256
+    user: 1000:1000
     published_ports:
-      - "{{ports.stdout}}7878:7878"
+      - "{{ports.stdout}}portxxxx:sameportxxxx"
+      - "portyyyy:sameportyyyy"
     env:
       PUID: "1000"
       PGID: "1000"
+    volumes:
+      - "  "
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt/unionfs/:/unionfs"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    volumes:
-      - "/opt/appdata/{{role_name}}:/config"
-      - /mnt/unionfs:/unionfs
-      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/rutorrents:/downloads"
-      - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - /mnt/qbittorrent/Downloads:/qbit-downloads
-      - /etc/localtime:/etc/localtime:ro
-    restart_policy: always
+          - qBittorrent-VPN
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "7878"
+      traefik.frontend.rule: "Host:qbittorrent.{{domain.stdout}}"
+      traefik.port: "portxxxx"

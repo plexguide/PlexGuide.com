@@ -94,3 +94,4 @@
   - { role: dns-gen, tags: ['dns-gen'] }
   - { role: services_remove, tags: ['services_remove'] }
   - { role: radarr-test, tags: ['radarr-test'] }
+  - { role: qbittorrent-vpn, tags: ['qbittorrent-vpn'] }
