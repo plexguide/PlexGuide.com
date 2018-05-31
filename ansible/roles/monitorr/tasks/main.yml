@@ -24,7 +24,7 @@
     name: "{{role_name}}"
     state: absent
 
-- name: Deploy Tautulli Container
+- name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
     image: "docker pull monitorr/monitorr"
@@ -46,5 +46,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:monitorr.{{domain.stdout}},monitor.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:monitorr.{{domain.stdout}},monitor.{{domain.stdout}}"
       traefik.port: "80"
