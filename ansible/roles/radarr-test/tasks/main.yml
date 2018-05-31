@@ -27,7 +27,7 @@
   with_items:
     - /opt/appdata/radarr-test
 
-- name: Deploy {{role_name}} Container
+- name: Deploy radarr-test Container
   docker_container:
     name: "radarr-test"
     image: thecreatorzone/radarr
