@@ -19,7 +19,7 @@
 - include_role:
     name: variables
 
-- name: Remove {{{role_name}} Container
+- name: Remove {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
     state: absent
