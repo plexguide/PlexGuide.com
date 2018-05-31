@@ -27,7 +27,7 @@
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
-    image: "docker pull monitorr/monitorr"
+    image: "monitorr/monitorr"
     pull: yes
     cpu_shares: 128
     published_ports:
