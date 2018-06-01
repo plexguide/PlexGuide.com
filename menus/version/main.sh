@@ -25,7 +25,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Developer: 5.083"
+OPTIONS=(A "Developer: 5.084"
          B "Stable   : 5.083"
          E "Stable   : 5.080"
          F "Stable   : 5.079"
