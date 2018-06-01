@@ -114,7 +114,7 @@ EOF
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a fresh Server" 0 0; then
 
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en &>/dev/null &
+                ansible-role  services_remove
             else
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en &>/dev/null &
             fi
@@ -247,7 +247,7 @@ EOF
         F)
         #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
           ansible-role services_remove
-          dialog --title "All Google Related Services Removed" --msgbox "Please re-run Deploy: PGDrive!" 0 0
+          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run 'Deploy : PGDrive'!" 0 0
         #  echo "Please re-run Deploy: PGDrive!"
       #    read -n 1 -s -r -p "Please re-run Deploy: PGDrive! \nPress any key to continue"
           ;;
