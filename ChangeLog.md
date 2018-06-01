@@ -5,6 +5,7 @@ Current Changes will continued to be modified as known - (D) Dev (B#) Beta Versi
 
 - Added
   - Monitorr Program
+  - Remove Services option to PGDrive for people switching from PlexDrive
 
 -------------------------------------------------------
 ## Past Changes
