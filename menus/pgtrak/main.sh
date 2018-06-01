@@ -135,6 +135,7 @@ case $CHOICE in
                 --yesno "\nIf this IS NOT your first time, be aware that you may lose your personal configs from the config.json if you have edited it from before!\n\nTake note of what you put and edit it again! Want to PGTrak?" 0 0; then
                 dialog --infobox "Deploying PGTrak!" 3 26
                 sleep 2
+                clear
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak
                 read -n 1 -s -r -p "Press any key to continue"
                 dialog --title "PGTrak Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
