@@ -40,7 +40,7 @@
 #  when: programappdata.stat.exists == True
 
 - name: Backing Up Program to GDrive - plex
-  shell: "tar --warning=no-file-removed --warning=no-file-changed --ignore-failed-read --exclude='./plex/database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder' -zcvf /tmp/plex.tar -C /opt/appdata/plex ."
+  shell: "tar --warning=no-file-removed --warning=no-file-changed --ignore-failed-read --exclude='./database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder' -zcvf /tmp/plex.tar -C /opt/appdata/plex ."
   ignore_errors: True'
   args:
   warn: no
