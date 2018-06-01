@@ -11,7 +11,7 @@ ExecStart=/usr/bin/rclone mount gdrive: /mnt/gdrive \
 	--dir-cache-time=672h \
 	--gid=1000 \
 	--log-level INFO \
-	--umask 002 \
+	--umask=002 \
 	--vfs-cache-max-age=675h \
 	--vfs-read-chunk-size-limit=1G \
 	--allow-non-empty \
