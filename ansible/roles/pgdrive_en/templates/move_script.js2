@@ -1,15 +1,47 @@
 #!/bin/bash
+_Main() {
+  if pidof -o %PPID -x "$0"; then
+    exit 1
+  fi
 
-if pidof -o %PPID -x "$0"; then
-   exit 1
-fi
+  sleep 30
+  while
+    true
+  do
+    # Intelligently adjusts chunk size of transfers with available memory value.
+    local AvailableRam
+    AvailableRam=$(free --giga -w | grep Mem | awk '{print $8}')
+    case "$AvailableRam" in
+    [1-9][0-9] | [1-9][0-9][0-9]) driveChunkSize="1024M" ;;
+    [6-9]) driveChunkSize="512M" ;;
+    5) driveChunkSize="256M" ;;
+    4) driveChunkSize="128M" ;;
+    3) driveChunkSize="64M" ;;
+    2) driveChunkSize="32M" ;;
+    [0-1]) driveChunkSize="8M" ;;
+    esac
 
-sleep 30
-while true
-do
-## Sync, Sleep 5 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 9M --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --checkers=16 --max-size 99G --log-file=/opt/appdata/plexguide/rclone --log-level INFO --stats 5s /mnt/move gcrypt:/
-sleep 300
-# Remove empty directories (MrWednesday)
-find "/mnt/move/" -mindepth 2 -type d -empty -delete
-done
+    local RCLONE_ARGS=(
+      "--bwlimit 9M"
+      "--checkers=16"
+      "--drive-chunk-size=$driveChunkSize"
+      "--drive-upload-cutoff=$driveChunkSize"
+      "--exclude="**_HIDDEN~""
+      "--exclude=".unionfs-fuse/**""
+      "--exclude=".unionfs/**""
+      "--exclude='**partial~'"
+      "--fast-list"
+      "--log-file=/opt/appdata/plexguide/rclone"
+      "--log-level INFO"
+      "--max-size 99G"
+      "--stats 5s"
+      "--tpslimit 6"
+    )
+    ## Sync, Sleep 5 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
+    rclone move /mnt/move gdrive: "${RCLONE_ARGS[@]}"
+    sleep 300
+    # Remove empty directories (MrWednesday)
+    find "/mnt/move/" -mindepth 2 -type d -empty -delete
+  done
+}
+_Main "$@"
