@@ -48,7 +48,6 @@
     name: "plex"
     state: started
   ignore_errors: True
-  when: programappdata.stat.exists == True
 
 - name: Uploading Backup to Google Drive
   shell: "rclone copy /tmp/plex.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
