@@ -7,7 +7,7 @@ Type=simple
 User=0
 Group=0
 ExecStart=/usr/bin/rclone mount tcrypt: /mnt/tdrive \
-	--buffer-size=64M \
+	--buffer-size=16M \
 	--dir-cache-time=672h \
 	--gid=1000 \
 	--log-level INFO \
