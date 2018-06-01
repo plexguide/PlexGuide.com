@@ -112,7 +112,7 @@ EOF
 
             if dialog --stdout --title "PAY ATTENTION!" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a Clean/Fresh Server!" 0 0; then
+              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
 
                 ansible-role  services_remove
             else

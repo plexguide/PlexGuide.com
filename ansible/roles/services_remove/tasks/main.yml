@@ -29,44 +29,44 @@
     systemd: state=stopped name=rclone enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
+      - remove
 
   - name: Stop If encache Service Running
     systemd: state=stopped name=encache enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
+      - remove
 
   - name: Stop If PLEXDRIVE Service Running
     systemd: state=stopped name=plexdrive enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
+      - remove
 
   - name: Stop If RCLONE-ENCRYPT Service Running
     systemd: state=stopped name=rclone-encrypt enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
+      - remove
 
   - name: Stop If RCLONE-EN Service Running
     systemd: state=stopped name=rclone-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
+      - remove
 
   - name: Stop If MOVE-EN Service Running
     systemd: state=stopped name=move-en enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
+      - remove
 
   - name: Stop If UNIONFS-EN Service Running
     systemd: state=stopped name=unionfs-encrypt enabled=no
     ignore_errors: yes
     tags:
-      - pgdrive_standard_en
-      
+      - remove
+
 ###### Remove PGDrive Services
   - name: Remove Old gdrive service
     file:
