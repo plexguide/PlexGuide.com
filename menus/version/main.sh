@@ -27,9 +27,9 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.084"
          B "Stable   : 5.083"
-         E "Stable   : 5.080"
-         F "Stable   : 5.079"
-         G "Stable   : 5.078"
+         C "Stable   : 5.080"
+         D "Stable   : 5.079"
+         E "Stable   : 5.078"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -76,13 +76,13 @@ case $CHOICE in
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.083" ;; 
-        E)
+        C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.080" ;;
-        F)
+        D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.079" ;; 
-        G)
+        E)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.078" ;;         
         Z)
