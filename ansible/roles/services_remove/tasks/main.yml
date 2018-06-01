@@ -196,3 +196,9 @@
     tags:
       - remove
     ignore_errors: yes
+
+  - name: Daemon-Reload
+    systemd: daemon_reload=yes
+    tags:
+      - remove
+    ignore_errors: yes
