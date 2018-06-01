@@ -45,7 +45,7 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)       
+        A)
 
 clear
 curl https://rclone.org/install.sh | sudo bash -s beta
@@ -81,6 +81,7 @@ EOF
             #### GREP Checks
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
             ;;
@@ -100,11 +101,11 @@ EOF
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END 
+            #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard
-            
+
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
@@ -148,7 +149,7 @@ EOF
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END 
+            #### RECALL VARIABLES END
 
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
@@ -177,7 +178,7 @@ EOF
               bash /opt/plexguide/scripts/supertransfer/config.sh
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
               journalctl -f -u supertransfer2
-              read -n 1 -s -r -p "Press any key to continue"       
+              read -n 1 -s -r -p "Press any key to continue"
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
@@ -193,9 +194,9 @@ EOF
                 bash /opt/plexguide/scripts/plextoken/main.sh
               fi
               ansible-role pgscan
-              dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0 
+              dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
             fi
-            
+
             ;;
         Z)
             exit 0 ;;
