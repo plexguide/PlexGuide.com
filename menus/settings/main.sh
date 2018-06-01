@@ -27,12 +27,11 @@ OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          C "Notifications : Enable the Use of Notifications"
          D "Processor     : Enhance Processing Power"
          E "Kernel Mods   : Enhance Network Throughput"
-         F "SuperSpeeds   : Change GDrive Transfer Settings"
-         G "WatchTower    : Auto-Update Application Manager"
-         H "Import Media  : Import Existing Media to GDrive "
-         I "App Themes    : Install Dark Theme(s) For Apps "
-         J "Change Time   : Change the Server Time"
-         K "Default App   : For Your Top Level Domain"
+         F "WatchTower    : Auto-Update Application Manager"
+         G "Import Media  : Import Existing Media to GDrive "
+         H "App Themes    : Install Dark Theme(s) For Apps "
+         I "Change Time   : Change the Server Time"
+         J "Default App   : For Your Top Level Domain"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -62,14 +61,12 @@ case $CHOICE in
     F)
         bash /opt/plexguide/menus/transfer/menu.sh ;;
     G)
-        bash /opt/plexguide/menus/watchtower/main.sh ;;
-    H)
         bash /opt/plexguide/menus/migrate/main.sh ;;
-    I)
+    H)
         bash /opt/plexguide/menus/themes/main.sh ;;
-    J)
+    I)
         dpkg-reconfigure tzdata ;;
-    K)
+    J)
         bash /opt/plexguide/menus/tld/main.sh ;;
     Z)
         clear
