@@ -19,18 +19,26 @@
 - name: "Establishing Variable"
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
+  tags:
+    - backup_normal
 
 - debug: msg="Temp Message - For {{program_var.stdout}}"
+  tags:
+    - backup_normal
 
 - name: "Checking {{program_var.stdout}} location in APPDATA"
   stat:
     path: /opt/appdata/{{program_var.stdout}}
   register: programappdata
+  tags:
+    - backup_normal
 
 - name: "Checking if RCLone Encrypted"
   stat:
     path: /var/plexguide/rclone-en.yes
   register: encrypted
+  tags:
+    - backup_normal
 
 - name: Stopping Docker Container - {{program_var.stdout}}
   docker_container:
@@ -38,41 +46,50 @@
     state: stopped
   ignore_errors: True
   when: programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
   when: programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
+########### FOR PLEX - START
+- name: Backing Up Program to GDrive - plex
+  shell: "tar --warning=no-file-removed --warning=no-file-changed --ignore-failed-read --exclude='./database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder' -zcvf /tmp/plex.tar -C /opt/appdata/plex ."
+  ignore_errors: True
+  tags:
+    - backup_plex
+########### FOR PLEX - END // BACKUP OTHER - START
 - name: Backing Up Program to GDrive - {{program_var.stdout}}
   archive:
     path:
     - /opt/appdata/{{program_var.stdout}}/*
     dest: /tmp/{{program_var.stdout}}.tar
     format: tar
-  when: programappdata.stat.exists == True
-
-# old school
-#- name: Backing Up Program to GDrive - {{program_var.stdout}}
-#  shell: "tar --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
-#  when: programappdata.stat.exists == True
-
-#- name: Backing Up Program to GDrive - {{program_var.stdout}}
-#  shell: "tar --exclude='./plex/database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder' --ignore-failed-read -zcvf /tmp/{{program_var.stdout}}.tar -C /opt/appdata/{{program_var.stdout}} ."
-#  when: programappdata.stat.exists == True and plex.stat.exist= True
-
+  tags:
+    - backup_other
+############ BACKUP OTHER - END
 - name: Restart Docker Container - {{program_var.stdout}}
   docker_container:
     name: "{{program_var.stdout}}"
     state: started
   ignore_errors: True
   when: programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
 - name: Uploading Backup to Google Drive
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
 - name: Uploading Backup to Google Drive (encrypted)
   shell: "rclone copy /tmp/{{program_var.stdout}}.tar gcrypt:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
 - name: Remove TEMP Backup!
   file:
@@ -81,12 +98,18 @@
   with_items:
     - /tmp/{{program_var.stdout}}.tar
   when: programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
 #- name: Kill Switch
 #  shell: echo "false" > /tmp/alive
 
 - debug: msg="Program is now backed up to your Google Drive - {{program_var.stdout}}"
   when: programappdata.stat.exists == True
+  tags:
+    - backup_normal
 
 - debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var.stdout}}"
   when: programappdata.stat.exists == False
+  tags:
+    - backup_normal

@@ -146,9 +146,16 @@ fi
 
 ### Commenting Out Enables User To See What's Backing Up
 
+app=$( cat /tmp/program_var )
+if [ "$app" == "plex" ]
+  then
+    ### IF PLEX, execute this
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_plex #&>/dev/null &
+else
+    ### IF NOT PLEX, execute this
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_other
+fi
     #echo "true" > /tmp/alive
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup #&>/dev/null &
-
     echo "$app: Backup Started" > /tmp/pushover
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 

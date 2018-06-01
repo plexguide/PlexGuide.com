@@ -47,15 +47,23 @@ mv /mnt/gdrive/plexguide/backup/* $mpath 1>/dev/null 2>&1
 
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/traefikv2/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 
 #### Commenting Enables to See Everything
 while read p; do
   echo $p > /tmp/program_var
-  app=$( cat /tmp/program_var )
-  #dialog --infobox "Backing Up App: $app" 3 37
-  sleep 1
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup #1>/dev/null 2>&1
 
+app=$( cat /tmp/program_var )
+if [ "$app" == "plex" ]
+  then
+    ### IF PLEX, execute this
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_plex 
+else
+    ### IF NOT PLEX, execute this
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_other
+fi
   #echo "$app: Backup Complete" > /tmp/pushover
   #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 done </opt/appdata/plexguide/running
