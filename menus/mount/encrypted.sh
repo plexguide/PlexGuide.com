@@ -21,9 +21,9 @@ export NCURSES_NO_UTF8_ACS=1
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=42
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
@@ -33,6 +33,7 @@ OPTIONS=(A "Install: RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
          E "Deploy : PGScan (NOTREADY)"
+         F "Remove old services PlexDrive"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -106,9 +107,17 @@ EOF
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
+#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
 
+            if dialog --stdout --title "PAY ATTENTION!" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
+
+                ansible-role  services_remove
+            else
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en &>/dev/null &
+            fi
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
@@ -235,6 +244,13 @@ EOF
             fi
 
             ;;
+        F)
+        #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
+          ansible-role services_remove
+          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+        #  echo "Please re-run Deploy: PGDrive!"
+      #    read -n 1 -s -r -p "Please re-run Deploy: PGDrive! \nPress any key to continue"
+          ;;
         Z)
             exit 0 ;;
 

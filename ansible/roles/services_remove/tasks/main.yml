@@ -22,6 +22,51 @@
 # This will remove all services that have been run using RClone new and older!
 # Including PGDrive services!
 #
+
+########## Disable Other Services
+
+  - name: Stop If RCLONE Service Running
+    systemd: state=stopped name=rclone enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If encache Service Running
+    systemd: state=stopped name=encache enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If PLEXDRIVE Service Running
+    systemd: state=stopped name=plexdrive enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If RCLONE-ENCRYPT Service Running
+    systemd: state=stopped name=rclone-encrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If RCLONE-EN Service Running
+    systemd: state=stopped name=rclone-en enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If MOVE-EN Service Running
+    systemd: state=stopped name=move-en enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If UNIONFS-EN Service Running
+    systemd: state=stopped name=unionfs-encrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
 ###### Remove PGDrive Services
   - name: Remove Old gdrive service
     file:
@@ -193,6 +238,12 @@
     file:
       state: absent
       path: /etc/systemd/system/encache.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+  - name: Daemon-Reload
+    systemd: daemon_reload=yes
     tags:
       - remove
     ignore_errors: yes
