@@ -92,5 +92,4 @@
   - { role: qbittorrent, tags: ['qbittorrent'] }
   - { role: dns-gen, tags: ['dns-gen'] }
   - { role: services_remove, tags: ['services_remove'] }
-  - { role: backup1, tags: ['backup_normal,backup_other'] }
-  - { role: backup2, tags: ['backup_normal,backup_plex'] }
+  - { role: backup, tags: ['backup'] }
