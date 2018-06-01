@@ -114,9 +114,9 @@ EOF
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a fresh Server" 0 0; then
 
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en &>/dev/null &
             else
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en &>/dev/null &
             fi
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
