@@ -40,7 +40,7 @@
       - 8096
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/embyserver:/config
+      - /opt/appdata/emby:/config
       - /mnt/plexdrive/:/plexdrive
       - /mnt/unionfs:/unionfs
       - /mnt/encrypt:/encrypt
