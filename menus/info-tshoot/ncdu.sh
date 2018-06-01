@@ -32,16 +32,17 @@ OPTIONS=(A "Entire drive - excluding /mnt - WARNING Can take a long time!"
          B "Entire drive - excluding /opt - WARNING Can take a long time!"
          C "Entire drive - excluding /mnt & /opt"
          D "/opt - WARNING Can take a long time!"
-         E "/mnt - WARNING Can take a long time!"
-         F "/mnt - excluding RClone & PlexDrive mounts"
-         G "Move"
-         H "UnionFS - WARNING Can take a long time!"
-         I "NZBGET"
-         J "SAB"
-         K "Deluge"
-         L "RuTorrent"
-         M "TorrentVPN"
-         N "/home"
+         E "/opt - excluding Plex & Emby"
+         F "/mnt - WARNING Can take a long time!"
+         G "/mnt - excluding RClone & PlexDrive mounts"
+         H "Move"
+         I "UnionFS - WARNING Can take a long time!"
+         J "NZBGET"
+         K "SAB"
+         L "Deluge"
+         M "RuTorrent"
+         N "TorrentVPN"
+         O "/home"
          Z "Exit")
 
 
@@ -78,50 +79,55 @@ case $CHOICE in
 
     E)
         clear
-        ncdu /mnt
+        ncdu /opt --exclude=/opt/plex --exclude=/opt/embyserver
         ;;
 
     F)
         clear
-        ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/.gcrypt
+        ncdu /mnt
         ;;
 
     G)
+        clear
+        ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/tdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/.gcrypt
+        ;;
+
+    H)
       clear
       ncdu /mnt/move
       ;;
 
-    H)
+    I)
       clear
       ncdu /mnt/unionfs
       ;;
 
-    I)
+    J)
       clear
       ncdu /mnt/nzbget
       ;;
 
-    J)
+    K)
         clear
         ncdu /mnt/sab
         ;;
 
-    K)
+    L)
         clear
         ncdu /mnt/deluge
         ;;
 
-    L)
+    M)
         clear
         ncdu /mnt/rutorrent
         ;;
 
-     M)
+     N)
          clear
          ncdu /mnt/torrentvpn
          ;;
 
-      N)
+      O)
           clear
           ncdu /home
           ;;
