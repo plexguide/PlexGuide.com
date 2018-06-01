@@ -110,14 +110,14 @@ EOF
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
 
-              if dialog --stdout --title "PAY ATTENTION!" \
-                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\nHave you already installed PlexDrive?\n\nSelect No: IF this is a fresh Server" 0 0; then
+            if dialog --stdout --title "PAY ATTENTION!" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a fresh Server" 0 0; then
 
-                  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
-                else
-                  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
-                fi
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
+            else
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
+            fi
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
@@ -246,7 +246,8 @@ EOF
             ;;
         F)
           ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
-          ::
+          echo "Please re-run Deploy: PGDrive!"
+          ;;
         Z)
             exit 0 ;;
 
