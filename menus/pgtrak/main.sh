@@ -90,9 +90,9 @@ TITLE="PGTrak"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Deploy PGTrak"
-         B "Trakt API-Key"
-         C "Change Path - Sonarr"
-         D "Change Path - Radarr"
+         A "Trakt API-Key"
+         B "Change Path - Sonarr"
+         C "Change Path - Radarr"
          E "View Paths & Trakt API"
          F "Mini FAQ & Info"
          Z "Exit")
@@ -108,18 +108,6 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            if dialog --stdout --title "-- Deploy Warning --" \
-                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\nIf this IS NOT your first time, be aware that you may lose your personal configs from the config.json if you have edited it from before!\n\nTake note of what you put and edit it again! Want to PGTrak?" 0 0; then
-                dialog --infobox "Deploying PGTrak!" 3 26
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak 1>/dev/null 2>&1
-                dialog --title "PGDupes Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
-            else
-                dialog --title "-- WARNING! --" --msgbox "\nExiting! Nothing Happened!" 0 0
-                exit
-            fi
-            ;;
-        B)
             dialog --infobox "Recorded API Key: $key" 0 0
             if dialog --stdout --title "API Question?" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -133,13 +121,27 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgtrak/traktkey.sh
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;;
-        C)
+        B)
             bash /opt/plexguide/menus/pgtrak/sonarrpath.sh
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;;
-        D)
+        C)
             bash /opt/plexguide/menus/pgtrak/radarrpath.sh
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
+            ;;
+        D)
+            if dialog --stdout --title "-- Deploy Warning --" \
+                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                --yesno "\nIf this IS NOT your first time, be aware that you may lose your personal configs from the config.json if you have edited it from before!\n\nTake note of what you put and edit it again! Want to PGTrak?" 0 0; then
+                dialog --infobox "Deploying PGTrak!" 3 26
+                sleep 2
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgtrak
+                read -n 1 -s -r -p "Press any key to continue"
+                dialog --title "PGTrak Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
+            else
+                dialog --title "-- WARNING! --" --msgbox "\nExiting! Nothing Happened!" 0 0
+                exit
+            fi
             ;;
         E)
             key=$( cat /var/plexguide/api.trakkey )
