@@ -247,7 +247,7 @@ EOF
         F)
         #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
           ansible-role services_remove
-          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run 'Deploy : PGDrive'\n and 'Deploy : $selected'!" 0 0
+          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n    'Deploy : PGDrive'\nand 'Deploy : $selected'!" 0 0
         #  echo "Please re-run Deploy: PGDrive!"
       #    read -n 1 -s -r -p "Please re-run Deploy: PGDrive! \nPress any key to continue"
           ;;
