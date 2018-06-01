@@ -20,9 +20,9 @@
 - include_role:
     name: variables
 
-- name: Remove qBittorrent Container
+- name: Remove qbittorrent Container
   docker_container:
-    name: qBittorrent
+    name: qbittorrent
     state: absent
 
 - name: Add Main-Config-Folder
@@ -103,7 +103,7 @@
     networks:
       - name: plexguide
         aliases:
-          - qBittorrent
+          - qbittorrent
     state: started
     labels:
       traefik.enable: "true"
