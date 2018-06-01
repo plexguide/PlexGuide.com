@@ -19,21 +19,22 @@ export NCURSES_NO_UTF8_ACS=1
 
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=16
+HEIGHT=17
 WIDTH=37
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
 OPTIONS=(A "CloudCMD"
-         B "Netdata"
-         C "NextCloud"
-         D "Ombi"
-         E "pyLoad"
-         F "Resilio"
-         G "SpeedTEST Server"
-         H "Tautulli (PlexPy)"
-         I "The Lounge"
+         B "Monitorr"
+         C "Netdata"
+         D "NextCloud"
+         E "Ombi"
+         F "pyLoad"
+         G "Resilio"
+         H "SpeedTEST Server"
+         I "Tautulli (PlexPy)"
+         J "The Lounge"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -67,6 +68,21 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
+            display=Monitorr
+            program=monitorr
+            port=8099
+            dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags monitorr
+            read -n 1 -s -r -p "Press any key to continue"
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
+            ;;
+        C)
             display=NETDATA
             program=netdata
             port=19999
@@ -82,7 +98,7 @@ case $CHOICE in
             #this needs a wiki of sorts, good suggetion, but more undestanding is required
             #bash /opt/plexguide/menus/programs/monitoring.sh
             ;;
-        C)
+        D)
             display=NEXTCloud
             program=nextcloud
             port=4645
@@ -98,7 +114,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        D)
+        E)
             display=Ombi
             program=ombi
             port=3579
@@ -113,7 +129,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        E)
+        F)
             display=pyLoad
             program=pyload
             port=8000
@@ -128,7 +144,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        F)
+        G)
             display=RESILIO
             program=resilio
             port=8888
@@ -143,7 +159,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        G)
+        H)
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
@@ -157,7 +173,7 @@ case $CHOICE in
             #### skipped cron
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        H)
+        I)
             display=Tautulli
             program=tautulli
             port=8181
@@ -172,7 +188,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        I)
+        J)
             display=TheLounge
             program=thelounge
             port=9100
