@@ -38,7 +38,7 @@ _Main() {
       "--tpslimit 6"
     )
     ## Sync, Sleep 5 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-    rclone move /mnt/move gdrive: "${RCLONE_ARGS[@]}"
+    rclone move /mnt/move gcrypt: "${RCLONE_ARGS[@]}"
     sleep 300
     # Remove empty directories (MrWednesday)
     find "/mnt/move/" -mindepth 2 -type d -empty -delete
