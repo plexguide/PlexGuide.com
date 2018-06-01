@@ -245,10 +245,8 @@ EOF
 
             ;;
         F)
-        #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
-          ansible-role pgdrive_standard_en
+          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
           ansible-role services_remove
-
           echo "Please re-run Deploy: PGDrive!"
           ;;
         Z)
