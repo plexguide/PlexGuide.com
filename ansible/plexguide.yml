@@ -92,4 +92,4 @@
   - { role: qbittorrent, tags: ['qbittorrent'] }
   - { role: dns-gen, tags: ['dns-gen'] }
   - { role: services_remove, tags: ['services_remove'] }
-  - { role: ztest, tags: ['ztest'] }
+  - { role: test3, tags: ['test1,test2'] }

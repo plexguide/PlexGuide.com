@@ -17,15 +17,21 @@
 #################################################################################
 ---
 - debug: msg="Temp Message - For plex"
+  tags:
+    - test1
 
 - name: Stopping Docker Container - plex
   docker_container:
     name: "plex"
     state: stopped
   ignore_errors: True
+  tags:
+    - test1
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
   ignore_errors: True
+  tags:
+    - test1
 
 - name: Backing Up Program to GDrive - plex
   archive:
@@ -34,6 +40,8 @@
     dest: /tmp/plex.tar
     format: tar
   ignore_errors: True
+  tags:
+    - test1
 
 #- name: Backing Up Program to GDrive - plex
 #  shell: "tar --ignore-failed-read -zcvf /tmp/plex.tar -C /opt/appdata/plex ."
@@ -44,16 +52,22 @@
 #  ignore_errors: True'
   args:
   warn: no
+  tags:
+    - test2
 
 - name: Restart Docker Container - plex
   docker_container:
     name: "plex"
     state: started
   ignore_errors: True
+  tags:
+    - test1
 
 - name: Uploading Backup to Google Drive
   shell: "rclone copy /tmp/plex.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
   ignore_errors: True
+  tags:
+    - test1
 
 - name: Remove TEMP Backup!
   file:
@@ -62,3 +76,5 @@
   with_items:
     - /tmp/plex.tar
   ignore_errors: True
+  tags:
+    - test1  
