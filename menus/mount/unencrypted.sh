@@ -21,9 +21,9 @@ export NCURSES_NO_UTF8_ACS=1
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=42
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
@@ -33,6 +33,7 @@ OPTIONS=(A "Install: RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
          E "Deploy : PGScan"
+         F "Remove old services - e.g. PlexDrive"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -198,6 +199,11 @@ EOF
             fi
 
             ;;
+        F)
+        #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
+          ansible-role services_remove
+          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+          ;;
         Z)
             exit 0 ;;
 

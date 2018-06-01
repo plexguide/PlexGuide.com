@@ -33,7 +33,7 @@ OPTIONS=(A "Install: RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
          E "Deploy : PGScan (NOTREADY)"
-         F "Remove old services PlexDrive"
+         F "Remove old services - e.g. PlexDrive"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
