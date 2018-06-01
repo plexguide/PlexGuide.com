@@ -89,10 +89,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGTrak"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Deploy PGTrak"
-         A "Trakt API-Key"
+OPTIONS=(A "Trakt API-Key"
          B "Change Path - Sonarr"
          C "Change Path - Radarr"
+         D "Deploy PGTrak"
          E "View Paths & Trakt API"
          F "Mini FAQ & Info"
          Z "Exit")
