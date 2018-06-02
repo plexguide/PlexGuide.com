@@ -191,7 +191,7 @@ case $CHOICE in
         E)
              dialog --title "Set Your Radarr Profile" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --inputbox "Radarr Profile:" 8 40 2>/var/plexguide/pgtrak.proradarr/
+            --inputbox "Radarr Profile:" 8 40 2>/var/plexguide/pgtrak.proradarr
             key=$(cat /var/plexguide/pgtrak.proradarr)
             dialog --infobox "Entered Radarr Profile: $key" 0 0
 
