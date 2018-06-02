@@ -43,12 +43,12 @@ then
    exit
 fi
 
-file="/var/plexguide/api.trakkey"
+file="/var/plexguide/pgtrak.secret"
 if [ -e "$file" ]
 then
     echo "" 1>/dev/null 2>&1
 else
-    dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV API Key!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
+    dialog --title "-- WARNING! --" --msgbox "\nYou must set a Track.TV Client & Secert!\n\nVisit pgtrak.plexguide.com for more info?" 0 0
 
     if dialog --stdout --title "Are You Ready?" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -67,7 +67,6 @@ then
     echo "" 1>/dev/null 2>&1
 else
     echo "/NOT-set" > /var/plexguide/pgtrak.sonarr
-    exit
 fi
 
 file="/var/plexguide/pgtrak.radarr"
