@@ -101,9 +101,9 @@ proradarr=$( cat /var/plexguide/pgtrak.proradarr )
 prosonarr=$( cat /var/plexguide/pgtrak.prosonarr )
 
 ############################# START
-HEIGHT=16
+HEIGHT=15
 WIDTH=55
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGTrak"
 MENU="Make a Selection:"
@@ -207,7 +207,7 @@ case $CHOICE in
         F)
             if dialog --stdout --title "-- Deploy Warning --" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\nIf this IS NOT your first time, be aware that you may lose your personal configs from the config.json if you have edited it from before!\n\nTake note of what you put and edit it again! Want to PGTrak?" 0 0; then
+                --yesno "\nIf this IS NOT your first time, be aware that you may lose your personal configs from the config.json if you have edited it from before!\n\nEnsure that you set your PATHS & your Quality!\n\nWant to Deploy PGTrak?" 0 0; then
                 dialog --infobox "Deploying PGTrak!" 3 26
                 sleep 2
                 clear
