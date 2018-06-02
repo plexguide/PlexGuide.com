@@ -56,7 +56,7 @@
   register: radarr
   ignore_errors: True
 
-- name: APIr Sonnar
+- name: API Sonnar
   shell: "cat /var/plexguide/pgtrak.sonarr"
   register: sonarr
   ignore_errors: True
