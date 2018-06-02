@@ -107,6 +107,15 @@ EOF
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard
 
+####  See encrypt.sh for example of script below in use!
+#
+#            if dialog --stdout --title "PAY ATTENTION!" \
+#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
+#
+#                ansible-role  services_remove
+#            fi
+
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
@@ -200,7 +209,6 @@ EOF
 
             ;;
         F)
-        #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
           ansible-role services_remove
           dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
           ;;

@@ -115,30 +115,11 @@ EOF
               --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
 
                 ansible-role  services_remove
-      #      else
-      #          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en &>/dev/null &
             fi
+
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
-
-            #### IF EXIST - DEPLOY
-#            if [ "$tdrive" == "[tdrive]" ]
-#              then
-
-              #### ADDS TDRIVE to the UNIONFS PATH
-#              echo -n "/mnt/tdrive=RO:" >> /tmp/path
-#              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
-#            fi
-
-#            if [ "$gdrive" == "[gdrive]" ]
-#              then
-
-              #### ADDS GDRIVE to the UNIONFS PATH
-#              echo -n "/mnt/gdrive=RO:" >> /tmp/path
-#              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
-#            fi
-
 
             #### IF EXIST - DEPLOY
             if [ "$tcrypt" == "[tcrypt]" ]
@@ -184,20 +165,6 @@ EOF
             #### RECALL VARIABLES END
 
             #### BASIC CHECKS to STOP Deployment - START
-#            if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
-#              then
-#            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-#            bash /opt/plexguide/menus/mount/encrypted.sh
-#            exit
-#            fi
-
-#            if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
-#              then
-#            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
-#            bash /opt/plexguide/menus/mount/encrypted.sh
-#            exit
-#            fi
-
             if [[ "$selected" == "Move" && "$gcrypt" != "[gcrypt]" ]]
               then
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
@@ -245,11 +212,8 @@ EOF
 
             ;;
         F)
-        #  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
           ansible-role services_remove
           dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
-        #  echo "Please re-run Deploy: PGDrive!"
-      #    read -n 1 -s -r -p "Please re-run Deploy: PGDrive! \nPress any key to continue"
           ;;
         Z)
             exit 0 ;;
