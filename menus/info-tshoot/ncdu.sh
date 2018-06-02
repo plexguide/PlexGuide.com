@@ -79,7 +79,7 @@ case $CHOICE in
 
     E)
         clear
-        ncdu /opt --exclude=/opt/appdata/plex --exclude=/opt/appdata/embyserver
+        ncdu /opt --exclude=/opt/appdata/plex --exclude=/opt/appdata/embyserver --exclude=/opt/appdata/emby
         ;;
 
     F)
