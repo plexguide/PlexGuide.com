@@ -95,4 +95,4 @@
   - { role: backup, tags: ['backup'] }
   - { role: radarr-test, tags: ['radarr-test'] }
   - { role: qbittorrent-vpn, tags: ['qbittorrent-vpn'] }
-  - { role: jdownloader-2, tags: ['jdownloader-2'] }
+  - { role: jdownloader2, tags: ['jdownloader2'] }
