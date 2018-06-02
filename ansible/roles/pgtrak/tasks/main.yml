@@ -31,9 +31,24 @@
   register: apir
   ignore_errors: True
 
-- name: API Trakkey
-  shell: "cat /var/plexguide/api.trakkey"
-  register: key
+- name: Sonarr Profile
+  shell: "cat /var/plexguide/pgtrak.prosonarr"
+  register: prosonarr
+  ignore_errors: True
+
+- name: Radarr Profile
+  shell: "cat /var/plexguide/pgtrak.proradarr"
+  register: proradarr
+  ignore_errors: True
+
+- name: Trakt.tv Client
+  shell: "cat /var/plexguide/pgtrak.client"
+  register: client
+  ignore_errors: True
+
+- name: Trakt.tv Secret
+  shell: "cat /var/plexguide/pgtrak.secret"
+  register: secret
   ignore_errors: True
 
 - name: API Radarr

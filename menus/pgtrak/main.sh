@@ -108,17 +108,38 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            dialog --infobox "Recorded API Key: $key" 0 0
-            if dialog --stdout --title "API Question?" \
-                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\nAPI Correct? $key" 0 0; then
-                rm -r /var/plexguide/api.trakkey
-            else
-                bash /opt/plexguide/menus/pgtrak/traktkey.sh
-                exit
-            fi
-            dialog --infobox "Entered API Key: $key" 0 0
+         dialog --title "Trakt Requested Information" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "Trakt Client-ID:" 8 55 2>/var/plexguide/pgtrak.client
+        key=$(cat /var/plexguide/pgtrak.client)
+        dialog --infobox "Entered Client-ID: $key" 0 0
+
+        if dialog --stdout --title "API Question?" \
+            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+            --yesno "\nClient Correct? $key" 0 0; then
+            easteregg="foundme"
+        else
+            rm -r /var/plexguide/pgtrak.client
             bash /opt/plexguide/menus/pgtrak/traktkey.sh
+            exit
+        fi
+
+        dialog --title "Trakt Requested Information" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "Trakt Client-Secret:" 8 55 2>/var/plexguide/pgtrak.secret
+        key=$(cat /var/plexguide/pgtrak.secret)
+        dialog --infobox "Entered Client-ID: $key" 0 0
+
+        if dialog --stdout --title "API Question?" \
+            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+            --yesno "\nSecret Correct? $key" 0 0; then
+            easteregg="foundme"
+        else
+            rm -r /var/plexguide/pgtrak.client
+            rm -r /var/plexguide/pgtrak.secret
+            bash /opt/plexguide/menus/pgtrak/traktkey.sh
+            exit
+        fi
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;;
         B)
