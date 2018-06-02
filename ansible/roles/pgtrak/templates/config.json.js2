@@ -77,20 +77,20 @@
   },
   "radarr": {
     "api_key": "{{apir.stdout}}",
-    "profile": "{{pgtrak.proradarr}}",
+    "profile": "{{proradarr.stdout}}",
     "url": "http://0.0.0.0:7878",
     "root_folder": "{{radarr.stdout}}"
   },
   "sonarr": {
     "api_key": "{{apis.stdout}}",
-    "profile": "{{pgtrak.prosonarr}}",
+    "profile": "{{prosonarr.stdout}}",
     "url": "http://0.0.0.0:8989",
     "root_folder": "{{sonarr.stdout}}",
     "tags": {}
   },
   "trakt": {
     "client_id": "{{client.stdout}}",
-    "client_secret": ""{{secret.stdout}}"
+    "client_secret": "{{secret.stdout}}"
 "
   }
 }
