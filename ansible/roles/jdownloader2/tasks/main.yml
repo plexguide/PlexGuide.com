@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_role:
+    name: variables
+    
+- name: Remove jdownloader Container
+  docker_container:
+    name: jdownloader-2
+    state: absent
+
+- name: Deploy jdownloader Container
+  docker_container:
+    name: jdownloader-2
+    image: jlesage/jdownloader-2
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}5800:5800"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - /opt/appdata/jdownloader-2/:/config
+      - /mnt/move/jdownloader/:/output
+      - /opt/appdata/jdownloader-2:/storage
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - jdownloader-2
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:jdownloader.{{domain.stdout}}"
+      traefik.port: "5800"
