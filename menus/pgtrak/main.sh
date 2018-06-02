@@ -172,35 +172,35 @@ case $CHOICE in
             dialog --title "Rerun PGTrak Note" --msgbox "\nIf done, rerun [Deploy PGTrak]. If not, your changes will not go into affect until you do so!" 0 0
             ;;
         D)
-             dialog --title "Trakt Requested Information" \
+             dialog --title "Set Your Sonarr Profile" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --inputbox "Trakt Client-ID:" 8 55 2>/var/plexguide/pgtrak.client
-            key=$(cat /var/plexguide/pgtrak.client)
-            dialog --infobox "Entered Client-ID: $key" 0 0
+            --inputbox "Sonarr Profile:" 8 55 2>/var/plexguide/pgtrak.prosonarr
+            key=$(cat /var/plexguide/pgtrak.prosonarr)
+            dialog --infobox "Entered Sonarr Profile: $key" 0 0
 
-            if dialog --stdout --title "API Question?" \
+            if dialog --stdout --title "Profile Question?" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\nClient Correct? $key" 0 0; then
+                --yesno "\nProfile Correct? $key" 0 0; then
                 easteregg="foundme"
             else
-                rm -r /var/plexguide/pgtrak.client
+                rm -r /var/plexguide/pgtrak.prosonarr
                 bash /opt/plexguide/menus/pgtrak/traktkey.sh
                 exit
             fi
             ;;
         E)
-             dialog --title "Trakt Requested Information" \
+             dialog --title "Set Your Radarr Profile" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --inputbox "Trakt Client-ID:" 8 55 2>/var/plexguide/pgtrak.client
-            key=$(cat /var/plexguide/pgtrak.client)
-            dialog --infobox "Entered Client-ID: $key" 0 0
+            --inputbox "Radarr Profile:" 8 55 2>/var/plexguide/pgtrak.proradarr/
+            key=$(cat /var/plexguide/pgtrak.proradarr)
+            dialog --infobox "Entered Radarr Profile: $key" 0 0
 
-            if dialog --stdout --title "API Question?" \
+            if dialog --stdout --title "Profile Question?" \
                 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                --yesno "\nClient Correct? $key" 0 0; then
+                --yesno "\nProfile Correct? $key" 0 0; then
                 easteregg="foundme"
             else
-                rm -r /var/plexguide/pgtrak.client
+                rm -r /var/plexguide/pgtrak.proradarr
                 bash /opt/plexguide/menus/pgtrak/traktkey.sh
                 exit
             fi
