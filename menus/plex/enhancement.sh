@@ -26,7 +26,7 @@ TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
 OPTIONS=(A "PGDupes   (BETA)"
-         B "PGTrak    (BETA)"
+         B "PGTrak"
          C "Telly     (BETA)"
          D "SSTVProxy (BETA)"
          Z "Exit")

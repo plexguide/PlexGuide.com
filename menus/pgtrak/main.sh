@@ -114,8 +114,7 @@ OPTIONS=(A "Trakt API-Key"
          D "Profile Sonarr: $prosonarr"
          E "Profile Radarr: $proradarr"
          F "Deploy PGTrak"
-         G "View Paths & Trakt API"
-         H "Mini FAQ & Info"
+         G "Mini FAQ & Info"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -221,10 +220,6 @@ case $CHOICE in
             fi
             ;;
         G)
-            key=$( cat /var/plexguide/api.trakkey )
-            dialog --title "PGTrak Stats" --msgbox "\nSonarr Path: $sonarr\nRadarr Path: $radarr\n\nTrack API: $key" 0 0
-            ;;
-        H)
             dialog --title "Modify Config File" --msgbox "\nTo Modify the rest of the configurations, type the following: sudo nano /opt/appdata/pgtrak/config.json\n\nPlease visit pgtrak.plexguide.com for way more info!" 0 0
             ;;
         Z)
