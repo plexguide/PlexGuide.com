@@ -24,7 +24,24 @@
   shell: "cat /var/plexguide/tld.{{ role_name }}"
   register: tld
   ignore_errors: True
-########## 
+##########
+
+- name: Install pip requirements
+  pip:
+    requirements: plexapi
+    executable: pip2
+
+- name: Create tautulli script directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/tautulli/scripts
+
+- name: Clone JBOPS plex scripts to tautulli script folder
+  git:
+    repo: https://github.com/blacktwin/JBOPS
+    dest: /opt/appdata/tautulli/scripts
+    version: master
+    force: yes
 
 - name: Remove Tautulli Container
   docker_container:
@@ -42,6 +59,7 @@
     volumes:
       - /opt/appdata/tautulli:/config
       - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
+      - /opt/appdata/tautulli/scripts:/scripts
     env:
       PUID: "1000"
       PGID: "1000"
