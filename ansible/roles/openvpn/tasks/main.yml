@@ -50,8 +50,7 @@
 - name: Create Basic directories for OpenVPN
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/appdata/openvpn
-    - /opt/appdata/openvpn/config
+    - /opt/appdata/openvpn/client
 #    - /opt/appdata/openvpn/config/openvpn
   tags:
     openvpn
@@ -60,7 +59,7 @@
 - name: Copy default ovpn cert
   template:
     src: "ca.rsa.2048.crt"
-    dest: "/opt/appdata/openvpn/ca.rsa.2048.crt"
+    dest: "/opt/appdata/openvpn/client/ca.rsa.2048.crt"
     force: yes
   tags:
     openvpn
@@ -68,7 +67,7 @@
 - name: Copy default ovpn pem
   template:
     src: "crl.rsa.2048.pem"
-    dest: "/opt/appdata/openvpn/crl.rsa.2048.pem"
+    dest: "/opt/appdata/openvpn/client/crl.rsa.2048.pem"
     force: yes
   tags:
     openvpn
@@ -76,7 +75,7 @@
 - name: Copy default ovpn file
   template:
     src: "netherlands.ovpn"
-    dest: "/opt/appdata/openvpn/netherlands.ovpn"
+    dest: "/opt/appdata/openvpn/client/netherlands.ovpn"
     force: yes
   tags:
     openvpn
@@ -117,7 +116,7 @@
 #- name: "Install {{server.user_input}} openvpn file"
 #  template:
 #    src: "{{server.user_input}}.ovpn"
-#    dest: "/opt/appdata/openvpn/{{server.user_input}}.ovpn"
+#    dest: "/opt/appdata/openvpn/client/{{server.user_input}}.ovpn"
 #    force: yes
 
 ########## Run iptable_mangle command
@@ -176,7 +175,7 @@
       VPN_DEVICE_TYPE: tun
       LAN_NETWORK: "{{subnet}}"
     volumes:
-      - /opt/appdata/openvpn/config:/config
+      - /opt/appdata/openvpn/client:/config
       - /etc/localtime:/etc/localtime:ro
     restart_policy: unless-stopped
     state: started

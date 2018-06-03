@@ -50,7 +50,6 @@
 - name: Create Basic directories for OpenVPN Server
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/appdata/openvpn
     - /opt/appdata/openvpn/server
 #    - /opt/appdata/openvpn/config/openvpn
   tags:
