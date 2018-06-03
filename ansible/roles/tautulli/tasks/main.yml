@@ -43,6 +43,17 @@
     version: master
     force: yes
 
+- name: Extract JBOPS scripts into /opt/appdata/tautulli/scripts
+  unarchive:
+    src: /opt/appdata/tautulli/scripts/JBOPS-master.zip
+    dest: /opt/appdata/tautulli/scripts
+
+- name: Move scripts from master folder to the root /scripts folder
+  command: mv /opt/appdata/tautulli/scripts/JBOPS-master/* /opt/appdata/tautulli/scripts
+
+- name: remove JBOPS Master empty folder
+  command: rm -rf /opt/appdata/tautulli/scripts/JBOPS-master
+
 - name: Remove Tautulli Container
   docker_container:
     name: tautulli
