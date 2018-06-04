@@ -39,6 +39,7 @@
       - curl
       - man-db
       - htop
+      - mergerfs
       - openssh-server
       - dirmngr
       - npm
