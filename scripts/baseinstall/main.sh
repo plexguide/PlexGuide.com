@@ -132,10 +132,14 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
 
-if [ "$docker_var" == "18.03.1-ce," ]
+###### Incase Old School Has To Kick In
+failsafe=0
+
+if [ "$docker_var" == "18.05.0-ce," ]
 then
   echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
-  sleep 1
+  sleep 2
+  failsafe=1
   #read -n 1 -s -r -p "Press any key to continue "
 else
 
@@ -143,15 +147,17 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "16" ]
     then
-  echo "50" | dialog --gauge "Installing: UB16 - Docker 18.03 (Please Be Patient)" 7 58 0
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker 1>/dev/null 2>&1
+  echo "50" | dialog --gauge "Installing: UB16 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker16
+  sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
 
   if [ "$docver" == "18" ]
     then
-  echo "50" | dialog --gauge "Installing: UB18 - Docker 18.03 (Please Be Patient)" 7 58 0
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker18 1>/dev/null 2>&1
+  echo "50" | dialog --gauge "Installing: UB18 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker18
+  sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
 
@@ -162,13 +168,23 @@ rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
-  echo "" 1>/dev/null 2>&1
-    else
-    echo "Program Aborted - Docker Install Failed" > /tmp/pushover
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-    touch /var/plexguide/startup.error 1>/dev/null 2>&1
-    exit
-  fi
+
+##### Install Docker the Emergency Way 
+apt-get install docker-ce
+
+##### Checking Again, if fails again; warns user
+    file="/usr/bin/docker" 1>/dev/null 2>&1
+      if [ -e "$file" ]
+        then
+      echo "" 1>/dev/null 2>&1
+        else
+        echo "Program Aborted - Docker Install Failed" > /tmp/pushover
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+        touch /var/plexguide/startup.error 1>/dev/null 2>&1
+        exit
+      fi
+
+fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
