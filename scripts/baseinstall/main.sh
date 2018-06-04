@@ -168,15 +168,16 @@ rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
+        echo "" 1>/dev/null 2>&1
+    else 
+      ##### Install Docker the Emergency Way 
+      clear
+      echo "Installing Docker the Old School Way"
+      echo ""
+      sleep 2
+      apt-get install docker-ce
 
-##### Install Docker the Emergency Way 
-clear
-echo "Installing Docker the Old School Way"
-echo ""
-sleep 2
-apt-get install docker-ce
-
-##### Checking Again, if fails again; warns user
+      ##### Checking Again, if fails again; warns user
     file="/usr/bin/docker" 1>/dev/null 2>&1
       if [ -e "$file" ]
         then
