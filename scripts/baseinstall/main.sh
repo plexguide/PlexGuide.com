@@ -132,14 +132,10 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
 
-###### Incase Old School Has To Kick In
-failsafe=0
-
 if [ "$docker_var" == "18.05.0-ce," ]
 then
   echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
-  failsafe=1
   #read -n 1 -s -r -p "Press any key to continue "
 else
 
