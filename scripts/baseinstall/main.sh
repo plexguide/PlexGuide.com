@@ -231,21 +231,6 @@ fi
 #      bash /opt/plexguide/scripts/baseinstall/harddrive.sh
 #      echo "null" > /var/plexguide/base.hd
 #fi
-
-echo "99" | dialog --gauge "Donation Question" 7 50 0
-sleep 1
-
-  file="/var/plexguide/donation.yes"
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-        echo "Please Support Us with Any Donations :D" > /tmp/pushover
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-        bash /opt/plexguide/menus/donate/main.sh
-    fi
-
-touch /var/plexguide/donation.yes 1>/dev/null 2>&1
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 echo "PG Install is Complete" > /tmp/pushover
