@@ -144,6 +144,8 @@ docver=$( cat /var/plexguide/ub.ver )
   if [ "$docver" == "16" ]
     then
   echo "50" | dialog --gauge "Installing: UB16 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  sleep 2
+  clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker16
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
@@ -152,6 +154,8 @@ docver=$( cat /var/plexguide/ub.ver )
   if [ "$docver" == "18" ]
     then
   echo "50" | dialog --gauge "Installing: UB18 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  sleep 2 
+  clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker18
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
