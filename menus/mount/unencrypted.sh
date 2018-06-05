@@ -32,8 +32,6 @@ OPTIONS=(A "Install: RClone"
          B "Config : RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
-         E "Deploy : PGScan"
-         F "Remove old services - e.g. PlexDrive"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -179,6 +177,7 @@ EOF
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
+              ansible-role services_remove
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
               read -n 1 -s -r -p "Press any key to continue"
             else
@@ -186,6 +185,8 @@ EOF
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
+              ansible-role services_remove
+              ansible-role services_remove
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
@@ -194,24 +195,22 @@ EOF
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
 
             ;;
-
-        E)
-            if [ ! "$(docker ps -q -f name=plex)" ]; then
-              dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
-            else
-              if [ ! -s /opt/appdata/plexguide/plextoken ]; then
-                dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
-                bash /opt/plexguide/scripts/plextoken/main.sh
-              fi
-              ansible-role pgscan
-              dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
-            fi
-
-            ;;
-        F)
-          ansible-role services_remove
-          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
-          ;;
+       #E)
+       #     if [ ! "$(docker ps -q -f name=plex)" ]; then
+       #       dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
+       #     else
+       #       if [ ! -s /opt/appdata/plexguide/plextoken ]; then
+       #         dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
+       #         bash /opt/plexguide/scripts/plextoken/main.sh
+       #       fi
+       #       ansible-role pgscan
+       #       dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
+       #     fi
+       #     ;;
+        #F)
+        #  ansible-role services_remove
+        #  dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+        #  ;;
         Z)
             exit 0 ;;
 
