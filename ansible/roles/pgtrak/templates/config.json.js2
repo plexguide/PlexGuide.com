@@ -91,6 +91,5 @@
   "trakt": {
     "client_id": "{{client.stdout}}",
     "client_secret": "{{secret.stdout}}"
-"
   }
 }
