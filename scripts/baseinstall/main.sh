@@ -141,7 +141,7 @@ else
 
 docver=$( cat /var/plexguide/ub.ver )
 
-  if [ "$docver" == "16" ]
+  if [ "$docver" == "15" ]
     then
   echo "50" | dialog --gauge "Installing: UB16 - Docker 18.05.0 (Please Be Patient)" 7 58 0
   sleep 2
@@ -151,7 +151,7 @@ docver=$( cat /var/plexguide/ub.ver )
   #read -n 1 -s -r -p "Press any key to continue "
   fi
 
-  if [ "$docver" == "18" ]
+  if [ "$docver" == "19" ]
     then
   echo "50" | dialog --gauge "Installing: UB18 - Docker 18.05.0 (Please Be Patient)" 7 58 0
   sleep 2 
