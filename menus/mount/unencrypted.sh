@@ -21,9 +21,9 @@ export NCURSES_NO_UTF8_ACS=1
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
-HEIGHT=15
+HEIGHT=13
 WIDTH=50
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
