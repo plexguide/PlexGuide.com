@@ -107,14 +107,14 @@ EOF
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard_en
-#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrives_standard_en
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
+#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrive_standard_en
 
-            if dialog --stdout --title "PAY ATTENTION!" \
-              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
+#            if dialog --stdout --title "PAY ATTENTION!" \
+#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
 
-                ansible-role  services_remove
+#                ansible-role  services_remove
             fi
 
             #### BLANK OUT PATH - This Builds For UnionFS
