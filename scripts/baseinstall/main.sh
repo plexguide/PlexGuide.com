@@ -179,6 +179,8 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
       echo ""
       echo "Starting Docker (Please Be Patient)"
       sleep 1
+      systemctl start docker
+      sleep 1
       clear
 
       ##### Checking Again, if fails again; warns user
