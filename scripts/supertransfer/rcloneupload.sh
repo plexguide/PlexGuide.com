@@ -66,7 +66,7 @@ rclone_upload() {
       sleep 45  # sleep so files are deleted off disk before resuming; good for TV episodes
     else
       rclone rc vfs/forget file=/${localFile#"$localDir"} &>/dev/null
-      printf " [ OK ] Refreshed Cache for "${localFile}"\n"
+      printf " [ OK ] Refreshed Cache for "${localFile#"$localDir"}"\n"
       sleep 5
     fi
   else
