@@ -172,10 +172,16 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
     else 
       ##### Install Docker the Emergency Way 
       clear
-      echo "Installing Docker the Old School Way"
+      echo "Installing Docker the Old School Way - (Please Be Patient)"
       echo ""
       sleep 2
       apt-get install docker-ce
+      echo ""
+      echo "Starting Docker (Please Be Patient)"
+      sleep 2
+      systemctl start docker
+      sleep 2
+      clear
 
       ##### Checking Again, if fails again; warns user
     file="/usr/bin/docker" 1>/dev/null 2>&1
