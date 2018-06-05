@@ -177,7 +177,6 @@ EOF
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
-              ansible-role services_remove
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
               read -n 1 -s -r -p "Press any key to continue"
             else
@@ -185,8 +184,6 @@ EOF
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-role services_remove
-              ansible-role services_remove
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
