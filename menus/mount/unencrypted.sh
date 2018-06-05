@@ -193,8 +193,15 @@ EOF
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
-
             ;;
+        Z)
+            exit 0 ;;
+
+########## Deploy End
+esac
+
+bash /opt/plexguide/menus/mount/unencrypted.sh
+
        #E)
        #     if [ ! "$(docker ps -q -f name=plex)" ]; then
        #       dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
@@ -211,10 +218,3 @@ EOF
         #  ansible-role services_remove
         #  dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
         #  ;;
-        Z)
-            exit 0 ;;
-
-########## Deploy End
-esac
-
-bash /opt/plexguide/menus/mount/unencrypted.sh
