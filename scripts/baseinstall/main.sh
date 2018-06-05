@@ -174,13 +174,13 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
       clear
       echo "Installing Docker the Old School Way - (Please Be Patient)"
       echo ""
-      sleep 3
+      sleep 2
       apt-get install docker-ce
       echo ""
       echo "Starting Docker (Please Be Patient)"
-      sleep 1
+      sleep 2
       systemctl start docker
-      sleep 1
+      sleep 2
       clear
 
       ##### Checking Again, if fails again; warns user
