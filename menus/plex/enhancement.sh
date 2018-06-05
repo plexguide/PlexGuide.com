@@ -27,8 +27,9 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "PGDupes   (BETA)"
          B "PGTrak"
-         C "Telly     (BETA)"
-         D "SSTVProxy (BETA)"
+         C "PGScan    (BETA)"
+         D "Telly     (BETA)"
+         E "SSTVProxy (BETA)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -48,9 +49,21 @@ case $CHOICE in
             bash /opt/plexguide/menus/pgtrak/main.sh
             ;;
         C)
-            bash /opt/plexguide/menus/plex/telly.sh
+            if [ ! "$(docker ps -q -f name=plex)" ]; then
+              dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
+            else
+              if [ ! -s /opt/appdata/plexguide/plextoken ]; then
+                dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
+                bash /opt/plexguide/scripts/plextoken/main.sh
+              fi
+              ansible-role pgscan
+              dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
+            fi
             ;;
         D)
+            bash /opt/plexguide/menus/plex/telly.sh
+            ;;
+        E)
             bash /opt/plexguide/menus/plex/sstvproxy.sh
             ;;
         Z)

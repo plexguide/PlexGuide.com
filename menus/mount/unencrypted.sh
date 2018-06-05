@@ -103,7 +103,7 @@ EOF
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrives_standard
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
 
 ####  See encrypt.sh for example of script below in use!
 #
