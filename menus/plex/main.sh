@@ -31,7 +31,6 @@ port=32400
 #### add the dialog to the end - reminder
 plexurl="https://plex.$domain:443,http://plex.$domain:80"
 echo "$plexurl" > /var/plexguide/plex.url
-#dialog --infobox "If needed for custom Access URL: $plexurl" 0 0
 
 if dialog --stdout --title "PAY ATTENTION!" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
