@@ -48,7 +48,7 @@
 
 - name: Installing docker
   apt:    
-    name: docker-ce={{ports.stdout}}~ce~3-0~ubuntu
+    name: docker-ce={{dockerversion.stdout}}~ce~3-0~ubuntu
     state: present
     force: yes
     update_cache: yes
