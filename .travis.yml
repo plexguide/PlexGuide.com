@@ -1,4 +1,4 @@
 language: bash
 
 script:
-    - bash /scripts/baseinstall/main.sh
+    - bash ./scripts/baseinstall/main.sh
