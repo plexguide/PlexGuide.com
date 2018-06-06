@@ -49,7 +49,7 @@
 
 - name: Installing docker
   apt:    
-    name: docker-ce={{docversion.stdout}}~ce~3-0~ubuntu
+    name: docker-ce={{docversion.stdout}}
     state: present
     force: yes
     update_cache: yes

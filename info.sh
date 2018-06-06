@@ -19,8 +19,8 @@ echo "5.084" > /var/plexguide/pg.version
 echo "72" > /var/plexguide/pg.preinstall
 
 #### docker
-echo "18.03.0" > /var/plexguide/pg.docker16
-
+echo "18.03.1" > /var/plexguide/pg.docker16
+echo "18.03.1~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
 
 echo "18.05.0" > /var/plexguide/pg.docker18
 echo "18.05.0~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
