@@ -21,6 +21,8 @@
   shell: "cat /var/plexguide/pg.docker"
   register: dockerversion
   ignore_errors: True
+  tags:
+    - docker_standard
 
 - name: Install required packages
   apt: "name={{item}} state=present"
