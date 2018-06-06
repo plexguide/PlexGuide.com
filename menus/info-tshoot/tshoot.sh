@@ -40,7 +40,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/uninstall/main.sh 
             ;;
         D) 
-            r/var/plexguide/server.settings.set 1>/dev/null 2>&1
+            rm -r /var/plexguide/server.settings.set 1>/dev/null 2>&1
             echo "0" > /var/plexguide/pg.preinstall.stored
             dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!\n\nYou will be asked again after the Pre-Install!" 0 0
             ;;
