@@ -32,23 +32,26 @@ port=32400
 plexurl="https://plex.$domain:443,http://plex.$domain:80"
 echo "$plexurl" > /var/plexguide/plex.url
 
-if dialog --stdout --title "PAY ATTENTION!" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nDo you require to claim this SERVER for PLEX?\n\nSelect No: IF your PLEX Container is already Claimed & Working" 0 0; then
+if [ "$server" == "remote" ] 
+then
+    if dialog --stdout --title "PAY ATTENTION!" \
+      --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+      --yesno "\nDo you require to claim this SERVER for PLEX?\n\nSelect No: IF your PLEX Container is already Claimed & Working" 0 0; then
 
-    dialog --title "PLEX CLAIM INFORMATION" \
-    --msgbox "\nVisit http://plex.tv/claim and PRESS the [COPY] Button (do not highlight and copy). You have 5 minutes starting NOW! [PRESS ENTER] when you are READY!" 10 50
+        dialog --title "PLEX CLAIM INFORMATION" \
+        --msgbox "\nVisit http://plex.tv/claim and PRESS the [COPY] Button (do not highlight and copy). You have 5 minutes starting NOW! [PRESS ENTER] when you are READY!" 10 50
 
-    dialog --title "Input >> PLEX CLAIM" \
-    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/var/plexguide/plextoken
-    plextoken=$(cat /var/plexguide/plextoken)
-    dialog --infobox "Token: $plextoken" 3 45
-    sleep 2
-    touch /tmp/server.check 1>/dev/null 2>&1
-else
-   echo "claimedalready" > /var/plexguide/plextoken 1>/dev/null 2>&1
-   touch /tmp/server.check 1>/dev/null 2>&1
+        dialog --title "Input >> PLEX CLAIM" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --inputbox "Token? Windows Users - SHIFT + INSERT to PASTE" 8 50 2>/var/plexguide/plextoken
+        plextoken=$(cat /var/plexguide/plextoken)
+        dialog --infobox "Token: $plextoken" 3 45
+        sleep 2
+        touch /tmp/server.check 1>/dev/null 2>&1
+    else
+       echo "claimedalready" > /var/plexguide/plextoken 1>/dev/null 2>&1
+       touch /tmp/server.check 1>/dev/null 2>&1
+    fi
 fi
 
 HEIGHT=10
