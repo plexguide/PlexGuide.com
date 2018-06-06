@@ -254,8 +254,19 @@ if [ -e "$file" ]
       bash /opt/plexguide/menus/watchtower/main.sh
 fi
 
-echo "94" | dialog --gauge "Installing: Python Support" 7 50 0
-bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+############################# Python Support
+pg_python=$( cat /var/plexguide/pg.python )
+pg_python_stored=$( cat /var/plexguide/pg.python.stored )
+
+if [ "$pg_python" == "$pg_python_stored" ]
+    then
+      echo "94" | dialog --gauge "Python Support Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "94" | dialog --gauge "Installing: Python Support" 7 50 0
+      bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+      cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
+fi
 
 ##### Traefik Process
 file="/var/plexguide/server.domain"
