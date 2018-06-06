@@ -78,7 +78,7 @@
   register: docedition
   ignore_errors: True
   tags:
-    - docker16
+    - docker18
 
 - name: Add official repository
   apt_repository:
