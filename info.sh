@@ -17,3 +17,4 @@
 #################################################################################
 echo "5.084" > /var/plexguide/pg.version
 echo "72" > /var/plexguide/pg.preinstall
+echo "18.04.0" > /var/plexguide/pg.docker
