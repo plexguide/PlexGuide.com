@@ -18,7 +18,7 @@
 dialog --title "--- WARNING ---" --msgbox "\nSelect the type of Server you are running!\n\nPay attention to what you are selecting! It will affect your choices!\n\nNeed to ReRun? Visit > Troubleshooting > Server Setup" 0 0
 
 HEIGHT=11
-WIDTH=55
+WIDTH=50
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Server Select"
