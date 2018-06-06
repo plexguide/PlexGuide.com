@@ -15,8 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "5.084" > /var/plexguide/pg.version
-echo "72" > /var/plexguide/pg.preinstall
+echo "5.085" > /var/plexguide/pg.version
+echo "73" > /var/plexguide/pg.preinstall
 
 #### docker
 echo "18.03.1" > /var/plexguide/pg.docker16
