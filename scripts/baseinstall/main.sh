@@ -81,7 +81,7 @@ pg.ansible.stored=$( cat /var/plexguide/pg.ansible.stored )
 
 if [ "$pg.ansible" == "$pg.ansible.stored" ]
     then
-      echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+      echo "22" | dialog --gauge "Ansible Is Already Installed" 7 50 0
       sleep 2
     else 
       echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
