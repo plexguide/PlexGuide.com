@@ -52,8 +52,6 @@ else
    touch /tmp/server.check 1>/dev/null 2>&1
 fi
 
-
-
 HEIGHT=10
 WIDTH=40
 CHOICE_HEIGHT=4
@@ -87,12 +85,12 @@ case $CHOICE in
             then
               clear
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
                clear
                # user select local server (non-remote which requires to change some things to work!)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
             fi
 
@@ -117,12 +115,12 @@ case $CHOICE in
             then
                clear
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
                clear
                # user select local server (non-remote which requires to change some things to work!)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
                
             fi
@@ -144,8 +142,8 @@ else
    exit
 fi
 
-file="/tmp/server.check"
-if [ -e "$file" ]
+
+if [ "$server" == "remote" ] 
 then
   dialog --title "FOR REMOTE PLEX SERVERS Users!" \
   --msgbox "\nRemember to claim your SERVER @ http://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
@@ -157,7 +155,6 @@ then
 
   echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
   sleep 4
 else
    exit
