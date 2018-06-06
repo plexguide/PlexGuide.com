@@ -76,6 +76,8 @@ yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 
 ############################################################ Enables Use of ROLES AfterWards
+###ans_ver=$( ansible --version | head -n1 | awk '{print $2}' )
+
 echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
 yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
 apt-get update -y 1>/dev/null 2>&1
