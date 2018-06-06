@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################  dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree! You can view the program, but doing anything will mess things up!" 0 0
-dialog --title "--- WARNING !!! ---" --msgbox "\nSelect the type of Server you are running!\n\nPay attention to what you are selecting! It will affect your choices!\n\nIf you need to rerun this again anytime, goto Troubleshoot and select - Server Setup -- " 0 0
+dialog --title "--- WARNING !!! ---" --msgbox "\nSelect the type of Server you are running!\n\nPay attention to what you are selecting! It will affect your choices!\n\nNeed to ReRun? Visit > Troubleshooting > Server Setup -- " 0 0
 
 HEIGHT=11
 WIDTH=55
