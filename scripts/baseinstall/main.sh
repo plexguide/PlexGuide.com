@@ -131,8 +131,9 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
+version_recall=$( cat /var/plexguide/pg.docker )
 
-if [ "$docker_var" == "18.05.0-ce," ]
+if [ "$docker_var" == "$version_recall-ce," ]
 then
   echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
@@ -143,7 +144,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "16" ]
     then
-  echo "50" | dialog --gauge "Installing: UB16 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  echo "50" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
   sleep 2
   clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker16
@@ -153,7 +154,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "18" ]
     then
-  echo "50" | dialog --gauge "Installing: UB18 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  echo "50" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
   sleep 2 
   clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker18

@@ -17,6 +17,11 @@
 #################################################################################
 
 ---
+- name: Register Docker
+  shell: "cat /var/plexguide/pg.docker"
+  register: dockerversion
+  ignore_errors: True
+
 - name: Install required packages
   apt: "name={{item}} state=present"
   with_items:
@@ -43,7 +48,7 @@
 
 - name: Installing docker
   apt:    
-    name: docker-ce=18.05.0~ce~3-0~ubuntu
+    name: docker-ce={{ports.stdout}}~ce~3-0~ubuntu
     state: present
     force: yes
     update_cache: yes
@@ -62,7 +67,7 @@
 
 - name: Installing docker
   apt:
-    name: docker-ce=18.05.0~ce~3-0~ubuntu
+    name: docker-ce={{dockerverison.stdout}}~ce~3-0~ubuntu
     state: present
     force: yes
     update_cache: yes
@@ -116,4 +121,3 @@
     state: present
   tags:
     - docker_standard
-
