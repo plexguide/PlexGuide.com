@@ -290,7 +290,7 @@ if [ -e "$file" ]
 fi
 
 ##### Server Type
-file="/opt/plexguide/menus/setup/servertype.sh" 1>/dev/null 2>&1
+file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
       echo "" 1>/dev/null 2>&1
