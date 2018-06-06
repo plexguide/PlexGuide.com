@@ -85,13 +85,15 @@ case $CHOICE in
 
             if [ "$server" == "remote" ] 
             then
+              clear
                # user select remote server (which requires claiming operations)
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
-               sleep 2
+               read -n 1 -s -r -p "Press any key to continue"
             else
+               clear
                # user select local server (non-remote which requires to change some things to work!)
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools
-               sleep 2
+               read -n 1 -s -r -p "Press any key to continue"
             fi
 
             #read -n 1 -s -r -p "Press any key to continue "
@@ -113,13 +115,16 @@ case $CHOICE in
 
             if [ "$server" == "remote" ] 
             then
+               clear
                # user select remote server (which requires claiming operations)
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 
-               sleep 2
+               read -n 1 -s -r -p "Press any key to continue"
             else
+               clear
                # user select local server (non-remote which requires to change some things to work!)
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools
-               sleep 2
+               read -n 1 -s -r -p "Press any key to continue"
+               
             fi
 
             #read -n 1 -s -r -p "Press any key to continue "
