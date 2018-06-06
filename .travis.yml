@@ -1,4 +1,4 @@
 language: bash
 
 script:
-    - bash /opt/plexguide/scripts/menu.sh
+    - bash plexguide
