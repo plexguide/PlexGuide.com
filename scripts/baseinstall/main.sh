@@ -76,12 +76,21 @@ yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 
 ############################################################ Enables Use of ROLES AfterWards
-echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
-yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-apt-get update -y 1>/dev/null 2>&1
-apt-get install ansible -y 1>/dev/null 2>&1
-yes | apt-get update 1>/dev/null 2>&1
+pg_ansible=$( cat /var/plexguide/pg.ansible )
+pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 
+if [ "$pg_ansible" == "$pg_ansible_stored" ]
+    then
+      echo "22" | dialog --gauge "Ansible Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
+      yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+      apt-get update -y 1>/dev/null 2>&1
+      apt-get install ansible -y 1>/dev/null 2>&1
+      yes | apt-get update 1>/dev/null 2>&1
+      cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
+fi 
 ############################################################ Create Inventory File
 
 file="/etc/ansible/inventory" 1>/dev/null 2>&1
@@ -131,8 +140,10 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
+version_recall16=$( cat /var/plexguide/pg.docker16 )
+version_recall18=$( cat /var/plexguide/pg.docker18 )
 
-if [ "$docker_var" == "18.05.0-ce," ]
+if [ "$docker_var" == "$version_recall16-ce," ]
 then
   echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
@@ -143,7 +154,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "16" ]
     then
-  echo "50" | dialog --gauge "Installing: UB16 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  echo "50" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
   sleep 2
   clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker16
@@ -151,9 +162,21 @@ docver=$( cat /var/plexguide/ub.ver )
   #read -n 1 -s -r -p "Press any key to continue "
   fi
 
+fi
+
+### For Docker 18
+if [ "$docker_var" == "$version_recall18-ce," ]
+then
+  echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  sleep 2
+  #read -n 1 -s -r -p "Press any key to continue "
+else
+
+docver=$( cat /var/plexguide/ub.ver )
+
   if [ "$docver" == "18" ]
     then
-  echo "50" | dialog --gauge "Installing: UB18 - Docker 18.05.0 (Please Be Patient)" 7 58 0
+  echo "50" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
   sleep 2 
   clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker18
@@ -162,7 +185,6 @@ docver=$( cat /var/plexguide/ub.ver )
   fi
 
 fi
-
 ############################################################ Checks to See if Docker Installed; if not... FAIL!
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
@@ -213,9 +235,19 @@ echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushov
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 ############################################################ Reboot Startup Container Script
-echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
+pg_docstart=$( cat /var/plexguide/pg.docstart)
+pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
+
+if [ "$pg_docstart" == "$pg_docstart_stored" ]
+    then
+      echo "82" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
+      #read -n 1 -s -r -p "Press any key to continue "
+      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
+fi 
 
 echo "85" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
@@ -232,8 +264,19 @@ if [ -e "$file" ]
       bash /opt/plexguide/menus/watchtower/main.sh
 fi
 
-echo "94" | dialog --gauge "Installing: Python Support" 7 50 0
-bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+############################# Python Support
+pg_python=$( cat /var/plexguide/pg.python )
+pg_python_stored=$( cat /var/plexguide/pg.python.stored )
+
+if [ "$pg_python" == "$pg_python_stored" ]
+    then
+      echo "94" | dialog --gauge "Python Support Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "94" | dialog --gauge "Installing: Python Support" 7 50 0
+      bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+      cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
+fi
 
 ##### Traefik Process
 file="/var/plexguide/server.domain"
@@ -246,19 +289,14 @@ if [ -e "$file" ]
       touch /var/plexguide/base.domain
 fi
 
-#file="/var/plexguide/base.hd"
-#if [ -e "$file" ]
-#    then
-#      echo "" 1>/dev/null 2>&1
-#    else
-#      dialog --title "2nd Harddrive - One Time Message" --msgbox "\nYou will be asked if you want to setup a second harddrive.\n\nOnly SETUP if you have your harddrive is formatted and ready to go! If you have one and it's not ready, you can visit the SETTINGS to set this up anytime!" 0 0
-#      echo "94" | dialog --gauge "Setting Up: 2nd Hard Drive Question" 7 50 0
-#      sleep 2
-#      bash /opt/plexguide/scripts/baseinstall/harddrive.sh
-#      echo "null" > /var/plexguide/base.hd
-#fi
-cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
+##### Server Type
+file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+      echo "" 1>/dev/null 2>&1
+    else
+      bash /opt/plexguide/menus/setup/servertype.sh
+fi
 
-echo "PG Install is Complete" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-clear
+#### Complete!
+cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored

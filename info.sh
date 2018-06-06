@@ -15,5 +15,21 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "5.084" > /var/plexguide/pg.version
-echo "72" > /var/plexguide/pg.preinstall
+#### PG VARIBLES
+echo "5.085 Update 1" > /var/plexguide/pg.version
+echo "73" > /var/plexguide/pg.preinstall
+
+#### DOCKER START
+echo "18.03.1" > /var/plexguide/pg.docker16
+echo "18.03.1~ce-0~ubuntu" > /var/plexguide/pg.docker16.full
+echo "stable" > /var/plexguide/pg.docker16.edition
+
+echo "18.05.0" > /var/plexguide/pg.docker18
+echo "18.05.0~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
+echo "edge" > /var/plexguide/pg.docker18.edition
+#### DOCKER END
+
+#### Insatller
+echo "1" > /var/plexguide/pg.ansible
+echo "1" > /var/plexguide/pg.python
+echo "1" > /var/plexguide/pg.docstart

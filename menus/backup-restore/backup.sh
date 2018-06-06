@@ -52,6 +52,7 @@ OPTIONS=(1 "CouchPotato"
          25 "Ubooquity"
          26 "Airsonic"
          27 "TorrentVPN"
+         28 "qBittorrent"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -117,6 +118,8 @@ case $CHOICE in
             echo "airsonic" > /tmp/program_var ;;
         27)
             echo "vpn" > /tmp/program_var ;;
+        28)
+            echo "qbittorrent" > /tmp/program_var ;;
         Z)
             clear
             exit 0 ;;
