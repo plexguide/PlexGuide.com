@@ -17,13 +17,6 @@
 #################################################################################
 
 ---
-- name: Register Docker
-  shell: "cat /var/plexguide/pg.docker"
-  register: docversion
-  ignore_errors: True
-  tags:
-    - docker_standard
-
 - name: Install required packages
   apt: "name={{item}} state=present"
   with_items:
@@ -41,6 +34,12 @@
     - docker_standard
 
 ############################################# DOCKER 16 START
+- name: Register Docker
+  shell: "cat /var/plexguide/pg.docker16.full"
+  register: docversion18
+  ignore_errors: True
+  tags:
+    - docker16
 
 - name: Add official repository
   apt_repository:
@@ -60,6 +59,12 @@
 ############################################## DOCKER 16 END
 
 ############################################## DOCKER 18 START
+- name: Register Docker
+  shell: "cat /var/plexguide/pg.docker18.full"
+  register: docversion18
+  ignore_errors: True
+  tags:
+    - docker18
 
 - name: Add official repository
   apt_repository:
@@ -69,7 +74,7 @@
 
 - name: Installing docker
   apt:
-    name: docker-ce={{docversion.stdout}}~ce~3-0~ubuntu
+    name: docker-ce={{docversion.stdout}}
     state: present
     force: yes
     update_cache: yes
