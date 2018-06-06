@@ -26,12 +26,13 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.086"
-         B "Stable   : 5.085"
-         C "Stable   : 5.084"
-         D "Stable   : 5.083"
-         E "Stable   : 5.080"
-         F "Stable   : 5.079"
-         G "Stable   : 5.078"
+         B "Beta 1   : 5.086"
+         C "Stable   : 5.085"
+         D "Stable   : 5.084"
+         E "Stable   : 5.083"
+         F "Stable   : 5.080"
+         G "Stable   : 5.079"
+         H "Stable   : 5.078"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -77,20 +78,23 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.085u1" ;; 
+            version="5.086b1" ;; 
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.084" ;; 
+            version="5.085u1" ;; 
         D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.083" ;; 
+            version="5.084" ;; 
         E)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.080" ;;
+            version="5.083" ;; 
         F)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.079" ;; 
+            version="5.080" ;;
         G)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.079" ;; 
+        h)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.078" ;;         
         Z)
