@@ -235,9 +235,19 @@ echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushov
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 ############################################################ Reboot Startup Container Script
-echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
+pg_docstart=$( cat /var/plexguide/pg.docstart)
+pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
+
+if [ "$pg_docstart" == "$pg_docstart_stored" ]
+    then
+      echo "82" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
+      #read -n 1 -s -r -p "Press any key to continue "
+      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
+fi 
 
 echo "85" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
