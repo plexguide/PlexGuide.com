@@ -19,7 +19,7 @@
 ---
 - name: Register Docker
   shell: "cat /var/plexguide/pg.docker"
-  register: dockerversion
+  register: docversion
   ignore_errors: True
   tags:
     - docker_standard
@@ -50,7 +50,7 @@
 
 - name: Installing docker
   apt:    
-    name: docker-ce={{dockerversion.stdout}}~ce~3-0~ubuntu
+    name: docker-ce={{docversion.stdout}}~ce~3-0~ubuntu
     state: present
     force: yes
     update_cache: yes
@@ -69,7 +69,7 @@
 
 - name: Installing docker
   apt:
-    name: docker-ce={{dockerverison.stdout}}~ce~3-0~ubuntu
+    name: docker-ce={{docversion.stdout}}~ce~3-0~ubuntu
     state: present
     force: yes
     update_cache: yes
