@@ -262,10 +262,10 @@ sudo systemctl daemon-reload
 #stop unencrypted services
 systemctl stop rclone 1>/dev/null 2>&1
 systemctl stop move 1>/dev/null 2>&1
-systemctl stop unionfs 1>/dev/null 2>&1
+#systemctl stop unionfs 1>/dev/null 2>&1
 systemctl disable rclone 1>/dev/null 2>&1
 systemctl disable move 1>/dev/null 2>&1
-systemctl disable unionfs 1>/dev/null 2>&1
+#systemctl disable unionfs 1>/dev/null 2>&1
 echo 8
 # ensure that the unencrypted services are on
 systemctl disable rclone 1>/dev/null 2>&1
