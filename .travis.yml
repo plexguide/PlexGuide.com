@@ -1,6 +1,6 @@
-language: bash
-
 sudo: required 
+
+language: bash
 
 script:
     - bash ./scri*/menu.sh
