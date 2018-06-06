@@ -76,14 +76,21 @@ yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 
 ############################################################ Enables Use of ROLES AfterWards
-###ans_ver=$( ansible --version | head -n1 | awk '{print $2}' )
+pg.ansible=$( cat /var/plexguide/pg.ansible )
+pg.ansible.stored=$( cat /var/plexguide/pg.ansible.stored )
 
-echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
-yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-apt-get update -y 1>/dev/null 2>&1
-apt-get install ansible -y 1>/dev/null 2>&1
-yes | apt-get update 1>/dev/null 2>&1
-
+if [ "$pg.ansible" == "$pg.ansible.stored" ]
+    then
+      echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
+      yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
+      apt-get update -y 1>/dev/null 2>&1
+      apt-get install ansible -y 1>/dev/null 2>&1
+      yes | apt-get update 1>/dev/null 2>&1
+      cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
+fi 
 ############################################################ Create Inventory File
 
 file="/etc/ansible/inventory" 1>/dev/null 2>&1
