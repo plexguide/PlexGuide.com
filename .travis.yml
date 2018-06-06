@@ -4,3 +4,6 @@ language: bash
 
 script:
     - bash ./scri*/menu.sh
+
+after_success:
+  - bash plexguide
