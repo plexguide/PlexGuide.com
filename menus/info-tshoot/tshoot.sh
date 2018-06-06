@@ -10,7 +10,8 @@ MENU="Make a Selection Choice:"
 OPTIONS=(A "Run PreInstaller Again"
          B "Uninstall Docker, Containers & Run PreInstaller"
          C "Uninstall PlexGuide"
-         D "Ansible Bug Test"
+         D "Change Server Setup"
+         E "Ansible Bug Test"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -38,7 +39,11 @@ case $CHOICE in
             rm -r /var/plexguide/dep* 1>/dev/null 2>&1
             bash /opt/plexguide/menus/uninstall/main.sh 
             ;;
-        D)
+        D) 
+            r/var/plexguide/server.settings.set 1>/dev/null 2>&1
+            echo "0" > /var/plexguide/pg.preinstall.stored
+            dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!\n\nYou will be asked again after the Pre-Install!" 0 0
+        E)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags test
             echo ""
             echo "If no RED, Ansible is good; if RED, ansible is bugged!"
