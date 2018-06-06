@@ -1,4 +1,4 @@
 language: bash
 
 script:
-    - bash /opt/plex*/scri*/menu.sh
+    - bash /opt/plexguide/scripts/baseinstall/main.sh
