@@ -119,6 +119,19 @@
 ########################################## MOVE END
 
 ########### GDRIVE
+
+  - name: Stop If GCRYPT Service Running
+    systemd: state=stopped name=gcrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - gdrive
+
+  - name: Daemon-Reload - Stop GCRYPT Service
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    tags:
+      - gdrive
+    ignore_errors: yes
+
   - name: Stop If GDRIVE Service Running
     systemd: state=stopped name=gdrive
     tags:
@@ -142,7 +155,20 @@
     systemd: state=started name=gdrive enabled=yes
     tags:
       - gdrive
+      
 ########### TDRIVE
+  - name: Stop If TCRYPT Service Running
+    systemd: state=stopped name=tcrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - tdrive
+
+  - name: Daemon-Reload - Stop TCRYPT Service
+    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
+    tags:
+      - tdrive
+    ignore_errors: yes
+
   - name: Stop If TDRIVE Service Running
     systemd: state=stopped name=tdrive
     tags:
