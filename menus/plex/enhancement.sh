@@ -62,6 +62,8 @@ case $CHOICE in
             fi
             ;;
         D)
+            sleep 1
+            clear
             if dialog --stdout --title "WebTools Question" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
               --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
