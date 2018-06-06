@@ -144,7 +144,6 @@ else
    exit
 fi
 
-
 file="/tmp/server.check"
 if [ -e "$file" ]
 then
@@ -162,17 +161,6 @@ then
   sleep 4
 else
    exit
-fi
-
-if dialog --stdout --title "WebTools Question" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
-    dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
-
-else
-    dialog --infobox "WebTools: Not Installed" 3 45
-    sleep 2
 fi
 
 rm -r /tmp/server.check 1>/dev/null 2>&1

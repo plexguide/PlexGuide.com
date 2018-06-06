@@ -18,18 +18,19 @@
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 
-HEIGHT=12
+HEIGHT=14
 WIDTH=40
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes   (BETA)"
+OPTIONS=(A "PGDupes      (BETA)"
          B "PGTrak"
-         C "PGScan    (BETA)"
-         D "Telly     (BETA)"
-         E "SSTVProxy (BETA)"
+         C "PGScan       (BETA)"
+         D "WebTools 3.0"
+         E "Telly        (BETA)"
+         F "SSTVProxy    (BETA)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -61,9 +62,20 @@ case $CHOICE in
             fi
             ;;
         D)
+            if dialog --stdout --title "WebTools Question" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
+                dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools
+
+            else
+                dialog --infobox "WebTools: Not Installed" 3 45
+                sleep 2
+            fi
+        E)
             bash /opt/plexguide/menus/plex/telly.sh
             ;;
-        E)
+        F)
             bash /opt/plexguide/menus/plex/sstvproxy.sh
             ;;
         Z)
