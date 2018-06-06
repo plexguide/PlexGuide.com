@@ -1,8 +1,8 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=12
+HEIGHT=13
 WIDTH=56
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
@@ -43,6 +43,7 @@ case $CHOICE in
             r/var/plexguide/server.settings.set 1>/dev/null 2>&1
             echo "0" > /var/plexguide/pg.preinstall.stored
             dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!\n\nYou will be asked again after the Pre-Install!" 0 0
+            ;;
         E)
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags test
             echo ""
