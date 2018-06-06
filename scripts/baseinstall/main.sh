@@ -289,19 +289,14 @@ if [ -e "$file" ]
       touch /var/plexguide/base.domain
 fi
 
-#file="/var/plexguide/base.hd"
-#if [ -e "$file" ]
-#    then
-#      echo "" 1>/dev/null 2>&1
-#    else
-#      dialog --title "2nd Harddrive - One Time Message" --msgbox "\nYou will be asked if you want to setup a second harddrive.\n\nOnly SETUP if you have your harddrive is formatted and ready to go! If you have one and it's not ready, you can visit the SETTINGS to set this up anytime!" 0 0
-#      echo "94" | dialog --gauge "Setting Up: 2nd Hard Drive Question" 7 50 0
-#      sleep 2
-#      bash /opt/plexguide/scripts/baseinstall/harddrive.sh
-#      echo "null" > /var/plexguide/base.hd
-#fi
-cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
+##### Server Type
+file="/opt/plexguide/menus/setup/servertype.sh" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+      echo "" 1>/dev/null 2>&1
+    else
+      bash /opt/plexguide/menus/setup/servertype.sh
+fi
 
-echo "PG Install is Complete" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-clear
+#### Complete!
+cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored

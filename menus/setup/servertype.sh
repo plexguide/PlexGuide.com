@@ -21,7 +21,7 @@ HEIGHT=11
 WIDTH=55
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PG Settings"
+TITLE="PG Server Select"
 MENU="Make Your Selection Choice:"
 
 OPTIONS=(A "Remote: Dedicated Server"
