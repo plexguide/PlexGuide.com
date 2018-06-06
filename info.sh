@@ -25,4 +25,4 @@ echo "stable" > /var/plexguide/pg.docker16.edition
 
 echo "18.05.0" > /var/plexguide/pg.docker18
 echo "18.05.0~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
-echo "edge" > /var/plexguide/pg.docker16.edition
+echo "edge" > /var/plexguide/pg.docker18.edition

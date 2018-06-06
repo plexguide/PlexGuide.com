@@ -131,9 +131,10 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
-version_recall=$( cat /var/plexguide/pg.docker )
+version_recall16=$( cat /var/plexguide/pg.docker16 )
+version_recall18=$( cat /var/plexguide/pg.docker18 )
 
-if [ "$docker_var" == "$version_recall-ce," ]
+if [ "$docker_var" == "$version_recall16-ce," ]
 then
   echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
@@ -152,6 +153,18 @@ docver=$( cat /var/plexguide/ub.ver )
   #read -n 1 -s -r -p "Press any key to continue "
   fi
 
+fi
+
+### For Docker 18
+if [ "$docker_var" == "$version_recall18-ce," ]
+then
+  echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  sleep 2
+  #read -n 1 -s -r -p "Press any key to continue "
+else
+
+docver=$( cat /var/plexguide/ub.ver )
+
   if [ "$docver" == "18" ]
     then
   echo "50" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
@@ -163,7 +176,6 @@ docver=$( cat /var/plexguide/ub.ver )
   fi
 
 fi
-
 ############################################################ Checks to See if Docker Installed; if not... FAIL!
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
