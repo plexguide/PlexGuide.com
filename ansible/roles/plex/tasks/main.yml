@@ -126,6 +126,8 @@
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
 
+- debug: msg="Remote Plex Server Installed"
+
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:

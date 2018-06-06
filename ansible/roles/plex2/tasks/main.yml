@@ -107,6 +107,8 @@
   with_items:
       - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
 
+- debug: msg="Local Plex Server Installed"
+
 - name: WebTools
   unarchive:
     src: https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
