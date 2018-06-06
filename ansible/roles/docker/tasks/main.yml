@@ -36,7 +36,7 @@
 ############################################# DOCKER 16 START
 - name: Register Docker
   shell: "cat /var/plexguide/pg.docker16.full"
-  register: docversion18
+  register: docversion
   ignore_errors: True
   tags:
     - docker16
@@ -61,7 +61,7 @@
 ############################################## DOCKER 18 START
 - name: Register Docker
   shell: "cat /var/plexguide/pg.docker18.full"
-  register: docversion18
+  register: docversion
   ignore_errors: True
   tags:
     - docker18
