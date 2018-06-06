@@ -86,11 +86,11 @@ case $CHOICE in
             if [ "$server" == "remote" ] 
             then
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools &>/dev/null &
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools
                sleep 2
             else
                # user select local server (non-remote which requires to change some things to work!)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools &>/dev/null &
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools
                sleep 2
             fi
 
@@ -114,11 +114,11 @@ case $CHOICE in
             if [ "$server" == "remote" ] 
             then
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools &>/dev/null &
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools 
                sleep 2
             else
                # user select local server (non-remote which requires to change some things to work!)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools &>/dev/null &
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools
                sleep 2
             fi
 
@@ -165,14 +165,8 @@ if dialog --stdout --title "WebTools Question" \
     dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
 
-    echo "WebTools - Was Installed" > /tmp/pushover
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 else
     dialog --infobox "WebTools: Not Installed" 3 45
-
-    echo "WebTools - Is Not Installed" > /tmp/pushover
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
     sleep 2
 fi
 
