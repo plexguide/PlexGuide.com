@@ -1,4 +1,4 @@
 language: bash
 
 script:
-    - bash equality_test.sh
+    - bash /opt/plexguide/scripts/menu.sh
