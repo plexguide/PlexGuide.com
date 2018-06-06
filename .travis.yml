@@ -3,5 +3,5 @@ sudo: required
 language: bash
 
 script:
-    - bash ./scri*/menu.sh
+    - sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
     - bash plexguide
