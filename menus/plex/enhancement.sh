@@ -72,6 +72,7 @@ case $CHOICE in
                 dialog --infobox "WebTools: Not Installed" 3 45
                 sleep 2
             fi
+            ;;
         E)
             bash /opt/plexguide/menus/plex/telly.sh
             ;;
