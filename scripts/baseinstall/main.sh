@@ -76,10 +76,10 @@ yes | apt-get install sysstat nmon 1>/dev/null 2>&1
 sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 
 ############################################################ Enables Use of ROLES AfterWards
-pg.ansible=$( cat /var/plexguide/pg.ansible )
-pg.ansible.stored=$( cat /var/plexguide/pg.ansible.stored )
+pg_ansible=$( cat /var/plexguide/pg.ansible )
+pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 
-if [ "$pg.ansible" == "$pg.ansible.stored" ]
+if [ "$pg_ansible" == "$pg_ansible_stored" ]
     then
       echo "22" | dialog --gauge "Ansible Is Already Installed" 7 50 0
       sleep 2
