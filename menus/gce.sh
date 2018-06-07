@@ -89,19 +89,60 @@ EOF
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
             ;;
         C)
-            clear
-            #### RClone Missing Warning
+            #### RCLONE MISSING START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First!" 0 0
-                  bash /opt/plexguide/menus/pgdrive/main.sh
+                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
+                  bash /opt/plexguide/menus/mount/main.sh
                   exit
               fi
+            #### RCLONE MISSING END
 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gce #1>/dev/null 2>&1
+            #### RECALL VARIABLES START
+            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            #### RECALL VARIABLES END
+
+            #### REQUIRED TO DEPLOY STARTING
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
+
+####  See encrypt.sh for example of script below in use!
+#
+#            if dialog --stdout --title "PAY ATTENTION!" \
+#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
+#
+#                ansible-role  services_remove
+#            fi
+
+            #### BLANK OUT PATH - This Builds For UnionFS
+            rm -r /tmp/path 1>/dev/null 2>&1
+            touch /tmp/path 1>/dev/null 2>&1
+
+            #### IF EXIST - DEPLOY
+            if [ "$tdrive" == "[tdrive]" ]
+              then
+
+              #### ADDS TDRIVE to the UNIONFS PATH
+              echo -n "/mnt/tdrive=RO:" >> /tmp/path
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
+            fi
+
+            if [ "$gdrive" == "[gdrive]" ]
+              then
+
+              #### ADDS GDRIVE to the UNIONFS PATH
+              echo -n "/mnt/gdrive=RO:" >> /tmp/path
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
+            fi
+
+            #### REQUIRED TO DEPLOY ENDING
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
+
+            read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         D)    
