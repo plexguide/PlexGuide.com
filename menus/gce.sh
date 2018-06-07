@@ -67,6 +67,7 @@ EOF
             chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
             ;;
         B)
+            clear
             #### RClone Missing Warning - START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
