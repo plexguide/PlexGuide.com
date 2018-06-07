@@ -56,7 +56,7 @@
       - lsof
       - pwgen
       - gawk
-    ignore_errors: yes
+    #ignore_errors: yes
 
   - name: Pip Modes
     pip: "name={{item}} state=latest"
