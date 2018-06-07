@@ -30,7 +30,7 @@ OPTIONS=(A "CloudCMD"
          C "Netdata"
          D "NextCloud"
          E "Ombi"
-         F "PlexRequests"
+         F "Plex Requests (Beta)"
          G "pyLoad"
          H "Resilio"
          I "SpeedTEST Server"
@@ -131,7 +131,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         F)
-            display=PlexRequests
+            display=Plexrequests
             program=plexrequests
             port=3000
             dialog --infobox "Installing: $display" 3 30
