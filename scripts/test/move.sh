@@ -5,8 +5,11 @@
 ##     so that they can be used in the future if need be!    ##
 
 ## For testing new pgdrive encrypt new location
-#rm -r /opt/plexguide/ansible/roles/pgdrive
-#mv /opt/plexguide/ansible/roles/pgdrive_en2 /opt/plexguide/ansible/roles/pgdrive
+rm -r /opt/plexguide/ansible/roles/pgdrive_en/tasks/main.yml
+mv /opt/plexguide/ansible/roles/pgdrive_en/tasks/main-test.yml /opt/plexguide/ansible/roles/pgdrive_en/tasks/main.yml
+## For testing new pgdrive encrypt new location
+rm -r /opt/plexguide/menus/mount/encrypted.sh
+mv /opt/plexguide/menus/mount/encrypted-test.sh /opt/plexguide/menus/mount/encrypted.sh
 
 ## For testing new encache config
 #rm /opt/plexguide/ansible/roles/encache/templates/encache.js2

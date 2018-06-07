@@ -1,0 +1,31 @@
+[Unit]
+Description=drive1 Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone mount drive1: /mnt/.drive1 \
+	--buffer-size=16M \
+	--dir-cache-time=672h \
+	--umask 002 \
+  --vfs-read-chunk-size=32M \
+	--vfs-cache-max-age 675h \
+	--vfs-read-chunk-size-limit=1G \
+	--allow-non-empty \
+	--allow-other \
+  --size-only \
+	--log-level INFO \
+	--uid=1000 \
+	--gid=1000 \
+	--syslog \
+  --config /root/.config/rclone/rclone.conf
+
+ExecStop=/bin/fusermount -uz /mnt/.drive1
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

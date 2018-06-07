@@ -1,0 +1,32 @@
+[Unit]
+Description=TDrive Crypt Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone mount tcrypt: /mnt/tdrive \
+	--buffer-size=16M \
+	--dir-cache-time=672h \
+	--gid=1000 \
+	--log-level INFO \
+	--rc \
+	--umask 002 \
+	--vfs-cache-max-age 675h \
+	--vfs-read-chunk-size-limit=1G \
+	--allow-non-empty \
+	--allow-other \
+	--config /root/.config/rclone/rclone.conf \
+	--size-only \
+	--syslog \
+	--uid=1000 \
+	--vfs-read-chunk-size=32M
+
+ExecStop=/bin/fusermount -uz /mnt/tdrive
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
