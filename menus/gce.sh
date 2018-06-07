@@ -170,6 +170,9 @@ EOF
             exit
             fi
             ;;
+        E) 
+
+            ;;
         F)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         G)
