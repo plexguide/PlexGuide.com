@@ -165,8 +165,15 @@ EOF
             #### RECALL VARIABLES END
             if [[ "$tdrive" != "[tdrive]" ]]
               then
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/menus/mount/unencrypted.sh
+                dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
+                bash /opt/plexguide/menus/gce.sh
+              else
+                systemctl stop move 1>/dev/null 2>&1
+                systemctl disable move 1>/dev/null 2>&1
+                clear
+                bash /opt/plexguide/scripts/supertransfer/config.sh
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+                journalctl -f -u supertransfer2
             exit
             fi
             ;;
