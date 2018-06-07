@@ -146,10 +146,29 @@ EOF
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         D)    
-        clear
-        bash /opt/plexguide/scripts/supertransfer/config.sh
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
-        journalctl -f -u supertransfer2
+            #### RClone Missing Warning -START
+            file="/usr/bin/rclone" 1>/dev/null 2>&1
+              if [ -e "$file" ]
+                then
+                  echo "" 1>/dev/null 2>&1
+                else
+                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
+                  bash /opt/plexguide/menus/mount/main.sh
+                  exit
+              fi
+            #### RClone Missing Warning - END
+
+            #### RECALL VARIABLES START
+            selected="SuperTransfer2"
+            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            #### RECALL VARIABLES END
+            if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
+              then
+            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
+            bash /opt/plexguide/menus/mount/unencrypted.sh
+            exit
+            fi
             ;;
         E)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
