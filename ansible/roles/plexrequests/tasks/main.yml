@@ -31,7 +31,7 @@
 
 - name: Remove PlexRequests Container
   docker_container:
-    name: {{ role_name }}
+    name: "{{ role_name }}"
     state: absent
 
 ############ Directories
@@ -42,7 +42,7 @@
 
 - name: Deploy PlexRequests Container
   docker_container:
-    name: {{ role_name }}
+    name: "{{ role_name }}"
     image: lokenx/{{ role_name }}
     pull: yes
     cpu_shares: 128
