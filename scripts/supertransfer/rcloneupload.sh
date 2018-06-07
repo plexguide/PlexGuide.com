@@ -61,11 +61,15 @@ rclone_upload() {
   local secs=$(( $(date +%s) - $t1 ))
   if [[ $rclone_fin_flag == 1 ]]; then
     printf " [ OK ] $gdsaLeast\tFinished: "${localFile#"$localDir"}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
-    sleep 5
-    rclone rc vfs/forget file=/${localFile#"$localDir"} &>/dev/null
-    printf " [ OK ] Refreshed Cache for "${localFile#"$localDir"}"\n"
-    sleep 10
-    [[ -n $(ls "${localFile}") ]] && sleep 45  # sleep so files are deleted off disk before resuming; good for TV episodes
+    sleep 30
+    if [ ! -d "${localFile}" ]; then
+      rclone rc vfs/forget file=/${localFile#"$localDir"} &>/dev/null
+      if [ ! -d "/mnt/unionfs/${localFile#"$localDir"}" ]; then
+        rclone rc vfs/forget &>/dev/null
+      fi
+      printf " [ OK ] Refreshed Cache for "${localFile#"$localDir"}"\n"
+      sleep 5
+    fi
   else
     printf " [FAIL] $gdsaLeast\tUPLOAD FAILED: "${localFile}" in %dh:%dm:%ds\n" $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
     cat $logfile >> /tmp/rclonefail.log
