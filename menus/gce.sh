@@ -34,7 +34,7 @@ OPTIONS=(A "Install RClone"
          D "PG SuperTransfer2"
          E "PG Programs"
          F "PG Server NET Benchmarks"
-         G "PG Trek"
+         G "PG Trak"
          H "PG Troubleshooting Actions"
          I "PG Backup & Restore"
          J "PG Updates"
@@ -187,7 +187,8 @@ EOF
         F)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         G)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/menus/pgtrak/main.sh
+            ;;
         H)
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
 
