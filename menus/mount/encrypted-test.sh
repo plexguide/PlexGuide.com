@@ -162,13 +162,13 @@ EOF
             if [ "$crypt1" == "[crypt1]" ]
               then
               #### ADDS crypt1 to the UNIONFS PATH
-              echo -n "/mnt/crypt1=RO:" >> /tmp/path
+              echo -n "/mnt/.crypt1=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags crypt1
             else
               if [ "$drive1" == "[drive1]" ]
                 then
               #### ADDS drive1 to the UNIONFS PATH
-                echo -n "/mnt/drive1=RO:" >> /tmp/path
+                echo -n "/mnt/.drive1=RO:" >> /tmp/path
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drive1
               fi
             fi
@@ -176,13 +176,13 @@ EOF
             if [ "$crypt2" == "[crypt2]" ]
               then
               #### ADDS crypt2 to the UNIONFS PATH
-              echo -n "/mnt/crypt2=RO:" >> /tmp/path
+              echo -n "/mnt/.crypt2=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags crypt2
             else
               if [ "$drive2" == "[drive2]" ]
                 then
                   #### ADDS drive2 to the UNIONFS PATH
-                echo -n "/mnt/drive2=RO:" >> /tmp/path
+                echo -n "/mnt/.drive2=RO:" >> /tmp/path
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drive2
               fi
             fi

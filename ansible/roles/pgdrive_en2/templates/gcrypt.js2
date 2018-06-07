@@ -20,6 +20,7 @@ ExecStart=/usr/bin/rclone mount gcrypt: /mnt/gdrive \
 	--uid=1000 \
 	--gid=1000 \
 	--syslog \
+	--drive-shared-with-me \
   --config /root/.config/rclone/rclone.conf
 
 ExecStop=/bin/fusermount -uz /mnt/gdrive

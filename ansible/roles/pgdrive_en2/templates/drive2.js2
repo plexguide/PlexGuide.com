@@ -6,7 +6,7 @@ After=multi-user.target
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/rclone mount drive2: /mnt/drive2 \
+ExecStart=/usr/bin/rclone mount drive2: /mnt/.drive2 \
 	--buffer-size=16M \
 	--dir-cache-time=672h \
 	--umask 002 \
@@ -20,9 +20,10 @@ ExecStart=/usr/bin/rclone mount drive2: /mnt/drive2 \
 	--uid=1000 \
 	--gid=1000 \
 	--syslog \
+	--drive-shared-with-me \
   --config /root/.config/rclone/rclone.conf
 
-ExecStop=/bin/fusermount -uz /mnt/drive2
+ExecStop=/bin/fusermount -uz /mnt/.drive2
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes

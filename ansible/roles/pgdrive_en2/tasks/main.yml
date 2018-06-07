@@ -63,7 +63,7 @@
   - name: Create Basic directories for DRIVE1
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
-      - /mnt/drive1
+      - /mnt/.drive1
     tags:
       - drive1
     ignore_errors: True
@@ -71,7 +71,7 @@
   - name: Create Basic directories for DRIVE2
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
-      - /mnt/drive2
+      - /mnt/.drive2
     tags:
       - drive2
     ignore_errors: True
@@ -79,7 +79,7 @@
   - name: Create Basic directories for CRYPT1
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
-      - /mnt/crypt1
+      - /mnt/.crypt1
     tags:
       - crypt1
     ignore_errors: True
@@ -87,7 +87,7 @@
   - name: Create Basic directories for CRYPT2
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
-      - /mnt/crypt2
+      - /mnt/.crypt2
     tags:
       - crypt2
     ignore_errors: True
