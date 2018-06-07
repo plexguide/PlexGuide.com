@@ -170,20 +170,20 @@ EOF
             exit
             fi
             ;;
-        E)
-            bash /opt/plexguide/menus/benchmark/main.sh ;;
         F)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/menus/benchmark/main.sh ;;
         G)
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+        H)
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
 
-        H)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
         I)
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        J)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        J)
+        K)
             bash /opt/plexguide/scripts/baseinstall/edition.sh
             ;;
         Z)
