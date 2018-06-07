@@ -182,7 +182,7 @@ EOF
             fi
             ;;
         E) 
-
+            bash /opt/plexguide/menus/gce/programs.sh
             ;;
         F)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
