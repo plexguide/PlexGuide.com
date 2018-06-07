@@ -22,9 +22,9 @@ bash /opt/plexguide/menus/gce/gcechecker.sh
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-HEIGHT=17
+HEIGHT=18
 WIDTH=40
-CHOICE_HEIGHT=11
+CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
