@@ -79,7 +79,7 @@
   git:
     repo: https://github.com/Admin9705/pgtrak/
     dest: /opt/appdata/pgtrak
-    version: 5.083
+    version: 3
     force: yes
     
 - name: Install pip requirements
