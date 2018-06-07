@@ -8,6 +8,9 @@
 rm -r /opt/plexguide/ansible/roles/pgdrive_en
 mv /opt/plexguide/ansible/roles/pgdrive_en2 /opt/plexguide/ansible/roles/pgdrive_en
 ## For testing new pgdrive encrypt new location
+mv /opt/plexguide/ansible/roles/pgdrive_en/templates/move_script.js2 /opt/plexguide/ansible/roles/pgdrive_en/templates/move_script-old.js2
+mv /opt/plexguide/ansible/roles/pgdrive_en/templates/copy_move_script.js2 /opt/plexguide/ansible/roles/pgdrive_en/templates/move_script.js2
+## For testing new pgdrive encrypt new location
 rm -r /opt/plexguide/menus/mount/encrypted.sh
 mv /opt/plexguide/menus/mount/encrypted-test.sh /opt/plexguide/menus/mount/encrypted.sh
 

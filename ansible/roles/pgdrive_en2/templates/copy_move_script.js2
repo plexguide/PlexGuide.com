@@ -19,7 +19,7 @@ rclone copy --bwlimit 9M \
   --log-file=/opt/appdata/plexguide/rclone \
   --log-level INFO \
   --stats 5s \
-  /mnt/move crypt1:/
+  /mnt/move gcrypt:/
 
   rclone copy --bwlimit 9M \
     --tpslimit 6 \
@@ -45,7 +45,7 @@ rclone copy --bwlimit 9M \
       --log-file=/opt/appdata/plexguide/rclone \
       --log-level INFO \
       --stats 5s \
-      /mnt/move gcrypt:/
+      /mnt/move crypt1:/
 
 sleep 300
 # Remove empty directories (MrWednesday)
