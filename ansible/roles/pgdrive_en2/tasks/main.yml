@@ -121,23 +121,23 @@
     tags:
       - move_en
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=move daemon_reload=yes enabled=no
-    tags:
-      - move_en
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
+#    tags:
+#      - move_en
 
   - name: Start Move
-    systemd: state=started name=move enabled=yes
+    systemd: state=started name=move daemon_reload=yes enabled=yes
     tags:
       - move_en
 ########################################## MOVE END
 
 ########### GCRYPT
-  - name: Stop If GDRIVE Service Running
-    systemd: state=stopped name=gdrive
-    tags:
-      - gcrypt
-    ignore_errors: yes
+#  - name: Stop If GDRIVE Service Running
+#    systemd: state=stopped name=gdrive
+#    tags:
+#      - gcrypt
+#    ignore_errors: yes
 
   - name: Daemon-Reload - Stop GDRIVE Service
     systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
@@ -159,22 +159,22 @@
     tags:
       - gcrypt
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-    tags:
-      - gcrypt
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+#    tags:
+#      - gcrypt
 
   - name: Start GCRYPT
-    systemd: state=started name=gcrypt enabled=yes
+    systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
     tags:
       - gcrypt
 
 ########### TCRYPT
-  - name: Stop If TDRIVE Service Running
-    systemd: state=stopped name=tdrive
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Stop If TDRIVE Service Running
+#    systemd: state=stopped name=tdrive
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
   - name: Daemon-Reload - Stop TDRIVE Service
     systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
@@ -196,13 +196,13 @@
     tags:
       - tcrypt
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
-    tags:
-      - tcrypt
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
+#    tags:
+#      - tcrypt
 
   - name: Start TCRYPT
-    systemd: state=started name=tcrypt enabled=yes
+    systemd: state=started name=tcrypt daemon_reload=yes enabled=yes
     tags:
       - tcrypt
 
@@ -221,13 +221,13 @@
     tags:
       - drive1
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=drive1 daemon_reload=yes enabled=no
-    tags:
-      - drive1
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=drive1 daemon_reload=yes enabled=no
+#    tags:
+#      - drive1
 
   - name: Start DRIVE1 SERVICE
-    systemd: state=started name=drive1 enabled=yes
+    systemd: state=started name=drive1 daemon_reload=yes enabled=yes
     tags:
       - drive1
 
@@ -246,13 +246,13 @@
     tags:
       - drive2
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=drive2 daemon_reload=yes enabled=no
-    tags:
-      - drive2
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=drive2 daemon_reload=yes enabled=no
+#    tags:
+#      - drive2
 
   - name: Start DRIVE2 SERVICE
-    systemd: state=started name=drive2 enabled=yes
+    systemd: state=started name=drive2 daemon_reload=yes enabled=yes
     tags:
       - drive2
 
@@ -271,13 +271,13 @@
     tags:
       - crypt1
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=crypt1 daemon_reload=yes enabled=no
-    tags:
-      - crypt1
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=crypt1 daemon_reload=yes enabled=no
+#    tags:
+#      - crypt1
 
   - name: Start CRYPT1
-    systemd: state=started name=crypt1 enabled=yes
+    systemd: state=started name=crypt1 daemon_reload=yes enabled=yes
     tags:
       - crypt1
 ########### CRYPT2
@@ -295,13 +295,13 @@
     tags:
       - crypt2
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=crypt2 daemon_reload=yes enabled=no
-    tags:
-      - crypt2
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=crypt2 daemon_reload=yes enabled=no
+#    tags:
+#      - crypt2
 
   - name: Start CRYPT2
-    systemd: state=started name=crypt2 enabled=yes
+    systemd: state=started name=crypt2 daemon_reload=yes enabled=yes
     tags:
       - crypt2
 
@@ -328,12 +328,12 @@
     tags:
       - unionfs_en
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-    tags:
-      - unionfs_en
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+#    tags:
+#      - unionfs_en
 
   - name: Start UNIONFS
-    systemd: state=started name=unionfs enabled=yes
+    systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs_en
