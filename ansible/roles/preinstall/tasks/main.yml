@@ -63,6 +63,19 @@
       - docker-py
       - certbot
 
+- name: mergerfs apt-get
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - git
+    - g++
+    - pkg-config
+    - git-buildpackage
+    - pandoc
+    - debhelper
+    - libfuse-dev
+    - libattr1-dev
+    ignore_errors: yes
+    
   - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
     shell: pip install git+https://github.com/larsks/ansible-toolbox
     ignore_errors: yes
