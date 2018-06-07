@@ -174,6 +174,10 @@ EOF
                 bash /opt/plexguide/scripts/supertransfer/config.sh
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
                 journalctl -f -u supertransfer2
+                dialog --infobox "Stopping & Removing CloudST2" 3 42
+                sleep 1
+                docker stop cloudst2
+                docker rm cloudst2
             exit
             fi
             ;;
