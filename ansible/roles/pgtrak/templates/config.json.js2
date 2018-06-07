@@ -15,8 +15,7 @@
     }
   },
   "notifications": {
-    "verbose": false,
-    }
+    "verbose": false
   },
   "filters": {
     "shows": {
