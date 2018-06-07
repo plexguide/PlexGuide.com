@@ -29,15 +29,16 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
 OPTIONS=(A "Install RClone"
-         B "Deploy PG Drive"
-         C "PG SuperTransfer2"
-         D "PG Programs"
-         E "PG Server NET Benchmarks"
-         F "PG Trek"
-         G "PG Troubleshooting Actions"
-         H "PG Backup & Restore"
-         I "PG Updates"
-         J "PG Edition Switch"
+         B "Configure RCLONE"
+         C "Deploy PG Drive"
+         D "PG SuperTransfer2"
+         E "PG Programs"
+         F "PG Server NET Benchmarks"
+         G "PG Trek"
+         H "PG Troubleshooting Actions"
+         I "PG Backup & Restore"
+         J "PG Updates"
+         K "PG Edition Switch"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -70,6 +71,27 @@ EOF
             touch /mnt/gdrive/plexguide/
             ;;
         B)
+            #### RClone Missing Warning - START
+            file="/usr/bin/rclone" 1>/dev/null 2>&1
+              if [ -e "$file" ]
+                then
+                  echo "" 1>/dev/null 2>&1
+                else
+                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
+                  bash /opt/plexguide/menus/mount/main.sh
+                  exit
+              fi
+            #### RClone Missing Warning - END
+            rclone config
+            touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
+            #### GREP Checks
+            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            mkdir -p /root/.config/rclone/
+            chown -R 1000:1000 /root/.config/rclone/
+            cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
+            ;;
+        C)
             clear
             #### RClone Missing Warning
             file="/usr/bin/rclone" 1>/dev/null 2>&1
@@ -90,8 +112,6 @@ EOF
         bash /opt/plexguide/scripts/supertransfer/config.sh
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
         journalctl -f -u supertransfer2
-            ;;
-        C)
             ;;
         E)
             bash /opt/plexguide/menus/benchmark/main.sh ;;
