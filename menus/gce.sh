@@ -107,6 +107,7 @@ EOF
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
+            clear
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
 
 ####  See encrypt.sh for example of script below in use!
@@ -159,11 +160,10 @@ EOF
             #### RClone Missing Warning - END
 
             #### RECALL VARIABLES START
-            selected="SuperTransfer2"
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
             #### RECALL VARIABLES END
-            if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
+            if [[ "$tdrive" != "[tdrive]" ]]
               then
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/menus/mount/unencrypted.sh
