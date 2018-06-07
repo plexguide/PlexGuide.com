@@ -131,7 +131,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         F)
-            display=Plex Requests (Beta)
+            display=PlexRequests
             program=plexrequests
             port=3000
             dialog --infobox "Installing: $display" 3 30
