@@ -26,8 +26,8 @@
   ignore_errors: True
 ##########
 
-- name: Install pip requirements
-  pip:
+#- name: Install pip requirements
+- pip:
     requirements: plexapi
     executable: pip2
 
