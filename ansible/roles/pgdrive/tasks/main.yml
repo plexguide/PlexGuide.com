@@ -107,13 +107,13 @@
     tags:
       - move
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=move daemon_reload=yes enabled=no
-    tags:
-      - move
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
+#    tags:
+#      - move
 
   - name: Start MOVE SERVICE
-    systemd: state=started name=move enabled=yes
+    systemd: state=started name=move daemon_reload=yes enabled=yes
     tags:
       - move
 ########################################## MOVE END
@@ -146,13 +146,13 @@
     tags:
       - gdrive
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
-    tags:
-      - gdrive
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+#    tags:
+#      - gdrive
 
   - name: Start GDRIVE SERVICE
-    systemd: state=started name=gdrive enabled=yes
+    systemd: state=started name=gdrive daemon_reload=yes enabled=yes
     tags:
       - gdrive
       
@@ -215,10 +215,10 @@
     tags:
       - unionfs
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-    tags:
-      - unionfs
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+#    tags:
+#      - unionfs
 
   - name: Start UNIONFS Service
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
