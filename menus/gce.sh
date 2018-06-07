@@ -49,7 +49,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-clear
 curl https://rclone.org/install.sh | sudo bash -s beta
 sleep 1
 dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE Beta is now Installed!" 0 0
@@ -66,9 +65,6 @@ EOF
 
             chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
             chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
-            clear
-            rclone config
-            touch /mnt/gdrive/plexguide/
             ;;
         B)
             #### RClone Missing Warning - START
