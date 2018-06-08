@@ -33,6 +33,7 @@
     docker_container:
       name: "{{ Plexrequests }}"
       state: absent
+    ignore_errors: True
 
   ############ Directories
   - name: Create Basic Directories
