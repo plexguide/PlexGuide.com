@@ -31,7 +31,7 @@
 
   - name: Remove PlexRequests Container
     docker_container:
-      name: "{{ Plexrequests }}"
+      name: plexrequests
       state: absent
     ignore_errors: True
 
@@ -39,14 +39,14 @@
   - name: Create Basic Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
-      - /opt/appdata/{{ Plexrequests }}
+      - /opt/appdata/plexrequests
 
   - name: Deploy PlexRequests Container
     # docker-compose.yml
     docker_container:
       services:
       dashboard:
-      name: "{{ Plexrequests }}"
+      name: plexrequests
       restart: always
       image: lokenx/plexrequests-meteor
       pull: yes
@@ -66,8 +66,7 @@
       image: mongo:latest
       restart: always
       volumes:
-        - /opt/appdata/Plexrequests/>:/data/db
-        - /opt/appdata/{{ Plexrequests }}:/config
+        - /opt/appdata/plexrequests:/config
         - /etc/localtime:/etc/localtime:ro
       networks:
         - name: plexguide
