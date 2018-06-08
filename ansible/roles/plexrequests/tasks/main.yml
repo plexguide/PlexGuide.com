@@ -42,9 +42,9 @@
 
 - name: Deploy PlexRequests Container
   # docker-compose.yml
-version: '2'
-services:
-  dashboard:
+ docker_container:
+    services:
+    dashboard:
     name: "{{ Plexrequests }}"
     restart: always
     image: lokenx/plexrequests-meteor
