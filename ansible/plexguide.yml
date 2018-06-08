@@ -97,4 +97,4 @@
   - { role: qbittorrent-vpn, tags: ['qbittorrent-vpn'] }
   - { role: webtools, tags: ['webtools'] }
   - { role: jdownloader2, tags: ['jdownloader2'] }
-  - { role: plexrequests, tags: ['plexrequests'] }
+#  - { role: plexrequests, tags: ['plexrequests'] }
