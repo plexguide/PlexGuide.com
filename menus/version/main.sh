@@ -76,19 +76,19 @@ case $CHOICE in
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.086u1" ;; 
+            version="5.086b2" ;; 
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.083" ;; 
+            version="5.083" ;;
         D)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.080" ;;
         E)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.079" ;; 
+            version="5.079" ;;
         F)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.078" ;;         
+            version="5.078" ;;
         Z)
             bash /opt/plexguide/menus/main.sh
             exit 0
