@@ -54,7 +54,7 @@
         - "{{ports.stdout}}3000:3000"
       env:
         PUID: "1000"
-        PGID: "1000
+        PGID: "1000"
       links:
        - mongo
       environment:
