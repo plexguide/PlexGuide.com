@@ -1,4 +1,5 @@
 #!/bin/bash -i
+
 #
 # [PlexGuide Menu]
 #
@@ -30,4 +31,3 @@ alias nmove='sudo nano /etc/systemd/system/move.service && systemctl daemon-relo
 
 alias sst2='sudo systemctl status supertransfer2'
 alias ssupertransfer2='sudo systemctl status supertransfer2'
-
