@@ -298,5 +298,6 @@ file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
       bash /opt/plexguide/menus/setup/servertype.sh
 fi
 
+source /opt/plexguide/scripts/alias/main.sh
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
