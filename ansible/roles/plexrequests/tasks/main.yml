@@ -44,8 +44,6 @@
   - name: Deploy PlexRequests Container
     # docker-compose.yml
     docker_container:
-      services:
-      dashboard:
       name: plexrequests
       restart: always
       image: lokenx/plexrequests-meteor
@@ -56,16 +54,19 @@
       env:
         PUID: "1000"
         PGID: "1000"
+        MONGO_URL: "mongodb://mongo:27017/plexrequests"
+        ROOT_URL: "{{domain.stdout}}"
       links:
         - mongo
-      environment:
-        - MONGO_URL=mongodb://mongo:27017/plexrequests
-        - ROOT_URL={{domain.stdout}}
+      labels:
+        traefik.enable: "true"
+        traefik.frontend.redirect.entryPoint: "https"
+        traefik.frontend.rule: "Host:plexrequests.{{domain.stdout}},plexrequest.{{domain.stdout}},pr.{{domain.stdout}}"
+        traefik.port: "3000"
 
   - name: MongoDB
     docker_container:
-      name: cloudcmd
-      mongo:
+      name: mongo
       image: mongo:latest
       restart: always
       volumes:
@@ -77,8 +78,3 @@
             - plexrequests
       restart_policy: always
       state: started
-      labels:
-        traefik.enable: "true"
-        traefik.frontend.redirect.entryPoint: "https"
-        traefik.frontend.rule: "Host:plexrequests.{{domain.stdout}},plexrequest.{{domain.stdout}},pr.{{domain.stdout}}"
-        traefik.port: "3000"
