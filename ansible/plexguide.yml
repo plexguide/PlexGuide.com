@@ -33,6 +33,7 @@
   - { role: monitorr, tags: ['monitorr'] }
   - { role: deploy2, tags: ['deploy2'] }
   - { role: calibre, tags: [' calibre'] }
+  - { role: alias, tags: [' alias'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
