@@ -12,7 +12,7 @@ ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gdrive: /mnt/gdr
                                             --size-only \
                                             --dir-cache-time=2m \
                                             --vfs-read-chunk-size=64M \ 
-                                            --vfs-cache-max-age 675h \
+                                            --vfs-cache-max-age=675h \
                                             --vfs-read-chunk-size-limit=1G \
                                             --buffer-size=32M \
                                             --syslog \
