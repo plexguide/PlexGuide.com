@@ -29,3 +29,45 @@
       dest: /bin/nmove
       force: yes
       mode: 0775 
+
+  - name: Install Status GDrive
+    template:
+      src: sgdrive
+      dest: /bin/sgdrive
+      force: yes
+      mode: 0775 
+
+  - name: Nano GDrive
+    template:
+      src: ngdrive
+      dest: /bin/ngdrive
+      force: yes
+      mode: 0775 
+
+  - name: Install Status TDrive
+  template:
+    src: stdrive
+    dest: /bin/stdrive
+    force: yes
+    mode: 0775 
+
+  - name: Nano TDrive
+    template:
+      src: ntdrive
+      dest: /bin/ntdrive
+      force: yes
+      mode: 0775 
+
+  - name: Install Status UnionFS
+    template:
+      src: sunionfs
+      dest: /bin/sunionfs
+      force: yes
+      mode: 0775 
+
+  - name: Nano UnionFS
+    template:
+      src: nunionfs
+      dest: /bin/nunionfs
+      force: yes
+      mode: 0775 

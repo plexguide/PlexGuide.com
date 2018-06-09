@@ -16,4 +16,4 @@
 #
 #################################################################################
 
-sudo nano /etc/systemd/system/move.service && systemctl daemon-reload
+sudo nano /etc/systemd/system/tdrive.service && systemctl daemon-reload

@@ -16,4 +16,4 @@
 #
 #################################################################################
 
-sudo nano /etc/systemd/system/move.service && systemctl daemon-reload
+sudo systemctl status tdrive
