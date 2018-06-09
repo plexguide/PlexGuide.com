@@ -57,10 +57,10 @@
         PUID: "1000"
         PGID: "1000"
       links:
-       - mongo
+        - mongo
       environment:
-       - MONGO_URL=mongodb://mongo:27017/plexrequests
-       - ROOT_URL={{domain.stdout}}
+        - MONGO_URL=mongodb://mongo:27017/plexrequests
+        - ROOT_URL={{domain.stdout}}
 
     mongo:
       image: mongo:latest

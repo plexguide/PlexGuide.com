@@ -32,8 +32,4 @@ alias nmove='sudo nano /etc/systemd/system/move.service && systemctl daemon-relo
 alias sst2='sudo systemctl status supertransfer2'
 alias ssupertransfer2='sudo systemctl status supertransfer2'
 
-alias sst3='sudo systemctl status supertransfer2'
-alias sst5='sudo systemctl status supertransfer2'
-alias nmove5='sudo nano /etc/systemd/system/move.service && systemctl daemon-reload'
-
 clear
