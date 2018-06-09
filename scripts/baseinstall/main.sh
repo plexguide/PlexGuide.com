@@ -65,18 +65,10 @@ echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 sleep 2
 clear
 yes | apt-get update
+yes | apt-get install software-properties-common 
+yes | apt-get install sysstat nmon
+sed -i 's/false/true/g' /etc/default/sysstat
 sleep 2
-
-#echo "10" | dialog --gauge "Installing Python Support" 7 50 0
-#bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
-#sleep 1
-
-echo "12" | dialog --gauge "Installing: Software Properties Common" 7 50 0
-yes | apt-get install software-properties-common 1>/dev/null 2>&1
-
-echo "18" | dialog --gauge "Enabling System Health Monitoring" 7 50 0
-yes | apt-get install sysstat nmon 1>/dev/null 2>&1
-sed -i 's/false/true/g' /etc/default/sysstat 1>/dev/null 2>&1
 
 ############################################################ Enables Use of ROLES AfterWards
 pg_ansible=$( cat /var/plexguide/pg.ansible )
@@ -84,10 +76,10 @@ pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 
 if [ "$pg_ansible" == "$pg_ansible_stored" ]
     then
-      echo "22" | dialog --gauge "Ansible Is Already Installed" 7 50 0
+      echo "20" | dialog --gauge "Ansible Is Already Installed" 7 50 0
       sleep 2
     else 
-      echo "22" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
+      echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
       yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
       apt-get update -y 1>/dev/null 2>&1
       apt-get install ansible -y 1>/dev/null 2>&1
@@ -126,6 +118,8 @@ if [ "$pg_dep" == "$pg_dep_stored" ]
       sleep 2
       clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
+      sleep2
+      cat /var/plexguide/pg.dep > /var/plexguide/pg.dep.stored
 fi 
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
@@ -156,18 +150,22 @@ if [ "$pg_alias" == "$pg_alias_stored" ]
       sleep 2
       clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags alias
+      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+      sleep 2
 fi 
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 sleep 2
 clear
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
+sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 sleep 2
 clear
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
+sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
 ############################################################ Docker Install
