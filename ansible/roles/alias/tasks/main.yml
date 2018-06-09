@@ -45,11 +45,11 @@
       mode: 0775 
 
   - name: Install Status TDrive
-  template:
-    src: stdrive
-    dest: /bin/stdrive
-    force: yes
-    mode: 0775 
+    template:
+      src: stdrive
+      dest: /bin/stdrive
+      force: yes
+      mode: 0775 
 
   - name: Nano TDrive
     template:
