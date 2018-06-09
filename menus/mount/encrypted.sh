@@ -186,8 +186,8 @@ EOF
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
-              bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+              bash /opt/plexguide/scripts/supertransfer-encrypted/config.sh
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi
