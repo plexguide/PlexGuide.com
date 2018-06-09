@@ -31,7 +31,7 @@ _Main() {
       "--exclude=".unionfs/**""
       "--exclude='**partial~'"
       "--fast-list"
-      "--log-file=/opt/appdata/plexguide/rclone"
+      "--log-file=/opt/appdata/plexguide/move.log"
       "--log-level INFO"
       "--max-size 99G"
       "--stats 5s"
