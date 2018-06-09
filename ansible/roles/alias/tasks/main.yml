@@ -16,9 +16,16 @@
 #
 #################################################################################
 ---
-  - name: Install PGUpdate
+  - name: Install Status Move
     template:
       src: smove
       dest: /bin/smove
+      force: yes
+      mode: 0775 
+
+  - name: Nano Move
+    template:
+      src: nmove
+      dest: /bin/nmove
       force: yes
       mode: 0775 
