@@ -19,6 +19,6 @@
   - name: Install PGUpdate
     template:
       src: smove
-      dest: /bin/pgupdate
+      dest: /bin/smove
       force: yes
       mode: 0775 
