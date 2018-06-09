@@ -110,9 +110,20 @@ echo "inventory = inventory" >> /etc/ansible/ansible.cfg
   fi
 
 ############################################################ Start of Role Execution
-echo "26" | dialog --gauge "Installing: PlexGuide Dependencies" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
+#### DEPENDENCIES
+pg_dep=$( cat /var/plexguide/pg.dep )
+pg_dep_stored=$( cat /var/plexguide/pg.dep.stored )
+
+if [ "$pg_dep" == "$pg_dep_stored" ]
+    then
+      echo "26" | dialog --gauge "PG Dependencies Installed Already" 7 50 0
+      sleep 2
+    else 
+      echo "26" | dialog --gauge "Installing: PG Dependencies" 7 50 0
+      sleep 2
+      clear
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
+fi 
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands &>/dev/null &
@@ -135,21 +146,24 @@ pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
 
 if [ "$pg_alias" == "$pg_alias_stored" ]
     then
-      echo "22" | dialog --gauge "Alias File Is Already Installed" 7 50 0
+      echo "34" | dialog --gauge "Alias File Is Already Installed" 7 50 0
       sleep 2
     else 
-      echo "22" | dialog --gauge "Installing: Alias File" 7 50 0
+      echo "34" | dialog --gauge "Installing: Alias File" 7 50 0
       sleep 2
+      clear
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags alias
 fi 
 
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 sleep 2
+clear
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 sleep 2
+clear
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
 #read -n 1 -s -r -p "Press any key to continue "
 
