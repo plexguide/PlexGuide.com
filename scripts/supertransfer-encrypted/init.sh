@@ -1,5 +1,5 @@
 #!/bin/bash
-#source /opt/plexguide/scripts/supertransfer/settings.conf
+#source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
 # functions:
 # cat_Art() - init msg
 # upload_Json() - configure with new jsons
@@ -140,7 +140,7 @@ read -p "View Error Log? y/n>" answer
 }
 
 upload_Json(){
-source /opt/plexguide/scripts/supertransfer/settings.conf
+source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
 source ${userSettings}
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
 [[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
@@ -148,7 +148,7 @@ source ${userSettings}
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
 cd $jsonPath
-python3 /opt/plexguide/scripts/supertransfer/jsonUpload.py &>/dev/null &
+python3 /opt/plexguide/scripts/supertransfer-encrypted/jsonUpload.py &>/dev/null &
 jobpid=$!
 trap "kill $jobpid && exit 1" SIGTERM
 

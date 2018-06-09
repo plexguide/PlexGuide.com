@@ -2,9 +2,9 @@
 # INIT
 ############################################################################
 echo -e " [INFO] Initializing Supertransfer2 Load Balanced Multi-SA Uploader..."
-source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
-source /opt/plexguide/scripts/supertransfer/init.sh
-source /opt/plexguide/scripts/supertransfer/settings.conf
+source /opt/plexguide/scripts/supertransfer-encrypted/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/init.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
 source ${userSettings}
 #dbug=on
 

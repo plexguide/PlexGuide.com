@@ -1,8 +1,8 @@
 #!/bin/bash
-source /opt/plexguide/scripts/supertransfer/init.sh
-source /opt/plexguide/scripts/supertransfer/rcloneupload.sh
-source /opt/plexguide/scripts/supertransfer/settings.conf
-source /opt/plexguide/scripts/supertransfer/spinner.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/init.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
+source /opt/plexguide/scripts/supertransfer-encrypted/spinner.sh
 
 declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3 gawk)
 for app in $reqlist; do
@@ -19,7 +19,7 @@ fi
 [[ ! -d $jsonPath ]] && mkdir $jsonPath &>/dev/null
 [[ ! -d $logDir ]] || mkdir $logDir &>/dev/null
 [[ ! -e $userSettings ]] && cp /opt/plexguide/scripts/supertransfer/usersettings_template_dont_edit ${userSettings}
-[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp /opt/plexguide/scripts/supertransfer/auto-rename-my-keys.sh $jsonPath
+[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp /opt/plexguide/scripts/supertransfer-encrypted/auto-rename-my-keys.sh $jsonPath
 [[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
 source $userSettings
 
