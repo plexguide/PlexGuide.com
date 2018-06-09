@@ -63,6 +63,7 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
 ############################################################ Starting Install Processing
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 sleep 2
+clear
 yes | apt-get update
 sleep 2
 
