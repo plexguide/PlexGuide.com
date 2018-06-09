@@ -17,7 +17,7 @@
 #
 #################################################################################
 
-alias sgdrive='sudo systemctl status gdrive'
+alias sgdrive='sudo systemctl status gdrive's
 alias ngdrive='sudo nano /etc/systemd/system/gdrive.service && systemctl daemon-reload'
 
 alias stdrive='sudo systemctl status tdrive'
@@ -31,3 +31,5 @@ alias nmove='sudo nano /etc/systemd/system/move.service && systemctl daemon-relo
 
 alias sst2='sudo systemctl status supertransfer2'
 alias ssupertransfer2='sudo systemctl status supertransfer2'
+
+alias sst3='sudo systemctl status supertransfer2'
