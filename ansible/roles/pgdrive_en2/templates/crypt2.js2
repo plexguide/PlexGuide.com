@@ -7,19 +7,19 @@ Type=simple
 User=0
 Group=0
 ExecStart=/usr/bin/rclone mount crypt2: /mnt/.crypt2 \
-	--buffer-size=16M \
-	--dir-cache-time=672h \
-	--umask 002 \
-  --vfs-read-chunk-size=32M \
-	--vfs-cache-max-age 675h \
-	--vfs-read-chunk-size-limit=1G \
 	--allow-non-empty \
 	--allow-other \
-  --size-only \
-	--log-level INFO \
 	--uid=1000 \
 	--gid=1000 \
+	--size-only \
+	--dir-cache-time=2m \
+  --vfs-read-chunk-size=64M \
+	--vfs-cache-max-age 675h \
+	--vfs-read-chunk-size-limit=1G \
+	--buffer-size=32M \
 	--syslog \
+	--umask 002 \
+	--log-level INFO \
 	--drive-shared-with-me \
   --config /root/.config/rclone/rclone.conf
 

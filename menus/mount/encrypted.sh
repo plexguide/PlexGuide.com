@@ -21,9 +21,9 @@ export NCURSES_NO_UTF8_ACS=1
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
-HEIGHT=15
+HEIGHT=14
 WIDTH=50
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
@@ -32,8 +32,7 @@ OPTIONS=(A "Install: RClone"
          B "Config : RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
-         E "Deploy : PGScan (NOTREADY)"
-         F "Remove old services - e.g. PlexDrive"
+         E "Remove old services - e.g. PlexDrive"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -108,7 +107,6 @@ EOF
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
-#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrive_standard_en
 
 #            if dialog --stdout --title "PAY ATTENTION!" \
 #              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -188,8 +186,8 @@ EOF
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
-              bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+              bash /opt/plexguide/scripts/supertransfer-encrypted/config.sh
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi
@@ -199,19 +197,6 @@ EOF
             ;;
 
         E)
-            if [ ! "$(docker ps -q -f name=plex)" ]; then
-              dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
-            else
-              if [ ! -s /opt/appdata/plexguide/plextoken ]; then
-                dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
-                bash /opt/plexguide/scripts/plextoken/main.sh
-              fi
-              ansible-role pgscan
-              dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
-            fi
-
-            ;;
-        F)
           ansible-role services_remove
           dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
           ;;

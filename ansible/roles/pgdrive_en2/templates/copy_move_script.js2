@@ -16,7 +16,7 @@ rclone copy --bwlimit 9M \
   --exclude=".unionfs-fuse/**" \
   --checkers=16 \
   --max-size 99G \
-  --log-file=/opt/appdata/plexguide/rclone \
+  --log-file=/opt/appdata/plexguide/move-gcrypt.log \
   --log-level INFO \
   --stats 5s \
   /mnt/move gcrypt:/
@@ -29,7 +29,7 @@ rclone copy --bwlimit 9M \
     --exclude=".unionfs-fuse/**" \
     --checkers=16 \
     --max-size 99G \
-    --log-file=/opt/appdata/plexguide/rclone \
+    --log-file=/opt/appdata/plexguide/move-crypt2.log \
     --log-level INFO \
     --stats 5s \
     /mnt/move crypt2:/
@@ -42,7 +42,7 @@ rclone copy --bwlimit 9M \
       --exclude=".unionfs-fuse/**" \
       --checkers=16 \
       --max-size 99G \
-      --log-file=/opt/appdata/plexguide/rclone \
+      --log-file=/opt/appdata/plexguide/move-crypt1.log \
       --log-level INFO \
       --stats 5s \
       /mnt/move crypt1:/

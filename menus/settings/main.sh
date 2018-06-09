@@ -59,7 +59,7 @@ case $CHOICE in
     E)
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     F)
-        bash /opt/plexguide/menus/transfer/menu.sh ;;
+        bash /opt/plexguide/menus/watchtower/main.sh ;;
     G)
         bash /opt/plexguide/menus/migrate/main.sh ;;
     H)

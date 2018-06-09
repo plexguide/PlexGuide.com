@@ -24,6 +24,14 @@
     name: emby
     state: absent
 
+- name: stat embyserver
+  stat: path=/opt/appdata/embyserver
+  register: embyserver_stat
+
+- name: Move embyserver to emby
+  command: mv /opt/appdata/embyserver /opt/appdata/emby
+  when: embyserver_stat.stat.exists
+
 - name: Deploy Emby Container
   docker_container:
     name: emby
