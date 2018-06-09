@@ -62,7 +62,9 @@ file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
   fi
 ############################################################ Starting Install Processing
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
-yes | apt-get update 1>/dev/null 2>&1
+sleep 2
+yes | apt-get update
+sleep 2
 
 #echo "10" | dialog --gauge "Installing Python Support" 7 50 0
 #bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
