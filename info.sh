@@ -33,3 +33,4 @@ echo "edge" > /var/plexguide/pg.docker18.edition
 echo "1" > /var/plexguide/pg.ansible
 echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
+echo "1" > /var/plexguide/pg.alias

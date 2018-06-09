@@ -129,12 +129,28 @@ if [ -e "$file" ]
 fi
 # END########################### If doesn't exist, put /mnt into the file for the folders role
 
+######## ALIAS
+pg_alias=$( cat /var/plexguide/pg.alias )
+pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+
+if [ "$pg_alias" == "$pg_alias_stored" ]
+    then
+      echo "22" | dialog --gauge "Alias File Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "22" | dialog --gauge "Installing: Alias File" 7 50 0
+      sleep 2
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags alias
+fi 
+
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 1>/dev/null 2>&1
+sleep 2
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders 
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label 1>/dev/null 2>&1
+sleep 2
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
 #read -n 1 -s -r -p "Press any key to continue "
 
 ############################################################ Docker Install

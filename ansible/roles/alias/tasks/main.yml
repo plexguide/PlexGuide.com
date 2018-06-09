@@ -71,3 +71,10 @@
       dest: /bin/nunionfs
       force: yes
       mode: 0775 
+
+  - name: Install Status SuperTransfer2
+    template:
+      src: sst2
+      dest: /bin/sst2
+      force: yes
+      mode: 0775 

@@ -15,4 +15,5 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-sudo systemctl status gdrive
+
+sudo systemctl status tdrive
