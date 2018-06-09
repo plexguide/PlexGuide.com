@@ -22,13 +22,6 @@
   - include_role:
       name: variables
 
-  ########## Unique for TLD
-  - name: Register TLD if it exists
-    shell: "cat /var/plexguide/tld.{{ Plexrequests }}"
-    register: tld
-    ignore_errors: True
-  ##########
-
   - name: Remove PlexRequests Container
     docker_container:
       name: plexrequests
