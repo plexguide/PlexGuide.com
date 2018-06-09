@@ -18,9 +18,6 @@
 #################################################################################
 
 alias sgdrive='sudo systemctl status gdrive'
-alias
-sgdrive
-
 alias ngdrive='sudo nano /etc/systemd/system/gdrive.service && systemctl daemon-reload'
 
 alias stdrive='sudo systemctl status tdrive'
