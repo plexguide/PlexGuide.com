@@ -16,4 +16,4 @@
 #
 #################################################################################
 
-sudo systemctl status tdrive
+sudo systemctl status supertransfer2
