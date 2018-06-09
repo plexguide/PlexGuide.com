@@ -62,7 +62,10 @@
         - MONGO_URL=mongodb://mongo:27017/plexrequests
         - ROOT_URL={{domain.stdout}}
 
-    mongo:
+  - name: MongoDB
+    docker_container:
+      name: cloudcmd
+      mongo:
       image: mongo:latest
       restart: always
       volumes:
