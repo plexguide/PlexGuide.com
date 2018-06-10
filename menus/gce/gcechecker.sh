@@ -19,11 +19,11 @@ deploy="no"
 drop=$(cat /var/plexguide/gce.check)
 
 ### Set This Up Incase BoneHead didn't pick the NVME drives, but still requires the two drives setup
-file="/dev/sdb"
-  if [ -e "$file" ] && [ "$drop" != "yes" ]
-    then
-      deploy="yes"
-  fi
+#file="/dev/sdb"
+#  if [ -e "$file" ] && [ "$drop" != "yes" ]
+#    then
+#      deploy="yes"
+#  fi
 
 file="/dev/nvme0n1"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
@@ -55,6 +55,7 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       
       rm -r /tmp
       ln -s /nvme1/tmp /
+      mkdir /nvme1/tmp
 
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /nvme1 1>/dev/null 2>&1
