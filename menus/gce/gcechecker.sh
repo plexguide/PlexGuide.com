@@ -75,7 +75,7 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
 
       mkdir -p /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
       chmod 0755 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
-      chown -R 1000:1000 /nvme1/opt/appdata/radarr  1>/dev/null 2>&1
+      chown -R 1000:1000 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
       rm -r /opt/appdata/radarr
       ln -s /nvme1/opt/appdata/radarr /opt/appdata
 
@@ -87,7 +87,7 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
 
       mkdir -p /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
       chmod 0755 /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
-      chown -R 1000:1000 /nvme1/opt/appdata/sonarr  1>/dev/null 2>&1
+      chown -R 1000:1000 /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
       rm -r /opt/appdata/sonarr
       ln -s /nvme1/opt/appdata/sonarr /opt/appdata
 
