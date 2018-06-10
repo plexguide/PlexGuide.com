@@ -40,6 +40,7 @@
       - {name: sdrive.service}
       - {name: tdrive.service}
       - {name: gdrive.service}
+#      - {name: supertransfer2.service}
       - {name: unionfs-encrypt.service}
       - {name: move.service}
       - {name: plexdrive.service}
@@ -49,7 +50,7 @@
       - {name: rclone-en.service}
       - {name: rclone-encrypt.service}
   tasks:
-    - name: Checking existing Service name
+    - name: Checking Existing Service Name
       stat:
         path: "/etc/systemd/system/{{ item.name }}"
       with_items: "{{ service_vars }}"
@@ -60,7 +61,7 @@
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
 
-    - name: Stop If Service Running
+    - name: Stop If Service Is Running
       systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
@@ -73,6 +74,6 @@
       when: item.stat.exists
 
     - debug:
-        msg: 'Service name {{ item.item.name }} removed'
+        msg: 'Service name {{ item.item.name }} has been removed!'
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
