@@ -69,4 +69,3 @@
         traefik.enable: "true"
         traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:plexrequest.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
-        traefik.port: "3000"
