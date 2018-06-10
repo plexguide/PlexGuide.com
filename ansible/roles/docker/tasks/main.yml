@@ -140,5 +140,9 @@
   docker_network:
     name: "plexguide"
     state: present
+    ipam_options:
+      subnet: '172.20.0.0/16'
+      gateway: '172.20.0.254'
+      iprange: '172.20.0.0/24'
   tags:
     - docker_standard

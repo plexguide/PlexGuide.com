@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Flicker-Rate & Admin9705
+# Author:   Admin9705 & Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
