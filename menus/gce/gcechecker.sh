@@ -65,6 +65,19 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /mnt/move 1>/dev/null 2>&1
 
+      mkdir /mnt/move 1>/dev/null 2>&1
+      chmod 0755 /mnt/move 1>/dev/null 2>&1
+      chown -R 1000:1000 /mnt 1>/dev/null 2>&1
+      chown -R 1000:1000 /mnt/move 1>/dev/null 2>&1
+
+      mkdir /mnt/gdrive 1>/dev/null 2>&1
+      chmod 0755 /mnt/gdrive 1>/dev/null 2>&1
+      chown 1000:1000 /mnt/gdrive 1>/dev/null 2>&1
+
+      mkdir /mnt/tdrive 1>/dev/null 2>&1
+      chmod 0755 /mnt/tdrive 1>/dev/null 2>&1
+      chown 1000:1000 /mnt/tdrive 1>/dev/null 2>&1
+
       echo "10" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       sleep 2
