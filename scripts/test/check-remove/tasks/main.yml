@@ -1,0 +1,47 @@
+### This will check for and remove any 
+### service listed in folder_vars
+### Use the following to run manually:-
+# sudo ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+
+
+---
+
+- hosts: localhost
+  gather_facts: false
+  vars:
+    folder_vars:
+      - {name: /etc/systemd/system/crypt1.service}
+      - {name: /etc/systemd/system/crypt2.service}
+      - {name: /etc/systemd/system/fcrypt.service}
+      - {name: /etc/systemd/system/fdrive.service}
+      - {name: /etc/systemd/system/gcrypt.service}
+      - {name: /etc/systemd/system/scrypt.service}
+      - {name: /etc/systemd/system/tcrypt.service}
+      - {name: /etc/systemd/system/sdrive.service}
+      - {name: /etc/systemd/system/unionfs-encrypt.service}
+      - {name: /etc/systemd/system/move.service}
+      - {name: /etc/systemd/system/plexdrive.service}
+      - {name: /etc/systemd/system/unionfs.service}
+      - {name: /etc/systemd/system/move-en.service}
+      - {name: /etc/systemd/system/rclone.service}
+      - {name: /etc/systemd/system/rclone-en.service}
+      - {name: /etc/systemd/system/rclone-encrypt.service}
+  tasks:
+    - name: Checking existing folder name
+      stat:
+        path: "{{ item.name }}"
+      with_items: "{{ folder_vars }}"
+      register: check_folder_name
+
+    - debug:
+        msg: 'folder name {{item.item.name}}) exists'
+      with_items: "{{ check_folder_name.results }}"
+      when: item.stat.exists
+
+
+    - name: Remove directories
+      file:
+        path: "{{ item.item.name }}"
+        state: absent
+      with_items: "{{ check_folder_name.results }}"
+      when: item.stat.exists
