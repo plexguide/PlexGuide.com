@@ -44,7 +44,6 @@
     image: portainer/portainer
     pull: yes
     cpu_shares: 256
-    ipv4_address: 172.18.0.10
     published_ports:
       - "{{ports.stdout}}9000:9000"
     env:
@@ -56,6 +55,7 @@
      - /opt/appdata/portainer:/data
     networks:
       - name: plexguide
+        ipv4_address: 172.18.0.10
         aliases:
           - portainer
     restart_policy: always
