@@ -117,13 +117,13 @@ if [ "$pg_dep" == "$pg_dep_stored" ]
       echo "26" | dialog --gauge "Installing: PG Dependencies" 7 50 0
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags preinstall
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags preinstall
       sleep2
       cat /var/plexguide/pg.dep > /var/plexguide/pg.dep.stored
 fi 
 
 echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags commands &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/critical.yml --tags commands &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 sleep 2
 
@@ -149,7 +149,7 @@ if [ "$pg_alias" == "$pg_alias_stored" ]
       echo "34" | dialog --gauge "Installing: Alias File" 7 50 0
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags alias
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags alias
       cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
       sleep 2
 fi 
@@ -157,14 +157,14 @@ fi
 echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 sleep 2
 clear
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders
+ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
 sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
 echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
 sleep 2
 clear
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags label
+ansible-playbook /opt/plexguide/ansible/critical.yml --tags label
 sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
@@ -188,7 +188,7 @@ docver=$( cat /var/plexguide/ub.ver )
   echo "50" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
   sleep 2
   clear
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker16
+  ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker16
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
@@ -210,7 +210,7 @@ docver=$( cat /var/plexguide/ub.ver )
   echo "50" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
   sleep 2 
   clear
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags docker_standard,docker18
+  ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker18
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
@@ -255,8 +255,8 @@ touch /var/plexguide/basics.yes &>/dev/null &
 #sleep 1
 
 echo "77" | dialog --gauge "Installing: AutoDelete & Cleaner" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags autodelete &>/dev/null &
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/critical.yml --tags autodelete &>/dev/null &
+ansible-playbook /opt/plexguide/ansible/critical.yml --tags clean &>/dev/null &
 sleep 2
 
 echo "79" | dialog --gauge "Installing: Portainer" 7 50 0
@@ -275,7 +275,7 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
       sleep 2
     else 
       echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dockerfix 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 1>/dev/null 2>&1
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
 fi 

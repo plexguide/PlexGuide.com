@@ -6,7 +6,6 @@
   - { role: deploy, tags: ['deploy'] }
   - { role: pgtrak, tags: ['pgtrak']}
   - { role: backup, tags: ['backup'] }
-  - { role: autodelete, tags: ['autodelete'] }
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: plextest, tags: ['plextest', 'plextest'] }
@@ -33,7 +32,6 @@
   - { role: monitorr, tags: ['monitorr'] }
   - { role: deploy2, tags: ['deploy2'] }
   - { role: calibre, tags: ['calibre'] }
-  - { role: alias, tags: ['alias'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
@@ -55,7 +53,6 @@
   - { role: lidarr, tags: ['lidarr'] }
   - { role: deluge, tags: ['deluge'] }
   - { role: test, tags: ['test'] }
-  - { role: label, tags: ['label'] }
   - { role: resilio, tags: ['resilio'] }
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: jackett, tags: ['jackett'] }
@@ -67,7 +64,6 @@
   - { role: plex, tags: ['plex'] }
   - { role: plex2, tags: ['plex2'] }
   - { role: medusa, tags: ['medusa'] }
-  - { role: dockerfix, tags: ['dockerfix'] }
   - { role: watchtower, tags: ['watchtower'] }
   - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
@@ -78,13 +74,7 @@
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: pyload, tags: ['pyload'] }
-  - { role: clean, tags: ['clean'] }
-  - { role: clean-encrypt, tags: ['clean-encrypt'] }
   - { role: network_tuning, tags: ['network_tuning'] }
-  - { role: docker, tags: ['docker'] }
-  - { role: preinstall, tags: ['preinstall'] }
-  - { role: commands, tags: ['commands'] }
-  - { role: folders, tags: ['folders'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
   - { role: booksonic, tags: ['booksonic'] }
@@ -99,3 +89,4 @@
   - { role: webtools, tags: ['webtools'] }
   - { role: jdownloader2, tags: ['jdownloader2'] }
   - { role: plexrequests, tags: ['plexrequests'] }
+  - { role: clean-encrypt, tags: ['clean-encrypt'] }
