@@ -18,6 +18,7 @@
       - {name: /etc/systemd/system/scrypt.service}
       - {name: /etc/systemd/system/tcrypt.service}
       - {name: /etc/systemd/system/sdrive.service}
+      - {name: /etc/systemd/system/tdrive.service}
       - {name: /etc/systemd/system/unionfs-encrypt.service}
       - {name: /etc/systemd/system/move.service}
       - {name: /etc/systemd/system/plexdrive.service}
