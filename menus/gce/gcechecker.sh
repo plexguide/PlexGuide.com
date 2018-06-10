@@ -73,6 +73,10 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       rm -r /root/.ansible/tmp
       ln -s /nvme1/tmp /root/.ansible
 
+      mkdir -p /opt/appdata
+      chmod 0755 /opt/appdata 1>/dev/null 2>&1
+      chown 1000:1000 /opt/appdata 1>/dev/null 2>&1     
+
       mkdir -p /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
       chmod 0755 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
       chown -R 1000:1000 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
