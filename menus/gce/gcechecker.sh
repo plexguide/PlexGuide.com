@@ -46,6 +46,7 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
 
       mkdir /mnt/move 1>/dev/null 2>&1
       chmod 0755 /mnt/move 1>/dev/null 2>&1
+
       #mv /mnt/move /nvme/move 1>/dev/null 2>&1
       #ln -s /nvme/move /mnt 1>/dev/null 2>&1
 
@@ -54,11 +55,13 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
 
       echo "10" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
+      sleep 2
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
       sleep 2
 
       echo "30" | dialog --gauge "Deploying Radarr" 7 50 0
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
+      sleep 2
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
       sleep 2
 
@@ -67,13 +70,14 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       sleep 2
 
       echo "70" | dialog --gauge "Deploying NZBGET" 7 50 0
-      sleep 0.5
+      sleep 2
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
       echo "85" | dialog --gauge "Installing RCLONE BETA" 7 50 0
-      sleep 1
+      sleep 2
+      clear
       curl -s https://rclone.org/install.sh | bash -s beta
-      sleep 1
+      sleep 2
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
       sleep 2
