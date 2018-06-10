@@ -19,11 +19,11 @@ deploy="no"
 drop=$(cat /var/plexguide/gce.check)
 
 ### Set This Up Incase BoneHead didn't pick the NVME drives, but still requires the two drives setup
-file="/dev/sdb"
-  if [ -e "$file" ] && [ "$drop" != "yes" ]
-    then
-      deploy="yes"
-  fi
+#file="/dev/sdb"
+#  if [ -e "$file" ] && [ "$drop" != "yes" ]
+#    then
+#      deploy="yes"
+#  fi
 
 file="/dev/nvme0n1"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
@@ -44,15 +44,48 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       chmod a+w /mnt 1>/dev/null 2>&1
       echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /mnt ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-      mv /mnt/move /nvme/move 1>/dev/null 2>&1
-      ln -s /nvme/move /mnt 1>/dev/null 2>&1
+      mkdir -p /nvme1 1>/dev/null 2>&1
+      mkfs.ext4 -F /dev/nvme0n1
+      mount -o discard,defaults,nobarrier /dev/nvme0n1 /nvme1
+      chmod a+w /nvme1 1>/dev/null 2>&1
+      echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /nvme1 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
+
+      #mv /mnt/move /nvme1/move 1>/dev/null 2>&1
+      #ln -s /nvme1/move /mnt 1>/dev/null 2>&1
+      
+      rm -r /tmp
+      ln -s /nvme1/tmp /
+      mkdir /nvme1/tmp
+
+      chown -R 1000:1000 /mnt 1>/dev/null 2>&1
+      chown -R 1000:1000 /nvme1 1>/dev/null 2>&1
+
       mkdir /mnt/move 1>/dev/null 2>&1
       chmod 0755 /mnt/move 1>/dev/null 2>&1
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /mnt/move 1>/dev/null 2>&1
 
-      ln -s /nvme/tmp /tmp 1>/dev/null 2>&1   
-      chown -R 1000:1000 /tmp 1>/dev/null 2>&1  
+      mkdir /mnt/move 1>/dev/null 2>&1
+      chmod 0755 /mnt/move 1>/dev/null 2>&1
+      chown -R 1000:1000 /mnt 1>/dev/null 2>&1
+      chown -R 1000:1000 /mnt/move 1>/dev/null 2>&1
+
+      rm -r /root/.ansible/tmp
+      ln -s /nvme1/tmp /root/.ansible
+
+      mkdir -p /nvme1/opt/appdata 1>/dev/null 2>&1
+      chmod 0755 /nvme1/opt/appdata 1>/dev/null 2>&1
+      chown -R 1000:1000 /nvme1/opt/appdata  1>/dev/null 2>&1
+      rm -r /opt/appdata
+      ln -s /nvme1/opt/appdata /opt
+
+      mkdir /mnt/gdrive 1>/dev/null 2>&1
+      chmod 0755 /mnt/gdrive 1>/dev/null 2>&1
+      chown 1000:1000 /mnt/gdrive 1>/dev/null 2>&1
+
+      mkdir /mnt/tdrive 1>/dev/null 2>&1
+      chmod 0755 /mnt/tdrive 1>/dev/null 2>&1
+      chown 1000:1000 /mnt/tdrive 1>/dev/null 2>&1
 
       echo "10" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
