@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# [Check & Remove Services]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#   Created by Deiteq
+#   This will check for and remove any services listed in service_vars
+#   The following will show current services:-
+#     ls /etc/systemd/system
+#   Use the following to run manually:-
+#     sudo ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+#
+#################################################################################
+
+
+---
+
+- hosts: localhost
+  gather_facts: false
+  vars:
+    service_vars:
+      - {name: /etc/systemd/system/crypt1.service}
+      - {name: /etc/systemd/system/crypt2.service}
+      - {name: /etc/systemd/system/fcrypt.service}
+      - {name: /etc/systemd/system/fdrive.service}
+      - {name: /etc/systemd/system/gcrypt.service}
+      - {name: /etc/systemd/system/scrypt.service}
+      - {name: /etc/systemd/system/tcrypt.service}
+      - {name: /etc/systemd/system/sdrive.service}
+      - {name: /etc/systemd/system/tdrive.service}
+      - {name: /etc/systemd/system/unionfs-encrypt.service}
+      - {name: /etc/systemd/system/move.service}
+      - {name: /etc/systemd/system/plexdrive.service}
+      - {name: /etc/systemd/system/unionfs.service}
+      - {name: /etc/systemd/system/move-en.service}
+      - {name: /etc/systemd/system/rclone.service}
+      - {name: /etc/systemd/system/rclone-en.service}
+      - {name: /etc/systemd/system/rclone-encrypt.service}
+  tasks:
+    - name: Checking existing service name
+      stat:
+        path: "{{ item.name }}"
+      with_items: "{{ service_vars }}"
+      register: check_service_name
+
+    - debug:
+        msg: 'service name {{item.item.name}}) exists'
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists
+
+
+    - name: Remove services
+      file:
+        path: "{{ item.item.name }}"
+        state: absent
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists

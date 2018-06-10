@@ -27,13 +27,6 @@
     path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
   register: programgdrive
 
-- name: Stopping Docker Container - {{program_var.stdout}}
-  docker_container:
-    name: "{{program_var.stdout}}"
-    state: stopped
-  ignore_errors: True
-  when: programgdrive.stat.exists == True
-
 - name: "Remove Old {{program_var.stdout}} from TMP"
   file:
     path: "{{ item }}"
@@ -42,7 +35,7 @@
     - /tmp/{{program_var.stdout}}.tar
   ignore_errors: True
 
-- name: Checking for an APPDATA {{program_var.stdout}}
+- name: Checking for APPDATA {{program_var.stdout}}
   stat:
     path: /opt/appdata"{{program_var.stdout}}
   register: programappdata
@@ -53,6 +46,13 @@
   synchronize:
     src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
     dest: /tmp
+  when: programgdrive.stat.exists == True
+
+- name: Stopping Docker Container - {{program_var.stdout}}
+  docker_container:
+    name: "{{program_var.stdout}}"
+    state: stopped
+  ignore_errors: True
   when: programgdrive.stat.exists == True
 
 - name: Remove Old {{program_var.stdout}} from APPDATA

@@ -112,7 +112,8 @@ EOF
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrive_standard_en
 
 #            if dialog --stdout --title "PAY ATTENTION!" \

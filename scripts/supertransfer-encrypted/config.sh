@@ -89,10 +89,10 @@ EOF
       source $userSettings
       [[ $teamId == $teamDrive ]] && log "SA Accounts Configured to use team drives." INFO || log "Failed To Update Settings" FAIL
 
-      read -p 'Please enter a password for the encryption process: ' unpassword 
+      read -p 'Please enter a password for the encryption process: ' unpassword
       read -p 'Please enter a salt for the encryption process: ' unsalt
-      rclone obsure $unpassword | read prepassword
-      rclone obsure $unsalt | read presalt
+      rclone obscure $unpassword | read prepassword
+      rclone obscure $unsalt | read presalt
       sed -i '/'^password'=/ s/=.*/='$prepassword'/' $userSettings
       sed -i '/'^salt'=/ s/=.*/='$presalt'/' $userSettings
   fi

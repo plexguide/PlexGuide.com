@@ -3,7 +3,7 @@
 # functions:
 # cat_Art() - init msg
 # upload_Json() - configure with new jsons
-# configure_json() - load jsons into rclone config
+# configure_Json() - load jsons into rclone config
 # init_DB() - validates gdsa's & init least usage DB
 
 ################### Load CloudCMD ST2 Edition - START
@@ -274,7 +274,7 @@ docker rm cloudst2 &>/dev/null &
 return 0
 }
 
-configure_Json_encrypt(){
+configure_Json(){
 source ${userSettings}
 #rclonePath=$(rclone -h | grep 'Config file. (default' | cut -f2 -d'"')
 rclonePath='/root/.config/rclone/rclone.conf'
