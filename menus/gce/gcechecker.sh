@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Flicker-Rate & Admin9705
+# Author:   Admin9705 & Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -53,9 +53,9 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       #mv /mnt/move /nvme1/move 1>/dev/null 2>&1
       #ln -s /nvme1/move /mnt 1>/dev/null 2>&1
       
-      rm -r /tmp
-      ln -s /nvme1/tmp /
-      mkdir /nvme1/tmp
+      #rm -r /tmp
+      #ln -s /nvme1/tmp /
+      #mkdir /nvme1/tmp
 
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /nvme1 1>/dev/null 2>&1
