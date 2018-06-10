@@ -56,7 +56,7 @@
       register: check_service_name
 
     - debug:
-        msg: 'Service name {{ item.item.name }}) exists'
+        msg: 'Service name {{ item.item.name }} exists'
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
 
@@ -73,6 +73,6 @@
       when: item.stat.exists
 
     - debug:
-        msg: 'Service name {{ item.item.name }}) removed'
+        msg: 'Service name {{ item.item.name }} removed'
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
