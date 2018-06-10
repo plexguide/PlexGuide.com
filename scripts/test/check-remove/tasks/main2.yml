@@ -30,39 +30,43 @@
   gather_facts: false
   vars:
     service_vars:
-      - {name: /etc/systemd/system/crypt1.service}
-      - {name: /etc/systemd/system/crypt2.service}
-      - {name: /etc/systemd/system/fcrypt.service}
-      - {name: /etc/systemd/system/fdrive.service}
-      - {name: /etc/systemd/system/gcrypt.service}
-      - {name: /etc/systemd/system/scrypt.service}
-      - {name: /etc/systemd/system/tcrypt.service}
-      - {name: /etc/systemd/system/sdrive.service}
-      - {name: /etc/systemd/system/tdrive.service}
-      - {name: /etc/systemd/system/unionfs-encrypt.service}
-      - {name: /etc/systemd/system/move.service}
-      - {name: /etc/systemd/system/plexdrive.service}
-      - {name: /etc/systemd/system/unionfs.service}
-      - {name: /etc/systemd/system/move-en.service}
-      - {name: /etc/systemd/system/rclone.service}
-      - {name: /etc/systemd/system/rclone-en.service}
-      - {name: /etc/systemd/system/rclone-encrypt.service}
+      - {name: crypt1.service}
+      - {name: crypt2.service}
+      - {name: fcrypt.service}
+      - {name: fdrive.service}
+      - {name: gcrypt.service}
+      - {name: scrypt.service}
+      - {name: tcrypt.service}
+      - {name: sdrive.service}
+      - {name: tdrive.service}
+      - {name: unionfs-encrypt.service}
+      - {name: move.service}
+      - {name: plexdrive.service}
+      - {name: unionfs.service}
+      - {name: move-en.service}
+      - {name: rclone.service}
+      - {name: rclone-en.service}
+      - {name: rclone-encrypt.service}
   tasks:
-    - name: Checking existing service name
+    - name: Checking existing Service name
       stat:
-        path: "{{ item.name }}"
+        path: "/etc/systemd/system/{{ item.name }}"
       with_items: "{{ service_vars }}"
       register: check_service_name
 
     - debug:
-        msg: 'service name {{item.item.name}}) exists'
+        msg: 'Service name {{ item.item.name}}) exists'
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
 
-
-    - name: Remove services
+    - name: Stop If Service Running
+      systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists
+      
+    - name: Remove Services
       file:
-        path: "{{ item.item.name }}"
+        path: "/etc/systemd/system/{{ item.item.name }}"
         state: absent
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
