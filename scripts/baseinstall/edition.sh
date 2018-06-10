@@ -51,7 +51,7 @@ deploy=$( cat /var/plexguide/pg.server.deploy )
   fi
 
 HEIGHT=11
-WIDTH=41
+WIDTH=45
 CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
@@ -59,7 +59,7 @@ TITLE="Select Your Edition!"
 OPTIONS=(A "GDrive Edition$stat1"
          B "HD Solo Edition$stat2"
          C "HD Multi Edition$stat3"
-         D "GCE Feed BETA $stat4"
+         D "GCE Feeder Edition $stat4"
          E "Mini FAQ")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
