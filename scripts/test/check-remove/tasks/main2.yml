@@ -61,7 +61,9 @@
 
     - name: Stop If Service Running
       systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
-
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists
+      
     - name: Remove Services
       file:
         path: "/etc/systemd/system/{{ item.item.name }}"
