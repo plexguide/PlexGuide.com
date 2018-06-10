@@ -24,9 +24,9 @@
     name: "plexguide"
     state: present
     ipam_options:
-      subnet: '172.20.0.0/16'
-      gateway: '172.20.0.254'
-      iprange: '172.20.0.0/24'
+      subnet: '172.18.0.0/16'
+      gateway: '172.18.0.254'
+      iprange: '172.18.0.0/24'
     
 - name: Portainer Container
   docker_container:
