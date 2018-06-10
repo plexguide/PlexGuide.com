@@ -35,7 +35,6 @@
       - /opt/appdata/plexrequests
 
   - name: Deploy PlexRequests Container
-    # docker-compose.yml
     docker_container:
       name: plexrequests
       image: linuxserver/plexrequests
@@ -46,7 +45,16 @@
       env:
         PUID: "1000"
         PGID: "1000"
+        URL_BASE: "/{{domain.stdout}}"
+      volumes:
+        - /etc/localtime:/etc/localtime:ro 
+        - /opt/appdata/plexrequests:/config 
       state: started
+      networks:
+        - name: plexguide
+          aliases:
+            - plexrequests
+      restart_policy: always
       labels:
         traefik.enable: "true"
         traefik.frontend.redirect.entryPoint: "https"
