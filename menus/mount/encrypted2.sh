@@ -104,16 +104,10 @@ EOF
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
             tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
             gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
-            drive1=$(grep "drive1" /root/.config/rclone/rclone.conf)
-            drive2=$(grep "drive2" /root/.config/rclone/rclone.conf)
-            crypt1=$(grep "crypt1" /root/.config/rclone/rclone.conf)
-            crypt2=$(grep "crypt2" /root/.config/rclone/rclone.conf)
-
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags services_remove,pgdrive_standard_en
 
 #            if dialog --stdout --title "PAY ATTENTION!" \
@@ -126,9 +120,6 @@ EOF
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
             touch /tmp/path 1>/dev/null 2>&1
-
-            #### IF EXIST - DEPLOY
-
 
             #### IF EXIST - DEPLOY
             if [ "$tcrypt" == "[tcrypt]" ]
@@ -158,36 +149,6 @@ EOF
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive_en
               fi
             fi
-
-            #### IF EXIST - DEPLOY
-            if [ "$crypt1" == "[crypt1]" ]
-              then
-              #### ADDS crypt1 to the UNIONFS PATH
-              echo -n "/mnt/.crypt1=RO:" >> /tmp/path
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags crypt1
-            else
-              if [ "$drive1" == "[drive1]" ]
-                then
-              #### ADDS drive1 to the UNIONFS PATH
-                echo -n "/mnt/.drive1=RO:" >> /tmp/path
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drive1
-              fi
-            fi
-
-            if [ "$crypt2" == "[crypt2]" ]
-              then
-              #### ADDS crypt2 to the UNIONFS PATH
-              echo -n "/mnt/.crypt2=RO:" >> /tmp/path
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags crypt2
-            else
-              if [ "$drive2" == "[drive2]" ]
-                then
-                  #### ADDS drive2 to the UNIONFS PATH
-                echo -n "/mnt/.drive2=RO:" >> /tmp/path
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drive2
-              fi
-            fi
-
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs_en
 
@@ -239,7 +200,7 @@ EOF
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi

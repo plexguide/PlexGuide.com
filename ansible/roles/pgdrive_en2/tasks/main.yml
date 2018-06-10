@@ -100,6 +100,20 @@
     tags:
       - gcrypt
 
+########### GDRIVE
+  - name: Install GDRIVE Service
+    template:
+      src: gdrive.js2
+      dest: /etc/systemd/system/gdrive.service
+      force: yes
+    tags:
+      - gdrive_en
+
+  - name: Start GDRIVE SERVICE
+    systemd: state=started name=gdrive daemon_reload=yes enabled=yes
+    tags:
+      - gdrive_en
+
 ########### TCRYPT
   - name: Install TCRYPT Service
     template:
@@ -113,6 +127,20 @@
     systemd: state=started name=tcrypt daemon_reload=yes enabled=yes
     tags:
       - tcrypt
+
+########### TDRIVE
+  - name: Install TDRIVE Service
+    template:
+      src: tdrive.js2
+      dest: /etc/systemd/system/tdrive.service
+      force: yes
+    tags:
+      - tdrive_en
+
+  - name: Start TDRIVE SERVICE
+    systemd: state=started name=tdrive daemon_reload=yes enabled=yes
+    tags:
+      - tdrive_en
 
 ########### Drive1
   - name: Install DRIVE1 Service
