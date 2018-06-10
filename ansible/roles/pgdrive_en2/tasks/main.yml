@@ -17,7 +17,7 @@
 #################################################################################
 
 ########## Disable Other Services
-
+# ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
   - name: Create Basic directories for DRIVE1
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -98,17 +98,17 @@
 #      - gcrypt
 #    ignore_errors: yes
 
-  - name: Daemon-Reload - Stop GDRIVE Service
-    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
-    tags:
-      - gcrypt
-    ignore_errors: yes
+#  - name: Daemon-Reload - Stop GDRIVE Service
+#    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+#    tags:
+#      - gcrypt
+#    ignore_errors: yes
 
-  - name: Stop If GCRYPT Service Running
-    systemd: state=stopped name=gcrypt
-    tags:
-      - gcrypt
-    ignore_errors: yes
+#  - name: Stop If GCRYPT Service Running
+#    systemd: state=stopped name=gcrypt
+#    tags:
+#      - gcrypt
+#    ignore_errors: yes
 
   - name: Install GCRYPT Service
     template:
@@ -135,17 +135,17 @@
 #      - tcrypt
 #    ignore_errors: yes
 
-  - name: Daemon-Reload - Stop TDRIVE Service
-    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Daemon-Reload - Stop TDRIVE Service
+#    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
-  - name: Stop If TCRYPT Service Running
-    systemd: state=stopped name=tcrypt
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Stop If TCRYPT Service Running
+#    systemd: state=stopped name=tcrypt
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
   - name: Install TCRYPT Service
     template:
@@ -166,11 +166,11 @@
       - tcrypt
 
 ########### Drive1
-  - name: Stop If DRIVE1 Service Running
-    systemd: state=stopped name=drive1
-    tags:
-      - drive1
-    ignore_errors: yes
+#  - name: Stop If DRIVE1 Service Running
+#    systemd: state=stopped name=drive1
+#    tags:
+#      - drive1
+#    ignore_errors: yes
 
   - name: Install DRIVE1 Service
     template:
@@ -191,11 +191,11 @@
       - drive1
 
 ########### DRIVE2
-  - name: Stop If DRIVE2 Service Running
-    systemd: state=stopped name=drive2
-    tags:
-      - drive2
-    ignore_errors: yes
+#  - name: Stop If DRIVE2 Service Running
+#    systemd: state=stopped name=drive2
+#    tags:
+#      - drive2
+#    ignore_errors: yes
 
   - name: Install DRIVE2 Service
     template:
@@ -216,11 +216,11 @@
       - drive2
 
 ########### CRYPT1
-  - name: Stop If CRYPT1 Service Running
-    systemd: state=stopped name=crypt1
-    tags:
-      - crypt1
-    ignore_errors: yes
+#  - name: Stop If CRYPT1 Service Running
+#    systemd: state=stopped name=crypt1
+#    tags:
+#      - crypt1
+#    ignore_errors: yes
 
   - name: Install CRYPT1 Service
     template:
@@ -240,11 +240,11 @@
     tags:
       - crypt1
 ########### CRYPT2
-  - name: Stop If CRYPT2 Service Running
-    systemd: state=stopped name=crypt2
-    tags:
-      - crypt2
-    ignore_errors: yes
+#  - name: Stop If CRYPT2 Service Running
+#    systemd: state=stopped name=crypt2
+#    tags:
+#      - crypt2
+#    ignore_errors: yes
 
   - name: Install CRYPT2 Service
     template:
@@ -273,11 +273,11 @@
       - unionfs_en
     ignore_errors: True
 
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    tags:
-      - unionfs_en
-    ignore_errors: yes
+#  - name: Stop If UNIONFS Service Running
+#    systemd: state=stopped name=unionfs
+#    tags:
+#      - unionfs_en
+#    ignore_errors: yes
 
   - name: Install UNIONFS Service
     template:
