@@ -50,8 +50,8 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       chmod a+w /nvme1 1>/dev/null 2>&1
       echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /nvme1 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-      mv /mnt/move /nvme1/move 1>/dev/null 2>&1
-      ln -s /nvme1/move /mnt 1>/dev/null 2>&1
+      #mv /mnt/move /nvme1/move 1>/dev/null 2>&1
+      #ln -s /nvme1/move /mnt 1>/dev/null 2>&1
       
       rm -r /tmp
       ln -s /nvme1/tmp /
