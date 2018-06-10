@@ -1,5 +1,8 @@
+### Created by Deiteq
 ### This will check for and remove any 
 ### service listed in folder_vars
+### The following will show current services:-
+# ls /etc/systemd/system
 ### Use the following to run manually:-
 # sudo ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
