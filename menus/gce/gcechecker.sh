@@ -70,6 +70,9 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /mnt/move 1>/dev/null 2>&1
 
+      rm -r /root/.ansible/tmp
+      ln -s /nvme1/tmp /root/.ansible
+
       mkdir /mnt/gdrive 1>/dev/null 2>&1
       chmod 0755 /mnt/gdrive 1>/dev/null 2>&1
       chown 1000:1000 /mnt/gdrive 1>/dev/null 2>&1
