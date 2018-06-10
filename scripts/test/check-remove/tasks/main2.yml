@@ -59,8 +59,8 @@
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
 
-  - name: Stop If Service Running
-    systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
+    - name: Stop If Service Running
+      systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
 
     - name: Remove Services
       file:
