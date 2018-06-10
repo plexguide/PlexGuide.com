@@ -19,13 +19,13 @@ deploy="no"
 drop=$(cat /var/plexguide/gce.check)
 
 ### Set This Up Incase BoneHead didn't pick the NVME drives, but still requires the two drives setup
-file="/dev/sdc"
+file="/dev/sdb"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
       deploy="yes"
   fi
 
-file="/dev/nvme0n2"
+file="/dev/nvme0n1"
   if [ -e "$file" ] && [ "$drop" != "yes" ]
     then
       deploy="yes"
@@ -44,45 +44,31 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       chmod a+w /mnt 1>/dev/null 2>&1
       echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /mnt ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-      mkdir -p /nvme2 1>/dev/null 2>&1
-      mkfs.ext4 -F /dev/nvme0n2
-      mount -o discard,defaults,nobarrier /dev/nvme0n2 /nvme2
-      chmod a+w /nvme2 1>/dev/null 2>&1
-      echo UUID=`blkid | grep nvme0n2 | cut -f2 -d'"'` /nvme2 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
-
-      mv /mnt/move /nvme2/move 1>/dev/null 2>&1
-      ln -s /nvme2/move /mnt 1>/dev/null 2>&1
-
-      mkdir -p /nvme2/sab/complete 1>/dev/null 2>&1
-      rm -r /mnt/sab/complete 1>/dev/null 2>&1
-      ln -s /nvme2/sab/complete /mnt/sab/
+      mv /mnt/move /nvme/move 1>/dev/null 2>&1
+      ln -s /nvme/move /mnt 1>/dev/null 2>&1
 
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /nvme2 1>/dev/null 2>&1
 
-      echo "18" | dialog --gauge "Deploying Sonarr" 7 50 0
+      echo "10" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
       sleep 2
 
-      echo "36" | dialog --gauge "Deploying Radarr" 7 50 0
+      echo "30" | dialog --gauge "Deploying Radarr" 7 50 0
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
       sleep 2
 
-      echo "54" | dialog --gauge "Deploying CloudCMD" 7 50 0
+      echo "50" | dialog --gauge "Deploying CloudCMD" 7 50 0
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd &>/dev/null &
       sleep 2
 
-      echo "72" | dialog --gauge "Deploying SABNZBD" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd &>/dev/null &
-      sleep 2
+      echo "70" | dialog --gauge "Deploying NZBGET" 7 50 0
+      sleep 0.5
+      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
-      #echo "Installing NZBGET"
-      #sleep 0.5
-      #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
-
-      echo "90" | dialog --gauge "Installing RCLONE BETA" 7 50 0
+      echo "85" | dialog --gauge "Installing RCLONE BETA" 7 50 0
       sleep 1
       curl -s https://rclone.org/install.sh | bash -s beta
       sleep 1
