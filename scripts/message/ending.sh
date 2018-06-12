@@ -40,7 +40,7 @@ cat << "EOF"
 │ Update Plexguide:         pgupdate  │
 │ Update to Dev Version:    pgdev     │
 │ Delete Dupes:             pgdupes   │
-│ Add Content :             pgtrak    │
+│ Add Content:              pgtrak    │
 │ [32mNEW![0m View the PG Logs:    pglog     │
 └─────────────────────────────────────┘
 
