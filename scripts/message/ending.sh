@@ -41,7 +41,7 @@ cat << "EOF"
 │ Update to Dev Version:    pgdev     │
 │ Delete Dupes:             pgdupes   │
 │ Add Content :             pgtrak    │
-│ [32mNEW![0m View the PG Logs :    pglog    │
+│ [32mNEW![0m View the PG Logs:    pglog     │
 └─────────────────────────────────────┘
 
 EOF
