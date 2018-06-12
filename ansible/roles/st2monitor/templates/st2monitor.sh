@@ -27,7 +27,7 @@ do
 
 systemctl status supertransfer2 3>&1 1>>/var/plexguide/st2.status 2>&1
 
-if grep -q Failed: "/var/plexguide/st2.status"; then
+if grep -q Cache: "/var/plexguide/st2.status"; then
    systemctl restart supertransfer2
 fi
 sleep 120
