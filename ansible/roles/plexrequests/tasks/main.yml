@@ -20,9 +20,9 @@
 #################################################################################
 ---
   - name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+    shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
-- include_role:
+  - include_role:
       name: variables
 
   - name: Remove Mongo Container
