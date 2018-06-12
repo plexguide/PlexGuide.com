@@ -108,3 +108,12 @@
       dest: /bin/ntcrypt
       force: yes
       mode: 0775
+
+###### Install PGLog
+
+  - name: Nano TCrypt
+    template:
+      src: pglog
+      dest: pglog
+      force: yes
+      mode: 0775
