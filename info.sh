@@ -16,8 +16,8 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "5.088 BETA 2" > /var/plexguide/pg.version
-echo "78" > /var/plexguide/pg.preinstall
+echo "5.089 BETA 3" > /var/plexguide/pg.version
+echo "81" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
 echo "18.03.1" > /var/plexguide/pg.docker16
@@ -33,5 +33,5 @@ echo "edge" > /var/plexguide/pg.docker18.edition
 echo "1" > /var/plexguide/pg.ansible
 echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
-echo "2" > /var/plexguide/pg.alias
+echo "3" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep ## dependencies

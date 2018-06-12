@@ -26,14 +26,10 @@ clear
 case $CHOICE in
         A)
             bash /opt/plexguide/menus/rclone/uncache.sh
-              echo "RClone Cache Installed" > /tmp/pushover
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
               ;;
         B)
             bash /opt/plexguide/menus/rclone/encache.sh
-              echo "RClone Encrypted Cache Installed" > /tmp/pushover
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
               ;;
         C)

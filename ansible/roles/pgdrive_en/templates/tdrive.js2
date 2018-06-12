@@ -1,0 +1,32 @@
+[Unit]
+Description=TDrive Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone mount tdrive: /mnt/tdrive \
+	--allow-non-empty \
+	--allow-other \
+	--uid=1000 \
+	--gid=1000 \
+	--rc \
+	--size-only \
+	--dir-cache-time 2m \
+	--vfs-read-chunk-size 64M \
+	--vfs-cache-max-age 675h \
+	--vfs-read-chunk-size-limit 1G \
+	--buffer-size 32M \
+	--syslog \
+	--umask 002 \
+	--log-level INFO \
+	--config /root/.config/rclone/rclone.conf
+
+ExecStop=/bin/fusermount -uz /mnt/tdrive
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

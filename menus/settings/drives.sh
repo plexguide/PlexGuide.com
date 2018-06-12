@@ -59,8 +59,6 @@ case $CHOICE in
         ;;
     C)
         bash /opt/plexguide/menus/notifications/main.sh
-        echo "Pushover Notifications are Working!" > /tmp/pushover
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
         ;;
     D)
         bash /opt/plexguide/menus/ports/main.sh ;;

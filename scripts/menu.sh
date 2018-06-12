@@ -90,14 +90,6 @@ else
    exit 0
 fi
 
-file="/var/plexguide/notification.yes"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   bash /opt/plexguide/menus/notifications/main.sh
-fi
-
 current=$( cat /var/plexguide/pg.preinstall ) 1>/dev/null 2>&1
 stored=$( cat /var/plexguide/pg.preinstall.stored ) 1>/dev/null 2>&1
 if [ "$current" == "$stored" ]

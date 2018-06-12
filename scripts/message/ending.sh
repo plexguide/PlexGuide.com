@@ -39,8 +39,9 @@ cat << "EOF"
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
 │ Update to Dev Version:    pgdev     │
-│ [32mNEW![0m Delete Dupes:        pgdupes   │
-│ [32mNEW![0m Add Content :        pgtrak    │
+│ Delete Dupes:             pgdupes   │
+│ Add Content:              pgtrak    │
+│ [32mNEW![0m View the PG Logs:    pglog     │
 └─────────────────────────────────────┘
 
 EOF
@@ -65,3 +66,9 @@ fi
 #  cat /var/plexguide/certchecker
 #  echo 'feature still in testing. may be false positive.'
 #fi
+
+### log message
+#dt=`date '+%d/%m/%Y %H:%M:%S'`
+#echo "$dt INFO - User Properly Exited PlexGuide." >> "/opt/appdata/plexguide/pg.log"
+
+echo "INFO - Program Exited Properly" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

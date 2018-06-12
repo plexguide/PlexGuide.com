@@ -141,7 +141,7 @@ EOF
                 then
                 #### ADDS TDRIVE to the UNIONFS PATH
                 echo -n "/mnt/tdrive=RO:" >> /tmp/path
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive_en
               fi
             fi
 
@@ -155,7 +155,7 @@ EOF
                 then
                 #### ADDS GDRIVE to the UNIONFS PATH
                 echo -n "/mnt/gdrive=RO:" >> /tmp/path
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
+                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive_en
               fi
             fi
 

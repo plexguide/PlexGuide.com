@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Flicker-Rate & Admin9705
+# Author:   Admin9705 & Flicker-Rate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -53,9 +53,9 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       #mv /mnt/move /nvme1/move 1>/dev/null 2>&1
       #ln -s /nvme1/move /mnt 1>/dev/null 2>&1
       
-      rm -r /tmp
-      ln -s /nvme1/tmp /
-      mkdir /nvme1/tmp
+      #rm -r /tmp
+      #ln -s /nvme1/tmp /
+      #mkdir /nvme1/tmp
 
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /nvme1 1>/dev/null 2>&1
@@ -70,30 +70,34 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       chown -R 1000:1000 /mnt 1>/dev/null 2>&1
       chown -R 1000:1000 /mnt/move 1>/dev/null 2>&1
 
-      rm -r /root/.ansible/tmp
-      ln -s /nvme1/tmp /root/.ansible
+      #rm -r /root/.ansible/tmp
+      #ln -s /nvme1/tmp /root/.ansible
 
-      mkdir -p /opt/appdata
-      chmod 0755 /opt/appdata 1>/dev/null 2>&1
-      chown 1000:1000 /opt/appdata 1>/dev/null 2>&1     
+      #mkdir -p /opt/appdata
+      #chmod 0755 /opt/appdata 1>/dev/null 2>&1
+      #chown 1000:1000 /opt/appdata 1>/dev/null 2>&1     
 
-      mkdir -p /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
-      chmod 0755 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
-      chown -R 1000:1000 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
-      rm -r /opt/appdata/radarr
-      ln -s /nvme1/opt/appdata/radarr /opt/appdata
+      #mkdir -p /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
+      #chmod 0755 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
+      #chown -R 1000:1000 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
+      #rm -r /opt/appdata/radarr
+      #ln -s /nvme1/opt/appdata/radarr /opt/appdata
 
-      mkdir -p /nvme1/opt/appdata/nzbget 1>/dev/null 2>&1
-      chmod 0755 /nvme1/opt/appdata/nzbget 1>/dev/null 2>&1
-      chown -R 1000:1000 /nvme1/opt/appdata/nzbget 1>/dev/null 2>&1
-      rm -r /opt/appdata/nzbget
-      ln -s /nvme1/opt/appdata/nzbget /opt/appdata
+      #mkdir -p /nvme1/opt/appdata/nzbget 1>/dev/null 2>&1
+      #chmod 0755 /nvme1/opt/appdata/nzbget 1>/dev/null 2>&1
+      #chown -R 1000:1000 /nvme1/opt/appdata/nzbget 1>/dev/null 2>&1
+      #rm -r /opt/appdata/nzbget
+      #ln -s /nvme1/opt/appdata/nzbget /opt/appdata
 
-      mkdir -p /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
-      chmod 0755 /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
-      chown -R 1000:1000 /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
-      rm -r /opt/appdata/sonarr
-      ln -s /nvme1/opt/appdata/sonarr /opt/appdata
+      #mkdir -p /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
+      #chmod 0755 /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
+      #chown -R 1000:1000 /nvme1/opt/appdata/sonarr 1>/dev/null 2>&1
+      #rm -r /opt/appdata/sonarr
+      #ln -s /nvme1/opt/appdata/sonarr /opt/appdata
+
+      mkdir /tmp 1>/dev/null 2>&1
+      chmod 0755 /tmp 1>/dev/null 2>&1
+      chown 1000:1000 /tmp 1>/dev/null 2>&1
 
       mkdir /mnt/gdrive 1>/dev/null 2>&1
       chmod 0755 /mnt/gdrive 1>/dev/null 2>&1

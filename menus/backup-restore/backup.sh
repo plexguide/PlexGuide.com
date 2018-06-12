@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+echo "INFO - Backup Menu Selected" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=19
@@ -121,6 +121,7 @@ case $CHOICE in
         28)
             echo "qbittorrent" > /tmp/program_var ;;
         Z)
+            echo "INFO - Backup Menu Exited" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear
             exit 0 ;;
 
@@ -159,8 +160,6 @@ else
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_other
 fi
     #echo "true" > /tmp/alive
-    echo "$app: Backup Started" > /tmp/pushover
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
     #loop="true"
     #echo "true" > /tmp/alive
@@ -178,9 +177,6 @@ fi
     #done
 
 read -n 1 -s -r -p "Press any key to continue"
-
-echo "$app: Backup Complete" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 

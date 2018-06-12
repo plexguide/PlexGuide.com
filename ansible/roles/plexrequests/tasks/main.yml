@@ -19,6 +19,9 @@
 #
 #################################################################################
 ---
+  - name: Logging Ansible Role Information
+    shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
   - include_role:
       name: variables
 
@@ -68,4 +71,4 @@
       labels:
         traefik.enable: "true"
         traefik.frontend.redirect.entryPoint: "https"
-        traefik.frontend.rule: "Host:plexrequest.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
+        traefik.frontend.rule: "Host:plexrequest.{{domain.stdout}},plexrequests.{{domain.stdout}},pr.{{domain.stdout}}"

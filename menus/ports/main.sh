@@ -64,7 +64,4 @@ case $CHOICE in
 esac
 
 bash /opt/plexguide/menus/traefik/rebuild.sh
-
-echo "$app: All Applications Ports Are $status" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 dialog --title "Final Note" --msgbox "\nYour Containers Are Built!" 0 0
