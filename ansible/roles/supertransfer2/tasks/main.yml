@@ -55,19 +55,6 @@
     when: move.stat.exists
     ignore_errors: True
 
-  - name: Check time Service
-    stat:
-      path: "/etc/systemd/system/time.service"
-    register: time
-
-  - name: Stop If Time Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: time
-    when: time.stat.exists
-    ignore_errors: True
-
   - name: Check supertransfer1 Service
     stat:
       path: "/etc/systemd/system/supertransfer.service"

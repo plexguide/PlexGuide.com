@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+  - name: Install ST2Check Script
+    template:
+      src: st2monitor.sh
+      dest: /opt/appdata/plexguide/st2monitor.sh
+      force: yes
+
+########### ST2Monitor Service
+  - name: Check ST2 Check Service
+    stat:
+      path: "/etc/systemd/system/st2check.service"
+    register: st2
+
+  - name: Stop If ST2 Monitor Service Running
+    systemd: state=stopped name=st2monitor
+    when: st2.stat.exists == True
+
+  - name: Install ST2 Monitor Service
+    template:
+      src: st2monitor.serivce
+      dest: /etc/systemd/system/st2monitor.service
+      force: yes
+    when: st2.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=st2monitor daemon_reload=yes enabled=no
+    when: st2.stat.exists == False
+
+  - name: Start ST2 Monitor
+    systemd: state=started name=st2monitor enabled=yes
