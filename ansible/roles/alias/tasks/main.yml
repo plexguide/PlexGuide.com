@@ -114,6 +114,6 @@
   - name: Nano TCrypt
     template:
       src: pglog
-      dest: pglog
+      dest: /bin/pglog
       force: yes
       mode: 0775
