@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+echo "INFO - Backup Menu Selected" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=19
@@ -121,6 +121,7 @@ case $CHOICE in
         28)
             echo "qbittorrent" > /tmp/program_var ;;
         Z)
+            echo "INFO - Backup Menu Exited" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear
             exit 0 ;;
 

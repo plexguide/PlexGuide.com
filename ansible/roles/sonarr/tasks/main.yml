@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- name: Logging Ansible Role Information
+  shell: "echo "INFO - Ansible Role {{role_name}} Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
 - include_role:
     name: variables
 
@@ -78,3 +81,6 @@
     dest: "/opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini"
     force: yes
     mode: 0775
+
+- name: Logging Ansible Role Information
+  shell: "echo "INFO - Ansible Role {{role_name}} Completed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
