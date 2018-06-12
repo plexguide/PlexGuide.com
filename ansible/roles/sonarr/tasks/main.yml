@@ -83,4 +83,4 @@
     mode: 0775
 
 - name: Logging Ansible Role Information
-  shell: "echo "INFO - Ansible Role {{role_name}} Completed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
