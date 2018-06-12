@@ -21,13 +21,14 @@ if pidof -o %PPID -x "$0"; then
    exit 1
 fi
 
-#sleep 240
+sleep 30
 while true
 do
 
-systemctl status supertransfer2 3>&1 1>>/var/plexguide/st2.status 2>&1
+systemctl status supertransfer2 3>&1 1>>/var/plexguide/st1.status 2>&1
+tail -n2 /var/plexguide/st1.status &> /var/plexguide/st2.status
 
-if grep -q Cache: "/var/plexguide/st2.status"; then
+if grep -q Failed: "/var/plexguide/st2.status"; then
    systemctl restart supertransfer2
 fi
 sleep 120
