@@ -34,7 +34,7 @@ fi
 sleep 120
 
 dt=`date '+%d/%m/%Y %H:%M:%S'`
-echo "$dt WARNING - SuperTransfer ST2 Upload Failed. Restarted Service" >> "/opt/appdata/plexguide/pg.log"
+echo "$dt WARNING - SuperTransfer ST2 Upload Failed. Restarted Service." >> "/opt/appdata/plexguide/pg.log"
 
 done
 

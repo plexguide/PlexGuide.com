@@ -135,6 +135,10 @@ bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 
+### log message
+dt=`date '+%d/%m/%Y %H:%M:%S'`
+echo "$dt INFO - PG Updated to $version." >> "/opt/appdata/plexguide/pg.log"
+
 bash /opt/plexguide/scripts/message/ending.sh
 
 ## delete this later
