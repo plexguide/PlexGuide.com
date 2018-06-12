@@ -12,7 +12,7 @@
 #   You may copy, distribute and modify the software as long as you track
 #   changes/dates in source files. Any modifications to our software
 #   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions. 
+#   under the GPL along with build & install instructions.
 #
 #################################################################################
 
@@ -144,7 +144,9 @@ fusermount -uz /mnt/unionfs
 tee "/etc/systemd/system/unionfs-encrypt.service" > /dev/null <<EOF
 [Unit]
 Description=UnionFS Daemon
-After=multi-user.target
+Requires=plexdrive.service
+After=multi-user.target plexdrive.service
+RequiresMountsFor=/mnt/plexdrive
 [Service]
 Type=simple
 User=0
@@ -198,12 +200,12 @@ echo 7
 sudo systemctl daemon-reload
 
 #stop unencrypted services
-systemctl stop rclone 1>/dev/null 2>&1
-systemctl stop move 1>/dev/null 2>&1
-systemctl stop unionfs 1>/dev/null 2>&1
-systemctl disable rclone 1>/dev/null 2>&1
-systemctl disable move 1>/dev/null 2>&1
-systemctl disable unionfs 1>/dev/null 2>&1
+#systemctl stop rclone 1>/dev/null 2>&1
+#systemctl stop move 1>/dev/null 2>&1
+#systemctl stop unionfs 1>/dev/null 2>&1
+#systemctl disable rclone 1>/dev/null 2>&1
+#systemctl disable move 1>/dev/null 2>&1
+#systemctl disable unionfs 1>/dev/null 2>&1
 echo 8
 # ensure that the unencrypted services are on
 systemctl enable rclone 1>/dev/null 2>&1
