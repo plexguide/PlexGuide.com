@@ -66,7 +66,7 @@ if [ -e "$file" ]
 then
     echo "" 1>/dev/null 2>&1
 else
-    echo "/NOT-set" > /var/plexguide/pgtrak.sonarr
+    echo "/unionfs/tv" > /var/plexguide/pgtrak.sonarr
 fi
 
 file="/var/plexguide/pgtrak.radarr"
@@ -74,7 +74,7 @@ if [ -e "$file" ]
 then
     echo "" 1>/dev/null 2>&1
 else
-    echo "/NOT-set" > /var/plexguide/pgtrak.radarr
+    echo "/unionfs/movies" > /var/plexguide/pgtrak.radarr
 fi
 
 radarr=$( cat /var/plexguide/pgtrak.radarr )
@@ -109,8 +109,8 @@ TITLE="PGTrak"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Trakt API-Key"
-         B "Change Path - Sonarr"
-         C "Change Path - Radarr"
+         B "Sonarr Path: $sonarr"
+         C "Radarr Path: $radarr"
          D "Profile Sonarr: $prosonarr"
          E "Profile Radarr: $proradarr"
          F "Deploy PGTrak"

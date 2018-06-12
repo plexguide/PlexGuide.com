@@ -159,8 +159,6 @@ else
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_other
 fi
     #echo "true" > /tmp/alive
-    echo "$app: Backup Started" > /tmp/pushover
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
     #loop="true"
     #echo "true" > /tmp/alive

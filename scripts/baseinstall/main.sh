@@ -25,10 +25,6 @@ file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   bash /opt/plexguide/menus/nzb/main.sh
   fi
 
-############################################################ Push Over Notification of Starting Process
-echo "Installation Started" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
 ############################################################ Basic Menu
 if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -242,8 +238,6 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
         then
       echo "" 1>/dev/null 2>&1
         else
-        echo "Program Aborted - Docker Install Failed" > /tmp/pushover
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
         touch /var/plexguide/startup.error 1>/dev/null 2>&1
         exit
       fi
@@ -262,9 +256,6 @@ sleep 2
 echo "79" | dialog --gauge "Installing: Portainer" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
 #sleep 1
-echo "Portainer Installed - Goto Port 9000 and Set Your Password!" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
 ############################################################ Reboot Startup Container Script
 pg_docstart=$( cat /var/plexguide/pg.docstart)
 pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )

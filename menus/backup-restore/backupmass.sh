@@ -30,9 +30,6 @@ if dialog --stdout --title "Backup Mass Confirmation" \
 
 dialog --infobox "Backup: Starting Process" 3 37 ; sleep 1
 
-  echo "Mass Backup Started" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1

@@ -13,7 +13,6 @@
   - { role: cadvisor, tags: ['cadvisor', 'monitor'] }
   - { role: prometheus, tags: ['prometheus', 'monitor'] }
   - { role: grafana, tags: ['grafana', 'monitor'] }
-  - { role: pushover, tags: ['pushover'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
