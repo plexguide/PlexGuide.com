@@ -65,3 +65,7 @@ fi
 #  cat /var/plexguide/certchecker
 #  echo 'feature still in testing. may be false positive.'
 #fi
+
+### log message
+dt=`date '+%d/%m/%Y %H:%M:%S'`
+echo "$dt INFO - User Properly Exited PlexGuide." >> "/opt/appdata/plexguide/pg.log"
