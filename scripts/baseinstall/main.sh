@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 clear
 file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   if [ -e "$file" ]
@@ -34,6 +36,7 @@ else
   clear
   dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree! You can view the program, but doing anything will mess things up!" 0 0
   echo "Type to Restart the Program: sudo plexguide"
+  echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   exit 0
 fi
 
@@ -64,6 +67,7 @@ yes | apt-get update
 yes | apt-get install software-properties-common 
 yes | apt-get install sysstat nmon
 sed -i 's/false/true/g' /etc/default/sysstat
+echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 sleep 2
 
 ############################################################ Enables Use of ROLES AfterWards
@@ -73,9 +77,11 @@ pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 if [ "$pg_ansible" == "$pg_ansible_stored" ]
     then
       echo "20" | dialog --gauge "Ansible Is Already Installed" 7 50 0
+      echo "INFO - Ansible is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       sleep 2
     else 
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
+      echo "INFO - Installing: Ansible PlayBook" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
       apt-get update -y 1>/dev/null 2>&1
       apt-get install ansible -y 1>/dev/null 2>&1
@@ -182,6 +188,7 @@ docver=$( cat /var/plexguide/ub.ver )
   if [ "$docver" == "16" ]
     then
   echo "50" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
+  echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2
   clear
   ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker16
@@ -204,6 +211,7 @@ docver=$( cat /var/plexguide/ub.ver )
   if [ "$docver" == "18" ]
     then
   echo "50" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
+  echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2 
   clear
   ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker18
@@ -322,3 +330,4 @@ fi
 
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
+echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
