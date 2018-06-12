@@ -15,5 +15,5 @@
 #   under the GPL along with build & install instructions.
 ################################################################################
 dt=`date '+%d/%m/%Y %H:%M:%S'`
-pg_log=$( cat /var/plexguide/pg.log )
-echo "$dt $pg_log" >> "/opt/appdata/plexguide/pg.log"
+log=$( cat /var/plexguide/pg.log )
+echo "$dt $log" >> "/opt/appdata/plexguide/pg.log"
