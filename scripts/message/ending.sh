@@ -69,3 +69,5 @@ fi
 ### log message
 dt=`date '+%d/%m/%Y %H:%M:%S'`
 echo "$dt INFO - User Properly Exited PlexGuide." >> "/opt/appdata/plexguide/pg.log"
+
+echo "INFO - Program Exited Properly" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
