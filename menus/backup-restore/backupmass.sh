@@ -61,8 +61,7 @@ else
     ### IF NOT PLEX, execute this
     ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_other
 fi
-  #echo "$app: Backup Complete" > /tmp/pushover
-  #ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+
 done </opt/appdata/plexguide/running
 
 read -n 1 -s -r -p "Press any key to continue"
@@ -70,8 +69,5 @@ read -n 1 -s -r -p "Press any key to continue"
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
-
-  echo "Mass Backup Complete!" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
 
 exit 0
