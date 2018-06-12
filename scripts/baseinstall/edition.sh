@@ -255,13 +255,13 @@ case $CHOICE in
                         case $CHOICE in
                         ######################### HANDLING
                         A)
-                        systemctl stop unionfs 1>/dev/null 2>&1
-                        systemctl disable unionfs 1>/dev/null 2>&1
-                        systemctl stop unionfs-en 1>/dev/null 2>&1
-                        systemctl disable unionfs-en 1>/dev/null 2>&1
-                        systemctl stop move-en 1>/dev/null 2>&1
-                        systemclt disable move-en 1>/dev/null 2>&1
-                        systemctl daemon-reload 1>/dev/null 2>&1
+                        #systemctl stop unionfs 1>/dev/null 2>&1
+                        #systemctl disable unionfs 1>/dev/null 2>&1
+                        #systemctl stop unionfs-en 1>/dev/null 2>&1
+                        #systemctl disable unionfs-en 1>/dev/null 2>&1
+                        #systemctl stop move-en 1>/dev/null 2>&1
+                        #systemclt disable move-en 1>/dev/null 2>&1
+                        #systemctl daemon-reload 1>/dev/null 2>&1
                         ;;
 
                         B)
@@ -368,14 +368,14 @@ case $CHOICE in
                         A)
 
                         ### disable
-                        systemctl stop unionfs 1>/dev/null 2>&1
-                        systemctl disable unionfs 1>/dev/null 2>&1
-                        systemctl stop unionfs-en 1>/dev/null 2>&1
-                        systemctl disable unionfs-en 1>/dev/null 2>&1
-                        systemctl stop move-en 1>/dev/null 2>&1
-                        systemclt disable move-en 1>/dev/null 2>&1
-                        systemctl daemon-reload 1>/dev/null 2>&1
-                        systemctl daemon-reload 1>/dev/null 2>&1
+                        #systemctl stop unionfs 1>/dev/null 2>&1
+                        #systemctl disable unionfs 1>/dev/null 2>&1
+                        #systemctl stop unionfs-en 1>/dev/null 2>&1
+                        #systemctl disable unionfs-en 1>/dev/null 2>&1
+                        #systemctl stop move-en 1>/dev/null 2>&1
+                        #systemclt disable move-en 1>/dev/null 2>&1
+                        #systemctl daemon-reload 1>/dev/null 2>&1
+                        #systemctl daemon-reload 1>/dev/null 2>&1
                         ;;
 
                         B)
