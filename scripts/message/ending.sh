@@ -39,8 +39,9 @@ cat << "EOF"
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
 │ Update to Dev Version:    pgdev     │
-│ [32mNEW![0m Delete Dupes:        pgdupes   │
-│ [32mNEW![0m Add Content :        pgtrak    │
+│ Delete Dupes:             pgdupes   │
+│ Add Content :             pgtrak    │
+│ [32mNEW![0m View the PG Logs : pglog    │
 └─────────────────────────────────────┘
 
 EOF
