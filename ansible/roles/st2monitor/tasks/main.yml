@@ -33,7 +33,7 @@
 
   - name: Install ST2 Monitor Service
     template:
-      src: st2monitor.serivce
+      src: st2monitor.service
       dest: /etc/systemd/system/st2monitor.service
       force: yes
     when: st2.stat.exists == False
