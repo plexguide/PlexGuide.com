@@ -214,6 +214,7 @@ echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log &&
         K)
 echo 'WARNING - Selected Editions Menu from GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/baseinstall/edition.sh
+            exit
             ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh
