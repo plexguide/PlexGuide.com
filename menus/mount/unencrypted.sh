@@ -120,15 +120,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
-
-####  See encrypt.sh for example of script below in use!
-#
-#            if dialog --stdout --title "PAY ATTENTION!" \
-#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
-#
-#                ansible-role  services_remove
-#            fi
+#            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /tmp/path 1>/dev/null 2>&1
@@ -178,7 +170,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
               then
-echo 'FAILURE - Using MOVE: Most Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/menus/mount/unencrypted.sh
             exit
