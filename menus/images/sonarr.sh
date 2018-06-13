@@ -27,7 +27,7 @@ TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/sonarr: Recommended"
          B "hotio/suitarr     : Space Saver"
-         C "zachawii/sonarr   : MP4 Converter"
+         C "aront/sonarr   : MP4 Converter"
          D "Why Important: FAQ"
          Z "Exit")
 
@@ -47,7 +47,7 @@ case $CHOICE in
         B)
             echo "hotio/suitarr" > /var/plexguide/image.sonarr ;;
         C)
-            echo "zachawii/sonarr" > /var/plexguide/image.sonarr ;;
+            echo "aront/sonarr" > /var/plexguide/image.sonarr ;;
         D)
             ;;
         Z)

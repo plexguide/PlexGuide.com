@@ -27,7 +27,7 @@ TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/radarr: Recommended"
          B "hotio/suitarr     : Space Saver"
-         C "zachawii/radarr      : MP Convertor"
+         C "aront/radarr      : MP Convertor"
          D "Why Important: FAQ"
          Z "Exit")
 
