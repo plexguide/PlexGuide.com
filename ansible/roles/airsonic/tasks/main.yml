@@ -41,6 +41,7 @@
     volumes:
       - /opt/appdata/airsonic:/airsonic/data
       - /mnt/unionfs/music:/airsonic/music
+      - /mnt/unionfs:/
       - /opt/appdata/airsonic/playlists:/airsonic/playlists
       - /opt/appdata/airsonic/podcasts:/airsonic/podcasts
       - /etc/localtime:/etc/localtime:ro
@@ -55,3 +56,6 @@
       traefik.port: "4040"
     restart_policy: always
     state: started
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
