@@ -28,13 +28,12 @@ do
 systemctl status supertransfer2 3>&1 1>>/var/plexguide/st1.status 2>&1
 tail -n2 /var/plexguide/st1.status &> /var/plexguide/st2.status
 
-if grep -q Failed: "/var/plexguide/st2.status"; then
+if grep -q FAILED: "/var/plexguide/st2.status"; then
    systemctl restart supertransfer2
+   dt=`date '+%d/%m/%Y %H:%M:%S'`
+echo "$dt WARNING - SuperTransfer ST2 Upload Failed. Restarted Service." >> "/opt/appdata/plexguide/pg.log"
 fi
 sleep 120
-
-dt=`date '+%d/%m/%Y %H:%M:%S'`
-echo "$dt WARNING - SuperTransfer ST2 Upload Failed. Restarted Service." >> "/opt/appdata/plexguide/pg.log"
 
 done
 
