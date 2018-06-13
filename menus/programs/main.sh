@@ -50,22 +50,31 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+echo "INFO - Selected Media Servers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/media.sh ;;
         B)
+echo "INFO - Selected Mangers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/manager.sh ;;
         C)
+echo "INFO - Selected NZB Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/nzbs.sh ;;
         D)
+echo "INFO - Selected Torrent ProgramsInterface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/torrent.sh ;;
         E)
+echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/support.sh ;;
         F)
+echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/ui.sh ;;
         G)
+echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/critical.sh ;;
         H)
+echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/versions4k.sh ;;
         I)
+echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/beta.sh ;;
         Z)
             clear
