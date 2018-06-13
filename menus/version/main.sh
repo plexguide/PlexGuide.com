@@ -27,8 +27,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Developer: 5.089"
-         B "Beta 3   : 5.089"
+OPTIONS=(A "Developer: 5.0"
+         B "Stable   : 5.089"
          C "Stable   : 5.088"    
          D "Stable   : 5.087"
          E "Stable   : 5.086"
@@ -83,7 +83,7 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.089b3" ;;
+            version="5.089" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.088" ;;
