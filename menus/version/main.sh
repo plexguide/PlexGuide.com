@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 export NCURSES_NO_UTF8_ACS=1
 clear
@@ -48,6 +49,8 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             version="Developer"
 
             file="/var/plexguide/ask.yes"
@@ -118,6 +121,8 @@ if ! dialog --stdout --title "Version User Confirmation" \
    --yesno "\nDo Want to Install: Version - $version?" 7 50; then
    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
 clear
+echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 sudo bash /opt/plexguide/scripts/message/ending.sh
 exit 0
     else
@@ -135,6 +140,8 @@ mv /opt/PlexG* /opt/plexguide
 bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+
+echo 'INFO - Selected PG to Upgrade to $version' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 bash /opt/plexguide/scripts/message/ending.sh
 

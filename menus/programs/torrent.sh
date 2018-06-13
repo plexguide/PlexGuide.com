@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Main Torrent Program Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
  HEIGHT=12
  WIDTH=38

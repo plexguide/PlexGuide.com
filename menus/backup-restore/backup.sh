@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "INFO - @ Backup Solo Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - @Backup Solo Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=19

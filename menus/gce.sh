@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 bash /opt/plexguide/menus/gce/gcechecker.sh
 
@@ -65,6 +66,8 @@ EOF
 
             chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
             chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+echo 'INFO - Installing RCLONE BETA for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             ;;
         B)
             clear
@@ -87,6 +90,8 @@ EOF
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
+echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             ;;
         C)
             #### RCLONE MISSING START
@@ -145,6 +150,8 @@ EOF
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
+echo 'INFO - PG Drive Deployed for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             ;;
         D)    
             #### RClone Missing Warning -START
@@ -172,6 +179,7 @@ EOF
                 systemctl disable move 1>/dev/null 2>&1
                 clear
                 bash /opt/plexguide/scripts/supertransfer/config.sh
+echo 'INFO - Deploy SuperTranser2 for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
                 journalctl -f -u supertransfer2
                 dialog --infobox "Stopping & Removing CloudST2" 3 42
@@ -182,23 +190,29 @@ EOF
             fi
             ;;
         E) 
+echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/gce/programs.sh
             ;;
         F)
+echo 'INFO - Selected to View BenchMarks for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         G)
+echo 'INFO - Selected to View PGTrak Menu for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/pgtrak/main.sh
             ;;
         H)
+echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
 
         I)
+echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         J)
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         K)
+echo 'WARNING - Selected Editions Menu from GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/baseinstall/edition.sh
             ;;
         Z)

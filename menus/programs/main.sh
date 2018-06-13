@@ -15,8 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Main Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 # This takes .yml file and converts it to bash readable format
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 

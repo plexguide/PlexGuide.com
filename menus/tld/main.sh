@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Top Level Domain Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=13
 WIDTH=38
@@ -72,6 +73,7 @@ case $CHOICE in
         Z)
             exit 0 ;;
 esac
+echo 'INFO - Selected $program for Top Level Domain' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #recall itself to loop unless user exits
 bash /opt/plexguide/menus/tld/main.sh

@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 'INFO - @Donation Select Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 dialog --title "Donation Support?" --msgbox "\nCannot Donate Money to Help out PlexGuide Development? Donate your Unused CPU power instead!\n\nThis option can be turned off anytime." 12 58
 
@@ -24,10 +25,8 @@ CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Donation Support?"
 
-OPTIONS=(A "Scaling (Best): Unused Processiong Power"
-         B "Dedicate Cores: NOT READY"
-         C "Percent Power : NOT READY"
-         D "Turn Off      : Only if Running"
+OPTIONS=(A "Scaling       : Unused Processiong Power"
+         B "Turn Off      : Only if Running"
          Z "No Thank You")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -51,12 +50,6 @@ case $CHOICE in
             exit 0
             ;;
         B)
-            clear
-            ;;
-        C)
-            clear
-            ;;
-        D)
             docker stop support 1>/dev/null 2>&1
             docker rm support 1>/dev/null 2>&1
             dialog --title "Message" --msgbox "\nWe understand and it's being removed :( Sad Face" 0 0

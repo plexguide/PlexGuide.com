@@ -22,7 +22,7 @@ echo 'INFO - Domain & E-Mail Address were SET' > /var/plexguide/pg.log && bash /
         
       else
         dialog --title "Domain - No" --msgbox "\nYou can set this up later!" 0 0
-echo 'INFO - OPTed not to setup a Domain' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Opted not to setup a Domain' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
         echo "later" > /var/plexguide/server.domain
  fi

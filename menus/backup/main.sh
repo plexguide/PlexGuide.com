@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @ Backup Cron Job Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Backup Cron Job Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 ########## Cron Job a Program
 
