@@ -47,7 +47,7 @@
       - {name: unionfs-encrypt.service}
       - {name: move-en.service}
       - {name: move.service}
-      - {name: plexdrive.service}
+#      - {name: plexdrive.service}
       - {name: rclone.service}
       - {name: rclone-en.service}
       - {name: rclone-encrypt.service}
