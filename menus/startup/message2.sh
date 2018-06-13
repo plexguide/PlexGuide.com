@@ -4,7 +4,7 @@ export NCURSES_NO_UTF8_ACS=1
 bash /opt/plexguide/menus/traefik/cert2.sh &>/dev/null &
 bash /opt/plexguide/menus/traefik/cert1.sh &>/dev/null &
 sleep 1
-edition=$( cat /var/plexguide/pg.edition ) 
+edition=$( cat /var/plexguide/pg.edition )
 version=$( cat /var/plexguide/pg.version )
 appguard=$(cat /var/plexguide/server.appguard)
 portstat=$(cat /var/plexguide/server.ports.status)
@@ -45,7 +45,7 @@ if [ "$error2" == "$error1" ]
     echo "\nWARNING: Traefik is not installed!" > /var/plexguide/status.traefik.cert
     cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
   else
-  	
+
   	#### Version 1 or 2 Display
 	provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
 	if [ "$provider" == "null" ]
@@ -75,8 +75,7 @@ fi
 
 dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
-echo "INFO - Started PG $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - Docker Version $docker is installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - $cert1$cert2" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - APPGUARD is $appguard | PORTS are $portstat" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
