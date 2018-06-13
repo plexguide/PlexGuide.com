@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
@@ -41,7 +42,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/backup-restore/backup.sh ;;
+        bash /opt/plexguide/menus/backup-restore/backup.sh ;;
         B)
         #systemctl is-active --quiet rclone
         #if [ $? -eq 0 ]; then
@@ -52,11 +53,11 @@ case $CHOICE in
         #fi 
         ;;
         C)
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
+        bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
         D)
         #systemctl is-active --quiet rclone
         #if [ $? -eq 0 ]; then
-          bash /opt/plexguide/menus/backup-restore/restoremass.sh
+        bash /opt/plexguide/menus/backup-restore/restoremass.sh
         #else
         #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
         #  bash /opt/plexguide/menus/backup-restore/main.sh

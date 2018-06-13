@@ -18,8 +18,11 @@
         sleep 2
         dialog --infobox "Need to Change? Change via Settings Any Time!" 4 28
         sleep 2
+echo 'INFO - Domain & E-Mail Address were SET' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         
       else
         dialog --title "Domain - No" --msgbox "\nYou can set this up later!" 0 0
+echo 'INFO - OPTed not to setup a Domain' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
         echo "later" > /var/plexguide/server.domain
  fi

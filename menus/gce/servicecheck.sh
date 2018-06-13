@@ -21,7 +21,7 @@ if pidof -o %PPID -x "$0"; then
    exit 1
 fi
 
-sleep 240
+sleep 180
 while true
 do
 
@@ -29,12 +29,12 @@ systemctl status supertransfer2 3>&1 1>>/var/plexguide/st2.status 2>&1
 
 if grep -q Failed: "/var/plexguide/st2.status"; then
    systemctl restart supertransfer2
-fi
+
 sleep 180
 
-dt=`date '+%d/%m/%Y %H:%M:%S'`
-echo "$dt WARNING - SuperTransfer ST2 Upload Failed. Restarted Service" >> "/opt/appdata/plexguide/pg.log"
+echo 'WARNING - ST2 Upload Failed. Restarted Service!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
+fi
 done
 
 

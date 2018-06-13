@@ -45,7 +45,8 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 #systemctl deamon-reload 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
-clear
+echo 'INFO - @Main PG Menu - Local HD Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 HEIGHT=16
 WIDTH=40
 CHOICE_HEIGHT=10

@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Support Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 domain=$( cat /var/plexguide/server.domain )
 

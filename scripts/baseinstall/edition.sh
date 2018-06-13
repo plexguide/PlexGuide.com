@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - Visited PG Edition Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #hd1=$( cat /var/plexguide/hd/hd1 )
 

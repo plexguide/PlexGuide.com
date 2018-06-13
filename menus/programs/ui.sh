@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
  HEIGHT=11
  WIDTH=38

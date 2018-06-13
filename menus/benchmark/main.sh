@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 'INFO - @Benchmark Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 export NCURSES_NO_UTF8_ACS=1
 ## point to variable file for ipv4 and domain.com

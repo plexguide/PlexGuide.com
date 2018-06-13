@@ -94,8 +94,10 @@ current=$( cat /var/plexguide/pg.preinstall ) 1>/dev/null 2>&1
 stored=$( cat /var/plexguide/pg.preinstall.stored ) 1>/dev/null 2>&1
 if [ "$current" == "$stored" ]
 then
+   echo 'INFO - PG BaseInstaller Not Required - Up To Date' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    touch /var/plexguide/message.no
 else
+   echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
 
@@ -106,6 +108,7 @@ file="/var/plexguide/startup.error" 1>/dev/null 2>&1
     dialog --title "Docker Failure" --msgbox "\nYour Docker is not installed or has failed\n\n- Most problems are due to using a VPS\n- Using an OutDated Kernel\n- 99% is your VPS provider being SPECIAL\n- A modified version of Ubuntu\n\nTry a Reboot First and RERUN. If it fails, please check with site forums." 0 0
     dialog --infobox "Exiting!" 0 0
     sleep 5
+      echo 'FAILURE - Docker Failed To Install' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear
       echo "EXITED DUE TO DOCKER FAILURE!!!!!"
       echo ""
@@ -159,4 +162,5 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
 fi
 
 #### falls to this menu incase none work above
+echo 'INFO - PG Edition Not Detected - Asking User To Select Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/scripts/baseinstall/edition.sh
