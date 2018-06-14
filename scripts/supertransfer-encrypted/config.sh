@@ -91,8 +91,8 @@ EOF
 
       read -p 'Please enter a password for the encryption process: ' unpassword
       read -p 'Please enter a salt for the encryption process: ' unsalt
-      rclone obscure $unpassword | read prepassword
-      rclone obscure $unsalt | read presalt
+      prepassword="$(rclone obscure $unpassword)"
+      presalt="$(rclone obscure $unsalt)"
       sed -i '/'^password'=/ s/=.*/='$prepassword'/' $userSettings
       sed -i '/'^salt'=/ s/=.*/='$presalt'/' $userSettings
   fi
