@@ -11,4 +11,3 @@
   - { role: alias, tags: ['alias'] }
   - { role: autodelete, tags: ['autodelete'] }
   - { role: clean, tags: ['clean'] }
-  - { role: st2monitor, tags: ['st2monitor'] }
