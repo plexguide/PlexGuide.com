@@ -1,4 +1,4 @@
-#!/bin/bash
+4#!/bin/bash
 #
 # [PlexGuide Menu]
 #
@@ -16,7 +16,7 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "5.090 BETA 3" > /var/plexguide/pg.version
+echo "5.090 BETA 3.1" > /var/plexguide/pg.version
 echo "81" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
