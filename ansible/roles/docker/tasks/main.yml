@@ -55,7 +55,7 @@
     - docker16
 
 - name: Installing docker
-  apt:    
+  apt:
     name: docker-ce={{docversion.stdout}}
     state: present
     force: yes
@@ -91,7 +91,7 @@
     name: docker-ce={{docversion.stdout}}
     state: present
     force: yes
-    update_cache: yes
+    #update_cache: yes
   tags:
     - docker18
 
@@ -110,7 +110,7 @@
 - name: Start docker
   systemd: state=started name=docker enabled=yes
   tags:
-    - docker_standard  
+    - docker_standard
 
 - name: "Wait for 8 seconds before commencing"
   wait_for:

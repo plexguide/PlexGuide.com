@@ -28,9 +28,9 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.090"
-         B "BETA 3.1 : 5.090"
+         B "Stable   : 5.090"
          C "Stable   : 5.089"
-         D "Stable   : 5.088"    
+         D "Stable   : 5.088"
          E "Stable   : 5.087"
          F "Stable   : 5.086"
          G "Stable   : 5.083"
@@ -84,7 +84,7 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
             exit 0 ;;
         B)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.090b31" ;;
+            version="5.090" ;;
         C)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.089" ;;
@@ -93,10 +93,10 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
             version="5.088" ;;
         E)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.087" ;; 
+            version="5.087" ;;
         F)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.086b2" ;; 
+            version="5.086b2" ;;
         G)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.083" ;;
