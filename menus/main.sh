@@ -108,6 +108,7 @@ case $CHOICE in
             exit 0 ;;
         J)
             bash /opt/plexguide/scripts/baseinstall/edition.sh
+            exit
             ;;
         K)
             bash /opt/plexguide/menus/donate/main.sh ;;

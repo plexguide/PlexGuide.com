@@ -20,6 +20,15 @@ echo 'INFO - @GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scri
 
 bash /opt/plexguide/menus/gce/gcechecker.sh
 
+file=/etc/systemd/system/st2monitor.service
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+echo 'SUCESS - ST2Monitor Deployed for the First Time' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags st2moniotr &>/dev/null &
+  fi
+
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
@@ -214,6 +223,7 @@ echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log &&
         K)
 echo 'WARNING - Selected Editions Menu from GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/baseinstall/edition.sh
+            exit
             ;;
         Z)
             bash /opt/plexguide/scripts/message/ending.sh

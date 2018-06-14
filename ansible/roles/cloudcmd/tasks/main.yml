@@ -65,7 +65,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:cmd.{{domain.stdout}}, cloudcmd.{{domain.stdout}},"
+      traefik.frontend.rule: "Host:cmd.{{domain.stdout}}, cloudcmd.{{domain.stdout}}"
       traefik.port: "8000"
     restart_policy: always
     state: started
@@ -73,6 +73,7 @@
 ################ ST2 Edition
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+  tags: [ 'never', 'cloudst2' ]
 
 - include_role:
     name: variables

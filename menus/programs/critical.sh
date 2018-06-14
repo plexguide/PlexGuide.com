@@ -37,6 +37,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+echo "INFO - Selected Portainer Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             display=Portainer
             program=portainer
             port=9000
@@ -52,6 +53,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
+echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/traefik/main.sh
             bash /opt/plexguide/menus/programs/critical.sh
             sleep 3

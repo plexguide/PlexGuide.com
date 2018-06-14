@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo "INFO - @APPGUARD Starting Process Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  
   dialog --title "PG APP Guard Protection" --msgbox "\nPurpose is to generate username and passwords for APPS without PROTECTION such as Heimdall, RuTorrent & Others.\n\nYour Password will Be Hashed for Protection.\n\nNOTE, your PORTS MUST BE CLOSED for this to work well! APP GUARD only protects by SUBDOMAIN ACCESS, not Ports!!!" 0 0
 
   dialog --title "Create a USERNAME (case senstive)" \
@@ -31,9 +33,11 @@
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\n$user - $pw\n\nCorrect?" 0 0; then
     dialog --title "Path Choice" --msgbox "\nUsername & Password are SET!" 0 0
+    echo "INFO - Username & Password for AppGuard - SET" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
     ### Builds the Username & Password
     htpasswd -cbs /var/plexguide/server.ht $user $pw 1>/dev/null 2>&1
+    echo "INFO - Password for AppGuard is Hashed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
     ### Password is Hased, Files no Longer Needed
     rm -r /var/plexguide/server.ht.pw 1>/dev/null 2>&1
@@ -45,8 +49,11 @@
     dialog --title "PG APP Guard Security" --msgbox "\nContainers without protection are now Protected!\n\nIf you need to change the USERNAME and/or PASSWORD, rerun this program!" 0 0
 
     echo "[ON]" > /var/plexguide/server.appguard
+    echo "SUCCESS - APPGuard Deployed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
     exit
   else
+    echo "WARNING - Elected To Not Deploy AppGuard" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     dialog --title "PG APP Guard Status" --msgbox "\nYou noted that the Username & Password is NOT CORRECT!\n\nRestarting Process!" 0 0
     bash /opt/plexguide/menus/security/ht.sh
     exit

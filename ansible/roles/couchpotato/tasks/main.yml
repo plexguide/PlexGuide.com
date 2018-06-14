@@ -56,7 +56,7 @@
           - CouchPotato
     volumes:
       - /opt/appdata/couchpotato:/config
-      - /mnt/unionfs/completed:/unionfs-downloads:shared
+      - /mnt/unionfs/completed:/unionfs-downloads/shared
       - /mnt/unionfs:/unionfs
       - /mnt/unionfs/movies:/movies
       - "{{path.stdout}}/sab/complete:/complete"

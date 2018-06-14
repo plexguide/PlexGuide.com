@@ -53,6 +53,9 @@ OPTIONS=(1 "CouchPotato"
          26 "Airsonic"
          27 "TorrentVPN"
          28 "qBittorrent"
+         29 "Ombi4k"
+         30 "Sonarr4k"
+         31 "Radarr4k"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -120,14 +123,21 @@ case $CHOICE in
             echo "vpn" > /tmp/program_var ;;
         28)
             echo "qbittorrent" > /tmp/program_var ;;
+        29)
+            echo "ombi4k" > /tmp/program_var ;;
+        30)
+            echo "sonarr4k" > /tmp/program_var ;;
+        31)
+            echo "radarr4k" > /tmp/program_var ;;
         Z)
-            echo "INFO - Backup Menu Exited" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo "INFO - Exited Backup Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear
             exit 0 ;;
 
 esac
 
 app=$( cat /tmp/program_var )
+echo "INFO - Backing Up $app" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 file="/opt/appdata/$app"
 if [ -e "$file" ]
@@ -144,6 +154,8 @@ if [ -e "$file" ]
         fi
     else
         dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
+        echo "WARNING - Backup: No Local Data to Backup for $app" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
         sudo bash /opt/plexguide/menus/backup-restore/backup.sh
         exit 0
 fi
@@ -179,6 +191,7 @@ fi
 read -n 1 -s -r -p "Press any key to continue"
 
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
+echo "INFO - Backup $app Complete" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 sudo bash /opt/plexguide/menus/backup-restore/backup.sh
 exit 0

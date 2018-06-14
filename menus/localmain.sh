@@ -120,7 +120,9 @@ rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         H)
-            bash /opt/plexguide/scripts/baseinstall/edition.sh ;;
+            bash /opt/plexguide/scripts/baseinstall/edition.sh 
+            exit 
+            ;;
         I)
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
