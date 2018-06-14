@@ -91,31 +91,42 @@ case $CHOICE in
         B)
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
+echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
+echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
         E)
+echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         F)
+echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         G)
+echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/settings/main.sh ;;
         H)
+echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         I)
+echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         J)
+echo 'INFO - Selected: PG Editions' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/baseinstall/edition.sh
             exit
             ;;
         K)
+echo 'INFO - Selected: PDonations INterface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
+echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
 esac
 
 ## repeat menu when exiting
 bash /opt/plexguide/menus/main.sh
+exit

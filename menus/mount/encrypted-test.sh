@@ -21,14 +21,6 @@ echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plex
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
-file=/etc/systemd/system/st2monitor.service
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-echo 'SUCESS - ST2Monitor Deployed for the First Time' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags st2moniotr &>/dev/null &
-  fi
 
 HEIGHT=15
 WIDTH=50

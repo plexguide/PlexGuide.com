@@ -1,6 +1,19 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
+###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+
+file="/opt/appdata/plexguide"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   echo 'INFO - PLexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+   mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
+   chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
+   chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
+fi
+
 #### Set Fixed Information
 sudo bash /opt/plexguide/info.sh
 
@@ -17,6 +30,15 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
+   touch /opt/appdata/plexguide/plextoken
+fi
+
+file="/opt/appdata/plexguide/plextoken"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   echo 'INFO - Installed Dummy PlexToken' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    touch /opt/appdata/plexguide/plextoken
 fi
 
@@ -38,6 +60,7 @@ else
    apt-get install dialog 1>/dev/null 2>&1
    export NCURSES_NO_UTF8_ACS=1
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
+   echo 'INFO - Installed Dialog' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 fi
 # install pgstatus if needed
 [[ ! -e /bin/pgstatus ]] && \
@@ -68,6 +91,7 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
+   echo 'INFO - Executing UB Version Check Script' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    bash /opt/plexguide/scripts/ubcheck/main.sh
 fi
 
@@ -77,6 +101,7 @@ then
    clear 1>/dev/null 2>&1
 else
    bash /opt/plexguide/menus/version/main.sh
+   echo "SUCCESS - First Time Execution" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    clear
       echo "1. Please STAR PG via http://github.plexguide.com"
       echo "2. Join the PG Discord via http://discord.plexguide.com"
@@ -137,6 +162,7 @@ edition=$( cat /var/plexguide/pg.edition )
 #### G-Drive Edition
 if [ "$edition" == "PG Edition: GDrive" ]
   then
+    echo 'INFO - Deploying GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     bash /opt/plexguide/menus/main.sh
     exit
 fi
@@ -144,6 +170,7 @@ fi
 #### Multiple Drive Edition
 if [ "$edition" == "PG Edition: HD Multi" ]
   then
+   echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     bash /opt/plexguide/menus/localmain.sh
     exit
 fi
@@ -151,12 +178,14 @@ fi
 #### Solo Drive Edition
 if [ "$edition" == "PG Edition: HD Solo" ]
   then
+   echo 'INFO - Deploying HD Solo Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     bash /opt/plexguide/menus/localmain.sh
     exit
 fi
 
 if [ "$edition" == "PG Edition: GCE Feed" ]
   then
+   echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     bash /opt/plexguide/menus/gce.sh
     exit
 fi
