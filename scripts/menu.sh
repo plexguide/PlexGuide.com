@@ -14,6 +14,17 @@ else
    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
 fi
 
+file="/var/plexguide"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   echo 'INFO - PLexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+   mkdir -p /var/plexguide 1>/dev/null 2>&1
+   chown 0755 /var/plexguide 1>/dev/null 2>&1
+   chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
+fi
+
 #### Set Fixed Information
 sudo bash /opt/plexguide/info.sh
 
