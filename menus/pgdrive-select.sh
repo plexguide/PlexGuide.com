@@ -1,5 +1,6 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
+echo "INFO - @PGDrive PGDrive Type Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #############
 HEIGHT=10
@@ -26,14 +27,13 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/pgdrive/main.sh
               echo "RClone - You Chose the Unencrypted Method" > /tmp/pushover
-#              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-#              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
+echo "INFO - Selected: Unencrypted PG Drives" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
               ;;
         B)
             bash /opt/plexguide/menus/pgdrive_en/main.sh
               echo "RClone - You Chose the Encrypted Method" > /tmp/pushover
-#              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-#              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean-encrypt &>/dev/null &
+echo "INFO - Selected: Encrypted PG Drives" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
               ;;
         Z)
             clear

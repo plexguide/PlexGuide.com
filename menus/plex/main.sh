@@ -16,6 +16,7 @@
 #
 #################################################################################
 rm -r /tmp/plexsetup 1>/dev/null 2>&1
+echo 'INFO - @Plex Type Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
@@ -62,7 +63,8 @@ TITLE="Plex Installer"
 MENU="Select your Plex Preference:"
 
 OPTIONS=(A "Plex Latest"
-         B "Plex Custom"
+         B "Plex Pass"
+         C "Plex Custom"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -76,6 +78,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+echo 'INFO - Selected: Plex Latest' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             echo "latest" > /var/plexguide/plextag
             dialog --infobox "Selected Tag: Latest" 3 38
             sleep 2
@@ -86,12 +89,35 @@ case $CHOICE in
             if [ "$server" == "remote" ] 
             then
               clear
+echo 'INFO - Deployed Plex For a Remote Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                # user select remote server (which requires claiming operations)
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
                clear
-               # user select local server (non-remote which requires to change some things to work!)
+echo 'INFO - Deployed Plex For a Local Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
+               read -n 1 -s -r -p "Press any key to continue"
+            fi
+
+            #read -n 1 -s -r -p "Press any key to continue "
+            ;;
+        B)
+echo 'INFO - Selected: PlexPass' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo "plexpass" > /var/plexguide/plextag
+            dialog --infobox "Selected Tag: PlexPass" 3 38
+            sleep 2
+
+            dialog --infobox "Installing Plex: Please Wait" 3 45
+            touch /tmp/plexsetup
+
+            if [ "$server" == "remote" ] 
+            then
+echo 'INFO - Deployed Plex For a Remote Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+               read -n 1 -s -r -p "Press any key to continue"
+            else
+echo 'INFO - Deployed Plex For a Local Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
             fi
@@ -99,7 +125,8 @@ case $CHOICE in
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
 
-        B)
+        C)
+echo 'INFO - Selected: Plex Custom' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                 dialog --title "Warning - Tag Info" \
                 --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
 
@@ -115,13 +142,12 @@ case $CHOICE in
 
             if [ "$server" == "remote" ] 
             then
-               clear
-               # user select remote server (which requires claiming operations)
+echo 'INFO - Deployed Plex For a Remote Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
                clear
-               # user select local server (non-remote which requires to change some things to work!)
+echo 'INFO - Deployed Plex For a Local Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
                
@@ -130,6 +156,7 @@ case $CHOICE in
             #read -n 1 -s -r -p "Press any key to continue "
             ;;
         Z)
+echo 'INFO - Selected: Users Selected to Exit' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear
             exit 0 ;;
 
@@ -147,6 +174,7 @@ fi
 
 if [ "$server" == "remote" ] 
 then
+  echo 'INFO - Remote User: Warned to Enable Port 32400' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   dialog --title "FOR REMOTE PLEX SERVERS Users!" \
   --msgbox "\nRemember to claim your SERVER @ http://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 

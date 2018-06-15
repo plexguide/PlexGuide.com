@@ -28,7 +28,7 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Developer: 5.091"
-         Z "Exit"
+         Z "Exit Menu"
          B "Stable   : 5.090"
          C "Stable   : 5.089"
          D "Stable   : 5.088"
@@ -111,6 +111,7 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
             version="5.078" ;;
         Z)
             bash /opt/plexguide/menus/main.sh
+echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             exit 0
             ;;
 esac
@@ -145,7 +146,7 @@ bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 
-echo 'INFO - Selected PG to Upgrade to $version' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 bash /opt/plexguide/scripts/message/ending.sh
 
