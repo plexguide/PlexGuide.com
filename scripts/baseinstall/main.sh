@@ -113,21 +113,16 @@ pg_dep_stored=$( cat /var/plexguide/pg.dep.stored )
 
 if [ "$pg_dep" == "$pg_dep_stored" ]
     then
-      echo "26" | dialog --gauge "PG Dependencies Installed Already" 7 50 0
+      echo "25" | dialog --gauge "PG Dependencies Installed Already" 7 50 0
       sleep 2
     else 
-      echo "26" | dialog --gauge "Installing: PG Dependencies" 7 50 0
+      echo "25" | dialog --gauge "Installing: PG Dependencies" 7 50 0
       sleep 2
       clear
       ansible-playbook /opt/plexguide/ansible/critical.yml --tags preinstall
       sleep2
       cat /var/plexguide/pg.dep > /var/plexguide/pg.dep.stored
 fi 
-
-echo "30" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags commands &>/dev/null &
-#read -n 1 -s -r -p "Press any key to continue "
-sleep 2
 
 # START ########################### If doesn't exist, put /mnt into the file for the folders role
 file="/var/plexguide/server.hd.path"
@@ -139,34 +134,10 @@ if [ -e "$file" ]
 fi
 # END########################### If doesn't exist, put /mnt into the file for the folders role
 
-######## ALIAS
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
-
-if [ "$pg_alias" == "$pg_alias_stored" ]
-    then
-      echo "34" | dialog --gauge "Alias File Is Already Installed" 7 50 0
-      sleep 2
-    else 
-      echo "34" | dialog --gauge "Installing: Alias File" 7 50 0
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags alias
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
-      sleep 2
-fi 
-
-echo "37" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
+echo "30" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 sleep 2
 clear
 ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
-sleep 2
-#read -n 1 -s -r -p "Press any key to continue "
-
-echo "43" | dialog --gauge "Installing: PlexGuide Labeling" 7 50 0
-sleep 2
-clear
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags label
 sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
@@ -178,7 +149,7 @@ version_recall18=$( cat /var/plexguide/pg.docker18 )
 
 if [ "$docker_var" == "$version_recall16-ce," ]
 then
-  echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  echo "35" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
 else
@@ -187,7 +158,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "16" ]
     then
-  echo "50" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
+  echo "35" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2
   clear
@@ -201,7 +172,7 @@ fi
 ### For Docker 18
 if [ "$docker_var" == "$version_recall18-ce," ]
 then
-  echo "50" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  echo "35" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
 else
@@ -210,7 +181,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "18" ]
     then
-  echo "50" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
+  echo "35" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2 
   clear
@@ -220,6 +191,7 @@ docver=$( cat /var/plexguide/ub.ver )
   fi
 
 fi
+
 ############################################################ Checks to See if Docker Installed; if not... FAIL!
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
 file="/usr/bin/docker" 1>/dev/null 2>&1
@@ -230,38 +202,93 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
       ##### Install Docker the Emergency Way 
       clear
       echo "Installing Docker the Old School Way - (Please Be Patient)"
-      echo ""
       sleep 2
-      apt-get install docker-ce
+      clear
+      curl -fsSL get.docker.com -o get-docker.sh
+      sh get-docker.sh
       echo ""
       echo "Starting Docker (Please Be Patient)"
       sleep 2
       systemctl start docker
       sleep 2
-      clear
 
       ##### Checking Again, if fails again; warns user
-    file="/usr/bin/docker" 1>/dev/null 2>&1
-      if [ -e "$file" ]
-        then
-      echo "" 1>/dev/null 2>&1
+      file="/usr/bin/docker" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+            echo "" 1>/dev/null 2>&1
         else
-        touch /var/plexguide/startup.error 1>/dev/null 2>&1
-        exit
+            touch /var/plexguide/startup.error 1>/dev/null 2>&1
+            exit
       fi
 fi
+
+######## COMMANDS
+pg_commands=$( cat /var/plexguide/pg.commands )
+pg_commands_stored=$( cat /var/plexguide/pg.commands.stored )
+
+if [ "$pg_commands" == "$pg_commands_stored" ]
+    then
+      echo "60" | dialog --gauge "PG Commands Already Installed" 7 50 0
+      sleep 2
+    else 
+      clear
+      echo "60" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags commands &>/dev/null &
+      cat /var/plexguide/pg.commands > /var/plexguide/pg.commands.stored
+      sleep 2
+      #read -n 1 -s -r -p "Press any key to continue "
+fi 
+
+######## ALIAS
+pg_alias=$( cat /var/plexguide/pg.alias )
+pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+
+if [ "$pg_alias" == "$pg_alias_stored" ]
+    then
+      echo "65" | dialog --gauge "Alias File Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "65" | dialog --gauge "Installing: Alias File" 7 50 0
+      sleep 2
+      clear
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags alias
+      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+      sleep 2
+fi 
+
+echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
+sleep 2
+######## ALIAS
+pg_label=$( cat /var/plexguide/pg.label )
+pg_label_stored=$( cat /var/plexguide/pg.label.stored )
+
+if [ "$pg_label" == "$pg_label_stored" ]
+    then
+      echo "70" | dialog --gauge "Label Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
+      sleep 2
+      clear
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags label
+      sleep 2
+      #read -n 1 -s -r -p "Press any key to continue "
+      cat /var/plexguide/pg.label > /var/plexguide/pg.label.stored
+      sleep 2
+fi 
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
 touch /var/plexguide/basics.yes &>/dev/null &
 #sleep 1
 
-echo "77" | dialog --gauge "Installing: AutoDelete & Cleaner" 7 50 0
+echo "80" | dialog --gauge "Installing: AutoDelete & Cleaner" 7 50 0
 ansible-playbook /opt/plexguide/ansible/critical.yml --tags autodelete &>/dev/null &
 ansible-playbook /opt/plexguide/ansible/critical.yml --tags clean &>/dev/null &
 sleep 2
 
-echo "79" | dialog --gauge "Installing: Portainer" 7 50 0
+echo "85" | dialog --gauge "Installing: Portainer" 7 50 0
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
 #sleep 1
 ############################################################ Reboot Startup Container Script
@@ -279,12 +306,12 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
       cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
 fi 
 
-echo "85" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
+echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 #sleep 2
 
-echo "88" | dialog --gauge "Installing: WatchTower" 7 50 0
+echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
 file="/var/plexguide/watchtower.yes"
 if [ -e "$file" ]
     then
@@ -300,10 +327,10 @@ pg_python_stored=$( cat /var/plexguide/pg.python.stored )
 
 if [ "$pg_python" == "$pg_python_stored" ]
     then
-      echo "94" | dialog --gauge "Python Support Is Already Installed" 7 50 0
+      echo "99" | dialog --gauge "Python Support Is Already Installed" 7 50 0
       sleep 2
     else 
-      echo "94" | dialog --gauge "Installing: Python Support" 7 50 0
+      echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
       bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
 fi
