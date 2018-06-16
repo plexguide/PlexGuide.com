@@ -18,12 +18,12 @@ fi
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]
 then
+   echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else
    mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
    touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
    rclone move --max-size 99G --log-level INFO --stats 5s /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
    echo 'INFO - Deployed PGChecker.bin to GDrive - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else
-   echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 fi
 
 file="/var/plexguide"
