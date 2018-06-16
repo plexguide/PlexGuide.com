@@ -24,14 +24,14 @@
     - ca-certificates
     - software-properties-common
   tags:
-    - docker18
+    - docker_standard
 
 - name: Add official gpg signing key
   apt_key:
     id: 0EBFCD88
     url: https://download.docker.com/linux/ubuntu/gpg
   tags:
-    - docker18
+    - docker_standard
 
 ############################################# DOCKER 16 START
 - name: Register Docker
@@ -91,7 +91,7 @@
     name: docker-ce={{docversion.stdout}}
     state: present
     force: yes
-    update_cache: yes
+    #update_cache: yes
   tags:
     - docker18
 
