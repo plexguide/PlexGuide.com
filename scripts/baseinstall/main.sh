@@ -194,7 +194,7 @@ then
   #read -n 1 -s -r -p "Press any key to continue "
 else
 
-docver=$( cat /var/plexguide/ub.ver )
+docver=$( cat /var/plexguide/ubversion )
 
   if [ "$docver" == "18.04" ]
     then
