@@ -83,6 +83,11 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
             clear
             sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
+        Z)
+            bash /opt/plexguide/menus/main.sh
+echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            exit 0
+            ;;
         01)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.090" ;;
@@ -110,11 +115,6 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
         09)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.078" ;;
-        Z)
-            bash /opt/plexguide/menus/main.sh
-echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            exit 0
-            ;;
 esac
 
 file="/var/plexguide/ask.yes"
