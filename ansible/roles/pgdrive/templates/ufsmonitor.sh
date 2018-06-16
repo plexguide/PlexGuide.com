@@ -21,6 +21,7 @@ if pidof -o %PPID -x "$0"; then
    exit 1
 fi
 
+echo 'SUCCESS - UFSMonitor (UnionFS) Monitor Script.sh Deployed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 sleep 3
 while true
 do
