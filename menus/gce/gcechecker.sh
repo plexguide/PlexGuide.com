@@ -99,8 +99,8 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       #ln -s /nvme1/opt/appdata/sonarr /opt/appdata
 
       mkdir /tmp 1>/dev/null 2>&1
-      chmod 0755 /tmp 1>/dev/null 2>&1
-      chown 1000:1000 /tmp 1>/dev/null 2>&1
+      chmod 0777 /tmp 1>/dev/null 2>&1
+      chown 0:0 /tmp 1>/dev/null 2>&1
 
       mkdir /mnt/gdrive 1>/dev/null 2>&1
       chmod 0755 /mnt/gdrive 1>/dev/null 2>&1
