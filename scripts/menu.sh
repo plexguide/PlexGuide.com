@@ -22,7 +22,8 @@ then
 else
    mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
    touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-   rclone move --max-size 99G --log-level INFO --stats 5s /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
+   rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
+   rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
    echo 'INFO - Deployed PGChecker.bin to GDrive - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 fi
 
