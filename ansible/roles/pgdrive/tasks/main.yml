@@ -226,35 +226,28 @@
       - unionfs
 
 ########Unionfs Monitor
-  - name: Check Unionfs Check Service
-    stat:
-      path: "/etc/systemd/system/ufsmonitor.service"
-    register: ufsm
-    tags:
-      - ufsm
-
   - name: Stop If UFS Monitor Service Running
     systemd: state=stopped name=ufsmonitor
-    when: ufsm.stat.exists == True
-    tags:
-      - ufsm
+    ignore_errors: True
 
-  - name: Install ST2 Monitor Service
+  - name: Install UFS Monitor Service
     template:
       src: ufsmonitor.service
       dest: /etc/systemd/system/ufsmonitor.service
       force: yes
-    when: ufsm.stat.exists == False
-    tags:
-      - ufsm
+    ignore_errors: True
+
+  - name: Install UFS Script
+    template:
+      src: ufsmonitor.sh
+      dest: /opt/appdata/plexguide/ufsmonitor.sh
+      force: yes
+    ignore_errors: True
 
   - name: Daemon-Reload
     systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
-    when: ufsm.stat.exists == False
-    tags:
-      - ufsm
+    ignore_errors: True
 
   - name: Start UFS Monitor
     systemd: state=started name=ufsmonitor enabled=yes
-    tags:
-      - ufsm
+    ignore_errors: True
