@@ -23,7 +23,7 @@ sleep 3
 while true
 do
 
-file="/mnt/unionfs/plexguide/pgchecker.bin" 1>/dev/null 2>&1
+file="/mnt/unionfs/plexguide/pgchecker.bin"
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
