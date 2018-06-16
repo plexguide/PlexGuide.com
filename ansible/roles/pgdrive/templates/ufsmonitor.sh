@@ -17,12 +17,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-if pidof -o %PPID -x "$0"; then
-   exit 1
-fi
-
 echo 'SUCCESS - UFSMonitor (UnionFS) Monitor Script.sh Deployed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 sleep 3
+
 while true
 do
 
@@ -30,6 +27,7 @@ file="/mnt/unionfs/plexguide/pgchecker.bin" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
+  echo 'INFO - UNIONFS: Up & Running' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     else
     echo 'FAILURE - UNIONFS FAILED - PGChecker.bin missing!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     docker stop plex &>/dev/null &
