@@ -62,4 +62,4 @@ file="/mnt/unionfs/plexguide/pgchecker.bin"
     fi
 
 ### For While Loop
-fi
+done
