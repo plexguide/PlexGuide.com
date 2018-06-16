@@ -94,6 +94,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             then
                echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             else
+               mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
+               mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
                mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
                touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
                rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
