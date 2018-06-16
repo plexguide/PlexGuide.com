@@ -55,7 +55,13 @@ do
   			    echo 'INFO - Plex, Raddar & Sonarr were Deployed!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   			  else 
             echo 'FAILURE - UNIONFS FAILED! You must restart and T-Shoot Your System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            sleep 10
+            echo 'WARNING - Programs Utilizing UnionFS are being ShutDown!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            docker stop plex &>/dev/null &
+            docker stop sonarr &>/dev/null &
+            docker stop radarr &>/dev/null &
+            docker stop sonarr4k &>/dev/null &
+            docker stop radarr4k&>/dev/null &
+            sleep 2
             exit
   		  fi
 
