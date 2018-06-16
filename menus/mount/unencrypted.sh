@@ -148,7 +148,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsm
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
