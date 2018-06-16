@@ -224,3 +224,27 @@
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs
+
+########Unionfs Monitor
+  - name: Check Unionfs Check Service
+    stat:
+      path: "/etc/systemd/system/ufsmonitor.service"
+    register: ufsm
+
+  - name: Stop If UFS Monitor Service Running
+    systemd: state=stopped name=ufsmonitor
+    when: ufsm.stat.exists == True
+
+  - name: Install ST2 Monitor Service
+    template:
+      src: ufsmonitor.service
+      dest: /etc/systemd/system/ufsmonitor.service
+      force: yes
+    when: ufsm.stat.exists == False
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
+    when: ufsm.stat.exists == False
+
+  - name: Start UFS Monitor
+    systemd: state=started name=ufsmonitor enabled=yes
