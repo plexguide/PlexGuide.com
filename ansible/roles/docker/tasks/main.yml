@@ -2,8 +2,8 @@
 #
 # [PlexGuide Ansible Role]
 #
-# Enhanced By:       Admin9705 & Deiteq
-# URL:               https://plexguide.com
+# Mainted & Modded By: Admin9705 & Deiteq
+# URL:                 https://plexguide.com
 #
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
 #
@@ -13,7 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Original Author: 13uddz & Desmonic - cloudbox.rocks
+# Original Ansible Role: 13uddz & Desmonic - cloudbox.rocks
 #################################################################################
 
 ---
@@ -33,112 +33,105 @@
   tags:
     - docker_standard
 
-############################################# DOCKER 16 START
+############################################# DOCKER VARIABLES RECALLED
 - name: Register Docker
   shell: "cat /var/plexguide/pg.docker16.full"
   register: docversion
   ignore_errors: True
-  tags:
-    - docker16
+  tags: docker16
 
 - name: Register Edition
   shell: "cat /var/plexguide/pg.docker16.edition"
   register: docedition
   ignore_errors: True
-  tags:
-    - docker16
+  tags: docker16
 
-- name: Add official repository
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} {{docedition.stdout}}"
-  tags:
-    - docker16
-
-- name: Installing docker
-  apt:
-    name: docker-ce={{docversion.stdout}}
-    state: present
-    force: yes
-    update_cache: yes
-  tags:
-    - docker16
-
-############################################## DOCKER 16 END
-
-############################################## DOCKER 18 START
 - name: Register Docker
   shell: "cat /var/plexguide/pg.docker18.full"
   register: docversion
   ignore_errors: True
-  tags:
-    - docker18
+  tags: docker18
 
 - name: Register Edition
   shell: "cat /var/plexguide/pg.docker18.edition"
   register: docedition
   ignore_errors: True
-  tags:
-    - docker18
+  tags: docker18
+
+############################################# DEPLOY DOCKER
 
 - name: Add official repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} {{docedition.stdout}}"
-  tags:
-    - docker18
+  tags: docker_standard
 
-- name: Installing docker
+- name: Release docker-ce from hold
+  dpkg_selections:
+    name: docker-ce
+    selection: install
+  tags: docker_standard
+
+- name: Install docker-ce
   apt:
-    name: docker-ce={{docversion.stdout}}
+    name: docker-ce={{docversion.stdout}
     state: present
+    update_cache: yes
     force: yes
-    #update_cache: yes
-  tags:
-    - docker18
+  tags: docker_standard
 
-############################################## DOCKER 16 END
+- name: Put docker-ce into hold
+  dpkg_selections:
+    name: docker-ce
+    selection: hold
+
+- name: Check docker daemon.json exists
+  stat:
+    path: /etc/docker/daemon.json
+  register: docker_daemon
+  tags: docker_standard
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes
-  tags:
-    - docker_standard
+  when: docker_daemon.stat.exists == False
+  tags: docker_standard
 
 - name: Import daemon.json
   copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
-  tags:
-    - docker_standard
+  when: docker_daemon.stat.exists == False
+  tags: docker_standard
 
 - name: Start docker
   systemd: state=started name=docker enabled=yes
-  tags:
-    - docker_standard
+  when: docker_daemon.stat.exists == False
+  tags: docker_standard
 
-- name: "Wait for 8 seconds before commencing"
+- name: "Wait for 30 seconds before commencing"
   wait_for:
-    timeout: 8
-  tags:
-    - docker_standard
+    timeout: 20
+  tags: docker_standard
 
 - name: Check override folder exists
   stat:
     path: /etc/systemd/system/docker.service.d
   register: docker_override
-  tags:
-    - docker_standard
+  tags: docker_standard
 
 - name: Create override folder
   file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
   when: docker_override.stat.exists == False
-  tags:
-    - docker_standard
+  tags: docker_standard
 
 - name: Import override file
   copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
-  tags:
-    - docker_standard
+  tags: docker_standard
+
+- name: "Install ctop"
+  import_role:
+    name: ctop
+  tags: docker_standard
 
 - name: create plexguide network
   docker_network:
     name: "plexguide"
     state: present
-  tags:
-    - docker_standard
+  tags: docker_standard
