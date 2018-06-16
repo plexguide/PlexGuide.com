@@ -230,10 +230,14 @@
     stat:
       path: "/etc/systemd/system/ufsmonitor.service"
     register: ufsm
+    tags:
+      - ufsm
 
   - name: Stop If UFS Monitor Service Running
     systemd: state=stopped name=ufsmonitor
     when: ufsm.stat.exists == True
+    tags:
+      - ufsm
 
   - name: Install ST2 Monitor Service
     template:
@@ -241,10 +245,16 @@
       dest: /etc/systemd/system/ufsmonitor.service
       force: yes
     when: ufsm.stat.exists == False
+    tags:
+      - ufsm
 
   - name: Daemon-Reload
     systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
     when: ufsm.stat.exists == False
+    tags:
+      - ufsm
 
   - name: Start UFS Monitor
     systemd: state=started name=ufsmonitor enabled=yes
+    tags:
+      - ufsm
