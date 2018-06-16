@@ -48,15 +48,15 @@ do
   		  file="/mnt/unionfs/plexguide/pgchecker.bin" 1>/dev/null 2>&1
   		  if [ -e "$file" ]
   		    then
-  			    docker restart plex &>/dev/null &
-  			    docker restart sonarr &>/dev/null &
-  			    docker restart radarr &>/dev/null &
-  			    docker restart sonarr4k &>/dev/null &
-  			    docker restart radarr4k&>/dev/null &
+  			    docker start plex &>/dev/null &
+  			    docker start sonarr &>/dev/null &
+  			    docker start radarr &>/dev/null &
+  			    docker start sonarr4k &>/dev/null &
+  			    docker start radarr4k &>/dev/null &
   			    echo 'INFO - Plex, Raddar & Sonarr were Deployed!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   			  else 
             echo 'FAILURE - UNIONFS FAILED! You must restart and T-Shoot Your System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            echo 'WARNING - Programs Utilizing UnionFS are being ShutDown!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo 'WARNING - Programs Utilizing UnionFS were ShutDown!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             docker stop plex &>/dev/null &
             docker stop sonarr &>/dev/null &
             docker stop radarr &>/dev/null &
