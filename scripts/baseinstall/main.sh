@@ -141,6 +141,23 @@ ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
 sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
+######## COMMANDS
+pg_commands=$( cat /var/plexguide/pg.commands )
+pg_commands_stored=$( cat /var/plexguide/pg.commands.stored )
+
+if [ "$pg_commands" == "$pg_commands_stored" ]
+    then
+      echo "35" | dialog --gauge "PG Commands Already Installed" 7 50 0
+      sleep 2
+    else 
+      clear
+      echo "35" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags commands &>/dev/null &
+      cat /var/plexguide/pg.commands > /var/plexguide/pg.commands.stored
+      sleep 2
+      #read -n 1 -s -r -p "Press any key to continue "
+fi 
+
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )
@@ -149,7 +166,7 @@ version_recall18=$( cat /var/plexguide/pg.docker18 )
 
 if [ "$docker_var" == "$version_recall16-ce," ]
 then
-  echo "35" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  echo "40" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
 else
@@ -158,7 +175,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "16" ]
     then
-  echo "35" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
+  echo "40" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2
   clear
@@ -172,7 +189,7 @@ fi
 ### For Docker 18
 if [ "$docker_var" == "$version_recall18-ce," ]
 then
-  echo "35" | dialog --gauge "Docker Is Already Installed" 7 50 0
+  echo "40" | dialog --gauge "Docker Is Already Installed" 7 50 0
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
 else
@@ -181,7 +198,7 @@ docver=$( cat /var/plexguide/ub.ver )
 
   if [ "$docver" == "18" ]
     then
-  echo "35" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
+  echo "40" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2 
   clear
@@ -222,23 +239,6 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
             exit
       fi
 fi
-
-######## COMMANDS
-pg_commands=$( cat /var/plexguide/pg.commands )
-pg_commands_stored=$( cat /var/plexguide/pg.commands.stored )
-
-if [ "$pg_commands" == "$pg_commands_stored" ]
-    then
-      echo "60" | dialog --gauge "PG Commands Already Installed" 7 50 0
-      sleep 2
-    else 
-      clear
-      echo "60" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags commands &>/dev/null &
-      cat /var/plexguide/pg.commands > /var/plexguide/pg.commands.stored
-      sleep 2
-      #read -n 1 -s -r -p "Press any key to continue "
-fi 
 
 ######## ALIAS
 pg_alias=$( cat /var/plexguide/pg.alias )
