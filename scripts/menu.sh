@@ -14,6 +14,18 @@ else
    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
 fi
 
+## Create Dummy File on /mnt/gdrive/plexguide
+file="/mnt/unionfs/plexguide/pgchecker.bin"
+if [ -e "$file" ]
+then
+   mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
+   touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
+   rclone move --max-size 99G --log-level INFO --stats 5s /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
+   echo 'INFO - Deployed PGChecker.bin to GDrive - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else
+   echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+fi
+
 file="/var/plexguide"
 if [ -e "$file" ]
 then
@@ -91,12 +103,6 @@ sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
-# Checking to see if VNC Container is Running
-#file="/var/plexguide/vnc.yes"
-#if [ -e "$file" ]
-#then
-#whiptail --title "Warning" --msgbox "You still have the VNC Container Running! Make sure to Destroy the Container via the VNC Menu!" 9 66
-#fi
 file="/var/plexguide/ubversion"
 if [ -e "$file" ]
 then
