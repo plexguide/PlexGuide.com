@@ -27,7 +27,8 @@ do
       if [ -e "$file" ]
         then
       echo "" 1>/dev/null 2>&1
-      echo 'INFO - UNIONFS: Up & Running' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - UNIONFS: Up & Running - Checking Again 3 Minutes' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.
+      sleep 180
         else
         echo 'FAILURE - UNIONFS FAILED - PGChecker.bin missing!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         docker stop plex &>/dev/null &
