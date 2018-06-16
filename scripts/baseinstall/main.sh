@@ -171,9 +171,9 @@ then
   #read -n 1 -s -r -p "Press any key to continue "
 else
 
-docver=$( cat /var/plexguide/ub.ver )
+docver=$( cat /var/plexguide/ubversion )
 
-  if [ "$docver" == "16" ]
+  if [ "$docver" == "16.04" ]
     then
   echo "40" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -196,7 +196,7 @@ else
 
 docver=$( cat /var/plexguide/ub.ver )
 
-  if [ "$docver" == "18" ]
+  if [ "$docver" == "18.04" ]
     then
   echo "40" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
