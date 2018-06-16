@@ -91,7 +91,7 @@
     name: docker-ce={{docversion.stdout}}
     state: present
     force: yes
-    #update_cache: yes
+    update_cache: yes
   tags:
     - docker18
 
