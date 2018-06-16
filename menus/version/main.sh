@@ -27,18 +27,22 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(00 "Developer    ~ 5.092"
+OPTIONS=(00 "Developer    ~ 5.093"
          Z "----- Exit Menu -----"
-         01 "Stable       ~ 5.091"        
-         02 "Stable       ~ 5.090"
-         03 "Stable       ~ 5.089"
-         04 "Stable       ~ 5.088"
-         05 "Stable       ~ 5.087"
-         06 "Stable       ~ 5.086"
-         07 "Depreciated  ~ 5.083"
-         08 "Depreciated  ~ 5.080"
-         09 "Depreciated  ~ 5.079"
-         10 "Depreciated  ~ 5.078")
+         01 "Stable       ~ 5.092"            
+         02 "Stable       ~ 5.091"        
+         03 "Stable       ~ 5.090"
+         04 "Stable       ~ 5.089"
+         05 "Stable       ~ 5.088"
+         06 "Stable       ~ 5.087"
+         07 "Stable       ~ 5.086"
+         08 "Depreciated  ~ 5.083"
+         09 "Depreciated  ~ 5.080"
+         10 "Depreciated  ~ 5.079"
+         11 "Depreciated  ~ 5.078"
+         12 "Historical   ~ 5.048"
+         13 "Historical   ~ 5.013"
+         14 "Historical   ~ 5.003")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -90,34 +94,46 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         01)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.091" ;;
+            version="5.092" ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.090" ;;
+            version="5.091" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.089" ;;
+            version="5.090" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.088" ;;
+            version="5.089" ;;
         05)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.087" ;;
+            version="5.088" ;;
         06)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.086b2" ;;
+            version="5.087" ;;
         07)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.083" ;;
+            version="5.086b2" ;;
         08)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.080" ;;
+            version="5.083" ;;
         09)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.079" ;;
+            version="5.080" ;;
         10)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.079" ;;
+        11)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.078" ;;
+        12)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.048" ;;
+        13)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.013" ;;
+        14)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.003" ;;
 esac
 
 file="/var/plexguide/ask.yes"
