@@ -16,6 +16,7 @@
 #
 #################################################################################
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+edition=$( cat /var/plexguide/pg.edition )
 
 file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   if [ -e "$file" ]
