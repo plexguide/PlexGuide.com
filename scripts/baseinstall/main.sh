@@ -337,7 +337,7 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 ###### IF GCE Prevents Asking WatchTower Question
 if [ "$edition" == "PG Edition: GCE Feed" ]
   then
-      echo "" 1>/dev/null 2>&1
+    echo "[Disabled Updates]" > /var/plexguide/watchtower.yes
   else
     echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
     file="/var/plexguide/watchtower.yes"
