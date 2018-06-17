@@ -58,7 +58,7 @@
           - "{{role_name}}"
     volumes:
       - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
-      - "/opt/appdata/{{role_name}}:/config"
+      - "/opt/appdata/{{role_name}}:/config/Sonarr"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
