@@ -365,16 +365,23 @@ if [ "$pg_python" == "$pg_python_stored" ]
       sleep 2
 fi
 
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+        echo "null" > /var/plexguide/server.domain
+        touch /var/plexguide/base.domain
+  else
 ##### Traefik Process
 file="/var/plexguide/server.domain"
-if [ -e "$file" ]
-    then
-      echo "" 1>/dev/null 2>&1
-    else
-      echo "null" > /var/plexguide/server.domain
-      bash /opt/plexguide/scripts/baseinstall/domain.sh
-      touch /var/plexguide/base.domain
+  if [ -e "$file" ]
+      then
+        echo "" 1>/dev/null 2>&1
+      else
+        echo "null" > /var/plexguide/server.domain
+        bash /opt/plexguide/scripts/baseinstall/domain.sh
+        touch /var/plexguide/base.domain
+  fi
 fi
+
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
