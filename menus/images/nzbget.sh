@@ -41,7 +41,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "linuxserver/radarr" > /var/plexguide/image.nzbget 
+            echo "linuxserver/nzbget" > /var/plexguide/image.nzbget 
             ;;
         B)
             echo "hotio/suitarr" > /var/plexguide/image.nzbget
