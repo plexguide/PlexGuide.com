@@ -15,6 +15,19 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+##### Checks to make sure if it's GDRIVE Edition; if not; exit
+edition=$( cat /var/plexguide/pg.edition )
+
+#### G-Drive Edition
+if [ "$edition" == "PG Edition: GDrive" ]
+  then
+  a=0
+else
+    exit
+fi
+
+
 display=$( cat /tmp/program_var )
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 
