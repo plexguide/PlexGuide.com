@@ -19,7 +19,7 @@
 app="nzbget"
 ############################
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=9
+HEIGHT=10
 WIDTH=48
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
