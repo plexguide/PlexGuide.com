@@ -40,16 +40,6 @@ else
   exit 0
 fi
 
-##### Server Type
-file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-      echo "" 1>/dev/null 2>&1
-    else
-      echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      bash /opt/plexguide/menus/setup/servertype.sh
-fi
-
 ############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
 
 ######### Check to SEE IF GCE FEED Edition
@@ -61,6 +51,14 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
       echo "[OPEN]" > /var/plexguide/server.ports.status
   else
     #### If NOT GCE Edition
+    file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
+      if [ -e "$file" ]
+        then
+          echo "" 1>/dev/null 2>&1
+        else
+          echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+          bash /opt/plexguide/menus/setup/servertype.sh
+    fi
     file="/var/plexguide/server.ports" 1>/dev/null 2>&1
       if [ -e "$file" ]
         then
