@@ -343,6 +343,7 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
     file="/var/plexguide/watchtower.yes"
     if [ -e "$file" ]
         then
+          clear
           ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
           sleep 2
         else
