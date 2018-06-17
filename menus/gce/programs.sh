@@ -41,6 +41,7 @@ case $CHOICE in
       display=NZBGET
       program=nzbget
       port=6789
+      bash /opt/plexguide/menus/images/nzbget.sh
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
       sleep 3
