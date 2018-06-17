@@ -16,7 +16,7 @@
 #
 #################################################################################
 # Important below, name based on target
-app="nzbhyrda2"
+app="nzbhydra2"
 ############################
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=10
@@ -40,12 +40,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "linuxserver/hydra2" > /var/plexguide/image.nzbhyrda2 
-            echo "" > /var/plexguide/extra.nzbhyrda2
+            echo "linuxserver/hydra2" > /var/plexguide/image.nzbhydra2 
+            echo "" > /var/plexguide/extra.nzbhydra2
             ;;
         B)
-            echo "hotio/suitarr" > /var/plexguide/image.nzbhyrda2
-            echo "/NZBHydra2" > /var/plexguide/extra.nzbhyrda2
+            echo "hotio/suitarr" > /var/plexguide/image.nzbhydra2
+            echo "/NZBHydra2" > /var/plexguide/extra.nzbhydra2
             ;;
         Z)
             clear
