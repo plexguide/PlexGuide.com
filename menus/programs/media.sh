@@ -17,6 +17,7 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Media PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+edition=$( cat /var/plexguide/pg.edition )
 
 HEIGHT=12
 WIDTH=38

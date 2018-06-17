@@ -55,7 +55,7 @@ then
     fi
 fi
 
-HEIGHT=10
+HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
