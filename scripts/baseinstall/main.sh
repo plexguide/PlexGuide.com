@@ -353,7 +353,7 @@ if [ -e "$file" ]
       echo "null" > /var/plexguide/server.domain
       bash /opt/plexguide/scripts/baseinstall/domain.sh
       touch /var/plexguide/base.domain
-
+fi
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
