@@ -42,7 +42,7 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A
+        A)
             echo "linuxserver/radarr" > /var/plexguide/image.radarr 
             echo "" > /var/plexguide/extra.radarr
             ;;
