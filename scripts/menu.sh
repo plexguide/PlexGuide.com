@@ -2,6 +2,16 @@
 export NCURSES_NO_UTF8_ACS=1
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+file="/var/plexguide"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   mkdir -p /var/plexguide 1>/dev/null 2>&1
+   chown 0755 /var/plexguide 1>/dev/null 2>&1
+   chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
+   echo 'INFO - PLexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+fi
 
 file="/opt/appdata/plexguide"
 if [ -e "$file" ]
@@ -27,17 +37,6 @@ else
    rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
    rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
    echo 'INFO - Deployed PGChecker.bin to GDrive - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-fi
-
-file="/var/plexguide"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   echo 'INFO - PLexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-   mkdir -p /var/plexguide 1>/dev/null 2>&1
-   chown 0755 /var/plexguide 1>/dev/null 2>&1
-   chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
 fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START

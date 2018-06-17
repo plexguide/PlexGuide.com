@@ -91,10 +91,12 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
     else 
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
       echo "INFO - Installing: Ansible PlayBook" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-      apt-get update -y 1>/dev/null 2>&1
-      apt-get install ansible -y 1>/dev/null 2>&1
-      yes | apt-get update 1>/dev/null 2>&1
+      clear
+      sleep 2
+      yes | apt-add-repository ppa:ansible/ansible 
+      apt-get update -y 
+      apt-get install ansible -y
+      yes | apt-get update
       cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
 fi 
 ############################################################ Create Inventory File
@@ -129,7 +131,7 @@ if [ "$pg_dep" == "$pg_dep_stored" ]
       sleep 2
       clear
       ansible-playbook /opt/plexguide/ansible/critical.yml --tags preinstall
-      sleep2
+      sleep 2
       cat /var/plexguide/pg.dep > /var/plexguide/pg.dep.stored
 fi 
 
@@ -340,8 +342,9 @@ if [ "$pg_python" == "$pg_python_stored" ]
       sleep 2
     else 
       echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
-      bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+      bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
+      sleep 2
 fi
 
 ##### Traefik Process
@@ -357,3 +360,6 @@ fi
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+echo "100" | dialog --gauge "PG BaseInstall Finished!" 7 50 0
+sleep 2
