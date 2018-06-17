@@ -32,6 +32,11 @@
   register: image
   ignore_errors: True
 
+- name: Register Extra
+  shell: "cat /var/plexguide/extra.{{role_name}}"
+  register: extra
+  ignore_errors: True
+
 - name: Create nzbget download directory
   file: "path=/mnt/nzbget/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
@@ -49,7 +54,7 @@
     published_ports:
       - "{{ports.stdout}}6789:6789"
     volumes:
-      - /opt/appdata/nzbget:/config
+      - "/opt/appdata/nzbget:/config{{extra.stdout}}"
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/nzbget/incomplete:/incomplete"
       - "{{path.stdout}}/nzbget/nzb:/nzb"

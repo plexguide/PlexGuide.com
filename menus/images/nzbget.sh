@@ -42,9 +42,11 @@ clear
 case $CHOICE in
         A)
             echo "linuxserver/nzbget" > /var/plexguide/image.nzbget 
+            echo "" > /var/plexguide/extra.nzbget
             ;;
         B)
             echo "hotio/suitarr" > /var/plexguide/image.nzbget
+            echo "/NZBget" > /var/plexguide/extra.nzbget
             ;;
         Z)
             clear

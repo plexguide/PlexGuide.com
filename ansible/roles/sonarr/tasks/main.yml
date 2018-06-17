@@ -27,6 +27,11 @@
   register: image
   ignore_errors: True
 
+- name: Register Extra
+  shell: "cat /var/plexguide/extra.{{role_name}}"
+  register: extra
+  ignore_errors: True
+
 - name: Remove {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
@@ -58,7 +63,7 @@
           - "{{role_name}}"
     volumes:
       - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
-      - "/opt/appdata/{{role_name}}:/config/Sonarr"
+      - "/opt/appdata/{{role_name}}:/config{{extra.stdout}}"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
