@@ -56,7 +56,7 @@
       - /etc/localtime:/etc/localtime:ro
     env:
       APP: "nzbget"
-      VERSION: "unstable"
+      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
       BACKUP: "no"
