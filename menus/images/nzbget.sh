@@ -29,7 +29,6 @@ OPTIONS=(A "linuxserver/nzbget: Recommended"
          B "hotio/suitarr     : Space Saver"
          Z "Exit")
 
-
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
