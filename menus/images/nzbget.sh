@@ -45,7 +45,7 @@ case $CHOICE in
             ;;
         B)
             echo "hotio/suitarr" > /var/plexguide/image.nzbget
-            echo "" > /var/plexguide/extra.nzbget
+            echo "/NZBGet" > /var/plexguide/extra.nzbget
             ;;
         Z)
             clear
