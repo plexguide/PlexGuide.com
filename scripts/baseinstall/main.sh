@@ -50,24 +50,36 @@ file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
 fi
 
 ############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
-file="/var/plexguide/server.ports" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  dialog --title "Server Ports - One Time Message" --msgbox "\nYour APP Ports are Open by Default!\n\nYou can turn them OFF via Settings. TURN OFF only when https:// is confirmed for you DOMAIN!" 0 0
-  touch /var/plexguide/server.ports
-  echo "[OPEN]" > /var/plexguide/server.ports.status
-  fi
 
-file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  touch /var/plexguide/server.appguard 1>/dev/null 2>&1
-  echo "[OFF]" > /var/plexguide/server.appguard
-  fi
+######### Check to SEE IF GCE FEED Edition
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+      touch /var/plexguide/server.appguard 1>/dev/null 2>&1
+      echo "[OFF]" > /var/plexguide/server.appguard
+      touch /var/plexguide/server.ports
+      echo "[OPEN]" > /var/plexguide/server.ports.status
+  else
+    #### If NOT GCE Edition
+    file="/var/plexguide/server.ports" 1>/dev/null 2>&1
+      if [ -e "$file" ]
+        then
+      echo "" 1>/dev/null 2>&1
+        else
+      dialog --title "Server Ports - One Time Message" --msgbox "\nYour APP Ports are Open by Default!\n\nYou can turn them OFF via Settings. TURN OFF only when https:// is confirmed for you DOMAIN!" 0 0
+      touch /var/plexguide/server.ports
+      echo "[OPEN]" > /var/plexguide/server.ports.status
+      fi
+
+      file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+        echo "" 1>/dev/null 2>&1
+          else
+        touch /var/plexguide/server.appguard 1>/dev/null 2>&1
+        echo "[OFF]" > /var/plexguide/server.appguard
+        fi
+fi
+
 ############################################################ Starting Install Processing
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 sleep 2
@@ -312,7 +324,8 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
       sleep 2
     else 
       echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 
+      sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
 fi 
@@ -322,14 +335,20 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 #sleep 2
 
-echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
-file="/var/plexguide/watchtower.yes"
-if [ -e "$file" ]
-    then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
-      #sleep 1
-    else
-      bash /opt/plexguide/menus/watchtower/main.sh
+###### IF GCE Prevents Asking WatchTower Question
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+      echo "" 1>/dev/null 2>&1
+  else
+    echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
+    file="/var/plexguide/watchtower.yes"
+    if [ -e "$file" ]
+        then
+          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
+          sleep 2
+        else
+          bash /opt/plexguide/menus/watchtower/main.sh
+    fi
 fi
 
 ############################# Python Support
