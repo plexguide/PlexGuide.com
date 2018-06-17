@@ -27,12 +27,12 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(00 "Developer    ~ 5.096"
+OPTIONS=(00 "Developer    ~ 5.097"
          Z "----- Exit Menu -----"
-         01 "Stable       ~ 5.095"
-         02 "Stable       ~ 5.094" 
-         03 "Stable       ~ 5.093" 
-         04 "Stable       ~ 5.092"            
+         01 "Stable       ~ 5.096"
+         02 "Stable       ~ 5.095" 
+         03 "Stable       ~ 5.094" 
+         04 "Stable       ~ 5.093"            
          05 "Stable       ~ 5.087"
          06 "Stable       ~ 5.086"
          07 "Depreciated  ~ 5.083"
@@ -93,16 +93,16 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         01)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.095" ;;
+            version="5.096" ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.094" ;;
+            version="5.095" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.093" ;;
+            version="5.094" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.092" ;;
+            version="5.093" ;;
         05)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.087" ;;
