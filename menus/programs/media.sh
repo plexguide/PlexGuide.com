@@ -53,7 +53,13 @@ case $CHOICE in
                 bash /opt/plexguide/menus/programs/media.sh
                 exit
             fi
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0
+
+            #### G-Drive Edition
+            if [ "$edition" == "PG Edition: GDrive" ]
+              then
+                dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0
+            fi
+
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
@@ -69,7 +75,13 @@ case $CHOICE in
             clear
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
             read -n 1 -s -r -p "Press any key to continue"
-            dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of Emby! If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
+            
+            #### G-Drive Edition
+            if [ "$edition" == "PG Edition: GDrive" ]
+              then
+                dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of EMBY. If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
+            fi
+
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
