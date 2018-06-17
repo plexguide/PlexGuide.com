@@ -23,9 +23,9 @@ dialog --title "Quick Note" --msgbox "\nWARNING! Setting Your PlexGuide Edition!
 ### Determine Variable
 deploy=$( cat /var/plexguide/pg.server.deploy )
 
-HEIGHT=11
-WIDTH=45
-CHOICE_HEIGHT=5
+HEIGHT=10
+WIDTH=35
+CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
 
