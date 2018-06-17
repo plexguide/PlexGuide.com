@@ -18,13 +18,13 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - Visited PG Edition Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-dialog --title "Quick Note" --msgbox "\nWARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time! Choose Carefully!" 0 0
+dialog --title "Quick Note" --msgbox "\nWARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time!\n\nChoose Carefully!" 0 0
 
 ### Determine Variable
 deploy=$( cat /var/plexguide/pg.server.deploy )
 
 HEIGHT=10
-WIDTH=35
+WIDTH=31
 CHOICE_HEIGHT=4
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Edition!"
