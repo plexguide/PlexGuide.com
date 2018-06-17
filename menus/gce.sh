@@ -23,9 +23,9 @@ bash /opt/plexguide/menus/gce/gcechecker.sh
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-HEIGHT=18
+HEIGHT=17
 WIDTH=40
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
@@ -39,7 +39,6 @@ OPTIONS=(A "Install RClone"
          H "PG Troubleshooting Actions"
          I "PG Backup & Restore"
          J "PG Updates"
-         K "PG Edition Switch"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -208,18 +207,16 @@ echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && ba
 echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         J)
+echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        K)
-echo 'WARNING - Selected Editions Menu from GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/scripts/baseinstall/edition.sh
-            exit
-            ;;
         Z)
+echo 'INFO - Selected: Exit GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
 esac
 
+echo 'INFO - Looping: GCE Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 ## repeat menu when exiting
 bash /opt/plexguide/menus/gce.sh

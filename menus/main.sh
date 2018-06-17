@@ -21,9 +21,9 @@ echo 'INFO - @Main PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /op
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-HEIGHT=18
+HEIGHT=17
 WIDTH=40
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
@@ -36,8 +36,7 @@ OPTIONS=(A "Deploy a Mount System"
          G "PG Settings & Tools"
          H "PG Backup & Restore"
          I "PG Updates"
-         J "PG Edition Switch"
-         K "Donation Menu"
+         J "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -114,11 +113,6 @@ echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /o
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         J)
-echo 'INFO - Selected: PG Editions' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/scripts/baseinstall/edition.sh
-            exit
-            ;;
-        K)
 echo 'INFO - Selected: PDonations INterface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
@@ -128,5 +122,6 @@ echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plex
 esac
 
 ## repeat menu when exiting
+echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/menus/main.sh
 exit
