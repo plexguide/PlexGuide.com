@@ -127,6 +127,7 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       sleep 2
 
       echo "70" | dialog --gauge "Deploying NZBGET" 7 50 0
+      echo "linuxserver/nzbget" > /var/plexguide/image.radarr
       sleep 2
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 

@@ -40,6 +40,7 @@ case $CHOICE in
         A)
             display=NZBGET
             program=nzbget
+            bash /opt/plexguide/menus/images/nzbget.sh
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
