@@ -8,7 +8,7 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   echo 'INFO - PLexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+   echo 'INFO - PlexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
    chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
@@ -40,25 +40,7 @@ else
    chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
 fi
 
-#### Set Fixed Information
-sudo bash /opt/plexguide/info.sh
-
-#### Temp Variables Established To Prevent Crashing - START
-echo "plexguide" > /tmp/pushover
-#### Temp Variables Esablished  To Prevent Crashing - END
-
-echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
-mkdir /var/plexguide/ 1>/dev/null 2>&1
-
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-file="/opt/appdata/plexguide/plextoken"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   touch /opt/appdata/plexguide/plextoken
-fi
-
 file="/opt/appdata/plexguide/plextoken"
 if [ -e "$file" ]
 then
@@ -76,6 +58,17 @@ else
    touch /var/plexguide/server.ht
 fi
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
+
+#### Set Fixed Information
+sudo bash /opt/plexguide/info.sh
+
+#### Temp Variables Established To Prevent Crashing - START
+echo "plexguide" > /tmp/pushover
+#### Temp Variables Esablished  To Prevent Crashing - END
+
+echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
+mkdir /var/plexguide/ 1>/dev/null 2>&1
+
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
@@ -135,15 +128,26 @@ else
    exit 0
 fi
 
-current=$( cat /var/plexguide/pg.preinstall ) 1>/dev/null 2>&1
-stored=$( cat /var/plexguide/pg.preinstall.stored ) 1>/dev/null 2>&1
+edition=$( cat /var/plexguide/pg.edition )
+current=$( cat /var/plexguide/pg.preinstall )
+stored=$( cat /var/plexguide/pg.preinstall.stored )
 if [ "$current" == "$stored" ]
 then
    echo 'INFO - PG BaseInstaller Not Required - Up To Date' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    touch /var/plexguide/message.no
 else
-   echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-   bash /opt/plexguide/scripts/baseinstall/main.sh
+  ############## Executes PG Edition If User Never Selected One
+  file="/var/plexguide/pg.edition"
+  if [ -e "$file" ]
+  then
+     bash /opt/plexguide/menus/startup/message2.sh
+  else 
+  echo 'Asking User for PG Edition for the First Time' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  bash /opt/plexguide/scripts/baseinstall/edition.sh
+  fi
+
+  echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  bash /opt/plexguide/scripts/baseinstall/main.sh
 fi
 
 ## docker / ansible failure
@@ -174,6 +178,9 @@ file="/var/plexguide/pg.edition"
 if [ -e "$file" ]
 then
    bash /opt/plexguide/menus/startup/message2.sh
+else 
+echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+bash /opt/plexguide/scripts/baseinstall/edition.sh
 fi
 
 ## Selects an edition
@@ -190,7 +197,7 @@ fi
 #### Multiple Drive Edition
 if [ "$edition" == "PG Edition: HD Multi" ]
   then
-   echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     bash /opt/plexguide/menus/localmain.sh
     exit
 fi
@@ -211,5 +218,5 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
 fi
 
 #### falls to this menu incase none work above
-echo 'INFO - PG Edition Not Detected - Asking User To Select Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/scripts/baseinstall/edition.sh

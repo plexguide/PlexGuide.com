@@ -17,7 +17,8 @@
 #################################################################################
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-clear
+fi
+
 file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   if [ -e "$file" ]
     then
@@ -38,6 +39,16 @@ else
   echo "Type to Restart the Program: sudo plexguide"
   echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   exit 0
+fi
+
+##### Server Type
+file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+      echo "" 1>/dev/null 2>&1
+    else
+      echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      bash /opt/plexguide/menus/setup/servertype.sh
 fi
 
 ############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
@@ -344,16 +355,6 @@ if [ -e "$file" ]
       echo "null" > /var/plexguide/server.domain
       bash /opt/plexguide/scripts/baseinstall/domain.sh
       touch /var/plexguide/base.domain
-fi
-
-##### Server Type
-file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-      echo "" 1>/dev/null 2>&1
-    else
-      bash /opt/plexguide/menus/setup/servertype.sh
-fi
 
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
