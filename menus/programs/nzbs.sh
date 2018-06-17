@@ -56,7 +56,7 @@ case $CHOICE in
         B)
             display=NZBHYDRA2
             program=nzbhydra2
-            bash /opt/plexguide/menus/images/nzbhyra2.sh
+            bash /opt/plexguide/menus/images/nzbhydra2.sh
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
