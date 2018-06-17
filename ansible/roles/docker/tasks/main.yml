@@ -71,7 +71,7 @@
     selection: install
   tags: docker_standard
 
-- name: Install docker-ce
+- name: Install docker-ce (Please Wait)
   apt:
     name: docker-ce={{docversion.stdout}}
     state: present
@@ -101,7 +101,7 @@
   when: docker_daemon.stat.exists == False
   tags: docker_standard
 
-- name: Start docker
+- name: Start docker (Please Wait)
   systemd: state=started name=docker enabled=yes
   when: docker_daemon.stat.exists == False
   tags: docker_standard
