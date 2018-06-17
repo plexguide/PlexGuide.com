@@ -16,19 +16,17 @@
 #
 #################################################################################
 # Important below, name based on target
-app="Radarr"
+app="nzbget"
 ############################
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=12
+HEIGHT=9
 WIDTH=48
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/radarr: Recommended"
          B "hotio/suitarr     : Space Saver"
-         C "aront/radarr   : MP4 Converter"
-         D "Why Important: FAQ"
          Z "Exit")
 
 
