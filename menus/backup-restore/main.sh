@@ -26,10 +26,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
 
-OPTIONS=(A "Solo Program Backup"
-         B "Solo Program Restore"
-         C "Mass Program Back    (Time Intensive)"
-         D "Mass Program Restore (Time Intensive)"
+OPTIONS=(A "Solo Backup"
+         B "Solo Restore"
+         C "Mass Backup  (Time Intensive)"
+         D "Mass Restore (Time Intensive)"
          E "Change Recovery ID (Current: $recovery)"
          Z "Exit")
 
