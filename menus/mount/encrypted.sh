@@ -147,6 +147,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
               #### ADDS TCRYPT to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tcrypt
+              echo 'INFO - DEPLOYED TCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
 
             if [ "$gcrypt" == "[gcrypt]" ]
@@ -155,11 +156,13 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
               #### ADDS GCRYPT to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /tmp/path
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt
+              echo 'INFO - DEPLOYED GCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
 
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs_en
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsmonitor
+            echo 'INFO - DEPLOYED UNIONFS' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
