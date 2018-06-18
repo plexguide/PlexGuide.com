@@ -16,7 +16,7 @@
 #
 #################################################################################
 echo 'INFO - @Backup Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-recovery=$( cat /var/plexguide/restore.id )
+server=$( cat /var/plexguide/server.id )
 
 export NCURSES_NO_UTF8_ACS=1
 
@@ -37,7 +37,7 @@ d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
-mfolder="/mnt/gdrive/plexguide/backup.old/$recovery/backup-"
+mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-"
 mpath="$mfolder$d"
 
 mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
