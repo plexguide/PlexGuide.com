@@ -70,9 +70,7 @@ if [ "$error2" == "$error1" ]
 			cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
 		fi
 	fi
-
-
-
+fi
 dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID: $serverid\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
 echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
