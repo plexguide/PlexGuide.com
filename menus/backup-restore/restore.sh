@@ -128,8 +128,9 @@ case $CHOICE in
 esac
 
 app=$( cat /tmp/program_var )
+recovery=$( cat /var/plexguide/restore.id )
 
-file="/mnt/gdrive/plexguide/backup/$app.tar"
+file="/mnt/gdrive/plexguide/backup/$recovery/$app.tar"
 if [ -e "$file" ]
     then
 
