@@ -24,13 +24,13 @@ WIDTH=60
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
-MENU="Choose one of the following options:"
+MENU="Current Recovery ID Server: $recover:"
 
 OPTIONS=(A "Solo Backup"
          B "Solo Restore"
          C "Mass Backup  (Time Intensive)"
          D "Mass Restore (Time Intensive)"
-         E "Change Recovery ID (Current: $recovery)"
+         E "Change Recovery ID"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -44,27 +44,19 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-        bash /opt/plexguide/menus/backup-restore/backup.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backup.sh 
+            ;;
         B)
-        #systemctl is-active --quiet rclone
-        #if [ $? -eq 0 ]; then
-        bash /opt/plexguide/menus/backup-restore/restore.sh
-        #else
-        #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-          #bash /opt/plexguide/menus/backup-restore/main.sh
-        #fi 
-        ;;
+            bash /opt/plexguide/menus/backup-restore/restore.sh
+            ;;
         C)
-        bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backupmass.sh 
+            ;;
         D)
-        #systemctl is-active --quiet rclone
-        #if [ $? -eq 0 ]; then
-        bash /opt/plexguide/menus/backup-restore/restoremass.sh
-        #else
-        #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-        #  bash /opt/plexguide/menus/backup-restore/main.sh
-        #fi
-        ;;
+            bash /opt/plexguide/menus/backup-restore/restoremass.sh
+            ;;
+        E) 
+
         Z)
             clear
             exit 0
