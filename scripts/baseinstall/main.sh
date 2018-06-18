@@ -15,6 +15,18 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+################################################################ Create Server ID
+file="/var/plexguide/server.id" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  date +"%m%d%Y" > /var/plexguide/server.id
+  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  fi
+############################################################################# END
+
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
