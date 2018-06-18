@@ -33,7 +33,7 @@ if dialog --stdout --title "Restore Mass Confirmation" \
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
-ls -la /mnt/gdrive/plexguide/$recovery/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
+ls -la /mnt/gdrive/plexguide/backup.old/$recovery | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
 
@@ -110,7 +110,7 @@ case $CHOICE in
             exit 0 ;;
 esac
 
-mfolder="/mnt/gdrive/plexguide/backup.old/"
+mfolder="/mnt/gdrive/plexguide/backup.old/$recovery"
 mpath="$mfolder$varselect"
 
 # Force Exit if Required
@@ -118,11 +118,11 @@ if [ $varselect = "main" ]
 then
   clear
   echo "Main Selected"
-  mpath="/mnt/gdrive/plexguide/$recovery/backup/"
+  mpath="/mnt/gdrive/plexguide/backup/$recovery"
 fi
 
 # Force Exit if Required
-if [ $mpath = "/mnt/gdrive/plexguide/$recovery/backup.old/" ]
+if [ $mpath = "/mnt/gdrive/plexguide/backup.old/$recovery" ]
 then
   clear
   echo "You Selected a Blank Field - Nothing Happened"
