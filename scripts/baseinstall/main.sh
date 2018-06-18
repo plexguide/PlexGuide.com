@@ -27,6 +27,17 @@ file="/var/plexguide/server.id" 1>/dev/null 2>&1
   fi
 ############################################################################# END
 
+################################################################ Create Server ID
+file="/var/plexguide/restore.id" 1>/dev/null 2>&1
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  echo /var/plexguide/server.id > /var/plexguide/restore.id
+  echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  fi
+############################################################################# END
+
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 
