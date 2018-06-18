@@ -41,7 +41,7 @@
 
 - name: Checking for APPDATA {{program_var.stdout}}
   stat:
-    path: /opt/appdata"{{program_var.stdout}}
+    path: /opt/appdata/{{recovery.stdout}}/{{program_var.stdout}}
   register: programappdata
  
 - debug: msg="Time Length can be Long or Short! Please Wait!"
