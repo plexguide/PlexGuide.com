@@ -56,7 +56,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/backup-restore/restoremass.sh
             ;;
         E) 
-
+            ;;
         Z)
             clear
             exit 0
