@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
@@ -46,6 +47,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 clear
 curl https://rclone.org/install.sh | sudo bash -s beta
@@ -75,6 +77,8 @@ EOF
                   bash /opt/plexguide/menus/mount/main.sh
                   exit
               fi
+echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             #### RClone Missing Warning - END
             rclone config
             touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
@@ -84,6 +88,20 @@ EOF
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
+            #################### installing dummy file for prep of pgdrive deployment
+            file="/mnt/unionfs/plexguide/pgchecker.bin"
+            if [ -e "$file" ]
+            then
+               echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            else
+               mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
+               mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
+               mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
+               touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
+               rclone copy /tmp/pgchecker gcrypt:/plexguide/ &>/dev/null &
+               rclone copy /tmp/pgchecker tcrypt:/plexguide/ &>/dev/null &
+               echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            fi
             ;;
         C)
             #### RCLONE MISSING START
@@ -92,11 +110,13 @@ EOF
                 then
                   echo "" 1>/dev/null 2>&1
                 else
+                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
                   bash /opt/plexguide/menus/mount/main.sh
                   exit
               fi
             #### RCLONE MISSING END
+echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             #### RECALL VARIABLES START
 #            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
@@ -138,6 +158,7 @@ EOF
 
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs_en
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
@@ -165,6 +186,7 @@ EOF
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gcrypt" != "[gcrypt]" ]]
               then
+echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/menus/mount/encrypted.sh
             exit
@@ -172,6 +194,7 @@ EOF
 
             if [[ "$selected" == "SuperTransfer2" && "$tcrypt" != "[tcrypt]" ]]
               then
+echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tcrypt\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/menus/mount/encrypted.sh
             exit
@@ -193,6 +216,7 @@ EOF
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
+            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             ;;
 

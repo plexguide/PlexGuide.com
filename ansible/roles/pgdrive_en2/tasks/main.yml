@@ -18,35 +18,63 @@
 
 ########## Disable Other Services
 # ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+---
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
+###### DRIVE1
+  - name: Drive1 Check
+    stat:
+      path: /mnt/.drive1
+    register: drive1
 
   - name: Create Basic directories for DRIVE1
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
       - /mnt/.drive1
+    when: drive1.stat.exists == False
     tags:
       - drive1
     ignore_errors: True
+##### DRIVE2
+  - name: Drive2 Check
+    stat:
+      path: /mnt/.drive2
+    register: drive2
 
   - name: Create Basic directories for DRIVE2
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
       - /mnt/.drive2
+    when: drive2.stat.exists == False
     tags:
       - drive2
     ignore_errors: True
+##### CRYPT1
+  - name: Crypt1 Check
+    stat:
+      path: /mnt/.crypt1
+    register: crypt1
 
   - name: Create Basic directories for CRYPT1
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
       - /mnt/.crypt1
+    when: crypt1.stat.exists == False
     tags:
       - crypt1
     ignore_errors: True
+##### CRYPT2
+  - name: Crypt2 Check
+    stat:
+      path: /mnt/.crypt2
+    register: crypt2
 
   - name: Create Basic directories for CRYPT2
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
     with_items:
       - /mnt/.crypt2
+    when: crypt2.stat.exists == False
     tags:
       - crypt2
     ignore_errors: True

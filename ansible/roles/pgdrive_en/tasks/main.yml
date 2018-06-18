@@ -236,3 +236,40 @@
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs_en
+
+########Unionfs Monitor
+  - name: Stop If UFS Monitor Service Running
+    systemd: state=stopped name=ufsmonitor
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Install UFS Monitor Service
+    template:
+      src: ufsmonitor.service
+      dest: /etc/systemd/system/ufsmonitor.service
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Install UFS Script
+    template:
+      src: ufsmonitor.sh
+      dest: /opt/appdata/plexguide/ufsmonitor.sh
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Start UFS Monitor
+    systemd: state=started name=ufsmonitor enabled=yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
