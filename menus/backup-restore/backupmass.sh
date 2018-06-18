@@ -37,12 +37,12 @@ d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
-mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-$d"
+mfolder="/mnt/gdrive/plexguide/backup.old$server/backup-$d"
 
 mkdir -p $mfolder 1>/dev/null 2>&1
 mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
 
-docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
+docker ps -a --format "{{.Names}}" > /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
