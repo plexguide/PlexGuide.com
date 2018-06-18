@@ -20,7 +20,11 @@
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
 
-- debug: msg="Temp Message - For {{program_var.stdout}}"
+- name: "Recovery ID"
+  shell: "cat /var/plexguide/restore.id"
+  register: recovery
+
+- debug: msg="Temp Message - For {{program_var.stdout}} - Recover Server ID {{recovery.stdout}}"
 
 - name: Does Backup Data Exist on Grive - {{program_var.stdout}}
   stat:
