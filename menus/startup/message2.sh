@@ -10,7 +10,7 @@ appguard=$(cat /var/plexguide/server.appguard)
 portstat=$(cat /var/plexguide/server.ports.status)
 watchtower=$(cat /var/plexguide/watchtower.yes)
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
-serverid=$( cat fi/var/plexguide/server.id )
+serverid=$( cat /var/plexguide/server.id )
 sleep 1
 
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
