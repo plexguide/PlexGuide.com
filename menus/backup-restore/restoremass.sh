@@ -153,5 +153,4 @@ chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!\n\nYou must DEPLOY each APPLICATION that have NOT LAUNCHED before!" 0 0
 clear
 
-sudo bash /opt/plexguide/menus/backup-restore/main.sh
 exit 0
