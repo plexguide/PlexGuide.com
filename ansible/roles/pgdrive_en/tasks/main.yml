@@ -106,11 +106,11 @@
     tags:
       - move_en
 
-  - name: Stop If Move Service Running
-    systemd: state=stopped name=move
-    tags:
-      - move_en
-    ignore_errors: yes
+#  - name: Stop If Move Service Running
+#    systemd: state=stopped name=move
+#    tags:
+#      - move_en
+#    ignore_errors: yes
 
   - name: Install Move Service
     template:
@@ -138,17 +138,17 @@
 #      - gcrypt
 #    ignore_errors: yes
 
-  - name: Daemon-Reload - Stop GDRIVE Service
-    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
-    tags:
-      - gcrypt
-    ignore_errors: yes
+#  - name: Daemon-Reload - Stop GDRIVE Service
+#    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+#    tags:
+#      - gcrypt
+#    ignore_errors: yes
 
-  - name: Stop If GCRYPT Service Running
-    systemd: state=stopped name=gcrypt
-    tags:
-      - gcrypt
-    ignore_errors: yes
+#  - name: Stop If GCRYPT Service Running
+#    systemd: state=stopped name=gcrypt
+#    tags:
+#      - gcrypt
+#    ignore_errors: yes
 
   - name: Install GCRYPT Service
     template:
@@ -175,17 +175,17 @@
 #      - tcrypt
 #    ignore_errors: yes
 
-  - name: Daemon-Reload - Stop TDRIVE Service
-    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Daemon-Reload - Stop TDRIVE Service
+#    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
-  - name: Stop If TCRYPT Service Running
-    systemd: state=stopped name=tcrypt
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Stop If TCRYPT Service Running
+#    systemd: state=stopped name=tcrypt
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
   - name: Install TCRYPT Service
     template:
@@ -213,11 +213,11 @@
       - unionfs_en
     ignore_errors: True
 
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    tags:
-      - unionfs_en
-    ignore_errors: yes
+#  - name: Stop If UNIONFS Service Running
+#    systemd: state=stopped name=unionfs
+#    tags:
+#      - unionfs_en
+#    ignore_errors: yes
 
   - name: Install UNIONFS Service
     template:
