@@ -40,7 +40,9 @@ sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-"
 mpath="$mfolder$d"
 
-mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
+
+
+mkdir -p /mnt/gdrive/plexguide/backup.old/$server/ 1>/dev/null 2>&1
 mkdir -p $mpath
 mv /mnt/gdrive/plexguide/backup/$server/* $mpath 1>/dev/null 2>&1
 
