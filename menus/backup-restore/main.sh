@@ -20,7 +20,7 @@ recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=13
-WIDTH=55
+WIDTH=60
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
@@ -30,7 +30,7 @@ OPTIONS=(A "Solo Program Backup"
          B "Solo Program Restore"
          C "Mass Program Back    (Time Intensive)"
          D "Mass Program Restore (Time Intensive)"
-         E "Change Recovery ID (Current: $restore.id)"
+         E "Change Recovery ID (Current: $recovery)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
