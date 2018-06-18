@@ -48,7 +48,7 @@
 
 - name: "Downloading from Google Drive - {{program_var.stdout}}"
   synchronize:
-    src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
+    src: /mnt/gdrive/plexguide/backup/{{recovery.stdout}}/{{program_var.stdout}}.tar
     dest: /tmp
   when: programgdrive.stat.exists == True
 
