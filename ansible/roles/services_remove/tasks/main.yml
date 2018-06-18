@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [Check & Remove Services]
+# [RClone Related Services Removal Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & FlickerRate
@@ -14,68 +14,236 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#   Created by Deiteq
-#   This will check for and remove any services listed in service_vars
-#   The following will show current services:-
-#     ls /etc/systemd/system
-#   Use the following to run manually:-
-#     sudo ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-#
 #################################################################################
-
-
 ---
 
-  - hosts: localhost
-    gather_facts: false
-    vars:
-      service_vars:
-        - {name: crypt1.service}
-        - {name: crypt2.service}
-        - {name: drive1.service}
-        - {name: drive2.service}
-        - {name: fcrypt.service}
-        - {name: fdrive.service}
-        - {name: sdrive.service}
-        - {name: scrypt.service}
-        - {name: gdrive.service}
-        - {name: gcrypt.service}
-        - {name: tdrive.service}
-        - {name: tcrypt.service}
-  #      - {name: supertransfer2.service}
-        - {name: unionfs.service}
-        - {name: unionfs-encrypt.service}
-        - {name: move-en.service}
-        - {name: move.service}
-        - {name: plexdrive.service}
-        - {name: rclone.service}
-        - {name: rclone-en.service}
-        - {name: rclone-encrypt.service}
-    tasks:
-      - name: Checking Existing Service Name
-        stat:
-          path: "/etc/systemd/system/{{ item.name }}"
-        with_items: "{{ service_vars }}"
-        register: check_service_name
+############################## Remove Old Services ##############################
+#
+# This will remove all services that have been run using RClone new and older!
+# Including PGDrive services!
+#
 
-  #    - debug:
-  #        msg: 'Service name {{ item.item.name }} exists'
-  #      with_items: "{{ check_service_name.results }}"
-  #      when: item.stat.exists
+########## Disable Other Services
 
-      - name: Stop If Service Is Running
-        systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
-        with_items: "{{ check_service_name.results }}"
-        when: item.stat.exists
+  - name: Stop If RCLONE Service Running
+    systemd: state=stopped name=rclone enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
 
-      - name: Remove Services
-        file:
-          path: "/etc/systemd/system/{{ item.item.name }}"
-          state: absent
-        with_items: "{{ check_service_name.results }}"
-        when: item.stat.exists
+  - name: Stop If encache Service Running
+    systemd: state=stopped name=encache enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
 
-      - debug:
-          msg: 'Service name {{ item.item.name }} has been removed!'
-        with_items: "{{ check_service_name.results }}"
-        when: item.stat.exists
+  - name: Stop If PLEXDRIVE Service Running
+    systemd: state=stopped name=plexdrive enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If RCLONE-ENCRYPT Service Running
+    systemd: state=stopped name=rclone-encrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If RCLONE-EN Service Running
+    systemd: state=stopped name=rclone-en enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If MOVE-EN Service Running
+    systemd: state=stopped name=move-en enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+  - name: Stop If UNIONFS-EN Service Running
+    systemd: state=stopped name=unionfs-encrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - remove
+
+###### Remove PGDrive Services
+  - name: Remove Old gdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/gdrive.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old tdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/tdrive.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old gcrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/gcrypt.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old tcrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/tcrypt.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+###### Remove Plexdrive Service
+
+  - name: Remove Old Plexdrive service
+    file:
+      state: absent
+      path: /etc/systemd/system/plexdrive.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+###### Remove Unencyrpted Services
+
+  - name: Remove Old move service
+    file:
+      state: absent
+      path: /etc/systemd/system/move.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+  - name: Remove Old move File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move.sh
+    tags:
+      - remove
+    ignore_errors: yes
+
+  - name: Remove Old rclone service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old rclone File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone.sh
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old UnionFS service
+    file:
+      state: absent
+      path: /etc/systemd/system/unionfs.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+###### Remove old Encrypted Services
+
+  - name: Remove Old UnionFS-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/unionfs-encrypt.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old move-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/move-en.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old move-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move-en.sh
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old rclone-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-en.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old rclone-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-en.sh
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old rclone-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-encrypt.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old rclone-encrypt File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-encrypt.sh
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+###### Remove Cacahe services
+  - name: Remove Old cache service
+    file:
+      state: absent
+      path: /etc/systemd/system/cache.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+
+  - name: Remove Old encache service
+    file:
+      state: absent
+      path: /etc/systemd/system/encache.service
+    tags:
+      - remove
+    ignore_errors: yes
+
+  - name: Daemon-Reload
+    systemd: daemon_reload=yes
+    tags:
+      - remove
+    ignore_errors: yes
