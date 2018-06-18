@@ -17,7 +17,7 @@
 #################################################################################
   dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
   echo "yes" > /var/plexguide/server.hd
-  base="/mnt/gdrive/backup/"
+  base="/mnt/gdrive/plexdrive/backup/"
 
   dialog --title "INPUT NEW RECOVERY ID[ EXAMPLE: 06182018 or ALPHA5 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
