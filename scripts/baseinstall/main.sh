@@ -28,6 +28,7 @@ file="/var/plexguide/server.id" 1>/dev/null 2>&1
 ############################################################################# END
 
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+edition=$( cat /var/plexguide/pg.edition )
 
 file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   if [ -e "$file" ]
@@ -51,35 +52,45 @@ else
   exit 0
 fi
 
-##### Server Type
-file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
+############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
+
+######### Check to SEE IF GCE FEED Edition
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+      touch /var/plexguide/server.appguard 1>/dev/null 2>&1
+      echo "[OFF]" > /var/plexguide/server.appguard
+      touch /var/plexguide/server.ports
+      echo "[OPEN]" > /var/plexguide/server.ports.status
+  else
+    #### If NOT GCE Edition
+    file="/var/plexguide/server.settings.set" 1>/dev/null 2>&1
+      if [ -e "$file" ]
+        then
+          echo "" 1>/dev/null 2>&1
+        else
+          echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+          bash /opt/plexguide/menus/setup/servertype.sh
+    fi
+    file="/var/plexguide/server.ports" 1>/dev/null 2>&1
+      if [ -e "$file" ]
+        then
       echo "" 1>/dev/null 2>&1
-    else
-      echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      bash /opt/plexguide/menus/setup/servertype.sh
+        else
+      dialog --title "Server Ports - One Time Message" --msgbox "\nYour APP Ports are Open by Default!\n\nYou can turn them OFF via Settings. TURN OFF only when https:// is confirmed for you DOMAIN!" 0 0
+      touch /var/plexguide/server.ports
+      echo "[OPEN]" > /var/plexguide/server.ports.status
+      fi
+
+      file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+        echo "" 1>/dev/null 2>&1
+          else
+        touch /var/plexguide/server.appguard 1>/dev/null 2>&1
+        echo "[OFF]" > /var/plexguide/server.appguard
+        fi
 fi
 
-############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
-file="/var/plexguide/server.ports" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  dialog --title "Server Ports - One Time Message" --msgbox "\nYour APP Ports are Open by Default!\n\nYou can turn them OFF via Settings. TURN OFF only when https:// is confirmed for you DOMAIN!" 0 0
-  touch /var/plexguide/server.ports
-  echo "[OPEN]" > /var/plexguide/server.ports.status
-  fi
-
-file="/var/plexguide/server.appguard" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  touch /var/plexguide/server.appguard 1>/dev/null 2>&1
-  echo "[OFF]" > /var/plexguide/server.appguard
-  fi
 ############################################################ Starting Install Processing
 echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 sleep 2
@@ -103,10 +114,12 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
     else 
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
       echo "INFO - Installing: Ansible PlayBook" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      yes | apt-add-repository ppa:ansible/ansible 1>/dev/null 2>&1
-      apt-get update -y 1>/dev/null 2>&1
-      apt-get install ansible -y 1>/dev/null 2>&1
-      yes | apt-get update 1>/dev/null 2>&1
+      clear
+      sleep 2
+      yes | apt-add-repository ppa:ansible/ansible 
+      apt-get update -y 
+      apt-get install ansible -y
+      yes | apt-get update
       cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
 fi 
 ############################################################ Create Inventory File
@@ -141,7 +154,7 @@ if [ "$pg_dep" == "$pg_dep_stored" ]
       sleep 2
       clear
       ansible-playbook /opt/plexguide/ansible/critical.yml --tags preinstall
-      sleep2
+      sleep 2
       cat /var/plexguide/pg.dep > /var/plexguide/pg.dep.stored
 fi 
 
@@ -196,7 +209,7 @@ docver=$( cat /var/plexguide/ubversion )
 
   if [ "$docver" == "16.04" ]
     then
-  echo "40" | dialog --gauge "Installing: UB16 - Docker $version_recall (Please Be Patient)" 7 58 0
+  echo "40" | dialog --gauge "Installing: UB16 - Docker $version_recall16 (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2
   clear
@@ -219,7 +232,7 @@ docver=$( cat /var/plexguide/ubversion )
 
   if [ "$docver" == "18.04" ]
     then
-  echo "40" | dialog --gauge "Installing: UB18 - $version_recall (Please Be Patient)" 7 58 0
+  echo "40" | dialog --gauge "Installing: UB18 - $version_recall18 (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2 
   clear
@@ -322,7 +335,8 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
       sleep 2
     else 
       echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 
+      sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
 fi 
@@ -332,14 +346,21 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 #sleep 2
 
-echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
-file="/var/plexguide/watchtower.yes"
-if [ -e "$file" ]
-    then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower &>/dev/null &
-      #sleep 1
-    else
-      bash /opt/plexguide/menus/watchtower/main.sh
+###### IF GCE Prevents Asking WatchTower Question
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+    echo "[Disabled Updates]" > /var/plexguide/watchtower.yes
+  else
+    echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
+    file="/var/plexguide/watchtower.yes"
+    if [ -e "$file" ]
+        then
+          clear
+          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
+          sleep 2
+        else
+          bash /opt/plexguide/menus/watchtower/main.sh
+    fi
 fi
 
 ############################# Python Support
@@ -352,20 +373,31 @@ if [ "$pg_python" == "$pg_python_stored" ]
       sleep 2
     else 
       echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
-      bash /opt/plexguide/scripts/baseinstall/python.sh 1>/dev/null 2>&1
+      bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
+      sleep 2
 fi
 
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+        echo "null" > /var/plexguide/server.domain
+        touch /var/plexguide/base.domain
+  else
 ##### Traefik Process
 file="/var/plexguide/server.domain"
-if [ -e "$file" ]
-    then
-      echo "" 1>/dev/null 2>&1
-    else
-      echo "null" > /var/plexguide/server.domain
-      bash /opt/plexguide/scripts/baseinstall/domain.sh
-      touch /var/plexguide/base.domain
+  if [ -e "$file" ]
+      then
+        echo "" 1>/dev/null 2>&1
+      else
+        echo "null" > /var/plexguide/server.domain
+        bash /opt/plexguide/scripts/baseinstall/domain.sh
+        touch /var/plexguide/base.domain
+  fi
+fi
 
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+echo "100" | dialog --gauge "PG BaseInstall Finished!" 7 50 0
+sleep 2

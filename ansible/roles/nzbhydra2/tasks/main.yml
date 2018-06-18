@@ -21,6 +21,16 @@
 
 - include_role:
     name: variables
+
+- name: Register Image
+  shell: "cat /var/plexguide/image.{{role_name}}"
+  register: image
+  ignore_errors: True
+
+- name: Register Extra
+  shell: "cat /var/plexguide/extra.{{role_name}}"
+  register: extra
+  ignore_errors: True
     
 - name: Remove NZBHydra2 Container
   docker_container:
@@ -30,7 +40,7 @@
 - name: Deploy NZBHydra2 Container
   docker_container:
     name: nzbhydra2
-    image: "hotio/suitarr"
+    image: "{{image.stdout}}"
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -43,7 +53,7 @@
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
     volumes:
-      - "/opt/appdata/nzbhydra2:/config"
+      - "/opt/appdata/nzbhydra2:/config{{extra.stdout}}"
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: always
     networks:
@@ -54,5 +64,5 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nzbhydra.{{domain.stdout}}, nzbhydra2.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:nzbhydra.{{domain.stdout}},nzbhydra2.{{domain.stdout}}"
       traefik.port: "5076"

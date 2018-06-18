@@ -16,20 +16,18 @@
 #
 #################################################################################
 # Important below, name based on target
-app="Radarr4K"
+app="nzbget"
 ############################
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=12
+HEIGHT=10
 WIDTH=48
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
-OPTIONS=(A "linuxserver/radarr: Recommended"
+OPTIONS=(A "linuxserver/nzbget: Recommended"
          B "hotio/suitarr     : Space Saver"
-         C "aront/radarr      : MP4 Converter"
          Z "Exit")
-
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -42,18 +40,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "linuxserver/radarr" > /var/plexguide/image.radarr4k 
-            echo "" > /var/plexguide/extra.radarr4k
+            echo "linuxserver/nzbget" > /var/plexguide/image.nzbget 
+            echo "" > /var/plexguide/extra.nzbget
             ;;
         B)
-            echo "hotio/suitarr" > /var/plexguide/image.radarr4k
-            echo "/Radarr" > /var/plexguide/extra.radarr4k
-            ;;
-        C)
-            echo "aront/radarr" > /var/plexguide/image.radarr4k 
-            echo "" > /var/plexguide/extra.radarr4k
-            ;;
-        D)
+            echo "hotio/suitarr" > /var/plexguide/image.nzbget
+            echo "/NZBGet" > /var/plexguide/extra.nzbget
             ;;
         Z)
             clear

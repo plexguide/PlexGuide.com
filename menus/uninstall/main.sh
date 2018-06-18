@@ -40,7 +40,7 @@ if dialog --stdout --title "PG UnInstaller" \
          dialog --infobox "A REBOOT of your Server will Commence in 3 SECONDS!" 3 58
          sleep 3
          dialog --infobox "GoodBye!" 0 0
-echo "SUCCESS - PG Uninstalled" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "SUCCESS - PG Uninstalled"
          sleep 1
          reboot
 fi
