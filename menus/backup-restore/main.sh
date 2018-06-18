@@ -24,7 +24,7 @@ WIDTH=52
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
-MENU="Current Recovery Server ID: $recovery"
+MENU="Current Server Recovery ID: $recovery"
 
 OPTIONS=(A "Solo Backup"
          B "Solo Restore"
