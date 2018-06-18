@@ -16,6 +16,7 @@
 #
 #################################################################################
 echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
 
@@ -32,7 +33,7 @@ if dialog --stdout --title "Restore Mass Confirmation" \
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
-ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
+ls -la /mnt/gdrive/plexguide/$recovery/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
 
@@ -117,11 +118,11 @@ if [ $varselect = "main" ]
 then
   clear
   echo "Main Selected"
-  mpath="/mnt/gdrive/plexguide/backup/"
+  mpath="/mnt/gdrive/plexguide/$recovery/backup/"
 fi
 
 # Force Exit if Required
-if [ $mpath = "/mnt/gdrive/plexguide/backup.old/" ]
+if [ $mpath = "/mnt/gdrive/plexguide/$recovery/backup.old/" ]
 then
   clear
   echo "You Selected a Blank Field - Nothing Happened"
