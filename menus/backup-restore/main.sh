@@ -16,19 +16,21 @@
 #
 #################################################################################
 echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=12
-WIDTH=45
-CHOICE_HEIGHT=5
+HEIGHT=13
+WIDTH=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Choose one of the following options:"
 
-OPTIONS=(A "Individual: Solo App Backup"
-         B "Individual: Solo App Restore"
-         C "Mass (All): Backup (Takes Time)"
-         D "Mass (All): Restore (Takes Time)"
+OPTIONS=(A "Solo Program Backup"
+         B "Solo Program Restore"
+         C "Mass Program Back    (Time Intensive)"
+         D "Mass Program Restore (Time Intensive)"
+         E "Change Recovery ID (Current: $restore.id)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
