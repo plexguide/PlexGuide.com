@@ -33,7 +33,7 @@ file="/var/plexguide/restore.id" 1>/dev/null 2>&1
     then
   echo "" 1>/dev/null 2>&1
     else
-  echo /var/plexguide/server.id > /var/plexguide/restore.id
+  cat /var/plexguide/server.id > /var/plexguide/restore.id
   echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   fi
 ############################################################################# END
