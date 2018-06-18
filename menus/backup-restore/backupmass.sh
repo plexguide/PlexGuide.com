@@ -52,6 +52,8 @@ sed -i -e "/traefikv2/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 while read p; do
   echo $p > /tmp/program_var
 
+clear
+
 app=$( cat /tmp/program_var )
 if [ "$app" == "plex" ]
   then
@@ -67,6 +69,7 @@ done </opt/appdata/plexguide/running
 read -n 1 -s -r -p "Press any key to continue"
 
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
+echo 'INFO - Mass Backup Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
 

@@ -150,6 +150,7 @@ rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
+echo 'INFO - Mass Restore Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!\n\nYou must DEPLOY each APPLICATION that have NOT LAUNCHED before!" 0 0
 clear
 
