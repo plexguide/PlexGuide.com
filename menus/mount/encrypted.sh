@@ -127,7 +127,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
             #### REQUIRED TO DEPLOY STARTING
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
-            ansible-playbook /opt/plexguide/ansible/roles/services_remove/tasks/main.yml
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
 #            if dialog --stdout --title "PAY ATTENTION!" \
 #              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
