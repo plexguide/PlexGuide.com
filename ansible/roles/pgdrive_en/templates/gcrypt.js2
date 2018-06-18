@@ -20,6 +20,7 @@ ExecStart=/usr/bin/rclone mount gcrypt: /mnt/gdrive \
 	--syslog \
 	--umask 002 \
 	--log-level INFO \
+	--drive-shared-with-me \
   --config /root/.config/rclone/rclone.conf
 
 ExecStop=/bin/fusermount -uz /mnt/gdrive
