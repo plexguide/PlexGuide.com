@@ -15,23 +15,23 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-HEIGHT=19
+echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+HEIGHT=17
 WIDTH=59
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=10
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
 OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
          B "Hard Drive 2nd: Use a Second HD for Processing"
-         C "Notifications : Enable the Use of Notifications"
-         D "Processor     : Enhance Processing Power"
-         E "Kernel Mods   : Enhance Network Throughput"
-         F "WatchTower    : Auto-Update Application Manager"
-         G "Import Media  : Import Existing Media to GDrive "
-         H "App Themes    : Install Dark Theme(s) For Apps "
-         I "Change Time   : Change the Server Time"
-         J "Default App   : For Your Top Level Domain"
+         C "Processor     : Enhance Processing Power"
+         D "Kernel Mods   : Enhance Network Throughput"
+         E "WatchTower    : Auto-Update Application Manager"
+         F "Import Media  : Import Existing Media to GDrive"
+         G "Change Time   : Change the Server Time"
+         H "Domain App    : For Your Top Level Domain"
+         I "Server ID     : Change Default Server ID"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -45,29 +45,33 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
+echo 'INFO - Selected: Domain/Traefik Menus' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/traefik/main.sh
         ;;
     B)
+echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
     C)
-        bash /opt/plexguide/menus/notifications/main.sh
-        echo "Pushover Notifications are Working!" > /tmp/pushover
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-        ;;
-    D)
+echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
-    E)
+    D)
+echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
-    F)
+    E)
+echo 'INFO - Selected: WatchTower Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/watchtower/main.sh ;;
-    G)
+    F)
+echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/migrate/main.sh ;;
-    H)
-        bash /opt/plexguide/menus/themes/main.sh ;;
-    I)
+    G)
+echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         dpkg-reconfigure tzdata ;;
-    J)
+    H)
+echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/tld/main.sh ;;
+    I)
+echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        bash /opt/plexguide/menus/backup-restore/server.sh
     Z)
         clear
         exit 0
