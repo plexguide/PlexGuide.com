@@ -22,7 +22,6 @@ file="/var/plexguide/server.id" 1>/dev/null 2>&1
     then
   echo "" 1>/dev/null 2>&1
     bash /opt/plexguide/menus/backup-restore/first.sh
-  date +"%m%d%Y" > /var/plexguide/server.id
   echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   fi
 ############################################################################# END
