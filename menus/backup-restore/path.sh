@@ -27,7 +27,7 @@
   if dialog --stdout --title "SERVER RECOVERY ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nRECOVERY ID: $id\n\nCorrect?" 0 0; then
-            
+
     ##### READ / WRITE CHECK
     mkdir "$base$id/plexguide"
     
@@ -44,8 +44,6 @@
 
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/restore.id
-
-    exit
 
   else
     dialog --title "Recovery ID Choice" --msgbox "\nSelected - Not Correct - Rerunning Backup/Recovery Menu!" 0 0
