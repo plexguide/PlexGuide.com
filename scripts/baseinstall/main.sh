@@ -17,17 +17,18 @@
 #################################################################################
 
 ################################################################ Create Server ID
-file="/var/plexguide/server.id" 1>/dev/null 2>&1
+file="/var/plexguide/server.id"
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
+else
     bash /opt/plexguide/menus/backup-restore/first.sh
   echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   fi
 ############################################################################# END
 
 ################################################################ Create Server ID
-file="/var/plexguide/restore.id" 1>/dev/null 2>&1
+file="/var/plexguide/restore.id"
   if [ -e "$file" ]
     then
   echo "" 1>/dev/null 2>&1
