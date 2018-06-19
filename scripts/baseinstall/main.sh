@@ -43,7 +43,7 @@ fi
 
 ################################################################ Create Server ID
 
-if [ "$edition" == "PG Edition: GCE Feed" ] || [ "$edition" == "PG Edition: GDrive" ]
+if [ "$edition" == "PG Edition: GCE Feed" ] || [ "$edition" == "PG Edition: GDrie" ]
 then
 
   file="/var/plexguide/server.id"
