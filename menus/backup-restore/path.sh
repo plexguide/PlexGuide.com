@@ -21,12 +21,12 @@
 
   dialog --title "[ EXAMPLE: SERVER01 or PG9705 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Full Path: " 8 50 2>/var/plexguide/recovery.temp.id
+  --inputbox "Type Your Recovery ID: " 8 50 2>/var/plexguide/recovery.temp.id
   id=$(cat /var/plexguide/recovery.temp.id)
 
   if dialog --stdout --title "SERVER RECOVERY ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nRECOVERy ID: $id\n\nCorrect?" 0 0; then
+        --yesno "\nRECOVERY ID: $id\n\nCorrect?" 0 0; then
     dialog --title "--- NOTE ---" --msgbox "\nRecovery ID: $id\n\nTracking!" 0 0
     
     ##### READ / WRITE CHECK
