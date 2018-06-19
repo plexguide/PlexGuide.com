@@ -24,9 +24,9 @@
 
   if dialog --stdout --title "SERVER ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nRECOVERY ID: $id\n\nCorrect?" 0 0; then
+        --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
 
-    dialog --title "--- SERVER ID ---" --msgbox "\nID: $id\n\nSERVER ID: $id\n\nIS SET!" 0 0
+    dialog --title "--- SERVER ID ---" --msgbox "\nSERVER ID: $id\n\nIS SET!" 0 0
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/server.id
 
