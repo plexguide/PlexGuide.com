@@ -133,6 +133,7 @@ fi
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
+clear
 #### Commenting Out To Let User See
 while read p; do
   echo $p > /tmp/program_var

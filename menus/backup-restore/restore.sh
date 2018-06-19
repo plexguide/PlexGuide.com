@@ -176,5 +176,4 @@ ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/nul
 
 dialog --title "PG Backup Status" --msgbox "\nYour Restore of -- $app -- from Google Drive is Complete!" 0 0
 
-sudo bash /opt/plexguide/menus/backup-restore/restore.sh
 exit 0
