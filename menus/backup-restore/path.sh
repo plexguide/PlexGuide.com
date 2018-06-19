@@ -27,8 +27,7 @@
   if dialog --stdout --title "SERVER RECOVERY ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nRECOVERY ID: $id\n\nCorrect?" 0 0; then
-    dialog --title "--- NOTE ---" --msgbox "\nRecovery ID: $id\n\nTracking!" 0 0
-    
+            
     ##### READ / WRITE CHECK
     mkdir "$base$id/plexguide"
     
