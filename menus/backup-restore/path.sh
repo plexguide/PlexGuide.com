@@ -37,7 +37,7 @@
         dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nThat Recovery ID Exists!" 0 0
         rm -r "$base$id/plexguide" 1>/dev/null 2>&1
       else
-        dialog --title "--- Checker ---" --msgbox "\nPATH: $id\n\nThat Recovery ID does not EXIST! Check Your Google Drive!" 0 0
+        dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nThat Recovery ID does not EXIST! Check Your Google Drive!" 0 0
         #bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         exit
     fi
