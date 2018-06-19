@@ -29,15 +29,15 @@
         --yesno "\nRECOVERY ID: $id\n\nCorrect?" 0 0; then
 
     ##### READ / WRITE CHECK
-    mkdir "$base$id/plexguide"
+    mkdir "$base$id/plexguide" 1>/dev/null 2>&1
     
     file="$base$id/plexguide"
     if [ -e "$file" ]
       then
-        dialog --title "PG Path Checker" --msgbox "\nID: $id\n\That Recovery ID Exists!" 0 0
-        rm -r "$id/plexguide"
+        dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nThat Recovery ID Exists!" 0 0
+        rm -r "$base$id/plexguide" 1>/dev/null 2>&1
       else
-        dialog --title "PG Path Checker" --msgbox "\nPATH: $id\n\nThat Recovery ID does not EXIST! Check Your Google Drive!" 0 0
+        dialog --title "--- Checker ---" --msgbox "\nPATH: $id\n\nThat Recovery ID does not EXIST! Check Your Google Drive!" 0 0
         #bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         exit
     fi

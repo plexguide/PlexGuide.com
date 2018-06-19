@@ -171,9 +171,6 @@ fi
 
 read -n 1 -s -r -p "Press any key to continue"
 
-echo "$app: Restore Complete" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
 dialog --title "PG Backup Status" --msgbox "\nYour Restore of -- $app -- from Google Drive is Complete!" 0 0
 
 exit 0
