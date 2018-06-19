@@ -50,5 +50,3 @@
     #bash /opt/plexguide/scripts/baseinstall/harddrive.sh
     #exit
   fi
-
-esac
