@@ -144,9 +144,9 @@ fusermount -uz /mnt/unionfs
 tee "/etc/systemd/system/unionfs-encrypt.service" > /dev/null <<EOF
 [Unit]
 Description=UnionFS Daemon
-Requires=plexdrive.service
-After=multi-user.target plexdrive.service
-RequiresMountsFor=/mnt/plexdrive
+Requires=rclone-en.service
+After=multi-user.target rclone-en.service
+RequiresMountsFor=/mnt/encrypt
 [Service]
 Type=simple
 User=0

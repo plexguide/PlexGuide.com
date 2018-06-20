@@ -17,7 +17,7 @@
 #################################################################################
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
-echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Settings Menu - Drives Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=14
 WIDTH=58

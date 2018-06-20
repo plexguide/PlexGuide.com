@@ -20,11 +20,15 @@
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
 
-- debug: msg="Temp Message - For {{program_var.stdout}}"
+- name: "Recovery ID"
+  shell: "cat /var/plexguide/restore.id"
+  register: recovery
+
+- debug: msg="Temp Message - For {{program_var.stdout}} - Recover Server ID {{recovery.stdout}}"
 
 - name: Does Backup Data Exist on Grive - {{program_var.stdout}}
   stat:
-    path: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
+    path: /mnt/gdrive/plexguide/backup/{{recovery.stdout}}/{{program_var.stdout}}.tar
   register: programgdrive
 
 - name: Stopping Docker Container - {{program_var.stdout}}
@@ -56,7 +60,7 @@
 
 - name: "Downloading from Google Drive - {{program_var.stdout}}"
   synchronize:
-    src: /mnt/gdrive/plexguide/backup/{{program_var.stdout}}.tar
+    src: /mnt/gdrive/plexguide/backup/{{recovery.stdout}}/{{program_var.stdout}}.tar
     dest: /tmp
   when: programgdrive.stat.exists == True
 

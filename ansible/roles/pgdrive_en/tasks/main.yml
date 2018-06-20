@@ -106,11 +106,11 @@
     tags:
       - move_en
 
-  - name: Stop If Move Service Running
-    systemd: state=stopped name=move
-    tags:
-      - move_en
-    ignore_errors: yes
+#  - name: Stop If Move Service Running
+#    systemd: state=stopped name=move
+#    tags:
+#      - move_en
+#    ignore_errors: yes
 
   - name: Install Move Service
     template:
@@ -132,11 +132,11 @@
 ########################################## MOVE END
 
 ########### GCRYPT
-#  - name: Stop If GDRIVE Service Running
-#    systemd: state=stopped name=gdrive
-#    tags:
-#      - gcrypt
-#    ignore_errors: yes
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=gdrive
+    tags:
+      - gcrypt
+    ignore_errors: yes
 
   - name: Daemon-Reload - Stop GDRIVE Service
     systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
@@ -158,10 +158,10 @@
     tags:
       - gcrypt
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-#    tags:
-#      - gcrypt
+  - name: Daemon-Reload
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    tags:
+      - gcrypt
 
   - name: Start GCRYPT
     systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
@@ -175,17 +175,17 @@
 #      - tcrypt
 #    ignore_errors: yes
 
-  - name: Daemon-Reload - Stop TDRIVE Service
-    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Daemon-Reload - Stop TDRIVE Service
+#    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
-  - name: Stop If TCRYPT Service Running
-    systemd: state=stopped name=tcrypt
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Stop If TCRYPT Service Running
+#    systemd: state=stopped name=tcrypt
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
   - name: Install TCRYPT Service
     template:
@@ -213,11 +213,11 @@
       - unionfs_en
     ignore_errors: True
 
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    tags:
-      - unionfs_en
-    ignore_errors: yes
+#  - name: Stop If UNIONFS Service Running
+#    systemd: state=stopped name=unionfs
+#    tags:
+#      - unionfs_en
+#    ignore_errors: yes
 
   - name: Install UNIONFS Service
     template:
@@ -236,3 +236,40 @@
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs_en
+
+########Unionfs Monitor
+  - name: Stop If UFS Monitor Service Running
+    systemd: state=stopped name=ufsmonitor
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Install UFS Monitor Service
+    template:
+      src: ufsmonitor.service
+      dest: /etc/systemd/system/ufsmonitor.service
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Install UFS Script
+    template:
+      src: ufsmonitor.sh
+      dest: /opt/appdata/plexguide/ufsmonitor.sh
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Start UFS Monitor
+    systemd: state=started name=ufsmonitor enabled=yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en

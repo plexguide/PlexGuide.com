@@ -21,11 +21,13 @@ ExecStart=/usr/bin/rclone mount tcrypt: /mnt/tdrive \
 	--syslog \
 	--umask 002 \
 	--log-level INFO \
+	--drive-shared-with-me \
 	--config /root/.config/rclone/rclone.conf
 
 ExecStop=/bin/fusermount -uz /mnt/tdrive
 TimeoutStopSec=20
 KillMode=process
+#Restart=always
 RemainAfterExit=yes
 
 [Install]

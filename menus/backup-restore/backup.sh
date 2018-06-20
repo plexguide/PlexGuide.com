@@ -193,5 +193,4 @@ read -n 1 -s -r -p "Press any key to continue"
 dialog --title "PG Backup Status" --msgbox "\nYour Backup of -- $app -- to Google Drive is Complete!" 0 0
 echo "INFO - Backup $app Complete" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-sudo bash /opt/plexguide/menus/backup-restore/backup.sh
 exit 0

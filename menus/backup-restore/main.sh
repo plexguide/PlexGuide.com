@@ -16,19 +16,21 @@
 #
 #################################################################################
 echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=12
-WIDTH=45
-CHOICE_HEIGHT=5
+HEIGHT=13
+WIDTH=52
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
-MENU="Choose one of the following options:"
+MENU="Current Server Recovery ID: $recovery"
 
-OPTIONS=(A "Individual: Solo App Backup"
-         B "Individual: Solo App Restore"
-         C "Mass (All): Backup (Takes Time)"
-         D "Mass (All): Restore (Takes Time)"
+OPTIONS=(A "Solo Backup"
+         B "Solo Restore"
+         C "Mass Backup  (Time Intensive)"
+         D "Mass Restore (Time Intensive)"
+         E "Change Recovery ID"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -42,27 +44,20 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-        bash /opt/plexguide/menus/backup-restore/backup.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backup.sh 
+            ;;
         B)
-        #systemctl is-active --quiet rclone
-        #if [ $? -eq 0 ]; then
-        bash /opt/plexguide/menus/backup-restore/restore.sh
-        #else
-        #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-          #bash /opt/plexguide/menus/backup-restore/main.sh
-        #fi 
-        ;;
+            bash /opt/plexguide/menus/backup-restore/restore.sh
+            ;;
         C)
-        bash /opt/plexguide/menus/backup-restore/backupmass.sh ;;
+            bash /opt/plexguide/menus/backup-restore/backupmass.sh 
+            ;;
         D)
-        #systemctl is-active --quiet rclone
-        #if [ $? -eq 0 ]; then
-        bash /opt/plexguide/menus/backup-restore/restoremass.sh
-        #else
-        #  dialog --title "Rclone Service Check Failure" --msgbox "\nRclone service not running. Please install rclone first!" 0 0
-        #  bash /opt/plexguide/menus/backup-restore/main.sh
-        #fi
-        ;;
+            bash /opt/plexguide/menus/backup-restore/restoremass.sh
+            ;;
+        E) 
+            bash /opt/plexguide/menus/backup-restore/recovery.sh
+            ;;
         Z)
             clear
             exit 0

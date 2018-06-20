@@ -128,8 +128,9 @@ case $CHOICE in
 esac
 
 app=$( cat /tmp/program_var )
+recovery=$( cat /var/plexguide/restore.id )
 
-file="/mnt/gdrive/plexguide/backup/$app.tar"
+file="/mnt/gdrive/plexguide/backup/$recovery/$app.tar"
 if [ -e "$file" ]
     then
 
@@ -170,10 +171,6 @@ fi
 
 read -n 1 -s -r -p "Press any key to continue"
 
-echo "$app: Restore Complete" > /tmp/pushover
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
-
 dialog --title "PG Backup Status" --msgbox "\nYour Restore of -- $app -- from Google Drive is Complete!" 0 0
 
-sudo bash /opt/plexguide/menus/backup-restore/restore.sh
 exit 0

@@ -16,17 +16,6 @@
 #
 #################################################################################
 
-################################################################ Create Server ID
-file="/var/plexguide/server.id" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  date +"%m%d%Y" > /var/plexguide/server.id
-  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-  fi
-############################################################################# END
-
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 
@@ -51,6 +40,37 @@ else
   echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   exit 0
 fi
+
+################################################################ Create Server ID
+
+if [ "$edition" == "PG Edition: GCE Feed" ] || [ "$edition" == "PG Edition: GDrive" ]
+then
+
+  file="/var/plexguide/server.id"
+    if [ -e "$file" ]
+      then
+    echo "" 1>/dev/null 2>&1
+  else
+      bash /opt/plexguide/menus/backup-restore/first.sh
+    echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    fi
+else
+  date +"%m%d%Y" > /var/plexguide/server.id
+  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+fi
+############################################################################# END
+
+################################################################ Create Server ID
+
+file="/var/plexguide/restore.id"
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  cat /var/plexguide/server.id > /var/plexguide/restore.id
+  echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  fi
+############################################################################# END
 
 ############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
 

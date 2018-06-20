@@ -43,6 +43,7 @@
       - {name: tdrive.service}
       - {name: tcrypt.service}
 #      - {name: supertransfer2.service}
+      - {name: ufsmonitor.service}
       - {name: unionfs.service}
       - {name: unionfs-encrypt.service}
       - {name: move-en.service}

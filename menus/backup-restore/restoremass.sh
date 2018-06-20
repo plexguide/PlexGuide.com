@@ -16,6 +16,7 @@
 #
 #################################################################################
 echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
 
@@ -32,7 +33,7 @@ if dialog --stdout --title "Restore Mass Confirmation" \
 sudo rm -r /opt/appdata/plexguide/backuplist2 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plexguide/backuplist 1>/dev/null 2>&1
 
-ls -la /mnt/gdrive/plexguide/backup.old | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
+ls -la /mnt/gdrive/plexguide/backup.old/$recovery | awk '{ print $9}' | tail -n 6 > /opt/appdata/plexguide/backuplist
 
 declare -i count=0
 
@@ -109,7 +110,7 @@ case $CHOICE in
             exit 0 ;;
 esac
 
-mfolder="/mnt/gdrive/plexguide/backup.old/"
+mfolder="/mnt/gdrive/plexguide/backup.old/$recovery"
 mpath="$mfolder$varselect"
 
 # Force Exit if Required
@@ -117,11 +118,11 @@ if [ $varselect = "main" ]
 then
   clear
   echo "Main Selected"
-  mpath="/mnt/gdrive/plexguide/backup/"
+  mpath="/mnt/gdrive/plexguide/backup/$recovery"
 fi
 
 # Force Exit if Required
-if [ $mpath = "/mnt/gdrive/plexguide/backup.old/" ]
+if [ $mpath = "/mnt/gdrive/plexguide/backup.old/$recovery" ]
 then
   clear
   echo "You Selected a Blank Field - Nothing Happened"
@@ -132,6 +133,7 @@ fi
 
 ls -la $mpath | awk '{ print $9}' | tail -n 9 | cut -f 1 -d '.' > /opt/appdata/plexguide/backuplist2
 
+clear
 #### Commenting Out To Let User See
 while read p; do
   echo $p > /tmp/program_var
@@ -149,8 +151,8 @@ rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
+echo 'INFO - Mass Restore Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!\n\nYou must DEPLOY each APPLICATION that have NOT LAUNCHED before!" 0 0
 clear
 
-sudo bash /opt/plexguide/menus/backup-restore/main.sh
 exit 0
