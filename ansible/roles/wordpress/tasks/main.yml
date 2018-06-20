@@ -33,11 +33,11 @@
     pull: yes
     cpu_shares: 512
     published_ports:
-      - "8082:3306"
+      - "9201:3306"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
     env:
-      MYSQL_ROOT_PASSWORD: "{{password}}"
+      MYSQL_ROOT_PASSWORD: "test123"
     networks:
       - name: plexguide
         aliases:
@@ -50,14 +50,14 @@
     name: wordpress
     image: wordpress
     pull: yes
-    cpu_shares: 512
+    cpu_shares: 256
     published_ports:
-      - "10000:80"
+      - "9101:80"
     env:
       APP: wordpress
       PUID: "1000"
       PGID: "1000"
-      WORDPRESS_DB_PASSWORD: "{{password}}"
+      WORDPRESS_DB_PASSWORD: "test123"
     networks:
       - name: plexguide
         aliases:
