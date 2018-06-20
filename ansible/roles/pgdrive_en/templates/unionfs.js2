@@ -1,8 +1,8 @@
 [Unit]
 Description=UnionFS Daemon
-#Requires=gcrypt.service
-#After=multi-user.target gcrypt.service
-#RequiresMountsFor=/mnt/gdrive
+Requires=gcrypt.service
+After=multi-user.target gcrypt.service
+RequiresMountsFor=/mnt/gdrive
 
 [Service]
 Type=simple
