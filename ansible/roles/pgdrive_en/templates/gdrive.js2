@@ -26,6 +26,7 @@ ExecStart=/usr/bin/rclone mount gdrive: /mnt/gdrive \
 ExecStop=/bin/fusermount -uz /mnt/gdrive
 TimeoutStopSec=20
 KillMode=process
+Restart=always
 RemainAfterExit=yes
 
 [Install]
