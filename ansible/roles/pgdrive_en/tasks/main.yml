@@ -132,17 +132,17 @@
 ########################################## MOVE END
 
 ########### GCRYPT
-#  - name: Stop If GDRIVE Service Running
-#    systemd: state=stopped name=gdrive
-#    tags:
-#      - gcrypt
-#    ignore_errors: yes
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=gdrive
+    tags:
+      - gcrypt
+    ignore_errors: yes
 
-#  - name: Daemon-Reload - Stop GDRIVE Service
-#    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
-#    tags:
-#      - gcrypt
-#    ignore_errors: yes
+  - name: Daemon-Reload - Stop GDRIVE Service
+    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+    tags:
+      - gcrypt
+    ignore_errors: yes
 
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt
@@ -158,10 +158,10 @@
     tags:
       - gcrypt
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-#    tags:
-#      - gcrypt
+  - name: Daemon-Reload
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    tags:
+      - gcrypt
 
   - name: Start GCRYPT
     systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
