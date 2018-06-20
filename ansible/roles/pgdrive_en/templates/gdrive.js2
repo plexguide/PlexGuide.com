@@ -21,7 +21,7 @@ ExecStart=/usr/bin/rclone mount gdrive: /mnt/gdrive \
 	--umask 002 \
 	--log-level INFO \
 	--drive-shared-with-me \
-  --config /root/.config/rclone/rclone.conf
+	--config /root/.config/rclone/rclone.conf
 
 ExecStop=/bin/fusermount -uz /mnt/gdrive
 TimeoutStopSec=20
