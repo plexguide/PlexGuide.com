@@ -88,20 +88,20 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-            #################### installing dummy file for prep of pgdrive deployment
-            file="/mnt/unionfs/plexguide/pgchecker.bin"
-            if [ -e "$file" ]
-            then
-               echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            else
-               mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
-               mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-               mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
-               touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-               rclone copy /tmp/pgchecker gcrypt:/plexguide/ &>/dev/null &
-               rclone copy /tmp/pgchecker tcrypt:/plexguide/ &>/dev/null &
-               echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            fi
+#            #################### installing dummy file for prep of pgdrive deployment
+#            file="/mnt/unionfs/plexguide/pgchecker.bin"
+#            if [ -e "$file" ]
+#            then
+#               echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+#            else
+#               mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
+#               mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
+#               mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
+#               touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
+#               rclone copy /tmp/pgchecker gcrypt:/plexguide/ &>/dev/null &
+#               rclone copy /tmp/pgchecker tcrypt:/plexguide/ &>/dev/null &
+#               echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+#            fi
             ;;
         C)
             #### RCLONE MISSING START
