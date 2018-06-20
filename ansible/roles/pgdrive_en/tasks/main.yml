@@ -242,7 +242,7 @@
     systemd: state=stopped name=ufsmonitor
     ignore_errors: True
     tags:
-      - ufsmonitor
+      - ufsmonitor_en
 
   - name: Install UFS Monitor Service
     template:
@@ -251,7 +251,7 @@
       force: yes
     ignore_errors: True
     tags:
-      - ufsmonitor
+      - ufsmonitor_en
 
   - name: Install UFS Script
     template:
@@ -260,16 +260,16 @@
       force: yes
     ignore_errors: True
     tags:
-      - ufsmonitor
+      - ufsmonitor_en
 
   - name: Daemon-Reload
     systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
     ignore_errors: True
     tags:
-      - ufsmonitor
+      - ufsmonitor_en
 
   - name: Start UFS Monitor
     systemd: state=started name=ufsmonitor enabled=yes
     ignore_errors: True
     tags:
-      - ufsmonitor
+      - ufsmonitor_en
