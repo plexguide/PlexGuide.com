@@ -55,21 +55,21 @@ case $CHOICE in
         clear
         systemctl restart gcrypt
         echo ""
-        read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
+        read -n 1 -s -r -p "Gcrypt restarted - Press any key to continue "
         ;;
 
     C)
       clear
       systemctl restart tdrive
       echo ""
-      read -n 1 -s -r -p "Gdrive restarted - Press any key to continue "
+      read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
       ;;
 
     D)
         clear
         systemctl restart tcrypt
         echo ""
-        read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
+        read -n 1 -s -r -p "Tcrypt restarted - Press any key to continue "
         ;;
 
     E)
