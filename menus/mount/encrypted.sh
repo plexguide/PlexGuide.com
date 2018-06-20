@@ -81,10 +81,10 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
             #### RClone Missing Warning - END
             rclone config
-            touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
+#            touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
             #### GREP Checks
-            tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
-            gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+#            tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+#            gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
