@@ -26,7 +26,7 @@ ExecStart=/usr/bin/rclone mount tdrive: /mnt/tdrive \
 ExecStop=/bin/fusermount -uz /mnt/tdrive
 TimeoutStopSec=20
 KillMode=process
-Restart=always
+#Restart=always
 RemainAfterExit=yes
 
 [Install]
