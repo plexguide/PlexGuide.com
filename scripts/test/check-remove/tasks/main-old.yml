@@ -40,6 +40,7 @@
       - {name: /etc/systemd/system/sdrive.service}
       - {name: /etc/systemd/system/tdrive.service}
       - {name: /etc/systemd/system/unionfs-encrypt.service}
+      - {name: ufsmonitor.service}
       - {name: /etc/systemd/system/move.service}
       - {name: /etc/systemd/system/plexdrive.service}
       - {name: /etc/systemd/system/unionfs.service}
