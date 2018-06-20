@@ -144,11 +144,11 @@
 #      - gcrypt
 #    ignore_errors: yes
 
-#  - name: Stop If GCRYPT Service Running
-#    systemd: state=stopped name=gcrypt
-#    tags:
-#      - gcrypt
-#    ignore_errors: yes
+  - name: Stop If GCRYPT Service Running
+    systemd: state=stopped name=gcrypt
+    tags:
+      - gcrypt
+    ignore_errors: yes
 
   - name: Install GCRYPT Service
     template:
