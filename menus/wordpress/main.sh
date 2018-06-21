@@ -16,7 +16,7 @@
 #
 #################################################################################
 echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-recovery=$( cat /var/plexguide/restore.id )
+wp=$( cat /var/plexguide/wp.id )
 
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=13
@@ -24,7 +24,7 @@ WIDTH=52
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
-MENU="Current Server Focus: $recovery"
+MENU="Current Server Focus: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
          B "Change Server ID"
@@ -42,7 +42,7 @@ CHOICE=$(dialog --clear \
   
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/backup-restore/backup.sh 
+            bash /opt/plexguide/menus/wordpress/deploywp.sh 
             ;;
         B)
             bash /opt/plexguide/menus/backup-restore/restore.sh
