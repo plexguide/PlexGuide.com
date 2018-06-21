@@ -27,9 +27,6 @@
   if dialog --stdout --title "WORDPRESS ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWORDPRESS ID: $id\n\nCorrect?" 0 0; then
-
-    ##### READ / WRITE CHECK
-    mkdir "$base$id/plexguide" 1>/dev/null 2>&1
     
     file="$base$id/plexguide"
     if [ -e "$file" ]
@@ -37,7 +34,7 @@
         dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nThat Server ID Does Not Exist!" 0 0
         rm -r "$base$id/plexguide" 1>/dev/null 2>&1
       else
-        dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nThat Recovery ID does not EXIST! Check Your Google Drive!" 0 0
+        dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nWordpress Server ID:$id does not exist!" 0 0
         #bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         exit
     fi
