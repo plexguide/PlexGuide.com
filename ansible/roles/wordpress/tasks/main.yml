@@ -16,6 +16,11 @@
 #
 #################################################################################
 ---
+- name: Register WP Port
+  shell: "cat /var/plexguide/wpport.id"
+  register: wpport
+  ignore_errors: True
+
 - name: Remove Wordpress Container
   docker_container:
     name: wordpress
@@ -52,7 +57,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "9101:80"
+      - "{{wpport.stdout}}:80"
     env:
       APP: wordpress
       PUID: "1000"
