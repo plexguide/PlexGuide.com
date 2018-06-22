@@ -44,16 +44,14 @@ id=$(cat /var/plexguide/wp.temp.id)
 file="/opt/appdata/wordpress/$id"
 if [ -e "$file" ]
   then
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
-    exit
+
 fi
 
 ############################## Ensure It Does Not EXIST DISTANT
 file="/mnt/gdrive/plexguide/backup/XXXXX/wordpress/$id"
 if [ -e "$file" ]
   then
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
-    exit
+    
 fi
 
 ################################# PORT NUMBER
