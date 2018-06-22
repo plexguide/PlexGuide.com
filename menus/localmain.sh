@@ -47,9 +47,9 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Main PG Menu - Local HD Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-HEIGHT=15
+HEIGHT=14
 WIDTH=40
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
@@ -60,7 +60,6 @@ OPTIONS=(A "PG Program Suite"
          E "PG Troubleshooting Actions"
          F "PG Settings"
          G "PG Update"
-         H "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -122,9 +121,6 @@ echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && 
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        H)
-echo 'INFO - Selected: PG Donation Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
 echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/message/ending.sh

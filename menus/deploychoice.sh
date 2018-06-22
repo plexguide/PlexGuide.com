@@ -54,5 +54,5 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
         esac
 
 ## repeat menu when exiting
-echo 'INFO - Looping: Deploy Choice Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Redirection: Going Back to Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 exit

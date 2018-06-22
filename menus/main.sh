@@ -30,13 +30,13 @@ TITLE="$edition - $version"
 OPTIONS=(A "Deploy a Mount System"
          B "PG Program Suite"
          C "PG PLEX Enhancement Tools"
-         D "PG Server Security"
-         E "PG Server Information"
-         F "PG Troubleshooting Actions"
-         G "PG Settings & Tools"
-         H "PG Backup & Restore"
-         I "PG Updates"
-         J "Donation Menu"
+         D "PG Wordpress (TESTING)"
+         E "PG Server Security"
+         F "PG Server Information"
+         G "PG Troubleshooting Actions"
+         H "PG Settings & Tools"
+         I "PG Backup & Restore"
+         J "PG Updates"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -56,28 +56,28 @@ echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/pl
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
+echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/wordpress/main.sh ;;           
+        E)
 echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
-        E)
+        F)
 echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/info.sh ;;
-        F)
+        G)
 echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
-        G)
+        H)
 echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/settings/main.sh ;;
-        H)
+        I)
 echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
-        I)
+        J)
 echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        J)
-echo 'INFO - Selected: PDonations INterface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
 echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/message/ending.sh
