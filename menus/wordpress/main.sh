@@ -28,7 +28,7 @@ MENU="Current Server Focus: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
          B "Change Server ID"
-         C "Backup WP Server : $id"
+         C "Backup Current WP Server"
          D "Restore WP Server: $id"
          Z "Exit")
 
@@ -42,12 +42,15 @@ CHOICE=$(dialog --clear \
   
 case $CHOICE in
         A)
+echo 'INFO - Selected: Deploy a New WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/wordpress/deploywp.sh 
             ;;
         B)
+echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/restore.sh
             ;;
         C)
+echo 'INFO - Selected: Backup Current WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/backupmass.sh 
             ;;
         D)
