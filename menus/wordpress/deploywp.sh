@@ -70,9 +70,11 @@ fi
 
 if [ "$port" -ge 100 -a "$port" -le 999 ]
   then
+### keep going
 else
   dialog --title "Server ID Choice" --msgbox "\nYou Failed to Enter a Value between 100-999!\n\nExiting!" 0 0
 exit
+fi
 
   clear
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
