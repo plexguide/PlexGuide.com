@@ -87,11 +87,9 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      #traefik.frontend.rule: "Host:{{domain}}"
+      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}"
       traefik.port: "80"
 
-
-{{wpid.stdout}}
 ##### STORE INFO
 - name: Store WP Port
   shell: "echo '9{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgwpport"
@@ -100,7 +98,7 @@
   shell: "echo '10{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgdbport"
 
 - name: Store WP Subdomain
-  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgdbport"
+  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
 
 ##### OutPut Info
 - debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"
