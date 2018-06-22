@@ -16,20 +16,29 @@
 #
 #################################################################################
 echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+file="/var/plexguide/wp.id"
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  echo "NONE" > /var/plexguide/wp.id
+  fi
+
 wp=$( cat /var/plexguide/wp.id )
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=13
+HEIGHT=12
 WIDTH=52
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Last Deployed WP Server: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
-         B "Backup a WP Server"
-         C "Restore Another WP Server"
-         D "Top Level Domain Options"
+         B "(NOT READY) Backup a WP Server"
+         C "(NOT READY) Restore Another WP Server"
+         D "(NOT READY) Top Level Domain Options"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -46,18 +55,14 @@ echo 'INFO - Selected: Deploy a New WP Server' > /var/plexguide/pg.log && bash /
             bash /opt/plexguide/menus/wordpress/deploywp.sh 
             ;;
         B)
-echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/restore.sh
+echo 'INFO - Selected: Backup a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             ;;
         C)
-echo 'INFO - Selected: Backup Current WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh 
+echo 'INFO - Selected: Restore Another WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             ;;
         D)
+echo 'INFO - Selected: Top Level Domain Options' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/restoremass.sh
-            ;;
-        E) 
-            bash /opt/plexguide/menus/backup-restore/recovery.sh
             ;;
         Z)
             clear

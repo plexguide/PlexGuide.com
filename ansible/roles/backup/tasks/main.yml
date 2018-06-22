@@ -39,7 +39,7 @@
   tags:
     - backup_normal
 
-- name: "Checking if RCLone Encrypted"
+- name: "Checking if RClone Encrypted"
   stat:
     path: /var/plexguide/rclone-en.yes
   register: encrypted
