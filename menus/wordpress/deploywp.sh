@@ -41,13 +41,13 @@ id=$(cat /var/plexguide/wp.temp.id)
 file="/opt/appdata/wordpress/$id"
 if [ -e "$file" ]
   then
-clear
+clear ## change me
 fi
 ############################## Ensure It Does Not EXIST DISTANT
 file="/mnt/gdrive/plexguide/backup/XXXXX/wordpress/$id"
 if [ -e "$file" ]
   then
-clear
+clear ## change me
 fi
 ################################# PORT NUMBER
 
@@ -69,7 +69,7 @@ fi
   fi
 
 if [ "$port" -ge 100 -a "$port" -le 999 ]; then
-  read -n 1 -s -r -p "Press any key to continue - Good"
+  clear ## change me
 else
     read -n 1 -s -r -p "Press any key to continue - Bad"
   dialog --title "Server ID Choice" --msgbox "\nYou Failed to Enter a Value between 100-999!\n\nExiting!" 0 0
