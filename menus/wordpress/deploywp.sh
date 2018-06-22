@@ -44,13 +44,13 @@ id=$(cat /var/plexguide/wp.temp.id)
 file="/opt/appdata/wordpress/$id"
 if [ -e "$file" ]
   then
-
+clear
 fi
 ############################## Ensure It Does Not EXIST DISTANT
 file="/mnt/gdrive/plexguide/backup/XXXXX/wordpress/$id"
 if [ -e "$file" ]
   then
-    
+clear
 fi
 ################################# PORT NUMBER
 
