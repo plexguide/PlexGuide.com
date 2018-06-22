@@ -80,6 +80,6 @@
       #traefik.frontend.rule: "Host:{{domain}}"
       traefik.port: "80"
 
-- debug: msg="Access WP Via Port 9{{wpport.stdout}}"
+- debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"
 
-- debug: msg="Info Database Cannot Be Accessed, but runs internal via Port 10{{wpport.stdout}}"
+- debug: msg="Access WP Via Port 9{{wpport.stdout}}"
