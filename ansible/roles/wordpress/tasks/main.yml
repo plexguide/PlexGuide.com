@@ -57,7 +57,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{wpport.stdout}}:80"
+      - "9{{wpport.stdout}}:80"
     env:
       APP: wordpress
       PUID: "1000"
