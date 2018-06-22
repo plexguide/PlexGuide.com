@@ -30,7 +30,7 @@ id=$(cat /var/plexguide/wp.temp.id)
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWP SERVER ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
-    echo "$id" > /var/plexguide/server.id
+    echo "$id" > /var/plexguide/wp.id
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
       bash /opt/plexguide/menus/backup-restore/first.sh

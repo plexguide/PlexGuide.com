@@ -21,6 +21,11 @@
   register: wpport
   ignore_errors: True
 
+- name: Register WP ID
+  shell: "cat /var/plexguide/wp.id"
+  register: wpid
+  ignore_errors: True
+
 - name: Remove Wordpress Container
   docker_container:
     name: wordpress
@@ -33,7 +38,7 @@
 
 - name: Deploy Wordpress Database
   docker_container:
-    name: my-wpdb
+    name: my-wpdb-{{wpid.stdout}}
     image: mariadb
     pull: yes
     cpu_shares: 512
@@ -46,13 +51,13 @@
     networks:
       - name: plexguide
         aliases:
-          - mariadbwordpress
+          - wpdb-{{wpid.stdout}}
     restart_policy: always
     state: started
 
 - name: Deploy Wordpress Container
   docker_container:
-    name: wordpress
+    name: wordpress-{{wpid.stdout}}
     image: wordpress
     pull: yes
     cpu_shares: 256
@@ -66,11 +71,11 @@
     networks:
       - name: plexguide
         aliases:
-          - wordpress
+          - wordpress-{{wpport.stdout}}
     links:
-      - my-wpdb:mysql
+      - my-wpdb-{{wpid.stdout}}:mysql
     volumes:
-      - /opt/appdata/wordpress:/var/www/html
+      - /opt/appdata/wordpress/{{wpid.stdout}}:/var/www/html
       - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
