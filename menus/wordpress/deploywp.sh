@@ -31,7 +31,7 @@ id=$(cat /var/plexguide/wp.temp.id)
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
 
-    dialog --title "--- SERVER ID ---" --msgbox "\nSERVER ID: $id\n\nIS SET!" 0 0
+    dialog --title "--- SERVER ID ---" --msgbox "\nWP ID: $id\n\nIS SET!" 0 0
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/server.id
   else
@@ -46,14 +46,12 @@ if [ -e "$file" ]
   then
 
 fi
-
 ############################## Ensure It Does Not EXIST DISTANT
 file="/mnt/gdrive/plexguide/backup/XXXXX/wordpress/$id"
 if [ -e "$file" ]
   then
     
 fi
-
 ################################# PORT NUMBER
 
   dialog --title "[ No More Than 3 Numbers! EXAMPLE: 005 or 989 ]" \
