@@ -24,7 +24,7 @@ WIDTH=52
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
-MENU="Current Server Focus: $wp"
+MENU="Last Deployed WP Server: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
          B "Backup a WP Server"
