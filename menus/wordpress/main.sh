@@ -36,9 +36,9 @@ TITLE="Backup & Restore Menu"
 MENU="Last Deployed WP Server: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
-         B "Backup a WP Server"
-         C "Restore Another WP Server"
-         D "Top Level Domain Options"
+         B "(NOT READY) Backup a WP Server"
+         C "(NOT READY) Restore Another WP Server"
+         D "(NOT READY) Top Level Domain Options"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -55,18 +55,14 @@ echo 'INFO - Selected: Deploy a New WP Server' > /var/plexguide/pg.log && bash /
             bash /opt/plexguide/menus/wordpress/deploywp.sh 
             ;;
         B)
-echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/restore.sh
+echo 'INFO - Selected: Backup a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             ;;
         C)
-echo 'INFO - Selected: Backup Current WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh 
+echo 'INFO - Selected: Restore Another WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             ;;
         D)
+echo 'INFO - Selected: Top Level Domain Options' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/restoremass.sh
-            ;;
-        E) 
-            bash /opt/plexguide/menus/backup-restore/recovery.sh
             ;;
         Z)
             clear
