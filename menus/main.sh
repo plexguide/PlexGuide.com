@@ -48,8 +48,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
 echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-           bash bash /opt/plexguide/menus/deploychoice.sh
-            ;;
+           bash bash /opt/plexguide/menus/deploychoice.sh ;;
         B)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/main.sh ;;
