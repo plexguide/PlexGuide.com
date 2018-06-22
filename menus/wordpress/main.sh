@@ -16,12 +16,21 @@
 #
 #################################################################################
 echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+file="/var/plexguide/wp.id"
+  if [ -e "$file" ]
+    then
+  echo "" 1>/dev/null 2>&1
+    else
+  echo "NONE" > cat /var/plexguide/wp.id
+  fi
+
 wp=$( cat /var/plexguide/wp.id )
 
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=13
+HEIGHT=12
 WIDTH=52
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Backup & Restore Menu"
 MENU="Last Deployed WP Server: $wp"
