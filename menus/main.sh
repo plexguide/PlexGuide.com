@@ -47,47 +47,11 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-
-##################################################### DEPLOYMENT SYSTEM - START
-        HEIGHT=11
-        WIDTH=44
-        CHOICE_HEIGHT=5
-        BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-        TITLE="Deploy a Mounting System"
-
-        OPTIONS=(A "PGDrive   /w PG Move (Recommended)"
-                 B "PGDrive   /w PG ST2  (Advanced)"
-                 C "PlexDrive /w PG Move (Traditional)"
-                 D "Mini FAQ"
-                 Z "Exit")
-
-        CHOICE=$(dialog --backtitle "$BACKTITLE" \
-                        --title "$TITLE" \
-                        --menu "$MENU" \
-                        $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                        "${OPTIONS[@]}" \
-                        2>&1 >/dev/tty)
-        case $CHOICE in
-                A)
-                    echo "Move" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/mount/main.sh 
-                    ;;
-                B)
-                    echo "SuperTransfer2" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/mount/main.sh
-                    ;;
-                C)
-                    "plexdrive" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
-                    ;;
-                D)
-                    ;;
-                Z)
-                    ;; ## Do Not Put Anything Here
-        esac
+echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+           bash bash /opt/plexguide/menus/deploychoice.sh
             ;;
-##################################################### DEPLOYMENT SYSTEM - END
         B)
+echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
