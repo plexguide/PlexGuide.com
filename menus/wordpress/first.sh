@@ -17,6 +17,7 @@
 #################################################################################
   dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a SERVER ID for Identification/Backup Purposes!\n\nRemember KISS (Keep It Simple Stupid) for your ID!" 0 0
 
+################################ SERVER ID
   dialog --title "[ EXAMPLE: SERVER01 or PG9705 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Type Your Server ID: " 8 50 2>/var/plexguide/server.temp.id
@@ -29,7 +30,25 @@
     dialog --title "--- SERVER ID ---" --msgbox "\nSERVER ID: $id\n\nIS SET!" 0 0
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/server.id
+  else
+    dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+      bash /opt/plexguide/menus/backup-restore/first.sh
+      exit
+  fi
+################################# PORT NUMBER
 
+  dialog --title "[ No More Than 3 Numbers! EXAMPLE: 005 or 989 ]" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Port 9:" 8 50 2>/var/plexguide/port.temp.id
+  port=$(cat /var/plexguide/port.temp.id)
+
+  if dialog --stdout --title "SERVER ID" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
+
+    dialog --title "--- SERVER ID ---" --msgbox "\nSERVER ID: $id\n\nIS SET!" 0 0
+    ### Ensure Location Get Stored for Variables Role
+    echo "$port" > /var/plexguide/wpport.id
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
       bash /opt/plexguide/menus/backup-restore/first.sh
