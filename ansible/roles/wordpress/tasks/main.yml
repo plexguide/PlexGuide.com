@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- include_role:
+    name: variables
+
 - name: Register WP Port
   shell: "cat /var/plexguide/wpport.id"
   register: wpport
@@ -23,6 +26,10 @@
 - name: Register WP ID
   shell: "cat /var/plexguide/wp.id"
   register: wpid
+
+- name: Register WP Subdomain
+  shell: "cat /var/plexguide/wpsubdomain.id"
+  register: wpsub
 
 - name: Remove Wordpress Container
   docker_container:
@@ -83,9 +90,17 @@
       #traefik.frontend.rule: "Host:{{domain}}"
       traefik.port: "80"
 
+
+{{wpid.stdout}}
 ##### STORE INFO
-- name: Register WP Port
-  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgports"
+- name: Store WP Port
+  shell: "echo '9{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgwpport"
+
+- name: Store DB Port
+  shell: "echo '10{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgdbport"
+
+- name: Store WP Subdomain
+  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgdbport"
 
 ##### OutPut Info
 - debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"

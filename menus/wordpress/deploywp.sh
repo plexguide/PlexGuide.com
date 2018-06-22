@@ -51,6 +51,25 @@ clear ## change me
 fi
 ################################# PORT NUMBER
 
+################################# SUBDOMAIN
+
+  dialog --title "[ EXAMPLE: nzbgetwp or pgwordpress ]" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Enter a SUBDOMAIN for Your Website" 8 50 2>/var/plexguide/subdomain.temp.id
+  subdomain=$(cat /var/plexguide/subdomain.temp.id)
+
+  if dialog --stdout --title "SUBDOMAIN" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nYour Subdomain: $port\n\nCorrect?" 0 0; then
+
+    ### Ensure Location Get Stored for Variables Role
+    echo "$subdomain" > /var/plexguide/wpsubdomain.id
+  else
+    dialog --title "SUBDOMAIN" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+      bash /opt/plexguide/menus/backup-restore/first.sh
+      exit
+  fi
+
   dialog --title "[ EXAMPLE: 101 or 989 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Enter 3 Numbers Between 100-999" 8 50 2>/var/plexguide/port.temp.id
