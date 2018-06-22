@@ -27,9 +27,9 @@ TITLE="Backup & Restore Menu"
 MENU="Current Server Focus: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
-         B "Change Server ID"
-         C "Backup Current WP Server"
-         D "Restore WP Server: $id"
+         B "Backup a WP Server"
+         C "Restore Another WP Server"
+         D "Top Level Domain Options"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
