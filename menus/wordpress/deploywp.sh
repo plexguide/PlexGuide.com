@@ -60,7 +60,7 @@ fi
 
   if dialog --stdout --title "SUBDOMAIN" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nYour Subdomain: $port\n\nCorrect?" 0 0; then
+        --yesno "\nYour Subdomain: $subdomain\n\nCorrect?" 0 0; then
 
     ### Ensure Location Get Stored for Variables Role
     echo "$subdomain" > /var/plexguide/wpsubdomain.id
