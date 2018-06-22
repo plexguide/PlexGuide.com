@@ -51,9 +51,9 @@ clear
 fi
 ################################# PORT NUMBER
 
-  dialog --title "[ EXAMPLE: 005 or 989 ]" \
+  dialog --title "[ EXAMPLE: 101 or 989 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "No More Than 3 Numbers:" 8 50 2>/var/plexguide/port.temp.id
+  --inputbox "Enter 3 Numbers Between 100-999" 8 50 2>/var/plexguide/port.temp.id
   port=$(cat /var/plexguide/port.temp.id)
 
   if dialog --stdout --title "SERVER ID" \
