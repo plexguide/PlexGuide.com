@@ -15,34 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "--- INFO ---" --msgbox "\nEnsure you create a NEW UNIQUE ID!" 0 0
-echo "yes" > /var/plexguide/server.wp
-base="/mnt/gdrive/plexguide/wordpress/"
-
-dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
---backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/recovery.temp.id
-id=$(cat /var/plexguide/wp.temp.id)
-
-############################## Ensure It Does Not EXIST LOCAL
-file="/opt/appdata/wordpress/$id"
-if [ -e "$file" ]
-  then
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
-    exit
-fi
-
-############################## Ensure It Does Not EXIST DISTANT
-file="/mnt/gdrive/plexguide/backup/XXXXX/wordpress/$id"
-if [ -e "$file" ]
-  then
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
-    exit
-fi
-
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
-
-  dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a SERVER ID for Identification/Backup Purposes!\n\nRemember KISS (Keep It Simple Stupid) for your ID!" 0 0
+dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a Wordpress ID!\n\nRemember KISS (Keep It Simple Stupid) for your ID!" 0 0
 
 #######################
 dialog --title "--- INFO ---" --msgbox "\nEnsure you create a NEW UNIQUE ID!" 0 0
@@ -67,6 +40,23 @@ id=$(cat /var/plexguide/wp.temp.id)
       bash /opt/plexguide/menus/backup-restore/first.sh
       exit
   fi
+
+############################## Ensure It Does Not EXIST LOCAL
+file="/opt/appdata/wordpress/$id"
+if [ -e "$file" ]
+  then
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+    exit
+fi
+
+############################## Ensure It Does Not EXIST DISTANT
+file="/mnt/gdrive/plexguide/backup/XXXXX/wordpress/$id"
+if [ -e "$file" ]
+  then
+    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+    exit
+fi
+
 ################################# PORT NUMBER
 
   dialog --title "[ No More Than 3 Numbers! EXAMPLE: 005 or 989 ]" \
@@ -86,3 +76,5 @@ id=$(cat /var/plexguide/wp.temp.id)
       bash /opt/plexguide/menus/backup-restore/first.sh
       exit
   fi
+
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
