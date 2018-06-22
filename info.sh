@@ -29,7 +29,7 @@ echo "18.05.0~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
 echo "edge" > /var/plexguide/pg.docker18.edition
 #### DOCKER END
 
-#### Insatller
+#### Installer
 echo "1" > /var/plexguide/pg.ansible
 echo "1" > /var/plexguide/pg.commands
 echo "1" > /var/plexguide/pg.python
