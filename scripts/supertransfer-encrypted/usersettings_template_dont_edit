@@ -7,3 +7,7 @@ gdsaImpersonate=your@email.com
 teamDrive=
 # leave empty for root
 remoteDir=
+# password
+password=
+# salt
+salt=
