@@ -19,12 +19,10 @@
 - name: Register WP Port
   shell: "cat /var/plexguide/wpport.id"
   register: wpport
-  ignore_errors: True
 
 - name: Register WP ID
   shell: "cat /var/plexguide/wp.id"
   register: wpid
-  ignore_errors: True
 
 - name: Remove Wordpress Container
   docker_container:
@@ -85,6 +83,11 @@
       #traefik.frontend.rule: "Host:{{domain}}"
       traefik.port: "80"
 
+##### STORE INFO
+- name: Register WP Port
+  shell: "echo '{{wpid.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgports"
+
+##### OutPut Info
 - debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"
 
 - debug: msg="Access WP Via Port 9{{wpport.stdout}}"
