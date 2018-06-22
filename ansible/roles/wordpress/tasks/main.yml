@@ -98,9 +98,9 @@
   shell: "echo '10{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgdbport"
 
 - name: Store WP Subdomain
-  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
+  shell: "echo '{{wpsub.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
 
 ##### OutPut Info
 - debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"
 
-- debug: msg="Access WP Via Port 9{{wpport.stdout}} - SubDomain {{wpport.stdout}}"
+- debug: msg="Access WP Via Port 9{{wpport.stdout}} - SubDomain {{wpsub.stdout}}"
