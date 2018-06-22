@@ -58,7 +58,7 @@ fi
 
   if dialog --stdout --title "SERVER ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
+        --yesno "\nThree Numbers Entered: $port\n\nCorrect?" 0 0; then
 
     ### Ensure Location Get Stored for Variables Role
     echo "$port" > /var/plexguide/wpport.id
