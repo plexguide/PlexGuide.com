@@ -23,7 +23,7 @@ base="/mnt/gdrive/plexguide/wordpress/"
 
 dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/recovery.temp.id
+--inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
   if dialog --stdout --title "WP SERVER ID" \
