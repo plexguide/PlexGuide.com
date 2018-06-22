@@ -85,7 +85,7 @@
 
 ##### STORE INFO
 - name: Register WP Port
-  shell: "echo '{{wpid.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgports"
+  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgports"
 
 ##### OutPut Info
 - debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"
