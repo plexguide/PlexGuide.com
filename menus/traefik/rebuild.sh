@@ -33,8 +33,10 @@ fi
 
 while read p; do
   echo $p > /tmp/program_var
+  echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   app=$( cat /tmp/program_var )
   dialog --infobox "Reconstructing Your Container: $app" 3 50
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "$app" --skip-tags webtools 1>/dev/null 2>&1
   #read -n 1 -s -r -p "Press any key to continue "
 done </opt/appdata/plexguide/running
+  echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
