@@ -13,14 +13,13 @@ ExecStart=/usr/bin/rclone mount gdrive: /mnt/gdrive \
 	--gid=1000 \
 	--size-only \
 	--dir-cache-time 2m \
-  --vfs-read-chunk-size 64M \
+	--vfs-read-chunk-size 64M \
 	--vfs-cache-max-age 675h \
 	--vfs-read-chunk-size-limit 1G \
 	--buffer-size 32M \
 	--syslog \
 	--umask 002 \
 	--log-level INFO \
-	--drive-shared-with-me \
 	--config /root/.config/rclone/rclone.conf
 
 ExecStop=/bin/fusermount -uz /mnt/gdrive
