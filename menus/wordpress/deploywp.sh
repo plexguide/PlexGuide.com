@@ -26,11 +26,9 @@ dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
 --inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/recovery.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
-
-  if dialog --stdout --title "SERVER ID" \
+  if dialog --stdout --title "WP SERVER ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
-
+        --yesno "\nWP SERVER ID: $id\n\nCorrect?" 0 0; then
     dialog --title "--- SERVER ID ---" --msgbox "\nWP ID: $id\n\nIS SET!" 0 0
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/server.id
