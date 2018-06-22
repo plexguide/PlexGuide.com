@@ -22,7 +22,7 @@ file="/var/plexguide/wp.id"
     then
   echo "" 1>/dev/null 2>&1
     else
-  echo "NONE" > cat /var/plexguide/wp.id
+  echo "NONE" > /var/plexguide/wp.id
   fi
 
 wp=$( cat /var/plexguide/wp.id )
