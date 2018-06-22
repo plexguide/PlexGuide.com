@@ -134,6 +134,7 @@ case $CHOICE in
 			echo "*" > /tmp/cron.day
 			;;
 esac
+
 ######################## CRON DAY END ##########################
 
 ######################## CRON DAY HOUR ##########################
@@ -233,4 +234,6 @@ esac
 ######################## CRON HOUR MINUTE ##########################
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
+echo 'INFO - Completed Building the Cron Job for $display' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 dialog --title "Notice" --msgbox "\nThe backup for $display has been deployed\n\nWant to see it, Type crontab -e in the Command Line! " 0 0
