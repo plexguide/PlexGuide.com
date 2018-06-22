@@ -29,7 +29,6 @@ id=$(cat /var/plexguide/wp.temp.id)
   if dialog --stdout --title "WP SERVER ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWP SERVER ID: $id\n\nCorrect?" 0 0; then
-    dialog --title "--- SERVER ID ---" --msgbox "\nWP ID: $id\n\nIS SET!" 0 0
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/server.id
   else
@@ -61,7 +60,6 @@ fi
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
 
-    dialog --title "--- SERVER ID ---" --msgbox "\nSERVER ID: $id\n\nIS SET!" 0 0
     ### Ensure Location Get Stored for Variables Role
     echo "$port" > /var/plexguide/wpport.id
   else
@@ -71,3 +69,4 @@ fi
   fi
 
   ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+  read -n 1 -s -r -p "Press any key to continue"
