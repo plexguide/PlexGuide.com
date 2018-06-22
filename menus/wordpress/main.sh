@@ -65,4 +65,4 @@ echo 'INFO - Selected: Backup Current WP Server' > /var/plexguide/pg.log && bash
             ;;
 
 esac
-bash /opt/plexguide/menus/backup-restore/main.sh
+bash /opt/plexguide/menus/wordpress/main.sh

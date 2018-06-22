@@ -38,7 +38,7 @@
     pull: yes
     cpu_shares: 512
     published_ports:
-      - "127.0.0.1:9201:3306"
+      - "127.0.0.1:10{{wpport.stdout}}:3306"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
     env:
@@ -81,3 +81,5 @@
       traefik.port: "80"
 
 - debug: msg="Access WP Via Port 9{{wpport.stdout}}"
+
+- debug: msg="Info Database Cannot Be Accessed, but runs internal via Port 10{{wpport.stdout}}"
