@@ -15,10 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a Wordpress ID!\n\nRemember KISS (Keep It Simple Stupid) for your ID!" 0 0
+dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a UNIQUE Wordpress ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
 
 #######################
-dialog --title "--- INFO ---" --msgbox "\nEnsure you create a NEW UNIQUE ID!" 0 0
 echo "yes" > /var/plexguide/server.wp
 base="/mnt/gdrive/plexguide/wordpress/"
 
