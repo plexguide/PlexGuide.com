@@ -29,12 +29,12 @@
 ############## CHECKING DATA LOCATION
 - name: Checking WordPress on GDrive - {{wp_id.stdout}}
   stat:
-    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}
+    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}.tar
   register: programgdrive
 
 - name: Checking WordPress DB on GDrive - {{wp_id.stdout}}
   stat:
-    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}
+    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}.tar
   register: programdbgdrive
 
 ############## CHECKING DATA LOCATION
