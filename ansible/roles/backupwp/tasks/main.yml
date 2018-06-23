@@ -86,7 +86,6 @@
   when: programappdata.stat.exists == True
 
 ############ FOR WORDPRESS - Uploading
-
 - name: Uploading Wordpress Backup to Google Drive
   shell: "rclone copy /tmp/{{wp_id.stdout}}.tar gdrive:/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
@@ -96,7 +95,6 @@
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
 
 ############# FOR DATABASE - Uploading
-
 - name: Uploading Wordpress Database Backup to Google Drive
   shell: "rclone copy /tmp/{{wp_id.stdout}}-db.tar gdrive:/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}-db -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
