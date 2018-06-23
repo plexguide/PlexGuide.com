@@ -81,9 +81,6 @@
     - /tmp/{{wp_id.stdout}}.tar
   when: programappdata.stat.exists == True
 
-#- name: Kill Switch
-#  shell: echo "false" > /tmp/alive
-
 - debug: msg="Program is now backed up to your Google Drive - {{wp_id.stdout}}.tar"
   when: programappdata.stat.exists == True
 
