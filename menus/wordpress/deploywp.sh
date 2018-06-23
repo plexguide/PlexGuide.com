@@ -96,5 +96,5 @@ exit
 fi
 
   clear
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+  ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
   read -n 1 -s -r -p "Press any key to continue"
