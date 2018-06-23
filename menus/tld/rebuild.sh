@@ -136,6 +136,7 @@ while read p; do
 if [ "$p" == "id" ]
 then
 	echo ",$domain" > /var/plexguide/tld.$program
+	echo 'INFO - TLD executed on $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else
 	echo "" > /var/plexguide/tld.$program
 fi
