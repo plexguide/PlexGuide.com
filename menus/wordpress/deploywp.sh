@@ -55,20 +55,8 @@ fi
 
   dialog --title "[ EXAMPLE: nzbgetwp or pgwordpress ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Enter a SUBDOMAIN for Your Website" 8 50 2>/var/plexguide/subdomain.temp.id
+  --inputbox "Enter a SUBDOMAIN/WP Server ID" 8 50 2>/var/plexguide/subdomain.temp.id
   subdomain=$(cat /var/plexguide/subdomain.temp.id)
-
-  if dialog --stdout --title "SUBDOMAIN" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nYour Subdomain: $subdomain\n\nCorrect?" 0 0; then
-
-    ### Ensure Location Get Stored for Variables Role
-    echo "$subdomain" > /var/plexguide/wpsubdomain.id
-  else
-    dialog --title "SUBDOMAIN" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/wordpress/main.sh
-      exit
-  fi
 
   dialog --title "[ EXAMPLE: 101 or 989 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
