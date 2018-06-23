@@ -31,7 +31,7 @@ id=$(cat /var/plexguide/wp.temp.id)
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/wp.id
   else
-    dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+    dialog --title "WP ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
       bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi

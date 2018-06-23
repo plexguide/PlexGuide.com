@@ -36,8 +36,8 @@ TITLE="Backup & Restore Menu"
 MENU="Last Deployed WP Server: $wp"
 
 OPTIONS=(A "Deploy New WP Server"
-         B "(NOT READY) Backup a WP Server"
-         C "(NOT READY) Restore a WP Server"
+         B "Backup a WP Server"
+         C "Restore a WP Server"
          D "(NOT READY) Top Level Domain Options"
          Z "Exit")
 
