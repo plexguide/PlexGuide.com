@@ -131,7 +131,7 @@ while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   cat /opt/appdata/wordpress/$p/pgwpport > /var/plexguide/wpport.id
   cat /opt/appdata/wordpress/$p/pgsub > /var/plexguide/wp.id
-  id=$(cat /var/plexguide/wp.id)
+  id=$(cat /tmp/wp.running | cut -c 11-)
 
 if [ "$p" == "temp" ]
 then
