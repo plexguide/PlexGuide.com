@@ -121,21 +121,6 @@
     mode: 0775
   when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
 
-############ BACKUP OTHER - END
-- name: Restart Docker Container - {{server_id.stdout}}-db
-  docker_container:
-    name: "{{wp_id.stdout}}-db"
-    state: started
-  ignore_errors: True
-  when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
-
-- name: Restart Docker Container - {{server_id.stdout}}
-  docker_container:
-    name: "{{wp_id.stdout}}"
-    state: started
-  ignore_errors: True
-  when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
-
 ############ Remove Left Over Containers
 - name: Remove Leftover Tar from /tmp
   file:
@@ -145,6 +130,18 @@
   with_items:
     - /tmp/{{wp_id.stdout}}.tar
     - /tmp/{{wp_id.stdout}}-db.tar
+  when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
+
+- name: Store WP Port
+  shell: "cat /opt/appdata/wordpress/{{wp_id.stdout}}/pgwpport > /var/plexguide/wpport.id"
+  when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
+
+- name: Store WP Subdomain
+  shell: "cat /opt/appdata/wordpress/{{wp_id.stdout}}/pgsub > /var/plexguide/wp.id"
+  when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
+
+- include_role:
+    name: wordpress
   when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
 
 - debug: msg="Program is now RESTORED from your Google Drive - WordPress Server {{server_id.stdout}}"
