@@ -30,6 +30,7 @@
 
 - debug: msg="Temp Message - For {{wp_id.stdout}}"
 
+############## CHECKING DATA LOCATION
 - name: "Checking {{server_id.stdout}} location in APPDATA"
   stat:
     path: /opt/appdata/wordpress/{{server_id.stdout}}
@@ -40,6 +41,14 @@
     path: /var/plexguide/rclone-en.yes
   register: encrypted
 
+############## STOPPING CONTAINERS
+- name: Stopping Docker Container - {{wp_id.stdout}}-db
+  docker_container:
+    name: "{{wp_id.stdout}}-db"
+    state: stopped
+  ignore_errors: True
+  when: programappdata.stat.exists == True
+
 - name: Stopping Docker Container - {{wp_id.stdout}}
   docker_container:
     name: "{{wp_id.stdout}}"
@@ -47,6 +56,7 @@
   ignore_errors: True
   when: programappdata.stat.exists == True
 
+################ BACKUP PROCESS
 - debug: msg="{{wp_id.stdout}} - Time Length can be Long or Short! Please Wait!"
   when: programappdata.stat.exists == True
 
@@ -57,7 +67,21 @@
     dest: /tmp/{{wp_id.stdout}}.tar
     format: tar
 
+- name: Backing Up {{wp_id.stdout}}-database to GDrive
+  archive:
+    path:
+    - /opt/appdata/wordpress/{{server_id.stdout}}-database/*
+    dest: /tmp/{{wp_id.stdout}}-database.tar
+    format: tar
+
 ############ BACKUP OTHER - END
+- name: Restart Docker Container - {{server_id.stdout}}-db
+  docker_container:
+    name: "{{wp_id.stdout}}-db"
+    state: started
+  ignore_errors: True
+  when: programappdata.stat.exists == True
+
 - name: Restart Docker Container - {{server_id.stdout}}
   docker_container:
     name: "{{wp_id.stdout}}"
@@ -65,14 +89,27 @@
   ignore_errors: True
   when: programappdata.stat.exists == True
 
-- name: Uploading Backup to Google Drive
+############ FOR WORDPRESS - Uploading
+
+- name: Uploading Wordpress Backup to Google Drive
   shell: "rclone copy /tmp/{{wp_id.stdout}}.tar gdrive:/plexguide/backup/wordpress/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
 
-- name: Uploading Backup to Google Drive (encrypted)
+- name: Uploading Wordpress Backup to Google Drive (encrypted)
   shell: "rclone copy /tmp/{{wp_id.stdout}}.tar gcrypt:/plexguide/backup/wordpress/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
 
+############# FOR DATABASE - Uploading
+
+- name: Uploading Wordpress Backup to Google Drive
+  shell: "rclone copy /tmp/{{wp_id.stdout}}-database.tar gdrive:/plexguide/backup/wordpress/{{server_id.stdout}}-database -v --checksum --drive-chunk-size=64M"
+  when: encrypted.stat.exists == False and programappdata.stat.exists == True
+
+- name: Uploading Wordpress Backup to Google Drive (encrypted)
+  shell: "rclone copy /tmp/{{wp_id.stdout}}-database.tar gcrypt:/plexguide/backup/wordpress/{{server_id.stdout}}-database -v --checksum --drive-chunk-size=64M"
+  when: encrypted.stat.exists == True and programappdata.stat.exists == True
+
+############## REMOVE TEMP ITEMS
 - name: Remove TEMP Backup!
   file:
     path: "{{ item }}"
@@ -80,6 +117,16 @@
   with_items:
     - /tmp/{{wp_id.stdout}}.tar
   when: programappdata.stat.exists == True
+
+- name: Remove TEMP Backup!
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /tmp/{{wp_id.stdout}}-database.tar
+  when: programappdata.stat.exists == True
+
+############### STATS
 
 - debug: msg="Program is now backed up to your Google Drive - {{wp_id.stdout}}.tar"
   when: programappdata.stat.exists == True
