@@ -131,9 +131,9 @@ while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   cat /opt/appdata/wordpress/$p/pgwpport > /var/plexguide/wpport.id
   cat /opt/appdata/wordpress/$p/pgsub > /var/plexguide/wp.id
-  id=$(cat /var/plexguide/wp.id > $id)
+  id=$(cat /var/plexguide/wp.id)
 
-if [ "$p" == "id" ]
+if [ "$p" == "temp" ]
 then
 	echo ",$domain" > /var/plexguide/tld.$program
 	echo 'INFO - TLD executed on $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
