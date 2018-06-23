@@ -124,7 +124,7 @@ fi
 if [ "$wordpress" == "wordpress" ]
 then
   
-docker ps -a --format "{{.Names}}" | grep wordpress | grep -v | head -1 1> $p
+docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 1> $p
 echo "$p" > /tmp/wp.running
 
 while read p; do
