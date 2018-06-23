@@ -99,7 +99,7 @@ case $CHOICE in
               then
                 clear ## replace me
               else
-                dialog --title "--- WARNING ---" --msgbox "\nCannot Execute! Local Subdomain-ID does not exist!" 0 0
+                dialog --title "--- WARNING ---" --msgbox "\nCannot Execute TLD for WP!\n\nLocal Subdomain-ID does not exist!" 0 0
               exit
             fi
 
