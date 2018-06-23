@@ -47,7 +47,7 @@
   ignore_errors: True
   when: programappdata.stat.exists == True
 
-- debug: msg="{{wp.stdout}} - Time Length can be Long or Short! Please Wait!"
+- debug: msg="{{wp_id.stdout}} - Time Length can be Long or Short! Please Wait!"
   when: programappdata.stat.exists == True
 
 - name: Backing Up {{wp_id.stdout}} to GDrive
