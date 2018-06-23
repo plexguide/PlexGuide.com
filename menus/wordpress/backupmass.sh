@@ -46,6 +46,8 @@ docker ps -a --format "{{.Names}}" > /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/speed*/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/portainer/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/traefikv2/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 
 #### Commenting Enables to See Everything
