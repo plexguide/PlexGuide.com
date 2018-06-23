@@ -30,9 +30,9 @@
 
 - debug: msg="Temp Message - For {{wp_id.stdout}}"
 
-- name: "Checking {{program_var.stdout}} location in APPDATA"
+- name: "Checking {{server_id.stdout}} location in APPDATA"
   stat:
-    path: /opt/appdata/wordpress/{{program_var.stdout}}
+    path: /opt/appdata/wordpress/{{server_id.stdout}}
   register: programappdata
 
 - name: "Checking if RClone Encrypted"
