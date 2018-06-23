@@ -33,17 +33,17 @@
 
 - name: Remove Wordpress Container
   docker_container:
-    name: wordpress
+    name: "wordpress-{{wpid.stdout}}"
     state: absent
 
 - name: Remove Database Container
   docker_container:
-    name: my-wpdb
+    name: "wordpress-{{wpid.stdout}}-db"
     state: absent
 
 - name: Deploy Wordpress Database
   docker_container:
-    name: my-wpdb-{{wpid.stdout}}
+    name: "wordpress-{{wpid.stdout}}-db"
     image: mariadb
     pull: yes
     cpu_shares: 512
@@ -51,13 +51,13 @@
       - "127.0.0.1:10{{wpport.stdout}}:3306"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "db_data:/var/lib/mysql"
+      - "/opt/appdata/wordpress/database{{wpid.stdout}}:/var/lib/mysql"
     env:
       MYSQL_ROOT_PASSWORD: "test123"
     networks:
       - name: plexguide
         aliases:
-          - wpdb-{{wpid.stdout}}
+          - "wordpress-{{wpid.stdout}}-db"
     restart_policy: always
     state: started
 
@@ -77,9 +77,9 @@
     networks:
       - name: plexguide
         aliases:
-          - wordpress-{{wpport.stdout}}
+          - "wordpress-{{wpid.stdout}}"
     links:
-      - my-wpdb-{{wpid.stdout}}:mysql
+      - "wordpress-{{wpid.stdout}}-db:mysql"
     volumes:
       - /opt/appdata/wordpress/{{wpid.stdout}}:/var/www/html
       - /etc/localtime:/etc/localtime:ro
@@ -99,6 +99,6 @@
   shell: "echo '{{wpsub.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
 
 ##### OutPut Info
-- debug: msg="Database Cannot Be Accessed; Deployed Internal via Port 10{{wpport.stdout}}"
+- debug: msg="Database Deployed Internal via Port 10{{wpport.stdout}}"
 
 - debug: msg="Access WP Via Port 9{{wpport.stdout}} - SubDomain {{wpsub.stdout}}"
