@@ -51,7 +51,7 @@
       - "127.0.0.1:10{{wpport.stdout}}:3306"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/wordpress/database{{wpid.stdout}}:/var/lib/mysql"
+      - "/opt/appdata/wordpress/{{wpid.stdout}}-database:/var/lib/mysql"
     env:
       MYSQL_ROOT_PASSWORD: "test123"
     networks:
