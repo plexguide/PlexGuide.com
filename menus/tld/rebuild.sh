@@ -124,7 +124,7 @@ fi
 if [ "$wordpress" == "wordpress" ]
 then
   
-docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 1>/tmp/wp.running
+docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db 1>/tmp/wp.running
 #id=$( cat /tmp/wp.running )
 
 while read p; do
@@ -132,7 +132,7 @@ while read p; do
   id=$(cat /tmp/wp.running | cut -c 11-)
   cat /opt/appdata/wordpress/$p-wordpress/pgwpport > /var/plexguide/wpport.id
   echo $id > /var/plexguide/wp.id
-
+cat /var/plexguide/wp.id
 if [ "$p" == "temp" ]
 then
 	echo ",$domain" > /var/plexguide/tld.$program
