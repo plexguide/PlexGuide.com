@@ -27,11 +27,17 @@
 - debug: msg="Temp Message - For {{wp_id.stdout}}"
 
 ############## CHECKING DATA LOCATION
-- name: Does Backup Data Exist on Grive - {{program_var.stdout}}
+- name: Checking WordPress on GDrive - {{wp_id.stdout}}
   stat:
     path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}
   register: programgdrive
 
+- name: Checking WordPress DB on GDrive - {{wp_id.stdout}}
+  stat:
+    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}
+  register: programdbgdrive
+
+############## CHECKING DATA LOCATION
 - name: "Remove Old Local Dataa - {{wp_id.stdout}}"
   file:
     path: "{{ item }}"
@@ -42,6 +48,7 @@
     - /opt/appdata/wordpress/{{server_id.stdout}}-db/*
     - /opt/appdata/wordpress/{{server_id.stdout}}/*
   ignore_errors: True
+  when: programgdrive.stat.exists == True
 
 - name: Checking for APPDATA {{program_var.stdout}}
   stat:
@@ -50,6 +57,7 @@
  
 - debug: msg="Time Length can be Long or Short! Please Wait!"
 
+############ FOR DATABASE
 - name: "Downloading from Google Drive - {{program_var.stdout}}"
   synchronize:
     src: /mnt/gdrive/plexguide/backup/{{recovery.stdout}}/{{program_var.stdout}}.tar
