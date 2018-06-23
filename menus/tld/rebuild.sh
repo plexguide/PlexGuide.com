@@ -128,19 +128,19 @@ then
 	temp=$(cat /var/plexguide/wp.id)  
 
 	while read p; do
-	  echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-	  id=$(cat /tmp/wp.running | cut -c 11-)
+	  echo "INFO - Rebuilding Container: $p" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+	  id=$(echo $p | cut -c 11-)
 	  echo $id > /var/plexguide/wp.id
 	  cat /opt/appdata/wordpress/$id/pgwpport > /var/plexguide/wpport.id
 
 		if [ "$p" == "temp" ]
 		then
 			echo ",$domain" > /var/plexguide/tld.$program
-			echo 'INFO - TLD executed on $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+			echo "INFO - TLD executed on $p" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 		else
 			echo "" > /var/plexguide/tld.$program
 		fi
-	  dialog --infobox "Reconstructing Your Container: $app" 3 50
+
 	  clear
 	  ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
 	  sleep 1
