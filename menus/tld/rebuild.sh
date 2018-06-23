@@ -130,8 +130,8 @@ temp=$(cat /var/plexguide/wp.id)
 while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   id=$(cat /tmp/wp.running | cut -c 11-)
-  cat /opt/appdata/wordpress/wordpress-$p/pgwpport > /var/plexguide/wpport.id
-  cat /opt/appdata/wordpress/wordpress-$p/pgsub > /var/plexguide/wp.id
+  echo $id > /var/plexguide/wp.id
+  cat /opt/appdata/wordpress/wordpress-$id/pgwpport > /var/plexguide/wpport.id
 
 if [ "$p" == "temp" ]
 then
@@ -140,7 +140,6 @@ then
 else
 	echo "" > /var/plexguide/tld.$program
 fi
-  echo "$p" > /var/plexguide/wp.id
   dialog --infobox "Reconstructing Your Container: $app" 3 50
   clear
   ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
