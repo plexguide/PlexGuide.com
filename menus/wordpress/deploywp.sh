@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a UNIQUE Wordpress Subdomain ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
+dialog --title "--- INFO ---" --msgbox "\nCreate a UNIQUE Wordpress Subdomain ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
 
 #######################
 echo "yes" > /var/plexguide/server.wp
@@ -26,7 +26,7 @@ dialog --title "[ EXAMPLE: mysubdomain or plexguide ]" \
 --inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
-  if dialog --stdout --title "WP SERVER ID" \
+  if dialog --stdout --title "WP SERVER SUBDOMAIN/ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWP SERVER ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
@@ -50,13 +50,6 @@ if [ -e "$file" ]
 clear ## change me
 fi
 ################################# PORT NUMBER
-
-################################# SUBDOMAIN
-
-  dialog --title "[ EXAMPLE: nzbgetwp or pgwordpress ]" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Enter a SUBDOMAIN/WP Server ID" 8 50 2>/var/plexguide/subdomain.temp.id
-  subdomain=$(cat /var/plexguide/subdomain.temp.id)
 
   dialog --title "[ EXAMPLE: 101 or 989 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
