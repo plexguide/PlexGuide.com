@@ -123,14 +123,17 @@ fi
 
 if [ "$wordpress" == "wordpress" ]
 then
-  
+
+temp=$(cat /var/plexguide/wp.id)  
 docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db 1>/tmp/wp.running
 #id=$( cat /tmp/wp.running )
 
 while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   id=$(cat /tmp/wp.running | cut -c 11-)
-  cat /opt/appdata/wordpress/$p-wordpress/pgwpport > /var/plexguide/wpport.id
+  cat /opt/appdata/wordpress/wordpress-$p/pgwpport > /var/plexguide/wpport.id
+  cat /opt/appdata/wordpress/wordpress-$p/pgwpport > /var/plexguide/wpport.id
+
   echo $id > /var/plexguide/wp.id
 cat /var/plexguide/wp.id
 if [ "$p" == "temp" ]
