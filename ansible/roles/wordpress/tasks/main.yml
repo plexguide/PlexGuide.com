@@ -93,10 +93,7 @@
 
 ##### STORE INFO
 - name: Store WP Port
-  shell: "echo '9{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgwpport"
-
-- name: Store DB Port
-  shell: "echo '10{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgdbport"
+  shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgwpport"
 
 - name: Store WP Subdomain
   shell: "echo '{{wpsub.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
