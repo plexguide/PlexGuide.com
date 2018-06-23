@@ -22,10 +22,10 @@ base="/mnt/gdrive/plexguide/wordpress/"
 
 dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Type the Wordpress ID (To Backup): " 8 50 2>/var/plexguide/wp.temp.id
+--inputbox "Type the Wordpress Subdomain/ID: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
-  if dialog --stdout --title "WP SERVER BACKUP ID" \
+  if dialog --stdout --title "WP Server Subdomain/ID Restore" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWP BACKUP ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
