@@ -124,8 +124,8 @@ fi
 if [ "$wordpress" == "wordpress" ]
 then
   
-docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 1> $p
-echo "$p" > /tmp/wp.running
+docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 1>/tmp/wp.running
+p=$( cat /tmp/wp.running )
 
 while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
