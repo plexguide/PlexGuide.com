@@ -45,6 +45,15 @@ if [ -e "$file" ]
   exit
 fi
 
+file="/mnt/gdrive/plexguide/backup/wordpress/$id/$id-db/wordpress-$id-db.tar"
+if [ -e "$file" ]
+  then
+    clear ## replace me  
+  else
+  dialog --title "--- WARNING ---" --msgbox "\nCannot Restore WP Server! DataBase Data Does Not Exist on GDrive!" 0 0
+  exit
+fi
+
 clear
 ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags restorewp
 read -n 1 -s -r -p "Press any key to continue"
