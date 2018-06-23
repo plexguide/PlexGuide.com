@@ -17,10 +17,9 @@
 #################################################################################
 
 #######################
-echo "yes" > /var/plexguide/server.wp
 base="/mnt/gdrive/plexguide/wordpress/"
 
-dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
+dialog --title "[ EXAMPLE: mysubdomain or plexguide ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Type the Wordpress Subdomain/ID: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
@@ -36,17 +35,8 @@ id=$(cat /var/plexguide/wp.temp.id)
       exit
   fi
 
-############################## Ensure It Does Not EXIST LOCAL
-file="/opt/appdata/wordpress/$id"
-if [ -e "$file" ]
-  then
-    clear ## replace me
-  else
-    #dialog --title "--- WARNING ---" --msgbox "\nCannot Backup WP Server! Local ID does not exist!" 0 0
-  #exit
-fi
 ############################## If Exists on Google Drive
-file="/mnt/gdrive/plexguide/backup/wordpress/$id"
+file="/mnt/gdrive/plexguide/backup/wordpress/$id/$id/wordpress-$id.tar"
 if [ -e "$file" ]
   then
     clear ## replace me  
@@ -54,9 +44,7 @@ if [ -e "$file" ]
   dialog --title "--- WARNING ---" --msgbox "\nCannot Restore WP Server! Data Does Not Exist on GDrive!" 0 0
   exit
 fi
-################################# PORT NUMBER
 
-################################# SUBDOMAIN
-
+clear
 ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags restorewp
-  read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Press any key to continue"
