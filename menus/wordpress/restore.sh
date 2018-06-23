@@ -27,7 +27,7 @@ id=$(cat /var/plexguide/wp.temp.id)
 
   if dialog --stdout --title "WP Server Subdomain/ID Restore" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nWP BACKUP ID: $id\n\nCorrect?" 0 0; then
+        --yesno "\nWordPress SubDomain/ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/wp.id
   else
@@ -42,8 +42,8 @@ if [ -e "$file" ]
   then
     clear ## replace me
   else
-    dialog --title "--- WARNING ---" --msgbox "\nCannot Backup WP Server! Local ID does not exist!" 0 0
-  exit
+    #dialog --title "--- WARNING ---" --msgbox "\nCannot Backup WP Server! Local ID does not exist!" 0 0
+  #exit
 fi
 ############################## If Exists on Google Drive
 file="/mnt/gdrive/plexguide/backup/wordpress/$id"
@@ -51,12 +51,12 @@ if [ -e "$file" ]
   then
     clear ## replace me  
   else
-    mkdir -p /mnt/gdrive/plexguide/backup/wordpress/$id/
+  dialog --title "--- WARNING ---" --msgbox "\nCannot Restore WP Server! Data Does Not Exist on GDrive!" 0 0
+  exit
 fi
 ################################# PORT NUMBER
 
 ################################# SUBDOMAIN
-
 
 ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags restorewp
   read -n 1 -s -r -p "Press any key to continue"
