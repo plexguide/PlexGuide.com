@@ -131,8 +131,7 @@ then
 	  echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 	  id=$(cat /tmp/wp.running | cut -c 11-)
 	  echo $id > /var/plexguide/wp.id
-	  cat /opt/appdata/wordpress/wordpress-$id/pgwpport > /var/plexguide/wpport.id
-	  cat /var/plexguide/wpport.id > /tmp/corn.txt
+	  cat /opt/appdata/wordpress/$id/pgwpport > /var/plexguide/wpport.id
 
 		if [ "$p" == "temp" ]
 		then
