@@ -15,162 +15,89 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Restore Solo Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-export NCURSES_NO_UTF8_ACS=1
+#######################
+echo "yes" > /var/plexguide/server.wp
+base="/mnt/gdrive/plexguide/wordpress/"
 
-HEIGHT=19
-WIDTH=30
-CHOICE_HEIGHT=12
-#BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Restore Menu"
-MENU="Choose a Program:"
+dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
+--backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+--inputbox "Type the Recovery Wordpress ID: " 8 50 2>/var/plexguide/wp.temp.id
+id=$(cat /var/plexguide/wp.temp.id)
 
-OPTIONS=(1 "CouchPotato"
-         2 "Deluge"
-         3 "Emby"
-         4 "Heimdall"
-         5 "HTPCManager"
-         6 "Jackett"
-         7 "Lidarr"
-         8 "MEDUSA"
-         9 "Myler"
-         10 "Muximux"
-         11 "NZBGET"
-         12 "NZBHydra"
-         13 "NZBHydra2"
-         14 "Ombi"
-         15 "Organizr"
-         16 "Plex"
-         17 "Portainer"
-         18 "Radarr"
-         19 "Resilio"
-         20 "Rutorrent"
-         21 "SABNZBD"
-         22 "SickRage"
-         23 "Sonarr"
-         24 "Tautulli"
-         25 "Ubooquity"
-         26 "Airsonic"
-         27 "TorrentVPN"
-         28 "qBittorrent"
-         Z "Exit")
+  if dialog --stdout --title "WP SERVER ID" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nWP RECOVERY ID: $id\n\nCorrect?" 0 0; then
+    ### Ensure Location Get Stored for Variables Role
+    echo "$id" > /var/plexguide/wp.id
+  else
+    dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+      bash /opt/plexguide/menus/backup-restore/first.sh
+      exit
+  fi
 
-CHOICE=$(dialog --clear \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-        1)
-            echo "couchpotato" > /tmp/program_var ;;
-        2)
-            echo "deluge" > /tmp/program_var ;;
-        3)
-            echo "embyserver" > /tmp/program_var ;;
-        4)
-            echo "heimdall" > /tmp/program_var ;;
-        5)
-            echo "htpcmanager" > /tmp/program_var ;;
-        6)
-            echo "jackett" > /tmp/program_var ;;
-        7)
-            echo "lidarr" > /tmp/program_var ;;
-        8)
-            echo "medusa" > /tmp/program_var ;;
-        9)
-            echo "myler" > /tmp/program_var ;;
-        10)
-            echo "muximux" > /tmp/program_var ;;
-        11)
-            echo "nzbget" > /tmp/program_var ;;
-        12)
-            echo "nzbhydra" > /tmp/program_var ;;
-        13)
-            echo "nzbhydra2" > /tmp/program_var ;;
-        14)
-            echo "ombiv3" > /tmp/program_var ;;
-        15)
-            echo "organizr" > /tmp/program_var ;;
-        16)
-            echo "plex" > /tmp/program_var ;;
-        17)
-            echo "portainer" > /tmp/program_var ;;
-        18)
-            echo "radarr" > /tmp/program_var ;;
-        19)
-            echo "resilio" > /tmp/program_var ;;
-        20)
-            echo "rutorrent" > /tmp/program_var ;;
-        21)
-            echo "sabnzbd" > /tmp/program_var ;;
-        22)
-            echo "sickrage" > /tmp/program_var ;;
-        23)
-            echo "sonarr" > /tmp/program_var ;;
-        24)
-            echo "tautulli" > /tmp/program_var ;;
-        25)
-            echo "ubooquity" > /tmp/program_var ;;
-        26)
-            echo "airsonic" > /tmp/program_var ;;
-        27)
-            echo "vpn" > /tmp/program_var ;;
-        28)
-            echo "qbittorrent" /tmp/program_var ;;
-        Z)
-            clear
-            exit 0 ;;
-
-esac
-
-app=$( cat /tmp/program_var )
-recovery=$( cat /var/plexguide/restore.id )
-
-file="/mnt/gdrive/plexguide/backup/$recovery/$app.tar"
+############################## Ensure It Does Not EXIST LOCAL
+file="/opt/appdata/wordpress/$id"
 if [ -e "$file" ]
-    then
+  then
+    dialog --title "--- WARNING ---" --msgbox "\nYou Need to Nuke It the Local WP Server First!\n\nThis Server Already Exists! Exiting!" 0 0
+    exit
+fi
+############################## Ensure It Exists on Google Drive
+file="/mnt/gdrive/plexguide/backup/wordpress/$id"
+if [ -e "$file" ]
+  then
+    dialog --title "--- INFORMATION ---" --msgbox "\nWP ID $id data exists on your GDrive!\n\nRecovering!" 0 0
+  else
+    dialog --title "--- WARNING ---" --msgbox "\nWP ID $id does not exist on your GDrive!\n\nExiting!" 0 0
+    exit
+fi
+################################# PORT NUMBER
 
-        if dialog --stdout --title "Restore User Confirmation" \
-            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nDo you want to BACKOUT & EXIT from making the Restore -- $app -- ?" 0 0; then
-            dialog --title "PG Restore Status" --msgbox "\nExiting! User selected to NOT Restore!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/restore.sh
-            exit 0
-        else
-            clear
-        fi
-    else
-        dialog --title "PG Restore Status" --msgbox "\nExiting! You have no GDrive data -- $app -- to Restore From GDrive!" 0 0
-        sudo bash /opt/plexguide/menus/backup-restore/restore.sh
-        exit 0
+################################# SUBDOMAIN
+
+  dialog --title "[ EXAMPLE: nzbgetwp or pgwordpress ]" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Enter a SUBDOMAIN for Your Website" 8 50 2>/var/plexguide/subdomain.temp.id
+  subdomain=$(cat /var/plexguide/subdomain.temp.id)
+
+  if dialog --stdout --title "SUBDOMAIN" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nYour Subdomain: $subdomain\n\nCorrect?" 0 0; then
+
+    ### Ensure Location Get Stored for Variables Role
+    echo "$subdomain" > /var/plexguide/wpsubdomain.id
+  else
+    dialog --title "SUBDOMAIN" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+      bash /opt/plexguide/menus/backup-restore/first.sh
+      exit
+  fi
+
+  dialog --title "[ EXAMPLE: 101 or 989 ]" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Enter 3 Numbers Between 100-999" 8 50 2>/var/plexguide/port.temp.id
+  port=$(cat /var/plexguide/port.temp.id)
+
+  if dialog --stdout --title "SERVER ID" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nThree Numbers Entered: $port\n\nCorrect?" 0 0; then
+
+    ### Ensure Location Get Stored for Variables Role
+    echo "$port" > /var/plexguide/wpport.id
+  else
+    dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+      bash /opt/plexguide/menus/backup-restore/first.sh
+      exit
+  fi
+
+if [ "$port" -ge 100 -a "$port" -le 999 ]; then
+  clear ## change me
+else
+    read -n 1 -s -r -p "Press any key to continue - Bad"
+  dialog --title "Server ID Choice" --msgbox "\nYou Failed to Enter a Value between 100-999!\n\nExiting!" 0 0
+exit
 fi
 
-### Commenting Out Allows You To See What's going On
-
-    #echo "true" > /tmp/alive
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore #&>/dev/null &
-
-    #loop="true"
-    #echo "true" > /tmp/alive
-    #while [ "$loop" = "true" ]
-    #do
-        #dialog --infobox "Restoring / " 3 16
-        #sleep 0.5
-        #dialog --infobox "Restoring | " 3 16
-        #sleep 0.5
-        #dialog --infobox "Restoring \ " 3 16
-        #sleep 0.5
-        #dialog --infobox "Restoring - " 3 16
-        #sleep 0.5
-        #loop=$(cat /tmp/alive) 1>/dev/null 2>&1
-    #done
-
-read -n 1 -s -r -p "Press any key to continue"
-
-dialog --title "PG Backup Status" --msgbox "\nYour Restore of -- $app -- from Google Drive is Complete!" 0 0
-
-exit 0
+  clear
+  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+  read -n 1 -s -r -p "Press any key to continue"
