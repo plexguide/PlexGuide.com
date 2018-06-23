@@ -24,7 +24,7 @@ organizr=$(docker ps -a --format "{{.Names}}" | grep organizr)
 muximux=$(docker ps -a --format "{{.Names}}" | grep muximux)
 htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
 tautulli=$(docker ps -a --format "{{.Names}}" | grep tautulli)
-wordpress=$(docker ps -a --format "{{.Names}}" | grep wordgrep | grep -v db | head -1 -c8)
+wordpress=$(docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 -c8)
 
 echo "" > /var/plexguide/tld.heimdall
 echo "" > /var/plexguide/tld.ombi
