@@ -125,13 +125,13 @@ if [ "$wordpress" == "wordpress" ]
 then
   
 docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 1>/tmp/wp.running
-p=$( cat /tmp/wp.running )
+#id=$( cat /tmp/wp.running )
 
 while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  id=$(cat /tmp/wp.running | cut -c 11-)
   cat /opt/appdata/wordpress/$p/pgwpport > /var/plexguide/wpport.id
   cat /opt/appdata/wordpress/$p/pgsub > /var/plexguide/wp.id
-  id=$(cat /tmp/wp.running | cut -c 11-)
 
 if [ "$p" == "temp" ]
 then
@@ -140,14 +140,14 @@ then
 else
 	echo "" > /var/plexguide/tld.$program
 fi
-
   echo "$p" > /var/plexguide/wp.id
   dialog --infobox "Reconstructing Your Container: $app" 3 50
   clear
   ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
   sleep 1
-  read -n 1 -s -r -p "Press any key to continue "
 done </tmp/wp.running
+
+  read -n 1 -s -r -p "Press any key to continue"
   echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else
 dialog --msgbox "Containers are Rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes\n\nNote: This only REBUILDS the App. If you never deployed it, make sure to do so!" 0 0
