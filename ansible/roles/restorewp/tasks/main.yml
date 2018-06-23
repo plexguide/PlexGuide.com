@@ -38,82 +38,120 @@
   register: programdbgdrive
 
 ############## CHECKING DATA LOCATION
-- name: "Remove Old Local Dataa - {{wp_id.stdout}}"
+- name: "Remove Old TMP Data - {{wp_id.stdout}}"
   file:
     path: "{{ item }}"
     state: absent
   with_items:
     - /tmp/{{wp_id.stdout}}.tar
     - /tmp/{{wp_id.stdout}}-db.tar
-    - /opt/appdata/wordpress/{{server_id.stdout}}-db/*
-    - /opt/appdata/wordpress/{{server_id.stdout}}/*
   ignore_errors: True
-  when: programgdrive.stat.exists == True
-
-- name: Checking for APPDATA {{program_var.stdout}}
-  stat:
-    path: /opt/appdata/wordpress/{{server_id.stdout}}-db/*
-  register: programappdata
- 
-- debug: msg="Time Length can be Long or Short! Please Wait!"
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
 ############ FOR DATABASE
 - name: "Downloading from Google Drive - {{program_var.stdout}}"
   synchronize:
-    src: /mnt/gdrive/plexguide/backup/{{recovery.stdout}}/{{program_var.stdout}}.tar
+    src: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}-db/{{wp_id.stdout}}-db.tar
     dest: /tmp
-  when: programgdrive.stat.exists == True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
-- name: Stopping Docker Container - {{program_var.stdout}}
+- name: Stopping Docker Container - {{wp_id.stdout}}-db
   docker_container:
-    name: "{{program_var.stdout}}"
+    name: "{{wp_id.stdout}}-db"
     state: stopped
   ignore_errors: True
-  when: programgdrive.stat.exists == True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
-- name: Remove Old {{program_var.stdout}} from APPDATA
+############ FOR WP GENERAL
+- name: "Downloading from Google Drive - {{program_var.stdout}}"
+  synchronize:
+    src: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{server_id.stdout}}/{{wp_id.stdout}}.tar
+    dest: /tmp
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
+
+- name: Stopping Docker Container - {{wp_id.stdout}}
+  docker_container:
+    name: "{{wp_id.stdout}}"
+    state: stopped
+  ignore_errors: True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
+
+############ FOR LOCAL APPDADTA
+- name: Checking for APPDATA {{program_var.stdout}}
+  stat:
+    path: /opt/appdata/wordpress/{{server_id.stdout}}
+  register: programappdata
+ 
+- debug: msg="Time Length can be Long or Short! Please Wait!"
+
+- name: "Remove Old AppData - {{wp_id.stdout}}"
   file:
     path: "{{ item }}"
     state: absent
   with_items:
-    - /opt/appdata/{{program_var.stdout}}
+    - /opt/appdata/wordpress/{{server_id.stdout}}-db/*
+    - /opt/appdata/wordpress/{{server_id.stdout}}/*
+  ignore_errors: True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True and programappdata.stat.exists == True
 
 - name: Create Restore Folder
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
-    - /opt/appdata/{{program_var.stdout}}
-  ignore_errors: yes
+    - /opt/appdata/wordpress/{{server_id.stdout}}-db
+    - /opt/appdata/wordpress/{{server_id.stdout}}
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
-- name: Unzip Folders
+- name: Unzip Folders - Wordpress DB Data
   unarchive:
-    src: /tmp/{{program_var.stdout}}.tar
-    dest: /opt/appdata/{{program_var.stdout}}
+    src: /tmp/{{wp_id.stdout}}-db.tar
+    dest: /opt/appdata/wordpress/{{server_id.stdout}}-db
     keep_newer: no
     owner: 1000
     group: 1000
     mode: 0775
-  when: programgdrive.stat.exists == True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
-- name: Restart Docker Container - {{program_var.stdout}}
+- name: Unzip Folders - Wordpress Data
+  unarchive:
+    src: /tmp/{{wp_id.stdout}}.tar
+    dest: /opt/appdata/wordpress/{{server_id.stdout}}
+    keep_newer: no
+    owner: 1000
+    group: 1000
+    mode: 0775
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
+
+############ BACKUP OTHER - END
+- name: Restart Docker Container - {{server_id.stdout}}-db
   docker_container:
-    name: "{{program_var.stdout}}"
+    name: "{{wp_id.stdout}}-db"
     state: started
   ignore_errors: True
-  when: programgdrive.stat.exists == True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
+- name: Restart Docker Container - {{server_id.stdout}}
+  docker_container:
+    name: "{{wp_id.stdout}}"
+    state: started
+  ignore_errors: True
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
+
+############ Remove Left Over Containers
 - name: Remove Leftover Tar from /tmp
   file:
     path: "{{ item }}"
     state: absent
   ignore_errors: True
   with_items:
-    - /tmp/{{program_var.stdout}}.tar
+    - /tmp/{{wp_id.stdout}}.tar
+    - /tmp/{{wp_id.stdout}}-db.tar
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
-#- name: Kill Switch
-#  shell: echo "false" > /tmp/alive
+- debug: msg="Program is now RESTORED from your Google Drive - WordPress Server {{server_id.stdout}}"
+  when: programgdrive.stat.exists == True and programgdbdrive.stat.exists == True
 
-- debug: msg="Program is now RESTORED from your Google Drive - {{program_var.stdout}}"
-  when: programgdrive.stat.exists == True
-
-- debug: msg="Program is not restored - A BACKUP Does Not Exist on GDrive {{program_var.stdout}}"
+- debug: msg="Program Not Restored - BACKUP Does Not Exist on GDrive WordPress - {{server_id.stdout}}"
   when: programgdrive.stat.exists == False
+
+- debug: msg="Program Not Restored - BACKUP Does Not Exist on GDrive WordPress Database - {{server_id.stdout}}"
+  when: programgdbdrive.stat.exists == False
