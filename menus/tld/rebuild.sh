@@ -130,8 +130,8 @@ docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db | head -1 1>/tm
 while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   id=$(cat /tmp/wp.running | cut -c 11-)
-  cat /opt/appdata/wordpress/$p/pgwpport > /var/plexguide/wpport.id
-  cat /opt/appdata/wordpress/$p/pgsub > /var/plexguide/wp.id
+  cat /opt/appdata/wordpress/$p-wordpress/pgwpport > /var/plexguide/wpport.id
+  cat /opt/appdata/wordpress/$p-wordpress/pgsub > /var/plexguide/wp.id
 
 if [ "$p" == "temp" ]
 then
