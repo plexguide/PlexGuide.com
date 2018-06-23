@@ -125,9 +125,9 @@ if [ "$wordpress" == "wordpress" ]
 then
   
 docker ps -a --format "{{.Names}}" | grep wordpress | grep -v | head -1 1> $p
+echo "$p" > /tmp/wp.running
 
 while read p; do
-  echo $p > /tmp/program_var
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   echo "$p" > /var/plexguide/wp.id
   dialog --infobox "Reconstructing Your Container: $app" 3 50
@@ -135,7 +135,7 @@ while read p; do
   ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
   sleep 1
   #read -n 1 -s -r -p "Press any key to continue "
-done </opt/appdata/plexguide/running
+done </tmp/wp.running
   echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 fi
 
