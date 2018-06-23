@@ -58,7 +58,7 @@ echo 'INFO - Selected: Deploy a New WP Server' > /var/plexguide/pg.log && bash /
 echo 'INFO - Selected: Backup a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             ;;
         C)
-echo 'INFO - Selected: Restore Another WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Restore a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/wordpress/restore.sh 
             ;;
         D)
