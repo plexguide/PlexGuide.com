@@ -21,11 +21,11 @@
   register: server_id
 
 - name: "For WP Container"
-  shell: "cat 'wordpress-{{server_id.stdout}}'"
+  shell: "echo 'wordpress-{{server_id.stdout}}'"
   register: wp_id
 
 - name: "Server ID for Backup"
-  shell: "cat 'wordpress-{{server_id.stdout}}-db'"
+  shell: "echo 'wordpress-{{server_id.stdout}}-db'"
   register: db_id
 
 - debug: msg="Temp Message - For {{wp_id.stdout}}"
