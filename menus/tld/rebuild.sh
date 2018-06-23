@@ -31,6 +31,7 @@ echo "" > /var/plexguide/tld.organizr
 echo "" > /var/plexguide/tld.muximux
 echo "" > /var/plexguide/tld.htpcmanager
 echo "" > /var/plexguide/tld.tautulli
+echo "" > /var/plexguide/tld.wordpress
 
 program=heimdall
 if [ "$choice" == "$program" ]
@@ -80,6 +81,13 @@ else
 	echo "" > /var/plexguide/tld.$program
 fi
 
+program=wordpress
+if [ "$choice" == "$program" ]
+then
+	echo ",$domain" > /var/plexguide/tld.$program
+else
+	echo "" > /var/plexguide/tld.$program
+fi
 ################# If role exist, rebuild
 if [ "$heimdall" == "heimdall" ]
 then

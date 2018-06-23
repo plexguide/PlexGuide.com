@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
+# Author:   Admin9705 - Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,17 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
-#######################
-echo "yes" > /var/plexguide/server.wp
 base="/mnt/gdrive/plexguide/wordpress/"
 
 dialog --title "[ EXAMPLE: plexguide or mysubdomain ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Subdomain/ID for the WP Server: " 8 50 2>/var/plexguide/wp.temp.id
+--inputbox "The Subdomain/ID Wanted for the Top Level Domain: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
-  if dialog --stdout --title "Subdomain/ID Selection" \
+  if dialog --stdout --title "Top Level Domain Selection" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWP Subdomain/ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
@@ -42,21 +39,6 @@ if [ -e "$file" ]
   then
     clear ## replace me
   else
-    dialog --title "--- WARNING ---" --msgbox "\nCannot Backup WP Server! Local ID does not exist!" 0 0
+    dialog --title "--- WARNING ---" --msgbox "\nCannot Execute! Local Subdomain-ID does not exist!" 0 0
   exit
 fi
-############################## If Exists on Google Drive
-file="/mnt/gdrive/plexguide/backup/wordpress/$id"
-if [ -e "$file" ]
-  then
-    clear ## replace me  
-  else
-    mkdir -p /mnt/gdrive/plexguide/backup/wordpress/$id/
-fi
-################################# PORT NUMBER
-
-################################# SUBDOMAIN
-
-
-ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags backupwp
-read -n 1 -s -r -p "Press any key to continue"
