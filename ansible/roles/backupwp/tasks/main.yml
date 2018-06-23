@@ -42,7 +42,7 @@
 
 - name: Stopping Docker Container - {{wp_id.stdout}}
   docker_container:
-    name: "{{wp.stdout}}"
+    name: "{{wp_id.stdout}}"
     state: stopped
   ignore_errors: True
   when: programappdata.stat.exists == True
