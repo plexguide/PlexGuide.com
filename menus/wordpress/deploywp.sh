@@ -33,7 +33,7 @@ id=$(cat /var/plexguide/wp.temp.id)
     echo "$id" > /var/plexguide/wp.id
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/first.sh
+      bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi
 
@@ -66,7 +66,7 @@ fi
     echo "$subdomain" > /var/plexguide/wpsubdomain.id
   else
     dialog --title "SUBDOMAIN" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/first.sh
+      bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi
 
@@ -83,7 +83,7 @@ fi
     echo "$port" > /var/plexguide/wpport.id
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/first.sh
+      bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi
 

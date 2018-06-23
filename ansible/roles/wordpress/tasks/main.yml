@@ -27,10 +27,6 @@
   shell: "cat /var/plexguide/wp.id"
   register: wpid
 
-- name: Register WP Subdomain
-  shell: "cat /var/plexguide/wpsubdomain.id"
-  register: wpsub
-
 - name: Remove Wordpress Container
   docker_container:
     name: "wordpress-{{wpid.stdout}}"
@@ -95,8 +91,8 @@
 - name: Store WP Port
   shell: "echo '{{wpport.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgwpport"
 
-- name: Store WP Subdomain
-  shell: "echo '{{wpsub.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
+- name: Store WP ID/Subdomain
+  shell: "echo '{{wpid.stdout}}' > /opt/appdata/wordpress/{{wpid.stdout}}/pgsub"
 
 ##### OutPut Info
 - debug: msg="Database Deployed Internal via Port 10{{wpport.stdout}}"
