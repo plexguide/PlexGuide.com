@@ -124,30 +124,32 @@ fi
 if [ "$wordpress" == "wordpress" ]
 then
 
-docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db 1>/tmp/wp.running
-temp=$(cat /var/plexguide/wp.id)  
+	docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db 1>/tmp/wp.running
+	temp=$(cat /var/plexguide/wp.id)  
 
-while read p; do
-  echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-  id=$(cat /tmp/wp.running | cut -c 11-)
-  echo $id > /var/plexguide/wp.id
-  cat /opt/appdata/wordpress/wordpress-$id/pgwpport > /var/plexguide/wpport.id
+	while read p; do
+	  echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+	  id=$(cat /tmp/wp.running | cut -c 11-)
+	  echo $id > /var/plexguide/wp.id
+	  cat /opt/appdata/wordpress/wordpress-$id/pgwpport > /var/plexguide/wpport.id
+	  cat /var/plexguide/wpport.id > /tmp/corn.txt
 
-if [ "$p" == "temp" ]
-then
-	echo ",$domain" > /var/plexguide/tld.$program
-	echo 'INFO - TLD executed on $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else
-	echo "" > /var/plexguide/tld.$program
-fi
-  dialog --infobox "Reconstructing Your Container: $app" 3 50
-  clear
-  ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
-  sleep 1
-done </tmp/wp.running
+		if [ "$p" == "temp" ]
+		then
+			echo ",$domain" > /var/plexguide/tld.$program
+			echo 'INFO - TLD executed on $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+		else
+			echo "" > /var/plexguide/tld.$program
+		fi
+	  dialog --infobox "Reconstructing Your Container: $app" 3 50
+	  clear
+	  ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
+	  sleep 1
+	done </tmp/wp.running
 
   read -n 1 -s -r -p "Press any key to continue"
   echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 else
 dialog --msgbox "Containers are Rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes\n\nNote: This only REBUILDS the App. If you never deployed it, make sure to do so!" 0 0
 fi
