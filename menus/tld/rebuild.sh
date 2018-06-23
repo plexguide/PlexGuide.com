@@ -146,7 +146,7 @@ fi
   clear
   ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
   sleep 1
-  #read -n 1 -s -r -p "Press any key to continue "
+  read -n 1 -s -r -p "Press any key to continue "
 done </tmp/wp.running
   echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else
