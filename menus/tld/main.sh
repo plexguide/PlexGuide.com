@@ -79,7 +79,7 @@ case $CHOICE in
 
             dialog --title "[ EXAMPLE: plexguide or mysubdomain ]" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --inputbox "The Subdomain/ID Wanted for the Top Level Domain: " 8 50 2>/var/plexguide/wp.temp.id
+            --inputbox "WP Subdomain/ID for the Top Level Domain: " 8 50 2>/var/plexguide/wp.temp.id
             id=$(cat /var/plexguide/wp.temp.id)
 
               if dialog --stdout --title "Top Level Domain Selection" \
