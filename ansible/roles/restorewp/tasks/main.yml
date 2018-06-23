@@ -34,7 +34,7 @@
 
 - name: Checking WordPress DB on GDrive - {{wp_id.stdout}}
   stat:
-    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}/{{wp_id.stdout}}-db.tar
+    path: /mnt/gdrive/plexguide/backup/wordpress/{{server_id.stdout}}-db/{{wp_id.stdout}}-db.tar
   register: programdbgdrive
 
 ############## CHECKING DATA LOCATION
