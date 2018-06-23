@@ -133,11 +133,11 @@
   when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
 
 - name: Store WP Port
-  shell: "cat /opt/appdata/wordpress/{{wp_id.stdout}}/pgwpport > /var/plexguide/wpport.id"
+  shell: "cat /opt/appdata/wordpress/{{server.stdout}}/pgwpport > /var/plexguide/wpport.id"
   when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
 
 - name: Store WP Subdomain
-  shell: "cat /opt/appdata/wordpress/{{wp_id.stdout}}/pgsub > /var/plexguide/wp.id"
+  shell: "cat /opt/appdata/wordpress/{{server.stdout}}/pgsub > /var/plexguide/wp.id"
   when: programgdrive.stat.exists == True and programdbgdrive.stat.exists == True
 
 - include_role:
