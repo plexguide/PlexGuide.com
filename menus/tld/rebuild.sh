@@ -24,7 +24,7 @@ organizr=$(docker ps -a --format "{{.Names}}" | grep organizr)
 muximux=$(docker ps -a --format "{{.Names}}" | grep muximux)
 htpcmanager=$(docker ps -a --format "{{.Names}}" | grep htpcmanager)
 tautulli=$(docker ps -a --format "{{.Names}}" | grep tautulli)
-wordpress=$(docker ps -a --format "{{.Names}}" | grep wordgrep -v db | head -1 -c8)
+wordpress=$(docker ps -a --format "{{.Names}}" | grep wordgrep | grep -v db | head -1 -c8)
 
 echo "" > /var/plexguide/tld.heimdall
 echo "" > /var/plexguide/tld.ombi
@@ -139,5 +139,5 @@ done </tmp/wp.running
   echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 fi
 
-dialog --msgbox "The containers are rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes\n\nNote: This only REBUILDS the App. If you never deployed it, make sure to do so!" 0 0
-dialog --msgbox "\n$choice is your supported Top Level Domain!" 0 0
+dialog --msgbox "Containers are Rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes\n\nNote: This only REBUILDS the App. If you never deployed it, make sure to do so!" 0 0
+dialog --msgbox "\n$choice\n\n Is the Supported Top Level Domain!" 0 0
