@@ -97,4 +97,4 @@
 ##### OutPut Info
 - debug: msg="Database Deployed Internal via Port 10{{wpport.stdout}}"
 
-- debug: msg="Access WP Via Port 9{{wpport.stdout}} - SubDomain {{wpsub.stdout}}"
+- debug: msg="Access WP Via Port 9{{wpport.stdout}} - SubDomain >>> {{wpid.stdout}}"
