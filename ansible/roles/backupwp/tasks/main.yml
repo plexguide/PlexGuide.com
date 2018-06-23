@@ -53,12 +53,12 @@
 - name: Backing Up {{wp_id.stdout}} to GDrive
   archive:
     path:
-    - /opt/appdata/{{wp_id.stdout}}/*
+    - /opt/appdata/wordpress/{{wp_id.stdout}}/*
     dest: /tmp/{{wp_id.stdout}}.tar
     format: tar
 
 ############ BACKUP OTHER - END
-- name: Restart Docker Container - {{wp_id.stdout}}
+- name: Restart Docker Container - {{server_id.stdout}}
   docker_container:
     name: "{{wp_id.stdout}}"
     state: started
