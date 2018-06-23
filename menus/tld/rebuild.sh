@@ -129,6 +129,8 @@ p=$( cat /tmp/wp.running )
 
 while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  cat /opt/appdata/wordpress/$p/pgwpport > /var/plexguide/wpport.id
+  cat /opt/appdata/wordpress/$p/pgsub > /var/plexguide/wp.id
   echo "$p" > /var/plexguide/wp.id
   dialog --infobox "Reconstructing Your Container: $app" 3 50
   clear
