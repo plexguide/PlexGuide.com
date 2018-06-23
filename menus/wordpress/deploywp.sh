@@ -15,13 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a UNIQUE Wordpress ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
+dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a UNIQUE Wordpress Subdomain ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
 
 #######################
 echo "yes" > /var/plexguide/server.wp
 base="/mnt/gdrive/plexguide/wordpress/"
 
-dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
+dialog --title "[ EXAMPLE: mysubdomain or plexguide ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
