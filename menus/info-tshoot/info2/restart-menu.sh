@@ -45,52 +45,160 @@
 
 case $CHOICE in
     A)
-      clear
-      systemctl restart gdrive
-      echo ""
-      read -n 1 -s -r -p "Gdrive restarted - Press any key to continue "
-      ;;
+        clear
+        systemctl restart gdrive
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/gdrive.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/gdrive.log
+        fi
+
+        ## obtains gdrive.service info and puts into a log to be displayed to the user
+        clear
+        systemctl status gdrive > /opt/plexguide/gdrive.log
+        cat /opt/plexguide/gdrive.log
+        echo ""
+        echo ""
+        echo "GDrive service restarted!"
+        echo
+        echo "*** View the Log ***"
+        echo
+        echo ""
+        read -n 1 -s -r -p "Gdrive restarted - Press any key to continue "
+        ;;
 
     B)
         clear
         systemctl restart gcrypt
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/gcrypt.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/gcrypt.log
+        fi
+
+        ## obtains gcrypt.service info and puts into a log to be displayed to the user
+        clear
+        systemctl status gcrypt > /opt/plexguide/gcrypt.log
+        cat /opt/plexguide/gcrypt.log
+        echo ""
+        echo ""
+        echo "GDrive Encrypt service restarted!"
+        echo
+        echo "*** View the Log ***"
+        echo
         echo ""
         read -n 1 -s -r -p "Gcrypt restarted - Press any key to continue "
         ;;
 
     C)
-      clear
-      systemctl restart tdrive
-      echo ""
-      read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
-      ;;
+        clear
+        systemctl restart tdrive
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/tdrive.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/tdrive.log
+        fi
+
+        ## obtains tdrive.service info and puts into a log to be displayed to the user
+        clear
+        systemctl status tdrive > /opt/plexguide/tdrive.log
+        cat /opt/plexguide/tdrive.log
+        echo ""
+        echo ""
+        echo "TDrive service restarted!"
+        echo
+        echo "*** View the Log ***"
+        echo
+        echo ""
+        read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
+        ;;
 
     D)
         clear
         systemctl restart tcrypt
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/tcrypt.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/tcrypt.log
+        fi
+
+        ## obtains tcrypt.service info and puts into a log to be displayed to the user
+        clear
+        systemctl status tcrypt > /opt/plexguide/tcrypt.log
+        cat /opt/plexguide/tcrypt.log
+        echo ""
+        echo ""
+        echo "TDrive Encrypt service restarted!"
+        echo
+        echo "*** View the Log ***"
+        echo
         echo ""
         read -n 1 -s -r -p "Tcrypt restarted - Press any key to continue "
         ;;
 
     E)
-      clear
-      systemctl restart unionfs
-      echo ""
-      read -n 1 -s -r -p "UnionFS restarted - Press any key to continue "
-      clear
-      ;;
+        clear
+        systemctl restart unionfs
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/unionfs.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/unionfs.log
+        fi
+
+        ## obtains unionfs.service info and puts into a log to be displayed to the user
+        clear
+        systemctl status unionfs > /opt/plexguide/unionfs.log
+        cat /opt/plexguide/unionfs.log
+        echo ""
+        echo ""
+        echo "UnionFS service restarted!"
+        echo
+        echo "*** View the Log ***"
+        echo
+        echo ""
+        read -n 1 -s -r -p "UnionFS restarted - Press any key to continue "
+        clear
+        ;;
 
     F)
-      clear
-      systemctl restart move
-      echo ""
-      read -n 1 -s -r -p "Move restarted - Press any key to continue "
-      clear
-      ;;
+        clear
+        systemctl restart move
+        ## create log file if does not exist
+        if [ -e "/opt/plexguide/move.log" ]
+        then
+          echo "Log exists"
+        else
+          touch /opt/plexguide/move.log
+        fi
+
+        ## obtains move.service info and puts into a log to be displayed to the user
+        clear
+        systemctl status move > /opt/plexguide/move.log
+        cat /opt/plexguide/move.log
+        echo ""
+        echo ""
+        echo "Move service restarted!"
+        echo
+        echo "*** View the Log ***"
+        echo
+        echo ""
+        read -n 1 -s -r -p "Move restarted - Press any key to continue "
+        clear
+        ;;
 
      Z)
-      clear
-      exit 0 ;;
+        clear
+        exit 0 ;;
 
 esac
 
