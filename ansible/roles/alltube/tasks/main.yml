@@ -59,7 +59,7 @@
       traefik.enable: "true"
       traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:yt.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:alltube.{{domain.stdout}}"
       traefik.port: "80"
     restart_policy: always
     state: started
