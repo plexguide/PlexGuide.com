@@ -118,7 +118,7 @@
       force: yes
       mode: 0775
 
-    - name: PGLog2 Support
+  - name: PGLog2 Support
     template:
       src: pglog2
       dest: /bin/pglog
