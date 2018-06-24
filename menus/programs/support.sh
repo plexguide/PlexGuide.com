@@ -26,17 +26,14 @@ CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
-OPTIONS=(A "CloudCMD"
-         B "Monitorr"
-         C "Netdata"
-         D "NextCloud"
-         E "Now Showing"
-         F "Ombi"
-         G "Plex Requests (Beta)"
-         H "pyLoad"
-         I "Resilio"
-         K "Tautulli (PlexPy)"
-         L "The Lounge"
+OPTIONS=(A "Monitorr"
+         B "NextCloud"
+         C "Now Showing"
+         D "Ombi"
+         E "Plex Requests (Beta)"
+         F "Resilio"
+         G "Tautulli (PlexPy)"
+         H "The Lounge"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -48,28 +45,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            file="/opt/appdata/cloudcmd/.cloudcmd.json"
-            if [ -e "$file" ]
-                then
-                    echo "" 1>/dev/null 2>&1
-                else
-                    dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: plex\nPass: guide\n\nIf you forget, please visit the Wiki!" 0 0
-            fi
-            display=CloudCMD
-            program=cmd
-            port=7999
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd
-            read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
-        B)
             display=Monitorr
             program=monitorr
             port=8099
@@ -84,23 +59,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        C)
-            display=NETDATA
-            program=netdata
-            port=19999
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
-            read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/programs/ending.sh
-            #this needs a wiki of sorts, good suggetion, but more undestanding is required
-            #bash /opt/plexguide/menus/programs/monitoring.sh
-            ;;
-        D)
+        B)
             display=NEXTCloud
             program=nextcloud
             port=4645
@@ -116,7 +75,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        E)
+        C)
             display=NowShowing
             program=nowshoing
             port=6878
@@ -131,7 +90,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        F)
+        D)
             display=Ombi
             program=ombi
             port=3579
@@ -146,7 +105,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        F)
+        E)
             display=Plexrequests
             program=plexrequests
             port=3000
@@ -161,22 +120,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        G)
-            display=pyLoad
-            program=pyload
-            port=8000
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pyLoad
-            read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
-        H)
+        F)
             display=RESILIO
             program=resilio
             port=8888
@@ -191,21 +135,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        I)
-            program=speed
-            port=8223
-            dialog --infobox "Installing: SpeedTEST Server" 3 38
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver
-            read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            #### skipped cron
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
-        J)
+        G)
             display=Tautulli
             program=tautulli
             port=8181
@@ -220,7 +150,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        K)
+        H)
             display=TheLounge
             program=thelounge
             port=9100

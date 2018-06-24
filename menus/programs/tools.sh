@@ -27,8 +27,9 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Tools"
 
 OPTIONS=(A "CloudCMD"
-         B "pyLoad"
-         C "SpeedTEST Server"
+         B "NetData"
+         C "pyLoad"
+         D "SpeedTEST Server"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -62,6 +63,22 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
+            display=NETDATA
+            program=netdata
+            port=19999
+            dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
+            read -n 1 -s -r -p "Press any key to continue"
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/programs/ending.sh
+            #this needs a wiki of sorts, good suggetion, but more undestanding is required
+            #bash /opt/plexguide/menus/programs/monitoring.sh
+            ;;
+        C)
             display=pyLoad
             program=pyload
             port=8000
@@ -76,7 +93,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        C)
+        D)
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
@@ -90,7 +107,6 @@ case $CHOICE in
             #### skipped cron
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-
         Z)
             exit 0 ;;
     esac
