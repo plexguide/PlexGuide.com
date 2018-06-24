@@ -18,7 +18,7 @@
 #
 #################################################################################
 echo 'SUCCESS - UFSMonitor (UnionFS) Monitor Script.sh Deployed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-sleep 3
+sleep 20
 
 while true
 do
