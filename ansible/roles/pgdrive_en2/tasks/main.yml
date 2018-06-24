@@ -228,7 +228,7 @@
 
 ########### UNIONFS
   - name: Register UNIONFS PATH
-    shell: "cat /tmp/path"
+    shell: "cat /var/plexguide/unionfs.pgpath"
     register: unionfs_path
     tags:
       - unionfs_en
