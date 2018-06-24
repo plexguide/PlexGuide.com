@@ -20,20 +20,21 @@ echo 'INFO - @Support Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scrip
 
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=15
+HEIGHT=16
 WIDTH=37
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
-OPTIONS=(A "Monitorr"
-         B "NextCloud"
-         C "Now Showing"
-         D "Ombi"
-         E "Plex Requests (Beta)"
-         F "Resilio"
-         G "Tautulli (PlexPy)"
-         H "The Lounge"
+OPTIONS=(A "AllTube"
+         B "Monitorr"
+         C "NextCloud"
+         D "Now Showing"
+         E "Ombi"
+         F "Plex Requests (Beta)"
+         G "Resilio"
+         H "Tautulli (PlexPy)"
+         I "The Lounge"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
