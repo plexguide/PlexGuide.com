@@ -47,7 +47,7 @@
   ignore_errors: True
   when: not tldcheck == wpid
 
-- debug: msg="TLD Main Registered Is - {{tld.stdout}}"
+- debug: msg="TLD Main Registered Is - {{tldmain.stdout}}"
   ignore_errors: True
 
 ################# END
