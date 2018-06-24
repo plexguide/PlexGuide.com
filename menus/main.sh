@@ -54,13 +54,13 @@ echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/pl
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-;;
+            bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
 echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-;;
+            bash /opt/plexguide/menus/wordpress/main.sh ;;           
         E)
 echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-;;
+            bash /opt/plexguide/menus/security/main.sh ;;
         F)
 echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/info.sh ;;
@@ -72,7 +72,6 @@ echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/
             bash /opt/plexguide/menus/settings/main.sh ;;
         I)
 echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         J)
 echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
