@@ -20,18 +20,18 @@
 echo "yes" > /var/plexguide/server.wp
 base="/mnt/gdrive/plexguide/wordpress/"
 
-dialog --title "[ EXAMPLE: plexguide or mysubdomain ]" \
+dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Subdomain/ID for the WP Server: " 8 50 2>/var/plexguide/wp.temp.id
+--inputbox "Type the Wordpress ID (To Backup): " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
-  if dialog --stdout --title "Subdomain/ID Selection" \
+  if dialog --stdout --title "WP SERVER BACKUP ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nWP Subdomain/ID: $id\n\nCorrect?" 0 0; then
+        --yesno "\nWP BACKUP ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/wp.id
   else
-    dialog --title "WP Subdomain/ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
+    dialog --title "WP ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
       bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi

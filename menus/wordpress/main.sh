@@ -38,7 +38,7 @@ MENU="Last Deployed WP Server: $wp"
 OPTIONS=(A "Deploy New WP Server"
          B "Backup a WP Server"
          C "Restore a WP Server"
-         D "Top Level Domain Options"
+         D "(NOT READY) Top Level Domain Options"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -64,7 +64,8 @@ echo 'INFO - Selected: Restore a WP Server' > /var/plexguide/pg.log && bash /opt
             ;;
         D)
 echo 'INFO - Selected: Top Level Domain Options' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/tld/main.sh ;;
+            bash /opt/plexguide/menus/backup-restore/restoremass.sh
+            ;;
         Z)
             clear
             exit 0

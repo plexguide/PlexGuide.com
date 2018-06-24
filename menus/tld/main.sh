@@ -18,11 +18,11 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Top Level Domain Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-HEIGHT=14
-WIDTH=28
-CHOICE_HEIGHT=8
+HEIGHT=13
+WIDTH=38
+CHOICE_HEIGHT=7
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Top Domain Selection"
+TITLE="App Selection for Primary Domain"
 
  OPTIONS=(A "Heimdall"
           B "HTPCManager"
@@ -30,7 +30,6 @@ TITLE="Top Domain Selection"
           D "Ombi"
           E "Organizr"
           F "Tautulli"
-          G "WordPress"
           Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -71,46 +70,10 @@ case $CHOICE in
             echo "$program" > /var/plexguide/tld.choice
             bash /opt/plexguide/menus/tld/rebuild.sh
             ;;
-        G)
-            program="wordpress"
-            echo "$program" > /var/plexguide/tld.choice
-
-            base="/mnt/gdrive/plexguide/wordpress/"
-
-            dialog --title "[ EXAMPLE: plexguide or mysubdomain ]" \
-            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --inputbox "WP Subdomain/ID for the Top Level Domain: " 8 50 2>/var/plexguide/wp.temp.id
-            id=$(cat /var/plexguide/wp.temp.id)
-
-              if dialog --stdout --title "Top Level Domain Selection" \
-                    --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-                    --yesno "\nWP Subdomain/ID: $id\n\nCorrect?" 0 0; then
-                ### Ensure Location Get Stored for Variables Role
-                echo "$id" > /var/plexguide/wp.id
-                echo "$id" > /var/plexguide/wp.tld
-              else
-                dialog --title "WP Subdomain/ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-                  bash /opt/plexguide/menus/wordpress/main.sh
-                  exit
-              fi
-
-            ############################## Ensure It Does Not EXIST LOCAL
-            file="/opt/appdata/wordpress/$id"
-            if [ -e "$file" ]
-              then
-                clear ## replace me
-              else
-                dialog --title "--- WARNING ---" --msgbox "\nCannot Execute TLD for WP!\n\nLocal Subdomain-ID does not exist!" 0 0
-              exit
-            fi
-
-            bash /opt/plexguide/menus/tld/rebuild.sh
-            ;;
         Z)
             exit 0 ;;
 esac
 echo 'INFO - Selected $program for Top Level Domain' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #recall itself to loop unless user exits
-echo 'INFO - Looping: Top Level Domain Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/menus/tld/main.sh
