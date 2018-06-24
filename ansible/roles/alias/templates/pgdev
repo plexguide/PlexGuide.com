@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# [Update Script]
+# [Ansible Role]
 #
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
-# URL:      https://plexguide.com
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 [[ $(pwd) =~ plexguide ]] && cd ~
 # If PlexGuide is Missing, it will redownload it
 file="/opt/plexguide/menus/"
@@ -29,10 +28,6 @@ else
 	exit 0
 fi
 
-rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/menus/version/main.sh 1>/dev/null 2>&1
-
-bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
-
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
@@ -40,9 +35,17 @@ then
 else
    clear
    echo "Installing Dialog"
-   apt-get install dialog -y 1>/dev/null 2>&1
+   apt-get install dialog 1>/dev/null 2>&1
    export NCURSES_NO_UTF8_ACS=1
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
-bash /opt/plexguide/menus/version/main.sh
+[[ $(pwd) =~ plexguide ]] && cd ~
+set -e
+sudo rm -r /opt/plexguide
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+sudo bash /opt/plexguide/scripts/install.sh
+echo "Updated to the latest PlexGuide Dev Version."
+echo
+
+sudo bash /opt/plexguide/scripts/message/ending.sh

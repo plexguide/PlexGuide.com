@@ -16,16 +16,6 @@
 #
 #################################################################################
 ---
-  - name: Check if PGUpdate Exists
-    stat:
-      path: /bin/pgupdate
-    register: pgupdate
-
-  - name: Check if PGUpdate Exists
-    stat:
-      path: /bin/plexguide
-    register: plexguide
-
   - name: Check if PGDEV Exists
     stat:
       path: /bin/pgdev
@@ -47,13 +37,6 @@
     template:
       src: pgdev.js2
       dest: /bin/pgdev
-      force: yes
-      mode: 0775 
-
-  - name: Install PGUpdate
-    template:
-      src: pgupdate.js2
-      dest: /bin/pgupdate
       force: yes
       mode: 0775 
 

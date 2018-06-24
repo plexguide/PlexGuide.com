@@ -126,3 +126,12 @@
       dest: /bin/pgupdate
       force: yes
       mode: 0775
+
+###### Install PGUpdate
+
+  - name: PGDev
+    template:
+      src: pgdev
+      dest: /bin/pgdev
+      force: yes
+      mode: 0775
