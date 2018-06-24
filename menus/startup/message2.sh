@@ -10,12 +10,12 @@ timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 serverid=$( cat /var/plexguide/server.id )
 
 traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
-domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
-hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
+domain=$( cat /var/plexguide/server.domain )
+hd=$( cat /var/plexguide/server.hd.path )
 
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
-docker=$( cat /var/plexguide/docker.version ) 1>/dev/null 2>&1
-docker=${docker::-1} 1>/dev/null 2>&1
+docker=$( cat /var/plexguide/docker.version )
+docker=${docker::-1}
 
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
