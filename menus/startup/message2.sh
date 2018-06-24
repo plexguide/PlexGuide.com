@@ -46,7 +46,7 @@ if [ "$traefikdetect" == "false" ]
   	traefik="WARNING: Traefik Is Not Installed"
 fi
 
-if curl -s --head  --request GET https://portainer.$domain.com | grep "200 OK" > /dev/null
+if curl -s --head  --request GET https://portainer.$domain | grep "200 OK" > /dev/null
 	then     
 		tmessage=$(echo "$traefik: Certificate is Valid")
     else    
