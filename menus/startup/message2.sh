@@ -1,9 +1,6 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
-bash /opt/plexguide/menus/traefik/cert2.sh &>/dev/null &
-bash /opt/plexguide/menus/traefik/cert1.sh &>/dev/null &
-sleep 1
 edition=$( cat /var/plexguide/pg.edition )
 version=$( cat /var/plexguide/pg.version )
 appguard=$(cat /var/plexguide/server.appguard)
@@ -30,8 +27,7 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
-#### Checks to See if Either Traefik Exisxts
-
+#### Checks to See if Either Traefik Exists  Based on Portainer
 docker logs traefik2 3>&1 1>>/var/plexguide/traefik.error2 2>&1
 docker logs traefik 3>&1 1>>/var/plexguide/traefik.error1 2>&1
 
@@ -42,36 +38,29 @@ error2=${error2::-1}
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$error2" == "$error1" ]
   then
-    echo "\nWARNING: Traefik is not installed!" > /var/plexguide/status.traefik.cert
-    cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
+    echo 'WARNING - Traefik Not Installed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto domains.plexguide.com for Info!" 0 0
   else
-
-  	#### Version 1 or 2 Display
-	provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
-	if [ "$provider" == "null" ]
-	then
-		cert1=$( cat /var/plexguide/status.traefik1 ) 1>/dev/null 2>&1
-		if [ "$cert1" == "certificate" ]
-		then
-			echo "\nTraefik v1: Certificate is Valid" > /var/plexguide/status.traefik.cert
-			cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		else
-			echo "\nTraefik v1: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
-			cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		fi
-	else
-		cert2=$( cat /var/plexguide/status.traefik2 ) 1>/dev/null 2>&1
-		if [ "$cert2" == "certificate" ]
-		then
-			echo "\nTraefik v2: Certificate is Valid" > /var/plexguide/status.traefik.cert
-			cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		else
-			echo "\nTraefik v2: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
-			cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		fi
-	fi
+    #### This results in providing which version of Traefik one is using
+    version=$( cat /var/plexguide/provider )
+    if [ "$version" == "null" ]
+    then
+    #### Using Traefik V2
+    traefik="Traefik V1"
+    else
+    #### Using Traefik V2
+    traefik="Traefik V2"
+    fi
 fi
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
+
+if curl -s --head  --request GET https://portainer.$domain.com | grep "200 OK" > /dev/null
+	then     
+		tmessage=$(echo "$traefik: Certificate is Valid")
+    else    
+    	tmessage=$(echo "$traefik: Certificate is NOT Valid")
+fi
+
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$traefik: $tmessage\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
 echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - Docker Version $docker is installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
