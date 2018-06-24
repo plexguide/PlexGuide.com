@@ -26,7 +26,6 @@ WIDTH=30
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Suite"
-MENU="Make A Selection:"
 
 OPTIONS=(A "Media Servers"
          B "Managers"
