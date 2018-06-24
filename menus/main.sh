@@ -59,8 +59,8 @@ if [ "$rclonecheck" == "[gdrive]" ]
 echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else  
 echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-dialog --title "---WARNING---" --msgbox "You Must Have RClone Installed and gdrive configured to proceed!\n\nExiting!"
-
+dialog --title "---WARNING---" --msgbox "You Must Have RClone Installed and gdrive configured to proceed!\n\nExiting!" 0 0
+bash /opt/plexguide/menus/main.sh
 exit
 fi
             ;;
