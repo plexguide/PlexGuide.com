@@ -37,15 +37,13 @@
 
 - name: Register TLD if it exists
   shell: "cat /var/plexguide/wp.tld"
-  register: tldmain
   ignore_errors: True
   when: tldcheck == wpid
 
-- name: Register TLD if it exists
+- name: Register TLD if it does not exist
   shell: "echo ''"
-  register: tldmain
   ignore_errors: True
-  when: not tldcheck == wpid
+  when: tldcheck != wpid
 
 - debug: msg="TLD Check - {{tldmain.stdout}} for WPID {{wpid.stdout}} | TLD Check {{tldcheck.stdout}}"
   ignore_errors: True
@@ -109,7 +107,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}{{tldmain.stdout}}"
+      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}{{tldcheck.stdout}}"
       traefik.port: "80"
 
 ##### STORE INFO
