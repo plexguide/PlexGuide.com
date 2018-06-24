@@ -53,7 +53,7 @@
 
   - name: Install Move En Service
     template:
-      src: move_script.js2"
+      src: move_script.js2
       dest: /opt/appdata/plexguide/move-en.sh
       force: yes
     tags:
