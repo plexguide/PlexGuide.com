@@ -25,6 +25,7 @@
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
+  - { role: nowshowing, tags: ['nowshowing'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: cloudcmd, tags: ['cloudcmd'] }
   - { role: pgcache, tags: ['pgcache'] }
