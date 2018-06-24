@@ -118,9 +118,11 @@
       force: yes
       mode: 0775
 
-  - name: PGLog2 Support
+###### Install PGUpdate
+
+  - name: PGUpdate
     template:
-      src: pg2log
-      dest: /bin/pg2log
+      src: pgupdate
+      dest: /bin/pgupdate
       force: yes
       mode: 0775
