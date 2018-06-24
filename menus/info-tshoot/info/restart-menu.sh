@@ -55,9 +55,23 @@ case $CHOICE in
 
     B)
         clear
-        systemctl restart rclone-en
-        echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        systemctl restart rclone-encrypt
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/rclone-encrypt.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/rclone.log
+      fi
+
+      ## obtains rclone-encrypt.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status rclone-encrypt > /opt/plexguide/rclone-encrypt.log
+      cat /opt/plexguide/rclone-encrypt.log
+      echo
+      echo "*** View the Log ***"
+      echo
+      read -n 1 -s -r -p "Press any key to continue "
         ;;
 
     C)
@@ -70,8 +84,22 @@ case $CHOICE in
 
     D)
       clear
-      systemctl restart rclone-encrypt
-      echo ""
+      systemctl restart rclone-en
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/rclone-en.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/rclone-en.log
+      fi
+
+      ## obtains rclone-en.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status rclone-en > /opt/plexguide/rclone-en.log
+      cat /opt/plexguide/rclone-en.log
+      echo
+      echo "*** View the Log ***"
+      echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
       ;;

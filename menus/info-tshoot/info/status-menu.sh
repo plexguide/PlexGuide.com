@@ -68,17 +68,17 @@ case $CHOICE in
 
     B)
       ## create log file if does not exist
-      if [ -e "/opt/plexguide/rclone-en.log" ]
+      if [ -e "/opt/plexguide/rclone-encrypt.log" ]
       then
         echo "Log exists"
       else
         touch /opt/plexguide/rclone.log
       fi
 
-      ## obtains rclone-en.service info and puts into a log to be displayed to the user
+      ## obtains rclone-encrypt.service info and puts into a log to be displayed to the user
       clear
-      systemctl status rclone-en > /opt/plexguide/rclone-en.log
-      cat /opt/plexguide/rclone-en.log
+      systemctl status rclone-encrypt > /opt/plexguide/rclone-encrypt.log
+      cat /opt/plexguide/rclone-encrypt.log
       echo
       echo "*** View the Log ***"
       echo
@@ -107,17 +107,17 @@ case $CHOICE in
 
     D)
       ## create log file if does not exist
-      if [ -e "/opt/plexguide/rclone-encrypt.log" ]
+      if [ -e "/opt/plexguide/rclone-en.log" ]
       then
         echo "Log exists"
       else
-        touch /opt/plexguide/rclone-encrypt.log
+        touch /opt/plexguide/rclone-en.log
       fi
 
-      ## obtains rclone-encrypt.service info and puts into a log to be displayed to the user
+      ## obtains rclone-en.service info and puts into a log to be displayed to the user
       clear
-      systemctl status rclone-encrypt > /opt/plexguide/rclone-encrypt.log
-      cat /opt/plexguide/rclone-encrypt.log
+      systemctl status rclone-en > /opt/plexguide/rclone-en.log
+      cat /opt/plexguide/rclone-en.log
       echo
       echo "*** View the Log ***"
       echo

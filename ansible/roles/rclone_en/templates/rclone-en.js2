@@ -1,6 +1,8 @@
 [Unit]
 Description=RClone Daemon
-After=multi-user.target
+Requires=rclone.service
+After=multi-user.target rclone.service
+RequiresMountsFor=/mnt/gdrive
 
 [Service]
 Type=simple
