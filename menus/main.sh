@@ -68,7 +68,7 @@ bash /opt/plexguide/menus/main.sh
 exit
 fi
 
-bash /opt/plexguide/menus/programs/main.sh ;;
+                bash /opt/plexguide/menus/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
