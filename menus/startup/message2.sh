@@ -9,6 +9,7 @@ watchtower=$(cat /var/plexguide/watchtower.yes)
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 serverid=$( cat /var/plexguide/server.id )
 
+traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 
@@ -26,19 +27,25 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
-#### Checks to See if Either Traefik Exists  Based on Portainer
-docker logs traefik2 3>&1 1>>/var/plexguide/traefik.error2 2>&1
-docker logs traefik 3>&1 1>>/var/plexguide/traefik.error1 2>&1
-
-error2=$( awk 'END {print $NF}' /var/plexguide/traefik.error2 )
-error1=$( awk 'END {print $NF}' /var/plexguide/traefik.error1 )
-error2=${error2::-1}
-
+traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
-if [ "$error2" == "$error1" ]
+if [ "$traefikver" == "traefik2" ]
   then
-    echo 'WARNING - Traefik Not Installed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-    dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto domains.plexguide.com for Info!" 0 0
+  	traefik="Traefik V2"
+  	traefikdetect="true"
+fi
+
+if [ "$traefikver" == "traefik" ]
+  then
+  	traefik="Traefik V1"
+  	traefikdetect="true"
+fi
+
+if [ "$traefikdetect" == "false" ]
+  then
+  	traefik="WARNING: Traefik Is Not Installed"
+fi
+
   else
     #### This results in providing which version of Traefik one is using
     version=$( cat /var/plexguide/provider )
