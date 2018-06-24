@@ -22,7 +22,7 @@ echo 'INFO - @Main Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
 HEIGHT=17
-WIDTH=30
+WIDTH=26
 CHOICE_HEIGHT=10
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Suite"
