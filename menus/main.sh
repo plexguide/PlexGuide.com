@@ -56,11 +56,11 @@ rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
 if [ "$rclonecheck" == "[gdrive]" ]
   then
 echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else  
-rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
-if [ "$rclonecheck" == "[gcrypt]" ]
-  then
-echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        else  
+        rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
+        if [ "$rclonecheck" == "[gcrypt]" ]
+                then
+        echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else  
 echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
@@ -76,11 +76,11 @@ rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
 if [ "$rclonecheck" == "[gdrive]" ]
   then
 echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else
-rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
-if [ "$rclonecheck" == "[gcrypt]" ]
-  then
-echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        else  
+        rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
+        if [ "$rclonecheck" == "[gcrypt]" ]
+                then
+        echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else  
 echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
@@ -95,11 +95,11 @@ rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
 if [ "$rclonecheck" == "[gdrive]" ]
   then
 echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else
-rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
-if [ "$rclonecheck" == "[gcrypt]" ]
-  then
-echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        else  
+        rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
+        if [ "$rclonecheck" == "[gcrypt]" ]
+                then
+        echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else  
 echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
@@ -114,11 +114,11 @@ rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
 if [ "$rclonecheck" == "[gdrive]" ]
   then
 echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else
-rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
-if [ "$rclonecheck" == "[gcrypt]" ]
-  then
-echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        else  
+        rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
+        if [ "$rclonecheck" == "[gcrypt]" ]
+                then
+        echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else  
 echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
@@ -142,11 +142,11 @@ rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
 if [ "$rclonecheck" == "[gdrive]" ]
   then
 echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-else
-rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
-if [ "$rclonecheck" == "[gcrypt]" ]
-  then
-echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        else  
+        rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gcrypt )
+        if [ "$rclonecheck" == "[gcrypt]" ]
+                then
+        echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else  
 echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
