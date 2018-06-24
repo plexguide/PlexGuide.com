@@ -49,6 +49,21 @@ case $CHOICE in
     A)
       clear
       systemctl restart plexdrive
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/plexdrive.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/plexdrive.log
+      fi
+
+      ## obtains plexdrive.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status plexdrive > /opt/plexguide/plexdrive.log
+      cat /opt/plexguide/plexdrive.log
+      echo "PlexDrive service restarted!"
+      echo ""
+      echo "*** View the Log ***"
       echo ""
       read -n 1 -s -r -p "Press any key to continue "
       ;;
@@ -68,7 +83,8 @@ case $CHOICE in
       clear
       systemctl status rclone-encrypt > /opt/plexguide/rclone-encrypt.log
       cat /opt/plexguide/rclone-encrypt.log
-      echo
+      echo "PlexDrive Encrypt service restarted!"
+      echo ""
       echo "*** View the Log ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
@@ -77,7 +93,22 @@ case $CHOICE in
     C)
       clear
       systemctl restart rclone
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/rclone.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/rclone.log
+      fi
+
+      ## obtains rclone.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status rclone > /opt/plexguide/rclone.log
+      cat /opt/plexguide/rclone.log
+      echo "RClone service restarted!"
       echo ""
+      echo "*** View the Log ***"
+      echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
       ;;
@@ -97,7 +128,8 @@ case $CHOICE in
       clear
       systemctl status rclone-en > /opt/plexguide/rclone-en.log
       cat /opt/plexguide/rclone-en.log
-      echo
+      echo "RClone Encrypt service restarted!"
+      echo ""
       echo "*** View the Log ***"
       echo
       read -n 1 -s -r -p "Press any key to continue "
@@ -107,7 +139,22 @@ case $CHOICE in
     E)
       clear
       systemctl restart unionfs
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/unionfs.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/unionfs.log
+      fi
+
+      ## obtains unionfs.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status unionfs > /opt/plexguide/unionfs.log
+      cat /opt/plexguide/unionfs.log
+      echo "UnionFS service restarted!"
       echo ""
+      echo "*** View the Log ***"
+      echo
       read -n 1 -s -r -p "Press any key to continue "
       clear
         ;;
@@ -115,6 +162,20 @@ case $CHOICE in
     F)
         clear
         systemctl restart unionfs-encrypt
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/unionfs-encrypt.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/unionfs-encrypt.log
+      fi
+
+      ## obtains unionfs-encrypt.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status unionfs-encrypt > /opt/plexguide/unionfs-encrypt.log
+      cat /opt/plexguide/unionfs-encrypt.log
+      echo "UnionFS Encrypt service restarted!"
+      echo "*** View the Log ***"
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
         clear
@@ -123,6 +184,23 @@ case $CHOICE in
     G)
         clear
         systemctl restart move
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/move.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/move.log
+      fi
+
+      ## obtains move.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status move > /opt/plexguide/move.log
+      cat /opt/plexguide/move.log
+      echo "Move service restarted!"
+      echo
+      echo "*** View the Log ***"
+      echo "Remember, there is a sleep function of 30 minutes after done"
+      echo "If you have tons of stuff downloaded, you should see some activity"
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
         clear
@@ -131,6 +209,24 @@ case $CHOICE in
     H)
         clear
         systemctl restart move-en
+      ## create log file if does not exist
+      if [ -e "/opt/plexguide/move-en.log" ]
+      then
+        echo "Log exists"
+      else
+        touch /opt/plexguide/move-en.log
+      fi
+
+      ## obtains move-en.service info and puts into a log to be displayed to the user
+      clear
+      systemctl status move-en > /opt/plexguide/move-en.log
+      cat /opt/plexguide/move-en.log
+      echo "Move Encrypt service restarted!"
+      echo
+      echo "*** View the Log ***"
+      echo "Remember, there is a sleep function of 30 minutes after done"
+      echo "If you have tons of stuff downloaded, you should see some activity"
+      echo
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
         clear
