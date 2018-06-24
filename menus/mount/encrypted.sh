@@ -138,15 +138,15 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             #fi
 
             #### BLANK OUT PATH - This Builds For UnionFS
-            rm -r /tmp/path 1>/dev/null 2>&1
-            touch /tmp/path 1>/dev/null 2>&1
+            rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+            touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
             #### IF EXIST - DEPLOY
             if [ "$tcrypt" == "[tcrypt]" ]
               then
 
               #### ADDS TCRYPT to the UNIONFS PATH
-              echo -n "/mnt/tdrive=RO:" >> /tmp/path
+              echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tcrypt
               echo 'INFO - DEPLOYED TCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
@@ -155,7 +155,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
               then
 
               #### ADDS GCRYPT to the UNIONFS PATH
-              echo -n "/mnt/gdrive=RO:" >> /tmp/path
+              echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt
               echo 'INFO - DEPLOYED GCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi

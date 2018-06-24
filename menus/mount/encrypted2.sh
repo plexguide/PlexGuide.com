@@ -118,20 +118,20 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 #            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
 
             #### BLANK OUT PATH - This Builds For UnionFS
-            rm -r /tmp/path 1>/dev/null 2>&1
-            touch /tmp/path 1>/dev/null 2>&1
+            rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+            touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
             #### IF EXIST - DEPLOY
             if [ "$tcrypt" == "[tcrypt]" ]
               then
               #### ADDS TCRYPT to the UNIONFS PATH
-              echo -n "/mnt/tdrive=RO:" >> /tmp/path
+              echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tcrypt
             else
               if [ "$tdrive" == "[tdrive]" ]
                 then
                 #### ADDS TDRIVE to the UNIONFS PATH
-                echo -n "/mnt/tdrive=RO:" >> /tmp/path
+                echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive_en
               fi
             fi
@@ -139,13 +139,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             if [ "$gcrypt" == "[gcrypt]" ]
               then
               #### ADDS GCRYPT to the UNIONFS PATH
-              echo -n "/mnt/gdrive=RO:" >> /tmp/path
+              echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt
             else
               if [ "$gdrive" == "[gdrive]" ]
                 then
                 #### ADDS GDRIVE to the UNIONFS PATH
-                echo -n "/mnt/gdrive=RO:" >> /tmp/path
+                echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
                 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive_en
               fi
             fi
