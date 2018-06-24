@@ -127,7 +127,7 @@
       force: yes
       mode: 0775
 
-###### Install PGUpdate
+###### Install PGDEV
 
   - name: PGDev
     template:
