@@ -22,7 +22,7 @@
     tags:
       - rclone-en
 
-      - name: Daemon-Reload
+  - name: Daemon-Reload
     systemd: state=stopped name=supertransfer2_encrypt daemon_reload=yes enabled=no
     ignore_errors: True
     tags:
@@ -39,18 +39,18 @@
   - name: Check MOVE EN SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move-en.sh"
-    register: move_en_script
+    register: move_script
     tags:
       - rclone-en
 
   - name: Install Move En Service
     template:
-      src: move-en_script.js2"
+      src: move_script.js2"
       dest: /opt/appdata/plexguide/move-en.sh
       force: yes
     tags:
       - rclone-en
-   # when: move_en_script.stat.exists == False
+    when: move_script.stat.exists == False
 ########### Rclone Sync Scripts
   - name: Check RClone Sync SCRIPT
     stat:
@@ -105,22 +105,22 @@
   - name: Check MOVE En Service
     stat:
       path: "/etc/systemd/system/move-en.service"
-    register: move_en
+    register: move
     tags:
       - rclone-en
 
   - name: Stop If Move En Service Running
     systemd: state=stopped name=move-en
-    when: move_en.stat.exists
+    when: move.stat.exists
     tags:
       - rclone-en
 
   - name: Install Move En Service
     template:
-      src: move-en.js2
+      src: move.js2
       dest: /etc/systemd/system/move-en.service
       force: yes
-    when: move_en.stat.exists == False
+    when: move.stat.exists == False
     tags:
       - rclone-en
 
@@ -131,7 +131,7 @@
 
   - name: Start Move En
     systemd: state=started name=move-en enabled=yes
-    when: move_en.stat.exists
+    when: move.stat.exists
     tags:
       - rclone-en
 
