@@ -135,3 +135,13 @@
       dest: /bin/pgdev
       force: yes
       mode: 0775
+
+###### Install PlexGuide
+
+  - name: PlexGuide
+    template:
+      src: plexguide
+      dest: /bin/plexguide
+      force: yes
+      mode: 0775
+      owner: root
