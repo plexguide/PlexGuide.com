@@ -1,9 +1,6 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
-bash /opt/plexguide/menus/traefik/cert2.sh &>/dev/null &
-bash /opt/plexguide/menus/traefik/cert1.sh &>/dev/null &
-sleep 1
 edition=$( cat /var/plexguide/pg.edition )
 version=$( cat /var/plexguide/pg.version )
 appguard=$(cat /var/plexguide/server.appguard)
@@ -11,8 +8,8 @@ portstat=$(cat /var/plexguide/server.ports.status)
 watchtower=$(cat /var/plexguide/watchtower.yes)
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 serverid=$( cat /var/plexguide/server.id )
-sleep 1
 
+traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 domain=$( cat /var/plexguide/server.domain ) 1>/dev/null 2>&1
 hd=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 
@@ -30,50 +27,49 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
-#### Checks to See if Either Traefik Exisxts
-
-docker logs traefik2 3>&1 1>>/var/plexguide/traefik.error2 2>&1
-docker logs traefik 3>&1 1>>/var/plexguide/traefik.error1 2>&1
-
-error2=$( awk 'END {print $NF}' /var/plexguide/traefik.error2 )
-error1=$( awk 'END {print $NF}' /var/plexguide/traefik.error1 )
-error2=${error2::-1}
-
+traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
-if [ "$error2" == "$error1" ]
+if [ "$traefikver" == "traefik2" ]
   then
-    echo "\nWARNING: Traefik is not installed!" > /var/plexguide/status.traefik.cert
-    cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-  else
-
-  	#### Version 1 or 2 Display
-	provider=$( cat /var/plexguide/provider ) 1>/dev/null 2>&1
-	if [ "$provider" == "null" ]
-	then
-		cert1=$( cat /var/plexguide/status.traefik1 ) 1>/dev/null 2>&1
-		if [ "$cert1" == "certificate" ]
-		then
-			echo "\nTraefik v1: Certificate is Valid" > /var/plexguide/status.traefik.cert
-			cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		else
-			echo "\nTraefik v1: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
-			cert1=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		fi
-	else
-		cert2=$( cat /var/plexguide/status.traefik2 ) 1>/dev/null 2>&1
-		if [ "$cert2" == "certificate" ]
-		then
-			echo "\nTraefik v2: Certificate is Valid" > /var/plexguide/status.traefik.cert
-			cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		else
-			echo "\nTraefik v2: Certificate is NOT Valid" > /var/plexguide/status.traefik.cert
-			cert2=$( cat /var/plexguide/status.traefik.cert ) 1>/dev/null 2>&1
-		fi
-	fi
+  	traefik="Traefik V2"
+  	traefikdetect="true"
 fi
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n$cert1$cert2\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
+
+if [ "$traefikver" == "traefik" ]
+  then
+  	traefik="Traefik V1"
+  	traefikdetect="true"
+fi
+
+if [ "$traefikdetect" == "false" ]
+  then
+  	traefik="WARNING: Traefik Is Not Installed"
+fi
+
+  else
+    #### This results in providing which version of Traefik one is using
+    version=$( cat /var/plexguide/provider )
+    if [ "$version" == "null" ]
+    then
+    #### Using Traefik V2
+    traefik="Traefik V1"
+    else
+    #### Using Traefik V2
+    traefik="Traefik V2"
+    fi
+fi
+
+if curl -s --head  --request GET https://portainer.$domain.com | grep "200 OK" > /dev/null
+	then     
+		tmessage=$(echo "$traefik: Certificate is Valid")
+    else    
+    	tmessage=$(echo "$traefik: Certificate is NOT Valid")
+fi
+
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$tmessage\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
 echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - Docker Version $docker is installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - $cert1$cert2" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - APPGUARD is $appguard | PORTS are $portstat" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+sleep 10
