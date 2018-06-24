@@ -49,7 +49,7 @@ case $CHOICE in
 echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 clear
-curl https://rclone.org/install.sh | sudo bash -s beta
+curl https://rclone.org/install.sh | sudo bash
 sleep 1
 dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE Beta is now Installed!" 0 0
 
