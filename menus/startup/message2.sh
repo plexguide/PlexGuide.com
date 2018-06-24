@@ -46,19 +46,6 @@ if [ "$traefikdetect" == "false" ]
   	traefik="WARNING: Traefik Is Not Installed"
 fi
 
-  else
-    #### This results in providing which version of Traefik one is using
-    version=$( cat /var/plexguide/provider )
-    if [ "$version" == "null" ]
-    then
-    #### Using Traefik V2
-    traefik="Traefik V1"
-    else
-    #### Using Traefik V2
-    traefik="Traefik V2"
-    fi
-fi
-
 if curl -s --head  --request GET https://portainer.$domain.com | grep "200 OK" > /dev/null
 	then     
 		tmessage=$(echo "$traefik: Certificate is Valid")
@@ -72,4 +59,3 @@ echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/ple
 echo "INFO - Docker Version $docker is installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - $cert1$cert2" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - APPGUARD is $appguard | PORTS are $portstat" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-sleep 10
