@@ -29,7 +29,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer    ~ 5.098"
          Z "----- Exit Menu -----"
-         01 "Beta 1       ~ 5.098"
+         01 "Stable       ~ 5.098"
          02 "Stable       ~ 5.097"
          03 "Stable       ~ 5.096" 
          04 "Stable       ~ 5.093"            
@@ -93,7 +93,7 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         01)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.098b1" ;;
+            version="5.098" ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.097" ;;

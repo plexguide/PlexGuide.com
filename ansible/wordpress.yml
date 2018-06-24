@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: wordpress, tags: ['wordpress'] }
+  - { role: backupwp, tags: ['backupwp'] }
+  - { role: restorewp, tags: ['restorewp']}

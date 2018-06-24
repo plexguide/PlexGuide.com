@@ -15,25 +15,25 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a UNIQUE Wordpress ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
+dialog --title "--- INFO ---" --msgbox "\nCreate a UNIQUE Wordpress Subdomain ID!\n\nRemember KISS (Keep It Simple Stupid)!" 0 0
 
 #######################
 echo "yes" > /var/plexguide/server.wp
 base="/mnt/gdrive/plexguide/wordpress/"
 
-dialog --title "[ EXAMPLE: SERVER01 or plexguide.com ]" \
+dialog --title "[ EXAMPLE: mysubdomain or plexguide ]" \
 --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 --inputbox "Type a Wordpress ID: " 8 50 2>/var/plexguide/wp.temp.id
 id=$(cat /var/plexguide/wp.temp.id)
 
-  if dialog --stdout --title "WP SERVER ID" \
+  if dialog --stdout --title "WP SERVER SUBDOMAIN/ID" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nWP SERVER ID: $id\n\nCorrect?" 0 0; then
     ### Ensure Location Get Stored for Variables Role
     echo "$id" > /var/plexguide/wp.id
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/first.sh
+      bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi
 
@@ -51,25 +51,6 @@ clear ## change me
 fi
 ################################# PORT NUMBER
 
-################################# SUBDOMAIN
-
-  dialog --title "[ EXAMPLE: nzbgetwp or pgwordpress ]" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --inputbox "Enter a SUBDOMAIN for Your Website" 8 50 2>/var/plexguide/subdomain.temp.id
-  subdomain=$(cat /var/plexguide/subdomain.temp.id)
-
-  if dialog --stdout --title "SUBDOMAIN" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nYour Subdomain: $subdomain\n\nCorrect?" 0 0; then
-
-    ### Ensure Location Get Stored for Variables Role
-    echo "$subdomain" > /var/plexguide/wpsubdomain.id
-  else
-    dialog --title "SUBDOMAIN" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/first.sh
-      exit
-  fi
-
   dialog --title "[ EXAMPLE: 101 or 989 ]" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Enter 3 Numbers Between 100-999" 8 50 2>/var/plexguide/port.temp.id
@@ -83,7 +64,7 @@ fi
     echo "$port" > /var/plexguide/wpport.id
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/first.sh
+      bash /opt/plexguide/menus/wordpress/main.sh
       exit
   fi
 
@@ -96,5 +77,5 @@ exit
 fi
 
   clear
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+  ansible-playbook /opt/plexguide/ansible/wordpress.yml --tags wordpress
   read -n 1 -s -r -p "Press any key to continue"
