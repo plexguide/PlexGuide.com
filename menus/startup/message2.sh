@@ -40,11 +40,12 @@ if [ "$traefikver" == "traefik" ]
   	traefikdetect="true"
 fi
 
+domain=$( cat deiteq.eu )
 if curl -s --head --request GET https://portainer.$domain | grep "200 OK" > /dev/null
-	then     
-		tmessage=$(echo "$traefik: Certificate is Valid")
-    else    
-    	tmessage=$(echo "$traefik: Certificate is NOT Valid")
+   then     
+   tmessage="$traefik: Certificate is Valid"
+else    
+   tmessage="$traefik: Certificate is NOT Valid"
 fi
 
 if [ "$traefikdetect" == "false" ]
