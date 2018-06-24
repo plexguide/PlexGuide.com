@@ -29,7 +29,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer    ~ 5.100"
          Z "----- Exit Menu -----"
-         01 "Stable       ~ 5.099"
+         01 "Stable U2    ~ 5.099"
          02 "Stable       ~ 5.096" 
          03 "Stable       ~ 5.093"            
          04 "Stable       ~ 5.087"
