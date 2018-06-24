@@ -15,18 +15,61 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-########################################## Scripts
-  - name: Daemon-Reload
-    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
-    ignore_errors: True
-    tags:
-      - rclone
+---
+  - name: RClone Filler
+    template:
+      src: temp.js2
+      dest: /root/.config/rclone/rclone.conf
+      force: yes
+    tags: rclone_temp
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=supertransfer daemon_reload=yes enabled=no
-    ignore_errors: True
-    tags:
-      - rclone
+########################################## Remove Old Services
+
+  - name: Remove Old UnionFS-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/unionfs-encrypt.service
+
+  - name: Remove Old move-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/move-en.service
+
+  - name: Remove Old move-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/move-en.sh
+
+
+  - name: Remove Old rclone service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone.service
+
+  - name: Remove Old rclone File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone.sh
+
+  - name: Remove Old rclone-en service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-en.service
+
+  - name: Remove Old rclone-en File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-en.sh
+
+  - name: Remove Old rclone-encrypt service
+    file:
+      state: absent
+      path: /etc/systemd/system/rclone-encrypt.service
+
+  - name: Remove Old rclone-encrypt File
+    file:
+      state: absent
+      path: /opt/appdata/plexguide/rclone-encrypt.sh
 
 ########################################## Scripts
 ########## Move En Service Script
@@ -34,24 +77,18 @@
     stat:
       path: "/opt/appdata/plexguide/move-en.sh"
     register: move-en_script
-    tags:
-      - rclone-en
 
   - name: Install Move En Service
     template:
       src: move-en_script.js2"
       dest: /opt/appdata/plexguide/move-en.sh
       force: yes
-    tags:
-      - rclone-en
-   # when: move_en_script.stat.exists == False
+    when: move_en_script.stat.exists == False
 ########### Rclone Sync Scripts
   - name: Check RClone Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/rclone.sh"
     register: rclone_script
-    tags:
-      - rclone-en
 
   - name: Install RClone Sync Service
     template:
@@ -59,15 +96,11 @@
       dest: /opt/appdata/plexguide/rclone.sh
       force: yes
     when: rclone_script.stat.exists == False
-    tags:
-      - rclone-en
 ############ Rclone En Sync
   - name: Check RClone En Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/rclone-en.sh"
     register: rclone-en_script
-    tags:
-      - rclone-en
 
   - name: Install RClone En Sync Service
     template:
@@ -75,15 +108,11 @@
       dest: /opt/appdata/plexguide/rclone-en.sh
       force: yes
     when: rclone_en_script.stat.exists == False
-    tags:
-      - rclone-en
 ############ Rclone Encrypt Sync
   - name: Check RClone Encrypt Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/rclone-encrypt.sh"
     register: rclone-encrypt_script
-    tags:
-      - rclone-en
 
   - name: Install RClone Encrypt Sync Service
     template:
@@ -91,8 +120,6 @@
       dest: /opt/appdata/plexguide/rclone-encrypt.sh
       force: yes
     when: rclone_encrypt_script.stat.exists == False
-    tags:
-      - rclone-en
 
 ########################################## Services
 ########### Move En Service
@@ -100,14 +127,10 @@
     stat:
       path: "/etc/systemd/system/move-en.service"
     register: move-en
-    tags:
-      - rclone-en
 
   - name: Stop If Move En Service Running
     systemd: state=stopped name=move-en
     when: move-en.stat.exists
-    tags:
-      - rclone-en
 
   - name: Install Move En Service
     template:
@@ -115,33 +138,23 @@
       dest: /etc/systemd/system/move-en.service
       force: yes
     when: move-en.stat.exists == False
-    tags:
-      - rclone-en
 
   - name: Daemon-Reload
     systemd: state=stopped name=move-en daemon_reload=yes enabled=no
-    tags:
-      - rclone-en
 
   - name: Start Move En
     systemd: state=started name=move-en enabled=yes
     when: move_en.stat.exists
-    tags:
-      - rclone-en
 
 ########### rclone
   - name: Check RClone Service
     stat:
       path: "/etc/systemd/system/rclone.service"
     register: rclone
-    tags:
-      - rclone-en
 
   - name: Stop If RClone Service Running
     systemd: state=stopped name=rclone
     when: rclone.stat.exists
-    tags:
-      - rclone-en
 
   - name: Install RCLONE Service
     template:
@@ -149,32 +162,22 @@
       dest: /etc/systemd/system/rclone.service
       force: yes
     when: rclone.stat.exists == False
-    tags:
-      - rclone-en
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone daemon_reload=yes enabled=no
-    tags:
-      - rclone-en
 
   - name: Start RClone
     systemd: state=started name=rclone enabled=yes
     when: rclone.stat.exists
-    tags:
-      - rclone-en
 ########### rclone en
   - name: Check RClone En Service
     stat:
       path: "/etc/systemd/system/rclone-en.service"
     register: rclone-en
-    tags:
-      - rclone-en
 
   - name: Stop If RClone En Service Running
     systemd: state=stopped name=rclone-en
     when: rclone-en.stat.exists
-    tags:
-      - rclone-en
 
   - name: Install RClone En Service
     template:
@@ -182,32 +185,22 @@
       dest: /etc/systemd/system/rclone-en.service
       force: yes
     when: rclone_en.stat.exists == False
-    tags:
-      - rclone-en
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone-en daemon_reload=yes enabled=no
-    tags:
-      - rclone-en
 
   - name: Start RClone En
     systemd: state=started name=rclone-en enabled=yes
     when: rclone_en.stat.exists
-    tags:
-      - rclone-en
 ########### rclone encrypt
   - name: Check RClone Encrypt Service
     stat:
       path: "/etc/systemd/system/rclone-encrypt.service"
     register: rclone-encrypt
-    tags:
-      - rclone-en
 
   - name: Stop If RClone Encrypt Service Running
     systemd: state=stopped name=rclone-encrypt
     when: rclone_encrypt.stat.exists
-    tags:
-      - rclone-en
 
   - name: Install RClone Encrypt Service
     template:
@@ -215,62 +208,34 @@
       dest: /etc/systemd/system/rclone-encrypt.service
       force: yes
     when: rclone_encrypt.stat.exists == False
-    tags:
-      - rclone-en
 
   - name: Daemon-Reload
     systemd: state=stopped name=rclone-encrypt daemon_reload=yes enabled=no
-    tags:
-      - rclone-en
 
   - name: Start RClone Encrypt
     systemd: state=started name=rclone-encrypt enabled=yes
     when: rclone_encrypt.stat.exists
-    tags:
-      - rclone-en
 
 ########### UnionFS Encrypt
   - name: Check UnionFS Encrypt Service
     stat:
       path: "/etc/systemd/system/unionfs-encrypt.service"
     register: unionfs-encrypt
-    tags:
-      - rclone-en
 
   - name: Stop If UnionFS Encrypt Service Running
     systemd: state=stopped name=unionfs-encrypt
     when: unionfs_encrypt.stat.exists
-    tags:
-      - rclone-en
 
   - name: Install UnionFS Encrypt Service
     template:
       src: unionfs-encrypt.js2
       dest: /etc/systemd/system/unionfs-encrypt.service
       force: yes
-    #when: unionfs-encrypt.stat.exists == False
-    tags:
-      - rclone-en
+    when: unionfs-encrypt.stat.exists == False
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs-encrypt daemon_reload=yes enabled=no
-    tags:
-      - rclone-en
 
   - name: Start UnionFS Encrypt
     systemd: state=started name=unionfs-encrypt enabled=yes
     when: unionfs_encrypt.stat.exists
-    tags:
-      - rclone-en
-
-  - name: SHELL COMMAND 1
-    shell: "chown -R 1000:1000 /root"
-    ignore_errors: True
-    tags:
-      - rclone-en
-
-  - name: SHELL COMMAND 2
-    shell: "chmod 775 /root/.config/rclone/rclone.conf"
-    ignore_errors: True
-    tags:
-      - rclone-en
