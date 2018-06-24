@@ -119,7 +119,6 @@ then
 	docker ps -a --format "{{.Names}}" | grep wordpress | grep -v db 1>/tmp/wp.running
 	temp=$(cat /var/plexguide/wp.id)  
 
-	clear
 	while read p; do
 	  echo "INFO - Rebuilding Container: $p" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 	  id=$(echo $p | cut -c 11-)
