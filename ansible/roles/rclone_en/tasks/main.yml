@@ -15,6 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+  - name: Install Common Packages 
+    apt: "name={{item}} state=present"
+    with_items:
+      - unionfs-fuse
+    tags:
+      - rclone-en
+
 ########################################## Scripts
   - name: Daemon-Reload
     systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
