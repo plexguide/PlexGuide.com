@@ -87,6 +87,7 @@ case $CHOICE in
                     --yesno "\nWP Subdomain/ID: $id\n\nCorrect?" 0 0; then
                 ### Ensure Location Get Stored for Variables Role
                 echo "$id" > /var/plexguide/wp.id
+                echo "$id" > /var/plexguide/wp.tld
               else
                 dialog --title "WP Subdomain/ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
                   bash /opt/plexguide/menus/wordpress/main.sh

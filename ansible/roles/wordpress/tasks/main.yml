@@ -18,12 +18,7 @@
 ---
 - include_role:
     name: variables
-    
-########## Unique for TLD
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{ role_name }}"
-  register: tld
-  ignore_errors: True
+
 ##########
 
 - name: Register WP Port
@@ -33,6 +28,29 @@
 - name: Register WP ID
   shell: "cat /var/plexguide/wp.id"
   register: wpid
+
+########## Unique for TLD
+- name: Register TLD Checker
+  shell: "cat /var/plexguide/wp.tld"
+  register: tldcheck
+  ignore_errors: True
+
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/wp.tld"
+  register: tldmain
+  ignore_errors: True
+  when: tldcheck == wpid
+
+- name: Register TLD if it exists
+  shell: "echo ''"
+  register: tldmain
+  ignore_errors: True
+  when: not tldcheck == wpid
+
+- debug: msg="TLD Main Registered Is - {{tld.stdout}}"
+  ignore_errors: True
+
+################# END
 
 - name: Remove Wordpress Container
   docker_container:
@@ -91,7 +109,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}{{tldmain.stdout}}"
       traefik.port: "80"
 
 ##### STORE INFO
