@@ -117,6 +117,21 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
+            display=NowShowing
+            program=nowshoing
+            port=6878
+            dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi
+            read -n 1 -s -r -p "Press any key to continue"
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/time/cron.sh
+            bash /opt/plexguide/menus/programs/ending.sh
+            ;;
+        F)
             display=Ombi
             program=ombi
             port=3579
