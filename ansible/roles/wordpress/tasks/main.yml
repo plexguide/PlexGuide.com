@@ -35,7 +35,7 @@
   ignore_errors: True
 
 - name: Comparison Check
-  shell: "a=$(cat /var/plexguide/wp.tld); b=$(cat /var/plexguide/wp.id); if [ $a == $b ] ; then echo "yes" 1>/tmp/wp.answer ; else echo "no" 1>/tmp/wp.answer ; fi"
+  shell: "a=$(cat /var/plexguide/wp.tld); b=$(cat /var/plexguide/wp.id); if [ $a == $b ] ; then echo 'yes' 1>/tmp/wp.answer ; else echo 'no' 1>/tmp/wp.answer ; fi"
   ignore_errors: True
 
 - name: Register Status
