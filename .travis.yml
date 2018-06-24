@@ -2,6 +2,7 @@ language: bash
 sudo: enabled
 
 before_install:
+- pwd
 - sudo apt-get update -y && sudo apt-get install wget -y && sudo wget https://plexguide.com/install.sh && sudo bash ./install.sh
 
 script:
