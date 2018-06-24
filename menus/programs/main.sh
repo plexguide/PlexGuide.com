@@ -22,11 +22,10 @@ echo 'INFO - @Main Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
 HEIGHT=17
-WIDTH=30
-CHOICE_HEIGHT=10
+WIDTH=26
+CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Suite"
-MENU="Make A Selection:"
 
 OPTIONS=(A "Media Servers"
          B "Managers"
@@ -34,9 +33,10 @@ OPTIONS=(A "Media Servers"
          D "Torrents"
          E "Supporting"
          F "UI Organziers"
-         G "Critical"
-         H "4K Versions"
-         I "Beta"
+         G "Tools"
+         H "Critical"
+         I "4K Versions"
+         J "Beta"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -68,12 +68,15 @@ echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && 
 echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/ui.sh ;;
         G)
+echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/programs/tools.sh ;;
+        H)
 echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/critical.sh ;;
-        H)
+        I)
 echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/versions4k.sh ;;
-        I)
+        J)
 echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/beta.sh ;;
         Z)

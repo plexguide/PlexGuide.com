@@ -195,23 +195,6 @@ ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
 sleep 2
 #read -n 1 -s -r -p "Press any key to continue "
 
-######## COMMANDS
-pg_commands=$( cat /var/plexguide/pg.commands )
-pg_commands_stored=$( cat /var/plexguide/pg.commands.stored )
-
-if [ "$pg_commands" == "$pg_commands_stored" ]
-    then
-      echo "35" | dialog --gauge "PG Commands Already Installed" 7 50 0
-      sleep 2
-    else 
-      clear
-      echo "35" | dialog --gauge "Installing: PlexGuide Commands" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags commands &>/dev/null &
-      cat /var/plexguide/pg.commands > /var/plexguide/pg.commands.stored
-      sleep 2
-      #read -n 1 -s -r -p "Press any key to continue "
-fi 
-
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker_var=$( cat /var/plexguide/docker.version )

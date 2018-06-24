@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# [Update Script]
+# [Ansible Role]
 #
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
-# URL:      https://plexguide.com
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
@@ -33,10 +32,10 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-	dialog --title "Emergency Mode" --msgbox "\nFor some reason, PLEXGUIDE is missing! Your DATA is not lost.  We are downloading the DEVELOPER Version to Help You!" 0 0
-	clear
-	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
-	exit 1
+   dialog --title "Emergency Mode" --msgbox "\nFor some reason, PLEXGUIDE is missing! Your DATA is not lost.  We are downloading the DEVELOPER Version to Help You!" 0 0
+   clear
+   sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexg*/sc*/ins* && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
+   exit 1
 fi
 
 sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-5/menus/version/main.sh 1>/dev/null 2>&1

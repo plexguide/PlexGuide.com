@@ -111,9 +111,37 @@
 
 ###### Install PGLog
 
-  - name: Nano TCrypt
+  - name: Nano PGLog
     template:
       src: pglog
       dest: /bin/pglog
       force: yes
       mode: 0775
+
+###### Install PGUpdate
+
+  - name: PGUpdate
+    template:
+      src: pgupdate
+      dest: /bin/pgupdate
+      force: yes
+      mode: 0775
+
+###### Install PGDEV
+
+  - name: PGDev
+    template:
+      src: pgdev
+      dest: /bin/pgdev
+      force: yes
+      mode: 0775
+
+###### Install PlexGuide
+
+  - name: PlexGuide
+    template:
+      src: plexguide
+      dest: /bin/plexguide
+      force: yes
+      mode: 0775
+      owner: root
