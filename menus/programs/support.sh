@@ -46,6 +46,20 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+            display=AllTube
+            program=alltube
+            port=1234
+            dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags alltube
+            read -n 1 -s -r -p "Press any key to continue"
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+            bash /opt/plexguide/menus/programs/ending.sh
+            ;;
+        B)
             display=Monitorr
             program=monitorr
             port=8099
@@ -60,7 +74,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        B)
+        C)
             display=NEXTCloud
             program=nextcloud
             port=4645
@@ -76,7 +90,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        C)
+        D)
             display=NowShowing
             program=nowshoing
             port=6878
@@ -91,7 +105,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        D)
+        E)
             display=Ombi
             program=ombi
             port=3579
@@ -106,7 +120,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        E)
+        F)
             display=Plexrequests
             program=plexrequests
             port=3000
@@ -121,7 +135,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        F)
+        G)
             display=RESILIO
             program=resilio
             port=8888
@@ -136,7 +150,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        G)
+        H)
             display=Tautulli
             program=tautulli
             port=8181
@@ -151,7 +165,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
-        H)
+        I)
             display=TheLounge
             program=thelounge
             port=9100
