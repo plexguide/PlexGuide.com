@@ -63,11 +63,9 @@ case $CHOICE in
         cat /opt/plexguide/plexdrive.log
         echo ""
         echo ""
-        echo "PlexDrive service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "PlexDrive service restarted!    -   Press any key to continue "
         ;;
 
     B)
@@ -87,11 +85,9 @@ case $CHOICE in
         cat /opt/plexguide/rclone-encrypt.log
         echo ""
         echo ""
-        echo "PlexDrive Encrypt service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "PlexDrive Encrypt service restarted!    -   Press any key to continue "
         ;;
 
     C)
@@ -111,11 +107,9 @@ case $CHOICE in
         cat /opt/plexguide/rclone.log
         echo ""
         echo ""
-        echo "RClone service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "RClone service restarted!   -   Press any key to continue "
         clear
         ;;
 
@@ -136,11 +130,9 @@ case $CHOICE in
         cat /opt/plexguide/rclone-en.log
         echo ""
         echo ""
-        echo "RClone Encrypt service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "RClone Encrypt service restarted!   -   Press any key to continue "
         clear
         ;;
 
@@ -161,11 +153,9 @@ case $CHOICE in
         cat /opt/plexguide/unionfs.log
         echo ""
         echo ""
-        echo "UnionFS service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "UnionFS service restarted!  -   Press any key to continue "
         clear
         ;;
 
@@ -186,11 +176,9 @@ case $CHOICE in
         cat /opt/plexguide/unionfs-encrypt.log
         echo ""
         echo ""
-        echo "UnionFS Encrypt service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "UnionFS Encrypt service restarted!  -   Press any key to continue "
         clear
         ;;
 
@@ -211,13 +199,11 @@ case $CHOICE in
         cat /opt/plexguide/move.log
         echo ""
         echo ""
-        echo "Move service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo "Remember, there is a sleep function of 30 minutes after done"
         echo "If you have tons of stuff downloaded, you should see some activity"
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Move service restarted! -   Press any key to continue "
         clear
         ;;
 
@@ -238,14 +224,12 @@ case $CHOICE in
         cat /opt/plexguide/move-en.log
         echo ""
         echo ""
-        echo "Move Encrypt service restarted!"
-        echo ""
         echo "*** View the Log ***"
         echo "Remember, there is a sleep function of 30 minutes after done"
         echo "If you have tons of stuff downloaded, you should see some activity"
         echo
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Move Encrypt service restarted! -   Press any key to continue "
         clear
         ;;
 

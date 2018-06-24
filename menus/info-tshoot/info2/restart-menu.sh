@@ -60,13 +60,11 @@ case $CHOICE in
         systemctl status gdrive > /opt/plexguide/gdrive.log
         cat /opt/plexguide/gdrive.log
         echo ""
-        echo ""
-        echo "GDrive service restarted!"
         echo
         echo "*** View the Log ***"
         echo
         echo ""
-        read -n 1 -s -r -p "Gdrive restarted - Press any key to continue "
+        read -n 1 -s -r -p "GDrive restarted  -  Press any key to continue "
         ;;
 
     B)
@@ -85,13 +83,11 @@ case $CHOICE in
         systemctl status gcrypt > /opt/plexguide/gcrypt.log
         cat /opt/plexguide/gcrypt.log
         echo ""
-        echo ""
-        echo "GDrive Encrypt service restarted!"
         echo
         echo "*** View the Log ***"
         echo
         echo ""
-        read -n 1 -s -r -p "Gcrypt restarted - Press any key to continue "
+        read -n 1 -s -r -p "GCrypt restarted  -   Press any key to continue "
         ;;
 
     C)
@@ -110,13 +106,11 @@ case $CHOICE in
         systemctl status tdrive > /opt/plexguide/tdrive.log
         cat /opt/plexguide/tdrive.log
         echo ""
-        echo ""
-        echo "TDrive service restarted!"
         echo
         echo "*** View the Log ***"
         echo
         echo ""
-        read -n 1 -s -r -p "Tdrive restarted - Press any key to continue "
+        read -n 1 -s -r -p "TDrive restarted   -   Press any key to continue "
         ;;
 
     D)
@@ -135,13 +129,11 @@ case $CHOICE in
         systemctl status tcrypt > /opt/plexguide/tcrypt.log
         cat /opt/plexguide/tcrypt.log
         echo ""
-        echo ""
-        echo "TDrive Encrypt service restarted!"
         echo
         echo "*** View the Log ***"
         echo
         echo ""
-        read -n 1 -s -r -p "Tcrypt restarted - Press any key to continue "
+        read -n 1 -s -r -p "TCrypt restarted  -  Press any key to continue "
         ;;
 
     E)
@@ -160,13 +152,11 @@ case $CHOICE in
         systemctl status unionfs > /opt/plexguide/unionfs.log
         cat /opt/plexguide/unionfs.log
         echo ""
-        echo ""
-        echo "UnionFS service restarted!"
         echo
         echo "*** View the Log ***"
         echo
         echo ""
-        read -n 1 -s -r -p "UnionFS restarted - Press any key to continue "
+        read -n 1 -s -r -p "UnionFS restarted   -  Press any key to continue "
         clear
         ;;
 
@@ -186,13 +176,11 @@ case $CHOICE in
         systemctl status move > /opt/plexguide/move.log
         cat /opt/plexguide/move.log
         echo ""
-        echo ""
-        echo "Move service restarted!"
         echo
         echo "*** View the Log ***"
         echo
         echo ""
-        read -n 1 -s -r -p "Move restarted - Press any key to continue "
+        read -n 1 -s -r -p "Move restarted  -  Press any key to continue "
         clear
         ;;
 

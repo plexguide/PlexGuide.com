@@ -226,9 +226,11 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             ;;
 
         E)
-          ansible-role services_remove
-          dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
-          ;;
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+       #     ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+            ;;
         Z)
             exit 0 ;;
 
