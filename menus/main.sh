@@ -51,15 +51,59 @@ echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /o
            bash /opt/plexguide/menus/deploychoice.sh ;;
         B)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
+if [ "$rclonecheck" == "[gdrive]" ]
+  then
+echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else  
+echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
+bash /opt/plexguide/menus/main.sh
+exit
+fi
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
+if [ "$rclonecheck" == "[gdrive]" ]
+  then
+echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else  
+echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
+bash /opt/plexguide/menus/main.sh
+exit
+fi
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
 echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/wordpress/main.sh ;;
+
+rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
+if [ "$rclonecheck" == "[gdrive]" ]
+  then
+echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else  
+echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
+bash /opt/plexguide/menus/main.sh
+exit
+fi
+            bash /opt/plexguide/menus/wordpress/main.sh ;;           
         E)
 echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
+if [ "$rclonecheck" == "[gdrive]" ]
+  then
+echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else  
+echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
+bash /opt/plexguide/menus/main.sh
+exit
+fi
             bash /opt/plexguide/menus/security/main.sh ;;
         F)
 echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -72,6 +116,17 @@ echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/
             bash /opt/plexguide/menus/settings/main.sh ;;
         I)
 echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
+if [ "$rclonecheck" == "[gdrive]" ]
+  then
+echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else  
+echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gdrive configured to proceed!\n\nExiting!" 0 0
+bash /opt/plexguide/menus/main.sh
+exit
+fi
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
         J)
 echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
