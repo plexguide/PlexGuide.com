@@ -50,13 +50,11 @@ fi
 
 if [ "$traefikdetect" == "false" ]
   then
-    traefik="WARNING: Traefik Is Not Installed"
-    tmessage=""
+    tmessage="WARNING: Traefik Is Not Installed"
 fi
 
 dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$tmessage\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
 echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-echo "INFO - Docker Version $docker is installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-echo "INFO - $cert1$cert2" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $tmessage" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - APPGUARD is $appguard | PORTS are $portstat" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
