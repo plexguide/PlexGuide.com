@@ -51,7 +51,19 @@ echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /o
            bash /opt/plexguide/menus/deploychoice.sh ;;
         B)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/main.sh ;;
+            bash /opt/plexguide/menus/programs/main.sh
+
+rclonecheck=$( cat /root/.config/rclone/rclone.conf | grep gdrive )
+if [ "$rclonecheck" == "[gdrive]" ]
+  then
+echo "INFO - RClone Is Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+else  
+echo "INFO - RClone is Not Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+dialog --title "---WARNING---" --msgbox "You Must Have RClone Installed and gdrive configured to proceed!\n\nExiting!"
+
+exit
+fi
+            ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
