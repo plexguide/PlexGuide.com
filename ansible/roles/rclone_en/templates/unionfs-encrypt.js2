@@ -1,8 +1,8 @@
 [Unit]
 Description=UnionFS Daemon
-Requires=plexdrive.service
-After=multi-user.target plexdrive.service
-RequiresMountsFor=/mnt/plexdrive
+Requires=rclone-encrypt.service
+After=multi-user.target rclone-encrypt.service
+RequiresMountsFor=/mnt/encrypt
 
 [Service]
 Type=simple
@@ -12,7 +12,7 @@ ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty /mnt/move=RW:/mnt/encrypt=RO /mnt/unionfs
 ExecStop=/bin/fusermount -uz /mnt/unionfs
 TimeoutStopSec=20
-KillMode=process
+KillMode=mixed
 RemainAfterExit=yes
 
 [Install]

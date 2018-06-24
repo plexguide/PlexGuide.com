@@ -9,7 +9,7 @@ Group=0
 ExecStart=/bin/bash /opt/appdata/plexguide/rclone-en.sh
 ExecStop=/bin/fusermount -uz /mnt/.gcrypt
 TimeoutStopSec=20
-KillMode=process
+KillMode=mixed
 RemainAfterExit=yes
 
 [Install]
