@@ -316,7 +316,7 @@ if [ "$pg_label" == "$pg_label_stored" ]
 fi 
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
-bash /opt/plexguide/scripts/startup/rclone-preinstall.sh &>/dev/null &
+curl https://rclone.org/install.sh | sudo bash
 touch /var/plexguide/basics.yes &>/dev/null &
 #sleep 1
 
