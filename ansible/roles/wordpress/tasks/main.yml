@@ -47,7 +47,7 @@
   ignore_errors: True
   when: not tldcheck == wpid
 
-- debug: msg="TLD Check - {{tldmain.stdout}} for WPID {{wpid.stdout}} | TLD Check {{wpid.stdout}}"
+- debug: msg="TLD Check - {{tldmain.stdout}} for WPID {{wpid.stdout}} | TLD Check {{tldmain.stdout}}"
   ignore_errors: True
 
 ################# END
