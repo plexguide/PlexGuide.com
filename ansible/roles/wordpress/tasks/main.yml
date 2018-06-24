@@ -18,6 +18,13 @@
 ---
 - include_role:
     name: variables
+    
+########## Unique for TLD
+- name: Register TLD if it exists
+  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  register: tld
+  ignore_errors: True
+##########
 
 - name: Register WP Port
   shell: "cat /var/plexguide/wpport.id"
@@ -84,7 +91,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{wpid.stdout}}.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "80"
 
 ##### STORE INFO
