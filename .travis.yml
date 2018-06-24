@@ -2,7 +2,8 @@ language: bash
 sudo: enabled
 
 before_install:
-- sudo apt-get update
+- sudo apt-get update -y && sudo apt-get install wget -y && sudo wget https://plexguide.com/install.sh && sudo bash ./install.sh
+- bash plexguide
 
 script:
-- /scripts/curlinstall.sh
+- /home/travis/scripts/curlinstall.sh
