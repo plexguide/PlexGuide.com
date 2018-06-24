@@ -34,9 +34,10 @@ OPTIONS=(A "Media Servers"
          D "Torrents"
          E "Supporting"
          F "UI Organziers"
-         G "Critical"
-         H "4K Versions"
-         I "Beta"
+         G "Tools"
+         H "Critical"
+         I "4K Versions"
+         J "Beta"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -68,12 +69,15 @@ echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && 
 echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/ui.sh ;;
         G)
+echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/programs/tools.sh ;;
+        H)
 echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/critical.sh ;;
-        H)
+        I)
 echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/versions4k.sh ;;
-        I)
+        J)
 echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/beta.sh ;;
         Z)
