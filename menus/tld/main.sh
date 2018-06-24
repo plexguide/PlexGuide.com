@@ -18,11 +18,11 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Top Level Domain Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-HEIGHT=13
-WIDTH=38
-CHOICE_HEIGHT=7
+HEIGHT=14
+WIDTH=28
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="App Selection for Primary Domain"
+TITLE="Top Domain Selection"
 
  OPTIONS=(A "Heimdall"
           B "HTPCManager"
