@@ -34,24 +34,15 @@
   register: tldcheck
   ignore_errors: True
 
-- name: Comparison Check
-  shell: "a=$(cat /var/plexguide/wp.tld); b=$(cat /var/plexguide/wp.id); if [ $a == $b ] ; then echo 'yes' 1>/tmp/wp.answer ; else echo 'no' 1>/tmp/wp.answer ; fi"
-  ignore_errors: True
-
-- name: Register Status
-  shell: "cat /tmp/wp.answer"
-  register: tldanswer
-  ignore_errors: True
-
 - name: Register TLD if it exists
   shell: "cat /var/plexguide/wp.tld"
   ignore_errors: True
-  when: tldanswer == "yes"
+  when: tldcheck == wpid
 
 - name: Register TLD if it does not exist
   shell: "echo ''"
   ignore_errors: True
-  when: tldanswer == "no"
+  when: tldcheck != wpid
 
 - debug: msg="TLD Check - for WPID {{wpid.stdout}} | TLD Check {{tldcheck.stdout}}"
   ignore_errors: True
