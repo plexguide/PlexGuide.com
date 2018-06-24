@@ -38,7 +38,7 @@ do
         docker stop sonarr &>/dev/null &
         docker stop radarr &>/dev/null &
         docker stop sonarr4k &>/dev/null &
-        docker stop radarr4k &>/dev/null &
+        docker stop radarr4k&>/dev/null &
         echo 'WARNING - Programs Utilizing UnionFS were shutdown' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         echo 'INFO - Redeploying PG Drive Service To Assist' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt 1>/dev/null 2>&1
@@ -72,7 +72,7 @@ do
             docker stop sonarr &>/dev/null &
             docker stop radarr &>/dev/null &
             docker stop sonarr4k &>/dev/null &
-            docker stop radarr4k &>/dev/null &
+            docker stop radarr4k&>/dev/null &
             sleep 2
             exit
   		  fi

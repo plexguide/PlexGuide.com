@@ -213,11 +213,11 @@
       - unionfs_en
     ignore_errors: True
 
-#  - name: Stop If UNIONFS Service Running
-#    systemd: state=stopped name=unionfs
-#    tags:
-#      - unionfs_en
-#    ignore_errors: yes
+  - name: Stop If UNIONFS Service Running
+    systemd: state=stopped name=unionfs
+    tags:
+      - unionfs_en
+    ignore_errors: yes
 
   - name: Install UNIONFS Service
     template:
@@ -227,10 +227,18 @@
     tags:
       - unionfs_en
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-#    tags:
-#      - unionfs_en
+  - name: Install UNIONFS,sh Service
+    template:
+      src: /etc/systemd/system/unionfs.service
+      dest: /opt/appdata/plexguide/unionfs.sh
+      force: yes
+    tags:
+      - unionfs_en
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - unionfs_en
 
   - name: Start UNIONFS
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
@@ -246,7 +254,7 @@
 
   - name: Install UFS Monitor Service
     template:
-      src: ufsmonitor.service
+      src: ufsmonitor_en.service
       dest: /etc/systemd/system/ufsmonitor.service
       force: yes
     ignore_errors: True
@@ -255,7 +263,7 @@
 
   - name: Install UFS Script
     template:
-      src: ufsmonitor.sh
+      src: ufsmonitor_en.sh
       dest: /opt/appdata/plexguide/ufsmonitor.sh
       force: yes
     ignore_errors: True

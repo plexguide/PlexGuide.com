@@ -210,6 +210,12 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             ;;
+            F)
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            #ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+            ;;
         Z)
             exit 0 ;;
 
@@ -230,7 +236,9 @@ bash /opt/plexguide/menus/mount/unencrypted.sh
        #       dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
        #     fi
        #     ;;
-        #F)
-        #  ansible-role services_remove
-        #  dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
-        #  ;;
+        F)
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            #ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+            ;;
