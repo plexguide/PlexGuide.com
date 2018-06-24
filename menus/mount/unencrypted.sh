@@ -51,7 +51,7 @@ echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash
 clear
 curl https://rclone.org/install.sh | sudo bash
 sleep 1
-dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE Beta is now Installed!" 0 0
+dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE is now Installed!" 0 0
 
 ################# Needed FOR RCLONE
 tee "/etc/fuse.conf" > /dev/null <<EOF
