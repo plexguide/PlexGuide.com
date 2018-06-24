@@ -20,20 +20,26 @@
     systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
     ignore_errors: True
     tags:
-      - rclone
+      - rclone-en
+
+      - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2_encrypt daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - rclone-en
 
   - name: Daemon-Reload
     systemd: state=stopped name=supertransfer daemon_reload=yes enabled=no
     ignore_errors: True
     tags:
-      - rclone
+      - rclone-en
 
 ########################################## Scripts
 ########## Move En Service Script
   - name: Check MOVE EN SCRIPT
     stat:
       path: "/opt/appdata/plexguide/move-en.sh"
-    register: move-en_script
+    register: move_en_script
     tags:
       - rclone-en
 
@@ -65,7 +71,7 @@
   - name: Check RClone En Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/rclone-en.sh"
-    register: rclone-en_script
+    register: rclone_en_script
     tags:
       - rclone-en
 
@@ -81,7 +87,7 @@
   - name: Check RClone Encrypt Sync SCRIPT
     stat:
       path: "/opt/appdata/plexguide/rclone-encrypt.sh"
-    register: rclone-encrypt_script
+    register: rclone_encrypt_script
     tags:
       - rclone-en
 
@@ -99,13 +105,13 @@
   - name: Check MOVE En Service
     stat:
       path: "/etc/systemd/system/move-en.service"
-    register: move-en
+    register: move_en
     tags:
       - rclone-en
 
   - name: Stop If Move En Service Running
     systemd: state=stopped name=move-en
-    when: move-en.stat.exists
+    when: move_en.stat.exists
     tags:
       - rclone-en
 
@@ -114,7 +120,7 @@
       src: move-en.js2
       dest: /etc/systemd/system/move-en.service
       force: yes
-    when: move-en.stat.exists == False
+    when: move_en.stat.exists == False
     tags:
       - rclone-en
 
@@ -166,13 +172,13 @@
   - name: Check RClone En Service
     stat:
       path: "/etc/systemd/system/rclone-en.service"
-    register: rclone-en
+    register: rclone_en
     tags:
       - rclone-en
 
   - name: Stop If RClone En Service Running
     systemd: state=stopped name=rclone-en
-    when: rclone-en.stat.exists
+    when: rclone_en.stat.exists
     tags:
       - rclone-en
 
@@ -199,7 +205,7 @@
   - name: Check RClone Encrypt Service
     stat:
       path: "/etc/systemd/system/rclone-encrypt.service"
-    register: rclone-encrypt
+    register: rclone_encrypt
     tags:
       - rclone-en
 
@@ -233,7 +239,7 @@
   - name: Check UnionFS Encrypt Service
     stat:
       path: "/etc/systemd/system/unionfs-encrypt.service"
-    register: unionfs-encrypt
+    register: unionfs_encrypt
     tags:
       - rclone-en
 
@@ -248,7 +254,7 @@
       src: unionfs-encrypt.js2
       dest: /etc/systemd/system/unionfs-encrypt.service
       force: yes
-    #when: unionfs-encrypt.stat.exists == False
+    #when: unionfs_encrypt.stat.exists == False
     tags:
       - rclone-en
 
