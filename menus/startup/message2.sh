@@ -30,21 +30,14 @@ traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$traefikver" == "traefik2" ]
   then
-  	traefik="Traefik V2"
+  	tmessage="Reverse Proxy: Traefik V2 Installed"
   	traefikdetect="true"
 fi
 
 if [ "$traefikver" == "traefik" ]
   then
-  	traefik="Traefik V1"
+  	tmessage="Reverse Proxy: Traefik V1 Installed"
   	traefikdetect="true"
-fi
-
-if curl -s --head --request GET https://portainer.$domain | grep "200 OK" > /dev/null
-   then     
-   tmessage="$traefik: Certificate is Valid"
-else    
-   tmessage="$traefik: Certificate is NOT Valid"
 fi
 
 if [ "$traefikdetect" == "false" ]
