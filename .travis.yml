@@ -1,0 +1,8 @@
+language: bash
+sudo: enabled
+
+before_install:
+- sudo apt-get update
+
+script:
+- /scripts/curlinstall.sh
