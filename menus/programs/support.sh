@@ -20,9 +20,9 @@ echo 'INFO - @Support Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scrip
 
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=18
+HEIGHT=15
 WIDTH=37
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
