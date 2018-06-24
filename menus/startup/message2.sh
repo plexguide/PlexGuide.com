@@ -8,8 +8,6 @@ portstat=$(cat /var/plexguide/server.ports.status)
 watchtower=$(cat /var/plexguide/watchtower.yes)
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 serverid=$( cat /var/plexguide/server.id )
-
-traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 domain=$( cat /var/plexguide/server.domain )
 hd=$( cat /var/plexguide/server.hd.path )
 
@@ -27,6 +25,7 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
+traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$traefikver" == "traefik2" ]
@@ -41,7 +40,7 @@ if [ "$traefikver" == "traefik" ]
   	traefikdetect="true"
 fi
 
-if curl -s --head  --request GET https://portainer.$domain | grep "200 OK" > /dev/null
+if curl -s --head --request GET https://portainer.$domain | grep "200 OK" > /dev/null
 	then     
 		tmessage=$(echo "$traefik: Certificate is Valid")
     else    
