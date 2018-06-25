@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [x2go Server]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & FlickerRate
@@ -43,12 +43,14 @@
       - name: plexguide
         aliases:
           - x2go
-    restart_policy: unless stopped
+    restart_policy: unless-stopped
     state: started
 
- - debug:
-      msg: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki"
+- debug:
+     msg: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki"
 
+- debug:
+     msg: "Checker x2go portainer log for dockerx password"
 #- name: Download x2go Software
 #  pause:
 #    prompt: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki [Press Enter]"
