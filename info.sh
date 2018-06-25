@@ -17,7 +17,7 @@
 #################################################################################
 #### PG VARIBLES
 echo "5.099 Update 3" > /var/plexguide/pg.version
-echo "87" > /var/plexguide/pg.preinstall
+echo "88" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
 echo "18.03.1" > /var/plexguide/pg.docker16
@@ -34,5 +34,5 @@ echo "1" > /var/plexguide/pg.ansible
 echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "1" > /var/plexguide/pg.label
-echo "4" > /var/plexguide/pg.alias
+echo "5" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep ## dependencies
