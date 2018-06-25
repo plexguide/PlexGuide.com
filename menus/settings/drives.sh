@@ -17,22 +17,21 @@
 #################################################################################
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+echo 'INFO - @Settings Menu - Drives Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-HEIGHT=15
+HEIGHT=14
 WIDTH=58
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
 OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
-         B "Hard Drive 2nd: Use a Second HD for Processing"
-         C "Notifications : Enable the Use of Notifications"
-         E "Processor     : Enhance Processing Power"
-         F "Kernel Mods   : Enhance Network Throughput"
-         G "WatchTower    : Auto-Update Application Manager"
-         H "App Themes    : Install Dark Theme(s) For Apps "
-         I "Default App   : For Your Top Level Domain"
+         B "Domain App    : Select Default App for Domain"
+         C "Hard Drive 2nd: Use a Second HD for Processing"
+         D "Processor     : Enhance Processing Power"
+         E "Kernel Mods   : Enhance Network Throughput"
+         F "WatchTower    : Auto-Update Application Manager"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -47,33 +46,38 @@ clear
 case $CHOICE in
     A)
         bash /opt/plexguide/menus/traefik/main.sh
+        echo 'INFO - Selected Domain/Traefik' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ;;
     B)
+        bash /opt/plexguide/menus/tld/main.sh 
+        echo 'INFO - Selected Top Level Domain App' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        ;; 
+    C)
         #### Solo Drive Edition
         if [ "$edition" == "PG Edition: HD Solo" ]
           then
           dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
+          echo 'WARNING - Utilizing HD Solo Edition - Cannot Configure Drives' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
           bash /opt/plexguide/menus/settings/drives.sh
           exit
+        echo 'INFO - Selected 2nd HD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         fi 
         ;;
-    C)
-        bash /opt/plexguide/menus/notifications/main.sh
-        ;;
     D)
-        bash /opt/plexguide/menus/ports/main.sh ;;
+        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh 
+        echo "INFO - Selected Processor Power Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        ;;
     E)
-        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+        echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh 
+        ;;
     F)
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
-    H)
-        bash /opt/plexguide/menus/watchtower/main.sh ;;
-    J)
-        bash /opt/plexguide/menus/themes/main.sh ;;
-    I)
-        bash /opt/plexguide/menus/tld/main.sh ;;     
+        echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        bash /opt/plexguide/menus/watchtower/main.sh 
+        ;;
     Z)
         clear
+        echo "INFO - Exited Settings Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         exit 0
         ;;
     esac

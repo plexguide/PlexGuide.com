@@ -22,7 +22,13 @@
   tags:
     - backup_normal
 
-- debug: msg="Temp Message - For {{program_var.stdout}}"
+- name: "Server ID for Backup"
+  shell: "cat /var/plexguide/server.id"
+  register: server_id
+  tags:
+    - backup_normal
+
+- debug: msg="Temp Message - For {{program_var.stdout}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
 
@@ -33,7 +39,7 @@
   tags:
     - backup_normal
 
-- name: "Checking if RCLone Encrypted"
+- name: "Checking if RClone Encrypted"
   stat:
     path: /var/plexguide/rclone-en.yes
   register: encrypted
@@ -80,13 +86,13 @@
     - backup_normal
 
 - name: Uploading Backup to Google Drive
-  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
   tags:
     - backup_normal
 
 - name: Uploading Backup to Google Drive (encrypted)
-  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gcrypt:/plexguide/backup -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /tmp/{{program_var.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
   tags:
     - backup_normal

@@ -45,10 +45,11 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 #systemctl deamon-reload 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
-clear
-HEIGHT=16
+echo 'INFO - @Main PG Menu - Local HD Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+HEIGHT=14
 WIDTH=40
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=8
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
@@ -59,8 +60,6 @@ OPTIONS=(A "PG Program Suite"
          E "PG Troubleshooting Actions"
          F "PG Settings"
          G "PG Update"
-         H "PG Edition Switch"
-         I "Donation Menu"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -71,25 +70,26 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
+echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/main.sh ;;
-
         B)
+echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
-
         C)
             #### Solo Drive Edition
             if [ "$edition" == "PG Edition: HD Solo" ]
               then
+              echo 'WARNING - Using Solo HD Edition! Cannot Configure Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
               dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
               bash /opt/plexguide/menus/localmain.sh
               exit
             fi
-
 file="/usr/bin/mergerfs"
   if [ -e "$file" ]
     then
-  echo "" 1>/dev/null 2>&1
+echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     else
+echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --infobox "Installing MergerFS (Please Wait!)" 3 50
 wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1
 apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
@@ -101,31 +101,32 @@ cd ..
 dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
   fi
-  
             #### Multiple Editions HD
             bash /opt/plexguide/menus/drives/hds.sh
             ;;
         D)
+echo 'INFO - Selected: PG Server Information Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/infodrives.sh 
             ;;
         E)
+echo 'INFO - Selected: PG Troubleshoot Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/info-tshoot/tshoot.sh 
             ;;
         F)
+echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/settings/drives.sh
             ;;
         G)
+echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        H)
-            bash /opt/plexguide/scripts/baseinstall/edition.sh ;;
-        I)
-            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
+echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
 esac
 
 ## repeat menu when exiting
+echo 'INFO - Looping Local Main Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/menus/localmain.sh

@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+echo 'INFO - @NDCU Selection Menu (View Space)' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 ## This is to analyse what's taking up space on you drives
 

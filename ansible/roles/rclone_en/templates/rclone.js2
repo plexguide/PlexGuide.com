@@ -9,7 +9,7 @@ Group=0
 ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
 ExecStop=/bin/fusermount -uz /mnt/gdrive
 TimeoutStopSec=20
-KillMode=process
+KillMode=mixed
 RemainAfterExit=yes
 
 [Install]

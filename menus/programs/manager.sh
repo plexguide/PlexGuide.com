@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Manager Programs Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=16
 WIDTH=38

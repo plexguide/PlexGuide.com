@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @GCE Program Select Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=16
 WIDTH=38
@@ -40,6 +41,7 @@ case $CHOICE in
       display=NZBGET
       program=nzbget
       port=6789
+      bash /opt/plexguide/menus/images/nzbget.sh
       dialog --infobox "Installing: $display" 3 30
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
       sleep 3

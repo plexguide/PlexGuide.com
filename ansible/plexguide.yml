@@ -16,6 +16,7 @@
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
   - { role: nzbget, tags: ['nzbget'] }
+  - { role: alltube, tags: ['alltube'] }
   - { role: pgdrive, tags: ['pgdrive'] }
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
@@ -25,6 +26,7 @@
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: sabnzbd, tags: ['sabnzbd'] }
+  - { role: nowshowing, tags: ['nowshowing'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: cloudcmd, tags: ['cloudcmd'] }
   - { role: pgcache, tags: ['pgcache'] }
@@ -64,7 +66,6 @@
   - { role: plex2, tags: ['plex2'] }
   - { role: medusa, tags: ['medusa'] }
   - { role: watchtower, tags: ['watchtower'] }
-  - { role: wordpress, tags: ['wordpress'] }
   - { role: vnc, tags: ['vnc'] }
   - { role: traefik, tags: ['traefik'] }
   - { role: traefik2, tags: ['traefik2'] }

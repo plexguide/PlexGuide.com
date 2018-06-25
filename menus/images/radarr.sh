@@ -27,7 +27,7 @@ TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/radarr: Recommended"
          B "hotio/suitarr     : Space Saver"
-         C "zachawii/radarr   : MP4 Converter"
+         C "aront/radarr      : MP4 Converter"
          D "Why Important: FAQ"
          Z "Exit")
 
@@ -43,11 +43,17 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            echo "linuxserver/radarr" > /var/plexguide/image.radarr ;;
+            echo "linuxserver/radarr" > /var/plexguide/image.radarr 
+            echo "" > /var/plexguide/extra.radarr
+            ;;
         B)
-            echo "hotio/suitarr" > /var/plexguide/image.radarr ;;
+            echo "hotio/suitarr" > /var/plexguide/image.radarr 
+            echo "/Radarr" > /var/plexguide/extra.radarr
+            ;;
         C)
-            echo "zachawii/radarr" > /var/plexguide/image.radarr ;;
+            echo "aront/radarr" > /var/plexguide/image.radarr 
+            echo "" > /var/plexguide/extra.radarr
+            ;;
         D)
             ;;
         Z)

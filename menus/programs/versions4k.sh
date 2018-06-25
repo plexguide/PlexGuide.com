@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Main 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=10
 WIDTH=38
@@ -36,13 +37,15 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
+echo 'INFO - Selected Ombi4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             display=Ombi4K
             program=ombi4k
             sleep 2
             clear
             port=3574
             dialog --infobox "Installing: $display" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k &>/dev/null &
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi4k
             read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -51,6 +54,8 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
+echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             display=Radarr4k
             program=radarr4k
             port=7874
@@ -58,7 +63,7 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k
             chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
             read -n 1 -s -r -p "Press any key to continue"
@@ -69,6 +74,8 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         C)
+echo 'INFO - Selected: Sonarr4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             display=Sonarr4k
             program=sonarr4k
             port=8984
@@ -76,7 +83,7 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k
             chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             read -n 1 -s -r -p "Press any key to continue"
@@ -90,5 +97,6 @@ case $CHOICE in
             exit 0 ;;
 esac
 
+echo 'INFO Looping: 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 #### recall itself to loop unless user exits
 bash /opt/plexguide/menus/programs/versions4k.sh

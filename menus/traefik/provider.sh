@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 'INFO - @Domain Provider Menu: Traefik v2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 rm -r /tmp/display1 1>/dev/null 2>&1
 rm -r /tmp/display2 1>/dev/null 2>&1
@@ -44,6 +45,8 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
+echo 'INFO - CloudFlare: Traefik v2 Selected' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       dialog --title "Word of Caution" --msgbox "\nCloudflare is a great way to go! It may appear to work, but you need up to 12 hours if you just setup with CloudFlare!\n\nIf not, you may see an issue regarding the nameserver in the Portainer Logs!" 0 0
       echo "CLOUDFLARE_EMAIL" > /tmp/display1
       echo "CLOUDFLARE_API_KEY" > /tmp/display2
@@ -62,6 +65,8 @@ case $CHOICE in
       dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     B)
+echo 'INFO - GANDIv5: Traefik v2 Selected' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       echo "GANDI_API_KEY" > /tmp/display1
       echo "gandiv5" > /var/plexguide/provider
       dialog --infobox "Setting Up Gandi" 3 45
@@ -78,6 +83,8 @@ case $CHOICE in
       dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     C)
+echo 'INFO - GoDaddy: Traefik v2 Selected' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       echo "GODADDY_API_KEY" > /tmp/display1
       echo "GODADDY_API_SECRET" > /tmp/display2
       echo "godaddy" > /var/plexguide/provider
@@ -95,6 +102,8 @@ case $CHOICE in
       dialog --title "Status" --msgbox "\nTraefik v2 Installed!\n\nView the Traefik Portainer Logs for more information!" 0 0
       exit 0 ;;
     D)
+echo 'INFO - DuckDNS: Traefik v2 Selected' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       echo "DUCKDNS_TOKEN" > /tmp/display1
       echo "duckdns" > /var/plexguide/provider
       dialog --infobox "Setting Up DuckDNS" 3 45
@@ -112,6 +121,8 @@ case $CHOICE in
       exit 0 ;;
 
     E)
+echo 'INFO - NameCheap - Traefik v2 Selected' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       dialog --title "Word of Caution" --msgbox "\nNameCheap requires a customer to spend at least 50 USD within the last two years to access their API!\n\nTold them the issue it causes and GoDaddy has no such requirement. If you cannot access the API, point your NameCheap Domain to CloudFlare!" 0 0
       echo "NAMECHEAP_API_USER" > /tmp/display1
       echo "NAMECHEAP_API_KEY" > /tmp/display2

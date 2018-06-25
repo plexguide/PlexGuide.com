@@ -22,3 +22,5 @@ port=$( cat /tmp/port )
 
 dialog --title "$display - Address Info" \
 --msgbox "\nIPv4      - http://$ipv4:$port\nSubdomain - https://$program.$domain\nDomain    - http://$domain:$port" 8 50
+
+echo "INFO - $program Info - Port $port" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

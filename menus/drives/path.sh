@@ -58,10 +58,14 @@
       then
         rm -r "$path/plexguide"
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists! We are going to CHMOD & CHOWN the path for you!" 0 0
+echo "SUCCESS - Path $path is valid! Setting CHOWN & CHMOD." > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
         chown 1000:1000 "$path"
         chmod 0775 "$path"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
+echo "WARNING - Path $path does not exist!" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
         echo "" > /var/plexguide/hd.$number
         bash /opt/plexguide/menus/drives/hds.sh
         exit
@@ -76,6 +80,8 @@
 
   else
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs NOT Correct. Re-running HD Menu!" 0 0
+echo "WARNING - Path $path is NOT Correct!" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
     bash /opt/plexguide/menus/drives/hds.sh
     exit
   fi

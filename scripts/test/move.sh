@@ -5,6 +5,10 @@
 ##     so that they can be used in the future if need be!    ##
 
 ## For testing new pgdrive encrypt new location
+rm -r /opt/plexguide/menus/rclone/select.sh
+mv /opt/plexguide/menus/rclone/select-new.sh /opt/plexguide/menus/rclone/select.sh
+
+## For testing new pgdrive encrypt new location
 rm -r /opt/plexguide/ansible/roles/pgdrive_en
 mv /opt/plexguide/ansible/roles/pgdrive_en2 /opt/plexguide/ansible/roles/pgdrive_en
 ## For testing new pgdrive encrypt new location

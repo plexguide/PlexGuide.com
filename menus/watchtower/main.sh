@@ -1,7 +1,21 @@
-
-#!/bin/bash
+#
+# [PlexGuide Menu]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 - Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
 export NCURSES_NO_UTF8_ACS=1
-
+echo 'INFO - @WatchTower Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 file="/var/plexguide/watchtower.yes"
 if [ -e "$file" ]
@@ -41,11 +55,13 @@ case $CHOICE in
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=watchall &>/dev/null &
               dialog --infobox "Notice: Your containers will Auto-Update except PLEX & Emby!\n\nMade an error? Just SELECT it again!" 0 0
               echo "[All Except P&E]" > /var/plexguide/watchtower.yes
-              sleep 9
+              sleep 7
               exit 0
             else
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
+echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
               bash /opt/plexguide/menus/watchtower/main.sh
               exit 0
             fi
@@ -57,11 +73,12 @@ case $CHOICE in
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower --skip-tags=plexemby &>/dev/null &
               dialog --infobox "Notice: All Your containers will Auto-Update!\n\nMade an error? Just SELECT it again!" 0 0
               echo "[All Containers]" > /var/plexguide/watchtower.yes
-              sleep 9
+              sleep 7
               exit 0
             else
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
+echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
               bash /opt/plexguide/menus/watchtower/main.sh
               exit 0
             fi
@@ -74,11 +91,12 @@ case $CHOICE in
               docker rm watchtower 1>/dev/null 2>&1
               dialog --infobox "Notice: WatchTower is not enabled or has been removed!\n\nUpdate manually by rerunning your targeted Application for the newest update!" 0 0
               echo "[Disabled Updates]" > /var/plexguide/watchtower.yes
-              sleep 9
+              sleep 7
               exit 0
             else
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
+echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
               bash /opt/plexguide/menus/watchtower/main.sh
               exit 0
             fi
@@ -93,6 +111,7 @@ case $CHOICE in
                exit 0
             else
                dialog --title "Dummy Proof Alert!" --msgbox "\nFor the first time, you must select a status! REDO!" 0 0
+               echo 'WARNING - User is Required to Select a WatchTower Preference' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
             ;;
 esac

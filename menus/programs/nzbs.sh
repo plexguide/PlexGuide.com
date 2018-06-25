@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Main NZBs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=10
 WIDTH=38
@@ -39,6 +40,7 @@ case $CHOICE in
         A)
             display=NZBGET
             program=nzbget
+            bash /opt/plexguide/menus/images/nzbget.sh
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
@@ -54,6 +56,7 @@ case $CHOICE in
         B)
             display=NZBHYDRA2
             program=nzbhydra2
+            bash /opt/plexguide/menus/images/nzbhydra2.sh
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear

@@ -16,27 +16,27 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Main PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-HEIGHT=18
+HEIGHT=17
 WIDTH=40
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
 OPTIONS=(A "Deploy a Mount System"
          B "PG Program Suite"
          C "PG PLEX Enhancement Tools"
-         D "PG Server Security"
-         E "PG Server Information"
-         F "PG Troubleshooting Actions"
-         G "PG Settings & Tools"
-         H "PG Backup & Restore"
-         I "PG Updates"
-         J "PG Edition Switch"
-         K "Donation Menu"
+         D "PG Wordpress"
+         E "PG Server Security"
+         F "PG Server Information"
+         G "PG Troubleshooting Actions"
+         H "PG Settings & Tools"
+         I "PG Backup & Restore"
+         J "PG Updates"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -47,73 +47,44 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-
-##################################################### DEPLOYMENT SYSTEM - START
-        HEIGHT=11
-        WIDTH=44
-        CHOICE_HEIGHT=5
-        BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-        TITLE="Deploy a Mounting System"
-
-        OPTIONS=(A "PGDrive   /w PG Move (Recommended)"
-                 B "PGDrive   /w PG ST2  (Advanced)"
-                 C "PlexDrive /w PG Move (Traditional)"
-                 D "Mini FAQ"
-                 Z "Exit")
-
-        CHOICE=$(dialog --backtitle "$BACKTITLE" \
-                        --title "$TITLE" \
-                        --menu "$MENU" \
-                        $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                        "${OPTIONS[@]}" \
-                        2>&1 >/dev/tty)
-        case $CHOICE in
-                A)
-                    echo "Move" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/mount/main.sh 
-                    ;;
-                B)
-                    echo "SuperTransfer2" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/mount/main.sh
-                    ;;
-                C)
-                    "plexdrive" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
-                    ;;
-                D)
-                    ;;
-                Z)
-                    ;; ## Do Not Put Anything Here
-        esac
-            ;;
-##################################################### DEPLOYMENT SYSTEM - END
+echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+           bash /opt/plexguide/menus/deploychoice.sh ;;
         B)
+echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/programs/main.sh ;;
         C)
+echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
-            bash /opt/plexguide/menus/security/main.sh ;;
+echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/wordpress/main.sh ;;           
         E)
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/security/main.sh ;;
         F)
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
         G)
-            bash /opt/plexguide/menus/settings/main.sh ;;
+echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
         H)
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/settings/main.sh ;;
         I)
+echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+        J)
+echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
-        J)
-            bash /opt/plexguide/scripts/baseinstall/edition.sh
-            ;;
-        K)
-            bash /opt/plexguide/menus/donate/main.sh ;;
         Z)
+echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
 esac
 
 ## repeat menu when exiting
+echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/menus/main.sh
+exit

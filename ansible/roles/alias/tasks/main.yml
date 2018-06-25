@@ -72,6 +72,20 @@
       force: yes
       mode: 0775
 
+  - name: Install Status UFSMonitor
+    template:
+      src: sufs
+      dest: /bin/sufs
+      force: yes
+      mode: 0775
+
+  - name: Nano UFSMonitor
+    template:
+      src: nufs
+      dest: /bin/nufs
+      force: yes
+      mode: 0775
+
   - name: Install Status SuperTransfer2
     template:
       src: sst2
@@ -111,9 +125,108 @@
 
 ###### Install PGLog
 
-  - name: Nano TCrypt
+  - name: Nano PGLog
     template:
       src: pglog
       dest: /bin/pglog
       force: yes
       mode: 0775
+
+###### Install PGUpdate
+
+  - name: PGUpdate
+    template:
+      src: pgupdate
+      dest: /bin/pgupdate
+      force: yes
+      mode: 0775
+
+###### Install PGDEV
+
+  - name: PGDev
+    template:
+      src: pgdev
+      dest: /bin/pgdev
+      force: yes
+      mode: 0775
+
+###### Install PlexGuide
+
+  - name: PlexGuide
+    template:
+      src: plexguide
+      dest: /bin/plexguide
+      force: yes
+      mode: 0775
+      owner: root
+
+###### Server reboot
+
+  - name: server reboot
+    template:
+      src: reboot
+      dest: /bin/reboot
+      force: yes
+      mode: 0775
+
+###### Check list of services
+
+  - name: list systemd services
+    template:
+      src: slist
+      dest: /bin/slist
+      force: yes
+      mode: 0775
+      owner: root
+
+
+###### Server update
+
+  - name: update server
+    template:
+      src: update
+      dest: /bin/update
+      force: yes
+      mode: 0775
+
+###### Server upgrade
+
+  - name: upgrade server
+    template:
+      src: upgrade
+      dest: /bin/upgrade
+      force: yes
+      mode: 0775
+      owner: root
+
+###### Install app
+
+  - name: install appname
+    template:
+      src: install
+      dest: /bin/install
+      force: yes
+      mode: 0775
+      owner: root
+
+###### Autoremove installed app packages
+
+  - name: autoremove unused packages after app install
+    template:
+      src: autoremove
+      dest: /bin/autoremove
+      force: yes
+      mode: 0775
+      owner: root
+
+###### Remove old docker containers (Tip from @barryclamsworth)
+
+  - name: Prune docker containers appname
+    template:
+      src: prune
+      dest: /bin/prune
+      force: yes
+      mode: 0775
+      owner: root
+
+      

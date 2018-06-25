@@ -118,6 +118,46 @@
       - move
 ########################################## MOVE END
 
+########################################## ALTERNATIVE MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - alt_move
+
+  - name: Install MOVE Service
+    template:
+      src: alt_move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - alt_move
+
+  - name: Stop If MOVE Service Running
+    systemd: state=stopped name=move
+    tags:
+      - alt_move
+    ignore_errors: yes
+
+  - name: Install MOVE Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - alt_move
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
+#    tags:
+#      - alt_move
+
+  - name: Start MOVE SERVICE
+    systemd: state=started name=move daemon_reload=yes enabled=yes
+    tags:
+      - alt_move
+########################################## ALTERNATIVE MOVE END
+
 ########### GDRIVE
 
   - name: Stop If GCRYPT Service Running
@@ -195,7 +235,7 @@
 
 ########### UNIONFS
   - name: Register UNIONFS PATH
-    shell: "cat /tmp/path"
+    shell: "cat /var/plexguide/unionfs.pgpath"
     register: unionfs_path
     tags:
       - unionfs
@@ -224,3 +264,40 @@
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs
+
+########Unionfs Monitor
+  - name: Stop If UFS Monitor Service Running
+    systemd: state=stopped name=ufsmonitor
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Install UFS Monitor Service
+    template:
+      src: ufsmonitor.service
+      dest: /etc/systemd/system/ufsmonitor.service
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Install UFS Script
+    template:
+      src: ufsmonitor.sh
+      dest: /opt/appdata/plexguide/ufsmonitor.sh
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Start UFS Monitor
+    systemd: state=started name=ufsmonitor enabled=yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor

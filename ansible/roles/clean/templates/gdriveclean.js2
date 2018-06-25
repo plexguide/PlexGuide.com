@@ -4,9 +4,12 @@ if [ -d "/mnt/move/.unionfs-fuse" ]; then
 find /mnt/move/.unionfs-fuse -type f -name '*_HIDDEN~' | while read line; do
 oldPath=${line#/mnt/move/.unionfs-fuse}
 newPath=gdrive:${oldPath%_HIDDEN~}
+newPathT=tdrive:${oldPath%_HIDDEN~}
 echo "$newPath"
+echo "$newPathT"
 echo "$line"
 /usr/bin/rclone delete "$newPath"
+/usr/bin/rclone delete "$newPathT" 
 rm "$line"
 done
 find "/mnt/move/.unionfs-fuse" -mindepth 1 -type d -empty -delete

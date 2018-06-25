@@ -52,9 +52,11 @@ else
 
     if dialog --stdout --title "Are You Ready?" \
     --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-    --yesno "\nDo you have your Trekt API key?" 0 0; then
+    --yesno "\nDo you have your Trakt Keys?" 0 0; then
         bash /opt/plexguide/menus/pgtrak/traktkey.sh
     else
+echo 'FAILURE - Required Trakt Keys' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
         dialog --title "-- Note! --" --msgbox "\nCome Back Anytime! As most non-US citizen say -- Cheers! --" 0 0
     exit
     fi
@@ -101,6 +103,8 @@ proradarr=$( cat /var/plexguide/pgtrak.proradarr )
 prosonarr=$( cat /var/plexguide/pgtrak.prosonarr )
 
 ############################# START
+echo 'INFO - @PGTrak Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 HEIGHT=15
 WIDTH=55
 CHOICE_HEIGHT=8

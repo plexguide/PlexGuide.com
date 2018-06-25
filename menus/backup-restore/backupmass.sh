@@ -15,6 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 'INFO - @Backup Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+server=$( cat /var/plexguide/server.id )
 
 export NCURSES_NO_UTF8_ACS=1
 
@@ -35,14 +37,12 @@ d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
-mfolder="/mnt/gdrive/plexguide/backup.old/backup-"
-mpath="$mfolder$d"
+mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-$d"
 
-mkdir /mnt/gdrive/plexguide/backup.old/ 1>/dev/null 2>&1
-mkdir $mpath
-mv /mnt/gdrive/plexguide/backup/* $mpath 1>/dev/null 2>&1
+mkdir -p $mfolder 1>/dev/null 2>&1
+mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
 
-docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
+docker ps -a --format "{{.Names}}" > /opt/appdata/plexguide/running
 sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
@@ -51,6 +51,8 @@ sed -i -e "/traefikv2/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 #### Commenting Enables to See Everything
 while read p; do
   echo $p > /tmp/program_var
+
+clear
 
 app=$( cat /tmp/program_var )
 if [ "$app" == "plex" ]
@@ -67,6 +69,7 @@ done </opt/appdata/plexguide/running
 read -n 1 -s -r -p "Press any key to continue"
 
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
+echo 'INFO - Mass Backup Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
 

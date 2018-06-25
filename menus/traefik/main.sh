@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Traefik Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 domain=$( cat /var/plexguide/server.domain )
 dialog --infobox "Tracked Domain: $domain" 3 46
@@ -33,15 +34,19 @@ error2=${error2::-1}
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$error2" == "$error1" ]
   then
+    echo 'WARNING - Traefik Not Installed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     dialog --title "Setup Note" --msgbox "\nNo Version of Traefik is Installed!\n\nWarning, goto domains.plexguide.com for Info!" 0 0
   else
     #### This results in providing which version of Traefik one is using
     version=$( cat /var/plexguide/provider )
     if [ "$version" == "null" ]
     then
+      echo 'INFO - Using Legacy Traefik' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       dialog --infobox "Using Legacy Traefik" 3 28
       sleep 2
     else
+echo 'INFO - Using Traefik v2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       dialog --infobox "Using Traefik v2\n\nProvider $version" 3 40
       sleep 2
     fi

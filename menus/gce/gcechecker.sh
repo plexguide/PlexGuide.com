@@ -33,6 +33,9 @@ file="/dev/nvme0n1"
 
 if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
     then
+
+echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
       dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 35
 
       echo "0" | dialog --gauge "Mount Deployment" 7 50 0
@@ -96,8 +99,8 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       #ln -s /nvme1/opt/appdata/sonarr /opt/appdata
 
       mkdir /tmp 1>/dev/null 2>&1
-      chmod 0755 /tmp 1>/dev/null 2>&1
-      chown 1000:1000 /tmp 1>/dev/null 2>&1
+      chmod 0777 /tmp 1>/dev/null 2>&1
+      chown 0:0 /tmp 1>/dev/null 2>&1
 
       mkdir /mnt/gdrive 1>/dev/null 2>&1
       chmod 0755 /mnt/gdrive 1>/dev/null 2>&1
@@ -124,6 +127,7 @@ if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
       sleep 2
 
       echo "70" | dialog --gauge "Deploying NZBGET" 7 50 0
+      echo "linuxserver/nzbget" > /var/plexguide/image.radarr
       sleep 2
       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
 
@@ -153,6 +157,7 @@ echo "yes" > /var/plexguide/gce.check
       then
         echo "corn" &>/dev/null &
       else
+        echo 'FAILURE - GCE Deployment Failed: NVME HD was not selected!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly (or didn't read the wiki!) but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
       fi
 fi

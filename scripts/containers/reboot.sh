@@ -12,3 +12,4 @@ for container in $containers;
 do
     docker=$(docker start $container)
 done
+echo 'INFO - All Containers were Rebooted for Server Loadup' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

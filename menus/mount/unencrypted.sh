@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+echo 'INFO - @Unencrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
@@ -45,11 +46,12 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 clear
-curl https://rclone.org/install.sh | sudo bash -s beta
+curl https://rclone.org/install.sh | sudo bash
 sleep 1
-dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE Beta is now Installed!" 0 0
+dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE is now Installed!" 0 0
 
 ################# Needed FOR RCLONE
 tee "/etc/fuse.conf" > /dev/null <<EOF
@@ -70,10 +72,13 @@ EOF
                 then
                   echo "" 1>/dev/null 2>&1
                 else
+                  echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
                   bash /opt/plexguide/menus/mount/main.sh
                   exit
               fi
+echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
             #### RClone Missing Warning - END
             rclone config
             touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
@@ -83,6 +88,20 @@ EOF
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
+            #################### installing dummy file for prep of pgdrive deployment
+            file="/mnt/unionfs/plexguide/pgchecker.bin"
+            if [ -e "$file" ]
+            then
+               echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            else
+               mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
+               mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
+               mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
+               touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
+               rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
+               rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
+               echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            fi
             ;;
         C)
             #### RCLONE MISSING START
@@ -91,11 +110,14 @@ EOF
                 then
                   echo "" 1>/dev/null 2>&1
                 else
+                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
                   bash /opt/plexguide/menus/mount/main.sh
                   exit
               fi
+
             #### RCLONE MISSING END
+echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
@@ -104,26 +126,18 @@ EOF
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
-
-####  See encrypt.sh for example of script below in use!
-#
-#            if dialog --stdout --title "PAY ATTENTION!" \
-#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
-#
-#                ansible-role  services_remove
-#            fi
+#            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
-            rm -r /tmp/path 1>/dev/null 2>&1
-            touch /tmp/path 1>/dev/null 2>&1
+            rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+            touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
             #### IF EXIST - DEPLOY
             if [ "$tdrive" == "[tdrive]" ]
               then
 
               #### ADDS TDRIVE to the UNIONFS PATH
-              echo -n "/mnt/tdrive=RO:" >> /tmp/path
+              echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
             fi
 
@@ -131,12 +145,13 @@ EOF
               then
 
               #### ADDS GDRIVE to the UNIONFS PATH
-              echo -n "/mnt/gdrive=RO:" >> /tmp/path
+              echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
             fi
 
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
@@ -162,6 +177,7 @@ EOF
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
               then
+echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/menus/mount/unencrypted.sh
             exit
@@ -169,6 +185,7 @@ EOF
 
             if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
               then
+echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/menus/mount/unencrypted.sh
             exit
@@ -190,6 +207,14 @@ EOF
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
+            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+            ;;
+            F)
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            #ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         Z)
             exit 0 ;;
@@ -211,7 +236,9 @@ bash /opt/plexguide/menus/mount/unencrypted.sh
        #       dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
        #     fi
        #     ;;
-        #F)
-        #  ansible-role services_remove
-        #  dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
-        #  ;;
+        F)
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            #ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+            ;;

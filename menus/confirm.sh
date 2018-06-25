@@ -18,6 +18,7 @@
 
 ############################################################################# MINI MENU SELECTION - START
 export NCURSES_NO_UTF8_ACS=1
+echo "INFO - @Editions Selection Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 HEIGHT=9
 WIDTH=42
@@ -37,10 +38,12 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         Z)
             echo "no" > /tmp/menu.choice
+echo "INFO - Selected: No to Editions Switch" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             exit 
             ;;
         A)
             echo "yes" > /tmp/menu.choice
+echo "INFO - Selected: Yes to Editions Switch" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             exit
             ;;
 

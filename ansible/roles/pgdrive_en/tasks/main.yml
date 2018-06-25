@@ -106,11 +106,11 @@
     tags:
       - move_en
 
-  - name: Stop If Move Service Running
-    systemd: state=stopped name=move
-    tags:
-      - move_en
-    ignore_errors: yes
+#  - name: Stop If Move Service Running
+#    systemd: state=stopped name=move
+#    tags:
+#      - move_en
+#    ignore_errors: yes
 
   - name: Install Move Service
     template:
@@ -131,12 +131,53 @@
       - move_en
 ########################################## MOVE END
 
-########### GCRYPT
-#  - name: Stop If GDRIVE Service Running
-#    systemd: state=stopped name=gdrive
+########################################## ALTERNATIVE MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - alt_move_en
+
+  - name: Install MOVE Service
+    template:
+      src: alt_move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - alt_move_en
+
+  - name: Stop If MOVE Service Running
+    systemd: state=stopped name=move
+    tags:
+      - alt_move_en
+    ignore_errors: yes
+
+  - name: Install MOVE Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - alt_move_en
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
 #    tags:
-#      - gcrypt
-#    ignore_errors: yes
+#      - alt_move_en
+
+  - name: Start MOVE SERVICE
+    systemd: state=started name=move daemon_reload=yes enabled=yes
+    tags:
+      - alt_move_en
+########################################## ALTERNATIVE MOVE END
+
+
+########### GCRYPT
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=gdrive
+    tags:
+      - gcrypt
+    ignore_errors: yes
 
   - name: Daemon-Reload - Stop GDRIVE Service
     systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
@@ -158,10 +199,10 @@
     tags:
       - gcrypt
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-#    tags:
-#      - gcrypt
+  - name: Daemon-Reload
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    tags:
+      - gcrypt
 
   - name: Start GCRYPT
     systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
@@ -175,17 +216,17 @@
 #      - tcrypt
 #    ignore_errors: yes
 
-  - name: Daemon-Reload - Stop TDRIVE Service
-    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Daemon-Reload - Stop TDRIVE Service
+#    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
-  - name: Stop If TCRYPT Service Running
-    systemd: state=stopped name=tcrypt
-    tags:
-      - tcrypt
-    ignore_errors: yes
+#  - name: Stop If TCRYPT Service Running
+#    systemd: state=stopped name=tcrypt
+#    tags:
+#      - tcrypt
+#    ignore_errors: yes
 
   - name: Install TCRYPT Service
     template:
@@ -207,7 +248,7 @@
 
 ########### UNIONFS
   - name: Register UNIONFS PATH
-    shell: "cat /tmp/path"
+    shell: "cat /var/plexguide/unionfs.pgpath"
     register: unionfs_path
     tags:
       - unionfs_en
@@ -227,12 +268,57 @@
     tags:
       - unionfs_en
 
-#  - name: Daemon-Reload
-#    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-#    tags:
-#      - unionfs_en
+  - name: Install UNIONFS.sh Service
+    template:
+      src: /etc/systemd/system/unionfs.service
+      dest: /opt/appdata/plexguide/unionfs.sh
+      force: yes
+    tags:
+      - unionfs_en
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - unionfs_en
 
   - name: Start UNIONFS
     systemd: state=started name=unionfs daemon_reload=yes enabled=yes
     tags:
       - unionfs_en
+
+########Unionfs Monitor
+  - name: Stop If UFS Monitor Service Running
+    systemd: state=stopped name=ufsmonitor
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Install UFS Monitor Service
+    template:
+      src: ufsmonitor_en.service
+      dest: /etc/systemd/system/ufsmonitor.service
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Install UFS Script
+    template:
+      src: ufsmonitor_en.sh
+      dest: /opt/appdata/plexguide/ufsmonitor.sh
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en
+
+  - name: Start UFS Monitor
+    systemd: state=started name=ufsmonitor enabled=yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor_en

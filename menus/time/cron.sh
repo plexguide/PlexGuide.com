@@ -15,6 +15,19 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+##### Checks to make sure if it's GDRIVE Edition; if not; exit
+edition=$( cat /var/plexguide/pg.edition )
+
+#### G-Drive Edition
+if [ "$edition" == "PG Edition: GDrive" ]
+  then
+  a=0
+else
+    exit
+fi
+
+
 display=$( cat /tmp/program_var )
 timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 
@@ -121,6 +134,7 @@ case $CHOICE in
 			echo "*" > /tmp/cron.day
 			;;
 esac
+
 ######################## CRON DAY END ##########################
 
 ######################## CRON DAY HOUR ##########################
@@ -220,4 +234,6 @@ esac
 ######################## CRON HOUR MINUTE ##########################
 
 ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deploy2 &>/dev/null &
+echo 'INFO - Completed Building the Cron Job for $display' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 dialog --title "Notice" --msgbox "\nThe backup for $display has been deployed\n\nWant to see it, Type crontab -e in the Command Line! " 0 0

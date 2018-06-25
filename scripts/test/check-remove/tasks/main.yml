@@ -44,6 +44,7 @@
       - {name: tcrypt.service}
 #      - {name: supertransfer2.service}
       - {name: unionfs.service}
+      - {name: ufsmonitor.service}
       - {name: unionfs-encrypt.service}
       - {name: move-en.service}
       - {name: move.service}
@@ -58,10 +59,10 @@
       with_items: "{{ service_vars }}"
       register: check_service_name
 
-    - debug:
-        msg: 'Service name {{ item.item.name }} exists'
-      with_items: "{{ check_service_name.results }}"
-      when: item.stat.exists
+#    - debug:
+#        msg: 'Service name {{ item.item.name }} exists'
+#      with_items: "{{ check_service_name.results }}"
+#      when: item.stat.exists
 
     - name: Stop If Service Is Running
       systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
