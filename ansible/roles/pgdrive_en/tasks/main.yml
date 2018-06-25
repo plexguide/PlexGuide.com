@@ -227,7 +227,7 @@
     tags:
       - unionfs_en
 
-  - name: Install UNIONFS,sh Service
+  - name: Install UNIONFS.sh Service
     template:
       src: /etc/systemd/system/unionfs.service
       dest: /opt/appdata/plexguide/unionfs.sh
