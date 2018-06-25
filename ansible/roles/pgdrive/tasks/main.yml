@@ -118,6 +118,46 @@
       - move
 ########################################## MOVE END
 
+########################################## ALTERNATIVE MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - alt_move
+
+  - name: Install MOVE Service
+    template:
+      src: alt_move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - alt_move
+
+  - name: Stop If MOVE Service Running
+    systemd: state=stopped name=move
+    tags:
+      - alt_move
+    ignore_errors: yes
+
+  - name: Install MOVE Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - alt_move
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
+#    tags:
+#      - alt_move
+
+  - name: Start MOVE SERVICE
+    systemd: state=started name=move daemon_reload=yes enabled=yes
+    tags:
+      - alt_move
+########################################## ALTERNATIVE MOVE END
+
 ########### GDRIVE
 
   - name: Stop If GCRYPT Service Running
