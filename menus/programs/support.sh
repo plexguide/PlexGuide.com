@@ -92,7 +92,7 @@ case $CHOICE in
             ;;
         D)
             display=NowShowing
-            program=nowshoing
+            program=nowshowing
             port=6878
             dialog --infobox "Installing: $display" 3 30
             sleep 2
