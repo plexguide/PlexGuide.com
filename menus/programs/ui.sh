@@ -85,20 +85,35 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
       ;;
 
-    D)
-      program=organizr
-      display=Organizr
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      port=8020
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
-      read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+      D)
+        program=organizr
+        display=Organizr
+        dialog --infobox "Installing: $display" 3 30
+        sleep 2
+        clear
+        port=8020
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
+        read -n 1 -s -r -p "Press any key to continue"
+              echo "$program" > /tmp/program
+              echo "$program" > /tmp/program_var
+              echo "$port" > /tmp/port
+              bash /opt/plexguide/menus/time/cron.sh
+              bash /opt/plexguide/menus/programs/ending.sh
+        ;;
+        E)
+          program=organizrv2
+          display=OrganizrV2(Beta)
+          dialog --infobox "Installing: $display" 3 30
+          sleep 2
+          clear
+          port=8040
+          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizrv2
+          read -n 1 -s -r -p "Press any key to continue"
+                echo "$program" > /tmp/program
+                echo "$program" > /tmp/program_var
+                echo "$port" > /tmp/port
+                bash /opt/plexguide/menus/time/cron.sh
+                bash /opt/plexguide/menus/programs/ending.sh
       ;;
     Z)
        exit 0 ;;
