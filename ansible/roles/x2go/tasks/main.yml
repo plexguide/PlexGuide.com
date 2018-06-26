@@ -51,6 +51,3 @@
      msg: "  For SECURITY reasons - Please stop this container when not in use!  "
 - debug:
      msg: "  Check x2go portainer log for dockerx password  "
-#- name: Download x2go Software
-#  pause:
-#    prompt: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki [Press Enter]"
