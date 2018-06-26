@@ -26,10 +26,10 @@ if [ "$edition" == "PG Edition: GCE Feed" ]; then
 fi
 
 if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
-    echo "95" | dialog --gauge "$keyword2 File Is Already Installed" 7 50 0
+    echo "95" | dialog --gauge "$keyword2 Is Already Installed" 7 50 0
     echo "INFO - $keyword1: $keyword2 is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 else
-    echo "95" | dialog --gauge "Installing: $keyword2 File" 7 50 0
+    echo "95" | dialog --gauge "Installing: $keyword2" 7 50 0
     echo "INFO - $keyword1: $keyword2 is Installing" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     
   file="/var/plexguide/watchtower.yes"
@@ -40,6 +40,10 @@ else
     sleep 2 
   else
     bash /opt/plexguide/menus/watchtower/main.sh
+    else
+    clear
+    ansible-playbook /opt/plexguide/pg.yml --tags watchtower
+    sleep 2 
   fi
 
 fi
