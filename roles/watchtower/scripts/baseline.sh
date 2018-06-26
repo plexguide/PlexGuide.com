@@ -39,7 +39,7 @@ else
     ansible-playbook /opt/plexguide/pg.yml --tags watchtower
     sleep 2 
   else
-    bash /opt/plexguide/menus/watchtower/main.sh
+    bash /opt/plexguide/roles/watchtower/menus/main.sh
     else
     clear
     ansible-playbook /opt/plexguide/pg.yml --tags watchtower
