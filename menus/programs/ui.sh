@@ -28,6 +28,7 @@ echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/s
           B "HTPCManager"
           C "Muximux"
           D "Organizr"
+          E "OrganizrV2"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
