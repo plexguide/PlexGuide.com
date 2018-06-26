@@ -58,4 +58,3 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:organizrv2.{{domain.stdout}},organizerv2.{{domain.stdout}}"
-      traefik.port: "8040"
