@@ -103,7 +103,7 @@ case $CHOICE in
         ;;
         E)
           program=organizrv2
-          display=OrganizrV2(Beta)
+          display=OrganizrV2
           dialog --infobox "Installing: $display" 3 30
           sleep 2
           clear
