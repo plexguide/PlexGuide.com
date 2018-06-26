@@ -45,7 +45,6 @@ else
     ansible-playbook /opt/plexguide/pg.yml --tags watchtower
     sleep 2 
   fi
-
 fi
 
 ### ENDING: DECLARED VARIABLES 
