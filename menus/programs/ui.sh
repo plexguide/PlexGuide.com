@@ -28,6 +28,7 @@ echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/s
           B "HTPCManager"
           C "Muximux"
           D "Organizr"
+          E "OrganizrV2 (Beta)"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -100,7 +101,22 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
       ;;
-    Z)
+      E)
+        program=organizrv2
+        display=OrganizrV2(Beta)
+        dialog --infobox "Installing: $display" 3 30
+        sleep 2
+        clear
+        port=8040
+        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizrv2
+        read -n 1 -s -r -p "Press any key to continue"
+              echo "$program" > /tmp/program
+              echo "$program" > /tmp/program_var
+              echo "$port" > /tmp/port
+              bash /opt/plexguide/menus/time/cron.sh
+              bash /opt/plexguide/menus/programs/ending.sh
+        ;;
+      Z)
        exit 0 ;;
 esac
 
