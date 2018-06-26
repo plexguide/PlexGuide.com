@@ -73,7 +73,7 @@ case $CHOICE in
         ;;
     F)
         echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        bash /opt/plexguide/menus/watchtower/main.sh 
+        bash /opt/plexguide/roles/watchtower/menus/main.sh
         ;;
     Z)
         clear

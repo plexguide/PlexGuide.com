@@ -62,7 +62,8 @@ case $CHOICE in
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
 echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-              bash /opt/plexguide/menus/watchtower/main.sh
+              bash /opt/plexguide/roles/watchtower/menus/main.sh
+
               exit 0
             fi
             ;;
@@ -79,7 +80,7 @@ echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log &
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
 echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-              bash /opt/plexguide/menus/watchtower/main.sh
+              bash /opt/plexguide/roles/watchtower/menus/main.sh
               exit 0
             fi
             ;;
@@ -97,7 +98,7 @@ echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log &
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
 echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-              bash /opt/plexguide/menus/watchtower/main.sh
+              bash /opt/plexguide/roles/watchtower/menus/main.sh
               exit 0
             fi
               ;;
@@ -117,4 +118,4 @@ echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log &
 esac
 
 echo 'INFO - Looping: WatchTower Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-bash /opt/plexguide/menus/watchtower/main.sh
+bash /opt/plexguide/roles/watchtower/menus/main.sh

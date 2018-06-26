@@ -59,7 +59,8 @@ echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexgui
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     E)
 echo 'INFO - Selected: WatchTower Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        bash /opt/plexguide/menus/watchtower/main.sh ;;
+        bash /opt/plexguide/roles/watchtower/menus/main.sh
+        ;;
     F)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/migrate/main.sh ;;
