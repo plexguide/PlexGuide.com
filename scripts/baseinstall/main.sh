@@ -336,7 +336,7 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 #sleep 2
 
-#### Install WatchTower Command - 90 Percent
+#### Install WatchTower Command - 95 Percent
 bash /opt/plexguide/roles/watchtower/scripts/baseline.sh
 
 ############################# Python Support
