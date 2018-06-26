@@ -2,12 +2,10 @@
 ### Starting Declared Variables #################################################
 $keyword1="Baseline Install"
 $keyword2="Alias"
-
 pg_alias=$( cat /var/plexguide/pg.alias )
 pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
 ### Starting Log ################################################################
 echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
 #################################################################################
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq
@@ -16,6 +14,7 @@ echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (Read License in File)
 #
+# Execution: bash /opt/plexguide/roles/alias/scripts/baseline.sh
 #################################################################################
 if [ "$pg_alias" == "$pg_alias_stored" ]
     then
