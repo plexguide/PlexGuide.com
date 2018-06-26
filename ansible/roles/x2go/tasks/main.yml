@@ -24,6 +24,7 @@
 - name: Deploy x2go Container
   docker_container:
     name: x2go
+#    image: deiteq/dockerx2go
     image: kirkins/xubuntu16-x2go
     pull: yes
     cpu_shares: 512
@@ -36,7 +37,7 @@
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/mnt:/mnt"
-      - "/opt:/opt"  # Think about changing path fr 2nd hd option!
+      - "/opt:/opt"  # Think about changing path for 2nd hd option!
       - "/tmp:/tmp"
  #     - "/mnt:/headless/Desktop/mnt:rw"
     networks:
@@ -47,10 +48,9 @@
     state: started
 
 - debug:
-     msg: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki"
-
+     msg: "  For SECURITY reasons - Please stop this container when not in use!  "
 - debug:
-     msg: "Checker x2go portainer log for dockerx password"
+     msg: "  Check x2go portainer log for dockerx password  "
 #- name: Download x2go Software
 #  pause:
 #    prompt: "Visit https://wiki.x2go.org/doku.php/download:start then download the client and read the Wiki [Press Enter]"
