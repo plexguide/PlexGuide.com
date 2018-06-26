@@ -5,5 +5,3 @@
   roles:
   - { role: alltube, tags: ['alltube'] }
   - { role: netdata, tags: ['netdata'] }
-
-

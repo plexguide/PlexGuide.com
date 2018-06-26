@@ -16,7 +16,6 @@
   - { role: tautulli, tags: ['tautulli'] }
   - { role: bazarr, tags: ['bazarr'] }
   - { role: nzbget, tags: ['nzbget'] }
-  - { role: alltube, tags: ['alltube'] }
   - { role: pgdrive, tags: ['pgdrive'] }
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
