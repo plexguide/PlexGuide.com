@@ -13,7 +13,7 @@ keyword1="Baseline Install"
 keyword2="WatchTower"
 edition=$( cat /var/plexguide/pg.edition )
 pg_watchtower=$( cat /var/plexguide/pg.watchtower )
-pg_watchtower_stored=$( cat /var/plexguide/pg.alias.watchtower )
+pg_watchtower_stored=$( cat /var/plexguide/pg.watchtower.stored )
 
 ### STARTING LOG ######################################################
 echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -41,7 +41,7 @@ else
   else
     bash /opt/plexguide/menus/watchtower/main.sh
   fi
-  
+
 fi
 
 ### ENDING: DECLARED VARIABLES 
