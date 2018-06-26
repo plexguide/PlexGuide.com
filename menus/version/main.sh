@@ -36,7 +36,7 @@ OPTIONS=(00 "Developer    ~ 6.000"
          05 "Historical   ~ 5.079"
          06 "Historical   ~ 5.048"
          07 "Historical   ~ 5.013"
-         08 "Historical   ~ 5.004")
+         08 "Historical   ~ 5.004"
          09 "Historical   ~ 4.1")
 
 CHOICE=$(dialog --clear \
