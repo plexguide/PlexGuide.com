@@ -312,9 +312,9 @@ ansible-playbook /opt/plexguide/ansible/critical.yml --tags autodelete &>/dev/nu
 ansible-playbook /opt/plexguide/ansible/critical.yml --tags clean &>/dev/null &
 sleep 2
 
-echo "85" | dialog --gauge "Installing: Portainer" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
-#sleep 1
+#### Install Alias Command - 85 Percent
+bash /opt/plexguide/roles/portainer/scripts/baseline.sh
+
 ############################################################ Reboot Startup Container Script
 pg_docstart=$( cat /var/plexguide/pg.docstart)
 pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
