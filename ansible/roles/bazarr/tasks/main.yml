@@ -66,4 +66,4 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:bazarr.{{domain.stdout}}"
-      traefik.port: "6767
+      traefik.port: "6767"
