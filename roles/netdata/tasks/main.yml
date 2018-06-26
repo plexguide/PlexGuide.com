@@ -24,13 +24,13 @@
     
 - name: Remove Netdata Container
   docker_container:
-    name: netdata
+    name: "{{role_name}}"
     state: absent
 
 - name: Deploy NetData Container
   docker_container:
-    name: netdata
-    image: "titpetric/netdata:latest"
+    name: "{{role_name}}"
+    image: "titpetric/{{role_name}}:latest"
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -45,11 +45,11 @@
     networks:
       - name: plexguide
         aliases:
-          - netdata
+          - "{{role_name}}"
     restart_policy: always
     labels:
       traefik.enable: "true"
       traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:netdata.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "19999"
