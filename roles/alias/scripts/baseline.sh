@@ -1,6 +1,5 @@
 #!/bin/bash
-### Declared Variables ##########################################################
-
+### Starting Declared Variables #################################################
 $keyword1="Baseline Install"
 $keyword2="Alias"
 
