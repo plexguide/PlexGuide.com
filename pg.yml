@@ -3,6 +3,8 @@
 
 ############### Ensure to Maintain Alphabetical Order
   roles:
-  - { role: alltube, tags: ['alltube'] }
-  - { role: netdata, tags: ['netdata'] }
   - { role: alias, tags: ['alias'] }
+  - { role: alltube, tags: ['alltube'] }
+  - { role: netdata, tags: ['netdata'] } 
+  - { role: watchtower, tags: ['watchtower'] }
+

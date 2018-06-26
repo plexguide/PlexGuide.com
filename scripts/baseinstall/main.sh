@@ -277,7 +277,7 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
       fi
 fi
 
-#### Install Alias Command
+#### Install Alias Command - 65 Percent
 bash /opt/plexguide/roles/alias/scripts/baseline.sh
 
 
@@ -336,22 +336,8 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
 #sleep 2
 
-###### IF GCE Prevents Asking WatchTower Question
-if [ "$edition" == "PG Edition: GCE Feed" ]
-  then
-    echo "[Disabled Updates]" > /var/plexguide/watchtower.yes
-  else
-    echo "95" | dialog --gauge "Installing: WatchTower" 7 50 0
-    file="/var/plexguide/watchtower.yes"
-    if [ -e "$file" ]
-        then
-          clear
-          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags watchtower
-          sleep 2
-        else
-          bash /opt/plexguide/menus/watchtower/main.sh
-    fi
-fi
+#### Install WatchTower Command - 90 Percent
+bash /opt/plexguide/roles/watchtower/scripts/baseline.sh
 
 ############################# Python Support
 pg_python=$( cat /var/plexguide/pg.python )

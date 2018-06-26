@@ -64,7 +64,6 @@
   - { role: plex, tags: ['plex'] }
   - { role: plex2, tags: ['plex2'] }
   - { role: medusa, tags: ['medusa'] }
-  - { role: watchtower, tags: ['watchtower'] }
   - { role: vnc, tags: ['vnc'] }
   - { role: traefik, tags: ['traefik'] }
   - { role: traefik2, tags: ['traefik2'] }
