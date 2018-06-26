@@ -31,10 +31,17 @@ if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
 else
     echo "95" | dialog --gauge "Installing: $keyword2 File" 7 50 0
     echo "INFO - $keyword1: $keyword2 is Installing" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    
+  file="/var/plexguide/watchtower.yes"
+  if [ -e "$file" ];then
     sleep 2
     clear
     ansible-playbook /opt/plexguide/pg.yml --tags watchtower
     sleep 2 
+  else
+    bash /opt/plexguide/menus/watchtower/main.sh
+  fi
+  
 fi
 
 ### ENDING: DECLARED VARIABLES 
