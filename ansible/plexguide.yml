@@ -89,4 +89,4 @@
   - { role: plexrequests, tags: ['plexrequests'] }
   - { role: clean-encrypt, tags: ['clean-encrypt'] }
   - { role: organizrv2, tags: ['organizrv2'] }
-#  - { role: x2go, tags: ['x2go'] }
+  - { role: x2go, tags: ['x2go'] }

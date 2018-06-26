@@ -20,9 +20,9 @@ echo 'INFO - @Tools Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts
 
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=11
+HEIGHT=12
 WIDTH=30
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Tools"
 
@@ -30,6 +30,7 @@ OPTIONS=(A "CloudCMD"
          B "NetData"
          C "pyLoad"
          D "SpeedTEST Server"
+         E "x2go"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -107,9 +108,21 @@ case $CHOICE in
             #### skipped cron
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
+        E)
+            display=x2go
+            program=x2go
+            port=2222
+            dialog --infobox "Installing: x2go" 3 38
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags x2go
+            read -n 1 -s -r -p "Press any key to continue"
+            #### skipped cron
+            #bash /opt/plexguide/menus/programs/ending.sh
+            ;;
         Z)
             exit 0 ;;
     esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/support.sh
+bash /opt/plexguide/menus/programs/tools.sh
