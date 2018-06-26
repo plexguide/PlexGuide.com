@@ -125,4 +125,4 @@ case $CHOICE in
     esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/support.sh
+bash /opt/plexguide/menus/programs/tools.sh
