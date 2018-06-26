@@ -5,6 +5,7 @@
   roles:
   - { role: alias, tags: ['alias'] }
   - { role: alltube, tags: ['alltube'] }
+  - { role: folders, tags: ['folders'] } 
   - { role: netdata, tags: ['netdata'] } 
   - { role: portainer, tags: ['portainer'] } 
   - { role: watchtower, tags: ['watchtower'] }
