@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Starting Declared Variables #################################################
-$keyword1="Baseline Install"
-$keyword2="Alias"
+keyword1="Baseline Install"
+keyword2="Alias"
 pg_alias=$( cat /var/plexguide/pg.alias )
 pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
 ### Starting Log ################################################################
