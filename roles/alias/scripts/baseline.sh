@@ -27,7 +27,7 @@ if [ "$pg_alias" == "$pg_alias_stored" ]
       sleep 2
       clear
       ansible-playbook /opt/plexguide/pg.yml --tags alias
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+      #cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
       sleep 2
 fi 
 
