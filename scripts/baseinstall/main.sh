@@ -188,12 +188,9 @@ if [ -e "$file" ]
 fi
 # END########################### If doesn't exist, put /mnt into the file for the folders role
 
-echo "30" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-sleep 2
-clear
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
-sleep 2
-#read -n 1 -s -r -p "Press any key to continue "
+
+#### Install Folders - 30 Percent
+bash /opt/plexguide/roles/folders/scripts/baseline.sh
 
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
@@ -312,9 +309,9 @@ ansible-playbook /opt/plexguide/ansible/critical.yml --tags autodelete &>/dev/nu
 ansible-playbook /opt/plexguide/ansible/critical.yml --tags clean &>/dev/null &
 sleep 2
 
-echo "85" | dialog --gauge "Installing: Portainer" 7 50 0
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags portainer &>/dev/null &
-#sleep 1
+#### Install Alias Command - 85 Percent
+bash /opt/plexguide/roles/portainer/scripts/baseline.sh
+
 ############################################################ Reboot Startup Container Script
 pg_docstart=$( cat /var/plexguide/pg.docstart)
 pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
