@@ -228,11 +228,4 @@
       force: yes
       mode: 0775
       owner: root
-
-  - name: Nano GCrypt
-    template:
-      src: ansiblepg
-      dest: /bin/ansiblepg
-      force: yes
-      mode: 0775
       
