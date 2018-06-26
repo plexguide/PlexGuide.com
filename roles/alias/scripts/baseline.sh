@@ -33,7 +33,7 @@ if [ "$pg_alias" == "$pg_alias_stored" ]
 fi 
 
 ### ENDING: DECLARED VARIABLES 
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
 
 ### ENDING: FINAL LOG ##################################################
 echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
