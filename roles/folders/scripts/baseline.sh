@@ -19,7 +19,7 @@ echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg
 echo "30" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
 sleep 2
 clear
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
+ansible-playbook /opt/plexguide/pg.yml --tags folders
 sleep 2
 
 ### ENDING: DECLARED VARIABLES 
