@@ -24,7 +24,7 @@
 
 - name: Remove Bazarr Container
   docker_container:
-    name: bazarr
+    name: "{{role_name}}"
     state: absent
 
 - name: Register Image
@@ -39,19 +39,19 @@
 
 - name: Deploy Bazarr Container
   docker_container:
-    name: bazarr
-    image: "morpheus65535/bazarr" #"{{image.stdout}}"
+    name: "{{role_name}}"
+    image: "morpheus65535/{{role_name}}" #"{{image.stdout}}"
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}6789:6789"
     volumes:
-      - "/opt/appdata/bazarr:/config" #{{extra.stdout}}"
+      - "/opt/appdata/{{role_name}}:/config" #{{extra.stdout}}"
       - "{{path.stdout}}/:{{path.stdout}}/"
-      - "{{path.stdout}}/:unionfs/"
-      - /etc/localtime:/etc/localtime:ro
+      - "{{path.stdout}}/:/mnt/unionfs/"
+      - "/etc/localtime:/etc/localtime:ro"
     env:
-      APP: "bazarr"
+      APP: "{{role_name}}"
       VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
@@ -60,10 +60,10 @@
     networks:
       - name: plexguide
         aliases:
-          - bazarr
+          - "{{role_name}}"
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:bazarr.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "6767"
