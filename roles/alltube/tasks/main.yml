@@ -63,3 +63,6 @@
       traefik.port: "80"
     restart_policy: always
     state: started
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"

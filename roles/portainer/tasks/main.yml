@@ -27,40 +27,43 @@
     name: "plexguide"
     state: present
     
-- name: Portainer Container
+- name: "{{role_name}} Container"
   docker_container:
-    name: portainer
+    name: "{{role_name}}"
     state: absent
 
-- name: Create portainer directories
+- name: Create {{role_name}} directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
-    - /opt/appdata/portainer
+    - /opt/appdata/{{role_name}}
 
-- name: Deploy Portainer Container
+- name: Deploy {{role_name}} Container
   docker_container:
-    name: portainer
-    image: portainer/portainer
+    name: "{{role_name}}"
+    image: "{{role_name}}/{{role_name}}"
     pull: yes
-    cpu_shares: 256
+    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}9000:9000"
     env:
       PUID: "1000"
       PGID: "1000"
     volumes:
-     - /opt/appdata/portainer:/data
-     - /var/run/docker.sock:/var/run/docker.sock
-     - /opt/appdata/portainer:/data
+     - "/opt/appdata/{{role_name}}:/data"
+     - "/var/run/docker.sock:/var/run/docker.sock"
+     - "/opt/appdata/{{role_name}}:/data"
     networks:
       - name: plexguide
         aliases:
-          - portainer
+          - "{{role_name}}"
     restart_policy: always
     state: started
-### portainer cannot use auth label; pointless anyways due to creating own user/passwd
+### {{role_name}} cannot use auth label; pointless anyways due to creating own user/passwd
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:portainer.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "9000"
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"

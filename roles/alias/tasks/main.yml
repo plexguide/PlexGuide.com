@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+  - name: Logging Ansible Role Information
+    shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
   - name: Install Status Move
     template:
       src: smove
@@ -228,4 +231,6 @@
       force: yes
       mode: 0775
       owner: root
-      
+  
+  - name: Logging Ansible Role Information
+    shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"    
