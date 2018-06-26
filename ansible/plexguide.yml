@@ -15,6 +15,7 @@
   - { role: grafana, tags: ['grafana', 'monitor'] }
   - { role: portainer, tags: ['portainer'] }
   - { role: tautulli, tags: ['tautulli'] }
+  - { role: bazarr, tags: ['bazarr'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: alltube, tags: ['alltube'] }
   - { role: pgdrive, tags: ['pgdrive'] }
