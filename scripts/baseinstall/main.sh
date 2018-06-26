@@ -277,22 +277,9 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
       fi
 fi
 
-######## ALIAS
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+#### Install Alias Command
+bash /opt/plexguide/roles/alias/scripts/baseline.sh
 
-if [ "$pg_alias" == "$pg_alias_stored" ]
-    then
-      echo "65" | dialog --gauge "Alias File Is Already Installed" 7 50 0
-      sleep 2
-    else 
-      echo "65" | dialog --gauge "Installing: Alias File" 7 50 0
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags alias
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
-      sleep 2
-fi 
 
 echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
 sleep 2

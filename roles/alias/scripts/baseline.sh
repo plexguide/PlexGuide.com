@@ -26,7 +26,7 @@ if [ "$pg_alias" == "$pg_alias_stored" ]
       echo "65" | dialog --gauge "Installing: Alias File" 7 50 0
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags alias
+      ansible-playbook /opt/plexguide/pg.yml --tags alias
       cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
       sleep 2
 fi 
