@@ -46,6 +46,7 @@ fi
 
 ### ENDING: DECLARED VARIABLES 
 cat /var/plexguide/pg.watchtower > /var/plexguide/pg.watchtower.stored
+touch /var/plexguide/watchtower.yes
 
 ### ENDING: FINAL LOG ##################################################
 echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
