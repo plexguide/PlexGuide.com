@@ -131,11 +131,11 @@ echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/pl
 sudo bash /opt/plexguide/scripts/message/ending.sh
 exit 0
     else
-clear
+  clear
 fi
-
+ 
 else
-    clear
+  clear
 fi
 
 rm -rf /opt/plexguide 2>/dev/null
