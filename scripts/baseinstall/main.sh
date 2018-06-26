@@ -188,12 +188,9 @@ if [ -e "$file" ]
 fi
 # END########################### If doesn't exist, put /mnt into the file for the folders role
 
-echo "30" | dialog --gauge "Installing: PlexGuide Folders" 7 50 0
-sleep 2
-clear
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags folders
-sleep 2
-#read -n 1 -s -r -p "Press any key to continue "
+
+#### Install Folders - 30 Percent
+bash /opt/plexguide/roles/folders/scripts/baseline.sh
 
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version

@@ -9,4 +9,3 @@
   - { role: netdata, tags: ['netdata'] } 
   - { role: portainer, tags: ['portainer'] } 
   - { role: watchtower, tags: ['watchtower'] }
-
