@@ -4,6 +4,8 @@
 $keyword1="Baseline Install"
 $keyword2="Alias"
 
+pg_alias=$( cat /var/plexguide/pg.alias )
+pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
 ### Starting Log ################################################################
 echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
@@ -16,9 +18,6 @@ echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg
 # Licensed under GNU General Public License v3.0 GPL-3 (Read License in File)
 #
 #################################################################################
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
-
 if [ "$pg_alias" == "$pg_alias_stored" ]
     then
       echo "65" | dialog --gauge "$keyword2 File Is Already Installed" 7 50 0
