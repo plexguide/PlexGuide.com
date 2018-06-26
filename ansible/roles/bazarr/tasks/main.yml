@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
+- include_role:
+    name: variables
+
+- name: Remove Bazarr Container
+  docker_container:
+    name: bazarr
+    state: absent
+
+- name: Register Image
+  shell: "cat /var/plexguide/image.{{role_name}}"
+  register: image
+  ignore_errors: True
+
+- name: Register Extra
+  shell: "cat /var/plexguide/extra.{{role_name}}"
+  register: extra
+  ignore_errors: True
+
+- name: Deploy Bazarr Container
+  docker_container:
+    name: bazarr
+    image: "morpheus65535/bazarr" #"{{image.stdout}}"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}6789:6789"
+    volumes:
+      - "/opt/appdata/bazarr:/config" #{{extra.stdout}}"
+      - "{{path.stdout}}/:{{path.stdout}}/"
+      - "{{path.stdout}}/:unionfs/"
+      - /etc/localtime:/etc/localtime:ro
+    env:
+      APP: "bazarr"
+      VERSION: "stable"
+      PUID: "1000"
+      PGID: "1000"
+      BACKUP: "no"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - bazarr
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:bazarr.{{domain.stdout}}"
+      traefik.port: "6767
