@@ -90,4 +90,3 @@
   - { role: jdownloader2, tags: ['jdownloader2'] }
   - { role: plexrequests, tags: ['plexrequests'] }
   - { role: clean-encrypt, tags: ['clean-encrypt'] }
-  - { role: organizrv2, tags: ['organizrv2'] }
