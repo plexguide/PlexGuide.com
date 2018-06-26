@@ -20,9 +20,9 @@ echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/pl
 export NCURSES_NO_UTF8_ACS=1
 clear
 
-HEIGHT=17
+HEIGHT=18
 WIDTH=33
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=11
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
