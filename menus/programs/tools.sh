@@ -109,6 +109,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
+            display=x2go
             program=x2go
             port=2222
             dialog --infobox "Installing: x2go" 3 38
@@ -117,7 +118,7 @@ case $CHOICE in
             ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags x2go
             read -n 1 -s -r -p "Press any key to continue"
             #### skipped cron
-            bash /opt/plexguide/menus/programs/ending.sh
+            #bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;
