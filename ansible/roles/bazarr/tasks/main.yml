@@ -44,7 +44,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}6789:6789"
+      - "{{ports.stdout}}6767:6767"
     volumes:
       - "/opt/appdata/{{role_name}}:/config" #{{extra.stdout}}"
       - "{{path.stdout}}/:{{path.stdout}}/"
