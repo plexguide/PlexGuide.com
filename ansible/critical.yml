@@ -7,6 +7,5 @@
   - { role: label, tags: ['label'] }
   - { role: folders, tags: ['folders'] }
   - { role: preinstall, tags: ['preinstall'] }
-  - { role: alias, tags: ['alias'] }
   - { role: autodelete, tags: ['autodelete'] }
   - { role: clean, tags: ['clean'] }
