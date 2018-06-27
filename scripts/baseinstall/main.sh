@@ -302,10 +302,10 @@ pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
 
 if [ "$pg_docstart" == "$pg_docstart_stored" ]
     then
-      echo "82" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
+      echo "90" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
       sleep 2
     else 
-      echo "82" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+      echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
       ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 
       sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
