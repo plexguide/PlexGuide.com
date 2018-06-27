@@ -6,7 +6,7 @@
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (Read License in File)
 #
-# Execution: bash /opt/plexguide/roles/alias/scripts/baseline.sh
+# Execution: bash /opt/plexguide/roles/baseline/scripts/alias.sh
 
 ### STARTING DECLARED VARIABLES #######################################
 keyword1="Baseline Install"
