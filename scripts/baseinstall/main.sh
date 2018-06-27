@@ -161,7 +161,7 @@ echo "inventory = inventory" >> /etc/ansible/ansible.cfg
   fi
 
 #### Install Alias Command - 25 Percent
-bash /opt/plexguide/roles/preinstall/scripts/baseline.sh
+bash /opt/plexguide/roles/baseline/scripts/preinstall.sh
 
 # START ########################### If doesn't exist, put /mnt into the file for the folders role
 file="/var/plexguide/server.hd.path"
