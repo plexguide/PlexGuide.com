@@ -42,7 +42,7 @@ fi
 
 if [ "$traefikdetect" == "false" ]
   then
-    tmessage="WARNING: Traefik Is Not Installed"
+    tmessage="NOTE: Traefik Not Installed"
 fi
 
 dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$tmessage\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
