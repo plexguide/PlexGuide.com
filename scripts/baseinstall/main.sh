@@ -295,7 +295,7 @@ ansible-playbook /opt/plexguide/ansible/critical.yml --tags clean &>/dev/null &
 sleep 2
 
 #### Install Alias Command - 85 Percent
-bash /opt/plexguide/roles/portainer/scripts/baseline.sh
+bash /opt/plexguide/roles/baseline/scripts/portainer.sh
 
 ############################################################ Reboot Startup Container Script
 pg_docstart=$( cat /var/plexguide/pg.docstart)
