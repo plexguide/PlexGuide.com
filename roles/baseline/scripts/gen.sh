@@ -29,7 +29,8 @@ echo "  roles:" >> /opt/plexguide/pg.yml
 while read p; do
 echo "  - { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
 done </var/plexguide/yml.list
-echo "INFO - $SUCCESS: YML List Created!" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+echo "INFO - SUCCESS: YML List Created!" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 mkdir -p /opt/plexguide/inventories 1>/dev/null 2>&1
 echo "[local]" > /opt/plexguide/inventories/local
