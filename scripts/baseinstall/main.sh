@@ -319,7 +319,7 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #sleep 2
 
 #### Install WatchTower Command - 95 Percent
-bash /opt/plexguide/roles/watchtower/scripts/baseline.sh
+bash /opt/plexguide/roles/baseline/scripts/watchtower.sh
 
 ############################# Python Support
 pg_python=$( cat /var/plexguide/pg.python )
