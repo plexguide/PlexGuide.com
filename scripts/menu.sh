@@ -1,6 +1,9 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
 
+### GEN STARTED
+bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
+
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide"
 if [ -e "$file" ]
