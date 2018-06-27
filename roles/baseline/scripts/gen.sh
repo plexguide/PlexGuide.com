@@ -21,6 +21,7 @@ echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.l
 
 rm -r /opt/plexguide/pg.yml 1>/dev/null 2>&1
 
+
 echo "---" > /opt/plexguide/pg.yml
 echo "- hosts: localhost" >> /opt/plexguide/pg.yml
 echo "" >> /opt/plexguide/pg.yml
@@ -29,6 +30,10 @@ echo "  roles:" >> /opt/plexguide/pg.yml
 while read p; do
 echo "  - { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
 done </var/plexguide/yml.list
+
+mkdir -p /opt/plexguide/inventories 1>/dev/null 2>&1
+echo "[local] > /opt/plexguide/inventories/local"
+echo "localhost ansible_connection=local" >> /opt/plexguide/inventories/local
 
 ### ENDING: DECLARED VARIABLES 
 
