@@ -43,7 +43,8 @@ fi
 [[ $(pwd) =~ plexguide ]] && cd ~
 set -e
 sudo rm -r /opt/plexguide
-sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
+
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Version-6 /opt/plexguide
 
 sudo bash /opt/plexguide/scripts/message/ending.sh
 echo "Updated to the latest PlexGuide Dev Version!"
