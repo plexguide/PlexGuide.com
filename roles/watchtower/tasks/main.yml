@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
 - name: Remove {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
@@ -56,3 +59,6 @@
         aliases:
           - "{{role_name}}"
   tags: watchall
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
