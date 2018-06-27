@@ -34,17 +34,3 @@ done </var/plexguide/yml.list
 
 ### ENDING: FINAL LOG ##################################################
 echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-
----
-- hosts: localhost
-
-############### Ensure to Maintain Alphabetical Order
-  roles:
-  - { role: alias, tags: ['alias'] }
-  - { role: alltube, tags: ['alltube'] }
-  - { role: folders, tags: ['folders'] } 
-  - { role: netdata, tags: ['netdata'] }
-  - { role: portainer, tags: ['portainer'] } 
-  - { role: preinstall, tags: ['preinstall'] } 
-  - { role: watchtower, tags: ['watchtower'] }
