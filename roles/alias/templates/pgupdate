@@ -24,7 +24,7 @@ then
 else
 	dialog --title "Emergency Mode" --msgbox "\nFor some reason, PLEXGUIDE is missing! Your DATA is not lost.  We are downloading the DEVELOPER Version to Help You!" 0 0
 	clear
-	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
+	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Version-6 /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 	exit 0
 fi
 
