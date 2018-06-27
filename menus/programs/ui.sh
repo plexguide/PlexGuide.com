@@ -28,6 +28,7 @@ echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/s
           B "HTPCManager"
           C "Muximux"
           D "Organizr"
+          E "OrganizrV2"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -102,7 +103,7 @@ case $CHOICE in
         ;;
         E)
           program=organizrv2
-          display=OrganizrV2(Beta)
+          display=OrganizrV2
           dialog --infobox "Installing: $display" 3 30
           sleep 2
           clear
