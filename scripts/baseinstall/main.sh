@@ -175,7 +175,7 @@ fi
 
 
 #### Install Folders - 30 Percent
-bash /opt/plexguide/roles/folders/scripts/baseline.sh
+bash /opt/plexguide/roles/baseline/scripts/folders.sh
 
 ############################################################ Docker Install
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
@@ -260,7 +260,7 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
 fi
 
 #### Install Alias Command - 65 Percent
-bash /opt/plexguide/roles/alias/scripts/baseline.sh
+bash /opt/plexguide/roles/baseline/scripts/alias.sh
 
 
 echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
