@@ -160,23 +160,8 @@ echo "[defaults]" >> /etc/ansible/ansible.cfg
 echo "inventory = inventory" >> /etc/ansible/ansible.cfg
   fi
 
-############################################################ Start of Role Execution
-#### DEPENDENCIES
-pg_dep=$( cat /var/plexguide/pg.dep )
-pg_dep_stored=$( cat /var/plexguide/pg.dep.stored )
-
-if [ "$pg_dep" == "$pg_dep_stored" ]
-    then
-      echo "25" | dialog --gauge "PG Dependencies Installed Already" 7 50 0
-      sleep 2
-    else 
-      echo "25" | dialog --gauge "Installing: PG Dependencies" 7 50 0
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags preinstall
-      sleep 2
-      cat /var/plexguide/pg.dep > /var/plexguide/pg.dep.stored
-fi 
+#### Install Alias Command - 25 Percent
+bash /opt/plexguide/roles/preinstall/scripts/baseline.sh
 
 # START ########################### If doesn't exist, put /mnt into the file for the folders role
 file="/var/plexguide/server.hd.path"

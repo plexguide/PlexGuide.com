@@ -5,6 +5,5 @@
   - { role: dockerfix, tags: ['dockerfix'] }
   - { role: docker, tags: ['docker'] }
   - { role: label, tags: ['label'] }
-  - { role: preinstall, tags: ['preinstall'] }
   - { role: autodelete, tags: ['autodelete'] }
   - { role: clean, tags: ['clean'] }
