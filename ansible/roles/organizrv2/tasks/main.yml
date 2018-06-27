@@ -57,5 +57,4 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{ role_name }}.{{domain.stdout}}{{tld.stdout}}"
-      traefik.port: "8040"
+      traefik.frontend.rule: "Host:organizrv2.{{domain.stdout}},organizerv2.{{domain.stdout}}"
