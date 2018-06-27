@@ -257,6 +257,7 @@ fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 sleep 2
+clear
 curl https://rclone.org/install.sh | sudo bash
 touch /var/plexguide/basics.yes &>/dev/null &
 sleep 2
