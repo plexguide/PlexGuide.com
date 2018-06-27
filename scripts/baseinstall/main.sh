@@ -27,9 +27,6 @@ file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   bash /opt/plexguide/menus/nzb/main.sh
   fi
 
-### GEN STARTED
-bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
-
 ############################################################ Basic Menu
 if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
