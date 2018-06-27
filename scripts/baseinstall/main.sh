@@ -227,36 +227,8 @@ docver=$( cat /var/plexguide/ubversion )
 
 fi
 
-############################################################ Checks to See if Docker Installed; if not... FAIL!
-rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
-file="/usr/bin/docker" 1>/dev/null 2>&1
-  if [ -e "$file" ]
-    then
-        echo "" 1>/dev/null 2>&1
-    else 
-      ##### Install Docker the Emergency Way 
-      clear
-      echo "Installing Docker the Old School Way - (Please Be Patient)"
-      sleep 2
-      clear
-      curl -fsSL get.docker.com -o get-docker.sh
-      sh get-docker.sh
-      echo ""
-      echo "Starting Docker (Please Be Patient)"
-      sleep 2
-      systemctl start docker
-      sleep 2
-
-      ##### Checking Again, if fails again; warns user
-      file="/usr/bin/docker" 1>/dev/null 2>&1
-        if [ -e "$file" ]
-          then
-            echo "" 1>/dev/null 2>&1
-        else
-            touch /var/plexguide/startup.error 1>/dev/null 2>&1
-            exit
-      fi
-fi
+#### Install Alias Command - Part of Docker
+bash /opt/plexguide/roles/baseline/scripts/dockerfailsafe.sh
 
 #### Install Alias Command - 65 Percent
 bash /opt/plexguide/roles/baseline/scripts/alias.sh
