@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 
@@ -27,6 +26,9 @@ file="/var/plexguide/nzb.discount" 1>/dev/null 2>&1
   touch /var/plexguide/nzb.discount
   bash /opt/plexguide/menus/nzb/main.sh
   fi
+
+### GEN STARTED
+bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
 
 ############################################################ Basic Menu
 if dialog --stdout --title "System Update" \
