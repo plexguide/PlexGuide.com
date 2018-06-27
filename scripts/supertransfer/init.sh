@@ -296,6 +296,24 @@ service_account_file = $json
 team_drive = $teamDrive
 
 CFG
+
+# add in encrypted rclone config (password + salt need to be added)
+if [[ $encrypt == "yes" ]]; then
+cat <<-CFG >> $rclonePath
+[GDSA${newMaxGdsa}c]
+type = crypt
+remote = GDSA${newMaxGdsa}:/
+filename_encryption = standard
+directory_name_encryption = true
+password = asdfasdfasdfasdf
+password2 = asdfasdfasdfasdf
+
+CFG
+# update password + salt & obscure for rclone encrypt config
+rclone config password GDSA${newMaxGdsa}c:/ password "${password}"
+rclone config password GDSA${newMaxGdsa}c:/ password2 "${salt}"
+fi
+
     ((++newGdsaCount))
   fi
 done

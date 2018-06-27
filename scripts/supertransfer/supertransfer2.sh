@@ -28,12 +28,12 @@ clean_up(){
   echo -e " [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded"
   rm ${logDir}/* &>/dev/null
   echo -n '' > ${fileLock}
-  
+
   # if user added or removed GDSA remotes, reset the usage database in order to regenerate it
   numGdsaDB=$(cat ${gdsaDB} | wc -l)
   numGdsa=$(rclone listremotes --config=/root/.config/rclone/rclone.conf | wc -l)
   [[ $numGdsaDB == $numGdsa ]] || echo -n '' > ${gdsaDB}
-  
+
   rm /tmp/superTransferUploadFail &>/dev/null
   rm /tmp/superTransferUploadSuccess &>/dev/null
   rm /tmp/.SA_error.log.tmp &>/dev/null
@@ -66,11 +66,19 @@ init_DB(){
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
   fi
 
+  [[ $encrypt == "yes" ]] && echo -e " [INFO] Encryption Enabled!"
+
   # reset existing logs & db
   echo -n '' > /tmp/SA_error.log
   validate(){
       local s=0
-      rclone lsd --config /root/.config/rclone/rclone.conf ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
+      if [[ $encrypt == "yes" ]]; then
+        # validate crypt instead if encryption is enabled
+        rclone lsd --config /root/.config/rclone/rclone.conf ${1}c:/ &>/tmp/.SA_error.log.tmp && s=1
+      else
+        rclone lsd --config /root/.config/rclone/rclone.conf ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
+      fi
+
       if [[ $s == 1 ]]; then
         echo -e " [ OK ] ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
