@@ -10,3 +10,4 @@
   - { role: portainer, tags: ['portainer'] } 
   - { role: preinstall, tags: ['preinstall'] } 
   - { role: watchtower, tags: ['watchtower'] }
+  - { role: pgdev, tags: ['pgdev'] }
