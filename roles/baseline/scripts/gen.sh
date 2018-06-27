@@ -27,7 +27,7 @@ echo "" >> /opt/plexguide/pg.yml
 echo "  roles:" >> /opt/plexguide/pg.yml
 
 while read p; do
-echo "- { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
+echo "  - { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
 done </var/plexguide/yml.list
 
 ### ENDING: DECLARED VARIABLES 
