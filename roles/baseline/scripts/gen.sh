@@ -34,6 +34,11 @@ mkdir -p /opt/plexguide/inventories 1>/dev/null 2>&1
 echo "[local]" > /opt/plexguide/inventories/local
 echo "localhost ansible_connection=local" >> /opt/plexguide/inventories/local
 
+echo "[defaults]" > /opt/plexguide/ansible_cfg
+echo "command_warnings = False" >> /opt/plexguide/ansible_cfg
+echo "callback_whitelist = profile_tasks" >> /opt/plexguide/ansible_cfg
+echo "inventory = inventories/local" >> /opt/plexguide/ansible_cfg
+
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
