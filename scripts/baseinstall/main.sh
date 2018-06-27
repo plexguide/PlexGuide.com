@@ -256,8 +256,10 @@ if [ "$pg_label" == "$pg_label_stored" ]
 fi 
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
+sleep 2
 curl https://rclone.org/install.sh | sudo bash
 touch /var/plexguide/basics.yes &>/dev/null &
+sleep 2
 #sleep 1
 
 echo "80" | dialog --gauge "Installing: AutoDelete & Cleaner" 7 50 0
