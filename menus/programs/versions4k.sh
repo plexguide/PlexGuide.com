@@ -60,7 +60,7 @@ echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/
             display=Radarr4k
             program=radarr4k
             port=7874
-            bash /opt/plexguide/menus/images/radarr4k.sh
+            bash /opt/plexguide/roles/radarr4k/menus/images.sh
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
