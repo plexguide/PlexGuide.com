@@ -55,24 +55,14 @@ echo 'INFO - Selected Ombi4K' > /var/plexguide/pg.log && bash /opt/plexguide/scr
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
-echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-            display=Radarr4k
-            program=radarr4k
-            port=7874
-            bash /opt/plexguide/roles/radarr4k/menus/images.sh
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
+            echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
             chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
-            read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         C)
 echo 'INFO - Selected: Sonarr4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
