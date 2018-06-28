@@ -57,12 +57,6 @@ echo 'INFO - Selected Ombi4K' > /var/plexguide/pg.log && bash /opt/plexguide/scr
         B)
             echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
-            chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-            chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
             ;;
         C)
 echo 'INFO - Selected: Sonarr4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
