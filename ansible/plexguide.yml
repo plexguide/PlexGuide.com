@@ -67,7 +67,6 @@
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: heimdall, tags: ['heimdall'] }
   - { role: couchpotato, tags: ['couchpotato'] }
-  - { role: pyload, tags: ['pyload'] }
   - { role: network_tuning, tags: ['network_tuning'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: airsonic, tags: ['airsonic'] }
