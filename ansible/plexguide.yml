@@ -34,7 +34,6 @@
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
-  - { role: ombi4k, tags: ['ombi4k'] }
   - { role: sickrage, tags: ['sickrage'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
