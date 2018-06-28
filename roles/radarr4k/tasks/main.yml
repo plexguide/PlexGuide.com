@@ -94,4 +94,4 @@
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
 - name: "Hold"
-  shell: "read -n 1 -s -r -p "Press any key to continue"
+  shell: "read -n 1 -s -r -p 'Press any key to continue'"
