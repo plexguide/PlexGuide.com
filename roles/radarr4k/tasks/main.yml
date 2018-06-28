@@ -18,7 +18,7 @@
 ---
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
-  
+
 - set_fact:
     pgrole: "{{role_name}}"
 
@@ -86,6 +86,8 @@
     dest: /opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
+    owner: 1000
+    group: 1000
 
 - include_role:
     name: varend
