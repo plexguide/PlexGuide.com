@@ -45,6 +45,7 @@ echo 'INFO - Selected Ombi4K' > /var/plexguide/pg.log && bash /opt/plexguide/scr
             clear
             port=3574
             dialog --infobox "Installing: $display" 3 30
+            clear
             ansible-playbook /opt/plexguide/pg.yml --tags ombi4k
             read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
