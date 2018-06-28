@@ -16,6 +16,11 @@
 #
 #################################################################################
 ---
+- name: Enter a Github username
+  vars_prompt:
+    name: github_username
+    default: ""
+
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
