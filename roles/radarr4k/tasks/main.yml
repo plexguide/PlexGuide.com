@@ -24,10 +24,11 @@
 
 - include_role:
     name: variables
-
+    
 - set_fact:
     intport: "7878"
     extport: "7874"
+    pgrole: "{{role_name}}"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
