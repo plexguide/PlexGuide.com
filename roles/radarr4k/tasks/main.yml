@@ -1,25 +1,56 @@
-#!/bin/bash
-#
-# [Ansible Role]
-#
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
-# URL:      https://plexguide.com
-#
-# PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
+# it is possible to ask for variables from the user at the start
+# of a playbook run, for example, as part of a release script.
+
+- hosts: all
+  remote_user: root
+
+# regular variables are a dictionary of keys and values
+
+  vars:
+     this_is_a_regular_var: 'moo'
+     so_is_this: 'quack'
+
+# alternatively, they can ALSO be passed in from the outside:
+#    ansible-playbook foo.yml --extra-vars="foo=100 bar=101"
+# or through external inventory scripts (see online API docs)
+
+# here's basic mode prompting.  Specify a hash of variable names and a prompt for
+# each.
+#
+# vars_prompt:
+#   release_version: "product release version"
+
+# prompts can also be specified like this, allowing for hiding the prompt as
+# entered.  In the future, this may also be used to support crypted variables
 
   vars_prompt:
     - name: "some_password"
-      prompt: "Which application do you want to deploy?\n1- Web\n2- Wiki\n"
+      prompt: "Enter password"
+      private: yes
+
+    - name: "release_version"
+      prompt: "Product release version"
+      default: "my_default_version"
       private: no
+
+    - name: "my_password2"
+      prompt: "Enter password2"
+      private: yes
+      encrypt: "md5_crypt"
+      confirm: yes
+      salt_size: 7
+      salt: "foo"
+
+# this is just a simple example to show that vars_prompt works, but
+# you might ask for a tag to use with the git module or perhaps
+# a package version to use with the yum module.
+
+  tasks:
+
+  - name: imagine this did something interesting with {{release_version}}
+    shell: echo foo >> /tmp/{{release_version}}-alpha
+
+  - name: look we crypted a password
+    shell: echo my password is {{my_password2}}
