@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - name: Cat
-  prompt: "\nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Server"
+  debug: msg="\nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Server"
   retries: 5
   delay: 1
   register: result_result
