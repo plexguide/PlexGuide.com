@@ -16,6 +16,12 @@
 #
 #################################################################################
 ---
+vars_prompt:
+- name: cr
+  prompt: "Please mention the cr id"
+  private: no
+  default: 12
+
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
