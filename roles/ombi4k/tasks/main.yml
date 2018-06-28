@@ -22,13 +22,6 @@
 - include_role:
     name: variables
 
-########## Unique for TLD
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{ role_name }}"
-  register: tld
-  ignore_errors: True
-##########
-
 - name: Remove {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
@@ -79,7 +72,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}"
       traefik.port: "3574"
 
 - name: Logging Ansible Role Information
