@@ -16,6 +16,8 @@
 #
 #################################################################################
 ---
+- include_vars: spoilers.yml
+
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
@@ -24,7 +26,7 @@
 
 - include_role:
     name: variables
-    
+
 - set_fact:
     intport: "7878"
     extport: "7874"
