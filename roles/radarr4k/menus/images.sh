@@ -1,35 +1,31 @@
 #!/bin/bash
-#
-# [PlexGuide Menu]
-#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+# Licensed under GNU General Public License v3.0 GPL-3 (Read License in File)
 #
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
-# Important below, name based on target
-app="Radarr4K"
-############################
+# Execution: bash /opt/plexguide/roles/radarr4k/menus/images.sh
+
+### STARTING DECLARED VARIABLES #######################################
+keyword1="@Menu"
+keyword2="Radarr4k"
+### STARTING LOG ######################################################
+echo "INFO - $keyword1: Menu Interface of $keyword2" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+### MAIN SCRIPT #######################################################
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=12
 WIDTH=48
 CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Select Your Image for $app"
+TITLE="Select Your Image for $keyword2"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/radarr: Recommended"
          B "hotio/suitarr     : Space Saver"
          C "aront/radarr      : MP4 Converter"
          Z "Exit")
-
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -39,7 +35,6 @@ CHOICE=$(dialog --clear \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-clear
 case $CHOICE in
         A)
             echo "linuxserver/radarr" > /var/plexguide/image.radarr4k 
@@ -59,3 +54,7 @@ case $CHOICE in
             clear
             exit 0 ;;
 esac
+## ENDING: DECLARED VARIABLES 
+
+### ENDING: FINAL LOG ##################################################
+echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

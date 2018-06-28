@@ -64,7 +64,7 @@ echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr4k
+            ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
             chown 1000:1000 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
             chmod 0755 /opt/appdata/radarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1 
             read -n 1 -s -r -p "Press any key to continue"
