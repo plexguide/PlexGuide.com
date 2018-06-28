@@ -16,10 +16,29 @@
 #
 #################################################################################
 ---
-- name: Enter a Github username
+- hosts: all
+  remote_user: root
+
   vars_prompt:
-    name: github_username
-    default: ""
+    - name: "name"
+      prompt: "what is your name?"
+    - name: "quest"
+      prompt: "what is your quest?"
+    - name: "favcolor"
+      prompt: "what is your favorite color?"---
+- hosts: all
+  remote_user: root
+
+  vars:
+    from: "camelot"
+
+  vars_prompt:
+    - name: "name"
+      prompt: "what is your name?"
+    - name: "quest"
+      prompt: "what is your quest?"
+    - name: "favcolor"
+      prompt: "what is your favorite color?"
 
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
