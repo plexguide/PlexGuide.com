@@ -24,56 +24,32 @@
 
 ########## Unique for TLD
 - name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  shell: "cat /var/plexguide/tld.{{role_name}}"
   register: tld
   ignore_errors: True
-##########
 
-#- name: Install pip requirements
-#- pip:
-#    requirements: plexapi
-#    executable: pip2
-
-- name: Create tautulli script directories
+- name: Create {{role_name}} script directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/appdata/tautulli/scripts
+    - /opt/appdata/{{role_name}}/scripts
 
-#- name: Clone JBOPS plex scripts to tautulli script folder
-#  git:
-#    repo: https://github.com/blacktwin/JBOPS
-#    dest: /opt/appdata/tautulli/scripts
-#    version: master
-#    force: yes
-
-#- name: Extract JBOPS scripts into /opt/appdata/tautulli/scripts
-#  unarchive:
-#    src: /opt/appdata/tautulli/scripts/JBOPS-master.zip
-#    dest: /opt/appdata/tautulli/scripts
-
-#- name: Move scripts from master folder to the root /scripts folder
-#  command: mv /opt/appdata/tautulli/scripts/JBOPS-master/* /opt/appdata/tautulli/scripts
-
-#- name: remove JBOPS Master empty folder
-#  command: rm -rf /opt/appdata/tautulli/scripts/JBOPS-master
-
-- name: Remove Tautulli Container
+- name: Remove {{role_name}} Container
   docker_container:
-    name: tautulli
+    name: "{{role_name}}"
     state: absent
 
-- name: Deploy Tautulli Container
+- name: Deploy {{role_name}} Container
   docker_container:
-    name: tautulli
-    image: "shiggins8/tautulli"
+    name: "{{role_name}}"
+    image: "linuxserver/{{role_name}}"
     pull: yes
-    cpu_shares: 256
+    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}8181:8181"
     volumes:
-      - /opt/appdata/tautulli:/config
+      - /opt/appdata/{{role_name}}:/config
       - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
-      - /opt/appdata/tautulli/scripts:/scripts
+      - /opt/appdata/{{role_name}}/scripts:/scripts
     env:
       PUID: "1000"
       PGID: "1000"
@@ -81,10 +57,13 @@
     networks:
       - name: plexguide
         aliases:
-          - tautulli
+          - "{{role_name}}"
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:tautulli.{{domain.stdout}},plexpy.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},plexpy.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "8181"
+
+  - name: Logging Ansible Role Information
+    shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"

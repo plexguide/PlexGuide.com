@@ -157,7 +157,7 @@ case $CHOICE in
             dialog --infobox "Installing: $display" 3 30
             sleep 2
             clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli
+            ansible-playbook /opt/plexguide/pg.yml --tags tautulli
             read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
