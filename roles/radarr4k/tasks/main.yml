@@ -16,9 +16,6 @@
 #
 #################################################################################
 ---
-- pause:
-    prompt: "Make sure org.foo.FooOverload exception is not present"
-
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
