@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- name: "Menu"
+  shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
+  
 - set_fact:
     pgrole: "{{role_name}}"
 
@@ -23,9 +26,6 @@
 
 - include_role:
     name: varstart
-
-- name: "Menu"
-  shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
