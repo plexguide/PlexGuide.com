@@ -93,7 +93,7 @@
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
-- name: Final Review
+- name: "{{role_name}} - Final Review"
   pause:
-    prompt: "[PRESS ENTER TO CONTINUE] Please Review Info Before Moving Forward"
+    prompt: "PRESS ENTER TO CONTINUE]"
 
