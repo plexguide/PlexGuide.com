@@ -25,7 +25,7 @@
     name: varstart
 
 - name: "Menu"
-  shell: "bash /opt/plexguide/roles/radarr4k/menus/images.sh"
+  shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
