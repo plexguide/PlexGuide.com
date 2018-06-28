@@ -19,6 +19,9 @@
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
+- name: "Establishing Program Variable"
+  shell: "bash /opt/plexguide/roles/radarr4k/menus/images.sh"
+
 - include_role:
     name: variables
 
