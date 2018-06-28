@@ -16,12 +16,6 @@
 #
 #################################################################################
 ---
-- hosts: localhost
-  vars_prompt:
-  - name: "server_type"
-    prompt: "nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Servern"
-    private: 
-      
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
