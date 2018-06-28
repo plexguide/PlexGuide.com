@@ -27,6 +27,9 @@
 
 - set_fact:
     PUID: "1000"
+    int.port: "7878"
+    ext.port: "7874"
+    traefik.port: "7874"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
@@ -59,7 +62,7 @@
     env:
       APP: "radarr"
       VERSION: "stable"
-      PUID: "PUID"
+      PUID: "1000"
       PGID: "1000"
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
@@ -84,7 +87,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "7874"
+      traefik.port: "{{traefik.port}}"
 
 - name: Install autoProcess.ini
   template:
@@ -95,6 +98,8 @@
 
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
+- debug: msg="Access Info - Port {{domain}}:{{traefik.port}}"
 
 - pause:
     prompt: "Press [ENTER] to Continue - Final Review"
