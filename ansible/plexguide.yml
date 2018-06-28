@@ -12,7 +12,6 @@
   - { role: cadvisor, tags: ['cadvisor', 'monitor'] }
   - { role: prometheus, tags: ['prometheus', 'monitor'] }
   - { role: grafana, tags: ['grafana', 'monitor'] }
-  - { role: tautulli, tags: ['tautulli'] }
   - { role: bazarr, tags: ['bazarr'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: pgdrive, tags: ['pgdrive'] }
