@@ -93,7 +93,7 @@
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
-- name: Install autoProcess.ini
+- name: Final Review
   pause:
-    prompt: "Make sure org.foo.FooOverload exception is not present"
+    prompt: "[PRESS ENTER TO CONTINUE] Please Review Info Before Moving Forward"
 
