@@ -25,7 +25,8 @@
 - include_role:
     name: variables
 
-- PUID: "1000"
+- set_fact:
+    PUID: "1000"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
