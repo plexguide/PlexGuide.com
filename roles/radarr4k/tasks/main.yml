@@ -93,3 +93,6 @@
     dest: /opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
+
+- include_role:
+    name: varend
