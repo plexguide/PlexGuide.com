@@ -25,6 +25,9 @@
 - include_role:
     name: variables
 
+- name: add user testuser1
+  user: PUID="1000"
+
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
   register: image
@@ -56,7 +59,7 @@
     env:
       APP: "radarr"
       VERSION: "stable"
-      PUID: "1000"
+      PUID: "PUID"
       PGID: "1000"
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
