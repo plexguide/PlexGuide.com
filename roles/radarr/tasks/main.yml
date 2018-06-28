@@ -52,7 +52,7 @@
       - "{{ports.stdout}}7878:7878"
     env:
       APP: "radarr"
-      VERSION: "unstable"
+      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
       BACKUP: "no"
@@ -86,3 +86,6 @@
     dest: /opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
