@@ -65,5 +65,5 @@
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},plexpy.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "8181"
 
-  - name: Logging Ansible Role Information
-    shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
