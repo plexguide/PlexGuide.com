@@ -19,6 +19,11 @@
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
+vars_prompt:
+ - name: "application"
+   prompt: "Which application do you want to deploy?\n1- Web\n2- Wiki\n"
+   private: no
+
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/radarr4k/menus/images.sh"
 
@@ -94,6 +99,6 @@
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
 - name: "Final Review"
-  pause: ""
+  pause:
     prompt: "Press [ENTER] to Continue"
 
