@@ -22,9 +22,6 @@
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/radarr4k/menus/images.sh"
 
-- name: "Clear"
-  shell: "clear"
-
 - include_role:
     name: variables
 
