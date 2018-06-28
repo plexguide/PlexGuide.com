@@ -58,7 +58,7 @@
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
-    image: linuxserver/{{role_name}}
+    image: linuxserver/ombi
     pull: yes
     cpu_shares: 128
     published_ports:
@@ -80,7 +80,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
-      traefik.port: "3579"
+      traefik.port: "3574"
 
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
