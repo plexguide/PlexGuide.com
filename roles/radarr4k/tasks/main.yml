@@ -87,7 +87,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{traefik.port}}"
+      traefik.port: "{{traefikport}}"
 
 - name: Install autoProcess.ini
   template:
