@@ -26,10 +26,8 @@
     name: variables
 
 - set_fact:
-    PUID: "1000"
     intport: "7878"
     extport: "7874"
-    traefikport: "7874"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
@@ -87,7 +85,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{traefikport}}"
+      traefik.port: "{{extport}}"
 
 - name: Install autoProcess.ini
   template:
@@ -99,7 +97,7 @@
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
-- debug: msg="Access Info - Port :{{traefikport}}"
+- debug: msg="Access Info - Port :{{extport}}"
 
 - pause:
     prompt: "Press [ENTER] to Continue - Final Review"
