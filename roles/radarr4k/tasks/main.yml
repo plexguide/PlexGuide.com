@@ -16,8 +16,6 @@
 #
 #################################################################################
 ---
-- hosts: local
-
   vars_prompt:
     - name:
       prompt: "Which application do you want to deploy?\n1- Web\n2- Wiki\n"
