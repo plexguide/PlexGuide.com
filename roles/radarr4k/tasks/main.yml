@@ -49,7 +49,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}7874:7878"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       APP: "radarr"
       VERSION: "stable"
