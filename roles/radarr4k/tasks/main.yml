@@ -16,9 +16,6 @@
 #
 #################################################################################
 ---
-  vars_prompt:
-    passphrase: "Please enter the passphrase for the SSL certificate"
-    
   - name: "Menu"
     shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
