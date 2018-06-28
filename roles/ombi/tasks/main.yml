@@ -29,37 +29,36 @@
   ignore_errors: True
 ##########
 
-- name: Remove Ombi Container
+- name: Remove {{role_name}} Container
   docker_container:
-    name: ombi
+    name: "{{role_name}}"
     state: absent
 
 ############ Directories
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/appdata/ombi
+    - /opt/appdata/{{role_name}}
 
 - name: Check JSON exists
   stat:
-    path: "/opt/appdata/ombi/appsettings.json"
+    path: "/opt/appdata/{{role_name}}/appsettings.json"
   register: jsonfile
 
-- name: Download Ombi appsettings.json config file
+- name: Download {{role_name}} appsettings.json config file
   get_url:
     url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
-    dest: /opt/appdata/ombi/appsettings.json
+    dest: /opt/appdata/{{role_name}}/appsettings.json
     owner: 1000
     group: 1000
     force: no
   ignore_errors: True
   when: jsonfile.stat.exists == False
 
-- name: Deploy Ombi Container
+- name: Deploy {{role_name}} Container
   docker_container:
-    name: ombi
-    ## image: linuxserver/ombi
-    image: lsiodev/ombi-preview
+    name: "{{role_name}}"
+    image: linuxserver/{{role_name}}
     pull: yes
     cpu_shares: 128
     published_ports:
@@ -68,17 +67,20 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/ombi:/config
+      - /opt/appdata/{{role_name}}:/config
       - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/ombi/appsettings.json:/opt/ombi/appsettings.json
+      - /opt/appdata/{{role_name}}/appsettings.json:/opt/{{role_name}}/appsettings.json
     networks:
       - name: plexguide
         aliases:
-          - ombi
+          - "{{role_name}}"
     restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:ombi.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "3579"
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
