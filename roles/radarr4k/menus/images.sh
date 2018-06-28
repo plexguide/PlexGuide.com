@@ -17,7 +17,7 @@ echo "INFO - $keyword1: Menu Interface of $keyword2" > /var/plexguide/pg.log && 
 ### MAIN SCRIPT #######################################################
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=11
-WIDTH=48
+WIDTH=45
 CHOICE_HEIGHT=4
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Image for $keyword2"
