@@ -16,16 +16,8 @@
 #
 #################################################################################
 ---
-- hosts: all
-  remote_user: root
-
-  vars_prompt:
-    - name: "name"
-      prompt: "what is your name?"
-    - name: "quest"
-      prompt: "what is your quest?"
-    - name: "favcolor"
-      prompt: "what is your favorite color?"
+- pause:
+    prompt: "Make sure org.foo.FooOverload exception is not present"
 
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
