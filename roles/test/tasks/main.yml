@@ -4,7 +4,7 @@
   gather_facts: no
   vars_prompt:
   - name: "server_type"
-    prompt: "nWhich type of server would you like to deploy?\n1- Oraclen2- ColdFusionn3- IISn4- Tomcatn5- File Servern6- Base Servern"
+    prompt: "nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Servern"
     private: no
   - name: "environment"
     prompt: "nWhich environment will the server reside in?n1- Productionn2- Stagingn3- DMZn"
