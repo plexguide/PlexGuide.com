@@ -16,21 +16,16 @@
 #
 #################################################################################
 ---
+- set_fact:
+    pgrole: "{{role_name}}"
+
 - include_vars: variables.yml
 
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_role:
+    name: varstart
 
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/radarr4k/menus/images.sh"
-
-- include_role:
-    name: variables
-
-- set_fact:
-    intport: "7878"
-    extport: "7874"
-    pgrole: "{{role_name}}"
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
@@ -41,11 +36,6 @@
   shell: "cat /var/plexguide/extra.{{role_name}}"
   register: extra
   ignore_errors: True
-
-- name: Remove {{role_name}} Container
-  docker_container:
-    name: "{{role_name}}"
-    state: absent
 
 - name: Create Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"

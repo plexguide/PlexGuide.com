@@ -19,7 +19,7 @@
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
-  - debug: msg="Access Info - Port :{{extport}}"
+  - debug: msg="Access Info - Port :{{extport}} - {{test}}"
 
   - pause:
       prompt: "Press [ENTER] to Continue - Final Review"
