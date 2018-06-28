@@ -16,8 +16,10 @@
 #
 #################################################################################
 ---
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+
   vars_prompt:
-    - name:
+    - name: "some_password"
       prompt: "Which application do you want to deploy?\n1- Web\n2- Wiki\n"
       private: no
-
