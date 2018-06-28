@@ -94,6 +94,6 @@
   shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
 - name: "Final Review"
-  pause:
+  pause: ""
     prompt: "Press [ENTER] to Continue"
 
