@@ -26,7 +26,7 @@
 - name: Set linuxserver/radarr
   set_fact: 
     image: "linuxserver/radarr"
-  when: result == "1"
+  when: "{{result}} == '1'"
 
 - name: Hotio/Suitrr
   set_fact: 
