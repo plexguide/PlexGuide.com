@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Original Authors: l3uddz % desimaniac - cloudbox.rocks                        #
+# Original Authors: l3uddz & desimaniac - cloudbox.rocks                        #
 #################################################################################
 
 ## Disable IPv6
@@ -47,7 +47,7 @@ pip install --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
-
+    ansible==${1-2.5.4}
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
 cp /usr/local/bin/pip3 /usr/bin/pip3
