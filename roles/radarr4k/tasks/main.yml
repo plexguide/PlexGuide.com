@@ -23,6 +23,21 @@
   retries: 5
   delay: 1
 
+- name: Set linuxserver/radarr
+  set_fact: 
+    image: "linuxserver/radarr"
+  when: result == "1"
+
+- name: Hotio/Suitrr
+  set_fact: 
+    image: "hotio/suitrr"
+  when: result == "2"
+
+- name: Aront/Radarr
+  set_fact: 
+    image: "aront/radarr"
+  when: result == "3"
+
 - set_fact:
     pgrole: "{{role_name}}"
 
@@ -49,7 +64,7 @@
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
-    image: "{{image.stdout}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
