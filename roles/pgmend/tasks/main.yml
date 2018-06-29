@@ -20,6 +20,3 @@
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
-
-  - name: Review
-    shell: "read -n 1 -s -r -p 'Press any key to continue'"

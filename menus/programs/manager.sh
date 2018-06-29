@@ -136,6 +136,7 @@ case $CHOICE in
     G)
       echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
+      read -n 1 -s -r -p "Press any key to continue"
       bash /opt/plexguide/menus/time/cron.sh
       ;;
     H)
