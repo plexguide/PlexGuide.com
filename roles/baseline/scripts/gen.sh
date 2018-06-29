@@ -30,15 +30,15 @@ while read p; do
 echo "  - { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
 done </var/plexguide/yml.list
 
-mkdir -p /opt/plexguide/inventories 1>/dev/null 2>&1
+mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
 echo "[local]" > /opt/plexguide/inventories/local
-echo "localhost ansible_connection=local" >> /opt/plexguide/inventories/local
+echo "localhost ansible_connection=local" >> /etc/ansible/inventories/local
 
 ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
 echo "[defaults]" > /etc/ansible/ansible.cfg
 echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-echo "inventory = /opt/plexguide/ansible_cfg" >> /etc/ansible/ansible.cfg
+echo "inventory = /etc/ansible/ansible.cfg" >> /etc/ansible/ansible.cfg
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
