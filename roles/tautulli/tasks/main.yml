@@ -21,11 +21,18 @@
 - include_role:
     name: pgmstart
 
-########## Unique for TLD
+########## UNIQUE TLD ### START
+- name: Check TLD FIle Exists
+  stat:
+    path: "/var/plexguide/tld.{{role_name}}"
+  register: tldcheck
+
 - name: Register TLD if it exists
   shell: "cat /var/plexguide/tld.{{role_name}}"
   register: tld
   ignore_errors: True
+  when: tldcheck.stat.exists == False
+########## UNIQUE TLD ### END
 
 - name: Create {{role_name}} script directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
