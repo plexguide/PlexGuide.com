@@ -134,8 +134,8 @@ case $CHOICE in
       bash /opt/plexguide/menus/programs/ending.sh
       ;;
     G)
-      echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
+      echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
       bash /opt/plexguide/menus/time/cron.sh
       ;;
     H)
