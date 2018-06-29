@@ -35,10 +35,10 @@ echo "[local]" > /opt/plexguide/inventories/local
 echo "localhost ansible_connection=local" >> /opt/plexguide/inventories/local
 
 ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
-echo "[defaults]" > /opt/plexguide/ansible_cfg
-echo "command_warnings = False" >> /opt/plexguide/ansible_cfg
-echo "callback_whitelist = profile_tasks" >> /opt/plexguide/ansible_cfg
-echo "inventory = /opt/plexguide/ansible_cfg" >> /opt/plexguide/ansible_cfg
+echo "[defaults]" > /etc/ansible/ansible.cfg
+echo "command_warnings = False" >> /etc/ansible/ansible.cfg
+echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
+echo "inventory = /opt/plexguide/ansible_cfg" >> /etc/ansible/ansible.cfg
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
