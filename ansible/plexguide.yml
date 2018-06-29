@@ -25,7 +25,6 @@
   - { role: nowshowing, tags: ['nowshowing'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: cloudcmd, tags: ['cloudcmd'] }
-#  - { role: pgcache, tags: ['pgcache'] }
   - { role: monitorr, tags: ['monitorr'] }
   - { role: deploy2, tags: ['deploy2'] }
   - { role: calibre, tags: ['calibre'] }
@@ -33,7 +32,6 @@
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
   - { role: organizr, tags: ['organizr'] }
-  - { role: sickrage, tags: ['sickrage'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
   - { role: emby, tags: ['emby'] }
