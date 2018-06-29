@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - include_role:
-    name: pgmstart
+    name: varstart
 
 - include_vars: variables.yml
 
@@ -111,4 +111,4 @@
     group: 1000
 
 - include_role:
-    name: pgmend
+    name: varend
