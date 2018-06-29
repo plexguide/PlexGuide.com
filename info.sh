@@ -16,7 +16,7 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.000D HOTFIX" > /var/plexguide/pg.version
+echo "6.000D BETA" > /var/plexguide/pg.version
 echo "95" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
