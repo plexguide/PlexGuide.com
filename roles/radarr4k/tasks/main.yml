@@ -54,7 +54,7 @@
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
-    image: linuxserver/radarr
+    image: "{{image}}"
     pull: yes
     cpu_shares: 128
     published_ports:
@@ -88,6 +88,7 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
+
 
 - name: Install autoProcess.ini
   template:
