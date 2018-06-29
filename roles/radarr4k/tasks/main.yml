@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+# -set_fact: 
+#    pgrole: "{{role_name}}"
+
 - include_vars: variables.yml
 
 - include_role:

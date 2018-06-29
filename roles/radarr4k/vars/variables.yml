@@ -18,3 +18,4 @@
 ---
 intport: "7878"
 extport: "7874"
+pgrole: "{{role_name}}
