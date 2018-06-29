@@ -22,27 +22,27 @@
     name: pgmstart
     
 - pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/radarr (Recommended)\n2- hotio/suitrr (Space Saver)\n3- aront/radarr (MP4 Converter)"
+    prompt: "\nType Image # for Sonarr\n1- linuxserver/sonarr4k (Recommended)\n2- hotio/suitarr (Space Saver)\n3- aront/sonarr (MP4 Converter)"
   register: result
   until: result.user_input > "0" and result.user_input < "4"
   retries: 5
   delay: 1
 
-- name: Set linuxserver/radarr
+- name: Set linuxserver/sonarr
   set_fact: 
-    image: "linuxserver/radarr"
+    image: "linuxserver/sonarr"
     extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitarr
   set_fact: 
-    image: "hotio/suitarr:radarr"
-    extra: "/Radarr"
+    image: "hotio/suitarr:sonarr"
+    extra: "/Sonarr"
   when: result.user_input == "2"
 
-- name: Aront/Radarr
+- name: Aront/Sonarr
   set_fact: 
-    image: "aront/radarr"
+    image: "aront/sonarr"
     extra: ""
   when: result.user_input == "3"
 
@@ -65,7 +65,7 @@
       PGID: "1000"
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
-      APP: "radarr"
+      APP: "sonarr"
       VERSION: "stable"
     volumes:
       - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"

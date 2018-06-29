@@ -22,7 +22,7 @@
     name: pgmstart
     
 - pause:
-    prompt: "\nType of Image for Radarr4K\n1- linuxserver/radarr (Recommended)\n2- hotio/suitrr (Space Saver)\n3- aront/radarr (MP4 Converter)"
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/radarr (Recommended)\n2- hotio/suitrr (Space Saver)\n3- aront/radarr (MP4 Converter)"
   register: result
   until: result.user_input > "0" and result.user_input < "4"
   retries: 5
