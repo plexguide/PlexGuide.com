@@ -16,8 +16,7 @@
 #
 #################################################################################
 ---
-- include_role:
-    name: variables
+- include_vars: variables.yml
 
 - include_role:
     name: pgmstart
