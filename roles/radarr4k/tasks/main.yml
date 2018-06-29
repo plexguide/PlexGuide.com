@@ -25,7 +25,7 @@
 
 - name: Set linuxserver/radarr
   set_fact: 
-    image: "linuxserver/radarr"
+    image: linuxserver/radarr
   when: result.user_input == "1"
 
 - name: Hotio/Suitrr
