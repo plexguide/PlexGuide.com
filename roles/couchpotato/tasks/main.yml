@@ -32,10 +32,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-   #   BACKUP: "no"
-    #  MONO_TLS_PROVIDER: legacy
-      APP: "couchpotato"
-      VERSION: "stable"
     volumes:
       - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
       - "/opt/appdata/{{role_name}}:/config"

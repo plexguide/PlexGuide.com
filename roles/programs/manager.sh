@@ -44,34 +44,16 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      display=CouchPotato
-      program=couchpotato
-      port=5050
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags couchpotato
+      echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato
       read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
       bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     B)
-      display=Headphones
-      program=headphones
-      port=8081
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags headphones
+      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
       read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
       bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     C)
       display=LazyLibrarian
