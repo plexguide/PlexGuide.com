@@ -43,7 +43,7 @@
 - name: Aront/Radarr
   set_fact: 
     image: "aront/radarr"
-    extra: "Radarr"
+    extra: "/Radarr"
   when: result.user_input == "3"
 
 - name: Create Folders
