@@ -57,6 +57,7 @@ echo 'INFO - Selected Ombi4K' > /var/plexguide/pg.log && bash /opt/plexguide/scr
         B)
             echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
+            bash /opt/plexguide/menus/time/cron.sh
             ;;
         C)
 echo 'INFO - Selected: Sonarr4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
