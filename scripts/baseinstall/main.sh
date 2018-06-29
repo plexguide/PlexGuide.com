@@ -135,8 +135,6 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
       echo "INFO - Installing: Support" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear
       sleep 2
-      #bash /opt/plexguide/scripts/baseinstall/python.sh
-      sleep 2
       clear
       sudo add-apt-repository ppa:ansible/ansible-2.5 -y
       apt-get update -y 
@@ -149,30 +147,14 @@ fi
 ############# FOR ANSIBLE
 mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
 echo "[local]" > /etc/ansible/inventories/local
-echo "127.0.0.1  ansible_connection=local" >> /etc/ansible/inventories/local
+echo "127.0.0.1 ansible_connection=local" >> /etc/ansible/inventories/local
 
 ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
 echo "[defaults]" > /etc/ansible/ansible.cfg
 echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-#echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
+echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 ############################################################ Create Inventory File
-
-#file="/etc/ansible/inventory" 1>/dev/null 2>&1
-#  if [ -e "$file" ]
-#    then
-#  echo "" 1>/dev/null 2>&1
-#    else
-####### Create File
-#tee "/etc/ansible/inventory" > /dev/null <<EOF
-#[localhost]
-#127.0.0.1  ansible_connection=local
-#EOF
-####### Append File
-#echo "" >> /etc/ansible/ansible.cfg
-#echo "[defaults]" >> /etc/ansible/ansible.cfg
-#echo "inventory = inventory" >> /etc/ansible/ansible.cfg
-# fi
 
 #### Install Alias Command - 25 Percent
 bash /opt/plexguide/roles/baseline/scripts/preinstall.sh
@@ -311,6 +293,21 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 
 #### Install WatchTower Command - 95 Percent
 bash /opt/plexguide/roles/baseline/scripts/watchtower.sh
+
+########### Python Support
+pg_python=$( cat /var/plexguide/pg.python )
+pg_python_stored=$( cat /var/plexguide/pg.python.stored )
+
+if [ "$pg_python" == "$pg_python_stored" ]
+    then
+      echo "99" | dialog --gauge "Python Support Is Already Installed" 7 50 0
+      sleep 2
+    else 
+      echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
+      bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
+      cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
+      sleep 2
+fi
 
 ############################# Editions
 if [ "$edition" == "PG Edition: GCE Feed" ]
