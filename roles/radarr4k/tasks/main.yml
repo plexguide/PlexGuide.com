@@ -50,6 +50,7 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/{{role_name}}/mp4_automator
+  when: result.user_input == "3"
 
 - name: Deploy {{role_name}} Container
   docker_container:
@@ -89,7 +90,6 @@
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
 
-
 - name: Install autoProcess.ini
   template:
     src: autoProcess.ini
@@ -98,6 +98,7 @@
     mode: 0775
     owner: 1000
     group: 1000
+  when: result.user_input == "3"
 
 - include_role:
     name: pgmend
