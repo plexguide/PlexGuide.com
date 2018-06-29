@@ -19,7 +19,6 @@
   - { role: pgdrive_en, tags: ['pgdrive_en'] }
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
-  - { role: nowshowing, tags: ['nowshowing'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: cloudcmd, tags: ['cloudcmd'] }
   - { role: monitorr, tags: ['monitorr'] }
