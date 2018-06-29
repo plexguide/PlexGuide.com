@@ -31,16 +31,19 @@
 - name: Set linuxserver/radarr
   set_fact: 
     image: "linuxserver/radarr"
+    extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitrr
   set_fact: 
     image: "hotio/suitrr"
+    extra: "/Sonarr"
   when: result.user_input == "2"
 
 - name: Aront/Radarr
   set_fact: 
     image: "aront/radarr"
+    extra: ""
   when: result.user_input == "3"
 
 - name: Create Folders
@@ -65,15 +68,7 @@
       VERSION: "stable"
     volumes:
       - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
-      - "/opt/appdata/{{role_name}}:/config"
-      - /mnt/unionfs:/unionfs
-      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/rutorrents:/downloads"
-      - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - /mnt/qbittorrent/Downloads:/qbit-downloads
-      - /etc/localtime:/etc/localtime:ro
+  
     networks:
       - name: plexguide
         aliases:
