@@ -156,7 +156,6 @@ echo "127.0.0.1  ansible_connection=local" >> /etc/ansible/inventories/local
 echo "[defaults]" > /etc/ansible/ansible.cfg
 echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-echo "inventory = inventory" >> /etc/ansible/ansible.cfg
 #echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 ############################################################ Create Inventory File
 
