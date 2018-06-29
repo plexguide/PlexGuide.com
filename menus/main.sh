@@ -51,7 +51,7 @@ echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /o
            bash /opt/plexguide/menus/deploychoice.sh ;;
         B)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/main.sh ;;
+            bash /opt/plexguide/roles/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
