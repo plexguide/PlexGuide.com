@@ -24,8 +24,8 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="4K Versions - PG Supporting"
 
 OPTIONS=(A "Ombi4k"
-         B "Radarr4k"
-         C "Sonarr4k"
+         B "Sonarr4k"
+         C "Radarr4k"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -37,48 +37,22 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-echo 'INFO - Selected Ombi4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-            display=Ombi4K
-            program=ombi4k
-            sleep 2
-            clear
-            port=3574
-            dialog --infobox "Installing: $display" 3 30
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags ombi4k
+            echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
-            echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
-            bash /opt/plexguide/menus/time/cron.sh
+            echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k
             read -n 1 -s -r -p "Press any key to continue"
+            bash /opt/plexguide/menus/time/cron.sh
             ;;
         C)
-echo 'INFO - Selected: Sonarr4K' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-            display=Sonarr4k
-            program=sonarr4k
-            port=8984
-            bash /opt/plexguide/menus/images/sonarr4k.sh
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr4k
-            chown 1000:1000 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-            chmod 0755 /opt/appdata/sonarr4k/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
+            echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;
