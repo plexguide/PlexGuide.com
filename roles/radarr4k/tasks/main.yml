@@ -16,13 +16,12 @@
 #
 #################################################################################
 ---
-- name: Cat
-  debug: msg="\nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Server"
+- pause:
+    prompt: "\nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Server"
+  register: result
+  until: result == 5
   retries: 5
   delay: 1
-  register: result
-  until: result.stdout == 3
-
 
 - name: "Menu"
   shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
