@@ -27,7 +27,6 @@
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: support, tags: ['support'] }
-  - { role: organizr, tags: ['organizr'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
   - { role: next, tags: ['next'] }
@@ -52,7 +51,6 @@
   - { role: traefik2, tags: ['traefik2'] }
   - { role: mylar, tags: ['mylar'] }
   - { role: ubooquity, tags: ['ubooquity'] }
-  - { role: heimdall, tags: ['heimdall'] }
   - { role: network_tuning, tags: ['network_tuning'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: booksonic, tags: ['booksonic'] }
@@ -67,5 +65,4 @@
   - { role: jdownloader2, tags: ['jdownloader2'] }
   - { role: plexrequests, tags: ['plexrequests'] }
   - { role: clean-encrypt, tags: ['clean-encrypt'] }
-  - { role: organizrv2, tags: ['organizrv2'] }
   - { role: x2go, tags: ['x2go'] }

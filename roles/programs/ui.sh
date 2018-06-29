@@ -41,19 +41,10 @@ echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/s
 case $CHOICE in
 
     A)
-      program=heimdall
-      display=Heimdall
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      port=1111
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall
+      echo 'INFO - Selected: HeimDall' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall
       read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+      bash /opt/plexguide/menus/time/cron.sh
       ;;
     B)
       program=htpcmanager

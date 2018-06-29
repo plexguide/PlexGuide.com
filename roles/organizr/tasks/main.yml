@@ -28,17 +28,17 @@
   ignore_errors: True
 ##########
 
-- name: Deploy Heimdall Container
+- name: Deploy Organizr Container
   docker_container:
     name: "{{role_name}}"
-    image: "linuxserver/{{role_name}}"
+    image: "lsiocommunity/{{role_name}}"
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
       - "/opt/appdata/{{role_name}}:/app"
       - "/etc/localtime:/etc/localtime:ro"
-    cpu_shares: 256
+    cpu_shares: 128
     env:
       PUID: 1000
       PGID: 1000
@@ -50,7 +50,7 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
+#     traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
