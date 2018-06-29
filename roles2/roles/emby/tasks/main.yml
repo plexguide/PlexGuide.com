@@ -1,0 +1,66 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
+
+- name: stat embyserver
+  stat: path=/opt/appdata/embyserver
+  register: embyserver_stat
+
+- name: Remove Emby Container
+  docker_container:
+    name: emby
+    state: absent
+  when: embyserver_stat.stat.exists
+
+- name: Move embyserver to emby
+  command: mv /opt/appdata/embyserver /opt/appdata/emby
+  when: embyserver_stat.stat.exists
+
+- name: Deploy Emby Container
+  docker_container:
+    name: "{{role_name}}"
+    image: "emby/embyserver:latest"
+    pull: yes
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/{{role_name}}:/config"
+      - "/mnt/unionfs:/unionfs"
+    cpu_shares: 1024
+    env:
+      PUID: 1000
+      PGID: 1000
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{role_name}}"
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
+
+- include_role:
+    name: pgmend
