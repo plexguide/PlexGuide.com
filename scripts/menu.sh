@@ -151,7 +151,7 @@ else
   fi
 
   echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-  bash /opt/plexguide/scripts/baseinstall/main.sh
+  bash /opt/plexguide/roles/baseinstall/scripts/main.sh
 fi
 
 ## docker / ansible failure
