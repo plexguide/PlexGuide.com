@@ -38,6 +38,8 @@
     image: "aront/radarr"
   when: result.user_input == "3"
 
+- debug: msg="image"
+
 - set_fact:
     pgrole: "{{role_name}}"
 
