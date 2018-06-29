@@ -109,14 +109,17 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
-            display=x2go
-            program=x2go
-            port=2222
-            dialog --infobox "Installing: x2go" 3 38
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags x2go
+            echo 'INFO - Selected: x2go' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags x2go
             read -n 1 -s -r -p "Press any key to continue"
+#            display=x2go
+ #           program=x2go
+  #          port=2222
+   #         dialog --infobox "Installing: x2go" 3 38
+    #        sleep 2
+     #       clear
+      #      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags x2go
+       #     read -n 1 -s -r -p "Press any key to continue"
             #### skipped cron
             #bash /opt/plexguide/menus/programs/ending.sh
             ;;
