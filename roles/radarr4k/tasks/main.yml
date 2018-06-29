@@ -67,7 +67,7 @@
       APP: "radarr"
       VERSION: "stable"
     volumes:
-      -" "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
+      - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
       - "/opt/appdata/{{role_name}}:/config{{extra}}"
       - "/mnt/unionfs:/unionfs"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
