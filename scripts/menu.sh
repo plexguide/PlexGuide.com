@@ -184,7 +184,7 @@ then
    bash /opt/plexguide/menus/startup/message2.sh
 else 
 echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-bash /opt/plexguide/scripts/baseinstall/edition.sh
+bash /opt/plexguide/roles/baseline/scripts/edition.sh
 fi
 
 ## Selects an edition
