@@ -18,4 +18,4 @@
 ---
 intport: "8989"
 extport: "8984"
-pgrole: "{{role_name}}"
+pgrole: "sonarr4k"
