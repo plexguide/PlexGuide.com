@@ -51,38 +51,38 @@ clear
 case $CHOICE in
         A)
 echo "INFO - Selected Media Servers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/media.sh ;;
+            bash /opt/plexguide/roles/programs/media.sh ;;
         B)
 echo "INFO - Selected Mangers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/manager.sh ;;
+            bash /opt/plexguide/roles/programs/manager.sh ;;
         C)
 echo "INFO - Selected NZB Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/nzbs.sh ;;
+            bash /opt/plexguide/roles/programs/nzbs.sh ;;
         D)
 echo "INFO - Selected Torrent ProgramsInterface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/torrent.sh ;;
+            bash /opt/plexguide/roles/programs/torrent.sh ;;
         E)
 echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/support.sh ;;
+            bash /opt/plexguide/roles/programs/support.sh ;;
         F)
 echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/ui.sh ;;
+            bash /opt/plexguide/roles/programs/ui.sh ;;
         G)
 echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/tools.sh ;;
+            bash /opt/plexguide/roles/programs/tools.sh ;;
         H)
 echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/critical.sh ;;
+            bash /opt/plexguide/roles/programs/critical.sh ;;
         I)
 echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/versions4k.sh ;;
+            bash /opt/plexguide/roles/programs/versions4k.sh ;;
         J)
 echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/programs/beta.sh ;;
+            bash /opt/plexguide/roles/programs/beta.sh ;;
         Z)
             clear
             exit 0 ;;
 esac
 
 ### loops until exit
-bash /opt/plexguide/menus/programs/main.sh
+bash /opt/plexguide/roles/programs/main.sh
