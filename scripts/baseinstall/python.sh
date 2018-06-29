@@ -25,7 +25,6 @@ grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || e
 sysctl -p
 
 ## Install Dependencies
-apt-get update
 apt-get install -y --reinstall \
     git \
     build-essential \
