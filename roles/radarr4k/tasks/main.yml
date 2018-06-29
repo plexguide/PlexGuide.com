@@ -37,7 +37,7 @@
 - name: Hotio/Suitarr
   set_fact: 
     image: "hotio/suitarr:radarr"
-    extra: "/Radarr"
+    extra: ""
   when: result.user_input == "2"
 
 - name: Aront/Radarr
