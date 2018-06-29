@@ -149,30 +149,14 @@ fi
 ############# FOR ANSIBLE
 mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
 echo "[local]" > /etc/ansible/inventories/local
-echo "127.0.0.1  ansible_connection=local" >> /etc/ansible/inventories/local
+echo "127.0.0.1 ansible_connection=local" >> /etc/ansible/inventories/local
 
 ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
 echo "[defaults]" > /etc/ansible/ansible.cfg
 echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-#echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
+echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 ############################################################ Create Inventory File
-
-#file="/etc/ansible/inventory" 1>/dev/null 2>&1
-#  if [ -e "$file" ]
-#    then
-#  echo "" 1>/dev/null 2>&1
-#    else
-####### Create File
-#tee "/etc/ansible/inventory" > /dev/null <<EOF
-#[localhost]
-#127.0.0.1  ansible_connection=local
-#EOF
-####### Append File
-#echo "" >> /etc/ansible/ansible.cfg
-#echo "[defaults]" >> /etc/ansible/ansible.cfg
-#echo "inventory = inventory" >> /etc/ansible/ansible.cfg
-# fi
 
 #### Install Alias Command - 25 Percent
 bash /opt/plexguide/roles/baseline/scripts/preinstall.sh
