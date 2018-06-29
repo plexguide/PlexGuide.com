@@ -17,14 +17,11 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWhich type of server would you like to deploy?\n1- Oraclen\n2- ColdFusionn\n3- II\n4- Tomcat\n5- File Serve\n6- Base Server"
-  register: aircity
-  until: aircity.vaule > 2
+    prompt: "\nType of Image for Radarr4K\n1- linuxserver/radarr (Recommended)\n2- hotio/suitrr (Space Saver)\n3- aront/radarr (MP4 Converter)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
   retries: 5
   delay: 1
-
-- name: "Menu"
-  shell: "bash /opt/plexguide/roles/{{role_name}}/menus/images.sh"
 
 - set_fact:
     pgrole: "{{role_name}}"
