@@ -34,9 +34,9 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitrr
+- name: Hotio/Suitarr
   set_fact: 
-    image: "hotio/suitrr"
+    image: "hotio/suitarr"
     extra: "/Sonarr"
   when: result.user_input == "2"
 
