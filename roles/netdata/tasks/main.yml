@@ -16,25 +16,36 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
-    
-- name: Remove Netdata Container
-  docker_container:
-    name: "{{role_name}}"
-    state: absent
+    name: pgmstart
+
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- titpetric/netdata\n2- firehol/netdata"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
+
+- name: Set titpetric/netdata
+  set_fact: 
+    image: "titpetric/netdata"
+  when: result.user_input == "1"
+
+- name: Set firehol/netdata
+  set_fact: 
+    image: "firehol/netdata"
+  when: result.user_input == "2"
 
 - name: Deploy NetData Container
   docker_container:
     name: "{{role_name}}"
-    image: "titpetric/{{role_name}}:latest"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}19999:19999"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
       - "/sys:/host/sys:ro"
       - "/proc:/host/proc:ro"
@@ -52,7 +63,7 @@
       traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "19999"
+      traefik.port: "{{extport}}"
 
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_role:
+    name: pgmend
