@@ -137,9 +137,10 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
       sleep 2
       yes | apt-add-repository ppa:ansible/ansible 
       apt-get update -y 
-      apt-get install ansible -y
+      apt-get install ansible 2.5.4 -y
       yes | apt-get update
       cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
+      sleep 2
 fi 
 ############################################################ Create Inventory File
 
