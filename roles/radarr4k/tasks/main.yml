@@ -37,13 +37,13 @@
 - name: Hotio/Suitarr
   set_fact: 
     image: "hotio/suitarr:radarr"
-    extra: ""
+    extra: "/Radarr"
   when: result.user_input == "2"
 
 - name: Aront/Radarr
   set_fact: 
     image: "aront/radarr"
-    extra: "/Radarr"
+    extra: ""
   when: result.user_input == "3"
 
 - name: Create Folders
