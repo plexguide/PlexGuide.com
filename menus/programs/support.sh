@@ -142,8 +142,8 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         H)
-            echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi
+            echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags Tautulli
             read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/menus/time/cron.sh
             ;;
