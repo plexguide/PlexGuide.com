@@ -27,17 +27,14 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(00 "Developer    ~ 6.000"
-         Z "----- Exit Menu -----"
-         01 "Stable       ~ 5.1"
-         02 "Stable       ~ 5.099"
-         03 "Stable       ~ 5.096"             
-         04 "Depreciated  ~ 5.087"
-         05 "Historical   ~ 5.079"
-         06 "Historical   ~ 5.048"
-         07 "Historical   ~ 5.013"
-         08 "Historical   ~ 5.004"
-         09 "Historical   ~ 4.1")
+OPTIONS=(00 "Developer     ~ 6.000"
+         Z "------ Exit Menu ------"
+         01 "Stable HotFix ~ 6.000D"
+         02 "Historical    ~ 5.1"
+         03 "Historical    ~ 5.048"
+         04 "Historical    ~ 5.013"
+         05 "Historical    ~ 5.004"
+         06 "Historical    ~ 4.1")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -89,29 +86,20 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         01)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.1" ;;
+            version="6.000d" ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.099" ;;
+            version="5.1" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.096u1" ;;
+            version="5.048" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.087" ;;
+            version="5.013" ;;
         05)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.079" ;;
-        06)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.048" ;;
-        07)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.013" ;;
-        08)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.003" ;;
-        09)
+        06)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="Legacy-v4" ;;
 esac
