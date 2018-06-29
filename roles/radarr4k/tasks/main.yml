@@ -16,6 +16,11 @@
 #
 #################################################################################
 ---
+- include_role:
+    name: pgmstart
+
+- include_vars: variables.yml
+
 - pause:
     prompt: "\nType of Image for Radarr4K\n1- linuxserver/radarr (Recommended)\n2- hotio/suitrr (Space Saver)\n3- aront/radarr (MP4 Converter)"
   register: result
@@ -42,11 +47,6 @@
 
 - set_fact:
     pgrole: "{{role_name}}"
-
-- include_vars: variables.yml
-
-- include_role:
-    name: varstart
 
 - name: Register Image
   shell: "cat /var/plexguide/image.{{role_name}}"
@@ -111,4 +111,4 @@
     group: 1000
 
 - include_role:
-    name: varend
+    name: pgmend
