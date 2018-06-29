@@ -29,7 +29,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer     ~ 6.000"
          Z "------ Exit Menu ------"
-         01 "Stable HotFix ~ 6.000E"
+         01 "Stable HotFix ~ 6.000F"
          02 "Historical    ~ 5.1"
          03 "Historical    ~ 5.048"
          04 "Historical    ~ 5.013"
