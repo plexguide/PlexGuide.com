@@ -21,30 +21,6 @@
 - include_role:
     name: pgmstart
 
-#- pause:
-#    prompt: "\nType Image # for Airsomic\n1- airsonic/airsonic (Recommended)\n2- airsonic/airsonic"
-#  register: result
-#  until: result.user_input > "0" and result.user_input < "4"
-#  retries: 5
-#  delay: 1
-
-#- name: Set airsonic/airsonic
-#  set_fact: 
-#    image: "airsonic/airsonic"
-#    extra: ""
-#  when: result.user_input == "1"
-
-#- name: sickrage/sickrage
-#  set_fact: 
-#    image: "sickrage:sickrage"
-#  when: result.user_input == "2"
-
-#- name: Create Airsonic Directories
-#  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-#  with_items:
-#    - "{{path.stdout}}/{{role_name}}"
-#    - "{{path.stdout}}/{{role_name}}/downloads"
-
 - name: Deploy Airsonic Container
   docker_container:
     name: "{{role_name}}"

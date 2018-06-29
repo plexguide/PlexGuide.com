@@ -34,7 +34,6 @@
   - { role: organizr, tags: ['organizr'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
-  - { role: emby, tags: ['emby'] }
   - { role: next, tags: ['next'] }
   - { role: telly, tags: ['telly'] }
   - { role: sstvproxy, tags: ['sstvproxy'] }
@@ -61,7 +60,6 @@
   - { role: couchpotato, tags: ['couchpotato'] }
   - { role: network_tuning, tags: ['network_tuning'] }
   - { role: speedtestserver, tags: ['speedtestserver'] }
-  - { role: airsonic, tags: ['airsonic'] }
   - { role: booksonic, tags: ['booksonic'] }
   - { role: duplicati, tags: ['duplicati'] }
   - { role: headphones, tags: ['headphones'] }
