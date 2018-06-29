@@ -22,7 +22,7 @@
     name: pgmstart
 
 - pause:
-    prompt: "\nType Image # for Sonarr\n1- linuxserver/sonarr (Recommended)\n2- sickrage/sickrage"
+    prompt: "\nType Image # for Sonarr\n1- linuxserver/sickrage (Recommended)\n2- sickrage/sickrage"
   register: result
   until: result.user_input > "0" and result.user_input < "4"
   retries: 5
