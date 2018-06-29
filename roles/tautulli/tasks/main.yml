@@ -16,11 +16,10 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
 ########## Unique for TLD
 - name: Register TLD if it exists
@@ -45,7 +44,7 @@
     pull: yes
     cpu_shares: 128
     published_ports:
-      - "{{ports.stdout}}8181:8181"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
       - /opt/appdata/{{role_name}}:/config
       - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
@@ -65,5 +64,5 @@
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},plexpy.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "8181"
 
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_role:
+    name: pgmend
