@@ -21,6 +21,9 @@
 - include_role:
     name: pgmstart
 
+- include_role:
+    name: tld
+
 - pause:
     prompt: "\nType Image # for {{role_name}}\n1- linuxserver/ombi (Recommended)\n2- lsiodev/ombi-preview (Developer)"
   register: result
@@ -29,21 +32,14 @@
   delay: 1
 
 - name: Set linuxserver/ombi
-  set_fact: 
+  set_fact:
     image: "linuxserver/ombi"
   when: result.user_input == "1"
 
 - name: Set lsiodev/ombi-preview
-  set_fact: 
+  set_fact:
     image: "lsiodev/ombi-preview"
   when: result.user_input == "2"
-
-########## Unique for TLD
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{role_name}}"
-  register: tld
-  ignore_errors: True
-##########
 
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -91,6 +87,6 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "{{extport}}"
- 
+
 - include_role:
     name: pgmend
