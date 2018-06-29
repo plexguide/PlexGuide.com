@@ -146,6 +146,17 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
       #cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
       #sleep 2
 fi 
+
+############# FOR ANSIBLE
+mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
+echo "[local]" > /etc/ansible/inventories/local
+echo "localhost ansible_connection=local" >> /etc/ansible/inventories/local
+
+### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
+echo "[defaults]" > /etc/ansible/ansible.cfg
+echo "command_warnings = False" >> /etc/ansible/ansible.cfg
+echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
+#echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 ############################################################ Create Inventory File
 
 #file="/etc/ansible/inventory" 1>/dev/null 2>&1
@@ -323,17 +334,6 @@ fi
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-############# FOR ANSIBLE
-mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
-echo "[local]" > /etc/ansible/inventories/local
-echo "localhost ansible_connection=local" >> /etc/ansible/inventories/local
-
-### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
-echo "[defaults]" > /etc/ansible/ansible.cfg
-echo "command_warnings = False" >> /etc/ansible/ansible.cfg
-echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-echo "inventory = inventories/local" >> /etc/ansible/ansible.cfg
 
 echo "100" | dialog --gauge "PG BaseInstall Finished!" 7 50 0
 sleep 2
