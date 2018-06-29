@@ -16,16 +16,10 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
-
-- name: Remove Emby Container
-  docker_container:
-    name: emby
-    state: absent
+    name: pgmstart
 
 - name: stat embyserver
   stat: path=/opt/appdata/embyserver
@@ -42,7 +36,7 @@
     pull: yes
     cpu_shares: 1024
     published_ports:
-      - "{{ports.stdout}}8096:8096"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       UID: "1000"
       GID: "1000"
@@ -63,6 +57,9 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:emby.{{domain.stdout}}"
-      traefik.port: "8096"
+      traefik.port: "{{intport}}"
     restart_policy: always
     state: started
+
+- include_role:
+    name: pgmend

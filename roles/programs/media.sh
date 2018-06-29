@@ -68,26 +68,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
-            display=Emby
-            program=emby
-            port=8096
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags emby
+            echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby
             read -n 1 -s -r -p "Press any key to continue"
-            
-            #### G-Drive Edition
-            if [ "$edition" == "PG Edition: GDrive" ]
-              then
-                dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of EMBY. If your Library is super huge, when it's backing up; it will shut down your EMBY Container and could take several Minutes or Hours!" 0 0
-            fi
-
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         C)
             display=Ubooquity
