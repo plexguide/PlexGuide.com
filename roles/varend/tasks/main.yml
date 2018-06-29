@@ -18,6 +18,3 @@
 ---
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
-
-  - pause:
-      prompt: "Press [ENTER] to Continue - Final Review"
