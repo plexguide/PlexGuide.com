@@ -9,9 +9,6 @@
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: plextest, tags: ['plextest', 'plextest'] }
-  - { role: cadvisor, tags: ['cadvisor', 'monitor'] }
-  - { role: prometheus, tags: ['prometheus', 'monitor'] }
-  - { role: grafana, tags: ['grafana', 'monitor'] }
   - { role: bazarr, tags: ['bazarr'] }
   - { role: nzbget, tags: ['nzbget'] }
   - { role: pgdrive, tags: ['pgdrive'] }
