@@ -38,7 +38,7 @@ echo "localhost ansible_connection=local" >> /etc/ansible/inventories/local
 echo "[defaults]" > /etc/ansible/ansible.cfg
 echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-echo "inventory = /etc/ansible/ansible.cfg" >> /etc/ansible/ansible.cfg
+echo "inventory = inventories/local" >> /etc/ansible/ansible.cfg
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
