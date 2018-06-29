@@ -138,10 +138,9 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
       #bash /opt/plexguide/scripts/baseinstall/python.sh
       sleep 2
       clear
-      yes | apt-add-repository ppa:ansible/ansible 
+      sudo add-apt-repository ppa:ansible/ansible-2.5 -y
       apt-get update -y 
-      apt-get install ansible 2.5.4 -y
-      sudo apt-mark hold ansible
+      apt-get install ansible 2.5.5 -y
       yes | apt-get update
       #cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
       #sleep 2
