@@ -75,5 +75,5 @@
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "{{extport}}"
  
- - include_role:
+- include_role:
     name: pgmend
