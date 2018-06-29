@@ -304,7 +304,7 @@ if [ "$pg_python" == "$pg_python_stored" ]
       sleep 2
     else 
       echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
-      bash /opt/plexguide/scripts/baseinstall/python.sh &>/dev/null &
+      bash /opt/plexguide/roles/baseline/scripts/python.sh &>/dev/null &
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
       sleep 2
 fi
