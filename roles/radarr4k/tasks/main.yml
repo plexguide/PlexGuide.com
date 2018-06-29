@@ -66,7 +66,7 @@
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
-    image: "{{image}}"
+    image: "{{image.stdout}}"
     pull: yes
     cpu_shares: 256
     published_ports:
