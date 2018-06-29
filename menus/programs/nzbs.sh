@@ -70,19 +70,10 @@ case $CHOICE in
               bash /opt/plexguide/menus/programs/ending.sh
             ;;
         C)
-            display=SABNZBD
-            program=sabnzbd
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            port=8090
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sabnzbd
+            echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
             read -n 1 -s -r -p "Press any key to continue"
-              echo "$program" > /tmp/program
-              echo "$program" > /tmp/program_var
-              echo "$port" > /tmp/port
-              bash /opt/plexguide/menus/time/cron.sh
-              bash /opt/plexguide/menus/programs/ending.sh
+            bash /opt/plexguide/menus/time/cron.sh
             ;;
 
         Z)
