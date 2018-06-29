@@ -31,19 +31,16 @@
 - name: Set linuxserver/radarr
   set_fact: 
     image: "linuxserver/radarr"
-    extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitrr
   set_fact: 
     image: "hotio/suitrr"
-    extra: "/Sonarr"
   when: result.user_input == "2"
 
 - name: Aront/Radarr
   set_fact: 
     image: "aront/radarr"
-    extra: ""
   when: result.user_input == "3"
 
 - name: Create Folders
