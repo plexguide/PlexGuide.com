@@ -46,7 +46,7 @@ pip install --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
     netaddr \
-    ansible==${1-2.5.4}
+    #ansible==${1-2.5.4}
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
 cp /usr/local/bin/pip3 /usr/bin/pip3
