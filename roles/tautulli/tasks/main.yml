@@ -22,7 +22,7 @@
     name: pgmstart
 
 ########## UNIQUE TLD ### START
-- name: Check TLD FIle Exists
+- name: Check TLD File Exists
   stat:
     path: "/var/plexguide/tld.{{role_name}}"
   register: tldcheck
@@ -31,7 +31,7 @@
   shell: "cat /var/plexguide/tld.{{role_name}}"
   register: tld
   ignore_errors: True
-  when: tldcheck.stat.exists == False
+  when: tldcheck.stat.exists == True
 ########## UNIQUE TLD ### END
 
 - name: Create {{role_name}} script directories
