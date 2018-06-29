@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
+    
+
+- name: Create Basic directories for Deluge
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - "{{path.stdout}}/{{role_name}}"
+
+- name: Create Basic appdata directories for Deluge
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - /opt/appdata/{{role_name}}
+
+- name: Deploy {{role_name}} Container
+  docker_container:
+    name: "{{role_name}}"
+    image: "binhex/arch-deluge"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+      - "58846:58846"
+      - "58946:58946"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/opt/appdata/{{role_name}}:/config"
+      - "/mnt/unionfs:/unionfs"
+      - "{{path.stdout}}/deluge/temp:/temp"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/deluge/torrent:/torrent"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{role_name}}"
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
+
+- include_role:
+    name: pgmend
