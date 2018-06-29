@@ -52,7 +52,6 @@
   - { role: mylar, tags: ['mylar'] }
   - { role: ubooquity, tags: ['ubooquity'] }
   - { role: network_tuning, tags: ['network_tuning'] }
-  - { role: speedtestserver, tags: ['speedtestserver'] }
   - { role: booksonic, tags: ['booksonic'] }
   - { role: duplicati, tags: ['duplicati'] }
   - { role: qbittorrent, tags: ['qbittorrent'] }

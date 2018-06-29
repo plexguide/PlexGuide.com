@@ -28,7 +28,7 @@
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    cpu_shares: 512
+    cpu_shares: 128
     env:
       PUID: 1000
       PGID: 1000

@@ -46,33 +46,16 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            display=AllTube
-            program=alltube
-            port=1234
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags alltube
+            echo 'INFO - Selected: AllTube' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/programs/ending.sh
+            bash /opt/plexguide/menus/time/cron.sh
             ;;
         B)
-            display=Monitorr
-            program=monitorr
-            port=8099
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags monitorr
+            echo 'INFO - Selected: Monitorr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         C)
             display=NEXTCloud
@@ -91,19 +74,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         D)
-            display=NowShowing
-            program=nowshowing
-            port=6878
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nowshowing
+            echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
             echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -148,19 +122,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             ;;
         I)
-            display=TheLounge
-            program=thelounge
-            port=9100
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags lounge
+            echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;
