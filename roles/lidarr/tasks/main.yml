@@ -22,13 +22,13 @@
     name: pgmstart
     
 - pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/lidarr (Recommended)\n2- hotio/suitarr (Space Saver)"
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/radarr (Recommended)\n2- hotio/suitarr (Space Saver)"
   register: result
   until: result.user_input > "0" and result.user_input < "3"
   retries: 5
   delay: 1
 
-- name: Set linuxserver/lidarr
+- name: Set linuxserver/radarr
   set_fact: 
     image: "linuxserver/lidarr"
     extra: ""
@@ -61,14 +61,14 @@
           - lidarr
     volumes:
       - "/opt/appdata/lidarr:/config{{extra}}"
-      - "/mnt/unionfs:/unionfs"
+      - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/rutorrents:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
-      - "/etc/localtime:/etc/localtime:ro"
+      - /etc/localtime:/etc/localtime:ro
     restart_policy: always
     state: started
     labels:
