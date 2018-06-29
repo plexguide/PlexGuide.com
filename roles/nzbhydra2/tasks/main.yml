@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -20,62 +20,69 @@
 
 - include_role:
     name: pgmstart
-    
+
 - pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/lidarr (Recommended)\n2- hotio/suitarr (Space Saver)"
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/nzbhydra2 (Recommended)\n2- sabnzbd/sabnzbd"
   register: result
   until: result.user_input > "0" and result.user_input < "3"
   retries: 5
   delay: 1
 
-- name: Set linuxserver/lidarr
+- name: Set linuxserver/nzbhydra2
   set_fact: 
-    image: "linuxserver/lidarr"
-    extra: ""
+    image: "linuxserver/nzbhydra2"
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact: 
-    image: "hotio/suitarr:lidarr"
-    extra: "/Lidarr"
-  when: result.user_input == "2"
+#- name: sabnzbd/sabnzbd
+#  set_fact: 
+#    image: "sabnzbd/sabnzbd"
+#  when: result.user_input == "2"
 
-- name: Deploy Lidarr Container
+- name: Register Image
+  shell: "cat /var/plexguide/image.{{role_name}}"
+  register: image
+  ignore_errors: True
+
+- name: Register Extra
+  shell: "cat /var/plexguide/extra.{{role_name}}"
+  register: extra
+  ignore_errors: True
+    
+- name: Remove NZBHydra2 Container
   docker_container:
-    name: "{{role_name}}"
-    image: "{{image}}"
+    name: nzbhydra2
+    state: absent
+
+- name: Deploy NZBHydra2 Container
+  docker_container:
+    name: {{role_name}}
+    image: "linuxserver/{{role_name}}"
+#    image: "{{image.stdout}}"
     pull: yes
-    cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes:
+      - "/opt/appdata/{{role_name}}:/config{{extra.stdout}}"
+      - /etc/localtime:/etc/localtime:ro
+    cpu_shares: 256
     env:
-      APP: "lidarr"
-      VERSION: "stable"
-      PUID: "1000"
-      PGID: "1000"
+      PUID: 1000
+      PGID: 1000
+      APP: "{{role_name}}:"
+      VERSION: "unstable"
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
+    restart_policy: always
+    state: started
     networks:
       - name: plexguide
         aliases:
-          - lidarr
-    volumes:
-      - "/opt/appdata/lidarr:/config{{extra}}"
-      - "/mnt/unionfs:/unionfs"
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/rutorrents:/downloads"
-      - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-      - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
-      - "/etc/localtime:/etc/localtime:ro"
-    restart_policy: always
-    state: started
+          - "{{role_name}}"
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:lidarr.{{domain.stdout}}"
-      traefik.port: "{{extport}}"
+      traefik.frontend.rule: "Host:sabnzbd.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
 
 - include_role:
     name: pgmend
