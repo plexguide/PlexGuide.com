@@ -22,7 +22,7 @@
     name: pgmstart
 
 - pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/sabnzbd (Recommended)\n2- hotio/suitarr (Space Saver)"
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/sabnzbd (Recommended)\n2- sabnzbd/sabnzbd"
   register: result
   until: result.user_input > "0" and result.user_input < "3"
   retries: 5
