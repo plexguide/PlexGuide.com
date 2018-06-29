@@ -16,28 +16,41 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
+    
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/radarr (Recommended)\n2- hotio/suitarr (Space Saver)\n"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
 
-- name: Remove Lidarr Container
-  docker_container:
-    name: lidarr
-    state: absent
+- name: Set linuxserver/radarr
+  set_fact: 
+    image: "linuxserver/lidarr"
+    extra: ""
+  when: result.user_input == "1"
+
+- name: Hotio/Suitarr
+  set_fact: 
+    image: "hotio/suitarr:lidarr"
+    extra: "/Lidarr"
+  when: result.user_input == "2"
 
 - name: Deploy Lidarr Container
   docker_container:
-    name: lidarr
-    image: "hotio/suitarr"
+    name: "{{role_name}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}8686:8686"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       APP: "lidarr"
-      VERSION: "unstable"
+      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
       BACKUP: "no"
@@ -47,7 +60,7 @@
         aliases:
           - lidarr
     volumes:
-      - /opt/appdata/lidarr:/config
+      - "/opt/appdata/lidarr:/config{{extra}}"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
@@ -62,4 +75,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:lidarr.{{domain.stdout}}"
-      traefik.port: "8686"
+      traefik.port: "{{extport}}"
+
+- include_role:
+    name: pgmend
