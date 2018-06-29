@@ -46,22 +46,15 @@
     extra: ""
   when: result.user_input == "3"
 
-- debug: msg="{{image}}"
-
 - set_fact:
     pgrole: "{{role_name}}"
-
-- name: Register Extra
-  shell: "cat /var/plexguide/extra.{{role_name}}"
-  register: extra
-  ignore_errors: True
 
 - name: Create Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/{{role_name}}/mp4_automator
 
-- name: Deploy {{role_name}} Container
+- name: "Deploy Container"
   docker_container:
     name: "{{role_name}}"
     image: "{{image.stdout}}"
