@@ -32,11 +32,6 @@
   with_items:
     - /opt/appdata/{{role_name}}/scripts
 
-- name: Remove {{role_name}} Container
-  docker_container:
-    name: "{{role_name}}"
-    state: absent
-
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
