@@ -141,6 +141,7 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
       yes | apt-add-repository ppa:ansible/ansible 
       apt-get update -y 
       apt-get install ansible 2.5.4 -y
+      sudo apt-mark hold
       yes | apt-get update
       #cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
       #sleep 2
