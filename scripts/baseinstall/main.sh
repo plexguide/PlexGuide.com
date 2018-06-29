@@ -281,6 +281,8 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
       sleep 2
     else 
       echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
+      clear
+      sleep 2
       ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 
       sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
