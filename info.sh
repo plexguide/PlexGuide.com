@@ -16,8 +16,8 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.000D BETA" > /var/plexguide/pg.version
-echo "95" > /var/plexguide/pg.preinstall
+echo "6.000E BETA" > /var/plexguide/pg.version
+echo "96" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
 echo "18.03.1" > /var/plexguide/pg.docker16
