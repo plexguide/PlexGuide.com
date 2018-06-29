@@ -31,16 +31,19 @@
 - name: Set linuxserver/radarr
   set_fact: 
     image: "linuxserver/radarr"
+    extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitrr
   set_fact: 
     image: "hotio/suitrr"
+    extra: "/Sonarr"
   when: result.user_input == "2"
 
 - name: Aront/Radarr
   set_fact: 
     image: "aront/radarr"
+    extra: ""
   when: result.user_input == "3"
 
 - name: Create Folders
@@ -48,10 +51,10 @@
   with_items:
     - /opt/appdata/{{pgrole}}/mp4_automator
 
-- name: Deploy {{pgrole}} Container
+- name: Deploy {{pgrole}} Container"
   docker_container:
     name: "{{pgrole}}"
-    image: "{{image.stdout}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
