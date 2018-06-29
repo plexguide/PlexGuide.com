@@ -38,8 +38,7 @@ echo "localhost ansible_connection=local" >> /opt/plexguide/inventories/local
 echo "[defaults]" > /opt/plexguide/ansible_cfg
 echo "command_warnings = False" >> /opt/plexguide/ansible_cfg
 echo "callback_whitelist = profile_tasks" >> /opt/plexguide/ansible_cfg
-echo "inventory = /opt/plexguide/inventories/local" >> /opt/plexguide/ansible_cfg
-
+echo "inventory = /opt/plexguide/ansible_cfg" >> /opt/plexguide/ansible_cfg
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
