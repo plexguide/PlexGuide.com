@@ -133,6 +133,8 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
     else 
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
       echo "INFO - Installing: Support" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear
+      sleep 2
       bash /opt/plexguide/scripts/baseinstall/python.sh
       sleep 2
       #clear
