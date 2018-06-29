@@ -16,11 +16,10 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
 - name: create plexguide network
   docker_network:
@@ -44,7 +43,7 @@
     pull: yes
     cpu_shares: 128
     published_ports:
-      - "{{ports.stdout}}9000:9000"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       PUID: "1000"
       PGID: "1000"
@@ -63,7 +62,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "9000"
+      traefik.port: "{{intport}}"
 
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_role:
+    name: pgmend
