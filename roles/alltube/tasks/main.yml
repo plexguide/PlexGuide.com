@@ -16,11 +16,10 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
 - name: Create {{role_name}} directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
@@ -33,11 +32,6 @@
     dest: /opt/appdata/{{role_name}}/config.json
     force: yes
 
-- name: Remove {{role_name}} Container
-  docker_container:
-    name: "{{role_name}}"
-    state: absent
-
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
@@ -45,7 +39,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}1234:80"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       PUID: "1000"
       PGID: "1000"
@@ -60,9 +54,9 @@
       traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "80"
+      traefik.port: "{{intport}}"
     restart_policy: always
     state: started
 
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_role:
+    name: pgmend

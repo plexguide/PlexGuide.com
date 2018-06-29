@@ -75,7 +75,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:lidarr.{{domain.stdout}}"
-      traefik.port: "{{extport}}"
+      traefik.port: "{{intport}}"
 
 - include_role:
     name: pgmend
