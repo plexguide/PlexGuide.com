@@ -37,7 +37,7 @@
 - name: Hotio/Suitarr
   set_fact: 
     image: "hotio/suitarr:radarr"
-    extra: "/Sonarr"
+    extra: "/Radarr"
   when: result.user_input == "2"
 
 - name: Aront/Radarr
@@ -67,16 +67,16 @@
       APP: "radarr"
       VERSION: "stable"
     volumes:
-      - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
-      - "/opt/appdata/{{role_name}}{{extra}}:/config"
-      - /mnt/unionfs:/unionfs
+      -" "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
+      - "/opt/appdata/{{role_name}}:/config{{extra}}"
+      - "/mnt/unionfs:/unionfs"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/rutorrents:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - /mnt/qbittorrent/Downloads:/qbit-downloads
-      - /etc/localtime:/etc/localtime:ro
+      - "/mnt/qbittorrent/Downloads:/qbit-downloads"
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       - name: plexguide
         aliases:
