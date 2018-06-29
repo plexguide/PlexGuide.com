@@ -16,10 +16,10 @@
 #
 #################################################################################
 ---
-  #- include_vars: variables.yml
+  - include_vars: variables.yml
 
-  #- include_role:
-  #    name: varstart
+  -  include_role:
+      name: varstart
 
  ########### PlexDrive
   - name: PlexDrive Check
@@ -179,5 +179,5 @@
     with_items:
       - /tmp
 
-  #- include_role:
-  #    name: varend
+  - include_role:
+      name: varend
