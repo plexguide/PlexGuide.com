@@ -32,6 +32,12 @@
   register: tld
   ignore_errors: True
   when: tldcheck.stat.exists == True
+
+- name: Registerd TLD Blank if it does not exist
+  shell: "echo ''"
+  register: tld
+  ignore_errors: True
+  when: tldcheck.stat.exists == False
 ########## UNIQUE TLD ### END
 
 - name: Create {{role_name}} script directories
