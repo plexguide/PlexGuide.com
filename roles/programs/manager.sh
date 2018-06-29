@@ -77,34 +77,16 @@ case $CHOICE in
       bash /opt/plexguide/menus/time/cron.sh
       ;;
     E)
-      display=MEDUSA
-      program=medusa
-      port=8081
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags medusa
+      echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa
       read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
       bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     F)
-      display=Mylar
-      program=mylar
-      port=8090
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags mylar
+      echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar
       read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
       bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     G)
       echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -113,19 +95,10 @@ case $CHOICE in
       bash /opt/plexguide/menus/time/cron.sh
       ;;
     H)
-      display=SickRage
-      program=sickrage
-      port=8082
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sickrage
+      echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage
       read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
       bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     I)
       echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

@@ -21,12 +21,6 @@
 - include_role:
     name: pgmstart
 
-#- name: Create Medusa Directories
-#  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-#  with_items:
-#    - "{{path.stdout}}/{{role_name}}"
-#    - "{{path.stdout}}/{{role_name}}/downloads"
-
 - name: Deploy Medusa Container
   docker_container:
     name: "{{role_name}}"

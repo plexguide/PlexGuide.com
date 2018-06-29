@@ -32,8 +32,6 @@
     env:
       PUID: "1000"
       PGID: "1000"
-   #   BACKUP: "no"
-    #  MONO_TLS_PROVIDER: legacy
       APP: "{{role_name}}"
       VERSION: "stable"
     volumes:
