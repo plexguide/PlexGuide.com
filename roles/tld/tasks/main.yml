@@ -18,11 +18,11 @@
 ---
 - name: Check TLD File Exists
   stat:
-    path: "/var/plexguide/tld.{{role_name}}"
+    path: "/var/plexguide/tld.{{pgrole}}"
   register: tldcheck
 
 - name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{role_name}}"
+  shell: "cat /var/plexguide/tld.{{pgrole}}"
   register: tld
   ignore_errors: True
   when: tldcheck.stat.exists == True
