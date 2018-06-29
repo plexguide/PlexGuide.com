@@ -134,22 +134,9 @@ case $CHOICE in
       bash /opt/plexguide/menus/programs/ending.sh
       ;;
     G)
-      display=Radarr
-      program=radarr
-      port=7878
-      bash /opt/plexguide/menus/images/radarr.sh
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr
-      chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
+      echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
       bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
       ;;
     H)
       display=SickRage
