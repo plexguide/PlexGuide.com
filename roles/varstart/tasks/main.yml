@@ -43,13 +43,3 @@
 
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
-
-- name: Remove {{pgrole}} Container
-  docker_container:
-    name: "{{pgrole}}"
-    state: absent
-  ignore_errors: True
-
-- name: Storing Role Name
-  shell: "echo '{{pgrole}}' > /tmp/program_var"
-  ignore_errors: True
