@@ -54,7 +54,7 @@
   with_items:
     - /opt/appdata/{{role_name}}/mp4_automator
 
-- name: "Deploy Container"
+- name: "Deploy {{role_name}} Container"
   docker_container:
     name: "{{role_name}}"
     image: "{{image.stdout}}"
@@ -75,7 +75,7 @@
           - "{{role_name}}"
     volumes:
       - /opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator
-      - "/opt/appdata/{{role_name}}:/config{{extra.stdout}}"
+      - "/opt/appdata/{{role_name}}:/config"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
