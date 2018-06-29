@@ -23,6 +23,3 @@
 
   - pause:
       prompt: "Press [ENTER] to Continue - Final Review"
-
-  - name: "Cron Menu"
-    shell: "bash /opt/plexguide/menus/time/cron.sh"
