@@ -21,7 +21,7 @@
   retries: 5
   delay: 1
   register: result
-  until: result.stat.exists
+  until: result.rc == 3
 
 
 - name: "Menu"
