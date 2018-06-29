@@ -21,9 +21,26 @@
 - include_role:
     name: pgmstart
 
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/ombi (Recommended)\n2- lsiodev/ombi-preview (Developer)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
+
+- name: Set linuxserver/ombi
+  set_fact: 
+    image: "linuxserver/ombi"
+  when: result.user_input == "1"
+
+- name: Set lsiodev/ombi-preview
+  set_fact: 
+    image: "lsiodev/ombi-preview"
+  when: result.user_input == "2"
+
 ########## Unique for TLD
 - name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{ role_name }}"
+  shell: "cat /var/plexguide/tld.{{role_name}}"
   register: tld
   ignore_errors: True
 ##########
