@@ -18,7 +18,7 @@
 ---
 - name: Schedule CronJob Question
   pause:
-    prompt: "\nSchedule Backups for {{role_name}}?\n1- YES (Recommended)\n2- NO/Remove"
+    prompt: "\nSchedule Backups for {{pgrole}}?\n1- YES (Recommended)\n2- NO/Remove"
   register: askcron
   until: askcron.user_input > "0" and askcron.user_input < "3"
   retries: 99
