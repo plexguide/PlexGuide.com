@@ -51,7 +51,7 @@
 
 - pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
-  register: hour
+  register: reghour
   until: hour.user_input > "-1" and hour.user_input < "24"
   retries: 99
   delay: 1
@@ -80,7 +80,7 @@
 - name: Build Cron Job Schedule
   cron:
     name: "{{pgrole}}"
-    weekday: "{{period}}"
+    weekday: "{{period.user_input}}"
     minute: "{{rminute}}"
     hour: "{{hour.user_input}}"
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
