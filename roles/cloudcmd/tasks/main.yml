@@ -16,11 +16,10 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
 - name: Create Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -131,3 +130,6 @@
     restart_policy: always
     state: started
   tags: [ 'never', 'cloudst2' ]
+
+- include_role:
+    name: pgmend
