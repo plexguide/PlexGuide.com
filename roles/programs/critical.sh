@@ -42,7 +42,6 @@ case $CHOICE in
         read -n 1 -s -r -p "Press any key to continue"
         bash /opt/plexguide/menus/time/cron.sh
         ;;
-            ;;
         B)
 echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/traefik/main.sh
