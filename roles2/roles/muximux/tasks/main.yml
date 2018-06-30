@@ -20,13 +20,9 @@
 
 - include_role:
     name: pgmstart
-
-########## Unique for TLD
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{ role_name }}"
-  register: tld
-  ignore_errors: True
-##########
+    
+- include_role:
+    name: tld
 
 - name: Deploy Muximux Container
   docker_container:
