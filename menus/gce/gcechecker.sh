@@ -55,7 +55,7 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
 
       #mv /mnt/move /nvme1/move 1>/dev/null 2>&1
       #ln -s /nvme1/move /mnt 1>/dev/null 2>&1
-      
+
       #rm -r /tmp
       #ln -s /nvme1/tmp /
       #mkdir /nvme1/tmp
@@ -78,7 +78,7 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
 
       #mkdir -p /opt/appdata
       #chmod 0755 /opt/appdata 1>/dev/null 2>&1
-      #chown 1000:1000 /opt/appdata 1>/dev/null 2>&1     
+      #chown 1000:1000 /opt/appdata 1>/dev/null 2>&1
 
       #mkdir -p /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
       #chmod 0755 /nvme1/opt/appdata/radarr 1>/dev/null 2>&1
@@ -110,31 +110,29 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       chmod 0755 /mnt/tdrive 1>/dev/null 2>&1
       chown 1000:1000 /mnt/tdrive 1>/dev/null 2>&1
 
-      echo "10" | dialog --gauge "Deploying Sonarr" 7 50 0
-      echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
-      sleep 2
-      ansible-playbook /opt/plexguide/pg.yml --tags sonarr &>/dev/null &
-      sleep 2
-
-      echo "30" | dialog --gauge "Deploying Radarr" 7 50 0
-      echo "linuxserver/radarr" > /var/plexguide/image.radarr
-      sleep 2
-      ansible-playbook /opt/plexguide/pg.yml --tags radarr &>/dev/null &
-      sleep 2
-
-      echo "50" | dialog --gauge "Deploying CloudCMD" 7 50 0
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd &>/dev/null &
-      sleep 2
-
-      echo "70" | dialog --gauge "Deploying NZBGET" 7 50 0
-      echo "linuxserver/nzbget" > /var/plexguide/image.radarr
-      sleep 2
-      ansible-playbook /opt/plexguide/pg.yml --tags nzbget &>/dev/null &
-
-      echo "85" | dialog --gauge "Installing RCLONE BETA" 7 50 0
+      echo "20" | dialog --gauge "Deploying Sonarr" 7 50 0
       sleep 2
       clear
-      curl -s https://rclone.org/install.sh | bash -s beta
+      ansible-playbook /opt/plexguide/pg.yml --tags sonarr
+      sleep 2
+
+      echo "40" | dialog --gauge "Deploying Radarr" 7 50 0
+      sleep 2
+      clear
+      ansible-playbook /opt/plexguide/pg.yml --tags radarr
+      sleep 2
+
+      echo "65" | dialog --gauge "Deploying NZBGET" 7 50 0
+      sleep 2
+      clear
+      ansible-playbook /opt/plexguide/pg.yml --tags nzbget
+      sleep 2
+
+      echo "85" | dialog --gauge "Installing RCLONE" 7 50 0
+      sleep 2
+      clear
+      curl https://rclone.org/install.sh | sudo bash
+      touch /var/plexguide/basics.yes &>/dev/null &
       sleep 2
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
