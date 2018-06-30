@@ -62,7 +62,7 @@
   pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
   register: hour
-  until: hour.user_input > -1 and hour.user_input < 24
+  until: hour.user_input > "0" and hour.user_input < "24"
   retries: 99
   delay: 1
   when: askcron.user_input == "1"
