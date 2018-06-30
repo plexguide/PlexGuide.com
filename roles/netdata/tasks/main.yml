@@ -48,7 +48,14 @@
 
 - name: Daily Register
   set_fact:
-    dayperiod: "*/1"
+    trueperiod: "{{dayperiod.user_input}}"
+  when:
+    - askcron.user_input == "1"
+    - often.user_input == "2"
+
+- name: Daily Register
+  set_fact:
+    trueperiod: "*/1"
   when:
     - askcron.user_input == "1"
     - often.user_input == "2"
@@ -86,7 +93,7 @@
 - name: Build Cron Job Schedule
   cron:
     name: "{{pgrole}}"
-    weekday: "{{dayperiod.user_input}}"
+    weekday: "{{trueperiod}}"
     minute: "{{rminute}}"
     hour: "{{reghour.user_input}}"
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
