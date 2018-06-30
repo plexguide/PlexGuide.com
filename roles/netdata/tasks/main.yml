@@ -57,7 +57,7 @@
   delay: 1
   when: askcron.user_input == "1"
 
-- debug: msg="User Selected {{reghour}}"
+- debug: msg="User Selected {{reghour.user_input}}"
   when: askcron.user_input == "1"
 
 - set_fact:
@@ -83,9 +83,9 @@
 - name: Build Cron Job Schedule
   cron:
     name: "{{pgrole}}"
-    weekday: "{{period}}"
+    weekday: "{{period.user_input}}"
     minute: "{{rminute}}"
-    hour: "{{reghour}}"
+    hour: "{{reghour.user_input}}"
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
     state: present
   when: askcron.user_input == "1"
