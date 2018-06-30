@@ -21,14 +21,16 @@
 - include_role:
     name: pgmstart
 
-- pause:
+- name: Schedule CronJob Question
+  pause:
     prompt: "\nSchedule Backups for {{role_name}}?\n1- YES (Recommended)\n2- NO/Remove"
   register: askcron
   until: askcron.user_input > "0" and askcron.user_input < "3"
   retries: 99
   delay: 1
 
-- pause:
+- name: How Often To Schedule?
+  pause:
     prompt: "\nHow Often?\n1- Weekly\n2- Daily"
   register: often
   until: often.user_input > "0" and often.user_input < "3"
@@ -36,7 +38,8 @@
   delay: 1
   when: askcron.user_input == "1"
 
-- pause:
+- name: Which Day of the Week?
+  pause:
     prompt: "\nWhich Day of the Week?\n1- Sunday\n2- Monday\n3- Tuesday\n4- Wednesday\n5- Thursday\n6- Friday\n7- Saturday"
   register: dayperiod
   until: dayperiod.user_input > "0" and dayperiod.user_input < "8"
@@ -46,14 +49,16 @@
     - askcron.user_input == "1"
     - often.user_input == "1"
 
-- name: Daily Register
+- name: Registering Day Period of the Week
+  name: Daily Register
   set_fact:
     trueperiod: "{{dayperiod.user_input}}"
   when:
     - askcron.user_input == "1"
     - often.user_input == "1"
 
-- name: Daily Register
+- name: Registering Month Period of the Week
+  name: Daily Register
   set_fact:
     trueperiod: "*/1"
   when:
