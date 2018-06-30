@@ -40,7 +40,7 @@ case $CHOICE in
         echo 'INFO - Selected: Portainer' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags portainer
         read -n 1 -s -r -p "Press any key to continue"
-        bash /opt/plexguide/menus/time/cron.sh
+        
         ;;
         B)
 echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -50,7 +50,7 @@ echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/p
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending.sh
             exit
             ;;

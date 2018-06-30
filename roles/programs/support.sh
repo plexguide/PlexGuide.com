@@ -49,13 +49,13 @@ case $CHOICE in
             echo 'INFO - Selected: AllTube' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         B)
             echo 'INFO - Selected: Monitorr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         C)
             display=NEXTCloud
@@ -70,20 +70,20 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         D)
             echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         E)
             echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         F)
             display=Plexrequests
@@ -97,26 +97,26 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         G)
             echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         H)
             echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         I)
             echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         Z)
             exit 0 ;;

@@ -47,13 +47,13 @@ case $CHOICE in
       echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     B)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     C)
       display=LazyLibrarian
@@ -67,44 +67,44 @@ case $CHOICE in
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
       echo "$port" > /tmp/port
-      bash /opt/plexguide/menus/time/cron.sh
+      
       bash /opt/plexguide/menus/programs/ending.sh
       ;;
     D)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     E)
       echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     F)
       echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     G)
       echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     H)
       echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     I)
       echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     Z)
       exit 0 ;;

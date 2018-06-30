@@ -51,18 +51,18 @@ case $CHOICE in
                     echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                     clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
                     read -n 1 -s -r -p "Press any key to continue"
-                    bash /opt/plexguide/menus/time/cron.sh
+                    
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         C)
             echo 'INFO - Selected: PYLoad' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags pyload
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         D)
             echo 'INFO - Selected: SpeedTest Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

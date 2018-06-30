@@ -42,25 +42,25 @@ case $CHOICE in
     echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget
     read -n 1 -s -r -p "Press any key to continue"
-    bash /opt/plexguide/menus/time/cron.sh
+    
     ;;
     B)
     echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr
     read -n 1 -s -r -p "Press any key to continue"
-    bash /opt/plexguide/menus/time/cron.sh
+    
     ;;
     C)
     echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
     read -n 1 -s -r -p "Press any key to continue"
-    bash /opt/plexguide/menus/time/cron.sh
+    
     ;;
     D)
     echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
     read -n 1 -s -r -p "Press any key to continue"
-    bash /opt/plexguide/menus/time/cron.sh
+    
     ;;
     Z)
       exit 0 ;;

@@ -57,7 +57,7 @@ case $CHOICE in
   #          echo "$program" > /tmp/program
   #          echo "$program" > /tmp/program_var
   #          echo "$port" > /tmp/port
-  #          bash /opt/plexguide/menus/time/cron.sh
+  #          
   #          bash /opt/plexguide/menus/programs/ending.sh
      ;;
      B)
@@ -75,7 +75,7 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending.sh
      ;;
      C)
@@ -99,7 +99,7 @@ case $CHOICE in
             echo "$program_extra" > /tmp/program_extra
             echo "$program_extra" > /tmp/program_var_extra
             echo "$port_extra" > /tmp/port_extra
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending_extra.sh
      ;;
      Z)

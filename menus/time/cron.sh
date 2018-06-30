@@ -60,7 +60,7 @@ case $CHOICE in
                         ;;
         C)
             dpkg-reconfigure tzdata
-            bash /opt/plexguide/menus/time/cron.sh
+            
             exit
                         ;;
 esac

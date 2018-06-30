@@ -44,7 +44,7 @@ case $CHOICE in
       echo 'INFO - Selected: HeimDall' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall
       read -n 1 -s -r -p "Press any key to continue"
-      bash /opt/plexguide/menus/time/cron.sh
+      
       ;;
     B)
       program=htpcmanager
@@ -58,26 +58,26 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending.sh
       ;;
     C)
         echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux
         read -n 1 -s -r -p "Press any key to continue"
-        bash /opt/plexguide/menus/time/cron.sh
+        
         ;;
       D)
         echo 'INFO - Selected: Organizr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr
         read -n 1 -s -r -p "Press any key to continue"
-        bash /opt/plexguide/menus/time/cron.sh
+        
       ;;
         E)
         echo 'INFO - Selected: OrganizrV2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
         read -n 1 -s -r -p "Press any key to continue"
-        bash /opt/plexguide/menus/time/cron.sh
+        
         ;;
      Z)
        exit 0 ;;

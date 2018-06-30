@@ -64,32 +64,32 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
+            
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
             echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags emby
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         C)
             echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         D)
             echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         E)
             echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         Z)
             exit 0 ;;

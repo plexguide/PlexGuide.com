@@ -40,19 +40,19 @@ case $CHOICE in
             echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         B)
             echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         C)
             echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/menus/time/cron.sh
+            
             ;;
         Z)
             exit 0 ;;
