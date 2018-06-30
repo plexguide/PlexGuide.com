@@ -83,9 +83,9 @@
 - name: Build Cron Job Schedule
   cron:
     name: "{{pgrole}}"
-    weekday: "{{period.user_input}}"
+    weekday: 7
     minute: "{{rminute}}"
-    hour: "{{reghour.user_input}}"
+    hour: 7
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
     state: present
   when: askcron.user_input == "1"
