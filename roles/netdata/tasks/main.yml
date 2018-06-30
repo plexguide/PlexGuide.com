@@ -24,7 +24,7 @@
 - pause:
     prompt: "\nSchedule Backups for {{role_name}}?\n1- YES (Recommended)\n2- NO/Remove"
   register: askcron
-  until: askcron.user_input > "0" and askcron.user_input < "2"
+  until: askcron.user_input > "0" and askcron.user_input < "3"
   retries: 99
   delay: 1
 
