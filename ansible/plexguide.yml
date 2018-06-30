@@ -15,7 +15,6 @@
   - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: transfer, tags: ['transfer'] }
-  - { role: deploy2, tags: ['deploy2'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
