@@ -2,5 +2,5 @@ language: bash
 sudo: enabled
 
 script:
-- sudo bash ./Admin9705/PlexGuide.com-The-Awesome-Plex-Serve/roles/baseline/scripts/ansible.sh
+- ./Admin9705/PlexGuide.com-The-Awesome-Plex-Serve/roles/baseline/scripts/ansible.sh
 - ansible-playbook /opt/plexguide/pg.yml --tags portainer
