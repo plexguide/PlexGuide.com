@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
@@ -16,8 +16,8 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.000J BETA" > /var/plexguide/pg.version
-echo "99" > /var/plexguide/pg.preinstall
+echo "6.000 BETA 1" > /var/plexguide/pg.version
+echo "100" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
 echo "18.03.1" > /var/plexguide/pg.docker16
@@ -30,7 +30,7 @@ echo "edge" > /var/plexguide/pg.docker18.edition
 #### DOCKER END
 
 #### Installer
-echo "2" > /var/plexguide/pg.ansible
+echo "3" > /var/plexguide/pg.ansible
 echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower

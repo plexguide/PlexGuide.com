@@ -29,7 +29,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer     ~ 6.000"
          Z "------ Exit Menu ------"
-         01 "Lastest       ~ 6.000"
+         01 "BETA 1        ~ 6.000"
          02 "Historical    ~ 5.1"
          03 "Historical    ~ 5.048"
          04 "Historical    ~ 5.013"
@@ -121,7 +121,7 @@ exit 0
     else
   clear
 fi
- 
+
 else
   clear
 fi
@@ -139,4 +139,3 @@ echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /
 bash /opt/plexguide/scripts/message/ending.sh
 
 ## delete this later
-
