@@ -132,15 +132,11 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
     else
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
       echo "INFO - Installing: Support" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear
       sleep 2
       clear
-      sudo add-apt-repository ppa:ansible/ansible-2.5 -y
-      apt-get update -y
-      apt-get install ansible 2.5.5 -y
-      yes | apt-get update
-      #cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
-      #sleep 2
+      bash /opt/plexguide/roles/baseline/scripts/ansible.sh
+      cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
+      sleep 2
 fi
 
 ############# FOR ANSIBLE
