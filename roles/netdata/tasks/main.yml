@@ -50,7 +50,6 @@
     - often.user_input == "1"
 
 - name: Registering Day Period of the Week
-  name: Daily Register
   set_fact:
     trueperiod: "{{dayperiod.user_input}}"
   when:
@@ -58,7 +57,6 @@
     - often.user_input == "1"
 
 - name: Registering Month Period of the Week
-  name: Daily Register
   set_fact:
     trueperiod: "*/1"
   when:
