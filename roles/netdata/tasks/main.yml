@@ -85,7 +85,7 @@
     name: "{{pgrole}}"
     weekday: "{{period}}"
     minute: "{{rminute}}"
-    hour: "{{reghour.user_input}}"
+    hour: "{{reghour}}"
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
     state: present
   when: askcron.user_input == "1"
