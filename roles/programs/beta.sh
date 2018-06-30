@@ -9,8 +9,7 @@ export NCURSES_NO_UTF8_ACS=1
 
  OPTIONS=(A "DO NOT USE - For Developers Use Only!"
           B "Duplicati - Advanced Backup"
-          C "PLEXTEST"
-          D "dns-gen"
+          C "dns-gen"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -37,13 +36,10 @@ case $CHOICE in
          dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
          cronskip="yes"
          ;;
-
      C)
-     bash /opt/plexguide/menus/plex/test.sh ;;
-     D)
          display=dns-gen
          dialog --infobox "Installing: $display" 3 30
-         sleep 2 
+         sleep 2
          clear
          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags dns-gen
          read -n 1 -s -r -p "Press any key to continue"
