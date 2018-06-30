@@ -55,7 +55,9 @@
   until: reghour.user_input > "-1" and reghour.user_input < "24"
   retries: 99
   delay: 1
-  debug: msg="User Selected {{reghour}}"
+  when: askcron.user_input == "1"
+
+- debug: msg="User Selected {{reghour}}"
   when: askcron.user_input == "1"
 
 - set_fact:
