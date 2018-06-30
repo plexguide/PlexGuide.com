@@ -57,9 +57,6 @@
   delay: 1
   when: askcron.user_input == "1"
 
-- debug: msg="User Selected {{reghour.user_input}}"
-  when: askcron.user_input == "1"
-
 - set_fact:
     rminute: "{{ 59 | random }}"
   when: askcron.user_input == "1"
@@ -80,12 +77,15 @@
   shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{pgrole}}
   when: askcron.user_input == "1"
 
+- debug: msg="User Selected Hour:{{reghour}} Period:{{period}}"
+  when: askcron.user_input == "1"
+
 - name: Build Cron Job Schedule
   cron:
     name: "{{pgrole}}"
-    weekday: 7
+    weekday: "{{period}}"
     minute: "{{rminute}}"
-    hour: 7
+    hour: "{{reghour}}"
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
     state: present
   when: askcron.user_input == "1"
