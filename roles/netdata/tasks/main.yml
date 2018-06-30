@@ -51,7 +51,7 @@
 
 - pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
-  register: reghour
+  register: hour
   until: hour.user_input > "-1" and hour.user_input < "24"
   retries: 99
   delay: 1
