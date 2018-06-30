@@ -51,7 +51,7 @@
     trueperiod: "{{dayperiod.user_input}}"
   when:
     - askcron.user_input == "1"
-    - often.user_input == "2"
+    - often.user_input == "1"
 
 - name: Daily Register
   set_fact:
