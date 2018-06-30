@@ -29,19 +29,19 @@
   delay: 1
 
 - name: Set linuxserver/hydra2
-  set_fact: 
+  set_fact:
     image: "linuxserver/hydra2"
     extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitarr
-  set_fact: 
-    image: "hotio/suitarr:nzbydra2"
+  set_fact:
+    image: "hotio/suitarr:nzbhydra2"
     extra: "/NZBHydra2"
   when: result.user_input == "2"
 
 - name: Set theotherp/nzbhydra2
-  set_fact: 
+  set_fact:
     image: "theotherp/nzbhydra2"
     extra: ""
   when: result.user_input == "3"
