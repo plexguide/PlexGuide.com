@@ -50,7 +50,8 @@ case $CHOICE in
                     dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: plex\nPass: guide\n\nIf you forget, please visit the Wiki!" 0 0
                     echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                     clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
-                    read -n 1 -s -r -p "Press any key to continue"
+                    read -n 1 -s -r -p "Press any key to continue" ;;
+                    
                     
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
