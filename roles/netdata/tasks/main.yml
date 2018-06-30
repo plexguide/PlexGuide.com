@@ -58,8 +58,7 @@
   when: askcron.user_input == "1"
 
 - set_fact:
-     rminute: "{{ 59 | random }}"
-   run_once: yes
+    rminute: "{{ 59 | random }}"
   when: askcron.user_input == "1"
 
 - name: Schedule CronJob
