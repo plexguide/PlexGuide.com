@@ -42,12 +42,12 @@
   until: dayperiod.user_input > "0" and dayperiod.user_input < "8"
   retries: 99
   delay: 1
-  when: askcron.user_input == "1" and often.user_input == "1"
+  when: askcron.user_input == "1" #and often.user_input == "1"
 
-- name: Daily Register
-  register: dayperiod
-  shell: "echo '*'"
-  when: askcron.user_input == "1" and often.user_input == "2"
+#- name: Daily Register
+#  register: dayperiod
+#  shell: "echo '*'"
+#  when: askcron.user_input == "1" and often.user_input == "2"
 
 - pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
