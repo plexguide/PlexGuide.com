@@ -2,7 +2,7 @@ language: bash
 sudo: enabled
 
 before_install:
-- sudo apt-get update -y && sudo apt-get install wget -y && sudo wget https://plexguide.com/install.sh && sudo bash ./install.sh
+- sudo apt-get install wget -y && sudo wget https://plexguide.com/install.sh && sudo bash ./install.sh
 
 script:
-- bash /opt/plexguide/roles/baseline/scripts/ansible.sh
+- sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
