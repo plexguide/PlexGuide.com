@@ -16,53 +16,65 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
-- name: Register Image
-  shell: "cat /var/plexguide/image.{{role_name}}"
-  register: image
-  ignore_errors: True
+- pause:
+    prompt: "\nType Image # for Sonarr\n1- linuxserver/hydra2 (Recommended)\n2- hotio/nzbhydra2 (Space Saver)\n3- theotherp/nzbhydra2"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
 
-- name: Register Extra
-  shell: "cat /var/plexguide/extra.{{role_name}}"
-  register: extra
-  ignore_errors: True
-    
-- name: Remove NZBHydra2 Container
-  docker_container:
-    name: nzbhydra2
-    state: absent
+- name: Set linuxserver/hydra2
+  set_fact: 
+    image: "linuxserver/hydra2"
+    extra: ""
+  when: result.user_input == "1"
+
+- name: Hotio/Suitarr
+  set_fact: 
+    image: "hotio/suitarr:nzbydra2"
+    extra: "/NZBHydra2"
+  when: result.user_input == "2"
+
+- name: Set theotherp/nzbhydra2
+  set_fact: 
+    image: "theotherp/nzbhydra2"
+    extra: ""
+  when: result.user_input == "3"
 
 - name: Deploy NZBHydra2 Container
   docker_container:
-    name: nzbhydra2
-    image: "{{image.stdout}}"
+    name: "{{role_name}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}5076:5076"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
-      APP: "nzbhydra2"
-      VERSION: "unstable"
+      APP: "{{role_name}}"
+      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
       BACKUP: "no"
       MONO_TLS_PROVIDER: legacy
     volumes:
-      - "/opt/appdata/nzbhydra2:/config{{extra.stdout}}"
+      - "/opt/appdata/{{role_name}}:/config{{extra}}"
       - "/etc/localtime:/etc/localtime:ro"
     restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - nzbhydra2
+          - "{{role_name}}"
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nzbhydra.{{domain.stdout}},nzbhydra2.{{domain.stdout}}"
-      traefik.port: "5076"
+      traefik.frontend.rule: "Host:nzbhydra.{{domain.stdout}},{{role_name}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
+
+- include_role:
+    name: pgmend

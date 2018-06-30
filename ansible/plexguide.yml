@@ -10,7 +10,6 @@
   - { role: restoremass, tags: ['restoremass'] }
   - { role: bazarr, tags: ['bazarr'] }
   - { role: pgdrive, tags: ['pgdrive'] }
-  - { role: nzbhydra2, tags: ['nzbhydra2'] }
   - { role: variables, tags: ['variables'] }
   - { role: pgdrive_en, tags: ['pgdrive_en'] }
   - { role: pgdupes, tags: ['pgdupes'] }

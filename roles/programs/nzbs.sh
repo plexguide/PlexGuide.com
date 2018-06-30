@@ -44,20 +44,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             ;;
         B)
-            display=NZBHYDRA2
-            program=nzbhydra2
-            bash /opt/plexguide/menus/images/nzbhydra2.sh
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            port=5076
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbhydra2
+            echo 'INFO - Selected: nzbhydra2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbydra2
             read -n 1 -s -r -p "Press any key to continue"
-              echo "$program" > /tmp/program
-              echo "$program" > /tmp/program_var
-              echo "$port" > /tmp/port
-              bash /opt/plexguide/menus/time/cron.sh
-              bash /opt/plexguide/menus/programs/ending.sh
+            bash /opt/plexguide/menus/time/cron.sh
             ;;
         C)
             echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
