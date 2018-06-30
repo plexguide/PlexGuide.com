@@ -61,8 +61,8 @@
 - name: Hour Question
   pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
-  register: reghour
-  until: reghour.user_input > "-1" and reghour.user_input < "24"
+  register: hour
+  until: hour.user_input > "-1" and hour.user_input < "24"
   retries: 99
   delay: 1
   when: askcron.user_input == "1"
@@ -92,7 +92,7 @@
     name: "{{pgrole}}"
     weekday: "{{trueperiod}}"
     minute: "{{rminute}}"
-    hour: "{{reghour.user_input}}"
+    hour: "{{hour.user_input}}"
     job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
     state: present
   when: askcron.user_input == "1"
