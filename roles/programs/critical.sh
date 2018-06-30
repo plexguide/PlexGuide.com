@@ -37,25 +37,16 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-echo "INFO - Selected Portainer Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            display=Portainer
-            program=portainer
-            port=9000
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags portainer
-            read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
+        echo 'INFO - Selected: Portainer' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags portainer
+        read -n 1 -s -r -p "Press any key to continue"
+        bash /opt/plexguide/menus/time/cron.sh
+        ;;
             ;;
         B)
 echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/traefik/main.sh
-            bash /opt/plexguide/menus/programs/critical.sh
+            bash /opt/plexguide/roles/programs/critical.sh
             sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -63,10 +54,10 @@ echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/p
             bash /opt/plexguide/menus/time/cron.sh
             bash /opt/plexguide/menus/programs/ending.sh
             exit
-            ;;   
+            ;;
         Z)
             exit 0 ;;
 esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/critical.sh
+bash /opt/plexguide/roles/programs/critical.sh

@@ -64,64 +64,26 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
             ;;
         B)
-            display=NETDATA
-            program=netdata
-            port=19999
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags netdata
+            echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/programs/ending.sh
-            #this needs a wiki of sorts, good suggetion, but more undestanding is required
-            #bash /opt/plexguide/menus/programs/monitoring.sh
+            bash /opt/plexguide/menus/time/cron.sh
             ;;
         C)
-            display=pyLoad
-            program=pyload
-            port=8000
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags pyload
+            echo 'INFO - Selected: PYLoad' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pyload
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         D)
-            program=speed
-            port=8223
-            dialog --infobox "Installing: SpeedTEST Server" 3 38
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags speedtestserver
+            echo 'INFO - Selected: SpeedTest Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags speedtest
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            #### skipped cron
-            bash /opt/plexguide/menus/programs/ending.sh
             ;;
         E)
-            echo 'INFO - Selected: x2go' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo 'INFO - Selected: X2Go' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags x2go
             read -n 1 -s -r -p "Press any key to continue"
-#            display=x2go
- #           program=x2go
-  #          port=2222
-   #         dialog --infobox "Installing: x2go" 3 38
-    #        sleep 2
-     #       clear
-      #      ansible-playbook /opt/plexguide/pg.yml --tags x2go
-       #     read -n 1 -s -r -p "Press any key to continue"
-            #### skipped cron
-            #bash /opt/plexguide/menus/programs/ending.sh
             ;;
         Z)
             exit 0 ;;

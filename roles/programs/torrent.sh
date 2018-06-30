@@ -40,77 +40,32 @@ echo 'INFO - @Main Torrent Program Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 case $CHOICE in
 
-    A)
-        display=qBittorrent
-        program=qbittorrent
-        echo "$program" > /tmp/program_var
-        dialog --infobox "Installing: $display" 3 30
-        sleep 2
-        clear
-        port=8080
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags qbittorrent
+      A)
+        echo 'INFO - Selected: QBittorrent' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorent
         read -n 1 -s -r -p "Press any key to continue"
-             echo "$program" > /tmp/program
-             echo "$program" > /tmp/program_var
-             echo "$port" > /tmp/port
-             bash /opt/plexguide/menus/time/cron.sh
-             bash /opt/plexguide/menus/programs/ending.sh
+        bash /opt/plexguide/menus/time/cron.sh
         ;;
-
-     B)
-       display=RUTorrent
-       program=rutorrent
-       echo "$program" > /tmp/program_var
-       dialog --infobox "Installing: $display" 3 30
-       sleep 2
-       clear
-       port=8999
-       ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
-       read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-       ;;
-
-     C)
-       display=Deluge
-       program=deluge
-       echo "$program" > /tmp/program_var
-       dialog --infobox "Installing: $display" 3 30
-       sleep 2
-       clear
-       port=8112
-       ansible-playbook /opt/plexguide/pg.yml --tags deluge
-       read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-       ;;
-
-     D)
-       display=Jackett
-       program=jackett
-       echo "$program" > /tmp/program_var
-       dialog --infobox "Installing: $display" 3 30
-       sleep 2
-       clear
-       port=9117
-       ansible-playbook /opt/plexguide/pg.yml --tags jackett
-       read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-       ;;
-
+      B)
+        echo 'INFO - Selected: RuTorrent' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
+        read -n 1 -s -r -p "Press any key to continue"
+        bash /opt/plexguide/menus/time/cron.sh
+        ;;
+      C)
+         echo 'INFO - Selected: Deluge' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+         clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge
+         read -n 1 -s -r -p "Press any key to continue"
+         bash /opt/plexguide/menus/time/cron.sh
+         ;;
+        D)
+        echo 'INFO - Selected: Jackett' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett
+        read -n 1 -s -r -p "Press any key to continue"
+        bash /opt/plexguide/menus/time/cron.sh
+        ;;
      E)
        bash /opt/plexguide/menus/programs/vpn.sh ;;
-
      Z)
        exit 0 ;;
 esac

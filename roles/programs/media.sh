@@ -74,21 +74,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             ;;
         C)
-            display=Ubooquity
-            program=ubooquity
-            port=2202
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags ubooquity
+            echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
-
         D)
             echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic
@@ -96,20 +85,10 @@ case $CHOICE in
             bash /opt/plexguide/menus/time/cron.sh
             ;;
         E)
-            display=Booksonic
-            program=booksonic
-            port=4050
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags booksonic
+            echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic
             read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
             bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
         Z)
             exit 0 ;;
 esac

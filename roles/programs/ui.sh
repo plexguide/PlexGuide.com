@@ -62,55 +62,26 @@ case $CHOICE in
             bash /opt/plexguide/menus/programs/ending.sh
       ;;
     C)
-      program=muximux
-      display=MUXIMUX
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      port=8015
-      ansible-playbook /opt/plexguide/pg.yml --tags muximux
-      read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-      ;;
-
-      D)
-        program=organizr
-        display=Organizr
-        dialog --infobox "Installing: $display" 3 30
-        sleep 2
-        clear
-        port=8020
-        ansible-playbook /opt/plexguide/pg.yml --tags organizr
+        echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux
         read -n 1 -s -r -p "Press any key to continue"
-              echo "$program" > /tmp/program
-              echo "$program" > /tmp/program_var
-              echo "$port" > /tmp/port
-              bash /opt/plexguide/menus/time/cron.sh
-              bash /opt/plexguide/menus/programs/ending.sh
+        bash /opt/plexguide/menus/time/cron.sh
         ;;
-        E)
-          program=organizrv2
-          display=OrganizrV2
-          dialog --infobox "Installing: $display" 3 30
-          sleep 2
-          clear
-          port=8040
-          ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
-          read -n 1 -s -r -p "Press any key to continue"
-                echo "$program" > /tmp/program
-                echo "$program" > /tmp/program_var
-                echo "$port" > /tmp/port
-                bash /opt/plexguide/menus/time/cron.sh
-                bash /opt/plexguide/menus/programs/ending.sh
+      D)
+        echo 'INFO - Selected: Organizr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr
+        read -n 1 -s -r -p "Press any key to continue"
+        bash /opt/plexguide/menus/time/cron.sh
       ;;
-    Z)
+        E)
+        echo 'INFO - Selected: OrganizrV2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
+        read -n 1 -s -r -p "Press any key to continue"
+        bash /opt/plexguide/menus/time/cron.sh
+        ;;
+     Z)
        exit 0 ;;
 esac
-
     clear
 
 #### recall itself to loop unless user exits

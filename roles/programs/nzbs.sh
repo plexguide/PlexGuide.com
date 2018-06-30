@@ -38,21 +38,10 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            display=NZBGET
-            program=nzbget
-            bash /opt/plexguide/menus/images/nzbget.sh
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            port=6789
-            ansible-playbook /opt/plexguide/pg.yml --tags nzbget
+            echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget
             read -n 1 -s -r -p "Press any key to continue"
-              echo "$program" > /tmp/program
-              echo "$program" > /tmp/program_var
-              echo "$port" > /tmp/port
-              bash /opt/plexguide/menus/time/cron.sh
-              bash /opt/plexguide/menus/programs/ending.sh
-            ;;
+            bash /opt/plexguide/menus/time/cron.sh
         B)
             display=NZBHYDRA2
             program=nzbhydra2
