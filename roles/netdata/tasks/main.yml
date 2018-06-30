@@ -37,7 +37,7 @@
   when: askcron.user_input == "1"
 
 - pause:
-    prompt: "\nWhich Day of the Week?\n1- Sunday\n2- Monday\n3- Tuesday\n4 - Wednesday\n5 - Thursday\n6 - Friday\n7 - Saturday"
+    prompt: "\nWhich Day of the Week?\n1- Sunday\n2- Monday\n3- Tuesday\n4- Wednesday\n5- Thursday\n6- Friday\n7- Saturday"
   register: period
   until: period.user_input > "0" and period.user_input < "8"
   retries: 99
