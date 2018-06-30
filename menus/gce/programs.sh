@@ -43,7 +43,7 @@ case $CHOICE in
       port=6789
       bash /opt/plexguide/menus/images/nzbget.sh
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags nzbget &>/dev/null &
       sleep 3
       echo "$program" > /tmp/program
       echo "$program" > /tmp/program_var
@@ -57,7 +57,7 @@ case $CHOICE in
       port=8989
       bash /opt/plexguide/menus/images/sonarr.sh
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags sonarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       sleep 3
@@ -73,7 +73,7 @@ case $CHOICE in
       port=7878
       bash /opt/plexguide/menus/images/radarr.sh
       dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags radarr 1>/dev/null 2>&1
       chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
       sleep 3

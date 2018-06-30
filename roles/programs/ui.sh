@@ -68,7 +68,7 @@ case $CHOICE in
       sleep 2
       clear
       port=8015
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux
+      ansible-playbook /opt/plexguide/pg.yml --tags muximux
       read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -84,7 +84,7 @@ case $CHOICE in
         sleep 2
         clear
         port=8020
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr
+        ansible-playbook /opt/plexguide/pg.yml --tags organizr
         read -n 1 -s -r -p "Press any key to continue"
               echo "$program" > /tmp/program
               echo "$program" > /tmp/program_var
@@ -99,7 +99,7 @@ case $CHOICE in
           sleep 2
           clear
           port=8040
-          ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizrv2
+          ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
           read -n 1 -s -r -p "Press any key to continue"
                 echo "$program" > /tmp/program
                 echo "$program" > /tmp/program_var

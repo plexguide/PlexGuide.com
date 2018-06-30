@@ -46,5 +46,5 @@ dialog --infobox "Number Of Streams: $tellystreams" 3 45
 sleep 3
 
 dialog --infobox "Installing Telly: Please Wait" 3 35
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags telly &>/dev/null &
+ansible-playbook /opt/plexguide/pg.yml --tags telly &>/dev/null &
 sleep 4

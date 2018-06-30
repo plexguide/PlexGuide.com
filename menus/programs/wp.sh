@@ -49,7 +49,7 @@ case $CHOICE in
             clear ;;
         B)
             exit 
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags wordpress
+            ansible-playbook /opt/plexguide/pg.yml --tags wordpress
             ;;
         Z)
             exit 0 ;;

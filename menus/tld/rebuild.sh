@@ -83,22 +83,22 @@ fi
 ################# If role exist, rebuild
 if [ "$heimdall" == "heimdall" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags heimdall &>/dev/null &
+	ansible-playbook /opt/plexguide/pg.yml --tags heimdall &>/dev/null &
 fi
 
 if [ "$ombi" == "ombi" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ombi &>/dev/null &
+	ansible-playbook /opt/plexguide/pg.yml --tags ombi &>/dev/null &
 fi
 
 if [ "$organizr" == "organizr" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags organizr &>/dev/null &
+	ansible-playbook /opt/plexguide/pg.yml --tags organizr &>/dev/null &
 fi
 
 if [ "$muximux" == "muximux" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags muximux &>/dev/null &
+	ansible-playbook /opt/plexguide/pg.yml --tags muximux &>/dev/null &
 fi
 
 if [ "$htpcmanager" == "htpcmanager" ]
@@ -108,7 +108,7 @@ fi
 
 if [ "$tautulli" == "tautulli" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tautulli &>/dev/null &
+	ansible-playbook /opt/plexguide/pg.yml --tags tautulli &>/dev/null &
 fi
 dialog --msgbox "The containers are rebuilding!\n\nCheck the Top Level Domain in 1 - 3 Minutes\n\nNote: This only REBUILDS the App. If you never deployed it, make sure to do so!" 0 0
 dialog --msgbox "\n$choice is your supported Top Level Domain!" 0 0

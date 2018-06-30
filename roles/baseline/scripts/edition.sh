@@ -46,7 +46,7 @@ case $CHOICE in
       ;;
     B)
       echo 'INFO - Select PG Edition: HD Solo' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags folders_solo &>/dev/null &
       echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
       echo "drive" > /var/plexguide/pg.server.deploy
       exit

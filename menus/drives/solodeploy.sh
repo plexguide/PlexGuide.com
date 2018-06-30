@@ -55,7 +55,7 @@ if [ "$deploy" == "drive" ]
 
   #### Build Certain Paths
   dialog --infobox "Building Folders!" 3 25
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags folders_solo &>/dev/null &
+  ansible-playbook /opt/plexguide/pg.yml --tags folders_solo &>/dev/null &
   sleep 2
   #### Creates a  Symbolic Link
   #ln -s "/mnt/move/" "/mnt/unionfs" 1>/dev/null 2>&1

@@ -87,5 +87,5 @@ case $CHOICE in
 esac
 
 dialog --infobox "Installing SSTVProxy: Please Wait" 3 45
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sstvproxy &
+ansible-playbook /opt/plexguide/pg.yml --tags sstvproxy &
 sleep 4

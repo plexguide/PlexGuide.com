@@ -65,7 +65,7 @@ case $CHOICE in
        sleep 2
        clear
        port=8999
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags rutorrent
+       ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
        read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -82,7 +82,7 @@ case $CHOICE in
        sleep 2
        clear
        port=8112
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags deluge
+       ansible-playbook /opt/plexguide/pg.yml --tags deluge
        read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -99,7 +99,7 @@ case $CHOICE in
        sleep 2
        clear
        port=9117
-       ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags jackett
+       ansible-playbook /opt/plexguide/pg.yml --tags jackett
        read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var

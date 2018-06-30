@@ -78,7 +78,7 @@ echo "INFO - Selected: Speed Test Server"> /var/plexguide/pg.log && bash /opt/pl
             program=speed
             port=8223
             dialog --infobox "Installing: SpeedTEST Server" 3 38
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/pg.yml --tags speedtestserver 1>/dev/null 2>&1
 
             echo "$program" > /tmp/program
             echo "$port" > /tmp/port

@@ -20,33 +20,33 @@ version=$( cat /var/plexguide/provider )
 ############################## NULL LEGACY
 if [ "$version" == "null" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags traefik 1>/dev/null 2>&1
 fi
 ############################## CLOUDFLRARE
 if [ "$version" == "duckdns" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare,godaddy 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare,godaddy 1>/dev/null 2>&1
 fi
 ############################## CLOUDFLRARE
 if [ "$version" == "cloudflare" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi,duckdns 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags traefik2 --skip-tags=godaddy,namecheap,gandi,duckdns 1>/dev/null 2>&1
 fi
 
 ############################## GANDI
 if [ "$version" == "gandi" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare,duckdns 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags traefik2 --skip-tags=godaddy,namecheap,cloudflare,duckdns 1>/dev/null 2>&1
 fi
 
 ############################## GODADDY
 if [ "$version" == "godaddy" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare,duckdns 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags traefik2 --skip-tags=namecheap,gandi,cloudflare,duckdns 1>/dev/null 2>&1
 fi
 
 ############################## NAMECHEAP
 if [ "$version" == "namecheap" ]
 then
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare,duckdns 1>/dev/null 2>&1
+      ansible-playbook /opt/plexguide/pg.yml --tags traefik2 --skip-tags=godaddy,gandi,cloudflare,duckdns 1>/dev/null 2>&1
 fi

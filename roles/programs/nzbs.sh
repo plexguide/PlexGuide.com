@@ -45,7 +45,7 @@ case $CHOICE in
             sleep 2
             clear
             port=6789
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget
+            ansible-playbook /opt/plexguide/pg.yml --tags nzbget
             read -n 1 -s -r -p "Press any key to continue"
               echo "$program" > /tmp/program
               echo "$program" > /tmp/program_var

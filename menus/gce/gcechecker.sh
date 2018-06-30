@@ -113,13 +113,13 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       echo "10" | dialog --gauge "Deploying Sonarr" 7 50 0
       echo "linuxserver/sonarr" > /var/plexguide/image.sonarr
       sleep 2
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags sonarr &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags sonarr &>/dev/null &
       sleep 2
 
       echo "30" | dialog --gauge "Deploying Radarr" 7 50 0
       echo "linuxserver/radarr" > /var/plexguide/image.radarr
       sleep 2
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags radarr &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags radarr &>/dev/null &
       sleep 2
 
       echo "50" | dialog --gauge "Deploying CloudCMD" 7 50 0
@@ -129,7 +129,7 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       echo "70" | dialog --gauge "Deploying NZBGET" 7 50 0
       echo "linuxserver/nzbget" > /var/plexguide/image.radarr
       sleep 2
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags nzbget &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags nzbget &>/dev/null &
 
       echo "85" | dialog --gauge "Installing RCLONE BETA" 7 50 0
       sleep 2

@@ -45,7 +45,7 @@ case $CHOICE in
 		skip=yes
         sleep 2
         clear
-		ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags netdata
+		ansible-playbook /opt/plexguide/pg.yml --tags netdata
         read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var

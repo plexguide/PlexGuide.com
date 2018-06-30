@@ -21,7 +21,7 @@ whiptail --title "VNC Server" --menu "Make your choice" 10 37 3 \
 result=$(whoami)
 case $CHOICE in
     "1)")
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags vnc
+    ansible-playbook /opt/plexguide/pg.yml --tags vnc
     echo "Access VNC Via IP:     http://$ipv4:20001"
     echo "Acesss VNC Via Domain: http://$domain:20001"
     echo ""

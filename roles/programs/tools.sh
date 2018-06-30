@@ -100,7 +100,7 @@ case $CHOICE in
             dialog --infobox "Installing: SpeedTEST Server" 3 38
             sleep 2
             clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags speedtestserver
+            ansible-playbook /opt/plexguide/pg.yml --tags speedtestserver
             read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -118,7 +118,7 @@ case $CHOICE in
    #         dialog --infobox "Installing: x2go" 3 38
     #        sleep 2
      #       clear
-      #      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags x2go
+      #      ansible-playbook /opt/plexguide/pg.yml --tags x2go
        #     read -n 1 -s -r -p "Press any key to continue"
             #### skipped cron
             #bash /opt/plexguide/menus/programs/ending.sh
