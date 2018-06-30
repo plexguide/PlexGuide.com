@@ -46,7 +46,7 @@
 
 - name: Daily Register
   register: period
-  shell: "*"
+  shell: "echo '*''"
   when: askcron.user_input == "1" and often.user_input == "2"
 
 - pause:
