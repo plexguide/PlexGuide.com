@@ -19,3 +19,5 @@ sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-reposito
 apt-get update -y
 apt-get install ansible 2.5.5 -y
 yes | apt-get update
+
+lj;lk= hhlj bash weklj
