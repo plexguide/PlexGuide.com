@@ -2,8 +2,7 @@ language: bash
 sudo: enabled
 
 before_install:
-- sudo apt-get install wget -y && sudo wget https://plexguide.com/install.sh && sudo bash ./install.sh
-- sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
+- sudo bash ~/PlexGuide.com-The-Awesome-Plex-Server-Version-6/roles/baseline/scripts/ansible.sh
 
 script:
 - ansible-playbook /opt/plexguide/pg.yml --tags portainer
