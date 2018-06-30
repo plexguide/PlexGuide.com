@@ -27,6 +27,7 @@ TITLE="Applications - Manager Programs"
 OPTIONS=(A "NZBGET"
          B "Sonarr"
          C "Radarr"
+         D "SABNZBD"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -38,52 +39,28 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      display=NZBGET
-      program=nzbget
-      port=6789
-      bash /opt/plexguide/menus/images/nzbget.sh
-      dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/pg.yml --tags nzbget &>/dev/null &
-      sleep 3
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
-      bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
-      ;;
+    echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget
+    read -n 1 -s -r -p "Press any key to continue"
+    bash /opt/plexguide/menus/time/cron.sh
+    ;;
     B)
-      display=Sonarr
-      program=sonarr
-      port=8989
-      bash /opt/plexguide/menus/images/sonarr.sh
-      dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/pg.yml --tags sonarr 1>/dev/null 2>&1
-      chown 1000:1000 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      chmod 0755 /opt/appdata/sonarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      sleep 3
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
-      bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
-      ;;
+    echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr
+    read -n 1 -s -r -p "Press any key to continue"
+    bash /opt/plexguide/menus/time/cron.sh
     C)
-      display=Radarr
-      program=radarr
-      port=7878
-      bash /opt/plexguide/menus/images/radarr.sh
-      dialog --infobox "Installing: $display" 3 30
-      ansible-playbook /opt/plexguide/pg.yml --tags radarr 1>/dev/null 2>&1
-      chown 1000:1000 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      chmod 0755 /opt/appdata/radarr/mp4_automator/autoProcess.ini 1>/dev/null 2>&1
-      sleep 3
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
-      bash /opt/plexguide/menus/time/cron.sh
-      bash /opt/plexguide/menus/programs/ending.sh
-      ;;
-
+    echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
+    read -n 1 -s -r -p "Press any key to continue"
+    bash /opt/plexguide/menus/time/cron.sh
+    ;;
+    D)
+    echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
+    read -n 1 -s -r -p "Press any key to continue"
+    bash /opt/plexguide/menus/time/cron.sh
+    ;;
     Z)
       exit 0 ;;
 esac
