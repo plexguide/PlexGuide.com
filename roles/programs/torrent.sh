@@ -116,4 +116,4 @@ case $CHOICE in
 esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/torrent.sh
+bash /opt/plexguide/roles/programs/torrent.sh

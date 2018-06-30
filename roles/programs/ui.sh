@@ -114,4 +114,4 @@ esac
     clear
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/ui.sh
+bash /opt/plexguide/roles/programs/ui.sh

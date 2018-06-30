@@ -59,4 +59,4 @@ case $CHOICE in
         exit 0 ;;
 esac
 
-bash /opt/plexguide/menus/programs/beta.sh
+bash /opt/plexguide/roles/programs/beta.sh

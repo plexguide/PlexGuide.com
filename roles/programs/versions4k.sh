@@ -60,4 +60,4 @@ esac
 
 echo 'INFO Looping: 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/versions4k.sh
+bash /opt/plexguide/roles/programs/versions4k.sh

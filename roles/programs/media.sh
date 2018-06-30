@@ -51,7 +51,7 @@ case $CHOICE in
             then
                 clear 1>/dev/null 2>&1
             else
-                bash /opt/plexguide/menus/programs/media.sh
+                bash /opt/plexguide/roles/programs/media.sh
                 exit
             fi
 
@@ -115,4 +115,4 @@ case $CHOICE in
 esac
 
 #recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/media.sh
+bash /opt/plexguide/roles/programs/media.sh

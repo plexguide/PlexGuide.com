@@ -67,7 +67,7 @@ dialog --title "---WARNING---" --msgbox "\nYou Must Have RClone installed and gd
 bash /opt/plexguide/menus/main.sh
 exit
 fi
-            bash /opt/plexguide/menus/programs/main.sh ;;
+            bash /opt/plexguide/roles/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
