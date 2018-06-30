@@ -47,11 +47,10 @@
     - often.user_input == "1"
 
 - name: Daily Register
-  register: dayperiod
-  shell: "echo '*/1'"
+  set_fact: dayperiod="*/1"
   when:
     - askcron.user_input == "1"
-    - often.user_input != "1"
+    - often.user_input -= "1"
 
 - pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
