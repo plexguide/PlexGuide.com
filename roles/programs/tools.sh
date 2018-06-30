@@ -48,21 +48,10 @@ case $CHOICE in
                     echo "" 1>/dev/null 2>&1
                 else
                     dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: plex\nPass: guide\n\nIf you forget, please visit the Wiki!" 0 0
-            fi
-            display=CloudCMD
-            program=cmd
-            port=7999
-            dialog --infobox "Installing: $display" 3 30
-            sleep 2
-            clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudcmd
-            read -n 1 -s -r -p "Press any key to continue"
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            bash /opt/plexguide/menus/time/cron.sh
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
+                    echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+                    clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
+                    read -n 1 -s -r -p "Press any key to continue"
+                    bash /opt/plexguide/menus/time/cron.sh
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata

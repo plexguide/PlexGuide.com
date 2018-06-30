@@ -9,7 +9,6 @@
   - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: bazarr, tags: ['bazarr'] }
-  - { role: nzbget, tags: ['nzbget'] }
   - { role: pgdrive, tags: ['pgdrive'] }
   - { role: rutorrent, tags: ['rutorrent'] }
   - { role: nzbhydra2, tags: ['nzbhydra2'] }
