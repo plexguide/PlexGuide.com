@@ -16,7 +16,7 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.000 BETA 1" > /var/plexguide/pg.version
+echo "6.000 BETA 2" > /var/plexguide/pg.version
 echo "100" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
