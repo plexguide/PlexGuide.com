@@ -18,9 +18,9 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
- HEIGHT=11
+ HEIGHT=12
  WIDTH=38
- CHOICE_HEIGHT=5
+ CHOICE_HEIGHT=6
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Manager Programs"
 
