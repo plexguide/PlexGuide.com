@@ -58,7 +58,8 @@
     - askcron.user_input == "1"
     - often.user_input == "2"
 
-- pause:
+- name: Hour Question
+  pause:
     prompt: "\nWhat Hour of the Day? (O - 23)"
   register: reghour
   until: reghour.user_input > "-1" and reghour.user_input < "24"
