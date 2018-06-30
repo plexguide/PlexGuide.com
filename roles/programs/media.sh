@@ -90,6 +90,7 @@ case $CHOICE in
             clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic
             read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/menus/time/cron.sh
+            ;;
         Z)
             exit 0 ;;
 esac
