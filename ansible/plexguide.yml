@@ -22,7 +22,6 @@
   - { role: deploy2, tags: ['deploy2'] }
   - { role: supertransfer, tags: ['supertransfer'] }
   - { role: supertransfer2, tags: ['supertransfer2'] }
-  - { role: support, tags: ['support'] }
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
   - { role: next, tags: ['next'] }
