@@ -39,13 +39,13 @@
 - pause:
     prompt: "\nWhich Day of the Week?\n1- Sunday\n2- Monday\n3- Tuesday\n4- Wednesday\n5- Thursday\n6- Friday\n7- Saturday"
   register: dayperiod
-  until: daperiod.user_input > "0" and dayperiod.user_input < "8"
+  until: dayperiod.user_input > "0" and dayperiod.user_input < "8"
   retries: 99
   delay: 1
   when: askcron.user_input == "1" and often.user_input == "1"
 
 - name: Daily Register
-  register: period
+  register: dayperiod
   shell: "echo '*'"
   when: askcron.user_input == "1" and often.user_input == "2"
 
