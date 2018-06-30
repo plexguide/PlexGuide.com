@@ -47,7 +47,7 @@
     - often.user_input == "1"
 
 - name: Daily Register
-  register: dayperiod
+  register: dayperiod2
   shell: "echo '*/1'"
   when:
     - askcron.user_input == "1"
