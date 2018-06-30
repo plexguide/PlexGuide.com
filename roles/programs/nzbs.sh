@@ -42,6 +42,7 @@ case $CHOICE in
             clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget
             read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/menus/time/cron.sh
+            ;;
         B)
             display=NZBHYDRA2
             program=nzbhydra2
