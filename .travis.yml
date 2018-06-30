@@ -3,6 +3,4 @@ sudo: enabled
 
 before_install:
 - sudo apt-get install wget -y && sudo wget https://plexguide.com/install.sh && sudo bash ./install.sh
-
-script:
 - sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
