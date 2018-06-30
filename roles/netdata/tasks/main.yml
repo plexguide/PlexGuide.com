@@ -77,7 +77,7 @@
   shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{pgrole}}
   when: askcron.user_input == "1"
 
-- debug: msg="User Selected Hour:{{reghour}} Period:{{period}}"
+- debug: msg="User Selected Period:{{period}}"
   when: askcron.user_input == "1"
 
 - name: Build Cron Job Schedule
