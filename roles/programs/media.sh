@@ -78,6 +78,7 @@ case $CHOICE in
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity
             read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/menus/time/cron.sh
+            ;;
         D)
             echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic
