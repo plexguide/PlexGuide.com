@@ -95,7 +95,6 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
         then
       echo "" 1>/dev/null 2>&1
         else
-      dialog --title "Server Ports - One Time Message" --msgbox "\nYour APP Ports are Open by Default!\n\nYou can turn them OFF via Settings. TURN OFF only when https:// is confirmed for you DOMAIN!" 0 0
       touch /var/plexguide/server.ports
       echo "[OPEN]" > /var/plexguide/server.ports.status
       fi
@@ -115,7 +114,7 @@ echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
 sleep 2
 clear
 yes | apt-get update
-yes | apt-get install software-properties-common 
+yes | apt-get install software-properties-common
 yes | apt-get install sysstat nmon
 sed -i 's/false/true/g' /etc/default/sysstat
 echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -130,19 +129,19 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]
       echo "20" | dialog --gauge "Suppport Is Already Installed" 7 50 0
       echo "INFO - Support is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       sleep 2
-    else 
+    else
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
       echo "INFO - Installing: Support" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
       clear
       sleep 2
       clear
       sudo add-apt-repository ppa:ansible/ansible-2.5 -y
-      apt-get update -y 
+      apt-get update -y
       apt-get install ansible 2.5.5 -y
       yes | apt-get update
       #cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
       #sleep 2
-fi 
+fi
 
 ############# FOR ANSIBLE
 mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
@@ -215,7 +214,7 @@ docver=$( cat /var/plexguide/ubversion )
     then
   echo "40" | dialog --gauge "Installing: UB18 - $version_recall18 (Please Be Patient)" 7 58 0
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-  sleep 2 
+  sleep 2
   clear
   ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker18
   sleep 2
@@ -241,7 +240,7 @@ if [ "$pg_label" == "$pg_label_stored" ]
     then
       echo "70" | dialog --gauge "Label Is Already Installed" 7 50 0
       sleep 2
-    else 
+    else
       echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
       sleep 2
       clear
@@ -250,7 +249,7 @@ if [ "$pg_label" == "$pg_label_stored" ]
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.label > /var/plexguide/pg.label.stored
       sleep 2
-fi 
+fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 sleep 2
@@ -276,15 +275,15 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
     then
       echo "90" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
       sleep 2
-    else 
+    else
       echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
       clear
       sleep 2
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix 
+      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix
       sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
-      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored      
-fi 
+      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored
+fi
 
 echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
@@ -302,7 +301,7 @@ if [ "$pg_python" == "$pg_python_stored" ]
     then
       echo "99" | dialog --gauge "Python Support Is Already Installed" 7 50 0
       sleep 2
-    else 
+    else
       echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
       bash /opt/plexguide/roles/baseline/scripts/python.sh &>/dev/null &
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
