@@ -16,11 +16,6 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-
-- include_role:
-    name: pgmstart
-
 - name: Remove x2go Container
   docker_container:
     name: x2go
@@ -57,7 +52,3 @@
      msg: "  For SECURITY reasons - Please stop this container when not in use!  "
 - debug:
      msg: "  Check x2go portainer log for dockerx password  "
-
-
-- include_role:
-    name: pgmend
