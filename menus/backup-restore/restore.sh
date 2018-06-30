@@ -54,6 +54,9 @@ OPTIONS=(1 "CouchPotato"
          26 "Airsonic"
          27 "TorrentVPN"
          28 "qBittorrent"
+         29 "Radarr4k"
+         30 "Sonarr4k"
+         31 "Ombi4k"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -121,6 +124,12 @@ case $CHOICE in
             echo "vpn" > /tmp/program_var ;;
         28)
             echo "qbittorrent" /tmp/program_var ;;
+        29)
+            echo "radarr4k" > /tmp/program_var ;;
+        30)
+            echo "sonarr4k" > /tmp/program_var ;;
+        31)
+            echo "ombi4k" /tmp/program_var ;;
         Z)
             clear
             exit 0 ;;
