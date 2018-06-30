@@ -22,6 +22,78 @@
     name: pgmstart
 
 - pause:
+    prompt: "\nSchedule Backups for {{role_name}}?\n1- YES (Recommended)\n2- NO/Remove"
+  register: askcron
+  until: askcron.user_input > "0" and askcron.user_input < "2"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nHow Often?\n1- Weekly\n2- Daily"
+  register: often
+  until: often.user_input > "0" and often.user_input < "3"
+  retries: 99
+  delay: 1
+  when: askcron.user_input == "1"
+
+- pause:
+    prompt: "\nWhich Day of the Week?\n1- Sunday\n2- Monday\n3- Tuesday\n4 - Wednesday\n5 - Thursday\n6 - Friday\n7 - Saturday"
+  register: period
+  until: period.user_input > "0" and period.user_input < "8"
+  retries: 99
+  delay: 1
+  when: askcron.user_input == "1" and often.user_input == "1"
+
+- name: Daily Register
+  register: period
+  shell: "*"
+  when: askcron.user_input == "1" and often.user_input == "2"
+
+- pause:
+    prompt: "\nWhat Hour of the Day? (O - 23)"
+  register: hour
+  until: hour.user_input > "-1" and hour.user_input < "24"
+  retries: 99
+  delay: 1
+  when: askcron.user_input == "1"
+
+- set_fact:
+     rminute: "{{ 59 | random }}"
+   run_once: yes
+  when: askcron.user_input == "1"
+
+- name: Schedule CronJob
+  include_role:
+    name: remove
+  when: askcron.user_input == "1"
+
+- name: Ensure Cron Folder Exists
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/plexguide/cron
+  ignore_errors: yes
+  when: askcron.user_input == "1"
+
+- name: Build Cron Job File
+  shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{pgrole}}
+  when: askcron.user_input == "1"
+
+- name: Build Cron Job Schedule
+  cron:
+    name: "{{pgrole}}"
+    weekday: "{{period}}"
+    minute: "{{rminute}}"
+    hour: "{{hour}}"
+    job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
+    state: present
+  when: askcron.user_input == "1"
+
+- name: Remove/No Cron
+  include_role:
+    name: remove
+  when: askcron.user_input == "2"
+#########################
+- pause:
     prompt: "\nType Image # for {{role_name}}\n1- titpetric/netdata\n2- firehol/netdata"
   register: result
   until: result.user_input > "0" and result.user_input < "4"
@@ -29,12 +101,12 @@
   delay: 1
 
 - name: Set titpetric/netdata
-  set_fact: 
+  set_fact:
     image: "titpetric/netdata"
   when: result.user_input == "1"
 
 - name: Set firehol/netdata
-  set_fact: 
+  set_fact:
     image: "firehol/netdata"
   when: result.user_input == "2"
 

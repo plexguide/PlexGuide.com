@@ -21,7 +21,6 @@
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
   - { role: next, tags: ['next'] }
-  - { role: remove, tags: ['remove'] }
   - { role: test, tags: ['test'] }
   - { role: rclone_un, tags: ['rclone_un'] }
   - { role: rclone_en, tags: ['rclone_en'] }
