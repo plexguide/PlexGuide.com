@@ -29,22 +29,14 @@
   delay: 1
 
 - name: Set linuxserver/ombi
-  set_fact: 
+  set_fact:
     image: "linuxserver/ombi"
   when: result.user_input == "1"
 
 - name: Set lsiodev/ombi-preview
-  set_fact: 
+  set_fact:
     image: "lsiodev/ombi-preview"
   when: result.user_input == "2"
-
-########## Unique for TLD
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{role_name}}"
-  register: tld
-  ignore_errors: True
-##########
-
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
@@ -91,6 +83,6 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
       traefik.port: "{{intport}}"
- 
+
 - include_role:
     name: pgmend

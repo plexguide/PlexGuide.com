@@ -16,26 +16,29 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
-- name: Remove NZBGET Container
-  docker_container:
-    name: nzbget
-    state: absent
+- pause:
+    prompt: "\nType Image # for NZBGET\n1- linuxserver/nzbget (Recommended)\n2- hotio/nzbget (Space Saver)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "3"
+  retries: 5
+  delay: 1
 
-- name: Register Image
-  shell: "cat /var/plexguide/image.{{role_name}}"
-  register: image
-  ignore_errors: True
+- name: Set linuxserver/nzbget
+  set_fact: 
+    image: "linuxserver/nzbget"
+    extra: ""
+  when: result.user_input == "1"
 
-- name: Register Extra
-  shell: "cat /var/plexguide/extra.{{role_name}}"
-  register: extra
-  ignore_errors: True
+- name: Hotio/Suitarr
+  set_fact: 
+    image: "hotio/suitarr:nzbget"
+    extra: "/NZBGet"
+  when: result.user_input == "2"
 
 - name: Create nzbget download directory
   file: "path=/mnt/nzbget/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -52,9 +55,9 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}6789:6789"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
-      - "/opt/appdata/nzbget:/config{{extra.stdout}}"
+      - "/opt/appdata/nzbget:/config{{extra}}"
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/nzbget/incomplete:/incomplete"
       - "{{path.stdout}}/nzbget/nzb:/nzb"
@@ -82,7 +85,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:nzbget.{{domain.stdout}}"
-      traefik.port: "6789"
+      traefik.port: "{{extport}}"
 
 - name: Please Wait - Pending .conf generation from NZBGET
   wait_for:
@@ -267,3 +270,6 @@
     name: nzbget
     state: started
   when: nzbget_conf.stat.exists == False
+
+- include_role:
+    name: pgmend
