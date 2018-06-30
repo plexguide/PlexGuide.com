@@ -50,8 +50,8 @@
 
 - name: Deploy NZBGET Container
   docker_container:
-    name: nzbget
-    image: "{{image.stdout}}"
+    name: "{{role_name}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
