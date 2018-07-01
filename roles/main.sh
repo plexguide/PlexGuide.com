@@ -57,6 +57,7 @@ echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/p
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
 echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear
             ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
             read -n 1 -s -r -p "Press any key to continue"
             ;;
