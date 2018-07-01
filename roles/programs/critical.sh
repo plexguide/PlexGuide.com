@@ -18,14 +18,13 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Critical Program Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-HEIGHT=9
+HEIGHT=8
 WIDTH=38
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=2
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Critical"
 
 OPTIONS=(A "Portainer"
-         B "Domain/Traefik"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -40,20 +39,8 @@ case $CHOICE in
         echo 'INFO - Selected: Portainer' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags portainer
         read -n 1 -s -r -p "Press any key to continue"
-        
+
         ;;
-        B)
-echo "INFO - Selected Traefik Deployment" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/traefik/main.sh
-            bash /opt/plexguide/roles/programs/critical.sh
-            sleep 3
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            
-            bash /opt/plexguide/menus/programs/ending.sh
-            exit
-            ;;
         Z)
             exit 0 ;;
 esac
