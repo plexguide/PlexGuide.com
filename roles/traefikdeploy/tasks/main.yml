@@ -56,7 +56,7 @@
   when: domainanswer.user_input == "1"
 
 - name: Store Domain
-  shell: "echo "{{domain.user_input}}" > /var/plexguide/server.domain"
+  shell: "echo '{{domain.user_input}}' > /var/plexguide/server.domain"
   register: domain
   when: domainanswer.user_input == "1"
 
