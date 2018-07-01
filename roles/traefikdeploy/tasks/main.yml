@@ -60,6 +60,9 @@
   shell: "echo '{{domain.user_input}}' > /var/plexguide/server.domain"
   when: domainanswer.user_input == "1"
 
+- name: Register Domain Again
+  shell: "cat /var/plexguide/server.email"
+  register: domainfinal
 ################################ EMAIL INFO
 - pause:
     prompt: "\nYour E-Mail: {{email.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
@@ -207,13 +210,15 @@
 #    regexp: myprovider
 #    replace: "{{provider}}"
 #    when: emailanswer.user_input == "1"
+- debug: msg="E-Mail Info {{domainfinal}}"
 
-#- name: Replace Domain
-#  replace:
-#    path: /opt/appdata/traefik/traefik.toml
-#    regexp: yourdomain.com
-#    replace: "{{domain.stdout}}"
-- debug: msg="E-Mail Info {{email}}"
+- name: Replace Domain
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: yourdomain.com
+    replace: "{{domainfinal.stdout}}"
+
+- debug: msg="E-Mail Info {{emailfinal}}"
 
 - name: Replace E-Mail
   replace:
