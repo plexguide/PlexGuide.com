@@ -193,12 +193,19 @@
     owner: 1000
     group: 1000
 ######################################################### REPLACE STANDARD VARIBLES
+#- name: Registering Day Period of the Week
+#  set_fact:
+#    trueperiod: "{{dayperiod.user_input}}"
+#  when:
+#    - askcron.user_input == "1"
+
 
 - name: Replace Provider
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
     replace: "{{domain.stdout}}"
+    when: emailanswer.user_input == "1"
 
 - name: Replace Domain
   replace:
@@ -210,7 +217,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: your@email.com
-    replace: "{{email.stdout}}"
+    replace: {{email.stdout}}{{email.user_input}}
 
 ######################################################### CLOUDFLARE
 - name: Deploy Traefik Container - CloudFlare
