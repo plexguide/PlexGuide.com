@@ -24,10 +24,14 @@
 - pause:
     prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES\n2- NO"
   register: exit
-  until: exit.user_input > "0" and exit.user_input < "3"
-  retries: 99
+  until: exit.user_input > "0" and exit.user_input < "2"
+  retries: 0
   delay: 1
-  failed_when: exit.user_input == 2
+
+- name: fail the play if the previous command did not succeed
+  fail:
+    msg: "the command failed"
+  when: "'FAILED' in command_result.stderr"
 
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
