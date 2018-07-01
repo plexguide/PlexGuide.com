@@ -112,6 +112,9 @@
   when:
     - result.user_input == "1"
 
+- name: Store Provider
+  shell: "echo 'cloudflare' > /var/plexguide/server.domain"
+  when: domainanswer.user_input == "1"
 ########################
 - name: Set Provider - GoDaddy
   set_fact:
@@ -131,6 +134,11 @@
   register: godaddy2
   when:
     - result.user_input == "2"
+
+- name: Store Provider
+  shell: "echo 'godaddy' > /var/plexguide/server.domain"
+  when:
+    - result.user_input == "2"
 ########################
 - name: Set Provider - DUCKDNS
   set_fact:
@@ -143,6 +151,11 @@
   register: duck1
   when:
     - result.user_input == "3"
+
+- name: Store Provider
+  shell: "echo 'duckdns' > /var/plexguide/server.domain"
+  when:
+    - result.user_input == ""3
 ########################
 - name: Set Provider - NameCheap
   set_fact:
@@ -162,6 +175,15 @@
   register: name2
   when:
     - result.user_input == "4"
+
+- name: Store Provider
+  shell: "echo 'namecheap' > /var/plexguide/server.domain"
+  when:
+    - result.user_input == "4"
+########################
+- name: Register Provider First Time
+  shell: "cat /var/plexguide/server.provider"
+  register: providerfinal
 ########################
 - name: Remove Traefik
   docker_container:
@@ -197,19 +219,14 @@
     owner: 1000
     group: 1000
 ######################################################### REPLACE STANDARD VARIBLES
-#- name: Registering Day Period of the Week
-#  set_fact:
-#    trueperiod: "{{dayperiod.user_input}}"
-#  when:
-#    - askcron.user_input == "1"
+- debug: msg="E-Mail Info {{providerfinal}}"
 
+- name: Replace Domain
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: myprovider
+    replace: "{{providerfinal.stdout}}"
 
-#- name: Replace Provider
-#  replace:
-#    path: /opt/appdata/traefik/traefik.toml
-#    regexp: myprovider
-#    replace: "{{provider}}"
-#    when: emailanswer.user_input == "1"
 - debug: msg="E-Mail Info {{domainfinal}}"
 
 - name: Replace Domain
