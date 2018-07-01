@@ -24,20 +24,12 @@
 - pause:
     prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES\n2- NO"
   register: exit
-  until: exit.user_input > "0" and exit.user_input < "2"
-  retries: 0
-  delay: 1
-
-- name: fail the play if the previous command did not succeed
-  fail:
-    msg: "the command failed"
-  when: "'FAILED' in command_result.stderr"
+  failed_when: register != 1
 
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
   register: domain
   ignore_errors: True
-
 
 - pause:
     prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
