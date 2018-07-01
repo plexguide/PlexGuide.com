@@ -77,6 +77,8 @@ if [ -e "$file" ]
   else
     echo "changeme.com" >> /var/plexguide/server.domain
 fi
+
+hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
 
 #### Set Fixed Information

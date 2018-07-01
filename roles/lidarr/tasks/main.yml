@@ -20,22 +20,22 @@
 
 - include_role:
     name: pgmstart
-    
+
 - pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/radarr (Recommended)\n2- hotio/suitarr (Space Saver)"
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/lidarr (Recommended)\n2- hotio/suitarr (Space Saver)"
   register: result
   until: result.user_input > "0" and result.user_input < "3"
   retries: 5
   delay: 1
 
-- name: Set linuxserver/radarr
-  set_fact: 
+- name: Set linuxserver/lidarr
+  set_fact:
     image: "linuxserver/lidarr"
     extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitarr
-  set_fact: 
+  set_fact:
     image: "hotio/suitarr:lidarr"
     extra: "/Lidarr"
   when: result.user_input == "2"

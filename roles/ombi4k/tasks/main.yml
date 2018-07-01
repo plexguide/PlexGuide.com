@@ -81,7 +81,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
 - include_role:
