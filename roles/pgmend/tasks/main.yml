@@ -17,10 +17,8 @@
 #################################################################################
 ---
   - name: Logging Ansible Role Information
-    shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+    shell: "echo 'INFO - Ansible Role portainer Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
   - include_role:
       name: pgcron
     tags: cron
-
-  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
