@@ -24,28 +24,23 @@
 - name: Create Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - "/opt/appdata/cloudcmd/"
+    - "/opt/appdata/cloudst2/"
 
 - name: Check config file exists
   stat:
-    path: "/opt/appdata/cloudcmd/.cloudcmd.json"
+    path: "/opt/appdata/cloudst2/.cloudcmd.json"
   register: cloud_json
 
-- name: Install config.json
+- name: Install configst2.json
   template:
-    src: config.json
-    dest: /opt/appdata/cloudcmd/.cloudcmd.json
+    src: configst2.json
+    dest: /opt/appdata/cloudst2/.cloudcmd.json
     force: yes
   when: cloud_json.stat.exists == False
 
-- name: Remove cloudcmd Container
+- name: Deploy CloudST2 Edition
   docker_container:
-    name: cloudcmd
-    state: absent
-
-- name: Deploy cloudcmd Container
-  docker_container:
-    name: cloudcmd
+    name: cloudst2
     image: coderaiser/cloudcmd
     pull: yes
     cpu_shares: 256
@@ -56,15 +51,15 @@
       PGID: "1000"
     volumes:
       - /:/SERVER
-      - /opt/appdata/cloudcmd:/root/
+      - /opt/appdata/cloudst2:/root/
     networks:
       - name: plexguide
         aliases:
-          - cloudcmd
+          - cloudst2
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:cmd.{{domain.stdout}}, cloudcmd.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:cloudst2.{{domain.stdout}}"
       traefik.port: "{{intport}}"
     restart_policy: always
     state: started
