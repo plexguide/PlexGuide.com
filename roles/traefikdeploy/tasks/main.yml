@@ -212,6 +212,7 @@
 #    path: /opt/appdata/traefik/traefik.toml
 #    regexp: yourdomain.com
 #    replace: "{{domain.stdout}}"
+- debug: msg="Using following PIA username {{email}}"
 
 - name: Replace E-Mail
   replace:
