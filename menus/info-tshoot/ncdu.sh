@@ -146,4 +146,4 @@ case $CHOICE in
 esac
 
 ### loops until exit
-bash /opt/plexguide/menus/info-tshoot/ncdu.sh
+bash /opt/plexguide/roles/info-tshoot/ncdu.sh

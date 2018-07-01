@@ -162,7 +162,7 @@ case $CHOICE in
 
     G)
         clear
-        bash /opt/plexguide/menus/info-tshoot/info2/restart-menu.sh
+        bash /opt/plexguide/roles/info-tshoot/info2/restart-menu.sh
         clear
         ;;
 
@@ -172,4 +172,4 @@ case $CHOICE in
 esac
 
 ### loops until exit
-bash /opt/plexguide/menus/info-tshoot/info2/status-menu.sh
+bash /opt/plexguide/roles/info-tshoot/info2/status-menu.sh

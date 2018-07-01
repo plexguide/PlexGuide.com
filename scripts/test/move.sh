@@ -27,8 +27,8 @@ mv /opt/plexguide/menus/mount/encrypted-test.sh /opt/plexguide/menus/mount/encry
 #mv /opt/plexguide/menus/mount/main2.sh /opt/plexguide/menus/mount/main.sh
 
 ## For testing new info/services menus
-#rm /opt/plexguide/menus/info-tshoot/info.sh
-#mv /opt/plexguide/menus/info-tshoot/info-new.sh /opt/plexguide/menus/info-tshoot/info.sh
+#rm /opt/plexguide/roles/info-tshoot/info.sh
+#mv /opt/plexguide/roles/info-tshoot/info-new.sh /opt/plexguide/roles/info-tshoot/info.sh
 
 ## For testing new beta menu
 rm /opt/plexguide/menus/programs/beta.sh
@@ -51,8 +51,8 @@ mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.
 #mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
 
 ## For testing new info & services menus
-#rm /opt/plexguide/menus/info-tshoot/info.sh
-#mv /opt/plexguide/menus/info-tshoot/info-next.sh /opt/plexguide/menus/info-tshoot/info.sh
+#rm /opt/plexguide/roles/info-tshoot/info.sh
+#mv /opt/plexguide/roles/info-tshoot/info-next.sh /opt/plexguide/roles/info-tshoot/info.sh
 
 ## For testing new torrent menus
 #rm /opt/plexguide/menus/programs/beta.sh

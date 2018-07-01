@@ -241,4 +241,4 @@ esac
 
 
 ### loops until exit
-bash /opt/plexguide/menus/info-tshoot/info/restart-menu.sh
+bash /opt/plexguide/roles/info-tshoot/info/restart-menu.sh

@@ -106,11 +106,11 @@ rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1
             ;;
         D)
 echo 'INFO - Selected: PG Server Information Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/info-tshoot/infodrives.sh 
+            bash /opt/plexguide/roles/info-tshoot/infodrives.sh 
             ;;
         E)
 echo 'INFO - Selected: PG Troubleshoot Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh 
+            bash /opt/plexguide/roles/info-tshoot/tshoot.sh 
             ;;
         F)
 echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

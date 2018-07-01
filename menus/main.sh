@@ -63,10 +63,10 @@ echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/p
             bash /opt/plexguide/menus/security/main.sh ;;
         F)
 echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/info-tshoot/info.sh ;;
+            bash /opt/plexguide/roles/info-tshoot/info.sh ;;
         G)
 echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/info-tshoot/tshoot.sh ;;
+            bash /opt/plexguide/roles/info-tshoot/tshoot.sh ;;
         H)
 echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/settings/main.sh ;;
