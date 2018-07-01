@@ -48,7 +48,7 @@
   delay: 1
 
 - pause:
-    prompt: "\nWhat is Your Domain? (Type #)\n1- YES\n2- NO"
+    prompt: "\nWhat is Your Domain? Type Carefully and Press [ENTER]"
   register: domain
   until: exit.user_input > "0" and exit.user_input < "3"
   retries: 99
