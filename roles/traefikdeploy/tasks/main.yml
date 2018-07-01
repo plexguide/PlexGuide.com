@@ -26,6 +26,10 @@
   register: domain
   ignore_errors: True
 
+- name: Register Domain
+  shell: "cat /var/plexguide/server.email"
+  register: email
+  ignore_errors: True
 ###############################
 
 - pause:
@@ -39,7 +43,7 @@
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input != "1"
 
-################################
+################################ DOMAIN INFO
 - pause:
     prompt: "\nYour Domain: {{domain.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
   register: domainanswer
@@ -60,7 +64,28 @@
   register: domain
   when: domainanswer.user_input == "1"
 
-################################
+################################ EMAIL INFO
+- pause:
+    prompt: "\nYour E-Mail: {{email.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
+  register: emailanswer
+  until: emailanswer.user_input > "0" and emailanswer.user_input < "3"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nWhat is Your E-Mail Address? Type Carefully and Press [ENTER]"
+  register: email
+  until: email.user_input > "0" and email.user_input < "3"
+  retries: 99
+  delay: 1
+  when: emailanswer.user_input == "1"
+
+- name: Store Domain
+  shell: "echo '{{email.user_input}}' > /var/plexguide/server.email"
+  register: email
+  when: emailanswer.user_input == "1"
+
+  #########################################
 
 - pause:
     prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
