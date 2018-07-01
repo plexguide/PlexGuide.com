@@ -1,0 +1,240 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
+
+- pause:
+    prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
+  register: result
+  until: result.user_input > "0" and result.user_input < "5"
+  retries: 99
+  delay: 1
+
+########################
+- name: GoDaddy Information
+  pause:
+    prompt: "\n What is Your GoDaddy API Key?"
+  register: answer1
+  when:
+    - result.user_input == "2"
+
+- name: GoDaddy Information
+  pause:
+    prompt: "\n What is Your GoDaddy API Key?"
+  register: answer2
+  when:
+    - result.user_input == "2"
+
+########################
+- name: Remove Traefik
+  docker_container:
+    name: traefik2
+    state: absent
+
+- name: Removing Prior Traefik.toml
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+
+- name: Create Basic Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/traefik
+    - /opt/appdata/traefik/acme
+
+########## Move Script if not Present
+- name: Installing Traefik.Toml
+  template:
+    src: traefik.toml
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+    owner: 1000
+    group: 1000
+
+- name: Installing ACME
+  template:
+    src: acme.json
+    dest: /opt/appdata/traefik/acme/acme.json
+    force: yes
+    mode: 0600
+    owner: 1000
+    group: 1000
+
+######################################################### RECALL VARIABLES
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+- name: Register E-Mail
+  shell: "cat /var/plexguide/server.email"
+  register: email
+  ignore_errors: True
+
+######################################################### REPLACE STANDARD VARIBLES
+
+- name: Replace Provider
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: myprovider
+    replace: "{{provider.stdout}}"
+
+- name: Replace Domain
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: yourdomain.com
+    replace: "{{domain.stdout}}"
+
+- name: Replace E-Mail
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: your@email.com
+    replace: "{{email.stdout}}"
+
+######################################################### CLOUDFLARE
+- name: Deploy Traefik Container - CloudFlare
+  docker_container:
+    name: "{{role_name}}"
+    image: "traefik:1.6"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+ #     - "8080:8080"
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "{{provider.stdout}}"
+      CLOUDFLARE_EMAIL: "{{var1.stdout}}"
+      CLOUDFLARE_API_KEY: "{{var2.stdout}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/servers.toml:/etc/traefik/servers.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    networks:
+      - name: plexguide
+        aliases:
+          - "traefik"
+    restart_policy: always
+    state: started
+  tags: cloudflare
+  when:
+    - result.user_input == "1"
+
+######################################################### NAMEDOTCOM
+- name: Deploy Traefik - DUCKDNS
+  docker_container:
+    name: traefik2
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      #- "8080:8080"
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "{{provider.stdout}}"
+      DUCKDNS_TOKEN: "{{var1.stdout}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: duckdns
+  when:
+    - result.user_input == "3"
+
+######################################################### GODADDY
+- name: Deploy Traefik - GODADDY
+  docker_container:
+    name: traefik2
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "{{provider.stdout}}"
+      GODADDY_API_KEY: "{{var1.stdout}}"
+      GODADDY_API_SECRET: "{{var2.stdout}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: godaddy
+  when:
+    - result.user_input == "2"
+
+######################################################### NAMECHEAP
+- name: Deploy Traefik - NAMECHEAP
+  docker_container:
+    name: traefik2
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "{{provider.stdout}}"
+      NAMECHEAP_API_USER: "{{var1.stdout}}"
+      NAMECHEAP_API_KEY: "{{var2.stdout}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: namecheap
+  when:
+    - result.user_input == "4"
+
+########################################
+- include_role:
+    name: pgmend
