@@ -219,15 +219,15 @@
     owner: 1000
     group: 1000
 ######################################################### REPLACE STANDARD VARIBLES
-- debug: msg="E-Mail Info {{providerfinal}}"
+- debug: msg="Provider Info {{providerfinal}}"
 
-- name: Replace Domain
+- name: Replace Provider
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
     replace: "{{providerfinal.stdout}}"
 
-- debug: msg="E-Mail Info {{domainfinal}}"
+- debug: msg="Domain Info {{domainfinal}}"
 
 - name: Replace Domain
   replace:
