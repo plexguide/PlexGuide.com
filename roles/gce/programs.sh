@@ -63,7 +63,8 @@ case $CHOICE in
     echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
     read -n 1 -s -r -p "Press any key to continue"
-
+    ;;
+    
     E)
     echo 'INFO - Selected: CloudST2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
