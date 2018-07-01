@@ -61,7 +61,7 @@
   when: domainanswer.user_input == "1"
 
 - name: Register Domain Again
-  shell: "cat /var/plexguide/server.email"
+  shell: "cat /var/plexguide/server.domain"
   register: domainfinal
 ################################ EMAIL INFO
 - pause:
