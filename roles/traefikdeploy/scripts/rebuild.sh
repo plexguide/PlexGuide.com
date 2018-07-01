@@ -28,7 +28,7 @@ count=$(wc -l < /var/plexguide/container.running)
 ((count++))
 ((count--))
 
-for ((i=1; i<$count+1; i++)); do
+for ((i=1; i<$count-1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
 	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
 done
