@@ -184,6 +184,7 @@
 - name: Register Provider First Time
   shell: "cat /var/plexguide/server.provider"
   register: providerfinal
+  ignore_errors: True
 ########################
 - name: Remove Traefik
   docker_container:
