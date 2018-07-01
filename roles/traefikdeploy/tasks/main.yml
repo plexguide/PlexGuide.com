@@ -29,6 +29,12 @@
   delay: 1
 
 ########################
+- name: Set Provider
+  set_fact:
+    provider: "godaddy"
+  when:
+    - askcron.user_input == "2"
+
 - name: GoDaddy Information
   pause:
     prompt: "\n What is Your GoDaddy API Key?"
@@ -95,7 +101,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
-    replace: "{{provider.stdout}}"
+    replace: "{{provider}}"
 
 - name: Replace Domain
   replace:
