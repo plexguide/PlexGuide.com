@@ -22,6 +22,20 @@
 #    name: varstart
 
 - pause:
+    prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES 2- NO"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "3"
+  retries: 99
+  delay: 1
+  failed_when: diff_cmd.rc == 2
+
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+
+- pause:
     prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
   register: result
   until: result.user_input > "0" and result.user_input < "5"
@@ -85,10 +99,7 @@
     group: 1000
 
 ######################################################### RECALL VARIABLES
-- name: Register Domain
-  shell: "cat /var/plexguide/server.domain"
-  register: domain
-  ignore_errors: True
+
 
 - name: Register E-Mail
   shell: "cat /var/plexguide/server.email"
