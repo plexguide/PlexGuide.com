@@ -54,9 +54,6 @@
 - pause:
     prompt: "\nWhat is Your Domain? Type Carefully and Press [ENTER]"
   register: domain
-  until: exit.user_input > "0" and exit.user_input < "3"
-  retries: 99
-  delay: 1
   when: domainanswer.user_input == "1"
 
 - name: Store Domain
@@ -75,9 +72,6 @@
 - pause:
     prompt: "\nWhat is Your E-Mail Address? Type Carefully and Press [ENTER]"
   register: email
-  until: email.user_input > "0" and email.user_input < "3"
-  retries: 99
-  delay: 1
   when: emailanswer.user_input == "1"
 
 - name: Store Domain
