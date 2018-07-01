@@ -22,7 +22,7 @@
 #    name: varstart
 
 - pause:
-    prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES 2- NO"
+    prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES\n2- NO"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "3"
   retries: 99
