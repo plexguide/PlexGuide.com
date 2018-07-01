@@ -65,7 +65,7 @@
 - pause:
     prompt: "\nYour E-Mail: {{email.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
   register: emailanswer
-  until: emailanswer.user_input > "0" and emailanswer.user_input < "3"
+  until: emailanswer.user_input > "0"
   retries: 99
   delay: 1
 
