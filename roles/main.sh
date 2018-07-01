@@ -56,8 +56,10 @@ echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/pl
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
-echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/wordpress/main.sh ;;
+echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+            read -n 1 -s -r -p "Press any key to continue"
+            ;;
         E)
 echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
