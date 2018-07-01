@@ -20,9 +20,9 @@ echo 'INFO - @Support Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scrip
 
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=16
+HEIGHT=15
 WIDTH=37
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Applications - PG Supporting"
 
@@ -31,10 +31,9 @@ OPTIONS=(A "AllTube"
          C "NextCloud"
          D "Now Showing"
          E "Ombi"
-         F "Plex Requests (Beta)"
-         G "Resilio"
-         H "Tautulli (PlexPy)"
-         I "The Lounge"
+         F "Resilio"
+         G "Tautulli (PlexPy)"
+         H "The Lounge"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -79,28 +78,22 @@ case $CHOICE in
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
-            echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         F)
-            echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags plexrequests
-            read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        G)
             echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio
             read -n 1 -s -r -p "Press any key to continue"
-
             ;;
-        H)
+        G)
             echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
-        I)
+        H)
             echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge
             read -n 1 -s -r -p "Press any key to continue"
