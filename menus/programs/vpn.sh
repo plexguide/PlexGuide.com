@@ -47,7 +47,7 @@ case $CHOICE in
 
      A)
      clear
-     ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
+     ansible-playbook /opt/plexguide/pg.yml --tags var-vpn
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
@@ -68,7 +68,7 @@ case $CHOICE in
        sleep 2
        clear
        port=8112
-       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn
+       ansible-playbook /opt/plexguide/pg.yml --tags delugevpn
        #&>/dev/null &
        read -n 1 -s -r -p "Press any key to continue"
 
@@ -89,7 +89,7 @@ case $CHOICE in
        clear
        port=9080
        port_extra=3000
-       ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
+       ansible-playbook /opt/plexguide/pg.yml --tags rtorrentvpn
        #&>/dev/null &
        read -n 1 -s -r -p "Press any key to continue"
 

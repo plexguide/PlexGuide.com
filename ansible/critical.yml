@@ -1,9 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: dockerfix, tags: ['dockerfix'] }
-  - { role: docker, tags: ['docker'] }
-  - { role: label, tags: ['label'] }
-  - { role: autodelete, tags: ['autodelete'] }
-  - { role: clean, tags: ['clean'] }

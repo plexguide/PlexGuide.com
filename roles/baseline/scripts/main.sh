@@ -189,7 +189,7 @@ docver=$( cat /var/plexguide/ubversion )
   echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2
   clear
-  ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker16
+  ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker16
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
@@ -212,7 +212,7 @@ docver=$( cat /var/plexguide/ubversion )
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   sleep 2
   clear
-  ansible-playbook /opt/plexguide/ansible/critical.yml --tags docker_standard,docker18
+  ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker18
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
@@ -240,7 +240,7 @@ if [ "$pg_label" == "$pg_label_stored" ]
       echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags label
+      ansible-playbook /opt/plexguide/pg.yml --tags label
       sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.label > /var/plexguide/pg.label.stored
@@ -276,7 +276,7 @@ if [ "$pg_docstart" == "$pg_docstart_stored" ]
       echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
       clear
       sleep 2
-      ansible-playbook /opt/plexguide/ansible/critical.yml --tags dockerfix
+      ansible-playbook /opt/plexguide/pg.yml --tags dockerfix
       sleep 2
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored

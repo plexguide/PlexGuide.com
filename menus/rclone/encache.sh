@@ -122,7 +122,7 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
 ansible-playbook /opt/plexguide/pg.yml --tags encache
-#ansible-playbook /opt/plexguide/ansible/vpn.yml --tags encache
+#ansible-playbook /opt/plexguide/pg.yml --tags encache
 
 ## Encache Script
 chmod 775 /opt/appdata/plexguide/encache.sh 1>/dev/null 2>&1

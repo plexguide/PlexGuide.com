@@ -48,7 +48,7 @@ case $CHOICE in
 
      A)
      skip=yes
-     ansible-playbook /opt/plexguide/ansible/config-vpn.yml --tags var-vpn
+     ansible-playbook /opt/plexguide/pg.yml --tags var-vpn
      echo "Your Variables have now been set."
      echo
      read -n 1 -s -r -p "Press any key to continue "
@@ -59,7 +59,7 @@ case $CHOICE in
      clear
      program=delugevpn
      port=8112
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags delugevpn 
+     ansible-playbook /opt/plexguide/pg.yml --tags delugevpn 
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -72,7 +72,7 @@ case $CHOICE in
      clear
      program=rtorrentvpn
      port=3000
-     ansible-playbook /opt/plexguide/ansible/vpn.yml --tags rtorrentvpn
+     ansible-playbook /opt/plexguide/pg.yml --tags rtorrentvpn
         sleep 3
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -88,7 +88,7 @@ case $CHOICE in
      skip=yes
      rm -r ~/docker-x2go
      bash /opt/plexguide/scripts/test/x2go/x2go.sh
-     #ansible-playbook /opt/plexguide/ansible/vpn.yml --tags x2go
+     #ansible-playbook /opt/plexguide/pg.yml --tags x2go
      read -n 1 -s -r -p "Press any key to continue "
      ;;
 

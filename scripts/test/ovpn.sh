@@ -135,7 +135,7 @@ case $CHOICE in
             if [ -e "$file" ]
             then
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/vpn.yml --tags openvpn &>/dev/null &
+               ansible-playbook /opt/plexguide/pg.yml --tags openvpn &>/dev/null &
                sleep 2
 #            else
 #               # user select local server (non-remote which requires to change some things to work!)

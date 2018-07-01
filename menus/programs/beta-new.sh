@@ -53,7 +53,7 @@ case $CHOICE in
       G)
       bash /opt/plexguide/scripts/test/ovpn.sh ;;
       H)
-      ansible-playbook /opt/plexguide/ansible/vpn.yml --tags openvpn_server &>/dev/null & ;;
+      ansible-playbook /opt/plexguide/pg.yml --tags openvpn_server &>/dev/null & ;;
      Z)
         clear
         exit 0 ;;
