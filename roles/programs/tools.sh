@@ -42,28 +42,22 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            file="/opt/appdata/cloudcmd/.cloudcmd.json"
-            if [ -e "$file" ]
-                then
-                    echo "" 1>/dev/null 2>&1
-                else
-                    dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: plex\nPass: guide\n\nIf you forget, please visit the Wiki!" 0 0
-                    echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-                    clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
-                    read -n 1 -s -r -p "Press any key to continue" 
-            fi
-            ;;      
+            dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: plex\nPass: guide\n\nIf you forget, please visit the Wiki!" 0 0
+            echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
+            read -n 1 -s -r -p "Press any key to continue"
+            ;;
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata
             read -n 1 -s -r -p "Press any key to continue"
-            
+
             ;;
         C)
             echo 'INFO - Selected: PYLoad' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags pyload
             read -n 1 -s -r -p "Press any key to continue"
-            
+
             ;;
         D)
             echo 'INFO - Selected: SpeedTest Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
