@@ -192,9 +192,9 @@
     env:
       PUID: 1000
       PGID: 1000
-      PROVIDER: "{{provider.stdout}}"
-      GODADDY_API_KEY: "{{var1.stdout}}"
-      GODADDY_API_SECRET: "{{var2.stdout}}"
+      PROVIDER: "{{provider}}"
+      GODADDY_API_KEY: "{{answer1.user_input}}"
+      GODADDY_API_SECRET: "{{answer2.user_input}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
@@ -242,5 +242,5 @@
     - result.user_input == "4"
 
 ########################################
-- include_role:
-    name: pgmend
+#- include_role:
+#    name: varend
