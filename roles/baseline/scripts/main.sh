@@ -256,8 +256,9 @@ sleep 2
 #sleep 1
 
 echo "80" | dialog --gauge "Installing: AutoDelete & Cleaner" 7 50 0
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags autodelete &>/dev/null &
-ansible-playbook /opt/plexguide/ansible/critical.yml --tags clean &>/dev/null &
+ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
+ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
+ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
 sleep 2
 
 #### Install Alias Command - 85 Percent
