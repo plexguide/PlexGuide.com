@@ -89,6 +89,11 @@
   delay: 1
 
 ########################
+- name: Set Provider - CloudFlare
+  set_fact:
+    provider: "cloudflare"
+  when: result.user_input == "1"
+
 - name: CloudFlare Information
   pause:
     prompt: "\nWhat is Your CloudFlare E-Mail?"
@@ -104,6 +109,11 @@
     - result.user_input == "1"
 
 ########################
+- name: Set Provider - GoDaddy
+  set_fact:
+    provider: "godaddy"
+  when: result.user_input == "2"
+
 - name: GoDaddy Information
   pause:
     prompt: "\nWhat is Your GoDaddy API Key?"
@@ -118,6 +128,11 @@
   when:
     - result.user_input == "2"
 ########################
+- name: Set Provider - DUCKDNS
+  set_fact:
+    provider: "cloudflare"
+  when: result.user_input == "1"
+
 - name: DUCKDNS Information
   pause:
     prompt: "\nWhat is Your DUCKDNS Token?"
@@ -125,6 +140,11 @@
   when:
     - result.user_input == "3"
 ########################
+- name: Set Provider - NameCheap
+  set_fact:
+    provider: "namepcheap"
+  when: result.user_input == "4"
+
 - name: NAMECHEAP Information
   pause:
     prompt: "\nWhat is Your NameCheap API User?"
@@ -178,7 +198,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
-    replace: "{{provider}}"
+    replace: "{{domain.stdout}}"
 
 - name: Replace Domain
   replace:
