@@ -41,7 +41,7 @@ if [ "$traefikdetect" == "false" ]
     tmessage="NOTE: Traefik Not Installed"
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$tmessage\nDocker: $docker | Ansible: $ansible\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\nDocker: $docker | Ansible: $ansible\n$tmessage\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
 echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - $tmessage" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
