@@ -21,7 +21,7 @@
 - include_role:
     name: pgmstart
 
-- name: Deploy Booksonic Container
+- name: Deploy Ubooquity Container
   docker_container:
     name: "{{role_name}}"
     image: "linuxserver/{{role_name}}"

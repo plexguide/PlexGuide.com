@@ -61,6 +61,22 @@ then
 else
    touch /var/plexguide/server.ht
 fi
+
+file="/var/plexguide/server.email"
+if [ -e "$file" ]
+  then
+    echo "" &>/dev/null &
+  else
+    echo "changeme@bademail.com" >> /var/plexguide/server.email
+fi
+
+file="/var/plexguide/server.domain"
+if [ -e "$file" ]
+  then
+    echo "" &>/dev/null &
+  else
+    echo "changeme.com" >> /var/plexguide/server.domain
+fi
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
 
 #### Set Fixed Information
