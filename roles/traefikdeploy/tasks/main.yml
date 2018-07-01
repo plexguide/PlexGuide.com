@@ -79,8 +79,7 @@
 
 - name: Register E-Mail Again
   shell: "cat /var/plexguide/server.email"
-  register: email
-  when: emailanswer.user_input == "1"
+  register: emailfinal
   #########################################
 
 - pause:
@@ -220,7 +219,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: your@email.com
-    replace: "{{email.stdout}}"
+    replace: "{{emailfinal.stdout}}"
 
 ######################################################### CLOUDFLARE
 - name: Deploy Traefik Container - CloudFlare
