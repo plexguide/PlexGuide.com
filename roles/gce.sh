@@ -29,10 +29,10 @@ CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
-OPTIONS=(A "Install RClone"
-         B "Configure RCLONE"
-         C "Deploy PG Drive"
-         D "PG SuperTransfer2"
+OPTIONS=(A "Configure RCLONE"
+         B "Deploy PG Drive"
+         C "PG SuperTransfer2"
+         D "PG Traefik - Reverse Proxy"
          E "PG Programs"
          F "PG Server NET Benchmarks"
          G "PG Trak"
@@ -49,26 +49,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-curl https://rclone.org/install.sh | sudo bash -s beta
-sleep 1
-dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE Beta is now Installed!" 0 0
-
-# allows others to access fuse
-tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
-EOF
-
-            chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
-            chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
-echo 'INFO - Installing RCLONE BETA for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-            ;;
-        B)
             clear
             #### RClone Missing Warning - START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
@@ -92,7 +72,7 @@ echo 'INFO - Installing RCLONE BETA for GCE' > /var/plexguide/pg.log && bash /op
 echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             ;;
-        C)
+        B)
             #### RCLONE MISSING START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -152,7 +132,7 @@ echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/ple
 echo 'INFO - PG Drive Deployed for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             ;;
-        D)    
+        C)
             #### RClone Missing Warning -START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -188,7 +168,21 @@ echo 'INFO - Deploy SuperTranser2 for GCE' > /var/plexguide/pg.log && bash /opt/
             exit
             fi
             ;;
-        E) 
+        D)
+        echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+                    touch /var/plexguide/traefik.lock
+                    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+                    file="/var/plexguide/traefik.lock"
+                    if [ -e "$file" ]
+                      then
+                        echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
+                      else
+                        echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
+                        bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+                        echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+                    fi
+                    ;;
+        E)
 echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/gce/programs.sh
             ;;
