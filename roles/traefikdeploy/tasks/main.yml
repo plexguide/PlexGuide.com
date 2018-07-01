@@ -58,7 +58,6 @@
 
 - name: Store Domain
   shell: "echo '{{domain.user_input}}' > /var/plexguide/server.domain"
-  register: domain
   when: domainanswer.user_input == "1"
 
 ################################ EMAIL INFO
@@ -74,9 +73,8 @@
   register: email
   when: emailanswer.user_input == "1"
 
-- name: Store Domain
+- name: Store E-Mail
   shell: "echo '{{email.user_input}}' > /var/plexguide/server.email"
-  register: email
   when: emailanswer.user_input == "1"
 
   #########################################
