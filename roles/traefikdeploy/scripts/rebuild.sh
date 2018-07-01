@@ -27,7 +27,7 @@ while read p; do
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   app=$( cat /tmp/program_var )
 	clear
-  ansible-playbook /opt/plexguide/pg.yml --tags $app
+  ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags "cron"
   read -n 1 -s -r -p "Press any key to continue"
 done </var/plexguide/container.running
 
