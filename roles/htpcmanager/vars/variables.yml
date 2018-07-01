@@ -18,4 +18,4 @@
 ---
 intport: "8085"
 extport: "8085"
-pgrole: "jackett"
+pgrole: "htpcmanager"
