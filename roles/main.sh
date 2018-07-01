@@ -28,8 +28,8 @@ BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
 OPTIONS=(A "Deploy a Mount System"
-         B "PG Program Suite"
-         C "PG Traefik - Reverse Proxy"
+         B "PG Traefik - Reverse Proxy"
+         C "PG Program Suite"
          D "PG Plex Enhancement Tools"
          E "PG Server Security"
          F "PG Server Information"
@@ -50,9 +50,6 @@ case $CHOICE in
 echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
            bash /opt/plexguide/roles/deploychoice.sh ;;
         B)
-echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/roles/programs/main.sh ;;
-        C)
 echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             touch /var/plexguide/traefik.lock
             clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
@@ -65,6 +62,9 @@ echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && ba
                 bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
                 echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
             fi
+        C)
+echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/roles/programs/main.sh ;;
             ;;
         D)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
