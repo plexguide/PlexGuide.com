@@ -10,6 +10,7 @@ timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 serverid=$( cat /var/plexguide/server.id )
 domain=$( cat /var/plexguide/server.domain )
 hd=$( cat /var/plexguide/server.hd.path )
+ansible=$( ansible --version )
 
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker=$( cat /var/plexguide/docker.version )
@@ -28,15 +29,9 @@ edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
-if [ "$traefikver" == "traefik2" ]
-  then
-  	tmessage="Reverse Proxy: Traefik V2 Installed"
-  	traefikdetect="true"
-fi
-
 if [ "$traefikver" == "traefik" ]
   then
-  	tmessage="Reverse Proxy: Traefik V1 Installed"
+  	tmessage="Reverse Proxy: Traefik Installed"
   	traefikdetect="true"
 fi
 
@@ -45,7 +40,7 @@ if [ "$traefikdetect" == "false" ]
     tmessage="NOTE: Traefik Not Installed"
 fi
 
-dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$tmessage\nDocker Version: $docker\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
+dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\n$tmessage\nDocker: $docker | Ansible: $ansible\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
 echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 echo "INFO - $tmessage" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
