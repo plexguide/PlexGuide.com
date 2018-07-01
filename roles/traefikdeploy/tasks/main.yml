@@ -101,7 +101,7 @@
 - name: CloudFlare Information
   pause:
     prompt: "\nWhat is Your CloudFlare E-Mail?"
-  register: cf2
+  register: cf1
   when:
     - result.user_input == "1"
 
@@ -257,7 +257,7 @@
     env:
       PUID: 1000
       PGID: 1000
-      PROVIDER: "{{provider.stdout}}"
+      PROVIDER: "cloudflare"
       CLOUDFLARE_EMAIL: "{{cf1.stdout}}"
       CLOUDFLARE_API_KEY: "{{cf2.stdout}}"
     volumes:
