@@ -64,7 +64,7 @@ case $CHOICE in
     clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
     read -n 1 -s -r -p "Press any key to continue"
     ;;
-    
+
     E)
     echo 'INFO - Selected: CloudST2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
@@ -75,7 +75,8 @@ case $CHOICE in
     echo 'INFO - Selected: Netdata' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --skip-tags cron
     read -n 1 -s -r -p "Press any key to continue"
-
+    ;;
+    
     G)
     echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
