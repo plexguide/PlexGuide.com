@@ -21,6 +21,13 @@
 #- include_role:
 #    name: varstart
 
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+###############################
+
 - pause:
     prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES\n2- NO"
   register: exit
@@ -29,13 +36,31 @@
   delay: 1
 
 - fail:
-    msg: "The system may not be provisioned according to the CMDB status."
+    msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input != "1"
 
-- name: Register Domain
-  shell: "cat /var/plexguide/server.domain"
+################################
+- pause:
+    prompt: "\nYour Domain: {{domain.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
+  register: domainanswer
+  until: domainanswer.user_input > "0" and domainanswer.user_input < "3"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nWhat is Your Domain? (Type #)\n1- YES\n2- NO"
   register: domain
-  ignore_errors: True
+  until: exit.user_input > "0" and exit.user_input < "3"
+  retries: 99
+  delay: 1
+  when: domainanswer.user_input == "1"
+
+- name: Store Domain
+  shell: "echo "{{domain.user_input}}" > /var/plexguide/server.domain"
+  register: domain
+  when: domainanswer.user_input == "1"
+
+################################
 
 - pause:
     prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
