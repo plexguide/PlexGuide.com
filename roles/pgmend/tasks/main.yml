@@ -24,3 +24,4 @@
     tags: cron
 
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
+    tags: cron
