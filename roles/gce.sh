@@ -121,6 +121,7 @@ echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/ple
 
               #### ADDS GDRIVE to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /tmp/path
+              cat "/tmp/path" 1>/var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/pg.yml --tags gdrive
             fi
 
