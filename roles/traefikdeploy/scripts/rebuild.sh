@@ -22,14 +22,15 @@ sed -i -e "/watchtower/d" /var/plexguide/container.running
 sed -i -e "/word*/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
 
-while read p; do
-  echo $p > /tmp/program_var
-  #echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-  app=$( cat /tmp/program_var )
-	clear
+### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
+### BackDoor WorkAround to Stop This Behavior
+count=$(wc -l < /var/plexguide/container.running)
+((count++))
+((count--))
+
+for ((i=1; i<$count; i++)); do
+	pgm=$(sed "${i}q;d" /var/plexguide/container.running)
 	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
-	sleep 2
-  #read -n 1 -s -r -p "Press any key to continue"
-done </var/plexguide/container.running
+done
 
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
