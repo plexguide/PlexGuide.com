@@ -155,7 +155,7 @@
 - name: Store Provider
   shell: "echo 'duckdns' > /var/plexguide/server.domain"
   when:
-    - result.user_input == ""3
+    - result.user_input == "3"
 ########################
 - name: Set Provider - NameCheap
   set_fact:
