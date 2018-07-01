@@ -56,8 +56,11 @@ echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/pl
 echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             clear
             ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
-            read -n 1 -s -r -p "Press any key to continue"
+            echo ""
+            read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
             bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+            echo ""
+            read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
             ;;
         D)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
