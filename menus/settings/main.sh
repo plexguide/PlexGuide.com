@@ -23,15 +23,14 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
-         B "Hard Drive 2nd: Use a Second HD for Processing"
-         C "Processor     : Enhance Processing Power"
-         D "Kernel Mods   : Enhance Network Throughput"
-         E "WatchTower    : Auto-Update Application Manager"
-         F "Import Media  : Import Existing Media to GDrive"
-         G "Change Time   : Change the Server Time"
-         H "Domain App    : For Your Top Level Domain"
-         I "Server ID     : Change Default Server ID"
+OPTIONS=(A "Hard Drive 2nd: Use a Second HD for Processing"
+         B "Processor     : Enhance Processing Power"
+         C "Kernel Mods   : Enhance Network Throughput"
+         D "WatchTower    : Auto-Update Application Manager"
+         E "Import Media  : Import Existing Media to GDrive"
+         F "Change Time   : Change the Server Time"
+         G "Domain App    : For Your Top Level Domain"
+         H "Server ID     : Change Default Server ID"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -45,32 +44,28 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
-echo 'INFO - Selected: Domain/Traefik Menus' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        bash /opt/plexguide/menus/traefik/main.sh
-        ;;
-    B)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
-    C)
+    B)
 echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
-    D)
+    C)
 echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
-    E)
+    D)
 echo 'INFO - Selected: WatchTower Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/roles/watchtower/menus/main.sh
         ;;
-    F)
+    E)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/migrate/main.sh ;;
-    G)
+    F)
 echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         dpkg-reconfigure tzdata ;;
-    H)
+    G)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/roles/tld/main.sh ;;
-    I)
+    H)
 echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/backup-restore/server.sh ;;
     Z)

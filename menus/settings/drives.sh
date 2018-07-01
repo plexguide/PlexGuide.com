@@ -26,12 +26,11 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Domain/Traefik: Setup/Change Domain & Trefik"
-         B "Domain App    : Select Default App for Domain"
-         C "Hard Drive 2nd: Use a Second HD for Processing"
-         D "Processor     : Enhance Processing Power"
-         E "Kernel Mods   : Enhance Network Throughput"
-         F "WatchTower    : Auto-Update Application Manager"
+OPTIONS=(A "Domain App    : Select Default App for Domain"
+         B "Hard Drive 2nd: Use a Second HD for Processing"
+         C "Processor     : Enhance Processing Power"
+         D "Kernel Mods   : Enhance Network Throughput"
+         E "WatchTower    : Auto-Update Application Manager"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -45,14 +44,10 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
-        bash /opt/plexguide/menus/traefik/main.sh
-        echo 'INFO - Selected Domain/Traefik' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        bash /opt/plexguide/roles/tld/main.sh
+        echo 'INFO - Selected Top Level Domain App' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ;;
     B)
-        bash /opt/plexguide/roles/tld/main.sh 
-        echo 'INFO - Selected Top Level Domain App' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        ;; 
-    C)
         #### Solo Drive Edition
         if [ "$edition" == "PG Edition: HD Solo" ]
           then
@@ -61,17 +56,17 @@ case $CHOICE in
           bash /opt/plexguide/menus/settings/drives.sh
           exit
         echo 'INFO - Selected 2nd HD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        fi 
+        fi
         ;;
-    D)
-        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh 
+    C)
+        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh
         echo "INFO - Selected Processor Power Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ;;
-    E)
+    D)
         echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh 
         ;;
-    F)
+    E)
         echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/roles/watchtower/menus/main.sh
         ;;

@@ -28,7 +28,7 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 #if [ "$edition" == "PG Edition: HD Solo" ]
 #  then
   #### If not /mnt, it will go through this process to change it!
-#  if [ "$path" == "/mnt" ] 
+#  if [ "$path" == "/mnt" ]
 #    then
 #      clear 1>/dev/null 2>&1
 #    else
@@ -47,19 +47,20 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Main PG Menu - Local HD Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-HEIGHT=14
+HEIGHT=16
 WIDTH=40
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
 OPTIONS=(A "PG Program Suite"
-         B "PG Server Security"
-         C "PG HD Setup"
-         D "PG Server Information"
-         E "PG Troubleshooting Actions"
-         F "PG Settings"
-         G "PG Update"
+         B "PG Traefik - Reverse Proxy"
+         C "PG Server Security"
+         D "PG HD Setup"
+         E "PG Server Information"
+         F "PG Troubleshooting Actions"
+         G "PG Settings"
+         H "PG Update"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -73,9 +74,15 @@ case $CHOICE in
 echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
         B)
+echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            clear
+            ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+            read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        C)
 echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
-        C)
+        D)
             #### Solo Drive Edition
             if [ "$edition" == "PG Edition: HD Solo" ]
               then
@@ -97,26 +104,26 @@ git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
 cd mergerfs
 make clean #1>/dev/null 2>&1
 make deb #1>/dev/null 2>&1
-cd .. 
+cd ..
 dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
 rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
   fi
             #### Multiple Editions HD
             bash /opt/plexguide/menus/drives/hds.sh
             ;;
-        D)
-echo 'INFO - Selected: PG Server Information Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/roles/info-tshoot/infodrives.sh 
-            ;;
         E)
-echo 'INFO - Selected: PG Troubleshoot Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/roles/info-tshoot/tshoot.sh 
+echo 'INFO - Selected: PG Server Information Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/roles/info-tshoot/infodrives.sh
             ;;
         F)
+echo 'INFO - Selected: PG Troubleshoot Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/roles/info-tshoot/tshoot.sh
+            ;;
+        G)
 echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/settings/drives.sh
             ;;
-        G)
+        H)
 echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
