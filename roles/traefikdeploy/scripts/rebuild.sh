@@ -15,17 +15,20 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
+docker ps -a --format "{{.Names}}"  > /var/plexguide/container.running
 
-sed -i -e "/traefik/d" /opt/appdata/plexguide/running
-sed -i -e "/watchtower/d" /opt/appdata/plexguide/running
-sed -i -e "/word*/d" /opt/appdata/plexguide/running
+sed -i -e "/traefik/d" /var/plexguide/container.running
+sed -i -e "/watchtower/d" /var/plexguide/container.running
+sed -i -e "/word*/d" /var/plexguide/container.running
+sed -i -e "/x2go*/d" /var/plexguide/container.running
 
 while read p; do
   echo $p > /tmp/program_var
   echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   app=$( cat /tmp/program_var )
-  ansible-playbook /opt/plexguide/pg.yml --tags "$app" --skip-tags webtools
-  #read -n 1 -s -r -p "Press any key to continue "
-done </opt/appdata/plexguide/running
-  echo 'INFO - Finished Rebuilding Containers' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+	clear
+  ansible-playbook /opt/plexguide/pg.yml --tags $app
+  read -n 1 -s -r -p "Press any key to continue"
+done </var/plexguide/container.running
+
+echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
