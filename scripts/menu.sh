@@ -45,12 +45,59 @@ else
 fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+file="/var/plexguide/tld.tautulli"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/tld.tautulli
+fi
+
+file="/var/plexguide/tld.htpcmanager"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/tld.htpcmanager
+fi
+
+file="/var/plexguide/tld.muximux"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/tld.muximux
+fi
+
+file="/var/plexguide/tld.organizr"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/tld.organizr
+fi
+
+file="/var/plexguide/tld.ombi"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/tld.ombi
+fi
+
+file="/var/plexguide/tld.heimdall"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/tld.heimdall
+fi
+
 file="/opt/appdata/plexguide/plextoken"
 if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   echo 'INFO - Installed Dummy PlexToken' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
    touch /opt/appdata/plexguide/plextoken
 fi
 
