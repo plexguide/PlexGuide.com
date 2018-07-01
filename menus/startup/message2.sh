@@ -10,7 +10,7 @@ timeinfo=$( date "+%H:%M:%S - %m/%d/%y" )
 serverid=$( cat /var/plexguide/server.id )
 domain=$( cat /var/plexguide/server.domain )
 hd=$( cat /var/plexguide/server.hd.path )
-ansible=$( ansible --version )
+ansible=$( ansible --version | head -n1 )
 
 docker --version | awk '{print $3}' > /var/plexguide/docker.version
 docker=$( cat /var/plexguide/docker.version )
