@@ -91,12 +91,12 @@ echo 'INFO - Selected: Plex Latest' > /var/plexguide/pg.log && bash /opt/plexgui
               clear
 echo 'INFO - Deployed Plex For a Remote Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                # user select remote server (which requires claiming operations)
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+               ansible-playbook /opt/plexguide/pg.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
                clear
 echo 'INFO - Deployed Plex For a Local Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
+               ansible-playbook /opt/plexguide/pg.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
             fi
 
@@ -114,11 +114,11 @@ echo 'INFO - Selected: PlexPass' > /var/plexguide/pg.log && bash /opt/plexguide/
             if [ "$server" == "remote" ] 
             then
 echo 'INFO - Deployed Plex For a Remote Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+               ansible-playbook /opt/plexguide/pg.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
 echo 'INFO - Deployed Plex For a Local Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
+               ansible-playbook /opt/plexguide/pg.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
             fi
 
@@ -143,12 +143,12 @@ echo 'INFO - Selected: Plex Custom' > /var/plexguide/pg.log && bash /opt/plexgui
             if [ "$server" == "remote" ] 
             then
 echo 'INFO - Deployed Plex For a Remote Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex
+               ansible-playbook /opt/plexguide/pg.yml --tags plex
                read -n 1 -s -r -p "Press any key to continue"
             else
                clear
 echo 'INFO - Deployed Plex For a Local Server' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2
+               ansible-playbook /opt/plexguide/pg.yml --tags plex2
                read -n 1 -s -r -p "Press any key to continue"
                
             fi
@@ -179,12 +179,12 @@ then
   --msgbox "\nRemember to claim your SERVER @ http://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
   echo "Visit http://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+  ansible-playbook /opt/plexguide/pg.yml --tags pushover &>/dev/null &
 
   dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
 
   echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+  ansible-playbook /opt/plexguide/pg.yml --tags pushover &>/dev/null &
   sleep 4
 else
    exit

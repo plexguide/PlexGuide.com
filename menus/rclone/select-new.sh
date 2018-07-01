@@ -25,13 +25,13 @@ clear
 case $CHOICE in
         A)
             bash /opt/plexguide/scripts/docker-no/rclone-un.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
+              ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
               ;;
         B)
             # remove all rclone related services
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main-pd.yml
             bash /opt/plexguide/scripts/docker-no/rclone-en.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean-encrypt &>/dev/null &
+              ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
               ;;
         Z)
             clear

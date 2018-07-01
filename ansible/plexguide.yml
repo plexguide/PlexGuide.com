@@ -3,16 +3,10 @@
 
   roles:
   - { role: lounge, tags: ['lounge'] }
-  - { role: deploy, tags: ['deploy'] }
-  - { role: pgtrak, tags: ['pgtrak']}
-  - { role: backup, tags: ['backup'] }
-  - { role: restore, tags: ['restore'] }
   - { role: restoremass, tags: ['restoremass'] }
   - { role: bazarr, tags: ['bazarr'] }
-  - { role: pgdrive, tags: ['pgdrive'] }
   - { role: variables, tags: ['variables'] }
   - { role: pgdrive_en, tags: ['pgdrive_en'] }
-  - { role: pgdupes, tags: ['pgdupes'] }
   - { role: plexdrive, tags: ['plexdrive'] }
   - { role: transfer, tags: ['transfer'] }
   - { role: supertransfer, tags: ['supertransfer'] }
@@ -20,18 +14,11 @@
   - { role: htpcmanager, tags: ['htpcmanager'] }
   - { role: drives, tags: ['drives'] }
   - { role: next, tags: ['next'] }
-  - { role: test, tags: ['test'] }
   - { role: rclone_un, tags: ['rclone_un'] }
   - { role: rclone_en, tags: ['rclone_en'] }
   - { role: lazy, tags: ['lazy'] }
   - { role: unservices, tags: ['unservices'] }
   - { role: unfiles, tags: ['unfiles'] }
-  - { role: plex, tags: ['plex'] }
-  - { role: plex2, tags: ['plex2'] }
-  - { role: network_tuning, tags: ['network_tuning'] }
-  - { role: duplicati, tags: ['duplicati'] }
-  - { role: dns-gen, tags: ['dns-gen'] }
   - { role: services_remove, tags: ['services_remove'] }
-  - { role: webtools, tags: ['webtools'] }
   - { role: jdownloader2, tags: ['jdownloader2'] }
   - { role: plexrequests, tags: ['plexrequests'] }

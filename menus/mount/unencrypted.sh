@@ -125,7 +125,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
+            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
 #            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
@@ -138,7 +138,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
               #### ADDS TDRIVE to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
+              ansible-playbook /opt/plexguide/pg.yml --tags tdrive
             fi
 
             if [ "$gdrive" == "[gdrive]" ]
@@ -146,12 +146,12 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
               #### ADDS GDRIVE to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
+              ansible-playbook /opt/plexguide/pg.yml --tags gdrive
             fi
 
             #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsmonitor
+            ansible-playbook /opt/plexguide/pg.yml --tags unionfs
+            ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
@@ -194,14 +194,14 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move
+              ansible-playbook /opt/plexguide/pg.yml --tags move
               read -n 1 -s -r -p "Press any key to continue"
             else
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi

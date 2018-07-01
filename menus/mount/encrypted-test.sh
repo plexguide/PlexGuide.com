@@ -119,7 +119,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
+#            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard_en
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
@@ -131,13 +131,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
               #### ADDS TCRYPT to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tcrypt
+              ansible-playbook /opt/plexguide/pg.yml --tags tcrypt
             else
               if [ "$tdrive" == "[tdrive]" ]
                 then
                 #### ADDS TDRIVE to the UNIONFS PATH
                 echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive_en
+                ansible-playbook /opt/plexguide/pg.yml --tags tdrive_en
               fi
             fi
 
@@ -145,13 +145,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               then
               #### ADDS GCRYPT to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt
+              ansible-playbook /opt/plexguide/pg.yml --tags gcrypt
             else
               if [ "$gdrive" == "[gdrive]" ]
                 then
                 #### ADDS GDRIVE to the UNIONFS PATH
                 echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive_en
+                ansible-playbook /opt/plexguide/pg.yml --tags gdrive_en
               fi
             fi
 
@@ -160,13 +160,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               then
               #### ADDS crypt1 to the UNIONFS PATH
               echo -n "/mnt/.crypt1=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags crypt1
+              ansible-playbook /opt/plexguide/pg.yml --tags crypt1
             else
               if [ "$drive1" == "[drive1]" ]
                 then
               #### ADDS drive1 to the UNIONFS PATH
                 echo -n "/mnt/.drive1=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drive1
+                ansible-playbook /opt/plexguide/pg.yml --tags drive1
               fi
             fi
 
@@ -174,18 +174,18 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               then
               #### ADDS crypt2 to the UNIONFS PATH
               echo -n "/mnt/.crypt2=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags crypt2
+              ansible-playbook /opt/plexguide/pg.yml --tags crypt2
             else
               if [ "$drive2" == "[drive2]" ]
                 then
                   #### ADDS drive2 to the UNIONFS PATH
                 echo -n "/mnt/.drive2=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drive2
+                ansible-playbook /opt/plexguide/pg.yml --tags drive2
               fi
             fi
 
             #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs_en
+            ansible-playbook /opt/plexguide/pg.yml --tags unionfs_en
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
@@ -230,14 +230,14 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move_en
+              ansible-playbook /opt/plexguide/pg.yml --tags move_en
               read -n 1 -s -r -p "Press any key to continue"
             else
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi

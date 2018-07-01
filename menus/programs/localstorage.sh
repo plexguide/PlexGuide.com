@@ -26,4 +26,4 @@ else
   dialog --title "Use Local Storage - No GDrive Upload" --msgbox "\nPlease read the WIKI first otherwise you may break your PG install!" 0 0
   exit 0
 fi
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags localstorage 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/pg.yml --tags localstorage 1>/dev/null 2>&1

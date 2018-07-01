@@ -36,7 +36,7 @@ case $CHOICE in
      B)
          display=Duplicati
          dialog --infobox "Installing: $display" 3 30
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags duplicati &>/dev/null &
+         ansible-playbook /opt/plexguide/pg.yml --tags duplicati &>/dev/null &
          sleep 2
          dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
          cronskip="yes"

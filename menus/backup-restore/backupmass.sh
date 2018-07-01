@@ -58,10 +58,10 @@ app=$( cat /tmp/program_var )
 if [ "$app" == "plex" ]
   then
     ### IF PLEX, execute this
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_plex 
+    ansible-playbook /opt/plexguide/pg.yml --tags backup_normal,backup_plex 
 else
     ### IF NOT PLEX, execute this
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup_normal,backup_other
+    ansible-playbook /opt/plexguide/pg.yml --tags backup_normal,backup_other
 fi
 
 done </opt/appdata/plexguide/running

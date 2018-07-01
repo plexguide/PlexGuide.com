@@ -103,7 +103,7 @@ fi
 
 if [ "$htpcmanager" == "htpcmanager" ]
 then
-	ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager &>/dev/null &
+	ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager &>/dev/null &
 fi
 
 if [ "$tautulli" == "tautulli" ]

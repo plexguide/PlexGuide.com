@@ -41,9 +41,9 @@ do
         docker stop radarr4k&>/dev/null &
         echo 'WARNING - Programs Utilizing UnionFS were shutdown' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         echo 'INFO - Redeploying PG Drive Service To Assist' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt 1>/dev/null 2>&1
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tcrypt 1>/dev/null 2>&1
-        ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs_en 1>/dev/null 2>&1
+        ansible-playbook /opt/plexguide/pg.yml --tags gcrypt 1>/dev/null 2>&1
+        ansible-playbook /opt/plexguide/pg.yml --tags tcrypt 1>/dev/null 2>&1
+        ansible-playbook /opt/plexguide/pg.yml --tags unionfs_en 1>/dev/null 2>&1
         echo 'INFO - PG Drive ReDeployment Complete' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         echo 'INFO - Programs Utilizing UnionFS will Redeploy in 30 seconds' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         sleep 30

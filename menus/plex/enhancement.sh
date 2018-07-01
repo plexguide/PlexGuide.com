@@ -66,7 +66,7 @@ case $CHOICE in
               --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
                 dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
                 clear 
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools
+                ansible-playbook /opt/plexguide/pg.yml --tags webtools
                 read -n 1 -s -r -p "Press any key to continue"
 
             else

@@ -30,7 +30,7 @@
   shell: echo "echo "{{program_var.stdout}}" > /tmp/program_var" >> /opt/appdata/plexguide/cron/{{program_var.stdout}} 
 
 - name: "Build Deploy Script"
-  shell: echo "ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
+  shell: echo "ansible-playbook /opt/plexguide/pg.yml --tags backup" >> /opt/appdata/plexguide/cron/{{program_var.stdout}}           
 
 - cron:
     name: Build a Cron Job - {{program_var.stdout}}

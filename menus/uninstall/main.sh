@@ -12,10 +12,10 @@ if dialog --stdout --title "PG UnInstaller" \
          sleep 4
          dialog --infobox "Removing Services" 3 30
          sleep 2
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unservices &>/dev/null &
+         ansible-playbook /opt/plexguide/pg.yml --tags unservices &>/dev/null &
          dialog --infobox "Removing Files & Folders" 3 30
          sleep 2
-         ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unfiles &>/dev/null &
+         ansible-playbook /opt/plexguide/pg.yml --tags unfiles &>/dev/null &
          dialog --infobox "Uninstall Docker & Removing Containers" 3 42
          sleep 2
          rm -r /etc/docker 1>/dev/null 2>&1

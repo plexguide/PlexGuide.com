@@ -126,7 +126,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-#            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard_en
+#            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard_en
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
             echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
@@ -147,7 +147,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
               #### ADDS TCRYPT to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tcrypt
+              ansible-playbook /opt/plexguide/pg.yml --tags tcrypt
               echo 'INFO - DEPLOYED TCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
 
@@ -156,13 +156,13 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
               #### ADDS GCRYPT to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gcrypt
+              ansible-playbook /opt/plexguide/pg.yml --tags gcrypt
               echo 'INFO - DEPLOYED GCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
 
             #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs_en
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags ufsmonitor_en
+            ansible-playbook /opt/plexguide/pg.yml --tags unionfs_en
+            ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor_en
             echo 'INFO - DEPLOYED UNIONFS' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             read -n 1 -s -r -p "Press any key to continue"
@@ -208,14 +208,14 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags move_en
+              ansible-playbook /opt/plexguide/pg.yml --tags move_en
               read -n 1 -s -r -p "Press any key to continue"
             else
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer-encrypted/config.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2_encrypt
+              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi

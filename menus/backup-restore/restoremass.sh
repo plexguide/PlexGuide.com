@@ -139,7 +139,7 @@ while read p; do
   echo $p > /tmp/program_var
   app=$( cat /tmp/program_var )
   ###dialog --infobox "Restoring App: $app" 3 37
-  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restoremass #1>/dev/null 2>&1
+  ansible-playbook /opt/plexguide/pg.yml --tags restoremass #1>/dev/null 2>&1
   
 done </opt/appdata/plexguide/backuplist2
 

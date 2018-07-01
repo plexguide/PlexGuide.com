@@ -118,7 +118,7 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cache
+ansible-playbook /opt/plexguide/pg.yml --tags cache
 
 ## RClone Script
 chmod 755 /opt/appdata/plexguide/rclone.sh 1>/dev/null 2>&1

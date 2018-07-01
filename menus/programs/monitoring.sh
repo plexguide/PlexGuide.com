@@ -61,7 +61,7 @@ case $CHOICE in
         sleep 2
         clear
 		dialog --infobox "Installing: $display" 3 38
-		ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags "monitor"
+		ansible-playbook /opt/plexguide/pg.yml --tags "monitor"
         read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var

@@ -21,7 +21,7 @@ CHOICE=$(dialog --clear \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
-# ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags var
+# ansible-playbook /opt/plexguide/pg.yml --tags var
 clear
 case $CHOICE in
         A)
@@ -45,7 +45,7 @@ case $CHOICE in
             dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!\n\nYou will be asked again after the Pre-Install!" 0 0
             ;;
         E)
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags test
+            ansible-playbook /opt/plexguide/pg.yml --tags test
             echo ""
             echo "If no RED, Ansible is good; if RED, ansible is bugged!"
             echo ""

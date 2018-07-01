@@ -139,7 +139,7 @@ case $CHOICE in
                sleep 2
 #            else
 #               # user select local server (non-remote which requires to change some things to work!)
-#               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools &>/dev/null &
+#               ansible-playbook /opt/plexguide/pg.yml --tags plex2 --skip-tags webtools &>/dev/null &
 #               sleep 2
             fi
 
@@ -166,11 +166,11 @@ case $CHOICE in
 #            if [ -e "$file" ]
 #            then
                # user select remote server (which requires claiming operations)
-#               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex --skip-tags webtools &>/dev/null &
+#               ansible-playbook /opt/plexguide/pg.yml --tags plex --skip-tags webtools &>/dev/null &
 #               sleep 2
 #            else
                # user select local server (non-remote which requires to change some things to work!)
-#               ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags plex2 --skip-tags webtools &>/dev/null &
+#               ansible-playbook /opt/plexguide/pg.yml --tags plex2 --skip-tags webtools &>/dev/null &
 #               sleep 2
 #            fi
 
@@ -199,12 +199,12 @@ fi
 #  --msgbox "\nRemember to claim your SERVER @ http://$ipv4:32400 \n\nGoto Settings > Remote access > Check Manual > Type Port 32400 > ENABLE. \n\nMake the lights is GREEN! DO NOT FORGET or do it now!" 13 50
 
 #  echo "Visit http://$ipv4:32400 to Claim Your Server!" > /tmp/pushover
-#  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+#  ansible-playbook /opt/plexguide/pg.yml --tags pushover &>/dev/null &
 
 #  dialog --infobox "If the claim does not work, read the WIKI for other methods!" 4 50
 
 #  echo "If Claim Does Not Work; read the Wiki for Other Methods!" > /tmp/pushover
-#  ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+#  ansible-playbook /opt/plexguide/pg.yml --tags pushover &>/dev/null &
 
 #  sleep 4
 #else
@@ -215,15 +215,15 @@ fi
 #  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
 #  --yesno "\nDo You Want to Install WebTools 3.0?" 7 50; then
 #    dialog --infobox "WebTools: Installing - Please Wait (Slow)" 3 48
-#    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags webtools 1>/dev/null 2>&1
+#    ansible-playbook /opt/plexguide/pg.yml --tags webtools 1>/dev/null 2>&1
 
 #    echo "WebTools - Was Installed" > /tmp/pushover
-#    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+#    ansible-playbook /opt/plexguide/pg.yml --tags pushover &>/dev/null &
 #else
 #    dialog --infobox "WebTools: Not Installed" 3 45
 
 #    echo "WebTools - Is Not Installed" > /tmp/pushover
-#    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pushover &>/dev/null &
+#    ansible-playbook /opt/plexguide/pg.yml --tags pushover &>/dev/null &
 
 #    sleep 2
 #fi

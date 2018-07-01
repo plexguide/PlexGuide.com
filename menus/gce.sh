@@ -112,7 +112,7 @@ echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/ple
 
             #### REQUIRED TO DEPLOY STARTING
             clear
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdrive_standard
+            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
 
 ####  See encrypt.sh for example of script below in use!
 #
@@ -133,7 +133,7 @@ echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/ple
 
               #### ADDS TDRIVE to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /tmp/path
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags tdrive
+              ansible-playbook /opt/plexguide/pg.yml --tags tdrive
             fi
 
             if [ "$gdrive" == "[gdrive]" ]
@@ -141,11 +141,11 @@ echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/ple
 
               #### ADDS GDRIVE to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /tmp/path
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags gdrive
+              ansible-playbook /opt/plexguide/pg.yml --tags gdrive
             fi
 
             #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags unionfs
+            ansible-playbook /opt/plexguide/pg.yml --tags unionfs
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
@@ -179,7 +179,7 @@ echo 'INFO - PG Drive Deployed for GCE' > /var/plexguide/pg.log && bash /opt/ple
                 clear
                 bash /opt/plexguide/scripts/supertransfer/config.sh
 echo 'INFO - Deploy SuperTranser2 for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-                ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags supertransfer2
+                ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
                 journalctl -f -u supertransfer2
                 dialog --infobox "Stopping & Removing CloudST2" 3 42
                 sleep 1

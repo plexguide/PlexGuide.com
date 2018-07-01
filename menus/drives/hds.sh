@@ -54,7 +54,7 @@ case $CHOICE in
       exit 
       ;;
     Y)
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags drives
+      ansible-playbook /opt/plexguide/pg.yml --tags drives
       read -n 1 -s -r -p "Press any key to continue"
       ;;
     X)

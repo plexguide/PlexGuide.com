@@ -53,7 +53,7 @@ case $CHOICE in
       sleep 2
       clear
       port=8085
-      ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags htpcmanager
+      ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager
       read -n 1 -s -r -p "Press any key to continue"
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var

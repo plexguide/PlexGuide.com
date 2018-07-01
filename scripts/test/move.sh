@@ -68,9 +68,9 @@ mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.
 #mv /opt/plexguide/scripts/menus/status-menu2.sh /opt/plexguide/scripts/menus/status-menu.sh
 #mv /opt/plexguide/scripts/menus/restart-menu2.sh /opt/plexguide/scripts/menus/restart-menu.sh
 
-## For testing new plexguide.yml
-#rm /opt/plexguide/ansible/plexguide.yml
-#mv /opt/plexguide/ansible/plexguide2.yml /opt/plexguide/ansible/plexguide.yml
+## For testing new pg.yml
+#rm /opt/plexguide/pg.yml
+#mv /opt/plexguide/ansible/plexguide2.yml /opt/plexguide/pg.yml
 
 ## For testing new program menus
 #mv /opt/plexguide/scripts/menus/programs /opt/plexguide/scripts/menus/programs4

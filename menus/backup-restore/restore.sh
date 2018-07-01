@@ -161,7 +161,7 @@ fi
 ### Commenting Out Allows You To See What's going On
 
     #echo "true" > /tmp/alive
-    ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags restore #&>/dev/null &
+    ansible-playbook /opt/plexguide/pg.yml --tags restore #&>/dev/null &
 
     #loop="true"
     #echo "true" > /tmp/alive

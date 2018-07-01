@@ -121,7 +121,7 @@ mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags encache
+ansible-playbook /opt/plexguide/pg.yml --tags encache
 #ansible-playbook /opt/plexguide/ansible/vpn.yml --tags encache
 
 ## Encache Script

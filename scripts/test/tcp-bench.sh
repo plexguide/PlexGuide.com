@@ -50,7 +50,7 @@ benchmark(){
   echo -n '' > $1
   nohup ssh $ip 'pkill iperf' >nohup.out 2>&1 &
 	echo -n '='
-	ssh $ip "ansible-playbook /opt/plexguide/ansible/plexguide.yml\
+	ssh $ip "ansible-playbook /opt/plexguide/pg.yml\
 		 --tags network_tuning --skip-tags $1 &>/dev/null"
 	echo -n '='
   nohup ssh $ip 'reboot now' >nohup.out 2>&1 &

@@ -77,7 +77,7 @@ case $CHOICE in
             fi
 
             dialog --infobox "Deploying PGDupes!" 3 30
-            ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags pgdupes 1>/dev/null 2>&1
+            ansible-playbook /opt/plexguide/pg.yml --tags pgdupes 1>/dev/null 2>&1
             #read -n 1 -s -r -p "Press any key to continue"
             dialog --title "PGDupes Status" --msgbox "\nPGDupes Deployment Complete! Use the CMD pgdupes in the Command Line!" 0 0
             bash /opt/plexguide/menus/pgdupes/main.sh

@@ -26,11 +26,11 @@ clear
 case $CHOICE in
         A)
             bash /opt/plexguide/menus/rclone/uncache.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
+              ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
               ;;
         B)
             bash /opt/plexguide/menus/rclone/encache.sh
-              ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags clean &>/dev/null &
+              ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
               ;;
         C)
             bash /opt/plexguide/menus/rclone/switch.sh

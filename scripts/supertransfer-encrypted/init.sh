@@ -7,7 +7,7 @@
 # init_DB() - validates gdsa's & init least usage DB
 
 ################### Load CloudCMD ST2 Edition - START
-ansible-playbook /opt/plexguide/ansible/plexguide.yml --tags cloudst2 &>/dev/null &
+ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 &>/dev/null &
 ################### Load CloudCMD ST2 Edition - END
 
 cat_Secret_Art(){
