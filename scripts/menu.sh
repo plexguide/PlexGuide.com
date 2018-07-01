@@ -64,7 +64,7 @@ fi
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
 
 #### Set Fixed Information
-sudo bash /opt/plexguide/info.sh
+sudo bash /opt/plexguide/roles/info.sh
 
 #### Temp Variables Established To Prevent Crashing - START
 echo "plexguide" > /tmp/pushover
@@ -145,7 +145,7 @@ else
   if [ -e "$file" ]
   then
      bash /opt/plexguide/menus/startup/message2.sh
-  else 
+  else
   echo 'Asking User for PG Edition for the First Time' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   bash /opt/plexguide/scripts/baseinstall/edition.sh
   fi
@@ -182,7 +182,7 @@ file="/var/plexguide/pg.edition"
 if [ -e "$file" ]
 then
    bash /opt/plexguide/menus/startup/message2.sh
-else 
+else
 echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 bash /opt/plexguide/roles/baseline/scripts/edition.sh
 fi
