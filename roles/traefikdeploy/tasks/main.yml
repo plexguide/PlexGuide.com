@@ -200,18 +200,18 @@
 #    - askcron.user_input == "1"
 
 
-- name: Replace Provider
-  replace:
-    path: /opt/appdata/traefik/traefik.toml
-    regexp: myprovider
-    replace: "{{provider}}"
-    when: emailanswer.user_input == "1"
+#- name: Replace Provider
+#  replace:
+#    path: /opt/appdata/traefik/traefik.toml
+#    regexp: myprovider
+#    replace: "{{provider}}"
+#    when: emailanswer.user_input == "1"
 
-- name: Replace Domain
-  replace:
-    path: /opt/appdata/traefik/traefik.toml
-    regexp: yourdomain.com
-    replace: "{{domain.stdout}}"
+#- name: Replace Domain
+#  replace:
+#    path: /opt/appdata/traefik/traefik.toml
+#    regexp: yourdomain.com
+#    replace: "{{domain.stdout}}"
 
 - name: Replace E-Mail
   replace:
