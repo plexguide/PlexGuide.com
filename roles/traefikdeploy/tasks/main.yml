@@ -27,7 +27,7 @@
   until: exit.user_input > "0" and exit.user_input < "3"
   retries: 99
   delay: 1
-  failed_when: diff_cmd.rc == 2
+  failed_when: exit.user_input == 2
 
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
