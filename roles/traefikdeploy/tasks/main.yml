@@ -77,6 +77,10 @@
   shell: "echo '{{email.user_input}}' > /var/plexguide/server.email"
   when: emailanswer.user_input == "1"
 
+- name: Register E-Mail Again
+  shell: "cat /var/plexguide/server.email"
+  register: email
+  when: emailanswer.user_input == "1"
   #########################################
 
 - pause:
