@@ -21,9 +21,9 @@ echo 'INFO - @Main Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide
 # This takes .yml file and converts it to bash readable format
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
-HEIGHT=17
+HEIGHT=18
 WIDTH=26
-CHOICE_HEIGHT=11
+CHOICE_HEIGHT=12
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Suite"
 
@@ -37,6 +37,7 @@ OPTIONS=(A "Media Servers"
          H "Critical"
          I "4K Versions"
          J "Beta"
+         K "WordPress"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -79,6 +80,9 @@ echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /op
         J)
 echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/programs/beta.sh ;;
+        K)
+echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            bash /opt/plexguide/menus/wordpress/main.sh ;;
         Z)
             clear
             exit 0 ;;

@@ -30,7 +30,7 @@ TITLE="$edition - $version"
 OPTIONS=(A "Deploy a Mount System"
          B "PG Program Suite"
          C "PG PLEX Enhancement Tools"
-         D "PG Wordpress"
+         D "PG Traefik - Reverse Proxy"
          E "PG Server Security"
          F "PG Server Information"
          G "PG Troubleshooting Actions"
@@ -57,7 +57,7 @@ echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/p
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         D)
 echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/wordpress/main.sh ;;           
+            bash /opt/plexguide/menus/wordpress/main.sh ;;
         E)
 echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
