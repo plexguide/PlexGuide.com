@@ -179,6 +179,10 @@ start_spinner "Terminating Web Server."
 sleep 2
 { kill $jobpid && wait $jobpid; } &>/dev/null
 stop_spinner $(( ! $? ))
+############ KILL CLOUDST2
+docker stop cloudst2 1>/dev/null 2>&1
+docker rm cloudst2 &>/dev/null &
+############ KILL CLOUDST2
 
 if [[ $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
   start_spinner "Web Server Still Running. Attempting to kill again."
@@ -267,10 +271,6 @@ echo
 echo 'NOTE: you can copy and paste the whole chunk at once'
 echo 'If you need to see them again, they are in /tmp/clientemails'
 read -p 'Press Any Key To Continue.'
-############ KILL CLOUDST2
-docker stop cloudst2 1>/dev/null 2>&1
-docker rm cloudst2 &>/dev/null &
-############ KILL CLOUDST2
 return 0
 }
 
