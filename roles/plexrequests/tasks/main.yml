@@ -19,11 +19,10 @@
 #
 #################################################################################
 ---
-  - name: Logging Ansible Role Information
-    shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
-  - include_role:
-      name: variables
+- include_role:
+    name: pgmstart
 
   - name: Remove Mongo Container
     docker_container:
@@ -57,7 +56,7 @@
       pull: yes
       cpu_shares: 128
       published_ports:
-        - "3000:80"
+        - "{{ports.stdout}}{{extport}}:{{intport}}"
       env:
         MONGO_URL: "mongodb://mongo:27017/plexrequests"
         ROOT_URL: "http://localhost/"
@@ -72,3 +71,7 @@
         traefik.enable: "true"
         traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:plexrequest.{{domain.stdout}},plexrequests.{{domain.stdout}},pr.{{domain.stdout}}"
+        traefik.port: "{{intport}}"
+
+- include_role:
+    name: pgmend

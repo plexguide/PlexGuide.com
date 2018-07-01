@@ -29,12 +29,10 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer     ~ 6.000"
          Z "------ Exit Menu ------"
-         01 "BETA 4        ~ 6.000"
+         01 "BETA 5        ~ 6.000"
          02 "Historical    ~ 5.1"
-         03 "Historical    ~ 5.048"
-         04 "Historical    ~ 5.013"
-         05 "Historical    ~ 5.004"
-         06 "Historical    ~ 4.1")
+         03 "Historical    ~ 5.013"
+         04 "Historical    ~ 4.1")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -92,14 +90,8 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             version="5.1" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.048" ;;
-        04)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="5.013" ;;
-        05)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.003" ;;
-        06)
+        04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="Legacy-v4" ;;
 esac
