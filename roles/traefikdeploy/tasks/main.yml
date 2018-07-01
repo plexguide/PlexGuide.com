@@ -24,7 +24,10 @@
 - pause:
     prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES\n2- NO"
   register: exit
-  failed_when: exit == 2
+
+- fail:
+    msg: "The system may not be provisioned according to the CMDB status."
+  when: exit.user_input != "1"
 
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
