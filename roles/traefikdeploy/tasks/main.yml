@@ -217,7 +217,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: your@email.com
-    replace: {{email.stdout}}{{email.user_input}}
+    replace: "{{email.stdout}}{{email.user_input}}"
 
 ######################################################### CLOUDFLARE
 - name: Deploy Traefik Container - CloudFlare
