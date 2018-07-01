@@ -252,6 +252,19 @@ sleep 2
 clear
 curl https://rclone.org/install.sh | sudo bash
 touch /var/plexguide/basics.yes &>/dev/null &
+
+tee "/etc/fuse.conf" > /dev/null <<EOF
+# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
+# Set the maximum number of FUSE mounts allowed to non-root users.
+# The default is 1000.
+#mount_max = 1000
+# Allow non-root users to specify the allow_other or allow_root mount options.
+user_allow_other
+EOF
+
+chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
+chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+
 sleep 2
 #sleep 1
 

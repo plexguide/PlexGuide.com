@@ -29,8 +29,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Install: RClone"
-         B "Config : RClone"
+OPTIONS=(B "Config : RClone"
          C "Deploy : PGDrive"
          D "Deploy : $selected"
          Z "Exit")
@@ -45,26 +44,6 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
-echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-clear
-curl https://rclone.org/install.sh | sudo bash
-sleep 1
-dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE is now Installed!" 0 0
-
-################# Needed FOR RCLONE
-tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
-EOF
-            chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
-            chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
-            ;;
         B)
             #### RClone Missing Warning - START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
