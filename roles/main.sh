@@ -66,7 +66,6 @@ echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && ba
         C)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
-            ;;
         D)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
