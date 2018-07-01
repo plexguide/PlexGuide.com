@@ -33,7 +33,7 @@
   set_fact:
     provider: "godaddy"
   when:
-    - askcron.user_input == "2"
+    - {{provider}} == "2"
 
 - name: GoDaddy Information
   pause:
