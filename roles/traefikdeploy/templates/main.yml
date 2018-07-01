@@ -16,10 +16,10 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+#- include_vars: variables.yml
 
-- include_role:
-    name: pgmstart
+#- include_role:
+    name: varstart
 
 - pause:
     prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
