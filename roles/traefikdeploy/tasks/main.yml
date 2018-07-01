@@ -26,7 +26,7 @@
   register: domain
   ignore_errors: True
 
-- name: Register Domain
+- name: Register E-Mail
   shell: "cat /var/plexguide/server.email"
   register: email
   ignore_errors: True
@@ -89,30 +89,59 @@
   delay: 1
 
 ########################
-- name: Set Provider
-  set_fact:
-    provider: "godaddy"
+- name: CloudFlare Information
+  pause:
+    prompt: "\nWhat is Your CloudFlare E-Mail?"
+  register: cf2
+  when:
+    - result.user_input == "1"
+
+- name: CloudFlare Information
+  pause:
+    prompt: "\nWhat is Your CloudFlare API Key?"
+  register: cf2
+  when:
+    - result.user_input == "1"
+
+########################
+- name: GoDaddy Information
+  pause:
+    prompt: "\nWhat is Your GoDaddy API Key?"
+  register: godaddy1
   when:
     - result.user_input == "2"
 
 - name: GoDaddy Information
   pause:
-    prompt: "\n What is Your GoDaddy API Key?"
-  register: answer1
+    prompt: "\nWhat is Your GoDaddy API Secret?"
+  register: godaddy2
   when:
     - result.user_input == "2"
-
-- name: GoDaddy Information
+########################
+- name: DUCKDNS Information
   pause:
-    prompt: "\n What is Your GoDaddy API Key?"
-  register: answer2
+    prompt: "\nWhat is Your DUCKDNS Token?"
+  register: duck1
   when:
-    - result.user_input == "2"
+    - result.user_input == "3"
+########################
+- name: NAMECHEAP Information
+  pause:
+    prompt: "\nWhat is Your NameCheap API User?"
+  register: name2
+  when:
+    - result.user_input == "4"
 
+- name: NAMECHEAP Information
+  pause:
+    prompt: "\nWhat is Your NameCheap API Key?"
+  register: name2
+  when:
+    - result.user_input == "4"
 ########################
 - name: Remove Traefik
   docker_container:
-    name: traefik2
+    name: traefik
     state: absent
 
 - name: Removing Prior Traefik.toml
@@ -143,15 +172,6 @@
     mode: 0600
     owner: 1000
     group: 1000
-
-######################################################### RECALL VARIABLES
-
-
-- name: Register E-Mail
-  shell: "cat /var/plexguide/server.email"
-  register: email
-  ignore_errors: True
-
 ######################################################### REPLACE STANDARD VARIBLES
 
 - name: Replace Provider
@@ -187,8 +207,8 @@
       PUID: 1000
       PGID: 1000
       PROVIDER: "{{provider.stdout}}"
-      CLOUDFLARE_EMAIL: "{{var1.stdout}}"
-      CLOUDFLARE_API_KEY: "{{var2.stdout}}"
+      CLOUDFLARE_EMAIL: "{{cf1.stdout}}"
+      CLOUDFLARE_API_KEY: "{{cf2.stdout}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
@@ -208,7 +228,7 @@
 ######################################################### NAMEDOTCOM
 - name: Deploy Traefik - DUCKDNS
   docker_container:
-    name: traefik2
+    name: traefik
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
@@ -219,8 +239,8 @@
     env:
       PUID: 1000
       PGID: 1000
-      PROVIDER: "{{provider.stdout}}"
-      DUCKDNS_TOKEN: "{{var1.stdout}}"
+      PROVIDER: "duckdns"
+      DUCKDNS_TOKEN: "{{duck1.stdout}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
@@ -239,7 +259,7 @@
 ######################################################### GODADDY
 - name: Deploy Traefik - GODADDY
   docker_container:
-    name: traefik2
+    name: traefik
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
@@ -249,9 +269,9 @@
     env:
       PUID: 1000
       PGID: 1000
-      PROVIDER: "{{provider}}"
-      GODADDY_API_KEY: "{{answer1.user_input}}"
-      GODADDY_API_SECRET: "{{answer2.user_input}}"
+      PROVIDER: godaddy
+      GODADDY_API_KEY: "{{godaddy1.user_input}}"
+      GODADDY_API_SECRET: "{{godaddy2.user_input}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
@@ -270,7 +290,7 @@
 ######################################################### NAMECHEAP
 - name: Deploy Traefik - NAMECHEAP
   docker_container:
-    name: traefik2
+    name: traefik
     image: traefik:1.6
     pull: yes
     cpu_shares: 256
@@ -280,9 +300,9 @@
     env:
       PUID: 1000
       PGID: 1000
-      PROVIDER: "{{provider.stdout}}"
-      NAMECHEAP_API_USER: "{{var1.stdout}}"
-      NAMECHEAP_API_KEY: "{{var2.stdout}}"
+      PROVIDER: "namecheap"
+      NAMECHEAP_API_USER: "{{name1.stdout}}"
+      NAMECHEAP_API_KEY: "{{name2.stdout}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
