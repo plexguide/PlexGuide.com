@@ -42,7 +42,7 @@ case $CHOICE in
 
       A)
         echo 'INFO - Selected: QBittorrent' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorent
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent
         read -n 1 -s -r -p "Press any key to continue"
         ;;
       B)

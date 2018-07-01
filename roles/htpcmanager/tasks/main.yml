@@ -16,23 +16,13 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
- 
-########## Unique for TLD
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{ role_name }}"
-  register: tld
-  ignore_errors: True
-##########
-    
-- name: Remove HTPCManager Container
-  docker_container:
-    name: htpcmanager
-    state: absent
+    name: pgmstart
+
+- include_role:
+    name: tld
 
 - name: Deploy HTPCManager Container
   docker_container:
@@ -41,7 +31,7 @@
     pull: yes
     cpu_shares: 256
     published_ports:
-      - "{{ports.stdout}}8085:8085"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       PUID: "1000"
       PGID: "1000"
@@ -54,7 +44,11 @@
           - htpcmanager
     labels:
       traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}{{tld.stdout}}"
-      traefik.port: "8085"
+      traefik.port: "{{intport}}"
     restart_policy: always
     state: started
+
+- include_role:
+    name: pgmend
