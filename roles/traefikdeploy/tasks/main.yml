@@ -113,7 +113,7 @@
     - result.user_input == "1"
 
 - name: Store Provider
-  shell: "echo 'cloudflare' > /var/plexguide/server.domain"
+  shell: "echo 'cloudflare' > /var/plexguide/server.provider"
   when: domainanswer.user_input == "1"
 ########################
 - name: Set Provider - GoDaddy
@@ -136,7 +136,7 @@
     - result.user_input == "2"
 
 - name: Store Provider
-  shell: "echo 'godaddy' > /var/plexguide/server.domain"
+  shell: "echo 'godaddy' > /var/plexguide/server.provider"
   when:
     - result.user_input == "2"
 ########################
@@ -153,7 +153,7 @@
     - result.user_input == "3"
 
 - name: Store Provider
-  shell: "echo 'duckdns' > /var/plexguide/server.domain"
+  shell: "echo 'duckdns' > /var/plexguide/server.provider"
   when:
     - result.user_input == "3"
 ########################
@@ -177,7 +177,7 @@
     - result.user_input == "4"
 
 - name: Store Provider
-  shell: "echo 'namecheap' > /var/plexguide/server.domain"
+  shell: "echo 'namecheap' > /var/plexguide/server.provider"
   when:
     - result.user_input == "4"
 ########################
