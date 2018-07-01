@@ -142,7 +142,7 @@
 ########################
 - name: Set Provider - NameCheap
   set_fact:
-    provider: "namepcheap"
+    provider: "namecheap"
   when: result.user_input == "4"
 
 - name: NAMECHEAP Information
@@ -204,7 +204,7 @@
   replace:
     path: /opt/appdata/traefik/traefik.toml
     regexp: myprovider
-    replace: "{{domain.stdout}}"
+    replace: "{{provider}}"
     when: emailanswer.user_input == "1"
 
 - name: Replace Domain
