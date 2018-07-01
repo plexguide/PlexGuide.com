@@ -165,7 +165,7 @@
 - name: NAMECHEAP Information
   pause:
     prompt: "\nWhat is Your NameCheap API User?"
-  register: name2
+  register: name1
   when:
     - result.user_input == "4"
 
