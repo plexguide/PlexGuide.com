@@ -24,11 +24,12 @@ sed -i -e "/x2go*/d" /var/plexguide/container.running
 
 while read p; do
   echo $p > /tmp/program_var
-  echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  #echo 'INFO - Rebuilding Container: $p' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
   app=$( cat /tmp/program_var )
 	clear
 	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
-  read -n 1 -s -r -p "Press any key to continue"
+	sleep 2
+  #read -n 1 -s -r -p "Press any key to continue"
 done </var/plexguide/container.running
 
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
