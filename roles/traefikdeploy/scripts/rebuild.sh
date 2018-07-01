@@ -32,6 +32,7 @@ for ((i=1; i<$count; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
 	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
 done
+((i++))
 app=$(sed "${i}q;d" /var/plexguide/container.running)
 ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
 
