@@ -197,7 +197,6 @@ echo 'INFO - Selected to View PGTrak Menu for GCE' > /var/plexguide/pg.log && ba
         H)
 echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/info-tshoot/tshoot.sh ;;
-
         I)
 echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/main.sh ;;

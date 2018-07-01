@@ -74,11 +74,19 @@ case $CHOICE in
 echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
         B)
-echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
-            read -n 1 -s -r -p "Press any key to continue"
-            ;;
+        echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+                    touch /var/plexguide/traefik.lock
+                    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+                    file="/var/plexguide/traefik.lock"
+                    if [ -e "$file" ]
+                      then
+                        echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
+                      else
+                        echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
+                        bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+                        echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+                    fi
+                    ;;
         C)
 echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
