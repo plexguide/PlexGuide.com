@@ -33,7 +33,7 @@
   set_fact:
     provider: "godaddy"
   when:
-    - {{provider}} == "2"
+    - result.user_input == "2"
 
 - name: GoDaddy Information
   pause:
