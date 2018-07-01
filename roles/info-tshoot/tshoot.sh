@@ -37,7 +37,7 @@ case $CHOICE in
             exit 0 ;;
         C)
             rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-            bash /opt/plexguide/menus/uninstall/main.sh 
+            bash /opt/plexguide/roles/uninstall/main.sh 
             ;;
         D) 
             rm -r /var/plexguide/server.settings.set 1>/dev/null 2>&1

@@ -43,32 +43,32 @@ case $CHOICE in
         A)         
             program="heimdall"
             echo "$program" > /var/plexguide/tld.choice
-            bash /opt/plexguide/menus/tld/rebuild.sh
+            bash /opt/plexguide/roles/tld/rebuild.sh
             ;;
         B)
             program="htpcmanager"
             echo "$program" > /var/plexguide/tld.choice
-            bash /opt/plexguide/menus/tld/rebuild.sh
+            bash /opt/plexguide/roles/tld/rebuild.sh
             ;;
         C)
             program="muximux"
             echo "$program" > /var/plexguide/tld.choice
-            bash /opt/plexguide/menus/tld/rebuild.sh
+            bash /opt/plexguide/roles/tld/rebuild.sh
             ;;
         D)
             program="ombi"
             echo "$program" > /var/plexguide/tld.choice
-            bash /opt/plexguide/menus/tld/rebuild.sh
+            bash /opt/plexguide/roles/tld/rebuild.sh
             ;;
         E)
             program="organizr"
             echo "$program" > /var/plexguide/tld.choice
-            bash /opt/plexguide/menus/tld/rebuild.sh
+            bash /opt/plexguide/roles/tld/rebuild.sh
             ;;
         F)
             program="tautulli"
             echo "$program" > /var/plexguide/tld.choice
-            bash /opt/plexguide/menus/tld/rebuild.sh
+            bash /opt/plexguide/roles/tld/rebuild.sh
             ;;
         Z)
             exit 0 ;;
@@ -76,4 +76,4 @@ esac
 echo 'INFO - Selected $program for Top Level Domain' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #recall itself to loop unless user exits
-bash /opt/plexguide/menus/tld/main.sh
+bash /opt/plexguide/roles/tld/main.sh

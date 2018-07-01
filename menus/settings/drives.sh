@@ -49,7 +49,7 @@ case $CHOICE in
         echo 'INFO - Selected Domain/Traefik' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ;;
     B)
-        bash /opt/plexguide/menus/tld/main.sh 
+        bash /opt/plexguide/roles/tld/main.sh 
         echo 'INFO - Selected Top Level Domain App' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ;; 
     C)

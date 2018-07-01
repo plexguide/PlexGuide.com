@@ -69,7 +69,7 @@ echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexgu
         dpkg-reconfigure tzdata ;;
     H)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        bash /opt/plexguide/menus/tld/main.sh ;;
+        bash /opt/plexguide/roles/tld/main.sh ;;
     I)
 echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/menus/backup-restore/server.sh ;;
