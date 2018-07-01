@@ -62,6 +62,7 @@ echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && ba
                 bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
                 echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
             fi
+            ;;
         C)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
