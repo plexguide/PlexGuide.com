@@ -18,7 +18,7 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-bash /opt/plexguide/menus/gce/gcechecker.sh
+bash /opt/plexguide/roles/gce/gcechecker.sh
 
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
@@ -190,7 +190,7 @@ echo 'INFO - Deploy SuperTranser2 for GCE' > /var/plexguide/pg.log && bash /opt/
             ;;
         E) 
 echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/gce/programs.sh
+            bash /opt/plexguide/roles/gce/programs.sh
             ;;
         F)
 echo 'INFO - Selected to View BenchMarks for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

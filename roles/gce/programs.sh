@@ -67,4 +67,4 @@ case $CHOICE in
 esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/gce/programs.sh
+bash /opt/plexguide/roles/gce/programs.sh
