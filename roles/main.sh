@@ -54,13 +54,20 @@ echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/pl
             bash /opt/plexguide/roles/programs/main.sh ;;
         C)
 echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            touch /var/plexguide/traefik.lock
             clear
             ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
-            echo ""
-            read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
-            bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
-            echo ""
-            read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+            file="/var/plexguide/traefik.lock"
+            if [ -e "$file" ]
+              then
+                  echo "" 1>/dev/null 2>&1
+              else
+                echo ""
+                read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
+                bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+                echo ""
+                read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+            fi
             ;;
         D)
 echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh

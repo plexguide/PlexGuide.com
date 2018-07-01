@@ -368,7 +368,7 @@
   tags: namecheap
   when:
     - result.user_input == "4"
-
-########################################
-#- include_role:
-#    name: varend
+############################################### REMOVE LOCK
+- name: Register E-Mail
+  shell: "rm -r /var/plexguide/traefik.lock"
+  ignore_errors: True
