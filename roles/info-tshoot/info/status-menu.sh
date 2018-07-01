@@ -217,7 +217,7 @@ case $CHOICE in
 
     X)
         clear
-        bash /opt/plexguide/menus/main.sh
+        bash /opt/plexguide/roles/main.sh
         clear
         ;;
 

@@ -48,7 +48,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
 echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-           bash /opt/plexguide/menus/deploychoice.sh ;;
+           bash /opt/plexguide/roles/deploychoice.sh ;;
         B)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
@@ -86,5 +86,5 @@ esac
 
 ## repeat menu when exiting
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-bash /opt/plexguide/menus/main.sh
+bash /opt/plexguide/roles/main.sh
 exit

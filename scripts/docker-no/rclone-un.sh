@@ -111,7 +111,7 @@ rclone config
 #      echo "PG Wiki For generating API keys: https://bit.ly/2vnFBxW"
 #      read -p 'Press any key to continue... '
 #      choice1 ;;
-#   e) bash /opt/plexguide/menus/main.sh ;;
+#   e) bash /opt/plexguide/roles/main.sh ;;
 #   *) echo "Invalid Choice"
 #      read -p 'Press any key to continue... '
 #      exit 1 ;;

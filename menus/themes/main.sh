@@ -47,4 +47,4 @@ case $CHOICE in
             exit 0 ;;
 esac
 
-bash /opt/plexguide/menus/main.sh
+bash /opt/plexguide/roles/main.sh

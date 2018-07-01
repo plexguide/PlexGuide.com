@@ -81,7 +81,7 @@ echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && ba
               then
               echo 'WARNING - Using Solo HD Edition! Cannot Configure Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
               dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
-              bash /opt/plexguide/menus/localmain.sh
+              bash /opt/plexguide/roles/localmain.sh
               exit
             fi
 file="/usr/bin/mergerfs"
@@ -129,4 +129,4 @@ esac
 
 ## repeat menu when exiting
 echo 'INFO - Looping Local Main Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-bash /opt/plexguide/menus/localmain.sh
+bash /opt/plexguide/roles/localmain.sh

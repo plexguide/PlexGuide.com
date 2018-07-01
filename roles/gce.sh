@@ -172,7 +172,7 @@ echo 'INFO - PG Drive Deployed for GCE' > /var/plexguide/pg.log && bash /opt/ple
             if [[ "$tdrive" != "[tdrive]" ]]
               then
                 dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
-                bash /opt/plexguide/menus/gce.sh
+                bash /opt/plexguide/roles/gce.sh
               else
                 systemctl stop move 1>/dev/null 2>&1
                 systemctl disable move 1>/dev/null 2>&1
@@ -219,4 +219,4 @@ esac
 
 echo 'INFO - Looping: GCE Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 ## repeat menu when exiting
-bash /opt/plexguide/menus/gce.sh
+bash /opt/plexguide/roles/gce.sh

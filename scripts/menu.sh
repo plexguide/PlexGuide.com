@@ -194,7 +194,7 @@ edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition: GDrive" ]
   then
     echo 'INFO - Deploying GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-    bash /opt/plexguide/menus/main.sh
+    bash /opt/plexguide/roles/main.sh
     exit
 fi
 
@@ -202,7 +202,7 @@ fi
 if [ "$edition" == "PG Edition: HD Multi" ]
   then
     echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-    bash /opt/plexguide/menus/localmain.sh
+    bash /opt/plexguide/roles/localmain.sh
     exit
 fi
 
@@ -210,14 +210,14 @@ fi
 if [ "$edition" == "PG Edition: HD Solo" ]
   then
    echo 'INFO - Deploying HD Solo Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-    bash /opt/plexguide/menus/localmain.sh
+    bash /opt/plexguide/roles/localmain.sh
     exit
 fi
 
 if [ "$edition" == "PG Edition: GCE Feed" ]
   then
    echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-    bash /opt/plexguide/menus/gce.sh
+    bash /opt/plexguide/roles/gce.sh
     exit
 fi
 

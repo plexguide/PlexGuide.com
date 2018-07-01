@@ -80,7 +80,7 @@ echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && b
             sudo bash /opt/plexguide/scripts/message/ending.sh
             exit 0 ;;
         Z)
-            bash /opt/plexguide/menus/main.sh
+            bash /opt/plexguide/roles/main.sh
 echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             exit 0
             ;;
