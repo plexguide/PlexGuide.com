@@ -44,25 +44,21 @@ case $CHOICE in
         echo 'INFO - Selected: QBittorrent' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorent
         read -n 1 -s -r -p "Press any key to continue"
-        
         ;;
       B)
         echo 'INFO - Selected: RuTorrent' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
         read -n 1 -s -r -p "Press any key to continue"
-        
         ;;
       C)
          echo 'INFO - Selected: Deluge' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
          clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge
          read -n 1 -s -r -p "Press any key to continue"
-         
          ;;
         D)
         echo 'INFO - Selected: Jackett' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett
         read -n 1 -s -r -p "Press any key to continue"
-        
         ;;
      E)
        bash /opt/plexguide/menus/programs/vpn.sh ;;
