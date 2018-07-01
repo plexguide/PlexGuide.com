@@ -22,6 +22,11 @@
 #    name: varstart
 
 - name: Register Domain
+  shell: "bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh"
+  register: domain
+  ignore_errors: True
+
+- name: Register Domain
   shell: "cat /var/plexguide/server.domain"
   register: domain
   ignore_errors: True
