@@ -97,7 +97,7 @@
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: next.user_input == "2" and exit.user_input == "3"
+  when: next.user_input == "1" and exit.user_input == "3"
 
 ######################## Start Updating
 - name: Delete Current PlexGuide Copy
