@@ -16,19 +16,18 @@
 #
 #################################################################################
 ---
-- name: Delete PlexGuide
-  shell: "rm -r /opt/plexguide"
-  ignore_errors: True
+#- name: Delete PlexGuide
+#  shell: "rm -r /opt/plexguide"
+#  ignore_errors: True
 
-- name: Create pgtrak directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-  with_items:
-    - /opt/plexguide/
+#- name: Create pgtrak directories
+#  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+#  with_items:
+#    - /opt/plexguide/
 
 - name: Clone Fork
   git:
-    repo: "{{projectlink}}"
-    dest: /opt/appdata/pgtrak
-    version: "{{fork}}"
+    repo: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+    dest: /opt/plexguidetest
+    version: Version-5
     force: yes
-    
