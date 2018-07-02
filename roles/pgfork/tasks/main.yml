@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Following Number"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Following Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
@@ -33,7 +33,7 @@
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release:"
+    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
   register: version
   when: exit.user_input == "3"
 
