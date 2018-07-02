@@ -100,9 +100,9 @@
   when: next.user_input == "1"
 
 ######################## Start Updating
-- name: Delete Current PlexGuide Copy
-  shell: "rm -r /opt/plexguide"
-  ignore_errors: True
+#- name: Delete Current PlexGuide Copy
+#  shell: "rm -r /opt/plexguide"
+#  ignore_errors: True
 
 - name: Clone Fork
   git:
