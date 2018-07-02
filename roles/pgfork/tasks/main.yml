@@ -28,17 +28,17 @@
   when: exit.user_input == "1"
 
 - pause:
-    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\n\nPlease Update Your Project Link:"
+    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link\n"
   register: project
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nExample: Version-6 / mybranch / rclonefix\n\nPlease Update Your Branch-Release"
+    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release\n"
   register: version
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nCurrently Update Your Project or Exit?\n\n[1] No - Exit\n[2] Yes - Update"
+    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n"
   register: next
   until: next.user_input > "0" and next.user_input < "4"
   retries: 99
