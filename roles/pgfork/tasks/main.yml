@@ -104,14 +104,12 @@
   shell: "rm -r /opt/plexguide"
   ignore_errors: True
 
-- name: Creating the PG Directory
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-  with_items:
-    - /opt/plexguide/
-
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
     dest: /opt/plexguide
+    mode: 0775
+    owner: 1000
+    group: 1000
     version: "{{versionfinal.stdout}}"
     force: yes
