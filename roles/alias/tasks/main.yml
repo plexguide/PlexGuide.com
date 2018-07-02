@@ -232,7 +232,7 @@
       mode: 0775
       owner: root
 
-  - name: Install Status Move
+  - name: Install PGFork
     template:
       src: pgfork
       dest: /bin/pgfork
