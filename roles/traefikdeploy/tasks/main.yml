@@ -26,7 +26,7 @@
   register: domain
   ignore_errors: True
 
-- name: Register Domain
+- name: Register Provider
   shell: "touch /var/plexguide/server.provider"
   register: domain
   ignore_errors: True
