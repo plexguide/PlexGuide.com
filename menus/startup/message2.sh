@@ -27,7 +27,7 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
-traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
+traefikver=$(docker ps -a --format "{{.Names}}" | grep traefikdeploy)
 traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
 if [ "$traefikver" == "traefik" ]
