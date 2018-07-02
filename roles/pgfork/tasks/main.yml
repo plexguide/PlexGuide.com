@@ -16,7 +16,26 @@
 #
 #################################################################################
 ---
+############# Exists Checker
+- name: Does Project Exist?
+  stat:
+    path: /var/plexguide/pgfork.project
+  register: projectcheck
 
+- name: Project Does Not Exist - Dummy Dadta
+  shell: "touch /var/plexguide/pgfork.project"
+  register: projectfinal
+  when: projectcheck.stat.exists == "False"
+
+- name: Does Verison Exist?
+  stat:
+    path: /var/plexguide/pgfork.version
+  register: versioncheck
+
+- name: Project Does Not Exist - Dummy Dadta
+  shell: "touch /var/plexguide/pgfork.version"
+  register: versionfinal
+  when: verisoncheck.stat.exists == "False"
 
 ############# Pull Basic Information
 - name: Reregister Project Link
@@ -24,7 +43,7 @@
   register: projectfinal
 
 - name: Register Version Link
-  shell: "cat /var/plexguide/version.project"
+  shell: "cat /var/plexguide/pgfork.version"
   register: versionfinal
 
 ############## Start Asking
@@ -61,11 +80,11 @@
   when: exit.user_input == "3"
 
 - name: Store Project Link
-  shell: "echo '{{version.user_input}}' > /var/plexguide/version.project"
+  shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
   when: domainanswer.user_input == "3"
 
 - name: Reregister Project Link
-  shell: "cat /var/plexguide/version.project"
+  shell: "cat /var/plexguide/pgfork.version"
   register: versionfinal
   when: domainanswer.user_input == "3"
 
