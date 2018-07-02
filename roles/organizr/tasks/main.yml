@@ -21,9 +21,6 @@
 - include_role:
     name: pgmstart
 
-- include_role:
-    name: tld
-
 - name: Deploy Organizr Container
   docker_container:
     name: "{{role_name}}"
