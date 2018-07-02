@@ -33,7 +33,7 @@
 
 - name: Project Does Not Exist - Dummy Dadta
   shell: "touch /var/plexguide/pgfork.version"
-  when: verisoncheck.stat.exists == "False"
+  when: versioncheck.stat.exists == "False"
 
 ############# Pull Basic Information
 - name: Reregister Project Link
