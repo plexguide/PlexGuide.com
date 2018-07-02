@@ -27,6 +27,10 @@
   ignore_errors: True
 
 - name: Register E-Mail
+  shell: "touch /var/plexguide/server.provider"
+  ignore_errors: True
+
+- name: Register E-Mail
   shell: "cat /var/plexguide/server.email"
   register: email
   ignore_errors: True
