@@ -19,7 +19,7 @@ echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 export NCURSES_NO_UTF8_ACS=1
 clear
- 
+  
 HEIGHT=18
 WIDTH=33
 CHOICE_HEIGHT=11
