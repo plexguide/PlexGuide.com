@@ -27,12 +27,12 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(00 "Developer     ~ 6.000"
-         Z "------ Exit Menu ------"
-         01 "STABLE        ~ 6.000"
-         02 "Historical    ~ 5.1"
-         03 "Historical    ~ 5.013"
-         04 "Historical    ~ 4.1")
+OPTIONS=(00 "Developer Edition     "
+         Z "----- Exit Menu -----"
+         01 "STABLE       ~ 6.000"
+         02 "Historical   ~ 5.1"
+         03 "Historical   ~ 5.013"
+         04 "Historical   ~ 4.1")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
