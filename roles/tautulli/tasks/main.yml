@@ -29,7 +29,7 @@
   with_items:
     - /opt/appdata/{{role_name}}/scripts
 
-- name: Deploy {{role_name}} Container
+- name: "Deploy {{role_name}} Container"
   docker_container:
     name: "{{role_name}}"
     image: "linuxserver/{{role_name}}"
@@ -39,7 +39,7 @@
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
       - /opt/appdata/{{role_name}}:/config
-      - /opt/appdata/plex/Library/Application\ Support/Plex\ Media\
+      - "/opt/appdata/plex/database/Library/Application Support/Plex Media Server"
       - /opt/appdata/{{role_name}}/scripts:/scripts
     env:
       PUID: "1000"
