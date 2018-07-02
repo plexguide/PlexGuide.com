@@ -64,12 +64,12 @@
 
 - name: Store Project Link
   shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
-  when: domainanswer.user_input == "3"
+  when: exit.user_input == "3"
 
 - name: Reregister Project Link
   shell: "cat /var/plexguide/pgfork.project"
   register: projectfinal
-  when: domainanswer.user_input == "3"
+  when: exit.user_input == "3"
 
 ############################## REGISTER BRANCH
 - pause:
@@ -79,12 +79,12 @@
 
 - name: Store Project Link
   shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
-  when: domainanswer.user_input == "3"
+  when: exit.user_input == "3"
 
 - name: Reregister Project Link
   shell: "cat /var/plexguide/pgfork.version"
   register: versionfinal
-  when: domainanswer.user_input == "3"
+  when: exit.user_input == "3"
 
 ############################## Asking If they Wanna Update or Exit?
 - pause:
@@ -93,11 +93,11 @@
   until: next.user_input > "0" and next.user_input < "4"
   retries: 99
   delay: 1
-  when: domainanswer.user_input == "3"
+  when: exit.user_input == "3"
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: next.user_input == "2" and domainanswer.user_input == "3"
+  when: next.user_input == "2" and exit.user_input == "3"
 
 ######################## Start Updating
 - name: Delete Current PlexGuide Copy
