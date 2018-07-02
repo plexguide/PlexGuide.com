@@ -51,7 +51,7 @@
     path: "/opt/appdata/{{role_name}}/appsettings.json"
   register: jsonfile
 
-- name: Download {{role_name}} appsettings.json config file
+- name: "Download {{role_name}} appsettings.json config file"
   get_url:
     url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
     dest: /opt/appdata/{{role_name}}/appsettings.json
@@ -61,7 +61,7 @@
   ignore_errors: True
   when: jsonfile.stat.exists == False
 
-- name: Deploy {{role_name}} Container
+- name: "Deploy {{role_name}} Container"
   docker_container:
     name: "{{role_name}}"
     image: "{{image}}"
@@ -73,9 +73,9 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - /opt/appdata/{{role_name}}:/config
-      - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/{{role_name}}/appsettings.json:/opt/{{role_name}}/appsettings.json
+      - "/opt/appdata/{{role_name}}:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+      - ""/opt/appdata/{{role_name}}/appsettings.json:/opt/{{role_name}}/appsettings.json"
     networks:
       - name: plexguide
         aliases:
@@ -86,7 +86,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
-      traefik.port: "{{extport}}"
+      traefik.port: "{{intport}}"
 
 - include_role:
     name: pgmend
