@@ -21,8 +21,8 @@
 - include_role:
     name: pgmstart
 
-- include_role:
-    name: tld
+#- include_role:
+#    name: tld
 
 - pause:
     prompt: "\nType Image # for {{role_name}}\n1- linuxserver/ombi (Recommended)\n2- lsiodev/ombi-preview (Developer)"
@@ -85,7 +85,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
 - include_role:
