@@ -259,8 +259,8 @@
       PUID: 1000
       PGID: 1000
       PROVIDER: "cloudflare"
-      CLOUDFLARE_EMAIL: "{{cf1.stdout}}"
-      CLOUDFLARE_API_KEY: "{{cf2.stdout}}"
+      CLOUDFLARE_EMAIL: "{{cf1.user_input}}"
+      CLOUDFLARE_API_KEY: "{{cf2.user_input}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
