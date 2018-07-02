@@ -75,7 +75,7 @@
     volumes:
       - "/opt/appdata/{{role_name}}:/config"
       - "/etc/localtime:/etc/localtime:ro"
-      - ""/opt/appdata/{{role_name}}/appsettings.json:/opt/{{role_name}}/appsettings.json"
+      - /opt/appdata/{{role_name}}/appsettings.json:/opt/{{role_name}}/appsettings.json"
     networks:
       - name: plexguide
         aliases:
