@@ -24,7 +24,7 @@
 - include_role:
     name: tld
 
-- name: Create {{role_name}} script directories
+- name: "Create {{role_name}} script directories"
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
     - /opt/appdata/{{role_name}}/scripts
@@ -39,7 +39,7 @@
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
       - /opt/appdata/{{role_name}}:/config
-      - "/opt/appdata/plex/database/Library/Application Support/Plex Media Server"
+      - /opt/appdata/plex/database/Library/Application\ Support/Plex\ Media\
       - /opt/appdata/{{role_name}}/scripts:/scripts
     env:
       PUID: "1000"
