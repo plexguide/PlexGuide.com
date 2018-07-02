@@ -29,7 +29,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer     ~ 6.000"
          Z "------ Exit Menu ------"
-         01 "BETA 7        ~ 6.000"
+         01 "STABLE        ~ 6.000"
          02 "Historical    ~ 5.1"
          03 "Historical    ~ 5.013"
          04 "Historical    ~ 4.1")
