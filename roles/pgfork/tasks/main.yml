@@ -28,12 +28,12 @@
   when: exit.user_input == "1"
 
 - pause:
-    prompt: "\nCurrent Project Link:\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nCurrent Project Link"
   register: project
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nCurrent Branch Release:\nExample: Version-6 / mybranch / rclonefix"
+    prompt: "\nExample: Version-6 / mybranch / rclonefix\nCurrent Branch Release"
   register: version
   when: exit.user_input == "3"
 
