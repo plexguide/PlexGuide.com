@@ -16,6 +16,18 @@
 #
 #################################################################################
 ---
+
+
+############# Pull Basic Information
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.project"
+  register: projectfinal
+
+- name: Register Version Link
+  shell: "cat /var/plexguide/version.project"
+  register: versionfinal
+
+############## Start Asking
 - pause:
     prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
   register: exit
@@ -27,31 +39,50 @@
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input == "1"
 
+############################## REGISTER PROJECT
 - pause:
     prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
   register: project
   when: exit.user_input == "3"
 
+- name: Store Project Link
+  shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
+  when: domainanswer.user_input == "3"
+
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.project"
+  register: projectfinal
+  when: domainanswer.user_input == "3"
+
+############################## REGISTER BRANCH
 - pause:
     prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
   register: version
   when: exit.user_input == "3"
 
+- name: Store Project Link
+  shell: "echo '{{version.user_input}}' > /var/plexguide/version.project"
+  when: domainanswer.user_input == "3"
+
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/version.project"
+  register: versionfinal
+  when: domainanswer.user_input == "3"
+
+############################## Asking If they Wanna Update or Exit?
 - pause:
     prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
   register: next
   until: next.user_input > "0" and next.user_input < "4"
   retries: 99
   delay: 1
+  when: domainanswer.user_input == "3"
 
-- pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 -Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
-  register: exit
-  until: exit.user_input > "0" and exit.user_input < "4"
-  retries: 99
-  delay: 1
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: next.user_input == "2" and domainanswer.user_input == "3"
 
-
+######################## Start Updating
 - name: Delete Current PlexGuide Copy
   shell: "rm -r /opt/plexguide"
   ignore_errors: True
@@ -61,17 +92,9 @@
   with_items:
     - /opt/plexguide/
 
-- name: Storing Project Link
-  shell: "echo 'project' > /var/plexguide/pgfork.project"
-  ignore_errors: True
-
-- name: Storing Branch / Release Name
-  shell: "echo 'version' > /var/plexguide/pgfork.version"
-  ignore_errors: True
-
 - name: Clone Fork
   git:
-    repo: project
+    repo: {{projectfinal.stdout}}
     dest: /opt/plexguide
-    version: version
+    version: {{versionfinal.stdout}}
     force: yes
