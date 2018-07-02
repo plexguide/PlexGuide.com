@@ -37,16 +37,16 @@
     - /opt/plexguide/
 
 - name: Storing Project Link
-  shell: "echo '{{project}}' > /var/plexguide/pgfork.project"
+  shell: "echo 'project' > /var/plexguide/pgfork.project"
   ignore_errors: True
 
 - name: Storing Branch / Release Name
-  shell: "echo '{{version}}' > /var/plexguide/pgfork.version"
+  shell: "echo 'version' > /var/plexguide/pgfork.version"
   ignore_errors: True
 
 - name: Clone Fork
   git:
-    repo: {{project}}
+    repo: project
     dest: /opt/plexguide
-    version: {{version}}
+    version: version
     force: yes
