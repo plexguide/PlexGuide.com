@@ -18,6 +18,8 @@
 ---
 - include_vars: variables.yml
 
+- include_vars: /opt/appdata/plexguide/var-vpn.yml
+
 - include_role:
     name: pgmstart
     
