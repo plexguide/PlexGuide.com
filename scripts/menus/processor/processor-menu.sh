@@ -29,7 +29,7 @@ result=$(whoami)
 case $CHOICE in
     "1)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags performance
+    ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags performance
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     bash /opt/plexguide/scripts/menus/processor/reboot.sh
@@ -37,7 +37,7 @@ case $CHOICE in
 
     "2)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags ondemand
+    ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags ondemand
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     bash /opt/plexguide/scripts/menus/processor/reboot.sh
@@ -45,7 +45,7 @@ case $CHOICE in
 
     "3)")
     clear
-    ansible-playbook /opt/plexguide/ansible/roles/processor/processor.yml --tags conservative
+    ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags conservative
     echo ""
     read -n 1 -s -r -p "Press any key to continue "
     bash /opt/plexguide/scripts/menus/processor/reboot.sh
