@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Following Number"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
@@ -38,14 +38,14 @@
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Following Number"
+    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
   register: next
   until: next.user_input > "0" and next.user_input < "4"
   retries: 99
   delay: 1
 
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 -Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Following Number"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 -Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
