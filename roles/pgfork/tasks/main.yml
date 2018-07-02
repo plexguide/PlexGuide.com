@@ -90,7 +90,7 @@
 - pause:
     prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
   register: next
-  until: next.user_input > "0" and next.user_input < "4"
+  until: next.user_input > "0" and next.user_input < "3"
   retries: 99
   delay: 1
   when: exit.user_input == "3"
