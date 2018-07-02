@@ -21,9 +21,6 @@
 - include_role:
     name: pgmstart
 
-- include_role:
-    name: tld
-
 - name: Deploy OrganizrV2 Container
   docker_container:
     name: "{{role_name}}"
@@ -32,7 +29,7 @@
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
-      - "/opt/appdata/{{role_name}}:/app"
+      - "/opt/appdata/{{role_name}}:/config"
       - "/etc/localtime:/etc/localtime:ro"
     cpu_shares: 128
     env:

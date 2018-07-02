@@ -86,23 +86,17 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         01)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.003" ;;
-        01)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.002" ;;
-        01)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="6.001" ;;
-        02)
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.000" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.1" ;;
+            version="6.000" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.013" ;;
+            version="5.1" ;;
         05)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.013" ;;
+        06)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="Legacy-v4" ;;
 esac

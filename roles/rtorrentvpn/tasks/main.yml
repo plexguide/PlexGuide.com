@@ -18,6 +18,8 @@
 ---
 - include_vars: variables.yml
 
+- include_vars: /opt/appdata/plexguide/var-vpn.yml
+
 - include_role:
     name: pgmstart
     
@@ -97,6 +99,19 @@
 - name: Making sure iptable is set
   shell: /sbin/modprobe iptable_mangle
 
+######### Remove previous containers
+- name: Remove Rtorrent Container
+  docker_container:
+    name: rtorrentvpn
+    state: absent
+  ignore_errors: True
+
+- name: Remove DelugeVPN Container
+  docker_container:
+    name: delugevpn
+    state: absent
+  ignore_errors: True
+  
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
