@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch/Release Link: version\n\n[1] Exit\n[2] Download Current Project\n[3] Clone Your Project"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n[1] Exit\n[2] Download Current Project\n[3] Update Your Project Link and/or Branch-Release"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
