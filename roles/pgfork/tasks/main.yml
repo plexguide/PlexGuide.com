@@ -90,6 +90,89 @@
 - pause:
     prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
   register: next
+  until: next.user_input > "0" and next.user_input < "3"
+  retries: 99
+  delay: 1
+  when: exit.user_input == "3"
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: next.user_input == "1"
+
+######################## Start Updating
+#- name: Delete Current PlexGuide Copy
+#  shell: "rm -r /opt/plexguide"
+#  ignore_errors: True
+=======
+
+- name: Project Does Not Exist - Dummy Dadta
+  shell: "touch /var/plexguide/pgfork.project"
+  when: projectcheck.stat.exists == "False"
+
+- name: Does Verison Exist?
+  stat:
+    path: /var/plexguide/pgfork.version
+  register: versioncheck
+
+- name: Project Does Not Exist - Dummy Dadta
+  shell: "touch /var/plexguide/pgfork.version"
+  when: versioncheck.stat.exists == "False"
+
+############# Pull Basic Information
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.project"
+  register: projectfinal
+
+- name: Register Version Link
+  shell: "cat /var/plexguide/pgfork.version"
+  register: versionfinal
+
+############## Start Asking
+- pause:
+    prompt: "\nWelcome to PGFork!\n\nProject Link: {{projectfinal.stdout}}\nBranch-Release Link: {{versionfinal.stdout}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "4"
+  retries: 99
+  delay: 1
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
+
+############################## REGISTER PROJECT
+- pause:
+    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
+  register: project
+  when: exit.user_input == "3"
+
+- name: Store Project Link
+  shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
+  when: exit.user_input == "3"
+
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.project"
+  register: projectfinal
+  when: exit.user_input == "3"
+
+############################## REGISTER BRANCH
+- pause:
+    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
+  register: version
+  when: exit.user_input == "3"
+
+- name: Store Project Link
+  shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
+  when: exit.user_input == "3"
+
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.version"
+  register: versionfinal
+  when: exit.user_input == "3"
+
+############################## Asking If they Wanna Update or Exit?
+- pause:
+    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
+  register: next
   until: next.user_input > "0" and next.user_input < "4"
   retries: 99
   delay: 1
@@ -113,5 +196,8 @@
   git:
     repo: "{{projectfinal.stdout}}"
     dest: /opt/plexguide
+    mode: 0775
+    owner: 1000
+    group: 1000
     version: "{{versionfinal.stdout}}"
     force: yes

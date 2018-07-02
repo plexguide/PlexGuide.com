@@ -1,12 +1,12 @@
-<p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes our PROJECT on GITHUB and goes a long way!</b></p>
+<p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes the PROJECT on GITHUB and goes a long way!</b></p>
 
 <p align="center">
   <a href="https://plexguide.com/wikis/" target="_blank"><img src="https://plexguide.com/wikipics/button4.png" width="200"/>
-  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button5.png" width="200"/> 
-  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button1.png" width="200"/> 
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/> 
-  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/> 
-  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/wikipics/button2.png" width="200"/> 
+  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button5.png" width="200"/>
+  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button1.png" width="200"/>
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/>
+  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/>
+  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/wikipics/button2.png" width="200"/>
 </p>
 
 ----
@@ -68,7 +68,7 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 | Jan 2018   | Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
 | Feb 2018   | PG Update system built in for better updating
 | Mar 2018   | Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
-| Apr 2018   | DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL 
+| Apr 2018   | DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL
 | May 2018   | Support UB18 - Advance Cron Jobs, Backups, Multi-Image Select, and Multi HD Edition
 
 ----

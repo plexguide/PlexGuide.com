@@ -231,6 +231,13 @@
       force: yes
       mode: 0775
       owner: root
-  
+
+  - name: Install PGFork
+    template:
+      src: pgfork
+      dest: /bin/pgfork
+      force: yes
+      mode: 0775
+
   - name: Logging Ansible Role Information
-    shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"    
+    shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
