@@ -66,7 +66,7 @@ case $CHOICE in
             #### GREP Checks
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            mkdir -p /root/.config/rclone/
+            mkdir -p /root/.config/rclone/ 
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
