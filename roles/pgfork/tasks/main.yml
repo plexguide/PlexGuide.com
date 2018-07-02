@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Following Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
@@ -28,24 +28,24 @@
   when: exit.user_input == "1"
 
 - pause:
-    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link\n"
+    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
   register: project
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release\n"
+    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release:"
   register: version
   when: exit.user_input == "3"
 
 - pause:
-    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n"
+    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Following Number"
   register: next
   until: next.user_input > "0" and next.user_input < "4"
   retries: 99
   delay: 1
 
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 -Download Current Project\n3 - Update Project and/or Branch-Release\n\nP"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 -Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Following Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
