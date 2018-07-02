@@ -113,7 +113,7 @@
 
 - name: Clone Fork
   git:
-    repo: {{projectfinal.stdout}}
+    repo: "{{projectfinal.stdout}}
     dest: /opt/plexguide
-    version: {{versionfinal.stdout}}
+    version: "{{versionfinal.stdout}}"
     force: yes
