@@ -21,9 +21,6 @@
 - include_role:
     name: pgmstart
 
-- include_role:
-    name: tld
-
 - name: "Create {{role_name}} script directories"
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
@@ -53,7 +50,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},plexpy.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},plexpy.{{domain.stdout}}"
       traefik.port: "8181"
 
 - include_role:
