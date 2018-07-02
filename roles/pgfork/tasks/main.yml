@@ -46,7 +46,7 @@
 
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: project\nBranch-Release Link: version\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: {{projectfinal.stdout}}\nBranch-Release Link: {{versionfinal.stdout}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
