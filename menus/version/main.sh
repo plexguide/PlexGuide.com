@@ -29,10 +29,11 @@ MENU="Make a Selection:"
 
 OPTIONS=(00 "Developer Edition     "
          Z "----- Exit Menu -----"
-         01 "STABLE       ~ 6.000"
-         02 "Historical   ~ 5.1"
-         03 "Historical   ~ 5.013"
-         04 "Historical   ~ 4.1")
+         01 "EDGE         ~ 6.001"
+         02 "STABLE       ~ 6.000"
+         03 "Historical   ~ 5.1"
+         04 "Historical   ~ 5.013"
+         05 "Historical   ~ 4.1")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
