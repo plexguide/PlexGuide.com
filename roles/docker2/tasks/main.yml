@@ -36,7 +36,7 @@
 - name: Release docker-ce from hold
   dpkg_selections:
     name: docker-ce
-    selection: install
+    selection: present
   tags: docker_standard
 ############################################# DEPLOY DOCKER
 
