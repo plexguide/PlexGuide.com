@@ -41,8 +41,8 @@ cat << "EOF"
 │ Update to Dev Version:    pgdev     │
 │ Delete Dupes:             pgdupes   │
 │ Add Content:              pgtrak    │
-│ [32mNEW![0m View the PG Logs:    pglog     │
-│ [32mNEW![0m Download Your PG Fork:    pgfork     │
+│ View the PG Logs:         pglog     │
+│ Download Your PG Fork:    pgfork    │
 └─────────────────────────────────────┘
 
 EOF
