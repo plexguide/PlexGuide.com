@@ -45,6 +45,22 @@ else
 fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+xfile="/var/plexguide/pgfork.project"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/pgfork.project
+fi
+
+file="/var/plexguide/pgfork.project"
+if [ -e "$file" ]
+then
+   clear 1>/dev/null 2>&1
+else
+   touch /var/plexguide/pgfork.project
+fi
+
 file="/var/plexguide/tld.tautulli"
 if [ -e "$file" ]
 then
