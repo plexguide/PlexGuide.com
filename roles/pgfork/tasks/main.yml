@@ -66,12 +66,9 @@
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
-- name: Removing Old PG
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_items:
-    - /opt/plexguide/
+- name: Move Old PlexGuide
+  shell: "mv /opt/plexguide /tmp/plexguide && rm -r /tmp/plexguide"
+  register: basicproject
 
 - name: Clone Fork
   git:
