@@ -66,6 +66,10 @@
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
+#- name: Move Old PlexGuide
+#  shell: "mv /opt/plexguide /tmp/plexguide && rm -r /tmp/plexguide"
+#  register: basicproject
+
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
