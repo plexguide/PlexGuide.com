@@ -88,7 +88,10 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
 
             echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo ""
+            read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/scripts/message/ending.sh
+            exit
             ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
