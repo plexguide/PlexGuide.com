@@ -20,16 +20,13 @@
 
 - include_role:
     name: pgmstart
-    
+
 - name: Create Basic directories for qBittorrent
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
     - "{{path.stdout}}/{{role_name}}"
-
-- name: Create Basic appdata directories for qBittorrent
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
     - /opt/appdata/{{role_name}}
+    - /opt/appdata/{{role_name}}/config
 
 - name: Deploy {{role_name}} Container
   docker_container:
