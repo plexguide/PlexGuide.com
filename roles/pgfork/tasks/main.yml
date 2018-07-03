@@ -71,7 +71,7 @@
     path: "{{ item }}"
     state: absent
   with_items:
-    - /opt/plexguide
+    - /opt/plexguide/
 
 - name: Clone Fork
   git:
