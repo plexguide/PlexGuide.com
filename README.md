@@ -10,7 +10,7 @@
 </p>
 
 ----
-## Welcome to PlexGuide.com
+## Welcome to PlexGuide.com!
 
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
