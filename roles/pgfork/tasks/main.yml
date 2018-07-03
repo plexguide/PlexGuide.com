@@ -26,9 +26,9 @@
   shell: "touch /var/plexguide/pgfork.project"
   when: projectcheck.stat.exists == "False"
 
-- name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.project"
-    register: basicproject
+- name: Pull Stored Data
+  shell: "cat /var/plexguide/pgfork.project"
+  register: basicproject
   when: projectcheck.stat.exists == "True"
 
 - name: Does Verison Exist?
@@ -38,11 +38,11 @@
 
 - name: Project Does Not Exist Check - Dummy Data
   shell: "touch /var/plexguide/pgfork.version"
-    register: basicversion
   when: versioncheck.stat.exists == "False"
 
-- name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.version"
+- name: Pull Stored Data
+  shell: "cat /var/plexguide/pgfork.version"
+  register: basicversion
   when: versioncheck.stat.exists == "True"
 ############## Start Asking
 - pause:
