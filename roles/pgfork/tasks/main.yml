@@ -86,6 +86,8 @@
   register: versionfinal
   when: exit.user_input == "3"
 
+- debug: msg="Project Final {{projectfinal}}""
+
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
