@@ -42,7 +42,7 @@ cat << "EOF"
 │ Delete Dupes:             pgdupes   │
 │ Add Content:              pgtrak    │
 │ View the PG Logs:         pglog     │
-│ Download Your PG Fork:    pgfork    │
+| Download Your PG Fork:    pgfork    │
 └─────────────────────────────────────┘
 
 EOF
