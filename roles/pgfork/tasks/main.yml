@@ -26,6 +26,8 @@
   shell: "touch /var/plexguide/pgfork.project"
   when: projectcheck.stat.exists == "False"
 
+- debug: msg="Project Final {{projectcheck}}
+
 - name: Pull Stored Data
   shell: "cat /var/plexguide/pgfork.project"
   register: basicproject
