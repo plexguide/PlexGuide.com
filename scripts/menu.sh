@@ -53,12 +53,12 @@ else
    echo "changeme" > /var/plexguide/pgfork.project
 fi
 
-file="/var/plexguide/pgfork.project"
+file="/var/plexguide/pgfork.version"
 if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   echo "changeme" > /var/plexguide/pgfork.project
+   echo "changeme" > /var/plexguide/pgfork.version
 fi
 
 file="/var/plexguide/tld.tautulli"
