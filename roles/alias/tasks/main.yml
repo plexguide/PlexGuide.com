@@ -239,5 +239,12 @@
       force: yes
       mode: 0775
 
+  - name: Install PGFork
+    template:
+      src: backup
+      dest: /bin/backup
+      force: yes
+      mode: 0775
+
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
