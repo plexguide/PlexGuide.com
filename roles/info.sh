@@ -35,5 +35,5 @@ echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.label
-echo "9" > /var/plexguide/pg.alias
+echo "10" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep ## dependencies
