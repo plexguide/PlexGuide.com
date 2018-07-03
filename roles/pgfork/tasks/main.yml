@@ -23,37 +23,27 @@
   register: projectcheck
 
 - name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.project && echo 'changeme' > /var/plexguide/pgfork.project"
+  shell: "echo 'changeme' > /var/plexguide/pgfork.project"
   when: projectcheck.stat.exists == "False"
 
 - name: Pull Stored Data
   shell: "cat /var/plexguide/pgfork.project"
   register: basicproject
-  when: projectcheck.stat.exists == "True"
 
-- name: Pull Stored Data
-  shell: "echo /var/plexguide/pgfork.project"
-  register: basicproject
-  when: projectcheck.stat.exists == "False"
-
+##################################################### SPLIT
 - name: Does Verison Exist?
   stat:
     path: /var/plexguide/pgfork.version
   register: versioncheck
 
 - name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.version && echo 'changeme' > /var/plexguide/pgfork.version"
+  shell: "echo 'changeme' > /var/plexguide/pgfork.version"
   when: versioncheck.stat.exists == "False"
 
 - name: Pull Stored Data
   shell: "cat /var/plexguide/pgfork.version"
   register: basicversion
-  when: versioncheck.stat.exists == "False"
 
-- name: Pull Stored Data
-  shell: "cat /var/plexguide/pgfork.version"
-  register: basicversion
-  when: versioncheck.stat.exists == "True"
 ############## Start Asking
 - pause:
     prompt: "\nWelcome to PGFork!\n\nProject Link: '{{basicproject.stdout}}'\nBranch-Release Link: '{{basicversion.stdout}}'\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
@@ -65,7 +55,6 @@
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input == "1"
-
 ############################## REGISTER PROJECT
 - pause:
     prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
@@ -75,12 +64,6 @@
 - name: Store Project Link
   shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
   when: exit.user_input == "3"
-
-- name: Reregister Project Link
-  shell: "cat /var/plexguide/pgfork.project"
-  register: projectfinal
-  when: exit.user_input == "3"
-
 ############################## REGISTER BRANCH
 - pause:
     prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
@@ -90,13 +73,18 @@
 - name: Store Project Link
   shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
   when: exit.user_input == "3"
+############################################# END
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.project"
+  register: projectfinal
+  when: exit.user_input == "3"
 
 - name: Reregister Project Link
   shell: "cat /var/plexguide/pgfork.version"
   register: versionfinal
   when: exit.user_input == "3"
 
-- debug: msg="Project Final {{projectfinal}}"
+- debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
 - name: Clone Fork
   git:
