@@ -86,19 +86,6 @@
   register: versionfinal
   when: exit.user_input == "3"
 
-############################## Asking If they Wanna Update or Exit?
-- pause:
-    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
-  register: next
-  until: next.user_input > "0" and next.user_input < "3"
-  retries: 99
-  delay: 1
-  when: exit.user_input == "3"
-
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: next.user_input == "1"
-
 - name: Delete Current PlexGuide Copy
   shell: "rm -r /opt/plexguide"
   ignore_errors: True
