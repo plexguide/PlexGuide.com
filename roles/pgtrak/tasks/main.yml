@@ -31,7 +31,7 @@
     path: /var/plexguide/pgfork.version
   register: versioncheck
 
-- name: Project Does Not Exist - Dummy Data
+- name: Version Does Not Exist - Dummy Data
   shell: "touch /var/plexguide/pgfork.version"
   when: versioncheck.stat.exists == "False"
 
