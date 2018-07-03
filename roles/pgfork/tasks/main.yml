@@ -84,8 +84,10 @@
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
-- name: Delete Old PlexGuide
-  shell: "rm -r /opt/plexguide"
+- name: Remove Old PlexGuide
+  file:
+    state: absent
+    path: "/opt/plexguide"
 
 - name: Clone Fork
   git:
