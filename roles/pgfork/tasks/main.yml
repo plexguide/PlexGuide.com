@@ -86,10 +86,6 @@
   register: versionfinal
   when: exit.user_input == "3"
 
-- name: Delete Current PlexGuide Copy
-  shell: "rm -r /opt/plexguide"
-  ignore_errors: True
-
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
