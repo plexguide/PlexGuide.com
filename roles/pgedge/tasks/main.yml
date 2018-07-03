@@ -20,5 +20,5 @@
   git:
     repo: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
     dest: /opt/plexguide
-    version: EDGE
+    version: Edge
     force: yes
