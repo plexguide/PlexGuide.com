@@ -23,7 +23,7 @@
   register: projectcheck
 
 - name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.project"
+  shell: "touch /var/plexguide/pgfork.project && echo 'changeme' > /var/plexguide/pgfork.project"
   when: projectcheck.stat.exists == "False"
 
 - name: Pull Stored Data
@@ -31,13 +31,23 @@
   register: basicproject
   when: projectcheck.stat.exists == "True"
 
+- name: Pull Stored Data
+  shell: "echo /var/plexguide/pgfork.project"
+  register: basicproject
+  when: projectcheck.stat.exists == "False"
+
 - name: Does Verison Exist?
   stat:
     path: /var/plexguide/pgfork.version
   register: versioncheck
 
 - name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.version"
+  shell: "touch /var/plexguide/pgfork.version && echo 'changeme' > /var/plexguide/pgfork.version"
+  when: versioncheck.stat.exists == "False"
+
+- name: Pull Stored Data
+  shell: "cat /var/plexguide/pgfork.version"
+  register: basicversion
   when: versioncheck.stat.exists == "False"
 
 - name: Pull Stored Data
@@ -46,7 +56,7 @@
   when: versioncheck.stat.exists == "True"
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: {{basicproject.stdout}}\nBranch-Release Link: {{basicversion.stdout}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
+    prompt: "\nWelcome to PGFork!\n\nProject Link: ''{{basicproject.stdout}}''\nBranch-Release Link: {{;basicversion.stdout'}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
