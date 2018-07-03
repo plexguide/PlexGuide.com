@@ -17,6 +17,19 @@
 #################################################################################
 
 ---
+- name: Add Docker GPG key
+  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+
+- name: Release docker-ce from hold
+  dpkg_selections:
+    name: docker-ce
+    selection: present
+  tags: docker_standard
+
+- name: Add Docker APT repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+
 - name: Install list of packages
   apt:
     name: "{{ item }}"
@@ -28,28 +41,6 @@
     - curl
     - software-properties-common
     - docker-ce
-  tags: docker_standard
-
-- name: Add Docker GPG key
-  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
-
-- name: Release docker-ce from hold
-  dpkg_selections:
-    name: docker-ce
-    selection: present
-  tags: docker_standard
-############################################# DEPLOY DOCKER
-
-- name: Add Docker APT repository
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
-
-- name: Install docker-ce (Please Wait)
-  apt:
-    name: docker-ce={{docversion.stdout}}
-    state: present
-    update_cache: yes
-    force: yes
   tags: docker_standard
 
 - name: Put docker-ce into hold
