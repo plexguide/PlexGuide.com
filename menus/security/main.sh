@@ -20,7 +20,7 @@ file="/var/plexguide/server.ports.status" 1>/dev/null 2>&1
   echo "[OPEN]" > /var/plexguide/server.ports.status
   fi
 ############################### Calls Variables
-  
+
 appguard=$(cat /var/plexguide/server.appguard)
 portstat=$(cat /var/plexguide/server.ports.status)
 
@@ -50,7 +50,7 @@ clear
 case $CHOICE in
         A)
           echo "INFO - Selected Ports Menu Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-          bash /opt/plexguide/menus/ports/main.sh ;;
+          bash /opt/plexguide/roles/ports/main.sh ;;
         B)
           echo "INFO - APPGuard Menu Interface" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
           bash /opt/plexguide/menus/security/ht.sh ;;
