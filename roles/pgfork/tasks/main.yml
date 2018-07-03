@@ -66,6 +66,13 @@
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
+  - name: Removing Old PG
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_items:
+      - /opt/plexguide
+
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
