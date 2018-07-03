@@ -68,5 +68,5 @@ echo 'INFO - Select to CLOSE Ports' > /var/plexguide/pg.log && bash /opt/plexgui
             exit 0 ;;
 esac
 
-bash /opt/plexguide/menus/traefik/rebuild.sh
+bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
 dialog --title "Final Note" --msgbox "\nYour Containers Are Built!" 0 0
