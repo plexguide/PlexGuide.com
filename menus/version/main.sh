@@ -85,8 +85,16 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             exit 0
             ;;
         01)
+            file="/usr/bin/ansible"
+            if [ -e "$file" ]
+            then
+            echo "INFO - Selected: Installing Edge Edition - Ansible Detected" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            else
+            echo "INFO - Selected: Installing Edge Edition - Ansible Not Detected - Installing" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            dialog --title "NOTE" --msgbox "\nThis must be a new setup.  Anways, Ansible is needed for EDGE to Download!\n\nWe are going to install it early for you!" 0 0
+            bash /opt/plexguide/roles/baseline/scripts/ansible.sh
+            fi
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
-
             echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             echo ""
             read -n 1 -s -r -p "Press any key to continue"
