@@ -50,7 +50,7 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   touch /var/plexguide/pgfork.project
+   echo "changeme" > /var/plexguide/pgfork.project
 fi
 
 file="/var/plexguide/pgfork.project"
@@ -58,7 +58,7 @@ if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   touch /var/plexguide/pgfork.project
+   echo "changeme" > /var/plexguide/pgfork.project
 fi
 
 file="/var/plexguide/tld.tautulli"
