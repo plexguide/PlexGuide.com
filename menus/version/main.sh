@@ -94,8 +94,9 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             dialog --title "NOTE" --msgbox "\nThis must be a new setup.  Anways, Ansible is needed for EDGE to Download!\n\nWe are going to install it early for you!" 0 0
             bash /opt/plexguide/roles/baseline/scripts/ansible.sh
             fi
-            
+
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             echo ""
             read -n 1 -s -r -p "Press any key to continue"
