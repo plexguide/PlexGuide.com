@@ -77,12 +77,10 @@
 - name: Reregister Project Link
   shell: "cat /var/plexguide/pgfork.project"
   register: projectfinal
-  when: exit.user_input == "3"
 
 - name: Reregister Project Link
   shell: "cat /var/plexguide/pgfork.version"
   register: versionfinal
-  when: exit.user_input == "3"
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
