@@ -24,7 +24,7 @@
 
 - name: Project Does Not Exist Check - Dummy Data
   shell: "touch /var/plexguide/pgfork.project"
-  when: projectcheck.stat.exists == "False"
+  when: projectcheck.exists == "False"
 
 - debug: msg="Project Final {{projectcheck}}"
 
@@ -40,7 +40,7 @@
 
 - name: Project Does Not Exist Check - Dummy Data
   shell: "touch /var/plexguide/pgfork.version"
-  when: versioncheck.stat.exists == "False"
+  when: versioncheck.exists == "False"
 
 - name: Pull Stored Data
   shell: "cat /var/plexguide/pgfork.version"
