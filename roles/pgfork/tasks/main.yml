@@ -66,9 +66,15 @@
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
+- name: Checking to See if PlexGuide Exists
+  stat:
+    path: /opt/plexguide
+  register: pgcheck
+
 - name: Move Old PlexGuide
   shell: "rm -r /opt/plexguide 1>/dev/null 2>&1"
   register: basicproject
+  when: pgcheck.stat.exists == True
 
 - name: Clone Fork
   git:
