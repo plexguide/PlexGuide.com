@@ -71,9 +71,8 @@
     path: /opt/plexguide
   register: pgcheck
 
-- name: Move Old PlexGuide
+- name: Remove PlexGuide
   shell: "rm -r /opt/plexguide 1>/dev/null 2>&1"
-  register: basicproject
   when: pgcheck.stat.exists == True
 
 - name: Clone Fork
