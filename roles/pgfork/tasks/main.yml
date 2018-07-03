@@ -23,7 +23,7 @@
   register: projectcheck
 
 - name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.project && echo 'changeme' > /var/plexguide/pgfork.project"
+  shell: "touch /var/plexguide/pgfork.project"
   when: projectcheck.stat.exists == "False"
 
 - name: Pull Stored Data
@@ -37,7 +37,7 @@
   register: versioncheck
 
 - name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.version && echo 'changeme' > /var/plexguide/pgfork.version"
+  shell: "touch /var/plexguide/pgfork.version"
   when: versioncheck.stat.exists == "False"
 
 - name: Pull Stored Data
