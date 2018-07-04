@@ -167,9 +167,9 @@
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
-      - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/gdrive:/gdrive"
       - "/mnt/tdrive:/tdrive"
+      - "/etc/localtime:/etc/localtime:ro"
     devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
     etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
     cpu_shares: 1024
@@ -180,7 +180,7 @@
       traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
-    when: selection.user_input == "3"
+  when: selection.user_input == "3"
 
 - debug: msg="Remote Plex Server Installed"
 
