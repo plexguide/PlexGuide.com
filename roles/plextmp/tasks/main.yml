@@ -90,7 +90,6 @@
     image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
-      #- "32400:32400"
       - "32400:32400/tcp"
       - "3005:3005/tcp"
       - "8324:8324/tcp"
@@ -135,14 +134,13 @@
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
   when: selection.user_input == "2"
-######################################### DEPLOY PLEX REMOTE (ANSWER 3)
+######################################### DEPLOY PLEX LOCAL (ANSWER 3)
 - name: Deploy Plex Container (Local Edition)
   docker_container:
     name: plex
     image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
-      #- "32400:32400"
       - "32400:32400/tcp"
       - "3005:3005/tcp"
       - "8324:8324/tcp"
@@ -157,8 +155,6 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      #PLEX_CLAIM: "{{plextoken_var.stdout}}"
-      #ADVERTISE_IP: "{{plex_advert_ip}}"
     networks:
       - name: plexguide
         aliases:
