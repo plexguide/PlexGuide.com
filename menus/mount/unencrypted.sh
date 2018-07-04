@@ -220,7 +220,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               exit
             fi
               echo $number > /var/plexguide/move.bw
-              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy PG Drives for the BWLimit Change" 0 0
+              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
             fi
             ;;
             F)
