@@ -15,103 +15,107 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Original Script Made By: l3uddz & Desmonic via cloudbox.rocks - traktarr
+#################################################################################
 ---
-############# Exists Checker
-- name: Does Project Exist?
-  stat:
-    path: /var/plexguide/pgfork.project
-  register: projectcheck
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
 
-- name: Project Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.project"
-  when: projectcheck.stat.exists == "False"
+- include_role:
+    name: variables
 
-- name: Does Verison Exist?
-  stat:
-    path: /var/plexguide/pgfork.version
-  register: versioncheck
-
-- name: Version Does Not Exist Check - Dummy Data
-  shell: "touch /var/plexguide/pgfork.version"
-  when: versioncheck.stat.exists == "False"
-
-############# Pull Basic Information
-- name: Reregister Project Link
-  shell: "cat /var/plexguide/pgfork.project"
-  register: projectfinal
-
-- name: Register Version Link
-  shell: "cat /var/plexguide/pgfork.version"
-  register: versionfinal
-
-############## Start Asking
-- pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: {{projectfinal.stdout}}\nBranch-Release Link: {{versionfinal.stdout}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
-  register: exit
-  until: exit.user_input > "0" and exit.user_input < "4"
-  retries: 99
-  delay: 1
-
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
-
-############################## REGISTER PROJECT
-- pause:
-    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
-  register: project
-  when: exit.user_input == "3"
-
-- name: Store Project Link
-  shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
-  when: exit.user_input == "3"
-
-- name: Reregister Project Link
-  shell: "cat /var/plexguide/pgfork.project"
-  register: projectfinal
-  when: exit.user_input == "3"
-
-############################## REGISTER BRANCH
-- pause:
-    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
-  register: version
-  when: exit.user_input == "3"
-
-- name: Store Project Link
-  shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
-  when: exit.user_input == "3"
-
-- name: Reregister Project Link
-  shell: "cat /var/plexguide/pgfork.version"
-  register: versionfinal
-  when: exit.user_input == "3"
-
-############################## Asking If they Wanna Update or Exit?
-- pause:
-    prompt: "\nCurrently Update Your Project or Exit?\n[1] No - Exit\n[2] Yes - Update\n\nType a Selection Number"
-  register: next
-  until: next.user_input > "0" and next.user_input < "4"
-  retries: 99
-  delay: 1
-  when: exit.user_input == "3"
-
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: next.user_input == "1" and exit.user_input == "3"
-
-######################## Start Updating
-- name: Delete Current PlexGuide Copy
-  shell: "rm -r /opt/plexguide"
+- name: API Sonarr
+  shell: "cat /var/plexguide/api.sonarr"
+  register: apis
   ignore_errors: True
 
-- name: Creating the PG Directory
+- name: API Radarr
+  shell: "cat /var/plexguide/api.radarr"
+  register: apir
+  ignore_errors: True
+
+- name: Sonarr Profile
+  shell: "cat /var/plexguide/pgtrak.prosonarr"
+  register: prosonarr
+  ignore_errors: True
+
+- name: Radarr Profile
+  shell: "cat /var/plexguide/pgtrak.proradarr"
+  register: proradarr
+  ignore_errors: True
+
+- name: Trakt.tv Client
+  shell: "cat /var/plexguide/pgtrak.client"
+  register: client
+  ignore_errors: True
+
+- name: Trakt.tv Secret
+  shell: "cat /var/plexguide/pgtrak.secret"
+  register: secret
+  ignore_errors: True
+
+- name: API Radarr
+  shell: "cat /var/plexguide/pgtrak.radarr"
+  register: radarr
+  ignore_errors: True
+
+- name: API Sonnar
+  shell: "cat /var/plexguide/pgtrak.sonarr"
+  register: sonarr
+  ignore_errors: True
+
+- name: Check service exists
+  stat:
+    path: "/etc/systemd/system/pgtrak.service"
+  register: pgtrak_service
+
+- name: Stop existing pgtrak service
+  systemd: state=stopped name=pgtrak
+  when: pgtrak_service.stat.exists
+
+- name: Create pgtrak directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/plexguide/
-
-- name: Clone Fork
+    - /opt/appdata/pgtrak
+    
+- name: Clone pgtrak
   git:
-    repo: "{{projectfinal.stdout}}"
-    dest: /opt/plexguide
-    version: "{{versionfinal.stdout}}"
+    repo: https://github.com/Admin9705/pgtrak/
+    dest: /opt/appdata/pgtrak
+    version: 3
     force: yes
+    
+- name: Install pip requirements
+  pip:
+    requirements: /opt/appdata/pgtrak/requirements.txt
+    executable: pip3
+
+- name: Import default config
+  template:
+    src: config.json.js2
+    dest: /opt/appdata/pgtrak/config.json
+    force: yes
+
+- name: Set pgtrak.py as executable
+  file:
+    path: /opt/appdata/pgtrak/traktarr.py
+    mode: a+x
+
+- name: Set directory permissions
+  file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
+
+- name: "Create /usr/local/bin symlink"
+  file:
+    src: "/opt/appdata/pgtrak/traktarr.py"
+    dest: "/usr/local/bin/pgtrak"
+    state: link
+
+- name: Import pgtrak service
+  template:
+    src: pgtrak.service.js2
+    dest: /etc/systemd/system/pgtrak.service 
+    force: yes
+  when: pgtrak_service.stat.exists == False
+
+- name: Load service file
+  systemd: state=stopped name=pgtrak daemon_reload=yes enabled=no
