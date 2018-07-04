@@ -25,9 +25,9 @@ selected=$( cat /var/plexguide/menu.select )
 file="/var/plexguide/move.bw"
 if [ -e "$file" ]
   then
-echo "" 1>/dev/null 2>&1
+echo "" > /var/plexguide/move.bw
   else
-echo "10 MB" > /var/plexguide/move.bw 1>/dev/null 2>&1
+echo "10 MB" > /var/plexguide/move.bw
 fi
 
 if [ "$selected" != "Move" ]
@@ -35,7 +35,7 @@ if [ "$selected" != "Move" ]
   echo "" > /var/plexguide/move.bw 1>/dev/null 2>&1
   $bwlimit="Not Applied For ST2"
 else
-  bwlimit=$( cat /var/plexguide/move.bw )
+  bwlimit=$(cat /var/plexguide/move.bw)
 fi
 
 HEIGHT=13
