@@ -38,16 +38,16 @@ if [ "$selected" == "SuperTransfer2" ]
 fi
 
 HEIGHT=13
-WIDTH=50
+WIDTH=52
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Config : RClone"
-         B "Deploy : PGDrive"
-         C "Deploy : $selected"
-         D "BWLimit: $bwlimit"
+OPTIONS=(A "Config RClone : File"
+         B "Deploy Method : PGDrive"
+         C "Deploy Mount  : $selected"
+         D "Upload BWLimit: $bwlimit MB [Change It]"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
