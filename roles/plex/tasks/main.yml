@@ -42,9 +42,10 @@
   register: plex_prefs
 
 - name: "Get Plex Custom URL"
-  shell: "cat /var/plexguide/plex.url"
+  #shell: "cat /var/plexguide/plex.url"
+  shell: "echo https://plex.{{domain.stdout}}.one:443,http://plex.{{domain.stdout}}.one:80"
   register: plex_url
-- debug: msg="Your plex_url is {{ plex_url.stdout }}"
+- debug: msg="Your plex_url is {{plex_url.stdout}}"
 
 - set_fact:
       plex_advert_ip: "http://{{local_ip.stdout}}:32400"
