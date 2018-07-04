@@ -104,7 +104,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{ptoken.stdout}}"
+      PLEX_CLAIM: "{{ptoken.user_input}}"
       ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
     networks:
       - name: plexguide
@@ -135,6 +135,52 @@
       traefik.frontend.entryPoints: "http,https"
   when: selection.user_input == "2"
 ######################################### DEPLOY PLEX LOCAL (ANSWER 3)
+- name: Deploy Plex Container (Local Edition)
+  docker_container:
+    name: plex
+    image: "plexinc/pms-docker:latest"
+    pull: yes
+    published_ports:
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "33400:33400/tcp"
+      - "33443:33443/tcp"
+    env:
+      PLEX_UID: 1000
+      PLEX_GID: 1000
+    networks:
+      - name: plexguide
+        aliases:
+          - plex
+    volumes:
+      - "/tmp:/tmp"
+      - "/opt/appdata/plex/database:/config"
+      - "/opt/transcodes:/transcode"
+      - "/mnt/plexdrive:/plexdrive"
+      - "/mnt/encrypt:/encrypt"
+      - "/mnt/unionfs:/unionfs"
+      - "/:/yourcomputer"
+      - "/mnt/gdrive:/gdrive"
+      - "/mnt/tdrive:/tdrive"
+      - "/etc/localtime:/etc/localtime:ro"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
+    cpu_shares: 1024
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
+      traefik.port: "32400"
+      traefik.frontend.entryPoints: "http,https"
+  when: selection.user_input == "3"
 
 ######################################## ENDING PHASE
 - pause:
