@@ -22,6 +22,22 @@ echo 'INFO - @Unencrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/pl
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
+file="/var/plexguide/move.bw"
+if [ -e "$file" ]
+  then
+echo "" 1>/dev/null 2>&1
+  else
+echo "10 MB" > /var/plexguide/move.bw 1>/dev/null 2>&1
+fi
+
+if [ "$selected" != "Move" ]
+  then
+  echo "" > /var/plexguide/move.bw 1>/dev/null 2>&1
+  $bwlimit="Not Applied For ST2"
+else
+  bwlimit=$( cat /var/plexguide/move.bw )
+fi
+
 HEIGHT=13
 WIDTH=50
 CHOICE_HEIGHT=5
@@ -29,9 +45,10 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
 
-OPTIONS=(B "Config : RClone"
-         C "Deploy : PGDrive"
-         D "Deploy : $selected"
+OPTIONS=(A "Config : RClone"
+         B "Deploy : PGDrive"
+         C "Deploy : $selected"
+         D "BWLimit: $bwlimit"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -44,7 +61,7 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        B)
+        A)
             #### RClone Missing Warning - START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -82,7 +99,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
             ;;
-        C)
+        B)
             #### RCLONE MISSING START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -135,7 +152,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
-        D)
+        C)
             #### RClone Missing Warning -START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -187,8 +204,15 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
             echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
             ;;
+            D)
+            if [ "$selected" != "Move" ]
+              then
+              dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
+            else
+              bwlimit=$( cat /var/plexguide/move.bw )
+              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy PG Drives for the BWLimit Change" 0 0
+            fi
             F)
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
             echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
