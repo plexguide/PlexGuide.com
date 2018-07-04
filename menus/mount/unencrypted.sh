@@ -37,7 +37,7 @@ if [ "$selected" == "SuperTransfer2" ]
   bwlimit=$( cat /var/plexguide/move.bw )
 fi
 
-HEIGHT=13
+HEIGHT=12
 WIDTH=52
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
