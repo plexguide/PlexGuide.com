@@ -184,7 +184,7 @@
 
 ######################################## ENDING PHASE
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400 Now and Claim Your Server before moving on!\n\nTIP: 1 - Click The Upper Left Corner and Look for a Unique Plex Name\nTIP 2: Ensure to goto Remote Access and Type Port 32400\n\nPress [ENTER] to EXIT"
+    prompt: "\nVisit {{ipaddress.stdout}}:32400 and CLAIM your PLEX SERVER First!\n\nTIP 1: Select Server Names - Upper Left. Look for a Unique Name (Example: dd8c78459a6f)\nTIP 2: Visit Settings - Go To Remote Access and Type Port 32400and Enable\nTIP 3: After enabling and APPEARS not to work, refresh or test with a second device!\nTIP 4: Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM!"
   when: selection.user_input == "2"
 
 - debug: msg="Remote Plex Server Installed"
