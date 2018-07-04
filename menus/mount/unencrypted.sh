@@ -209,9 +209,12 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               then
               dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
             else
+              dialog --title "TYPE A NUMBER 1 - 999 [Example: 50 = 50MB ]" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --inputbox "NUMBER in MB: " 8 50 2>/var/plexguide/move.number
+              path=$(cat /var/plexguide/move.number)
               dialog --title "NOTE!" --msgbox "\nYou Must Redeploy PG Drives for the BWLimit Change" 0 0
             fi
-
             ;;
             F)
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
