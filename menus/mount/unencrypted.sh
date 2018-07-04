@@ -25,7 +25,7 @@ selected=$( cat /var/plexguide/menu.select )
 file="/var/plexguide/move.bw"
 if [ -e "$file" ]
   then
-echo "" > /var/plexguide/move.bw
+  echo "" 1>/dev/null 2>&1
   else
 echo "10 MB" > /var/plexguide/move.bw
 fi
