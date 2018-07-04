@@ -16,7 +16,6 @@
 #
 #################################################################################
 ---
-
 - pause:
     prompt: "\nWelcome to PG PLEX Installer!\n\n1 - Exit PG Fork\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
