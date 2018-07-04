@@ -32,9 +32,7 @@ fi
 
 if [ "$selected" == "SuperTransfer2" ]
   then
-  $bwlimit="Not Applied For ST2"
-else
-  bwlimit=$(cat /var/plexguide/move.bw)
+  bwlimit="Not Applied For ST2"
 fi
 
 HEIGHT=13
