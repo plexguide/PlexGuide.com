@@ -32,7 +32,7 @@ fi
 
 if [ "$selected" != "Move" ]
   then
-  echo "" > /var/plexguide/move.bw 1>/dev/null 2>&1
+  echo "" > /var/plexguide/move.bw
   $bwlimit="Not Applied For ST2"
 else
   bwlimit=$(cat /var/plexguide/move.bw)
