@@ -47,7 +47,7 @@
   register: plex_prefs
 
 - name: "Get Plex Custom URL"
-  shell: "https://plex.{{domain.stodut}}:443,http://plex.{{domain.stdout}}:80"
+  shell: "https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
   register: plex_url
   when: selection.user_input == "2"
 
