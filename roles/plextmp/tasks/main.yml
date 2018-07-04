@@ -18,7 +18,7 @@
 ---
 
 - pause:
-    prompt: "\nWelcome to PG PLEX Installer!\n\n1 - Exit PG Fork\n2 - Install Plex\n\nType a Selection Number"
+    prompt: "\nWelcome to PG PLEX Installer!\n\n1 - Exit PG Fork\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
