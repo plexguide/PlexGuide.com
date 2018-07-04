@@ -73,7 +73,6 @@
   register: dev_dri
 
 - debug: msg="Your IP Address is {{ipaddress.stdout}}"
-  when: plex_prefs.stat.exists == False
 
 - name: Pull Plex Image
   docker_image:
