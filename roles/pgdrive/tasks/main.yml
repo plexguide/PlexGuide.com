@@ -86,7 +86,7 @@
       - move
 
   - name: Bandwidth Limit
-    shell: "echo /var/plexguide/move.bw"
+    shell: "cat /var/plexguide/move.bw"
     register: bandwidth
     ignore_errors: True
     tags:
