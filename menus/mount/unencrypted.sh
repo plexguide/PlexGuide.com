@@ -209,9 +209,10 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               then
               dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
             else
-              bwlimit=$( cat /var/plexguide/move.bw )
               dialog --title "NOTE!" --msgbox "\nYou Must Redeploy PG Drives for the BWLimit Change" 0 0
             fi
+
+            ;;
             F)
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
             echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
