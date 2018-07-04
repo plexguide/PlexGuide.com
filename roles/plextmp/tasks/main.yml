@@ -16,32 +16,30 @@
 #
 #################################################################################
 ---
+#- include_vars: variables.yml
+
+#- include_role:
+#    name: pgmstart
+
 - pause:
     prompt: "\nWelcome to PG PLEX Installer!\n\n1 - Exit PG Fork\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
   delay: 1
+######################################### PLEX TOKEN REQUEST FOR LOCAL
 
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- pause:
+    prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim!\n\n1 - TIP 1: Click Copy ClipBoard\n2 - TIP 2: Windows Users: Shift+Insert to Paste\n3 - TIP 3: This is for Remote Servers Only! (Non-Local)\n\nType a Number Selection and Press [ENTER]"
+  register: ptoken
+  when: selection.user_input == "2"
 
-- include_role:
-    name: variables
+- debug: msg="Using following Plex claim token {{ptoken.stdout}}"
+  when: selection.user_input == "2"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: plex
-    state: absent
-  ignore_errors: yes
-
-- name: "Get Server IP"
-  shell: "hostname -I | awk '{print $1}'"
-  register: local_ip
-
-- name: "Establishing Plex Tag Version"
-  shell: "awk '{print $1}' /var/plexguide/plextag"
-  register: plextag_var
+#- name: "Establishing Plex Tag Version"
+#  shell: "awk '{print $1}' /var/plexguide/plextag"
+#  register: plextag_var
 
 - name: Check Preferences.xml exists
   stat:
@@ -51,15 +49,21 @@
 - name: "Get Plex Custom URL"
   shell: "cat /var/plexguide/plex.url"
   register: plex_url
+  when: selection.user_input == "2"
+
 - debug: msg="Your plex_url is {{ plex_url.stdout }}"
+  when: selection.user_input == "2"
 
 - set_fact:
-      plex_advert_ip: "http://{{local_ip.stdout}}:32400"
-  when: plex_url.stdout == ""
+      plex_advert_ip: "http://{{ipaddress.stdout}}:32400"
+  when:
+    - selection.user_input == "2"
 
 - set_fact:
-      plex_advert_ip: "{{ plex_url.stdout }}"
-  when: plex_url.stdout != ""
+      plex_advert_ip: "{{plex_url.stdout}}"
+  when:
+    - plex_url.stdout != ""
+    - selection.user_input == "2"
 
 - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
 
@@ -71,25 +75,20 @@
 - debug: msg="Your IP Address is {{local_ip.stdout}}"
   when: plex_prefs.stat.exists == False
 
-- name: "Establishing Plex Token Version"
-  shell: "cat /var/plexguide/plextoken"
-  register: plextoken_var
-
-- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
-
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:{{plextag_var.stdout}}"
+    name: "plexinc/pms-docker:latest"
 
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
       - /opt/transcodes
 
-- name: Deploy Plex Container
+######################################### DEPLOY PLEX REMOTE (ANSWER 2)
+- name: Deploy Plex Container (Remote Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextag_var.stdout}}"
+    image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
       #- "32400:32400"
@@ -107,7 +106,7 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plextoken_var.stdout}}"
+      PLEX_CLAIM: "{{ptoken.stdout}}"
       ADVERTISE_IP: "{{plex_advert_ip}}"
     networks:
       - name: plexguide
@@ -120,10 +119,11 @@
       - "/opt/appdata/plex/database:/config"
       - "/opt/transcodes:/transcode"
       - "/mnt/plexdrive:/plexdrive"
-      - "/mnt/rcache:/rcache"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
+      - "/mnt/gdrive:/gdrive"
+      - "/mnt/tdrive:/tdrive"
       - "/etc/localtime:/etc/localtime:ro"
     devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
     etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
@@ -135,14 +135,61 @@
       traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
-############### merge both of them with an if
+  when: selection.user_input == "2"
+######################################### DEPLOY PLEX REMOTE (ANSWER 3)
+- name: Deploy Plex Container (Local Edition)
+  docker_container:
+    name: plex
+    image: "plexinc/pms-docker:latest"
+    pull: yes
+    published_ports:
+      #- "32400:32400"
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "33400:33400/tcp"
+      - "33443:33443/tcp"
+    env:
+      PLEX_UID: 1000
+      PLEX_GID: 1000
+      #PLEX_CLAIM: "{{plextoken_var.stdout}}"
+      #ADVERTISE_IP: "{{plex_advert_ip}}"
+    networks:
+      - name: plexguide
+        aliases:
+          - plex
+    expose:
+      - 32400
+    volumes:
+      - "/tmp:/tmp"
+      - "/opt/appdata/plex/database:/config"
+      - "/opt/transcodes:/transcode"
+      - "/mnt/plexdrive:/plexdrive"
+      - "/mnt/encrypt:/encrypt"
+      - "/mnt/unionfs:/unionfs"
+      - "/:/yourcomputer"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt/gdrive:/gdrive"
+      - "/mnt/tdrive:/tdrive"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
+    cpu_shares: 1024
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
+      traefik.port: "32400"
+      traefik.frontend.entryPoints: "http,https"
+    when: selection.user_input == "3"
 
 - debug: msg="Remote Plex Server Installed"
 
-- name: Create autoscan Logs folder
-  file:
-    path: "/opt/appdata/scan/Logs/Plex Media Server"
-    state: directory
-    mode: 0775
-    owner: "1000"
-    group: "1000"
+#- include_role:
+#    name: pgmend
