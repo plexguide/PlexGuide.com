@@ -30,7 +30,7 @@ echo "" > /var/plexguide/move.bw
 echo "10 MB" > /var/plexguide/move.bw
 fi
 
-if [ "$selected" != "Move" ]
+if [ "$selected" == "SuperTransfer2" ]
   then
   echo "" > /var/plexguide/move.bw
   $bwlimit="Not Applied For ST2"
