@@ -16,10 +16,10 @@
 #
 #################################################################################
 ---
-#- include_vars: variables.yml
+- include_vars: variables.yml
 
-#- include_role:
-#    name: pgmstart
+- include_role:
+    name: pgmstart
 
 - pause:
     prompt: "\nWelcome to PG PLEX Installer!\n\n1 - Exit PG Fork\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
