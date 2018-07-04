@@ -30,11 +30,11 @@
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
-    prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim!\n\n1 - TIP 1: Click Copy ClipBoard\n2 - TIP 2: Windows Users: Shift+Insert to Paste\n3 - TIP 3: This is for Remote Servers Only! (Non-Local)\n\nType a Number Selection and Press [ENTER]"
+    prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim!\n\nTIP 1: Click Copy ClipBoard\nTIP 2: Windows Users: Shift+Insert to Paste\nTIP 3: This is for Remote Servers Only! (Non-Local)\n\nCOPY & PASTE your TOKEN and [ENTER]"
   register: ptoken
   when: selection.user_input == "2"
 
-- debug: msg="Using following Plex claim token {{ptoken.stdout}}"
+- debug: msg="Using the following Plex claim token {{ptoken.stdout}}"
   when: selection.user_input == "2"
 
 #- name: "Establishing Plex Tag Version"
