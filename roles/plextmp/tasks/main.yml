@@ -105,7 +105,7 @@
       PLEX_UID: 1000
       PLEX_GID: 1000
       PLEX_CLAIM: "{{ptoken.stdout}}"
-      ADVERTISE_IP: "{{ipaddress.stdout}}"
+      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
     networks:
       - name: plexguide
         aliases:
