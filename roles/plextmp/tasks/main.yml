@@ -182,6 +182,11 @@
       traefik.frontend.entryPoints: "http,https"
   when: selection.user_input == "3"
 
+######################################## ENDING PHASE
+- pause:
+    prompt: "\nVisit {{ipaddress.stdout}}:32400 Now and Claim Your Server before moving on!\n\nTIP: 1 - Click The Upper Left Corner and Look for a Unique Plex Name\nTIP 2: Ensure to goto Remote Access and Type Port 32400\n\nPress [ENTER] to EXIT"
+  when: selection.user_input == "2"
+
 - debug: msg="Remote Plex Server Installed"
 
 #- include_role:
