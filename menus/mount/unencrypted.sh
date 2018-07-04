@@ -214,7 +214,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
               number=$(cat /var/plexguide/move.number)
 
-            if ["$number" -gt "999"] || ["$number" -lt "1"]
+            if [ $number -gt 999 -o $number -lt 1 ]
             then
               dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
               exit
