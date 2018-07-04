@@ -32,7 +32,6 @@ fi
 
 if [ "$selected" == "SuperTransfer2" ]
   then
-  echo "" > /var/plexguide/move.bw
   $bwlimit="Not Applied For ST2"
 else
   bwlimit=$(cat /var/plexguide/move.bw)
