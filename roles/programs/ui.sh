@@ -42,27 +42,27 @@ case $CHOICE in
 
       A)
         echo 'INFO - Selected: HeimDall' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall --extra-vars "skipend=no"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
       B)
       echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
         ;;
       C)
           echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-          clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux
+          clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux --extra-vars "skipend=no"
           read -n 1 -s -r -p "Press any key to continue"
           ;;
       D)
         echo 'INFO - Selected: Organizr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr --extra-vars "skipend=no"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
         E)
         echo 'INFO - Selected: OrganizrV2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2 --extra-vars "skipend=no"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
      Z)

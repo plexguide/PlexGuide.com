@@ -46,13 +46,13 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             echo 'INFO - Selected: AllTube' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
         B)
             echo 'INFO - Selected: Monitorr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
@@ -74,28 +74,28 @@ case $CHOICE in
             ;;
         D)
             echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
             echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         F)
             echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         G)
             echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
         H)
             echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;

@@ -47,22 +47,22 @@ case $CHOICE in
                 ;;
         B)
             echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         C)
             echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         D)
             echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
             echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         Z)
