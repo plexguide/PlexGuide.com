@@ -49,7 +49,6 @@ case $CHOICE in
         A)
         echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                    bash /opt/plexguide/roles/deploychoice.sh ;;
-            ;;
         B)
         echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                     touch /var/plexguide/traefik.lock
