@@ -26,9 +26,6 @@
 - pause:
     prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Exit Plex Installer\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
-  until: selection > "0" and selection < "4"
-  retries: 99
-  delay: 1
   #when: skipvar1 == "off"
 
 - name: Restart {{pgrole}} Container - User Exiting
