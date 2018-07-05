@@ -16,39 +16,24 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Unencrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
-file="/var/plexguide/move.bw"
-if [ -e "$file" ]
-  then
-    echo "" 1>/dev/null 2>&1
-  else
-    echo "10 MB" > /var/plexguide/move.bw
-fi
-
-if [ "$selected" == "SuperTransfer2" ]
-  then
-  bwlimit="Not Applied For ST2"
-  else
-  bwlimit=$( cat /var/plexguide/move.bw )
-  extra=$( echo "MB [Change It]")
-fi
-
-HEIGHT=12
-WIDTH=52
-CHOICE_HEIGHT=5
+HEIGHT=14
+WIDTH=50
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Config RClone : File"
-         B "Deploy Method : PGDrive"
-         C "Upload BWLimit: $bwlimit $extra"
-         D "Deploy Mount  : $selected"
+OPTIONS=(A "Install: RClone"
+         B "Config : RClone"
+         C "Deploy : PGDrive"
+         D "Deploy : $selected"
+         E "Remove old services - e.g. PlexDrive"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -62,15 +47,34 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
+echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+clear
+curl https://rclone.org/install.sh | sudo bash
+sleep 1
+dialog --title "RClone Status" --msgbox "\nThe LATEST RCLONE is now Installed!" 0 0
+
+################# Needed FOR RCLONE
+tee "/etc/fuse.conf" > /dev/null <<EOF
+# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
+# Set the maximum number of FUSE mounts allowed to non-root users.
+# The default is 1000.
+#mount_max = 1000
+# Allow non-root users to specify the allow_other or allow_root mount options.
+user_allow_other
+EOF
+            chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
+            chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+            ;;
+        B)
             #### RClone Missing Warning - START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                  echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
 echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -79,8 +83,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             rclone config
             touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
             #### GREP Checks
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+            gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
@@ -94,12 +98,12 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
                mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
                touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-               rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
-               rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
+               rclone copy /tmp/pgchecker gcrypt:/plexguide/ &>/dev/null &
+               rclone copy /tmp/pgchecker tcrypt:/plexguide/ &>/dev/null &
                echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
             ;;
-        B)
+        C)
             #### RCLONE MISSING START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -108,74 +112,61 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                 else
                 echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
-
             #### RCLONE MISSING END
 echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+#            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+#            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+            gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
-#            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+#            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard_en
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+#            if dialog --stdout --title "PAY ATTENTION!" \
+#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
+
+#                ansible-role  services_remove
+            #fi
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
             touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
             #### IF EXIST - DEPLOY
-            if [ "$tdrive" == "[tdrive]" ]
+            if [ "$tcrypt" == "[tcrypt]" ]
               then
 
-              #### ADDS TDRIVE to the UNIONFS PATH
+              #### ADDS TCRYPT to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags tdrive
+              ansible-playbook /opt/plexguide/pg.yml --tags tcrypt
+              echo 'INFO - DEPLOYED TCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
 
-            if [ "$gdrive" == "[gdrive]" ]
+            if [ "$gcrypt" == "[gcrypt]" ]
               then
 
-              #### ADDS GDRIVE to the UNIONFS PATH
+              #### ADDS GCRYPT to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags gdrive
+              ansible-playbook /opt/plexguide/pg.yml --tags gcrypt
+              echo 'INFO - DEPLOYED GCRYPT' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             fi
 
             #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/pg.yml --tags unionfs
-            ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
+            ansible-playbook /opt/plexguide/pg.yml --tags unionfs_en
+            ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor_en
+            echo 'INFO - DEPLOYED UNIONFS' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
-            ;;
-            C)
-            if [ "$selected" != "Move" ]
-              then
-              dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
-            else
-              dialog --title "Change the BW Limit" \
-              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
-              number=$(cat /var/plexguide/move.number)
-
-            if [ $number -gt 999 -o $number -lt 1 ]
-            then
-              dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
-              exit
-            fi
-              echo $number > /var/plexguide/move.bw
-              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
-            fi
-            ;;
-            F)
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            #ansible-role services_remove
-            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         D)
             #### RClone Missing Warning -START
@@ -185,50 +176,60 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
                   echo "" 1>/dev/null 2>&1
                 else
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
             #### RClone Missing Warning - END
 
             #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+#            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+#            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+            tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+            gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
             #### RECALL VARIABLES END
 
             #### BASIC CHECKS to STOP Deployment - START
-            if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
+            if [[ "$selected" == "Move" && "$gcrypt" != "[gcrypt]" ]]
               then
 echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/menus/mount/unencrypted.sh
+            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
+            bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
             fi
 
-            if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
+            if [[ "$selected" == "SuperTransfer2" && "$tcrypt" != "[tcrypt]" ]]
               then
 echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/menus/mount/unencrypted.sh
+            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tcrypt\nconfiguration in RClone!" 0 0
+            bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
             fi
 
             #### DEPLOY a TRANSFER SYSTEM - START
             if [ "$selected" == "Move" ]
               then
-              ansible-playbook /opt/plexguide/pg.yml --tags move
+              ansible-playbook /opt/plexguide/pg.yml --tags move_en
               read -n 1 -s -r -p "Press any key to continue"
             else
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
-              bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
+              bash /opt/plexguide/scripts/supertransfer-encrypted/config.sh
+              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
             echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
+            ;;
+
+        E)
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+       #     ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         Z)
             exit 0 ;;
@@ -236,4 +237,4 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
 ########## Deploy End
 esac
 
-bash /opt/plexguide/menus/mount/unencrypted.sh
+bash /opt/plexguide/roles/pgdrivenav/encrypted.sh

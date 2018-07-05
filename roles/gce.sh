@@ -57,7 +57,7 @@ case $CHOICE in
                   echo "" 1>/dev/null 2>&1
                 else
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
             #### RClone Missing Warning - END
@@ -80,7 +80,7 @@ echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/ple
                   echo "" 1>/dev/null 2>&1
                 else
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
             #### RCLONE MISSING END
@@ -141,7 +141,7 @@ echo 'INFO - PG Drive Deployed for GCE' > /var/plexguide/pg.log && bash /opt/ple
                   echo "" 1>/dev/null 2>&1
                 else
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
             #### RClone Missing Warning - END
