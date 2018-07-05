@@ -29,5 +29,5 @@
     tags: cron
 
   - pause:
-      prompt: "\nThe Conntine, Press [ENTER]"
+      prompt: "\nView the Access Information Above, then Press [ENTER]"
     when: skipend == "no"
