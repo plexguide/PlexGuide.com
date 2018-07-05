@@ -29,7 +29,7 @@
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
   delay: 1
-  when: "{{ skipvar1 }}" == "off"
+  when: skipvar1 == "off"
 
 - name: Restart {{pgrole}} Container - User Exiting
   docker_container:
