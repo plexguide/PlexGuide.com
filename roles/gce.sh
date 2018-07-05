@@ -29,16 +29,14 @@ CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
-OPTIONS=(A "Configure RCLONE"
-         B "Deploy PG Drive"
-         C "PG SuperTransfer2"
-         D "PG Traefik - Reverse Proxy"
-         E "PG Programs"
-         F "PG Server NET Benchmarks"
-         G "PG Trak"
-         H "PG Troubleshooting Actions"
-         I "PG Backup & Restore"
-         J "PG Updates"
+OPTIONS=(A "Deploy a Mount System"
+         B "PG Traefik - Reverse Proxy"
+         C "PG GCE Programs"
+         D "PG Server NET Benchmarks"
+         E "PG Trak"
+         F "PG Troubleshooting Actions"
+         G "PG Backup & Restore"
+         H "PG Updates"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -49,127 +47,10 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-            clear
-            #### RClone Missing Warning - START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-            #### RClone Missing Warning - END
-            rclone config
-            touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-            #### GREP Checks
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            mkdir -p /root/.config/rclone/
-            chown -R 1000:1000 /root/.config/rclone/
-            cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-echo 'INFO - Configured RClone for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
+        echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+                   bash /opt/plexguide/roles/deploychoice.sh ;;
             ;;
         B)
-            #### RCLONE MISSING START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-            #### RCLONE MISSING END
-
-            #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END
-
-            #### REQUIRED TO DEPLOY STARTING
-            clear
-            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
-
-####  See encrypt.sh for example of script below in use!
-#
-#            if dialog --stdout --title "PAY ATTENTION!" \
-#              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-#              --yesno "\nAre you switching from PlexDrive to PGDrive?\n\nSelect No: IF this is a clean/fresh Server!" 0 0; then
-#
-#                ansible-role  services_remove
-#            fi
-
-            #### BLANK OUT PATH - This Builds For UnionFS
-            rm -r /tmp/path 1>/dev/null 2>&1
-            touch /tmp/path 1>/dev/null 2>&1
-
-            #### IF EXIST - DEPLOY
-            if [ "$tdrive" == "[tdrive]" ]
-              then
-
-              #### ADDS TDRIVE to the UNIONFS PATH
-              echo -n "/mnt/tdrive=RO:" >> /tmp/path
-              ansible-playbook /opt/plexguide/pg.yml --tags tdrive
-            fi
-
-            if [ "$gdrive" == "[gdrive]" ]
-              then
-
-              #### ADDS GDRIVE to the UNIONFS PATH
-              echo -n "/mnt/gdrive=RO:" >> /tmp/path
-              cat "/tmp/path" 1>/var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags gdrive
-            fi
-
-            #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/pg.yml --tags unionfs
-
-            read -n 1 -s -r -p "Press any key to continue"
-            dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
-echo 'INFO - PG Drive Deployed for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-            ;;
-        C)
-            #### RClone Missing Warning -START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-            #### RClone Missing Warning - END
-
-            #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END
-            if [[ "$tdrive" != "[tdrive]" ]]
-              then
-                dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
-                bash /opt/plexguide/roles/gce.sh
-              else
-                systemctl stop move 1>/dev/null 2>&1
-                systemctl disable move 1>/dev/null 2>&1
-                clear
-                bash /opt/plexguide/scripts/supertransfer/config.sh
-echo 'INFO - Deploy SuperTranser2 for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-                ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
-                journalctl -f -u supertransfer2
-                dialog --infobox "Stopping & Removing CloudST2" 3 42
-                sleep 1
-                docker stop cloudst2
-                docker rm cloudst2
-            exit
-            fi
-            ;;
-        D)
         echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                     touch /var/plexguide/traefik.lock
                     clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
@@ -182,25 +63,25 @@ echo 'INFO - Deploy SuperTranser2 for GCE' > /var/plexguide/pg.log && bash /opt/
                         bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
                         echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
                     fi
-                    ;;
-        E)
+            ;;
+        C)
 echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/gce/programs.sh
             ;;
-        F)
+        D)
 echo 'INFO - Selected to View BenchMarks for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/benchmark/main.sh ;;
-        G)
+        E)
 echo 'INFO - Selected to View PGTrak Menu for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/pgtrak/main.sh
             ;;
-        H)
+        F)
 echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/roles/info-tshoot/tshoot.sh ;;
-        I)
+        G)
 echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/menus/backup-restore/main.sh ;;
-        J)
+        H)
 echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/scripts/message/ending.sh
