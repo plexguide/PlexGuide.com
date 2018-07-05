@@ -85,6 +85,13 @@
     tags:
       - move
 
+  - name: Bandwidth Limit
+    shell: "cat /var/plexguide/move.bw"
+    register: bandwidth
+    ignore_errors: True
+    tags:
+      - move
+
   - name: Install MOVE Service
     template:
       src: move_script.js2
@@ -195,7 +202,7 @@
     systemd: state=started name=gdrive daemon_reload=yes enabled=yes
     tags:
       - gdrive
-      
+
 ########### TDRIVE
   - name: Stop If TCRYPT Service Running
     systemd: state=stopped name=tcrypt enabled=no

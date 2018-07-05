@@ -74,8 +74,9 @@ EOF
                 then
                   echo "" 1>/dev/null 2>&1
                 else
+                  echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
 echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -97,11 +98,11 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
+
             #### RCLONE MISSING END
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
@@ -110,11 +111,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
             tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
             gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
-            drive1=$(grep "drive1" /root/.config/rclone/rclone.conf)
-            drive2=$(grep "drive2" /root/.config/rclone/rclone.conf)
-            crypt1=$(grep "crypt1" /root/.config/rclone/rclone.conf)
-            crypt2=$(grep "crypt2" /root/.config/rclone/rclone.conf)
-
             #### RECALL VARIABLES END
 
             #### REQUIRED TO DEPLOY STARTING
@@ -128,7 +124,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### IF EXIST - DEPLOY
             if [ "$tcrypt" == "[tcrypt]" ]
               then
-
               #### ADDS TCRYPT to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/pg.yml --tags tcrypt
@@ -154,36 +149,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                 ansible-playbook /opt/plexguide/pg.yml --tags gdrive_en
               fi
             fi
-
-            #### IF EXIST - DEPLOY
-            if [ "$crypt1" == "[crypt1]" ]
-              then
-              #### ADDS crypt1 to the UNIONFS PATH
-              echo -n "/mnt/.crypt1=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags crypt1
-            else
-              if [ "$drive1" == "[drive1]" ]
-                then
-              #### ADDS drive1 to the UNIONFS PATH
-                echo -n "/mnt/.drive1=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/pg.yml --tags drive1
-              fi
-            fi
-
-            if [ "$crypt2" == "[crypt2]" ]
-              then
-              #### ADDS crypt2 to the UNIONFS PATH
-              echo -n "/mnt/.crypt2=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags crypt2
-            else
-              if [ "$drive2" == "[drive2]" ]
-                then
-                  #### ADDS drive2 to the UNIONFS PATH
-                echo -n "/mnt/.drive2=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/pg.yml --tags drive2
-              fi
-            fi
-
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/pg.yml --tags unionfs_en
 
@@ -198,7 +163,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                   echo "" 1>/dev/null 2>&1
                 else
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/menus/mount/main.sh
+                  bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
             #### RClone Missing Warning - END
@@ -215,7 +180,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               then
 echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/menus/mount/encrypted.sh
+            bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
             fi
 
@@ -223,7 +188,7 @@ echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/p
               then
 echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tcrypt\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/menus/mount/encrypted.sh
+            bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
             fi
 
@@ -237,7 +202,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               systemctl disable move 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
+              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"
             fi
@@ -270,4 +235,4 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
 ########## Deploy End
 esac
 
-bash /opt/plexguide/menus/mount/encrypted.sh
+bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
