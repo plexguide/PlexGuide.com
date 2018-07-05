@@ -188,6 +188,10 @@
     prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Look for a Unique Name (Example: dd8c78459a6f)\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : After enabling and APPEARS not to work, refresh or test with a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
   when: selection.user_input == "2"
 
+- pause:
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Common Issues For Remote Access Failure: UPnP off on Router, Firewalls, or you have a double NAT!\n\nPress [ENTER] after you CONFIRM"
+  when: selection.user_input == "3"
+
 - debug: msg="Plex Server Installed"
 
 #- include_role:
