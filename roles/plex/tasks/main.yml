@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,25 +16,40 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
+    name: pgmstart
 
-- name: Stop and remove any existing container
+- pause:
+    prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Exit Plex Installer\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
+  register: selection
+  until: selection.user_input > "0" and selection.user_input < "4"
+  retries: 99
+  delay: 1
+
+- name: Restart {{pgrole}} Container - User Exiting
   docker_container:
-    name: plex
-    state: absent
-  ignore_errors: yes
+    name: "{{pgrole}}"
+    state: started
+  ignore_errors: True
 
-- name: "Get Server IP"
-  shell: "hostname -I | awk '{print $1}'"
-  register: local_ip
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: selection.user_input == "1"
+######################################### PLEX TOKEN REQUEST FOR LOCAL
 
-- name: "Establishing Plex Tag Version"
-  shell: "awk '{print $1}' /var/plexguide/plextag"
-  register: plextag_var
+- pause:
+    prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim\nServer Claimed Already? Press [ENTER]!\n\nTIP 1: Click Copy ClipBoard\nTIP 2: Windows Users: Shift+Insert to Paste\nTIP 3: This is for Remote Servers Only! (Non-Local)\n\nCOPY & PASTE your TOKEN and [ENTER] - Server Claimed Already? PRESS [ENTER]"
+  register: ptoken
+  when: selection.user_input == "2"
+
+- debug: msg="Using the following Plex claim token {{ptoken.stdout}}"
+  when: selection.user_input == "2"
+
+#- name: "Establishing Plex Tag Version"
+#  shell: "awk '{print $1}' /var/plexguide/plextag"
+#  register: plextag_var
 
 - name: Check Preferences.xml exists
   stat:
@@ -42,50 +57,49 @@
   register: plex_prefs
 
 - name: "Get Plex Custom URL"
-  shell: "cat /var/plexguide/plex.url"
+  shell: "echo https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
   register: plex_url
+
 - debug: msg="Your plex_url is {{ plex_url.stdout }}"
+  when: selection.user_input == "2"
 
 - set_fact:
-      plex_advert_ip: "http://{{local_ip.stdout}}:32400"
-  when: plex_url.stdout == ""
+      plex_advert_ip: "http://{{ipaddress.stdout}}:32400"
+  when:
+    - selection.user_input == "2"
 
 - set_fact:
-      plex_advert_ip: "{{ plex_url.stdout }}"
-  when: plex_url.stdout != ""
+      plex_advert_ip: "{{plex_url.stdout}}"
+  when:
+    - plex_url.stdout != ""
+    - selection.user_input == "2"
 
 - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
+  when: selection.user_input == "2"
 
 - name: Check /dev/dri exists
   stat:
     path: "/dev/dri"
   register: dev_dri
 
-- debug: msg="Your IP Address is {{local_ip.stdout}}"
-  when: plex_prefs.stat.exists == False
-
-- name: "Establishing Plex Token Version"
-  shell: "cat /var/plexguide/plextoken"
-  register: plextoken_var
-
-- debug: msg="Using following Plex claim token {{plextoken_var.stdout}}"
+- debug: msg="Your IP Address is {{ipaddress.stdout}}"
 
 - name: Pull Plex Image
   docker_image:
-    name: "plexinc/pms-docker:{{plextag_var.stdout}}"
+    name: "plexinc/pms-docker:latest"
 
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
       - /opt/transcodes
 
-- name: Deploy Plex Container
+######################################### DEPLOY PLEX REMOTE (ANSWER 2)
+- name: Deploy Plex Container (Remote Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextag_var.stdout}}"
+    image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
-      #- "32400:32400"
       - "32400:32400/tcp"
       - "3005:3005/tcp"
       - "8324:8324/tcp"
@@ -100,8 +114,8 @@
     env:
       PLEX_UID: 1000
       PLEX_GID: 1000
-      PLEX_CLAIM: "{{plextoken_var.stdout}}"
-      ADVERTISE_IP: "{{plex_advert_ip}}"
+      PLEX_CLAIM: "{{ptoken.user_input}}"
+      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
     networks:
       - name: plexguide
         aliases:
@@ -113,10 +127,11 @@
       - "/opt/appdata/plex/database:/config"
       - "/opt/transcodes:/transcode"
       - "/mnt/plexdrive:/plexdrive"
-      - "/mnt/rcache:/rcache"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
       - "/:/yourcomputer"
+      - "/mnt/gdrive:/gdrive"
+      - "/mnt/tdrive:/tdrive"
       - "/etc/localtime:/etc/localtime:ro"
     devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
     etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
@@ -128,13 +143,62 @@
       traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
+  when: selection.user_input == "2"
+######################################### DEPLOY PLEX LOCAL (ANSWER 3)
+- name: Deploy Plex Container (Local Edition)
+  docker_container:
+    name: plex
+    image: "plexinc/pms-docker:latest"
+    pull: yes
+    published_ports:
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "33400:33400/tcp"
+      - "33443:33443/tcp"
+    env:
+      PLEX_UID: 1000
+      PLEX_GID: 1000
+    network_mode: "host"
+    volumes:
+      - "/tmp:/tmp"
+      - "/opt/appdata/plex/database:/config"
+      - "/opt/transcodes:/transcode"
+      - "/mnt/plexdrive:/plexdrive"
+      - "/mnt/encrypt:/encrypt"
+      - "/mnt/unionfs:/unionfs"
+      - "/:/yourcomputer"
+      - "/mnt/gdrive:/gdrive"
+      - "/mnt/tdrive:/tdrive"
+      - "/etc/localtime:/etc/localtime:ro"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
+    cpu_shares: 1024
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
+      traefik.port: "32400"
+      traefik.frontend.entryPoints: "http,https"
+  when: selection.user_input == "3"
 
-- debug: msg="Remote Plex Server Installed"
+######################################## ENDING PHASE
+- pause:
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
+  when: selection.user_input == "2"
 
-- name: Create autoscan Logs folder
-  file:
-    path: "/opt/appdata/scan/Logs/Plex Media Server"
-    state: directory
-    mode: 0775
-    owner: "1000"
-    group: "1000"
+- pause:
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Reasons for Remote Access Failure: UPnP off on Router, Firewalls, or double NAT with the ISP!\n\nPress [ENTER] after you CONFIRM"
+  when: selection.user_input == "3"
+
+- debug: msg="Plex Server Installed"
+
+- include_role:
+    name: pgmend
