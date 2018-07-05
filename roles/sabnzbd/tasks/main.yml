@@ -102,6 +102,12 @@
 
 - replace:
     path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "host_whitelist ="
+    replace: "host_whitelist = sabnzbd.{{domain.stdout}}"
+  when: sabnzbd_ini.stat.exists == False
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
     regexp: "download_dir = Downloads/incomplete"
     replace: "download_dir = /incomplete"
   when: sabnzbd_ini.stat.exists == False
