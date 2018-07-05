@@ -28,6 +28,12 @@
   retries: 99
   delay: 1
 
+- name: Restart {{pgrole}} Container - User Exiting
+  docker_container:
+    name: "{{pgrole}}"
+    state: started
+  ignore_errors: True
+
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: selection.user_input == "1"
