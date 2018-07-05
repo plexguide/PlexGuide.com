@@ -18,7 +18,6 @@
 echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
 export NCURSES_NO_UTF8_ACS=1
-clear
 
 HEIGHT=18
 WIDTH=33
@@ -27,15 +26,15 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
-OPTIONS=(00 "Developer Edition     "
-         Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.006"
-         02 "Release      ~ 6.005"
-         03 "Release      ~ 6.004"
-         04 "Release      ~ 6.003"
-         05 "Historical   ~ 5.1"
-         06 "Historical   ~ 5.013"
-         07 "Historical   ~ 4.1")
+OPTIONS=(Z "----- Exit Menu -----"
+         01 "EDGE         ~ 6.007"
+         02 "Release      ~ 6.006"
+         03 "Release      ~ 6.005"
+         04 "Release      ~ 6.004"
+         05 "Release      ~ 6.003"
+         06 "Historical   ~ 5.1"
+         07 "Historical   ~ 5.013"
+         08 "Historical   ~ 4.1")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -47,39 +46,6 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        00)
-echo 'INFO - Selected to Upgrade PG to DEV Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-
-            version="Developer"
-
-            file="/var/plexguide/ask.yes"
-            if [ -e "$file" ]
-            then
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            if ! dialog --stdout --title "Version User Confirmation" \
-               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-               --yesno "\nDo You Want Install Version - $version?" 7 50; then
-               dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-            clear
-            sudo bash /opt/plexguide/scripts/message/ending.sh
-            exit 0
-                else
-            clear
-            fi
-
-            else
-                clear
-            fi
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            mv /opt/plexguide/scripts/docker-no/upgrade2.sh /tmp
-            cd /tmp
-            bash /tmp/upgrade2.sh
-            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-
-            dialog --title "PG Application Status" --msgbox "\nUpgrade Complete - Version $version!" 0 0
-            clear
-            sudo bash /opt/plexguide/scripts/message/ending.sh
-            exit 0 ;;
         Z)
             bash /opt/plexguide/roles/main.sh
 echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
@@ -106,20 +72,23 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.005" ;;
+            version="6.006" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.004" ;;
+            version="6.005" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.003" ;;
+            version="6.004" ;;
         05)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.1" ;;
+            version="6.003" ;;
         06)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.013" ;;
+            version="5.1" ;;
         07)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.013" ;;
+        08)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="Legacy-v4" ;;
 esac
