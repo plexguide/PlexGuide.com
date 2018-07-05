@@ -65,6 +65,7 @@
     - selection.user_input == "2"
 
 - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
+  when: selection.user_input == "2"
 
 - name: Check /dev/dri exists
   stat:
