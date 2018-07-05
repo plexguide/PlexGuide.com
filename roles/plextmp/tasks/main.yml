@@ -30,7 +30,7 @@
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: selection.user_input != "1"
+  when: selection.user_input == "1"
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
