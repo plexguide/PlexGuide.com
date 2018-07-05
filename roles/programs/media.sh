@@ -42,7 +42,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             echo 'INFO - Selected: Plex' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
                 ;;
         B)
