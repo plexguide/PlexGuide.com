@@ -16,7 +16,7 @@
 #
 #################################################################################
 ---
-- name: Clone Fork
+- name: Cloning Edge
   git:
     repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
     dest: "/opt/plexguide"
