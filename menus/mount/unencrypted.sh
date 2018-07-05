@@ -236,22 +236,3 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
 esac
 
 bash /opt/plexguide/menus/mount/unencrypted.sh
-
-       #E)
-       #     if [ ! "$(docker ps -q -f name=plex)" ]; then
-       #       dialog --title "NOTE!" --msgbox "\nPlex needs to be running!" 7 38
-       #     else
-       #       if [ ! -s /opt/appdata/plexguide/plextoken ]; then
-       #         dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
-       #         bash /opt/plexguide/scripts/plextoken/main.sh
-       #       fi
-       #       ansible-role pgscan
-       #       dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0
-       #     fi
-       #     ;;
-        F)
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            #ansible-role services_remove
-            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
-            ;;
