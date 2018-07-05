@@ -16,6 +16,10 @@
 #
 #################################################################################
 ---
+- name: Remove Current PlexGuide
+  shell: "rm -r /opt/plexguide"
+  ignore_errors: True
+
 - name: Clone Fork
   git:
     repo: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
