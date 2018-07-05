@@ -35,6 +35,7 @@ if [ "$selected" == "SuperTransfer2" ]
   bwlimit="Not Applied For ST2"
   else
   bwlimit=$( cat /var/plexguide/move.bw )
+  extra=$( echo "MB [Change It]")
 fi
 
 HEIGHT=12
@@ -46,8 +47,8 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "Config RClone : File"
          B "Deploy Method : PGDrive"
-         C "Deploy Mount  : $selected"
-         D "Upload BWLimit: $bwlimit MB [Change It]"
+         C "Upload BWLimit: $bwlimit $extra"
+         D "Deploy Mount  : $selected"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -151,7 +152,32 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
-        C)
+            C)
+            if [ "$selected" != "Move" ]
+              then
+              dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
+            else
+              dialog --title "Change the BW Limit" \
+              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+              --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
+              number=$(cat /var/plexguide/move.number)
+
+            if [ $number -gt 999 -o $number -lt 1 ]
+            then
+              dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
+              exit
+            fi
+              echo $number > /var/plexguide/move.bw
+              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
+            fi
+            ;;
+            F)
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            #ansible-role services_remove
+            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+            ;;
+        D)
             #### RClone Missing Warning -START
             file="/usr/bin/rclone" 1>/dev/null 2>&1
               if [ -e "$file" ]
@@ -203,31 +229,6 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
             echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            ;;
-            D)
-            if [ "$selected" != "Move" ]
-              then
-              dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
-            else
-              dialog --title "Change the BW Limit" \
-              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
-              number=$(cat /var/plexguide/move.number)
-
-            if [ $number -gt 999 -o $number -lt 1 ]
-            then
-              dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
-              exit
-            fi
-              echo $number > /var/plexguide/move.bw
-              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
-            fi
-            ;;
-            F)
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            #ansible-role services_remove
-            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         Z)
             exit 0 ;;
