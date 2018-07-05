@@ -29,7 +29,7 @@
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
   delay: 1
-  when: skipvar1 == "off"
+  #when: skipvar1 == "off"
 
 - name: Restart {{pgrole}} Container - User Exiting
   docker_container:
@@ -39,7 +39,7 @@
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: selection.user_input == "1 and skipvar1.stdout == "off"
+  when: selection == "1""
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
