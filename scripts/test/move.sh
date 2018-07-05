@@ -15,16 +15,16 @@ mv /opt/plexguide/ansible/roles/pgdrive_en2 /opt/plexguide/ansible/roles/pgdrive
 #mv /opt/plexguide/ansible/roles/pgdrive_en/templates/move_script.js2 /opt/plexguide/ansible/roles/pgdrive_en/templates/move_script-old.js2
 #mv /opt/plexguide/ansible/roles/pgdrive_en/templates/copy_move_script.js2 /opt/plexguide/ansible/roles/pgdrive_en/templates/move_script.js2
 ## For testing new pgdrive encrypt new location
-rm -r /opt/plexguide/menus/mount/encrypted.sh
-mv /opt/plexguide/menus/mount/encrypted-test.sh /opt/plexguide/menus/mount/encrypted.sh
+rm -r /opt/plexguide/roles/pgdrivenav/encrypted.sh
+mv /opt/plexguide/roles/pgdrivenav/encrypted-test.sh /opt/plexguide/roles/pgdrivenav/encrypted.sh
 
 ## For testing new encache config
 #rm /opt/plexguide/ansible/roles/encache/templates/encache.js2
 #mv /opt/plexguide/ansible/roles/encache/templates/encache2.js2 /opt/plexguide/ansible/roles/encache/templates/encache.js2
 
 ## For testing new pgdrive menus
-#rm /opt/plexguide/menus/mount/main.sh
-#mv /opt/plexguide/menus/mount/main2.sh /opt/plexguide/menus/mount/main.sh
+#rm /opt/plexguide/roles/pgdrivenav/main.sh
+#mv /opt/plexguide/roles/pgdrivenav/main2.sh /opt/plexguide/roles/pgdrivenav/main.sh
 
 ## For testing new info/services menus
 #rm /opt/plexguide/roles/info-tshoot/info.sh
