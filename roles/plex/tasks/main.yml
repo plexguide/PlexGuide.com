@@ -39,7 +39,7 @@
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: selection == "1""
+  when: selection == "1"
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
