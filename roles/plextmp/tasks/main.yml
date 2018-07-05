@@ -49,7 +49,6 @@
 - name: "Get Plex Custom URL"
   shell: "echo https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
   register: plex_url
-  when: selection.user_input == "2"
 
 - debug: msg="Your plex_url is {{ plex_url.stdout }}"
   when: selection.user_input == "2"
