@@ -26,7 +26,7 @@
 - pause:
     prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Exit Plex Installer\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
-  until: selection.user_input > "0" and selection.user_input < "4"
+  until: selection > "0" and selection < "4"
   retries: 99
   delay: 1
   #when: skipvar1 == "off"
@@ -45,10 +45,10 @@
 - pause:
     prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim\nServer Claimed Already? Press [ENTER]!\n\nTIP 1: Click Copy ClipBoard\nTIP 2: Windows Users: Shift+Insert to Paste\nTIP 3: This is for Remote Servers Only! (Non-Local)\n\nCOPY & PASTE your TOKEN and [ENTER] - Server Claimed Already? PRESS [ENTER]"
   register: ptoken
-  when: selection.user_input == "2"
+  when: selection == "2"
 
-- debug: msg="Using the following Plex claim token {{ptoken.stdout}}"
-  when: selection.user_input == "2" and skipvar1.stdout == "off"
+- debug: msg="Using the following Plex claim token {{ptoken}}"
+  when: selection == "2"
 
 #- name: "Establishing Plex Tag Version"
 #  shell: "awk '{print $1}' /var/plexguide/plextag"
@@ -60,32 +60,32 @@
   register: plex_prefs
 
 - name: "Get Plex Custom URL"
-  shell: "echo https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
+  shell: "echo https://plex.{{domain}}:443,http://plex.{{domain}}:80"
   register: plex_url
 
-- debug: msg="Your plex_url is {{ plex_url.stdout }}"
-  when: selection.user_input == "2"
+- debug: msg="Your plex_url is {{ plex_url }}"
+  when: selection == "2"
 
 - set_fact:
-      plex_advert_ip: "http://{{ipaddress.stdout}}:32400"
+      plex_advert_ip: "http://{{ipaddress}}:32400"
   when:
-    - selection.user_input == "2"
+    - selection == "2"
 
 - set_fact:
-      plex_advert_ip: "{{plex_url.stdout}}"
+      plex_advert_ip: "{{plex_url}}"
   when:
-    - plex_url.stdout != ""
-    - selection.user_input == "2"
+    - plex_url != ""
+    - selection == "2"
 
 - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
-  when: selection.user_input == "2"
+  when: selection == "2"
 
 - name: Check /dev/dri exists
   stat:
     path: "/dev/dri"
   register: dev_dri
 
-- debug: msg="Your IP Address is {{ipaddress.stdout}}"
+- debug: msg="Your IP Address is {{ipaddress}}"
 
 - name: Pull Plex Image
   docker_image:
@@ -118,7 +118,7 @@
       PLEX_UID: 1000
       PLEX_GID: 1000
       PLEX_CLAIM: "{{ptoken.user_input}}"
-      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
+      ADVERTISE_IP: "http://{{ipaddress}}:32400"
     networks:
       - name: plexguide
         aliases:
@@ -143,10 +143,10 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:plex.{{domain}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
-  when: selection.user_input == "2"
+  when: selection == "2"
 ######################################### DEPLOY PLEX LOCAL (ANSWER 3)
 - name: Deploy Plex Container (Local Edition)
   docker_container:
@@ -187,19 +187,19 @@
     state: started
     labels:
       traefik.enable: "true"
-      traefik.frontend.rule: "Host:plex.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:plex.{{domain}}"
       traefik.port: "32400"
       traefik.frontend.entryPoints: "http,https"
-  when: selection.user_input == "3"
+  when: selection == "3"
 
 ######################################## ENDING PHASE
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
-  when: selection.user_input == "2"
+    prompt: "\nVisit {{ipaddress}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
+  when: selection == "2"
 
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Reasons for Remote Access Failure: UPnP off on Router, Firewalls, or double NAT with the ISP!\n\nPress [ENTER] after you CONFIRM"
-  when: selection.user_input == "3"
+    prompt: "\nVisit {{ipaddress}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Reasons for Remote Access Failure: UPnP off on Router, Firewalls, or double NAT with the ISP!\n\nPress [ENTER] after you CONFIRM"
+  when: selection == "3"
 
 - debug: msg="Plex Server Installed"
 
