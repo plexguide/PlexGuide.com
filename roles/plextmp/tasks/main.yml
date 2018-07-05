@@ -27,6 +27,10 @@
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
   delay: 1
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: selection.user_input != "1"
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
