@@ -185,7 +185,7 @@
 
 ######################################## ENDING PHASE
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Look for a Unique Name (Example: dd8c78459a6f)\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : After enabling and APPEARS not to work, refresh or test with a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
   when: selection.user_input == "2"
 
 - pause:
