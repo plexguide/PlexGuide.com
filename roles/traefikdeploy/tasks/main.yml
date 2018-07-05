@@ -364,8 +364,8 @@
       PUID: 1000
       PGID: 1000
       PROVIDER: "namecheap"
-      NAMECHEAP_API_USER: "{{name1.user_input}}}"
-      NAMECHEAP_API_KEY: "{{name2.user_input}}}"
+      NAMECHEAP_API_USER: "{{name1.user_input}}"
+      NAMECHEAP_API_KEY: "{{name2.user_input}}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
