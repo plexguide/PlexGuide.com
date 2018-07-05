@@ -19,3 +19,4 @@
 intport: "32400"
 extport: "32400"
 pgrole: "plex"
+skipvar1: "on"

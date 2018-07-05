@@ -21,12 +21,15 @@
 - include_role:
     name: pgmstart
 
+
+
 - pause:
     prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Exit Plex Installer\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
   delay: 1
+  when: skipvar1.stdout == "off"
 
 - name: Restart {{pgrole}} Container - User Exiting
   docker_container:
@@ -36,7 +39,7 @@
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: selection.user_input == "1"
+  when: selection.user_input == "1 and skipvar1.stdout == "off"
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
@@ -45,7 +48,7 @@
   when: selection.user_input == "2"
 
 - debug: msg="Using the following Plex claim token {{ptoken.stdout}}"
-  when: selection.user_input == "2"
+  when: selection.user_input == "2" and skipvar1.stdout == "off"
 
 #- name: "Establishing Plex Tag Version"
 #  shell: "awk '{print $1}' /var/plexguide/plextag"
