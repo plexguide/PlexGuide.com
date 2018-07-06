@@ -104,7 +104,7 @@
   when:
     - plexselect.user_input == "2"
 
-- debug: msg="Type of Plex Being Utlized is {{plextype}}"
+- debug: msg="Plex Being Utlized is {{plextype}}"
 
 ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
 - name: Deploy Plex Container (Remote Edition)
