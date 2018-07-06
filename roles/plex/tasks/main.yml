@@ -162,7 +162,7 @@
 - name: Deploy Plex Container (Local Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextype.user_input}}
+    image: "plexinc/pms-docker:{{plextype.user_input}}"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
