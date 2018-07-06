@@ -5,7 +5,7 @@ tvID=$(curl -H "X-Plex-Token: ${token}" http://127.0.0.1:32400/library/sections 
 
     #sleep 4
 
-    #bash /opt/plexguide/scripts/plextoken/test.sh
+    #bash /opt/plexguide/roles/plextoken/test.sh
     #plextoken=$(cat /opt/appdata/plexguide/plextoken)
     #plextoken="claim-$plextoken"
     #echo "claim-NARF" > /opt/appdata/plexguide/plextoken

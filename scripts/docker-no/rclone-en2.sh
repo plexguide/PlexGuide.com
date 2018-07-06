@@ -229,7 +229,7 @@ touch /var/plexguide/rclone/en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
 echo 10
 # pauses
-bash /opt/plexguide/scripts/docker-no/continue.sh
+bash /opt/plexguide/roles/misc/continue.sh
 echo 11
 # sets a message
 clear
@@ -238,4 +238,4 @@ NOTE: You installed the encrypted version for the RClone data transport!
 If you messed anything up, select [2] and run through again.
 EOF
 
-bash /opt/plexguide/scripts/docker-no/continue.sh
+bash /opt/plexguide/roles/misc/continue.sh

@@ -83,11 +83,11 @@ echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log &&
         H)
 echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
         Z)
 echo 'INFO - Selected: Exit GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
 esac
 
