@@ -100,7 +100,7 @@
 - set_fact:
       plexversion: "public"
   when:
-    - plextype.user_input == "1"
+    - plextype.user_ == "1"
 
 - set_fact:
       plexversion: "pass"
