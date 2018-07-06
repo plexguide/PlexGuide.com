@@ -47,7 +47,7 @@
 - name: Remove {{pgrole}} Container
   docker_container:
     name: "{{pgrole}}"
-    state: stopped
+    state: absent
   ignore_errors: True
 
 - name: Storing Role Name

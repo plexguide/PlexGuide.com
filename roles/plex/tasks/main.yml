@@ -16,11 +16,6 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-
-- include_role:
-    name: pgmstart
-
 - pause:
     prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Exit Plex Installer\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
@@ -31,6 +26,11 @@
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: selection.user_input == "1"
+
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
@@ -78,20 +78,35 @@
 
 - debug: msg="Your IP Address is {{ipaddress.stdout}}"
 
-- name: Pull Plex Image
-  docker_image:
-    name: "plexinc/pms-docker:latest"
-
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
       - /opt/transcodes
 
+- pause:
+    prompt: "\nWhich version of PLEX do you want to Install?!\n\n1 - Plex Public\n2 - Plex Pass\n\nNote: If you do not own a PLEXPASS and select, it will revert to the Public Type\nType a Number Selection and Press [ENTER]"
+  register: plexselect
+  until: plexselect.user_input > "0" and plexselect.user_input < "3"
+  retries: 99
+  delay: 1
+
+- set_fact:
+      plextype: "public"
+  when:
+    - plexselect.user_input == "1"
+
+- set_fact:
+      plextype: "plexpass"
+  when:
+    - plexselect.user_input == "2"
+
+- debug: msg="Plex Being Utlized is {{plextype}}"
+
 ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
 - name: Deploy Plex Container (Remote Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:latest"
+    image: "plexinc/pms-docker:{{plextype}}"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
@@ -185,7 +200,7 @@
 
 ######################################## ENDING PHASE
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2 : Visit Settings - Go To Remote Access and Type Port 32400 and Enable\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2: Visit Settings > Server > Remote Access. Click [Show Advanced] > Click [Enable] >\nCheckMark [Manually Specify Public Port] > Type Port 32400 > [Retry] > [Save Changes]\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
   when: selection.user_input == "2"
 
 - pause:
