@@ -28,7 +28,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
          01 "EDGE         ~ 6.008"
-         02 "Release      ~ 6.007"
+         02 "Release      ~ 6.007U1"
          03 "Release      ~ 6.006"
          04 "Release      ~ 6.005"
          05 "Release      ~ 6.004"
