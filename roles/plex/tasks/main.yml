@@ -87,11 +87,30 @@
   with_items:
       - /opt/transcodes
 
+- pause:
+    prompt: "\nWhich version of PLEX do you want to Install?!\n\n1 - Plex Public\n2 - PlexPass\n\nNote: If you do not own a PLEXPASS and select, it will revert to the Public Type\nType a Number Selection and Press [ENTER]"
+  register: plexselect
+  until: plexselect.user_input > "0" and plexselect.user_input < "3"
+  retries: 99
+  delay: 1
+
+- set_fact:
+      plextype: "public"
+  when:
+    - plexselect.user_input == "1"
+
+- set_fact:
+      plextype: "plexpass"
+  when:
+    - plexselect.user_input == "2"
+
+- debug: msg="Type of Plex Being Utlized is {{plextype}}"
+
 ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
 - name: Deploy Plex Container (Remote Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:latest"
+    image: "plexinc/pms-docker:{{plextype}}"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
