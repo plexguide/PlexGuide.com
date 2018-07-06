@@ -87,11 +87,11 @@ echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/pl
         J)
 echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
         Z)
 echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
 esac
 

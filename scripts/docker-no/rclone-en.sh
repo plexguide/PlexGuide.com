@@ -99,4 +99,4 @@ touch /var/plexguide/rclone/en 1>/dev/null 2>&1
 rm -r /var/plexguide/rclone/un 1>/dev/null 2>&1
 echo 12
 # pauses
-bash /opt/plexguide/scripts/docker-no/continue.sh
+bash /opt/plexguide/roles/misc/continue.sh
