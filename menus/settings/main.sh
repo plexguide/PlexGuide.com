@@ -48,7 +48,7 @@ echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/pl
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
     B)
 echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh ;;
+        bash /opt/plexguide/roles/processor/scripts/processer-menu.sh ;;
     C)
 echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
