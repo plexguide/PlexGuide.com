@@ -87,31 +87,11 @@
   with_items:
       - /opt/transcodes
 
-- debug: msg="Using the following Plex claim token {{ptoken.stdout}}"
-  when: selection.user_input == "2"
-
-- pause:
-    prompt: "\nWhich Type of Plex is Being Installed?\n\n1 - Public\n2 - PlexPass\n\nType a Number Selection and Press [ENTER]"
-  register: plextype
-  until: plextype.user_input > "0" and plextype.user_input < "3"
-  retries: 99
-  delay: 1
-
-- set_fact:
-      plexversion: "public"
-  when:
-    - plextype.user_input == "1"
-
-- set_fact:
-      plexversion: "pass"
-  when:
-    - plextype.user_input == "2"
-
 ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
 - name: Deploy Plex Container (Remote Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextype.user_input}}"
+    image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
@@ -162,7 +142,7 @@
 - name: Deploy Plex Container (Local Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextype.user_input}}
+    image: "plexinc/pms-docker:latest"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
