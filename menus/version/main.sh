@@ -73,7 +73,7 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.006" ;;
+            version="6.007" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="6.006" ;;
