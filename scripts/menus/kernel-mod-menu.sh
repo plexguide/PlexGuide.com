@@ -40,7 +40,7 @@ case $CHOICE in
         ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         read -n 1 -s -r -p "Press any key to continue "
-        bash /opt/plexguide/scripts/menus/processor/reboot.sh
+        bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
@@ -56,7 +56,7 @@ case $CHOICE in
         ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         read -n 1 -s -r -p "Press any key to continue "
-        bash /opt/plexguide/scripts/menus/processor/reboot.sh
+        bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
@@ -73,7 +73,7 @@ case $CHOICE in
         cat /etc/sysctl.conf
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
-        bash /opt/plexguide/scripts/menus/processor/reboot.sh
+        bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
@@ -90,7 +90,7 @@ case $CHOICE in
         cat /etc/sysctl.conf
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
-        bash /opt/plexguide/scripts/menus/processor/reboot.sh
+        bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
@@ -101,7 +101,7 @@ case $CHOICE in
       clear
         if (whiptail --title "Kernel Upgrade" --yesno "Are You Sure You Want To Upgrade Your Kernel? (warning: this may break drivers)" 8 56) then
           sudo apt update -y && sudo apt sudo apt install --install-recommends linux-generic-hwe-16.04
-          bash /opt/plexguide/scripts/menus/processor/reboot.sh
+          bash /opt/plexguide/roles/processor/scripts/reboot.sh
         else
             whiptail --title "Kernel Upgrade" --msgbox "Canceling Kernel Upgrade." 9 66
         fi
@@ -112,7 +112,7 @@ case $CHOICE in
         if (whiptail --title "Kernel Upgrade" --yesno "Are You Sure You Want To Install An Expirimental Kernel? (warning: this may break drivers)" 8 56) then
           echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - http://deb.xanmod.org/gpg.key | sudo apt-key add -
           sudo apt update && sudo apt install linux-xanmod-4.15
-          bash /opt/plexguide/scripts/menus/processor/reboot.sh
+          bash /opt/plexguide/roles/processor/scripts/reboot.sh
         else
             whiptail --title "Kernel Upgrade" --msgbox "Canceling Kernel Upgrade." 9 66
         fi
