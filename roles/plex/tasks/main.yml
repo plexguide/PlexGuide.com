@@ -16,11 +16,6 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-
-- include_role:
-    name: pgmstart
-
 - pause:
     prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Exit Plex Installer\n2 - Plex Install (Remote Server)\n3 - Plex Install (Local Server)\n\nType a Number Selection and Press [ENTER]"
   register: selection
@@ -31,6 +26,11 @@
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: selection.user_input == "1"
+
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
 ######################################### PLEX TOKEN REQUEST FOR LOCAL
 
 - pause:
