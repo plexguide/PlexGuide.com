@@ -27,7 +27,7 @@ if [ -e "$file" ]
   then
     echo "" 1>/dev/null 2>&1
   else
-    echo "10 MB" > /var/plexguide/move.bw
+    echo "10" > /var/plexguide/move.bw
 fi
 
 if [ "$selected" == "SuperTransfer2" ]
