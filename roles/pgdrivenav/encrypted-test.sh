@@ -253,7 +253,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             else
               if [ ! -s /opt/appdata/plexguide/plextoken ]; then
                 dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
-                bash /opt/plexguide/scripts/plextoken/main.sh
+                bash /opt/plexguide/roles/plextoken/main.sh
               fi
               ansible-role pgscan
               dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0

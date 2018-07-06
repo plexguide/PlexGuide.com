@@ -16,7 +16,7 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.007" > /var/plexguide/pg.version
+echo "6.007 U1" > /var/plexguide/pg.version
 echo "108" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
