@@ -100,7 +100,7 @@
 - set_fact:
       plexversion: "public"
   when:
-    - plextype.user_input == "1"
+    - plextype.user_ == "1"
 
 - set_fact:
       plexversion: "pass"
@@ -111,7 +111,7 @@
 - name: Deploy Plex Container (Remote Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextype.user_input}}"
+    image: "plexinc/pms-docker:{{plexversion.stdout}}"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
@@ -162,7 +162,7 @@
 - name: Deploy Plex Container (Local Edition)
   docker_container:
     name: plex
-    image: "plexinc/pms-docker:{{plextype.user_input}}"
+    image: "plexinc/pms-docker:{{plextype.stdout}}"
     pull: yes
     published_ports:
       - "32400:32400/tcp"
