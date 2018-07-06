@@ -78,17 +78,13 @@
 
 - debug: msg="Your IP Address is {{ipaddress.stdout}}"
 
-- name: Pull Plex Image
-  docker_image:
-    name: "plexinc/pms-docker:latest"
-
 - name: Create Transcodes Directory
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
       - /opt/transcodes
 
 - pause:
-    prompt: "\nWhich version of PLEX do you want to Install?!\n\n1 - Plex Public\n2 - PlexPass\n\nNote: If you do not own a PLEXPASS and select, it will revert to the Public Type\nType a Number Selection and Press [ENTER]"
+    prompt: "\nWhich version of PLEX do you want to Install?!\n\n1 - Plex Public\n2 - Plex Pass\n\nNote: If you do not own a PLEXPASS and select, it will revert to the Public Type\nType a Number Selection and Press [ENTER]"
   register: plexselect
   until: plexselect.user_input > "0" and plexselect.user_input < "3"
   retries: 99
