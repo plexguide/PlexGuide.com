@@ -59,12 +59,12 @@ case $CHOICE in
         fi
         ;;
     C)
-        bash /opt/plexguide/scripts/menus/processor/processor-menu.sh
+        bash /opt/plexguide/roles/processor/scripts/processer-menu.sh
         echo "INFO - Selected Processor Power Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
         ;;
     D)
         echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh 
+        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
         ;;
     E)
         echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
