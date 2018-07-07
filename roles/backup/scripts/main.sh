@@ -34,4 +34,3 @@ while read p; do
 
 done </tmp/backup.list
 clear
-cat /tmp/backup.build

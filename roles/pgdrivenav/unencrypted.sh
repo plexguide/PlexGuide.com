@@ -22,19 +22,19 @@ echo 'INFO - @Unencrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/pl
 selected=$( cat /var/plexguide/menu.select )
 ################################################################## CORE
 
-file="/var/plexguide/move.bw"
+file="/var/plexguide//opt/plexguide/roles/plextoken/.bw"
 if [ -e "$file" ]
   then
     echo "" 1>/dev/null 2>&1
   else
-    echo "10 MB" > /var/plexguide/move.bw
+    echo "10" > /var/plexguide//opt/plexguide/roles/plextoken/.bw
 fi
 
 if [ "$selected" == "SuperTransfer2" ]
   then
   bwlimit="Not Applied For ST2"
   else
-  bwlimit=$( cat /var/plexguide/move.bw )
+  bwlimit=$( cat /var/plexguide//opt/plexguide/roles/plextoken/.bw )
   extra=$( echo "MB [Change It]")
 fi
 
@@ -122,7 +122,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
-#            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+#            ansible-playbook /opt/plexguide/scripts/test/check-re/opt/plexguide/roles/plextoken//tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
@@ -153,29 +153,29 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
             C)
-            if [ "$selected" != "Move" ]
+            if [ "$selected" != "/opt/plexguide/roles/plextoken/" ]
               then
               dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
             else
               dialog --title "Change the BW Limit" \
               --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
-              number=$(cat /var/plexguide/move.number)
+              --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide//opt/plexguide/roles/plextoken/.number
+              number=$(cat /var/plexguide//opt/plexguide/roles/plextoken/.number)
 
             if [ $number -gt 999 -o $number -lt 1 ]
             then
               dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
               exit
             fi
-              echo $number > /var/plexguide/move.bw
-              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
+              echo $number > /var/plexguide//opt/plexguide/roles/plextoken/.bw
+              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG /opt/plexguide/roles/plextoken/] for the BWLimit Change!" 0 0
             fi
             ;;
             F)
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            #ansible-role services_remove
-            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+            ansible-playbook /opt/plexguide/scripts/test/check-re/opt/plexguide/roles/plextoken//tasks/main.yml
+            echo 'INFO - RE/opt/plexguide/roles/plextoken/D OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            #ansible-role services_re/opt/plexguide/roles/plextoken/
+            dialog --title " All Google Related Services Re/opt/plexguide/roles/plextoken/d!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         D)
             #### RClone Missing Warning -START
@@ -196,10 +196,10 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/s
             #### RECALL VARIABLES END
 
             #### BASIC CHECKS to STOP Deployment - START
-            if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
+            if [[ "$selected" == "/opt/plexguide/roles/plextoken/" && "$gdrive" != "[gdrive]" ]]
               then
-echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+echo 'FAILURE - Using /opt/plexguide/roles/plextoken/: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG /opt/plexguide/roles/plextoken/!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
             exit
             fi
@@ -213,13 +213,13 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             fi
 
             #### DEPLOY a TRANSFER SYSTEM - START
-            if [ "$selected" == "Move" ]
+            if [ "$selected" == "/opt/plexguide/roles/plextoken/" ]
               then
-              ansible-playbook /opt/plexguide/pg.yml --tags move
+              ansible-playbook /opt/plexguide/pg.yml --tags /opt/plexguide/roles/plextoken/
               read -n 1 -s -r -p "Press any key to continue"
             else
-              systemctl stop move 1>/dev/null 2>&1
-              systemctl disable move 1>/dev/null 2>&1
+              systemctl stop /opt/plexguide/roles/plextoken/ 1>/dev/null 2>&1
+              systemctl disable /opt/plexguide/roles/plextoken/ 1>/dev/null 2>&1
               clear
               bash /opt/plexguide/scripts/supertransfer/config.sh
               ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2

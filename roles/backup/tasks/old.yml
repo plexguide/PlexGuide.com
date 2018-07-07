@@ -17,8 +17,8 @@
 #################################################################################
 ---
 - name: "Establishing Variable"
-  shell: "echo /tmp/backup.build"
-  register: backlist
+  shell: "awk '{print $1}' /tmp/program_var"
+  register: program_var
   tags:
     - backup_normal
 
@@ -27,10 +27,6 @@
   register: server_id
   tags:
     - backup_normal
-
-- pause:
-    prompt: "\nPrograms: {{backlist.stdout}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
-  register: backupchoice
 
 - debug: msg="Temp Message - For {{program_var.stdout}} - Server ID {{server_id.stdout}}"
   tags:
