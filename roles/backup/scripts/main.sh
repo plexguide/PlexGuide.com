@@ -24,6 +24,7 @@ sed -i -e "/x2go*/d" /tmp/backup.list
 sed -i -e "/speed*/d" /tmp/backup.list
 sed -i -e "/netdata/d" /tmp/backup.list
 sed -i -e "/plexguide/d" /tmp/backup.list
+sed -i -e "/portainer/d" /tmp/backup.list
 
 rm -r /tmp/backup.build 1>/dev/null 2>&1
 #### Commenting Out To Let User See
