@@ -45,10 +45,6 @@
   register: program_final
   when: switch == "on"
 
-- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
-  tags:
-    - backup_normal
-
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
     path: /opt/appdata/{{program_final.stdout}}
