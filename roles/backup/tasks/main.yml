@@ -33,7 +33,7 @@
   register: backupchoice
 
 - name: "Evaluate GREP"
-  shell: "cat /tmp/backup.build | grep -c -w '{{backupchoice}}'"
+  shell: "cat /tmp/backup.build | grep -c -w '{{backupchoice.user_input}}'"
   register: statement
   tags:
     - backup_normal
