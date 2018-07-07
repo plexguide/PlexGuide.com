@@ -18,13 +18,13 @@
 ls -la /opt/appdata | awk '{ print $9}' | tail -n 9 > /tmp/backup.list
 rm -r /tmp/backup.build 1>/dev/null 2>&1
 
-sed -i -e "/traefik/d" /tmp/backup.build 1>/dev/null 2>&1
-sed -i -e "/watchtower/d" /tmp/backup.build 1>/dev/null 2>&1
-sed -i -e "/word*/d" /tmp/backup.build 1>/dev/null 2>&1
-sed -i -e "/plex/d" /tmp/backup.build 1>/dev/null 2>&1
-sed -i -e "/x2go*/d" /tmp/backup.build 1>/dev/null 2>&1
-sed -i -e "/speed*/d" /tmp/backup.build 1>/dev/null 2>&1
-sed -i -e "/netdata/d" /tmp/backup.build 1>/dev/null 2>&1
+sed -i -e "/traefik/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/watchtower/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/word*/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/plex/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/x2go*/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/speed*/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/netdata/d" /tmp/backup.list 1>/dev/null 2>&1
 
 clear
 #### Commenting Out To Let User See
@@ -33,4 +33,3 @@ while read p; do
   echo -n " " >> /tmp/backup.build
 
 done </tmp/backup.list
-clear
