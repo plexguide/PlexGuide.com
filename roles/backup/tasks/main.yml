@@ -32,12 +32,6 @@
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: program_var
 
-- name: "Establishing Variable"
-  shell: "awk '{print $1}' /tmp/program_var"
-  register: program_var
-  tags:
-    - backup_normal
-
 - debug: msg="Temp Message - For {{program_var.user_input}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
