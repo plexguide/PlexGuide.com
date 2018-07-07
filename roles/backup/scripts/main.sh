@@ -29,7 +29,8 @@ sed -i -e "/netdata/d" /tmp/backup.build
 clear
 #### Commenting Out To Let User See
 while read p; do
-  echo $p >> /tmp/backup.build && echo " " >> /tmp/backup.build
+  echo -n $p >> /tmp/backup.build
+  echo -n " " >> /tmpbackup.build
 
 done </tmp/backup.list
 clear
