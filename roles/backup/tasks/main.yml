@@ -33,7 +33,7 @@
 - name: "Establishing Variable"
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_final
-  when: {{switch}} == "on"
+  when: "{{switch}}" == "on"
 
 - pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
