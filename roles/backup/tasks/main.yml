@@ -38,6 +38,8 @@
   tags:
     - backup_normal
 
+#cat /tmp/backup.build | cut -f1 -d: | grep '\<ombi\>'
+
 - debug: msg="Temp Message - For {{statement.stdout}}"
   tags:
     - backup_normal
