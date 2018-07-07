@@ -32,13 +32,13 @@
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: program_var
 
-- debug: msg="Temp Message - For {{program_var.user_input}} - Server ID {{server_id.stdout}}"
+- debug: msg="Temp Message - For {{program_var}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
 
-- name: "Checking {{program_var.user_input}} location in APPDATA"
+- name: "Checking {{program_var}} location in APPDATA"
   stat:
-    path: /opt/appdata/{{program_var.user_input}}
+    path: /opt/appdata/{{program_var}}
   register: programappdata
   tags:
     - backup_normal
@@ -50,9 +50,9 @@
   tags:
     - backup_normal
 
-- name: Stopping Docker Container - {{program_var.user_input}}
+- name: Stopping Docker Container - {{program_var}}
   docker_container:
-    name: "{{program_var.user_input}}"
+    name: "{{program_var}}"
     state: stopped
   ignore_errors: True
   when: programappdata.stat.exists == True
@@ -71,18 +71,18 @@
   tags:
     - backup_plex
 ########### FOR PLEX - END // BACKUP OTHER - START
-- name: Backing Up Program to GDrive - {{program_var.user_input}}
+- name: Backing Up Program to GDrive - {{program_var}}
   archive:
     path:
-    - /opt/appdata/{{program_var.user_input}}/*
-    dest: /tmp/{{program_var.user_input}}.tar
+    - /opt/appdata/{{program_var}}/*
+    dest: /tmp/{{program_var}}.tar
     format: tar
   tags:
     - backup_other
 ############ BACKUP OTHER - END
-- name: Restart Docker Container - {{program_var.user_input}}
+- name: Restart Docker Container - {{program_var}}
   docker_container:
-    name: "{{program_var.user_input}}"
+    name: "{{program_var}}"
     state: started
   ignore_errors: True
   when: programappdata.stat.exists == True
@@ -90,13 +90,13 @@
     - backup_normal
 
 - name: Uploading Backup to Google Drive
-  shell: "rclone copy /tmp/{{program_var.user_input}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /tmp/{{program_var}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
   tags:
     - backup_normal
 
 - name: Uploading Backup to Google Drive (encrypted)
-  shell: "rclone copy /tmp/{{program_var.user_input}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /tmp/{{program_var}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
   tags:
     - backup_normal
@@ -106,7 +106,7 @@
     path: "{{ item }}"
     state: absent
   with_items:
-    - /tmp/{{program_var.user_input}}.tar
+    - /tmp/{{program_var}}.tar
   when: programappdata.stat.exists == True
   tags:
     - backup_normal
@@ -114,12 +114,12 @@
 #- name: Kill Switch
 #  shell: echo "false" > /tmp/alive
 
-- debug: msg="Program is now backed up to your Google Drive - {{program_var.user_input}}"
+- debug: msg="Program is now backed up to your Google Drive - {{program_var}}"
   when: programappdata.stat.exists == True
   tags:
     - backup_normal
 
-- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var.user_input}}"
+- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_var}}"
   when: programappdata.stat.exists == False
   tags:
     - backup_normal
