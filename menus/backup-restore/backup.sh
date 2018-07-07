@@ -174,22 +174,6 @@ else
     ### IF NOT PLEX, execute this
     ansible-playbook /opt/plexguide/pg.yml --tags backup_normal,backup_other
 fi
-    #echo "true" > /tmp/alive
-
-    #loop="true"
-    #echo "true" > /tmp/alive
-    #while [ "$loop" = "true" ]
-    #do
-        #dialog --infobox "Backing Up / " 3 17
-        #sleep 0.5
-        #dialog --infobox "Backing Up | " 3 17
-        #sleep 0.5
-        #dialog --infobox "Backing Up \ " 3 17
-        #sleep 0.5
-        #dialog --infobox "Backing Up - " 3 17
-        #sleep 0.5
-        #loop=$(cat /tmp/alive) 1>/dev/null 2>&1
-    #done
 
 read -n 1 -s -r -p "Press any key to continue"
 
