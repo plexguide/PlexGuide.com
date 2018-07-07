@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - name: "Establishing Variable"
-  shell: "echo /tmp/backup.build"
+  shell: "cat /tmp/backup.build"
   register: backlist
   tags:
     - backup_normal
