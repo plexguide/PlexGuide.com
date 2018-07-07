@@ -35,8 +35,6 @@
   register: program_final
   when: switch == "on"
 
-- debug: msg="Question Prompt is: {{switch}}"
-
 - pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: program_final.stdout
