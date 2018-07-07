@@ -32,6 +32,16 @@
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: backupchoice
 
+- name: "Evaluate GREP"
+  shell: "cat /tmp/backup.build | grep -c -w ombi"
+  register: statement
+  tags:
+    - backup_normal
+
+- debug: msg="Temp Message - For {{statement.stdout}}"
+  tags:
+    - backup_normal
+
 - debug: msg="Temp Message - For {{program_var.stdout}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
