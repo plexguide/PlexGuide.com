@@ -32,6 +32,11 @@
 
 - name: "Establishing Variable"
   shell: "awk '{print $1}' /tmp/program_var"
+  register: program_var
+  when: switch == "on"
+
+- name: "Establishing Variable"
+  shell: "echo {{program_var.stdout}}"
   register: program_final
   when: switch == "on"
 
@@ -43,7 +48,11 @@
 - name: "Establishing Variable"
   shell: "echo {{switch}}"
   register: program_final
-  when: switch == "on"
+  when: switch == "off"
+
+- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
+  tags:
+    - backup_normal
 
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
