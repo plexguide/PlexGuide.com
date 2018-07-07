@@ -43,7 +43,7 @@
 - name: "Establishing Variable"
   shell: "echo {{switch}}"
   register: program_final
-  when: switch == "off"
+  when: switch == "on"
 
 - debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
   tags:
