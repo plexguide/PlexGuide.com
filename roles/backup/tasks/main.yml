@@ -50,7 +50,7 @@
   register: program_final
   when: switch == "off"
 
-- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
+- debug: msg="Temp Message - For {{program_final}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
 
