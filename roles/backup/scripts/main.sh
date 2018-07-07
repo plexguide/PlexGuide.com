@@ -30,7 +30,7 @@ clear
 #### Commenting Out To Let User See
 while read p; do
   echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmpbackup.build
+  echo -n " " >> /tmpb/backup.build
 
 done </tmp/backup.list
 clear
