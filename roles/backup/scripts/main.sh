@@ -17,12 +17,12 @@
 #################################################################################
 ls -la /opt/appdata | awk '{ print $9}' | tail -n 9 > /tmp/backup.list
 
-sed -i -e "/traefik/d" /tmp/backup.list 1>/dev/null 2>&1
-sed -i -e "/watchtower/d" /tmp/backup.list 1>/dev/null 2>&1
-sed -i -e "/word*/d" /tmp/backup.list 1>/dev/null 2>&1
-sed -i -e "/x2go*/d" /tmp/backup.list 1>/dev/null 2>&1
-sed -i -e "/speed*/d" /tmp/backup.list 1>/dev/null 2>&1
-sed -i -e "/netdata/d" /tmp/backup.list 1>/dev/null 2>&1
+sed -i -e "/traefik/d" /tmp/backup.list
+sed -i -e "/watchtower/d" /tmp/backup.list
+sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/x2go*/d" /tmp/backup.list
+sed -i -e "/speed*/d" /tmp/backup.list
+sed -i -e "/netdata/d" /tmp/backup.list
 
 rm -r /tmp/backup.build 1>/dev/null 2>&1
 #### Commenting Out To Let User See
