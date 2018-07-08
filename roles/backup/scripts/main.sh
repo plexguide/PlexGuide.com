@@ -25,5 +25,3 @@ while read p; do
 done </tmp/backup.list
 
 ansible-role backup
-echo ""
-read -n 1 -s -r -p "Solo Backup Complete - Press [ANY KEY] to Continue"
