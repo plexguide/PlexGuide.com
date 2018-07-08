@@ -79,7 +79,7 @@ echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && ba
             bash /opt/plexguide/roles/info-tshoot/tshoot.sh ;;
         G)
 echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+            bash /opt/plexguide/roles/backup-restore-nav/main.sh ;;
         H)
 echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh

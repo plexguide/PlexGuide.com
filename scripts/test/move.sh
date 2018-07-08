@@ -35,8 +35,8 @@ rm /opt/plexguide/menus/programs/beta.sh
 mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.sh
 
 ## For testing new backup menus
-#rm /opt/plexguide/menus/backup-restore/backup.sh
-#mv /opt/plexguide/menus/backup-restore/backup-new.sh /opt/plexguide/menus/backup-restore/backup.sh
+#rm /opt/plexguide/roles/backup/scripts/main.sh
+#mv /opt/plexguide/menus/backup-restore/backup-new.sh /opt/plexguide/roles/backup/scripts/main.sh
 
 ## For testing new restore menus
 #rm /opt/plexguide/menus/backup-restore/restore.sh
