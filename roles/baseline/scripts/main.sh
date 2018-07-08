@@ -41,10 +41,6 @@ else
 fi
 
 ################################################################ Create Server ID
-
-if [ "$edition" == "PG Edition: GCE Feed" ] || [ "$edition" == "PG Edition: GDrive" ]
-then
-
   file="/var/plexguide/server.id"
     if [ -e "$file" ]
       then
@@ -53,10 +49,9 @@ then
       bash /opt/plexguide/menus/backup-restore/first.sh
     echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
     fi
-else
-  date +"%m%d%Y" > /var/plexguide/server.id
-  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-fi
+#  date +"%m%d%Y" > /var/plexguide/server.id
+#  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+
 ############################################################################# END
 
 ################################################################ Create Server ID
