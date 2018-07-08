@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-ls -la /opt/appdata | awk '{ print $9}' | tail -n 9 > /tmp/backup.list
+ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
 
 sed -i -e "/traefik/d" /tmp/backup.list
 sed -i -e "/watchtower/d" /tmp/backup.list
@@ -33,5 +33,3 @@ while read p; do
   echo -n " " >> /tmp/backup.build
 
 done </tmp/backup.list
-
-ansible-role backup

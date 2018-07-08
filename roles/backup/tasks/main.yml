@@ -37,6 +37,9 @@
   tags:
     - backup_normal
 
+- name: "Establishing Variable"
+  shell: "bash /opt/plexguide/roles/backup/scripts/main.sh"
+  when: switch == "on"
 ############################################ SWITCH OFF - Automatic
 - name: Prompt User for Program
   pause:
@@ -48,7 +51,7 @@
   shell: "echo {{selection.userinput}} > /tmp/program_var"
   when: switch == "off"
 ############################################ SWITCH ON - Manual
-#- name: "Establishing Variable"
+# name: "Establishing Variable"
 #  shell: "echo {{program_var.stdout}} > /tmp/program_var"
 #  when: switch == "on"
 ############################################ REGISTER FINAL Variable
