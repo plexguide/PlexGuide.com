@@ -37,6 +37,10 @@
   tags:
     - backup_normal
 
+- name: Update List
+  shell: "bash /opt/plexguide/roles/backup/scripts/main.sh"
+  when: switch == "off"
+
 ############################################ SWITCH OFF - Automatic
 - name: Prompt User for Program
   pause:
