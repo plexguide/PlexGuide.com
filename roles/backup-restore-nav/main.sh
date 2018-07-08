@@ -53,7 +53,7 @@ case $CHOICE in
             bash /opt/plexguide/menus/backup-restore/restore.sh
             ;;
         C)
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh
+            bash /opt/plexguide/roles/backup/scripts/bmass.sh
             ;;
         D)
             bash /opt/plexguide/menus/backup-restore/restoremass.sh
