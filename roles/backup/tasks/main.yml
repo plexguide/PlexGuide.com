@@ -30,16 +30,7 @@
   tags:
     - backup_normal
 
-- name: "Establishing Variable"
-  shell: "awk '{print $1}' /tmp/program_var"
-  register: program_var
-  when: switch == "on"
-
-- name: "Establishing Variable"
-  shell: "echo {{program_var.stdout}}"
-  register: program_final
-  when: switch == "on"
-
+############################################ SWITCH ON - Manual Selected
 - pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: program_var.user_input
@@ -47,11 +38,28 @@
 
 - name: "Establishing Variable"
   shell: "echo {{switch}}"
-  register: program_final
   when: switch == "off"
 
-- set_fact:
-    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
+############################################ SWITCH OFF - Automatic Process
+
+- name: "Establishing Variable"
+  shell: "echo {{program_var.stdout}}"
+  register: program_final
+  when: switch == "on"
+
+- name: "Establishing Final Variable"
+  shell: "awk '{print $1}' /tmp/program_var"
+  register: program_var
+  when: switch == "on"
+
+############################################ REGISTER FINAL Variable
+
+
+
+### TEST
+#- set_fact:
+#    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
+
 
 - debug: msg="Temp Message - For {{program_final}} - Server ID {{server_id.stdout}}"
   tags:
