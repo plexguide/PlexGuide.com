@@ -41,11 +41,11 @@
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: selection
-  when: switch == "off"
+  when: switch == "on"
 
-- name: Establishing Final Variable - Switch Off
+- name: Establishing Final Variable - Switch On
   shell: "echo {{selection.userinput}} > /tmp/program_var"
-  when: switch == "off"
+  when: switch == "on"
 ############################################ SWITCH ON - Manual
 # name: "Establishing Variable"
 #  shell: "echo {{program_var.stdout}} > /tmp/program_var"
