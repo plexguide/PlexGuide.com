@@ -22,7 +22,8 @@ rm -r /tmp/backup.build 1>/dev/null 2>&1
 while read p; do
   echo -n $p >> /tmp/backup.build
   echo -n " " >> /tmp/backup.build
-
 done </tmp/backup.list
 
 ansible-role backup
+echo ""
+read -n 1 -s -r -p "Solo Backup Complete - Press [ANY KEY] to Continue"
