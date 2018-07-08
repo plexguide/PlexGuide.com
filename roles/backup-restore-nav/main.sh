@@ -44,18 +44,21 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/backup-restore/backup.sh 
+            clear
+            ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
+            echo ""
+            read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue"
             ;;
         B)
             bash /opt/plexguide/menus/backup-restore/restore.sh
             ;;
         C)
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh 
+            bash /opt/plexguide/roles/backup/scripts/bmass.sh
             ;;
         D)
             bash /opt/plexguide/menus/backup-restore/restoremass.sh
             ;;
-        E) 
+        E)
             bash /opt/plexguide/menus/backup-restore/recovery.sh
             ;;
         Z)
@@ -64,4 +67,4 @@ case $CHOICE in
             ;;
 
 esac
-bash /opt/plexguide/menus/backup-restore/main.sh
+bash /opt/plexguide/roles/backup-restore-nav/main.sh
