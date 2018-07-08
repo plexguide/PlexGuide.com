@@ -44,7 +44,8 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/roles/backup/scripts/main.sh
+            clear
+            ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
             ;;
         B)
             bash /opt/plexguide/menus/backup-restore/restore.sh
