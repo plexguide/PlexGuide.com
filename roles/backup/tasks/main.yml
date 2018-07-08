@@ -88,7 +88,6 @@
     dest: /tmp/{{program_final.stdout}}.tar
     format: tar
 
-    - backup_other
 ############ BACKUP OTHER - END
 - name: Restart Docker Container - {{program_final.stdout}}
   docker_container:
