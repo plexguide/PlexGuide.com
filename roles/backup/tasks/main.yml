@@ -50,6 +50,9 @@
   register: program_final
   when: switch == "off"
 
+- set_fact:
+    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
+
 - debug: msg="Temp Message - For {{program_final}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
