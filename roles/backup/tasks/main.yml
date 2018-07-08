@@ -44,7 +44,7 @@
   register: selection
   when: switch == "off"
 
-- name: "Establishing Final Variable"
+- name: Establishing Final Variable - Switch Off
   shell: echo '{{selection.userinput}} > /tmp/program_var
   when: switch == "off"
 ############################################ SWITCH ON - Manual
@@ -52,7 +52,7 @@
 #  shell: "echo {{program_var.stdout}} > /tmp/program_var"
 #  when: switch == "on"
 ############################################ REGISTER FINAL Variable
-- name: "Establishing Final Variable"
+- name: Establishing Final Variable - Switch On
   shell: "cat /tmp/program_var"
   register: program_final
 
