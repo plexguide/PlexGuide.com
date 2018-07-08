@@ -46,11 +46,10 @@ bash /opt/plexguide/roles/backup/scripts/list.sh
 #### Commenting Enables to See Everything
 while read p; do
   echo $p > /tmp/program_var
-  clear
   ansible-playbook /opt/plexguide/pg.yml --tags backup
   echo ""
-  echo "Starting Next Backup in 3 Seconds"
-  sleep 3
+  echo "Starting Next Backup in 5 Seconds"
+  sleep 5
 done </tmp/backup.list
 
 read -n 1 -s -r -p "Press any key to continue"
