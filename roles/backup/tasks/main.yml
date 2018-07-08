@@ -38,27 +38,26 @@
     - backup_normal
 
 ############################################ SWITCH OFF - Automatic
-- pause:
+- name: Prompt User for Program
+  pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: program_var.user_input
   when: switch == "off"
 
-- name: "Establishing Variable"
-  shell: "echo {{switch}}"
-  when: switch == "off"
-
+- name: "Establishing Final Variable"
+  shell: "echo "program_var.userinput" > /tmp/program_var"
+  register: program_var
+  when: switch == "on"
 ############################################ SWITCH ON - Manual
-
 - name: "Establishing Variable"
   shell: "echo {{program_var.stdout}} > /tmp/program_var"
   when: switch == "on"
-
+############################################ REGISTER FINAL Variable
 - name: "Establishing Final Variable"
   shell: "awk '{print $1}' /tmp/program_var"
   register: program_var
   when: switch == "on"
 
-############################################ REGISTER FINAL Variable
 
 ### TEST
 #- set_fact:
