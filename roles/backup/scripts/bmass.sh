@@ -53,10 +53,9 @@ while read p; do
   sleep 5
 done </tmp/backup.list
 
-read -n 1 -s -r -p "Mass Backup Process - Completed [PRESS ANY KEY to CONTINUE]"
+read -n 1 -s -r -p "Mass Backup Process Complete - Press [ANY KEY] to CONTINUE"
 
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
-echo 'INFO - Mass Backup Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
 
