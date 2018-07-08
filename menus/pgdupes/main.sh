@@ -84,7 +84,7 @@ case $CHOICE in
             exit
             ;;
         B)
-            bash /opt/plexguide/scripts/plextoken/main.sh
+            bash /opt/plexguide/roles/plextoken/main.sh
             ;;
         C)
             bash /opt/plexguide/menus/pgdupes/paths.sh
