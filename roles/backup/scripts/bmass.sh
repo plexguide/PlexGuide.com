@@ -24,7 +24,7 @@ if dialog --stdout --title "Backup Mass Confirmation" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
             --yesno "\nDo you want to BACKOUT & EXIT from making a Mass Backup?" 0 0; then
             dialog --title "PG Backup Status" --msgbox "\nExiting! User selected NOT to BACKUP!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/main.sh
+            sudo bash /opt/plexguide/roles/backup-restore-nav/main.sh
             exit 0
         else
             clear

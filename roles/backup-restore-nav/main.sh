@@ -44,18 +44,18 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/menus/backup-restore/backup.sh 
+            bash /opt/plexguide/menus/backup-restore/backup.sh
             ;;
         B)
             bash /opt/plexguide/menus/backup-restore/restore.sh
             ;;
         C)
-            bash /opt/plexguide/menus/backup-restore/backupmass.sh 
+            bash /opt/plexguide/menus/backup-restore/backupmass.sh
             ;;
         D)
             bash /opt/plexguide/menus/backup-restore/restoremass.sh
             ;;
-        E) 
+        E)
             bash /opt/plexguide/menus/backup-restore/recovery.sh
             ;;
         Z)
