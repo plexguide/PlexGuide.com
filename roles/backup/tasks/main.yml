@@ -55,15 +55,13 @@
 ############################################ REGISTER FINAL Variable
 - name: "Establishing Final Variable"
   shell: "awk '{print $1}' > /tmp/program_var"
-  register: program_var
+  register: program_final
   when: switch == "on"
 
 
 ### TEST
 #- set_fact:
 #    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
-
-
 
 - debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
   tags:
