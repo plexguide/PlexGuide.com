@@ -61,36 +61,16 @@
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
-
 ###################################### REGEX Source: Desmonic @ CLOUDBOX.rocks
-
-- name: Check rtorrent.rc exists
-  stat:
-    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
-  register: rtorrent_rc
-
-- name: Wait for rtorrent.rc to be created
+- name: "Wait for 10 Seconds"
   wait_for:
-    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
-    state: present
-  when: rtorrent_rc.stat.exists == False
-
-- name: Wait for php.ini to be created
-  wait_for:
-    path: "/opt/appdata/rutorrent/config/php/php.ini"
-    state: present
-  when: rtorrent_rc.stat.exists == False
-
-- name: "Wait for 8 seconds before stopping rutorrent container"
-  wait_for:
-    timeout: 8
-  when: rtorrent_rc.stat.exists == False
+    timeout: 10
 
 - name: Stop container to customize rtorrent.rc
   docker_container:
     name: rutorrent
     state: stopped
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Change downloads directory
   lineinfile:
@@ -98,7 +78,7 @@
     regexp: '^directory\s?='
     line: 'directory = /downloads/incoming'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Disable DHT
   lineinfile:
@@ -106,7 +86,7 @@
     regexp: '^dht\s?='
     line: 'dht = disable'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Disable PEX
   lineinfile:
@@ -114,7 +94,7 @@
     regexp: '^peer_exchange\s?='
     line: 'peer_exchange = no'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Reduce min_peers
   lineinfile:
@@ -122,7 +102,7 @@
     regexp: '^min_peers\s?='
     line: 'min_peers = 1'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Increase max_uploads
   lineinfile:
@@ -130,7 +110,7 @@
     regexp: '^max_uploads\s?='
     line: 'max_uploads = 1024'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Disable check_hash
   lineinfile:
@@ -138,7 +118,7 @@
     regexp: '^check_hash\s?='
     line: 'check_hash = no'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set upload_rate to unlimited
   lineinfile:
@@ -146,7 +126,7 @@
     regexp: '^upload_rate\s?='
     line: 'upload_rate = 0'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set download_rate to unlimited
   lineinfile:
@@ -154,7 +134,7 @@
     regexp: '^download_rate\s?='
     line: 'download_rate = 0'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set global upload_rate to unlimited
   lineinfile:
@@ -162,7 +142,7 @@
     regexp: '^throttle.global_up.max_rate.set_kb\s?='
     line: 'throttle.global_up.max_rate.set_kb = 0'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set global download_rate to unlimited
   lineinfile:
@@ -170,7 +150,7 @@
     regexp: '^throttle.global_down.max_rate.set_kb\s?='
     line: 'throttle.global_down.max_rate.set_kb = 0'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set max_open_files to 1024
   lineinfile:
@@ -178,7 +158,7 @@
     regexp: '^network.max_open_files.set\s?='
     line: 'network.max_open_files.set = 1024'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set encryption parameters
   lineinfile:
@@ -186,23 +166,21 @@
     regexp: '^encryption\s?='
     line: 'encryption = allow_incoming,enable_retry,prefer_plaintext'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
-- name: Set max_downloads_global to 1024
   lineinfile:
     path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^max_downloads_global\s?='
     line: 'max_downloads_global = 1024'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
-- name: Set max_uploads_global to 1024
   lineinfile:
     path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^max_uploads_global\s?='
     line: 'max_uploads_global = 1024'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set file_allocate to no
   lineinfile:
@@ -210,7 +188,7 @@
     regexp: '^system.file_allocate.set\s?='
     line: 'system.file_allocate.set = no'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Set upload_max_filesize to 8M
   lineinfile:
@@ -218,13 +196,12 @@
     regexp: '^upload_max_filesize\s?='
     line: 'upload_max_filesize = 8M'
     state: present
-  when: rtorrent_rc.stat.exists == False
+  ignore_errors: yes
 
 - name: Start container to apply changes
   docker_container:
     name: rutorrent
     state: started
-  when: rtorrent_rc.stat.exists == False
 
 - include_role:
     name: pgmend
