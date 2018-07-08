@@ -18,11 +18,18 @@
 ---
 - include_vars: variables.yml
 
-- name: "Establishing Variable"
+- name: "Building List"
   shell: "cat /tmp/backup.build"
   register: backlist
   tags:
     - backup_normal
+
+- name: "Pulling Selected Program"
+  shell: "cat /tmp/program_var"
+  register: backlist
+  tags:
+    - backup_normal
+  #ignore tag
 
 - name: "Server ID for Backup"
   shell: "cat /var/plexguide/server.id"
@@ -43,8 +50,7 @@
 ############################################ SWITCH OFF - Automatic Process
 
 - name: "Establishing Variable"
-  shell: "echo {{program_var.stdout}}"
-  register: program_final
+  shell: "echo {{program_var.stdout}} > /tmp/program_var"
   when: switch == "on"
 
 - name: "Establishing Final Variable"
@@ -53,8 +59,6 @@
   when: switch == "on"
 
 ############################################ REGISTER FINAL Variable
-
-
 
 ### TEST
 #- set_fact:
