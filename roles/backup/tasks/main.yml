@@ -47,7 +47,7 @@
 - name: "Establishing Final Variable"
   shell: "echo 'program_var.userinput' > /tmp/program_var"
   register: program_var
-  when: switch == "on"
+  when: switch == "off"
 ############################################ SWITCH ON - Manual
 - name: "Establishing Variable"
   shell: "echo {{program_var.stdout}} > /tmp/program_var"
@@ -57,7 +57,6 @@
   shell: "awk '{print $1}' > /tmp/program_var"
   register: program_final
   when: switch == "on"
-
 
 ### TEST
 #- set_fact:
