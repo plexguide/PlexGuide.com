@@ -32,7 +32,7 @@
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
-    image: "horjulf/rutorrent-autodl"
+    image: "linuxserver/rutorrent"
     pull: yes
     cpu_shares: 256
     published_ports:
