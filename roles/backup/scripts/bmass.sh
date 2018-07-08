@@ -30,7 +30,7 @@ if dialog --stdout --title "Backup Mass Confirmation" \
             clear
         fi
 
-dialog --infobox "Backup: Starting Process" 3 37 ; sleep 1
+dialog --infobox "Backup: Starting Process" 3 34 ; sleep 1
 
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
@@ -44,6 +44,7 @@ mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
 
 bash /opt/plexguide/roles/backup/scripts/list.sh
 #### Commenting Enables to See Everything
+clear
 while read p; do
   echo $p > /tmp/program_var
   ansible-playbook /opt/plexguide/pg.yml --tags backup
