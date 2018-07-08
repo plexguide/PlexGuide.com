@@ -66,18 +66,18 @@
 
 - name: Check rtorrent.rc exists
   stat:
-    path: "/opt/appdata/rutorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
   register: rtorrent_rc
 
 - name: Wait for rtorrent.rc to be created
   wait_for:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     state: present
   when: rtorrent_rc.stat.exists == False
 
 - name: Wait for php.ini to be created
   wait_for:
-    path: "/opt/appdata/rutorrent/php/php.ini"
+    path: "/opt/appdata/rutorrent/config/php/php.ini"
     state: present
   when: rtorrent_rc.stat.exists == False
 
@@ -95,7 +95,7 @@
 
 - name: Change downloads directory
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^directory\s?='
     line: 'directory = /downloads/incoming'
     state: present
@@ -103,7 +103,7 @@
 
 - name: Disable DHT
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^dht\s?='
     line: 'dht = disable'
     state: present
@@ -111,7 +111,7 @@
 
 - name: Disable PEX
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^peer_exchange\s?='
     line: 'peer_exchange = no'
     state: present
@@ -119,7 +119,7 @@
 
 - name: Reduce min_peers
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^min_peers\s?='
     line: 'min_peers = 1'
     state: present
@@ -127,7 +127,7 @@
 
 - name: Increase max_uploads
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^max_uploads\s?='
     line: 'max_uploads = 1024'
     state: present
@@ -135,7 +135,7 @@
 
 - name: Disable check_hash
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^check_hash\s?='
     line: 'check_hash = no'
     state: present
@@ -143,7 +143,7 @@
 
 - name: Set upload_rate to unlimited
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^upload_rate\s?='
     line: 'upload_rate = 0'
     state: present
@@ -151,7 +151,7 @@
 
 - name: Set download_rate to unlimited
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^download_rate\s?='
     line: 'download_rate = 0'
     state: present
@@ -159,7 +159,7 @@
 
 - name: Set global upload_rate to unlimited
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^throttle.global_up.max_rate.set_kb\s?='
     line: 'throttle.global_up.max_rate.set_kb = 0'
     state: present
@@ -167,7 +167,7 @@
 
 - name: Set global download_rate to unlimited
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^throttle.global_down.max_rate.set_kb\s?='
     line: 'throttle.global_down.max_rate.set_kb = 0'
     state: present
@@ -175,7 +175,7 @@
 
 - name: Set max_open_files to 1024
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^network.max_open_files.set\s?='
     line: 'network.max_open_files.set = 1024'
     state: present
@@ -183,7 +183,7 @@
 
 - name: Set encryption parameters
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^encryption\s?='
     line: 'encryption = allow_incoming,enable_retry,prefer_plaintext'
     state: present
@@ -191,7 +191,7 @@
 
 - name: Set max_downloads_global to 1024
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^max_downloads_global\s?='
     line: 'max_downloads_global = 1024'
     state: present
@@ -199,7 +199,7 @@
 
 - name: Set max_uploads_global to 1024
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^max_uploads_global\s?='
     line: 'max_uploads_global = 1024'
     state: present
@@ -207,7 +207,7 @@
 
 - name: Set file_allocate to no
   lineinfile:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^system.file_allocate.set\s?='
     line: 'system.file_allocate.set = no'
     state: present
@@ -215,7 +215,7 @@
 
 - name: Set upload_max_filesize to 8M
   lineinfile:
-    path: "/opt/appdata/rutorrent/php/php.ini"
+    path: "/opt/appdata/rutorrent/config/php/php.ini"
     regexp: '^upload_max_filesize\s?='
     line: 'upload_max_filesize = 8M'
     state: present
