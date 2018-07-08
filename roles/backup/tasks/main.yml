@@ -37,7 +37,7 @@
   tags:
     - backup_normal
 
-############################################ SWITCH ON - Manual Selected
+############################################ SWITCH OFF - Automatic
 - pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: program_var.user_input
@@ -47,7 +47,7 @@
   shell: "echo {{switch}}"
   when: switch == "off"
 
-############################################ SWITCH OFF - Automatic Process
+############################################ SWITCH ON - Manual
 
 - name: "Establishing Variable"
   shell: "echo {{program_var.stdout}} > /tmp/program_var"
@@ -65,7 +65,8 @@
 #    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
 
 
-- debug: msg="Temp Message - For {{program_final}} - Server ID {{server_id.stdout}}"
+
+- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
   tags:
     - backup_normal
 
