@@ -150,7 +150,7 @@ if [ -e "$file" ]
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
             --yesno "\nDo you want to BACKOUT & EXIT from making the Backup -- $app -- ?" 0 0; then
             dialog --title "PG Backup Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/backup.sh
+            sudo bash /opt/plexguide/roles/backup/scripts/main.sh
             exit 0
         else
             clear
@@ -159,7 +159,7 @@ if [ -e "$file" ]
         dialog --title "PG Backup Status" --msgbox "\nExiting! You have no LOCAL data -- $app -- to backup to GDrive!" 0 0
         echo "WARNING - Backup: No Local Data to Backup for $app" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-        sudo bash /opt/plexguide/menus/backup-restore/backup.sh
+        sudo bash /opt/plexguide/roles/backup/scripts/main.sh
         exit 0
 fi
 
