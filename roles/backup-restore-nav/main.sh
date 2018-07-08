@@ -46,6 +46,8 @@ case $CHOICE in
         A)
             clear
             ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
+            echo ""
+            read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue"
             ;;
         B)
             bash /opt/plexguide/menus/backup-restore/restore.sh
