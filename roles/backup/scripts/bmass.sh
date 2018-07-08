@@ -48,6 +48,9 @@ while read p; do
   echo $p > /tmp/program_var
   clear
   ansible-playbook /opt/plexguide/pg.yml --tags backup
+  echo ""
+  echo "Starting Next Backup in 3 Seconds"
+  sleep 3
 done </tmp/backup.list
 
 read -n 1 -s -r -p "Press any key to continue"
