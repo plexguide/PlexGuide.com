@@ -44,7 +44,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - "/opt/appdata/rutorrent:/config"
+      - "/opt/appdata/rutorrent/config:/config"
       - "/mnt/unionfs:/unionfs"
       - "{{path.stdout}}/rutorrent/:/downloads"
       - /opt/appdata/{{role_name}}:/scripts
