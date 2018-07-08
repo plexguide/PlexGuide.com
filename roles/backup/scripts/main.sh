@@ -33,5 +33,3 @@ while read p; do
   echo -n " " >> /tmp/backup.build
 
 done </tmp/backup.list
-
-ansible-role backup
