@@ -41,11 +41,11 @@
 - name: Prompt User for Program
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
-  register: selection.user_input
+  register: selection
   when: switch == "off"
 
 - name: "Establishing Final Variable"
-  shell: "echo '{{selection.userinput}}' > /tmp/program_var"
+  shell: "echo {{selection.userinput}} > /tmp/program_var"
   register: program_var
   when: switch == "off"
 ############################################ SWITCH ON - Manual
