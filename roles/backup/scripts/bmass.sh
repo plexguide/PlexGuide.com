@@ -46,9 +46,8 @@ bash /opt/plexguide/roles/backup/scripts/list.sh
 #### Commenting Enables to See Everything
 while read p; do
   echo $p > /tmp/program_var
-clear
-    ansible-playbook /opt/plexguide/pg.yml --tags backup
-fi
+  clear
+  ansible-playbook /opt/plexguide/pg.yml --tags backup
 done </tmp/backup.list
 
 read -n 1 -s -r -p "Press any key to continue"
