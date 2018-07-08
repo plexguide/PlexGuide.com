@@ -83,7 +83,7 @@ echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/
             bash /opt/plexguide/menus/settings/main.sh ;;
         I)
 echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+            bash /opt/plexguide/roles/backup-restore-nav/main.sh ;;
         J)
 echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh

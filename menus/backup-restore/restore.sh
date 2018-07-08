@@ -161,25 +161,7 @@ if [ -e "$file" ]
         exit 0
 fi
 
-### Commenting Out Allows You To See What's going On
-
-    #echo "true" > /tmp/alive
     ansible-playbook /opt/plexguide/pg.yml --tags restore #&>/dev/null &
-
-    #loop="true"
-    #echo "true" > /tmp/alive
-    #while [ "$loop" = "true" ]
-    #do
-        #dialog --infobox "Restoring / " 3 16
-        #sleep 0.5
-        #dialog --infobox "Restoring | " 3 16
-        #sleep 0.5
-        #dialog --infobox "Restoring \ " 3 16
-        #sleep 0.5
-        #dialog --infobox "Restoring - " 3 16
-        #sleep 0.5
-        #loop=$(cat /tmp/alive) 1>/dev/null 2>&1
-    #done
 
 read -n 1 -s -r -p "Press any key to continue"
 

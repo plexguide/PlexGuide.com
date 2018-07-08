@@ -45,4 +45,5 @@ else
    echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 fi
 
+bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
 bash /opt/plexguide/menus/version/main.sh

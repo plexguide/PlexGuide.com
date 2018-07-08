@@ -48,3 +48,4 @@ sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Serve
 
 sudo bash /opt/plexguide/roles/ending/ending.sh
 echo "Updated to the latest PlexGuide Dev Version!"
+bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
