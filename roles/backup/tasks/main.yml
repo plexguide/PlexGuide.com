@@ -49,7 +49,7 @@
   when: switch == "off"
 
 - name: Establishing Final Variable - Switch Off
-  shell: echo '{{selection.userinput}} > /tmp/program_var
+  shell: "echo {{selection.userinput}} > /tmp/program_var"
   when: switch == "off"
 ############################################ SWITCH ON - Manual
 #- name: "Establishing Variable"
