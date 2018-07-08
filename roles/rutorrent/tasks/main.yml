@@ -20,49 +20,14 @@
 
 - include_role:
     name: pgmstart
-    
-######
-######   @Admin9705 - Please can you check if it's 
-######   neccessary to move rutorrents to rutorrent?
-######
 
 - name: stat rutorrents opt
   stat: path=/opt/appdata/rutorrents
   register: rutorrents_stat
 
-- name: Remove rutorrent Container
-  docker_container:
-    name: rutorrent
-    state: absent
-  when: rutorrents_stat.stat.exists
-
-- name: Moving /opt/appdata/ rutorrents to rutorrent
-  command: mv /opt/appdata/rutorrents /opt/appdata/rutorrent
-  when: rutorrents_stat.stat.exists
-
 - name: stat rutorrents
   stat: path=/mnt/rutorrents
   register: rutorrent_stat
-
-- name: Remove rutorrent Container
-  docker_container:
-    name: rutorrent
-    state: absent
-  when: rutorrent_stat.stat.exists
-
-- name: Move {{path.stdout}} rutorrents to rutorrent
-  command: mv "{{path.stdout}}/rutorrents" "{{path.stdout}}/rutorrent"
-  when: rutorrent_stat.stat.exists
-
-- name: Create Basic directories for Rutorrent
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - "{{path.stdout}}/{{role_name}}"
-
-- name: Create Basic appdata directories for Rutorrent
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - /opt/appdata/{{role_name}}
 
 - name: Deploy {{role_name}} Container
   docker_container:
@@ -79,7 +44,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - "/opt/appdata/{{role_name}}:/config"
+      - "/opt/appdata/{{role_name}}:/config/rtorrent"
       - "/mnt/unionfs:/unionfs"
       - "{{path.stdout}}/rutorrent/:/downloads"
       - /opt/appdata/{{role_name}}:/scripts
@@ -101,7 +66,7 @@
 
 - name: Check rtorrent.rc exists
   stat:
-    path: "/opt/appdata/rutorrent/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/rutorrent/rtorrent.rc"
   register: rtorrent_rc
 
 - name: Wait for rtorrent.rc to be created
