@@ -54,7 +54,7 @@
   when: switch == "on"
 ############################################ REGISTER FINAL Variable
 - name: "Establishing Final Variable"
-  shell: "awk '{print $1}' /tmp/program_var"
+  shell: "awk '{print $1}' > /tmp/program_var"
   register: program_var
   when: switch == "on"
 
