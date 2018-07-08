@@ -160,7 +160,7 @@
     state: present
   ignore_errors: yes
 
-- name: Set encryption parameters
+- name: Set encryption parameter
   lineinfile:
     path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^encryption\s?='
@@ -168,17 +168,10 @@
     state: present
   ignore_errors: yes
 
-  lineinfile:
+- lineinfile:
     path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
     regexp: '^max_downloads_global\s?='
     line: 'max_downloads_global = 1024'
-    state: present
-  ignore_errors: yes
-
-  lineinfile:
-    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
-    regexp: '^max_uploads_global\s?='
-    line: 'max_uploads_global = 1024'
     state: present
   ignore_errors: yes
 
