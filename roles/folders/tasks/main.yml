@@ -174,10 +174,5 @@
       - "{{path.stdout}}/torrentvpn/.watched"
     ignore_errors: yes
 
-  - name: Create Basic Directories
-    file: "path={{item}} state=directory mode=0777 owner=0 group=0 recurse=true"
-    with_items:
-      - /tmp
-
   - include_role:
       name: varend
