@@ -38,7 +38,9 @@
     - backup_normal
 
 - name: "Establishing Variable"
-  shell: "bash /opt/plexguide/roles/backup/scripts/main.sh"
+  shell: "/opt/plexguide/roles/backup/scripts/main.sh"
+  args:
+    executable: /bin/bash
   when: switch == "on"
 ############################################ SWITCH OFF - Automatic
 - name: Prompt User for Program
