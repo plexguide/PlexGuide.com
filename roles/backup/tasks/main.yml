@@ -56,7 +56,6 @@
 - name: "Establishing Final Variable"
   shell: "awk '{print $1}' > /tmp/program_var"
   register: program_final
-  when: switch == "on"
 
 ### TEST
 #- set_fact:
