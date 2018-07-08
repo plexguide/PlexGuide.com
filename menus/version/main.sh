@@ -62,12 +62,15 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             bash /opt/plexguide/roles/baseline/scripts/ansible.sh
             fi
 
+            rm -r /opt/plexguide2 1>/dev/null 2>&1
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
+            rm -r /opt/plexguide 1>/dev/null 2>&1
+            mv /opt/plexguide2 /opt/plexguide
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
             echo ""
             read -n 1 -s -r -p "Press any key to continue"
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit
             ;;
         02)
@@ -105,7 +108,7 @@ if ! dialog --stdout --title "Version User Confirmation" \
 clear
 echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-sudo bash /opt/plexguide/scripts/message/ending.sh
+sudo bash /opt/plexguide/roles/ending/ending.sh
 exit 0
     else
   clear
@@ -125,6 +128,6 @@ touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 
 echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
 
-bash /opt/plexguide/scripts/message/ending.sh
+bash /opt/plexguide/roles/ending/ending.sh
 
 ## delete this later
