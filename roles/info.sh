@@ -17,7 +17,7 @@
 #################################################################################
 #### PG VARIBLES
 echo "6.008 EDGE" > /var/plexguide/pg.version
-echo "112" > /var/plexguide/pg.preinstall
+echo "113" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
 echo "18.03.1" > /var/plexguide/pg.docker16
@@ -35,5 +35,5 @@ echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.label
-echo "17" > /var/plexguide/pg.alias
+echo "18" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep ## dependencies
