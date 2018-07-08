@@ -69,6 +69,6 @@
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
-    dest: /opt/plexguide
+    dest: /opt/plexguide2
     version: "{{versionfinal.stdout}}"
     force: yes

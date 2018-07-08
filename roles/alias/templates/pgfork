@@ -15,4 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+rm -r /opt/plexguide2 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/pg.yml --tags pgfork
+mv /opt/plexguide2 /opt/plexguide
