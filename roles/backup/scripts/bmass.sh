@@ -48,11 +48,11 @@ while read p; do
   echo $p > /tmp/program_var
   ansible-playbook /opt/plexguide/pg.yml --tags backup
   echo ""
-  echo "Starting Next Backup in 5 Seconds"
+  echo "$p Backed Up"
   sleep 5
 done </tmp/backup.list
 
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Mass Backup Process - Completed [PRESS ANY KEY to CONTINUE]"
 
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 echo 'INFO - Mass Backup Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
