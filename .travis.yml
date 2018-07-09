@@ -15,6 +15,7 @@ before_install:
   - sudo apt-get update -qq
   - mkdir /opt/plexguide
   - mkdir /var/plexguide
+  - touch /var/plexguide/pg.log
 
 install:
   # Install Ansible.
@@ -30,7 +31,7 @@ script:
   - sudo pwd
   - mv /home/travis/build/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/* /opt/plexguide/
   - sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
-  - sudo ansible-playbook -i opt/plexguide/pg.yml --tags couchpotato --syntax-check
+  - sudo ansible-playbook -i /opt/plexguide/pg.yml --tags couchpotato --syntax-check
 
 ### Sources
 # https://tasdikrahman.me/2017/04/06/Testing-your-ansible-roles-using-travis-CI/
