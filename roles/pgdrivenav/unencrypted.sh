@@ -154,18 +154,6 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
             dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         D)
-            #### RClone Missing Warning -START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-            #### RClone Missing Warning - END
-
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
