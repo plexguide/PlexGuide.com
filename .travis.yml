@@ -25,7 +25,8 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - bash /roles/baseline/scripts/gen.sh
+  - sudo pwd
+  - sudo bash /roles/baseline/scripts/gen.sh
   - sudo ansible-playbook -i opt/plexguide/pg.yml --tags couchpotato --syntax-check
 
 ### Sources
