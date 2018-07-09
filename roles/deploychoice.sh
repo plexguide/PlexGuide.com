@@ -39,7 +39,7 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
         case $CHOICE in
                 A)
                     echo "Move" > /var/plexguide/menu.select
-                    bash /opt/plexguide/roles/pgdrivenav/main.sh 
+                    bash /opt/plexguide/roles/pgdrivenav/main.sh
                     ;;
                 B)
                     echo "SuperTransfer2" > /var/plexguide/menu.select
@@ -47,7 +47,7 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
                     ;;
                 C)
                     "plexdrive" > /var/plexguide/menu.select
-                    bash /opt/plexguide/roles/plexdrive/scriptsrc-pd.sh 
+                    bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh 
                     ;;
                 Z)
                     ;; ## Do Not Put Anything Here

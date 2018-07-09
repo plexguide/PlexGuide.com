@@ -22,7 +22,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/roles/plexdrive/scriptsmain.sh ;;
+            bash /opt/plexguide/roles/plexdrive/scripts/main.sh ;;
         B)
             bash /opt/plexguide/menus/rclone/select.sh ;;
         Z)
