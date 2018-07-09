@@ -28,7 +28,7 @@
 
 - name: Register Provider
   shell: "touch /var/plexguide/server.provider"
-  register: domain
+  register: provider
   ignore_errors: True
 
 - name: Register E-Mail
