@@ -245,9 +245,21 @@ fi
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 sleep 2
 clear
-curl https://rclone.org/install.sh | sudo bash
-touch /var/plexguide/basics.yes &>/dev/null &
 
+pg_rclone=$( cat /var/plexguide/pg.rclone )
+pg_rclone_stored=$( cat /var/plexguide/pg.rclone.stored )
+
+if [ "$pg_rclone" == "$pg_rclone_stored" ]
+    then
+      echo "70" | dialog --gauge "rclone Is Already Installed" 7 50 0
+      sleep 2
+    else
+      echo "70" | dialog --gauge "Installing: PlexGuide rclone" 7 50 0
+      sleep 2
+      clear
+      ansible-playbook /opt/plexguide/pg.yml --tags rclone
+      sleep 2
+#### Alignment Note #### Have to Have It Left Aligned
 tee "/etc/fuse.conf" > /dev/null <<EOF
 # /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
 # Set the maximum number of FUSE mounts allowed to non-root users.
@@ -260,6 +272,9 @@ EOF
 chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
 chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
 
+      #read -n 1 -s -r -p "Press any key to continue "
+      cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
+      
 sleep 2
 #sleep 1
 
