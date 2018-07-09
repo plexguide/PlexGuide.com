@@ -21,6 +21,11 @@
 - include_role:
     name: pgmstart
 
+- name: Check couchpotato.ini exists
+  stat:
+    path: "/opt/appdata/couchpotato/config.ini"
+  register: cp_ini
+
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
@@ -33,7 +38,7 @@
       PUID: "1000"
       PGID: "1000"
     volumes:
-      - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
+      - "/opt/appdata/{{role_name}}/mp4_auxtomator:/config_mp4_automator"
       - "/opt/appdata/{{role_name}}:/config"
       - "/mnt/unionfs/completed:/unionfs-downloads/shared"
       - "/mnt/unionfs:/unionfs"
@@ -45,7 +50,7 @@
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
       - "{{path.stdout}}/qbittorrent/Downloads:/qbit-downloads"
       - "/etc/localtime:/etc/localtime:ro"
-    networks:
+    netwxorks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
