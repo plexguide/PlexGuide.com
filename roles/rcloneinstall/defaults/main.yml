@@ -1,0 +1,11 @@
+---
+#rclone version can be defined as a release number or as beta
+rclone_version: "1.42"
+
+# Defaults in case no variables for OS are chosen
+PACKAGES:
+  - unzip
+
+MAN_PAGES:
+  OWNER: root
+  GROUP: root
