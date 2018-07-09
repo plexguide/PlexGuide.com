@@ -13,6 +13,8 @@ branches:
 
 before_install:
   - sudo apt-get update -qq
+  - mkdir /opt/plexguide
+  - mkdir /var/plexguide
 
 install:
   # Install Ansible.
@@ -26,7 +28,6 @@ install:
 script:
   # Check the role/playbook's syntax.
   - sudo pwd
-  - mkdir /opt/plexguide
   - mv /home/travis/build/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/* /opt/plexguide/
   - sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
   - sudo ansible-playbook -i opt/plexguide/pg.yml --tags couchpotato --syntax-check
