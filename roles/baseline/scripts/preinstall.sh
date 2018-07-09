@@ -14,7 +14,7 @@ keyword2="PreInstall"
 pg_dep=$( cat /var/plexguide/pg.dep )
 pg_dep_stored=$( cat /var/plexguide/pg.dep.stored )
 ### STARTING LOG ######################################################
-echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 ### MAIN SCRIPT #######################################################
 if [ "$pg_dep" == "$pg_dep_stored" ]; then
@@ -33,4 +33,4 @@ fi
 #NONE
 
 ### ENDING: FINAL LOG ##################################################
-echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh

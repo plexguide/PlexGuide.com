@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Monitoring PG Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Monitoring PG Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
  HEIGHT=10
  WIDTH=38

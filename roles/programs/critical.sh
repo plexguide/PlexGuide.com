@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Critical Program Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Critical Program Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 HEIGHT=8
 WIDTH=38
@@ -36,7 +36,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-        echo 'INFO - Selected: Portainer' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - Selected: Portainer' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         clear && ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "skipend=no"
         read -n 1 -s -r -p "Press any key to continue"
 

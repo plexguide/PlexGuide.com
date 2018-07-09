@@ -42,4 +42,4 @@
   ignore_errors: True
 
 - name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+  shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh"

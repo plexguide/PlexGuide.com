@@ -20,7 +20,7 @@ ansible-playbook /opt/plexguide/pg.yml --tags pgedge
 rm -r /opt/plexguide 1>/dev/null 2>&1
 mv /opt/plexguide2 /opt/plexguide
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 echo ""
 read -n 1 -s -r -p "Press any key to continue"
 bash /opt/plexguide/roles/ending/ending.sh

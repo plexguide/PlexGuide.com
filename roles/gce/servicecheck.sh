@@ -32,7 +32,7 @@ if grep -q Failed: "/var/plexguide/st2.status"; then
 
 sleep 180
 
-echo 'WARNING - ST2 Upload Failed. Restarted Service!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'WARNING - ST2 Upload Failed. Restarted Service!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 fi
 done

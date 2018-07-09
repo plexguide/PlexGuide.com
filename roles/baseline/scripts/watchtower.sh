@@ -16,22 +16,22 @@ pg_watchtower=$( cat /var/plexguide/pg.watchtower )
 pg_watchtower_stored=$( cat /var/plexguide/pg.watchtower.stored )
 
 ### STARTING LOG ######################################################
-echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 ### MAIN SCRIPT #######################################################
 if [ "$edition" == "PG Edition: GCE Feed" ]; then
     echo "[Disabled Updates]" > /var/plexguide/watchtower.yes
-    echo "INFO - $keyword1: GCE Feeder Edition - Skipping $keyword2 Install" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    echo "INFO - $keyword1: GCE Feeder Edition - Skipping $keyword2 Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     exit 0  
 fi
 
 if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
     echo "95" | dialog --gauge "$keyword2 Is Already Installed" 7 50 0
-    echo "INFO - $keyword1: $keyword2 is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    echo "INFO - $keyword1: $keyword2 is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     sleep 2
 else
     echo "95" | dialog --gauge "Installing: $keyword2" 7 50 0
-    echo "INFO - $keyword1: $keyword2 is Installing" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    echo "INFO - $keyword1: $keyword2 is Installing" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     sleep 2
     
   file="/var/plexguide/watchtower.yes"
@@ -52,4 +52,4 @@ cat /var/plexguide/pg.watchtower > /var/plexguide/pg.watchtower.stored
 touch /var/plexguide/watchtower.yes
 
 ### ENDING: FINAL LOG ##################################################
-echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh

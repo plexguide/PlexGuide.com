@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 
 file="/var/plexguide/nzb.discount"
@@ -36,7 +36,7 @@ else
   clear
   dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree! You can view the program, but doing anything will mess things up!" 0 0
   echo "Type to Restart the Program: sudo plexguide"
-  echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
   exit 0
 fi
 
@@ -47,10 +47,10 @@ fi
     echo "" 1>/dev/null 2>&1
   else
       bash /opt/plexguide/menus/backup-restore/first.sh
-    echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+    echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     fi
 #  date +"%m%d%Y" > /var/plexguide/server.id
-#  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+#  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 ############################################################################# END
 
@@ -62,7 +62,7 @@ file="/var/plexguide/restore.id"
   echo "" 1>/dev/null 2>&1
     else
   cat /var/plexguide/server.id > /var/plexguide/restore.id
-  echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
   fi
 ############################################################################# END
 
@@ -82,7 +82,7 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
         then
           echo "" 1>/dev/null 2>&1
         else
-          echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+          echo "INFO - Selecting PG Edition for the FIRST TIME" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
           bash /opt/plexguide/menus/setup/servertype.sh
     fi
     file="/var/plexguide/server.ports" 1>/dev/null 2>&1
@@ -112,7 +112,7 @@ yes | apt-get update
 yes | apt-get install software-properties-common
 yes | apt-get install sysstat nmon
 sed -i 's/false/true/g' /etc/default/sysstat
-echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 sleep 2
 
 ############################################################ Enables Use of ROLES AfterWards
@@ -122,11 +122,11 @@ pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 if [ "$pg_ansible" == "$pg_ansible_stored" ]
     then
       echo "20" | dialog --gauge "Suppport Is Already Installed" 7 50 0
-      echo "INFO - Support is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo "INFO - Support is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       sleep 2
     else
       echo "20" | dialog --gauge "Installing: Ansible Playbook" 7 50 0
-      echo "INFO - Installing: Support" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo "INFO - Installing: Support" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       sleep 2
       clear
       bash /opt/plexguide/roles/baseline/scripts/ansible.sh
@@ -181,7 +181,7 @@ docver=$( cat /var/plexguide/ubversion )
   if [ "$docver" == "16.04" ]
     then
   echo "40" | dialog --gauge "Installing: UB16 - Docker $version_recall16 (Please Be Patient)" 7 58 0
-  echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
   sleep 2
   clear
   ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker16
@@ -204,7 +204,7 @@ docver=$( cat /var/plexguide/ubversion )
   if [ "$docver" == "18.04" ]
     then
   echo "40" | dialog --gauge "Installing: UB18 - $version_recall18 (Please Be Patient)" 7 58 0
-  echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
   sleep 2
   clear
   ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker18
@@ -330,7 +330,7 @@ fi
 
 #### Complete!
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
-echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 echo "100" | dialog --gauge "PG BaseInstall Finished!" 7 50 0
 sleep 2

@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Ports OPEN/Close Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Ports OPEN/Close Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 ############################################################ Recall Server Port Status
 status=$(cat /var/plexguide/server.ports.status)
@@ -51,7 +51,7 @@ case $CHOICE in
             echo "[OPEN]" > /var/plexguide/server.ports.status
             rm -r /var/plexguide/server.ports
             touch /var/plexguide/server.ports
-echo 'INFO - Select to OPEN Ports' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Select to OPEN Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
             ;;
         B)
@@ -60,7 +60,7 @@ echo 'INFO - Select to OPEN Ports' > /var/plexguide/pg.log && bash /opt/plexguid
         dialog --title "WARNING! WARNING! WARNING!" --msgbox "\nYou are CLOSING your PORTS! What does that mean? Visit ports.plexguide.com for detailed info!\n\nBasically, a program such as Sonnar cannot communicate to NZBGET. In the host field, instead of https://nzbget.plexguide.com, just put the name of the container; in this case - nzbget.\n\nVisit the site for more information!" 0 0
             echo "[CLOSED]" > /var/plexguide/server.ports.status
             echo "127.0.0.1:" > /var/plexguide/server.ports
-echo 'INFO - Select to CLOSE Ports' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Select to CLOSE Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
             ;;
         Z)

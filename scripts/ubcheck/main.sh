@@ -20,17 +20,17 @@ lsb_release -r -s > /var/plexguide/ubversion
 ubversion=$( cat /var/plexguide/ubversion )
 
 if [ "$ubversion" == "16.04" ]; then
-	echo 'INFO - Ubuntu 16.04 was detected as your Operating System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+	echo 'INFO - Ubuntu 16.04 was detected as your Operating System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     dialog --title "Ubuntu Version" --msgbox "\nGood Choice! You Are Running Ubuntu 16.04!" 7 50
     echo "16" > /var/plexguide/ub.ver
     exit
 fi
 
 if [ "$ubversion" == "18.04" ]; then
-	echo 'INFO - Ubuntu 18.04 was detected as your Operating System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+	echo 'INFO - Ubuntu 18.04 was detected as your Operating System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     dialog --title "Ubuntu Version" --msgbox "\nYou Are Running Ubuntu 18.04!" 7 50
     echo "18" > /var/plexguide/ub.ver
 else
-	echo 'WARNING - UB 16/18 was not detected. Docker Install May Fail!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+	echo 'WARNING - UB 16/18 was not detected. Docker Install May Fail!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
     dialog --title "Ubuntu Version" --msgbox "\nWARNING! SYSTEM IS NOT Running Ubuntu 16.04/18.04! USE AT YOUR OWN RISK! No Support Provided!" 8 50
 fi

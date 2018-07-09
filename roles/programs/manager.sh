@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Manager Programs Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Manager Programs Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 HEIGHT=16
 WIDTH=38
@@ -44,13 +44,13 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     B)
-      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
@@ -71,37 +71,37 @@ case $CHOICE in
       bash /opt/plexguide/menus/programs/ending.sh
       ;;
     D)
-      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     E)
-      echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     F)
-      echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     G)
-      echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     H)
-      echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     I)
-      echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+      echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
       clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
 

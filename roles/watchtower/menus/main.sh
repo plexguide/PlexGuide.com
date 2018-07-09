@@ -9,7 +9,7 @@
 # Execution: bash /opt/plexguide/roles/watchtower/menus/main.sh
 
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @WatchTower Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @WatchTower Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
 file="/var/plexguide/watchtower.yes"
 if [ -e "$file" ]
@@ -54,7 +54,7 @@ case $CHOICE in
             else
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
-echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 
               bash /opt/plexguide/roles/watchtower/menus/main.sh
 
@@ -73,7 +73,7 @@ echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log &
             else
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
-echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
               bash /opt/plexguide/roles/watchtower/menus/main.sh
               exit 0
             fi
@@ -91,7 +91,7 @@ echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log &
             else
               clear
               dialog --title "WatchTower Status" --msgbox "\nUser Failed to Select Yes, Going Back to the Main Menu!" 0 0
-echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
               bash /opt/plexguide/roles/watchtower/menus/main.sh
               exit 0
             fi
@@ -106,10 +106,10 @@ echo 'INFO - Opted Not to make a WatchTower Selection' > /var/plexguide/pg.log &
                exit 0
             else
                dialog --title "Dummy Proof Alert!" --msgbox "\nFor the first time, you must select a status! REDO!" 0 0
-               echo 'WARNING - User is Required to Select a WatchTower Preference' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+               echo 'WARNING - User is Required to Select a WatchTower Preference' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
             fi
             ;;
 esac
 
-echo 'INFO - Looping: WatchTower Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Looping: WatchTower Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 bash /opt/plexguide/roles/watchtower/menus/main.sh

@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
 HEIGHT=17
 WIDTH=59
 CHOICE_HEIGHT=10
@@ -44,29 +44,29 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
     A)
-echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
     B)
-echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/roles/processor/scripts/processor-menu.sh ;;
     C)
-echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     D)
-echo 'INFO - Selected: WatchTower Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: WatchTower Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/roles/watchtower/menus/main.sh
         ;;
     E)
-echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/menus/migrate/main.sh ;;
     F)
-echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         dpkg-reconfigure tzdata ;;
     G)
-echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/roles/tld/main.sh ;;
     H)
-echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
         bash /opt/plexguide/menus/backup-restore/server.sh ;;
     Z)
         clear
