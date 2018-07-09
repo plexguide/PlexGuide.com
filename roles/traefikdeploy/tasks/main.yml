@@ -93,7 +93,7 @@
 - pause:
     prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap\n5- GandiV5"
   register: result
-  until: result.user_input > "0" and result.user_input < "5"
+  until: result.user_input > "0" and result.user_input < "6"
   retries: 99
   delay: 1
 
