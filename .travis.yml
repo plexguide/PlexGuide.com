@@ -18,14 +18,14 @@ install:
   # Install Ansible.
   - sudo apt-get remove ansible
   - sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
-  - apt-get update
-  - yes | apt-get install ansible 2.5.5
-  - apt-mark hold ansible
-  - apt-get update
+  - sudo apt-get update -y
+  - sudo apt-get install ansible 2.5.5 -y
+  - sudo apt-mark hold ansible
+  - sudo apt-get update -y
 
 script:
   # Check the role/playbook's syntax.
-  - ansible-playbook -i opt/plexguide/test.yml --tags couchpotato --syntax-check
+  - sudo ansible-playbook -i opt/plexguide/test.yml --tags couchpotato --syntax-check
 
 ### Sources
 # https://tasdikrahman.me/2017/04/06/Testing-your-ansible-roles-using-travis-CI/
