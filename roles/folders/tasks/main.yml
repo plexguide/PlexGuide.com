@@ -63,6 +63,19 @@
     when: unionfs.stat.exists == False
     ignore_errors: yes
 
+############ TMP
+  - name: TMP Check
+    stat:
+      path: /mnt/tmp
+    register: tmp
+
+  - name: Create GDrive Folders
+    file: "path={{item}} state=directory"
+    with_items:
+      - /mnt/tmp
+    when: tmp.stat.exists == False
+    ignore_errors: yes
+
 ############ GDrive
   - name: GDrive Check
     stat:
