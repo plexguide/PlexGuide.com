@@ -50,7 +50,7 @@
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
       - "{{path.stdout}}/qbittorrent/Downloads:/qbit-downloads"
       - "/etc/localtime:/etc/localtime:ro"
-    netwxorks:
+    networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
