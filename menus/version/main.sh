@@ -37,13 +37,14 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.011"
-         02 "Release      ~ 6.010"
-         03 "Release      ~ 6.009"
-         04 "Release      ~ 6.008"
-         05 "Historical   ~ 5.1"
-         06 "Historical   ~ 5.013"
-         07 "Historical   ~ 4.1")
+         01 "EDGE         ~ 6.012"
+         02 "Release      ~ 6.011"
+         03 "Release      ~ 6.010"
+         04 "Release      ~ 6.009"
+         05 "Release      ~ 6.008"
+         06 "Historical   ~ 5.1"
+         07 "Historical   ~ 5.013"
+         08 "Historical   ~ 4.1")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -74,20 +75,23 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.010" ;;
+            version="6.011" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.009" ;;
+            version="6.010" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.008" ;;
+            version="6.009" ;;
         05)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.1" ;;
+            version="6.008" ;;
         06)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="5.013" ;;
+            version="5.1" ;;
         07)
+            touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+            version="5.013" ;;
+        08)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="Legacy-v4" ;;
 esac
