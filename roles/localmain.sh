@@ -45,7 +45,7 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 #systemctl deamon-reload 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main PG Menu - Local HD Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Main PG Menu - Local HD Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=16
 WIDTH=40
@@ -71,10 +71,10 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
         B)
-        echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     touch /var/plexguide/traefik.lock
                     clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
                     file="/var/plexguide/traefik.lock"
@@ -88,13 +88,13 @@ echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && ba
                     fi
                     ;;
         C)
-echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
         D)
             #### Solo Drive Edition
             if [ "$edition" == "PG Edition: HD Solo" ]
               then
-              echo 'WARNING - Using Solo HD Edition! Cannot Configure Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+              echo 'WARNING - Using Solo HD Edition! Cannot Configure Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
               dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
               bash /opt/plexguide/roles/localmain.sh
               exit
@@ -102,9 +102,9 @@ echo 'INFO - Selected: PG Security Interface Menu' > /var/plexguide/pg.log && ba
 file="/usr/bin/mergerfs"
   if [ -e "$file" ]
     then
-echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
-echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --infobox "Installing MergerFS (Please Wait!)" 3 50
 wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1
 apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
@@ -120,28 +120,28 @@ rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1
             bash /opt/plexguide/menus/drives/hds.sh
             ;;
         E)
-echo 'INFO - Selected: PG Server Information Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Server Information Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/info-tshoot/infodrives.sh
             ;;
         F)
-echo 'INFO - Selected: PG Troubleshoot Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Troubleshoot Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/info-tshoot/tshoot.sh
             ;;
         G)
-echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/settings/drives.sh
             ;;
         H)
-echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
             bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
         Z)
-echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
 esac
 
 ## repeat menu when exiting
-echo 'INFO - Looping Local Main Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Looping Local Main Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 bash /opt/plexguide/roles/localmain.sh

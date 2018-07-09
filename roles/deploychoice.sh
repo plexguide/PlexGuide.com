@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ##################################################### DEPLOYMENT SYSTEM - START
         HEIGHT=11
@@ -39,7 +39,7 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
         case $CHOICE in
                 A)
                     echo "Move" > /var/plexguide/menu.select
-                    bash /opt/plexguide/roles/pgdrivenav/main.sh 
+                    bash /opt/plexguide/roles/pgdrivenav/main.sh
                     ;;
                 B)
                     echo "SuperTransfer2" > /var/plexguide/menu.select
@@ -47,12 +47,12 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
                     ;;
                 C)
                     "plexdrive" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
+                    bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh 
                     ;;
                 Z)
                     ;; ## Do Not Put Anything Here
         esac
 
 ## repeat menu when exiting
-echo 'INFO - Redirection: Going Back to Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Redirection: Going Back to Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 exit

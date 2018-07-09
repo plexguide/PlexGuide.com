@@ -15,9 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-bash /opt/plexguide/roles/backup/scripts/list.sh
-
 rm -r /tmp/backup.build 1>/dev/null 2>&1
+bash /opt/plexguide/roles/backup/scripts/list.sh
 #### Commenting Out To Let User See
 while read p; do
   echo -n $p >> /tmp/backup.build

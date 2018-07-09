@@ -21,7 +21,7 @@ export NCURSES_NO_UTF8_ACS=1
 selected=$( cat /var/plexguide/menu.select )
 
 ################################################################## UN OR ENCRYPTED
-echo 'INFO - @PG Drive Version Select Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @PG Drive Version Select Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=11
 WIDTH=42

@@ -34,7 +34,7 @@ file="/dev/nvme0n1"
 if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
     then
 
-echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
       dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 35
 
@@ -110,29 +110,40 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       chmod 0755 /mnt/tdrive 1>/dev/null 2>&1
       chown 1000:1000 /mnt/tdrive 1>/dev/null 2>&1
 
-      echo "20" | dialog --gauge "Deploying Sonarr" 7 50 0
+      echo "50" | dialog --gauge "Installing RCLONE" 7 50 0
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/pg.yml --tags sonarr
-      sleep 2
 
-      echo "40" | dialog --gauge "Deploying Radarr" 7 50 0
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/pg.yml --tags radarr
-      sleep 2
+      pg_rclone=$( cat /var/plexguide/pg.rclone )
+      pg_rclone_stored=$( cat /var/plexguide/pg.rclone.stored )
 
-      echo "65" | dialog --gauge "Deploying NZBGET" 7 50 0
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/pg.yml --tags nzbget
-      sleep 2
+      if [ "$pg_rclone" == "$pg_rclone_stored" ]
+          then
+            echo "75" | dialog --gauge "RClone 1.42 Is Already Installed" 7 50 0
+            sleep 2
+          else
+            echo "75" | dialog --gauge "Installing: RClone" 7 50 0
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
+            sleep 2
+      #### Alignment Note #### Have to Have It Left Aligned
+tee "/etc/fuse.conf" > /dev/null <<EOF
+# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
+# Set the maximum number of FUSE mounts allowed to non-root users.
+# The default is 1000.
+#mount_max = 1000
+# Allow non-root users to specify the allow_other or allow_root mount options.
+user_allow_other
+EOF
 
-      echo "85" | dialog --gauge "Installing RCLONE" 7 50 0
-      sleep 2
-      clear
-      curl https://rclone.org/install.sh | sudo bash
-      touch /var/plexguide/basics.yes &>/dev/null &
+      chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
+      chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
+
+            #read -n 1 -s -r -p "Press any key to continue "
+            cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
+      fi
+
       sleep 2
 
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
@@ -155,7 +166,7 @@ echo "yes" > /var/plexguide/gce.check
       then
         echo "corn" &>/dev/null &
       else
-        echo 'FAILURE - GCE Deployment Failed: NVME HD was not selected!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'FAILURE - GCE Deployment Failed: NVME HD was not selected!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly (or didn't read the wiki!) but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
       fi
 fi

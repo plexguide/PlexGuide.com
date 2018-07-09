@@ -15,16 +15,16 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 export NCURSES_NO_UTF8_ACS=1
 
 file="/usr/bin/ansible"
 if [ -e "$file" ]
 then
-echo "INFO - Ansible Detected" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Ansible Detected" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 else
-echo "INFO - Ansible Not Detected - Installing" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Ansible Not Detected - Installing" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --title "NOTE" --msgbox "\nThis must be a new setup.  We will install Ansible First!" 0 0
 bash /opt/plexguide/roles/baseline/scripts/ansible.sh
 fi
@@ -57,7 +57,7 @@ clear
 case $CHOICE in
         Z)
             bash /opt/plexguide/roles/main.sh
-echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             exit 0
             ;;
         01)
@@ -66,7 +66,7 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             rm -r /opt/plexguide 1>/dev/null 2>&1
             mv /opt/plexguide2 /opt/plexguide
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             echo ""
             read -n 1 -s -r -p "Press any key to continue"
             bash /opt/plexguide/roles/ending/ending.sh
@@ -102,7 +102,7 @@ if ! dialog --stdout --title "Version User Confirmation" \
    --yesno "\nDo Want to Install: Version - $version?" 7 50; then
    dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
 clear
-echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 sudo bash /opt/plexguide/roles/ending/ending.sh
 exit 0
@@ -122,7 +122,7 @@ bash /opt/plexg*/sc*/ins*
 rm -r /tmp/$version.zip
 touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 
-echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 bash /opt/plexguide/roles/ending/ending.sh
 
