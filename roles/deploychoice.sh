@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ##################################################### DEPLOYMENT SYSTEM - START
         HEIGHT=11
@@ -54,5 +54,5 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
         esac
 
 ## repeat menu when exiting
-echo 'INFO - Redirection: Going Back to Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Redirection: Going Back to Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 exit

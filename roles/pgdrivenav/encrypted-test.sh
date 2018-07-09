@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
@@ -48,7 +48,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 clear
 curl https://rclone.org/install.sh | sudo bash
@@ -78,7 +78,7 @@ EOF
                   bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
-echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RClone Missing Warning - END
             rclone config
@@ -97,13 +97,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
                   bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
             #### RCLONE MISSING END
-            echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+            echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
@@ -213,7 +213,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gcrypt" != "[gcrypt]" ]]
               then
-echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
@@ -221,7 +221,7 @@ echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/p
 
             if [[ "$selected" == "SuperTransfer2" && "$tcrypt" != "[tcrypt]" ]]
               then
-echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tcrypt\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
@@ -243,7 +243,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
-            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             ;;
 

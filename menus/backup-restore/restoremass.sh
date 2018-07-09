@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
@@ -151,7 +151,7 @@ rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
-echo 'INFO - Mass Restore Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Mass Restore Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!\n\nYou must DEPLOY each APPLICATION that have NOT LAUNCHED before!" 0 0
 clear
 

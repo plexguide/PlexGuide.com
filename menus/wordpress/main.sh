@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 file="/var/plexguide/wp.id"
   if [ -e "$file" ]
@@ -50,15 +50,15 @@ CHOICE=$(dialog --clear \
   
 case $CHOICE in
         A)
-echo 'INFO - Selected: Deploy a New WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Selected: Deploy a New WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/wordpress/deploywp.sh 
             ;;
         B)
-echo 'INFO - Selected: Backup a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Selected: Backup a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/wordpress/backup.sh 
             ;;
         C)
-echo 'INFO - Selected: Restore a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Selected: Restore a WP Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/wordpress/restore.sh 
             ;;
         Z)

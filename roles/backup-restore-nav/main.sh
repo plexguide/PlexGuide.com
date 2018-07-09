@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Backup-Restore Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1

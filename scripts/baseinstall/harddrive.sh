@@ -17,7 +17,7 @@
 #################################################################################
 ######## This is a ONE TIME MENU
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - Visited HD Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Visited HD Selection Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ### PUT IF SETUP ALREADY, EXIT
 

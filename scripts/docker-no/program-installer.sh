@@ -28,7 +28,7 @@ YMLPORT=$(awk '/ymlport/{print $2}' /opt/plexguide/tmp.txt)
     echo Upgraded "$YMLDISPLAY" - Use Port "$YMLPORT" with IP Address; hostname -I;
     echo
 
-echo 'INFO - $YMLDISPLAY Information Displayed - USe Port $YMLPORT > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - $YMLDISPLAY Information Displayed - USe Port $YMLPORT > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 bash /opt/plexguide/scripts/startup/owner.sh
 read -n 1 -s -r -p "Press any key to continue "

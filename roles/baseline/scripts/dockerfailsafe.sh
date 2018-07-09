@@ -13,7 +13,7 @@ keyword1="Baseline Install"
 keyword2="Docker Failsafe"
 
 ### STARTING LOG ######################################################
-echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ### MAIN SCRIPT #######################################################
 rm -r /var/plexguide/startup.error 1>/dev/null 2>&1
@@ -39,14 +39,14 @@ file="/usr/bin/docker" 1>/dev/null 2>&1
       file="/usr/bin/docker" 1>/dev/null 2>&1
         if [ -e "$file" ]
           then
-          echo "INFO - SUCCESS: Docker Failsafe Resulted in a Succesful Docker Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+          echo "INFO - SUCCESS: Docker Failsafe Resulted in a Succesful Docker Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         else
             touch /var/plexguide/startup.error 1>/dev/null 2>&1
-          echo "INFO - FAILED: Docker Failsafe Resulted in a Failed Docker Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+          echo "INFO - FAILED: Docker Failsafe Resulted in a Failed Docker Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             exit
       fi
 fi
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
-echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

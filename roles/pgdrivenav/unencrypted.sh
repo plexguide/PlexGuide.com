@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Unencrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Unencrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
@@ -68,12 +68,12 @@ case $CHOICE in
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                  echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                  echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
                   bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
-echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RClone Missing Warning - END
             rclone config
@@ -88,7 +88,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             file="/mnt/unionfs/plexguide/pgchecker.bin"
             if [ -e "$file" ]
             then
-               echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+               echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             else
                mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
                mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
@@ -96,7 +96,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
                rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
                rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
-               echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+               echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             fi
             ;;
         B)
@@ -106,14 +106,14 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                 then
                   echo "" 1>/dev/null 2>&1
                 else
-                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                   dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
                   bash /opt/plexguide/roles/pgdrivenav/main.sh
                   exit
               fi
 
             #### RCLONE MISSING END
-echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
@@ -173,7 +173,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
             ;;
             F)
             ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #ansible-role services_remove
             dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
@@ -198,7 +198,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
               then
-echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
             exit
@@ -206,7 +206,7 @@ echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/p
 
             if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
               then
-echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
             exit
@@ -228,7 +228,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
-            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             ;;
         Z)
             exit 0 ;;

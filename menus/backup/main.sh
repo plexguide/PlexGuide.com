@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Backup Cron Job Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - @Backup Cron Job Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ########## Cron Job a Program
 
@@ -44,28 +44,28 @@ TITLE="Schedule a Backup of --$display --?"
 
     case $CHOICE in
             A)
-                echo 'INFO - MONTHLY CRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                echo 'INFO - MONTHLY CRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 dialog --infobox "Establishing [Monthly] CronJob" 3 34
                 echo "monthly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/pg.yml --tags deploy &>/dev/null &
                 sleep 2
                 --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             B)
-                echo 'INFO - WEEKLY CRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                echo 'INFO - WEEKLY CRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 dialog --infobox "Establishing [Weekly] CronJob" 3 34
                 echo "weekly" > /tmp/time_var
                 ansible-playbook /opt/plexguide/pg.yml --tags deploy &>/dev/null &
                 sleep 2
                 --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             C)
-                echo 'INFO - DAILYCRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                echo 'INFO - DAILYCRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 dialog --infobox "Establishing [Daily] CronJob" 3 34
                 echo "daily" > /tmp/time_var
                 ansible-playbook /opt/plexguide/pg.yml --tags deploy &>/dev/null &
                 sleep 2
                 --msgbox "\nBackups of -- $display -- will occur!" 0 0 ;;
             Z)
-                echo 'INFO - NO CRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+                echo 'INFO - NO CRON JOB for $display Selected' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 dialog --infobox "Removing CronJob (If Exists)" 3 34
                 ansible-playbook /opt/plexguide/pg.yml --tags nocron &>/dev/null &
                 sleep 2

@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - Rebuilding Docker Containers' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Rebuilding Docker Containers' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 dialog --title "Very Important" --msgbox "\nWe must rebuild certain containers! Please Be Patient!" 0 0
 docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running

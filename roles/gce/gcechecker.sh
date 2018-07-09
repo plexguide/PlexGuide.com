@@ -34,7 +34,7 @@ file="/dev/nvme0n1"
 if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
     then
 
-echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
       dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 35
 
@@ -166,7 +166,7 @@ echo "yes" > /var/plexguide/gce.check
       then
         echo "corn" &>/dev/null &
       else
-        echo 'FAILURE - GCE Deployment Failed: NVME HD was not selected!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log.sh
+        echo 'FAILURE - GCE Deployment Failed: NVME HD was not selected!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly (or didn't read the wiki!) but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
       fi
 fi
