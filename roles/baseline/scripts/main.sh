@@ -251,10 +251,10 @@ pg_rclone_stored=$( cat /var/plexguide/pg.rclone.stored )
 
 if [ "$pg_rclone" == "$pg_rclone_stored" ]
     then
-      echo "70" | dialog --gauge "rclone Is Already Installed" 7 50 0
+      echo "70" | dialog --gauge "RClone 1.42 Is Already Installed" 7 50 0
       sleep 2
     else
-      echo "70" | dialog --gauge "Installing: PlexGuide rclone" 7 50 0
+      echo "70" | dialog --gauge "Installing: RClone" 7 50 0
       sleep 2
       clear
       ansible-playbook /opt/plexguide/pg.yml --tags rclone
@@ -274,7 +274,7 @@ chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
 
       #read -n 1 -s -r -p "Press any key to continue "
       cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
-      
+fi
 sleep 2
 #sleep 1
 
