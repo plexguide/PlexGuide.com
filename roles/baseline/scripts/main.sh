@@ -257,7 +257,7 @@ if [ "$pg_rclone" == "$pg_rclone_stored" ]
       echo "70" | dialog --gauge "Installing: RClone" 7 50 0
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/pg.yml --tags rclone
+      ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
       sleep 2
 #### Alignment Note #### Have to Have It Left Aligned
 tee "/etc/fuse.conf" > /dev/null <<EOF
