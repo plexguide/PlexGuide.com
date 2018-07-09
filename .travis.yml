@@ -9,7 +9,7 @@ env:
 
 branches:
   only:
-    - edge
+    - Edge
 
 before_install:
   - sudo apt-get update -qq
