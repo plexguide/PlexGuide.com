@@ -25,7 +25,8 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - sudo ansible-playbook -i opt/plexguide/test.yml --tags couchpotato --syntax-check
+  - bash /roles/baseline/scripts/gen.sh
+  - sudo ansible-playbook -i opt/plexguide/pg.yml --tags couchpotato --syntax-check
 
 ### Sources
 # https://tasdikrahman.me/2017/04/06/Testing-your-ansible-roles-using-travis-CI/
