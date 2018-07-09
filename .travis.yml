@@ -1,8 +1,24 @@
+---
 language: bash
-sudo: enabled
+sudo: required
+dist: xenial
 
-deploy:
-  provider: script
-  script: roles/baseline/scripts/ansible.sh
-  on:
-    branch: Version-6
+# Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
+env:
+  - ANSIBLE_VERSION=latest
+
+branches:
+  only:
+    - edge
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  # Install Ansible.
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
+
+script:
+  # Check the role/playbook's syntax.
+  - ansible-playbook -i opt/plexguide/test.yml --tags couchpotato --syntax-check
