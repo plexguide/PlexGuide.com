@@ -47,7 +47,7 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
                     ;;
                 C)
                     "plexdrive" > /var/plexguide/menu.select
-                    bash /opt/plexguide/menus/plexdrive/rc-pd.sh 
+                    bash /opt/plexguide/roles/plexdrive/scriptsrc-pd.sh 
                     ;;
                 Z)
                     ;; ## Do Not Put Anything Here

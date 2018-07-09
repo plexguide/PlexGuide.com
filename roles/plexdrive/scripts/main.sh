@@ -102,8 +102,8 @@ case $CHOICE in
                 chown root:root /usr/bin/plexdrive
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
-                bash -x /opt/plexguide/menus/plexdrive/check4.sh &>/dev/null &
-                bash -x /opt/plexguide/menus/plexdrive/pd4.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
+                bash -x /opt/plexguide/roles/plexdrive/scriptscheck4.sh &>/dev/null &
+                bash -x /opt/plexguide/roles/plexdrive/scriptspd4.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -172,17 +172,17 @@ case $CHOICE in
                 chmod 755 /usr/bin/plexdrive
                 systemctl enable plexdrive
                 
-                bash /opt/plexguide/menus/plexdrive/check5.sh &>/dev/null &
+                bash /opt/plexguide/roles/plexdrive/scriptscheck5.sh &>/dev/null &
 
                 file="/root/.plexdrive/token.json"
                 if [ -e "$file" ]
                     then
-                        bash /opt/plexguide/menus/plexdrive/check5c.sh &>/dev/null &
+                        bash /opt/plexguide/roles/plexdrive/scriptscheck5c.sh &>/dev/null &
                     else
                         clear 1>/dev/null 2>&1
                 fi
                 
-                bash -x /opt/plexguide/menus/plexdrive/pd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
+                bash -x /opt/plexguide/roles/plexdrive/scriptspd5.sh 2>&1 | tee /opt/appdata/plexguide/plexdrive.info
                 loop="false"
             else
                 dialog --title "PG Update Status" --msgbox "\nExiting - User Selected No" 0 0
@@ -194,12 +194,12 @@ case $CHOICE in
             rm -r /root/.plexdrive 1>/dev/null 2>&1
             rm -r ~/.plexdrive 1>/dev/null 2>&1
             dialog --title "Token Status" --msgbox "\nThe Tokens were Removed" 0 0
-            bash /opt/plexguide/menus/plexdrive/main.sh 
+            bash /opt/plexguide/roles/plexdrive/scriptsmain.sh 
             ;;
         D)
             systemctl stop plexdrive 1>/dev/null 2>&1
             sudo rm -r /etc/systemd/system/plexdrive.service 1>/dev/null 2>&1
-            bash /opt/plexguide/menus/plexdrive/main.sh 1>/dev/null 2>&1
+            bash /opt/plexguide/roles/plexdrive/scriptsmain.sh 1>/dev/null 2>&1
             dialog --title "PD Status" --msgbox "\nWe Are Going To Restart Your System!\n\nMake sure you come back and pick a version of PlexDrive!" 0 0
             clear
             echo "Make sure to come back and pick a version of PlexDrive to ReRun!"
