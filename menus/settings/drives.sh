@@ -17,7 +17,7 @@
 #################################################################################
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
-echo 'INFO - @Settings Menu - Drives Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Settings Menu - Drives Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=14
 WIDTH=58
@@ -45,34 +45,34 @@ clear
 case $CHOICE in
     A)
         bash /opt/plexguide/roles/tld/main.sh
-        echo 'INFO - Selected Top Level Domain App' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - Selected Top Level Domain App' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         ;;
     B)
         #### Solo Drive Edition
         if [ "$edition" == "PG Edition: HD Solo" ]
           then
           dialog --title "-- NOTE --" --msgbox "\nNOT enabled for HD Solo Edition! You only have ONE DRIVE!" 0 0
-          echo 'WARNING - Utilizing HD Solo Edition - Cannot Configure Drives' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+          echo 'WARNING - Utilizing HD Solo Edition - Cannot Configure Drives' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           bash /opt/plexguide/menus/settings/drives.sh
           exit
-        echo 'INFO - Selected 2nd HD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - Selected 2nd HD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         fi
         ;;
     C)
         bash /opt/plexguide/roles/processor/scripts/processer-menu.sh
-        echo "INFO - Selected Processor Power Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo "INFO - Selected Processor Power Change" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         ;;
     D)
-        echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
         ;;
     E)
-        echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/roles/watchtower/menus/main.sh
         ;;
     Z)
         clear
-        echo "INFO - Exited Settings Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo "INFO - Exited Settings Menu" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         exit 0
         ;;
     esac

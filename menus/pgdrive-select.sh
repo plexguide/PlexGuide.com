@@ -1,6 +1,6 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
-echo "INFO - @PGDrive PGDrive Type Menu" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - @PGDrive PGDrive Type Menu" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #############
 HEIGHT=10
@@ -27,13 +27,13 @@ case $CHOICE in
         A)
             bash /opt/plexguide/menus/pgdrive/main.sh
               echo "RClone - You Chose the Unencrypted Method" > /tmp/pushover
-echo "INFO - Selected: Unencrypted PG Drives" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Selected: Unencrypted PG Drives" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
               ;;
         B)
             bash /opt/plexguide/menus/pgdrive_en/main.sh
               echo "RClone - You Chose the Encrypted Method" > /tmp/pushover
-echo "INFO - Selected: Encrypted PG Drives" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Selected: Encrypted PG Drives" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
               ;;
         Z)
             clear

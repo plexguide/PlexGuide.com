@@ -13,11 +13,11 @@ keyword1="Installing"
 keyword2="PG YML GEN"
 
 ### STARTING LOG ######################################################
-echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ### MAIN SCRIPT #######################################################
 ls -la /opt/plexguide/roles | awk '{ print $9 }' | tail -n +4 > /var/plexguide/yml.list
-echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /opt/plexguide/pg.yml 1>/dev/null 2>&1
 
@@ -42,4 +42,4 @@ done </var/plexguide/yml.list
 ### ENDING: DECLARED VARIABLES 
 
 ### ENDING: FINAL LOG ##################################################
-echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
