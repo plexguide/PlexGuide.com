@@ -45,6 +45,13 @@ clear
 case $CHOICE in
         A)
             clear
+            rm -r /tmp/backup.build 1>/dev/null 2>&1
+            bash /opt/plexguide/roles/backup/scripts/list.sh
+            #### Commenting Out To Let User See
+            while read p; do
+              echo -n $p >> /tmp/backup.build
+              echo -n " " >> /tmp/backup.build
+            done </tmp/backup.list
             ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
             echo ""
             read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue"
