@@ -62,17 +62,6 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            #### RClone Missing Warning - START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
 echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RClone Missing Warning - END
@@ -100,19 +89,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
-            #### RCLONE MISSING START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-
-            #### RCLONE MISSING END
 echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RECALL VARIABLES START
