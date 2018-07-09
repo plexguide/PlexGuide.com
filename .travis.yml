@@ -4,8 +4,8 @@ sudo: required
 dist: xenial
 
 # Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
-env:
-  - ANSIBLE_VERSION=latest
+#env:
+#  - ANSIBLE_VERSION=latest
 
 branches:
   only:
@@ -16,8 +16,12 @@ before_install:
 
 install:
   # Install Ansible.
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
+  - sudo apt-get remove ansible
+  - sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
+  - apt-get update -y
+  - apt-get install ansible 2.5.5 -y
+  - apt-mark hold ansible
+  - yes | apt-get update
 
 script:
   # Check the role/playbook's syntax.
