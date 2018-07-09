@@ -91,9 +91,9 @@
   #########################################
 
 - pause:
-    prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap"
+    prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap\n5- GandiV5"
   register: result
-  until: result.user_input > "0" and result.user_input < "5"
+  until: result.user_input > "0" and result.user_input < "6"
   retries: 99
   delay: 1
 
@@ -185,6 +185,48 @@
   shell: "echo 'namecheap' > /var/plexguide/server.provider"
   when:
     - result.user_input == "4"
+- name: Set Provider - NameCheap
+  set_fact:
+    provider: "namecheap"
+  when: result.user_input == "4"
+
+- name: NAMECHEAP Information
+  pause:
+    prompt: "\nWhat is Your NameCheap API User?"
+  register: name1
+  when:
+    - result.user_input == "4"
+
+- name: NAMECHEAP Information
+  pause:
+    prompt: "\nWhat is Your NameCheap API Key?"
+  register: name2
+  when:
+    - result.user_input == "4"
+
+- name: Store Provider
+  shell: "echo 'namecheap' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "4"
+
+########################
+- name: Set Provider - GandiV5
+  set_fact:
+    provider: "gandiv5"
+  when: result.user_input == "5"
+
+- name: GandiV5 Information
+  pause:
+    prompt: "\nWhat is Your GandiV5 API?"
+  register: name1
+  when:
+    - result.user_input == "5"
+
+- name: Store Provider
+  shell: "echo 'gandiv5' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "5"
+
 ########################
 - name: Register Provider First Time
   shell: "cat /var/plexguide/server.provider"
@@ -380,6 +422,35 @@
   tags: namecheap
   when:
     - result.user_input == "4"
+######### GandiV5
+- name: Deploy Traefik - GANDI
+  docker_container:
+    name: traefik
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "gandiv5"
+      GANDIV5_API_KEY: "{{name1.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: gandiv5
+  when:
+    - result.user_input == "5"
 ############################################### REMOVE LOCK
 - name: Register E-Mail
   shell: "rm -r /var/plexguide/traefik.lock"
