@@ -16,16 +16,10 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+- include_vars: variables.yml
 
 - include_role:
-    name: variables
-
-- name: Remove Container
-  docker_container:
-    name: thelounge
-    state: absent
+    name: pgmstart
 
 - name: Create and start container
   docker_container:
@@ -33,7 +27,7 @@
     image: "linuxserver/thelounge"
     pull: yes
     published_ports:
-      - "{{ports.stdout}}9100:9000"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       PUID: "1000"
       PGID: "1000"
@@ -50,4 +44,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:thelounge.{{domain.stdout}}"
-      traefik.port: "9000"
+      traefik.port: "{{intport}}"
+
+- include_role:
+    name: pgmend
