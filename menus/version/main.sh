@@ -61,7 +61,6 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
               bash /opt/plexguide/menus/version/main.sh
               exit
         fi
-
             rm -r /opt/plexguide2 1>/dev/null 2>&1
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
             rm -r /opt/plexguide 1>/dev/null 2>&1
