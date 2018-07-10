@@ -52,7 +52,7 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             exit 0
             ;;
         01)
-        file="touch /var/plexguide/ask.yes"
+        file="/var/plexguide/ask.yes"
         if [ -e "$file" ]
           then
               echo "INFO - User Selected Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
