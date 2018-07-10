@@ -19,16 +19,6 @@ echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 export NCURSES_NO_UTF8_ACS=1
 
-file="/usr/bin/ansible"
-if [ -e "$file" ]
-then
-echo "INFO - Ansible Detected" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-else
-echo "INFO - Ansible Not Detected - Installing" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-dialog --title "NOTE" --msgbox "\nThis must be a new setup.  We will install Ansible First!" 0 0
-bash /opt/plexguide/roles/baseline/scripts/ansible.sh
-fi
-
 HEIGHT=18
 WIDTH=33
 CHOICE_HEIGHT=11
@@ -62,6 +52,16 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             exit 0
             ;;
         01)
+        file="touch /var/plexguide/ask.yes"
+        if [ -e "$file" ]
+        then
+        echo "INFO - User Selected Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        else
+        dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
+        bash /opt/plexguide/menus/version/main.sh
+        exit
+        fi
+
             rm -r /opt/plexguide2 1>/dev/null 2>&1
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
             rm -r /opt/plexguide 1>/dev/null 2>&1
