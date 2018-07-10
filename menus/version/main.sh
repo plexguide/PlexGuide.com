@@ -55,7 +55,7 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
         file="/var/plexguide/ask.yes"
         if [ -e "$file" ]
           then
-              echo "INFO - User Selected Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+              echo "INFO - User Selected the Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             else
               dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
               bash /opt/plexguide/menus/version/main.sh
