@@ -27,8 +27,8 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.014"
-         02 "Release      ~ 6.013"
+         01 "EDGE         ~ 6.013"
+         02 "Release      ~ 6.012"
          03 "Release      ~ 6.010"
          04 "Release      ~ 6.009"
          05 "Release      ~ 6.008"
@@ -52,16 +52,15 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             exit 0
             ;;
         01)
-        file="touch /var/plexguide/ask.yes"
+        file="/var/plexguide/ask.yes"
         if [ -e "$file" ]
-        then
-        echo "INFO - User Selected Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        else
-        dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
-        bash /opt/plexguide/menus/version/main.sh
-        exit
+          then
+              echo "INFO - User Selected the Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            else
+              dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
+              bash /opt/plexguide/menus/version/main.sh
+              exit
         fi
-
             rm -r /opt/plexguide2 1>/dev/null 2>&1
             ansible-playbook /opt/plexguide/pg.yml --tags pgedge
             rm -r /opt/plexguide 1>/dev/null 2>&1
@@ -75,7 +74,7 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.013" ;;
+            version="6.012" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="6.010" ;;
