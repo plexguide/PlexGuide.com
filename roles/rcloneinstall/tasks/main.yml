@@ -64,7 +64,7 @@
 - name: install rclone - copy binary
   copy:
     src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-amd64/rclone"
-    dest: "/usr/sbin/rclone"
+    dest: "/usr/bin/rclone"
     mode: 0755
     owner: root
     group: root
