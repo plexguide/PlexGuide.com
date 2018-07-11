@@ -56,19 +56,10 @@ case $CHOICE in
 
       ;;
     C)
-      display=LazyLibrarian
-      program=lazy
-      port=5299
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/pg.yml --tags lazy
-      read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
-
-      bash /opt/plexguide/menus/programs/ending.sh
+    echo 'INFO - Selected: LazyLibrarian' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "skipend=no"
+    read -n 1 -s -r -p "Press any key to continue"
+    
       ;;
     D)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
