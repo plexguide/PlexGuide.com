@@ -27,8 +27,11 @@
     version: "master"
     force: yes
 
-- name: Generate YML
-  copy: "src=role.yml dest=/opt/plexguide/{{mod}}.yml force=yes mode=0775"
+- name: Install config.json
+  template:
+    src: role.yml
+    dest: /opt/plexguide/{{mod}}.yml
+    force: yes
 
 - include_role:
     name: "{{mod}}"
