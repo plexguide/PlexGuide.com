@@ -29,6 +29,6 @@
 - name: Clone PG Module
   git:
     repo: "https://github.com/Admin9705/plex-plexguide.com-ansible"
-    dest: "/opt/plexguide/plex"
+    dest: "/opt/plexguide/roles/plex"
     version: "master"
     force: yes
