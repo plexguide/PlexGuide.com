@@ -300,7 +300,7 @@
 ######################################################### CLOUDFLARE
 - name: Deploy Traefik Container - CloudFlare
   docker_container:
-    name: "{{role_name}}"
+    name: traefik
     image: "traefik:1.6"
     pull: yes
     cpu_shares: 256

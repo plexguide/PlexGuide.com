@@ -83,7 +83,7 @@ echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && ba
                         echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
                       else
                         echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
-                        bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+                        bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
                         echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
                     fi
                     ;;
