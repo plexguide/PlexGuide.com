@@ -35,7 +35,6 @@ sed -i -e "/pyload/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 while read p; do
 echo $p > /tmp/program_var
 app=$( cat /tmp/program_var )
-dialog --infobox "Reconstructing Your Container: $app" 3 50
-ansible-playbook /opt/plexguide/pg.yml --tags "$app" 1>/dev/null 2>&1
+ansible-playbook /opt/plexguide/pg.yml --tags "$app"
 #read -n 1 -s -r -p "Press any key to continue "
 done </opt/appdata/plexguide/running
