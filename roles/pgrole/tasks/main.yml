@@ -21,11 +21,6 @@
 #  shell: "cat /var/plexguide/pgfork.project"
 #  register: basicproject
 
-- name: Create Folder
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/plexguide/plex
-
 - name: Clone PG Module
   git:
     repo: "https://github.com/Admin9705/plex-plexguide.com-ansible"
