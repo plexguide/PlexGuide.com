@@ -29,3 +29,6 @@
 
 - name: Rebuild
   shell: "bash /opt/plexguide/roles/baseline/scripts/gen.sh"
+
+- include_role:
+    name: {{mod}}
