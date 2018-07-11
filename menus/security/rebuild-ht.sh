@@ -32,9 +32,10 @@ sed -i -e "/telly/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/couchpotato/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/nzbget/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/pyload/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+clear
 while read p; do
 echo $p > /tmp/program_var
 app=$( cat /tmp/program_var )
-ansible-playbook /opt/plexguide/pg.yml --tags "$app"
+ansible-playbook /opt/plexguide/pg.yml --tags "$app" --skip-tags cron
 #read -n 1 -s -r -p "Press any key to continue "
 done </opt/appdata/plexguide/running
