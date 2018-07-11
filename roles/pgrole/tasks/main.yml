@@ -20,13 +20,9 @@
 #- name: Pull Stored Data
 #  shell: "cat /var/plexguide/pgfork.project"
 #  register: basicproject
-- include_vars: variables.yml
-
-- debug: msg="Using the following Plex claim token {{mod}}"
-
-- name: Clone PG Module - module
+- name: Clone PG Module - {{mod}}
   git:
-    repo: "https://github.com/Admin9705/{{mod.stdout}}-plexguide.com-ansible"
+    repo: "https://github.com/Admin9705/{{mod}}-plexguide.com-ansible"
     dest: "/opt/plexguide/roles/{{mod.stdout}}"
     version: "master"
     force: yes
