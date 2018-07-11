@@ -76,7 +76,7 @@ echo 'INFO - Selected: PG Programs Interface Menu' > /var/plexguide/pg.log && ba
         B)
         echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     touch /var/plexguide/traefik.lock
-                    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+                    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
                     file="/var/plexguide/traefik.lock"
                     if [ -e "$file" ]
                       then
