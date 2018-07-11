@@ -22,10 +22,12 @@
 #  register: basicproject
 - include_vars: variables.yml
 
+- debug: msg="Using the following Plex claim token {{mod}}"
+
 - name: Clone PG Module - module
   git:
-    repo: "https://github.com/Admin9705/{{module.stdout}}-plexguide.com-ansible"
-    dest: "/opt/plexguide/roles/{{module.stdout}}"
+    repo: "https://github.com/Admin9705/{{mod.stdout}}-plexguide.com-ansible"
+    dest: "/opt/plexguide/roles/{{mod.stdout}}"
     version: "master"
     force: yes
 
