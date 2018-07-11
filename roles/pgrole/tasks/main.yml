@@ -21,7 +21,7 @@
 #  shell: "cat /var/plexguide/pgfork.project"
 #  register: basicproject
 
-- name: Clone PG Module
+- name: Clone PG Module - {{module}}
   git:
     repo: "https://github.com/Admin9705/{{module}}-plexguide.com-ansible"
     dest: "/opt/plexguide/roles/{{module}}"
