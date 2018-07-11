@@ -27,8 +27,8 @@
     version: "master"
     force: yes
 
-- name: Rebuild
-  shell: "bash /opt/plexguide/roles/baseline/scripts/gen.sh"
+- name: Generate YML
+  copy: "src=role.yml dest=/opt/plexguide/{{mod}} force=yes mode=0775"
 
 - include_role:
     name: "{{mod}}"
