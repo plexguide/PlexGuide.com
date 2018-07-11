@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Main 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=10
 WIDTH=38
@@ -37,27 +37,27 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k
+            echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
+
             ;;
         B)
-            echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k
+            echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
+
             ;;
         C)
-            echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k
+            echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
+
             ;;
         Z)
             exit 0 ;;
 esac
 
-echo 'INFO Looping: 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO Looping: 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/versions4k.sh

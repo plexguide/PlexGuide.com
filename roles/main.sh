@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Main PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
@@ -47,55 +47,55 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
            bash /opt/plexguide/roles/deploychoice.sh ;;
         B)
-echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             touch /var/plexguide/traefik.lock
-            clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+            clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
             file="/var/plexguide/traefik.lock"
             if [ -e "$file" ]
               then
                 echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
               else
                 echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
-                bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+                bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
                 echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
             fi
             ;;
         C)
-echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;
         D)
-echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/plex/enhancement.sh ;;
         E)
-echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/security/main.sh ;;
         F)
-echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/info-tshoot/info.sh ;;
         G)
-echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/info-tshoot/tshoot.sh ;;
         H)
-echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/settings/main.sh ;;
         I)
-echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/backup-restore-nav/main.sh ;;
         J)
-echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
         Z)
-echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
 esac
 
 ## repeat menu when exiting
-echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 bash /opt/plexguide/roles/main.sh
 exit

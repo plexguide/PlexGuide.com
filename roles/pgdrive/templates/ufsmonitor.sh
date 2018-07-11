@@ -17,7 +17,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'SUCCESS - UFSMonitor (UnionFS) Monitor Script.sh Deployed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'SUCCESS - UFSMonitor (UnionFS) Monitor Script.sh Deployed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 sleep 3
 
 while true
@@ -29,7 +29,7 @@ do
       echo "" 1>/dev/null 2>&1
       sleep 120
         else
-        echo 'FAILURE - UNIONFS FAILED - PGChecker.bin missing!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'FAILURE - UNIONFS FAILED - PGChecker.bin missing!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         docker stop medusa &>/dev/null &
         docker stop couchpotato &>/dev/null &
         docker stop sickrage &>/dev/null &
@@ -39,13 +39,13 @@ do
         docker stop radarr &>/dev/null &
         docker stop sonarr4k &>/dev/null &
         docker stop radarr4k&>/dev/null &
-        echo 'WARNING - Programs Utilizing UnionFS were shutdown' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        echo 'INFO - Redeploying PG Drive Service To Assist' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'WARNING - Programs Utilizing UnionFS were shutdown' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo 'INFO - Redeploying PG Drive Service To Assist' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         ansible-playbook /opt/plexguide/pg.yml --tags gdrive 1>/dev/null 2>&1
         ansible-playbook /opt/plexguide/pg.yml --tags tdrive 1>/dev/null 2>&1
         ansible-playbook /opt/plexguide/pg.yml --tags unionfs 1>/dev/null 2>&1
-        echo 'INFO - PG Drive ReDeployment Complete' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-        echo 'INFO - Programs Utilizing UnionFS will Redeploy in 30 seconds' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - PG Drive ReDeployment Complete' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo 'INFO - Programs Utilizing UnionFS will Redeploy in 30 seconds' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         sleep 30
         #### checking for pgchecker.bin again; if fails, exit script and warn user in PGLog; requires restart or T-Shoot / Warn User in STARTUP
   		  file="/mnt/unionfs/plexguide/pgchecker.bin" 1>/dev/null 2>&1
@@ -60,10 +60,10 @@ do
   			    docker start radarr &>/dev/null &
   			    docker start sonarr4k &>/dev/null &
   			    docker start radarr4k &>/dev/null &
-  			    echo 'INFO - Plex, Raddar & Sonarr were Deployed!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+  			    echo 'INFO - Plex, Raddar & Sonarr were Deployed!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   			  else 
-            echo 'FAILURE - UNIONFS FAILED! You must restart and T-Shoot Your System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            echo 'WARNING - Programs Utilizing UnionFS were ShutDown!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo 'FAILURE - UNIONFS FAILED! You must restart and T-Shoot Your System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            echo 'WARNING - Programs Utilizing UnionFS were ShutDown!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             docker stop medusa &>/dev/null &
             docker stop couchpotato &>/dev/null &
             docker stop sickrage &>/dev/null &

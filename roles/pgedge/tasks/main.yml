@@ -19,6 +19,6 @@
 - name: Cloning Edge
   git:
     repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
-    dest: "/opt/plexguide"
+    dest: "/opt/plexguide2"
     version: "Edge"
     force: yes

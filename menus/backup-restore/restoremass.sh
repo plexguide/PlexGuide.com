@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 recovery=$( cat /var/plexguide/restore.id )
 
 export NCURSES_NO_UTF8_ACS=1
@@ -24,7 +24,7 @@ if dialog --stdout --title "Restore Mass Confirmation" \
             --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
             --yesno "\nDo you want to BACKOUT & EXIT from making a Mass Restore?" 0 0; then
             dialog --title "PG Restore Status" --msgbox "\nExiting! User selected NOT to RESTORE!" 0 0
-            sudo bash /opt/plexguide/menus/backup-restore/main.sh
+            sudo bash /opt/plexguide/roles/backup-restore-nav/main.sh
             exit 0
         else
             clear
@@ -151,7 +151,7 @@ rm -r /opt/appdata/var* 1>/dev/null 2>&1
 
 chmod 600 /opt/appdata/traefik/acme/acme.json 1>/dev/null 2>&1
 
-echo 'INFO - Mass Restore Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Mass Restore Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!\n\nYou must DEPLOY each APPLICATION that have NOT LAUNCHED before!" 0 0
 clear
 

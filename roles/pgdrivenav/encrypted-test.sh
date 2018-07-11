@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Encrypted PG Drive Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #### Recalls from prior menu what user selected
 selected=$( cat /var/plexguide/menu.select )
@@ -48,7 +48,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Installed RCLONE Beta for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 clear
 curl https://rclone.org/install.sh | sudo bash
@@ -68,17 +68,7 @@ EOF
             chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
             ;;
         B)
-            #### RClone Missing Warning - START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RClone Missing Warning - END
             rclone config
@@ -91,19 +81,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
             ;;
         C)
-            #### RCLONE MISSING START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                echo 'WARNING - You Must Install RCLONE First' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-            #### RCLONE MISSING END
-            echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
@@ -191,18 +169,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
             ;;
         D)
-            #### RClone Missing Warning -START
-            file="/usr/bin/rclone" 1>/dev/null 2>&1
-              if [ -e "$file" ]
-                then
-                  echo "" 1>/dev/null 2>&1
-                else
-                  dialog --title "WARNING!" --msgbox "\nYou Need to Install RClone First" 0 0
-                  bash /opt/plexguide/roles/pgdrivenav/main.sh
-                  exit
-              fi
-            #### RClone Missing Warning - END
-
             #### RECALL VARIABLES START
 #            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
 #            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
@@ -213,7 +179,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### BASIC CHECKS to STOP Deployment - START
             if [[ "$selected" == "Move" && "$gcrypt" != "[gcrypt]" ]]
               then
-echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
@@ -221,7 +187,7 @@ echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/p
 
             if [[ "$selected" == "SuperTransfer2" && "$tcrypt" != "[tcrypt]" ]]
               then
-echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tcrypt\nconfiguration in RClone!" 0 0
             bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
             exit
@@ -243,7 +209,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
-            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             ;;
 
@@ -253,7 +219,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             else
               if [ ! -s /opt/appdata/plexguide/plextoken ]; then
                 dialog --title "NOTE!" --msgbox "\nYour plex username and password is needed to get your plextoken!" 7 38
-                bash /opt/plexguide/scripts/plextoken/main.sh
+                bash /opt/plexguide/roles/plextoken/main.sh
               fi
               ansible-role pgscan
               dialog --title "Your PGscan URL - We Saved It" --msgbox "\nURL: $(cat /opt/appdata/plexguide/pgscanurl)\nNote: You need this for sonarr/radarr!\nYou can always get it later!" 0 0

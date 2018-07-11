@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 bash /opt/plexguide/roles/gce/gcechecker.sh
 
@@ -47,50 +47,50 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 case $CHOICE in
         A)
-        echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                    bash /opt/plexguide/roles/deploychoice.sh ;;
         B)
-        echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+        echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     touch /var/plexguide/traefik.lock
-                    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefikdeploy
+                    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
                     file="/var/plexguide/traefik.lock"
                     if [ -e "$file" ]
                       then
                         echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
                       else
                         echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
-                        bash /opt/plexguide/roles/traefikdeploy/scripts/rebuild.sh
+                        bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
                         echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
                     fi
             ;;
         C)
-echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/gce/programs.sh
             ;;
         D)
-echo 'INFO - Selected to View BenchMarks for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected to View BenchMarks for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/benchmark/main.sh ;;
         E)
-echo 'INFO - Selected to View PGTrak Menu for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected to View PGTrak Menu for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/pgtrak/main.sh
             ;;
         F)
-echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected to View Info-TShoot for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/info-tshoot/tshoot.sh ;;
         G)
-echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/menus/backup-restore/main.sh ;;
+echo 'INFO - Selected to View Backup-Restore for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/backup-restore-nav/main.sh ;;
         H)
-echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/scripts/upgrade/main.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
         Z)
-echo 'INFO - Selected: Exit GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            bash /opt/plexguide/scripts/message/ending.sh
+echo 'INFO - Selected: Exit GCE Main Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
 esac
 
-echo 'INFO - Looping: GCE Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Looping: GCE Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 ## repeat menu when exiting
 bash /opt/plexguide/roles/gce.sh

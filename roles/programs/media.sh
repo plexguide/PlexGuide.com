@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Media PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Media PG Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 
 HEIGHT=12
@@ -41,55 +41,29 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            display=PLEX
-            program=plex
-            port=32400
-            bash /opt/plexguide/menus/plex/main.sh
-
-            file="/tmp/plexsetup"
-            if [ -e "$file" ]
-            then
-                clear 1>/dev/null 2>&1
-            else
-                bash /opt/plexguide/roles/programs/media.sh
-                exit
-            fi
-
-            #### G-Drive Edition
-            if [ "$edition" == "PG Edition: GDrive" ]
-              then
-                dialog --msgbox "\nI would CAUTION you either to make Weekly or Manual Backups of PLEX. If your Library is super huge, when it's backing up; it will shut down your PLEX Container and could take several Minutes or Hours!" 0 0
-            fi
-
-            echo "$program" > /tmp/program
-            echo "$program" > /tmp/program_var
-            echo "$port" > /tmp/port
-            
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
-        B)
-            echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby
+            echo 'INFO - Selected: Plex' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
+                ;;
+        B)
+            echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby --extra-vars "skipend=no"
+            read -n 1 -s -r -p "Press any key to continue"
             ;;
         C)
-            echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity
+            echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
             ;;
         D)
-            echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic
+            echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
             ;;
         E)
-            echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic
+            echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
             ;;
         Z)
             exit 0 ;;

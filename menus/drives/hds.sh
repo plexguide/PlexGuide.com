@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @MultiHD Input Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @MultiHD Input Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 hd1=$( cat /var/plexguide/hd.1 )
 hd2=$( cat /var/plexguide/hd.2 )
@@ -61,22 +61,22 @@ case $CHOICE in
       rm -r /var/plexguide/hd.* 1>/dev/null 2>&1
       ;;
     A)
-echo 'INFO - Selected: Setup HD Interface A' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Setup HD Interface A' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "1" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/paths.sh
       ;;
     B)
-echo 'INFO - Selected: Setup HD Interface B' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Setup HD Interface B' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "2" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/paths.sh
       ;;
     C)
-echo 'INFO - Selected: Setup HD Interface C' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Setup HD Interface C' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "3" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/paths.sh
       ;;
     D)
-echo 'INFO - Selected: Setup HD Interface D' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - Selected: Setup HD Interface D' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "4" > /tmp/hd.drive
       bash /opt/plexguide/menus/drives/paths.sh
       ;;

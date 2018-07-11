@@ -22,7 +22,7 @@
     name: pgmstart
 
 - pause:
-    prompt: "\nType Image # for Sonarr\n1- linuxserver/hydra2 (Recommended)\n2- hotio/nzbhydra2 (Space Saver)\n3- theotherp/nzbhydra2"
+    prompt: "\nType Image # for NZBHydra2\n1- linuxserver/hydra2 (Recommended)\n2- hotio/nzbhydra2 (Space Saver)\n3- theotherp/nzbhydra2"
   register: result
   until: result.user_input > "0" and result.user_input < "4"
   retries: 5

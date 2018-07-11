@@ -82,4 +82,4 @@ rm -r /var/plexguide/rclone/en 1>/dev/null 2>&1
 #ansible-playbook /opt/plexguide/pg.yml --tags cloudplow
 
 # pauses
-bash /opt/plexguide/scripts/docker-no/continue.sh
+bash /opt/plexguide/roles/misc/continue.sh

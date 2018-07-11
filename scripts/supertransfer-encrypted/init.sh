@@ -157,10 +157,11 @@ cat <<MSG
 ############ CONFIGURATION ################################
 
 1. Go to [32mhttp://${localIP}:7998[0m
-2. Login: plex / guide
-3. Drag & Drop your keys in the PG CloudCMD ST Edition
-4. Follow the instructions to generate the json keys
-5. Upload 20-99 Gsuite service account json keys
+2. Wait up to 1-2 minutes for the link above to work
+3. Login: plex / guide
+4. Drag & Drop your keys in the PG CloudCMD ST Edition
+5. Follow the instructions to generate the json keys
+6. Upload 20-99 Gsuite service account json keys
           - domain wide delegation not needed.
 
 TIP: Port 8000 is alternative port (slower process)

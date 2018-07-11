@@ -16,8 +16,10 @@
 #
 #################################################################################
 ---
+  - include_vars: variables.yml
+
   - name: Logging Ansible Role Information
-    shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh"
+    shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
   - include_role:
       name: pgcron
@@ -25,3 +27,7 @@
 
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
     tags: cron
+
+  - pause:
+      prompt: "\nView the Access Information Above, then Press [ENTER]"
+    when: skipend == "no"

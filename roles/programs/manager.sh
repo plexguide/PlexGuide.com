@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Manager Programs Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Manager Programs Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=16
 WIDTH=38
@@ -44,67 +44,58 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato
+      echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     B)
-      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
+      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     C)
-      display=LazyLibrarian
-      program=lazy
-      port=5299
-      dialog --infobox "Installing: $display" 3 30
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/pg.yml --tags lazy
-      read -n 1 -s -r -p "Press any key to continue"
-      echo "$program" > /tmp/program
-      echo "$program" > /tmp/program_var
-      echo "$port" > /tmp/port
-      
-      bash /opt/plexguide/menus/programs/ending.sh
+    echo 'INFO - Selected: LazyLibrarian' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "skipend=no"
+    read -n 1 -s -r -p "Press any key to continue"
+    
       ;;
     D)
-      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
+      echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     E)
-      echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa
+      echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     F)
-      echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar
+      echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     G)
-      echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
+      echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     H)
-      echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage
+      echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     I)
-      echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr
+      echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr --extra-vars "skipend=no"
       read -n 1 -s -r -p "Press any key to continue"
-      
+
       ;;
     Z)
       exit 0 ;;

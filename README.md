@@ -5,7 +5,7 @@
   <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button5.png" width="200"/>
   <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button1.png" width="200"/>
   <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/>
-  <a href="https://plexguide.com/threads/your-discord-invite.769/" target="_blank"><img src="https://plexguide.com/wikipics/button3.png" width="200"/>
+  <a href="https://plexguide.com/wikis/changelog/" target="_blank"><img src="https://plexguide.com/pics/menu15.png" width="200"/>
   <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/wikipics/button2.png" width="200"/>
 </p>
 
@@ -70,6 +70,7 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 | Mar 2018   | Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
 | Apr 2018   | DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL
 | May 2018   | Support UB18 - Advance Cron Jobs, Backups, Multi-Image Select, and Multi HD Edition
+| Jun 2018   | PlexGuide Version 6 Released - New Writeup for better stability and readability!
 
 ----
 

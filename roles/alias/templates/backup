@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-bash /opt/plexguide/menus/backup-restore/backup.sh
+bash /opt/plexguide/roles/backup/scripts/main.sh

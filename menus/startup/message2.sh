@@ -27,10 +27,10 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
-traefikver=$(docker ps -a --format "{{.Names}}" | grep traefikdeploy)
+traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
-if [ "$traefikver" == "traefikdeploy" ]
+if [ "$traefikver" == "traefik" ]
   then
   	tmessage="Reverse Proxy: Traefik Installed"
   	traefikdetect="true"
@@ -43,6 +43,6 @@ fi
 
 dialog --title "PG Startup Variable Page" --msgbox "\n$edition - $version\nServer Time: $timeinfo\nServer ID  : $serverid\n\nIP:     $ip\nDomain: $domain\n\nDocker: $docker | Ansible: $ansible\n$tmessage\nDownload Path : $hd\nWatchTower: $watchtower\n\nPORTS: $portstat - APPGUARD: $appguard" 0 0
 
-echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-echo "INFO - $tmessage" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-echo "INFO - APPGUARD is $appguard | PORTS are $portstat" > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo "INFO - Started $edition $version" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - $tmessage" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - APPGUARD is $appguard | PORTS are $portstat" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main NZBs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
+echo 'INFO - @Main NZBs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=10
 WIDTH=38
@@ -38,20 +38,20 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
         A)
-            echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget
+            echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
-            
+
             ;;
         B)
-            echo 'INFO - Selected: nzbhydra2' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2
+            echo 'INFO - Selected: nzbhydra2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2 --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
         C)
-            echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/scripts/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
+            echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
