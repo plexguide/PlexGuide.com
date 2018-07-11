@@ -184,7 +184,7 @@ docver=$( cat /var/plexguide/ubversion )
   echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   sleep 2
   clear
-  ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker16
+  ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=docker"
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
@@ -207,7 +207,7 @@ docver=$( cat /var/plexguide/ubversion )
   echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   sleep 2
   clear
-  ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker18
+  ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=docker"
   sleep 2
   #read -n 1 -s -r -p "Press any key to continue "
   fi
