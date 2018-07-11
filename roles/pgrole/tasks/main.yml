@@ -20,6 +20,7 @@
 #- name: Pull Stored Data
 #  shell: "cat /var/plexguide/pgfork.project"
 #  register: basicproject
+- include_vars: variables.yml
 
 - name: Clone PG Module - {{module}}
   git:
