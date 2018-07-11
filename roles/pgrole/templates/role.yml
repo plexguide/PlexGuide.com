@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: {{role_name}}, tags: ['{{role_name}}'] }
