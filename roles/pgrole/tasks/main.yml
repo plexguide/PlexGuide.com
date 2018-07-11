@@ -22,7 +22,7 @@
 #  register: basicproject
 - include_vars: variables.yml
 
-- name: Clone PG Module - {{module.stdout}}
+- name: Clone PG Module - module
   git:
     repo: "https://github.com/Admin9705/{{module.stdout}}-plexguide.com-ansible"
     dest: "/opt/plexguide/roles/{{module.stdout}}"
