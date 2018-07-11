@@ -49,7 +49,7 @@ case $CHOICE in
             ;;
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=netdata"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
