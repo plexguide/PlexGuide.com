@@ -52,7 +52,7 @@ echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /o
         B)
 echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             touch /var/plexguide/traefik.lock
-            clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=traefik"
             file="/var/plexguide/traefik.lock"
             if [ -e "$file" ]
               then

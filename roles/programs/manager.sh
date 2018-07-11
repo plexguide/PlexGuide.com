@@ -59,7 +59,7 @@ case $CHOICE in
     echo 'INFO - Selected: LazyLibrarian' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "skipend=no"
     read -n 1 -s -r -p "Press any key to continue"
-    
+
       ;;
     D)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -81,7 +81,7 @@ case $CHOICE in
       ;;
     G)
       echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=radarr"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
@@ -93,7 +93,7 @@ case $CHOICE in
       ;;
     I)
       echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=sonarr"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
