@@ -27,10 +27,10 @@ version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 
-traefikver=$(docker ps -a --format "{{.Names}}" | grep traefikdeploy)
+traefikver=$(docker ps -a --format "{{.Names}}" | grep traefik)
 traefikdetect="false"
 #### If neither one exist, displays message below; if does executes the stuff under else
-if [ "$traefikver" == "traefikdeploy" ]
+if [ "$traefikver" == "traefik" ]
   then
   	tmessage="Reverse Proxy: Traefik Installed"
   	traefikdetect="true"
