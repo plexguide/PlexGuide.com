@@ -45,7 +45,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}{{tld.stdout}}"
+      traefik.frontend.rule: "Host:htpcmanager.{{domain.stdout}}"
       traefik.port: "{{intport}}"
     restart_policy: always
     state: started
