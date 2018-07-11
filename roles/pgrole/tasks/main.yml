@@ -28,7 +28,7 @@
     force: yes
 
 - name: Generate YML
-  copy: "src=role.yml dest=/opt/plexguide/{{mod}} force=yes mode=0775"
+  copy: "src=role.yml dest=/opt/plexguide/{{mod}}.yml force=yes mode=0775"
 
 - include_role:
     name: "{{mod}}"
