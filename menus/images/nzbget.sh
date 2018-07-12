@@ -26,7 +26,6 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Select Your Image for $app"
 MENU="Make a Selection Choice:"
 OPTIONS=(A "linuxserver/nzbget: Recommended"
-         B "hotio/suitarr     : Space Saver"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
