@@ -34,11 +34,26 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact:
-    image: "hotio/suitarr:nzbhydra2"
-    extra: "/NZBHydra2"
-  when: result.user_input == "2"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - name: Set theotherp/nzbhydra2
   set_fact:
