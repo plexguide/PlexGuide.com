@@ -52,7 +52,7 @@ case $CHOICE in
             ;;
         B)
             echo 'INFO - Selected: Monitorr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=monitorr"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
@@ -74,12 +74,12 @@ case $CHOICE in
             ;;
         D)
             echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=nowshowing"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
             echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=ombi"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         F)
@@ -89,13 +89,13 @@ case $CHOICE in
             ;;
         G)
             echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=tautulli"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
         H)
             echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=thelounge"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
