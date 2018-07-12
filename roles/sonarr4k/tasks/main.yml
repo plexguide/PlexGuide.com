@@ -34,12 +34,6 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact: 
-    image: "hotio/suitarr:sonarr"
-    extra: "/Sonarr"
-  when: result.user_input == "2"
-
 - name: Aront/Sonarr
   set_fact: 
     image: "aront/sonarr"
