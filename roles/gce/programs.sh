@@ -49,13 +49,13 @@ case $CHOICE in
 
     B)
     echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=sonarr"
     read -n 1 -s -r -p "Press any key to continue"
     ;;
 
     C)
     echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=radarr"
     read -n 1 -s -r -p "Press any key to continue"
     ;;
 
@@ -67,16 +67,16 @@ case $CHOICE in
 
     E)
     echo 'INFO - Selected: CloudST2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=docker"
     read -n 1 -s -r -p "Press any key to continue"
     ;;
 
     F)
     echo 'INFO - Selected: Netdata' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --skip-tags cron
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=netdata"
     read -n 1 -s -r -p "Press any key to continue"
     ;;
-    
+
     G)
     echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr

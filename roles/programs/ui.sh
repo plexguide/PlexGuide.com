@@ -42,12 +42,12 @@ case $CHOICE in
 
       A)
         echo 'INFO - Selected: HeimDall' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall --extra-vars "skipend=no"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=heimdall"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
       B)
       echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=htpcmanager"
       read -n 1 -s -r -p "Press any key to continue"
         ;;
       C)
