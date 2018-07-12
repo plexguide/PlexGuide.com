@@ -57,25 +57,25 @@ case $CHOICE in
       ;;
     C)
     echo 'INFO - Selected: LazyLibrarian' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "skipend=no"
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=lazylibrarian"
     read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     D)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=lidarr"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     E)
       echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=medusa"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     F)
       echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=mylar"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
@@ -87,7 +87,7 @@ case $CHOICE in
       ;;
     H)
       echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage --extra-vars "skipend=no"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=sickrage"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;

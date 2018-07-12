@@ -52,17 +52,17 @@ case $CHOICE in
         ;;
       C)
           echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux --extra-vars "skipend=no"
+          clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=muximux"
           read -n 1 -s -r -p "Press any key to continue"
           ;;
       D)
         echo 'INFO - Selected: Organizr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr --extra-vars "skipend=no"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=organizr"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
         E)
         echo 'INFO - Selected: OrganizrV2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2 --extra-vars "skipend=no"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=organizrv2"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
      Z)
