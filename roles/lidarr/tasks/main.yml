@@ -34,12 +34,6 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact:
-    image: "hotio/suitarr:lidarr"
-    extra: "/Lidarr"
-  when: result.user_input == "2"
-
 - name: Deploy Lidarr Container
   docker_container:
     name: "{{role_name}}"
