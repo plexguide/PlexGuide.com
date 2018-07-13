@@ -28,7 +28,7 @@
 
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PG Modular Install: {{mod}}\n\nDMod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\n\n1 - Exit the Module Installer\n2 - Install Latest: {{mod}} module (Recommended)\n3 - Install Older : {{mod}} module\n4 - Install Your Forked Module"
+    prompt: "\nWelcome to PG Modular Install: {{mod}}\nMod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\n\n1 - Exit the Module Installer\n2 - Install Latest Module: {{mod}} (Recommended)\n3 - Install Older Module: {{mod}}\n4 - Install Your Forked Module"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
