@@ -17,18 +17,18 @@
 #################################################################################
 ---
 ############# Exists Checker
-- name: Pull Stored Data
-  shell: "cat /var/plexguide/pgfork.project"
-  register: basicproject
+#- name: Pull Stored Data
+#  shell: "cat /var/plexguide/pgfork.project"
+#  register: basicproject
 
 ##################################################### SPLIT
-- name: Pull Stored Data
-  shell: "cat /var/plexguide/pgfork.version"
-  register: basicversion
+#- name: Pull Stored Data
+#  shell: "cat /var/plexguide/pgfork.version"
+#  register: basicversion
 
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PGFork!\n\nProject Link: {{basicproject.stdout}}\nBranch-Release Link: {{basicversion.stdout}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
+    prompt: "\nWelcome to PG Modular Install: {{mod}}\n\nProject Link - {{mod}}: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\nBranch-Release Link: {{basicversion.stdout}}\n\n1 - Exit PG Fork\n2 - Download Current Project\n3 - Update Project and/or Branch-Release\n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
