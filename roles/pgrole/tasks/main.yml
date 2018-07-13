@@ -22,16 +22,26 @@
 #  register: basicproject
 - name: Clone PG Module - {{mod}}
   git:
-    repo: "https://github.com/Admin9705/{{mod}}-plexguide.com-ansible"
-    dest: "/opt/plexguide/roles/{{mod}}"
-    version: "master"
+    repo: "https://github.com/Admin9705/roles-plexguide.com"
+    dest: "/opt/pgops"
+    version: "{{mod}}-1"
     force: yes
+
+- name: Ensure Files Downloaded
+  stat: "path=/opt/pgops/{{mod}}"
+  register: role
+
+- name: Move Role to PG
+  command: "mv /opt/pgops/{{mod}} /opt/plexguide/roles/{{mod}}"
+  when: role.stat.exists
 
 - name: Generating - {{mod}}.YML
   template:
     src: role.yml
     dest: /opt/plexguide/{{mod}}.yml
     force: yes
+  when: role.stat.exists
 
 - include_role:
     name: "{{mod}}"
+  when: role.stat.exists
