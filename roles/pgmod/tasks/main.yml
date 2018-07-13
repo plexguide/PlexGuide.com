@@ -1,0 +1,79 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+############# Exists Checker
+#- name: Pull Stored Data
+#  shell: "cat /var/plexguide/pgfork.project"
+#  register: basicproject
+
+##################################################### SPLIT
+#- name: Pull Stored Data
+#  shell: "cat /var/plexguide/pgfork.version"
+#  register: basicversion
+
+############## Start Asking
+- pause:
+    prompt: "\nWelcome to PG Modular Installer: {{mod}}\n\nCurrent Mod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\nVersion: Latest\n\n1 - Exit Module Installer\n2 - Install Module: Latest (Recommended)\n3 - Install Module: Older\n4 - Install Module: Custom Fork\n\nType the Corresponding NUMBER of your Choice"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "4"
+  retries: 99
+  delay: 1
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
+############################## REGISTER PROJECT
+- pause:
+    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
+  register: project
+  when: exit.user_input == "3"
+
+- name: Store Project Link
+  shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
+  when: exit.user_input == "3"
+############################## REGISTER BRANCH
+- pause:
+    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
+  register: version
+  when: exit.user_input == "3"
+
+- name: Store Project Link
+  shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
+  when: exit.user_input == "3"
+############################################# END
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.project"
+  register: projectfinal
+
+- name: Reregister Project Link
+  shell: "cat /var/plexguide/pgfork.version"
+  register: versionfinal
+
+- debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
+
+- name: Create Folder
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/plexguide2
+
+- name: Clone Fork
+  git:
+    repo: "{{projectfinal.stdout}}"
+    dest: /opt/plexguide2
+    version: "{{versionfinal.stdout}}"
+    force: yes

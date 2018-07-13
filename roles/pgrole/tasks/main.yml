@@ -20,6 +20,9 @@
 #- name: Pull Stored Data
 #  shell: "cat /var/plexguide/pgfork.project"
 #  register: basicproject
+- include_role:
+    name: pgmod
+
 - name: Clone PG Module - {{mod}}
   git:
     repo: "https://github.com/Admin9705/roles-plexguide.com"
