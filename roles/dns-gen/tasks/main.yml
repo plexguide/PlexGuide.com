@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Lowmach1ne
+#
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+
+- include_role:
+    name: variables
+    
+- name: Remove dns-gen Container
+  docker_container:
+    name: dns-gen
+    state: absent
+    
+- name: Stop and disable bind9
+  systemd: state=stopped name=bind9 enabled=no
+  
+- name: Force default ip for docker
+  lineinfile:
+    path: /etc/default/docker
+    line: 'DOCKER_OPTS="--bip=172.17.0.1/24"'
+    
+- name: Add nameserver in resolv
+  lineinfile:
+    path: /etc/resolv.conf
+    line: 'nameserver 172.17.0.1'
+    insertbefore: BOF
+
+################ DEPLOY
+- name: Create dns-gen Container
+  docker_container:
+    name: dns-gen
+    image: jderusse/dns-gen
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "172.17.0.1:53:53"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    restart_policy: always
+    state: started
+    
+- name: Restart server
+  command: /sbin/shutdown -r 2

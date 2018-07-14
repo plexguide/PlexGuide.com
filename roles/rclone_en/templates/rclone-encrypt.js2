@@ -1,0 +1,18 @@
+[Unit]
+Description=RClone Daemon
+Requires=plexdrive.service
+After=multi-user.target plexdrive.service
+RequiresMountsFor=/mnt/plexdrive
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone-encrypt.sh
+ExecStop=/bin/fusermount -uz /mnt/encrypt
+TimeoutStopSec=20
+KillMode=mixed
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

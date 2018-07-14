@@ -1,0 +1,167 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- include_vars: /opt/appdata/plexguide/var-vpn.yml
+
+- include_role:
+    name: pgmstart
+    
+- name: Create Basic directories for Torrents
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - "{{path.stdout}}/torrentvpn"
+
+- name: Create Basic directories for DelugeVPN
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - /opt/appdata/vpn
+    - /opt/appdata/vpn/rtorrent
+    - /opt/appdata/vpn/rtorrent/config
+    - /opt/appdata/vpn/rtorrent/config/openvpn
+
+########## Moving certs to config file
+- name: Copy default ovpn cert
+  template:
+    src: "ca.rsa.2048.crt"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/ca.rsa.2048.crt"
+    force: yes
+
+- name: Copy default ovpn pem
+  template:
+    src: "crl.rsa.2048.pem"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/crl.rsa.2048.pem"
+    force: yes
+
+- name: Copy default ovpn file
+  template:
+    src: "netherlands.ovpn"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/netherlands.ovpn"
+    force: yes
+
+########## Remove old existing config file
+- name: Removing all ovpn files
+  file:
+    state: absent
+    path: /opt/appdata/vpn/rtorrent/config/openvpn/*.ovpn
+    force: yes
+#    when: ovpn.stat.exists
+#  shell: rm -r  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
+
+
+########## Remote Server selection
+
+- name: Choose Server
+  pause:
+    prompt: " \n
+      What PIA server would you like to use?\n
+         \n
+       czech, france, germany, israel, montreal,\n
+       romainia, sweden, switzerland, toronto or vancouver.\n
+       \n
+       "
+  register: server
+
+# user can't input server when called from rebuild.sh, so we need a default...
+- set_fact: my_server="{{ server.user_input }}"
+  when: server.user_input != ""
+
+- set_fact: my_server="netherlands"
+  when: server.user_input == ""
+
+- debug: var=my_server
+
+- debug: msg="Using {{server.user_input}} server. "
+
+- name: "Install {{server.user_input}} openvpn file"
+  template:
+    src: "{{server.user_input}}.ovpn"
+    dest: "/opt/appdata/vpn/rtorrent/config/openvpn/{{server.user_input}}.ovpn"
+    force: yes
+
+########## Run iptable_mangle command
+- name: Making sure iptable is set
+  shell: /sbin/modprobe iptable_mangle
+
+######### Remove previous containers
+- name: Remove Rtorrent Container
+  docker_container:
+    name: rtorrentvpn
+    state: absent
+  ignore_errors: True
+
+- name: Remove DelugeVPN Container
+  docker_container:
+    name: delugevpn
+    state: absent
+  ignore_errors: True
+  
+- name: Deploy {{role_name}} Container
+  docker_container:
+    name: "{{role_name}}"
+    image: "binhex/arch-rtorrentvpn"
+    pull: yes
+    cpu_shares: 256
+    capabilities:
+      - NET_ADMIN
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+      - "9080:9080"
+      - "9443:9443"
+      - "8118:8118"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+#     UMASK: "0027"
+      NAME_SERVERS: 209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
+      VPN_ENABLED: "yes"
+      VPN_USER: "{{vpnuser}}"
+      VPN_PASS: "{{vpnpassword}}"
+      VPN_PROV: pia
+      STRICT_PORT_FORWARD: "yes"
+      ENABLE_PRIVOXY: "yes"
+      ENABLE_FLOOD: both
+      ENABLE_AUTODL_IRSSI: "yes"
+      LAN_NETWORK: "{{subnet}}"
+      DEBUG: false
+    volumes:
+      - "/opt/appdata/vpn/rtorrent/config:/config"
+      - "{{path.stdout}}/torrentvpn/temp:/data/incomplete"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/torrentvpn/.torrent:/torrents"
+      - "{{path.stdout}}/torrentvpn/.watched:/data/watched"
+      - "/mnt/unionfs:/unionfs"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{role_name}}"
+    restart_policy: unless-stopped
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.flood.port: "3000"
+      traefik.rutorrent.port: "9080"
+      traefik.flood.frontend.rule: "Host:flood.{{domain.stdout}}"
+      traefik.rutorrent.frontend.rule: "Host:rutorrent.{{domain.stdout}}"
+
+- include_role:
+    name: pgmend

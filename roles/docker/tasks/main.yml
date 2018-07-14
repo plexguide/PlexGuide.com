@@ -1,0 +1,133 @@
+#!/bin/bash
+#
+# [PlexGuide Ansible Role]
+#
+# Mainted & Modded By: Admin9705 & Deiteq
+# URL:                 https://plexguide.com
+#
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Original Ansible Role: 13uddz & Desmonic - cloudbox.rocks
+#################################################################################
+
+---
+- name: Install required packages
+  apt: "name={{item}} state=present"
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+  tags:
+    - docker_standard
+
+- name: Add official gpg signing key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+  tags:
+    - docker_standard
+
+############################################# DOCKER VARIABLES RECALLED
+- name: Register Docker
+  shell: "cat /var/plexguide/pg.docker16.full"
+  register: docversion
+  ignore_errors: True
+  tags: docker16
+
+- name: Register Edition
+  shell: "cat /var/plexguide/pg.docker16.edition"
+  register: docedition
+  ignore_errors: True
+  tags: docker16
+
+- name: Register Docker
+  shell: "cat /var/plexguide/pg.docker18.full"
+  register: docversion
+  ignore_errors: True
+  tags: docker18
+
+- name: Register Edition
+  shell: "cat /var/plexguide/pg.docker18.edition"
+  register: docedition
+  ignore_errors: True
+  tags: docker18
+
+############################################# DEPLOY DOCKER
+
+- name: Add official repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} {{ docedition.stdout }}"
+  tags: docker_standard
+
+- name: Release docker-ce from hold
+  dpkg_selections:
+    name: docker-ce
+    selection: install
+  tags: docker_standard
+
+- name: Install docker-ce (Please Wait)
+  apt:
+    name: docker-ce={{docversion.stdout}}
+    state: present
+    update_cache: yes
+    force: yes
+  tags: docker_standard
+
+- name: Put docker-ce into hold
+  dpkg_selections:
+    name: docker-ce
+    selection: hold
+  tags: docker_standard
+
+- name: Check docker daemon.json exists
+  stat:
+    path: /etc/docker/daemon.json
+  register: docker_daemon
+  tags: docker_standard
+
+- name: Stop docker to enable overlay2
+  systemd: state=stopped name=docker enabled=yes
+  when: docker_daemon.stat.exists == False
+  tags: docker_standard
+
+- name: Import daemon.json
+  copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
+  when: docker_daemon.stat.exists == False
+  tags: docker_standard
+
+- name: Start docker (Please Wait)
+  systemd: state=started name=docker enabled=yes
+  when: docker_daemon.stat.exists == False
+  tags: docker_standard
+
+- name: "Wait for 20 seconds before commencing"
+  wait_for:
+    timeout: 20
+  tags: docker_standard
+
+- name: Check override folder exists
+  stat:
+    path: /etc/systemd/system/docker.service.d
+  register: docker_override
+  tags: docker_standard
+
+- name: Create override folder
+  file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
+  when: docker_override.stat.exists == False
+  tags: docker_standard
+
+- name: Import override file
+  copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
+  tags: docker_standard
+
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
+  tags: docker_standard

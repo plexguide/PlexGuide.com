@@ -1,0 +1,41 @@
+---
+version: '2.2'
+services:
+ delugevpn:
+   image:  binhex/arch-delugevpn
+   container_name: delugevpn
+#   network_mode: "bridge"
+   cap_add:
+     - NET_ADMIN
+   ports:
+     - 8112:8112
+     - 8118:8118
+     - 58846:58846
+     - 58946:58946
+   volumes:
+     - /opt/appdata/vpn/deluge/config:/config
+     - /mnt/torrentvpn/temp:/data/incomplete
+     - /mnt/torrentvpn/downloaded:/data/completed
+     - /mnt/torrentvpn/.torrent:/data/torrents
+     - /mnt/torrentvpn/.watched:/data/watched
+     - /:/yourcomputer
+     - /etc/localtime:/etc/localtime:ro
+     - /mnt/unionfs/completed:/completed
+   env_file:
+     - /opt/appdata/vpn/.vpn-env
+   cpu_shares: 256
+   environment:
+     - VPN_ENABLED="yes"
+     - VPN_PROV=pia
+  #   - VPN_REMOTE=${VPN_REMOTE_CHOICE}.privateinternetaccess.com
+   #  - VPN_OPTIONS=<additional openvpn cli options>
+     - STRICT_PORT_FORWARD="yes"
+     - ENABLE_PRIVOXY="yes"
+     - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
+     - DEBUG=false
+   #  - UMASK=<umask for created files>
+     - PUID=1000
+     - PGID=1000
+   restart: unless-stopped
+# Note: Please replace all user variables in the above command defined by <> with the correct values.
+# http://www.subnet-calculator.com/cidr.php to calculate CIDR address.

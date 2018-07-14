@@ -1,0 +1,92 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+  - name: Install Common Packages (Takes Awhile)
+    apt: "name={{item}} state=present"
+    with_items:
+      - fuse
+      - nano
+      - fail2ban
+      - wget
+      - lsb-release
+      - figlet
+      - update-motd
+      - update-notifier-common
+      - unionfs-fuse
+      - software-properties-common
+      - unrar
+      - unzip
+      - glances
+      - python-pip
+      - python3-pip
+      - python-passlib
+      - zip
+      - curl
+      - man-db
+      - htop
+      - openssh-server
+      - dirmngr
+      - npm
+      - zip
+      - apt-transport-https
+      - ca-certificates
+      - tree
+      - ncdu
+      - ctop
+      - dialog
+      - dnsutils
+      - mc
+      - apache2-utils
+      - lsof
+      - pwgen
+      - gawk
+    #ignore_errors: yes
+
+  - name: Pip Modes
+    pip: "name={{item}} state=latest"
+    with_items:
+      - docker-py
+      - certbot
+
+  - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
+    shell: pip install git+https://github.com/larsks/ansible-toolbox
+    ignore_errors: yes
+
+  - name: Remove Symbolic if it exists
+    shell: unlink /etc/ansible/roles
+    ignore_errors: yes
+
+  - name: Removing A Folder
+    file:
+      state: absent
+      path: /etc/ansible/roles
+    ignore_errors: yes
+
+  - name: Create Symbolic Link for Ansible-ToolBox
+    shell: ln -s /opt/plexguide/roles /etc/ansible/
+    ignore_errors: yes
+
+  #- name: Install ctop
+    #get_url:
+      #url:  https://github.com/bcicen/ctop/releases/download/v0.7/ctop-0.7-linux-amd64
+      #dest: /usr/local/bin/ctop
+      #mode: 0755
+      #owner: root
+      #group: root
+      #force: yes
+    #ignore_errors: yes

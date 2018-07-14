@@ -1,0 +1,82 @@
+#!/bin/bash
+#
+# [Check & Remove Services]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#   Created by Deiteq
+#   This will check for and remove any services listed in service_vars
+#   The following will show current services:-
+#     ls /etc/systemd/system
+#   Use the following to run manually:-
+#     sudo ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+#
+#################################################################################
+
+
+---
+
+- hosts: localhost
+  gather_facts: false
+  vars:
+    service_vars:
+      - {name: crypt1.service}
+      - {name: crypt2.service}
+      - {name: drive1.service}
+      - {name: drive2.service}
+      - {name: fcrypt.service}
+      - {name: fdrive.service}
+      - {name: sdrive.service}
+      - {name: scrypt.service}
+      - {name: gdrive.service}
+      - {name: gcrypt.service}
+      - {name: tdrive.service}
+      - {name: tcrypt.service}
+#      - {name: supertransfer2.service}
+      - {name: unionfs.service}
+      - {name: ufsmonitor.service}
+      - {name: unionfs-encrypt.service}
+      - {name: move-en.service}
+      - {name: move.service}
+      - {name: plexdrive.service}
+      - {name: rclone.service}
+      - {name: rclone-en.service}
+      - {name: rclone-encrypt.service}
+  tasks:
+    - name: Checking Existing Service Name
+      stat:
+        path: "/etc/systemd/system/{{ item.name }}"
+      with_items: "{{ service_vars }}"
+      register: check_service_name
+
+#    - debug:
+#        msg: 'Service name {{ item.item.name }} exists'
+#      with_items: "{{ check_service_name.results }}"
+#      when: item.stat.exists
+
+    - name: Stop If Service Is Running
+      systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists
+
+    - name: Remove Services
+      file:
+        path: "/etc/systemd/system/{{ item.item.name }}"
+        state: absent
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists
+
+    - debug:
+        msg: 'Service name {{ item.item.name }} has been removed!'
+      with_items: "{{ check_service_name.results }}"
+      when: item.stat.exists

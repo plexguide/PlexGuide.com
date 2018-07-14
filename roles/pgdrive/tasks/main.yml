@@ -1,0 +1,310 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+########## Disable Other Services
+
+  - name: Stop If RCLONE Service Running
+    systemd: state=stopped name=rclone enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: Stop If PLEXDRIVE Service Running
+    systemd: state=stopped name=plexdrive enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: Stop If encache Service Running
+    systemd: state=stopped name=encache enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: Stop If RCLONE-ENCRYPT Service Running
+    systemd: state=stopped name=rclone-encrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: Stop If RCLONE-EN Service Running
+    systemd: state=stopped name=rclone-en enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: Stop If MOVE-EN Service Running
+    systemd: state=stopped name=move-en enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: Stop If UNIONFS-EN Service Running
+    systemd: state=stopped name=unionfs-encrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - pgdrive_standard
+
+  - name: SHELL COMMAND 1
+    shell: "mkdir -p /root/.config/rclone/"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard
+
+  - name: SHELL COMMAND 2
+    shell: "chown -R 1000:1000 /root/.config/rclone/"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard
+
+  - name: SHELL COMMAND 3
+    shell: "chmod 775 /root/.config/rclone/rclone.conf"
+    ignore_errors: True
+    tags:
+      - pgdrive_standard
+
+########################################## MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - move
+
+  - name: Bandwidth Limit
+    shell: "cat /var/plexguide/move.bw"
+    register: bandwidth
+    ignore_errors: True
+    tags:
+      - move
+
+  - name: Install MOVE Service
+    template:
+      src: move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - move
+
+  - name: Stop If MOVE Service Running
+    systemd: state=stopped name=move
+    tags:
+      - move
+    ignore_errors: yes
+
+  - name: Install MOVE Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - move
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
+#    tags:
+#      - move
+
+  - name: Start MOVE SERVICE
+    systemd: state=started name=move daemon_reload=yes enabled=yes
+    tags:
+      - move
+########################################## MOVE END
+
+########################################## ALTERNATIVE MOVE START
+  - name: Daemon-Reload
+    systemd: state=stopped name=supertransfer2 daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - alt_move
+
+  - name: Install MOVE Service
+    template:
+      src: alt_move_script.js2
+      dest: /opt/appdata/plexguide/move.sh
+      force: yes
+    tags:
+      - alt_move
+
+  - name: Stop If MOVE Service Running
+    systemd: state=stopped name=move
+    tags:
+      - alt_move
+    ignore_errors: yes
+
+  - name: Install MOVE Service
+    template:
+      src: move.js2
+      dest: /etc/systemd/system/move.service
+      force: yes
+    tags:
+      - alt_move
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=move daemon_reload=yes enabled=no
+#    tags:
+#      - alt_move
+
+  - name: Start MOVE SERVICE
+    systemd: state=started name=move daemon_reload=yes enabled=yes
+    tags:
+      - alt_move
+########################################## ALTERNATIVE MOVE END
+
+########### GDRIVE
+
+  - name: Stop If GCRYPT Service Running
+    systemd: state=stopped name=gcrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - gdrive
+
+  - name: Daemon-Reload - Stop GCRYPT Service
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    tags:
+      - gdrive
+    ignore_errors: yes
+
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=gdrive
+    tags:
+      - gdrive
+    ignore_errors: yes
+
+  - name: Install GDRIVE Service
+    template:
+      src: gdrive.js2
+      dest: /etc/systemd/system/gdrive.service
+      force: yes
+    tags:
+      - gdrive
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=gdrive daemon_reload=yes enabled=no
+#    tags:
+#      - gdrive
+
+  - name: Start GDRIVE SERVICE
+    systemd: state=started name=gdrive daemon_reload=yes enabled=yes
+    tags:
+      - gdrive
+
+########### TDRIVE
+  - name: Stop If TCRYPT Service Running
+    systemd: state=stopped name=tcrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - tdrive
+
+  - name: Daemon-Reload - Stop TCRYPT Service
+    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
+    tags:
+      - tdrive
+    ignore_errors: yes
+
+  - name: Stop If TDRIVE Service Running
+    systemd: state=stopped name=tdrive
+    tags:
+      - tdrive
+    ignore_errors: yes
+
+  - name: Install TDRIVE Service
+    template:
+      src: tdrive.js2
+      dest: /etc/systemd/system/tdrive.service
+      force: yes
+    tags:
+      - tdrive
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    tags:
+      - tdrive
+
+  - name: Start TDrive
+    systemd: state=started name=tdrive enabled=yes
+    tags:
+      - tdrive
+
+########### UNIONFS
+  - name: Register UNIONFS PATH
+    shell: "cat /var/plexguide/unionfs.pgpath"
+    register: unionfs_path
+    tags:
+      - unionfs
+    ignore_errors: True
+
+  - name: Stop If UNIONFS Service Running
+    systemd: state=stopped name=unionfs
+    tags:
+      - unionfs
+    ignore_errors: yes
+
+  - name: Install UNIONFS Service
+    template:
+      src: unionfs.js2
+      dest: /etc/systemd/system/unionfs.service
+      force: yes
+    tags:
+      - unionfs
+
+#  - name: Daemon-Reload
+#    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+#    tags:
+#      - unionfs
+
+  - name: Start UNIONFS Service
+    systemd: state=started name=unionfs daemon_reload=yes enabled=yes
+    tags:
+      - unionfs
+
+########Unionfs Monitor
+  - name: Stop If UFS Monitor Service Running
+    systemd: state=stopped name=ufsmonitor
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Install UFS Monitor Service
+    template:
+      src: ufsmonitor.service
+      dest: /etc/systemd/system/ufsmonitor.service
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Install UFS Script
+    template:
+      src: ufsmonitor.sh
+      dest: /opt/appdata/plexguide/ufsmonitor.sh
+      force: yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=ufsmonitor daemon_reload=yes enabled=no
+    ignore_errors: True
+    tags:
+      - ufsmonitor
+
+  - name: Start UFS Monitor
+    systemd: state=started name=ufsmonitor enabled=yes
+    ignore_errors: True
+    tags:
+      - ufsmonitor

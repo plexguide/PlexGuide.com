@@ -1,0 +1,14 @@
+---
+- cron:
+    name: Build a Cron Job - NZBGET
+    special_time: 'hourly'
+    job: "bash /opt/plexguide/roles/autodelete/scripts/nzbget.sh"
+    state: present
+  ignore_errors: yes
+
+- cron:
+    name: Build a Cron Job - SABNZBD
+    special_time: 'hourly'
+    job: "bash /opt/plexguide/roles/autodelete/scripts/sabnzbd.sh"
+    state: present
+  ignore_errors: yes

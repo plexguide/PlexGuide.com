@@ -1,0 +1,16 @@
+[Unit]
+Description=RClone Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/bin/bash /opt/appdata/plexguide/rclone.sh
+ExecStop=/bin/fusermount -uz /mnt/gdrive
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

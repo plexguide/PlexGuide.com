@@ -1,0 +1,191 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+  - include_vars: variables.yml
+
+  -  include_role:
+      name: varstart
+
+ ########### PlexDrive
+  - name: PlexDrive Check
+    stat:
+      path: /mnt/plexdrive
+    register: plexdrive
+
+  - name: Create PlexDrive Folder
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/plexdrive
+    when: plexdrive.stat.exists == False
+    ignore_errors: yes
+
+############ GCrypt
+  - name: GCrypt Check
+    stat:
+      path: /mnt/.gcrypt
+    register: gcrypt
+
+  - name: Create GCrypt Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/.gcrypt/tv
+      - /mnt/.gcrypt/movies
+      - /mnt/.gcrypt/music
+      - /mnt/.gcrypt/ebooks
+    when: gcrypt.stat.exists == False
+    ignore_errors: yes
+
+############ UnionFS
+  - name: UnionFS Check
+    stat:
+      path: /mnt/unionfs
+    register: unionfs
+
+  - name: Create UnionFS Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/unionfs
+    when: unionfs.stat.exists == False
+    ignore_errors: yes
+
+############ TMP
+  - name: TMP Check
+    stat:
+      path: /mnt/tmp
+    register: tmp
+
+  - name: Create GDrive Folders
+    file: "path={{item}} state=directory"
+    with_items:
+      - /mnt/tmp
+    when: tmp.stat.exists == False
+    ignore_errors: yes
+
+############ GDrive
+  - name: GDrive Check
+    stat:
+      path: /mnt/gdrive
+    register: gdrive
+
+  - name: Create GDrive Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/gdrive
+      - /mnt/gdrive/tv
+      - /mnt/gdrive/movies
+      - /mnt/gdrive/music
+      - /mnt/gdrive/ebooks
+    when: gdrive.stat.exists == False
+    ignore_errors: yes
+
+############ TDrive
+  - name: TDrive Check
+    stat:
+      path: /mnt/tdrive
+    register: tdrive
+
+  - name: Create TDrive Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/tdrive
+      - /mnt/tdrive/tv
+      - /mnt/tdrive/movies
+      - /mnt/tdrive/music
+      - /mnt/tdrive/ebooks
+    when: tdrive.stat.exists == False
+    ignore_errors: yes
+
+############ Encrypt
+  - name: Encrypt Check
+    stat:
+      path: /mnt/encrypt
+    register: encrypt
+
+  - name: Create Encrypt Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/encrypt/tv
+      - /mnt/encrypt/movies
+      - /mnt/encrypt/music
+      - /mnt/encrypt/ebooks
+    when: encrypt.stat.exists == False
+    ignore_errors: yes
+
+########### qBittorrent
+  - name: qBit-Check
+    stat:
+      path: /mnt/qbittorrent
+    register: qbit
+
+  - name: Create qBit Folders
+    file: "path={{item}} state=directory mode=2775 owner=1000 group=1000"
+    with_items:
+      - /mnt/qbittorrent/Downloads
+      - /mnt/qbittorrent/Downloads/Temp
+    when: qbit.stat.exists == False
+    ignore_errors: yes
+
+############ Directories
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+    with_items:
+      - /opt/appdata/plexguide
+      - /var/plexguide
+      - /mnt/move
+      - /var/plexguide/logs
+      - /mnt/rcache
+      - "{{path.stdout}}/deluge"
+      - "{{path.stdout}}/deluge/temp"
+      - "{{path.stdout}}/deluge/downloaded"
+      - "{{path.stdout}}/deluge/torrent"
+      - "{{path.stdout}}/rutorrents"
+      - "{{path.stdout}}/rutorrents/downloads"
+      - "{{path.stdout}}/move"
+      - "{{path.stdout}}/move/tv"
+      - "{{path.stdout}}/move/movies"
+      - "{{path.stdout}}/move/music"
+      - "{{path.stdout}}/nzbget"
+      - "{{path.stdout}}/nzbget/completed"
+      - "{{path.stdout}}/nzbget/completed/movies"
+      - "{{path.stdout}}/nzbget/completed/music"
+      - "{{path.stdout}}/nzbget/completed/tv"
+      - "{{path.stdout}}/nzbget/completed/ebooks"
+      - "{{path.stdout}}/nzbget/incomplete"
+      - "{{path.stdout}}/nzbget/nzb"
+      - "{{path.stdout}}/nzbget/queue"
+      - "{{path.stdout}}/nzbget/tmp"
+      - "{{path.stdout}}/nzbget/log"
+      - "{{path.stdout}}/sab"
+      - "{{path.stdout}}/sab/admin"
+      - "{{path.stdout}}/sab/complete"
+      - "{{path.stdout}}/sab/complete/tv"
+      - "{{path.stdout}}/sab/complete/movies"
+      - "{{path.stdout}}/sab/complete/music"
+      - "{{path.stdout}}/sab/complete/ebooks"
+      - "{{path.stdout}}/sab/incomplete"
+      - "{{path.stdout}}/sab/nzb"
+      - "{{path.stdout}}/sab/complete/ebooks"
+      - "{{path.stdout}}/torrentvpn"
+      - "{{path.stdout}}/torrentvpn/temp"
+      - "{{path.stdout}}/torrentvpn/downloaded"
+      - "{{path.stdout}}/torrentvpn/.torrent"
+      - "{{path.stdout}}/torrentvpn/.watched"
+    ignore_errors: yes
+
+  - include_role:
+      name: varend

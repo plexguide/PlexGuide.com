@@ -1,0 +1,119 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- name: "Building List"
+  shell: "cat /tmp/backup.build"
+  register: backlist
+
+
+
+- name: "Pulling Selected Program"
+  shell: "cat /tmp/program_var"
+  register: program_var
+
+
+  #ignore tag
+
+- name: "Server ID for Backup"
+  shell: "cat /var/plexguide/server.id"
+  register: server_id
+
+
+############################################ SWITCH OFF - Automatic
+- name: Prompt User for Program
+  pause:
+    prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
+  register: selection
+  when: switch == "on"
+
+- name: Establishing Final Variable - Switch On
+  shell: "echo {{selection.user_input}} > /tmp/program_var"
+  when: switch == "on"
+############################################ SWITCH ON - Manual
+# name: "Establishing Variable"
+#  shell: "echo {{program_var.stdout}} > /tmp/program_var"
+#  when: switch == "on"
+############################################ REGISTER FINAL Variable
+- name: Establishing Final Variable - Switch On
+  shell: "cat /tmp/program_var"
+  register: program_final
+
+### TEST
+#- set_fact:
+#    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
+
+- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
+
+- name: "Checking {{program_final.stdout}} location in APPDATA"
+  stat:
+    path: /opt/appdata/{{program_final.stdout}}
+  register: programappdata
+
+- name: "Checking if RClone Encrypted"
+  stat:
+    path: /var/plexguide/rclone-en.yes
+  register: encrypted
+
+- name: Stopping Docker Container - {{program_final.stdout}}
+  docker_container:
+    name: "{{program_final.stdout}}"
+    state: stopped
+  ignore_errors: True
+  when: programappdata.stat.exists == True
+
+- debug: msg="Time Length can be Long or Short! Please Wait!"
+  when: programappdata.stat.exists == True
+
+- name: Backing Up Program to GDrive - {{program_final.stdout}}
+  archive:
+    path:
+    - /opt/appdata/{{program_final.stdout}}/*
+    dest: /tmp/{{program_final.stdout}}.tar
+    format: tar
+
+############ BACKUP OTHER - END
+- name: Restart Docker Container - {{program_final.stdout}}
+  docker_container:
+    name: "{{program_final.stdout}}"
+    state: started
+  ignore_errors: True
+  when: programappdata.stat.exists == True
+
+- name: Uploading Backup to Google Drive
+  shell: "rclone copy /tmp/{{program_final.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  when: encrypted.stat.exists == False and programappdata.stat.exists == True
+
+- name: Uploading Backup to Google Drive (encrypted)
+  shell: "rclone copy /tmp/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  when: encrypted.stat.exists == True and programappdata.stat.exists == True
+
+- name: Remove TEMP Backup!
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /tmp/{{program_final.stdout}}.tar
+  when: programappdata.stat.exists == True
+
+- debug: msg="Program is now backed up to your Google Drive - {{program_final.stdout}}"
+  when: programappdata.stat.exists == True
+
+- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_final.stdout}}"
+  when: programappdata.stat.exists == False

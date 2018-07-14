@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+
+- include_role:
+    name: variables
+
+- name: Remove Bazarr Container
+  docker_container:
+    name: "{{role_name}}"
+    state: absent
+
+- name: Register Image
+  shell: "cat /var/plexguide/image.{{role_name}}"
+  register: image
+  ignore_errors: True
+
+- name: Register Extra
+  shell: "cat /var/plexguide/extra.{{role_name}}"
+  register: extra
+  ignore_errors: True
+
+- name: Deploy Bazarr Container
+  docker_container:
+    name: "{{role_name}}"
+    image: "morpheus65535/bazarr:latest" #"{{image.stdout}}"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}6767:6767"
+    volumes:
+      - "/opt/appdata/{{role_name}}:/config" #{{extra.stdout}}"
+      - "{{path.stdout}}/:{{path.stdout}}/"
+      - "{{path.stdout}}/:/mnt/unionfs/"
+      - "/etc/localtime:/etc/localtime:ro"
+    env:
+      APP: "{{role_name}}"
+      VERSION: "stable"
+      PUID: "1000"
+      PGID: "1000"
+      BACKUP: "no"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{role_name}}"
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.port: "6767"

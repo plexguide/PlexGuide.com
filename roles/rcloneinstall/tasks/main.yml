@@ -1,0 +1,96 @@
+---
+- debug: var=ansible_os_family
+- name: gather os specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+  tags:
+    - vars
+
+- name: rclone - define tmpdir
+  set_fact:
+    rclone_setup_tmp_dir: "/tmp/rclone_setup"
+
+- name: Install required packages
+  package:
+    name: '{{ item }}'
+    state: latest
+  become: yes
+  with_items: '{{ PACKAGES }}'
+
+- name: install rclone - make temp dir
+  file:
+    path: "{{ rclone_setup_tmp_dir}}"
+    state: directory
+    mode: 0775
+
+- name: install rclone - unzip package
+  unarchive:
+    src: https://github.com/ncw/rclone/releases/download/v{{ rclone_version }}/rclone-v{{ rclone_version }}-linux-amd64.zip
+    dest: "{{ rclone_setup_tmp_dir}}"
+    copy: no
+    creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-amd64'
+  when: rclone_version != 'beta'
+  become: yes
+
+- name: install rclone - download file containing current beta version number
+  get_url:
+    url: https://beta.rclone.org/version.txt
+    dest: '{{ rclone_setup_tmp_dir }}/version.txt'
+  when: rclone_version == "beta"
+
+- name: install rclone - read in beta version number from {{ rclone_setup_tmp_dir }}/version.txt
+  slurp:
+    src: '{{ rclone_setup_tmp_dir }}/version.txt'
+  register: rclone_version_beta
+  when: rclone_version == 'beta'
+
+- name: install rclone - format rclone_beta_version variable and redefine as rclone_version
+  set_fact:
+    rclone_version: "{{ rclone_version_beta['content'] | b64decode | replace ('rclone v', '', 1) | trim }}"
+  when: rclone_version == 'beta'
+
+- name: install rclone - unzip package
+  unarchive:
+    src: https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip
+    dest: "{{ rclone_setup_tmp_dir}}"
+    copy: no
+    creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-amd64'
+  when: rclone_version_beta
+  become: yes
+
+- name: install rclone - copy binary
+  copy:
+    src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-amd64/rclone"
+    dest: "/usr/bin/rclone"
+    mode: 0755
+    owner: root
+    group: root
+    remote_src: true
+  become: yes
+
+- name: install rclone - make dir for local manpages
+  file:
+    path: '{{ MAN_PAGES.PATH }}'
+    state: directory
+    mode: 0775
+    owner: '{{ MAN_PAGES.OWNER }}'
+    group: '{{ MAN_PAGES.GROUP }}'
+  become: yes
+
+- name: install rclone - copy manpage
+  copy:
+    src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-amd64/rclone.1"
+    dest: "{{ MAN_PAGES.PATH }}/rclone.1"
+    mode: 0644
+    owner: root
+    group: root
+    remote_src: true
+  become: yes
+
+- name: install rclone - install manpage
+  shell: mandb
+  become: yes
+  changed_when: false

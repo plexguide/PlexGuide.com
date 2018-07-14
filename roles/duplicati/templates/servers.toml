@@ -1,0 +1,13 @@
+loglevel = "ERROR"
+
+[backends]
+[backends.duplicati]
+        [backends.duplicati.servers.duplicati]
+            url = "http://yourdomain.com:8200"
+
+[frontends]
+        [frontends.domain]
+                 entryPoints = ["http", "https"]
+                 backend = "duplicati"
+        [frontends.domain.routes.domain]
+                rule = "Host:duplicati.yourdomain.com"
