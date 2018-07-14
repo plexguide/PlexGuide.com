@@ -17,7 +17,7 @@
 #################################################################################
 #### PG VARIBLES
 echo "6.015 EDGE" > /var/plexguide/pg.version
-echo "122" > /var/plexguide/pg.preinstall
+echo "123" > /var/plexguide/pg.preinstall
 
 #### DOCKER START
 echo "18.03.1" > /var/plexguide/pg.docker16
