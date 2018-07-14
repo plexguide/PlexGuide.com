@@ -52,12 +52,12 @@ case $CHOICE in
         ;;
       C)
          echo 'INFO - Selected: Deluge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-         clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=deluge"
+         clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge --extra-vars "skipend=no"
          read -n 1 -s -r -p "Press any key to continue"
          ;;
         D)
         echo 'INFO - Selected: Jackett' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=jackett"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett --extra-vars "skipend=no"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
      E)

@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
+
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- titpetric/netdata\n2- firehol/netdata"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
+
+- name: Set titpetric/netdata
+  set_fact:
+    image: "titpetric/netdata"
+  when: result.user_input == "1"
+
+- name: Set firehol/netdata
+  set_fact:
+    image: "firehol/netdata"
+  when: result.user_input == "2"
+
+- name: Deploy NetData Container
+  docker_container:
+    name: "{{role_name}}"
+    image: "{{image}}"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes:
+      - "/sys:/host/sys:ro"
+      - "/proc:/host/proc:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    env:
+      PUID: 1000
+      PGID: 1000
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{role_name}}"
+    restart_policy: always
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
+
+- include_role:
+    name: pgmend

@@ -1,5 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: {{mod}}, tags: ['{{mod}}'] }

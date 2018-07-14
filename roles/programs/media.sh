@@ -42,7 +42,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             echo 'INFO - Selected: Plex' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=plex"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
                 ;;
         B)
@@ -57,12 +57,12 @@ case $CHOICE in
             ;;
         D)
             echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=airsonic" 
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
             echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=booksonic"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         Z)

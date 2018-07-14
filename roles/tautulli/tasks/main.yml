@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- include_vars: variables.yml
+
+- include_role:
+    name: pgmstart
+
+- name: "Create {{role_name}} script directories"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/{{role_name}}/scripts
+
+- name: "Deploy {{role_name}} Container"
+  docker_container:
+    name: "{{role_name}}"
+    image: "linuxserver/{{role_name}}"
+    pull: yes
+    cpu_shares: 128
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes:
+      - /opt/appdata/{{role_name}}:/config
+      - /opt/appdata/plex/database/Library/Application\ Support/Plex\ Media\
+      - /opt/appdata/{{role_name}}/scripts:/scripts
+    env:
+      PUID: "1000"
+      PGID: "1000"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{role_name}}"
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},plexpy.{{domain.stdout}}"
+      traefik.port: "8181"
+
+- include_role:
+    name: pgmend

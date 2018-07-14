@@ -39,7 +39,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=nzbget"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
@@ -51,7 +51,7 @@ case $CHOICE in
             ;;
         C)
             echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags pgrole --extra-vars "mod=sabnzbd"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "skipend=no"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
