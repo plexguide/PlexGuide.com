@@ -31,7 +31,7 @@
   shell: "cp /var/plexguide/mod.{{mod}} /var/plexguide/mod.{{mod}}.stored"
   when: modstat.stat.exists == False
 
-- shell: "echo cp /var/plexguide/mod.{{mod}}.stored"
+- shell: "cat /var/plexguide/mod.{{mod}}.stored"
   register: modstored
   ignore_errors: True
 
