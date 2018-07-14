@@ -15,11 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-<<<<<<< HEAD
 bash /opt/plexguide/roles/baseline/scripts/gen.sh 1>/dev/null 2>&1
-=======
-rm -r /var/plexguide/fork.lock 1>/dev/null 2>&1
->>>>>>> eba1b207ad3b673f7dbcd0c7a37ec3e046e401bb
 rm -r /opt/plexguide2 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/pg.yml --tags pgfork
 
