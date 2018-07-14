@@ -170,14 +170,14 @@
 - name: NAMECHEAP Information
   pause:
     prompt: "\nWhat is Your NameCheap API User?"
-  register: name1
+  register: namecheap1
   when:
     - result.user_input == "4"
 
 - name: NAMECHEAP Information
   pause:
     prompt: "\nWhat is Your NameCheap API Key?"
-  register: name2
+  register: namecheap2
   when:
     - result.user_input == "4"
 
