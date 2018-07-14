@@ -20,6 +20,12 @@
 #- name: Pull Stored Data
 #  shell: "cat /var/plexguide/pgfork.project"
 #  register: basicproject
+##################################################### Download Base File
+- name: Download Modular Info
+  get_url:
+    url: https://github.com/Admin9705/roles-plexguide.com/blob/master/info.sh
+    dest: /opt/appdata/plexguide/modinfo.sh
+    mode: 0775
 
 ##################################################### Check File Existance
 - name: Check if Mod Stored Exists
