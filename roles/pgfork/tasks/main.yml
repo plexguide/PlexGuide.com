@@ -82,3 +82,6 @@
     dest: /opt/plexguide
     version: "{{versionfinal.stdout}}"
     force: yes
+
+- name: Create Temp Lock
+  shell: "touch /var/plexguide/fork.lock"
