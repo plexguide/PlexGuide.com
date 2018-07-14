@@ -66,14 +66,19 @@
 
 - debug: msg="Project Final {{projectfinal}} | Version Final {{versionfinal}}"
 
-- name: Create Folder
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/plexguide2
+#- name: Create Folder
+#  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+#  with_items:
+#    - /opt/plexguide2
+
+- name: Remove Old Directory
+  file:
+    state: absent
+    path: "/opt/plexguide/"
 
 - name: Clone Fork
   git:
     repo: "{{projectfinal.stdout}}"
-    dest: /opt/plexguide2
+    dest: /opt/plexguide
     version: "{{versionfinal.stdout}}"
     force: yes
