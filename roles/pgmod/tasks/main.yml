@@ -22,10 +22,7 @@
 #  register: basicproject
 ##################################################### Download Base File
 - name: Download Modular Info
-  get_url:
-    url: https://github.com/Admin9705/roles-plexguide.com/blob/master/info.sh
-    dest: /opt/appdata/plexguide/modinfo.sh
-    mode: 0775
+  shell: sudo wget --force-directories -O /opt/appdata/plexguide/modinfo.sh https://github.com/Admin9705/roles-plexguide.com/blob/master/info.sh"
 
 ##################################################### Check File Existance
 - name: Check if Mod Stored Exists
@@ -37,7 +34,8 @@
   shell: "cp /var/plexguide/mod.{{mod}} /var/plexguide/mod.{{mod}}.stored"
   when: modstat.stat.exists == False
 
-- shell: "cat /var/plexguide/mod.{{mod}}.stored"
+- name: Store Mod Stored Variable
+  shell: "cat /var/plexguide/mod.{{mod}}.stored"
   register: modstored
   ignore_errors: True
 
