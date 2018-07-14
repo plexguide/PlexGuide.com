@@ -81,4 +81,4 @@
 - name: Create Temp Lock
   shell: "touch /var/plexguide/fork.lock"
 
-- debug: msg="Lock Created"
+- debug: msg="Lock is Created"
