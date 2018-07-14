@@ -1,5 +1,0 @@
----
-- cron:
-    name: "{{pgrole}}"
-    state: absent
-  ignore_errors: yes
