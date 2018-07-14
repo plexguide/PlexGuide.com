@@ -22,7 +22,7 @@
 #  register: basicproject
 ##################################################### Download Base File
 - name: Download Modular Info
-  shell: sudo wget --force-directories -O /opt/appdata/plexguide/modinfo.sh https://github.com/Admin9705/roles-plexguide.com/blob/master/info.sh"
+  shell: "wget --force-directories -O /opt/appdata/plexguide/modinfo.sh https://github.com/Admin9705/roles-plexguide.com/blob/master/info.sh"
 
 ##################################################### Check File Existance
 - name: Check if Mod Stored Exists
