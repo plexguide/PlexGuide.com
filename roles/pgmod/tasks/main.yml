@@ -37,7 +37,7 @@
 
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PG Modular Installer: {{mod}}\n\nCurrent Mod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\nCurrent Module: {{modstored.stdout}}\nLatest Module: 1\n\n1 - Install Module: Latest (Recommended)\n2 - Install Module: Other\n3 - Install Module: Custom Fork\n4 - Exit Module Installer\n\nType the Corresponding NUMBER of your Choice"
+    prompt: "\nWelcome to PG Modular Installer: {{mod}}\n\nCurrent Mod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\nCurrent Module: {{modstored.stdout}}\nLatest Module : 1\n\n1 - Install Module: Latest (Recommended)\n2 - Install Module: Other\n3 - Install Module: Custom Fork\n4 - Exit Module Installer\n\nType the Corresponding NUMBER of your Choice"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "5"
   retries: 99
