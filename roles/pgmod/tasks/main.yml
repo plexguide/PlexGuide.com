@@ -28,15 +28,15 @@
 
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PG Modular Installer: {{mod}}\n\nCurrent Mod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\nVersion: Latest\n\n1 - Exit Module Installer\n2 - Install Module: Latest (Recommended)\n3 - Install Module: Older\n4 - Install Module: Custom Fork\n\nType the Corresponding NUMBER of your Choice"
+    prompt: "\nWelcome to PG Modular Installer: {{mod}}\n\nCurrent Mod: https://github.com/Admin9705/{{mod}}-plexguide.com-ansible\nCurrent Module: 1\nLatest Module: 1\n\n1 - Install Module: Latest (Recommended)\n2 - Install Module: Other\n3 - Install Module: Custom Fork\n4 - Exit Module Installer\n\nType the Corresponding NUMBER of your Choice"
   register: exit
-  until: exit.user_input > "0" and exit.user_input < "4"
+  until: exit.user_input > "0" and exit.user_input < "5"
   retries: 99
   delay: 1
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
+  when: exit.user_input == "4"
 ############################## REGISTER PROJECT
 - pause:
     prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
