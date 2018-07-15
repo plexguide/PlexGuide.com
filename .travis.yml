@@ -8,12 +8,12 @@ services: docker
 #env:
 #  - ANSIBLE_VERSION=latest
 
-script:
-- bash /${PWD}/test.sh
-
 branches:
   only:
     - Edge
+
+script:
+- bash /${PWD}/test.sh
 
 #install:
 #  # Install Ansible.
