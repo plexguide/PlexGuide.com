@@ -9,33 +9,27 @@ services: docker
 #  - ANSIBLE_VERSION=latest
 
 script:
-- bash ${PWD}/test.sh
+- bash /${PWD}/test.sh
 
 branches:
   only:
     - Edge
 
-before_install:
-  - sudo apt-get update -qq
-  - mkdir /opt/plexguide
-  - mkdir /var/plexguide
-  - touch /var/plexguide/pg.log
+#install:
+#  # Install Ansible.
+#  - sudo apt-get remove ansible
+#  - sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
+#  - sudo apt-get update -y
+#  - sudo apt-get install ansible 2.5.5 -y
+#  - sudo apt-mark hold ansible
+#  - sudo apt-get update -y
 
-install:
-  # Install Ansible.
-  - sudo apt-get remove ansible
-  - sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
-  - sudo apt-get update -y
-  - sudo apt-get install ansible 2.5.5 -y
-  - sudo apt-mark hold ansible
-  - sudo apt-get update -y
-
-script:
+#script:
   # Check the role/playbook's syntax.
-  - sudo pwd
-  - mv /home/travis/build/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/* /opt/plexguide/
-  - sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
-  - sudo ansible-playbook -i /opt/plexguide/pg.yml --tags couchpotato --syntax-check
+  #  - sudo pwd
+  #- mv /home/travis/build/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/* /opt/plexguide/
+  #- sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
+  #- sudo ansible-playbook -i /opt/plexguide/pg.yml --tags couchpotato --syntax-check
 
 ### Sources
 # https://tasdikrahman.me/2017/04/06/Testing-your-ansible-roles-using-travis-CI/
