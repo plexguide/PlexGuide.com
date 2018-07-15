@@ -17,7 +17,7 @@ script:
 - sudo bash mkdir -p ${PWD}/roles/log/
 - sudo touch ${PWD}/roles/log/log.sh
 - sudo mkdir /var/plexguide/
-
+- apt-get install dialog -y
 - sudo bash ${PWD}/roles/baseline/scripts/gen.sh
 - sudo ansible-playbook ${PWD}/opt/plexguide/pg.yml --tags preinstall
 - sudo ansible-playbook ${PWD}/opt/plexguide/pg.yml --tags folders
