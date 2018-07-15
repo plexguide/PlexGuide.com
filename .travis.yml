@@ -3,7 +3,7 @@ language: bash
 sudo: true
 dist: xenial
 
-services: docker
+#services: docker
 # Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
 #env:
 #  - ANSIBLE_VERSION=latest
@@ -13,7 +13,8 @@ branches:
     - Edge
 
 script:
-- bash /${PWD}/test.sh
+- bash /${PWD}/opt/plexguide/roles/baseline/scripts/ansible.sh
+- 
 
 #install:
 #  # Install Ansible.
