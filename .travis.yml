@@ -13,7 +13,7 @@ branches:
     - Edge
 
 script:
-- bash /${PWD}/roles/baseline/scripts/ansible.sh
+- sudo bash /${PWD}/roles/baseline/scripts/ansible.sh
 -
 
 #install:
