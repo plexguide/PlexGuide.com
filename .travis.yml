@@ -8,7 +8,7 @@ services: docker
 #env:
 #  - ANSIBLE_VERSION=latest
 
-### Test Script
+script:
 - ${PWD}/test.sh
 
 branches:
