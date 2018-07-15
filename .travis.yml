@@ -13,8 +13,8 @@ branches:
     - Edge
 
 script:
-- bash /${PWD}/opt/plexguide/roles/baseline/scripts/ansible.sh
-- 
+- bash /${PWD}/roles/baseline/scripts/ansible.sh
+-
 
 #install:
 #  # Install Ansible.
