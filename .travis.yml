@@ -14,7 +14,7 @@ branches:
 
 script:
 - sudo bash ${PWD}/roles/baseline/scripts/ansible.sh
-- sudo bash mkdir -p ${PWD}/roles/log/
+- sudo mkdir -p ${PWD}/roles/log/
 - sudo touch ${PWD}/roles/log/log.sh
 - sudo mkdir /var/plexguide/
 - apt-get install dialog -y
