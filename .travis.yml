@@ -9,7 +9,7 @@ services: docker
 #  - ANSIBLE_VERSION=latest
 
 script:
-- ${PWD}/test.sh
+- bash ${PWD}/test.sh
 
 branches:
   only:
