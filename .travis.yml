@@ -16,7 +16,7 @@ script:
 - sudo bash ${PWD}/roles/baseline/scripts/ansible.sh
 - sudo mkdir /var/plexguide/
 - sudo bash ${PWD}/roles/baseline/scripts/gen.sh
-- sudo bash ${PWD}/roles/baseline/scripts/folders.sh
+- sudo ansible-playbook /${PWD}/opt/plexguide/pg.yml --tags folders
 - sudo ansible-playbook /${PWD}/opt/plexguide/pg.yml --tags rcloneinstall
 
 #install:
