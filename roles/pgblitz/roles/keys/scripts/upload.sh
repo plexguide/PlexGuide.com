@@ -27,7 +27,7 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
 while read p; do
 
   mkdir -p /mnt/pgblitz/$p
-  /mnt/move/* /mnt/pgblitz/$p
+  /mnt/move/* /mnt/pgblitz/$p/
 
   rclone move --tpslimit 6 --checkers=20 \
     --config $rpath \
