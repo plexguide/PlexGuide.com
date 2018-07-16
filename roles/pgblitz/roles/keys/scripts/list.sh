@@ -15,4 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-ls -la /opt/appdata/pgblitz/keys | awk '{ print $9}' | tail -n +4 > /tmp/pg.ops
+path=/opt/appdata/pgblitz/keys
+ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
+
+while read p; do
+  mv $path/unprocessed/$p $path/processed/
+done </tmp/pg.keys.processed
