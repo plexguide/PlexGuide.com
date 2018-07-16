@@ -30,7 +30,7 @@ while read p; do
   /mnt/move/* /mnt/pgblitz/$p
 
   rclone move --tpslimit 6 --checkers=20 \
-    --config /root/.config/rclone/rclone.conf \
+    --config $rpath \
     --transfers=8 \
     --exclude="**partial~" --exclude="**_HIDDEN~" \
     --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
