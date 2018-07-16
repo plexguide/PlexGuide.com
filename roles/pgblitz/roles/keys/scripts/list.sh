@@ -23,6 +23,7 @@ number=0
 # 1. Build JSON Checkers for Quality Control to ensure valid
 # 2. If file is not a JSON, trash it
 # 3. Ensure that no more than 99 JSON's can be built - 100 limiter
+# 4. Testing for now, but have invalid JSONs go to an invalid folder
 
 ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
