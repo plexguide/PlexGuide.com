@@ -20,7 +20,7 @@ rpath=/root/.config/rclone/rclone.conf
 
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 
-#### Commenting Out To Let User See
+#### Ensure to Backup TDrive & GDrive and Wipe the Rest
 while read p; do
 
 tee >> /$rpath <<EOF
