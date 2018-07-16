@@ -30,7 +30,7 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocess
 
 rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 while read p; do
-  p=${p:5}
+  p=${p:4}
   echo $p >> /tmp/pg.keys.processed.count
 done </tmp/pg.keys.unprocessed.count
 
@@ -41,14 +41,14 @@ while read p; do
     if [ "$check" == "$number" ]; then
         break=0
         let "number++"
-        echo "INFO - PGBlitz: GDSA-$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         break=1
     fi
   done
 
-  mv $path/unprocessed/$p $path/processed/GDSA-$number
-  echo "INFO - PGBlitz: GDSA-$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  mv $path/unprocessed/$p $path/processed/GDSA$number
+  echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done </tmp/pg.keys.temp
 
 echo "INFO - PGBlitz: JSON Building Process List Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
