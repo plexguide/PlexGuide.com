@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & FlickerRate
@@ -15,24 +15,18 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+#Remake another for PGBlitz
+#clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
+
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
-teamdrive=$( cat /var/plexguide/teamdrive )
 
-ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
+ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
 
-#### Ensure to Backup TDrive & GDrive and Wipe the Rest
 while read p; do
 
-tee >> /$rpath <<EOF
-[$p]
-type = drive
-client_id =
-client_secret =
-scope = drive
-root_folder_id =
-service_account_file = /opt/appdata/pgblitz/keys/processed/$p
-team_drive = $teamdrive
-EOF
+#rclone touch $p:$/plexguide/$p
+
 
 done </tmp/pg.gdsa
