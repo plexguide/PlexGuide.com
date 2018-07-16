@@ -23,7 +23,7 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 #### Commenting Out To Let User See
 while read p; do
 
-tee "" >> /$rpath <<EOF
+tee >> /$rpath <<EOF
 [$p]
 type = drive
 client_id =
