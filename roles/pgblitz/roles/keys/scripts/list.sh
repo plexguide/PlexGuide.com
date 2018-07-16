@@ -43,11 +43,11 @@ while read p; do
         echo "INFO - PGBlitz: GDSA-$number exists! Checking Next Number!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         break=1
-        echo "INFO - PGBlitz: GDSA-$number built!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     fi
   done
 
   mv $path/unprocessed/$p $path/processed/GDSA-$number
+  echo "INFO - PGBlitz: GDSA-$number built!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done </tmp/pg.keys.temp
 
 echo "INFO - PGBlitz: JSON Building Process List Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
