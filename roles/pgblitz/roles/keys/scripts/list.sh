@@ -35,8 +35,9 @@ while read p; do
         break=1
       else
         let "number++"
+        break=0
     fi
   done
 
   mv $path/unprocessed/$p $path/processed/GDSA-$number
-done </tmp/pg.keys.temp
+done <`/tmp/pg.keys.temp`
