@@ -26,7 +26,16 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
 
 while read p; do
 
-#rclone touch $p:$/plexguide/$p
+  mkdir -p /mnt/pgblitz/$p
+  /mnt/move/* /mnt/pgblitz/$p
 
+  rclone move --tpslimit 6 --checkers=20 \
+    --config /root/.config/rclone/rclone.conf \
+    --transfers=8 \
+    --exclude="**partial~" --exclude="**_HIDDEN~" \
+    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+    --drive-chunk-size=32M \
+    "/mnt/pgblitz/$p/*" "$gdsa:/"}" && rclone_fin_flag=1"
 
+    sleep 10
 done </tmp/pg.gdsa
