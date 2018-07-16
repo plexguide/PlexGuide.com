@@ -40,4 +40,4 @@ while read p; do
   done
 
   mv $path/unprocessed/$p $path/processed/GDSA-$number
-done <`/tmp/pg.keys.temp`
+done </tmp/pg.keys.temp
