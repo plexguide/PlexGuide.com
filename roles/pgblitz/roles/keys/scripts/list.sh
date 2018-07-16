@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 path=/opt/appdata/pgblitz/keys
 number=0
 
@@ -39,10 +40,14 @@ while read p; do
     if [ "$check" == "$number" ]; then
         break=0
         let "number++"
+        echo "INFO - PGBlitz: GDSA-$number exists! Checking Next Number!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         break=1
+        echo "INFO - PGBlitz: GDSA-$number built!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     fi
   done
 
   mv $path/unprocessed/$p $path/processed/GDSA-$number
 done </tmp/pg.keys.temp
+
+echo "INFO - PGBlitz: JSON Building Process List Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
