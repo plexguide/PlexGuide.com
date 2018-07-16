@@ -23,8 +23,15 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 #### Commenting Out To Let User See
 while read p; do
 
-tee "/opt/appdata/plexguide/move-en.sh" >> /tmp/test.txt <<EOF
-1
+tee "" >> /$rpath <<EOF
+[$p]
+type = drive
+client_id =
+client_secret =
+scope = drive
+root_folder_id =
+service_account_file = /opt/appdata/pgblitz/keys/processed/$p
+team_drive = 0BCGn24COUqr2Uk9PCB
 EOF
 
 done </tmp/pg.gdsa
