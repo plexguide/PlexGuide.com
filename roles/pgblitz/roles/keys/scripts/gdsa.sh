@@ -23,7 +23,7 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 #### Commenting Out To Let User See
 while read p; do
 
-tee "/opt/appdata/plexguide/move-en.sh" > /tmp/test.txt <<EOF
+tee "/opt/appdata/plexguide/move-en.sh" >> /tmp/test.txt <<EOF
 1
 EOF
 
