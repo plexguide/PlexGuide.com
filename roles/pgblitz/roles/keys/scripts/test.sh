@@ -16,7 +16,7 @@
 #
 #################################################################################
 
-clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
+#clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
 
 rm -r /root/.config/rclone/rclone.conf
 cp /root/.config/rclone/rclone.conf2 /root/.config/rclone/rclone.conf
