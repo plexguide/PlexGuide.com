@@ -27,6 +27,10 @@ done </tmp/pg.keys.unprocessed.count
 
 number=1
 while read p; do
+
+  check=$(grep 1 /tmp/pg.keys.processed.count)
+
+
   mv $path/unprocessed/$p $path/processed/GDSA-$number
   let "number++"
 done </tmp/pg.keys.temp
