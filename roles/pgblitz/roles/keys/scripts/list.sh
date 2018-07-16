@@ -29,7 +29,7 @@ done </tmp/pg.keys.unprocessed.count
 
 while read p; do
   let "number++"
-  until [ $break -eq 1 ]; do
+  until [ "$break" == "1" ]; do
     check=$(grep $number /tmp/pg.keys.processed.count)
     if [ "$check" == "$number" ]; then
         break=1
