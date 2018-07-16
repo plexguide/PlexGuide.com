@@ -20,4 +20,4 @@ ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
 while read p; do
   mv $path/unprocessed/$p $path/processed/
-done </tmp/pg.keys.processed
+done </tmp/pg.keys.temp
