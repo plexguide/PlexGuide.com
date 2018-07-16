@@ -17,6 +17,7 @@
 #################################################################################
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
+teamdrive=$( cat /var/plexguide/teamdrive )
 
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 
@@ -31,7 +32,7 @@ client_secret =
 scope = drive
 root_folder_id =
 service_account_file = /opt/appdata/pgblitz/keys/processed/$p
-team_drive = 0BCGn24COUqr2Uk9PCB
+team_drive = $teamdrive
 EOF
 
 done </tmp/pg.gdsa
