@@ -18,6 +18,8 @@
 path=/opt/appdata/pgblitz/keys
 ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
+number=1
 while read p; do
-  mv $path/unprocessed/$p $path/processed/
+  mv $path/unprocessed/$p $path/processed/GDSA-$number
+  number++
 done </tmp/pg.keys.temp
