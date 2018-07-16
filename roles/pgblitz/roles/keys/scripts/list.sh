@@ -16,6 +16,8 @@
 #
 #################################################################################
 path=/opt/appdata/pgblitz/keys
+number=0
+
 ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
 
@@ -25,12 +27,16 @@ while read p; do
   echo $p >> /tmp/pg.keys.processed.count
 done </tmp/pg.keys.unprocessed.count
 
-number=1
 while read p; do
-
-  check=$(grep 1 /tmp/pg.keys.processed.count)
-
+  let "number++"
+  until [ $break -eq 1 ]; do
+    check=$(grep $number /tmp/pg.keys.processed.count)
+    if [ "$choice" == "$program" ]; then
+        break=1
+      else
+        let "number++"
+    fi
+  done
 
   mv $path/unprocessed/$p $path/processed/GDSA-$number
-  let "number++"
 done </tmp/pg.keys.temp
