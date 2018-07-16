@@ -15,8 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
+path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
+
+ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 
 #### Commenting Out To Let User See
 while read p; do
