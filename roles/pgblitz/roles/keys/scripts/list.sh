@@ -31,7 +31,7 @@ while read p; do
   let "number++"
   until [ $break -eq 1 ]; do
     check=$(grep $number /tmp/pg.keys.processed.count)
-    if [ "$choice" == "$program" ]; then
+    if [ "$check" == "$number" ]; then
         break=1
       else
         let "number++"
