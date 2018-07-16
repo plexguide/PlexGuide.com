@@ -18,6 +18,11 @@
 path=/opt/appdata/pgblitz/keys
 number=0
 
+### NOTES
+# 1. Build JSON Checkers for Quality Control to ensure valid
+# 2. If file is not a JSON, trash it
+# 3. PGLog it all
+
 ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
 
