@@ -17,6 +17,13 @@
 #################################################################################
 path=/opt/appdata/pgblitz/keys
 ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
+ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
+
+rm -r /tmp/pg.keys.processed.count
+while read p; do
+  p=${p:5}
+  echo $p >> /tmp/pg.keys.processed.count
+done </tmp/pg.keys.count
 
 number=1
 while read p; do
