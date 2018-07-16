@@ -16,10 +16,6 @@
 #
 #################################################################################
 
-echo -n "ID"
-read teamdrive
-echo $teamdrive > /var/plexguide/teamdrive
-
 clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
 
 rm -r /root/.config/rclone/rclone.conf
