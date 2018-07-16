@@ -15,12 +15,25 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-rm -r /tmp/backup.build 1>/dev/null 2>&1
-bash /opt/plexguide/roles/backup/scripts/list.sh
+ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
+rpath=/root/.config/rclone/rclone.conf
+
 #### Commenting Out To Let User See
 while read p; do
-  echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
+
+tee "/opt/appdata/plexguide/move-en.sh" > /tmp/test.txt <<EOF
+#!/bin/bash
+sleep 30
+while true
+do
+## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
+rclone move --bwlimit 10M --tpslimit 6 --exclude='**.partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gcrypt:/
+sleep 480
+# Remove empty directories (MrWednesday)
+find "/mnt/move/" -mindepth 2 -type d -empty -delete
+done
+EOF
+
+done </tmp/pg.gdsa
 
 ansible-role backup
