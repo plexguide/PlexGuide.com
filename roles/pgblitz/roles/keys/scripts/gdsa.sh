@@ -22,18 +22,7 @@ rpath=/root/.config/rclone/rclone.conf
 while read p; do
 
 tee "/opt/appdata/plexguide/move-en.sh" > /tmp/test.txt <<EOF
-#!/bin/bash
-sleep 30
-while true
-do
-## Sync, Sleep 10 Minutes, Repeat. BWLIMIT Prevents Google 750GB Google Upload Ban
-rclone move --bwlimit 10M --tpslimit 6 --exclude='**.partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" --exclude=".unionfs-fuse/**" --checkers=16 --max-size 99G --log-level INFO --stats 5s /mnt/move gcrypt:/
-sleep 480
-# Remove empty directories (MrWednesday)
-find "/mnt/move/" -mindepth 2 -type d -empty -delete
-done
+1
 EOF
 
 done </tmp/pg.gdsa
-
-ansible-role backup
