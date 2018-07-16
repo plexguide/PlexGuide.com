@@ -32,10 +32,10 @@ while read p; do
   until [ "$break" == "1" ]; do
     check=$(grep $number /tmp/pg.keys.processed.count)
     if [ "$check" == "$number" ]; then
-        break=1
+        break=0
       else
         let "number++"
-        break=0
+        break=1
     fi
   done
 
