@@ -106,10 +106,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               exit
             fi
 
-            #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
-            #ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
             touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
@@ -132,7 +128,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/pg.yml --tags unionfs
+            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
             #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
