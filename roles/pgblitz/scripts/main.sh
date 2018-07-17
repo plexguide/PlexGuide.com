@@ -72,7 +72,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             ;;
         B)
 echo 'INFO - DEPLOYED JSON FILES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        ansible-role cloudblitz
+        #### Deploy CloudBlitz
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend=no"
         ;;
         C)
 echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -106,38 +107,13 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
               ansible-playbook /opt/plexguide/pg.yml --tags gdrive
             fi
-
+            bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/pg.yml --tags unionfs
-            ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
+            #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
-            ;;
-            C)
-            if [ "$selected" != "Move" ]
-              then
-              dialog --title "NOTE!" --msgbox "\nBWLimit does not apply to ST2! No change!" 0 0
-            else
-              dialog --title "Change the BW Limit" \
-              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
-              number=$(cat /var/plexguide/move.number)
-
-            if [ $number -gt 999 -o $number -lt 1 ]
-            then
-              dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
-              exit
-            fi
-              echo $number > /var/plexguide/move.bw
-              dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
-            fi
-            ;;
-            F)
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-            echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            #ansible-role services_remove
-            dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
             ;;
         D)
             #### RECALL VARIABLES START
@@ -161,24 +137,15 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
             bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
             exit
             fi
-
             #### DEPLOY a TRANSFER SYSTEM - START
-            if [ "$selected" == "Move" ]
-              then
-              ansible-playbook /opt/plexguide/pg.yml --tags move
-              read -n 1 -s -r -p "Press any key to continue"
-            else
-              systemctl stop move 1>/dev/null 2>&1
-              systemctl disable move 1>/dev/null 2>&1
-              clear
-              bash /opt/plexguide/scripts/supertransfer/config.sh
-              ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2
-              journalctl -f -u supertransfer2
+
+              clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
+              echo ""
               read -n 1 -s -r -p "Press any key to continue"
             fi
             #### DEPLOY a TRANSFER SYSTEM - END
-            dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
-            echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            dialog --title "NOTE!" --msgbox "\nPG Blitz is Now Running!" 7 38
+            echo 'SUCCESS - PG Blitz is Now Running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             ;;
         Z)
             exit 0 ;;
