@@ -142,7 +142,6 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
               echo ""
               read -n 1 -s -r -p "Press any key to continue"
-            fi
             #### DEPLOY a TRANSFER SYSTEM - END
             dialog --title "NOTE!" --msgbox "\nPG Blitz is Now Running!" 7 38
             echo 'SUCCESS - PG Blitz is Now Running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
