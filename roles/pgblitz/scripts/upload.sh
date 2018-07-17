@@ -42,7 +42,7 @@ while read p; do
     --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
     --drive-chunk-size=32M \
     /mnt/pgblitz/$p $p:
- #  rm -r /mnt/pgblitz/$p/*
+    mv /mnt/pgblitz/$p/* /mnt/move/ 1>/dev/null 2>&1
     echo "$p - GDSA"
     echo "INFO - PGBlitz: '$p' - Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     sleep 5
