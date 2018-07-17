@@ -90,6 +90,21 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
             #### RECALL VARIABLES END
 
+            ### Checkers
+            if [ "$gdrive" != "[gdrive]" ]; then
+              echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+              exit
+            fi
+
+            if [ "$tdrive" != "[tdrive]" ]; then
+              echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured!\n\nThis is required for TeamDrives to Work!!" 0 0
+              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+              exit
+            fi
+
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
             #ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
