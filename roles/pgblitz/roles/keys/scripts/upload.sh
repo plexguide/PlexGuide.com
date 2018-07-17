@@ -35,7 +35,8 @@ while read p; do
     --exclude="**partial~" --exclude="**_HIDDEN~" \
     --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
     --drive-chunk-size=32M \
-    "/mnt/pgblitz/$p" "$gdsa:" && rclone_fin_flag=1
+    /mnt/pgblitz/$p $gdsa:
 
+    echo "$gdsa - GDSA"
     sleep 10
 done </tmp/pg.gdsa
