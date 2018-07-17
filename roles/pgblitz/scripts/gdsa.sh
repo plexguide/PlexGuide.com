@@ -23,6 +23,8 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
 
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
 while read p; do
+  
+mkdir -p /mnt/pgblitz/$p  1>/dev/null 2>&1
 
 tee >> /$rpath <<EOF
 [$p]

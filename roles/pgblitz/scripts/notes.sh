@@ -18,6 +18,7 @@
 
 #clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
 
+1. Future, have system look for GDSAs that no longer exist
 
 cp /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf2
 
