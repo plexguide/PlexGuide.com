@@ -16,9 +16,10 @@
 #
 #################################################################################
 
+#build a service out of this
 #Remake another for PGBlitz
 #clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
-#build unionfs additon build script 
+#build unionfs additon build script
 
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
@@ -43,6 +44,6 @@ while read p; do
     /mnt/pgblitz/$p $p:
     rm -r /mnt/pgblitz/$p/*
     echo "$p - GDSA"
-    echo "INFO - PGBlitz: '$p' - Transfer Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    sleep 10
+    echo "INFO - PGBlitz: '$p' - Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    sleep 5
 done </tmp/pg.gdsa
