@@ -26,16 +26,21 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
 
 while read p; do
 
-  p=GDSA15
   mkdir -p /mnt/pgblitz/$p
   touch /mnt/pgblitz/$p/dog.txt
   mv /mnt/move/* /mnt/pgblitz/$p
 
   ls -la /mnt/pgblitz/$p
   echo "sleep 3"
-  rclone move --tpslimit 6 --checkers=20 --config $rpath --transfers=8 /mnt/pgblitz/$p $p:
+  rclone move --tpslimit 6 --checkers=20 \
+    --config $rpath \
+    --transfers=8 \
+    --exclude="**partial~" --exclude="**_HIDDEN~" \
+    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+    --drive-chunk-size=32M \
+    /mnt/pgblitz/$p $p:
 
     echo "$p - GDSA"
-    echo "stop"
-    sleep 20
+    echo ""
+    sleep 10
 done </tmp/pg.gdsa
