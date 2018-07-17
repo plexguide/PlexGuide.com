@@ -173,7 +173,7 @@
 ############################################## PGBlitz (START) Install
   - name: Install pgblitz script
     template:
-      src: pgblitz.service
+      src: upload.sh
       dest: /opt/appdata/pgblitz/pgblitz.sh
       force: yes
     tags:
