@@ -77,10 +77,15 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### Note How to Create Json files
             dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
             clear
-            echo "Stopping CloudBlitz"
-            docker stop cloudBlitz
-            echo "Removing CloudBlitz"
-            docker rm cloudBlitz
+            echo "1. Stopping CloudBlitz"
+            docker stop cloudblitz
+            sleep
+            echo "2. Removing CloudBlitz"
+            docker rm cloudblitz
+            echo "3. Processing Your JSON Keys"
+            sleep 2
+            clear
+            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
             ;;
         C)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
