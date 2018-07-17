@@ -55,7 +55,6 @@
     when: move.stat.exists
     ignore_errors: True
 
-
   - name: Install pgblitz Service
     template:
       src: pgblitz.service
@@ -78,13 +77,13 @@
       state: restarted
       name: pgblitz
 
+########ST2 Monitor
   - name: Install ST2Check Script
     template:
       src: st2monitor.sh
       dest: /opt/appdata/plexguide/st2monitor.sh
       force: yes
 
-########ST2 Monitor
   - name: Check ST2 Check Service
     stat:
       path: "/etc/systemd/system/st2check.service"
