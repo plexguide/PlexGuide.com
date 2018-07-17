@@ -55,18 +55,6 @@
     when: move.stat.exists
     ignore_errors: True
 
-  - name: Check supertransfer1 Service
-    stat:
-      path: "/etc/systemd/system/supertransfer.service"
-    register: supertransfer
-
-  - name: Stop If Supertransfer1 Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: supertransfer
-    when: supertransfer.stat.exists
-    ignore_errors: True
 
   - name: Install SuperTransfer2 Service
     template:
