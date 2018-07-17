@@ -25,6 +25,7 @@ path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+echo "" > /tmp/pg.gdsa.build
 
 while read p; do
 echo -n "/mnt/pgblitz/$p=RO;">> /tmp/pg.gdsa.build
