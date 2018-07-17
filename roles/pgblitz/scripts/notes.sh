@@ -18,8 +18,8 @@
 
 #clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
 
+
+cp /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf2
+
 rm -r /root/.config/rclone/rclone.conf
 cp /root/.config/rclone/rclone.conf2 /root/.config/rclone/rclone.conf
-
-bash /opt/plexguide/roles/pgblitz/scripts/list.sh
-bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
