@@ -16,7 +16,9 @@
 #
 #################################################################################
 ---
-############################################## MOVE (START)
+############################################## MOVE (START) Disable
+
+### Unencrypted
   - name: Check move Service
     stat:
       path: "/etc/systemd/system/move.service"
@@ -30,6 +32,7 @@
     when: move.stat.exists
     ignore_errors: True
 
+### Encrypted
   - name: Check move-en Service
     stat:
       path: "/etc/systemd/system/move.service"
@@ -42,7 +45,15 @@
       name: move-en
     when: move.stat.exists
     ignore_errors: True
-############################################## MOVE (END)
+############################################## MOVE (END) Disable
+
+############################################## ST2 (START) Disable
+#
+#
+#
+############################################## ST2 (END) Disable
+
+############################################## PGBlitz (START) Install
   - name: Install pgblitz Service
     template:
       src: pgblitz.service
@@ -64,3 +75,20 @@
       enabled: yes
       state: restarted
       name: pgblitz
+############################################## PGBlitz (END)
+
+############################################## ST2 Monitorr (START) Disable
+#
+#
+#
+#
+#
+############################################## ST2 Monitorr (END) Disable
+
+############################################## PGBlitz Monitorr (START) Install
+#
+#
+#
+#
+#
+############################################## PGBlitz Monitorr (END) Install
