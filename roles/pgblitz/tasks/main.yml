@@ -23,6 +23,8 @@
     stat:
       path: "/etc/systemd/system/move.service"
     register: move
+    tags:
+      - blitzdeploy
 
   - name: Stop If Move Service Running (ignore errors)
     systemd:
@@ -31,12 +33,16 @@
       name: move
     when: move.stat.exists
     ignore_errors: True
+    tags:
+      - blitzdeploy
 
 ### Encrypted
   - name: Check move-en Service
     stat:
       path: "/etc/systemd/system/move.service"
     register: move-en
+    tags:
+      - blitzdeploy
 
   - name: Stop If Encrypted Move Service Running (ignore errors)
     systemd:
@@ -45,6 +51,9 @@
       name: move-en
     when: move.stat.exists
     ignore_errors: True
+    tags:
+      - blitzdeploy
+
 ############################################## MOVE (END) Disable
 
 ############################################## ST2 (START) Disable
@@ -53,33 +62,24 @@
 #
 ############################################## ST2 (END) Disable
 
-############################################## PGBlitz (START) Install
-  - name: Install pgblitz Service
-    template:
-      src: pgblitz.service
-      dest: /etc/systemd/system/pgblitz.service
-      force: yes
-
-  - name: Enable pgblitz Service
-    systemd:
-      daemon_reload: yes
-      enabled: yes
-      state: restarted
-      name: pgblitz
-############################################## PGBlitz (END)
-
 ############################################## GDRIVE (START)
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt enabled=no
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Daemon-Reload - Stop GCRYPT Service
     systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Stop If GDRIVE Service Running
     systemd: state=stopped name=gdrive
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Install GDRIVE Service
     template:
@@ -87,36 +87,54 @@
       dest: /etc/systemd/system/gdrive.service
       force: yes
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Start GDRIVE SERVICE
     systemd: state=started name=gdrive daemon_reload=yes enabled=yes
     ignore_errors: yes
+    tags:
+      - blitzdeploy
+
 ############################################## GDRIVE (END)
 
 ############################################## TDRIVE (START)
   - name: Stop If TCRYPT Service Running
     systemd: state=stopped name=tcrypt enabled=no
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Daemon-Reload - Stop TCRYPT Service
     systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Stop If TDRIVE Service Running
     systemd: state=stopped name=tdrive
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Install TDRIVE Service
     template:
       src: tdrive.js2
       dest: /etc/systemd/system/tdrive.service
       force: yes
+    tags:
+      - blitzdeploy
 
   - name: Daemon-Reload
     systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    tags:
+      - blitzdeploy
 
   - name: Start TDrive
     systemd: state=started name=tdrive enabled=yes
+    tags:
+      - blitzdeploy
+
 ############################################## TDRIVE (END)
 
 ############################################## UNIONFS (START)
@@ -124,24 +142,54 @@
     shell: "cat /var/plexguide/unionfs.pgpath"
     register: unionfs_path
     ignore_errors: True
+    tags:
+      - blitzdeploy
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
     ignore_errors: yes
+    tags:
+      - blitzdeploy
 
   - name: Install UNIONFS Service
     template:
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service
       force: yes
+    tags:
+      - blitzdeploy
 
   - name: Daemon-Reload
     systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - blitzdeploy
 
   - name: Start UnionFS
     systemd: state=started name=unionfs enabled=yes
+    tags:
+      - blitzdeploy
 ############################################## UNIONFS (END)
+#
+############################################## PGBlitz (START) Install
+  - name: Install pgblitz Service
+    template:
+      src: pgblitz.service
+      dest: /etc/systemd/system/pgblitz.service
+      force: yes
+    tags:
+      - blitzdeploy
 
+  - name: Enable pgblitz Service
+    systemd:
+      daemon_reload: yes
+      enabled: yes
+      state: restarted
+      name: pgblitz
+    tags:
+      - blitzdeploy
+
+############################################## PGBlitz (END)
+#
 ############################################## ST2 Monitorr (START) Disable
 #
 #

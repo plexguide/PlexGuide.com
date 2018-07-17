@@ -21,16 +21,15 @@ echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/pl
 ################################################################## CORE
 
 HEIGHT=12
-WIDTH=42
+WIDTH=44
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="Make a Selection:"
 
-OPTIONS=(A "Deploy RClone    : Configs"
-         B "Deploy JSON Files: TeamDrive"
-         C "Deploy PG Drive  : Mount"
-         D "Deploy PG Blitz  : Transfer"
+OPTIONS=(A "RClone: Config & Establish"
+         B "JSON  : For TeamDrive"
+         C "Deploy: PG Drive & PG Blitz"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -132,35 +131,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
 
             read -n 1 -s -r -p "Press any key to continue"
-            dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
-            ;;
-        D)
-            #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END
-
-            #### BASIC CHECKS to STOP Deployment - START
-            if [ "$gdrive" != "[gdrive]" ]; then
-              echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-              exit
-            fi
-
-            if [ "$tdrive" != "[tdrive]" ]; then
-              echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured!\n\nThis is required for TeamDrives to Work!!" 0 0
-              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-              exit
-            fi
-            #### DEPLOY a TRANSFER SYSTEM - START
-              clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz
-              echo ""
-              read -n 1 -s -r -p "Press any key to continue"
-            #### DEPLOY a TRANSFER SYSTEM - END
-            dialog --title "NOTE!" --msgbox "\nPG Blitz is Now Running!" 7 38
-            echo 'SUCCESS - PG Blitz is Now Running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
         Z)
             exit 0 ;;
