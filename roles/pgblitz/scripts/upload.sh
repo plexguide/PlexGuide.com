@@ -26,6 +26,9 @@ rpath=/root/.config/rclone/rclone.conf
 
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
 
+while true
+do
+
 while read p; do
   echo 'INFO - PGBlitz: Using GDSA $p for transfer' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
@@ -35,6 +38,7 @@ while read p; do
   echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ls -la /mnt/pgblitz/$p
   echo "sleep 3"
+
   rclone move --tpslimit 6 --checkers=20 \
     --config $rpath \
     --transfers=8 \
@@ -48,3 +52,6 @@ while read p; do
     echo "INFO - PGBlitz: '$p' - Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     sleep 5
 done </tmp/pg.gdsa
+
+
+done
