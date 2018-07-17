@@ -128,7 +128,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             temp=$( cat /tmp/pg.gdsa.build )
-            echo $temp -n >> /var/plexguide/unionfs.pgpath
+            echo -n "$temp" >> /var/plexguide/unionfs.pgpath
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
             #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
