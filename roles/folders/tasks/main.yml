@@ -149,6 +149,7 @@
       - /mnt/move
       - /var/plexguide/logs
       - /mnt/rcache
+      - "{{path.stdout}}/"      
       - "{{path.stdout}}/deluge"
       - "{{path.stdout}}/deluge/temp"
       - "{{path.stdout}}/deluge/downloaded"
