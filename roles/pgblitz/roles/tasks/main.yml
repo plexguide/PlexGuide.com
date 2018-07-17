@@ -56,27 +56,27 @@
     ignore_errors: True
 
 
-  - name: Install SuperTransfer2 Service
+  - name: Install pgblitz Service
     template:
-      src: supertransfer2.service
-      dest: /etc/systemd/system/supertransfer2.service
+      src: pgblitz.service
+      dest: /etc/systemd/system/pgblitz.service
       force: yes
 
-  - name: Install SuperTransfer Command
+  - name: Install pgblitz Command
     template:
-      src: supertransfer
-      dest: /bin/supertransfer
+      src: pgblitz
+      dest: /bin/pgblitz
       force: yes
 
-  - name: Set Permissions On Supertransfer Command
-    shell: "sudo chmod +x /bin/supertransfer"
+  - name: Set Permissions On pgblitz Command
+    shell: "sudo chmod +x /bin/pgblitz"
 
-  - name: Enable Supertransfer2 Service
+  - name: Enable pgblitz Service
     systemd:
       daemon_reload: yes
       enabled: yes
       state: restarted
-      name: supertransfer2
+      name: pgblitz
 
   - name: Install ST2Check Script
     template:
