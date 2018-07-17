@@ -79,11 +79,11 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             clear
             echo "1. Stopping CloudBlitz"
             docker stop cloudblitz
-            sleep
+            sleep 1
             echo "2. Removing CloudBlitz"
             docker rm cloudblitz
             echo "3. Processing Your JSON Keys"
-            sleep 2
+            sleep 1
             clear
             bash /opt/plexguide/roles/pgblitz/scripts/main.sh
             ;;
