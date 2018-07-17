@@ -179,6 +179,14 @@
     tags:
       - blitzdeploy
 
+  - name: Install pgblitz Service
+    template:
+      src: pgblitz.service
+      dest: /etc/systemd/system/pgblitz.service
+      force: yes
+    tags:
+      - blitzdeploy
+
   - name: Enable pgblitz Service
     systemd:
       daemon_reload: yes
