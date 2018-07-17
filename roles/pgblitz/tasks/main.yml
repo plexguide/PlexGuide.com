@@ -60,15 +60,6 @@
       dest: /etc/systemd/system/pgblitz.service
       force: yes
 
-  - name: Install pgblitz Command
-    template:
-      src: pgblitz
-      dest: /bin/pgblitz
-      force: yes
-
-  - name: Set Permissions On pgblitz Command
-    shell: "sudo chmod +x /bin/pgblitz"
-
   - name: Enable pgblitz Service
     systemd:
       daemon_reload: yes
