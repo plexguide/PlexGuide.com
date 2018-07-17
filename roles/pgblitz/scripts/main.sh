@@ -71,14 +71,19 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
-echo 'INFO - DEPLOYED JSON FILES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        #### Deploy CloudBlitz
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes
-        #### Note How to Create Json files
-        dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
+            echo 'INFO - DEPLOYED JSON FILES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            #### Deploy CloudBlitz
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes
+            #### Note How to Create Json files
+            dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
+            clear
+            echo "Stopping CloudBlitz"
+            docker stop cloudBlitz
+            echo "Removing CloudBlitz"
+            docker rm cloudBlitz
         ;;
         C)
-echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RECALL VARIABLES START
             tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
@@ -124,24 +129,21 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
             #### RECALL VARIABLES END
 
             #### BASIC CHECKS to STOP Deployment - START
-            if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
-              then
-echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
-            exit
+            if [ "$gdrive" != "[gdrive]" ]; then
+              echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+              exit
             fi
 
-            if [[ "$selected" == "SuperTransfer2" && "$tdrive" != "[tdrive]" ]]
-              then
-echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG SuperTransfer2!\n\nTo work, you MUST have a tdrive\nconfiguration in RClone!" 0 0
-            bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
-            exit
+            if [ "$tdrive" != "[tdrive]" ]; then
+              echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured!\n\nThis is required for TeamDrives to Work!!" 0 0
+              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+              exit
             fi
             #### DEPLOY a TRANSFER SYSTEM - START
-
-              clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
+              clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz
               echo ""
               read -n 1 -s -r -p "Press any key to continue"
             #### DEPLOY a TRANSFER SYSTEM - END
