@@ -32,9 +32,9 @@
     path: "/opt/appdata/cloudblitz/.cloudcmd.json"
   register: cloud_json
 
-- name: Install configst2.json
+- name: Install configblitz.json
   template:
-    src: configst2.json
+    src: configblitz.json
     dest: /opt/appdata/cloudblitz/.cloudcmd.json
     force: yes
   when: cloud_json.stat.exists == False
