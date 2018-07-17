@@ -17,7 +17,7 @@
 #################################################################################
 
 [Unit]
-Description='SuperTransfer Loaded Balanced Multi SA Gdrive Uploader'
+Description='PGBlitz Loaded Balanced Multi SA GDrive Uploader'
 After=multi-user.target network-online.target
 
 [Service]
