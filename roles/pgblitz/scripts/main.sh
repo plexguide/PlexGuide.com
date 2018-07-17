@@ -186,4 +186,4 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
 ########## Deploy End
 esac
 
-bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
+bash /opt/plexguide/roles/pgblitz/scripts/main.sh
