@@ -29,8 +29,8 @@ while read p; do
 
   mkdir -p /mnt/pgblitz/$p
   mv /mnt/move/* /mnt/pgblitz/$p
-  echo 'INFO - PGBlitz: Moved Items /mnt/move to /mnt/pgblitz/$p' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo 'INFO - PGBlitz: Starting PGBlitz Transfer Using $p' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo "INFO - PGBlitz: Moved Items /mnt/move to /mnt/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ls -la /mnt/pgblitz/$p
   echo "sleep 3"
   rclone move --tpslimit 6 --checkers=20 \
@@ -42,6 +42,6 @@ while read p; do
     /mnt/pgblitz/$p $p:
     rm -r /mnt/pgblitz/$p
     echo "$p - GDSA"
-    echo 'INFO - PGBlitz: $p - Transfer Complete' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo "INFO - PGBlitz: '$p' - Transfer Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     sleep 10
 done </tmp/pg.gdsa
