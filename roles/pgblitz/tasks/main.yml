@@ -171,10 +171,10 @@
 ############################################## UNIONFS (END)
 #
 ############################################## PGBlitz (START) Install
-  - name: Install pgblitz Service
+  - name: Install pgblitz script
     template:
       src: pgblitz.service
-      dest: /etc/systemd/system/pgblitz.service
+      dest: /opt/appdata/pgblitz/pgblitz.sh
       force: yes
     tags:
       - blitzdeploy
