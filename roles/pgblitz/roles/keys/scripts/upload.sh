@@ -33,13 +33,7 @@ while read p; do
 
   ls -la /mnt/pgblitz/$p
   echo "sleep 3"
-#  rclone move --tpslimit 6 --checkers=20 \
-#    --config $rpath \
-#    --transfers=8 \
-#    --exclude="**partial~" --exclude="**_HIDDEN~" \
-#    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-#    --drive-chunk-size=32M \
-#    /mnt/pgblitz/$p $gdsa:
+  rclone move --tpslimit 6 --checkers=20 --config $rpath --transfers=8 /mnt/pgblitz/$p $p:
 
     echo "$p - GDSA"
     echo "stop"
