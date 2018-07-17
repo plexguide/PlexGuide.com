@@ -107,7 +107,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
 
             #### REQUIRED TO DEPLOY STARTING
-            ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
+            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
             #ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
