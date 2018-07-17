@@ -24,7 +24,7 @@ After=multi-user.target network-online.target
 User=0
 Group=0
 Type=simple
-ExecStart=/bin/bash /opt/plexguide/pgblitz/pgblitz.sh
+ExecStart=/bin/bash /opt/appdata/pgblitz/pgblitz.sh
 KillMode=process
 
 [Install]
