@@ -30,4 +30,5 @@ echo "" > /tmp/pg.gdsa.build
 while read p; do
 echo -n "/mnt/pgblitz/$p=RO;">> /tmp/pg.gdsa.build
 done </tmp/pg.gdsa.ufs
-cat /tmp/pg.gdsa.build
+builder=$( cat /tmp/pg.gdsa.build )
+echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
