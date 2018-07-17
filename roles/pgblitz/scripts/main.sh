@@ -81,7 +81,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             docker stop cloudBlitz
             echo "Removing CloudBlitz"
             docker rm cloudBlitz
-        ;;
+            ;;
         C)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
@@ -92,7 +92,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
-#            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            #ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
