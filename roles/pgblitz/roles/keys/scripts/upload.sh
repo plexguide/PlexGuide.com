@@ -27,7 +27,7 @@ ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
 while read p; do
 
   mkdir -p /mnt/pgblitz/$p
-  mv /mnt/move/* /mnt/pgblitz/$p/
+  mv /mnt/move/ /mnt/pgblitz/$p/
 
   rclone move --tpslimit 6 --checkers=20 \
     --config $rpath \
@@ -37,6 +37,6 @@ while read p; do
     --drive-chunk-size=32M \
     /mnt/pgblitz/$p $gdsa:
 
-    echo "$gdsa - GDSA"
+    echo "$p - GDSA"
     sleep 10
 done </tmp/pg.gdsa
