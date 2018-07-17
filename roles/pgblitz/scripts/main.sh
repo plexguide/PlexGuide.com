@@ -127,6 +127,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               ansible-playbook /opt/plexguide/pg.yml --tags gdrive
             fi
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
+            cat -n "/tmp/pg.gdsa.build" >> /var/plexguide/unionfs.pgpath
             #### REQUIRED TO DEPLOY ENDING
             ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
             #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
