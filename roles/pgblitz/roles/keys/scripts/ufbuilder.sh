@@ -27,6 +27,6 @@ rpath=/root/.config/rclone/rclone.conf
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
 
 while read p; do
-echo "/mnt/pgblitz/$p=RO;"> /tmp/pg.gdsa.build
+echo -n "/mnt/pgblitz/$p=RO;">> /tmp/pg.gdsa.build
 done </tmp/pg.gdsa.ufs
 cat /tmp/pg.gdsa.build
