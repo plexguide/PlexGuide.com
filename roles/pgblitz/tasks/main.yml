@@ -84,7 +84,6 @@
 
   - name: Daemon-Reload - Stop GCRYPT Service
     systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-    tags:
     ignore_errors: yes
 
   - name: Stop If GDRIVE Service Running
@@ -133,14 +132,10 @@
   - name: Register UNIONFS PATH
     shell: "cat /var/plexguide/unionfs.pgpath"
     register: unionfs_path
-    tags:
-      - unionfs
     ignore_errors: True
 
   - name: Stop If UNIONFS Service Running
     systemd: state=stopped name=unionfs
-    tags:
-      - unionfs
     ignore_errors: yes
 
   - name: Install UNIONFS Service
@@ -148,8 +143,6 @@
       src: unionfs.js2
       dest: /etc/systemd/system/unionfs.service
       force: yes
-    tags:
-      - unionfs
 ############################################## UNIONFS (END)
 
 ############################################## ST2 Monitorr (START) Disable

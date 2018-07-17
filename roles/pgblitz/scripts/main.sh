@@ -116,7 +116,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
               #### ADDS TDRIVE to the UNIONFS PATH
               echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags tdrive
             fi
 
             if [ "$gdrive" == "[gdrive]" ]
@@ -124,7 +123,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
               #### ADDS GDRIVE to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-              ansible-playbook /opt/plexguide/pg.yml --tags gdrive
             fi
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             temp=$( cat /tmp/pg.gdsa.build )
