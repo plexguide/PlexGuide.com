@@ -38,6 +38,7 @@ while read p; do
   rclone move --tpslimit 6 --checkers=20 \
     --config $rpath \
     --transfers=8 \
+    --log-file=/opt/appdata/plexguide/rclone.log --log-level INFO --stats 10s \
     --exclude="**partial~" --exclude="**_HIDDEN~" \
     --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
     --drive-chunk-size=32M \
