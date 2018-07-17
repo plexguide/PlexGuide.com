@@ -16,19 +16,7 @@
 #
 #################################################################################
 ---
-  - name: Check Transfer Service
-    stat:
-      path: "/etc/systemd/system/transfer.service"
-    register: transfer
-
-  - name: Stop If Transfer Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: transfer
-    when: transfer.stat.exists
-    ignore_errors: True
-
+############################################## MOVE (START)
   - name: Check move Service
     stat:
       path: "/etc/systemd/system/move.service"
@@ -54,7 +42,7 @@
       name: move-en
     when: move.stat.exists
     ignore_errors: True
-
+############################################## MOVE (END)
   - name: Install pgblitz Service
     template:
       src: pgblitz.service
@@ -76,33 +64,3 @@
       enabled: yes
       state: restarted
       name: pgblitz
-
-########ST2 Monitor
-  - name: Install ST2Check Script
-    template:
-      src: st2monitor.sh
-      dest: /opt/appdata/plexguide/st2monitor.sh
-      force: yes
-
-  - name: Check ST2 Check Service
-    stat:
-      path: "/etc/systemd/system/st2check.service"
-    register: st2
-
-  - name: Stop If ST2 Monitor Service Running
-    systemd: state=stopped name=st2monitor
-    when: st2.stat.exists == True
-
-  - name: Install ST2 Monitor Service
-    template:
-      src: st2monitor.service
-      dest: /etc/systemd/system/st2monitor.service
-      force: yes
-    when: st2.stat.exists == False
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=st2monitor daemon_reload=yes enabled=no
-    when: st2.stat.exists == False
-
-  - name: Start ST2 Monitor
-    systemd: state=started name=st2monitor enabled=yes
