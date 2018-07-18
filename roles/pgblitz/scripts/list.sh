@@ -48,6 +48,7 @@ while read p; do
   done
 
   mv $path/unprocessed/$p $path/processed/GDSA$number
+  echo "$path/unprocessed/.$p" > "$path/processed/.GDSA$number"   
   echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done </tmp/pg.keys.temp
 
