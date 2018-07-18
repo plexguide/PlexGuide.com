@@ -25,8 +25,13 @@ number=0
 # 3. Ensure that no more than 99 JSON's can be built - 100 limiter
 # 4. Testing for now, but have invalid JSONs go to an invalid folder
 
+
 ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
+
+rm -r $path/unprocessed/* 1>/dev/null 2>&1
+rm -r $path/processed/* 1>/dev/null 2>&1
+rm -r $path/.originalnames/* 1>/dev/null 2>&1
 
 rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 while read p; do
@@ -48,7 +53,7 @@ while read p; do
   done
 
   mv $path/unprocessed/$p $path/processed/GDSA$number
-  echo "$path/unprocessed/.$p" > "$path/processed/.GDSA$number"   
+  echo "$path/unprocessed/.$p" > "$path/.originalnames/GDSA$number"
   echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done </tmp/pg.keys.temp
 
