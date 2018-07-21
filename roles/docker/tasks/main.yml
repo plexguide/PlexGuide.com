@@ -40,7 +40,7 @@
   when: check.stat.exists
 
 - debug:
-    msg: "Updatecheck State: {updatecheck}"
+    msg: "Updatecheck State: {{updatecheck}}"
 
 - name: "Switch"
   shell: "echo on"
