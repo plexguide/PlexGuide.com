@@ -29,7 +29,7 @@
   when: updatecheck == "18.06.0-ce,"
 
 - debug:
-    msg: "{{ switch }}, {{ updatecheck }}"
+    msg: "Switchv{{ switch }}, Update {{ updatecheck }}"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
