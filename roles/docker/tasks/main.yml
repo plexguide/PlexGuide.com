@@ -16,19 +16,6 @@
 # Original Ansible Role: l3uddz, Desimaniac - cloudbox.rocks
 #################################################################################
 ---
-- name: Install required packages
-  apt: "name={{item}} state=present"
-  with_items:
-    - apt-transport-https
-    - ca-certificates
-    - software-properties-common
-
-- name: Add official gpg signing key
-  apt_key:
-    id: 0EBFCD88
-    url: https://download.docker.com/linux/ubuntu/gpg
-
-############################################# DEPLOY DOCKER
 - name: "Docker Check"
   stat:
     path: "/usr/bin/docker"
@@ -39,33 +26,54 @@
   register: updatecheck
   when: check.stat.exists
 
-- debug:
-    msg: "Updatecheck State: {{updatecheck}}"
-
 - name: "Switch"
   shell: "echo on"
-  register: updatecheck
+  register: switch
+
+- name: "Switch"
+  shell: "echo off"
+  register: switch
   when: updatecheck.stdout == "18.06.0-ce,"
+
+- debug:
+    msg: "Switch Is: {{switch.stdout}}"
+
+- name: Install required packages
+  apt: "name={{item}} state=present"
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+  when: switch.stdout == "on"
+
+- name: Add official gpg signing key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+  when: switch.stdout == "on"
 
 - name: "Stop All Containers"
   shell: "docker stop $(docker ps -a -q)"
   ignore_errors: yes
-  when: check.stat.exists
+  when: switch.stdout == "on"
 
 - name: Official Repo
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} edge"
   register: apt_docker_repositories
+  when: switch.stdout == "on"
 
 - name: Update APT packages list
   apt:
     update_cache: yes
   when: apt_docker_repositories.changed
+  when: switch.stdout == "on"
 
 - name: Release docker-ce from hold
   dpkg_selections:
     name: docker-ce
     selection: install
+  when: switch.stdout == "on"
 
 - name: Install docker-ce
   apt:
@@ -73,66 +81,78 @@
     state: present
     update_cache: yes
     force: yes
+  when: switch.stdout == "on"
 
 - name: Put docker-ce into hold
   dpkg_selections:
     name: docker-ce
     selection: hold
+  when: switch.stdout == "on"
 
 - name: Uninstall docker-py pip module
   pip:
     name: docker-py
     state: absent
   ignore_errors: yes
+  when: switch.stdout == "on"
 
 - name: Install docker pip module
   pip:
     name: docker
     state: latest
   ignore_errors: yes
+  when: switch.stdout == "on"
 
 - name: Check docker daemon.json exists
   stat:
     path: /etc/docker/daemon.json
   register: docker_daemon
+  when: switch.stdout == "on"
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes
   when: docker_daemon.stat.exists == False
+  when: switch.stdout == "on"
 
 - name: Import daemon.json
   copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
   when: docker_daemon.stat.exists == False
+  when: switch.stdout == "on"
 
 - name: Start docker (Please Wait)
   systemd: state=started name=docker enabled=yes
   when: docker_daemon.stat.exists == False
+  when: switch.stdout == "on"
 
 - name: "Wait for 20 seconds before commencing"
   wait_for:
     timeout: 20
+  when: switch.stdout == "on"
 
 - name: Check override folder exists
   stat:
     path: /etc/systemd/system/docker.service.d
   register: docker_override
+  when: switch.stdout == "on"
 
 - name: Create override folder
   file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
-  when: docker_override.stat.exists == False
+  when: docker_override.stat.exists == False and switch.stdout == "on"
   tags: docker_standard
 
 - name: Import override file
   copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
   tags: docker_standard
+  when: switch.stdout == "on"
 
 - name: create plexguide network
   docker_network:
     name: "plexguide"
     state: present
   tags: docker_standard
+  when: switch.stdout == "on"
 
 - name: "Start All Containers"
   shell: "docker start $(docker ps -a -q)"
   ignore_errors: yes
-  when: check.stat.exists
+  when: check.stat.exists and switch.stdout == "on"
