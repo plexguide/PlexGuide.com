@@ -36,9 +36,6 @@
   ignore_errors: yes
   when: updatecheck.stdout == "18.06.0-ce,"
 
-- debug:
-    msg: "Switch Is: {{switch.stdout}}"
-
 - name: Install required packages
   apt: "name={{item}} state=present"
   with_items:
