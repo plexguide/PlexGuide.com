@@ -110,15 +110,21 @@
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes
-  when: docker_daemon.stat.exists == False and switch.stdout == "on"
+  when:
+    - docker_daemon.stat.exists == False
+    - switch.stdout == "on"
 
 - name: Import daemon.json
   copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
-  when: docker_daemon.stat.exists == False and switch.stdout == "on"
+  when:
+    - docker_daemon.stat.exists == False
+    - switch.stdout == "on"
 
 - name: Start docker (Please Wait)
   systemd: state=started name=docker enabled=yes
-  when: docker_daemon.stat.exists == False and switch.stdout == "on"
+  when:
+    - docker_daemon.stat.exists == False
+    - switch.stdout == "on"
 
 - name: "Wait for 20 seconds before commencing"
   wait_for:
