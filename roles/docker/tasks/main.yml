@@ -24,12 +24,12 @@
     msg: " {{ updatecheck }} "
 
 - name: "Switch - On"
-  shell: "echo off"
-  register: switch
+  set_fact:
+    switch="off"
   when: updatecheck == "18.06.0-ce,"
 
 - debug:
-    msg: "Switchv{{ switch }}, Update {{ updatecheck }}"
+    msg: "{{ switch }}, {{ updatecheck }}"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
