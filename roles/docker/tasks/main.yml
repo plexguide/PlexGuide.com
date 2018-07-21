@@ -31,13 +31,16 @@
   register: switch
 
 - debug:
-    msg: " {{ switch.stdout }}"
+    msg: " {{ switch.stdout }}, {{ updatecheck.stdout }}"
 
 - name: "Switch"
   shell: "echo off"
   register: switch
   ignore_errors: yes
   when: updatecheck.stdout == "18.06.0-ce,"
+
+- debug:
+    msg: " {{ switch.stdout }}, {{ updatecheck.stdout }}"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
