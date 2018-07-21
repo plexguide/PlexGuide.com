@@ -36,9 +36,7 @@
 - name: "Switch - On"
   set_fact:
     switch="off"
-  when:
-    - updatecheck.stdout == "18.06.0-ce,"
-    - check.stat.exists == True
+  when: updatecheck.stdout == "18.06.0-ce," and check.stat.exists == True
 
 - debug:
     msg: "Switch - {{ switch }}"
