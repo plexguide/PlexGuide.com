@@ -31,7 +31,7 @@
 - name: "Check {{pgrole}}_ini exists"
   stat:
     path: "/opt/appdata/{{pgrole}}/{{pgrole}}.ini"
-  register: "sabnzbd_ini"
+  register: "{{role_name}}_ini"
 
 - name: Deploy {{pgrole}} Container
   docker_container:
@@ -62,7 +62,7 @@
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
-  when: not sabnzbd_ini.exists
+  when: {{role_name}}.stat.exists == False
 
 - name: Ending Processes
   include_role:
