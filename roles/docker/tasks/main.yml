@@ -150,7 +150,7 @@
 - name: "Start All Containers"
   shell: "docker start $(docker ps -a -q)"
   ignore_errors: yes
-  when: check.stat.exists and switch == "on"
+  when: switch == "on"
 
 - debug:
     msg: "Docker {{ updatecheck }} is already installed"
