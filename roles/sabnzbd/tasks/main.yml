@@ -15,32 +15,33 @@
 #
 #################################################################################
 ---
-- name: "Establish {{role_name}} Starting Facts"
+- name: "Establish Starting Facts"
   set_fact:
     intport: "8080"
     extport: "8080"
     pgrole: "{{role_name}}"
 
-- include_role:
+- name: Starting Processes
+  include_role:
     name: pgmstart
 
 - name: Image Select
   include_tasks: "questions.yml"
 
-- name: "Check {{role_name}}.ini exists"
+- name: "Check {{pgrole}}.ini exists"
   stat:
-    path: "/opt/appdata/{{role_name}}/{{role_name}}.ini"
-  register: {{role_name}}_ini
+    path: "/opt/appdata/{{pgrole}}/{{pgrole}}.ini"
+  register: "{{pgrole}}_ini"
 
-- name: Deploy {{role_name}} Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: "{{role_name}}"
-    image: "linuxserver/{{role_name}}"
+    name: "{{pgrole}}"
+    image: "linuxserver/{{pgrole}}"
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
-      - "/opt/appdata/{{role_name}}:/config"
+      - "/opt/appdata/{{pgrole}}:/config"
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/sab/incomplete:/incomplete"
       - "{{path.stdout}}/sab/nzb:/nzb"
@@ -57,16 +58,17 @@
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
+          - "{{pgrole}}"
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
-  when: not {{role_name}}_ini.stat.exists
+  when: not {{pgrole}}_ini.stat.exists
 
-- include_role:
+- name: Ending Processes
+  include_role:
     name: pgmend
