@@ -35,7 +35,7 @@
   register: check
 
 - name: "Docker Version Check"
-  shell: "docker --version | awk '{print $3}"
+  shell: "docker --version | awk '{print $3}'"
   register: updatecheck
   when: check.stat.exists
 
