@@ -33,7 +33,7 @@
   when: updatecheck == "18.06.0-ce,"
 
 - debug:
-    msg: " {{ switch.stdout }}, {{ updatecheck }}"
+    msg: " {{ switch }}, {{ updatecheck }}"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
