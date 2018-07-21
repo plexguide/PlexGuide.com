@@ -62,7 +62,7 @@
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
-  when: sabnzbd_ini.exists == False
+  when: not sabnzbd_ini.exists
 
 - name: Ending Processes
   include_role:
