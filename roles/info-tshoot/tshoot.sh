@@ -31,13 +31,13 @@ case $CHOICE in
             exit 0 ;;
         B)
             echo "0" > /var/plexguide/pg.preinstall.stored
-            echo "0" > /var/plexguide/pg.ansible
-            echo "0" > /var/plexguide/pg.rclone
-            echo "0" > /var/plexguide/pg.python
-            echo "0" > /var/plexguide/pg.docstart
-            echo "0" > /var/plexguide/pg.watchtower
-            echo "0" > /var/plexguide/pg.label
-            echo "0" > /var/plexguide/pg.alias
+            echo "0" > /var/plexguide/pg.ansible.stored
+            echo "0" > /var/plexguide/pg.rclone.stored
+            echo "0" > /var/plexguide/pg.python.stored
+            echo "0" > /var/plexguide/pg.docstart.stored
+            echo "0" > /var/plexguide/pg.watchtower.stored
+            echo "0" > /var/plexguide/pg.label.stored
+            echo "0" > /var/plexguide/pg.alias.stored
             echo "0" > /var/plexguide/pg.dep
             dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
@@ -47,25 +47,25 @@ case $CHOICE in
             rm -rf /var/lib/docker
             rm -r /var/plexguide/dep*
             echo "0" > /var/plexguide/pg.preinstall.stored
-            echo "0" > /var/plexguide/pg.ansible
-            echo "0" > /var/plexguide/pg.rclone
-            echo "0" > /var/plexguide/pg.python
-            echo "0" > /var/plexguide/pg.docstart
-            echo "0" > /var/plexguide/pg.watchtower
-            echo "0" > /var/plexguide/pg.label
-            echo "0" > /var/plexguide/pg.alias
+            echo "0" > /var/plexguide/pg.ansible.stored
+            echo "0" > /var/plexguide/pg.rclone.stored
+            echo "0" > /var/plexguide/pg.python.stored
+            echo "0" > /var/plexguide/pg.docstart.stored
+            echo "0" > /var/plexguide/pg.watchtower.stored
+            echo "0" > /var/plexguide/pg.label.stored
+            echo "0" > /var/plexguide/pg.alias.stored
             echo "0" > /var/plexguide/pg.dep
             dialog --title "Note" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
             exit 0 ;;
         D)
             echo "0" > /var/plexguide/pg.preinstall.stored
-            echo "0" > /var/plexguide/pg.ansible
-            echo "0" > /var/plexguide/pg.rclone
-            echo "0" > /var/plexguide/pg.python
-            echo "0" > /var/plexguide/pg.docstart
-            echo "0" > /var/plexguide/pg.watchtower
-            echo "0" > /var/plexguide/pg.label
-            echo "0" > /var/plexguide/pg.alias
+            echo "0" > /var/plexguide/pg.ansible.stored
+            echo "0" > /var/plexguide/pg.rclone.stored
+            echo "0" > /var/plexguide/pg.python.stored
+            echo "0" > /var/plexguide/pg.docstart.stored
+            echo "0" > /var/plexguide/pg.watchtower.stored
+            echo "0" > /var/plexguide/pg.label.stored
+            echo "0" > /var/plexguide/pg.alias.stored
             echo "0" > /var/plexguide/pg.dep
             rm -r /var/plexguide/dep* 1>/dev/null 2>&1
             bash /opt/plexguide/roles/uninstall/main.sh
