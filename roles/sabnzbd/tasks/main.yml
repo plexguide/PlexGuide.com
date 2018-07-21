@@ -62,7 +62,7 @@
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
-  when: {{role_name}}.stat.exists == False
+  when: "{{role_name}}.stat.exists == False"
 
 - name: Ending Processes
   include_role:
