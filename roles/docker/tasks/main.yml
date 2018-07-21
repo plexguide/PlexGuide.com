@@ -38,7 +38,7 @@
     switch="off"
   when:
     - updatecheck.stdout == "18.06.0-ce,"
-    - check.stat.exists
+    - check.stat.exists == True
 
 - debug:
     msg: "Switch - {{ switch }}"
@@ -169,7 +169,7 @@
   ignore_errors: yes
   when:
     - switch == "on"
-    - check.stat.exists
+    - check.stat.exists == True
 
 - debug:
     msg: "Docker {{ updatecheck }} is already installed"
