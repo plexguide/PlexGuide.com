@@ -16,11 +16,11 @@
 #
 #################################################################################
 ---
-- name: "Establish Facts"
+- name: "Establish {{role_name}} Starting Facts"
   set_fact:
     intport: "8080"
     extport: "8080"
-    pgrole: "sabnzbd"
+    pgrole: "{{role_name}}"
 
 - include_role:
     name: pgmstart
@@ -41,9 +41,6 @@
   set_fact:
     image: "sabnzbd/sabnzbd"
   when: result.user_input == "2"
-
-- name: Create SAB download directory
-  file: "path=/mnt/sab/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
 
 - name: Check sabnzbd.ini exists
   stat:
