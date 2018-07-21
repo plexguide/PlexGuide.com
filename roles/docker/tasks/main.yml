@@ -153,9 +153,9 @@
   when: check.stat.exists and switch == "on"
 
 - debug:
-    msg: "Docker {{ updatecheck.stdout }} is already installed"
+    msg: "Docker {{ updatecheck }} is already installed"
   when: switch == "off"
 
 - debug:
-    msg: "Docker {{ updatecheck.stdout }} installed"
+    msg: "Docker {{ updatecheck }} installed"
   when: switch == "on"
