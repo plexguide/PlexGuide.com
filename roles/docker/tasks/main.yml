@@ -25,7 +25,7 @@
 - debug:
     msg: " {{ updatecheck }} "
 
-- name: "Switch - On"
+- name: "Switch - Off"
   set_fact:
     switch="off"
   when: updatecheck == "18.06.0-ce,"
