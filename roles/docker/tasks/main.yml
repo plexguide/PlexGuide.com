@@ -23,15 +23,15 @@
   register: updatecheck
 
 - debug:
-    msg: "Switch - {{ switch.stdout }}"
+    msg: "Switch - {{ switch }}"
 
 - debug:
     msg: " {{ updatecheck }} "
 
-- name: "Switch - Off"
+- name: "Switch - On"
   set_fact:
-    switch="off"
-  when: updatecheck == "18.06.0-ce,"
+    switch="on"
+#  when: updatecheck == "18.06.0-ce,"
 
 - debug:
     msg: "Switch - {{ switch }}"
