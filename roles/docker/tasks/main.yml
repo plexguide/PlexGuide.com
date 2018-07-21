@@ -36,7 +36,7 @@
 - name: "Switch - On"
   set_fact:
     switch="off"
-  when: updatecheck.stdout == "18.06.0-ce," and check.stat.exists == True
+  when: updatecheck.stdout == "18.06.0-ce,"
 
 - debug:
     msg: "Switch - {{ switch }}"
@@ -62,8 +62,8 @@
   shell: "docker stop $(docker ps -a -q)"
   ignore_errors: yes
   when:
+    - check.stat.exists == True
     - switch == "on"
-    - not updatecheck.stdout == "18.06.0-ce,"
 
 - name: Official Repo
   apt_repository:
