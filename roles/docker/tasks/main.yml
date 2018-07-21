@@ -23,6 +23,9 @@
   register: updatecheck
 
 - debug:
+    msg: "Switch - {{ switch }}"
+
+- debug:
     msg: " {{ updatecheck }} "
 
 - name: "Switch - Off"
