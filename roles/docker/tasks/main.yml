@@ -26,12 +26,21 @@
   register: updatecheck
   when: check.stat.exists
 
+- name: "Docker Version Check - True"
+  shell: "echo false"
+  register: updatecheck
+  when:
+    - not(
+      (updatecheck is undefined)
+      or
+      (updatecheck is none)
+      or
+      (updatecheck | trim == '')
+    )
+    
 - name: "Switch"
   shell: "echo on"
   register: switch
-
-- debug:
-    msg: " {{ switch.stdout }}, {{ updatecheck.stdout }}"
 
 - name: "Switch"
   shell: "echo off"
