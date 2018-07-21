@@ -2,7 +2,7 @@
 #
 # Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -24,37 +24,23 @@
 - include_role:
     name: pgmstart
 
-- pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/sabnzbd (Recommended)\n2- sabnzbd/sabnzbd"
-  register: result
-  until: result.user_input > "0" and result.user_input < "3"
-  retries: 5
-  delay: 1
+- name: Image Select
+  include_tasks: "questions.yml"
 
-- name: Set linuxserver/sabnzbd
-  set_fact:
-    image: "linuxserver/sabnzbd"
-  when: result.user_input == "1"
-
-- name: sabnzbd/sabnzbd
-  set_fact:
-    image: "sabnzbd/sabnzbd"
-  when: result.user_input == "2"
-
-- name: Check sabnzbd.ini exists
+- name: "Check {{role_name}}.ini exists"
   stat:
-    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-  register: sabnzbd_ini
+    path: "/opt/appdata/{{role_name}}/{{role_name}}.ini"
+  register: {{role_name}}_ini
 
-- name: Deploy SABNZBD Container
+- name: Deploy {{role_name}} Container
   docker_container:
-    name: sabnzbd
-    image: "linuxserver/sabnzbd"
+    name: "{{role_name}}"
+    image: "linuxserver/{{role_name}}"
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
-      - /opt/appdata/sabnzbd:/config
+      - "/opt/appdata/{{role_name}}:/config"
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/sab/incomplete:/incomplete"
       - "{{path.stdout}}/sab/nzb:/nzb"
@@ -65,21 +51,22 @@
     env:
       PUID: 1000
       PGID: 1000
+      LC_ALL: "C"
     restart_policy: always
     state: started
     networks:
       - name: plexguide
         aliases:
-          - sabnzbd
+          - "{{role_name}}"
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:sabnzbd.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
-  when: not sabnzbd_ini.stat.exists
+  when: not {{role_name}}_ini.stat.exists
 
 - include_role:
     name: pgmend
