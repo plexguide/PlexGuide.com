@@ -168,11 +168,3 @@
   when:
     - switch == "on"
     - check.stat.exists == True
-
-- debug:
-    msg: "Docker {{ updatecheck }} is already installed"
-  when: switch == "off"
-
-- debug:
-    msg: "Docker {{ updatecheck }} installed"
-  when: switch == "on"
