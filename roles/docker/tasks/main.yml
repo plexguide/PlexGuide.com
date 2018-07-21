@@ -30,10 +30,10 @@
 - name: "Switch - On"
   shell: "echo off"
   register: switch
-  when: updatecheck.stdout == "18.06.0-ce,"
+  when: updatecheck == "18.06.0-ce,"
 
 - debug:
-    msg: " {{ switch.stdout }}, {{ updatecheck.stdout }}"
+    msg: " {{ switch.stdout }}, {{ updatecheck }}"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
