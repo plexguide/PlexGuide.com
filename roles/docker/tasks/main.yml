@@ -158,3 +158,11 @@
   shell: "docker start $(docker ps -a -q)"
   ignore_errors: yes
   when: check.stat.exists and switch.stdout == "on"
+
+- debug:
+    msg: "Docker {{ updatecheck.stdout }} is already installed"
+  when: switch.stdout == "on"
+
+- debug:
+    msg: "Docker {{ updatecheck.stdout }} installed"
+  when: switch.stdout == "on"
