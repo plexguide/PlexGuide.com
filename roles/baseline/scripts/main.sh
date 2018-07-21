@@ -164,55 +164,12 @@ fi
 bash /opt/plexguide/roles/baseline/scripts/folders.sh
 
 ############################################################ Docker Install
-docker --version | awk '{print $3}' > /var/plexguide/docker.version
-docker_var=$( cat /var/plexguide/docker.version )
-version_recall16=$( cat /var/plexguide/pg.docker16 )
-version_recall18=$( cat /var/plexguide/pg.docker18 )
 
-if [ "$docker_var" == "$version_recall16-ce," ]
-then
-  echo "40" | dialog --gauge "Docker Is Already Installed" 7 50 0
-  sleep 2
-  #read -n 1 -s -r -p "Press any key to continue "
-else
-
-docver=$( cat /var/plexguide/ubversion )
-
-  if [ "$docver" == "16.04" ]
-    then
-  echo "40" | dialog --gauge "Installing: UB16 - Docker $version_recall16 (Please Be Patient)" 7 58 0
-  echo "INFO - Installing Docker for UB16" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo "40" | dialog --gauge "Install / Check: Docker (Please Be Patient)" 7 58 0
+  echo "INFO - Docker Install for UB" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   sleep 2
   clear
-  ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker16
-  sleep 2
-  #read -n 1 -s -r -p "Press any key to continue "
-  fi
-
-fi
-
-### For Docker 18
-if [ "$docker_var" == "$version_recall18-ce," ]
-then
-  echo "40" | dialog --gauge "Docker Is Already Installed" 7 50 0
-  sleep 2
-  #read -n 1 -s -r -p "Press any key to continue "
-else
-
-docver=$( cat /var/plexguide/ubversion )
-
-  if [ "$docver" == "18.04" ]
-    then
-  echo "40" | dialog --gauge "Installing: UB18 - $version_recall18 (Please Be Patient)" 7 58 0
-  echo "INFO - Installing Docker for UB18" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  sleep 2
-  clear
-  ansible-playbook /opt/plexguide/pg.yml --tags docker_standard,docker18
-  sleep 2
-  #read -n 1 -s -r -p "Press any key to continue "
-  fi
-
-fi
+  ansible-playbook /opt/plexguide/pg.yml --tags docker
 
 #### Install Alias Command - Part of Docker
 bash /opt/plexguide/roles/baseline/scripts/dockerfailsafe.sh
