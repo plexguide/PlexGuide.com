@@ -134,11 +134,12 @@
   stat:
     path: /etc/systemd/system/docker.service.d
   register: docker_override
-  when: switch.stdout == "on"
 
 - name: Create override folder
   file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
-  when: docker_override.stat.exists == False and switch.stdout == "on"
+  when:
+    - docker_override.stat.exists == False
+    - switch.stdout == "on"
   tags: docker_standard
 
 - name: Import override file
