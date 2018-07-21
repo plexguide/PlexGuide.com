@@ -53,3 +53,7 @@
 - name: Storing Role Name
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
+
+- include_role:
+    name: volumes
+  ignore_errors: True
