@@ -27,7 +27,7 @@
 
 - name: "Switch - Off"
   set_fact:
-    switch="on"
+    switch="off"
   when: updatecheck == "18.06.0-ce,"
 
 - debug:
