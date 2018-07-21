@@ -31,7 +31,7 @@
 - name: "Check {{pgrole}}_ini exists"
   stat:
     path: "/opt/appdata/{{pgrole}}/{{pgrole}}.ini"
-  register: "{{pgrole}}_ini"
+  register: "sabnzbd_ini"
 
 - name: Deploy {{pgrole}} Container
   docker_container:
