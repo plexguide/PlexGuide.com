@@ -24,7 +24,7 @@
 - name: "Docker Version Check - True"
   shell: "docker --version | awk '{print $3}'"
   register: updatecheck
-  when: check.stat.exists
+#  when: check.stat.exists
 
 - name: "Docker Version Check - True"
   shell: "echo false"
