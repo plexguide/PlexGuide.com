@@ -40,14 +40,7 @@
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-      - "/opt/appdata/{{pgrole}}:/config"
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/sab/incomplete:/incomplete"
-      - "{{path.stdout}}/sab/nzb:/nzb"
-      - "{{path.stdout}}/sab/admin:/admin"
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
+    volumes: "{{default_volumes}}"
     cpu_shares: 256
     env:
       PUID: 1000
