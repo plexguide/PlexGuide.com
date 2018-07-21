@@ -29,15 +29,14 @@
 - name: "Docker Version Check - True"
   shell: "echo false"
   register: updatecheck
-  when:
-    - not(
+  when: not(
       (updatecheck is undefined)
       or
       (updatecheck is none)
       or
       (updatecheck | trim == '')
     )
-    
+
 - name: "Switch"
   shell: "echo on"
   register: switch
