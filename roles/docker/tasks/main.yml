@@ -20,21 +20,14 @@
   shell: "docker --version | awk '{print $3}'"
   register: updatecheck
 
-- name: "Docker Version Check - True"
-  shell: "echo false"
-  register: updatecheck
-  when: (updatecheck is undefined) or
-        (updatecheck is none) or
-        (updatecheck | trim == '')
-
 - debug:
     msg: " {{ updatecheck }} "
 
-- name: "Switch"
+- name: "Switch - On"
   shell: "echo on"
   register: switch
 
-- name: "Switch"
+- name: "Switch - On"
   shell: "echo off"
   register: switch
   when: updatecheck.stdout == "18.06.0-ce,"
