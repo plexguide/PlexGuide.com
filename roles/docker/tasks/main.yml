@@ -66,8 +66,7 @@
 - name: Update APT packages list
   apt:
     update_cache: yes
-  when: apt_docker_repositories.changed
-  when: switch.stdout == "on"
+  when: apt_docker_repositories.changed and switch.stdout == "on"
 
 - name: Release docker-ce from hold
   dpkg_selections:
