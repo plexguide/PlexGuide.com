@@ -36,7 +36,7 @@
 - name: "Switch - On"
   set_fact:
     switch="off"
-  when: updatecheck.stdout == "18.05.0-ce,"
+  when: updatecheck.stdout == "18.06.0-ce,"
 
 - debug:
     msg: "Switch - {{ switch }}"
@@ -84,7 +84,7 @@
 
 - name: Install docker-ce
   apt:
-    name: docker-ce=18.05.0~ce~3-0~ubuntu
+    name: docker-ce=18.06.0~ce~3-0~ubuntu
     state: present
     update_cache: yes
     force: yes
