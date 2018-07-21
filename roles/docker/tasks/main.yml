@@ -106,7 +106,6 @@
   stat:
     path: /etc/docker/daemon.json
   register: docker_daemon
-  when: switch.stdout == "on"
 
 - name: Stop docker to enable overlay2
   systemd: state=stopped name=docker enabled=yes
