@@ -23,7 +23,7 @@
   register: updatecheck
 
 - debug:
-    msg: "Switch - {{ switch }}"
+    msg: "Switch - {{ switch.stdout }}"
 
 - debug:
     msg: " {{ updatecheck }} "
