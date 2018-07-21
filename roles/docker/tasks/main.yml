@@ -32,7 +32,7 @@
   when:
     - updatecheck is undefined
     - updatecheck is none
-  
+
 - name: "Switch"
   shell: "echo on"
   register: switch
@@ -40,7 +40,6 @@
 - name: "Switch"
   shell: "echo off"
   register: switch
-  ignore_errors: yes
   when: updatecheck.stdout == "18.06.0-ce,"
 
 - debug:
