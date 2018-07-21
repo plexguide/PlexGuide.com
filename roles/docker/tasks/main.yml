@@ -34,7 +34,7 @@
     msg: "Switch - {{ switch }}"
 
 - debug:
-    msg: "UpdateCheck - {{ updatecheck }}""
+    msg: "UpdateCheck - {{ updatecheck }}"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
