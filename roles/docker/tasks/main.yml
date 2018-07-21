@@ -21,6 +21,11 @@
     switch="on"
     updatecheck="default"
 
+- name: "Docker Check"
+  stat:
+    path: "/usr/bin/docker"
+  register: check
+
 - name: "Docker Version Check - True"
   shell: "docker --version | awk '{print $3}'"
   register: updatecheck
@@ -31,7 +36,9 @@
 - name: "Switch - On"
   set_fact:
     switch="off"
-  when: updatecheck.stdout == "18.06.0-ce,"
+  when:
+    - updatecheck.stdout == "18.06.0-ce,"
+    - check.stat.exists
 
 - debug:
     msg: "Switch - {{ switch }}"
@@ -56,7 +63,9 @@
 - name: "Stop All Containers"
   shell: "docker stop $(docker ps -a -q)"
   ignore_errors: yes
-  when: switch == "on"
+  when:
+    - switch == "on"
+    - not updatecheck.stdout == "18.06.0-ce,"
 
 - name: Official Repo
   apt_repository:
@@ -158,7 +167,9 @@
 - name: "Start All Containers"
   shell: "docker start $(docker ps -a -q)"
   ignore_errors: yes
-  when: switch == "on"
+  when:
+    - switch == "on"
+    - check.stat.exists
 
 - debug:
     msg: "Docker {{ updatecheck }} is already installed"
