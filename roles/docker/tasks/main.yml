@@ -30,6 +30,9 @@
   shell: "echo on"
   register: switch
 
+- debug:
+    msg: " {{ switch.stdout }}"
+
 - name: "Switch"
   shell: "echo off"
   register: switch
