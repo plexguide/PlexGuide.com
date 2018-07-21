@@ -21,15 +21,10 @@
     path: "/usr/bin/docker"
   register: check
 
-- name: "Docker Version Check"
+- name: "Docker Version Check - True"
   shell: "docker --version | awk '{print $3}'"
   register: updatecheck
-  when: check.stat.exists == True
-
-- name: "Docker Version Check"
-  shell: "echo false'"
-  register: updatecheck
-  when: check.stat.exists == False
+  when: check.stat.exists
 
 - name: "Switch"
   shell: "echo on"
@@ -38,6 +33,7 @@
 - name: "Switch"
   shell: "echo off"
   register: switch
+  ignore_errors: yes
   when: updatecheck.stdout == "18.06.0-ce,"
 
 - debug:
