@@ -16,7 +16,10 @@
 # Original Ansible Role: l3uddz, Desimaniac - cloudbox.rocks
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: "Establish Facts"
+  set_fact:
+    switch="on"
+    updatecheck="default"
 
 - name: "Docker Version Check - True"
   shell: "docker --version | awk '{print $3}'"
@@ -30,8 +33,8 @@
 
 - name: "Switch - On"
   set_fact:
-    switch="on"
-#  when: updatecheck == "18.06.0-ce,"
+    switch="off"
+  when: updatecheck == "18.06.0-ce,"
 
 - debug:
     msg: "Switch - {{ switch }}"
