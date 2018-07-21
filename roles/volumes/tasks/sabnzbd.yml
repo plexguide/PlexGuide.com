@@ -23,5 +23,5 @@
     - "{{path.stdout}}/sab/incomplete:/incomplete"
     - "{{path.stdout}}/sab/nzb:/nzb"
     - "{{path.stdout}}/sab/admin:/admin"
-    - /mnt/unionfs:/unionfs
-    - /etc/localtime:/etc/localtime:ro
+    - "/mnt/unionfs:/unionfs"
+    - "/etc/localtime:/etc/localtime:ro"
