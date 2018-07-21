@@ -58,6 +58,8 @@
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
 
+- debug: msg="Ini {{ sabnzbd_ini.exists }}"
+
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
   when: sabnzbd_ini.exists == False
