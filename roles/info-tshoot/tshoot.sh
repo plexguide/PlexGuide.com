@@ -1,14 +1,14 @@
 #!/bin/bash
 export NCURSES_NO_UTF8_ACS=1
-HEIGHT=13
-WIDTH=56
+HEIGHT=14
+WIDTH=58
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Assistance Menu"
 MENU="Make a Selection Choice:"
 
-OPTIONS=(A "Run PreInstaller - Basic Run Through"
-         B "Run PreInstaller - Force Full Everything Reinstall"
+OPTIONS=(A "PreInstaller - Basic Run Through"
+         B "PreInstaller - Force Full Everything Reinstall"
          C "Uninstall Docker, Containers & Run PreInstaller"
          D "Uninstall PlexGuide"
          E "Change Server Setup"
