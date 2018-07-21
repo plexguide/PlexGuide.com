@@ -24,8 +24,8 @@ echo "18.03.1" > /var/plexguide/pg.docker16
 echo "18.03.1~ce-0~ubuntu" > /var/plexguide/pg.docker16.full
 echo "stable" > /var/plexguide/pg.docker16.edition
 
-echo "18.05.0" > /var/plexguide/pg.docker18
-echo "18.05.0~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
+echo "18.06.0" > /var/plexguide/pg.docker18
+echo "18.06.0~ce~3-0~ubuntu" > /var/plexguide/pg.docker18.full
 echo "edge" > /var/plexguide/pg.docker18.edition
 #### DOCKER END
 
