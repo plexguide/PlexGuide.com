@@ -161,7 +161,7 @@
 
 - debug:
     msg: "Docker {{ updatecheck.stdout }} is already installed"
-  when: switch.stdout == "on"
+  when: switch.stdout == "off"
 
 - debug:
     msg: "Docker {{ updatecheck.stdout }} installed"
