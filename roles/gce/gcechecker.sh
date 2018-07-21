@@ -146,6 +146,7 @@ EOF
 
       sleep 2
 
+      ansible-role folders
       echo "100" | dialog --gauge "Feeder Box Install Complete" 7 50 0
       sleep 2
 
