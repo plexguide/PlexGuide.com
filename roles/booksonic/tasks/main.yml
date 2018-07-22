@@ -16,7 +16,13 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
+
+- name: Drop Breaddcrumb - Delete Me When Done
+  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
+  ignore_errors: True
 
 - include_role:
     name: pgmstart
@@ -28,26 +34,16 @@
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-      - "/opt/appdata/{{role_name}}:/config"
-      - "/mnt/unionfs/audiobooks:/books"
-      - "/mnt/unionfs/podcasts:/podcasts"
-      - "/etc/localtime:/etc/localtime:ro"
+    volumes: "{{default_volumes}}"
     cpu_shares: 128
-    env:
-      PUID: 1000
-      PGID: 1000
+    env: "{{default_env}}"
     networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
     restart_policy: always
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend

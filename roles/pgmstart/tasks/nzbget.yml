@@ -15,10 +15,6 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
-
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
     intport: "6789"
