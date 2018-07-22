@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [x2go Server]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & FlickerRate
@@ -16,36 +16,424 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+
 
 - include_role:
     name: pgmstart
 
-- name: Deploy NowShowing Container
+- name: Remove x2go Container
+  docker_container:
+    name: x2go
+    state: absent
+
+- name: Deploy x2go Container
   docker_container:
     name: "{{role_name}}"
-    image: "ninthwalker/{{role_name}}:v2"
+#    image: deiteq/dockerx2go
+    image: kirkins/xubuntu16-x2go
     pull: yes
+    cpu_shares: 512
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-      - "/opt/appdata/{{role_name}}:/config"
-      - "/etc/localtime:/etc/localtime:ro"
-    cpu_shares: 128
+ #     - "2222:22"
+    user: 0
     env:
-      PUID: 1000
-      PGID: 1000
+      PUID: "1000"
+      PGID: "1000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/mnt:/mnt"
+      - "/opt:/opt"  # Think about changing path for 2nd hd option!
+      - "/tmp:/tmp"
+ #     - "/mnt:/headless/Desktop/mnt:rw"
     networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+
+- debug:
+     msg: "  For SECURITY reasons - Please stop this container when not in use!  "
+- debug:
+     msg: "  Check x2go portainer log for dockerx password  "
 
 - include_role:
-    name: pgmend
+    name: pgmendpe Carefully and Press [ENTER]"
+  register: domain
+  when: domainanswer.user_input == "1"
+
+- name: Store Domain
+  shell: "echo '{{domain.user_input}}' > /var/plexguide/server.domain"
+  when: domainanswer.user_input == "1"
+
+- name: Register Domain Again
+  shell: "cat /var/plexguide/server.domain"
+  register: domainfinal
+################################ EMAIL INFO
+- pause:
+    prompt: "\nYour E-Mail: {{email.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
+  register: emailanswer
+  until: emailanswer.user_input > "0"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nWhat is Your E-Mail Address? Type Carefully and Press [ENTER]"
+  register: email
+  when: emailanswer.user_input == "1"
+
+- name: Store E-Mail
+  shell: "echo '{{email.user_input}}' > /var/plexguide/server.email"
+  when: emailanswer.user_input == "1"
+
+- name: Register E-Mail Again
+  shell: "cat /var/plexguide/server.email"
+  register: emailfinal
+  #########################################
+
+- pause:
+    prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap\n5- GandiV5"
+  register: result
+  until: result.user_input > "0" and result.user_input < "6"
+  retries: 99
+  delay: 1
+
+########################
+- name: Set Provider - CloudFlare
+  set_fact:
+    provider: "cloudflare"
+  when: result.user_input == "1"
+
+- name: CloudFlare Information
+  pause:
+    prompt: "\nWhat is Your CloudFlare E-Mail?"
+  register: cf1
+  when:
+    - result.user_input == "1"
+
+- name: CloudFlare Information
+  pause:
+    prompt: "\nWhat is Your CloudFlare API Key?"
+  register: cf2
+  when:
+    - result.user_input == "1"
+
+- name: Store Provider
+  shell: "echo 'cloudflare' > /var/plexguide/server.provider"
+  when: domainanswer.user_input == "1"
+########################
+- name: Set Provider - GoDaddy
+  set_fact:
+    provider: "godaddy"
+  when: result.user_input == "2"
+
+- name: GoDaddy Information
+  pause:
+    prompt: "\nWhat is Your GoDaddy API Key?"
+  register: godaddy1
+  when:
+    - result.user_input == "2"
+
+- name: GoDaddy Information
+  pause:
+    prompt: "\nWhat is Your GoDaddy API Secret?"
+  register: godaddy2
+  when:
+    - result.user_input == "2"
+
+- name: Store Provider
+  shell: "echo 'godaddy' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "2"
+########################
+- name: Set Provider - DUCKDNS
+  set_fact:
+    provider: "cloudflare"
+  when: result.user_input == "3"
+
+- name: DUCKDNS Information
+  pause:
+    prompt: "\nWhat is Your DUCKDNS Token?"
+  register: duck1
+  when:
+    - result.user_input == "3"
+
+- name: Store Provider
+  shell: "echo 'duckdns' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "3"
+########################
+- name: Set Provider - NameCheap
+  set_fact:
+    provider: "namecheap"
+  when: result.user_input == "4"
+
+- name: NAMECHEAP Information
+  pause:
+    prompt: "\nWhat is Your NameCheap API User?"
+  register: namecheap1
+  when:
+    - result.user_input == "4"
+
+- name: NAMECHEAP Information
+  pause:
+    prompt: "\nWhat is Your NameCheap API Key?"
+  register: namecheap2
+  when:
+    - result.user_input == "4"
+
+- name: Store Provider
+  shell: "echo 'namecheap' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "4"
+- name: Set Provider - NameCheap
+  set_fact:
+    provider: "namecheap"
+  when: result.user_input == "4"
+########################
+- name: Set Provider - GandiV5
+  set_fact:
+    provider: "gandiv5"
+  when: result.user_input == "5"
+
+- name: GandiV5 Information
+  pause:
+    prompt: "\nWhat is Your GandiV5 API?"
+  register: name1
+  when:
+    - result.user_input == "5"
+
+- name: Store Provider
+  shell: "echo 'gandiv5' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "5"
+
+########################
+- name: Register Provider First Time
+  shell: "cat /var/plexguide/server.provider"
+  register: providerfinal
+  ignore_errors: True
+########################
+- name: Remove Traefik
+  docker_container:
+    name: traefik
+    state: absent
+
+- name: Removing Prior Traefik.toml
+  file:
+    state: absent
+    path: /opt/appdata/traefik/traefik.toml
+
+- name: Create Basic Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/traefik
+    - /opt/appdata/traefik/acme
+
+########## Move Script if not Present
+- name: Installing Traefik.Toml
+  template:
+    src: traefik.toml
+    dest: /opt/appdata/traefik/traefik.toml
+    force: yes
+    owner: 1000
+    group: 1000
+
+- name: Check acme.json exists
+  stat:
+    path: "/opt/appdata/traefik/acme/acme.json"
+  register: acme_json
+
+- name: Installing ACME
+  template:
+    src: acme.json
+    dest: /opt/appdata/traefik/acme/acme.json
+    force: yes
+    mode: 0600
+    owner: 1000
+    group: 1000
+  when: acme_json.stat.exists == False
+######################################################### REPLACE STANDARD VARIBLES
+- debug: msg="Provider Info {{providerfinal}}"
+
+- name: Replace Provider
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: myprovider
+    replace: "{{providerfinal.stdout}}"
+
+- debug: msg="Domain Info {{domainfinal}}"
+
+- name: Replace Domain
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: yourdomain.com
+    replace: "{{domainfinal.stdout}}"
+
+- debug: msg="E-Mail Info {{emailfinal}}"
+
+- name: Replace E-Mail
+  replace:
+    path: /opt/appdata/traefik/traefik.toml
+    regexp: your@email.com
+    replace: "{{emailfinal.stdout}}"
+
+######################################################### CLOUDFLARE
+- name: Deploy Traefik Container - CloudFlare
+  docker_container:
+    name: traefik
+    image: "traefik:1.6"
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+ #     - "8080:8080"
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "cloudflare"
+      CLOUDFLARE_EMAIL: "{{cf1.user_input}}"
+      CLOUDFLARE_API_KEY: "{{cf2.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/servers.toml:/etc/traefik/servers.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    networks:
+      - name: plexguide
+        aliases:
+          - "traefik"
+    restart_policy: always
+    state: started
+  tags: cloudflare
+  when:
+    - result.user_input == "1"
+
+######################################################### NAMEDOTCOM
+- name: Deploy Traefik - DUCKDNS
+  docker_container:
+    name: traefik
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      #- "8080:8080"
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "duckdns"
+      DUCKDNS_TOKEN: "{{duck1.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: duckdns
+  when:
+    - result.user_input == "3"
+
+######################################################### GODADDY
+- name: Deploy Traefik - GODADDY
+  docker_container:
+    name: traefik
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: godaddy
+      GODADDY_API_KEY: "{{godaddy1.user_input}}"
+      GODADDY_API_SECRET: "{{godaddy2.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: godaddy
+  when:
+    - result.user_input == "2"
+
+######################################################### NAMECHEAP
+- name: Deploy Traefik - NAMECHEAP
+  docker_container:
+    name: traefik
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "namecheap"
+      NAMECHEAP_API_USER: "{{namecheap1.user_input}}"
+      NAMECHEAP_API_KEY: "{{namecheap2.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: namecheap
+  when:
+    - result.user_input == "4"
+######### GandiV5
+- name: Deploy Traefik - GANDI
+  docker_container:
+    name: traefik
+    image: traefik:1.6
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "gandiv5"
+      GANDIV5_API_KEY: "{{name1.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: gandiv5
+  when:
+    - result.user_input == "5"
+############################################### REMOVE LOCK
+- name: Register E-Mail
+  shell: "rm -r /var/plexguide/traefik.lock"
+  ignore_errors: True
