@@ -33,6 +33,8 @@
     path: "/opt/appdata/{{pgrole}}/{{pgrole}}.ini"
   register: "{{role_name}}_ini"
 
+- { role: foo, tags: ["bar", "baz"] }
+
 - name: Deploy {{pgrole}} Container
   docker_container:
     name: "{{pgrole}}"
@@ -58,12 +60,10 @@
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
 
-- debug: msg="Ini {{sabnzbd_ini}}"
-
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
   when: "sabnzbd_ini.stat.exists == False"
-
+    
 - name: Ending Processes
   include_role:
     name: pgmend

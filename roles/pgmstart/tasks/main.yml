@@ -54,6 +54,10 @@
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
 
-- include_role:
-    name: volumes
+- name: Volume Recall
+  roles: { role: volumes, tags: "{{pgrole}}" }
   ignore_errors: True
+
+#- include_role:
+#    name: volumes
+#  ignore_errors: True
