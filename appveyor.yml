@@ -33,7 +33,6 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags thelounge--extra-vars "skipend=yes" --skip-tags cron
 
-
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
   - sh: sudo rclone --version | head -n1
