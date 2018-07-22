@@ -44,7 +44,7 @@
       - name: plexguide
         aliases:
           - "{{role_name}}"
-    labels: {{default_labels}}
+    labels: "{{default_labels}}"
     restart_policy: always
     state: started
 
