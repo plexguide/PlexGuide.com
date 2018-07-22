@@ -30,9 +30,8 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Select a Version:"
 
-OPTIONS=(A "PGDrives: /w PG Blitz (Beta)"
-         B "PGDrives: ST2 - Unencrypted"
-         C "PGDrives: ST2 - Encrypted (NOT READY)"
+OPTIONS=(A "PGDrives: ST2 - Unencrypted"
+         B "PGDrives: ST2 - Encrypted (NOT READY)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
