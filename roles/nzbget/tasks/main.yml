@@ -31,8 +31,6 @@
     path: "/opt/appdata/nzbget/nzbget.conf"
   register: "nzbget_conf"
 
-- debug: msg="Your Username is {{ nzbget_conf }}"
-
 - name: Deploy NZBGET Container
   docker_container:
     name: "{{role_name}}"
@@ -50,8 +48,6 @@
           - "{{pgrole}}"
     state: started
     labels: "{{default_labels}}"
-
-- debug: msg="Your Username is {{ nzbget_conf }}"
 
 - name: .conf Tweaks
   include_tasks: "conf_tweaks.yml"
