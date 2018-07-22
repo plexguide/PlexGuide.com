@@ -16,6 +16,10 @@
 #
 #################################################################################
 ---
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
+
 - include_role:
     name: pgmstart
 
