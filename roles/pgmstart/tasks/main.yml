@@ -57,13 +57,11 @@
 - name: "Check New BreadCrumb"
   stat:
     path: "/var/plexguide/breadcrumb.{{pgrole}}"
-  register: "bc"
-
-- debug: msg="{{bc}}"
+  register: "breadcrumbs"
 
 - name: Volume Recall
   include_role:
     name: pgmstart
     tasks_from: "{{pgrole}}.yml"
   ignore_errors: True
-  when: "bc.stat.exists == True"
+  when: "breadcrumbs.stat.exists == True"
