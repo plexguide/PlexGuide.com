@@ -26,9 +26,9 @@
 - include_role:
     name: pgmstart
 
-- name: Check {{pgrole}}.conf exists
+- name: Check nzbget.conf exists
   stat:
-    path: "/opt/appdata/{{pgrole}}/{{pgrole}}.conf"
+    path: "/opt/appdata/nzbget/nzbget.conf"
   register: "nzbget_conf"
 
 - debug: msg="Your Username is {{ nzbget_conf }}"
