@@ -54,6 +54,8 @@
     state: started
     labels: "{{default_labels}}"
 
+- debug: msg="Your Username is {{ nzbget_conf }}"
+
 - name: .conf Tweaks
   include_tasks: "conf_tweaks.yml"
   when: "nzbget_conf.stat.exists == False"
