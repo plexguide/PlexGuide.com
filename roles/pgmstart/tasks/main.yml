@@ -56,10 +56,6 @@
 
 - name: Volume Recall
   include_role:
-    name: volumes
+    name: pgmstart
     tasks_from: "{{pgrole}}"
   ignore_errors: True
-
-#- include_role:
-#    name: volumes
-#  ignore_errors: True

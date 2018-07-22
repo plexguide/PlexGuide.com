@@ -15,12 +15,6 @@
 #
 #################################################################################
 ---
-- name: "Establish Starting Facts"
-  set_fact:
-    intport: "8080"
-    extport: "8080"
-    pgrole: "{{role_name}}"
-
 - name: Starting Processes
   include_role:
     name: pgmstart
