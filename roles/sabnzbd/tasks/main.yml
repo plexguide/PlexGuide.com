@@ -51,7 +51,11 @@
       - name: plexguide
         aliases:
           - "{{pgrole}}"
-    labels: "{{default_labels}}"
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.port: "{{extport}}"
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
