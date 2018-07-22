@@ -57,5 +57,5 @@
 - name: Volume Recall
   include_role:
     name: pgmstart
-    tasks_from: "{{pgrole}}"
+    tasks_from: "{{pgrole}}.yml"
   ignore_errors: True

@@ -14,8 +14,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Keep in ABC Order
+###################
 ---
-- name: Set default_volumes variable
+
+################################################## SABNZBD - START
+- name: Set Default Volume - {{pgrole}}
   set_fact:
     default_volumes:
     - "/opt/appdata/{{pgrole}}:/config"
@@ -23,5 +27,11 @@
     - "{{path.stdout}}/sab/incomplete:/incomplete"
     - "{{path.stdout}}/sab/nzb:/nzb"
     - "{{path.stdout}}/sab/admin:/admin"
-    - /mnt/unionfs:/unionfs
-    - /etc/localtime:/etc/localtime:ro
+    - "/mnt/unionfs:/unionfs"
+    - "/etc/localtime:/etc/localtime:ro"
+
+- name: "Establish Key Ports - {{pgrole}}"
+  set_fact:
+    intport: "8080"
+    extport: "8080"
+################################################## SABNZBD - END
