@@ -59,6 +59,8 @@
     path: "/var/plexguide/breadcrumb.{{role_name}}"
   register: "bc"
 
+- debug: msg="{{bc}}"
+
 - name: Volume Recall
   include_role:
     name: pgmstart
