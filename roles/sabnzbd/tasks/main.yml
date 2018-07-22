@@ -40,10 +40,7 @@
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes: "{{default_volumes}}"
     cpu_shares: 256
-    env:
-      PUID: 1000
-      PGID: 1000
-      LC_ALL: "C"
+    env: "{{default_env}}"
     restart_policy: always
     state: started
     networks:

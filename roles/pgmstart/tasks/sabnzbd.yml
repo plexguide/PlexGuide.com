@@ -15,6 +15,11 @@
 #
 #################################################################################
 ---
+- name: "Establish Key Ports - {{pgrole}}"
+  set_fact:
+    intport: "8080"
+    extport: "8080"
+
 - name: Set Default Volume - {{pgrole}}
   set_fact:
     default_volumes:
@@ -26,10 +31,12 @@
     - "/mnt/unionfs:/unionfs"
     - "/etc/localtime:/etc/localtime:ro"
 
-- name: "Establish Key Ports - {{pgrole}}"
+- name: "Establish Key Variables - {{pgrole}}"
   set_fact:
-    intport: "8080"
-    extport: "8080"
+    default_env:
+      PUID: 1000
+      PGID: 1000
+      LC_ALL: "C"
 
 - name: Set Default Volume - {{pgrole}}
   set_fact:
