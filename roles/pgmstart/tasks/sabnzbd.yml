@@ -14,11 +14,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Keep in ABC Order
-###################
 ---
-
-################################################## SABNZBD - START
 - name: Set Default Volume - {{pgrole}}
   set_fact:
     default_volumes:
