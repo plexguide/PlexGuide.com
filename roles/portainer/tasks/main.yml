@@ -16,7 +16,7 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+#- include_vars: variables.yml
 
 - include_role:
     name: pgmstart
@@ -25,7 +25,7 @@
   docker_network:
     name: "plexguide"
     state: present
-    
+
 - name: "{{role_name}} Container"
   docker_container:
     name: "{{role_name}}"
