@@ -15,15 +15,24 @@
 #
 #################################################################################
 ---
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
+
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
-    intport: "80"
-    extport: "1234"
+    intport: "4040"
+    extport: "4040"
 
 - name: Set Default Volume - {{pgrole}}
   set_fact:
     default_volumes:
-      - /opt/appdata/{{role_name}}:/var/www/html/config
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/{{role_name}}:/airsonic/data"
+      - "/opt/appdata/{{role_name}}/playlists:/airsonic/playlists"
+      - "/opt/appdata/{{role_name}}/podcasts:/airsonic/podcasts"
+      - "/mnt/unionfs/music:/airsonic/music"
+      - "/mnt/unionfs:/unionfs"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
@@ -35,8 +44,7 @@
   set_fact:
     default_volumes:
       traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 ################################################## SABNZBD - END
