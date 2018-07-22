@@ -20,6 +20,10 @@
   set_fact:
     pgrole: "{{role_name}}"
 
+- name: Drop Breaddcrumb - Delete Me When Done
+  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
+  ignore_errors: True
+
 - name: Image Select
   include_tasks: "questions.yml"
 
