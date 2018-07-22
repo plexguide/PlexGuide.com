@@ -17,8 +17,8 @@
 ---
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
-    intport: "4040"
-    extport: "4040"
+    intport: "80"
+    extport: "1234"
 
 - name: Set Default Volume - {{pgrole}}
   set_fact:
