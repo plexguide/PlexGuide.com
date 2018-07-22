@@ -1,6 +1,10 @@
 ---
 image: ubuntu
 
+branches:
+  only:
+    - edge
+
 environment:
   PG: "/opt/plexguide"
 
@@ -13,4 +17,4 @@ install:
 matrix:
   fast_finish: true
 
-build: on
+build: off
