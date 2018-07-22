@@ -16,6 +16,21 @@
 #
 #################################################################################
 ---
-intport: "8080"
-extport: "8080"
-pgrole: "sabnzbd"
+- pause:
+    prompt: "\nType Image # for NZBGET\n1- linuxserver/nzbget (Recommended)\n2- hotio/nzbget (Space Saver)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "3"
+  retries: 5
+  delay: 1
+
+- name: Set linuxserver/nzbget
+  set_fact:
+    image: "linuxserver/nzbget"
+    extra: ""
+  when: result.user_input == "1"
+
+- name: Hotio/Suitarr
+  set_fact:
+    image: "hotio/suitarr:nzbget"
+    extra: "/NZBGet"
+  when: result.user_input == "2"
