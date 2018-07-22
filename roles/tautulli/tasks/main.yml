@@ -36,7 +36,7 @@
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
       - /opt/appdata/{{role_name}}:/config
-      - /opt/appdata/plex/database/Library/Application\ Support/Plex\ Media\
+      - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs
       - /opt/appdata/{{role_name}}/scripts:/scripts
     env:
       PUID: "1000"
