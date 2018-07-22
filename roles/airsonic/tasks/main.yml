@@ -16,7 +16,9 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
 
 - include_role:
     name: pgmstart
@@ -33,10 +35,9 @@
       - "/opt/appdata/{{role_name}}:/airsonic/data"
       - "/opt/appdata/{{role_name}}/playlists:/airsonic/playlists"
       - "/opt/appdata/{{role_name}}/podcasts:/airsonic/podcasts"
-   #   - "{{path.stdout}}/{{role_name}}/downloads:/downloads"
       - "/mnt/unionfs/music:/airsonic/music"
       - "/mnt/unionfs:/unionfs"
-    cpu_shares: 512
+    cpu_shares: 128
     env:
       PUID: 1000
       PGID: 1000
