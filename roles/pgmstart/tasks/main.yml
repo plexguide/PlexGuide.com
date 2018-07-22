@@ -57,7 +57,7 @@
 - name: Volume Recall
   include_role:
     name: volumes
-    tasks_from: {{pgrole}}
+    tasks_from: "{{pgrole}}"
   ignore_errors: True
 
 #- include_role:
