@@ -51,7 +51,7 @@
         aliases:
           - "{{pgrole}}"
     state: started
-    labels: {{default_labels}}
+    labels: "{{default_labels}}"
 
 - name: .conf Tweaks
   include_tasks: "conf_tweaks.yml"
