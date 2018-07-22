@@ -13,6 +13,7 @@ install:
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
   - sh: cd ${PG}
   - sh: sudo bash ${PG}/roles/baseline/scripts/ansible.sh
+  - sh: clear
   - sh: ansible --version | head -n1 > /opt/plexguide/info
   #### END
   - sh: cat /opt/plexguide/info
