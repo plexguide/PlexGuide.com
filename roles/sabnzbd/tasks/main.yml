@@ -51,7 +51,7 @@
       - name: plexguide
         aliases:
           - "{{pgrole}}"
-    labels: {{default_labels}}
+    labels: "{{default_labels}}"
 
 - name: .ini Tweaks
   include_tasks: "ini_tweaks.yml"
