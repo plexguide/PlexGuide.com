@@ -15,6 +15,10 @@
 #
 #################################################################################
 ---
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
+
 - name: Starting Processes
   include_role:
     name: pgmstart
