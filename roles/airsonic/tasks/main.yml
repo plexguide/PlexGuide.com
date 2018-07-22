@@ -41,6 +41,5 @@
     state: started
     labels: "{{default_labels}}"
 
-
 - include_role:
     name: pgmend
