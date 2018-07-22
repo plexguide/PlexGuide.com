@@ -47,7 +47,7 @@
     volumes: "{{default_volumes}}"
     env: "{{default_env}}"
     restart_policy: always
-    networks: "{{default_labels}}"
+    networks: 
       - name: plexguide
         aliases:
           - "{{pgrole}}"
