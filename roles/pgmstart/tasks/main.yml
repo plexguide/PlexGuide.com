@@ -55,8 +55,9 @@
   ignore_errors: True
 
 - name: Volume Recall
-  roles:
-    - { role: volumes, tags: "{{pgrole}}" }
+  include_role:
+    name: volumes
+    tasks_from: {{pgrole}}
   ignore_errors: True
 
 #- include_role:
