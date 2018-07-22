@@ -5,7 +5,7 @@ install:
   - sh: sudo mkdir /opt/plexguide
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
   - sh: cd /opt/plexguide
-  - sh: sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
+  - sh: sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
 
   ###### ANSIBLE INSTALL
   - sh: sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
