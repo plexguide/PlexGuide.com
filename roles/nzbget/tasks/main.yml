@@ -29,7 +29,9 @@
 - name: Check {{pgrole}}.conf exists
   stat:
     path: "/opt/appdata/{{pgrole}}/{{pgrole}}.conf"
-  register: "{{pgrole}}_conf"
+  register: "nzbget_conf"
+
+- debug: msg="Your Username is {{ nzbget_conf }}"
 
 - name: Deploy NZBGET Container
   docker_container:
