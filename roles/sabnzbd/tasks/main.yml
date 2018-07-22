@@ -1,9 +1,8 @@
 #!/bin/bash
 #
-# [Ansible Role]
-#
+# Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,179 +15,48 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
 
-- include_role:
+- name: Drop Breaddcrumb - Delete Me When Done
+  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
+  ignore_errors: True
+
+- name: Starting Processes
+  include_role:
     name: pgmstart
 
-- pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/sabnzbd (Recommended)\n2- sabnzbd/sabnzbd"
-  register: result
-  until: result.user_input > "0" and result.user_input < "3"
-  retries: 5
-  delay: 1
+- name: Image Select
+  include_tasks: "questions.yml"
 
-- name: Set linuxserver/sabnzbd
-  set_fact: 
-    image: "linuxserver/sabnzbd"
-  when: result.user_input == "1"
-
-- name: sabnzbd/sabnzbd
-  set_fact: 
-    image: "sabnzbd/sabnzbd"
-  when: result.user_input == "2"
-
-- name: Create SAB download directory
-  file: "path=/mnt/sab/ state=directory mode=0775 owner=1000 group=1000 recurse=true"
-
-- name: Check sabnzbd.ini exists
+- name: "Check {{pgrole}}_ini exists"
   stat:
-    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-  register: sabnzbd_ini
+    path: "/opt/appdata/{{pgrole}}/{{pgrole}}.ini"
+  register: "{{role_name}}_ini"
 
-- name: Deploy SABNZBD Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: sabnzbd
-    image: "linuxserver/sabnzbd"
+    name: "{{pgrole}}"
+    image: "linuxserver/{{pgrole}}"
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-      - /opt/appdata/sabnzbd:/config
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/sab/incomplete:/incomplete"
-      - "{{path.stdout}}/sab/nzb:/nzb"
-      - "{{path.stdout}}/sab/admin:/admin"
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
+    volumes: "{{default_volumes}}"
     cpu_shares: 256
-    env:
-      PUID: 1000
-      PGID: 1000
+    env: "{{default_env}}"
     restart_policy: always
     state: started
     networks:
       - name: plexguide
         aliases:
-          - sabnzbd
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:sabnzbd.{{domain.stdout}}"
-      traefik.port: "{{extport}}"
+          - "{{pgrole}}"
+    labels: "{{default_labels}}"
 
-- name: Path for .ini
-  wait_for:
-    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-    state: present
-  when: sabnzbd_ini.stat.exists == False
+- name: .ini Tweaks
+  include_tasks: "ini_tweaks.yml"
+  when: "sabnzbd_ini.stat.exists == False"
 
-- name: "Wait 10 Seconds"
-  wait_for:
-    timeout: 10
-  when: sabnzbd_ini.stat.exists == False
-
-- name: Customize sabnzbd_ini
-  docker_container:
-    name: sabnzbd
-    state: stopped
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "complete_dir = Downloads/complete"
-    replace: "complete_dir = /complete"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "host_whitelist ="
-    replace: "host_whitelist = sabnzbd.{{domain.stdout}},"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "download_dir = Downloads/incomplete"
-    replace: "download_dir = /incomplete"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: nzb_backup_dir = ""
-    replace: "nzb_backup_dir = /nzb"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "admin_dir = admin"
-    replace: "admin_dir = /admin"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "direct_unpack = 0"
-    replace: "direct_unpack = 1"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "ignore_samples = 0"
-    replace: "ignore_samples = 1"
-  when: sabnzbd_ini.stat.exists == False
-
-## remove unwanted extensions
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "unwanted_extensions = ,"
-    replace: "unwanted_extensions = exe, com, bat, sh"
-  when: sabnzbd_ini.stat.exists == False
-
-## ignore and cleanup the following files
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "cleanup_list = ,"
-    replace: "cleanup_list = nfo, exe, com, bat, txt, doc, xls, xlxs, docx, doc, jpg, jeg, gif, png"
-  when: sabnzbd_ini.stat.exists == False
-
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "action_on_unwanted_extensions = 0"
-    replace: "action_on_unwanted_extensions = 2"
-  when: sabnzbd_ini.stat.exists == False
-
-## aborts encrypted rar rather than pausing
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "pause_on_pwrar = 1"
-    replace: "pause_on_pwrar = 2"
-  when: sabnzbd_ini.stat.exists == False
-
-## try a new nzb if it fails
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "new_nzb_on_failure = 0"
-    replace: "new_nzb_on_failure = 1"
-  when: sabnzbd_ini.stat.exists == False
-
-## replace dots with space
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "replace_dots = 0"
-    replace: "replace_dots = 1"
-  when: sabnzbd_ini.stat.exists == False
-
-## flat_unpack
-- replace:
-    path: /opt/appdata/sabnzbd/sabnzbd.ini
-    regexp: "flat_unpack = 0"
-    replace: "flat_unpack = 1"
-  when: sabnzbd_ini.stat.exists == False
-
-- name: Restart Container
-  docker_container:
-    name: sabnzbd
-    state: started
-  when: sabnzbd_ini.stat.exists == False
-
-- include_role:
+- name: Ending Processes
+  include_role:
     name: pgmend

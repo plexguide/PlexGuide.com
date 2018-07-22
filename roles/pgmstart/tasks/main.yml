@@ -53,3 +53,15 @@
 - name: Storing Role Name
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
+
+- name: "Check New BreadCrumb"
+  stat:
+    path: "/var/plexguide/breadcrumb.{{pgrole}}"
+  register: "breadcrumbs"
+
+- name: Volume Recall
+  include_role:
+    name: pgmstart
+    tasks_from: "{{pgrole}}.yml"
+  ignore_errors: True
+  when: "breadcrumbs.stat.exists == True"

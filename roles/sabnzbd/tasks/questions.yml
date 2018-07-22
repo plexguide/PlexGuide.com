@@ -16,6 +16,19 @@
 #
 #################################################################################
 ---
-intport: "6789"
-extport: "6789"
-pgrole: "nzbget"
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/{{role_name}} (Recommended)\n2- {{role_name}}/{{role_name}}"
+  register: result
+  until: result.user_input > "0" and result.user_input < "3"
+  retries: 5
+  delay: 1
+
+- name: "Set linuxserver/{{role_name}}"
+  set_fact:
+    image: "linuxserver/{{role_name}}"
+  when: result.user_input == "1"
+
+- name: "{{role_name}}/{{role_name}}"
+  set_fact:
+    image: "{{role_name}}/{{role_name}}"
+  when: result.user_input == "2"
