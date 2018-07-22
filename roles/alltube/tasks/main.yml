@@ -38,7 +38,7 @@
     dest: /opt/appdata/{{pgrole}}/config.json
     force: yes
 
-- name: Deploy {{pgrole}} Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
     name: "{{pgrole}}"
     image: "rudloff/{{pgrole}}"
