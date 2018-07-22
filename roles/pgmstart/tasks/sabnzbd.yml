@@ -26,6 +26,14 @@
     - "/mnt/unionfs:/unionfs"
     - "/etc/localtime:/etc/localtime:ro"
 
+- name: Set Default Volume - {{pgrole}}
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.port: "{{extport}}"
+
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
     intport: "8080"
