@@ -20,6 +20,9 @@
   set_fact:
     pgrole: "{{role_name}}"
 
+- name: Image Select
+  include_tasks: "questions.yml"
+
 - include_role:
     name: pgmstart
 
@@ -27,9 +30,6 @@
   stat:
     path: "/opt/appdata/nzbget/nzbget.conf"
   register: nzbget_conf
-
-- name: Image Select
-  include_tasks: "questions.yml"
 
 - name: "Check {{pgrole}}_conf exists"
   stat:
@@ -47,7 +47,7 @@
     volumes: "{{default_volumes}}"
     env: "{{default_env}}"
     restart_policy: always
-    networks: 
+    networks:
       - name: plexguide
         aliases:
           - "{{pgrole}}"
