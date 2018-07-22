@@ -30,28 +30,17 @@
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/{{role_name}}:/airsonic/data"
-      - "/opt/appdata/{{role_name}}/playlists:/airsonic/playlists"
-      - "/opt/appdata/{{role_name}}/podcasts:/airsonic/podcasts"
-      - "/mnt/unionfs/music:/airsonic/music"
-      - "/mnt/unionfs:/unionfs"
+    volumes: "{{default_volumes}}"
     cpu_shares: 128
-    env:
-      PUID: 1000
-      PGID: 1000
+    env: "{{default_env}}"
     networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
     restart_policy: always
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
+
 
 - include_role:
     name: pgmend
