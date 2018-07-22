@@ -11,6 +11,7 @@ install:
 
   ###### ANSIBLE INSTALL
   - sh: sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
+  - sh: sudo ansible --version | head -n1 > /opt/plexguide/info
 
   ###### RCLONE INSTALL
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
