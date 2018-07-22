@@ -2,9 +2,9 @@
 image: ubuntu
 
 install:
-  - sh: sudo ansible-playbook /home/appveyor/projects/PlexGuide.com-The-Awesome-Plex-Server/roles/baseline/scripts/ansible.sh
+  - sh: sudo bash /home/appveyor/projects/PlexGuide.com-The-Awesome-Plex-Server/roles/baseline/scripts/ansible.sh
 
 matrix:
   fast_finish: true
 
-build: off
+build: on
