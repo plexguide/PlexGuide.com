@@ -26,15 +26,10 @@
 - include_role:
     name: pgmstart
 
-- name: Check nzbget.conf exists
-  stat:
-    path: "/opt/appdata/nzbget/nzbget.conf"
-  register: nzbget_conf
-
-- name: "Check {{pgrole}}_conf exists"
+- name: Check {{pgrole}}.conf exists
   stat:
     path: "/opt/appdata/{{pgrole}}/{{pgrole}}.conf"
-  register: "{{role_name}}_conf"
+  register: "{{pgrole}}_conf"
 
 - name: Deploy NZBGET Container
   docker_container:
