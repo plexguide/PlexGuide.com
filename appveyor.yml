@@ -2,21 +2,42 @@
 image: ubuntu
 
 install:
-  - sh: sudo mkdir /opt/plexguide
+  - sh: sudo mkdir -p /opt/plexguide
+  - sh: sudo mkdir -p /var/plexguide
+  - sh: sudo mkdir -p /opt/appdata/plexguide
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
   - sh: cd /opt/plexguide
-  - sh: sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
+  - sh: sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
 
   ###### ANSIBLE INSTALL
   - sh: sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
-  - sh: sudo clear
-
+  ###### DOCKER INSTALL
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags docker
+  ###### FOLDER INSTALL
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags folders
   ###### RCLONE INSTALL
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
-  - sh: sudo rclone --version | head -n1 >> /opt/plexguide/info
+  ###### Install Containers - ABC Order
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nextcloud --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags thelounge--extra-vars "skipend=yes" --skip-tags cron
 
-  #### END
-  - sh: sudo cat /opt/plexguide/info
+  #### OUTPUTS
+  - sh: sudo ansible --version | head -n1
+  - sh: sudo rclone --version | head -n1
+  - sh: sudo docker --version | head -n1
+  - sh: sudo docker ps --format '{{.Names}}'
 
 matrix:
   fast_finish: true
