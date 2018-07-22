@@ -38,8 +38,8 @@
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env: {{default_env}}
-    volumes: {{default_volumes}}
+    env: "{{default_env}}"
+    volumes: "{{default_volumes}}"
     networks:
       - name: plexguide
         aliases:
