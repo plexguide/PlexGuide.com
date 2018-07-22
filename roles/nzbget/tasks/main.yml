@@ -16,8 +16,6 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-
 - include_role:
     name: pgmstart
 
@@ -29,13 +27,13 @@
   delay: 1
 
 - name: Set linuxserver/nzbget
-  set_fact: 
+  set_fact:
     image: "linuxserver/nzbget"
     extra: ""
   when: result.user_input == "1"
 
 - name: Hotio/Suitarr
-  set_fact: 
+  set_fact:
     image: "hotio/suitarr:nzbget"
     extra: "/NZBGet"
   when: result.user_input == "2"
@@ -57,35 +55,16 @@
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
-      - "/opt/appdata/nzbget:/config{{extra}}"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/nzbget/incomplete:/incomplete"
-      - "{{path.stdout}}/nzbget/nzb:/nzb"
-      - "{{path.stdout}}/nzbget/log:/log"
-      - "{{path.stdout}}/nzbget/tmp:/tmp"
-      - "{{path.stdout}}/nzbget/queue:/queue"
-      - "{{path.stdout}}/nzbget/scripts:/scripts"
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
     env:
-      APP: "nzbget"
-      VERSION: "stable"
-      PUID: "1000"
-      PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
-      LC_ALL: "C"
     restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - nzbget
+          - {{pgrole}}
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nzbget.{{domain.stdout}}"
-      traefik.port: "{{extport}}"
+    labels: "{{default_labels}}"
+
+
 
 - name: Please Wait - Pending .conf generation from NZBGET
   wait_for:
