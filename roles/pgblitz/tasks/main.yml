@@ -1,0 +1,221 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+############################################## MOVE (START) Disable
+############ Directories
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+    with_items:
+      - /opt/appdata/pgblitz/keys/unprocessed
+      - /opt/appdata/pgblitz/keys/processed
+      - /opt/appdata/pgblitz/keys/originalnames
+
+  - name: Check move Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move
+    tags:
+      - blitzdeploy
+
+  - name: Stop If Move Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: move
+    when: move.stat.exists
+    ignore_errors: True
+    tags:
+      - blitzdeploy
+
+### Encrypted
+  - name: Check move-en Service
+    stat:
+      path: "/etc/systemd/system/move.service"
+    register: move-en
+    tags:
+      - blitzdeploy
+
+  - name: Stop If Encrypted Move Service Running (ignore errors)
+    systemd:
+      state: stopped
+      enabled: no
+      name: move-en
+    when: move.stat.exists
+    ignore_errors: True
+    tags:
+      - blitzdeploy
+
+############################################## MOVE (END) Disable
+
+############################################## ST2 (START) Disable
+#
+#
+#
+############################################## ST2 (END) Disable
+
+############################################## GDRIVE (START)
+  - name: Stop If GCRYPT Service Running
+    systemd: state=stopped name=gcrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Daemon-Reload - Stop GCRYPT Service
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Stop If GDRIVE Service Running
+    systemd: state=stopped name=gdrive
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Install GDRIVE Service
+    template:
+      src: gdrive.js2
+      dest: /etc/systemd/system/gdrive.service
+      force: yes
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Start GDRIVE SERVICE
+    systemd: state=started name=gdrive daemon_reload=yes enabled=yes
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+############################################## GDRIVE (END)
+
+############################################## TDRIVE (START)
+  - name: Stop If TCRYPT Service Running
+    systemd: state=stopped name=tcrypt enabled=no
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Daemon-Reload - Stop TCRYPT Service
+    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Stop If TDRIVE Service Running
+    systemd: state=stopped name=tdrive
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Install TDRIVE Service
+    template:
+      src: tdrive.js2
+      dest: /etc/systemd/system/tdrive.service
+      force: yes
+    tags:
+      - blitzdeploy
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+    tags:
+      - blitzdeploy
+
+  - name: Start TDrive
+    systemd: state=started name=tdrive enabled=yes
+    tags:
+      - blitzdeploy
+
+############################################## TDRIVE (END)
+
+############################################## UNIONFS (START)
+  - name: Register UNIONFS PATH
+    shell: "cat /var/plexguide/unionfs.pgpath"
+    register: unionfs_path
+    ignore_errors: True
+    tags:
+      - blitzdeploy
+
+  - name: Stop If UNIONFS Service Running
+    systemd: state=stopped name=unionfs
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
+
+  - name: Install UNIONFS Service
+    template:
+      src: unionfs.js2
+      dest: /etc/systemd/system/unionfs.service
+      force: yes
+    tags:
+      - blitzdeploy
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    tags:
+      - blitzdeploy
+
+  - name: Start UnionFS
+    systemd: state=started name=unionfs enabled=yes
+    tags:
+      - blitzdeploy
+############################################## UNIONFS (END)
+#
+############################################## PGBlitz (START) Install
+  - name: Install pgblitz script
+    template:
+      src: upload.sh
+      dest: /opt/appdata/pgblitz/pgblitz.sh
+      force: yes
+    tags:
+      - blitzdeploy
+
+  - name: Install pgblitz Service
+    template:
+      src: pgblitz.service
+      dest: /etc/systemd/system/pgblitz.service
+      force: yes
+    tags:
+      - blitzdeploy
+
+  - name: Enable pgblitz Service
+    systemd:
+      daemon_reload: yes
+      enabled: yes
+      state: restarted
+      name: pgblitz
+    tags:
+      - blitzdeploy
+
+############################################## PGBlitz (END)
+#
+############################################## ST2 Monitorr (START) Disable
+#
+#
+#
+#
+#
+############################################## ST2 Monitorr (END) Disable
+
+############################################## PGBlitz Monitorr (START) Install
+#
+#
+#
+#
+#
+############################################## PGBlitz Monitorr (END) Install

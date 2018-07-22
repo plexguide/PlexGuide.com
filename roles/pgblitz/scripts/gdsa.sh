@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,16 +15,25 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#### PG VARIBLES
-echo "6.017 Edge" > /var/plexguide/pg.version
-echo "126" > /var/plexguide/pg.preinstall
+path=/opt/appdata/pgblitz/keys
+rpath=/root/.config/rclone/rclone.conf
+teamdrive=$( cat /var/plexguide/teamdrive )
 
-#### Installer
-echo "5" > /var/plexguide/pg.ansible
-echo "2" > /var/plexguide/pg.rclone
-echo "1" > /var/plexguide/pg.python
-echo "1" > /var/plexguide/pg.docstart
-echo "2" > /var/plexguide/pg.watchtower
-echo "1" > /var/plexguide/pg.label
-echo "26" > /var/plexguide/pg.alias
-echo "1" > /var/plexguide/pg.dep ## dependencies
+ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa
+
+#### Ensure to Backup TDrive & GDrive and Wipe the Rest
+while read p; do
+
+mkdir -p /mnt/pgblitz/$p 
+tee >> /$rpath <<EOF
+[$p]
+type = drive
+client_id =
+client_secret =
+scope = drive
+root_folder_id =
+service_account_file = /opt/appdata/pgblitz/keys/processed/$p
+team_drive = $teamdrive
+EOF
+
+done </tmp/pg.gdsa

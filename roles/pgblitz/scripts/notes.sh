@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,16 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#### PG VARIBLES
-echo "6.017 Edge" > /var/plexguide/pg.version
-echo "126" > /var/plexguide/pg.preinstall
 
-#### Installer
-echo "5" > /var/plexguide/pg.ansible
-echo "2" > /var/plexguide/pg.rclone
-echo "1" > /var/plexguide/pg.python
-echo "1" > /var/plexguide/pg.docstart
-echo "2" > /var/plexguide/pg.watchtower
-echo "1" > /var/plexguide/pg.label
-echo "26" > /var/plexguide/pg.alias
-echo "1" > /var/plexguide/pg.dep ## dependencies
+#clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
+
+1. Future, have system look for GDSAs that no longer exist
+
+cp /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf2
+
+rm -r /root/.config/rclone/rclone.conf
+cp /root/.config/rclone/rclone.conf2 /root/.config/rclone/rclone.conf
