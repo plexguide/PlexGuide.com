@@ -51,7 +51,11 @@
         aliases:
           - "{{pgrole}}"
     state: started
-    labels: "{{default_labels}}"
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.port: "{{extport}}"
 
 - name: .conf Tweaks
   include_tasks: "conf_tweaks.yml"
