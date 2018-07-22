@@ -21,18 +21,13 @@
 
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
-    intport: "4040"
-    extport: "4040"
+    intport: "80"
+    extport: "1234"
 
 - name: Set Default Volume - {{pgrole}}
   set_fact:
     default_volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/{{role_name}}:/airsonic/data"
-      - "/opt/appdata/{{role_name}}/playlists:/airsonic/playlists"
-      - "/opt/appdata/{{role_name}}/podcasts:/airsonic/podcasts"
-      - "/mnt/unionfs/music:/airsonic/music"
-      - "/mnt/unionfs:/unionfs"
+      - /opt/appdata/{{role_name}}:/var/www/html/config
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
@@ -44,6 +39,7 @@
   set_fact:
     default_volumes:
       traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"

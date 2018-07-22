@@ -16,8 +16,6 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-
 - include_role:
     name: pgmstart
 
@@ -40,21 +38,13 @@
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-      - /opt/appdata/{{role_name}}:/var/www/html/config
+    env: {{default_env}}
+    volumes: {{default_volumes}}
     networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: {{default_labels}}
     restart_policy: always
     state: started
 
