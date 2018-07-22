@@ -15,10 +15,6 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
-
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
     intport: "4040"
@@ -40,7 +36,7 @@
       PUID: 1000
       PGID: 1000
 
-- name: Set Default Volume - {{pgrole}}
+- name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"
