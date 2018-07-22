@@ -43,7 +43,7 @@
           - "{{role_name}}"
     restart_policy: always
     state: started
-    labels: "{{default_labels}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend
