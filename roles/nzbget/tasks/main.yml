@@ -44,10 +44,10 @@
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-    env:
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
     restart_policy: always
-    networks:
+    networks: "{{default_labels}}"
       - name: plexguide
         aliases:
           - "{{pgrole}}"
