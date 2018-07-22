@@ -36,7 +36,7 @@
       PUID: 1000
       PGID: 1000
 
-- name: Set Default Volume - {{pgrole}}
+- name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"

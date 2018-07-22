@@ -65,3 +65,8 @@
     tasks_from: "{{pgrole}}.yml"
   ignore_errors: True
   when: "breadcrumbs.stat.exists == True"
+
+  ### programs to update
+  # bazarr
+  # booksonic
+  
