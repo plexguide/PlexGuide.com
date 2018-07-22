@@ -34,9 +34,9 @@
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes: {{default_volumes}}
+    volumes: "{{default_volumes}}"
     cpu_shares: 128
-    env: {{default_env}}
+    env: "{{default_env}}"
     networks:
       - name: plexguide
         aliases:
