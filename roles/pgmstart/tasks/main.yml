@@ -56,7 +56,7 @@
 
 - name: "Check New BreadCrumb"
   stat:
-    path: "/var/plexguide/breadcrumb.{{role_name}}"
+    path: "/var/plexguide/breadcrumb.{{pgrole}}"
   register: "bc"
 
 - debug: msg="{{bc}}"
