@@ -1,8 +1,13 @@
 ---
 image: ubuntu
 
+environment:
+  PG: "/opt/plexguide"
+
 install:
-  - sh: sudo bash /roles/baseline/scripts/ansible.sh
+  - sh: mkdir /opt/plexguide
+  - sh: cd ${PG} && mv ./opt/plexguide/;
+  - sh: sudo bash ${PG}/roles/baseline/scripts/ansible.sh
 
 matrix:
   fast_finish: true
