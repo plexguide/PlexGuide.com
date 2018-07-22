@@ -26,7 +26,6 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nextcloud --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "skipend=yes" --skip-tags cron
