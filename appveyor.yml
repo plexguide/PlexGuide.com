@@ -1,10 +1,6 @@
 ---
 image: ubuntu
 
-branches:
-  only:
-    - edge
-
 install:
   - sh: sudo mkdir /opt/plexguide
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
