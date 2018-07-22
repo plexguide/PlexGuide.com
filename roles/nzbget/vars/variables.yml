@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Version:  Ansible-1
+# [Ansible Role]
+#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
@@ -15,19 +16,6 @@
 #
 #################################################################################
 ---
-
-- name: Set default_volumes variable
-  set_fact:
-    default_volumes:
-    - "/opt/appdata/{{pgrole}}:/config"
-    - "{{path.stdout}}/sab/complete:/complete"
-    - "{{path.stdout}}/sab/incomplete:/incomplete"
-    - "{{path.stdout}}/sab/nzb:/nzb"
-    - "{{path.stdout}}/sab/admin:/admin"
-    - "/mnt/unionfs:/unionfs"
-    - "/etc/localtime:/etc/localtime:ro"
-  tags:
-    - sabnzbd
-
-#- name: "Build Volumes for - {{pgrole}}"
-#  include_tasks: "{{pgrole}}.yml"
+intport: "6789"
+extport: "6789"
+pgrole: "nzbget"

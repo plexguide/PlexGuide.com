@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [x2go Server]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & FlickerRate
@@ -16,50 +16,48 @@
 #
 #################################################################################
 ---
+#- include_vars: variables.yml
 
+#- include_role:
+#    name: varstart
 
-- include_role:
-    name: pgmstart
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
 
-- name: Remove x2go Container
-  docker_container:
-    name: x2go
-    state: absent
+- name: Register Provider
+  shell: "touch /var/plexguide/server.provider"
+  register: provider
+  ignore_errors: True
 
-- name: Deploy x2go Container
-  docker_container:
-    name: "{{role_name}}"
-#    image: deiteq/dockerx2go
-    image: kirkins/xubuntu16-x2go
-    pull: yes
-    cpu_shares: 512
-    published_ports:
-      - "{{ports.stdout}}{{extport}}:{{intport}}"
- #     - "2222:22"
-    user: 0
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/mnt:/mnt"
-      - "/opt:/opt"  # Think about changing path for 2nd hd option!
-      - "/tmp:/tmp"
- #     - "/mnt:/headless/Desktop/mnt:rw"
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{role_name}}"
-    restart_policy: unless-stopped
-    state: started
+- name: Register E-Mail
+  shell: "cat /var/plexguide/server.email"
+  register: email
+  ignore_errors: True
+###############################
 
-- debug:
-     msg: "  For SECURITY reasons - Please stop this container when not in use!  "
-- debug:
-     msg: "  Check x2go portainer log for dockerx password  "
+- pause:
+    prompt: "\nContinue to Deploy Traefik? (Type #)\n1- YES\n2- NO"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "3"
+  retries: 99
+  delay: 1
 
-- include_role:
-    name: pgmendpe Carefully and Press [ENTER]"
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input != "1"
+
+################################ DOMAIN INFO
+- pause:
+    prompt: "\nYour Domain: {{domain.stdout}}\nChange It? (Type #)\n1- YES\n2- NO"
+  register: domainanswer
+  until: domainanswer.user_input > "0" and domainanswer.user_input < "3"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nWhat is Your Domain? Type Carefully and Press [ENTER]"
   register: domain
   when: domainanswer.user_input == "1"
 
