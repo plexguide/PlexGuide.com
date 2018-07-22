@@ -49,7 +49,7 @@
       MONO_TLS_PROVIDER: legacy
       LC_ALL: "C"
 
-- name: Set Default Volume - {{pgrole}}
+- name: Set Default Labels - {{pgrole}}
   set_fact:
     default_labels:
       traefik.enable: "true"
