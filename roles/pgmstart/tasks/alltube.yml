@@ -15,14 +15,6 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
-
-- name: Drop Breaddcrumb - Delete Me When Done
-  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
-  ignore_errors: True
-  
 - name: "Establish Key Ports - {{pgrole}}"
   set_fact:
     intport: "80"
