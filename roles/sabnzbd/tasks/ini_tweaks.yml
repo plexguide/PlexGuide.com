@@ -1,0 +1,112 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Path for .ini
+  wait_for:
+    path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+    state: present
+
+- name: "Wait 10 Seconds"
+  wait_for:
+    timeout: 10
+
+- name: Customize sabnzbd_ini
+  docker_container:
+    name: sabnzbd
+    state: stopped
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "complete_dir = Downloads/complete"
+    replace: "complete_dir = /complete"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "host_whitelist ="
+    replace: "host_whitelist = sabnzbd.{{domain.stdout}},"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "download_dir = Downloads/incomplete"
+    replace: "download_dir = /incomplete"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: nzb_backup_dir = ""
+    replace: "nzb_backup_dir = /nzb"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "admin_dir = admin"
+    replace: "admin_dir = /admin"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "direct_unpack = 0"
+    replace: "direct_unpack = 1"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "ignore_samples = 0"
+    replace: "ignore_samples = 1"
+
+## remove unwanted extensions
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "unwanted_extensions = ,"
+    replace: "unwanted_extensions = exe, com, bat, sh"
+
+## ignore and cleanup the following files
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "cleanup_list = ,"
+    replace: "cleanup_list = nfo, exe, com, bat, txt, doc, xls, xlxs, docx, doc, jpg, jeg, gif, png"
+
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "action_on_unwanted_extensions = 0"
+    replace: "action_on_unwanted_extensions = 2"
+
+## aborts encrypted rar rather than pausing
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "pause_on_pwrar = 1"
+    replace: "pause_on_pwrar = 2"
+
+## try a new nzb if it fails
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "new_nzb_on_failure = 0"
+    replace: "new_nzb_on_failure = 1"
+
+## replace dots with space
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "replace_dots = 0"
+    replace: "replace_dots = 1"
+
+## flat_unpack
+- replace:
+    path: /opt/appdata/sabnzbd/sabnzbd.ini
+    regexp: "flat_unpack = 0"
+    replace: "flat_unpack = 1"
+
+- name: Restart Container
+  docker_container:
+    name: sabnzbd
+    state: started
