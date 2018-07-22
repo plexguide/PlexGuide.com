@@ -18,7 +18,7 @@ install:
   ###### RCLONE INSTALL
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
   ###### Install Containers
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "skipend=yes"
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
