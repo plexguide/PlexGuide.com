@@ -42,5 +42,9 @@
 
 - name: Set Default Volume - {{pgrole}}
   set_fact:
-    default_labels: "{{default_lables}}"
+    default_volumes:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
 ################################################## SABNZBD - END

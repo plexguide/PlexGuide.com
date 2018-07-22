@@ -30,16 +30,18 @@
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes: "{{default_volumes}}"
+    volumes:
     cpu_shares: 128
-    env: "{{default_env}}"
+    env:
+      PUID: 1000
+      PGID: 1000
     networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
     restart_policy: always
     state: started
-    labels: "{{default_labels}}"
+    labels:
 
 - include_role:
     name: pgmend
