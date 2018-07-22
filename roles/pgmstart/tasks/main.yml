@@ -16,6 +16,10 @@
 #
 #################################################################################
 ---
+- name: "Establish PG Role"
+  set_fact:
+    new: "0"
+
 - name: Register Domain
   shell: "cat /var/plexguide/server.domain"
   register: domain
