@@ -18,6 +18,8 @@
 echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 mkdir -p /opt/pgops
+tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive )
+tdrive="${tdrive:13}"
 
 while read p; do
 #  p=$(echo "${p::-1}")
@@ -34,7 +36,7 @@ client_secret =
 scope = drive
 root_folder_id =
 service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
-team_drive =
+team_drive = $tdrive
 EOF
 
 mkdir -p /opt/pgops/$p
@@ -46,8 +48,6 @@ rclone move --tpslimit 6 --checkers=20 \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
   --drive-chunk-size=32M /opt/pgops/$p $p:/
-
-rm -r /opt/pgops/$p
 
 done </tmp/pg.keys.temp
 
