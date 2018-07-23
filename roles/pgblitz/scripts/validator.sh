@@ -17,6 +17,8 @@
 #################################################################################
 echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+mkdir -p /tmp/pgblitz
+
 while read p; do
   echo $p > /tmp/pg.key.validator
 
@@ -35,7 +37,6 @@ service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
 team_drive =
 EOF
 
-mkdir -p /tmp/pgblitz
 echo "" > /tmp/pgblitz/$p
 
 rclone move --tpslimit 6 --checkers=20 \
