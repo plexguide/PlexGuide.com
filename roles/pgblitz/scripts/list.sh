@@ -16,7 +16,6 @@
 #
 #################################################################################
 echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-path=/opt/appdata/pgblitz/keys
 number=0
 
 ### NOTES
@@ -26,12 +25,12 @@ number=0
 # 4. Testing for now, but have invalid JSONs go to an invalid folder
 
 
-ls -la $path/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
-ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
+ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
+ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
 
-rm -r $path/unprocessed/* 1>/dev/null 2>&1
-rm -r $path/processed/* 1>/dev/null 2>&1
-rm -r $path/originalnames/* 1>/dev/null 2>&1
+#rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
+rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+rm -r /opt/appdata/pgblitz/keys/originalnames/* 1>/dev/null 2>&1
 
 rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 while read p; do
@@ -52,8 +51,8 @@ while read p; do
     fi
   done
 
-  mv $path/unprocessed/$p $path/processed/GDSA$number
-  echo "$path/unprocessed/$p" > $path/originalname/GDSA$number
+  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/GDSA$number
+  echo "/opt/appdata/pgblitz/keys/unprocessed/$p" > /opt/appdata/pgblitz/keys/originalname/GDSA$number
   echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done </tmp/pg.keys.temp
 
