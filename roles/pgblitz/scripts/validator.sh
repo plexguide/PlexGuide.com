@@ -15,10 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 while read p; do
   echo $p > /tmp/pg.key.validator
+
+echo "INFO - PGBlitz: Valadating $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
 
