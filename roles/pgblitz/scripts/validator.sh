@@ -17,7 +17,7 @@
 #################################################################################
 echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-mkdir -p /tmp/pgblitz
+mkdir -p /opt/pgops
 
 while read p; do
 #  p=$(echo "${p::-1}")
@@ -37,7 +37,9 @@ service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
 team_drive =
 EOF
 
-echo "" > /tmp/pgblitz/$p
+tee "/opt/pgops/$p" > /dev/null <<EOF
+FILLER
+EOF
 
 rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
@@ -45,9 +47,9 @@ rclone move --tpslimit 6 --checkers=20 \
   --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-  --drive-chunk-size=32M /tmp/pgblitz/$p $p:/
+  --drive-chunk-size=32M /opt/pgops/$p $p:/
 
-rm -r /tmp/pgblitz/$p
+rm -r /opt/pgops/$p
 
 done </tmp/pg.keys.temp
 
