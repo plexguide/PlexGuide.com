@@ -37,9 +37,7 @@ service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
 team_drive =
 EOF
 
-tee "/opt/pgops/$p" > /dev/null <<EOF
-FILLER
-EOF
+mkdir -p /opt/pgops/$p
 
 rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
