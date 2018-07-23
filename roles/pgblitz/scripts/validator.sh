@@ -36,7 +36,7 @@ team_drive =
 EOF
 
 mkdir -p /tmp/pgblitz
-touch /tmp/pgblitz/$p
+echo "" > /tmp/pgblitz/$p
 
 rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
