@@ -33,10 +33,23 @@ service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
 team_drive =
 EOF
 
+mkdir -p /tmp/pgblitz/
+touch /tmp/pgblitz/$p
 
+rclone move --tpslimit 6 --checkers=20 \
+  --config /root/.config/rclone/rclone.tmp \
+  --transfers=8 \
+  --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
+  --exclude="**partial~" --exclude="**_HIDDEN~" \
+  --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+  --drive-chunk-size=32M \
+  /tmp/pgblitz/$p $p:
 
+rm -r touch /tmp/pgblitz/$p
 
 done </tmp/pg.keys.temp
+
+######################## REMOVE BELOW
 
 
 ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
