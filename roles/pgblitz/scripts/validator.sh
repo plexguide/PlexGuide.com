@@ -16,22 +16,32 @@
 #
 #################################################################################
 echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-number=0
 
-### NOTES
-# 1. Build JSON Checkers for Quality Control to ensure valid
-# 2. If file is not a JSON, trash it
-# 3. Ensure that no more than 99 JSON's can be built - 100 limiter
-# 4. Testing for now, but have invalid JSONs go to an invalid folder
+while read p; do
+  echo $p > /tmp/pg.key.validator
+
+rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
+
+tee "/root/.config/rclone/rclone.tmp" > /dev/null <<EOF
+[GDSA1]
+type = drive
+client_id =
+client_secret =
+scope = drive
+root_folder_id =
+service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
+team_drive =
+EOF
+
+
+
+
+done </tmp/pg.keys.temp
 
 
 ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
-
-
-
-
-
+bash validator.sh
 
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
 
