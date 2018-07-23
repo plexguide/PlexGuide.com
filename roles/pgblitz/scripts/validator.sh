@@ -48,7 +48,7 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /tmp/pgblitz/$p $p:
 
-rm -r touch /tmp/pgblitz/$p
+rm -r /tmp/pgblitz/$p
 
 done </tmp/pg.keys.temp
 
