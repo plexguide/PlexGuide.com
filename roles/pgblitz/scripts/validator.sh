@@ -50,7 +50,7 @@ rm -r touch /tmp/pgblitz/$p
 done </tmp/pg.keys.temp
 
 ######################## REMOVE BELOW
-
+Sleep 10000
 
 ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
