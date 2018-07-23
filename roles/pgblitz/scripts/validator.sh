@@ -20,7 +20,7 @@ echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && b
 mkdir -p /tmp/pgblitz
 
 while read p; do
-  echo "${p::-1}"
+  p=$(echo "${p::-1}")
   echo $p > /tmp/pg.key.validator
 
 echo "INFO - PGBlitz: Valadating $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
