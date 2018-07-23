@@ -21,7 +21,7 @@
 #clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
 #build unionfs additon build script
 echo "INFO - PGBlitz Started for the First Time - 30 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-sleep 30
+sleep 5
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 
