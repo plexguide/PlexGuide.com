@@ -48,7 +48,8 @@ rclone move --tpslimit 6 --checkers=20 \
   --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-  --drive-chunk-size=32M /opt/pgops/ $p:
+  --drive-chunk-size=32M \
+  /opt/pgops $p: && rclone_fin_flag=1
 
 done </tmp/pg.keys.temp
 
