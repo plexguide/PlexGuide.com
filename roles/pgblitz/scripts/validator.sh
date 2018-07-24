@@ -70,3 +70,5 @@ GDSATEST:plexguide/checks/ | grep "$p" | awk '{print $5}')
 
 done </tmp/pg.keys.temp
 echo "INFO - PGBlitz: Finished Validating JSON Files" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+rm -r /opt/pgops/GDSATEST 1>/dev/null 2>&1
