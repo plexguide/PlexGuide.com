@@ -57,6 +57,7 @@ test=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
 GDSA1:plexguide/checks/$p )
 
+echo "$p"
 echo "finished"
 
 sleep 10000
