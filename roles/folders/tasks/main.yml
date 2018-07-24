@@ -146,7 +146,7 @@
     with_items:
       - /opt/appdata/pgblitz/keys/unprocessed
       - /opt/appdata/pgblitz/keys/processed
-      - /opt/appdata/pgblitz/keys/originalnames
+      - /opt/appdata/pgblitz/keys/badjson
       - /mnt/pgblitz
 
 ############ Directories
