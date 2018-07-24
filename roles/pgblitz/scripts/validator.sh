@@ -18,7 +18,6 @@
 echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 mkdir -p /opt/pgops 1>/dev/null 2>&1
-mkdir -p /mnt/gdrive/plexguide/checks 1>/dev/null 2>&1
 mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
@@ -54,7 +53,7 @@ rclone move --tpslimit 6 --checkers=20 \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
   --drive-chunk-size=32M \
-  /opt/pgops/ GDSATEST:plexguide/checks && rclone_fin_flag=1
+  /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
 checker=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
