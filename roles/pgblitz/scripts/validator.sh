@@ -56,8 +56,8 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-echo "Waiting 4 Seconds"
-sleep 4.5
+echo "Waiting 2 Seconds"
+sleep 2.5
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
