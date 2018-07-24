@@ -27,6 +27,7 @@ echo "Starting Valadation Process"
 echo ""
 while read p; do
 #  p=$(echo "${p::-1}")
+echo ""
 echo "Testing JSON: $p"
 echo "INFO - PGBlitz: Valdating GDSATEST - $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
@@ -56,8 +57,7 @@ rclone move --tpslimit 6 --checkers=20 \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
 echo "Waiting 2 Seconds"
-echo ""
-sleep 2
+sleep 2.5
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
