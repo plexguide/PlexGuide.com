@@ -55,9 +55,9 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-checker=$(rclone lsd \
+checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ | grep "$p" | awk '{print $5}')
+GDSATEST:plexguide/checks/ | grep "$p")
 
   if [ "$p" == "$checker" ]; then
       echo "JSON: $checker - Valid"
