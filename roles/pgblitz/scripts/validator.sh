@@ -24,13 +24,13 @@ tdrive="${tdrive:13}"
 
 while read p; do
 #  p=$(echo "${p::-1}")
-p2=GDSA1
+p2=GDSA-TEST
 echo "INFO - PGBlitz: Valadating $p2" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
 
 tee "/root/.config/rclone/rclone.tmp" > /dev/null <<EOF
-[GDSA1]
+[$p2]
 type = drive
 client_id =
 client_secret =
@@ -55,48 +55,17 @@ echo "next part"
 
 checker=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
-GDSA1:plexguide/checks/ | grep "$p" | awk '{print $5}')
+$p2:plexguide/checks/ | grep "$p" | awk '{print $5}')
 
+### TEMP
 echo "$checker"
-echo "finished"
 
-sleep 10000
+  if [ "$p" == "$checker" ]; then
+      echo "INFO - PGBlitz: $p2 - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    else
+      echo "INFO - PGBlitz: $p2 - is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      mv /opt/appdata/pgblitz/keys/unprocessed/$p mv /opt/appdata/pgblitz/keys/badjson/
+  fi
 
 done </tmp/pg.keys.temp
-
-######################## REMOVE BELOW
-ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
-
-bash validator.sh
-
-ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
-
-#rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
-rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
-rm -r /opt/appdata/pgblitz/keys/originalnames/* 1>/dev/null 2>&1
-
-rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
-while read p; do
-  p=${p:4}
-  echo $p >> /tmp/pg.keys.processed.count
-done </tmp/pg.keys.unprocessed.count
-
-while read p; do
-  let "number++"
-  until [ "$break" == "1" ]; do
-    check=$(grep -w "$number" /tmp/pg.keys.processed.counti)
-    if [ "$check" == "$number" ]; then
-        break=0
-        let "number++"
-        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      else
-        break=1
-    fi
-  done
-
-  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/GDSA$number
-  echo "/opt/appdata/pgblitz/keys/unprocessed/$p" > /opt/appdata/pgblitz/keys/originalname/GDSA$number
-  echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-done </tmp/pg.keys.temp
-
-echo "INFO - PGBlitz: JSON Building Process List Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: Finished Validating JSON Files" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
