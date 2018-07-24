@@ -23,7 +23,7 @@ tdrive="${tdrive:13}"
 
 while read p; do
 #  p=$(echo "${p::-1}")
-$p2=GDSA1
+p2=GDSA1
 echo "INFO - PGBlitz: Valadating $p2" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
