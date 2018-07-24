@@ -57,14 +57,13 @@ checker=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
 $p2:plexguide/checks/ | grep "$p" | awk '{print $5}')
 
-### TEMP
-echo "$checker"
-
   if [ "$p" == "$checker" ]; then
+      echo "JSON: $checker - Valid"
       echo "INFO - PGBlitz: $p2 - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
+      echo "JSON: $checker - Invalid | Sending to /opt/appdata/pgblitz/keys/badjson/ "
       echo "INFO - PGBlitz: $p2 - is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      mv /opt/appdata/pgblitz/keys/unprocessed/$p mv /opt/appdata/pgblitz/keys/badjson/
+      mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
   fi
 
 done </tmp/pg.keys.temp
