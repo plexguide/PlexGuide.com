@@ -22,6 +22,9 @@ mkdir -p /mnt/gdrive/plexguide/checks 1>/dev/null 2>&1
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive )
 tdrive="${tdrive:13}"
 
+clear
+echo "Starting Valadation Process"
+echo ""
 while read p; do
 #  p=$(echo "${p::-1}")
 p2=GDSA-TEST
@@ -51,8 +54,6 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/ $p2:plexguide/checks && rclone_fin_flag=1
 
-echo "next part"
-
 checker=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
 $p2:plexguide/checks/ | grep "$p" | awk '{print $5}')
@@ -61,9 +62,11 @@ $p2:plexguide/checks/ | grep "$p" | awk '{print $5}')
       echo "JSON: $checker - Valid"
       echo "INFO - PGBlitz: $p2 - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
+      echo ""
       echo "JSON: $checker - Invalid | Sending to /opt/appdata/pgblitz/keys/badjson/ "
       echo "INFO - PGBlitz: $p2 - is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
+      rm -r /mnt/gdrive/plexguide/checks/$p 1>/dev/null 2>&1
   fi
 
 done </tmp/pg.keys.temp
