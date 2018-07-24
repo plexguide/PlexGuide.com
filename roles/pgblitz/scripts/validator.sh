@@ -18,6 +18,7 @@
 echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 mkdir -p /opt/pgops
+mkdir -p /mnt/gdrive/
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive )
 tdrive="${tdrive:13}"
 
@@ -48,7 +49,7 @@ rclone move --tpslimit 6 --checkers=20 \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
   --drive-chunk-size=32M \
-  /opt/pgops $p2: && rclone_fin_flag=1
+  /opt/pgops $p2/plexguide/checks: && rclone_fin_flag=1
 
 echo "finished"
 sleep 10000
@@ -56,8 +57,6 @@ sleep 10000
 done </tmp/pg.keys.temp
 
 ######################## REMOVE BELOW
-sleep 10000
-
 ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
 bash validator.sh
