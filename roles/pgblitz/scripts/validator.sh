@@ -55,7 +55,7 @@ echo "next part"
 
 test=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
-/mnt/tdrive/plexguide/checks )
+GDSA1:plexguide/checks/$p )
 
 echo "finished"
 
