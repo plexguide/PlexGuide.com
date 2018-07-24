@@ -55,11 +55,15 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
+echo "Waiting 2 Seconds"
+sleep 2
+
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
 GDSATEST:plexguide/checks/ | grep "$p")
 
   if [ "$p" == "$checker" ]; then
+      echo ""
       echo "JSON: $checker - Valid"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
