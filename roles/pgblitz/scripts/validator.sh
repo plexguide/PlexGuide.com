@@ -44,6 +44,7 @@ team_drive = $tdrive
 EOF
 
 mkdir -p /opt/pgops/GDSATEST
+touch /opt/pgops/GDSATEST/$p
 
 rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
