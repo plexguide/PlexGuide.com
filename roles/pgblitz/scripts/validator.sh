@@ -64,11 +64,13 @@ checker=$(rclone lsf \
 GDSATEST:plexguide/checks/ | grep "$p")
 
   if [ "$p" == "$checker" ]; then
-      echo "JSON: $checker - Valid"
+      GREEN='\033[0;32m'
+      NC='\033[0m'
+      echo "JSON: $checker - ${GREEN}Valid${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
       RED='\033[0;31m'
-      NC='\033[0m' # No Color
+      NC='\033[0m'
       echo -e "JSON: $checker - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
       echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
