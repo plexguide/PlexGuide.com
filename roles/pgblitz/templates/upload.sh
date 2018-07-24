@@ -40,16 +40,7 @@ do
     ls -la /mnt/pgblitz/$p
     echo "sleep 5"
 
-    rclone move --tpslimit 6 --checkers=20 \
-      --config /root/.config/rclone/rclone.conf \
-      --transfers=8 \
-      --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
-      --exclude="**partial~" --exclude="**_HIDDEN~" \
-      --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-      --drive-chunk-size=32M \
-      /mnt/pgblitz/$p/ $p: && rclone_fin_flag=1
-      mv /mnt/pgblitz/$p/* /mnt/move/ 1>/dev/null 2>&1
-      cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
+
 
       echo "$p - GDSA"
       echo "INFO - PGBlitz: '$p' - Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
