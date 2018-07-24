@@ -27,13 +27,12 @@ echo "Starting Valadation Process"
 echo ""
 while read p; do
 #  p=$(echo "${p::-1}")
-p2=GDSA-TEST
-echo "INFO - PGBlitz: Valadating $p2" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: Valadating GDSATEST" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
 
 tee "/root/.config/rclone/rclone.tmp" > /dev/null <<EOF
-[$p2]
+[GDSATEST]
 type = drive
 client_id =
 client_secret =
@@ -43,7 +42,7 @@ service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
 team_drive = $tdrive
 EOF
 
-mkdir -p /opt/pgops/$p2
+mkdir -p /opt/pgops/GDSATEST
 
 rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
@@ -52,19 +51,19 @@ rclone move --tpslimit 6 --checkers=20 \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
   --drive-chunk-size=32M \
-  /opt/pgops/ $p2:plexguide/checks && rclone_fin_flag=1
+  /opt/pgops/ GDSATEST:plexguide/checks && rclone_fin_flag=1
 
 checker=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
-$p2:plexguide/checks/ | grep "$p" | awk '{print $5}')
+GDSATEST:plexguide/checks/ | grep "$p" | awk '{print $5}')
 
   if [ "$p" == "$checker" ]; then
       echo "JSON: $checker - Valid"
-      echo "INFO - PGBlitz: $p2 - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
       echo ""
       echo "JSON: $checker - Invalid | Sending to /opt/appdata/pgblitz/keys/badjson/ "
-      echo "INFO - PGBlitz: $p2 - is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: GDSATEST - is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
       rm -r /mnt/gdrive/plexguide/checks/$p 1>/dev/null 2>&1
   fi
