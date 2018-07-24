@@ -29,7 +29,7 @@ echo ""
 while read p; do
 #  p=$(echo "${p::-1}")
 echo "Testing JSON: $p"
-echo "INFO - PGBlitz: Valadating GDSATEST" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: Valdating GDSATEST - $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
 
