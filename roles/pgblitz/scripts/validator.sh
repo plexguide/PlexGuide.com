@@ -19,6 +19,7 @@ echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && b
 
 mkdir -p /opt/pgops 1>/dev/null 2>&1
 mkdir -p /mnt/gdrive/plexguide/checks 1>/dev/null 2>&1
+mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
 
