@@ -66,7 +66,7 @@ GDSATEST:plexguide/checks/ | grep "$p")
   if [ "$p" == "$checker" ]; then
       GREEN='\033[0;32m'
       NC='\033[0m'
-      echo -e "JSON: $checker - ${GREEN}Valid${NC}"
+      echo -e "JSON: $checker - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
       RED='\033[0;31m'
