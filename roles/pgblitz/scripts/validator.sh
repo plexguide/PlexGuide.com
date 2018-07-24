@@ -53,11 +53,11 @@ rclone move --tpslimit 6 --checkers=20 \
 
 echo "next part"
 
-test=$(rclone lsd \
+checker=$(rclone lsd \
   --config /root/.config/rclone/rclone.tmp \
-GDSA1:plexguide/checks/$p )
+GDSA1:plexguide/checks/ | grep "$p" | awk '{print $5}')
 
-echo "$p"
+echo "$checker"
 echo "finished"
 
 sleep 10000
