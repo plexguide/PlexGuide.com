@@ -23,8 +23,8 @@ tdrive="${tdrive:13}"
 
 while read p; do
 #  p=$(echo "${p::-1}")
-
-echo "INFO - PGBlitz: Valadating $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+$p2=GDSA1
+echo "INFO - PGBlitz: Valadating $p2" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 rm -r /root/.config/rclone/rclone.tmp 1>/dev/null 2>&1
 
@@ -39,9 +39,8 @@ service_account_file = /opt/appdata/pgblitz/keys/unprocessed/$p
 team_drive = $tdrive
 EOF
 
-mkdir -p /opt/pgops/$p
+mkdir -p /opt/pgops/$p2
 
-$p=GDSA1
 rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
   --transfers=8 \
@@ -49,7 +48,10 @@ rclone move --tpslimit 6 --checkers=20 \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
   --drive-chunk-size=32M \
-  /opt/pgops $p: && rclone_fin_flag=1
+  /opt/pgops $p2: && rclone_fin_flag=1
+
+echo "finished"
+sleep 10000
 
 done </tmp/pg.keys.temp
 
