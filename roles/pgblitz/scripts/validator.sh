@@ -56,6 +56,7 @@ rclone move --tpslimit 6 --checkers=20 \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
 echo "Waiting 2 Seconds"
+echo ""
 sleep 2
 
 checker=$(rclone lsf \
@@ -63,11 +64,9 @@ checker=$(rclone lsf \
 GDSATEST:plexguide/checks/ | grep "$p")
 
   if [ "$p" == "$checker" ]; then
-      echo ""
       echo "JSON: $checker - Valid"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
-      echo ""
       echo "JSON: $checker - Invalid | Sending to /opt/appdata/pgblitz/keys/badjson/ "
       echo "INFO - PGBlitz: GDSATEST - is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
@@ -75,6 +74,8 @@ GDSATEST:plexguide/checks/ | grep "$p")
   fi
 
 done </tmp/pg.keys.temp
+
 echo "INFO - PGBlitz: Finished Validating JSON Files" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "" && echo "Finished Valadating JSON Files" && read -n 1 -s -r -p "Press any key to continue"
 
 rm -r /opt/pgops/GDSATEST 1>/dev/null 2>&1
