@@ -49,7 +49,7 @@ rclone move --tpslimit 6 --checkers=20 \
   --exclude="**partial~" --exclude="**_HIDDEN~" \
   --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
   --drive-chunk-size=32M \
-  /opt/pgops $p2/plexguide/checks: && rclone_fin_flag=1
+  /opt/pgops $p2: && rclone_fin_flag=1
 
 echo "finished"
 sleep 10000
