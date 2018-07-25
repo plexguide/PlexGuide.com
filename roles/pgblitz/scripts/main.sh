@@ -142,6 +142,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             rm -r /opt/appdata/pgblitz/keys/processed/*
             rm -r /opt/appdata/pgblitz/keys/badjson/*
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
+            ;;
         Z)
             exit 0 ;;
 
