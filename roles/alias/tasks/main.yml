@@ -255,7 +255,7 @@
 
   - name: Install PGBlitz
     template:
-      src: pgblitz
+      src: spgblitz
       dest: /bin/spgblitz
       force: yes
       mode: 0775
