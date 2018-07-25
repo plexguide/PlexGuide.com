@@ -24,14 +24,14 @@ selected=$( cat /var/plexguide/menu.select )
 echo 'INFO - @PG Drive Version Select Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=11
-WIDTH=42
+WIDTH=50
 CHOICE_HEIGHT=3
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w $selected"
 MENU="Select a Version:"
 
-OPTIONS=(A "PGDrives: Unencrypt"
-         B "PGDrives: Encrypted (NOT READY)"
+OPTIONS=(A "PGDrives: ST2 - Unencrypted"
+         B "PGDrives: ST2 - Encrypted (NOT READY)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \

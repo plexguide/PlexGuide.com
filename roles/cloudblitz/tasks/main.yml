@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & MBCorps
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -21,48 +21,49 @@
 - include_role:
     name: pgmstart
 
-- name: create plexguide network
-  docker_network:
-    name: "plexguide"
-    state: present
-
-- name: "{{role_name}} Container"
-  docker_container:
-    name: "{{role_name}}"
-    state: absent
-
-- name: Create {{role_name}} directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+- name: Create Directories
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/appdata/{{role_name}}
+    - "/opt/appdata/cloudblitz/"
+    - "/opt/appdata/plexguide/supertransfer/"
 
-- name: Deploy {{role_name}} Container
+- name: Check config file exists
+  stat:
+    path: "/opt/appdata/cloudblitz/.cloudcmd.json"
+  register: cloud_json
+
+- name: Install configblitz.json
+  template:
+    src: configblitz.json
+    dest: /opt/appdata/cloudblitz/.cloudcmd.json
+    force: yes
+  when: cloud_json.stat.exists == False
+
+- name: Deploy cloudblitz Edition
   docker_container:
-    name: "{{role_name}}"
-    image: "{{role_name}}/{{role_name}}"
+    name: cloudblitz
+    image: coderaiser/cloudcmd
     pull: yes
-    cpu_shares: 128
+    cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     env:
       PUID: "1000"
       PGID: "1000"
     volumes:
-     - "/opt/appdata/{{role_name}}:/data"
-     - "/var/run/docker.sock:/var/run/docker.sock"
-     - "/opt/appdata/{{role_name}}:/data"
+      - /:/SERVER
+      - /opt/appdata/cloudblitz:/root/
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    restart_policy: always
-    state: started
-### {{role_name}} cannot use auth label; pointless anyways due to creating own user/passwd
+          - cloudblitz
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:cloudblitz.{{domain.stdout}}"
       traefik.port: "{{intport}}"
+    restart_policy: always
+    state: started
 
 - include_role:
     name: pgmend

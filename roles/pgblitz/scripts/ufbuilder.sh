@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,16 +15,19 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#### PG VARIBLES
-echo "6.017" > /var/plexguide/pg.version
-echo "131" > /var/plexguide/pg.preinstall
 
-#### Installer
-echo "5" > /var/plexguide/pg.ansible
-echo "2" > /var/plexguide/pg.rclone
-echo "1" > /var/plexguide/pg.python
-echo "1" > /var/plexguide/pg.docstart
-echo "2" > /var/plexguide/pg.watchtower
-echo "1" > /var/plexguide/pg.label
-echo "30" > /var/plexguide/pg.alias
-echo "1" > /var/plexguide/pg.dep ## dependencies
+#build a service out of this
+#Remake another for PGBlitz
+#clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
+#build unionfs additon build script
+
+path=/opt/appdata/pgblitz/keys
+
+ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+rm -r /tmp/pg.gdsa.build 1>/dev/null 2>&1
+
+while read p; do
+echo -n "/mnt/pgblitz/$p=RO:">> /tmp/pg.gdsa.build
+done </tmp/pg.gdsa.ufs
+builder=$( cat /tmp/pg.gdsa.build )
+echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

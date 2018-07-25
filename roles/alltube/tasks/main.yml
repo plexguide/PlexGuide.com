@@ -16,45 +16,43 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: "Establish PG Role"
+  set_fact:
+    pgrole: "{{role_name}}"
+
+- name: Drop Breaddcrumb - Delete Me When Done
+  shell: "touch /var/plexguide/breadcrumb.{{pgrole}}"
+  ignore_errors: True
 
 - include_role:
     name: pgmstart
 
-- name: Create {{role_name}} directories
+- name: Create {{pgrole}} directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/appdata/{{role_name}}
+    - /opt/appdata/{{pgrole}}
 
 - name: Import default config
   template:
     src: config.json.js2
-    dest: /opt/appdata/{{role_name}}/config.json
+    dest: /opt/appdata/{{pgrole}}/config.json
     force: yes
 
-- name: Deploy {{role_name}} Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
-    name: "{{role_name}}"
-    image: rudloff/{{role_name}}
+    name: "{{pgrole}}"
+    image: "rudloff/{{pgrole}}"
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-      - /opt/appdata/{{role_name}}:/var/www/html/config
+    env: "{{default_env}}"
+    volumes: "{{default_volumes}}"
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+          - "{{pgrole}}"
+    labels: "{{default_labels}}"
     restart_policy: always
     state: started
 

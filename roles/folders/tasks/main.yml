@@ -140,6 +140,8 @@
     when: qbit.stat.exists == False
     ignore_errors: yes
 
+  - debug: msg="Your Mount Point is {{path}}"
+
 ############ Directories
   - name: Create Basic Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -147,8 +149,11 @@
       - /opt/appdata/plexguide
       - /var/plexguide
       - /mnt/move
+      - /opt/appdata/pgblitz/keys/unprocessed
+      - /opt/appdata/pgblitz/keys/processed
+      - /opt/appdata/pgblitz/keys/badjson
+      - /mnt/pgblitz
       - /var/plexguide/logs
-      - /mnt/rcache
       - "{{path.stdout}}/deluge"
       - "{{path.stdout}}/deluge/temp"
       - "{{path.stdout}}/deluge/downloaded"
