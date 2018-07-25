@@ -71,6 +71,21 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
+        ### Checkers
+        if [ "$gdrive" != "[gdrive]" ]; then
+          echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+
+        if [ "$tdrive" != "[tdrive]" ]; then
+          echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+        
             echo 'INFO - DEPLOYED JSON FILES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #### Deploy CloudBlitz
             clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
@@ -94,14 +109,14 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             ### Checkers
             if [ "$gdrive" != "[gdrive]" ]; then
               echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
               bash /opt/plexguide/roles/pgblitz/scripts/main.sh
               exit
             fi
 
             if [ "$tdrive" != "[tdrive]" ]; then
               echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured!\n\nThis is required for TeamDrives to Work!!" 0 0
+              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
               bash /opt/plexguide/roles/pgblitz/scripts/main.sh
               exit
             fi
