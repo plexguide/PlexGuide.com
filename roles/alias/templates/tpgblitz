@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-sudo systemctl status pgblitz
+tail /opt/appdata/pgblitz/rclone.log
