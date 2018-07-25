@@ -253,9 +253,16 @@
       force: yes
       mode: 0775
 
-  - name: Install PGBlitz
+  - name: Install Status PGBlitz
     template:
       src: spgblitz
+      dest: /bin/spgblitz
+      force: yes
+      mode: 0775
+
+  - name: Install Transfer PGBlitz
+    template:
+      src: tpgblitz
       dest: /bin/spgblitz
       force: yes
       mode: 0775
