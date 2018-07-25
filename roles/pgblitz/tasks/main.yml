@@ -46,7 +46,7 @@
   - name: Check move-en Service
     stat:
       path: "/etc/systemd/system/move-en.service"
-    register: move-en
+    register: moveen
     tags:
       - blitzdeploy
 
@@ -55,7 +55,7 @@
       state: stopped
       enabled: no
       name: move-en
-    when: move-en.stat.exists
+    when: moveen.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
@@ -150,13 +150,6 @@
     tags:
       - blitzdeploy
 
-  - name: Stop If TDRIVE Service Running
-    systemd: state=stopped name=tdrive
-    when: tcrypt.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
 ###### Above (TCrypt) - Below (Standard TDrive)
 
   - name: Install TDRIVE Service
@@ -174,12 +167,6 @@
     ignore_errors: True
     tags:
       - blitzdeploy
-
-  - name: Start TDrive
-    systemd: state=started name=tdrive enabled=yes
-    tags:
-      - blitzdeploy
-
 ############################################## TDRIVE (END)
 
 ############################################## UNIONFS (START)
