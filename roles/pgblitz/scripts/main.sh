@@ -71,6 +71,11 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
+        #### RECALL VARIABLES START
+        tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+        gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+        #### RECALL VARIABLES END
+
         ### Checkers
         if [ "$gdrive" != "[gdrive]" ]; then
           echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -85,7 +90,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           bash /opt/plexguide/roles/pgblitz/scripts/main.sh
           exit
         fi
-        
+
             echo 'INFO - DEPLOYED JSON FILES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #### Deploy CloudBlitz
             clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
