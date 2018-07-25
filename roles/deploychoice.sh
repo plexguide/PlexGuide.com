@@ -20,15 +20,15 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
 
 ##################################################### DEPLOYMENT SYSTEM - START
         HEIGHT=11
-        WIDTH=44
+        WIDTH=45
         CHOICE_HEIGHT=5
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
         TITLE="Deploy a Mounting System"
 
-        OPTIONS=(A "PGDrive   /w PG ST2   (Advanced)"
-                 B "PGDrive   /w PG Move  (Recommended)"
-                 C "PlexDrive /w PG Move  (Traditional)"
-                 D "PGDrive   /w PG Blitz (Not Ready)"
+        OPTIONS=(A "PGDrive   /w PG Blitz (Beta 1)"
+                 B "PGDrive   /w PG ST2   (Will Phase Out)"
+                 C "PGDrive   /w PG Move  (Recommended)"
+                 D "PlexDrive /w PG Move  (Traditional)"
                  Z "Exit")
 
         CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -38,18 +38,18 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
                         "${OPTIONS[@]}" \
                         2>&1 >/dev/tty)
         case $CHOICE in
-                D)
+                A)
                     bash /opt/plexguide/roles/pgblitz/scripts/main.sh
                     ;;
-                B)
+                C)
                     echo "Move" > /var/plexguide/menu.select
                     bash /opt/plexguide/roles/pgdrivenav/main.sh
                     ;;
-                A)
+                B)
                     echo "SuperTransfer2" > /var/plexguide/menu.select
                     bash /opt/plexguide/roles/pgdrivenav/main.sh
                     ;;
-                C)
+                D)
                     "plexdrive" > /var/plexguide/menu.select
                     bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh
                     ;;
