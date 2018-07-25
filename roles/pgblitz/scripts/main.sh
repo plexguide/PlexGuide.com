@@ -135,7 +135,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
         D)
-            dialog --infobox "Baselining PGBlitz (Please Wait)" 0 0
+            dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1
             systemctl disable pgblitz 1>/dev/null 2>&1
