@@ -239,7 +239,7 @@
       force: yes
       mode: 0775
 
-  - name: Install PGFork
+  - name: Install Backup
     template:
       src: backup
       dest: /bin/backup
@@ -250,6 +250,13 @@
     template:
       src: pgedge
       dest: /bin/pgedge
+      force: yes
+      mode: 0775
+
+  - name: Install PGBlitz
+    template:
+      src: pgblitz
+      dest: /bin/spgblitz
       force: yes
       mode: 0775
 
