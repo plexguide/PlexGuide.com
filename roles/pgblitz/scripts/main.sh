@@ -30,6 +30,7 @@ MENU="Make a Selection:"
 OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
          C "Deploy: PG Drive & PG Blitz"
+         D "Tshoot: Remove All Keys (Baseline)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -133,6 +134,14 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
+        D)
+            systemctl stop pgblitz
+            systemctl disable pgblitz
+            rm -r /root/.config/rclone/rclone.conf
+            rm -r /opt/appdata/pgblitz/keys/unprocessed/*
+            rm -r /opt/appdata/pgblitz/keys/processed/*
+            rm -r /opt/appdata/pgblitz/keys/badjson/*
+            dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
         Z)
             exit 0 ;;
 
