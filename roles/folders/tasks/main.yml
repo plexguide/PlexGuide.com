@@ -154,7 +154,6 @@
       - /opt/appdata/pgblitz/keys/badjson
       - /mnt/pgblitz
       - /var/plexguide/logs
-      - "{{path.stdout}}/"
       - "{{path.stdout}}/deluge"
       - "{{path.stdout}}/deluge/temp"
       - "{{path.stdout}}/deluge/downloaded"
