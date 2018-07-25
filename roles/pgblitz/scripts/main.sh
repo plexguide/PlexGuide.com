@@ -135,12 +135,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
         D)
-            systemctl stop pgblitz
-            systemctl disable pgblitz
-            rm -r /root/.config/rclone/rclone.conf
-            rm -r /opt/appdata/pgblitz/keys/unprocessed/*
-            rm -r /opt/appdata/pgblitz/keys/processed/*
-            rm -r /opt/appdata/pgblitz/keys/badjson/*
+            dialog --infobox "Baselining PGBlitz (Please Wait)" 0 0 
+            systemctl stop pgblitz 1>/dev/null 2>&1
+            systemctl disable pgblitz 1>/dev/null 2>&1
+            rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
+            rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
+            rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+            rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
         Z)
