@@ -81,7 +81,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             docker rm cloudblitz
             bash /opt/plexguide/roles/pgblitz/scripts/list.sh
             bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
-
+            dialog --title "NOTE" --msgbox "\nJSON Keys Processed" 0 0
             ;;
         C)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
