@@ -55,7 +55,7 @@
       state: stopped
       enabled: no
       name: move-en
-    when: move.stat.exists
+    when: move-en.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
@@ -91,7 +91,6 @@
 
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt enabled=no
-    ignore_errors: yes
     when: gcrypt.stat.exists
     ignore_errors: True
     tags:
@@ -99,7 +98,6 @@
 
   - name: Daemon-Reload - Stop GCRYPT Service
     systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-    ignore_errors: yes
     when: gcrypt.stat.exists
     ignore_errors: True
     tags:
