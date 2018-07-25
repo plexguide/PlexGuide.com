@@ -140,14 +140,7 @@
     when: qbit.stat.exists == False
     ignore_errors: yes
 
-############ PGBlitz
-  - name: Create PGBlitz Directories
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-    with_items:
-      - /opt/appdata/pgblitz/keys/unprocessed
-      - /opt/appdata/pgblitz/keys/processed
-      - /opt/appdata/pgblitz/keys/badjson
-      - /mnt/pgblitz
+  - debug: msg="Your Mount Point is {{path}}"
 
 ############ Directories
   - name: Create Basic Directories
@@ -156,8 +149,11 @@
       - /opt/appdata/plexguide
       - /var/plexguide
       - /mnt/move
+      - /opt/appdata/pgblitz/keys/unprocessed
+      - /opt/appdata/pgblitz/keys/processed
+      - /opt/appdata/pgblitz/keys/badjson
+      - /mnt/pgblitz
       - /var/plexguide/logs
-      - "{{path.stdout}}/"
       - "{{path.stdout}}/deluge"
       - "{{path.stdout}}/deluge/temp"
       - "{{path.stdout}}/deluge/downloaded"
