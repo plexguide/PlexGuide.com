@@ -16,8 +16,8 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.017 Edge" > /var/plexguide/pg.version
-echo "127" > /var/plexguide/pg.preinstall
+echo "6.017" > /var/plexguide/pg.version
+echo "128" > /var/plexguide/pg.preinstall
 
 #### Installer
 echo "5" > /var/plexguide/pg.ansible
@@ -26,5 +26,5 @@ echo "1" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.label
-echo "26" > /var/plexguide/pg.alias
+echo "27" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep ## dependencies
