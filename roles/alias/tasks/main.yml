@@ -263,7 +263,7 @@
   - name: Install Transfer PGBlitz
     template:
       src: tpgblitz
-      dest: /bin/spgblitz
+      dest: /bin/tpgblitz
       force: yes
       mode: 0775
 
