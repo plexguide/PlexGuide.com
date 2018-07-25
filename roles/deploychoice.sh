@@ -20,7 +20,7 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
 
 ##################################################### DEPLOYMENT SYSTEM - START
         HEIGHT=11
-        WIDTH=46
+        WIDTH=47
         CHOICE_HEIGHT=5
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
         TITLE="Deploy a Mounting System"
