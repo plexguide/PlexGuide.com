@@ -23,8 +23,9 @@ tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
 
 clear
+echo "PGBlitz  By - Admin9705   (100% Code Rewrite)"
+echo "Inspired By - FlickerRate (From ST2)"
 echo "Starting Valadation Process"
-echo ""
 while read p; do
 #  p=$(echo "${p::-1}")
 echo ""

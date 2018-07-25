@@ -45,8 +45,8 @@
 ### Encrypted
   - name: Check move-en Service
     stat:
-      path: "/etc/systemd/system/move.service"
-    register: move-en
+      path: "/etc/systemd/system/move-en.service"
+    register: moveen
     tags:
       - blitzdeploy
 
@@ -55,7 +55,7 @@
       state: stopped
       enabled: no
       name: move-en
-    when: move.stat.exists
+    when: moveen.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
@@ -91,16 +91,14 @@
 
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt enabled=no
-    ignore_errors: yes
-    when: grypt.stat.exists
+    when: gcrypt.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
 
   - name: Daemon-Reload - Stop GCRYPT Service
     systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-    ignore_errors: yes
-    when: grypt.stat.exists
+    when: gcrypt.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
@@ -138,22 +136,22 @@
 ############################################## GDRIVE (END)
 
 ############################################## TDRIVE (START)
-  - name: Stop If TCRYPT Service Running
-    systemd: state=stopped name=tcrypt enabled=no
-    ignore_errors: yes
+  - name: Check TCrypt Serivce
+    stat:
+      path: "/etc/systemd/system/tcrypt.service"
     register: tcrypt
     tags:
       - blitzdeploy
 
-  - name: Daemon-Reload - Stop TCRYPT Service
-    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
+  - name: Stop If TCrypt Service Running
+    systemd: state=stopped name=tcrypt enabled=no
     when: tcrypt.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
 
-  - name: Stop If TDRIVE Service Running
-    systemd: state=stopped name=tdrive
+  - name: Daemon-Reload - Stop TCrypt Service
+    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
     when: tcrypt.stat.exists
     ignore_errors: True
     tags:
@@ -161,27 +159,34 @@
 
 ###### Above (TCrypt) - Below (Standard TDrive)
 
-  - name: Install TDRIVE Service
-    template:
-      src: tdrive.js2
-      dest: /etc/systemd/system/tdrive.service
-      force: yes
+  - name: Check TDrive Serivce
+    stat:
+      path: "/etc/systemd/system/tdrive.service"
     register: tdrive
     tags:
       - blitzdeploy
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=tdrive daemon_reload=yes enabled=no
+  - name: Stop If TDrive Service Running
+    systemd: state=stopped name=tdrive
     when: tdrive.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
 
-  - name: Start TDrive
-    systemd: state=started name=tdrive enabled=yes
+  - name: Install TDrive Service
+    template:
+      src: tdrive.js2
+      dest: /etc/systemd/system/tdrive.service
+      force: yes
+    ignore_errors: yes
     tags:
       - blitzdeploy
 
+  - name: Start TDrive SERVICE
+    systemd: state=started name=tdrive daemon_reload=yes enabled=yes
+    ignore_errors: yes
+    tags:
+      - blitzdeploy
 ############################################## TDRIVE (END)
 
 ############################################## UNIONFS (START)

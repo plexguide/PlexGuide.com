@@ -31,7 +31,7 @@ while true
 do
 
   while read p; do
-    echo 'INFO - PGBlitz: Using GDSA $p for transfer' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo "INFO - PGBlitz: Using GDSA $p for transfer" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
     mkdir -p /mnt/pgblitz/$p
     mv /mnt/move/* /mnt/pgblitz/$p
@@ -53,7 +53,7 @@ do
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
 
       echo "$p - GDSA"
-      echo 'INFO - PGBlitz: "$p" - Transfer Complete - Sleeping 5 Seconds' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: $p Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       sleep 5
   done </tmp/pg.gdsalist
 

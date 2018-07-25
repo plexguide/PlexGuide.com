@@ -20,9 +20,9 @@ echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 ################################################################## CORE
 
-HEIGHT=11
-WIDTH=42
-CHOICE_HEIGHT=4
+HEIGHT=12
+WIDTH=43
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="Make a Selection:"
@@ -30,6 +30,7 @@ MENU="Make a Selection:"
 OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
          C "Deploy: PG Drive & PG Blitz"
+         D "Tshoot: Remove All Keys (Baseline)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -70,17 +71,32 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
+        ### Checkers
+        if [ "$gdrive" != "[gdrive]" ]; then
+          echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+
+        if [ "$tdrive" != "[tdrive]" ]; then
+          echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+        
             echo 'INFO - DEPLOYED JSON FILES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #### Deploy CloudBlitz
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
             #### Note How to Create Json files
             dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
             dialog --infobox "Please Wait" 3 22
-            docker stop cloudblitz
-            docker rm cloudblitz
+            docker stop cloudblitz 1>/dev/null 2>&1
+            docker rm cloudblitz 1>/dev/null 2>&1
             bash /opt/plexguide/roles/pgblitz/scripts/list.sh
             bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
-
+            dialog --title "NOTE" --msgbox "\nJSON Keys Processed" 0 0
             ;;
         C)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -93,14 +109,14 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             ### Checkers
             if [ "$gdrive" != "[gdrive]" ]; then
               echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
               bash /opt/plexguide/roles/pgblitz/scripts/main.sh
               exit
             fi
 
             if [ "$tdrive" != "[tdrive]" ]; then
               echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured!\n\nThis is required for TeamDrives to Work!!" 0 0
+              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
               bash /opt/plexguide/roles/pgblitz/scripts/main.sh
               exit
             fi
@@ -132,6 +148,17 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
+            ;;
+        D)
+            dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
+            sleep 2
+            systemctl stop pgblitz 1>/dev/null 2>&1
+            systemctl disable pgblitz 1>/dev/null 2>&1
+            rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
+            rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
+            rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+            rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
+            dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
         Z)
             exit 0 ;;
