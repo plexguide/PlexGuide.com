@@ -20,9 +20,9 @@ echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 ################################################################## CORE
 
-HEIGHT=11
-WIDTH=42
-CHOICE_HEIGHT=4
+HEIGHT=12
+WIDTH=43
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="Make a Selection:"
@@ -135,7 +135,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
         D)
-            dialog --infobox "Baselining PGBlitz (Please Wait)" 0 0 
+            dialog --infobox "Baselining PGBlitz (Please Wait)" 0 0
             systemctl stop pgblitz 1>/dev/null 2>&1
             systemctl disable pgblitz 1>/dev/null 2>&1
             rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
