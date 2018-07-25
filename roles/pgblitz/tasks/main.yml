@@ -92,7 +92,7 @@
   - name: Stop If GCRYPT Service Running
     systemd: state=stopped name=gcrypt enabled=no
     ignore_errors: yes
-    when: grypt.stat.exists
+    when: gcrypt.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
@@ -100,7 +100,7 @@
   - name: Daemon-Reload - Stop GCRYPT Service
     systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
     ignore_errors: yes
-    when: grypt.stat.exists
+    when: gcrypt.stat.exists
     ignore_errors: True
     tags:
       - blitzdeploy
