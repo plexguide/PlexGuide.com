@@ -45,7 +45,7 @@
 ### Encrypted
   - name: Check move-en Service
     stat:
-      path: "/etc/systemd/system/move.service"
+      path: "/etc/systemd/system/move-en.service"
     register: move-en
     tags:
       - blitzdeploy
