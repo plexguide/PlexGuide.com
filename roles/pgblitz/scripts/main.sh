@@ -95,7 +95,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### Deploy CloudBlitz
             clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
             #### Note How to Create Json files
-            dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
+            dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nUser - PW: plex / guide\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
             dialog --infobox "Please Wait" 3 22
             docker stop cloudblitz 1>/dev/null 2>&1
             docker rm cloudblitz 1>/dev/null 2>&1
