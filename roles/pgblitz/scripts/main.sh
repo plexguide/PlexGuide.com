@@ -20,9 +20,9 @@ echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 ################################################################## CORE
 
-HEIGHT=12
+HEIGHT=13
 WIDTH=43
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="Make a Selection:"
