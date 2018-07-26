@@ -16,7 +16,7 @@
 path=/opt/appdata/pgblitz/keys/processed
 
 ls -la $path | awk '{ print $9}' | tail -n +4 > /tmp/pgblitz.emails
-rm -r /tmp/pgblitz.emails.list
+rm -r /tmp/pgblitz.emails.list 1>/dev/null 2>&1
 
 while read p; do
   email=$(cat /$path/$p | egrep "client_email")
