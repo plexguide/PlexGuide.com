@@ -20,17 +20,18 @@ echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 ################################################################## CORE
 
-HEIGHT=12
-WIDTH=43
-CHOICE_HEIGHT=5
+HEIGHT=13
+WIDTH=45
+CHOICE_HEIGHT=6
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="Make a Selection:"
 
 OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
-         C "Deploy: PG Drive & PG Blitz"
-         D "Tshoot: Remove All Keys (Baseline)"
+         C "E-Mail: Share Generator for PG Blitz"
+         D "Deploy: PG Drive & PG Blitz"
+         E "Tshoot: Remove All Keys (Baseline)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -104,6 +105,11 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nJSON Keys Processed" 0 0
             ;;
         C)
+            echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/pgblitz/scripts/emails.sh
+            dialog --title "WARNING!" --msgbox "\nIf you add any new JSONs in the future,\nyou must share their email addresses also!" 0 0
+            ;;
+        D)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #### RECALL VARIABLES START
@@ -154,7 +160,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
-        D)
+        E)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1

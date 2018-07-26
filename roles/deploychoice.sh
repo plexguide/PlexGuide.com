@@ -25,7 +25,7 @@ echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log &&
         BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
         TITLE="Deploy a Mounting System"
 
-        OPTIONS=(A "PGDrive   /w PG Blitz (Beta 1)"
+        OPTIONS=(A "PGDrive   /w PG Blitz (Beta 2)"
                  B "PGDrive   /w PG ST2   (Will Phase Out)"
                  C "PGDrive   /w PG Move  (Recommended)"
                  D "PlexDrive /w PG Move  (Traditional)"
