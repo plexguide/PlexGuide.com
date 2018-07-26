@@ -29,6 +29,7 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
+         C "E-Mail: Share Generator for PG Blitz"
          C "Deploy: PG Drive & PG Blitz"
          D "Tshoot: Remove All Keys (Baseline)"
          Z "Exit")

@@ -26,7 +26,8 @@ while read p; do
 done </tmp/pgblitz.emails
 
 clear
-
+echo "Welcome to the PG Blitz - EMail Share Generator"
+echo ""
 echo "In GDRIVE, share the teamdrive with the following emails:"
 echo '  NOTE 1: uncheck "notify people" & check "prevent editors"...-'
 echo '  NOTE 2: ignore "sharing outside of org warning"'
