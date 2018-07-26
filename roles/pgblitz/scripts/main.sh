@@ -107,7 +107,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
         C)
             echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/pgblitz/scripts/emails.sh
-            dialog --title "WARNING!" --msgbox "\nIf you add any new JSONs in the future,\n\nyou must add their email addresses also!" 0 0
+            dialog --title "WARNING!" --msgbox "\nIf you add any new JSONs in the future,\n\nyou must share their email addresses also!" 0 0
+            ;;
         D)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
