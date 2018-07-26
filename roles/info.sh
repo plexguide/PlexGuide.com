@@ -19,6 +19,7 @@
 echo "6.019 EDGE" > /var/plexguide/pg.version
 echo "131" > /var/plexguide/pg.preinstall
 
+
 #### Installer
 echo "5" > /var/plexguide/pg.ansible
 echo "2" > /var/plexguide/pg.rclone
