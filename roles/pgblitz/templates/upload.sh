@@ -48,6 +48,7 @@ do
       --exclude="**partial~" --exclude="**_HIDDEN~" \
       --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
       --drive-chunk-size=32M \
+      --delete-empty-src-dirs \
       /mnt/pgblitz/$p/ $p: && rclone_fin_flag=1
 
       #mv /mnt/pgblitz/$p/* /mnt/move/ 1>/dev/null 2>&1
