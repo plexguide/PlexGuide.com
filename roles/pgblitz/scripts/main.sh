@@ -31,7 +31,8 @@ OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
          C "E-Mail: Share Generator for PG Blitz"
          D "Deploy: PG Drive & PG Blitz"
-         E "Tshoot: Remove All Keys (Baseline)"
+         E "Tshoot: Baseline PG Blitz (Fresh Start)"
+         F "Tshoot: Disable PGBlitz"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -165,12 +166,24 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1
             systemctl disable pgblitz 1>/dev/null 2>&1
+            grep -A10 'tdrive' rclone.conf|grep -v "tdrive" > /root/.config/rclone/tdrive.save
+            grep -A10 'gdrive' rclone.conf|grep -v "gdrive" > /root/.config/rclone/gdrive.save
             rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
             rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
             rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
             rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
+
+            cat /root/.config/rclone/tdrive.save > /root/.config/rclone/rclone.conf
+            echo "" > /root/.config/rclone/rclone.conf
+            cat /root/.config/rclone/gdrive.save >> /root/.config/rclone/rclone.conf
+
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
+         F)
+            sudo systemctl stop pgblitz 1>/dev/null 2>&1
+            sudo systemctl rm pgblitz 1>/dev/null 2>&1
+            dialog --title "NOTE" --msgbox "\nPG Blitz is Disabled!\n\nYou must rerun PGDrives & PGBlitz to Enable Again!" 0 0
+
         Z)
             exit 0 ;;
 
