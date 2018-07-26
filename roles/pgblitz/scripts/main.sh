@@ -173,9 +173,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
             rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
 
+            echo "[tdrive]" > /root/.config/rclone/rclone.conf
             cat /root/.config/rclone/tdrive.save > /root/.config/rclone/rclone.conf
             echo "" > /root/.config/rclone/rclone.conf
+            echo "[gdrive]" > /root/.config/rclone/rclone.conf
             cat /root/.config/rclone/gdrive.save >> /root/.config/rclone/rclone.conf
+            rm -r /root/.config/rclone/tdrive.save
+            rm -r /root/.config/rclone/gdrive.save
 
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
