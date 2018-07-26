@@ -34,7 +34,8 @@ do
     echo "INFO - PGBlitz: Using GDSA $p for transfer" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
     mkdir -p /mnt/pgblitz/$p
-    mv /mnt/move/* /mnt/pgblitz/$p
+    rclone move /mnt/move/ /mnt/pgblitz/$p/ --min-age 1m --delete-empty-src-dirs
+
     echo "INFO - PGBlitz: Moved Items /mnt/move to /mnt/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     ls -la /mnt/pgblitz/$p
@@ -47,6 +48,7 @@ do
       --exclude="**partial~" --exclude="**_HIDDEN~" \
       --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
       --drive-chunk-size=32M \
+      --delete-empty-src-dirs \
       /mnt/pgblitz/$p/ $p: && rclone_fin_flag=1
 
       #mv /mnt/pgblitz/$p/* /mnt/move/ 1>/dev/null 2>&1
