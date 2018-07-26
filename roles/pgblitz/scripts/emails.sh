@@ -33,6 +33,6 @@ echo '  NOTE 2: ignore "sharing outside of org warning"'
 echo ""
 cat /tmp/pgblitz.emails.list
 echo ""
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Press [ANY] key to continue"
 
 echo "INFO - PGBlitz: Displayed to User the E-Mails" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
