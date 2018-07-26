@@ -34,7 +34,8 @@ do
     echo "INFO - PGBlitz: Using GDSA $p for transfer" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
     mkdir -p /mnt/pgblitz/$p
-    mv /mnt/move/* /mnt/pgblitz/$p
+    rclone move /mnt/move/ /mnt/pgblitz/$p/ --min-age 1m
+
     echo "INFO - PGBlitz: Moved Items /mnt/move to /mnt/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     ls -la /mnt/pgblitz/$p
