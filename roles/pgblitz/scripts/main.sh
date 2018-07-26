@@ -183,7 +183,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             sudo systemctl stop pgblitz 1>/dev/null 2>&1
             sudo systemctl rm pgblitz 1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nPG Blitz is Disabled!\n\nYou must rerun PGDrives & PGBlitz to Enable Again!" 0 0
-
+            ;;
         Z)
             exit 0 ;;
 
