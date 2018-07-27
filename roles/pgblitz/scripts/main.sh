@@ -21,6 +21,8 @@ echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/pl
 #### RECALL VARIABLES START
 tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
 gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
 #### RECALL VARIABLES END
 
 versioncheck="Version: Unencrypted Edition"
@@ -32,8 +34,8 @@ if [ "$tdrive" != "[tdrive]" ]; then
   versioncheck="WARNING: TDrive Not Configured Properly"
 fi
 
-################################################################## CORE
 
+################################################################## CORE
 HEIGHT=14
 WIDTH=48
 CHOICE_HEIGHT=7
@@ -152,6 +154,21 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               #### ADDS GDRIVE to the UNIONFS PATH
               echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
             fi
+
+            if [ "$tcrypt" == "[tcrypt]" ]
+              then
+
+              #### ADDS GDRIVE to the UNIONFS PATH
+              echo -n "/mnt/gcrypt=RO:" >> /var/plexguide/unionfs.pgpath
+            fi
+
+            if [ "$gcrypt" == "[gcrypt]" ]
+              then
+
+              #### ADDS GDRIVE to the UNIONFS PATH
+              echo -n "/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
+            fi
+
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             temp=$( cat /tmp/pg.gdsa.build )
             echo -n "$temp" >> /var/plexguide/unionfs.pgpath
