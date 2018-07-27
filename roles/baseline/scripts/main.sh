@@ -119,8 +119,7 @@ sleep 2
 pg_ansible=$( cat /var/plexguide/pg.ansible )
 pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 
-if [ "$pg_ansible" == "$pg_ansible_stored" ]
-    then
+if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       echo "20" | dialog --gauge "Suppport Is Already Installed" 7 50 0
       echo "INFO - Support is Already Installed" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       sleep 2
@@ -151,8 +150,7 @@ bash /opt/plexguide/roles/baseline/scripts/preinstall.sh
 
 # START ########################### If doesn't exist, put /mnt into the file for the folders role
 file="/var/plexguide/server.hd.path"
-if [ -e "$file" ]
-    then
+if [ -e "$file" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "/mnt" > /var/plexguide/server.hd.path
@@ -184,8 +182,7 @@ sleep 2
 pg_label=$( cat /var/plexguide/pg.label )
 pg_label_stored=$( cat /var/plexguide/pg.label.stored )
 
-if [ "$pg_label" == "$pg_label_stored" ]
-    then
+if [ "$pg_label" == "$pg_label_stored" ]; then
       echo "70" | dialog --gauge "Label Is Already Installed" 7 50 0
       sleep 2
     else
@@ -206,8 +203,7 @@ clear
 pg_rclone=$( cat /var/plexguide/pg.rclone )
 pg_rclone_stored=$( cat /var/plexguide/pg.rclone.stored )
 
-if [ "$pg_rclone" == "$pg_rclone_stored" ]
-    then
+if [ "$pg_rclone" == "$pg_rclone_stored" ]; then
       echo "75" | dialog --gauge "RClone 1.42 Is Already Installed" 7 50 0
       sleep 2
     else
@@ -248,8 +244,7 @@ bash /opt/plexguide/roles/baseline/scripts/portainer.sh
 pg_docstart=$( cat /var/plexguide/pg.docstart)
 pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
 
-if [ "$pg_docstart" == "$pg_docstart_stored" ]
-    then
+if [ "$pg_docstart" == "$pg_docstart_stored" ]; then
       echo "90" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
       sleep 2
     else
@@ -274,8 +269,7 @@ bash /opt/plexguide/roles/baseline/scripts/watchtower.sh
 pg_python=$( cat /var/plexguide/pg.python )
 pg_python_stored=$( cat /var/plexguide/pg.python.stored )
 
-if [ "$pg_python" == "$pg_python_stored" ]
-    then
+if [ "$pg_python" == "$pg_python_stored" ]; then
       echo "99" | dialog --gauge "Python Support Is Already Installed" 7 50 0
       sleep 2
     else
