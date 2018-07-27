@@ -60,7 +60,7 @@ echo "INFO - Selected: Info & Benchmark - Advanced" > /var/plexguide/pg.log && b
         C)
 echo "INFO - Selected: Info & Benchmark - Custom" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear
-            bash /opt/plexguide/scripts/menus/bench-custom.sh
+            bash /opt/plexguide/roles/z_old/bench-custom.sh
             echo ""
             read -n 1 -s -r -p "Press any key to continue"
             ;;

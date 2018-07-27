@@ -32,7 +32,7 @@ case $CHOICE in
             dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
             ctop ;;
         D)
-            bash /opt/plexguide/scripts/menus/status-menu.sh ;;
+            bash /opt/plexguide/roles/z_old/status-menu.sh ;;
         Z)
             clear
             exit 0 ;;

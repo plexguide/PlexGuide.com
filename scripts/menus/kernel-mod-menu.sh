@@ -43,7 +43,7 @@ case $CHOICE in
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+        bash /opt/plexguide/roles/z_old/kernel-mod-menu.sh
       fi
     ;;
 
@@ -59,7 +59,7 @@ case $CHOICE in
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+        bash /opt/plexguide/roles/z_old/kernel-mod-menu.sh
       fi
     ;;
 
@@ -76,7 +76,7 @@ case $CHOICE in
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+        bash /opt/plexguide/roles/z_old/kernel-mod-menu.sh
       fi
     ;;
 
@@ -93,7 +93,7 @@ case $CHOICE in
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
-        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+        bash /opt/plexguide/roles/z_old/kernel-mod-menu.sh
       fi
     ;;
 
