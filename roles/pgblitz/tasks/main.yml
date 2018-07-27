@@ -17,40 +17,14 @@
 #################################################################################
 ---
 ############################################## MOVE (START) Disable
-  - name: Check move Service
-    stat:
-      path: "/etc/systemd/system/move.service"
-    register: move
+###### ST2 (START) Disable ########################
+- name: Disable Move
+  include_role:
+    name: pgblitz
+    tasks_from: "disable_move.yml"
     tags:
       - blitzdeploy
-
-  - name: Stop If Move Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: move
-    when: move.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-### Encrypted
-  - name: Check move-en Service
-    stat:
-      path: "/etc/systemd/system/move-en.service"
-    register: moveen
-    tags:
-      - blitzdeploy
-
-  - name: Stop If Encrypted Move Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: move-en
-    when: moveen.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
+###### ST2 (START) Disable ########################
 
 ############################################## MOVE (END) Disable
 
