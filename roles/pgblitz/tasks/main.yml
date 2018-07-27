@@ -31,7 +31,6 @@
 #
 #
 ################################################################ STANDARD START
-
 - name: Deploy GDrive
   include_role:
     name: pgblitz

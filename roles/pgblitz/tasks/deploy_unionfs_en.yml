@@ -16,15 +16,6 @@
 #
 #################################################################################
 ---
-  - name: Register UNIONFS_EN PATH
-    shell: "cat /var/plexguide/unionfs_en.pgpath"
-    register: unionfs_path
-    ignore_errors: True
-
-  - name: Stop If UNIONFS_EN Service Running
-    systemd: state=stopped name=unionfs_en
-    ignore_errors: yes
-
   - name: Register UNIONFS PATH
     shell: "cat /var/plexguide/unionfs.pgpath"
     register: unionfs_path
@@ -34,14 +25,23 @@
     systemd: state=stopped name=unionfs
     ignore_errors: yes
 
+  - name: Register UNIONFS_EN PATH
+    shell: "cat /var/plexguide/unionfs_en.pgpath"
+    register: unionfs_path
+    ignore_errors: True
+
+  - name: Stop If UNIONFS_EN Service Running
+    systemd: state=stopped name=unionfs_en
+    ignore_errors: yes
+
   - name: Install UNIONFS Service
     template:
-      src: unionfs.js2
-      dest: /etc/systemd/system/unionfs.service
+      src: unionfs_en.js2
+      dest: /etc/systemd/system/unionfs_en.service
       force: yes
 
   - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+    systemd: state=stopped name=unionfs_en daemon_reload=yes enabled=no
 
   - name: Start UnionFS
-    systemd: state=started name=unionfs enabled=yes
+    systemd: state=started name=unionfs_en enabled=yes
