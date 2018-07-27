@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# [Disable Encrypted Services]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+######### DISABLE GCRYPT
+  - name: Check GCrypt Serivce
+    stat:
+      path: "/etc/systemd/system/gcrypt.service"
+    register: gcrypt
+
+  - name: Stop If GCRYPT Service Running
+    systemd: state=stopped name=gcrypt enabled=no
+    when: gcrypt.stat.exists
+    ignore_errors: True
+
+  - name: Daemon-Reload - Stop GCRYPT Service
+    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
+    when: gcrypt.stat.exists
+    ignore_errors: True
+
+####### DISABLE TCRYPT
+  - name: Check TCrypt Serivce
+    stat:
+      path: "/etc/systemd/system/tcrypt.service"
+    register: tcrypt
+
+  - name: Stop If TCrypt Service Running
+    systemd: state=stopped name=tcrypt enabled=no
+    when: tcrypt.stat.exists
+    ignore_errors: True
+
+  - name: Daemon-Reload - Stop TCrypt Service
+    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
+    when: tcrypt.stat.exists
+    ignore_errors: True
