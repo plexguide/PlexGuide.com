@@ -142,7 +142,7 @@ while true; do
         [[ $numCurrentTransfers -ge $maxConcurrentUploads ]] && break
 
         # get least used gdsa account
-        gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
+        gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSAC[0-9]+=. | tail -1 | cut -f1 -d'=')
         [[ -z $gdsaLeast ]] && echo -e " [FAIL] Failed To get gdsaLeast. Exiting." && exit 1
 
         # upload folder (rclone_upload function will skip on filelocked folders)
