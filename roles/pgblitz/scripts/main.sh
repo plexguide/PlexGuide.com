@@ -25,11 +25,11 @@ gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
 
 versioncheck="Unencrypted Edition"
 if [ "$gdrive" != "[gdrive]" ]; then
-  versioncheck="RClone Not Configured"
+  versioncheck="WARNING: RClone Not Configured Properly"
 fi
 
 if [ "$tdrive" != "[tdrive]" ]; then
-  versioncheck="RClone Not Configured"
+  versioncheck="WARNING: RClone Not Configured Properly"
 fi
 
 ################################################################## CORE
