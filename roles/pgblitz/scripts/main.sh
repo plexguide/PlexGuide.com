@@ -50,7 +50,6 @@ fi
 
 if [ "$encryption" == "on" ] && [ "$tflag" == "on" ] && [ "$gflag" == "on" ]; then
   versioncheck="Version: Encrypted Edition"
-else
 elif [ "$gflag" != "on" ]; then
   versioncheck="WARNING: GCrypt Not Configured Properly"
 elif [ "$tflag" != "on" ];then
