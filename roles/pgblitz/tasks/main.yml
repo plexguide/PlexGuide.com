@@ -17,14 +17,6 @@
 #################################################################################
 ---
 ############################################## MOVE (START) Disable
-############ Directories
-  - name: Create Basic Directories
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-    with_items:
-      - /opt/appdata/pgblitz/keys/unprocessed
-      - /opt/appdata/pgblitz/keys/processed
-      - /opt/appdata/pgblitz/keys/badjson
-
   - name: Check move Service
     stat:
       path: "/etc/systemd/system/move.service"
@@ -62,24 +54,14 @@
 
 ############################################## MOVE (END) Disable
 
-############################################## ST2 (START) Disable
-  - name: Check SuperTransfer2 Serivce
-    stat:
-      path: "/etc/systemd/system/supertransfer2.service"
-    register: st2
+###### ST2 (START) Disable ########################
+- name: Disable SuperTransfer 2
+  include_role:
+    name: pgblitz
+    tasks_from: "disable_st2.yml"
     tags:
       - blitzdeploy
-
-  - name: Stop If SuperTransfer2 Service Running
-    systemd:
-      state: stopped
-      enabled: no
-      name: supertransfer2
-    when: st2.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-############################################## ST2 (END) Disable
+###### ST2 (START) Disable ########################
 
 ############################################## GDRIVE (START)
   - name: Check GCrypt Serivce
