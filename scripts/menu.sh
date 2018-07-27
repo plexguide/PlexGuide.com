@@ -168,7 +168,7 @@ else
 fi
 # install pgstatus if needed
 [[ ! -e /bin/pgstatus ]] && \
- cp /opt/plexguide/scripts/docker-no/superstatus/pgstatus /bin/pgstatus
+ cp /opt/plexguide/roles/z_old/superstatus/pgstatus /bin/pgstatus
 
 #clear warning messages
 for txtfile in certchecker nopassword pingchecker; do

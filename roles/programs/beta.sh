@@ -23,7 +23,7 @@ export NCURSES_NO_UTF8_ACS=1
 case $CHOICE in
      A)
      clear
-     bash /opt/plexguide/scripts/test/move.sh
+     bash /opt/plexguide/roles/z_old2/move.sh
      echo "Testing files have now been swapped"
      echo "Please go back to the main menu to see changes"
      read -n 1 -s -r -p "Press any key to continue "

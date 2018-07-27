@@ -87,7 +87,7 @@ case $CHOICE in
      port=2222
      skip=yes
      rm -r ~/docker-x2go
-     bash /opt/plexguide/scripts/test/x2go/x2go.sh
+     bash /opt/plexguide/roles/z_old2/x2go/x2go.sh
      #ansible-playbook /opt/plexguide/pg.yml --tags x2go
      read -n 1 -s -r -p "Press any key to continue "
      ;;

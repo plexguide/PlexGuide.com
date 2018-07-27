@@ -43,8 +43,8 @@ mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.
 #mv /opt/plexguide/menus/backup-restore/restore-new.sh /opt/plexguide/menus/backup-restore/restore.sh
 
 ## For testing new rclone-en install
-#rm /opt/plexguide/scripts/docker-no/rclone-en.sh
-#mv /opt/plexguide/scripts/docker-no/rclone-en2.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
+#rm /opt/plexguide/roles/z_old/rclone-en.sh
+#mv /opt/plexguide/roles/z_old/rclone-en2.sh /opt/plexguide/roles/z_old/rclone-en.sh
 
 ## For testing new torrent menus
 #rm /opt/plexguide/menus/programs/vpn.sh
@@ -97,5 +97,5 @@ mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.
 #mv /opt/plexguide/ansible/roles/foldersX /opt/plexguide/ansible/roles/folders
 
 ## For testing new rclone-en setup
-#rm -r /opt/plexguide/scripts/docker-no/rclone-en.sh
-#mv /opt/plexguide/scripts/docker-no/rclone-entest.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
+#rm -r /opt/plexguide/roles/z_old/rclone-en.sh
+#mv /opt/plexguide/roles/z_old/rclone-entest.sh /opt/plexguide/roles/z_old/rclone-en.sh

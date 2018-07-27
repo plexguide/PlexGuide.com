@@ -6,7 +6,7 @@ After=multi-user.target network-online.target
 User=0
 Group=0
 Type=simple
-ExecStart=/bin/bash /opt/plexguide/scripts/docker-no/transfer.sh
+ExecStart=/bin/bash /opt/plexguide/roles/z_old/transfer.sh
 KillMode=process
 
 [Install]

@@ -98,7 +98,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
 
             #### REQUIRED TO DEPLOY STARTING
             ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
-#            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+#            ansible-playbook /opt/plexguide/roles/z_old2/check-remove/tasks/main.yml
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
@@ -148,7 +148,7 @@ echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/r
             fi
             ;;
             F)
-            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+            ansible-playbook /opt/plexguide/roles/z_old2/check-remove/tasks/main.yml
             echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #ansible-role services_remove
             dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
