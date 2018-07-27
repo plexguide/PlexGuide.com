@@ -18,6 +18,20 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+#### RECALL VARIABLES START
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+#### RECALL VARIABLES END
+
+versioncheck="Unencrypted Edition"
+if [ "$gdrive" != "[gdrive]" ]; then
+  versioncheck="RClone Not Configured"
+fi
+
+if [ "$tdrive" != "[tdrive]" ]; then
+  versioncheck="RClone Not Configured"
+fi
+
 ################################################################## CORE
 
 HEIGHT=14
@@ -25,7 +39,7 @@ WIDTH=48
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
-MENU="Make a Selection:"
+MENU="$versioncheck"
 
 OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
@@ -51,9 +65,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### RClone Missing Warning - END
             rclone config
             touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-            #### GREP Checks
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
@@ -73,11 +85,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
-        #### RECALL VARIABLES START
-        tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-        gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-        #### RECALL VARIABLES END
-
         ### Checkers
         if [ "$gdrive" != "[gdrive]" ]; then
           echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -112,12 +119,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             ;;
         D)
             echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-            #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END
-
             ### Checkers
             if [ "$gdrive" != "[gdrive]" ]; then
               echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
