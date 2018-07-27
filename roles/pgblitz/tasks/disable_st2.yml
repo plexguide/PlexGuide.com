@@ -34,7 +34,7 @@
 ############################################## ST2-EN (START) Disable
   - name: Check SuperTransfer2 Serivce
     stat:
-      path: "/opt/roles/supertransfer2_encrypt/scripts/supertransfer2.sh"
+      path: "/opt/plexguide/scripts/supertransfer-encrypted/supertransfer2.sh"
     register: st2-en
 
   - name: Stop If SuperTransfer2 Service Running

@@ -1,9 +1,9 @@
 #!/bin/bash
-#source /opt/roles/supertransfer2/scripts/settings.conf
+#source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
 # functions:
 # cat_Art() - init msg
 # upload_Json() - configure with new jsons
-# configure_json() - load jsons into rclone config
+# configure_Json() - load jsons into rclone config
 # init_DB() - validates gdsa's & init least usage DB
 
 ################### Load CloudCMD ST2 Edition - START
@@ -140,7 +140,7 @@ read -p "View Error Log? y/n>" answer
 }
 
 upload_Json(){
-source /opt/roles/supertransfer2/scripts/settings.conf
+source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
 source ${userSettings}
 [[ ! -e $jsonPath ]] && mkdir $jsonPath && log 'Json Path Not Found. Creating.' INFO && sleep 0.5
 [[ ! -e $jsonPath ]] && log 'Json Path Could Not Be Created.' FAIL && sleep 0.5
@@ -148,7 +148,7 @@ source ${userSettings}
 localIP=$(curl -s icanhazip.com)
 [[ -z $localIP ]] && localIP=$(wget -qO- http://ipecho.net/plain ; echo)
 cd $jsonPath
-python3 /opt/roles/supertransfer2/scripts/jsonUpload.py &>/dev/null &
+python3 /opt/plexguide/scripts/supertransfer-encrypted/jsonUpload.py &>/dev/null &
 jobpid=$!
 trap "kill $jobpid && exit 1" SIGTERM
 
@@ -156,8 +156,8 @@ cat <<MSG
 
 ############ CONFIGURATION ################################
 
-1. Wait between 1-2 Minutes for the link BELOW to work!
-2. Go to [32mhttp://${localIP}:7998[0m
+1. Go to [32mhttp://${localIP}:7998[0m
+2. Wait up to 1-2 minutes for the link above to work
 3. Login: plex / guide
 4. Drag & Drop your keys in the PG CloudCMD ST Edition
 5. Follow the instructions to generate the json keys
@@ -180,10 +180,6 @@ start_spinner "Terminating Web Server."
 sleep 2
 { kill $jobpid && wait $jobpid; } &>/dev/null
 stop_spinner $(( ! $? ))
-############ KILL CLOUDST2
-docker stop cloudst2 1>/dev/null 2>&1
-docker rm cloudst2 &>/dev/null &
-############ KILL CLOUDST2
 
 if [[ $(ps -ef | grep "jsonUpload.py" | grep -v grep) ]]; then
   start_spinner "Web Server Still Running. Attempting to kill again."
@@ -272,6 +268,10 @@ echo
 echo 'NOTE: you can copy and paste the whole chunk at once'
 echo 'If you need to see them again, they are in /tmp/clientemails'
 read -p 'Press Any Key To Continue.'
+############ KILL CLOUDST2
+docker stop cloudst2 1>/dev/null 2>&1
+docker rm cloudst2 &>/dev/null &
+############ KILL CLOUDST2
 return 0
 }
 
@@ -296,25 +296,15 @@ root_folder_id = $rootFolderId
 service_account_file = $json
 team_drive = $teamDrive
 
-CFG
-
-# add in encrypted rclone config (password + salt need to be added)
-if [[ $encrypt == "yes" ]]; then
-cat <<-CFG >> $rclonePath
-[GDSA${newMaxGdsa}c]
+[GDSAC${newMaxGdsa}]
 type = crypt
-remote = GDSA${newMaxGdsa}:/
+remote = GDSA${newMaxGdsa}:/encrypt
 filename_encryption = standard
 directory_name_encryption = true
-password = asdfasdfasdfasdf
-password2 = asdfasdfasdfasdf
+password = $password
+password2 = $salt
 
 CFG
-# update password + salt & obscure for rclone encrypt config
-rclone config password GDSA${newMaxGdsa}c:/ password "${password}"
-rclone config password GDSA${newMaxGdsa}c:/ password2 "${salt}"
-fi
-
     ((++newGdsaCount))
   fi
 done

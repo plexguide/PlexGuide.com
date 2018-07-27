@@ -1,8 +1,8 @@
 #!/bin/bash
-source /opt/roles/supertransfer2_encrypt/scripts/init.sh
-source /opt/roles/supertransfer2_encrypt/scripts/rcloneupload.sh
-source /opt/roles/supertransfer2_encrypt/scripts/settings.conf
-source /opt/roles/supertransfer2_encrypt/scripts/spinner.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/init.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
+source /opt/plexguide/scripts/supertransfer-encrypted/spinner.sh
 
 declare -a reqlist=(rclone awk sed egrep grep echo printf find sort tee python3 gawk)
 for app in $reqlist; do
@@ -18,8 +18,8 @@ fi
 # source settings
 [[ ! -d $jsonPath ]] && mkdir $jsonPath &>/dev/null
 [[ ! -d $logDir ]] || mkdir $logDir &>/dev/null
-[[ ! -e $userSettings ]] && cp /opt/roles/supertransfer2_encrypt/scripts/usersettings_template_dont_edit ${userSettings}
-[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp /opt/roles/supertransfer2_encrypt/scripts/auto-rename-my-keys.sh $jsonPath
+[[ ! -e $userSettings ]] && cp /opt/plexguide/scripts/supertransfer-encrypted/usersettings_template_dont_edit ${userSettings}
+[[ ! -e ${jsonPath}/auto-rename-my-keys.sh ]] && cp /opt/plexguide/scripts/supertransfer-encrypted/auto-rename-my-keys.sh $jsonPath
 [[ ! -e $userSettings ]] && echo "Config at $userSettings Could Not Be Created."
 source $userSettings
 

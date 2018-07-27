@@ -180,7 +180,7 @@ echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg
               systemctl stop move 1>/dev/null 2>&1
               systemctl disable move 1>/dev/null 2>&1
               clear
-              bash /opt/roles/supertransfer2_encrypt/scripts/config.sh
+              bash /opt/plexguide/scripts/supertransfer-encrypted/config.sh
               ansible-playbook /opt/plexguide/pg.yml --tags supertransfer2_encrypt
               journalctl -f -u supertransfer2
               read -n 1 -s -r -p "Press any key to continue"

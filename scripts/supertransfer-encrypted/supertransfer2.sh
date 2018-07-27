@@ -2,9 +2,9 @@
 # INIT
 ############################################################################
 echo -e " [INFO] Initializing Supertransfer2 Load Balanced Multi-SA Uploader..."
-source /opt/roles/supertransfer2/scripts/rcloneupload.sh
-source /opt/roles/supertransfer2/scripts/init.sh
-source /opt/roles/supertransfer2/scripts/settings.conf
+source /opt/plexguide/scripts/supertransfer-encrypted/rcloneupload.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/init.sh
+source /opt/plexguide/scripts/supertransfer-encrypted/settings.conf
 source ${userSettings}
 #dbug=on
 
@@ -28,12 +28,12 @@ clean_up(){
   echo -e " [STAT]\t$numSuccess Successes, $numFail Failures, $sizeLeft left in $localDir, ${totalUploaded}GB total uploaded"
   rm ${logDir}/* &>/dev/null
   echo -n '' > ${fileLock}
-
+  
   # if user added or removed GDSA remotes, reset the usage database in order to regenerate it
   numGdsaDB=$(cat ${gdsaDB} | wc -l)
   numGdsa=$(rclone listremotes --config=/root/.config/rclone/rclone.conf | wc -l)
   [[ $numGdsaDB == $numGdsa ]] || echo -n '' > ${gdsaDB}
-
+  
   rm /tmp/superTransferUploadFail &>/dev/null
   rm /tmp/superTransferUploadSuccess &>/dev/null
   rm /tmp/.SA_error.log.tmp &>/dev/null
@@ -47,9 +47,8 @@ trap "clean_up" SIGTERM
 # Initalize gdsaDB (can be skipped with --skip)
 ############################################################################
 init_DB(){
-
   # get list of avail gdsa accounts
-  gdsaList=$(rclone listremotes --config /root/.config/rclone/rclone.conf | sed 's/://' | egrep '^GDSA[0-9]+$')
+  gdsaList=$(rclone listremotes --config /root/.config/rclone/rclone.conf | sed 's/://' | egrep '^GDSAC[0-9]+$')
   if [[ -n $gdsaList ]]; then
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
@@ -59,26 +58,18 @@ init_DB(){
       [[ -e /root/.config/rclone/rclone.conf ]] && cp /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.back
       # cp home's rclone conf to root
       [[ -e ~/.config/rclone/rclone.conf ]] && cp ~/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf
-      gdsaList=$(rclone listremotes --config /root/.config/rclone/rclone.conf | sed 's/://' | egrep '^GDSA[0-9]+$')
+      gdsaList=$(rclone listremotes --config /root/.config/rclone/rclone.conf | sed 's/://' | egrep '^GDSAC[0-9]+$')
       [[ -z $gdsaList ]] && echo -e " [FAIL] No Valid SA accounts found! Is Rclone Configured With GDSA## remotes?" && exit 1
       echo "[INFO] Found GDSA's in ~/ and copying to /root"
       numGdsa=$(echo $gdsaList | wc -w)
       echo -e " [INFO] Initializing $numGdsa Service Accounts."
   fi
 
-  [[ $encrypt == "yes" ]] && echo -e " [INFO] Encryption Enabled!"
-
   # reset existing logs & db
   echo -n '' > /tmp/SA_error.log
   validate(){
       local s=0
-      if [[ $encrypt == "yes" ]]; then
-        # validate crypt instead if encryption is enabled
-        rclone lsd --config /root/.config/rclone/rclone.conf ${1}c:/ &>/tmp/.SA_error.log.tmp && s=1
-      else
-        rclone lsd --config /root/.config/rclone/rclone.conf ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
-      fi
-
+      rclone lsd --config /root/.config/rclone/rclone.conf ${1}:/ &>/tmp/.SA_error.log.tmp && s=1
       if [[ $s == 1 ]]; then
         echo -e " [ OK ] ${1}\t Validation Successful!"
         egrep -q ^${1}=. $gdsaDB || echo "${1}=0" >> $gdsaDB
@@ -99,9 +90,8 @@ numProcs=10
       sleep 0.1
     done
   wait
-  gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSA[0-9]+=. | tail -1 | cut -f1 -d'=')
+  gdsaLeast=$(sort -gr -k2 -t'=' ${gdsaDB} | egrep ^GDSAC[0-9]+=. | tail -1 | cut -f1 -d'=')
   [[ -n $gdsaFail ]] && echo -e " [WARN] $gdsaFail Failure(s). See /tmp/SA_error.log"
-
 }
 
 [[ $@ =~ --skip ]] || init_DB
