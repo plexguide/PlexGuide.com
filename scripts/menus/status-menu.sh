@@ -184,7 +184,7 @@ case $CHOICE in
 
     "9)")
         clear
-        bash /opt/plexguide/roles/z_old/restart-menu.sh
+        bash /opt/plexguide/scripts/menus/restart-menu.sh
         clear
         ;;
 

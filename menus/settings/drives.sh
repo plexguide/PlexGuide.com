@@ -64,7 +64,7 @@ case $CHOICE in
         ;;
     D)
         echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        bash /opt/plexguide/roles/z_old/kernel-mod-menu.sh
+        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
         ;;
     E)
         echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

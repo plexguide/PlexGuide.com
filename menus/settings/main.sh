@@ -51,7 +51,7 @@ echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/p
         bash /opt/plexguide/roles/processor/scripts/processor-menu.sh ;;
     C)
 echo 'INFO - Selected: Kernal Mods' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        bash /opt/plexguide/roles/z_old/kernel-mod-menu.sh ;;
+        bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh ;;
     D)
 echo 'INFO - Selected: WatchTower Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/roles/watchtower/menus/main.sh
