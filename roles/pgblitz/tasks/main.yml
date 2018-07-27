@@ -45,55 +45,17 @@
   include_role:
     name: pgblitz
     tasks_from: "deploy_tasks.yml"
-    tags:
-      - unencrypted
 
 - name: Deploy UnionFS
   include_role:
     name: pgblitz
     tasks_from: "deploy_unionfs.yml"
-    tags:
-      - unencrypted
 
 - name: Deploy PGBlitz
   include_role:
     name: pgblitz
     tasks_from: "deploy_pgblitz.yml"
-    tags:
-      - unencrypted
 ################################################################ UNENCRYPTED END
-#
-#
-#
-################################################################ ENCRYPTED START
-- name: Deploy GCRYPT
-  include_role:
-    name: pgblitz
-    tasks_from: "deploy_gcrypt.yml"
-    tags:
-      - encrypted
-
-- name: Deploy TCRYPT
-  include_role:
-    name: pgblitz
-    tasks_from: "deploy_tcrypt.yml"
-    tags:
-      - encrypted
-
-- name: Deploy UnionFS_EN
-  include_role:
-    name: pgblitz
-    tasks_from: "deploy_unionfs_en.yml"
-    tags:
-      - encrypted
-
-- name: Deploy PGBlitz_EN
-  include_role:
-    name: pgblitz
-    tasks_from: "deploy_pgblitz_en.yml"
-    tags:
-      - encrypted
-################################################################ ENCRYPTED END
 
 ### NOTES
 # 1. Disable ST2Monitor
