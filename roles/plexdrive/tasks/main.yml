@@ -33,7 +33,7 @@
       path: /etc/systemd/system/plexdrive.service
       force: yes
     when: plexdrive.stat.exists
- 
+
   - name: Check PD Binary Exist
     stat:
       path: "/usr/bin/plexdrive"
@@ -63,7 +63,7 @@
   - name: Move PlexDrive Service
     template:
       src: plexdrive.service
-      dest: /etc/systemd/system/plexdrive.service 
+      dest: /etc/systemd/system/plexdrive.service
       force: yes
     tags:
       - plexd5
@@ -71,7 +71,7 @@
   #- name: Move PlexDrive Service
     #template:
       #src: pd5temp.js2
-      #dest: /etc/systemd/system/pd5temp.service 
+      #dest: /etc/systemd/system/pd5temp.service
       #force: yes
     #tags:
       #- plexd5
@@ -84,7 +84,7 @@
 ###################### Start of New PlexDrive 4 Service
 
   - name: Execute MongoDB Script
-    script: '/opt/plexguide/scripts/plexdrive/mongod.sh'
+    script: 'plexguide/roles/plexdrive/scripts/mongod.sh'
     tags:
       - plexd4
 
@@ -103,7 +103,7 @@
   - name: Move PlexDrive Service
     template:
       src: plexdrive4.js2
-      dest: /etc/systemd/system/plexdrive.service 
+      dest: /etc/systemd/system/plexdrive.service
       force: yes
     tags:
       - plexd4
@@ -119,7 +119,7 @@
   - name: Start PlexDrive
     systemd: state=started name=plexdrive enabled=yes
     when: token.stat.exists
-    
+
   - name: Config Present?
     stat:
       path: "/root/.plexdrive/config.json"

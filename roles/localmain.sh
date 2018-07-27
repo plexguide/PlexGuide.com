@@ -133,7 +133,7 @@ echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log &&
             ;;
         H)
 echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            bash /opt/plexguide/scripts/upgrade/main.sh
+            bash /opt/plexguide/menus/version/main.sh
             bash /opt/plexguide/roles/ending/ending.sh
             exit 0 ;;
         Z)
