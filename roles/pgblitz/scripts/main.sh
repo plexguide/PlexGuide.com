@@ -27,6 +27,9 @@ gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
 
 versioncheck="Version: Unencrypted Edition"
 encryption="off"
+tflag="off"
+gflag="off"
+
 if [ "$gdrive" != "[gdrive]" ]; then
   versioncheck="WARNING: GDrive Not Configured Properly"
 fi
@@ -41,8 +44,17 @@ if [ "$gcrypt" == "[gcrypt]" ]; then
 fi
 
 if [ "$tcrypt" == "[tcrypt]" ]; then
-  tcrypt="on"
+  tflag="on"
   encryption="on"
+fi
+
+if [ "$encryption" == "on" ] && [ "$tflag" == "on" ] && [ "$gflag" == "on" ]; then
+  versioncheck="Version: Encrypted Edition"
+else
+elif [ "$gflag" != "on" ]; then
+  versioncheck="WARNING: GCrypt Not Configured Properly"
+elif [ "$tflag" != "on" ];then
+  versioncheck="WARNING: TCrypt Not Configured Properly"
 fi
 
 ################################################################## CORE
