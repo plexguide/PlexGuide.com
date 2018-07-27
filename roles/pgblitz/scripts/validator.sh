@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "INFO - PGBlitz: Starting Valadiation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: Starting Validation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 mkdir -p /opt/pgops 1>/dev/null 2>&1
 mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
@@ -24,7 +24,7 @@ tdrive="${tdrive:13}"
 
 clear
 echo "Welcome to PG Blitz"
-echo "Starting Valadation Process"
+echo "Starting Validation Process"
 while read p; do
 #  p=$(echo "${p::-1}")
 echo ""
