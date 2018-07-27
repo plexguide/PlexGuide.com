@@ -174,42 +174,26 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
             touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
-            #### IF EXIST - DEPLOY
-            if [ "$tdrive" == "[tdrive]" ]
-              then
-
-              #### ADDS TDRIVE to the UNIONFS PATH
-              echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+            ### Build UnionFS Paths Based on Version
+            if [ "$final" == "unencrypted" ];then
+              echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+            elif [ "$final" == "encrypted" ];then
+              echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:/mnt/gcrypt=RO:/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
             fi
 
-            if [ "$gdrive" == "[gdrive]" ]
-              then
-
-              #### ADDS GDRIVE to the UNIONFS PATH
-              echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-            fi
-
-            if [ "$tcrypt" == "[tcrypt]" ]
-              then
-
-              #### ADDS GDRIVE to the UNIONFS PATH
-              echo -n "/mnt/gcrypt=RO:" >> /var/plexguide/unionfs.pgpath
-            fi
-
-            if [ "$gcrypt" == "[gcrypt]" ]
-              then
-
-              #### ADDS GDRIVE to the UNIONFS PATH
-              echo -n "/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
-            fi
-
+            ### Add GDSA Paths for UnionFS
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             temp=$( cat /tmp/pg.gdsa.build )
             echo -n "$temp" >> /var/plexguide/unionfs.pgpath
-            #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
-            #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
 
+            ### Execute Playbook Based on Version
+            if [ "$final" == "unencrypted" ];then
+              ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+            elif [ "$final" == "encrypted" ];then
+              ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags unencrypted
+            fi
+
+            echo ""
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
