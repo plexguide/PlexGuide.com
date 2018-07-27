@@ -26,16 +26,19 @@ gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
 #### RECALL VARIABLES END
 
 versioncheck="Version: Unencrypted Edition"
+final="unencrypted"
 encryption="off"
 tflag="off"
 gflag="off"
 
 if [ "$gdrive" != "[gdrive]" ]; then
   versioncheck="WARNING: GDrive Not Configured Properly"
+  final="gdrive"
 fi
 
 if [ "$tdrive" != "[tdrive]" ]; then
   versioncheck="WARNING: TDrive Not Configured Properly"
+  final="tdrive"
 fi
 
 if [ "$gcrypt" == "[gcrypt]" ]; then
@@ -50,10 +53,13 @@ fi
 
 if [ "$encryption" == "on" ] && [ "$tflag" == "on" ] && [ "$gflag" == "on" ]; then
   versioncheck="Version: Encrypted Edition"
+  final="encrypted"
 elif [ "$gflag" != "on" ] && [ "$encryption" == "on" ]; then
   versioncheck="WARNING: GCrypt Not Configured Properly"
+  final="gcrypt"
 elif [ "$tflag" != "on" ] && [ "$encryption" == "on" ];then
   versioncheck="WARNING: TCrypt Not Configured Properly"
+  final="tcrypt"
 fi
 
 ################################################################## CORE
@@ -109,16 +115,23 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             ;;
         B)
         ### Checkers
-        if [ "$gdrive" != "[gdrive]" ]; then
+        if [ "$final" == "gdrive" ]; then
           echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
           bash /opt/plexguide/roles/pgblitz/scripts/main.sh
           exit
         fi
 
-        if [ "$tdrive" != "[tdrive]" ]; then
-          echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        if [ "$final" == "tdrive" ]; then
+          echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+
+        if [ "$final" == "tdrive" ] || [ "$final" == "gdrive" ]; then
+          echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
           bash /opt/plexguide/roles/pgblitz/scripts/main.sh
           exit
         fi
