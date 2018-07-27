@@ -26,6 +26,7 @@ gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
 #### RECALL VARIABLES END
 
 versioncheck="Version: Unencrypted Edition"
+encryption="off"
 if [ "$gdrive" != "[gdrive]" ]; then
   versioncheck="WARNING: GDrive Not Configured Properly"
 fi
@@ -34,6 +35,15 @@ if [ "$tdrive" != "[tdrive]" ]; then
   versioncheck="WARNING: TDrive Not Configured Properly"
 fi
 
+if [ "$gcrypt" == "[gcrypt]" ]; then
+  gflag="on"
+  encryption="on"
+fi
+
+if [ "$tcrypt" == "[tcrypt]" ]; then
+  tcrypt="on"
+  encryption="on"
+fi
 
 ################################################################## CORE
 HEIGHT=14
