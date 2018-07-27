@@ -1,9 +1,9 @@
 #!/bin/bash
 echo
 # create folders for torrents vpn directory
-bash /opt/plexguide/roles/torrentvpn/vpnowners.sh
+bash /opt/plexguide/scripts/torrentvpn/vpnowners.sh
 # create and move openvpn setup files to vpn directory
-bash /opt/plexguide/roles/torrentvpn/openvpn-setup-rtorrent.sh
+bash /opt/plexguide/scripts/torrentvpn/openvpn-setup-rtorrent.sh
 
 docker rm -f rtorrentvpn
 
@@ -19,7 +19,7 @@ echo
 echo "    *****  Please give a few minutes to load all settings!  *****     "
 echo
 echo
-bash /opt/plexguide/roles/z_old/program-installer.sh
-#bash /opt/plexguide/roles/torrentvpn/move-ovpnr.sh
+bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#bash /opt/plexguide/scripts/torrentvpn/move-ovpnr.sh
 clear
 sudo usermod -aG docker nobody

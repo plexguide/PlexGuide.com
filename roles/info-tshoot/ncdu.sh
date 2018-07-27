@@ -134,7 +134,7 @@ case $CHOICE in
 
 #     X)
 #         clear
-#         bash /opt/plexguide/roles/z_old2/exit
+#         bash /opt/plexguide/scripts/test/exit
 #         : ${DIALOG_ESC=255}
 #         $DIALOG_ESC)
 #         exit 0 ;;

@@ -85,4 +85,4 @@
 
 #### Find CIDR via subnet
 - name: subnet
-  shell: sudo bash /opt/plexguide/roles/z_old2/subnet
+  shell: sudo bash /opt/plexguide/scripts/test/subnet

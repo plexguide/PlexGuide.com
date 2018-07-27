@@ -55,14 +55,14 @@ read_options(){
     clear
     rm /opt/appdata/.plex-env
     clear
-    bash /opt/plexguide/roles/z_old2/plex.sh
+    bash /opt/plexguide/scripts/test/plex.sh
     ;;
 		2)
 
         echo ymlprogram nginx-plexpass > /opt/plexguide/tmp.txt
         echo ymldisplay NGINX-PlexPass >> /opt/plexguide/tmp.txt
         echo ymlport 32400 >> /opt/plexguide/tmp.txt
-        bash /opt/plexguide/roles/z_old/program-installer.sh
+        bash /opt/plexguide/scripts/docker-no/program-installer.sh
         clear
         ##else
         #echo

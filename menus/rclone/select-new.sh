@@ -24,13 +24,13 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         A)
-            bash /opt/plexguide/roles/z_old/rclone-un.sh
+            bash /opt/plexguide/scripts/docker-no/rclone-un.sh
               ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
               ;;
         B)
             # remove all rclone related services
-            ansible-playbook /opt/plexguide/roles/z_old2/check-remove/tasks/main-pd.yml
-            bash /opt/plexguide/roles/z_old/rclone-en.sh
+            ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main-pd.yml
+            bash /opt/plexguide/scripts/docker-no/rclone-en.sh
               ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
               ;;
         Z)

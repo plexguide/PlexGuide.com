@@ -17,7 +17,7 @@
 #################################################################################
 
 ## Stop old rclone plexdrive services if Installed
-bash /opt/plexguide/roles/z_old2/stop-services
+bash /opt/plexguide/scripts/test/stop-services
 
 # ansible-playbook /opt/plexguide/pg.yml --tags rclone-switch
 # ansible-playbook /opt/plexguide/pg.yml --tags rclone_switch

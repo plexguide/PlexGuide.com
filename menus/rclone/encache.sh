@@ -116,7 +116,7 @@ EOF
 mkdir -p /root/.config/rclone/ 1>/dev/null 2>&1
 
 ## Stop old rclone plexdrive services if Installed
-#bash /opt/plexguide/roles/z_old2/stop-services
+#bash /opt/plexguide/scripts/test/stop-services
 
 ## Copying to /mnt incase
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1

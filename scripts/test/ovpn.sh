@@ -148,7 +148,7 @@ case $CHOICE in
 
         B)
 
-        bash /opt/plexguide/roles/z_old2/ovpn.sh
+        bash /opt/plexguide/scripts/test/ovpn.sh
 #                dialog --title "Warning - Tag Info" \
 #                --msgbox "\nVisit http://tags.plexguide.com and COPY and PASTE a TAG version in the dialog box coming up! If you mess this up, you will get a nasty red error in ansible.  You can rerun to fix!" 10 50
 
