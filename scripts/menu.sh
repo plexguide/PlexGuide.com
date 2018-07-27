@@ -190,7 +190,7 @@ then
    clear 1>/dev/null 2>&1
 else
    echo 'INFO - Executing UB Version Check Script' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-   bash /opt/plexguide/scripts/ubcheck/main.sh
+   bash /opt/roles/upgrade/ubcheck.sh
 fi
 
 file="/var/plexguide/ask.yes"

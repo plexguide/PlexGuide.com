@@ -1,2 +1,2 @@
 #!/bin/bash
-/bin/bash /opt/plexguide/scripts/supertransfer-encrypted/main.sh
+/bin/bash /opt/roles/supertransfer2_encrypt/scripts/main.sh

@@ -3,7 +3,7 @@
 
 # Author: Tasos Latsas
 
-# /opt/plexguide/scripts/supertransfer/spinner.sh
+# /opt/roles/supertransfer2_encrypt/scripts/spinner.sh
 #
 # Display an awesome 'spinner' while running your long shell commands
 #

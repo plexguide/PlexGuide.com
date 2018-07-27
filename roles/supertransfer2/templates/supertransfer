@@ -1,2 +1,2 @@
 #!/bin/bash
-/bin/bash /opt/plexguide/scripts/supertransfer/main.sh
+/bin/bash /opt/roles/supertransfer2/scripts/main.sh
