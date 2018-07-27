@@ -16,17 +16,14 @@
 #
 #################################################################################
 ---
-############################################## MOVE (START) Disable
-###### ST2 (START) Disable ########################
+###### Move (START) Disable ########################
 - name: Disable Move
   include_role:
     name: pgblitz
     tasks_from: "disable_move.yml"
     tags:
       - blitzdeploy
-###### ST2 (START) Disable ########################
-
-############################################## MOVE (END) Disable
+###### Move (End) Disable ########################
 
 ###### ST2 (START) Disable ########################
 - name: Disable SuperTransfer 2
@@ -60,36 +57,16 @@
       - blitzdeploy
 
 ###### Above (Grypt) - Below (Standard GDrive)
-  - name: Check GDrive Serivce
-    stat:
-      path: "/etc/systemd/system/gdrive.service"
-    register: gdrive
+
+###### GDRIVE (START) ENABLE########################
+- name: Disable SuperTransfer 2
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_gdrive.yml"
     tags:
       - blitzdeploy
+###### GDRIVE (START) ENABLEn########################
 
-  - name: Stop If GDRIVE Service Running
-    systemd: state=stopped name=gdrive
-    when: gdrive.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-  - name: Install GDRIVE Service
-    template:
-      src: gdrive.js2
-      dest: /etc/systemd/system/gdrive.service
-      force: yes
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-
-  - name: Start GDRIVE SERVICE
-    systemd: state=started name=gdrive daemon_reload=yes enabled=yes
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-
-############################################## GDRIVE (END)
 
 ############################################## TDRIVE (START)
   - name: Check TCrypt Serivce
