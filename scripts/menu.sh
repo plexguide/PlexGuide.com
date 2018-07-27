@@ -228,7 +228,7 @@ else
      bash /opt/plexguide/menus/startup/message2.sh
   else
   echo 'Asking User for PG Edition for the First Time' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/scripts/baseinstall/edition.sh
+  bash /opt/plexguide/roles/baseline/scripts/edition.sh
   fi
 
   echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -304,4 +304,4 @@ fi
 
 #### falls to this menu incase none work above
 echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/scripts/baseinstall/edition.sh
+bash /opt/plexguide/roles/baseline/scripts/edition.sh

@@ -35,7 +35,7 @@ deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 #      dialog --title "-- NOTE --" --msgbox "\nWe have detected that /mnt IS NOT your default DOWNLOAD PATH for this EDITION.\n\nWe will fix that for you!" 0 0
 #      echo "no" > /var/plexguide/server.hd
 #      echo "/mnt" > /var/plexguide/server.hd.path
-#      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+#      bash /opt/plexguide/roles/baseline/scripts/rebuild.sh
 #  fi
 #fi
 
