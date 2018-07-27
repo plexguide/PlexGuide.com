@@ -22,7 +22,7 @@ echo
 bash /opt/plexguide/roles/z_old/program-installer.sh
 #bash /opt/plexguide/roles/torrentvpn/move-ovpnd.sh
 #yes | apt-get install -y python-setuptools 1>/dev/null 2>&1
-#python /opt/plexguide/roles/startup/seedtime/setup.py bdist_egg
-#mv /opt/plexguide/roles/startup/seedtime/dist/SeedTime-2* /opt/appdata/vpn/config/plugins
+#python /opt/plexguide/scripts/tasks/seedtime/setup.py bdist_egg
+#mv /opt/plexguide/scripts/tasks/seedtime/dist/SeedTime-2* /opt/appdata/vpn/config/plugins
 clear
 sudo usermod -aG docker nobody

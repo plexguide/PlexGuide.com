@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /opt/plexguide/roles/startup/
+cd /opt/plexguide/scripts/tasks/
 mv plexguide /bin
 cd /bin
 chmod 755 /bin/plexguide
