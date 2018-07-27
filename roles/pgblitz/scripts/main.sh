@@ -23,7 +23,7 @@ tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
 gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
 #### RECALL VARIABLES END
 
-versioncheck="Unencrypted Edition"
+versioncheck="Version: Unencrypted Edition"
 if [ "$gdrive" != "[gdrive]" ]; then
   versioncheck="WARNING: GDrive Not Configured Properly"
 fi
