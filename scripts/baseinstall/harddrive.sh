@@ -42,7 +42,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
     A)
-      bash /opt/plexguide/scripts/baseinstall/path.sh
+      bash /opt/plexguide/roles/baseline/scripts/path.sh
       exit
       ;;
     B)
@@ -50,7 +50,7 @@ case $CHOICE in
       echo "nr" > /var/plexguide/server.hd
       echo "/mnt" > /var/plexguide/server.hd.path
       #### Rebuild Containers
-      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+      bash /opt/plexguide/roles/baseline/scripts/rebuild.sh
       dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
       exit
       ;;
@@ -59,13 +59,13 @@ case $CHOICE in
       echo "no" > /var/plexguide/server.hd
       echo "/mnt" > /var/plexguide/server.hd.path
       #### Rebuild Containers
-      bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+      bash /opt/plexguide/roles/baseline/scripts/rebuild.sh
       dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
       exit
       ;;
     D)
       dialog --title "Quick Story" --msgbox "\nPurpose is to keep your downloaded/downloading content to process on a SECONDARY HD.\n\nRunning PLEX and having everything download to one drive can result in slow performace! If you have a second HD, you can use this to help improve your performance (and great for those using SMALL SSD's as their primary drives)." 0 0
-      bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+      bash /opt/plexguide/roles/baseline/scripts/harddrive.sh
       exit
     ;;
     Z)
@@ -78,7 +78,7 @@ case $CHOICE in
           echo "no" > /var/plexguide/server.hd
           echo "/mnt" > /var/plexguide/server.hd.path
           #### Rebuild Containers
-          bash /opt/plexguide/scripts/baseinstall/rebuild.sh
+          bash /opt/plexguide/roles/baseline/scripts/rebuild.sh
           dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
           echo "no" > /var/plexguide/base.hd
     fi
