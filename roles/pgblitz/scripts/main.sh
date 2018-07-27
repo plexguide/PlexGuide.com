@@ -162,26 +162,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
         E)
-        #### RECALL VARIABLES START
-        tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-        gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-        #### RECALL VARIABLES END
-
-        ### Checkers
-        if [ "$gdrive" != "[gdrive]" ]; then
-          echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nYou Never had GDrive Configured, so cannot baseline!" 0 0
-          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-          exit
-        fi
-
-        if [ "$tdrive" != "[tdrive]" ]; then
-          echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nYou Never had TDrive Configured, so cannot baseline!" 0 0
-          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-          exit
-        fi
-
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1
