@@ -45,7 +45,7 @@ clear
 case $CHOICE in
     A)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        bash /opt/plexguide/roles/baseline/scripts/harddrive.sh ;;
+        bash /opt/plexguide/scripts/baseinstall/harddrive.sh ;;
     B)
 echo 'INFO - Selected: Enhance Processor' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/roles/processor/scripts/processor-menu.sh ;;

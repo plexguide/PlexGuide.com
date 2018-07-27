@@ -60,7 +60,7 @@
         rm -r "$path/plexguide"
       else
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nTHE PATH does not EXIST! Re-Running Menu!" 0 0
-        bash /opt/plexguide/roles/baseline/scripts/harddrive.sh
+        bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         exit
     fi
 
@@ -78,14 +78,14 @@
     ansible-playbook /opt/plexguide/pg.yml --tags folders 1>/dev/null 2>&1
 
     #### Rebuild Containers
-    bash /opt/plexguide/roles/baseline/scripts/rebuild.sh
+    bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
     dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!\n\nWant to check? Use PORTAINER and check the ENVs of certain containers!" 0 0
     exit
 
   else
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nIs NOT Correct. Re-running HD Menu!" 0 0
-    bash /opt/plexguide/roles/baseline/scripts/harddrive.sh
+    bash /opt/plexguide/scripts/baseinstall/harddrive.sh
     exit
   fi
 

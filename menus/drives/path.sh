@@ -72,7 +72,7 @@ echo "WARNING - Path $path does not exist!" > /var/plexguide/pg.log && bash /opt
     fi
 
     #### Rebuild Containers
-    #bash /opt/plexguide/roles/baseline/scripts/rebuild.sh
+    #bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
     #dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!\n\nWant to check? Use PORTAINER and check the ENVs of certain containers!" 0 0
     

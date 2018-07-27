@@ -38,7 +38,7 @@
         rm -r "$base$id/plexguide" 1>/dev/null 2>&1
       else
         dialog --title "--- Checker ---" --msgbox "\nID: $id\n\nThat Recovery ID does not EXIST! Check Your Google Drive!" 0 0
-        #bash /opt/plexguide/roles/baseline/scripts/harddrive.sh
+        #bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         exit
     fi
 
@@ -47,6 +47,6 @@
 
   else
     dialog --title "Recovery ID Choice" --msgbox "\nSelected - Not Correct - Rerunning Backup/Recovery Menu!" 0 0
-    #bash /opt/plexguide/roles/baseline/scripts/harddrive.sh
+    #bash /opt/plexguide/scripts/baseinstall/harddrive.sh
     #exit
   fi
