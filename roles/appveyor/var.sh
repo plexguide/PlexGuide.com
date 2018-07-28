@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,16 +15,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#### PG VARIBLES
-echo "6.021" > /var/plexguide/pg.version
-echo "132" > /var/plexguide/pg.preinstall
-
-#### Installer
-echo "5" > /var/plexguide/pg.ansible
-echo "2" > /var/plexguide/pg.rclone
-echo "1" > /var/plexguide/pg.python
-echo "1" > /var/plexguide/pg.docstart
-echo "2" > /var/plexguide/pg.watchtower
-echo "1" > /var/plexguide/pg.label
-echo "31" > /var/plexguide/pg.alias
-echo "1" > /var/plexguide/pg.dep ## dependencies
+echo "plexguide.com" > /var/plexguide/server.domain
+echo "1.1.1.1" > /var/plexguide/server.ip
+echo "" > /var/plexguide/server.ports
+echo "/mnt" > /var/plexguide/server.hd.path
+echo "" > /var/plexguide/server.ht

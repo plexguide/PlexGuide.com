@@ -9,6 +9,9 @@ install:
   - sh: cd /opt/plexguide
   - sh: sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
 
+  ###### EXECUTE SET VARIABLES
+  - sh: sudo bash /opt/plexguide/roles/appveyor/var.sh
+
   ###### ANSIBLE INSTALL
   - sh: sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
   ###### DOCKER INSTALL
