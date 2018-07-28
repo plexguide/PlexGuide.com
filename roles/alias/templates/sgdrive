@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-sudo systemctl status pgblitz
+sudo systemctl status gdrive
