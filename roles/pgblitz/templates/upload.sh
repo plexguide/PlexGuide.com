@@ -36,7 +36,8 @@ do
     mkdir -p /mnt/pgblitz/$p
     rclone move /mnt/move/ /mnt/pgblitz/$p/ --min-age 1m --delete-empty-src-dirs \
           --exclude="**partial~" --exclude="**_HIDDEN~" \
-          --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
+          --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+          --delete-empty-src-dirs
 
     echo "INFO - PGBlitz: Moved Items /mnt/move to /mnt/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
