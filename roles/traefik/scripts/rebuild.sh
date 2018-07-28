@@ -34,4 +34,5 @@ for ((i=1; i<$count+1; i++)); do
 	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
 done
 
+read -n 1 -s -r -p "Press any key to continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
