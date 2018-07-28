@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PG-Blitz]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & FlickerRate
@@ -16,252 +16,47 @@
 #
 #################################################################################
 ---
-############################################## MOVE (START) Disable
-############ Directories
-  - name: Create Basic Directories
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-    with_items:
-      - /opt/appdata/pgblitz/keys/unprocessed
-      - /opt/appdata/pgblitz/keys/processed
-      - /opt/appdata/pgblitz/keys/badjson
+################################################################ DISABLE PROGRAMS
+- name: Disable Move
+  include_role:
+    name: pgblitz
+    tasks_from: "disable_move.yml"
 
-  - name: Check move Service
-    stat:
-      path: "/etc/systemd/system/move.service"
-    register: move
-    tags:
-      - blitzdeploy
-
-  - name: Stop If Move Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: move
-    when: move.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-### Encrypted
-  - name: Check move-en Service
-    stat:
-      path: "/etc/systemd/system/move-en.service"
-    register: moveen
-    tags:
-      - blitzdeploy
-
-  - name: Stop If Encrypted Move Service Running (ignore errors)
-    systemd:
-      state: stopped
-      enabled: no
-      name: move-en
-    when: moveen.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-############################################## MOVE (END) Disable
-
-############################################## ST2 (START) Disable
-  - name: Check SuperTransfer2 Serivce
-    stat:
-      path: "/etc/systemd/system/supertransfer2.service"
-    register: st2
-    tags:
-      - blitzdeploy
-
-  - name: Stop If SuperTransfer2 Service Running
-    systemd:
-      state: stopped
-      enabled: no
-      name: supertransfer2
-    when: st2.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-############################################## ST2 (END) Disable
-
-############################################## GDRIVE (START)
-  - name: Check GCrypt Serivce
-    stat:
-      path: "/etc/systemd/system/gcrypt.service"
-    register: gcrypt
-    tags:
-      - blitzdeploy
-
-  - name: Stop If GCRYPT Service Running
-    systemd: state=stopped name=gcrypt enabled=no
-    when: gcrypt.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-  - name: Daemon-Reload - Stop GCRYPT Service
-    systemd: state=stopped name=gcrypt daemon_reload=yes enabled=no
-    when: gcrypt.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-###### Above (Grypt) - Below (Standard GDrive)
-  - name: Check GDrive Serivce
-    stat:
-      path: "/etc/systemd/system/gdrive.service"
-    register: gdrive
-    tags:
-      - blitzdeploy
-
-  - name: Stop If GDRIVE Service Running
-    systemd: state=stopped name=gdrive
-    when: gdrive.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-  - name: Install GDRIVE Service
-    template:
-      src: gdrive.js2
-      dest: /etc/systemd/system/gdrive.service
-      force: yes
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-
-  - name: Start GDRIVE SERVICE
-    systemd: state=started name=gdrive daemon_reload=yes enabled=yes
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-
-############################################## GDRIVE (END)
-
-############################################## TDRIVE (START)
-  - name: Check TCrypt Serivce
-    stat:
-      path: "/etc/systemd/system/tcrypt.service"
-    register: tcrypt
-    tags:
-      - blitzdeploy
-
-  - name: Stop If TCrypt Service Running
-    systemd: state=stopped name=tcrypt enabled=no
-    when: tcrypt.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-  - name: Daemon-Reload - Stop TCrypt Service
-    systemd: state=stopped name=tcrypt daemon_reload=yes enabled=no
-    when: tcrypt.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-###### Above (TCrypt) - Below (Standard TDrive)
-
-  - name: Check TDrive Serivce
-    stat:
-      path: "/etc/systemd/system/tdrive.service"
-    register: tdrive
-    tags:
-      - blitzdeploy
-
-  - name: Stop If TDrive Service Running
-    systemd: state=stopped name=tdrive
-    when: tdrive.stat.exists
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-  - name: Install TDrive Service
-    template:
-      src: tdrive.js2
-      dest: /etc/systemd/system/tdrive.service
-      force: yes
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-
-  - name: Start TDrive SERVICE
-    systemd: state=started name=tdrive daemon_reload=yes enabled=yes
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-############################################## TDRIVE (END)
-
-############################################## UNIONFS (START)
-  - name: Register UNIONFS PATH
-    shell: "cat /var/plexguide/unionfs.pgpath"
-    register: unionfs_path
-    ignore_errors: True
-    tags:
-      - blitzdeploy
-
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    ignore_errors: yes
-    tags:
-      - blitzdeploy
-
-  - name: Install UNIONFS Service
-    template:
-      src: unionfs.js2
-      dest: /etc/systemd/system/unionfs.service
-      force: yes
-    tags:
-      - blitzdeploy
-
-  - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-    tags:
-      - blitzdeploy
-
-  - name: Start UnionFS
-    systemd: state=started name=unionfs enabled=yes
-    tags:
-      - blitzdeploy
-############################################## UNIONFS (END)
-#
-############################################## PGBlitz (START) Install
-  - name: Install pgblitz script
-    template:
-      src: upload.sh
-      dest: /opt/appdata/pgblitz/pgblitz.sh
-      force: yes
-    tags:
-      - blitzdeploy
-
-  - name: Install pgblitz Service
-    template:
-      src: pgblitz.service
-      dest: /etc/systemd/system/pgblitz.service
-      force: yes
-    tags:
-      - blitzdeploy
-
-  - name: Enable pgblitz Service
-    systemd:
-      daemon_reload: yes
-      enabled: yes
-      state: restarted
-      name: pgblitz
-    tags:
-      - blitzdeploy
-
-############################################## PGBlitz (END)
-#
-############################################## ST2 Monitorr (START) Disable
+- name: Disable SuperTransfer 2
+  include_role:
+    name: pgblitz
+    tasks_from: "disable_st2.yml"
+################################################################ DISABLE PROGRAMS
 #
 #
 #
-#
-#
-############################################## ST2 Monitorr (END) Disable
+################################################################ STANDARD START
+- name: Deploy GDrive
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_gdrive.yml"
 
-############################################## PGBlitz Monitorr (START) Install
-#
-#
-#
-#
-#
-############################################## PGBlitz Monitorr (END) Install
+- name: Deploy TDrive
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tdrive.yml"
+################################################################ UNENCRYPTED START
+- name: Deploy Tasks
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tasks.yml"
+
+- name: Deploy UnionFS
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_unionfs.yml"
+
+- name: Deploy PGBlitz
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_pgblitz.yml"
+################################################################ UNENCRYPTED END
+
+### NOTES
+# 1. Disable ST2Monitor
+# 2. Introduce PGBMonitor

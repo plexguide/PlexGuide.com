@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-sudo nano /etc/systemd/system/unionfs.service && systemctl daemon-reload
+sudo systemctl status gdrive

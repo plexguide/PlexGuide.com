@@ -17,6 +17,8 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags folders
   ###### RCLONE INSTALL
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
+  ###### alias
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "skipend=yes" --skip-tags cron

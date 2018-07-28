@@ -18,14 +18,31 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-################################################################## CORE
+#### RECALL VARIABLES START
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+#### RECALL VARIABLES END
 
+versioncheck="Version: Unencrypted Edition"
+final="unencrypted"
+
+if [ "$gdrive" != "[gdrive]" ]; then
+  versioncheck="WARNING: GDrive Not Configured Properly"
+  final="gdrive"
+fi
+
+if [ "$tdrive" != "[tdrive]" ]; then
+  versioncheck="WARNING: TDrive Not Configured Properly"
+  final="tdrive"
+fi
+
+################################################################## CORE
 HEIGHT=14
 WIDTH=48
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
-MENU="Make a Selection:"
+MENU="$versioncheck"
 
 OPTIONS=(A "RClone: Config & Establish"
          B "JSON  : For TeamDrive"
@@ -51,9 +68,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #### RClone Missing Warning - END
             rclone config
             touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-            #### GREP Checks
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+
             mkdir -p /root/.config/rclone/
             chown -R 1000:1000 /root/.config/rclone/
             cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
@@ -73,21 +88,16 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             fi
             ;;
         B)
-        #### RECALL VARIABLES START
-        tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-        gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-        #### RECALL VARIABLES END
-
         ### Checkers
-        if [ "$gdrive" != "[gdrive]" ]; then
+        if [ "$final" == "gdrive" ]; then
           echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
           bash /opt/plexguide/roles/pgblitz/scripts/main.sh
           exit
         fi
 
-        if [ "$tdrive" != "[tdrive]" ]; then
-          echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        if [ "$final" == "tdrive" ]; then
+          echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
           bash /opt/plexguide/roles/pgblitz/scripts/main.sh
           exit
@@ -106,58 +116,65 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nJSON Keys Processed" 0 0
             ;;
         C)
+        ### Checkers
+        if [ "$final" == "gdrive" ]; then
+          echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+
+        if [ "$final" == "tdrive" ]; then
+          echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
+
             echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/pgblitz/scripts/emails.sh
             dialog --title "WARNING!" --msgbox "\nIf you add any new JSONs in the future,\nyou must share their email addresses also!" 0 0
             ;;
         D)
-            echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        ### Checkers
+        if [ "$final" == "gdrive" ]; then
+          echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
 
-            #### RECALL VARIABLES START
-            tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-            gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-            #### RECALL VARIABLES END
-
-            ### Checkers
-            if [ "$gdrive" != "[gdrive]" ]; then
-              echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-              exit
-            fi
-
-            if [ "$tdrive" != "[tdrive]" ]; then
-              echo 'FAILURE - USING ST2: Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-              bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-              exit
-            fi
+        if [ "$final" == "tdrive" ]; then
+          echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
+          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          exit
+        fi
 
             #### BLANK OUT PATH - This Builds For UnionFS
             rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
             touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
-            #### IF EXIST - DEPLOY
-            if [ "$tdrive" == "[tdrive]" ]
-              then
-
-              #### ADDS TDRIVE to the UNIONFS PATH
-              echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+            ### Build UnionFS Paths Based on Version
+            if [ "$final" == "unencrypted" ];then
+              echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+            elif [ "$final" == "encrypted" ];then
+              echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:/mnt/gcrypt=RO:/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
             fi
 
-            if [ "$gdrive" == "[gdrive]" ]
-              then
-
-              #### ADDS GDRIVE to the UNIONFS PATH
-              echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-            fi
+            ### Add GDSA Paths for UnionFS
             bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
             temp=$( cat /tmp/pg.gdsa.build )
             echo -n "$temp" >> /var/plexguide/unionfs.pgpath
-            #### REQUIRED TO DEPLOY ENDING
-            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
-            #ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
 
+            ### Execute Playbook Based on Version
+            if [ "$final" == "unencrypted" ];then
+              ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+            elif [ "$final" == "encrypted" ];then
+              ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags unencrypted
+            fi
+
+            echo ""
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
