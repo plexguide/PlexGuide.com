@@ -21,14 +21,14 @@ echo 'INFO - Visited HD Selection Menu' > /var/plexguide/pg.log && bash /opt/ple
 hdpath=$(cat /var/plexguide/server.hd.path)
 dialog --title "Download Path Note" --msgbox "\nDownload Path can be on a second drive or current drive\n\nNOTE 2ND DRIVE: You must format and mount your drive. PG just points to a mounted folder!\n\nCurrent Download Path: $hdpath" 0 0
 
-HEIGHT=9
-WIDTH=50
-CHOICE_HEIGHT=2
+HEIGHT=11
+WIDTH=55
+CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Current Download Path: $hdpath "
+TITLE="Make A Choice - Visit Again In Settings!"
 
 OPTIONS=(A "YES: Change the Download Path"
-         B "NO : Leave the Default Path Alone")
+         Z "NO : Leave the Default Path Alone")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -42,7 +42,7 @@ case $CHOICE in
       bash /opt/plexguide/scripts/baseinstall/path.sh
       exit
       ;;
-    B)
+    Z)
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
       echo "/mnt" >
       dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
