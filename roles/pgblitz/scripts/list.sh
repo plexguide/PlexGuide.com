@@ -26,7 +26,6 @@ bash /opt/plexguide/roles/pgblitz/scripts/validator.sh
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
 
 #rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
-rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
 rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
 
 rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
