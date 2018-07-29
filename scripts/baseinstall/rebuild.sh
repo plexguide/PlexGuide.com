@@ -17,19 +17,19 @@
 #################################################################################
 docker ps -a --format "{{.Names}}"  > /var/plexguide/container.running
 
-sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/plex/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/portainer/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/ombi/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/organizr/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/muximux/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/heimdall/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/support/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/tautulli/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/telly/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/traefik/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/watchtower/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/plex/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/portainer/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/traefik/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/ombi/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/netdata/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/organizr/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/muximux/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/heimdall/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/support/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/tautulli/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/telly/d" /var/plexguide/container.running 1>/dev/null 2>&1
 
 ### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
 ### BackDoor WorkAround to Stop This Behavior
