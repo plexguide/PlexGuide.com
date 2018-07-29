@@ -25,8 +25,13 @@ ls -la /root/.config/rclone/rclone.conf | awk '{print $9}' | grep GDSA
 
 ##### Removes JSONS from processed if they are missing from the rclone.config
 while read p; do
+  # Checks the rclone config file for variable p
   GDSACHECK=$(grep "\$p\b" /root/.config/rclone/rclone.conf)
-  if [ "$GDSACHECK" == "[$p]" ]; then
+  GDSACHECK="${GDSACHECK:1}"
+  GDSACHECK="${GDSACHECK::-1}"
+
+  # If both check out, it means that rclone config and processed jsons match; if not, remove 
+  if [ "$GDSACHECK" == "$p" ]; then
       echo "" 1>/dev/null 2>&1
     else
       rm -r /opt/appdata/pgblitz/keys/processed/$p 1>/dev/null 2>&1
