@@ -59,7 +59,7 @@ case $CHOICE in
     echo 'INFO - Selected: LazyLibrarian' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "skipend=no"
     read -n 1 -s -r -p "Press any key to continue"
-    
+
       ;;
     D)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
