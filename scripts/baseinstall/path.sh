@@ -74,9 +74,15 @@
 
     #### Rebuild Containers
     dialog --infobox "Rebuilding Folders For: $path" 3 55
+    sleep 2
+    clear
     ansible-playbook /opt/plexguide/pg.yml --tags folders
 
+
     #### Rebuild Containers
+    dialog --infobox "Rebuilding Containers" 3 55
+    sleep 2
+    clear
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
     dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!\n\nWant to check? Use PORTAINER and check the ENVs of certain containers!" 0 0
