@@ -38,7 +38,7 @@ while read q; do
     echo "INFO - PGBlitz: JSON $q - Still Valid" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
       rm -r /opt/appdata/pgblitz/keys/processed/$q 1>/dev/null 2>&1
-      echo "INFO - PGBlitz: Removed JSON $q" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: Removed JSON $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   fi
 done </tmp/pg.gdsalist
 
