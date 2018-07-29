@@ -152,7 +152,7 @@
       - /opt/appdata/pgblitz/keys/unprocessed
       - /opt/appdata/pgblitz/keys/processed
       - /opt/appdata/pgblitz/keys/badjson
-      - /mnt/pgblitz
+      - "{{path.stdout}}/pgblitz"
       - /var/plexguide/logs
       - "{{path.stdout}}/deluge"
       - "{{path.stdout}}/deluge/temp"
