@@ -30,7 +30,7 @@ while read q; do
   #GDSACHECK="${GDSACHECK:1}"
   #GDSACHECK="${GDSACHECK::-1}"
   echo "[$q]"
-  echo $GDSACHECK
+  echo "---- $GDSACHECK"
 
   # If both check out, it means that rclone config and processed jsons match; if not, remove
   if [ "$GDSACHECK" == "[$q]" ]; then
