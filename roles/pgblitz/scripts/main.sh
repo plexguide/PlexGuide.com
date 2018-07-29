@@ -181,8 +181,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
         E)
-            dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
-            sleep 2
+            bash /opt/plexguide/scripts/baseinstall/harddrive.sh
             ;;
         F)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
