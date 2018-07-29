@@ -16,6 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
+downloadpath=$(cat /var/plexguide/server.hd.path)
 echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #### RECALL VARIABLES START
@@ -38,18 +39,19 @@ fi
 
 ################################################################## CORE
 HEIGHT=14
-WIDTH=48
+WIDTH=55
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="$versioncheck"
 
-OPTIONS=(A "RClone: Config & Establish"
-         B "JSON  : For TeamDrive"
-         C "E-Mail: Share Generator for PG Blitz"
-         D "Deploy: PG Drive & PG Blitz"
-         E "Tshoot: Baseline PG Blitz (Fresh Start)"
-         F "Tshoot: Disable PGBlitz"
+OPTIONS=(A "RClone : Config & Establish"
+         B "JSON   : For TeamDrive"
+         C "E-Mail : Share Generator for PG Blitz"
+         D "Deploy : PG Drive & PG Blitz"
+         E "DL Path: Current - $downnloadpath"
+         F "Tshoot : Baseline PG Blitz (Fresh Start)"
+         G "Tshoot : Disable PGBlitz"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -181,6 +183,9 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
         E)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
+        F)
+            dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
+            sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1
             systemctl disable pgblitz 1>/dev/null 2>&1
             #grep -A10 'tdrive' rclone.conf|grep -v "tdrive" > /root/.config/rclone/tdrive.save
@@ -199,7 +204,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #rm -r /root/.config/rclone/gdrive.save
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
-         F)
+         G)
             sudo systemctl stop pgblitz 1>/dev/null 2>&1
             sudo systemctl rm pgblitz 1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nPG Blitz is Disabled!\n\nYou must rerun PGDrives & PGBlitz to Enable Again!" 0 0
