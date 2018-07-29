@@ -32,7 +32,7 @@ while read p; do
 
   # If both check out, it means that rclone config and processed jsons match; if not, remove
   if [ "$GDSACHECK" == "$p" ]; then
-      echo "" 1>/dev/null 2>&1
+    echo "INFO - PGBlitz: JSON $p - Still Valid" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
       rm -r /opt/appdata/pgblitz/keys/processed/$p 1>/dev/null 2>&1
       echo "INFO - PGBlitz: Removed JSON $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
