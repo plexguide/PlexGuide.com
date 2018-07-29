@@ -23,6 +23,7 @@ rm -r /opt/plexguide/pg.yml 1>/dev/null 2>&1
 
 echo "---" > /opt/plexguide/pg.yml
 echo "- hosts: localhost" >> /opt/plexguide/pg.yml
+cat /opt/plexguide/roles/global_vars.sh >> /opt/plexguide/pg.yml
 echo "" >> /opt/plexguide/pg.yml
 echo "  roles:" >> /opt/plexguide/pg.yml
 
@@ -39,7 +40,7 @@ done </var/plexguide/yml.list
 #echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 #echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
 #echo "inventory = inventories/local" >> /etc/ansible/ansible.cfg
-### ENDING: DECLARED VARIABLES 
+### ENDING: DECLARED VARIABLES
 
 ### ENDING: FINAL LOG ##################################################
 echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
