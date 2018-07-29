@@ -16,8 +16,8 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.021" > /var/plexguide/pg.version
-echo "132" > /var/plexguide/pg.preinstall
+echo "6.022" > /var/plexguide/pg.version
+echo "133" > /var/plexguide/pg.preinstall
 
 #### Installer
 echo "5" > /var/plexguide/pg.ansible

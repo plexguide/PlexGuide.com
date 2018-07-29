@@ -23,7 +23,7 @@ BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Hard Drive 2nd: Use a Second HD for Processing"
+OPTIONS=(A "Download Path : Change the DL Path"
          B "Processor     : Enhance Processing Power"
          C "Kernel Mods   : Enhance Network Throughput"
          D "WatchTower    : Auto-Update Application Manager"
