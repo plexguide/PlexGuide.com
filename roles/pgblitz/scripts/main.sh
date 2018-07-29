@@ -38,9 +38,9 @@ if [ "$tdrive" != "[tdrive]" ]; then
 fi
 
 ################################################################## CORE
-HEIGHT=14
+HEIGHT=15
 WIDTH=55
-CHOICE_HEIGHT=7
+CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="$versioncheck"
