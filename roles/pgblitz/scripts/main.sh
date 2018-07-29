@@ -183,6 +183,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
         E)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
+            ;;
         F)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
