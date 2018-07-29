@@ -42,7 +42,7 @@ case $CHOICE in
       bash /opt/plexguide/scripts/baseinstall/path.sh
       exit
       ;;
-    Z)
+    B)
       dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, but not ready!\n\nWhen your ready, visit SETTINGS for setup ANYTIME!" 0 0
       echo "/mnt" >
       dialog --title "HD Selection" --msgbox "\nNo Changes were made. Standard location is /mnt!" 0 0
