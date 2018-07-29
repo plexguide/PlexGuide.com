@@ -49,7 +49,7 @@ OPTIONS=(A "RClone : Config & Establish"
          B "JSON   : For TeamDrive"
          C "E-Mail : Share Generator for PG Blitz"
          D "Deploy : PG Drive & PG Blitz"
-         E "DL Path: Current - $downnloadpath"
+         E "DL Path: Current - $downloadpath"
          F "Tshoot : Baseline PG Blitz (Fresh Start)"
          G "Tshoot : Disable PGBlitz"
          Z "Exit")
