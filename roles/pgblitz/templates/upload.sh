@@ -37,7 +37,7 @@ while read p; do
       rm -r /opt/appdata/pgblitz/keys/processed/$p 1>/dev/null 2>&1
       echo "INFO - PGBlitz: Removed JSON $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   fi
-done </tmp/pg.rclonelist
+done </tmp/pg.gdsalist
 
 echo "done"
 exit
