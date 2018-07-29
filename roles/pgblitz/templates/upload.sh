@@ -20,7 +20,7 @@ sleep 5
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 
-ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsalist
+ls -la $path/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
 
 while true
 do
