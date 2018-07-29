@@ -52,7 +52,12 @@
       - name: plexguide
         aliases:
           - "{{pgrole}}"
-    labels: "{{default_labels}}"
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},Host:speed.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
     restart_policy: always
     state: started
 
