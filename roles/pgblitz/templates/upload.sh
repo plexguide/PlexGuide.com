@@ -20,7 +20,20 @@ sleep 5
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 
-ls -la $path/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
+ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
+ls -la /root/.config/rclone/rclone.conf | awk '{print $9}' | grep GDSA
+
+##### Removes JSONS from processed if they are missing from the rclone.config
+while read p; do
+  GDSACHECK=$(grep "\$p\b" /root/.config/rclone/rclone.conf)
+
+  if [ "$GDSACHECK" == "$p" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      rm -r /opt/appdata/pgblitz/keys/processed/$p 1>/dev/null 2>&1
+      echo "INFO - PGBlitz: Removed JSON $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  fi
+done </tmp/pg.gdsalist
 
 while true
 do
