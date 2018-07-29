@@ -27,11 +27,13 @@ ls -la /root/.config/rclone/rclone.conf | awk '{print $9}' | grep GDSA > /tmp/pg
 while read q; do
   # Checks the rclone config file for variable p
   GDSACHECK=$(grep '\$q\b' /root/.config/rclone/rclone.conf)
-  GDSACHECK="${GDSACHECK:1}"
-  GDSACHECK="${GDSACHECK::-1}"
+  #GDSACHECK="${GDSACHECK:1}"
+  #GDSACHECK="${GDSACHECK::-1}"
+  echo "[$q]"
+  echo $GDSACHECK
 
   # If both check out, it means that rclone config and processed jsons match; if not, remove
-  if [ "$GDSACHECK" == "$q" ]; then
+  if [ "$GDSACHECK" == "[$q]" ]; then
     echo "INFO - PGBlitz: JSON $q - Still Valid" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
       rm -r /opt/appdata/pgblitz/keys/processed/$q 1>/dev/null 2>&1
