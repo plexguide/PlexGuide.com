@@ -74,7 +74,7 @@
 
     #### Rebuild Containers
     dialog --infobox "Rebuilding Folders For: $path" 3 55
-    ansible-playbook /opt/plexguide/pg.yml --tags folders 1>/dev/null 2>&1
+    ansible-playbook /opt/plexguide/pg.yml --tags folders
 
     #### Rebuild Containers
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
