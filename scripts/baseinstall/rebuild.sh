@@ -15,27 +15,32 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - Rebuilt Containers' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+docker ps -a --format "{{.Names}}"  > /var/plexguide/container.running
 
-dialog --title "Very Important" --msgbox "\nWe must rebuild CERTAIN containers occardingly! Please Be Patient!" 0 0
-docker ps -a --format "{{.Names}}"  > /opt/appdata/plexguide/running
-sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/watchtower/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/plex/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/portainer/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/traefik/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/ombi/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/netdata/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/organizr/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/muximux/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/heimdall/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/support/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/tautulli/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-sed -i -e "/telly/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
-while read p; do
-echo $p > /tmp/program_var
-app=$( cat /tmp/program_var )
-dialog --infobox "Reconstructing Your Container: $app" 3 50
-ansible-playbook /opt/plexguide/pg.yml --tags "$app" --skip-tags webtools 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
-done </opt/appdata/plexguide/running
+sed -i -e "/traefik/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/watchtower/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/plex/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/portainer/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/traefik/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/ombi/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/netdata/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/organizr/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/muximux/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/heimdall/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/support/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/tautulli/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/telly/d" /var/plexguide/container.running 1>/dev/null 2>&1
+
+### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
+### BackDoor WorkAround to Stop This Behavior
+count=$(wc -l < /var/plexguide/container.running)
+((count++))
+((count--))
+
+for ((i=1; i<$count+1; i++)); do
+	app=$(sed "${i}q;d" /var/plexguide/container.running)
+	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
+done
+echo ""
+read -n 1 -s -r -p "Press any key to continue"
+echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-  dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
   echo "yes" > /var/plexguide/server.hd
 
   dialog --title "SET FULL PATH [ EXAMPLE: /hd2/media or /hd2 ]" \
@@ -27,7 +26,7 @@
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nPATH: $path\n\nCorrect?" 0 0; then
     dialog --title "Path Choice" --msgbox "\nPATH: $path\n\nTracking!" 0 0
-    
+
     ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
     initial="$(echo $path | head -c 1)"
     if [ "$initial" != "/" ]
@@ -37,20 +36,20 @@
             dialog --title "PG Error Checking" --msgbox "\nForgot to add a FORWARD SLASH in the beginning!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
             echo "$path" > /var/plexguide/server.hd.path
       fi
-  
-    ##### If BONEHEAD added a / at the end, we fix for them  
+
+    ##### If BONEHEAD added a / at the end, we fix for them
     initial="${path: -1}"
     if [ "$initial" == "/" ]
       then
             pathe="$path"
-            path=${path::-1} 
+            path=${path::-1}
             dialog --title "PG Error Checking" --msgbox "\nADDED a FORWARD SLASH to the END! Not Needed!\n\nOLD PATH:\n$pathe\n\nNEW PATH:\n$path" 0 0
             echo "$path" > /var/plexguide/server.hd.path
       fi
 
     ##### READ / WRITE CHECK
     mkdir "$path/plexguide"
-    
+
     file="$path/plexguide"
     if [ -e "$file" ]
       then
@@ -75,12 +74,20 @@
 
     #### Rebuild Containers
     dialog --infobox "Rebuilding Folders For: $path" 3 55
-    ansible-playbook /opt/plexguide/pg.yml --tags folders 1>/dev/null 2>&1
+    sleep 2
+    clear
+    ansible-playbook /opt/plexguide/pg.yml --tags folders
+
 
     #### Rebuild Containers
+    dialog --infobox "Rebuilding Containers" 3 55
+    sleep 2
+    clear
     bash /opt/plexguide/scripts/baseinstall/rebuild.sh
 
     dialog --title "PG Container Status" --msgbox "\nContainers Rebuilt According to Your Path!\n\nWant to check? Use PORTAINER and check the ENVs of certain containers!" 0 0
+    dialog --title "WARNING - PGDRIVE" --msgbox "\nIf you are running PGDrive and/or PGBlitz, go redeploy it now!" 0 0
+
     exit
 
   else

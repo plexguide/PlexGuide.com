@@ -15,19 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
-#build a service out of this
-#Remake another for PGBlitz
-#clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
-#build unionfs additon build script
-
+downloadpath=$(cat /var/plexguide/server.hd.path)
 path=/opt/appdata/pgblitz/keys
 
 ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
 rm -r /tmp/pg.gdsa.build 1>/dev/null 2>&1
 
 while read p; do
-echo -n "/mnt/pgblitz/$p=RO:">> /tmp/pg.gdsa.build
+echo -n "$downloadpath/pgblitz/$p=RO:">> /tmp/pg.gdsa.build
 done </tmp/pg.gdsa.ufs
 builder=$( cat /tmp/pg.gdsa.build )
 echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

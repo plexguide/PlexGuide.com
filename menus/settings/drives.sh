@@ -55,20 +55,28 @@ case $CHOICE in
           echo 'WARNING - Utilizing HD Solo Edition - Cannot Configure Drives' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           bash /opt/plexguide/menus/settings/drives.sh
           exit
+        else
+        bash /opt/plexguide/scripts/baseinstall/harddrive.sh
         echo 'INFO - Selected 2nd HD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         fi
         ;;
     C)
         bash /opt/plexguide/roles/processor/scripts/processer-menu.sh
         echo "INFO - Selected Processor Power Change" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        bash /opt/plexguide/menus/settings/drives.sh
+        exit
         ;;
     D)
         echo "INFO - Selected Kernel Modifications" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+        bash /opt/plexguide/menus/settings/drives.sh
+        exit
         ;;
     E)
         echo "INFO - Selected WatchTower Change" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/roles/watchtower/menus/main.sh
+        bash /opt/plexguide/menus/settings/drives.sh
+        exit
         ;;
     Z)
         clear
@@ -77,6 +85,4 @@ case $CHOICE in
         ;;
     esac
 clear
-
-bash /opt/plexguide/menus/settings/drives.sh
 exit 0

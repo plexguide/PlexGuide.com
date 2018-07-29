@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-downloadpath=/var/plexguide/server.hd.path
+downloadpath=$(cat /var/plexguide/server.hd.path)
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
@@ -26,7 +26,7 @@ ls -la $path/processed | awk '{print $9}' | tail -n +4 > /tmp/pg.gdsa
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
 while read p; do
 
-mkdir -p /$downloadpath/pgblitz/$p
+mkdir -p $downloadpath/pgblitz/$p
 tee >> /$rpath <<EOF
 [$p]
 type = drive
