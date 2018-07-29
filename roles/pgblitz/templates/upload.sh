@@ -26,7 +26,7 @@ ls -la /root/.config/rclone/rclone.conf | awk '{print $9}' | grep GDSA > /tmp/pg
 ##### Removes JSONS from processed if they are missing from the rclone.config
 while read q; do
   # Checks the rclone config file for variable p
-  GDSACHECK=$(grep "\$q\b" /root/.config/rclone/rclone.conf)
+  GDSACHECK=$(grep '\$q\b' /root/.config/rclone/rclone.conf)
   GDSACHECK="${GDSACHECK:1}"
   GDSACHECK="${GDSACHECK::-1}"
 
