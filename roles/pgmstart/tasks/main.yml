@@ -60,7 +60,7 @@
     path: "/opt/plexguide/roles/{{pgrole}}/tasks/questions.yml"
   register: "questions"
 
-- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
+- debug: msg="Question Check - {{questions.stat.exists}} "
 
 - name: "Deploy Questions"
   include_role:
