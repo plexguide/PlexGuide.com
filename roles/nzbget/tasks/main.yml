@@ -16,9 +16,6 @@
 #
 #################################################################################
 ---
-- include:
-    name: "core.yml"
-
 - name: Check nzbget.conf exists
   stat:
     path: "/opt/appdata/nzbget/nzbget.conf"
