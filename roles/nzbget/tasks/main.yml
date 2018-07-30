@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - include_tasks:
-    name: "core"
+    name: "core.yml"
 
 - name: Check nzbget.conf exists
   stat:
