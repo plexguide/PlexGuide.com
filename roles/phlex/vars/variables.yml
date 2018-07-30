@@ -18,6 +18,6 @@
 ---
 pgrole: "phlex"
 image: "digitalhigh/phlex"
-intport: "80"
+intport: "5666"
 extport: "5666"
 castport: "9000"
