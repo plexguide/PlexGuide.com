@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: This template is for submitting **bug reports ONLY**. For support questions go to https://plexguide.com forums and/or join the [Plexguide Discord](https://www.google.com "Plexguide Discord") for real time help/support.
+about: This template is for submitting **bug reports ONLY**. For support questions go to plexguide.com forums and/or join the [Plexguide Discord](https://www.google.com "Plexguide Discord") for real time help/support.
 
 ---
 
