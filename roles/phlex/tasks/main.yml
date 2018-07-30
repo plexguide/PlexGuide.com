@@ -28,7 +28,7 @@
 
 - name: Remove Phlex Container
   docker_container:
-    name: {{pgrole}}
+    name: "{{pgrole}}"
     state: absent
 
 - name: Deploy {{pgrole}} Container
