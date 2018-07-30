@@ -62,7 +62,7 @@
 
 - name: "Deploy Questions"
   include_role:
-    name: "{{pgrole}}.yml"
+    name: "{{pgrole}}"
     tasks_from: "questions.yml"
   ignore_errors: True
   when: "questions.stat.exists == True"
