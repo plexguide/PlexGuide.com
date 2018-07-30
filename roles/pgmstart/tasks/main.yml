@@ -54,6 +54,25 @@
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
 
+##################### LOAD QUESTIONS ########## (START)
+- name: "Check If Questions Exist"
+  stat:
+    path: "/opt/plexguide/{{pgrole}}/questions.yml"
+  register: "questions"
+
+- name: "Deploy Questions"
+  include_role:
+    name: {{pgrole}}
+    tasks_from: "questions.yml"
+  ignore_errors: True
+  when: "questions.stat.exists == True"
+##################### LOAD QUESTIONS ########## (END)
+
+- name: "Check New BreadCrumb"
+  stat:
+    path: "/var/plexguide/breadcrumb.{{pgrole}}"
+  register: "breadcrumbs"
+
 - name: "Check New BreadCrumb"
   stat:
     path: "/var/plexguide/breadcrumb.{{pgrole}}"
