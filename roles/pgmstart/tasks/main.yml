@@ -55,7 +55,7 @@
   ignore_errors: True
 
 ##################### LOAD QUESTIONS ########## (START)
-- debug: msg="Question Check is {{skipend}}"
+- debug: msg="Question Check is {{quescheck}}"
 
 - name: "Check If Questions Exist"
   stat:
@@ -68,8 +68,8 @@
     tasks_from: "questions.yml"
   ignore_errors: True
   when:
-    - "questions.stat.exists == True"
-    - questions_check == "on"
+    - questions.stat.exists == "True"
+    - quescheck == "on"
 ##################### LOAD QUESTIONS ########## (END)
 
 - name: "Check New BreadCrumb"
