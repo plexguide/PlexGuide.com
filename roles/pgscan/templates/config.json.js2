@@ -32,8 +32,11 @@
   "RUN_COMMAND_BEFORE_SCAN": "",
   "SERVER_ALLOW_MANUAL_SCAN": false,
   "SERVER_FILE_EXIST_PATH_MAPPINGS": {
-    "/mnt/unionfs/": [
-      "/unionfs/"
+    "/mnt/unionfs/movies/": [
+      "/unionfs/movies/"
+    ],
+    "/mnt/unionfs/tv/": [
+      "/unionfs/tv/"
     ]
   },
   "SERVER_IGNORE_LIST": [
@@ -46,10 +49,10 @@
   "SERVER_PASS": "{{pgscan_pass.stdout}}",
   "SERVER_PATH_MAPPINGS": {
     "/unionfs/movies/": [
-      "/mnt/unionfs/movies/"
+      "/unionfs/movies/"
     ],
     "/unionfs/tv/": [
-      "/mnt/unionfs/tv/"
+      "/unionfs/tv/"
     ]
   },
   "SERVER_PORT": 3468,
