@@ -28,6 +28,7 @@ If applicable, add screenshots and/or .gif to help explain your problem.
   
   * Operating System: Ubuntu [16.04/18.04]
   * Plexguide Version: 6.xx [Stable/Beta/Edge]
+  * Plexguide Server Type: [Remote Dedi/Remote VPS or VM/Local Dedi/Local VPS or VM]
   * Plexguide Edition: [Gdrive/HD Solo/HD Multi/GCE]
   * Plexguide Mount System: [Move+PGDrive/Move+PlexDrive/PGBlitz/ST2]
   * Using Traefik: [Yes/No]
