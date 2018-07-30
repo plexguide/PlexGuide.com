@@ -19,7 +19,7 @@
   set_fact:
     intport: "6789"
     extport: "6789"
-    pgrole: {{role_name}}
+    pgrole: "{{role_name}}"
     image: "linuxserver/nzbget"
 
 - name: Set Default Volume - {{pgrole}}
