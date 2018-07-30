@@ -55,7 +55,7 @@
   ignore_errors: True
 
 ##################### LOAD QUESTIONS ########## (START)
-- debug: msg="Question Check is {{question_check}}"
+- debug: msg="Question Check is {{skipend}}"
 
 - name: "Check If Questions Exist"
   stat:
