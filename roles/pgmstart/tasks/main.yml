@@ -55,6 +55,8 @@
   ignore_errors: True
 
 ##################### LOAD QUESTIONS ########## (START)
+- debug: msg="Question Check is {{ question_check }}"
+
 - name: "Check If Questions Exist"
   stat:
     path: "/opt/plexguide/roles/{{pgrole}}/tasks/questions.yml"
@@ -65,7 +67,9 @@
     name: "{{pgrole}}"
     tasks_from: "questions.yml"
   ignore_errors: True
-  when: "questions.stat.exists == True"
+  when:
+    - "questions.stat.exists == True"
+    - questions_check == "on"
 ##################### LOAD QUESTIONS ########## (END)
 
 - name: "Check New BreadCrumb"
