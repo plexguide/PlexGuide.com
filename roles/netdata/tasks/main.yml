@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - include_role:
-    name: pgmstart
+    name: "pgmstart"
 
 - name: Deploy NetData Container
   docker_container:
