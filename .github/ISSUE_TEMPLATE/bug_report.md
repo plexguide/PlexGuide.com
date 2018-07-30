@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: This template is for submitting bug reports ONLY. For support questions go
-  to http://plexguide.com and join the Discord chat for real time help.
+  to http://plexguide.com and join the Discord chat for real time help/support.
 
 ---
 
