@@ -57,7 +57,7 @@
 ##################### LOAD QUESTIONS ########## (START)
 - name: "Check If Questions Exist"
   stat:
-    path: "/opt/plexguide/{{pgrole}}/questions.yml"
+    path: "/opt/plexguide/{{pgrole}}/tasks/questions.yml"
   register: "questions"
 
 - name: "Deploy Questions"
