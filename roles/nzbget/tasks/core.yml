@@ -33,8 +33,8 @@
       - "{{path.stdout}}/nzbget/tmp:/tmp"
       - "{{path.stdout}}/nzbget/queue:/queue"
       - "{{path.stdout}}/nzbget/scripts:/scripts"
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
+      - "/mnt/unionfs:/unionfs"
+      - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
@@ -47,7 +47,7 @@
       MONO_TLS_PROVIDER: legacy
       LC_ALL: "C"
 
-- name: Set Default Labels - {{pgrole}}
+- name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"
@@ -57,4 +57,4 @@
 
 ######################## Deploy PGMSTART
 - include_role:
-    name: pgmstart
+    name: "pgmstart"
