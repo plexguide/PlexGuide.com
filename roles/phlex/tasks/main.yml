@@ -24,11 +24,16 @@
 - name: Create Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
-    - /opt/appdata/{{role_name}}/config
+    - /opt/appdata/{{pgrole}}/config
 
-- name: Deploy {{role_name}} Container
+- name: Remove Phlex Container
   docker_container:
-    name: "{{role_name}}"
+    name: {{pgrole}}
+    state: absent
+
+- name: Deploy {{pgrole}} Container
+  docker_container:
+    name: "{{pgrole}}"
     image: "{{image}}"
     pull: yes
     cpu_shares: 256
@@ -41,18 +46,18 @@
       FASTCGIPORT: "{{castport}}"
 
     volumes:
-      - "/opt/appdata/{{role_name}}:/config"
+      - "/opt/appdata/{{pgrole}}:/config"
 
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
+          - "{{pgrole}}"
     restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
 - include_role:
