@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- name: Include Main Variables
+  include_vars: variables.yml
+
 - include_role:
     name: "pgmstart"
 
