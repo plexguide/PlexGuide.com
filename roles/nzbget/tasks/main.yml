@@ -16,7 +16,7 @@
 #
 #################################################################################
 ---
-- include_role:
+- include_tasks:
     name: "core"
 
 - name: Check nzbget.conf exists
