@@ -22,7 +22,7 @@
     pgrole: "{{role_name}}"
     image: "linuxserver/nzbget"
 
-- name: Set Default Volume - {{pgrole}}
+- name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
       - "/opt/appdata/nzbget:/config{{extra}}"
