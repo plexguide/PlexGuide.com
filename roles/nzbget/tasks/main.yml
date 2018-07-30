@@ -16,7 +16,7 @@
 #
 #################################################################################
 ---
-- name: Scripts Task
+- name: Launch Core Task
   include_tasks: "core.yml"
 
 - name: Check nzbget.conf exists
