@@ -21,10 +21,26 @@
 - include_role:
     name: pgmstart
 
-- name: Create Folders
+- name: Create Phlex Folder(s)
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/{{pgrole}}/config
+
+- name: Download and Extract Latest Cast.bundle to Plex Plug-ins folder
+  unarchive:
+    src: https://github.com/d8ahazard/Cast.bundle/archive/master.zip
+    dest: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins/
+    remote_src: yes
+    creates: master.zip
+    mode: 0775
+    owner: 1000
+    group: 1000
+
+- name: Rename Cast.bundle Folder and Delete master.zip File
+  shell: mv Cast.bundle-master Cast.bundle && rm master.zip
+  args:
+    chdir: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins/
+    creates: Cast.bundle
 
 - name: Remove Phlex Container
   docker_container:
