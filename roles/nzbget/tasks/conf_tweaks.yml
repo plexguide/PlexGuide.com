@@ -1,0 +1,176 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Please Wait - Pending .conf generation from NZBGET
+  wait_for:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    state: present
+
+- name: "Wait 10 Seconds"
+  wait_for:
+    timeout: 10
+
+- name: Customize nzbget.conf
+  docker_container:
+    name: nzbget
+    state: stopped
+
+- name: Remove User
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^ControlUsername\s?='
+    line: 'ControlUsername='
+    state: present
+
+- name: Remove Password
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: ControlPassword=tegbzn6789
+    #regexp: '^ControlPassword=\s?='
+    line: 'ControlPassword='
+    state: present
+
+- name: Change MainDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^MainDir\s?='
+    line: 'MainDir=/config'
+    state: present
+
+- name: Change InterDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^InterDir\s?='
+    line: 'InterDir=/incomplete'
+    state: present
+
+- name: Change DestDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^DestDir\s?='
+    line: 'DestDir=/completed'
+    state: present
+
+- name: Change NZBDir directory
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^NzbDir\s?='
+    line: 'NzbDir=/nzb'
+    state: present
+
+- name: Change QueueDir
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^QueueDir\s?='
+    line: 'QueueDir=/queue'
+    state: present
+
+- name: Change TempDir
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^TempDir\s?='
+    line: 'TempDir=/tmp'
+    state: present
+
+- name: ScriptDir
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^ScriptDir\s?='
+    line: 'ScriptDir=/scripts'
+    state: present
+
+- name: LogFile
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^LogFile\s?='
+    line: 'LogFile=/log/nzbget.log'
+    state: present
+
+- name: DirectUnpack Set to On
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^DirectUnpack\s?='
+    line: 'DirectUnpack=yes'
+    state: present
+
+- name: Lowercase & Set Movie Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category1.Name=movies'
+    state: present
+
+- name: Set Location of Movies
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category1.DestDir=/completed/movies'
+    state: present
+
+- name: Lowercase & Set TV Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category2.Name\s?='
+    line: 'Category2.Name=tv'
+    state: present
+
+- name: Set Location of TV
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category2.DestDir=/completed/tv'
+    state: present
+
+- name: Lowercase & Set Music Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category3.Name\s?='
+    line: 'Category3.Name=music'
+    state: present
+
+- name: Set Location of Music
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category3.DestDir=/completed/music'
+    state: present
+
+- name: Lowercase & Set EBook Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category4.Name\s?='
+    line: 'Category4.Name=ebooks'
+    state: present
+
+- name: Set Location of EBooks
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: '^Category1.Name\s?='
+    line: 'Category4.DestDir=/completed/ebooks'
+    state: present
+
+- name: Fix Lowercase & Set Movie Category
+  lineinfile:
+    path: "/opt/appdata/nzbget/nzbget.conf"
+    regexp: 'Category1.Name='
+    line: 'Category1.Name=movies'
+    state: present
+
+- name: Restart Container
+  docker_container:
+    name: nzbget
+    state: started
