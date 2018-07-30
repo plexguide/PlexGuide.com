@@ -55,12 +55,12 @@
   ignore_errors: True
 
 ##################### LOAD QUESTIONS ########## (START)
-- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
-
 - name: "Check If Questions Exist"
   stat:
     path: "/opt/plexguide/roles/{{pgrole}}/tasks/questions.yml"
   register: "questions"
+
+- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
 
 - name: "Deploy Questions"
   include_role:
