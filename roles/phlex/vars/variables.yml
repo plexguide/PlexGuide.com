@@ -16,7 +16,7 @@
 #
 #################################################################################
 ---
-role_name: "phlex"
+pgrole: "phlex"
 image: "digitalhigh/phlex"
 intport: "80"
 extport: "5666"
