@@ -67,7 +67,7 @@
     name: "{{pgrole}}"
     tasks_from: "questions.yml"
   ignore_errors: True
-  when: questions.stat.exists == "False" and quescheck == "on"
+  when: questions.stat.exists == "True" and quescheck == "on"
 ##################### LOAD QUESTIONS ########## (END)
 
 - name: "Check New BreadCrumb"
