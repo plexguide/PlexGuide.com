@@ -2,5 +2,6 @@
 ###### BE CAREFUL - WRONG FORMATTING CAN BREAK PG ###  - opt/plexguide/pg.yml
   vars:
     skipend: "blank"
-    quescheck: "blank"
+    quescheck: "off"
+    extra: ""
 ## GLOBAL_VARS.SH #################################################### (END)
