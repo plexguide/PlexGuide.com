@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - include_role:
-    name: core
+    name: "core"
 
 - name: Check nzbget.conf exists
   stat:
