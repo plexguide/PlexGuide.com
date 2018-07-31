@@ -68,6 +68,5 @@
     tasks_from: "questions.yml"
   ignore_errors: True
   when:
-    - "questions.stat.exists == True"
     - quescheck == "on"
 ##################### LOAD QUESTIONS ########## (END)

@@ -91,7 +91,8 @@
     restart_policy: always
     state: started
     labels: "{{default_labels}}"
-  when: selection.user_input == "2"
+  when: usercheck != "2"
+
 ######################################### DEPLOY PLEX LOCAL (ANSWER 3)
 - name: Deploy Plex Container (Local Edition)
   docker_container:
@@ -123,24 +124,22 @@
     restart_policy: always
     state: started
     labels: "{{default_labels}}"
-  when: selection.user_input == "3"
+  when: usercheck == "2"
 
 ######################################## ENDING PHASE
 - debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}} | Token {{ptokentemp}}"
-  when: selection.user_input == "2"
+  when: usercheck == "1"
 
 - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}}"
-  when: selection.user_input == "3"
+  when: usercheck == "2"
 
 - pause:
     prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2: Visit Settings > Server > Remote Access. Click [Show Advanced] > Click [Enable] >\nCheckMark [Manually Specify Public Port] > Type Port 32400 > [Retry] > [Save Changes]\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
-  when: selection.user_input == "2"
+  when: usercheck == "1"
 
 - pause:
     prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Reasons for Remote Access Failure: UPnP off on Router, Firewalls, or double NAT with the ISP!\n\nPress [ENTER] after you CONFIRM"
-  when: selection.user_input == "3"
-
-- debug: msg="Plex Server Installed"
+  when: usercheck == "2"
 
 - include_role:
     name: pgmend
