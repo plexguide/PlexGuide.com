@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,19 +16,32 @@
 #
 #################################################################################
 ---
-- name: Check TLD File Exists
+- name: "Building Shell List"
+  shell: "bash /opt/plexguide/roles/tld/scripts/main.sh"
+
+- name: "Building List"
+  shell: "cat /tmp/backup.build"
+  register: backlist
+
+- name: Prompt User for TLD Program
+  pause:
+    prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
+  register: selection
+  when: switch == "on"
+
+- name: Establishing Final Variable - Switch On
+  shell: "echo {{selection.user_input}} > /var/plexguide/tld.program"
+  when: switch == "on"
+
+- name: Establishing Final Variable - Switch On
+  shell: "cat /var/plexguide/tld.program"
+  register: tld
+
+- debug: msg="User TLD Program: {{tld.stdout}}"
+
+- name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
-    path: "/var/plexguide/tld.{{pgrole}}"
-  register: tldcheck
+    path: /opt/appdata/{{program_final.stdout}}
+  register: pgmcheck
 
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{pgrole}}"
-  register: tld
-  ignore_errors: True
-  when: tldcheck.stat.exists == True
-
-- name: Registerd TLD Blank if it does not exist
-  shell: "echo ''"
-  register: tld
-  ignore_errors: True
-  when: tldcheck.stat.exists == False
+### Fail Stop Program - Fails Location
