@@ -27,23 +27,21 @@
 - name: "Get Plex Custom URL"
   shell: "echo https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
   register: plex_url
+  when: usercheck != "2"
 
 - debug: msg="Your plex_url is {{ plex_url.stdout }}"
-  when: selection.user_input == "2"
+  when: usercheck != "2"
 
 - set_fact:
       plex_advert_ip: "http://{{ipaddress.stdout}}:32400"
-  when:
-    - selection.user_input == "2"
+  when: usercheck != "2"
 
 - set_fact:
       plex_advert_ip: "{{plex_url.stdout}}"
-  when:
-    - plex_url.stdout != ""
-    - selection.user_input == "2"
+  when: usercheck != "2"
 
 - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
-  when: selection.user_input == "2"
+  when: usercheck != "2"
 
 - name: Check /dev/dri exists
   stat:
