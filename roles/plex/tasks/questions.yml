@@ -34,8 +34,6 @@
   retries: 99
   delay: 1
 
-- debug: msg="Plex Being Utlized is {{plextype}}"
-
 - pause:
     prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim\nServer Claimed Already? Press [ENTER]!\n\nTIP 1: Click Copy ClipBoard\nTIP 2: Windows Users: Shift+Insert to Paste\nTIP 3: This is for Remote Servers Only! (Non-Local)\n\nCOPY & PASTE your TOKEN and [ENTER] - Server Claimed Already? PRESS [ENTER]"
   register: ptoken
