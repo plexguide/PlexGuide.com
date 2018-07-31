@@ -16,16 +16,8 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
-
-- name: Drop Breaddcrumb - Delete Me When Done
-  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
-  ignore_errors: True
-
-- include_role:
-    name: pgmstart
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
 - name: Deploy Airsonic Container
   docker_container:
