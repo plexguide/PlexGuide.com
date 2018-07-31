@@ -39,6 +39,8 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "skipend=yes" --skip-tags cron
+
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
