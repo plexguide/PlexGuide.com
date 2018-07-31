@@ -44,7 +44,7 @@
     ptoken: "ptokentemp"
   when: selection.user_input == "2"
 
-- debug: msg="Using the following Plex claim token {{ptoken.stdout}}"
+- debug: msg="Using the following Plex claim token {{ptoken}}"
   when: selection.user_input == "2"
 
 - set_fact:
