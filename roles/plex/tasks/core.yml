@@ -23,7 +23,7 @@
     image: "plexinc/pms-docker:public"
     ptoken: "ABC000000"
     PLEX_CLAIM: "ABC0000000"
-    plexselect.user_input: "2"
+    plexselect: "2"
 
 ################## PRETASKS
 - name: Key Variables Recall
