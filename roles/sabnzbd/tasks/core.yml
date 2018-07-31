@@ -17,8 +17,8 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "3579"
-    extport: "3579"
+    intport: "8080"
+    extport: "8080"
     pgrole: "{{role_name}}"
     image: "linuxserver/sabnzbd"
 
