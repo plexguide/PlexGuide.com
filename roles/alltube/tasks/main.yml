@@ -16,45 +16,26 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- name: Drop Breaddcrumb - Delete Me When Done
-  shell: "touch /var/plexguide/breadcrumb.{{pgrole}}"
-  ignore_errors: True
-
-- include_role:
-    name: pgmstart
-
-- name: Create {{pgrole}} directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-  with_items:
-    - /opt/appdata/{{pgrole}}
-
-- name: Import default config
-  template:
-    src: config.json.js2
-    dest: /opt/appdata/{{pgrole}}/config.json
-    force: yes
-
-- name: "Deploy {{pgrole}} Container"
+- name: Deploy {{pgrole}} Container
   docker_container:
     name: "{{pgrole}}"
-    image: "rudloff/{{pgrole}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env: "{{default_env}}"
     volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
           - "{{pgrole}}"
-    labels: "{{default_labels}}"
-    restart_policy: always
     state: started
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend

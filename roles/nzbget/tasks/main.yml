@@ -16,19 +16,8 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
-
-- name: Drop Breaddcrumb - Delete Me When Done
-  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
-  ignore_errors: True
-
-- name: Image Select
-  include_tasks: "questions.yml"
-
-- include_role:
-    name: pgmstart
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
 - name: Check nzbget.conf exists
   stat:

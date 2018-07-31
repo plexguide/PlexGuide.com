@@ -17,18 +17,18 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/{{role_name}} (Recommended)\n2- {{role_name}}/{{role_name}}"
+    prompt: "\nType Image # for {{pgrole}}\n1- linuxserver/{{pgrole}} (Recommended)\n2- {{pgrole}}/{{pgrole}}"
   register: result
   until: result.user_input > "0" and result.user_input < "3"
-  retries: 5
+  retries: 3
   delay: 1
 
-- name: "Set linuxserver/{{role_name}}"
+- name: "Set linuxserver/{{pgrole}}"
   set_fact:
-    image: "linuxserver/{{role_name}}"
+    image: "linuxserver/sabnzbd"
   when: result.user_input == "1"
 
-- name: "{{role_name}}/{{role_name}}"
+- name: "{{pgrole}}/{{pgrole}}"
   set_fact:
-    image: "{{role_name}}/{{role_name}}"
+    image: "sabnzbd/sabnzbd"
   when: result.user_input == "2"
