@@ -29,15 +29,17 @@ do
     echo "INFO - PGBlitz: Using $p for transfer" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
     mkdir -p $downloadpath/pgblitz/$p
-    rclone move $downloadpath/move/ $downloadpath/pgblitz/$p/ --min-age 1m --delete-empty-src-dirs \
+    rclone move $downloadpath/move/ $downloadpath/pgblitz/$p/ --min-age 1m \
           --exclude="**partial~" --exclude="**_HIDDEN~" \
           --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
           --max-transfer=100G \
-          --delete-empty-src-dirs
 
     echo "INFO - PGBlitz: Moved Items $downloadpath/move to $downloadpath/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     ls -la $downloadpath/pgblitz/$p
+    sleep 2
+    find "/mnt/move" -mindepth 2 -type d -empty -delete
+    echo "INFO - PGBlitz $p Deleting empty folder(s) in /mnt/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo "sleep 5"
 
     rclone move --tpslimit 6 --checkers=20 \

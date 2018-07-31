@@ -19,3 +19,4 @@
 intport: "19999"
 extport: "19999"
 pgrole: "netdata"
+image: "titpetric/netdata"
