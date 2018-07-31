@@ -4,4 +4,6 @@
     skipend: "blank"
     quescheck: "off"
     extra: ""
+    cron: "off"
+    displayinfo: "off"
 ## GLOBAL_VARS.SH #################################################### (END)
