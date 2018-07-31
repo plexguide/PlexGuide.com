@@ -19,30 +19,16 @@
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
-##################### ENDING TASKS ########## (START)
-- name: "Check If ENDING Exist"
-  stat:
-    path: "/opt/plexguide/roles/{{pgrole}}/tasks/ending.yml"
-  register: "ending"
-
-- debug: msg="Ending Role Exists? {{ending.stat.exists}}"
-
-- name: "Deploy ending"
-  include_role:
-    name: "{{pgrole}}"
-    tasks_from: "ending.yml"
-  ignore_errors: True
-  when:
-    - "ending.stat.exists == True"
-##################### LOAD ending ########## (END)
-
+### Cron
   - include_role:
       name: pgcron
     tags: cron
-
+  when:
+    - cron == "on"
+### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
-    tags: cron
 
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
-    when: skipend == "no"
+  when:
+    - display == "on"

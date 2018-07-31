@@ -5,5 +5,5 @@
     quescheck: "off"
     extra: ""
     cron: "off"
-    displayinfo: "off"
+    display: "off"
 ## GLOBAL_VARS.SH #################################################### (END)
