@@ -42,22 +42,22 @@ case $CHOICE in
 
       A)
         echo 'INFO - Selected: QBittorrent' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "skipend=no"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "skipend=no quescheck=yes"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
       B)
         echo 'INFO - Selected: RuTorrent' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "skipend=no"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "skipend=no quescheck=yes"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
       C)
          echo 'INFO - Selected: Deluge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-         clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge --extra-vars "skipend=no"
+         clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge --extra-vars "skipend=no quescheck=yes"
          read -n 1 -s -r -p "Press any key to continue"
          ;;
         D)
         echo 'INFO - Selected: Jackett' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett --extra-vars "skipend=no"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett --extra-vars "skipend=no quescheck=yes"
         read -n 1 -s -r -p "Press any key to continue"
         ;;
      E)
