@@ -27,9 +27,9 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.023"
-         02 "Release      ~ 6.022"
-         03 "Release      ~ 6.021"
+         01 "EDGE         ~ 6.024"
+         02 "Release      ~ 6.023"
+         03 "Release      ~ 6.022"
          04 "Release      ~ 6.016"
          05 "Release      ~ 6.015"
          06 "Release      ~ 6.014"
@@ -73,10 +73,10 @@ echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/p
             ;;
         02)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.022" ;;
+            version="6.023" ;;
         03)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-            version="6.021" ;;
+            version="6.022" ;;
         04)
             touch /var/plexguide/ask.yes 1>/dev/null 2>&1
             version="6.016" ;;
