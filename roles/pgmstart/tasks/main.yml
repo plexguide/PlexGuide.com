@@ -69,5 +69,5 @@
   ignore_errors: True
   when:
     - "questions.stat.exists == True"
-    - quescheck == "yes"
+    - quescheck == "on"
 ##################### LOAD QUESTIONS ########## (END)
