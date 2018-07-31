@@ -30,6 +30,7 @@ sed -i -e "/heimdall/d" /var/plexguide/container.running 1>/dev/null 2>&1
 sed -i -e "/support/d" /var/plexguide/container.running 1>/dev/null 2>&1
 sed -i -e "/tautulli/d" /var/plexguide/container.running 1>/dev/null 2>&1
 sed -i -e "/telly/d" /var/plexguide/container.running 1>/dev/null 2>&1
+sed -i -e "/phlex/d" /var/plexguide/container.running 1>/dev/null 2>&1
 
 ### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
 ### BackDoor WorkAround to Stop This Behavior

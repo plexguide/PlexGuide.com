@@ -28,8 +28,9 @@ MENU="Make a Selection:"
 OPTIONS=(A "PGDupes            "
          B "PGTrak"
          C "WebTools 3.0"
-         D "Telly        (BETA)"
-         E "SSTVProxy    (BETA)"
+         D "Phlex"
+         E "Telly        (BETA)"
+         F "SSTVProxy    (BETA)"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -75,11 +76,14 @@ case $CHOICE in
             fi
             ;;
         D)
-            bash /opt/plexguide/menus/plex/telly.sh
+            bash /opt/plexguide/menus/plex/phlex.sh
             ;;
         E)
-            bash /opt/plexguide/menus/plex/sstvproxy.sh
+            bash /opt/plexguide/menus/plex/telly.sh
             ;;
+        F)
+            bash /opt/plexguide/menus/plex/sstvproxy.sh
+            ;;    
         Z)
             clear
             exit 0 ;;

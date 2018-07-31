@@ -53,21 +53,3 @@
 - name: Storing Role Name
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
-
-##################### LOAD QUESTIONS ########## (START)
-- name: "Check If Questions Exist"
-  stat:
-    path: "/opt/plexguide/roles/{{pgrole}}/tasks/questions.yml"
-  register: "questions"
-
-- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
-
-- name: "Deploy Questions"
-  include_role:
-    name: "{{pgrole}}"
-    tasks_from: "questions.yml"
-  ignore_errors: True
-  when:
-    - "questions.stat.exists == True"
-    - quescheck == "yes"
-##################### LOAD QUESTIONS ########## (END)

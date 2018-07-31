@@ -42,27 +42,27 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             echo 'INFO - Selected: Plex' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "skipend=no quescheck=yes"
             read -n 1 -s -r -p "Press any key to continue"
                 ;;
         B)
             echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby --extra-vars "skipend=no quescheck=yes"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         C)
             echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity --extra-vars "skipend=no quescheck=yes"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         D)
             echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=no quescheck=yes"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)
             echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=no"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=no quescheck=yes"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         Z)

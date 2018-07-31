@@ -13,14 +13,21 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#################################################################################
+############################################################# (KEY START)
 ---
-- name: "Establish Key Ports - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
     intport: "6789"
     extport: "6789"
+    pgrole: "{{role_name}}"
+    image: "linuxserver/nzbget"
 
-- name: Set Default Volume - {{pgrole}}
+- name: Key Variables Recall
+  include_role:
+    name: pgmstart
+    tasks_from: "keyvar.yml"
+############################################################# (KEY END)
+- name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
       - "/opt/appdata/nzbget:/config{{extra}}"
@@ -31,8 +38,8 @@
       - "{{path.stdout}}/nzbget/tmp:/tmp"
       - "{{path.stdout}}/nzbget/queue:/queue"
       - "{{path.stdout}}/nzbget/scripts:/scripts"
-      - /mnt/unionfs:/unionfs
-      - /etc/localtime:/etc/localtime:ro
+      - "/mnt/unionfs:/unionfs"
+      - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
@@ -45,11 +52,14 @@
       MONO_TLS_PROVIDER: legacy
       LC_ALL: "C"
 
-- name: Set Default Labels - {{pgrole}}
+- name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{extport}}"
-################################################## SABNZBD - END
+
+######################## Deploy PGMSTART
+- include_role:
+    name: "pgmstart"

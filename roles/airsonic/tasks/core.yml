@@ -13,14 +13,27 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#################################################################################
+############################################################# (KEY START)
 ---
-- name: "Establish Key Ports - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
-    intport: "80"
-    extport: "1234"
+    intport: "4040"
+    extport: "4040"
+    pgrole: "{{role_name}}"
+    image: "airsonic/airsonic"
 
-- name: Set Default Volume - {{pgrole}}
+- name: "Key Variables Recall"
+  include_role:
+    name: "pgmstart"
+    tasks_from: "keyvar.yml"
+############################################################# (KEY END)
+#
+############################################################# (BASICS START)
+
+# NONE
+
+############################################################# (BASICS END)
+- name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
       - "/etc/localtime:/etc/localtime:ro"
@@ -36,11 +49,14 @@
       PUID: 1000
       PGID: 1000
 
-- name: "Set Default Volume - {{pgrole}}"
+- name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
-################################################## SABNZBD - END
+
+######################## Deploy PGMSTART
+- include_role:
+    name: "pgmstart"

@@ -15,42 +15,25 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
-
-- name: Drop Breaddcrumb - Delete Me When Done
-  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
-  ignore_errors: True
-
-- name: Starting Processes
-  include_role:
-    name: pgmstart
-
-- name: Image Select
-  include_tasks: "questions.yml"
-
-- name: "Check {{pgrole}}_ini exists"
-  stat:
-    path: "/opt/appdata/{{pgrole}}/{{pgrole}}.ini"
-  register: "{{role_name}}_ini"
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
 - name: Deploy {{pgrole}} Container
   docker_container:
     name: "{{pgrole}}"
-    image: "linuxserver/{{pgrole}}"
+    image: "{{image}}"
     pull: yes
+    cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes: "{{default_volumes}}"
-    cpu_shares: 256
     env: "{{default_env}}"
     restart_policy: always
-    state: started
     networks:
       - name: plexguide
         aliases:
           - "{{pgrole}}"
+    state: started
     labels: "{{default_labels}}"
 
 - name: .ini Tweaks

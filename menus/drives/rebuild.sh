@@ -32,6 +32,7 @@ sed -i -e "/heimdall/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/support/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/tautulli/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 sed -i -e "/telly/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
+sed -i -e "/phlex/d" /opt/appdata/plexguide/running 1>/dev/null 2>&1
 while read p; do
 echo $p > /tmp/program_var
 app=$( cat /tmp/program_var )
