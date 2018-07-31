@@ -20,7 +20,7 @@
     intport: "1234"
     extport: "80"
     pgrole: "{{role_name}}"
-    image: ""rudloff/alltube"
+    image: "rudloff/alltube"
 
 - name: "Key Variables Recall"
   include_role:
