@@ -44,24 +44,24 @@ case $CHOICE in
         A)
             dialog --title "--- NOTE ---" --msgbox "\nThe default username and password is:\n\nUser: plex\nPass: guide\n\nIf you forget, please visit the Wiki!" 0 0
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd --extra-vars "skipend=no quescheck=yes"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd --extra-vars "quescheck=on cron=on display=on"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "skipend=no quescheck=yes"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "quescheck=on cron=on display=on"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
         C)
             echo 'INFO - Selected: PYLoad' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags pyload --extra-vars "skipend=no quescheck=yes"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags pyload --extra-vars "quescheck=on cron=on display=on"
             read -n 1 -s -r -p "Press any key to continue"
 
             ;;
         D)
             echo 'INFO - Selected: SpeedTest Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "skipend=no quescheck=yes"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "quescheck=on cron=on display=on"
             read -n 1 -s -r -p "Press any key to continue"
             ;;
         E)

@@ -45,55 +45,55 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
     A)
       echo 'INFO - Selected: CouchPotato' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags couchpotato --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     B)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     C)
     echo 'INFO - Selected: LazyLibrarian' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "skipend=no quescheck=yes"
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian --extra-vars "quescheck=on cron=on display=on"
     read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     D)
       echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     E)
       echo 'INFO - Selected: MEDUSA' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags medusa --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     F)
       echo 'INFO - Selected: Mylar' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags mylar --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     G)
       echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     H)
       echo 'INFO - Selected: SickRage' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags sickrage --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;
     I)
       echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr --extra-vars "skipend=no quescheck=yes"
+      clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr --extra-vars "quescheck=on cron=on display=on"
       read -n 1 -s -r -p "Press any key to continue"
 
       ;;

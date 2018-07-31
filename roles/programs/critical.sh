@@ -37,7 +37,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
         echo 'INFO - Selected: Portainer' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "skipend=no quescheck=yes"
+        clear && ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "quescheck=on cron=on display=on"
         read -n 1 -s -r -p "Press any key to continue"
 
         ;;
