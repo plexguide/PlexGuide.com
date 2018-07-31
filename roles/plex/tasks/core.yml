@@ -49,8 +49,8 @@
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      PLEX_UID: 1000
-      PLEX_GID: 1000
+      PLEX_UID: "1000"
+      PLEX_GID: "1000"
       PLEX_CLAIM: "{{ptoken.user_input}}"
       ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
 
