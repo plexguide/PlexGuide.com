@@ -39,20 +39,17 @@ case $CHOICE in
         A)
             echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k --extra-vars "quescheck=on cron=on display=on"
-            read -n 1 -s -r -p "Press any key to continue"
-
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         B)
             echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k --extra-vars "quescheck=on cron=on display=on"
-            read -n 1 -s -r -p "Press any key to continue"
-
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         C)
             echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k --extra-vars "quescheck=on cron=on display=on"
-            read -n 1 -s -r -p "Press any key to continue"
-
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         Z)
             exit 0 ;;
