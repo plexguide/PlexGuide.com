@@ -41,7 +41,7 @@
 
 - name: Set Token
   set_fact:
-    ptoken: "ptokentemp"
+    ptoken: "ptokentemp.user_input"
   when: selection.user_input == "2"
 
 - debug: msg="Using the following Plex claim token {{ptoken}}"
