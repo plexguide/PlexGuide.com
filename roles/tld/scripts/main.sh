@@ -22,5 +22,3 @@ while read p; do
   echo -n $p >> /tmp/backup.build
   echo -n " " >> /tmp/backup.build
 done </tmp/backup.list
-
-ansible-playbook /opt/plexguide/pg.yml --tags tld
