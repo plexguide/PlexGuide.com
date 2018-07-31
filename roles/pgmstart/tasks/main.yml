@@ -69,7 +69,7 @@
   ignore_errors: True
   when:
     - "questions.stat.exists == True"
-    - quescheck == "on"
+    - quescheck == "yes"
 ##################### LOAD QUESTIONS ########## (END)
 
 - name: "Check New BreadCrumb"
