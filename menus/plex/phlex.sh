@@ -9,8 +9,10 @@ response=$?
 case $response in
    0) 
       dialog --infobox "Installing Phlex: Please Wait" 3 35
+      sleep 2
+      clear      
       ansible-playbook /opt/plexguide/pg.yml --tags phlex
-      sleep 4
+      
       ;;
    1) 
       clear

@@ -36,8 +36,8 @@
     owner: 1000
     group: 1000
 
-- name: Rename Cast.bundle Folder and Delete master.zip File
-  shell: mv Cast.bundle-master Cast.bundle && rm master.zip
+- name: Rename Cast.bundle Folder
+  shell: mv Cast.bundle-master Cast.bundle
   args:
     chdir: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins/
     creates: Cast.bundle
