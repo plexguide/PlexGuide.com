@@ -76,6 +76,17 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
       
       echo "INFO - PGBlitz: $p Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      
+      sleep 10
+      for d in "${deletepaths[@]}"; do
+        #sleeps 2 second between the rc forget command 
+        sleep 2
+        #strips the /mnt/move/ from the path so only the "important" folders are back and rclone rc throws no errors
+        d="$(echo $d | sed 's/\'$downloadpath'\/move//g')"
+        rclone rc vfs/forget dir=$d
+        echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move/$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      done
+      
 else
     echo "INFO - PGBlitz $p Their is nothing to move from $downloadpath/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
