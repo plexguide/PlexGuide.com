@@ -40,24 +40,18 @@ case $CHOICE in
         A)
             echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "quescheck=on cron=on display=on"
-            read -n 1 -s -r -p "Press any key to continue"
-
-  
-
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         B)
             echo 'INFO - Selected: nzbhydra2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2 --extra-vars "quescheck=on cron=on display=on"
-            read -n 1 -s -r -p "Press any key to continue"
-
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         C)
             echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "quescheck=on cron=on display=on"
-            read -n 1 -s -r -p "Press any key to continue"
-
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
-
         Z)
             exit 0 ;;
 esac

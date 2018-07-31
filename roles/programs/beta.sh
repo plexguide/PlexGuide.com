@@ -42,7 +42,8 @@ case $CHOICE in
          sleep 2
          clear
          ansible-playbook /opt/plexguide/pg.yml --tags dns-gen
-         read -n 1 -s -r -p "Press any key to continue"
+         echo "" && read -n 1 -s -r -p "Press any key to continue"
+
          cronskip="yes"
          ;;
      Z)
