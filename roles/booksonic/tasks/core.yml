@@ -20,7 +20,7 @@
     intport: "4040"
     extport: "4050"
     pgrole: "{{role_name}}"
-    image: "airsonic/airsonic"
+    image: "linuxserver/booksonic"
 
 - name: "Key Variables Recall"
   include_role:
