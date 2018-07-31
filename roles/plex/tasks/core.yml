@@ -24,6 +24,7 @@
     ptoken: "ABC000000"
     PLEX_CLAIM: "ABC0000000"
     plexselect: "2"
+    selection: "2"
 
 ################## PRETASKS
 - name: Key Variables Recall
