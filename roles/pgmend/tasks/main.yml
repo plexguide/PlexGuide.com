@@ -23,12 +23,12 @@
   - include_role:
       name: pgcron
     tags: cron
-  when:
-    - cron == "on"
+    when:
+      - cron == "on"
 ### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
 
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
-  when:
-    - display == "on"
+      when:
+        - display == "on"
