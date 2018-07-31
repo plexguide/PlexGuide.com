@@ -23,7 +23,6 @@ install:
   ###### alias
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
@@ -36,6 +35,8 @@ install:
   ## new format checked (check NETDATA)
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "skipend=yes" --skip-tags cron
