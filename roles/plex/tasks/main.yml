@@ -73,7 +73,11 @@
       - "32414:32414/udp"
       - "33400:33400/tcp"
       - "33443:33443/tcp"
-    env: "{{default_env}}"
+    env:
+      PLEX_UID: "1000"
+      PLEX_GID: "1000"
+      PLEX_CLAIM: "{{ptoken}}"
+      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
     networks:
       - name: plexguide
         aliases:
@@ -106,7 +110,11 @@
       - "32414:32414/udp"
       - "33400:33400/tcp"
       - "33443:33443/tcp"
-    env: "{{default_env}}"
+    env:
+      PLEX_UID: "1000"
+      PLEX_GID: "1000"
+      PLEX_CLAIM: "{{ptoken}}"
+      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
     network_mode: "host"
     volumes:
     devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
