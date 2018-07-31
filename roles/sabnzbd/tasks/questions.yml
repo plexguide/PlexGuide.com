@@ -25,10 +25,10 @@
 
 - name: "Set linuxserver/{{pgrole}}"
   set_fact:
-    image: "linuxserver/{{pgrole}}"
+    image: "linuxserver/sabnzbd"
   when: result.user_input == "1"
 
 - name: "{{pgrole}}/{{pgrole}}"
   set_fact:
-    image: "{{pgrole}}/{{pgrole}}"
+    image: "sabnzbd/sabnzbd"
   when: result.user_input == "2"

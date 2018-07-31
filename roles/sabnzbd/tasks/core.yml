@@ -20,11 +20,11 @@
     intport: "3579"
     extport: "3579"
     pgrole: "{{role_name}}"
-    image: "linuxserver/{{pgrole}}"
+    image: "linuxserver/sabnzbd"
 
-- name: Key Variables Recall
+- name: "Key Variables Recall"
   include_role:
-    name: pgmstart
+    name: "pgmstart"
     tasks_from: "keyvar.yml"
 ############################################################# (KEY END)
 #
