@@ -19,9 +19,9 @@
 - name: Launch Core Task
   include_tasks: "core.yml"
 
-- name: Deploy NZBGET Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: "{{role_name}}"
+    name: "{{pgrole}}"
     image: "{{image}}"
     pull: yes
     cpu_shares: 128
