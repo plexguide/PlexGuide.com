@@ -46,7 +46,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
             echo 'INFO - Selected: AllTube' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "quescheck=on cron=on display=on"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "quescheck=on cron=off display=on"
             echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         B)

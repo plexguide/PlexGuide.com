@@ -50,7 +50,7 @@ case $CHOICE in
             ;;
         B)
             echo 'INFO - Selected: NETData' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "quescheck=on cron=on display=on"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "quescheck=on cron=off display=on"
             echo "" && read -n 1 -s -r -p "Press any key to continue"
 
 
@@ -64,7 +64,7 @@ case $CHOICE in
             ;;
         D)
             echo 'INFO - Selected: SpeedTest Server' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "quescheck=on cron=on display=on"
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "quescheck=on cron=off display=on"
             echo "" && read -n 1 -s -r -p "Press any key to continue"
 
             ;;
