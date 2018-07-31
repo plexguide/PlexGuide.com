@@ -19,6 +19,11 @@ echo "INFO - PGBlitz Started for the First Time - 30 Second Sleep" > /var/plexgu
 sleep 5
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
+echo "ignore this error for now - only temp hotfix"
+mkdir /mnt/move/movies
+mkdir /mnt/move/tv
+chown -R /mnt/move/*
+echo "ignore the errors above - only temp hotfix"
 
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
 
