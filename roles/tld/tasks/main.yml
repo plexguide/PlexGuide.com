@@ -27,17 +27,12 @@
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
   register: selection
-  when: switch == "on"
 
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /var/plexguide/tld.program"
-  when: switch == "on"
-
-- name: Establishing Final Variable - Switch On
-  shell: "cat /var/plexguide/tld.program"
   register: tld
 
-- debug: msg="User TLD Program: {{tld.stdout}}"
+- debug: msg="User TLD Program - {{tld.stdout}}"
 
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
