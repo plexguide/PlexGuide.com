@@ -46,14 +46,6 @@
       - "/mnt/tdrive:/tdrive"
       - "/etc/localtime:/etc/localtime:ro"
 
-- name: "Establish Key Variables - {{pgrole}}"
-  set_fact:
-    default_env:
-      PLEX_UID: "1000"
-      PLEX_GID: "1000"
-      PLEX_CLAIM: "{{ptoken}}"
-      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
-
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
