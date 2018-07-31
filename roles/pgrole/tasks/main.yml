@@ -18,7 +18,7 @@
 - name: "Installing {{pgrole}} Main YML"
   template:
     src: role.yml
-    dest: /opt/plexguide/roles/tasks/main.yml
+    dest: "/opt/plexguide/roles/tasks/{{pgrole}}/main.yml"
     force: yes
 
 - name: "Deploy {{pgrole}} Main YML"
