@@ -34,13 +34,14 @@ install:
 
   ## new format checked (check NETDATA)
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube  
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags plex
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
