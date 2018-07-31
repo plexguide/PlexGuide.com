@@ -16,7 +16,7 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.023" > /var/plexguide/pg.version
+echo "6.023 Update 2" > /var/plexguide/pg.version
 echo "133" > /var/plexguide/pg.preinstall
 
 #### Installer
