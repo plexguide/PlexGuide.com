@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "4040"
-    extport: "4040"
+    extport: "4050"
     pgrole: "{{role_name}}"
     image: "airsonic/airsonic"
 
@@ -36,12 +36,10 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
+      - "/opt/appdata/{{role_name}}:/config"
+      - "/mnt/unionfs/audiobooks:/books"
+      - "/mnt/unionfs/podcasts:/podcasts"
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/{{role_name}}:/airsonic/data"
-      - "/opt/appdata/{{role_name}}/playlists:/airsonic/playlists"
-      - "/opt/appdata/{{role_name}}/podcasts:/airsonic/podcasts"
-      - "/mnt/unionfs/music:/airsonic/music"
-      - "/mnt/unionfs:/unionfs"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
