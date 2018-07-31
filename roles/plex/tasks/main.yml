@@ -126,7 +126,7 @@
   when: selection.user_input == "3"
 
 ######################################## ENDING PHASE
-- debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}} | Token {{PLEX_CLAIM}}"
+- debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}} | Token {{ptokentemp}}"
   when: selection.user_input == "2"
 
 - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}}"

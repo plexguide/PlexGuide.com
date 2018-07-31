@@ -22,7 +22,6 @@
     pgrole: "{{role_name}}"
     image: "plexinc/pms-docker:public"
     ptoken: "ABC000000"
-    PLEX_CLAIM: "ABC0000000"
     plexselect: "2"
     selection: "2"
 
