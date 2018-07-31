@@ -28,7 +28,7 @@
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
   register: selection
 
-- name: Establishing Final Variable - Switch On
+- name: Establishing Final Variable
   shell: "echo {{selection.user_input}} > /var/plexguide/tld.program"
   register: tld
 
@@ -36,7 +36,7 @@
 
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
-    path: /opt/appdata/{{program_final.stdout}}
-  register: pgmcheck
+    path: /opt/appdata/{tld.stdout}}
+  register: tldcheck
 
 ### Fail Stop Program - Fails Location
