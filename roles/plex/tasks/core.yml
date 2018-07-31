@@ -21,9 +21,9 @@
     extport: "32400"
     pgrole: "{{role_name}}"
     image: "plexinc/pms-docker:public"
-    ptoken: 000000
-    PLEX_CLAIM: 0000000
-    plexselect.user_input: 2
+    ptoken: "ABC000000"
+    PLEX_CLAIM: "ABC0000000"
+    plexselect.user_input: "2"
 
 ################## PRETASKS
 - name: Key Variables Recall
