@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,26 +16,19 @@
 #
 #################################################################################
 ---
-- name: Launch Core Task
-  include_tasks: "core.yml"
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/ombi (Recommended)\n2- lsiodev/ombi-preview (Developer)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
 
-- name: Deploy NZBGET Container
-  docker_container:
-    name: "{{role_name}}"
-    image: "{{image}}"
-    pull: yes
-    cpu_shares: 128
-    published_ports:
-      - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes: "{{default_volumes}}"
-    env: "{{default_env}}"
-    restart_policy: always
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{pgrole}}"
-    state: started
-    labels: "{{default_labels}}"
+- name: Set linuxserver/ombi
+  set_fact:
+    image: "linuxserver/ombi"
+  when: result.user_input == "1"
 
-- include_role:
-    name: pgmend
+- name: Set lsiodev/ombi-preview
+  set_fact:
+    image: "lsiodev/ombi-preview"
+  when: result.user_input == "2"

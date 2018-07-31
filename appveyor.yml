@@ -35,7 +35,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "skipend=yes" --skip-tags cron
 
-  ## new format checked
+  ## new format checked (check NETDATA)
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "skipend=yes" --skip-tags cron
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "skipend=yes" --skip-tags cron
 
