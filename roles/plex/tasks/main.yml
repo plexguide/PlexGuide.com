@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- name: Launch Core Task
+  include_tasks: "core.yml"
+
 ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
 - name: Deploy Plex Container (Remote Edition)
   docker_container:
