@@ -115,7 +115,7 @@
       PLEX_CLAIM: "{{ptoken}}"
       ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
     network_mode: "host"
-    volumes:
+    volumes: "{{default_volumes}}"
     devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
     etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
     cpu_shares: 1024
