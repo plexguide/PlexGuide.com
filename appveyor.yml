@@ -37,6 +37,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags calibre
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
