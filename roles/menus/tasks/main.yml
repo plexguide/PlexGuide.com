@@ -32,5 +32,7 @@
 \n\nType a Number Choice"
   register: choice
   until: (choice.user_input >= "1" and choice.user_input <= "9") or choice.user_input == "10"
+  fail:
+    msg: "The system may not be provisioned according to the CMDB status."
   retries: 99
   delay: 1
