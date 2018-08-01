@@ -24,7 +24,7 @@
     name: "{{pgrole}}"
     image: "{{image}}"
     pull: yes
-    cpu_shares: 128
+    cpu_shares: 1024
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes: "{{default_volumes}}"
