@@ -17,8 +17,8 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "8000"
-    extport: "7995"
+    intport: "8096"
+    extport: "8096"
     pgrole: "{{role_name}}"
     image: "emby/embyserver:latest"
 
