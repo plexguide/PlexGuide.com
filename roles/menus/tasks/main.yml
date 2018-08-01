@@ -43,3 +43,11 @@
          choice.user_input == "10"
   retries: 99
   delay: 1
+
+- name: Set Choice
+  set_fact:
+    fchoice: "{{choice.user_input}}"
+
+- name: Choice 1
+  shell: "bash /opt/plexguide/roles/deploychoice.sh"
+  when: fchoice == "1"
