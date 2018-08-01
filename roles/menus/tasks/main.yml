@@ -34,3 +34,12 @@
   until: choice.user_input < "11"
   retries: 99
   delay: 1
+
+- name: Generic question with multiple different responses
+  expect:
+    command: /path/to/custom/command
+    responses:
+      Question:
+        - response1
+        - response2
+        - response3
