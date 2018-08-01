@@ -32,7 +32,7 @@
 \n\nType a Number Choice"
   register: choice
   until:
-    - choice.user_input < "11"
+    - choice.user_input < "7"
     - choice.user_input > "0"
   retries: 99
   delay: 1
