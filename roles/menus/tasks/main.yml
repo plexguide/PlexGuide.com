@@ -33,5 +33,6 @@
   register: choice
   until:
     - choice.user_input == "4"
+    - choice.user_input == "3"
   retries: 99
   delay: 1
