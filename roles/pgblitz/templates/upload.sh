@@ -47,7 +47,6 @@ if find $downloadpath/move -mindepth 2 -type d | egrep '.*' ; then
     #ls -la $downloadpath/pgblitz/$p
 
     #sleeping a bit to make sure the files are moved
-    echo "sleep 10"
     sleep 10
 
     #running through the $deletepaths and only deleting the currently picked up folders to not miss anything
