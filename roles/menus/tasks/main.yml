@@ -31,8 +31,12 @@
 \n10. Exit
 \n\nType a Number Choice"
   register: choice
-  until: choice.user_input < 11
-  retries: 99
-  delay: 1
+
+- name: Key Variables Recall
+  include_role:
+    name: menus
+    tasks_from: "main.yml"
+  when:
+    - choice.user_input < 1 or choice.user_input > 10
 
 - debug: msg="Using following PIA username {{choice}}"
