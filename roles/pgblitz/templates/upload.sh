@@ -16,7 +16,7 @@
 downloadpath=$(cat /var/plexguide/server.hd.path)
 
 echo "INFO - PGBlitz Started for the First Time - 30 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-sleep 5
+sleep 30
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 echo "ignore this error for now - only temp hotfix"
@@ -47,6 +47,7 @@ if find $downloadpath/move -mindepth 2 -type d | egrep '.*' ; then
     #ls -la $downloadpath/pgblitz/$p
 
     #sleeping a bit to make sure the files are moved
+    echo "sleep 10"
     sleep 10
 
     #running through the $deletepaths and only deleting the currently picked up folders to not miss anything
@@ -74,9 +75,9 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
 
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
 
-      echo "INFO - PGBlitz: $p Transfer Complete - Sleeping 10 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer Start in 2 Minutes" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-      sleep 10
+      sleep 120
       for d in "${deletepaths[@]}"; do
         #sleeps 2 second between the rc forget command
         sleep 2
