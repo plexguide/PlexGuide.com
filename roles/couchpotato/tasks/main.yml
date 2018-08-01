@@ -62,32 +62,6 @@
     replace: "dark_theme = True"
   when: cp_ini.stat.exists == False
 
-
-- name: Path for .ini
-  wait_for:
-    path: "/opt/appdata/couchpotato/config.ini"
-    state: present
-  when: cp_ini.stat.exists == False
-
-- name: "Wait 10 Seconds"
-  wait_for:
-    timeout: 10
-  when: cp_ini.stat.exists == False
-
-- name: Turn the Wizard Off
-  replace:
-    path: /opt/appdata/couchpotato/config.ini
-    regexp: "show_wizard = 1"
-    replace: "show_wizard = 0"
-  when: cp_ini.stat.exists == False
-
-- name: Turn on Dark Theme
-  replace:
-    path: /opt/appdata/couchpotato/config.ini
-    regexp: "dark_theme = False"
-    replace: "dark_theme = True"
-  when: cp_ini.stat.exists == False
-
 #- name: Turn On Renamer
   #replace:
     #path: /opt/appdata/couchpotato/config.ini
@@ -97,30 +71,6 @@
     #before: "[subtitle]"
   #when: cp_ini.stat.exists == False
 
-- name: Turn off Blackhole
-  replace:
-    path: /opt/appdata/couchpotato/config.ini
-    regexp: "enabled = True"
-    replace: "enabled = 0"
-    after: "[blackhole]"
-  when: cp_ini.stat.exists == False
-
-- name: "Wait 5 Seconds"
-  wait_for:
-    timeout: 5
-  when: cp_ini.stat.exists == False
-
-- name: Stopping CouchPotato Container
-  docker_container:
-    name: couchpotato
-    state: stopped
-  when: cp_ini.stat.exists == False
-
-- name: Restarting CouchPotato Container
-  docker_container:
-    name: couchpotato
-    state: started
-  when: cp_ini.stat.exists == False
 - name: Turn off Blackhole
   replace:
     path: /opt/appdata/couchpotato/config.ini
