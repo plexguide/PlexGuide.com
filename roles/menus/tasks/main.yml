@@ -31,7 +31,15 @@
 \n10. Exit
 \n\nType a Number Choice"
   register: choice
-  until: choice.user_input == "3"
-  or choice.user_input == "4"
+  until: choice.user_input == "1" or
+         choice.user_input == "2" or
+         choice.user_input == "3" or
+         choice.user_input == "4" or
+         choice.user_input == "5" or
+         choice.user_input == "6" or
+         choice.user_input == "7" or
+         choice.user_input == "8" or
+         choice.user_input == "9" or
+         choice.user_input == "10"
   retries: 99
   delay: 1
