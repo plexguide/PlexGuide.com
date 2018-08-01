@@ -48,8 +48,12 @@
   set_fact:
     fchoice: "{{choice.user_input}}"
 
-- name: shell: "bash /opt/plexguide/roles/deploychoice.sh"
+- shell: "bash /opt/plexguide/roles/deploychoice.sh"
   when: fchoice == "1"
 
-- shell: "bash /opt/plexguide/roles/programs/main.sh"
+- shell: "bash /opt/plexguide/roles/deploychoice.sh"
+  when: fchoice == "2"
+
+- shell: "echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          bash /opt/plexguide/roles/programs/main.sh"
   when: fchoice == "3"
