@@ -16,6 +16,10 @@
 #
 #################################################################################
 ---
+- name: Remove Symbolic if it exists
+  shell: clear
+  ignore_errors: yes
+
 - name: Plex Main Interface
   pause:
     prompt: "\nWelcome to PLEXGUIDE!\n\n
