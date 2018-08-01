@@ -31,6 +31,6 @@
 \n10. Exit
 \n\nType a Number Choice"
   register: choice
-  until: choice.user_input < "11"
+  until: choice.user_input < 11
   retries: 99
   delay: 1
