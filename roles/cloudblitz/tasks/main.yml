@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & MBCorps
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,54 +16,26 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: pgmstart
-
-- name: Create Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - "/opt/appdata/cloudblitz/"
-    - "/opt/appdata/plexguide/supertransfer/"
-
-- name: Check config file exists
-  stat:
-    path: "/opt/appdata/cloudblitz/.cloudcmd.json"
-  register: cloud_json
-
-- name: Install configblitz.json
-  template:
-    src: configblitz.json
-    dest: /opt/appdata/cloudblitz/.cloudcmd.json
-    force: yes
-  when: cloud_json.stat.exists == False
-
-- name: Deploy cloudblitz Edition
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: cloudblitz
-    image: coderaiser/cloudcmd
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
-    cpu_shares: 256
+    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-      - /:/SERVER
-      - /opt/appdata/cloudblitz:/root/
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - cloudblitz
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:cloudblitz.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend

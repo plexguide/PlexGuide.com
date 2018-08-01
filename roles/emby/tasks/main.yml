@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,50 +16,28 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: pgmstart
-
-- name: stat embyserver
-  stat: path=/opt/appdata/embyserver
-  register: embyserver_stat
-
-- name: Move embyserver to emby
-  command: mv /opt/appdata/embyserver /opt/appdata/emby
-  when: embyserver_stat.stat.exists
-
-- name: Deploy Emby Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: emby
-    image: emby/embyserver:latest
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 1024
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      UID: "1000"
-      GID: "1000"
-      GIDLIST: "1000"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
     expose:
       - 8096
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/emby:/config
-      - /mnt/plexdrive/:/plexdrive
-      - /mnt/unionfs:/unionfs
-      - /mnt/encrypt:/encrypt
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - emby
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:emby.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend
