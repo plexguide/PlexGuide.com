@@ -44,6 +44,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags headphones
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags heimdall
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jackett
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
