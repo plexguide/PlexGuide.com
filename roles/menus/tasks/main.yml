@@ -18,5 +18,9 @@
 ---
 - name: Plex Main Interface
   pause:
-    prompt: "\nWelcome to PLEXGUIDE!\n\n1. Deploy a Mount System /
-    test 123"
+    prompt: "\nWelcome to PLEXGUIDE!\n\n
+    1. Deploy a Mount System /n
+    2. PG Traefik - Reverse Proxy\n
+    3. PG Program Suite
+    4. PG PlexEnhancement
+    5. 
