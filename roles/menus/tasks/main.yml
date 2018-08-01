@@ -29,4 +29,8 @@
 \n8.  PG Backup & Restorn
 \n9.  PG Updates
 \n10. Exit
-\n\nType your Number Choice"
+\n\nType a Number Choice"
+  register: choice
+  until: choice.user_input < "11"
+  retries: 99
+  delay: 1
