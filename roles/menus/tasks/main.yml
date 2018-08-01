@@ -48,6 +48,8 @@
   set_fact:
     fchoice: "{{choice.user_input}}"
 
-- name: Choice 1
-  shell: "bash /opt/plexguide/roles/deploychoice.sh"
+- name: shell: "bash /opt/plexguide/roles/deploychoice.sh"
   when: fchoice == "1"
+
+- shell: "bash /opt/plexguide/roles/programs/main.sh"
+  when: fchoice == "3"
