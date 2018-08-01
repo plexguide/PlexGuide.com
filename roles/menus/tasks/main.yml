@@ -20,13 +20,13 @@
   pause:
     prompt: "\nWelcome to PLEXGUIDE!
 \n\n1.  Deploy a Mount System
-2.  PG Traefik - Reverse Proxy\n
-3.  PG Program Suite\n
-4.  PG Plex Enhancement Tools\n
-5.  PG Server Information\n
-6.  PG Troubleshooting Actions\n
-7.  PG Settings & Tools\n
-8.  PG Backup & Restorn\n
-9.  PG Updates\n
-10. Exit\n\n
-Type your Number Choice"
+\n2.  PG Traefik - Reverse Proxy
+\n3.  PG Program Suite
+\n4.  PG Plex Enhancement Tools
+\n5.  PG Server Information
+\n6.  PG Troubleshooting Actions
+\n7.  PG Settings & Tools
+\n8.  PG Backup & Restorn
+\n9.  PG Updates
+\n10. Exit
+\n\nType your Number Choice"
