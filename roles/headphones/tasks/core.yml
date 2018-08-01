@@ -1,9 +1,8 @@
 #!/bin/bash
 #
-# [Ansible Role]
-#
+# Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -14,21 +13,29 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#################################################################################
+############################################################# (KEY START)
 ---
-- include_vars: variables.yml
+- name: "Establish Key Variables"
+  set_fact:
+    intport: "8181"
+    extport: "8081"
+    pgrole: "{{role_name}}"
+    image: "linuxserver/headphones"
 
-- include_role:
-    name: pgmstart
+- name: "Key Variables Recall"
+  include_role:
+    name: "pgmstart"
+    tasks_from: "keyvar.yml"
+############################################################# (KEY END)
+#
+############################################################# (BASICS START)
 
-- name: Deploy Headphones Container
-  docker_container:
-    name: "{{role_name}}"
-    image: "linuxserver/{{role_name}}"
-    pull: yes
-    published_ports:
-      - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
+# NONE
+
+############################################################# (BASICS END)
+- name: "Set Default Volume - {{pgrole}}"
+  set_fact:
+    default_volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/appdata/{{role_name}}:/config"
       - "/mnt/unionfs:/unionfs"
@@ -37,21 +44,21 @@
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/rutorrents:/downloads"
-    cpu_shares: 256
-    env:
+
+- name: "Establish Key Variables - {{pgrole}}"
+  set_fact:
+    default_env:
       PUID: 1000
       PGID: 1000
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{role_name}}"
-    restart_policy: always
-    state: started
-    labels:
+
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
+######################## Deploy PGMSTART
 - include_role:
-    name: pgmend
+    name: "pgmstart"
