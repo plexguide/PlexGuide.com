@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "8000"
-    extport: "7999"
+    extport: "7997"
     pgrole: "{{role_name}}"
     image: "coderaiser/cloudcmd"
 

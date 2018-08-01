@@ -30,7 +30,10 @@
 #
 ############################################################# (BASICS START)
 
-# NONE
+- name: Check couchpotato.ini exists
+  stat:
+    path: "/opt/appdata/couchpotato/config.ini"
+  register: cp_ini
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
