@@ -18,15 +18,15 @@
 ---
 - name: Plex Main Interface
   pause:
-    prompt: "\nWelcome to PLEXGUIDE!\n\n
-    1.  Deploy a Mount System\n
-    2.  PG Traefik - Reverse Proxy\n
-    3.  PG Program Suite\n
-    4.  PG Plex Enhancement Tools\n
-    5.  PG Server Information\n
-    6.  PG Troubleshooting Actions\n
-    7.  PG Settings & Tools\n
-    8.  PG Backup & Restorn\n
-    9.  PG Updates\n
-    10. Exit\n\n
-    Type your Number Choice"
+    prompt: "\nWelcome to PLEXGUIDE!
+\n\n1.  Deploy a Mount System
+2.  PG Traefik - Reverse Proxy\n
+3.  PG Program Suite\n
+4.  PG Plex Enhancement Tools\n
+5.  PG Server Information\n
+6.  PG Troubleshooting Actions\n
+7.  PG Settings & Tools\n
+8.  PG Backup & Restorn\n
+9.  PG Updates\n
+10. Exit\n\n
+Type your Number Choice"
