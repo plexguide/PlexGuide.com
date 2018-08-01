@@ -23,8 +23,7 @@ install:
   ###### alias
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2
+
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload
@@ -37,6 +36,10 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags calibre
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
