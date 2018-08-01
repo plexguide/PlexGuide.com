@@ -23,24 +23,25 @@ install:
   ###### alias
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
 
   ## new format checked (check NETDATA)
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "skipend=yes" --skip-tags cron
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "skipend=yes" --skip-tags cron
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags plex
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
