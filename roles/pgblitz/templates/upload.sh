@@ -51,7 +51,10 @@ if find $downloadpath/move -mindepth 2 -type d | egrep '.*' ; then
 
     #running through the $deletepaths and only deleting the currently picked up folders to not miss anything
     for d in "${deletepaths[@]}"; do
-        find "$d" -type d -empty -delete
+        #checking if the path contains the hidden unionfs-fuse folder and skips if it does
+        if [[ ${d} != *"unionfs-fuse"* ]]; then
+            find "$d" -type d -empty -delete
+        fi
     done
 
     echo "INFO - PGBlitz $p Deleting empty folder(s) in $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -82,8 +85,11 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
         sleep 2
         #strips the /mnt/move/ from the path so only the "important" folders are back and rclone rc throws no errors
         d="$(echo $d | sed 's/\'$downloadpath'\/move//g')"
-        rclone rc vfs/forget dir=$d
-        echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move/$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        #checking if the path contains the hidden unionfs-fuse folder and skips if it does
+        if [[ ${d} != *"unionfs-fuse"* ]]; then
+            rclone rc vfs/forget dir=$d
+            echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move/$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        fi
       done
 
 else
