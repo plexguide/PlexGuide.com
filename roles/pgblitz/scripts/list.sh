@@ -18,18 +18,15 @@
 echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 number=0
 
-### Initial List of Unprocessed Keys
-ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.ukeys.temp
-
-### Initial List of Processed Keys
-ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.pkeys.temp
-
 ### Remove Files for the Process
 rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
 rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 
-### Tally the Processed Keys
-ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.processed.count
+### Initial List of Unprocessed Keys
+ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.ukeys.temp
+
+### Initial List of Processed Keys
+ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.pkeys.temp
 
 ### Make Temp Directory To Move Temp-Processed Keys
 mkdir -p /opt/appdata/pgblitz/keys/temp 1>/dev/null 2>&1
