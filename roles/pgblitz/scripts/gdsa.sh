@@ -27,7 +27,7 @@ tdrive="${tdrive:13}"
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
 #while read p; do
 
-mkdir -p $downloadpath/pgblitz/$p
+mkdir -p $downloadpath/pgblitz/$tempbuild
 tee >> /$rpath <<EOF
 [$tempbuild]
 type = drive
