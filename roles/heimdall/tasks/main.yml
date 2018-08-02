@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,26 +16,40 @@
 #
 #################################################################################
 ---
-- name: Launch Core Task
-  include_tasks: "core.yml"
+- include_vars: variables.yml
 
-- name: Deploy {{pgrole}} Container
+- include_role:
+    name: pgmstart
+
+- include_role:
+    name: tld
+
+- name: Deploy Heimdall Container
   docker_container:
-    name: "{{pgrole}}"
-    image: "{{image}}"
+    name: "{{role_name}}"
+    image: "{{role_name}}"
     pull: yes
-    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes: "{{default_volumes}}"
-    env: "{{default_env}}"
-    restart_policy: always
+    volumes:
+      - "/opt/appdata/{{role_name}}:/app"
+      - "/etc/localtime:/etc/localtime:ro"
+    cpu_shares: 256
+    env:
+      PUID: 1000
+      PGID: 1000
     networks:
       - name: plexguide
         aliases:
-          - "{{pgrole}}"
+          - "{{role_name}}"
+    restart_policy: always
     state: started
-    labels: "{{default_labels}}"
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
 
 - include_role:
     name: pgmend

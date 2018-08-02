@@ -16,12 +16,13 @@
 #
 #################################################################################
 downloadpath=$(cat /var/plexguide/server.hd.path)
+tempbuild=$(cat /var/plexguide/json.tempbuild)
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
 
-ls -la $path/processed | awk '{print $9}' | tail -n +4 > /tmp/pg.gdsa
+#ls -la $path/processed | awk '{print $9}' | tail -n +4 > /tmp/pg.gdsa
 
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
 while read p; do
