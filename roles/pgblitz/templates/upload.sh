@@ -79,9 +79,9 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
 
       echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer in 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       sleep 60
-      
+
       for d in "${deletepaths[@]}"; do
-        #sleeps 2 second between the rc forget command 
+        #sleeps 2 second between the rc forget command
         sleep 2
         #strips the /mnt/move/ from the path so only the "important" folders are back and rclone rc throws no errors
         d="$(echo $d | sed 's/\'$downloadpath'\/move//g')"
@@ -89,20 +89,20 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
         if [[ ${d} != *"unionfs-fuse"* ]]; then
             if [[ ${d} != *"Season"* ]]; then
                 rclone rc vfs/forget dir="$d"
-                echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move/$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             fi
         fi
       done
-      
+
 else
 
     echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 30 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     sleep 30
 fi
-    
+
     #resetting the IFS folder for $deletepaths so it wont try and delete already deleted paths on next run
     IFS=" "$'\t\n '
-    
+
       sleep 5
   done </tmp/pg.gdsalist
 
