@@ -19,7 +19,6 @@ echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log &&
 number=0
 
 ### Remove Files for the Process
-rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
 rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 
 ### Initial List of Unprocessed Keys
