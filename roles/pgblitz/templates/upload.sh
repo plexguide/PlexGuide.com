@@ -16,31 +16,54 @@
 downloadpath=$(cat /var/plexguide/server.hd.path)
 
 echo "INFO - PGBlitz Started for the First Time - 30 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-sleep 5
+sleep 30
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
+mkdir $downloadpath/move/movies 1>/dev/null 2>&1
+mkdir $downloadpath/move/tv 1>/dev/null 2>&1
+chown 1000:1000 -R $downloadpath/move/*
 
+#### Generates the GDSA List from the Processed Keys
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
 
 while true
 do
 
   while read p; do
+if find /mnt/move -mindepth 2 -type d | egrep '.*' ; then
+    #sets the found folders in the $deletepaths - so only the picked up folders get deleted after moving them to /mnt/pgblitz
+    IFS=$'\n' deletepaths=( $(find "/mnt/move" -mindepth 2 -type d) )
+
     echo "INFO - PGBlitz: Using $p for transfer" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
     mkdir -p $downloadpath/pgblitz/$p
-    rclone move $downloadpath/move/ $downloadpath/pgblitz/$p/ --min-age 1m --delete-empty-src-dirs \
+    rclone move $downloadpath/move/ $downloadpath/pgblitz/$p/ --min-age 1m \
           --exclude="**partial~" --exclude="**_HIDDEN~" \
           --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
           --max-transfer=100G \
-          --delete-empty-src-dirs
 
     echo "INFO - PGBlitz: Moved Items $downloadpath/move to $downloadpath/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    ls -la $downloadpath/pgblitz/$p
-    echo "sleep 5"
+    #ls -la $downloadpath/pgblitz/$p
 
-    rclone move --tpslimit 6 --checkers=20 \
+    #sleeping a bit to make sure the files are moved
+    sleep 10
+
+    #running through the $deletepaths and only deleting the currently picked up folders to not miss anything
+    for d in "${deletepaths[@]}"; do
+        #checking if the path contains the hidden unionfs-fuse folder and skips if it does
+        if [[ ${d} != *"unionfs-fuse"* ]]; then
+            find "$d" -type d -empty -delete
+        fi
+    done
+
+    echo "INFO - PGBlitz $p Deleting empty folder(s) in $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+else
+    echo "INFO - PGBlitz $p Their is nothing to move from $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+fi
+
+if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
+    echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      rclone move --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
       --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
@@ -52,8 +75,29 @@ do
 
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
 
-      echo "$p - GDSA"
-      echo "INFO - PGBlitz: $p Transfer Complete - Sleeping 5 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer in 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+      sleep 60
+      for d in "${deletepaths[@]}"; do
+        #sleeps 2 second between the rc forget command
+        sleep 2
+        #strips the /mnt/move/ from the path so only the "important" folders are back and rclone rc throws no errors
+        d="$(echo $d | sed 's/\'$downloadpath'\/move//g')"
+        #checking if the path contains the hidden unionfs-fuse folder and skips if it does
+        if [[ ${d} != *"unionfs-fuse"* ]]; then
+            rclone rc vfs/forget dir=$d
+            echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move/$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        fi
+      done
+
+else
+    echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    sleep 60
+fi
+
+    #resetting the IFS folder for $deletepaths so it wont try and delete already deleted paths on next run
+    IFS=" "$'\t\n '
+
       sleep 5
   done </tmp/pg.gdsalist
 

@@ -16,32 +16,24 @@
 #
 #################################################################################
 ---
-- name: "Establish PG Role"
-  set_fact:
-    pgrole: "{{role_name}}"
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- name: Drop Breaddcrumb - Delete Me When Done
-  shell: "touch /var/plexguide/breadcrumb.{{role_name}}"
-  ignore_errors: True
-
-- include_role:
-    name: pgmstart
-
-- name: Deploy Airsonic Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: "{{role_name}}"
-    image: "airsonic/{{role_name}}"
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
+    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes: "{{default_volumes}}"
-    cpu_shares: 128
     env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
     labels: "{{default_labels}}"
 

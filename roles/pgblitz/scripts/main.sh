@@ -38,20 +38,21 @@ if [ "$tdrive" != "[tdrive]" ]; then
 fi
 
 ################################################################## CORE
-HEIGHT=15
+HEIGHT=16
 WIDTH=55
-CHOICE_HEIGHT=8
+CHOICE_HEIGHT=9
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="$versioncheck"
 
 OPTIONS=(A "RClone : Config & Establish"
-         B "JSON   : For TeamDrive"
+         B "JSON   : Upload for PGBlitz & PGDrive"
          C "E-Mail : Share Generator for PG Blitz"
-         D "Deploy : PG Drive & PG Blitz"
-         E "DL Path: Current - $downloadpath"
-         F "Tshoot : Baseline PG Blitz (Fresh Start)"
-         G "Tshoot : Disable PGBlitz"
+         D "Process: JSON files for Validation"
+         E "Deploy : PG Drive & PG Blitz"
+         F "DL Path: Current - $downloadpath"
+         G "Tshoot : Baseline PG Blitz (Fresh Start)"
+         H "Tshoot : Disable PGBlitz"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -114,8 +115,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             docker stop cloudblitz 1>/dev/null 2>&1
             docker rm cloudblitz 1>/dev/null 2>&1
             bash /opt/plexguide/roles/pgblitz/scripts/list.sh
-            bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
-            dialog --title "NOTE" --msgbox "\nJSON Keys Processed" 0 0
+            dialog --title "NOTE" --msgbox "\nNext, share emails & then validate" 0 0
             ;;
         C)
         ### Checkers
@@ -138,6 +138,10 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             dialog --title "WARNING!" --msgbox "\nIf you add any new JSONs in the future,\nyou must share their email addresses also!" 0 0
             ;;
         D)
+        ### Validate Process
+
+        bash /opt/plexguide/roles/pgblitz/scripts/validator.sh;;
+        E)
         ### Checkers
         if [ "$final" == "gdrive" ]; then
           echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -180,10 +184,10 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             read -n 1 -s -r -p "Press any key to continue"
             dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
             ;;
-        E)
+        F)
             bash /opt/plexguide/scripts/baseinstall/harddrive.sh
             ;;
-        F)
+        G)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
             sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1
@@ -204,7 +208,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #rm -r /root/.config/rclone/gdrive.save
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
-         G)
+         H)
             sudo systemctl stop pgblitz 1>/dev/null 2>&1
             sudo systemctl rm pgblitz 1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nPG Blitz is Disabled!\n\nYou must rerun PGDrives & PGBlitz to Enable Again!" 0 0

@@ -281,7 +281,7 @@
 - name: Deploy Traefik Container - CloudFlare
   docker_container:
     name: traefik
-    image: "traefik:1.6"
+    image: "traefik:latest"
     pull: yes
     cpu_shares: 256
     published_ports:

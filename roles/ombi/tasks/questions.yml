@@ -16,6 +16,19 @@
 #
 #################################################################################
 ---
-intport: "8080"
-extport: "7995"
-pgrole: "calibre"
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/ombi (Recommended)\n2- lsiodev/ombi-preview (Developer)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
+
+- name: Set linuxserver/ombi
+  set_fact:
+    image: "linuxserver/ombi"
+  when: result.user_input == "1"
+
+- name: Set lsiodev/ombi-preview
+  set_fact:
+    image: "lsiodev/ombi-preview"
+  when: result.user_input == "2"

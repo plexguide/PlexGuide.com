@@ -16,6 +16,19 @@
 #
 #################################################################################
 ---
-intport: "8000"
-extport: "7997"
-pgrole: "cloudblitz"
+- pause:
+    prompt: "\nType Image # for {{role_name}}\n1- titpetric/netdata\n2- firehol/netdata"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 3
+  delay: 1
+
+- name: Set titpetric/netdata
+  set_fact:
+    image: "titpetric/netdata"
+  when: result.user_input == "1"
+
+- name: Set firehol/netdata
+  set_fact:
+    image: "firehol/netdata"
+  when: result.user_input == "2"

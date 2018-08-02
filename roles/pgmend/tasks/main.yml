@@ -19,13 +19,17 @@
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
+### Cron
   - include_role:
       name: pgcron
     tags: cron
+    when:
+      - cron == "on"
 
+### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
-    tags: cron
 
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
-    when: skipend == "no"
+    when:
+      - display == "on"
