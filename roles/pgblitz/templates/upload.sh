@@ -19,19 +19,18 @@ echo "INFO - PGBlitz Started for the First Time - 30 Second Sleep" > /var/plexgu
 sleep 30
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
-echo "ignore this error for now - only temp hotfix"
-mkdir $downloadpath/move/movies
-mkdir $downloadpath/move/tv
-chown -R $downloadpath/move/*
-echo "ignore the errors above - only temp hotfix"
+mkdir $downloadpath/move/movies 1>/dev/null 2>&1
+mkdir $downloadpath/move/tv 1>/dev/null 2>&1
+chown 1000:1000 -R $downloadpath/move/*
 
+#### Generates the GDSA List from the Processed Keys
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
 
 while true
 do
 
   while read p; do
-if find $downloadpath/move -mindepth 2 -type d | egrep '.*' ; then
+if find /mnt/move -mindepth 2 -type d | egrep '.*' ; then
     #sets the found folders in the $deletepaths - so only the picked up folders get deleted after moving them to /mnt/pgblitz
     IFS=$'\n' deletepaths=( $(find "/mnt/move" -mindepth 2 -type d) )
 
@@ -62,7 +61,6 @@ else
     echo "INFO - PGBlitz $p Their is nothing to move from $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 
-
 if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
     echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       rclone move --tpslimit 6 --checkers=20 \
@@ -77,9 +75,9 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
 
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
 
-      echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer Start in 2 Minutes" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer in 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-      sleep 120
+      sleep 60
       for d in "${deletepaths[@]}"; do
         #sleeps 2 second between the rc forget command
         sleep 2
@@ -93,7 +91,8 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
       done
 
 else
-    echo "INFO - PGBlitz $p Their is nothing to move from $downloadpath/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    sleep 60
 fi
 
     #resetting the IFS folder for $deletepaths so it wont try and delete already deleted paths on next run
