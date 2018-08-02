@@ -25,11 +25,11 @@ tdrive="${tdrive:13}"
 #ls -la $path/processed | awk '{print $9}' | tail -n +4 > /tmp/pg.gdsa
 
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
-while read p; do
+#while read p; do
 
 mkdir -p $downloadpath/pgblitz/$p
 tee >> /$rpath <<EOF
-[$p]
+[$tempbuild]
 type = drive
 client_id =
 client_secret =
@@ -39,4 +39,4 @@ service_account_file = /opt/appdata/pgblitz/keys/processed/$p
 team_drive = $tdrive
 EOF
 
-done </tmp/pg.gdsa
+#done </tmp/pg.gdsa
