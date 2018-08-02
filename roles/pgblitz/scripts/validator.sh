@@ -27,6 +27,10 @@ tdrive="${tdrive:13}"
 clear
 echo "Welcome to PG Blitz"
 echo "Starting Validation Process"
+
+rm -r /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
+mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
+
 while read p; do
 #  p=$(echo "${p::-1}")
 echo ""
@@ -81,9 +85,6 @@ GDSATEST:plexguide/checks/ | grep "$p")
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
       rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
   fi
-
-### Remove Old GDSAs for Checks!
-rm -r /mnt/tdrive/plexguide/checks/G*
 
 done </tmp/pg.keys.temp
 
