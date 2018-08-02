@@ -27,6 +27,7 @@ tdrive="${tdrive:13}"
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
 #while read p; do
 
+####tempbuild is need in order to call the correct gdsa
 mkdir -p $downloadpath/pgblitz/$tempbuild
 tee >> /$rpath <<EOF
 [$tempbuild]
@@ -35,7 +36,7 @@ client_id =
 client_secret =
 scope = drive
 root_folder_id =
-service_account_file = /opt/appdata/pgblitz/keys/processed/$p
+service_account_file = /opt/appdata/pgblitz/keys/processed/$tempbuild
 team_drive = $tdrive
 EOF
 
