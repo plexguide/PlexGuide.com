@@ -77,7 +77,7 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
 
       echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer in 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-      sleep 60
+      sleep 5
       for d in "${deletepaths[@]}"; do
         #sleeps 2 second between the rc forget command
         sleep 2
@@ -92,7 +92,7 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
 
 else
     echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    sleep 60
+    sleep 5
 fi
 
     #resetting the IFS folder for $deletepaths so it wont try and delete already deleted paths on next run
