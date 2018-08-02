@@ -62,7 +62,7 @@ if find $downloadpath/move -mindepth 2 -type d | egrep '.*' ; then
 else
     echo "INFO - PGBlitz $p Their is nothing to move from $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
-          
+
 if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
     echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       rclone move --tpslimit 6 --checkers=20 \
@@ -76,7 +76,7 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
       $downloadpath/pgblitz/$p/ $p:
 
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
-      
+
       echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer in 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       sleep 60
       
@@ -95,8 +95,9 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
       done
       
 else
-    echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    sleep 60
+
+    echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 30 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    sleep 30
 fi
     
     #resetting the IFS folder for $deletepaths so it wont try and delete already deleted paths on next run
