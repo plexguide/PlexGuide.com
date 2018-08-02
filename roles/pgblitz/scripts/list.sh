@@ -19,6 +19,8 @@ echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log &&
 number=0
 
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.unprocessed.count
+ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
+
 
 #rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
 rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
