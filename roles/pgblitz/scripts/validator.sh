@@ -17,6 +17,8 @@
 #################################################################################
 echo "INFO - PGBlitz: Starting Validation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
+
 mkdir -p /opt/pgops 1>/dev/null 2>&1
 mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
@@ -68,6 +70,7 @@ GDSATEST:plexguide/checks/ | grep "$p")
       NC='\033[0m'
       echo -e "JSON: $checker - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
     else
       RED='\033[0;31m'
       NC='\033[0m'
