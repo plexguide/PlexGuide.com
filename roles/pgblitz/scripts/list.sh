@@ -20,7 +20,6 @@ number=0
 
 ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
-
 #rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
 rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
 
@@ -30,7 +29,7 @@ ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /t
 while read p; do
   p=${p:4}
   echo $p >> /tmp/pg.keys.processed.count
-done </tmp/pg.keys.unprocessed.count
+done </tmp/pg.keys.temp
 
 while read p; do
   let "number++"
