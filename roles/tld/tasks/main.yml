@@ -16,6 +16,18 @@
 #
 #################################################################################
 ---
+############## Start Asking
+- pause:
+    prompt: "\nWelcome to PG Top Level Domain (TLD) App Installer\n\n1 - Exit TLD App Installer\n2 - Continue\n\nType a Selection Number"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "3"
+  retries: 99
+  delay: 1
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
+
 - name: "Building Shell List"
   shell: "bash /opt/plexguide/roles/tld/scripts/main.sh"
 
@@ -23,7 +35,7 @@
   shell: "cat /tmp/backup.build"
   register: backlist
 
-- name: Prompt User for TLD Program
+- name: Prompt User for TLD App
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
   register: selection
