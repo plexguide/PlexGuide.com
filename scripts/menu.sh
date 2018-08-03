@@ -61,52 +61,13 @@ else
    echo "changeme" > /var/plexguide/pgfork.version
 fi
 
-file="/var/plexguide/tld.tautulli"
+file="/var/plexguide/tld.program"
 if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
 else
-   touch /var/plexguide/tld.tautulli
-fi
-
-file="/var/plexguide/tld.htpcmanager"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   touch /var/plexguide/tld.htpcmanager
-fi
-
-file="/var/plexguide/tld.muximux"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   touch /var/plexguide/tld.muximux
-fi
-
-file="/var/plexguide/tld.organizr"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   touch /var/plexguide/tld.organizr
-fi
-
-file="/var/plexguide/tld.ombi"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   touch /var/plexguide/tld.ombi
-fi
-
-file="/var/plexguide/tld.heimdall"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   touch /var/plexguide/tld.heimdall
+   touch /var/plexguide/tld.program
+   echo "portainer" > /var/plexguide/tld.program
 fi
 
 file="/opt/appdata/plexguide/plextoken"

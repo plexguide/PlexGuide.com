@@ -41,6 +41,11 @@
   register: auth
   ignore_errors: True
 
+- name: "Register TLD"
+  shell: "cat /var/plexguide/tld.program"
+  register: toplevel
+  ignore_errors: True"
+
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
@@ -53,3 +58,15 @@
 - name: Storing Role Name
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
+
+###### FOR TLD (START)
+- debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
+
+- name: "If Fact Matches - Enable TLD"
+  set_fact:
+    tldset: "{{domain.stdout}}"
+  when: "toplevel.stdout == pgrole"
+
+- debug: msg="TLDSET is now - {{tldset}}"
+  when: "toplevel.stdout == pgrole"
+###### FOR TLD (END)

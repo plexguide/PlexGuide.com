@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,19 +16,52 @@
 #
 #################################################################################
 ---
-- name: Check TLD File Exists
+############## Start Asking
+- pause:
+    prompt: "\nWelcome to PG Top Level Domain (TLD) App Installer
+             \n\n1 - Exit TLD App Installer
+             \n2 - Continue
+             \n\nNOTE: Desired Application MUST be Running!
+             \nNOTE: Traefik MUST be Deployed and Running!
+             \n\nType a Selection Number"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "3"
+  retries: 99
+  delay: 1
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
+
+- name: "Building Shell List"
+  shell: "bash /opt/plexguide/roles/tld/scripts/main.sh"
+
+- name: "Building List"
+  shell: "cat /tmp/backup.build"
+  register: backlist
+
+- name: Prompt User for TLD App
+  pause:
+    prompt: "\nDETECTED Running Programs:\n{{backlist.stdout}}\n\nTYPE a listed PROGRAM to server as the Top Level Domain! (Case Senstive)"
+  register: selection
+
+- name: Establishing Final Variable
+  shell: "echo {{selection.user_input}} > /var/plexguide/tld.program"
+  register: tld
+
+- name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
-    path: "/var/plexguide/tld.{{pgrole}}"
+    path: /opt/appdata/{tld.stdout}}
   register: tldcheck
 
-- name: Register TLD if it exists
-  shell: "cat /var/plexguide/tld.{{pgrole}}"
-  register: tld
-  ignore_errors: True
-  when: tldcheck.stat.exists == True
+- name: Checking If Any Running App Exist
+  shell: "cat /tmp/backup.build | grep -oP {{selection.user_input}}"
+  register: grep_output
+  ignore_errors: true
 
-- name: Registerd TLD Blank if it does not exist
-  shell: "echo ''"
-  register: tld
-  ignore_errors: True
-  when: tldcheck.stat.exists == False
+- fail:
+    msg: "\nUser Failed to Type Program Correctly! [NOTE: Case Sensitie]"
+  when: grep_output.stdout == ""
+
+- name: "Set Rebuild To On"
+  shell: "echo on > /var/plexguide/tld.control"

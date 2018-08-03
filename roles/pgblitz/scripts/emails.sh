@@ -13,7 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-path=/opt/appdata/pgblitz/keys/processed
+path=/opt/appdata/pgblitz/keys/unprocessed
 
 ls -la $path | awk '{ print $9}' | tail -n +4 > /tmp/pgblitz.emails
 rm -r /tmp/pgblitz.emails.list 1>/dev/null 2>&1
@@ -29,8 +29,7 @@ clear
 echo "Welcome to the PG Blitz - EMail Share Generator"
 echo ""
 echo "In GDRIVE, share the teamdrive with the following emails:"
-echo '  NOTE 1: uncheck "notify people" & check "prevent editors"...-'
-echo '  NOTE 2: ignore "sharing outside of org warning"'
+echo "NOTE: Only for unprocessed files"
 echo ""
 cat /tmp/pgblitz.emails.list
 echo ""

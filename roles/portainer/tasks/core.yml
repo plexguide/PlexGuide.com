@@ -17,10 +17,10 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "8085"
-    extport: "8085"
+    intport: "9000"
+    extport: "9000"
     pgrole: "{{role_name}}"
-    image: "linuxserver/htpcmanager"
+    image: "{{role_name}}/{{role_name}}"
 
 - name: "Key Variables Recall"
   include_role:
@@ -30,20 +30,24 @@
 #
 ############################################################# (BASICS START)
 
-# NONE
+- name: create plexguide network
+  docker_network:
+    name: "plexguide"
+    state: present
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/htpcmanager:/config"
-      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/{{role_name}}:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/opt/appdata/{{role_name}}:/data"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      UID: "1000"
-      GID: "1000"
+      PUID: 1000
+      PGID: 1000
 
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:

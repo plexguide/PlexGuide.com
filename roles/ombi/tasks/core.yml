@@ -67,7 +67,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}},requests.{{domain.stdout}},request.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART

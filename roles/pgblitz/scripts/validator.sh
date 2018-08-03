@@ -17,6 +17,8 @@
 #################################################################################
 echo "INFO - PGBlitz: Starting Validation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
+
 mkdir -p /opt/pgops 1>/dev/null 2>&1
 mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
@@ -25,6 +27,10 @@ tdrive="${tdrive:13}"
 clear
 echo "Welcome to PG Blitz"
 echo "Starting Validation Process"
+
+rm -r /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
+mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
+
 while read p; do
 #  p=$(echo "${p::-1}")
 echo ""
@@ -56,8 +62,8 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-echo "Waiting 2 Seconds"
-sleep 2.5
+echo "Waiting 4 Seconds"
+sleep 3.5
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
@@ -68,6 +74,9 @@ GDSATEST:plexguide/checks/ | grep "$p")
       NC='\033[0m'
       echo -e "JSON: $checker - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo "$p" > /var/plexguide/json.tempbuild
+      bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
+      mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
     else
       RED='\033[0;31m'
       NC='\033[0m'
