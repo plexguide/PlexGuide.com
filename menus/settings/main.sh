@@ -17,20 +17,20 @@
 #################################################################################
 echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 HEIGHT=17
-WIDTH=59
+WIDTH=62
 CHOICE_HEIGHT=10
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
 
-OPTIONS=(A "Download Path : Change the DL Path"
-         B "Processor     : Enhance Processing Power"
-         C "Kernel Mods   : Enhance Network Throughput"
-         D "WatchTower    : Auto-Update Application Manager"
-         E "Import Media  : Import Existing Media to GDrive"
-         F "Change Time   : Change the Server Time"
-         G "Domain App    : For Your Top Level Domain"
-         H "Server ID     : Change Default Server ID"
+OPTIONS=(A "Download Path  : Change the DL Path"
+         B "Processor      : Enhance Processing Power"
+         C "Kernel Mods    : Enhance Network Throughput"
+         D "WatchTower     : Auto-Update Application Manager"
+         E "Import Media   : Import Existing Media to GDrive"
+         F "Change Time    : Change the Server Time"
+         G "TLD Application: Set an App @ Top Level Domain (TLD)"
+         H "Server ID      : Change Default Server ID"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -64,7 +64,16 @@ echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexgu
         dpkg-reconfigure tzdata ;;
     G)
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        bash /opt/plexguide/roles/tld/main.sh ;;
+        echo "off" > /var/plexguide/tld.control
+        ansible-playbook /opt/plexguide/pg.yml --tags tld
+        control=$(cat /var/plexguide/tld.control)
+        if [ "$control" == "on" ]; then
+          bash /opt/plexguide/roles/tld/scripts/rebuild.sh
+        else
+          sleep 0.5
+        fi
+        echo ""
+        read -n 1 -s -r -p "Press any key to continue"
     H)
 echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/menus/backup-restore/server.sh ;;
