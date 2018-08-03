@@ -49,8 +49,6 @@
   shell: "echo {{selection.user_input}} > /var/plexguide/tld.program"
   register: tld
 
-- debug: msg="User TLD Program - {{tld.stdout}}"
-
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
     path: /opt/appdata/{tld.stdout}}
