@@ -15,9 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "plexguide.com" > /var/plexguide/server.domain
-echo "1.1.1.1" > /var/plexguide/server.ip
-echo "" > /var/plexguide/server.ports
-echo "/mnt" > /var/plexguide/server.hd.path
-echo "" > /var/plexguide/server.ht
-echo "portainer" > /var/plexguide/tld.program
+count=$(wc -l < /tmp/backup.list)
+((count++))
+((count--))
+
+for ((i=1; i<$count+1; i++)); do
+	app=$(sed "${i}q;d" /tmp/backup.list)
+	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off"
+done
+echo ""
+read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
+echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

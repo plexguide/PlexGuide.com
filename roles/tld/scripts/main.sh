@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,8 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "" > /var/plexguide/tld.ombi
-echo "" > /var/plexguide/tld.heimdall
-echo "" > /var/plexguide/tld.organizr
-echo "" > /var/plexguide/tld.htpcmanger
-echo "" > /var/plexguide/tld.muximux
+rm -r /tmp/backup.build 1>/dev/null 2>&1
+bash /opt/plexguide/roles/tld/scripts/list.sh
+#### Commenting Out To Let User See
+while read p; do
+  echo -n $p >> /tmp/backup.build
+  echo -n " " >> /tmp/backup.build
+done </tmp/backup.list

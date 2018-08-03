@@ -70,4 +70,3 @@
   when:
     - quescheck == "on"
     - "questions.stat.exists == True"
-##################### LOAD QUESTIONS ########## (END)
