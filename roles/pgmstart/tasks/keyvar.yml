@@ -41,6 +41,11 @@
   register: auth
   ignore_errors: True
 
+- name: "Register TLD"
+  shell: "cat /var/plexguide/tld.program"
+  register: toplevel
+  ignore_errors: True"
+
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 

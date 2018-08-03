@@ -26,12 +26,6 @@
   include_role:
     name: "pgmstart"
     tasks_from: "keyvar.yml"
-
-- name: "Register TLD"
-  shell: "cat /var/plexguide/tld.program"
-  register: toplevel
-  ignore_errors: True"
-
 ############################################################# (KEY END)
 #
 ############################################################# (BASICS START)
