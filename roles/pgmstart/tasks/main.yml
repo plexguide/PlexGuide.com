@@ -78,6 +78,8 @@
   register: toplevel
   ignore_errors: True"
 
+- debug: msg="Stored TLD - {{toplevel}} must match {{pgrole}} for TLD"
+
 - name: "If Fact Matches - Enable TLD"
   set_fact:
     tldset: "{{domain.stdout}}"
