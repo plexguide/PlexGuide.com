@@ -6,4 +6,5 @@
     extra: ""
     cron: "off"
     display: "off"
+    toplevel: "portainer"
 ## GLOBAL_VARS.SH #################################################### (END)
