@@ -61,8 +61,8 @@
   register: grep_output
   ignore_errors: true
 
-- debug: msg="Project Final {{grep_output}}"
-
 - fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
+    msg: "User Failed to Type Program Correctly! [NOTE: Case Sensitie]"
+  when: grep_output.stdout == ""
+
+- debug: msg="Project Final {{grep_output}}"
