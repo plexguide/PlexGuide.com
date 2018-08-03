@@ -16,26 +16,28 @@
 #
 #################################################################################
 downloadpath=$(cat /var/plexguide/server.hd.path)
+tempbuild=$(cat /var/plexguide/json.tempbuild)
 path=/opt/appdata/pgblitz/keys
 rpath=/root/.config/rclone/rclone.conf
 tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
 
-ls -la $path/processed | awk '{print $9}' | tail -n +4 > /tmp/pg.gdsa
+#ls -la $path/processed | awk '{print $9}' | tail -n +4 > /tmp/pg.gdsa
 
 #### Ensure to Backup TDrive & GDrive and Wipe the Rest
-while read p; do
+#while read p; do
 
-mkdir -p $downloadpath/pgblitz/$p
+####tempbuild is need in order to call the correct gdsa
+mkdir -p $downloadpath/pgblitz/$tempbuild
 tee >> /$rpath <<EOF
-[$p]
+[$tempbuild]
 type = drive
 client_id =
 client_secret =
 scope = drive
 root_folder_id =
-service_account_file = /opt/appdata/pgblitz/keys/processed/$p
+service_account_file = /opt/appdata/pgblitz/keys/processed/$tempbuild
 team_drive = $tdrive
 EOF
 
-done </tmp/pg.gdsa
+#done </tmp/pg.gdsa

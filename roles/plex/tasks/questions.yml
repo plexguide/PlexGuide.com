@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- pause:
+    prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Plex Install (Remote Server)\n2 - Plex Install (Local Server)\n3 - Exit Plex Installer\n\nType a Number Selection and Press [ENTER]"
+  register: selection
+  until: selection.user_input > "0" and selection.user_input < "4"
+  retries: 99
+  delay: 1
+
+- name: Set to PLEX Remote
+  set_fact:
+    usercheck: "2"
+  when: selection.user_input == "2"
+
+- name: Set to PLEX Local
+  set_fact:
+    usercheck: "1"
+  when: selection.user_input == "1"
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: selection.user_input == "3"
+
+- pause:
+    prompt: "\nWhich version of PLEX do you want to Install?!\n\n1 - Plex Public\n2 - Plex Pass\n\nNote: If you do not own a PLEXPASS and select, it will revert to the Public Type\nType a Number Selection and Press [ENTER]"
+  register: plexselect
+  until: plexselect.user_input > "0" and plexselect.user_input < "3"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nYou Must Claim Your Token @ https://plex.tv/claim\nServer Claimed Already? Press [ENTER]!\n\nTIP 1: Click Copy ClipBoard\nTIP 2: Windows Users: Shift+Insert to Paste\nTIP 3: This is for Remote Servers Only! (Non-Local)\n\nCOPY & PASTE your TOKEN and [ENTER] - Server Claimed Already? PRESS [ENTER]"
+  register: ptokentemp
+  when: usercheck == "1"
+
+- name: Set Token
+  set_fact:
+    ptoken: "{{ptokentemp.user_input}}"
+  when: usercheck == "1"
+
+- debug: msg="Using the following Plex claim token {{ptoken}}"
+  when: usercheck == "1"
+
+- set_fact:
+      plextype: "public"
+  when:
+    - plexselect.user_input == "1"
+
+- set_fact:
+      plextype: "plexpass"
+  when:
+    - plexselect.user_input == "2"
