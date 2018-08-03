@@ -38,5 +38,3 @@
   stat:
     path: /opt/appdata/{tld.stdout}}
   register: tldcheck
-
-### Fail Stop Program - Fails Location
