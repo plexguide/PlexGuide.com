@@ -21,7 +21,7 @@ count=$(wc -l < /tmp/backup.list)
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /tmp/backup.list)
-	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=on display=on"
+	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off"
 done
 echo ""
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
