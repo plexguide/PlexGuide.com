@@ -19,13 +19,13 @@ export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Traefik SubInterface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=10
-WIDTH=62
+WIDTH=56
 CHOICE_HEIGHT=3
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Traefik SubInterface Menu"
 
-OPTIONS=(A "Deploy Traefik : A Reverse Proxy"
-         B "TLD Application: Set an App @ Top Level Domain (TLD)"
+OPTIONS=(A "Deploy Traefik: A Reverse Proxy"
+         B "Deploy App    : @ Top Level Domain (TLD)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
