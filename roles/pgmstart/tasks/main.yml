@@ -71,3 +71,14 @@
     - quescheck == "on"
     - "questions.stat.exists == True"
 ##################### LOAD QUESTIONS ########## (END)
+
+##################### TLD PREP ############## (START)
+- name: "Register TLD"
+  shell: "cat /var/plexguide/tld.program"
+  register: toplevel
+  ignore_errors: True"
+
+- name: "If Fact Matches - Enable TLD"
+  set_fact:
+    tldset: "{{pgrole}}"
+  when: toplevel == pgrole
