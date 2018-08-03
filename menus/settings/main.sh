@@ -74,6 +74,7 @@ echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/pl
         fi
         echo ""
         read -n 1 -s -r -p "Press any key to continue"
+        ;;
     H)
 echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         bash /opt/plexguide/menus/backup-restore/server.sh ;;
