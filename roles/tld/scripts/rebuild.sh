@@ -24,5 +24,5 @@ for ((i=1; i<$count+1; i++)); do
 	ansible-playbook /opt/plexguide/pg.yml --tags $app
 done
 echo ""
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
