@@ -60,7 +60,7 @@
   ignore_errors: True
 
 ###### FOR TLD (START)
-- debug: msg="Stored TLD - {{toplevel.stdout}} must match {{pgrole}} for TLD"
+- debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
 
 - name: "If Fact Matches - Enable TLD"
   set_fact:
@@ -68,4 +68,5 @@
   when: "toplevel.stdout == pgrole"
 
 - debug: msg="TLDSET is now - {{tldset}}"
+  when: "toplevel.stdout == pgrole"
 ###### FOR TLD (END)
