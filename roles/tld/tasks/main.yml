@@ -22,7 +22,7 @@
              \n\n1 - Exit TLD App Installer
              \n2 - Continue
              \n\nNOTE: Desired Application MUST be Running!
-             \n\nNOTE: Traefik MUST be Deployed and Running
+             \nNOTE: Traefik MUST be Deployed and Running
              \n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "3"
