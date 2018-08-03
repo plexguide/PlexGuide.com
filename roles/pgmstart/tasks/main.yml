@@ -83,4 +83,4 @@
 - name: "If Fact Matches - Enable TLD"
   set_fact:
     tldset: "{{domain.stdout}}"
-  when: "{{toplevel.stdout}} == {{pgrole}}"
+  when: "{{toplevel.stdout}} == {{pgrole.stdout}}"
