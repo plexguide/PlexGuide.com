@@ -24,8 +24,8 @@ CHOICE_HEIGHT=3
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Traefik SubInterface Menu"
 
-OPTIONS=(A "Deploy Traefik: A Reverse Proxy"
-         B "Deploy App    : @ Top Level Domain (TLD)"
+OPTIONS=(A "Deploy Traefik: Reverse Proxy"
+         B "Deploy TLD App: Top Level Domain Application"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
