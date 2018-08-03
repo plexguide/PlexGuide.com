@@ -48,7 +48,9 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags plex
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
 
   #### OUTPUTS
