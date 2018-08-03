@@ -50,6 +50,7 @@ case $CHOICE in
         fi
         ;;
         B)
+        clear
         echo 'INFO - Selected: TLD Application' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         echo "off" > /var/plexguide/tld.control
         ansible-playbook /opt/plexguide/pg.yml --tags tld
