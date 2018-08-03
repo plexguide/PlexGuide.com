@@ -61,7 +61,7 @@
   register: grep_output
   ignore_errors: true
 
-- debug: msg="Project Final {{projectfinal}}"
+- debug: msg="Project Final {{grep_output}}"
 
 - fail:
     msg: "User Opted NOT to CONTINUE! Aborting!"
