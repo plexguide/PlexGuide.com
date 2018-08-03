@@ -66,6 +66,9 @@ echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexgu
 echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         echo "off" > /var/plexguide/tld.control
         ansible-playbook /opt/plexguide/pg.yml --tags tld
+        echo ""
+        read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
+        echo ""
         control=$(cat /var/plexguide/tld.control)
         if [ "$control" == "on" ]; then
           bash /opt/plexguide/roles/tld/scripts/rebuild.sh
