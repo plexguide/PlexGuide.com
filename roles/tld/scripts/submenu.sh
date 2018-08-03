@@ -18,8 +18,8 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Traefik SubInterface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-HEIGHT=10
-WIDTH=56
+HEIGHT=9
+WIDTH=55
 CHOICE_HEIGHT=3
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Traefik SubInterface Menu"
