@@ -18,7 +18,9 @@
 ---
 ############## Start Asking
 - pause:
-    prompt: "\nWelcome to PG Top Level Domain (TLD) App Installer\n\n1 - Exit TLD App Installer\n2 - Continue\n\nType a Selection Number"
+    prompt: "\nWelcome to PG Top Level Domain (TLD) App Installer
+             \nNOTE: Desired Application MUST be currently running!
+             \n\n1 - Exit TLD App Installer\n2 - Continue\n\nType a Selection Number"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "3"
   retries: 99
@@ -37,7 +39,7 @@
 
 - name: Prompt User for TLD App
   pause:
-    prompt: "\n-- DETECTED Running Programs --\n{{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
+    prompt: "\nDETECTED Running Programs:\n{{backlist.stdout}}\n\nTYPE a listed PROGRAM to server as the Top Level Domain! (Case Senstive)"
   register: selection
 
 - name: Establishing Final Variable
