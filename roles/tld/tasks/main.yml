@@ -37,7 +37,7 @@
 
 - name: Prompt User for TLD App
   pause:
-    prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
+    prompt: "\nDETECTED Running Programs\n\n{{backlist.stdout}}\n\nTYPE the name of a PROGRAM to run as your Top Level Domain! (Case Senstive)"
   register: selection
 
 - name: Establishing Final Variable
