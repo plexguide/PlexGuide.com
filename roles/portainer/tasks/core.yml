@@ -32,14 +32,6 @@
   register: toplevel
   ignore_errors: True"
 
-- debug: msg="Stored TLD - {{toplevel.stdout}} must match {{pgrole}} for TLD"
-
-- name: "If Fact Matches - Enable TLD"
-  set_fact:
-    tldset: "{{domain.stdout}}"
-  when: "toplevel.stdout == pgrole"
-
-- debug: msg="TLDSET is now - {{tldset}}"
 ############################################################# (KEY END)
 #
 ############################################################# (BASICS START)
