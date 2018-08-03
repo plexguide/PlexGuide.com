@@ -64,3 +64,6 @@
 - fail:
     msg: "\nUser Failed to Type Program Correctly! [NOTE: Case Sensitie]"
   when: grep_output.stdout == ""
+
+- name: Checking If Any Running App Exist
+  shell: "bash /opt/plexguide/roles/tld/scripts/rebuild.sh"

@@ -15,25 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-docker ps -a --format "{{.Names}}"  > /var/plexguide/container.running
-
-sed -i -e "/traefik/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/watchtower/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/plex/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/portainer/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/traefik/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/ombi/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/netdata/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/organizr/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/muximux/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/heimdall/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/support/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/tautulli/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/telly/d" /var/plexguide/container.running 1>/dev/null 2>&1
-sed -i -e "/phlex/d" /var/plexguide/container.running 1>/dev/null 2>&1
-
-### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
-### BackDoor WorkAround to Stop This Behavior
 count=$(wc -l < /tmp/backup.list)
 ((count++))
 ((count--))
