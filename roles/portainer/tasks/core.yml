@@ -57,7 +57,6 @@
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
-- debug: msg="TLDSET - {{tldset}}"
 ######################## Deploy PGMSTART
 - include_role:
     name: "pgmstart"
