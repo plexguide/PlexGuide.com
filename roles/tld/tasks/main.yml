@@ -55,3 +55,14 @@
   stat:
     path: /opt/appdata/{tld.stdout}}
   register: tldcheck
+
+- name: Checking If Any Running App Exist
+  shell: "cat /tmp/backup.build | grep -oP {{selection.user_input}}"
+  register: grep_output
+  ignore_errors: true
+
+- debug: msg="Project Final {{projectfinal}}"
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
