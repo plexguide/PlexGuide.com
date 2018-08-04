@@ -17,8 +17,8 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "2489"
-    extport: "80"
+    intport: "80"
+    extport: "2489"
     pgrole: "{{role_name}}"
     image: "mprasil/bitwarden"
 
