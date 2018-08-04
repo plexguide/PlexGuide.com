@@ -191,7 +191,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
         G)
             dialog --infobox "Reprocessing BAD JSONs (Please Wait)" 3 40
             sleep 2
-            mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/
+            clear
+            mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/ 1>/dev/null 2>&1
             bash /opt/plexguide/roles/pgblitz/scripts/validator.sh;;
         H)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 40
