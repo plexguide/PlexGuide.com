@@ -16,6 +16,26 @@
 #
 #################################################################################
 ---
-intport: "5299"
-extport: "5299"
-pgrole: "lazylibrarian"
+- name: Launch Core Task
+  include_tasks: "core.yml"
+
+- name: Deploy {{pgrole}} Container
+  docker_container:
+    name: "{{pgrole}}"
+    image: "{{image}}"
+    pull: yes
+    cpu_shares: 128
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{pgrole}}"
+    state: started
+    labels: "{{default_labels}}"
+
+- include_role:
+    name: pgmend
