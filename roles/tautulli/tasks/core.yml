@@ -20,7 +20,7 @@
     intport: "8181"
     extport: "8181"
     pgrole: "{{role_name}}"
-    image: "linuxserver/{{pgrole}}"
+    image: "linuxserver/tautulli"
 
 - name: "Key Variables Recall"
   include_role:
