@@ -45,6 +45,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags heimdall
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jackett
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
@@ -52,6 +53,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags plex
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags tautulli
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
