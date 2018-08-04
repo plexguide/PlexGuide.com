@@ -1,7 +1,7 @@
 #!/bin/bash
 ##
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & FlickerRate & Bryde
+# Author:   Admin9705 & FlickerRate & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
