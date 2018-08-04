@@ -24,9 +24,7 @@
 - name: Create Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - "{{path.stdout}}/move/books"
-    - "{{path.stdout}}/gdrive/books"
-    - "{{path.stdout}}/nzbget/completed/books"
+
 
 - name: Deploy LazyLibrarian Container
   docker_container:
@@ -36,9 +34,7 @@
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
     volumes:
-      - /opt/appdata/lazylibrarian:/config
-      - "{{path.stdout}}:/downloads"
-      - /mnt/unionfs:/books
+
     cpu_shares: 128
     env:
       VIRTUAL_HOST: "lazy.*"

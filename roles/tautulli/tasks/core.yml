@@ -17,10 +17,10 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "80"
-    extport: "1234"
+    intport: "8181"
+    extport: "8181"
     pgrole: "{{role_name}}"
-    image: "rudloff/alltube"
+    image: "linuxserver/tautulli"
 
 - name: "Key Variables Recall"
   include_role:
@@ -29,34 +29,32 @@
 ############################################################# (KEY END)
 #
 ############################################################# (BASICS START)
-- name: Create {{pgrole}} directories
+
+- name: "Create {{pgrole}} script directories"
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/appdata/{{pgrole}}
+    - /opt/appdata/{{pgrole}}/scripts
 
-- name: Import default config
-  template:
-    src: config.json.js2
-    dest: /opt/appdata/{{pgrole}}/config.json
-    force: yes
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{role_name}}:/var/www/html/config
+      - /opt/appdata/{{role_name}}:/config
+      - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs
+      - /opt/appdata/{{role_name}}/scripts:/scripts
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      PUID: 1000
-      PGID: 1000
+      UID: "1000"
+      GID: "1000"
 
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART

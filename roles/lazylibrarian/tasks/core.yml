@@ -17,10 +17,10 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "80"
-    extport: "1234"
+    intport: "5299"
+    extport: "5299"
     pgrole: "{{role_name}}"
-    image: "rudloff/alltube"
+    image: "linuxserver/lazylibrarian"
 
 - name: "Key Variables Recall"
   include_role:
@@ -29,21 +29,16 @@
 ############################################################# (KEY END)
 #
 ############################################################# (BASICS START)
-- name: Create {{pgrole}} directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-  with_items:
-    - /opt/appdata/{{pgrole}}
 
-- name: Import default config
-  template:
-    src: config.json.js2
-    dest: /opt/appdata/{{pgrole}}/config.json
-    force: yes
+# NONE
+
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{role_name}}:/var/www/html/config
+      - /opt/appdata/lazylibrarian:/config
+      - "{{path.stdout}}:/downloads"
+      - /mnt/unionfs:/books
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
@@ -56,7 +51,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.frontend.rule: "Host:lazy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART
