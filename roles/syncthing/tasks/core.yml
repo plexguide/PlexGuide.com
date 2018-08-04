@@ -24,7 +24,7 @@
     intport: "21027"
     extport: "21027"
     pgrole: "{{role_name}}"
-    image: "linuxserver/syncthing/"
+    image: "linuxserver/syncthing"
 
 - name: "Key Variables Recall"
   include_role:
