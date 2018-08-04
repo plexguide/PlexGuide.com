@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,8 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "" > /var/plexguide/tld.ombi
-echo "" > /var/plexguide/tld.heimdall
-echo "" > /var/plexguide/tld.organizr
-echo "" > /var/plexguide/tld.htpcmanger
-echo "" > /var/plexguide/tld.muximux
+docker ps --format '{{.Names}}' > /tmp/backup.list
+sed -i -e "/traefik/d" /tmp/backup.list
+sed -i -e "/watchtower/d" /tmp/backup.list
+sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/x2go*/d" /tmp/backup.list
+sed -i -e "/plexguide/d" /tmp/backup.list
+sed -i -e "/portainer/d" /tmp/backup.list
+sed -i -e "/cloudplow/d" /tmp/backup.list
+sed -i -e "/phlex/d" /tmp/backup.list

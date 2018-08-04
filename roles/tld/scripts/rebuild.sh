@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,7 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-intport: "9000"
-extport: "9000"
-pgrole: "portainer"
+count=$(wc -l < /tmp/backup.list)
+((count++))
+((count--))
+
+for ((i=1; i<$count+1; i++)); do
+	app=$(sed "${i}q;d" /tmp/backup.list)
+	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off"
+done
+echo ""
+read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
+echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

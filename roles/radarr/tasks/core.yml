@@ -17,10 +17,10 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "8085"
-    extport: "8085"
+    intport: "7878"
+    extport: "7878"
     pgrole: "{{role_name}}"
-    image: "linuxserver/htpcmanager"
+    image: "linuxserver/radarr"
 
 - name: "Key Variables Recall"
   include_role:
@@ -36,14 +36,26 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/htpcmanager:/config"
+      - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
+      - "/opt/appdata/{{role_name}}:/config{{extra}}"
+      - "/mnt/unionfs:/unionfs"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/rutorrents:/downloads"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "/mnt/qbittorrent/Downloads:/qbit-downloads"
       - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      UID: "1000"
-      GID: "1000"
+      PUID: "1000"
+      PGID: "1000"
+      BACKUP: "no"
+      MONO_TLS_PROVIDER: legacy
+      APP: "radarr"
+      VERSION: "stable"
 
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:

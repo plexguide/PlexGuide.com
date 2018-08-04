@@ -22,13 +22,13 @@ edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
 HEIGHT=17
-WIDTH=40
+WIDTH=44
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="$edition - $version"
 
 OPTIONS=(A "Deploy a Mount System"
-         B "PG Traefik - Reverse Proxy"
+         B "Deploy Traefik / Set Domain App"
          C "PG Program Suite"
          D "PG Plex Enhancement Tools"
          E "PG Server Security"
@@ -48,21 +48,10 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 case $CHOICE in
         A)
 echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-           bash /opt/plexguide/roles/deploychoice.sh ;;
+            bash /opt/plexguide/roles/deploychoice.sh ;;
         B)
-echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            touch /var/plexguide/traefik.lock
-            clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
-            file="/var/plexguide/traefik.lock"
-            if [ -e "$file" ]
-              then
-                echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
-              else
-                echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
-                bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
-                echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
-            fi
-            ;;
+        echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/tld/scripts/submenu.sh ;;
         C)
 echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/main.sh ;;

@@ -46,8 +46,15 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+      traefik.app.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
+      traefik.app.port: "{{intport}}"
+      traefik.admin.frontend.rule: "Host:{{role_name}}.{{domain.stdout}};PathPrefix:/admin"
+      traefik.admin.port: "2203"
+
+- name: Remove Proxy Prefix
+  replace:
+    path: "/opt/appdata/{{role_name}}/preferences.json"
+    regexp: "ubooquity"
 
 - include_role:
     name: pgmend

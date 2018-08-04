@@ -22,19 +22,13 @@
   shell: "cat /tmp/backup.build"
   register: backlist
 
-
-
 - name: "Pulling Selected Program"
   shell: "cat /tmp/program_var"
   register: program_var
 
-
-  #ignore tag
-
 - name: "Server ID for Backup"
   shell: "cat /var/plexguide/server.id"
   register: server_id
-
 
 ############################################ SWITCH OFF - Automatic
 - name: Prompt User for Program
