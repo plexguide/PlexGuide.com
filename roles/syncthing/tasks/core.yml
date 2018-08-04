@@ -19,10 +19,10 @@
   set_fact:
     intport: "8384"
     extport: "8384"
-    intport: "22000"
-    extport: "22000"
-    intport: "21027"
-    extport: "21027"
+    intport2: "22000"
+    extport2: "22000"
+    intport3: "21027"
+    extport3: "21027"
     pgrole: "{{role_name}}"
     image: "linuxserver/syncthing"
 
