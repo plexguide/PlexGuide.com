@@ -34,6 +34,7 @@ OPTIONS=(A "AllTube"
          F "Resilio"
          G "Tautulli (PlexPy)"
          H "The Lounge"
+         I "Syncthing"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -94,6 +95,11 @@ case $CHOICE in
         H)
             echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        I)
+            echo 'INFO - Selected: Syncthing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags syncthing --extra-vars "quescheck=on cron=on display=on"
             echo "" && read -n 1 -s -r -p "Press any key to continue"
             ;;
         Z)
