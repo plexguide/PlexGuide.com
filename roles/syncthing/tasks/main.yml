@@ -27,6 +27,8 @@
     cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
+      - "{{ports.stdout}}{{extport2}}:{{intport2}}"
+      - "{{ports.stdout}}{{extport3}}:{{intport3}}"
     volumes: "{{default_volumes}}"
     env: "{{default_env}}"
     restart_policy: always
