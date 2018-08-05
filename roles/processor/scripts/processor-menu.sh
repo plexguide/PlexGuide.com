@@ -21,7 +21,7 @@ echo 'INFO - @Main Processor Profiles - processor-menu' > /var/plexguide/pg.log 
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
 
-HEIGHT=10
+HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"

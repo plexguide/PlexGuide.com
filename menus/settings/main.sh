@@ -16,7 +16,7 @@
 #
 #################################################################################
 echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-HEIGHT=17
+HEIGHT=16
 WIDTH=62
 CHOICE_HEIGHT=10
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
