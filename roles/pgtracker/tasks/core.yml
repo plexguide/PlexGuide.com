@@ -65,13 +65,13 @@
   replace:
     path: /opt/appdata/{{pgrole}}/config.php
     regexp: 'SONARRAPI'
-    replace: "{{SONARRAPI}}"
+    replace: "{{SONARRAPI.stdout}}"
 
 - name: "Replacing config value for Radarr API"
   replace:
     path: /opt/appdata/{{pgrole}}/config.php
     regexp: 'RADARRAPI'
-    replace: "{{RADARRAPI}}"
+    replace: "{{RADARRAPI.stdout}}"
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
