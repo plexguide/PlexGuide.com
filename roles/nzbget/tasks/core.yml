@@ -58,7 +58,7 @@
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-      traefik.port: "{{extport}}"
+      traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART
 - include_role:
