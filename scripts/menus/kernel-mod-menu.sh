@@ -39,18 +39,16 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-case $CHOICE in
 if (dialog --title "Here Be Dragons" --yesno "Warning: Adjusting Kernel Parameters May Break Network Adapters or Even Brick Your Machine. Continue?" 8 56) then
   echo ok
-else
-  exit 0
-fi
 
-if (dialog --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
-  echo good
-else
-    dialog --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
-fi
+#if (dialog --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
+#  echo good
+#else
+#    dialog --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
+#fi
+
+case $CHOICE in
   A)
     echo 'INFO - Selected: Enable BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     # check if bbr is available
@@ -143,6 +141,9 @@ fi
     echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     exit 0 ;;
 esac
+else
+  exit 0
+fi
 ## repeat menu when exiting
 echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 bash /opt/plexguide/scripts/menus/kernel-mod-menu-new.sh

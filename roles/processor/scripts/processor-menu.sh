@@ -26,7 +26,6 @@ WIDTH=40
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Processor Mode"
-continue_text="Press any key to continue - will reboot the machine"
 
 OPTIONS=(A "Performance Mode"
          B "Ondemand Mode"
@@ -55,25 +54,25 @@ case $CHOICE in
     echo 'INFO - Selected: Processor Profile - Performance Mode' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags performance
     echo ""
-    read -n 1 -s -r -p $continue_text
+    read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh ;;
   B)
     echo 'INFO - Selected: Processor Profile - Ondemand Mode' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags ondemand
     echo ""
-    read -n 1 -s -r -p $continue_text
+    read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh ;;
   C)
     echo 'INFO - Selected: Processor Profile - Conservative Mode' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags conservative
     echo ""
-    read -n 1 -s -r -p $continue_text
+    read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh ;;
   D)
     echo 'INFO - Selected: Processor Profile - View Processor Policy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && cpufreq-info
     echo ""
-    read -n 1 -s -r -p $continue_text ;;
+    read -n 1 -s -r -p "Press any key to continue - will reboot the machine" ;;
   Z)
     echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/roles/ending/ending.sh
