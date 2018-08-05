@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -65,27 +65,18 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
-            echo "view247">/tmp/sstvservice
-            ;;
-        B)
-            echo "vaders">/tmp/sstvservice
-            ;;
-        C)
-            echo "viewss">/tmp/sstvservice
-            ;;
-        D)
-            echo "viewstvn">/tmp/sstvservice
-            ;;
-        E)
-            echo "viewmmasr">/tmp/sstvservice
-            ;;
-
+  A)
+    echo "view247">/tmp/sstvservice ;;
+  B)
+    echo "vaders">/tmp/sstvservice ;;
+  C)
+    echo "viewss">/tmp/sstvservice ;;
+  D)
+    echo "viewstvn">/tmp/sstvservice ;;
+  E)
+    echo "viewmmasr">/tmp/sstvservice ;;
 ########## Deploy End
-
-
 esac
-
 dialog --infobox "Installing SSTVProxy: Please Wait" 3 45
 ansible-playbook /opt/plexguide/pg.yml --tags sstvproxy &
 sleep 4

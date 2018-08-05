@@ -7,14 +7,12 @@ dialog --title "Confirm Phlex Installation" \
 response=$?
 
 case $response in
-   0) 
-      dialog --infobox "Installing Phlex: Please Wait" 3 35
-      sleep 2
-      clear      
-      ansible-playbook /opt/plexguide/pg.yml --tags phlex
-      
-      ;;
-   1) 
-      clear
-      exit 0 ;;
+   0)
+    dialog --infobox "Installing Phlex: Please Wait" 3 35
+    sleep 2
+    clear
+    ansible-playbook /opt/plexguide/pg.yml --tags phlex;;
+   1)
+    clear
+    exit 0 ;;
 esac

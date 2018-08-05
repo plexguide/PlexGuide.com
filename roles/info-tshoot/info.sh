@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=13
 WIDTH=36
@@ -31,7 +30,6 @@ OPTIONS=(A "Server Network Benchmarks"
          E "View PGDrive Services"
          Z "Exit")
 
-
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -42,21 +40,20 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
-            bash /opt/plexguide/menus/benchmark/main.sh ;;
-        B)
-            bash /opt/plexguide/roles/info-tshoot/ncdu.sh ;;
-        C)
-            dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
-            ctop ;;
-        D)
-            bash /opt/plexguide/roles/info-tshoot/info/status-menu.sh ;;
-        E)
-            bash /opt/plexguide/roles/info-tshoot/info2/status-menu.sh ;;
-        Z)
-            clear
-            exit 0 ;;
+  A)
+    bash /opt/plexguide/menus/benchmark/main.sh ;;
+  B)
+    bash /opt/plexguide/roles/info-tshoot/ncdu.sh ;;
+  C)
+    dialog --title "Note" --msgbox "\nPRESS the ESC Key To Exit!" 0 0
+    ctop ;;
+  D)
+    bash /opt/plexguide/roles/info-tshoot/info/status-menu.sh ;;
+  E)
+    bash /opt/plexguide/roles/info-tshoot/info2/status-menu.sh ;;
+  Z)
+    clear
+    exit 0 ;;
 esac
-
 ### loops until exit
 bash /opt/plexguide/roles/info-tshoot/info.sh

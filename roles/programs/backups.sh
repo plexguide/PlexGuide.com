@@ -38,26 +38,24 @@ echo 'INFO - @Main Backup Program Menu' > /var/plexguide/pg.log && bash /opt/ple
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-
-      A)
-        echo 'INFO - Selected: Bitwarden' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags bitwarden --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-      B)
-        echo 'INFO - Selected: Duplicati' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags duplicati --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-      C)
-         echo 'INFO - Selected: Syncthing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-         clear && ansible-playbook /opt/plexguide/pg.yml --tags syncthing --extra-vars "quescheck=on cron=on display=on"
-         echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-      D)
-        echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-     Z)
-       exit 0 ;;
+  A)
+    echo 'INFO - Selected: Bitwarden' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags bitwarden --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  B)
+    echo 'INFO - Selected: Duplicati' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags duplicati --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  C)
+     echo 'INFO - Selected: Syncthing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+     clear && ansible-playbook /opt/plexguide/pg.yml --tags syncthing --extra-vars "quescheck=on cron=on display=on"
+     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  D)
+    echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+ Z)
+   exit 0 ;;
 esac
-
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/backups.sh
