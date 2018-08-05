@@ -39,12 +39,13 @@
   with_items:
     - /opt/appdata/{{pgrole}}
     - /opt/appdata/{{pgrole}}/sync
+    - /opt/appdata/{{pgrole}}/config
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{role_name}}:/config
+      - /opt/appdata/{{role_name}}/config:/config
       - /opt/appdata/{{role_name}}/sync:/sync
 
 - name: "Establish Key Variables - {{pgrole}}"
