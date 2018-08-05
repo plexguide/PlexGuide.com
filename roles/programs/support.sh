@@ -84,7 +84,7 @@ case $CHOICE in
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   H)
     echo 'INFO - Selected: PGTracker' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgtracker --extra-vars "quescheck=on cron=on display=on"
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags pgtracker --extra-vars "quescheck=off cron=off display=on subdomain=tracker"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   Z)
     exit 0 ;;

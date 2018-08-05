@@ -39,7 +39,7 @@
 
 - name: "Setting owner of config file"
   file:
-    path: /opt/appdata/{{pgrole}}/config.php
+    path: /opt/appdata/{{pgrole}}
     owner: 1000
     group: 1000
     mode: 0777
