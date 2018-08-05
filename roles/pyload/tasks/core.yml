@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "80"
-    extport: "8040"
+    extport: "2938"
     pgrole: "{{role_name}}"
     image: "tronyx/docker-organizr-v2"
 
