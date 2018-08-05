@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -39,36 +39,29 @@ echo 'INFO - @UI Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/r
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-
-      A)
-        echo 'INFO - Selected: HeimDall' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-      B)
-      echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      clear && ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager --extra-vars "quescheck=on cron=on display=on"
-      echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-      C)
-          echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux --extra-vars "quescheck=on cron=on display=on"
-          echo "" && read -n 1 -s -r -p "Press any key to continue"
-          ;;
-      D)
-        echo 'INFO - Selected: Organizr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-        E)
-        echo 'INFO - Selected: OrganizrV2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2 --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-     Z)
-       exit 0 ;;
+  A)
+    echo 'INFO - Selected: HeimDall' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags heimdall --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  B)
+    echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  C)
+    echo 'INFO - Selected: Muximux' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags muximux --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  D)
+    echo 'INFO - Selected: Organizr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags organizr --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  E)
+    echo 'INFO - Selected: OrganizrV2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags organizrv2 --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  Z)
+   exit 0 ;;
 esac
-    clear
-
+clear
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/ui.sh

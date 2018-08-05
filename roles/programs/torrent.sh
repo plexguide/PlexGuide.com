@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -39,32 +39,26 @@ echo 'INFO - @Main Torrent Program Menu' > /var/plexguide/pg.log && bash /opt/pl
                  2>&1 >/dev/tty)
 
 case $CHOICE in
-
-      A)
-        echo 'INFO - Selected: QBittorrent' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-      B)
-        echo 'INFO - Selected: RuTorrent' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-      C)
-         echo 'INFO - Selected: Deluge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-         clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge --extra-vars "quescheck=on cron=on display=on"
-         echo "" && read -n 1 -s -r -p "Press any key to continue"
-         ;;
-        D)
-        echo 'INFO - Selected: Jackett' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett --extra-vars "quescheck=on cron=on display=on"
-        echo "" && read -n 1 -s -r -p "Press any key to continue"
-        ;;
-     E)
-       bash /opt/plexguide/menus/programs/vpn.sh ;;
-     Z)
-       exit 0 ;;
+  A)
+    echo 'INFO - Selected: QBittorrent' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  B)
+    echo 'INFO - Selected: RuTorrent' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags rutorrent --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  C)
+    echo 'INFO - Selected: Deluge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags deluge --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  D)
+    echo 'INFO - Selected: Jackett' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  E)
+    bash /opt/plexguide/menus/programs/vpn.sh ;;
+  Z)
+    exit 0 ;;
 esac
-
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/torrent.sh
