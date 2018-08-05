@@ -37,5 +37,12 @@
     state: started
     labels: "{{default_labels}}"
 
+- name: "Setting owner of config file"
+  file:
+    path: /opt/appdata/{{pgrole}}/config.php
+    owner: 1000
+    group: 1000
+    mode: 0777
+
 - include_role:
     name: pgmend

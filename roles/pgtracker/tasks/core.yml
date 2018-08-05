@@ -79,7 +79,6 @@
     owner: 1000
     group: 1000
     mode: 0755
-    
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
