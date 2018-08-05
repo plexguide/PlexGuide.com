@@ -25,7 +25,7 @@ HEIGHT=11
 WIDTH=40
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Processor Mode"
+TITLE="Processor Mode - RISK!"
 
 OPTIONS=(A "Performance Mode"
          B "Ondemand Mode"

@@ -22,7 +22,7 @@ HEIGHT=13
 WIDTH=44
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="Kernal Mods"
+TITLE="Kernal Mods - RISK!"
 
 OPTIONS=(A "Enable BBR TCP Congestion Control"
          B "Klaver + BBR"
@@ -39,9 +39,11 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-if (dialog --title "Here Be Dragons" --yesno "Warning: Adjusting Kernel Parameters May Break Network Adapters or Even Brick Your Machine. Continue?" 8 56) then
-  echo ok
-
+#if (dialog --title "Here Be Dragons" --yesno "Warning: Adjusting Kernel Parameters May Break Network Adapters or Even Brick Your Machine. Continue?" 8 56) then
+#  echo ok
+#else
+#  exit 0
+#fi
 #if (dialog --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
 #  echo good
 #else
@@ -141,9 +143,6 @@ case $CHOICE in
     echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     exit 0 ;;
 esac
-else
-  exit 0
-fi
 ## repeat menu when exiting
 echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 bash /opt/plexguide/scripts/menus/kernel-mod-menu-new.sh
