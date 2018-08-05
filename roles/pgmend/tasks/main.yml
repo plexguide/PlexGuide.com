@@ -29,11 +29,11 @@
 ### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
     when:
-      - subdomain == ""
+      - pgrole != "pgtracker"
 
-  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{subdomain}}.{{domain.stdout}}"
+  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | tracker.{{domain.stdout}}"
     when:
-      - subdomain != ""
+      - pgrole == "pgtracker"
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
     when:
