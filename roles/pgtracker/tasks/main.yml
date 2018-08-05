@@ -43,6 +43,7 @@
     owner: 1000
     group: 1000
     mode: 0777
+    recurse: yes
 
 - include_role:
     name: pgmend
