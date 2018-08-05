@@ -44,6 +44,6 @@
 
 - name: Replace default sync path in config file
   replace:
-    path: /opt/appdata/{{pgrole}}/config.xml
+    path: /opt/appdata/{{pgrole}}/config/config.xml
     regexp: <defaultFolderPath>~</defaultFolderPath>
     replace: "<defaultFolderPath>/sync</defaultFolderPath>"
