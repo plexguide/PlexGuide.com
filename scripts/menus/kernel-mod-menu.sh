@@ -23,7 +23,6 @@ WIDTH=44
 CHOICE_HEIGHT=11
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Kernal Mods"
-continue_text="Press any key to continue - will reboot the machine"
 
 OPTIONS=(A "Enable BBR TCP Congestion Control"
          B "Klaver + BBR"
@@ -40,19 +39,18 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 "${OPTIONS[@]}" \
                 2>&1 >/dev/tty)
 
-if (dialog --title "Here Be Dragons" --yesno "Warning: Adjusting Kernel Parameters May Break Network Adapters or Even Brick Your Machine. Continue?" 0 0) then
+case $CHOICE in
+if (dialog --title "Here Be Dragons" --yesno "Warning: Adjusting Kernel Parameters May Break Network Adapters or Even Brick Your Machine. Continue?" 8 56) then
   echo ok
 else
   exit 0
 fi
 
-if (dialog --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 0 0) then
+if (dialog --title "Network Speed" --yesno "Is Your Server On at least a 500mbit line?" 8 56) then
   echo good
 else
-    dialog --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 0 0
+    dialog --title "Network Speed - No" --msgbox "We reccomend only enabling BBR on slower networks." 9 66
 fi
-
-case $CHOICE in
   A)
     echo 'INFO - Selected: Enable BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     # check if bbr is available
@@ -61,7 +59,7 @@ case $CHOICE in
       echo 'INFO - Installing: BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
-      read -n 1 -s -r -p $continue_text
+      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -77,7 +75,7 @@ case $CHOICE in
       echo 'INFO - Installing: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
-      read -n 1 -s -r -p $continue_text
+      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -94,7 +92,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       echo ""
-      read -n 1 -s -r -p $continue_text
+      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -111,7 +109,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       echo ""
-      read -n 1 -s -r -p $continue_text
+      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
