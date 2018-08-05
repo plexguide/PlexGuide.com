@@ -58,6 +58,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags syncthing
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bitwarden
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pgtracker
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
