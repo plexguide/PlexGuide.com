@@ -24,8 +24,7 @@ export NCURSES_NO_UTF8_ACS=1
  TITLE="Applications - VPN Programs"
 
  OPTIONS=(A "DO NOT USE - For Developers Use Only!"
-          B "Duplicati - Advanced Backup"
-          C "dns-gen"
+          B "dns-gen"
           Z "Exit")
 
  CHOICE=$(dialog --clear \
@@ -44,13 +43,6 @@ case $CHOICE in
    echo "Please go back to the main menu to see changes"
    read -n 1 -s -r -p "Press any key to continue " ;;
   B)
-   display=Duplicati
-   dialog --infobox "Installing: $display" 3 30
-   ansible-playbook /opt/plexguide/pg.yml --tags duplicati &>/dev/null &
-   sleep 2
-   dialog --msgbox 'Duplicati access: domain.com:8200 Remember to set password' 8 30
-   cronskip="yes" ;;
-  C)
    display=dns-gen
    dialog --infobox "Installing: $display" 3 30
    sleep 2

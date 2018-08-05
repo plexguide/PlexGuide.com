@@ -48,7 +48,6 @@ MENU="Make a Selection:"
 
 OPTIONS=(A "APP Ports - $portstat"
          B "APP Guard Protection - $appguard"
-         B "Bitwarden - password manager"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -67,10 +66,6 @@ case $CHOICE in
   B)
     echo "INFO - APPGuard Menu Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menus/security/ht.sh ;;
-  C)
-    echo 'INFO - Selected: Bitwarden password manager' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags bitwarden --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   Z)
     clear
     echo "INFO - Exited PG Security Menu" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
