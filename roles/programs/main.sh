@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 - Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -51,45 +51,46 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-  A)
-    echo "INFO - Selected Media Servers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/media.sh ;;
-  B)
-    echo "INFO - Selected Mangers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/manager.sh ;;
-  C)
-    echo "INFO - Selected NZB Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/nzbs.sh ;;
-  D)
-    echo "INFO - Selected Torrent ProgramsInterface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/torrent.sh ;;
-  E)
-    echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/support.sh ;;
-  F)
-    echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/ui.sh ;;
-  G)
-    echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/tools.sh ;;
-  H)
-    echo "INFO - Selected Backups Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/backups.sh ;;
-  I)
-    echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/critical.sh ;;
-  J)
-    echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/versions4k.sh ;;
-  K)
-    echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/beta.sh ;;
-  L)
-    echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/menus/wordpress/main.sh ;;
-  Z)
-    clear
-    exit 0 ;;
+        A)
+echo "INFO - Selected Media Servers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/media.sh ;;
+        B)
+echo "INFO - Selected Mangers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/manager.sh ;;
+        C)
+echo "INFO - Selected NZB Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/nzbs.sh ;;
+        D)
+echo "INFO - Selected Torrent ProgramsInterface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/torrent.sh ;;
+        E)
+echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/support.sh ;;
+        F)
+echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/ui.sh ;;
+        G)
+echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/tools.sh ;;
+        H)
+echo "INFO - Selected Backups Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/backups.sh ;;
+        I)
+echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/critical.sh ;;
+        J)
+echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/versions4k.sh ;;
+        K)
+echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/beta.sh ;;
+        L)
+echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/menus/wordpress/main.sh ;;
+        Z)
+            clear
+            exit 0 ;;
 esac
+
 ### loops until exit
 bash /opt/plexguide/roles/programs/main.sh

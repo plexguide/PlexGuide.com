@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 - Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,7 +16,9 @@
 #
 #################################################################################
 echo 'INFO - @NDCU Selection Menu (View Space)' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
 ## This is to analyse what's taking up space on you drives
+
 # sudo apt install ncdu -y
 export NCURSES_NO_UTF8_ACS=1
 HEIGHT=23
@@ -43,6 +45,7 @@ OPTIONS=(A "Entire drive - excluding /mnt - WARNING Can take a long time!"
          O "/home"
          Z "Exit")
 
+
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
                 --title "$TITLE" \
@@ -54,54 +57,93 @@ CHOICE=$(dialog --clear \
 clear
 
 case $CHOICE in
-  A)
-    clear
-    ncdu / --exclude=/mnt ;;
-  B)
-    clear
-    ncdu / --exclude=/opt ;;
-  C)
-    clear
-    ncdu / --exclude=/mnt --exclude=/opt ;;
-  D)
-    clear
-    ncdu /opt ;;
-  E)
-    clear
-    ncdu /opt --exclude=/opt/appdata/plex --exclude=/opt/appdata/embyserver --exclude=/opt/appdata/emby ;;
-  F)
-    clear
-    ncdu /mnt ;;
-  G)
-    clear
-    ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/tdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/.gcrypt ;;
-  H)
-    clear
-    ncdu /mnt/move ;;
-  I)
-    clear
-    ncdu /mnt/unionfs ;;
-  J)
-    clear
-    ncdu /mnt/nzbget ;;
-  K)
-    clear
-    ncdu /mnt/sab ;;
-  L)
-    clear
-    ncdu /mnt/deluge ;;
-  M)
-    clear
-    ncdu /mnt/rutorrent ;;
-  N)
-    clear
-    ncdu /mnt/torrentvpn ;;
-  O)
-    clear
-    ncdu /home ;;
-  Z)
-    clear
-    exit 0 ;;
+    A)
+      clear
+      ncdu / --exclude=/mnt
+      ;;
+
+    B)
+      clear
+      ncdu / --exclude=/opt
+      ;;
+
+    C)
+      clear
+      ncdu / --exclude=/mnt --exclude=/opt
+      ;;
+
+    D)
+        clear
+        ncdu /opt
+        ;;
+
+    E)
+        clear
+        ncdu /opt --exclude=/opt/appdata/plex --exclude=/opt/appdata/embyserver --exclude=/opt/appdata/emby
+        ;;
+
+    F)
+        clear
+        ncdu /mnt
+        ;;
+
+    G)
+        clear
+        ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/tdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/.gcrypt
+        ;;
+
+    H)
+      clear
+      ncdu /mnt/move
+      ;;
+
+    I)
+      clear
+      ncdu /mnt/unionfs
+      ;;
+
+    J)
+      clear
+      ncdu /mnt/nzbget
+      ;;
+
+    K)
+        clear
+        ncdu /mnt/sab
+        ;;
+
+    L)
+        clear
+        ncdu /mnt/deluge
+        ;;
+
+    M)
+        clear
+        ncdu /mnt/rutorrent
+        ;;
+
+     N)
+         clear
+         ncdu /mnt/torrentvpn
+         ;;
+
+      O)
+          clear
+          ncdu /home
+          ;;
+
+#     X)
+#         clear
+#         bash /opt/plexguide/scripts/test/exit
+#         : ${DIALOG_ESC=255}
+#         $DIALOG_ESC)
+#         exit 0 ;;
+
+      Z)
+      clear
+      exit 0
+      ;;
 esac
+
 ### loops until exit
 bash /opt/plexguide/roles/info-tshoot/ncdu.sh

@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 - Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -40,28 +40,39 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-  A)
-    echo 'INFO - Selected: Plex' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  B)
-    echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags emby --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  C)
-    echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  D)
-    echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  E)
-    echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  Z)
-    exit 0 ;;
+        A)
+            echo 'INFO - Selected: Plex' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags plex --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+
+                ;;
+        B)
+            echo 'INFO - Selected: Emby' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags emby --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+
+            ;;
+        C)
+            echo 'INFO - Selected: Ubooquity' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ubooquity --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+
+            ;;
+        D)
+            echo 'INFO - Selected: AirSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags airsonic --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+
+            ;;
+        E)
+            echo 'INFO - Selected: BookSonic' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags booksonic --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+
+            ;;
+        Z)
+            exit 0 ;;
 esac
+
 #recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/media.sh

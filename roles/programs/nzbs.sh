@@ -3,7 +3,7 @@
 # [PlexGuide Interface]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 - Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -37,20 +37,24 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-  A)
-    echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  B)
-    echo 'INFO - Selected: nzbhydra2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2 --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  C)
-    echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  Z)
-    exit 0 ;;
+        A)
+            echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        B)
+            echo 'INFO - Selected: nzbhydra2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2 --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        C)
+            echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        Z)
+            exit 0 ;;
 esac
+
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/nzbs.sh

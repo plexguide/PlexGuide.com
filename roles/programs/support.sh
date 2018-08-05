@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 - Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -43,46 +43,52 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-  A)
-    echo 'INFO - Selected: AllTube' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "quescheck=on cron=off display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  B)
-    echo 'INFO - Selected: Monitorr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  C)
-    display=NEXTCloud
-    program=nextcloud
-    port=4645
-    bash /opt/plexguide/menus/nextcloud/main.sh
-    dialog --infobox "Installing: $display" 3 30
-    sleep 2
-    clear
-    ansible-playbook /opt/plexguide/pg.yml --tags nextcloud
-    echo "" && read -n 1 -s -r -p "Press any key to continue"
-    echo "$program" > /tmp/program
-    echo "$program" > /tmp/program_var
-    echo "$port" > /tmp/port
-    bash /opt/plexguide/menus/programs/ending.sh ;;
-  D)
-    echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  E)
-    echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  F)
-    echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  G)
-    echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "quescheck=on cron=on display=on"
-    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  Z)
-    exit 0 ;;
-esac
+        A)
+            echo 'INFO - Selected: AllTube' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags alltube --extra-vars "quescheck=on cron=off display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        B)
+            echo 'INFO - Selected: Monitorr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+            ;;
+        C)
+            display=NEXTCloud
+            program=nextcloud
+            port=4645
+            bash /opt/plexguide/menus/nextcloud/main.sh
+            dialog --infobox "Installing: $display" 3 30
+            sleep 2
+            clear
+            ansible-playbook /opt/plexguide/pg.yml --tags nextcloud
+            echo "" && read -n 1 -s -r -p "Press any key to continue"
+
+            echo "$program" > /tmp/program
+            echo "$program" > /tmp/program_var
+            echo "$port" > /tmp/port
+
+            bash /opt/plexguide/menus/programs/ending.sh ;;
+
+        D)
+            echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+        E)
+            echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+        F)
+            echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+        G)
+            echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "quescheck=on cron=on display=on"
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+        Z)
+            exit 0 ;;
+    esac
+
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/support.sh

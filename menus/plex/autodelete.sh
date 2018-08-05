@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -17,6 +17,7 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
+
 HEIGHT=7
 WIDTH=40
 CHOICE_HEIGHT=3
@@ -37,9 +38,13 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-  A)
-    echo "YES" > /var/plexguide/dupe.delete ;;
-  B)
-    echo "NO" > /var/plexguide/dupe.delete ;;
+        A)
+            echo "YES" > /var/plexguide/dupe.delete
+            ;;
+
+        B)
+            echo "NO" > /var/plexguide/dupe.delete
+            ;;
+
 ########## Deploy End
 esac
