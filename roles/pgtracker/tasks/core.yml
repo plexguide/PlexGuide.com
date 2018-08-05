@@ -41,6 +41,38 @@
     dest: /opt/appdata/{{pgrole}}/config.php
     mode: 0755
 
+- name: "Getting Sonarr API Key"
+  shell: cat /opt/appdata/sonarr/config.xml | grep -o -P '(?<=<ApiKey>).*(?=</ApiKey>)'
+  register: SONARRAPI
+
+- name: "Getting Radarr API Key"
+  shell: cat /opt/appdata/radarr/config.xml | grep -o -P '(?<=<ApiKey>).*(?=</ApiKey>)'
+  register: RADARRAPI
+
+- name: "Replacing config value for Domain"
+  replace:
+    path: /opt/appdata/{{pgrole}}/config.php
+    regexp: 'DOMAIN'
+    replace: "{{domain.stdout}}"
+
+- name: "Replacing config value for SiteName"
+  replace:
+    path: /opt/appdata/{{pgrole}}/config.php
+    regexp: 'SITENAME'
+    replace: "{{domain.stdout}}"
+
+- name: "Replacing config value for Sonarr API"
+  replace:
+    path: /opt/appdata/{{pgrole}}/config.php
+    regexp: 'SONARRAPI'
+    replace: "{{SONARRAPI}}"
+
+- name: "Replacing config value for Radarr API"
+  replace:
+    path: /opt/appdata/{{pgrole}}/config.php
+    regexp: 'RADARRAPI'
+    replace: "{{RADARRAPI}}"
+
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
