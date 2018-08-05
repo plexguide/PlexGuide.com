@@ -28,10 +28,12 @@
 
 ### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
-    when: subdomain == ""
+    when:
+      - subdomain == ""
 
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{subdomain}}.{{domain.stdout}}"
-    when: subdomain !== ""
+    when:
+      - subdomain != ""
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
     when:
