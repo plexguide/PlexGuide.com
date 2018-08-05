@@ -21,9 +21,9 @@ echo 'INFO - @Main Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide
 # This takes .yml file and converts it to bash readable format
 sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
 
-HEIGHT=20
+HEIGHT=19
 WIDTH=26
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=13
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="PG Application Suite"
 
