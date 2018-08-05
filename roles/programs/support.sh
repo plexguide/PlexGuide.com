@@ -31,10 +31,8 @@ OPTIONS=(A "AllTube"
          C "NextCloud"
          D "Now Showing"
          E "Ombi"
-         F "Resilio"
-         G "Tautulli (PlexPy)"
-         H "The Lounge"
-         I "Syncthing"
+         F "Tautulli (PlexPy)"
+         G "The Lounge"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -70,38 +68,24 @@ case $CHOICE in
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
 
-            bash /opt/plexguide/menus/programs/ending.sh
-            ;;
+            bash /opt/plexguide/menus/programs/ending.sh ;;
+
         D)
             echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
         E)
             echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
         F)
-            echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        G)
             echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        H)
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+        G)
             echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        I)
-            echo 'INFO - Selected: Syncthing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags syncthing --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
+            echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
         Z)
             exit 0 ;;
     esac

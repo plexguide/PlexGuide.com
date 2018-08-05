@@ -1,6 +1,0 @@
-#!/bin/bash
-
-##Stop all docker containers##
-
-docker stop $(docker ps -a)
-exit

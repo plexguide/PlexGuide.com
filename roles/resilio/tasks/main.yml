@@ -16,38 +16,27 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-
-- include_role:
-    name: pgmstart
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
 - name: Deploy Resilio Container
   docker_container:
-    name: "{{role_name}}"
-    image: "linuxserver/resilio-sync"
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-      - "55555:55555"
-    volumes:
-      - "/opt/appdata/{{role_name}}:/config"
-      - "{{path.stdout}}:/sync"
-      - "/etc/localtime:/etc/localtime:ro"
-    cpu_shares: 256
-    env:
-      PUID: 1000
-      PGID: 1000
+      - "{{ports.stdout}}{{extport2}}:{{intport2}}"
+    volumes: "{{default_volumes}}"
+    cpu_shares: 128
+    env: "{{default_env}}"
     networks:
       - name: plexguide
         aliases:
           - "{{role_name}}"
     restart_policy: always
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend
