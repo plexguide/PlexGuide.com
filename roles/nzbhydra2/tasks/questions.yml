@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- pause:
+    prompt: "\nType Image # for NZBHydra2\n1- linuxserver/hydra2 (Recommended)\n2- hotio/nzbhydra2 (Space Saver)\n3- theotherp/nzbhydra2"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
+
+- name: Set linuxserver/hydra2
+  set_fact:
+    image: "linuxserver/hydra2"
+    extra: ""
+  when: result.user_input == "1"
+
+- name: Hotio/Suitarr
+  set_fact:
+    image: "hotio/suitarr:nzbhydra2"
+    extra: "/NZBHydra2"
+  when: result.user_input == "2"
+
+- name: Set theotherp/nzbhydra2
+  set_fact:
+    image: "theotherp/nzbhydra2"
+    extra: ""
+  when: result.user_input == "3"

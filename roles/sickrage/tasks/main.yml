@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,62 +16,26 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: pgmstart
-
-- pause:
-    prompt: "\nType Image # for Sonarr\n1- linuxserver/sickrage (Recommended)\n2- sickrage/sickrage"
-  register: result
-  until: result.user_input > "0" and result.user_input < "4"
-  retries: 5
-  delay: 1
-
-- name: Set linuxserver/sickrage
-  set_fact: 
-    image: "linuxserver/sickrage"
-    extra: ""
-  when: result.user_input == "1"
-
-- name: sickrage/sickrage
-  set_fact: 
-    image: "sickrage:sickrage"
-  when: result.user_input == "2"
-
-- name: Create Sickrage Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - "{{path.stdout}}/{{role_name}}"
-    - "{{path.stdout}}/{{role_name}}/downloads"
-
-- name: Deploy Sickrage Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: "{{role_name}}"
-    image: "linuxserver/{{role_name}}"
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
+    cpu_shares: 256
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes:
-      - /opt/appdata/{{role_name}}:/config
-      - /opt/appdata/{{role_name}}/scripts:/scripts
-      - "{{path.stdout}}/{{role_name}}/downloads:/downloads"
-      - /mnt/unionfs/:/tv
-    cpu_shares: 256
-    env:
-      PUID: 1000
-      PGID: 1000
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend
