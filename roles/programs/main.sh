@@ -34,10 +34,11 @@ OPTIONS=(A "Media Servers"
          E "Supporting"
          F "UI Organziers"
          G "Tools"
-         H "Critical"
-         I "4K Versions"
-         J "Beta"
-         K "WordPress"
+         H "Backups"
+         I "Critical"
+         J "4K Versions"
+         K "Beta"
+         L "WordPress"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -72,15 +73,18 @@ echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /op
 echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/tools.sh ;;
         H)
+echo "INFO - Selected Backups Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            bash /opt/plexguide/roles/programs/backups.sh ;;
+        I)
 echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/critical.sh ;;
-        I)
+        J)
 echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/versions4k.sh ;;
-        J)
+        K)
 echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/roles/programs/beta.sh ;;
-        K)
+        L)
 echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/wordpress/main.sh ;;
         Z)
