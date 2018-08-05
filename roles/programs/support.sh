@@ -33,7 +33,7 @@ OPTIONS=(A "AllTube"
          E "Ombi"
          F "Tautulli (PlexPy)"
          G "The Lounge"
-		     H "PGTracker"
+         H "PGTracker"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
