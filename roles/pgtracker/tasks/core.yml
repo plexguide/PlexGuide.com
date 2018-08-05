@@ -39,7 +39,7 @@
   get_url:
     url: https://raw.githubusercontent.com/physk/sonarr-radarr-tracker/master/src/config/config.php
     dest: /opt/appdata/{{pgrole}}/config.php
-    mode: 0440
+    mode: 0755
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
