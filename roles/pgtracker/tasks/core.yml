@@ -73,6 +73,13 @@
     regexp: 'RADARRAPI'
     replace: "{{RADARRAPI.stdout}}"
 
+- name: "Setting owner of config file"
+  file:
+    path: /opt/appdata/{{pgrole}}/config.php
+    owner: 1000
+    group: 1000
+    mode: 0755
+    
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
