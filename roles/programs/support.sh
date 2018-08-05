@@ -33,7 +33,7 @@ OPTIONS=(A "AllTube"
          E "Ombi"
          F "Tautulli (PlexPy)"
          G "The Lounge"
-		 H "PGTracker"
+		     H "PGTracker"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -83,7 +83,7 @@ case $CHOICE in
     clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   H)
-	  echo 'INFO - Selected: PGTracker' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: PGTracker' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags pgtracker --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   Z)
