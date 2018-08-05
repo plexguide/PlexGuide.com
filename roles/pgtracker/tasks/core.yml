@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "80"
-    extport: "80"
+    extport: "5566"
     pgrole: "{{role_name}}"
     image: "physk/sonarr-radarr-tracker"
 
