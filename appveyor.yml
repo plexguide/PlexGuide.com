@@ -60,7 +60,7 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags syncthing
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bitwarden
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge #
+#  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge # (BUGGED)
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jdownloader2 #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lidarr #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags medusa #
