@@ -19,7 +19,7 @@
 - name: Launch Core Task
   include_tasks: "core.yml"
 
-- name: Deploy {{pgrole}} Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
     name: "{{pgrole}}"
     image: "{{image}}"

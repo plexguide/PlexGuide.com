@@ -47,7 +47,7 @@
     name: "{{pgrole}}"
     state: absent
 
-- name: Deploy {{pgrole}} Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
     name: "{{pgrole}}"
     image: "{{image}}"
