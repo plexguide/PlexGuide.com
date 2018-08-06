@@ -1,9 +1,9 @@
- #!/bin/bash
+#!/bin/bash
 #
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,41 +16,26 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: variables
-    
-- name: Remove pyLoad Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: pyload
-    state: absent
-
-- name: Deploy pyLoad Container
-  docker_container:
-    name: pyload
-    image: writl/pyload:latest
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 128
     published_ports:
-      - "{{ports.stdout}}8000:8000"
-    command: "/run.sh"
-    env:
-      UID: "1000"
-      GID: "1000"
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - pyload
-    volumes:
-      - /opt/appdata/pyload:/opt/pyload/pyload-config
-      - "{{path.stdout}}/pyload/downloads:/opt/pyload/Downloads"
-      - /etc/localtime:/etc/localtime:ro
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:pyload.{{domain.stdout}}"
-      traefik.port: "8000"
+    labels: "{{default_labels}}"
+
+- include_role:
+    name: pgmend

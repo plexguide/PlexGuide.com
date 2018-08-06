@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- name: "Establish Key Variables"
+  set_fact:
+    intport: "6878"
+    extport: "6878"
+    pgrole: "{{role_name}}"
+    image: "ninthwalker/nowshowing:v2"
+
+- name: "Key Variables Recall"
+  include_role:
+    name: "pgmstart"
+    tasks_from: "keyvar.yml"
+############################################################# (KEY END)
+#
+############################################################# (BASICS START)
+
+- name: "Create {{pgrole}} script directories"
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  with_items:
+    - /opt/appdata/{{pgrole}}
+
+############################################################# (BASICS END)
+- name: "Set Default Volume - {{pgrole}}"
+  set_fact:
+    default_volumes:
+      - "/opt/appdata/{{role_name}}:/config"
+      - "/etc/localtime:/etc/localtime:ro"
+
+- name: "Establish Key Variables - {{pgrole}}"
+  set_fact:
+    default_env:
+      UID: "1000"
+      GID: "1000"
+
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.port: "{{intport}}"
+
+######################## Deploy PGMSTART
+- include_role:
+    name: "pgmstart"

@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq & FlickerRate & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,73 +16,26 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: pgmstart
-
-- pause:
-    prompt: "\nType Image # for {{role_name}}\n1- linuxserver/ombi (Recommended)\n2- lsiodev/ombi-preview (Developer)"
-  register: result
-  until: result.user_input > "0" and result.user_input < "4"
-  retries: 5
-  delay: 1
-
-- name: Set linuxserver/ombi
-  set_fact:
-    image: "linuxserver/ombi"
-  when: result.user_input == "1"
-
-- name: Set lsiodev/ombi-preview
-  set_fact:
-    image: "lsiodev/ombi-preview"
-  when: result.user_input == "2"
-- name: Create Basic Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - /opt/appdata/{{role_name}}
-
-- name: Check JSON exists
-  stat:
-    path: "/opt/appdata/{{role_name}}/appsettings.json"
-  register: jsonfile
-
-- name: Download {{role_name}} appsettings.json config file
-  get_url:
-    url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
-    dest: /opt/appdata/{{role_name}}/appsettings.json
-    owner: 1000
-    group: 1000
-    force: no
-  ignore_errors: True
-  when: jsonfile.stat.exists == False
-
-- name: Deploy {{role_name}} Container
+- name: Deploy {{pgrole}} Container
   docker_container:
-    name: "{{role_name}}"
+    name: "{{pgrole}}"
     image: "{{image}}"
     pull: yes
     cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-      - /opt/appdata/{{role_name}}:/config
-      - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/{{role_name}}/appsettings.json:/opt/{{role_name}}/appsettings.json
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend

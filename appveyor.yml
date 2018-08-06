@@ -24,10 +24,9 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
 
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
 
@@ -46,18 +45,34 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jackett
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags organizrv2
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi4k #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags organizr #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags organizrv2 #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags plex
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr4k #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags tautulli
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags duplicati
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags syncthing
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bitwarden
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jdownloader2 #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lidarr #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags medusa #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags monitorr #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags muximux #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags mylar #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2 #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sickrage #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags speedtest #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags synclounge #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags thelounge #
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ubooquity #
 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
