@@ -34,10 +34,9 @@
 #
 ############################################################# (BASICS START)
 
-- name: "Create {{pgrole}} script directories"
+- name: "Create {{pgrole}} directories"
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - "{{path.stdout}}/{{pgrole}}"
     - "/opt/appdata/{{pgrole}}"
 
 ############################################################# (BASICS END)
