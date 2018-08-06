@@ -20,7 +20,7 @@
     intport: "19999"
     extport: "19999"
     pgrole: "{{role_name}}"
-    image: "titpetric/netdata"
+    image: "firehol/netdata"
 
 - name: "Key Variables Recall"
   include_role:
