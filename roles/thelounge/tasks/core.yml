@@ -17,8 +17,8 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "2202"
-    extport: "2202"
+    intport: "9000"
+    extport: "9100"
     pgrole: "{{role_name}}"
     image: "linuxserver/thelounge"
 
