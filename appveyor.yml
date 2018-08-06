@@ -24,6 +24,9 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
 
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge # (BUGGED)
+  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jdownloader2 #
+
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload #
@@ -60,8 +63,8 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags syncthing
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bitwarden
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge # (BUGGED)
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jdownloader2 #
+#  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge # (BUGGED)
+#  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jdownloader2 #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lidarr #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags medusa #
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags monitorr #
