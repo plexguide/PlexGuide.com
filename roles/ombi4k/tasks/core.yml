@@ -32,7 +32,7 @@
 - name: Create Basic Directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
-    - /opt/appdata/{{pgrole}}
+    - "/opt/appdata/{{pgrole}}"
 
 - name: Check JSON exists
   stat:
@@ -54,7 +54,7 @@
     default_volumes:
       - "/opt/appdata/{{pgrole}}:/config"
       - "/etc/localtime:/etc/localtime:ro"
-      - /opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json"
+      - "/opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
