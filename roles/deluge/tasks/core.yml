@@ -43,12 +43,12 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{pgrole}}:/config
-      - /mnt/unionfs:/unionfs
-      - {{path.stdout}}/deluge/temp:/temp
-      - {{path.stdout}}/deluge/downloaded:/downloaded
-      - {{path.stdout}}/deluge/torrent:/torrent
-      - /etc/localtime:/etc/localtime:ro
+      - "/opt/appdata/{{pgrole}}:/config"
+      - "/mnt/unionfs:/unionfs"
+      - "{{path.stdout}}/deluge/temp:/temp"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/deluge/torrent:/torrent"
+      - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
