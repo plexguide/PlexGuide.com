@@ -83,7 +83,7 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{pgrole}}:/var/www/html/config
+      - "/opt/appdata/{{pgrole}}:/var/www/html/config"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
