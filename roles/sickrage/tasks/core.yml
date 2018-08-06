@@ -40,8 +40,8 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{pgrole}}:/config
-      - /opt/appdata/{{pgrole}}/scripts:/scripts
+      - "/opt/appdata/{{pgrole}}:/config"
+      - "/opt/appdata/{{pgrole}}/scripts:/scripts"
       - "{{path.stdout}}/{{pgrole}}/downloads:/downloads"
       - /mnt/unionfs/:/tv
 
