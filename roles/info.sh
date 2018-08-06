@@ -17,12 +17,12 @@
 #################################################################################
 #### PG VARIBLES
 echo "6.027 EDGE" > /var/plexguide/pg.version
-echo "133" > /var/plexguide/pg.preinstall
+echo "134" > /var/plexguide/pg.preinstall
 
 #### Installer
 echo "5" > /var/plexguide/pg.ansible
 echo "2" > /var/plexguide/pg.rclone
-echo "1" > /var/plexguide/pg.python
+echo "2" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.label
