@@ -49,10 +49,6 @@
   shell: "cat /tmp/program_var"
   register: program_final
 
-### TEST
-#- set_fact:
-#    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
-
 - debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
 
 - name: "Checking {{program_final.stdout}} location in APPDATA"
