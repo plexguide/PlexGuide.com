@@ -35,13 +35,13 @@
     - /opt/appdata/{{pgrole}}
     - /opt/appdata/{{pgrole}}/config
     - /opt/appdata/{{pgrole}}/storage
-    - {{path.stdout}}/jdownloader/
+    - "{{path.stdout}}/jdownloader"
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
       - /opt/appdata/{{pgrole}}/config:/config
-      - {{path.stdout}}/jdownloader:/output
+      - "{{path.stdout}}/jdownloader:/output"
       - /opt/appdata/{{pgrole}}/storage:/storage
 
 - name: "Establish Key Variables - {{pgrole}}"
