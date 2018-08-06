@@ -17,10 +17,14 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "5800"
-    extport: "5800"
+    intport: "8112"
+    extport: "8112"
+    intport2: "58846"
+    extport2: "58846"
+    intport3: "58946"
+    extport3: "58946"
     pgrole: "{{role_name}}"
-    image: "jlesage/jdownloader-2"
+    image: "binhex/arch-deluge"
 
 - name: "Key Variables Recall"
   include_role:
@@ -32,17 +36,19 @@
 - name: Create {{pgrole}} directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
+    - {{path.stdout}}/{{pgrole}}
     - /opt/appdata/{{pgrole}}
-    - /opt/appdata/{{pgrole}}/config
-    - /opt/appdata/{{pgrole}}/storage
-    - {{path.stdout}}/jdownloader
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /opt/appdata/{{pgrole}}/config:/config
-      - {{path.stdout}}/jdownloader:/output
-      - /opt/appdata/{{pgrole}}/storage:/storage
+      - "/opt/appdata/{{pgrole}}:/config"
+      - "/mnt/unionfs:/unionfs"
+      - "{{path.stdout}}/deluge/temp:/temp"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/deluge/torrent:/torrent"
+      - "{{path.stdout}}/deluge/torrent:/watch"
+      - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
@@ -55,7 +61,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:download.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART
