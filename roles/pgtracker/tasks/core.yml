@@ -33,7 +33,7 @@
 - name: "Create {{pgrole}} script directories"
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/appdata/{{pgrole}}
+    - "/opt/appdata/{{pgrole}}"
 
 - name: "Download Config File from Github"
   get_url:
@@ -51,25 +51,25 @@
 
 - name: "Replacing config value for Domain"
   replace:
-    path: /opt/appdata/{{pgrole}}/config.php
+    path: "/opt/appdata/{{pgrole}}/config.php"
     regexp: 'DOMAIN'
     replace: "{{domain.stdout}}"
 
 - name: "Replacing config value for SiteName"
   replace:
-    path: /opt/appdata/{{pgrole}}/config.php
+    path: "/opt/appdata/{{pgrole}}/config.php"
     regexp: 'SITENAME'
     replace: "{{domain.stdout}}"
 
 - name: "Replacing config value for Sonarr API"
   replace:
-    path: /opt/appdata/{{pgrole}}/config.php
+    path: "/opt/appdata/{{pgrole}}/config.php"
     regexp: 'SONARRAPI'
     replace: "{{SONARRAPI.stdout}}"
 
 - name: "Replacing config value for Radarr API"
   replace:
-    path: /opt/appdata/{{pgrole}}/config.php
+    path: "/opt/appdata/{{pgrole}}/config.php"
     regexp: 'RADARRAPI'
     replace: "{{RADARRAPI.stdout}}"
 
