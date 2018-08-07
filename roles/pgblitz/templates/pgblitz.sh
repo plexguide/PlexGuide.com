@@ -36,30 +36,30 @@ do
         #if files are found loop though and upload
         for i in "${files[@]}"
         do
+            #if file is in fileLock skip
+            if [`cat /tmp/fileLock | grep $i`]; then
+                continue
+            fi
             #Run upload script demonised
-            echo "/opt/plexguide/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &"
+            echo "/opt/plexguide/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &"
             PID=$!
 
             #get basename of file
-            fileBase=`basename $i`
+            fileBase=`basename \"$i\"`
 
             #some logging
             echo $PID >> /opt/appdata/pgblitz/pid/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
             echo "INFO - Started upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            echo "$GDSAUSE"
             #increase or reset $GDSAUSE
             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
                 GDSAUSE=0
             else
                 GDSAUSE=`expr $GDSAUSE + 1`
             fi
-            echo "$GDSAUSE"
         done
         echo "INFO - Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        echo "INFO - Finished looking for files, sleeping 20 secs" #debug
     else
         echo "INFO - Nothing to upload, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        echo "INFO - Nothing to upload, sleeping 20 secs" #debug
     fi
     sleep 20
 done
