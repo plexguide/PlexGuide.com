@@ -1,3 +1,4 @@
+{% raw %}
 #!/bin/bash
 ##
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
@@ -38,3 +39,4 @@ echo "[PGBlitz] $file Moved" > /var/plexguide/pg.log && bash /opt/plexguide/role
 
 #remove file lock
 sed 's/$file//g' /tmp/fileLock
+{% endraw %}
