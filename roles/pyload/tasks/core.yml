@@ -17,8 +17,10 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "80"
+    intport: "8000"
     extport: "2938"
+    intport2: "7227"
+    extport2: "7227"
     pgrole: "{{role_name}}"
     image: "writl/pyload"
 
