@@ -31,7 +31,7 @@ echo "[PGBlitz] Moving $FILE to GDSA folder: $GDSA" >> /var/plexguide/pg.log && 
 # add to file lock to stop another process being spawned while file is moving
 echo $FILE >> /tmp/fileLock
 
-rclone move $downloadpath/move/ $downloadpath/pgblitz/$GDSA/ \
+rclone move $FILE $downloadpath/pgblitz/$GDSA/$FILEDIR/$FILEBASE \
     --exclude="**partial~" --exclude="**_HIDDEN~" \
     --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
 
