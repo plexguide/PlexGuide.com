@@ -31,7 +31,7 @@
   with_items:
     - /opt/appdata/{{role_name}}
 
-- name:Create deluge configuration files
+- name: Create deluge configuration files
   template:
     src: "templates/{{item}}.j2"
     dest: "/opt/appdata/{{role_name}}/{{item}}"
