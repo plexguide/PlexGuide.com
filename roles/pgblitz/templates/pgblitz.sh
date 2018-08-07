@@ -21,7 +21,7 @@ sleep 10
 path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
 mkdir -p /opt/appdata/pgblitz/logs/
-touch /tmp/fileLock
+echo "" > /tmp/fileLock
 
 #### Generates the GDSA List from the Processed Keys
 GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
@@ -35,21 +35,24 @@ do
         #if files are found loop though and upload
         for i in "${files[@]}"
         do
+            FILESTERL=${i// /\\ }
             #if file is in fileLock skip
-            if `cat /tmp/fileLock | grep $i` ; then
+            if `cat /tmp/fileLock | grep $FILESTERL` ; then
                 continue
             fi
+            
+            echo "INFO - Starting upload of $i - PID: ${PID}" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #Run upload script demonised
-            /opt/appdata/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &
+            /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
             echo "/opt/appdata/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &"
             PID=$!
 
             #get basename of file
-            fileBase=`basename \"$i\"`
+            fileBase=`basename $FILESTERL`
 
             #some logging
             echo $PID >> /opt/appdata/pgblitz/pid/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
-            echo "INFO - Started upload of $i - PID: ${PID}" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            
             #increase or reset $GDSAUSE
             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
                 GDSAUSE=0

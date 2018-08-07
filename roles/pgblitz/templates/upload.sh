@@ -19,24 +19,24 @@ downloadpath=$(cat /var/plexguide/server.hd.path)
 FILE=$1
 GDSA=$2
 
-echo "[PGBlitz] Upload started for $FILE using $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] Upload started for $FILE using $GDSA" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 FILESTER="$(echo $FILE | sed 's/\'$downloadpath'\/move//g')"
-FILEBASE=`basname $FILE`
+FILEBASE=`basename $FILE`
 FILEDIR=`$(echo $FILE | sed 's/\'$FILEBASE'\//g')`
 
 mkdir -p $downloadpath/pgblitz/$GDSA
-echo "[PGBlitz] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] Moving $FILE to GDSA folder: $GDSA" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 # add to file lock to stop another process being spawned while file is moving
 echo $FILE >> /tmp/fileLock
 
-#rclone move $downloadpath/move/ $downloadpath/pgblitz/$GDSA/ \
-#    --exclude="**partial~" --exclude="**_HIDDEN~" \
-#    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
+rclone move $downloadpath/move/ $downloadpath/pgblitz/$GDSA/ \
+    --exclude="**partial~" --exclude="**_HIDDEN~" \
+    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
 
 echo "[PGBlitz] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #remove file lock
-sed 's/\'$FILE'//g' /tmp/fileLock
+sed "s/\$FILE//g" /tmp/fileLock
 {% endraw %}
