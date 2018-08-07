@@ -37,15 +37,15 @@ do
         for i in "${#files[@]}"
         do
             #Run upload script demonised
-            echo '/opt/plexguide/pgblitz/upload.sh "${files[${i}]}" "${GDSAARRAY[${GDSAUSE}]}" &'
+            echo '/opt/plexguide/pgblitz/upload.sh "$i" "${GDSAARRAY[${GDSAUSE}]}" &'
             PID=$!
 
             #get basename of file
-            fileBase=`basename ${files[${i}]}`
+            fileBase=`basename $i`
 
             #some logging
             echo $PID >> /opt/appdata/pgblitz/pid/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
-            echo "INFO - Started upload of ${files[${i}} - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            echo "INFO - Started upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #increase or reset $GDSAUSE
             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
