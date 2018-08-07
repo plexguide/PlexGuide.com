@@ -33,12 +33,14 @@
       path: /opt/appdata/pgblitz/pgblitz.sh
       permissions: x
       state: present
+      etype: user
 
   - name: chmod upload.sh
     acl:
       path: /opt/appdata/pgblitz/upload.sh
       permissions: x
       state: present
+      etype: user
 
 
 
