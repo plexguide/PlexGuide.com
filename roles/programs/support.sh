@@ -28,12 +28,11 @@ TITLE="Applications - PG Supporting"
 
 OPTIONS=(A "AllTube"
          B "Monitorr"
-         C "NextCloud"
-         D "Now Showing"
-         E "Ombi"
-         F "Tautulli (PlexPy)"
-         G "The Lounge"
-         H "PGTracker"
+         C "Now Showing"
+         D "Ombi"
+         E "Tautulli (PlexPy)"
+         F "The Lounge"
+         G "PGTracker"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -53,36 +52,22 @@ case $CHOICE in
     clear && ansible-playbook /opt/plexguide/pg.yml --tags monitorr --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   C)
-    display=NEXTCloud
-    program=nextcloud
-    port=4645
-    bash /opt/plexguide/menus/nextcloud/main.sh
-    dialog --infobox "Installing: $display" 3 30
-    sleep 2
-    clear
-    ansible-playbook /opt/plexguide/pg.yml --tags nextcloud
-    echo "" && read -n 1 -s -r -p "Press any key to continue"
-    echo "$program" > /tmp/program
-    echo "$program" > /tmp/program_var
-    echo "$port" > /tmp/port
-    bash /opt/plexguide/menus/programs/ending.sh ;;
-  D)
     echo 'INFO - Selected: NowShowing' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags nowshowing --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  E)
+  D)
     echo 'INFO - Selected: Ombi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  F)
+  E)
     echo 'INFO - Selected: Tautulli' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags tautulli --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  G)
+  F)
     echo 'INFO - Selected: The Lounge' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags thelounge --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  H)
+  G)
     echo 'INFO - Selected: PGTracker' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags pgtracker --extra-vars "quescheck=off cron=off display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
