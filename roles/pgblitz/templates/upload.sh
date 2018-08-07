@@ -26,17 +26,17 @@ FILEBASE=`basname $FILE`
 FILEDIR=`$(echo $FILE | sed 's/\'$FILEBASE'\//g')`
 
 mkdir -p $downloadpath/pgblitz/$GDSA
-echo "[PGBlitz] Moving $file to GDSA folder: $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 # add to file lock to stop another process being spawned while file is moving
-echo $file >> /tmp/fileLock
+echo $FILE >> /tmp/fileLock
 
 #rclone move $downloadpath/move/ $downloadpath/pgblitz/$GDSA/ \
 #    --exclude="**partial~" --exclude="**_HIDDEN~" \
 #    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
 
-echo "[PGBlitz] $file Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #remove file lock
-sed 's/$file//g' /tmp/fileLock
+sed 's/$FILE//g' /tmp/fileLock
 {% endraw %}
