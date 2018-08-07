@@ -20,7 +20,7 @@ echo 'INFO - @Main Backup Program Menu' > /var/plexguide/pg.log && bash /opt/ple
 
  HEIGHT=11
  WIDTH=38
- CHOICE_HEIGHT=7
+ CHOICE_HEIGHT=8
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Backup Programs"
 
