@@ -18,7 +18,7 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Main Backup Program Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
- HEIGHT=11
+ HEIGHT=12
  WIDTH=38
  CHOICE_HEIGHT=8
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
