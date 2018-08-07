@@ -21,6 +21,7 @@ sleep 10
 path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
 mkdir -p /opt/appdata/pgblitz/logs/
+touch /tmp/fileLock
 
 #### Generates the GDSA List from the Processed Keys
 GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
@@ -39,7 +40,8 @@ do
                 continue
             fi
             #Run upload script demonised
-            /opt/plexguide/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &
+            /opt/appdata/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &
+            echo "/opt/appdata/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &"
             PID=$!
 
             #get basename of file

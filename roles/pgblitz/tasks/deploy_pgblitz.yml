@@ -28,6 +28,20 @@
       dest: /opt/appdata/pgblitz/upload.sh
       force: yes
 
+  - name: chmod pgblitz.sh
+    acl:
+      path: /opt/appdata/pgblitz/pgblitz.sh
+      permissions: x
+      state: present
+
+  - name: chmod upload.sh
+    acl:
+      path: /opt/appdata/pgblitz/upload.sh
+      permissions: x
+      state: present
+
+
+
   - name: Install pgblitz Service
     template:
       src: pgblitz.service
