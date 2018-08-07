@@ -20,7 +20,7 @@
     intport: "80"
     extport: "2938"
     pgrole: "{{role_name}}"
-    image: "tronyx/docker-organizr-v2"
+    image: "writl/pyload"
 
 - name: "Key Variables Recall"
   include_role:
@@ -48,7 +48,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},orgv2.{{domain.stdout}},{{tldset}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART
