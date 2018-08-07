@@ -18,8 +18,14 @@
 ---
   - name: Install pgblitz script
     template:
-      src: upload.sh
+      src: pgblitz.sh
       dest: /opt/appdata/pgblitz/pgblitz.sh
+      force: yes
+
+  - name: Install upload script
+    template:
+      src: upload.sh
+      dest: /opt/appdata/pgblitz/upload.sh
       force: yes
 
   - name: Install pgblitz Service
