@@ -19,7 +19,7 @@ export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
 HEIGHT=13
 WIDTH=40
-CHOICE_HEIGHT=6
+CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"

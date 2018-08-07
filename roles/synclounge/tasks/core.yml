@@ -44,13 +44,12 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:web.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
-      traefik.port: "{{intport}}"
-      traefik.s1.enable: "true"
-      traefik.s1.frontend.redirect.entryPoint: "https"
-      traefik.s1.frontend.rule: "Host:server.{{domain.stdout}}"
-      traefik.s1.port: "{{intport2}}"
+      traefik.web.frontend.redirect.entryPoint: "https"
+      traefik.web.frontend.rule: "Host:web.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.web.port: "{{intport}}"
+      traefik.server.frontend.redirect.entryPoint: "https"
+      traefik.server.frontend.rule: "Host:server.{{domain.stdout}}"
+      traefik.server.port: "{{intport2}}"
 
 ######################## Deploy PGMSTART
 - include_role:
