@@ -23,7 +23,7 @@ mkdir $downloadpath/move/tv 1>/dev/null 2>&1
 chown 1000:1000 -R $downloadpath/move/*
 
 #### Generates the GDSA List from the Processed Keys
-GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep GDSA`)
+GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
 GDSACOUNT=${#GDSAARRAY[@]}
 GDSAUSE=0
 while [ 1 ]
@@ -42,7 +42,7 @@ do
             fileBase=`basename ${files[${i}]}`
 
             #some logging
-            echo $PID >> /opt/appdata/pgblitz/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
+            echo $PID >> /opt/appdata/pgblitz/pid/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
             echo "INFO - Started upload of ${files[${i}} - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
             #increase or reset $GDSAUSE
