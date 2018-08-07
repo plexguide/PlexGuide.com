@@ -37,7 +37,7 @@ do
         for i in "${#files[@]}"
         do
             #Run upload script demonised
-            echo '/opt/plexguide/pgblitz/upload.sh "$i" "${GDSAARRAY[${GDSAUSE}]}" &'
+            echo '/opt/plexguide/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &'
             PID=$!
 
             #get basename of file
