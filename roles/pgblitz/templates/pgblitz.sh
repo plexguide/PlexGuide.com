@@ -37,7 +37,7 @@ do
         for i in "${files[@]}"
         do
             #if file is in fileLock skip
-            if [`cat /tmp/fileLock | grep $i`]; then
+            if `cat /tmp/fileLock | grep $i` ; then
                 continue
             fi
             #Run upload script demonised
