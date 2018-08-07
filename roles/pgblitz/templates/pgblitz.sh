@@ -26,7 +26,7 @@ chown 1000:1000 -R $downloadpath/move/*
 
 #### Generates the GDSA List from the Processed Keys
 GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
-GDSACOUNT=${#GDSAARRAY[@]}
+GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 GDSAUSE=0
 while [ 1 ]
 do
@@ -37,7 +37,7 @@ do
         for i in "${files[@]}"
         do
             #Run upload script demonised
-            echo '/opt/plexguide/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &'
+            echo "/opt/plexguide/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &"
             PID=$!
 
             #get basename of file
@@ -46,13 +46,14 @@ do
             #some logging
             echo $PID >> /opt/appdata/pgblitz/pid/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
             echo "INFO - Started upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
+            echo "$GDSAUSE"
             #increase or reset $GDSAUSE
             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
-                GSDAUSE=0
+                GDSAUSE=0
             else
                 GDSAUSE=`expr $GDSAUSE + 1`
             fi
+            echo "$GDSAUSE"
         done
         echo "INFO - Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         echo "INFO - Finished looking for files, sleeping 20 secs" #debug
