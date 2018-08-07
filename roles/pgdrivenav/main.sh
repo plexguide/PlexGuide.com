@@ -44,17 +44,15 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
-        echo "unencrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
-        bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
-        ;;
-        B)
-        echo "encrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
-        #### Halted, NOT READY
-      #  dialog --title "WARNING!" --msgbox "\nPGDrives Encrypted is Not Ready\n\nUse the PLEXDRIVE Traditional Method for Now" 0 0
-        ##recommend this forwards to another script/menu when it works
-        bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
-        exit
-        ;;
+  A)
+    echo "unencrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
+    bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh ;;
+  B)
+    echo "encrypted" > /var/plexguide/pgdrives_format 1>/dev/null 2>&1
+    #### Halted, NOT READY
+    #  dialog --title "WARNING!" --msgbox "\nPGDrives Encrypted is Not Ready\n\nUse the PLEXDRIVE Traditional Method for Now" 0 0
+    ##recommend this forwards to another script/menu when it works
+    bash /opt/plexguide/roles/pgdrivenav/encrypted.sh
+  exit ;;
 ########## Deploy End
 esac
