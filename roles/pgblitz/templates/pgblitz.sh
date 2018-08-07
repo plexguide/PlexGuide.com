@@ -55,8 +55,10 @@ do
             fi
         done
         echo "INFO - Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - Finished looking for files, sleeping 20 secs" #debug
     else
         echo "INFO - Nothing to upload, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - Nothing to upload, sleeping 20 secs" #debug
     fi
     sleep 20
 done
