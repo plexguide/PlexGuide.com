@@ -31,6 +31,36 @@
   with_items:
     - /opt/appdata/{{role_name}}
 
+- name:Create deluge configuration files
+  template:
+    src: "templates/{{item}}.j2"
+    dest: "/opt/appdata/{{role_name}}/{{item}}"
+    owner: 1000
+    group: 1000
+    mode: 0755
+    force: no
+  with_items:
+    - core.conf
+    - execute.conf
+    - autoremoveplus.conf
+
+- name: Create scripts directory with appropriate permissions
+  file:
+    path: "/opt/appdata/{{role_name}}/scripts"
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: 0755
+
+- name: Copy scripts into directory
+  copy:
+    src: scripts
+    dest: "/opt/appdata/{{role_name}}"
+    directory_mode: yes
+    owner: 1000
+    group: 1000
+    mode: 0755
+
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"

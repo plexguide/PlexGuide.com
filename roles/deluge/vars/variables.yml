@@ -18,4 +18,6 @@
 ---
 intport: "8112"
 extport: "8112"
+downloads: "/unionfs/downloaded"
+max_active_limit: "8"
 pgrole: "deluge"
