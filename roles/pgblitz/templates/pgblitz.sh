@@ -20,6 +20,8 @@ sleep 10
 path=/opt/appdata/pgblitz/keys
 mkdir $downloadpath/move/movies 1>/dev/null 2>&1
 mkdir $downloadpath/move/tv 1>/dev/null 2>&1
+mkdir -p /opt/appdata/pgblitz/pid/
+mkdir -p /opt/appdata/pgblitz/logs/
 chown 1000:1000 -R $downloadpath/move/*
 
 #### Generates the GDSA List from the Processed Keys
