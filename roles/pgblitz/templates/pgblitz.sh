@@ -41,7 +41,7 @@ do
                 continue
             fi
             #Run upload script demonised
-            echo "/opt/plexguide/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &"
+            /opt/plexguide/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &
             PID=$!
 
             #get basename of file
