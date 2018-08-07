@@ -38,5 +38,5 @@ echo $FILE >> /tmp/fileLock
 echo "[PGBlitz] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #remove file lock
-sed 's/$FILE//g' /tmp/fileLock
+sed 's/\'$FILE'//g' /tmp/fileLock
 {% endraw %}
