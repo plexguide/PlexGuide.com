@@ -20,7 +20,7 @@ echo 'INFO - @Main Backup Program Menu' > /var/plexguide/pg.log && bash /opt/ple
 
  HEIGHT=11
  WIDTH=38
- CHOICE_HEIGHT=6
+ CHOICE_HEIGHT=7
  BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
  TITLE="Applications - Backup Programs"
 
@@ -28,6 +28,7 @@ echo 'INFO - @Main Backup Program Menu' > /var/plexguide/pg.log && bash /opt/ple
           B "Duplicati"
           C "Syncthing"
           D "Resilio"
+          E "NextCloud"
           Z "Exit")
 
  CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -54,6 +55,20 @@ case $CHOICE in
     echo 'INFO - Selected: Resilio' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags resilio --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  E)
+    display=NEXTCloud
+    program=nextcloud
+    port=4645
+    bash /opt/plexguide/menus/nextcloud/main.sh
+    dialog --infobox "Installing: $display" 3 30
+    sleep 2
+    clear
+    ansible-playbook /opt/plexguide/pg.yml --tags nextcloud
+    echo "" && read -n 1 -s -r -p "Press any key to continue"
+    echo "$program" > /tmp/program
+    echo "$program" > /tmp/program_var
+    echo "$port" > /tmp/port
+    bash /opt/plexguide/menus/programs/ending.sh ;;
  Z)
    exit 0 ;;
 esac
