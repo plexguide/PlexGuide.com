@@ -35,17 +35,16 @@ do
         #if files are found loop though and upload
         for i in "${files[@]}"
         do
-            FILESTERL=$(printf '%q' "$i")
+            #FILESTERL=$(printf '%q' "$i")
             #if file has a lockfile skip
-            if [ -e $FILESTERL.lck ]; then
+            if [ -e ${i}.lck ]; then
                 echo "INFO - Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
-                echo "$FILESTERL.lck"
                 echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 #Run upload script demonised
                 /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
-                echo "/opt/appdata/pgblitz/upload.sh \"$FILESTERL\" ${GDSAARRAY[$GDSAUSE]} &"
+                echo "/opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &"
                 
                 #increase or reset $GDSAUSE
                 if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
