@@ -30,7 +30,8 @@ GDSAUSE=0
 while [ 1 ]
 do
     #Find files to transfer
-    files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -path '.unionfs-fuse/*' ! -path '.unionfs/*'`)
+    IFS=$'\n'
+    files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name "*.lck" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*'`)
     if [[ ${#files[@]} -gt 0 ]]; then
         #if files are found loop though and upload
         for i in "${files[@]}"
