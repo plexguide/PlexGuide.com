@@ -68,17 +68,11 @@ rclone moveto --tpslimit 6 --checkers=20 \
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 #waiting for file to become avalible from remote and then vfs/forget it
-while [ true ]
-do
-    if [ -e /mnt/unionfs/$FILEDIR/$FILEBASE ]; then
-        echo "[PGBlitz] [Upload] vfs/forgetting $FILEBASE/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        rclone rc vfs/forget file=$FILEDIR/$FILEBASE
+rclone rc vfs/forget file=$FILEDIR/$FILEBASE
+echo "[PGBlitz] [Upload] vfs/forgot $FILEBASE/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-        #update json file for PGBlitz GUI
-        echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
-        break
-    fi
-done
+#update json file for PGBlitz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 
 echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 #cleanup

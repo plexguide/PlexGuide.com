@@ -42,7 +42,7 @@ do
                 echo "[PGBlitz] Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
-                TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | wc -l`
+                TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     #Run upload script demonised
