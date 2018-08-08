@@ -25,6 +25,7 @@ FILESTER=`echo $FILE | sed 's/\'$downloadpath'\/move//g'`
 FILEBASE=`basename $FILE`
 FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
 
+JSONFILE=/opt/appdata/pgblitz/json/$FILEBASE.json
 echo "With /mnt/move Removed - $FILESTER"
 echo "Filename - $FILEBASE"
 echo "File DIR - $FILEDIR"
@@ -35,13 +36,55 @@ echo "[PGBlitz] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg.log && b
 # add to file lock to stop another process being spawned while file is moving
 echo "lock" > $FILE.lck
 
-echo "rclone move $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE"
-#rclone move $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE \
-#    --exclude="**partial~" --exclude="**_HIDDEN~" \
-#    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
+#create json file for PGbliz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"moving\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+rclone move $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE \
+    --exclude="**partial~" --exclude="**_HIDDEN~" \
+    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
 
 echo "[PGBlitz] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #remove file lock
-#rm -f $FILE.lck
+rm -f $FILE.lck
+
+#if using encrypted add -E to the end of $GDSA
+if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+    REMOTE=$GDSA-E
+else
+    REMOTE=$GDSA
+fi
+
+echo "[PGBlitz] Uploading $FILE to $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.json
+#update json file for PGBlitz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"$LOGFILE\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+rclone move --tpslimit 6 --checkers=20 \
+      --config /root/.config/rclone/rclone.conf \
+      --transfers=8 \
+      --log-file=$LOGFILE --log-level INFO --stats 10s \
+      --exclude="**partial~" --exclude="**_HIDDEN~" \
+      --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+      --drive-chunk-size=32M \
+      --delete-empty-src-dirs \
+      $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE $REMOTE:$FILEDIR/$FILEBASE
+
+#update json file for PGBlitz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+#waiting for file to become avalible from remote and then vfs/forget it
+while [ true ]
+do
+    if [ -e /mnt/unionfs/$FILEDIR/$FILEBASE ]; then
+        echo "[PGBlitz] vfs/forgetting $FILEBASE/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        rclone rc vfs/forget file=$FILEBASE/$FILEBASE
+
+        #update json file for PGBlitz GUI
+        echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+    fi
+done
+
+echo "[PGBlitz] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#cleanup
+rm -f $LOGFILE
+sleep 30
+rm -f $JSONFILE
 {% endraw %}

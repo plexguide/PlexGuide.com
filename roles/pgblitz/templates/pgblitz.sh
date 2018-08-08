@@ -19,7 +19,7 @@ downloadpath=$(cat /var/plexguide/server.hd.path)
 echo "INFO - PGBlitz Started for the First Time - 10 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 sleep 10
 path=/opt/appdata/pgblitz/keys
-mkdir -p /opt/appdata/pgblitz/pid/
+mkdir -p /opt/appdata/pgblitz/json/
 mkdir -p /opt/appdata/pgblitz/logs/
 
 #### Generates the GDSA List from the Processed Keys
