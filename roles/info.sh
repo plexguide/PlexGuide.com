@@ -16,7 +16,7 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.028 EDGE" > /var/plexguide/pg.version
+echo "6.027 v2" > /var/plexguide/pg.version
 echo "134" > /var/plexguide/pg.preinstall
 
 #### Installer
