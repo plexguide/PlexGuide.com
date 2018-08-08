@@ -21,7 +21,6 @@ sleep 10
 path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
 mkdir -p /opt/appdata/pgblitz/logs/
-echo "" > /tmp/fileLock
 
 #### Generates the GDSA List from the Processed Keys
 GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
@@ -38,14 +37,15 @@ do
         do
             FILESTERL=$(printf '%q' "$i")
             #if file is in fileLock skip
-            if [ -f "$i.lck" ] ; then
+            if [ -f "$FILESTERL.lck" ] ; then
+                echo "INFO - Lock File found for $i" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             fi
             
             echo "INFO - Starting upload of $i - PID: ${PID}" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #Run upload script demonised
             /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
-            echo "/opt/appdata/pgblitz/upload.sh \"$i\" ${GDSAARRAY[$GDSAUSE]} &"
+            echo "/opt/appdata/pgblitz/upload.sh \"$FILESTERL\" ${GDSAARRAY[$GDSAUSE]} &"
             PID=$!
 
             #get basename of file
