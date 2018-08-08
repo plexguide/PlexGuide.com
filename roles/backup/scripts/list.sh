@@ -27,3 +27,4 @@ sed -i -e "/portainer/d" /tmp/backup.list
 sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
 sed -i -e "/pgblitz/d" /tmp/backup.list
+sed -i -e "/cloudblitz/d" /tmp/backup.list
