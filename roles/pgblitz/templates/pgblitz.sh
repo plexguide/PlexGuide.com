@@ -40,19 +40,21 @@ do
             if [[ -f "$FILESTERL.lck" ]]; then
                 echo "INFO - Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
-            fi
-            
-            echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            #Run upload script demonised
-            /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
-            echo "/opt/appdata/pgblitz/upload.sh \"$FILESTERL\" ${GDSAARRAY[$GDSAUSE]} &"
-            
-            #increase or reset $GDSAUSE
-            if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
-                GDSAUSE=0
             else
-                GDSAUSE=`expr $GDSAUSE + 1`
+                echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                #Run upload script demonised
+                /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
+                echo "/opt/appdata/pgblitz/upload.sh \"$FILESTERL\" ${GDSAARRAY[$GDSAUSE]} &"
+                
+                #increase or reset $GDSAUSE
+                if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
+                    GDSAUSE=0
+                else
+                    GDSAUSE=`expr $GDSAUSE + 1`
+                fi
             fi
+            
+            
         done
         echo "INFO - Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
