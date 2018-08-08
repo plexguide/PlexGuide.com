@@ -66,10 +66,11 @@ echo "Waiting 4 Seconds"
 sleep 3.5
 
 rclone lsf  --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ >> /tmp/testbaby.sh
+GDSATEST:plexguide/checks/ 2> /var/plexguide/validation.checker
 
+error=$(grep -o -P "error" /var/plexguide/validation.checker)
 
-  if [ "$p" == "$checker" ]; then
+  if [ "$error" != "error" ]; then
       GREEN='\033[0;32m'
       NC='\033[0m'
       echo -e "JSON: $checker - ${GREEN}VALID${NC}"
