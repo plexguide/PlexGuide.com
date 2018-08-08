@@ -36,8 +36,8 @@
 - name: Create {{pgrole}} directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - {{path.stdout}}/{{role_name}}
-    - /opt/appdata/{{role_name}}
+    - "{{path.stdout}}/{{role_name}}"
+    - "/opt/appdata/{{role_name}}"
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
