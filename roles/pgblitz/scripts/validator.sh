@@ -65,9 +65,14 @@ rclone move --tpslimit 6 --checkers=20 \
 echo "Waiting 3 Seconds"
 sleep 3
 
+break="off"
+time=0
+while [ $time -lt 10 ] || [ $break == "off"]; do
 rclone lsf  --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/$p 2> /var/plexguide/validation.checker
+GDSATEST:plexguide/checks/$p 2>1 /var/plexguide/validation.checker
 error=$(grep -o -P "error" /var/plexguide/validation.checker)
+
+echo $time
 
   if [ "$error" != "error" ]; then
       GREEN='\033[0;32m'
@@ -77,15 +82,19 @@ error=$(grep -o -P "error" /var/plexguide/validation.checker)
       echo "$p" > /var/plexguide/json.tempbuild
       bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
-    else
-      RED='\033[0;31m'
-      NC='\033[0m'
-      echo -e "JSON: $p - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
-      echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
+      break="on"
   fi
+done
 
-      rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
+if [ "$break" == "0" ];then
+  RED='\033[0;31m'
+  NC='\033[0m'
+  echo -e "JSON: $p - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
+  echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
+fi
+
+rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
 done </tmp/pg.keys.temp
 
 echo "INFO - PGBlitz: Finished Validating JSON Files" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
