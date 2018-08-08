@@ -65,9 +65,9 @@ rclone move --tpslimit 6 --checkers=20 \
 echo "Waiting 4 Seconds"
 sleep 3.5
 
-checker=$(rclone lsf \
-  --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ | grep "$p")
+rclone lsf  --config /root/.config/rclone/rclone.tmp \
+GDSATEST:plexguide/checks/ >> /tmp/testbaby.sh
+
 
   if [ "$p" == "$checker" ]; then
       GREEN='\033[0;32m'
