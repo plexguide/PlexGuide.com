@@ -16,7 +16,7 @@
 #################################################################################
 downloadpath=$(cat /var/plexguide/server.hd.path)
 
-echo "INFO - PGBlitz Started for the First Time - 10 Second Sleep" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz Started for the First Time - 10 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 sleep 10
 path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
@@ -36,23 +36,16 @@ do
         for i in "${files[@]}"
         do
             FILESTERL=$(printf '%q' "$i")
-            #if file is in fileLock skip
-            if [ -f "$FILESTERL.lck" ] ; then
-                echo "INFO - Lock File found for $i" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            #if file has a lockfile skip
+            if [[ -f "$FILESTERL.lck" ]]; then
+                echo "INFO - Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             fi
             
-            echo "INFO - Starting upload of $i - PID: ${PID}" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+            echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             #Run upload script demonised
             /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
             echo "/opt/appdata/pgblitz/upload.sh \"$FILESTERL\" ${GDSAARRAY[$GDSAUSE]} &"
-            PID=$!
-
-            #get basename of file
-            fileBase=`basename $FILESTERL`
-
-            #some logging
-            echo $PID >> /opt/appdata/pgblitz/pid/${GDSAARRAY[${GDSAUSE}]}_${fileBase}.pid
             
             #increase or reset $GDSAUSE
             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
@@ -61,9 +54,9 @@ do
                 GDSAUSE=`expr $GDSAUSE + 1`
             fi
         done
-        echo "INFO - Finished looking for files, sleeping 20 secs" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
-        echo "INFO - Nothing to upload, sleeping 20 secs" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - Nothing to upload, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     fi
     sleep 20
 done
