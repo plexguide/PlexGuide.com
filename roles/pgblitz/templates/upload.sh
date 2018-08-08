@@ -55,7 +55,7 @@ else
 fi
 
 echo "[PGBlitz] [Upload] Uploading $FILE to $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.json
+LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"$LOGFILE\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 rclone moveto --tpslimit 6 --checkers=20 \
