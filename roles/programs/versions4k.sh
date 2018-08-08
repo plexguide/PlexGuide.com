@@ -17,9 +17,9 @@
 export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Main 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-HEIGHT=10
+HEIGHT=12
 WIDTH=38
-CHOICE_HEIGHT=4
+CHOICE_HEIGHT=5
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="4K Versions - PG Supporting"
 
@@ -49,7 +49,7 @@ case $CHOICE in
     echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
-  G)
+  D)
     echo 'INFO - Selected: PGTracker4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags pgtracker4k --extra-vars "quescheck=off cron=off display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
