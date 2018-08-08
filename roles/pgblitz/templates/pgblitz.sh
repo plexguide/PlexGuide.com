@@ -41,6 +41,7 @@ do
                 echo "INFO - Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
+                echo "$FILESTERL.lck"
                 echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 #Run upload script demonised
                 /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
