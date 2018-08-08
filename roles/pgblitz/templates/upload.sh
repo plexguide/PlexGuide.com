@@ -23,13 +23,13 @@ echo "[PGBlitz] Upload started for $FILE using $GDSA" >> /var/plexguide/pg.log &
 
 FILESTER="$(echo $FILE | sed 's/\'$downloadpath'\/move//g')"
 FILEBASE=`basename $FILE`
-FILEDIR=`$(echo $FILE | sed 's/\'$FILEBASE'\//g')`
+FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
 
 mkdir -p $downloadpath/pgblitz/$GDSA
 echo "[PGBlitz] Moving $FILE to GDSA folder: $GDSA" >> /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 # add to file lock to stop another process being spawned while file is moving
-echo $FILE >> /tmp/fileLock
+touch $FILE.lck
 
 rclone move $FILE $downloadpath/pgblitz/$GDSA/$FILEDIR/$FILEBASE \
     --exclude="**partial~" --exclude="**_HIDDEN~" \
@@ -38,5 +38,5 @@ rclone move $FILE $downloadpath/pgblitz/$GDSA/$FILEDIR/$FILEBASE \
 echo "[PGBlitz] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #remove file lock
-sed "s/\$FILE//g" /tmp/fileLock
+rm -f $FILE.lck
 {% endraw %}

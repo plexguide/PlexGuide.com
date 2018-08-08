@@ -35,9 +35,9 @@ do
         #if files are found loop though and upload
         for i in "${files[@]}"
         do
-            FILESTERL=${i// /\\ }
+            FILESTERL=$(printf '%q' "$i")
             #if file is in fileLock skip
-            if `cat /tmp/fileLock | grep $FILESTERL` ; then
+            if [ -f "$i.lck" ] ; then
                 continue
             fi
             
