@@ -30,11 +30,7 @@
 #
 ############################################################# (BASICS START)
 
-- name: Create Folders
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/appdata/{{role_name}}/mp4_automator
-  when: result.user_input == "3"
+# NONE
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
