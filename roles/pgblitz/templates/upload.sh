@@ -58,15 +58,12 @@ echo "[PGBlitz] Uploading $FILE to $GDSA" > /var/plexguide/pg.log && bash /opt/p
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.json
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"$LOGFILE\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
-rclone move --tpslimit 6 --checkers=20 \
+rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
       --log-file=$LOGFILE --log-level INFO --stats 10s \
-      --exclude="**partial~" --exclude="**_HIDDEN~" \
-      --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
       --drive-chunk-size=32M \
-      --delete-empty-src-dirs \
-      $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE $REMOTE:$FILEDIR/$FILEBASE
+      "$downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE" "$REMOTE:$FILEDIR/$FILEBASE"
 
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
@@ -75,10 +72,11 @@ while [ true ]
 do
     if [ -e /mnt/unionfs/$FILEDIR/$FILEBASE ]; then
         echo "[PGBlitz] vfs/forgetting $FILEBASE/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        rclone rc vfs/forget file=$FILEBASE/$FILEBASE
+        rclone rc vfs/forget file=$FILEDIR/$FILEBASE
 
         #update json file for PGBlitz GUI
         echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+        break
     fi
 done
 
