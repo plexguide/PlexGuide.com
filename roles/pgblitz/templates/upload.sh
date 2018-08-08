@@ -69,7 +69,7 @@ rclone moveto --tpslimit 6 --checkers=20 \
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 #waiting for file to become avalible from remote and then vfs/forget it
 rclone rc vfs/forget file=$FILEDIR/$FILEBASE
-echo "[PGBlitz] [Upload] vfs/forgot $FILEBASE/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
