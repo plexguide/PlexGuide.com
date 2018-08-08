@@ -16,9 +16,10 @@
 #################################################################################
 downloadpath=$(cat /var/plexguide/server.hd.path)
 
-echo "INFO - PGBlitz Started for the First Time - 10 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] PGBlitz Started for the First Time - 10 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 sleep 10
 path=/opt/appdata/pgblitz/keys
+mkdir -p /opt/appdata/pgblitz/pid/
 mkdir -p /opt/appdata/pgblitz/json/
 mkdir -p /opt/appdata/pgblitz/logs/
 
@@ -38,27 +39,39 @@ do
             #FILESTERL=$(printf '%q' "$i")
             #if file has a lockfile skip
             if [ -e ${i}.lck ]; then
-                echo "INFO - Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                echo "[PGBlitz] Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
-                echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-                #Run upload script demonised
-                /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
-                echo "/opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &"
-                
-                #increase or reset $GDSAUSE
-                if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
-                    GDSAUSE=0
+                TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | wc -l`
+                if [ ! $TRANSFERS -ge 8 ]; then
+                    echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                    #Run upload script demonised
+                    /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
+                    
+                    PID=$!
+                    FILEBASE=`basename $i`
+                    
+                    #add transfer to pid directory
+                    echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
+                    
+                    #increase or reset $GDSAUSE
+                    if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
+                        GDSAUSE=0
+                    else
+                        GDSAUSE=`expr $GDSAUSE + 1`
+                    fi
                 else
-                    GDSAUSE=`expr $GDSAUSE + 1`
+                    echo "[PGBlitz] Already 8 transfers running, waiting for next loop" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                    break
                 fi
+                
             fi
             
             
         done
-        echo "INFO - Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "[PGBlitz] Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
-        echo "INFO - Nothing to upload, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "[PGBlitz] Nothing to upload, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     fi
     sleep 20
 done
