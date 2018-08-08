@@ -37,15 +37,5 @@
     state: started
     labels: "{{default_labels}}"
 
-- name: Install autoProcess.ini
-  template:
-    src: autoProcess.ini
-    dest: /opt/appdata/{{role_name}}/mp4_automator/autoProcess.ini
-    force: yes
-    mode: 0775
-    owner: 1000
-    group: 1000
-  when: result.user_input == "3"
-
 - include_role:
     name: pgmend
