@@ -17,14 +17,14 @@
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
-HEIGHT=13
+HEIGHT=14
 WIDTH=40
 CHOICE_HEIGHT=7
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="Plex Enhacements Tools"
 MENU="Make a Selection:"
 
-OPTIONS=(A "PGDupes            "
+OPTIONS=(A "PGDupes"
          B "PGTrak"
          C "WebTools 3.0"
          D "Phlex"
