@@ -43,8 +43,8 @@ do
             else
                 echo "INFO - Starting upload of $i - PID: ${PID}" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 #Run upload script demonised
-                /opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &
-                echo "/opt/appdata/pgblitz/upload.sh $FILESTERL ${GDSAARRAY[$GDSAUSE]} &"
+                /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
+                echo "/opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &"
                 
                 #increase or reset $GDSAUSE
                 if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
