@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,53 +16,26 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: pgmstart
-
-- name: create plexguide network
-  docker_network:
-    name: "plexguide"
-    state: present
-
-- name: "{{role_name}} Container"
+- name: "Deploy {{pgrole}} Container"
   docker_container:
-    name: "{{role_name}}"
-    state: absent
-
-- name: Create {{role_name}} directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/appdata/{{role_name}}
-
-- name: Deploy {{role_name}} Container
-  docker_container:
-    name: "{{role_name}}"
-    image: "{{role_name}}/{{role_name}}"
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
     cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-     - "/opt/appdata/{{role_name}}:/data"
-     - "/var/run/docker.sock:/var/run/docker.sock"
-     - "/opt/appdata/{{role_name}}:/data"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
-    restart_policy: always
+          - "{{pgrole}}"
     state: started
-### {{role_name}} cannot use auth label; pointless anyways due to creating own user/passwd
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend

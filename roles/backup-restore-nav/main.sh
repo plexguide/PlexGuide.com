@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
+# Author:   Admin9705 & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -43,35 +43,29 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        A)
-            clear
-            rm -r /tmp/backup.build 1>/dev/null 2>&1
-            bash /opt/plexguide/roles/backup/scripts/list.sh
-            #### Commenting Out To Let User See
-            while read p; do
-              echo -n $p >> /tmp/backup.build
-              echo -n " " >> /tmp/backup.build
-            done </tmp/backup.list
-            ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
-            echo ""
-            read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue"
-            ;;
-        B)
-            bash /opt/plexguide/menus/backup-restore/restore.sh
-            ;;
-        C)
-            bash /opt/plexguide/roles/backup/scripts/bmass.sh
-            ;;
-        D)
-            bash /opt/plexguide/menus/backup-restore/restoremass.sh
-            ;;
-        E)
-            bash /opt/plexguide/menus/backup-restore/recovery.sh
-            ;;
-        Z)
-            clear
-            exit 0
-            ;;
-
+  A)
+    clear
+    rm -r /tmp/backup.build 1>/dev/null 2>&1
+    touch /tmp/backup.build 1>/dev/null 2>&1
+    bash /opt/plexguide/roles/backup/scripts/list.sh
+    #### Commenting Out To Let User See
+    while read p; do
+      echo -n $p >> /tmp/backup.build
+      echo -n " " >> /tmp/backup.build
+    done </tmp/backup.list
+    ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
+    echo ""
+    read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue" ;;
+  B)
+    bash /opt/plexguide/menus/backup-restore/restore.sh ;;
+  C)
+    bash /opt/plexguide/roles/backup/scripts/bmass.sh ;;
+  D)
+    bash /opt/plexguide/menus/backup-restore/restoremass.sh ;;
+  E)
+    bash /opt/plexguide/menus/backup-restore/recovery.sh ;;
+  Z)
+    clear
+    exit 0 ;;
 esac
 bash /opt/plexguide/roles/backup-restore-nav/main.sh

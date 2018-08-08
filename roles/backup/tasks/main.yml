@@ -22,19 +22,13 @@
   shell: "cat /tmp/backup.build"
   register: backlist
 
-
-
 - name: "Pulling Selected Program"
   shell: "cat /tmp/program_var"
   register: program_var
 
-
-  #ignore tag
-
 - name: "Server ID for Backup"
   shell: "cat /var/plexguide/server.id"
   register: server_id
-
 
 ############################################ SWITCH OFF - Automatic
 - name: Prompt User for Program
@@ -54,10 +48,6 @@
 - name: Establishing Final Variable - Switch On
   shell: "cat /tmp/program_var"
   register: program_final
-
-### TEST
-#- set_fact:
-#    tomcat_value: "{{ "corn" if (filepath == '/var/opt/tomcat_1') else "bacon" }}"
 
 - debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
 

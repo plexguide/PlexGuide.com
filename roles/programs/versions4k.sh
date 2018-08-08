@@ -3,7 +3,7 @@
 # [PlexGuide Interface]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -36,25 +36,21 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 case $CHOICE in
-        A)
-            echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        B)
-            echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        C)
-            echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k --extra-vars "quescheck=on cron=on display=on"
-            echo "" && read -n 1 -s -r -p "Press any key to continue"
-            ;;
-        Z)
-            exit 0 ;;
+  A)
+    echo 'INFO - Selected: Ombi4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags ombi4k --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  B)
+    echo 'INFO - Selected: Sonarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr4k --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  C)
+    echo 'INFO - Selected: Radarr4k' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr4k --extra-vars "quescheck=on cron=on display=on"
+    echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
+  Z)
+    exit 0 ;;
 esac
-
 echo 'INFO Looping: 4K Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 #### recall itself to loop unless user exits
 bash /opt/plexguide/roles/programs/versions4k.sh

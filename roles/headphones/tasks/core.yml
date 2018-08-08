@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "8181"
-    extport: "8081"
+    extport: "8281"
     pgrole: "{{role_name}}"
     image: "linuxserver/headphones"
 
@@ -56,7 +56,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART

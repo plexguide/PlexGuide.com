@@ -20,3 +20,4 @@ echo "1.1.1.1" > /var/plexguide/server.ip
 echo "" > /var/plexguide/server.ports
 echo "/mnt" > /var/plexguide/server.hd.path
 echo "" > /var/plexguide/server.ht
+echo "portainer" > /var/plexguide/tld.program

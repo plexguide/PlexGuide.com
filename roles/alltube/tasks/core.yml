@@ -17,8 +17,8 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "1234"
-    extport: "80"
+    intport: "80"
+    extport: "1234"
     pgrole: "{{role_name}}"
     image: "rudloff/alltube"
 
@@ -32,7 +32,7 @@
 - name: Create {{pgrole}} directories
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
   with_items:
-    - /opt/appdata/{{pgrole}}
+    - "/opt/appdata/{{pgrole}}"
 
 - name: Import default config
   template:
@@ -56,7 +56,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART

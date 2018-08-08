@@ -38,9 +38,9 @@ if [ "$tdrive" != "[tdrive]" ]; then
 fi
 
 ################################################################## CORE
-HEIGHT=16
+HEIGHT=17
 WIDTH=55
-CHOICE_HEIGHT=9
+CHOICE_HEIGHT=10
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PGDrive /w PG Blitz"
 MENU="$versioncheck"
@@ -51,8 +51,9 @@ OPTIONS=(A "RClone : Config & Establish"
          D "Process: JSON files for Validation"
          E "Deploy : PG Drive & PG Blitz"
          F "DL Path: Current - $downloadpath"
-         G "Tshoot : Baseline PG Blitz (Fresh Start)"
-         H "Tshoot : Disable PGBlitz"
+         G "T-Shoot: Reprocess Bad JSONs"
+         H "T-Shoot: Baseline PG Blitz (Fresh Start)"
+         I "T-Shoot: Disable PGBlitz"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -188,7 +189,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             bash /opt/plexguide/scripts/baseinstall/harddrive.sh
             ;;
         G)
-            dialog --infobox "Baselining PGBlitz (Please Wait)" 3 25
+            dialog --infobox "Reprocessing BAD JSONs (Please Wait)" 3 40
+            sleep 2
+            clear
+            mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/ 1>/dev/null 2>&1
+            bash /opt/plexguide/roles/pgblitz/scripts/validator.sh;;
+        H)
+            dialog --infobox "Baselining PGBlitz (Please Wait)" 3 40
             sleep 2
             systemctl stop pgblitz 1>/dev/null 2>&1
             systemctl disable pgblitz 1>/dev/null 2>&1
@@ -208,7 +215,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             #rm -r /root/.config/rclone/gdrive.save
             dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
             ;;
-         H)
+         I)
             sudo systemctl stop pgblitz 1>/dev/null 2>&1
             sudo systemctl rm pgblitz 1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nPG Blitz is Disabled!\n\nYou must rerun PGDrives & PGBlitz to Enable Again!" 0 0

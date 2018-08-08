@@ -38,6 +38,7 @@
       - "/tmp:/tmp"
       - "/opt/appdata/plex/database:/config"
       - "/opt/transcodes:/transcode"
+      - "/dev/shm:/ram_transcode"
       - "/mnt/plexdrive:/plexdrive"
       - "/mnt/encrypt:/encrypt"
       - "/mnt/unionfs:/unionfs"
@@ -51,7 +52,7 @@
     default_labels:
       traefik.enable: "true"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 
 ######################## Deploy PGMSTART
