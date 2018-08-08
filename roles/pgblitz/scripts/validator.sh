@@ -67,7 +67,6 @@ sleep 3.5
 
 rclone lsf  --config /root/.config/rclone/rclone.tmp \
 GDSATEST:plexguide/checks/ 2> /var/plexguide/validation.checker
-
 error=$(grep -o -P "error" /var/plexguide/validation.checker)
 
   if [ "$error" != "error" ]; then
@@ -78,6 +77,7 @@ error=$(grep -o -P "error" /var/plexguide/validation.checker)
       echo "$p" > /var/plexguide/json.tempbuild
       bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
+      rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
     else
       RED='\033[0;31m'
       NC='\033[0m'
