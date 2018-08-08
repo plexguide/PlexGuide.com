@@ -37,7 +37,7 @@ do
         do
             FILESTERL=$(printf '%q' "$i")
             #if file has a lockfile skip
-            if [ -e "$FILESTERL.lck" ]; then
+            if [ -e $FILESTERL.lck ]; then
                 echo "INFO - Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
