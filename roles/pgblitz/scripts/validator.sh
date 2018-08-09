@@ -53,16 +53,21 @@ EOF
 mkdir -p /opt/pgops/GDSATEST
 touch /opt/pgops/GDSATEST/$p
 
-rclone move \
+rclone move --tpslimit 6 --checkers=20 \
   --config /root/.config/rclone/rclone.tmp \
-  /opt/pgops/GDSATEST GDSATEST:plexguide/checks
+  --transfers=8 \
+  --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
+  --exclude="**partial~" --exclude="**_HIDDEN~" \
+  --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+  --drive-chunk-size=32M \
+  /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-echo "Waiting 2 Seconds"
-sleep 2
+echo "Waiting 3 Seconds"
+sleep 3
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ | grep "$p")
+GDSATEST:plexguide/checks/ | grep -o -P "$p")
 
   if [ "$p" == "$checker" ]; then
       GREEN='\033[0;32m'
