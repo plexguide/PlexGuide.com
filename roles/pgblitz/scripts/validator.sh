@@ -78,11 +78,6 @@ checker=$(rclone lsf \
 GDSATEST:plexguide/checks/ | grep "$p")
 
   if [ "$p" == "$checker" ]; then
-
-
-echo $time
-
-  if [ "$error" != "error" ]; then
       GREEN='\033[0;32m'
       NC='\033[0m'
       echo -e "JSON: $p - ${GREEN}VALID${NC}"
