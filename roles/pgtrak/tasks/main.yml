@@ -21,6 +21,46 @@
 - include_role:
     name: variables
 
+- name: API Sonarr
+  shell: "cat /var/plexguide/api.sonarr"
+  register: apis
+  ignore_errors: True
+
+- name: API Radarr
+  shell: "cat /var/plexguide/api.radarr"
+  register: apir
+  ignore_errors: True
+
+- name: Sonarr Profile
+  shell: "cat /var/plexguide/pgtrak.prosonarr"
+  register: prosonarr
+  ignore_errors: True
+
+- name: Radarr Profile
+  shell: "cat /var/plexguide/pgtrak.proradarr"
+  register: proradarr
+  ignore_errors: True
+
+- name: Trakt.tv Client
+  shell: "cat /var/plexguide/pgtrak.client"
+  register: client
+  ignore_errors: True
+
+- name: Trakt.tv Secret
+  shell: "cat /var/plexguide/pgtrak.secret"
+  register: secret
+  ignore_errors: True
+
+- name: API Radarr
+  shell: "cat /var/plexguide/pgtrak.radarr"
+  register: radarr
+  ignore_errors: True
+
+- name: API Sonnar
+  shell: "cat /var/plexguide/pgtrak.sonarr"
+  register: sonarr
+  ignore_errors: True
+
 - name: Check if pgtrak service exists
   stat:
     path: "/etc/systemd/system/pgtrak.service"

@@ -85,17 +85,17 @@
     "api_key": "",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:7878",
-    "root_folder": "/movies/"
+    "root_folder": "{{radarr.stdout}}"
   },
   "sonarr": {
     "api_key": "",
     "profile": "HD-1080p",
     "url": "http://0.0.0.0:8989",
-    "root_folder": "/tv/",
+    "root_folder": "{{sonarr.stdout}}",
     "tags": {}
   },
   "trakt": {
-    "client_id": "",
-    "client_secret": ""
+    "client_id": "{{client.stdout}}",
+    "client_secret": "{{secret.stdout}}"
   }
 }
