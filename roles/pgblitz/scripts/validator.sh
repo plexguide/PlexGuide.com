@@ -69,7 +69,7 @@ checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
 GDSATEST:plexguide/checks/ | grep -o -P "$p") 2> /var/plexguide/temp.valid
 
-error=$(grep -o -P "error" /var/plexguide/temp.valid)
+error=$(grep -oP "error" /var/plexguide/temp.valid | head -c 5)
 
   if [ "$error" == "error" ]; then
     RED='\033[0;31m'
