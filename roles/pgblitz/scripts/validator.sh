@@ -55,7 +55,7 @@ touch /opt/pgops/GDSATEST/$p
 
 rclone move \
   --config /root/.config/rclone/rclone.tmp \
-  /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
+  /opt/pgops/GDSATEST GDSATEST:plexguide/checks
 
 echo "Waiting 5 Seconds"
 sleep 5
