@@ -67,9 +67,11 @@ sleep 3
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ | grep -o -P "$p")
+GDSATEST:plexguide/checks/ | grep -o -P "$p") 2> /var/plexguide/temp.valid
 
-  if [ "$p" == "$checker" ]; then
+error=$(grep -o -P "error" /var/plexguide/temp.valid)
+
+  if [ "error" != "error" ]; then
       GREEN='\033[0;32m'
       NC='\033[0m'
       echo -e "JSON: $checker - ${GREEN}VALID${NC}"
