@@ -27,13 +27,14 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.028"
-         02 "Release      ~ 6.027"
-         03 "Release      ~ 6.026"
-         04 "Release      ~ 6.023"
-         05 "Release      ~ 6.016"
-         06 "Release      ~ 6.015"
-         07 "Internal Bug Test")
+         01 "EDGE         ~ 6.029"
+         02 "Release      ~ 6.028"
+         03 "Release      ~ 6.027"
+         04 "Release      ~ 6.026"
+         05 "Release      ~ 6.023"
+         06 "Release      ~ 6.016"
+         07 "Release      ~ 6.015"
+         08 "Internal Bug Test")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -70,17 +71,20 @@ case $CHOICE in
     exit ;;
   02)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.027" ;;
+    version="6.028" ;;
   03)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.026" ;;
+    version="6.027" ;;
   04)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.023" ;;
+    version="6.026" ;;
   05)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+    version="6.023" ;;
+  06)
+    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="6.016" ;;
-  05)
+  07)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="6.015" ;;
   06)
