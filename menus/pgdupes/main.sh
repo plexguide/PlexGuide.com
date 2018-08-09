@@ -27,6 +27,7 @@ else
     echo "true" > /var/plexguide/pgdupes.autodelete2.json
     exit
 fi
+sudo ln -s /usr/bin/python3.6 /usr/bin/python3.5 &>/dev/null &
 
 stat=$( cat /var/plexguide/pgdupes.autodelete )
 
