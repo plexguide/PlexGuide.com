@@ -40,7 +40,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 ######## Goal is so user can deploy a wordpress site based on an ID from 1-99
-######## 
+########
 
 
 
@@ -48,7 +48,7 @@ case $CHOICE in
         A)
             clear ;;
         B)
-            exit 
+            exit
             ansible-playbook /opt/plexguide/pg.yml --tags wordpress
             ;;
         Z)
@@ -56,4 +56,4 @@ case $CHOICE in
 esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/wp.sh
+bash /opt/plexguide/roles/programs/wp.sh

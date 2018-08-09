@@ -56,7 +56,7 @@ case $CHOICE in
     clear && ansible-playbook /opt/plexguide/pg.yml --tags jackett --extra-vars "quescheck=on cron=on display=on"
     echo "" && read -n 1 -s -r -p "Press any key to continue" ;;
   E)
-    bash /opt/plexguide/menus/programs/vpn.sh ;;
+    bash /opt/plexguide/roles/programs/vpn.sh ;;
   Z)
     exit 0 ;;
 esac

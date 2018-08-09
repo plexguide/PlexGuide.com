@@ -68,7 +68,7 @@ case $CHOICE in
     echo "$program" > /tmp/program
     echo "$program" > /tmp/program_var
     echo "$port" > /tmp/port
-    bash /opt/plexguide/menus/programs/ending.sh ;;
+    bash /opt/plexguide/roles/programs/ending.sh ;;
  Z)
    exit 0 ;;
 esac
