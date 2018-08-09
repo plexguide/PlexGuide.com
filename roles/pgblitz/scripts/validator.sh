@@ -62,13 +62,10 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-echo "Waiting 3 Seconds"
-sleep 3
-
 break="off"
 time=0
 
-while [ $time -lt 10 ] || [ $break == "off"]; do
+while [ $time -lt 10 -o $break == "off" ]; do
 rclone lsf  --config /root/.config/rclone/rclone.tmp \
 GDSATEST:plexguide/checks/$p 2>1 /var/plexguide/validation.checker
 error=$(grep -o -P "error" /var/plexguide/validation.checker)
