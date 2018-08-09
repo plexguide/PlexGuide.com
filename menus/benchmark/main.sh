@@ -83,7 +83,7 @@ echo "INFO - Selected: Speed Test Server"> /var/plexguide/pg.log && bash /opt/pl
             echo "$program" > /tmp/program
             echo "$port" > /tmp/port
             #### Pushes Out Ending
-            bash /opt/plexguide/menus/programs/ending.sh
+            bash /opt/plexguide/roles/programs/ending.sh
             #### recall itself to loop unless user exits
             bash /opt/plexguide/roles/programs/support.sh
             ;;

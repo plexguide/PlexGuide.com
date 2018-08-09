@@ -51,14 +51,14 @@ case $CHOICE in
      echo "Your Variables have now been set."
      echo ""
      read -n 1 -s -r -p "Press any key to continue "
-     bash /opt/plexguide/menus/programs/vpn.sh
+     bash /opt/plexguide/roles/programs/vpn.sh
         read -n 1 -s -r -p "Press any key to continue"
-  #      
+  #
   #          echo "$program" > /tmp/program
   #          echo "$program" > /tmp/program_var
   #          echo "$port" > /tmp/port
-  #          
-  #          bash /opt/plexguide/menus/programs/ending.sh
+  #
+  #          bash /opt/plexguide/roles/programs/ending.sh
      ;;
      B)
        display=DelugeVPN
@@ -75,8 +75,8 @@ case $CHOICE in
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
             echo "$port" > /tmp/port
-            
-            bash /opt/plexguide/menus/programs/ending.sh
+
+            bash /opt/plexguide/roles/programs/ending.sh
      ;;
      C)
        display=rTorrentVPN
@@ -85,7 +85,7 @@ case $CHOICE in
        echo "$program" > /tmp/program_var
        echo "$program_extra" > /tmp/program_var_extra
        dialog --infobox "Installing: $display" 3 30
-       sleep 2 
+       sleep 2
        clear
        port=9080
        port_extra=3000
@@ -99,8 +99,8 @@ case $CHOICE in
             echo "$program_extra" > /tmp/program_extra
             echo "$program_extra" > /tmp/program_var_extra
             echo "$port_extra" > /tmp/port_extra
-            
-            bash /opt/plexguide/menus/programs/ending_extra.sh
+
+            bash /opt/plexguide/roles/programs/ending_extra.sh
      ;;
      Z)
        exit 0 ;;
@@ -108,4 +108,4 @@ case $CHOICE in
 esac
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/vpn.sh
+bash /opt/plexguide/roles/programs/vpn.sh

@@ -48,7 +48,7 @@ case $CHOICE in
         echo "Your Variables have now been set."
         echo ""
         read -n 1 -s -r -p "Press any key to continue "
-        bash /opt/plexguide/menus/programs/vpn.sh ;;
+        bash /opt/plexguide/roles/programs/vpn.sh ;;
      B)
         clear
         program=delugevpn
@@ -62,7 +62,7 @@ esac
 echo "$program" > /tmp/program
 echo "$port" > /tmp/port
 #### Pushes Out Ending
-bash /opt/plexguide/menus/programs/ending.sh
+bash /opt/plexguide/roles/programs/ending.sh
 
 #### recall itself to loop unless user exits
-bash /opt/plexguide/menus/programs/vpn.sh
+bash /opt/plexguide/roles/programs/vpn.sh
