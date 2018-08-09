@@ -65,13 +65,13 @@ rclone move --tpslimit 6 --checkers=20 \
 echo "Waiting 3 Seconds"
 sleep 3
 
-checker=$(rclone lsf \
-  --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ | grep -o -P "$p") 2> /var/plexguide/temp.valid
+temp=$((rclone lsf --config /root/.config/rclone/rclone.tmp \
+GDSATEST:plexguide/checks/ | grep -o -P "25" ) 2>&1)
 
-error=$(grep -oP "error" /var/plexguide/temp.valid | head -c 5)
+echo $temp | grep -oP "error" /var/plexguide/temp.valid | head -c 5
+temp2=$(echo $temp | grep -oP "error" | head -c 5)
 
-  if [ "$error" == "error" ]; then
+  if [ "$temp2" == "error" ]; then
     RED='\033[0;31m'
     NC='\033[0m'
     echo -e "JSON: $checker - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
