@@ -57,8 +57,8 @@ rclone move \
   --config /root/.config/rclone/rclone.tmp \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks
 
-echo "Waiting 5 Seconds"
-sleep 5
+echo "Waiting 2 Seconds"
+sleep 2
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
