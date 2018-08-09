@@ -71,7 +71,7 @@ GDSATEST:plexguide/checks/ | grep -o -P "$p") 2> /var/plexguide/temp.valid
 
 error=$(grep -o -P "error" /var/plexguide/temp.valid)
 
-  if [ "error" == "error" ]; then
+  if [ "$error" == "error" ]; then
     RED='\033[0;31m'
     NC='\033[0m'
     echo -e "JSON: $checker - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
