@@ -82,14 +82,14 @@
     "debug": false
   },
   "radarr": {
-    "api_key": "",
-    "profile": "HD-1080p",
+    "api_key": "{{apir.stdout}}",
+    "profile": "{{proradarr.stdout}}",
     "url": "http://0.0.0.0:7878",
     "root_folder": "{{radarr.stdout}}"
   },
   "sonarr": {
-    "api_key": "",
-    "profile": "HD-1080p",
+    "api_key": "{{apis.stdout}}",
+    "profile": "{{prosonarr.stdou}}",
     "url": "http://0.0.0.0:8989",
     "root_folder": "{{sonarr.stdout}}",
     "tags": {}
