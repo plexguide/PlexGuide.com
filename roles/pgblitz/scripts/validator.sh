@@ -74,14 +74,14 @@ temp2=$(echo $temp | grep -oP "error" | head -c 5)
   if [ "$temp2" == "error" ]; then
     RED='\033[0;31m'
     NC='\033[0m'
-    echo -e "JSON: $checker - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
+    echo -e "JSON: $p - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
     echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
     rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
     else
       GREEN='\033[0;32m'
       NC='\033[0m'
-      echo -e "JSON: $checker - ${GREEN}VALID${NC}"
+      echo -e "JSON: $p - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "$p" > /var/plexguide/json.tempbuild
       bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
