@@ -68,7 +68,6 @@ sleep 3
 temp=$((rclone lsf --config /root/.config/rclone/rclone.tmp \
 GDSATEST:plexguide/checks/ | grep -o -P "25" ) 2>&1)
 
-echo ($temp | grep -oP "error" /var/plexguide/temp.valid | head -c 5) > /var/plexguide/temp.valid
 temp2=$(echo $temp | grep -oP "error" | head -c 5)
 
   if [ "$temp2" == "error" ]; then
