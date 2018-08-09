@@ -87,55 +87,6 @@
     requirements: /opt/appdata/pgtrak/requirements.txt
     executable: pip3
 
-- name: Check if pgtrak config exists
-  stat:
-    path: "/opt/appdata/pgtrak/config.json"
-  register: pgtrak_config
-
-- name: "Check if sonarr exists"
-  stat:
-    path: "/opt/appdata/sonarr/app/config.xml"
-  register: sonarr_config
-  when: not pgtrak_config.stat.exists
-
-- name: "When sonarr exists, add api key to traktar config"
-  block:
-
-  - name: Pull sonarr api key
-    xml:
-      path: "/opt/appdata/sonarr/app/config.xml"
-      xpath: /Config/ApiKey
-      content: text
-    register: xmlresp
-
-  - name: Set sonarr api Key
-    set_fact:
-      sonarr_api_key: "{{ xmlresp.matches[0].ApiKey }}"
-
-  when: (not pgtrak_config.stat.exists) and (sonarr_config.stat.exists)
-
-- name: "Check if radarr exists"
-  stat:
-    path: "/opt/appdata/radarr/app/config.xml"
-  register: radarr_config
-  when: not pgtrak_config.stat.exists
-
-- name: "When radarr exists, add api key to traktar config"
-  block:
-
-  - name: Pull radarr api key
-    xml:
-      path: "/opt/appdata/radarr/app/config.xml"
-      xpath: /Config/ApiKey
-      content: text
-    register: xmlresp
-
-  - name: Set radarr api Key
-    set_fact:
-      radarr_api_key: "{{ xmlresp.matches[0].ApiKey }}"
-
-  when: (not pgtrak_config.stat.exists) and (radarr_config.stat.exists)
-
 - name: Import default config
   template:
     src: config.json.js2
@@ -144,7 +95,6 @@
     group: "1000"
     mode: 0775
     force: yes
-  when: not pgtrak_config.stat.exists
 
 - name: Set pgtrak.py as executable
   file:
@@ -167,7 +117,6 @@
     src: pgtrak.service.js2
     dest: /etc/systemd/system/pgtrak.service
     force: yes
-  when: not pgtrak_service.stat.exists
 
 - name: Load pgtrak service
   systemd: state=stopped name=pgtrak daemon_reload=yes enabled=no
