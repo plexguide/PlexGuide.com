@@ -21,6 +21,7 @@ FILE=$1
 GDSA=$2
 echo "[PGBlitz] [Upload] Upload started for $FILE using $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+STARTTIME=`date +%s`
 FILESTER=`echo $FILE | sed 's/\'$downloadpath'\/move//g'`
 FILEBASE=`basename $FILE`
 FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
@@ -76,8 +77,9 @@ echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\"
 rclone rc vfs/forget file=$FILEDIR/$FILEBASE
 echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+ENDTIME=`date +%s`
 #update json file for PGBlitz GUI
-echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\",\"starttime\": \"$STARTTIME\",\"endtime\": \"$ENDTIME\"}" > $JSONFILE
 
 echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 #cleanup
