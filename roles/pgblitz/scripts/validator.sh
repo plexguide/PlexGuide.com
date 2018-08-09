@@ -62,13 +62,8 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-break="off"
-time=0
-
-while [ $time -lt 10 -o $break == "off" ]; do
-rclone lsf  --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/$p 2>1 /var/plexguide/validation.checker
-error=$(grep -o -P "error" /var/plexguide/validation.checker)
+echo "Waiting 5 Seconds"
+sleep 5
 
 checker=$(rclone lsf \
   --config /root/.config/rclone/rclone.tmp \
@@ -77,32 +72,20 @@ GDSATEST:plexguide/checks/ | grep "$p")
   if [ "$p" == "$checker" ]; then
       GREEN='\033[0;32m'
       NC='\033[0m'
-      echo -e "JSON: $p - ${GREEN}VALID${NC}"
+      echo -e "JSON: $checker - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "$p" > /var/plexguide/json.tempbuild
       bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
-      break="on"
+    else
+      RED='\033[0;31m'
+      NC='\033[0m'
+      echo -e "JSON: $checker - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
+      echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
+      rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
   fi
 
-  if [ "$error" == "error" ]; then
-      break="on"
-      error="failed"
-  fi
-
-sleep 1
-let "time++"
-done
-
-if [ "$error" == "failed" ];then
-  RED='\033[0;31m'
-  NC='\033[0m'
-  echo -e "JSON: $p - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
-  echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
-fi
-
-rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
 done </tmp/pg.keys.temp
 
 echo "INFO - PGBlitz: Finished Validating JSON Files" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
