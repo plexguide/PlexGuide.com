@@ -16,31 +16,6 @@
 #
 #################################################################################
 ---
-- name: Register Domain
-  shell: "cat /var/plexguide/server.domain"
-  register: domain
-  ignore_errors: True
-
-- name: Register IP
-  shell: "cat /var/plexguide/server.ip"
-  register: ipaddress
-  ignore_errors: True
-
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-
-- name: Register HD Path
-  shell: "cat /var/plexguide/server.hd.path"
-  register: path
-  ignore_errors: True
-
-- name: Register Auth Path
-  shell: "cat /var/plexguide/server.ht"
-  register: auth
-  ignore_errors: True
-
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
