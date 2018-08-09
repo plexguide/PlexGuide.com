@@ -67,10 +67,18 @@ sleep 3
 
 break="off"
 time=0
+
 while [ $time -lt 10 ] || [ $break == "off"]; do
 rclone lsf  --config /root/.config/rclone/rclone.tmp \
 GDSATEST:plexguide/checks/$p 2>1 /var/plexguide/validation.checker
 error=$(grep -o -P "error" /var/plexguide/validation.checker)
+
+checker=$(rclone lsf \
+  --config /root/.config/rclone/rclone.tmp \
+GDSATEST:plexguide/checks/ | grep "$p")
+
+  if [ "$p" == "$checker" ]; then
+
 
 echo $time
 
@@ -84,9 +92,17 @@ echo $time
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
       break="on"
   fi
+
+  if [ "$error" == "error" ]; then
+      break="on"
+      error="failed"
+  fi
+
+sleep 1
+time++
 done
 
-if [ "$break" == "0" ];then
+if [ "$error" == "failed" ];then
   RED='\033[0;31m'
   NC='\033[0m'
   echo -e "JSON: $p - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
