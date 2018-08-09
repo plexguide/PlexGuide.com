@@ -94,7 +94,7 @@ GDSATEST:plexguide/checks/ | grep "$p")
   fi
 
 sleep 1
-time++
+let "time++"
 done
 
 if [ "$error" == "failed" ];then
