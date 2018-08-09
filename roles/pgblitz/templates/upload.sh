@@ -56,12 +56,17 @@ fi
 
 echo "[PGBlitz] [Upload] Uploading $FILE to $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
+
+#create and chmod the log file so that webui can read it
+touch $LOGFILE
+chmod 777 $LOGFILE
+
 #update json file for PGBlitz GUI
-echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"$LOGFILE\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
-      --log-file=$LOGFILE --log-level INFO --stats 10s \
+      --log-file=$LOGFILE --log-level INFO --stats 5s \
       --drive-chunk-size=32M \
       "$downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE" "$REMOTE:$FILEDIR/"
 
