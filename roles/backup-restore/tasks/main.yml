@@ -36,8 +36,8 @@
 - name: Backup & Restore
   pause:
     prompt: "\nWelcome to the PG Backup & Restore!
-\n\n1.  Exit PG Backup & Restore
-\n2.  Change Server ID  : server01
+\n\n1.  Exit Backup & Restore
+\n2.  Change Current  ID: server01
 \n3.  Change Recovery ID: server01
 \n4.  Backup : Solo Program
 \n5.  Backup : Mass Backup
