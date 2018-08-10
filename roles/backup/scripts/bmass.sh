@@ -42,16 +42,42 @@ mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-$d"
 mkdir -p $mfolder 1>/dev/null 2>&1
 mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
 
-bash /opt/plexguide/roles/backup/scripts/list.sh
-#### Commenting Enables to See Everything
+##################################################### Builds Backup List - START
+#### Recall Download Point
+mnt=$(cat /var/plexguide/server.hd.path)
+
+#### Recalls List for Backup Operations
+ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > $mnt/pgops/backup.list
+
+#### Combine for Simplicity
+path=$(echo $mnt/pgops/backup.list)
+
+#### Remove Items from List
+sed -i -e "/traefik/d" $path
+sed -i -e "/watchtower/d" $path
+sed -i -e "/word*/d" $path
+sed -i -e "/x2go*/d" $path
+sed -i -e "/speed*/d" $path
+sed -i -e "/netdata/d" $path
+sed -i -e "/pgtrak/d" $path
+sed -i -e "/plexguide/d" $path
+sed -i -e "/pgdupes/d" $path
+sed -i -e "/portainer/d" $path
+sed -i -e "/cloudplow/d" $path
+sed -i -e "/phlex/d" $path
+sed -i -e "/pgblitz/d" $path
+sed -i -e "/cloudblitz/d" $path
+##################################################### Builds Backup List - END
+
 clear
+#### Loops Through Built Up List
 while read p; do
   echo $p > /tmp/program_var
   ansible-playbook /opt/plexguide/pg.yml --tags backup
   echo ""
   echo "$p Backed Up"
   sleep 5
-done </tmp/backup.list
+done <$path
 
 read -n 1 -s -r -p "Mass Backup Process Complete - Press [ANY KEY] to CONTINUE"
 
