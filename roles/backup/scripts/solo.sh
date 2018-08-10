@@ -45,11 +45,11 @@ sed -i -e "/pgblitz/d" $path
 sed -i -e "/cloudblitz/d" $path
 ##################################################### Builds Backup List - END
 
-echo $p > /tmp/program_var
-running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
-if [ "$p" == "$running" ];then
-touch $mnt/pgops/$p.running 1>/dev/null 2>&1
-fi
+#echo $p > /tmp/program_var
+#running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
+#if [ "$p" == "$running" ];then
+#touch $mnt/pgops/$p.running 1>/dev/null 2>&1
+#fi
 
 #### Commenting Out To Let User See
 while read p; do
