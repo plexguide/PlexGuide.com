@@ -49,7 +49,7 @@
 
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
-    path: /opt/appdata/{{program_final.stdout}}
+    path: "/opt/appdata/{{program_final.stdout}}"
   register: programappdata
 
 - name: "Checking if RClone Encrypted"
