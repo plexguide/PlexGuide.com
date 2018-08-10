@@ -19,7 +19,7 @@
 - pause:
     prompt: "\nType Image # for {{role_name}}\n1- titpetric/netdata\n2- firehol/netdata"
   register: result
-  until: result.user_input > "0" and result.user_input < "4"
+  until: result.user_input > "0" and result.user_input < "3"
   retries: 3
   delay: 1
 

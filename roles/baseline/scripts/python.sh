@@ -39,7 +39,10 @@ pip3 install --upgrade --force-reinstall setuptools
 pip3 install --upgrade --force-reinstall \
     pyOpenSSL \
     requests \
-    netaddr
+    netaddr \
+    google-api-python-client \
+    google_auth_oauthlib \
+    oauth2client
 pip install --upgrade --force-reinstall pip==9.0.3
 pip install --upgrade --force-reinstall setuptools
 pip install --upgrade --force-reinstall \

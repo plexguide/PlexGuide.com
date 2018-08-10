@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq & FlickerRate & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,65 +16,26 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: pgmstart
-
-- pause:
-    prompt: "\nType Image # for NZBHydra2\n1- linuxserver/hydra2 (Recommended)\n2- hotio/nzbhydra2 (Space Saver)\n3- theotherp/nzbhydra2"
-  register: result
-  until: result.user_input > "0" and result.user_input < "4"
-  retries: 5
-  delay: 1
-
-- name: Set linuxserver/hydra2
-  set_fact:
-    image: "linuxserver/hydra2"
-    extra: ""
-  when: result.user_input == "1"
-
-- name: Hotio/Suitarr
-  set_fact:
-    image: "hotio/suitarr:nzbhydra2"
-    extra: "/NZBHydra2"
-  when: result.user_input == "2"
-
-- name: Set theotherp/nzbhydra2
-  set_fact:
-    image: "theotherp/nzbhydra2"
-    extra: ""
-  when: result.user_input == "3"
-
-- name: Deploy NZBHydra2 Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
-    name: "{{role_name}}"
+    name: "{{pgrole}}"
     image: "{{image}}"
     pull: yes
-    cpu_shares: 256
+    cpu_shares: 128
     published_ports:
       - "{{ports.stdout}}{{extport}}:{{intport}}"
-    env:
-      APP: "{{role_name}}"
-      VERSION: "stable"
-      PUID: "1000"
-      PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
-    volumes:
-      - "/opt/appdata/{{role_name}}:/config{{extra}}"
-      - "/etc/localtime:/etc/localtime:ro"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
     restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - "{{role_name}}"
+          - "{{pgrole}}"
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:nzbhydra.{{domain.stdout}},{{role_name}}.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
+    labels: "{{default_labels}}"
 
 - include_role:
     name: pgmend

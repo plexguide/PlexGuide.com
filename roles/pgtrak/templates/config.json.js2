@@ -24,13 +24,14 @@
         "gb",
         "ca"
       ],
+      "allowed_languages": [],
       "blacklisted_min_runtime": 15,
       "blacklisted_min_year": 1980,
       "blacklisted_max_year": 2019,
       "blacklisted_genres": [
-        "anime",
+        "animation",
+        "game-show",
         "news",
-        "documentary",
         "special-interest"
       ],
       "blacklisted_networks": [
@@ -42,9 +43,17 @@
         "espn",
         "fox sports",
         "yahoo!"
-      ]
+      ],
+      "blacklisted_tvdb_ids": [],
+      "disabled_for": []
     },
     "movies": {
+      "allowed_countries": [
+        "us",
+        "gb",
+        "ca"
+      ],
+      "allowed_languages": [],
       "blacklisted_genres": [
         "documentary",
         "music",
@@ -55,16 +64,18 @@
       ],
       "blacklist_title_keywords": [
         "untitled",
-        "ufc fight night"
+        "ufc"
       ],
-      "blacklisted_min_runtime": 35,
+      "blacklisted_min_runtime": 30,
       "blacklisted_min_year": 1980,
       "blacklisted_max_year": 2019,
+      "blacklisted_tmdb_ids": [],
       "allowed_countries": [
         "us",
         "gb",
         "ca"
-      ]
+      ],
+      "disabled_for": []
     }
   },
   "core": {
@@ -78,7 +89,7 @@
   },
   "sonarr": {
     "api_key": "{{apis.stdout}}",
-    "profile": "{{prosonarr.stdout}}",
+    "profile": "{{prosonarr.stdou}}",
     "url": "http://0.0.0.0:8989",
     "root_folder": "{{sonarr.stdout}}",
     "tags": {}

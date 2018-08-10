@@ -32,7 +32,7 @@ mv /opt/plexguide/roles/pgdrivenav/encrypted-test.sh /opt/plexguide/roles/pgdriv
 
 ## For testing new beta menu
 rm /opt/plexguide/menus/programs/beta.sh
-mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.sh
+mv /opt/plexguide/roles/programs/beta-new.sh /opt/plexguide/menus/programs/beta.sh
 
 ## For testing new backup menus
 #rm /opt/plexguide/roles/backup/scripts/main.sh
@@ -47,8 +47,8 @@ mv /opt/plexguide/menus/programs/beta-new.sh /opt/plexguide/menus/programs/beta.
 #mv /opt/plexguide/scripts/docker-no/rclone-en2.sh /opt/plexguide/scripts/docker-no/rclone-en.sh
 
 ## For testing new torrent menus
-#rm /opt/plexguide/menus/programs/vpn.sh
-#mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/menus/programs/vpn.sh
+#rm /opt/plexguide/roles/programs/vpn.sh
+#mv /opt/plexguide/menus/programs/vpn2.sh /opt/plexguide/roles/programs/vpn.sh
 
 ## For testing new info & services menus
 #rm /opt/plexguide/roles/info-tshoot/info.sh

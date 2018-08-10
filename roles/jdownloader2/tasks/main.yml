@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   CyberGhost
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,41 +16,26 @@
 #
 #################################################################################
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-- include_role:
-    name: variables
-    
-- name: Remove jdownloader Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
-    name: jdownloader-2
-    state: absent
-
-- name: Deploy jdownloader Container
-  docker_container:
-    name: jdownloader-2
-    image: jlesage/jdownloader-2
+    name: "{{pgrole}}"
+    image: "{{image}}"
     pull: yes
-    cpu_shares: 256
+    cpu_shares: 128
     published_ports:
-      - "{{ports.stdout}}5800:5800"
-    env:
-      PUID: "1000"
-      PGID: "1000"
-    volumes:
-      - /opt/appdata/jdownloader-2/:/config
-      - /mnt/move/jdownloader/:/output
-      - /opt/appdata/jdownloader-2:/storage
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
     restart_policy: always
     networks:
       - name: plexguide
         aliases:
-          - jdownloader-2
+          - "{{pgrole}}"
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:jdownloader.{{domain.stdout}}"
-      traefik.port: "5800"
+    labels: "{{default_labels}}"
+
+- include_role:
+    name: pgmend

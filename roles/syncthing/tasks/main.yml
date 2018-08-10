@@ -19,7 +19,7 @@
 - name: Launch Core Task
   include_tasks: "core.yml"
 
-- name: Deploy {{pgrole}} Container
+- name: "Deploy {{pgrole}} Container"
   docker_container:
     name: "{{pgrole}}"
     image: "{{image}}"
@@ -41,6 +41,10 @@
 
 - include_role:
     name: pgmend
+
+- name: "Wait 10 Seconds"
+  wait_for:
+    timeout: 10
 
 - name: Replace default sync path in config file
   replace:

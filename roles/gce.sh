@@ -31,7 +31,7 @@ TITLE="$edition - $version"
 
 OPTIONS=(A "Deploy a Mount System"
          B "PG Traefik - Reverse Proxy"
-         C "PG GCE Programs"
+         C "PG Program Suite"
          D "PG Server NET Benchmarks"
          E "PG Trak"
          F "PG Troubleshooting Actions"
@@ -64,9 +64,8 @@ case $CHOICE in
                     fi
             ;;
         C)
-echo 'INFO - Selected to View Programs for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            bash /opt/plexguide/roles/gce/programs.sh
-            ;;
+        echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        bash /opt/plexguide/roles/programs/main.sh ;;
         D)
 echo 'INFO - Selected to View BenchMarks for GCE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menus/benchmark/main.sh ;;

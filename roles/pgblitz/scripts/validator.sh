@@ -62,28 +62,29 @@ rclone move --tpslimit 6 --checkers=20 \
   --drive-chunk-size=32M \
   /opt/pgops/GDSATEST GDSATEST:plexguide/checks && rclone_fin_flag=1
 
-echo "Waiting 4 Seconds"
-sleep 3.5
+echo "Waiting 3 Seconds"
+sleep 3
 
-checker=$(rclone lsf \
-  --config /root/.config/rclone/rclone.tmp \
-GDSATEST:plexguide/checks/ | grep "$p")
+temp=$((rclone lsf --config /root/.config/rclone/rclone.tmp \
+GDSATEST:plexguide/checks/ | grep -o -P "25" ) 2>&1)
 
-  if [ "$p" == "$checker" ]; then
+temp2=$(echo $temp | grep -oP "error" | head -c 5)
+
+  if [ "$temp2" == "error" ]; then
+    RED='\033[0;31m'
+    NC='\033[0m'
+    echo -e "JSON: $p - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
+    echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
+    rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
+    else
       GREEN='\033[0;32m'
       NC='\033[0m'
-      echo -e "JSON: $checker - ${GREEN}VALID${NC}"
+      echo -e "JSON: $p - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "$p" > /var/plexguide/json.tempbuild
       bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
-    else
-      RED='\033[0;31m'
-      NC='\033[0m'
-      echo -e "JSON: $checker - Sending to /opt/appdata/pgblitz/keys/badjson/ - ${RED}INVALID${NC}"
-      echo "INFO - PGBlitz: $p is a bad JSON File - Sending Bad JSON to /opt/appdata/pgblitz/keys/badjson" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/badjson/ 1>/dev/null 2>&1
-      rm -r /mnt/tdrive/plexguide/checks/$p 1>/dev/null 2>&1
   fi
 
 done </tmp/pg.keys.temp

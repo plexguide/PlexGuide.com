@@ -18,11 +18,41 @@
 ---
 - include_vars: variables.yml
 
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
+- name: Register IP
+  shell: "cat /var/plexguide/server.ip"
+  register: ipaddress
+  ignore_errors: True
+
+- name: Register Ports
+  shell: "cat /var/plexguide/server.ports"
+  register: ports
+  ignore_errors: True
+
+- name: Register HD Path
+  shell: "cat /var/plexguide/server.hd.path"
+  register: path
+  ignore_errors: True
+
+- name: Register Auth Path
+  shell: "cat /var/plexguide/server.ht"
+  register: auth
+  ignore_errors: True
+
+- name: "Register TLD"
+  shell: "cat /var/plexguide/tld.program"
+  register: toplevel
+  ignore_errors: True"
+
 - include_vars: /opt/appdata/plexguide/var-vpn.yml
 
 - include_role:
     name: pgmstart
-    
+
 - name: Create Basic directories for Torrents
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
   with_items:
@@ -111,7 +141,7 @@
     name: delugevpn
     state: absent
   ignore_errors: True
-  
+
 - name: Deploy {{role_name}} Container
   docker_container:
     name: "{{role_name}}"
