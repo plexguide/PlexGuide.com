@@ -67,7 +67,7 @@
 - debug: msg="Time Length can be Long or Short! Please Wait!"
   when: programappdata.stat.exists == True
 
-- name: Backing Up Program to GDrive - {{program_final.stdout}}
+- name: "Backing Up Program to GDrive - {{program_final.stdout}}"
   archive:
     path:
     - "/opt/appdata/{{program_final.stdout}}/*"
@@ -75,7 +75,7 @@
     format: tar
 
 ############ BACKUP OTHER - END
-- name: Restart Docker Container - {{program_final.stdout}}
+- name: "Restart Docker Container - {{program_final.stdout}}"
   docker_container:
     name: "{{program_final.stdout}}"
     state: started
