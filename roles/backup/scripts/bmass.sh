@@ -76,7 +76,7 @@ while read p; do
   ansible-playbook /opt/plexguide/pg.yml --tags backup
   echo ""
   echo "$p Backed Up"
-  sleep 5
+  sleep 4
 done <$path
 
 read -n 1 -s -r -p "Mass Backup Process Complete - Press [ANY KEY] to CONTINUE"
