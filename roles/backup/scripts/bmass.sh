@@ -69,10 +69,6 @@ sed -i -e "/pgblitz/d" $path
 sed -i -e "/cloudblitz/d" $path
 ##################################################### Builds Backup List - END
 
-#### Build List of Running Apps
-docker ps -a --format '{{.Names}}'
-
-
 clear
 #### Loops Through Built Up List
 while read p; do

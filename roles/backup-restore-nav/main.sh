@@ -45,14 +45,32 @@ clear
 case $CHOICE in
   A)
     clear
-    rm -r /tmp/backup.build 1>/dev/null 2>&1
-    touch /tmp/backup.build 1>/dev/null 2>&1
-    bash /opt/plexguide/roles/backup/scripts/list.sh
+
+    #### Recall Download Point
+    mnt=$(cat /var/plexguide/server.hd.path)
+
+    #### Recalls List for Backup Operations
+    ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > $mnt/pgops/backup.list
+
+    #### Combine for Simplicity
+    path=$(echo $mnt/pgops/backup.list)
+
+    echo $p > /tmp/program_var
+    running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
+    if [ "$p" == "$running" ];then
+    touch $mnt/pgops/$p.running 1>/dev/null 2>&1
+    fi
+    ansible-playbook /opt/plexguide/pg.yml --tags backup
+    rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
+    echo ""
+    echo "$p Backed Up"
+    sleep 4
+
     #### Commenting Out To Let User See
     while read p; do
       echo -n $p >> /tmp/backup.build
       echo -n " " >> /tmp/backup.build
-    done </tmp/backup.list
+    done <$mnt/pgops/backup.list
     ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
     echo ""
     read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue" ;;
