@@ -16,6 +16,7 @@
 #
 #################################################################################
 echo "on" > /var/plexguide/br.menu
+menu=$(echo "on")
 
 while [ "$menu" == "on" ]; do
 menu=$(cat /var/plexguide/br.menu)
