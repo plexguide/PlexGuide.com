@@ -50,6 +50,8 @@
 
 - debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
 ############################################ SWITCH OFF - Automatic
+
+#### Function Soley for Single App Backup Menu - START
 - name: Prompt User for Program
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
@@ -59,6 +61,16 @@
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
   when: switch == "on"
+
+- name: Establishing Final Variable - Switch On
+  shell: "bash /opt/plexguide/roles/backup/scripts/soloselect.sh"
+  when: switch == "on"
+
+- name: "Wait 2 Seconds"
+  wait_for:
+    timeout: 2
+  when: switch == "on"
+#### Function Soley for Single App Backup Menu - END
 
 - name: Establishing Final Variable - Switch On
   shell: "cat /tmp/program_var"
