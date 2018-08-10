@@ -32,7 +32,7 @@
   register: server_id
 
 - name: Checking If Any Running App Exist
-  shell: "cat {{path.stdout}}/pgops/backup.list | grep -oP {{program_var.stdout}}"
+  shell: "docker ps -a --format "{{.Names}}" | grep -oP {{program_var.stdout}}"
   register: grep_output
   ignore_errors: true
 
