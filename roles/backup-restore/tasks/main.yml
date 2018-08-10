@@ -35,8 +35,8 @@
 ---
 - name: Backup & Restore
   pause:
-    prompt: "\nWelcome to PLEXGUIDE!
-\n\n1.  Exit
+    prompt: "\nWelcome to the PG Backup & Restore!
+\n\n1.  Exit PG Backup & Restore
 \n2.  Change Server ID  : server01
 \n3.  Change Recovery ID: server01
 \n4.  Backup : Solo Program
