@@ -63,7 +63,7 @@
   when: switch == "on"
 
 - name: Execute Script
-  shell: "bash /opt/plexguide/roles/backup/scripts/soloselect.sh"
+  script: "/opt/plexguide/roles/backup/scripts/soloselect.sh"
   when: switch == "on"
 
 - name: "Wait 2 Seconds"
