@@ -22,6 +22,11 @@
   shell: "cat /tmp/backup.build"
   register: backlist
 
+- name: Register HD Path
+  shell: "cat /var/plexguide/server.hd.path"
+  register: path
+  ignore_errors: True
+
 - name: "Pulling Selected Program"
   shell: "cat /tmp/program_var"
   register: program_var
