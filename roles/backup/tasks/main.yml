@@ -87,7 +87,7 @@
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
 
 - name: Uploading Backup to Google Drive (encrypted)
-  shell: "rclone copy "/{{path.stdout}}/pgops/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /{{path.stdout}}/pgops/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
 
 - name: Remove TEMP Backup!
