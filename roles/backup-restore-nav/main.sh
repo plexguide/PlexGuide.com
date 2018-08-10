@@ -45,6 +45,8 @@ clear
 case $CHOICE in
   A)
     clear
+    rm -r /tmp/backup.build 1>/dev/null 2>&1
+    touch /tmp/backup.build 1>/dev/null 2>&1
 
     #### Recall Download Point
     mnt=$(cat /var/plexguide/server.hd.path)
@@ -60,17 +62,12 @@ case $CHOICE in
     if [ "$p" == "$running" ];then
     touch $mnt/pgops/$p.running 1>/dev/null 2>&1
     fi
-    ansible-playbook /opt/plexguide/pg.yml --tags backup
-    rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
-    echo ""
-    echo "$p Backed Up"
-    sleep 4
 
     #### Commenting Out To Let User See
     while read p; do
       echo -n $p >> /tmp/backup.build
       echo -n " " >> /tmp/backup.build
-    done <$mnt/pgops/backup.list
+    done </tmp/backup.list
     ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
     echo ""
     read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue" ;;
