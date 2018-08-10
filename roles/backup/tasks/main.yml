@@ -33,7 +33,7 @@
 
 - name: "Checking if RClone Encrypted"
   stat:
-    path: {{path.stdout}}/pgops/{{program_var.stdout}}.running
+    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
   register: running
 
 - debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
