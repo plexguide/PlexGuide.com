@@ -31,6 +31,10 @@
   shell: "cat /var/plexguide/server.id"
   register: server_id
 
+- name: "Building List"
+  shell: "cat {{path.stdout}}/pgops/backup.build"
+  register: backlist
+
 - name: "Checking if RClone Encrypted"
   stat:
     path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
