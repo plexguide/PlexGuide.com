@@ -70,7 +70,7 @@
 - name: Backing Up Program to GDrive - {{program_final.stdout}}
   archive:
     path:
-    - /opt/appdata/{{program_final.stdout}}/*
+    - "/opt/appdata/{{program_final.stdout}}/*""
     dest: "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
     format: tar
 
