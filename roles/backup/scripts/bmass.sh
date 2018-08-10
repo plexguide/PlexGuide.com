@@ -45,6 +45,7 @@ mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
 ##################################################### Builds Backup List - START
 #### Recall Download Point
 mnt=$(cat /var/plexguide/server.hd.path)
+mkdir -p $mnt/pgops
 
 #### Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > $mnt/pgops/backup.list
