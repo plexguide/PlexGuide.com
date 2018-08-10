@@ -62,7 +62,7 @@
   shell: "echo {{selection.user_input}} > /tmp/program_var"
   when: switch == "on"
 
-- name: Establishing Final Variable - Switch On
+- name: Execute Script
   shell: "bash /opt/plexguide/roles/backup/scripts/soloselect.sh"
   when: switch == "on"
 
