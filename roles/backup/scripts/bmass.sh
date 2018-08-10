@@ -70,13 +70,19 @@ sed -i -e "/cloudblitz/d" $path
 ##################################################### Builds Backup List - END
 
 #### Build List of Running Apps
-docker ps -a --format '{{.Names}}' > $mnt/pgops/container.list
+docker ps -a --format '{{.Names}}'
+
 
 clear
 #### Loops Through Built Up List
 while read p; do
   echo $p > /tmp/program_var
+  running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
+  if [ "$p" == "$running" ];then
+  touch $mnt/pgops/$p.running 1>/dev/null 2>&1
+  fi
   ansible-playbook /opt/plexguide/pg.yml --tags backup
+  rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
   echo ""
   echo "$p Backed Up"
   sleep 4
