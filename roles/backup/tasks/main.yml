@@ -35,6 +35,12 @@
   shell: "cat /var/plexguide/server.id"
   register: server_id
 
+- name: Checking If Any Running App Exist
+  shell: "cat /tmp/backup.build | grep -oP {{program_var}}"
+  register: grep_output
+  ignore_errors: true
+
+- debug: msg="{{program_var}} running? {{grep_output}}"
 ############################################ SWITCH OFF - Automatic
 - name: Prompt User for Program
   pause:
