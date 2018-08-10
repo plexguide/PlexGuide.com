@@ -44,7 +44,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
   A)
-    bash /opt/plexguide/menus/backup/solo.sh ;;
+    bash /opt/plexguide/menus/backup/scripts/solo.sh ;;
   B)
     bash /opt/plexguide/menus/backup-restore/restore.sh ;;
   C)
