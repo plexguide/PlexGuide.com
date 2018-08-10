@@ -31,11 +31,19 @@
   shell: "cat /var/plexguide/server.id"
   register: server_id
 
+#### Function Soley for Single App Backup - START
+- name: "Checking if Building List Exists"
+  stat:
+    path: "{{path.stdout}}/pgops/backup.build"
+  register: backlistcheck
+
 - name: "Building List"
   shell: "cat {{path.stdout}}/pgops/backup.build"
   register: backlist
+  when: backlistcheck.stat.exists == True
+#### Function Soley for Single App Backup - END
 
-- name: "Checking if RClone Encrypted"
+- name: "Checking if Program is Running"
   stat:
     path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
   register: running
