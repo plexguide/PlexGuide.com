@@ -17,7 +17,7 @@
 #################################################################################
 #### PG VARIBLES
 echo "6.030 EDGE" > /var/plexguide/pg.version
-echo "134" > /var/plexguide/pg.preinstall
+echo "135" > /var/plexguide/pg.preinstall
 
 #### Installer
 echo "5" > /var/plexguide/pg.ansible
