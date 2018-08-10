@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Backup & Restore
+  pause:
+    prompt: "\nWelcome to PLEXGUIDE!
+\n\n1.  Exit
+\n2.  Change Server ID  : server01
+\n3.  Change Recovery ID: server01
+\n4.  Backup : Solo Program
+\n5.  Backup : Mass Backup
+\n6.  Restore: Solo Program
+\n7.  Restore: Mass Program
+\n\nType a Number Choice"
+  register: choice
+  until: choice.user_input == "1" or
+         choice.user_input == "2" or
+         choice.user_input == "3" or
+         choice.user_input == "4" or
+         choice.user_input == "5" or
+         choice.user_input == "6" or
+         choice.user_input == "7" or
+  retries: 99
+  delay: 1
+
+- name: Set Choice
+  set_fact:
+    fchoice: "{{choice.user_input}}"
+
+- shell: "bash /opt/plexguide/roles/deploychoice.sh"
+  when: fchoice == "1"
+
+- shell: "bash /opt/plexguide/roles/deploychoice.sh"
+  when: fchoice == "2"
+
+- shell: "echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh && bash /opt/plexguide/roles/programs/main.sh"
+  when: fchoice == "3"
