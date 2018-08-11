@@ -57,20 +57,16 @@
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: selection
-  when: switch == "on"
 
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
-  when: switch == "on"
 
 - name: Execute Script
   script: "/opt/plexguide/roles/backup/scripts/soloselect.sh"
-  when: switch == "on"
 
 - name: "Wait 2 Seconds"
   wait_for:
     timeout: 2
-  when: switch == "on"
 #### Function Soley for Single App Backup Menu - END
 
 - name: Establishing Final Variable - Switch On
