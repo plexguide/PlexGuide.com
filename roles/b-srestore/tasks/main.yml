@@ -53,7 +53,7 @@
   register: running
 
 - name: "Remove Static Path"
-  shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  shell: "rm -r {{path.stdout}}/pgops/{{selection.user_input}}}.running"
   when: running.stat.exists == True
 
 - debug: msg="{{selection.user_input}}} running? {{running.stat.exists}}"
@@ -62,25 +62,16 @@
   wait_for:
     timeout: 1
 
-- name: Establishing Final Variable
-  shell: "cat {{path.stdout}}/pgops/program_var"
-  register: program_final
+- debug: msg="Temp Message - For {{selection.user_input}} - Server ID {{server_id.stdout}}"
 
-- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
-
-- name: "Checking {{program_final.stdout}} location in APPDATA"
+- name: "Checking {{selection.user_input}} location in APPDATA"
   stat:
-    path: "/opt/appdata/{{program_final.stdout}}"
+    path: "/opt/appdata/{{selection.user_input}}"
   register: programappdata
 
-- name: "Checking if RClone Encrypted"
-  stat:
-    path: /var/plexguide/rclone-en.yes
-  register: encrypted
-
-- name: Stopping Docker Container - {{program_final.stdout}}
+- name: Stopping Docker Container - {{selection.user_input}}
   docker_container:
-    name: "{{program_final.stdout}}"
+    name: "{{selection.user_input}}"
     state: stopped
   ignore_errors: True
   when: running.stat.exists == True
@@ -88,32 +79,32 @@
 - debug: msg="Time Length can be Long or Short! Please Wait!"
   when: programappdata.stat.exists == True
 
-- name: Remove Old {{program_final.stdout}} from APPDATA
+- name: Remove Old {{selection.user_input}} from APPDATA
   file:
     path: "{{ item }}"
     state: absent
   with_items:
-    - "/opt/appdata/{{program_final.stdout}}"
+    - "/opt/appdata/{{selection.user_input}}"
 
 - name: Create Restore Folder
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
-    - "/opt/appdata/{{program_final.stdout}}"
+    - "/opt/appdata/{{selection.user_input}}"
   ignore_errors: yes
 
 - name: Unzip Folders
   unarchive:
-    src: "{{path.stdout}}/pgops/{{program_var.stdout}}.tar"
-    dest: "/opt/appdata/{{program_var.stdout}}"
+    src: "{{path.stdout}}/pgops/{{selection.user_input}}}.tar"
+    dest: "/opt/appdata/{{selection.user_input}}}"
     keep_newer: no
     owner: 1000
     group: 1000
     mode: 0775
   when: programgdrive.stat.exists == True
 
-- name: "Restart Docker Container - {{program_final.stdout}}"
+- name: "Restart Docker Container - {{selection.user_input}}"
   docker_container:
-    name: "{{program_final.stdout}}"
+    name: "{{selection.user_input}}"
     state: started
   ignore_errors: True
   when: running.stat.exists == True
@@ -124,10 +115,10 @@
     state: absent
   ignore_errors: True
   with_items:
-    - "{{path.stdout}}/pgops/{{program_var.stdout}}.tar"
+    - "{{path.stdout}}/pgops/{{selection.user_input}}}.tar"
 
-- debug: msg="Program is now backed up to your Google Drive - {{program_final.stdout}}"
+- debug: msg="Program is now backed up to your Google Drive - {{selection.user_input}}"
   when: programappdata.stat.exists == True
 
-- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Restore {{program_final.stdout}}"
+- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Restore {{selection.user_input}}"
   when: programappdata.stat.exists == False
