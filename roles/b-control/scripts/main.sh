@@ -28,4 +28,8 @@ if [ "$menu" == "mbackup" ]; then
   bash /opt/plexguide/roles/b-mbackup/scripts/bmass.sh
 fi
 
+if [ "$menu" == "mrestore" ]; then
+  bash /opt/plexguide/roles/b-mrestore/scripts/rmass.sh
+fi
+
 done

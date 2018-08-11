@@ -61,8 +61,5 @@
     tasks_from: "main.yml"
   when: fchoice == "6"
 
-- name: Restore Mass
-  include_role:
-    name: backup-restore
-    tasks_from: "rmass.yml"
+- shell: "echo mrestore > /var/plexguide/br.menu"
   when: fchoice == "7"
