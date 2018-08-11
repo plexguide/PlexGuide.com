@@ -69,10 +69,7 @@
     tasks_from: "main.yml"
   when: fchoice == "4"
 
-- name: Backup Mass
-  include_role:
-    name: backup-restore
-    tasks_from: "bmass.yml"
+- script: /opt/plexguide/roles/b-mbackup/scripts/bmass.sh
   when: fchoice == "5"
 
 - name: Restore Solo
