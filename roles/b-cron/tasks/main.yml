@@ -1,0 +1,87 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Register HD Path
+  shell: "cat /var/plexguide/server.hd.path"
+  register: path
+  ignore_errors: True
+
+- name: "Pulling Selected Program"
+  shell: "cat /tmp/program_var"
+  register: program_var
+
+- name: "Server ID for Backup"
+  shell: "cat /var/plexguide/server.id"
+  register: server_id
+
+- script: /opt/plexguide/roles/b-sbackup/scripts/soloselect.sh
+
+- name: "Checking if Program is Running"
+  stat:
+    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  register: running
+
+- name: "Remove Static Path"
+  shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  when: running.stat.exists == True
+
+- name: "Wait 1 Seconds"
+  wait_for:
+    timeout: 1
+
+- name: "Checking if RClone Encrypted"
+  stat:
+    path: /var/plexguide/rclone-en.yes
+  register: encrypted
+
+- name: Stopping Docker Container - {{program_var.stdout}}
+  docker_container:
+    name: "{{program_var.stdout}}"
+    state: stopped
+  ignore_errors: True
+  when: running.stat.exists == True
+
+- name: "Backing Up Program to GDrive - {{program_var.stdout}}"
+  archive:
+    path:
+    - "/opt/appdata/{{program_var.stdout}}/*"
+    dest: "{{path.stdout}}/pgops/{{program_var.stdout}}.tar"
+    format: tar
+
+############ BACKUP OTHER - END
+- name: "Restart Docker Container - {{program_var.stdout}}"
+  docker_container:
+    name: "{{program_var.stdout}}"
+    state: started
+  ignore_errors: True
+  when: running.stat.exists == True
+
+- name: Uploading Backup to Google Drive
+  shell: "rclone copy {{path.stdout}}/pgops/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  when: encrypted.stat.exists == False
+
+- name: Uploading Backup to Google Drive (encrypted)
+  shell: "rclone copy /{{path.stdout}}/pgops/{{program_var.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  when: encrypted.stat.exists == True
+
+- name: Remove TEMP Backup!
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items:
+    - "{{path.stdout}}/pgops/{{program_var.stdout}}.tar"
