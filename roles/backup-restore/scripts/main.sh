@@ -15,10 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+clear
 echo "on" > /var/plexguide/br.menu
 menu=$(echo "on")
 
 while [ "$menu" == "on" ]; do
 menu=$(cat /var/plexguide/br.menu)
 ansible-playbook /opt/plexguide/pg.yml --tags backup-restore
+menu=$(cat /var/plexguide/br.menu)
 done
