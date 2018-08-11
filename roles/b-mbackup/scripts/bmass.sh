@@ -16,17 +16,17 @@
 #
 #################################################################################
 echo 'INFO - @Backup Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-server=$( cat /var/plexguide/server.id )
+serverid=$( cat /var/plexguide/server.id )
 
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
-mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-$d"
+mfolder="/mnt/gdrive/plexguide/backup/$serverid/backup-$d"
 
 mkdir -p $mfolder 1>/dev/null 2>&1
-mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
+mv /mnt/gdrive/plexguide/backup/$serverid/* $mfolder 1>/dev/null 2>&1
 
 ##################################################### Builds Backup List - START
 #### Recall Download Point

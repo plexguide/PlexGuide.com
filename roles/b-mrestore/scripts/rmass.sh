@@ -16,17 +16,17 @@
 #
 #################################################################################
 echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-server=$( cat /var/plexguide/server.id )
+serverid=$( cat /var/plexguide/server.id )
 
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
 touch /opt/appdata/plexguide/restore 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
-mfolder="/mnt/gdrive/plexguide/restore.old/$server/restore-$d"
+mfolder="/mnt/gdrive/plexguide/restore/$serverid/restore-$d"
 
 mkdir -p $mfolder 1>/dev/null 2>&1
-mv /mnt/gdrive/plexguide/restore/$server/* $mfolder 1>/dev/null 2>&1
+mv /mnt/gdrive/plexguide/restore/$serverid/* $mfolder 1>/dev/null 2>&1
 
 ##################################################### Builds Restore List - START
 #### Recall Download Point
@@ -37,7 +37,7 @@ mnt=$(cat /var/plexguide/server.hd.path)
 mkdir -p $mnt/pgops
 
 #### Recalls List for Restore Operations
-ls -la /mnt/gdrive/plexguide/backup/$server | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
+ls -la /mnt/gdrive/plexguide/backup/$serverid | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
 
 #### Combine for Simplicity
 path=$(echo $mnt/pgops/restore.list)
