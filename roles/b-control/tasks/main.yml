@@ -16,8 +16,6 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
-  
 - name: Backup & Restore
   pause:
     prompt: "\nWelcome to the PG Backup & Restore!
@@ -46,10 +44,6 @@
 
 - name: Exiting Interface
   shell: "echo break > /var/plexguide/br.menu"
-  when: fchoice == "1"
-
-- name: End PlayBook - Backup & Restore
-  meta: end_play
   when: fchoice == "1"
 
 - name: Backup Solo
