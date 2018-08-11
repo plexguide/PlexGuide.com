@@ -46,6 +46,12 @@ do
                 echo "[PGBlitz] Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
+                FILESIZE1=`du -k "$i" | cut -f1`
+                sleep 3
+                FILESIZE2=`du -k "$i" | cut -f1`
+                if [ $FILESIZE1 < $FILESIZE2 ]; then
+                    continue
+                fi
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -54,16 +60,24 @@ do
                     
                     PID=$!
                     FILEBASE=`basename $i`
-                    
+
+                    #append filesize to GDSAAMOUNT
+                    GDSAAMOUNT=`expr $GDSAAMOUNT + $FILESIZE2`
+
                     #add transfer to pid directory
                     echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
                     
-                    #increase or reset $GDSAUSE
-                    if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
-                        GDSAUSE=0
-                    else
-                        GDSAUSE=`expr $GDSAUSE + 1`
+                    #increase or reset $GDSAUSE?
+                    if [ $GDSAAMOUNT => 751619276800 ]; then;
+                        if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
+                            GDSAUSE=0
+                            GDSAAMOUNT=0
+                        else
+                            GDSAUSE=`expr $GDSAUSE + 1`
+                            GDSAAMOUNT=0
+                        fi    
                     fi
+                    
                 else
                     echo "[PGBlitz] Already 8 transfers running, waiting for next loop" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     break
