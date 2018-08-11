@@ -37,7 +37,7 @@
   register: backlistcheck
 
 - name: "Building List"
-  shell: "cat {{path.stdout}}/pgops/restore.build"
+  shell: "cat {{path.stdout}}/pgops/restore.list"
   register: backlist
   when: backlistcheck.stat.exists == True
 

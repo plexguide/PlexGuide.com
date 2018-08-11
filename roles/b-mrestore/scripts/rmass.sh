@@ -59,6 +59,7 @@ sed -i -e "/cloudblitz/d" $path
 clear
 #### Loops Through Built Up List
 while read p; do
+  p=${p::-4}
   echo $p > /tmp/program_var
   running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
   if [ "$p" == "$running" ];then
