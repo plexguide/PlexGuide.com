@@ -73,7 +73,7 @@ case $CHOICE in
     bash /opt/plexguide/menus/settings/main.sh ;;
   I)
     echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/backup-restore/scripts/main.sh ;;
+    bash /opt/plexguide/roles/b-control/scripts/main.sh ;;
   J)
     echo 'INFO - Selected: PG Upgrades Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menus/version/main.sh

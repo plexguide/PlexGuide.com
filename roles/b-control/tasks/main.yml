@@ -65,8 +65,8 @@
 
 - name: Backup Solo
   include_role:
-    name: backup-restore
-    tasks_from: "bsolo.yml"
+    name: b-sbackup
+    tasks_from: "main.yml"
   when: fchoice == "4"
 
 - name: Backup Mass

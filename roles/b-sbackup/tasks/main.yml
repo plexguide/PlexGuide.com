@@ -61,7 +61,6 @@
   shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
   when: running.stat.exists == True
 
-
 - debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
 
 - name: "Wait 1 Seconds"
