@@ -71,8 +71,8 @@ while read p; do
   ansible-playbook /opt/plexguide/pg.yml --tags b-mrestore
   rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
   echo ""
-  echo "$p Backed Up"
-  sleep 4
+  echo "$p - restored"
+  sleep 3
 done <$path
 
 read -n 1 -s -r -p "Mass Restore Process Complete - Press [ANY KEY] to CONTINUE"
