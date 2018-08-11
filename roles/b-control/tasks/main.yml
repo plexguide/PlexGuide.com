@@ -50,6 +50,10 @@
   shell: "echo cserverid > /var/plexguide/br.menu"
   when: fchoice == "2"
 
+- name: Change Server ID
+  shell: "echo rserverid > /var/plexguide/br.menu"
+  when: fchoice == "2"
+
 - name: Backup Solo
   include_role:
     name: b-sbackup
