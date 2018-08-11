@@ -50,6 +50,3 @@ while read p; do
   echo -n $p >> $mnt/pgops/backup.build
   echo -n " " >> $mnt/pgops/backup.build
 done <$mnt/pgops/backup.list
-ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
-echo ""
-read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue"
