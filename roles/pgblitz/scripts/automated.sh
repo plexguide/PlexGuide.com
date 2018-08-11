@@ -22,7 +22,7 @@ touch /opt/appdata/pgblitz/vars/automated
 
 echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --title "NOTE" --msgbox "\nInstalling requirements" 0 0
-cd /opt/plexguide/roles/pgblitz/WCKD/
+cd  /opt/plexguide/roles/pgblitz/scripts/WCKD/
 pip3 install -r requirements.txt
 read -n 1 -s -r -p "Press any key to continue"
 dialog --title "Auto SA Creation" \
