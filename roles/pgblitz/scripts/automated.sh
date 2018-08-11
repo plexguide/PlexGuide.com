@@ -80,9 +80,9 @@ case $response in
         WEBUI="no"
         ;;
 esac
-echo $final
-echo $WEBUI
-read -n 1 -s -r -p "Press any key to continue"
+echo "final: $final"
+echo "WEBUI: $WEBUI"
+read -n 1 -s -r -p "Press any key to continue" #debug
 ### Execute Playbook Based on Version
 if [ "$final" == "unencrypted" ];then
     if [ "$WEBUI" == "no" ]; then
@@ -97,7 +97,7 @@ elif [ "$final" == "encrypted" ];then
         ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
     fi
 fi
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Press any key to continue" # debug
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]; then
     echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
