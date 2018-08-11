@@ -69,25 +69,34 @@ bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
 temp=$( cat /tmp/pg.gdsa.build )
 echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
-### Execute Playbook Based on Version
-if [ "$final" == "unencrypted" ];then
-    ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
-elif [ "$final" == "encrypted" ];then
-    ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
-fi
-
+#ask about PGBlitz GUI
 dialog --title "PGBLitz WebGUI" \
        --yesno "Would you like to deploy the new PGBlitz WebGUI?" 7 60
 response=$?
 case $response in
     0)
-        echo 'INFO - DEPLOYING PGBLITZ WEBGUI' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
+        WEBUI="yes";
         ;;
     1)
-        echo 'INFO - NOT DEPLOYING PGBLITZ WEBGUI' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        WEBUI="no";
         ;;
 esac
+
+### Execute Playbook Based on Version
+if [ "$final" == "unencrypted" ];then
+    if [ "$WEBUI" == "no" ]; then
+        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted,gui
+    else
+        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+    fi
+elif [ "$final" == "encrypted" ];then
+    if [ "$WEBUI" == "no" ]; then
+        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags gui
+    else
+        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
+    fi
+fi
+
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]; then
     echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
