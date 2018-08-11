@@ -24,14 +24,13 @@ echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexg
 dialog --title "NOTE" --msgbox "\nInstalling requirements" 0 0
 cd  /opt/plexguide/roles/pgblitz/scripts/WCKD/
 pip3 install -r requirements.txt
-read -n 1 -s -r -p "Press any key to continue"
 dialog --title "Auto SA Creation" \
        --yesno "Are you planning to use encryption?\n\nENCRYPTION CURRENTLY NOT WORKING!!" 7 60
 response=$?
 case $response in
     0)
         dialog --title "NOTE" --msgbox "\nYou were told it's not working yet ;-)" 0 0
-        final = "encrypted";
+        final = "encrypted"
         ;;
     1)
         echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -75,13 +74,15 @@ dialog --title "PGBLitz WebGUI" \
 response=$?
 case $response in
     0)
-        WEBUI="yes";
+        WEBUI="yes"
         ;;
     1)
-        WEBUI="no";
+        WEBUI="no"
         ;;
 esac
-
+echo $final
+echo $WEBUI
+read -n 1 -s -r -p "Press any key to continue"
 ### Execute Playbook Based on Version
 if [ "$final" == "unencrypted" ];then
     if [ "$WEBUI" == "no" ]; then
@@ -96,7 +97,7 @@ elif [ "$final" == "encrypted" ];then
         ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
     fi
 fi
-
+read -n 1 -s -r -p "Press any key to continue"
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]; then
     echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
