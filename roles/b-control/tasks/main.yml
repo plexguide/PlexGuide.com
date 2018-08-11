@@ -16,12 +16,20 @@
 #
 #################################################################################
 ---
+- name: Recall Current ID
+  shell: "cat /var/plexguide/server.id"
+  register: cid
+
+- name: Recall Recovery ID
+  shell: "cat /var/plexguide/restore.id"
+  register: rid
+
 - name: Backup & Restore
   pause:
     prompt: "\nWelcome to the PG Backup & Restore!
 \n\n1.  Exit Backup & Restore
-\n2.  Change Current  ID: server01
-\n3.  Change Recovery ID: server01
+\n2.  Change Current  ID: {{cid.stdout}}
+\n3.  Change Recovery ID: {{rid.stdout}}
 \n4.  Backup : Solo Program
 \n5.  Backup : Mass Backup
 \n6.  Restore: Solo Program
@@ -45,6 +53,14 @@
 - name: Exiting Interface
   shell: "echo break > /var/plexguide/br.menu"
   when: fchoice == "1"
+
+- name: Change Server ID
+  shell: "echo cserverid > /var/plexguide/br.menu"
+  when: fchoice == "2"
+
+- name: Change Server ID
+  shell: "echo rserverid > /var/plexguide/br.menu"
+  when: fchoice == "3"
 
 - name: Backup Solo
   include_role:

@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,12 +15,11 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-rm -r /tmp/backup.build 1>/dev/null 2>&1
-bash /opt/plexguide/roles/backup/scripts/list.sh
-#### Commenting Out To Let User See
-while read p; do
-  echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
+#### Recall Download Point
+mnt=$(cat /var/plexguide/server.hd.path)
 
-ansible-role backup
+#### Build up list backup list for the main.yml execution
+while read p; do
+  echo -n $p >> $mnt/pgops/backup.build
+  echo -n " " >> $mnt/pgops/backup.build
+done <$mnt/pgops/backup.list
