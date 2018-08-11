@@ -25,6 +25,9 @@
   shell: "cat /tmp/program_var"
   register: program_var
 
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - PGCron for {{program_var.stdout}} started!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+
 - name: "Server ID for Backup"
   shell: "cat /var/plexguide/server.id"
   register: server_id
@@ -85,3 +88,6 @@
     state: absent
   with_items:
     - "{{path.stdout}}/pgops/{{program_var.stdout}}.tar"
+
+- name: Logging Ansible Role Information
+  shell: "echo 'INFO - PGCron for {{program_var.stdout}} completed!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
