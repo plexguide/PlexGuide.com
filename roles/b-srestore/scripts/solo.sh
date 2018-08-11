@@ -17,16 +17,17 @@
 #################################################################################
 #### Recall Download Point
 mnt=$(cat /var/plexguide/server.hd.path)
+serverid=$(cat /var/plexguide/server.id)
 
 clear
-rm -r $mnt/pgops/backup.build 1>/dev/null 2>&1
-touch $mnt/pgops/backup.build 1>/dev/null 2>&1
+rm -r $mnt/pgops/restore.build 1>/dev/null 2>&1
+touch $mnt/pgops/restore.build 1>/dev/null 2>&1
 
-#### Recalls List for Backup Operations
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > $mnt/pgops/backup.list
+#### Recalls List for restore Operations
+ls -la /mnt/gdrive/plexguide/backup/$serverid | awk '{ print $9 }' > $mnt/pgops/restore.list
 
 #### Combine for Simplicity
-path=$(echo $mnt/pgops/backup.list)
+path=$(echo $mnt/pgops/restore.list)
 
 #### Remove Items from List
 sed -i -e "/traefik/d" $path
@@ -43,10 +44,10 @@ sed -i -e "/cloudplow/d" $path
 sed -i -e "/phlex/d" $path
 sed -i -e "/pgblitz/d" $path
 sed -i -e "/cloudblitz/d" $path
-##################################################### Builds Backup List - END
+##################################################### Builds restore List - END
 
-#### Build up list backup list for the main.yml execution
+#### Build up list restore list for the main.yml execution
 while read p; do
-  echo -n $p >> $mnt/pgops/backup.build
-  echo -n " " >> $mnt/pgops/backup.build
-done <$mnt/pgops/backup.list
+  echo -n $p >> $mnt/pgops/restore.build
+  echo -n " " >> $mnt/pgops/restore.build
+done <$mnt/pgops/restore.list
