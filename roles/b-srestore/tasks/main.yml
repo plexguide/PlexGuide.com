@@ -91,7 +91,7 @@
 
 - debug: msg="Downloading Content from GDrive! (Please Wait)"
 
-- name: "Downloading from Google Drive - {{program_var.stdout}}"
+- name: "Downloading from Google Drive - {{selection.user_input}}"
   shell: "rclone copy --tpslimit 6 \
           --config /root/.config/rclone/rclone.conf \
           --drive-chunk-size=64M \
