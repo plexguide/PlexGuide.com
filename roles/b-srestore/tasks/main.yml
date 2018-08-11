@@ -53,10 +53,10 @@
   register: running
 
 - name: "Remove Static Path"
-  shell: "rm -r {{path.stdout}}/pgops/{{selection.user_input}}}.running"
+  shell: "rm -r {{path.stdout}}/pgops/{{selection.user_input}}.running"
   when: running.stat.exists == True
 
-- debug: msg="{{selection.user_input}}} running? {{running.stat.exists}}"
+- debug: msg="{{selection.user_input}} running? {{running.stat.exists}}"
 
 - name: "Wait 1 Seconds"
   wait_for:
@@ -94,8 +94,8 @@
 
 - name: Unzip Folders
   unarchive:
-    src: "{{path.stdout}}/pgops/{{selection.user_input}}}.tar"
-    dest: "/opt/appdata/{{selection.user_input}}}"
+    src: "{{path.stdout}}/pgops/{{selection.user_input}}.tar"
+    dest: "/opt/appdata/{{selection.user_input}}"
     keep_newer: no
     owner: 1000
     group: 1000
@@ -114,4 +114,4 @@
     state: absent
   ignore_errors: True
   with_items:
-    - "{{path.stdout}}/pgops/{{selection.user_input}}}.tar"
+    - "{{path.stdout}}/pgops/{{selection.user_input}}.tar"
