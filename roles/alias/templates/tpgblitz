@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Maintainer: Admin9705 & Deiteq
+# Maintainer: Admin9705 & Deiteq & PhysK
 # URL:        https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,4 +15,17 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-tail /opt/appdata/pgblitz/rclone.log
+cd /opt/appdata/pgblitz/logs
+while [ 1 ]
+do
+        for filename in *
+        do
+                if [ -f $filename ]; then
+                        echo "<<<====== $filename ======>>>"
+                        tail "$filename"
+                else
+                        echo "Nothing Uploading"
+                fi
+        done
+        sleep 5
+done
