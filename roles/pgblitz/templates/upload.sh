@@ -74,12 +74,19 @@ rclone moveto --tpslimit 6 --checkers=20 \
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 #waiting for file to become avalible from remote and then vfs/forget it
-rclone rc vfs/forget file=$FILEDIR/$FILEBASE
+rclone rc vfs/forget file="$FILEDIR/$FILEBASE"
 echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ENDTIME=`date +%s`
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\",\"starttime\": \"$STARTTIME\",\"endtime\": \"$ENDTIME\"}" > $JSONFILE
+
+#de-dupe just in case
+if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+    rclone dedupe tcrypt:$FILEDIR --dedupe-mode newest
+else
+    rclone dedupe tdrive:$FILEDIR --dedupe-mode newest
+fi
 
 echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 #cleanup

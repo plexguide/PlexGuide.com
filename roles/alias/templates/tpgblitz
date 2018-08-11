@@ -23,8 +23,6 @@ do
                 if [ -f $filename ]; then
                         echo "<<<====== $filename ======>>>"
                         tail "$filename"
-                else
-                        echo "Nothing Uploading"
                 fi
         done
         sleep 5
