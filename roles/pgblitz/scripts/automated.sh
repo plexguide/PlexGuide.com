@@ -30,6 +30,10 @@ dialog --title "Auto SA Creation" \
 response=$?
 case $response in
     0)
+        dialog --title "NOTE" --msgbox "\nYou were told it's not working yet ;-)" 0 0
+        final = "encrypted";
+        ;;
+    1)
         echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
@@ -46,10 +50,6 @@ case $response in
         dialog --title "NOTE" --msgbox "\nYour emails should be auto added to your tdrive!\nPress [ENTER] to Continue!" 0 0
         dialog --title "NOTE" --msgbox "\nAll done! Now to continue deploying PGBlitz!!\nPress [ENTER] to Continue!" 0 0
         final = "unencrypted"
-        ;;
-    1)
-        dialog --title "NOTE" --msgbox "\nYou were told it's not working yet ;-)" 0 0
-        final = "encrypted";
         ;;
 esac
 
