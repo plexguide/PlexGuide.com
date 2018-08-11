@@ -71,10 +71,10 @@ while read p; do
   sleep 3
 done <$path
 
+echo ""
 read -n 1 -s -r -p "Mass Backup Process Complete - Press [ANY KEY] to CONTINUE"
 
 rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
-dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
 clear
 
 exit 0

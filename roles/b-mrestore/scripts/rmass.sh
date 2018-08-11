@@ -75,10 +75,10 @@ while read p; do
   sleep 3
 done <$path
 
+echo ""
 read -n 1 -s -r -p "Mass Restore Process Complete - Press [ANY KEY] to CONTINUE"
 
 rm -r /opt/appdata/plexguide/restore 1>/dev/null 2>&1
-dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!" 0 0
 clear
 
 exit 0
