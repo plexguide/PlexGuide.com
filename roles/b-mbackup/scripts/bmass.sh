@@ -64,7 +64,7 @@ while read p; do
   if [ "$p" == "$running" ];then
   touch $mnt/pgops/$p.running 1>/dev/null 2>&1
   fi
-  ansible-playbook /opt/plexguide/pg.yml --tags b-sbackup
+  ansible-playbook /opt/plexguide/pg.yml --tags b-mbackup
   rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
   echo ""
   echo "$p Backed Up"

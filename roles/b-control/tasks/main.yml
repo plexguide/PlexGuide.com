@@ -69,7 +69,8 @@
     tasks_from: "main.yml"
   when: fchoice == "4"
 
-- script: /opt/plexguide/roles/b-mbackup/scripts/bmass.sh
+
+- shell: "echo mbackup > /var/plexguide/br.menu"
   when: fchoice == "5"
 
 - name: Restore Solo

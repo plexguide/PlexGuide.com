@@ -19,8 +19,13 @@ clear
 echo "on" > /var/plexguide/br.menu
 menu=$(echo "on")
 
-while [ "$menu" == "on" ]; do
+while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/br.menu)
 ansible-playbook /opt/plexguide/pg.yml --tags b-control
 menu=$(cat /var/plexguide/br.menu)
+
+if [ "$menu" == "mbackup" ]; then
+  bash /opt/plexguide/roles/b-mbackup/scripts/bmass.sh
+fi
+
 done
