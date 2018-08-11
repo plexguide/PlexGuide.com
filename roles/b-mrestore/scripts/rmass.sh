@@ -30,11 +30,14 @@ mv /mnt/gdrive/plexguide/restore/$server/* $mfolder 1>/dev/null 2>&1
 
 ##################################################### Builds Restore List - START
 #### Recall Download Point
+mnt=/mnt
+server=server01
+
 mnt=$(cat /var/plexguide/server.hd.path)
 mkdir -p $mnt/pgops
 
 #### Recalls List for Restore Operations
-ls -la /mnt/gdrive/plexguide/backup/$serverid | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
+ls -la /mnt/gdrive/plexguide/backup/$server | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
 
 #### Combine for Simplicity
 path=$(echo $mnt/pgops/restore.list)
