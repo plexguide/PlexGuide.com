@@ -21,7 +21,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/br.menu)
-ansible-playbook /opt/plexguide/pg.yml --tags b-control
+ansible-playbook /opt/plexguide/pg.yml --tags menu-start
 menu=$(cat /var/plexguide/br.menu)
 
 if [ "$menu" == "mbackup" ]; then
