@@ -24,7 +24,11 @@ mkdir -p /opt/appdata/pgblitz/json/
 mkdir -p /opt/appdata/pgblitz/logs/
 
 #### Generates the GDSA List from the Processed Keys
-GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
+if [ -e /opt/appdata/pgblitz/vars/automated ]; then
+    GDSAARRAY=(`ls -la $path/automated | awk '{print $9}' | grep PG`)
+else
+    GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
+fi
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 GDSAUSE=0
 while [ 1 ]

@@ -15,12 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-clear
-rm -r /tmp/backup.build 1>/dev/null 2>&1
-touch /tmp/backup.build 1>/dev/null 2>&1
-
 #### Recall Download Point
 mnt=$(cat /var/plexguide/server.hd.path)
+
+clear
+rm -r $mnt/pgops/backup.build 1>/dev/null 2>&1
+touch $mnt/pgops/backup.build 1>/dev/null 2>&1
 
 #### Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > $mnt/pgops/backup.list
@@ -50,6 +50,3 @@ while read p; do
   echo -n $p >> $mnt/pgops/backup.build
   echo -n " " >> $mnt/pgops/backup.build
 done <$mnt/pgops/backup.list
-ansible-playbook /opt/plexguide/pg.yml --tags backup --extra-vars "switch=on"
-echo ""
-read -n 1 -s -r -p "Program Backed Up - Press [Any Key] to Continue"

@@ -18,7 +18,11 @@
 downloadpath=$(cat /var/plexguide/server.hd.path)
 path=/opt/appdata/pgblitz/keys
 
-ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+if [ -e /opt/appdata/pgblitz/vars/automated ]; then
+    ls -la $path/automated | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+else
+    ls -la $path/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+fi
 rm -r /tmp/pg.gdsa.build 1>/dev/null 2>&1
 
 while read p; do

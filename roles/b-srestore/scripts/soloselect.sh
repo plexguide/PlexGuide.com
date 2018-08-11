@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,7 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-switch: "off"
-pgrole: "backup"
-program_var: "null"
+p=$(cat /tmp/program_var)
+mnt=$(cat /var/plexguide/server.hd.path)
+
+running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
+if [ "$p" == "$running" ];then
+touch $mnt/pgops/$p.running
+fi
