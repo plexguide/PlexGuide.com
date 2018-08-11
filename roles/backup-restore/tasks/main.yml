@@ -59,11 +59,26 @@
   set_fact:
     fchoice: "{{choice.user_input}}"
 
-- shell: "bash /opt/plexguide/roles/deploychoice.sh"
-  when: fchoice == "1"
+- name: Backup Solo
+  include_role:
+    name: backup-restore
+    tasks_from: "bsolo.yml"
+  when: fchoice == "4"
 
-- shell: "bash /opt/plexguide/roles/deploychoice.sh"
-  when: fchoice == "2"
+- name: Backup Mass
+  include_role:
+    name: backup-restore
+    tasks_from: "bmass.yml"
+  when: fchoice == "5"
 
-- shell: "echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh && bash /opt/plexguide/roles/programs/main.sh"
-  when: fchoice == "3"
+- name: Restore Solo
+  include_role:
+    name: backup-restore
+    tasks_from: "rsolo.yml"
+  when: fchoice == "6"
+
+- name: Restore Mass
+  include_role:
+    name: backup-restore
+    tasks_from: "rmass.yml"
+  when: fchoice == "7"
