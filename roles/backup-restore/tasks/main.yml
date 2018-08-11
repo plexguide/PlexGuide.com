@@ -59,6 +59,10 @@
   set_fact:
     fchoice: "{{choice.user_input}}"
 
+- name: Register Domain
+  shell: "echo "break" > /var/plexguide/br.menu"
+  when: fchoice == "1"
+
 - name: Backup Solo
   include_role:
     name: backup-restore
