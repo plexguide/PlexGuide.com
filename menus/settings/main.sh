@@ -16,9 +16,9 @@
 #
 #################################################################################
 echo 'INFO - @Settings Menu - GDrive Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-HEIGHT=16
+HEIGHT=14
 WIDTH=62
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=8
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
 TITLE="PG Settings"
 MENU="Make Your Selection Choice:"
@@ -29,8 +29,6 @@ OPTIONS=(A "Download Path  : Change the DL Path"
          D "WatchTower     : Auto-Update Application Manager"
          E "Import Media   : Import Existing Media to GDrive"
          F "Change Time    : Change the Server Time"
-         G "TLD Application: Set an App @ Top Level Domain (TLD)"
-         H "Server ID      : Change Default Server ID"
          Z "Exit")
 
 CHOICE=$(dialog --clear \
@@ -61,24 +59,6 @@ case $CHOICE in
   F)
     echo 'INFO - Selected: Import Media' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dpkg-reconfigure tzdata ;;
-  G)
-    echo 'INFO - Selected: 2nd HD Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    echo "off" > /var/plexguide/tld.control
-    ansible-playbook /opt/plexguide/pg.yml --tags tld
-    echo ""
-    read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
-    echo ""
-    control=$(cat /var/plexguide/tld.control)
-    if [ "$control" == "on" ]; then
-      bash /opt/plexguide/roles/tld/scripts/rebuild.sh
-    else
-      sleep 0.5
-      echo ""
-      read -n 1 -s -r -p "User Exited! - Press [Any] Key to Continue"
-    fi ;;
-  H)
-    echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/menus/backup-restore/server.sh ;;
   Z)
     clear
     exit 0 ;;
