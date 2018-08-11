@@ -51,7 +51,7 @@
          choice.user_input == "4" or
          choice.user_input == "5" or
          choice.user_input == "6" or
-         choice.user_input == "7" or
+         choice.user_input == "7"
   retries: 99
   delay: 1
 
