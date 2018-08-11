@@ -23,10 +23,6 @@
   register: path
   ignore_errors: True
 
-- name: "Pulling Selected Program"
-  shell: "cat {{path.stdout}}/pgops/program_var"
-  register: program_var
-
 - name: "Server ID for Restore"
   shell: "cat /var/plexguide/server.id"
   register: server_id
