@@ -38,8 +38,6 @@
 \n8.  PG Backup & Restore
 \n9.  PG Settings & Tools
 
-
-
 \n\nType a Number Choice"
   register: choice
   until: choice.user_input == "1" or
