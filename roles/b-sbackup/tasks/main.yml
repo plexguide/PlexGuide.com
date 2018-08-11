@@ -32,7 +32,6 @@
   shell: "cat /var/plexguide/server.id"
   register: server_id
 
-#### Function Soley for Single App Backup - START
 - name: "Checking if Building List Exists"
   stat:
     path: "{{path.stdout}}/pgops/backup.build"
@@ -42,14 +41,6 @@
   shell: "cat {{path.stdout}}/pgops/backup.build"
   register: backlist
   when: backlistcheck.stat.exists == True
-#### Function Soley for Single App Backup - END
-
-- name: "Checking if Program is Running"
-  stat:
-    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
-  register: running
-
-- debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
 
 - name: Prompt User for Program
   pause:
@@ -60,6 +51,13 @@
   shell: "echo {{selection.user_input}} > /tmp/program_var"
 
 - script: /opt/plexguide/roles/b-sbackup/scripts/soloselect.sh
+
+- name: "Checking if Program is Running"
+  stat:
+    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  register: running
+
+- debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
 
 - name: "Wait 1 Seconds"
   wait_for:
