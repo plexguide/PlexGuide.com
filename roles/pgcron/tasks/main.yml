@@ -85,7 +85,7 @@
   when: askcron.user_input == "1"
 
 - name: Build Cron Job File
-  shell: echo "ansible-playbook /opt/plexguide/pg.yml --tags backup" >> /opt/appdata/plexguide/cron/{{pgrole}}
+  shell: echo "ansible-playbook /opt/plexguide/pg.yml --tags b-cron" >> /opt/appdata/plexguide/cron/{{pgrole}}
   when: askcron.user_input == "1"
 
 - name: Build Cron Job Schedule
