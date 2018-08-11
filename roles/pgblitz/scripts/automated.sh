@@ -18,6 +18,7 @@
 
 export NCURSES_NO_UTF8_ACS=1
 echo "INFO - Setting Automated SA flag"  > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+mkdir -p /opt/appdata/pgblitz/vars/
 touch /opt/appdata/pgblitz/vars/automated
 
 echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -30,7 +31,7 @@ response=$?
 case $response in
     0)
         dialog --title "NOTE" --msgbox "\nYou were told it's not working yet ;-)" 0 0
-        final = "encrypted"
+        final="encrypted"
         ;;
     1)
         echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -42,13 +43,13 @@ case $response in
             bash /opt/plexguide/roles/deploychoice.sh
         fi
         if [ -e /root/.config/rclone/rclone.config ]; then
-            mv /root/.config/rclone/rclone.config /root/.config/rclone/rclone.config.old
-            dialog --title "NOTE" --msgbox "\nYou're old rclone config has been moved to /root/.config/rclone/rclone.config.old\nPress [ENTER] to Continue!" 0 0
+            mv /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.old
+            dialog --title "NOTE" --msgbox "\nYou're old rclone config has been moved to /root/.config/rclone/rclone.conf.old\nPress [ENTER] to Continue!" 0 0
         fi
-        mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.config
+        mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.conf
         dialog --title "NOTE" --msgbox "\nYour emails should be auto added to your tdrive!\nPress [ENTER] to Continue!" 0 0
         dialog --title "NOTE" --msgbox "\nAll done! Now to continue deploying PGBlitz!!\nPress [ENTER] to Continue!" 0 0
-        final = "unencrypted"
+        final="unencrypted"
         ;;
 esac
 
@@ -80,9 +81,6 @@ case $response in
         WEBUI="no"
         ;;
 esac
-echo "final: $final"
-echo "WEBUI: $WEBUI"
-read -n 1 -s -r -p "Press any key to continue" #debug
 ### Execute Playbook Based on Version
 if [ "$final" == "unencrypted" ];then
     if [ "$WEBUI" == "no" ]; then
@@ -97,7 +95,6 @@ elif [ "$final" == "encrypted" ];then
         ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
     fi
 fi
-read -n 1 -s -r -p "Press any key to continue" # debug
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]; then
     echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
