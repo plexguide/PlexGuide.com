@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+# Example from Ansible Playbooks
+- script: /opt/plexguide/roles/b-sbackup/scripts/solo.sh
+
 - name: Register HD Path
   shell: "cat /var/plexguide/server.hd.path"
   register: path
