@@ -16,6 +16,8 @@
 #
 #################################################################################
 p=$(cat /tmp/program_var)
+mnt=$(cat /var/plexguide/server.hd.path)
+
 running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
 if [ "$p" == "running" ];then
 touch $mnt/pgops/$p.running
