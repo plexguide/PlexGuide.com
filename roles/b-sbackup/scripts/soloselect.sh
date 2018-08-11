@@ -17,6 +17,6 @@
 #################################################################################
 p=$(cat /tmp/program_var)
 running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
-if [ "$p" == "$running" ];then
+if [ "$p" == "running" ];then
 touch $mnt/pgops/$p.running 1>/dev/null 2>&1
 fi
