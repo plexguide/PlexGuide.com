@@ -39,7 +39,7 @@
 
 - name: Prompt User for Program
   pause:
-    prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Restore! (Case Senstive)"
+    prompt: "\n[Detected Programs]:{{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Restore! (Case Senstive)"
   register: selection
 
 - name: Establishing Final Variable - Switch On

@@ -26,6 +26,8 @@ touch $mnt/pgops/restore.build 1>/dev/null 2>&1
 #### Recalls List for restore Operations
 ls -la /mnt/gdrive/plexguide/backup/$serverid | awk '{ print $9 }' > $mnt/pgops/restore.list
 
+
+
 #### Combine for Simplicity
 path=$(echo $mnt/pgops/restore.list)
 
@@ -48,6 +50,7 @@ sed -i -e "/cloudblitz/d" $path
 
 #### Build up list restore list for the main.yml execution
 while read p; do
+  p=${p::-4}
   echo -n $p >> $mnt/pgops/restore.build
   echo -n " " >> $mnt/pgops/restore.build
 done <$mnt/pgops/restore.list
