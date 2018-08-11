@@ -24,7 +24,7 @@ echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexg
 dialog --title "NOTE" --msgbox "\nInstalling requirements" 0 0
 cd /opt/plexguide/roles/pgblitz/WCKD/
 pip3 install -r requirements.txt
-
+read -n 1 -s -r -p "Press any key to continue"
 dialog --title "Auto SA Creation" \
        --yesno "Are you planning to use encryption?\n\nENCRYPTION CURRENTLY NOT WORKING!!" 7 60
 response=$?
