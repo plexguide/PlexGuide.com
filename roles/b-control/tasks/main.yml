@@ -69,14 +69,13 @@
     tasks_from: "main.yml"
   when: fchoice == "4"
 
-
 - shell: "echo mbackup > /var/plexguide/br.menu"
   when: fchoice == "5"
 
 - name: Restore Solo
   include_role:
-    name: backup-restore
-    tasks_from: "rsolo.yml"
+    name: b-srestore
+    tasks_from: "main.yml"
   when: fchoice == "6"
 
 - name: Restore Mass
