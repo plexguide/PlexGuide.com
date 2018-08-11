@@ -1,8 +1,9 @@
 """
+A W.C.K.D. Automation Project
+
 Made with love by NotTeresa 
 https://github.com/NotTeresa
 
-CHANGE NOT PLEXGUIDE TO PLEXGUIDE IF GOING INTO PRODUCTION
 """
 
 from __future__ import print_function
@@ -79,12 +80,12 @@ def teamdriveExists(drive):
 #Looks for existing PG project, if none exist, it makes a new one
 def listProject(cloudresourcemanager):
     projects = cloudresourcemanager.projects().list().execute().get('projects')
-    if args.verbosity >= 2: print("Look for 'notplexguide' within these projects:")
+    if args.verbosity >= 2: print("Look for 'plexguide' within these projects:")
     project_id = None
     for project in projects:
         if args.verbosity >= 2 and 'active' in project['lifecycleState'].lower():
             print(project['projectId'])
-        if 'active' in project['lifecycleState'].lower() and 'notplexguide' in project['projectId']:   
+        if 'active' in project['lifecycleState'].lower() and 'plexguide' in project['projectId']:   
             project_id = project['projectId']
     if project_id:
         return project_id
@@ -92,12 +93,12 @@ def listProject(cloudresourcemanager):
 def createProject(cloudresourcemanager):
     if args.verbosity >= 1: print("PlexGuide project does NOT exist, making new Google Cloud Project.")
     id_gen = ''.join(choice(digits) for i in range(8))
-    project_body = {'projectId': 'notplexguide-'+id_gen, 'name': 'PlexGuide'}
+    project_body = {'projectId': 'plexguide-'+id_gen, 'name': 'PlexGuide'}
     cloudresourcemanager.projects().create(body=project_body).execute()
-    if args.verbosity >= 1: print('New Google Cloud Project created: '+ 'notplexguide-'+id_gen)
+    if args.verbosity >= 1: print('New Google Cloud Project created: '+ 'plexguide-'+id_gen)
     if args.verbosity >= 1: print('Waiting 5 seconds to make sure project is reachable.')
     sleep(5)
-    return 'notplexguide-'+id_gen
+    return 'plexguide-'+id_gen
 
 def enableAPI(servicemanagement, project):
     body = {'consumerId': 'project:'+project}

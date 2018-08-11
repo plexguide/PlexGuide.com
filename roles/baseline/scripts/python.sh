@@ -42,7 +42,7 @@ pip3 install --upgrade --force-reinstall \
     netaddr \
     google-api-python-client \
     google_auth_oauthlib \
-    oauth2client
+    arrow
 pip install --upgrade --force-reinstall pip==9.0.3
 pip install --upgrade --force-reinstall setuptools
 pip install --upgrade --force-reinstall \
