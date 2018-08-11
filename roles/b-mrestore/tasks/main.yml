@@ -119,3 +119,6 @@
   ignore_errors: True
   with_items:
     - "{{path.stdout}}/pgops/{{selection.stdout}}.tar"
+
+- pause:
+    prompt: "\n Restore Process Complete - Press [ENTER]"

@@ -98,3 +98,6 @@
 
 - debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_final.stdout}}"
   when: programappdata.stat.exists == False
+
+- pause:
+    prompt: "\n Restore Process Complete - Press [ENTER]"
