@@ -67,7 +67,7 @@
 - name: "Checking {{selection.user_input}} location in APPDATA"
   stat:
     path: "/opt/appdata/{{selection.user_input}}"
-  register: programappdata
+  register: location
 
 - name: Stopping Docker Container - {{selection.user_input}}
   docker_container:
@@ -77,7 +77,7 @@
   when: running.stat.exists == True
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
-  when: programappdata.stat.exists == True
+  when: location.stat.exists == True
 
 - name: Remove Old {{selection.user_input}} from APPDATA
   file:
@@ -100,7 +100,6 @@
     owner: 1000
     group: 1000
     mode: 0775
-  when: programgdrive.stat.exists == True
 
 - name: "Restart Docker Container - {{selection.user_input}}"
   docker_container:
@@ -111,14 +110,8 @@
 
 - name: Remove Leftover Tar from /tmp
   file:
-    path: "{{ item }}"
+    path: "{{item}}"
     state: absent
   ignore_errors: True
   with_items:
     - "{{path.stdout}}/pgops/{{selection.user_input}}}.tar"
-
-- debug: msg="Program is now backed up to your Google Drive - {{selection.user_input}}"
-  when: programappdata.stat.exists == True
-
-- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Restore {{selection.user_input}}"
-  when: programappdata.stat.exists == False
