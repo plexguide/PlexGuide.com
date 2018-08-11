@@ -58,7 +58,7 @@ def auth2():
     secrets = "rclone.json"
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
-    print('Sorry! We need you to login again to configurate RCLONE.\nUse the same login credentials as you did just a few seconds ago!\nPlease go to this URL: {}'.format(auth_url))
+    print('We need you to login again to configurate RCLONE.\nUse the same login credentials as you did just a few seconds ago!\nPlease go to this URL: {}'.format(auth_url))
     code = input('Enter the authorization code: ')
     token = flow.fetch_token(code=code)
     return {'token': token}
@@ -235,7 +235,7 @@ def teamdriveSelect(valid):
 def invite(iam, drive, project, id, name):
     emails = iam.projects().serviceAccounts().list(name='projects/' + project).execute().get('accounts')
     for email in emails:
-        invite_body = {'role': 'organizer', 'type': 'user', 'emailAddress': email['email']}
+        invite_body = {'role': 'writer', 'type': 'user', 'emailAddress': email['email']}
         drive.permissions().create(fileId=id, supportsTeamDrives='true', body=invite_body).execute()
         if args.verbosity >= 1: print('Invited ' + email['displayName'] + ' to: ' + name)
 
@@ -273,21 +273,6 @@ def main(oauth, output):
         else: 
             print('User cancelled.')
             exit(1)
-
-def testing(oauth, output):
-    valid = teamdriveExists(drive=oauth['drive'])
-    if not gsuite(drive=oauth['drive']) and not valid:
-        print("Setup failed, user has no teamdrives and can't create teamdrives.")
-        exit(1)
-    else:
-        getProject = listProject(cloudresourcemanager=oauth['cloudresourcemanager'])
-        if not getProject:
-            project = createProject(cloudresourcemanager=oauth['cloudresourcemanager'])
-        else:
-            if args.verbosity >= 1: print('PlexGuide project already exists! Using ' + getProject + ' as main PG project.')
-            project = getProject
-        enableAPI(servicemanagement=oauth['servicemanagement'], project=project)
-
 
 if __name__ == '__main__':
     output = output()
