@@ -52,7 +52,7 @@
 
 - name: Change Server ID
   shell: "echo rserverid > /var/plexguide/br.menu"
-  when: fchoice == "2"
+  when: fchoice == "3"
 
 - name: Backup Solo
   include_role:
