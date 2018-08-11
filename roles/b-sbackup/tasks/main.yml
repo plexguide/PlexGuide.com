@@ -61,15 +61,14 @@
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
 
-- name: Execute Script
-  script: "/opt/plexguide/roles/backup/scripts/soloselect.sh"
+- script: /opt/plexguide/roles/b-sbackup/scripts/soloselect.sh
 
 - name: "Wait 2 Seconds"
   wait_for:
     timeout: 2
 #### Function Soley for Single App Backup Menu - END
 
-- name: Establishing Final Variable - Switch On
+- name: Establishing Final Variable
   shell: "cat /tmp/program_var"
   register: program_final
 
