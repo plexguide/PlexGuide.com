@@ -44,9 +44,11 @@
 
 - name: Exiting Interface
   shell: "echo break > /var/plexguide/br.menu"
-  meta: end_play
   when: fchoice == "1"
 
+- name: End PlayBook - Backup & Restore
+  meta: end_play
+  when: fchoice == "1"
 
 - name: Backup Solo
   include_role:
