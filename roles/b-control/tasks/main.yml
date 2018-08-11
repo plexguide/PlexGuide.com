@@ -16,6 +16,8 @@
 #
 #################################################################################
 ---
+- include_vars: variables.yml
+  
 - name: Backup & Restore
   pause:
     prompt: "\nWelcome to the PG Backup & Restore!
