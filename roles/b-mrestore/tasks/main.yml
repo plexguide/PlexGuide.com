@@ -16,6 +16,8 @@
 #
 #################################################################################
 ---
+- script: /opt/plexguide/roles/b-srestore/scripts/solo.sh
+
 - name: Register HD Path
   shell: "cat /var/plexguide/server.hd.path"
   register: path
@@ -23,78 +25,97 @@
 
 - name: "Pulling Selected Program"
   shell: "cat /tmp/program_var"
-  register: program_var
+  register: selection
 
-- name: "Server ID for Backup"
+- name: "Server ID for Restore"
   shell: "cat /var/plexguide/server.id"
   register: server_id
 
-- name: "Checking if Program is Running"
+- name: "Checking if Building List Exists"
   stat:
-    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
-  register: running
+    path: "{{path.stdout}}/pgops/restore.build"
+  register: backlistcheck
 
-- debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
+- name: "Building List"
+  shell: "cat {{path.stdout}}/pgops/restore.build"
+  register: backlist
+  when: backlistcheck.stat.exists == True
 
 - name: Establishing Final Variable - Switch On
-  shell: "cat /tmp/program_var"
-  register: program_final
+  shell: "echo {{selection.stdout}} > {{path.stdout}}/pgops/program_var"
 
-- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
+- script: /opt/plexguide/roles/b-srestore/scripts/soloselect.sh
 
-- name: "Checking {{program_final.stdout}} location in APPDATA"
+- name: "Checking if Program is Running"
   stat:
-    path: "/opt/appdata/{{program_final.stdout}}"
-  register: programappdata
+    path: "{{path.stdout}}/pgops/{{selection.stdout}}.running"
+  register: running
 
-- name: "Checking if RClone Encrypted"
+- name: "Remove Static Path"
+  shell: "rm -r {{path.stdout}}/pgops/{{selection.stdout}}.running"
+  when: running.stat.exists == True
+
+- debug: msg="{{selection.stdout}} running? {{running.stat.exists}}"
+
+- name: "Wait 1 Seconds"
+  wait_for:
+    timeout: 1
+
+- debug: msg="Temp Message - For {{selection.stdout}} - Server ID {{server_id.stdout}}"
+
+- name: "Checking {{selection.stdout}} location in APPDATA"
   stat:
-    path: /var/plexguide/rclone-en.yes
-  register: encrypted
+    path: "/opt/appdata/{{selection.stdout}}"
+  register: location
 
-- name: Stopping Docker Container - {{program_final.stdout}}
+- name: Stopping Docker Container - {{selection.stdout}}
   docker_container:
-    name: "{{program_final.stdout}}"
+    name: "{{selection.stdout}}"
     state: stopped
   ignore_errors: True
   when: running.stat.exists == True
 
-- debug: msg="Time Length can be Long or Short! Please Wait!"
-  when: programappdata.stat.exists == True
+- name: Remove Old {{selection.stdout}} from APPDATA
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/opt/appdata/{{selection.stdout}}"
+  when: location.stat.exists == True
 
-- name: "Backing Up Program to GDrive - {{program_final.stdout}}"
-  archive:
-    path:
-    - "/opt/appdata/{{program_final.stdout}}/*"
-    dest: "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
-    format: tar
+- name: Create Restore Folder
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - "/opt/appdata/{{selection.stdout}}"
 
-############ BACKUP OTHER - END
-- name: "Restart Docker Container - {{program_final.stdout}}"
+- debug: msg="Downloading Content from GDrive! (Please Wait)"
+
+- name: "Downloading from Google Drive - {{selection.stdout}}"
+  shell: "rclone copy --tpslimit 6 \
+          --config /root/.config/rclone/rclone.conf \
+          --drive-chunk-size=64M \
+          gdrive:/plexguide/backup/{{server_id.stdout}}/{{selection.stdout}}.tar {{path.stdout}}/pgops/"
+
+- name: Unzip Folders
+  unarchive:
+    src: "{{path.stdout}}/pgops/{{selection.stdout}}.tar"
+    dest: "/opt/appdata/{{selection.stdout}}"
+    keep_newer: no
+    owner: 1000
+    group: 1000
+    mode: 0775
+
+- name: "Restart Docker Container - {{selection.stdout}}"
   docker_container:
-    name: "{{program_final.stdout}}"
+    name: "{{selection.stdout}}"
     state: started
   ignore_errors: True
   when: running.stat.exists == True
 
-- name: Uploading Backup to Google Drive
-  shell: "rclone copy {{path.stdout}}/pgops/{{program_final.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
-  when: encrypted.stat.exists == False and programappdata.stat.exists == True
-
-- name: Uploading Backup to Google Drive (encrypted)
-  shell: "rclone copy /{{path.stdout}}/pgops/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
-  when: encrypted.stat.exists == True and programappdata.stat.exists == True
-
-- name: Remove TEMP Backup!
+- name: Remove Leftover Tar from /tmp
   file:
     path: "{{item}}"
     state: absent
+  ignore_errors: True
   with_items:
-    - "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
-  when: programappdata.stat.exists == True
-
-- debug: msg="Program is now backed up to your Google Drive - {{program_final.stdout}}"
-  when: programappdata.stat.exists == True
-
-- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_final.stdout}}"
-  when: programappdata.stat.exists == False
+    - "{{path.stdout}}/pgops/{{selection.stdout}}.tar"

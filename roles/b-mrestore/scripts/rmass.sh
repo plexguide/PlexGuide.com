@@ -15,29 +15,29 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 'INFO - @Backup Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - @Restore Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 server=$( cat /var/plexguide/server.id )
 
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
-touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
+touch /opt/appdata/plexguide/restore 1>/dev/null 2>&1
 sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
-mfolder="/mnt/gdrive/plexguide/backup.old/$server/backup-$d"
+mfolder="/mnt/gdrive/plexguide/restore.old/$server/restore-$d"
 
 mkdir -p $mfolder 1>/dev/null 2>&1
-mv /mnt/gdrive/plexguide/backup/$server/* $mfolder 1>/dev/null 2>&1
+mv /mnt/gdrive/plexguide/restore/$server/* $mfolder 1>/dev/null 2>&1
 
-##################################################### Builds Backup List - START
+##################################################### Builds Restore List - START
 #### Recall Download Point
 mnt=$(cat /var/plexguide/server.hd.path)
 mkdir -p $mnt/pgops
 
-#### Recalls List for Backup Operations
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > $mnt/pgops/backup.list
+#### Recalls List for Restore Operations
+ls -la /mnt/gdrive/plexguide/backup/$serverid | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
 
 #### Combine for Simplicity
-path=$(echo $mnt/pgops/backup.list)
+path=$(echo $mnt/pgops/restore.list)
 
 #### Remove Items from List
 sed -i -e "/traefik/d" $path
@@ -54,7 +54,7 @@ sed -i -e "/cloudplow/d" $path
 sed -i -e "/phlex/d" $path
 sed -i -e "/pgblitz/d" $path
 sed -i -e "/cloudblitz/d" $path
-##################################################### Builds Backup List - END
+##################################################### Builds Restore List - END
 
 clear
 #### Loops Through Built Up List
@@ -64,17 +64,17 @@ while read p; do
   if [ "$p" == "$running" ];then
   touch $mnt/pgops/$p.running 1>/dev/null 2>&1
   fi
-  ansible-playbook /opt/plexguide/pg.yml --tags b-mbackup
+  ansible-playbook /opt/plexguide/pg.yml --tags b-mrestore
   rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
   echo ""
   echo "$p Backed Up"
   sleep 4
 done <$path
 
-read -n 1 -s -r -p "Mass Backup Process Complete - Press [ANY KEY] to CONTINUE"
+read -n 1 -s -r -p "Mass Restore Process Complete - Press [ANY KEY] to CONTINUE"
 
-rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
-dialog --title "PG Backup Status" --msgbox "\nMass Application Backup Complete!" 0 0
+rm -r /opt/appdata/plexguide/restore 1>/dev/null 2>&1
+dialog --title "PG Restore Status" --msgbox "\nMass Application Restore Complete!" 0 0
 clear
 
 exit 0
