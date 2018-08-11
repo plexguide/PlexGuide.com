@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: mbackup, tags: ['mbackup'] }
+  - { role: sbackup, tags: ['sbackup'] }

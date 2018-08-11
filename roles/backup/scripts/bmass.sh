@@ -18,20 +18,6 @@
 echo 'INFO - @Backup Mass Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 server=$( cat /var/plexguide/server.id )
 
-export NCURSES_NO_UTF8_ACS=1
-
-if dialog --stdout --title "Backup Mass Confirmation" \
-            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-            --yesno "\nDo you want to BACKOUT & EXIT from making a Mass Backup?" 0 0; then
-            dialog --title "PG Backup Status" --msgbox "\nExiting! User selected NOT to BACKUP!" 0 0
-            sudo bash /opt/plexguide/roles/backup-restore-nav/main.sh
-            exit 0
-        else
-            clear
-        fi
-
-dialog --infobox "Backup: Starting Process" 3 34 ; sleep 1
-
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
