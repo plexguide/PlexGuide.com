@@ -49,7 +49,7 @@
 
 - name: "Checking if Program is Running"
   stat:
-    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
+    path: "{{path.stdout}}/pgops/{{selection.user_input}}.running"
   register: running
 
 - name: "Remove Static Path"
