@@ -84,6 +84,12 @@ if [ "$menu" == "settings" ]; then
   clear
 fi
 
+if [ "$menu" == "update" ]; then
+  echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/menus/version/main.sh
+  exit
+fi
+
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 

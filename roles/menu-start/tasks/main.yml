@@ -31,7 +31,7 @@
 - name: PG Main Menu
   pause:
     prompt: "\nWelcome to PG Edition: GDrive - {{pgversion.stdout}}!
-             \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} 
+             \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
 \n3.  Deploy Traefik | Set TLD
@@ -42,6 +42,7 @@
 \n8.  PG Troubleshooting Actions
 \n9.  PG Backup & Restore
 \n10. PG Settings & Tools
+\n11. PG Update & Restore
 \n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
@@ -53,7 +54,8 @@
          choice.user_input == "7" or
          choice.user_input == "8" or
          choice.user_input == "9" or
-         choice.user_input == "10"
+         choice.user_input == "10" or
+         choice.user_input == "11"
   retries: 99
   delay: 1
 
@@ -94,3 +96,6 @@
 
 - shell: "echo settings > /var/plexguide/main.menu"
   when: fchoice == "10"
+
+- shell: "echo update > /var/plexguide/main.menu"
+  when: fchoice == "11"
