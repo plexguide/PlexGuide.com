@@ -85,7 +85,7 @@
   when: fchoice == "8"
 
 - shell: "echo backup > /var/plexguide/main.menu"
-  when: fchoice == "8"
+  when: fchoice == "9"
 
 - shell: "echo settings > /var/plexguide/main.menu"
   when: fchoice == "10"
