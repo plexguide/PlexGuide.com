@@ -49,7 +49,6 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
   Z)
-    bash /opt/plexguide/roles/main.sh
     echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     exit 0 ;;
   01)
