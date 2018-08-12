@@ -30,34 +30,6 @@ else
   exit 0
 fi
 
-################################################################ Create Server ID
-  file="/var/plexguide/server.id"
-    if [ -e "$file" ]
-      then
-    echo "" 1>/dev/null 2>&1
-  else
-      bash /opt/plexguide/menus/backup-restore/first.sh
-    echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    fi
-#  date +"%m%d%Y" > /var/plexguide/server.id
-#  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-############################################################################# END
-
-################################################################ Create Server ID
-
-file="/var/plexguide/restore.id"
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  cat /var/plexguide/server.id > /var/plexguide/restore.id
-  echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  fi
-############################################################################# END
-
-############################################################ Creates Blank File if it DOES NOT Exist! Ports for APPS are Open
-
 ######### Check to SEE IF GCE FEED Edition
 if [ "$edition" == "PG Edition: GCE Feed" ]
   then

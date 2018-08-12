@@ -28,6 +28,7 @@ echo "5" > /var/plexguide/pg.ansible
 echo "2" > /var/plexguide/pg.rclone
 echo "2" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docker
+echo "1" > /var/plexguide/pg.id
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.label
@@ -43,6 +44,11 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh
 #
 ######################################################## START: Alias
 bash /opt/plexguide/roles/install/scripts/alias.sh
+######################################################## END: Alias
+#
+#
+######################################################## START: Alias
+bash /opt/plexguide/roles/install/scripts/id.sh
 ######################################################## END: Alias
 #
 #
