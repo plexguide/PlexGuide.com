@@ -25,10 +25,23 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
+      rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
       clear
       echo "$sname"
       sleep 2
       echo ""
+      if dialog --stdout --title "System Update" \
+        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+        --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
+        clear
+      else
+        clear
+        dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree!\n\nWARNING: Executing any Portions of PG may result with instability!" 0 0
+        echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        touch /var/plexguide/update.failed
+        exit 0
+      fi
+
       yes | apt-get update
       yes | apt-get install software-properties-common
       yes | apt-get install sysstat nmon
