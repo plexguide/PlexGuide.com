@@ -16,7 +16,7 @@
 
 ######################################################## Declare Variables
 sname="Ansible - Install"
-pg_ansible=$( cat /var/plexguide/pg.ansible 1>/dev/null 2>&1 )
+pg_ansible=$( cat /var/plexguide/pg.ansible )
 pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log

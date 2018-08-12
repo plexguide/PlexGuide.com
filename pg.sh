@@ -53,37 +53,37 @@ fi
 #
 #
 ######################################################## START: Ansible
-bash /opt/plexguide/roles/install/scripts/ansible.sh
+bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 ######################################################## END: Ansible
 #
 #
 ######################################################## START: Alias
-bash /opt/plexguide/roles/install/scripts/alias.sh
+bash /opt/plexguide/roles/install/scripts/alias.sh ### Good
 ######################################################## END: Alias
 #
 #
 ######################################################## START: Server ID
-bash /opt/plexguide/roles/install/scripts/id.sh
+bash /opt/plexguide/roles/install/scripts/id.sh ### Good
 ######################################################## END: Server ID
 #
 #
 ######################################################## START: Folders
-bash /opt/plexguide/roles/install/scripts/folders.sh
+bash /opt/plexguide/roles/install/scripts/folders.sh ### Good
 ######################################################## END: Folders
 #
 #
 ######################################################## START: Docker
-bash /opt/plexguide/roles/install/scripts/docker.sh
+bash /opt/plexguide/roles/install/scripts/docker.sh ### Test Docker
 ######################################################## END: Docker
 #
 #
 ######################################################## START: DocStart
-bash /opt/plexguide/roles/install/scripts/docstart.sh
+bash /opt/plexguide/roles/install/scripts/docstart.sh ### Good
 ######################################################## END: DocStart
 #
 #
 ######################################################## START: Python
-bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null &
+bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null & ### Maybe Good?
 ######################################################## END: Python
 #
 #
