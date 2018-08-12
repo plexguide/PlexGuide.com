@@ -26,7 +26,9 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       clear
-      read -n 1 -s -r -p "Installing ANSIBLE: Press [ANY] Key to Continue"
+      echo "$sname"
+      sleep 2
+      echo ""
       sudo apt-get remove ansible
       sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
       apt-get update -y

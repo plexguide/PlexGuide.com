@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="Alias"
+sname="PG Installer: Alias Install"
 pg_alias=$( cat /var/plexguide/pg.alias )
 pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
 ######################################################## START: PG Log
@@ -26,7 +26,7 @@ if [ "$pg_alias" == "$pg_alias_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       clear
-      echo "NEW Install: Alias Commands"
+      echo "$sname"
       sleep 2
       echo ""
       ansible-playbook /opt/plexguide/pg.yml --tags alias
