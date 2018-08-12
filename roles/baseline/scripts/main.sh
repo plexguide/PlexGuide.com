@@ -118,11 +118,6 @@ sleep 2
 
 ############################################################ Docker Install
 
-  echo "40" | dialog --gauge "Install / Check: Docker (Please Be Patient)" 7 58 0
-  echo "INFO - Docker Install for UB" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  sleep 2
-  clear
-  ansible-playbook /opt/plexguide/pg.yml --tags docker
 
 #### Install Alias Command - Part of Docker
 bash /opt/plexguide/roles/baseline/scripts/dockerfailsafe.sh
