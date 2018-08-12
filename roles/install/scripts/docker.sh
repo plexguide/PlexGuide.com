@@ -69,6 +69,7 @@ if [ "$pg_docker" == "$pg_docker_stored" ]; then
 
       cat /var/plexguide/pg.docker > /var/plexguide/pg.docker.stored
   fi
+fi
 ######################################################## END: Main Script
 #
 #
