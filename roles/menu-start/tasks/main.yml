@@ -84,11 +84,8 @@
 - shell: "echo tshoot > /var/plexguide/main.menu"
   when: fchoice == "8"
 
-- name: Restore Solo
-  include_role:
-    name: b-srestore
-    tasks_from: "main.yml"
-  when: fchoice == "9"
+- shell: "echo backup > /var/plexguide/main.menu"
+  when: fchoice == "8"
 
 - shell: "echo settings > /var/plexguide/main.menu"
   when: fchoice == "10"

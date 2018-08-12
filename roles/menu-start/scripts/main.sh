@@ -72,7 +72,7 @@ if [ "$menu" == "tshoot" ]; then
   clear
 fi
 
-if [ "$menu" == "settings" ]; then
+if [ "$menu" == "backup" ]; then
   echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/b-control/scripts/main.sh
   clear
