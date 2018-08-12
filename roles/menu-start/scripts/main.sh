@@ -24,12 +24,14 @@ menu=$(cat /var/plexguide/br.menu)
 ansible-playbook /opt/plexguide/pg.yml --tags menu-start
 menu=$(cat /var/plexguide/br.menu)
 
-if [ "$menu" == "mbackup" ]; then
-  bash /opt/plexguide/roles/b-mbackup/scripts/bmass.sh
+if [ "$menu" == "mount" ]; then
+  echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/deploychoice.sh
 fi
 
-if [ "$menu" == "mrestore" ]; then
-  bash /opt/plexguide/roles/b-mrestore/scripts/rmass.sh
+if [ "$menu" == "traefik" ]; then
+  echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/tld/scripts/submenu.sh
 fi
 
 if [ "$menu" == "cserverid" ]; then

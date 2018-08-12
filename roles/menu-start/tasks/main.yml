@@ -29,7 +29,7 @@
     prompt: "\nWelcome to PG Edition: GDrive - 6:030 EDGE!
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
-3.  Deploy Traefik | Set TLD
+\n3.  Deploy Traefik | Set TLD
 \n4.  PG Program Suite
 \n5.  PG Plex Enhancement Tools
 \n6.  PG Server Security
@@ -60,14 +60,12 @@
   shell: "echo break > /var/plexguide/main.menu"
   when: fchoice == "1"
 
-- name: Change Server ID
+- name: Mount System
   shell: "echo mount > /var/plexguide/main.menu"
   when: fchoice == "2"
 
-- name: Backup Solo
-  include_role:
-    name: b-sbackup
-    tasks_from: "main.yml"
+- name: Traefik
+  shell: "echo traefik > /var/plexguide/main.menu"
   when: fchoice == "3"
 
 - shell: "echo programs > /var/plexguide/main.menu"
