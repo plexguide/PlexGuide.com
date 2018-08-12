@@ -20,7 +20,7 @@ echo 'INFO - @Support Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles
 
 domain=$( cat /var/plexguide/server.domain )
 
-HEIGHT=14
+HEIGHT=15
 WIDTH=37
 CHOICE_HEIGHT=9
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
