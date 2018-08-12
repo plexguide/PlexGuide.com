@@ -190,17 +190,3 @@ bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 
 #### Install WatchTower Command - 95 Percent
 bash /opt/plexguide/roles/baseline/scripts/watchtower.sh
-
-########### Python Support
-pg_python=$( cat /var/plexguide/pg.python )
-pg_python_stored=$( cat /var/plexguide/pg.python.stored )
-
-if [ "$pg_python" == "$pg_python_stored" ]; then
-      echo "99" | dialog --gauge "Python Support Is Already Installed" 7 50 0
-      sleep 2
-    else
-      echo "99" | dialog --gauge "Installing: Python Support" 7 50 0
-      bash /opt/plexguide/roles/baseline/scripts/python.sh &>/dev/null &
-      cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
-      sleep 2
-fi
