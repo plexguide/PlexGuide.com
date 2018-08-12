@@ -204,10 +204,3 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
       sleep 2
 fi
-
-#### Complete!
-cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
-echo "INFO - BaseInstall Finished" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-echo "100" | dialog --gauge "PG BaseInstall Finished!" 7 50 0
-sleep 2
