@@ -27,11 +27,13 @@ menu=$(cat /var/plexguide/main.menu)
 if [ "$menu" == "mount" ]; then
   echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/deploychoice.sh
+  clear
 fi
 
 if [ "$menu" == "traefik" ]; then
   echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/tld/scripts/submenu.sh
+  clear
 fi
 
 if [ "$menu" == "cserverid" ]; then
