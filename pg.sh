@@ -43,10 +43,8 @@ bash /opt/plexguide/roles/install/scripts/start.sh
 file="/var/plexguide/update.failed"
 if [ -e "$file" ]
   then
-echo "" 1>/dev/null 2>&1
-  else
-  #### Put Execute PG Command Here
   exit
+  #### Put Execute PG Command Here
 fi
 ######################################################## END: Start
 #
