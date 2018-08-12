@@ -51,7 +51,7 @@ case $CHOICE in
     echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/roles/deploychoice.sh ;;
   B)
-    echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/roles/tld/scripts/submenu.sh ;;
   C)
     echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
