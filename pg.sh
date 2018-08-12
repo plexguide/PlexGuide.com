@@ -37,6 +37,20 @@ echo "1" > /var/plexguide/pg.dep
 ######################################################## END: Key Variables
 #
 #
+######################################################## START: Start
+bash /opt/plexguide/roles/install/scripts/start.sh
+### Users Agreement Handling
+file="/var/plexguide/update.failed"
+if [ -e "$file" ]
+  then
+echo "" 1>/dev/null 2>&1
+  else
+  #### Put Execute PG Command Here
+  exit
+fi
+######################################################## END: Start
+#
+#
 ######################################################## START: Ansible
 bash /opt/plexguide/roles/install/scripts/ansible.sh
 ######################################################## END: Ansible
