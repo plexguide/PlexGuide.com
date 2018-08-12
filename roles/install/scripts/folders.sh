@@ -25,6 +25,14 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
+
+      file="/var/plexguide/server.hd.path"
+      if [ -e "$file" ]; then
+            echo "" 1>/dev/null 2>&1
+          else
+            echo "/mnt" > /var/plexguide/server.hd.path
+      fi
+      
       clear
       echo "PG Installer: Folders & Directories"
       sleep 2

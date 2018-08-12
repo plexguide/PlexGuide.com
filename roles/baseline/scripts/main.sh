@@ -115,18 +115,6 @@ sed -i 's/false/true/g' /etc/default/sysstat
 echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 sleep 2
 
-# START ########################### If doesn't exist, put /mnt into the file for the folders role
-file="/var/plexguide/server.hd.path"
-if [ -e "$file" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
-      echo "/mnt" > /var/plexguide/server.hd.path
-fi
-# END########################### If doesn't exist, put /mnt into the file for the folders role
-
-
-#### Install Folders - 30 Percent
-bash /opt/plexguide/roles/baseline/scripts/folders.sh
 
 ############################################################ Docker Install
 
