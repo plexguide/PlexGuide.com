@@ -26,7 +26,7 @@ if [ "$pg_docker" == "$pg_docker_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       clear
-      echo "NEW Install: Alias Commands"
+      echo "PG Installer: Docker"
       sleep 2
       echo ""
       ansible-playbook /opt/plexguide/pg.yml --tags docker

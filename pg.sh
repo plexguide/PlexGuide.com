@@ -56,6 +56,16 @@ bash /opt/plexguide/roles/install/scripts/docker.sh
 ######################################################## END: Docker
 #
 #
+######################################################## START: DocStart
+bash /opt/plexguide/roles/install/scripts/docstart.sh
+######################################################## END: DocStart
+#
+#
+######################################################## START: Python
+bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null &
+######################################################## END: Python
+#
+#
 ######################################################## START: Common Functions
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
