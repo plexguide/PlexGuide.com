@@ -36,16 +36,50 @@ if [ "$menu" == "traefik" ]; then
   clear
 fi
 
-if [ "$menu" == "cserverid" ]; then
-  echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/backup-restore/server.sh
+if [ "$menu" == "programs" ]; then
+  echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/programs/main.sh
   clear
 fi
 
-if [ "$menu" == "rserverid" ]; then
-  echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/backup-restore/recovery.sh
+if [ "$menu" == "plextools" ]; then
+  echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/menus/plex/enhancement.sh
   clear
 fi
 
+if [ "$menu" == "security" ]; then
+  echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/menus/security/main.sh
+  clear
+fi
+
+if [ "$menu" == "plextools" ]; then
+  echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/menus/plex/enhancement.sh
+  clear
+fi
+
+if [ "$menu" == "info" ]; then
+  echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/info-tshoot/info.sh
+  clear
+fi
+
+if [ "$menu" == "tshoot" ]; then
+  echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/info-tshoot/tshoot.sh
+  clear
+fi
+
+if [ "$menu" == "settings" ]; then
+  echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/menus/settings/main.sh
+  clear
+fi
+
+echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
+
+echo 'INFO - Selected: Exiting PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+bash /opt/plexguide/roles/ending/ending.sh
