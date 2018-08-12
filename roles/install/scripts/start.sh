@@ -25,19 +25,15 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-
-      file="/var/plexguide/server.hd.path"
-      if [ -e "$file" ]; then
-            echo "" 1>/dev/null 2>&1
-          else
-            echo "/mnt" > /var/plexguide/server.hd.path
-      fi
-
       clear
       echo "$sname"
       sleep 2
       echo ""
-      ansible-playbook /opt/plexguide/pg.yml --tags folders
+      yes | apt-get update
+      yes | apt-get install software-properties-common
+      yes | apt-get install sysstat nmon
+      sed -i 's/false/true/g' /etc/default/sysstat
+      echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   fi
 ######################################################## END: Main Script
 #
