@@ -34,6 +34,18 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       apt-get install ansible 2.5.5 -y
       apt-mark hold ansible
       yes | apt-get update
+
+      ############# FOR ANSIBLE
+      mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
+      echo "[local]" > /etc/ansible/inventories/local
+      echo "127.0.0.1 ansible_connection=local" >> /etc/ansible/inventories/local
+
+      ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
+      echo "[defaults]" > /etc/ansible/ansible.cfg
+      echo "command_warnings = False" >> /etc/ansible/ansible.cfg
+      echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
+      echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
+
       cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
   fi
 ######################################################## END: Main Script
