@@ -16,20 +16,20 @@
 
 ######################################################## Declare Variables
 sname="Folders & Directories - Install"
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+pg_preinstall=$( cat /var/plexguide/pg.preinstall )
+pg_preinstall_stored=$( cat /var/plexguide/pg.preinstall.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_alias" == "$pg_alias_stored" ]; then
+if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       clear
       echo "PG Installer: Folders & Directories"
       sleep 2
       echo ""
-      ansible-playbook /opt/plexguide/pg.yml --tags foldiers
+      ansible-playbook /opt/plexguide/pg.yml --tags folders
   fi
 ######################################################## END: Main Script
 #
