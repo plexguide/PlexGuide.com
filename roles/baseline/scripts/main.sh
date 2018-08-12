@@ -183,19 +183,6 @@ bash /opt/plexguide/roles/baseline/scripts/portainer.sh
 pg_docstart=$( cat /var/plexguide/pg.docstart)
 pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
 
-if [ "$pg_docstart" == "$pg_docstart_stored" ]; then
-      echo "90" | dialog --gauge "Docker Assist Is Already Installed" 7 50 0
-      sleep 2
-    else
-      echo "90" | dialog --gauge "Installing: Docker Startup Assist" 7 50 0
-      clear
-      sleep 2
-      ansible-playbook /opt/plexguide/pg.yml --tags dockerfix
-      sleep 2
-      #read -n 1 -s -r -p "Press any key to continue "
-      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored
-fi
-
 echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
 bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
 #read -n 1 -s -r -p "Press any key to continue "
