@@ -84,15 +84,17 @@ esac
 ### Execute Playbook Based on Version
 if [ "$final" == "unencrypted" ];then
     if [ "$WEBUI" == "no" ]; then
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted,gui
+        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
     else
         ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+        ansible-playbook /opt/plexguide/pg.yml --tags blitzui
     fi
 elif [ "$final" == "encrypted" ];then
     if [ "$WEBUI" == "no" ]; then
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags gui
+        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
     else
         ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
+        ansible-playbook /opt/plexguide/pg.yml --tags blitzui
     fi
 fi
 file="/mnt/unionfs/plexguide/pgchecker.bin"

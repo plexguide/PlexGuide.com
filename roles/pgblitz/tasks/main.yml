@@ -55,13 +55,6 @@
   include_role:
     name: pgblitz
     tasks_from: "deploy_pgblitz.yml"
-
-- name: Deploy PGBlitz GUI
-  include_role:
-    name: pgblitz
-    tasks_from: "deploy_pgblitzui.yml"
-  tags:
-    - gui 
 ################################################################ UNENCRYPTED END
 
 ### NOTES
