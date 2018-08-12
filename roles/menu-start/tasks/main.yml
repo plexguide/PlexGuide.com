@@ -16,28 +16,27 @@
 #
 #################################################################################
 ---
-- name: Recall Current ID
+- name: Recall Edition
   shell: "cat /var/plexguide/server.id"
   register: cid
 
-- name: Recall Recovery ID
+- name: Recall Version
   shell: "cat /var/plexguide/restore.id"
   register: rid
 
-- name: Backup & Restore
+- name: PG Main Menu
   pause:
     prompt: "\nWelcome to PG Edition: GDrive - 6:030 EDGE!
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
-\n3.  Deploy Traefik | Set TLD
+3.  Deploy Traefik | Set TLD
 \n4.  PG Program Suite
 \n5.  PG Plex Enhancement Tools
 \n6.  PG Server Security
-\n6.  PG Server Information
-\n7.  PG Troubleshooting Actions
-\n8.  PG Backup & Restore
-\n9.  PG Settings & Tools
-
+\n7.  PG Server Information
+\n8.  PG Troubleshooting Actions
+\n9.  PG Backup & Restore
+\n10. PG Settings & Tools
 \n\nType a Number Choice"
   register: choice
   until: choice.user_input == "1" or
@@ -48,7 +47,8 @@
          choice.user_input == "6" or
          choice.user_input == "7" or
          choice.user_input == "8" or
-         choice.user_input == "9"
+         choice.user_input == "9" or
+         choice.user_input == "10"
   retries: 99
   delay: 1
 
@@ -57,11 +57,11 @@
     fchoice: "{{choice.user_input}}"
 
 - name: Exiting Interface
-  shell: "echo break > /var/plexguide/br.menu"
+  shell: "echo break > /var/plexguide/main.menu"
   when: fchoice == "1"
 
 - name: Change Server ID
-  shell: "echo cserverid > /var/plexguide/br.menu"
+  shell: "echo mount > /var/plexguide/main.menu"
   when: fchoice == "2"
 
 - name: Backup Solo
@@ -70,24 +70,27 @@
     tasks_from: "main.yml"
   when: fchoice == "3"
 
-- shell: "echo mbackup > /var/plexguide/br.menu"
+- shell: "echo programs > /var/plexguide/main.menu"
   when: fchoice == "4"
 
 - name: Change Server ID
-  shell: "echo rserverid > /var/plexguide/br.menu"
+  shell: "echo plextools > /var/plexguide/main.menu"
   when: fchoice == "5"
 
-- shell: "echo mbackup > /var/plexguide/br.menu"
+- shell: "echo security > /var/plexguide/main.menu"
   when: fchoice == "6"
 
-- shell: "echo mbackup > /var/plexguide/br.menu"
+- shell: "echo info > /var/plexguide/main.menu"
+  when: fchoice == "7"
+
+- shell: "echo tshoot > /var/plexguide/main.menu"
   when: fchoice == "7"
 
 - name: Restore Solo
   include_role:
     name: b-srestore
     tasks_from: "main.yml"
-  when: fchoice == "8"
-
-- shell: "echo mbackup > /var/plexguide/br.menu"
   when: fchoice == "9"
+
+- shell: "echo settings > /var/plexguide/main.menu"
+  when: fchoice == "10"
