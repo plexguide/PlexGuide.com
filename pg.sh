@@ -35,10 +35,10 @@ echo "1" > /var/plexguide/pg.dep
 #
 ######################################################## START: Ansible
 # Installs Ansible for New Users | Skips if Installed
-bash /opt/plexguide/roles/install-new/scripts/ansible.sh
+bash /opt/plexguide/roles/install/scripts/ansible.sh
 ######################################################## END: Ansible
 #
 ######################################################## START: Alias
 # Installs PG Commands for New Users | Skips If Completed
-bash /opt/plexguide/roles/install-new/scripts/alias.sh
+bash /opt/plexguide/roles/install/scripts/alias.sh
 ######################################################## END: Alias

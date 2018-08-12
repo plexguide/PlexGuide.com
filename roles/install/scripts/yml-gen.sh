@@ -14,14 +14,13 @@
 #
 ################################################################################
 
-### STARTING DECLARED VARIABLES #######################################
-keyword1="Installing"
-keyword2="PG YML GEN"
+######################################################## Declare Variables
+sname="YML Generation"
 
-### STARTING LOG ######################################################
-echo "INFO - $keyword1: Start Execution of $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-### MAIN SCRIPT #######################################################
+######################################################## START: PG Log
+sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
+sudo bash /opt/plexguide/roles/log/log.sh
+######################################################## START: Main Script
 ls -la /opt/plexguide/roles | awk '{ print $9 }' | tail -n +4 > /var/plexguide/yml.list
 echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
@@ -34,19 +33,11 @@ echo "" >> /opt/plexguide/pg.yml
 echo "  roles:" >> /opt/plexguide/pg.yml
 
 while read p; do
-echo "  - { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
+  echo "  - { role: $p, tags: ['$p'] }" >> /opt/plexguide/pg.yml
 done </var/plexguide/yml.list
-
-#mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
-#echo "[local]" > /etc/ansible/inventories/local
-#echo "localhost ansible_connection=local" >> /etc/ansible/inventories/local
-
-### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
-#echo "[defaults]" > /etc/ansible/ansible.cfg
-#echo "command_warnings = False" >> /etc/ansible/ansible.cfg
-#echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-#echo "inventory = inventories/local" >> /etc/ansible/ansible.cfg
-### ENDING: DECLARED VARIABLES
-
-### ENDING: FINAL LOG ##################################################
-echo "INFO - $keyword1: Exiting $keyword2 Script" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+######################################################## END: Main Script
+#
+#
+######################################################## END: PG Log
+sudo echo "INFO - END of Script: $sname" > /var/plexguide/pg.log
+sudo bash /opt/plexguide/roles/log/log.sh
