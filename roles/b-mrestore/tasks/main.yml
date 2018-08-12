@@ -1,0 +1,124 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- script: /opt/plexguide/roles/b-srestore/scripts/solo.sh
+
+- name: Register HD Path
+  shell: "cat /var/plexguide/server.hd.path"
+  register: path
+  ignore_errors: True
+
+- name: "Pulling Selected Program"
+  shell: "cat /tmp/program_var"
+  register: selection
+
+- name: "Server ID for Restore"
+  shell: "cat /var/plexguide/server.id"
+  register: server_id
+
+- name: "Checking if Building List Exists"
+  stat:
+    path: "{{path.stdout}}/pgops/restore.build"
+  register: backlistcheck
+
+- name: "Building List"
+  shell: "cat {{path.stdout}}/pgops/restore.list"
+  register: backlist
+  when: backlistcheck.stat.exists == True
+
+- name: Establishing Final Variable - Switch On
+  shell: "echo {{selection.stdout}} > {{path.stdout}}/pgops/program_var"
+
+- script: /opt/plexguide/roles/b-srestore/scripts/soloselect.sh
+
+- name: "Checking if Program is Running"
+  stat:
+    path: "{{path.stdout}}/pgops/{{selection.stdout}}.running"
+  register: running
+
+- name: "Remove Static Path"
+  shell: "rm -r {{path.stdout}}/pgops/{{selection.stdout}}.running"
+  when: running.stat.exists == True
+
+- debug: msg="{{selection.stdout}} running? {{running.stat.exists}}"
+
+- name: "Wait 1 Seconds"
+  wait_for:
+    timeout: 1
+
+- debug: msg="Temp Message - For {{selection.stdout}} - Server ID {{server_id.stdout}}"
+
+- name: "Checking {{selection.stdout}} location in APPDATA"
+  stat:
+    path: "/opt/appdata/{{selection.stdout}}"
+  register: location
+
+- name: Stopping Docker Container - {{selection.stdout}}
+  docker_container:
+    name: "{{selection.stdout}}"
+    state: stopped
+  ignore_errors: True
+  when: running.stat.exists == True
+
+- name: Remove Old {{selection.stdout}} from APPDATA
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/opt/appdata/{{selection.stdout}}"
+  when: location.stat.exists == True
+
+- name: Create Restore Folder
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - "/opt/appdata/{{selection.stdout}}"
+
+- debug: msg="Downloading Content from GDrive! (Please Wait)"
+
+- name: "Downloading from Google Drive - {{selection.stdout}}"
+  shell: "rclone copy --tpslimit 6 \
+          --config /root/.config/rclone/rclone.conf \
+          --drive-chunk-size=64M \
+          gdrive:/plexguide/backup/{{server_id.stdout}}/{{selection.stdout}}.tar {{path.stdout}}/pgops/"
+
+- name: Unzip Folders
+  unarchive:
+    src: "{{path.stdout}}/pgops/{{selection.stdout}}.tar"
+    dest: "/opt/appdata/{{selection.stdout}}"
+    keep_newer: no
+    owner: 1000
+    group: 1000
+    mode: 0775
+
+- name: "Restart Docker Container - {{selection.stdout}}"
+  docker_container:
+    name: "{{selection.stdout}}"
+    state: started
+  ignore_errors: True
+  when: running.stat.exists == True
+
+- name: Remove Leftover Tar from /tmp
+  file:
+    path: "{{item}}"
+    state: absent
+  ignore_errors: True
+  with_items:
+    - "{{path.stdout}}/pgops/{{selection.stdout}}.tar"
+
+- pause:
+    prompt: "\n Restore Process Complete - Press [ENTER]"

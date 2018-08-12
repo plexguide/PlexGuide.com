@@ -72,7 +72,6 @@ if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
       --exclude="**partial~" --exclude="**_HIDDEN~" \
       --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
       --drive-chunk-size=32M \
-      --delete-empty-src-dirs \
       $downloadpath/pgblitz/$p/ $p:
 
       cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log

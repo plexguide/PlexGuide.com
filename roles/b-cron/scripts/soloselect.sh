@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,16 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/speed*/d" /tmp/backup.list
-sed -i -e "/netdata/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/portainer/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
-sed -i -e "/pgblitz/d" /tmp/backup.list
-sed -i -e "/cloudblitz/d" /tmp/backup.list
+p=$(cat /tmp/program_var)
+mnt=$(cat /var/plexguide/server.hd.path)
+
+running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
+if [ "$p" == "$running" ];then
+touch $mnt/pgops/$p.running
+fi

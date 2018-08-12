@@ -16,11 +16,12 @@
 #
 #################################################################################
 ---
-- include_vars: variables.yml
+- script: /opt/plexguide/roles/b-sbackup/scripts/solo.sh
 
-- name: "Building List"
-  shell: "cat /tmp/backup.build"
-  register: backlist
+- name: Register HD Path
+  shell: "cat /var/plexguide/server.hd.path"
+  register: path
+  ignore_errors: True
 
 - name: "Pulling Selected Program"
   shell: "cat /tmp/program_var"
@@ -30,22 +31,42 @@
   shell: "cat /var/plexguide/server.id"
   register: server_id
 
-############################################ SWITCH OFF - Automatic
+- name: "Checking if Building List Exists"
+  stat:
+    path: "{{path.stdout}}/pgops/backup.build"
+  register: backlistcheck
+
+- name: "Building List"
+  shell: "cat {{path.stdout}}/pgops/backup.build"
+  register: backlist
+  when: backlistcheck.stat.exists == True
+
 - name: Prompt User for Program
   pause:
     prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
   register: selection
-  when: switch == "on"
 
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
-  when: switch == "on"
-############################################ SWITCH ON - Manual
-# name: "Establishing Variable"
-#  shell: "echo {{program_var.stdout}} > /tmp/program_var"
-#  when: switch == "on"
-############################################ REGISTER FINAL Variable
-- name: Establishing Final Variable - Switch On
+
+- script: /opt/plexguide/roles/b-sbackup/scripts/soloselect.sh
+
+- name: "Checking if Program is Running"
+  stat:
+    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  register: running
+
+- name: "Remove Static Path"
+  shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  when: running.stat.exists == True
+
+- debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
+
+- name: "Wait 1 Seconds"
+  wait_for:
+    timeout: 1
+
+- name: Establishing Final Variable
   shell: "cat /tmp/program_var"
   register: program_final
 
@@ -53,7 +74,7 @@
 
 - name: "Checking {{program_final.stdout}} location in APPDATA"
   stat:
-    path: /opt/appdata/{{program_final.stdout}}
+    path: "/opt/appdata/{{program_final.stdout}}"
   register: programappdata
 
 - name: "Checking if RClone Encrypted"
@@ -66,40 +87,40 @@
     name: "{{program_final.stdout}}"
     state: stopped
   ignore_errors: True
-  when: programappdata.stat.exists == True
+  when: running.stat.exists == True
 
 - debug: msg="Time Length can be Long or Short! Please Wait!"
   when: programappdata.stat.exists == True
 
-- name: Backing Up Program to GDrive - {{program_final.stdout}}
+- name: "Backing Up Program to GDrive - {{program_final.stdout}}"
   archive:
     path:
-    - /opt/appdata/{{program_final.stdout}}/*
-    dest: /tmp/{{program_final.stdout}}.tar
+    - "/opt/appdata/{{program_final.stdout}}/*"
+    dest: "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
     format: tar
 
 ############ BACKUP OTHER - END
-- name: Restart Docker Container - {{program_final.stdout}}
+- name: "Restart Docker Container - {{program_final.stdout}}"
   docker_container:
     name: "{{program_final.stdout}}"
     state: started
   ignore_errors: True
-  when: programappdata.stat.exists == True
+  when: running.stat.exists == True
 
 - name: Uploading Backup to Google Drive
-  shell: "rclone copy /tmp/{{program_final.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy {{path.stdout}}/pgops/{{program_final.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == False and programappdata.stat.exists == True
 
 - name: Uploading Backup to Google Drive (encrypted)
-  shell: "rclone copy /tmp/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+  shell: "rclone copy /{{path.stdout}}/pgops/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
   when: encrypted.stat.exists == True and programappdata.stat.exists == True
 
 - name: Remove TEMP Backup!
   file:
-    path: "{{ item }}"
+    path: "{{item}}"
     state: absent
   with_items:
-    - /tmp/{{program_final.stdout}}.tar
+    - "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
   when: programappdata.stat.exists == True
 
 - debug: msg="Program is now backed up to your Google Drive - {{program_final.stdout}}"
