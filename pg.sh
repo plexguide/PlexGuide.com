@@ -15,10 +15,12 @@
 #################################################################################
 
 ######################################################## START: Key Variables
+# Generate Default YML
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 # PG Version
-echo "6.030 v2" > /var/plexguide/pg.version
+echo "6.031" > /var/plexguide/pg.version
 # Changing Number Results in Forcing PreInstaller to Execute
 echo "136" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
