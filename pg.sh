@@ -33,7 +33,10 @@ echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.label
 echo "31" > /var/plexguide/pg.alias
-echo "1" > /var/plexguide/pg.dep
+echo "1" > /var/plexguide/pg.de
+
+# Declare Variables Vital for Operations
+bash /opt/plexguide/roles/install/scripts/declare.sh
 ######################################################## END: Key Variables
 #
 #

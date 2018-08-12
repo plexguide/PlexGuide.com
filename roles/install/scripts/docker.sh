@@ -31,6 +31,12 @@ if [ "$pg_docker" == "$pg_docker_stored" ]; then
       echo ""
       ansible-playbook /opt/plexguide/pg.yml --tags docker
 
+      file="/usr/bin/docker" 1>/dev/null 2>&1
+        if [ -e "$file" ]
+          then
+              echo "" 1>/dev/null 2>&1
+
+
       #### Checks if Docker Is Present; Fails attempts to Install Old School
       file="/usr/bin/docker" 1>/dev/null 2>&1
         if [ -e "$file" ]
