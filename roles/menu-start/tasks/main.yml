@@ -16,17 +16,13 @@
 #
 #################################################################################
 ---
-- name: Recall Edition
-  shell: "cat /var/plexguide/server.id"
-  register: cid
-
 - name: Recall Version
-  shell: "cat /var/plexguide/restore.id"
-  register: rid
+  shell: "cat /var/plexguide/pg.version"
+  register: pgversion
 
 - name: PG Main Menu
   pause:
-    prompt: "\nWelcome to PG Edition: GDrive - 6.030 EDGE!
+    prompt: "\nWelcome to PG Edition: GDrive - {{pgversion.stdout}}!
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
 \n3.  Deploy Traefik | Set TLD
