@@ -50,6 +50,11 @@ bash /opt/plexguide/roles/install/scripts/folders.sh
 ######################################################## END: Alias
 #
 #
+######################################################## START: Docker
+bash /opt/plexguide/roles/install/scripts/docker.sh
+######################################################## END: Docker
+#
+#
 ######################################################## START: Common Functions
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
