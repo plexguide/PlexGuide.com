@@ -236,7 +236,7 @@ edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition: GDrive" ]
   then
     echo 'INFO - Deploying GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/main.sh
+    bash /opt/plexguide/roles/menu-start/scripts/main.sh
     exit
 fi
 
