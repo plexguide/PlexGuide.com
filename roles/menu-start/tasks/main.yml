@@ -16,13 +16,26 @@
 #
 #################################################################################
 ---
-- name: Recall Version
+- name: Version
   shell: "cat /var/plexguide/pg.version"
   register: pgversion
+
+- name: Server ID
+  shell: "cat /var/plexguide/server.id"
+  register: pgid
+
+- name: Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: pgdomain
+
+- name: Date & Time
+  shell: "date "+%H:%M:%S - %m/%d/%y"
+  register: pgdate
 
 - name: PG Main Menu
   pause:
     prompt: "\nWelcome to PG Edition: GDrive - {{pgversion.stdout}}!
+             \nID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} | Date: {{pgdate.stdout}}
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
 \n3.  Deploy Traefik | Set TLD
