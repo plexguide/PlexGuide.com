@@ -39,11 +39,14 @@ echo "lock" > $FILE.lck
 
 #create json file for PGbliz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"moving\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
-rclone move $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE \
-    --exclude="**partial~" --exclude="**_HIDDEN~" \
-    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**"
+
+#move file to pgblitz folder
+mkdir -p $downloadpath/pgblitz/$GDSA$FILEDIR/
+mv $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE
+sleep 5
 
 echo "[PGBlitz] [Upload] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] [Upload] $FILE Moved"
 
 #remove file lock
 rm -f $FILE.lck
@@ -64,12 +67,13 @@ chmod 777 $LOGFILE
 
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+echo "[PGBlitz] [Upload] Starting Upload"
 rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
-      --log-file=$LOGFILE --log-level INFO --stats 5s \
+      --log-file=$LOGFILE --log-level INFO --stats 2s \
       --drive-chunk-size=32M \
-      "$downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE" "$REMOTE:$FILEDIR/"
+      "$downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE" "$REMOTE:$FILEDIR/$FILEBASE"
 
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
@@ -93,8 +97,7 @@ echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguid
 rm -f $LOGFILE
 rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
 find "/mnt/move/" -mindepth 1 -type d -empty -delete
-find "/mnt/pgblitz/" -mindepth 1 -type d -empty -delete
-sleep 30
+find "/mnt/pgblitz/" -mindepth 2 -type d -empty -delete
+sleep 60
 rm -f $JSONFILE
-
 {% endraw %}

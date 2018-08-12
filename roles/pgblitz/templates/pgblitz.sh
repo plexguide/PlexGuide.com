@@ -1,4 +1,5 @@
 {% raw %}
+
 #!/bin/bash
 ##
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
@@ -22,6 +23,7 @@ path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
 mkdir -p /opt/appdata/pgblitz/json/
 mkdir -p /opt/appdata/pgblitz/logs/
+mkdir -p /opt/appdata/pgblitz/vars/
 
 #### Generates the GDSA List from the Processed Keys
 if [ -e /opt/appdata/pgblitz/vars/automated ]; then
@@ -30,12 +32,20 @@ else
     GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
 fi
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
-GDSAUSE=0
+
+#grabs vars from files
+if [ -e /opt/appdata/pgblitz/vars/lastGDSA ]; then
+	GDSAUSE=`cat /opt/appdata/pgblitz/vars/lastGDSA`
+	GDSAAMOUNT=`cat /opt/appdata/pgblitz/vars/gdsaAmount`
+else
+	GDSAUSE=0
+	GDSAAMOUNT=0
+fi
 while [ 1 ]
 do
     #Find files to transfer
     IFS=$'\n'
-    files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
+    files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -name "*.version" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
     if [[ ${#files[@]} -gt 0 ]]; then
         #if files are found loop though and upload
         for i in "${files[@]}"
@@ -56,6 +66,7 @@ do
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
                     #Run upload script demonised
                     /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
                     
@@ -70,15 +81,20 @@ do
                     
                     #increase or reset $GDSAUSE?
                     if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
+						echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                         if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
                             GDSAUSE=0
                             GDSAAMOUNT=0
                         else
                             GDSAUSE=`expr $GDSAUSE + 1`
                             GDSAAMOUNT=0
-                        fi    
-                    fi
-                    
+							
+                        fi
+						#record next GDSA in case of crash/reboot
+						echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
+					fi
+					#record GDSA transfered in case of crash/reboot
+                    echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
                 else
                     echo "[PGBlitz] Already 8 transfers running, waiting for next loop" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     break
