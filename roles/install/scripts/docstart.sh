@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="Alias"
+sname="Docker Start Assist"
 pg_docstart=$( cat /var/plexguide/pg.docstart )
 pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
 ######################################################## START: PG Log
