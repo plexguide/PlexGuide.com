@@ -28,14 +28,10 @@
   shell: "cat /var/plexguide/server.domain"
   register: pgdomain
 
-- name: Date & Time
-  shell: "date "+%H:%M:%S - %m/%d/%y"
-  register: pgdate
-
 - name: PG Main Menu
   pause:
     prompt: "\nWelcome to PG Edition: GDrive - {{pgversion.stdout}}!
-             \nID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} | Date: {{pgdate.stdout}}
+             \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} 
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
 \n3.  Deploy Traefik | Set TLD
