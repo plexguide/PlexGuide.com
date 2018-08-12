@@ -16,13 +16,13 @@
 #
 #################################################################################
 clear
-echo "on" > /var/plexguide/br.menu
+echo "on" > /var/plexguide/main.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/br.menu)
+menu=$(cat /var/plexguide/main.menu)
 ansible-playbook /opt/plexguide/pg.yml --tags menu-start
-menu=$(cat /var/plexguide/br.menu)
+menu=$(cat /var/plexguide/main.menu)
 
 if [ "$menu" == "mount" ]; then
   echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
