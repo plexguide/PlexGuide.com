@@ -35,7 +35,7 @@ while [ 1 ]
 do
     #Find files to transfer
     IFS=$'\n'
-    files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name "*.lck" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
+    files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
     if [[ ${#files[@]} -gt 0 ]]; then
         #if files are found loop though and upload
         for i in "${files[@]}"
@@ -47,9 +47,10 @@ do
                 continue
             else
                 FILESIZE1=`du -k "$i" | cut -f1`
-                sleep 3
+                sleep .5
                 FILESIZE2=`du -k "$i" | cut -f1`
-                if [ $FILESIZE1 < $FILESIZE2 ]; then
+                if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
+                    echo "[PGBlitz] File is still getting bigger $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     continue
                 fi
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
@@ -68,7 +69,7 @@ do
                     echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
                     
                     #increase or reset $GDSAUSE?
-                    if [ $GDSAAMOUNT => 751619276800 ]; then;
+                    if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
                         if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
                             GDSAUSE=0
                             GDSAAMOUNT=0

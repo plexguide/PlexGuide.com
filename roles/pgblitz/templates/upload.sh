@@ -50,7 +50,7 @@ rm -f $FILE.lck
 
 #if using encrypted add -E to the end of $GDSA
 if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
-    REMOTE=$GDSA-E
+    REMOTE=${GDSA}C
 else
     REMOTE=$GDSA
 fi
@@ -92,6 +92,9 @@ echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguid
 #cleanup
 rm -f $LOGFILE
 rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
+find "/mnt/move/" -mindepth 1 -type d -empty -delete
+find "/mnt/pgblitz/" -mindepth 1 -type d -empty -delete
 sleep 30
 rm -f $JSONFILE
+
 {% endraw %}
