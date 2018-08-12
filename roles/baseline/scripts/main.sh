@@ -17,16 +17,6 @@
 #################################################################################
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 edition=$( cat /var/plexguide/pg.edition )
-
-file="/var/plexguide/nzb.discount"
-  if [ -e "$file" ]
-    then
-  echo "" 1>/dev/null 2>&1
-    else
-  touch /var/plexguide/nzb.discount
-  bash /opt/plexguide/menus/nzb/main.sh
-  fi
-
 ############################################################ Basic Menu
 if dialog --stdout --title "System Update" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
