@@ -26,7 +26,7 @@
 
 - name: PG Main Menu
   pause:
-    prompt: "\nWelcome to PG Edition: GDrive - 6:030 EDGE!
+    prompt: "\nWelcome to PG Edition: GDrive - 6.030 EDGE!
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
 \n3.  Deploy Traefik | Set TLD
@@ -37,7 +37,7 @@
 \n8.  PG Troubleshooting Actions
 \n9.  PG Backup & Restore
 \n10. PG Settings & Tools
-\n\nType a Number Choice"
+\n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
          choice.user_input == "2" or
