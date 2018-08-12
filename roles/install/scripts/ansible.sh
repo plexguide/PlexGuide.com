@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="Ansible - New Install"
+sname="Ansible - Install"
 pg_ansible=$( cat /var/plexguide/pg.ansible )
 pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 ######################################################## START: PG Log
