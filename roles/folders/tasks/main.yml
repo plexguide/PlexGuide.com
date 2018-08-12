@@ -149,6 +149,7 @@
       - /opt/appdata/plexguide
       - /var/plexguide
       - /mnt/move
+      - "{{path.stdout}}/pgops"
       - /opt/appdata/pgblitz/keys/unprocessed
       - /opt/appdata/pgblitz/keys/processed
       - /opt/appdata/pgblitz/keys/badjson
