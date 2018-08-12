@@ -21,7 +21,7 @@ bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 mkdir -p /var/plexguide
 # PG Version
 echo "6.031" > /var/plexguide/pg.version
-# Changing Number Results in Forcing PreInstaller to Execute
+# Force Common Things To Execute Such as Folders
 echo "136" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "5" > /var/plexguide/pg.ansible
@@ -36,11 +36,15 @@ echo "1" > /var/plexguide/pg.dep
 #
 #
 ######################################################## START: Ansible
-# Installs Ansible for New Users | Skips if Installed
 bash /opt/plexguide/roles/install/scripts/ansible.sh
 ######################################################## END: Ansible
 #
+#
 ######################################################## START: Alias
-# Installs PG Commands for New Users | Skips If Completed
 bash /opt/plexguide/roles/install/scripts/alias.sh
+######################################################## END: Alias
+#
+#
+######################################################## START: Alias
+bash /opt/plexguide/roles/install/scripts/folders.sh
 ######################################################## END: Alias
