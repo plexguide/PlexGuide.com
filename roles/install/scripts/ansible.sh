@@ -23,7 +23,6 @@ sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
-    then
       echo "" 1>/dev/null 2>&1
     else
       clear
