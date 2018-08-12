@@ -115,17 +115,6 @@ sed -i 's/false/true/g' /etc/default/sysstat
 echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 sleep 2
 
-
-############################################################ Docker Install
-
-
-#### Install Alias Command - Part of Docker
-bash /opt/plexguide/roles/baseline/scripts/dockerfailsafe.sh
-
-#### Install Alias Command - 65 Percent
-bash /opt/plexguide/roles/baseline/scripts/alias.sh
-
-
 echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
 sleep 2
 ######## ALIAS
