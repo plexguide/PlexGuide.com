@@ -82,7 +82,7 @@
   when: fchoice == "7"
 
 - shell: "echo tshoot > /var/plexguide/main.menu"
-  when: fchoice == "7"
+  when: fchoice == "8"
 
 - name: Restore Solo
   include_role:
