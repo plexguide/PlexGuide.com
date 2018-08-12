@@ -35,7 +35,8 @@ OPTIONS=(Z "----- Exit Menu -----"
          06 "Release      ~ 6.026"
          07 "Release      ~ 6.023"
          08 "Release      ~ 6.016"
-         09 "Internal Bug Test")
+         09 "Release      ~ 6.015"
+         10 "Internal Bug Test")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -92,6 +93,9 @@ case $CHOICE in
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="6.016" ;;
   09)
+    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+    version="6.015" ;;
+  10)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="bugtest" ;;
 esac
