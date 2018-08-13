@@ -37,6 +37,3 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
         echo "[OFF]" > /var/plexguide/server.appguard
         fi
 fi
-
-#### Install WatchTower Command - 95 Percent
-bash /opt/plexguide/roles/baseline/scripts/watchtower.sh
