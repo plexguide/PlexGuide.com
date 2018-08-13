@@ -27,7 +27,7 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_edition" == "$pg_edition_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --infobox "\nWARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time!\n\nChoose Carefully!" 0 0
+      dialog --infobox "WARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time!\n\nChoose Carefully!" 0 0
       sleep 5
       clear
 
