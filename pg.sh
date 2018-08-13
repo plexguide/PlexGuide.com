@@ -108,7 +108,15 @@ bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null & ### Maybe Good
 ######################################################## END: Python
 #
 #
+######################################################## START: Reboot
+bash /opt/plexguide/roles/install/scripts/reboot.sh
+######################################################## END: Reboot
+#
+#
 ######################################################## START: Common Functions
 # Ensure the PG Common Functions Are Aligned
+
+
+
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
