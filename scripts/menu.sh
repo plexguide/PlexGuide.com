@@ -104,10 +104,6 @@ fi
 
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
-
-#### Set Fixed Information
-sudo bash /opt/plexguide/roles/info.sh
-
 echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 mkdir /var/plexguide/ 1>/dev/null 2>&1
 
