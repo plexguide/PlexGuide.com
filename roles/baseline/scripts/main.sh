@@ -18,18 +18,8 @@
 echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 ############################################################ Basic Menu
-if dialog --stdout --title "System Update" \
-  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-  --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
-  clear
-else
-  clear
-  dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree! You can view the program, but doing anything will mess things up!" 0 0
-  echo "Type to Restart the Program: sudo plexguide"
-  echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  exit 0
-fi
 
+edition=$( cat /var/plexguide/pg.edition )
 ######### Check to SEE IF GCE FEED Edition
 if [ "$edition" == "PG Edition: GCE Feed" ]
   then
@@ -67,35 +57,6 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
 fi
 
 ############################################################ Starting Install Processing
-echo "0" | dialog --gauge "Conducting a System Update" 7 50 0
-sleep 2
-clear
-yes | apt-get update
-yes | apt-get install software-properties-common
-yes | apt-get install sysstat nmon
-sed -i 's/false/true/g' /etc/default/sysstat
-echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-sleep 2
-
-echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
-sleep 2
-######## ALIAS
-pg_label=$( cat /var/plexguide/pg.label )
-pg_label_stored=$( cat /var/plexguide/pg.label.stored )
-
-if [ "$pg_label" == "$pg_label_stored" ]; then
-      echo "70" | dialog --gauge "Label Is Already Installed" 7 50 0
-      sleep 2
-    else
-      echo "70" | dialog --gauge "Installing: PlexGuide Label" 7 50 0
-      sleep 2
-      clear
-      ansible-playbook /opt/plexguide/pg.yml --tags label
-      sleep 2
-      #read -n 1 -s -r -p "Press any key to continue "
-      cat /var/plexguide/pg.label > /var/plexguide/pg.label.stored
-      sleep 2
-fi
 
 echo "75" | dialog --gauge "Installing: RClone & Services" 7 50 0
 sleep 2

@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Alias Install"
+sname="PG Installer: MOTD Install"
 pg_motd=$( cat /var/plexguide/pg.motd )
 pg_motd_stored=$( cat /var/plexguide/pg.motd.stored )
 ######################################################## START: PG Log
