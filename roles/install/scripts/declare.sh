@@ -22,6 +22,13 @@ file="/var/plexguide/pg.alias.stored"
     echo "0" > $file
   fi
 
+  file="/var/plexguide/pg.watchtower.stored"
+    if [ -e "$file" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      echo "0" > $file
+    fi
+
   file="/var/plexguide/pg.dependency.stored"
     if [ -e "$file" ]; then
       echo "" 1>/dev/null 2>&1
