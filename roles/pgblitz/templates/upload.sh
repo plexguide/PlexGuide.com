@@ -85,12 +85,12 @@ ENDTIME=`date +%s`
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\",\"starttime\": \"$STARTTIME\",\"endtime\": \"$ENDTIME\"}" > $JSONFILE
 
-#de-dupe just in case
-if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
-    rclone dedupe tcrypt:$FILEDIR --dedupe-mode newest
-else
-    rclone dedupe tdrive:$FILEDIR --dedupe-mode newest
-fi
+#de-dupe just in case (does not work)
+#if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+#    rclone dedupe tcrypt:$FILEDIR --dedupe-mode newest
+#else
+#    rclone dedupe tdrive:$FILEDIR --dedupe-mode newest
+#fi
 
 echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 #cleanup

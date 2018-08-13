@@ -1,5 +1,4 @@
 {% raw %}
-
 #!/bin/bash
 ##
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
@@ -56,9 +55,9 @@ do
                 echo "[PGBlitz] Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
-                FILESIZE1=`du -k "$i" | cut -f1`
+                FILESIZE1=`wc -c < "$i"`
                 sleep .5
-                FILESIZE2=`du -k "$i" | cut -f1`
+                FILESIZE2=`wc -c < "$i"`
                 if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
                     echo "[PGBlitz] File is still getting bigger $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     continue
