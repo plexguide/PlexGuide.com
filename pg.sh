@@ -125,12 +125,12 @@ bash /opt/plexguide/roles/install/scripts/reboot.sh
 ######################################################## END: Reboot
 #
 #
+######################################################## START: Edition
+bash /opt/plexguide/roles/install/scripts/edition.sh
+######################################################## END: Edition
+#
+#
 ######################################################## START: Common Functions
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
-#
-#
-######################################################## START: Edition
-bash /opt/plexguide/roles/install/scripts/edition.sh
-######################################################## END: Edition
