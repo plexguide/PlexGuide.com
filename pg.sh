@@ -58,7 +58,7 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 #
 #
 ######################################################## START: New Install
-file="touch /var/plexguide/ask.yes"
+file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
   echo "" 1>/dev/null 2>&1
   else
