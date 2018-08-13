@@ -94,9 +94,9 @@ ansible-playbook /opt/plexguide/pg.yml --tags portainer &>/dev/null &
 ######################################################## END: Portainer
 #
 #
-######################################################## START: Portainer
+######################################################## START: WatchTower
 bash /opt/plexguide/roles/install/scripts/watchtower.sh
-######################################################## END: Portainer
+######################################################## END: WatchTower
 #
 #
 ######################################################## START: MOTD
