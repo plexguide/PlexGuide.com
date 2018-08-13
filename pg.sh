@@ -83,6 +83,11 @@ bash /opt/plexguide/roles/install/scripts/docstart.sh ### Good
 ######################################################## END: DocStart
 #
 #
+######################################################## START: Portainer
+ansible-playbook /opt/plexguide/pg.yml --tags portainer &>/dev/null &
+######################################################## END: Portainer
+#
+#
 ######################################################## START: MOTD
 bash /opt/plexguide/roles/install/scripts/motd.sh
 ######################################################## END: MOTD

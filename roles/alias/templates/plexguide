@@ -40,8 +40,8 @@ else
 	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Version-6 /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 	exit 0
 fi
-bash /opt/plexguide/roles/baseline/scripts/gen.sh 1>/dev/null 2>&1
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 
 sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-6/menus/version/main.sh 1>/dev/null 2>&1
-bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
 sudo bash /opt/plexguide/scripts/menu.sh
