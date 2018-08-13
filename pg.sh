@@ -36,7 +36,6 @@ echo "1" > /var/plexguide/pg.motd
 echo "31" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
-echo "1" > /var/plexguide/pg.edition
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/roles/install/scripts/declare.sh
