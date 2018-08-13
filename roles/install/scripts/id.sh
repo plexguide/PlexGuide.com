@@ -31,7 +31,8 @@ if [ "$pg_id" == "$pg_id_stored" ]; then
 
       file="/var/plexguide/server.id"
         if [ -e "$file" ]; then
-          echo "" 1>/dev/null 2>&1
+          cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
+          cat /var/plexguide/server.id > /var/plexguide/restore.id
         else
           echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
