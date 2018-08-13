@@ -136,6 +136,14 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&
 
 # run pg main
 bash /opt/plexguide/pg.sh
+file="touch /var/plexguide/pg.exit"
+if [ -e "$file" ]; then
+  exit
+  else
+  echo "" 1>/dev/null 2>&1
+  exit
+fi
+
 
 edition=$( cat /var/plexguide/pg.edition )
 current=$( cat /var/plexguide/pg.preinstall )
