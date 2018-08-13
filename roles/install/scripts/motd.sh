@@ -25,7 +25,7 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_motd" == "$pg_motd_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --infobox "Installing | Upgrading MOTD" 3 50
+      dialog --infobox "Installing | Upgrading MOTD" 3 40
       sleep 2
       clear
       ansible-playbook /opt/plexguide/pg.yml --tags motd
