@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Alias Install"
+sname="PG Installer: Dependency Commands"
 pg_dependency=$( cat /var/plexguide/pg.dependency )
 pg_dependency_stored=$( cat /var/plexguide/pg.dependency.stored )
 ######################################################## START: PG Log
