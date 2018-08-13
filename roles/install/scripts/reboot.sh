@@ -1,7 +1,5 @@
 #!/bin/bash
 #
-# [PG BaseInstall]
-#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
@@ -15,9 +13,11 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-sudo apt-get remove ansible
-sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
-apt-get update -y
-apt-get install ansible 2.5.5 -y
-apt-mark hold ansible
-yes | apt-get update
+
+test1=$(echo /var/plexguide/pg.preinstall)
+test2=$(echo /var/plexguide/pg.preinstall.stored)
+if [ "$test1" == "$test2" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
+fi

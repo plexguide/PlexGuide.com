@@ -71,5 +71,5 @@ fi
 ### log message
 #dt=`date '+%d/%m/%Y %H:%M:%S'`
 #echo "$dt INFO - User Properly Exited PlexGuide." >> "/opt/appdata/plexguide/pg.log"
-bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
 echo "INFO - Program Exited Properly" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

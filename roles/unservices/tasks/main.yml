@@ -155,13 +155,13 @@
 #
 ##################################### SERVICE - START
   - name: Daemon-Reload
-    systemd: state=stopped name=v2dockerfix daemon_reload=yes enabled=no
+    systemd: state=stopped name=v2docstart daemon_reload=yes enabled=no
     ignore_errors: True
 
   - name: Remove RClone Service
     file:
       state: absent
-      path: /etc/systemd/system/v2dockerfix.service 
+      path: /etc/systemd/system/v2docstart.service 
     ignore_errors: True    
 ##################################### SERVICE ### END
 #
