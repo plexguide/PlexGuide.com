@@ -191,4 +191,4 @@ fi
 
 #### falls to this menu incase none work above
 echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/scripts/baseinstall/edition.sh
+bash /opt/plexguide/roles/install/scripts/edition.sh
