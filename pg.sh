@@ -64,7 +64,8 @@ if [ -e "$file" ]; then
   else
   bash /opt/plexguide/menus/version/main.sh
   bash /opt/plexguide/roles/ending/ending.sh
-  echo exit > /var/plexguide/pg.exit
+  touch /var/plexguide/pg.exit
+  exit
 fi
 ######################################################## START: Alias
 bash /opt/plexguide/roles/install/scripts/alias.sh ### Good

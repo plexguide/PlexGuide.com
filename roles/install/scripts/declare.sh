@@ -112,3 +112,5 @@ file="/var/plexguide/pg.python.stored"
   else
     echo "0" > $file
   fi
+
+rm -r /var/plexguide/pg.exit 1>/dev/null 2>&1
