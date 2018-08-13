@@ -134,6 +134,9 @@ sudo rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
+# run pg main
+bash /opt/plexguide/pg.sh
+
 edition=$( cat /var/plexguide/pg.edition )
 current=$( cat /var/plexguide/pg.preinstall )
 stored=$( cat /var/plexguide/pg.preinstall.stored )
