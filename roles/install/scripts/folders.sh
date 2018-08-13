@@ -32,11 +32,10 @@ if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
           else
             echo "/mnt" > /var/plexguide/server.hd.path
       fi
-      
-      clear
-      echo "PG Installer: Folders & Directories"
+
+      dialog --infobox "Installing Folders & Directories" 3 50
       sleep 2
-      echo ""
+      clear
       ansible-playbook /opt/plexguide/pg.yml --tags folders
   fi
 ######################################################## END: Main Script

@@ -25,10 +25,9 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_docstart" == "$pg_docstart_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      clear
-      echo "PG Installer: Docker Assist Commands"
+      dialog --infobox "Installing | Upgrading Docker Assist" 3 50
       sleep 2
-      echo ""
+      clear
       ansible-playbook /opt/plexguide/pg.yml --tags docstart
       cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored
   fi

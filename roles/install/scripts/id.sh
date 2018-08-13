@@ -25,10 +25,9 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_id" == "$pg_id_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      clear
-      echo "$sname"
+      dialog --infobox "Installing | Upgrading Server IDs" 3 50
       sleep 2
-      echo ""
+      clear
 
       file="/var/plexguide/server.id"
         if [ -e "$file" ]; then
