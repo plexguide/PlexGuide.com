@@ -75,7 +75,6 @@ case $CHOICE in
       echo "feeder" > /var/plexguide/pg.server.deploy
       ;;
 esac
-
       cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   fi
 ######################################################## END: Main Script
