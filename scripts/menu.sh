@@ -142,8 +142,11 @@ edition=$( cat /var/plexguide/pg.edition )
 current=$( cat /var/plexguide/pg.preinstall )
 stored=$( cat /var/plexguide/pg.preinstall.stored )
 
+echo 'INFO - PG Installer Functions Executed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+bash /opt/plexguide/pg.sh
+
 echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/baseline/scripts/main.sh
+ansible-playbook /opt/plexguide/pg.yml --tags b-control
 
 # checking to see if PG Edition was set
 file="/var/plexguide/pg.edition"
