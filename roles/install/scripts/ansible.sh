@@ -25,10 +25,9 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      clear
-      echo "$sname"
+      dialog --title "NOTE" --msgbox "\nInstalling | Upgrading Ansible" 0 0
       sleep 2
-      echo ""
+      clear
       sudo apt-get remove ansible
       sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
       apt-get update -y
