@@ -1,4 +1,3 @@
-echo "INFO - BaseInstall Started" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 edition=$( cat /var/plexguide/pg.edition )
 ############################################################ Basic Menu
 
@@ -38,26 +37,6 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
         echo "[OFF]" > /var/plexguide/server.appguard
         fi
 fi
-
-############################################################ Starting Install Processing
-
-echo "80" | dialog --gauge "Installing: AutoDelete & Cleaner" 7 50 0
-ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
-ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
-ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
-sleep 2
-
-#### Install Alias Command - 85 Percent
-bash /opt/plexguide/roles/baseline/scripts/portainer.sh
-
-############################################################ Reboot Startup Container Script
-pg_docstart=$( cat /var/plexguide/pg.docstart)
-pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
-
-echo "90" | dialog --gauge "Forcing Reboot of Existing Containers!" 7 50 0
-bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
-#read -n 1 -s -r -p "Press any key to continue "
-#sleep 2
 
 #### Install WatchTower Command - 95 Percent
 bash /opt/plexguide/roles/baseline/scripts/watchtower.sh
