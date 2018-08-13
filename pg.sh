@@ -46,8 +46,7 @@ bash /opt/plexguide/roles/install/scripts/declare.sh
 bash /opt/plexguide/roles/install/scripts/start.sh
 ### Users Agreement Handling
 file="/var/plexguide/update.failed"
-if [ -e "$file" ]
-  then
+if [ -e "$file" ]; then
   exit
   #### Put Execute PG Command Here
 fi
@@ -59,6 +58,14 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 ######################################################## END: Ansible
 #
 #
+file="touch /var/plexguide/ask.yes"
+if [ -e "$file" ]; then
+  echo ""
+  else
+  bash /opt/plexguide/menus/version/main.sh
+  bash /opt/plexguide/roles/ending/ending.sh
+  echo exit > /var/plexguide/pg.exit
+fi
 ######################################################## START: Alias
 bash /opt/plexguide/roles/install/scripts/alias.sh ### Good
 ######################################################## END: Alias
