@@ -18,13 +18,13 @@
 
 ######################################################## Declare Variables
 sname="PG Installer: Alias Install"
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+pg_edition=$( cat /var/plexguide/pg.edition )
+pg_edition_stored=$( cat /var/plexguide/pg.edition.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_alias" == "$pg_alias_stored" ]; then
+if [ "$pg_edition" == "$pg_edition_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       dialog --infobox "\nWARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time!\n\nChoose Carefully!" 3 45
@@ -76,7 +76,7 @@ case $CHOICE in
       ;;
 esac
     
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+      cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   fi
 ######################################################## END: Main Script
 #
