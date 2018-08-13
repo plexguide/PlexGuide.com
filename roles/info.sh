@@ -16,12 +16,12 @@
 #
 #################################################################################
 #### PG VARIBLES
-echo "6.030 v2" > /var/plexguide/pg.version
-echo "136" > /var/plexguide/pg.preinstall
+echo "6.030 v3" > /var/plexguide/pg.version
+echo "137" > /var/plexguide/pg.preinstall
 
 #### Installer
 echo "5" > /var/plexguide/pg.ansible
-echo "2" > /var/plexguide/pg.rclone
+echo "3" > /var/plexguide/pg.rclone
 echo "2" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
