@@ -1,6 +1,6 @@
 ## GLOBAL_VARS.SH ####################################################(START)
 ###### BE CAREFUL - WRONG FORMATTING CAN BREAK PG ###  - opt/plexguide/pg.yml
-  gather_facts: no
+  #gather_facts: no
   vars:
     skipend: "blank"
     quescheck: "off"
