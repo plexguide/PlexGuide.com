@@ -146,7 +146,7 @@ echo 'INFO - PG Installer Functions Executed' > /var/plexguide/pg.log && bash /o
 bash /opt/plexguide/pg.sh
 
 echo 'INFO - PG BaseInstaller Executed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-ansible-playbook /opt/plexguide/pg.yml --tags b-control
+ansible-playbook /opt/plexguide/pg.yml --tags menu-start
 
 # checking to see if PG Edition was set
 file="/var/plexguide/pg.edition"
