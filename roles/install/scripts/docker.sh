@@ -25,10 +25,9 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_docker" == "$pg_docker_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      clear
-      echo "PG Installer: Docker"
+      dialog --infobox "Installing | Upgrading Docker" 3 50
       sleep 2
-      echo ""
+      clear
       ansible-playbook /opt/plexguide/pg.yml --tags docker
 
       file="/usr/bin/docker" 1>/dev/null 2>&1
