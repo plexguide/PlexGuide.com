@@ -141,7 +141,6 @@ if [ -e "$file" ]; then
   exit
   else
   echo "" 1>/dev/null 2>&1
-  exit
 fi
 
 

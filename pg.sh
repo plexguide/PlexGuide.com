@@ -20,7 +20,7 @@ bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 # PG Version
-echo "6.031" > /var/plexguide/pg.version
+echo "6.031 BETA 1" > /var/plexguide/pg.version
 # Force Common Things To Execute Such as Folders
 echo "136" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
@@ -58,7 +58,7 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 #
 #
 ######################################################## START: New Install
-file="touch /var/plexguide/ask.yes"
+file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
   echo "" 1>/dev/null 2>&1
   else
