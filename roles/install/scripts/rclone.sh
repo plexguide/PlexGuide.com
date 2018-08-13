@@ -15,22 +15,22 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Alias Install"
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+sname="PG Installer: RClone Install"
+pg_rclone=$( cat /var/plexguide/pg.rclone )
+pg_rclone_stored=$( cat /var/plexguide/pg.rclone.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_alias" == "$pg_alias_stored" ]; then
+if [ "$pg_rclone" == "$pg_rclone_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       clear
       echo "$sname"
       sleep 2
       echo ""
-      ansible-playbook /opt/plexguide/pg.yml --tags alias
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+      ansible-playbook /opt/plexguide/pg.yml --tags rclone
+      cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
   fi
 ######################################################## END: Main Script
 #

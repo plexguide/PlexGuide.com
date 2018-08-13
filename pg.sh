@@ -87,6 +87,11 @@ bash /opt/plexguide/roles/install/scripts/motd.sh
 ######################################################## END: MOTD
 #
 #
+######################################################## START: MOTD
+bash /opt/plexguide/roles/install/scripts/rclone.sh
+######################################################## END: MOTD
+#
+#
 ######################################################## START: Python
 bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null & ### Maybe Good?
 ######################################################## END: Python
