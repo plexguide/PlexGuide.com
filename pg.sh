@@ -31,7 +31,7 @@ echo "1" > /var/plexguide/pg.docker
 echo "1" > /var/plexguide/pg.id
 echo "1" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
-echo "1" > /var/plexguide/pg.label
+echo "1" > /var/plexguide/pg.motd
 echo "31" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 
@@ -80,6 +80,11 @@ bash /opt/plexguide/roles/install/scripts/docker.sh ### Test Docker
 ######################################################## START: DocStart
 bash /opt/plexguide/roles/install/scripts/docstart.sh ### Good
 ######################################################## END: DocStart
+#
+#
+######################################################## START: MOTD
+bash /opt/plexguide/roles/install/scripts/motd.sh
+######################################################## END: MOTD
 #
 #
 ######################################################## START: Python
