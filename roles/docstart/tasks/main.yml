@@ -19,8 +19,8 @@
 ########################################## Scripts   
   - name: Check DockerFix Service
     stat:
-      path: "/etc/systemd/system/v2dockerfix.service"
-    register: v2dockerfix
+      path: "/etc/systemd/system/v2docstart.service"
+    register: v2docstart
 
   - name: Install Docker Reboot
     template:
@@ -32,27 +32,27 @@
   - name: Remove Old Docker Fix
     file:
       state: absent
-      path: /etc/systemd/system/dockerfix.service 
+      path: /etc/systemd/system/docstart.service 
 
   - name: Remove Old Docker File
     file:
       state: absent
-      path: /opt/appdata/plexguide/dockerfix.sh
+      path: /opt/appdata/plexguide/docstart.sh
 
 ########################################## New Service
 
   - name: Stop If DockerFix Service Running
-    systemd: state=stopped name=v2dockerfix
-    when: v2dockerfix.stat.exists
+    systemd: state=stopped name=v2docstart
+    when: v2docstart.stat.exists
     
   - name: Install DockerFix Service
     template:
-      src: v2dockerfix.js2
-      dest: /etc/systemd/system/v2dockerfix.service 
+      src: v2docstart.js2
+      dest: /etc/systemd/system/v2docstart.service 
       force: yes
 
   - name: Daemon-Reload
-    systemd: state=stopped name=v2dockerfix daemon_reload=yes enabled=no
+    systemd: state=stopped name=v2docstart daemon_reload=yes enabled=no
 
   - name: Start DockerFix
-    systemd: state=started name=v2dockerfix enabled=yes
+    systemd: state=started name=v2docstart enabled=yes

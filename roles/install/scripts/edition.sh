@@ -15,10 +15,23 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - Visited PG Edition Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-dialog --title "Quick Note" --msgbox "\nWARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time!\n\nChoose Carefully!" 0 0
+######################################################## Declare Variables
+sname="PG Installer: Set PG Edition"
+pg_edition=$( cat /var/plexguide/pg.edition )
+pg_edition_stored=$( cat /var/plexguide/pg.edition.stored )
+######################################################## START: PG Log
+sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
+sudo bash /opt/plexguide/roles/log/log.sh
+######################################################## START: Main Script
+if [ "$pg_edition" == "$pg_edition_stored" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      dialog --infobox "WARNING! Setting Your PlexGuide Edition! You Can Only Set the Edition One Time!\n\nChoose Carefully!" 0 0
+      sleep 5
+      clear
+
+echo 'INFO - Visited PG Edition Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 HEIGHT=10
 WIDTH=31
@@ -62,3 +75,11 @@ case $CHOICE in
       echo "feeder" > /var/plexguide/pg.server.deploy
       ;;
 esac
+      cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
+  fi
+######################################################## END: Main Script
+#
+#
+######################################################## END: PG Log
+sudo echo "INFO - END of Script: $sname" > /var/plexguide/pg.log
+sudo bash /opt/plexguide/roles/log/log.sh
