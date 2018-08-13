@@ -130,6 +130,6 @@ cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
 #
 #
-######################################################## START: Execute
-#bash /opt/plexguide/roles/install/scripts/reboot.sh
-######################################################## END: Execute
+######################################################## START: Edition
+bash /opt/plexguide/roles/install/scripts/edition.sh
+######################################################## END: Edition
