@@ -16,20 +16,20 @@
 
 ######################################################## Declare Variables
 sname="PG Installer: Alias Install"
-pg_alias=$( cat /var/plexguide/pg.alias )
-pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
+pg_dependency=$( cat /var/plexguide/pg.dependency )
+pg_dependency_stored=$( cat /var/plexguide/pg.dependency.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_alias" == "$pg_alias_stored" ]; then
+if [ "$pg_dependency" == "$pg_dependency_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --infobox "Installing | Upgrading Alias Commands" 3 45
+      dialog --infobox "Installing | Upgrading Dependency Commands" 3 50
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/pg.yml --tags alias
-      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+      ansible-playbook /opt/plexguide/pg.yml --tags dependency
+      cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored
   fi
 ######################################################## END: Main Script
 #
