@@ -69,6 +69,11 @@ bash /opt/plexguide/roles/install/scripts/id.sh ### Good
 #
 #
 ######################################################## START: Folders
+bash /opt/plexguide/roles/install/scripts/dependency.sh ### Good
+######################################################## END: Folders
+#
+#
+######################################################## START: Folders
 bash /opt/plexguide/roles/install/scripts/folders.sh ### Good
 ######################################################## END: Folders
 #
