@@ -28,7 +28,9 @@ if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
       dialog --infobox "Installing | Upgrading Cleaner Functions" 3 45
       sleep 2
       clear
-      ansible-playbook /opt/plexguide/pg.yml --tags cleaner
+      ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
       cat /var/plexguide/pg.cleaner > /var/plexguide/pg.cleaner.stored
   fi
 ######################################################## END: Main Script
