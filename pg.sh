@@ -58,6 +58,7 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 ######################################################## END: Ansible
 #
 #
+######################################################## START: New Install
 file="touch /var/plexguide/ask.yes"
 if [ -e "$file" ]; then
   echo ""
@@ -67,6 +68,9 @@ if [ -e "$file" ]; then
   touch /var/plexguide/pg.exit 1>/dev/null 2>&1
   exit
 fi
+######################################################## END: New Install
+#
+#
 ######################################################## START: Alias
 bash /opt/plexguide/roles/install/scripts/alias.sh ### Good
 ######################################################## END: Alias
