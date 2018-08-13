@@ -26,10 +26,9 @@ if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
-      clear
-      echo "$sname"
+      dialog --infobox "Installing | Upgrading PreInstall Basics" 3 50
       sleep 2
-      echo ""
+      clear
       if dialog --stdout --title "System Update" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then

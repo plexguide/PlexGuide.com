@@ -25,10 +25,9 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_rclone" == "$pg_rclone_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      clear
-      echo "$sname"
+      dialog --infobox "Installing | Upgrading RClone" 3 50
       sleep 2
-      echo ""
+      clear
       ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
 
 #### Alignment Note #### Have to Have It Left Aligned
@@ -43,7 +42,7 @@ EOF
 
 chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
 chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
-    
+
       cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
   fi
 ######################################################## END: Main Script
