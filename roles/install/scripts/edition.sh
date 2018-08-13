@@ -17,7 +17,7 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Alias Install"
+sname="PG Installer: Set PG Edition"
 pg_edition=$( cat /var/plexguide/pg.edition )
 pg_edition_stored=$( cat /var/plexguide/pg.edition.stored )
 ######################################################## START: PG Log
@@ -75,7 +75,7 @@ case $CHOICE in
       echo "feeder" > /var/plexguide/pg.server.deploy
       ;;
 esac
-    
+
       cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   fi
 ######################################################## END: Main Script
