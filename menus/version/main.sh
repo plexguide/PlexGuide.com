@@ -75,27 +75,6 @@ case $CHOICE in
     version="6.031" ;;
   03)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.030" ;;
-  04)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.029" ;;
-  05)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.028" ;;
-  06)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.026" ;;
-  07)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.023" ;;
-  08)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.016" ;;
-  09)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.015" ;;
-  10)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="bugtest" ;;
 esac
 
