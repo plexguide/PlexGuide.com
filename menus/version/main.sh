@@ -27,7 +27,7 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.031"
+         01 "EDGE         ~ 6.032"
          02 "Release      ~ 6.031"
          03 "Internal Bug Test")
 

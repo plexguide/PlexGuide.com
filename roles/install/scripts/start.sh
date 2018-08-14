@@ -23,12 +23,13 @@ sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
-      rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
-      dialog --infobox "Installing | Upgrading PreInstall Basics" 3 45
-      sleep 2
-      clear
+  echo "" 1>/dev/null 2>&1
+else
+  rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
+  dialog --infobox "Installing | Upgrading PreInstall Basics" 3 45
+  sleep 2
+  clear
+
       if dialog --stdout --title "System Update" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
@@ -40,13 +41,12 @@ if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
         touch /var/plexguide/update.failed
         exit 0
       fi
-
-      yes | apt-get update
-      yes | apt-get install software-properties-common
-      yes | apt-get install sysstat nmon
-      sed -i 's/false/true/g' /etc/default/sysstat
-      echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  fi
+        yes | apt-get update
+        yes | apt-get install software-properties-common
+        yes | apt-get install sysstat nmon
+        sed -i 's/false/true/g' /etc/default/sysstat
+        echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+fi
 ######################################################## END: Main Script
 #
 #
