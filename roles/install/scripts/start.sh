@@ -27,30 +27,31 @@ sudo bash /opt/plexguide/roles/log/log.sh
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
 
-  if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
-        echo "" 1>/dev/null 2>&1
-      else
-        rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
-        dialog --infobox "Installing | Upgrading PreInstall Basics" 3 45
-        sleep 2
-        clear
+      if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
+            echo "" 1>/dev/null 2>&1
+          else
+            rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
+            dialog --infobox "Installing | Upgrading PreInstall Basics" 3 45
+            sleep 2
+            clear
 
-        if dialog --stdout --title "System Update" \
-          --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
-          clear
-        else
-          clear
-          dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree!\n\nWARNING: Executing any Portions of PG may result with instability!" 0 0
-          echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          touch /var/plexguide/update.failed
-          exit 0
+              if dialog --stdout --title "System Update" \
+                --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+                --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
+                clear
+              else
+                clear
+                dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree!\n\nWARNING: Executing any Portions of PG may result with instability!" 0 0
+                echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                touch /var/plexguide/update.failed
+                exit 0
+              fi
+
         fi
-      fi
 
-    else
-      echo "" 1>/dev/null 2>&1
-      exit
+else
+  echo "" 1>/dev/null 2>&1
+  exit
 fi
 
       yes | apt-get update
@@ -58,7 +59,7 @@ fi
       yes | apt-get install sysstat nmon
       sed -i 's/false/true/g' /etc/default/sysstat
       echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  fi
+
 ######################################################## END: Main Script
 #
 #
