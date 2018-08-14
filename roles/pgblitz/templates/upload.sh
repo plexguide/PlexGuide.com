@@ -37,8 +37,11 @@ echo "[PGBlitz] [Upload] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg
 # add to file lock to stop another process being spawned while file is moving
 echo "lock" > $FILE.lck
 
+#get Human readable filesize
+HRFILESIZE=`ls -lsah $i | awk '{print $6}'`
+
 #create json file for PGbliz GUI
-echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"moving\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\", \"status\": \"moving\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 
 #move file to pgblitz folder
 mkdir -p $downloadpath/pgblitz/$GDSA$FILEDIR/
@@ -66,7 +69,7 @@ touch $LOGFILE
 chmod 777 $LOGFILE
 
 #update json file for PGBlitz GUI
-echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 echo "[PGBlitz] [Upload] Starting Upload"
 rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
@@ -83,7 +86,7 @@ echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log 
 
 ENDTIME=`date +%s`
 #update json file for PGBlitz GUI
-echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"done\",\"gdsa\": \"$GDSA\",\"starttime\": \"$STARTTIME\",\"endtime\": \"$ENDTIME\"}" > $JSONFILE
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"done\",\"gdsa\": \"$GDSA\",\"starttime\": \"$STARTTIME\",\"endtime\": \"$ENDTIME\"}" > $JSONFILE
 
 #de-dupe just in case (does not work)
 #if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then

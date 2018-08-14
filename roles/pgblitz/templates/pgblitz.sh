@@ -87,7 +87,6 @@ do
                             else
                                 GDSAUSE=`expr $GDSAUSE + 1`
                                 GDSAAMOUNT=0
-                                
                             fi
                             #record next GDSA in case of crash/reboot
                             echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
