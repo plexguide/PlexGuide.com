@@ -136,3 +136,38 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&
 
 # run pg main
 bash /opt/plexguide/pg.sh
+
+
+## Selects an edition
+edition=$( cat /var/plexguide/pg.edition )
+
+#### G-Drive Edition
+if [ "$edition" == "PG Edition: GDrive" ]
+  then
+    echo 'INFO - Deploying GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    bash /opt/plexguide/roles/menu-start/scripts/main.sh
+    exit
+fi
+
+#### Multiple Drive Edition
+if [ "$edition" == "PG Edition: HD Multi" ]
+  then
+    echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    bash /opt/plexguide/roles/localmain.sh
+    exit
+fi
+
+#### Solo Drive Edition
+if [ "$edition" == "PG Edition: HD Solo" ]
+  then
+   echo 'INFO - Deploying HD Solo Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    bash /opt/plexguide/roles/localmain.sh
+    exit
+fi
+
+if [ "$edition" == "PG Edition: GCE Feed" ]
+  then
+   echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    bash /opt/plexguide/roles/gce.sh
+    exit
+fi
