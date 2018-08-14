@@ -28,15 +28,8 @@ MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
          01 "EDGE         ~ 6.031"
-         02 "BETA 1       ~ 6.031"
-         03 "Release      ~ 6.030"
-         04 "Release      ~ 6.029"
-         05 "Release      ~ 6.028"
-         06 "Release      ~ 6.026"
-         07 "Release      ~ 6.023"
-         08 "Release      ~ 6.016"
-         09 "Release      ~ 6.015"
-         10 "Internal Bug Test")
+         02 "Release      ~ 6.031"
+         03 "Internal Bug Test")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -74,27 +67,6 @@ case $CHOICE in
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="6.031" ;;
   03)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.030" ;;
-  04)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.029" ;;
-  05)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.028" ;;
-  06)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.026" ;;
-  07)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.023" ;;
-  08)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.016" ;;
-  09)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.015" ;;
-  10)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="bugtest" ;;
 esac
