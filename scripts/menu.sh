@@ -155,7 +155,7 @@ then
   echo "" 1>/dev/null 2>&1
 else
   echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/baseline/scripts/edition.sh
+bash /opt/plexguide/roles/install/scripts/edition.sh
 fi
 
 ## Selects an edition
