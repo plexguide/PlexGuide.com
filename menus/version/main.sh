@@ -28,15 +28,8 @@ MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
          01 "EDGE         ~ 6.031"
-         02 "BETA 1       ~ 6.031"
-         03 "Release      ~ 6.030"
-         04 "Release      ~ 6.029"
-         05 "Release      ~ 6.028"
-         06 "Release      ~ 6.026"
-         07 "Release      ~ 6.023"
-         08 "Release      ~ 6.016"
-         09 "Release      ~ 6.015"
-         10 "Internal Bug Test")
+         02 "Release      ~ 6.031"
+         03 "Internal Bug Test")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
