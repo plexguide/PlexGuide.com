@@ -28,7 +28,7 @@ else
 	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Version-6 /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 	exit 0
 fi
-bash /opt/plexguide/roles/baseline/scripts/gen.sh 1>/dev/null 2>&1
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 
 rm -r /opt/plexguide2 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/pg.yml --tags pgfork
@@ -40,4 +40,4 @@ then
   mv /opt/plexguide2 /opt/plexguide
 fi
 
-bash /opt/plexguide/roles/baseline/scripts/gen.sh &>/dev/null &
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &

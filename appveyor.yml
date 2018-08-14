@@ -7,7 +7,7 @@ install:
   - sh: sudo mkdir -p /opt/appdata/plexguide
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
   - sh: cd /opt/plexguide
-  - sh: sudo bash /opt/plexguide/roles/baseline/scripts/gen.sh
+  - sh: sudo bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 
   ###### EXECUTE SET VARIABLES
   - sh: sudo bash /opt/plexguide/roles/appveyor/var.sh
