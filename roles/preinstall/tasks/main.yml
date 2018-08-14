@@ -57,12 +57,6 @@
       - gawk
     #ignore_errors: yes
 
-  - name: Pip Modes
-    pip: "name={{item}} state=latest"
-    with_items:
-      - docker-py
-      - certbot
-
   - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
     shell: pip install git+https://github.com/larsks/ansible-toolbox
     ignore_errors: yes
