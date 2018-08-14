@@ -136,27 +136,7 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&
 
 # run pg main
 bash /opt/plexguide/pg.sh
-file="touch /var/plexguide/pg.exit"
-if [ -e "$file" ]; then
-  exit
-  else
-  echo "" 1>/dev/null 2>&1
-fi
 
-
-edition=$( cat /var/plexguide/pg.edition )
-current=$( cat /var/plexguide/pg.preinstall )
-stored=$( cat /var/plexguide/pg.preinstall.stored )
-
-# checking to see if PG Edition was set
-file="/var/plexguide/pg.edition"
-if [ -e "$file" ]
-then
-  echo "" 1>/dev/null 2>&1
-else
-  echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/baseline/scripts/edition.sh
-fi
 
 ## Selects an edition
 edition=$( cat /var/plexguide/pg.edition )
@@ -191,7 +171,3 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
     bash /opt/plexguide/roles/gce.sh
     exit
 fi
-
-#### falls to this menu incase none work above
-echo 'WARNING - PG Edition Missing (Ask User - Executing Failsafe)' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/install/scripts/edition.sh
