@@ -26,6 +26,7 @@ sudo bash /opt/plexguide/roles/log/log.sh
 ### Bypasses Upgrade Quesiton If a New Install
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
+
   if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
         echo "" 1>/dev/null 2>&1
       else
@@ -33,6 +34,7 @@ if [ -e "$file" ]; then
         dialog --infobox "Installing | Upgrading PreInstall Basics" 3 45
         sleep 2
         clear
+
         if dialog --stdout --title "System Update" \
           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
           --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
@@ -44,9 +46,11 @@ if [ -e "$file" ]; then
           touch /var/plexguide/update.failed
           exit 0
         fi
+      fi
+
     else
       echo "" 1>/dev/null 2>&1
-  exit
+      exit
 fi
 
       yes | apt-get update
