@@ -63,6 +63,8 @@ if [ -e "$file" ]; then
   echo "" 1>/dev/null 2>&1
   else
   bash /opt/plexguide/menus/version/main.sh
+  dialog --title "--- NEW INSTALL ---" --msgbox "\nExiting PG to install the Selected Version!\n\nType 'plexguide' again to complete the process!" 0 0
+  clear
   bash /opt/plexguide/roles/ending/ending.sh
   touch /var/plexguide/pg.exit 1>/dev/null 2>&1
   exit
