@@ -73,8 +73,8 @@ do
                     FILEBASE=`basename $i`
 
                     #append filesize to GDSAAMOUNT
-                    GDSAAMOUNT=`expr $GDSAAMOUNT + $FILESIZE2`
-
+                    GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
+                    
                     #add transfer to pid directory
                     echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
                     
