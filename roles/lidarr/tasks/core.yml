@@ -52,8 +52,8 @@
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      UID: "1000"
-      GID: "1000"
+      PUID: "1000"
+      PGID: "1000"
       APP: "lidarr"
       VERSION: "stable"
       BACKUP: "no"
