@@ -38,7 +38,7 @@ echo "[PGBlitz] [Upload] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg
 echo "lock" > $FILE.lck
 
 #get Human readable filesize
-HRFILESIZE=`ls -lsah $i | awk '{print $6}'`
+HRFILESIZE=`ls -lsah $FILE | awk '{print $6}'`
 
 #create json file for PGbliz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\", \"status\": \"moving\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
@@ -80,6 +80,8 @@ rclone moveto --tpslimit 6 --checkers=20 \
 
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+
+rm -f $FILEDIR/folder.lck
 #waiting for file to become avalible from remote and then vfs/forget it
 rclone rc vfs/forget file="$FILEDIR/$FILEBASE"
 echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

@@ -1,0 +1,101 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Version
+  shell: "cat /var/plexguide/pg.version"
+  register: pgversion
+
+- name: Server ID
+  shell: "cat /var/plexguide/server.id"
+  register: pgid
+
+- name: Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: pgdomain
+
+- name: PG Main Menu
+  pause:
+    prompt: "\nWelcome to PG Edition: GDrive - {{pgversion.stdout}}!
+             \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
+\n\n1.  Exit PlexGuide
+\n2.  Deploy a Mount System
+\n3.  Deploy Traefik | Set TLD
+\n4.  PG Program Suite
+\n5.  PG Plex Enhancement Tools
+\n6.  PG Server Security
+\n7.  PG Server Information
+\n8.  PG Troubleshooting Actions
+\n9.  PG Backup & Restore
+\n10. PG Settings & Tools
+\n11. PG Update & Restore
+\n\nType a [NUMBER] Choice & Press [ENTER]"
+  register: choice
+  until: choice.user_input == "1" or
+         choice.user_input == "2" or
+         choice.user_input == "3" or
+         choice.user_input == "4" or
+         choice.user_input == "5" or
+         choice.user_input == "6" or
+         choice.user_input == "7" or
+         choice.user_input == "8" or
+         choice.user_input == "9" or
+         choice.user_input == "10" or
+         choice.user_input == "11"
+  retries: 99
+  delay: 1
+
+- name: Set Choice
+  set_fact:
+    fchoice: "{{choice.user_input}}"
+
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/main.menu"
+  when: fchoice == "1"
+
+- name: Mount System
+  shell: "echo mount > /var/plexguide/main.menu"
+  when: fchoice == "2"
+
+- name: Traefik
+  shell: "echo traefik > /var/plexguide/main.menu"
+  when: fchoice == "3"
+
+- shell: "echo programs > /var/plexguide/main.menu"
+  when: fchoice == "4"
+
+- name: Change Server ID
+  shell: "echo plextools > /var/plexguide/main.menu"
+  when: fchoice == "5"
+
+- shell: "echo security > /var/plexguide/main.menu"
+  when: fchoice == "6"
+
+- shell: "echo info > /var/plexguide/main.menu"
+  when: fchoice == "7"
+
+- shell: "echo tshoot > /var/plexguide/main.menu"
+  when: fchoice == "8"
+
+- shell: "echo backup > /var/plexguide/main.menu"
+  when: fchoice == "9"
+
+- shell: "echo settings > /var/plexguide/main.menu"
+  when: fchoice == "10"
+
+- shell: "echo update > /var/plexguide/main.menu"
+  when: fchoice == "11"

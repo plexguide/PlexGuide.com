@@ -27,14 +27,9 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.030"
-         02 "Release      ~ 6.029"
-         03 "Release      ~ 6.028"
-         04 "Release      ~ 6.027"
-         05 "Release      ~ 6.026"
-         06 "Release      ~ 6.023"
-         07 "Release      ~ 6.016"
-         08 "Internal Bug Test")
+         01 "EDGE         ~ 6.032"
+         02 "Release      ~ 6.031"
+         03 "Internal Bug Test")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -47,7 +42,6 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
   Z)
-    bash /opt/plexguide/roles/main.sh
     echo 'INFO - Selected: Exit Upgrade Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     exit 0 ;;
   01)
@@ -71,23 +65,8 @@ case $CHOICE in
     exit ;;
   02)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.029" ;;
+    version="6.031" ;;
   03)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.028" ;;
-  04)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.027" ;;
-  05)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.026" ;;
-  06)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.023" ;;
-  07)
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.016" ;;
-  08)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="bugtest" ;;
 esac

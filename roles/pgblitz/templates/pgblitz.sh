@@ -55,6 +55,11 @@ do
                 echo "[PGBlitz] Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                 continue
             else
+                if [ -e `dirname $i`/folder.lck ]; then
+                    echo "[PGBlitz] This folder is currently locked to prevent dupe folders" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                    echo "[PGBlitz] This folder is currently locked to prevent dupe folders"
+                    continue
+                fi
                 FILESIZE1=`wc -c < "$i"`
                 sleep .5
                 FILESIZE2=`wc -c < "$i"`
@@ -72,6 +77,7 @@ do
                         #Run upload script demonised
                         /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
                         
+                        touch "`dirname $i`/folder.lck"
                         PID=$!
                         FILEBASE=`basename $i`
                         
@@ -102,8 +108,9 @@ do
                     echo "[PGBlitz] Already 8 transfers running, waiting for next loop" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     break
                 fi
-                
             fi
+            echo "[PGBlitz] Sleeping 5s before looking at next file"
+            sleep 5
         done
         echo "[PGBlitz] Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
