@@ -64,44 +64,47 @@ do
                 fi
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
-                    echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                    if [ -e $i ]; then
+                        echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                        #append filesize to GDSAAMOUNT
+                        GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
 
-                    #Run upload script demonised
-                    /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
-                    
-                    PID=$!
-                    FILEBASE=`basename $i`
-
-                    #append filesize to GDSAAMOUNT
-                    GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
-                    
-                    #add transfer to pid directory
-                    echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
-                    
-                    #increase or reset $GDSAUSE?
-                    if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
-						echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-                        if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
-                            GDSAUSE=0
-                            GDSAAMOUNT=0
-                        else
-                            GDSAUSE=`expr $GDSAUSE + 1`
-                            GDSAAMOUNT=0
-							
+                        #Run upload script demonised
+                        /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
+                        
+                        PID=$!
+                        FILEBASE=`basename $i`
+                        
+                        #add transfer to pid directory
+                        echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
+                        
+                        #increase or reset $GDSAUSE?
+                        if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
+                            echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                            if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
+                                GDSAUSE=0
+                                GDSAAMOUNT=0
+                            else
+                                GDSAUSE=`expr $GDSAUSE + 1`
+                                GDSAAMOUNT=0
+                                
+                            fi
+                            #record next GDSA in case of crash/reboot
+                            echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
                         fi
-						#record next GDSA in case of crash/reboot
-						echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
+						echo "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024/1024" | bc -l`"
+                        #record GDSA transfered in case of crash/reboot
+                        echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
+                    else
+						echo "[PGBlitz] File $i seems to have dissapeared" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+						echo "[PGBlitz] File $i seems to have dissapeared"
 					fi
-					#record GDSA transfered in case of crash/reboot
-                    echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
                 else
                     echo "[PGBlitz] Already 8 transfers running, waiting for next loop" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                     break
                 fi
                 
             fi
-            
-            
         done
         echo "[PGBlitz] Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     else
