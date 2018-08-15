@@ -27,68 +27,16 @@
     prompt: "\n[The PG Application Suite]\n{{program.stdout}}\n\nTo QUIT, type >>> exit\nType the [Application Name] for Deployment! (all lowercase)"
   register: selection
 
-- name: Establishing Final Variable - Switch On
-  shell: "echo {{selection.user_input}} > /tmp/program_var"
-
-- script: /opt/plexguide/roles/b-sbackup/scripts/soloselect.sh
-
-- name: "Checking if Program is Running"
-  stat:
-    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
-  register: running
-
-- name: "Remove Static Path"
-  shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
-  when: running.stat.exists == True
-
-- debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
-
-- name: "Wait 1 Seconds"
-  wait_for:
-    timeout: 1
-
-- name: Establishing Final Variable
-  shell: "cat /tmp/program_var"
-  register: program_final
-
-- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
-
-- name: "Checking {{program_final.stdout}} location in APPDATA"
-  stat:
-    path: "/opt/appdata/{{program_final.stdout}}"
-  register: programappdata
-
-- name: "Checking if RClone Encrypted"
-  stat:
-    path: /var/plexguide/rclone-en.yes
-  register: encrypted
-
-- name: Stopping Docker Container - {{program_final.stdout}}
-  docker_container:
-    name: "{{program_final.stdout}}"
-    state: stopped
-  ignore_errors: True
-  when: running.stat.exists == True
-
-- debug: msg="Time Length can be Long or Short! Please Wait!"
-  when: programappdata.stat.exists == True
-
-- name: "Backing Up Program to GDrive - {{program_final.stdout}}"
-  archive:
-    path:
-    - "/opt/appdata/{{program_final.stdout}}/*"
-    dest: "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
-    format: tar
-
-############ BACKUP OTHER - END
-- name: "Restart Docker Container - {{program_final.stdout}}"
-  docker_container:
-    name: "{{program_final.stdout}}"
-    state: started
-  ignore_errors: True
-  when: running.stat.exists == True
-
 - name: Checking If Any Running App Exist
-  shell: "cat /tmp/backup.build | grep -oP {{selection.user_input}}"
+  shell: "cat /var/plexguide/programs.temp | grep -oP {{selection.user_input}}"
   register: grep_output
   ignore_errors: true
+
+- debug: msg="{{grep_output.user_input}}"
+
+- fail:
+    msg: "\nUser Failed to Type Program Correctly! [NOTE: Case Sensitie]"
+  when: grep_output.stdout == ""
+
+- name: Establishing Final Variable - Switch On
+  shell: "echo {{selection.user_input}} > /tmp/program_var"
