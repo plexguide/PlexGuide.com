@@ -22,7 +22,7 @@ while [ "$program_selection" != "exit" ]; do
 ansible-playbook /opt/plexguide/pg.yml --tags programs
 program=$(cat /tmp/program_selection)
 
-running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP | head -n1 )
+running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 if [ "$program" == "$running" ]; then
 
   if [ "$program" == "edge" ]; then
@@ -37,7 +37,7 @@ if [ "$program" == "$running" ]; then
     bash /opt/plexguide/roles/ending/ending.sh
   else
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="$program" ;;
+    version="$program"
 
     file="/var/plexguide/ask.yes"
     if [ -e "$file" ]; then
