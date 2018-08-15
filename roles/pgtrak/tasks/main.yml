@@ -106,10 +106,13 @@
 - name: Set directory permissions
   file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
 
+- name: API Sonarr
+  shell: "mv /opt/appdata/plexguide/traktarr.py /opt/appdata/plexguide/pg.trak"
+
 - name: "Create /usr/local/bin symlink"
   file:
     src: "/opt/appdata/pgtrak/pgtrak.py"
-    dest: "/usr/local/bin/pgtrak"
+    dest: "/bin/pgtrak"
     state: link
 
 - name: Import pgtrak service
