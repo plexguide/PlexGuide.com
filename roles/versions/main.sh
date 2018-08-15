@@ -26,10 +26,50 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
 if [ "$program" == "$running" ]; then
 
   if [ "$program" == "edge" ]; then
-  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+    rm -r /opt/plexguide2 1>/dev/null 2>&1
+    ansible-playbook /opt/plexguide/pg.yml --tags pgedge
+    rm -r /opt/plexguide 1>/dev/null 2>&1
+    mv /opt/plexguide2 /opt/plexguide
+    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+    echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo ""
+    read -n 1 -s -r -p "Press any key to continue"
+    bash /opt/plexguide/roles/ending/ending.sh
   else
-  
+    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+    version="$program" ;;
+
+    file="/var/plexguide/ask.yes"
+    if [ -e "$file" ]; then
+      touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+        if ! dialog --stdout --title "Version User Confirmation" \
+           --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+           --yesno "\nDo Want to Install: Version - $version?" 7 50; then
+          dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
+          clear
+          echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+          sudo bash /opt/plexguide/roles/ending/ending.sh
+          exit 0
+        else
+          clear
+        fi
+    else
+      clear
+    fi
+
+    rm -rf /opt/plexguide 2>/dev/null
+    wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
+    unzip /tmp/$version.zip -d /opt/
+    mv /opt/PlexG* /opt/plexguide
+    bash /opt/plexg*/sc*/ins*
+    rm -r /tmp/$version.zip
+    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+
+    echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    exit ;;
   fi
+
 
   dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
   clear
