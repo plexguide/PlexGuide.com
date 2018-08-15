@@ -159,7 +159,7 @@ def serviceAccounts(iam, project, output, teamdrive, token):
     conffile.append(tandgdrive.format('gdrive', '', '', token))
     conffile.append(tandgdrive.format('tdrive', '', teamdrive, token))
 
-    accounts = iam.projects().serviceAccounts().list(name='projects/' + project).execute().get('accounts')
+    accounts = iam.projects().serviceAccounts().list(name='projects/' + project, pageSize='100').execute().get('accounts')
     if not accounts and not args.generateServiceAccounts:
         conffile = serviceAccountsCreate(iam=iam, project=project, output = output, template=template, conffile=conffile, teamdrive=teamdrive)
         rcloneconfig(conffile, output)
@@ -232,8 +232,8 @@ def teamdriveSelect(valid):
     userinput = selectOptions(datainput=valid)
     return {'id': valid[int(userinput)-1]['id'], 'name': valid[int(userinput)-1]['name']}
 
-def invite(iam, drive, project, id, name):
-    emails = iam.projects().serviceAccounts().list(name='projects/' + project).execute().get('accounts')
+def invite(iam, drive, project, id, name, emails):
+    emails = iam.projects().serviceAccounts().list(name='projects/' + project, pageSize='100').execute().get('accounts')
     for email in emails:
         invite_body = {'role': 'writer', 'type': 'user', 'emailAddress': email['email']}
         drive.permissions().create(fileId=id, supportsTeamDrives='true', body=invite_body).execute()
