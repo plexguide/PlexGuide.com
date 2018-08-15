@@ -34,9 +34,13 @@ if [ "$program" == "$running" ]; then
   dialog --title "--- NOTE ---" --msgbox "\n$program Deployed!\n\nProcess Complete!" 0 0
   clear
 else
-  dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
-  clear
-  program=default
+  if [ "$program" == "exit" ];then
+    exit
+  else
+    dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
+    clear
+    program=default
+  fi
 fi
 
 if [ "$menu" == "update" ]; then
