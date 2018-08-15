@@ -13,7 +13,7 @@ install:
   - sh: sudo bash /opt/plexguide/roles/appveyor/var.sh
 
   ###### ANSIBLE INSTALL
-  - sh: sudo bash /opt/plexguide/roles/baseline/scripts/ansible.sh
+  - sh: sudo bash /opt/plexguide/roles/install/scripts/ansible.sh
   ###### DOCKER INSTALL
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags docker
   ###### FOLDER INSTALL
