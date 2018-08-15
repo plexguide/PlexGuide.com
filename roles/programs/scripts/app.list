@@ -26,7 +26,11 @@ nzbhydrav2
 ombi
 ombi4k
 organizr
+<<<<<<< HEAD
 organizrv2
+=======
+organzirv2
+>>>>>>> 27e9b8b98caaf1098caa9e8902e179da35ec775a
 pgtracker
 pgtracker4k
 plex
@@ -46,3 +50,7 @@ syncthing
 tautulli
 thelounge
 ubooquity
+<<<<<<< HEAD
+=======
+wordpress
+>>>>>>> 27e9b8b98caaf1098caa9e8902e179da35ec775a

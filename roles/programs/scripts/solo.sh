@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,27 +15,20 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-- name: Launch Core Task
-  include_tasks: "core.yml"
+clear
+##################################################### Builds Backup List - END
 
-- name: "Deploy {{pgrole}} Container"
-  docker_container:
-    name: "{{pgrole}}"
-    image: "{{image}}"
-    pull: yes
-    cpu_shares: 256
-    published_ports:
-      - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes: "{{default_volumes}}"
-    env: "{{default_env}}"
-    restart_policy: always
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{pgrole}}"
-    state: started
-    labels: "{{default_labels}}"
+num=0
+echo " " > /var/plexguide/programs.temp
+#### Build up list backup list for the main.yml execution
+while read p; do
+  echo -n $p >> /var/plexguide/programs.temp
+  echo -n " " >> /var/plexguide/programs.temp
 
-- include_role:
-    name: pgmend
+  num=$[num+1]
+  if [ $num == 8 ]; then
+    num=0
+    echo " " >> /var/plexguide/programs.temp
+  fi
+
+done </opt/plexguide/roles/programs/scripts/app.list
