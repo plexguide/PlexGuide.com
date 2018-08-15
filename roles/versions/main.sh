@@ -67,7 +67,7 @@ if [ "$program" == "$running" ]; then
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
 
     echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    exit ;;
+    exit
   fi
 
 
