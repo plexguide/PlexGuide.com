@@ -17,6 +17,7 @@
 downloadpath=$(cat /var/plexguide/server.hd.path)
 
 echo "[PGBlitz] PGBlitz Started for the First Time - 10 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] PGBlitz Started for the First Time - 10 Second Sleep"
 sleep 10
 path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
@@ -47,37 +48,41 @@ do
     files=(`find /mnt/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -name "*.version" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
     if [[ ${#files[@]} -gt 0 ]]; then
         #if files are found loop though and upload
+		echo "Files found to upload"
         for i in "${files[@]}"
         do
             #FILESTERL=$(printf '%q' "$i")
             #if file has a lockfile skip
             if [ -e ${i}.lck ]; then
                 echo "[PGBlitz] Lock File found for $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+				echo "[PGBlitz] Lock File found for $i"
                 continue
             else
-                if [ -e `dirname $i`/folder.lck ]; then
-                    echo "[PGBlitz] This folder is currently locked to prevent dupe folders" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-                    echo "[PGBlitz] This folder is currently locked to prevent dupe folders"
-                    continue
-                fi
+                #if [ -e `dirname $i`/folder.lck ]; then
+                #    echo "[PGBlitz] This folder is currently locked to prevent dupe folders" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+                #    echo "[PGBlitz] This folder is currently locked to prevent dupe folders"
+                #    continue
+                #fi
                 FILESIZE1=`wc -c < "$i"`
                 sleep .5
                 FILESIZE2=`wc -c < "$i"`
                 if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
                     echo "[PGBlitz] File is still getting bigger $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+					echo "[PGBlitz] File is still getting bigger $i"
                     continue
                 fi
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     if [ -e $i ]; then
                         echo "[PGBlitz] Starting upload of $i" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+						echo "[PGBlitz] Starting upload of $i"
                         #append filesize to GDSAAMOUNT
                         GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
 
                         #Run upload script demonised
                         /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
                         
-                        touch "`dirname $i`/folder.lck"
+                        #touch "`dirname $i`/folder.lck"
                         PID=$!
                         FILEBASE=`basename $i`
                         
@@ -87,6 +92,7 @@ do
                         #increase or reset $GDSAUSE?
                         if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
                             echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+							echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA"
                             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
                                 GDSAUSE=0
                                 GDSAAMOUNT=0
@@ -106,15 +112,19 @@ do
 					fi
                 else
                     echo "[PGBlitz] Already 8 transfers running, waiting for next loop" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+					echo "[PGBlitz] Already 8 transfers running, waiting for next loop"
                     break
                 fi
             fi
             echo "[PGBlitz] Sleeping 5s before looking at next file"
+			echo "[PGBlitz] Sleeping 5s before looking at next file"
             sleep 5
         done
         echo "[PGBlitz] Finished looking for files, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+		echo "[PGBlitz] Finished looking for files, sleeping 20 secs"
     else
         echo "[PGBlitz] Nothing to upload, sleeping 20 secs" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+		echo "[PGBlitz] Nothing to upload, sleeping 20 secs"
     fi
     sleep 20
 done

@@ -19,6 +19,7 @@
 export NCURSES_NO_UTF8_ACS=1
 echo "INFO - Setting Automated SA flag"  > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 mkdir -p /opt/appdata/pgblitz/vars/
+mkdir -p /opt/appdata/pgblitz/keys/automation
 touch /opt/appdata/pgblitz/vars/automated
 
 echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
