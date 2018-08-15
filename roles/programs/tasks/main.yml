@@ -24,7 +24,7 @@
 
 - name: Prompt User for Program
   pause:
-    prompt: "\n[PG Application Suite]: {{program.stdout}}\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
+    prompt: "\n[PG Application Suite]: {{program.stdout}}\n\n[TYPE] the [APPLICATION NAME] to Deploy!"
   register: selection
 
 - name: Establishing Final Variable - Switch On
