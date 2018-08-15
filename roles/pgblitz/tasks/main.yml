@@ -45,7 +45,15 @@
   include_role:
     name: pgblitz
     tasks_from: "deploy_tdrive.yml"
+
 ################################################################ ENCRYPTED START
+- name: Deploy TDrive
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tdrive_en.yml"
+  tags:
+    - encrypted
+
 - name: Deploy GCrypt
   include_role:
     name: pgblitz

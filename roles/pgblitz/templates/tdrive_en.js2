@@ -1,7 +1,7 @@
 #!/bin/bash
-#
+##
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   FlickerRate
+# Author:   Admin9705 & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -14,20 +14,20 @@
 #
 #################################################################################
 [Unit]
-Description=GCrypt Daemon
+Description=TDrive Daemon
 After=multi-user.target
 
 [Service]
 Type=simple
 User=0
 Group=0
-ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount gcrypt: /mnt/gcrypt \
-                      --uid=1000 --gid=1000 \
-                      --size-only --dir-cache-time=2m \
-                      --vfs-read-chunk-size=96M --vfs-cache-max-age 675h --vfs-read-chunk-size-limit=1G \
-                      --buffer-size=48M --syslog --umask 002 --log-level INFO \
-                      --config /root/.config/rclone/rclone.conf
-ExecStop=/bin/fusermount -uz /mnt/gcrypt
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount tdrive: /mnt/tdrive \
+                          --uid=1000 --gid=1000 \
+                          --size-only --dir-cache-time=2m \
+                          --vfs-read-chunk-size=96M --vfs-cache-max-age 675h --vfs-read-chunk-size-limit=1G \
+                          --buffer-size=48M --syslog --umask 002 --log-level INFO \
+                          --config /root/.config/rclone/rclone.conf
+ExecStop=/bin/fusermount -uz /mnt/tdrive
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
