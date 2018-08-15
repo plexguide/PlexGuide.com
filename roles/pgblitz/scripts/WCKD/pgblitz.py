@@ -232,7 +232,7 @@ def teamdriveSelect(valid):
     userinput = selectOptions(datainput=valid)
     return {'id': valid[int(userinput)-1]['id'], 'name': valid[int(userinput)-1]['name']}
 
-def invite(iam, drive, project, id, name, emails):
+def invite(iam, drive, project, id, name):
     emails = iam.projects().serviceAccounts().list(name='projects/' + project, pageSize='100').execute().get('accounts')
     for email in emails:
         invite_body = {'role': 'writer', 'type': 'user', 'emailAddress': email['email']}
