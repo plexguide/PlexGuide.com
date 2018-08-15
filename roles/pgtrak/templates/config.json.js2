@@ -89,7 +89,7 @@
   },
   "sonarr": {
     "api_key": "{{apis.stdout}}",
-    "profile": "{{prosonarr.stdou}}",
+    "profile": "{{prosonarr.stdout}}",
     "url": "http://0.0.0.0:8989",
     "root_folder": "{{sonarr.stdout}}",
     "tags": {}
