@@ -30,6 +30,7 @@
 - name: Checking If Any Running App Exist
   shell: "cat /var/plexguide/programs.temp | grep -oP {{selection.user_input}}"
   register: grep_output
+  ignore_errors: True
 
 - debug: msg="{{grep_output}}"
 
