@@ -33,7 +33,7 @@
   ignore_errors: true
 
 - fail:
-    msg: "\nUser Type and Unlisted Program"
+    msg: "\nUser Typed an Unlisted Program! Restarting!"
   when: grep_output.failed == "false"
 
 - name: Establishing Final Variable - Switch On
