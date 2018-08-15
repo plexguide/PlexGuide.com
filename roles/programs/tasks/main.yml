@@ -32,7 +32,7 @@
   register: grep_output
   ignore_errors: true
 
-- debug: msg="{{grep_output.user_input}}"
+- debug: msg="{{grep_output}}"
 
 - fail:
     msg: "\nUser Failed to Type Program Correctly! [NOTE: Case Sensitie]"
