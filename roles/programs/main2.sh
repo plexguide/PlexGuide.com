@@ -22,12 +22,11 @@ while [ "$program_selection" != "exit" ]; do
 ansible-playbook /opt/plexguide/pg.yml --tags programs
 program=$(cat /tmp/program_selection)
 
-running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
-if [ "$program" == "$running" ];then
+running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP)
+if [ "$program" == "$running" ]; then
   ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
   dialog --infobox "$program: Deployment Complete!" 3 45
 else
-  program
   dialog --infobox "$program DOES NOT EXIST!\n\nPlease double-check! Restarting!" 3 45
   program=default
 fi
