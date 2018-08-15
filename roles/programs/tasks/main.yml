@@ -16,7 +16,7 @@
 #
 #################################################################################
 ---
-- script: "bash /opt/plexguide/roles/programs/scripts/solo.list"
+- script: "bash /opt/plexguide/roles/programs/scripts/solo.sh"
 
 - name: "Building List"
   shell: "cat /opt/plexguide/roles/programs/scripts/app.list"
