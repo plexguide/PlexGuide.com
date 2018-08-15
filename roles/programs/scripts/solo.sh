@@ -16,11 +16,21 @@
 #
 #################################################################################
 clear
-rm -r /var/plexguide/programs.temp
 ##################################################### Builds Backup List - END
 
+num=0
+echo " " > /var/plexguide/programs.temp
 #### Build up list backup list for the main.yml execution
 while read p; do
   echo -n $p >> /var/plexguide/programs.temp
   echo -n " " >> /var/plexguide/programs.temp
-done </opt/plexguide/roles/programs/scripts/backups.sh
+
+  num=$[num+1]
+  if [ $num == 8 ]; then
+    num=0
+    echo " " >> /var/plexguide/programs.temp
+  fi
+
+done </opt/plexguide/roles/programs/scripts/app.list
+echo " " >> /var/plexguide/programs.temp
+echo " " >> /var/plexguide/programs.temp
