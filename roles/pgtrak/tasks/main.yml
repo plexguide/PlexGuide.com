@@ -96,6 +96,12 @@
     mode: 0775
     force: yes
 
+- name: Set directory permissions
+  file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
+
+- name: Move Executable
+  shell: "mv /opt/appdata/pgtrak/traktarr.py /opt/appdata/pgtrak/pgtrak.py"
+
 - name: Set pgtrak.py as executable
   file:
     path: /opt/appdata/pgtrak/pgtrak.py
@@ -103,13 +109,10 @@
     group: 1000
     mode: a+x
 
-- name: Set directory permissions
-  file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
-
 - name: "Create /usr/local/bin symlink"
   file:
     src: "/opt/appdata/pgtrak/pgtrak.py"
-    dest: "/usr/local/bin/pgtrak"
+    dest: "/bin/pgtrak"
     state: link
 
 - name: Import pgtrak service
