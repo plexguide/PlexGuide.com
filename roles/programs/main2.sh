@@ -25,10 +25,10 @@ program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP)
 if [ "$program" == "$running" ]; then
   ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
-  dialog --title "--- NOTE ---" --msgbox "\n$program Deployment Complete!" 3 40
+  dialog --title "--- NOTE ---" --msgbox "\n$program Deploymened\n\nProcess Complete!" 0 0
   clear
 else
-  dialog --title "--- NOTE ---" --msgbox "\n$program does not exist! Restarting!" 3 40
+  dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
   clear
   program=default
 fi
