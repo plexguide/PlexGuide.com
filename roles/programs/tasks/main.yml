@@ -24,7 +24,7 @@
 
 - name: Prompt User for Program
   pause:
-    prompt: "\n[The PG Application Suite]\n{{program.stdout}}\n\nType the [APPLICATION NAME] for Deployment! (case sensitive)"
+    prompt: "\n[The PG Application Suite]\n{{program.stdout}}\n\nNOTE: To Quit, type - exit\nType the [APPLICATION NAME] for Deployment! (case sensitive)"
   register: selection
 
 - name: Establishing Final Variable - Switch On
