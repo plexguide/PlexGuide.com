@@ -32,9 +32,11 @@
   register: grep_output
   ignore_errors: true
 
+- debug: msg="{{grep_output}}"
+
 - fail:
     msg: "\nUser Typed an Unlisted Program! Restarting!"
-  when: grep_output.failed == "false"
+  when: grep_output.failed == "true"
 
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
