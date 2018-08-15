@@ -14,7 +14,7 @@
 #
 #################################################################################
 [Unit]
-Description=TDrive Daemon
+Description=TCrypt Daemon
 After=multi-user.target
 
 [Service]
@@ -27,7 +27,7 @@ ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount tcrypt: /mnt/tcr
                           --vfs-read-chunk-size=96M --vfs-cache-max-age 675h --vfs-read-chunk-size-limit=1G \
                           --buffer-size=48M --syslog --umask 002 --log-level INFO \
                           --config /root/.config/rclone/rclone.conf
-ExecStop=/bin/fusermount -uz /mnt/tdrive
+ExecStop=/bin/fusermount -uz /mnt/tcrypt
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
