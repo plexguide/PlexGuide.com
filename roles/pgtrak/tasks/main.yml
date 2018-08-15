@@ -106,7 +106,7 @@
 - name: Set directory permissions
   file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
 
-- shell: "mv /opt/appdata/plexguide/traktarr.py /opt/appdata/plexguide/pg.trak"
+- shell: "mv /opt/appdata/pgtrak/traktarr.py /opt/appdata/pgtrak/pg.trak"
 
 - name: "Create /usr/local/bin symlink"
   file:
