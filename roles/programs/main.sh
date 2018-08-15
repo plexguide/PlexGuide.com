@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,81 +15,42 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main Programs Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+program_selection="default"
 
-# This takes .yml file and converts it to bash readable format
-sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' /opt/appdata/plexguide/var.yml > /opt/appdata/plexguide/var.sh
+while [ "$program_selection" != "exit" ]; do
 
-HEIGHT=19
-WIDTH=26
-CHOICE_HEIGHT=13
-BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
-TITLE="PG Application Suite"
+ansible-playbook /opt/plexguide/pg.yml --tags programs
+program=$(cat /tmp/program_selection)
 
-OPTIONS=(A "Media Servers"
-         B "Managers"
-         C "NZB"
-         D "Torrents"
-         E "Supporting"
-         F "UI Organziers"
-         G "Tools"
-         H "Backups"
-         I "Critical"
-         J "4K Versions"
-         K "Beta"
-         L "WordPress"
-         Z "Exit")
+running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP | head -n1 )
+if [ "$program" == "$running" ]; then
 
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
+  if [ "$program" == "netdata" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
+  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+  else
+  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
+  fi
 
-clear
-case $CHOICE in
-  A)
-    echo "INFO - Selected Media Servers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/media.sh ;;
-  B)
-    echo "INFO - Selected Mangers Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/manager.sh ;;
-  C)
-    echo "INFO - Selected NZB Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/nzbs.sh ;;
-  D)
-    echo "INFO - Selected Torrent ProgramsInterface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/torrent.sh ;;
-  E)
-    echo "INFO - Selected Supporting Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/support.sh ;;
-  F)
-    echo "INFO - Selected UI Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/ui.sh ;;
-  G)
-    echo "INFO - Selected Tools Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/tools.sh ;;
-  H)
-    echo "INFO - Selected Backups Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/backups.sh ;;
-  I)
-    echo "INFO - Selected Critical Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/critical.sh ;;
-  J)
-    echo "INFO - Selected 4K Versions Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/versions4k.sh ;;
-  K)
-    echo "INFO - Selected Beta Programs Interface" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/programs/beta.sh ;;
-  L)
-    echo 'INFO - Selected: PG Wordpress' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/menus/wordpress/main.sh ;;
-  Z)
+  dialog --title "--- NOTE ---" --msgbox "\n$program Deployed!\n\nProcess Complete!" 0 0
+  clear
+else
+  if [ "$program" == "exit" ];then
+    exit
+  else
+    dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
     clear
-    exit 0 ;;
-esac
-### loops until exit
-bash /opt/plexguide/roles/programs/main.sh
+    program=default
+  fi
+fi
+
+if [ "$menu" == "update" ]; then
+  echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/menus/version/main.sh
+  exit
+fi
+
+echo 'INFO - Looping: PG Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+done
+
+echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+exit

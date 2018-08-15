@@ -20,7 +20,7 @@ bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 # PG Version
-echo "6.032 EDGE" > /var/plexguide/pg.version
+echo "6.034 EDGE" > /var/plexguide/pg.version
 # Force Common Things To Execute Such as Folders
 echo "137" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute

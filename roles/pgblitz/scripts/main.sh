@@ -52,8 +52,8 @@ fi
 if [ "$encryption" == "on" ] && [ "$tflag" == "on" ] && [ "$gflag" == "on" ]; then
     versioncheck="Version: Encrypted Edition"
     final="encrypted"
-    mkdir -p /opt/appdata/plexguide/vars
-    touch /opt/appdata/plexguide/vars/encrypted  1>/dev/null 2>&1
+    mkdir -p /opt/appdata/pgblitz/vars
+    touch //opt/appdata/pgblitz/vars/encrypted  1>/dev/null 2>&1
     mkdir -p /mnt/gcrypt
     mkdir -p /mnt/tcrypt
 elif [ "$gflag" != "on" ] && [ "$encryption" == "on" ]; then
@@ -225,8 +225,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           if [ "$final" == "unencrypted" ];then
             echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
           elif [ "$final" == "encrypted" ];then
-            mkdir /mnt/gcrypt
-            mkdir /mnt/tcrypt
             echo -n "/mnt/gcrypt=RO:/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
           fi
 
