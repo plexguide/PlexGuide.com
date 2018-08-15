@@ -28,7 +28,7 @@ if [ "$program" == "$running" ]; then
   dialog --title "--- NOTE ---" --msgbox "\n$program Deployment Complete!" 3 40
   clear
 else
-  dialog --title "--- NOTE ---" --msgbox "\n$program does not exist! Restarting!" 40
+  dialog --title "--- NOTE ---" --msgbox "\n$program does not exist! Restarting!" 3 40
   clear
   program=default
 fi
