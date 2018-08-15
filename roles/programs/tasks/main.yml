@@ -30,13 +30,12 @@
 - name: Checking If Any Running App Exist
   shell: "cat /var/plexguide/programs.temp | grep -oP {{selection.user_input}}"
   register: grep_output
-  ignore_errors: true
 
 - debug: msg="{{grep_output}}"
 
 - fail:
     msg: "\nUser Typed an Unlisted Program! Restarting!"
-  when: "'FAILED' in grep_output"
+  when: "'FAILED' in grep_output.stderr"
 
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
