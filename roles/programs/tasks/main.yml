@@ -19,7 +19,7 @@
 - script: "/opt/plexguide/roles/programs/scripts/solo.sh"
 
 - name: "Building List"
-  shell: "cat /opt/plexguide/roles/programs/scripts/app.list"
+  shell: "cat /var/plexguide/programs.temp"
   register: program
 
 - name: Prompt User for Program
