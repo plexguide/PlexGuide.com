@@ -36,7 +36,7 @@
 
 - fail:
     msg: "\nUser Typed an Unlisted Program! Restarting!"
-  when: grep_output.msg == "non-zero return code"
+  when: "'FAILED' in grep_output.stderr"
 
 - name: Establishing Final Variable - Switch On
   shell: "echo {{selection.user_input}} > /tmp/program_var"
