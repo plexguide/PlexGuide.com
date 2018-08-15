@@ -1,0 +1,50 @@
+---
+- pause:
+    prompt: "\nEnable or Disable W.C.K.D. Authentication?\n1- Enable\n2- Disable\n3- Cancel"
+  register: result
+  until: result.user_input > "0" and result.user_input < "4"
+  retries: 5
+  delay: 1
+
+- name: question1
+  set_fact:
+    question1: "{{result.user_input}}"
+  when: result.user_input is defined
+
+- name: "Has user cancelled?"
+  fail:
+    msg: "User cancelled"
+  when: question1 is defined and question1 == "3"
+
+- pause:
+    prompt: "\nSelect Authentication Provider\n1- W.C.K.D. (Recommended)\n2- Cancel setup"
+  register: provider
+  until: provider.user_input > "0" and provider.user_input < "3"
+  retries: 5
+  delay: 1
+  when: question1 is defined and question1 == "1"
+
+- name: question2
+  set_fact:
+    question2: "{{provider.user_input}}"
+  when: provider.user_input is defined
+
+- name: Set W.C.K.D.
+  set_fact:
+    provider: "https://auth.wckd.app"
+  when: question2 is defined and question2 == "1"
+
+- name: "Has user cancelled?"
+  fail:
+    msg: "User cancelled"
+  when: question2 is defined and question2 == "2"
+
+- pause:
+    prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
+  register: question3
+  when: question2 is defined and question2 == "1"
+
+- name: emails
+  set_fact:
+    emails: "{{question3.user_input}}"
+  when: question2 is defined and question3 is defined

@@ -23,6 +23,7 @@
   docker_container:
     name: "{{pgrole}}"
     image: "{{image}}"
+    command: "{{command}}"
     pull: yes
     cpu_shares: 128
     published_ports:

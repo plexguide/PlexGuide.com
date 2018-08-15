@@ -1,0 +1,29 @@
+---
+- name: "Establish Key Variables"
+  set_fact:
+    pgrole: "{{role_name}}"
+    image: "notteresa/authclient"
+    intport: "5000"
+    extport: "5000"
+
+- name: "Key Variables Recall"
+  include_role:
+    name: "pgmstart"
+    tasks_from: "keyvar.yml"
+
+- name: "Establish Key Variables - {{pgrole}}"
+  set_fact:
+    provider: "https://auth.wckd.app"
+    emails: "hello@wckd.app"
+    cookiedomain: "{{domain.stdout}}"
+
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
+
+- include_role:
+    name: "pgmstart"

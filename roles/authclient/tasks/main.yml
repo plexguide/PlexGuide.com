@@ -1,0 +1,44 @@
+---
+- name: Launch Core Task
+  include_tasks: "core.yml"
+
+- name: "Deploy {{pgrole}} Container"
+  docker_container:
+    name: "{{pgrole}}"
+    image: "{{image}}"
+    pull: yes
+    cpu_shares: 256
+    env: 
+      PROVIDER: "{{provider}}"
+      DOMAIN: "{{cookiedomain}}"
+      EMAILS: "{{emails}}"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{pgrole}}"
+    state: started
+    labels: "{{default_labels}}"
+  when: question1 is defined and question1 == "1"
+
+- name: Create the file, if it doesnt exist already
+  file:
+    path: /var/plexguide/authclient.wckd
+    state: touch
+  when: question1 is defined and question1 == "1"
+
+- name: Remove file
+  file:
+    path: /var/plexguide/authclient.wckd
+    state: absent
+  when: question1 is defined and question1 == "2"
+
+- name: "WCKD Auth is enabled"
+  pause:
+    prompt: "WCKD Auth is enabled, please rebuild the containers manually to activate WCKD Auth. [ENTER]"
+  when: question1 is defined and question1 == "1"
+
+- name: "WCKD Auth is disabled"
+  pause:
+    prompt: "WCKD Auth is disabled, please rebuild the containers manually to deactivate WCKD Auth. [ENTER]"
+  when: question1 is defined and question1 == "2"

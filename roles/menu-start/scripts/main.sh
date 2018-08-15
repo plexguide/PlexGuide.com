@@ -90,6 +90,12 @@ if [ "$menu" == "update" ]; then
   exit
 fi
 
+if [ "$menu" == "wckd" ]; then
+  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  ansible-playbook /opt/plexguide/pg.yml --tags authclient --extra-vars "quescheck=on cron=off display=on"
+  exit
+fi
+
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
