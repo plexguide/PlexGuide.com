@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ & NotTeresa
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- name: "Establish Key Variables"
+  set_fact:
+    pgrole: "{{role_name}}"
+    image: "notteresa/authclient"
+    intport: "5000"
+    extport: "5000"
+
+- name: "Key Variables Recall"
+  include_role:
+    name: "pgmstart"
+    tasks_from: "keyvar.yml"
+############################################################# (KEY END)
+#
+############################################################# (BASICS START)
+
+# NONE
+
+############################################################# (BASICS END)
+- name: "Establish Key Variables - {{pgrole}}"
+  set_fact:
+    provider: "https://auth.wckd.app"
+    emails: "hello@wckd.app"
+
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
+      traefik.port: "{{intport}}"
+
+######################## Deploy PGMSTART
+- include_role:
+    name: "pgmstart"
