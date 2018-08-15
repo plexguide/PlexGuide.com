@@ -24,7 +24,7 @@
 
 - name: Prompt User for Program
   pause:
-    prompt: "\n[PG Application Suite]: {{program.stdout}}\n\n[TYPE] the [APPLICATION NAME] to Deploy!"
+    prompt: "\n[The PG Application Suite] {{program.stdout}}\n\n[TYPE] the [APPLICATION NAME] to Deploy!"
   register: selection
 
 - name: Establishing Final Variable - Switch On
