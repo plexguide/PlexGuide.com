@@ -182,13 +182,13 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           ;;
         D)
           ### Validate Process
-          gdsa=`ls -la $path/processed | awk '{print $9}' | grep GDSA | wc -l`;
-          if [ $gdsa -gt 2 ]; then
+          gdsa=`ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | grep GDSA | wc -l`;
+          if [ $gdsa > 2 ]; then
             if [ "$encryption" == "on" ]; then
               dialog --title "SET ENCRYPTION PASSWORD" \
-                    --inputbox "Password: " 8 52 2>/opt/appdata/plexguide/vars/password
+                    --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
               dialog --title "SET ENCRYPTION SALT" \
-                    --inputbox "Salt: " 8 52 2>/opt/appdata/plexguide/vars/salt
+                    --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
             fi
             bash /opt/plexguide/roles/pgblitz/scripts/validator.sh
           else

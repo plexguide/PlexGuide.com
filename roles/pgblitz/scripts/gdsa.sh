@@ -25,8 +25,8 @@ ENCRYPTED="no"
 
 if [ -f "/opt/appdata/pgblitz/vars/encrypted" ]; then
     ENCRYPTED="yes"
-    PASSWORD=`cat /opt/appdata/plexguide/vars/password`
-    SALT=`cat /opt/appdata/plexguide/vars/salt`
+    PASSWORD=`cat /opt/appdata/pgblitz/vars/password`
+    SALT=`cat /opt/appdata/pgblitz/vars/salt`
     ENC_PASSWORD=`rclone obscure "$PASSWORD"`
     ENC_SALT=`rclone obscure "$SALT"`
 fi
