@@ -16,8 +16,10 @@
 #
 #################################################################################
 ---
+- script: "bash /opt/plexguide/roles/programs/scripts/solo.list"
+
 - name: "Building List"
-  shell: "cat {{path.stdout}}/pgops/backup.build"
+  shell: "cat /opt/plexguide/roles/programs/scripts/app.list"
   register: program
 
 - name: Prompt User for Program
