@@ -22,7 +22,7 @@ while [ "$program_selection" != "exit" ]; do
 ansible-playbook /opt/plexguide/pg.yml --tags programs
 program=$(cat /tmp/program_selection)
 
-running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP)
+running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep ombi -oP | head -n1)
 if [ "$program" == "$running" ]; then
 
   if [ "$program" == "netdata" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
