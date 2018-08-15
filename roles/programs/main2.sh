@@ -22,8 +22,15 @@ while [ "$program_selection" != "exit" ]; do
 ansible-playbook /opt/plexguide/pg.yml --tags programs
 program=$(cat /tmp/program_selection)
 
-ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
-
+running=$(docker ps -a --format "{{.Names}}" | grep -oP $p)
+if [ "$program" == "$running" ];then
+  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
+  dialog --infobox "$program: Deployment Complete!" 3 45
+else
+  program
+  dialog --infobox "$program DOES NOT EXIST!\n\nPlease double-check! Restarting!" 3 45
+  program=default
+fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
