@@ -225,6 +225,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           if [ "$final" == "unencrypted" ];then
             echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
           elif [ "$final" == "encrypted" ];then
+            mkdir /mnt/gcrypt
+            mkdir /mnt/tcrypt
             echo -n "/mnt/gcrypt=RO:/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
           fi
 
