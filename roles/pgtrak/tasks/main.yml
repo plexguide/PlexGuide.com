@@ -96,9 +96,9 @@
     mode: 0775
     force: yes
 
-- name: Set pgtrak.py as executable
+- name: Set traktarr.py as executable
   file:
-    path: /opt/appdata/pgtrak/pgtrak.py
+    path: /opt/appdata/pgtrak/traktarr.py
     owner: 1000
     group: 1000
     mode: a+x
@@ -108,7 +108,7 @@
 
 - name: "Create /usr/local/bin symlink"
   file:
-    src: "/opt/appdata/pgtrak/pgtrak.py"
+    src: "/opt/appdata/pgtrak/traktarr.py"
     dest: "/usr/local/bin/pgtrak"
     state: link
 
