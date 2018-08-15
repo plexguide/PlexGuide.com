@@ -32,5 +32,3 @@ while read p; do
   fi
 
 done </opt/plexguide/roles/programs/scripts/app.list
-echo " " >> /var/plexguide/programs.temp
-echo " " >> /var/plexguide/programs.temp
