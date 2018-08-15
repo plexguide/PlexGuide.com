@@ -61,7 +61,7 @@ else
     REMOTE=$GDSA
 fi
 
-echo "[PGBlitz] [Upload] Uploading $FILE to $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] [Upload] Uploading $FILE to $REMOTE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
 
 #create and chmod the log file so that webui can read it

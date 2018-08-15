@@ -53,7 +53,7 @@ if [ "$encryption" == "on" ] && [ "$tflag" == "on" ] && [ "$gflag" == "on" ]; th
     versioncheck="Version: Encrypted Edition"
     final="encrypted"
     mkdir -p /opt/appdata/pgblitz/vars
-    touch //opt/appdata/pgblitz/vars/encrypted  1>/dev/null 2>&1
+    touch /opt/appdata/pgblitz/vars/encrypted  1>/dev/null 2>&1
     mkdir -p /mnt/gcrypt
     mkdir -p /mnt/tcrypt
 elif [ "$gflag" != "on" ] && [ "$encryption" == "on" ]; then
@@ -183,7 +183,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
         D)
           ### Validate Process
           gdsa=`ls -la $path/processed | awk '{print $9}' | grep GDSA | wc -l`;
-          if [ $gdsa > 2 ]; then
+          if [ $gdsa -gt 2 ]; then
             if [ "$encryption" == "on" ]; then
               dialog --title "SET ENCRYPTION PASSWORD" \
                     --inputbox "Password: " 8 52 2>/opt/appdata/plexguide/vars/password
@@ -239,7 +239,8 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           elif [ "$final" == "encrypted" ];then
             ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
           fi
-
+          echo ""
+          read -n 1 -s -r -p "Press any key to continue"
           dialog --title "PGBLitz WebGUI" \
                 --yesno "Would you like to deploy the new PGBlitz WebGUI?" 7 60
             response=$?
@@ -252,8 +253,6 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
                   echo 'INFO - NOT DEPLOYING PGBLITZ WEBGUI' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
                   ;;
             esac
-          echo ""
-          read -n 1 -s -r -p "Press any key to continue"
           dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
           ;;
         F)

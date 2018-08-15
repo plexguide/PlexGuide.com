@@ -23,7 +23,7 @@ tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
 ENCRYPTED="no"
 
-if [ -f "/opt/appdata/plexguide/vars/encrypted" ]; then
+if [ -f "/opt/appdata/pgblitz/vars/encrypted" ]; then
     ENCRYPTED="yes"
     PASSWORD=`cat /opt/appdata/plexguide/vars/password`
     SALT=`cat /opt/appdata/plexguide/vars/salt`
