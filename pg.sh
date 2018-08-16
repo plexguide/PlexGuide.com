@@ -20,9 +20,9 @@ bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 # PG Version
-echo "6.034 EDGE" > /var/plexguide/pg.version
+echo "6.035 EDGE" > /var/plexguide/pg.version
 # Force Common Things To Execute Such as Folders
-echo "137" > /var/plexguide/pg.preinstall
+echo "139" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
 echo "10" > /var/plexguide/pg.rclone
@@ -33,7 +33,7 @@ echo "10" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "35" > /var/plexguide/pg.alias
+echo "39" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 
@@ -62,7 +62,7 @@ file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
   echo "" 1>/dev/null 2>&1
   else
-  bash /opt/plexguide/menus/version/main.sh
+  bash /opt/plexguide/roles/versions/main.sh
   dialog --title "--- NEW INSTALL ---" --msgbox "\nExiting PG to install the Selected Version!\n\nType 'plexguide' again to complete the process!" 0 0
   clear
   bash /opt/plexguide/roles/ending/ending.sh

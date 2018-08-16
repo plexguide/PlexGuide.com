@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: "Update List"
+  shell: "rm -r /opt/plexguide/roles/versions/scripts/ver.list && sudo mkdir -p /opt/plexguide/roles/versions/scripts/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/scripts/ver.list https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/roles/versions/scripts/ver.list 1>/dev/null 2>&1"
+
+- script: "/opt/plexguide/roles/versions/scripts/solo.sh"
+
+- name: "Building List"
+  shell: "cat /var/plexguide/ver.temp"
+  register: program
+
+- name: Prompt User for Program
+  pause:
+    prompt: "\n[The PG Upgrade | Downgrade Interface]\n{{program.stdout}}\n\nTo QUIT, type >>> exit\nType the [PG Version] for Deployment! (all lowercase)"
+  register: selection
+
+- name: Write Application Variable
+  shell: "echo {{selection.user_input}} > /tmp/program_selection"
+
+- name: Installing {{selection.user_input}}
+  git:
+    repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+    dest: "/opt/plexguide"
+    version: Edge
+    force: yes
+  when: selection.user_input == "edge"
+
+- name: Installing {{selection.user_input}}
+  git:
+    repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+    dest: "/opt/plexguide"
+    version: "{{selection.user_input}}"
+    force: yes
+  when: not selection.user_input == "edge"
+
+- name: "Stops First Time Run"
+  shell: "touch /var/plexguide/ask.yes"
+  register: program

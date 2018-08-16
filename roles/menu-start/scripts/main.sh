@@ -21,7 +21,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/main.menu)
-ansible-playbook /opt/plexguide/pg.yml --tags menu-start
+ansible-playbook /opt/plexguide/basics.yml --tags menu-start
 menu=$(cat /var/plexguide/main.menu)
 
 if [ "$menu" == "mount" ]; then
@@ -54,12 +54,6 @@ if [ "$menu" == "security" ]; then
   clear
 fi
 
-if [ "$menu" == "plextools" ]; then
-  echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/plex/enhancement.sh
-  clear
-fi
-
 if [ "$menu" == "info" ]; then
   echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/info-tshoot/info.sh
@@ -86,7 +80,7 @@ fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/version/main.sh
+  ansible-playbook /opt/plexguide/basics.yml --tags versions
   exit
 fi
 

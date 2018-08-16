@@ -27,10 +27,10 @@ TITLE="Select A PlexGuide Version"
 MENU="Make a Selection:"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.034"
-         02 "Release      ~ 6.033"
-         03 "Release      ~ 6.032"
-         04 "Release      ~ 6.031"
+         01 "EDGE         ~ 6.035"
+         02 "Release      ~ 6.034"
+         03 "Release      ~ 6.033"
+         04 "Release      ~ 6.032"
          05 "Internal Bug Test")
 
 CHOICE=$(dialog --clear \
@@ -52,7 +52,7 @@ case $CHOICE in
         echo "INFO - User Selected the Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
-        bash /opt/plexguide/menus/version/main.sh
+        bash /opt/plexguide/roles/versions/main.sh
         exit
       fi
     rm -r /opt/plexguide2 1>/dev/null 2>&1
@@ -67,13 +67,13 @@ case $CHOICE in
     exit ;;
   02)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.033" ;;
+    version="6.034" ;;
   03)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.032" ;;
+    version="6.033" ;;
   04)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-    version="6.031" ;;
+    version="6.032" ;;
   05)
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="bugtest" ;;
