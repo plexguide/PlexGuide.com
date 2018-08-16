@@ -15,12 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-program_selection="default"
-running="default2"
-
-while [ "$program" != "$running" ]; do
-ansible-playbook /opt/plexguide/basics.yml --tags versions
 program=$(cat /tmp/program_selection)
+complete="$program"
+
+while [ "$program" == "$complete" ]; do
+ansible-playbook /opt/plexguide/basics.yml --tags versions
+
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
   if [ "$program" == "edge" ]; then
