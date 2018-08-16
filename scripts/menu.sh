@@ -170,6 +170,6 @@ if [ "$edition" == "PG Edition: GCE Feed" ]
   then
    echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/roles/gce/gcechecker.sh
-    bash /opt/plexguide/roles/main.sh
+    bash /opt/plexguide/roles/menu-start/scripts/main.sh
     exit
 fi

@@ -20,6 +20,10 @@
   shell: "cat /var/plexguide/pg.version"
   register: pgversion
 
+- name: Version
+  shell: "cat /var/plexguide/pg.edition"
+  register: pgedition
+
 - name: Server ID
   shell: "cat /var/plexguide/server.id"
   register: pgid
@@ -30,7 +34,7 @@
 
 - name: PG Main Menu
   pause:
-    prompt: "\nWelcome to PG Edition: GDrive - {{pgversion.stdout}}!
+    prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
              \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
 \n\n1.  Exit PlexGuide
 \n2.  Deploy a Mount System
