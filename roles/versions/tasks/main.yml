@@ -30,7 +30,7 @@
 - name: Write Application Variable
   shell: "echo {{selection.user_input}} > /tmp/program_selection"
 
-- name: Cloning Edge
+- name: Installing {{selection.user_input}}
   git:
     repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
     dest: "/opt/plexguide"
