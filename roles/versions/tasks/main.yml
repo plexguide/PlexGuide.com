@@ -36,7 +36,7 @@
     dest: "/opt/plexguide"
     version: Edge
     force: yes
-  when: "selection.user_input == edge"
+  when: selection.user_input == "edge"
 
 - name: Installing {{selection.user_input}}
   git:
@@ -44,4 +44,4 @@
     dest: "/opt/plexguide"
     version: "{{selection.user_input}}"
     force: yes
-  when: "not selection.user_input == edge"
+  when: not selection.user_input == "edge"
