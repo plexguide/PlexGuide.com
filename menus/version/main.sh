@@ -52,7 +52,7 @@ case $CHOICE in
         echo "INFO - User Selected the Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
-        bash /opt/plexguide/menus/version/main.sh
+        bash /opt/plexguide/roles/versions/main.sh
         exit
       fi
     rm -r /opt/plexguide2 1>/dev/null 2>&1

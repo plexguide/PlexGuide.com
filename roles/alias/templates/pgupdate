@@ -29,7 +29,7 @@ else
 	exit 0
 fi
 
-rm -r /opt/plexguide/menus/version/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/menus/version/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-6/menus/version/main.sh 1>/dev/null 2>&1
+rm -r /opt/plexguide/roles/versions/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-6/menus/version/main.sh 1>/dev/null 2>&1
 
 bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
 
@@ -46,4 +46,4 @@ else
 fi
 
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
-bash /opt/plexguide/menus/version/main.sh
+bash /opt/plexguide/roles/versions/main.sh
