@@ -52,7 +52,7 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
     else
       clear
     fi
-
+fi
   dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
   clear
 
