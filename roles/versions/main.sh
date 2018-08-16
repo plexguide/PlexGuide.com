@@ -19,7 +19,7 @@ program_selection="default"
 
 while [ "$program_selection" != "exit" ]; do
 
-ansible-playbook /opt/plexguide/pg.yml --tags versions
+ansible-playbook /opt/plexguide/basics.yml --tags versions
 program=$(cat /tmp/program_selection)
 
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )

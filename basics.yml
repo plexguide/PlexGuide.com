@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+
+  roles:
+  - { role: versions, tags: ['versions'] }
+  - { role: menu-start, tags: ['menu-start'] }

@@ -80,7 +80,7 @@ fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --tags versions
+  ansible-playbook /opt/plexguide/basics.yml --tags versions
   exit
 fi
 
