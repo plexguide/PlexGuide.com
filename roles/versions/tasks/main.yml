@@ -49,6 +49,6 @@
     force: yes
   when: not selection.user_input == "edge"
 
-- name: "Building List"
+- name: "Stops First Time Run"
   shell: "touch /var/plexguide/ask.yes"
   register: program
