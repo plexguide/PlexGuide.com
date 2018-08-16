@@ -23,14 +23,21 @@ ansible-playbook /opt/plexguide/basics.yml --tags versions
 program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
+if [ "$program" == "edge" ]; then
+  ansible-playbook /opt/plexguide/pg.yml --tags pgedge
+  clear
+  exit
+fi
+
   if [ "$program" == "edge" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags pgedge
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo ""
-    read -n 1 -s -r -p "Press any key to continue"
     bash /opt/plexguide/roles/ending/ending.sh
     one="xyz"
+    dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
+    exit 0
   else
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="$program"
@@ -53,8 +60,6 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
       clear
     fi
 fi
-  dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
-  clear
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
