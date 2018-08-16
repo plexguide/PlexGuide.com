@@ -30,7 +30,6 @@ else
 fi
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 
-rm -r /opt/plexguide2 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/pg.yml --tags pgfork
 
 file="/var/plexguide/fork.lock"
