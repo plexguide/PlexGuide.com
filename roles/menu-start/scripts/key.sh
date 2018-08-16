@@ -26,7 +26,7 @@ else
    chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
 fi
- 
+
 ## Create Dummy File on /mnt/gdrive/plexguide
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]
@@ -128,9 +128,6 @@ for txtfile in certchecker nopassword pingchecker; do
 bash /opt/plexguide/scripts/startup/pg-auth-scan.sh &
 # traefik cert validation
 bash /opt/plexguide/scripts/startup/certchecker.sh &
-
-sudo rm -r /opt/plexguide/roles/versions/main.sh && sudo mkdir -p /opt/plexguide/menus/version/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/main.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Version-6/menus/version/main.sh 1>/dev/null 2>&1
-rm -r /opt/plexguide/roles/versions/scripts/ver.list && sudo mkdir -p /opt/plexguide/roles/versions/scripts/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/scripts/ver.list https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/roles/versions/scripts/ver.list 1>/dev/null 2>&1
 
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
