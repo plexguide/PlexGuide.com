@@ -16,20 +16,15 @@
 #
 #################################################################################
 program_selection="default"
+running="default2"
 
-while [ "$program_selection" != "exit" ]; do
-
+if [ "$program" == "$running" ]; then
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 program=$(cat /tmp/program_selection)
-
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
-if [ "$program" == "$running" ]; then
 
   if [ "$program" == "edge" ]; then
-    rm -r /opt/plexguide2 1>/dev/null 2>&1
     ansible-playbook /opt/plexguide/pg.yml --tags pgedge
-    rm -r /opt/plexguide 1>/dev/null 2>&1
-    mv /opt/plexguide2 /opt/plexguide
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo ""
@@ -56,7 +51,7 @@ if [ "$program" == "$running" ]; then
         fi
     else
       clear
-    fi
+fi
 
   dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
   clear
