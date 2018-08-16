@@ -21,8 +21,57 @@
 
 - name: Check Preferences.xml exists
   stat:
-    path: "/opt/appdata/plex/Library/Application Support/Plex Media Server/Preferences.xml"
+    path: "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
+
+############### This is needed because on a fresh installaions the value is missins and is defaulted to 1 Security perfered 
+- name: secureConnections is missing
+  xml:
+    path: "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml"
+    xpath: /Preferences/@secureConnections
+    count: yes
+  register: secure_hits
+  when:
+    - plex_prefs.stat.exists
+
+ ############### This is needed because on a fresh installaions the value is missins and is defaulted to 1 Security perfered
+- name: Add secureConnections if missing
+  xml:
+    path: "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml"
+    xpath: /Preferences
+    attribute: secureConnections
+    value: '1'
+  when:
+    - plex_prefs.stat.exists
+    - secure_hits.count == 0
+
+- name: Read Preferences.xml
+  xml:
+    path: "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml"
+    xpath: /Preferences
+    content: attribute
+  register: plex_pref_content
+  when: plex_prefs.stat.exists
+
+- name: Add https to default_label if secureConnection != 2
+  set_fact:
+    default_labels: "{{default_labels | combine( {'traefik.protocol': 'https'} )}}"
+  when:
+    - plex_prefs.stat.exists
+    - plex_pref_content.matches[0]['Preferences']['secureConnections']
+
+- name: Read customConnections
+  set_fact:
+    customConnections: "{{plex_pref_content.matches[0]['Preferences']['customConnections']}}"
+  when:
+    - plex_prefs.stat.exists
+    - plex_pref_content.matches[0]['Preferences']['customConnections'] is defined
+
+- name: customConnections missing
+  set_fact:
+    customConnections: "http://{{ipaddress.stdout}}:32400"
+  when:
+    - plex_prefs.stat.exists == False
 
 - name: "Get Plex Custom URL"
   shell: "echo https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
@@ -75,7 +124,7 @@
       PLEX_UID: "1000"
       PLEX_GID: "1000"
       PLEX_CLAIM: "{{ptoken}}"
-      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
+      ADVERTISE_IP: "{{customConnections}}"
     networks:
       - name: plexguide
         aliases:
@@ -113,7 +162,7 @@
       PLEX_UID: "1000"
       PLEX_GID: "1000"
       PLEX_CLAIM: "{{ptoken}}"
-      ADVERTISE_IP: "http://{{ipaddress.stdout}}:32400"
+      ADVERTISE_IP: "{{customConnections}}"
     network_mode: "host"
     volumes: "{{default_volumes}}"
     devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
