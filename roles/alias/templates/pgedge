@@ -17,7 +17,7 @@
 #################################################################################
 [[ $(pwd) =~ plexguide ]] && cd ~
 # If PlexGuide is Missing, it will redownload it
-file="/opt/plexguide/menus/"
+file="/opt/plexguide/pg.yml"
 if [ -e "$file" ]
 then
    clear 1>/dev/null 2>&1
