@@ -34,7 +34,7 @@
   git:
     repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
     dest: "/opt/plexguide"
-    version: "{{selection.user_input}}"
+    version: Edge
     force: yes
   when: selection.user_input == edge
 
@@ -44,3 +44,4 @@
     dest: "/opt/plexguide"
     version: "{{selection.user_input}}"
     force: yes
+  when: not selection.user_input == edge
