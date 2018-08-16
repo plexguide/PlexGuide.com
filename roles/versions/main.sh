@@ -15,12 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-program=$(cat /tmp/program_selection)
-complete="$program"
+one="abc"
+two="abc"
 
-while [ "$program" == "$complete" ]; do
+while [ "$one" == "$two" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
-
+program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
   if [ "$program" == "edge" ]; then
@@ -30,7 +30,7 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
     bash /opt/plexguide/roles/ending/ending.sh
-    complete="$running"
+    one="xyz"
   else
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="$program"
@@ -44,7 +44,7 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
           clear
           echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           sudo bash /opt/plexguide/roles/ending/ending.sh
-          complete="$running"
+          one="xyz"
           exit 0
         else
           clear
