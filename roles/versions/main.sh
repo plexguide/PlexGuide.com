@@ -18,7 +18,7 @@
 program_selection="default"
 running="default2"
 
-if [ "$program" == "$running" ]; then
+while [ "$program" != "$running" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
@@ -30,6 +30,7 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
     bash /opt/plexguide/roles/ending/ending.sh
+    running="$program"
   else
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="$program"
@@ -43,15 +44,16 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
           dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
           clear
           echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
+          running="$program"
           sudo bash /opt/plexguide/roles/ending/ending.sh
+
           exit 0
         else
           clear
         fi
     else
       clear
-fi
+done
 
   dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
   clear
