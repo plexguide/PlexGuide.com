@@ -26,7 +26,7 @@ else
    chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
 fi
-
+ 
 ## Create Dummy File on /mnt/gdrive/plexguide
 file="/mnt/unionfs/plexguide/pgchecker.bin"
 if [ -e "$file" ]
