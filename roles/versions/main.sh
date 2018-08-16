@@ -43,18 +43,19 @@ fi
     version="$program"
 
     if [ "$program" == "$running" ]; then
-      touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-        if ! dialog --stdout --title "Version User Confirmation" \
+
+        if dialog --stdout --title "Version User Confirmation" \
            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
            --yesno "\nDo Want to Install: Version - $version?" 7 50; then
+
+           touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+        else
           dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
           clear
           echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           sudo bash /opt/plexguide/roles/ending/ending.sh
           one="xyz"
           exit 0
-        else
-          clear
         fi
     else
       clear
