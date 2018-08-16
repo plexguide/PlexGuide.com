@@ -28,13 +28,10 @@ else
 	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Version-6 /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 	exit 0
 fi
-bash /opt/plexguide/roles/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 
-rm -r /opt/plexguide2 1>/dev/null 2>&1
+bash /opt/plexguide/roles/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/pg.yml --tags pgedge
-rm -r /opt/plexguide 1>/dev/null 2>&1
-mv /opt/plexguide2 /opt/plexguide
-touch /var/plexguide/ask.yes 1>/dev/null 2>&1
+
 echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 echo ""
 read -n 1 -s -r -p "Press any key to continue"
