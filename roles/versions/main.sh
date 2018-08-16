@@ -30,13 +30,12 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
     echo ""
     read -n 1 -s -r -p "Press any key to continue"
     bash /opt/plexguide/roles/ending/ending.sh
-    running="$program"
+    complete="$running"
   else
     touch /var/plexguide/ask.yes 1>/dev/null 2>&1
     version="$program"
 
-    file="/var/plexguide/ask.yes"
-    if [ -e "$file" ]; then
+    if [ "$program" == "$running" ]; then
       touch /var/plexguide/ask.yes 1>/dev/null 2>&1
         if ! dialog --stdout --title "Version User Confirmation" \
            --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
@@ -44,9 +43,8 @@ running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP
           dialog --title "PG Update Status" --msgbox "\nExiting! User selected to NOT Install!" 0 0
           clear
           echo 'INFO - Selected Not To Upgrade PG' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          running="$program"
           sudo bash /opt/plexguide/roles/ending/ending.sh
-
+          complete="$running"
           exit 0
         else
           clear
