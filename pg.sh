@@ -67,6 +67,7 @@ if [ -e "$file" ]; then
   clear
   bash /opt/plexguide/roles/ending/ending.sh
   touch /var/plexguide/pg.exit 1>/dev/null 2>&1
+  touch /var/plexguide/new.install
   exit
 fi
 ######################################################## END: New Install
