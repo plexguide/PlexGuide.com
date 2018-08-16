@@ -58,30 +58,8 @@ if [ "$program" == "$running" ]; then
       clear
     fi
 
-    rm -rf /opt/plexguide 2>/dev/null
-    wget https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/archive/$version.zip -P /tmp
-    unzip /tmp/$version.zip -d /opt/
-    mv /opt/PlexG* /opt/plexguide
-    bash /opt/plexg*/sc*/ins*
-    rm -r /tmp/$version.zip
-    touch /var/plexguide/ask.yes 1>/dev/null 2>&1
-
-    echo "INFO - Selected: Upgrade to PG $version" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    exit
-  fi
-
-
   dialog --title "--- NOTE ---" --msgbox "\nPG $program Deployed!\n\nProcess Complete!" 0 0
   clear
-else
-  if [ "$program" == "exit" ];then
-    exit
-  else
-    dialog --title "--- NOTE ---" --msgbox "\nPG $program does not exist!\n\nRestarting!" 0 0
-    clear
-    program=default
-  fi
-fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
