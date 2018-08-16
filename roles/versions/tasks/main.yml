@@ -48,3 +48,7 @@
     version: "{{selection.user_input}}"
     force: yes
   when: not selection.user_input == "edge"
+
+- name: "Building List"
+  shell: "touch /var/plexguide/ask.yes"
+  register: program
