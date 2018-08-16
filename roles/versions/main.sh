@@ -17,8 +17,6 @@
 #################################################################################
 program_selection="default"
 
-ansible-playbook /opt/plexguide/basics.yml --tags versions
-
 while [ "$program_selection" != "exit" ]; do
 
 ansible-playbook /opt/plexguide/basics.yml --tags versions
