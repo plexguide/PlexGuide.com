@@ -54,12 +54,6 @@ if [ "$menu" == "security" ]; then
   clear
 fi
 
-if [ "$menu" == "plextools" ]; then
-  echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/plex/enhancement.sh
-  clear
-fi
-
 if [ "$menu" == "info" ]; then
   echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/info-tshoot/info.sh
