@@ -48,9 +48,20 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+  when: wckdauth == False
+      
+- name: "Set Default Labels (WCKD) - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.app.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.app.frontend.auth.forward.address: "https://authclient.{{domain.stdout}}"
+  when: wckdauth == True
 
 ######################## Deploy PGMSTART
 - include_role:
