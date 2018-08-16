@@ -22,13 +22,5 @@ num=0
 echo " " > /var/plexguide/ver.temp
 #### Build up list backup list for the main.yml execution
 while read p; do
-  echo -n $p >> /var/plexguide/ver.temp
-  echo -n " " >> /var/plexguide/ver.temp
-
-  num=$[num+1]
-  if [ $num == 10 ]; then
-    num=0
-    echo " " >> /var/plexguide/ver.temp
-  fi
-
+  echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/roles/versions/scripts/ver.list
