@@ -20,11 +20,11 @@ echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/pl
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=12
-WIDTH=42
+WIDTH=60
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="NOTE: You Must ReInstall PG"
-MENU="You Will Not Lose Your Data"
+TITLE="NOTE: You Must ReInstall PG. You Will Not Lose Data!"
+MENU="Visit Install PG on Forums and Follow Method 1"
 
 OPTIONS=(Z "----- Exit Menu -----")
 
