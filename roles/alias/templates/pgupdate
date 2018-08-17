@@ -43,3 +43,5 @@ fi
 
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
 ansible-playbook /opt/plexguide/basics.yml --tags versions
+dialog --title "--- NOTE ---" --msgbox "\nPGUpdate Complete!" 0 0
+bash /opt/plexguide/roles/ending/ending.sh
