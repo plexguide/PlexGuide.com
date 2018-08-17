@@ -16,7 +16,7 @@
 #
 #################################################################################
 program=$(cat /tmp/program_selection)
-running=fallen
+running=plexguide
 
 while [ "$running" == "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
