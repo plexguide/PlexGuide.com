@@ -16,6 +16,7 @@
 #
 #################################################################################
 program=$(cat /tmp/program_selection)
+menu=$(cat /tmp/program_source)
 running=plexguide
 
 while [ "$running" != "$program" ]; do
