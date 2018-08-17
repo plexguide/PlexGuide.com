@@ -42,15 +42,6 @@ bash /opt/plexguide/roles/install/scripts/declare.sh
 #
 #
 ######################################################## START: Start
-#
-# Stop Update Bug from 6.034 and prior
-file="/var/plexguide/pg.number"
-if [ -e "$file" ]; then
-  echo "" 1>/dev/null 2>&1
-else
-  rm -r /var/plexguide/ask.yes 1>/dev/null 2>&1
-fi
-
 bash /opt/plexguide/roles/install/scripts/start.sh
 ### Users Agreement Handling
 file="/var/plexguide/update.failed"
@@ -69,7 +60,14 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 rm -r /var/plexguide/new.install 1>/dev/null 2>&1
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
-  echo "" 1>/dev/null 2>&1
+
+  file2="/var/plexguide/pg.number"
+  if [ -e "$file2" ]; then
+    echo "" 1>/dev/null 2>&1
+  else
+    echo "Upgrade" > /var/plexguide/pg.number
+  fi
+
   else
   echo off > /tmp/program_source
   bash /opt/plexguide/roles/versions/main.sh
