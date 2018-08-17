@@ -24,12 +24,14 @@ while [ "$running" != "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
-if [ "$exit" == "exit" ] && [ "$menu" == "on" ]; then
+if [[ "$exit" == "exit" && "$menu" == "on" ]]; then
+clear
 dialog --title "--- NOTE ---" --msgbox "\nUser Exited PlexGuide! No Changes Have Been Made!" 6 54
+clear
 exit
 fi
 
-if [ "$exit" == "exit" ] && [ "$menu" == "off" ]; then
+if [[ "$exit" == "exit" && "$menu" == "off" ]]; then
 bash /opt/plexguide/roles/ending/ending.sh
 exit
 fi
