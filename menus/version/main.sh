@@ -23,11 +23,10 @@ HEIGHT=12
 WIDTH=42
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="FINAL UPGRADE (OLD SYSTEM)"
-MENU="You Must Update to 6.035!"
+TITLE="NOTE: You Must ReInstall PG"
+MENU="You Will Not Lose Your Data"
 
-OPTIONS=(Z "----- Exit Menu -----"
-         01 "New Upgrade System ~ 6.035")
+OPTIONS=(Z "----- Exit Menu -----")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
