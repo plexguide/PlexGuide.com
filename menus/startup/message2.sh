@@ -2,7 +2,7 @@
 export NCURSES_NO_UTF8_ACS=1
 
 edition=$( cat /var/plexguide/pg.edition )
-version=$( cat /var/plexguide/pg.version )
+version=$( cat /var/plexguide/pg.server.deploy )
 appguard=$(cat /var/plexguide/server.appguard)
 portstat=$(cat /var/plexguide/server.ports.status)
 watchtower=$(cat /var/plexguide/watchtower.yes)
@@ -21,8 +21,8 @@ hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ip=$( cat /var/plexguide/server.ip ) 1>/dev/null 2>&1
 
 #### GDrive or Local Edition (Local Not Working Yet)
-#cat /var/plexguide/pg.version > /var/plexguide/pg.version
-version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+#cat /var/plexguide/pg.server.deploy > /var/plexguide/pg.server.deploy
+version=$( cat /var/plexguide/pg.server.deploy ) 1>/dev/null 2>&1
 
 #### Edition of PG
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
