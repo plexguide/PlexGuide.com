@@ -52,3 +52,6 @@
 - name: "Stops First Time Run"
   shell: "touch /var/plexguide/ask.yes"
   register: program
+
+- name: "Build Version"
+  shell: "echo {{selection.user_input}} > /var/plexguide/pg.version"
