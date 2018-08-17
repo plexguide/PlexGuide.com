@@ -24,7 +24,7 @@ ansible-playbook /opt/plexguide/basics.yml --tags versions
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
 if [ "$program" == "exit" ] && [ "$menu" == "on" ]; then
-dialog --title "--- NOTE ---" --msgbox "\nUser Exited PlexGuide!\n\nNo Changes Have Been Made!" 0 0
+dialog --title "--- NOTE ---" --msgbox "\nUser Exited PlexGuide! No Changes Have Been Made!" 6 54
 exit
 fi
 
