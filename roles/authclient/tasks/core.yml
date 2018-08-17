@@ -26,17 +26,11 @@
   include_role:
     name: "pgmstart"
     tasks_from: "keyvar.yml"
-############################################################# (KEY END)
-#
-############################################################# (BASICS START)
-
-# NONE
-
-############################################################# (BASICS END)
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     provider: "https://auth.wckd.app"
     emails: "hello@wckd.app"
+    cookiedomain: "{{domain.stdout}}"
 
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
@@ -46,6 +40,5 @@
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}"
       traefik.port: "{{intport}}"
 
-######################## Deploy PGMSTART
 - include_role:
     name: "pgmstart"

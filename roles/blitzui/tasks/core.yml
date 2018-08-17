@@ -2,7 +2,7 @@
 #
 # Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   PhysK
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -17,53 +17,51 @@
 ---
 - name: "Establish Key Variables"
   set_fact:
-    intport: "8989"
-    extport: "8984"
+    intport: "80"
+    extport: "43242"
     pgrole: "{{role_name}}"
-    image: "linuxserver/sonarr"
+    image: "physk/pgblitz-ui"
 
 - name: "Key Variables Recall"
   include_role:
     name: "pgmstart"
     tasks_from: "keyvar.yml"
 ############################################################# (KEY END)
-#
-############################################################# (BASICS START)
 
-# None
+
+############################################################# (BASICS START)
 
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
-      - "/opt/appdata/{{role_name}}:/config{{extra}}"
-      - "/mnt/unionfs:/unionfs"
-      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-      - "{{path.stdout}}/sab/complete:/complete"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/rutorrents:/downloads"
-      - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - "/mnt/qbittorrent/Downloads:/qbit-downloads"
-      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/pgblitz/logs:/logs"
+      - "/opt/appdata/pgblitz/json:/json"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      PUID: "1000"
-      PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
-      APP: "sonarr"
-      VERSION: "stable"
+      UID: "1000"
+      GID: "1000"
 
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
       traefik.enable: "true"
+      traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+  when: wckdauth == False
+      
+- name: "Set Default Labels (WCKD) - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
       traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.app.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.app.frontend.auth.forward.address: "https://authclient.{{domain.stdout}}"
+  when: wckdauth == True
 
 ######################## Deploy PGMSTART
 - include_role:

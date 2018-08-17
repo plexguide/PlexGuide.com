@@ -1,14 +1,19 @@
 """
+A W.C.K.D. Automation Project
+
 Made with love by NotTeresa 
 https://github.com/NotTeresa
+
 """
 
 from __future__ import print_function
+from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from string import ascii_letters, digits
 from secrets import choice
 from base64 import b64decode
 from time import sleep
+import arrow
 import argparse
 import os
 
@@ -18,8 +23,7 @@ SCOPES = 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbosity", action="count", default=0,
                     help="Show what's happening, \nuse -vv for super detailed logs")
-parser.add_argument("-o", "--output", help="Output path of JSON files, defaults to: /opt/appdata/pgblitz/keys/processed")
-parser.add_argument("-dev","--devauth", help="Store authentication token for developmental use", action="store_true")
+parser.add_argument("-o", "--output", help="Output path of JSON files, defaults to: /opt/appdata/pgblitz/keys/automation")
 parser.add_argument("-genSA","--generateServiceAccounts", help="Generates Service Accounts regardless of their presence", action="store_true")
 args = parser.parse_args()
 parser.parse_known_args()
@@ -33,34 +37,31 @@ def output():
         else: 
             print('Output path does not exist')
             exit(1)
-    else: return '/opt/appdata/pgblitz/keys/processed'
+    else: return '/opt/appdata/pgblitz/keys/automation'
 
 #Authorizes the application once
 def auth():
-    from google_auth_oauthlib.flow import InstalledAppFlow
     secrets = "credentials.json"
-    flow = InstalledAppFlow.from_client_secrets_file(secrets, SCOPES)
-    credentials = flow.run_console()
+    flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
+    auth_url, _ = flow.authorization_url(prompt='consent')
+    print('Please go to this URL: {}'.format(auth_url))
+    code = input('Enter the authorization code: ')
+    token = flow.fetch_token(code=code)
+    credentials = flow.credentials
     drive = build('drive', 'v3', credentials = credentials)
     iam = build('iam', 'v1', credentials = credentials)
     cloudresourcemanager = build('cloudresourcemanager', 'v1', credentials = credentials)
-    return {'drive': drive, 'iam': iam, 'cloudresourcemanager': cloudresourcemanager}
+    servicemanagement = build('servicemanagement', 'v1', credentials = credentials)
+    return {'drive': drive, 'iam': iam, 'cloudresourcemanager': cloudresourcemanager, 'servicemanagement': servicemanagement, 'token': token}
 
-#Authorizes with a token for continued development
-def devauth():
-    import sys
-    sys.argv = [""]
-    from httplib2 import Http
-    from oauth2client import file as oauth_file, client, tools
-    store = oauth_file.Storage('token.json')
-    creds = store.get()
-    if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
-        creds = tools.run_flow(flow, store)
-    drive = build('drive', 'v3', http=creds.authorize(Http()))
-    iam = build('iam', 'v1', http=creds.authorize(Http()))
-    cloudresourcemanager = build('cloudresourcemanager', 'v1', http=creds.authorize(Http()))
-    return {'drive': drive, 'iam': iam, 'cloudresourcemanager': cloudresourcemanager}
+def auth2():
+    secrets = "rclone.json"
+    flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
+    auth_url, _ = flow.authorization_url(prompt='consent')
+    print('We need you to login again to configurate RCLONE.\nUse the same login credentials as you did just a few seconds ago!\nPlease go to this URL: {}'.format(auth_url))
+    code = input('Enter the authorization code: ')
+    token = flow.fetch_token(code=code)
+    return {'token': token}
 
 def gsuite(drive):
     check = drive.about().get(fields="canCreateTeamDrives").execute().get('canCreateTeamDrives')
@@ -99,6 +100,10 @@ def createProject(cloudresourcemanager):
     sleep(5)
     return 'plexguide-'+id_gen
 
+def enableAPI(servicemanagement, project):
+    body = {'consumerId': 'project:'+project}
+    servicemanagement.services().enable(serviceName="drive.googleapis.com", body=body).execute()
+
 #Function for creating a nice menu
 def selectOptions(datainput):
     while True:
@@ -120,8 +125,14 @@ def accountsSelect():
     userinput = selectOptions(datainput=accounts)
     return {'accounts': accounts[int(userinput)-1]}
 
+def rcloneconfig(conffile, output):
+    conffile = '\n'.join(conffile)
+    with open(os.path.join(output,'rclone.conf'), 'w') as conf:
+        conf.write(conffile)
+    if args.verbosity >= 1: print('Rclone configuration file written successfully')
+
 #Creates Service Accounts
-def serviceAccountsCreate(iam, project):
+def serviceAccountsCreate(iam, project, output, template, conffile, teamdrive):
     if args.verbosity >= 1: print("No service accounts yet, prompting user to select number of accounts.")
     amount = accountsSelect()
     for number in range(1,amount['accounts'] + 1):
@@ -133,15 +144,25 @@ def serviceAccountsCreate(iam, project):
         elif args.verbosity == 1: print(rename.get('displayName') + ' created')
         key_body = {'keyAlgorithm': 'KEY_ALG_RSA_2048', 'privateKeyType': 'TYPE_GOOGLE_CREDENTIALS_FILE'}
         keygen = iam.projects().serviceAccounts().keys().create(name=rename.get('name'), body=key_body).execute()
-        with open(os.path.join(output(),rename.get('displayName')+'.json'), 'wb') as file:
+        with open(os.path.join(output,rename.get('displayName')), 'wb') as file:
             file.write(b64decode(keygen.get('privateKeyData')))
+        rclone = template.format(rename.get('displayName'), os.path.join(output,rename.get('displayName')), teamdrive)
+        conffile.append(rclone)
     sleep(5)
+    return conffile
 
 #Checks if Service Accounts already exist within the PG project
-def serviceAccounts(iam, project): 
-    accounts = iam.projects().serviceAccounts().list(name='projects/' + project).execute().get('accounts')
+def serviceAccounts(iam, project, output, teamdrive, token):
+    conffile = []
+    template = "[{}]\ntype = drive\nclient_id =\nclient_secret =\nscope = drive\nroot_folder_id =\nservice_account_file = {}\nteam_drive = {}\n"
+    tandgdrive = template+'token = {}\n'
+    conffile.append(tandgdrive.format('gdrive', '', '', token))
+    conffile.append(tandgdrive.format('tdrive', '', teamdrive, token))
+
+    accounts = iam.projects().serviceAccounts().list(name='projects/' + project, pageSize='100').execute().get('accounts')
     if not accounts and not args.generateServiceAccounts:
-        serviceAccountsCreate(iam=iam, project=project)
+        conffile = serviceAccountsCreate(iam=iam, project=project, output = output, template=template, conffile=conffile, teamdrive=teamdrive)
+        rcloneconfig(conffile, output)
         return True
     elif not args.generateServiceAccounts:
         if args.verbosity >= 1: print("The following service accounts already exist:")
@@ -152,13 +173,17 @@ def serviceAccounts(iam, project):
             for account in accounts:
                 key_body = {'keyAlgorithm': 'KEY_ALG_RSA_2048', 'privateKeyType': 'TYPE_GOOGLE_CREDENTIALS_FILE'}
                 keygen = iam.projects().serviceAccounts().keys().create(name=account.get('name'), body=key_body).execute()
-                with open(os.path.join(output(),account.get('displayName')+'.json'), 'wb') as file:
+                with open(os.path.join(output,account.get('displayName')), 'wb') as file:
                     file.write(b64decode(keygen.get('privateKeyData')))
+                rclone = template.format(account.get('displayName'), os.path.join(output,account.get('displayName')), teamdrive)
+                conffile.append(rclone)
+            rcloneconfig(conffile, output)
             return True
         else: 
             return False
     elif args.generateServiceAccounts:
-        serviceAccountsCreate(iam=iam, project=project)
+        conffile = serviceAccountsCreate(iam=iam, project=project, output = output, template=template, conffile=conffile, teamdrive=teamdrive)
+        rcloneconfig(conffile, output)
         return True
     else:
         return False
@@ -208,13 +233,13 @@ def teamdriveSelect(valid):
     return {'id': valid[int(userinput)-1]['id'], 'name': valid[int(userinput)-1]['name']}
 
 def invite(iam, drive, project, id, name):
-    emails = iam.projects().serviceAccounts().list(name='projects/' + project).execute().get('accounts')
+    emails = iam.projects().serviceAccounts().list(name='projects/' + project, pageSize='100').execute().get('accounts')
     for email in emails:
-        invite_body = {'role': 'organizer', 'type': 'user', 'emailAddress': email['email']}
+        invite_body = {'role': 'writer', 'type': 'user', 'emailAddress': email['email']}
         drive.permissions().create(fileId=id, supportsTeamDrives='true', body=invite_body).execute()
         if args.verbosity >= 1: print('Invited ' + email['displayName'] + ' to: ' + name)
 
-def main(oauth):
+def main(oauth, output):
     valid = teamdriveExists(drive=oauth['drive'])
     if not gsuite(drive=oauth['drive']) and not valid:
         print("Setup failed, user has no teamdrives and can't create teamdrives.")
@@ -226,19 +251,23 @@ def main(oauth):
         else:
             if args.verbosity >= 1: print('PlexGuide project already exists! Using ' + getProject + ' as main PG project.')
             project = getProject
-        SA = serviceAccounts(iam=oauth['iam'], project=project)
-        if SA:
-            if valid:
-                if args.verbosity >= 1: print('Teamdrive already exists, prompting user to choose between a new or existing teamdrive.')
-                if gsuite(drive=oauth['drive']) and teamdriveMenu()['option'] == 'New':
-                    teamdrive = teamdriveCreate(drive=oauth['drive'])
-                else:
-                    teamdrive = teamdriveSelect(valid=valid)
-            else:
-                if args.verbosity >= 1: print('Teamdrive does NOT exist, prompting user to create a teamdrive.')
-                print("You don't have a teamdrive yet!")
+        enableAPI(servicemanagement=oauth['servicemanagement'], project=project)
+        if valid:
+            if args.verbosity >= 1: print('Teamdrive already exists, prompting user to choose between a new or existing teamdrive.')
+            if gsuite(drive=oauth['drive']) and teamdriveMenu()['option'] == 'New':
                 teamdrive = teamdriveCreate(drive=oauth['drive'])
-            if args.verbosity >= 1: print('Selected: {} ({})'.format(teamdrive['name'], teamdrive['id']))
+            else:
+                teamdrive = teamdriveSelect(valid=valid)
+        else:
+            if args.verbosity >= 1: print('Teamdrive does NOT exist, prompting user to create a teamdrive.')
+            print("You don't have a teamdrive yet!")
+            teamdrive = teamdriveCreate(drive=oauth['drive'])
+        if args.verbosity >= 1: print('Selected: {} ({})'.format(teamdrive['name'], teamdrive['id']))
+        oauth2 = auth2()
+        token = {"access_token":oauth2['token'].get('access_token'), "token_type":oauth2['token'].get('token_type'), "refresh_token":oauth2['token'].get('refresh_token'), "expiry":str(arrow.get(oauth2['token'].get('expires_at')))}
+        token = str(token).replace("'", '"')
+        SA = serviceAccounts(iam=oauth['iam'], project=project, output=output, teamdrive=teamdrive['id'], token=token)
+        if SA:
             invite(iam=oauth['iam'], drive=oauth['drive'], project=project, id=teamdrive['id'], name=teamdrive['name'])
             print('Great news! PGBlitz has succesfully been setup!')
         else: 
@@ -246,7 +275,6 @@ def main(oauth):
             exit(1)
 
 if __name__ == '__main__':
-    output()
-    if args.devauth: oauth = devauth()
-    else: oauth = auth()
-    main(oauth)
+    output = output()
+    oauth = auth()
+    main(oauth, output)

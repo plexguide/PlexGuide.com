@@ -19,16 +19,17 @@ export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Deploy Choice Menu for Mount Selection' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 ##################################################### DEPLOYMENT SYSTEM - START
-HEIGHT=11
+HEIGHT=12
 WIDTH=47
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Visit PlexGuide.com - Automations Made Simple"
 TITLE="Deploy a Mounting System"
 
 OPTIONS=(A "PG Blitz /w PGDrive   (Advanced)"
-         B "PG Move  /w PGDrive   (Simple)"
-         C "PG Move  /w PlexDrive (Traditional)"
-         D "PG ST2   /w PGDrive   (Depreciated)"
+         B "PG Blitz /w PGDrive   (Automated SA)"
+         C "PG Move  /w PGDrive   (Simple)"
+         D "PG Move  /w PlexDrive (Traditional)"
+         E "PG ST2   /w PGDrive   (Depreciated)"
          Z "Exit")
 
 CHOICE=$(dialog --backtitle "$BACKTITLE" \
@@ -41,12 +42,14 @@ case $CHOICE in
   A)
     bash /opt/plexguide/roles/pgblitz/scripts/main.sh ;;
   B)
+    bash /opt/plexguide/roles/pgblitz/scripts/automated.sh ;;
+  C)
     echo "Move" > /var/plexguide/menu.select
     bash /opt/plexguide/roles/pgdrivenav/main.sh ;;
   D)
     echo "SuperTransfer2" > /var/plexguide/menu.select
     bash /opt/plexguide/roles/pgdrivenav/main.sh ;;
-  C)
+  E)
     "plexdrive" > /var/plexguide/menu.select
     bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh ;;
   Z)
