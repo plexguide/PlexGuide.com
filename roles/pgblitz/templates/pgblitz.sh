@@ -27,11 +27,16 @@ mkdir -p /opt/appdata/pgblitz/vars/
 
 #### Generates the GDSA List from the Processed Keys
 if [ -e /opt/appdata/pgblitz/vars/automated ]; then
-    GDSAARRAY=(`ls -la $path/automation | awk '{print $9}' | grep PG`)
+    GDSAARRAY=(`ls -la $path/automation | awk '{print $9}' | egrep '(PG|GD|GS)'`)
 else
     GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
 fi
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
+
+if [ $GDSACOUNT -lt 1 ]; then
+    echo "[PGBlitz] No accounts found to upload with" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    exit 1
+fi
 
 #grabs vars from files
 if [ -e /opt/appdata/pgblitz/vars/lastGDSA ]; then
