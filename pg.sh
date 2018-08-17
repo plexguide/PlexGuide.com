@@ -61,7 +61,7 @@ file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
   echo "" 1>/dev/null 2>&1
   else
-  echo off > /tmp/program_selection
+  echo off > /tmp/program_source
   bash /opt/plexguide/roles/versions/main.sh
   dialog --title "--- NEW INSTALL ---" --msgbox "\nExiting PG to install the Selected Version!\n\nType 'plexguide' again to complete the process!" 0 0
   clear
