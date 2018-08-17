@@ -21,6 +21,7 @@ running=plexguide
 while [ "$running" != "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
+echo $program > /var/plexguide/pg.number
 
 echo 'INFO - Looping: PG Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 echo "DEBUG - typed: $program - lookup: $running"
