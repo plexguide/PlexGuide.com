@@ -18,15 +18,15 @@
 program=$(cat /tmp/program_selection)
 running=plexguide
 
-while [ "$running" == "$program" ]; do
+while [ "$running" != "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
-if [ "$menu" == "update" ]; then
-  echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/versions/main.sh
-  exit
-fi
+#if [ "$menu" == "update" ]; then
+#  echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#  bash /opt/plexguide/roles/versions/main.sh
+#  exit
+#fi
 
 echo 'INFO - Looping: PG Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
