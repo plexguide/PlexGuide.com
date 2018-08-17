@@ -104,7 +104,7 @@
 
 - name: Set pgtrak.py as executable
   file:
-    path: /opt/appdata/pgtrak/pgtrak.py
+    path: /opt/appdata/pgtrak/traktarr.py
     owner: 1000
     group: 1000
     mode: a+x

@@ -1,7 +1,9 @@
 #!/bin/bash
-##
+#
+# [Ansible Role]
+#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & FlickerRate
+# Author:   Admin9705 & Deiteq & PhysK
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -13,19 +15,27 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-[Unit]
-Description=UnionFS Daemon
+---
+- name: Launch Core Task
+  include_tasks: "core.yml"
 
-[Service]
-Type=simple
-User=0
-Group=0
-ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty,direct_io,auto_cache,sync_read /mnt/move=RW:{{unionfs_path.stdout}} /mnt/unionfs
-ExecStop=/bin/fusermount -uz /mnt/unionfs
-TimeoutStopSec=20
-KillMode=process
-RemainAfterExit=yes
+- name: "Deploy {{pgrole}} Container"
+  docker_container:
+    name: "{{pgrole}}"
+    image: "{{image}}"
+    pull: yes
+    cpu_shares: 128
+    published_ports:
+      - "{{ports.stdout}}{{extport}}:{{intport}}"
+    volumes: "{{default_volumes}}"
+    env: "{{default_env}}"
+    restart_policy: always
+    networks:
+      - name: plexguide
+        aliases:
+          - "{{pgrole}}"
+    state: started
+    labels: "{{default_labels}}"
 
-[Install]
-WantedBy=multi-user.target
+- include_role:
+    name: pgmend

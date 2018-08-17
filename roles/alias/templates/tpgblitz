@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Maintainer: Admin9705 & Deiteq
+# Maintainer: Admin9705 & Deiteq & PhysK
 # URL:        https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-tail /opt/appdata/pgblitz/rclone.log
+tail -F /opt/appdata/pgblitz/logs/*.log
