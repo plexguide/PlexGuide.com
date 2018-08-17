@@ -60,7 +60,14 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 rm -r /var/plexguide/new.install 1>/dev/null 2>&1
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
-  echo "" 1>/dev/null 2>&1
+
+  file2="/var/plexguide/pg.number"
+  if [ -e "$file2" ]; then
+    echo "" 1>/dev/null 2>&1
+  else
+    echo "Upgrade" > /var/plexguide/pg.number
+  fi
+
   else
   echo off > /tmp/program_source
   bash /opt/plexguide/roles/versions/main.sh
