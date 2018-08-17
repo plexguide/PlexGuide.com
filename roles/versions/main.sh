@@ -16,9 +16,7 @@
 #
 #################################################################################
 program=$(cat /tmp/program_selection)
-menu=$(cat /tmp/program_source)
 running=plexguide
-exit=$(cat /var/plexguide/pg.exit)
 
 while [ "$running" != "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
