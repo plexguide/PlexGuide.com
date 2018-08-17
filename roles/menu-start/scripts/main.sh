@@ -82,8 +82,6 @@ if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo on > /tmp/program_source
   ansible-playbook /opt/plexguide/basics.yml --tags versions
-  bash /opt/plexguide/roles/ending/ending.sh
-  exit
 fi
 
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
