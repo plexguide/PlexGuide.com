@@ -48,7 +48,7 @@ file="/var/plexguide/pg.number"
 if [ -e "$file" ]; then
   echo "" 1>/dev/null 2>&1
 else
-  rm -r /var/plexguide/ask.yes
+  rm -r /var/plexguide/ask.yes 1>/dev/null 2>&1
 fi
 
 bash /opt/plexguide/roles/install/scripts/start.sh
