@@ -42,15 +42,6 @@ bash /opt/plexguide/roles/install/scripts/declare.sh
 #
 #
 ######################################################## START: Start
-#
-# Stop Update Bug from 6.034 and prior
-file="/var/plexguide/pg.number"
-if [ -e "$file" ]; then
-  echo "" 1>/dev/null 2>&1
-else
-  rm -r /var/plexguide/ask.yes 1>/dev/null 2>&1
-fi
-
 bash /opt/plexguide/roles/install/scripts/start.sh
 ### Users Agreement Handling
 file="/var/plexguide/update.failed"
