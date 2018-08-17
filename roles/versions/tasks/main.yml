@@ -58,3 +58,6 @@
 - name: "Build Version"
   shell: "echo {{selection.user_input}} > /var/plexguide/pg.exit"
   when: selection.user_input == "exit"
+
+- name: Writing Version
+  shell: "echo {{selection.user_input}} > /var/plexguide/pg.number"
