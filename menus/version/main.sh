@@ -20,14 +20,13 @@ echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/pl
 export NCURSES_NO_UTF8_ACS=1
 
 HEIGHT=12
-WIDTH=42
+WIDTH=60
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="FINAL UPGRADE (OLD SYSTEM)"
-MENU="You Must Update to 6.035!"
+TITLE="NOTE: You Must ReInstall PG. You Will Not Lose Data!"
+MENU="Visit Install PG on Forums and Follow Method 1"
 
-OPTIONS=(Z "----- Exit Menu -----"
-         01 "New Upgrade System ~ 6.035")
+OPTIONS=(Z "----- Exit Menu -----")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
