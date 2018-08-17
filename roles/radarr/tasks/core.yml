@@ -2,7 +2,7 @@
 #
 # Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -22,22 +22,46 @@
     pgrole: "{{role_name}}"
     image: "linuxserver/radarr"
 
+- pause:
+    prompt: "\nType Version # for Radarr\n1- Radarr (Recommended)\n2- Radarr 4K \n3- Radarr HDR"
+  register: version
+  until: version.user_input > "0" and version.user_input < "4"
+  retries: 5
+  delay: 1
+  when: quescheck == "on"
+
+- name: Set Radarr
+  set_fact:
+    pgrole: "radarr"
+    extport: "7878"
+  when: quescheck == "on" and version.user_input == "1"
+
+- name: Set Radarr 4K
+  set_fact:
+    pgrole: "radarr4k"
+    extport: "7874"
+  when: quescheck == "on" and version.user_input == "2"
+
+- name: Set Radarr HDR
+  set_fact:
+    pgrole: "radarrhdr"
+    extport: "7877"
+  when: quescheck == "on" and version.user_input == "3"
+
 - name: "Key Variables Recall"
   include_role:
     name: "pgmstart"
     tasks_from: "keyvar.yml"
 ############################################################# (KEY END)
-#
+
 ############################################################# (BASICS START)
-
-# NONE
-
+#
 ############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/{{role_name}}/mp4_automator:/config_mp4_automator"
-      - "/opt/appdata/{{role_name}}:/config{{extra}}"
+      - "/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator"
+      - "/opt/appdata/{{pgrole}}:/config{{extra}}"
       - "/mnt/unionfs:/unionfs"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
@@ -61,9 +85,21 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
+      traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+  when: wckdauth == False
+
+- name: "Set Default Labels (WCKD) - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
       traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.app.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.app.frontend.auth.forward.address: "https://authclient.{{domain.stdout}}"
+      traefik.api.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}};PathPrefix:/api"
+  when: wckdauth == True
 
 ######################## Deploy PGMSTART
 - include_role:

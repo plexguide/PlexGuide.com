@@ -21,6 +21,7 @@
     extport: "8181"
     pgrole: "{{role_name}}"
     image: "linuxserver/tautulli"
+    authwarning: True
 
 - name: "Key Variables Recall"
   include_role:
@@ -53,9 +54,21 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
+      traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
+  when: wckdauth == False
+
+- name: "Set Default Labels (WCKD) - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
       traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.app.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      traefik.app.frontend.auth.forward.address: "https://authclient.{{domain.stdout}}"
+      traefik.api.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}};PathPrefix:/api"
+  when: wckdauth == True
 
 ######################## Deploy PGMSTART
 - include_role:

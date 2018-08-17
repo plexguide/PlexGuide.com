@@ -70,3 +70,33 @@
 - debug: msg="TLDSET is now - {{tldset}}"
   when: "toplevel.stdout == pgrole"
 ###### FOR TLD (END)
+
+###### WCKD Authentication
+
+- name: Check if WCKD Auth is enabled
+  stat:
+    path: /var/plexguide/authclient.wckd
+  register: authclient
+
+- name: "If WCKD Auth is enabled set variable"
+  set_fact:
+    wckdauth: True
+  when: authclient.stat.exists == True
+
+- name: "If WCKD Auth is disabled set variable"
+  set_fact:
+    wckdauth: False
+  when: authclient.stat.exists == False
+
+- pause:
+    prompt: "\nThis application ({{pgrole}}) has multi-user capablilities,\nDo you want to enable WCKD Auth anyways?\n1- no (Recommended)\n2- yes (Single User)"
+  register: enableanyways
+  until: enableanyways.user_input > "0" and enableanyways.user_input < "3"
+  retries: 5
+  delay: 1
+  when: authwarning is defined and wckdauth is defined and authwarning == True and wckdauth == True
+
+- name: "Disable WCKD Auth"
+  set_fact:
+    wckdauth: False
+  when: enableanyways.user_input is defined and enableanyways.user_input == "1"
