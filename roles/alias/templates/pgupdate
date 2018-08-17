@@ -29,8 +29,6 @@ else
 	exit 0
 fi
 
-bash /opt/plexguide/scripts/checker/main.sh 1>/dev/null 2>&1
-
 file="/usr/bin/dialog"
 if [ -e "$file" ]
 then
@@ -44,4 +42,6 @@ else
 fi
 
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
-bash /opt/plexguide/roles/versions/main.sh
+ansible-playbook /opt/plexguide/basics.yml --tags versions
+dialog --title "--- NOTE ---" --msgbox "\nPGUpdate Complete!" 0 0
+bash /opt/plexguide/roles/ending/ending.sh
