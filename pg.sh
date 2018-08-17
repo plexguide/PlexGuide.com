@@ -21,7 +21,7 @@ bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
  # Force Common Things To Execute Such as Folders
-echo "139" > /var/plexguide/pg.preinstall
+echo "140" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
 echo "10" > /var/plexguide/pg.rclone
@@ -32,7 +32,7 @@ echo "10" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "39" > /var/plexguide/pg.alias
+echo "40" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 
