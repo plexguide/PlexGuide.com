@@ -16,9 +16,9 @@
 #
 #################################################################################
 program=$(cat /tmp/program_selection)
-running=$program
+running=fallen
 
-while [ "$running" != "$program" ]; do
+while [ "$running" == "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
