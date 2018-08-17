@@ -53,7 +53,8 @@
 - name: "Stops First Time Run"
   shell: "touch /var/plexguide/ask.yes"
   register: program
+  when: not selection.user_input == "exit"
 
 - name: "Build Version"
-  shell: "echo {{selection.user_input}} > /var/plexguide/pg.version"
-  when: not selection.user_input == "exit"
+  shell: "echo {{selection.user_input}} > /var/plexguide/pg.exit"
+  when: selection.user_input == "exit"
