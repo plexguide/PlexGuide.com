@@ -27,7 +27,7 @@ if [ "$program" == "exit" ] && [ "$menu"="on" ]; then
 exit
 fi
 
-if [ "$program" == "exit" ] && [ "$menu"="off" ]
+if [ "$program" == "exit" ] && [ "$menu"="off" ]; then
 bash /opt/plexguide/roles/ending/ending.sh
 exit
 fi
