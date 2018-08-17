@@ -19,19 +19,15 @@ echo 'INFO - @PG Version Selection Menu' > /var/plexguide/pg.log && bash /opt/pl
 
 export NCURSES_NO_UTF8_ACS=1
 
-HEIGHT=18
-WIDTH=33
-CHOICE_HEIGHT=11
+HEIGHT=12
+WIDTH=42
+CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="Select A PlexGuide Version"
-MENU="Make a Selection:"
+TITLE="FINAL UPGRADE (OLD SYSTEM)"
+MENU="You Must Update to 6.035!"
 
 OPTIONS=(Z "----- Exit Menu -----"
-         01 "EDGE         ~ 6.035"
-         02 "Release      ~ 6.034"
-         03 "Release      ~ 6.033"
-         04 "Release      ~ 6.032"
-         05 "Internal Bug Test")
+         01 "New Upgrade System ~ 6.035")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -52,7 +48,7 @@ case $CHOICE in
         echo "INFO - User Selected the Edge Install" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         dialog --title "NOTE" --msgbox "\nThis is a new install!\n\nYou must install a NORMAL Release before EDGE" 0 0
-        bash /opt/plexguide/menus/version/main.sh
+        bash /opt/plexguide/roles/versions/main.sh
         exit
       fi
     rm -r /opt/plexguide2 1>/dev/null 2>&1

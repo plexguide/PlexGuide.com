@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
-# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Maintainer: Admin9705 & Deiteq
-# URL:        https://plexguide.com
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
 # Licensed under GNU General Public License v3.0 GPL-3 (in short)
@@ -15,10 +15,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
-- name: Cloning Edge
-  git:
-    repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
-    dest: "/opt/plexguide"
-    version: "Edge"
-    force: yes
+clear
+##################################################### Builds Backup List - END
+
+num=0
+echo " " > /var/plexguide/ver.temp
+#### Build up list backup list for the main.yml execution
+while read p; do
+  echo $p >> /var/plexguide/ver.temp
+done </opt/plexguide/roles/versions/scripts/ver.list

@@ -54,13 +54,15 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
           netaddr \
           google-api-python-client \
           google_auth_oauthlib \
-          oauth2client
+          oauth2client \
+          lxml
       pip install --upgrade --force-reinstall pip==9.0.3
       pip install --upgrade --force-reinstall setuptools
       pip install --upgrade --force-reinstall \
           pyOpenSSL \
           requests \
           netaddr \
+	  lxml \
           #ansible==${1-2.5.4}
       ## Copy pip to /usr/bin
       cp /usr/local/bin/pip /usr/bin/pip

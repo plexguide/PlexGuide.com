@@ -17,10 +17,10 @@
 #################################################################################
 ---
 - name: Version
-  shell: "cat /var/plexguide/pg.version"
+  shell: "cat /var/plexguide/pg.number"
   register: pgversion
 
-- name: Version
+- name: Edition
   shell: "cat /var/plexguide/pg.edition"
   register: pgedition
 
