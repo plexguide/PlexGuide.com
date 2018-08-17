@@ -23,11 +23,11 @@ while [ "$running" != "$program" ]; do
 ansible-playbook /opt/plexguide/basics.yml --tags versions
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
-if [ "$program" == "exit" ] && [ "$menu"="on" ]; then
+if [ "$program" == "exit" ] && [ "$menu" == "on" ]; then
 exit
 fi
 
-if [ "$program" == "exit" ] && [ "$menu"="off" ]; then
+if [ "$program" == "exit" ] && [ "$menu" == "off" ]; then
 bash /opt/plexguide/roles/ending/ending.sh
 exit
 fi
