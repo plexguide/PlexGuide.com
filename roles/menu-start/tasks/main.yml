@@ -47,6 +47,7 @@
 \n9.  PG Backup & Restore
 \n10. PG Settings & Tools
 \n11. PG Update & Restore
+\n12. BETA: WCKD Authentication
 \n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
@@ -59,7 +60,8 @@
          choice.user_input == "8" or
          choice.user_input == "9" or
          choice.user_input == "10" or
-         choice.user_input == "11"
+         choice.user_input == "11" or
+         choice.user_input == "12"
   retries: 99
   delay: 1
 
@@ -103,3 +105,6 @@
 
 - shell: "echo update > /var/plexguide/main.menu"
   when: fchoice == "11"
+
+- shell: "echo wckd > /var/plexguide/main.menu"
+  when: fchoice == "12"
