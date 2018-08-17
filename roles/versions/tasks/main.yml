@@ -33,7 +33,7 @@
 - name: Write Application Variable
   shell: "echo {{selection.user_input}} > /tmp/program_selection"
 
-- name: Installing {{selection.user_input}}
+- name: Installing EDGE
   git:
     repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
     dest: "/opt/plexguide"
@@ -48,6 +48,7 @@
     version: "{{selection.user_input}}"
     force: yes
   when: not selection.user_input == "edge"
+  ignore_errors: True
 
 - name: "Stops First Time Run"
   shell: "touch /var/plexguide/ask.yes"
@@ -55,3 +56,4 @@
 
 - name: "Build Version"
   shell: "echo {{selection.user_input}} > /var/plexguide/pg.version"
+  when: not selection.user_input == "exit"
