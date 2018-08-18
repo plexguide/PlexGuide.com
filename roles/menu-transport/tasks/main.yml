@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+
+- name: PG Main Menu
+  pause:
+    prompt: "\nWelcome to PG Transport System!
+             \nSelect a Transport System!
+\n\n1.  Exit the Transport System
+\n2.  PG Blitz /w PGDrive   (Automated Deployment)
+\n3.  PG Blitz /w PGDrive   (Manual Deployment)
+\n4.  PG Move  /w PGDrive   (Simple)
+\n5.  PG Move  /w PlexDrive (Depreciated - No Support)
+\n6.  PG ST2   /w PGDrive   (Depreciated - No Support)
+\n\nType a [NUMBER] Choice & Press [ENTER]"
+  register: choice
+  until: choice.user_input == "1" or
+         choice.user_input == "2" or
+         choice.user_input == "3" or
+         choice.user_input == "4" or
+         choice.user_input == "5" or
+         choice.user_input == "6"
+  retries: 99
+  delay: 1
+
+- name: Set Choice
+  set_fact:
+    fchoice: "{{choice.user_input}}"
+
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/main.menu"
+  when: fchoice == "1"
+
+- name: Blitz Auto
+  shell: "echo blitzauto > /var/plexguide/main.menu"
+  when: fchoice == "2"
+
+- name: Blitz Manaul
+  shell: "echo blitzmanual > /var/plexguide/main.menu"
+  when: fchoice == "3"
+
+- name: PG Move
+  shell: "echo move > /var/plexguide/main.menu"
+  when: fchoice == "4"
+
+- name: PlexDrive
+  shell: "echo plexdrive > /var/plexguide/main.menu"
+  when: fchoice == "5"
+
+- name: PG ST2
+  shell: "echo st2 > /var/plexguide/main.menu"
+  when: fchoice == "6"
