@@ -25,8 +25,16 @@ program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP | head -n1 )
 if [ "$program" == "$running" ]; then
 
-  if [ "$program" == "netdata" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
-  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+
+
+  if [ "$program" == "netdata" ] || [ "$program" == "vpn" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
+
+    if [ "$program" == "vpn" ]
+      bash /opt/plexguide/roles/programs/vpn.sh
+    else
+      ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+    fi
+
   else
   ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
   fi
