@@ -37,7 +37,6 @@ if [ "$program" == "$running" ]; then
   ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
   fi
 
-  dialog --title "--- NOTE ---" --msgbox "\n$program Deployed!\n\nProcess Complete!" 0 0
   clear
 else
   if [ "$program" == "exit" ];then
