@@ -76,7 +76,7 @@
     volumes:
       - "/opt/appdata/rutorrent/config:/config"
       - "/mnt/unionfs:/unionfs"
-      - "{{path.stdout}}/rutorrent/:/downloads"
+      - "{{path.stdout}}/rutorrents:/downloads"
       - /opt/appdata/{{role_name}}:/scripts
       - "/etc/localtime:/etc/localtime:ro"
     networks:
