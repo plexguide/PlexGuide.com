@@ -38,8 +38,7 @@ fi
 
 if [ "$menu" == "move" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "Move" > /var/plexguide/menu.select
-  bash /opt/plexguide/roles/pgdrivenav/main.sh
+  bash /opt/plexguide/roles/menu-transport/scripts/pgmove.sh
   clear
 fi
 
