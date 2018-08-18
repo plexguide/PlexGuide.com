@@ -26,7 +26,7 @@ menu=$(cat /var/plexguide/main.menu)
 
 if [ "$menu" == "mount" ]; then
   echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/deploychoice.sh
+  bash /opt/plexguide/roles/menu-transport/scripts/main.sh
   clear
 fi
 
