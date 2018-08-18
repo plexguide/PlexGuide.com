@@ -1,7 +1,7 @@
 import os
 
 ### clear screen
-os.system('cls')
+os.system('clear')
 
 print("Welcome to the PG Version Deployment System!\n")
 
