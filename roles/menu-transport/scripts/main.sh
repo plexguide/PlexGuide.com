@@ -16,81 +16,49 @@
 #
 #################################################################################
 clear
-echo "on" > /var/plexguide/main.menu
+echo "on" > /var/plexguide/transport.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/main.menu)
-ansible-playbook /opt/plexguide/basics.yml --tags menu-start
-menu=$(cat /var/plexguide/main.menu)
+menu=$(cat /var/plexguide/transport.menu)
+ansible-playbook /opt/plexguide/basics.yml --tags menu-transport
+menu=$(cat /var/plexguide/transport.menu)
 
-if [ "$menu" == "mount" ]; then
-  echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/deploychoice.sh
+if [ "$menu" == "blitzauto" ]; then
+  echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
   clear
 fi
 
-if [ "$menu" == "traefik" ]; then
-  echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/tld/scripts/submenu.sh
+if [ "$menu" == "blitzmanual" ]; then
+  echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/pgblitz/scripts/main.sh
   clear
 fi
 
-if [ "$menu" == "programs" ]; then
-  echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/programs/main.sh
+if [ "$menu" == "move" ]; then
+  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo "Move" > /var/plexguide/menu.select
+  bash /opt/plexguide/roles/pgdrivenav/main.sh
   clear
 fi
 
-if [ "$menu" == "plextools" ]; then
-  echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/plex/enhancement.sh
-  clear
-fi
-
-if [ "$menu" == "security" ]; then
-  echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/security/main.sh
-  clear
-fi
-
-if [ "$menu" == "info" ]; then
-  echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/info-tshoot/info.sh
-  clear
-fi
-
-if [ "$menu" == "tshoot" ]; then
+if [ "$menu" == "st2" ]; then
   echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/info-tshoot/tshoot.sh
+  echo "SuperTransfer2" > /var/plexguide/menu.select
+  bash /opt/plexguide/roles/pgdrivenav/main.sh
   clear
 fi
 
-if [ "$menu" == "backup" ]; then
+if [ "$menu" == "plexdrive" ]; then
   echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/b-control/scripts/main.sh
+  echo "plexdrive" > /var/plexguide/menu.select
+  bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh
   clear
 fi
 
-if [ "$menu" == "settings" ]; then
-  echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/settings/main.sh
-  clear
-fi
-
-if [ "$menu" == "update" ]; then
-  echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/basics.yml --tags versions
-fi
-
-if [ "$menu" == "wckd" ]; then
-  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --tags authclient --extra-vars "quescheck=on cron=off display=on"
-  exit
-fi
-
-echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
-echo 'INFO - Selected: Exiting PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 bash /opt/plexguide/roles/ending/ending.sh
