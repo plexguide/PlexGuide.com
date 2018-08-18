@@ -43,25 +43,25 @@
     fchoice: "{{choice.user_input}}"
 
 - name: Exiting Interface
-  shell: "echo break > /var/plexguide/main.menu"
+  shell: "echo break > /var/plexguide/transport.menu"
   when: fchoice == "1"
 
 - name: Blitz Auto
-  shell: "echo blitzauto > /var/plexguide/main.menu"
+  shell: "echo blitzauto > /var/plexguide/transport.menu"
   when: fchoice == "2"
 
 - name: Blitz Manaul
-  shell: "echo blitzmanual > /var/plexguide/main.menu"
+  shell: "echo blitzmanual > /var/plexguide/transport.menu"
   when: fchoice == "3"
 
 - name: PG Move
-  shell: "echo move > /var/plexguide/main.menu"
+  shell: "echo move > /var/plexguide/transport.menu"
   when: fchoice == "4"
 
 - name: PlexDrive
-  shell: "echo plexdrive > /var/plexguide/main.menu"
+  shell: "echo plexdrive > /var/plexguide/transport.menu"
   when: fchoice == "5"
 
 - name: PG ST2
-  shell: "echo st2 > /var/plexguide/main.menu"
+  shell: "echo st2 > /var/plexguide/transport.menu"
   when: fchoice == "6"
