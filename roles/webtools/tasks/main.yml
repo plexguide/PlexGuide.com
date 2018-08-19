@@ -21,7 +21,7 @@
   with_items:
       - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
 
-- name: WebTools
+- name: Installing WebTools
   unarchive:
     src: https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
     dest: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
