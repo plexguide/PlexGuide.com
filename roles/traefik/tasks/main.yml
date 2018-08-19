@@ -281,7 +281,7 @@
 - name: Deploy Traefik Container - CloudFlare
   docker_container:
     name: traefik
-    image: "traefik:latest"
+    image: traefik:1.7
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -314,7 +314,7 @@
 - name: Deploy Traefik - DUCKDNS
   docker_container:
     name: traefik
-    image: traefik:1.6
+    image: traefik:1.7
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -345,7 +345,7 @@
 - name: Deploy Traefik - GODADDY
   docker_container:
     name: traefik
-    image: traefik:1.6
+    image: traefik:1.7
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -376,7 +376,7 @@
 - name: Deploy Traefik - NAMECHEAP
   docker_container:
     name: traefik
-    image: traefik:1.6
+    image: traefik:1.7
     pull: yes
     cpu_shares: 256
     published_ports:
@@ -406,7 +406,7 @@
 - name: Deploy Traefik - GANDI
   docker_container:
     name: traefik
-    image: traefik:1.6
+    image: traefik:1.7
     pull: yes
     cpu_shares: 256
     published_ports:
