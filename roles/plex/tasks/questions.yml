@@ -65,7 +65,7 @@
 
 - name: Set Token
   set_fact:
-    ptoken: "{{ptokentemp.user_input}}"
+    ptoken: "{{ptokentemp.json.token}}"
   when: usercheck == "1"
 
 - debug: msg="Using the following Plex claim token {{ptoken}}"
