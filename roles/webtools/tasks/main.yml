@@ -33,4 +33,4 @@
 
 - name: Notify User
   pause:
-    prompt: "\nWebTools Installed! [PRESS ENTER] to Continue!"
+    prompt: "\nWebTools Installed! [PRESS ENTER] to Continue"
