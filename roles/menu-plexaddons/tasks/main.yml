@@ -21,7 +21,7 @@
   pause:
     prompt: "\nWelcome to PG Plex Enhancement System!
              \nSelect an Option!
-\n\n1.  [EXIT] Menu Interface!
+\n\n1.  --- EXIT --- Menu Interface
 \n2.  Plex WebTools
 \n3.  PGTrak
 \n\nType a [NUMBER] Choice & Press [ENTER]"
