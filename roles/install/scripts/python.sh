@@ -37,32 +37,33 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
       sysctl -p
 
       ## Install Dependencies
+      apt-get install python3 -y
       apt-get install -y --reinstall \
-          git \
-          build-essential \
-          libssl-dev \
-          libffi-dev \
-          python3-dev \
-          python3-pip \
-          python-dev \
-          python-pip
+      git \
+      build-essential \
+      libssl-dev \
+      libffi-dev \
+      python3-dev \
+      python3-pip \
+      python-dev \
+      python-pip
       pip3 install --upgrade --force-reinstall pip==9.0.3
       pip3 install --upgrade --force-reinstall setuptools
       pip3 install --upgrade --force-reinstall \
-          pyOpenSSL \
-          requests \
-          netaddr \
-          google-api-python-client \
-          google_auth_oauthlib \
-          oauth2client \
-          lxml
+      pyOpenSSL \
+      requests \
+      netaddr \
+      google-api-python-client \
+      google_auth_oauthlib \
+      oauth2client \
+      lxml
       pip install --upgrade --force-reinstall pip==9.0.3
       pip install --upgrade --force-reinstall setuptools
       pip install --upgrade --force-reinstall \
-          pyOpenSSL \
-          requests \
-          netaddr \
-	  lxml \
+      pyOpenSSL \
+      requests \
+      netaddr \
+	    lxml
           #ansible==${1-2.5.4}
       ## Copy pip to /usr/bin
       cp /usr/local/bin/pip /usr/bin/pip
