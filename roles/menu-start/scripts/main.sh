@@ -27,55 +27,46 @@ menu=$(cat /var/plexguide/main.menu)
 if [ "$menu" == "mount" ]; then
   echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-transport/scripts/main.sh
-  clear
 fi
 
 if [ "$menu" == "traefik" ]; then
   echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/tld/scripts/submenu.sh
-  clear
 fi
 
 if [ "$menu" == "programs" ]; then
   echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/programs/main.sh
-  clear
 fi
 
 if [ "$menu" == "plextools" ]; then
   echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/plex/enhancement.sh
-  clear
+  bash /opt/plexguide/roles/menu-plexaddons/main.sh
 fi
 
 if [ "$menu" == "security" ]; then
   echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/menus/security/main.sh
-  clear
 fi
 
 if [ "$menu" == "info" ]; then
   echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/info-tshoot/info.sh
-  clear
 fi
 
 if [ "$menu" == "tshoot" ]; then
   echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/info-tshoot/tshoot.sh
-  clear
 fi
 
 if [ "$menu" == "backup" ]; then
   echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/b-control/scripts/main.sh
-  clear
 fi
 
 if [ "$menu" == "settings" ]; then
   echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/menus/settings/main.sh
-  clear
 fi
 
 if [ "$menu" == "update" ]; then
