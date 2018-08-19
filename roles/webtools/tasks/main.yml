@@ -30,3 +30,7 @@
     group: 1000
     mode: 0775
     copy: no
+
+- name: Notify User
+  pause:
+    prompt: "\nWebTools Installed! [PRESS ENTER] to Continue!"
