@@ -59,4 +59,3 @@ echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log
 done
 
 echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/ending/ending.sh
