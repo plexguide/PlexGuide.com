@@ -45,13 +45,13 @@
   delay: 1
 
 - pause:
-    prompt: "\nYou Must Claim Your Plex Server!\n\nWhat is your [PLEX] User Name?"
-  register: user
+    prompt: "\nYou Must Claim Your Plex Server for a [REMOTE] Server!\n\nWhat is your [PLEX] User Name?"
+  register: pguser
   when: usercheck == "1"
 
 - pause:
-    prompt: "\nYou Must Claim Your Plex Server!\n\nWhat is your [PLEX] User Name?"
-  register: pass
+    prompt: "\nNext... What is your [PLEX] Password!"
+  register: pgpass
   when: usercheck == "1"
 ### https://docs.ansible.com/ansible/2.5/modules/uri_module.html
 - name: Claim Server
