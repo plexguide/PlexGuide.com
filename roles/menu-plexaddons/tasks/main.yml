@@ -37,13 +37,13 @@
     fchoice: "{{choice.user_input}}"
 
 - name: Exiting Interface
-  shell: "echo break > /var/plexguide/transport.menu"
+  shell: "echo break > /var/plexguide/plexaddons.menu"
   when: fchoice == "1"
 
 - name: webtools
-  shell: "echo webtools > /var/plexguide/transport.menu"
+  shell: "echo webtools > /var/plexguide/plexaddons.menu"
   when: fchoice == "2"
 
 - name: pgtrak
-  shell: "echo pgtrak > /var/plexguide/transport.menu"
+  shell: "echo pgtrak > /var/plexguide/plexaddons.menu"
   when: fchoice == "3"
