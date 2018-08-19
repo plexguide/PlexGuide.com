@@ -25,7 +25,7 @@
     ptoken: "ABC000000"
     plexselect: "2"
     usercheck: "0"
-    plexurl: "https://plex.tv/api/claim/token.json"
+    url: "https://plex.tv/api/claim/token.json"
     ptokentemp: "ZXV000000"
     pguser: "default"
     pgpass: "default"
