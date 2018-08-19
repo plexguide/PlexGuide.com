@@ -69,7 +69,7 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
       cp /usr/local/bin/pip /usr/bin/pip
       cp /usr/local/bin/pip3 /usr/bin/pip3
 # Python Installer End
-
+      echo "end"
       cat /var/plexguide/pg.python > /var/plexguide/pg.python.stored
   fi
 ######################################################## END: Main Script
