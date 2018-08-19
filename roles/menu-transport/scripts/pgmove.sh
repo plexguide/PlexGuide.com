@@ -42,7 +42,7 @@ HEIGHT=12
 WIDTH=52
 CHOICE_HEIGHT=5
 BACKTITLE="Visit https://PlexGuide.com - Automations Made Simple"
-TITLE="PGDrive /w $selected"
+TITLE="PGDrive /w PG-Move"
 MENU="Make a Selection:"
 
 OPTIONS=(A "Config RClone : File"
