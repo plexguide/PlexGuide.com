@@ -27,8 +27,8 @@
     usercheck: "0"
     plexurl: "https://plex.tv/api/claim/token.json"
     ptokentemp: "ZXV000000"
-    user: "default"
-    pass: "default"
+    pguser: "default"
+    pgpass: "default"
 
 ################## PRETASKS
 - name: Key Variables Recall
