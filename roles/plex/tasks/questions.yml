@@ -54,12 +54,22 @@
   register: pgpass
   when: usercheck == "1"
 
+- name: Set User
+  set_fact:
+    pguser2: "{{pguser.user_input}}"
+  when: usercheck == "1"
+
+- name: Set Pass
+  set_fact:
+    pgpass2: "{{pgpass.user.input}}"
+  when: usercheck == "1"
+
 ### https://docs.ansible.com/ansible/2.5/modules/uri_module.html
 - name: Claim Server
   uri:
     force_basic_auth: yes
-    password: "{{pgpass.user_input}}"
-    user: "{{pguser.user_input}}"
+    password: "{{pgpass2}}"
+    user: "{{pguser2}}"
     url: "https://plex.tv/api/claim/token.json"
   register: ptokentemp
   when: usercheck == "1"
@@ -71,10 +81,10 @@
     prompt: "\nYou Must Claim Your Plex Server for a [REMOTE] Server!\n\nWhat is your [PLEX] User Name?"
   register: pguserjj
 
-#- name: Set Token
-#  set_fact:
-#    ptoken: "{{ptokentemp.json.token}}"
-#  when: usercheck == "1"
+- name: Set Token
+  set_fact:
+    ptoken: "{{ptokentemp.json.token}}"
+  when: usercheck == "1"
 
 - debug: msg="Using the following Plex claim token {{ptoken}}"
   when: usercheck == "1"
