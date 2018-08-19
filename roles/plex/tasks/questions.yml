@@ -49,6 +49,7 @@
   register: ptokentemp
   when: usercheck == "1"
 
+### https://docs.ansible.com/ansible/2.5/modules/uri_module.html
 - name: Claim Server
   uri:
     force_basic_auth: yes
