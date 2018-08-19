@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-clear
 echo "on" > /var/plexguide/transport.menu
 menu=$(echo "on")
 
@@ -27,34 +26,33 @@ menu=$(cat /var/plexguide/transport.menu)
 if [ "$menu" == "blitzauto" ]; then
   echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
-  clear
+
 fi
 
 if [ "$menu" == "blitzmanual" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-  clear
+
 fi
 
 if [ "$menu" == "move" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "Move" > /var/plexguide/menu.select
-  bash /opt/plexguide/roles/pgdrivenav/main.sh
-  clear
+  bash /opt/plexguide/roles/menu-transport/scripts/pgmove.sh
+
 fi
 
 if [ "$menu" == "st2" ]; then
   echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "SuperTransfer2" > /var/plexguide/menu.select
   bash /opt/plexguide/roles/pgdrivenav/main.sh
-  clear
+
 fi
 
 if [ "$menu" == "plexdrive" ]; then
   echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "plexdrive" > /var/plexguide/menu.select
   bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh
-  clear
+
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
