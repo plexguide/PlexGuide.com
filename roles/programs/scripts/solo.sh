@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-clear
 ##################################################### Builds Backup List - END
 
 num=0

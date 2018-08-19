@@ -37,13 +37,12 @@ if [ "$program" == "$running" ]; then
   ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
   fi
 
-  clear
+
 else
   if [ "$program" == "exit" ];then
     exit
   else
     dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
-    clear
     program=default
   fi
 fi
