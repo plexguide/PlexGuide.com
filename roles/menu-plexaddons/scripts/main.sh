@@ -21,7 +21,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/plexaddons.menu)
-ansible-playbook /opt/plexguide/basics.yml --tags menu-transport
+ansible-playbook /opt/plexguide/basics.yml --tags menu-plexaddons
 menu=$(cat /var/plexguide/plexaddons.menu)
 
 if [ "$menu" == "webtools" ]; then
