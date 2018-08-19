@@ -64,7 +64,7 @@
   register: ptokentemp
   when: usercheck == "1"
 
-- debug: {{ptokentemp}}"
+- debug: "{{ptokentemp}}"
   when: usercheck == "1"
 
 - pause:
