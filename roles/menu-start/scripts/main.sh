@@ -41,7 +41,7 @@ fi
 
 if [ "$menu" == "plextools" ]; then
   echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-plexaddons/main.sh
+  bash /opt/plexguide/roles/menu-plexaddons/scripts/main.sh
 fi
 
 if [ "$menu" == "security" ]; then
