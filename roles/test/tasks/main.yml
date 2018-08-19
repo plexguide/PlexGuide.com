@@ -1,10 +1,10 @@
 - name: Set User
   set_fact:
-    pguser2: corn
+    pguser2: dumb@dumb.com
 
 - name: Set Pass
   set_fact:
-    pgpass2: cat
+    pgpass2: dummy
 - name: Claim Server
   uri:
     force_basic_auth: yes
@@ -12,3 +12,5 @@
     user: "{{pguser2}}"
     url: "https://plex.tv/api/claim/token.json"
   register: ptokentemp
+
+- debug: msg="{{ptokentemp.json.token}}"
