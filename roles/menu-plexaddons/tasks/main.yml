@@ -21,9 +21,9 @@
   pause:
     prompt: "\nWelcome to PG Plex Enhancement System!
              \nSelect an Option!
-\n\n1.  Exit the Menu!
-\n2.  Plex WebTools (Automated Deployment)
-\n3.  PG Trak       (Addeds Missing Movies/Shows)
+\n\n1.  Exit the PG Plex Enhancement Menu!
+\n2.  Plex WebTools
+\n3.  PGTrak
 \n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
