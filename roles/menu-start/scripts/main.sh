@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-clear
 echo "on" > /var/plexguide/main.menu
 menu=$(echo "on")
 
