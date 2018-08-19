@@ -71,10 +71,10 @@
     prompt: "\nYou Must Claim Your Plex Server for a [REMOTE] Server!\n\nWhat is your [PLEX] User Name?"
   register: pguserjj
 
-- name: Set Token
-  set_fact:
-    ptoken: "{{ptokentemp.json.token}}"
-  when: usercheck == "1"
+#- name: Set Token
+#  set_fact:
+#    ptoken: "{{ptokentemp.json.token}}"
+#  when: usercheck == "1"
 
 - debug: msg="Using the following Plex claim token {{ptoken}}"
   when: usercheck == "1"
