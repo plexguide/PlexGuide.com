@@ -25,6 +25,7 @@
     ptoken: "ABC000000"
     plexselect: "2"
     usercheck: "0"
+    plexurl: "https://plex.tv/api/claim/token.json"
 
 ################## PRETASKS
 - name: Key Variables Recall

@@ -49,6 +49,14 @@
   register: ptokentemp
   when: usercheck == "1"
 
+- name: Claim Server
+  uri:
+    force_basic_auth: yes
+    password: "{{password}}"
+    user: "{{user}}"
+    url: "{{plexurl}}"
+  register: ptokentemp
+
 - name: Set Token
   set_fact:
     ptoken: "{{ptokentemp.user_input}}"
