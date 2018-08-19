@@ -25,9 +25,6 @@
     ptoken: "ABC000000"
     plexselect: "2"
     usercheck: "0"
-    ptokentemp: "ZXV000000"
-    pguser: "default"
-    pgpass: "default"
 
 ################## PRETASKS
 - name: Key Variables Recall
