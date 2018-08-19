@@ -57,6 +57,23 @@
 ############################################################# (BASICS START)
 #
 ############################################################# (BASICS END)
+- name: "Create scripts folder - {{pgrole}}"
+  file:
+    path: /opt/appdata/{{role_name}}/scripts
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: 0755
+
+- name: "Copy scripts into directory - {{pgrole}}"
+  copy:
+    src: scripts
+    dest: /opt/appdata/{{role_name}}
+    directory_mode: yes
+    owner: 1000
+    group: 1000
+    mode: 0755
+    
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
