@@ -26,14 +26,12 @@ menu=$(cat /var/plexguide/plexaddons.menu)
 
 if [ "$menu" == "webtools" ]; then
   echo 'INFO - Selected: Plex WebTools' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
-  clear
+  ansible-playbook /opt/plexguide/pg.yml --tags webtools
 fi
 
 if [ "$menu" == "pgtrak" ]; then
   echo 'INFO - Selected: PGTrak' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-  clear
+  bash /opt/plexguide/menus/pgtrak/main.sh
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
