@@ -60,7 +60,7 @@
     force_basic_auth: yes
     password: "{{pgpass.user_input}}"
     user: "{{pguser.user_input}}"
-    url: "{{plexurl}}"
+    url: "https://plex.tv/api/claim/token.json"
   register: ptokentemp
   when: usercheck == "1"
 
