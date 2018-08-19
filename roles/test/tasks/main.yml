@@ -5,6 +5,7 @@
 - name: Set Pass
   set_fact:
     pgpass2: dummy
+    
 - name: Claim Server
   uri:
     force_basic_auth: yes
