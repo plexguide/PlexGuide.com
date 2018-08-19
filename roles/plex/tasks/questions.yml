@@ -58,9 +58,9 @@
 - name: Claim Server
   uri:
     force_basic_auth: yes
-    password: "{{password}}"
+    password: "{{pgpass.user_input}}"
     user: "{{pguser.user_input}}"
-    url: "{{pgpass.user_input}}"
+    url: "{{plexurl}}"
   register: ptokentemp
   when: usercheck == "1"
 
@@ -69,7 +69,7 @@
 
 - pause:
     prompt: "\nYou Must Claim Your Plex Server for a [REMOTE] Server!\n\nWhat is your [PLEX] User Name?"
-  register: pguser
+  register: pguserjj
 
 - name: Set Token
   set_fact:
