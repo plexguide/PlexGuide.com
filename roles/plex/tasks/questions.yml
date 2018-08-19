@@ -49,14 +49,6 @@
   register: ptokentemp
   when: usercheck == "1"
 
-- name: Get plex server claim code
-  uri:
-    user: "admin9705"
-    password: "JaslenE12@@"
-    url: {{plexurl}}
-    force_basic_auth: yes
-  register: ptokentemp
-
 - name: Set Token
   set_fact:
     ptoken: "{{ptokentemp.user_input}}"
