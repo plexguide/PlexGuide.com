@@ -71,5 +71,5 @@ case $CHOICE in
 esac
 ## repeat menu when exiting
 echo 'INFO - Looping: Sub Traefik Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/tld/scripts/submenu.sh ;;
+bash /opt/plexguide/roles/tld/scripts/submenu.sh
 exit
