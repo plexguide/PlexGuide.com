@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Copied from https://github.com/Radarr/Radarr/wiki/Common-Problems on August 19, 2018
+# the Radarr script was originally sourced from https://dev.deluge-torrent.org/wiki/Plugins/Execute
+
 formats=(zip rar)
 commands=([zip]="unzip -u" [rar]="unrar -r -o- e")
 extraction_subdir='deluge_extracted'
