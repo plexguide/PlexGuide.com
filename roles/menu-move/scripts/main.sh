@@ -35,7 +35,6 @@ while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
 ansible-playbook /opt/plexguide/basics.yml --tags menu-move
 menu=$(cat /var/plexguide/move.menu)
-fi
 
 #### rclone # 2
 if [ "$menu" == "pgdrive" ]; then
