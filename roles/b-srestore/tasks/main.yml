@@ -89,7 +89,12 @@
   with_items:
     - "/opt/appdata/{{selection.user_input}}"
 
-- debug: msg="Downloading Content from GDrive! (Please Wait)"
+- name: "Remove Static Path"
+  shell: "stat --printf="%s" /mnt/gdrive/plexguide/backup/{{restore_id.stdout}}/{{selection.user_input}}.tar"
+  register: size
+  ignore_errors: True
+
+- debug: msg="Downloading {{selection.user_input}} from GDrive! SIZE: {{size.stdout}}"
 
 - name: "Downloading from Google Drive - {{selection.user_input}}"
   shell: "rclone copy --tpslimit 6 \
