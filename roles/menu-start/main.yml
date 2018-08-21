@@ -16,95 +16,98 @@
 #
 #################################################################################
 ---
-- name: Version
-  shell: "cat /var/plexguide/pg.number"
-  register: pgversion
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Version
+      shell: "cat /var/plexguide/pg.number"
+      register: pgversion
 
-- name: Edition
-  shell: "cat /var/plexguide/pg.edition"
-  register: pgedition
+    - name: Edition
+      shell: "cat /var/plexguide/pg.edition"
+      register: pgedition
 
-- name: Server ID
-  shell: "cat /var/plexguide/server.id"
-  register: pgid
+    - name: Server ID
+      shell: "cat /var/plexguide/server.id"
+      register: pgid
 
-- name: Domain
-  shell: "cat /var/plexguide/server.domain"
-  register: pgdomain
+    - name: Domain
+      shell: "cat /var/plexguide/server.domain"
+      register: pgdomain
 
-- name: PG Main Menu
-  pause:
-    prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
-             \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
-\n\n1.  Exit PlexGuide
-\n2.  Deploy a Mount System
-\n3.  Deploy Traefik | Set TLD
-\n4.  PG Program Suite
-\n5.  PG Plex Enhancement Tools
-\n6.  PG Server Security
-\n7.  PG Server Information
-\n8.  PG Troubleshooting Actions
-\n9.  PG Backup & Restore
-\n10. PG Settings & Tools
-\n11. PG Update & Restore
-\n12. BETA: PG WCKD Authentication
-\n\nType a [NUMBER] Choice & Press [ENTER]"
-  register: choice
-  until: choice.user_input == "1" or
-         choice.user_input == "2" or
-         choice.user_input == "3" or
-         choice.user_input == "4" or
-         choice.user_input == "5" or
-         choice.user_input == "6" or
-         choice.user_input == "7" or
-         choice.user_input == "8" or
-         choice.user_input == "9" or
-         choice.user_input == "10" or
-         choice.user_input == "11" or
-         choice.user_input == "12"
-  retries: 99
-  delay: 1
+    - name: PG Main Menu
+      pause:
+        prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
+                 \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
+    \n\n1.  Exit PlexGuide
+    \n2.  Deploy a Mount System
+    \n3.  Deploy Traefik | Set TLD
+    \n4.  PG Program Suite
+    \n5.  PG Plex Enhancement Tools
+    \n6.  PG Server Security
+    \n7.  PG Server Information
+    \n8.  PG Troubleshooting Actions
+    \n9.  PG Backup & Restore
+    \n10. PG Settings & Tools
+    \n11. PG Update & Restore
+    \n12. BETA: PG WCKD Authentication
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: choice.user_input == "1" or
+             choice.user_input == "2" or
+             choice.user_input == "3" or
+             choice.user_input == "4" or
+             choice.user_input == "5" or
+             choice.user_input == "6" or
+             choice.user_input == "7" or
+             choice.user_input == "8" or
+             choice.user_input == "9" or
+             choice.user_input == "10" or
+             choice.user_input == "11" or
+             choice.user_input == "12"
+      retries: 99
+      delay: 1
 
-- name: Set Choice
-  set_fact:
-    fchoice: "{{choice.user_input}}"
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
 
-- name: Exiting Interface
-  shell: "echo break > /var/plexguide/main.menu"
-  when: fchoice == "1"
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/main.menu"
+      when: fchoice == "1"
 
-- name: Mount System
-  shell: "echo mount > /var/plexguide/main.menu"
-  when: fchoice == "2"
+    - name: Mount System
+      shell: "echo mount > /var/plexguide/main.menu"
+      when: fchoice == "2"
 
-- name: Traefik
-  shell: "echo traefik > /var/plexguide/main.menu"
-  when: fchoice == "3"
+    - name: Traefik
+      shell: "echo traefik > /var/plexguide/main.menu"
+      when: fchoice == "3"
 
-- shell: "echo programs > /var/plexguide/main.menu"
-  when: fchoice == "4"
+    - shell: "echo programs > /var/plexguide/main.menu"
+      when: fchoice == "4"
 
-- name: Change Server ID
-  shell: "echo plextools > /var/plexguide/main.menu"
-  when: fchoice == "5"
+    - name: Change Server ID
+      shell: "echo plextools > /var/plexguide/main.menu"
+      when: fchoice == "5"
 
-- shell: "echo security > /var/plexguide/main.menu"
-  when: fchoice == "6"
+    - shell: "echo security > /var/plexguide/main.menu"
+      when: fchoice == "6"
 
-- shell: "echo info > /var/plexguide/main.menu"
-  when: fchoice == "7"
+    - shell: "echo info > /var/plexguide/main.menu"
+      when: fchoice == "7"
 
-- shell: "echo tshoot > /var/plexguide/main.menu"
-  when: fchoice == "8"
+    - shell: "echo tshoot > /var/plexguide/main.menu"
+      when: fchoice == "8"
 
-- shell: "echo backup > /var/plexguide/main.menu"
-  when: fchoice == "9"
+    - shell: "echo backup > /var/plexguide/main.menu"
+      when: fchoice == "9"
 
-- shell: "echo settings > /var/plexguide/main.menu"
-  when: fchoice == "10"
+    - shell: "echo settings > /var/plexguide/main.menu"
+      when: fchoice == "10"
 
-- shell: "echo update > /var/plexguide/main.menu"
-  when: fchoice == "11"
+    - shell: "echo update > /var/plexguide/main.menu"
+      when: fchoice == "11"
 
-- shell: "echo wckd > /var/plexguide/main.menu"
-  when: fchoice == "12"
+    - shell: "echo wckd > /var/plexguide/main.menu"
+      when: fchoice == "12"
