@@ -118,7 +118,7 @@ if [ "$menu" == "bw" ]; then
   then
     dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
     exit
-  fi
+  else
     echo $number > /var/plexguide/move.bw
     dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
   fi
