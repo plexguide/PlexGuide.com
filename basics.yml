@@ -2,6 +2,5 @@
 - hosts: localhost
 
   roles:
-  - { role: versions, tags: ['versions'] }
   - { role: menu-transport, tags: ['menu-transport'] }
   - { role: menu-plexaddons, tags: ['menu-plexaddons'] }
