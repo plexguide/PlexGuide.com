@@ -29,7 +29,7 @@
 
 - name: "Server ID for Restore"
   shell: "cat /var/plexguide/restore.id"
-  register: server_id
+  register: restore_id
 
 - name: "Checking if Building List Exists"
   stat:
@@ -61,7 +61,12 @@
   wait_for:
     timeout: 1
 
-- debug: msg="Temp Message - For {{selection.stdout}} - Server ID {{server_id.stdout}}"
+- name: "Remove Static Path"
+  shell: "ls -lh /mnt/gdrive/plexguide/backup/GCE05/ | grep {{selection.user_input}}.tar | cut -d' ' -f5"
+  register: size
+  ignore_errors: True
+
+- debug: msg="Downloading {{selection.user_input}} from GDrive! SIZE - {{size.stdout}}"
 
 - name: "Checking {{selection.stdout}} location in APPDATA"
   stat:
@@ -94,7 +99,7 @@
   shell: "rclone copy --tpslimit 6 \
           --config /root/.config/rclone/rclone.conf \
           --drive-chunk-size=64M \
-          gdrive:/plexguide/backup/{{server_id.stdout}}/{{selection.stdout}}.tar {{path.stdout}}/pgops/"
+          gdrive:/plexguide/backup/{{restore_id.stdout}}/{{selection.stdout}}.tar {{path.stdout}}/pgops/"
 
 - name: Unzip Folders
   unarchive:
