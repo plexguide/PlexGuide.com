@@ -20,7 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/main.menu)
-ansible-playbook /opt/plexguide/basics.yml --tags menu-start
+ansible-playbook /opt/plexguide/roles/menu-start/main.yml
 menu=$(cat /var/plexguide/main.menu)
 
 if [ "$menu" == "mount" ]; then
