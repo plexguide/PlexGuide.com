@@ -62,6 +62,11 @@ if [ "$menu" == "pgdrive" ]; then
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
+  if [ "$gcrypt" != "[gcrypt]" ]; then
+      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
+        exit
 
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
