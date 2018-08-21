@@ -98,11 +98,10 @@ if [ "$menu" == "plexdrive" ]; then
         exit
   fi
 
-  #### DEPLOY a TRANSFER SYSTEM - START
-    ansible-playbook /opt/plexguide/pg.yml --tags move
-    echo ""
-    read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
-  #### DEPLOY a TRANSFER SYSTEM - END
+  #### DEPLOY Move Transfer System
+  ansible-playbook /opt/plexguide/pg.yml --tags move
+  echo ""
+  read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
   dialog --title "NOTE!" --msgbox "\nPG Move is now running!" 7 38
   echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
