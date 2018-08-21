@@ -64,7 +64,7 @@ if [ "$menu" == "pgdrive" ]; then
   fi
   if [ "$gcrypt" != "[gcrypt]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
@@ -111,7 +111,7 @@ if [ "$menu" == "bw" ]; then
   fi
   if [ "$gcrypt" != "[gcrypt]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
@@ -144,7 +144,7 @@ if [ "$menu" == "move" ]; then
   fi
   if [ "$gcrypt" != "[gcrypt]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
