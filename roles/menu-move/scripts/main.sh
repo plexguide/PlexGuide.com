@@ -17,8 +17,8 @@
 #################################################################################
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
-tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
 ################################################################## CORE
 
 file="/var/plexguide/move.bw"
@@ -106,7 +106,8 @@ if [ "$menu" == "bw" ]; then
     exit
   else
     echo $number > /var/plexguide/move.bw
-    dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
+    echo ""
+    read -n 1 -s -r -p "You Must Redeploy [PG Move] for the BWLimit Change! Press [Any Key] to continue"
   fi
 
 fi
@@ -126,10 +127,9 @@ if [ "$menu" == "move" ]; then
   ansible-playbook /opt/plexguide/pg.yml --tags move
   echo ""
   read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
-  dialog --title "NOTE!" --msgbox "\nPG Move is now running!" 7 38
   echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo ""
-  read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
+  read -n 1 -s -r -p "PG Move Deployed! Press [Any Key] to continue"
 fi
 
 echo 'INFO - Looping: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
