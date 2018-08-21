@@ -59,7 +59,6 @@ sed -i -e "/pgblitz/d" $path
 sed -i -e "/cloudblitz/d" $path
 ##################################################### Builds Restore List - END
 
-clear
 #### Loops Through Built Up List
 while read p; do
   p=${p::-4}
@@ -79,6 +78,5 @@ echo ""
 read -n 1 -s -r -p "Mass Restore Process Complete - Press [ANY KEY] to CONTINUE"
 
 rm -r /opt/appdata/plexguide/restore 1>/dev/null 2>&1
-clear
 
 exit 0
