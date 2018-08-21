@@ -161,6 +161,7 @@ if [ "$menu" == "move" ]; then
         exit
   fi
   #### DEPLOY Move Transfer System
+  ansible-playbook /opt/plexguide/roles/templates-remove/remove-service.yml
   ansible-playbook /opt/plexguide/roles/templates-remove/move.yml
   echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo ""
