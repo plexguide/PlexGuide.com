@@ -28,7 +28,7 @@
   register: selection
 
 - name: "Server ID for Restore"
-  shell: "cat /var/plexguide/server.id"
+  shell: "cat /var/plexguide/restore.id"
   register: server_id
 
 - name: "Checking if Building List Exists"
