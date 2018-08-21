@@ -40,6 +40,11 @@ if [ "$menu" == "move" ]; then
   bash /opt/plexguide/roles/menu-move/scripts/main.sh
 fi
 
+if [ "$menu" == "enmove" ]; then
+  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
+fi
+
 if [ "$menu" == "st2" ]; then
   echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "SuperTransfer2" > /var/plexguide/menu.select
