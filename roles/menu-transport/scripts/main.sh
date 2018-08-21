@@ -20,7 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/transport.menu)
-ansible-playbook /opt/plexguide/basics.yml --tags menu-transport
+ansible-playbook /opt/plexguide/roles/menu-transport/main.yml
 menu=$(cat /var/plexguide/transport.menu)
 
 if [ "$menu" == "blitzauto" ]; then
