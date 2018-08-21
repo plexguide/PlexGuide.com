@@ -6,5 +6,3 @@
   - { role: menu-start, tags: ['menu-start'] }
   - { role: menu-transport, tags: ['menu-transport'] }
   - { role: menu-plexaddons, tags: ['menu-plexaddons'] }
-  - { role: menu-move, tags: ['menu-move'] }
-  - { role: menu-move-en, tags: ['menu-move-en'] }
