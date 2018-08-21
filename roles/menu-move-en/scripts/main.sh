@@ -93,7 +93,7 @@ if [ "$menu" == "pgdrive" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags tcrypt
   fi
   if [ "$gcrypt" == "[gcrypt]" ]; then
-    echo -n "/mnt/gcrypt=RO:" >> /var/plexguide/unionfs.pgpath
+    echo -n "/mnt/.gcrypt=RO:" >> /var/plexguide/unionfs.pgpath
     ansible-playbook /opt/plexguide/pg.yml --tags gcrypt
   fi
 
