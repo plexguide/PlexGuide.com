@@ -17,8 +17,8 @@
 #################################################################################
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
-tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
-gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
 ################################################################## CORE
 
 file="/var/plexguide/move.bw"
@@ -44,8 +44,8 @@ if [ "$menu" == "rclone" ]; then
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
 fi
 
 ##### pgdrive # 3
