@@ -108,6 +108,8 @@ if [ "$menu" == "plexdrive" ]; then
   read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
   dialog --title "NOTE!" --msgbox "\nPG Move is now running!" 7 38
   echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo ""
+  read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
 fi
 
 echo 'INFO - Looping: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
