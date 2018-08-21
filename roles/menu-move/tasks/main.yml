@@ -16,6 +16,9 @@
 #
 #################################################################################
 ---
+- name: Recall Bandwidth
+  shell: "cat /var/plexguide/move.bw"
+  register: bw
 
 - name: PG Main Menu
   pause:
@@ -24,7 +27,7 @@
 \n\n1.  Exit the Transport System
 \n2.  Config RClone  : File
 \n3.  Deploy Method  : PGDrive
-\n4.  Upload BW Limit: 999 MB (Change It)
+\n4.  Upload BW Limit: {{bw.stdout}} MB (Change It)
 \n5.  Deploy PG Mount: Move Script
 \n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
