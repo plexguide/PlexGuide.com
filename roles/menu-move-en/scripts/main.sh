@@ -34,7 +34,7 @@ fi
 #### exit # 1
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
-ansible-playbook /opt/plexguide/basics.yml --tags menu-move-en
+ansible-playbook /opt/plexguide/roles/menu-move-en/main.yml
 menu=$(cat /var/plexguide/move.menu)
 
 #### rclone # 2
