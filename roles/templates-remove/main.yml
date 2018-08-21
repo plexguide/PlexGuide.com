@@ -45,7 +45,7 @@
 
     - name: Stop If Service Is Running
       systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
-      with_items: "{{ check_service_name.results }}"
+      with_items: "{{ check_service_name.results.stat.exists }}"
       when: item.stat.exists
 
     - name: Remove Services
