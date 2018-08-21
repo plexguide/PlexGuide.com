@@ -30,18 +30,14 @@ if [ -e "$file" ]
     echo "10" > /var/plexguide/move.bw
 fi
 
-
+#### exit # 1
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
 ansible-playbook /opt/plexguide/basics.yml --tags menu-move
 menu=$(cat /var/plexguide/move.menu)
-
-if [ "$menu" == "rclone" ]; then
-  echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
-
 fi
 
+#### rclone # 2
 if [ "$menu" == "pgdrive" ]; then
 
   echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -70,7 +66,8 @@ if [ "$menu" == "pgdrive" ]; then
               fi
 fi
 
-if [ "$menu" == "move" ]; then
+##### pgdrive # 3
+if [ "$menu" == "rclone" ]; then
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
               #### RECALL VARIABLES START
@@ -110,38 +107,49 @@ if [ "$menu" == "move" ]; then
               dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
 fi
 
-if [ "$menu" == "st2" ]; then
+#### Bandwidth # 4
+if [ "$menu" == "bw" ]; then
 
   dialog --title "Change the BW Limit" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
   number=$(cat /var/plexguide/move.number)
 
-if [ $number -gt 999 -o $number -lt 1 ]
-then
-  dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
-  exit
-fi
-  echo $number > /var/plexguide/move.bw
-  dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
-fi
-
-F)
-ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
-echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-#ansible-role services_remove
-dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
+  if [ $number -gt 999 -o $number -lt 1 ]
+  then
+    dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
+    exit
+  fi
+    echo $number > /var/plexguide/move.bw
+    dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
+  fi
 
 fi
 
 if [ "$menu" == "plexdrive" ]; then
-  echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "plexdrive" > /var/plexguide/menu.select
-  bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh
+  #### RECALL VARIABLES START
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+  #### RECALL VARIABLES END
 
+  #### BASIC CHECKS to STOP Deployment - START
+  if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
+    then
+      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
+        exit
+  fi
+
+  #### DEPLOY a TRANSFER SYSTEM - START
+    ansible-playbook /opt/plexguide/pg.yml --tags move
+    read -n 1 -s -r -p "Press any key to continue"
+  #### DEPLOY a TRANSFER SYSTEM - END
+  dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
+  echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 
-echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Looping: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
-echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Exiting: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
