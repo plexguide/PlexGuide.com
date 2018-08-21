@@ -17,9 +17,6 @@
 #################################################################################
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
-
-#### Recalls from prior menu what user selected
-selected=Move
 ################################################################## CORE
 
 file="/var/plexguide/move.bw"
@@ -38,84 +35,50 @@ menu=$(cat /var/plexguide/move.menu)
 
 #### rclone # 2
 if [ "$menu" == "pgdrive" ]; then
-
   echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-              #### RClone Missing Warning - END
-              rclone config
-              touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-              #### GREP Checks
-              tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-              gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-              mkdir -p /root/.config/rclone/
-              chown -R 1000:1000 /root/.config/rclone/
-              cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-              #################### installing dummy file for prep of pgdrive deployment
-              file="/mnt/unionfs/plexguide/pgchecker.bin"
-              if [ -e "$file" ]; then
-                 echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              else
-                 mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
-                 mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-                 mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
-                 touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-                 rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
-                 rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
-                 echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-              fi
+  #### RClone Missing Warning - END
+  rclone config
+  mkdir -p /root/.config/rclone/
+  chown -R 1000:1000 /root/.config/rclone/
+  cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 fi
 
 ##### pgdrive # 3
 if [ "$menu" == "rclone" ]; then
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-              #### RECALL VARIABLES START
-              tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-              gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-              #### RECALL VARIABLES END
+  ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
 
-              #### REQUIRED TO DEPLOY STARTING
-              ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
+  #### BLANK OUT PATH - This Builds For UnionFS
+  rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+  touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
-              #### BLANK OUT PATH - This Builds For UnionFS
-              rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
-              touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+  #### IF EXIST - DEPLOY
+  if [ "$tdrive" == "[tdrive]" ]; then
+    #### ADDS TDRIVE to the UNIONFS PATH
+    echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+    ansible-playbook /opt/plexguide/pg.yml --tags tdrive
+  fi
 
-              #### IF EXIST - DEPLOY
-              if [ "$tdrive" == "[tdrive]" ]
-                then
-
-                #### ADDS TDRIVE to the UNIONFS PATH
-                echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/pg.yml --tags tdrive
-              fi
-
-              if [ "$gdrive" == "[gdrive]" ]
-                then
-
-                #### ADDS GDRIVE to the UNIONFS PATH
-                echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-                ansible-playbook /opt/plexguide/pg.yml --tags gdrive
-              fi
-
-              #### REQUIRED TO DEPLOY ENDING
-              ansible-playbook /opt/plexguide/pg.yml --tags unionfs
-              ansible-playbook /opt/plexguide/pg.yml --tags ufsmonitor
-
-              read -n 1 -s -r -p "Press any key to continue"
-              dialog --title "NOTE" --msgbox "\nPG Drive Deployed!!" 0 0
+  if [ "$gdrive" == "[gdrive]" ]; then
+    #### ADDS GDRIVE to the UNIONFS PATH
+    echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
+    ansible-playbook /opt/plexguide/pg.yml --tags gdrive
+  fi
+    #### REQUIRED TO DEPLOY ENDING
+    ansible-playbook /opt/plexguide/pg.yml --tags unionfs
+    echo ""
+    read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
 fi
 
 #### Bandwidth # 4
 if [ "$menu" == "bw" ]; then
-
   dialog --title "Change the BW Limit" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
   number=$(cat /var/plexguide/move.number)
 
-  if [ $number -gt 999 -o $number -lt 1 ]
-  then
+  if [ $number -gt 999 -o $number -lt 1 ]; then
     dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
     exit
   else
@@ -126,25 +89,22 @@ if [ "$menu" == "bw" ]; then
 fi
 
 if [ "$menu" == "plexdrive" ]; then
-  #### RECALL VARIABLES START
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-  #### RECALL VARIABLES END
 
   #### BASIC CHECKS to STOP Deployment - START
-  if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]; then
+  if [ "$gdrive" != "[gdrive]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
+        bash /opt/plexguide/roles/menu-move/scripts/main.sh
         exit
   fi
 
   #### DEPLOY a TRANSFER SYSTEM - START
     ansible-playbook /opt/plexguide/pg.yml --tags move
-    read -n 1 -s -r -p "Press any key to continue"
+    echo ""
+    read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
   #### DEPLOY a TRANSFER SYSTEM - END
-  dialog --title "NOTE!" --msgbox "\n$selected is now running!" 7 38
-  echo 'SUCCESS - $selected is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  dialog --title "NOTE!" --msgbox "\nPG Move is now running!" 7 38
+  echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 
 echo 'INFO - Looping: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
