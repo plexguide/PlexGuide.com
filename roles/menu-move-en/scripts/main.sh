@@ -34,7 +34,7 @@ fi
 #### exit # 1
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
-ansible-playbook /opt/plexguide/basics.yml --tags menu-move
+ansible-playbook /opt/plexguide/basics.yml --tags menu-move-en
 menu=$(cat /var/plexguide/move.menu)
 
 #### rclone # 2
@@ -46,9 +46,10 @@ if [ "$menu" == "rclone" ]; then
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
+  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
+  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
 fi
 
 ##### pgdrive # 3
@@ -58,12 +59,11 @@ if [ "$menu" == "pgdrive" ]; then
   if [ "$gdrive" != "[gdrive]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move/scripts/main.sh
+        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
 
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
   ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
 
   #### BLANK OUT PATH - This Builds For UnionFS
@@ -101,7 +101,13 @@ if [ "$menu" == "bw" ]; then
   if [ "$gdrive" != "[gdrive]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move/scripts/main.sh
+        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
+        exit
+  fi
+  if [ "$gcrypt" != "[gcrypt]" ]; then
+      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
 
@@ -128,7 +134,7 @@ if [ "$menu" == "move" ]; then
   if [ "$gdrive" != "[gdrive]" ]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move/scripts/main.sh
+        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
 
