@@ -22,7 +22,7 @@
 
 - name: PG Main Menu
   pause:
-    prompt: "\nWelcome to PG Move (Unencrypted Only)!
+    prompt: "\nWelcome to PG Move - Encrypted!
              \nSelect a Configuraiton Option!
 \n\n1.  Exit PG Move
 \n2.  Config RClone  : File
