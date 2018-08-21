@@ -62,11 +62,11 @@
     timeout: 1
 
 - name: "Remove Static Path"
-  shell: "ls -lh /mnt/gdrive/plexguide/backup/GCE05/ | grep {{selection.user_input}}.tar | cut -d' ' -f5"
+  shell: "ls -lh /mnt/gdrive/plexguide/backup/GCE05/ | grep {{selection.stdout}}.tar | cut -d' ' -f5"
   register: size
   ignore_errors: True
 
-- debug: msg="Downloading {{selection.user_input}} from GDrive! SIZE - {{size.stdout}}"
+- debug: msg="Downloading {{selection.stdout}} from GDrive! SIZE - {{size.stdout}}"
 
 - name: "Checking {{selection.stdout}} location in APPDATA"
   stat:
