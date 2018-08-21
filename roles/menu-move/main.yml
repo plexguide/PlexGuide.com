@@ -16,49 +16,52 @@
 #
 #################################################################################
 ---
-- name: Recall Bandwidth
-  shell: "cat /var/plexguide/move.bw"
-  register: bw
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Recall Bandwidth
+      shell: "cat /var/plexguide/move.bw"
+      register: bw
 
-- name: PG Main Menu
-  pause:
-    prompt: "\nWelcome to PG Move (Unencrypted Only)!
-             \nSelect a Configuraiton Option!
-\n\n1.  Exit PG Move
-\n2.  Config RClone  : File
-\n3.  Deploy Method  : PGDrive
-\n4.  Upload BW Limit: {{bw.stdout}} MB (Change It)
-\n5.  Deploy PG Mount: Move Script
-\n\nType a [NUMBER] Choice & Press [ENTER]"
-  register: choice
-  until: choice.user_input == "1" or
-         choice.user_input == "2" or
-         choice.user_input == "3" or
-         choice.user_input == "4" or
-         choice.user_input == "5"
-  retries: 99
-  delay: 1
+    - name: PG Main Menu
+      pause:
+        prompt: "\nWelcome to PG Move - Unencrypted!
+                 \nSelect a Configuraiton Option!
+    \n\n1.  Exit PG Move
+    \n2.  Config RClone  : File
+    \n3.  Deploy Method  : PGDrive
+    \n4.  Upload BW Limit: {{bw.stdout}} MB (Change It)
+    \n5.  Deploy PG Mount: Move Script
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: choice.user_input == "1" or
+             choice.user_input == "2" or
+             choice.user_input == "3" or
+             choice.user_input == "4" or
+             choice.user_input == "5"
+      retries: 99
+      delay: 1
 
-- name: Set Choice
-  set_fact:
-    fchoice: "{{choice.user_input}}"
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
 
-- name: Exiting Interface
-  shell: "echo break > /var/plexguide/move.menu"
-  when: fchoice == "1"
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/move.menu"
+      when: fchoice == "1"
 
-- name: Deploy Trafic
-  shell: "echo rclone > /var/plexguide/move.menu"
-  when: fchoice == "2"
+    - name: Deploy Trafic
+      shell: "echo rclone > /var/plexguide/move.menu"
+      when: fchoice == "2"
 
-- name: Deploy PG Drive
-  shell: "echo pgdrive > /var/plexguide/move.menu"
-  when: fchoice == "3"
+    - name: Deploy PG Drive
+      shell: "echo pgdrive > /var/plexguide/move.menu"
+      when: fchoice == "3"
 
-- name: PG Bandwidth Limit
-  shell: "echo bw > /var/plexguide/move.menu"
-  when: fchoice == "4"
+    - name: PG Bandwidth Limit
+      shell: "echo bw > /var/plexguide/move.menu"
+      when: fchoice == "4"
 
-- name: Deploy PG Move
-  shell: "echo move > /var/plexguide/move.menu"
-  when: fchoice == "5"
+    - name: Deploy PG Move
+      shell: "echo move > /var/plexguide/move.menu"
+      when: fchoice == "5"
