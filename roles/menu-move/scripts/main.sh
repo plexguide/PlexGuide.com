@@ -92,7 +92,8 @@ if [ "$menu" == "bw" ]; then
 
 fi
 
-if [ "$menu" == "plexdrive" ]; then
+#### PG Move # 5
+if [ "$menu" == "move" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
   if [ "$gdrive" != "[gdrive]" ]; then
