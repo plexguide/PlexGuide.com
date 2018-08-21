@@ -120,3 +120,6 @@
   ignore_errors: True
   with_items:
     - "{{path.stdout}}/pgops/{{selection.user_input}}.tar"
+
+- pause:
+    prompt: "\nProcess Complete! Press [ENTER] to Continue!"
