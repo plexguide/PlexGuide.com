@@ -22,9 +22,9 @@
 
 - name: PG Main Menu
   pause:
-    prompt: "\nWelcome to PG Transport System!
-             \nSelect a Transport System!
-\n\n1.  Exit the Transport System
+    prompt: "\nWelcome to PG Move (Unencrypted Only)!
+             \nSelect a Configuraiton Option!
+\n\n1.  Exit PG Move
 \n2.  Config RClone  : File
 \n3.  Deploy Method  : PGDrive
 \n4.  Upload BW Limit: {{bw.stdout}} MB (Change It)
