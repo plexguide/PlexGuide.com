@@ -37,8 +37,7 @@ fi
 
 if [ "$menu" == "move" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-transport/scripts/pgmove.sh
-
+  bash /opt/plexguide/roles/menu-move/scripts/main.sh
 fi
 
 if [ "$menu" == "st2" ]; then
