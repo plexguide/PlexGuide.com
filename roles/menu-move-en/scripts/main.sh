@@ -46,10 +46,10 @@ if [ "$menu" == "rclone" ]; then
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
-  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
-  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf) 1>/dev/null 2>&1
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | cut -c1-8) 1>/dev/null 2>&1
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | cut -c1-8) 1>/dev/null 2>&1
+  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | cut -c1-8) 1>/dev/null 2>&1
+  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | cut -c1-8) 1>/dev/null 2>&1
 fi
 
 ##### pgdrive # 3
