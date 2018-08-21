@@ -22,34 +22,20 @@
 #     sudo ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
 #
 #################################################################################
-
 ---
 - hosts: localhost
   gather_facts: false
   vars:
     service_vars:
-      - {name: crypt1.service}
-      - {name: crypt2.service}
-      - {name: drive1.service}
-      - {name: drive2.service}
-      - {name: fcrypt.service}
-      - {name: fdrive.service}
-      - {name: sdrive.service}
-      - {name: scrypt.service}
+      - {name: smove.service}
       - {name: gdrive.service}
       - {name: gcrypt.service}
       - {name: tdrive.service}
       - {name: tcrypt.service}
-#      - {name: supertransfer2.service}
+      - {name: supertransfer2.service}
       - {name: unionfs.service}
-      - {name: ufsmonitor.service}
-      - {name: unionfs-encrypt.service}
-      - {name: move-en.service}
       - {name: move.service}
       - {name: plexdrive.service}
-      - {name: rclone.service}
-      - {name: rclone-en.service}
-      - {name: rclone-encrypt.service}
   tasks:
     - name: Checking Existing Service Name
       stat:
