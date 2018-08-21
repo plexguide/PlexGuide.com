@@ -17,14 +17,14 @@
 #################################################################################
 #### Recall Download Point
 mnt=$(cat /var/plexguide/server.hd.path)
-serverid=$(cat /var/plexguide/server.id)
+restoreid=$(cat /var/plexguide/restore.id)
 
 clear
 rm -r $mnt/pgops/restore.build 1>/dev/null 2>&1
 touch $mnt/pgops/restore.build 1>/dev/null 2>&1
 
 #### Recalls List for restore Operations
-ls -la /mnt/gdrive/plexguide/backup/$serverid | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
+ls -la /mnt/gdrive/plexguide/backup/$restoreid | awk '{ print $9 }' | tail -n +2 > $mnt/pgops/restore.list
 
 #### Combine for Simplicity
 path=$(echo $mnt/pgops/restore.list)
