@@ -55,19 +55,24 @@ fi
 ##### pgdrive # 3
 if [ "$menu" == "pgdrive" ]; then
 
-  #### BASIC CHECKS to STOP Deployment - START
-  if [ "$gdrive" != "[gdrive]" ]; then
-      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
-        exit
-  fi
-  if [ "$gcrypt" != "[gcrypt]" ]; then
-      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
-        exit
-  fi
+    #### BASIC CHECKS to STOP Deployment - START
+    if [ "$gdrive" == "[gdrive]" ]; then
+        echo "" 1>/dev/null 2>&1
+    else
+        echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+          bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
+          exit
+    fi
+    if [ "$gcrypt" == "[gcrypt]" ]; then
+        echo "" 1>/dev/null 2>&1
+    else
+        echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
+          bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
+          exit
+    fi
+
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
 
@@ -103,13 +108,17 @@ fi
 if [ "$menu" == "bw" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
-  if [ "$gdrive" != "[gdrive]" ]; then
+  if [ "$gdrive" == "[gdrive]" ]; then
+      echo "" 1>/dev/null 2>&1
+  else
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
-  if [ "$gcrypt" != "[gcrypt]" ]; then
+  if [ "$gcrypt" == "[gcrypt]" ]; then
+      echo "" 1>/dev/null 2>&1
+  else
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
@@ -136,13 +145,17 @@ fi
 if [ "$menu" == "move" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
-  if [ "$gdrive" != "[gdrive]" ]; then
+  if [ "$gdrive" == "[gdrive]" ]; then
+      echo "" 1>/dev/null 2>&1
+  else
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
         exit
   fi
-  if [ "$gcrypt" != "[gcrypt]" ]; then
+  if [ "$gcrypt" == "[gcrypt]" ]; then
+      echo "" 1>/dev/null 2>&1
+  else
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move Encrypted!\n\nTo work, you MUST have a gcrypt\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
