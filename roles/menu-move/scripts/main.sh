@@ -133,8 +133,7 @@ if [ "$menu" == "plexdrive" ]; then
   #### RECALL VARIABLES END
 
   #### BASIC CHECKS to STOP Deployment - START
-  if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]
-    then
+  if [[ "$selected" == "Move" && "$gdrive" != "[gdrive]" ]]; then
       echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
         bash /opt/plexguide/roles/pgdrivenav/unencrypted.sh
