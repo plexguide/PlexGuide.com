@@ -44,22 +44,18 @@
   shell: "echo break > /var/plexguide/move.menu"
   when: fchoice == "1"
 
-- name: Blitz Auto
-  shell: "echo blitzauto > /var/plexguide/move.menu"
+- name: Deploy Trafic
+  shell: "echo rclone > /var/plexguide/move.menu"
   when: fchoice == "2"
 
-- name: Blitz Manaul
-  shell: "echo blitzmanual > /var/plexguide/move.menu"
+- name: Deploy PG Drive
+  shell: "echo pgdrive > /var/plexguide/move.menu"
   when: fchoice == "3"
 
-- name: PG Move
-  shell: "echo move > /var/plexguide/move.menu"
+- name: PG Bandwidth Limit
+  shell: "echo bw > /var/plexguide/move.menu"
   when: fchoice == "4"
 
-- name: PlexDrive
-  shell: "echo plexdrive > /var/plexguide/move.menu"
+- name: Deploy PG Move
+  shell: "echo move > /var/plexguide/move.menu"
   when: fchoice == "5"
-
-- name: PG ST2
-  shell: "echo st2 > /var/plexguide/move.menu"
-  when: fchoice == "6"
