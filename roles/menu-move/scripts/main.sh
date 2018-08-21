@@ -49,6 +49,15 @@ fi
 
 ##### pgdrive # 3
 if [ "$menu" == "pgdrive" ]; then
+
+  #### BASIC CHECKS to STOP Deployment - START
+  if [ "$gdrive" != "[gdrive]" ]; then
+      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        bash /opt/plexguide/roles/menu-move/scripts/main.sh
+        exit
+  fi
+
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
@@ -77,6 +86,15 @@ fi
 
 #### Bandwidth # 4
 if [ "$menu" == "bw" ]; then
+
+  #### BASIC CHECKS to STOP Deployment - START
+  if [ "$gdrive" != "[gdrive]" ]; then
+      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
+        bash /opt/plexguide/roles/menu-move/scripts/main.sh
+        exit
+  fi
+
   dialog --title "Change the BW Limit" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
   --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
