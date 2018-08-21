@@ -17,6 +17,8 @@
 #################################################################################
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
 ################################################################## CORE
 
 file="/var/plexguide/move.bw"
@@ -34,17 +36,19 @@ ansible-playbook /opt/plexguide/basics.yml --tags menu-move
 menu=$(cat /var/plexguide/move.menu)
 
 #### rclone # 2
-if [ "$menu" == "pgdrive" ]; then
+if [ "$menu" == "rclone" ]; then
   echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   #### RClone Missing Warning - END
   rclone config
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
 fi
 
 ##### pgdrive # 3
-if [ "$menu" == "rclone" ]; then
+if [ "$menu" == "pgdrive" ]; then
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   ansible-playbook /opt/plexguide/pg.yml --tags pgdrive_standard
