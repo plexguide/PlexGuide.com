@@ -40,11 +40,11 @@
     - name: Checking Existing Service Name
       stat:
         path: "/etc/systemd/system/{{ item.name }}"
-      with_items: "{{ service_vars.item.exists }}"
+      with_items: "{{ service_vars.item }}"
       register: check_service_name
 
     - name: Stop If Service Is Running
-      systemd: state=stopped name={{ item.item.name}} daemon_reload=yes enabled=no
+      systemd: state=stopped name={{ item.item.name }} daemon_reload=yes enabled=no
       with_items: "{{ check_service_name.item }}"
       when: item.stat.exists
 
@@ -52,10 +52,5 @@
       file:
         path: "/etc/systemd/system/{{ item.item.name }}"
         state: absent
-      with_items: "{{ check_service_name.results }}"
-      when: item.stat.exists
-
-    - debug:
-        msg: 'Service name {{ item.item.name }} has been removed!'
       with_items: "{{ check_service_name.results }}"
       when: item.stat.exists
