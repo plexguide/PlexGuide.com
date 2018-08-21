@@ -28,7 +28,7 @@ echo "10" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.python
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
-echo "13" > /var/plexguide/pg.dependency
+echo "14" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
