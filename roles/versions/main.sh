@@ -19,7 +19,7 @@ program=$(cat /tmp/program_selection)
 running=plexguide
 
 while [ "$running" != "$program" ]; do
-ansible-playbook /opt/plexguide/basics.yml --tags versions
+ansible-playbook /opt/plexguide/roles/versions/main.yml
 running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
 
 echo 'INFO - Looping: PG Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
