@@ -19,7 +19,7 @@
 
 - name: PG Main Menu
   pause:
-    prompt: "\nWelcome to PG Transport System!
+    prompt: "\nWelcome to the PG Transport System!
              \nSelect a Transport System!
 \n\n1.  Exit the Transport System
 \n2.  PG Blitz /w PGDrive   (Automated Deployment)
