@@ -17,28 +17,18 @@
 #################################################################################
 - hosts: localhost
   gather_facts: false
-  vars:
-    service_vars:
-      - {name: supertransfer2.service}
-      - {name: pgblitz.service}
   tasks:
     - name: Install Move Service to /opt/appdata/plexguide
       template:
         src: move_script.js2
         dest: /opt/appdata/plexguide/move.sh
         force: yes
-      tags:
-        - move2_en
 
     - name: Install Move Service
       template:
         src: move.js2
         dest: /etc/systemd/system/move.service
         force: yes
-      tags:
-        - move2_en
 
     - name: Start Move
       systemd: state=started name=move daemon_reload=yes enabled=yes
-      tags:
-        - move2_en
