@@ -89,8 +89,8 @@
   with_items:
     - "/opt/appdata/{{selection.user_input}}"
 
-- name: "Remove Static Path"
-  shell: "ls -lh /mnt/gdrive/plexguide/backup/{{restore_id.stdout}}/ | grep {{selection.user_input}}.tar | cut -d' ' -f5"
+- name: "Estimate Size"
+  shell: "ls -lh /mnt/gdrive/plexguide/backup/{{restore_id.stdout}}/ | grep {{selection.user_input}}.tar | awk '{ print $5 }"
   register: size
   ignore_errors: True
 
