@@ -42,6 +42,8 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
+  [entryPoints.monitor]
+  address = "8081"
 
 [retry]
 
@@ -64,3 +66,8 @@ endpoint = "unix:///var/run/docker.sock"
 domain = "yourdomain.com"
 watch = true
 exposedbydefault = false
+
+[metrics]
+  [metrics.prometheus]
+  entryPoint = "monitor"
+  buckets = [0.1,0.3,1.2,5.0]

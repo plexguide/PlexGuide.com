@@ -125,6 +125,7 @@
       PLEX_GID: "1000"
       PLEX_CLAIM: "{{ptoken}}"
       ADVERTISE_IP: "{{customConnections}}"
+    purge_networks: yes
     networks:
       - name: plexguide
         aliases:
