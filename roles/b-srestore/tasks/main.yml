@@ -23,8 +23,8 @@
   register: path
   ignore_errors: True
 
-- name: "Server ID for Restore"
-  shell: "cat /var/plexguide/server.id"
+- name: "Restore ID for Restore"
+  shell: "cat /var/plexguide/restore.id"
   register: server_id
 
 - name: "Checking if Building List Exists"
