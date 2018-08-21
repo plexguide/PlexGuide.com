@@ -39,6 +39,7 @@ menu=$(cat /var/plexguide/move.menu)
 if [ "$menu" == "rclone" ]; then
   echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   #### RClone Missing Warning - END
+  echo ""
   rclone config
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
