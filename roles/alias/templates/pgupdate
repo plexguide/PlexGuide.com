@@ -43,6 +43,6 @@ else
 fi
 
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
-bash /opt/plexguide/roles/versions/main.sh
+ansible-playbook /opt/plexguide/roles/versions/main.yml
 dialog --title "--- NOTE ---" --msgbox "\nPGUpdate Complete!" 0 0
 bash /opt/plexguide/roles/ending/ending.sh
