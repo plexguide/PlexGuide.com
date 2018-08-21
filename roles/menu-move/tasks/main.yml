@@ -22,19 +22,17 @@
     prompt: "\nWelcome to PG Transport System!
              \nSelect a Transport System!
 \n\n1.  Exit the Transport System
-\n2.  PG Blitz /w PGDrive   (Automated Deployment)
-\n3.  PG Blitz /w PGDrive   (Manual Deployment)
-\n4.  PG Move  /w PGDrive   (Simple)
-\n5.  PG Move  /w PlexDrive (Depreciated - No Support)
-\n6.  PG ST2   /w PGDrive   (Depreciated - No Support)
+\n2.  Config RClone  : File
+\n3.  Deploy Method  : PGDrive
+\n4.  Upload BW Limit: 999 MB (Change It)
+\n5.  Deploy PG Mount: Move Script
 \n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
          choice.user_input == "2" or
          choice.user_input == "3" or
          choice.user_input == "4" or
-         choice.user_input == "5" or
-         choice.user_input == "6"
+         choice.user_input == "5""
   retries: 99
   delay: 1
 
