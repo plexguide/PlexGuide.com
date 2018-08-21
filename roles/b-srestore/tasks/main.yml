@@ -94,7 +94,7 @@
   register: size
   ignore_errors: True
 
-- debug: msg="Downloading {{selection.user_input}} from GDrive! SIZE - {{size.stdout}} MB"
+- debug: msg="Downloading {{selection.user_input}} from GDrive! SIZE - {{size.stdout}}"
 
 - name: "Downloading from Google Drive - {{selection.user_input}}"
   shell: "rclone copy --tpslimit 6 \
