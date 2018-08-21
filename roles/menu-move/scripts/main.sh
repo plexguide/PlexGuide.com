@@ -18,18 +18,31 @@
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
 
+#### Recalls from prior menu what user selected
+selected=Move
+################################################################## CORE
+
+file="/var/plexguide/move.bw"
+if [ -e "$file" ]
+  then
+    echo "" 1>/dev/null 2>&1
+  else
+    echo "10" > /var/plexguide/move.bw
+fi
+
+
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
 ansible-playbook /opt/plexguide/basics.yml --tags menu-move
 menu=$(cat /var/plexguide/move.menu)
 
-if [ "$menu" == "blitzauto" ]; then
+if [ "$menu" == "rclone" ]; then
   echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
 
 fi
 
-if [ "$menu" == "blitzmanual" ]; then
+if [ "$menu" == "pgdrive" ]; then
 
   echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
@@ -98,9 +111,26 @@ if [ "$menu" == "move" ]; then
 fi
 
 if [ "$menu" == "st2" ]; then
-  echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "SuperTransfer2" > /var/plexguide/menu.select
-  bash /opt/plexguide/roles/pgdrivenav/main.sh
+
+  dialog --title "Change the BW Limit" \
+  --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
+  --inputbox "Type a Number 1 - 999 [Example: 50 = 50MB ]" 8 50 2>/var/plexguide/move.number
+  number=$(cat /var/plexguide/move.number)
+
+if [ $number -gt 999 -o $number -lt 1 ]
+then
+  dialog --title "NOTE!" --msgbox "\nYou Failed to Type a Number Between 1 - 999\n\nExit! Nothing Changed!" 0 0
+  exit
+fi
+  echo $number > /var/plexguide/move.bw
+  dialog --title "NOTE!" --msgbox "\nYou Must Redeploy [PG Move] for the BWLimit Change!" 0 0
+fi
+
+F)
+ansible-playbook /opt/plexguide/scripts/test/check-remove/tasks/main.yml
+echo 'INFO - REMOVED OLD SERVICES' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#ansible-role services_remove
+dialog --title " All Google Related Services Removed!" --msgbox "\nPlease re-run:-\n             'Deploy : PGDrive'\n     and     'Deploy : $selected'" 0 0
 
 fi
 
