@@ -25,7 +25,7 @@
 
 - name: "Restore ID for Restore"
   shell: "cat /var/plexguide/restore.id"
-  register: server_id
+  register: restore_id
 
 - name: "Checking if Building List Exists"
   stat:
@@ -62,7 +62,7 @@
   wait_for:
     timeout: 1
 
-- debug: msg="Temp Message - For {{selection.user_input}} - Server ID {{server_id.stdout}}"
+- debug: msg="Temp Message - For {{selection.user_input}} - Restoring from {{restore_id.stdout}}"
 
 - name: "Checking {{selection.user_input}} location in APPDATA"
   stat:
@@ -95,7 +95,7 @@
   shell: "rclone copy --tpslimit 6 \
           --config /root/.config/rclone/rclone.conf \
           --drive-chunk-size=64M \
-          gdrive:/plexguide/backup/{{server_id.stdout}}/{{selection.user_input}}.tar {{path.stdout}}/pgops/"
+          gdrive:/plexguide/backup/{{restore_id.stdout}}/{{selection.user_input}}.tar {{path.stdout}}/pgops/"
 
 - name: Unzip Folders
   unarchive:
