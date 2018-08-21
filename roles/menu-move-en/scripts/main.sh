@@ -139,7 +139,7 @@ if [ "$menu" == "move" ]; then
   fi
 
   #### DEPLOY Move Transfer System
-  ansible-playbook /opt/plexguide/pg.yml --tags move
+  ansible-playbook /opt/plexguide/pg.yml --tags move-en
   echo ""
   read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
   echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
