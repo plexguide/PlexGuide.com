@@ -26,19 +26,19 @@
 
 - name: php.ini creation
   wait_for:
-    path: "/opt/{{pgrole}}/php/php.ini"
+    path: "/opt/appdata/{{pgrole}}/config/{{pgrole}}/settings/php.ini"
     state: present
     msg: php.ini creation failed
 
 - name: nginx.conf creation
   wait_for:
-    path: "/opt/{{pgrole}}/nginx/nginx.conf"
+    path: "/opt/appdata/{{pgrole}}/config/nginx/nginx.conf"
     state: present
     msg: nginx.conf creation failed
 
 - name: plugins.ini creation
   wait_for:
-    path: "/opt/{{pgrole}}/{{pgrole}}/settings/plugins.ini"
+    path: "/opt/appdata/{{pgrole}}/config/{{pgrole}}/settings/plugins.ini"
     state: present
     msg: plugins.ini creation failed
 
@@ -51,7 +51,6 @@
     name: {{pgrole}}
     state: stopped
 
-# Maximum number of simultaneous upload slots per torrent.
 - name: MAX UP 1024
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
@@ -59,7 +58,6 @@
     line: 'throttle.max_uploads.set = 1024'
     state: present
 
-# Maximum number of simultaneous downloads slots globally
 - name: MAX DL 1024
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
@@ -74,11 +72,11 @@
     line: 'system.file.allocate.set = 0'
     state: present
 
-- name: Set download directory
+- name: DL Location
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
     regexp: '^directory.default.set\s?=.*'
-    line: 'directory.default.set = /downloads/{{pgrole}}'
+    line: 'directory.default.set = /downloads/incoming'
     state: present
 
 - name: Set upload_max_filesize to 16M
@@ -88,11 +86,11 @@
     line: 'upload_max_filesize = 16M'
     state: present
 
-- name: Copy across custom plugins.ini
+- name: Force New Plugin
   copy:
     src: plugins.ini
-    dest: "/opt/{{pgrole}}/{{pgrole}}/settings/plugins.ini"
-    owner: "{{user}}"
-    group: "{{user}}"
+    owner: 1000
+    group: 1000
+    dest: "/opt/appdata/{{pgrole}}/config/{{pgrole}}/settings/plugins.ini"
     mode: 0775
     force: yes
