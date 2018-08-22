@@ -16,20 +16,20 @@
 #
 #################################################################################
 ---
-- name: "Check If Ending Tasks Exists"
-  stat:
-    path: "/opt/plexguide/roles/{{pgrole}}/tasks/ending.yml"
-  register: "ending"
+  - name: "Check If Ending Tasks Exists"
+    stat:
+      path: "/opt/plexguide/roles/{{pgrole}}/tasks/ending.yml"
+    register: "ending"
 
-- debug: msg="Ending Check - {{ending.stat.exists}}"
+  - debug: msg="Ending Check - {{ending.stat.exists}}"
 
-- name: "Deploy ending tasks"
-  include_role:
-    name: "{{pgrole}}"
-    tasks_from: "ending.yml"
-  ignore_errors: True
-  when:
-    - "ending.stat.exists == True"
+  - name: "Deploy ending tasks"
+    include_role:
+      name: "{{pgrole}}"
+      tasks_from: "ending.yml"
+    ignore_errors: True
+    when:
+      - "ending.stat.exists == True"
 
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
