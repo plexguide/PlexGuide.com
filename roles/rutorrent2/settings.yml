@@ -16,12 +16,83 @@
 #
 #################################################################################
 ---
-- name: Adjustments
-  include_tasks: "settings.yml"
-  when: not rccheck.stat.exists
+#https://docs.ansible.com/ansible/2.5/modules/wait_for_module.html
 
-- name: "Deploy Questions"
-  include_role:
-    name: "{{pgrole}}"
-    tasks_from: "settings.yml"
-  when: not rccheck.stat.exists
+- name: rtorrent.rc creation
+  wait_for:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    state: present
+    msg: rtorrent.rc creation failed
+
+- name: php.ini creation
+  wait_for:
+    path: "/opt/{{pgrole}}/php/php.ini"
+    state: present
+    msg: php.ini creation failed
+
+- name: nginx.conf creation
+  wait_for:
+    path: "/opt/{{pgrole}}/nginx/nginx.conf"
+    state: present
+    msg: nginx.conf creation failed
+
+- name: plugins.ini creation
+  wait_for:
+    path: "/opt/{{pgrole}}/{{pgrole}}/settings/plugins.ini"
+    state: present
+    msg: plugins.ini creation failed
+
+- name: "5 Second Hold"
+  wait_for:
+    timeout: 5
+
+- name: Stopping {{pgrole}}
+  docker_container:
+    name: {{pgrole}}
+    state: stopped
+
+# Maximum number of simultaneous upload slots per torrent.
+- name: MAX UP 1024
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'throttle.global_up.max_rate.set_kb'
+    line: 'throttle.max_uploads.set = 1024'
+    state: present
+
+# Maximum number of simultaneous downloads slots globally
+- name: MAX DL 1024
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'throttle.global_down.max_rate.set_kb'
+    line: 'throttle.max_downloads.global.set = 1024'
+    state: present
+
+- name: No File Allocation
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'system.file_allocate.set'
+    line: 'system.file.allocate.set = 0'
+    state: present
+
+- name: Set download directory
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: '^directory.default.set\s?=.*'
+    line: 'directory.default.set = /downloads/{{pgrole}}'
+    state: present
+
+- name: Set upload_max_filesize to 16M
+  lineinfile:
+    path: "/opt/{{pgrole}}/php/php.ini"
+    regexp: '^upload_max_filesize\s?=.*'
+    line: 'upload_max_filesize = 16M'
+    state: present
+
+- name: Copy across custom plugins.ini
+  copy:
+    src: plugins.ini
+    dest: "/opt/{{pgrole}}/{{pgrole}}/settings/plugins.ini"
+    owner: "{{user}}"
+    group: "{{user}}"
+    mode: 0775
+    force: yes
