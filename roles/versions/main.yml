@@ -62,3 +62,7 @@
     - name: Writing Version
       shell: "echo {{selection.user_input}} > /var/plexguide/pg.number"
       when: not selection.user_input == "exit"
+
+    - name: Force Exit
+      shell: "echo break > /var/plexguide/main.menu"
+      when: not selection.user_input == "exit"
