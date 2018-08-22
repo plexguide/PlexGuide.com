@@ -34,6 +34,11 @@
   with_items:
     - "{{path.stdout}}/{{role_name}}"
     - "/opt/appdata/{{role_name}}"
+
+- name: RCCheck
+  stat:
+    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
+  register: rccheck
 ############################################################# (BASICS END)
 - name: "Create scripts folder - {{pgrole}}"
   file:
