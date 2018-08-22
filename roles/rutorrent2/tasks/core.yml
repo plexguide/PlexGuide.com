@@ -37,7 +37,7 @@
 
 - name: RCCheck
   stat:
-    path: "/opt/appdata/rutorrent/config/rtorrent/rtorrent.rc"
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
   register: rccheck
 ############################################################# (BASICS END)
 - name: "Create scripts folder - {{pgrole}}"
@@ -60,9 +60,9 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/rutorrent/config:/config"
+      - "/opt/appdata/{{pgrole}}/config:/config"
       - "/mnt/unionfs:/unionfs"
-      - "{{path.stdout}}/rutorrents:/downloads"
+      - "{{path.stdout}}/{{pgrole}}:/downloads"
       - /opt/appdata/{{role_name}}:/scripts
       - "/etc/localtime:/etc/localtime:ro"
 
