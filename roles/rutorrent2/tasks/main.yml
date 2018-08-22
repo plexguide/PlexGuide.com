@@ -29,7 +29,6 @@
       - "{{ports.stdout}}{{extport}}:{{intport}}"
       - "51413:51413"
       - "6881:6881/udp"
-      - "5000:5000"
     volumes: "{{default_volumes}}"
     env: "{{default_env}}"
     restart_policy: always
