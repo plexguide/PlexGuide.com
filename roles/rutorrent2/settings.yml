@@ -46,9 +46,9 @@
   wait_for:
     timeout: 5
 
-- name: Stopping {{pgrole}}
+- name: "Stopping {{pgrole}}"
   docker_container:
-    name: {{pgrole}}
+    name: "{{pgrole}}"
     state: stopped
 
 - name: MAX UP 1024
