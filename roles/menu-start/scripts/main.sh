@@ -48,9 +48,9 @@ if [ "$menu" == "security" ]; then
   bash /opt/plexguide/menus/security/main.sh
 fi
 
-if [ "$menu" == "info" ]; then
+if [ "$menu" == "tshoot" ]; then
   echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/info-tshoot/info.sh
+  bash /opt/plexguide/roles/info-tshoot/tshoot.sh
 fi
 
 if [ "$menu" == "auditor" ]; then
