@@ -60,6 +60,14 @@
       shell: "echo open > /var/plexguide/ports.menu"
       when: fchoice == "2"
 
+    - name: Set Variable - Open
+      shell: "echo "" > /var/plexguide/ports.menu"
+      when: fchoice == "2"
+
     - name: Rebuild Containers - Closed
       shell: "echo closed > /var/plexguide/ports.menu"
       when: fchoice == "3"
+
+    - name: Set Variable - Closed
+      shell: "echo "127.0.0.1:" > /var/plexguide/ports.menu"
+      when: fchoice == "2"
