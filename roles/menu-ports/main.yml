@@ -61,7 +61,7 @@
       when: fchoice == "2"
 
     - name: Set Variable - Open
-      shell: "echo "" > /var/plexguide/ports.menu"
+      shell: "echo '' > /var/plexguide/ports.menu"
       when: fchoice == "2"
 
     - name: Rebuild Containers - Closed
