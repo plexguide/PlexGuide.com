@@ -54,17 +54,18 @@
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
     \n\n1.  Exit PlexGuide
-    \n2.  Deploy a Transport System
-    \n3.  Deploy Traefik & Set
-    \n4.  PG Server Port Guard - Ports [{{ports}}]
-    \n5.  PG WCKD Authentication
-    \n6.  PG Program Suite
-    \n7.  PG Plex Enhancement Tools
-    \n8.  PG NET Benchmarks & DiskSpace Auditor
-    \n9.  PG Troubleshooting Actions
-    \n10. PG Backup & Restore
-    \n11. PG Settings & Tools
-    \n12. PG Update & Restore
+    \n2.  Mount & Transport System Deployment
+    \n3.  Traefik & TLD Deployment
+    \n4.  Server Port Guard - Ports [{{ports}}]
+    \n5.  WCKD Authentication
+    \n6.  Program Suite
+    \n7.  Plex Enhancement Tools
+    \n8.  Network Benchmarks Auditor
+    \n9.  DiskSpace Auditor
+    \n10. Troubleshooting Actions
+    \n11. Backup & Restore
+    \n12. Settings & Tools
+    \n13. Update & Restore
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
