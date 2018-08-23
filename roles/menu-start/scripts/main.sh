@@ -48,14 +48,14 @@ if [ "$menu" == "security" ]; then
   bash /opt/plexguide/menus/security/main.sh
 fi
 
-if [ "$menu" == "info" ]; then
+if [ "$menu" == "tshoot" ]; then
   echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/info-tshoot/info.sh
+  bash /opt/plexguide/roles/info-tshoot/tshoot.sh
 fi
 
-if [ "$menu" == "tshoot" ]; then
-  echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/info-tshoot/tshoot.sh
+if [ "$menu" == "auditor" ]; then
+  echo 'INFO - Selected: Auditor' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/menu-network/scripts/main.sh
 fi
 
 if [ "$menu" == "backup" ]; then
@@ -68,15 +68,14 @@ if [ "$menu" == "settings" ]; then
   bash /opt/plexguide/menus/settings/main.sh
 fi
 
-if [ "$menu" == "update" ]; then
-  echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/versions/main.sh
-fi
-
 if [ "$menu" == "wckd" ]; then
   echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags authclient --extra-vars "quescheck=on cron=off display=on"
-  exit
+fi
+
+if [ "$menu" == "ports" ]; then
+  echo 'INFO - Selected: Ports Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
 fi
 
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

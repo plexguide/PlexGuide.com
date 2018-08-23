@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: PG System & Network Auditor Menu
+      pause:
+        prompt: "\nWelcome to the PG System & Network Auditor!
+                 \nMake a Selection!
+    \n\n1.  EXIT Auditor Interface!
+    \n2.  System & Network Benchmark - Basic
+    \n3.  System & Network Benchmark - Advanced
+    \n4.  Simple SpeedTest
+    \n5.  Deploy Container: SpeedTest Server
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: choice.user_input == "1" or
+             choice.user_input == "2" or
+             choice.user_input == "3" or
+             choice.user_input == "4" or
+             choice.user_input == "5"
+      retries: 99
+      delay: 1
+
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
+
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/network.menu"
+      when: fchoice == "1"
+
+    - name: Basic Benchmarks
+      shell: "echo basic > /var/plexguide/network.menu"
+      when: fchoice == "2"
+
+    - name: Basic Advanced
+      shell: "echo advanced > /var/plexguide/network.menu"
+      when: fchoice == "3"
+
+    - name: Simple SpeedTest
+      shell: "echo simple > /var/plexguide/network.menu"
+      when: fchoice == "4"
+
+    - name: Deploy SpeedTest Container
+      shell: "echo container > /var/plexguide/network.menu"
+      when: fchoice == "5"

@@ -19,6 +19,20 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Register Ports
+      shell: "cat /var/plexguide/server.ports"
+      register: info
+
+    - name: Port Result Open
+      set_fact:
+        ports: "Open"
+      when: info.stdout == ""
+
+    - name: Port Result Closed
+      set_fact:
+        ports: "Closed"
+      when: info.stdout == "127.0.0.1:"
+
     - name: Version
       shell: "cat /var/plexguide/pg.number"
       register: pgversion
@@ -39,18 +53,17 @@
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
-    \n\n1.  Exit PlexGuide
-    \n2.  Deploy a Mount System
-    \n3.  Deploy Traefik | Set TLD
-    \n4.  PG Program Suite
-    \n5.  PG Plex Enhancement Tools
-    \n6.  PG Server Security
-    \n7.  PG Server Information
-    \n8.  PG Troubleshooting Actions
-    \n9.  PG Backup & Restore
-    \n10. PG Settings & Tools
-    \n11. PG Update & Restore
-    \n12. BETA: PG WCKD Authentication
+    \n\n1.  EXIT PlexGuide
+    \n2.  Mount & Transport System Deployment
+    \n3.  Traefik & TLD Deployment
+    \n4.  Server Port Guard - Ports [{{ports}}]
+    \n5.  PG WCKD Authentication
+    \n6.  Program Suite Installer
+    \n7.  Plex Enhancement Tools
+    \n8.  System & Network Auditor
+    \n9.  Backup & Restore
+    \n10. Settings Menu
+    \n11. Troubleshooting Actions
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -63,8 +76,7 @@
              choice.user_input == "8" or
              choice.user_input == "9" or
              choice.user_input == "10" or
-             choice.user_input == "11" or
-             choice.user_input == "12"
+             choice.user_input == "11"
       retries: 99
       delay: 1
 
@@ -84,20 +96,20 @@
       shell: "echo traefik > /var/plexguide/main.menu"
       when: fchoice == "3"
 
-    - shell: "echo programs > /var/plexguide/main.menu"
+    - shell: "echo ports > /var/plexguide/main.menu"
       when: fchoice == "4"
+
+    - shell: "echo wckd > /var/plexguide/main.menu"
+      when: fchoice == "5"
+
+    - shell: "echo programs > /var/plexguide/main.menu"
+      when: fchoice == "6"
 
     - name: Change Server ID
       shell: "echo plextools > /var/plexguide/main.menu"
-      when: fchoice == "5"
-
-    - shell: "echo security > /var/plexguide/main.menu"
-      when: fchoice == "6"
-
-    - shell: "echo info > /var/plexguide/main.menu"
       when: fchoice == "7"
 
-    - shell: "echo tshoot > /var/plexguide/main.menu"
+    - shell: "echo auditor > /var/plexguide/main.menu"
       when: fchoice == "8"
 
     - shell: "echo backup > /var/plexguide/main.menu"
@@ -106,8 +118,5 @@
     - shell: "echo settings > /var/plexguide/main.menu"
       when: fchoice == "10"
 
-    - shell: "echo update > /var/plexguide/main.menu"
+    - shell: "echo tshoot > /var/plexguide/main.menu"
       when: fchoice == "11"
-
-    - shell: "echo wckd > /var/plexguide/main.menu"
-      when: fchoice == "12"

@@ -70,3 +70,6 @@
     dest: /opt/plexguide
     version: "{{versionfinal.stdout}}"
     force: yes
+
+- name: Note Fork Version
+  shell: "echo 'Personal Fork' > /var/plexguide/pg.number"
