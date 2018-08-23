@@ -53,7 +53,7 @@
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
-    \n\n1.  Exit PlexGuide
+    \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
     \n3.  Traefik & TLD Deployment
     \n4.  Server Port Guard - Ports [{{ports}}]
@@ -61,11 +61,10 @@
     \n6.  Program Suite
     \n7.  Plex Enhancement Tools
     \n8.  Network Benchmarks Auditor
-    \n9.  DiskSpace Auditor
-    \n10. Troubleshooting Actions
-    \n11. Backup & Restore
-    \n12. Settings & Tools
-    \n13. Update & Restore
+    \n9.  Troubleshooting Actions
+    \n10. Backup & Restore
+    \n11. Settings Menu
+    \n12. Update & Restore
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
