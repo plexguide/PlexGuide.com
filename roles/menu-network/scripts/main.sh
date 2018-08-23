@@ -40,13 +40,6 @@ if [ "$menu" == "advanced" ]; then
   read -n 1 -s -r -p "Press any key to continue"
 fi
 
-if [ "$menu" == "custom" ]; then
-  echo 'INFO - Selected: Custom Bench' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/scripts/menus/bench-custom.sh
-  echo ""
-  read -n 1 -s -r -p "Press any key to continue"
-fi
-
 if [ "$menu" == "simple" ]; then
   echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   pip install speedtest-cli
