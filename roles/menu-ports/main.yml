@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Register Ports
+      shell: "cat /var/plexguide/server.ports"
+      register: info
+
+    - name: Port Result Open
+      set_fact:
+        ports: "Open"
+      when: info.stdout == ""
+
+    - name: Port Result Closed
+      set_fact:
+        ports: "Closed"
+      when: info.stdout == "127.0.0.1:"
+
+    - name: PG Main Menu
+      pause:
+        prompt: "\nWelcome to the PG Port Guard System!
+                 \nServer Ports are Currently - [{{ports}}]!
+    \n\n1.  Exit Port Guard (Make No Changes)
+    \n2.  Open  Ports
+    \n3.  Close Ports
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: choice.user_input == "1" or
+             choice.user_input == "2" or
+             choice.user_input == "3"
+      retries: 99
+      delay: 1
+
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
+
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/ports.menu"
+      when: fchoice == "1"
+
+    - name: Rebuild Containers - Open
+      shell: "echo open > /var/plexguide/ports.menu"
+      when: fchoice == "2"
+
+    - name: Rebuild Containers - Closed
+      shell: "echo closed > /var/plexguide/ports.menu"
+      when: fchoice == "3"
