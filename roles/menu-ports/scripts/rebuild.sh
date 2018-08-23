@@ -30,7 +30,6 @@ count=$(wc -l < /var/plexguide/container.running)
 
 echo ""
 echo "Rebuilding Containers!"
-echo ""
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
@@ -38,5 +37,5 @@ for ((i=1; i<$count+1; i++)); do
 done
 
 echo ""
-read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue"
+read -n 1 -s -r -p "Containers Rebuilt! Press [ANY KEY] to Continue!"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
