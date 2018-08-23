@@ -16,7 +16,10 @@
 #
 #################################################################################
 ---
-### need to recall ports info
+- name: Register Ports
+  shell: "cat /var/plexguide/server.ports"
+  register: ports
+  ignore_errors: True
 
 - hosts: localhost
   gather_facts: false

@@ -20,7 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/ports.menu)
-ansible-playbook /opt/plexguide/roles/menu-ports/main.yml
+ansible-playbook /opt/plexguide/pg.yml --tags menu-ports
 menu=$(cat /var/plexguide/ports.menu)
 
 ### Build List Incase
@@ -29,13 +29,15 @@ if [ "$menu" != "break" ]; then
 fi
 
 if [ "$menu" == "open" ]; then
+  echo "" > /var/plexguide/server.ports
   echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
+  bash /opt/plexguide/roles/menu-ports/scripts/rebuild.sh
 fi
 
 if [ "$menu" == "closed" ]; then
+  echo "127.0.0.1:" > /var/plexguide/server.ports
   echo 'INFO - Selected: Closed Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+  bash /opt/plexguide/roles/menu-ports/scripts/rebuild.sh
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
