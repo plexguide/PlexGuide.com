@@ -56,7 +56,7 @@
     \n\n1.  Exit PlexGuide
     \n2.  Deploy a Transport System
     \n3.  Deploy Traefik & Set
-    \n4.  PG Server Port Guard - Ports [Open]
+    \n4.  PG Server Port Guard - Ports [{{ports}}]
     \n5.  PG WCKD Authentication
     \n6.  PG Program Suite
     \n7.  PG Plex Enhancement Tools
