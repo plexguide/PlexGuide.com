@@ -58,13 +58,13 @@
     \n3.  Traefik & TLD Deployment
     \n4.  Server Port Guard - Ports [{{ports}}]
     \n5.  WCKD Authentication
-    \n6.  Program Suite
+    \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
     \n8.  Network Benchmarks Auditor
-    \n9.  Troubleshooting Actions
-    \n10. Backup & Restore
-    \n11. Settings Menu
-    \n12. Update & Restore
+    \n9.  Backup & Restore
+    \n10. Settings Menu
+    \n11. Update & Restore
+    \n12. Troubleshooting Actions
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -114,14 +114,14 @@
     - shell: "echo benchmarks > /var/plexguide/main.menu"
       when: fchoice == "8"
 
-    - shell: "echo tshoot > /var/plexguide/main.menu"
+    - shell: "echo backup > /var/plexguide/main.menu"
       when: fchoice == "9"
 
-    - shell: "echo backup > /var/plexguide/main.menu"
+    - shell: "echo settings > /var/plexguide/main.menu"
       when: fchoice == "10"
 
-    - shell: "echo settings > /var/plexguide/main.menu"
+    - shell: "echo update > /var/plexguide/main.menu"
       when: fchoice == "11"
 
-    - shell: "echo update > /var/plexguide/main.menu"
+    - shell: "echo tshoot > /var/plexguide/main.menu"
       when: fchoice == "12"
