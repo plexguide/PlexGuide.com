@@ -101,7 +101,7 @@
 - name: Set upload_max_filesize to 16M
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/php/php.ini"
-    regexp: '^upload_max_filesize\s?=.*'
+    regexp: 'upload_max_filesize'
     line: 'upload_max_filesize = 16M'
     state: present
 
