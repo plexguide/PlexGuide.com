@@ -49,6 +49,13 @@
     name: "{{pgrole}}"
     state: stopped
 
+- name: Low Disk - Set to 10GB
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: '^low_diskspace'
+    line: 'schedule = low_diskspace,5,60,close_low_diskspace=10000M'
+    state: present
+
 - name: MAX UP 1024
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
@@ -73,7 +80,7 @@
 - name: DL Location
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
-    regexp: '^directory.default.set\s?=.*'
+    regexp: 'directory.default.set'
     line: 'directory.default.set = /downloads/incoming'
     state: present
 
