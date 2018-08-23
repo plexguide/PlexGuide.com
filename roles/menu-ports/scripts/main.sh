@@ -20,7 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/ports.menu)
-ansible-playbook /opt/plexguide/pg.yml --tags menu-ports
+ansible-playbook /opt/plexguide/roles/menu-transport/main.yml
 menu=$(cat /var/plexguide/ports.menu)
 
 ### Build List Incase
