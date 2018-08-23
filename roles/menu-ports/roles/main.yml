@@ -16,14 +16,14 @@
 #
 #################################################################################
 ---
-- name: Register Ports
-  shell: "cat /var/plexguide/server.ports"
-  register: ports
-  ignore_errors: True
-
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Register Ports
+      shell: "cat /var/plexguide/server.ports"
+      register: ports
+      ignore_errors: True
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to the PG Port Guard System!
