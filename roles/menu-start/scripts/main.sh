@@ -70,7 +70,7 @@ fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/versions/scripts/main.sh
+  bash /opt/plexguide/roles/versions/main.sh
 fi
 
 if [ "$menu" == "wckd" ]; then
