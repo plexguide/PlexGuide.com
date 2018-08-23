@@ -17,11 +17,5 @@
 #################################################################################
 ---
 - name: Adjustments
-  include_tasks: "settings.yml"
-  when: not rccheck.stat.exists
-
-- name: "Deploy Questions"
-  include_role:
-    name: "{{pgrole}}"
-    tasks_from: "settings.yml"
+  include_tasks: "settings.yml
   when: not rccheck.stat.exists
