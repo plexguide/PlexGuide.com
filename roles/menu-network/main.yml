@@ -19,24 +19,22 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: PG Auditor Menu
+    - name: PG System & Network Auditor Menu
       pause:
         prompt: "\nWelcome to the PG System & Network Auditor!
                  \nMake a Selection!
     \n\n1.  EXIT Auditor Interface!
     \n2.  System & Network Benchmark - Basic
     \n3.  System & Network Benchmark - Advanced
-    \n4.  System & Network Benchmark - Custom
-    \n5.  Simple SpeedTest
-    \n6.  Deploy Container: SpeedTest Server
+    \n4.  Simple SpeedTest
+    \n5.  Deploy Container: SpeedTest Server
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
              choice.user_input == "3" or
              choice.user_input == "4" or
-             choice.user_input == "5" or
-             choice.user_input == "6"
+             choice.user_input == "5"
       retries: 99
       delay: 1
 
@@ -56,14 +54,10 @@
       shell: "echo advanced > /var/plexguide/network.menu"
       when: fchoice == "3"
 
-    - name: Basic Custom
-      shell: "echo custom > /var/plexguide/network.menu"
-      when: fchoice == "4"
-
     - name: Simple SpeedTest
       shell: "echo simple > /var/plexguide/network.menu"
-      when: fchoice == "5"
+      when: fchoice == "4"
 
     - name: Deploy SpeedTest Container
       shell: "echo container > /var/plexguide/network.menu"
-      when: fchoice == "6"
+      when: fchoice == "5"
