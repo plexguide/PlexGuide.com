@@ -68,6 +68,11 @@ if [ "$menu" == "settings" ]; then
   bash /opt/plexguide/menus/settings/main.sh
 fi
 
+if [ "$menu" == "update" ]; then
+  echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/versions/scripts/main.sh
+fi
+
 if [ "$menu" == "wckd" ]; then
   echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags authclient --extra-vars "quescheck=on cron=off display=on"
