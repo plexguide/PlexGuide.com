@@ -43,7 +43,7 @@ defaultEntryPoints = ["http", "https"]
   address = ":443"
     [entryPoints.https.tls]
   [entryPoints.monitor]
-  address = "8081"
+  address = ":8081"
 
 [retry]
 
