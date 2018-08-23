@@ -19,6 +19,20 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Register Ports
+      shell: "cat /var/plexguide/server.ports"
+      register: info
+
+    - name: Port Result Open
+      set_fact:
+        ports: "Open"
+      when: info.stdout == ""
+
+    - name: Port Result Closed
+      set_fact:
+        ports: "Closed"
+      when: info.stdout == "127.0.0.1:"
+
     - name: Version
       shell: "cat /var/plexguide/pg.number"
       register: pgversion
@@ -42,14 +56,15 @@
     \n\n1.  Exit PlexGuide
     \n2.  Deploy a Transport System
     \n3.  Deploy Traefik & Set
-    \n4.  WCKD Authentication & Port Guard [Open]
-    \n5.  PG Program Suite
-    \n6.  PG Plex Enhancement Tools
-    \n7.  PG Network Benchmarks
-    \n8.  PG Troubleshooting Actions
-    \n9.  PG Backup & Restore
-    \n10. PG Settings & Tools
-    \n11. PG Update & Restore
+    \n4.  PG Server Port Guard - Ports [Open]
+    \n5.  PG WCKD Authentication
+    \n6.  PG Program Suite
+    \n7.  PG Plex Enhancement Tools
+    \n8.  PG Network Benchmarks
+    \n9.  PG Troubleshooting Actions
+    \n10.  PG Backup & Restore
+    \n11. PG Settings & Tools
+    \n12. PG Update & Restore
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -62,7 +77,8 @@
              choice.user_input == "8" or
              choice.user_input == "9" or
              choice.user_input == "10" or
-             choice.user_input == "11"
+             choice.user_input == "11" or
+             choice.user_input == "12"
       retries: 99
       delay: 1
 
@@ -82,27 +98,30 @@
       shell: "echo traefik > /var/plexguide/main.menu"
       when: fchoice == "3"
 
-    - shell: "echo wckd > /var/plexguide/main.menu"
+    - shell: "echo ports > /var/plexguide/main.menu"
       when: fchoice == "4"
 
-    - shell: "echo programs > /var/plexguide/main.menu"
+    - shell: "echo wckd > /var/plexguide/main.menu"
       when: fchoice == "5"
+
+    - shell: "echo programs > /var/plexguide/main.menu"
+      when: fchoice == "6"
 
     - name: Change Server ID
       shell: "echo plextools > /var/plexguide/main.menu"
-      when: fchoice == "6"
-
-    - shell: "echo benchmarks > /var/plexguide/main.menu"
       when: fchoice == "7"
 
-    - shell: "echo tshoot > /var/plexguide/main.menu"
+    - shell: "echo benchmarks > /var/plexguide/main.menu"
       when: fchoice == "8"
 
-    - shell: "echo backup > /var/plexguide/main.menu"
+    - shell: "echo tshoot > /var/plexguide/main.menu"
       when: fchoice == "9"
 
-    - shell: "echo settings > /var/plexguide/main.menu"
+    - shell: "echo backup > /var/plexguide/main.menu"
       when: fchoice == "10"
 
-    - shell: "echo update > /var/plexguide/main.menu"
+    - shell: "echo settings > /var/plexguide/main.menu"
       when: fchoice == "11"
+
+    - shell: "echo update > /var/plexguide/main.menu"
+      when: fchoice == "12"
