@@ -23,16 +23,15 @@ menu=$(cat /var/plexguide/network.menu)
 ansible-playbook /opt/plexguide/roles/menu-network/main.yml
 menu=$(cat /var/plexguide/network.menu)
 
-if [ "$menu" == "simple" ]; then
-  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo ""
+if [ "$menu" == "basic" ]; then
+  echo 'INFO - Selected: Simple Bench' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   sudo wget -qO- bench.sh | bash
   echo ""
   read -n 1 -s -r -p "Press any key to continue"
 fi
 
 if [ "$menu" == "advanced" ]; then
-  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo 'INFO - Selected: Advanced Bench' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo ""
   curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
   echo ""
@@ -42,7 +41,7 @@ if [ "$menu" == "advanced" ]; then
 fi
 
 if [ "$menu" == "custom" ]; then
-  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo 'INFO - Selected: Custom Bench' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/scripts/menus/bench-custom.sh
   echo ""
   read -n 1 -s -r -p "Press any key to continue"
@@ -51,7 +50,7 @@ fi
 if [ "$menu" == "simple" ]; then
   echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   pip install speedtest-cli
-  echo
+  echo ""
   speedtest-cli
   echo ""
   read -n 1 -s -r -p "Press any key to continue"
