@@ -71,6 +71,5 @@
     version: "{{versionfinal.stdout}}"
     force: yes
 
-- name: Reregister Project Link
+- name: Note Fork Version
   shell: "echo 'Personal Fork' > /var/plexguide/pg.number"
-  register: versionfinal
