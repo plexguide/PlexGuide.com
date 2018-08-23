@@ -49,6 +49,20 @@
     name: "{{pgrole}}"
     state: stopped
 
+- name: Upload Rate
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'upload_rate'
+    line: 'upload_rate = 100000'
+    state: present
+
+- name: Download Rate
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'download_rate'
+    line: 'upload_rate = 100000'
+    state: present
+
 - name: Low Disk - Set to 10GB
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
