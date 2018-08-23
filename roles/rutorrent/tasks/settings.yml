@@ -52,7 +52,7 @@
 - name: Low Disk - Set to 10GB
   lineinfile:
     path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
-    regexp: '^low_diskspace'
+    regexp: 'low_diskspace'
     line: 'schedule = low_diskspace,5,60,close_low_diskspace=10000M'
     state: present
 
