@@ -72,6 +72,7 @@ if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: Update' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/versions/main.sh
   bash /opt/plexguide/roles/ending/ending.sh
+  exit
 fi
 
 if [ "$menu" == "wckd" ]; then
