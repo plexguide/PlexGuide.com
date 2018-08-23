@@ -58,11 +58,8 @@ if [ "$menu" == "simple" ]; then
 fi
 
 if [ "$menu" == "container" ]; then
-  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  clear
-  sudo wget -qO- bench.sh | bash
-  echo ""
-  read -n 1 -s -r -p "Press any key to continue"
+  echo 'INFO - Selected: Deployed SpeedTest Server Container' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "quescheck=off cron=on display=on"
 fi
 
 echo 'INFO - Looping: Auditor Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
