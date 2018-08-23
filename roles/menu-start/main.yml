@@ -111,7 +111,7 @@
       shell: "echo plextools > /var/plexguide/main.menu"
       when: fchoice == "7"
 
-    - shell: "echo benchmarks > /var/plexguide/main.menu"
+    - shell: "echo auditor > /var/plexguide/main.menu"
       when: fchoice == "8"
 
     - shell: "echo backup > /var/plexguide/main.menu"
