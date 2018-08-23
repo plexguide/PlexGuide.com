@@ -61,5 +61,5 @@
       when: fchoice == "2"
 
     - name: Rebuild Containers - Closed
-      shell: "echo open > /var/plexguide/ports.menu"
+      shell: "echo closed > /var/plexguide/ports.menu"
       when: fchoice == "3"

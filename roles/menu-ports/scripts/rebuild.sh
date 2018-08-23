@@ -31,7 +31,7 @@ count=$(wc -l < /var/plexguide/container.running)
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
-	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off
+	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off"
 done
 
 read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue"
