@@ -23,17 +23,49 @@ menu=$(cat /var/plexguide/network.menu)
 ansible-playbook /opt/plexguide/roles/menu-network/main.yml
 menu=$(cat /var/plexguide/network.menu)
 
-if [ "$menu" == "open" ]; then
+if [ "$menu" == "simple" ]; then
   echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-network/scripts/rebuild.sh
+  echo ""
+  sudo wget -qO- bench.sh | bash
+  echo ""
+  read -n 1 -s -r -p "Press any key to continue"
 fi
 
-if [ "$menu" == "closed" ]; then
-  echo 'INFO - Selected: Closed Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-network/scripts/rebuild.sh
+if [ "$menu" == "advanced" ]; then
+  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo ""
+  curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
+  echo ""
+  ./bench.sh -a
+  echo ""
+  read -n 1 -s -r -p "Press any key to continue"
 fi
 
-echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+if [ "$menu" == "custom" ]; then
+  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/scripts/menus/bench-custom.sh
+  echo ""
+  read -n 1 -s -r -p "Press any key to continue"
+fi
+
+if [ "$menu" == "simple" ]; then
+  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  pip install speedtest-cli
+  echo
+  speedtest-cli
+  echo ""
+  read -n 1 -s -r -p "Press any key to continue"
+fi
+
+if [ "$menu" == "container" ]; then
+  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  clear
+  sudo wget -qO- bench.sh | bash
+  echo ""
+  read -n 1 -s -r -p "Press any key to continue"
+fi
+
+echo 'INFO - Looping: Auditor Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
 echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
