@@ -69,5 +69,5 @@
       when: fchoice == "3"
 
     - name: Set Variable - Closed
-      shell: "echo 127.0.0.1:" > /var/plexguide/ports.menu"
+      shell: "echo 127.0.0.1: > /var/plexguide/ports.menu"
       when: fchoice == "3"
