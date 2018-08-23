@@ -59,7 +59,7 @@ fi
 
 if [ "$menu" == "container" ]; then
   echo 'INFO - Selected: Deployed SpeedTest Server Container' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "quescheck=off cron=on display=on"
+  ansible-playbook /opt/plexguide/pg.yml --tags speedtest --extra-vars "quescheck=off cron=off display=on"
 fi
 
 echo 'INFO - Looping: Auditor Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
