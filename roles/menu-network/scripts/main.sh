@@ -33,7 +33,7 @@ fi
 if [ "$menu" == "advanced" ]; then
   echo 'INFO - Selected: Advanced Bench' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo ""
-  curl -LsO raw.githubusercontent.com/thecreatorzone/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
+  curl -LsO raw.githubusercontent.com/Admin9705/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
   echo ""
   ./bench.sh -a
   echo ""
