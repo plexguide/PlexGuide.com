@@ -92,3 +92,8 @@
     dest: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
     mode: 0775
     force: yes
+
+- name: Restart Docker Container
+  docker_container:
+    name: {{pgrole}}
+    state: started
