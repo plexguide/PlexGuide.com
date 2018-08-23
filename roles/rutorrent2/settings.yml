@@ -26,7 +26,7 @@
 
 - name: php.ini creation
   wait_for:
-    path: "/opt/appdata/{{pgrole}}/config/{{pgrole}}/settings/php.ini"
+    path: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/php.ini"
     state: present
     msg: php.ini creation failed
 
@@ -38,7 +38,7 @@
 
 - name: plugins.ini creation
   wait_for:
-    path: "/opt/appdata/{{pgrole}}/config/{{pgrole}}/settings/plugins.ini"
+    path: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
     state: present
     msg: plugins.ini creation failed
 
