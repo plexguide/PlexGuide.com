@@ -30,6 +30,7 @@ count=$(wc -l < /var/plexguide/container.running)
 
 echo ""
 echo "Rebuilding Containers!"
+echo ""
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
