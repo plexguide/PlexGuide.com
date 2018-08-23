@@ -70,4 +70,4 @@
 
     - name: Set Variable - Closed
       shell: "echo 127.0.0.1:" > /var/plexguide/ports.menu"
-      when: fchoice == "2"
+      when: fchoice == "3"
