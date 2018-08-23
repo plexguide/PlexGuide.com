@@ -22,6 +22,7 @@ sed -i -e "/watchtower/d" /var/plexguide/container.running
 sed -i -e "/word*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
+sed -i -e "/authclient/d" /var/plexguide/container.running
 
 count=$(wc -l < /var/plexguide/container.running)
 ((count++))
@@ -35,5 +36,6 @@ for ((i=1; i<$count+1; i++)); do
 	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off"
 done
 
+echo ""
 read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
