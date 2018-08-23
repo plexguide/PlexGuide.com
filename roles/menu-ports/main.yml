@@ -21,13 +21,22 @@
   tasks:
     - name: Register Ports
       shell: "cat /var/plexguide/server.ports"
-      register: ports
-      ignore_errors: True
+      register: info
+
+    - name: Port Result Open
+      set_fact:
+        ports: "Open"
+      when: info.stdout == ""
+
+    - name: Port Result Closed
+      set_fact:
+        ports: "Closed"
+      when: info.stdout == "127.0.0.1:"
 
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to the PG Port Guard System!
-                 \nServer Ports are Currently - [{{ports.stdout}}]!
+                 \nServer Ports are Currently - [{{ports}}]!
     \n\n1.  Exit Port Guard (Make No Changes)
     \n2.  Open  Ports
     \n3.  Close Ports
