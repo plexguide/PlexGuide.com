@@ -15,48 +15,27 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/transport.menu
+echo "on" > /var/plexguide/ports.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/transport.menu)
-ansible-playbook /opt/plexguide/roles/menu-transport/main.yml
-menu=$(cat /var/plexguide/transport.menu)
+menu=$(cat /var/plexguide/ports.menu)
+ansible-playbook /opt/plexguide/roles/menu-ports/main.yml
+menu=$(cat /var/plexguide/ports.menu)
 
-if [ "$menu" == "blitzauto" ]; then
-  echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+### Build List Incase
+if [ "$menu" != "break" ]; then
+  bash /opt/plexguide/roles/menu-ports/scripts/rebuild.sh 1>/dev/null 2>&1
+fi
+
+if [ "$menu" == "open" ]; then
+  echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
-
 fi
 
-if [ "$menu" == "blitzmanual" ]; then
-  echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+if [ "$menu" == "closed" ]; then
+  echo 'INFO - Selected: Closed Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/pgblitz/scripts/main.sh
-
-fi
-
-if [ "$menu" == "move" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-move/scripts/main.sh
-fi
-
-if [ "$menu" == "enmove" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
-fi
-
-if [ "$menu" == "st2" ]; then
-  echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "SuperTransfer2" > /var/plexguide/menu.select
-  bash /opt/plexguide/roles/pgdrivenav/main.sh
-
-fi
-
-if [ "$menu" == "plexdrive" ]; then
-  echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "plexdrive" > /var/plexguide/menu.select
-  bash /opt/plexguide/roles/plexdrive/scripts/rc-pd.sh
-
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
