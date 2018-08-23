@@ -72,5 +72,5 @@
     force: yes
 
 - name: Reregister Project Link
-  shell: "echo "Personal Fork" > /var/plexguide/pg.number"
+  shell: "echo 'Personal Fork' > /var/plexguide/pg.number"
   register: versionfinal
