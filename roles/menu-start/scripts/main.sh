@@ -54,8 +54,8 @@ if [ "$menu" == "info" ]; then
 fi
 
 if [ "$menu" == "auditor" ]; then
-  echo 'INFO - Selected: Info & Troubleshoot' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+  echo 'INFO - Selected: Auditor' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/menu-network/scripts/main.sh
 fi
 
 if [ "$menu" == "backup" ]; then
