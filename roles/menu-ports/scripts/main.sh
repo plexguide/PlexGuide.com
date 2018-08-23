@@ -23,11 +23,6 @@ menu=$(cat /var/plexguide/ports.menu)
 ansible-playbook /opt/plexguide/roles/menu-ports/main.yml
 menu=$(cat /var/plexguide/ports.menu)
 
-### Build List Incase
-if [ "$menu" != "break" ]; then
-  bash /opt/plexguide/roles/menu-ports/scripts/rebuild.sh 1>/dev/null 2>&1
-fi
-
 if [ "$menu" == "open" ]; then
   echo "" > /var/plexguide/server.ports
   echo 'INFO - Selected: Open Server Ports' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
