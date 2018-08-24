@@ -49,13 +49,12 @@
 - name: Check Saved Image Path
   stat:
     path: /var/plexguide/{{pgrole}}.image
-  register: storedimagepath
+  register: storedpath
 
 - name: "Register Saved Image"
   shell: "cat /var/plexguide/{{pgrole}}.image"
   register: image
-  #ignore_errors: True
-  when: storedimagepath.stat.exist
+  when: storedpath.stat.exist == True
 
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
