@@ -22,32 +22,6 @@
     pgrole: "{{role_name}}"
     image: "linuxserver/sonarr"
 
-- pause:
-    prompt: "\nType Version # for Sonarr\n1- Sonarr (Recommended)\n2- Sonarr 4K \n3- Sonarr HDR"
-  register: version
-  until: version.user_input > "0" and version.user_input < "4"
-  retries: 5
-  delay: 1
-  when: quescheck == "on"
-
-- name: Set Sonarr
-  set_fact:
-    pgrole: "sonarr"
-    extport: "8989"
-  when: quescheck == "on" and version.user_input == "1"
-
-- name: Set Sonarr 4K
-  set_fact:
-    pgrole: "sonarr4k"
-    extport: "8984"
-  when: quescheck == "on" and version.user_input == "2"
-
-- name: Set Sonarr HDR
-  set_fact:
-    pgrole: "sonarrhdr"
-    extport: "8987"
-  when: quescheck == "on" and version.user_input == "3"
-
 - name: "Key Variables Recall"
   include_role:
     name: "pgmstart"
