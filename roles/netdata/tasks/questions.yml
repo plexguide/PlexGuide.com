@@ -28,7 +28,17 @@
     image: "titpetric/netdata"
   when: result.user_input == "1"
 
+- name: Image Save
+  shell: "echo titpetric/netdata > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "1"
+
 - name: Set firehol/netdata
   set_fact:
     image: "firehol/netdata"
+  when: result.user_input == "2"
+
+- name: Image Save
+  shell: "echo firehol/netdata > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
   when: result.user_input == "2"
