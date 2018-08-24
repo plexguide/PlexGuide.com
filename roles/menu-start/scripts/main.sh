@@ -30,7 +30,7 @@ fi
 
 if [ "$menu" == "traefik" ]; then
   echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/tld/scripts/submenu.sh
+  bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
 fi
 
 if [ "$menu" == "programs" ]; then
