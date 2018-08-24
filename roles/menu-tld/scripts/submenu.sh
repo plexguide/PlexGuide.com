@@ -34,6 +34,7 @@ if [ "$menu" == "open" ]; then
     echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
     bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
     echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+  fi
 fi
 
 if [ "$menu" == "closed" ]; then
@@ -50,6 +51,7 @@ if [ "$menu" == "closed" ]; then
     sleep 0.5
     echo ""
     read -n 1 -s -r -p "User Exited! - Press [Any] Key to Continue"
+  fi
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
