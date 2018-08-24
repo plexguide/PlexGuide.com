@@ -21,3 +21,5 @@ echo "" > /var/plexguide/server.ports
 echo "/mnt" > /var/plexguide/server.hd.path
 echo "" > /var/plexguide/server.ht
 echo "portainer" > /var/plexguide/tld.program
+echo "1" > /var/plexguide/pg.ansible.stored
+echo "2" > /var/plexguide/pg.ansible
