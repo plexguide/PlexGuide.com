@@ -1,4 +1,9 @@
 ---
+- name: Register Domain
+  shell: "cat /var/plexguide/server.domain"
+  register: domain
+  ignore_errors: True
+
 - name: Create prometheus directory needed
   file:
     path: "{{item}}"
@@ -69,7 +74,7 @@
 
 - name: Building monitoring
   docker_service:
-     project_name: montoring
+     project_name: monitoring
      definition:
        networks:
          net:
@@ -88,8 +93,6 @@
              - /opt/appdata/prometheus/config:/etc/prometheus/
              - /opt/appdata/prometheus/data:/prometheus
            restart: unless-stopped
-           ports:
-             - 9090:9090
            networks:
              - net 
            labels:
@@ -104,8 +107,6 @@
            command:
              - --collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)
            restart: unless-stopped
-           ports:
-             - 9100:9100
            networks:
              - net
            labels:
@@ -119,8 +120,6 @@
              - /var/lib/docker/:/var/lib/docker:ro
              - /dev/disk/:/dev/disk:ro
            restart: unless-stopped
-           ports:
-             - 8080:8080
            networks:
              - net
            labels:
@@ -134,15 +133,26 @@
              - /opt/appdata/grafana/datasources/:/etc/grafana/provisioning/datasources/
              - /opt/appdata/grafana/dashboards/:/etc/grafana/provisioning/dashboards/
            environment:
+             - GF_SERVER_ROOT_URL=https://grafana.{{domain.stdout}}
              - GF_USERS_ALLOW_SIGN_UP=false
            restart: unless-stopped
            networks:
              - net
-           ports:
-             - 3000:3000
+#           ports:
+#             - 3000:3000
            labels:
              org.label-schema.group: "monitoring"
              traefik.enable: "true"
              traefik.frontend.redirect.entryPoint: "https"
-             traefik.frontend.rule: "Host:grafana.tt.tt"
+             traefik.frontend.rule: "Host:grafana.{{domain.stdout}},{{tldset}}"
              traefik.port: "3000"
+
+- include_role:
+    name: traefik
+
+- name: Add grafata to plexguide network
+  docker_network:
+    name: monitoring_net
+    appends: yes
+    connected:
+      - traefik
