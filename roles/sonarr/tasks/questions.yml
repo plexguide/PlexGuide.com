@@ -29,10 +29,20 @@
     extra: ""
   when: result.user_input == "1"
 
+- name: Image Save
+  shell: "echo linuxserver/sonarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
+
 - name: Aront/Sonarr
   set_fact:
     image: "aront/sonarr"
     extra: ""
+  when: result.user_input == "2"
+
+- name: Image Save
+  shell: "echo aront/sonarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
   when: result.user_input == "2"
 
 - name: Create Folders
