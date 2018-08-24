@@ -44,7 +44,6 @@
   stat:
     path: /var/plexguide/tld.program
   register: oldtldcheck
-  when: folder.stat.exists
 
 - name: Establishing Prior Final Variable
   shell: "cat /var/plexguide/tld.program"
