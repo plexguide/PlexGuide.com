@@ -44,7 +44,18 @@
 - name: "Register TLD"
   shell: "cat /var/plexguide/tld.program"
   register: toplevel
-  ignore_errors: True"
+  ignore_errors: True
+
+- name: Check Saved Image Path
+  stat:
+    path: /var/plexguide/{{pgrole}}.image
+  register: storedimagepath
+
+- name: "Register Saved Image"
+  shell: "cat /var/plexguide/{{pgrole}}.image"
+  register: storedimage
+  ignore_errors: True
+  when: storedimagepath.stat.exist
 
 - name: Logging Ansible Role Information
   shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
