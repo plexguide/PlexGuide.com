@@ -34,6 +34,10 @@
       when: info.stdout == "127.0.0.1:"
 
     - name: Version
+      shell: "cat /var/plexguide/tld.program"
+      register: tldprogram
+
+    - name: Version
       shell: "cat /var/plexguide/pg.number"
       register: pgversion
 
@@ -55,7 +59,7 @@
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
     \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
-    \n3.  Traefik & TLD Deployment
+    \n3.  Traefik & TLD Deployment  [{{tldprogram}}]
     \n4.  Server Port Guard - Ports [{{ports}}]
     \n5.  PG WCKD Authentication
     \n6.  Program Suite Installer
