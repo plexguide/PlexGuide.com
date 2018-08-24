@@ -29,23 +29,17 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact:
-    image: "hotio/suitarr:sonarr"
-    extra: "/Sonarr"
-  when: result.user_input == "2"
-
 - name: Aront/Sonarr
   set_fact:
     image: "aront/sonarr"
     extra: ""
-  when: result.user_input == "3"
+  when: result.user_input == "2"
 
 - name: Create Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/{{role_name}}/mp4_automator
-  when: result.user_input == "3"
+  when: result.user_input == "2"
 
 - name: Install autoProcess.ini
   template:
@@ -55,4 +49,4 @@
     mode: 0775
     owner: 1000
     group: 1000
-  when: result.user_input == "3"
+  when: result.user_input == "2"
