@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nType Image # for Sonarr\n1- linuxserver/sonarr (Recommended)\n2- hotio/suitarr (Space Saver)\n3- aront/sonarr (MP4 Converter)"
+    prompt: "\nType Image # for Sonarr\n1- linuxserver/sonarr (Recommended)\n2- aront/sonarr (MP4 Converter)"
   register: result
   until: result.user_input > "0" and result.user_input < "4"
   retries: 5
@@ -29,23 +29,27 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact:
-    image: "hotio/suitarr:sonarr"
-    extra: "/Sonarr"
+- name: Image Save
+  shell: "echo linuxserver/sonarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
   when: result.user_input == "2"
 
 - name: Aront/Sonarr
   set_fact:
     image: "aront/sonarr"
     extra: ""
-  when: result.user_input == "3"
+  when: result.user_input == "2"
+
+- name: Image Save
+  shell: "echo aront/sonarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
 
 - name: Create Folders
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
     - /opt/appdata/{{role_name}}/mp4_automator
-  when: result.user_input == "3"
+  when: result.user_input == "2"
 
 - name: Install autoProcess.ini
   template:
@@ -55,4 +59,4 @@
     mode: 0775
     owner: 1000
     group: 1000
-  when: result.user_input == "3"
+  when: result.user_input == "2"
