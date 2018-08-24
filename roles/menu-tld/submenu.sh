@@ -37,16 +37,7 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
   A)
-    echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    touch /var/plexguide/traefik.lock
-    clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
-    file="/var/plexguide/traefik.lock"
-    if [ -e "$file" ]; then
-      echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
-    else
-      echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
-      bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
-      echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+
     fi ;;
   B)
     clear
