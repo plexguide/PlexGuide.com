@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,6 +15,16 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+docker ps --format '{{.Names}}' > /tmp/backup.list
+sed -i -e "/traefik/d" /tmp/backup.list
+sed -i -e "/watchtower/d" /tmp/backup.list
+sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/x2go*/d" /tmp/backup.list
+sed -i -e "/plexguide/d" /tmp/backup.list
+sed -i -e "/portainer/d" /tmp/backup.list
+sed -i -e "/cloudplow/d" /tmp/backup.list
+sed -i -e "/phlex/d" /tmp/backup.list
+
 rm -r /tmp/backup.build 1>/dev/null 2>&1
 bash /opt/plexguide/roles/tld/scripts/list.sh
 #### Commenting Out To Let User See

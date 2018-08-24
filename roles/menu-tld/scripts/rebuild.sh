@@ -15,23 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo ""
-read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
-echo ""
-
-docker ps --format '{{.Names}}' > /tmp/backup.list
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/portainer/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
-
 count=$(wc -l < /tmp/backup.list)
 ((count++))
 ((count--))
+
+echo ""
+read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
+echo ""
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /tmp/backup.list)
