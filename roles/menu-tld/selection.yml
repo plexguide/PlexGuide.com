@@ -39,13 +39,13 @@
         fchoice: "{{choice.user_input}}"
 
     - name: Exiting Interface
-      shell: "echo break > /var/plexguide/ports.menu"
+      shell: "echo break > /var/plexguide/tldsub.menu"
       when: fchoice == "1"
 
     - name: Rebuild Containers - Open
-      shell: "echo open > /var/plexguide/ports.menu"
+      shell: "echo traefik > /var/plexguide/tldsub.menu"
       when: fchoice == "2"
 
     - name: Rebuild Containers - Closed
-      shell: "echo closed > /var/plexguide/ports.menu"
+      shell: "echo tld > /var/plexguide/tldsub.menu"
       when: fchoice == "3"
