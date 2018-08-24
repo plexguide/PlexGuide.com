@@ -66,10 +66,9 @@ case $CHOICE in
     fi ;;
   Z)
     echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/ending/ending.sh
     exit 0 ;;
 esac
 ## repeat menu when exiting
 echo 'INFO - Looping: Sub Traefik Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/tld/scripts/submenu.sh ;;
+bash /opt/plexguide/roles/tld/scripts/submenu.sh
 exit

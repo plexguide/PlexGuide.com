@@ -15,25 +15,24 @@
 #################################################################################
 
 ######################################################## START: Key Variables
+rm -r /opt/plexguide/roles/versions/scripts/ver.list && sudo mkdir -p /opt/plexguide/roles/versions/scripts/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/scripts/ver.list https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/roles/versions/scripts/ver.list &>/dev/null &
 # Generate Default YML
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
-# PG Version
-echo "6.034 EDGE" > /var/plexguide/pg.version
-# Force Common Things To Execute Such as Folders
-echo "137" > /var/plexguide/pg.preinstall
+ # Force Common Things To Execute Such as Folders
+echo "142" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
 echo "10" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.python
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
-echo "10" > /var/plexguide/pg.dependency
+echo "14" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "35" > /var/plexguide/pg.alias
+echo "49" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 
@@ -58,15 +57,23 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 #
 #
 ######################################################## START: New Install
+rm -r /var/plexguide/new.install 1>/dev/null 2>&1
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
-  echo "" 1>/dev/null 2>&1
+
+  file2="/var/plexguide/pg.number"
+  if [ -e "$file2" ]; then
+    echo "" 1>/dev/null 2>&1
   else
-  bash /opt/plexguide/menus/version/main.sh
+    echo "Upgrade" > /var/plexguide/pg.number
+  fi
+
+  else
+  echo off > /tmp/program_source
+  bash /opt/plexguide/roles/versions/main.sh
   dialog --title "--- NEW INSTALL ---" --msgbox "\nExiting PG to install the Selected Version!\n\nType 'plexguide' again to complete the process!" 0 0
   clear
   bash /opt/plexguide/roles/ending/ending.sh
-  touch /var/plexguide/pg.exit 1>/dev/null 2>&1
   exit
 fi
 ######################################################## END: New Install

@@ -25,27 +25,31 @@ program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP | head -n1 )
 if [ "$program" == "$running" ]; then
 
-  if [ "$program" == "netdata" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
-  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+  if [ "$program" == "netdata" ] || [ "$program" == "vpn" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
+
+    if [ "$program" == "vpn" ]; then
+      bash /opt/plexguide/roles/programs/vpn.sh
+    else
+      ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+    fi
+
   else
   ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
   fi
 
-  dialog --title "--- NOTE ---" --msgbox "\n$program Deployed!\n\nProcess Complete!" 0 0
-  clear
+
 else
   if [ "$program" == "exit" ];then
     exit
   else
     dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
-    clear
     program=default
   fi
 fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/version/main.sh
+  bash /opt/plexguide/roles/versions/main.sh
   exit
 fi
 

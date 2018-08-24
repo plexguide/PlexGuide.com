@@ -19,7 +19,7 @@ export NCURSES_NO_UTF8_ACS=1
 echo 'INFO - @Main Processor Profiles - processor-menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
-version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+version=$( cat /var/plexguide/pg.server.deploy ) 1>/dev/null 2>&1
 
 HEIGHT=11
 WIDTH=40

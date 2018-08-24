@@ -18,7 +18,7 @@
 
 ############################################################################# MINI MENU SELECTION - START
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
-version=$( cat /var/plexguide/pg.version ) 1>/dev/null 2>&1
+version=$( cat /var/plexguide/pg.server.deploy ) 1>/dev/null 2>&1
 path=$( cat /var/plexguide/server.hd.path ) 1>/dev/null 2>&1
 deploy=$( cat /var/pg.server.deploy ) 1>/dev/null 2>&1
 

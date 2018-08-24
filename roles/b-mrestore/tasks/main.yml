@@ -28,8 +28,8 @@
   register: selection
 
 - name: "Server ID for Restore"
-  shell: "cat /var/plexguide/server.id"
-  register: server_id
+  shell: "cat /var/plexguide/restore.id"
+  register: restore_id
 
 - name: "Checking if Building List Exists"
   stat:
@@ -61,8 +61,6 @@
   wait_for:
     timeout: 1
 
-- debug: msg="Temp Message - For {{selection.stdout}} - Server ID {{server_id.stdout}}"
-
 - name: "Checking {{selection.stdout}} location in APPDATA"
   stat:
     path: "/opt/appdata/{{selection.stdout}}"
@@ -88,13 +86,18 @@
   with_items:
     - "/opt/appdata/{{selection.stdout}}"
 
-- debug: msg="Downloading Content from GDrive! (Please Wait)"
+- name: "Estimate Size"
+  shell: "ls -lh /mnt/gdrive/plexguide/backup/{{restore_id.stdout}}/ | grep {{selection.stdout}}.tar | awk '{ print $5 }'"
+  register: size
+  ignore_errors: True
+
+- debug: msg="Downloading {{selection.stdout}} from GDrive! SIZE - {{size.stdout}}"
 
 - name: "Downloading from Google Drive - {{selection.stdout}}"
   shell: "rclone copy --tpslimit 6 \
           --config /root/.config/rclone/rclone.conf \
           --drive-chunk-size=64M \
-          gdrive:/plexguide/backup/{{server_id.stdout}}/{{selection.stdout}}.tar {{path.stdout}}/pgops/"
+          gdrive:/plexguide/backup/{{restore_id.stdout}}/{{selection.stdout}}.tar {{path.stdout}}/pgops/"
 
 - name: Unzip Folders
   unarchive:

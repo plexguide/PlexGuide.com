@@ -1,0 +1,93 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- pause:
+    prompt: "\nWelcome to the PG PLEX Installer!\n\n1 - Plex Install (Remote Server)\n2 - Plex Install (Local Server)\n3 - Exit Plex Installer\n\nType a Number Selection and Press [ENTER]"
+  register: selection
+  until: selection.user_input > "0" and selection.user_input < "4"
+  retries: 99
+  delay: 1
+
+- name: Set to PLEX Remote
+  set_fact:
+    usercheck: "2"
+  when: selection.user_input == "2"
+
+- name: Set to PLEX Local
+  set_fact:
+    usercheck: "1"
+  when: selection.user_input == "1"
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: selection.user_input == "3"
+
+- pause:
+    prompt: "\nWhich version of PLEX do you want to Install?!\n\n1 - Plex Public\n2 - Plex Pass\n\nNote: If you do not own a PLEXPASS and select, it will revert to the Public Type\nType a Number Selection and Press [ENTER]"
+  register: plexselect
+  until: plexselect.user_input > "0" and plexselect.user_input < "3"
+  retries: 99
+  delay: 1
+
+- pause:
+    prompt: "\nYou Must Claim Your Plex Server for a [REMOTE] Server!\n\nWhat is your [PLEX] User Name?"
+  register: pguser
+  when: usercheck == "1"
+
+- pause:
+    prompt: "\nNext... What is your [PLEX] Password!"
+  register: pgpass
+  when: usercheck == "1"
+
+- name: Set User
+  set_fact:
+    pguser2: "{{pguser.user_input}}"
+  when: usercheck == "1"
+
+- name: Set Pass
+  set_fact:
+    pgpass2: "{{pgpass.user.input}}"
+  when: usercheck == "1"
+
+### https://docs.ansible.com/ansible/2.5/modules/uri_module.html
+- name: Claim Server
+  uri:
+    force_basic_auth: yes
+    password: "{{pgpass2}}"
+    user: "{{pguser2}}"
+    url: "https://plex.tv/api/claim/token.json"
+  register: ptokentemp
+  when: usercheck == "1"
+
+- name: Set Token
+  set_fact:
+    ptoken: "{{ptokentemp.json.token}}"
+  when: usercheck == "1"
+
+- debug: msg="Using the following Plex claim token {{ptoken}}"
+  when: usercheck == "1"
+
+- set_fact:
+      plextype: "public"
+  when:
+    - plexselect.user_input == "1"
+
+- set_fact:
+      plextype: "plexpass"
+  when:
+    - plexselect.user_input == "2"

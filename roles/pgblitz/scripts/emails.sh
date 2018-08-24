@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & FlickerRate
+# Author:   Admin9705 & FlickerRate & PhysK
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,15 +15,8 @@
 #################################################################################
 path=/opt/appdata/pgblitz/keys/unprocessed
 
-ls -la $path | awk '{ print $9}' | tail -n +4 > /tmp/pgblitz.emails
-rm -r /tmp/pgblitz.emails.list 1>/dev/null 2>&1
-
-while read p; do
-  email=$(cat /$path/$p | egrep "client_email")
-  email="${email:19}"
-  email="${email::-2}"
-  echo "$email" >> /tmp/pgblitz.emails.list
-done </tmp/pgblitz.emails
+#updated to cleaner method by PhysK
+cat $path/* | grep client_email | awk '{print $2}' | sed 's/"//g' | sed 's/,//g' > /tmp/pgblitz.emails.list
 
 clear
 echo "Welcome to the PG Blitz - EMail Share Generator"

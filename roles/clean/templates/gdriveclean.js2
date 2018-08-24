@@ -1,19 +1,22 @@
 # Credit to ENZTV for the basis of this script https://enztv.wordpress.com/2017/03/09/unionfs-cleanup/
+# Updated by PhysK#4882
 # Remove unionFS hidden files created by Radarr/Sonarr removing older content
 if [ -d "/mnt/move/.unionfs-fuse" ]; then
-find /mnt/move/.unionfs-fuse -type f -name '*_HIDDEN~' | while read line; do
-oldPath=${line#/mnt/move/.unionfs-fuse}
-newPath=gdrive:${oldPath%_HIDDEN~}
-newPathT=tdrive:${oldPath%_HIDDEN~}
-newPathEn=gcrypt:${oldPath%_HIDDEN~}
-echo "$newPath"
-echo "$newPathT"
-echo "$newPathEn"
-echo "$line"
-/usr/bin/rclone delete "$newPath"
-/usr/bin/rclone delete "$newPathT"
-/usr/bin/rclone delete "$newPathEn"
-rm "$line"
+    find /mnt/move/.unionfs-fuse -type f -name '*_HIDDEN~' | while read line; do
+    oldPath=${line#/mnt/move/.unionfs-fuse}
+    if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+        newPath=gcrypt:${oldPath%_HIDDEN~}
+        newPathT=tcrypt:${oldPath%_HIDDEN~}
+    else
+        newPath=gdrive:${oldPath%_HIDDEN~}
+        newPathT=tdrive:${oldPath%_HIDDEN~}
+    fi
+    echo "$newPath"
+    echo "$newPathT"
+    echo "$line"
+    /usr/bin/rclone delete "$newPath"
+    /usr/bin/rclone delete "$newPathT"
+    rm "$line"
 done
 find "/mnt/move/.unionfs-fuse" -mindepth 1 -type d -empty -delete
 fi

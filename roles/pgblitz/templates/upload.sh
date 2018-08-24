@@ -1,7 +1,8 @@
+{% raw %}
 #!/bin/bash
 ##
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & FlickerRate & Bryde ツ
+# Author:   Admin9705 & FlickerRate & Bryde ツ & PhysK
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -14,95 +15,94 @@
 #
 #################################################################################
 downloadpath=$(cat /var/plexguide/server.hd.path)
+IFS=$'\n'
 
-echo "INFO - PGBlitz Started for the First Time - 30 Second Sleep" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+FILE=$1
+GDSA=$2
+echo "[PGBlitz] [Upload] Upload started for $FILE using $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+STARTTIME=`date +%s`
+FILESTER=`echo $FILE | sed 's/\'$downloadpath'\/move//g'`
+FILEBASE=`basename $FILE`
+FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
+
+JSONFILE=/opt/appdata/pgblitz/json/$FILEBASE.json
+echo "With /mnt/move Removed - $FILESTER"
+echo "Filename - $FILEBASE"
+echo "File DIR - $FILEDIR"
+
+mkdir -p $downloadpath/pgblitz/$GDSA
+echo "[PGBlitz] [Upload] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+# add to file lock to stop another process being spawned while file is moving
+echo "lock" > $FILE.lck
+
+#get Human readable filesize
+HRFILESIZE=`ls -lsah $FILE | awk '{print $6}'`
+
+#create json file for PGbliz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\", \"status\": \"moving\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+
+#move file to pgblitz folder
+mkdir -p $downloadpath/pgblitz/$GDSA$FILEDIR/
+mv $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE
 sleep 5
-path=/opt/appdata/pgblitz/keys
-rpath=/root/.config/rclone/rclone.conf
-mkdir $downloadpath/move/movies 1>/dev/null 2>&1
-mkdir $downloadpath/move/tv 1>/dev/null 2>&1
-chown 1000:1000 -R $downloadpath/move/*
 
-#### Generates the GDSA List from the Processed Keys
-ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep GDSA > /tmp/pg.gdsalist
+echo "[PGBlitz] [Upload] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "[PGBlitz] [Upload] $FILE Moved"
 
-while true
-do
+#remove file lock
+rm -f $FILE.lck
 
-#loop through all GDSA accounts
-while read p; do
-if find $downloadpath/move -mindepth 2 -type d | egrep '.*' ; then
-    #sets the found folders in the $deletepaths - so only the picked up folders get deleted after moving them to /mnt/pgblitz
-    IFS=$'\n' deletepaths=( $(find "$downloadpath/move" -mindepth 2 -type d) )
-
-    echo "INFO - PGBlitz: Using $p for transfer" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-    mkdir -p $downloadpath/pgblitz/$p
-    rclone move $downloadpath/move/ $downloadpath/pgblitz/$p/ --min-age 1m \
-    --exclude="**partial~" --exclude="**_HIDDEN~" \
-    --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
-    --max-transfer=100G \
-
-    echo "INFO - PGBlitz: Moved Items $downloadpath/move to $downloadpath/pgblitz/$p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    #ls -la $downloadpath/pgblitz/$p
-
-    #sleeping a bit to make sure the files are moved
-    echo "sleeping 10 seconds..."
-    sleep 10
-
-    #running through the $deletepaths and only deleting the currently picked up folders to not miss anything
-    for d in "${deletepaths[@]}"; do
-        #checking if the path contains the hidden unionfs-fuse folder and skips if it does - also skips folders containing "Season X" as the parent folder will be removed instead
-        if [[ ${d} != *"unionfs-fuse"* && ${d} != *"Season"* ]]; then
-            find "$d" -type d -empty -delete
-        fi
-    done
-
-    echo "INFO - PGBlitz $p Deleting empty folder(s) in $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#if using encrypted add -E to the end of $GDSA
+if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+    REMOTE=${GDSA}C
 else
-    echo "INFO - PGBlitz $p Their is nothing to move from $downloadpath/move" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    REMOTE=$GDSA
 fi
 
-if find $downloadpath/pgblitz/$p -mindepth 2 -type d | egrep '.*' ; then
-    echo "INFO - PGBlitz: Starting PGBlitz Transfer Using $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      rclone move --tpslimit 6 --checkers=20 \
+echo "[PGBlitz] [Upload] Uploading $FILE to $REMOTE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
+
+#create and chmod the log file so that webui can read it
+touch $LOGFILE
+chmod 777 $LOGFILE
+
+#update json file for PGBlitz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
+echo "[PGBlitz] [Upload] Starting Upload"
+rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
-      --log-file=/opt/appdata/pgblitz/rclone.log --log-level INFO --stats 10s \
-      --exclude="**partial~" --exclude="**_HIDDEN~" \
-      --exclude=".unionfs-fuse/**" --exclude=".unionfs/**" \
+      --log-file=$LOGFILE --log-level INFO --stats 2s \
       --drive-chunk-size=32M \
-      $downloadpath/pgblitz/$p/ $p:
+      "$downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE" "$REMOTE:$FILEDIR/$FILEBASE"
 
-      cat /opt/appdata/pgblitz/rclone.log | tail -n6 > /opt/appdata/pgblitz/end.log
+#update json file for PGBlitz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 
-      echo "INFO - PGBlitz: $p Transfer Complete - Next Transfer in 1 Minute" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      sleep 60
+#rm -f $FILEDIR/folder.lck
+#waiting for file to become avalible from remote and then vfs/forget it
+rclone rc vfs/forget file="$FILEDIR/$FILEBASE"
+echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-      for d in "${deletepaths[@]}"; do
-        #sleeps 2 second between the rc forget command
-        sleep 2
-        #strips the /mnt/move/ from the path so only the "important" folders are back and rclone rc throws no errors
-        d="$(echo $d | sed 's/\'$downloadpath'\/move//g')"
-        #checking if the path contains the hidden unionfs-fuse folder and skips if it does - also skips folders containing "Season X" as the parent folder will be removed instead
-        if [[ ${d} != *"unionfs-fuse"* ]]; then
-            if [[ ${d} != *"Season"* ]]; then
-                rclone rc vfs/forget dir="$d"
-                echo "INFO - PGBlitz: $p Resetting folder in tdrive for $downloadpath/move$d" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            fi
-        fi
-      done
+ENDTIME=`date +%s`
+#update json file for PGBlitz GUI
+echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"done\",\"gdsa\": \"$GDSA\",\"starttime\": \"$STARTTIME\",\"endtime\": \"$ENDTIME\"}" > $JSONFILE
 
-else
+#de-dupe just in case (does not work)
+#if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+#    rclone dedupe tcrypt:$FILEDIR --dedupe-mode newest
+#else
+#    rclone dedupe tdrive:$FILEDIR --dedupe-mode newest
+#fi
 
-    echo "INFO - PGBlitz $p Nothing to move from $downloadpath/pgblitz/$p - Sleeping 30 Seconds" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    sleep 30
-fi
-
-    #resetting the IFS folder for $deletepaths so it wont try and delete already deleted paths on next run
-    IFS=" "$'\t\n '
-
-      sleep 5
-  done </tmp/pg.gdsalist
-
-done
+echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#cleanup
+rm -f $LOGFILE
+rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
+find "/mnt/move/" -mindepth 1 -type d -empty -delete
+find "/mnt/pgblitz/" -mindepth 2 -type d -empty -delete
+sleep 60
+rm -f $JSONFILE
+{% endraw %}

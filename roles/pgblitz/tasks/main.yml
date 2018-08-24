@@ -26,6 +26,11 @@
   include_role:
     name: pgblitz
     tasks_from: "disable_st2.yml"
+
+- name: Deploy Tasks
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tasks.yml"
 ################################################################ DISABLE PROGRAMS
 #
 #
@@ -40,11 +45,33 @@
   include_role:
     name: pgblitz
     tasks_from: "deploy_tdrive.yml"
-################################################################ UNENCRYPTED START
-- name: Deploy Tasks
+
+################################################################ ENCRYPTED START
+- name: Deploy TDrive
   include_role:
     name: pgblitz
-    tasks_from: "deploy_tasks.yml"
+    tasks_from: "deploy_tdrive_en.yml"
+  tags:
+    - encrypted
+
+- name: Deploy GCrypt
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_gcrypt.yml"
+  tags:
+    - encrypted
+
+- name: Deploy TCrypt
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tcrypt.yml"
+  tags:
+    - encrypted
+################################################################ ENCRYPTED END
+#
+#
+#
+################################################################ UNENCRYPTED START
 
 - name: Deploy UnionFS
   include_role:
