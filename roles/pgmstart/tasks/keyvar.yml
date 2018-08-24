@@ -48,7 +48,7 @@
 
 - name: Check Saved Image Path
   stat:
-    path: /var/plexguide/{{pgrole}}.image
+    path: "/var/plexguide/{{pgrole}}.image"
   register: storedpath
 
 - name: "Register Saved Image"
