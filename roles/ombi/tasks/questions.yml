@@ -28,7 +28,17 @@
     image: "linuxserver/ombi"
   when: result.user_input == "1"
 
+- name: Image Save
+  shell: "echo linuxserver/ombi > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
+
 - name: Set lsiodev/ombi-preview
   set_fact:
     image: "lsiodev/ombi-preview"
+  when: result.user_input == "2"
+
+- name: Image Save
+  shell: "echo lsiodev/ombi-preview > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
   when: result.user_input == "2"
