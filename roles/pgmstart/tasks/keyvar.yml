@@ -58,7 +58,7 @@
 
 - name: Set to PLEX Local
   set_fact:
-    image: {{tempimage.stdout}}
+    image: "{{tempimage.stdout}}"
   when: storedpath.stat.exists
 
 - name: Logging Ansible Role Information
