@@ -23,7 +23,7 @@ menu=$(cat /var/plexguide/tldsub.menu)
 ansible-playbook /opt/plexguide/roles/menu-tld/selection.yml
 menu=$(cat /var/plexguide/tldsub.menu)
 
-if [ "$menu" == "open" ]; then
+if [ "$menu" == "traefik" ]; then
   echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   touch /var/plexguide/traefik.lock
   clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
@@ -37,7 +37,7 @@ if [ "$menu" == "open" ]; then
   fi
 fi
 
-if [ "$menu" == "closed" ]; then
+if [ "$menu" == "tld" ]; then
   echo 'INFO - Selected: TLD Application' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "off" > /var/plexguide/tld.control
   ansible-playbook /opt/plexguide/pg.yml --tags tld
