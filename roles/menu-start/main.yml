@@ -59,7 +59,7 @@
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
     \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
-    \n3.  Traefik & TLD Deployment  [{{tldprogram}}]
+    \n3.  Traefik & TLD Deployment  [{{tldprogram.stdout}}]
     \n4.  Server Port Guard - Ports [{{ports}}]
     \n5.  PG WCKD Authentication
     \n6.  Program Suite Installer
