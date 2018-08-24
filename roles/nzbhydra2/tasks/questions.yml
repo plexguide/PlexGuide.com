@@ -29,14 +29,18 @@
     extra: ""
   when: result.user_input == "1"
 
-- name: Hotio/Suitarr
-  set_fact:
-    image: "hotio/suitarr:nzbhydra2"
-    extra: "/NZBHydra2"
-  when: result.user_input == "2"
+- name: Image Save
+  shell: "echo linuxserver/hydra2 > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "1"
 
 - name: Set theotherp/nzbhydra2
   set_fact:
     image: "theotherp/nzbhydra2"
     extra: ""
   when: result.user_input == "3"
+
+- name: Image Save
+  shell: "echo theotherp/nzbhydra2 > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
