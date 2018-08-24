@@ -46,7 +46,7 @@ if [ "$menu" == "tld" ]; then
   echo ""
   control=$(cat /var/plexguide/tld.control)
   if [ "$control" == "on" ]; then
-    bash /opt/plexguide/roles/tld/scripts/rebuild.sh
+    bash /opt/plexguide/roles/menu-tld/scripts/rebuild.sh
   else
     sleep 0.5
     echo ""
