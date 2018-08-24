@@ -21,7 +21,7 @@
     extport: "9000"
     command: ""
     pgrole: "{{role_name}}"
-    image: "{{role_name}}/{{role_name}}"
+    image: portainer/portainer
     authwarning: True
 
 - name: "Key Variables Recall"
@@ -64,7 +64,7 @@
   set_fact:
     command: "--no-auth"
   when: wckdauth == True
-  
+
 - name: "Set Default Labels (WCKD) - {{pgrole}}"
   set_fact:
     default_labels:
