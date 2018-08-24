@@ -29,5 +29,6 @@ fi
 
 ansible-playbook /opt/plexguide/pg.yml --tags $new --extra-vars "quescheck=on cron=off display=off"
 
+echo ""
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
