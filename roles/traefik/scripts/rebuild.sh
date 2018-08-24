@@ -23,6 +23,8 @@ sed -i -e "/word*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
 sed -i -e "/pgblitz/d" /var/plexguide/container.running
+sed -i -e "/phlex/d" /tmp/backup.list
+sed -i -e "/authclient/d" /tmp/backup.list
 
 ### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
 ### BackDoor WorkAround to Stop This Behavior
@@ -32,7 +34,7 @@ count=$(wc -l < /var/plexguide/container.running)
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
-	ansible-playbook /opt/plexguide/pg.yml --tags $app --skip-tags cron
+	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=off cron=off display=off"
 done
 
 read -n 1 -s -r -p "Press any key to continue"
