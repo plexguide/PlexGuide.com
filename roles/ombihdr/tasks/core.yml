@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "3579"
-    extport: "3574"
+    extport: "3577"
     pgrole: "{{role_name}}"
     image: "linuxserver/ombi"
 
