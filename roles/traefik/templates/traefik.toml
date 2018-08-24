@@ -44,7 +44,11 @@ defaultEntryPoints = ["http", "https"]
     [entryPoints.https.tls]
   [entryPoints.monitor]
   address = ":8081"
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> 19ede0ae375cfbe2e94a8fca24970893ac2e0283
 [retry]
 
 [acme]
