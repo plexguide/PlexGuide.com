@@ -15,6 +15,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo ""
+read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
+echo ""
+
 count=$(wc -l < /tmp/backup.list)
 ((count++))
 ((count--))

@@ -41,9 +41,6 @@ if [ "$menu" == "tld" ]; then
   echo 'INFO - Selected: TLD Application' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "off" > /var/plexguide/tld.control
   ansible-playbook /opt/plexguide/pg.yml --tags menu-tld
-  echo ""
-  read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
-  echo ""
   control=$(cat /var/plexguide/tld.control)
   if [ "$control" == "on" ]; then
     bash /opt/plexguide/roles/menu-tld/scripts/rebuild.sh
