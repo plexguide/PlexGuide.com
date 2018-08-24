@@ -15,17 +15,12 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Default Image"
-  shell: "echo linuxserver/sonarr"
-  register: storedimage
-  when: not storedimagepath.stat.exist
-
 - name: "Establish Key Variables"
   set_fact:
     intport: "8989"
     extport: "8989"
     pgrole: "{{role_name}}"
-    image: "{{storedimage.stdout}}"
+    image: "linuxserver/sonarr"
 
 - name: "Key Variables Recall"
   include_role:
