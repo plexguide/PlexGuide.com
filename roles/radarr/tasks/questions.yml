@@ -29,16 +29,31 @@
     extra: ""
   when: result.user_input == "1"
 
+- name: Image Save
+  shell: "echo linuxserver/radarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "1"
+
 - name: Hotio/Suitarr
   set_fact:
     image: "hotio/suitarr:radarr"
     extra: "/Radarr"
   when: result.user_input == "2"
 
+- name: Image Save
+  shell: "echo hotio/suitarr:radarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
+
 - name: Aront/Radarr
   set_fact:
     image: "aront/radarr"
     extra: ""
+  when: result.user_input == "3"
+
+- name: Image Save
+  shell: "echo aront/radarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
   when: result.user_input == "3"
 
 - name: Create Folders

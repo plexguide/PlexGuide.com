@@ -42,8 +42,6 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 ######## Goal is so user can deploy a wordpress site based on an ID from 1-99
 ########
 
-
-
 case $CHOICE in
         A)
             clear ;;
