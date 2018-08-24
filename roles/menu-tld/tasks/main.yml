@@ -40,6 +40,17 @@
   shell: "cat /tmp/backup.build"
   register: backlist
 
+- name: Check Old TLD
+  stat:
+    path: /var/plexguide/tld.program
+  register: oldtldcheck
+  when: folder.stat.exists
+
+- name: Establishing Prior Final Variable
+  shell: "cat /var/plexguide/tld.program"
+  register: oldtld
+  when: oldtldcheck.stat.exists
+
 - name: Prompt User for TLD App
   pause:
     prompt: "\nDETECTED Running Programs:\n{{backlist.stdout}}\n\nTYPE a listed PROGRAM to server as the Top Level Domain! (Case Senstive)"
@@ -62,6 +73,10 @@
 - fail:
     msg: "\nUser Failed to Type Program Correctly! [NOTE: Case Sensitie]"
   when: grep_output.stdout == ""
+
+- name: Establishing Prior Final Variable
+  shell: "echo {{oldtld.stdout}} > /var/plexguide/old.tld"
+  when: oldtldcheck.stat.exists
 
 - name: "Set Rebuild To On"
   shell: "echo on > /var/plexguide/tld.control"

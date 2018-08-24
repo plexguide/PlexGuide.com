@@ -15,18 +15,15 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-count=$(wc -l < /tmp/backup.list)
-((count++))
-((count--))
+old=$(cat /var/plexguide/old.tld) 1>/dev/null 2>&1
+new=$(cat /var/plexguide/tld.program) 1>/dev/null 2>&1
 
 echo ""
-read -n 1 -s -r -p "Containers Must Be Rebuilt! - Press [Any] Key to Continue"
+read -n 1 -s -r -p "Only the Old TLD & New TLD Containers Must Be Rebuilt!\nPress [Any] Key to Continue"
 echo ""
 
-for ((i=1; i<$count+1; i++)); do
-	app=$(sed "${i}q;d" /tmp/backup.list)
-	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=on cron=off display=off"
-done
-echo ""
+ansible-playbook /opt/plexguide/pg.yml --tags $old --extra-vars "quescheck=on cron=off display=off"
+ansible-playbook /opt/plexguide/pg.yml --tags $new --extra-vars "quescheck=on cron=off display=off"
+
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
