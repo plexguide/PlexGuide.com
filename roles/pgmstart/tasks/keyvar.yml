@@ -53,7 +53,12 @@
 
 - name: "Register Saved Image"
   shell: "cat /var/plexguide/{{pgrole}}.image"
-  register: image
+  register: tempimage
+  when: storedpath.stat.exists
+
+- name: Set to PLEX Local
+  set_fact:
+    image: {{tempimage.stdout}}
   when: storedpath.stat.exists
 
 - name: Logging Ansible Role Information
