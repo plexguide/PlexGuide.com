@@ -24,10 +24,10 @@ read -n 1 -s -r -p "Press [Any] Key to Continue"
 echo ""
 
 if [ "old" != "" ]; then
-	ansible-playbook /opt/plexguide/pg.yml --tags $old --extra-vars "quescheck=on cron=off display=off"
+	ansible-playbook /opt/plexguide/pg.yml --tags $old --extra-vars "quescheck=off cron=off display=off"
 fi
 
-ansible-playbook /opt/plexguide/pg.yml --tags $new --extra-vars "quescheck=on cron=off display=off"
+ansible-playbook /opt/plexguide/pg.yml --tags $new --extra-vars "quescheck=off cron=off display=off"
 
 echo ""
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
