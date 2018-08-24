@@ -34,7 +34,7 @@
   when: exit.user_input == "1"
 
 - name: "Building Shell List"
-  shell: "bash /opt/plexguide/roles/tld/scripts/main.sh"
+  shell: "bash /opt/plexguide/roles/menu-tld/scripts/main.sh"
 
 - name: "Building List"
   shell: "cat /tmp/backup.build"
