@@ -19,7 +19,8 @@ old=$(cat /var/plexguide/old.tld) 1>/dev/null 2>&1
 new=$(cat /var/plexguide/tld.program) 1>/dev/null 2>&1
 
 echo ""
-read -n 1 -s -r -p "Only the Old TLD & New TLD Containers Must Be Rebuilt!\nPress [Any] Key to Continue"
+echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
+read -n 1 -s -r -p "Press [Any] Key to Continue"
 echo ""
 
 ansible-playbook /opt/plexguide/pg.yml --tags $old --extra-vars "quescheck=on cron=off display=off"
