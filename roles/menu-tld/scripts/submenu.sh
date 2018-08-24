@@ -26,7 +26,7 @@ menu=$(cat /var/plexguide/tldsub.menu)
 if [ "$menu" == "traefik" ]; then
   echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   touch /var/plexguide/traefik.lock
-  clear &&ansible-playbook /opt/plexguide/pg.yml --tags traefik
+  ansible-playbook /opt/plexguide/pg.yml --tags traefik
   file="/var/plexguide/traefik.lock"
   if [ -e "$file" ]; then
     echo "" && read -n 1 -s -r -p "Did Not Complete Deployment! Press [ANY] Key to EXIT!"
@@ -46,8 +46,7 @@ if [ "$menu" == "tld" ]; then
     bash /opt/plexguide/roles/menu-tld/scripts/rebuild.sh
   else
     sleep 0.5
-    echo ""
-    read -n 1 -s -r -p "User Exited! - Press [Any] Key to Continue"
+    echo "" && read -n 1 -s -r -p "User Exited! - Press [Any] Key to Continue"
   fi
 fi
 
