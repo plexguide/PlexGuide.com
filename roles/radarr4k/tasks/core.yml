@@ -18,7 +18,7 @@
 - name: "Establish Key Variables"
   set_fact:
     intport: "7878"
-    extport: "7878"
+    extport: "7874"
     pgrole: "{{role_name}}"
     image: "linuxserver/radarr"
 
