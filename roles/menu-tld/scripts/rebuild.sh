@@ -23,7 +23,10 @@ echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
 read -n 1 -s -r -p "Press [Any] Key to Continue"
 echo ""
 
-ansible-playbook /opt/plexguide/pg.yml --tags $old --extra-vars "quescheck=on cron=off display=off"
+if [ "old" != "" ]; then
+	ansible-playbook /opt/plexguide/pg.yml --tags $old --extra-vars "quescheck=on cron=off display=off"
+fi
+
 ansible-playbook /opt/plexguide/pg.yml --tags $new --extra-vars "quescheck=on cron=off display=off"
 
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
