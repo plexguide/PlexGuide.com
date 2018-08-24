@@ -28,7 +28,17 @@
     image: "linuxserver/sabnzbd"
   when: result.user_input == "1"
 
+- name: Image Save
+  shell: "echo linuxserver/sabnzbd > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "1"
+
 - name: "{{pgrole}}/{{pgrole}}"
   set_fact:
     image: "sabnzbd/sabnzbd"
+  when: result.user_input == "2"
+
+- name: Image Save
+  shell: "echo sabnzbd/sabnzbd > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
   when: result.user_input == "2"
