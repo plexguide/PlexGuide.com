@@ -15,13 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/ports.menu
+echo "on" > /var/plexguide/tldsub.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/ports.menu)
+menu=$(cat /var/plexguide/tldsub.menu)
 ansible-playbook /opt/plexguide/roles/menu-tld/selection.yml
-menu=$(cat /var/plexguide/ports.menu)
+menu=$(cat /var/plexguide/tldsub.menu)
 
 if [ "$menu" == "open" ]; then
   echo 'INFO - Selected: PG Traefik - Reverse Proxy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
