@@ -37,17 +37,23 @@ case $response in
     1)
         echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
         echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
+        dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki before using the Auto SA Tool!" 0 0
         clear && python3 pgblitz.py
         if [ $? == 1 ]; then
+            read -n 1 -s -r -p "There has been an error, Please make a note of above. Before contacting for support! Press any key to continue"
             dialog --title "ERROR" --msgbox "\nSomething went wrong executing the script, Putting you back to the menu!\nPress [ENTER] to Continue!" 0 0
             bash /opt/plexguide/roles/deploychoice.sh
         fi
-        if [ -e /root/.config/rclone/rclone.config ]; then
+        if [ -e /root/.config/rclone/rclone.conf ]; then
             mv /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.old
             dialog --title "NOTE" --msgbox "\nYou're old rclone config has been moved to /root/.config/rclone/rclone.conf.old\nPress [ENTER] to Continue!" 0 0
         fi
         mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.conf
+        if [ -e /opt/appdata/pgblitz/keys/automation/rclone.conf ]; then
+            dialog --title "ERROR" --msgbox "\nWe had a problem moving the rclone config to the place it needs to be! We will try again and display the error to you\nPress [ENTER] to Continue!" 0 0
+            mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.conf
+            read -n 1 -s -r -p "Press any key to continue"
+        fi
         dialog --title "NOTE" --msgbox "\nYour emails should be auto added to your tdrive!\nPress [ENTER] to Continue!" 0 0
         dialog --title "NOTE" --msgbox "\nAll done! Now to continue deploying PGBlitz!!\nPress [ENTER] to Continue!" 0 0
         final="unencrypted"
