@@ -18,7 +18,7 @@
 ---
 #### Warning Containers that are Unique and Avoid Authenticator, leave Default Labels there in Core
 - name: "Check if Authenticator is On"
-  shell: "docker ps | awk '{print $NF}' | grep -v NAMES | grep {{pgrole}} -oP | head -n1"
+  shell: "docker ps | awk '{print $NF}' | grep -v NAMES | grep authclient -oP | head -n1"
   register: authclient
 
 - debug: msg="{{authclient}}"
