@@ -87,8 +87,7 @@
 ###### FOR TLD (END)
 
 ###### WCKD Authentication
-
-- name: "Key Variables Recall"
-  include_role:
-    name: "pgmstart"
-    tasks_from: "labels.yml"
+#- name: "Key Variables Recall"
+#  include_role:
+#    name: "pgmstart"
+#    tasks_from: "wckd.yml"
