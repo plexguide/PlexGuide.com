@@ -21,6 +21,8 @@
   shell: "docker ps | awk '{print $NF}' | grep -v NAMES | grep {{pgrole}} -oP | head -n1"
   register: authclient
 
+- debug: msg="{{authclient}}
+
 - name: "Role Checker for Authentication"
   shell: "cat /opt/plexguide/roles/programs/scripts/app.list | grep {{pgrole}} -oP | head -n1"
   register: rolecheck
