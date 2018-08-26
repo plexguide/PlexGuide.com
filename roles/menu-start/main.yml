@@ -53,15 +53,29 @@
       shell: "cat /var/plexguide/server.domain"
       register: pgdomain
 
+    - name: Appguard Status
+      shell: "cat /var/plexguide/server.ht"
+      register: appguard
+
+    - name: Port Result Open
+      set_fact:
+        ports: "Off"
+      when: appguard == ""
+
+    - name: Port Result Closed
+      set_fact:
+        ports: "On"
+      when: not appguard == ""
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
     \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
-    \n3.  Traefik & TLD Deployment  [{{tldprogram.stdout}}]
-    \n4.  Server Port Guard - Ports [{{ports}}]
-    \n5.  PG AppGuard Authentication
+    \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
+    \n4.  Server Port Guard - Ports  [{{ports}}]
+    \n5.  PG AppGuard Authentication [{{appguard}}]
     \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
     \n8.  System & Network Auditor
