@@ -54,3 +54,6 @@
 
 - name: "Creating Hashed Info"
   shell: "htpasswd -cbs /var/plexguide/server.ht {{appguarduser.user_input}} {{appguardpw.user_input}}"
+
+- name: "Build Container Rebuld Lock"
+  shell: "touch /var/plexguide/appguard.lock"
