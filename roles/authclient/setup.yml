@@ -1,0 +1,58 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - pause:
+        prompt: "\nContinue to Deploy WCKD Authenticator? (Type #)\n1- NO\n2- Yes\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: exit
+      until: exit.user_input > "0" and exit.user_input < "4"
+      retries: 99
+      delay: 1
+
+    - fail:
+        msg: "User Opted NOT to CONTINUE! Aborting!"
+      when: exit.user_input == "1"
+
+    - name: Remove WCKD Variable | Being Disabled
+      file:
+        path: /var/plexguide/authclient.wckd
+        state: absent
+      when: exit.user_input == "3"
+
+    - name: "Build Container Rebuild Lock"
+      shell: "touch /var/plexguide/wckdauth.lock"
+      when: exit.user_input == "3"
+
+    - fail:
+        msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
+      when: exit.user_input == "3"
+
+    - name: "Deploy Questions"
+      include_role:
+        name: "authclient"
+        tasks_from: "main.yml"
+
+    - name: "Build Container Rebuild Lock"
+      shell: "touch /var/plexguide/wckdauth.lock"
+
+    - name: Set the WCKD Variable
+      file:
+        path: /var/plexguide/authclient.wckd
+        state: touch
