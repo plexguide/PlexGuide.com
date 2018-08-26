@@ -75,6 +75,7 @@
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
       traefik.enable: "true"
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
