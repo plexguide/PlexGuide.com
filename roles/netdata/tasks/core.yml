@@ -44,14 +44,6 @@
       UID: "1000"
       GID: "1000"
 
-- name: "Set Default Labels - {{pgrole}}"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.port: "{{intport}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-
 ######################## Deploy PGMSTART
 - include_role:
     name: "pgmstart"
