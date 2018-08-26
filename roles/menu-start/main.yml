@@ -60,12 +60,12 @@
     - name: Port Result Open
       set_fact:
         appguard: "Off"
-      when: appguard == ""
+      when: appguard.stdout == ""
 
     - name: Port Result Closed
       set_fact:
         appguard: "On"
-      when: not appguard == ""
+      when: not appguard.stdout == ""
 
     - name: PG Main Menu
       pause:
