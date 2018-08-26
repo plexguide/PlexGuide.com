@@ -35,11 +35,11 @@
 
 - pause:
     prompt: "\nPlease Create a Username!"
-  register: username
+  register: appguarduser
 
 - pause:
     prompt: "\nPlease Create a Strong & Rememberable Password"
-  register: password
+  register: appguardpw
 
 - pause:
     prompt: "\nUsername: {{username.user_input}}\nPassword: {{password.user_input}}\n\nContinue Hash Info and Deploy AppGuard? (Type #)\n1- YES\n2- NO"
@@ -53,4 +53,4 @@
   when: exit2.user_input != "1"
 
 - name: "Creating Hashed Info"
-  shell: "htpasswd -cbs /var/plexguide/server.ht {{username.input}} {{password.input}}"
+  shell: "htpasswd -cbs /var/plexguide/server.ht {{appguarduser.user_input}} {{appguardpw.user_input}}"
