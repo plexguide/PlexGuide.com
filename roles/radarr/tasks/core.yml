@@ -72,11 +72,14 @@
       APP: "radarr"
       VERSION: "stable"
 
-- name: "Key Variables Recall"
-  include_role:
-    name: "pgmstart"
-    tasks_from: "lables.yml"
-
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic: "{{auth.stdout}}"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 ######################## Deploy PGMSTART
 - include_role:
     name: "pgmstart"
