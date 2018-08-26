@@ -26,6 +26,7 @@
   include_role:
     name: "pgmstart"
     tasks_from: "keyvar.yml"
+    
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     provider: "https://auth.wckd.app"
