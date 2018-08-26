@@ -71,6 +71,13 @@ fi
 if [ "$menu" == "appguard" ]; then
   echo 'INFO - Selected: AppGuard Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags menu-appguard
+
+  file2="/var/plexguide/appguard.lock"
+  if [ -e "$file2" ]; then
+    bash /opt/plexguide/roles/menu-appguard/scripts/app.list
+    rm -r /var/plexguide/appguard.lock
+  fi
+
 fi
 
 if [ "$menu" == "wckd" ]; then
