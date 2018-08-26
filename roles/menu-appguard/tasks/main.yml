@@ -42,7 +42,7 @@
   register: appguardpw
 
 - pause:
-    prompt: "\nUsername: {{username.user_input}}\nPassword: {{password.user_input}}\n\nContinue Hash Info and Deploy AppGuard? (Type #)\n1- YES\n2- NO"
+    prompt: "\nUsername: {{appguarduser.user_input}}\nPassword: {{appguardpw.user_input}}\n\nContinue Hash Info and Deploy AppGuard? (Type #)\n1- YES\n2- NO"
   register: exit2
   until: exit2.user_input > "0" and exit2.user_input < "3"
   retries: 99
