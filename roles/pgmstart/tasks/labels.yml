@@ -34,7 +34,7 @@
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-  when: authclient.stdout != "authclient" && pgrole.stdout == rolecheck.stdout
+  when: not authclient.stdout =="authclient" && pgrole.stdout == rolecheck.stdout
 
 ################### Continues if AuthClient is On for that Role
 - name: "Set Default Labels (WCKD) - {{pgrole}}"
