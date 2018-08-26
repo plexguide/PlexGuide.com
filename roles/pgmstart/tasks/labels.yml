@@ -26,11 +26,6 @@
   register: roleguard
   when: appguard.stat.exists
 
-
-
-
-
-
 #### WIKD ###############################################################################################
 #### Warning Containers that are Unique and Avoid Authenticator, leave Default Labels there in Core
 #- name: "Check if Authenticator is On"
