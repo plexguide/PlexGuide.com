@@ -59,12 +59,12 @@
 
     - name: Port Result Open
       set_fact:
-        ports: "Off"
+        appguard: "Off"
       when: appguard == ""
 
     - name: Port Result Closed
       set_fact:
-        ports: "On"
+        appguard: "On"
       when: not appguard == ""
 
     - name: PG Main Menu
