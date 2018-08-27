@@ -117,9 +117,9 @@
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "{{standard1}}"
-      traefik.app.frontend.rule: {{wckd1}}
-      traefik.app.frontend.auth.forward.address: {{wckd2}}
-      traefik.api.frontend.rule: {{wckd3}}
+      traefik.app.frontend.rule: "{{wckd1}}"
+      traefik.app.frontend.auth.forward.address: "{{wckd2}}"
+      traefik.api.frontend.rule: "{{wckd3}}"
 ###### FOR DEFAULT LABELS (END)
 
 ###### WCKD Authentication
