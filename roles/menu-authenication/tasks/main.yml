@@ -20,8 +20,8 @@
   gather_facts: false
   tasks:
     - pause:
-        prompt: "\nWelcome to the PG Authentication System!\nRead the Wiki for More Information!\n\n(Type #)\n1- Deploy WCKD Authentication | Advanced Google Single Sign On
-                                                                                                            \n2- Deploy PG Appguard         | Simple Traefik Authenticator\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+        prompt: "\nWelcome to the PG Authentication System!\nRead the Wiki for More Information!\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
+                                                                                                            \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
       register: exit
       until: exit.user_input > "0" and exit.user_input < "4"
       retries: 99
@@ -29,7 +29,7 @@
 
     - fail:
         msg: "User Opted NOT to CONTINUE! Aborting!"
-      when: exit.user_input == "1"
+      when: exit.user_input == "3"
 
     - name: Remove WCKD Variable | Being Disabled
       file:
