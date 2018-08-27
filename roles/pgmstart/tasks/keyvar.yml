@@ -103,6 +103,9 @@
     wckd3: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}};PathPrefix:/api"
     #auth: "" has to be fixed for WCKD
     standard1: ""
+    quescheck: off
+    cron: off
+    display: off
   when: wckdcheck.stat.exists
 
 - name: WCKD Auth Off"
