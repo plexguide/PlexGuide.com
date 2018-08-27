@@ -70,7 +70,7 @@ fi
 
 if [ "$menu" == "auth" ]; then
   echo 'INFO - Selected: Authentication Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/roles/menu-authenication/tasks/main.yml
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-authenication
 
   file2="/var/plexguide/appguard.lock"
   if [ -e "$file2" ]; then
