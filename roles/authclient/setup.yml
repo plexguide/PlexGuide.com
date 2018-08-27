@@ -44,10 +44,14 @@
         msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
       when: exit.user_input == "3"
 
-    - name: "Deploy Questions"
-      include_role:
-        name: "authclient"
-        tasks_from: "main.yml"
+####### Continuing OnWard With WCKD
+    - pause:
+        prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
+      register: emailinput
+
+    - name: emails
+      set_fact:
+        emails: "{{emailinput.user_input}}"
 
     - name: "Build Container Rebuild Lock"
       shell: "touch /var/plexguide/wckdauth.lock"
@@ -56,3 +60,8 @@
       file:
         path: /var/plexguide/authclient.wckd
         state: touch
+
+    - name: "Deploy Questions"
+      include_role:
+        name: "authclient"
+        tasks_from: "main.yml"

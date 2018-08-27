@@ -87,9 +87,9 @@
 ###### FOR TLD (END)
 
 ###### FOR DEFAULT LABELS (START)
-- name: Check if WCKD Exists
+- name: WCKD / AppGuard Check
   stat:
-    path: "/var/plexguide/wckdapp.image" ### Fix This
+    path: "/var/plexguide/authclient.wckd" ### Fix This
   register: wckdcheck
 
 - name: "WCKD Auth On"
