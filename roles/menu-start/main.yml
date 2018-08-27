@@ -117,7 +117,7 @@
     - shell: "echo ports > /var/plexguide/main.menu"
       when: fchoice == "4"
 
-    - shell: "echo appguard > /var/plexguide/main.menu"
+    - shell: "echo auth > /var/plexguide/main.menu"
       when: fchoice == "5"
 
     - shell: "echo programs > /var/plexguide/main.menu"
