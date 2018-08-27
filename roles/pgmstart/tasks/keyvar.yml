@@ -101,7 +101,7 @@
     wckd1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
     wckd2: "https://authclient.{{domain.stdout}}"
     wckd3: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}};PathPrefix:/api"
-    auth: ""
+    #auth: "" has to be fixed for WCKD
     standard1: ""
   when: wckdcheck.stat.exists
 
@@ -117,7 +117,7 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+      #traefik.frontend.auth.basic.users: "{{auth.stdout}}" <<< stdout error, diable for testing
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "{{standard1}}"
