@@ -92,6 +92,10 @@
     path: "/var/plexguide/authclient.wckd" ### Fix This
   register: wckdcheck
 
+- name: Temp - Delete Bug Test"
+  set_fact:
+    tldset: ""
+
 - name: "WCKD Auth On"
   set_fact:
     wckd1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
