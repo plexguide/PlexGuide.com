@@ -116,6 +116,8 @@
     standard1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
     when: wckdcheck.stat.exists == False
 
+- debug: msg="WCKD Running? {{wckdcheck.stat.exists}}"
+
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
