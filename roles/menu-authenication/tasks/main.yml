@@ -21,7 +21,7 @@
   tasks:
     - pause:
         prompt: "\nWelcome to the PG Authentication System!\nRead the Wiki for More Information!\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
-                                                                                                            \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+                                                                                                                     \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nNOTE: Your Ports Are: [Status] - [Message]\n\nType a [NUMBER] Choice & Press [ENTER]"
       register: exit
       until: exit.user_input > "0" and exit.user_input < "4"
       retries: 99
