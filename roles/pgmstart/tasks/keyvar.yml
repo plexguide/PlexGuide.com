@@ -102,6 +102,7 @@
   when: wckdcheck.stat.exists
 
 - name: WCKD Auth Off"
+  set_fact:
     wckd1: ""
     wckd2: ""
     wckd3: ""
