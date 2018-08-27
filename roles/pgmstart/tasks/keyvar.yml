@@ -106,7 +106,7 @@
     quescheck: off
     cron: off
     display: off
-  when: wckdcheck.stat.exists
+  when: wckdcheck.stat.exists == True
 
 - name: WCKD Auth Off"
   set_fact:
