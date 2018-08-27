@@ -29,40 +29,16 @@
 
     - fail:
         msg: "User Opted NOT to CONTINUE! Aborting!"
+      when: exit.user_input == "1"
+
+    - name: "Deploy AppGuard"
+      include_role:
+        name: "menu-appguard"
+        tasks_from: "main.yml"
       when: exit.user_input == "3"
-
-    - name: Remove WCKD Variable | Being Disabled
-      file:
-        path: /var/plexguide/authclient.wckd
-        state: absent
-      when: exit.user_input == "3"
-
-    - name: "Build Container Rebuild Lock"
-      shell: "touch /var/plexguide/wckdauth.lock"
-      when: exit.user_input == "3"
-
-    - fail:
-        msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
-      when: exit.user_input == "3"
-
-####### Continuing OnWard With WCKD
-    - pause:
-        prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
-      register: emailinput
-
-    - name: emails
-      set_fact:
-        emails: "{{emailinput.user_input}}"
-
-    - name: "Build Container Rebuild Lock"
-      shell: "touch /var/plexguide/wckdauth.lock"
-
-    - name: Set the WCKD Variable
-      file:
-        path: /var/plexguide/authclient.wckd
-        state: touch
 
     - name: "Deploy Questions"
       include_role:
         name: "authclient"
-        tasks_from: "main.yml"
+        tasks_from: "setup.yml"
+      when: exit.user_input == "2"
