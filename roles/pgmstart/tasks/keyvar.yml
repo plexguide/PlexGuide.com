@@ -86,6 +86,41 @@
   when: "toplevel.stdout == pgrole"
 ###### FOR TLD (END)
 
+###### FOR DEFAULT LABELS (START)
+- name: Check if WCKD Exists
+  stat:
+    path: "/var/plexguide/wckdapp.image" ### Fix This
+  register: wckdcheck
+
+- name: "WCKD Auth On"
+  set_fact:
+    wckd1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+    wckd2: "https://authclient.{{domain.stdout}}"
+    wckd3: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}};PathPrefix:/api"
+    auth: ""
+    standard1: ""
+  when: wckdcheck.stat.exists
+
+- name: WCKD Auth Off"
+    wckd1: ""
+    wckd2: ""
+    wckd3: ""
+    standard1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+    when: wckdcheck.stat.exists == False
+
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "{{standard1}}"
+      traefik.app.frontend.rule: {{wckd1}}
+      traefik.app.frontend.auth.forward.address: {{wckd2}}
+      traefik.api.frontend.rule: {{wckd3}}
+###### FOR DEFAULT LABELS (END)
+
 ###### WCKD Authentication
 #- name: "Key Variables Recall"
 #  include_role:
