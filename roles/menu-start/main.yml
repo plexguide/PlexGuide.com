@@ -75,7 +75,7 @@
     \n2.  Mount & Transport System Deployment
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
     \n4.  Server Port Guard - Ports  [{{ports}}]
-    \n5.  PG AppGuard Authentication [{{output}}]
+    \n5.  PG Authentication Systems  [{{output}}]
     \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
     \n8.  System & Network Auditor
