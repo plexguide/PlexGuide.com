@@ -114,7 +114,7 @@
     wckd2: ""
     wckd3: ""
     standard1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-    when: wckdcheck.stat.exists == False
+  when: wckdcheck.stat.exists == False
 
 - debug: msg="WCKD Running? {{wckdcheck.stat.exists}}"
 
