@@ -38,7 +38,7 @@
   when: exit.user_input == "3"
 
 - name: "Build Container Rebuild Lock"
-  shell: "touch /var/plexguide/appguard.lock"
+  shell: "touch /var/plexguide/auth.lock"
   when: exit.user_input == "3"
 
   #add prompt for exiting

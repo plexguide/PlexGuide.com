@@ -33,9 +33,9 @@ if [ "$menu" == "wckd" ]; then
   ansible-playbook /opt/plexguide/pg.yml --roles authclient
 fi
 
-file2="/var/plexguide/appguard.lock"
+file2="/var/plexguide/auth.lock"
 if [ -e "$file2" ]; then
-  rm -r /var/plexguide/appguard.lock
+  rm -r /var/plexguide/auth.lock
   bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
 fi
 
