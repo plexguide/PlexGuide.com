@@ -67,10 +67,22 @@
         output: "On"
       when: not appguard.stdout == ""
 
+    - name: Ansible
+      shell: "ansible --version | cut -d' '' -f2 | head -n1"
+      register: pgansible
+
+    - name: Python
+      shell: "python3 --version | cut -d' ' -f2"
+      register: pgpython
+
+#    - name: Traefik
+#      shell: "cat /var/plexguide/server.domain"
+#      register: pgdomain
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
-                 \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
+                 \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} | Python: {{pgpython.stdout}} | Ansible: {{pg.ansible}}
     \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
