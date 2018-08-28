@@ -41,9 +41,8 @@
   shell: "touch /var/plexguide/appguard.lock"
   when: exit.user_input == "3"
 
-- fail:
-    msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
-  when: exit.user_input == "3"
+  #add prompt for exiting
+  #when: exit.user_input == "3"
 
 - name: Launch AppGuard
   include_tasks: "appguard.yml"
