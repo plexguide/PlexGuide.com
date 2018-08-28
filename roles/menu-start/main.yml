@@ -70,14 +70,12 @@
     - name: Ansible
       shell: "ansible --version | cut -d' ' -f2 | head -n1"
       register: pgansible
+      ignore_errors: True
 
     - name: Python
       shell: "python3 --version | cut -d' ' -f2"
       register: pgpython
-
-#    - name: Traefik
-#      shell: "cat /var/plexguide/server.domain"
-#      register: pgdomain
+      ignore_errors: True
 
     - name: PG Main Menu
       pause:
