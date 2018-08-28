@@ -22,7 +22,7 @@
 
 - name: Port Result Open
   set_fact:
-    ports: "Open - Not Protected!\nAuthentication Protect Subdomains Only - Not Ports!"
+    ports: "Open - Not Protected! Authentication Protect SubDomains Only!"
   when: info.stdout == ""
 
 - name: Port Result Closed
@@ -31,7 +31,7 @@
   when: info.stdout == "127.0.0.1:"
 
 - pause:
-    prompt: "\nWelcome to the PG Authentication System!\nNOTE: Your Ports Are: {{ports}}\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
+    prompt: "\nWelcome to the PG Authentication System!\nPorts Are: {{ports}}\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
                                                                                                                         \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
