@@ -24,18 +24,14 @@
   retries: 99
   delay: 1
 
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/auth.menu"
+  when: fchoice == "1"
 
-- name: "Deploy AppGuard"
-  include_role:
-    name: "menu-appguard"
-    tasks_from: "main.yml"
-  when: exit.user_input == "3"
+- name: WCKD
+  shell: "echo wckd > /var/plexguide/auth.menu"
+  when: fchoice == "2"
 
-- name: "Deploy Questions"
-  include_role:
-    name: "authclient"
-    tasks_from: "setup.yml"
-  when: exit.user_input == "2"
+- name: AppGuard
+  shell: "echo appguard > /var/plexguide/auth.menu"
+  when: fchoice == "3"
