@@ -64,7 +64,7 @@
 
     - name: Authentication Not Enabled
       set_fact:
-        output: "Not Enable"
+        output: "Not Enabled"
       when: appguard.stdout == "" and wckdfront.stat.exists == False
 
     - name: WCKD Enabled

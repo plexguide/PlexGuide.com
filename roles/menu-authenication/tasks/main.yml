@@ -22,7 +22,7 @@
 
 - name: Port Result Open
   set_fact:
-    ports: "Open - Not Fully Protected!"
+    ports: "Open - Not Protected!\nAuthentication Protect Subdomains Only - Not Ports!"
   when: info.stdout == ""
 
 - name: Port Result Closed
