@@ -24,12 +24,12 @@ ansible-playbook /opt/plexguide/roles/menu-authenication/main.yml
 menu=$(cat /var/plexguide/auth.menu)
 
 if [ "$menu" == "appguard" ]; then
-  echo 'INFO - Selected: AppGuard' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo 'INFO - Selected: AppGuard Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-transport/scripts/main.sh
 fi
 
-if [ "$menu" == "traefik" ]; then
-  echo 'INFO - Selected: WIKD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+if [ "$menu" == "wckd" ]; then
+  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
 fi
 
