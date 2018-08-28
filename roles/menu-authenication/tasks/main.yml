@@ -17,7 +17,8 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWelcome to the PG Authentication System!\nNOTE: Your Ports Are: [Status] - [Message]\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On                                                                                                         \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+    prompt: "\nWelcome to the PG Authentication System!\nNOTE: Your Ports Are: [Status] - [Message]\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
+                                                                                                                        \n3- Deploy PG Appguard         | Simple Traefik Authenticator\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
          choice.user_input == "2" or
