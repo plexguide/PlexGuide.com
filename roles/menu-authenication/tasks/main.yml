@@ -35,7 +35,7 @@
 #  when: exit.user_input == "3"
 
 - name: "Deploy AppGuard"
-  shell: "ansible-playbook /opt/plexguide/roles/menu-appguard/tasks/main.yml"
+  shell: "ansible-playbook /opt/plexguide/roles/menu-appguard/main.yml"
   when: exit.user_input == "3"
 
 - name: "Deploy Questions"
