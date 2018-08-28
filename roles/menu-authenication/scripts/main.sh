@@ -36,7 +36,7 @@ fi
 file2="/var/plexguide/auth.lock"
 if [ -e "$file2" ]; then
   rm -r /var/plexguide/auth.lock
-  bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
+  bash /opt/plexguide/roles/menu-authenication/scripts/rebuild.sh
 fi
 
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
