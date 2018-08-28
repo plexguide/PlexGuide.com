@@ -61,7 +61,7 @@
 
 - name: "Build Container Rebuild Lock"
   shell: "touch /var/plexguide/authclient.wckd"
-  when: exit.user_input == "3"
+  when: exit.user_input == "2"
 
 - name: Launch AuthClient for WCKD Authentication
   include_tasks: "auth.yml"
