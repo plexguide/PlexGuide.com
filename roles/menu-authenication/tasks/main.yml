@@ -22,7 +22,7 @@
   register: choice
   until: choice.user_input == "1" or
          choice.user_input == "2" or
-         choice.user_input == "3" or
+         choice.user_input == "3"
   retries: 99
   delay: 1
 
