@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Teresa
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,30 +16,49 @@
 #
 #################################################################################
 ---
-- name: Launch Core Task
-  include_tasks: "core.yml"
+- pause:
+    prompt: "\nContinue to Deploy WCKD Authenticator? (Type #)\n1- NO\n2- Yes\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "4"
+  retries: 99
+  delay: 1
 
-- name: "Deploy {{pgrole}} Container"
-  docker_container:
-    name: "{{pgrole}}"
-    image: "{{image}}"
-    pull: yes
-    cpu_shares: 256
-    env:
-      PROVIDER: "https://auth.wckd.app"
-      DOMAIN: "{{cookiedomain}}"
-      EMAILS: "{{emails}}"
-    restart_policy: always
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{pgrole}}"
-    state: started
-    labels: "{{default_labels}}"
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
 
-- name: "WCKD Auth is enabled"
-  pause:
-    prompt: "WCKD Auth is enabled, please rebuild the containers manually to activate WCKD Auth. [ENTER]"
+- name: Remove WCKD Variable | Being Disabled
+  file:
+    path: /var/plexguide/authclient.wckd
+    state: absent
+  when: exit.user_input == "3"
 
-- include_role:
-    name: pgmend
+- name: "Build Container Rebuild Lock"
+  shell: "touch /var/plexguide/wckdauth.lock"
+  when: exit.user_input == "3"
+
+- fail:
+    msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
+  when: exit.user_input == "3"
+
+####### Continuing OnWard With WCKD
+- pause:
+    prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
+  register: emailinput
+
+- name: emails
+  set_fact:
+    emails: "{{emailinput.user_input}}"
+
+- name: "Build Container Rebuild Lock"
+  shell: "touch /var/plexguide/wckdauth.lock"
+
+- name: Set the WCKD Variable
+  file:
+    path: /var/plexguide/authclient.wckd
+    state: touch
+
+- name: "Deploy WKCD Authentication Container"
+  include_role:
+    name: "authclient"
+    tasks_from: "auth.yml"
