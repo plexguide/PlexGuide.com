@@ -60,7 +60,7 @@
   when: exit.user_input == "2"
 
 - name: "Build Container Rebuild Lock"
-  shell: "touch /var/plexguide/auth.wckd"
+  shell: "touch /var/plexguide/auth.lock"
   when: exit.user_input == "2"
 
 - name: Launch AuthClient for WCKD Authentication
