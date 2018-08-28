@@ -17,7 +17,7 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nContinue to Deploy WCKD Authenticator? (Type #)\n1- NO\n2- Yes\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+    prompt: "\nContinue to Deploy WCKD Authenticator? (Type #)\n1- No\n2- Yes\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
@@ -45,20 +45,24 @@
 - pause:
     prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
   register: emailinput
+  when: exit.user_input == "2"
 
 - name: emails
   set_fact:
     emails: "{{emailinput.user_input}}"
+  when: exit.user_input == "2"
 
 - name: "Build Container Rebuild Lock"
   shell: "touch /var/plexguide/wckdauth.lock"
+  when: exit.user_input == "2"
 
 - name: Set the WCKD Variable
   file:
     path: /var/plexguide/authclient.wckd
-    state: touch
+  when: exit.user_input == "2"
 
 - name: "Deploy WKCD Authentication Container"
   include_role:
     name: "authclient"
     tasks_from: "auth.yml"
+  when: exit.user_input == "2"
