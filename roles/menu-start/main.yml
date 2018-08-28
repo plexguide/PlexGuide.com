@@ -68,7 +68,7 @@
       when: not appguard.stdout == ""
 
     - name: Ansible
-      shell: "ansible --version | cut -d' '' -f2 | head -n1"
+      shell: "ansible --version | cut -d' ' -f2 | head -n1"
       register: pgansible
 
     - name: Python
