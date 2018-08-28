@@ -82,7 +82,7 @@
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
-                 \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} | Python: {{pgpython.stdout}} | Ansible: {{pg.ansible}}
+                 \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}} | Python: {{pgpython.stdout}} | Ansible: {{pgansible.stdout}}
     \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
