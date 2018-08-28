@@ -30,7 +30,7 @@ fi
 
 if [ "$menu" == "wckd" ]; then
   echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --roles authclient
+  bash /opt/plexguide/roles/authclient/scripts/main.sh
 fi
 
 file2="/var/plexguide/auth.lock"

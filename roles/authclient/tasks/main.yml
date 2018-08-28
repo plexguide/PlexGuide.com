@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 & Teresa
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -17,43 +17,46 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nContinue to Deploy WCKD Authenticator? (Type #)\n1- No\n2- Yes\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+    prompt: "\nContinue to Deploy WCKD Authenticator? (Type #)\n1- No (Exit)\n2- Yes\n3- Disable WCKD Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
   delay: 1
 
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/appguard.menu"
   when: exit.user_input == "1"
 
+### Check if AppGuard is Deployed for Disabling ### START
 - name: Remove WCKD Variable | Being Disabled
   file:
     path: /var/plexguide/authclient.wckd
     state: absent
   when: exit.user_input == "3"
 
-- name: "Build Container Rebuild Lock"
-  shell: "touch /var/plexguide/wckdauth.lock"
+- name: WCKD Var Check
+  stat:
+    path: /var/plexguide/authclient.wckd
+  register: wkcdvar
   when: exit.user_input == "3"
+
+- pause:
+    prompt: "\nWCKD Authenticator is Not Deployed! Exiting"
+  when: exit.user_input == "3" and wckdvar.stat.exists == False
 
 - fail:
-    msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
+    msg: "Exiting - WCKD Authenticatoris Not Deployed"
+  when: exit.user_input == "3" and wckdvar.stat.exists == False
+### Check if AppGuard is Deployed for Disabling ### END
+
+### Tells Server to Rebuild Containers
+- name: "Build Container Rebuild Lock"
+  shell: "touch /var/plexguide/auth.lock"
   when: exit.user_input == "3"
 
-####### Continuing OnWard With WCKD
-- pause:
-    prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
-  register: emailinput
-  when: exit.user_input == "2"
-
-- name: emails
-  set_fact:
-    emails: "{{emailinput.user_input}}"
-  when: exit.user_input == "2"
-
+### This is launching the WCKD Role and Disabling AppGuard By Making Hash Null
 - name: "Build Container Rebuild Lock"
-  shell: "touch /var/plexguide/wckdauth.lock"
+  shell: "echo '' > /var/plexguide/server.ht"
   when: exit.user_input == "2"
 
 - name: Set the WCKD Variable
@@ -61,8 +64,9 @@
     path: /var/plexguide/authclient.wckd
   when: exit.user_input == "2"
 
-- name: "Deploy WKCD Authentication Container"
-  include_role:
-    name: "authclient"
-    tasks_from: "auth.yml"
+- name: Launch AppGuard
+  include_tasks: "auth.yml"
   when: exit.user_input == "2"
+
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/authclient.menu"

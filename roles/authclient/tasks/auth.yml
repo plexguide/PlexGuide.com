@@ -19,6 +19,16 @@
 - name: Launch Core Task
   include_tasks: "core.yml"
 
+- pause:
+    prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
+  register: emailinput
+  when: exit.user_input == "2"
+
+- name: emails
+  set_fact:
+    emails: "{{emailinput.user_input}}"
+  when: exit.user_input == "2"
+
 - name: "Deploy {{pgrole}} Container"
   docker_container:
     name: "{{pgrole}}"
