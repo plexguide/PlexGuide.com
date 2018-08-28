@@ -22,8 +22,7 @@ sed -i -e "/watchtower/d" /var/plexguide/container.running
 sed -i -e "/word*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
-docker stop authclient 1>/dev/null 2>&1
-docker rm authclient 1>/dev/null 2>&1
+sed -i -e "/authclient/d" /var/plexguide/container.running
 
 count=$(wc -l < /var/plexguide/container.running)
 ((count++))
