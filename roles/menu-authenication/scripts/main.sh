@@ -29,8 +29,8 @@ if [ "$menu" == "appguard" ]; then
 
   file2="/var/plexguide/appguard.lock"
   if [ -e "$file2" ]; then
-    bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
     rm -r /var/plexguide/appguard.lock
+    bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
   fi
 fi
 
