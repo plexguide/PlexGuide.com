@@ -42,11 +42,11 @@
 
 - pause:
     prompt: "\nWCKD Authenticator is Not Deployed! Exiting"
-  when: exit.user_input == "3" and wckdvar.stat.exists == False
+  when: exit.user_input == "3" and wkcdvar.stat.exists == False
 
 - fail:
     msg: "Exiting - WCKD Authenticatoris Not Deployed"
-  when: exit.user_input == "3" and wckdvar.stat.exists == False
+  when: exit.user_input == "3" and wkcdvar.stat.exists == False
 ### Check if AppGuard is Deployed for Disabling ### END
 
 ### Tells Server to Rebuild Containers
