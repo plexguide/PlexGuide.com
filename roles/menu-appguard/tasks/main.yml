@@ -23,7 +23,7 @@
   register: program
 
 - pause:
-    prompt: "\nContinue to Deploy AppGuard? (Type #)\n1- NO\n2- Yes\n3- Disable Appguard\n\nType a [NUMBER] Choice & Press [ENTER]"
+    prompt: "\nContinue to Deploy AppGuard? (Type #)\n1- No (Exit)\n2- Yes\n3- Disable Appguard\n\nType a [NUMBER] Choice & Press [ENTER]"
   register: exit
   until: exit.user_input > "0" and exit.user_input < "4"
   retries: 99
