@@ -96,6 +96,10 @@
   set_fact:
     tldset: ""
 
+- name: Temp - Delete Bug Test"
+  set_fact:
+    authorization: "{{auth.stdout}}"
+
 - name: "WCKD Auth On"
   set_fact:
     wckd1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
@@ -122,17 +126,10 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
-      #traefik.frontend.auth.basic.users: "{{auth.stdout}}" <<< stdout error, diable for testing
+      traefik.frontend.auth.basic.users: {{authorization}}
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "{{standard1}}"
       traefik.app.frontend.rule: "{{wckd1}}"
       traefik.app.frontend.auth.forward.address: "{{wckd2}}"
       traefik.api.frontend.rule: "{{wckd3}}"
-###### FOR DEFAULT LABELS (END)
-
-###### WCKD Authentication
-#- name: "Key Variables Recall"
-#  include_role:
-#    name: "pgmstart"
-#    tasks_from: "wckd.yml"
