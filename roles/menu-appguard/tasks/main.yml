@@ -33,10 +33,6 @@
   shell: "echo break > /var/plexguide/appguard.menu"
   when: exit.user_input == "1"
 
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
-
 - name: "Build Container Rebuild Lock"
   shell: "echo '' > /var/plexguide/server.ht"
   when: exit.user_input == "3"
@@ -49,27 +45,6 @@
     msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
   when: exit.user_input == "3"
 
-- pause:
-    prompt: "\nPlease Create a Username!"
-  register: appguarduser
-
-- pause:
-    prompt: "\nPlease Create a Strong & Rememberable Password"
-  register: appguardpw
-
-- pause:
-    prompt: "\nUsername: {{appguarduser.user_input}}\nPassword: {{appguardpw.user_input}}\n\nContinue Hash Info and Deploy AppGuard? (Type #)\n1- YES\n2- NO"
-  register: exit2
-  until: exit2.user_input > "0" and exit2.user_input < "3"
-  retries: 99
-  delay: 1
-
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit2.user_input != "1"
-
-- name: "Creating Hashed Info"
-  shell: "htpasswd -cbs /var/plexguide/server.ht {{appguarduser.user_input}} {{appguardpw.user_input}}"
-
-- name: "Build Container Rebuild Lock"
-  shell: "touch /var/plexguide/appguard.lock"
+- name: Launch AppGuard
+  include_tasks: "appguard.yml"
+  when: exit.user_input == "3"

@@ -36,5 +36,4 @@ fi
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
-echo 'INFO - Selected: Exiting PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/roles/ending/ending.sh
+echo 'INFO - Selected: Exiting AppGuard' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

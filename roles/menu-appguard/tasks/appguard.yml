@@ -16,34 +16,11 @@
 #
 #################################################################################
 ---
-- script: "/opt/plexguide/roles/menu-appguard/scripts/solo.sh"
-
-- name: "Building List"
-  shell: "cat /var/plexguide/programs.temp"
-  register: program
-
-- pause:
-    prompt: "\nContinue to Deploy AppGuard? (Type #)\n1- NO\n2- Yes\n3- Disable Appguard\n\nType a [NUMBER] Choice & Press [ENTER]"
-  register: exit
-  until: exit.user_input > "0" and exit.user_input < "4"
-  retries: 99
-  delay: 1
-
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
-
 - name: "Build Container Rebuild Lock"
   shell: "echo '' > /var/plexguide/server.ht"
-  when: exit.user_input == "3"
 
 - name: "Build Container Rebuild Lock"
   shell: "touch /var/plexguide/appguard.lock"
-  when: exit.user_input == "3"
-
-- fail:
-    msg: "User Disabled AppGuard! Exiting and Rebuilding Containers!"
-  when: exit.user_input == "3"
 
 - pause:
     prompt: "\nPlease Create a Username!"
