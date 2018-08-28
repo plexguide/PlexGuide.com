@@ -33,6 +33,10 @@
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input == "1"
 
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/auth.menu"
+  when: exit.user_input == "1"
+
 - name: "Build Container Rebuild Lock"
   shell: "echo '' > /var/plexguide/server.ht"
   when: exit.user_input == "3"
