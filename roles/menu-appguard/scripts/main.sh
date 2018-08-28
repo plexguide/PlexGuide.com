@@ -15,13 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/auth.menu
+echo "on" > /var/plexguide/appguard.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/auth.menu)
-ansible-playbook /opt/plexguide/roles/menu-authenication/main.yml
-menu=$(cat /var/plexguide/auth.menu)
+menu=$(cat /var/plexguide/appguard.menu)
+ansible-playbook /opt/plexguide/pg.yml --tags menu-authenication
+menu=$(cat /var/plexguide/appguard.menu)
 
 if [ "$menu" == "appguard" ]; then
   echo 'INFO - Selected: AppGuard Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
