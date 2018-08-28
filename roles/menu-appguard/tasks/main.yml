@@ -33,6 +33,22 @@
   shell: "echo break > /var/plexguide/appguard.menu"
   when: exit.user_input == "1"
 
+### Check if AppGuard is Deployed for Disabling ### START
+- name: Register Domain
+  shell: "cat /var/plexguide/server.ht"
+  register: hashtest
+  ignore_errors: True
+  when: exit.user_input == "3"
+
+- pause:
+    prompt: "\nAppGuard is Not Deployed! Exiting"
+  when: exit.user_input == "3" and hashtest.stdout == ""
+
+- fail:
+    msg: "Exiting - AppGuard is Not Deployed"
+  when: exit.user_input == "3" and hashtest.stdout == ""
+### Check if AppGuard is Deployed for Disabling ### END
+
 - name: "Build Container Rebuild Lock"
   shell: "echo '' > /var/plexguide/server.ht"
   when: exit.user_input == "3"
