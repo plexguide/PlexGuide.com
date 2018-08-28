@@ -41,5 +41,8 @@
 - name: "Creating Hashed Info"
   shell: "htpasswd -cbs /var/plexguide/server.ht {{appguarduser.user_input}} {{appguardpw.user_input}}"
 
+- name: "Remove WCKD Variable"
+  shell: "rm /var/plexguide/authclient.wckd"
+
 - name: "Build Container Rebuild Lock"
   shell: "touch /var/plexguide/auth.lock"
