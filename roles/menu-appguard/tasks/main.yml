@@ -29,12 +29,12 @@
   retries: 99
   delay: 1
 
-- fail:
-    msg: "User Opted NOT to CONTINUE! Aborting!"
-  when: exit.user_input == "1"
-
 - name: Exiting Interface
   shell: "echo break > /var/plexguide/appguard.menu"
+  when: exit.user_input == "1"
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input == "1"
 
 - name: "Build Container Rebuild Lock"
