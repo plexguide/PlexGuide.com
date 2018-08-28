@@ -59,12 +59,11 @@
   shell: "echo '' > /var/plexguide/server.ht"
   when: exit.user_input == "2"
 
-- name: Set the WCKD Variable
-  file:
-    path: /var/plexguide/authclient.wckd
-  when: exit.user_input == "2"
+- name: "Build Container Rebuild Lock"
+  shell: "touch /var/plexguide/authclient.wckd"
+  when: exit.user_input == "3"
 
-- name: Launch AppGuard
+- name: Launch AuthClient for WCKD Authentication
   include_tasks: "auth.yml"
   when: exit.user_input == "2"
 
