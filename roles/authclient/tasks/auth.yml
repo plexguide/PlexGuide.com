@@ -20,7 +20,7 @@
   include_tasks: "core.yml"
 
 - pause:
-    prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
+    prompt: "\nWhat emails are allowed to login? Type Carefully and Press [ENTER]\nTip: If more than one email, please separate with a comma.\n\nExample: bob@gmail.com,notbob@gmail.com,isthisbob@nope.com"
   register: emailinput
   when: exit.user_input == "2"
 
@@ -46,10 +46,6 @@
           - "{{pgrole}}"
     state: started
     labels: "{{default_labels}}"
-
-- name: "WCKD Auth is enabled"
-  pause:
-    prompt: "WCKD Auth is enabled, please rebuild the containers manually to activate WCKD Auth. [ENTER]"
 
 - include_role:
     name: pgmend
