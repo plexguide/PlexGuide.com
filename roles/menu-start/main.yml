@@ -57,15 +57,25 @@
       shell: "cat /var/plexguide/server.ht"
       register: appguard
 
-    - name: Port Result Open
-      set_fact:
-        output: "Off"
-      when: appguard.stdout == ""
+    - name: WCKD Status
+      stat:
+        path: "/var/plexguide/authclient.wckd"
+      register: wckdfront
 
-    - name: Port Result Closed
+    - name: Authentication Not Enabled
       set_fact:
-        output: "On"
-      when: not appguard.stdout == ""
+        output: "Not Enable"
+      when: appguard.stdout == "" and wckdfront.stat.exists == False
+
+    - name: WCKD Enabled
+      set_fact:
+        output: "WCKD Enabled"
+      when: appguard.stdout == "" and wckdfront.stat.exists
+
+    - name: AppGuard Enabled
+      set_fact:
+        output: "APP Guard Enabled"
+      when: not appguard.stdout == "" and wckdfront.stat.exists == False
 
     - name: Ansible
       shell: "ansible --version | cut -d' ' -f2 | head -n1"
