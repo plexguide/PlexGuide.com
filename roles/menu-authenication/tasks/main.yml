@@ -28,14 +28,10 @@
     msg: "User Opted NOT to CONTINUE! Aborting!"
   when: exit.user_input == "1"
 
-#- name: "Deploy AppGuard"
-#  include_role:
-#    name: "menu-appguard"
-#    tasks_from: "main.yml"
-#  when: exit.user_input == "3"
-
 - name: "Deploy AppGuard"
-  shell: "ansible-playbook /opt/plexguide/roles/menu-appguard/main.yml"
+  include_role:
+    name: "menu-appguard"
+    tasks_from: "main.yml"
   when: exit.user_input == "3"
 
 - name: "Deploy Questions"
