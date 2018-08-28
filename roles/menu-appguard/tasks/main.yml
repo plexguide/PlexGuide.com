@@ -34,7 +34,7 @@
   when: exit.user_input == "1"
 
 - name: Exiting Interface
-  shell: "echo break > /var/plexguide/auth.menu"
+  shell: "echo break > /var/plexguide/appguard.menu"
   when: exit.user_input == "1"
 
 - name: "Build Container Rebuild Lock"
