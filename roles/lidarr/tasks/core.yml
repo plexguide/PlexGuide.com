@@ -57,16 +57,6 @@
       APP: "lidarr"
       VERSION: "stable"
       BACKUP: "no"
-
-- name: "Set Default Labels - {{pgrole}}"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-      traefik.port: "{{intport}}"
-
 ######################## Deploy PGMSTART
 - include_role:
     name: "pgmstart"

@@ -57,25 +57,46 @@
       shell: "cat /var/plexguide/server.ht"
       register: appguard
 
-    - name: Port Result Open
-      set_fact:
-        output: "Off"
-      when: appguard.stdout == ""
+    - name: WCKD Status
+      stat:
+        path: "/var/plexguide/authclient.wckd"
+      register: wckdfront
 
-    - name: Port Result Closed
+    - name: Authentication Not Enabled
       set_fact:
-        output: "On"
-      when: not appguard.stdout == ""
+        output: "Not Enabled"
+      when: appguard.stdout == "" and wckdfront.stat.exists == False
+
+    - name: WCKD Enabled
+      set_fact:
+        output: "WCKD Enabled"
+      when: appguard.stdout == "" and wckdfront.stat.exists
+
+    - name: AppGuard Enabled
+      set_fact:
+        output: "APP Guard Enabled"
+      when: not appguard.stdout == "" and wckdfront.stat.exists == False
+
+    - name: Ansible
+      shell: "ansible --version | cut -d' ' -f2 | head -n1"
+      register: pgansible
+      ignore_errors: True
+
+    - name: Python
+      shell: "python3 --version | cut -d' ' -f2"
+      register: pgpython
+      ignore_errors: True
 
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
+                 \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
     \n\n1.  EXIT PlexGuide
     \n2.  Mount & Transport System Deployment
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
     \n4.  Server Port Guard - Ports  [{{ports}}]
-    \n5.  PG AppGuard Authentication [{{output}}]
+    \n5.  PG Authentication Systems  [{{output}}]
     \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
     \n8.  System & Network Auditor
@@ -117,7 +138,7 @@
     - shell: "echo ports > /var/plexguide/main.menu"
       when: fchoice == "4"
 
-    - shell: "echo appguard > /var/plexguide/main.menu"
+    - shell: "echo auth > /var/plexguide/main.menu"
       when: fchoice == "5"
 
     - shell: "echo programs > /var/plexguide/main.menu"

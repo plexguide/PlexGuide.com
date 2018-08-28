@@ -71,16 +71,6 @@
       MONO_TLS_PROVIDER: legacy
       APP: "radarr"
       VERSION: "stable"
-
-- name: "Set Default Labels - {{pgrole}}"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.frontend.auth.basic: "{{auth.stdout}}"
-      traefik.port: "{{intport}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-
 ######################## Deploy PGMSTART
 - include_role:
     name: "pgmstart"
