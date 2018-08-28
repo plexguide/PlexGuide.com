@@ -91,9 +91,9 @@
   #########################################
 
 - pause:
-    prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap\n5- GandiV5"
+    prompt: "\nType Number for Domain Provider\n1- CloudFlare\n2- GoDaddy (Recommended)\n3- DuckDNS\n4- NameCheap\n5- GandiV5\n6- OVH"
   register: result
-  until: result.user_input > "0" and result.user_input < "6"
+  until: result.user_input > "0" and result.user_input < "7"
   retries: 99
   delay: 1
 
@@ -206,7 +206,49 @@
   shell: "echo 'gandiv5' > /var/plexguide/server.provider"
   when:
     - result.user_input == "5"
+########################
+- name: Set Provider - OVH
+  set_fact:
+    provider: "ovh"
+  when: result.user_input == "6"
 
+- name: OVH Information
+  pause:
+    prompt: "\nWhat is Your OVH Endpoint?"
+  register: ovh1
+  when:
+    - result.user_input == "6"
+
+- name: OVH Information
+  pause:
+    prompt: "\nWhat is Your OVH API Key?"
+  register: ovh2
+  when:
+    - result.user_input == "6"
+
+- name: OVH Information
+  pause:
+    prompt: "\nWhat is Your OVH API Secret?"
+  register: ovh3
+  when:
+    - result.user_input == "6"
+
+- name: OVH Information
+  pause:
+    prompt: "\nWhat is Your OVH API Consumer Key?"
+  register: ovh4
+  when:
+    - result.user_input == "6"
+        
+- name: Store Provider
+  shell: "echo 'ovh' > /var/plexguide/server.provider"
+  when:
+    - result.user_input == "6"
+    
+- name: Set Provider - OVH
+  set_fact:
+    provider: "ovh"
+  when: result.user_input == "6"
 ########################
 - name: Register Provider First Time
   shell: "cat /var/plexguide/server.provider"
@@ -432,6 +474,38 @@
   tags: gandiv5
   when:
     - result.user_input == "5"
+    ######################################################### OVH
+- name: Deploy Traefik - OVH
+  docker_container:
+    name: traefik
+    image: traefik:1.7
+    pull: yes
+    cpu_shares: 256
+    published_ports:
+      - "443:443"
+      - "80:80"
+    env:
+      PUID: 1000
+      PGID: 1000
+      PROVIDER: "ovh"
+      OVH_ENDPOINT: "{{ovh1.user_input}}"
+      OVH_APPLICATION_KEY: "{{ovh2.user_input}}"
+      OVH_APPLICATION_SECRET: "{{ovh3.user_input}}"
+      OVH_CONSUMER_KEY: "{{ovh4.user_input}}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - /opt/appdata/traefik/acme:/etc/traefik/acme
+    restart_policy: always
+    state: started
+    networks:
+      - name: plexguide
+        aliases:
+          - traefik
+  tags: ovh
+  when:
+    - result.user_input == "6"
 ############################################### REMOVE LOCK
 - name: Register E-Mail
   shell: "rm -r /var/plexguide/traefik.lock"
