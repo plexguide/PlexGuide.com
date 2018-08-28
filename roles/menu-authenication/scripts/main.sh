@@ -20,7 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/auth.menu)
-ansible-playbook /opt/plexguide/roles/pg.yml --role menu-authenication
+  ansible-playbook /opt/plexguide/roles/pg.yml --role menu-authenication
 menu=$(cat /var/plexguide/auth.menu)
 
 if [ "$menu" == "appguard" ]; then
