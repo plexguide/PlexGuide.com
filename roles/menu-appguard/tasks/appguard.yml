@@ -48,7 +48,7 @@
 
 - name: "Remove WCKD Variable"
   shell: "rm /var/plexguide/authclient.wckd"
-  when: wckdvarcheck.stat.exists == False
+  when: wckdvarcheck.stat.exists
 
 - name: "Build Container Rebuild Lock"
   shell: "touch /var/plexguide/auth.lock"
