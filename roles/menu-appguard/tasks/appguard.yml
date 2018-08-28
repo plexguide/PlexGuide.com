@@ -16,11 +16,8 @@
 #
 #################################################################################
 ---
-- name: "Build Container Rebuild Lock"
+- name: "Blank Out Server Hash for AppGuard"
   shell: "echo '' > /var/plexguide/server.ht"
-
-- name: "Build Container Rebuild Lock"
-  shell: "touch /var/plexguide/auth.lock"
 
 - pause:
     prompt: "\nPlease Create a Username!"
