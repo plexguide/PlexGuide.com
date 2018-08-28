@@ -17,12 +17,17 @@
 #################################################################################
 ---
 - pause:
-    prompt: "\nWelcome to the PG Authentication System!\nNOTE: Your Ports Are: [Status] - [Message]\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
-                                                                                                                 \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
-  register: exit
-  until: exit.user_input > "0" and exit.user_input < "4"
+    prompt: "\nWelcome to the PG Authentication System!\nNOTE: Your Ports Are: [Status] - [Message]\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On                                                                                                         \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+  register: choice
+  until: choice.user_input == "1" or
+         choice.user_input == "2" or
+         choice.user_input == "3" or
   retries: 99
   delay: 1
+
+- name: Set Choice
+  set_fact:
+    fchoice: "{{choice.user_input}}"
 
 - name: Exiting Interface
   shell: "echo break > /var/plexguide/auth.menu"
