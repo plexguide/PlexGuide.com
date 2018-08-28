@@ -48,3 +48,6 @@
 - name: Launch AppGuard
   include_tasks: "appguard.yml"
   when: exit.user_input == "2"
+
+- name: Exiting Interface
+  shell: "echo break > /var/plexguide/appguard.menu"
