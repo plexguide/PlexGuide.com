@@ -28,16 +28,16 @@
   when: exit.user_input == "1"
 
 ### Check if AppGuard is Deployed for Disabling ### START
-- name: Remove WCKD Variable | Being Disabled
-  file:
-    path: /var/plexguide/authclient.wckd
-    state: absent
-  when: exit.user_input == "3"
-
 - name: WCKD Var Check
   stat:
     path: /var/plexguide/authclient.wckd
   register: wkcdvar
+  when: exit.user_input == "3"
+
+- name: Remove WCKD Variable | Being Disabled
+  file:
+    path: /var/plexguide/authclient.wckd
+    state: absent
   when: exit.user_input == "3"
 
 - pause:
