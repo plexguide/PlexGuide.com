@@ -71,13 +71,6 @@ fi
 if [ "$menu" == "auth" ]; then
   echo 'INFO - Selected: Authentication Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-authenication/scripts/main.sh
-
-  file2="/var/plexguide/appguard.lock"
-  if [ -e "$file2" ]; then
-    bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
-    rm -r /var/plexguide/appguard.lock
-  fi
-
 fi
 
 if [ "$menu" == "wckd" ]; then
