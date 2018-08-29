@@ -24,7 +24,7 @@ touch /opt/appdata/pgblitz/vars/automated
 
 echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --title "NOTE" --msgbox "\nInstalling requirements" 0 0
-cd  /opt/plexguide/roles/pgblitz/scripts/WCKD/
+cd  /opt/plexguide/roles/menu-pgblitz/scripts/WCKD/
 pip3 install -r requirements.txt
 dialog --title "Auto SA Creation" \
        --yesno "Are you planning to use encryption?\n\nENCRYPTION CURRENTLY NOT WORKING!!" 7 60
@@ -66,7 +66,7 @@ elif [ "$final" == "encrypted" ];then
 fi
 
 ### Add GDSA Paths for UnionFS
-bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
+bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
 temp=$( cat /tmp/pg.gdsa.build )
 echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 

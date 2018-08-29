@@ -127,21 +127,21 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
         if [ "$final" == "gdrive" ]; then
           echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
           exit
         fi
 
         if [ "$final" == "tdrive" ]; then
           echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
           exit
         fi
 
         if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
           echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
           dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-          bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+          bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
           exit
         fi
             echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -153,31 +153,31 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             docker stop cloudblitz 1>/dev/null 2>&1
             docker rm cloudblitz 1>/dev/null 2>&1
             dialog --title "NOTE" --msgbox "\nIf you havn't already you need to use Option C\nand add you email's to your tdrive\nThen use option D to validate your JSON files" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/list.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/list.sh
             ;;
         C)
           ### Checkers
           if [ "$final" == "gdrive" ]; then
             echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
             exit
           fi
 
           if [ "$final" == "tdrive" ]; then
             echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
             exit
           fi
           if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
             echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
             exit
           fi
           echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          bash /opt/plexguide/roles/pgblitz/scripts/emails.sh
+          bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
           dialog --title "WARNING!" --msgbox "\nIf you add any new JSONs in the future,\nyou must share their email addresses also!" 0 0
           ;;
         D)
@@ -190,7 +190,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
               dialog --title "SET ENCRYPTION SALT" \
                     --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
             fi
-            bash /opt/plexguide/roles/pgblitz/scripts/validator.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
           else
             dialog --title "WARNING!" --msgbox "\nIt seems like you have no JSON files :(" 0 0
           fi
@@ -200,20 +200,20 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           if [ "$final" == "gdrive" ]; then
             echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
             exit
           fi
 
           if [ "$final" == "tdrive" ]; then
             echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
             exit
           fi
           if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
             echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-            bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
             exit
           fi
 
@@ -229,7 +229,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
           fi
 
           ### Add GDSA Paths for UnionFS
-          bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
+          bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
           temp=$( cat /tmp/pg.gdsa.build )
           echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
@@ -263,7 +263,7 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
             sleep 2
             clear
             mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/ 1>/dev/null 2>&1
-            bash /opt/plexguide/roles/pgblitz/scripts/validator.sh;;
+            bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh;;
         H)
             dialog --infobox "Baselining PGBlitz (Please Wait)" 3 40
             sleep 2
@@ -296,4 +296,4 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 ########## Deploy End
 esac
 
-bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh

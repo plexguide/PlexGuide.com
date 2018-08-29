@@ -25,7 +25,7 @@ menu=$(cat /var/plexguide/transport.menu)
 
 if [ "$menu" == "blitzauto" ]; then
   echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/automated.sh
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/automated.sh
 fi
 
 if [ "$menu" == "move" ]; then
