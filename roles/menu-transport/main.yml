@@ -24,9 +24,9 @@
         prompt: "\nWelcome to the PG Transport System!
                  \nSelect a Transport System!
     \n\n1.  Exit the Transport System
-    \n2.  PG Blitz /w PGDrive   Advanced    | 750GB+ Daily Upload Limit
-    \n3.  PG Move  /w PGDrive - Unencrypted | Simple | 750GB Daily Limit
-    \n4.  PG Move  /w PGDrive - Encrypted   | Simple | 750GB Daily Limit
+    \n2.  PG Blitz /w PGDrive - Unencrypted | 750 GB+ Daily Upload Limit
+    \n3.  PG Move  /w PGDrive - Unencrypted | 750GB Daily Limit
+    \n4.  PG Move  /w PGDrive - Encrypted   | 750GB Daily Limit
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
