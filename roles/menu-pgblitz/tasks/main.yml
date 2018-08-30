@@ -18,7 +18,7 @@
 ---
 - name: Install pip requirements
   pip:
-    requirements: /opt/plexguide/roles/menu-pgblitz/scripts/WCKD/requirements.txt
+    requirements: /opt/plexguide/roles/menu-pgblitz/requirements.txt
     executable: pip3
 
 - name: Set pgtrak.py as executable
