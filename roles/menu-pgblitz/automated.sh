@@ -18,92 +18,44 @@ mkdir -p /opt/appdata/pgblitz/vars/
 mkdir -p /opt/appdata/pgblitz/keys/automation
 touch /opt/appdata/pgblitz/vars/automated
 
-echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - Installing Requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
 
+### Python Script Prep
+ansible-playbook /opt/plexguide/roles/menu-pgblitz/tasks/main.yml
+
 cd /opt/plexguide/roles/menu-pgblitz/tasks
 python3 pgblitz.py
 if [ $? == 1 ]; then
-    dialog --title "ERROR" --msgbox "\nSomething went wrong executing the script, Putting you back to the menu!\nPress [ENTER] to Continue!" 0 0
-    bash /opt/plexguide/roles/deploychoice.sh
+    echo ""
+    read -n 1 -s -r -p "PGBlitz.Py Could Not Execute due to an Internal Error! Press [Any Key] to Continue"
+    exit
 fi
 
 if [ -e /root/.config/rclone/rclone.config ]; then
     mv /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.old
-    dialog --title "NOTE" --msgbox "\nYou're old rclone config has been moved to /root/.config/rclone/rclone.conf.old\nPress [ENTER] to Continue!" 0 0
+    echo ""
+    read -n 1 -s -r -p "You're old rclone config has been moved to /root/.config/rclone/rclone.conf.old - Press [Any Key] to Continue"
 fi
 mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.conf
-dialog --title "NOTE" --msgbox "\nYour emails should be auto added to your tdrive!\nPress [ENTER] to Continue!" 0 0
-dialog --title "NOTE" --msgbox "\nAll done! Now to continue deploying PGBlitz!!\nPress [ENTER] to Continue!" 0 0
-final="unencrypted"
-
 
 #### BLANK OUT PATH - This Builds For UnionFS
 rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
 ### Build UnionFS Paths Based on Version
-if [ "$final" == "unencrypted" ];then
-    echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-elif [ "$final" == "encrypted" ];then
-    echo -n "/mnt/gcrypt=RO:/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
-fi
+echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
 
 ### Add GDSA Paths for UnionFS
 bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
 temp=$( cat /tmp/pg.gdsa.build )
 echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
-#ask about PGBlitz GUI
-dialog --title "PGBLitz WebGUI" \
-       --yesno "Would you like to deploy the new PGBlitz WebGUI?" 7 60
-response=$?
-case $response in
-    0)
-        WEBUI="yes"
-        ;;
-    1)
-        WEBUI="no"
-        ;;
-esac
-### Execute Playbook Based on Version
-if [ "$final" == "unencrypted" ];then
-    if [ "$WEBUI" == "no" ]; then
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
-    else
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
-        ansible-playbook /opt/plexguide/pg.yml --tags blitzui
-    fi
-elif [ "$final" == "encrypted" ];then
-    if [ "$WEBUI" == "no" ]; then
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
-    else
-        ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
-        ansible-playbook /opt/plexguide/pg.yml --tags blitzui
-    fi
-fi
-file="/mnt/unionfs/plexguide/pgchecker.bin"
-if [ -e "$file" ]; then
-    echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-else
-    mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
-    touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-    if [ "$final" == "encrypted" ]; then
-        mkdir -p /mnt/tcrypt/plexguide/ 1>/dev/null 2>&1
-        mkdir -p /mnt/gcrypt/plexguide/ 1>/dev/null 2>&1
-        rclone copy /tmp/pgchecker gcyrpt:/plexguide/ &>/dev/null &
-        rclone copy /tmp/pgchecker tcrypt:/plexguide/ &>/dev/null &
-    else
-        mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
-        mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-        rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
-        rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
-    fi
-    echo 'INFO - Deployed PGChecker.bin - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-fi
+ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+ansible-playbook /opt/plexguide/pg.yml --tags blitzui
+
 echo ""
-read -n 1 -s -r -p "Press any key to continue"
-dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
+read -n 1 -s -r -p "PGBlitz Auto & PGDrives Deployed! Press [Any Key] to Continue"
