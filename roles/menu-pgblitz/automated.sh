@@ -25,7 +25,7 @@ echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /op
 #dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
 
 ### Python Script Prep
-ansible-playbook /opt/plexguide/roles/menu-pgblitz/tasks/main.yml
+ansible-playbook /opt/plexguide/roles/menu-pgblitz/pre.yml
 
 cd /opt/plexguide/roles/menu-pgblitz/tasks
 python3 pgblitz.py
