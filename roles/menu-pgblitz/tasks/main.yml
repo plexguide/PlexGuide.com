@@ -18,12 +18,12 @@
 ---
 - name: Install pip requirements
   pip:
-    requirements: /opt/plexguide/roles/menu-pgblitz/requirements.txt
+    requirements: /opt/plexguide/roles/tasks/requirements.txt
     executable: pip3
 
 - name: Set pgtrak.py as executable
   file:
-    path: /opt/plexguide/roles/menu-pgblitz/pgblitz.py
+    path: /opt/plexguide/roles/tasks/pgblitz.py
     owner: 1000
     group: 1000
     mode: a+x
