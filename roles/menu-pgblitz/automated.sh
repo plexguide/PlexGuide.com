@@ -27,7 +27,6 @@ echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /op
 ### Python Script Prep
 ansible-playbook /opt/plexguide/roles/menu-pgblitz/pre.yml
 
-cd /opt/plexguide/roles/menu-pgblitz/tasks
 python3 pgblitz.py
 if [ $? == 1 ]; then
     echo ""
