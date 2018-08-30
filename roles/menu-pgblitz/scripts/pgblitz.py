@@ -4,6 +4,7 @@ A W.C.K.D. Automation Project
 Made with love by NotTeresa
 https://github.com/NotTeresa
 
+/w Admin9705 for Cleanup :D 
 """
 
 from __future__ import print_function
