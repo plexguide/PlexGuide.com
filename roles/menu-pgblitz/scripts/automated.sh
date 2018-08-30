@@ -30,7 +30,6 @@ ansible-playbook /opt/plexguide/roles/menu-pgblitz/pre.yml
 echo ""
 echo "NOTE: Pay Attention! USE the ACCOUNT of Your Business G-Suite!"
 echo "Failing to do so will [RESULT] in Script Failure!"
-echo ""
 cd /opt/plexguide/roles/menu-pgblitz/scripts/
 python3 pgblitz.py
 if [ $? == 1 ]; then
@@ -65,4 +64,5 @@ ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
 ansible-playbook /opt/plexguide/pg.yml --tags blitzui
 
 echo ""
-read -n 1 -s -r -p "PGBlitz Auto & PGDrives Deployed! Press [Any Key] to Continue"
+echo "NOTE: BlitzUI deployed to blitzui.domain.com | domain.com:43242 | ipv4:43242"
+read -n 1 -s -r -p "PGBlitz, PGDrives Deployed! Press [ANY KEY] to Continue"
