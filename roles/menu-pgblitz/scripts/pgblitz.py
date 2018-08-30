@@ -35,7 +35,7 @@ def output():
         if os.path.isdir(output):
             return output
         else:
-            print('Output path does not exist')
+            print('\nOutput path does not exist')
             exit(1)
     else: return '/opt/appdata/pgblitz/keys/automation'
 
@@ -44,8 +44,8 @@ def auth():
     secrets = "credentials.json"
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
-    print('Please go to this URL: {}'.format(auth_url))
-    code = input('\n\nEnter the authorization code: ')
+    print('\nPlease go to this URL: {}'.format(auth_url))
+    code = input('\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     credentials = flow.credentials
     drive = build('drive', 'v3', credentials = credentials)
@@ -58,14 +58,14 @@ def auth2():
     secrets = "rclone.json"
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
-    print('We need you to login again to configurate RCLONE.\nUse the same login credentials as you did just a few seconds ago!\nPlease go to this URL: {}'.format(auth_url))
-    code = input('\n\nEnter the authorization code: ')
+    print('\nWe need you to login again to configurate RCLONE.\nUse the same login credentials as you did just a few seconds ago!\nPlease go to this URL: {}'.format(auth_url))
+    code = input('\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     return {'token': token}
 
 def gsuite(drive):
     check = drive.about().get(fields="canCreateTeamDrives").execute().get('canCreateTeamDrives')
-    if args.verbosity >= 2: print('Can user create teamdrives: {}'.format(check))
+    if args.verbosity >= 2: print('\nCan user create teamdrives: {}'.format(check))
     return check
 
 def teamdriveExists(drive):
@@ -95,8 +95,8 @@ def createProject(cloudresourcemanager):
     id_gen = ''.join(choice(digits) for i in range(8))
     project_body = {'projectId': 'plexguide-'+id_gen, 'name': 'PlexGuide'}
     cloudresourcemanager.projects().create(body=project_body).execute()
-    if args.verbosity >= 1: print('New Google Cloud Project created: '+ 'plexguide-'+id_gen)
-    if args.verbosity >= 1: print('Waiting 5 seconds to make sure project is reachable.')
+    if args.verbosity >= 1: print('\nNew Google Cloud Project created: '+ 'plexguide-'+id_gen)
+    if args.verbosity >= 1: print('\nWaiting 5 seconds to make sure project is reachable.')
     sleep(5)
     return 'plexguide-'+id_gen
 
@@ -120,7 +120,7 @@ def selectOptions(datainput):
 #User can select how many TB he or she would like to upload
 def accountsSelect():
     accounts = [4, 6, 10, 20, 40, 60]
-    print('How much data would you like to be able to upload on a daily basis?\nPlease enter the number in front of the amount of terabytes:')
+    print('\nHow much data would you like to be able to upload on a daily basis?\nPlease enter the number in front of the amount of terabytes:')
     for option, account in enumerate(accounts, 1): print('{}. {} TB daily'.format(option,account * 0.75))
     userinput = selectOptions(datainput=accounts)
     return {'accounts': accounts[int(userinput)-1]}
@@ -129,7 +129,7 @@ def rcloneconfig(conffile, output):
     conffile = '\n'.join(conffile)
     with open(os.path.join(output,'rclone.conf'), 'w') as conf:
         conf.write(conffile)
-    if args.verbosity >= 1: print('Rclone configuration file written successfully')
+    if args.verbosity >= 1: print('\nRclone configuration file written successfully')
 
 #Creates Service Accounts
 def serviceAccountsCreate(iam, project, output, template, conffile, teamdrive):
@@ -213,7 +213,7 @@ def typeName():
 
 def teamdriveMenu():
     menu = ['Existing', 'New']
-    print('Would you like to use an existing teamdrive or make a new one?')
+    print('\nWould you like to use an existing teamdrive or make a new one?')
     for option, teamdrive in enumerate(menu, 1): print('{}. {} teamdrive'.format(option,teamdrive))
     userinput = selectOptions(datainput=menu)
     return {'option': menu[int(userinput)-1]}
@@ -227,7 +227,7 @@ def teamdriveCreate(drive):
 
 #Let the user select a teamdrive
 def teamdriveSelect(valid):
-    print('Select teamdrive:')
+    print('\nSelect teamdrive:')
     for option, item in enumerate(valid, 1): print('{}. {} ({})'.format(option,item['name'], item['id']))
     userinput = selectOptions(datainput=valid)
     return {'id': valid[int(userinput)-1]['id'], 'name': valid[int(userinput)-1]['name']}
@@ -249,18 +249,18 @@ def main(oauth, output):
         if not getProject:
             project = createProject(cloudresourcemanager=oauth['cloudresourcemanager'])
         else:
-            if args.verbosity >= 1: print('PlexGuide project already exists! Using ' + getProject + ' as main PG project.')
+            if args.verbosity >= 1: print('\nPlexGuide project already exists! Using ' + getProject + ' as main PG project.')
             project = getProject
         enableAPI(servicemanagement=oauth['servicemanagement'], project=project)
         if valid:
-            if args.verbosity >= 1: print('Teamdrive already exists, prompting user to choose between a new or existing teamdrive.')
+            if args.verbosity >= 1: print('\nTeamdrive already exists, prompting user to choose between a new or existing teamdrive.')
             if gsuite(drive=oauth['drive']) and teamdriveMenu()['option'] == 'New':
                 teamdrive = teamdriveCreate(drive=oauth['drive'])
             else:
                 teamdrive = teamdriveSelect(valid=valid)
         else:
-            if args.verbosity >= 1: print('Teamdrive does NOT exist, prompting user to create a teamdrive.')
-            print("You don't have a teamdrive yet!")
+            if args.verbosity >= 1: print('\nTeamdrive does NOT exist, prompting user to create a teamdrive.')
+            print("\nYou don't have a teamdrive yet!")
             teamdrive = teamdriveCreate(drive=oauth['drive'])
         if args.verbosity >= 1: print('Selected: {} ({})'.format(teamdrive['name'], teamdrive['id']))
         oauth2 = auth2()
@@ -269,9 +269,9 @@ def main(oauth, output):
         SA = serviceAccounts(iam=oauth['iam'], project=project, output=output, teamdrive=teamdrive['id'], token=token)
         if SA:
             invite(iam=oauth['iam'], drive=oauth['drive'], project=project, id=teamdrive['id'], name=teamdrive['name'])
-            print('Great news! PGBlitz has succesfully been setup!')
+            print('\nGreat news! PGBlitz has succesfully been setup!')
         else:
-            print('User cancelled.')
+            print('\nUser cancelled.')
             exit(1)
 
 if __name__ == '__main__':
