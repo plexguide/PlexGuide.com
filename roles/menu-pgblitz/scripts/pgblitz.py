@@ -107,7 +107,7 @@ def enableAPI(servicemanagement, project):
 #Function for creating a nice menu
 def selectOptions(datainput):
     while True:
-        try: data = int(input("Enter option: "))
+        try: data = int(input("\nEnter option: "))
         except ValueError:
             print("Sorry, I didn't understand that. Please type the number.")
             continue
@@ -201,12 +201,12 @@ def question(question):
 
 def typeName():
     while True:
-        try: data = input("What would you like to call your new teamdrive?\nType here: ")
+        try: data = input("\nWhat would you like to call your new teamdrive?\nType here: ")
         except ValueError:
-            print("Sorry, I didn't understand that. Please enter a name.")
+            print("\nSorry, I didn't understand that. Please enter a name.")
             continue
         if not data:
-            print("Sorry, that is not an option. Please enter a name.")
+            print("\nSorry, that is not an option. Please enter a name.")
             continue
         else: break
     return data
