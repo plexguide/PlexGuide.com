@@ -44,7 +44,7 @@ def auth():
     secrets = "credentials.json"
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
-    print('\nPlease go to this URL: {}'.format(auth_url))
+    print('\nCopy & Paste and Visit the Following URL:\n {}'.format(auth_url))
     code = input('\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     credentials = flow.credentials
