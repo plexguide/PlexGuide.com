@@ -44,7 +44,7 @@ def auth():
     secrets = "credentials.json"
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
-    print('\nCopy & Paste and Visit the Following URL:\n{}'.format(auth_url))
+    print('\nCopy & Paste and Visit the Following URL:\n\n{}'.format(auth_url))
     code = input('\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     credentials = flow.credentials
@@ -58,7 +58,7 @@ def auth2():
     secrets = "rclone.json"
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
-    print('\nWe need you to login again to configurate RCLONE. Use the same login credentials as you did just a few seconds ago!\n\nCopy & Paste and Visit the Following URL:\n{}'.format(auth_url))
+    print('\nWe need you to login again to configurate RCLONE. Use the same login credentials as you did just a few seconds ago!\n\nCopy & Paste and Visit the Following URL:\n\n{}'.format(auth_url))
     code = input('\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     return {'token': token}
