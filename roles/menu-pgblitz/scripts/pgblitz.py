@@ -1,7 +1,7 @@
 """
 A W.C.K.D. Automation Project
 
-Made with love by NotTeresa 
+Made with love by NotTeresa
 https://github.com/NotTeresa
 
 """
@@ -32,9 +32,9 @@ parser.parse_known_args()
 def output():
     if args.output:
         output = args.output.replace("'", "").replace('"', "")
-        if os.path.isdir(output): 
+        if os.path.isdir(output):
             return output
-        else: 
+        else:
             print('Output path does not exist')
             exit(1)
     else: return '/opt/appdata/pgblitz/keys/automation'
@@ -45,7 +45,7 @@ def auth():
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
     print('Please go to this URL: {}'.format(auth_url))
-    code = input('Enter the authorization code: ')
+    code = input('\n\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     credentials = flow.credentials
     drive = build('drive', 'v3', credentials = credentials)
@@ -59,7 +59,7 @@ def auth2():
     flow = Flow.from_client_secrets_file(secrets, scopes=SCOPES, redirect_uri='urn:ietf:wg:oauth:2.0:oob')
     auth_url, _ = flow.authorization_url(prompt='consent')
     print('We need you to login again to configurate RCLONE.\nUse the same login credentials as you did just a few seconds ago!\nPlease go to this URL: {}'.format(auth_url))
-    code = input('Enter the authorization code: ')
+    code = input('\n\nEnter the authorization code: ')
     token = flow.fetch_token(code=code)
     return {'token': token}
 
@@ -85,7 +85,7 @@ def listProject(cloudresourcemanager):
     for project in projects:
         if args.verbosity >= 2 and 'active' in project['lifecycleState'].lower():
             print(project['projectId'])
-        if 'active' in project['lifecycleState'].lower() and 'plexguide' in project['projectId']:   
+        if 'active' in project['lifecycleState'].lower() and 'plexguide' in project['projectId']:
             project_id = project['projectId']
     if project_id:
         return project_id
@@ -169,7 +169,7 @@ def serviceAccounts(iam, project, output, teamdrive, token):
         for account in accounts:
             if args.verbosity >= 1: print(u'{0} ({1})'.format(account['displayName'], account['email']))
         answer = question("Service Accounts already exist, should we invite those to your teamdrive and download the JSON files?")
-        if answer == True: 
+        if answer == True:
             for account in accounts:
                 key_body = {'keyAlgorithm': 'KEY_ALG_RSA_2048', 'privateKeyType': 'TYPE_GOOGLE_CREDENTIALS_FILE'}
                 keygen = iam.projects().serviceAccounts().keys().create(name=account.get('name'), body=key_body).execute()
@@ -179,7 +179,7 @@ def serviceAccounts(iam, project, output, teamdrive, token):
                 conffile.append(rclone)
             rcloneconfig(conffile, output)
             return True
-        else: 
+        else:
             return False
     elif args.generateServiceAccounts:
         conffile = serviceAccountsCreate(iam=iam, project=project, output = output, template=template, conffile=conffile, teamdrive=teamdrive)
@@ -187,7 +187,7 @@ def serviceAccounts(iam, project, output, teamdrive, token):
         return True
     else:
         return False
-    
+
 
 #Easy function for asking yes / no questions
 def question(question):
@@ -270,7 +270,7 @@ def main(oauth, output):
         if SA:
             invite(iam=oauth['iam'], drive=oauth['drive'], project=project, id=teamdrive['id'], name=teamdrive['name'])
             print('Great news! PGBlitz has succesfully been setup!')
-        else: 
+        else:
             print('User cancelled.')
             exit(1)
 
