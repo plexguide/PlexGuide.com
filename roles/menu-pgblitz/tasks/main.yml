@@ -30,5 +30,5 @@
 
 - name: Stuff
   shell: |
-    cd /opt/plexguide/roles/menu-pgblitz/
+    cd /opt/plexguide/roles/menu-pgblitz/tasks
     python3 pgblitz.py
