@@ -27,6 +27,9 @@ echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /op
 ### Python Script Prep
 ansible-playbook /opt/plexguide/roles/menu-pgblitz/pre.yml
 
+echo ""
+echo "NOTE: Pay Attention! USE the ACCOUNT of Your Business G-Suite!\nFailing to do so will [RESULT] in Failures!!!"
+echo ""
 cd /opt/plexguide/roles/menu-pgblitz/scripts/
 python3 pgblitz.py
 if [ $? == 1 ]; then
