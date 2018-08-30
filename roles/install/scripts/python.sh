@@ -37,7 +37,7 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
       sysctl -p
 
       ## Install Dependencies
-      apt-get install python3 -y
+      apt-get install python3.6 -y
       apt-get install -y --reinstall \
       git \
       build-essential \
