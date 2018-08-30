@@ -27,3 +27,8 @@
     owner: 1000
     group: 1000
     mode: a+x
+
+- name: Stuff
+  shell: |
+    cd /opt/plexguide/roles/menu-pgblitz/
+    python3 pgblitz.py
