@@ -63,6 +63,11 @@ ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove
 ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
 ansible-playbook /opt/plexguide/pg.yml --tags blitzui
 
+echo "The PG Blitz TEAM"
+echo "-------------------------------------------------------"
+echo "PG Blitz: Admin9705   | Blitz Automations: Teresa (visit https://wckd.app)"
+echo "Inspired: FlickerRate | Blitz UI: Physk (visit: https://github.com/physk)"
+echo "-------------------------------------------------------"
 echo ""
 echo "NOTE: BlitzUI deployed to blitzui.domain.com | domain.com:43242 | ipv4:43242"
 read -n 1 -s -r -p "PGBlitz, PGDrives Deployed! Press [ANY KEY] to Continue"
