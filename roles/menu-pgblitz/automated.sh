@@ -19,20 +19,13 @@ mkdir -p /opt/appdata/pgblitz/keys/automation
 touch /opt/appdata/pgblitz/vars/automated
 
 echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-dialog --title "NOTE" --msgbox "\nInstalling requirements" 0 0
-
-
-cd  /opt/plexguide/roles/menu-pgblitz/scripts/WCKD/
-pip3 install -r requirements.txt
-dialog --title "Auto SA Creation" \
-       --yesno "Are you planning to use encryption?\n\nENCRYPTION CURRENTLY NOT WORKING!!" 7 60
-
 echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
 #dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
 
-clear && python3 pgblitz.py
+cd /opt/plexguide/roles/menu-pgblitz/tasks
+python3 pgblitz.py
 if [ $? == 1 ]; then
     dialog --title "ERROR" --msgbox "\nSomething went wrong executing the script, Putting you back to the menu!\nPress [ENTER] to Continue!" 0 0
     bash /opt/plexguide/roles/deploychoice.sh
