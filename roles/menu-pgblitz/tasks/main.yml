@@ -18,14 +18,15 @@
 ---
 - hosts: localhost
   gather_facts: false
-  - name: Install pip requirements
-    pip:
-      requirements: /opt/plexguide/roles/menu-pgblitz/scripts/requirements.txt
-      executable: pip3
+  tasks:
+    - name: Install pip requirements
+      pip:
+        requirements: /opt/plexguide/roles/menu-pgblitz/scripts/requirements.txt
+        executable: pip3
 
-  - name: Set pgtrak.py as executable
-    file:
-      path: /opt/plexguide/roles/menu-pgblitz/scripts/pgblitz.py
-      owner: 1000
-      group: 1000
-      mode: a+x
+    - name: Set pgtrak.py as executable
+      file:
+        path: /opt/plexguide/roles/menu-pgblitz/scripts/pgblitz.py
+        owner: 1000
+        group: 1000
+        mode: a+x
