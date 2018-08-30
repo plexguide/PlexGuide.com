@@ -58,6 +58,9 @@ bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
 temp=$( cat /tmp/pg.gdsa.build )
 echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
+### Remove All Key Prior Services Related To Mounts
+ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove
+
 ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
 ansible-playbook /opt/plexguide/pg.yml --tags blitzui
 
