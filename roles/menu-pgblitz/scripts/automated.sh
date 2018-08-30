@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
-#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   PhysK & Teresa
+# Author:   PhysK (Project Manager for Automations) & Teresa (Gifted Python Coder) & Admin9705 (The Cleanup Guy)
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,8 +13,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
-export NCURSES_NO_UTF8_ACS=1
 echo "INFO - Setting Automated SA flag"  > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 mkdir -p /opt/appdata/pgblitz/vars/
 mkdir -p /opt/appdata/pgblitz/keys/automation
@@ -24,35 +20,27 @@ touch /opt/appdata/pgblitz/vars/automated
 
 echo "INFO - Installing requirements" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 dialog --title "NOTE" --msgbox "\nInstalling requirements" 0 0
+
+
 cd  /opt/plexguide/roles/menu-pgblitz/scripts/WCKD/
 pip3 install -r requirements.txt
-dialog --title "Auto SA Creation" \
-       --yesno "Are you planning to use encryption?\n\nENCRYPTION CURRENTLY NOT WORKING!!" 7 60
-response=$?
-case $response in
-    0)
-        dialog --title "NOTE" --msgbox "\nYou were told it's not working yet ;-)" 0 0
-        final="encrypted"
-        ;;
-    1)
-        echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
-        clear && python3 pgblitz.py
-        if [ $? == 1 ]; then
-            dialog --title "ERROR" --msgbox "\nSomething went wrong executing the script, Putting you back to the menu!\nPress [ENTER] to Continue!" 0 0
-            bash /opt/plexguide/roles/deploychoice.sh
-        fi
-        if [ -e /root/.config/rclone/rclone.config ]; then
-            mv /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.old
-            dialog --title "NOTE" --msgbox "\nYou're old rclone config has been moved to /root/.config/rclone/rclone.conf.old\nPress [ENTER] to Continue!" 0 0
-        fi
-        mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.conf
-        dialog --title "NOTE" --msgbox "\nYour emails should be auto added to your tdrive!\nPress [ENTER] to Continue!" 0 0
-        dialog --title "NOTE" --msgbox "\nAll done! Now to continue deploying PGBlitz!!\nPress [ENTER] to Continue!" 0 0
-        final="unencrypted"
-        ;;
-esac
+
+echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+#dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
+
+python3 /opt/plexguide/roles/menu-pgblitz/pgblitz.py
+
+if [ -e /root/.config/rclone/rclone.config ]; then
+    mv /root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf.old
+    dialog --title "NOTE" --msgbox "\nYou're old rclone config has been moved to /root/.config/rclone/rclone.conf.old\nPress [ENTER] to Continue!" 0 0
+fi
+mv /opt/appdata/pgblitz/keys/automation/rclone.conf /root/.config/rclone/rclone.conf
+dialog --title "NOTE" --msgbox "\nYour emails should be auto added to your tdrive!\nPress [ENTER] to Continue!" 0 0
+dialog --title "NOTE" --msgbox "\nAll done! Now to continue deploying PGBlitz!!\nPress [ENTER] to Continue!" 0 0
+final="unencrypted"
+
 
 #### BLANK OUT PATH - This Builds For UnionFS
 rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
