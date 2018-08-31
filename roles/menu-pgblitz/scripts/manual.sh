@@ -15,17 +15,21 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/transport.menu
+echo "on" > /var/plexguide/manual.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/transport.menu)
-ansible-playbook /opt/plexguide/roles/menu-transport/main.yml
-menu=$(cat /var/plexguide/transport.menu)
+menu=$(cat /var/plexguide/manual.menu)
+ansible-playbook /opt/plexguide/roles/menu-pgblitz/manual.yml
+menu=$(cat /var/plexguide/manual.menu)
 
-if [ "$menu" == "blitzauto" ]; then
+if [ "$menu" == "rclone" ]; then
   echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/automated.sh
+  rclone config
+  touch /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
+  mkdir -p /root/.config/rclone/
+  chown -R 1000:1000 /root/.config/rclone/
+  cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 fi
 
 if [ "$menu" == "move" ]; then
@@ -35,7 +39,7 @@ fi
 
 if [ "$menu" == "blitzmanual" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/manual.sh
+  bash /opt/plexguide/roles/pgblitz/scripts/main.sh
 fi
 
 if [ "$menu" == "enmove" ]; then

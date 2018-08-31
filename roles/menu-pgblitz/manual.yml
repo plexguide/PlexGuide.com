@@ -1,0 +1,93 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: PG Main Menu
+      pause:
+        prompt: "\nWelcome to the PG Transport System (/w PGDrives)!
+                 \nSelect a Transport System!
+    \n\n1.  EXIT Interface
+    \n2.  RClone   | Config & Establish
+    \n3.  JSONs    | Upload for PGBlitz
+    \n4.  E-Mails  | E-Mail Share Generator
+    \n5.  Process  | JSONs files for Validation
+    \n6.  Deploy   | Deploy PGBlitz & PGDrive
+    \n7.  DL Path  | Current: $----
+    \n8.  T-Shoot  | Reprocess Bad JSONs
+    \n9.  T-Shoot  | Baseline PGBlitz (Fresh Start)
+    \n10. T-Shoot  | Disable PGBlitz
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: choice.user_input == "1" or
+             choice.user_input == "2" or
+             choice.user_input == "3" or
+             choice.user_input == "4" or
+             choice.user_input == "5" or
+             choice.user_input == "6" or
+             choice.user_input == "7" or
+             choice.user_input == "8" or
+             choice.user_input == "9" or
+             choice.user_input == "10"
+      retries: 99
+      delay: 1
+
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
+
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/manual.menu"
+      when: fchoice == "1"
+
+    - name: RClone
+      shell: "echo rclone > /var/plexguide/manual.menu"
+      when: fchoice == "2"
+
+    - name: JSONS
+      shell: "echo jsons > /var/plexguide/manual.menu"
+      when: fchoice == "3"
+
+    - name: EMail
+      shell: "echo email > /var/plexguide/manual.menu"
+      when: fchoice == "4"
+
+    - name: Process
+      shell: "echo process > /var/plexguide/manual.menu"
+      when: fchoice == "5"
+
+    - name: PG Deploy
+      shell: "echo deploy > /var/plexguide/manual.menu"
+      when: fchoice == "6"
+
+    - name: PG Path
+      shell: "echo path > /var/plexguide/manual.menu"
+      when: fchoice == "7"
+
+    - name: TShoot Bad
+      shell: "echo bad > /var/plexguide/manual.menu"
+      when: fchoice == "8"
+
+    - name: TShoot Bad
+      shell: "echo baseline > /var/plexguide/manual.menu"
+      when: fchoice == "9"
+
+    - name: TShoot Disable
+      shell: "echo bad > /var/plexguide/manual.menu"
+      when: fchoice == "10"
