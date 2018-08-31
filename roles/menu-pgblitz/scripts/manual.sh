@@ -87,38 +87,40 @@ if [ "$menu" == "jsons" ]; then
   if [ "$final" == "gdrive" ]; then
     echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-    bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
     exit
   fi
-
   if [ "$final" == "tdrive" ]; then
     echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-    bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
     exit
   fi
-
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-    bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
     exit
   fi
       echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       #### Deploy CloudBlitz
       clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
       #### Note How to Create Json files
-      dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nUser - PW: plex / guide\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
-      dialog --infobox "Please Wait" 3 22
+      echo ""
+      read -n 1 -s -r -p "Visit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nUser - PW: plex / guide\n\nWhen Finished, Press [ENTER] to Continue!"
+      echo ""
+      echo "Please Wait"
+      #dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nUser - PW: plex / guide\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
+      #dialog --infobox "Please Wait" 3 22
       docker stop cloudblitz 1>/dev/null 2>&1
       docker rm cloudblitz 1>/dev/null 2>&1
-      dialog --title "NOTE" --msgbox "\nIf you havn't already you need to use Option C\nand add you email's to your tdrive\nThen use option D to validate your JSON files" 0 0
-      bash /opt/plexguide/roles/pgblitz/scripts/list.sh
+      echo ""
+      read -n 1 -s -r -p "If you havn't already you need to use Option C\nand add you email's to your tdrive\nThen use option D to validate your JSON files"
 fi
 
 if [ "$menu" == "blitzmanual" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/main.sh
 fi
 
 if [ "$menu" == "enmove" ]; then
