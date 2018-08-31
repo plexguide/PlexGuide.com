@@ -24,15 +24,17 @@
         prompt: "\nWelcome to the PG Transport System!
                  \nSelect a Transport System!
     \n\n1.  Exit the Transport System
-    \n2.  PG Blitz /w PGDrive - Unencrypted | Daily Upload Limit: Uncapped
-    \n3.  PG Move  /w PGDrive - Unencrypted | Daily Upload Limit: 750GB
-    \n4.  PG Move  /w PGDrive - Encrypted   | Daily Upload Limit: 750GB
+    \n2.  PG Blitz  | Unencrypted | Automated | Uncapped
+    \n3.  PG Blitz  | Both        | Manual    | Uncapped
+    \n4.  PG Move   | Unencrypted | Simple    | 750GB Daily Cap
+    \n5.  PG Move   | Encrypted   | Simple    | 750GB Daily Cap
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
              choice.user_input == "3" or
-             choice.user_input == "4"
+             choice.user_input == "4" or
+             choice.user_input == "5"
       retries: 99
       delay: 1
 
@@ -48,10 +50,14 @@
       shell: "echo blitzauto > /var/plexguide/transport.menu"
       when: fchoice == "2"
 
-    - name: PG Move
-      shell: "echo move > /var/plexguide/transport.menu"
+    - name: Blitz Manaul
+      shell: "echo blitzmanual > /var/plexguide/transport.menu"
       when: fchoice == "3"
 
     - name: PG Move
-      shell: "echo enmove > /var/plexguide/transport.menu"
+      shell: "echo move > /var/plexguide/transport.menu"
       when: fchoice == "4"
+
+    - name: PG Move
+      shell: "echo enmove > /var/plexguide/transport.menu"
+      when: fchoice == "5"

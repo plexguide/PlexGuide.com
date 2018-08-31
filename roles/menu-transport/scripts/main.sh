@@ -33,6 +33,11 @@ if [ "$menu" == "move" ]; then
   bash /opt/plexguide/roles/menu-move/scripts/main.sh
 fi
 
+if [ "$menu" == "blitzmanual" ]; then
+  echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/pgblitz/scripts/main.sh
+fi
+
 if [ "$menu" == "enmove" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
