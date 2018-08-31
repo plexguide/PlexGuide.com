@@ -106,18 +106,20 @@ if [ "$menu" == "jsons" ]; then
       #### Deploy CloudBlitz
       ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
       #### Note How to Create Json files
+      echo ""
       echo "Visit Port 7997 and Upload your JSON files | User: plex & Paswword: guide"
       echo "NOTE: Keys are Stored below for Processing: /opt/appdata/pgblitz/keys/unprocessed/"
       echo ""
       read -n 1 -s -r -p "When Finished, Press [ANY KEY] to Continue!"
       echo ""
+      echo ""
       echo "Please Wait"
-      #dialog --title "NOTE" --msgbox "\nVisit Port 7997 and Upload your JSON files\n\nKeys are Stored below for Processing:\n/opt/appdata/pgblitz/keys/unprocessed/\n\nUser - PW: plex / guide\n\nWhen Finished, Press [ENTER] to Continue!" 0 0
-      #dialog --infobox "Please Wait" 3 22
       docker stop cloudblitz 1>/dev/null 2>&1
       docker rm cloudblitz 1>/dev/null 2>&1
+      echo ""
       echo "WARNING: Make Sure to Use the E-Mail and Validation Processes!"
       read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+      echo ""
 fi
 
 if [ "$menu" == "blitzmanual" ]; then
