@@ -84,10 +84,10 @@
       shell: "echo bad > /var/plexguide/manual.menu"
       when: fchoice == "8"
 
-    - name: TShoot Bad
+    - name: TShoot Baseline
       shell: "echo baseline > /var/plexguide/manual.menu"
       when: fchoice == "9"
 
     - name: TShoot Disable
-      shell: "echo bad > /var/plexguide/manual.menu"
+      shell: "echo disable > /var/plexguide/manual.menu"
       when: fchoice == "10"
