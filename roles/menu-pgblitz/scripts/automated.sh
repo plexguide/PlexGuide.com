@@ -31,7 +31,7 @@ echo ""
 echo "NOTE: Pay Attention! USE the ACCOUNT of Your Business G-Suite!"
 echo "Failing to do so will [RESULT] in Script Failure!"
 cd /opt/plexguide/roles/menu-pgblitz/scripts/
-python3 pgblitz.py
+python3.6 pgblitz.py
 if [ $? == 1 ]; then
     echo ""
     read -n 1 -s -r -p "PGBlitz.Py Could Not Execute due to an Internal Error! Press [Any Key] to Continue"
