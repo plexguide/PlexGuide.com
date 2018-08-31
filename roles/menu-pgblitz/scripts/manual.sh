@@ -81,7 +81,7 @@ if [ "$menu" == "rclone" ]; then
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 fi
 
-if [ "$menu" == "move" ]; then
+if [ "$menu" == "manual" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   if [ "$final" == "gdrive" ]; then
