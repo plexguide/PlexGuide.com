@@ -147,6 +147,7 @@ if [ "$menu" == "email" ]; then
   echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
   echo ""
+  echo ""
   echo "WARNING: Make Sure to Use the E-Mail and Validation Processes!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   echo ""
