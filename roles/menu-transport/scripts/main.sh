@@ -35,7 +35,7 @@ fi
 
 if [ "$menu" == "blitzmanual" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/pgblitz/scripts/manual.sh
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
 fi
 
 if [ "$menu" == "enmove" ]; then
