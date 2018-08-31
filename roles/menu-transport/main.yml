@@ -21,7 +21,7 @@
   tasks:
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to the PG Transport System!
+        prompt: "\nWelcome to the PG Transport System (/w PGDrives)!
                  \nSelect a Transport System!
     \n\n1.  Exit the Transport System
     \n2.  PG Blitz  | Unencrypted | Automated | Uncapped
