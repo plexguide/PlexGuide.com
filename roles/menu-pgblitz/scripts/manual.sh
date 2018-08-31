@@ -108,12 +108,12 @@ if [ "$menu" == "jsons" ]; then
       #### Note How to Create Json files
       echo ""
       echo "Visit Port 7997 and Upload your JSON files | User: plex & Paswword: guide"
-      echo "NOTE: Keys are Stored below for Processing: /opt/appdata/pgblitz/keys/unprocessed/"
+      echo "NOTE: Keys Store @ for Processing: /opt/appdata/pgblitz/keys/unprocessed/"
       echo ""
       read -n 1 -s -r -p "When Finished, Press [ANY KEY] to Continue!"
       echo ""
       echo ""
-      echo "Please Wait"
+      echo "Please Wait! Destroying the BlitzCMD Container!"
       docker stop cloudblitz 1>/dev/null 2>&1
       docker rm cloudblitz 1>/dev/null 2>&1
       echo ""
