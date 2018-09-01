@@ -28,6 +28,7 @@
   - name: GDrive Check
     shell: grep "gdrive" /root/.config/rclone/rclone.conf
     register: gdrive
+    ignore_errors: True
 
   - fail:
       msg: "\nUser Failed to Configured [gdrive] for RClone"
@@ -36,6 +37,7 @@
   - name: TDrive Check
     shell: grep "tdrive" /root/.config/rclone/rclone.conf
     register: tdrive
+    ignore_errors: True
 
   - fail:
       msg: "\nUser Failed to Configured [tdrive] for RClone"
