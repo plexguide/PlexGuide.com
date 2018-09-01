@@ -87,9 +87,9 @@ if [ "$menu" == "jsons" ]; then
 
   ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on"]; then
+  if [ "$warning" == "on" ]; then
   echo ""
-  echo "WARNING: Read Message Above in Regards to Failure!"
+  echo "WARNING - Read Message Above in Regards to Failure!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
