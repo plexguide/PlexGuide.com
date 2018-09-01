@@ -20,6 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
   ################################################################## CORE
+  echo "on" > /var/plexguide/warning.pgblitz
   downloadpath=$(cat /var/plexguide/server.hd.path)
   echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   RCLONE_CONF="/root/.config/rclone/rclone.conf"

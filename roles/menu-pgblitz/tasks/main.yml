@@ -42,3 +42,6 @@
   - fail:
       msg: "\nUser Failed to Configured [tdrive] for RClone"
     when: not tdrive.stdout == "[tdrive]"
+
+  - name: Turning Warning Off
+    shell: echo "off" > /var/plexguide/warning.pgblitz
