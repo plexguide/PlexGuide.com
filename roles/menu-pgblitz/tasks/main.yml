@@ -26,7 +26,7 @@
     when: rclone.stat.exists == False
 
   - name: GDrive Check
-    shell: grep "tdrive" /root/.config/rclone/rclone.conf
+    shell: grep "gdrive" /root/.config/rclone/rclone.conf
     when: rclone.stat.exists
 
   - name: TDrive Check
