@@ -25,10 +25,10 @@ while [ "$menu" != "break" ]; do
   RCLONE_CONF="/root/.config/rclone/rclone.conf"
 
   #### RECALL VARIABLES START
-  tdrive=$(grep "tdrive" $RCLONE_CONF)
-  gdrive=$(grep "gdrive" $RCLONE_CONF)
-  tcrypt=$(grep "tcrypt" $RCLONE_CONF)
-  gcrypt=$(grep "gcrypt" $RCLONE_CONF)
+  tdrive=$(grep "tdrive" $RCLONE_CONF 1>/dev/null 2>&1)
+  gdrive=$(grep "gdrive" $RCLONE_CONF 1>/dev/null 2>&1)
+  tcrypt=$(grep "tcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
+  gcrypt=$(grep "gcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
   #### RECALL VARIABLES END
 
   versioncheck="Version: Unencrypted Edition"
