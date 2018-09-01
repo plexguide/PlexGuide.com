@@ -116,19 +116,8 @@ fi
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  if [ "$final" == "gdrive" ]; then
-    echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
 
-  if [ "$final" == "tdrive" ]; then
-    echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
@@ -162,20 +151,9 @@ if [ "$menu" == "process" ]; then
 fi
 
 if [ "$menu" == "deploy" ]; then
-  ### Checkers
-  if [ "$final" == "gdrive" ]; then
-    echo 'FAILURE - Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\nGDrive for RClone Must be Configured for PG Blitz!\n\nThis is required to BackUp/Restore any PG Data!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
 
-  if [ "$final" == "tdrive" ]; then
-    echo 'FAILURE - Must Configure tdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\nTDrive for RClone Must be Configured for PG Blitz!\n\nThis is required for TeamDrives to Work!!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
+ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
