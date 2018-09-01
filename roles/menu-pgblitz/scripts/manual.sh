@@ -124,6 +124,16 @@ fi
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  warning=$(cat /var/plexguide/warning.pgblitz)
+  if [ "$warning" == "on" ]; then
+  echo ""
+  echo "WARNING - Read Message Above in Regards to Failure!"
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  exit
+  fi
+
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
@@ -158,7 +168,15 @@ fi
 
 if [ "$menu" == "deploy" ]; then
 
-ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  warning=$(cat /var/plexguide/warning.pgblitz)
+  if [ "$warning" == "on" ]; then
+  echo ""
+  echo "WARNING - Read Message Above in Regards to Failure!"
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  exit
+  fi
 
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -211,6 +229,17 @@ if [ "$menu" == "path" ]; then
 fi
 
 if [ "$menu" == "bad" ]; then
+
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  warning=$(cat /var/plexguide/warning.pgblitz)
+  if [ "$warning" == "on" ]; then
+  echo ""
+  echo "WARNING - Read Message Above in Regards to Failure!"
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  exit
+  fi
+
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   dialog --infobox "Reprocessing BAD JSONs (Please Wait)" 3 40
   sleep 2
