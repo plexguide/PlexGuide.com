@@ -86,7 +86,14 @@ if [ "$menu" == "jsons" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
-
+  warning=$(cat /var/plexguide/warning.pgblitz)
+  if [ "$warning" == "on"]; then
+  echo ""
+  echo "WARNING: Read Message Above in Regards to Failure!"
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  exit
+  fi
 
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -116,16 +123,6 @@ fi
 
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
-  warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on"]; then
-  echo ""
-  echo "WARNING: Read Message Above in Regards to Failure!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
 
   if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
     echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
