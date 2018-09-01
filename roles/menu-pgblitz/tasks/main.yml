@@ -27,6 +27,7 @@
 
   - name: GDrive Check
     shell: grep "gdrive" /root/.config/rclone/rclone.conf
+    register: gdrive
 
   - fail:
       msg: "\nUser Failed to Configured [gdrive] for RClone"
@@ -34,7 +35,8 @@
 
   - name: TDrive Check
     shell: grep "tdrive" /root/.config/rclone/rclone.conf
+    register: tdrive
 
   - fail:
       msg: "\nUser Failed to Configured [tdrive] for RClone"
-    when: not gdrive.stdout == "gdrive
+    when: not tdrive.stdout == "tdrive"
