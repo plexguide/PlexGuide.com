@@ -119,7 +119,7 @@ if [ "$menu" == "email" ]; then
 
   ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" != "off"]; then
+  if [ "$warning" == "on"]; then
   echo ""
   echo "WARNING: Read Message Above in Regards to Failure!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
