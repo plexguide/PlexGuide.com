@@ -16,19 +16,19 @@
 #
 #################################################################################
 ---
-- name: Check DRIVES Service
-  stat:
-    path: "/root/.config/rclone/rclone.conf"
-  register: rclone
+  - name: Check DRIVES Service
+    stat:
+      path: "/root/.config/rclone/rclone.conf"
+    register: rclone
 
-- fail:
-    msg: "\nUser Failed to Configure RClone! Exiting!"
-  when: rclone.stat.exists == False
+  - fail:
+      msg: "\nUser Failed to Configure RClone! Exiting!"
+    when: rclone.stat.exists == False
 
-- name: TDrive Check
-  shell: grep "tdrive" /root/.config/rclone/rclone.conf
-  when: rclone.stat.exists
+  - name: TDrive Check
+    shell: grep "tdrive" /root/.config/rclone/rclone.conf
+    when: rclone.stat.exists
 
-- name: GDrive Check
-  shell: grep "tdrive" /root/.config/rclone/rclone.conf
-  when: rclone.stat.exists
+  - name: GDrive Check
+    shell: grep "tdrive" /root/.config/rclone/rclone.conf
+    when: rclone.stat.exists
