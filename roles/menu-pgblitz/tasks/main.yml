@@ -25,10 +25,10 @@
       msg: "\nUser Failed to Configure RClone! Exiting!"
     when: rclone.stat.exists == False
 
-  - name: TDrive Check
+  - name: GDrive Check
     shell: grep "tdrive" /root/.config/rclone/rclone.conf
     when: rclone.stat.exists
 
-  - name: GDrive Check
+  - name: TDrive Check
     shell: grep "tdrive" /root/.config/rclone/rclone.conf
     when: rclone.stat.exists
