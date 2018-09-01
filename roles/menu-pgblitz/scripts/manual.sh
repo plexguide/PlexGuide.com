@@ -151,6 +151,17 @@ if [ "$menu" == "email" ]; then
 fi
 
 if [ "$menu" == "process" ]; then
+
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  warning=$(cat /var/plexguide/warning.pgblitz)
+  if [ "$warning" == "on" ]; then
+  echo ""
+  echo "WARNING - Read Message Above in Regards to Failure!"
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  exit
+  fi
+
   gdsa=`ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | grep GDSA | wc -l`;
   if [ $gdsa > 2 ]; then
     if [ "$encryption" == "on" ]; then
@@ -159,7 +170,7 @@ if [ "$menu" == "process" ]; then
       dialog --title "SET ENCRYPTION SALT" \
             --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
     fi
-    bash /opt/plexguide/roles/pgblitz/scripts/validator.sh
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
   else
     dialog --title "WARNING!" --msgbox "\nIt seems like you have no JSON files :(" 0 0
   fi
@@ -197,7 +208,7 @@ if [ "$menu" == "deploy" ]; then
   fi
 
   ### Add GDSA Paths for UnionFS
-  bash /opt/plexguide/roles/pgblitz/scripts/ufbuilder.sh
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
   temp=$( cat /tmp/pg.gdsa.build )
   echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
@@ -245,7 +256,7 @@ if [ "$menu" == "bad" ]; then
   sleep 2
   clear
   mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/ 1>/dev/null 2>&1
-  bash /opt/plexguide/roles/pgblitz/scripts/validator.sh
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
 fi
 
 if [ "$menu" == "baseline" ]; then
