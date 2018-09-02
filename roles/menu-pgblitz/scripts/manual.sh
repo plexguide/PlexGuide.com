@@ -221,20 +221,9 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
   fi
   echo ""
-  read -n 1 -s -r -p "Press any key to continue"
-  dialog --title "PGBLitz WebGUI" \
-        --yesno "Would you like to deploy the new PGBlitz WebGUI?" 7 60
-    response=$?
-    case $response in
-        0)
-          echo 'INFO - DEPLOYING PGBLITZ WEBGUI' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          ansible-playbook /opt/plexguide/pg.yml --tags blitzui
-          ;;
-        1)
-          echo 'INFO - NOT DEPLOYING PGBLITZ WEBGUI' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-          ;;
-    esac
-  dialog --title "NOTE" --msgbox "\nPG Drive & PG Blitz Deployed!!" 0 0
+  ansible-playbook /opt/plexguide/pg.yml --tags blitzui
+  read -n 1 -s -r -p "PGBlitz, PGDrives & BlitzUI Deployed! Press [ANY KEY] to continue"
+  echo ""
 fi
 
 if [ "$menu" == "path" ]; then
