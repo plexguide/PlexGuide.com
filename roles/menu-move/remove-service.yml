@@ -28,7 +28,7 @@
   vars:
     service_vars:
       - {name: supertransfer2.service}
-      - {name: pgblitz.service}
+      - {name: menu-pgblitz.service}
       - {name: plexdrive.service}
   tasks:
     - name: Checking Existing Service Name

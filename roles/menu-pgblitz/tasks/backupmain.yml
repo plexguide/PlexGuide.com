@@ -33,17 +33,17 @@
 ################################################################ DISABLE PROGRAMS
 - name: Disable Move
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "disable_move.yml"
 
 - name: Disable SuperTransfer 2
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "disable_st2.yml"
 
 - name: Deploy Tasks
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_tasks.yml"
 ################################################################ DISABLE PROGRAMS
 #
@@ -52,32 +52,32 @@
 ################################################################ STANDARD START
 - name: Deploy GDrive
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_gdrive.yml"
 
 - name: Deploy TDrive
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_tdrive.yml"
 
 ################################################################ ENCRYPTED START
 - name: Deploy TDrive
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_tdrive_en.yml"
   tags:
     - encrypted
 
 - name: Deploy GCrypt
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_gcrypt.yml"
   tags:
     - encrypted
 
 - name: Deploy TCrypt
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_tcrypt.yml"
   tags:
     - encrypted
@@ -89,12 +89,12 @@
 
 - name: Deploy UnionFS
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_unionfs.yml"
 
 - name: Deploy PGBlitz
   include_role:
-    name: pgblitz
+    name: menu-pgblitz
     tasks_from: "deploy_pgblitz.yml"
 ################################################################ UNENCRYPTED END
 
