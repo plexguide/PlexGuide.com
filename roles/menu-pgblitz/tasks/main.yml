@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [Ansible Role]
+# [PG-Blitz]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,32 +16,74 @@
 #
 #################################################################################
 ---
-  - name: Check DRIVES Service
-    stat:
-      path: "/root/.config/rclone/rclone.conf"
-    register: rclone
+################################################################ DISABLE PROGRAMS
+- name: Disable Move
+  include_role:
+    name: pgblitz
+    tasks_from: "disable_move.yml"
 
-  - fail:
-      msg: "\nUser Failed to Configure RClone! Exiting!"
-    when: rclone.stat.exists == False
+- name: Disable SuperTransfer 2
+  include_role:
+    name: pgblitz
+    tasks_from: "disable_st2.yml"
 
-  - name: GDrive Check
-    shell: grep "gdrive" /root/.config/rclone/rclone.conf
-    register: gdrive
-    ignore_errors: True
+- name: Deploy Tasks
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tasks.yml"
+################################################################ DISABLE PROGRAMS
+#
+#
+#
+################################################################ STANDARD START
+- name: Deploy GDrive
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_gdrive.yml"
 
-  - fail:
-      msg: "\nUser Failed to Configured [gdrive] for RClone"
-    when: not gdrive.stdout == "[gdrive]"
+- name: Deploy TDrive
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tdrive.yml"
 
-  - name: TDrive Check
-    shell: grep "tdrive" /root/.config/rclone/rclone.conf
-    register: tdrive
-    ignore_errors: True
+################################################################ ENCRYPTED START
+- name: Deploy TDrive
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tdrive_en.yml"
+  tags:
+    - encrypted
 
-  - fail:
-      msg: "\nUser Failed to Configured [tdrive] for RClone"
-    when: not tdrive.stdout == "[tdrive]"
+- name: Deploy GCrypt
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_gcrypt.yml"
+  tags:
+    - encrypted
 
-  - name: Turning Warning Off
-    shell: echo "off" > /var/plexguide/warning.pgblitz
+- name: Deploy TCrypt
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_tcrypt.yml"
+  tags:
+    - encrypted
+################################################################ ENCRYPTED END
+#
+#
+#
+################################################################ UNENCRYPTED START
+
+- name: Deploy UnionFS
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_unionfs.yml"
+
+- name: Deploy PGBlitz
+  include_role:
+    name: pgblitz
+    tasks_from: "deploy_pgblitz.yml"
+################################################################ UNENCRYPTED END
+
+### NOTES
+# 1. Disable ST2Monitor
+# 2. Introduce PGBMonitor
