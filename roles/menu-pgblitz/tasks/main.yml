@@ -22,11 +22,6 @@
     name: menu-pgblitz
     tasks_from: "disable_move.yml"
 
-- name: Disable SuperTransfer 2
-  include_role:
-    name: menu-pgblitz
-    tasks_from: "disable_st2.yml"
-
 - name: Deploy Tasks
   include_role:
     name: menu-pgblitz
