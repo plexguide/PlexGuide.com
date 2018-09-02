@@ -163,9 +163,9 @@ echo 'INFO - Configured RCLONE for PG Drive' > /var/plexguide/pg.log && bash /op
 
           ### Execute Playbook Based on Version
           if [ "$final" == "unencrypted" ];then
-            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+            ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
           elif [ "$final" == "encrypted" ];then
-            ansible-playbook /opt/plexguide/pg.yml --tags pgblitz
+            ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
           fi
           echo ""
           read -n 1 -s -r -p "Press any key to continue"

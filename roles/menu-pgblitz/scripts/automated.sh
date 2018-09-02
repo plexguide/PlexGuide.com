@@ -60,7 +60,7 @@ echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 ### Remove All Key Prior Services Related To Mounts
 ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove
 
-ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
 ansible-playbook /opt/plexguide/pg.yml --tags blitzui
 echo ""
 echo "The PG Blitz TEAM"
