@@ -83,7 +83,7 @@ temp2=$(echo $temp | grep -oP "error" | head -c 5)
       echo -e "JSON: $p - ${GREEN}VALID${NC}"
       echo "INFO - PGBlitz: GDSATEST - $p is good!" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       echo "$p" > /var/plexguide/json.tempbuild
-      bash /opt/plexguide/roles/pgblitz/scripts/gdsa.sh
+      bash /opt/plexguide/roles/menu-pgblitz/scripts/gdsa.sh
       mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/processed/
   fi
 
