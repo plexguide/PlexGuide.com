@@ -42,7 +42,6 @@
       state: present
       etype: user
 
-
   - name: Install pgblitz Service
     template:
       src: pgblitz.service
@@ -54,4 +53,4 @@
       daemon_reload: yes
       enabled: yes
       state: restarted
-      name: menu-pgblitz
+      name: pgblitz
