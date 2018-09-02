@@ -212,6 +212,8 @@ if [ "$menu" == "deploy" ]; then
   temp=$( cat /tmp/pg.gdsa.build )
   echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
+  ### Remove All Prior Services
+  ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove.yml
   ### Execute Playbook Based on Version
   if [ "$final" == "unencrypted" ];then
     ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
