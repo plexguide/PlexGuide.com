@@ -85,7 +85,7 @@ fi
 if [ "$menu" == "jsons" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
   warning=$(cat /var/plexguide/warning.pgblitz)
   if [ "$warning" == "on" ]; then
   echo ""
@@ -124,7 +124,7 @@ fi
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
   warning=$(cat /var/plexguide/warning.pgblitz)
   if [ "$warning" == "on" ]; then
   echo ""
@@ -152,7 +152,7 @@ fi
 
 if [ "$menu" == "process" ]; then
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
   warning=$(cat /var/plexguide/warning.pgblitz)
   if [ "$warning" == "on" ]; then
   echo ""
@@ -179,7 +179,7 @@ fi
 
 if [ "$menu" == "deploy" ]; then
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
   warning=$(cat /var/plexguide/warning.pgblitz)
   if [ "$warning" == "on" ]; then
   echo ""
@@ -232,7 +232,7 @@ fi
 
 if [ "$menu" == "bad" ]; then
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
   warning=$(cat /var/plexguide/warning.pgblitz)
   if [ "$warning" == "on" ]; then
   echo ""
