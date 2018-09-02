@@ -17,11 +17,6 @@
 #################################################################################
 ---
 ################################################################ DISABLE PROGRAMS
-- name: Disable Move
-  include_role:
-    name: menu-pgblitz
-    tasks_from: "disable_move.yml"
-
 - name: Deploy Tasks
   include_role:
     name: menu-pgblitz
@@ -67,7 +62,6 @@
 #
 #
 ################################################################ UNENCRYPTED START
-
 - name: Deploy UnionFS
   include_role:
     name: menu-pgblitz
@@ -77,8 +71,3 @@
   include_role:
     name: menu-pgblitz
     tasks_from: "deploy_pgblitz.yml"
-################################################################ UNENCRYPTED END
-
-### NOTES
-# 1. Disable ST2Monitor
-# 2. Introduce PGBMonitor
