@@ -42,8 +42,6 @@
       state: present
       etype: user
 
-
-
   - name: Install pgblitz Service
     template:
       src: pgblitz.service

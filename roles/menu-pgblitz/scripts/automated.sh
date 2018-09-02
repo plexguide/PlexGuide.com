@@ -31,7 +31,7 @@ echo ""
 echo "NOTE: Pay Attention! USE the ACCOUNT of Your Business G-Suite!"
 echo "Failing to do so will [RESULT] in Script Failure!"
 cd /opt/plexguide/roles/menu-pgblitz/scripts/
-python3 pgblitz.py
+python3.6 pgblitz.py
 if [ $? == 1 ]; then
     echo ""
     read -n 1 -s -r -p "PGBlitz.Py Could Not Execute due to an Internal Error! Press [Any Key] to Continue"
@@ -60,7 +60,7 @@ echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 ### Remove All Key Prior Services Related To Mounts
 ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove
 
-ansible-playbook /opt/plexguide/pg.yml --tags pgblitz --skip-tags encrypted
+ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
 ansible-playbook /opt/plexguide/pg.yml --tags blitzui
 echo ""
 echo "The PG Blitz TEAM"
