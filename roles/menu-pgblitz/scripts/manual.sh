@@ -220,8 +220,8 @@ if [ "$menu" == "deploy" ]; then
   elif [ "$final" == "encrypted" ];then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
-  echo ""
   ansible-playbook /opt/plexguide/pg.yml --tags blitzui
+  echo ""
   read -n 1 -s -r -p "PGBlitz, PGDrives & BlitzUI Deployed! Press [ANY KEY] to continue"
   echo ""
 fi
