@@ -24,7 +24,7 @@
       register: mountpoint
 
     - name: Edition
-      shell: "/var/plexguide/pgblitz.menustat"
+      shell: "cat /var/plexguide/pgblitz.menustat"
       register: tedition
 
     - name: PG Main Menu
