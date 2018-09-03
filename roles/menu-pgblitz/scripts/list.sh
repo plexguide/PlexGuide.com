@@ -43,14 +43,14 @@ while read p; do
     if [ "$check" == "$number" ]; then
         break=0
         let "number++"
-        echo "INFO - PGBlitz: PG$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       else
         break=1
     fi
   done
-  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/temp/PG$number
-  #echo "/opt/appdata/pgblitz/keys/unprocessed/$p" > /opt/appdata/pgblitz/keys/originalname/PG$number
-  #echo "INFO - PGBlitz: PG$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/temp/GDSA$number
+  #echo "/opt/appdata/pgblitz/keys/unprocessed/$p" > /opt/appdata/pgblitz/keys/originalname/GDSA$number
+  #echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done </tmp/pg.ukeys.temp
 
 mv /opt/appdata/pgblitz/keys/temp/* /opt/appdata/pgblitz/keys/unprocessed/

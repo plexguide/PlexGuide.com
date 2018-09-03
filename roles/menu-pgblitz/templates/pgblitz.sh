@@ -29,7 +29,7 @@ mkdir -p /opt/appdata/pgblitz/vars/
 if [ -e /opt/appdata/pgblitz/vars/automated ]; then
     GDSAARRAY=(`ls -la $path/automation | awk '{print $9}' | egrep '(PG|GD|GS)'`)
 else
-    GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep PG`)
+    GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
 fi
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 
