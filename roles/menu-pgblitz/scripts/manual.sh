@@ -22,13 +22,12 @@ while [ "$menu" != "break" ]; do
   ################################################################## CORE
   echo "on" > /var/plexguide/warning.pgblitz
   echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  RCLONE_CONF="/root/.config/rclone/rclone.conf"
 
   #### RECALL VARIABLES START
-  tdrive=$(grep "tdrive" $RCLONE_CONF 1>/dev/null 2>&1)
-  gdrive=$(grep "gdrive" $RCLONE_CONF 1>/dev/null 2>&1)
-  tcrypt=$(grep "tcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
-  gcrypt=$(grep "gcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
   #### RECALL VARIABLES END
 
   ##### Unencrypted Portion ### Start
