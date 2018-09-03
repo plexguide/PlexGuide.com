@@ -33,20 +33,20 @@ while [ "$menu" != "break" ]; do
   #### RECALL VARIABLES END
 
   ##### Unencrypted Portion ### Start
-  if [ "$gdrive" == "[gdrive]" ]  && [ "$tdrive" == "[tdrive]" ]; then
+  if [ "$gdrive" == "[gdrive] " ] && [ "$tdrive" == "[tdrive] " ]; then
       unencrypted="on"
       echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
     else
       unencrypted="off"
       echo "Not Configured" > /var/plexguide/pgblitz.menustat
   fi
-  if [ "$encryption" == "on"]; then
+  if [ "$encryption" == "on" ]; then
     echo "Encrypted" > /var/plexguide/pgblitz.menustat
   fi
   ##### UnEncrypted Portion ### END
 
   ##### Encryption Portion ### Start
-  if [ "$tcrypt" == "[tcrypt]" ] && [ "$gcrypt" == "[gcrypt]" ] && [ "$unencrypted" == "on"; then
+  if [ "$tcrypt" == "[tcrypt]" ] && [ "$gcrypt" == "[gcrypt] " ] && [ "$unencrypted" == "on" ]; then
       encryption="on"
       echo "Encrypted" > /var/plexguide/pgblitz.menustat
     else
