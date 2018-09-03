@@ -19,9 +19,17 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: MountPoint
+      shell: "cat /var/plexguide/server.hd.path"
+      register: mountpoint
+
+    - name: Edition
+      shell: "/var/plexguide/pgblitz.menustat"
+      register: tedition
+
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to the PG Transport System (/w PGDrives)!
+        prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
                  \nSelect a Transport System!
     \n\n1.  EXIT Interface
     \n2.  RClone   | Config & Establish
@@ -29,7 +37,7 @@
     \n4.  E-Mails  | E-Mail Share Generator
     \n5.  Process  | JSONs files for Validation
     \n6.  Deploy   | Deploy PGBlitz & PGDrive
-    \n7.  DL Path  | Current: $----
+    \n7.  DL Path  | Current - {{mountpoint.stdout}}
     \n8.  T-Shoot  | Reprocess Bad JSONs
     \n9.  T-Shoot  | Baseline PGBlitz (Fresh Start)
     \n10. T-Shoot  | Disable PGBlitz
