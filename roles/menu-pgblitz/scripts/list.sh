@@ -30,6 +30,7 @@ ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /t
 ### Make Temp Directory To Move Temp-Processed Keys
 mkdir -p /opt/appdata/pgblitz/keys/temp 1>/dev/null 2>&1
 
+touch /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 while read p; do
   p=${p:4}
   echo $p >> /tmp/pg.keys.processed.count
