@@ -42,15 +42,17 @@ while [ "$menu" != "break" ]; do
   fi
   if [ "$encryption" == "on"]; then
     echo "Encrypted" > /var/plexguide/pgblitz.menustat
-  fi ##### UnEncrypted Portion ### END
+  fi
+  ##### UnEncrypted Portion ### END
 
   ##### Encryption Portion ### Start
-  if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ] && [ "$unencrypted" == "on"; then
+  if [ "$tcrypt" == "[tcrypt]" ] && [ "$gcrypt" == "[gcrypt]" ] && [ "$unencrypted" == "on"; then
       encryption="on"
       echo "Encrypted" > /var/plexguide/pgblitz.menustat
     else
       encryption="off"
-  fi ##### Encrypted Portion ### END
+  fi #
+  #### Encrypted Portion ### END
 
 ################################################################## CORE
 menu=$(cat /var/plexguide/manual.menu)
