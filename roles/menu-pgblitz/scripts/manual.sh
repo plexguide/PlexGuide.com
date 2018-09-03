@@ -32,43 +32,27 @@ while [ "$menu" != "break" ]; do
   gcrypt=$(grep "gcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
   #### RECALL VARIABLES END
 
-  versioncheck="Version: Unencrypted Edition"
-  final="unencrypted"
-
-  if [ "$gdrive" != "[gdrive]" ]; then
-    versioncheck="WARNING: GDrive Not Configured Properly"
-    final="gdrive"
+  ##### Unencrypted Portion ### Start
+  if [ "$gdrive" == "[gdrive]" ]  && [ "$tdrive" == "[tdrive]" ]; then
+      unencrypted="on"
+      echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
+    else
+      unencrypted="off"
+      echo "Not Configured" > /var/plexguide/pgblitz.menustat
   fi
+  if [ "$encryption" == "on"]; then
+    echo "Encrypted" > /var/plexguide/pgblitz.menustat
+  fi ##### UnEncrypted Portion ### END
 
-  if [ "$tdrive" != "[tdrive]" ]; then
-    versioncheck="WARNING: TDrive Not Configured Properly"
-    final="tdrive"
-  fi
-
-  if [ "$gcrypt" == "[gcrypt]" ]; then
-      gflag="on"
+  ##### Encryption Portion ### Start
+  if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ] && [ "$unencrypted" == "on"; then
       encryption="on"
-  fi
-  if [ "$tcrypt" == "[tcrypt]" ]; then
-      tflag="on"
-      encryption="on"
-  fi
+      echo "Encrypted" > /var/plexguide/pgblitz.menustat
+    else
+      encryption="off"
+  fi ##### Encrypted Portion ### END
 
-  if [ "$encryption" == "on" ] && [ "$tflag" == "on" ] && [ "$gflag" == "on" ]; then
-      versioncheck="Version: Encrypted Edition"
-      final="encrypted"
-      mkdir -p /opt/appdata/pgblitz/vars
-      touch /opt/appdata/pgblitz/vars/encrypted  1>/dev/null 2>&1
-      mkdir -p /mnt/gcrypt
-      mkdir -p /mnt/tcrypt
-  elif [ "$gflag" != "on" ] && [ "$encryption" == "on" ]; then
-      versioncheck="WARNING: GCrypt Not Configured Properly"
-      final="gcrypt"
-  elif [ "$tflag" != "on" ] && [ "$encryption" == "on" ];then
-      versioncheck="WARNING: TCrypt Not Configured Properly"
-      final="tcrypt"
-  fi
-  ################################################################## CORE
+################################################################## CORE
 menu=$(cat /var/plexguide/manual.menu)
 ansible-playbook /opt/plexguide/roles/menu-pgblitz/manual.yml
 menu=$(cat /var/plexguide/manual.menu)
@@ -95,12 +79,6 @@ if [ "$menu" == "jsons" ]; then
   exit
   fi
 
-  if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
-    echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
       echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       #### Deploy CloudBlitz
       ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
@@ -134,12 +112,6 @@ if [ "$menu" == "email" ]; then
   exit
   fi
 
-  if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
-    echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
   echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
   echo ""
@@ -190,23 +162,9 @@ if [ "$menu" == "deploy" ]; then
   exit
   fi
 
-  if [ "$final" == "tcrypt" ] || [ "$final" == "gcrypt" ]; then
-    echo 'FAILURE - Must Configure $final for RCLONE for Encrypted Edition' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    dialog --title "WARNING!" --msgbox "\n$final for RClone Must be Configured for PG Blitz!\n\nThis is required for the Encrypted Edition!!" 0 0
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-  fi
-
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
-
-  ### Build UnionFS Paths Based on Version
-  if [ "$final" == "unencrypted" ];then
-    echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-  elif [ "$final" == "encrypted" ];then
-    echo -n "/mnt/gcrypt=RO:/mnt/tcrypt=RO:" >> /var/plexguide/unionfs.pgpath
-  fi
 
   ### Add GDSA Paths for UnionFS
   bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
@@ -215,12 +173,14 @@ if [ "$menu" == "deploy" ]; then
 
   ### Remove All Prior Services
   ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove.yml
+
   ### Execute Playbook Based on Version
-  #if [ "$final" == "unencrypted" ];then
-    #ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
-  #elif [ "$final" == "encrypted" ];then
+  if [ "encrypted" != "on" ];then
+    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
+  else
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
-  #fi
+  fi
+
   ansible-playbook /opt/plexguide/pg.yml --tags blitzui
   echo ""
   read -n 1 -s -r -p "PGBlitz, PGDrives & BlitzUI Deployed! Press [ANY KEY] to continue"
