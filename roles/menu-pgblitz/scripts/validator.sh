@@ -17,6 +17,9 @@
 #################################################################################
 echo "INFO - PGBlitz: Starting Validation Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+## Converts Keys Over To Correct Name
+bash /opt/plexguide/roles/menu-pgblitz/scripts/list.sh
+
 ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.keys.temp
 
 mkdir -p /opt/pgops 1>/dev/null 2>&1
@@ -32,7 +35,7 @@ rm -r /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
 mkdir -p /mnt/tdrive/plexguide/checks 1>/dev/null 2>&1
 
 while read p; do
-#  p=$(echo "${p::-1}")
+
 echo ""
 echo "Testing JSON: $p"
 echo "INFO - PGBlitz: Valdating GDSATEST - $p" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
