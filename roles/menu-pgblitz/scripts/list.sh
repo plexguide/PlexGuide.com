@@ -47,7 +47,6 @@ while read p; do
         break=1
     fi
   done
-
   mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/temp/PG$number
   #echo "/opt/appdata/pgblitz/keys/unprocessed/$p" > /opt/appdata/pgblitz/keys/originalname/PG$number
   #echo "INFO - PGBlitz: PG$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
