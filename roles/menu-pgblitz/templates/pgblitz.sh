@@ -29,7 +29,7 @@ mkdir -p /opt/appdata/pgblitz/vars/
 if [ -e /opt/appdata/pgblitz/vars/automated ]; then
     GDSAARRAY=(`ls -la $path/automation | awk '{print $9}' | egrep '(PG|GD|GS)'`)
 else
-    GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
+    GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep PG`)
 fi
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 
@@ -86,14 +86,14 @@ do
 
                         #Run upload script demonised
                         /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
-                        
+
                         #touch "`dirname $i`/folder.lck"
                         PID=$!
                         FILEBASE=`basename $i`
-                        
+
                         #add transfer to pid directory
                         echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
-                        
+
                         #increase or reset $GDSAUSE?
                         if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
                             echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
