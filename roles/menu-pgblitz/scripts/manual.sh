@@ -177,7 +177,7 @@ if [ "$menu" == "deploy" ]; then
   ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove.yml
 
   ### Execute Playbook Based on Version
-  if [ "encrypted" != "on" ];then
+  if [ "$encrypted" != "on" ];then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
   else
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
