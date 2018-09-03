@@ -179,6 +179,7 @@ fi
 
 if [ "$menu" == "deploy" ]; then
 
+  rm -r /opt/appdata/pgblitz/vars/automated 1>/dev/null 2>&1
   ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
   warning=$(cat /var/plexguide/warning.pgblitz)
   if [ "$warning" == "on" ]; then
