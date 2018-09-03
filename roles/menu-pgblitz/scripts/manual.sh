@@ -69,11 +69,9 @@ fi
 if [ "$menu" == "jsons" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
-  warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on" ]; then
+  if [ $unencrypted == "off" ]; then
   echo ""
-  echo "WARNING - Read Message Above in Regards to Failure!"
+  echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
@@ -102,11 +100,9 @@ fi
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
-  warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on" ]; then
+  if [ $unencrypted == "off" ]; then
   echo ""
-  echo "WARNING - Read Message Above in Regards to Failure!"
+  echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
@@ -124,11 +120,9 @@ fi
 
 if [ "$menu" == "process" ]; then
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
-  warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on" ]; then
+  if [ $unencrypted == "off" ]; then
   echo ""
-  echo "WARNING - Read Message Above in Regards to Failure!"
+  echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
@@ -152,11 +146,10 @@ fi
 if [ "$menu" == "deploy" ]; then
 
   rm -r /opt/appdata/pgblitz/vars/automated 1>/dev/null 2>&1
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
-  warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on" ]; then
+
+  if [ $unencrypted == "off" ]; then
   echo ""
-  echo "WARNING - Read Message Above in Regards to Failure!"
+  echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
@@ -193,11 +186,9 @@ fi
 
 if [ "$menu" == "bad" ]; then
 
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz-valid
-  warning=$(cat /var/plexguide/warning.pgblitz)
-  if [ "$warning" == "on" ]; then
+  if [ $unencrypted == "off" ]; then
   echo ""
-  echo "WARNING - Read Message Above in Regards to Failure!"
+  echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
