@@ -136,7 +136,7 @@ if [ "$menu" == "process" ]; then
   fi
 
   gdsa=`ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | grep GDSA | wc -l`;
-  if [ "$gdsa" > 2 ]; then
+  if [ "$gdsa" -gt 2 ]; then
     if [ "$encryption" == "on" ]; then
       dialog --title "SET ENCRYPTION PASSWORD" \
             --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
