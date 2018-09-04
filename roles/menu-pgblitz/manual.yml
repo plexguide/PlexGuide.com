@@ -43,7 +43,7 @@
     \nb.  T-Shoot  | Reprocess Bad JSONs
     \nc.  T-Shoot  | Baseline PGBlitz (Fresh Start)
     \nd.  T-Shoot  | Disable PGBlitz
-    \n\nType a [NUMBER] Choice & Press [ENTER]"
+    \n\nType a [CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
