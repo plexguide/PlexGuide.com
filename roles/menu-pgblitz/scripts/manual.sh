@@ -141,7 +141,7 @@ if [ "$menu" == "process" ]; then
   else
     echo ""
     echo "WARNING! No JSON files are detected for processing!"
-    echo read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     echo ""
   fi
 
