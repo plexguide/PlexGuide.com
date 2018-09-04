@@ -30,7 +30,7 @@
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
-                 \nSelect a Transport System!
+                 \nMake a Selection!
     \n\n1.  EXIT Interface
     \n---------------------------------------------
     \n2.  RClone   | Config & Establish
@@ -38,11 +38,11 @@
     \n4.  E-Mails  | E-Mail Share Generator
     \n5.  Process  | JSONs files for Validation
     \n6.  Deploy   | Deploy PGBlitz & PGDrive
-    \n7.  DL Path  | Current - {{mountpoint.stdout}}
     \n---------------------------------------------
-    \na.  T-Shoot  | Reprocess Bad JSONs
-    \nb.  T-Shoot  | Baseline PGBlitz (Fresh Start)
-    \nc.  T-Shoot  | Disable PGBlitz
+    \na.  DL Path  | Current - {{mountpoint.stdout}}
+    \nb.  T-Shoot  | Reprocess Bad JSONs
+    \nc.  T-Shoot  | Baseline PGBlitz (Fresh Start)
+    \nd.  T-Shoot  | Disable PGBlitz
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -51,10 +51,10 @@
              choice.user_input == "4" or
              choice.user_input == "5" or
              choice.user_input == "6" or
-             choice.user_input == "7" or
              choice.user_input == "a" or
              choice.user_input == "b" or
-             choice.user_input == "c"
+             choice.user_input == "c" or
+             choice.user_input == "d"
       retries: 99
       delay: 1
 
@@ -88,16 +88,16 @@
 
     - name: PG Path
       shell: "echo path > /var/plexguide/manual.menu"
-      when: fchoice == "7"
+      when: fchoice == "a"
 
     - name: TShoot Bad
       shell: "echo bad > /var/plexguide/manual.menu"
-      when: fchoice == "a"
+      when: fchoice == "b"
 
     - name: TShoot Baseline
       shell: "echo baseline > /var/plexguide/manual.menu"
-      when: fchoice == "b"
+      when: fchoice == "c"
 
     - name: TShoot Disable
       shell: "echo disable > /var/plexguide/manual.menu"
-      when: fchoice == "c"
+      when: fchoice == "d"
