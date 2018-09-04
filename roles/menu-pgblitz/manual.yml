@@ -38,9 +38,10 @@
     \n5.  Process  | JSONs files for Validation
     \n6.  Deploy   | Deploy PGBlitz & PGDrive
     \n7.  DL Path  | Current - {{mountpoint.stdout}}
-    \n8.  T-Shoot  | Reprocess Bad JSONs
-    \n9.  T-Shoot  | Baseline PGBlitz (Fresh Start)
-    \n10. T-Shoot  | Disable PGBlitz
+    \n---------------------------------------------
+    \na.  T-Shoot  | Reprocess Bad JSONs
+    \nb.  T-Shoot  | Baseline PGBlitz (Fresh Start)
+    \nc.  T-Shoot  | Disable PGBlitz
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -50,9 +51,9 @@
              choice.user_input == "5" or
              choice.user_input == "6" or
              choice.user_input == "7" or
-             choice.user_input == "8" or
-             choice.user_input == "9" or
-             choice.user_input == "10"
+             choice.user_input == "a" or
+             choice.user_input == "b" or
+             choice.user_input == "c"
       retries: 99
       delay: 1
 
@@ -90,12 +91,12 @@
 
     - name: TShoot Bad
       shell: "echo bad > /var/plexguide/manual.menu"
-      when: fchoice == "8"
+      when: fchoice == "a"
 
     - name: TShoot Baseline
       shell: "echo baseline > /var/plexguide/manual.menu"
-      when: fchoice == "9"
+      when: fchoice == "b"
 
     - name: TShoot Disable
       shell: "echo disable > /var/plexguide/manual.menu"
-      when: fchoice == "10"
+      when: fchoice == "c"
