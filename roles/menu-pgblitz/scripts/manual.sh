@@ -147,7 +147,6 @@ if [ "$menu" == "process" ]; then
 
 fi
 
-menu=deploy
 if [ "$menu" == "deploy" ]; then
 
   rm -r /opt/appdata/pgblitz/vars/automated 1>/dev/null 2>&1
