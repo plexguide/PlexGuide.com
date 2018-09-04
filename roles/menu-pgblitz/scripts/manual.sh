@@ -138,7 +138,9 @@ if [ "$menu" == "process" ]; then
     fi
     bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
   else
-    dialog --title "WARNING!" --msgbox "\nIt seems like you have no JSON files :(" 0 0
+    echo ""
+    echo "WARNING! No JSON files are detected for processing!"
+    echo ""
   fi
 
 fi
