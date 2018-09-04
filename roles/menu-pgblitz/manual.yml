@@ -32,6 +32,7 @@
         prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
                  \nSelect a Transport System!
     \n\n1.  EXIT Interface
+    \n---------------------------------------------
     \n2.  RClone   | Config & Establish
     \n3.  JSONs    | Upload for PGBlitz
     \n4.  E-Mails  | E-Mail Share Generator
