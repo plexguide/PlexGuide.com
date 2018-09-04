@@ -37,7 +37,9 @@ if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
     encryption="off"
 fi
 
-if [ "$encryption" == "on" ]; then
+status=$(cat /var/plexguide/pgblitz.menustat)
+
+if [ "$status" == "Encrypted" ]; then
   echo -n "/mnt/gcrypt=RO:" >> /tmp/pg.gdsa.build
 fi
 ##### Encryption Portion ### END
