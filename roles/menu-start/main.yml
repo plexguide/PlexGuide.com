@@ -93,15 +93,15 @@
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
                  \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
     \n\n1.  EXIT PlexGuide
-    \n---------------------------------------------------| SERVER CORE
+    \n------------------------------------------------| CORE SERVER
     \n2.  PGDrive Mounts & Transport Mechanisms
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
     \n4.  Server Port Guard - Ports  [{{ports}}]
     \n5.  PG Authentication Systems  [{{output}}]
-    \n---------------------------------------------------| PROGRAMS
+    \n------------------------------------------------| PROGRAMS
     \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
-    \n---------------------------------------------------| ASSISTANCE
+    \n------------------------------------------------| PG ASSISTANCE
     \n8.  System & Network Auditor
     \n9.  Backup & Restore
     \n10. Settings Menu
