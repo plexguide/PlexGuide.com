@@ -59,7 +59,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue " ;;
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" ;;
   B)
     ## create log file if does not exist
     if [ -e "/opt/plexguide/rclone-encrypt.log" ]; then
@@ -74,7 +74,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue " ;;
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" ;;
   C)
     ## create log file if does not exist
     if [ -e "/opt/plexguide/rclone.log" ]; then
@@ -89,7 +89,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   D)
     ## create log file if does not exist
@@ -105,7 +105,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   E)
     ## create log file if does not exist
@@ -121,7 +121,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   F)
     ## create log file if does not exist
@@ -137,7 +137,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   G)
     ## create log file if does not exist
@@ -155,7 +155,7 @@ case $CHOICE in
     echo "Remember, there is a sleep function of 30 minutes after done"
     echo "If you have tons of stuff downloaded, you should see some activity"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   H)
     ## create log file if does not exist
@@ -173,7 +173,7 @@ case $CHOICE in
     echo "Remember, there is a sleep function of 30 minutes after done"
     echo "If you have tons of stuff downloaded, you should see some activity"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear;;
   I)
     clear

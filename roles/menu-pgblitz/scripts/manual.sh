@@ -128,7 +128,8 @@ if [ "$menu" == "process" ]; then
   exit
   fi
 
-  gdsa="ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l"
+### prior interger expected incase debugging required
+  gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
   if [ "$gdsa" -ne "0" ]; then
     if [ "$encryption" == "on" ]; then
       dialog --title "SET ENCRYPTION PASSWORD" \

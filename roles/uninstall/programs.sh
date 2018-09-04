@@ -31,4 +31,4 @@ echo "$OUTPUT"
 docker stop $OUTPUT
 docker rm $OUTPUT
 
-read -n 1 -s -r -p "Press any key to continue "
+read -n 1 -s -r -p "Press [ANY KEY] to Continue"

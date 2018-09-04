@@ -50,7 +50,7 @@ case $CHOICE in
      ansible-playbook /opt/plexguide/pg.yml --tags var-vpn
      echo "Your Variables have now been set."
      echo ""
-     read -n 1 -s -r -p "Press any key to continue "
+     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
      bash /opt/plexguide/roles/programs/vpn.sh
         read -n 1 -s -r -p "Press any key to continue"
   #

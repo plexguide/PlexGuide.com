@@ -31,7 +31,7 @@ case $CHOICE in
     clear
     ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags performance
     echo ""
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh
     ;;
 
@@ -39,7 +39,7 @@ case $CHOICE in
     clear
     ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags ondemand
     echo ""
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh
     ;;
 
@@ -47,7 +47,7 @@ case $CHOICE in
     clear
     ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags conservative
     echo ""
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh
     ;;
 
@@ -55,7 +55,7 @@ case $CHOICE in
     clear
     cpufreq-info
     echo ""
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     ;;
 
     "5)")

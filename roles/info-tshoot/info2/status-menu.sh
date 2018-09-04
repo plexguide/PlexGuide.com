@@ -56,7 +56,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue " ;;
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" ;;
   B)
     ## create log file if does not exist
     if [ -e "/opt/plexguide/gcrypt.log" ]; then
@@ -71,7 +71,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue " ;;
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" ;;
   C)
     ## create log file if does not exist
     if [ -e "/opt/plexguide/tdrive.log" ]; then
@@ -86,7 +86,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue " ;;
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" ;;
   D)
     ## create log file if does not exist
     if [ -e "/opt/plexguide/tcrypt.log" ]; then
@@ -101,7 +101,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue " ;;
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" ;;
   E)
     ## create log file if does not exist
     if [ -e "/opt/plexguide/unionfs.log" ]; then
@@ -116,7 +116,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   F)
     ## create log file if does not exist
@@ -132,7 +132,7 @@ case $CHOICE in
     echo
     echo "*** View the Log ***"
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     clear ;;
   G)
     clear

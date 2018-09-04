@@ -140,7 +140,7 @@ EOF
       chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
       chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
 
-            #read -n 1 -s -r -p "Press any key to continue "
+            #read -n 1 -s -r -p "Press [ANY KEY] to Continue"
             cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
       fi
 
