@@ -128,7 +128,6 @@ if [ "$menu" == "process" ]; then
   exit
   fi
 
-  mkdir -p
   gdsa="ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l"
   if [ "$gdsa" -ne "0" ]; then
     if [ "$encryption" == "on" ]; then
