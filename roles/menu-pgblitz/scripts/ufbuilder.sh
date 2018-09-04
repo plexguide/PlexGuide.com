@@ -28,8 +28,8 @@ echo -n "/mnt/tdrive=RO:" > /tmp/pg.gdsa.build
 echo -n "/mnt/gdrive=RO:" >> /tmp/pg.gdsa.build
 
 ##### Encryption Portion ### Start
-tcrypt=$(grep "tcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
-gcrypt=$(grep "gcrypt" $RCLONE_CONF 1>/dev/null 2>&1)
+tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
 
 if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
     encryption="on"
@@ -37,9 +37,9 @@ if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
     encryption="off"
 fi
 
-status=$(cat /var/plexguide/pgblitz.menustat)
+encryption=
 
-if [ "$status" == "Encrypted" ]; then
+if [ "$encryption" == "on" ]; then
   echo -n "/mnt/gcrypt=RO:" >> /tmp/pg.gdsa.build
 fi
 ##### Encryption Portion ### END
