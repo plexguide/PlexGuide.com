@@ -16,15 +16,6 @@
 #
 #################################################################################
 ---
-  - name: Register UNIONFS PATH
-    shell: "cat /var/plexguide/unionfs.pgpath"
-    register: unionfs_path
-    ignore_errors: True
-
-  - name: Stop If UNIONFS Service Running
-    systemd: state=stopped name=unionfs
-    ignore_errors: yes
-
   - name: Install UNIONFS Service
     template:
       src: unionfs.js2

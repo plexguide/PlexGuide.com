@@ -16,16 +16,6 @@
 #
 #################################################################################
 ---
-- name: Check GCrypt Serivce
-  stat:
-    path: "/etc/systemd/system/gcrypt.service"
-  register: gcrypt
-
-- name: Stop If GCrypt Service Running
-  systemd: state=stopped name=gcrypt
-  when: gcrypt.stat.exists
-  ignore_errors: True
-
 - name: Install GCrypt Service
   template:
     src: gcrypt.js2

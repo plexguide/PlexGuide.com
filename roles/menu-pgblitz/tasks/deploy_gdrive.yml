@@ -16,16 +16,6 @@
 #
 #################################################################################
 ---
-  - name: Check GDrive Serivce
-    stat:
-      path: "/etc/systemd/system/gdrive.service"
-    register: gdrive
-
-  - name: Stop If GDRIVE Service Running
-    systemd: state=stopped name=gdrive
-    when: gdrive.stat.exists
-    ignore_errors: True
-
   - name: Install GDRIVE Service
     template:
       src: gdrive.js2

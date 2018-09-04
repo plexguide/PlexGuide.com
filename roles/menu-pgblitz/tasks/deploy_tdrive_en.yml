@@ -16,16 +16,6 @@
 #
 #################################################################################
 ---
-  - name: Check TDrive Serivce
-    stat:
-      path: "/etc/systemd/system/tdrive.service"
-    register: tdrive
-
-  - name: Stop If TDrive Service Running
-    systemd: state=stopped name=tdrive
-    when: tdrive.stat.exists
-    ignore_errors: True
-
   - name: Install TDrive Service
     template:
       src: tdrive_en.js2
