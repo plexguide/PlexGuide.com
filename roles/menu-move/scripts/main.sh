@@ -76,7 +76,7 @@ if [ "$menu" == "pgdrive" ]; then
 
     #### REQUIRED TO DEPLOY ENDING
     echo ""
-    read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
+    read -n 1 -s -r -p "PG Drive Deployed! Press [ANY KEY] to Continue"
 fi
 
 #### Bandwidth # 3
@@ -101,7 +101,7 @@ if [ "$menu" == "bw" ]; then
   else
     echo $number > /var/plexguide/move.bw
     echo ""
-    read -n 1 -s -r -p "You Must Redeploy [PG Move] for the BWLimit Change! Press [Any Key] to continue"
+    read -n 1 -s -r -p "You Must Redeploy [PG Move] for the BWLimit Change! Press [ANY KEY] to Continue"
   fi
 
 fi

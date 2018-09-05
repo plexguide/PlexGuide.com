@@ -100,7 +100,7 @@ if [ "$menu" == "pgdrive" ]; then
     #### REQUIRED TO DEPLOY ENDING
     ansible-playbook /opt/plexguide/pg.yml --tags unionfs
     echo ""
-    read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
+    read -n 1 -s -r -p "PG Drive Deployed! Press [ANY KEY] to Continue"
 fi
 
 #### Bandwidth # 4
@@ -135,7 +135,7 @@ if [ "$menu" == "bw" ]; then
   else
     echo $number > /var/plexguide/move.bw
     echo ""
-    read -n 1 -s -r -p "You Must Redeploy [PG Move] for the BWLimit Change! Press [Any Key] to continue"
+    read -n 1 -s -r -p "You Must Redeploy [PG Move] for the BWLimit Change! Press [ANY KEY] to Continue"
   fi
 
 fi
@@ -165,7 +165,7 @@ if [ "$menu" == "move" ]; then
   ansible-playbook /opt/plexguide/roles/menu-move-en/move.yml
   echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo ""
-  read -n 1 -s -r -p "PG Move Deployed! Press [Any Key] to continue"
+  read -n 1 -s -r -p "PG Move Deployed! Press [ANY KEY] to Continue"
 fi
 
 echo 'INFO - Looping: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
