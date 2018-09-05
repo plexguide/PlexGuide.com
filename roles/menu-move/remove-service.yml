@@ -27,9 +27,17 @@
   gather_facts: false
   vars:
     service_vars:
+      - {name: crypt.service}
+      - {name: pgdrive.service}
+      - {name: gdrive.service}
+      - {name: gcrypt.service}
+      - {name: tdrive.service}
+      - {name: tcrypt.service}
       - {name: supertransfer2.service}
-      - {name: menu-pgblitz.service}
+      - {name: unionfs.service}
+      - {name: move.service}
       - {name: plexdrive.service}
+      - {name: st2monitor.service}
   tasks:
     - name: Checking Existing Service Name
       stat:
