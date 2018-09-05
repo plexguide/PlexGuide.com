@@ -76,7 +76,7 @@ if [ "$menu" == "pgdrive" ]; then
 
     #### REQUIRED TO DEPLOY ENDING
     echo ""
-    read -n 1 -s -r -p "PG Drive Deployed! Press [ANY KEY] to Continue"
+    read -n 1 -s -r -p "PG Drive & Move Deployed! Press [ANY KEY] to Continue"
 fi
 
 #### Bandwidth # 3
