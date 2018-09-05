@@ -48,7 +48,7 @@ if [ "$menu" == "rclone" ]; then
   gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
 fi
 
-##### pgdrive # 3
+##### pgdrive # 4
 if [ "$menu" == "pgdrive" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
@@ -80,7 +80,7 @@ if [ "$menu" == "pgdrive" ]; then
     read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
 fi
 
-#### Bandwidth # 4
+#### Bandwidth # 3
 if [ "$menu" == "bw" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
@@ -105,25 +105,6 @@ if [ "$menu" == "bw" ]; then
     read -n 1 -s -r -p "You Must Redeploy [PG Move] for the BWLimit Change! Press [Any Key] to continue"
   fi
 
-fi
-
-#### PG Move # 5
-if [ "$menu" == "move" ]; then
-
-  #### BASIC CHECKS to STOP Deployment - START
-  if [ "$gdrive" != "[gdrive]" ]; then
-      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move/scripts/main.sh
-        exit
-  fi
-
-  #### DEPLOY Move Transfer System
-  ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
-  ansible-playbook /opt/plexguide/pg.yml --tags move
-  echo 'SUCCESS - PGMove is now running!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo ""
-  read -n 1 -s -r -p "PG Move Deployed! Press [Any Key] to continue"
 fi
 
 echo 'INFO - Looping: PG Move System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
