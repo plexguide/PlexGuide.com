@@ -71,6 +71,7 @@ if [ "$menu" == "pgdrive" ]; then
       #### ADDS TDRIVE to the UNIONFS PATH (Which is Optional)
       echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
     fi
+    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move
 
     #### REQUIRED TO DEPLOY ENDING
