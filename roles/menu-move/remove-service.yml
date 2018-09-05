@@ -36,6 +36,7 @@
       - {name: supertransfer2.service}
       - {name: unionfs.service}
       - {name: move.service}
+      - {name: pgblitz.service}
       - {name: plexdrive.service}
       - {name: st2monitor.service}
   tasks:
