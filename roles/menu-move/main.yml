@@ -29,16 +29,14 @@
                  \nSelect a Configuraiton Option!
     \n\n1.  Exit PG Move
     \n2.  Config RClone  : File
-    \n3.  Deploy Method  : PGDrive
-    \n4.  Upload BW Limit: {{bw.stdout}} MB (Change It)
-    \n5.  Deploy PG Mount: Move Script
+    \n3.  Upload BW Limit: {{bw.stdout}} MB (Change It)
+    \n4.  Deploy PGDrive /w PGMove
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
              choice.user_input == "3" or
-             choice.user_input == "4" or
-             choice.user_input == "5"
+             choice.user_input == "4"
       retries: 99
       delay: 1
 
@@ -54,14 +52,10 @@
       shell: "echo rclone > /var/plexguide/move.menu"
       when: fchoice == "2"
 
-    - name: Deploy PG Drive
-      shell: "echo pgdrive > /var/plexguide/move.menu"
-      when: fchoice == "3"
-
     - name: PG Bandwidth Limit
       shell: "echo bw > /var/plexguide/move.menu"
-      when: fchoice == "4"
+      when: fchoice == "3"
 
-    - name: Deploy PG Move
-      shell: "echo move > /var/plexguide/move.menu"
-      when: fchoice == "5"
+    - name: Deploy PG Drive
+      shell: "echo pgdrive > /var/plexguide/move.menu"
+      when: fchoice == "4"
