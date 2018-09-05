@@ -71,16 +71,15 @@ if [ "$menu" == "pgdrive" ]; then
   if [ "$tdrive" == "[tdrive]" ]; then
     #### ADDS TDRIVE to the UNIONFS PATH
     echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/pg.yml --tags tdrive
   fi
 
   if [ "$gdrive" == "[gdrive]" ]; then
     #### ADDS GDRIVE to the UNIONFS PATH
     echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/pg.yml --tags gdrive
   fi
+    ansible-playbook /opt/plexguide/pg.yml --tags menu-move
+
     #### REQUIRED TO DEPLOY ENDING
-    ansible-playbook /opt/plexguide/pg.yml --tags unionfs
     echo ""
     read -n 1 -s -r -p "PG Drive Deployed! Press [Any Key] to continue"
 fi
