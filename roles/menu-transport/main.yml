@@ -31,7 +31,10 @@
     \n*** Encrypted Blitz Still Under Testing Phase
     \n---------------------------------------------------------
     \n4.  PG Move   | Unencrypted | Simple    | 750GB Daily Cap
-    \n5.  PG Move   | Encrypted   | Simple    | 750GB Daily Cap
+    \n5.  PG Move   | Encrypted***| Simple    | 750GB Daily Cap
+    \n---------------------------------------------------------
+    \n*** Encrypted Move Still Under Testing Phase
+    \n---------------------------------------------------------
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
