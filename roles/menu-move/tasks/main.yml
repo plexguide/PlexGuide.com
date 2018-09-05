@@ -56,3 +56,9 @@
     src: move.js2
     dest: /etc/systemd/system/move.service
     force: yes
+
+- name: Daemon-Reload
+  systemd: state=stopped name=move daemon_reload=yes enabled=no
+
+- name: Start UnionFS
+  systemd: state=started name=move enabled=yes

@@ -67,16 +67,12 @@ if [ "$menu" == "pgdrive" ]; then
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
-  #### IF EXIST - DEPLOY
-  if [ "$tdrive" == "[tdrive]" ]; then
-    #### ADDS TDRIVE to the UNIONFS PATH
-    echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-  fi
-
-  if [ "$gdrive" == "[gdrive]" ]; then
-    #### ADDS GDRIVE to the UNIONFS PATH
     echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-  fi
+    #### IF EXIST - DEPLOY
+    if [ "$tdrive" == "[tdrive]" ]; then
+      #### ADDS TDRIVE to the UNIONFS PATH (Which is Optional)
+      echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+    fi
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move
 
     #### REQUIRED TO DEPLOY ENDING
