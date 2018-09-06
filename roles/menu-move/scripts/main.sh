@@ -19,10 +19,10 @@ echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
 
 #### RECALL VARIABLES START
-tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
-gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
 #### RECALL VARIABLES END
 
 echo "Not Configured" > /var/plexguide/pgblitz.menustat
@@ -71,10 +71,10 @@ if [ "$menu" == "rclone" ]; then
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
-  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
 fi
 
 ##### pgdrive # 4
@@ -107,8 +107,33 @@ if [ "$menu" == "pgdrive" ]; then
     else
       ansible-playbook /opt/plexguide/pg.yml --tags menu-move
     fi
-    #### REQUIRED TO DEPLOY ENDING
+    #### REQUIRED TO DEPLOY ENDING - BELOW UPDATES THE VARIABLE ON THE FRONT PAGE
+    tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+    gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+    tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+    gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
     echo ""
+
+    ##### Unencrypted Portion ### Start
+    if [ "$gdrive" == "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+        unencrypted="off"
+        encryption="on"
+        echo "Encrypted" > /var/plexguide/pgblitz.menustat
+      else
+        unencrypted="on"
+        encryption="off"
+        echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
+    fi
+
+    #### To Ensure Not Configured Message Comes Up
+    if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" != "[gcrypt]" ]; then
+      echo "Not Configured" > /var/plexguide/pgblitz.menustat
+    fi
+    if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+      echo "Not Configured" > /var/plexguide/pgblitz.menustat
+    fi
+    ##### UnEncrypted Portion ### END
+
     read -n 1 -s -r -p "PG Drive & Move Deployed! Press [ANY KEY] to Continue"
 fi
 
