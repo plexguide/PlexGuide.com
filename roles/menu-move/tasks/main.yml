@@ -35,6 +35,10 @@
   include_role:
     name: menu-pgblitz
     tasks_from: "deploy_unionfs.yml"
+
+- name: Set to GDrive for Move
+  set_fact:
+    ver: "gdrive"
 ################################################################ ENCRYPTED START
 - name: Deploy TDrive
   include_role:
@@ -54,6 +58,12 @@
   include_role:
     name: menu-move
     tasks_from: "deploy_tcrypt.yml"
+  tags:
+    - encrypted
+
+- name: Set to GCrypt if Encrypted Deploys
+  set_fact:
+    ver: "gcrypt"
   tags:
     - encrypted
 ################################################################ ENCRYPTED END
