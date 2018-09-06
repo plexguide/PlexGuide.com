@@ -74,7 +74,7 @@ case $CHOICE in
     ncdu /mnt ;;
   G)
     clear
-    ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/tdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/.gcrypt ;;
+    ncdu /mnt --exclude=/mnt/gdrive --exclude=/mnt/tdrive --exclude=/mnt/unionfs --exclude=/mnt/plexdrive --exclude=/mnt/encrypt --exclude=/mnt/gcrypt ;;
   H)
     clear
     ncdu /mnt/move ;;

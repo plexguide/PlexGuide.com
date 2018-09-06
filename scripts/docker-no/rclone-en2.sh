@@ -19,7 +19,7 @@
 clear
 
 ## Supporting Folders
-mkdir -p /mnt/.gcrypt
+mkdir -p /mnt/gcrypt
 mkdir -p /mnt/encrypt
 
 ## Installing rclone
@@ -83,11 +83,11 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 echo 3
-#fusermount -uz /mnt/.gcrypt
+#fusermount -uz /mnt/gcrypt
 ## RClone Script
 tee "/opt/appdata/plexguide/rclone-encrypt.sh" > /dev/null <<EOF
 #!/bin/bash
-rclone --uid=1000 --gid=1000 --allow-non-empty --allow-other mount gcrypt: /mnt/.gcrypt --bwlimit 8650k --size-only
+rclone --uid=1000 --gid=1000 --allow-non-empty --allow-other mount gcrypt: /mnt/gcrypt --bwlimit 8650k --size-only
 EOF
 chmod 775 /opt/appdata/plexguide/rclone-encrypt.sh
 
@@ -101,7 +101,7 @@ Type=simple
 User=0
 Group=0
 ExecStart=/bin/bash /opt/appdata/plexguide/rclone-encrypt.sh
-ExecStop=/bin/fusermount -uz /mnt/.gcrypt
+ExecStop=/bin/fusermount -uz /mnt/gcrypt
 TimeoutStopSec=20
 KillMode=process
 RemainAfterExit=yes
