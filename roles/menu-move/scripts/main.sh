@@ -71,10 +71,9 @@ if [ "$menu" == "rclone" ]; then
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
-  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
-  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+  echo ""
+  bash /opt/plexguide/roles/menu-move/scripts/main.sh
+  exit
 fi
 
 ##### pgdrive # 4
@@ -124,9 +123,6 @@ if [ "$menu" == "pgdrive" ]; then
     fi
     ##### UnEncrypted Portion ### END
     read -n 1 -s -r -p "PG Drive & Move Deployed! Press [ANY KEY] to Continue"
-    echo ""
-    bash /opt/plexguide/roles/menu-move/scripts/main.sh
-    exit
 fi
 
 #### Bandwidth # 3
