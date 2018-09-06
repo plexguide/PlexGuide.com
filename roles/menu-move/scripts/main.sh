@@ -37,7 +37,11 @@ if [ "$gdrive" == "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
     echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
 fi
 
+#### To Ensure Not Configured Message Comes Up
 if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" != "[gcrypt]" ]; then
+  echo "Not Configured" > /var/plexguide/pgblitz.menustat
+fi
+if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
   echo "Not Configured" > /var/plexguide/pgblitz.menustat
 fi
 ##### UnEncrypted Portion ### END
