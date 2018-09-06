@@ -19,7 +19,7 @@
 clear
 
 ## Supporting Folders
-#mkdir -p /mnt/.gcrypt
+#mkdir -p /mnt/gcrypt
 #mkdir -p /mnt/encrypt
 
 ## Installing rclone

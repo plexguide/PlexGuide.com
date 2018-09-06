@@ -56,6 +56,7 @@
       - pwgen
       - gawk
       - python-lxml
+      - acl
     #ignore_errors: yes
 
   - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox

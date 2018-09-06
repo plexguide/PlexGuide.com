@@ -17,8 +17,35 @@
 #################################################################################
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
-tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
-gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
+
+#### RECALL VARIABLES START
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+#### RECALL VARIABLES END
+
+echo "Not Configured" > /var/plexguide/pgblitz.menustat
+##### Unencrypted Portion ### Start
+if [ "$gdrive" == "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+    unencrypted="off"
+    encryption="on"
+    echo "Encrypted" > /var/plexguide/pgblitz.menustat
+  else
+    unencrypted="on"
+    encryption="off"
+    echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
+fi
+
+#### To Ensure Not Configured Message Comes Up
+if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" != "[gcrypt]" ]; then
+  echo "Not Configured" > /var/plexguide/pgblitz.menustat
+fi
+if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+  echo "Not Configured" > /var/plexguide/pgblitz.menustat
+fi
+##### UnEncrypted Portion ### END
+
 ################################################################## CORE
 
 file="/var/plexguide/move.bw"
@@ -44,8 +71,9 @@ if [ "$menu" == "rclone" ]; then
   mkdir -p /root/.config/rclone/
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
+  echo ""
+  bash /opt/plexguide/roles/menu-move/scripts/main.sh
+  exit
 fi
 
 ##### pgdrive # 4
@@ -61,21 +89,39 @@ if [ "$menu" == "pgdrive" ]; then
 
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  #### BLANK OUT PATH - This Builds For UnionFS
-  rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
-  touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
-
-    echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-    #### IF EXIST - DEPLOY
-    if [ "$tdrive" == "[tdrive]" ]; then
-      #### ADDS TDRIVE to the UNIONFS PATH (Which is Optional)
-      echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-    fi
     ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
-    ansible-playbook /opt/plexguide/pg.yml --tags menu-move
 
-    #### REQUIRED TO DEPLOY ENDING
+    if [ "$encryption" == "off" ]; then
+      ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
+    else
+      ansible-playbook /opt/plexguide/pg.yml --tags menu-move
+    fi
+    #### REQUIRED TO DEPLOY ENDING - BELOW UPDATES THE VARIABLE ON THE FRONT PAGE
+    tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+    gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+    tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+    gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
     echo ""
+
+    ##### Unencrypted Portion ### Start
+    if [ "$gdrive" == "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+        unencrypted="off"
+        encryption="on"
+        echo "Encrypted" > /var/plexguide/pgblitz.menustat
+      else
+        unencrypted="on"
+        encryption="off"
+        echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
+    fi
+
+    #### To Ensure Not Configured Message Comes Up
+    if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" != "[gcrypt]" ]; then
+      echo "Not Configured" > /var/plexguide/pgblitz.menustat
+    fi
+    if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+      echo "Not Configured" > /var/plexguide/pgblitz.menustat
+    fi
+    ##### UnEncrypted Portion ### END
     read -n 1 -s -r -p "PG Drive & Move Deployed! Press [ANY KEY] to Continue"
 fi
 

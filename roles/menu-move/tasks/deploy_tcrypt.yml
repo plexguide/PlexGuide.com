@@ -1,7 +1,9 @@
 #!/bin/bash
 #
+# [Ansible Role]
+#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Flicker-Rate
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -13,5 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-ps -ef | grep supertransfer | grep -v "grep" | awk '{print $2}' | xargs kill -9;
-exit 0
+---
+- name: Install TCrypt Service
+  template:
+    src: tcrypt.js2
+    dest: /etc/systemd/system/tcrypt.service
+    force: yes
+  ignore_errors: yes
+
+- name: Start TCrypt SERVICE
+  systemd: state=started name=tcrypt daemon_reload=yes enabled=yes
+  ignore_errors: yes
