@@ -37,16 +37,16 @@
 ############ GCrypt
   - name: GCrypt Check
     stat:
-      path: /mnt/.gcrypt
+      path: /mnt/gcrypt
     register: gcrypt
 
   - name: Create GCrypt Folders
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
     with_items:
-      - /mnt/.gcrypt/tv
-      - /mnt/.gcrypt/movies
-      - /mnt/.gcrypt/music
-      - /mnt/.gcrypt/ebooks
+      - /mnt/gcrypt/tv
+      - /mnt/gcrypt/movies
+      - /mnt/gcrypt/music
+      - /mnt/gcrypt/ebooks
     when: gcrypt.stat.exists == False
     ignore_errors: yes
 
