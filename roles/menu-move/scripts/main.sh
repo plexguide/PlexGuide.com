@@ -17,8 +17,31 @@
 #################################################################################
 echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
-tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
-gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -c8) 1>/dev/null 2>&1
+
+#### RECALL VARIABLES START
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
+tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+#### RECALL VARIABLES END
+
+echo "Not Configured" > /var/plexguide/pgblitz.menustat
+##### Unencrypted Portion ### Start
+if [ "$gdrive" == "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+    unencrypted="off"
+    encryption="on"
+    echo "Encrypted" > /var/plexguide/pgblitz.menustat
+  else
+    unencrypted="on"
+    encryption="off"
+    echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
+fi
+
+if [ "$gdrive" != "[gdrive]" && [ "$gcrypt" != "[gcrypt]" ]; then
+  echo "Not Configured" > /var/plexguide/pgblitz.menustat
+fi
+##### UnEncrypted Portion ### END
+
 ################################################################## CORE
 
 file="/var/plexguide/move.bw"
