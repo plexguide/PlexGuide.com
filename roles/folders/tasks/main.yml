@@ -49,6 +49,21 @@
       - /mnt/gcrypt/ebooks
     when: gcrypt.stat.exists == False
     ignore_errors: yes
+############ TCrypt
+  - name: TCrypt Check
+    stat:
+      path: /mnt/tcrypt
+    register: tcrypt
+
+  - name: Create TCrypt Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+      - /mnt/tcrypt/tv
+      - /mnt/tcrypt/movies
+      - /mnt/tcrypt/music
+      - /mnt/tcrypt/ebooks
+    when: tcrypt.stat.exists == False
+    ignore_errors: yes
 
 ############ UnionFS
   - name: UnionFS Check
