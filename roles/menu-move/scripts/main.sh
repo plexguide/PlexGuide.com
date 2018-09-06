@@ -102,7 +102,7 @@ if [ "$menu" == "pgdrive" ]; then
     fi
     ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
 
-    if [ "$encryption" == "off"]; then
+    if [ "$encryption" == "off" ]; then
       ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
     else
       ansible-playbook /opt/plexguide/pg.yml --tags menu-move
