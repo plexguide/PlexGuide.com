@@ -22,8 +22,6 @@ echo "INFO - Installing Requirements" > /var/plexguide/pg.log && bash /opt/plexg
 echo 'INFO - USING AUTO SA CREATION TOOL' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 echo 'INFO - RUNNING Auto SA Tool by Teresa' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-#dialog --title "WARNING!" --msgbox "\nMake Sure you have read the Wiki for using the Auto SA Tool!" 0 0
-
 ### Python Script Prep
 ansible-playbook /opt/plexguide/roles/menu-pgblitz/pre.yml
 
