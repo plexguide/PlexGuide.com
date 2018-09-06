@@ -23,9 +23,13 @@
       shell: "cat /var/plexguide/move.bw"
       register: bw
 
+    - name: Recall Protection Method
+      shell: "cat /var/plexguide/pgblitz.menustat"
+      register: protection
+
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to PG Move - Unencrypted!
+        prompt: "\nWelcome to PG Move - {{protection.stdout}}!
                  \nSelect a Configuraiton Option!
     \n\n1.  Exit PG Move
     \n2.  Config RClone  : File

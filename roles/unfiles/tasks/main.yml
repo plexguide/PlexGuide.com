@@ -10,7 +10,7 @@
         - /mnt/sab
         - /mnt/rutorrents
         - /mnt/move
-        - /mnt/.gcrypt
+        - /mnt/gcrypt
         - /mnt/deluge
         - /mnt/torrentvpn       
     ignore_errors: yes   

@@ -94,7 +94,7 @@
                  \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
     \n\n1.  EXIT PlexGuide
     \n--------------------------------------------
-    \n2.  PGDrive Mounts & Transport Mechanisms
+    \n2.  PG Mounts & Data Transport
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
     \n4.  Server Port Guard - Ports  [{{ports}}]
     \n5.  PG Authentication Systems  [{{output}}]
