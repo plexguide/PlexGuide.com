@@ -90,16 +90,6 @@ if [ "$menu" == "pgdrive" ]; then
 
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  #### BLANK OUT PATH - This Builds For UnionFS
-  rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
-  touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
-
-    echo -n "/mnt/gdrive=RO:" >> /var/plexguide/unionfs.pgpath
-    #### IF EXIST - DEPLOY
-    if [ "$tdrive" == "[tdrive]" ]; then
-      #### ADDS TDRIVE to the UNIONFS PATH (Which is Optional)
-      echo -n "/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
-    fi
     ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
 
     if [ "$encryption" == "off" ]; then
@@ -133,8 +123,10 @@ if [ "$menu" == "pgdrive" ]; then
       echo "Not Configured" > /var/plexguide/pgblitz.menustat
     fi
     ##### UnEncrypted Portion ### END
-
     read -n 1 -s -r -p "PG Drive & Move Deployed! Press [ANY KEY] to Continue"
+    echo ""
+    bash /opt/plexguide/roles/menu-move/scripts/main.sh
+    exit
 fi
 
 #### Bandwidth # 3
