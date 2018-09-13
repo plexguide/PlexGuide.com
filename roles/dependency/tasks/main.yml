@@ -57,6 +57,7 @@
       - gawk
       - python-lxml
       - acl
+      - bc
     #ignore_errors: yes
 
   - name: Ansible-ToolBox from https://github.com/larsks/ansible-toolbox
