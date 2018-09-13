@@ -95,7 +95,7 @@ do
                         echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
 
                         #increase or reset $GDSAUSE?
-                        if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
+                        if [ "$GDSAAMOUNT" -gt "700000000000" ]; then
                             echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 							echo "[PGBlitz] ${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA"
                             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
