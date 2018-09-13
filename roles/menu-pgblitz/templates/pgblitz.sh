@@ -30,6 +30,7 @@ mkdir -p /opt/appdata/pgblitz/json/
 mkdir -p /opt/appdata/pgblitz/logs/
 mkdir -p /opt/appdata/pgblitz/vars/
 
+log "PGBlitz v2.1 Started"
 log "Started for the First Time - Cleaning up if from reboot"
 #remove left over webui and transfer files
 rm -f /opt/appdata/pgblitz/pid/*
