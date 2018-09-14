@@ -17,12 +17,23 @@
 # PLEASE NOTE: The authors of this script will offer no support,
 #              If it has been modified!!
 #################################################################################
+#  _____   _____ ____  _ _ _              ___   __ 
+# |  __ \ / ____|  _ \| (_) |            |__ \ /_ |
+# | |__) | |  __| |_) | |_| |_ ____ __   __ ) | | |
+# |  ___/| | |_ |  _ <| | | __|_  / \ \ / // /  | |
+# | |    | |__| | |_) | | | |_ / /   \ V // /_ _| |
+# |_|     \_____|____/|_|_|\__/___|   \_/|____(_)_|
+#
+#################################################################################
+
+# Logging Function
 function log()
 {
     echo "[PGBlitz] $@" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     echo "[PGBlitz] $@"
 }
 
+#Make sure all the folders we need are created
 downloadpath=$(cat /var/plexguide/server.hd.path)
 path=/opt/appdata/pgblitz/keys
 mkdir -p /opt/appdata/pgblitz/pid/
@@ -30,9 +41,11 @@ mkdir -p /opt/appdata/pgblitz/json/
 mkdir -p /opt/appdata/pgblitz/logs/
 mkdir -p /opt/appdata/pgblitz/vars/
 
+#Header
 log "PGBlitz v2.1 Started"
 log "Started for the First Time - Cleaning up if from reboot"
-#remove left over webui and transfer files
+
+# Remove left over webui and transfer files
 rm -f /opt/appdata/pgblitz/pid/*
 rm -f /opt/appdata/pgblitz/json/*
 rm -f /opt/appdata/pgblitz/logs/*
@@ -53,17 +66,20 @@ else
 fi
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 
+# Check to see if we have any keys
 if [ $GDSACOUNT -lt 1 ]; then
     log "No accounts found to upload with, Exit"
     exit 1
 fi
+
+# Check if BC is installed
 if [ `echo "10 + 10" | bc` == "20" ]; then
     log "BC Found! All good :)"
 else
     log "BC Not installed, Exit"
     exit 2
 fi
-#grabs vars from files
+# Grabs vars from files
 if [ -e /opt/appdata/pgblitz/vars/lastGDSA ]; then
 	GDSAUSE=`cat /opt/appdata/pgblitz/vars/lastGDSA`
 	GDSAAMOUNT=`cat /opt/appdata/pgblitz/vars/gdsaAmount`
@@ -71,6 +87,8 @@ else
 	GDSAUSE=0
 	GDSAAMOUNT=0
 fi
+
+# Run Loop
 while [ 1 ]
 do
     #Find files to transfer
@@ -86,6 +104,7 @@ do
                 log "Lock File found for $i"
                 continue
             else
+                # Check if file is still getting bigger
                 FILESIZE1=`wc -c < "$i"`
                 sleep 3
                 FILESIZE2=`wc -c < "$i"`
@@ -93,6 +112,8 @@ do
 					log "File is still getting bigger $i"
                     continue
                 fi
+                
+                # Check if we have any upload slots available
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     if [ -e $i ]; then
