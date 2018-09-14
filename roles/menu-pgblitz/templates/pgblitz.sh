@@ -81,11 +81,11 @@ else
 fi
 # Grabs vars from files
 if [ -e /opt/appdata/pgblitz/vars/lastGDSA ]; then
-	GDSAUSE=`cat /opt/appdata/pgblitz/vars/lastGDSA`
-	GDSAAMOUNT=`cat /opt/appdata/pgblitz/vars/gdsaAmount`
+    GDSAUSE=`cat /opt/appdata/pgblitz/vars/lastGDSA`
+    GDSAAMOUNT=`cat /opt/appdata/pgblitz/vars/gdsaAmount`
 else
-	GDSAUSE=0
-	GDSAAMOUNT=0
+    GDSAUSE=0
+    GDSAAMOUNT=0
 fi
 
 # Run Loop
@@ -96,7 +96,7 @@ do
     files=(`find ${downloadpath}/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -name "*.version" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
     if [[ ${#files[@]} -gt 0 ]]; then
         #if files are found loop though and upload
-		log "Files found to upload"
+        log "Files found to upload"
         for i in "${files[@]}"
         do
             #if file has a lockfile skip
@@ -109,7 +109,7 @@ do
                 sleep 3
                 FILESIZE2=`wc -c < "$i"`
                 if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
-					log "File is still getting bigger $i"
+                log "File is still getting bigger $i"
                     continue
                 fi
                 
@@ -117,7 +117,7 @@ do
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     if [ -e $i ]; then
-						log "Starting upload of $i"
+                    log "Starting upload of $i"
                         #append filesize to GDSAAMOUNT
                         GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
 
@@ -144,23 +144,23 @@ do
                             #record next GDSA in case of crash/reboot
                             echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
                         fi
-						log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024/1024" | bc -l`"
+                        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024/1024" | bc -l`"
                         #record GDSA transfered in case of crash/reboot
                         echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
                     else
-						log "File $i seems to have dissapeared"
-					fi
+                        log "File $i seems to have dissapeared"
+                    fi
                 else
-					log "Already 8 transfers running, waiting for next loop"
+                    log "Already 8 transfers running, waiting for next loop"
                     break
                 fi
             fi
-			log "Sleeping 5s before looking at next file"
+            log "Sleeping 5s before looking at next file"
             sleep 5
         done
-		log "Finished looking for files, sleeping 5 secs"
+        log "Finished looking for files, sleeping 5 secs"
     else
-		log "Nothing to upload, sleeping 5 secs"
+        log "Nothing to upload, sleeping 5 secs"
     fi
     sleep 5
 done
