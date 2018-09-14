@@ -17,6 +17,7 @@
 #################################################################################
 echo "on" > /var/plexguide/manual.menu
 menu=$(echo "on")
+rm -f /opt/appdata/pgblitz/vars/automated
 
 while [ "$menu" != "break" ]; do
   ################################################################## CORE
