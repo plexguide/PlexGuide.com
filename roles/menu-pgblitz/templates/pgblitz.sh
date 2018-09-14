@@ -111,8 +111,8 @@ do
                         echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
                         
                         #increase or reset $GDSAUSE?
-                        if [ "$GDSAAMOUNT" -gt "751619276800" ]; then
-                            log "${GDSAARRAY[$GDSAUSE]} has hit 700GB switching to next SA"
+                        if [ "$GDSAAMOUNT" -gt "783831531520" ]; then
+                            log "${GDSAARRAY[$GDSAUSE]} has hit 730GB switching to next SA"
                             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
                                 GDSAUSE=0
                                 GDSAAMOUNT=0
