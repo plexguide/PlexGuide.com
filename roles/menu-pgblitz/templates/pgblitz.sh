@@ -95,11 +95,11 @@ do
     IFS=$'\n'
     files=(`find ${downloadpath}/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -name "*.version" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
     if [[ ${#files[@]} -gt 0 ]]; then
-        #if files are found loop though and upload
+        # If files are found loop though and upload
         log "Files found to upload"
         for i in "${files[@]}"
         do
-            #if file has a lockfile skip
+            # If file has a lockfile skip
             if [ -e ${i}.lck ]; then
                 log "Lock File found for $i"
                 continue
@@ -112,26 +112,25 @@ do
                 log "File is still getting bigger $i"
                     continue
                 fi
-                
+
                 # Check if we have any upload slots available
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
                 if [ ! $TRANSFERS -ge 8 ]; then
                     if [ -e $i ]; then
                     log "Starting upload of $i"
-                        #append filesize to GDSAAMOUNT
+                        # Append filesize to GDSAAMOUNT
                         GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
 
-                        #Run upload script demonised
+                        # Run upload script demonised
                         /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
-                        
-                        #touch "`dirname $i`/folder.lck"
+
                         PID=$!
                         FILEBASE=`basename $i`
-                        
-                        #add transfer to pid directory
+
+                        # Add transfer to pid directory
                         echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
-                        
-                        #increase or reset $GDSAUSE?
+
+                        # Increase or reset $GDSAUSE?
                         if [ "$GDSAAMOUNT" -gt "783831531520" ]; then
                             log "${GDSAARRAY[$GDSAUSE]} has hit 730GB switching to next SA"
                             if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
@@ -141,11 +140,11 @@ do
                                 GDSAUSE=`expr $GDSAUSE + 1`
                                 GDSAAMOUNT=0
                             fi
-                            #record next GDSA in case of crash/reboot
+                            # Record next GDSA in case of crash/reboot
                             echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
                         fi
                         log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024/1024" | bc -l`"
-                        #record GDSA transfered in case of crash/reboot
+                        # Record GDSA transfered in case of crash/reboot
                         echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
                     else
                         log "File $i seems to have dissapeared"
