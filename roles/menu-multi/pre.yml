@@ -53,5 +53,5 @@
     - debug: msg="Count Up - {{countplus}}"
 
     - name: Register Ports
-      shell: "echo {{countplus}} > /var/plexguide/server.ports"
+      shell: "echo {{countplus}} > cat /var/plexguide/multi.count"
       register: info
