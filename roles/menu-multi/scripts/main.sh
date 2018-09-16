@@ -38,10 +38,10 @@ if [ "$menu" == "addpath" ]; then
       fi
     done
   echo $number > /var/plexguide/multi.filler
+fi
 
   ansible-playbook /opt/plexguide/roles/menu-multi/pre.yml
   bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
-fi
 
 if [ "$menu" == "move" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
