@@ -27,7 +27,6 @@
       pause:
         prompt: "\nWelcome to PG Multi-HD UnionFS Builder!
                  \n\nCurrent Mounts:
-                 \n/mnt
                  \n{{multilist.stdout}}
     \n\n1. EXIT Interface
     \n---------------------------------------------
