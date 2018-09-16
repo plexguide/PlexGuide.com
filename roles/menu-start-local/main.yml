@@ -45,13 +45,13 @@
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
-    \n\n1.  EXIT PlexGuide
+    \n\n1. EXIT PlexGuide
     \n--------------------------------------------
-    \n2.  Setup Hard Drives
+    \n2. Setup Hard Drives
     \n--------------------------------------------
-    \n3.  Program Suite Installer
-    \n4.  Plex Enhancement Tools
-    \n5.  System & Network Auditor
+    \n3. Program Suite Installer
+    \n4. Plex Enhancement Tools
+    \n5. System & Network Auditor
     \n6. Settings Menu
     \n7. Troubleshooting Actions
     \n\nType a [NUMBER] Choice & Press [ENTER]"
