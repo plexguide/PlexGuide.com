@@ -16,43 +16,7 @@
 #
 #################################################################################
 echo "INFO - PGBlitz: Starting JSON Building Process" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-number=0
 
-### Remove Files for the Process
-rm -r /tmp/pg.keys.processed.count 1>/dev/null 2>&1
 
-### Initial List of Unprocessed Keys
-ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{ print $9}' | tail -n +4 > /tmp/pg.ukeys.temp
-
-### Initial List of Processed Keys
-ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.pkeys.temp
-
-### Make Temp Directory To Move Temp-Processed Keys
-mkdir -p /opt/appdata/pgblitz/keys/temp 1>/dev/null 2>&1
-
-touch /tmp/pg.keys.processed.count 1>/dev/null 2>&1
-while read p; do
-  p=${p:4}
-  echo $p >> /tmp/pg.keys.processed.count
-done </tmp/pg.pkeys.temp
-
-while read p; do
-  let "number++"
-  until [ "$break" == "1" ]; do
-    check=$(grep -w "$number" /tmp/pg.keys.processed.count)
-    if [ "$check" == "$number" ]; then
-        break=0
-        let "number++"
-        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      else
-        break=1
-    fi
-  done
-  mv /opt/appdata/pgblitz/keys/unprocessed/$p /opt/appdata/pgblitz/keys/temp/GDSA$number
-  #echo "/opt/appdata/pgblitz/keys/unprocessed/$p" > /opt/appdata/pgblitz/keys/originalname/GDSA$number
-  #echo "INFO - PGBlitz: GDSA$number Established" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-done </tmp/pg.ukeys.temp
-
-mv /opt/appdata/pgblitz/keys/temp/* /opt/appdata/pgblitz/keys/unprocessed/
 
 echo "INFO - PGBlitz: JSON Building Process List Complete" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
