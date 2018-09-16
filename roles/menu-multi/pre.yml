@@ -31,7 +31,7 @@
     - debug: msg="Does the Path Exist? {{path.stat.exists}}"
 
     - pause:
-        prompt: "Path - {{pathinput.user_input}} does not exist!\n\nTIP 1: Type ls -la {{pathinput.user_input}} for a test\nTIP 2: If a NAS, conduct research prior!\nTIP 3: PG does not mount your drives! You have to setup prior!\n\nPress [ENTER] to Continue"
+        prompt: "\nPath - {{pathinput.user_input}} does not exist!\n\nTIP 1: Test by Typing > ls -la {{pathinput.user_input}}\nTIP 2: If a NAS, conduct research prior!\nTIP 3: PG does not mount your drives! You have to setup prior!\n\nPress [ENTER] to Continue"
       when: path.stat.exists == False
 
     - fail:
