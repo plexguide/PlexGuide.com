@@ -29,3 +29,7 @@
       register: path
 
     - debug: msg="Does the Path Exist? {{path.stat.exists}}"
+
+    - fail:
+        msg: "\nPath - {{path.stdout}} - does not exist!"
+      when: path.stat.exists == "False"
