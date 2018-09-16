@@ -64,4 +64,5 @@ if [ "$menu" == "addpath" ]; then
     done
   echo $number > /var/plexguide/multi.filler
 
+
 echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
