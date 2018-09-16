@@ -30,7 +30,7 @@ if [ "$menu" == "mount" ]; then
     if [ "$edition" == "PG Edition: HD Solo" ]; then
       echo ""
       echo "Utilizing the HD Solo Edition! Cannot Setup HDs!"
-      echo "Note: Data is Stored under the Solo HD of /mnt"
+      echo "Note: Data Stored via the Solo HD @ /mnt"
       echo ""
       read -n 1 -s -r -p "Press [ANY] Key to Continue"
     else
