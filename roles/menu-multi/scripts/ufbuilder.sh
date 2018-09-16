@@ -29,17 +29,20 @@
 
 ### Blank Out File
 rm -r /tmp/multi.build 1>/dev/null 2>&1
+rm -r /tmp/multi.unionfs 1>/dev/null 2>&1
 touch /tmp/multi.build 1>/dev/null 2>&1
 
 ### Ensure Directory Exists
 mkdir -p /opt/appdata/plexguide/multi 1>/dev/null 2>&1
 
 ### Count Inital List of Files
-ls -la /opt/appdata/plexguide/multi | awk '{ print $9}' | tail -n +4 > /tmp/multi.list
+ls -la /opt/appdata/plexguide/multi | awk '{ print $9}' | tail -n +4 > /opt/appdata/plexguide/multi/multi.list
 
+echo -n "/mnt=RO:" > /tmp/multi.unionfs
 while read p; do
-echo -n "$p" >> /var/plexguide/multi.unionfs
-done </tmp/multi.list
+tmp=$(cat /opt/appdata/plexguide/multi/$p)
+echo -n "$tmp=RO:" >> /tmp/multi.unionfs
+done </opt/appdata/plexguide/multi.list
 
 builder=$(cat /var/plexguide/multi.unionfs)
 
