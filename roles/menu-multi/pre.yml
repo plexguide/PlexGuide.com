@@ -20,5 +20,5 @@
   gather_facts: false
   tasks:
     - pause:
-        prompt: "\nType the Exact Path of the Folder/HD\nExample 1: /secondhd/shows\nExample 2: /thirdhd/media/!\n\nThen PRESS [ENTER]"
+        prompt: "\nType the Exact Path of the Folder/HD\n\nExample 1: /secondhd/shows\nExample 2: /thirdhd/media\nExample 3: /sparedrive/media/downloads/\n\nThen PRESS [ENTER]"
       register: path
