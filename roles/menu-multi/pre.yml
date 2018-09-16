@@ -32,4 +32,4 @@
 
     - fail:
         msg: "\nPath - {{path.stdout}} - does not exist!"
-      when: path.stat.exists == "False"
+      when: path.stat.exists == False
