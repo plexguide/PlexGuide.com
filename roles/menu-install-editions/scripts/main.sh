@@ -44,6 +44,7 @@ if [ "$menu" == "multihd" ]; then
   echo 'INFO - Select PG Edition: HD Multi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "PG Edition: HD Multi" > /var/plexguide/pg.edition
   echo "drives" > /var/plexguide/pg.server.deploy
+  cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   exit
 fi
 
