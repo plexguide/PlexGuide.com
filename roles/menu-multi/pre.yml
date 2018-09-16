@@ -35,5 +35,5 @@
       when: path.stat.exists == False
 
     - fail:
-        msg: "Path - {{pathinput.user_input}} - DOES NOT EXIST!"
+        msg: "Failed Warning: Path - {{pathinput.user_input}} - DOES NOT EXIST!"
       when: path.stat.exists == False
