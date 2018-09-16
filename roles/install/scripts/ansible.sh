@@ -27,6 +27,7 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
     else
       echo "Installing / Upgrading Ansible" > /var/plexguide/message.phase
       bash /opt/plexguide/roles/install/scripts/message.sh
+      echo ""
       sudo apt-get remove ansible -y
       sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
       apt-get update -y
