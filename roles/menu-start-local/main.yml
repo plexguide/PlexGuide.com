@@ -47,7 +47,7 @@
                  \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
     \n\n1.  EXIT PlexGuide
     \n--------------------------------------------
-      2.  Setup Hard Drives
+    \n2.  Setup Hard Drives
     \n--------------------------------------------
     \n3.  Program Suite Installer
     \n4.  Plex Enhancement Tools
