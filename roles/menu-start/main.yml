@@ -87,6 +87,26 @@
       register: pgpython
       ignore_errors: True
 
+##### Recall Mounts or HDs
+    - name: Register Mounts or HD Action
+      shell: "cat /var/plexguide/pg.edition.stored"
+      register: info
+
+    - name: Set Mounts
+      set_fact:
+        mounts: "PG Mounts & Data Transport"
+      when: not info.stdout == "PG Edition: HD Solo" and not info.stdout == "PG Edition: HD Multi"
+
+    - name: Set Solo HD
+      set_fact:
+        mounts: "Using Solo HD - Cannot Change HDs"
+      when: info.stdout == "PG Edition: HD Solo"
+
+    - name: Set Multi HDs
+      set_fact:
+        mounts: "Setup & Deploy Multiple Hard-Drives"
+      when: info.stdout == "PG Edition: HD Multi"
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
@@ -94,7 +114,7 @@
                  \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
     \n\n1.  EXIT PlexGuide
     \n--------------------------------------------
-    \n2.  PG Mounts & Data Transport
+    \n2.  {{mounts}}
     \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
     \n4.  Server Port Guard - Ports  [{{ports}}]
     \n5.  PG Authentication Systems  [{{output}}]
@@ -102,7 +122,7 @@
     \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
     \n8.  System & Network Auditor
-    \n9.  Backup & Restore
+    \n9.  {{backup.stdout}} Backup & Restore
     \n10. Settings Menu
     \n11. Troubleshooting Actions
     \n\nType a [NUMBER] Choice & Press [ENTER]"
