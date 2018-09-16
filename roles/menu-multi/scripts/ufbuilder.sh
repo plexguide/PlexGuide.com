@@ -43,7 +43,7 @@ echo -n "/mnt" > /var/plexguide/multi.read
 while read p; do
 tmp=$(cat /opt/appdata/plexguide/multi/$p)
 echo -n "$tmp=RO:" >> /var/plexguide/multi.unionfs
-echo -n "$tmp" >> /var/plexguide/multi.read
+echo "$tmp" >> /var/plexguide/multi.read
 done </var/plexguide/multi.list
 
 builder=$(cat /var/plexguide/multi.unionfs)
