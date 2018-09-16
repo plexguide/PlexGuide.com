@@ -95,17 +95,21 @@
     - name: Set Mounts
       set_fact:
         mounts: "PG Mounts & Data Transport"
+        backups: "Backup & Restore"
       when: not info.stdout == "PG Edition - HD Solo" and not info.stdout == "PG Edition - HD Multi"
 
     - name: Set Solo HD
       set_fact:
-        mounts: "Using Solo HD - Cannot Change HDs"
+        mounts: "NOTE: SOLO HD - Unable to Setup GDrive or Multiple HDs"
+        backups: "NOTE: SOLO HD - Backup & Restore NOT Enabled (No GDrive)"
       when: info.stdout == "PG Edition - HD Solo"
 
     - name: Set Multi HDs
       set_fact:
         mounts: "Setup & Deploy Multiple Hard-Drives"
+        backups: "NOTE: Multi HD - Backup & Restore NOT Enabled (No GDrive)"
       when: info.stdout == "PG Edition - HD Multi"
+#####
 
     - name: PG Main Menu
       pause:
@@ -122,7 +126,7 @@
     \n6.  Program Suite Installer
     \n7.  Plex Enhancement Tools
     \n8.  System & Network Auditor
-    \n9.  Backup & Restore
+    \n9.  {{backups}}
     \n10. Settings Menu
     \n11. Troubleshooting Actions
     \n\nType a [NUMBER] Choice & Press [ENTER]"
