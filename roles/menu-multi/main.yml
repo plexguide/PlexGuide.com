@@ -48,17 +48,17 @@
         fchoice: "{{choice.user_input}}"
 
     - name: Exiting Interface
-      shell: "echo break > /var/plexguide/manual.menu"
+      shell: "echo break > /var/plexguide/multi.menu"
       when: fchoice == "1"
 
     - name: RClone
-      shell: "echo addpath > /var/plexguide/manual.menu"
+      shell: "echo addpath > /var/plexguide/multi.menu"
       when: fchoice == "2"
 
     - name: JSONS
-      shell: "echo removepath > /var/plexguide/manual.menu"
+      shell: "echo removepath > /var/plexguide/multi.menu"
       when: fchoice == "3"
 
     - name: EMail
-      shell: "echo unionfs > /var/plexguide/manual.menu"
+      shell: "echo unionfs > /var/plexguide/multi.menu"
       when: fchoice == "4"
