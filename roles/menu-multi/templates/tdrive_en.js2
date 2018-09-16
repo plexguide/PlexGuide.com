@@ -1,0 +1,36 @@
+#!/bin/bash
+##
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+[Unit]
+Description=TDrive Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/usr/bin/rclone --allow-non-empty --allow-other mount tdrive: /mnt/tdrive \
+                          --uid=1000 --gid=1000 \
+                          --size-only --dir-cache-time=2m \
+                          --vfs-read-chunk-size=96M --vfs-cache-max-age 675h --vfs-read-chunk-size-limit=1G \
+                          --buffer-size=48M --syslog --umask 002 --log-level INFO \
+                          --config /root/.config/rclone/rclone.conf
+ExecStop=/bin/fusermount -uz /mnt/tdrive
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
