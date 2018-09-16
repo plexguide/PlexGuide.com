@@ -33,6 +33,11 @@ if [ "$menu" == "mount" ]; then
     echo "Note: Data Stored via the Solo HD @ /mnt"
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  elif [ "$edition" == "PG Edition - HD Multi" ]; then
+    echo ""
+    echo "Not Ready"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
   else
     bash /opt/plexguide/roles/menu-transport/scripts/main.sh
   fi
