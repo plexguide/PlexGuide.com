@@ -16,12 +16,12 @@
 #
 #################################################################################
 
-#file="/var/plexguide/multi.count"
-#  if [ -e "$file" ]; then
-#    echo "" 1>/dev/null 2>&1
-#  else
-#    echo "0" > /var/plexguide/multi.count
-#  fi
+file="/var/plexguide/multi.count"
+  if [ -e "$file" ]; then
+    echo "" 1>/dev/null 2>&1
+  else
+    echo "0" > /var/plexguide/multi.count
+  fi
 
 #count=$(cat /var/plexguide/multi.count)
 #let "count++"
