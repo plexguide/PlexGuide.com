@@ -27,7 +27,7 @@ if [ "$menu" == "mount" ]; then
   echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   edition=$(cat /var/plexguide/pg.edition.stored)
-  if [ "$edition" == "PG Edition: HD Solo" ]; then
+  if [ "$edition" == "PG Edition - HD Solo" ]; then
     echo ""
     echo "Utilizing the HD Solo Edition! Cannot Setup HDs!"
     echo "Note: Data Stored via the Solo HD @ /mnt"
@@ -36,7 +36,7 @@ if [ "$menu" == "mount" ]; then
   else
     bash /opt/plexguide/roles/menu-transport/scripts/main.sh
   fi
-  
+
 fi
 
 if [ "$menu" == "traefik" ]; then
