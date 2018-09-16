@@ -38,17 +38,17 @@
     fchoice: "{{choice.user_input}}"
 
 - name: gdrive
-  shell: "echo gdrive > /var/plexguide/pgedition.menu"
+  shell: "echo gdrive > /var/plexguide/pgeditions.menu"
   when: fchoice == "1"
 
 - name: solohd
-  shell: "echo solohd > /var/plexguide/pgedition.menu"
+  shell: "echo solohd > /var/plexguide/pgeditions.menu"
   when: fchoice == "2"
 
 - name: multihd
-  shell: "echo multihd > /var/plexguide/pgedition.menu"
+  shell: "echo multihd > /var/plexguide/pgeditions.menu"
   when: fchoice == "3"
 
 - name: gce
-  shell: "echo gce > /var/plexguide/pgedition.menu"
+  shell: "echo gce > /var/plexguide/pgeditions.menu"
   when: fchoice == "4"
