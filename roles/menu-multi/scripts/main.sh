@@ -26,6 +26,7 @@ menu=$(cat /var/plexguide/multi.menu)
 if [ "$menu" == "addpath" ]; then
   echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/roles/menu-multi/pre.yml
+  bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
 fi
 
 if [ "$menu" == "move" ]; then
