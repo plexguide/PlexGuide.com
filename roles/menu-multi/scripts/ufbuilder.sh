@@ -16,29 +16,16 @@
 #
 #################################################################################
 
-file="/var/plexguide/multi.count"
-  if [ -e "$file" ]; then
-    echo "" 1>/dev/null 2>&1
-  else
-    echo "0" > /var/plexguide/multi.count
-  fi
+#file="/var/plexguide/multi.count"
+#  if [ -e "$file" ]; then
+#    echo "" 1>/dev/null 2>&1
+#  else
+#    echo "1" > /var/plexguide/multi.count
+#  fi
 
 #count=$(cat /var/plexguide/multi.count)
 #let "count++"
 #echo $count
-
-number=1
-  until [ "$break" == "1" ]; do
-    check=$(grep -w "$number" /var/plexguide/multi.list)
-    if [ "$check" == "$number" ]; then
-        break=0
-        let "number++"
-        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      else
-        break=1
-    fi
-  done
-echo $number > /var/plexguide/multi.filler
 
 ### Blank Out File
 rm -r /tmp/multi.build 1>/dev/null 2>&1
