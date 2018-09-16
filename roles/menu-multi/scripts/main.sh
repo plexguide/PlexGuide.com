@@ -23,9 +23,9 @@ menu=$(cat /var/plexguide/multi.menu)
 ansible-playbook /opt/plexguide/roles/menu-multi/main.yml
 menu=$(cat /var/plexguide/multi.menu)
 
-if [ "$menu" == "blitzauto" ]; then
-  echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/automated.sh
+if [ "$menu" == "addpath" ]; then
+  echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  ansible-playbook /opt/plexguide/roles/menu-multi/pre.yml
 fi
 
 if [ "$menu" == "move" ]; then
