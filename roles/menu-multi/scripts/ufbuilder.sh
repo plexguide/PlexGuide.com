@@ -38,10 +38,10 @@ mkdir -p /opt/appdata/plexguide/multi 1>/dev/null 2>&1
 ### Count Inital List of Files
 ls -la /opt/appdata/plexguide/multi | awk '{ print $9}' | tail -n +4 > /var/plexguide/multi.list
 
-echo -n "/mnt=RO:" > /tmp/multi.unionfs
+echo -n "/mnt=RO:" > /var/plexguide/multi.unionfs
 while read p; do
 tmp=$(cat /opt/appdata/plexguide/multi/$p)
-echo -n "$tmp=RO:" >> /tmp/multi.unionfs
+echo -n "$tmp=RO:" >> /var/plexguide/multi.unionfs
 done </var/plexguide/multi.list
 
 builder=$(cat /var/plexguide/multi.unionfs)
