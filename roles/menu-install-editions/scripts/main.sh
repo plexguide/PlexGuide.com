@@ -41,11 +41,9 @@ if [ "$menu" == "solohd" ]; then
 fi
 
 if [ "$menu" == "multihd" ]; then
-  echo 'INFO - Selected PG Edition: HD Solo' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --tags folders_solo &>/dev/null &
-  echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
-  echo "drive" > /var/plexguide/pg.server.deploy
-  cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
+  echo 'INFO - Select PG Edition: HD Multi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo "PG Edition: HD Multi" > /var/plexguide/pg.edition
+  echo "drives" > /var/plexguide/pg.server.deploy
   exit
 fi
 
