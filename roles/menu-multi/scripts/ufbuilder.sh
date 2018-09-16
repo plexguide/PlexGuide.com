@@ -16,6 +16,17 @@
 #
 #################################################################################
 
+#file="/var/plexguide/multi.count"
+#  if [ -e "$file" ]; then
+#    echo "" 1>/dev/null 2>&1
+#  else
+#    echo "0" > /var/plexguide/multi.count
+#  fi
+
+#count=$(cat /var/plexguide/multi.count)
+#let "count++"
+#echo $count
+
 ### Blank Out File
 rm -r /tmp/multi.build 1>/dev/null 2>&1
 touch /tmp/multi.build 1>/dev/null 2>&1
