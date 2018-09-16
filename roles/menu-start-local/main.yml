@@ -1,0 +1,98 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Version
+      shell: "cat /var/plexguide/tld.program"
+      register: tldprogram
+
+    - name: Version
+      shell: "cat /var/plexguide/pg.number"
+      register: pgversion
+
+    - name: Edition
+      shell: "cat /var/plexguide/pg.edition"
+      register: pgedition
+
+    - name: Ansible
+      shell: "ansible --version | cut -d' ' -f2 | head -n1"
+      register: pgansible
+      ignore_errors: True
+
+    - name: Python
+      shell: "python3 --version | cut -d' ' -f2"
+      register: pgpython
+      ignore_errors: True
+
+    - name: PG Main Menu
+      pause:
+        prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
+                 \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
+    \n\n1.  EXIT PlexGuide
+    \n--------------------------------------------
+      2.  Setup Hard Drives
+    \n--------------------------------------------
+    \n3.  Program Suite Installer
+    \n4.  Plex Enhancement Tools
+    \n5.  System & Network Auditor
+    \n6. Settings Menu
+    \n7. Troubleshooting Actions
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: choice.user_input == "1" or
+             choice.user_input == "2" or
+             choice.user_input == "3" or
+             choice.user_input == "4" or
+             choice.user_input == "5" or
+             choice.user_input == "6" or
+             choice.user_input == "7"
+      retries: 99
+      delay: 1
+
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
+
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/main.menu"
+      when: fchoice == "1"
+
+    - name: Drives
+      shell: "echo mount > /var/plexguide/main.menu"
+      when: fchoice == "2"
+
+    - shell: "echo programs > /var/plexguide/main.menu"
+      when: fchoice == "3"
+
+    - name: Plex Enhancement Tools
+      shell: "echo plextools > /var/plexguide/main.menu"
+      when: fchoice == "4"
+
+    - shell: "echo auditor > /var/plexguide/main.menu"
+      when: fchoice == "5"
+
+    - shell: "echo backup > /var/plexguide/main.menu"
+      when: fchoice == "9"
+
+    - shell: "echo settings > /var/plexguide/main.menu"
+      when: fchoice == "6"
+
+    - shell: "echo tshoot > /var/plexguide/main.menu"
+      when: fchoice == "7"
