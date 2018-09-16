@@ -52,8 +52,8 @@
 
     - debug: msg="Count Up - {{countplus}}"
 
-    - name: Set Info
-      shell: |
-          "echo {{countplus}} > /var/plexguide/multi.count"
-          "echo {{pathinput.user_input}} > /opt/appdata/plexguide/multi/{{countplus}}"
-      register: info
+    - name: Set New Count
+      shell: "echo {{countplus}} > /var/plexguide/multi.count"
+
+    - name: Store Information
+      shell: "echo {{pathinput.user_input}} > /opt/appdata/plexguide/multi/{{countplus}}"
