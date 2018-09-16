@@ -26,7 +26,7 @@ menu=$(cat /var/plexguide/multi.menu)
 if [ "$menu" == "addpath" ]; then
   echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "/mnt" > /opt/appdata/plexguide/multi/1
-  number=2
+  number=1
     until [ "$break" == "1" ]; do
       check=$(grep -w "$number" /var/plexguide/multi.list)
       if [ "$check" == "$number" ]; then
