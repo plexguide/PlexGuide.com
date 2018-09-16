@@ -31,5 +31,5 @@
     - debug: msg="Does the Path Exist? {{path.stat.exists}}"
 
     - fail:
-        msg: "\nPath - {{path}} - does not exist!"
+        msg: "\nPath - {{pathinput.user_input}} - does not exist!"
       when: path.stat.exists == False
