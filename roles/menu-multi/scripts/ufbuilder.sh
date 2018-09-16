@@ -3,7 +3,7 @@
 # [PlexGuide Menu]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & FlickerRate
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,38 +15,21 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-downloadpath=$(cat /var/plexguide/server.hd.path)
 
-if [ -e /opt/appdata/pgblitz/vars/automated ]; then
-    ls -la /opt/appdata/pgblitz/keys/automation | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
-else
-    ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
-fi
-rm -r /tmp/pg.gdsa.build 1>/dev/null 2>&1
+### Blank Out File
+rm -r /tmp/multi.build 1>/dev/null 2>&1
+touch /tmp/multi.build 1>/dev/null 2>&1
 
-echo -n "/mnt/tdrive=RO:" > /tmp/pg.gdsa.build
-echo -n "/mnt/gdrive=RO:" >> /tmp/pg.gdsa.build
+### Ensure Directory Exists
+mkdir -p /opt/appdata/plexguide/multi 1>/dev/null 2>&1
 
-##### Encryption Portion ### Start
-tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
-gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
-
-if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
-    encryption="on"
-  else
-    encryption="off"
-fi
-
-if [ "$encryption" == "on" ]; then
-  echo -n "/mnt/gcrypt=RO:" >> /tmp/pg.gdsa.build
-fi
-##### Encryption Portion ### END
+### Count Inital List of Files
+ls -la /opt/appdata/plexguide/multi | awk '{ print $9}' | tail -n +4 > /tmp/multi.list
 
 while read p; do
-mkdir -p $downloadpath/pgblitz/$p
-echo -n "$downloadpath/pgblitz/$p=RO:" >> /tmp/pg.gdsa.build
-done </tmp/pg.gdsa.ufs
+echo -n "$p" >> /var/plexguide/multi.unionfs
+done </tmp/multi.list
 
-builder=$(cat /tmp/pg.gdsa.build)
+builder=$(cat /var/plexguide/multi.unionfs)
 
 echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
