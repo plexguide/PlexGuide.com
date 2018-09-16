@@ -20,7 +20,7 @@
   gather_facts: false
   tasks:
     - name: MountPoint
-      shell: "cat /var/plexguide/multi.list"
+      shell: "cat /var/plexguide/multi.read"
       register: multilist
 
     - name: PG Main Menu
