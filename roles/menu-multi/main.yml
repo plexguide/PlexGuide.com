@@ -20,17 +20,16 @@
   gather_facts: false
   tasks:
     - name: MountPoint
-      shell: "cat /var/plexguide/server.hd.path"
-      register: mountpoint
-
-    - name: Edition
-      shell: "cat /var/plexguide/pgblitz.menustat"
-      register: tedition
+      shell: "cat /var/plexguide/multi.list"
+      register: multilist
 
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
-                 \nMake a Selection!
+        prompt: "\nWelcome to PG Multi-HD UnionFS Builder!
+                 \n\nCurrent Mounts
+                 \n/mnt
+                 \n{{multilist.stdout}}
+                 \n\n
     \n\n1. EXIT Interface
     \n---------------------------------------------
     \n2. Add a Path
