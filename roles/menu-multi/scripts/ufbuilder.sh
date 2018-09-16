@@ -39,7 +39,6 @@ mkdir -p /opt/appdata/plexguide/multi 1>/dev/null 2>&1
 ls -la /opt/appdata/plexguide/multi | awk '{ print $9}' | tail -n +4 > /var/plexguide/multi.list
 
 echo -n "/mnt=RO:" > /var/plexguide/multi.unionfs
-echo "/mnt" > /opt/appdata/plexguide/multi/1
 echo "1. /mnt" > /var/plexguide/multi.read
 while read p; do
 tmp=$(cat /opt/appdata/plexguide/multi/$p)
