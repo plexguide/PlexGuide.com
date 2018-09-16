@@ -79,6 +79,12 @@ if [ "$menu" == "backup" ]; then
     echo "Note: This Version has No GDrive to Backup or Restore From!"
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  elif [ "$edition" == "PG Edition - HD Multi" ]; then
+    echo ""
+    echo "Utilizing the HD Multi Edition! Cannot Backup or Restore!"
+    echo "Note: This Version has No GDrive to Backup or Restore From!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
   else
     bash /opt/plexguide/roles/b-control/scripts/main.sh
   fi
