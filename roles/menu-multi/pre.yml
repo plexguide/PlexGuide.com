@@ -30,6 +30,10 @@
 
     - debug: msg="Does the Path Exist? {{path.stat.exists}}"
 
+    - pause:
+        prompt: "Path - {{pathinput.user_input}} does not exist!\n\nPress [ENTER] to Continue"
+      when: path.stat.exists == False
+
     - fail:
-        msg: "\nPath - {{pathinput.user_input}} - does not exist!"
+        msg: "Path - {{pathinput.user_input}} - DOES NOT EXIST!"
       when: path.stat.exists == False
