@@ -39,5 +39,5 @@
       when: path.stat.exists == False
 
     - pause:
-        prompt: "\nPath - {{pathinput.user_input}} exists!\n\nPress [ENTER] to Continue"
+        prompt: "\nPath - {{pathinput.user_input}} exists!\nPress [ENTER] to Continue"
       when: path.stat.exists == True
