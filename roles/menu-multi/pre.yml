@@ -41,3 +41,13 @@
     - pause:
         prompt: "\nPath - {{pathinput.user_input}} exists!\nPress [ENTER] to Continue"
       when: path.stat.exists == True
+
+    - name: Call Up Last Number Variable
+      shell: "cat /var/plexguide/multi.count"
+      register: count
+
+    - name: Convert unit
+      set_fact:
+        countplus: "{{ (multi.count | int) + 1 }}"
+
+    - debug: msg="Count Up - {{countplus}}"
