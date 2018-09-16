@@ -48,6 +48,6 @@
 
     - name: Convert unit
       set_fact:
-        countplus: "{{ (multi.count | int) + 1 }}"
+        countplus: "{{ (count.stdout | int) + 1 }}"
 
     - debug: msg="Count Up - {{countplus}}"
