@@ -25,9 +25,8 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --infobox "Installing | Upgrading WatchTower" 3 45
-      sleep 2
-      clear
+      echo "Installing / Upgrading WatchTower" > /var/plexguide/message.phase
+      bash /opt/plexguide/roles/install/scripts/message.sh
 
       file="/var/plexguide/watchtower.yes"
       if [ -e "$file" ];then
@@ -40,7 +39,7 @@ if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
         ansible-playbook /opt/plexguide/pg.yml --tags watchtower
         sleep 2
       fi
-      
+
       touch /var/plexguide/watchtower.yes
       cat /var/plexguide/pg.watchtower > /var/plexguide/pg.watchtower.stored
   fi

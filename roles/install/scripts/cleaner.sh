@@ -25,9 +25,8 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --infobox "Installing | Upgrading Cleaner Functions" 3 45
-      sleep 2
-      clear
+      echo "Installing PG Cleaner Essentials" > /var/plexguide/message.phase
+      bash /opt/plexguide/roles/install/scripts/message.sh
       ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
       ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
       ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
