@@ -51,3 +51,7 @@
         countplus: "{{ (count.stdout | int) + 1 }}"
 
     - debug: msg="Count Up - {{countplus}}"
+
+    - name: Register Ports
+      shell: "echo {{countplus}} > /var/plexguide/server.ports"
+      register: info
