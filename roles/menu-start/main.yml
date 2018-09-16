@@ -95,17 +95,17 @@
     - name: Set Mounts
       set_fact:
         mounts: "PG Mounts & Data Transport"
-      when: not info.stdout == "PG Edition: HD Solo" and not info.stdout == "PG Edition: HD Multi"
+      when: not info.stdout == "PG Edition - HD Solo" and not info.stdout == "PG Edition - HD Multi"
 
     - name: Set Solo HD
       set_fact:
         mounts: "Using Solo HD - Cannot Change HDs"
-      when: info.stdout == "PG Edition: HD Solo"
+      when: info.stdout == "PG Edition - HD Solo"
 
     - name: Set Multi HDs
       set_fact:
         mounts: "Setup & Deploy Multiple Hard-Drives"
-      when: info.stdout == "PG Edition: HD Multi"
+      when: info.stdout == "PG Edition - HD Multi"
 
     - name: PG Main Menu
       pause:

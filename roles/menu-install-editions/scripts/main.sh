@@ -25,7 +25,7 @@ menu=$(cat /var/plexguide/pgeditions.menu)
 
 if [ "$menu" == "gdrive" ]; then
   echo 'INFO - Selected PG Edition: GDrive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "PG Edition: GDrive" > /var/plexguide/pg.edition
+  echo "PG Edition - GDrive" > /var/plexguide/pg.edition
   echo "gdrive" > /var/plexguide/pg.server.deploy
   cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   exit
@@ -34,7 +34,7 @@ fi
 if [ "$menu" == "solohd" ]; then
   echo 'INFO - Selected PG Edition: HD Solo' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags folders_solo &>/dev/null &
-  echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
+  echo "PG Edition - HD Solo" > /var/plexguide/pg.edition
   echo "drive" > /var/plexguide/pg.server.deploy
   cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   exit
@@ -42,7 +42,7 @@ fi
 
 if [ "$menu" == "multihd" ]; then
   echo 'INFO - Select PG Edition: HD Multi' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "PG Edition: HD Multi" > /var/plexguide/pg.edition
+  echo "PG Edition - HD Multi" > /var/plexguide/pg.edition
   echo "drives" > /var/plexguide/pg.server.deploy
   cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   exit
@@ -50,7 +50,7 @@ fi
 
 if [ "$menu" == "gce" ]; then
   echo 'INFO - Select PG Edition: GCE Feeder' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "PG Edition: GCE Feed" > /var/plexguide/pg.edition
+  echo "PG Edition - GCE Feed" > /var/plexguide/pg.edition
   echo "feeder" > /var/plexguide/pg.server.deploy
   cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
   exit
