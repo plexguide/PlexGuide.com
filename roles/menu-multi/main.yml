@@ -26,10 +26,9 @@
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Multi-HD UnionFS Builder!
-                 \n\nCurrent Mounts
+                 \n\nCurrent Mounts:
                  \n/mnt
                  \n{{multilist.stdout}}
-                 \n\n
     \n\n1. EXIT Interface
     \n---------------------------------------------
     \n2. Add a Path
