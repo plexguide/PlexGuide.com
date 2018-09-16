@@ -25,9 +25,8 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_alias" == "$pg_alias_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      dialog --infobox "Installing | Upgrading Alias Commands" 3 45
-      sleep 2
-      clear
+      echo "Installing Alias Commands" > /var/plexguide/message.phase
+      bash /opt/plexguide/roles/install/scripts/message.sh
       ansible-playbook /opt/plexguide/pg.yml --tags alias
       cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
   fi
