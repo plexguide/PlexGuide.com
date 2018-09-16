@@ -43,12 +43,12 @@
       when: path.stat.exists == True
 
     - name: Call Up Last Number Variable
-      shell: "cat /var/plexguide/multi.count"
+      shell: "cat /var/plexguide/multi.filler"
       register: count
 
     - name: Convert unit
       set_fact:
-        countplus: "{{ (count.stdout | int) + 1 }}"
+        countplus: "{{ (count.stdout | int) + 0 }}"
 
     - debug: msg="Count Up - {{countplus}}"
 

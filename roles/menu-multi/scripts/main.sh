@@ -25,6 +25,20 @@ menu=$(cat /var/plexguide/multi.menu)
 
 if [ "$menu" == "addpath" ]; then
   echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+  number=1
+    until [ "$break" == "1" ]; do
+      check=$(grep -w "$number" /var/plexguide/multi.list)
+      if [ "$check" == "$number" ]; then
+          break=0
+          let "number++"
+          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        else
+          break=1
+      fi
+    done
+  echo $number > /var/plexguide/multi.filler
+
   ansible-playbook /opt/plexguide/roles/menu-multi/pre.yml
   bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
 fi
