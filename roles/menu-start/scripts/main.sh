@@ -75,8 +75,8 @@ if [ "$menu" == "backup" ]; then
   edition=$(cat /var/plexguide/pg.edition.stored)
   if [ "$edition" == "PG Edition - HD Solo" ]; then
     echo ""
-    echo "Utilizing the HD Solo Edition! Cannot Setup HDs!"
-    echo "Note: Data Stored via the Solo HD @ /mnt"
+    echo "Utilizing the HD Solo Edition! Cannot Backup or Restore!"
+    echo "Note: This Version has No GDrive to Backup or Restore From!"
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
   else
