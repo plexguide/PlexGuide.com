@@ -40,7 +40,7 @@ if [ "$menu" == "solohd" ]; then
   exit
 fi
 
-if [ "$menu" == "solohd" ]; then
+if [ "$menu" == "multihd" ]; then
   echo 'INFO - Selected PG Edition: HD Solo' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   ansible-playbook /opt/plexguide/pg.yml --tags folders_solo &>/dev/null &
   echo "PG Edition: HD Solo" > /var/plexguide/pg.edition
@@ -49,7 +49,7 @@ if [ "$menu" == "solohd" ]; then
   exit
 fi
 
-if [ "$menu" == "solohd" ]; then
+if [ "$menu" == "gce" ]; then
   echo 'INFO - Select PG Edition: GCE Feeder' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "PG Edition: GCE Feed" > /var/plexguide/pg.edition
   echo "feeder" > /var/plexguide/pg.server.deploy

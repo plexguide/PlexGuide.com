@@ -16,7 +16,6 @@
 #
 #################################################################################
 ---
-
 - name: PG Main Menu
   pause:
     prompt: "\nSelect a PlexGuide Edition!
