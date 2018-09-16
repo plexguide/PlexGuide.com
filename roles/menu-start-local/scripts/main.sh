@@ -24,8 +24,18 @@ ansible-playbook /opt/plexguide/roles/menu-start-local/main.yml
 menu=$(cat /var/plexguide/main.menu)
 
 if [ "$menu" == "mount" ]; then
-  echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-transport/scripts/main.sh
+  echo 'INFO - Selected: Deploy a HardDrive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  
+    edition=$(cat /var/plexguide/pg.edition.stored)
+    if [ "$edition" == "PG Edition: HD Solo" ]; then
+      echo ""
+      echo "Utilizing the HD Solo Edition! Cannot Setup HDs!"
+      echo "Note: Data is Stored Under your Solo HD of /mnt"
+      echo ""
+      read -n 1 -s -r -p "Press [ANY] Key to Continue"
+    else
+      bash /opt/plexguide/roles/menu-transport/scripts/main.sh
+    fi
 fi
 
 if [ "$menu" == "programs" ]; then
