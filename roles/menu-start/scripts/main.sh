@@ -83,7 +83,19 @@ fi
 
 if [ "$menu" == "security" ]; then
   echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/security/main.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/menus/security/main.sh
+  fi
+  
 fi
 
 if [ "$menu" == "tshoot" ]; then
