@@ -48,8 +48,6 @@ done </var/plexguide/multi.list
 
 builder=$(cat /var/plexguide/multi.unionfs)
 
-if [ "$menu" == "addpath" ]; then
-  echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo "/mnt" > /opt/appdata/plexguide/multi/1
   number=1
     until [ "$break" == "1" ]; do
@@ -63,6 +61,5 @@ if [ "$menu" == "addpath" ]; then
       fi
     done
   echo $number > /var/plexguide/multi.filler
-fi
 
 echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
