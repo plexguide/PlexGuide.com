@@ -48,18 +48,19 @@ done </var/plexguide/multi.list
 
 builder=$(cat /var/plexguide/multi.unionfs)
 
-  echo "/mnt" > /opt/appdata/plexguide/multi/1
-  number=1
-    until [ "$break" == "1" ]; do
-      check=$(grep -w "$number" /var/plexguide/multi.list)
-      if [ "$check" == "$number" ]; then
-          break=0
-          let "number++"
-          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        else
-          break=1
-      fi
-    done
-  echo $number > /var/plexguide/multi.filler
+echo "/mnt" > /opt/appdata/plexguide/multi/1
+number=1
+break=0
+  until [ "$break" == "1" ]; do
+    check=$(grep -w "$number" /var/plexguide/multi.list)
+    if [ "$check" == "$number" ]; then
+        break=0
+        let "number++"
+        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      else
+        break=1
+    fi
+  done
+echo $number > /var/plexguide/multi.filler
 
 echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
