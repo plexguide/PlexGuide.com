@@ -25,14 +25,15 @@
 
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to PG Multi-HD Merger Builder!
+        prompt: "\nWelcome to PG Multi-HD Builder!
+                 \nNOTE: Do not add /mnt - Already Adds By Default!
                  \n\nCurrent Mounts:
                  \n{{multilist.stdout}}
     \n\n1. EXIT Interface
     \n---------------------------------------------
     \n2. Add a Path
     \n3. Remove a Path
-    \n4. Deploy MERGERFS
+    \n4. Deploy UnionFS
     \n\nType a [CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
