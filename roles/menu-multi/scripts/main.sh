@@ -18,6 +18,26 @@
 echo "on" > /var/plexguide/multi.menu
 menu=$(echo "on")
 
+#### Install MergerFS
+file="/usr/bin/mergerfs"
+  if [ -e "$file" ]
+    then
+echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    else
+echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+dialog --infobox "Installing MergerFS (Please Wait!)" 3 50
+wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1
+apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
+cd mergerfs
+make clean #1>/dev/null 2>&1
+make deb #1>/dev/null 2>&1
+cd ..
+dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
+rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
+  fi
+####
+
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/multi.menu)
 ansible-playbook /opt/plexguide/roles/menu-multi/main.yml
@@ -25,8 +45,7 @@ menu=$(cat /var/plexguide/multi.menu)
 
 if [ "$menu" == "addpath" ]; then
   echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "/mnt" > /opt/appdata/plexguide/multi/1
-  number=1
+  number=0
   break=0
     until [ "$break" == "1" ]; do
       check=$(grep -w "$number" /var/plexguide/multi.list)
@@ -45,9 +64,7 @@ fi
 
 if [ "$menu" == "removepath" ]; then
   echo 'INFO - Selected: Remove Path Option for Multi-HD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  echo "/mnt" > /opt/appdata/plexguide/multi/1
-  number=1
+  number=0
   break=0
     until [ "$break" == "1" ]; do
       check=$(grep -w "$number" /var/plexguide/multi.list)
