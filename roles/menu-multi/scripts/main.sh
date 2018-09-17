@@ -18,6 +18,29 @@
 echo "on" > /var/plexguide/multi.menu
 menu=$(echo "on")
 
+#### Installs Default Variables If Missing
+file="/var/plexguide/multi.read"
+  if [ -e "$file" ]
+    then
+    echo "" 1>/dev/null 2>&1
+    else
+    touch /var/plexguide/multi.read
+  fi
+file="/var/plexguide/multi.unionfs"
+  if [ -e "$file" ]
+    then
+    echo "" 1>/dev/null 2>&1
+    else
+    touch /var/plexguide/multi.unionfs
+  fi
+file="/var/plexguide/multi.build"
+  if [ -e "$file" ]
+    then
+    echo "" 1>/dev/null 2>&1
+    else
+    touch /var/plexguide/multi.build
+  fi
+
 #### Install MergerFS If Missing
 file="/usr/bin/mergerfs"
   if [ -e "$file" ]
