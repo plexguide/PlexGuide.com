@@ -19,6 +19,7 @@ echo "on" > /var/plexguide/multi.menu
 menu=$(echo "on")
 
 #### Installs Default Variables If Missing
+mkdir -p /opt/appdata/plexguide/multi/
 file="/var/plexguide/multi.read"
   if [ -e "$file" ]
     then
