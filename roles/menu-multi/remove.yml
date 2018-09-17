@@ -19,9 +19,16 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - pause:
-        prompt: "\nType the Exact Path of the Folder/HD\n\nExample 1: /secondhd/shows\nExample 2: /thirdhd/media\nExample 3: /sparedrive/media/downloads\n\nWARNING: Start with a Trailing Slash | No Trailing Slash at the End\n\nThen PRESS [ENTER]"
-      register: pathinput
+    - name: MountPoint
+      shell: "cat /var/plexguide/multi.read"
+      register: multilist
+
+    - name: PG Main Menu
+      pause:
+        prompt: "\nCurrent Mounts:
+                 \n{{multilist.stdout}}
+                 \n\nType a Number [CHOICE] to Remove a Mount & Press [ENTER]"
+      register: choice
 
     - name: Check if the Path Exists
       stat:
