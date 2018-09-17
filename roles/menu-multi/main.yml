@@ -34,7 +34,7 @@
     \n2. Add a Path
     \n3. Remove a Path
     \n4. Deploy UnionFS
-    \n\nType a [CHOICE] & Press [ENTER]"
+    \n\nType a [MENU CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
