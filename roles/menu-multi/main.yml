@@ -29,8 +29,8 @@
                  \nNOTE: Do not add /mnt - Already Adds By Default!
                  \n\nCurrent Mounts:
                  \n{{multilist.stdout}}
-    \n\n1. EXIT Interface
-    \n---------------------------------------------
+    \n\n---------------------------------------------
+    \n1. EXIT Interface
     \n2. Add a Path
     \n3. Remove a Path
     \n4. Deploy UnionFS
