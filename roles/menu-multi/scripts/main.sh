@@ -51,7 +51,7 @@ menu=$(cat /var/plexguide/multi.menu)
 
 if [ "$menu" == "addpath" ]; then
   echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  number=0
+  number=1
   break=0
     until [ "$break" == "1" ]; do
       check=$(grep -w "$number" /var/plexguide/multi.list)
@@ -70,7 +70,7 @@ fi
 
 if [ "$menu" == "removepath" ]; then
   echo 'INFO - Selected: Remove Path Option for Multi-HD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  number=0
+  number=1
   break=0
     until [ "$break" == "1" ]; do
       check=$(grep -w "$number" /var/plexguide/multi.list)

@@ -47,7 +47,7 @@ done </var/plexguide/multi.list
 
 builder=$(cat /var/plexguide/multi.unionfs)
 
-number=0
+number=1
 break=0
   until [ "$break" == "1" ]; do
     check=$(grep -w "$number" /var/plexguide/multi.list)
