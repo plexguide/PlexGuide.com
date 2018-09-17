@@ -35,7 +35,7 @@ if [ "$menu" == "mount" ]; then
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
   elif [ "$edition" == "PG Edition - HD Multi" ]; then
     echo ""
-    bash /opt/plexguide/roles/menu-multi/scripts/main.sh 
+    bash /opt/plexguide/roles/menu-multi/scripts/main.sh
   else
     bash /opt/plexguide/roles/menu-transport/scripts/main.sh
   fi
@@ -44,12 +44,36 @@ fi
 
 if [ "$menu" == "traefik" ]; then
   echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
+  fi
+
 fi
 
 if [ "$menu" == "programs" ]; then
   echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/programs/main.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs) 1>/dev/null 2>&1
+  edition=$(cat /var/plexguide/pg.edition.stored) 1>/dev/null 2>&1
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/programs/main.sh
+  fi
+
 fi
 
 if [ "$menu" == "plextools" ]; then
@@ -101,7 +125,19 @@ fi
 
 if [ "$menu" == "auth" ]; then
   echo 'INFO - Selected: Authentication Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-authenication/scripts/main.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/menu-authenication/scripts/main.sh
+  fi
+  
 fi
 
 if [ "$menu" == "wckd" ]; then
@@ -111,7 +147,19 @@ fi
 
 if [ "$menu" == "ports" ]; then
   echo 'INFO - Selected: Ports Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+  fi
+
 fi
 
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

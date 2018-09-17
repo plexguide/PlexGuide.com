@@ -152,3 +152,14 @@ bash /opt/plexguide/roles/install/scripts/edition.sh
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
+#
+#
+#################### FILL IN Variables
+
+### For MultiHD Edition
+file="/var/plexguide/multi.unionfs"
+  if [ -e "$file" ]; then
+    echo "" 1>/dev/null 2>&1
+  else
+    touch /var/plexguide/multi.unionfs
+  fi
