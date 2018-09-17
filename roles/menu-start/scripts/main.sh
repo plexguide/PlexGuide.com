@@ -83,19 +83,7 @@ fi
 
 if [ "$menu" == "security" ]; then
   echo 'INFO - Selected: PG Security Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  ### Affects Only Multi-HD and No Mount Is Deployed!
-  multi=$(cat /var/plexguide/multi.unionfs)
-  edition=$(cat /var/plexguide/pg.edition.stored)
-
-  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
-    echo ""
-    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  else
-    bash /opt/plexguide/menus/security/main.sh
-  fi
-  
+  bash /opt/plexguide/menus/security/main.sh
 fi
 
 if [ "$menu" == "tshoot" ]; then
@@ -137,7 +125,19 @@ fi
 
 if [ "$menu" == "auth" ]; then
   echo 'INFO - Selected: Authentication Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-authenication/scripts/main.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/menu-authenication/scripts/main.sh
+  fi
+  
 fi
 
 if [ "$menu" == "wckd" ]; then
@@ -147,7 +147,19 @@ fi
 
 if [ "$menu" == "ports" ]; then
   echo 'INFO - Selected: Ports Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+  fi
+
 fi
 
 echo 'INFO - Looping: Main GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
