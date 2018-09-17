@@ -29,7 +29,7 @@
                  \n{{multilist.stdout}}
     \n\n---------------------------------------------
     \nWelcome to the PG Multi-HD Builder!
-    \nNOTE: Do Not Add: /mnt - Already Adds By Default!
+    \nNOTE: Be Careful Adding the Drive PG is on due use of combined space!
     \n\n1. EXIT Interface
     \n2. Add a Path
     \n3. Remove a Path
