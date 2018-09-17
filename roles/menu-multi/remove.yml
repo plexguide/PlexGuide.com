@@ -3,7 +3,7 @@
 # [PG-Blitz]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -43,12 +43,12 @@
       when: path.stat.exists == True
 
     - name: Call Up Last Number Variable
-      shell: "cat /var/plexguide/multi.count"
+      shell: "cat /var/plexguide/multi.filler"
       register: count
 
     - name: Convert unit
       set_fact:
-        countplus: "{{ (count.stdout | int) + 1 }}"
+        countplus: "{{count.stdout}}"
 
     - debug: msg="Count Up - {{countplus}}"
 
