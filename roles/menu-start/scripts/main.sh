@@ -35,9 +35,7 @@ if [ "$menu" == "mount" ]; then
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
   elif [ "$edition" == "PG Edition - HD Multi" ]; then
     echo ""
-    echo "Not Ready"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+    bash /opt/plexguide/roles/menu-multi/scripts/main.sh 
   else
     bash /opt/plexguide/roles/menu-transport/scripts/main.sh
   fi
