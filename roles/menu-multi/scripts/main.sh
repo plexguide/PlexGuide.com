@@ -39,14 +39,30 @@ if [ "$menu" == "addpath" ]; then
       fi
     done
   echo $number > /var/plexguide/multi.filler
-fi
-
   ansible-playbook /opt/plexguide/roles/menu-multi/pre.yml
   bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
+fi
 
-if [ "$menu" == "move" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-move/scripts/main.sh
+if [ "$menu" == "removepath" ]; then
+  echo 'INFO - Selected: Remove Path Option for Multi-HD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+  echo "/mnt" > /opt/appdata/plexguide/multi/1
+  number=1
+  break=0
+    until [ "$break" == "1" ]; do
+      check=$(grep -w "$number" /var/plexguide/multi.list)
+      if [ "$check" == "$number" ]; then
+          break=0
+          let "number++"
+          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        else
+          break=1
+      fi
+    done
+  echo $number > /var/plexguide/multi.filler
+  ansible-playbook /opt/plexguide/roles/menu-multi/remove.yml
+  bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
+
 fi
 
 if [ "$menu" == "blitzmanual" ]; then
