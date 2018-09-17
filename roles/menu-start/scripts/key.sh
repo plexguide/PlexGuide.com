@@ -156,5 +156,9 @@ elif [ "$edition" == "PG Edition - GCE Feed" ]; then
     bash /opt/plexguide/roles/menu-start/scripts/main.sh
     exit
 else
-  bash /opt/plexguide/roles/menu-install-editions/scripts/main.sh
+    file="/var/plexguide/pg.preinstall.stored"
+    if [ -e "$file" ]
+    then
+    bash /opt/plexguide/roles/menu-install-editions/scripts/main.sh
+    fi
 fi
