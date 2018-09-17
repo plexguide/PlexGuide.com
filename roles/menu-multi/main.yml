@@ -25,7 +25,7 @@
 
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to PG Multi-HD Builder!
+        prompt: "\nWelcome to the PG Multi-HD Builder!
                  \nNOTE: Do not add /mnt - Already Adds By Default!
                  \n\nCurrent Mounts:
                  \n{{multilist.stdout}}
