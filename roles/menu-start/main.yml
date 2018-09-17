@@ -119,7 +119,7 @@
                   \n--------------------------------------------
                   \n2.  {{mounts}}
                   \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
-                  \n4.  Server Port Guard - Ports 
+                  \n4.  Server Port Guard - Ports  [{{ports}}]
                   \n5.  PG Authentication Systems  [{{output}}]
                   \n--------------------------------------------
                   \n6.  Program Suite Installer
