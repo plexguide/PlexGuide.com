@@ -51,13 +51,12 @@ if [ "$menu" == "programs" ]; then
   echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   ### Affects Only Multi-HD and No Mount Is Deployed!
-  multi=$(cat /var/plexguide/multi.unionfs)
-  edition=$(cat /var/plexguide/pg.edition.stored)
+  multi=$(cat /var/plexguide/multi.unionfs) 1>/dev/null 2>&1
+  edition=$(cat /var/plexguide/pg.edition.stored) 1>/dev/null 2>&1
 
   if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
     echo ""
     echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
-    echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
   else
     bash /opt/plexguide/roles/programs/main.sh
