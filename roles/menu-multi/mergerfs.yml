@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# [RClone Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+########### DRIVES
+  ## Stop Other Service Role
+
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Registering UnionFS Path
+      shell: "cat /var/plexguide/multi.unionfs"
+      register: mergerfs_path
+      ignore_errors: True
+
+    - name: Installing UnionFS Service
+      template:
+        src: unionfs.service
+        dest: /etc/systemd/system/unionfs.service
+        force: yes
+
+    - name: Daemon-Reload
+      systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+
+    - name: Start UnionFS Service
+      systemd: state=started name=unionfs enabled=yes

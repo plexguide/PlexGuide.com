@@ -25,7 +25,21 @@ menu=$(cat /var/plexguide/main.menu)
 
 if [ "$menu" == "mount" ]; then
   echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-transport/scripts/main.sh
+
+  edition=$(cat /var/plexguide/pg.edition.stored)
+  if [ "$edition" == "PG Edition - HD Solo" ]; then
+    echo ""
+    echo "Utilizing the HD Solo Edition! Cannot Setup HDs!"
+    echo "Note: Data Stored via the Solo HD @ /mnt"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  elif [ "$edition" == "PG Edition - HD Multi" ]; then
+    echo ""
+    bash /opt/plexguide/roles/menu-multi/scripts/main.sh 
+  else
+    bash /opt/plexguide/roles/menu-transport/scripts/main.sh
+  fi
+
 fi
 
 if [ "$menu" == "traefik" ]; then
@@ -60,7 +74,24 @@ fi
 
 if [ "$menu" == "backup" ]; then
   echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/b-control/scripts/main.sh
+
+  edition=$(cat /var/plexguide/pg.edition.stored)
+  if [ "$edition" == "PG Edition - HD Solo" ]; then
+    echo ""
+    echo "Utilizing the HD Solo Edition! Cannot Backup or Restore!"
+    echo "Note: This Version has No GDrive to Backup or Restore From!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  elif [ "$edition" == "PG Edition - HD Multi" ]; then
+    echo ""
+    echo "Utilizing the HD Multi Edition! Cannot Backup or Restore!"
+    echo "Note: This Version has No GDrive to Backup or Restore From!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/b-control/scripts/main.sh
+  fi
+
 fi
 
 if [ "$menu" == "settings" ]; then

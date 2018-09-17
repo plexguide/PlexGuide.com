@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# [PG-Blitz]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: MountPoint
+      shell: "cat /var/plexguide/multi.read"
+      register: multilist
+
+    - name: PG Main Menu
+      pause:
+        prompt: "\nCurrent Mounts:
+                 \n{{multilist.stdout}}
+                 \n\nType a Number [CHOICE] to Remove a Mount & Press [ENTER]"
+      register: choice
+
+    - name: Remove File
+      shell: "rm -r /opt/appdata/plexguide/multi/{{choice.user_input}}"

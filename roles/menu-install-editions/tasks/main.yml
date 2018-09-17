@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: PG Main Menu
+  pause:
+    prompt: "\nSelect a PlexGuide Edition!
+             \nWARNING: Can set this ONLY Once! Uninstall PG to Change Again!
+\n\n1.  GDrive Edition     | Requires Google Drive Business Edition
+\n2.  HD Solo Edition    | No Google Drive - Uses Current HD
+\n3.  HD Multi Edition   | No Google Drive - Multiple Hard Drives
+\n4.  GCE Feeder Edition | Google Cloud Engine /w Google Drive
+\n\nType a [NUMBER] Choice & Press [ENTER]"
+  register: choice
+  until: choice.user_input == "1" or
+         choice.user_input == "2" or
+         choice.user_input == "3" or
+         choice.user_input == "4"
+  retries: 99
+  delay: 1
+
+- name: Set Choice
+  set_fact:
+    fchoice: "{{choice.user_input}}"
+
+- name: gdrive
+  shell: "echo gdrive > /var/plexguide/pgeditions.menu"
+  when: fchoice == "1"
+
+- name: solohd
+  shell: "echo solohd > /var/plexguide/pgeditions.menu"
+  when: fchoice == "2"
+
+- name: multihd
+  shell: "echo multihd > /var/plexguide/pgeditions.menu"
+  when: fchoice == "3"
+
+- name: gce
+  shell: "echo gce > /var/plexguide/pgeditions.menu"
+  when: fchoice == "4"

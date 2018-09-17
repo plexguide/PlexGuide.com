@@ -87,25 +87,48 @@
       register: pgpython
       ignore_errors: True
 
+##### Recall Mounts or HDs
+    - name: Register Mounts or HD Action
+      shell: "cat /var/plexguide/pg.edition.stored"
+      register: info
+
+    - name: Set Mounts
+      set_fact:
+        mounts: "PG Mounts & Data Transport"
+        backups: "Backup & Restore"
+      when: not info.stdout == "PG Edition - HD Solo" and not info.stdout == "PG Edition - HD Multi"
+
+    - name: Set Solo HD
+      set_fact:
+        mounts: "NOTE: SOLO HD - Unable to Setup GDrive or Multiple HDs"
+        backups: "NOTE: SOLO HD - Backup & Restore NOT Enabled (No GDrive)"
+      when: info.stdout == "PG Edition - HD Solo"
+
+    - name: Set Multi HDs
+      set_fact:
+        mounts: "Setup & Deploy Multiple Hard-Drives"
+        backups: "NOTE: Multi HD - Backup & Restore NOT Enabled (No GDrive)"
+      when: info.stdout == "PG Edition - HD Multi"
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
                  \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
                  \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
-    \n\n1.  EXIT PlexGuide
-    \n--------------------------------------------
-    \n2.  PG Mounts & Data Transport
-    \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
-    \n4.  Server Port Guard - Ports  [{{ports}}]
-    \n5.  PG Authentication Systems  [{{output}}]
-    \n--------------------------------------------
-    \n6.  Program Suite Installer
-    \n7.  Plex Enhancement Tools
-    \n8.  System & Network Auditor
-    \n9.  Backup & Restore
-    \n10. Settings Menu
-    \n11. Troubleshooting Actions
-    \n\nType a [NUMBER] Choice & Press [ENTER]"
+                  \n\n1.  EXIT PlexGuide
+                  \n--------------------------------------------
+                  \n2.  {{mounts}}
+                  \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
+                  \n4.  Server Port Guard - Ports  [{{ports}}]
+                  \n5.  PG Authentication Systems  [{{output}}]
+                  \n--------------------------------------------
+                  \n6.  Program Suite Installer
+                  \n7.  Plex Enhancement Tools
+                  \n8.  System & Network Auditor
+                  \n9.  {{backups}}
+                  \n10. Settings Menu
+                  \n11. Troubleshooting Actions
+                  \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
