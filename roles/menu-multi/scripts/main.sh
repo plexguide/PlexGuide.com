@@ -113,6 +113,7 @@ fi
 
 if [ "$menu" == "unionfs" ]; then
   echo 'INFO - Selected: Deploy UnionFS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  ansible-playbook /opt/plexguide/roles/menu-multi/service-remove.yml
   ansible-playbook /opt/plexguide/roles/menu-multi/mergerfs.yml
 fi
 
