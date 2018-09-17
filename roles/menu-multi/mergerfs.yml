@@ -17,55 +17,30 @@
 #################################################################################
 ---
 ########### DRIVES
-  - name: Check DRIVES Service
-    stat:
-      path: "/etc/systemd/system/drives.service"
-    register: drives
-
-  - name: Stop If DRIVES Service Running
-    systemd: state=stopped name=drives
-    when: drives.stat.exists
+  ## Stop Other Service Role
 
 ####################################################### REGISTER FIRST
-  - name: Register DRIVE1
-    shell: "cat /var/plexguide/hd.1"
-    register: hd1
-    ignore_errors: True
-
-  - name: Register DRIVE2
-    shell: "cat /var/plexguide/hd.2"
-    register: hd2
-    ignore_errors: True
-
-  - name: Register DRIVE3
-    shell: "cat /var/plexguide/hd.3"
-    register: hd3
-    ignore_errors: True
-
-  - name: Register DRIVE4
+  - name: Register MergerFS Path
     shell: "cat /var/plexguide/hd.4"
-    register: hd4
+    register: mergerfs_path
     ignore_errors: True
 ######################################################### REGISTER END
 
 ######################################################### COMBINE START
   - name: Combine Paths
-    shell: echo "-o defaults,allow_other,direct_io,nonempty,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{hd1.stdout}}{{hd2.stdout}}{{hd3.stdout}}{{hd4.stdout}} /mnt/unionfs" > /var/plexguide/hdcommand
-  - name: Register Command
-    shell: cat "/var/plexguide/hdcommand"
-    register: hdcommand
+    shell: echo "-o defaults,allow_other,direct_io,nonempty,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{mergerfs_path.stdout}} /mnt/unionfs" > /var/plexguide/hdcommand
+    register: mergerfs
 
 ######################################################### COMBINE END
 
   - name: Install DRIVES Service
     template:
       src: drives.js2
-      dest: /etc/systemd/system/drives.service
+      dest: /etc/systemd/system/mergerfs.service
       force: yes
 
   - name: Daemon-Reload
-    systemd: state=stopped name=drives daemon_reload=yes enabled=no
+    systemd: state=stopped name=mergerfs daemon_reload=yes enabled=no
 
   - name: Start DRIVES SERVICES
-    systemd: state=started name=drives enabled=yes
-    #when: drives.stat.exists
+    systemd: state=started name=mergerfs enabled=yes
