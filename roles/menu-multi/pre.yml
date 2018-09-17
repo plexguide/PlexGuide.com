@@ -42,18 +42,18 @@
         prompt: "\nPath - {{pathinput.user_input}} exists!\nPress [ENTER] to Continue"
       when: path.stat.exists == True
 
-    - name: Call Up Last Number Variable
-      shell: "cat /var/plexguide/multi.filler"
-      register: count
+    #- name: Call Up Last Number Variable
+    #  shell: "cat /var/plexguide/multi.filler"
+    #  register: count
 
-    - name: Convert unit
-      set_fact:
-        countplus: "{{ (count.stdout | int) + 0 }}"
+    #- name: Convert unit
+    #  set_fact:
+    #    countplus: "{{ (count.stdout | int) + 0 }}"
 
-    - debug: msg="Count Up - {{countplus}}"
+    #- debug: msg="Count Up - {{countplus}}"
 
-    - name: Set New Count
-      shell: "echo {{countplus}} > /var/plexguide/multi.count"
+    #- name: Set New Count
+    #  shell: "echo {{countplus}} > /var/plexguide/multi.count"
 
     - name: Store Information
       shell: "echo {{pathinput.user_input}} > /opt/appdata/plexguide/multi/{{countplus}}"
