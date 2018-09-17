@@ -21,7 +21,7 @@ Type=simple
 User=0
 Group=0
 ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/mergerfs -o defaults,allow_other,direct_io,nonempty,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool {{mergerfs_path.stdout}} /mnt/unionfs
+ExecStart=/usr/bin/mergerfs -o defaults,allow_other,direct_io,nonempty,use_ino,category.create=eplfs,moveonenospc=true,minfreespace=15G,fsname=pgPool /mnt:{{mergerfs_path.stdout}} /mnt/unionfs
 ExecStop=/bin/fusermount -uz /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process

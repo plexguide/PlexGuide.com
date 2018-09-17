@@ -41,7 +41,7 @@ ls -la /opt/appdata/plexguide/multi | awk '{ print $9}' | tail -n +4 > /var/plex
 
 while read p; do
 tmp=$(cat /opt/appdata/plexguide/multi/$p)
-echo -n "$tmp=RO:" >> /var/plexguide/multi.unionfs
+echo -n "$tmp:" >> /var/plexguide/multi.unionfs
 echo "$p. $tmp" >> /var/plexguide/multi.read
 done </var/plexguide/multi.list
 
