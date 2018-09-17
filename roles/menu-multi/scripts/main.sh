@@ -88,14 +88,9 @@ if [ "$menu" == "removepath" ]; then
 
 fi
 
-if [ "$menu" == "blitzmanual" ]; then
-  echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-fi
-
-if [ "$menu" == "enmove" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
+if [ "$menu" == "unionfs" ]; then
+  echo 'INFO - Selected: Deploy UnionFS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  ansible-playbook /opt/plexguide/roles/menu-multi/mergerfs.yml
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
