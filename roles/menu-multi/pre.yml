@@ -46,14 +46,14 @@
       shell: "cat /var/plexguide/multi.filler"
       register: count
 
-    #- name: Convert unit
-    #  set_fact:
-    #    countplus: "{{ (count.stdout | int) + 0 }}"
+    - name: Convert unit
+      set_fact:
+        countplus: "{{ (count.stdout | int) + 1 }}"
 
-    #- debug: msg="Count Up - {{countplus}}"
+    - debug: msg="Count Up - {{countplus}}"
 
-    #- name: Set New Count
-    #  shell: "echo {{countplus}} > /var/plexguide/multi.count"
+    - name: Set New Count
+      shell: "echo {{countplus}} > /var/plexguide/multi.count"
 
     - name: Store Information
-      shell: "echo {{pathinput.user_input}} > /opt/appdata/plexguide/multi/{{count}}"
+      shell: "echo {{pathinput.user_input}} > /opt/appdata/plexguide/multi/{{countplus}}"
