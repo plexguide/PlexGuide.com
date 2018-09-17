@@ -51,14 +51,14 @@
       shell: "echo break > /var/plexguide/multi.menu"
       when: fchoice == "1"
 
-    - name: RClone
+    - name: Add Path
       shell: "echo addpath > /var/plexguide/multi.menu"
       when: fchoice == "2"
 
-    - name: JSONS
+    - name: Remove Path
       shell: "echo removepath > /var/plexguide/multi.menu"
       when: fchoice == "3"
 
-    - name: EMail
+    - name: Deploy UnionFS
       shell: "echo unionfs > /var/plexguide/multi.menu"
       when: fchoice == "4"
