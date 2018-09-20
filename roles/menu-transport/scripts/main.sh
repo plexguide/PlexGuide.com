@@ -23,11 +23,6 @@ menu=$(cat /var/plexguide/transport.menu)
 ansible-playbook /opt/plexguide/roles/menu-transport/main.yml
 menu=$(cat /var/plexguide/transport.menu)
 
-if [ "$menu" == "blitzauto" ]; then
-  echo 'INFO - Selected: Transport Blitz Auto' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/automated.sh
-fi
-
 if [ "$menu" == "move" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-move/scripts/main.sh
@@ -37,12 +32,6 @@ if [ "$menu" == "blitzmanual" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
 fi
-
-if [ "$menu" == "enmove" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-move-en/scripts/main.sh
-fi
-
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 

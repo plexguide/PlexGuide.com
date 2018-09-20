@@ -57,25 +57,15 @@
       shell: "cat /var/plexguide/server.ht"
       register: appguard
 
-    - name: WCKD Status
-      stat:
-        path: "/var/plexguide/authclient.wckd"
-      register: wckdfront
-
     - name: Authentication Not Enabled
       set_fact:
         output: "Not Enabled"
       #when: appguard.stdout == "" and wckdfront.stat.exists == False
 
-    - name: WCKD Enabled
-      set_fact:
-        output: "WCKD Enabled"
-      when: appguard.stdout == "" and wckdfront.stat.exists
-
     - name: AppGuard Enabled
       set_fact:
         output: "APP Guard Enabled"
-      when: not appguard.stdout == "" and wckdfront.stat.exists == False
+      when: not appguard.stdout == ""
 
     - name: Ansible
       shell: "ansible --version | cut -d' ' -f2 | head -n1"
@@ -120,7 +110,7 @@
                   \n2.  {{mounts}}
                   \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
                   \n4.  Server Port Guard - Ports  [{{ports}}]
-                  \n5.  PG Authentication Systems  [{{output}}]
+                  \n5.  PG Application Guard       [{{output}}]
                   \n--------------------------------------------
                   \n6.  Program Suite Installer
                   \n7.  Plex Enhancement Tools
