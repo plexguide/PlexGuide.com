@@ -31,8 +31,7 @@
   when: info.stdout == "127.0.0.1:"
 
 - pause:
-    prompt: "\nWelcome to the PG Authentication System!\nPorts Are: {{ports}}\n\n1- EXIT Interface\n2- Deploy WCKD Authentication | Advanced Google Single Sign On
-                                                                                                                        \n3- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
+    prompt: "\nWelcome to the PG Authentication System!\nPorts Are: {{ports}}\n\n1- EXIT Interface\n2- Deploy PG Appguard         | Simple Traefik Authenticator\n\nType a [NUMBER] Choice & Press [ENTER]"
   register: choice
   until: choice.user_input == "1" or
          choice.user_input == "2" or
@@ -48,10 +47,6 @@
   shell: "echo break > /var/plexguide/auth.menu"
   when: fchoice == "1"
 
-- name: WCKD
-  shell: "echo wckd > /var/plexguide/auth.menu"
-  when: fchoice == "2"
-
 - name: AppGuard
   shell: "echo appguard > /var/plexguide/auth.menu"
-  when: fchoice == "3"
+  when: fchoice == "2"

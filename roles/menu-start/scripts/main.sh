@@ -135,14 +135,9 @@ if [ "$menu" == "auth" ]; then
     echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
   else
-    bash /opt/plexguide/roles/menu-authenication/scripts/main.sh
+    bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
   fi
-  
-fi
 
-if [ "$menu" == "wckd" ]; then
-  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --tags authclient --extra-vars "quescheck=on cron=off display=on"
 fi
 
 if [ "$menu" == "ports" ]; then
