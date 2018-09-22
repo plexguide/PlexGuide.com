@@ -13,13 +13,32 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
+#
+# PLEASE NOTE: The authors of this script will offer no support,
+#              If it has been modified!!
 #################################################################################
+#  _____   _____ ____  _ _ _              ___   __ 
+# |  __ \ / ____|  _ \| (_) |            |__ \ /_ |
+# | |__) | |  __| |_) | |_| |_ ____ __   __ ) | | |
+# |  ___/| | |_ |  _ <| | | __|_  / \ \ / // /  | |
+# | |    | |__| | |_) | | | |_ / /   \ V // /_ _| |
+# |_|     \_____|____/|_|_|\__/___|   \_/|____(_)_|
+#
+#################################################################################
+
+# Logging Function
+function log()
+{
+    echo "[PGBlitz] $@" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo "[PGBlitz] $@"
+}
+
 downloadpath=$(cat /var/plexguide/server.hd.path)
 IFS=$'\n'
 
 FILE=$1
 GDSA=$2
-echo "[PGBlitz] [Upload] Upload started for $FILE using $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+log "[Upload] Upload started for $FILE using $GDSA"
 
 STARTTIME=`date +%s`
 FILESTER=`echo $FILE | sed 's/\'$downloadpath'\/move//g'`
@@ -27,12 +46,9 @@ FILEBASE=`basename $FILE`
 FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
 
 JSONFILE=/opt/appdata/pgblitz/json/$FILEBASE.json
-echo "With /mnt/move Removed - $FILESTER"
-echo "Filename - $FILEBASE"
-echo "File DIR - $FILEDIR"
 
 mkdir -p $downloadpath/pgblitz/$GDSA
-echo "[PGBlitz] [Upload] Moving $FILE to GDSA folder: $GDSA" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+log "[Upload] Moving $FILE to GDSA folder: $GDSA"
 
 # add to file lock to stop another process being spawned while file is moving
 echo "lock" > $FILE.lck
@@ -48,8 +64,7 @@ mkdir -p $downloadpath/pgblitz/$GDSA$FILEDIR/
 mv $FILE $downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE
 sleep 5
 
-echo "[PGBlitz] [Upload] $FILE Moved" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-echo "[PGBlitz] [Upload] $FILE Moved"
+log "[Upload] $FILE Moved"
 
 #remove file lock
 rm -f $FILE.lck
@@ -61,7 +76,7 @@ else
     REMOTE=$GDSA
 fi
 
-echo "[PGBlitz] [Upload] Uploading $FILE to $REMOTE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+log "[Upload] Uploading $FILE to $REMOTE"
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
 
 #create and chmod the log file so that webui can read it
@@ -70,7 +85,7 @@ chmod 777 $LOGFILE
 
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
-echo "[PGBlitz] [Upload] Starting Upload"
+log "[Upload] Starting Upload"
 rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
@@ -84,7 +99,7 @@ echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"status\": \"vfs\"
 #rm -f $FILEDIR/folder.lck
 #waiting for file to become avalible from remote and then vfs/forget it
 rclone rc vfs/forget file="$FILEDIR/$FILEBASE"
-echo "[PGBlitz] [Upload] vfs/forgot $FILEDIR/$FILEBASE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+log "[Upload] vfs/forgot $FILEDIR/$FILEBASE"
 
 ENDTIME=`date +%s`
 #update json file for PGBlitz GUI
@@ -97,7 +112,8 @@ echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HR
 #    rclone dedupe tdrive:$FILEDIR --dedupe-mode newest
 #fi
 
-echo "[PGBlitz] [Upload] Upload complete for $FILE, Cleaning up" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+log "[Upload] Upload complete for $FILE, Cleaning up"
+
 #cleanup
 rm -f $LOGFILE
 rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
