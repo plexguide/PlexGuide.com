@@ -44,10 +44,18 @@
 - name: "Getting Sonarr API Key"
   shell: cat /opt/appdata/sonarr/config.xml | grep -o -P '(?<=<ApiKey>).*(?=</ApiKey>)'
   register: SONARRAPI
+  
+- fail:
+    msg: "Couldn't find Sonarr API key. Did you install Sonarr?"
+  when: SONARRAPI.failed
 
 - name: "Getting Radarr API Key"
   shell: cat /opt/appdata/radarr/config.xml | grep -o -P '(?<=<ApiKey>).*(?=</ApiKey>)'
   register: RADARRAPI
+
+- fail:
+    msg: "Couldn't find Radarr API key. Did you install Radarr?"
+  when: RADARRAPI.failed
 
 - name: "Replacing config value for Domain"
   replace:
