@@ -39,16 +39,21 @@
   when: exit.user_input == "1"
 ############################## REGISTER PROJECT
 - pause:
-    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
+    prompt: "\nEnter Github Username or Fork Link\nFork Link Example: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
   register: project
   when: exit.user_input == "3"
-
+  
+- name: Check If Username
+  shell: "echo 'https://github.com/{{project.user_input}}/PlexGuide.com-The-Awesome-Plex-Server' > /var/plexguide/pgfork.project"
+  register: isusername
+  when: (project.user_input is match("http.*://github.com/.*")) == false
+  
 - name: Store Project Link
   shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
-  when: exit.user_input == "3"
+  when: (exit.user_input == "3") and (isusername.skipped == true)
 ############################## REGISTER BRANCH
 - pause:
-    prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
+    prompt: "\nEnter Fork Branch\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
   register: version
   when: exit.user_input == "3"
 
@@ -66,7 +71,7 @@
 
 - name: Clone Fork
   git:
-    repo: "{{projectfinal.stdout}}"
+    repo: "https://github.com/'{{projectfinal.stdout}}'/PlexGuide.com-The-Awesome-Plex-Server"
     dest: /opt/plexguide
     version: "{{versionfinal.stdout}}"
     force: yes
