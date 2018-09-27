@@ -86,42 +86,6 @@
   when: "toplevel.stdout == pgrole"
 ###### FOR TLD (END)
 
-###### FOR DEFAULT LABELS (START)
-- name: WCKD / AppGuard Check
-  stat:
-    path: "/var/plexguide/authclient.wckd" ### Fix This
-  register: wckdcheck
-
-- name: Temp - Delete Bug Test"
-  set_fact:
-    tldset: ""
-
-- name: Temp - Delete Bug Test"
-  set_fact:
-    authorization: "{{auth.stdout}}"
-
-- name: "WCKD Auth On"
-  set_fact:
-    wckd1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-    wckd2: "https://authclient.{{domain.stdout}}"
-    wckd3: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}};PathPrefix:/api"
-    #auth: "" has to be fixed for WCKD
-    standard1: ""
-    quescheck: off
-    cron: off
-    display: off
-  when: wckdcheck.stat.exists == True
-
-- name: WCKD Auth Off"
-  set_fact:
-    wckd1: ""
-    wckd2: ""
-    wckd3: ""
-    standard1: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-  when: wckdcheck.stat.exists == False
-
-- debug: msg="WCKD Running? {{wckdcheck.stat.exists}}"
-
 - name: "Set Default Labels - {{pgrole}}"
   set_fact:
     default_labels:
@@ -129,7 +93,4 @@
       traefik.frontend.auth.basic.users: "{{authorization}}"
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "{{standard1}}"
-      traefik.app.frontend.rule: "{{wckd1}}"
-      traefik.app.frontend.auth.forward.address: "{{wckd2}}"
-      traefik.api.frontend.rule: "{{wckd3}}"
+      traefik.frontend.rule: "{{pgrole}}.{{domain.stdout}},{{tldset}}"
