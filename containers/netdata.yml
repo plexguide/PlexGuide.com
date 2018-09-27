@@ -22,15 +22,6 @@
     pgrole: "{{role_name}}"
     image: "firehol/netdata"
 
-- name: "Key Variables Recall"
-  include_role:
-    name: "pgmstart"
-    tasks_from: "keyvar.yml"
-############################################################# (KEY END)
-#
-############################################################# (BASICS START)
-#
-############################################################# (BASICS END)
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
@@ -43,6 +34,3 @@
     default_env:
       UID: "1000"
       GID: "1000"
-######################## Deploy PGMSTART
-- include_role:
-    name: "pgmstart"

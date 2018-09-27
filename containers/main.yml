@@ -47,6 +47,10 @@
   register: toplevel
   ignore_errors: True
 
+- name: TEMP ROLE
+  set_fact:
+    pgrole: "netdata"
+
 - name: Check Saved Image Path
   stat:
     path: "/var/plexguide/{{pgrole}}.image"
