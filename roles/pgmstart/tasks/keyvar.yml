@@ -90,7 +90,6 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
-      traefik.frontend.auth.basic.users: "{{authorization}}"
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "{{pgrole}}.{{domain.stdout}},{{tldset}}"
