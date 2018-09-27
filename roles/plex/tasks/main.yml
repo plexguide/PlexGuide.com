@@ -24,7 +24,7 @@
     path: "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml"
   register: plex_prefs
 
-############### This is needed because on a fresh installaions the value is missins and is defaulted to 1 Security perfered 
+############### This is needed because on a fresh installaions the value is missins and is defaulted to 1 Security perfered
 - name: secureConnections is missing
   xml:
     path: "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml"
@@ -101,6 +101,11 @@
   file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
   with_items:
       - /opt/transcodes
+
+- name: customConnections FailSafe
+  set_fact:
+    customConnections: "none"
+  when: customConnections is undefined
 
 ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
 - name: Deploy Plex Container (Remote Edition)
