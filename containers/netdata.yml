@@ -19,7 +19,7 @@
   set_fact:
     intport: "19999"
     extport: "19999"
-    pgrole: "{{role_name}}"
+    #pgrole: "{{role_name}}"
     image: "firehol/netdata"
 
 - name: "Set Default Labels - {{pgrole}}"
