@@ -143,7 +143,7 @@ case $CHOICE in
 #               sleep 2
             fi
 
-            #read -n 1 -s -r -p "Press any key to continue "
+            #read -n 1 -s -r -p "Press [ANY] Key to Continue "
             ;;
 
         B)
@@ -174,7 +174,7 @@ case $CHOICE in
 #               sleep 2
 #            fi
 
-            #read -n 1 -s -r -p "Press any key to continue "
+            #read -n 1 -s -r -p "Press [ANY] Key to Continue "
             ;;
         Z)
             clear

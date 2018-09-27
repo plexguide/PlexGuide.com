@@ -93,6 +93,6 @@ temp2=$(echo $temp | grep -oP "error" | head -c 5)
 done </tmp/pg.keys.temp
 
 echo "INFO - PGBlitz: Finished Validating JSON Files" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-echo "" && echo "Finished Valadating JSON Files" && read -n 1 -s -r -p "Press any key to continue"
+echo "" && echo "Finished Valadating JSON Files" && read -n 1 -s -r -p "Press [ANY] Key to Continue"
 
 rm -r /opt/pgops/GDSATEST 1>/dev/null 2>&1

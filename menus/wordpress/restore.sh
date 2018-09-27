@@ -56,4 +56,4 @@ fi
 
 clear
 ansible-playbook /opt/plexguide/pg.yml --tags restorewp
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Press [ANY] Key to Continue"

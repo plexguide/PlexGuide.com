@@ -26,7 +26,7 @@ case $CHOICE in
     echo "Acesss VNC Via Domain: http://$domain:20001"
     echo ""
     touch /var/plexguide/vnc.yes 1>/dev/null 2>&1
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY] Key to Continue "
      ;;
 
     "2)")

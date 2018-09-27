@@ -59,4 +59,4 @@ fi
 
 
 ansible-playbook /opt/plexguide/pg.yml --tags backupwp
-read -n 1 -s -r -p "Press any key to continue"
+read -n 1 -s -r -p "Press [ANY] Key to Continue"

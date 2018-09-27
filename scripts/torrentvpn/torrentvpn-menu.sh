@@ -119,7 +119,7 @@ read_options(){
     echo
     echo
     echo
-    read -n 1 -s -r -p "Press any key to continue "
+    read -n 1 -s -r -p "Press [ANY] Key to Continue "
     ;;
 		2)
       file="/var/plexguide/pia-vpn-set.yes"
@@ -133,7 +133,7 @@ read_options(){
         echo
         echo "Are you Special? You need to setup your PIA account details first!!!"
         echo
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
       fi
       ;;
     3)
@@ -148,7 +148,7 @@ read_options(){
      echo
      echo "Are you Special? You need to setup your PIA account details first!!!"
      echo
-     read -n 1 -s -r -p "Press any key to continue "
+     read -n 1 -s -r -p "Press [ANY] Key to Continue "
    fi
    ;;
 #    4)

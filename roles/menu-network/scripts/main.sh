@@ -27,7 +27,7 @@ if [ "$menu" == "basic" ]; then
   echo 'INFO - Selected: Simple Bench' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   sudo wget -qO- bench.sh | bash
   echo ""
-  read -n 1 -s -r -p "Press any key to continue"
+  read -n 1 -s -r -p "Press [ANY] Key to Continue"
 fi
 
 if [ "$menu" == "advanced" ]; then
@@ -37,7 +37,7 @@ if [ "$menu" == "advanced" ]; then
   echo ""
   ./bench.sh -a
   echo ""
-  read -n 1 -s -r -p "Press any key to continue"
+  read -n 1 -s -r -p "Press [ANY] Key to Continue"
 fi
 
 if [ "$menu" == "simple" ]; then
@@ -46,7 +46,7 @@ if [ "$menu" == "simple" ]; then
   echo ""
   speedtest-cli
   echo ""
-  read -n 1 -s -r -p "Press any key to continue"
+  read -n 1 -s -r -p "Press [ANY] Key to Continue"
 fi
 
 if [ "$menu" == "container" ]; then

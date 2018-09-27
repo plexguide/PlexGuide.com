@@ -60,7 +60,7 @@ case $CHOICE in
     echo "*** View the Log ***"
     echo
     echo ""
-    read -n 1 -s -r -p "GDrive restarted  -  Press any key to continue " ;;
+    read -n 1 -s -r -p "GDrive restarted  -  Press [ANY] Key to Continue " ;;
   B)
     clear
     systemctl restart gcrypt
@@ -80,7 +80,7 @@ case $CHOICE in
     echo "*** View the Log ***"
     echo
     echo ""
-    read -n 1 -s -r -p "GCrypt restarted  -   Press any key to continue " ;;
+    read -n 1 -s -r -p "GCrypt restarted  -   Press [ANY] Key to Continue " ;;
   C)
     clear
     systemctl restart tdrive
@@ -100,7 +100,7 @@ case $CHOICE in
     echo "*** View the Log ***"
     echo
     echo ""
-    read -n 1 -s -r -p "TDrive restarted   -   Press any key to continue " ;;
+    read -n 1 -s -r -p "TDrive restarted   -   Press [ANY] Key to Continue " ;;
   D)
     clear
     systemctl restart tcrypt
@@ -120,7 +120,7 @@ case $CHOICE in
     echo "*** View the Log ***"
     echo
     echo ""
-    read -n 1 -s -r -p "TCrypt restarted  -  Press any key to continue " ;;
+    read -n 1 -s -r -p "TCrypt restarted  -  Press [ANY] Key to Continue " ;;
   E)
     clear
     systemctl restart unionfs
@@ -140,7 +140,7 @@ case $CHOICE in
     echo "*** View the Log ***"
     echo
     echo ""
-    read -n 1 -s -r -p "UnionFS restarted   -  Press any key to continue "
+    read -n 1 -s -r -p "UnionFS restarted   -  Press [ANY] Key to Continue "
     clear ;;
   F)
     clear
@@ -160,7 +160,7 @@ case $CHOICE in
     echo "*** View the Log ***"
     echo
     echo ""
-    read -n 1 -s -r -p "Move restarted  -  Press any key to continue "
+    read -n 1 -s -r -p "Move restarted  -  Press [ANY] Key to Continue "
     clear ;;
   Z)
     clear

@@ -216,7 +216,7 @@ case $CHOICE in
                 sleep 2
                 clear
                 ansible-playbook /opt/plexguide/pg.yml --tags pgtrak
-                read -n 1 -s -r -p "Press any key to continue"
+                read -n 1 -s -r -p "Press [ANY] Key to Continue"
                 dialog --title "PGTrak Status" --msgbox "\nPGTrak Deployment Complete! Use the CMD pgtrak in the Command Line!" 0 0
             else
                 dialog --title "-- WARNING! --" --msgbox "\nExiting! Nothing Happened!" 0 0

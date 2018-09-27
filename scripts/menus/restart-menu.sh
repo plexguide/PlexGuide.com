@@ -23,21 +23,21 @@ case $CHOICE in
       clear
       systemctl restart plexdrive
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       ;;
 
     "2)")
         clear
         systemctl restart rclone-en
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         ;;
 
     "3)")
       clear
       systemctl restart rclone
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 
@@ -45,7 +45,7 @@ case $CHOICE in
       clear
       systemctl restart rclone-encrypt
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 
@@ -53,7 +53,7 @@ case $CHOICE in
       clear
       systemctl restart unionfs
       echo ""
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
         ;;
 
@@ -61,7 +61,7 @@ case $CHOICE in
         clear
         systemctl restart unionfs-encrypt
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         clear
         ;;
 
@@ -69,7 +69,7 @@ case $CHOICE in
         clear
         systemctl restart move
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         clear
         ;;
 
@@ -77,7 +77,7 @@ case $CHOICE in
         clear
         systemctl restart move-en
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         clear
         ;;
 

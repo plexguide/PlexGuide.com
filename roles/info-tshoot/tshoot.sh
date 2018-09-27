@@ -94,7 +94,7 @@ case $CHOICE in
     echo ""
     echo "If no RED, Ansible is good; if RED, ansible is bugged!"
     echo ""
-    read -n 1 -s -r -p "Press any key to continue" ;;
+    read -n 1 -s -r -p "Press [ANY] Key to Continue" ;;
   Z)
     clear
     exit 0 ;;

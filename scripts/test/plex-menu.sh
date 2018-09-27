@@ -68,7 +68,7 @@ read_options(){
         #echo
         #echo "Are you Special? You need to setup your PLEXTOKEN FIRST!!!"
         #echo
-        #read -n 1 -s -r -p "Press any key to continue "
+        #read -n 1 -s -r -p "Press [ANY] Key to Continue "
         ##fi
       ;;
       3)
@@ -83,7 +83,7 @@ read_options(){
       touch /var/plexguide/plextoken.yes
       echo "Your PlexToken is Installed for the Easy Setup!"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       ;;
   		*) echo -e "${RED}Error...${STD}" && sleep 2
   	esac

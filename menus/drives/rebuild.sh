@@ -38,5 +38,5 @@ echo $p > /tmp/program_var
 app=$( cat /tmp/program_var )
 dialog --infobox "Reconstructing Your Container: $app" 3 50
 ansible-playbook /opt/plexguide/pg.yml --tags "$app" --skip-tags webtools 1>/dev/null 2>&1
-#read -n 1 -s -r -p "Press any key to continue "
+#read -n 1 -s -r -p "Press [ANY] Key to Continue "
 done </opt/appdata/plexguide/running

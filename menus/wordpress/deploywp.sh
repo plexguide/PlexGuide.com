@@ -71,11 +71,11 @@ fi
 if [ "$port" -ge 100 -a "$port" -le 999 ]; then
   clear ## change me
 else
-    read -n 1 -s -r -p "Press any key to continue - Bad"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue - Bad"
   dialog --title "Server ID Choice" --msgbox "\nYou Failed to Enter a Value between 100-999!\n\nExiting!" 0 0
 exit
 fi
 
   clear
   ansible-playbook /opt/plexguide/pg.yml --tags wordpress
-  read -n 1 -s -r -p "Press any key to continue"
+  read -n 1 -s -r -p "Press [ANY] Key to Continue"

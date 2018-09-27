@@ -36,7 +36,7 @@ case $CHOICE in
       echo
       echo "*** View the Log ***"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       ;;
 
     "2)")
@@ -55,7 +55,7 @@ case $CHOICE in
       echo
       echo "*** View the Log ***"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       ;;
 
     "3)")
@@ -74,7 +74,7 @@ case $CHOICE in
       echo
       echo "*** View the Log ***"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 
@@ -94,7 +94,7 @@ case $CHOICE in
       echo
       echo "*** View the Log ***"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
   		;;
 
@@ -114,7 +114,7 @@ case $CHOICE in
       echo
       echo "*** View the Log ***"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 
@@ -134,7 +134,7 @@ case $CHOICE in
       echo
       echo "*** View the Log ***"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 
@@ -156,7 +156,7 @@ case $CHOICE in
       echo "Remember, there is a sleep function of 30 minutes after done"
       echo "If you have tons of stuff downloaded, you should see some activity"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 
@@ -178,7 +178,7 @@ case $CHOICE in
       echo "Remember, there is a sleep function of 30 minutes after done"
       echo "If you have tons of stuff downloaded, you should see some activity"
       echo
-      read -n 1 -s -r -p "Press any key to continue "
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
       clear
       ;;
 

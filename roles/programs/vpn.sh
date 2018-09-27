@@ -52,7 +52,7 @@ case $CHOICE in
      echo ""
      read -n 1 -s -r -p "Press [ANY KEY] to Continue"
      bash /opt/plexguide/roles/programs/vpn.sh
-        read -n 1 -s -r -p "Press any key to continue"
+        read -n 1 -s -r -p "Press [ANY] Key to Continue"
   #
   #          echo "$program" > /tmp/program
   #          echo "$program" > /tmp/program_var
@@ -70,7 +70,7 @@ case $CHOICE in
        port=8112
        ansible-playbook /opt/plexguide/pg.yml --tags delugevpn
        #&>/dev/null &
-       read -n 1 -s -r -p "Press any key to continue"
+       read -n 1 -s -r -p "Press [ANY] Key to Continue"
 
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var
@@ -91,7 +91,7 @@ case $CHOICE in
        port_extra=3000
        ansible-playbook /opt/plexguide/pg.yml --tags rtorrentvpn
        #&>/dev/null &
-       read -n 1 -s -r -p "Press any key to continue"
+       read -n 1 -s -r -p "Press [ANY] Key to Continue"
 
             echo "$program" > /tmp/program
             echo "$program" > /tmp/program_var

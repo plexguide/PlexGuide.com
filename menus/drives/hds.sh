@@ -55,7 +55,7 @@ case $CHOICE in
       ;;
     Y)
       ansible-playbook /opt/plexguide/pg.yml --tags drives
-      read -n 1 -s -r -p "Press any key to continue"
+      read -n 1 -s -r -p "Press [ANY] Key to Continue"
       ;;
     X)
       rm -r /var/plexguide/hd.* 1>/dev/null 2>&1

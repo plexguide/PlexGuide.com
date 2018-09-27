@@ -33,7 +33,7 @@ if [ "$menu" == "traefik" ]; then
   else
     echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
     bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
-    echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+    echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press [ANY] Key to Continue!"
   fi
 fi
 

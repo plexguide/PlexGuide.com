@@ -59,7 +59,7 @@ case $CHOICE in
       echo 'INFO - Installing: BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
-      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
+      read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -75,7 +75,7 @@ case $CHOICE in
       echo 'INFO - Installing: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
-      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
+      read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -92,7 +92,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       echo ""
-      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
+      read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -109,7 +109,7 @@ case $CHOICE in
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       echo ""
-      read -n 1 -s -r -p "Press any key to continue - will reboot the machine"
+      read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

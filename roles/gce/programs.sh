@@ -44,43 +44,43 @@ case $CHOICE in
     A)
     echo 'INFO - Selected: NZBGet' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags nzbget
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
 
     B)
     echo 'INFO - Selected: Sonarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags sonarr
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
 
     C)
     echo 'INFO - Selected: Radarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags radarr
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
 
     D)
     echo 'INFO - Selected: SABNZBD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
 
     E)
     echo 'INFO - Selected: CloudST2' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags cloudst2 --skip-tags cron
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
 
     F)
     echo 'INFO - Selected: Netdata' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags netdata --skip-tags cron
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
     
     G)
     echo 'INFO - Selected: Lidarr' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     clear && ansible-playbook /opt/plexguide/pg.yml --tags lidarr
-    read -n 1 -s -r -p "Press any key to continue"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
     ;;
     Z)
       exit 0 ;;

@@ -60,7 +60,7 @@ case $CHOICE in
     echo ""
     echo "*** View the Log ***"
     echo ""
-    read -n 1 -s -r -p "PlexDrive service restarted!    -   Press any key to continue ";;
+    read -n 1 -s -r -p "PlexDrive service restarted!    -   Press [ANY] Key to Continue ";;
   B)
     clear
     systemctl restart rclone-encrypt
@@ -78,7 +78,7 @@ case $CHOICE in
     echo ""
     echo "*** View the Log ***"
     echo ""
-    read -n 1 -s -r -p "PlexDrive Encrypt service restarted!    -   Press any key to continue ";;
+    read -n 1 -s -r -p "PlexDrive Encrypt service restarted!    -   Press [ANY] Key to Continue ";;
   C)
     clear
     systemctl restart rclone
@@ -96,7 +96,7 @@ case $CHOICE in
     echo ""
     echo "*** View the Log ***"
     echo ""
-    read -n 1 -s -r -p "RClone service restarted!   -   Press any key to continue "
+    read -n 1 -s -r -p "RClone service restarted!   -   Press [ANY] Key to Continue "
     clear ;;
   D)
     clear
@@ -115,7 +115,7 @@ case $CHOICE in
     echo ""
     echo "*** View the Log ***"
     echo ""
-    read -n 1 -s -r -p "RClone Encrypt service restarted!   -   Press any key to continue "
+    read -n 1 -s -r -p "RClone Encrypt service restarted!   -   Press [ANY] Key to Continue "
     clear ;;
   E)
     clear
@@ -134,7 +134,7 @@ case $CHOICE in
     echo ""
     echo "*** View the Log ***"
     echo ""
-    read -n 1 -s -r -p "UnionFS service restarted!  -   Press any key to continue "
+    read -n 1 -s -r -p "UnionFS service restarted!  -   Press [ANY] Key to Continue "
     clear ;;
   F)
     clear
@@ -153,7 +153,7 @@ case $CHOICE in
     echo ""
     echo "*** View the Log ***"
     echo ""
-    read -n 1 -s -r -p "UnionFS Encrypt service restarted!  -   Press any key to continue "
+    read -n 1 -s -r -p "UnionFS Encrypt service restarted!  -   Press [ANY] Key to Continue "
     clear ;;
   G)
     clear
@@ -174,7 +174,7 @@ case $CHOICE in
     echo "Remember, there is a sleep function of 30 minutes after done"
     echo "If you have tons of stuff downloaded, you should see some activity"
     echo ""
-    read -n 1 -s -r -p "Move service restarted! -   Press any key to continue "
+    read -n 1 -s -r -p "Move service restarted! -   Press [ANY] Key to Continue "
     clear ;;
   H)
     clear
@@ -196,7 +196,7 @@ case $CHOICE in
     echo "If you have tons of stuff downloaded, you should see some activity"
     echo
     echo ""
-    read -n 1 -s -r -p "Move Encrypt service restarted! -   Press any key to continue "
+    read -n 1 -s -r -p "Move Encrypt service restarted! -   Press [ANY] Key to Continue "
     clear ;;
   Z)
     clear
