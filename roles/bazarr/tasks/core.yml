@@ -20,7 +20,7 @@
     intport: "6767"
     extport: "6767"
     pgrole: "{{role_name}}"
-    image: "morpheus65535/bazarr:latest"
+    image: "linuxserver/bazarr:latest"
 
 - name: "Key Variables Recall"
   include_role:
