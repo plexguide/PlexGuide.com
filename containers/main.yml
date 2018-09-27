@@ -93,15 +93,6 @@
     - debug: msg="TLDSET is now - {{tldset}}"
       when: "toplevel.stdout == pgrole"
 
-    ############################## LABEL SIMPLIFICATION
-    - name: "Set Default Labels - {{pgrole}}"
-      set_fact:
-        default_labels:
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
-          traefik.frontend.redirect.entryPoint: "https"
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-
     ############################## PRIMARY INFORMATION
     - name: Launch Container Primary Information
       include_tasks: "{{pgrole}}.yml"

@@ -22,6 +22,14 @@
     pgrole: "{{role_name}}"
     image: "firehol/netdata"
 
+- name: "Set Default Labels - {{pgrole}}"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
