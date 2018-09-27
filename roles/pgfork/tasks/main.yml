@@ -39,13 +39,21 @@
   when: exit.user_input == "1"
 ############################## REGISTER PROJECT
 - pause:
-    prompt: "\nExample: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
+    prompt: "\nEnter Github Username or Fork Link\nFork Link Example: https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server\nPlease Update Your Project Link"
   register: project
   when: exit.user_input == "3"
-
+  
+- name: Check if username and store link
+  shell: "echo 'https://github.com/{{project.user_input}}/PlexGuide.com-The-Awesome-Plex-Server' > /var/plexguide/pgfork.project"
+  register: isusername
+  when: (project.user_input is match("http.*://github.com/.*")) == false
+  
+- debug:
+    msg: "{{isusername}}"
+  
 - name: Store Project Link
   shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
-  when: exit.user_input == "3"
+  when: (exit.user_input == "3") and (isusername.changed == false)
 ############################## REGISTER BRANCH
 - pause:
     prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
