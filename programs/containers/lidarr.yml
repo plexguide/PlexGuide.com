@@ -34,7 +34,7 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/{{pgrole}}:/config{{extra}}"
+      - "/opt/appdata/{{pgrole}}:/config"
       - /mnt/unionfs:/unionfs
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
