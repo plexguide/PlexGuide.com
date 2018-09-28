@@ -52,7 +52,7 @@
 
     - name: TEMP ROLE
       set_fact:
-        pgrole: "netdata"
+        pgrole: "medusa"
 
     - name: Check Saved Image Path
       stat:
@@ -96,6 +96,14 @@
     ############################## PRIMARY INFORMATION
     - name: Launch Container Primary Information
       include_tasks: "../containers/{{pgrole}}.yml"
+
+    - name: "Set Default Labels"
+      set_fact:
+        default_labels:
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
+          traefik.frontend.redirect.entryPoint: "https"
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}" #,{{tldset}}
 
     ############################## LABELS
     - name: "Deploy {{pgrole}} Container"
