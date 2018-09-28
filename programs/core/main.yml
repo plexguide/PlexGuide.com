@@ -114,6 +114,12 @@
           traefik.frontend.redirect.entryPoint: "https"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}" #,{{tldset}}
 
+    ############################## Create Folder with Proper Permissions
+    - name: Create {{pgrole}} directories
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+      with_items:
+        - "/opt/appdata/{{pgrole}}"
+
     ############################## Check If Questions Exists
     - name: "Check If Questions Exist"
       stat:
