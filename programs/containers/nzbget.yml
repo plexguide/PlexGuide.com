@@ -44,7 +44,7 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/nzbget:/config{{extra}}"
+      - "/opt/appdata/nzbget:/config"
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/nzbget/incomplete:/incomplete"
       - "{{path.stdout}}/nzbget/nzb:/nzb"
