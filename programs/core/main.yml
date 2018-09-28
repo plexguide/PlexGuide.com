@@ -26,6 +26,18 @@
       register: roletmp
       ignore_errors: True
 
+    - name: "Register TLD"
+      shell: "cat /var/plexguide/tld.program"
+      register: toplevel
+      ignore_errors: True
+
+    - name: "Set Facts from Recall"
+      set_fact:
+        pgrole: "{{roletmp.stdout}}"
+        tldset: "{{toplevel.stdout}}"
+
+    - debug: msg="PGRole Set to {{pgrole}} - TopLevel Domain Set to {{tldset}}"
+
     - name: Register Domain
       shell: "cat /var/plexguide/server.domain"
       register: domain
@@ -51,11 +63,6 @@
       register: auth
       ignore_errors: True
 
-    - name: "Register TLD"
-      shell: "cat /var/plexguide/tld.program"
-      register: toplevel
-      ignore_errors: True
-
     - name: Check Saved Image Path
       stat:
         path: "/var/plexguide/{{pgrole}}.image"
@@ -70,13 +77,6 @@
       set_fact:
         image: "{{tempimage.stdout}}"
       when: storedpath.stat.exists
-
-    - name: "Set Facts from Recall"
-      set_fact:
-        pgrole: "{{roletmp.stdout}}"
-        tldset: "{{toplevel.stdout}}"
-
-    - debug: msg="PGRole Set to {{pgrole}} - TopLevel Domain Set to {{tldset}}"
 
     - name: Logging Ansible Role Information
       shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
