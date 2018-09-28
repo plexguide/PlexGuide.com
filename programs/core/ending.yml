@@ -52,5 +52,5 @@
 
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
-    when:
-      - display == "on"
+    #when:
+    #  - display == "on"
