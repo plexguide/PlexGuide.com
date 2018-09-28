@@ -41,7 +41,7 @@
       traefik.enable: "true"
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}" #,{{tldset}}
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
