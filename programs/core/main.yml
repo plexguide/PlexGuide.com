@@ -26,10 +26,6 @@
       register: roletmp
       ignore_errors: True
 
-    - name: "If Fact Matches - Enable TLD"
-      set_fact:
-        pgrole: "{{roletmp.stdout}}"
-
     - debug: msg="PGRole Set to {{pgrole}}"
 
     - name: Register Domain
@@ -76,6 +72,11 @@
       set_fact:
         image: "{{tempimage.stdout}}"
       when: storedpath.stat.exists
+
+    - name: "Set Facts from Recall"
+      set_fact:
+        pgrole: "{{roletmp.stdout}}"
+        tldset: "{{toplevel.stdout}}"
 
     - name: Logging Ansible Role Information
       shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
