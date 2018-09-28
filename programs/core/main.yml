@@ -20,6 +20,12 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+
+    - name: Set PGRole
+      shell: "cat /tmp/program_selection"
+      register: pgrole
+      ignore_errors: True
+
     - name: Register Domain
       shell: "cat /var/plexguide/server.domain"
       register: domain
