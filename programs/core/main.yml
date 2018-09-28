@@ -94,10 +94,6 @@
       when: "toplevel.stdout == pgrole"
 
     ############################## PRIMARY INFORMATION
-    - name: Expose to Null Prior
-      set_fact:
-
-
     - name: Launch Container Primary Information
       include_tasks: "../containers/{{pgrole}}.yml"
 
@@ -121,7 +117,6 @@
         volumes: "{{default_volumes}}"
         env: "{{default_env}}"
         expose: "{{expose}}"
-          - 8096
         restart_policy: always
         networks:
           - name: plexguide
