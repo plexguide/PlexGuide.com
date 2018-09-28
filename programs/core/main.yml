@@ -23,8 +23,14 @@
 
     - name: Set PGRole
       shell: "cat /tmp/program_selection"
-      register: pgrole
+      register: roletmp
       ignore_errors: True
+
+    - name: "If Fact Matches - Enable TLD"
+      set_fact:
+        pgrole: "{{roletmp.stdout}}"
+
+    - debug: msg="PGRole Set to {{pgrole}}"
 
     - name: Register Domain
       shell: "cat /var/plexguide/server.domain"
