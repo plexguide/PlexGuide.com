@@ -16,7 +16,6 @@
 #
 #################################################################################
 ---
----
 - pause:
     prompt: "\nType Image # for {{pgrole}}\n1- linuxserver/radarr (Recommended)\n2- aront/radarr (MP4 Converter)"
   register: result
