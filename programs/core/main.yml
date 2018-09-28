@@ -95,9 +95,9 @@
 
     ############################## PRIMARY INFORMATION
     - name: Launch Container Primary Information
-      include_tasks: "test/{{pgrole}}.yml"
-    ############################## PRIMARY DEPLOYMENT
+      include_tasks: "containers/{{pgrole}}.yml"
 
+    ############################## LABELS
     - name: "Deploy {{pgrole}} Container"
       docker_container:
         name: "{{pgrole}}"

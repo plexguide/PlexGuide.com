@@ -15,14 +15,13 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Establish Key Variables"
+- name: "Container Variables"
   set_fact:
     intport: "19999"
     extport: "19999"
-    #pgrole: "{{role_name}}"
     image: "firehol/netdata"
 
-- name: "Set Default Labels - {{pgrole}}"
+- name: "Set Default Labels"
   set_fact:
     default_labels:
       traefik.enable: "true"
@@ -37,7 +36,7 @@
       - "/proc:/host/proc:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
-- name: "Establish Key Variables - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
     default_env:
       UID: "1000"
