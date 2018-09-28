@@ -139,5 +139,8 @@
         state: started
         labels: "{{default_labels}}"
 
-    #- include_role:
-    #    name: pgmend
+    ############################## ENDING
+    - name: Launch Ending
+      include_tasks: "ending.yml"
+      when:
+    #    - quescheck == "on"
