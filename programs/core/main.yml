@@ -95,7 +95,7 @@
 
     ############################## PRIMARY INFORMATION
     - name: Launch Container Primary Information
-      include_tasks: "containers/{{pgrole}}.yml"
+      include_tasks: "/opt/plexguide/programs/containers/{{pgrole}}.yml"
 
     ############################## LABELS
     - name: "Deploy {{pgrole}} Container"
