@@ -15,33 +15,32 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
----
 - pause:
-    prompt: "\nType Image # for {{pgrole}}\n1- linuxserver/radarr (Recommended)\n2- aront/radarr (MP4 Converter)"
+    prompt: "\nType Image # for Sonarr\n1- linuxserver/sonarr (Recommended)\n2- aront/sonarr (MP4 Converter)"
   register: result
   until: result.user_input > "0" and result.user_input < "3"
   retries: 5
   delay: 1
 
-- name: Set linuxserver/radarr
+- name: Set linuxserver/sonarr
   set_fact:
-    image: "linuxserver/radarr"
+    image: "linuxserver/sonarr"
     extra: ""
   when: result.user_input == "1"
 
 - name: Image Save
-  shell: "echo linuxserver/radarr > /var/plexguide/{{pgrole}}.image"
+  shell: "echo linuxserver/sonarr > /var/plexguide/{{pgrole}}.image"
   register: pgversion
-  when: result.user_input == "1"
+  when: result.user_input == "2"
 
-- name: Aront/Radarr
+- name: Aront/Sonarr
   set_fact:
-    image: "aront/radarr"
+    image: "aront/sonarr"
     extra: ""
   when: result.user_input == "2"
 
 - name: Image Save
-  shell: "echo aront/radarr > /var/plexguide/{{pgrole}}.image"
+  shell: "echo aront/sonarr > /var/plexguide/{{pgrole}}.image"
   register: pgversion
   when: result.user_input == "2"
 
@@ -53,7 +52,7 @@
 
 - name: Install autoProcess.ini
   template:
-    src: ../templates/autoProcess.ini
+    src: autoProcess.ini
     dest: /opt/appdata/{{pgrole}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
