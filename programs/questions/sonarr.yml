@@ -52,7 +52,7 @@
 
 - name: Install autoProcess.ini
   template:
-    src: autoProcess.ini
+    src: ../templates/autoProcess.ini
     dest: /opt/appdata/{{pgrole}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
