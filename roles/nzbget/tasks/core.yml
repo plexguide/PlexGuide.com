@@ -19,7 +19,6 @@
   set_fact:
     intport: "6789"
     extport: "6789"
-    pgrole: "{{role_name}}"
     image: "linuxserver/nzbget"
 
 - name: Key Variables Recall
@@ -44,12 +43,8 @@
 - name: "Establish Key Variables - {{pgrole}}"
   set_fact:
     default_env:
-      APP: "{{pgrole}}"
-      VERSION: "stable"
       PUID: "1000"
       PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
       LC_ALL: "C"
 ######################## Deploy PGMSTART
 - include_role:

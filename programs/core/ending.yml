@@ -18,16 +18,13 @@
 ---
   - name: "Check If Ending Tasks Exists"
     stat:
-      path: "/opt/plexguide/roles/{{pgrole}}/tasks/ending.yml"
+      path: "../containers/{{pgrole}}-ending.yml"
     register: "ending"
 
   - debug: msg="Ending Check - {{ending.stat.exists}}"
 
-  - name: "Deploy ending tasks"
-    include_role:
-      name: "{{pgrole}}"
-      tasks_from: "ending.yml"
-    ignore_errors: True
+  - name: Launch Container Primary Information
+    include_tasks: "../containers/{{pgrole}}-ending.yml"
     when:
       - "ending.stat.exists == True"
 
