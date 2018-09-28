@@ -53,7 +53,7 @@
 
 - name: Install autoProcess.ini
   template:
-    src: ../templates/autoProcess.ini
+    src: ../templates/radarr.ini
     dest: /opt/appdata/{{pgrole}}/mp4_automator/autoProcess.ini
     force: yes
     mode: 0775
