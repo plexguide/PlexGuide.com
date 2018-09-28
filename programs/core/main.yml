@@ -113,11 +113,8 @@
 
     #- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
 
-    - name: "Deploy Questions"
-      include_role:
-        name: "{{pgrole}}"
-        tasks_from: "questions.yml"
-      ignore_errors: True
+    - name: Launch Questions
+      include_tasks: "../questions/{{pgrole}}.yml"
       when:
     #    - quescheck == "on"
         - "questions.stat.exists == True"
