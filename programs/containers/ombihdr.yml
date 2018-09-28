@@ -2,7 +2,7 @@
 #
 # Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,25 +15,6 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Establish Key Variables"
-  set_fact:
-    intport: "3579"
-    extport: "3577"
-    pgrole: "{{role_name}}"
-    image: "linuxserver/ombi"
-
-- name: Key Variables Recall
-  include_role:
-    name: pgmstart
-    tasks_from: "keyvar.yml"
-############################################################# (KEY END)
-#
-############################################################# (BASICS START)
-- name: Create Basic Directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-  with_items:
-    - /opt/appdata/{{pgrole}}
-
 - name: Check JSON exists
   stat:
     path: "/opt/appdata/{{pgrole}}/appsettings.json"
@@ -48,7 +29,24 @@
     force: no
   ignore_errors: True
   when: jsonfile.stat.exists == False
-############################################################# (BASICS END)
+
+################# ABOVE OMBI Only
+- name: "Container Variables"
+  set_fact:
+    intport: "3579"
+    extport: "3577"
+    image: "linuxserver/ombi"
+    cpu_shares: 128
+    expose: ""
+
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},requests.{{domain.stdout}},request.{{domain.stdout}},{{tldset}}"
+
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
@@ -56,20 +54,8 @@
       - "/etc/localtime:/etc/localtime:ro"
       - /opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json"
 
-- name: "Establish Key Variables - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
     default_env:
       PUID: "1000"
       PGID: "1000"
-
-- name: "Set Default Labels - {{pgrole}}"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}},requests.{{domain.stdout}},request.{{domain.stdout}}"
-      traefik.port: "{{intport}}"
-
-######################## Deploy PGMSTART
-- include_role:
-    name: "pgmstart"
