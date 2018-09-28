@@ -52,7 +52,7 @@
 
     - name: TEMP ROLE
       set_fact:
-        pgrole: "emby"
+        pgrole: "netdata"
 
     - name: Check Saved Image Path
       stat:
