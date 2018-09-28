@@ -16,113 +16,41 @@
 #
 #################################################################################
 ---
-############################## PRIMARY START
-- hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Register Domain
-      shell: "cat /var/plexguide/server.domain"
-      register: domain
-      ignore_errors: True
+  - name: "Check If Ending Tasks Exists"
+    stat:
+      path: "/opt/plexguide/roles/{{pgrole}}/tasks/ending.yml"
+    register: "ending"
 
-    - name: Register IP
-      shell: "cat /var/plexguide/server.ip"
-      register: ipaddress
-      ignore_errors: True
+  - debug: msg="Ending Check - {{ending.stat.exists}}"
 
-    - name: Register Ports
-      shell: "cat /var/plexguide/server.ports"
-      register: ports
-      ignore_errors: True
+  - name: "Deploy ending tasks"
+    include_role:
+      name: "{{pgrole}}"
+      tasks_from: "ending.yml"
+    ignore_errors: True
+    when:
+      - "ending.stat.exists == True"
 
-    - name: Register HD Path
-      shell: "cat /var/plexguide/server.hd.path"
-      register: path
-      ignore_errors: True
+  - name: Logging Ansible Role Information
+    shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
-    - name: Register Auth Path
-      shell: "cat /var/plexguide/server.ht"
-      register: auth
-      ignore_errors: True
+### Cron
+  - include_role:
+      name: pgcron
+    tags: cron
+    when:
+      - cron == "on"
 
-    - name: "Register TLD"
-      shell: "cat /var/plexguide/tld.program"
-      register: toplevel
-      ignore_errors: True
+### Display Info
+  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
+    when:
+      - pgrole != "pgtracker"
 
-    - name: TEMP ROLE
-      set_fact:
-        pgrole: "medusa"
+  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | tracker.{{domain.stdout}}"
+    when:
+      - pgrole == "pgtracker"
 
-    - name: Check Saved Image Path
-      stat:
-        path: "/var/plexguide/{{pgrole}}.image"
-      register: storedpath
-
-    - name: "Register Saved Image"
-      shell: "cat /var/plexguide/{{pgrole}}.image"
-      register: tempimage
-      when: storedpath.stat.exists
-
-    - name: Set to PLEX Local
-      set_fact:
-        image: "{{tempimage.stdout}}"
-      when: storedpath.stat.exists
-
-    - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
-
-    - name: Remove {{pgrole}} Container
-      docker_container:
-        name: "{{pgrole}}"
-        state: absent
-      ignore_errors: True
-
-    - name: Storing Role Name
-      shell: "echo '{{pgrole}}' > /tmp/program_var"
-      ignore_errors: True
-
-    ############################## TOP LEVEL DOMAIN (TLD) START
-    - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
-
-    - name: "If Fact Matches - Enable TLD"
-      set_fact:
-        tldset: "{{domain.stdout}}"
-      when: "toplevel.stdout == pgrole"
-
-    - debug: msg="TLDSET is now - {{tldset}}"
-      when: "toplevel.stdout == pgrole"
-
-    ############################## PRIMARY INFORMATION
-    - name: Launch Container Primary Information
-      include_tasks: "../containers/{{pgrole}}.yml"
-
-    - name: "Set Default Labels"
-      set_fact:
-        default_labels:
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
-          traefik.frontend.redirect.entryPoint: "https"
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}" #,{{tldset}}
-
-    ############################## LABELS
-    - name: "Deploy {{pgrole}} Container"
-      docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
-        pull: yes
-        cpu_shares: 256
-        published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{default_volumes}}"
-        env: "{{default_env}}"
-        restart_policy: always
-        networks:
-          - name: plexguide
-            aliases:
-              - "{{pgrole}}"
-        state: started
-        labels: "{{default_labels}}"
-
-    #- include_role:
-    #    name: pgmend
+  - pause:
+      prompt: "\nView the Access Information Above, then Press [ENTER]"
+    when:
+      - display == "on"

@@ -105,6 +105,23 @@
           traefik.frontend.redirect.entryPoint: "https"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}}" #,{{tldset}}
 
+    ############################## Check If Questions Exists
+    - name: "Check If Questions Exist"
+      stat:
+        path: "/opt/plexguide/programs/questions/{{pgrole}}.yml"
+      register: "questions"
+
+    - debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
+
+    - name: "Deploy Questions"
+      include_role:
+        name: "{{pgrole}}"
+        tasks_from: "questions.yml"
+      ignore_errors: True
+      when:
+        - quescheck == "on"
+        - "questions.stat.exists == True"
+
     ############################## LABELS
     - name: "Deploy {{pgrole}} Container"
       docker_container:
