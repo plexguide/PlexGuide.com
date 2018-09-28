@@ -15,11 +15,12 @@
 #
 ############################################################# (KEY START)
 ---
+#################################### Above Only for AllTube
 - name: "Container Variables"
   set_fact:
-    intport: "6789"
-    extport: "6789"
-    image: "linuxserver/nzbget"
+    intport: "8080"
+    extport: "8080"
+    image: "linuxserver/sabnzbd"
     cpu_shares: 128
     expose: ""
 
@@ -34,20 +35,17 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/nzbget:/config"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/nzbget/incomplete:/incomplete"
-      - "{{path.stdout}}/nzbget/nzb:/nzb"
-      - "{{path.stdout}}/nzbget/log:/log"
-      - "{{path.stdout}}/nzbget/tmp:/tmp"
-      - "{{path.stdout}}/nzbget/queue:/queue"
-      - "{{path.stdout}}/nzbget/scripts:/scripts"
+      - "/opt/appdata/{{pgrole}}:/config"
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/sab/incomplete:/incomplete"
+      - "{{path.stdout}}/sab/nzb:/nzb"
+      - "{{path.stdout}}/sab/admin:/admin"
       - "/mnt/unionfs:/unionfs"
       - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables"
   set_fact:
     default_env:
-      PUID: "1000"
-      PGID: "1000"
+      PUID: 1000
+      PGID: 1000
       LC_ALL: "C"
