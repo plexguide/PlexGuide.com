@@ -30,11 +30,11 @@ if [ "$program" == "$running" ]; then
     if [ "$program" == "vpn" ]; then
       bash /opt/plexguide/roles/programs/vpn.sh
     else
-      ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+      ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=on"
     fi
 
   else
-  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
+  ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
   fi
 
 
