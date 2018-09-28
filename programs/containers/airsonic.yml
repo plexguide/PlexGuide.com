@@ -35,9 +35,9 @@
   set_fact:
     default_volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/{{role_name}}:/airsonic/data"
-      - "/opt/appdata/{{role_name}}/playlists:/airsonic/playlists"
-      - "/opt/appdata/{{role_name}}/podcasts:/airsonic/podcasts"
+      - "/opt/appdata/{{pgrole}}:/airsonic/data"
+      - "/opt/appdata/{{pgrole}}/playlists:/airsonic/playlists"
+      - "/opt/appdata/{{pgrole}}/podcasts:/airsonic/podcasts"
       - "/mnt/unionfs/music:/airsonic/music"
       - "/mnt/unionfs:/unionfs"
 
