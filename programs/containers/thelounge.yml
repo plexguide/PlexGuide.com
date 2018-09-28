@@ -29,7 +29,7 @@
       traefik.enable: "true"
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{role_name}}.{{domain.stdout}},lounge.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:pgrole.{{domain.stdout}},lounge.{{domain.stdout}}"
 
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
