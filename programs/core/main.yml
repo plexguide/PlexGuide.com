@@ -111,7 +111,7 @@
         path: "/opt/plexguide/programs/questions/{{pgrole}}.yml"
       register: "questions"
 
-    - debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
+    #- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
 
     - name: "Deploy Questions"
       include_role:
@@ -119,7 +119,7 @@
         tasks_from: "questions.yml"
       ignore_errors: True
       when:
-        - quescheck == "on"
+    #    - quescheck == "on"
         - "questions.stat.exists == True"
 
     ############################## LABELS
