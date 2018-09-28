@@ -15,28 +15,22 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Establish Key Variables"
+- name: "Container Variables"
   set_fact:
     intport: "8181"
     extport: "8181"
-    pgrole: "{{role_name}}"
     image: "linuxserver/tautulli"
-    authwarning: True
+    cpu_shares: 128
+    expose: ""
 
-- name: "Key Variables Recall"
-  include_role:
-    name: "pgmstart"
-    tasks_from: "keyvar.yml"
-############################################################# (KEY END)
-#
-############################################################# (BASICS START)
-
-- name: "Create {{pgrole}} script directories"
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-  with_items:
-    - "/opt/appdata/{{pgrole}}/scripts"
-
-############################################################# (BASICS END)
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
@@ -44,19 +38,8 @@
       - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs
       - "/opt/appdata/{{role_name}}/scripts:/scripts"
 
-- name: "Establish Key Variables - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
     default_env:
       UID: "1000"
       GID: "1000"
-
-- name: "Set Default Labels - {{pgrole}}"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.port: "{{intport}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
-######################## Deploy PGMSTART
-- include_role:
-    name: "pgmstart"
