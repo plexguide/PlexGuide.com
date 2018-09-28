@@ -15,44 +15,27 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Establish Key Variables"
+- name: "Container Variables"
   set_fact:
     intport: "7878"
     extport: "7877"
-    pgrole: "{{role_name}}"
     image: "linuxserver/radarr"
+    cpu_shares: 128
+    expose: ""
 
-- name: "Key Variables Recall"
-  include_role:
-    name: "pgmstart"
-    tasks_from: "keyvar.yml"
-############################################################# (KEY END)
-
-############################################################# (BASICS START)
-#
-############################################################# (BASICS END)
-- name: "Create scripts folder - {{pgrole}}"
-  file:
-    path: /opt/appdata/{{role_name}}/scripts
-    state: directory
-    owner: 1000
-    group: 1000
-    mode: 0755
-
-- name: "Copy scripts into directory - {{pgrole}}"
-  copy:
-    src: scripts
-    dest: /opt/appdata/{{role_name}}
-    directory_mode: yes
-    owner: 1000
-    group: 1000
-    mode: 0755
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
       - "/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator"
-      - "/opt/appdata/{{pgrole}}:/config{{extra}}"
+      - "/opt/appdata/{{pgrole}}:/config"
       - "/mnt/unionfs:/unionfs"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
@@ -62,15 +45,8 @@
       - "/mnt/qbittorrent/Downloads:/qbit-downloads"
       - "/etc/localtime:/etc/localtime:ro"
 
-- name: "Establish Key Variables - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
     default_env:
       PUID: "1000"
       PGID: "1000"
-      BACKUP: "no"
-      MONO_TLS_PROVIDER: legacy
-      APP: "radarr"
-      VERSION: "stable"
-######################## Deploy PGMSTART
-- include_role:
-    name: "pgmstart"
