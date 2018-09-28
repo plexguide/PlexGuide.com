@@ -52,7 +52,7 @@
 
     - name: TEMP ROLE
       set_fact:
-        pgrole: "medusa"
+        pgrole: "emby"
 
     - name: Check Saved Image Path
       stat:
