@@ -43,10 +43,9 @@ else
     exit
   else
     echo ""
-    echo "--------------------------------------------------------"
-    echo "WARNING - SYSTEM MESSAGE"
-    echo "[$program] does not exist!"
-    echo "--------------------------------------------------------"
+    echo "------------------------------------------------"
+    echo "SYSTEM MESSAGE: [$program] does not exist!"
+    echo "------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     echo ""
