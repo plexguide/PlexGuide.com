@@ -20,7 +20,6 @@
     intport: "32400"
     extport: "32400"
     plextype: "public"
-    pgrole: "{{role_name}}"
     image: "plexinc/pms-docker:public"
     ptoken: "ABC000000"
     plexselect: "2"
