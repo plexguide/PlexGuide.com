@@ -42,7 +42,14 @@ else
   if [ "$program" == "exit" ];then
     exit
   else
-    dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
+    echo ""
+    echo "----------------------------------------------------"
+    echo "WARNING"
+    echo "System Message: $program selected does not exist!"
+    echo "----------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    echo ""
     program=default
   fi
 fi
