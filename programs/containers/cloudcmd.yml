@@ -22,7 +22,7 @@
 
 - name: Install config.json
   template:
-    src: ../templates/config.json
+    src: ../templates/cloudcmd.json
     dest: /opt/appdata/cloudcmd/.cloudcmd.json
     force: yes
   when: cloud_json.stat.exists == False
