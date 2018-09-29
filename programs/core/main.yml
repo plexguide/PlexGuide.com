@@ -140,7 +140,7 @@
         path: "/opt/plexguide/programs/containers/{{pgrole}}-override.yml"
       register: "override"
 
-    - debug: msg="OverRide Check - {{override.stat.exists}}
+    - debug: msg="OverRide Check - {{override.stat.exists}}"
 
     - name: Launch OverRide if Exists
       include_tasks: "../questions/{{pgrole}}.yml"
