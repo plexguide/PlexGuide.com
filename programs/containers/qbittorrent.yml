@@ -18,7 +18,7 @@
 - name: "Container Variables"
   set_fact:
     intport: "8080"
-    extport: "8450"
+    extport: "8080"
     image: "firehol/netdata"
     cpu_shares: 128
     expose: ""
