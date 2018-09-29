@@ -31,6 +31,13 @@
       traefik.frontend.redirect.entryPoint: "https"
       traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
+- name: Create Basic directories for qBittorrent
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+  with_items:
+    - "{{path.stdout}}/{{pgrole}}"
+    - /opt/appdata/{{pgrole}}
+    - /opt/appdata/{{pgrole}}/config
+
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
