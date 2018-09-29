@@ -19,7 +19,7 @@
   stat:
     path: "/opt/appdata/couchpotato/config.ini"
   register: cp_ini
-  
+
 - name: Path for .ini
   wait_for:
     path: "/opt/appdata/couchpotato/config.ini"
@@ -78,6 +78,3 @@
     name: couchpotato
     state: started
   when: cp_ini.stat.exists == False
-
-- include_role:
-    name: pgmend
