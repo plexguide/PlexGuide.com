@@ -145,7 +145,7 @@
     - name: Launch OverRide if Exists
       include_tasks: "../questions/{{pgrole}}.yml"
       when:
-        - "OverRide.stat.exists == True"
+        - "override.stat.exists == True"
 
     ############################## Main Deployment - If OverRide Is False
     - name: "Deploy {{pgrole}} Container"
@@ -167,7 +167,7 @@
         state: started
         labels: "{{default_labels}}"
       when:
-        - "OverRide.stat.exists == False"
+        - "override.stat.exists == False"
 
     ############################## ENDING
     - name: Launch Ending
