@@ -17,7 +17,7 @@
     "keysPanel": true,
     "port": 8000,
     "ip": null,
-    "root": "/SERVER",
+    "root": "/SERVER/opt/appdata/pgblitz/keys/unprocessed/",
     "prefix": "",
     "progress": true,
     "htmlDialogs": true,
