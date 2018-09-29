@@ -34,7 +34,7 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/{{role_name}}:/config" #{{extra.stdout}}"
+      - "/opt/appdata/{{pgrole}}:/config" #{{extra.stdout}}"
       - "{{path.stdout}}/:{{path.stdout}}/"
       - "{{path.stdout}}/:/mnt/unionfs/"
       - "/etc/localtime:/etc/localtime:ro"
