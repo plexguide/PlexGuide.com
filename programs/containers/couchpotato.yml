@@ -17,9 +17,9 @@
 ---
 - name: "Container Variables"
   set_fact:
-    intport: "19999"
-    extport: "19999"
-    image: "firehol/netdata"
+    intport: "5050"
+    extport: "5050"
+    image: "linuxserver/couchpotato"
     cpu_shares: 128
     expose: ""
 
@@ -34,12 +34,21 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/sys:/host/sys:ro"
-      - "/proc:/host/proc:ro"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/opt/appdata/{{role_name}}/mp4_auxtomator:/config_mp4_automator"
+      - "/opt/appdata/{{role_name}}:/config"
+      - "/mnt/unionfs/completed:/unionfs-downloads/shared"
+      - "/mnt/unionfs:/unionfs"
+      - "/mnt/unionfs/movies:/movies"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/rutorrents:/downloads"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/qbittorrent/Downloads:/qbit-downloads"
+      - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables"
   set_fact:
     default_env:
-      UID: "1000"
-      GID: "1000"
+      PUID: 1000
+      PGID: 1000
