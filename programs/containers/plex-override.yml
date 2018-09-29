@@ -1,0 +1,103 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+######################################### DEPLOY PLEX REMOTE (ANSWER 2)
+- name: Deploy Plex Container (Remote Edition)
+  docker_container:
+    name: plex
+    image: "plexinc/pms-docker:{{plextype}}"
+    pull: yes
+    published_ports:
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "33400:33400/tcp"
+      - "33443:33443/tcp"
+    env:
+      PLEX_UID: "1000"
+      PLEX_GID: "1000"
+      PLEX_CLAIM: "{{ptoken}}"
+      ADVERTISE_IP: "{{customConnections}}"
+    purge_networks: yes
+    networks:
+      - name: plexguide
+        aliases:
+          - plex
+    expose:
+      - 32400
+    volumes: "{{default_volumes}}"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
+    cpu_shares: 1024
+    restart_policy: always
+    state: started
+    labels: "{{default_labels}}"
+  when: usercheck != "2"
+
+######################################### DEPLOY PLEX LOCAL (ANSWER 3)
+- name: Deploy Plex Container (Local Edition)
+  docker_container:
+    name: plex
+    image: "plexinc/pms-docker:latest"
+    pull: yes
+    published_ports:
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
+      - "33400:33400/tcp"
+      - "33443:33443/tcp"
+    env:
+      PLEX_UID: "1000"
+      PLEX_GID: "1000"
+      PLEX_CLAIM: "{{ptoken}}"
+      ADVERTISE_IP: "{{customConnections}}"
+    network_mode: "host"
+    volumes: "{{default_volumes}}"
+    devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+    etc_hosts: {'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1'}
+    cpu_shares: 1024
+    restart_policy: always
+    state: started
+    labels: "{{default_labels}}"
+  when: usercheck == "2"
+
+######################################## ENDING PHASE
+- debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}} | Token {{ptokentemp}}"
+  when: usercheck == "1"
+
+- debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}}"
+  when: usercheck == "2"
+
+- pause:
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2: Visit Settings > Server > Remote Access. Click [Show Advanced] > Click [Enable] >\nCheckMark [Manually Specify Public Port] > Type Port 32400 > [Retry] > [Save Changes]\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
+  when: usercheck == "1"
+
+- pause:
+    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Reasons for Remote Access Failure: UPnP off on Router, Firewalls, or double NAT with the ISP!\n\nPress [ENTER] after you CONFIRM"
+  when: usercheck == "2"
