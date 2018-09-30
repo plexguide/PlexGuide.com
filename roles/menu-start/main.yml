@@ -103,8 +103,8 @@
     - name: PG Main Menu
       pause:
         prompt: "\n-----------------------------------------------------------------------
-               \n{{pgedition.stdout}} - {{pgversion.stdout}} | Domain: {{pgdomain.stdout}}
-               \nServer ID: {{pgid.stdout}} | Ansible: {{pgansible.stdout}}
+               \n{{pgedition.stdout}} - {{pgversion.stdout}} | Server ID: {{pgid.stdout}}
+               \nDomain: {{pgdomain.stdout}} | Ansible: {{pgansible.stdout}}
                \n-----------------------------------------------------------------------
                   \n1.  EXIT PlexGuide
                   \n--------------------------------------------
