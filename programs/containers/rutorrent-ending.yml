@@ -106,7 +106,7 @@
 
 - name: Force New Plugin
   copy:
-    src: plugins.ini
+    src: ../templates/rutorrent.ini
     owner: 1000
     group: 1000
     dest: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
