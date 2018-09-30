@@ -186,17 +186,17 @@
              \nSystem Message - Claiming the Plex Server (Remote Edition)
              \n------------------------------------------------------------------------
            \n\n1. Visit {{ipaddress.stdout}}:32400/web to claim the plex server
-             \n2. PLEX Wizard Works: Continue to the next step
+           \n\n2. PLEX Wizard Works: Continue to the next step
              \n   PLEX Wizard Fails:
              \n   a. Select [Server Names]
              \n   b. Look for an oddball server name(example): dd8c78459a6f
-             \n3. a. Visit Settings > Server > Remote Access.
+          \n\n3. a. Visit Settings > Server > Remote Access.
              \n   b. Click [Show Advanced] > [Enable] >
              \n   c. Check [Manually Specify Public Port] > Type Port 32400 > [Retry]
              \n   d. Click [Save Changes]
-             \n4. If enabled and fails, refresh or test using a second device!
-             \nNOTE: Failing to follow directions will result in INDIRECT connections!
-             \n\nPress [ENTER] after you CONFIRM"
+          \n\n4. If enabled and fails, refresh or test using a second device!
+          \n\nNOTE: Failing to follow directions will result in INDIRECT connections!
+             \nPress [ENTER] after you CONFIRM"
   when: usercheck == "1"
 
 - pause:
