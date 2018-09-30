@@ -15,43 +15,7 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Create scripts folder - {{pgrole}}"
-  file:
-    path: /opt/appdata/{{pgrole}}/scripts
-    state: directory
-    owner: 1000
-    group: 1000
-    mode: 0755
-
-- name: "Copy scripts into directory - {{pgrole}}"
-  copy:
-    src: ../templates/deluge_extract.sh
-    dest: /opt/appdata/{{pgrole}}/scripts
-    directory_mode: yes
-    force: yes
-    owner: 1000
-    group: 1000
-    mode: 0755
-
-- name: "Create scripts folder - {{pgrole}}"
-  file:
-    path: /opt/appdata/{{pgrole}}/plugins
-    state: directory
-    owner: 1000
-    group: 1000
-    mode: 0755
-
-- name: "Copy scripts into directory - {{pgrole}}"
-  copy:
-    src: ../templates/deluge/plugins
-    dest: /opt/appdata/{{pgrole}}
-    directory_mode: yes
-    force: yes
-    owner: 1000
-    group: 1000
-    mode: 0755
-
-####################################### Above for Resilio Only
+####################################### Above for RuTorrent Only
 - name: "Container Variables"
   set_fact:
     intport: "80"
