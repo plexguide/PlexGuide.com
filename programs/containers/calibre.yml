@@ -17,9 +17,9 @@
 ---
 - name: "Container Variables"
   set_fact:
-    intport: "8000"
-    extport: "7995"
-    image: "aptalca/docker-calibre"
+    intport: "8083"
+    extport: "8083"
+    image: "linuxserver/calibre-web"
     cpu_shares: 128
     expose: ""
 
