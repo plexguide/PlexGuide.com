@@ -35,8 +35,11 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-    - "{{path.stdout}}/{{pgrole}}"
-    - "/opt/appdata/{{pgrole}}"
+      - "/opt/appdata/{{pgrole}}/config:/config"
+      - "/mnt/unionfs:/unionfs"
+      - "{{path.stdout}}/{{pgrole}}:/downloads"
+      - /opt/appdata/{{pgrole}}:/scripts
+      - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables"
   set_fact:
