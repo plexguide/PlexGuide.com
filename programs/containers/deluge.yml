@@ -44,7 +44,7 @@
 - name: "Copy scripts into directory - {{pgrole}}"
   copy:
     src: ../templates/deluge/plugins
-    dest: /opt/appdata/{{pgrole}}/plugins
+    dest: /opt/appdata/{{pgrole}}
     directory_mode: yes
     force: yes
     owner: 1000
