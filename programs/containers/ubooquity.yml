@@ -15,22 +15,22 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Establish Key Variables"
+- name: "Container Variables"
   set_fact:
     intport: "2202"
     extport: "2202"
-    pgrole: "{{role_name}}"
     image: "linuxserver/ubooquity"
+    cpu_shares: 128
+    expose: ""
 
-- name: "Key Variables Recall"
-  include_role:
-    name: "pgmstart"
-    tasks_from: "keyvar.yml"
-############################################################# (KEY END)
-#
-############################################################# (BASICS START)
-#
-############################################################# (BASICS END)
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
@@ -39,20 +39,8 @@
       - "/mnt/unionfs/podcasts:/podcasts"
       - "/etc/localtime:/etc/localtime:ro"
 
-- name: "Establish Key Variables - {{pgrole}}"
+- name: "Establish Key Variables"
   set_fact:
     default_env:
       PUID: "1000"
       PGID: "1000"
-
-- name: "Set Default Labels - {{pgrole}}"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:web.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
-      traefik.port: "{{intport}}"
-
-######################## Deploy PGMSTART
-- include_role:
-    name: "pgmstart"
