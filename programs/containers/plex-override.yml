@@ -191,9 +191,9 @@
              \n   a. Select [Server Names]
              \n   b. Look for an oddball server name(example): dd8c78459a6f
              \n3. a. Visit Settings > Server > Remote Access.
-                  b. Click [Show Advanced] > [Enable] >
-                  c. Check [Manually Specify Public Port] > Type Port 32400 > [Retry]
-                  d. Click [Save Changes]
+             \n   b. Click [Show Advanced] > [Enable] >
+             \n   c. Check [Manually Specify Public Port] > Type Port 32400 > [Retry]
+             \n   d. Click [Save Changes]
              \n4. If enabled and fails, refresh or test using a second device!
              \nNOTE: Failing to follow directions will result in INDIRECT connections!
              \n\nPress [ENTER] after you CONFIRM"
