@@ -33,7 +33,7 @@ count=$(wc -l < /var/plexguide/container.running)
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
-	ansible-playbook /opt/plexguide/pg.yml --tags $app --extra-vars "quescheck=off cron=off display=off"
+	echo “$app” > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
 done
 
 read -n 1 -s -r -p "Press [ANY] Key to Continue"
