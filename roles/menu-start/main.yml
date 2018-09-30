@@ -72,10 +72,10 @@
       register: pgansible
       ignore_errors: True
 
-    - name: Python
-      shell: "python3 --version | cut -d' ' -f2"
-      register: pgpython
-      ignore_errors: True
+    #- name: Python
+    #  shell: "python3 --version | cut -d' ' -f2"
+    #  register: pgpython
+    #  ignore_errors: True
 
 ##### Recall Mounts or HDs
     - name: Register Mounts or HD Action
@@ -102,9 +102,10 @@
 
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
-                 \nServer ID: {{pgid.stdout}} | Domain: {{pgdomain.stdout}}
-                 \nPython: {{pgpython.stdout}} - Ansible: {{pgansible.stdout}}
+        prompt: "-----------------------------------------------------------------
+               \nWelcome to PG Edition: {{pgedition.stdout}} - {{pgversion.stdout}}!
+               \nServer ID: {{pgid.stdout}} | Ansible: {{pgansible.stdout}} | Domain: {{pgdomain.stdout}}
+               \n-----------------------------------------------------------------
                   \n\n1.  EXIT PlexGuide
                   \n--------------------------------------------
                   \n2.  {{mounts}}
