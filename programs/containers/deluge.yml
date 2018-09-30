@@ -31,6 +31,24 @@
     owner: 1000
     group: 1000
     mode: 0755
+
+- name: "Create scripts folder - {{pgrole}}"
+  file:
+    path: /opt/appdata/{{pgrole}}/plugins
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: 0755
+
+- name: "Copy scripts into directory - {{pgrole}}"
+  copy:
+    src: ../templates/deluge
+    dest: /opt/appdata/{{pgrole}}/plugins
+    directory_mode: yes
+    owner: 1000
+    group: 1000
+    mode: 0755
+
 ####################################### Above for Resilio Only
 - name: "Container Variables"
   set_fact:
