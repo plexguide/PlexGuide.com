@@ -24,10 +24,10 @@ read -n 1 -s -r -p "Press [Any] Key to Continue"
 echo ""
 
 if [ "old" != "" ]; then
-	echo “$old” > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
 fi
 
-echo “$new” > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
 
 echo ""
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
