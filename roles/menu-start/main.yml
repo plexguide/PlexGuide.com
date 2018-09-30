@@ -106,13 +106,12 @@
                \n{{pgedition.stdout}} - {{pgversion.stdout}} | Server ID: {{pgid.stdout}}
                \nDomain: {{pgdomain.stdout}} | Ansible: {{pgansible.stdout}}
                \n-----------------------------------------------------------------------
+
                   \n1.  EXIT PlexGuide
-                  \n--------------------------------------------
                   \n2.  {{mounts}}
                   \n3.  Traefik & TLD Deployment   [{{tldprogram.stdout}}]
                   \n4.  Server Port Guard - Ports  [{{ports}}]
                   \n5.  PG Application Guard       [{{output}}]
-                  \n--------------------------------------------
                   \n6.  Program Suite Installer
                   \n7.  Plex Enhancement Tools
                   \n8.  System & Network Auditor
