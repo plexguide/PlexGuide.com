@@ -109,7 +109,7 @@ bash /opt/plexguide/roles/install/scripts/docstart.sh ### Good
 #
 #
 ######################################################## START: Portainer
-ansible-playbook /opt/plexguide/pg.yml --tags portainer &>/dev/null &
+echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 ######################################################## END: Portainer
 #
 #

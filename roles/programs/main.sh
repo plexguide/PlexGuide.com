@@ -30,11 +30,11 @@ if [ "$program" == "$running" ]; then
     if [ "$program" == "vpn" ]; then
       bash /opt/plexguide/roles/programs/vpn.sh
     else
-      ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=off display=on"
+      echo "$program" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=on"
     fi
 
   else
-  ansible-playbook /opt/plexguide/pg.yml --tags $program --extra-vars "quescheck=on cron=on display=on"
+  ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
   fi
 
 
@@ -42,7 +42,13 @@ else
   if [ "$program" == "exit" ];then
     exit
   else
-    dialog --title "--- NOTE ---" --msgbox "\n$program does not exist!\n\nRestarting!" 0 0
+    echo ""
+    echo "------------------------------------------------"
+    echo "SYSTEM MESSAGE: [$program] does not exist!"
+    echo "------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    echo ""
     program=default
   fi
 fi
