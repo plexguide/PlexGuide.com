@@ -182,7 +182,21 @@
   when: usercheck == "2"
 
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: Select Server Names - Upper Left. Names Example: dd8c78459a6f\nTIP 2: Visit Settings > Server > Remote Access. Click [Show Advanced] > Click [Enable] >\nCheckMark [Manually Specify Public Port] > Type Port 32400 > [Retry] > [Save Changes]\nTIP 3 : If enabled and fails, refresh or test using a second device!\nTIP 4 : Failing to follow directions will result in INDIRECT connections!\n\nPress [ENTER] after you CONFIRM"
+    prompt: "\n------------------------------------------------------------------------
+             \nSystem Message - Claiming the Plex Server (Remote Edition)
+             \n------------------------------------------------------------------------
+           \n\n1. Visit {{ipaddress.stdout}}:32400/web to claim the plex server
+             \n2. PLEX Wizard Works: Continue to the next step
+             \n   PLEX Wizard Fails:
+             \n   a. Select [Server Names]
+             \n   b. Look for an oddball server name(example): dd8c78459a6f
+             \n3. a. Visit Settings > Server > Remote Access.
+                  b. Click [Show Advanced] > [Enable] >
+                  c. Check [Manually Specify Public Port] > Type Port 32400 > [Retry]
+                  d. Click [Save Changes]
+             \n4. If enabled and fails, refresh or test using a second device!
+             \nNOTE: Failing to follow directions will result in INDIRECT connections!
+             \n\nPress [ENTER] after you CONFIRM"
   when: usercheck == "1"
 
 - pause:
