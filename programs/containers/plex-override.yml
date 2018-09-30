@@ -200,5 +200,18 @@
   when: usercheck == "1"
 
 - pause:
-    prompt: "\nVisit {{ipaddress.stdout}}:32400/web and CLAIM your PLEX SERVER First!\n\nTIP 1A: If a PLEX Wizard comes up, great! If not, follow TIP 1B\nTIP 1B: You should see a WARNING BANNER about an unclaimed server! Click that!\nTIP 2 : Reasons for Remote Access Failure: UPnP off on Router, Firewalls, or double NAT with the ISP!\n\nPress [ENTER] after you CONFIRM"
+    prompt: "\n------------------------------------------------------------------------
+             \nSystem Message - Claiming the Plex Server (Local Edition)
+             \n------------------------------------------------------------------------
+           \n\n1. Visit {{ipaddress.stdout}}:32400/web to claim the plex server
+           \n\n2. PLEX Wizard Works: Your Set!
+             \n   PLEX Wizard Fails:
+             \n   a. You should see a warning banner about an unclaimed server!
+             \n   b. Check your server list for a new server!
+           \n\n3. Remote Access Failure Reasons (Optional - Only If Sharing):
+             \n   a. Router  : UPnP on your router is turned off!
+             \n   b. Router  : Double NAT issue; your network and/or ISP setup
+             \n   c. Firewall: Turn them all off for TESTING purposes (turn on later)
+          \n\nNOTE: If Remote Access Continues to Fail, check with PLEX Forums!
+             \nPress [ENTER] after you CONFIRM"
   when: usercheck == "2"
