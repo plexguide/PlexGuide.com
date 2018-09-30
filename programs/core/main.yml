@@ -126,12 +126,12 @@
         path: "/opt/plexguide/programs/questions/{{pgrole}}.yml"
       register: "questions"
 
-    #- debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
+    - debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
 
     - name: Launch Questions
       include_tasks: "../questions/{{pgrole}}.yml"
       when:
-    #    - quescheck == "on"
+        - quescheck == "on"
         - "questions.stat.exists == True"
 
     ############################## Alternative Deployment - If OverRide is True
