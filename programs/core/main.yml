@@ -143,7 +143,7 @@
     - debug: msg="OverRide Check - {{override.stat.exists}}"
 
     - name: Launch OverRide if Exists
-      include_tasks: "../containers/{{pgrole}}-overrride.yml"
+      include_tasks: "../containers/{{pgrole}}-override.yml"
       when:
         - "override.stat.exists == True"
 
