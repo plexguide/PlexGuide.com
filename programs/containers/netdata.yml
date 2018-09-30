@@ -17,9 +17,9 @@
 ---
 - name: "Container Variables"
   set_fact:
-    intport: "19999"
-    extport: "19999"
-    image: "firehol/netdata"
+    intport: "8200"
+    extport: "8200"
+    image: "linuxserver/duplicati"
     cpu_shares: 128
     expose: ""
 
@@ -34,9 +34,8 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/sys:/host/sys:ro"
-      - "/proc:/host/proc:ro"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - /opt/appdata/{{pgrole}}
+      - /opt/appdata/{{pgrole}}/sync
 
 - name: "Establish Key Variables"
   set_fact:
