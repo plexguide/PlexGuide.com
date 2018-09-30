@@ -38,7 +38,6 @@ cat << "EOF"
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
 │ Update to Edge Version:   pgedge    │
-│ Delete Dupes:             pgdupes   │
 │ Add Content:              pgtrak    │
 │ View the PG Logs:         pglog     │
 │ Download Your PG Fork:    pgfork    │
