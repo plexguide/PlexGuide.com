@@ -36,7 +36,7 @@
     default_volumes:
       - "/opt/appdata/{{pgrole}}:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/opt/appdata/{{role_name}}:/data"
+      - "/opt/appdata/{{pgrole}}:/data"
 
 - name: "Establish Key Variables"
   set_fact:
