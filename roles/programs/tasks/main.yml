@@ -29,7 +29,7 @@
              \n------------------------------------------------------------------------
              \n{{program.stdout}}
            \n\nEXITING? Type > exit
-           \n\nType the Application (all lowercase) & Press [ENTER]"
+             \nType the Application (all lowercase) & Press [ENTER]"
   register: selection
 
 - name: Write Application Variable
