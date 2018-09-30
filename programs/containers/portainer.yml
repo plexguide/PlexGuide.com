@@ -34,7 +34,7 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/{{role_name}}:/data"
+      - "/opt/appdata/{{pgrole}}:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/opt/appdata/{{role_name}}:/data"
 
