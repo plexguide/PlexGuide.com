@@ -25,11 +25,11 @@
 - name: Prompt User for Program
   pause:
     prompt: "\n------------------------------------------------------------------------
-             \nSystem Message - PG Application Suite | Exiting? Type > exit
+             \nSystem Message - PG Application Suite
              \n------------------------------------------------------------------------
              \n{{program.stdout}}
-           \n\nNOTE: Exiting? Type > exit
-             \nType the [Application Name | All LowerCase] & Press [ENTER]"
+           \n\nEXITING? Type > exit
+           \n\nType the Application (all lowercase) & Press [ENTER]"
   register: selection
 
 - name: Write Application Variable
