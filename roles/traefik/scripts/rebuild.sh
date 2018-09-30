@@ -36,5 +36,6 @@ for ((i=1; i<$count+1; i++)); do
 	echo $app > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
 done
 
+echo ""
 read -n 1 -s -r -p "Press [ANY] Key to Continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
