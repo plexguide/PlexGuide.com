@@ -203,7 +203,7 @@
     prompt: "\n------------------------------------------------------------------------
              \nSystem Message - Claiming the Plex Server (Local Edition)
              \n------------------------------------------------------------------------
-           \n\n1. Visit {{ipaddress.stdout}}:32400/web to claim the plex server
+           \n\n1. Visit {{ipaddress.stdout}}:32400/web or http://127.0.0.1:32400/web
            \n\n2. PLEX Wizard Works: Your Set!
              \n   PLEX Wizard Fails:
              \n   a. You should see a warning banner about an unclaimed server!
