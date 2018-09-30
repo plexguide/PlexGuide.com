@@ -190,8 +190,8 @@
              \n   PLEX Wizard Fails:
              \n   a. Select [Server Names]
              \n   b. Look for an oddball server name(example): dd8c78459a6f
-          \n\n3. a. Visit Settings > Server > Remote Access.
-             \n   b. Click [Show Advanced] > [Enable] >
+          \n\n3. a. Visit Settings > Server > Remote Access
+             \n   b. Click [Show Advanced] > [Enable]
              \n   c. Check [Manually Specify Public Port] > Type Port 32400 > [Retry]
              \n   d. Click [Save Changes]
           \n\n4. If enabled and fails, refresh or test using a second device!
