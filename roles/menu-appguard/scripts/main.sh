@@ -28,11 +28,6 @@ if [ "$menu" == "appguard" ]; then
   ansible-playbook /opt/plexguide/pg.yml --roles menu-appguard
 fi
 
-if [ "$menu" == "wckd" ]; then
-  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --roles authclient
-fi
-
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
