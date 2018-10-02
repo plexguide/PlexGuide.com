@@ -20,7 +20,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/.menu)
-ansible-playbook /opt/plexguide/pg.yml --tags menu-
+ansible-playbook /opt/plexguide/pg.yml --tags menu-appguard
 menu=$(cat /var/plexguide/.menu)
 
 file=/var/plexguide/auth.lock
