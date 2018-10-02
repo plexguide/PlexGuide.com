@@ -15,13 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/appguard.menu
+echo "on" > /var/plexguide/.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/appguard.menu)
-ansible-playbook /opt/plexguide/pg.yml --tags menu-appguard
-menu=$(cat /var/plexguide/appguard.menu)
+menu=$(cat /var/plexguide/.menu)
+ansible-playbook /opt/plexguide/pg.yml --tags menu-
+menu=$(cat /var/plexguide/.menu)
 
 file=/var/plexguide/auth.lock
 if [ -e "$file" ]; then
@@ -32,4 +32,4 @@ fi
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
-echo 'INFO - Selected: Exiting AppGuard' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Selected: Exiting ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
