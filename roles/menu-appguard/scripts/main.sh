@@ -26,7 +26,7 @@ menu=$(cat /var/plexguide/.menu)
 file=/var/plexguide/auth.lock
 if [ -e "$file" ]; then
 bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
-rm -r touch /var/plexguide/auth.lock
+rm -r /var/plexguide/auth.lock
 fi
 
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
