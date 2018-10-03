@@ -16,7 +16,7 @@
 #
 #################################################################################
 echo "on" > /var/plexguide/final.choice
-menu=$(echo "on")
+menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
   echo "2"
