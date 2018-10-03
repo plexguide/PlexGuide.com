@@ -63,6 +63,10 @@
       register: auth
       ignore_errors: True
 
+    - name: Temp - Delete Bug Test"
+      set_fact:
+        authorization: "{{auth.stdout}}"
+
     - name: Check Saved Image Path
       stat:
         path: "/var/plexguide/{{pgrole}}.image"
@@ -115,6 +119,7 @@
     - name: "Set Default Labels"
       set_fact:
         default_labels:
+          traefik.frontend.auth.basic.users: "{{authorization}}"
           traefik.enable: "true"
           traefik.port: "{{intport}}"
           traefik.frontend.redirect.entryPoint: "https"
