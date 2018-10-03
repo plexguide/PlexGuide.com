@@ -28,7 +28,7 @@
       set_fact:
         number: "{{tempnumber.stdout}}"
 
-    - name: "Choice Number {{number.stdout}}"
+    - name: "Choice Number {{number}}"
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2"
