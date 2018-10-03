@@ -20,10 +20,15 @@
   gather_facts: false
   tasks:
 
-    - name: Port Result Open
+    - name: Number Choice Recall
+      shell: "cat /var/plexguide/menu.number"
+      register: number
+
+    - name: Choice Number {{}}
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2"
+      when: {{number.stdout}} = 2
 
     - name: PG Main Menu
       pause:
