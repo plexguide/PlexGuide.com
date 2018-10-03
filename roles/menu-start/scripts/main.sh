@@ -120,7 +120,7 @@ fi
 
 if [ "$menu" == "settings" ]; then
   echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/settings/main.sh
+  echo "settings" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 fi
 
 if [ "$menu" == "auth" ]; then
