@@ -1,0 +1,81 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+############## Start Asking
+- pause:
+    prompt: "\nWelcome to PG Top Level Domain (TLD) App Installer
+             \n\n1 - Exit TLD App Installer
+             \n2 - Continue
+             \n\nNOTE: Desired Application MUST be Running!
+             \nNOTE: Traefik MUST be Deployed and Running!
+             \n\nType a Selection Number"
+  register: exit
+  until: exit.user_input > "0" and exit.user_input < "3"
+  retries: 99
+  delay: 1
+
+- fail:
+    msg: "User Opted NOT to CONTINUE! Aborting!"
+  when: exit.user_input == "1"
+
+- name: "Building Shell List"
+  shell: "bash /opt/plexguide/roles/menu-tld/scripts/main.sh"
+
+- name: "Building List"
+  shell: "cat /tmp/backup.build"
+  register: backlist
+
+- name: Check Old TLD
+  stat:
+    path: /var/plexguide/tld.program
+  register: oldtldcheck
+
+- name: Establishing Prior Final Variable
+  shell: "cat /var/plexguide/tld.program"
+  register: oldtld
+  when: oldtldcheck.stat.exists
+
+- name: Prompt User for TLD App
+  pause:
+    prompt: "\nDETECTED Running Programs:\n{{backlist.stdout}}\n\nTYPE a listed PROGRAM to server as the Top Level Domain! (Case Senstive)"
+  register: selection
+
+- name: Establishing Final Variable
+  shell: "echo {{selection.user_input}} > /var/plexguide/tld.program"
+  register: tld
+
+- name: "Checking {{program_final.stdout}} location in APPDATA"
+  stat:
+    path: /opt/appdata/{tld.stdout}}
+  register: tldcheck
+
+- name: Checking If Any Running App Exist
+  shell: "cat /tmp/backup.build | grep -oP {{selection.user_input}}"
+  register: grep_output
+  ignore_errors: true
+
+- fail:
+    msg: "\nUser Failed to Type Program Correctly! [NOTE: Case Sensitie]"
+  when: grep_output.stdout == ""
+
+- name: Establishing Prior Final Variable
+  shell: "echo {{oldtld.stdout}} > /var/plexguide/old.tld"
+  when: oldtldcheck.stat.exists
+
+- name: "Set Rebuild To On"
+  shell: "echo on > /var/plexguide/tld.control"
