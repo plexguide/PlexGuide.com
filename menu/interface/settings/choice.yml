@@ -18,6 +18,8 @@
 ---
 - name: "Key Menu Facts"
   set_fact:
+    head1: "\nPlexGuide Settings Interface"
+    head2: "\n"Make a Selection
     info2: "\n2.  Download Path  : Change the Processing Location"
     info3: "\n3.  Processor      : Enhance Processing Power"
     info4: "\n4.  Kernal Modes   : Enhance Network Throughput"
