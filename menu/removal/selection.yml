@@ -70,7 +70,7 @@
     {{info4}}
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
-      until: "{{choices}}"
+      until: "{{number}}"
       retries: 99
       delay: 1
 
