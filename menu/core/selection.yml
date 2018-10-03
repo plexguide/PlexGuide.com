@@ -20,19 +20,33 @@
   gather_facts: false
   tasks:
 
-################ Key Variable to Set Menu Length
-    - name: Number Choice Recall
-      shell: "cat /var/plexguide/menu.number"
-      register: tempnumber
+    - name: Recall Menu Type
+      shell: "cat /var/plexguide/type.choice"
+      register: menutemp
 
+    - name: "Set Facts for Menu"
+      set_fact:
+        menu: "{{menutemp.stdout}}"
+
+################ Key Variable to Set Menu Length
     - name: "Default Blank Variables"
       set_fact:
         info1: "\n\n1.  Exit Interface"
-        info2: "\n2.  Remove a Deployed Application"
-        info3: "\n3.  Test Out"
-        info4: "\n4.  Test Out II"
+        info2: ""
+        info3: ""
+        info4: ""
+        info5: ""
+        info6: ""
+        info7: ""
+
+    - name: Launch Container Primary Information
+      include_tasks: "../interface/{{menu}}/choice.yml"
 
 ################ Blank Out Variable Recall
+    - name: Recall Menu Type
+      shell: "cat /var/plexguide/menu.number"
+      register: tempnumber
+
     - name: "Blank Out Variable Recall"
       set_fact:
         numberselect: "{{tempnumber.stdout}}"
@@ -59,15 +73,50 @@
                  choice.user_input == "4"
       when: numberselect == "4"
 
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5"
+      when: numberselect == "5"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5" or
+                 choice.user_input == "6"
+      when: numberselect == "6"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5" or
+                 choice.user_input == "6" or
+                 choice.user_input == "7"
+      when: numberselect == "7"
+
 ################# Recalls Variables for Set Length
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to PG Application Removal Interface!
-                 \nWARNING: Uninstalling an Application will remove your data!
+        prompt: "\n-------------------------------------------------------------
+                 {{head1}}
+                 {{head2}}
+                 \n-------------------------------------------------------------
     {{info1}}
     {{info2}}
     {{info3}}
     {{info4}}
+    {{info5}}
+    {{info6}}
+    {{info7}}
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: "{{choices}}"
@@ -93,3 +142,15 @@
     - name: Choice 4 Selected
       shell: "echo 4 > /var/plexguide/final.choice"
       when: fchoice == "4"
+
+    - name: Choice 5 Selected
+      shell: "echo 5 > /var/plexguide/final.choice"
+      when: fchoice == "5"
+
+    - name: Choice 6 Selected
+      shell: "echo 6 > /var/plexguide/final.choice"
+      when: fchoice == "6"
+
+    - name: Choice 7 Selected
+      shell: "echo 7 > /var/plexguide/final.choice"
+      when: fchoice == "7"

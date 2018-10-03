@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: "Key Menu Facts"
+  set_fact:
+    head1: "\nPG TShoot PreInstall & Uninstall Interface - Make a Selection"
+    head2: ""
+    info2: "\n2.  PreInstaller:  Restart PreInstaller Process"
+    info3: "\n3.  PreInstaller:  Force Full the Entire Process"
+    info4: "\n4.  Uninstall   :  A PG Application (Not Ready)"
+    info5: "\n5.  Uninstall   :  Docker & Containers | Force PreInstall"
+    info6: "\n6.  Uninstall   :  PlexGuide"
