@@ -40,7 +40,8 @@ echo ""
 echo "---------------------------------------------------"
 echo "System Message: User Selected to Exit the Interface"
 echo "---------------------------------------------------"
-sleep 1
+echo ""
+sleep .5
 fi
 
 echo 'INFO - Looping: Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
