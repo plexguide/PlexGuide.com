@@ -19,18 +19,21 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+
+    - name: Port Result Open
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2"
+
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to the Reverse Proxy Interface!
-                 \nMake a Selection!
+        prompt: "\nWelcome to PG Application Removal Interface!
+                 \nWARNING: Uninstalling an Application will remove your data!
     \n\n1.  EXIT Interface
-    \n2.  Deploy Traefik: Reverse Proxy
-    \n3.  Deploy TLD App: Top Level Domain Application
+    \n2.  Remove a Deployed Application
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
-      until: choice.user_input == "1" or
-             choice.user_input == "2" or
-             choice.user_input == "3"
+      until: {{choices.stdout}}
       retries: 99
       delay: 1
 
@@ -43,9 +46,5 @@
       when: fchoice == "1"
 
     - name: Rebuild Containers - Open
-      shell: "echo traefik > /var/plexguide/tldsub.menu"
+      shell: "echo remove > /var/plexguide/tldsub.menu"
       when: fchoice == "2"
-
-    - name: Rebuild Containers - Closed
-      shell: "echo tld > /var/plexguide/tldsub.menu"
-      when: fchoice == "3"
