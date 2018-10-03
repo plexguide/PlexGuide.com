@@ -20,17 +20,24 @@
   gather_facts: false
   tasks:
 
-################ Key Variable to Set Menu Length
-    - name: Number Choice Recall
-      shell: "cat /var/plexguide/menu.number"
-      register: tempnumber
+    - name: Recall Menu Type
+      shell: "cat /var/plexguide/type.choice"
+      register: menutemp
 
+    - name: "Set Facts for Menu"
+      set_fact:
+        menu: "{{menutemp.stdout}}"
+
+################ Key Variable to Set Menu Length
     - name: "Default Blank Variables"
       set_fact:
         info1: "\n\n1.  Exit Interface"
-        info2: "\n2.  Remove a Deployed Application"
-        info3: "\n3.  Test Out"
-        info4: "\n4.  Test Out II"
+        info2: ""
+        info3: ""
+        info4: ""
+
+    - name: Launch Container Primary Information
+      include_tasks: "../interface/{{menu}}/choice.yml"
 
 ################ Blank Out Variable Recall
     - name: "Blank Out Variable Recall"
