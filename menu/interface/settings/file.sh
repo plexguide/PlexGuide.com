@@ -18,13 +18,25 @@
 menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
-  echo "2"
+  bash /opt/plexguide/scripts/baseinstall/harddrive.sh
 fi
 
 if [ "$menu" == "3" ]; then
-  echo "3"
+  bash /opt/plexguide/roles/processor/scripts/processor-menu.sh
 fi
 
 if [ "$menu" == "4" ]; then
-  echo "4"
+  bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+fi
+
+if [ "$menu" == "5" ]; then
+  bash /opt/plexguide/roles/watchtower/menus/main.sh
+fi
+
+if [ "$menu" == "6" ]; then
+  bash /opt/plexguide/menus/migrate/main.sh
+fi
+
+if [ "$menu" == "7" ]; then
+  dpkg-reconfigure tzdata
 fi
