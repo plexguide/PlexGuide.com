@@ -109,6 +109,9 @@
     {{info2}}
     {{info3}}
     {{info4}}
+    {{info5}}
+    {{info6}}
+    {{info7}}
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: "{{choices}}"
@@ -134,3 +137,15 @@
     - name: Choice 4 Selected
       shell: "echo 4 > /var/plexguide/final.choice"
       when: fchoice == "4"
+
+    - name: Choice 5 Selected
+      shell: "echo 5 > /var/plexguide/final.choice"
+      when: fchoice == "5"
+
+    - name: Choice 6 Selected
+      shell: "echo 6 > /var/plexguide/final.choice"
+      when: fchoice == "6"
+
+    - name: Choice 7 Selected
+      shell: "echo 7 > /var/plexguide/final.choice"
+      when: fchoice == "7"
