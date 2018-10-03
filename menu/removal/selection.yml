@@ -38,20 +38,20 @@
         numberselect: "{{tempnumber.stdout}}"
 
 ################ Sets Choice Limitation
-    - name: "Choice Number {{number}}"
+    - name: "Choice Number {{numberselect}}"
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2"
       when: number == "2"
 
-    - name: "Choice Number {{number}}"
+    - name: "Choice Number {{numberselect}}"
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2" or
                  choice.user_input == "3"
       when: number == "3"
 
-    - name: "Choice Number {{number}}"
+    - name: "Choice Number {{numberselect}}"
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2" or
