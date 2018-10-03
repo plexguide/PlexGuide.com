@@ -64,10 +64,10 @@
       pause:
         prompt: "\nWelcome to PG Application Removal Interface!
                  \nWARNING: Uninstalling an Application will remove your data!
-    {{info1.stdout}}
-    {{info2.stdout}}
-    {{info3.stdout}}
-    {{info4.stoudt}}
+    {{info1}}
+    {{info2}}
+    {{info3}}
+    {{info4}}
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: "{{choices}}"
