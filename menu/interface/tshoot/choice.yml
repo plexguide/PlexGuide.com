@@ -23,5 +23,5 @@
     info2: "\n2.  PreInstaller:  Restart PreInstaller Process"
     info3: "\n3.  PreInstaller:  Force Full the Entire Process"
     info4: "\n4.  Uninstall   :  A PG Application (Not Ready)"
-    info4: "\n5.  Uninstall   :  Docker & Containers | Force PreInstall"
-    info5: "\n6.  Uninstall   :  PlexGuide"
+    info5: "\n5.  Uninstall   :  Docker & Containers | Force PreInstall"
+    info6: "\n6.  Uninstall   :  PlexGuide"
