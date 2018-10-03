@@ -82,6 +82,14 @@
       shell: "echo break > /var/plexguide/tldsub.menu"
       when: fchoice == "1"
 
-    - name: Rebuild Containers - Open
-      shell: "echo remove > /var/plexguide/tldsub.menu"
+    - name: Choice 2 Selected
+      shell: "echo 2 > /var/plexguide/final.choice"
       when: fchoice == "2"
+
+    - name: Choice 3 Selected
+      shell: "echo 3 > /var/plexguide/final.choice"
+      when: fchoice == "3"
+
+    - name: Choice 4 Selected
+      shell: "echo 4 > /var/plexguide/final.choice"
+      when: fchoice == "4"
