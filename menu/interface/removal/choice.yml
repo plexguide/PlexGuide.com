@@ -17,17 +17,5 @@
 #################################################################################
 ---
 - name: Number Choice Recall 2
-  shell: "cat /var/plexguide/menu.number"
-  register: temp2
-
-- name: Number Choice Recall 3
-  shell: "cat /var/plexguide/menu.number"
-  register: temp3
-
-- name: Number Choice Recall 4
-  shell: "cat /var/plexguide/menu.number"
-  register: temp4
-
-- name: Number Choice Recall 5
-  shell: "cat /var/plexguide/menu.number"
-  register: temp5
+  shell: "Uninstall a PG Application"
+  register: info2
