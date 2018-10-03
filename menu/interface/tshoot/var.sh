@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 5 > /var/plexguide/menu.number
+echo 6 > /var/plexguide/menu.number

@@ -18,17 +18,84 @@
 menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
-  bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+  echo "0" > /var/plexguide/pg.preinstall.stored
+
+  echo ""
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: Success! Exit & Restart PlexGuide!"
+  echo "---------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 if [ "$menu" == "3" ]; then
-  bash /opt/plexguide/roles/processor/scripts/processor-menu.sh
+  echo "0" > /var/plexguide/pg.preinstall.stored
+  echo "0" > /var/plexguide/pg.ansible.stored
+  echo "0" > /var/plexguide/pg.rclone.stored
+  echo "0" > /var/plexguide/pg.python.stored
+  echo "0" > /var/plexguide/pg.docstart.stored
+  echo "0" > /var/plexguide/pg.watchtower.stored
+  echo "0" > /var/plexguide/pg.label.stored
+  echo "0" > /var/plexguide/pg.alias.stored
+  echo "0" > /var/plexguide/pg.dep
+
+  echo ""
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: Success! Exit & Restart PlexGuide!"
+  echo "---------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 if [ "$menu" == "4" ]; then
-  bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+  echo ""
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: Not Ready!"
+  echo "---------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 if [ "$menu" == "5" ]; then
-  bash /opt/plexguide/roles/watchtower/menus/main.sh
+  rm -r /etc/docker
+  apt-get purge docker-ce
+  rm -rf /var/lib/docker
+  rm -r /var/plexguide/dep*
+  echo "0" > /var/plexguide/pg.preinstall.stored
+  echo "0" > /var/plexguide/pg.ansible.stored
+  echo "0" > /var/plexguide/pg.rclone.stored
+  echo "0" > /var/plexguide/pg.python.stored
+  echo "0" > /var/plexguide/pg.docstart.stored
+  echo "0" > /var/plexguide/pg.watchtower.stored
+  echo "0" > /var/plexguide/pg.label.stored
+  echo "0" > /var/plexguide/pg.alias.stored
+  echo "0" > /var/plexguide/pg.dep
+
+  echo ""
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: Success! Exit & Restart PlexGuide!"
+  echo "---------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+fi
+
+if [ "$menu" == "6" ]; then
+  echo "0" > /var/plexguide/pg.preinstall.stored
+  echo "0" > /var/plexguide/pg.ansible.stored
+  echo "0" > /var/plexguide/pg.rclone.stored
+  echo "0" > /var/plexguide/pg.python.stored
+  echo "0" > /var/plexguide/pg.docstart.stored
+  echo "0" > /var/plexguide/pg.watchtower.stored
+  echo "0" > /var/plexguide/pg.label.stored
+  echo "0" > /var/plexguide/pg.alias.stored
+  echo "0" > /var/plexguide/pg.dep
+  rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+  bash /opt/plexguide/roles/uninstall/main.sh
+
+  echo ""
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: Error! Should not be here!"
+  echo "---------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi

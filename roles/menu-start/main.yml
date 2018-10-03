@@ -117,7 +117,7 @@
                   \n8.  System & Network Auditor
                   \n9.  {{backups}}
                   \n10. Settings Menu
-                  \n11. Troubleshooting Actions
+                  \n11. TroubleShoot - PreInstaller & UnInstaller
                   \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or

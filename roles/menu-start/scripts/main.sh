@@ -88,7 +88,7 @@ fi
 
 if [ "$menu" == "tshoot" ]; then
   echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/info-tshoot/tshoot.sh
+  echo "settings" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 fi
 
 if [ "$menu" == "auditor" ]; then
