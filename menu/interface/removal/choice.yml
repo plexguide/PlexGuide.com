@@ -18,4 +18,4 @@
 ---
     - name: "Key Menu Facts"
       set_fact:
-        info2: "\nUninstall an Application"
+        info2: "\n2.  Uninstall an Application"
