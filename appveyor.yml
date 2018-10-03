@@ -24,12 +24,12 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
 
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sonarr #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nowshowing #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags portainer
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags pyload #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags qbittorrent
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rutorrent
+  - sh: sudo echo sonarr > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
+  - sh: sudo echo nowshowing > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
+  - sh: sudo echo portainer > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
+  - sh: sudo echo pyload > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
+  #- sh: sudo echo qbittorent > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
+  - sh: sudo echo rutorrent > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
 
   ## new format checked (check NETDATA)
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic
