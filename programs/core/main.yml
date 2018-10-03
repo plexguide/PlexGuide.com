@@ -34,9 +34,6 @@
     - name: "Set Facts from Recall"
       set_fact:
         pgrole: "{{roletmp.stdout}}"
-        tldset: "{{toplevel.stdout}}"
-
-    - debug: msg="PGRole Set to {{pgrole}} - TopLevel Domain Set to {{tldset}}"
 
     - name: Register Domain
       shell: "cat /var/plexguide/server.domain"
