@@ -103,6 +103,13 @@
     - debug: msg="TLDSET is now - {{tldset}}"
       when: "toplevel.stdout == pgrole"
 
+    - name: "If Fact Does Not Match - Disable TLD"
+      set_fact:
+        tldset: ""
+      when: "not toplevel.stdout == pgrole"
+
+    - debug: msg="TLD does not apply"
+      when: "not toplevel.stdout == pgrole"
     ############################## Create Folder with Proper Permissions
     - name: Create {{pgrole}} directories
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
