@@ -42,14 +42,14 @@
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2"
-      when: number == "2"
+      when: numberselect == "2"
 
     - name: "Choice Number {{numberselect}}"
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2" or
                  choice.user_input == "3"
-      when: number == "3"
+      when: numberselect == "3"
 
     - name: "Choice Number {{numberselect}}"
       set_fact:
@@ -57,7 +57,7 @@
                  choice.user_input == "2" or
                  choice.user_input == "3" or
                  choice.user_input == "4"
-      when: number == "4"
+      when: numberselect == "4"
 
 ################# Recalls Variables for Set Length
     - name: PG Main Menu
