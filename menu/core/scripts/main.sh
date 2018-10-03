@@ -38,7 +38,7 @@ menu=$(cat /var/plexguide/final.choice)
 if [ "$menu" == "break" ];then
 echo ""
 echo "---------------------------------------------------"
-echo "System Message: User Selected to Exit the Interface"
+echo "SYSTEM MESSAGE: User Selected to Exit the Interface"
 echo "---------------------------------------------------"
 echo ""
 sleep .5
