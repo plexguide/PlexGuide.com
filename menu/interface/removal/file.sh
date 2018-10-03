@@ -15,7 +15,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/final.choice
 menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
