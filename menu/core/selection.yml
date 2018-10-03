@@ -35,6 +35,9 @@
         info2: ""
         info3: ""
         info4: ""
+        info5: ""
+        info6: ""
+        info7: ""
 
     - name: Launch Container Primary Information
       include_tasks: "../interface/{{menu}}/choice.yml"
