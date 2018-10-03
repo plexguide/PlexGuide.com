@@ -17,6 +17,7 @@
 #################################################################################
 echo "dummy" > /var/plexguide/final.choice
 
+#### Note How to Make It Select a Type - echo "removal" > /var/plexguide/type.choice 
 program=$(cat /var/plexguide/type.choice)
 
 menu=$(echo "on")
