@@ -35,7 +35,7 @@
 ################ Blank Out Variable Recall
     - name: "Blank Out Variable Recall"
       set_fact:
-        number: "{{tempnumber.stdout}}"
+        numberselect: "{{tempnumber.stdout}}"
 
 ################ Sets Choice Limitation
     - name: "Choice Number {{number}}"
@@ -70,7 +70,7 @@
     {{info4}}
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
-      until: "number.stdout"
+      until: {{numberselect.stdout}}"
       retries: 99
       delay: 1
 
