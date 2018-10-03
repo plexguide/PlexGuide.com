@@ -22,7 +22,11 @@
 
     - name: Number Choice Recall
       shell: "cat /var/plexguide/menu.number"
-      register: number
+      register: tempnumber
+
+    - name: "Set Choice"
+      set_fact:
+        number: "{{tempnumber.stdout}}"
 
     - name: "Choice Number {{number.stdout}}"
       set_fact:
