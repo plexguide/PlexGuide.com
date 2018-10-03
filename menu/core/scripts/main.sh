@@ -23,7 +23,7 @@ menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/appguard.menu)
-ansible-playbook /opt/plexguide/menu/interface/$programs/file.sh
+ansible-playbook /opt/plexguide/menu/interface/$program/file.sh
 menu=$(cat /var/plexguide/appguard.menu)
 
 finalchoice=$(cat /var/plexguide/final.choice)
