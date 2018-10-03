@@ -15,13 +15,13 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/.menu
+echo "on" > /var/plexguide/appguard.menu
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/.menu)
+menu=$(cat /var/plexguide/appguard.menu)
 ansible-playbook /opt/plexguide/pg.yml --tags menu-appguard
-menu=$(cat /var/plexguide/.menu)
+menu=$(cat /var/plexguide/appguard.menu)
 
 file=/var/plexguide/auth.lock
 if [ -e "$file" ]; then
