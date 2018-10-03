@@ -16,6 +16,9 @@
 #
 #################################################################################
 echo "on" > /var/plexguide/final.choice
+echo "removal" > /var/plexguide/type.choice ## temp
+program=$(cat /var/plexguide/type.choice)
+
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
@@ -23,8 +26,9 @@ menu=$(cat /var/plexguide/appguard.menu)
 ansible-playbook /opt/plexguide/menu/removal/selection.yml
 menu=$(cat /var/plexguide/appguard.menu)
 
+finalchoice=$(cat /var/plexguide/final.choice)
 if [ "$menu" == "2" ]; then
-  bash /opt/plexguide/roles/menu-plexaddons/scripts/main.sh
+  bash /opt/plexguide/menu/interface/$
 fi
 
 if [ "$menu" == "3" ]; then
