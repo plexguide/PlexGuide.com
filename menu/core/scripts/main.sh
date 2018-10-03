@@ -32,7 +32,10 @@ ansible-playbook /opt/plexguide/menu/core/selection.yml
 ### Executes Actions
 bash /opt/plexguide/menu/interface/$program/file.sh
 
-echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+### Calls Variable Again - Incase of Break
+menu=$(cat /var/plexguide/final.choice)
+
+echo 'INFO - Looping: Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
 echo 'INFO - Selected: Exiting ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
