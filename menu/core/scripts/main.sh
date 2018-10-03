@@ -35,6 +35,14 @@ bash /opt/plexguide/menu/interface/$program/file.sh
 ### Calls Variable Again - Incase of Break
 menu=$(cat /var/plexguide/final.choice)
 
+if [ "$menu" == "break" ];then
+echo ""
+echo "---------------------------------------------------"
+echo "System Message: User Selected to Exit the Interface"
+echo "---------------------------------------------------"
+sleep 1
+fi
+
 echo 'INFO - Looping: Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
