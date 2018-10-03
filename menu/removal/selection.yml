@@ -33,7 +33,7 @@
     \n2.  Remove a Deployed Application
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
-      until: {{choices}}
+      until: "{{choices}}"
       retries: 99
       delay: 1
 
