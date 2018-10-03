@@ -79,7 +79,7 @@
         fchoice: "{{choice.user_input}}"
 
     - name: Exiting Interface
-      shell: "echo break > /var/plexguide/tldsub.menu"
+      shell: "echo break > /var/plexguide/finalchoice.menu"
       when: fchoice == "1"
 
     - name: Choice 2 Selected
