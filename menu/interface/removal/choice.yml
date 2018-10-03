@@ -16,6 +16,6 @@
 #
 #################################################################################
 ---
-- name: Number Choice Recall 2
-  shell: "Uninstall a PG Application"
-  register: info2
+    - name: "Key Menu Facts"
+      set_fact:
+        info2: "\nUninstall an Application"
