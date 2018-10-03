@@ -63,6 +63,10 @@
       register: auth
       ignore_errors: True
 
+    - name: Temp - Delete Bug Test"
+      set_fact:
+        authorization: "{{auth.stdout}}"
+
     - name: Check Saved Image Path
       stat:
         path: "/var/plexguide/{{pgrole}}.image"
