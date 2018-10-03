@@ -32,7 +32,7 @@
       set_fact:
         choices: choice.user_input == "1" or
                  choice.user_input == "2"
-      when: number = 2
+      when: number = "2"
 
     - name: PG Main Menu
       pause:
