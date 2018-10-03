@@ -40,6 +40,10 @@
       include_tasks: "../interface/{{menu}}/choice.yml"
 
 ################ Blank Out Variable Recall
+    - name: Recall Menu Type
+      shell: "cat /var/plexguide/menu.number"
+      register: tempnumber
+
     - name: "Blank Out Variable Recall"
       set_fact:
         numberselect: "{{tempnumber.stdout}}"
