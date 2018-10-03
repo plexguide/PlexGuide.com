@@ -16,6 +16,7 @@
 #
 #################################################################################
 echo "dummy" > /var/plexguide/final.choice
+
 echo "removal" > /var/plexguide/type.choice ## temp
 program=$(cat /var/plexguide/type.choice)
 
