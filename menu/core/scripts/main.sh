@@ -28,15 +28,15 @@ menu=$(cat /var/plexguide/appguard.menu)
 
 finalchoice=$(cat /var/plexguide/final.choice)
 if [ "$menu" == "2" ]; then
-  bash /opt/plexguide/menu/interface/$
+  bash /opt/plexguide/menu/interface/$program/file.sh
 fi
 
 if [ "$menu" == "3" ]; then
-  bash /opt/plexguide/roles/menu-plexaddons/scripts/main.sh
+  bash /opt/plexguide/menu/interface/$program/file.sh
 fi
 
 if [ "$menu" == "4" ]; then
-  bash /opt/plexguide/roles/menu-plexaddons/scripts/main.sh
+  bash /opt/plexguide/menu/interface/$program/file.sh
 fi
 
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
