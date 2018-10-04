@@ -1,16 +1,19 @@
 ---
-  - name: Removing File Directories
-    file:
-      state: absent
-      path: "{{ item }}"
-    with_items:
-        - /var/plexguide
-        - /opt/appdata/plexguide
-        - /mnt/nzbget
-        - /mnt/sab
-        - /mnt/rutorrents
-        - /mnt/move
-        - /mnt/gcrypt
-        - /mnt/deluge
-        - /mnt/torrentvpn
-    ignore_errors: yes   
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Removing File Directories
+      file:
+        state: absent
+        path: "{{ item }}"
+      with_items:
+          - /var/plexguide
+          - /opt/appdata/plexguide
+          - /mnt/nzbget
+          - /mnt/sab
+          - /mnt/rutorrents
+          - /mnt/move
+          - /mnt/gcrypt
+          - /mnt/deluge
+          - /mnt/torrentvpn
+      ignore_errors: yes
