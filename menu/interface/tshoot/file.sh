@@ -92,10 +92,4 @@ if [ "$menu" == "6" ]; then
   rm -r /var/plexguide/dep* 1>/dev/null 2>&1
   echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
-  echo ""
-  echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: Error! Should not be here!"
-  echo "---------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
