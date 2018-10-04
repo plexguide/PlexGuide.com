@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Restore Script]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,20 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
-####### NOT BEING USED
-
-sudo rm -r /tmp/namedPipe1
-mkfifo /tmp/namedPipe1 # this creates named pipe, aka fifo
-
-dialog --inputbox "Name of the Program You Want to Uninstall" 8 40 2> /tmp/namedPipe1 &
-OUTPUT="$( cat /tmp/namedPipe1 )"
-
-echo  "This is the output " $OUTPUT
-echo "$OUTPUT" | awk '{print tolower($0)}' 2> /tmp/namedPipe1 &
-OUTPUT="$( cat /tmp/namedPipe1 )"
-echo "$OUTPUT"
-docker stop $OUTPUT
-docker rm $OUTPUT
-
-read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+---
+- name: "Key Menu Facts"
+  set_fact:
+    head1: "\nPlexGuide UnInstaller Interface"
+    head2: "\nWARNING! Ensure to Backup any Data!"
+    info2: "\n2.  I want to UnInstall PlexGuide!"
