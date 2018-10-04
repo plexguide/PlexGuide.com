@@ -44,5 +44,12 @@ fi
 
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
 ansible-playbook /opt/plexguide/roles/versions/main.yml
-dialog --title "--- NOTE ---" --msgbox "\nPGUpdate Complete!" 0 0
+
+echo ""
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Success! PlexGuide Update Complete!"
+echo "---------------------------------------------------"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
 bash /opt/plexguide/roles/ending/ending.sh
