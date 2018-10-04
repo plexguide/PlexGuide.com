@@ -84,14 +84,6 @@ done
   apt-get purge docker-ce -y 1>/dev/null 2>&1
   rm -rf /var/lib/docker 1>/dev/null 2>&1
 
-
-  echo ""
-  echo "-----------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Uninstalling Docker & Generated Containers"
-  echo "-----------------------------------------------------------"
-  echo ""
-  sleep 2
-
   while true; do
       read -p "Pay Attention! Do you want to DELETE /opt/appdata (y or n)? " yn
       case $yn in
