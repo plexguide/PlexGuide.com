@@ -45,6 +45,17 @@ done
   echo ""
   sleep 3
 
+  echo "0" > /var/plexguide/pg.preinstall.stored
+  echo "0" > /var/plexguide/pg.ansible.stored
+  echo "0" > /var/plexguide/pg.rclone.stored
+  echo "0" > /var/plexguide/pg.python.stored
+  echo "0" > /var/plexguide/pg.docstart.stored
+  echo "0" > /var/plexguide/pg.watchtower.stored
+  echo "0" > /var/plexguide/pg.label.stored
+  echo "0" > /var/plexguide/pg.alias.stored
+  echo "0" > /var/plexguide/pg.dep
+  rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+
   echo ""
   echo "-----------------------------------------------------------"
   echo "SYSTEM MESSAGE: Removing All PlexGuide Dependent Services"
