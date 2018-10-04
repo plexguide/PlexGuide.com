@@ -1,9 +1,8 @@
 #!/bin/bash
 #
-# [Ansible Role]
-#
+# Version:  Ansible-1
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705 & Deiteq & Bryde ツ
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -14,35 +13,11 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#################################################################################
+############################################################# (KEY START)
 ---
-- name: Logging Ansible Role Information
-  shell: "echo 'INFO - Ansible Role {{role_name}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
-
-- include_role:
-    name: variables
-
-- name: Register IP
-  shell: "cat /var/plexguide/nc.info"
-  register: ncinfo
-  ignore_errors: True
-
-- name: Create required directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/appdata/nextcloud
-    - /opt/appdata/nextcloud/conf
-    - /opt/appdata/nextcloud/data
-    - /opt/appdata/nextcloud/mariadb
-
-- name: Destroy NextCloud Container
-  docker_container:
-    name: next
-    state: absent
-
 - name: Deploy a MariaDB Container
   docker_container:
-    name: mariadb
+    name: mariadb-nextcloud
     image: "linuxserver/mariadb"
     pull: yes
     published_ports:
@@ -50,7 +25,7 @@
     env:
       PUID: 1000
       PGID: 1000
-      MYSQL_ROOT_PASSWORD: "{{ncinfo.stdout}}"
+      MYSQL_ROOT_PASSWORD: "plexguide123456789com"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/opt/appdata/nextcloud/mariadb:/config"
