@@ -80,22 +80,6 @@ if [ "$menu" == "5" ]; then
 fi
 
 if [ "$menu" == "6" ]; then
-  echo "0" > /var/plexguide/pg.preinstall.stored
-  echo "0" > /var/plexguide/pg.ansible.stored
-  echo "0" > /var/plexguide/pg.rclone.stored
-  echo "0" > /var/plexguide/pg.python.stored
-  echo "0" > /var/plexguide/pg.docstart.stored
-  echo "0" > /var/plexguide/pg.watchtower.stored
-  echo "0" > /var/plexguide/pg.label.stored
-  echo "0" > /var/plexguide/pg.alias.stored
-  echo "0" > /var/plexguide/pg.dep
-  rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-  bash /opt/plexguide/roles/uninstall/main.sh
+  echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
-  echo ""
-  echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: Error! Should not be here!"
-  echo "---------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
