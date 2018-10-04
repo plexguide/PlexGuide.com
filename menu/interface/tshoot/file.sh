@@ -90,7 +90,7 @@ if [ "$menu" == "6" ]; then
   echo "0" > /var/plexguide/pg.alias.stored
   echo "0" > /var/plexguide/pg.dep
   rm -r /var/plexguide/dep* 1>/dev/null 2>&1
-  bash /opt/plexguide/roles/uninstall/main.sh
+  echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
   echo ""
   echo "---------------------------------------------------"
