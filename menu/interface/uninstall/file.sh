@@ -51,7 +51,7 @@ done
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  ansible-playbook /opt/pleguide/menu/interface/uninstall/remove-service.yml
+  ansible-playbook /opt/plexguide/menu/interface/uninstall/remove-service.yml
 
 
   echo ""
@@ -60,7 +60,7 @@ done
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  ### Remove Files Command
+  ansible-playbook /opt/plexguide/menu/interface/uninstall/unfiles.yml
 
 
   echo ""
