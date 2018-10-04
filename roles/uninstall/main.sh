@@ -6,7 +6,7 @@ if dialog --stdout --title "PG UnInstaller" \
         --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
         --yesno "\nDo you WANT TO STOP THE UNINSTALL & BACKOUT!?" 7 50; then
             dialog --infobox "Nothing Has Been Uninstalled!" 3 45
-            sleep 3 
+            sleep 3
     else
          dialog --infobox "UnInstalling PlexGuide!\n\nMay the Force Be With You - PlexGuide Never Dies!" 5 55
          sleep 4
