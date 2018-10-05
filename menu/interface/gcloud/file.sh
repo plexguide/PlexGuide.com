@@ -156,6 +156,9 @@ if [ "$menu" == "4" ]; then
       break=on
     else
       break=off
+      echo ""
+      echo "BoneHead Check: Please Select a Number from 1 - 6"
+      echo ""
     fi
   done
 
