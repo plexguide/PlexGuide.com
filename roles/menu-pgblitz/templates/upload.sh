@@ -76,8 +76,8 @@ else
     REMOTE=$GDSA
 fi
 
-echo $REMOTE /tmp/remote.file
-echo $GDSA /tmp/gdsa.file
+echo $REMOTE > /tmp/remote.file
+echo $GDSA > /tmp/gdsa.file
 
 log "[Upload] Uploading $FILE to $REMOTE"
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
