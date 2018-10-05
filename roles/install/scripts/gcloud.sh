@@ -16,8 +16,8 @@
 
 ######################################################## Declare Variables
 sname="PG Installer: Google Console"
-pg_cleaner=$( cat /var/plexguide/pg.gcloud )
-pg_cleaner_stored=$( cat /var/plexguide/pg.gcloud.stored )
+pg_gcloud=$( cat /var/plexguide/pg.gcloud )
+pg_gcloud_stored=$( cat /var/plexguide/pg.gcloud.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
