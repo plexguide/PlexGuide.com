@@ -22,7 +22,9 @@ if [ "$menu" == "2" ]; then
 fi
 
 if [ "$menu" == "3" ]; then
-  bash /opt/plexguide/roles/processor/scripts/processor-menu.sh
+  echo ""
+  gcloud projects list
+  echo ""
 fi
 
 if [ "$menu" == "4" ]; then
