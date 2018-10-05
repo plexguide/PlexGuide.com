@@ -25,14 +25,18 @@ if [ "$menu" == "3" ]; then
   echo ""
   gcloud projects list
   echo ""
-  read -p "Set the Project ID? (y/n)" -n 1 -r
+  read -p "Set the Project ID (y/n)? " -n 1 -r
   echo    # move cursor to a new line
   echo ""
   echo ""
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
-      echo "ABORTING due to user input. The above terms must be accepted in"
-      echo "order to proceed with the installation. Now exiting."
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
       exit 1;
   else
