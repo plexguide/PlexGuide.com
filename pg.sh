@@ -35,6 +35,7 @@ echo "1" > /var/plexguide/pg.motd
 echo "53" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
+echo "1" > /var/plexguide/pg.gcloud
 # Declare Variables Vital for Operations
 bash /opt/plexguide/roles/install/scripts/declare.sh
 ######################################################## END: Key Variables
@@ -131,6 +132,11 @@ bash /opt/plexguide/roles/install/scripts/rclone.sh
 ######################################################## START: Cleaner
 bash /opt/plexguide/roles/install/scripts/cleaner.sh
 ######################################################## END: Cleaner
+#
+#
+######################################################## START: G-Console
+bash /opt/plexguide/roles/install/scripts/gcloud.sh
+######################################################## END: G-Console
 #
 #
 ######################################################## START: Python
