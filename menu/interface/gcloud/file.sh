@@ -137,6 +137,28 @@ if [ "$menu" == "4" ]; then
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   fi
 
+  break=off
+  while [ "$break" == "off" ]; do
+    echo "--------------------------------------------------"
+    echo "SYSTEM MESSAGE: Key Creation Number Selection"
+    echo "--------------------------------------------------"
+    echo ""
+    echo "1 - Create 2  Keys: Daily Limit - 1.5  TB"
+    echo "2 - Create 5  Keys: Daily Limit - 3.7  TB"
+    echo "3 - Create 10 Keys: Daily Limit - 7.5  TB"
+    echo "4 - Create 20 Keys: Daily Limit - 15   TB"
+    echo "5 - Create 30 Keys: Daily Limit - 22.5 TB"
+    echo "6 - Create 50 Keys: Daily Limit - 37.5 TB"
+    read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
+
+    typed=typed+0
+    if [ "$typed" -ge 1 -a "$typed" -le 6 ]; then
+      break=on
+    else
+      break=off
+    fi
+  done
+
 fi
 
 if [ "$menu" == "5" ]; then
