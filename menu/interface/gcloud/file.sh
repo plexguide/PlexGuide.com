@@ -157,8 +157,11 @@ if [ "$menu" == "4" ]; then
     else
       break=off
       echo ""
-      echo "BoneHead Check: Please Select a Number from 1 - 6"
+      echo "-------------------------------------------------"
+      echo "SYSTEM MESSAGE: Error! Select a Number from 1 - 6"
+      echo "-------------------------------------------------"
       echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     fi
   done
 
