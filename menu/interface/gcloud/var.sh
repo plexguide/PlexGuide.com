@@ -21,5 +21,5 @@ file="/var/plexguide/project.final"
   if [ -e "$file" ]; then
     echo "" 1>/dev/null 2>&1
   else
-    echo "Not Set" > /var/plexguide/project.final
+    echo "[NOT SET]" > /var/plexguide/project.final
   fi
