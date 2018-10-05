@@ -73,11 +73,12 @@ if [ "$menu" == "3" ]; then
       echo "SYSTEM MESSAGE: Passed the Validation Checks!"
       echo "----------------------------------------------"
       echo ""
+      echo "Set Project is: $list"
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     fi
-
   done
 
+  echo $typed > /var/plexguide/project.final
   echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   exit
 
