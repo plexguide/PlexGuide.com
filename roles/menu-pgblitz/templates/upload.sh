@@ -17,7 +17,7 @@
 # PLEASE NOTE: The authors of this script will offer no support,
 #              If it has been modified!!
 #################################################################################
-#  _____   _____ ____  _ _ _              ___   __ 
+#  _____   _____ ____  _ _ _              ___   __
 # |  __ \ / ____|  _ \| (_) |            |__ \ /_ |
 # | |__) | |  __| |_) | |_| |_ ____ __   __ ) | | |
 # |  ___/| | |_ |  _ <| | | __|_  / \ \ / // /  | |
@@ -75,6 +75,9 @@ if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
 else
     REMOTE=$GDSA
 fi
+
+echo $REMOTE /tmp/remote.file
+echo $GDSA /tmp/gdsa.file
 
 log "[Upload] Uploading $FILE to $REMOTE"
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
