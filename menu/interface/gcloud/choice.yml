@@ -30,7 +30,7 @@
     head2: ""
     info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
     info3: "\n3.  Establish Project ID  : [{{project.stdout}}]"
-    info4: "\n4.  Kernal Modes   : Enhance Network Throughput"
+    info4: "\n4.  Create Service Keys   : Enhance Network Throughput"
     info5: "\n5.  WatchTower     : Auto-Update Application Manager"
     info6: "\n6.  Import Media   : Import Existing Media to GDrive"
     info7: "\n7.  Change Time    : Change the Server Time"
