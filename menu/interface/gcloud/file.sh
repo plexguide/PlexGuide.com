@@ -135,8 +135,9 @@ if [ "$menu" == "4" ]; then
     echo "--------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-fi
+  fi
 
+fi
 
 if [ "$menu" == "5" ]; then
   bash /opt/plexguide/roles/watchtower/menus/main.sh
