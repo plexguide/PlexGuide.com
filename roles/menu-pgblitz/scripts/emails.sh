@@ -13,7 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-path=/opt/appdata/pgblitz/keys/unprocessed
+path=/opt/appdata/pgblitz/keys/processed
 
 #updated to cleaner method by PhysK
 cat $path/* | grep client_email | awk '{print $2}' | sed 's/"//g' | sed 's/,//g' > /tmp/pgblitz.emails.list
