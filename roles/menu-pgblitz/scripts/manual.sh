@@ -67,7 +67,7 @@ if [ "$menu" == "rclone" ]; then
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 fi
 
-if [ "$menu" == "jsons" ]; then
+if [ "$menu" == "keys" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   if [ $unencrypted == "off" ]; then
@@ -78,25 +78,8 @@ if [ "$menu" == "jsons" ]; then
   exit
   fi
 
-      echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      #### Deploy CloudBlitz
-      echo "cloudblitz" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-      #### Note How to Create Json files
-      echo ""
-      echo "1. Visit Port 7997 and Upload your JSON files"
-      echo "2. Username: plex | Password: guide"
-      echo "NOTE: Keys Store @ for Processing: /opt/appdata/pgblitz/keys/unprocessed/"
-      echo ""
-      read -n 1 -s -r -p "When Finished, Press [ANY KEY] to Continue!"
-      echo ""
-      echo ""
-      echo "Please Wait! Destroying the BlitzCMD Container!"
-      docker stop cloudblitz 1>/dev/null 2>&1
-      docker rm cloudblitz 1>/dev/null 2>&1
-      echo ""
-      echo "WARNING: Make Sure to Use the E-Mail and Validation Processes!"
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-      echo ""
+  echo gcloud > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+
 fi
 
 if [ "$menu" == "email" ]; then
