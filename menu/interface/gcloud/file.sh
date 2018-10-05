@@ -182,7 +182,7 @@ sleep 2
 num=$keys
 project=$(cat /var/plexguide/project.final)
 
-gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/ --iam-account gdsa$num@$project.iam.gserviceaccount.com --key-file-type="json"
+gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/GDSA$num --iam-account gdsa$num@$project.iam.gserviceaccount.com --key-file-type="json"
 
 fi
 
