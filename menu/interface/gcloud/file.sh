@@ -92,7 +92,7 @@ if [ "$menu" == "4" ]; then
   echo "SYSTEM MESSAGE: PlexGuide Service Account Key Generator"
   echo "------------------------------------------------------------------------------"
   echo ""
-  gcloud iam service-accounts list
+  gcloud iam service-accounts list --filter="GDSA"
   gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
   cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
   echo ""
