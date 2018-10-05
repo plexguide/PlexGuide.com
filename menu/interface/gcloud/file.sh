@@ -25,6 +25,46 @@ if [ "$menu" == "3" ]; then
   echo ""
   gcloud projects list
   echo ""
+  read -p "Set the Project ID? (y/n)" -n 1 -r
+  echo    # move cursor to a new line
+  echo ""
+  echo ""
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+      echo "ABORTING due to user input. The above terms must be accepted in"
+      echo "order to proceed with the installation. Now exiting."
+      echo "";
+      exit 1;
+  else
+      echo "";# leave if statement and continue.
+  fi
+  echo "";
+  echo "";
+  echo "This script is about to *UPDATE* AND *UPGRADE* your OS. It is highly "
+  echo "  recommended that you deploy this on a new server, and not an existing"
+  echo "  one you may already be using. Running upgrades on an existing"
+  echo "  in-production server may break your environment and pre-existing setup"
+  echo "  of software, programs, scripts, applications, etc."
+  echo "";
+  echo "";
+  # read: safe shell input check. non-negated answer continues, else aborts.
+  read -p "Would you like to proceed updating and upgrading your OS and ALL packages? " -n 1 -r
+  echo    # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+      echo "";
+      echo "";
+      echo "ABORTING per user request.";
+      echo "";
+      echo "";
+      exit 1;
+  else
+      echo "";# leave if statement and continue.
+  fi
+
+
+
+  echo ""
 fi
 
 if [ "$menu" == "4" ]; then
