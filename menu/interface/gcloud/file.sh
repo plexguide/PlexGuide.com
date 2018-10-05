@@ -139,6 +139,7 @@ if [ "$menu" == "4" ]; then
 
   break=off
   while [ "$break" == "off" ]; do
+    echo ""
     echo "--------------------------------------------------"
     echo "SYSTEM MESSAGE: Key Creation Number Selection"
     echo "--------------------------------------------------"
@@ -150,7 +151,6 @@ if [ "$menu" == "4" ]; then
     echo "5 - Create 30 Keys: Daily Limit - 22.5 TB"
     echo "6 - Create 50 Keys: Daily Limit - 37.5 TB"
     read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
-
     typed=typed+0
     if [ "$typed" -ge 1 -a "$typed" -le 6 ]; then
       break=on
@@ -158,6 +158,9 @@ if [ "$menu" == "4" ]; then
       break=off
     fi
   done
+
+  echo ""
+  echo "User Selected #$typed"
 
 fi
 
