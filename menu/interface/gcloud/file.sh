@@ -75,17 +75,15 @@ if [ "$menu" == "3" ]; then
       echo "----------------------------------------------"
       echo ""
       echo "Set Project is: $list"
+      gcloud config set project $typed
+      echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     fi
   done
 
   echo $typed > /var/plexguide/project.final
-  echo ""
-  gcloud config set project $typed
   echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   exit
-
-  echo ""
 fi
 
 if [ "$menu" == "4" ]; then
