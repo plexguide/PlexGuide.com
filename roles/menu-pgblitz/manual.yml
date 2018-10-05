@@ -74,8 +74,8 @@
       shell: "echo rclone > /var/plexguide/manual.menu"
       when: fchoice == "2"
 
-    - name: JSONS
-      shell: "echo jsons > /var/plexguide/manual.menu"
+    - name: Keys
+      shell: "echo keys > /var/plexguide/manual.menu"
       when: fchoice == "3"
 
     - name: EMail
