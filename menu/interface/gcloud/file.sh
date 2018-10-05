@@ -199,6 +199,8 @@ elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set t
   fi
   done
 
+echo $keys > /var/plexguide/project.keycount
+
 fi
 
 if [ "$menu" == "5" ]; then
