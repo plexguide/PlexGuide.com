@@ -25,9 +25,9 @@ if [ "$menu" == "3" ]; then
   echo ""
   gcloud projects list
   echo ""
-  echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: Set GCloud Project Interface"
-  echo "---------------------------------------------------"
+  echo "------------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: GCloud Project Interface"
+  echo "------------------------------------------------------------------------------"
   echo ""
   echo "NOTE: If no project is listed, please visit https://project.plexguide.com and"
   echo "      review the wiki on how to build a project! Without one, this will fail!"
