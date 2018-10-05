@@ -179,6 +179,7 @@ elif [ "$typed" == "5" ]; then echo "Creating 30 Keys - Daily Upload Limit Set t
 elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set to 37.5TB" && keys=50;
   fi
   sleep 2
+  echo ""
 
   num=$keys
   count=0
