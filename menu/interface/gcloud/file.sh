@@ -169,6 +169,7 @@ if [ "$menu" == "4" ]; then
   done
 
   echo ""
+  echo "NOTE: Please Wait"
   if [ "$typed" == "1" ]; then echo "Created 2 Keys - Daily Upload Limit Set to 1.5TB";
 elif [ "$typed" == "2" ]; then echo "Created 5 Keys - Daily Upload Limit Set to 3.7TB";
 elif [ "$typed" == "3" ]; then echo "Created 10 Keys - Daily Upload Limit Set to 7.5TB";
@@ -176,6 +177,7 @@ elif [ "$typed" == "4" ]; then echo "Created 20 Keys - Daily Upload Limit Set to
 elif [ "$typed" == "5" ]; then echo "Created 30 Keys - Daily Upload Limit Set to 22.5TB";
 elif [ "$typed" == "6" ]; then echo "Created 50 Keys - Daily Upload Limit Set to 37.5TB";
   fi
+sleep 2
 
 fi
 
