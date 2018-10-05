@@ -103,32 +103,34 @@ if [ "$menu" == "email" ]; then
 
 fi
 
-if [ "$menu" == "process" ]; then
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
-
-### prior interger expected incase debugging required
-  gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
-  if [ "$gdsa" -ne "0" ]; then
-    if [ "$encryption" == "on" ]; then
-      dialog --title "SET ENCRYPTION PASSWORD" \
-            --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
-      dialog --title "SET ENCRYPTION SALT" \
-            --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
-    fi
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
-  else
+  ################### OLD
+  if [ "$menu" == "process" ]; then
+    if [ $unencrypted == "off" ]; then
     echo ""
-    echo "WARNING! No JSON files are detected for processing!"
+    echo "WARNING - GDrive and/or TDrive is Not Configured!"
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    echo ""
-  fi
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    exit
+    fi
+
+  ### prior interger expected incase debugging required
+    gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
+    if [ "$gdsa" -ne "0" ]; then
+      if [ "$encryption" == "on" ]; then
+        dialog --title "SET ENCRYPTION PASSWORD" \
+              --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
+        dialog --title "SET ENCRYPTION SALT" \
+              --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
+      fi
+      bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
+    else
+      echo ""
+      echo "WARNING! No JSON files are detected for processing!"
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+      echo ""
+    fi
+  ################### OLD
+
 
 fi
 
