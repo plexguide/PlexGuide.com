@@ -17,6 +17,8 @@
 #################################################################################
 echo 7 > /var/plexguide/menu.number
 
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+
 file="/var/plexguide/project.final"
   if [ -e "$file" ]; then
     echo "" 1>/dev/null 2>&1

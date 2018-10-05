@@ -20,11 +20,15 @@
   shell: "cat /var/plexguide/project.final"
   register: project
 
+- name: Register Project
+  shell: "cat /var/plexguide/project.final"
+  register: acccount
+
 - name: "Key Menu Facts"
   set_fact:
     head1: "\nPlexGuide Settings Interface - Make a Selection"
     head2: ""
-    info2: "\n2.  Log-In to Your Account:"
+    info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
     info3: "\n3.  Establish Project ID  : {{project.stdout}}"
     info4: "\n4.  Kernal Modes   : Enhance Network Throughput"
     info5: "\n5.  WatchTower     : Auto-Update Application Manager"
