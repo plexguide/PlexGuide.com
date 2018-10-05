@@ -27,18 +27,22 @@
       shell: "cat /var/plexguide/pgblitz.menustat"
       register: tedition
 
+    - name: Register Project
+      shell: "cat /var/plexguide/project.keycount"
+      register: count
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
                  \nMake a Selection!
     \n\n1.  EXIT Interface
-    \n---------------------------------------------
-    \n2.  RClone   | Config & Establish
-    \n3.  JSONs    | Upload for PGBlitz
-    \n4.  E-Mails  | E-Mail Share Generator
-    \n5.  Process  | JSONs files for Validation
-    \n6.  Deploy   | Deploy PGBlitz & PGDrive
-    \n---------------------------------------------
+    \n------------------------------------------------
+    \n2.  RClone         | Config & Establish
+    \n3.  Key Management | {{count.stdout}} Keys Exist
+    \n4.  E-Mails        | E-Mail Share Generator
+    \n5.  Process        | JSONs files for Validation
+    \n6.  Deploy         | Deploy PGBlitz & PGDrive
+    \n------------------------------------------------
     \na.  DL Path  | Current - {{mountpoint.stdout}}
     \nb.  T-Shoot  | Reprocess Bad JSONs
     \nc.  T-Shoot  | Baseline PGBlitz (Fresh Start)
