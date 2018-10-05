@@ -17,7 +17,7 @@
 # PLEASE NOTE: The authors of this script will offer no support,
 #              If it has been modified!!
 #################################################################################
-#  _____   _____ ____  _ _ _              ___   __ 
+#  _____   _____ ____  _ _ _              ___   __
 # |  __ \ / ____|  _ \| (_) |            |__ \ /_ |
 # | |__) | |  __| |_) | |_| |_ ____ __   __ ) | | |
 # |  ___/| | |_ |  _ <| | | __|_  / \ \ / // /  | |
@@ -59,11 +59,8 @@ log "Cleaned up - Sleeping 10 secs"
 sleep 10
 
 #### Generates the GDSA List from the Processed Keys
-if [ -e /opt/appdata/pgblitz/vars/automated ]; then
-    GDSAARRAY=(`ls -la $path/automation | awk '{print $9}' | egrep '(PG|GD|GS)'`)
-else
-    GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep GDSA`)
-fi
+
+GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep gdsa`)
 GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 
 # Check to see if we have any keys
