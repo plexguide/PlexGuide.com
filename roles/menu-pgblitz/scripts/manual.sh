@@ -80,10 +80,11 @@ if [ "$menu" == "jsons" ]; then
 
       echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       #### Deploy CloudBlitz
-      ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
+      echo "cloudblitz" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
       #### Note How to Create Json files
       echo ""
-      echo "Visit Port 7997 and Upload your JSON files | User: plex & Paswword: guide"
+      echo "1. Visit Port 7997 and Upload your JSON files"
+      echo "2. Username: plex | Password: guide"
       echo "NOTE: Keys Store @ for Processing: /opt/appdata/pgblitz/keys/unprocessed/"
       echo ""
       read -n 1 -s -r -p "When Finished, Press [ANY KEY] to Continue!"
@@ -179,13 +180,13 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
 
-  ansible-playbook /opt/plexguide/pg.yml --tags blitzui
+  echo "blitzui" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
   echo ""
   echo "The PG Blitz TEAM"
   echo "--------------------------------------------------------------------------"
-  echo "PG Blitz: Admin9705   | Blitz Automations: Teresa (visit: http://wckd.app)"
-  echo "Inspired: FlickerRate | Blitz UI: Physk (visit: https://github.com/physk)"
-  echo "Contributers: Bryde"
+  echo "PG Blitz: Admin9705"
+  echo "Blitz UI: Physk (visit: https://github.com/physk)"
+  echo "Contributers: FlickerRate & Bryde"
   echo "--------------------------------------------------------------------------"
   echo ""
   echo "NOTE: BlitzUI deployed to blitzui.domain.com | domain.com:43242 | ipv4:43242"
