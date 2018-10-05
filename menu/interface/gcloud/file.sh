@@ -19,6 +19,7 @@ menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
   gcloud auth login
+  echo "[NOT SET]" > /var/plexguide/project.final
 fi
 
 if [ "$menu" == "3" ]; then
