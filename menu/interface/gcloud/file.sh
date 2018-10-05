@@ -122,7 +122,7 @@ if [ "$menu" == "4" ]; then
   while read p; do
     gcloud iam service-accounts delete $p --quiet
     done </var/plexguide/gdsa.cut
-
+    rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
     echo ""
     echo "------------------------------------------------"
     echo "SYSTEM MESSAGE: Prior Service Accounts Deleted!"
@@ -179,7 +179,10 @@ elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set t
   fi
 sleep 2
 
+num=$keys
+project=$(cat /var/plexguide/project.final)
 
+gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/ --iam-account gdsa$num@$project.iam.gserviceaccount.com --key-file-type="json"
 
 fi
 
