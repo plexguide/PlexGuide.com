@@ -151,7 +151,7 @@ if [ "$menu" == "4" ]; then
     echo "5 - Create 30 Keys: Daily Limit - 22.5 TB"
     echo "6 - Create 50 Keys: Daily Limit - 37.5 TB"
     read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
-    typed=typed+0
+    #typed=typed+0
     if [ "$typed" -ge 1 -a "$typed" -le 6 ]; then
       break=on
     else
