@@ -25,9 +25,11 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
+      echo "Installing PG Cleaner Essentials" > /var/plexguide/message.phase
+      bash /opt/plexguide/roles/install/scripts/message.sh
       export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
       echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-      curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add 
+      curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
       sudo apt-get update && sudo apt-get install google-cloud-sdk
   fi
 ######################################################## END: Main Script
