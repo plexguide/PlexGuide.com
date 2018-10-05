@@ -32,7 +32,7 @@ if [ "$menu" == "3" ]; then
   echo "NOTE: If no project is listed, please visit https://project.plexguide.com and"
   echo "      review the wiki on how to build a project! Without one, this will fail!"
   echo ""
-  read -p "Set the Project ID (y/n)? " -n 1 -r
+  read -p "Set or Change the Project ID (y/n)? " -n 1 -r
   echo    # move cursor to a new line
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
