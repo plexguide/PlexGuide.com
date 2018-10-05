@@ -21,8 +21,8 @@
   register: project
 
 - name: Register Project
-  shell: "cat /var/plexguide/project.final"
-  register: acccount
+  shell: "cat /var/plexguide/project.account"
+  register: account
 
 - name: "Key Menu Facts"
   set_fact:
