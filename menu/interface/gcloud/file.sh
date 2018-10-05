@@ -152,6 +152,7 @@ if [ "$menu" == "4" ]; then
     echo "6 - Create 50 Keys: Daily Limit - 37.5 TB"
     echo ""
     echo "NOTE: # of Keys Generated Sets Your Daily Upload Limit!"
+    echo ""
     read -p 'Type a Number from 1 - 6 & Press [ENTER]: ' typed
     #typed=typed+0
     if [ "$typed" -ge 1 -a "$typed" -le 6 ]; then
