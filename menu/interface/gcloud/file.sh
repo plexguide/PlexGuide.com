@@ -63,6 +63,22 @@ if [ "$menu" == "3" ]; then
     list=$(cat /var/plexguide/project.cut | grep $typed)
     echo ""
 
+    if [ "$typed" != "$list" ]; then
+      echo ""
+      echo "---------------------------------------------------"
+      echo "SYSTEM MESSAGE: Failed! Please type the exact name!"
+      echo "---------------------------------------------------"
+      echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    else
+      echo ""
+      echo "----------------------------------------------"
+      echo "SYSTEM MESSAGE: Passed the Validation Checks!"
+      echo "----------------------------------------------"
+      echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    fi
+
   done
 
   echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
