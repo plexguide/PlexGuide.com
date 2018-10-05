@@ -23,7 +23,7 @@ fi
 
 if [ "$menu" == "3" ]; then
   echo ""
-  gcloud projects list
+  gcloud projects list && gcloud projects list > /var/plexguide/projects.list
   echo ""
   echo "------------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: GCloud Project Interface"
@@ -47,31 +47,23 @@ if [ "$menu" == "3" ]; then
   else
       echo "";# leave if statement and continue.
   fi
-  echo "";
-  echo "";
-  echo "This script is about to *UPDATE* AND *UPGRADE* your OS. It is highly "
-  echo "  recommended that you deploy this on a new server, and not an existing"
-  echo "  one you may already be using. Running upgrades on an existing"
-  echo "  in-production server may break your environment and pre-existing setup"
-  echo "  of software, programs, scripts, applications, etc."
-  echo "";
-  echo "";
-  # read: safe shell input check. non-negated answer continues, else aborts.
-  read -p "Would you like to proceed updating and upgrading your OS and ALL packages? " -n 1 -r
-  echo    # move cursor to a new line
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
-      echo "";
-      echo "";
-      echo "ABORTING per user request.";
-      echo "";
-      echo "";
-      exit 1;
-  else
-      echo "";# leave if statement and continue.
-  fi
 
+  typed=nullstart
+  while [ "$typed" != "$list" ]; do
+    echo "------------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: Project Selection Interface"
+    echo "------------------------------------------------------------------------------"
+    echo ""
+    cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+    echo ""
+    echo "NOTE: Type the Name of the Project you want to utilize!"
+    echo ""
+    program=$(cat /tmp/program_selection)
+    running=plexguide
+  done
 
+  echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  exit
 
   echo ""
 fi
