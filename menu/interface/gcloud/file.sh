@@ -115,12 +115,28 @@ if [ "$menu" == "4" ]; then
       echo "";# leave if statement and continue.
   fi
 
-  echo "Deleting All Previous Keys!"
+  choicedel=$(cat /var/plexguide/gdsa.cut)
+  if [ "$choicedel" != "" ]; then
+    echo "Deleting All Previous Keys!"
+    echo ""
   while read p; do
-  gcloud iam service-accounts delete $p --quiet
-done </var/plexguide/gdsa.cut
+    gcloud iam service-accounts delete $p --quiet
+    done </var/plexguide/gdsa.cut
 
+    echo ""
+    echo "------------------------------------------------"
+    echo "SYSTEM MESSAGE: Prior Service Accounts Deleted!"
+    echo "------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  else
+    echo "--------------------------------------------------"
+    echo "SYSTEM MESSAGE: No Prior Service Keys! Continuing!"
+    echo "--------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
+
 
 if [ "$menu" == "5" ]; then
   bash /opt/plexguide/roles/watchtower/menus/main.sh
