@@ -22,7 +22,7 @@ pg_gcloud_stored=$( cat /var/plexguide/pg.gcloud.stored )
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_cloud" == "$pg_cloud_stored" ]; then
+if [ "$pg_gcloud" == "$pg_gcloud_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing GCloud Interface" > /var/plexguide/message.phase
