@@ -35,7 +35,7 @@ echo "1" > /var/plexguide/pg.motd
 echo "53" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
-echo "2" > /var/plexguide/pg.gcloud
+echo "3" > /var/plexguide/pg.gcloud
 # Declare Variables Vital for Operations
 bash /opt/plexguide/roles/install/scripts/declare.sh
 ######################################################## END: Key Variables

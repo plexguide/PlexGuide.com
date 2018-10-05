@@ -27,6 +27,7 @@ if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
     else
       echo "Installing GCloud Interface" > /var/plexguide/message.phase
       bash /opt/plexguide/roles/install/scripts/message.sh
+      echo ""
       export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
       echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
