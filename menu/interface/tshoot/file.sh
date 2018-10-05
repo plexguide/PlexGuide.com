@@ -33,6 +33,7 @@ if [ "$menu" == "3" ]; then
   echo "0" > /var/plexguide/pg.ansible.stored
   echo "0" > /var/plexguide/pg.rclone.stored
   echo "0" > /var/plexguide/pg.python.stored
+  echo "0" > /var/plexguide/pg.docker.stored
   echo "0" > /var/plexguide/pg.docstart.stored
   echo "0" > /var/plexguide/pg.watchtower.stored
   echo "0" > /var/plexguide/pg.label.stored
