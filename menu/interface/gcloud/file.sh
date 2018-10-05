@@ -177,12 +177,17 @@ elif [ "$typed" == "4" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 elif [ "$typed" == "5" ]; then echo "Creating 30 Keys - Daily Upload Limit Set to 22.5TB" && keys=30;
 elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set to 37.5TB" && keys=50;
   fi
-sleep 2
+  sleep 2
 
-num=$keys
-project=$(cat /var/plexguide/project.final)
+  num=$keys
+  count=0
+  project=$(cat /var/plexguide/project.final)
 
-gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/GDSA$num --iam-account gdsa$num@$project.iam.gserviceaccount.com --key-file-type="json"
+  while [ "$count" != "$keys" ]; do
+  ((count++))
+  gcloud iam service-accounts create gdsa$count --display-name “gdsa$count”
+  gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa$count --iam-account gdsa$count@$project.iam.gserviceaccount.com --key-file-type="json"
+  done
 
 fi
 
