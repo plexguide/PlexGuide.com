@@ -169,3 +169,11 @@ file="/var/plexguide/multi.unionfs"
   else
     touch /var/plexguide/multi.unionfs
   fi
+
+### For PGBlitz - Ensure Not Deployed Start
+  file="/var/plexguide/project.deployed"
+    if [ -e "$file" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      echo "no" > /var/plexguide/project.deployed
+    fi

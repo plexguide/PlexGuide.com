@@ -200,17 +200,6 @@ elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set t
   done
 
 echo $keys > /var/plexguide/project.keycount
+echo "no" > /var/plexguide/project.deployed
 
-fi
-
-if [ "$menu" == "5" ]; then
-  bash /opt/plexguide/roles/watchtower/menus/main.sh
-fi
-
-if [ "$menu" == "6" ]; then
-  bash /opt/plexguide/menus/migrate/main.sh
-fi
-
-if [ "$menu" == "7" ]; then
-  dpkg-reconfigure tzdata
 fi
