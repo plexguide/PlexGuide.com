@@ -80,7 +80,7 @@ if [ "$menu" == "jsons" ]; then
 
       echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       #### Deploy CloudBlitz
-      echo "cloudblitz" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+      echo "cloudblitz" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml
       #### Note How to Create Json files
       echo ""
       echo "1. Visit Port 7997 and Upload your JSON files"
@@ -180,7 +180,7 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
 
-  echo "blitzui" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo "blitzui" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml
   echo ""
   echo "The PG Blitz TEAM"
   echo "--------------------------------------------------------------------------"
