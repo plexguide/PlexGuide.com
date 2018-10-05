@@ -117,7 +117,7 @@ if [ "$menu" == "4" ]; then
 
   echo "Deleting All Previous Keys!"
   while read p; do
-  gcloud iam service-accounts delete $p --quiet”
+  gcloud iam service-accounts delete $p --quiet
 done </var/plexguide/gdsa.cut
 
 fi
