@@ -87,7 +87,38 @@ if [ "$menu" == "3" ]; then
 fi
 
 if [ "$menu" == "4" ]; then
-  bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+  echo ""
+  echo "------------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: PlexGuide Service Account Key Generator"
+  echo "------------------------------------------------------------------------------"
+  echo ""
+  gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+  cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+  echo ""
+  echo "NOTE: Keys listed above are the ones in current use! Proceeding onward will"
+  echo "      delete the current keys and will generate new ones!"
+  echo ""
+  read -p "Build New Google Service Account Keys? (y/n)? " -n 1 -r
+  echo    # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo "";
+      exit 1;
+  else
+      echo "";# leave if statement and continue.
+  fi
+
+  echo "Deleting All Previous Keys!"
+  while read p; do
+  gcloud iam service-accounts $p --quiet”
+done </var/plexguide/gdsa.cut
+
 fi
 
 if [ "$menu" == "5" ]; then
