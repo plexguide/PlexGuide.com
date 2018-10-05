@@ -187,11 +187,12 @@ elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set t
   ((count++))
 
   if [ "$count" -ge 1 -a "$count" -le 9 ]; then
-  gcloud iam service-accounts create gdsa0$count --display-name “gdsa0$count”
-  gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa0$count --iam-account gdsa0$count@$project.iam.gserviceaccount.com --key-file-type="json"
+    gcloud iam service-accounts create gdsa0$count --display-name “gdsa0$count”
+    gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa0$count --iam-account gdsa0$count@$project.iam.gserviceaccount.com --key-file-type="json"
   else
     gcloud iam service-accounts create gdsa$count --display-name “gdsa$count”
     gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa$count --iam-account gdsa$count@$project.iam.gserviceaccount.com --key-file-type="json"
+  fi
   done
 
 fi
