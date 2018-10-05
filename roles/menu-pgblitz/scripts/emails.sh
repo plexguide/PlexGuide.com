@@ -21,7 +21,8 @@ cat $path/* | grep client_email | awk '{print $2}' | sed 's/"//g' | sed 's/,//g'
 echo "Welcome to the PG Blitz - EMail Share Generator"
 echo ""
 echo "In GDRIVE, share the teamdrive with the following emails:"
-echo "NOTE: Only for unprocessed files"
+echo "NOTE: Make sure you SHARE with the CORRECT TEAM DRIVE!"
+echo 
 cat /tmp/pgblitz.emails.list
 
 echo "INFO - PGBlitz: Displayed to User the E-Mails" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
