@@ -170,14 +170,16 @@ if [ "$menu" == "4" ]; then
 
   echo ""
   echo "NOTE: Please Wait"
-  if [ "$typed" == "1" ]; then echo "Created 2 Keys - Daily Upload Limit Set to 1.5TB";
-elif [ "$typed" == "2" ]; then echo "Created 5 Keys - Daily Upload Limit Set to 3.7TB";
-elif [ "$typed" == "3" ]; then echo "Created 10 Keys - Daily Upload Limit Set to 7.5TB";
-elif [ "$typed" == "4" ]; then echo "Created 20 Keys - Daily Upload Limit Set to 15TB";
-elif [ "$typed" == "5" ]; then echo "Created 30 Keys - Daily Upload Limit Set to 22.5TB";
-elif [ "$typed" == "6" ]; then echo "Created 50 Keys - Daily Upload Limit Set to 37.5TB";
+  if [ "$typed" == "1" ]; then echo "Creating 2 Keys - Daily Upload Limit Set to 1.5TB" && keys=2;
+elif [ "$typed" == "2" ]; then echo "Creating 5 Keys - Daily Upload Limit Set to 3.7TB" && keys=5;
+elif [ "$typed" == "3" ]; then echo "Creating 10 Keys - Daily Upload Limit Set to 7.5TB" && keys=10;
+elif [ "$typed" == "4" ]; then echo "Creating 20 Keys - Daily Upload Limit Set to 15TB" && keys=20;
+elif [ "$typed" == "5" ]; then echo "Creating 30 Keys - Daily Upload Limit Set to 22.5TB" && keys=30;
+elif [ "$typed" == "6" ]; then echo "Creating 50 Keys - Daily Upload Limit Set to 37.5TB" && keys=50;
   fi
 sleep 2
+
+
 
 fi
 
