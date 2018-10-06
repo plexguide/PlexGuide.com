@@ -17,7 +17,7 @@
 # PLEASE NOTE: The authors of this script will offer no support,
 #              If it has been modified!!
 #################################################################################
-#  _____   _____ ____  _ _ _              ___   __ 
+#  _____   _____ ____  _ _ _              ___   __
 # |  __ \ / ____|  _ \| (_) |            |__ \ /_ |
 # | |__) | |  __| |_) | |_| |_ ____ __   __ ) | | |
 # |  ___/| | |_ |  _ <| | | __|_  / \ \ / // /  | |
@@ -76,6 +76,9 @@ else
     REMOTE=$GDSA
 fi
 
+echo $REMOTE > /tmp/remote.file
+echo $GDSA > /tmp/gdsa.file
+
 log "[Upload] Uploading $FILE to $REMOTE"
 LOGFILE=/opt/appdata/pgblitz/logs/$FILEBASE.log
 
@@ -86,6 +89,12 @@ chmod 777 $LOGFILE
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 log "[Upload] Starting Upload"
+
+echo $REMOTE > /tmp/remote.file
+echo $GDSA > /tmp/gdsa.file
+echo $FILEDIR > /tmp/gdsa.filedir
+echo $JSONFILE > /tmp/gdsa.jsonfile
+
 rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \

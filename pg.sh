@@ -35,6 +35,7 @@ echo "1" > /var/plexguide/pg.motd
 echo "53" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
+echo "3" > /var/plexguide/pg.gcloud
 # Declare Variables Vital for Operations
 bash /opt/plexguide/roles/install/scripts/declare.sh
 ######################################################## END: Key Variables
@@ -133,6 +134,11 @@ bash /opt/plexguide/roles/install/scripts/cleaner.sh
 ######################################################## END: Cleaner
 #
 #
+######################################################## START: G-Console
+bash /opt/plexguide/roles/install/scripts/gcloud.sh
+######################################################## END: G-Console
+#
+#
 ######################################################## START: Python
 bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null & ### Maybe Good?
 ######################################################## END: Python
@@ -163,3 +169,11 @@ file="/var/plexguide/multi.unionfs"
   else
     touch /var/plexguide/multi.unionfs
   fi
+
+### For PGBlitz - Ensure Not Deployed Start
+  file="/var/plexguide/project.deployed"
+    if [ -e "$file" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      echo "no" > /var/plexguide/project.deployed
+    fi

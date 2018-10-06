@@ -81,9 +81,9 @@ done
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  rm -r /etc/docker 1>/dev/null 2>&1
-  apt-get purge docker-ce -y 1>/dev/null 2>&1
-  rm -rf /var/lib/docker 1>/dev/null 2>&1
+  rm -r /etc/docker
+  apt-get purge docker-ce -y
+  rm -rf /var/lib/docker
 
   while true; do
       read -p "Pay Attention! Do you want to DELETE /opt/appdata (y or n)? " yn
