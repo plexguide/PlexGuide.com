@@ -89,6 +89,12 @@ chmod 777 $LOGFILE
 #update json file for PGBlitz GUI
 echo "{\"filedir\": \"$FILEDIR\",\"filebase\": \"$FILEBASE\",\"filesize\": \"$HRFILESIZE\",\"status\": \"uploading\",\"logfile\": \"/logs/$FILEBASE.log\",\"gdsa\": \"$GDSA\"}" > $JSONFILE
 log "[Upload] Starting Upload"
+
+echo $REMOTE > /tmp/remote.file
+echo $GDSA > /tmp/gdsa.file
+echo $FILEDIR > /tmp/gdsa.filedir
+echo $JSONFILE > /tmp/gdsa.jsonfile
+
 rclone moveto --tpslimit 6 --checkers=20 \
       --config /root/.config/rclone/rclone.conf \
       --transfers=8 \
