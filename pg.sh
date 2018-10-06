@@ -177,3 +177,10 @@ file="/var/plexguide/multi.unionfs"
     else
       echo "no" > /var/plexguide/project.deployed
     fi
+
+  file="/var/plexguide/project.keycount"
+    if [ -e "$file" ]; then
+      echo "" 1>/dev/null 2>&1
+    else
+      echo "0" > /var/plexguide/project.keycount
+    fi
