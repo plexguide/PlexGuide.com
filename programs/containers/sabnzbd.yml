@@ -48,4 +48,4 @@
     default_env:
       PUID: 1000
       PGID: 1000
-      LC_ALL: "C"
+   
