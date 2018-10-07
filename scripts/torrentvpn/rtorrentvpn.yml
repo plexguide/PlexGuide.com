@@ -7,11 +7,6 @@ services:
 #   network_mode: "bridge"
    cap_add:
      - NET_ADMIN
-   ports:
-     - 9080:9080
-     - 9443:9443
-     - 8118:8118
-     - 3000:3000
    volumes:
      - /opt/appdata/vpn/rtorrent/config:/config
      - /mnt/torrentvpn/temp:/data/incomplete
