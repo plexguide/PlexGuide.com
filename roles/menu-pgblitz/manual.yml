@@ -32,7 +32,7 @@
       register: count
 
     - name: Deployed Check
-      shell: "/var/plexguide/project.deployed"
+      shell: "cat /var/plexguide/project.deployed"
       register: deployed
 
     - name: "Not Deployed"
