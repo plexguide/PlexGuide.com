@@ -43,7 +43,7 @@
     - name: "Deployed"
       set_fact:
         dstatus: ""
-      when: not deployed.stdout == ""
+      when: not deployed.stdout == "no"
 
     - name: PG Main Menu
       pause:
