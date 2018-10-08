@@ -145,7 +145,7 @@ if [ "$menu" == "deploy" ]; then
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
   fi
-
+  echo ""
   echo "--------------------------------------------------------------------------"
   echo "System Message: Conducting RClone Validation Check"
   echo "--------------------------------------------------------------------------"
