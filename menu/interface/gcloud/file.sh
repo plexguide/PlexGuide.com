@@ -186,6 +186,7 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
   project=$(cat /var/plexguide/project.final)
 
   ##wipe previous keys stuck there
+  mkdir -p /opt/appdata/pgblitz/keys/processed/
   rm -r /opt/appdata/pgblitz/keys/processed/*
 
   ## purpose of the rewrite is to save gdrive and tdrive info and toss old GDSAs
