@@ -206,4 +206,9 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 echo $keys > /var/plexguide/project.keycount
 echo "no" > /var/plexguide/project.deployed
 
+echo "------------------------------------------------------------------"
+echo "REMINDER: Ensure to Share the E-Mail Addresses to Your TeamDrives!"
+echo "------------------------------------------------------------------"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
