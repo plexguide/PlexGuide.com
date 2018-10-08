@@ -149,18 +149,19 @@ if [ "$menu" == "deploy" ]; then
   echo "--------------------------------------------------------------------------"
   echo "System Message: Conducting RClone Validation Check"
   echo "--------------------------------------------------------------------------"
+  sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: Creating Test Directory - gdsa01:/plexguide "
   echo "--------------------------------------------------------------------------"
   rclone mkdir gdsa01:/plexguide
-  sleep 1
+  sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existance of gdsa01:/plexguide"
   echo "--------------------------------------------------------------------------"
   rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
-  sleep 1
+  sleep 2
   if [ "$rcheck" != "plexguide" ];then
     echo "--------------------------------------------------------------------------"
     echo "SYSTEM MESSAGE: RClone Validation Check Failed"
