@@ -26,11 +26,16 @@
     \n\n1.  Exit the Transport System
     \n2.  PG Move   | Unencrypted & Encrypted | 750 GB Daily Upload Cap | Simple
     \n3.  PG Blitz  | Unencrypted             | 15  TB Daily Upload Cap | Complex
+    \n
+    \n----[Below] --- Only For Reading Google & Team Drives ---------------------
+    \n
+    \n4.  PGDrives  | Unencrypted             | For Both Google & Team Drives
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
-             choice.user_input == "3"
+             choice.user_input == "3" or
+             choice.user_input == "4"
       retries: 99
       delay: 1
 
@@ -42,10 +47,14 @@
       shell: "echo break > /var/plexguide/transport.menu"
       when: fchoice == "1"
 
-    - name: Blitz Manaul
-      shell: "echo blitzmanual > /var/plexguide/transport.menu"
-      when: fchoice == "3"
-
     - name: PG Move
       shell: "echo move > /var/plexguide/transport.menu"
       when: fchoice == "2"
+
+    - name: Blitz
+      shell: "echo blitzmanual > /var/plexguide/transport.menu"
+      when: fchoice == "3"
+
+    - name: PG Drives / Blitz
+      shell: "echo pgdrives > /var/plexguide/transport.menu"
+      when: fchoice == "4"
