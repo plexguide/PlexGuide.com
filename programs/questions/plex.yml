@@ -18,12 +18,10 @@
 ---
 - pause:
     prompt: "\nWelcome to the PG PLEX Installer!
-
              \n\n1 - Plex Install (Remote Server)
              \n2 - Plex Install (Local Server)
-             \n3 - Exit Plex Installer
-             \
-             n\nType a Number Selection and Press [ENTER]"
+             \n3 - Exit Plex Installer     
+             \n\nType a Number Selection and Press [ENTER]"
   register: selection
   until: selection.user_input > "0" and selection.user_input < "4"
   retries: 99
