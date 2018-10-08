@@ -180,6 +180,7 @@ if [ "$menu" == "deploy" ]; then
   echo "SYSTEM MESSAGE: RCLONE Validation Check Passed"
   echo "--------------------------------------------------------------------------"
   echo ""
+  sleep 2
 
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
