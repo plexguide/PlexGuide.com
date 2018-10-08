@@ -207,7 +207,7 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
   rand=$(echo $((1 + RANDOM * RANDOM)))
 
   if [ "$count" -ge 1 -a "$count" -le 9 ]; then
-    gcloud iam service-accounts create gdsa0$count --display-name “gdsa0$count”
+    gcloud iam service-accounts create gdsa$rand --display-name “gdsa0$count”
     gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa0$count --iam-account gdsa$rand@$project.iam.gserviceaccount.com --key-file-type="json"
     echo "gdsa0$count" > /var/plexguide/json.tempbuild
     bash /opt/plexguide/roles/menu-pgblitz/scripts/gdsa.sh
