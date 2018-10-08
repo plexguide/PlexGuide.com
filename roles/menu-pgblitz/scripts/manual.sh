@@ -163,6 +163,7 @@ if [ "$menu" == "deploy" ]; then
   rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
   sleep 2
   if [ "$rcheck" != "plexguide" ];then
+    echo ""
     echo "--------------------------------------------------------------------------"
     echo "SYSTEM MESSAGE: RClone Validation Check Failed"
     echo "--------------------------------------------------------------------------"
