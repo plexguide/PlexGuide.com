@@ -187,7 +187,7 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 
   ##wipe previous keys stuck there
   mkdir -p /opt/appdata/pgblitz/keys/processed/
-  rm -r /opt/appdata/pgblitz/keys/processed/*
+  rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
 
   ## purpose of the rewrite is to save gdrive and tdrive info and toss old GDSAs
   file="/root/.config/rclone/rclone.conf"
