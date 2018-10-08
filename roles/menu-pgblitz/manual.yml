@@ -37,7 +37,7 @@
 
     - name: "Not Deployed"
       set_fact:
-        dstatus: " <<< Not Deployed"
+        dstatus: "<<< Not Deployed"
       when: deployed.stdout == "no"
 
     - name: "Deployed"

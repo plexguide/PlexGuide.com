@@ -165,9 +165,39 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
 
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting Validation Check"
+  echo "--------------------------------------------------------------------------"
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdsa01:/plexguide "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdsa01:/plexguide
+  sleep 1
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdsa01:/plexguide"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
+  sleep 1
+  if [ "$rcheck" != "plexguide" ];then
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: Validation Checks Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "Did you share the email addresses to your CORRECT TeamDrive?"
+    echo "Make your corrections and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    exit
+  fi
+
   echo "blitzui" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
   echo ""
-  echo "The PG Blitz TEAM"
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Validation Checks Passed"
+  echo "--------------------------------------------------------------------------"
+  echo ""
   echo "--------------------------------------------------------------------------"
   echo "PG Blitz: Admin9705"
   echo "Blitz UI: Physk (visit: https://github.com/physk)"
@@ -177,6 +207,9 @@ if [ "$menu" == "deploy" ]; then
   echo "NOTE: BlitzUI deployed to blitzui.domain.com | domain.com:43242 | ipv4:43242"
   echo ""
   read -n 1 -s -r -p "PGBlitz & PGDrives Deployed! Press [ANY KEY] to Continue"
+
+  ### Variable to Noify System PGBlitz Deployed
+  echo yes > /var/plexguide/project.deployed
 fi
 
 if [ "$menu" == "path" ]; then
