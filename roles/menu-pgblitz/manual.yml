@@ -37,7 +37,7 @@
 
     - name: "Not Deployed"
       set_fact:
-        dstatus: "<<< Not Deployed"
+        dstatus: " <<< Not Deployed"
       when: deployed.stdout == "no"
 
     - name: "Deployed"
@@ -50,12 +50,12 @@
         prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
                  \nMake a Selection!
     \n\n1.  EXIT Interface
-    \n------------------------------------------------
+    \n---------------------------------------------
     \n2.  RClone         | Config & Establish
     \n3.  Key Management | {{count.stdout}} Keys Exist
     \n4.  E-Mails        | E-Mail Share Generator
     \n5.  Deploy         | Deploy PGBlitz & PGDrive {{dstatus}}
-    \n------------------------------------------------
+    \n---------------------------------------------
     \na.  DL Path  | Current - {{mountpoint.stdout}}
     \nb.  T-Shoot  | Disable PGBlitz
     \n\nType a [CHOICE] & Press [ENTER]"
