@@ -24,7 +24,7 @@ mkdir -p /var/plexguide
 echo "147" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
-echo "10" > /var/plexguide/pg.rclone
+echo "11" > /var/plexguide/pg.rclone
 echo "11" > /var/plexguide/pg.python
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
