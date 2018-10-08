@@ -43,9 +43,7 @@
     \n5.  Deploy         | Deploy PGBlitz & PGDrive
     \n------------------------------------------------
     \na.  DL Path  | Current - {{mountpoint.stdout}}
-    \nb.  T-Shoot  | Reprocess Bad JSONs
-    \nc.  T-Shoot  | Baseline PGBlitz (Fresh Start)
-    \nd.  T-Shoot  | Disable PGBlitz
+    \nb.  T-Shoot  | Disable PGBlitz
     \n\nType a [CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -88,14 +86,6 @@
       shell: "echo path > /var/plexguide/manual.menu"
       when: fchoice == "a"
 
-    - name: TShoot Bad
-      shell: "echo bad > /var/plexguide/manual.menu"
-      when: fchoice == "b"
-
-    - name: TShoot Baseline
-      shell: "echo baseline > /var/plexguide/manual.menu"
-      when: fchoice == "c"
-
     - name: TShoot Disable
       shell: "echo disable > /var/plexguide/manual.menu"
-      when: fchoice == "d"
+      when: fchoice == "b"

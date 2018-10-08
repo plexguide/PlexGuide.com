@@ -24,8 +24,8 @@
         prompt: "\nWelcome to the PG Transport System (/w PGDrives)!
                  \nSelect a Transport System!
     \n\n1.  Exit the Transport System
-    \n2.  PG Blitz  | Unencrypted             | Complex | Uncapped
-    \n3.  PG Move   | Unencrypted & Encrypted | Simple  | 750GB Daily Cap
+    \n3.  PG Move   | Unencrypted & Encrypted | 750GB      Daily Upload Cap
+    \n2.  PG Blitz  | Unencrypted             | 1.5 - 15TB Daily Upload Cap
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -44,8 +44,8 @@
 
     - name: Blitz Manaul
       shell: "echo blitzmanual > /var/plexguide/transport.menu"
-      when: fchoice == "2"
+      when: fchoice == "3"
 
     - name: PG Move
       shell: "echo move > /var/plexguide/transport.menu"
-      when: fchoice == "3"
+      when: fchoice == "2"
