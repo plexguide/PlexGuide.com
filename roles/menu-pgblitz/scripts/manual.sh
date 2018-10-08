@@ -146,6 +146,39 @@ if [ "$menu" == "deploy" ]; then
   exit
   fi
 
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting RClone Validation Check"
+  echo "--------------------------------------------------------------------------"
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdsa01:/plexguide "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdsa01:/plexguide
+  sleep 1
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdsa01:/plexguide"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
+  sleep 1
+  if [ "$rcheck" != "plexguide" ];then
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: RClone Validation Check Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "Did you share the email addresses to your CORRECT TeamDrive?"
+    echo "Make your corrections and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    exit
+  fi
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: RCLONE Validation Check Passed"
+  echo "--------------------------------------------------------------------------"
+  echo ""
+
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
@@ -165,38 +198,7 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
 
-  echo "--------------------------------------------------------------------------"
-  echo "System Message: Conducting Validation Check"
-  echo "--------------------------------------------------------------------------"
-  echo ""
-  echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Creating Test Directory - gdsa01:/plexguide "
-  echo "--------------------------------------------------------------------------"
-  rclone mkdir gdsa01:/plexguide
-  sleep 1
-  echo ""
-  echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Checking Existance of gdsa01:/plexguide"
-  echo "--------------------------------------------------------------------------"
-  rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
-  sleep 1
-  if [ "$rcheck" != "plexguide" ];then
-    echo "--------------------------------------------------------------------------"
-    echo "SYSTEM MESSAGE: Validation Checks Failed"
-    echo "--------------------------------------------------------------------------"
-    echo ""
-    echo "Did you share the email addresses to your CORRECT TeamDrive?"
-    echo "Make your corrections and redeploy again!"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    exit
-  fi
-
   echo "blitzui" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-  echo ""
-  echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Validation Checks Passed"
-  echo "--------------------------------------------------------------------------"
   echo ""
   echo "--------------------------------------------------------------------------"
   echo "PG Blitz: Admin9705"
