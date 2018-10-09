@@ -55,7 +55,7 @@ while [ "$menu" != "break" ]; do
 
 ################################################################## CORE
 menu=$(cat /var/plexguide/manual.menu)
-ansible-playbook /opt/plexguide/roles/menu-pgblitz/manual.yml
+ansible-playbook /opt/plexguide/roles/menu-pgdrives/manual.yml
 menu=$(cat /var/plexguide/manual.menu)
 
 if [ "$menu" == "rclone" ]; then
@@ -74,7 +74,7 @@ if [ "$menu" == "keys" ]; then
   echo ""
   echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
   exit
   fi
 
@@ -89,12 +89,12 @@ if [ "$menu" == "email" ]; then
   echo ""
   echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
   exit
   fi
 
   echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/emails.sh
   echo ""
   echo ""
   echo "WARNING: Make Sure to Use the E-Mail and Validation Processes!"
@@ -109,7 +109,7 @@ fi
     echo ""
     echo "WARNING - GDrive and/or TDrive is Not Configured!"
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
     exit
     fi
 
@@ -122,7 +122,7 @@ fi
         dialog --title "SET ENCRYPTION SALT" \
               --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
       fi
-      bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
+      bash /opt/plexguide/roles/menu-pgdrives/scripts/validator.sh
     else
       echo ""
       echo "WARNING! No JSON files are detected for processing!"
@@ -139,18 +139,18 @@ if [ "$menu" == "deploy" ]; then
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
   ### Add GDSA Paths for UnionFS
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/ufbuilder.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/ufbuilder.sh
   temp=$( cat /tmp/pg.gdsa.build )
   echo -n "$temp" >> /var/plexguide/unionfs.pgpath
 
   ### Remove All Prior Services
-  ansible-playbook /opt/plexguide/roles/menu-pgblitz/service-remove.yml
+  ansible-playbook /opt/plexguide/roles/menu-pgdrives/service-remove.yml
 
   ### Execute Playbook Based on Version
   if [ "$encryption" != "on" ];then
-    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz --skip-tags encrypted
+    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives --skip-tags encrypted
   else
-    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
+    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives
   fi
 
   echo ""
@@ -174,7 +174,7 @@ if [ "$menu" == "bad" ]; then
   echo ""
   echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
   exit
   fi
 
@@ -183,7 +183,7 @@ if [ "$menu" == "bad" ]; then
   sleep 2
   clear
   mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/ 1>/dev/null 2>&1
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/validator.sh
 fi
 
 if [ "$menu" == "baseline" ]; then
