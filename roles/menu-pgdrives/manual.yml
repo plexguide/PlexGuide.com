@@ -19,18 +19,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: MountPoint
-      shell: "cat /var/plexguide/server.hd.path"
-      register: mountpoint
-
-    - name: Edition
-      shell: "cat /var/plexguide/pgblitz.menustat"
-      register: tedition
-
-    - name: Register Project
-      shell: "cat /var/plexguide/project.keycount"
-      register: count
-
     - name: Deployed Check
       shell: "cat /var/plexguide/project.deployed"
       register: deployed
@@ -57,7 +45,7 @@
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
-             choice.user_input == "3" or
+             choice.user_input == "3"
 
       retries: 99
       delay: 1
