@@ -113,6 +113,38 @@ fi
 
 if [ "$menu" == "deploy" ]; then
 
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting RClone GDrive Validation Check"
+  echo "--------------------------------------------------------------------------"
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdrive:/plexguide
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide | head -n1)
+  sleep 2
+  if [ "$rcheck" != "plexguide" ];then
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "gdrive is mandatory for rclone! It's what controls your backups/restores"
+    echo "Make your corrections and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    exit
+  fi
+  echo ""
+
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1

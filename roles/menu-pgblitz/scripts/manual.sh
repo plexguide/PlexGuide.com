@@ -136,8 +136,6 @@ fi
 
 if [ "$menu" == "deploy" ]; then
 
-  rm -r /opt/appdata/pgblitz/vars/automated 1>/dev/null 2>&1
-
   if [ "$unencrypted" == "off" ]; then
   echo ""
   echo "WARNING - GDrive and/or TDrive is Not Configured!"
