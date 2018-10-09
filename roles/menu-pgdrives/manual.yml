@@ -35,7 +35,7 @@
 
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
+        prompt: "\nWelcome to PG Drives Deployment Interface!
                  \nMake a Selection!
     \n\n1.  EXIT Interface
     \n---------------------------------------------
