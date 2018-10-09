@@ -38,7 +38,6 @@
         prompt: "\nWelcome to PG Drives Deployment Interface!
                  \nMake a Selection!
     \n\n1.  EXIT Interface
-    \n---------------------------------------------
     \n2.  RClone         | Config & Establish
     \n3.  Deploy         | Deploy & PGDrives
     \n\nType a [CHOICE] & Press [ENTER]"
@@ -46,7 +45,6 @@
       until: choice.user_input == "1" or
              choice.user_input == "2" or
              choice.user_input == "3"
-
       retries: 99
       delay: 1
 

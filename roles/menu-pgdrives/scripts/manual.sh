@@ -82,27 +82,6 @@ if [ "$menu" == "keys" ]; then
 
 fi
 
-if [ "$menu" == "email" ]; then
-  echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
-  exit
-  fi
-
-  echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgdrives/scripts/emails.sh
-  echo ""
-  echo ""
-  echo "WARNING: Make Sure to Use the E-Mail and Validation Processes!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  echo ""
-
-fi
-
   ################### OLD
   if [ "$menu" == "process" ]; then
     if [ $unencrypted == "off" ]; then
