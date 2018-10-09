@@ -186,19 +186,6 @@ if [ "$menu" == "bad" ]; then
   bash /opt/plexguide/roles/menu-pgdrives/scripts/validator.sh
 fi
 
-if [ "$menu" == "baseline" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  dialog --infobox "Baselining PGBlitz (Please Wait)" 3 40
-  sleep 2
-  systemctl stop pgblitz 1>/dev/null 2>&1
-  systemctl disable pgblitz 1>/dev/null 2>&1
-  rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
-  dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
-fi
-
 if [ "$menu" == "disable" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   sudo systemctl stop pgblitz 1>/dev/null 2>&1

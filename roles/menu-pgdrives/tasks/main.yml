@@ -23,32 +23,32 @@
 ################################################################ STANDARD START
 - name: Deploy GDrive
   include_role:
-    name: menu-pgblitz
+    name: menu-pgdrives
     tasks_from: "deploy_gdrive.yml"
 
 - name: Deploy TDrive
   include_role:
-    name: menu-pgblitz
+    name: menu-pgdrives
     tasks_from: "deploy_tdrive.yml"
 
 ################################################################ ENCRYPTED START
 - name: Deploy TDrive
   include_role:
-    name: menu-pgblitz
+    name: menu-pgdrives
     tasks_from: "deploy_tdrive_en.yml"
   tags:
     - encrypted
 
 - name: Deploy GCrypt
   include_role:
-    name: menu-pgblitz
+    name: menu-pgdrives
     tasks_from: "deploy_gcrypt.yml"
   tags:
     - encrypted
 
 - name: Deploy TCrypt
   include_role:
-    name: menu-pgblitz
+    name: menu-pgdrives
     tasks_from: "deploy_tcrypt.yml"
   tags:
     - encrypted
@@ -59,10 +59,5 @@
 ################################################################ UNENCRYPTED START
 - name: Deploy UnionFS
   include_role:
-    name: menu-pgblitz
+    name: menu-pgdrives
     tasks_from: "deploy_unionfs.yml"
-
-- name: Deploy PGBlitz
-  include_role:
-    name: menu-pgblitz
-    tasks_from: "deploy_pgblitz.yml"
