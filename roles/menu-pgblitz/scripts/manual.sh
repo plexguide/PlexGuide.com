@@ -153,17 +153,17 @@ if [ "$menu" == "deploy" ]; then
   sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide45 "
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide35 "
   echo "--------------------------------------------------------------------------"
-  rclone mkdir gdrive:/plexguide45
+  rclone mkdir gdrive:/plexguide35
   sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide45"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide35"
   echo "--------------------------------------------------------------------------"
-  rcheck=$(rclone lsd gdrive: | grep -oP plexguide45 | head -n1)
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide35 | head -n1)
   sleep 2
-  if [ "$rcheck" != "plexguide45" ];then
+  if [ "$rcheck" != "plexguide35" ];then
     echo ""
     echo "--------------------------------------------------------------------------"
     echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
@@ -177,7 +177,7 @@ if [ "$menu" == "deploy" ]; then
     exit
   fi
   echo ""
-  rclone rmdir gdrive:/plexdrive45
+  rclone rmdir gdrive:/plexdrive35
   ############################################# GDRIVE VALDIATION CHECKS - END
 
   ############################################# GDSA VALIDATION CHECKS - START
