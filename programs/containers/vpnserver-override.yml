@@ -35,4 +35,3 @@
         aliases:
           - "{{pgrole}}"
     state: started
-    labels: "{{default_labels}}"
