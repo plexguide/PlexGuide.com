@@ -122,13 +122,13 @@ if [ "$menu" == "deploy" ]; then
   echo "--------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide "
   echo "--------------------------------------------------------------------------"
-  rclone mkdir gdrive:/plexguide
+  rclone mkdir gdrive:/plexguide45
   sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide45"
   echo "--------------------------------------------------------------------------"
-  rcheck=$(rclone lsd gdrive: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide45 | head -n1)
   sleep 2
   if [ "$rcheck" != "plexguide" ];then
     echo ""
@@ -136,7 +136,7 @@ if [ "$menu" == "deploy" ]; then
     echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
     echo "--------------------------------------------------------------------------"
     echo ""
-    echo "gdrive is mandatory for rclone! It's what controls your backups/restores"
+    echo "gdrive is mandatory! It's required for backup/restore operations!"
     echo "Make your corrections and redeploy again!"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
@@ -144,6 +144,7 @@ if [ "$menu" == "deploy" ]; then
     exit
   fi
   echo ""
+  rclone rm gdrive:/plexdrive45
 
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
