@@ -24,14 +24,23 @@ if [ "$menu" == "2" ]; then
   echo "SYSTEM MESSAGE: Installing - Please Standby!"
   echo "-----------------------------------------------------"
   echo ""
-  echo "NOTE: First time installs may take 1 - 3 minutes!"
+  echo "NOTE: Installs Take 1 to 3 Minutes!"
+  sleep 2
   echo ""
-  wget https://git.io/vpnsetup -O vpnsetup.sh && sudo sh vpnsetup.sh
+  wget https://git.io/vpnsetup -O vpnsetup.sh 1>/dev/null 2>&1
   echo ""
-  echo "================================================"
-  echo "Configuration: Visit pgvpn.plexguide.com or WIKI"
-  echo "Note: Use command pgvpn to recall the vpn info"
-  echo "================================================"
+  sudo sh vpnsetup.sh > /opt/appdata/plexguide/vpninfo.raw
+  cat /opt/appdata/plexguide/vpninfo.raw | tail -n -12 | head -n +4 > /opt/appdata/plexguide/vpn.info
+  rm -r /opt/appdata/plexguide/vpninfo.raw
+  echo
+  echo "-----------------------------------------------------"
+  echo "SYSTEM MESSAGE: Please Copy Your Information"
+  echo "-----------------------------------------------------"
+  echo ""
+  cat /opt/appdata/plexguide/vpn.info
+  echo ""
+  echo "Config Info: Visit http://pgvpn.plexguide.com or WIKI"
+  echo "Note: pgvpn <<< command to recall your vpn info
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   else
