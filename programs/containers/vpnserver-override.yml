@@ -19,7 +19,7 @@
   docker_container:
     name: "{{pgrole}}"
     image: "{{image}}"
-    env_file: "./vpn.env"
+    env_file: "/opt/appdata/plexguide/vpn.env"
     pull: yes
     cpu_shares: "{{cpu_shares}}"
     published_ports:
