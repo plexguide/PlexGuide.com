@@ -27,7 +27,7 @@
     volumes: "{{default_volumes}}"
     env: "{{default_env}}"
     expose: "{{expose}}"
-    privilege: "yes"
+    privileged: "yes"
     restart_policy: always
     networks:
       - name: plexguide
