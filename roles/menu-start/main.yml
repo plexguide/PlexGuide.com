@@ -114,10 +114,11 @@
                   \n5.  PG Application Guard       [{{output}}]
                   \n6.  Program Suite Installer
                   \n7.  Plex Enhancement Tools
-                  \n8.  System & Network Auditor
-                  \n9.  {{backups}}
-                  \n10. Settings Menu
-                  \n11. TroubleShoot - PreInstaller & UnInstaller
+                  \n8.  VPN Service Installer
+                  \n9.  System & Network Auditor
+                  \n10. {{backups}}
+                  \n11. Settings Menu
+                  \n12. TroubleShoot - PreInstaller & UnInstaller
                   \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -130,7 +131,8 @@
              choice.user_input == "8" or
              choice.user_input == "9" or
              choice.user_input == "10" or
-             choice.user_input == "11"
+             choice.user_input == "11" or
+             choice.user_input == "12"
       retries: 99
       delay: 1
 
@@ -159,18 +161,20 @@
     - shell: "echo programs > /var/plexguide/main.menu"
       when: fchoice == "6"
 
-    - name: Change Server ID
-      shell: "echo plextools > /var/plexguide/main.menu"
+    - shell: "echo plextools > /var/plexguide/main.menu"
       when: fchoice == "7"
 
-    - shell: "echo auditor > /var/plexguide/main.menu"
+    - shell: "echo pgvpn > /var/plexguide/main.menu"
       when: fchoice == "8"
 
-    - shell: "echo backup > /var/plexguide/main.menu"
+    - shell: "echo auditor > /var/plexguide/main.menu"
       when: fchoice == "9"
 
-    - shell: "echo settings > /var/plexguide/main.menu"
+    - shell: "echo backup > /var/plexguide/main.menu"
       when: fchoice == "10"
 
-    - shell: "echo tshoot > /var/plexguide/main.menu"
+    - shell: "echo settings > /var/plexguide/main.menu"
       when: fchoice == "11"
+
+    - shell: "echo tshoot > /var/plexguide/main.menu"
+      when: fchoice == "12"
