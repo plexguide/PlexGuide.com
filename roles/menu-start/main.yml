@@ -161,7 +161,7 @@
     - shell: "echo programs > /var/plexguide/main.menu"
       when: fchoice == "6"
 
-      shell: "echo plextools > /var/plexguide/main.menu"
+    - shell: "echo plextools > /var/plexguide/main.menu"
       when: fchoice == "7"
 
     - shell: "echo pgvpn > /var/plexguide/main.menu"
