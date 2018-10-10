@@ -65,21 +65,6 @@ if [ "$menu" == "rclone" ]; then
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 fi
 
-if [ "$menu" == "keys" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
-  exit
-  fi
-
-  echo gcloud > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-
-fi
-
 if [ "$menu" == "deploy" ]; then
 
   ############################################# GDRIVE VALDIATION CHECKS - START
@@ -90,17 +75,17 @@ if [ "$menu" == "deploy" ]; then
   sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide45 "
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide "
   echo "--------------------------------------------------------------------------"
-  rclone mkdir gdrive:/plexguide45
+  rclone mkdir gdrive:/plexguide
   sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide45"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide"
   echo "--------------------------------------------------------------------------"
-  rcheck=$(rclone lsd gdrive: | grep -oP plexguide45 | head -n1)
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide | head -n1)
   sleep 2
-  if [ "$rcheck" != "plexguide45" ];then
+  if [ "$rcheck" != "plexguide" ];then
     echo ""
     echo "--------------------------------------------------------------------------"
     echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
@@ -114,7 +99,6 @@ if [ "$menu" == "deploy" ]; then
     exit
   fi
   echo ""
-  rclone rmdir gdrive:/plexdrive45
   ############################################# GDRIVE VALDIATION CHECKS - END
 
 
