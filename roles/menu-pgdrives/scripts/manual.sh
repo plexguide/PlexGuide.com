@@ -120,7 +120,7 @@ if [ "$menu" == "deploy" ]; then
   sleep 2
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide "
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide45 "
   echo "--------------------------------------------------------------------------"
   rclone mkdir gdrive:/plexguide45
   sleep 2
