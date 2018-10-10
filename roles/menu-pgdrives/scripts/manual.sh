@@ -113,7 +113,7 @@ if [ "$menu" == "deploy" ]; then
     exit
   fi
   echo ""
-  rclone rm gdrive:/plexdrive45
+  rclone rmdir gdrive:/plexdrive45
 
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
