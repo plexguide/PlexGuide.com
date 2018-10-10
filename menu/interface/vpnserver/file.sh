@@ -24,11 +24,10 @@ if [ "$menu" == "2" ]; then
   echo "SYSTEM MESSAGE: Installing - Please Standby!"
   echo "-----------------------------------------------------"
   echo ""
-  echo "NOTE: Installs Take 1 to 3 Minutes!"
+  echo "NOTE: Install Time: 2 to 4 Minutes!"
   sleep 2
   echo ""
   wget https://git.io/vpnsetup -O vpnsetup.sh 1>/dev/null 2>&1
-  echo ""
   sudo sh vpnsetup.sh > /opt/appdata/plexguide/vpninfo.raw
   cat /opt/appdata/plexguide/vpninfo.raw | tail -n -12 | head -n +4 > /opt/appdata/plexguide/vpn.info
   rm -r /opt/appdata/plexguide/vpninfo.raw
