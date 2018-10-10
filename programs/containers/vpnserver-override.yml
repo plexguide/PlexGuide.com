@@ -19,7 +19,7 @@
   docker_container:
     name: "{{pgrole}}"
     image: "{{image}}"
-    env-file: "./vpn.env"
+    env_file: "./vpn.env"
     pull: yes
     cpu_shares: "{{cpu_shares}}"
     published_ports:
