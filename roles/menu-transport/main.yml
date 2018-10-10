@@ -27,9 +27,9 @@
     \n2.  PG Move   | Unencrypted & Encrypted | 750 GB Daily Upload Cap | Simple
     \n3.  PG Blitz  | Unencrypted             | 15  TB Daily Upload Cap | Complex
     \n
-    \n----[Below] --- Only For Reading Google & Team Drives ---------------------
+    \n----[Below] --- Deploy on for a Read-Only Server --------------------------
     \n
-    \n4.  PGDrives  | Unencrypted             | For Both Google & Team Drives
+    \n4.  PGDrives  | Unencrypted             | Deploy GDrive & or TeamDrives
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
