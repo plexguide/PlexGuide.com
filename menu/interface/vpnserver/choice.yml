@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Version:  Ansible-1
+# [Ansible Role]
+#
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
 # URL:      https://plexguide.com
@@ -13,14 +14,11 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-############################################################# (KEY START)
+#################################################################################
 ---
-- name: "Wait 10 Seconds"
-  wait_for:
-    timeout: 10
-
-- name: Replace default sync path in config file
-  replace:
-    path: /opt/appdata/{{pgrole}}/config/config.xml
-    regexp: <defaultFolderPath>~</defaultFolderPath>
-    replace: "<defaultFolderPath>/sync</defaultFolderPath>"
+- name: "Key Menu Facts"
+  set_fact:
+    head1: "\nWelcome to the PG VPN Server Access Interface!"
+    head2: "Command to View VPN Information: pgvpn"
+    info2: "\n2.  VPNServer: Install"
+    info3: "\n3.  VPNServer: UnInstall"
