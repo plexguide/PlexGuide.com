@@ -137,7 +137,7 @@ if [ "$menu" == "deploy" ]; then
     echo "--------------------------------------------------------------------------"
     echo ""
     echo "gdrive is mandatory! It's required for backup/restore operations!"
-    echo "Make your corrections and redeploy again!"
+    echo "Make sure you configured gdrive correctly and redeploy again!"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
