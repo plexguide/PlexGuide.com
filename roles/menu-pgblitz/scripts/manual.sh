@@ -70,28 +70,12 @@ fi
 if [ "$menu" == "keys" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
-
   echo gcloud > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
 fi
 
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
 
   echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
@@ -105,13 +89,6 @@ fi
 
   ################### OLD
   if [ "$menu" == "process" ]; then
-    if [ $unencrypted == "off" ]; then
-    echo ""
-    echo "WARNING - GDrive and/or TDrive is Not Configured!"
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-    exit
-    fi
 
   ### prior interger expected incase debugging required
     gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
@@ -135,15 +112,6 @@ fi
 fi
 
 if [ "$menu" == "deploy" ]; then
-
-  if [ "$unencrypted" == "off" ]; then
-
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
 
   ############################################# GDRIVE VALDIATION CHECKS - START
   echo ""
@@ -259,14 +227,6 @@ if [ "$menu" == "path" ]; then
 fi
 
 if [ "$menu" == "bad" ]; then
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
 
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   dialog --infobox "Reprocessing BAD JSONs (Please Wait)" 3 40
