@@ -46,5 +46,7 @@ if [ "$menu" == "2" ]; then
   fi
 
   if [ "$menu" == "3" ]; then
-
+    echo "Uninstaller Not Ready!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   fi
