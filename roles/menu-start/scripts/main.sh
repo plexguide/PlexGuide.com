@@ -91,7 +91,7 @@ if [ "$menu" == "tshoot" ]; then
   echo "tshoot" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 fi
 
-if [ "$menu" == "vpnserver" ]; then
+if [ "$menu" == "pgvpn" ]; then
   echo 'INFO - Selected: PG VPNServer' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   echo vpnserver > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 fi
