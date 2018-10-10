@@ -17,11 +17,9 @@
 #################################################################################
 echo "on" > /var/plexguide/manual.menu
 menu=$(echo "on")
-rm -f /opt/appdata/pgblitz/vars/automated
 
 while [ "$menu" != "break" ]; do
   ################################################################## CORE
-  echo "on" > /var/plexguide/warning.pgblitz
   echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   #### RECALL VARIABLES START
@@ -34,20 +32,20 @@ while [ "$menu" != "break" ]; do
   ##### Unencrypted Portion ### Start
   if [ "$gdrive" == "[gdrive]" ] && [ "$tdrive" == "[tdrive]" ]; then
       unencrypted="on"
-      echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
+      echo "UnEncrypted" > /var/plexguide/pgdrives.menustat
     else
       unencrypted="off"
-      echo "Not Configured" > /var/plexguide/pgblitz.menustat
+      echo "Not Configured" > /var/plexguide/pgdrives.menustat
   fi
   if [ "$encryption" == "on" ]; then
-    echo "Encrypted" > /var/plexguide/pgblitz.menustat
+    echo "Encrypted" > /var/plexguide/pgdrives.menustat
   fi
   ##### UnEncrypted Portion ### END
 
   ##### Encryption Portion ### Start
   if [ "$tcrypt" == "[tcrypt]" ] && [ "$gcrypt" == "[gcrypt]" ] && [ "$unencrypted" == "on" ]; then
       encryption="on"
-      echo "Encrypted" > /var/plexguide/pgblitz.menustat
+      echo "Encrypted" > /var/plexguide/pgdrives.menustat
     else
       encryption="off"
   fi #
@@ -82,35 +80,6 @@ if [ "$menu" == "keys" ]; then
 
 fi
 
-  ################### OLD
-  if [ "$menu" == "process" ]; then
-    if [ $unencrypted == "off" ]; then
-    echo ""
-    echo "WARNING - GDrive and/or TDrive is Not Configured!"
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
-    exit
-    fi
-
-  ### prior interger expected incase debugging required
-    gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
-    if [ "$gdsa" -ne "0" ]; then
-      if [ "$encryption" == "on" ]; then
-        dialog --title "SET ENCRYPTION PASSWORD" \
-              --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
-        dialog --title "SET ENCRYPTION SALT" \
-              --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
-      fi
-      bash /opt/plexguide/roles/menu-pgdrives/scripts/validator.sh
-    else
-      echo ""
-      echo "WARNING! No JSON files are detected for processing!"
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-      echo ""
-    fi
-  ################### OLD
-fi
-
 if [ "$menu" == "deploy" ]; then
 
   echo ""
@@ -140,7 +109,7 @@ if [ "$menu" == "deploy" ]; then
     echo "Make sure you configured gdrive correctly and redeploy again!"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
     exit
   fi
   echo ""
@@ -170,39 +139,10 @@ if [ "$menu" == "deploy" ]; then
   echo "PG Drives: Admin9705"
   echo "--------------------------------------------------------------------------"
   echo ""
-  read -n 1 -s -r -p "PGBlitz & PGDrives Deployed! Press [ANY KEY] to Continue"
+  read -n 1 -s -r -p "PGDrives Deployed! Press [ANY KEY] to Continue"
 
-  ### Variable to Noify System PGBlitz Deployed
+  ### Variable to Noify System pgdrives Deployed
   echo yes > /var/plexguide/project.deployed
-fi
-
-if [ "$menu" == "path" ]; then
-  bash /opt/plexguide/scripts/baseinstall/harddrive.sh
-fi
-
-if [ "$menu" == "bad" ]; then
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
-  exit
-  fi
-
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  dialog --infobox "Reprocessing BAD JSONs (Please Wait)" 3 40
-  sleep 2
-  clear
-  mv /opt/appdata/pgblitz/keys/badjson/* /opt/appdata/pgblitz/keys/unprocessed/ 1>/dev/null 2>&1
-  bash /opt/plexguide/roles/menu-pgdrives/scripts/validator.sh
-fi
-
-if [ "$menu" == "disable" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  sudo systemctl stop pgblitz 1>/dev/null 2>&1
-  sudo systemctl rm pgblitz 1>/dev/null 2>&1
-  dialog --title "NOTE" --msgbox "\nPG Blitz is Disabled!\n\nYou must rerun PGDrives & PGBlitz to Enable Again!" 0 0
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
