@@ -19,23 +19,32 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Deployed Check
+      shell: "cat /var/plexguide/project.deployed"
+      register: deployed
+
+    - name: "Not Deployed"
+      set_fact:
+        dstatus: "<<< Not Deployed"
+      when: deployed.stdout == "no"
+
+    - name: "Deployed"
+      set_fact:
+        dstatus: ""
+      when: not deployed.stdout == "no"
+
     - name: PG Main Menu
       pause:
-        prompt: "\nWelcome to the PG Transport System (/w PGDrives)!
-                 \nSelect a Transport System!
-    \n\n1.  Exit the Transport System
-    \n2.  PG Move   | Unencrypted & Encrypted | 750 GB Daily Upload Cap | Simple
-    \n3.  PG Blitz  | Unencrypted             | 15  TB Daily Upload Cap | Complex
-    \n
-    \n----[Below] --- Deploy for a Read-Only Server - (Example: Plex Only Server)
-    \n
-    \n4.  PGDrives  | Unencrypted             | Deploy GDrive & or TeamDrives
-    \n\nType a [NUMBER] Choice & Press [ENTER]"
+        prompt: "\nWelcome to PG Drives Deployment Interface!
+                 \nNOTE! You can configure GDrive Only or Add TeamDrives Also!
+    \n\n1.  EXIT Interface
+    \n2.  RClone         | Config & Establish
+    \n3.  Deploy         | Deploy & PGDrives
+    \n\nType a [CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
-             choice.user_input == "3" or
-             choice.user_input == "4"
+             choice.user_input == "3"
       retries: 99
       delay: 1
 
@@ -44,17 +53,13 @@
         fchoice: "{{choice.user_input}}"
 
     - name: Exiting Interface
-      shell: "echo break > /var/plexguide/transport.menu"
+      shell: "echo break > /var/plexguide/manual.menu"
       when: fchoice == "1"
 
-    - name: PG Move
-      shell: "echo move > /var/plexguide/transport.menu"
+    - name: RClone
+      shell: "echo rclone > /var/plexguide/manual.menu"
       when: fchoice == "2"
 
-    - name: Blitz
-      shell: "echo blitzmanual > /var/plexguide/transport.menu"
+    - name: Process
+      shell: "echo deploy > /var/plexguide/manual.menu"
       when: fchoice == "3"
-
-    - name: PG Drives / Blitz
-      shell: "echo pgdrives > /var/plexguide/transport.menu"
-      when: fchoice == "4"

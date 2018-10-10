@@ -80,14 +80,42 @@ fi
 if [ "$menu" == "pgdrive" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
-  if [ "$gdrive" != "[gdrive]" ]; then
-      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move/scripts/main.sh
-        exit
-  fi
 
   echo 'INFO - DEPLOYED PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+  ############################################# GDRIVE VALDIATION CHECKS - START
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting RClone GDrive Validation Check"
+  echo "--------------------------------------------------------------------------"
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdrive:/plexguide
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide | head -n1)
+  sleep 2
+  if [ "$rcheck" != "plexguide" ];then
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "gdrive is mandatory! It's required for backup/restore operations!"
+    echo "Make sure you configured gdrive correctly and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    bash /opt/plexguide/roles/menu-move/scripts/main.sh
+    exit
+  fi
+  echo ""
+  ############################################# GDRIVE VALDIATION CHECKS - END
 
     ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
 
@@ -129,12 +157,6 @@ fi
 if [ "$menu" == "bw" ]; then
 
   #### BASIC CHECKS to STOP Deployment - START
-  if [ "$gdrive" != "[gdrive]" ]; then
-      echo 'FAILURE - Using MOVE: Must Configure gdrive for RCLONE' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "WARNING!" --msgbox "\nYou are UTILZING PG Move!\n\nTo work, you MUST have a gdrive\nconfiguration in RClone!" 0 0
-        bash /opt/plexguide/roles/menu-move/scripts/main.sh
-        exit
-  fi
 
   dialog --title "Change the BW Limit" \
   --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \

@@ -32,6 +32,12 @@ if [ "$menu" == "blitzmanual" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
 fi
+
+if [ "$menu" == "pgdrives" ]; then
+  echo 'INFO - Selected: PGDrives' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
+fi
+
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
