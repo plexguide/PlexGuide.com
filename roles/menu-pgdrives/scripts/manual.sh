@@ -82,6 +82,7 @@ fi
 
 if [ "$menu" == "deploy" ]; then
 
+  ############################################# GDRIVE VALDIATION CHECKS - START
   echo ""
   echo "--------------------------------------------------------------------------"
   echo "System Message: Conducting RClone GDrive Validation Check"
@@ -114,6 +115,8 @@ if [ "$menu" == "deploy" ]; then
   fi
   echo ""
   rclone rmdir gdrive:/plexdrive45
+  ############################################# GDRIVE VALDIATION CHECKS - END
+
 
   #### BLANK OUT PATH - This Builds For UnionFS
   rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
