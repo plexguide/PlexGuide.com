@@ -99,7 +99,7 @@ if [ "$menu" == "deploy" ]; then
   echo "--------------------------------------------------------------------------"
   rcheck=$(rclone lsd gdrive: | grep -oP plexguide45 | head -n1)
   sleep 2
-  if [ "$rcheck" != "plexguide" ];then
+  if [ "$rcheck" != "plexguide45" ];then
     echo ""
     echo "--------------------------------------------------------------------------"
     echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
