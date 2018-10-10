@@ -108,7 +108,6 @@ fi
     fi
   ################### OLD
 
-
 fi
 
 if [ "$menu" == "deploy" ]; then
