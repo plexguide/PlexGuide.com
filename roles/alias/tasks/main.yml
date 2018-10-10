@@ -33,6 +33,13 @@
       force: yes
       mode: 0775
 
+  - name: Install PGVPN
+    template:
+      src: pgvpn
+      dest: /bin/pgvpn
+      force: yes
+      mode: 0775
+
   - name: Install Status GDrive
     template:
       src: sgdrive
