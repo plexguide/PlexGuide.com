@@ -19,7 +19,6 @@ menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
   echo ""
-  gcloud projects list && gcloud projects list > /var/plexguide/projects.list
   echo ""
   echo "-----------------------------------------------------"
   echo "SYSTEM MESSAGE: Installing - Please Standby!"
