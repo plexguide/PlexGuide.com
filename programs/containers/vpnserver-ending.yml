@@ -15,23 +15,12 @@
 #
 ############################################################# (KEY START)
 ---
-- name: "Deploy {{pgrole}} Container - OverRide"
-  docker_container:
-    name: "{{pgrole}}"
-    image: "{{image}}"
-    #env_file: "/opt/appdata/plexguide/vpn.env"
-    pull: yes
-    cpu_shares: "{{cpu_shares}}"
-    published_ports:
-      - "{{ports.stdout}}{{extport}}:{{intport}}"
-      - "{{ports.stdout}}{{extport2}}:{{intport2}}"
-    volumes: "{{default_volumes}}"
-    env: "{{default_env}}"
-    expose: "{{expose}}"
-    privileged: "yes"
-    restart_policy: always
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{pgrole}}"
-    state: started
+- name: "Wait 10 Seconds"
+  wait_for:
+    timeout: 10
+
+- name: Replace default sync path in config file
+  replace:
+    path: /opt/appdata/{{pgrole}}/config/config.xml
+    regexp: <defaultFolderPath>~</defaultFolderPath>
+    replace: "<defaultFolderPath>/sync</defaultFolderPath>"
