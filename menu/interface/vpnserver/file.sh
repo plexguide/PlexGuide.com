@@ -27,6 +27,13 @@ if [ "$menu" == "2" ]; then
   echo "NOTE: First time installs may take 1 - 3 minutes!"
   echo ""
   wget https://git.io/vpnsetup -O vpnsetup.sh && sudo sh vpnsetup.sh
+  echo ""
+  echo "================================================"
+  echo "Configuration: Visit pgvpn.plexguide.com or WIKI"
+  echo "Note: Use command pgvpn to recall the vpn info"
+  echo "================================================"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   else
       echo "";# leave if statement and continue.
   fi
