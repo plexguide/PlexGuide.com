@@ -36,7 +36,7 @@
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to PG Drives Deployment Interface!
-                 \nMake a Selection!
+                 \nNOTE! You can configure GDrive Only or Add TeamDrives Also!
     \n\n1.  EXIT Interface
     \n2.  RClone         | Config & Establish
     \n3.  Deploy         | Deploy & PGDrives
