@@ -116,7 +116,7 @@
                   \n7.  Plex Enhancement Tools
                   \n8.  VPN Service Installer
                   \n9.  System & Network Auditor
-                  \n10.  {{backups}}
+                  \n10. {{backups}}
                   \n11. Settings Menu
                   \n12. TroubleShoot - PreInstaller & UnInstaller
                   \n\nType a [NUMBER] Choice & Press [ENTER]"
@@ -161,7 +161,6 @@
     - shell: "echo programs > /var/plexguide/main.menu"
       when: fchoice == "6"
 
-    - name: Change Server ID
       shell: "echo plextools > /var/plexguide/main.menu"
       when: fchoice == "7"
 
