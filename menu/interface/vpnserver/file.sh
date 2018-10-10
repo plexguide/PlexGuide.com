@@ -19,7 +19,6 @@ menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
   echo ""
-  echo ""
   echo "-----------------------------------------------------"
   echo "SYSTEM MESSAGE: Installing - Please Standby!"
   echo "-----------------------------------------------------"
