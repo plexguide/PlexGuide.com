@@ -174,6 +174,7 @@ if [ "$menu" == "deploy" ]; then
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    echo no > /var/plexguide/project.deployed
     exit
   fi
   echo ""
@@ -209,6 +210,7 @@ if [ "$menu" == "deploy" ]; then
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
     bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    echo no > /var/plexguide/project.deployed
     exit
   fi
   echo ""
