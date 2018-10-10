@@ -137,12 +137,50 @@ fi
 if [ "$menu" == "deploy" ]; then
 
   if [ "$unencrypted" == "off" ]; then
+
   echo ""
   echo "WARNING - GDrive and/or TDrive is Not Configured!"
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
   exit
   fi
+
+  ############################################# GDRIVE VALDIATION CHECKS - START
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting RClone GDrive Validation Check"
+  echo "--------------------------------------------------------------------------"
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide45 "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdrive:/plexguide45
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide45"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide45 | head -n1)
+  sleep 2
+  if [ "$rcheck" != "plexguide45" ];then
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "gdrive is mandatory! It's required for backup/restore operations!"
+    echo "Make sure you configured gdrive correctly and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    exit
+  fi
+  echo ""
+  rclone rmdir gdrive:/plexdrive45
+  ############################################# GDRIVE VALDIATION CHECKS - END
+
+  ############################################# GDSA VALIDATION CHECKS - START
   echo ""
   echo "--------------------------------------------------------------------------"
   echo "System Message: Conducting RClone Validation Check"

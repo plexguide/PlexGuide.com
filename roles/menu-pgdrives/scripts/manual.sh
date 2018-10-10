@@ -139,7 +139,7 @@ if [ "$menu" == "deploy" ]; then
 
   echo ""
   echo "--------------------------------------------------------------------------"
-  echo "PG Drives: Admin9705"
+  echo "PG Drives - Deployed Successfully"
   echo "--------------------------------------------------------------------------"
   echo ""
   read -n 1 -s -r -p "PGDrives Deployed! Press [ANY KEY] to Continue"
