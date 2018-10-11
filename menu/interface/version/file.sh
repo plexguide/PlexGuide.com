@@ -21,7 +21,7 @@ touch /var/plexguide/ver.temp
 ### Builds Version List for Display
 while read p; do
   echo $p >> /var/plexguide/ver.temp
-done </opt/plexguide/menu/interface/version/versions.sh
+done </opt/plexguide/menu/interface/version/version.sh
 
 echo ""
 echo "Welcome to the PG Versioning Deployment System!"
