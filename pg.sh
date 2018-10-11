@@ -57,10 +57,14 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 #
 #
 ######################################################## START: New Install
+file="/var/plexguide/new.install"
+if [ -e "$file" ]; then
+  bash /opt/plexguide/menu/interface/version/file.sh
+fi
+
 rm -r /var/plexguide/new.install 1>/dev/null 2>&1
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
-
   file2="/var/plexguide/pg.number"
   if [ -e "$file2" ]; then
     echo "" 1>/dev/null 2>&1
@@ -73,6 +77,7 @@ if [ -e "$file" ]; then
   bash /opt/plexguide/roles/versions/main.sh
   dialog --title "--- NEW INSTALL ---" --msgbox "\nExiting PG to install the Selected Version!\n\nType 'plexguide' again to complete the process!" 0 0
   clear
+  touch /var/plexguide/new.install
   bash /opt/plexguide/roles/ending/ending.sh
   exit
 fi
