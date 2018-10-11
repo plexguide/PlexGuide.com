@@ -59,4 +59,18 @@ ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
   exit
 fi
 
+if [ "$storage" != "" ]; then
+  echo ""
+  echo "-------------------------------------------------"
+  echo "SYSTEM MESSAGE: Version $storage does not exist!"
+  echo "-------------------------------------------------"
+  echo ""
+  echo "NOTE: Try Again!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  cat /var/plexguide/ver.temp
+  exit
+fi
+
 done
