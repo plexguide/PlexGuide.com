@@ -34,14 +34,18 @@ else
   echo "SYSTEM MESSAGE: PlexGuide Installation"
   echo "-------------------------------------------------"
   echo ""
-  read -p "Do You Agree to Install/Upgrade PlexGuide (y/n)? " -n 1 -r
+  echo "CONDITIONS: You agree to the terms of the of the"
+  echo "GNUv3 License located in the root of the project"
+  echo
+  read -p "Agree & Install/Upgrade PlexGuide (y/n)? " -n 1 -r
+  echo ""
 
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     echo ""
-    echo "---------------------------------------------------"
+    echo "-----------------------------------------------"
     echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
-    echo "---------------------------------------------------"
+    echo "-----------------------------------------------"
     echo ""
     echo "PlexGuide Not Installed/Upgraded! Exiting!"
     echo
