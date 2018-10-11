@@ -29,22 +29,33 @@ else
   echo "Installing PG Basics" > /var/plexguide/message.phase
   bash /opt/plexguide/roles/install/scripts/message.sh
 
-      if dialog --stdout --title "System Update" \
-        --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-        --yesno "\nDo You Agree to Install/Update PlexGuide?" 7 50; then
-        clear
-      else
-        clear
-        dialog --title "PG Update Status" --msgbox "\nUser Failed To Agree!\n\nWARNING: Executing any Portions of PG may result with instability!" 0 0
-        echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        touch /var/plexguide/update.failed
-        exit 0
-      fi
-        yes | apt-get update
-        yes | apt-get install software-properties-common
-        yes | apt-get install sysstat nmon
-        sed -i 's/false/true/g' /etc/default/sysstat
-        echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo ""
+  echo "-------------------------------------------------"
+  echo "SYSTEM MESSAGE: PlexGuide Installation"
+  echo "-------------------------------------------------"
+  echo ""
+  read -p "Do You Agree to Install/Upgrade PlexGuide (y/n)? " -n 1 -r
+
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
+    echo "---------------------------------------------------"
+    echo ""
+    echo "PlexGuide Not Installed/Upgraded! Exiting!"
+    echo
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    touch /var/plexguide/update.failed
+    exit;
+  fi
+
+    yes | apt-get update
+    yes | apt-get install software-properties-common
+    yes | apt-get install sysstat nmon
+    sed -i 's/false/true/g' /etc/default/sysstat
+    echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 ######################################################## END: Main Script
 #
