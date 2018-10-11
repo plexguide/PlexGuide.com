@@ -15,16 +15,16 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+rm -r /var/plexguide/ver.temp 1>/dev/null 2>&1
+touch /var/plexguide/ver.temp
 
-echo " " > /var/plexguide/ver.temp
-#### Build up list backup list for the main.yml execution
+### Builds Version List for Display
 while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/versions.sh
 
 echo ""
 echo "Welcome to the PG Versioning Deployment System!"
-cat /var/plexguide/ver.temp | tail -n +2 > /var/plexguide/ver.temp
 cat /var/plexguide/ver.temp
 echo ""
 echo "To QUIT, type >>> exit"
