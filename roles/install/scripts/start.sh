@@ -57,6 +57,7 @@ else
     exit;
   fi
 
+    echo ""
     yes | apt-get update
     yes | apt-get install software-properties-common
     yes | apt-get install sysstat nmon
