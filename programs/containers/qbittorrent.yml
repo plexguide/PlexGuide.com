@@ -19,7 +19,7 @@
   set_fact:
     intport: "8080"
     extport: "8080"
-    image: "firehol/netdata"
+    image: "linuxserver/qbittorrent"
     cpu_shares: 128
     expose: ""
 
