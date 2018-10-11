@@ -1,7 +1,7 @@
-6.038
-6.048
-6.059
-6.060
-6.061
-6.062
 edge
+
+NOTES:
+1. New Update System - You Must Up To Edge
+2. Then Type PG Update Again to Update to a Specific Version
+3. New System built to cut looping issues for some new installs
+4. Please Type >>> edge and Press [ENTER]

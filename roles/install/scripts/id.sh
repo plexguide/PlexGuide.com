@@ -22,51 +22,29 @@ pg_id_stored=$( cat /var/plexguide/pg.id.stored )
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_id" == "$pg_id_stored" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
-      dialog --infobox "Installing | Upgrading Server IDs" 3 40
-      sleep 2
-      clear
+if [ "$pg_id" != "$pg_id_stored" ]; then
+  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-      file="/var/plexguide/server.id"
-        if [ -e "$file" ]; then
-          cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
-          cat /var/plexguide/server.id > /var/plexguide/restore.id
-        else
-          echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo ""
+  echo "-----------------------------------------------------"
+  echo "SYSTEM MESSAGE: You Must Set a Server ID"
+  echo "-----------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  echo ""
+  ### Execute Server ID Script
+  echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
-          dialog --title "--- INFO ---" --msgbox "\nYou Are Creating a SERVER ID for Identification/Backup Purposes!\n\nRemember KISS (Keep It Simple Stupid) for your ID!" 0 0
+  ### Ensures to Not Rerun
+  cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
 
-          dialog --title "[ EXAMPLE: SERVER01 or PG9705 ]" \
-          --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-          --inputbox "Type Your Server ID: " 8 50 2>/var/plexguide/server.temp.id
-          id=$(cat /var/plexguide/server.temp.id)
+  ### Create Recovery ID if it Does Not Exist
+  file="/var/plexguide/restore.id"
+  if [ ! -e "$file" ]; then
+      cat /var/plexguide/server.id > /var/plexguide/restore.id
+      echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  fi
 
-          if dialog --stdout --title "SERVER ID" \
-              --backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
-              --yesno "\nSERVER ID: $id\n\nCorrect?" 0 0; then
-
-              dialog --title "--- SERVER ID ---" --msgbox "\nSERVER ID: $id\n\nIS SET!" 0 0
-              ### Ensure Location Get Stored for Variables Role
-              echo "$id" > /var/plexguide/server.id
-              cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
-
-              ### Create Recovery ID if it Does Not Exist
-              file="/var/plexguide/restore.id"
-                if [ -e "$file" ]
-                  then
-                    echo "" 1>/dev/null 2>&1
-                  else
-                    cat /var/plexguide/server.id > /var/plexguide/restore.id
-                    echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-                fi
-          else
-              dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-              bash /opt/plexguide/roles/install/scripts/id.sh
-              exit
-          fi
-     fi
 fi
 ######################################################## END: Main Script
 #

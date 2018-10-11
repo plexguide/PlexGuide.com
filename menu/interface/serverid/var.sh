@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# [PlexGuide Menu]
+# [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,7 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+echo 2 > /var/plexguide/menu.number
 
-dialog --title "Input >> PASSWORD" \
---backtitle "Visit https://PlexGuide.com - Automations Made Simple" \
---inputbox "Password for NEXTCLOUD" 8 50 2>/var/plexguide/nc.info
+file="/var/plexguide/server.id"
+  if [ ! -e "$file" ]; then
+    echo NOT-SET > /var/plexguide/server.id
+  fi

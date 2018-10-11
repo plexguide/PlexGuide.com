@@ -15,16 +15,16 @@
 #################################################################################
 
 ######################################################## START: Key Variables
-rm -r /opt/plexguide/roles/versions/scripts/ver.list && sudo mkdir -p /opt/plexguide/roles/versions/scripts/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/scripts/ver.list https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/roles/versions/scripts/ver.list &>/dev/null &
+rm -r /opt/plexguide/menu/interface/version/version.sh && sudo mkdir -p /opt/plexguide/menu/interface/version/ && sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/versions.sh &>/dev/null &
 # Generate Default YML
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
  # Force Common Things To Execute Such as Folders
-echo "147" > /var/plexguide/pg.preinstall
+echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
-echo "10" > /var/plexguide/pg.rclone
+echo "11" > /var/plexguide/pg.rclone
 echo "11" > /var/plexguide/pg.python
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
@@ -32,7 +32,7 @@ echo "19" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "56" > /var/plexguide/pg.alias
+echo "63" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud

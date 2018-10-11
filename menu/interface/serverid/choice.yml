@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,16 +15,17 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-program=$(cat /tmp/program_selection)
-running=plexguide
+---
+- name: Register Project
+  shell: "cat /var/plexguide/server.id"
+  register: tempid
 
-while [ "$running" != "$program" ]; do
-ansible-playbook /opt/plexguide/roles/versions/main.yml
-running=$(cat /opt/plexguide/roles/versions/scripts/ver.list | grep $program -oP )
+- name: "Set Server ID"
+  set_fact:
+    serverid: "{{tempid.stdout}}"
 
-echo 'INFO - Looping: PG Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-echo "DEBUG - typed: $program - lookup: $running"
-done
-
-echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-exit
+- name: "Key Menu Facts"
+  set_fact:
+    head1: "\nPG Server Identification Interface"
+    head2: "\nServer ID: {{serverid}}"
+    info2: "\n2.  Server ID: Change It"
