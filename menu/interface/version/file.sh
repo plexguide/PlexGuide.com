@@ -23,6 +23,7 @@ while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
 
+wait 3
 echo ""
 echo "Welcome to the PG Versioning Deployment System!"
 cat /var/plexguide/ver.temp
