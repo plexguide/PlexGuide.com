@@ -34,7 +34,7 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/pgrole:/config"
+      - "/opt/appdata/{{pgrole}}:/config"
       - /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs
       - "/opt/appdata/pgrole/scripts:/scripts"
 
