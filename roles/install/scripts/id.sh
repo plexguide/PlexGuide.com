@@ -23,12 +23,6 @@ sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_id" != "$pg_id_stored" ]; then
-
-      file="/var/plexguide/server.id"
-        if [ -e "$file" ]; then
-          cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
-          cat /var/plexguide/server.id > /var/plexguide/restore.id
-        else
           echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
           ### Execute Server ID Script
@@ -48,6 +42,9 @@ if [ "$pg_id" != "$pg_id_stored" ]; then
             fi
 
         fi
+   else
+     cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
+     cat /var/plexguide/server.id > /var/plexguide/restore.id
 fi
 ######################################################## END: Main Script
 #
