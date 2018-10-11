@@ -31,7 +31,7 @@ else
 
   echo ""
   echo "------------------------------------------------"
-  echo "SYSTEM MESSAGE: PlexGuide Installation / Upgrade"
+  echo "SYSTEM MESSAGE: PG Install / Upgrade Interface"
   echo "------------------------------------------------"
   echo ""
   echo "CONDITIONS: By Installing PlexGuide, you agree to"
