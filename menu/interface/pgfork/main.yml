@@ -48,7 +48,7 @@
       when: exit.user_input == "1"
     ############################## REGISTER PROJECT
     - pause:
-        prompt: "\nWhat is Your GitHub UserName?"
+        prompt: "\nWhat is Your GitHub UserName (Case Sensitive)?"
       register: project
       when: exit.user_input == "2"
 
@@ -57,7 +57,7 @@
       when: exit.user_input == "2"
     ############################## REGISTER BRANCH
     - pause:
-        prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release"
+        prompt: "\nExample: Version-6 / mybranch / rclonefix\nPlease Update Your Branch-Release (Case Sensitive)"
       register: version
       when: exit.user_input == "2"
 
