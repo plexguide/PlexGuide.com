@@ -27,7 +27,7 @@ if [ "$pg_id" != "$pg_id_stored" ]; then
 
   echo ""
   echo "-----------------------------------------------------"
-  echo "SYSTEM MESSAGE: First Time - You Must Set a Server ID"
+  echo "SYSTEM MESSAGE: You Must Set a Server ID"
   echo "-----------------------------------------------------"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
@@ -40,16 +40,11 @@ if [ "$pg_id" != "$pg_id_stored" ]; then
 
   ### Create Recovery ID if it Does Not Exist
   file="/var/plexguide/restore.id"
-  if [ -e "$file" ]
-    then
-      echo "" 1>/dev/null 2>&1
-    else
+  if [ ! -e "$file" ]; then
       cat /var/plexguide/server.id > /var/plexguide/restore.id
       echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   fi
-else
-     cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
-     cat /var/plexguide/server.id > /var/plexguide/restore.id
+
 fi
 ######################################################## END: Main Script
 #
