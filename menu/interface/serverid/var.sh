@@ -19,5 +19,7 @@ echo 2 > /var/plexguide/menu.number
 
 file="/var/plexguide/server.id"
   if [ -e "$file" ]; then
+    null=null2
+  else
     echo NOT-SET > /var/plexguide/server.id
   fi

@@ -31,6 +31,7 @@ if [ "$menu" == "2" ]; then
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   echo ""
+  echo ""
   read -p "Set or Change the Project ID (y/n)? " -n 1 -r
   echo    # move cursor to a new line
   if [[ ! $REPLY =~ ^[Yy]$ ]]
