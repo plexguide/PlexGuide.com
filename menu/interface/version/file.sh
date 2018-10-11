@@ -31,9 +31,9 @@ echo "To QUIT, type >>> exit"
 break=no
 while [ "$break" == "no" ]; do
 read -p 'Type the [PG Version] for Deployment! (all lowercase): ' typed
-typed=($grep /var/plexguide/ver.temp)
+storage=($grep $typed /var/plexguide/ver.temp)
 
-if [ "$typed" == "exit" ]; then
+if [ "$storage" == "exit" ]; then
   echo ""
   echo "-------------------------------------------------"
   echo "SYSTEM MESSAGE: Exiting Version Install Interface"
@@ -44,15 +44,15 @@ if [ "$typed" == "exit" ]; then
   exit
 fi
 
-if [ "$typed" != "" ]; then
+if [ "$storage" != "" ]; then
 break=yes
 ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
   echo ""
   echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Installed Verison - $typed"
+  echo "SYSTEM MESSAGE: Installed Verison - $storage"
   echo "-------------------------------------------------"
   echo ""
-  echo $typed > /var/plexguide/pg.number
+  echo $storage > /var/plexguide/pg.number
   touch /var/plexguide/ask.yes
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
