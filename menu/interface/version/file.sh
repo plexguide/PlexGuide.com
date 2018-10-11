@@ -57,7 +57,7 @@ ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
   exit
-else 
+else
   echo ""
   echo "-------------------------------------------------"
   echo "SYSTEM MESSAGE: Version $storage does not exist!"
@@ -68,7 +68,7 @@ else
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
   cat /var/plexguide/ver.temp
-  exit
+  echo ""
 fi
 
 done

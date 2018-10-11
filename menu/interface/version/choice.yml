@@ -20,7 +20,7 @@
   gather_facts: false
   tasks:
     - name: Register Project
-      shell: "/var/plexguide/pg.number"
+      shell: "/var/plexguide/ver.temp"
       register: tempid
 
     - name: "Set Server ID"
