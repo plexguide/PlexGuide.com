@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## START: Key Variables
-rm -r /opt/plexguide/roles/versions/scripts/ver.list && sudo mkdir -p /opt/plexguide/roles/versions/scripts/ && sudo wget --force-directories -O /opt/plexguide/roles/versions/scripts/ver.list https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/roles/versions/scripts/ver.list &>/dev/null &
+rm -r /opt/plexguide/menu/interface/version/versions.sh && sudo mkdir -p /opt/plexguide/menu/interface/version/ && sudo wget --force-directories -O /opt/plexguide/menu/interface/version/versions.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/versions.sh &>/dev/null &
 # Generate Default YML
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
