@@ -47,6 +47,8 @@ else
     echo
     touch /var/plexguide/update.failed
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    bash /opt/plexguide/roles/ending/ending.sh
     echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     exit;
   fi
