@@ -45,9 +45,9 @@ else
     echo ""
     echo "PlexGuide Not Installed/Upgraded! Exiting!"
     echo
+    touch /var/plexguide/update.failed
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo "WARNING - User Failed To Update PlexGuide" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    touch /var/plexguide/update.failed
     exit;
   fi
 
