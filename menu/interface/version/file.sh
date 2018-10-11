@@ -31,7 +31,7 @@ echo "To QUIT, type >>> exit"
 break=no
 while [ "$break" == "no" ]; do
 read -p 'Type the [PG Version] for Deployment! (all lowercase): ' typed
-storage=(grep $typed /var/plexguide/ver.temp)
+storage=$(grep $typed /var/plexguide/ver.temp)
 
 if [ "$storage" == "exit" ]; then
   echo ""
