@@ -17,6 +17,10 @@
 ######################################################## START: Key Variables
 rm -r /opt/plexguide/menu/interface/version/version.sh && sudo mkdir -p /opt/plexguide/menu/interface/version/ && sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/versions.sh &>/dev/null &
 # Generate Default YML
+file="/var/plexguide/new.install"
+if [ -e "$file" ]; then
+  bash /opt/plexguide/menu/interface/version/file.sh
+fi
 bash /opt/plexguide/roles/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
@@ -57,10 +61,6 @@ bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
 #
 #
 ######################################################## START: New Install
-file="/var/plexguide/new.install"
-if [ -e "$file" ]; then
-  bash /opt/plexguide/menu/interface/version/file.sh
-fi
 
 rm -r /var/plexguide/new.install 1>/dev/null 2>&1
 file="/var/plexguide/ask.yes"
