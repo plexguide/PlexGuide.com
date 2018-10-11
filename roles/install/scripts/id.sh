@@ -23,26 +23,24 @@ sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_id" != "$pg_id_stored" ]; then
-          echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-          ### Execute Server ID Script
-          echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  ### Execute Server ID Script
+  echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
-          ### Ensures to Not Rerun
-          cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
+  ### Ensures to Not Rerun
+  cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
 
-          ### Create Recovery ID if it Does Not Exist
-          file="/var/plexguide/restore.id"
-            if [ -e "$file" ]
-              then
-                echo "" 1>/dev/null 2>&1
-              else
-                cat /var/plexguide/server.id > /var/plexguide/restore.id
-                echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            fi
-
-        fi
-   else
+  ### Create Recovery ID if it Does Not Exist
+  file="/var/plexguide/restore.id"
+  if [ -e "$file" ]
+    then
+      echo "" 1>/dev/null 2>&1
+    else
+      cat /var/plexguide/server.id > /var/plexguide/restore.id
+      echo "INFO - First Time: Restore ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  fi
+else
      cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored
      cat /var/plexguide/server.id > /var/plexguide/restore.id
 fi
