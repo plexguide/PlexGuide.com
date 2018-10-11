@@ -30,9 +30,9 @@ else
   bash /opt/plexguide/roles/install/scripts/message.sh
 
   echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: PlexGuide Installation"
-  echo "-------------------------------------------------"
+  echo "------------------------------------------------"
+  echo "SYSTEM MESSAGE: PlexGuide Installation / Upgrade"
+  echo "------------------------------------------------"
   echo ""
   echo "CONDITIONS: By Installing PlexGuide, you agree to"
   echo "the terms and use of the GNUv3 License."
@@ -43,9 +43,9 @@ else
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     echo ""
-    echo "-----------------------------------------------"
+    echo "----------------------------------------------"
     echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
-    echo "-----------------------------------------------"
+    echo "----------------------------------------------"
     echo ""
     echo "PlexGuide Not Installed/Upgraded! Exiting!"
     echo
