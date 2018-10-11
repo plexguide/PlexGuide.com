@@ -29,7 +29,7 @@
         dest: "/opt/plexguide"
         version: Edge
         force: yes
-      when: serverid == "edge"
+      when: serverid.stdout == "edge"
 
     - name: "Installing Version {{serverid.stdout}}"
       git:
@@ -37,7 +37,7 @@
         dest: "/opt/plexguide"
         version: "{{serverid.stdout}}"
         force: yes
-      when: not serverid == "edge"
+      when: not serverid.stdout == "edge"
       ignore_errors: True
 
     - name: "Stops First Time Run"
