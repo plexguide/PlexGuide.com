@@ -25,6 +25,12 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_id" != "$pg_id_stored" ]; then
   echo "INFO - First Time: Server ID Generated" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
+  echo ""
+  echo "-----------------------------------------------------"
+  echo "SYSTEM MESSAGE: First Time - You Must Set a Server ID"
+  echo "-----------------------------------------------------"
+  echo ""
+
   ### Execute Server ID Script
   echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
