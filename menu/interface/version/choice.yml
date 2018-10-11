@@ -20,12 +20,8 @@
   gather_facts: false
   tasks:
     - name: Register Project
-      shell: "echo /var/plexguide/pg.number"
-      register: tempid
-
-    - name: "Set Server ID"
-      set_fact:
-        serverid: "{{tempid.stdout}}"
+      shell: "cat /var/plexguide/pg.number"
+      register: serverid
 
     - name: Installing EDGE
       git:
@@ -39,7 +35,7 @@
       git:
         repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
         dest: "/opt/plexguide"
-        version: "{{serverid}}"
+        version: "{{serverid.stdout}}"
         force: yes
       when: not serverid == "edge"
       ignore_errors: True
