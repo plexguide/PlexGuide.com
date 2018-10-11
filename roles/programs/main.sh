@@ -55,7 +55,7 @@ fi
 
 if [ "$menu" == "update" ]; then
   echo 'INFO - Selected: PG Upgrades Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/versions/main.sh
+  bash /opt/plexguide/menu/interface/version/file.sh
   exit
 fi
 
