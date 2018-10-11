@@ -30,7 +30,9 @@ if [ "$pg_id" != "$pg_id_stored" ]; then
   echo "SYSTEM MESSAGE: First Time - You Must Set a Server ID"
   echo "-----------------------------------------------------"
   echo ""
-
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  echo ""
   ### Execute Server ID Script
   echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
