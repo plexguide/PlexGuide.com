@@ -46,14 +46,13 @@ fi
 
 if [ "$storage" != "" ]; then
 break=yes
+echo $storage > /var/plexguide/pg.number
 ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
   echo ""
   echo "-------------------------------------------------"
   echo "SYSTEM MESSAGE: Installed Verison - $storage"
   echo "-------------------------------------------------"
   echo ""
-  echo $storage > /var/plexguide/pg.number
-  touch /var/plexguide/ask.yes
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
   exit
@@ -66,6 +65,7 @@ else
   echo "NOTE: Try Again!"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
   echo ""
   cat /var/plexguide/ver.temp
   echo ""
