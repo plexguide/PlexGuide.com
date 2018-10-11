@@ -16,16 +16,34 @@
 #
 #################################################################################
 ---
-- name: Register Project
-  shell: "cat /var/plexguide/server.id"
-  register: tempid
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Register Project
+      shell: "/var/plexguide/pg.number"
+      register: tempid
 
-- name: "Set Server ID"
-  set_fact:
-    serverid: "{{tempid.stdout}}"
+    - name: "Set Server ID"
+      set_fact:
+        serverid: "{{tempid.stdout}}"
 
-- name: "Key Menu Facts"
-  set_fact:
-    head1: "\nPG Server Identification Interface"
-    head2: "\nServer ID: {{serverid}}"
-    info2: "\n2.  Server ID: Change It"
+    - name: Installing EDGE
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+        dest: "/opt/plexguide"
+        version: Edge
+        force: yes
+      when: serverid == "edge"
+
+    - name: Installing {{selection.user_input}}
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+        dest: "/opt/plexguide"
+        version: "{{serverid}}"
+        force: yes
+      when: not serverid == "edge"
+      ignore_errors: True
+
+    - name: "Stops First Time Run"
+      shell: "touch /var/plexguide/ask.yes"
+      register: program

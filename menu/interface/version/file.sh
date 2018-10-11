@@ -63,5 +63,4 @@ ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
   exit
 fi
 
-
 done
