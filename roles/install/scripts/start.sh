@@ -34,8 +34,8 @@ else
   echo "SYSTEM MESSAGE: PlexGuide Installation"
   echo "-------------------------------------------------"
   echo ""
-  echo "CONDITIONS: By Installing PG, You agree to the"
-  echo "terms of the of the PG GNUv3 License"
+  echo "CONDITIONS: By Installing PlexGuide, you agree to"
+  echo "the terms and use of the GNUv3 License."
   echo ""
   read -p "Agree & Install/Upgrade PlexGuide (y/n)? " -n 1 -r
   echo ""
