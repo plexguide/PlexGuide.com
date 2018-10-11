@@ -31,13 +31,13 @@
 
     ############## Start Asking
     - pause:
-        prompt: "\nWelcome to the PG Fork Interface!\n\n
-                   Your GITHUB User-Name: {{basicproject.stdout}}\n
-                   Branch-Release Link: {{basicversion.stdout}}\n\n
-                   1 - EXIT the PG Fork\n
-                   2 - Update Your GITHUB User-Name & Branch\n
-                   3 - Download Current Forked Project\n\n
-                   Type a Selection Number"
+        prompt: "\nWelcome to the PG Fork Interface!
+                   \n\nYour GITHUB User-Name: {{basicproject.stdout}}
+                   \nBranch-Release Link: {{basicversion.stdout}}
+                   \n\n1 - EXIT the PG Fork
+                   \n2 - Update Your GITHUB User-Name & Branch
+                   \n3 - Download Current Forked Project
+                   \n\nType a Selection Number"
       register: exit
       until: exit.user_input > "0" and exit.user_input < "4"
       retries: 99
