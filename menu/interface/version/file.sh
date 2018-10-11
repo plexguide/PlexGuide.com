@@ -25,7 +25,7 @@ done </opt/plexguide/menu/interface/version/versions.sh
 
 echo ""
 echo "Welcome to the PG Versioning Deployment System!"
-echo ""
+cat /var/plexguide/ver.temp | tail -n +2 > /var/plexguide/ver.temp
 cat /var/plexguide/ver.temp
 echo ""
 echo "To QUIT, type >>> exit"
