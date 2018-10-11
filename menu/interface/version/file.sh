@@ -28,13 +28,10 @@ echo "Welcome to the PG Versioning Deployment System!"
 cat /var/plexguide/ver.temp
 echo ""
 echo "To QUIT, type >>> exit"
-echo ""
-
 break=no
 while [ "$break" == "no" ]; do
-echo ""
 read -p 'Type the [PG Version] for Deployment! (all lowercase): ' typed
-grep $typed /var/plexguide/ver.temp
+typed=($grep /var/plexguide/ver.temp)
 
 if [ "$typed" == "exit" ]; then
   echo ""
