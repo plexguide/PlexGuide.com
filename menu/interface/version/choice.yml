@@ -31,7 +31,7 @@
         force: yes
       when: serverid == "edge"
 
-    - name: "Installing Version {{serverid}}"
+    - name: "Installing Version {{serverid.stdout}}"
       git:
         repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
         dest: "/opt/plexguide"
