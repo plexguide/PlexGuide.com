@@ -16,7 +16,6 @@
 #
 #################################################################################
 
-num=0
 echo " " > /var/plexguide/ver.temp
 #### Build up list backup list for the main.yml execution
 while read p; do
