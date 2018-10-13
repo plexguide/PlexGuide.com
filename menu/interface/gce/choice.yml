@@ -40,5 +40,6 @@
     info3: "\n3.  Establish Project ID  : [{{project.stdout}}]"
     info4: "\n4.  Set Processor Count   : [{{processor.stdout}}]"
     info5: "\n5.  Set Server Location   : [{{location.stdout}}]"
-    info6: "\n6.  Deploy PG GCE Server  : Not Deployed"
-    info7: "\n7.  Destroy Server"
+    info6: "\n6.  Set IP Address Region : [{{ipregion.stdout}}]"
+    info7: "\n7.  Deploy PG GCE Server  : Not Deployed"
+    info8: "\n8.  Destroy Server"
