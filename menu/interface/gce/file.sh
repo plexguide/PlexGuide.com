@@ -224,7 +224,7 @@ echo "---------------------------------------------------"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 exit
-else
+fi
 
 #gcloud compute instance-templates list
 
