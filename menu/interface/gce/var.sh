@@ -25,18 +25,3 @@ file="/var/plexguide/project.final"
   else
     echo "[NOT SET]" > /var/plexguide/project.final
   fi
-
-file="/var/plexguide/project.keycount"
-  if [ -e "$file" ]; then
-    echo "" 1>/dev/null 2>&1
-  else
-    echo "0" > /var/plexguide/project.keycount
-  fi
-
-### For PGBlitz - Ensure Not Deployed Start
-  file="/var/plexguide/project.deployed"
-    if [ -e "$file" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
-      echo "no" > /var/plexguide/project.deployed
-    fi
