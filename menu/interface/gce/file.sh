@@ -273,8 +273,16 @@ echo ""
 projectname=$(cat /var/plexguide/project.final)
 region=$(cat /var/plexguide/project.ipregion)
 gcloud compute addresses create pg-gce --region $region --project $projectname
+gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/project.ipaddress
+ipaddress=$(cat /var/plexguide/project.ipaddress)
 sleep 1.5
-
+echo "" & echo ""
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Passed! GCE IP: $ipaddress"
+echo "---------------------------------------------------"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo "" & echo ""
 fi
 
 if [ "$menu" == "7" ]; then
