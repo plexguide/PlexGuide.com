@@ -231,7 +231,7 @@ gcloud compute instance-templates create pg-gce-blueprint \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme
 
-sleep .5
+sleep 2
 
 echo ""
 echo "---------------------------------------------------"
@@ -246,4 +246,5 @@ echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Deployment Complete"
 echo "---------------------------------------------------"
 echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
