@@ -378,6 +378,7 @@ echo "------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
+location=$(cat /var/plexguide/project.location)
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
 #--address $ipaddress
 echo ""
@@ -391,7 +392,8 @@ echo ""
 
 gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/project.ipaddress
 ipaddress=$(cat /var/plexguide/project.ipaddress)
-gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat"
+ipregion=$(cat /var/plexguide/project.ipregion)
+gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipregion
 gcloud compute instances add-access-config pg-gce --access-config-name “external-nat” --address $ipaddress
 echo ""
 
