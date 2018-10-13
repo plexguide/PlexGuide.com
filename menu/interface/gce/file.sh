@@ -94,9 +94,9 @@ if [ "$menu" == "4" ]; then
   echo "SYSTEM MESSAGE: Current Processor Count Interface"
   echo "---------------------------------------------------"
   echo ""
-  echo "NOTE: Processor Count: $pcount"
+  echo "NOTE: Processor Count: [$pcount]"
   echo ""
-  read -p "Do You Want Set or Change the Processor Count? " -n 1 -r
+  read -p "Set or Change the Processor Count (y/n)? " -n 1 -r
   echo    # move cursor to a new line
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
