@@ -265,6 +265,31 @@ done
 
 ############## IP Address - Part 2
 echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Deleting Any Prior GCE IP Address"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
+
+  break=off
+  while [ $break == off]; do
+  ipdelete=$(gcloud compute addresses list | grep pg-gce | tail -n +2)
+
+    if [ $ipdelete != ""]; then
+    regdelete=$(gcloud compute addresses list | grep pg-gce | tail -n +2 | awk '{print $2}')
+    addprint=$(gcloud compute addresses list | grep pg-gce | tail -n +2 | awk '{print $3}')
+    gcloud compute addresses delete pg-gce --region=us-east4 --quiet
+    echo "" & echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: Deleted $regdelete - $addprint"
+    echo "---------------------------------------------------"
+    else
+    break=on
+    fi
+  done
+
+echo "" & echo ""
+echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Creating New IP Address"
 echo "---------------------------------------------------"
 echo ""
