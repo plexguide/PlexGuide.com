@@ -123,10 +123,10 @@ if [ "$menu" == "4" ]; then
     echo "SYSTEM MESSAGE: Processor Count Interface"
     echo "---------------------------------------------------"
     echo ""
-    echo "NOTE: More Processors = Faster Credit Drain"
-    echo ""
     echo "Ideal Processor Usage = 3"
     echo "Set Your Processor Count | Range 2 - 6"
+    echo ""
+    echo "NOTE: More Processors = Faster Credit Drain"
     echo ""
     read -p 'Type a Number from 2 - 6 | PRESS [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
