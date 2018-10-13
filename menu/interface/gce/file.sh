@@ -20,16 +20,16 @@ menu=$(cat /var/plexguide/final.choice)
 if [ "$menu" == "2" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Prevents Conflicts with Changes!"
   echo ""
@@ -45,16 +45,16 @@ fi
 if [ "$menu" == "3" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Prevents Conflicts with Changes!"
   echo ""
@@ -78,9 +78,9 @@ if [ "$menu" == "3" ]; then
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     echo ""
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
@@ -103,9 +103,9 @@ if [ "$menu" == "3" ]; then
     echo ""
 
     if [ "$typed" != "$list" ]; then
-      echo "------------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo "SYSTEM MESSAGE: Failed! Please type the exact name!"
-      echo "------------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     else
@@ -128,16 +128,16 @@ fi
 if [ "$menu" == "4" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Prevents Conflicts with Changes!"
   echo ""
@@ -149,9 +149,9 @@ if [ "$menu" == "4" ]; then
   ### Part 1
   pcount=$(cat /var/plexguide/project.processor)
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Current Processor Count Interface"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Processor Count: [$pcount]"
   echo ""
@@ -160,9 +160,9 @@ if [ "$menu" == "4" ]; then
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     echo ""
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
@@ -177,9 +177,9 @@ if [ "$menu" == "4" ]; then
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Processor Count Interface"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     echo "Ideal Processor Usage = 3"
     echo "Set Your Processor Count | Range 2 - 6"
@@ -191,9 +191,9 @@ if [ "$menu" == "4" ]; then
     echo ""
 
     if [ "$tcheck" == "" ]; then
-      echo "------------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo "SYSTEM MESSAGE: Failed! Type a Number from 2 - 6"
-      echo "------------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo ""
@@ -215,16 +215,16 @@ fi
 if [ "$menu" == "5" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Prevents Conflicts with Changes!"
   echo ""
@@ -256,9 +256,9 @@ tcheck=""
 break=off
 while [ "$break" == "off" ]; do
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Google Cloud Server Zones List"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   cat /tmp/zones.print
   echo ""
   read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
@@ -267,9 +267,9 @@ while [ "$break" == "off" ]; do
   echo ""
 
   if [ "$tcheck" == "" ]; then
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Failed! Type a Server Location"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo ""
@@ -289,16 +289,16 @@ fi
 if [ "$menu" == "6" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Prevents Conflicts with Changes!"
   echo ""
@@ -331,9 +331,9 @@ tcheck=""
 break=off
 while [ "$break" == "off" ]; do
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Google Cloud IP Regions List"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   cat /tmp/regions.print
   echo "" && echo ""
   read -p 'Type the Name of an IP Region | PRESS [ENTER]: ' typed
@@ -341,17 +341,17 @@ while [ "$break" == "off" ]; do
   tcheck=$(echo $prange | grep $typed)
 
   if [ "$tcheck" == "" ]; then
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Failed! Type an IP Region Name"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo ""
     echo ""
   else
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Passed! IP Region $typed Set"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     echo $typed > /var/plexguide/project.ipregion
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
@@ -362,9 +362,9 @@ while [ "$break" == "off" ]; do
 done
 
 ############## IP Address - Part 2
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Deleting Any Prior GCE IP Addresses"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 
@@ -378,18 +378,18 @@ echo "NOTE: Please Standby"
     addprint=$(gcloud compute addresses list | grep pg-gce | head -n +1 | awk '{print $3}')
     gcloud compute addresses delete pg-gce --region=$regdelete --quiet
     echo ""
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Deleted $regdelete - $addprint"
-    echo "------------------------------------------------------"
+    echo "--------------------------------------------------------"
     else
     break=on
     fi
   done
 
 echo ""
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Creating New IP Address"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 echo ""
@@ -400,9 +400,9 @@ gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/
 ipaddress=$(cat /var/plexguide/project.ipaddress)
 sleep 1.5
 echo "" & echo ""
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Passed! GCE IP: $ipaddress"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
@@ -411,16 +411,16 @@ fi
 if [ "$menu" == "7" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   echo "NOTE: Prevents Conflicts with Changes!"
   echo ""
@@ -431,16 +431,16 @@ if [ "$menu" == "7" ]; then
 
 ############ FireWall
 echo ""
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Checking PG GCE Firewall Rules"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 
 inslist=$(gcloud compute firewall-rules list | grep plexguide)
 if [ "$inslist" == "" ]; then
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: FireWall Rules Do Not Exist!"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Building Firewall Rules! Please Wait"
 echo ""
@@ -450,18 +450,18 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 ########### Deployment
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Setting Variables for Deployment"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 location=$(cat /var/plexguide/project.location)
 gcecpu=$(cat /var/plexguide/project.processor)
 
 sleep 1.5
 
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Building PG GCE Template"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
@@ -474,9 +474,9 @@ gcloud compute instance-templates create pg-gce-blueprint \
 sleep 2
 
 echo ""
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Deploying PG GCE Server"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
@@ -485,9 +485,9 @@ gcloud compute instances create pg-gce --source-instance-template pg-gce-bluepri
 #--address $ipaddress
 echo ""
 
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Assigning the IP Address to the GCE"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 echo ""
@@ -501,9 +501,9 @@ gcloud compute instances add-access-config pg-gce --access-config-name “extern
 echo ""
 
 ######## Final Message
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Deployment Complete"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
@@ -511,13 +511,14 @@ fi
 if [ "$menu" == "8" ]; then
 ######## Final Message
 echo ""
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Securly Entering Your GCE Feeder Box"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: If asked to create keys, remember the passcodes!"
 echo "1. To exit the GCE, type exit!"
 echo "2. Install PG on your GCE and Select Feeder Edition!"
+echo "3. Problems? Try rm -r /root/.ssh/google_compute_engine"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
@@ -525,9 +526,9 @@ echo ""
 ipproject=$(cat /var/plexguide/project.location)
 gcloud compute ssh pg-gce --zone $ipproject
 echo ""
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Welcome Back To Your Main Server"
-echo "------------------------------------------------------"
+echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Sanity Check - You Exited Your GCE Feeder Box"
 echo ""
@@ -536,18 +537,19 @@ fi
 
 if [ "$menu" == "9" ]; then
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Destroying GCE Server"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   location=$(cat /var/plexguide/project.location)
   echo "NOTE: Please Standby"
   echo ""
   gcloud compute instances delete pg-gce --quiet --zone $location
+  rm -r /root/.ssh/google_compute_engine
   echo ""
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: PG GCE Server Destoryed!"
-  echo "------------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
