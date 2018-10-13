@@ -404,3 +404,19 @@ echo "------------------------------------------------------"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
+
+if [ "$menu" == "8" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Destroying GCE Server"
+  echo "------------------------------------------------------"
+  echo ""
+  location=$(cat /var/plexguide/project.location)
+  echo "NOTE: Please Standby"
+  echo ""
+  gcloud compute instances delete pg-gce --quiet --zone $location
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: PG GCE Server Destoryed!"
+  echo "------------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+fi
