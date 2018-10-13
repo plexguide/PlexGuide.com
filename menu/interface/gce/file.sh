@@ -416,6 +416,7 @@ if [ "$menu" == "8" ]; then
   echo "NOTE: Please Standby"
   echo ""
   gcloud compute instances delete pg-gce --quiet --zone $location
+  echo ""
   echo "------------------------------------------------------"
   echo "SYSTEM MESSAGE: PG GCE Server Destoryed!"
   echo "------------------------------------------------------"
