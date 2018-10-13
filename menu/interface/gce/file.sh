@@ -227,7 +227,6 @@ fi
 
 #gcloud compute instance-templates list
 
-echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Setting Variables for Deployment"
 echo "---------------------------------------------------"
