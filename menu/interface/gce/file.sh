@@ -146,6 +146,7 @@ if [ "$menu" == "4" ]; then
       echo ""
       echo $typed > /var/plexguide/project.processor
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      break=on
     fi
   done
 
