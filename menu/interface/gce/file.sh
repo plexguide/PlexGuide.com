@@ -509,6 +509,7 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 ######## Final Message
+echo ""
 echo "------------------------------------------------------"
 echo "SYSTEM MESSAGE: Securly Entering Your GCE Feeder Box"
 echo "------------------------------------------------------"
@@ -524,7 +525,7 @@ ipproject=$(cat /var/plexguide/project.location)
 gcloud compute ssh pg-gce --zone $ipproject
 echo ""
 echo "------------------------------------------------------"
-echo "SYSTEM MESSAGE: Welcome Back To Your Main Servefr"
+echo "SYSTEM MESSAGE: Welcome Back To Your Main Server"
 echo "------------------------------------------------------"
 echo ""
 echo "NOTE: Sanity Check - You Exited Your GCE Feeder Box"
