@@ -206,6 +206,7 @@ while [ "$break" == "off" ]; do
     break=on
   fi
 done
+fi
 
 if [ "$menu" == "6" ]; then
 gcloud compute regions list | awk '{print $1}' | tail -n +2 > /tmp/regions.list
