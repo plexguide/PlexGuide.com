@@ -215,8 +215,8 @@ echo "SYSTEM MESSAGE: Checking Existing Deployment"
 echo "---------------------------------------------------"
 echo ""
 
-inslist=$(gcloud compute instances list | grep 'pg-gce')
-if [ "$inslist" == "" ]; then
+inslist=$(gcloud compute instances list | grep pg-gce)
+if [ "$inslist" != "" ]; then
 echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
