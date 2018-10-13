@@ -138,6 +138,7 @@ if [ "$menu" == "4" ]; then
       echo "---------------------------------------------------"
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo ""
     else
       echo "----------------------------------------------"
       echo "SYSTEM MESSAGE: Passed! Process Count $typed Set"
