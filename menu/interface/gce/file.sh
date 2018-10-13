@@ -235,7 +235,7 @@ while [ "$break" == "off" ]; do
   echo "SYSTEM MESSAGE: Google Cloud IP Regions List"
   echo "---------------------------------------------------"
   cat /tmp/regions.print
-  echo ""
+  echo "" && echo ""
   read -p 'Type the Name of an IP Region | PRESS [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
