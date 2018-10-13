@@ -217,7 +217,6 @@ echo ""
 
 inslist=$(gcloud compute instances list | grep pg-gce)
 if [ "$inslist" != "" ]; then
-echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
 echo "---------------------------------------------------"
