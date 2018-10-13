@@ -207,6 +207,7 @@ while [ "$break" == "off" ]; do
   fi
 done
 
+if [ "$menu" == "6" ]; then
 gcloud compute zones list | awk '{print $1}' | tail -n +2 > /tmp/zones.list
 num=0
 echo " " > /tmp/zones.print
@@ -257,13 +258,9 @@ while [ "$break" == "off" ]; do
     break=on
   fi
 done
-
-
-
-
 fi
 
-if [ "$menu" == "6" ]; then
+if [ "$menu" == "7" ]; then
 ########## Prior Deployment Check
 echo ""
 echo "---------------------------------------------------"
