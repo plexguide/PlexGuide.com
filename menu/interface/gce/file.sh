@@ -306,7 +306,7 @@ gcloud compute instance-templates create pg-gce-blueprint \
 --custom-cpu $gcecpu --custom-memory 8GB \
 --image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
 --boot-disk-auto-delete --boot-disk-size 100GB \
---local-ssd interface=nvme
+--local-ssd interface=nvme --address $ipaddress
 
 sleep 2
 
