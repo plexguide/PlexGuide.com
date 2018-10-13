@@ -519,6 +519,7 @@ echo "2. Install PG on your GCE and Select Feeder Edition!"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
+echo ""
 ipproject=$(cat /var/plexguide/project.location)
 gcloud compute ssh pg-gce --zone $ipproject
 echo ""
