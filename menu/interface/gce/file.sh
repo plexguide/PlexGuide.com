@@ -278,7 +278,7 @@ echo "NOTE: Please Standby"
     regdelete=$(gcloud compute addresses list | grep pg-gce | head -n +1 | awk '{print $2}')
     addprint=$(gcloud compute addresses list | grep pg-gce | head -n +1 | awk '{print $3}')
     gcloud compute addresses delete pg-gce --region=$regdelete --quiet
-    echo "" & echo ""
+    echo ""
     echo "------------------------------------------------------"
     echo "SYSTEM MESSAGE: Deleted $regdelete - $addprint"
     echo "------------------------------------------------------"
