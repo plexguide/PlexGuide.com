@@ -274,7 +274,7 @@ echo ""
 echo "NOTE: Please Standby"
 echo ""
 projectname=$(cat /var/plexguide/project.final)
-gcloud compute addresses create pg-gce --region --ip-version IPV4 --project $projectname
+gcloud compute addresses create pg-gce --ip-version IPV4 --project $projectname
 sleep 1.5
 
 echo "---------------------------------------------------"
