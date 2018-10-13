@@ -210,12 +210,35 @@ fi
 
 if [ "$menu" == "7" ]; then
 
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Setting Variables for Deployment"
+echo "---------------------------------------------------"
+echo ""
+location=$(cat /var/plexguide/project.location)
+gcecpu=$(cat /var/plexguide/project.processor)
+sleep 1.5
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Building PG GCE Template"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby!"
+echo ""
 gcloud compute instance-templates create pg-gce-blueprint \
---custom-cpu 2 --custom-memory 8GB \
+--custom-cpu $gcecpu --custom-memory 8GB \
 --image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme \
+sleep .5
 
-gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone us-east1-b
-
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Deploying PG GCE Server"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby!"
+echo ""
+gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Deployment Complete"
+echo "---------------------------------------------------"
+echo ""
 fi
