@@ -20,13 +20,17 @@
   shell: "cat /var/plexguide/project.final"
   register: project
 
-- name: Register Project
+- name: Register Account
   shell: "cat /var/plexguide/project.account"
   register: account
 
-- name: Register Project
-  shell: "cat /var/plexguide/project.keycount"
-  register: count
+- name: Register Processor Count
+  shell: "cat /var/plexguide/project.processor"
+  register: processor
+
+- name: Register Zone Location
+  shell: "cat /var/plexguide/project.location"
+  register: location
 
 - name: "Key Menu Facts"
   set_fact:
@@ -34,7 +38,7 @@
     head2: ""
     info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
     info3: "\n3.  Establish Project ID  : [{{project.stdout}}]"
-    info4: "\n4.  Set Processor Count   : NOT-SET"
-    info5: "\n5.  Set Server Location   : NOT-SET"
+    info4: "\n4.  Set Processor Count   : [{{processor.stdout}}]"
+    info5: "\n5.  Set Server Location   : [{{processor.stdout}}]"
     info6: "\n6.  Deploy PG GCE Server  : Not Deployed"
     info7: "\n7.  Destroy Server"

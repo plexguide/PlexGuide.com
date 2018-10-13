@@ -28,3 +28,8 @@ file="/var/plexguide/project.processor"
   if [ ! -e "$file" ]; then
     echo "NOT-SET" > /var/plexguide/project.processor
   fi
+
+file="/var/plexguide/project.location"
+  if [ ! -e "$file" ]; then
+    echo "NOT-SET" > /var/plexguide/project.location
+  fi
