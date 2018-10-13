@@ -317,7 +317,8 @@ echo "---------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
-gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location --address $ipaddress
+gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
+#--address $ipaddress
 echo ""
 
 ######## Final Message
