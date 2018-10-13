@@ -256,7 +256,8 @@ while [ "$break" == "off" ]; do
     echo ""
     echo $typed > /var/plexguide/project.ipregion
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-    echo "" & echo ""
+    echo ""
+    echo ""
     break=on
   fi
 done
@@ -286,7 +287,7 @@ echo "NOTE: Please Standby"
     fi
   done
 
-echo "" & echo ""
+echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Creating New IP Address"
 echo "---------------------------------------------------"
