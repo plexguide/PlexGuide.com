@@ -407,6 +407,7 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 if [ "$menu" == "8" ]; then
+  echo ""
   echo "------------------------------------------------------"
   echo "SYSTEM MESSAGE: Destroying GCE Server"
   echo "------------------------------------------------------"
