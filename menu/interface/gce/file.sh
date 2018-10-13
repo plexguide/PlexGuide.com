@@ -510,15 +510,25 @@ fi
 
 ######## Final Message
 echo "------------------------------------------------------"
-echo "SYSTEM MESSAGE: Securly Enter Your GCE Feeder Box"
+echo "SYSTEM MESSAGE: Securly Entering Your GCE Feeder Box"
 echo "------------------------------------------------------"
 echo ""
 echo "NOTE: If asked to create keys, remember the passcodes!"
+echo "1. To exit the GCE, type exit!"
+echo "2. Install PG on your GCE and Select Feeder Edition!"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 ipproject=$(cat /var/plexguide/project.location)
 gcloud compute ssh pg-gce --zone $ipproject
+echo ""
+echo "------------------------------------------------------"
+echo "SYSTEM MESSAGE: Welcome Back To Your Main Servefr"
+echo "------------------------------------------------------"
+echo ""
+echo "NOTE: Sanity Check - You Exited Your GCE Feeder Box"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 if [ "$menu" == "9" ]; then
