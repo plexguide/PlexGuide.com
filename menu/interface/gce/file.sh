@@ -262,7 +262,7 @@ echo "---------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 echo ""
-gcloud compute addresses delete $location --global --quiet
+#gcloud compute addresses delete $location --global --quiet
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
