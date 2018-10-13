@@ -39,6 +39,6 @@
     info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
     info3: "\n3.  Establish Project ID  : [{{project.stdout}}]"
     info4: "\n4.  Set Processor Count   : [{{processor.stdout}}]"
-    info5: "\n5.  Set Server Location   : [{{processor.stdout}}]"
+    info5: "\n5.  Set Server Location   : [{{location.stdout}}]"
     info6: "\n6.  Deploy PG GCE Server  : Not Deployed"
     info7: "\n7.  Destroy Server"

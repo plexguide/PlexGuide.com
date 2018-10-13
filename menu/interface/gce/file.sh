@@ -201,7 +201,7 @@ while [ "$break" == "off" ]; do
     echo "SYSTEM MESSAGE: Passed! Location $typed Set"
     echo "----------------------------------------------"
     echo ""
-    echo $typed > /var/plexguide/project.processor
+    echo $typed > /var/plexguide/project.location
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     break=on
   fi
