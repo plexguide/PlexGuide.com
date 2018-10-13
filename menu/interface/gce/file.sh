@@ -264,7 +264,7 @@ done
 
 ############## IP Address - Part 2
 echo "------------------------------------------------------"
-echo "SYSTEM MESSAGE: Deleting Any Prior GCE IP Address"
+echo "SYSTEM MESSAGE: Deleting Any Prior GCE IP Addresses"
 echo "------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
@@ -306,7 +306,7 @@ echo "SYSTEM MESSAGE: Passed! GCE IP: $ipaddress"
 echo "------------------------------------------------------"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-echo "" & echo ""
+echo ""
 fi
 
 if [ "$menu" == "7" ]; then
