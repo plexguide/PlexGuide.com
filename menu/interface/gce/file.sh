@@ -88,6 +88,63 @@ fi
 
 if [ "$menu" == "4" ]; then
 
+  ### Part 1
+  pcount=$(cat /var/plexguide/project.processor)
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: Current Processor Count: $pcount"
+  echo "---------------------------------------------------"
+  echo ""
+  read -p "Set or Change the Processor Count " -n 1 -r
+  echo    # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo "";
+      exit 1;
+  else
+      echo "";
+  fi
+
+  ### part 2
+  typed=nullstart
+  prange="2 3 4 5 6"
+  tcheck=""
+  break=off
+  while [ "$break" == "off" ]; do
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: Processor Count Interface"
+    echo "---------------------------------------------------"
+    echo ""
+    echo "NOTE: More Processors = Faster Credit Drain"
+    echo "Ideal Processor Usage = 3"
+    echo "Set Your Processor Count | Range is from 2 - 6"
+    echo ""
+    read -p 'Type a Number 2 - 6 & Then PRESS [ENTER]: ' typed
+    tcheck=$(echo $prange | grep $typed)
+    echo ""
+
+    if [ "$tcheck" == "" ]; then
+      echo "---------------------------------------------------"
+      echo "SYSTEM MESSAGE: Failed! Type a Number from 2 - 6"
+      echo "---------------------------------------------------"
+      echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    else
+      echo "----------------------------------------------"
+      echo "SYSTEM MESSAGE: Passed! Process Count $typed Set"
+      echo "----------------------------------------------"
+      echo ""
+      echo $typed > /var/plexguide/project.processor
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    fi
+  done
+
+
 fi
 
 
