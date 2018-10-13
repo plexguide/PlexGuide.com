@@ -296,7 +296,7 @@ echo "---------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 echo ""
-#gcloud compute firewall-rules create plexguide --allow all
+gcloud compute addresses delete $location --global --quiet
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
@@ -307,7 +307,7 @@ echo "---------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 echo ""
-projectname=$(cat echo $typed > /var/plexguide/project.final)
+projectname=$(cat /var/plexguide/project.final)
 gcloud compute addresses create pg-gce --global --ip-version IPV4 --project $projectname
 sleep 1
 
