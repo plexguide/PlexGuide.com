@@ -233,6 +233,7 @@ gcloud compute instance-templates create pg-gce-blueprint \
 
 sleep .5
 
+echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Deploying PG GCE Server"
 echo "---------------------------------------------------"
@@ -240,6 +241,7 @@ echo ""
 echo "NOTE: Please Standby!"
 echo ""
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
+echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Deployment Complete"
 echo "---------------------------------------------------"
