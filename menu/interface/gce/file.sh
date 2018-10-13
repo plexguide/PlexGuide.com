@@ -211,6 +211,25 @@ fi
 if [ "$menu" == "6" ]; then
 echo ""
 echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Checking Existing Deployment"
+echo "---------------------------------------------------"
+echo ""
+
+inslist=$(gcloud compute instances list | grep 'pg-gce')
+if [ "$inslist" == "" ]; then
+echo ""
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+echo "---------------------------------------------------"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+exit
+else
+
+#gcloud compute instance-templates list
+
+echo ""
+echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Setting Variables for Deployment"
 echo "---------------------------------------------------"
 echo ""
