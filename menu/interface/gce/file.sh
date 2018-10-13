@@ -247,40 +247,6 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 #gcloud compute instance-templates list
-
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Setting Variables for Deployment"
-echo "---------------------------------------------------"
-echo ""
-location=$(cat /var/plexguide/project.location)
-gcecpu=$(cat /var/plexguide/project.processor)
-
-sleep 1.5
-
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Building PG GCE Template"
-echo "---------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby!"
-echo ""
-gcloud compute instance-templates create pg-gce-blueprint \
---custom-cpu $gcecpu --custom-memory 8GB \
---image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
---boot-disk-auto-delete --boot-disk-size 100GB \
---local-ssd interface=nvme
-
-sleep 2
-
-echo ""
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Deploying PG GCE Server"
-echo "---------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby!"
-echo ""
-gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
-echo ""
-
 ############ IP Address
 echo ""
 echo "---------------------------------------------------"
@@ -309,8 +275,50 @@ echo "NOTE: Please Standby"
 echo ""
 projectname=$(cat /var/plexguide/project.final)
 gcloud compute addresses create pg-gce --global --ip-version IPV4 --project $projectname
+sleep 1.5
+
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Mounting IP Address to the PG GCE"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
 gcloud compute addresses list | grep pg-gce | awk '{print $2}' > /var/plexguide/project.ipaddress
-sleep 1
+ipaddress=$(cat /var/plexguide/project.ipaddress)
+
+########### Deployment
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Setting Variables for Deployment"
+echo "---------------------------------------------------"
+echo ""
+location=$(cat /var/plexguide/project.location)
+gcecpu=$(cat /var/plexguide/project.processor)
+
+sleep 1.5
+
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Building PG GCE Template"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby!"
+echo ""
+gcloud compute instance-templates create pg-gce-blueprint \
+--custom-cpu $gcecpu --custom-memory 8GB \
+--image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
+--boot-disk-auto-delete --boot-disk-size 100GB \
+--local-ssd interface=nvme --address $ipaddress
+
+sleep 2
+
+echo ""
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Deploying PG GCE Server"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby!"
+echo ""
+gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
+echo ""
 
 ######## Final Message
 echo "---------------------------------------------------"
