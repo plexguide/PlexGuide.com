@@ -208,8 +208,8 @@ while [ "$break" == "off" ]; do
 done
 fi
 
-if [ "$menu" == "7" ]; then
-
+if [ "$menu" == "6" ]; then
+echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Setting Variables for Deployment"
 echo "---------------------------------------------------"
