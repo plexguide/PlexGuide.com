@@ -273,8 +273,9 @@ echo ""
 
   break=off
   while [ $break == off ]; do
-  ipdelete=$(gcloud compute addresses list | grep pg-gce | tail -n +2)
 
+  gcloud compute addresses list | grep pg-gce | tail -n +2 > /tmp/ip.delete
+  ipdelete=$(cat /tmp/ip.delete)
     if [ $ipdelete != "" ]; then
     regdelete=$(gcloud compute addresses list | grep pg-gce | tail -n +2 | awk '{print $2}')
     addprint=$(gcloud compute addresses list | grep pg-gce | tail -n +2 | awk '{print $3}')
