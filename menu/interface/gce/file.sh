@@ -254,19 +254,6 @@ echo "SYSTEM MESSAGE: Checking PG External Address Rules"
 echo "---------------------------------------------------"
 echo ""
 
-inslist=$(gcloud compute addresses list | grep pg-gce)
-if [ "$inslist" != "" ]; then
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Deleting Old IP Address"
-echo "---------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby"
-echo ""
-#gcloud compute addresses delete $location --global --quiet
-echo ""
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-fi
-
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Creating New IP Address"
 echo "---------------------------------------------------"
@@ -276,15 +263,6 @@ echo ""
 projectname=$(cat /var/plexguide/project.final)
 gcloud compute addresses create pg-gce --ip-version IPV4 --project $projectname
 sleep 1.5
-
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Mounting IP Address to the PG GCE"
-echo "---------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby"
-echo ""
-gcloud compute addresses list | grep pg-gce | awk '{print $2}' > /var/plexguide/project.ipaddress
-ipaddress=$(cat /var/plexguide/project.ipaddress)
 
 ########### Deployment
 echo "---------------------------------------------------"
@@ -319,6 +297,30 @@ echo "NOTE: Please Standby!"
 echo ""
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
 #--address $ipaddress
+echo ""
+
+############## IP Address
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Creating New IP Address"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
+projectname=$(cat /var/plexguide/project.final)
+gcloud compute addresses create pg-gce --region us-east4 --project $projectname
+sleep 1.5
+
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Assigning the IP Address to the GCE"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
+
+gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/project.ipaddress
+ipaddress=$(cat /var/plexguide/project.ipaddress)
+gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat"
+gcloud compute instances add-access-config pg-gce --access-config-name “external-nat” --address $ipaddress
 echo ""
 
 ######## Final Message
