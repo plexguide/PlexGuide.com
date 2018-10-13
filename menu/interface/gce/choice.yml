@@ -36,6 +36,10 @@
   shell: "cat /var/plexguide/project.ipregion"
   register: ipregion
 
+- name: Register IP region
+  shell: "cat /var/plexguide/project.ipaddress"
+  register: ipaddress
+
 - name: "Key Menu Facts"
   set_fact:
     head1: "\nPlexGuide Settings Interface - Make a Selection"
@@ -44,6 +48,6 @@
     info3: "\n3.  Establish Project ID  : [{{project.stdout}}]"
     info4: "\n4.  Set Processor Count   : [{{processor.stdout}}]"
     info5: "\n5.  Set Server Location   : [{{location.stdout}}]"
-    info6: "\n6.  IP Region & Address   : [{{ipregion.stdout}}]"
+    info6: "\n6.  IP Region & Address   : [{{ipregion.stdout}}]" - [{{ipaddress.stdout}}]"
     info7: "\n7.  Deploy PG GCE Server  : Not Deployed"
     info8: "\n8.  Destroy Server"

@@ -38,3 +38,8 @@ file="/var/plexguide/project.ipregion"
   if [ ! -e "$file" ]; then
     echo "NOT-SET" > /var/plexguide/project.ipregion
   fi
+
+file="/var/plexguide/project.ipaddress"
+  if [ ! -e "$file" ]; then
+    echo "IP NOT-SET" > /var/plexguide/project.ipaddress
+  fi
