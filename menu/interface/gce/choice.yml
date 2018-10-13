@@ -51,4 +51,4 @@
     info6: "\n6.  IP Region & Address   : [{{ipregion.stdout}}] - [{{ipaddress.stdout}}]"
     info7: "\n7.  Deploy PG GCE Server  : Not Deployed"
     info8: "\n8.  SSH Securly into your GCE Feeder Box"
-    info8: "\n9.  Destroy Server"
+    info9: "\n9.  Destroy Server"
