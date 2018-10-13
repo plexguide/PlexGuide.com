@@ -250,9 +250,9 @@ while [ "$break" == "off" ]; do
     echo ""
     echo ""
   else
-    echo "----------------------------------------------"
+    echo "---------------------------------------------------"
     echo "SYSTEM MESSAGE: Passed! IP Region $typed Set"
-    echo "----------------------------------------------"
+    echo "---------------------------------------------------"
     echo ""
     echo $typed > /var/plexguide/project.ipregion
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
