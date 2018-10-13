@@ -240,7 +240,6 @@ while [ "$break" == "off" ]; do
   read -p 'Type the Name of an IP Region | PRESS [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
-  echo ""
 
   if [ "$tcheck" == "" ]; then
     echo "---------------------------------------------------"
