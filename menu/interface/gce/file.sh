@@ -18,11 +18,51 @@
 menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
+  ########## Server Must Not Be Deployed - START
+  echo ""
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existing Deployment"
+  echo "------------------------------------------------------"
+  echo ""
+
+  inslist=$(gcloud compute instances list | grep pg-gce)
+  if [ "$inslist" != "" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+  echo "------------------------------------------------------"
+  echo ""
+  echo "NOTE: Prevents Conflicts with Changes!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  exit
+  fi
+  ########## Server Must Not Be Deployed - END
+
   gcloud auth login
   echo "[NOT SET]" > /var/plexguide/project.final
 fi
 
 if [ "$menu" == "3" ]; then
+  ########## Server Must Not Be Deployed - START
+  echo ""
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existing Deployment"
+  echo "------------------------------------------------------"
+  echo ""
+
+  inslist=$(gcloud compute instances list | grep pg-gce)
+  if [ "$inslist" != "" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+  echo "------------------------------------------------------"
+  echo ""
+  echo "NOTE: Prevents Conflicts with Changes!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  exit
+  fi
+  ########## Server Must Not Be Deployed - END
+
   echo ""
   gcloud projects list && gcloud projects list > /var/plexguide/projects.list
   echo ""
@@ -86,6 +126,25 @@ if [ "$menu" == "3" ]; then
 fi
 
 if [ "$menu" == "4" ]; then
+  ########## Server Must Not Be Deployed - START
+  echo ""
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existing Deployment"
+  echo "------------------------------------------------------"
+  echo ""
+
+  inslist=$(gcloud compute instances list | grep pg-gce)
+  if [ "$inslist" != "" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+  echo "------------------------------------------------------"
+  echo ""
+  echo "NOTE: Prevents Conflicts with Changes!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  exit
+  fi
+  ########## Server Must Not Be Deployed - END
 
   ### Part 1
   pcount=$(cat /var/plexguide/project.processor)
@@ -154,6 +213,26 @@ if [ "$menu" == "4" ]; then
 fi
 
 if [ "$menu" == "5" ]; then
+  ########## Server Must Not Be Deployed - START
+  echo ""
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existing Deployment"
+  echo "------------------------------------------------------"
+  echo ""
+
+  inslist=$(gcloud compute instances list | grep pg-gce)
+  if [ "$inslist" != "" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+  echo "------------------------------------------------------"
+  echo ""
+  echo "NOTE: Prevents Conflicts with Changes!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  exit
+  fi
+  ########## Server Must Not Be Deployed - END
+
 ### Part 1
 gcloud compute zones list | awk '{print $1}' | tail -n +2 > /tmp/zones.list
 num=0
@@ -208,6 +287,26 @@ done
 fi
 
 if [ "$menu" == "6" ]; then
+  ########## Server Must Not Be Deployed - START
+  echo ""
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existing Deployment"
+  echo "------------------------------------------------------"
+  echo ""
+
+  inslist=$(gcloud compute instances list | grep pg-gce)
+  if [ "$inslist" != "" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+  echo "------------------------------------------------------"
+  echo ""
+  echo "NOTE: Prevents Conflicts with Changes!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  exit
+  fi
+  ########## Server Must Not Be Deployed - END
+
 gcloud compute regions list | awk '{print $1}' | tail -n +2 > /tmp/regions.list
 num=0
 echo " " > /tmp/regions.print
@@ -310,22 +409,25 @@ echo ""
 fi
 
 if [ "$menu" == "7" ]; then
-########## Prior Deployment Check
-echo ""
-echo "------------------------------------------------------"
-echo "SYSTEM MESSAGE: Checking Existing Deployment"
-echo "------------------------------------------------------"
-echo ""
+  ########## Server Must Not Be Deployed - START
+  echo ""
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existing Deployment"
+  echo "------------------------------------------------------"
+  echo ""
 
-inslist=$(gcloud compute instances list | grep pg-gce)
-if [ "$inslist" != "" ]; then
-echo "------------------------------------------------------"
-echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-echo "------------------------------------------------------"
-echo ""
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-exit
-fi
+  inslist=$(gcloud compute instances list | grep pg-gce)
+  if [ "$inslist" != "" ]; then
+  echo "------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+  echo "------------------------------------------------------"
+  echo ""
+  echo "NOTE: Prevents Conflicts with Changes!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  exit
+  fi
+  ########## Server Must Not Be Deployed - END
 
 ############ FireWall
 echo ""
