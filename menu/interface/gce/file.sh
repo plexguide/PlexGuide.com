@@ -508,7 +508,20 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
-if [ "$menu" == "8" ]; then
+######## Final Message
+echo "------------------------------------------------------"
+echo "SYSTEM MESSAGE: Securly Enter Your GCE Feeder Box"
+echo "------------------------------------------------------"
+echo ""
+echo "NOTE: If asked to create keys, remember the passcodes!"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+ipproject=$(cat /var/plexguide/project.location)
+gcloud compute ssh pg-gce --zone $ipproject
+fi
+
+if [ "$menu" == "9" ]; then
   echo ""
   echo "------------------------------------------------------"
   echo "SYSTEM MESSAGE: Destroying GCE Server"
