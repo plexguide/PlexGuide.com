@@ -225,6 +225,8 @@ while read p; do
 done </tmp/regions.list
 
 ### Part 2
+#gcloud compute regions list | awk '{print $1}' | tail -n +2 > /var/plexguide/project.region
+
 typed=nullstart
 prange=$(cat /tmp/regions.print)
 tcheck=""
@@ -259,6 +261,19 @@ while [ "$break" == "off" ]; do
     break=on
   fi
 done
+
+############## IP Address - Part 2
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Creating New IP Address"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
+projectname=$(cat /var/plexguide/project.final)
+region=$(cat /var/plexguide/project.ipregion)
+gcloud compute addresses create pg-gce --region $region --project $projectname
+sleep 1.5
+
 fi
 
 if [ "$menu" == "7" ]; then
@@ -299,24 +314,6 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
-#gcloud compute instance-templates list
-############ IP Address
-echo ""
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Checking PG External Address Rules"
-echo "---------------------------------------------------"
-echo ""
-
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Creating New IP Address"
-echo "---------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby"
-echo ""
-projectname=$(cat /var/plexguide/project.final)
-gcloud compute addresses create pg-gce --ip-version IPV4 --project $projectname
-sleep 1.5
-
 ########### Deployment
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Setting Variables for Deployment"
@@ -351,21 +348,6 @@ echo ""
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
 #--address $ipaddress
 echo ""
-
-gcloud compute regions list | awk '{print $1}' | tail -n +2 > /var/plexguide/project.region
-
-
-
-############## IP Address
-echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Creating New IP Address"
-echo "---------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby"
-echo ""
-projectname=$(cat /var/plexguide/project.final)
-gcloud compute addresses create pg-gce --region us-east4 --project $projectname
-sleep 1.5
 
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Assigning the IP Address to the GCE"
