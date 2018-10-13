@@ -57,7 +57,6 @@ if [ "$menu" == "3" ]; then
     echo ""
     cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
     cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
-    echo ""
     echo "NOTE: Type the Name of the Project you want to utilize!"
     read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
     list=$(cat /var/plexguide/project.cut | grep $typed)
@@ -269,7 +268,6 @@ echo "SYSTEM MESSAGE: Deleting Any Prior GCE IP Address"
 echo "---------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
-echo ""
 
   break=off
   while [ "$break" == off ]; do
@@ -279,7 +277,7 @@ echo ""
     if [ "$ipdelete" != "" ]; then
     regdelete=$(gcloud compute addresses list | grep pg-gce | tail -n +2 | awk '{print $2}')
     addprint=$(gcloud compute addresses list | grep pg-gce | tail -n +2 | awk '{print $3}')
-    gcloud compute addresses delete pg-gce --region=us-east4 --quiet
+    gcloud compute addresses delete pg-gce --region=$regdelete --quiet
     echo "" & echo ""
     echo "---------------------------------------------------"
     echo "SYSTEM MESSAGE: Deleted $regdelete - $addprint"
