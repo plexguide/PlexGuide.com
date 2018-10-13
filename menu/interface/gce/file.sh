@@ -258,6 +258,7 @@ while [ "$break" == "off" ]; do
     echo ""
     echo $typed > /var/plexguide/project.ipregion
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo "" & echo ""
     break=on
   fi
 done
