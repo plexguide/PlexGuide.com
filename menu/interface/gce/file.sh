@@ -272,7 +272,7 @@ echo "NOTE: Please Standby"
   break=off
   while [ "$break" == off ]; do
 
-  gcloud compute addresses list | grep pg-gce | tail -n +2 > /tmp/ip.delete
+  gcloud compute addresses list | grep pg-gce | tail -n +1 > /tmp/ip.delete
   ipdelete=$(cat /tmp/ip.delete)
     if [ "$ipdelete" != "" ]; then
     regdelete=$(gcloud compute addresses list | grep pg-gce | head -n +1 | awk '{print $2}')
