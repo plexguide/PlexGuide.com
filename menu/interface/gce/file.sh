@@ -209,6 +209,7 @@ done
 fi
 
 if [ "$menu" == "6" ]; then
+########## Prior Deployment Check
 echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Checking Existing Deployment"
@@ -223,6 +224,26 @@ echo "---------------------------------------------------"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 exit
+fi
+
+############ FireWall
+echo ""
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Checking PG GCE Firewall Rules"
+echo "---------------------------------------------------"
+echo ""
+
+inslist=$(gcloud compute firewall-rules list | grep plexguide)
+if [ "$inslist" == "" ]; then
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: FireWall Rules Do Not Exist!"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Building Firewall Rules! Please Wait"
+echo ""
+gcloud compute firewall-rules create plexguide --allow all
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 #gcloud compute instance-templates list
@@ -259,6 +280,38 @@ echo "NOTE: Please Standby!"
 echo ""
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
 echo ""
+
+############ IP Address
+echo ""
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Checking PG External Address Rules"
+echo "---------------------------------------------------"
+echo ""
+
+inslist=$(gcloud compute addresses list | grep pg-gce)
+if [ "$inslist" != "" ]; then
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Deleting Old IP Address"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
+#gcloud compute firewall-rules create plexguide --allow all
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+fi
+
+echo "---------------------------------------------------"
+echo "SYSTEM MESSAGE: Creating New IP Address"
+echo "---------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby"
+echo ""
+projectname=$(cat echo $typed > /var/plexguide/project.final)
+gcloud compute addresses create pg-gce --global --ip-version IPV4 --project $projectname
+sleep 1
+
+######## Final Message
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Deployment Complete"
 echo "---------------------------------------------------"
