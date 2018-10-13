@@ -32,6 +32,10 @@
   shell: "cat /var/plexguide/project.location"
   register: location
 
+- name: Register IP region
+  shell: "cat /var/plexguide/project.ipregion"
+  register: ipregion
+
 - name: "Key Menu Facts"
   set_fact:
     head1: "\nPlexGuide Settings Interface - Make a Selection"
