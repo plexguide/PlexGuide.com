@@ -90,6 +90,7 @@ if [ "$menu" == "4" ]; then
 
   ### Part 1
   pcount=$(cat /var/plexguide/project.processor)
+  echo ""
   echo "---------------------------------------------------"
   echo "SYSTEM MESSAGE: Current Processor Count Interface"
   echo "---------------------------------------------------"
@@ -123,10 +124,11 @@ if [ "$menu" == "4" ]; then
     echo "---------------------------------------------------"
     echo ""
     echo "NOTE: More Processors = Faster Credit Drain"
-    echo "Ideal Processor Usage = 3"
-    echo "Set Your Processor Count | Range is from 2 - 6"
     echo ""
-    read -p 'Type a Number 2 - 6 & Then PRESS [ENTER]: ' typed
+    echo "Ideal Processor Usage = 3"
+    echo "Set Your Processor Count | Range 2 - 6"
+    echo ""
+    read -p 'Type a Number from 2 - 6 | PRESS [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
