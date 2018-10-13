@@ -208,41 +208,41 @@ while [ "$break" == "off" ]; do
 done
 
 if [ "$menu" == "6" ]; then
-gcloud compute zones list | awk '{print $1}' | tail -n +2 > /tmp/zones.list
+gcloud compute regions list | awk '{print $1}' | tail -n +2 > /tmp/regions.list
 num=0
-echo " " > /tmp/zones.print
+echo " " > /tmp/regions.print
 
 while read p; do
-  echo -n $p >> /tmp/zones.print
-  echo -n " " >> /tmp/zones.print
+  echo -n $p >> /tmp/regions.print
+  echo -n " " >> /tmp/regions.print
 
   num=$[num+1]
-  if [ $num == 4 ]; then
+  if [ $num == 5 ]; then
     num=0
-    echo " " >> /tmp/zones.print
+    echo " " >> /tmp/regions.print
   fi
-done </tmp/zones.list
+done </tmp/regions.list
 
 ### Part 2
 typed=nullstart
-prange=$(cat /tmp/zones.print)
+prange=$(cat /tmp/regions.print)
 tcheck=""
 break=off
 while [ "$break" == "off" ]; do
   echo ""
   echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: Google Cloud Server Zones List"
+  echo "SYSTEM MESSAGE: Google Cloud IP Regions List"
   echo "---------------------------------------------------"
-  cat /tmp/zones.print
+  cat /tmp/regions.print
   echo ""
-  read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
+  read -p 'Type the Name of an IP Region | PRESS [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
   echo ""
 
   if [ "$tcheck" == "" ]; then
     echo "---------------------------------------------------"
-    echo "SYSTEM MESSAGE: Failed! Type a Server Location"
+    echo "SYSTEM MESSAGE: Failed! Type an IP Region Name"
     echo "---------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
@@ -250,10 +250,10 @@ while [ "$break" == "off" ]; do
     echo ""
   else
     echo "----------------------------------------------"
-    echo "SYSTEM MESSAGE: Passed! Location $typed Set"
+    echo "SYSTEM MESSAGE: Passed! IP Region $typed Set"
     echo "----------------------------------------------"
     echo ""
-    echo $typed > /var/plexguide/project.location
+    echo $typed > /var/plexguide/project.ipregion
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     break=on
   fi
