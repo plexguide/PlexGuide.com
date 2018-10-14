@@ -24,7 +24,6 @@ if [ "$menu" == "2" ]; then
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
   echo "--------------------------------------------------------"
   echo ""
-
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
   echo "--------------------------------------------------------"
@@ -43,6 +42,28 @@ if [ "$menu" == "2" ]; then
 fi
 
 if [ "$menu" == "3" ]; then
+
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Project ID"
+  echo "--------------------------------------------------------"
+  echo ""
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+  sleep 1
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Created - Project $projectid"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: If using this project, ENSURE to SET this project!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+fi
+
+if [ "$menu" == "4" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -143,7 +164,7 @@ if [ "$menu" == "3" ]; then
   exit
 fi
 
-if [ "$menu" == "4" ]; then
+if [ "$menu" == "5" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -230,7 +251,7 @@ if [ "$menu" == "4" ]; then
 
 fi
 
-if [ "$menu" == "5" ]; then
+if [ "$menu" == "6" ]; then
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -429,7 +450,7 @@ fi
 ################################################################################ DEPLOY END
 
 
-if [ "$menu" == "6" ]; then
+if [ "$menu" == "7" ]; then
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -555,7 +576,7 @@ finalchecks=$(gcloud compute instances list | grep pg-gce)
 fi
 
 ################################################################################ DEPLOY END
-if [ "$menu" == "7" ]; then
+if [ "$menu" == "8" ]; then
 ######## Final Message
 echo ""
 echo "--------------------------------------------------------"
@@ -582,7 +603,7 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
-if [ "$menu" == "8" ]; then
+if [ "$menu" == "9" ]; then
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Destroying GCE Server"
