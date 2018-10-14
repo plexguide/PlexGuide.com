@@ -509,7 +509,7 @@ echo ""
 echo "NOTE: Please Standby"
 echo ""
 
-gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $region --quiet
+gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $location --quiet
 gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address $ipaddress
 echo ""
 
