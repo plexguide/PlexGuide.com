@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo 9 > /var/plexguide/menu.number
+echo 8 > /var/plexguide/menu.number
 
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 
