@@ -43,3 +43,10 @@ file="/var/plexguide/project.ipaddress"
   if [ ! -e "$file" ]; then
     echo "IP NOT-SET" > /var/plexguide/project.ipaddress
   fi
+
+file="/var/plexguide/gce.deployed"
+  if [ -e "$file" ]; then
+    echo "Server Deployed" > /var/plexguide/gce.deployed.status
+  else
+    echo "Not Deployed" > /var/plexguide/gce.deployed.status
+  fi
