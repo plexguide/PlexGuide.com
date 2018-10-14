@@ -74,27 +74,6 @@ if [ "$menu" == "3" ]; then
   echo "--------------------------------------------------------"
   echo ""
 
-  ####### Checking Billing
-  project=$(cat /var/plexguide/project.final)
-  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
-  gcloud beta billing projects link $project --billing-account $projectlink
-  echo
-  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
-  if [ "$billingcheck" == "" ]; then
-  echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
-  echo "--------------------------------------------------------"
-  echo ""
-  echo "NOTE: Common Billing Issue for GCE Credits"
-  echo "NOTE: Cannot Continue with GCE"
-  echo ""
-  echo "1. Too Many Projects - Delete Unused Ones!"
-  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  fi
-
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Created - Project $projectid"
@@ -121,27 +100,6 @@ if [ "$menu" == "4" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
-  ############################## PROJECT BILLING CHECKS - START
-  project=$(cat /var/plexguide/project.final)
-  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
-  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
-  if [ "$billingcheck" == "" ]; then
-  echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
-  echo "--------------------------------------------------------"
-  echo ""
-  echo "NOTE: Common Billing Issue for GCE Credits"
-  echo "NOTE: Cannot Continue with GCE"
-  echo ""
-  echo "1. Too Many Projects - Delete Unused Ones!"
-  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  exit
-  fi
-  ############################## PROJECT BILLING CHECKS - END
-
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -326,7 +284,7 @@ if [ "$menu" == "5" ]; then
 
   ### part 2
   typed=nullstart
-  prange="2 3 4 5 6"
+  prange="2 4 6"
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
@@ -334,18 +292,18 @@ if [ "$menu" == "5" ]; then
     echo "SYSTEM MESSAGE: Processor Count Interface"
     echo "--------------------------------------------------------"
     echo ""
-    echo "Ideal Processor Usage = 3"
-    echo "Set Your Processor Count | Range 2 - 6"
+    echo "Ideal Processor Usage = 4"
+    echo "Set Your Processor Count | Range 2, 4 or 6"
     echo ""
     echo "NOTE: More Processors = Faster Credit Drain"
     echo ""
-    read -p 'Type a Number from 2 - 6 | PRESS [ENTER]: ' typed
+    read -p 'Type a Number 2, 4 or 6 | PRESS [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
     if [ "$tcheck" == "" ]; then
       echo "--------------------------------------------------------"
-      echo "SYSTEM MESSAGE: Failed! Type a Number from 2 - 6"
+      echo "SYSTEM MESSAGE: Failed! Type a Number from 2, 4, or 6"
       echo "--------------------------------------------------------"
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
