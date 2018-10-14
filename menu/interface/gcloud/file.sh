@@ -78,6 +78,21 @@ if [ "$menu" == "3" ]; then
       gcloud config set project $typed
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo ""
+      echo ""
+      echo "----------------------------------------------"
+      echo "SYSTEM MESSAGE: Enabling Your API!"
+      echo "----------------------------------------------"
+      echo ""
+      echo "NOTE: Enabling GDrive API for Project - $typed"
+      gcloud services enable drive.googleapis.com --project $typed
+      echo ""
+      sleep 1
+      echo "----------------------------------------------"
+      echo "SYSTEM MESSAGE: Finished!"
+      echo "----------------------------------------------"
+      echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     fi
   done
 

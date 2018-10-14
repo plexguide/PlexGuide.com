@@ -123,7 +123,7 @@ if [ "$menu" == "3" ]; then
       echo "SYSTEM MESSAGE: Enabling Your API!"
       echo "----------------------------------------------"
       echo ""
-      echo "NOTE: Enabling Compute API"
+      echo "NOTE: Enabling Compute API - Please Standby!"
       gcloud services enable compute.googleapis.com
       echo ""
       echo "NOTE: Enabling GDrive API for Project - $typed"
