@@ -408,7 +408,10 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 fi
 
+################################################################################ DEPLOY END
+
 if [ "$menu" == "7" ]; then
+
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -457,6 +460,24 @@ echo ""
 echo "NOTE: Please Standby!"
 echo ""
 
+blueprint=$(gcloud compute instance-templates list | grep pg-gce-blueprint)
+if [ "$blueprint" != "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Deleting Old Templates"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Please Standby!"
+  echo ""
+  gcloud compute instance-templates delete pg-gce-blueprint --quiet
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Building New Template"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Please Standby!"
+  echo ""
+fi
+
 location=$(cat /var/plexguide/project.location)
 gcecpu=$(cat /var/plexguide/project.processor)
 gcloud compute instance-templates create pg-gce-blueprint \
@@ -465,7 +486,7 @@ gcloud compute instance-templates create pg-gce-blueprint \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme
 
-sleep 1
+sleep .5
 
 echo ""
 echo "--------------------------------------------------------"
@@ -503,7 +524,7 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
-######################################################## DEPLOY END
+################################################################################ DEPLOY END
 if [ "$menu" == "8" ]; then
 ######## Final Message
 echo ""
