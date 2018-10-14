@@ -36,10 +36,17 @@
     default_volumes:
       - "/opt/appdata/{{pgrole}}:/config"
       - "/mnt/unionfs:/unionfs"
-      - "{{path.stdout}}/music:/music"
-      - "{{path.stdout}}/music_downloads:/downloads"
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/rutorrents:/downloads"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/qbittorrent/Downloads:/qbittorrent/Downloads"
       - "/etc/localtime:/etc/localtime:ro"
-
+# just added 2 folders to test function
+      - "{{path.stdout}}/music:/music"
+      - "{{path.stdout}}/temp_music:/temp_music"
+#######################################
 - name: "Establish Key Variables"
   set_fact:
     default_env:
