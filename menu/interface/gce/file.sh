@@ -47,7 +47,7 @@ if [ "$menu" == "3" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
@@ -90,7 +90,7 @@ if [ "$menu" == "4" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
@@ -206,7 +206,7 @@ if [ "$menu" == "5" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
@@ -329,7 +329,7 @@ if [ "$menu" == "6" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
@@ -564,7 +564,7 @@ if [ "$menu" == "7" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
@@ -725,7 +725,7 @@ if [ "$menu" == "8" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
@@ -788,7 +788,7 @@ if [ "$menu" == "9" ]; then
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "SYSTEM MESSAGE: Google Cloud Billing is Not Turned On!"
     echo "--------------------------------------------------------"
     echo ""
     echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
