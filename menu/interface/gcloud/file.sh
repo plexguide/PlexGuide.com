@@ -23,7 +23,7 @@ if [ "$menu" == "2" ]; then
 fi
 
 if [ "$menu" == "3" ]; then
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -116,6 +116,21 @@ if [ "$menu" == "3" ]; then
 fi
 
 if [ "$menu" == "4" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
   echo ""
   echo "------------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: PlexGuide Service Account Key Generator"

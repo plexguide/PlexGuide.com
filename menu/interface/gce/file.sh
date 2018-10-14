@@ -43,7 +43,7 @@ fi
 
 if [ "$menu" == "3" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -80,7 +80,7 @@ fi
 
 if [ "$menu" == "4" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -197,7 +197,7 @@ fi
 
 if [ "$menu" == "5" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -300,7 +300,7 @@ fi
 
 if [ "$menu" == "6" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -515,7 +515,7 @@ fi
 
 if [ "$menu" == "7" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -656,7 +656,7 @@ fi
 ################################################################################ DEPLOY END
 if [ "$menu" == "8" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
@@ -699,7 +699,7 @@ fi
 
 if [ "$menu" == "9" ]; then
   ############################## BILLING CHECKS - START
-  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
