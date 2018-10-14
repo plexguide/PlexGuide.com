@@ -451,31 +451,6 @@ fi
 
 ########### Deployment
 echo "--------------------------------------------------------"
-echo "SYSTEM MESSAGE: Setting Variables for Deployment"
-echo "--------------------------------------------------------"
-echo ""
-location=$(cat /var/plexguide/project.location)
-gcecpu=$(cat /var/plexguide/project.processor)
-
-sleep 1.5
-
-echo "--------------------------------------------------------"
-echo "SYSTEM MESSAGE: Building PG GCE Template"
-echo "--------------------------------------------------------"
-echo ""
-echo "NOTE: Please Standby!"
-echo ""
-sleep 2
-
-########### Deployment
-echo "--------------------------------------------------------"
-echo "SYSTEM MESSAGE: Setting Variables for Deployment"
-echo "--------------------------------------------------------"
-echo ""
-
-sleep 1.5
-
-echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Building PG GCE Template"
 echo "--------------------------------------------------------"
 echo ""
@@ -490,7 +465,7 @@ gcloud compute instance-templates create pg-gce-blueprint \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme
 
-sleep 2
+sleep 1
 
 echo ""
 echo "--------------------------------------------------------"
