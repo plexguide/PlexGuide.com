@@ -233,80 +233,6 @@ if [ "$menu" == "5" ]; then
   fi
   ########## Server Must Not Be Deployed - END
 
-### Part 1
-gcloud compute zones list | awk '{print $1}' | tail -n +2 > /tmp/zones.list
-num=0
-echo " " > /tmp/zones.print
-
-while read p; do
-  echo -n $p >> /tmp/zones.print
-  echo -n " " >> /tmp/zones.print
-
-  num=$[num+1]
-  if [ $num == 4 ]; then
-    num=0
-    echo " " >> /tmp/zones.print
-  fi
-done </tmp/zones.list
-
-### Part 2
-typed=nullstart
-prange=$(cat /tmp/zones.print)
-tcheck=""
-break=off
-while [ "$break" == "off" ]; do
-  echo ""
-  echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Google Cloud Server Zones List"
-  echo "--------------------------------------------------------"
-  cat /tmp/zones.print
-  echo ""
-  read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
-  echo ""
-  tcheck=$(echo $prange | grep $typed)
-  echo ""
-
-  if [ "$tcheck" == "" ]; then
-    echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: Failed! Type a Server Location"
-    echo "--------------------------------------------------------"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-    echo ""
-    echo ""
-  else
-    echo "----------------------------------------------"
-    echo "SYSTEM MESSAGE: Passed! Location $typed Set"
-    echo "----------------------------------------------"
-    echo ""
-    echo $typed > /var/plexguide/project.location
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-    break=on
-  fi
-done
-fi
-
-if [ "$menu" == "6" ]; then
-  ########## Server Must Not Be Deployed - START
-  echo ""
-  echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Checking Existing Deployment"
-  echo "--------------------------------------------------------"
-  echo ""
-
-  inslist=$(gcloud compute instances list | grep pg-gce)
-  if [ "$inslist" != "" ]; then
-  echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
-  echo "--------------------------------------------------------"
-  echo ""
-  echo "NOTE: Prevents Conflicts with Changes!"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  exit
-  fi
-  ########## Server Must Not Be Deployed - END
-
 gcloud compute regions list | awk '{print $1}' | tail -n +2 > /tmp/regions.list
 num=0
 echo " " > /tmp/regions.print
@@ -408,9 +334,85 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 fi
 
+########## Server Must Not Be Deployed - START
+echo ""
+echo "--------------------------------------------------------"
+echo "SYSTEM MESSAGE: Checking Existing Deployment"
+echo "--------------------------------------------------------"
+echo ""
+
+inslist=$(gcloud compute instances list | grep pg-gce)
+if [ "$inslist" != "" ]; then
+echo "--------------------------------------------------------"
+echo "SYSTEM MESSAGE: Failed! Must Delete Current Server!"
+echo "--------------------------------------------------------"
+echo ""
+echo "NOTE: Prevents Conflicts with Changes!"
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+exit
+fi
+########## Server Must Not Be Deployed - END
+
+### Part 1
+ipregion=$(cat /var/plexguide/project.ipregion)
+gcloud compute zones list | awk '{print $1}' | tail -n +2 | grep $ipregion > /tmp/zones.list
+num=0
+echo " " > /tmp/zones.print
+
+while read p; do
+echo -n $p >> /tmp/zones.print
+echo -n " " >> /tmp/zones.print
+
+num=$[num+1]
+if [ $num == 4 ]; then
+  num=0
+  echo " " >> /tmp/zones.print
+fi
+done </tmp/zones.list
+
+### Part 2
+typed=nullstart
+prange=$(cat /tmp/zones.print)
+tcheck=""
+break=off
+while [ "$break" == "off" ]; do
+echo ""
+echo "--------------------------------------------------------"
+echo "SYSTEM MESSAGE: Google Cloud Server Zones List"
+echo "--------------------------------------------------------"
+cat /tmp/zones.print
+echo ""
+read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
+echo ""
+tcheck=$(echo $prange | grep $typed)
+echo ""
+
+if [ "$tcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Failed! Type a Server Location"
+  echo "--------------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  echo ""
+else
+  echo "----------------------------------------------"
+  echo "SYSTEM MESSAGE: Passed! Location $typed Set"
+  echo "----------------------------------------------"
+  echo ""
+  echo $typed > /var/plexguide/project.location
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  break=on
+fi
+done
+
+
+
 ################################################################################ DEPLOY END
 
-if [ "$menu" == "7" ]; then
+
+if [ "$menu" == "6" ]; then
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -523,7 +525,7 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 ################################################################################ DEPLOY END
-if [ "$menu" == "8" ]; then
+if [ "$menu" == "7" ]; then
 ######## Final Message
 echo ""
 echo "--------------------------------------------------------"
@@ -550,7 +552,7 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
-if [ "$menu" == "9" ]; then
+if [ "$menu" == "8" ]; then
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Destroying GCE Server"
