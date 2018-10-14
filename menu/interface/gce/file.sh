@@ -284,7 +284,7 @@ if [ "$menu" == "5" ]; then
 
   ### part 2
   typed=nullstart
-  prange="2 3 4 5 6"
+  prange="2 4 6"
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
@@ -292,8 +292,8 @@ if [ "$menu" == "5" ]; then
     echo "SYSTEM MESSAGE: Processor Count Interface"
     echo "--------------------------------------------------------"
     echo ""
-    echo "Ideal Processor Usage = 3"
-    echo "Set Your Processor Count | Range 2 - 6"
+    echo "Ideal Processor Usage = 4"
+    echo "Set Your Processor Count | Range 2 - 4 or 6"
     echo ""
     echo "NOTE: More Processors = Faster Credit Drain"
     echo ""
@@ -303,7 +303,7 @@ if [ "$menu" == "5" ]; then
 
     if [ "$tcheck" == "" ]; then
       echo "--------------------------------------------------------"
-      echo "SYSTEM MESSAGE: Failed! Type a Number from 2 - 6"
+      echo "SYSTEM MESSAGE: Failed! Type a Number from 2, 4, or 6"
       echo "--------------------------------------------------------"
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
