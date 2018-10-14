@@ -466,7 +466,7 @@ echo ""
 echo "NOTE: Please Standby!"
 echo ""
 gcloud compute instance-templates create pg-gce-blueprint \
---custom-cpu $gcecpu --custom-memory 8GB \
+--custom-cpu "4" --custom-memory 8GB \
 --image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme
@@ -497,7 +497,7 @@ ipaddress=$(cat /var/plexguide/project.ipaddress)
 ipregion=$(cat /var/plexguide/project.ipregion)
 ipproject=$(cat /var/plexguide/project.location)
 gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipproject
-gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address "$ipaddress"
+gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address $ipaddress
 echo ""
 
 ######## Final Message
