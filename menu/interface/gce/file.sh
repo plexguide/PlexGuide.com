@@ -118,6 +118,7 @@ if [ "$menu" == "3" ]; then
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo ""
+      echo ""
       echo "----------------------------------------------"
       echo "SYSTEM MESSAGE: Enabling Your API!"
       echo "----------------------------------------------"
