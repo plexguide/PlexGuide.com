@@ -42,8 +42,9 @@ if [ "$menu" == "2" ]; then
 fi
 
 if [ "$menu" == "3" ]; then
+  ############################## BILLING CHECKS - START
   billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
-  if [ "$billing" != "" ]; then
+  if [ "$billing" == "" ]; then
     echo ""
     echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
@@ -55,6 +56,7 @@ if [ "$menu" == "3" ]; then
     echo ""
     exit
   fi
+  ############################## BILLING CHECKS - END
 
   echo ""
   echo "--------------------------------------------------------"
@@ -77,6 +79,22 @@ if [ "$menu" == "3" ]; then
 fi
 
 if [ "$menu" == "4" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
+
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -178,6 +196,22 @@ if [ "$menu" == "4" ]; then
 fi
 
 if [ "$menu" == "5" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
+
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -265,6 +299,22 @@ if [ "$menu" == "5" ]; then
 fi
 
 if [ "$menu" == "6" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
+
   ########## Server Must Not Be Deployed - START
   echo ""
   echo "--------------------------------------------------------"
@@ -464,6 +514,21 @@ fi
 
 
 if [ "$menu" == "7" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -590,6 +655,22 @@ fi
 
 ################################################################################ DEPLOY END
 if [ "$menu" == "8" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
+
 ######## Final Message
 echo ""
 echo "--------------------------------------------------------"
@@ -617,6 +698,22 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
 if [ "$menu" == "9" ]; then
+  ############################## BILLING CHECKS - START
+  billing=$(gcloud beta billing accounts list | grep -c "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## BILLING CHECKS - END
+
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Destroying GCE Server"
