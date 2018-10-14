@@ -497,7 +497,7 @@ ipaddress=$(cat /var/plexguide/project.ipaddress)
 ipregion=$(cat /var/plexguide/project.ipregion)
 ipproject=$(cat /var/plexguide/project.location)
 gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipproject
-gcloud compute instances add-access-config pg-gce --access-config-name “external-nat” --address $ipaddress
+gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address "$ipaddress"
 echo ""
 
 ######## Final Message
