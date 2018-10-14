@@ -466,7 +466,7 @@ echo ""
 echo "NOTE: Please Standby!"
 echo ""
 gcloud compute instance-templates create pg-gce-blueprint \
---custom-cpu "4" --custom-memory 8GB \
+--custom-cpu 4 --custom-memory 8GB \
 --image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme
