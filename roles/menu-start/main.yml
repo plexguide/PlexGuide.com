@@ -117,8 +117,8 @@
                   \n8.  VPN Service Installer
                   \n9.  System & Network Auditor
                   \n10. {{backups}}
-                  \n11. PG Automations - Google Cloud Feeder Edition
-                  \n12. Settings Menu
+                  \n11. Settings Menu
+                  \n12. PG Automations - Google Cloud Feeder Edition
                   \n13. TroubleShoot - PreInstaller & UnInstaller
                   \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
@@ -176,10 +176,10 @@
       when: fchoice == "10"
 
     - shell: "echo gce > /var/plexguide/main.menu"
-      when: fchoice == "11"
+      when: fchoice == "12"
 
     - shell: "echo settings > /var/plexguide/main.menu"
-      when: fchoice == "12"
+      when: fchoice == "11"
 
     - shell: "echo tshoot > /var/plexguide/main.menu"
       when: fchoice == "13"
