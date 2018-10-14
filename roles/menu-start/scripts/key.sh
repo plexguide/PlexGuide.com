@@ -157,7 +157,7 @@ elif [ "$edition" == "PG Edition - HD Solo" ]; then
     exit
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then
    echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/gce/gcechecker.sh
+    bash /opt/plexguide/menu/interface/gce/gcechecker.sh
     bash /opt/plexguide/roles/menu-start/scripts/main.sh
     exit
 else
