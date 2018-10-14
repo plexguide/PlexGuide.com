@@ -114,11 +114,12 @@
                   \n5.  PG Application Guard       [{{output}}]
                   \n6.  Program Suite Installer
                   \n7.  Plex Enhancement Tools
-                  \n8.  VPN Service Installer
-                  \n9.  System & Network Auditor
-                  \n10. {{backups}}
-                  \n11. Settings Menu
-                  \n12. TroubleShoot - PreInstaller & UnInstaller
+                  \n8.  PG Automations - Deploy Google Feeder Edition 
+                  \n9.  VPN Service Installer
+                  \n10. System & Network Auditor
+                  \n11. {{backups}}
+                  \n12. Settings Menu
+                  \n13. TroubleShoot - PreInstaller & UnInstaller
                   \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -132,7 +133,8 @@
              choice.user_input == "9" or
              choice.user_input == "10" or
              choice.user_input == "11" or
-             choice.user_input == "12"
+             choice.user_input == "12" or
+             choice.user_input == "13"
       retries: 99
       delay: 1
 
@@ -164,17 +166,20 @@
     - shell: "echo plextools > /var/plexguide/main.menu"
       when: fchoice == "7"
 
-    - shell: "echo pgvpn > /var/plexguide/main.menu"
+    - shell: "echo gce > /var/plexguide/main.menu"
       when: fchoice == "8"
 
-    - shell: "echo auditor > /var/plexguide/main.menu"
+    - shell: "echo pgvpn > /var/plexguide/main.menu"
       when: fchoice == "9"
 
-    - shell: "echo backup > /var/plexguide/main.menu"
+    - shell: "echo auditor > /var/plexguide/main.menu"
       when: fchoice == "10"
 
-    - shell: "echo settings > /var/plexguide/main.menu"
+    - shell: "echo backup > /var/plexguide/main.menu"
       when: fchoice == "11"
 
-    - shell: "echo tshoot > /var/plexguide/main.menu"
+    - shell: "echo settings > /var/plexguide/main.menu"
       when: fchoice == "12"
+
+    - shell: "echo tshoot > /var/plexguide/main.menu"
+      when: fchoice == "13"

@@ -145,6 +145,11 @@ if [ "$menu" == "auth" ]; then
 
 fi
 
+if [ "$menu" == "gce" ]; then
+  echo 'INFO - Selected: PG GCE Feeder Automations' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+fi
+
 if [ "$menu" == "ports" ]; then
   echo 'INFO - Selected: Ports Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
