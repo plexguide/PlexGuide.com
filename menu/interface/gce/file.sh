@@ -73,11 +73,11 @@ if [ "$menu" == "3" ]; then
   echo "SYSTEM MESSAGE: Linking Project to the Billing Account"
   echo "--------------------------------------------------------"
   echo ""
+
+  ####### Checking Billing
   project=$(cat /var/plexguide/project.final)
   projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
   gcloud beta billing projects link $project --billing-account $projectlink
-
-  ####### Checking Billing
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -121,6 +121,9 @@ if [ "$menu" == "4" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -256,6 +259,9 @@ if [ "$menu" == "5" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -377,6 +383,9 @@ if [ "$menu" == "6" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -610,6 +619,9 @@ if [ "$menu" == "7" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -769,6 +781,9 @@ if [ "$menu" == "8" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -830,6 +845,9 @@ if [ "$menu" == "9" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"

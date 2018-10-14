@@ -100,6 +100,9 @@ if [ "$menu" == "4" ]; then
     exit
   fi
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
@@ -213,6 +216,9 @@ if [ "$menu" == "5" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
   echo "--------------------------------------------------------"
