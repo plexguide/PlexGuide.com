@@ -395,7 +395,6 @@ break=off
       echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo ""
-      echo ""
     else
       echo "----------------------------------------------"
       echo "SYSTEM MESSAGE: Passed! Location $typed Set"
@@ -516,12 +515,25 @@ echo ""
 gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address $ipaddress
 echo ""
 
-######## Final Message
-echo "--------------------------------------------------------"
-echo "SYSTEM MESSAGE: Deployment Complete"
-echo "--------------------------------------------------------"
-echo ""
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+######## Final Checks
+finalchecks=$(gcloud compute instances list | grep pg-gce)
+  if [ "finalchecks" != "" ]; then
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: Deployment Complete"
+    echo "--------------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    touch /var/plexguide/gce.deployed
+  else
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: Deployment Failed"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: Unable to detect a running PG-GCE Server!"
+    echo "Please check your configs, billings, and permissions"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  fi
 fi
 
 ################################################################################ DEPLOY END
@@ -562,10 +574,11 @@ if [ "$menu" == "8" ]; then
   echo "NOTE: Please Standby"
   echo ""
   gcloud compute instances delete pg-gce --quiet --zone "$location"
-  rm -r /root/.ssh/google_compute_engine
+  rm -r /root/.ssh/google_compute_engine 1>/dev/null 2>&1
+  rm -r /var/plexguide/gce.deployed 1>/dev/null 2>&1
   echo ""
   echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: PG GCE Server Destoryed!"
+  echo "SYSTEM MESSAGE: PG GCE Server Destroyed!"
   echo "--------------------------------------------------------"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
