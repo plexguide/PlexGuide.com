@@ -63,7 +63,6 @@ if [ "$menu" == "3" ]; then
   fi
   ########## Server Must Not Be Deployed - END
 
-  echo ""
   gcloud projects list && gcloud projects list > /var/plexguide/projects.list
   echo ""
   echo "------------------------------------------------------------------------------"
@@ -130,7 +129,7 @@ if [ "$menu" == "3" ]; then
       echo "----------------------------------------------"
       echo "SYSTEM MESSAGE: Finished!"
       echo "----------------------------------------------"
-      echo ""      
+      echo ""
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     fi
   done
