@@ -418,6 +418,12 @@ if [ "$menu" == "7" ]; then
   echo "SYSTEM MESSAGE: Checking Existing Deployment"
   echo "--------------------------------------------------------"
   echo ""
+  ##########
+  project=$(cat /var/plexguide/project.final)
+  ipaddress=$(cat /var/plexguide/project.ipaddress)
+  location=$(cat /var/plexguide/project.location)
+  region=$(cat /var/plexguide/project.ipregion)
+  cpu=$(cat /var/plexguide/project.processor)
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
@@ -478,10 +484,8 @@ if [ "$blueprint" != "" ]; then
   echo ""
 fi
 
-location=$(cat /var/plexguide/project.location)
-gcecpu=$(cat /var/plexguide/project.processor)
 gcloud compute instance-templates create pg-gce-blueprint \
---custom-cpu $gcecpu --custom-memory 8GB \
+--custom-cpu $cpu --custom-memory 8GB \
 --image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
 --boot-disk-auto-delete --boot-disk-size 100GB \
 --local-ssd interface=nvme
@@ -495,9 +499,6 @@ echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
-projectname=$(cat /var/plexguide/project.final)
-projectregion=$(cat /var/plexguide/projectipregion)
-location=$(cat /var/plexguide/project.location)
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
 echo ""
 
@@ -508,11 +509,7 @@ echo ""
 echo "NOTE: Please Standby"
 echo ""
 
-gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/project.ipaddress
-ipaddress=$(cat /var/plexguide/project.ipaddress)
-ipregion=$(cat /var/plexguide/project.ipregion)
-ipproject=$(cat /var/plexguide/project.location)
-gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipproject --quiet
+gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $region --quiet
 gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address $ipaddress
 echo ""
 
