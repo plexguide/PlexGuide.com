@@ -70,6 +70,32 @@ if [ "$menu" == "3" ]; then
   sleep 1
   echo ""
   echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Linking Project to the Billing Account"
+  echo "--------------------------------------------------------"
+  echo ""
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
+
+  ####### Checking Billing
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  fi
+
+  echo ""
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Created - Project $projectid"
   echo "--------------------------------------------------------"
   echo ""
@@ -94,6 +120,24 @@ if [ "$menu" == "4" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -211,6 +255,24 @@ if [ "$menu" == "5" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -314,6 +376,24 @@ if [ "$menu" == "6" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -529,6 +609,24 @@ if [ "$menu" == "7" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
   ########## Server Must Not Be Deployed - START
   echo ""
@@ -670,6 +768,24 @@ if [ "$menu" == "8" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
 ######## Final Message
 echo ""
@@ -713,6 +829,24 @@ if [ "$menu" == "9" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
   echo ""
   echo "--------------------------------------------------------"

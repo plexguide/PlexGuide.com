@@ -23,6 +23,7 @@ if [ "$menu" == "2" ]; then
 fi
 
 if [ "$menu" == "3" ]; then
+  ############################## BILLING CHECKS - START
   billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
     echo ""
@@ -36,6 +37,86 @@ if [ "$menu" == "3" ]; then
     echo ""
     exit
   fi
+  ############################## BILLING CHECKS - END
+
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Project ID"
+  echo "--------------------------------------------------------"
+  echo ""
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+  sleep 1
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Linking Project to the Billing Account"
+  echo "--------------------------------------------------------"
+  echo ""
+  project=$(cat /var/plexguide/project.final)
+  projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
+  gcloud beta billing projects link $project --billing-account $projectlink
+
+  ####### Checking Billing
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  fi
+
+  echo ""
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Created - Project $projectid"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: If using this project, ENSURE to SET this project!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+fi
+
+if [ "$menu" == "4" ]; then
+  billing=$(gcloud beta billing accounts list | grep "\<True\>")
+  if [ "$billing" == "" ]; then
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "SYSTEM MESSAGE: GSuite Billing is Not Turned On!"
+    echo "--------------------------------------------------------"
+    echo ""
+    echo "NOTE: You Must Turn On Your Billing! PG is checking for the word >>> True"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  fi
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
 
   echo ""
   gcloud projects list && gcloud projects list > /var/plexguide/projects.list
@@ -115,7 +196,7 @@ if [ "$menu" == "3" ]; then
   exit
 fi
 
-if [ "$menu" == "4" ]; then
+if [ "$menu" == "5" ]; then
   ############################## BILLING CHECKS - START
   billing=$(gcloud beta billing accounts list | grep "\<True\>")
   if [ "$billing" == "" ]; then
@@ -131,6 +212,24 @@ if [ "$menu" == "4" ]; then
     exit
   fi
   ############################## BILLING CHECKS - END
+  ############################## PROJECT BILLING CHECKS - START
+  billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
+  if [ "$billingcheck" == "" ]; then
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Billing Failed - Turn It On Or Check"
+  echo "--------------------------------------------------------"
+  echo ""
+  echo "NOTE: Common Billing Issue for GCE Credits"
+  echo "NOTE: Cannot Continue with GCE"
+  echo ""
+  echo "1. Too Many Projects - Delete Unused Ones!"
+  echo "2. Ran Out of Credits & Must Turn On (Warning - Expensive)"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+  fi
+  ############################## PROJECT BILLING CHECKS - END
   echo ""
   echo "------------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: PlexGuide Service Account Key Generator"
