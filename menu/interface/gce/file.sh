@@ -124,7 +124,7 @@ if [ "$menu" == "3" ]; then
       echo ""
       echo "NOTE: Please Wait"
       echo ""
-      gcloud services enable drive.googleapis.com $typed
+      gcloud services enable drive.googleapis.com --project $typed
       echo ""
       sleep 1
       echo "----------------------------------------------"
