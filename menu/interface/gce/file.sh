@@ -293,11 +293,11 @@ if [ "$menu" == "5" ]; then
     echo "--------------------------------------------------------"
     echo ""
     echo "Ideal Processor Usage = 4"
-    echo "Set Your Processor Count | Range 2 - 4 or 6"
+    echo "Set Your Processor Count | Range 2, 4 or 6"
     echo ""
     echo "NOTE: More Processors = Faster Credit Drain"
     echo ""
-    read -p 'Type a Number from 2 - 6 | PRESS [ENTER]: ' typed
+    read -p 'Type a Number 2, 4 or 6 | PRESS [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
