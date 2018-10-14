@@ -382,6 +382,7 @@ break=off
   echo "--------------------------------------------------------"
   cat /tmp/zones.print
   echo ""
+  echo ""
   read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
