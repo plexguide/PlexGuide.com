@@ -96,6 +96,7 @@ if [ "$menu" == "3" ]; then
     echo ""
     cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
     cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+    echo ""
     echo "NOTE: Type the Name of the Project you want to utilize!"
     read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
     list=$(cat /var/plexguide/project.cut | grep $typed)
