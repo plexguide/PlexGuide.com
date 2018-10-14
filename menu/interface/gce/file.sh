@@ -465,6 +465,25 @@ echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
+sleep 2
+
+########### Deployment
+echo "--------------------------------------------------------"
+echo "SYSTEM MESSAGE: Setting Variables for Deployment"
+echo "--------------------------------------------------------"
+echo ""
+
+sleep 1.5
+
+echo "--------------------------------------------------------"
+echo "SYSTEM MESSAGE: Building PG GCE Template"
+echo "--------------------------------------------------------"
+echo ""
+echo "NOTE: Please Standby!"
+echo ""
+
+location=$(cat /var/plexguide/project.location)
+gcecpu=$(cat /var/plexguide/project.processor)
 gcloud compute instance-templates create pg-gce-blueprint \
 --custom-cpu $gcecpu --custom-memory 8GB \
 --image-family ubuntu-1804-lts --image-project ubuntu-os-cloud \
@@ -480,9 +499,10 @@ echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby!"
 echo ""
+projectname=$(cat /var/plexguide/project.final)
+projectregion=$(cat /var/plexguide/projectipregion)
 location=$(cat /var/plexguide/project.location)
 gcloud compute instances create pg-gce --source-instance-template pg-gce-blueprint --zone $location
-#--address $ipaddress
 echo ""
 
 echo "--------------------------------------------------------"
@@ -496,7 +516,7 @@ gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/
 ipaddress=$(cat /var/plexguide/project.ipaddress)
 ipregion=$(cat /var/plexguide/project.ipregion)
 ipproject=$(cat /var/plexguide/project.location)
-gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipproject
+gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipproject --quiet
 gcloud compute instances add-access-config pg-gce --access-config-name “external-nat” --address $ipaddress
 echo ""
 
