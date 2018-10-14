@@ -517,7 +517,7 @@ ipaddress=$(cat /var/plexguide/project.ipaddress)
 ipregion=$(cat /var/plexguide/project.ipregion)
 ipproject=$(cat /var/plexguide/project.location)
 gcloud compute instances delete-access-config pg-gce --access-config-name "external-nat" --zone $ipproject --quiet
-gcloud compute instances add-access-config pg-gce --access-config-name “external-nat” --address $ipaddress
+gcloud compute instances add-access-config pg-gce --access-config-name "external-nat" --address $ipaddress
 echo ""
 
 ######## Final Message
@@ -528,6 +528,7 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 fi
 
+######################################################## DEPLOY END
 if [ "$menu" == "8" ]; then
 ######## Final Message
 echo ""
@@ -544,7 +545,7 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo ""
 ipproject=$(cat /var/plexguide/project.location)
-gcloud compute ssh pg-gce --zone $ipproject
+gcloud compute ssh pg-gce --zone "$ipproject"
 echo ""
 echo "--------------------------------------------------------"
 echo "SYSTEM MESSAGE: Welcome Back To Your Main Server"
@@ -564,7 +565,7 @@ if [ "$menu" == "9" ]; then
   location=$(cat /var/plexguide/project.location)
   echo "NOTE: Please Standby"
   echo ""
-  gcloud compute instances delete pg-gce --quiet --zone $location
+  gcloud compute instances delete pg-gce --quiet --zone "$location"
   rm -r /root/.ssh/google_compute_engine
   echo ""
   echo "--------------------------------------------------------"
