@@ -27,7 +27,7 @@ if [ "$pg_alias" == "$pg_alias_stored" ]; then
     else
       echo "Installing Alias Commands" > /var/plexguide/message.phase
       bash /opt/plexguide/roles/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags alias
+      ansible-playbook /opt/plexguide/menu/interface/alias/main.yml
       cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
   fi
 ######################################################## END: Main Script
