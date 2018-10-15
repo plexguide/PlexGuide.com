@@ -17,7 +17,7 @@
 #################################################################################
 menu=$(cat /var/plexguide/final.choice)
 
-file="/var/plexguide/server.id"
+file="/var/plexguide/watchtower.id"
   if [ ! -e "$file" ]; then
     echo NOT-SET > /var/plexguide/watchtower.id
   fi
