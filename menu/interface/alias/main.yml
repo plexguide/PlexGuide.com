@@ -19,9 +19,9 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    
+
     - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+      shell: "echo 'INFO - Ansible Role - Alias Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
     - name: Install Status Move
       template:
@@ -279,4 +279,4 @@
         mode: 0775
 
     - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role {{role_name}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+      shell: "echo 'INFO - Ansible Role Alias Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
