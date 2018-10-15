@@ -35,7 +35,7 @@ if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
 
       echo "Installing PG Folders & Directories" > /var/plexguide/message.phase
       bash /opt/plexguide/menu/interface/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags folders
+      ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
   fi
 ######################################################## END: Main Script
 #
