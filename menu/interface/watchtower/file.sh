@@ -34,6 +34,7 @@ file="/var/plexguide/server.id"
   echo "released containers is bugged! Rare, but happens!"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+  echo ""
 
   ### part 2
   typed=nullstart
@@ -41,7 +42,6 @@ file="/var/plexguide/server.id"
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
-    echo ""
     echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Set WatchTower Preference"
     echo "--------------------------------------------------------"
@@ -55,7 +55,7 @@ file="/var/plexguide/server.id"
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
-if [ "$typed" != "1" ]; then
+if [ "$typed" != "0" ]; then
 
       if [ "$tcheck" == "" ]; then
         echo "--------------------------------------------------------"
