@@ -106,7 +106,7 @@ if [ "$typed" != "1" ]; then
       echo "";
     fi
   done
-
+done
 #### Final fi
 fi
 
