@@ -59,12 +59,10 @@ if [ "$typed" != "0" ]; then
 
       if [ "$tcheck" == "" ]; then
         echo "--------------------------------------------------------"
-        echo "SYSTEM MESSAGE: Failed! Type a Number from 1 - 4"
+        echo "SYSTEM MESSAGE: Exiting - WatchTower Interface"
         echo "--------------------------------------------------------"
         echo ""
-        read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-        echo ""
-        echo ""
+        break=on
       else
         echo "----------------------------------------------"
         echo "SYSTEM MESSAGE: Passed! WatchTower Pref Set!"
