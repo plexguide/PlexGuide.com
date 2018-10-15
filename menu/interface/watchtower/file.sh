@@ -51,26 +51,27 @@ menu=$(cat /var/plexguide/final.choice)
 
 if [ "$typed" != "1" ]; then
 
-    if [ "$tcheck" == "" ]; then
-      echo "--------------------------------------------------------"
-      echo "SYSTEM MESSAGE: Failed! Type a Number from 1 - 4"
-      echo "--------------------------------------------------------"
-      echo ""
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo ""
-      echo ""
-    else
-      echo "----------------------------------------------"
-      echo "SYSTEM MESSAGE: Passed! WatchTower Pref Set!"
-      echo "----------------------------------------------"
-      echo ""
-      echo $typed > /var/plexguide/watchtower.id
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      break=on
-    fi
-  done
+      if [ "$tcheck" == "" ]; then
+        echo "--------------------------------------------------------"
+        echo "SYSTEM MESSAGE: Failed! Type a Number from 1 - 4"
+        echo "--------------------------------------------------------"
+        echo ""
+        read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+        echo ""
+        echo ""
+      else
+        echo "----------------------------------------------"
+        echo "SYSTEM MESSAGE: Passed! WatchTower Pref Set!"
+        echo "----------------------------------------------"
+        echo ""
+        echo $typed > /var/plexguide/watchtower.id
+        read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+        break=on
+      fi
+
 #### Final fi
 fi
+done
 
 if [ "$typed" == "2" ]; then
 cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
