@@ -30,7 +30,7 @@
       GID: 1000
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "{{path.stdout}}:{{path.stdout}}"
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
     networks:
       - name: plexguide
         aliases:
