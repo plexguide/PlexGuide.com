@@ -86,16 +86,19 @@ done
 
 if [ "$typed" == "2" ]; then
 cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
+ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
 fi
 
 ### need to exempt plex and emby
 if [ "$typed" == "3" ]; then
 cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
+ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
 fi
 
 ### need to exempt plex and emby
 if [ "$typed" == "4" ]; then
 echo null > /tmp/watchtower.set
+ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
 fi
 
 idtest=$(cat /var/plexguide/watchtower.id)
