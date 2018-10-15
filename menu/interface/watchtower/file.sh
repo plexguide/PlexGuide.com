@@ -36,6 +36,7 @@ menu=$(cat /var/plexguide/final.choice)
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
+    echo ""
     echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Set WatchTower Preference"
     echo "--------------------------------------------------------"
