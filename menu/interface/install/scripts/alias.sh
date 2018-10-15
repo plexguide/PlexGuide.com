@@ -15,34 +15,20 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: RClone Install"
-pg_rclone=$( cat /var/plexguide/pg.rclone )
-pg_rclone_stored=$( cat /var/plexguide/pg.rclone.stored )
+sname="PG Installer: Alias Install"
+pg_alias=$( cat /var/plexguide/pg.alias )
+pg_alias_stored=$( cat /var/plexguide/pg.alias.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_rclone" == "$pg_rclone_stored" ]; then
+if [ "$pg_alias" == "$pg_alias_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      echo "Installing / Upgrading RClone 1.43" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
-
-#### Alignment Note #### Have to Have It Left Aligned
-tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
-EOF
-
-chown 1000:1000 /usr/bin/rclone 1>/dev/null 2>&1
-chmod 755 /usr/bin/rclone 1>/dev/null 2>&1
-
-      cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored
+      echo "Installing Alias Commands" > /var/plexguide/message.phase
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
+      ansible-playbook /opt/plexguide/menu/interface/alias/main.yml
+      cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
   fi
 ######################################################## END: Main Script
 #

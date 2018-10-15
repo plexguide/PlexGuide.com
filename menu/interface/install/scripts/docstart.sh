@@ -15,31 +15,20 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: WatchTower Install"
-pg_watchtower=$( cat /var/plexguide/pg.watchtower )
-pg_watchtower_stored=$( cat /var/plexguide/pg.watchtower.stored )
+sname="Docker Start Assist"
+pg_docstart=$( cat /var/plexguide/pg.docstart )
+pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
+if [ "$pg_docstart" == "$pg_docstart_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      echo "Installing / Upgrading WatchTower" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
-
-      file="/var/plexguide/watchtower.yes"
-      if [ -e "$file" ];then
-        ansible-playbook /opt/plexguide/pg.yml --tags watchtower
-        sleep 2
-      else
-        bash /opt/plexguide/roles/watchtower/menus/main.sh
-        ansible-playbook /opt/plexguide/pg.yml --tags watchtower
-        sleep 2
-      fi
-
-      touch /var/plexguide/watchtower.yes
-      cat /var/plexguide/pg.watchtower > /var/plexguide/pg.watchtower.stored
+      echo "Installing PG Docker Startup Assist" > /var/plexguide/message.phase
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
+      ansible-playbook /opt/plexguide/pg.yml --tags docstart
+      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored
   fi
 ######################################################## END: Main Script
 #

@@ -15,20 +15,22 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="Docker Start Assist"
-pg_docstart=$( cat /var/plexguide/pg.docstart )
-pg_docstart_stored=$( cat /var/plexguide/pg.docstart.stored )
+sname="PG Installer: Cleaner Functions"
+pg_cleaner=$( cat /var/plexguide/pg.cleaner )
+pg_cleaner_stored=$( cat /var/plexguide/pg.cleaner.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_docstart" == "$pg_docstart_stored" ]; then
+if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      echo "Installing PG Docker Startup Assist" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags docstart
-      cat /var/plexguide/pg.docstart > /var/plexguide/pg.docstart.stored
+      echo "Installing PG Cleaner Essentials" > /var/plexguide/message.phase
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
+      ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
+      ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
+      cat /var/plexguide/pg.cleaner > /var/plexguide/pg.cleaner.stored
   fi
 ######################################################## END: Main Script
 #

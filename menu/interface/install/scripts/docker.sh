@@ -26,7 +26,7 @@ if [ "$pg_docker" == "$pg_docker_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing / Upgrading Docker" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
       ansible-playbook /opt/plexguide/pg.yml --tags docker
 
       file="/usr/bin/docker" 1>/dev/null 2>&1

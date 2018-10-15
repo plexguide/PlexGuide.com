@@ -15,20 +15,20 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Dependency Commands"
-pg_dependency=$( cat /var/plexguide/pg.dependency )
-pg_dependency_stored=$( cat /var/plexguide/pg.dependency.stored )
+sname="PG Installer: MOTD Install"
+pg_motd=$( cat /var/plexguide/pg.motd )
+pg_motd_stored=$( cat /var/plexguide/pg.motd.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_dependency" == "$pg_dependency_stored" ]; then
+if [ "$pg_motd" == "$pg_motd_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      echo "Installing PG Dependencies" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags dependency
-      cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored
+      echo "Installing MOTD Startup" > /var/plexguide/message.phase
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
+      ansible-playbook /opt/plexguide/pg.yml --tags motd
+      cat /var/plexguide/pg.motd > /var/plexguide/pg.motd.stored
   fi
 ######################################################## END: Main Script
 #
