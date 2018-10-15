@@ -26,7 +26,7 @@ if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing PG Cleaner Essentials" > /var/plexguide/message.phase
-      bash /opt/plexguide/install/scripts/message.sh
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
       ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
       ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
       ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &

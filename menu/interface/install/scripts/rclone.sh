@@ -26,7 +26,7 @@ if [ "$pg_rclone" == "$pg_rclone_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing / Upgrading RClone 1.43" > /var/plexguide/message.phase
-      bash /opt/plexguide/install/scripts/message.sh
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
       ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
 
 #### Alignment Note #### Have to Have It Left Aligned

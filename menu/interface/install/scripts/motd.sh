@@ -26,7 +26,7 @@ if [ "$pg_motd" == "$pg_motd_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing MOTD Startup" > /var/plexguide/message.phase
-      bash /opt/plexguide/install/scripts/message.sh
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
       ansible-playbook /opt/plexguide/pg.yml --tags motd
       cat /var/plexguide/pg.motd > /var/plexguide/pg.motd.stored
   fi

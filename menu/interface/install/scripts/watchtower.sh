@@ -15,27 +15,31 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="Folders & Directories - Install"
-pg_preinstall=$( cat /var/plexguide/pg.preinstall )
-pg_preinstall_stored=$( cat /var/plexguide/pg.preinstall.stored )
+sname="PG Installer: WatchTower Install"
+pg_watchtower=$( cat /var/plexguide/pg.watchtower )
+pg_watchtower_stored=$( cat /var/plexguide/pg.watchtower.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
+if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
+      echo "Installing / Upgrading WatchTower" > /var/plexguide/message.phase
+      bash /opt/plexguide/menu/interface/install/scripts/message.sh
 
-      file="/var/plexguide/server.hd.path"
-      if [ -e "$file" ]; then
-            echo "" 1>/dev/null 2>&1
-          else
-            echo "/mnt" > /var/plexguide/server.hd.path
+      file="/var/plexguide/watchtower.yes"
+      if [ -e "$file" ];then
+        ansible-playbook /opt/plexguide/pg.yml --tags watchtower
+        sleep 2
+      else
+        bash /opt/plexguide/roles/watchtower/menus/main.sh
+        ansible-playbook /opt/plexguide/pg.yml --tags watchtower
+        sleep 2
       fi
 
-      echo "Installing PG Folders & Directories" > /var/plexguide/message.phase
-      bash /opt/plexguide/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags folders
+      touch /var/plexguide/watchtower.yes
+      cat /var/plexguide/pg.watchtower > /var/plexguide/pg.watchtower.stored
   fi
 ######################################################## END: Main Script
 #
