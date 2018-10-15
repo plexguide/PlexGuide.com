@@ -68,7 +68,6 @@ if [ "$typed" != "1" ]; then
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       break=on
     fi
-  done
 
   break=no
   while [ "$break" == "no" ]; do
@@ -107,7 +106,7 @@ if [ "$typed" != "1" ]; then
       echo "";
     fi
   done
-
+done
 #### Final fi
 fi
 
@@ -115,7 +114,7 @@ if [ "$typed" == "2" ]; then
 cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
 fi
 
-### need to exempt plex and emby 
+### need to exempt plex and emby
 if [ "$typed" == "3" ]; then
 cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
 fi
