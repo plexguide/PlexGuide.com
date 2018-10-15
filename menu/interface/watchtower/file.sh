@@ -55,14 +55,16 @@ file="/var/plexguide/server.id"
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
-if [ "$typed" != "0" ]; then
+if [ "$typed" != "1" ]; then
 
       if [ "$tcheck" == "" ]; then
         echo "--------------------------------------------------------"
-        echo "SYSTEM MESSAGE: Exiting - WatchTower Interface"
+        echo "SYSTEM MESSAGE: Failed! Type a Number from 1 - 4"
         echo "--------------------------------------------------------"
         echo ""
-        break=on
+        read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+        echo ""
+        echo ""
       else
         echo "----------------------------------------------"
         echo "SYSTEM MESSAGE: Passed! WatchTower Pref Set!"
@@ -72,6 +74,11 @@ if [ "$typed" != "0" ]; then
         read -n 1 -s -r -p "Press [ANY KEY] to Continue "
         break=on
       fi
+else
+  echo "--------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Exiting - WatchTower Interface!"
+  echo "--------------------------------------------------------"
+  echo ""
 
 #### Final fi
 fi
