@@ -30,7 +30,7 @@ if [ "$menu" == "4" ]; then
 fi
 
 if [ "$menu" == "5" ]; then
-  bash /opt/plexguide/roles/watchtower/menus/main.sh
+  bash /opt/plexguide/menu/interface/watchtower/file.sh
 fi
 
 if [ "$menu" == "6" ]; then
