@@ -15,11 +15,11 @@
 #
 ############################################################# (KEY START)
 ---
-  - name: "Set Default Labels"
-    set_fact:
-      default_labels:
-        traefik.frontend.auth.basic.users: "{{authorization}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.frontend.auth.basic.users: "{{authorization}}"
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
