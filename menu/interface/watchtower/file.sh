@@ -68,6 +68,7 @@ if [ "$typed" != "1" ]; then
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       break=on
     fi
+  done
 #### Final fi
 fi
 
