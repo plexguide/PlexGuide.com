@@ -759,7 +759,7 @@ if [ "$menu" == "8" ]; then
 ######## Final Message
 echo ""
 echo "--------------------------------------------------------"
-echo "SYSTEM MESSAGE: Securly Entering Your GCE Feeder Box"
+echo "SYSTEM MESSAGE: Securely Entering Your GCE Feeder Box"
 echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: If asked to create keys, remember the passcodes!"
