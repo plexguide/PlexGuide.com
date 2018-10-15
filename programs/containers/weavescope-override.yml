@@ -22,13 +22,12 @@
     pull: yes
     published_ports:
       - "4040:4040"
-    pid: "host"
     privileged: true
     command:
       - "--probe.docker=true"
     env:
-      PUID: 1000
-      PGID: 1000
+      PID: 1000
+      GID: 1000
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "{{path.stdout}}:{{path.stdout}}"
