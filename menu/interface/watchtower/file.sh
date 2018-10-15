@@ -79,7 +79,7 @@ else
   echo "SYSTEM MESSAGE: Exiting - WatchTower Interface!"
   echo "--------------------------------------------------------"
   echo ""
-
+  break=on
 #### Final fi
 fi
 done
