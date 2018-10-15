@@ -49,7 +49,7 @@ file="/var/plexguide/watchtower.id"
     echo "1. EXIT WatchTower Interface"
     echo "2. Containers:  All Auto-Update"
     echo "3. Containers:  All Auto-Update | Except Plex & Emby"
-    echo "4. Containers:  Never Update    | Conducting Manual Updates"
+    echo "4. Containers:  Never Update    | Conduct Manual Updates"
     echo ""
     read -p 'Type a Number from 1 - 4 | PRESS [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
@@ -92,6 +92,8 @@ fi
 ### need to exempt plex and emby
 if [ "$typed" == "3" ]; then
 cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
+sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
+sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
 fi
 
