@@ -111,6 +111,15 @@ if [ "$typed" != "1" ]; then
 #### Final fi
 fi
 
+if [ "$typed" == "2" ]; then
+cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
+fi
+
+### need to exempt plex and emby 
+if [ "$typed" == "3" ]; then
+cat /opt/plexguide/roles/programs/scripts/app.list > /tmp/watchtower.set
+fi
+
 idtest=$(cat /var/plexguide/watchtower.id)
 if [ "$idtest" == "NOT-SET" ]; then
   echo ""
