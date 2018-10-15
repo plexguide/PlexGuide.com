@@ -17,6 +17,11 @@
 #################################################################################
 menu=$(cat /var/plexguide/final.choice)
 
+file="/var/plexguide/server.id"
+  if [ ! -e "$file" ]; then
+    echo NOT-SET > /var/plexguide/watchtower.id
+  fi
+
   echo ""
   echo "-----------------------------------------------------"
   echo "SYSTEM MESSAGE: Please Read the Following Information"
@@ -32,7 +37,7 @@ menu=$(cat /var/plexguide/final.choice)
 
   ### part 2
   typed=nullstart
-  prange="1 2 3"
+  prange="1 2 3 4"
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
