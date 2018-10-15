@@ -99,9 +99,10 @@ if [ "$idtest" == "NOT-SET" ]; then
   echo "SYSTEM MESSAGE: Never Set a WatchTower Preference!"
   echo "---------------------------------------------------"
   echo ""
-  echo "NOTE: You Must Set Once! Restarting the Process!"
+  echo "NOTE: You Must at Least Set WatchTower One Time!"
+  echo "Restarting Process"
   echo
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo watchtowerid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  bash /opt/plexguide/menu/interface/watchtower/file.sh
   exit
 fi
