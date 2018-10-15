@@ -68,45 +68,6 @@ if [ "$typed" != "1" ]; then
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       break=on
     fi
-
-  break=no
-  while [ "$break" == "no" ]; do
-  echo ""
-  read -p 'Type a Sever ID & Then Press [ENTER]: ' typed
-  #typed=typed+0
-    echo ""
-    echo "-------------------------------------------------"
-    echo "SYSTEM MESSAGE: Server ID - $typed"
-    echo "-------------------------------------------------"
-    echo ""
-    read -p "Continue with the Set Server ID (y/n)? " -n 1 -r
-
-    if [[ ! $REPLY =~ ^[Yy]$ ]]
-    then
-      echo ""
-      echo "---------------------------------------------------"
-      echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
-      echo "---------------------------------------------------"
-      echo ""
-      echo "You will be able to set the Server ID Again!"
-      echo
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo "";
-    else
-      echo ""
-      echo "---------------------------------------------------"
-      echo "SYSTEM MESSAGE: Server ID - $typed"
-      echo "---------------------------------------------------"
-      echo ""
-      echo "Your Server ID is Now Set! Thank you!"
-      echo ""
-      echo $typed > /var/plexguide/watchtower.id
-      break=yes
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo "";
-    fi
-  done
-done
 #### Final fi
 fi
 
