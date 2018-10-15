@@ -20,8 +20,6 @@
     name: weavescope
     image: "weaveworks/scope"
     pull: yes
-    published_ports:
-      - "4040:4040"
     privileged: true
     command:
       - probe.docker: true
