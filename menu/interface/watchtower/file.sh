@@ -95,7 +95,6 @@ fi
 
 idtest=$(cat /var/plexguide/watchtower.id)
 if [ "$idtest" == "NOT-SET" ]; then
-  echo ""
   echo "---------------------------------------------------"
   echo "SYSTEM MESSAGE: Never Set a WatchTower Preference!"
   echo "---------------------------------------------------"
