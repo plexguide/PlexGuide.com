@@ -23,7 +23,7 @@ file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
   bash /opt/plexguide/menu/interface/version/file.sh
 fi
-bash /opt/plexguide/roles/install/scripts/yml-gen.sh
+bash /opt/plexguide/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
  # Force Common Things To Execute Such as Folders
@@ -43,12 +43,12 @@ echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
 # Declare Variables Vital for Operations
-bash /opt/plexguide/roles/install/scripts/declare.sh
+bash /opt/plexguide/install/scripts/declare.sh
 ######################################################## END: Key Variables
 #
 #
 ######################################################## START: Start
-bash /opt/plexguide/roles/install/scripts/start.sh
+bash /opt/plexguide/install/scripts/start.sh
 ### Users Agreement Handling
 file="/var/plexguide/update.failed"
 if [ -e "$file" ]; then
@@ -58,7 +58,7 @@ fi
 #
 #
 ######################################################## START: Ansible
-bash /opt/plexguide/roles/install/scripts/ansible.sh ### Good
+bash /opt/plexguide/install/scripts/ansible.sh ### Good
 ######################################################## END: Ansible
 #
 #
@@ -87,32 +87,32 @@ fi
 #
 #
 ######################################################## START: Alias
-bash /opt/plexguide/roles/install/scripts/alias.sh ### Good
+bash /opt/plexguide/install/scripts/alias.sh ### Good
 ######################################################## END: Alias
 #
 #
 ######################################################## START: Server ID
-bash /opt/plexguide/roles/install/scripts/id.sh ### Good
+bash /opt/plexguide/install/scripts/id.sh ### Good
 ######################################################## END: Server ID
 #
 #
 ######################################################## START: Folders
-bash /opt/plexguide/roles/install/scripts/dependency.sh ### Good
+bash /opt/plexguide/install/scripts/dependency.sh ### Good
 ######################################################## END: Folders
 #
 #
 ######################################################## START: Folders
-bash /opt/plexguide/roles/install/scripts/folders.sh ### Good
+bash /opt/plexguide/install/scripts/folders.sh ### Good
 ######################################################## END: Folders
 #
 #
 ######################################################## START: Docker
-bash /opt/plexguide/roles/install/scripts/docker.sh ### Test Docker
+bash /opt/plexguide/install/scripts/docker.sh ### Test Docker
 ######################################################## END: Docker
 #
 #
 ######################################################## START: DocStart
-bash /opt/plexguide/roles/install/scripts/docstart.sh ### Good
+bash /opt/plexguide/install/scripts/docstart.sh ### Good
 ######################################################## END: DocStart
 #
 #
@@ -122,42 +122,42 @@ echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/pro
 #
 #
 ######################################################## START: WatchTower
-bash /opt/plexguide/roles/install/scripts/watchtower.sh
+bash /opt/plexguide/install/scripts/watchtower.sh
 ######################################################## END: WatchTower
 #
 #
 ######################################################## START: MOTD
-bash /opt/plexguide/roles/install/scripts/motd.sh
+bash /opt/plexguide/install/scripts/motd.sh
 ######################################################## END: MOTD
 #
 #
 ######################################################## START: RClone
-bash /opt/plexguide/roles/install/scripts/rclone.sh
+bash /opt/plexguide/install/scripts/rclone.sh
 ######################################################## END: RCone
 #
 #
 ######################################################## START: Cleaner
-bash /opt/plexguide/roles/install/scripts/cleaner.sh
+bash /opt/plexguide/install/scripts/cleaner.sh
 ######################################################## END: Cleaner
 #
 #
 ######################################################## START: G-Console
-bash /opt/plexguide/roles/install/scripts/gcloud.sh
+bash /opt/plexguide/install/scripts/gcloud.sh
 ######################################################## END: G-Console
 #
 #
 ######################################################## START: Python
-bash /opt/plexguide/roles/install/scripts/python.sh &>/dev/null & ### Maybe Good?
+bash /opt/plexguide/install/scripts/python.sh &>/dev/null & ### Maybe Good?
 ######################################################## END: Python
 #
 #
 ######################################################## START: Reboot
-bash /opt/plexguide/roles/install/scripts/reboot.sh
+bash /opt/plexguide/install/scripts/reboot.sh
 ######################################################## END: Reboot
 #
 #
 ######################################################## START: Edition
-bash /opt/plexguide/roles/install/scripts/edition.sh
+bash /opt/plexguide/install/scripts/edition.sh
 ######################################################## END: Edition
 #
 #

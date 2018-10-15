@@ -26,7 +26,7 @@ if [ "$pg_watchtower" == "$pg_watchtower_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing / Upgrading WatchTower" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
+      bash /opt/plexguide/install/scripts/message.sh
 
       file="/var/plexguide/watchtower.yes"
       if [ -e "$file" ];then

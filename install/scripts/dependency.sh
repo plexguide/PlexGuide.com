@@ -15,22 +15,20 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Cleaner Functions"
-pg_cleaner=$( cat /var/plexguide/pg.cleaner )
-pg_cleaner_stored=$( cat /var/plexguide/pg.cleaner.stored )
+sname="PG Installer: Dependency Commands"
+pg_dependency=$( cat /var/plexguide/pg.dependency )
+pg_dependency_stored=$( cat /var/plexguide/pg.dependency.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_cleaner" == "$pg_cleaner_stored" ]; then
+if [ "$pg_dependency" == "$pg_dependency_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      echo "Installing PG Cleaner Essentials" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
-      ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
-      ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
-      ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
-      cat /var/plexguide/pg.cleaner > /var/plexguide/pg.cleaner.stored
+      echo "Installing PG Dependencies" > /var/plexguide/message.phase
+      bash /opt/plexguide/install/scripts/message.sh
+      ansible-playbook /opt/plexguide/pg.yml --tags dependency
+      cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored
   fi
 ######################################################## END: Main Script
 #

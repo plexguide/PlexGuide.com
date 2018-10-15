@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
+# Author:   Admin9705 & Deiteq & FlickerRate
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -15,24 +15,27 @@
 #################################################################################
 
 ######################################################## Declare Variables
-sname="PG Installer: Google Console"
-pg_gcloud=$( cat /var/plexguide/pg.gcloud )
-pg_gcloud_stored=$( cat /var/plexguide/pg.gcloud.stored )
+sname="Folders & Directories - Install"
+pg_preinstall=$( cat /var/plexguide/pg.preinstall )
+pg_preinstall_stored=$( cat /var/plexguide/pg.preinstall.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_gcloud" == "$pg_gcloud_stored" ]; then
+if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      echo "Installing GCloud Interface" > /var/plexguide/message.phase
-      bash /opt/plexguide/roles/install/scripts/message.sh
-      echo ""
-      export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-      echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-      curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-      sudo apt-get update && sudo apt-get install google-cloud-sdk -y
-      cat /var/plexguide/pg.gcloud > /var/plexguide/pg.gcloud.stored
+
+      file="/var/plexguide/server.hd.path"
+      if [ -e "$file" ]; then
+            echo "" 1>/dev/null 2>&1
+          else
+            echo "/mnt" > /var/plexguide/server.hd.path
+      fi
+
+      echo "Installing PG Folders & Directories" > /var/plexguide/message.phase
+      bash /opt/plexguide/install/scripts/message.sh
+      ansible-playbook /opt/plexguide/pg.yml --tags folders
   fi
 ######################################################## END: Main Script
 #

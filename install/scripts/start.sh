@@ -27,7 +27,7 @@ if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
 else
   rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
   echo "Installing PG Basics" > /var/plexguide/message.phase
-  bash /opt/plexguide/roles/install/scripts/message.sh
+  bash /opt/plexguide/install/scripts/message.sh
 
   echo ""
   echo "------------------------------------------------"
