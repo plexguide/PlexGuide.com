@@ -104,5 +104,6 @@ if [ "$idtest" == "NOT-SET" ]; then
   echo
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   bash /opt/plexguide/menu/interface/watchtower/file.sh
+  echo ""
   exit
 fi
