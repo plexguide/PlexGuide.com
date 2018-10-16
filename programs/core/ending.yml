@@ -33,10 +33,10 @@
 
 ### Cron
   - include_role:
-      name: "../menu/interface/pgcron/main.yml"
-    tags: cron
-    when:
-      - cron == "on"
+      name: "/opt/plexguide/menu/interface/pgcron/main.yml"
+    #tags: cron
+    #when:
+    #  - cron == "on"
 
 ### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
