@@ -31,8 +31,8 @@
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /opt/appdata/ddclient:/config
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/appdata/{{pgrole}}:/config"
 
 - name: "Establish Key Variables"
   set_fact:
