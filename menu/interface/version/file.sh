@@ -42,6 +42,7 @@ if [ "$typed" == "exit" ]; then
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
+  touch /var/plexguide/exited.upgrade
   exit
 fi
 
