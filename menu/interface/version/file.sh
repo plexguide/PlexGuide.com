@@ -34,7 +34,7 @@ while [ "$break" == "no" ]; do
 read -p 'Type the [PG Version] for Deployment! (all lowercase): ' typed
 storage=$(grep $typed /var/plexguide/ver.temp)
 
-if [ "$storage" == "exit" ]; then
+if [ "$typed" == "exit" ]; then
   echo ""
   echo "-------------------------------------------------"
   echo "SYSTEM MESSAGE: Exiting Version Install Interface"
