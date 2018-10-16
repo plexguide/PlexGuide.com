@@ -35,13 +35,13 @@
   set_fact:
     default_volumes:
       - "/opt/appdata/nzbget:/config"
-      - "{{path.stdout}}/nzbget/completed:/completed"
-      - "{{path.stdout}}/nzbget/incomplete:/incomplete"
-      - "{{path.stdout}}/nzbget/nzb:/nzb"
-      - "{{path.stdout}}/nzbget/log:/log"
-      - "{{path.stdout}}/nzbget/tmp:/tmp"
-      - "{{path.stdout}}/nzbget/queue:/queue"
-      - "{{path.stdout}}/nzbget/scripts:/scripts"
+      - "{{path.stdout}}/{{pgrole}}/completed:/completed"
+      - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
+      - "{{path.stdout}}/{{pgrole}}/nzb:/nzb"
+      - "{{path.stdout}}/{{pgrole}}/log:/log"
+      - "{{path.stdout}}/{{pgrole}}/tmp:/tmp"
+      - "{{path.stdout}}/{{pgrole}}/queue:/queue"
+      - "{{path.stdout}}/{{pgrole}}/scripts:/scripts"
       - "/mnt/unionfs:/unionfs"
       - "/etc/localtime:/etc/localtime:ro"
 
