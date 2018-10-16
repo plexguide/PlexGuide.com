@@ -33,19 +33,13 @@
 
 ### Cron
   - include_role:
-      name: pgcron
+      name: ../interface/pgcron/main.yml
     tags: cron
     when:
       - cron == "on"
 
 ### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
-    when:
-      - pgrole != "pgtracker"
-
-  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | tracker.{{domain.stdout}}"
-    when:
-      - pgrole == "pgtracker"
 
   - pause:
       prompt: "\nView the Access Information Above, then Press [ENTER]"
