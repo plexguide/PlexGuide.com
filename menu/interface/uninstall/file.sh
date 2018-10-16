@@ -55,7 +55,7 @@ done
   echo "0" > /var/plexguide/pg.label.stored
   echo "0" > /var/plexguide/pg.alias.stored
   echo "0" > /var/plexguide/pg.dep
-  rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+  rm -rf /var/plexguide/dep* 1>/dev/null 2>&1
 
   echo ""
   echo "-----------------------------------------------------------"

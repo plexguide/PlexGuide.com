@@ -21,7 +21,7 @@ serverid=$( cat /var/plexguide/server.id )
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
 touch /opt/appdata/plexguide/backup 1>/dev/null 2>&1
-sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
+sudo rm -rf /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
 mfolder="/mnt/gdrive/plexguide/backup.old/$serverid/backup-$d/"
 
@@ -65,7 +65,7 @@ while read p; do
   touch $mnt/pgops/$p.running 1>/dev/null 2>&1
   fi
   ansible-playbook /opt/plexguide/pg.yml --tags b-mbackup
-  rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
+  rm -rf $mnt/pgops/$p.running 1>/dev/null 2>&1
   echo ""
   echo "$p - backed up"
   sleep 3
@@ -74,7 +74,7 @@ done <$path
 echo ""
 read -n 1 -s -r -p "Mass Backup Process Complete - Press [ANY KEY] to CONTINUE"
 
-rm -r /opt/appdata/plexguide/backup 1>/dev/null 2>&1
+rm -rf /opt/appdata/plexguide/backup 1>/dev/null 2>&1
 clear
 
 exit 0

@@ -828,8 +828,8 @@ if [ "$menu" == "9" ]; then
   echo "NOTE: Please Standby"
   echo ""
   gcloud compute instances delete pg-gce --quiet --zone "$location"
-  rm -r /root/.ssh/google_compute_engine 1>/dev/null 2>&1
-  rm -r /var/plexguide/gce.deployed 1>/dev/null 2>&1
+  rm -rf /root/.ssh/google_compute_engine 1>/dev/null 2>&1
+  rm -rf /var/plexguide/gce.deployed 1>/dev/null 2>&1
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: PG GCE Server Destroyed!"

@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-rm -r /var/plexguide/ver.temp 1>/dev/null 2>&1
+rm -rf /var/plexguide/ver.temp 1>/dev/null 2>&1
 touch /var/plexguide/ver.temp
 
 sleep 4

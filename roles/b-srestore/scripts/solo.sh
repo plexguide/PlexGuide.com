@@ -20,7 +20,7 @@ mnt=$(cat /var/plexguide/server.hd.path)
 restoreid=$(cat /var/plexguide/restore.id)
 
 clear
-rm -r $mnt/pgops/restore.build 1>/dev/null 2>&1
+rm -rf $mnt/pgops/restore.build 1>/dev/null 2>&1
 touch $mnt/pgops/restore.build 1>/dev/null 2>&1
 
 #### Recalls List for restore Operations

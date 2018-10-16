@@ -21,7 +21,7 @@ restoreid=$( cat /var/plexguide/restore.id )
 d=$(date +%Y-%m-%d-%T) 1>/dev/null 2>&1
 
 touch /opt/appdata/plexguide/restore 1>/dev/null 2>&1
-sudo rm -r /opt/appdata/plex/trans* 1>/dev/null 2>&1
+sudo rm -rf /opt/appdata/plex/trans* 1>/dev/null 2>&1
 
 mfolder="/mnt/gdrive/plexguide/restore/$restoreid/restore-$d"
 
@@ -68,7 +68,7 @@ while read p; do
   touch $mnt/pgops/$p.running 1>/dev/null 2>&1
   fi
   ansible-playbook /opt/plexguide/pg.yml --tags b-mrestore
-  rm -r $mnt/pgops/$p.running 1>/dev/null 2>&1
+  rm -rf $mnt/pgops/$p.running 1>/dev/null 2>&1
   echo ""
   echo "$p - restored"
   sleep 3
@@ -77,6 +77,6 @@ done <$path
 echo ""
 read -n 1 -s -r -p "Mass Restore Process Complete - Press [ANY KEY] to CONTINUE"
 
-rm -r /opt/appdata/plexguide/restore 1>/dev/null 2>&1
+rm -rf /opt/appdata/plexguide/restore 1>/dev/null 2>&1
 
 exit 0

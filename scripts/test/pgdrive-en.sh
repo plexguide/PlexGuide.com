@@ -33,7 +33,7 @@ clear
   mkdir -p /usr/local/share/man/ 1>/dev/null 2>&1
   cp rclone.1 /usr/local/share/man/man1/ 1>/dev/null 2>&1
   mandb 1>/dev/null 2>&1
-  cd .. && sudo rm -r rclone* 1>/dev/null 2>&1
+  cd .. && sudo rm -rf rclone* 1>/dev/null 2>&1
   sudo rm -rf /var/plexguide/rclone-en.no
   sudo touch /var/plexguide/rclone-en.yes
   cd ~
@@ -291,7 +291,7 @@ systemctl restart move 1>/dev/null 2>&1
 # set variable to remember what version of rclone user installed
 mkdir -p /var/plexguide/pgdrive 1>/dev/null 2>&1
 touch /var/plexguide/pgdrive/en 1>/dev/null 2>&1
-rm -r /var/plexguide/pgdrive/un 1>/dev/null 2>&1
+rm -rf /var/plexguide/pgdrive/un 1>/dev/null 2>&1
 echo 10
 # pauses
 bash /opt/plexguide/roles/misc/continue.sh

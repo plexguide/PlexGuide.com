@@ -83,10 +83,10 @@ case $CHOICE in
     echo "0" > /var/plexguide/pg.label.stored
     echo "0" > /var/plexguide/pg.alias.stored
     echo "0" > /var/plexguide/pg.dep
-    rm -r /var/plexguide/dep* 1>/dev/null 2>&1
+    rm -rf /var/plexguide/dep* 1>/dev/null 2>&1
     bash /opt/plexguide/roles/uninstall/main.sh ;;
   E)
-    rm -r /var/plexguide/server.settings.set 1>/dev/null 2>&1
+    rm -rf /var/plexguide/server.settings.set 1>/dev/null 2>&1
     echo "0" > /var/plexguide/pg.preinstall.stored
     dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!\n\nYou will be asked again after the Pre-Install!" 0 0 ;;
   F)

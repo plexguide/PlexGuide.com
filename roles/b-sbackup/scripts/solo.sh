@@ -19,7 +19,7 @@
 mnt=$(cat /var/plexguide/server.hd.path)
 
 clear
-rm -r $mnt/pgops/backup.build 1>/dev/null 2>&1
+rm -rf $mnt/pgops/backup.build 1>/dev/null 2>&1
 touch $mnt/pgops/backup.build 1>/dev/null 2>&1
 
 #### Recalls List for Backup Operations

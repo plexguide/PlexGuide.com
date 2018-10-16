@@ -28,9 +28,9 @@
 #echo $count
 
 ### Blank Out File
-rm -r /var/plexguide/multi.build 1>/dev/null 2>&1
-rm -r /var/plexguide/multi.unionfs 1>/dev/null 2>&1
-rm -r /var/plexguide/multi.read 1>/dev/null 2>&1
+rm -rf /var/plexguide/multi.build 1>/dev/null 2>&1
+rm -rf /var/plexguide/multi.unionfs 1>/dev/null 2>&1
+rm -rf /var/plexguide/multi.read 1>/dev/null 2>&1
 touch /var/plexguide/multi.build 1>/dev/null 2>&1
 
 ### Ensure Directory Exists

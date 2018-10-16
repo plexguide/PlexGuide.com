@@ -29,7 +29,7 @@ if [ ! -e "$file" ]; then
 	echo ""
 	read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 	echo ""
-  rm -r /opt/plexguide 1>/dev/null 2>&1
+  rm -rf /opt/plexguide 1>/dev/null 2>&1
 	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Edge /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""	exit 0
 fi
 
