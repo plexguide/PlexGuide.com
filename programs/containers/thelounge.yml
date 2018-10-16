@@ -29,12 +29,12 @@
       traefik.enable: "true"
       traefik.port: "{{intport}}"
       traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:pgrole.{{domain.stdout}},lounge.{{domain.stdout}}"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},lounge.{{domain.stdout}}"
 
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
     default_volumes:
-      - "/opt/appdata/pgrole:/config"
+      - "/opt/appdata/{{pgrole}}:/config"
       - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables"
