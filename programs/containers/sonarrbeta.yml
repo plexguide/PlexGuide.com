@@ -17,8 +17,8 @@
 - name: "Container Variables"
   set_fact:
     intport: "8989"
-    extport: "8988"
-    image: "lsioarmhf/sonarr:130"
+    extport: "8989"
+    image: "lsioarmhf/sonarr"
     cpu_shares: 128
     expose: ""
 
