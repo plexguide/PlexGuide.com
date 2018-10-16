@@ -35,8 +35,8 @@
   set_fact:
     default_volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/opt/appdata/nextcloud/data:/data"
-      - "/opt/appdata/nextcloud/conf:/config"
+      - "/opt/appdata/{{pgrole}}/data:/data"
+      - "/opt/appdata/{{pgrole}}/conf:/config"
       - "/mnt:/mnt"
       - "{{path.stdout}}:{{path.stdout}}"
 
