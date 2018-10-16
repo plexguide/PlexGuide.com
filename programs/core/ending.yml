@@ -33,8 +33,8 @@
 
   - debug: msg="{{cron}}"
 
-  - include_role:
-      name: "/opt/plexguide/menu/interface/pgcron/main.yml"
+  - iname: CronJob Role
+    include_tasks: "/opt/plexguide/menu/interface/pgcron/main.yml"
     when:
       - cron == "on"
 
