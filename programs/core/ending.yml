@@ -36,7 +36,7 @@
   - include_role:
       name: "/opt/plexguide/menu/interface/pgcron/main.yml"
     when:
-      - "{{cron}}" == "on"
+      - "{{cron}} == on"
 
 ### Display Info
   - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
