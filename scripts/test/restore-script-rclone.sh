@@ -1,6 +1,6 @@
 
     clear
-    rm -r /opt/appdata/rclone 1>/dev/null 2>&1
+    rm -rf /opt/appdata/rclone 1>/dev/null 2>&1
     echo "1. Creating a directory for RClone"
     mkdir -p /home/plexguide/.rclone
     echo "2. Copying Files From Your Google Drive > Server"

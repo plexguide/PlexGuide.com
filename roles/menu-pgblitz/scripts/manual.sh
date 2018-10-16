@@ -187,7 +187,7 @@ if [ "$menu" == "deploy" ]; then
   sleep 2
 
   #### BLANK OUT PATH - This Builds For UnionFS
-  rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+  rm -rf /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
   ### Add GDSA Paths for UnionFS
@@ -241,10 +241,10 @@ if [ "$menu" == "baseline" ]; then
   sleep 2
   systemctl stop pgblitz 1>/dev/null 2>&1
   systemctl disable pgblitz 1>/dev/null 2>&1
-  rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
+  rm -rf /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
+  rm -rf /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
+  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+  rm -rf /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
   dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
 fi
 

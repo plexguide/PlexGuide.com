@@ -36,7 +36,7 @@ case $CHOICE in
     docker rm VNC 1>/dev/null 2>&1
     whiptail --title "Container Destroyed" --msgbox "Container Destroyed" 8 40
     clear
-    rm -r /var/plexguide/vnc.yes 1>/dev/null 2>&1
+    rm -rf /var/plexguide/vnc.yes 1>/dev/null 2>&1
      ;;
 
      "3)")

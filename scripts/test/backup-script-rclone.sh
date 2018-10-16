@@ -1,7 +1,7 @@
 #!/bin/bash
 
     clear
-    rm -r /home/plexguide/gdrive/Backup/rclone 1>/dev/null 2>&1
+    rm -rf /home/plexguide/gdrive/Backup/rclone 1>/dev/null 2>&1
     echo "1. Compressing & Zipping Your Backup Request for RCLONE"
     mkdir -p /home/plexguide/gdrive/Backup/rclone
     zip -r /tmp/rclone.zip /home/plexguide/.config/rclone

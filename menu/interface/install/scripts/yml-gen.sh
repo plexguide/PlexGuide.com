@@ -24,7 +24,7 @@ sudo bash /opt/plexguide/roles/log/log.sh
 ls -la /opt/plexguide/roles | awk '{ print $9 }' | tail -n +4 > /var/plexguide/yml.list
 echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-rm -r /opt/plexguide/pg.yml 1>/dev/null 2>&1
+rm -rf /opt/plexguide/pg.yml 1>/dev/null 2>&1
 
 echo "---" > /opt/plexguide/pg.yml
 echo "- hosts: localhost" >> /opt/plexguide/pg.yml

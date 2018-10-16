@@ -131,4 +131,4 @@ file="/var/plexguide/server.ports"
     echo "[OFF]" > /var/plexguide/server.appguard
     fi
 
-rm -r /var/plexguide/pg.exit 1>/dev/null 2>&1
+rm -rf /var/plexguide/pg.exit 1>/dev/null 2>&1

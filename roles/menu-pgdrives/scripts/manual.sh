@@ -103,7 +103,7 @@ if [ "$menu" == "deploy" ]; then
 
 
   #### BLANK OUT PATH - This Builds For UnionFS
-  rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+  rm -rf /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
   ### Add GDSA Paths for UnionFS

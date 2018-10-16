@@ -15,7 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-rm -r /tmp/openvpnsetup 1>/dev/null 2>&1
+rm -rf /tmp/openvpnsetup 1>/dev/null 2>&1
 
 export NCURSES_NO_UTF8_ACS=1
  ## point to variable file for ipv4 and domain.com
@@ -28,7 +28,7 @@ display=OpenVPN
 program=openvpn
 port=8118
 
-rm -r /tmp/server.check 1>/dev/null 2>&1
+rm -rf /tmp/server.check 1>/dev/null 2>&1
 
 #dialog --infobox "Pay ATTENTION: Is this Server A REMOTE SERVER (Non-Local)?\n\nIf You SAY -NO- and it is, you must repeat this process!" 7 50
 sleep 6
@@ -228,4 +228,4 @@ fi
 #    sleep 2
 #fi
 
-#rm -r /tmp/server.check 1>/dev/null 2>&1
+#rm -rf /tmp/server.check 1>/dev/null 2>&1

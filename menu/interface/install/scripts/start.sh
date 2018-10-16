@@ -25,7 +25,7 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_preinstall" == "$pg_preinstall_stored" ]; then
   echo "" 1>/dev/null 2>&1
 else
-  rm -r /var/plexguide/update.failed 1>/dev/null 2>&1
+  rm -rf /var/plexguide/update.failed 1>/dev/null 2>&1
   echo "Installing PG Basics" > /var/plexguide/message.phase
   bash /opt/plexguide/menu/interface/install/scripts/message.sh
 
