@@ -25,7 +25,7 @@ menu=$(cat /var/plexguide/plexaddons.menu)
 
 if [ "$menu" == "webtools" ]; then
   echo 'INFO - Selected: Plex WebTools' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/menu/interface/alias/main.yml
+  ansible-playbook /opt/plexguide/menu/interface/webtools/main.yml
 fi
 
 if [ "$menu" == "pgtrak" ]; then
