@@ -31,6 +31,7 @@
   - name: Logging Ansible Role Information
     shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
 
+  - debug: msg="Cron: {{cron}}"
 ### Cron
   - include_role:
       name: "/opt/plexguide/menu/interface/pgcron/main.yml"
