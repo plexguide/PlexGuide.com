@@ -25,7 +25,7 @@ program=$(cat /tmp/program_selection)
 running=$(cat /opt/plexguide/roles/programs/scripts/app.list | grep $program -oP | head -n1 )
 if [ "$program" == "$running" ]; then
 
-  if [ "$program" == "netdata" ] || [ "$program" == "vpn" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ] || [ "$program" == "pgtracker" ]; then
+  if [ "$program" == "netdata" ] || [ "$program" == "vpn" ] || [ "$program" == "speedtest" ] || [ "$program" == "alltube" ]; then
 
     if [ "$program" == "vpn" ]; then
       bash /opt/plexguide/roles/programs/vpn.sh

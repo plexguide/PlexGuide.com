@@ -34,7 +34,7 @@
 ### Cron
   - include_role:
       name: "/opt/plexguide/menu/interface/pgcron/main.yml"
-    #tags: cron
+    tags: cron
     when:
       - cron == "on"
 
