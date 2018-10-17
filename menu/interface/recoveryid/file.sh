@@ -74,7 +74,7 @@ else
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
   echo ""
-  cat /var/plexguide/ver.temp
+  cat /tmp/print.id
   echo ""
 fi
 
