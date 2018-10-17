@@ -33,12 +33,13 @@ fi
 
 if [ "$menu" == "cserverid" ]; then
   echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  bash /opt/plexguide/menus/backup-restore/server.sh
+  
 fi
 
 if [ "$menu" == "rserverid" ]; then
   echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/backup-restore/recovery.sh
+  bash /opt/plexguide/menus/backup-restore/recovery.sh
 
 fi
 
