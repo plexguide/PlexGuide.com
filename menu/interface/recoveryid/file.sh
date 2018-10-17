@@ -29,8 +29,8 @@ echo "SYSTEM MESSAGE: Your Prior PlexGuide Server Backups"
 echo "---------------------------------------------------"
 echo ""
 echo $printid > /tmp/print.id
-echo ""
 echo "Welcome to the PG Recovery ID System!"
+echo
 cat /tmp/print.id
 echo ""
 echo "To QUIT, type >>> exit"
