@@ -127,6 +127,7 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
           traefik.frontend.redirect.entryPoint: "https"
+          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
     ############################## Check If Questions Exists
