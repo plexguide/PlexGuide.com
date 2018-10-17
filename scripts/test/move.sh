@@ -36,11 +36,11 @@ mv /opt/plexguide/roles/programs/beta-new.sh /opt/plexguide/menus/programs/beta.
 
 ## For testing new backup menus
 #rm /opt/plexguide/roles/backup/scripts/main.sh
-#mv /opt/plexguide/menus/backup-restore/backup-new.sh /opt/plexguide/roles/backup/scripts/main.sh
+#mv /opt/plexguide/roles/backup-restore/backup-new.sh /opt/plexguide/roles/backup/scripts/main.sh
 
 ## For testing new restore menus
-#rm /opt/plexguide/menus/backup-restore/restore.sh
-#mv /opt/plexguide/menus/backup-restore/restore-new.sh /opt/plexguide/menus/backup-restore/restore.sh
+#rm /opt/plexguide/roles/backup-restore/restore.sh
+#mv /opt/plexguide/roles/backup-restore/restore-new.sh /opt/plexguide/roles/backup-restore/restore.sh
 
 ## For testing new rclone-en install
 #rm /opt/plexguide/scripts/docker-no/rclone-en.sh

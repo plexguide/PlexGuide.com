@@ -32,6 +32,6 @@
 
   else
     dialog --title "Server ID Choice" --msgbox "\nSelected - Not Correct - Rerunning!" 0 0
-      bash /opt/plexguide/menus/backup-restore/server.sh
+      bash /opt/plexguide/roles/backup-restore/server.sh
       exit
   fi

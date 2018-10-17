@@ -38,7 +38,7 @@ fi
 
 if [ "$menu" == "rserverid" ]; then
   echo 'INFO - Selected: Change Server ID' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menus/backup-restore/recovery.sh
+  bash /opt/plexguide/roles/backup-restore/recovery.sh
 
 fi
 
