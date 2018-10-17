@@ -30,10 +30,8 @@ echo "---------------------------------------------------"
 echo ""
 echo $printid > /tmp/print.id
 echo ""
-
-echo ""
 echo "Welcome to the PG Recovery ID System!"
-cat /var/plexguide/ver.temp
+cat /tmp/print.id
 echo ""
 echo "To QUIT, type >>> exit"
 break=no
