@@ -17,7 +17,7 @@
 #################################################################################
 echo ""
 echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Checking Prior Server Recovery IDs"
+echo "SYSTEM MESSAGE: Checking Prior Server IDs"
 echo "---------------------------------------------------"
 echo ""
 echo "Please StandBy:"
@@ -25,7 +25,7 @@ echo "Please StandBy:"
 printid=$(rclone lsd gdrive:/plexguide/backup.old | awk '{ print $5 }')
 echo ""
 echo "---------------------------------------------------"
-echo "SYSTEM MESSAGE: Your Prior PlexGuide Server Backups"
+echo "SYSTEM MESSAGE: Prior PlexGuide Server IDs"
 echo "---------------------------------------------------"
 echo ""
 echo $printid > /tmp/print.id
