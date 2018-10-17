@@ -36,6 +36,7 @@
     default_volumes:
       - /opt/appdata/lazylibrarian:/config
       - "{{path.stdout}}/{{pgrole}}/downloads:/downloads"
+      - "{{path.stdout}}/{{pgrole}}/books:/books"
       - /mnt/unionfs:/books
 
 - name: "Establish Key Variables"
