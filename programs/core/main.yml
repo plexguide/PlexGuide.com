@@ -126,17 +126,8 @@
           traefik.frontend.auth.basic.users: "{{authorization}}"
           traefik.enable: "true"
           traefik.port: "{{intport}}"
-          traefik.frontend.redirect.entryPoint: "https"
-          traefik.frontend.headers.browserXSSFilter: "true"
           traefik.frontend.headers.contentSecurityPolicy: "upgrade-insecure-requests"
-          traefik.frontend.headers.contentTypeNosniff: "true"
           traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
-          traefik.frontend.headers.SSLHost: "{{domain.stdout}} #,{{tldset}}"
-          traefik.frontend.headers.forceSTSHeader: "true"
-          traefik.frontend.headers.SSLProxyHeaders: "X-Forwarded-Proto:https||Upgrade:h2c||Connection:Upgrade"
-          traefik.frontend.headers.STSSeconds: "315360000"
-          traefik.frontend.headers.STSIncludeSubdomains: "true"
-          traefik.frontend.headers.STSPreload: "true"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
     ############################## Check If Questions Exists
