@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705 & Deiteq
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -16,13 +16,6 @@
 #
 #################################################################################
 ---
-- name: Install GCrypt Service
-  template:
-    src: gcrypt.js2
-    dest: /etc/systemd/system/gcrypt.service
-    force: yes
-  ignore_errors: yes
-
-- name: Start GCrypt SERVICE
-  systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
-  ignore_errors: yes
+intport: "8080"
+extport: "8080"
+pgrole: "qbittorrent"

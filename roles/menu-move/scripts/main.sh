@@ -59,7 +59,7 @@ fi
 #### exit # 1
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
-ansible-playbook /opt/plexguide/menu/interface/move/main.yml
+ansible-playbook /opt/plexguide/roles/menu-move/main.yml
 menu=$(cat /var/plexguide/move.menu)
 
 #### rclone # 2
@@ -72,7 +72,7 @@ if [ "$menu" == "rclone" ]; then
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
   echo ""
-  bash /opt/plexguide/menu/interface/move/scripts/main.sh
+  bash /opt/plexguide/roles/menu-move/scripts/main.sh
   exit
 fi
 
@@ -111,13 +111,13 @@ if [ "$menu" == "pgdrive" ]; then
     echo "Make sure you configured gdrive correctly and redeploy again!"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    bash /opt/plexguide/menu/interface/move/scripts/main.sh
+    bash /opt/plexguide/roles/menu-move/scripts/main.sh
     exit
   fi
   echo ""
   ############################################# GDRIVE VALDIATION CHECKS - END
 
-    ansible-playbook /opt/plexguide/menu/interface/move/remove-service.yml
+    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
 
     if [ "$encryption" == "off" ]; then
       ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted

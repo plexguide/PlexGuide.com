@@ -25,7 +25,7 @@ menu=$(cat /var/plexguide/transport.menu)
 
 if [ "$menu" == "move" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menu/interface/move/scripts/main.sh
+  bash /opt/plexguide/roles/menu-move/scripts/main.sh
 fi
 
 if [ "$menu" == "blitzmanual" ]; then
