@@ -72,11 +72,9 @@
       echo "SYSTEM MESSAGE: CF E-Mail - $typed"
       echo "---------------------------------------------------"
       echo ""
-      echo "Your E-Mail Address Is Now Set! Thank you!"
-      echo ""
       echo $typed > /var/plexguide/cloudflare.email
       break=yes
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      read -n 1 -s -r -p "E-Mail Set! Thank You! Press [ANY KEY] to Continue "
       echo "";
     fi
   done
@@ -110,11 +108,9 @@
       echo "SYSTEM MESSAGE: API Key - $typed"
       echo "---------------------------------------------------"
       echo ""
-      echo "Your E-Mail Address Is Now Set! Thank you!"
-      echo ""
       echo $typed > /var/plexguide/cloudflare.api
       break=yes
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      read -n 1 -s -r -p "API Set! Thank You! Press [ANY KEY] to Continue "
       echo "";
     fi
   done
