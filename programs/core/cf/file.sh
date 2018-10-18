@@ -90,6 +90,7 @@
     echo "-------------------------------------------------"
     echo ""
     read -p "Is Your CF API Address Correct (y/n)? " -n 1 -r
+    echo ""
 
     if [[ ! $REPLY =~ ^[Yy]$ ]]
     then
