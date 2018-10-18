@@ -121,6 +121,6 @@
   echo "SYSTEM MESSAGE: Complete - Info Stored! Exiting!"
   echo "---------------------------------------------------"
   echo ""
-  echo "yes" > /var/plexguide/cloudflare.set
+  touch /var/plexguide/cloudflare.set
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""

@@ -92,6 +92,11 @@
       shell: "echo '{{pgrole}}' > /tmp/program_var"
       ignore_errors: True
 
+    - name: "Check If Ending Tasks Exists"
+      stat:
+        path: "../containers/{{pgrole}}-ending.yml"
+      register: "ending"
+
     ############################## TOP LEVEL DOMAIN (TLD) START
     - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
 
@@ -181,11 +186,15 @@
 
     #### Ensure to Set True
     ############################## Add To CloudFlare if True
+    - name: "Check If CloudFlare Is Set"
+      stat:
+        path: "/var/plexguide/cloudflare.set"
+      register: "cfset"
+
     - name: Add Record To CloudFlare (If True)
       include_tasks: "/cf/cf.yml"
       when:
-        - "override.stat.exists == True"
-
+        - "cfset.stat.exists == True"
     ############################## ENDING
     - name: Launch Ending
       include_tasks: "ending.yml"
