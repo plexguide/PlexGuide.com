@@ -79,7 +79,6 @@
       echo "";
     fi
   done
-  fi
 
   break=no
   while [ "$break" == "no" ]; do
@@ -118,7 +117,6 @@
       echo "";
     fi
   done
-  fi
 
   echo ""
   echo "---------------------------------------------------"
