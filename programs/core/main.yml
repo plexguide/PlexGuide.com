@@ -179,6 +179,13 @@
       when:
         - "override.stat.exists == False"
 
+    #### Ensure to Set True
+    ############################## Add To CloudFlare if True
+    - name: Add Record To CloudFlare (If True)
+      include_tasks: "/cf/cf.yml"
+      when:
+        - "override.stat.exists == True"
+
     ############################## ENDING
     - name: Launch Ending
       include_tasks: "ending.yml"
