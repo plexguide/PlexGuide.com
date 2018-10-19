@@ -27,16 +27,16 @@
     ipinfoio_facts:
 
   - name: Recall Domain
-      shell: "cat /var/plexguide/server.domain"
-      register: cfdomain
+    shell: "cat /var/plexguide/server.domain"
+    register: cfdomain
 
   - name: Recall API Key ## Doesn't Exist Yet
-      shell: "cat /var/plexguide/cloudflare.api"
-      register: cfapi
+    shell: "cat /var/plexguide/cloudflare.api"
+    register: cfapi
 
   - name: Recall CF E-Mail ## Doesn't Exist Yet
-      shell: "cat /var/plexguide/cloudflare.email"
-      register: cfemail
+    shell: "cat /var/plexguide/cloudflare.email"
+    register: cfemail
 
 ### Recall Returned Facts
   - name: "CloudFlare Recall"
