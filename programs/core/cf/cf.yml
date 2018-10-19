@@ -22,31 +22,31 @@
   gather_facts: true
   tasks:
 
-### https://docs.ansible.com/ansible/2.5/modules/ipinfoio_facts_module.html
-  - name: get IP geolocation data
-    ipinfoio_facts:
+  ### https://docs.ansible.com/ansible/2.5/modules/ipinfoio_facts_module.html
+    - name: get IP geolocation data
+      ipinfoio_facts:
 
-  - name: Recall Domain
-    shell: "cat /var/plexguide/server.domain"
-    register: cfdomain
+    - name: Recall Domain
+      shell: "cat /var/plexguide/server.domain"
+      register: cfdomain
 
-  - name: Recall API Key ## Doesn't Exist Yet
-    shell: "cat /var/plexguide/cloudflare.api"
-    register: cfapi
+    - name: Recall API Key ## Doesn't Exist Yet
+      shell: "cat /var/plexguide/cloudflare.api"
+      register: cfapi
 
-  - name: Recall CF E-Mail ## Doesn't Exist Yet
-    shell: "cat /var/plexguide/cloudflare.email"
-    register: cfemail
+    - name: Recall CF E-Mail ## Doesn't Exist Yet
+      shell: "cat /var/plexguide/cloudflare.email"
+      register: cfemail
 
-### Recall Returned Facts
-  - name: "CloudFlare Recall"
-    cloudflare_dns:
-      account_api_token: "{{cfapi}}"
-      account_email: "{{cfemail}}"
-      value: "{{ip}}"
-      record: "{{pgrole}}"
-      zone: "{{cfdomain}}"
-      proxied: no
-      type: A
-      state: present
-      solo: true
+  ### Recall Returned Facts
+    - name: "CloudFlare Recall"
+      cloudflare_dns:
+        account_api_token: "{{cfapi}}"
+        account_email: "{{cfemail}}"
+        value: "{{ip}}"
+        record: "{{pgrole}}"
+        zone: "{{cfdomain}}"
+        proxied: no
+        type: A
+        state: present
+        solo: true
