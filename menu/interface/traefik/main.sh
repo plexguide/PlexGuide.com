@@ -50,8 +50,9 @@ PG Traefik Deployment Interface - Reverse Proxy
 1.  EXIT Treafik Interface
 2.  Set Top Level Domain App   [---app---]
 3.  Set Treafik Provier        [---pro---]
-4.  Set E-Mail Address         [---ema---]
-5.  Deploy Traefik             [---sta---]
+4.  Set Domain Provider        [---dom---]
+5.  Set E-Mail Address         [---ema---]
+6.  Deploy Traefik             [---sta---]
 
 EOF
 
