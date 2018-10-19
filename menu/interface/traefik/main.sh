@@ -121,13 +121,17 @@ elif [ "$typed" == "4" ]; then
   break=off
   while [ "$break" == "off" ]; do
     echo ""
-    echo ""
 tee <<-EOF
 -----------------------------------------------------------------------
-SYSTEM MESSAGE: Set a Provider for Traefik!
+SYSTEM MESSAGE: Type to Set the Name of a Provider for Traefik!
 -----------------------------------------------------------------------
 
-cloudflare duckdns gandiv5 godaddy namecheap ovh
+cloudflare
+duckdns
+gandiv5
+godaddy
+namecheap
+ovh
 
 EOF
     read -p 'Type a Provider Name (All LowerCase) | PRESS [ENTER]: ' typed
