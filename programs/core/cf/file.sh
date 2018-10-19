@@ -20,6 +20,8 @@
   echo "SYSTEM MESSAGE: Please Read the Following Information"
   echo "-------------------------------------------------------------"
   echo ""
+  echo "Welcome to the PG CloudFlare Automatic Deployment Interface!"
+  echo ""
   echo "NOTE 1: Input Your CloudFlare EMail Address & API Next"
   echo "NOTE 2: You Must Deploy CloudFlare via Traefik First!"
   echo "NOTE 3: Interface Will Improve with Next Traefik Rewrite!"
