@@ -115,19 +115,43 @@ elif [ "$typed" == "3" ]; then
 
 elif [ "$typed" == "4" ]; then
 
-  echo 'INFO - Selected: Ports Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  ### Affects Only Multi-HD and No Mount Is Deployed!
-  multi=$(cat /var/plexguide/multi.unionfs)
-  edition=$(cat /var/plexguide/pg.edition.stored)
-
-  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+  typed=nullstart
+  prange="cloudflare ducksdns gandiv5 godaddy namecheap ovh "
+  tcheck=""
+  break=off
+  while [ "$break" == "off" ]; do
     echo ""
-    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  else
-    bash /opt/plexguide/roles/menu-ports/scripts/main.sh
-  fi
+    echo ""
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Set a Provider for Traefik!
+-----------------------------------------------------------------------
+
+PROVIDERS:
+cloudflare duckdns gandiv5 godaddy namecheap ovh
+
+EOF
+    read -p 'Type a Provider Name (All LowerCase) | PRESS [ENTER]: ' typed
+    tcheck=$(echo $prange | grep $typed)
+    echo ""
+
+    if [ "$tcheck" == "" ] || [ "$typed" == "0" ]; then
+      tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Failed! Restarting the Process Again!
+-----------------------------------------------------------------------
+
+NOTE:
+Ensure what you type is all lowercase!
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+echo ""
+    else
+      break=on
+    fi
+  done
 
 elif [ "$typed" == "5" ]; then
 
