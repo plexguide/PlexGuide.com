@@ -15,6 +15,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+  file="/var/plexguide/cloudflare.api"
   if [ ! -e "$file" ]; then
     echo "NOT-SET" > /var/plexguide/cloudflare.api
     rm -rf /var/plexguide/cloudflare.set 1>/dev/null 2>&1
@@ -136,16 +137,8 @@
       echo ""
       echo $typed > /var/plexguide/cloudflare.api
       break=yes
+      touch /var/plexguide/cloudflare.set
       read -n 1 -s -r -p "API Set! Thank You! Press [ANY KEY] to Continue "
       echo "";
     fi
   done
-
-  echo ""
-  echo "--------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Complete - Info Stored! Exiting!"
-  echo "--------------------------------------------------------"
-  echo ""
-  touch /var/plexguide/cloudflare.set
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
