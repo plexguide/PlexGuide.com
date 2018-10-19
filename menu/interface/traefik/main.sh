@@ -127,7 +127,6 @@ tee <<-EOF
 SYSTEM MESSAGE: Set a Provider for Traefik!
 -----------------------------------------------------------------------
 
-PROVIDERS:
 cloudflare duckdns gandiv5 godaddy namecheap ovh
 
 EOF
@@ -149,6 +148,13 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo ""
     else
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Success! Provider [$typed] Set!
+-----------------------------------------------------------------------
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       break=on
     fi
   done
