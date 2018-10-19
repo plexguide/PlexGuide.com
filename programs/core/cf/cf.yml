@@ -44,8 +44,8 @@
       account_api_token: "{{cfapi}}"
       account_email: "{{cfemail}}"
       value: "{{ip}}"
-      record: "{{subdomain}}"
-      zone: "{{pgrole}}"
+      record: "{{pgrole}}"
+      zone: "{{cfdomain}}"
       proxied: no
       type: A
       state: present
