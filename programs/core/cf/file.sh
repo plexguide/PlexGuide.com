@@ -16,13 +16,13 @@
 #
 #################################################################################
   echo ""
-  echo "-----------------------------------------------------"
+  echo "-------------------------------------------------------------"
   echo "SYSTEM MESSAGE: Please Read the Following Information"
-  echo "-----------------------------------------------------"
+  echo "-------------------------------------------------------------"
   echo ""
-  echo "NOTE: You will input your CloudFlare ..."
-  echo "..."
-  echo ""
+  echo "NOTE 1: Input Your CloudFlare EMail Address & API Next"
+  echo "NOTE 2: You Must Deploy CloudFlare via Traefik First!"
+  echo "NOTE 3: Interface Will Improve with Next Traefik Rewrite!"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue"
   echo ""
@@ -33,9 +33,9 @@
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     echo ""
-    echo "---------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
-    echo "---------------------------------------------------"
+    echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
@@ -57,24 +57,18 @@
     if [[ ! $REPLY =~ ^[Yy]$ ]]
     then
       echo ""
-      echo "---------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
-      echo "---------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo ""
       echo "Must Set Up an E-Mail Address! Restarting Again!"
       echo
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
     else
-      echo ""
-      echo ""
-      echo "---------------------------------------------------"
-      echo "SYSTEM MESSAGE: CF E-Mail - $typed"
-      echo "---------------------------------------------------"
-      echo ""
       echo $typed > /var/plexguide/cloudflare.email
+      email=$typed
       break=yes
-      read -n 1 -s -r -p "E-Mail Set! Thank You! Press [ANY KEY] to Continue "
       echo "";
     fi
   done
@@ -95,9 +89,9 @@
     if [[ ! $REPLY =~ ^[Yy]$ ]]
     then
       echo ""
-      echo "---------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
-      echo "---------------------------------------------------"
+      echo "--------------------------------------------------------"
       echo ""
       echo "Must Set Up an API Address! Restarting Again!"
       echo
@@ -105,9 +99,11 @@
       echo "";
     else
       echo ""
-      echo "---------------------------------------------------"
-      echo "SYSTEM MESSAGE: API Key - $typed"
-      echo "---------------------------------------------------"
+      echo "--------------------------------------------------------"
+      echo "SYSTEM MESSAGE: SET Informatinon"
+      echo "E-Mail  - $email"
+      echo "API Key - $typed"
+      echo "--------------------------------------------------------"
       echo ""
       echo $typed > /var/plexguide/cloudflare.api
       break=yes
@@ -117,9 +113,9 @@
   done
 
   echo ""
-  echo "---------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Complete - Info Stored! Exiting!"
-  echo "---------------------------------------------------"
+  echo "--------------------------------------------------------"
   echo ""
   touch /var/plexguide/cloudflare.set
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
