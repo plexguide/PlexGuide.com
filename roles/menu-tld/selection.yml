@@ -26,11 +26,10 @@
     \n\n1. EXIT Interface
     \n2. Deploy Traefik: Reverse Proxy
     \n3. Deploy TLD App: Top Level Domain Application
+    \n4. Set CloudFlare for Automatic SubDomain Additions
     \n
     \n------------------------------------------------------
-    \n[NOTE: Only Select Option 4 if Traefik /w CF Deployed]
-    \n
-    \n4. Set CloudFlare for Automatic SubDomain Additions
+    \n[NOTE: Only Select Option 4 if Traefik Deployed /w CF]
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
