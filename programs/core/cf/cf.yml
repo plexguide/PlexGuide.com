@@ -37,11 +37,11 @@
 ### Recall Returned Facts
 - name: "CloudFlare Recall"
   cloudflare_dns:
-    account_api_token: "{{cfapi}}"
-    account_email: "{{cfemail}}"
+    account_api_token: "{{cfapi.stdout}}"
+    account_email: "{{cfemail.stdout}}"
     value: "{{ip}}"
     record: "{{pgrole}}"
-    zone: "{{cfdomain}}"
+    zone: "{{cfdomain.stdout}}"
     proxied: no
     type: A
     state: present
