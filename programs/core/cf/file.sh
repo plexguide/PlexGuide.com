@@ -46,7 +46,12 @@
 
   break=no
   while [ "$break" == "no" ]; do
-  read -p 'Type Your CloudFlare E-Mail Address (all lowercase): ' typed
+  echo ""
+  echo "-------------------------------------------------"
+  echo "SYSTEM MESSAGE: Set the CF E-Mail Address"
+  echo "-------------------------------------------------"
+  echo ""
+  read -p 'Type Your CF E-Mail Address (all lowercase): ' typed
   #typed=typed+0
     echo ""
     echo "-------------------------------------------------"
@@ -77,7 +82,11 @@
   break=no
   while [ "$break" == "no" ]; do
   echo ""
-  read -p 'Type Your CloudFlare API Key (case senstive): ' typed
+  echo "-------------------------------------------------"
+  echo "SYSTEM MESSAGE: Set the CF API Key (Address)"
+  echo "-------------------------------------------------"
+  echo ""
+  read -p 'Type Your CF API Key (case senstive): ' typed
   #typed=typed+0
     echo ""
     echo "-------------------------------------------------"
