@@ -15,12 +15,31 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+  if [ ! -e "$file" ]; then
+    echo "NOT-SET" > /var/plexguide/cloudflare.api
+    rm -rf /var/plexguide/cloudflare.set 1>/dev/null 2>&1
+  fi
+
+  file="/var/plexguide/cloudflare.email"
+  if [ ! -e "$file" ]; then
+    echo "NOT-SET" > /var/plexguide/cloudflare.email
+    rm -rf /var/plexguide/cloudflare.email 1>/dev/null 2>&1
+  fi
+
+  file="/var/plexguide/cloudflare.set"
+  if [ ! -e "$file" ]; then
+    cfset=$(echo "CF Not Configured")
+  else
+    cfset=$(echo "CF Configured")
+  fi
+
   echo ""
   echo "-------------------------------------------------------------"
   echo "SYSTEM MESSAGE: Please Read the Following Information"
   echo "-------------------------------------------------------------"
   echo ""
   echo "Welcome to the PG CloudFlare Automatic Deployment Interface!"
+  echo "STATUS - $cfset"
   echo ""
   echo "NOTE 1: Input Your CloudFlare EMail Address & API Next"
   echo "NOTE 2: You Must Deploy CloudFlare via Traefik First!"
