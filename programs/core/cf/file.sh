@@ -139,6 +139,7 @@
       break=yes
       touch /var/plexguide/cloudflare.set
       read -n 1 -s -r -p "API Set! Thank You! Press [ANY KEY] to Continue "
+      echo ""
       echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
       bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
       echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press [ANY] Key to Continue!"
