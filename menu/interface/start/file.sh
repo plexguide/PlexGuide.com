@@ -43,7 +43,6 @@ aversion=$(ansible --version | cut -d' ' -f2 | head -n1)
 ################## Selection ########### END
 echo ""
 tee <<-EOF
-
 -----------------------------------------------------------------------
 $pgedition - $pgversion | Server ID: $pgid
 Domain: $pgdomain | Ansible: $aversion
