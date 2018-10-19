@@ -222,6 +222,8 @@ elif [ "$typed" == "13" ]; then
 
 else
   typed="1"
+  echo ""
+  bash /opt/plexguide/roles/ending/ending.sh
   exit
 fi
 ################## End State ########### STARTED
