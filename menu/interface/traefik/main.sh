@@ -34,11 +34,12 @@ aversion=$(ansible --version | cut -d' ' -f2 | head -n1)
     serverports="Closed"
   fi
 
-  appguard=$(cat /var/plexguide/server.ht)
-  if [ "$appguard" == "" ]; then
-    appguard="Not Enabled"
-    else
-    appguard="Enabled"
+  file="/var/plexguide/traefik.provider"
+  if [ ! -e "$file" ]; then
+    echo NOT-SET > /var/plexguide/traefik.provider
+    provider="NOT-SET"
+  else
+    provider=$(cat /var/plexguide/traefik.provider)
   fi
 ################## Selection ########### END
 echo ""
@@ -49,7 +50,7 @@ PG Traefik Deployment Interface - Reverse Proxy
 
 1.  EXIT Treafik Interface
 2.  Set Top Level Domain App   [---app---]
-3.  Set Treafik Provier        [---pro---]
+3.  Set Treafik Provier        [$provider]
 4.  Set Domain Provider        [---dom---]
 5.  Set E-Mail Address         [---ema---]
 6.  Deploy Traefik             [---sta---]
@@ -158,8 +159,10 @@ SYSTEM MESSAGE: Success! Provider [$typed] Set!
 -----------------------------------------------------------------------
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo ""
       break=on
+      echo $typed > /var/plexguide/traefik.provider
     fi
   done
 
