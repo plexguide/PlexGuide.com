@@ -41,7 +41,7 @@
       - "{{path.stdout}}/nzbget/completed:/completed"
       - "{{path.stdout}}/rutorrent:/downloads"
       - "{{path.stdout}}/deluge/downloaded:/downloaded"
-      - "/mnt/qbittorrent/Downloads:/qbit-downloads"
+      - "{{path.stdout}}/qbittorrent/downloads:/qbit-downloads"
       - "/etc/localtime:/etc/localtime:ro"
 
 - name: "Establish Key Variables"
