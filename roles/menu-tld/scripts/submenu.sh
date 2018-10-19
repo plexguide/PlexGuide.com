@@ -50,6 +50,11 @@ if [ "$menu" == "tld" ]; then
   fi
 fi
 
+if [ "$menu" == "cf" ]; then
+  echo 'INFO - Selected: CF Automatic Domain Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/programs/core/cf/file.sh
+fi
+
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 

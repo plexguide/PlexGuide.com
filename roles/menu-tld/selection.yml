@@ -23,14 +23,19 @@
       pause:
         prompt: "\nWelcome to the Reverse Proxy Interface!
                  \nMake a Selection!
-    \n\n1.  EXIT Interface
-    \n2.  Deploy Traefik: Reverse Proxy
-    \n3.  Deploy TLD App: Top Level Domain Application
+    \n\n1. EXIT Interface
+    \n2. Deploy Traefik: Reverse Proxy
+    \n3. Deploy TLD App: Top Level Domain Application
+    \n4. Set CloudFlare for Automatic SubDomain Additions
+    \n
+    \n------------------------------------------------------
+    \n[NOTE: Only Select Option 4 if Traefik Deployed /w CF]
     \n\nType a [NUMBER] Choice & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
              choice.user_input == "2" or
-             choice.user_input == "3"
+             choice.user_input == "3" or
+             choice.user_input == "4"
       retries: 99
       delay: 1
 
@@ -42,10 +47,14 @@
       shell: "echo break > /var/plexguide/tldsub.menu"
       when: fchoice == "1"
 
-    - name: Rebuild Containers - Open
+    - name: Deploy Traefik
       shell: "echo traefik > /var/plexguide/tldsub.menu"
       when: fchoice == "2"
 
-    - name: Rebuild Containers - Closed
+    - name: Deploy TLD App
       shell: "echo tld > /var/plexguide/tldsub.menu"
       when: fchoice == "3"
+
+    - name: Set CloudFlare for Automatic SubDomain Additions!
+      shell: "echo cf > /var/plexguide/tldsub.menu"
+      when: fchoice == "4"
