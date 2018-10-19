@@ -46,7 +46,6 @@
 
   break=no
   while [ "$break" == "no" ]; do
-  echo ""
   read -p 'Type Your CloudFlare E-Mail Address (all lowercase): ' typed
   #typed=typed+0
     echo ""
