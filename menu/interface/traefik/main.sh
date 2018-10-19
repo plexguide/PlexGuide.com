@@ -44,29 +44,20 @@ aversion=$(ansible --version | cut -d' ' -f2 | head -n1)
 echo ""
 tee <<-EOF
 -----------------------------------------------------------------------
-$pgedition - $pgversion | Server ID: $pgid
-Domain: $pgdomain | Ansible: $aversion
+PG Traefik Deployment Interface - Reverse Proxy
 -----------------------------------------------------------------------
 
 1.  EXIT Treafik Interface
 2.  Set Top Level Domain App   [---app---]
 3.  Set Treafik Provier        [---pro---]
-4.  Set 
-5.  PG Application Guard       [$appguard]
-6.  Program Suite Installer
-7.  Plex Enhancement Tools
-8.  PG Automations - Deploy GCE Feeder Instance
-9.  Server VPN Service Installer
-10. System & Network Auditor
-11. PG Backup & Restore System
-12. Settings Menu
-13. TroubleShoot - PreInstaller & UnInstaller
+4.  Set E-Mail Address         [---ema---]
+5.  Deploy Traefik             [---sta---]
 
 EOF
 
 ################## Selection ########### START
 typed=nullstart
-prange="1 2 3 4 5 6 7 8 9 10 11 12 13"
+prange="1 2 3 4 5"
 tcheck=""
 break=off
 while [ "$break" == "off" ]; do
@@ -152,73 +143,6 @@ elif [ "$typed" == "5" ]; then
   else
     bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
   fi
-
-elif [ "$typed" == "6" ]; then
-
-  echo 'INFO - Selected: PG Program Suite' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  ### Affects Only Multi-HD and No Mount Is Deployed!
-  multi=$(cat /var/plexguide/multi.unionfs) 1>/dev/null 2>&1
-  edition=$(cat /var/plexguide/pg.edition.stored) 1>/dev/null 2>&1
-
-  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
-    echo ""
-    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  else
-    bash /opt/plexguide/roles/programs/main.sh
-  fi
-
-elif [ "$typed" == "7" ]; then
-
-  echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-plexaddons/scripts/main.sh
-
-elif [ "$typed" == "8" ]; then
-
-  echo 'INFO - Selected: PG GCE Feeder Automations' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-
-elif [ "$typed" == "9" ]; then
-
-  echo 'INFO - Selected: PG VPNServer' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo vpnserver > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-
-elif [ "$typed" == "10" ]; then
-
-  echo 'INFO - Selected: Auditor' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-network/scripts/main.sh
-
-elif [ "$typed" == "11" ]; then
-
-  echo 'INFO - Selected: Backup & Restore' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  edition=$(cat /var/plexguide/pg.edition.stored)
-  if [ "$edition" == "PG Edition - HD Solo" ]; then
-    echo ""
-    echo "Utilizing the HD Solo Edition! Cannot Backup or Restore!"
-    echo "Note: This Version has No GDrive to Backup or Restore From!"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  elif [ "$edition" == "PG Edition - HD Multi" ]; then
-    echo ""
-    echo "Utilizing the HD Multi Edition! Cannot Backup or Restore!"
-    echo "Note: This Version has No GDrive to Backup or Restore From!"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  else
-    bash /opt/plexguide/roles/b-control/scripts/main.sh
-  fi
-
-elif [ "$typed" == "12" ]; then
-
-  echo 'INFO - Selected: Settings' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "settings" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-
-elif [ "$typed" == "13" ]; then
-
-  echo 'INFO - Selected: PG Server Information' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  echo "tshoot" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
 else
   typed="1"
