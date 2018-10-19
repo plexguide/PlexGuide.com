@@ -15,33 +15,35 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "on" > /var/plexguide/transport.menu
+echo "on" > /var/plexguide/move.menu
 menu=$(echo "on")
 
-while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/transport.menu)
-ansible-playbook /opt/plexguide/roles/menu-transport/main.yml
-menu=$(cat /var/plexguide/transport.menu)
+#### RECALL VARIABLES START
+tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf | head -n1 | cut -b1-8)
+#### RECALL VARIABLES END
 
-if [ "$menu" == "move" ]; then
-  echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/menu/interface/move/scripts/main.sh
+echo "Not Configured" > /var/plexguide/pgblitz.menustat
+##### Unencrypted Portion ### Start
+if [ "$gdrive" == "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+    unencrypted="off"
+    encryption="on"
+    echo "Encrypted" > /var/plexguide/pgblitz.menustat
+  else
+    unencrypted="on"
+    encryption="off"
+    echo "UnEncrypted" > /var/plexguide/pgblitz.menustat
 fi
 
-if [ "$menu" == "blitzmanual" ]; then
-  echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+#### To Ensure Not Configured Message Comes Up
+if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" != "[gcrypt]" ]; then
+  echo "Not Configured" > /var/plexguide/pgblitz.menustat
 fi
-
-if [ "$menu" == "pgdrives" ]; then
-  echo 'INFO - Selected: PGDrives' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh
+if [ "$gdrive" != "[gdrive]" ] && [ "$gcrypt" == "[gcrypt]" ]; then
+  echo "Not Configured" > /var/plexguide/pgblitz.menustat
 fi
-
-echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-done
-
-echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 ##### UnEncrypted Portion ### END
 
 ################################################################## CORE
@@ -57,7 +59,7 @@ fi
 #### exit # 1
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/move.menu)
-ansible-playbook /opt/plexguide/menu/interface/move/main.yml
+ansible-playbook /opt/plexguide/roles/menu-move/main.yml
 menu=$(cat /var/plexguide/move.menu)
 
 #### rclone # 2
@@ -70,7 +72,7 @@ if [ "$menu" == "rclone" ]; then
   chown -R 1000:1000 /root/.config/rclone/
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
   echo ""
-  bash /opt/plexguide/menu/interface/move/scripts/main.sh
+  bash /opt/plexguide/roles/menu-move/scripts/main.sh
   exit
 fi
 
@@ -109,13 +111,13 @@ if [ "$menu" == "pgdrive" ]; then
     echo "Make sure you configured gdrive correctly and redeploy again!"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    bash /opt/plexguide/menu/interface/move/scripts/main.sh
+    bash /opt/plexguide/roles/menu-move/scripts/main.sh
     exit
   fi
   echo ""
   ############################################# GDRIVE VALDIATION CHECKS - END
 
-    ansible-playbook /opt/plexguide/menu/interface/move/remove-service.yml
+    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
 
     if [ "$encryption" == "off" ]; then
       ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
