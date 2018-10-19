@@ -23,7 +23,7 @@ tldprogram=$(cat /var/plexguide/tld.program)
 pgversion=$(cat /var/plexguide/pg.number)
 pgid=$(cat /var/plexguide/server.id)
 pgdomain=$(cat /var/plexguide/server.domain)
-pgedition=$(cat cat /var/plexguide/pg.edition)
+pgedition=$(cat /var/plexguide/pg.edition)
 aversion=$(ansible --version | cut -d' ' -f2 | head -n1)
 
   serverports=$(cat /var/plexguide/server.ports)
