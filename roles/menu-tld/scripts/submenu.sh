@@ -50,6 +50,21 @@ if [ "$menu" == "tld" ]; then
   fi
 fi
 
+if [ "$menu" == "cf" ]; then
+  echo 'INFO - Selected: CF Automatic Domain Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/programs/core/cf/file.sh
+  file="/tmp/rebuild.control"
+    if [ -e "$file" ]; then
+      sleep 0.5
+      echo "" && read -n 1 -s -r -p "User Exited! - Press [Any] Key to Continue"
+    else
+      echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
+      bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
+      echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press [ANY] Key to Continue!"
+      rm -rf /tmp/rebuild.control 1>/dev/null 2>&1
+    fi
+fi
+
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 

@@ -138,6 +138,7 @@
       echo $typed > /var/plexguide/cloudflare.api
       break=yes
       touch /var/plexguide/cloudflare.set
+      touch /tmp/rebuild.control 
       read -n 1 -s -r -p "API Set! Thank You! Press [ANY KEY] to Continue "
       echo "";
     fi
