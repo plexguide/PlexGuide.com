@@ -28,7 +28,7 @@
 
   file="/var/plexguide/cloudflare.set"
   if [ ! -e "$file" ]; then
-    cfset=$(echo "CF Not Configured")
+    cfset=$(echo "CF NOT Configured")
   else
     cfset=$(echo "CF Configured")
   fi
