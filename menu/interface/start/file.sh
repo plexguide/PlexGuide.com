@@ -18,6 +18,7 @@
 ### Notes
 # Ensure to Change Out Backup If Not Using for Solo HD
 
+while [ "$typed" != "1" ]; do
 ################## Selection ########### START
 tldprogram=$(cat /var/plexguide/tld.program)
 pgversion=$(cat /var/plexguide/pg.number)
@@ -221,6 +222,8 @@ elif [ "$typed" == "13" ]; then
   echo "tshoot" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
 else
+  typed="1"
   exit
 fi
 ################## End State ########### STARTED
+done
