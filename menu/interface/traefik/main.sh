@@ -379,7 +379,7 @@ if [ "$fprovider" == "cloudflare" ]; then
 
 tee "INFO" > /tmp/traefik.queslist <<EOF
 CLOUDFLARE_EMAIL
-CLOUDFLARE_API_KEY
+ CLOUDFLARE_API_KEY
 EOF
   elif [ "$fprovider" == "duckdns" ]; then
 tee "INFO" > /tmp/traefik.queslist <<EOF
@@ -392,7 +392,7 @@ EOF
   elif [ "$fprovider" == "godaddy" ]; then
 tee "INFO" > /tmp/traefik.queslist <<EOF
 GODADDY_API_KEY
-GODADDY_API_SECRET
+ GODADDY_API_SECRET
 EOF
   elif [ "$fprovider" == "namecheap" ]; then
 tee "INFO" > /tmp/traefik.queslist <<EOF
@@ -400,10 +400,12 @@ NAMECHEAP_API_USER
  NAMECHEAP_API_KEY
 EOF
   elif [ "$fprovider" == "ovh" ]; then
-echo "OVH_ENDPOINT
+tee "INFO" > /tmp/traefik.queslist <<EOF
+OVH_ENDPOINT
  OVH_APPLICATION_KEY
  OVH_APPLICATION_SECRET
- OVH_CONSUMER_KEY" > /tmp/traefik.queslist
+ OVH_CONSUMER_KEY
+EOF
   else
   echo "WARNING! This FAILED!"
 fi
