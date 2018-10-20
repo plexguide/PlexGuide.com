@@ -21,11 +21,8 @@
 while [ "$typed" != "1" ]; do
 ################## Selection ########### START
 tldprogram=$(cat /var/plexguide/tld.program)
-pgversion=$(cat /var/plexguide/pg.number)
-pgid=$(cat /var/plexguide/server.id)
 pgdomain=$(cat /var/plexguide/server.domain)
-pgedition=$(cat /var/plexguide/pg.edition)
-aversion=$(ansible --version | cut -d' ' -f2 | head -n1)
+pgemail=$(cat /var/plexguide/server.email)
 
   serverports=$(cat /var/plexguide/server.ports)
   if [ "$serverports" == "" ]; then
@@ -41,6 +38,14 @@ aversion=$(ansible --version | cut -d' ' -f2 | head -n1)
   else
     provider=$(cat /var/plexguide/traefik.provider)
   fi
+## Check for Traefik Running
+deployed=$(docker ps --format '{{.Names}}' | grep traefik)
+
+if [ "$deployed" == "traefik" ]; then
+  deployed="Traefik is Deployed"
+else
+  deployed="Traefik NOT Deployed"
+fi
 
 ## To Get List for Rebuilding or TLD
   docker ps --format '{{.Names}}' > /tmp/backup.list
@@ -68,9 +73,9 @@ PG Traefik Deployment Interface - Reverse Proxy
 1.  EXIT Treafik Interface
 2.  Set Top Level Domain App   [---app---]
 3.  Set Treafik Provier        [$provider]
-4.  Set Domain Provider        [---dom---]
-5.  Set E-Mail Address         [---ema---]
-6.  Deploy Traefik             [---sta---]
+4.  Set Domain Provider        [$pgdomain]
+5.  Set E-Mail Address         [$pgemail]
+6.  Deploy Traefik             [$deployed]
 
 EOF
 
