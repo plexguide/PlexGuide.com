@@ -411,6 +411,19 @@ EOF
 fi
 
 ####################### WHILE FOR ADDITONAL QUESTIONS # START
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Additional Traefik Information
+-----------------------------------------------------------------------
+
+NOTE: You will be asked a series of questions based on your domain
+provider! Failing to respond correctly will result in not being issued
+an SSL certificate.
+
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
+EOF
+
 while read p; do
 
 ### check to make sure var exist
@@ -424,10 +437,9 @@ while read p; do
 
 tee <<-EOF
 -----------------------------------------------------------------------
-SYSTEM MESSAGE: Additional Questions for Traefik
+SYSTEM MESSAGE: STORED INFO for $p: $display
 -----------------------------------------------------------------------
 
-Current Info Stored for $p: $display
 EOF
 
 read -r -p "Set or Change '$p' (y/n)? " -n 1 -r < /dev/tty
