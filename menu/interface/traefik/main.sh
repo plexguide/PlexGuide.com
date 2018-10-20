@@ -61,7 +61,7 @@ fi
   rm -rf /tmp/backup.build 1>/dev/null 2>&1
   #### Commenting Out To Let User See
   while read p; do
-    echo -n $p >> /tmp/backup.build
+    echo -n "$p" >> /tmp/backup.build
     echo -n " " >> /tmp/backup.build
   done </tmp/backup.list
   running=$(cat /tmp/backup.list)
