@@ -279,8 +279,7 @@ Server ID is Now Set! Thank You!
 EOF
     echo $typed > /var/plexguide/server.id
     break=yes
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-    echo "";
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue ";
   fi
 done
       echo "";# leave if statement and continue.
