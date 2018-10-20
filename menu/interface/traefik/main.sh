@@ -458,11 +458,13 @@ read -p 'Type the INFO for $p [ENTER]: ' typed < /dev/tty
 tee <<-EOF
 
 -----------------------------------------------------------------------
-SYSTEM MESSAGE: SET INFO $p - $typed
+SYSTEM MESSAGE: DOMAIN NAME - $typed
 -----------------------------------------------------------------------
 
+DOMAIN NAME is Now Set! Thank You!
+
 EOF
-  echo "$typed" > /var/plexguide/$p
+  echo "$typed" > /var/plexguide/server.domain
   break=yes
   read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 fi
