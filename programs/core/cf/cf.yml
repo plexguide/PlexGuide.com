@@ -48,5 +48,4 @@
     solo: true
   ignore_errors: yes
 
-- debug: msg="See a Failed Message? Ensure Your E-Mail, API, domain has
-            \nbeen added to CloudFlare and DNS is Setup Correctly!"
+- debug: msg="See a Failed Message? Ensure Your E-Mail, API, domain has been added to CloudFlare, and DNS is Setup Correctly!"
