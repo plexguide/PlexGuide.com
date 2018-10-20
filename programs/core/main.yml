@@ -191,17 +191,31 @@
         path: "/var/plexguide/traefik.provider"
       register: "provider"
 
+    - name: "Check If API Exists"
+      stat:
+        path: "/var/plexguide/CLOUDFLARE_API_KEY"
+      register: "cfapi"
+
+    - name: "Check If CF EMail Exists"
+      stat:
+        path: "/var/plexguide/CLOUDFLARE_EMAIL"
+      register: "cfemail"
+
     - name: Set PGRole
       shell: "cat /var/plexguide/traefik.provider"
       register: cfstat
       when:
         - "provider.stat.exists == True"
+        - "cfapi.stat.exists == True"
+        - "cfemail.stat.exists == True"
 
     - name: Add Record To CloudFlare (If True)
       include_tasks: "./cf/cf.yml"
       when:
         - "provider.stat.exists == True"
         - "cfstat.stdout == cloudflare"
+        - "cfapi.stat.exists == True"
+        - "cfemail.stat.exists == True"      
 
     ############################## ENDING
     - name: Launch Ending

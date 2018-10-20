@@ -27,11 +27,11 @@
   register: cfdomain
 
 - name: Recall API Key ## Doesn't Exist Yet
-  shell: "cat /var/plexguide/cloudflare.api"
+  shell: "cat /var/plexguide/CLOUDFLARE_API_KEY"
   register: cfapi
 
 - name: Recall CF E-Mail ## Doesn't Exist Yet
-  shell: "cat /var/plexguide/cloudflare.email"
+  shell: "cat /var/plexguide/CLOUDFLARE_EMAIL"
   register: cfemail
 
 ### Recall Returned Facts
