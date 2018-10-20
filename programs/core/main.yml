@@ -188,13 +188,21 @@
     ############################## Add To CloudFlare if True
     - name: "Check If CloudFlare Is Set"
       stat:
-        path: "/var/plexguide/cloudflare.set"
-      register: "cfset"
+        path: "/var/plexguide/traefik.provider"
+      register: "provider"
+
+    - name: Set PGRole
+      shell: "cat /var/plexguide/traefik.provider"
+      register: cfstat
+      when:
+        - "provider.stat.exists == True"
 
     - name: Add Record To CloudFlare (If True)
       include_tasks: "./cf/cf.yml"
       when:
-        - "cfset.stat.exists == True"
+        - "provider.stat.exists == True"
+        - "cfstat.stdout == cloudflare"
+
     ############################## ENDING
     - name: Launch Ending
       include_tasks: "ending.yml"
