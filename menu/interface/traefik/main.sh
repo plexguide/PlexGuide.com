@@ -420,9 +420,8 @@ NOTE: You will be asked a series of questions based on your domain
 provider! Failing to respond correctly will result in not being issued
 an SSL certificate.
 
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-
 EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 
 while read p; do
 
@@ -436,6 +435,7 @@ while read p; do
   fi
 
 tee <<-EOF
+
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: STORED INFO for $p: $display
 -----------------------------------------------------------------------
