@@ -63,6 +63,7 @@ fi
     echo -n $p >> /tmp/backup.build
     echo -n " " >> /tmp/backup.build
   done </tmp/backup.list
+  running=$(cat /tmp/backup.list)
 ################## Selection ########### END
 echo ""
 tee <<-EOF
@@ -85,6 +86,7 @@ prange="1 2 3 4 5"
 tcheck=""
 break=off
 while [ "$break" == "off" ]; do
+
   read -p 'Type a Number Selection | PRESS [ENTER]: ' typed
   tcheck=$(echo $prange | grep $typed)
   echo ""
@@ -104,21 +106,38 @@ done
 ################## Selection ########### END
 if [ "$typed" == "2" ]; then
 
-  echo 'INFO - Selected: Deploy a Mount System' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  typed=nullstart
+  prange="$running"
+  tcheck=""
+  break=off
+  while [ "$break" == "off" ]; do
+    echo ""
+    tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Running Programs for the Top Level Domain (TLD)
+-----------------------------------------------------------------------
 
-  edition=$(cat /var/plexguide/pg.edition.stored)
-  if [ "$edition" == "PG Edition - HD Solo" ]; then
+PROGRAMS:
+$running
+
+EOF
+
+    read -p 'Type a Running Program for TLD | PRESS [ENTER]: ' typed
+    tcheck=$(echo $prange | grep $typed)
     echo ""
-    echo "Utilizing the HD Solo Edition! Cannot Setup HDs!"
-    echo "Note: Data Stored via the Solo HD @ /mnt"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  elif [ "$edition" == "PG Edition - HD Multi" ]; then
-    echo ""
-    bash /opt/plexguide/roles/menu-multi/scripts/main.sh
-  else
-    bash /opt/plexguide/roles/menu-transport/scripts/main.sh
-  fi
+
+    if [ "$tcheck" == "" ] || [ "$typed" == "0" ]; then
+      echo "--------------------------------------------------------"
+      echo "SYSTEM MESSAGE: Failed! Type A Running Program "
+      echo "--------------------------------------------------------"
+      echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo ""
+      echo ""
+    else
+      break=on
+    fi
+  done
 
 elif [ "$typed" == "3" ]; then
 
@@ -146,7 +165,7 @@ EOF
     echo ""
 
     if [ "$tcheck" == "" ] || [ "$typed" == "0" ]; then
-      tee <<-EOF
+tee <<-EOF
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: Failed! Restarting the Process Again!
 -----------------------------------------------------------------------
