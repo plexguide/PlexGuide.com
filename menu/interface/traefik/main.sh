@@ -407,14 +407,94 @@ OVH_APPLICATION_SECRET
 OVH_CONSUMER_KEY
 EOF
   else
-  echo 123
+  echo "WARNING! This FAILED!"
 fi
 
-
+####################### WHILE FOR ADDITONAL QUESTIONS # START
 while read p; do
-echo $p
-done </tmp/traefik.queslist
 
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Additional Questions for Traefik
+-----------------------------------------------------------------------
+
+STORED INFO for $p: $pgdomain
+
+EOF
+  read -p "Set or Change the Domain (y/n)? " -n 1 -r
+  echo    # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo "";
+  else
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Set - Change Treafik Server Domain Address!
+-----------------------------------------------------------------------
+
+Current Domain: $pgdomain
+
+TYPED EXAMPLES:
+plexguide.com
+pg123.media
+mydomain.net
+
+Note: Domain Must Be All LowerCase!
+EOF
+
+break=no
+while [ "$break" == "no" ]; do
+
+read -p 'Type a DOMAIN NAME & Then Press [ENTER]: ' typed
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - $typed
+-----------------------------------------------------------------------
+
+EOF
+  read -p "Continue to SET the DOMAIN NAME (y/n)? " -n 1 -r
+  echo ""
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - [Y] Key was NOT Selected
+-----------------------------------------------------------------------
+
+Restarting the Process! Type the Domain Name Again!
+
+EOF
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo "";
+  else
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - $typed
+-----------------------------------------------------------------------
+
+DOMAIN NAME is Now Set! Thank You!
+
+EOF
+    echo "$typed" > /var/plexguide/server.domain
+    break=yes
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue ";
+  fi
+done
+      echo "";# leave if statement and continue.
+  fi
+####################### WHILE FOR ADDITONAL QUESTIONS END
+
+done </tmp/traefik.queslist
 
 else
   typed="1"
