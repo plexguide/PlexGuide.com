@@ -112,7 +112,7 @@ if [ "$typed" == "2" ]; then
   break=off
   while [ "$break" == "off" ]; do
     echo ""
-    tee <<-EOF
+tee <<-EOF
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: Running Programs for the Top Level Domain (TLD)
 -----------------------------------------------------------------------
@@ -135,7 +135,16 @@ EOF
       echo ""
       echo ""
     else
-      break=on
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: TLD Application Set to: $typed
+-----------------------------------------------------------------------
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+echo ""
+break=on
     fi
   done
 
