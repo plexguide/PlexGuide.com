@@ -96,7 +96,7 @@ while [ "$break" == "off" ]; do
 
   if [ "$tcheck" == "" ] || [ "$typed" == "0" ]; then
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: Failed! Type a Number from 1 to 13 "
+    echo "SYSTEM MESSAGE: Failed! Type a Number from 1 thru 6 "
     echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
