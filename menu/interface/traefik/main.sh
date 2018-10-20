@@ -401,9 +401,9 @@ NAMECHEAP_API_KEY
 EOF
   elif [ "$fprovider" == "ovh" ]; then
 echo "OVH_ENDPOINT
-OVH_APPLICATION_KEY
-OVH_APPLICATION_SECRET
-OVH_CONSUMER_KEY" > /tmp/traefik.queslist
+ OVH_APPLICATION_KEY
+ OVH_APPLICATION_SECRET
+ OVH_CONSUMER_KEY" > /tmp/traefik.queslist
   else
   echo "WARNING! This FAILED!"
 fi
