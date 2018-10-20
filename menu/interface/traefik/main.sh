@@ -379,5 +379,130 @@ else
   exit
 fi
 
+########################################## DEPLOY START
+elif [ "$typed" == "6" ]; then
+
+
+fprovider=(cat /var/plexguide/traefik.provider)
+  if [ "$fprovider" == "cloudflare" ]; then
+
+tee "INFO" > /tmp/traefik.queslist <<EOF
+CLOUDFLARE_EMAIL
+CLOUDFLARE_API_KEY
+EOF
+
+  elif [ "$fprovider" == "duckdns" ]; then
+tee "INFO" > /tmp/traefik.queslist <<EOF
+DUCKDNS_TOKEN
+EOF
+  elif [ "$fprovider" == "gandiv5" ]; then
+tee "INFO" > /tmp/traefik.queslist <<EOF
+GANDIV5_API_KEY
+EOF
+  elif [ "$fprovider" == "godaddy" ]; then
+tee "INFO" > /tmp/traefik.queslist <<EOF
+GODADDY_API_KEY
+GODADDY_API_SECRET
+EOF
+  elif [ "$fprovider" == "namecheap" ]; then
+tee "INFO" > /tmp/traefik.queslist <<EOF
+NAMECHEAP_API_USER
+NAMECHEAP_API_KEY
+EOF
+  elif [ "$fprovider" == "ovh" ]; then
+tee "INFO" > /tmp/traefik.queslist <<EOF
+OVH_ENDPOINT
+OVH_APPLICATION_KEY
+OVH_APPLICATION_SECRET
+OVH_CONSUMER_KEY
+EOF
+  else
+###### FILL ME IN
+fi
+
+while read p; do
+
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Additional Questions for Traefik
+-----------------------------------------------------------------------
+
+Stored Information $p: $pgdomain
+
+EOF
+  read -p "Set or Change the Domain (y/n)? " -n 1 -r
+  echo    # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo "";
+  else
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Set - Change Treafik Server Domain Address!
+-----------------------------------------------------------------------
+
+Current Domain: $pgdomain
+
+TYPED EXAMPLES:
+plexguide.com
+pg123.media
+mydomain.net
+
+Note: Domain Must Be All LowerCase!
+EOF
+
+break=no
+while [ "$break" == "no" ]; do
+
+read -p 'Type a DOMAIN NAME & Then Press [ENTER]: ' typed
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - $typed
+-----------------------------------------------------------------------
+
+EOF
+  read -p "Continue to SET the DOMAIN NAME (y/n)? " -n 1 -r
+  echo ""
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - [Y] Key was NOT Selected
+-----------------------------------------------------------------------
+
+Restarting the Process! Type the Domain Name Again!
+
+EOF
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo "";
+  else
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - $typed
+-----------------------------------------------------------------------
+
+DOMAIN NAME is Now Set! Thank You!
+
+EOF
+    echo $typed > /var/plexguide/server.domain
+    break=yes
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue ";
+  fi
+done
+      echo "";# leave if statement and continue.
+  fi
+
+done </tmp/traefik.queslist
+fi
 ################## End State ########### STARTED
 done
