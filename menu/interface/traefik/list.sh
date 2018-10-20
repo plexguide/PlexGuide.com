@@ -25,7 +25,6 @@ sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
 
 rm -rf /tmp/backup.build 1>/dev/null 2>&1
-bash /opt/plexguide/roles/tld/scripts/list.sh
 #### Commenting Out To Let User See
 while read p; do
   echo -n $p >> /tmp/backup.build
