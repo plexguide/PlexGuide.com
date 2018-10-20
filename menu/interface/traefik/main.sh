@@ -374,7 +374,7 @@ done
   ########################################## DEPLOY START
   elif [ "$typed" == "6" ]; then
 
-fprovider=($cat /var/plexguide/traefik.provider)
+fprovider=$(cat /var/plexguide/traefik.provider)
 if [ "$fprovider" == "cloudflare" ]; then
 
 tee "INFO" > /tmp/traefik.queslist <<EOF
