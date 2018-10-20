@@ -23,6 +23,7 @@ while [ "$typed" != "1" ]; do
 tldprogram=$(cat /var/plexguide/tld.program)
 pgdomain=$(cat /var/plexguide/server.domain)
 pgemail=$(cat /var/plexguide/server.email)
+pgdomain=$(cat /var/plexguide/server.domain)
 
   serverports=$(cat /var/plexguide/server.ports)
   if [ "$serverports" == "" ]; then
@@ -262,7 +263,7 @@ tee <<-EOF
 SYSTEM MESSAGE: DOMAIN NAME - [Y] Key was NOT Selected
 -----------------------------------------------------------------------
 
-Restting the Process! Type the Domain Name Again!
+Restarting the Process! Type the Domain Name Again!
 
 EOF
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
@@ -277,7 +278,7 @@ SYSTEM MESSAGE: DOMAIN NAME - $typed
 Server ID is Now Set! Thank You!
 
 EOF
-    echo $typed > /var/plexguide/server.id
+    echo $typed > /var/plexguide/server.domain
     break=yes
     read -n 1 -s -r -p "Press [ANY KEY] to Continue ";
   fi
