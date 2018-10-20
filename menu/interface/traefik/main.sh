@@ -435,7 +435,7 @@ read -r -p "Set or Change $p (y/n)? " -n 1 -r
 read -n 1 -s -r -p "Press [ANY KEY] to Continue"
 
 echo 'Are you sure you want to make these changes? y/n '
-read  -sn1 a < $(tty)
+read  -sn1 a < /dev/tty
 
 done </tmp/traefik.queslist
 
