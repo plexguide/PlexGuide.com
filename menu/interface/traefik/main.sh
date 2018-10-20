@@ -379,9 +379,5 @@ else
   exit
 fi
 
-########################################## DEPLOY START
-elif [ "$typed" == "6" ]; then
-
-
 ################## End State ########### STARTED
 done
