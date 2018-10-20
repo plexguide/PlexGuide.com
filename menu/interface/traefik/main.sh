@@ -71,7 +71,7 @@ PG Traefik Deployment Interface - Reverse Proxy
 -----------------------------------------------------------------------
 
 1.  EXIT Treafik Interface
-2.  Set Top Level Domain App   [---app---]
+2.  Set Top Level Domain App   [$tldrogram]
 3.  Set Treafik Provier        [$provider]
 4.  Set Domain Provider        [$pgdomain]
 5.  Set E-Mail Address         [$pgemail]
