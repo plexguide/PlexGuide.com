@@ -151,7 +151,7 @@ break=on
 elif [ "$typed" == "3" ]; then
 
   typed=nullstart
-  prange="cloudflare ducksdns gandiv5 godaddy namecheap ovh "
+  prange="cloudflare duckdns gandiv5 godaddy namecheap ovh "
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
