@@ -479,6 +479,7 @@ tee <<-EOF
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: $p - $typed
 -----------------------------------------------------------------------
+
 EOF
   echo "$typed" > /var/plexguide/$p
   break=yes
@@ -489,8 +490,10 @@ fi
 ####################### WHILE FOR ADDITONAL QUESTIONS END
 
 done </tmp/traefik.queslist
+echo ""
 echo "NOTE: Deploying Traefik Next!"
 echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 ### Execute Traefik
 ansible-playbook /opt/plexguide/menu/interface/traefik/common.yml
 ansible-playbook /opt/plexguide/menu/interface/traefik/$provider.yml
