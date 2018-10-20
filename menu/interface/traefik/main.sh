@@ -43,9 +43,9 @@ pgdomain=$(cat /var/plexguide/server.domain)
 deployed=$(docker ps --format '{{.Names}}' | grep traefik)
 
 if [ "$deployed" == "traefik" ]; then
-  deployed="Deployed"
+  deployed="TREAFIK Deployed"
 else
-  deployed="NOT Deployed"
+  deployed="TRAEFIK NOT Deployed"
 fi
 
 ## To Get List for Rebuilding or TLD
