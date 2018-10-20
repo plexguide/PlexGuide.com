@@ -20,7 +20,7 @@
     intport: "5050"
     extport: "5050"
     image: "linuxserver/couchpotato"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

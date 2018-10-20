@@ -20,7 +20,7 @@
     intport: "9000"
     extport: "9000"
     image: portainer/portainer
-    cpu_shares: 256
+    #cpu_shares: 256
     expose: ""
 
 - name: "Set Default Labels"

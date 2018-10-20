@@ -20,7 +20,7 @@
     intport: "8085"
     extport: "8085"
     image: "linuxserver/htpcmanager"
-    cpu_shares: 64
+    #cpu_shares: 64
     expose: ""
 
 - name: "Set Default Labels"

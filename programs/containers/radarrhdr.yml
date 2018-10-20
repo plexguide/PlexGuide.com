@@ -20,7 +20,7 @@
     intport: "7878"
     extport: "7877"
     image: "linuxserver/radarr"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

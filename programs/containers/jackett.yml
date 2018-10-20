@@ -20,7 +20,7 @@
     intport: "9117"
     extport: "9117"
     image: "linuxserver/jackett"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

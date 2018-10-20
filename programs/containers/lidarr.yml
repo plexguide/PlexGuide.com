@@ -20,7 +20,7 @@
     intport: "8686"
     extport: "8686"
     image: "linuxserver/lidarr"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

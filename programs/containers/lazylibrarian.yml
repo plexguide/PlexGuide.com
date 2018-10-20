@@ -20,7 +20,7 @@
     intport: "5299"
     extport: "5299"
     image: "linuxserver/lazylibrarian"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

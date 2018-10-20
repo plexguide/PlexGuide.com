@@ -20,7 +20,7 @@
     intport: "80"
     extport: "8040"
     image: "tronyx/docker-organizr-v2"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

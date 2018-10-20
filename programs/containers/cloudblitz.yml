@@ -33,7 +33,7 @@
     intport: "8000"
     extport: "7997"
     image: "coderaiser/cloudcmd"
-    cpu_shares: 256
+    #cpu_shares: 256
     expose: ""
 
 - name: "Set Default Labels"

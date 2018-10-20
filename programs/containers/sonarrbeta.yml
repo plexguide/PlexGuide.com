@@ -19,7 +19,7 @@
     intport: "8989"
     extport: "8988"
     image: "lsiodev/sonarr-preview"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

@@ -20,7 +20,7 @@
     intport: "19999"
     extport: "19999"
     image: "netdata/netdata"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

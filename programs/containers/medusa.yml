@@ -20,7 +20,7 @@
     intport: "8081"
     extport: "8081"
     image: "linuxserver/medusa"
-    cpu_shares: 256
+    #cpu_shares: 256
     expose: ""
 
 - name: "Set Default Volume - {{pgrole}}"

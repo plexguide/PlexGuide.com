@@ -20,7 +20,7 @@
     intport: "80"
     extport: "5566"
     image: "physk/sonarr-radarr-tracker"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

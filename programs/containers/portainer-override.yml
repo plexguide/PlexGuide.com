@@ -22,7 +22,7 @@
     pull: yes
     published_ports:
       - "9000:9000"
-    cpu_shares: 256
+    #cpu_shares: 256
     env:
       PUID: 1000
       PGID: 1000

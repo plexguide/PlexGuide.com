@@ -20,7 +20,7 @@
     intport: "6789"
     extport: "6789"
     image: "linuxserver/nzbget"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

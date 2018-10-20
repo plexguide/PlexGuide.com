@@ -20,7 +20,7 @@
     intport: "8181"
     extport: "8181"
     image: "linuxserver/tautulli"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

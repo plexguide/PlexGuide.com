@@ -22,7 +22,7 @@
     intport2: "7227"
     extport2: "7227"
     image: "writl/pyload"
-    cpu_shares: 256
+    #cpu_shares: 256
     expose: ""
 
 - name: "Set Default Labels"

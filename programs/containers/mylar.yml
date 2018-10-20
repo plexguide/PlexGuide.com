@@ -20,7 +20,7 @@
     intport: "8090"
     extport: "8090"
     image: "linuxserver/mylar"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

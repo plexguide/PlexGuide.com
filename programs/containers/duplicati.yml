@@ -20,7 +20,7 @@
     intport: "8200"
     extport: "8200"
     image: "linuxserver/duplicati"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"
