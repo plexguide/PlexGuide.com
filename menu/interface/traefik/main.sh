@@ -431,7 +431,7 @@ STORED INFO for $p: $display
 
 EOF
 
-read -r -p "Set or Change $p (y/n)? " -n 1 -r < /dev/tty
+read -r -p "Set or Change '$p' (y/n)? " -n 1 -r < /dev/tty
 echo    # move cursor to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -460,8 +460,6 @@ tee <<-EOF
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: DOMAIN NAME - $typed
 -----------------------------------------------------------------------
-
-DOMAIN NAME is Now Set! Thank You!
 
 EOF
   echo "$typed" > /var/plexguide/$p
