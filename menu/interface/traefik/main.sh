@@ -486,6 +486,18 @@ done </tmp/traefik.queslist
 ansible-playbook /opt/plexguide/menu/interface/traefik/common.yml
 ansible-playbook /opt/plexguide/menu/interface/traefik/$provider.yml
 
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: We Must Rebuild Your Containers!
+-----------------------------------------------------------------------
+
+EOF
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" < /dev/tty
+
+bash /opt/plexguide/menu/interface/traefik/rebuild2.sh
+
+
 else
   typed="1"
   echo ""
