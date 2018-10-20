@@ -18,7 +18,7 @@
 - name: "Container Variables"
   set_fact:
     intport: "8080"
-    extport: "8080"
+    extport: "8081"
     image: "linuxserver/qbittorrent"
     cpu_shares: 128
     expose: ""
