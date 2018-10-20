@@ -431,8 +431,8 @@ STORED INFO for $p: $display
 
 EOF
 
-echo "corn"
 read -r -p "Set or Change $p (y/n)? " -n 1 -r
+read -n 1 -s -r -p "Press [ANY KEY] to Continue"
 
 done </tmp/traefik.queslist
 
