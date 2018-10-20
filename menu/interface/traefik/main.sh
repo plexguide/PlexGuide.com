@@ -413,12 +413,21 @@ fi
 ####################### WHILE FOR ADDITONAL QUESTIONS # START
 while read p; do
 
+### check to make sure var exist
+  file="/var/plexguide/$p"
+  if [ ! -e "$file" ]; then
+    echo NOT-SET > /var/plexguide/$p
+    display=$p
+  else
+    display=$(cat /var/plexguide/$p)
+  fi
+
 tee <<-EOF
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: Additional Questions for Traefik
 -----------------------------------------------------------------------
 
-STORED INFO for $p: $pgdomain
+STORED INFO for $p: $display
 
 EOF
   read -p "Set or Change $p (y/n)? " -n 1 -r
