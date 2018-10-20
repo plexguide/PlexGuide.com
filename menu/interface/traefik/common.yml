@@ -20,6 +20,18 @@
   gather_facts: true
   tasks:
 
+  - name: Register E-Mail
+    shell: "cat /var/plexguide/server.email"
+    register: email
+
+  - name: Register Domain
+    shell: "cat /var/plexguide/server.domain"
+    register: domain
+
+  - name: Register Provider
+    shell: "cat /var/plexguide/traefik.provider"
+    register: provider
+
   - name: Remove Traefik
     docker_container:
       name: traefik
