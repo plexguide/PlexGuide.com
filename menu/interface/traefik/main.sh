@@ -473,7 +473,8 @@ EOF
 break=no
 while [ "$break" == "no" ]; do
 
-read -p 'Please Update the Information - Then Press [ENTER]: ' typed < /dev/tty
+read -p 'Update Info - Then Press [ENTER]: ' typed < /dev/tty
+
 tee <<-EOF
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: $p - $typed
