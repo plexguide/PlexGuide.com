@@ -431,7 +431,7 @@ STORED INFO for $p: $display
 
 EOF
 
-read -p "Set or Change $p (y/n)? " -n 1 -r
+read -r -p "Set or Change $p (y/n)? " -n 1 -r
 
 done </tmp/traefik.queslist
 
