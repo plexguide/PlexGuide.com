@@ -143,7 +143,7 @@ SYSTEM MESSAGE: TLD Application Set to: $typed
 -----------------------------------------------------------------------
 
 EOF
-echo $typed > /var/plexguide/tld.program
+echo "$typed" > /var/plexguide/tld.program
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo ""
