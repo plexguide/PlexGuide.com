@@ -46,3 +46,5 @@
     type: A
     state: present
     solo: true
+  fail:
+    msg: "Test 2"
