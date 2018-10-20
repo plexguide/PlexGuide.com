@@ -458,36 +458,11 @@ read -p 'Type the INFO for $p [ENTER]: ' typed < /dev/tty
 tee <<-EOF
 
 -----------------------------------------------------------------------
-SYSTEM MESSAGE: DOMAIN NAME - $typed
+SYSTEM MESSAGE: SET INFO $p - $typed
 -----------------------------------------------------------------------
 
 EOF
-read -p "Continue to SET the DOMAIN NAME (y/n)? " -n 1 -r < /dev/tty
-echo ""
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-tee <<-EOF
-
------------------------------------------------------------------------
-SYSTEM MESSAGE: DOMAIN NAME - [Y] Key was NOT Selected
------------------------------------------------------------------------
-
-Restarting the Process! Type the Domain Name Again!
-
-EOF
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-  echo "";
-else
-tee <<-EOF
-
------------------------------------------------------------------------
-SYSTEM MESSAGE: DOMAIN NAME - $typed
------------------------------------------------------------------------
-
-DOMAIN NAME is Now Set! Thank You!
-
-EOF
-  echo "$typed" > /var/plexguide/server.domain
+  echo "$typed" > /var/plexguide/$p
   break=yes
   read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 fi
