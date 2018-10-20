@@ -82,10 +82,9 @@ NOTE: Making Changes? Redeploy Traefik When Complete!
 6.  Deploy Traefik            [$deployed]
 
 EOF
-
 ################## Selection ########### START
 typed=nullstart
-prange="1 2 3 4 5"
+prange="1 2 3 4 5 6 $extrarange"
 tcheck=""
 break=off
 while [ "$break" == "off" ]; do
@@ -378,6 +377,29 @@ else
   echo 'INFO - Exiting PlexGuide & Display Ending Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/ending/ending.sh
   exit
+fi
+
+########################################## DEPLOY START
+elif [ "$typed" == "6" ]; then
+fprovider=(cat /var/plexguide/traefik.provider)
+  if [ "$fprovider" == "cloudflare" ]; then
+
+tee "INFO" > /tmp/traefik.queslist <<EOF
+[Unit]
+EOF
+
+  elif [ "$fprovider" == "duckdns" ]; then
+###### FILL ME IN
+  elif [ "$fprovider" == "gandiv5" ]; then
+###### FILL ME IN
+  elif [ "$fprovider" == "godaddy" ]; then
+###### FILL ME IN
+  elif [ "$fprovider" == "namecheap" ]; then
+###### FILL ME IN
+  elif [ "$fprovider" == "ovh" ]; then
+###### FILL ME IN
+  else
+###### FILL ME IN
 fi
 ################## End State ########### STARTED
 done
