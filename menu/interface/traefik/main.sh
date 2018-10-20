@@ -194,7 +194,6 @@ SYSTEM MESSAGE: Success! Provider [$typed] Set!
 
 EOF
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo ""
       break=on
       echo $typed > /var/plexguide/traefik.provider
     fi
