@@ -456,7 +456,7 @@ SYSTEM MESSAGE: $p - $display
 
 EOF
 
-read -r -p "Set or Change '$p' (y/n)? " -n 1 -r < /dev/tty
+read -r -p "Change '$p' (y/n)? " -n 1 -r < /dev/tty
 echo    # move cursor to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -473,7 +473,7 @@ EOF
 break=no
 while [ "$break" == "no" ]; do
 
-read -p 'Type the INFO for $p [ENTER]: ' typed < /dev/tty
+read -p 'Please Update the Information - Then Press [ENTER]: ' typed < /dev/tty
 tee <<-EOF
 
 ---------------------------------------------------------------------------
