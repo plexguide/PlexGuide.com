@@ -371,20 +371,11 @@ done
       echo "";# leave if statement and continue.
   fi
 
-else
-  typed="1"
-  echo ""
-  echo 'INFO - Exiting PlexGuide & Display Ending Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/ending/ending.sh
-  exit
-fi
+  ########################################## DEPLOY START
+  elif [ "$typed" == "6" ]; then
 
-########################################## DEPLOY START
-elif [ "$typed" == "6" ]; then
-
-
-fprovider=(cat /var/plexguide/traefik.provider)
-  if [ "$fprovider" == "cloudflare" ]; then
+  fprovider=(cat /var/plexguide/traefik.provider)
+    if [ "$fprovider" == "cloudflare" ]; then
 
 tee "INFO" > /tmp/traefik.queslist <<EOF
 CLOUDFLARE_EMAIL
@@ -503,6 +494,15 @@ done
   fi
 
 done </tmp/traefik.queslist
+
+
+else
+  typed="1"
+  echo ""
+  echo 'INFO - Exiting PlexGuide & Display Ending Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/roles/ending/ending.sh
+  exit
 fi
+
 ################## End State ########### STARTED
 done
