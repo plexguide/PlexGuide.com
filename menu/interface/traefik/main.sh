@@ -397,7 +397,7 @@ EOF
   elif [ "$fprovider" == "namecheap" ]; then
 tee "INFO" > /tmp/traefik.queslist <<EOF
 NAMECHEAP_API_USER
-NAMECHEAP_API_KEY
+ NAMECHEAP_API_KEY
 EOF
   elif [ "$fprovider" == "ovh" ]; then
 echo "OVH_ENDPOINT
