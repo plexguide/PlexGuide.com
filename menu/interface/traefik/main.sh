@@ -454,8 +454,7 @@ then
   echo "-----------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: NO CHANGE - $p: $display"
   echo "-----------------------------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 else
 tee <<-EOF
 
