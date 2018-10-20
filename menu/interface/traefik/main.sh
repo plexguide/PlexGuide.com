@@ -417,7 +417,7 @@ while read p; do
   file="/var/plexguide/$p"
   if [ ! -e "$file" ]; then
     echo NOT-SET > /var/plexguide/$p
-    display=$p
+    display="NOT-SET"
   else
     display=$(cat /var/plexguide/$p)
   fi
