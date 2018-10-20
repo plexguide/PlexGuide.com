@@ -497,6 +497,14 @@ EOF
 
 bash /opt/plexguide/menu/interface/traefik/rebuild2.sh
 
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Treafik Deployment Complete!
+-----------------------------------------------------------------------
+
+EOF
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue" < /dev/tty
 
 else
   typed="1"
