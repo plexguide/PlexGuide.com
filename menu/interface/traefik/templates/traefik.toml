@@ -51,21 +51,21 @@ defaultEntryPoints = ["http", "https"]
 
 [acme]
 acmeLogging = true
-email = "your@email.com"
+email = "{{email.stdout}}"
 storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
   [acme.dnsChallenge]
-    provider = "myprovider"
+    provider = "{{provider.stdout}}"
     delayBeforeCheck = 30
 
 [[acme.domains]]
-  main = "yourdomain.com"
+  main = "{{domain.stdout}}"
 [[acme.domains]]
-  main = "*.yourdomain.com"
+  main = "*.{{domain.stdout}}"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "yourdomain.com"
+domain = "{{domain.stdout}}"
 watch = true
 exposedbydefault = false
 network = "plexguide"

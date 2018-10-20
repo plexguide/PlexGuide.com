@@ -118,7 +118,7 @@ elif [ "$typed" == "3" ]; then
     echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
     read -n 1 -s -r -p "Press [ANY] Key to Continue"
   else
-    bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
+    bash /opt/plexguide/menu/interface/traefik/main.sh
   fi
 
 elif [ "$typed" == "4" ]; then
