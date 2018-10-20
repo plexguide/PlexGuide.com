@@ -427,8 +427,7 @@ tee <<-EOF
 SYSTEM MESSAGE: Additional Questions for Traefik
 -----------------------------------------------------------------------
 
-STORED INFO for $p: $display
-
+Current Info Stored for $p: $display
 EOF
 
 read -r -p "Set or Change '$p' (y/n)? " -n 1 -r < /dev/tty
