@@ -486,7 +486,7 @@ SYSTEM MESSAGE: DOMAIN NAME - $typed
 DOMAIN NAME is Now Set! Thank You!
 
 EOF
-    echo $typed > /var/plexguide/server.domain
+    echo "$typed" > /var/plexguide/server.domain
     break=yes
     read -n 1 -s -r -p "Press [ANY KEY] to Continue ";
   fi
