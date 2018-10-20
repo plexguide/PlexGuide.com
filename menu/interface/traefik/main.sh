@@ -363,7 +363,7 @@ SYSTEM MESSAGE: E-MAIL ADDRESS - $typed
 E-Mail Address is Now Set! Thank You!
 
 EOF
-    echo $typed > /var/plexguide/server.email
+    echo "$typed" > /var/plexguide/server.email
     break=yes
     read -n 1 -s -r -p "Press [ANY KEY] to Continue ";
   fi
@@ -410,6 +410,7 @@ EOF
   else
   echo 123
 fi
+
 
 while read p; do
 
