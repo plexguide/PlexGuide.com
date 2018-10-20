@@ -275,7 +275,7 @@ tee <<-EOF
 SYSTEM MESSAGE: DOMAIN NAME - $typed
 -----------------------------------------------------------------------
 
-Server ID is Now Set! Thank You!
+DOMAIN NAME is Now Set! Thank You!
 
 EOF
     echo $typed > /var/plexguide/server.domain
