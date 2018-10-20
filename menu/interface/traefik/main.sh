@@ -467,7 +467,7 @@ read -p 'Type the INFO for $p [ENTER]: ' typed < /dev/tty
 tee <<-EOF
 
 -----------------------------------------------------------------------
-SYSTEM MESSAGE: DOMAIN NAME - $typed
+SYSTEM MESSAGE: $p - $typed
 -----------------------------------------------------------------------
 
 EOF
