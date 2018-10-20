@@ -475,7 +475,6 @@ while [ "$break" == "no" ]; do
 
 read -p 'Please Update the Information - Then Press [ENTER]: ' typed < /dev/tty
 tee <<-EOF
-
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: $p - $typed
 ---------------------------------------------------------------------------
@@ -491,7 +490,6 @@ fi
 ####################### WHILE FOR ADDITONAL QUESTIONS END
 
 done </tmp/traefik.queslist
-echo ""
 echo "NOTE: Deploying Traefik Next!"
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
