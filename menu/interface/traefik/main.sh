@@ -100,22 +100,6 @@ if [ "$typed" == "2" ]; then
 
 elif [ "$typed" == "3" ]; then
 
-  echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  ### Affects Only Multi-HD and No Mount Is Deployed!
-  multi=$(cat /var/plexguide/multi.unionfs)
-  edition=$(cat /var/plexguide/pg.edition.stored)
-
-  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
-    echo ""
-    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
-  else
-    bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
-  fi
-
-elif [ "$typed" == "4" ]; then
-
   typed=nullstart
   prange="cloudflare ducksdns gandiv5 godaddy namecheap ovh "
   tcheck=""
@@ -165,6 +149,22 @@ EOF
       echo $typed > /var/plexguide/traefik.provider
     fi
   done
+
+elif [ "$typed" == "4" ]; then
+
+  echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+
+  ### Affects Only Multi-HD and No Mount Is Deployed!
+  multi=$(cat /var/plexguide/multi.unionfs)
+  edition=$(cat /var/plexguide/pg.edition.stored)
+
+  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+    echo ""
+    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
+    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+  else
+    bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
+  fi
 
 elif [ "$typed" == "5" ]; then
 
