@@ -451,12 +451,11 @@ echo    # move cursor to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
   echo ""
-  echo "---------------------------------------------------"
+  echo "-----------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: NO CHANGE - $p: $display"
-  echo "---------------------------------------------------"
+  echo "-----------------------------------------------------------------------"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo "";
 else
 tee <<-EOF
 
