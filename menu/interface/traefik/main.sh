@@ -224,9 +224,9 @@ EOF
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
-      exit 1;
   else
 tee <<-EOF
+
 -----------------------------------------------------------------------
 SYSTEM MESSAGE: Set - Change Treafik Server Domain Address!
 -----------------------------------------------------------------------
@@ -239,12 +239,11 @@ pg123.media
 mydomain.net
 
 Note: Domain Must Be All LowerCase!
-
 EOF
 
 break=no
 while [ "$break" == "no" ]; do
-echo ""
+
 read -p 'Type a DOMAIN NAME & Then Press [ENTER]: ' typed
 tee <<-EOF
 
