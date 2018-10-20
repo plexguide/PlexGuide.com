@@ -476,10 +476,10 @@ while [ "$break" == "no" ]; do
 read -p 'Update Info - Then Press [ENTER]: ' typed < /dev/tty
 
 tee <<-EOF
+
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: $p - $typed
 ---------------------------------------------------------------------------
-
 EOF
   echo "$typed" > /var/plexguide/$p
   break=yes
