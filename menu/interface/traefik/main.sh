@@ -165,11 +165,13 @@ SYSTEM MESSAGE: Type to Set the Name of a Provider for Traefik!
 -----------------------------------------------------------------------
 
 cloudflare
+digitalocean
 duckdns
 gandiv5
 godaddy
 namecheap
 ovh
+vultr
 
 EOF
     read -p 'Type a Provider Name (All LowerCase) | PRESS [ENTER]: ' typed
