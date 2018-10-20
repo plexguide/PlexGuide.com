@@ -483,6 +483,7 @@ fi
 done </tmp/traefik.queslist
 
 ### Execute Traefik
+ansible-playbook /opt/plexguide/menu/interface/traefik/common.yml
 ansible-playbook /opt/plexguide/menu/interface/traefik/$provider.yml
 
 else
