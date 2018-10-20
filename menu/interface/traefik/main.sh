@@ -393,7 +393,7 @@ GANDIV5_API_KEY
 EOF
 elif [ "$fprovider" == "vultr" ]; then
 tee "INFO" > /tmp/traefik.queslist <<EOF
-GANDIV5_API_KEY
+VULTR_API_KEY
 EOF
   elif [ "$fprovider" == "godaddy" ]; then
 tee "INFO" > /tmp/traefik.queslist <<EOF
