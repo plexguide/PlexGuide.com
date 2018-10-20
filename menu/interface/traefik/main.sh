@@ -42,9 +42,9 @@ pgemail=$(cat /var/plexguide/server.email)
 deployed=$(docker ps --format '{{.Names}}' | grep traefik)
 
 if [ "$deployed" == "traefik" ]; then
-  deployed="Traefik is Deployed"
+  deployed="Deployed"
 else
-  deployed="Traefik NOT Deployed"
+  deployed="NOT Deployed"
 fi
 
 ## To Get List for Rebuilding or TLD
