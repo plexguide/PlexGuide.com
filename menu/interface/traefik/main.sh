@@ -385,21 +385,39 @@ fprovider=(cat /var/plexguide/traefik.provider)
   if [ "$fprovider" == "cloudflare" ]; then
 
 tee "INFO" > /tmp/traefik.queslist <<EOF
-[Unit]
+CLOUDFLARE_EMAIL
+CLOUDFLARE_API_KEY
 EOF
 
   elif [ "$fprovider" == "duckdns" ]; then
-###### FILL ME IN
+tee "INFO" > /tmp/traefik.queslist <<EOF
+DUCKDNS_TOKEN
+EOF
   elif [ "$fprovider" == "gandiv5" ]; then
-###### FILL ME IN
+tee "INFO" > /tmp/traefik.queslist <<EOF
+GANDIV5_API_KEY
+EOF
   elif [ "$fprovider" == "godaddy" ]; then
-###### FILL ME IN
+tee "INFO" > /tmp/traefik.queslist <<EOF
+GODADDY_API_KEY
+GODADDY_API_SECRET
+EOF
   elif [ "$fprovider" == "namecheap" ]; then
-###### FILL ME IN
+tee "INFO" > /tmp/traefik.queslist <<EOF
+NAMECHEAP_API_USER
+NAMECHEAP_API_KEY
+EOF
   elif [ "$fprovider" == "ovh" ]; then
-###### FILL ME IN
+tee "INFO" > /tmp/traefik.queslist <<EOF
+OVH_ENDPOINT
+OVH_APPLICATION_KEY
+OVH_APPLICATION_SECRET
+OVH_CONSUMER_KEY
+EOF
   else
 ###### FILL ME IN
 fi
+
+
 ################## End State ########### STARTED
 done
