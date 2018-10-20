@@ -205,16 +205,86 @@ elif [ "$typed" == "4" ]; then
 
   echo 'INFO - Selected: Traefik & TLD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  ### Affects Only Multi-HD and No Mount Is Deployed!
-  multi=$(cat /var/plexguide/multi.unionfs)
-  edition=$(cat /var/plexguide/pg.edition.stored)
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Traefik Server Domain Interface
+-----------------------------------------------------------------------
 
-  if [ "$edition" == "PG Edition - HD Multi" ] && [ "$multi" == "" ]; then
+Current Domain: $pgdomain
+
+EOF
+  read -p "Set or the Domain (y/n)? " -n 1 -r
+  echo    # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
     echo ""
-    echo "WARNING: You cannot proceed! Deploy one mount with UNIONFS first!"
-    read -n 1 -s -r -p "Press [ANY] Key to Continue"
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo "";
+      exit 1;
   else
-    bash /opt/plexguide/roles/menu-tld/scripts/submenu.sh
+tee <<-EOF
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: Set - Change Treafik Server Domain Address!
+-----------------------------------------------------------------------
+
+Current Domain: $pgdomain
+
+TYPED EXAMPLES:
+plexguide.com
+pg123.media
+mydomain.net
+
+Note: Domain Must Be All LowerCase!
+
+EOF
+
+break=no
+while [ "$break" == "no" ]; do
+echo ""
+read -p 'Type a DOMAIN NAME & Then Press [ENTER]: ' typed
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - $typed
+-----------------------------------------------------------------------
+
+EOF
+  read -p "Continue to SET the DOMAIN NAME (y/n)? " -n 1 -r
+
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - [Y] Key was NOT Selected
+-----------------------------------------------------------------------
+
+Restting the Process! Type the Domain Name Again!
+
+EOF
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo "";
+  else
+tee <<-EOF
+
+-----------------------------------------------------------------------
+SYSTEM MESSAGE: DOMAIN NAME - $typed
+-----------------------------------------------------------------------
+
+Server ID is Now Set! Thank You!
+
+EOF
+    echo $typed > /var/plexguide/server.id
+    break=yes
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo "";
+  fi
+done
+      echo "";# leave if statement and continue.
   fi
 
 elif [ "$typed" == "5" ]; then
