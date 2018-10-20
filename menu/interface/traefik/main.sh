@@ -450,11 +450,7 @@ read -r -p "Set or Change '$p' (y/n)? " -n 1 -r < /dev/tty
 echo    # move cursor to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-  echo ""
-  echo "-----------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: NO CHANGE - $p: $display"
-  echo "-----------------------------------------------------------------------"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
+  null=null
 else
 tee <<-EOF
 
