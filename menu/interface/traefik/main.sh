@@ -416,9 +416,12 @@ tee <<-EOF
 SYSTEM MESSAGE: Additional Traefik Information
 -----------------------------------------------------------------------
 
-NOTE: You will be asked a series of questions based on your domain
+NOTE 1: You will be asked a series of questions based on your domain
 provider! Failing to respond correctly will result in not being issued
 an SSL certificate.
+
+NOTE 2: PlexGuide will store your information incase of future
+redeployments!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
