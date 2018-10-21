@@ -36,7 +36,7 @@
     default_volumes:
       - "/opt/appdata/{{pgrole}}:/config"
       - "/mnt/unionfs/ebooks:/books"
-      - "/mnt/unionfs/audio/abooks:/abooks"
+      - "/mnt/unionfs/abooks:/abooks"
       - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
       - "{{path.stdout}}/sab/complete:/complete"
       - "{{path.stdout}}/nzbget/completed:/completed"
