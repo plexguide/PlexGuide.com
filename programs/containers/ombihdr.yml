@@ -36,7 +36,7 @@
     intport: "3579"
     extport: "3577"
     image: "linuxserver/ombi"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

@@ -20,7 +20,7 @@
     intport: "8081"
     extport: "8089"
     image: "sickchill/sickchill"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

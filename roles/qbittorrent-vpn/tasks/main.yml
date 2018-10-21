@@ -48,8 +48,7 @@
       - "/opt/appdata/{{role_name}}/config:/config"
       - "/opt/appdata/{{role_name}}/torrents:/torrents"
       - "/mnt/unionfs:/unionfs"
-      - "{{path.stdout}}/{{role_name}}/Downloads/temp:/temp"
-      - "{{path.stdout}}/{{role_name}}/Downloads:/qbit-downloads"
+      - "{{path.stdout}}/{{role_name}}/downloads:/downloads"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
       - name: plexguide

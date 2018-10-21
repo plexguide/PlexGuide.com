@@ -21,7 +21,7 @@
     intport: "8096"
     extport: "8096"
     image: "emby/embyserver:latest"
-    cpu_shares: 1024
+    #cpu_shares: 1024
     expose: 8096
 
 - name: "Set Default Labels"

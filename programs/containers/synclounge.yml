@@ -22,7 +22,7 @@
     intport2: "8089"
     extport2: "8089"
     image: "starbix/synclounge"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels - {{pgrole}}"

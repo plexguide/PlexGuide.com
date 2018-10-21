@@ -20,7 +20,7 @@
     intport: "4040"
     extport: "4040"
     image: "weaveworks/scope"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

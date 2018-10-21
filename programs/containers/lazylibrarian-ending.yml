@@ -15,29 +15,30 @@
 #
 ############################################################# (KEY START)
 ---
-- name: Portainer Container
+- name: Please Wait - Pending .conf generation from lazylibrarian
+  wait_for:
+    path: "/opt/appdata/lazylibrarian/config.ini"
+    state: present
+
+- name: "Wait 5 Seconds"
+  wait_for:
+    timeout: 5
+
+#- name: Set Download Location
+#  lineinfile:
+#    path: "/opt/appdata/lazylibrarian/config.ini"
+#    regexp: 'download_dir ='
+#    line: 'download_dir = /data/completed,/complete,/completed,/downloads,/downloaded,/qbit-downloads'
+#    state: present
+
+- name: Set Incomplete Download Location
+  lineinfile:
+    path: "/opt/appdata/lazylibrarian/config.ini"
+    regexp: 'audio_dir ='
+    line: 'audio_dir = /abooks'
+    state: present
+    
+- name: Restart Container
   docker_container:
-    name: portainer
-    image: "portainer/portainer"
-    pull: yes
-    published_ports:
-      - "9000:9000"
-    #cpu_shares: 256
-    env:
-      PUID: 1000
-      PGID: 1000
-    volumes:
-      - "/opt/appdata/{{pgrole}}:/data"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/opt/appdata/{{pgrole}}:/data"
-    networks:
-      - name: plexguide
-        aliases:
-          - portainer
-    restart_policy: always
+    name: lazylibrarian
     state: started
-    labels:
-      traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-      traefik.port: "9000"

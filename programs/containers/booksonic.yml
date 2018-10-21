@@ -21,7 +21,7 @@
     intport: "4040"
     extport: "4050"
     image: "linuxserver/booksonic"
-    cpu_shares: 64
+    #cpu_shares: 64
     expose: ""
 
 - name: "Set Default Labels"

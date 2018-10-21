@@ -20,7 +20,7 @@
     intport: "0"
     extport: "0"
     image: "linuxserver/ddclient:latest"
-    cpu_shares: 10
+    #cpu_shares: 10
     expose: ""
 
 - name: "Set Default Labels"

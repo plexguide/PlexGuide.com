@@ -20,7 +20,7 @@
     name: "{{pgrole}}"
     image: "{{image}}"
     pull: yes
-    cpu_shares: "{{cpu_shares}}"
+    #cpu_shares: "{{cpu_shares}}"
     volumes: "{{default_volumes}}"
     env: "{{default_env}}"
     restart_policy: always

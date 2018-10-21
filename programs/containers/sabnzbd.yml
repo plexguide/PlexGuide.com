@@ -21,7 +21,7 @@
     intport: "8080"
     extport: "8080"
     image: "linuxserver/sabnzbd"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"
@@ -48,4 +48,3 @@
     default_env:
       PUID: 1000
       PGID: 1000
-   

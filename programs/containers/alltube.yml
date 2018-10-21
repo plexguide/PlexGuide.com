@@ -30,7 +30,7 @@
     intport: "80"
     extport: "1234"
     image: "rudloff/alltube"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

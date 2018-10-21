@@ -31,7 +31,7 @@
     intport3: "21027"
     extport3: "21027"
     image: "linuxserver/syncthing"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

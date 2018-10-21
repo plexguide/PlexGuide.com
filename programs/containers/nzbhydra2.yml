@@ -20,7 +20,7 @@
     intport: "5076"
     extport: "5076"
     image: "linuxserver/hydra2"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

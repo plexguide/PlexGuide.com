@@ -38,7 +38,7 @@
     intport: "80"
     extport: "8999"
     image: "linuxserver/rutorrent"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

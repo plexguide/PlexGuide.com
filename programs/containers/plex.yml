@@ -24,7 +24,7 @@
     ptoken: "ABC000000"
     plexselect: "2"
     usercheck: "0"
-    cpu_shares: 1024
+    #cpu_shares: 1024
     expose: "32400"
 
 - name: "Set Default Labels"

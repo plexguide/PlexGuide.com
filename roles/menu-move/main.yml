@@ -52,7 +52,7 @@
       shell: "echo break > /var/plexguide/move.menu"
       when: fchoice == "1"
 
-    - name: Deploy Trafic
+    - name: Deploy PG Move
       shell: "echo rclone > /var/plexguide/move.menu"
       when: fchoice == "2"
 

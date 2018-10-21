@@ -9,11 +9,12 @@
       with_items:
           - /var/plexguide
           - /opt/appdata/plexguide
-          - /mnt/nzbget
-          - /mnt/sab
-          - /mnt/rutorrents
-          - /mnt/move
-          - /mnt/gcrypt
-          - /mnt/deluge
-          - /mnt/torrentvpn
+          - {{path.stdout}}/nzbget
+          - {{path.stdout}}/sab
+          - {{path.stdout}}/rutorrent
+          - {{path.stdout}}/move
+          - {{path.stdout}}/gcrypt
+          - {{path.stdout}}/deluge
+          - {{path.stdout}}/torrentvpn
+          - {{path.stdout}}/qbittorrent
       ignore_errors: yes

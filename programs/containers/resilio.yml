@@ -30,7 +30,7 @@
     intport2: "55555"
     extport2: "55555"
     image: "linuxserver/resilio-sync"
-    cpu_shares: 256
+    #cpu_shares: 256
     expose: ""
 
 - name: "Set Default Labels"

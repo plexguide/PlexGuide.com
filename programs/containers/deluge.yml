@@ -61,7 +61,7 @@
     intport3: "58946"
     extport3: "58946"
     image: "binhex/arch-deluge"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: "Set Default Labels"

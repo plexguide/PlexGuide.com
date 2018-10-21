@@ -20,7 +20,7 @@
     intport: "443"
     extport: "127.0.0.1:4645"
     image: "linuxserver/nextcloud"
-    cpu_shares: 128
+    #cpu_shares: 128
     expose: ""
 
 - name: Create required directories
