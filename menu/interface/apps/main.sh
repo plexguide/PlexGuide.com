@@ -55,11 +55,11 @@ while [ "$break" == "off" ]; do
   if [ "$tcheck" == "" ] || [ "$typed" == "exit" ]; then
 
     if [ "$typed" == "exit" ]; then
-      echo ""
       echo "--------------------------------------------------------"
       echo "SYSTEM MESSAGE: Exiting the PG App Installer Interface "
       echo "--------------------------------------------------------"
       echo ""
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       exit
     fi
 
