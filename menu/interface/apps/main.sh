@@ -36,7 +36,6 @@ tee <<-EOF
 Welcome to the PG Application Suite
 ---------------------------------------------------------------------------
 
-NOTE: Type in all lowercase! To Exit the Interface, type: exit
 EOF
 cat /var/plexguide/programs.temp
 ################## Selection ########### START
@@ -46,6 +45,7 @@ tcheck=""
 break=off
 echo ""
 echo ""
+echo "NOTE: Type all lowercase! To Exit, type >>> exit"
 while [ "$break" == "off" ]; do
 
   read -p 'Type the name of a program | PRESS [ENTER]: ' typed
@@ -67,13 +67,12 @@ while [ "$break" == "off" ]; do
     echo "SYSTEM MESSAGE: Failed! Type a Program from the List! "
     echo "--------------------------------------------------------"
     echo ""
-    echo "NOTE: Type in all lowercase! To Exit the Interface, type: exit"
-    echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo ""
     cat /var/plexguide/programs.temp
     echo ""
     echo ""
+    echo "NOTE: Type all lowercase! To Exit, type >>> exit"
   else
     break=on
   fi
