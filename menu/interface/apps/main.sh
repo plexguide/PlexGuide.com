@@ -38,9 +38,8 @@ Welcome to the PG Application Suite
 
 NOTE: Type in all lowercase!
 
-echo "$p"
-
 EOF
+cat /var/plexguide/programs.temp
 ################## Selection ########### START
 typed=nullstart
 prange="$p"
