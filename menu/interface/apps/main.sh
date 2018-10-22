@@ -29,37 +29,32 @@ while read p; do
     echo " " >> /var/plexguide/programs.temp
   fi
 
-done </opt/plexguide/roles/programs/scripts/app.list
+done </opt/plexguide/menu/interface/apps/app.list
 
 tee <<-EOF
 ---------------------------------------------------------------------------
 Welcome to the PG Application Suite
 ---------------------------------------------------------------------------
 
-NOTE: Making Changes? Redeploy Traefik When Complete!
+NOTE: Type in all lowercase!
 
-1.  EXIT Treafik Interface
-2.  Set Top Level Domain App  [$tldprogram]
-3.  Set Domain Provier        [$provider]
-4.  Set Domain Name           [$pgdomain]
-5.  Set E-Mail Address        [$pgemail]
-6.  Deploy Traefik            [$deployed]
+$p
 
 EOF
 ################## Selection ########### START
 typed=nullstart
-prange="1 2 3 4 5 6 $extrarange"
+prange="$p"
 tcheck=""
 break=off
 while [ "$break" == "off" ]; do
 
-  read -p 'Type a Number Selection | PRESS [ENTER]: ' typed
+  read -p 'Type the name of a program | PRESS [ENTER]: ' typed
   tcheck=$(echo $prange | grep $typed)
   echo ""
 
   if [ "$tcheck" == "" ] || [ "$typed" == "0" ]; then
     echo "--------------------------------------------------------"
-    echo "SYSTEM MESSAGE: Failed! Type a Number from 1 thru 6 "
+    echo "SYSTEM MESSAGE: Failed! Type a Program from the List! "
     echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
