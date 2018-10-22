@@ -41,7 +41,7 @@ EOF
 cat /var/plexguide/programs.temp
 ################## Selection ########### START
 typed=nullstart
-prange="$p"
+prange=$(cat /var/plexguide/programs.temp)
 tcheck=""
 break=off
 echo ""
