@@ -59,7 +59,8 @@ while [ "$break" == "off" ]; do
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo ""
-    cat /var/plexguide/programs.temp    
+    cat /var/plexguide/programs.temp
+    echo ""
     echo ""
   else
     break=on
