@@ -520,7 +520,6 @@ EOF
 
 else
   typed="1"
-  echo ""
   exit
 fi
 
