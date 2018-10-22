@@ -37,7 +37,6 @@ Welcome to the PG Application Suite
 ---------------------------------------------------------------------------
 
 NOTE: Type in all lowercase!
-
 EOF
 cat /var/plexguide/programs.temp
 ################## Selection ########### START
@@ -45,6 +44,8 @@ typed=nullstart
 prange="$p"
 tcheck=""
 break=off
+echo ""
+echo ""
 while [ "$break" == "off" ]; do
 
   read -p 'Type the name of a program | PRESS [ENTER]: ' typed
