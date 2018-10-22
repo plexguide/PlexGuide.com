@@ -80,5 +80,5 @@ done
 if [ "$typed" == "netdata" ] || [ "$typed" == "vpn" ] || [ "$typed" == "speedtest" ] || [ "$typed" == "alltube" ]; then
   echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=on"
 else
-  ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
+  echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
 fi
