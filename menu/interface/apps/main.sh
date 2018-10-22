@@ -38,7 +38,7 @@ Welcome to the PG Application Suite
 
 NOTE: Type in all lowercase!
 
-$p
+echo "$p"
 
 EOF
 ################## Selection ########### START
