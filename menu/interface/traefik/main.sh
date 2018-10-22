@@ -520,9 +520,6 @@ EOF
 
 else
   typed="1"
-  echo ""
-  echo 'INFO - Exiting PlexGuide & Display Ending Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/ending/ending.sh
   exit
 fi
 
