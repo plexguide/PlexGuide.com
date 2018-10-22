@@ -19,7 +19,7 @@ rm -rf /var/plexguide/ver.temp 1>/dev/null 2>&1
 touch /var/plexguide/ver.temp
 
 sleep 4
-### Builds Version List for Display
+## Builds Version List for Display
 while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
