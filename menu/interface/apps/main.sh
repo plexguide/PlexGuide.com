@@ -16,60 +16,24 @@
 #
 #################################################################################
 ### Notes
-# Ensure to Change Out Backup If Not Using for Solo HD
+num=0
+echo " " > /var/plexguide/programs.temp
+#### Build up list backup list for the main.yml execution
+while read p; do
+  echo -n $p >> /var/plexguide/programs.temp
+  echo -n " " >> /var/plexguide/programs.temp
 
-while [ "$typed" != "1" ]; do
-################## Selection ########### START
-tldprogram=$(cat /var/plexguide/tld.program)
-pgdomain=$(cat /var/plexguide/server.domain)
-pgemail=$(cat /var/plexguide/server.email)
-pgdomain=$(cat /var/plexguide/server.domain)
-
-  serverports=$(cat /var/plexguide/server.ports)
-  if [ "$serverports" == "" ]; then
-    serverports="Open"
-    else
-    serverports="Closed"
+  num=$[num+1]
+  if [ $num == 8 ]; then
+    num=0
+    echo " " >> /var/plexguide/programs.temp
   fi
 
-  file="/var/plexguide/traefik.provider"
-  if [ ! -e "$file" ]; then
-    echo NOT-SET > /var/plexguide/traefik.provider
-    provider="NOT-SET"
-  else
-    provider=$(cat /var/plexguide/traefik.provider)
-  fi
-## Check for Traefik Running
-deployed=$(docker ps --format '{{.Names}}' | grep traefik)
+done </opt/plexguide/roles/programs/scripts/app.list
 
-if [ "$deployed" == "traefik" ]; then
-  deployed="TREAFIK Deployed"
-else
-  deployed="TRAEFIK NOT Deployed"
-fi
-
-## To Get List for Rebuilding or TLD
-  docker ps --format '{{.Names}}' > /tmp/backup.list
-  sed -i -e "/traefik/d" /tmp/backup.list
-  sed -i -e "/watchtower/d" /tmp/backup.list
-  sed -i -e "/word*/d" /tmp/backup.list
-  sed -i -e "/x2go*/d" /tmp/backup.list
-  sed -i -e "/plexguide/d" /tmp/backup.list
-  sed -i -e "/cloudplow/d" /tmp/backup.list
-  sed -i -e "/phlex/d" /tmp/backup.list
-
-  rm -rf /tmp/backup.build 1>/dev/null 2>&1
-  #### Commenting Out To Let User See
-  while read p; do
-    echo -n "$p" >> /tmp/backup.build
-    echo -n " " >> /tmp/backup.build
-  done </tmp/backup.list
-  running=$(cat /tmp/backup.list)
-################## Selection ########### END
-echo ""
 tee <<-EOF
 ---------------------------------------------------------------------------
-PG Traefik Deployment Interface - Reverse Proxy
+Welcome to the PG Application Suite
 ---------------------------------------------------------------------------
 
 NOTE: Making Changes? Redeploy Traefik When Complete!
