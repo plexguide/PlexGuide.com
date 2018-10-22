@@ -52,7 +52,17 @@ while [ "$break" == "off" ]; do
   tcheck=$(echo $prange | grep $typed)
   echo ""
 
-  if [ "$tcheck" == "" ] || [ "$typed" == "0" ]; then
+  if [ "$tcheck" == "" ] || [ "$typed" == "exit" ]; then
+
+    if [ "$typed" == "exit" ]; then
+      echo ""
+      echo "--------------------------------------------------------"
+      echo "SYSTEM MESSAGE: Exiting the PG App Installer Interface "
+      echo "--------------------------------------------------------"
+      echo ""
+      exit
+    fi
+
     echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Failed! Type a Program from the List! "
     echo "--------------------------------------------------------"
@@ -68,13 +78,7 @@ while [ "$break" == "off" ]; do
 done
 
 if [ "$typed" == "netdata" ] || [ "$typed" == "vpn" ] || [ "$typed" == "speedtest" ] || [ "$typed" == "alltube" ]; then
-
-  if [ "$typed" == "vpn" ]; then
-    bash /opt/plexguide/roles/programs/vpn.sh
-  else
-    echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=on"
-  fi
-
+  echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=on"
 else
-ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
+  ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
 fi
