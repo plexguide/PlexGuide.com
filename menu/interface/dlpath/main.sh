@@ -144,7 +144,6 @@ SYSTEM MESSAGE: Checking if the Location is Valid
 EOF
 sleep 1.5
 
-typed=/boobless2
 mkdir $typed/test 1>/dev/null 2>&1
 
 file="$typed/test"
