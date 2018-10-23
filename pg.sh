@@ -58,13 +58,7 @@ EOF
 lsb_release -r -s
 echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-
-tee <<-EOF
-
-
-
-
-EOF
+echo ""
   fi
 fi
 
