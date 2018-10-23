@@ -203,9 +203,35 @@ Note: PG must now rewrite your paths and rebuild your containers!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+tee <<-EOF
 
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Rewriting Folders! STANDBY!
+---------------------------------------------------------------------------
+
+EOF
+wait 2
 ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
+tee <<-EOF
 
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Rebuilding Containers! STANDBY!
+---------------------------------------------------------------------------
+
+EOF
+wait 2
+
+bash /opt/plexguide/menu/interface/dlpath/rebuild.sh
+
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Process Complete!
+---------------------------------------------------------------------------
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
   else
 tee <<-EOF
 

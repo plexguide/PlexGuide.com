@@ -15,20 +15,26 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-old=$(cat /var/plexguide/old.tld) 1>/dev/null 2>&1
-new=$(cat /var/plexguide/tld.program) 1>/dev/null 2>&1
+docker ps -a --format "{{.Names}}"  > /var/plexguide/container.running
+
+sed -i -e "/traefik/d" /var/plexguide/container.running
+sed -i -e "/watchtower/d" /var/plexguide/container.running
+sed -i -e "/word*/d" /var/plexguide/container.running
+sed -i -e "/plex/d" /var/plexguide/container.running
+sed -i -e "/x2go*/d" /var/plexguide/container.running
+sed -i -e "/pgblitz/d" /var/plexguide/container.running
+sed -i -e "/phlex/d" /var/plexguide/container.running
+
+### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
+### BackDoor WorkAround to Stop This Behavior
+count=$(wc -l < /var/plexguide/container.running)
+((count++))
+((count--))
+
+for ((i=1; i<$count+1; i++)); do
+	app=$(sed "${i}q;d" /var/plexguide/container.running)
+	echo $app > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+done
 
 echo ""
-echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
-read -n 1 -s -r -p "Press [Any] Key to Continue"
-echo ""
-
-if [ "old" != "" ]; then
-	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-fi
-
-echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-
-echo ""
-read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
 echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
