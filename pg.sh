@@ -211,6 +211,12 @@ cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
 #
 #
+################################ ONE TIME PATH CHECK
+file="/var/plexguide/path.check"
+if [ ! -e "$file" ]; then
+  touch /var/plexguide/path.check
+  bash /opt/plexguide/menu/interface/dlpath/main.sh
+fi
 #################### FILL IN Variables
 
 ### For MultiHD Edition
