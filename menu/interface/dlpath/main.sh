@@ -108,9 +108,9 @@ if [ "$initial" != "/" ]
   initial="${path: -1}"
   if [ "$initial" == "/" ]
     then
-          pathe="$path"
-          path=${path::-1}
-          echo "$path" > /var/plexguide/server.hd.path
+          pathe="$typed"
+          path=${typed::-1}
+          echo "$typed" > /var/plexguide/server.hd.path
     fi
 
 mkdir -p $typed/test
