@@ -157,7 +157,10 @@ SYSTEM MESSAGE: The Path Exists! Review the Amount of Space You Have!
 Your Current Space for $typed:
 
 EOF
-df -h
+df -h $typed
+echo ""
+echo "Pay Attention to How Much Space You Have!"
+echo ""
 
 read -p "Continue to Set $typed? (y/n): " -n 1 -r
 echo    # move cursor to a new line
