@@ -167,13 +167,14 @@ echo    # move cursor to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
   echo ""
-  echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
-  echo "---------------------------------------------------"
+  echo "---------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Restarting!"
+  echo "---------------------------------------------------------------------------"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
-  exit 1;
+  bash /opt/plexguide/menu/interface/dlpath/main.sh
+  exit
 fi
 
 tee <<-EOF
