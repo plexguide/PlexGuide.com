@@ -200,7 +200,7 @@ SYSTEM MESSAGE: Rewriting Folders! STANDBY!
 ---------------------------------------------------------------------------
 
 EOF
-wait 2
+sleep 2
 ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
 tee <<-EOF
 
@@ -209,7 +209,7 @@ SYSTEM MESSAGE: Rebuilding Containers! STANDBY!
 ---------------------------------------------------------------------------
 
 EOF
-wait 2
+sleep 2
 
 bash /opt/plexguide/menu/interface/dlpath/rebuild.sh
 
