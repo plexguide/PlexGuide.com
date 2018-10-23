@@ -187,6 +187,7 @@ location (if another harddrive). You must ensure that linux is able to READ
 your location.
 
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
+
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
