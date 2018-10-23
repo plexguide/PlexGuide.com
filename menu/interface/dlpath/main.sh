@@ -196,16 +196,6 @@ sleep 2
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: PG Must Rewrite your Paths & Rebuild Your Containers!
----------------------------------------------------------------------------
-
-Note: PG must now rewrite your paths and rebuild your containers!
-
-EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-tee <<-EOF
-
----------------------------------------------------------------------------
 SYSTEM MESSAGE: Rewriting Folders! STANDBY!
 ---------------------------------------------------------------------------
 
