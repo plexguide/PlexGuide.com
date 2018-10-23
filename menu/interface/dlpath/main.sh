@@ -133,7 +133,6 @@ tee <<-EOF
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Input is Valid
 ---------------------------------------------------------------------------
-
 EOF
   fi
 ##################################################### TYPED CHECKERS - START
@@ -142,7 +141,6 @@ tee <<-EOF
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Checking if the Location is Valid
 ---------------------------------------------------------------------------
-
 EOF
 sleep 1.5
 
@@ -158,7 +156,6 @@ SYSTEM MESSAGE: The Path Exists!  We will CHMOD & CHOWN FOR YOU!
 ---------------------------------------------------------------------------
 
 Note: Please Standby
-
 EOF
 sleep 2
 
@@ -176,7 +173,6 @@ SYSTEM MESSAGE: Everything is Complete!
 
 Note: PG must now rewrite your dir paths and rebuild your containers!
 
-
 EOF
 sleep 2
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
@@ -191,8 +187,7 @@ Note: Restarting the Process! Remember, you have to format your secondary
 location (if another harddrive). You must ensure that linux is able to READ
 your location.
 
-Advice: Exit PG and Type >>> mkdir -p $typed/testfolder
-
+Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
