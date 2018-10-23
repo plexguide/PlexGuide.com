@@ -222,7 +222,7 @@ if [ "$menu" == "deploy" ]; then
 fi
 
 if [ "$menu" == "path" ]; then
-  bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+  bash /opt/plexguide/menu/interface/dlpath/main.sh
 fi
 
 if [ "$menu" == "bad" ]; then
