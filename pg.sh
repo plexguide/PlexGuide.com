@@ -18,6 +18,50 @@
 rm -r /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
 sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
+
+# Check Install
+file="/var/plexguide/ub.check"
+if [ ! -e "$file" ]; then
+  lsb_release -r -s > /var/plexguide/ub.check
+  ubversion=$(cat /var/plexguide/ub.check)
+
+  if [ "$ubversion" == "16.04" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+NOTE: You Are Running Ubuntu 16.04! Passed OS Validation Checks!
+---------------------------------------------------------------------------
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  elif [ "$ubversion" == "18.04" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+NOTE: You Are Running Ubuntu 18.04! Passed OS Validation Checks!
+---------------------------------------------------------------------------
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
+  else
+tee <<-EOF
+
+---------------------------------------------------------------------------
+WARNING! You are not running UB 16.04 or 18.04! PG Will Fail!
+---------------------------------------------------------------------------
+
+NOTE:  We will not display this message again!  You have been warned! This
+is what PG is displaying for detection!
+
+EOF
+lsb_release -r -s
+echo ""
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+  fi
+fi
+
 # Generate Default YML
 file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
