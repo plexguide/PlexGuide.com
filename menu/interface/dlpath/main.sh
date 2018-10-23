@@ -203,6 +203,9 @@ Note: PG must now rewrite your paths and rebuild your containers!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
+ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
+
   else
 tee <<-EOF
 
