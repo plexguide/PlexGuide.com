@@ -193,10 +193,10 @@ sleep 2
     echo $typed > /var/plexguide/server.hd.path
     break=off
 
-    tee <<-EOF
+tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: Everything is Complete!
+SYSTEM MESSAGE: PG Must Rewrite your Paths & Rebuild Your Containers!
 ---------------------------------------------------------------------------
 
 Note: PG must now rewrite your paths and rebuild your containers!
