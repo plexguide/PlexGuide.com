@@ -171,8 +171,10 @@ SYSTEM MESSAGE: Everything is Complete!
 
 Note: PG must now rewrite your dir paths and rebuild your containers!
 
+Additional Information Below Regarding Space!
 EOF
-sleep 2
+df -h $typed
+echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   else
 tee <<-EOF
