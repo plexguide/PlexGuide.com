@@ -16,6 +16,10 @@
 #
 #################################################################################
 pgpath=$(cat /var/plexguide/server.hd.path)
+
+break=no
+while [ "$break" == "no" ]; do
+
 tee <<-EOF
 
 ---------------------------------------------------------------------------
@@ -68,8 +72,6 @@ Examples:
 echo "To QUIT, type >>> exit"
 EOF
 
-break=no
-while [ "$break" == "no" ]; do
 read -p 'Type the NEW PATH (follow example above): ' typed
 
 storage=$(grep $typed /var/plexguide/ver.temp)
@@ -95,27 +97,107 @@ SYSTEM MESSAGE: Checking Path: $typed
 EOF
 sleep 1.5
 
-##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-initial="$(echo $typed | head -c 1)"
-if [ "$initial" != "/" ]
-  then
-        pathe="$typed"
-        path="/$typed"
-        echo "$typed" > /var/plexguide/server.hd.path
+##################################################### TYPED CHECKERS - START
+  typed2=$typed
+  bonehead=no
+  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+  initial="$(echo $typed | head -c 1)"
+  if [ "$initial" != "/" ]; then
+    typed="/$typed"
+    bonehead=yes
+  fi
+  ##### If BONEHEAD added a / at the end, we fix for them
+  initial="${typed: -1}"
+  if [ "$initial" == "/" ]; then
+    typed=${typed::-1}
+    bonehead=yes
   fi
 
-  ##### If BONEHEAD added a / at the end, we fix for them
-  initial="${path: -1}"
-  if [ "$initial" == "/" ]
-    then
-          pathe="$typed"
-          path=${typed::-1}
-          echo "$typed" > /var/plexguide/server.hd.path
-    fi
+  ##### Notify User is a Bonehead
+  if [ "$bonehead" == "yes" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+ALERT: We Fixed Your Typos (pay attention to the example next time)
+---------------------------------------------------------------------------
+
+You Typed : $typed2
+Changed To: $typed
+
+EOF
+
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+else
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Input is Valid
+---------------------------------------------------------------------------
+
+EOF
+  fi
+##################################################### TYPED CHECKERS - START
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Checking if the Location is Valid
+---------------------------------------------------------------------------
+
+EOF
+sleep 1.5
 
 mkdir -p $typed/test
 
-echo $typed
+file="$typed/test"
+  if [ -e "$file" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: The Path Exists!  We will CHMOD & CHOWN FOR YOU!
+---------------------------------------------------------------------------
+
+Note: Please Standby
+
+EOF
+sleep 2
+
+    chown 1000:1000 "$typed"
+    chmod 0775 "$typed"
+    rm -r "$typed/test"
+    echo $typed > /var/plexguide/server.hd.path
+    break=off
+
+    tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Everything is Complete!
+---------------------------------------------------------------------------
+
+Note: PG must now rewrite your dir paths and rebuild your containers!
+
+
+EOF
+sleep 2
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  else
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: $typed DOES NOT Exist!
+---------------------------------------------------------------------------
+
+Note: Restarting the Process! Remember, you have to format your secondary
+location (if another harddrive). You must ensure that linux is able to READ
+your location.
+
+Advice: Exit PG and Type >>> mkdir -p $typed/testfolder
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+echo ""
+  fi
+
 ### Final FI
 fi
 
