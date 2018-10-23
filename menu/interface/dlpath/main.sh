@@ -199,7 +199,7 @@ sleep 2
 SYSTEM MESSAGE: Everything is Complete!
 ---------------------------------------------------------------------------
 
-Note: PG must now rewrite your dir paths and rebuild your containers!
+Note: PG must now rewrite your paths and rebuild your containers!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
