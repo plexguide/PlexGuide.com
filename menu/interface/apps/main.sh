@@ -35,7 +35,6 @@ tee <<-EOF
 ---------------------------------------------------------------------------
 Welcome to the PG Application Suite
 ---------------------------------------------------------------------------
-
 EOF
 cat /var/plexguide/programs.temp
 ################## Selection ########### START
@@ -70,6 +69,7 @@ while [ "$break" == "off" ]; do
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo ""
     cat /var/plexguide/programs.temp
+    echo ""
     echo ""
     echo ""
     echo "NOTE: Type all lowercase! To Exit, type >>> exit"
