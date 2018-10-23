@@ -191,7 +191,6 @@ Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
-echo ""
   fi
 
 ### Final FI
