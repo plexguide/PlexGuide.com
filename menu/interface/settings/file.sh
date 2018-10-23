@@ -18,7 +18,7 @@
 menu=$(cat /var/plexguide/final.choice)
 
 if [ "$menu" == "2" ]; then
-  bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+  bash /opt/plexguide/menu/interface/dlpath/main.sh
 fi
 
 if [ "$menu" == "3" ]; then
