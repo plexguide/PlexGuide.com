@@ -147,10 +147,36 @@ mkdir $typed/test 1>/dev/null 2>&1
 
 file="$typed/test"
   if [ -e "$file" ]; then
+
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: The Path Exists!  We will CHMOD & CHOWN FOR YOU!
+SYSTEM MESSAGE: The Path Exists! Review the Amount of Space You Have!
+---------------------------------------------------------------------------
+
+Your Current Space for $typed:
+
+EOF
+df -h
+
+read -p "Continue to Set $typed? (y/n): " -n 1 -r
+echo    # move cursor to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+  echo ""
+  echo "---------------------------------------------------"
+  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+  echo "---------------------------------------------------"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit 1;
+fi
+
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: CHMODing & CHOWNing: $typed
 ---------------------------------------------------------------------------
 
 Note: Please Standby
@@ -171,10 +197,7 @@ SYSTEM MESSAGE: Everything is Complete!
 
 Note: PG must now rewrite your dir paths and rebuild your containers!
 
-Additional Information Below Regarding Space!
 EOF
-df -h $typed
-echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   else
 tee <<-EOF
