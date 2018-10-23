@@ -146,7 +146,8 @@ SYSTEM MESSAGE: Checking if the Location is Valid
 EOF
 sleep 1.5
 
-mkdir -p $typed/test
+typed=/boobless2
+mkdir $typed/test 1>/dev/null 2>&1
 
 file="$typed/test"
   if [ -e "$file" ]; then
@@ -163,7 +164,7 @@ sleep 2
 
     chown 1000:1000 "$typed"
     chmod 0775 "$typed"
-    rm -r "$typed/test"
+    rm -rf "$typed/test"
     echo $typed > /var/plexguide/server.hd.path
     break=off
 
