@@ -32,7 +32,6 @@ cat << "EOF"
 │        -== Team PlexGuide ==-       │
 │ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
-│ PG Discord:   discord.plexguide.com │
 │ Donate:       donate.plexguide.com  │
 │ ————————————————————————————————————│
 │ Restart Plexguide:        plexguide │
