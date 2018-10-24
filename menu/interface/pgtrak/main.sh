@@ -138,7 +138,8 @@ to deploying your API Profile. Messed up? You can rerun this API Interface
 to update your information!
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty 
+read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
+echo 
 break=on
 #### END FI #2
 fi
