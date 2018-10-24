@@ -15,69 +15,30 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-pgpath=$(cat /var/plexguide/server.hd.path)
-
-break=no
-while [ "$break" == "no" ]; do
-
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-PGTrak Deployment Interface
+Radarr Path
 ---------------------------------------------------------------------------
 
-PURPOSE: PGTrak enables a user to STUFF Radarr and Sonarr with tons of tv
-shows and/or movies without having to manually search for every single
-item on their own.  PGTrak is useful for with the PG Google GCE Feeder
-Edition. PGTrak is a forked version of Trakttar that is adaptive for
-PlexGuide!
-
-WARNING: PGTrak can fill up Sonarr and Radarr extensively! Great for data
-horders!
-
-EOF
-read -p "Change the Current Download/Processing Path? (y/n): " -n 1 -r
-echo    # move cursor to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-  echo ""
-  echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
-  echo "---------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  exit 1;
-fi
-
-tee <<-EOF
-
----------------------------------------------------------------------------
-SYSTEM MESSAGE: User Selected to Change the Path!
----------------------------------------------------------------------------
-
-Current Path: $pgpath
-
-NOTE: When typing your path following the examples as shown below! We will
-then attempt to check to see if your path exists! If not, we will let you know!
+NOTE: In order for this to work, you must set the PATH to where Radarr is
+actively scanning your movies.
 
 Examples:
-/mnt/mymedia
-/secondhd/media
-/myhd/storage/media
+/mnt/unionfs/movies
+/media/movies
+/secondhd/movies
 
-echo "To QUIT, type >>> exit"
 EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
-read -p 'Type the NEW PATH (follow example above): ' typed
-
-storage=$(grep $typed /var/plexguide/ver.temp)
+read -p 'Type the Radarr Location Path (follow examples above): ' typed
 
   if [ "$typed" == "exit" ]; then
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: Exiting the Downloading/Processing Selection Interface
+SYSTEM MESSAGE: Exiting the Radarr Path Interface
 ---------------------------------------------------------------------------
 
 EOF
@@ -148,77 +109,13 @@ file="$typed/test"
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: The Path Exists! Review the Amount of Space You Have!
----------------------------------------------------------------------------
-
-Your Current Space for $typed:
-
-EOF
-df -h $typed
-echo ""
-echo "Pay Attention to How Much Space You Have!"
-echo ""
-
-read -p "Continue to Set $typed? (y/n): " -n 1 -r
-echo    # move cursor to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-  echo ""
-  echo "---------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Restarting!"
-  echo "---------------------------------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
-  exit
-fi
-
-tee <<-EOF
-
----------------------------------------------------------------------------
-SYSTEM MESSAGE: CHMODing & CHOWNing: $typed
----------------------------------------------------------------------------
-
-Note: Please Standby
-EOF
-sleep 2
-
-    chown 1000:1000 "$typed"
-    chmod 0775 "$typed"
-    rm -rf "$typed/test"
-    echo $typed > /var/plexguide/server.hd.path
-    break=off
-
-tee <<-EOF
-
----------------------------------------------------------------------------
-SYSTEM MESSAGE: Rewriting Folders! STANDBY!
----------------------------------------------------------------------------
-
-EOF
-sleep 2
-ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
-tee <<-EOF
-
----------------------------------------------------------------------------
-SYSTEM MESSAGE: Rebuilding Containers! STANDBY!
----------------------------------------------------------------------------
-
-EOF
-sleep 2
-
-bash /opt/plexguide/menu/interface/dlpath/rebuild.sh
-
-tee <<-EOF
-
----------------------------------------------------------------------------
 SYSTEM MESSAGE: Process Complete!
 ---------------------------------------------------------------------------
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
+echo "$typed" > /var/plexguide/pgtrak.spath
   else
 tee <<-EOF
 
@@ -226,8 +123,7 @@ tee <<-EOF
 SYSTEM MESSAGE: $typed DOES NOT Exist!
 ---------------------------------------------------------------------------
 
-Note: Restarting the Process! Remember, you have to format your secondary
-location (if another harddrive). You must ensure that linux is able to READ
+Note: Restarting the Process! You must ensure that linux is able to READ
 your location.
 
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
@@ -237,7 +133,4 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
   fi
 
-### Final FI
 fi
-
-done
