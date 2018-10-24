@@ -143,11 +143,11 @@ echo
 break=yes
 #### END FI #2
 fi
-done
 
 if [ "$typed" == "3" ]; then
 bash /opt/plexguide/menu/interface/pgtrak/rpath.sh
 fi
 
+done
 #### Final Done
 done
