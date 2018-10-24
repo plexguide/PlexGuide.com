@@ -84,6 +84,7 @@ Changed To: $typed
 EOF
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo 
 else
 tee <<-EOF
 
@@ -109,7 +110,7 @@ file="$typed/test"
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: Process Complete!
+SYSTEM MESSAGE: Process Complete! Path is Now Set for Radarr!
 ---------------------------------------------------------------------------
 
 EOF
