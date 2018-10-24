@@ -139,12 +139,138 @@ to update your information!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-echo 
+echo
 break=on
 #### END FI #2
 fi
+done
 
+if [ "$typed" == "3" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+Radarr Path
+---------------------------------------------------------------------------
+
+NOTE: In order for this to work, you must set the PATH to where Radarr is
+actively scanning your movies.
+
+Examples:
+/mnt/unionfs/movies
+/media/movies
+/secondhd/movies
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
+read -p 'Type the Radarr Location Path (follow examples above): ' typed
+
+storage=$(grep $typed /var/plexguide/ver.temp)
+
+  if [ "$typed" == "exit" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Exiting the Radarr Path Interface
+---------------------------------------------------------------------------
+
+EOF
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  echo ""
+  exit
+else
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Checking Path: $typed
+---------------------------------------------------------------------------
+EOF
+sleep 1.5
+
+##################################################### TYPED CHECKERS - START
+  typed2=$typed
+  bonehead=no
+  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+  initial="$(echo $typed | head -c 1)"
+  if [ "$initial" != "/" ]; then
+    typed="/$typed"
+    bonehead=yes
+  fi
+  ##### If BONEHEAD added a / at the end, we fix for them
+  initial="${typed: -1}"
+  if [ "$initial" == "/" ]; then
+    typed=${typed::-1}
+    bonehead=yes
+  fi
+
+  ##### Notify User is a Bonehead
+  if [ "$bonehead" == "yes" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+ALERT: We Fixed Your Typos (pay attention to the example next time)
+---------------------------------------------------------------------------
+
+You Typed : $typed2
+Changed To: $typed
+
+EOF
+
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+else
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Input is Valid
+---------------------------------------------------------------------------
+EOF
+  fi
+##################################################### TYPED CHECKERS - START
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Checking if the Location is Valid
+---------------------------------------------------------------------------
+EOF
+sleep 1.5
+
+mkdir $typed/test 1>/dev/null 2>&1
+
+file="$typed/test"
+  if [ -e "$file" ]; then
+
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: Process Complete!
+---------------------------------------------------------------------------
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+echo "$typed" > /var/plexguide/pgtrak.spath
+  else
+tee <<-EOF
+
+---------------------------------------------------------------------------
+SYSTEM MESSAGE: $typed DOES NOT Exist!
+---------------------------------------------------------------------------
+
+Note: Restarting the Process! You must ensure that linux is able to READ
+your location.
+
+Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+echo ""
+  fi
+
+### Final FI
+fi
 
 done
+
+
 #### Final Done
 done
