@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
+# Author:   Admin9705 < /dev/tty
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -70,8 +70,10 @@ Edition.
 
 WARNING: PGTrak can fill up Sonarr and Radarr extensively! Great for data
 horders!
+
 EOF
 
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
 while [ "$typed" != "1" ]; do
 ################## Selection ########### START
@@ -92,6 +94,9 @@ NOTE: Making Changes? Redeploy PGTrak When Complete!
 7.  Deploy PGTrak
 
 EOF
+
+read -p 'Type the NEW PATH (follow example above): ' typed
+
 ################## Selection ########### START
 
 if [ "$typed" == "2" ]; then
