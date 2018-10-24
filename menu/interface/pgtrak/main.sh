@@ -68,8 +68,7 @@ shows and/or movies without having to manually search for every single
 item on their own.  PGTrak is useful for with the PG Google GCE Feeder
 Edition.
 
-WARNING: PGTrak can fill up Sonarr and Radarr extensively! Great for data
-horders!
+WARNING: PGTrak fills up Sonarr and Radarr extensively!
 
 EOF
 
@@ -109,13 +108,13 @@ Trakt API-Key
 NOTE: In order for this to work, you must retrieve your API Key! Prior to
 continuing, please follow the current steps.
 
-1. Visit - https://trakt.tv/oauth/applications
-2. Click - New Applications
-3. Name  - Whatever You Like
-4. Redirect UI - https://google.com
-5. Permissions - Click /checkin and /scrobble
-6. Click - Save App
-7. Copy the Client ID & Secret for the Next Step!
+- Visit - https://trakt.tv/oauth/applications
+- Click - New Applications
+- Name  - Whatever You Like
+- Redirect UI - https://google.com
+- Permissions - Click /checkin and /scrobble
+- Click - Save App
+- Copy the Client ID & Secret for the Next Step!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
@@ -126,7 +125,6 @@ echo $typed > /var/plexguide/pgtrak.client
 read -p 'Type the API Secret: ' typed
 echo $typed > /var/plexguide/pgtrak.secret
 tee <<-EOF
-
 ---------------------------------------------------------------------------
 PGTrak API Notice
 ---------------------------------------------------------------------------
@@ -136,6 +134,7 @@ to deploying your API Profile. Messed up? You can rerun this API Interface
 to update your information!
 
 EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
 #### END FI #2
 fi
