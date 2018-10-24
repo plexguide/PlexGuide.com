@@ -165,8 +165,6 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
 read -p 'Type the Radarr Location Path (follow examples above): ' typed
 
-storage=$(grep $typed /var/plexguide/ver.temp)
-
   if [ "$typed" == "exit" ]; then
 tee <<-EOF
 
