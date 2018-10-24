@@ -84,7 +84,7 @@ Changed To: $typed
 EOF
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-echo 
+echo
 else
 tee <<-EOF
 
@@ -116,7 +116,7 @@ SYSTEM MESSAGE: Process Complete! Path is Now Set for Radarr!
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
-echo "$typed" > /var/plexguide/pgtrak.spath
+echo "$typed" > /var/plexguide/pgtrak.rpath
   else
 tee <<-EOF
 

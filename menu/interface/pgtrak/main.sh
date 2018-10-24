@@ -55,6 +55,9 @@ fi
 break=no
 while [ "$break" != "yes" ]; do
 
+rpath=$(cat /var/plexguide/pgtrak.rpath)
+spath=$(cat /var/plexguide/pgtrak.spath)
+
 tee <<-EOF
 
 ---------------------------------------------------------------------------
