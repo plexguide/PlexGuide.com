@@ -53,7 +53,7 @@ else
 fi
 
 break=no
-while [ "$break" == "no" ]; do
+while [ "$break" != "yes" ]; do
 
 tee <<-EOF
 
@@ -94,11 +94,11 @@ NOTE: Making Changes? Redeploy PGTrak When Complete!
 
 EOF
 
-read -p 'Type the NEW PATH (follow example above): ' typed
+read -p 'Type the NEW PATH (follow example above): ' typed < /dev/tty
 
 ################## Selection ########### START
 if [ "$typed" == "1" ]; then
-break=on
+break=yes
 fi
 
 if [ "$typed" == "2" ]; then
@@ -140,7 +140,7 @@ to update your information!
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 echo
-break=on
+break=yes
 #### END FI #2
 fi
 done
