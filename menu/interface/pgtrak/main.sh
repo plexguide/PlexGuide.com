@@ -15,9 +15,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-file="/var/plexguide/pgtrak.api"
+file="/var/plexguide/pgtrak.client"
 if [ ! -e "$file" ]; then
-echo "NOT-SET" > /var/plexguide/pgtrak.api
+echo "NOT-SET" > /var/plexguide/pgtrak.client
+fi
+
+file="/var/plexguide/pgtrak.secret"
+if [ ! -e "$file" ]; then
+echo "NOT-SET" > /var/plexguide/pgtrak.secret
 fi
 
 file="/var/plexguide/pgtrak.rpath"
@@ -38,6 +43,13 @@ fi
 file="/var/plexguide/pgtrak.rpath"
 if [ ! -e "$file" ]; then
 echo "NOT-SET" > /var/plexguide/pgtrak.rprofile
+fi
+
+api=$(cat /var/plexguide/pgtrak.secret)
+if [ "$api" == "NOT-SET" ]; then
+  api="NOT-SET"
+else
+  api="SET"
 fi
 
 break=no
@@ -104,8 +116,23 @@ EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 
+read -p 'Type the API Client: ' typed
+echo $typed > /var/plexguide/pgtrak.client
+read -p 'Type the API Secret: ' typed
+echo $typed > /var/plexguide/pgtrak.secret
+tee <<-EOF
 
+---------------------------------------------------------------------------
+PGTrak API Notice
+---------------------------------------------------------------------------
 
+NOTE: The API key is set! Ensure to setup your PATHS and Profiles Prior
+to deploying your API Profile. Messed up? You can rerun this API Interface
+to update your information!
+
+EOF
+
+#### END FI #2
 fi
 
 
