@@ -128,6 +128,7 @@ echo $typed > /var/plexguide/pgtrak.client
 read -p 'Type the API Secret: ' typed
 echo $typed > /var/plexguide/pgtrak.secret
 tee <<-EOF
+
 ---------------------------------------------------------------------------
 PGTrak API Notice
 ---------------------------------------------------------------------------
@@ -137,7 +138,7 @@ to deploying your API Profile. Messed up? You can rerun this API Interface
 to update your information!
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty 
 break=on
 #### END FI #2
 fi
