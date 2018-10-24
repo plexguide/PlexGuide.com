@@ -120,10 +120,10 @@ echo "$typed" > /var/plexguide/pgtrak.spath
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: $typed DOES NOT Exist!
+SYSTEM MESSAGE: $typed DOES NOT Exist! No Changes Made!
 ---------------------------------------------------------------------------
 
-Note: Restarting the Process! You must ensure that linux is able to READ
+Note: Exiting the Process! You must ensure that linux is able to READ
 your location.
 
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
