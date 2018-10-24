@@ -97,6 +97,9 @@ EOF
 read -p 'Type the NEW PATH (follow example above): ' typed
 
 ################## Selection ########### START
+if [ "$typed" == "1" ]; then
+break=on
+fi
 
 if [ "$typed" == "2" ]; then
 tee <<-EOF
@@ -135,7 +138,7 @@ to update your information!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-
+break=on
 #### END FI #2
 fi
 
