@@ -15,113 +15,146 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Original Script @ cloudbox.rocks
+#################################################################################
 ---
 - hosts: localhost
   gather_facts: true
   tasks:
 
-- include_role:
-    name: variables
+  - name: Sonarr Profile
+    shell: "cat /var/plexguide/pgtrak.sprofile"
+    register: sprofile
+    ignore_errors: True
 
-- name: API Sonarr
-  shell: "cat /var/plexguide/api.sonarr"
-  register: apis
-  ignore_errors: True
+  - name: Radarr Profile
+    shell: "cat /var/plexguide/pgtrak.rprofile"
+    register: rprofile
+    ignore_errors: True
 
-- name: API Radarr
-  shell: "cat /var/plexguide/api.radarr"
-  register: apir
-  ignore_errors: True
+  - name: Trakt.tv Client
+    shell: "cat /var/plexguide/pgtrak.client"
+    register: client
+    ignore_errors: True
 
-- name: Sonarr Profile
-  shell: "cat /var/plexguide/pgtrak.prosonarr"
-  register: prosonarr
-  ignore_errors: True
+  - name: Trakt.tv Secret
+    shell: "cat /var/plexguide/pgtrak.secret"
+    register: secret
+    ignore_errors: True
 
-- name: Radarr Profile
-  shell: "cat /var/plexguide/pgtrak.proradarr"
-  register: proradarr
-  ignore_errors: True
+  - name: Radarr Path
+    shell: "cat /var/plexguide/pgtrak.rpath"
+    register: rpath
+    ignore_errors: True
 
-- name: Trakt.tv Client
-  shell: "cat /var/plexguide/pgtrak.client"
-  register: client
-  ignore_errors: True
+  - name: API Sonnar
+    shell: "cat /var/plexguide/pgtrak.spath"
+    register: spath
+    ignore_errors: True
 
-- name: Trakt.tv Secret
-  shell: "cat /var/plexguide/pgtrak.secret"
-  register: secret
-  ignore_errors: True
+  - name: Check if pgtrak service exists
+    stat:
+      path: "/etc/systemd/system/pgtrak.service"
+    register: pgtrak_service
 
-- name: API Radarr
-  shell: "cat /var/plexguide/pgtrak.radarr"
-  register: radarr
-  ignore_errors: True
+  - name: Stop existing pgtrak service
+    systemd: state=stopped name=pgtrak
+    when: pgtrak_service.stat.exists
 
-- name: API Sonnar
-  shell: "cat /var/plexguide/pgtrak.sonarr"
-  register: sonarr
-  ignore_errors: True
+  ############## SONARR
+  - name: "Sonarr Check"
+    stat:
+      path: "/opt/appdata/sonarr/app/config.xml"
+    register: sxml
 
-- name: Check if pgtrak service exists
-  stat:
-    path: "/etc/systemd/system/pgtrak.service"
-  register: pgtrak_service
+  - name: "Sonarr, Execute Series"
+    block:
 
-- name: Stop existing pgtrak service
-  systemd: state=stopped name=pgtrak
-  when: pgtrak_service.stat.exists
+    - name: Pull sonarr api key
+      xml:
+        path: "/opt/appdata/sonarr/config.xml"
+        xpath: /Config/ApiKey
+        content: text
+      register: xmlresp
 
-- name: Create pgtrak directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-  with_items:
-    - /opt/appdata/pgtrak
+    - name: Set sonarr api Key
+      set_fact:
+        skey: "{{ xmlresp.matches[0].ApiKey }}"
 
-- name: Clone pgtrak
-  git:
-    repo: https://github.com/Admin9705/pgtrak
-    dest: /opt/appdata/pgtrak
-    version: ver4
-    force: yes
+    when: sxml.stat.exists
+  ############## RADARR
+  - name: "Radarr Check"
+    stat:
+      path: "/opt/appdata/radarr/config.xml"
+    register: rxml
 
-- name: Install pip requirements
-  pip:
-    requirements: /opt/appdata/pgtrak/requirements.txt
-    executable: pip3
+  - name: "Raddar, Execute Series"
+    block:
 
-- name: Import default config
-  template:
-    src: config.json.js2
-    dest: /opt/appdata/pgtrak/config.json
-    owner: "1000"
-    group: "1000"
-    mode: 0775
-    force: yes
+    - name: Pull radarr api key
+      xml:
+        path: "/opt/radarr/app/config.xml"
+        xpath: /Config/ApiKey
+        content: text
+      register: xmlresp
 
-- name: Set directory permissions
-  file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
+    - name: Set radarr api Key
+      set_fact:
+        rkey: "{{ xmlresp.matches[0].ApiKey }}"
 
-- name: Move Executable
-  shell: "mv /opt/appdata/pgtrak/traktarr.py /opt/appdata/pgtrak/pgtrak.py"
+    when: rxml.stat.exists
 
-- name: Set pgtrak.py as executable
-  file:
-    path: /opt/appdata/pgtrak/pgtrak.py
-    owner: 1000
-    group: 1000
-    mode: a+x
+  ######### OTHER
+  - name: Create pgtrak directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+    with_items:
+      - /opt/appdata/pgtrak
 
-- name: "Create /usr/local/bin symlink"
-  file:
-    src: "/opt/appdata/pgtrak/pgtrak.py"
-    dest: "/bin/pgtrak"
-    state: link
+  - name: Clone pgtrak
+    git:
+      repo: https://github.com/Admin9705/pgtrak
+      dest: /opt/appdata/pgtrak
+      version: ver4
+      force: yes
 
-- name: Import pgtrak service
-  template:
-    src: pgtrak.service.js2
-    dest: /etc/systemd/system/pgtrak.service
-    force: yes
+  - name: Install pip requirements
+    pip:
+      requirements: /opt/appdata/pgtrak/requirements.txt
+      executable: pip3
 
-- name: Load pgtrak service
-  systemd: state=stopped name=pgtrak daemon_reload=yes enabled=no
+  - name: Import default config
+    template:
+      src: config.json.js2
+      dest: /opt/appdata/pgtrak/config.json
+      owner: "1000"
+      group: "1000"
+      mode: 0775
+      force: yes
+
+  - name: Set directory permissions
+    file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
+
+  - name: Move Executable
+    shell: "mv /opt/appdata/pgtrak/traktarr.py /opt/appdata/pgtrak/pgtrak.py"
+
+  - name: Set pgtrak.py as executable
+    file:
+      path: /opt/appdata/pgtrak/pgtrak.py
+      owner: 1000
+      group: 1000
+      mode: a+x
+
+  - name: "Create /usr/local/bin symlink"
+    file:
+      src: "/opt/appdata/pgtrak/pgtrak.py"
+      dest: "/bin/pgtrak"
+      state: link
+
+  - name: Import pgtrak service
+    template:
+      src: pgtrak.service.js2
+      dest: /etc/systemd/system/pgtrak.service
+      force: yes
+
+  - name: Load pgtrak service
+    systemd: state=stopped name=pgtrak daemon_reload=yes enabled=no

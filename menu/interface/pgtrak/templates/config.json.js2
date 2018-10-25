@@ -55,8 +55,6 @@
       ],
       "allowed_languages": [],
       "blacklisted_genres": [
-        "documentary",
-        "music",
         "short",
         "sporting-event",
         "film-noir",
@@ -67,8 +65,8 @@
         "ufc"
       ],
       "blacklisted_min_runtime": 30,
-      "blacklisted_min_year": 1980,
-      "blacklisted_max_year": 2019,
+      "blacklisted_min_year": 1970,
+      "blacklisted_max_year": 2020,
       "blacklisted_tmdb_ids": [],
       "allowed_countries": [
         "us",
@@ -82,16 +80,16 @@
     "debug": false
   },
   "radarr": {
-    "api_key": "{{apir.stdout}}",
-    "profile": "{{proradarr.stdout}}",
+    "api_key": "{{rkey.stdout}}",
+    "profile": "{{rprofile.stdout}}",
     "url": "http://0.0.0.0:7878",
-    "root_folder": "{{radarr.stdout}}"
+    "root_folder": "{{rpath.stdout}}"
   },
   "sonarr": {
-    "api_key": "{{apis.stdout}}",
-    "profile": "{{prosonarr.stdout}}",
+    "api_key": "{{skey.stdout}}",
+    "profile": "{{sprofile.stdout}}",
     "url": "http://0.0.0.0:8989",
-    "root_folder": "{{sonarr.stdout}}",
+    "root_folder": "{{spath.stdout}}",
     "tags": {}
   },
   "trakt": {
