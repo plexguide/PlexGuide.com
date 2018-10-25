@@ -18,15 +18,15 @@
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-Radarr Profile
+Sonarr Profile
 ---------------------------------------------------------------------------
 
-NOTE: Set a profile for Radarr to Set! Type a profile that exists! You can
-add/set profiles to Radarr and can use them here also!
+NOTE: Set a profile for Sonarr to Set! Type a profile that exists! You can
+add/set profiles to Sonarr and can use them here also!
 
 WARNING: Failing to type a profile that DOES NOT EXIST equals FAILURE!
 
-Default Profiles for Radarr (case senstive):
+Default Profiles for Sonarr (case senstive):
 
 Any
 SD
@@ -36,13 +36,13 @@ Ultra-HD
 HD - 720p/1080p
 
 EOF
-read -p 'Type a Radarr Profile (case sensstive): ' typed < /dev/tty
+read -p 'Type a Sonarr Profile (case sensstive): ' typed < /dev/tty
 
 if [ "$typed" == "exit" ]; then
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: Exiting the Radarr Path Interface
+SYSTEM MESSAGE: Exiting the Sonarr Path Interface
 ---------------------------------------------------------------------------
 
 EOF
@@ -53,13 +53,13 @@ else
 tee <<-EOF
 
 ---------------------------------------------------------------------------
-SYSTEM MESSAGE: Radarr Profile Set -- $typed
+SYSTEM MESSAGE: Sonarr Profile Set -- $typed
 ---------------------------------------------------------------------------
 
-WARNING: Ensure that what you typed is a profile that exists within Radarr!
+WARNING: Ensure that what you typed is a profile that exists within Sonarr!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
-echo "$typed" > /var/plexguide/pgtrak.rprofile
+echo "$typed" > /var/plexguide/pgtrak.sprofile
 fi
