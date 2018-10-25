@@ -178,9 +178,8 @@ Please Set Your API!
 EOF
 
     read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-    bash /opt/plexguide/menu/interface/pgtrak/main.sh
-    exit
-  fi
+else
+
 #################################################### API - END
 sonarr=$(docker ps | grep "sonarr")
 radarr=$(docker ps | grep "radarr")
@@ -203,7 +202,7 @@ else
   echo "corn corn"
 
   fi
-
+fi
 fi
 #### Final Done
 api=$(cat /var/plexguide/pgtrak.secret)
