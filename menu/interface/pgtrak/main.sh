@@ -76,7 +76,7 @@ WARNING: PGTrak fills up Sonarr and Radarr extensively!
 EOF
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-
+echo 
 while [ "$typed" != "1" ]; do
 ################## Selection ########### START
 tee <<-EOF
