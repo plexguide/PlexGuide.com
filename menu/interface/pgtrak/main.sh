@@ -135,9 +135,10 @@ tee <<-EOF
 PGTrak API Notice
 ---------------------------------------------------------------------------
 
-NOTE: The API key is set! Ensure to setup your PATHS and Profiles Prior
-to deploying your API Profile. Messed up? You can rerun this API Interface
-to update your information!
+NOTE: The API Client and Secret is set! Ensure to setup your <paths> and
+<profiles> prior to deploying PGTrak.
+
+INFO: Messed up? Rerun this API Interface to update the information!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
