@@ -93,7 +93,7 @@
 
     - name: Pull radarr api key
       xml:
-        path: "/opt/appdata/radarr/app/config.xml"
+        path: "/opt/appdata/radarr/config.xml"
         xpath: /Config/ApiKey
         content: text
       register: xmlresp
