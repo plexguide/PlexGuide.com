@@ -38,7 +38,7 @@ HD - 720p/1080p
 EOF
 read -p 'Type a Radarr Profile (case sensstive): ' typed < /dev/tty
 
-  if [ "$typed" == "exit" ]; then
+if [ "$typed" == "exit" ]; then
 tee <<-EOF
 
 ---------------------------------------------------------------------------
@@ -62,6 +62,4 @@ EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo "$typed" > /var/plexguide/pgtrak.rprofile
-tee <<-EOF
-
 fi
