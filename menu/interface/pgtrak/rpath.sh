@@ -30,7 +30,7 @@ Examples:
 /secondhd/movies
 
 EOF
-read -p 'Type the Radarr Location Path (follow examples above): ' typed < /dev/tty
+read -p 'Type the Radarr Location (follow examples): ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then
 tee <<-EOF
