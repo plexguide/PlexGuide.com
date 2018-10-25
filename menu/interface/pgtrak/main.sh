@@ -148,21 +148,21 @@ break=yes
 #### END FI #2
 fi
 
-if [ "$typed" == "3" ]; then
-bash /opt/plexguide/menu/interface/pgtrak/spath.sh
-fi
+  if [ "$typed" == "3" ]; then
+  bash /opt/plexguide/menu/interface/pgtrak/spath.sh
+  fi
 
-if [ "$typed" == "4" ]; then
-bash /opt/plexguide/menu/interface/pgtrak/rpath.sh
-fi
+  if [ "$typed" == "4" ]; then
+  bash /opt/plexguide/menu/interface/pgtrak/rpath.sh
+  fi
 
-if [ "$typed" == "5" ]; then
-bash /opt/plexguide/menu/interface/pgtrak/sprofile.sh
-fi
+  if [ "$typed" == "5" ]; then
+  bash /opt/plexguide/menu/interface/pgtrak/sprofile.sh
+  fi
 
-if [ "$typed" == "6" ]; then
-bash /opt/plexguide/menu/interface/pgtrak/rprofile.sh
-fi
+  if [ "$typed" == "6" ]; then
+  bash /opt/plexguide/menu/interface/pgtrak/rprofile.sh
+  fi
 
 if [ "$typed" == "7" ]; then
 
@@ -185,8 +185,8 @@ EOF
 sonarr=$(docker ps | grep "sonarr")
 radarr=$(docker ps | grep "radarr")
 
-if [ "$radarr" == "" ] && [ "$sonarr" == "" ]; then
-tee <<-EOF
+  if [ "$radarr" == "" ] && [ "$sonarr" == "" ]; then
+  tee <<-EOF
 ---------------------------------------------------------------------------
 WARNING: Sonarr | Radarr Warning!
 ---------------------------------------------------------------------------
@@ -202,15 +202,16 @@ exit
 
 echo "deploy pgtrak"
 
-fi
+  fi
 
+fi
 #### Final Done
 api=$(cat /var/plexguide/pgtrak.secret)
-if [ "$api" == "NOT-SET" ]; then
-  api="NOT-SET"
-else
-  api="SET"
-fi
+  if [ "$api" == "NOT-SET" ]; then
+    api="NOT-SET"
+  else
+    api="SET"
+  fi
 rpath=$(cat /var/plexguide/pgtrak.rpath)
 spath=$(cat /var/plexguide/pgtrak.spath)
 rprofile=$(cat /var/plexguide/pgtrak.rprofile)
