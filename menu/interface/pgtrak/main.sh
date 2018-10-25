@@ -57,8 +57,8 @@ while [ "$break" != "yes" ]; do
 
 rpath=$(cat /var/plexguide/pgtrak.rpath)
 spath=$(cat /var/plexguide/pgtrak.spath)
-rprofile=$(cat /var/plexguide/pgtrak.rpath)
-sprofile=$(cat /var/plexguide/pgtrak.spath)
+rprofile=$(cat /var/plexguide/pgtrak.rprofile)
+sprofile=$(cat /var/plexguide/pgtrak.sprofile)
 
 tee <<-EOF
 
@@ -167,7 +167,7 @@ fi
 #### Final Done
 rpath=$(cat /var/plexguide/pgtrak.rpath)
 spath=$(cat /var/plexguide/pgtrak.spath)
-rprofile=$(cat /var/plexguide/pgtrak.rpath)
-sprofile=$(cat /var/plexguide/pgtrak.spath)
+rprofile=$(cat /var/plexguide/pgtrak.rprofile)
+sprofile=$(cat /var/plexguide/pgtrak.sprofile)
 done
 done
