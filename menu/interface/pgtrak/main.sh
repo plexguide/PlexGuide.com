@@ -125,9 +125,6 @@ continuing, please follow the current steps.
 - Copy the Client ID & Secret for the Next Step!
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-echo ""
-
 read -p 'Type the API Client: ' typed
 echo $typed > /var/plexguide/pgtrak.client
 read -p 'Type the API Secret: ' typed
