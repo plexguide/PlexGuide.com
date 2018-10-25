@@ -75,7 +75,7 @@ WARNING: PGTrak fills up Sonarr and Radarr extensively!
 
 EOF
 
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 
 while [ "$typed" != "1" ]; do
 ################## Selection ########### START
@@ -89,13 +89,10 @@ NOTE: Making Changes? Redeploy PGTrak When Complete!
 
 1.  Exit the PGTrak Interface
 2.  Trakt API-Key    : [$api]
-    ---------------------------------------------------- |
-3.  Radarr Movie Path: [$rpath]
-4.  Radarr Profile   : [$rprofile]
-    ---------------------------------------------------- |
 5.  Sonarr Movie Path: [$spath]
+3.  Radarr Movie Path: [$rpath]
 6.  Sonarr Profile   : [$sprofile]
-    ---------------------------------------------------- |
+4.  Radarr Profile   : [$rprofile]
 7.  Deploy PGTrak
 
 EOF
