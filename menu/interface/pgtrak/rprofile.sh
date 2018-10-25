@@ -27,6 +27,7 @@ add/set profiles to Radarr and can use them here also!
 WARNING: Failing to type a profile that DOES NOT EXIST equals FAILURE
 
 Default Profiles for Radarr (case senstive):
+
 Any
 SD
 HD-720p
@@ -61,7 +62,6 @@ EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo "$typed" > /var/plexguide/pgtrak.rprofile
-  else
 tee <<-EOF
 
 fi
