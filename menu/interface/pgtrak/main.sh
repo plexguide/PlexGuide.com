@@ -52,6 +52,7 @@ else
   api="SET"
 fi
 
+
 break=no
 while [ "$break" != "yes" ]; do
 
@@ -162,7 +163,54 @@ fi
 if [ "$typed" == "6" ]; then
 bash /opt/plexguide/menu/interface/pgtrak/rprofile.sh
 fi
+
+if [ "$typed" == "7" ]; then
+
+#################################################### API - START
+  if [ "$api" == "NOT-SET" ]; then
+tee <<-EOF
+---------------------------------------------------------------------------
+WARNING: API Condition Not Met!
+---------------------------------------------------------------------------
+
+Please Set Your API!
+
+EOF
+
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
+    bash /opt/plexguide/menu/interface/pgtrak/main.sh
+    exit
+  fi
+#################################################### API - END
+sonarr=$(docker ps | grep "sonarr")
+radarr=$(docker ps | grep "radarr")
+
+if [ "$radarr" == "" ] && [ "$sonarr" == "" ]; then
+tee <<-EOF
+---------------------------------------------------------------------------
+WARNING: Sonarr | Radarr Warning!
+---------------------------------------------------------------------------
+
+You must at least deploy Radarr and/or Sonarr First before deploying
+PGTrak!
+
+EOF
+
+read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
+bash /opt/plexguide/menu/interface/pgtrak/main.sh
+exit
+
+echo "deploy pgtrak"
+
+fi
+
 #### Final Done
+api=$(cat /var/plexguide/pgtrak.secret)
+if [ "$api" == "NOT-SET" ]; then
+  api="NOT-SET"
+else
+  api="SET"
+fi
 rpath=$(cat /var/plexguide/pgtrak.rpath)
 spath=$(cat /var/plexguide/pgtrak.spath)
 rprofile=$(cat /var/plexguide/pgtrak.rprofile)
