@@ -85,13 +85,6 @@
     "url": "http://0.0.0.0:7878",
     "root_folder": "{{rpath.stdout}}"
   },
-  "sonarr": {
-    "api_key": "{{skey.stdout}}",
-    "profile": "{{sprofile.stdout}}",
-    "url": "http://0.0.0.0:8989",
-    "root_folder": "{{spath.stdout}}",
-    "tags": {}
-  },
   "trakt": {
     "client_id": "{{client.stdout}}",
     "client_secret": "{{secret.stdout}}"
