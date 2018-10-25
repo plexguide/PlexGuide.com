@@ -165,5 +165,9 @@ if [ "$typed" == "6" ]; then
 bash /opt/plexguide/menu/interface/pgtrak/rprofile.sh
 fi
 #### Final Done
+rpath=$(cat /var/plexguide/pgtrak.rpath)
+spath=$(cat /var/plexguide/pgtrak.spath)
+rprofile=$(cat /var/plexguide/pgtrak.rpath)
+sprofile=$(cat /var/plexguide/pgtrak.spath)
 done
 done
