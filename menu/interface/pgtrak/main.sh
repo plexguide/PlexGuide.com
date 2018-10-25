@@ -100,7 +100,7 @@ NOTE: Making Changes? Redeploy PGTrak When Complete!
 
 EOF
 
-read -p 'Type the NEW PATH (follow example above): ' typed < /dev/tty
+read -p 'Type a Number Selection | PRESS [ENTER]: ' typed < /dev/tty
 
 ################## Selection ########### START
 if [ "$typed" == "1" ]; then
