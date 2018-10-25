@@ -197,10 +197,10 @@ PGTrak!
 EOF
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-bash /opt/plexguide/menu/interface/pgtrak/main.sh
-exit
+echo
+else
 
-echo "deploy pgtrak"
+  echo "corn corn"
 
   fi
 
