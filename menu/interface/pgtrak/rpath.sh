@@ -30,8 +30,6 @@ Examples:
 /secondhd/movies
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-
 read -p 'Type the Radarr Location Path (follow examples above): ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then
