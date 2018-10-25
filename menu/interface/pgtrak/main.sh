@@ -40,7 +40,7 @@ if [ ! -e "$file" ]; then
 echo "NOT-SET" > /var/plexguide/pgtrak.sprofile
 fi
 
-file="/var/plexguide/pgtrak.rpath"
+file="/var/plexguide/pgtrak.rprofile"
 if [ ! -e "$file" ]; then
 echo "NOT-SET" > /var/plexguide/pgtrak.rprofile
 fi
@@ -57,6 +57,8 @@ while [ "$break" != "yes" ]; do
 
 rpath=$(cat /var/plexguide/pgtrak.rpath)
 spath=$(cat /var/plexguide/pgtrak.spath)
+rprofile=$(cat /var/plexguide/pgtrak.rpath)
+sprofile=$(cat /var/plexguide/pgtrak.spath)
 
 tee <<-EOF
 
@@ -76,7 +78,7 @@ WARNING: PGTrak fills up Sonarr and Radarr extensively!
 EOF
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
-echo 
+echo
 while [ "$typed" != "1" ]; do
 ################## Selection ########### START
 tee <<-EOF
