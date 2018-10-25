@@ -199,6 +199,25 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 echo
 else
 
+file="/opt/appdata/radarr/config.xml"
+if [ -e "$file" ]
+then
+info=$( cat /opt/appdata/radarr/config.xml )
+info=${info#*<ApiKey>} 1>/dev/null 2>&1
+info1=$( echo ${info:0:32} ) 1>/dev/null 2>&1
+echo "$info1" > /var/plexguide/pgtrak.rapi
+fi
+
+file="/opt/appdata/sonarr/config.xml"
+if [ -e "$file" ]
+then
+info=$( cat /opt/appdata/sonarr/config.xml )
+info=${info#*<ApiKey>} 1>/dev/null 2>&1
+info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
+echo "$info2" > /var/plexguide/pgtrak.sapi
+fi
+
+
   echo "corn corn"
 
   fi

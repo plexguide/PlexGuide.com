@@ -22,6 +22,16 @@
   gather_facts: true
   tasks:
 
+  - name: Sonarr API
+    shell: "cat /var/plexguide/pgtrak.sapi"
+    register: sapi
+    ignore_errors: True
+
+  - name: Radarr API
+    shell: "cat /var/plexguide/pgtrak.rapi"
+    register: rapi
+    ignore_errors: True
+
   - name: Sonarr Profile
     shell: "cat /var/plexguide/pgtrak.sprofile"
     register: sprofile
@@ -60,49 +70,6 @@
   - name: Stop existing pgtrak service
     systemd: state=stopped name=pgtrak
     when: pgtrak_service.stat.exists
-
-  ############## SONARR
-  - name: "Sonarr Check"
-    stat:
-      path: "/opt/appdata/sonarr/app/config.xml"
-    register: sxml
-
-  - name: "Sonarr, Execute Series"
-    block:
-
-    - name: Pull sonarr api key
-      xml:
-        path: "/opt/appdata/sonarr/config.xml"
-        xpath: /Config/ApiKey
-        content: text
-      register: xmlresp
-
-    - name: Set sonarr api Key
-      set_fact:
-        skey: "{{ xmlresp.matches[0].ApiKey }}"
-
-    when: sxml.stat.exists
-  ############## RADARR
-  - name: "Radarr Check"
-    stat:
-      path: "/opt/appdata/radarr/config.xml"
-    register: rxml
-
-  - name: "Raddar, Execute Series"
-    block:
-
-    - name: Pull radarr api key
-      xml:
-        path: "/opt/appdata/radarr/config.xml"
-        xpath: /Config/ApiKey
-        content: text
-      register: xmlresp
-
-    - name: Set radarr api Key
-      set_fact:
-        rkey: "{{ xmlresp.matches[0].ApiKey }}"
-
-    when: rxml.stat.exists
 
   ######### OTHER
   - name: Create pgtrak directories
