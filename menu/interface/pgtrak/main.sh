@@ -89,10 +89,13 @@ NOTE: Making Changes? Redeploy PGTrak When Complete!
 
 1.  Exit the PGTrak Interface
 2.  Trakt API-Key    : [$api]
+-------------------------------------------------------- |
 3.  Radarr Movie Path: [$rpath]
 4.  Radarr Profile   : [$rprofile]
+-------------------------------------------------------- |
 5.  Sonarr Movie Path: [$spath]
 6.  Sonarr Profile   : [$sprofile]
+-------------------------------------------------------- |
 7.  Deploy PGTrak
 
 EOF
