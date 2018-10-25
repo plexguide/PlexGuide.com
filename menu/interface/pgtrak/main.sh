@@ -91,10 +91,10 @@ NOTE: Making Changes? Redeploy PGTrak When Complete!
 
 1.  Exit the PGTrak Interface
 2.  Trakt API-Key    :  [$api]
-5.  Sonarr Movie Path:  [$spath]
-3.  Radarr Movie Path:  [$rpath]
-6.  Sonarr Profile   :  [$sprofile]
-4.  Radarr Profile   :  [$rprofile]
+3.  Sonarr Movie Path:  [$spath]
+4.  Radarr Movie Path:  [$rpath]
+5.  Sonarr Profile   :  [$sprofile]
+6.  Radarr Profile   :  [$rprofile]
 7.  Deploy PGTrak
 
 EOF
@@ -150,10 +150,20 @@ break=yes
 fi
 
 if [ "$typed" == "3" ]; then
+bash /opt/plexguide/menu/interface/pgtrak/spath.sh
+fi
+
+if [ "$typed" == "4" ]; then
 bash /opt/plexguide/menu/interface/pgtrak/rpath.sh
 fi
 
+if [ "$typed" == "5" ]; then
+bash /opt/plexguide/menu/interface/pgtrak/sprofile.sh
+fi
 
+if [ "$typed" == "6" ]; then
+bash /opt/plexguide/menu/interface/pgtrak/rprofile.sh
+fi
 #### Final Done
 done
 done
