@@ -54,7 +54,7 @@ Domain: $pgdomain | Ansible: $aversion
 4.  Server Port Guard - Ports  [$serverports]
 5.  PG Application Guard       [$appguard]
 6.  Program Suite Installer
-7.  Plex Enhancement Tools
+7.  PG Trak - Fills Up Radarr & Sonarr
 8.  PG Automations - Deploy GCE Feeder Instance
 9.  Server VPN Service Installer
 10. System & Network Auditor
@@ -172,8 +172,8 @@ elif [ "$typed" == "6" ]; then
 elif [ "$typed" == "7" ]; then
 
   echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/menu-plexaddons/scripts/main.sh
-
+  bash /opt/plexguide/menu/interface/pgtrak/main.sh
+  
 elif [ "$typed" == "8" ]; then
 
   echo 'INFO - Selected: PG GCE Feeder Automations' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
