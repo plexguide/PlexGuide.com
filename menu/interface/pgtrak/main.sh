@@ -230,16 +230,17 @@ PGTrak is deployed! Exit PlexGuide and Type (based on choice):
 1. pgtrak
 
 2.
-a. pgtrak shows
-b. pgtrack movies
+ a. (Sonarr) pgtrak shows
+ b. (Radarr) pgtrack movies
 
 3.
-a. (Sonarr) pgtrak shows -t trending  or pgtrak shows -t popular
-b. (Radarr) pgtrak movies -t trending or pgtrak movies -t popular
+ a. (Sonarr) pgtrak shows -t trending  or pgtrak shows -t popular
+ b. (Radarr) pgtrak movies -t trending or pgtrak movies -t popular
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue " < /dev/tty
 
+read -n 1 -s -r -p "Press [ANY KEY] to Continue - Process Complete! " < /dev/tty
+echo
   fi
 fi
 fi
