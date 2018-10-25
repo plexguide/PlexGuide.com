@@ -21,18 +21,21 @@ tee <<-EOF
 Radarr Profile
 ---------------------------------------------------------------------------
 
-NOTE: You must set a profile for Radarr to Set! Be aware that you must type
-a profile that exists! You can add/set profiles to Radarr and can use them
-here also!
+NOTE: Set a profile for Radarr to Set! Type a profile that exists! You can
+add/set profiles to Radarr and can use them here also!
 
-WARNING: Failing to type a profile (case senstive) that DOES NOT EXIST,
-PGTrak will fail.
+WARNING: Failing to type a profile that DOES NOT EXIST equals FAILURE
 
 Default Profiles for Radarr (case senstive):
-Any ** SD ** HD-720p ** HD-1080p ** Ultra-HD ** HD - 720p/1080p
+Any
+SD
+HD-720p
+HD-1080p
+Ultra-HD
+HD - 720p/1080p
 
 EOF
-read -p 'Type the Radarr Location (follow examples): ' typed < /dev/tty
+read -p 'Type a Radarr Profile (case sensstive): ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then
 tee <<-EOF
