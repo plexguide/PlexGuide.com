@@ -42,7 +42,7 @@
 - name: Create Gauc Container
   docker_container:
     name: guacamole
-    image: "guacamole/guacamole/"
+    image: "guacamole/guacamole"
     pull: yes
     published_ports:
       - "8080:8080"
