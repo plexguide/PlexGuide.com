@@ -18,7 +18,7 @@
 - name: Create DataBase
   docker_container:
     name: mysql
-    image: "guacd:guacd"
+    image: "mysql/mysql-server"
     pull: yes
     published_ports:
       - "127.0.0.1:3306:3306"
