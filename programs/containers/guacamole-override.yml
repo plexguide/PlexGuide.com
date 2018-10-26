@@ -49,6 +49,8 @@
     env:
       PUID: "1000"
       PGID: "1000"
+      GUACD_HOSTNAME: "0.0.0.0"
+      GUACD_PORT: "4822"
     volumes:
       - /opt/appdata/{{pgrole}}
       - /opt/appdata/{{pgrole}}/sync
