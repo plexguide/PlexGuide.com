@@ -52,6 +52,7 @@
       MYSQL_DATABASE: "guacamole_db"
       MYSQL_USER: "guacamole_user"
       MYSQL_PASSWORD: "some_password"
+      MYSQL_HOSTNAME: "0.0.0.0"
       GUACD_HOSTNAME: "0.0.0.0"
       GUACD_PORT: "4822"
     volumes:
