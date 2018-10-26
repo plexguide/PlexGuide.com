@@ -128,10 +128,6 @@
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
         - /mnt/gdrive
-        - /mnt/gdrive/tv
-        - /mnt/gdrive/movies
-        - /mnt/gdrive/music
-        - /mnt/gdrive/ebooks
       when: gdrive.stat.exists == False
       ignore_errors: yes
   ############ TCrypt
@@ -139,10 +135,6 @@
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
         - /mnt/tcrypt
-        - /mnt/tcrypt/tv
-        - /mnt/tcrypt/movies
-        - /mnt/tcrypt/music
-        - /mnt/tcrypt/ebooks
       when: gdrive.stat.exists == False
       ignore_errors: yes
 
@@ -156,10 +148,6 @@
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
         - /mnt/tdrive
-        - /mnt/tdrive/tv
-        - /mnt/tdrive/movies
-        - /mnt/tdrive/music
-        - /mnt/tdrive/ebooks
       when: tdrive.stat.exists == False
       ignore_errors: yes
 
