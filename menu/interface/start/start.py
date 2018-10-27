@@ -41,7 +41,6 @@ def main():
 
     # Create the menu
     Menu = ConsoleMenu("Root Menu", "This is the Root Menu Subtitle", formatter=menu_format)
-    item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
     command_item1 = CommandItem("Mounts & Data Transport System ",  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
