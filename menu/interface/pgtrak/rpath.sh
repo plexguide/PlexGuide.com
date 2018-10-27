@@ -112,6 +112,13 @@ SYSTEM MESSAGE: Process Complete! Path is Now Set for Radarr!
 ---------------------------------------------------------------------------
 
 EOF
+
+### Removes /mnt if /mnt/unionfs exists
+check=$(echo $typed | head -c 12)
+if [ "$check" == "/mnt/unionfs" ]; then
+typed=${typed:4}
+fi
+
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo "$typed" > /var/plexguide/pgtrak.rpath
