@@ -42,9 +42,6 @@ def main():
     menu = ConsoleMenu("Root Menu", "This is the Root Menu Subtitle", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
-    # Create the menu
-    Menu = ConsoleMenu("Root Menu", "This is the Root Menu Subtitle", formatter=menu_format)
-
     # A CommandItem runs a console command
     command_item1 = CommandItem("Mounts & Data Transport System ",  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
     command_item2 = CommandItem("Traefik & TLD Deployment       ","bash /opt/plexguide/menu/interface/traefik/main.sh")
