@@ -35,11 +35,12 @@ def main():
         .set_prompt("SELECT>")\
         .set_title_align('center')\
         .set_subtitle_align('center')\
-        .set_left_margin(4)\
-        .set_right_margin(4)\
-        .show_header_bottom_border(False)
+        .set_left_margin(2)\
+        .set_right_margin(2)\
+        .set_top_margin(10)\
+        .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("Root Menu", "This is the Root Menu Subtitle", formatter=menu_format)
+    menu = ConsoleMenu("Welcome to PlexGuide!", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
