@@ -26,14 +26,22 @@ from subprocess import call
 
 a = "[Open]"
 # Create the menu
-menu = ConsoleMenu("Welcome to PlexGuide.com")
+
 
 # A CommandItem runs a console command
 command_item1 = CommandItem("Mounts  & Transport System " + a,  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
-
+command_item2 = CommandItem("Traefik & TLD Deployment",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
+command_item3 = CommandItem("Port Guard",  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
+command_item4 = CommandItem("Apps Guard",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
+command_item5 = CommandItem("Apps Installer",  "bash /opt/plexguide/menu/interface/apps/main.sh")
+command_item6 = CommandItem("PG Trak",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(command_item1)
-
+menu.append_item(command_item2)
+menu.append_item(command_item3)
+menu.append_item(command_item4)
+menu.append_item(command_item5)
+menu.append_item(command_item6)
 # Finally, we call show to show the menu and allow the user to interact
 menu.show()
 
