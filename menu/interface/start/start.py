@@ -37,6 +37,7 @@ def main():
         .set_subtitle_align('center')\
         .set_left_margin(2)\
         .set_right_margin(2)\
+        .set_top_margin(1)\
         .show_header_bottom_border(True)
 
     menu = ConsoleMenu("Root Menu", "This is the Root Menu Subtitle", formatter=menu_format)
