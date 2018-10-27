@@ -173,7 +173,7 @@ elif [ "$typed" == "7" ]; then
 
   echo 'INFO - Selected: PLEX Enhancements' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
-  
+
 elif [ "$typed" == "8" ]; then
 
   echo 'INFO - Selected: PG GCE Feeder Automations' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
