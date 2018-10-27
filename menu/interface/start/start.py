@@ -59,8 +59,8 @@ def main():
     command_item4 = CommandItem("Applicaiton Guard              ",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
     command_item5 = CommandItem("Program Suite Installer",  "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
-    command_item7 = CommandItem("Backup & Restore",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
-    command_item8 = CommandItem("Settings",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item7 = CommandItem("Backup & Restore",  "bash /opt/plexguide/roles/b-control/scripts/main.sh")
+    command_item8 = CommandItem("Settings",  "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     command_item9 = CommandItem("TroubleShoot - Pre & UnInstaller",  "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
 
     # Once we're done creating them, we just add the items to the menu
