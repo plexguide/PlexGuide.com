@@ -57,5 +57,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-# When User Exits Menu; Displays PG Ending
-rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
