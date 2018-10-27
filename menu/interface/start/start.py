@@ -32,12 +32,12 @@ with open('/var/plexguide/server.ports.status', 'r') as myfile:
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
-        .set_prompt("Type a Number | PRESS [ENTER]>")\
+        .set_prompt("SELECT>")\
         .set_title_align('center')\
         .set_subtitle_align('center')\
         .set_left_margin(4)\
         .set_right_margin(4)\
-        .show_header_bottom_border(True)
+        .show_header_bottom_border(False)
 
     menu = ConsoleMenu("Root Menu", "This is the Root Menu Subtitle", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
