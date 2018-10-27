@@ -35,6 +35,9 @@ with open('/var/plexguide/pg.edition', 'r') as myfile:
 with open('/var/plexguide/server.id', 'r') as myfile:
     serverid=myfile.read().replace('\n', '')
 
+with open('/var/plexguide/pg.number', 'r') as myfile:
+    pgversion=myfile.read().replace('\n', '')
+
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
@@ -45,7 +48,7 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("Welcome to PlexGuide! " + edition, "Server ID: " + serverid, formatter=menu_format)
+    menu = ConsoleMenu("Welcome to PlexGuide! " + edition, "Server ID: " + serverid + " - " + pgversion, formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
