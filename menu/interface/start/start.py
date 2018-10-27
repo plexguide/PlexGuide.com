@@ -22,6 +22,7 @@ import subprocess
 # Import the necessary packages
 from consolemenu import *
 from consolemenu.items import *
+from subprocess import call
 
 # Create the menu
 menu = ConsoleMenu("Welcome to PlexGuide.com")
