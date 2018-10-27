@@ -24,7 +24,7 @@ from consolemenu.items import *
 # Import for Bash Ending
 from subprocess import call
 
-with open('data.txt', 'r') as myfile:
+with open('/var/plexguide/server.ip', 'r') as myfile:
     data=myfile.read().replace('\n', '')
 
 a = "[Open]"
