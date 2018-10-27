@@ -32,7 +32,7 @@ with open('/var/plexguide/server.ports.status', 'r') as myfile:
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
-        .set_prompt("SELECT>")\
+        .set_prompt("Type a Number | PRESS [ENTER]>")\
         .set_title_align('center')\
         .set_subtitle_align('center')\
         .set_left_margin(4)\
