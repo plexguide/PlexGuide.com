@@ -1,6 +1,4 @@
-#!/bin/bash
-#
-# [Ansible Role]
+#!/usr/bin/python
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
