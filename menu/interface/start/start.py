@@ -24,6 +24,15 @@ from consolemenu.items import *
 # Import for Bash Ending
 from subprocess import call
 
+def main():
+    # Change some menu formatting
+    menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
+        .set_prompt("SELECT>")\
+        .set_title_align('center')\
+        .set_subtitle_align('center')\
+        .set_left_margin(4)\
+        .set_right_margin(4)\
+        .show_header_bottom_border(True)
 # Call Variables
 with open('/var/plexguide/server.ports.status', 'r') as myfile:
     ports=myfile.read().replace('\n', '')
