@@ -49,7 +49,7 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu(edition + " - " + pgversion, "Server ID: " + serverid + " | Domain " + domain, formatter=menu_format)
+    menu = ConsoleMenu(edition + " - " + pgversion, "Server ID: " + serverid + " | Domain: " + domain, formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
@@ -61,7 +61,7 @@ def main():
     command_item6 = CommandItem("PG Tools & Services",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
     command_item7 = CommandItem("Backup & Restore",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
     command_item8 = CommandItem("Settings",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
-    command_item9 = CommandItem("TroubleShoot - Pre & UnInstaller",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item9 = CommandItem("TroubleShoot - Pre & UnInstaller",  "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
 
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
