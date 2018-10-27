@@ -18,7 +18,6 @@
 # https://pypi.org/project/console-menu/
 #
 
-import subprocess
 # Import the necessary packages
 from consolemenu import *
 from consolemenu.items import *
