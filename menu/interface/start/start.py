@@ -16,11 +16,12 @@
 #
 #################################################################################
 # https://pypi.org/project/console-menu/
-#
 
-# Import the necessary packages
+# Import for Menu Interface
 from consolemenu import *
 from consolemenu.items import *
+
+# Import for Bash Ending
 from subprocess import call
 
 # Create the menu
