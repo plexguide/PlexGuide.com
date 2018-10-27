@@ -38,12 +38,11 @@ def main():
 
     # A CommandItem runs a console command
     command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/b-control/scripts/main.sh")
-    command_item2 = CommandItem("Deploy GCE Feeder Instance", "bash /opt/plexguide/menu/interface/traefik/main.sh")
-    command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
-    command_item4 = CommandItem("Server VPN Service Installer", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
-    command_item5 = CommandItem("System & Network Auditor", "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
+    command_item2 = CommandItem("Deploy GCE Feeder Instance", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item4 = CommandItem("Server VPN Service Installer", "echo vpnserver > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item5 = CommandItem("System & Network Auditor", "bash /opt/plexguide/roles/menu-network/scripts/main.sh")
     command_item6 = CommandItem("TroubleShoot - Pre & UnInstaller", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
-    command_item7 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/b-control/scripts/main.sh")
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
@@ -51,7 +50,6 @@ def main():
     menu.append_item(command_item4)
     menu.append_item(command_item5)
     menu.append_item(command_item6)
-    menu.append_item(command_item7)
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
 
