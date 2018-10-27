@@ -54,7 +54,11 @@ def main():
     command_item3 = CommandItem("Server Port Guard              " + ports,  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
     command_item4 = CommandItem("Applicaiton Guard              ",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
     command_item5 = CommandItem("Program Suite Installer",  "bash /opt/plexguide/menu/interface/apps/main.sh")
-    command_item6 = CommandItem("PG Trak - Fills Up Radarr & Sonarr",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item6 = CommandItem("PG Tools & Services",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item7 = CommandItem("Backup & Restore",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item8 = CommandItem("Settings",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item9 = CommandItem("TroubleShoot - Pre & UnInstaller",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
@@ -62,6 +66,9 @@ def main():
     menu.append_item(command_item4)
     menu.append_item(command_item5)
     menu.append_item(command_item6)
+    menu.append_item(command_item7)
+    menu.append_item(command_item8)
+    menu.append_item(command_item9)
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
 
