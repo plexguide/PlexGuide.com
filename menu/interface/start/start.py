@@ -35,6 +35,7 @@ function_item = FunctionItem("Call a Python function", input, ["Enter an input"]
 
 # A CommandItem runs a console command
 command_item = CommandItem("Run a console command",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
+command_item2 = CommandItem("Run a console command",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
 
 # A SelectionMenu constructs a menu from a list of strings
 selection_menu = SelectionMenu(["item1", "item2", "item3"])
@@ -47,6 +48,7 @@ submenu_item = SubmenuItem("Submenu item", selection_menu, menu)
 menu.append_item(menu_item)
 menu.append_item(function_item)
 menu.append_item(command_item)
+menu.append_item(command_item2)
 menu.append_item(submenu_item)
 
 # Finally, we call show to show the menu and allow the user to interact
