@@ -43,3 +43,5 @@ menu.append_item(command_item6)
 
 # Finally, we call show to show the menu and allow the user to interact
 menu.show()
+
+bash /opt/plexguide/roles/ending/ending.sh
