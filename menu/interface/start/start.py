@@ -38,7 +38,7 @@ with open('/var/plexguide/server.ports.status', 'r') as myfile:
     ports=myfile.read().replace('\n', '')
 
 # Create the menu
-menu = ConsoleMenu("Welcome to PlexGuide.com")
+menu = ConsoleMenu("Welcome to PlexGuide.com",formatter=menu_format)
 
 # A CommandItem runs a console command
 command_item1 = CommandItem("Mounts & Data Transport System ",  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
