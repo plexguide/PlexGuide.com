@@ -21,7 +21,7 @@
 from consolemenu import *
 from consolemenu.items import *
 
-days_file = open(/var/plexguide/server.id,'r')
+days_file = open(var/plexguide/server.id,'r')
 
 # Import for Bash Ending
 from subprocess import call
