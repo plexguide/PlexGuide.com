@@ -48,7 +48,7 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("Welcome to PlexGuide! " + edition, "Server ID: " + serverid + " - " + pgversion, formatter=menu_format)
+    menu = ConsoleMenu("Welcome to PlexGuide! " + edition + " - " + pgversion, "Server ID: " + serverid, formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
