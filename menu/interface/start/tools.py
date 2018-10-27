@@ -23,22 +23,6 @@ from consolemenu.items import *
 # Import for Bash Ending
 from subprocess import call
 
-# Call Variables
-with open('/var/plexguide/server.ports.status', 'r') as myfile:
-    ports=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/pg.edition', 'r') as myfile:
-    edition=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/server.id', 'r') as myfile:
-    serverid=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/pg.number', 'r') as myfile:
-    pgversion=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/server.domain', 'r') as myfile:
-    domain=myfile.read().replace('\n', '')
-
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
@@ -53,23 +37,19 @@ def main():
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    command_item1 = CommandItem("Mounts & Data Transport System ",  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
-    command_item2 = CommandItem("Traefik & TLD Deployment       ","bash /opt/plexguide/menu/interface/traefik/main.sh")
-    command_item3 = CommandItem("Server Port Guard              " + ports,  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
-    command_item4 = CommandItem("Applicaiton Guard              ",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
-    command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
-    command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
-    command_item8 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
-
+    command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/b-control/scripts/main.sh")
+    command_item2 = CommandItem("Deploy GCE Feeder Instance", "bash /opt/plexguide/menu/interface/traefik/main.sh")
+    command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+    command_item4 = CommandItem("Server VPN Service Installer", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
+    command_item5 = CommandItem("System & Network Auditor", "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
+    command_item6 = CommandItem("TroubleShoot - Pre & UnInstaller", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item7 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/b-control/scripts/main.sh")
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
     menu.append_item(command_item3)
     menu.append_item(command_item4)
     menu.append_item(command_item5)
-    menu.append_item(command_item6)
-    menu.append_item(command_item7)
-    menu.append_item(command_item8)
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
 
