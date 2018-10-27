@@ -21,10 +21,6 @@
 from consolemenu import *
 from consolemenu.items import *
 
-path = '/users/sammy/days.txt'
-file_var = open(path,'r')
-days = file_var.read()
-
 # Import for Bash Ending
 from subprocess import call
 
