@@ -23,33 +23,23 @@ from consolemenu import *
 from consolemenu.items import *
 
 # Create the menu
-menu = ConsoleMenu("PlexGuide","Welcome to PlexGuide")
-
-# Create some items
-
-# MenuItem is the base class for all items, it doesn't do anything when selected
-menu_item = MenuItem("Menu Item")
-
-# A FunctionItem runs a Python function when selected
-function_item = FunctionItem("Call a Python function", input, ["Enter an input"])
+menu = ConsoleMenu("Welcome to PlexGuide.com")
 
 # A CommandItem runs a console command
-command_item = CommandItem("Run a console command",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
-command_item2 = CommandItem("Run a console command",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
-
-# A SelectionMenu constructs a menu from a list of strings
-selection_menu = SelectionMenu(["item1", "item2", "item3"])
-
-# A SubmenuItem lets you add a menu (the selection_menu above, for example)
-# as a submenu of another menu
-submenu_item = SubmenuItem("Submenu item", selection_menu, menu)
+command_item1 = CommandItem("Mounts  & Transport System",  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+command_item2 = CommandItem("Traefik & TLD Deployment",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
+command_item3 = CommandItem("Port Guard",  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
+command_item4 = CommandItem("Apps Guard",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
+command_item5 = CommandItem("Apps Installer",  "bash /opt/plexguide/menu/interface/apps/main.sh")
+command_item6 = CommandItem("PG Trak",  "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
 
 # Once we're done creating them, we just add the items to the menu
-menu.append_item(menu_item)
-menu.append_item(function_item)
-menu.append_item(command_item)
+menu.append_item(command_item1)
 menu.append_item(command_item2)
-menu.append_item(submenu_item)
+menu.append_item(command_item3)
+menu.append_item(command_item4)
+menu.append_item(command_item5)
+menu.append_item(command_item6)
 
 # Finally, we call show to show the menu and allow the user to interact
 menu.show()
