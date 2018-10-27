@@ -19,6 +19,7 @@
 
 # Import for Menu Interface
 from consolemenu import *
+from consolemenu.format import *
 from consolemenu.items import *
 
 # Import for Bash Ending
