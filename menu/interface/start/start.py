@@ -37,7 +37,7 @@ def main():
         .set_subtitle_align('center')\
         .set_left_margin(2)\
         .set_right_margin(2)\
-        .set_top_margin(10)\
+        .set_bottom_margin(10)\
         .show_header_bottom_border(True)
 
     menu = ConsoleMenu("Welcome to PlexGuide!", formatter=menu_format)
