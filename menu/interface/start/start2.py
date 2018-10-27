@@ -26,7 +26,7 @@ from subprocess import call
 
 a = "[Open]"
 # Create the menu
-menu = ConsoleMenu("Welcome to PlexGuide.com")
+menu = CursesMenu("Welcome to PlexGuide.com")
 
 # A CommandItem runs a console command
 command_item1 = CommandItem("Mounts  & Transport System " + a,  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
