@@ -59,7 +59,7 @@ def main():
     command_item4 = CommandItem("Applicaiton Guard              ",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
     command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
-    command_item8 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item7 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
 
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
@@ -69,7 +69,6 @@ def main():
     menu.append_item(command_item5)
     menu.append_item(command_item6)
     menu.append_item(command_item7)
-    menu.append_item(command_item8)
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
 
