@@ -21,9 +21,7 @@
 from consolemenu import *
 from consolemenu.items import *
 
-path = '/var/plexguide/server.id'
-file_var = open(path,'r')
-a = file_var.read()
+days_file = open(/var/plexguide/server.id,'r')
 
 # Import for Bash Ending
 from subprocess import call
@@ -32,7 +30,7 @@ from subprocess import call
 menu = ConsoleMenu("Welcome to PlexGuide.com")
 
 # A CommandItem runs a console command
-command_item1 = CommandItem("Mounts  & Transport System " + a,  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+command_item1 = CommandItem("Mounts  & Transport System " + days_file.read(),  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 command_item2 = CommandItem("Traefik & TLD Deployment",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
 command_item3 = CommandItem("Port Guard",  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
 command_item4 = CommandItem("Apps Guard",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
