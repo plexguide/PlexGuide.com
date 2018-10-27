@@ -18,8 +18,8 @@
 # https://pypi.org/project/console-menu/
 
 # Import for Menu Interface
-from consolemenu import *
-from consolemenu.items import *
+from cursesmenu import *
+from cursesmenu.items import *
 
 # Import for Bash Ending
 from subprocess import call
