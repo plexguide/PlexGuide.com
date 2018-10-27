@@ -29,7 +29,7 @@ a = "Python"
 menu = ConsoleMenu("Welcome to PlexGuide.com")
 
 # A CommandItem runs a console command
-command_item1 = CommandItem("Mounts  & Transport System" print(a),  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+command_item1 = CommandItem("Mounts  & Transport System",  "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 command_item2 = CommandItem("Traefik & TLD Deployment",  "bash /opt/plexguide/menu/interface/traefik/main.sh")
 command_item3 = CommandItem("Port Guard",  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
 command_item4 = CommandItem("Apps Guard",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
@@ -45,5 +45,6 @@ menu.append_item(command_item6)
 # Finally, we call show to show the menu and allow the user to interact
 menu.show()
 
+print(a)
 # When User Exits Menu; Displays PG Ending
 rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
