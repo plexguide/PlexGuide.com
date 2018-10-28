@@ -23,7 +23,7 @@ with open('/var/plexguide/apip.check', 'r') as myfile:
     apip=myfile.read().replace('\n', '')
 
     if apip == '':
-        rc = call("pip install console-menu --disable-pip-version-check", shell=True)
+        rc = call("echo 'Standby - Installing Console Menu' && echo && pip install console-menu --disable-pip-version-check ", shell=True)
 
 # Import for Menu Interface
 from consolemenu import *
