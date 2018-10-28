@@ -33,11 +33,17 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(False)
 
-    menu = ConsoleMenu("Settings Interface Menu", formatter=menu_format)
+    menu = ConsoleMenu("Tools Interface Menu", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+    if edition == 'PG Edition - HD Solo':
+        command_item1 = CommandItem("No Backup System", 'echo corn')
+    elif edition == 'PG Edition - HD Multi':
+        command_item1 = CommandItem("No Backup System", "echo corn")
+    else:
+        command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+
     command_item2 = CommandItem("Deploy GCE Feeder Instance", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
     command_item4 = CommandItem("Server VPN Service Installer", "echo vpnserver > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
