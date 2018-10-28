@@ -56,8 +56,8 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = ConsoleMenu("Menu With Item Borders",
-                   prologue_text=("This menu example shows how menu items can be separated into categories."))
+menu = ConsoleMenu("Welcome to PG Move!",
+                   prologue_text=("PG Move is a simple uploader. It is highly recommend that you keep the BW @ 9MB, which equals nearly 750GB per day for straight uploading! If uploading very little, you can increase the speeds!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
