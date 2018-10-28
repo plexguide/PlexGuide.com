@@ -65,12 +65,12 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
 submenu_1 = RollsubItem("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
-rollsub_item2 = rollsubItem("2   MB", "echo '2' > /var/plexguide/move.bw")
-rollsub_item3 = rollsubItem("5   MB", "echo '5' > /var/plexguide/move.bw")
-rollsub_item4 = rollsubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
-rollsub_item5 = rollsubItem("12  MB", "echo '12' > /var/plexguide/move.bw")
-rollsub_item6 = rollsubItem("20  MB", "echo '20' > /var/plexguide/move.bw")
-rollsub_item7 = rollsubItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
+rollsub_item2 = RollsubItem("2   MB", "echo '2' > /var/plexguide/move.bw")
+rollsub_item3 = RollsubItem("5   MB", "echo '5' > /var/plexguide/move.bw")
+rollsub_item4 = RollsubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
+rollsub_item5 = RollsubItem("12  MB", "echo '12' > /var/plexguide/move.bw")
+rollsub_item6 = RollsubItem("20  MB", "echo '20' > /var/plexguide/move.bw")
+rollsub_item7 = RollsubItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
 submenu_1.append_item(rollsub_item2)
 submenu_1.append_item(rollsub_item3)
 submenu_1.append_item(rollsub_item4)
