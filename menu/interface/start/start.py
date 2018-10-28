@@ -13,14 +13,23 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Import for Bash Ending
+from subprocess import call
+
+# Pip Install Menu Fails to Exist
+rc = call("pip list --format columns --disable-pip-version-check | grep console-menu > /var/plexguide/apip.check
+", shell=True)
+
+with open('/var/plexguide/apip.check', 'r') as myfile:
+    apip=myfile.read().replace('\n', '')
+
+    if apip != '':
+        rc = call("pip install console-menu", shell=True)
 
 # Import for Menu Interface
 from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
-
-# Import for Bash Ending
-from subprocess import call
 
 # Call Variables
 with open('/var/plexguide/server.ports.status', 'r') as myfile:
