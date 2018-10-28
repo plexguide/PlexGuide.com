@@ -109,8 +109,8 @@ def main():
     menu.append_item(command_item5)
     menu.append_item(command_item6)
     menu.append_item(command_item7)
-    
-        quit()
+
+    quit()
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
 
