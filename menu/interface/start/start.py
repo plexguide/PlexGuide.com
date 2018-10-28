@@ -17,13 +17,15 @@
 from subprocess import call
 
 # Pip Install Menu Fails to Exist
-rc = call("pip list --format columns --disable-pip-version-check | grep console-menu > /var/plexguide/apip.check", shell=True)
+rc = call("pip list --format columns --disable-pip-version-check | grep plexguide-menu > /var/plexguide/apip.check", shell=True)
 
 with open('/var/plexguide/apip.check', 'r') as myfile:
     apip=myfile.read().replace('\n', '')
 
     if apip == '':
-        rc = call("echo 'Standby - Installing Console Menu' && echo && pip install console-menu --disable-pip-version-check ", shell=True)
+        rc = call("echo 'Standby - Installing Console Menu' && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
+
+pip install
 
 # Import for Menu Interface
 from consolemenu import *
