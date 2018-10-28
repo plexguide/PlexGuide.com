@@ -94,25 +94,24 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     else:
         command_item1 = CommandItem("Mounts & Data Transport System", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 
-    command_item2 = CommandItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh")
-    command_item3 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    rollover_item = RolloverItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py" )
-    command_item4 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
-    command_item5 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
-    command_item6 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    rollover_item1 = CommandItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh && && python3 /opt/plexguide/menu/interface/start/start.py")
+    rollover_item2 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
+    rollover_item3 = RolloverItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py" )
+    command_item2 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
+    command_item3 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
+    command_item4 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
 
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
+    menu.append_item(rollover_item1)
+    menu.append_item(rollover_item2)
+    menu.append_item(rollover_item3)
     menu.append_item(command_item2)
     menu.append_item(command_item3)
-    menu.append_item(rollover_item)
     menu.append_item(command_item4)
-    menu.append_item(command_item5)
-    menu.append_item(command_item6)
 
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
-
 
 # When User Exits Menu; Displays PG Ending
 rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
