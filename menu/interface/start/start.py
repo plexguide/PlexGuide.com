@@ -41,6 +41,8 @@ with open('/var/plexguide/server.domain', 'r') as myfile:
 with open('/var/plexguide/ansible.version', 'r') as myfile:
     ansible=myfile.read().replace('\n', '')
 
+rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version", shell=True)
+
 with open('/var/plexguide/server.ht', 'r') as myfile:
     appguard=myfile.read().replace('\n', '')
 

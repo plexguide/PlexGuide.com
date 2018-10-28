@@ -241,6 +241,3 @@ file="/var/plexguide/multi.unionfs"
     else
       echo "0" > /var/plexguide/project.keycount
     fi
-
-ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version
-#docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed
