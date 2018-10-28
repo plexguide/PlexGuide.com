@@ -96,8 +96,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
 
     command_item2 = CommandItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh")
     command_item3 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    function_item = FunctionItem("Fun item", Screen().input, ["Enter an input: "])
-    #command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 -c 'exit(0)'" )
+    command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 -c 'exit(0)'" )
     command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
     command_item7 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
@@ -106,15 +105,13 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     menu.append_item(command_item1)
     menu.append_item(command_item2)
     menu.append_item(command_item3)
-    menu.append_item(function_item)
+    menu.append_item(command_item4)
     menu.append_item(command_item5)
     menu.append_item(command_item6)
     menu.append_item(command_item7)
 
     # Finally, we call show to show the menu and allow the user to interact
-    menu.show(True)
-    menu.join()
-
+    menu.show()
 
 # When User Exits Menu; Displays PG Ending
 rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
