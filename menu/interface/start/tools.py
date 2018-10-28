@@ -20,6 +20,10 @@ from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
 
+# Call Variables
+with open('/var/plexguide/pg.edition', 'r') as myfile:
+    edition=myfile.read().replace('\n', '')
+
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
