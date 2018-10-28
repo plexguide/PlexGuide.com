@@ -42,6 +42,14 @@ with open('/var/plexguide/server.domain', 'r') as myfile:
 with open('/var/plexguide/ansible.version', 'r') as myfile:
     ansible=myfile.read().replace('\n', '')
 
+with open('/var/plexguide/server.ht', 'r') as myfile:
+    appguard=myfile.read().replace('\n', '')
+
+    if appguard == '':
+        appguard = Not Enabled
+    else:
+        appguard = Enabled
+
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
@@ -65,7 +73,7 @@ def main():
 
     command_item2 = CommandItem("Traefik & TLD Deployment       ","bash /opt/plexguide/menu/interface/traefik/main.sh")
     command_item3 = CommandItem("Server Port Guard              " + ports,  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
-    command_item4 = CommandItem("Applicaiton Guard              ",  "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
+    command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
     command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
     command_item7 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
