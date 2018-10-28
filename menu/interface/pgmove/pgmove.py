@@ -78,7 +78,7 @@ rollsub_1.append_item(rollsub_item5)
 rollsub_1.append_item(rollsub_item6)
 rollsub_1.append_item(rollsub_item7)
 ###
-rollsub_item_1 = RollSubItem("Upload BW Limit: " + bwlimit + " MB", rollmenu=rollsub_1)
+rollsub_item_1 = RollSubItem("Upload BW Limit: " + bwlimit + " MB", submenu=rollsub_1)
 rollsub_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
@@ -87,7 +87,7 @@ command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
-menu.append_item(rollsub_item_1)
+menu.append_item(rollsub_item1)
 menu.append_item(command_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
