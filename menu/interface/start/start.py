@@ -94,7 +94,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     else:
         command_item1 = CommandItem("Mounts & Data Transport System", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 
-    rollover_item1 = RolloverItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh && && python3 /opt/plexguide/menu/interface/start/start.py")
+    rollover_item1 = RolloverItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
     rollover_item2 = RolloverItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
     rollover_item3 = RolloverItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py" )
     command_item2 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
