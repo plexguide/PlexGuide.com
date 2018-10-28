@@ -80,7 +80,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu(EMPTY, formatter=menu_format)
+    menu = ConsoleMenu("EMPTY", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
