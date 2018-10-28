@@ -37,12 +37,12 @@ def main():
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-        if edition == 'PG Edition - HD Solo':
-            command_item1 = CommandItem("No Backup System", 'echo corn')
-        elif edition == 'PG Edition - HD Multi':
-            command_item1 = CommandItem("No Backup System", "echo corn")
-        else:
-            command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+    if edition == 'PG Edition - HD Solo':
+        command_item1 = CommandItem("No Backup System", 'echo corn')
+    elif edition == 'PG Edition - HD Multi':
+        command_item1 = CommandItem("No Backup System", "echo corn")
+    else:
+        command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/b-control/scripts/main.sh")
 
     command_item2 = CommandItem("Deploy GCE Feeder Instance", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
