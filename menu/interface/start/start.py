@@ -46,9 +46,9 @@ with open('/var/plexguide/server.ht', 'r') as myfile:
     appguard=myfile.read().replace('\n', '')
 
     if appguard == '':
-        appguard = "Not Enabled"
+        appguard = "[NOT ENABLED]"
     else:
-        appguard = "Enabled"
+        appguard = "[ENABLED]"
 
 def main():
     # Change some menu formatting
