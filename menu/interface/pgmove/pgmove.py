@@ -43,7 +43,7 @@ with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
 ############## Traefik Detection
 rc = call("docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed", shell=True)
 
-if not tdrive == '' and gdrive not == '':
+if tdrive != '' and gdrive != '':
     configure = "[UnEncrypted]"
 else:
     configure = "[Not Configured]"
