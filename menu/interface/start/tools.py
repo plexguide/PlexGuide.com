@@ -37,12 +37,18 @@ def main():
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/b-control/scripts/main.sh")
+    if edition == 'PG Edition - HD Solo':
+        command_item1 = CommandItem("No Backup System", 'cmd /c \"echo this is a shell. Press enter to continue." && set /p=\"')
+    elif edition == 'PG Edition - HD Multi':
+        command_item1 = CommandItem("No Backup System", "bash /opt/plexguide/roles/menu-multi/scripts/main.sh")
+    else:
+        command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+
     command_item2 = CommandItem("Deploy GCE Feeder Instance", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
     command_item4 = CommandItem("Server VPN Service Installer", "echo vpnserver > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     command_item5 = CommandItem("System & Network Auditor", "bash /opt/plexguide/roles/menu-network/scripts/main.sh")
-    command_item6 = CommandItem("TroubleShoot - Pre & UnInstaller", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item6 = CommandItem("TroubleShoot - PreInstaller & UnInstaller", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
