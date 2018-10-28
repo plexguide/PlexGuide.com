@@ -53,10 +53,12 @@ def main():
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    if edition == 'Cat':
-        command_item1 = CommandItem("Command", 'cmd /c \"echo this is a shell. Press enter to continue." && set /p=\"')
+    if edition == 'PG Edition - HD Solo':
+        command_item1 = CommandItem("No Data & Transport System", 'cmd /c \"echo this is a shell. Press enter to continue." && set /p=\"')
+    elif edition == 'PG Edition - HD Multi':
+        command_item1 = CommandItem("Mounts & HD MergerFS", "bash /opt/plexguide/roles/menu-multi/scripts/main.sh")
     else:
-        command_item1 = CommandItem("Command", 'sh -c \'echo "this is a shell. Press enter to continue."; read\'')
+        command_item1 = CommandItem("Mounts & Data Transport System", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 
     command_item2 = CommandItem("Traefik & TLD Deployment       ","bash /opt/plexguide/menu/interface/traefik/main.sh")
     command_item3 = CommandItem("Server Port Guard              " + ports,  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
