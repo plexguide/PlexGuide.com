@@ -64,22 +64,22 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 ######################## SUB MENU AREA START
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
-rollsub_1 = RollsubItem("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
-rollover_item2 = RollsubItem("2   MB", "echo '2' > /var/plexguide/move.bw")
-rollover_item3 = RollsubItem("5   MB", "echo '5' > /var/plexguide/move.bw")
-rollover_item4 = RollsubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
-rollover_item5 = RollsubItem("12  MB", "echo '12' > /var/plexguide/move.bw")
-rollover_item6 = RollsubItem("20  MB", "echo '20' > /var/plexguide/move.bw")
-rollover_item7 = RollsubItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
-rollsub_1.append_item(rollover_item2)
-rollsub_1.append_item(rollover_item3)
-rollsub_1.append_item(rollover_item4)
-rollsub_1.append_item(rollover_item5)
-rollsub_1.append_item(rollover_item6)
-rollsub_1.append_item(rollover_item7)
+submenu_1 = ConsoleMenu("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
+rollover_item2 = RolloverItem("2   MB", "echo '2' > /var/plexguide/move.bw")
+rollover_item3 = RolloverItem("5   MB", "echo '5' > /var/plexguide/move.bw")
+rollover_item4 = RolloverItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
+rollover_item5 = RolloverItem("12  MB", "echo '12' > /var/plexguide/move.bw")
+rollover_item6 = RolloverItem("20  MB", "echo '20' > /var/plexguide/move.bw")
+rollover_item7 = RolloverItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
+submenu_1.append_item(rollover_item2)
+submenu_1.append_item(rollover_item3)
+submenu_1.append_item(rollover_item4)
+submenu_1.append_item(rollover_item5)
+submenu_1.append_item(rollover_item6)
+submenu_1.append_item(rollover_item7)
 ###
-rollsub_item_1 = RollSubItem("Upload BW Limit: " + bwlimit + " MB", submenu=rollsub_1)
-rollsub_item_1.set_menu(menu)
+submenu_item_1 = SubmenuItem("Upload BW Limit: " + bwlimit + " MB", submenu=submenu_1)
+submenu_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
 rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
@@ -87,7 +87,7 @@ command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
-menu.append_item(rollsub_item1)
+menu.append_item(submenu_item_1)
 menu.append_item(command_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
