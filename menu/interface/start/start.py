@@ -31,9 +31,6 @@ from consolemenu.format import *
 from consolemenu.items import *
 
 # Call Variables
-with open('/var/plexguide/server.ports.status', 'r') as myfile:
-    ports=myfile.read().replace('\n', '')
-
 with open('/var/plexguide/pg.edition', 'r') as myfile:
     edition=myfile.read().replace('\n', '')
 
@@ -51,6 +48,15 @@ rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible
 
 with open('/var/plexguide/ansible.version', 'r') as myfile:
     ansible=myfile.read().replace('\n', '')
+
+############## Port Check
+with open('/var/plexguide/server.ports', 'r') as myfile:
+    ports=myfile.read().replace('\n', '')
+
+    if ports == '':
+        ports = "[OPEN]"
+    else:
+        ports = "[CLOSED]"
 
 ############## AppGuard Check
 with open('/var/plexguide/server.ht', 'r') as myfile:
