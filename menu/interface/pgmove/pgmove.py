@@ -28,14 +28,8 @@ from consolemenu.format import *
 from consolemenu.items import *
 
 # Call Variables
-#with open('/var/plexguide/rclone.tdrive', 'r') as myfile:
-#    tdrive=myfile.read().replace('\n', '')
-
 with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
     gdrive=myfile.read().replace('\n', '')
-
-#with open('/var/plexguide/rclone.tcrypt', 'r') as myfile:
-#    tcrypt=myfile.read().replace('\n', '')
 
 with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
     gcrypt=myfile.read().replace('\n', '')
@@ -49,26 +43,26 @@ else:
 # Menu Start
 
     # Change some menu formatting
-    menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
-        .set_prompt("SELECT>")\
-        .set_title_align('left')\
-        .set_subtitle_align('left')\
-        .set_left_margin(2)\
-        .set_right_margin(2)\
-        .show_header_bottom_border(True)
+menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
+    .set_prompt("SELECT>")\
+    .set_title_align('left')\
+    .set_subtitle_align('left')\
+    .set_left_margin(2)\
+    .set_right_margin(2)\
+    .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("EMPTY", formatter=menu_format)
-    item1 = MenuItem("Item 1", menu)
+menu = ConsoleMenu("EMPTY", formatter=menu_format)
+item1 = MenuItem("Item 1", menu)
 
-    # A CommandItem runs a console command
-    rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+# A CommandItem runs a console command
+rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
+rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
+command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
-    # Once we're done creating them, we just add the items to the menu
-    menu.append_item(rollover_item1)
-    menu.append_item(rollover_item2)
-    menu.append_item(command_item1)
+# Once we're done creating them, we just add the items to the menu
+menu.append_item(rollover_item1)
+menu.append_item(rollover_item2)
+menu.append_item(command_item1)
 
-    # Finally, we call show to show the menu and allow the user to interact
-    menu.show()
+# Finally, we call show to show the menu and allow the user to interact
+menu.show()
